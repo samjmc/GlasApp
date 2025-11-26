@@ -6,7 +6,7 @@ import { generateEmbedding } from '../services/openaiService';
 const CHUNK_SIZE_TOKENS = 500; // Approx tokens per chunk
 const CHARS_PER_TOKEN = 4; // Rough estimate
 const CHUNK_SIZE_CHARS = CHUNK_SIZE_TOKENS * CHARS_PER_TOKEN;
-const BATCH_SIZE = 20; // Speeches per batch
+const BATCH_SIZE = 50; // Increased for efficiency with bulk inserts
 
 async function processDebateEmbeddings() {
   if (!supabaseDb) {
@@ -43,7 +43,7 @@ async function processDebateEmbeddings() {
       }
     }
 
-    // Small delay to avoid rate limits
+    // Efficient delay: Bulk inserts are safe, so we can move faster
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
 }
@@ -84,16 +84,17 @@ async function processSpeech(speech: any) {
     chunks.push(currentChunk.trim());
   }
 
-  // 2. Embed & Save
-  let chunksCreated = 0;
+  // 2. Embed & Save - Bulk Insert Strategy to save IOPS
+  const chunksToInsert: any[] = [];
+  
   for (const chunkContent of chunks) {
     // Skip extremely short chunks (e.g. "Agreed.")
     if (chunkContent.length < 20) continue;
 
     try {
       const embedding = await generateEmbedding(chunkContent);
-
-      const { error } = await supabaseDb!.from('debate_chunks').insert({
+      
+      chunksToInsert.push({
         speech_id: speech.id,
         chunk_content: chunkContent,
         embedding,
@@ -103,19 +104,27 @@ async function processSpeech(speech: any) {
         topic: speech.metadata?.topic || null
       });
 
-      if (error) {
-        console.error(`Insert error for speech ${speech.id}: ${error.message}`);
-        continue;
-      }
-      chunksCreated++;
+      // Small delay to pace OpenAI calls
+      await new Promise(resolve => setTimeout(resolve, 200));
+
     } catch (err) {
-      console.error(`Embedding/insert error: ${err}`);
+      console.error(`Embedding error: ${err}`);
       continue;
     }
   }
-  
-  if (chunksCreated > 0) {
-    process.stdout.write(`+${chunksCreated}`);
+
+  if (chunksToInsert.length > 0) {
+    try {
+      const { error } = await supabaseDb!.from('debate_chunks').insert(chunksToInsert);
+      
+      if (error) {
+        console.error(`Bulk insert error for speech ${speech.id}: ${error.message}`);
+      } else {
+        process.stdout.write(`+${chunksToInsert.length}`);
+      }
+    } catch (err) {
+      console.error(`Bulk insert exception: ${err}`);
+    }
   } else {
     process.stdout.write('.');
   }

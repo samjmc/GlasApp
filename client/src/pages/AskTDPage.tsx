@@ -1,15 +1,18 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
+import ReactMarkdown from "react-markdown";
 import { 
   Send, Bot, User, Sparkles, AlertCircle, MessageSquare, 
   Search, ChevronDown, TrendingUp, TrendingDown, Minus,
-  BarChart3, Clock, AlertTriangle, CheckCircle, X, History
+  BarChart3, Clock, AlertTriangle, CheckCircle, X, History,
+  ThumbsUp, ThumbsDown
 } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
   citations?: Array<{ date: string; content: string }>;
+  feedback?: 'positive' | 'negative';
 }
 
 interface ChatResponse {
@@ -367,6 +370,53 @@ export default function AskTDPage() {
     },
   });
 
+  // Feedback mutation
+  const feedbackMutation = useMutation({
+    mutationFn: async (data: { 
+      messageIndex: number;
+      rating: 'positive' | 'negative';
+      userQuestion: string;
+      aiResponse: string;
+    }) => {
+      if (!selectedTD) throw new Error("No TD selected");
+      
+      const res = await fetch("/api/chat/politician/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          politicianName: selectedTD.politician_name,
+          userQuestion: data.userQuestion,
+          aiResponse: data.aiResponse,
+          rating: data.rating,
+          contextData: { messageIndex: data.messageIndex }
+        }),
+      });
+      
+      if (!res.ok) throw new Error("Feedback failed");
+      return data;
+    },
+    onSuccess: (data) => {
+      setMessages(prev => prev.map((msg, i) => 
+        i === data.messageIndex ? { ...msg, feedback: data.rating } : msg
+      ));
+    }
+  });
+
+  const handleFeedback = (index: number, rating: 'positive' | 'negative') => {
+    const message = messages[index];
+    // Find the preceding user message for context
+    const userMessage = messages[index - 1];
+    
+    if (message.role !== 'assistant' || !userMessage || message.feedback) return;
+    
+    feedbackMutation.mutate({
+      messageIndex: index,
+      rating,
+      userQuestion: userMessage.content,
+      aiResponse: message.content
+    });
+  };
+
   const handleSend = () => {
     if (!input.trim() || !selectedTD || chatMutation.isPending) return;
     const question = input.trim();
@@ -664,7 +714,22 @@ export default function AskTDPage() {
                           : "border border-white/10 bg-slate-800/50 text-gray-100"
                       }`}
                     >
-                      <p className="whitespace-pre-wrap text-sm">{message.content}</p>
+                      <div className="text-sm">
+                        {message.role === "user" ? (
+                          <p className="whitespace-pre-wrap">{message.content}</p>
+                        ) : (
+                          <div className="prose prose-sm prose-invert max-w-none [&>p]:mb-2 [&>p:last-child]:mb-0 [&>ul]:mb-2 [&>ol]:mb-2">
+                            <ReactMarkdown 
+                              components={{
+                                a: ({node, ...props}) => <a {...props} className="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer" />,
+                                strong: ({node, ...props}) => <strong {...props} className="font-bold text-white" />,
+                              }}
+                            >
+                              {message.content}
+                            </ReactMarkdown>
+                          </div>
+                        )}
+                      </div>
                       
                       {message.citations && message.citations.length > 0 && (
                         <div className="mt-3 border-t border-white/10 pt-3">
@@ -677,6 +742,40 @@ export default function AskTDPage() {
                               </div>
                             ))}
                           </div>
+                        </div>
+                      )}
+
+                      {/* Feedback Buttons (Assistant only) */}
+                      {message.role === "assistant" && idx > 0 && (
+                        <div className="mt-2 flex items-center justify-end gap-2">
+                          <button
+                            onClick={() => handleFeedback(idx, 'positive')}
+                            disabled={!!message.feedback}
+                            className={`rounded p-1 transition-colors ${
+                              message.feedback === 'positive' 
+                                ? 'text-emerald-400' 
+                                : message.feedback 
+                                  ? 'text-gray-600 cursor-not-allowed' 
+                                  : 'text-gray-400 hover:bg-white/10 hover:text-emerald-400'
+                            }`}
+                            title="Good answer"
+                          >
+                            <ThumbsUp className="h-3.5 w-3.5" />
+                          </button>
+                          <button
+                            onClick={() => handleFeedback(idx, 'negative')}
+                            disabled={!!message.feedback}
+                            className={`rounded p-1 transition-colors ${
+                              message.feedback === 'negative' 
+                                ? 'text-red-400' 
+                                : message.feedback 
+                                  ? 'text-gray-600 cursor-not-allowed' 
+                                  : 'text-gray-400 hover:bg-white/10 hover:text-red-400'
+                            }`}
+                            title="Inaccurate or hallucinated"
+                          >
+                            <ThumbsDown className="h-3.5 w-3.5" />
+                          </button>
                         </div>
                       )}
                     </div>
@@ -735,11 +834,23 @@ export default function AskTDPage() {
                   ) : consistencyData?.overallConsistencyScore !== null ? (
                     <div className="text-center">
                       <div className={`text-4xl font-bold ${
-                        (consistencyData?.overallConsistencyScore || 0) >= 80 ? 'text-emerald-400' :
+                        (consistencyData?.overallConsistencyScore || 0) >= 90 ? 'text-emerald-400' :
+                        (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'text-green-400' :
                         (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' :
                         'text-red-400'
                       }`}>
                         {consistencyData?.overallConsistencyScore}%
+                      </div>
+                      <div className={`mt-1 text-sm font-medium ${
+                        (consistencyData?.overallConsistencyScore || 0) >= 90 ? 'text-emerald-400' :
+                        (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'text-green-400' :
+                        (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' :
+                        'text-red-400'
+                      }`}>
+                        {(consistencyData?.overallConsistencyScore || 0) >= 90 ? 'Rock Solid' :
+                         (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'Highly Consistent' :
+                         (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'Pragmatic / Evolving' :
+                         'Volatile / Unclear'}
                       </div>
                       <p className="mt-1 text-xs text-gray-400">across tracked topics</p>
                     </div>

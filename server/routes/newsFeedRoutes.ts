@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
+import { getCachedOrFetch, CACHE_TTL } from '../utils/serverCache';
 import {
   DEFAULT_REGION_CODE,
   REGION_NEWS_MOCK,

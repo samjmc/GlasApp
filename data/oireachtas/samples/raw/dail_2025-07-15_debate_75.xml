@@ -1,0 +1,1385 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-15/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-15/debate"/>
+          <FRBRdate date="2025-07-15" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_foreign_affairs_and_trade"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-15/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-15/debate/mul@"/>
+          <FRBRdate date="2025-07-15" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-15/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-15/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-19" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="BarryWard" href="/ie/oireachtas/member/id/Barry-Ward.S.2020-03-30" showAs="Barry Ward"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="CathyBennett" href="/ie/oireachtas/member/id/Cathy-Bennett.D.2024-11-29" showAs="Cathy Bennett"/>
+        <TLCPerson eId="DonnchadhOLaoghaire" href="/ie/oireachtas/member/id/Donnchadh-Ó-Laoghaire.D.2016-10-03" showAs="Donnchadh Ó Laoghaire"/>
+        <TLCPerson eId="DuncanSmith" href="/ie/oireachtas/member/id/Duncan-Smith.D.2020-02-08" showAs="Duncan Smith"/>
+        <TLCPerson eId="FionaOLoughlin" href="/ie/oireachtas/member/id/Fiona-O'Loughlin.D.2016-10-03" showAs="Fiona O'Loughlin"/>
+        <TLCPerson eId="GarretAhearn" href="/ie/oireachtas/member/id/Garret-Ahearn.S.2020-03-30" showAs="Garret Ahearn"/>
+        <TLCPerson eId="JoeOReilly" href="/ie/oireachtas/member/id/Joe-O'Reilly.S.1989-10-01" showAs="Joe O'Reilly"/>
+        <TLCPerson eId="JohnLahart" href="/ie/oireachtas/member/id/John-Lahart.D.2016-10-03" showAs="John Lahart"/>
+        <TLCPerson eId="KenOFlynn" href="/ie/oireachtas/member/id/Ken-O'Flynn.D.2024-11-29" showAs="Ken O'Flynn"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="SeanOFearghaillFF" href="/ie/oireachtas/member/id/Seán-Ó-Fearghaíl.S.2000-06-09" showAs="Seán Ó Fearghaíl"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM GHNÓTHAÍ EACHTRACHA AGUS TRÁDÁIL</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Foreign Affairs and Trade</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-15">Dé Máirt, 15 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-15">Tuesday, 15 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 02:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 02:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CathyBennett">Cathy Bennett</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#GarretAhearn">Garret Ahearn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#BrianBrennan">Brian Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#NoelMcCarthy">Noel McCarthy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#FionaOLoughlin">Fiona O'Loughlin</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#KenOFlynn">Ken O'Flynn</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JoeOReilly">Joe O'Reilly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#SeanOFearghaillFF">Seán Ó Fearghaíl</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#DonnchadhOLaoghaire">Donnchadh Ó Laoghaire</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#DuncanSmith">Duncan Smith</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#BarryWard">Barry Ward.*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Noel McCarthy.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#JohnLahart">Teachta / Deputy John Lahart sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i> The joint committee met in private session at 2.32 p.m., suspended at 2.46 p.m. and resumed in private session at 2.51 p.m.</i>
+        </summary>
+        <summary eId="sum_7">
+          <i> Sitting suspended at 2.52 p.m. and resumed in public session at 3.06 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>General Scheme of Israeli Settlements in the Occupied Palestinian Territory (Prohibition of Importation of Goods) Bill 2025: Discussion (Resumed)<recordedTime time="2025-07-15T15:00:00+01:00"/></heading>
+        <speech by="#JohnLahart" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:00:00+01:00"/></from>
+          <p eId="para_16">I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. In this regard I ask any member partaking via MS Teams that prior to making their contribution to the meeting they confirm they are on the grounds of the Leinster House campus. I will not permit a member to participate where they are not adhering to this constitutional requirement. I will explain some limitations to parliamentary privilege and the practice of the Houses as regards reference witnesses may make to other persons in their evidence. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege. Witnesses participating in this committee session from a jurisdiction outside the State will already have been advised that they should also be mindful of their domestic law and how it may apply to the evidence they give. Their decision as to whether they take legal advice in relation to the evidence they propose to give should also have been informed by this. Ms Hausdorff is giving her evidence remotely from a place outside of the parliamentary precincts and as such may not benefit from the same level of immunity from legal proceedings as a witness physically present does. She has already been advised that she may think it appropriate to have taken legal advice on this matter.</p>
+          <p eId="para_17"> Members and witnesses are again reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction. As the witnesses were already informed, the committee will publish the opening statements on its website following the meeting.</p>
+          <p eId="para_18"> We move to engagement with witnesses on the pre-legislative scrutiny. We are here to continue our pre-legislative scrutiny of the general scheme of the Israeli settlements in the occupied Palestinian territory (prohibition of importation of goods) Bill 2025. Reference to this long title as “the Bill” is the most appropriate reference for the proceedings of this committee. I hope everybody receives that information and understands it. I am happy with the long title to be replaced by references to “the Bill”. I acknowledge at the outset that there are strongly held views in relation to the general scheme of this Bill. </p>
+          <p eId="para_19">Notwithstanding this, the debate should at all times be focused on the general scheme of the Bill before us, and in accordance with the witness protocol, witnesses should be treated fairly and with respect. The same is expected of witnesses in this and the next session. Equally, I expect that witnesses and members who contribute today will speak and behave with the dignity and decorum befitting a sitting committee of the Houses of the Oireachtas. We also have guests in the Public Gallery today. They are welcome. I remind our guests in the Public Gallery that they may not under any circumstances interrupt the committee's proceedings today. I welcome our witnesses for the first part of a split session. From the Jewish Representative Council of Ireland, we have Mr. Maurice Cohen, chair, and Mr. Yoni Wieder, chief rabbi. From the Ireland Israel Alliance, we have Mr. Alan Shatter, board member of the Israel Council on Foreign Relations, and Ms Natasha Hausdorff, barrister.</p>
+          <p eId="para_20"> The format of the meeting is that we will hear the witnesses' opening statements followed by a question and answer session with members of the committee. Because of time constraints, and this applies to every committee that meets in this House, our protocol in this committee is that members will have four minutes to put questions and that four minutes also includes the time for the answer period. I will be pretty strict on that or else they will eat into the time of other witnesses or other members, and we will run beyond the time allocated. I ask members to be concise in their questions to allow all members the opportunity to participate. Members are also reminded that they will, as I said, have four minutes. The witnesses are all very welcome here today, and we look forward to hearing from them on the work of their organisations. I will now give the floor to Mr. Cohen to make his opening statement, followed by Mr. Shatter and Ms Hausdorff to make their joint opening statement before we take questions.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Maurice Cohen<recordedTime time="2025-07-15T15:10:00+01:00"/></from>
+          <p eId="para_21">Many who support this Bill do so in good faith. I do not doubt their concern for the Palestinian people; I share it, as do the Jewish community in Ireland, but this Bill is not a plan for peace. It is not a policy. It is a performance of misguided effort. It has been wrapped in the language of justice, solidarity and resistance, but beyond the slogans, I ask you this: what does it actually do and who does it actually help? For all its principled tone, this Bill changes nothing on the ground. It will not remove Hamas from Gaza. It will not reform the ineffective leadership of the Palestinian Authority. It will not foster dialogue between Israelis and Palestinians nor improve the lot of the Palestinians economically or socially. It certainly will not bring peace any sooner.</p>
+          <p eId="para_22"> It is, as some have described, symbolism - a gesture - and while gestures can have their place in these circumstances, especially ones that carry legal, diplomatic and social consequences, they should never be passed off as national policy or strategy in the pursuit of our vital interests. Let me be very clear: I speak as an Irish citizen, born and raised here in Dublin, and as a Jew from a small long-established Irish Jewish community that arrived here in the early 1600s. That community is now increasingly fearful. We are witnessing a rise in racism and its not too distant relative, antisemitism, across Europe, yes, but also right here in Ireland, and while this Bill may not set out to target Jews or Jewish life, its a message is unmistakably felt by us. One of my best friends with whom I went to school, a long-time respected member of the Jewish community whose grandfather was the only citizen murdered in the 1916 Rising, said to me only two days ago, “I always thought of myself as an Irishman who happened to be Jewish. Now I know I'm just a Jew living in Ireland.” Many of us think like that because when the only country in the world you choose to boycott by law is the one Jewish state - not China for Tibet, not Turkey for Northern Cyprus, not Russia for Crimea or Myanmar for its atrocities - then something is amiss. Selective outrage is not foreign policy, and double standards do not serve the cause of peace. This Bill in tone and in consequence isolates moderates, empowers extremes and undermines the credibility that Ireland has built as a voice for reason and reconciliation in the field of peacebuilding.</p>
+          <p eId="para_23"> Ireland is proud of its reputation internationally in its even-handed approach to other conflicts around the world. We invite, host, mediate and listen, but being even-handed means being a trusted voice to all sides to any conflict. Therefore, I ask the committee members how we can offer ourselves as honest brokers if we legislate in a way that makes it clear we have already taken a side. This is not diplomacy. This is not a strategy. It is performance politics dressed as principle and in that theatre, we are not helping Palestinians; we are just congratulating ourselves.</p>
+          <p eId="para_24"> We are told that this Bill is symbolic but that is exactly the problem. Symbolism without substance can be deeply damaging. It may win applause in this Chamber, but it sets fire to our credibility abroad. It tells one side that it alone is to blame and the other that it is beyond reproach. It locks both into further entrenched positions that make peace harder, not easier. If we truly care about Palestinian lives, let us ask what Ireland can actually do. Ireland should seek to encourage the establishment of a process that enables both sides to reach a shared understanding of what the actual problem is. We can engage in diplomacy that encourages co-operation and mutual accountability. That work, of course, is harder, slower and often thankless, but it is real. We can support real education and deradicalisation. This Bill may feel good, but does it do good? It will not bring two states closer, but it might drive Jewish communities here in Ireland further into fear and isolation. Let me be very clear; criticism of Israel is not antisemitism, but when criticism becomes a campaign, when it becomes law, and no other state is treated the same, we have to pause, and we have to question.</p>
+          <p eId="para_25"> This Bill is not about policy; it is about posture, and I say Ireland can do better. We can be bold without being biased, principled without being performative and, most of all, we can be consistent. Therefore, I ask this committee, for what do we want to be remembered - for doing what felt good or for taking decisions that led to good outcomes; for making a point or making a difference? Let us not trade our integrity for a headline. Let us not confuse moral theatre for moral action. Let us be remembered as a country that stood not just with gestures but with grit that shows diplomacy over drama and substance over symbolism and spectacle. Let us choose peace over popularity.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:10:00+01:00"/></from>
+          <p eId="para_26">I thank Mr. Cohen. I will now turn to Mr. Alan Shatter.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:10:00+01:00"/></from>
+          <p eId="para_27">I appreciate the opportunity to briefly address members of this committee of which I was a founding member and past Chairman. I am here today representing the Ireland Israel Alliance together with Ms Natasha Hausdorff, a distinguished English barrister and expert on European and international law who is a member of UK Lawyers for Israel.</p>
+          <p eId="para_28"> In my limited time slot, I will focus on the substantive provisions and politics of the draft prohibition on the importation of goods Bill. A more detailed analysis of the Bill is contained in the alliance's 8 July joint written submission with UK lawyers and my own submission of the same date. The Bill is essentially a sectarian measure based on falsehoods, riddled with obscurity and anomalies, and detached from historical, religious and present-day reality. It abandons all lessons learned in our own peace process. While most of the discussion so far has focused on the relevance of EU and international law to the Bill and its possible extension to services, the actual specifics of it and its enforceability have received little attention. It is that on which I focus, and Ms Hausdorff will address the former matters.</p>
+          <p eId="para_29"> The Bill's central proposition is to prohibit "the importation of goods originating in an Israeli settlement", wrongly depicted by the Bill's preamble as an international law obligation. The goods targeted are deemed by the preamble to be maintaining what it obscurely and wrongly describes as "the illegal situation created by Israel in the occupied Palestinian territory". Even if the "illegal situation" depiction is accepted as accurate, as it is now known that the total value of commercial goods so imported in the five-year period from 2020 to 2024 came to €685,000, no credibility attaches to the proposition that such imports maintain anything. Rather than having any substantive impact, the Bill is now justified and lauded by some as simply symbolic. Israeli settlements referenced in the Bill from which imported goods are to be prohibited are an intended legal euphemism for locations in which Jews are present, reside or work in the West Bank, Gaza and East Jerusalem.</p>
+          <p eId="para_30">The symbolism is to publicise the Irish Government's disapproval of any Jews doing so, to demonise Israel and to portray Ireland as advocating that locations be <i>judenrein</i>, a policy which reflects that attempted in Europe by Nazi Germany in the last century. It is a denial of 3,000 years of history, Jewish, Christian and Muslim theology, credible attempts to permanently end Israeli-Palestinian conflict and present-day reality on the ground.</p>
+          <p eId="para_31"> In essence, the Bill is the first initiative of any European government to enact legislation to intentionally boycott and discriminate against Jews since the defeat of Nazi Germany in 1945. This antisemitic symbolism is reinforced by the absence from the Bill of any prohibition on the importation of goods originating from any other occupied territory. The Bill, if enacted, will, however, impact on not only its targeted Jewish-originated goods but also those originated by Israel's Arab citizens, by those of all denominations, by Palestinians and jointly by those of different backgrounds working together. The Bill is intent on maintaining division, not contributing to conflict resolution, peace and reconciliation. Its malign application to industrial zones such as the Barkan Industrial Park clearly illustrates this. It is of no relevance to the tragic ongoing Israel-Gaza war, despite some saying it is.</p>
+          <p eId="para_32"> The Bill is riddled with difficulties and anomalies. Its reference to the Minister for foreign affairs designating by reference to postal codes the areas of its application means no member of this committee truly knows exactly from where originated goods are to be prohibited. The absence of any definition of "originated" creates a myriad of difficulties, as illustrated in my written submission. The enforcement role of our customs service and the Bills connectivity to the Customs Act 2015 raises significant questions I also addressed in my submission.</p>
+          <p eId="para_33"> Apart from the expenditure involved, the potential chaos and bureaucracy that enforcing the Bill could create at airports and ports in its application to tourists, residents returning to Ireland and business visitors need to be explored, as does its violation of agreed Brexit amelioration measures and the maintenance of the free movement of goods between Northern Ireland and the Republic. In this context, the Bill starkly resembles the unenforced "Father Ted"-like provisions applicable to the importation of condoms contained in the Health (Family Planning) Act 1979. It may ultimately prove to be nothing more than fantasy politics and political theatre that does profound damage to the reputation of our State and further undermines the credibility of anything said or proposed by the Government to effect conflict resolution.</p>
+          <p eId="para_34"> The committee should clearly ascertain what, if anything, is intended to be done to enforce the Bill, the cost of mobilising our customs services to do so, the practicalities and the legality. It should totally oppose the Bill's enactment. Hopefully, we can return to these issues.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:20:00+01:00"/></from>
+          <p eId="para_35">I thank Mr. Shatter. I now invite Ms Hausdorff, who is addressing the committee remotely, to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:20:00+01:00"/></from>
+          <p eId="para_36">I thank the committee for the invitation to address it on the many misconceptions that have pervaded discussion of this Bill. In my opening statement, I will stress that nothing of substance has changed since the previous Bill was frozen after the previous Attorney General correctly advised that it contravened EU law. Last year's International Court of Justice, ICJ, advisory opinion, which, despite the language used in this committee, is not a ruling, decision or judgment, is a non-binding opinion that did not create obligations or comprise Israel's legal position in any way, as Judge Nolte observed. The advice from the court is only as good as the information upon which it is based, and in this case, the court relied on false and partial information and misapplied international law, as Vice-President Sebutinde powerfully identified. Three other judges also dissented on the legality of Israel's presence in East Jerusalem, Judea and Samaria.</p>
+          <p eId="para_37"> Second, under EU law, the position remains unaltered. The EU maintains exclusive competence over the common commercial policy, including trade with third countries under Article 3.1(e) and Article 27 of the Treaty on the Functioning of the European Union, TFEU. National measures in this field are prohibited unless specifically authorised by the Union. Restrictions on trade between EU states and between Northern Ireland and the Republic of Ireland are also prohibited. The arguments for the public policy derogation made before this committee distort the extremely strict interpretation of the provisions in the case law. The derogation is not available here. The distortions also apply to the central purpose of the Bill, which others have argued draws upon the ICJ's opinion. The opinion referenced dealings by states with Israel - the state - and Israel's presence in East Jerusalem, Judea and Samaria. Its content bears no relation to a ban on the importation of goods produced by private businesses, which is advocated for by proponents of this Bill.</p>
+          <p eId="para_38"> Third, the words of the US foreign relations committee chairman, Senator Jim Risch, that this Bill is blatantly antisemitic have understandably been a cause of concern. The position echoes the fact that this version of the Bill now abandons all pretence of going after so-called occupied territories and targets Israel explicitly. The long-standing US anti-boycott legislation necessarily means this Bill would create grave risks for US businesses in Ireland, with civil penalties of up to $200,000 per occurrence and possible criminal penalties of up to 20 years in jail and multimillion dollar fines. It is to be expected that US companies will leave, a further gravely damaging effect on Ireland and her economy, as well as her international reputation. I rely on the detailed written submissions to this committee by the Ireland Israel Alliance, IIA, and UK Lawyers for Israel, UKLFI, of 24 May 2019 and 8 July 2025, in which we have addressed the legal position. I will be happy to take the committee's questions.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:20:00+01:00"/></from>
+          <p eId="para_39">I thank Ms Hausdorff. Will Deputy Ken O'Flynn confirm he is online and in the Leinster House complex? He has four minutes, including answers.</p>
+        </speech>
+        <speech by="#KenOFlynn" eId="spk_8">
+          <from>Deputy Ken O'Flynn<recordedTime time="2025-07-15T15:20:00+01:00"/></from>
+          <p eId="para_40">I am in my office in Agriculture House. I do not have a webcam; I apologise.</p>
+          <p eId="para_41"> I thank the witnesses for coming in and giving their statements. I want to touch on the topic of Ireland's credibility abroad. Ms Hausdorff mentioned US civil law and that US companies will leave. I would like to hear more about that and where she has found this information. What US companies have committed to leaving Ireland or have said they are ready to dig up and leave?</p>
+          <p eId="para_42"> I also notice that the former Minister, Mr. Shatter, made a comment about credibility abroad. I would like to hear about that. Rather than taking up the four minutes myself, I would prefer to hear from the witnesses on those items. Will they list the companies that have committed to leaving Ireland if this law comes through? How has our credibility abroad been damaged and how could it be damaged further by this? What US laws would we find ourselves in breach of and what US fines might come into effect?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:20:00+01:00"/></from>
+          <p eId="para_43">These measures in the Bill would necessarily create a Government-required partial boycott of Israel. That would force American companies based in Ireland to violate federal anti-boycott laws. The background to this is that since 1997, with broad bipartisan support, federal law has banned American companies from "comply[ing] with, further[ing], or support[ing] any boycott fostered or imposed by a foreign country against a country which ... is not itself the object of any form of boycott ...". That is from paragraph 484(1) of Title 50 of the United States Code. Those laws apply even to US companies doing business abroad. Of course, there are many large companies doing business in Ireland for tax reasons.</p>
+          <p eId="para_44">As advised, I shall not name any names, but the issue here is that is that even if one of these companies were to represent to Irish authorities that it was complying with this proposed legislation, it would necessarily fall foul of those boycott provisions and the penalties associated with them, which I have already outlined. That is the severe danger that Ireland is courting in my respectful submission. As far as Ireland's reputation more generally is concerned, the economic consequences of this aside, Ireland is at pains, and positively so, to present itself as a positive place for international companies and American companies to do business. This is not the image that I would suggest that Ireland ought to be putting out to the world. The grave breach of EU law, which I hope we will have the opportunity to analyse in due course because I fundamentally disagree with some of the evidence that has been previously given to this committee in the pre-legislative scrutiny stage, does not paint Ireland well in the international arena if it is unilaterally exercising national policy in flagrant violation of the common commercial policy exclusivity that the European Union enjoys. For those two reasons, and many others that I am sure we will discuss, this will undoubtedly have a damaging effect on Ireland's reputation internationally. </p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_45">I wish to add two brief points that are relevant because they arise directly out of the committee's meetings. I followed the committee's meetings involving departmental officials. Like Ms Hausdorff, I am familiar with the United States law. Both federal and state law create huge difficulties for American companies operating in a state that boycotts a single state, such as Israel. I was astonished when I followed the committee's meetings involving departmental officials by two things Mr. Keown from the Department said in response to appropriate questions by a member of the committee. He said the Department had not yet produced its regulatory impact assessment and that it was only now having regard to and looking at the relevance of United States law to the draft Bill. I would have thought that was an essential prerequisite before it was published and before this committee concludes its work. It is absolutely crucial that the regulatory impact assessment be seen by the committee and that the committee be fully briefed on the negative impacts this could have, not just on American companies located here but in their expansion and on new companies coming here. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_46">As a former long-standing Member, Mr. Shatter will appreciate that I have to keep to time. I am not going to let people go over time any more. We have to stick to the four minutes or we will not get through everybody. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_12">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_47">Ms Hausdorff focused to an extent on US law and the idea that this is a boycott of Israel. However, the Taoiseach has clarified that this not a boycott of Israel and, indeed, that the Bill does not affect Israeli goods. It only affects the settlements. Does Ms Hausdorff accept that the settlements built in the West Bank are illegal settlements and illegally occupied territory or does she believe they are just part of Israel? These boycott laws relate to Israeli goods. I would also like clarity on that key question from the other witnesses. Do they accept, as the ICJ, the EU, the UN and others do, that these settlements in the West Bank are illegal settlements and that they are on territory that is illegally occupied?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_48">It is important that we start by stating clearly that whatever legal position the committee members adhere to in terms of the application of international law, these are clearly territories administered by Israel. Therefore, the boycott necessarily is targeting the goods produced and regulated under the State of Israel. That is clear as to how the EU has treated the export of goods from the disputed territories and from Israel and the distinctions it has drawn between them.</p>
+          <p eId="para_49"> As to the application of international law, it is by no means accepted, from my part, that the non-application of <i>uti possidetis juris</i> here ought to be endorsed. In fact, this application of the term "illegal settlements" is more a political categorisation than a legal one. Yes, the ICJ advisory opinion has adopted it, and in that respect we need to be clear about the paragraph of the advisory opinion that has been oft-quoted in the committee sessions, paragraph 278, upon which this Bill has now been justified. This is what I referred to in my opening remarks because it does not change the position in any way. It is not a legally binding opinion. It has to be considered that where the court has been so resoundingly critical------</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_14">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_50">I wish to get the others to come back on that. It was a direct question.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_51">To answer the direct question, no, I do not accept-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_52">I accept what Ms Hausdorff is saying but we have a time limit. </p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_53">I wish to deal directly with a simple and straightforward aspect of this that the committee does not seem to have considered in any detail to date. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_54">Will Mr. Shatter answer the question? </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_19">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_55">It is a yes-no question.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_56">In the United States, Jerusalem is regarded as the capital of Israel. That is the entirety of Jerusalem, including east and west. To put it the most simple way I can, if someone visiting Israel or the Holy Land, be they of whatever religion, whether they are from the Republic of Ireland or they are an executive from an American company, returns to Ireland through Dublin Airport having purchased goods in Jerusalem, under this Bill those goods can be confiscated. If they bring them into the State, it is a criminal offence. As far as American law will be concerned, this will be requiring executives or tourists into Ireland to comply with a boycott that the United States does not accept. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_21">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_57">I had a very specific question. Mr. Shatter might answer just "Yes" or "No" because my time is limited. Does he recognise that the Israeli settlements in the West Bank are illegal? Does he accept that this is illegally occupied land? </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_58">Can we have-----</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_59">I do not accept it is legally occupied land because of the history in 1967 when the land in the West Bank was-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_24">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_60">Mr. Shatter does not accept that. What about Mr. Cohen? </p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_61">-----occupied by Jordan. Israel in a defensive war acquired that land and, effectively, that is where matters have stood because of the inability of the Palestinians to effect a two-state solution. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_62">I thank Mr. Shatter. Will Mr. Cohen answer that question? </p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Maurice Cohen<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_63">With respect, I cannot answer that in a simple "Yes" or "No". That is a binary answer and I do not believe this committee would benefit from that kind of oversimplification. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_64">If Mr. Cohen cannot answer it, I will move on. Can Ms Hausdorff answer the question? </p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_65">Yes, I can. Under the proper application of international law, no, these are not illegal settlements because Israel recovered that territory in 1967. It is important to note-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_66">No, I am going to take that answer. For people who may be viewing the committee outside of the House, they might get the impression that I am curtailing answers. I am not. We are restricted on time. Every member wants to contribute. Unfortunately, every member has just four minutes. </p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_31">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_67">Mr. Shatter made some concerning statements in his opening remarks, including that "the Bill is the first initiative of any European government to enact legislation to intentionally boycott and discriminate against Jews". There were other comments in that vein. What solid evidence can he point to that demonstrates that the Government's intent is consciously antisemitic rather an expression of solidarity with Palestinians in their time of oppression? </p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_68">Simply, the provisions of the Bill. The definitions section of the Bill states that Israeli settlements means "a city, village or industrial zone located in the occupied Palestinian territory including East Jerusalem, the postal code of which is prescribed by order made ...". The "Israeli settlement" reference is just a legal euphemism for locations in East Jerusalem, the West Bank and, oddly, Gaza, where there has been no Jewish person living since 2005, but locations in East Jerusalem or the West Bank where Jewish people live. It is as straightforward as that. However, the oddity of the Bill, and I always think Jerusalem is a simple way to illustrate this, is that if a tourist visiting the holy city of Jerusalem-----</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_33">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_69">I am going to interrupt if Mr. Shatter does not mind. I am just conscious of the time limit. Is he saying the Government is antisemitic in this case?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_70">No. I am saying "Israeli settlement" is synonymous with locations where Jewish people reside. Ergo, this Bill is prohibiting the purchase of goods from those locations. That in itself is antisemitic. </p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_35">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-15T15:30:00+01:00"/></from>
+          <p eId="para_71">Why does Mr. Shatter believe that the Government is antisemitic? </p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_72">Because it has produced a Bill which simply targets Jews living in "occupied territory." We could argue whether it is lawfully or not lawfully occupied. No such legislation has been produced regarding Northern Cyprus where the Turks live, in Tibet which is------</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_37">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_73">So Mr. Shatter is saying because the Government produced the Bill, it is antisemitic. In Mr. Shatter's opinion, has the Government any other motives to be antisemitic?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_74">I am saying whether it is intentionally or inadvertently producing legislation which is antisemitic, it is the first boycott Jews Bill published by any European government since 1945. It replicates the type of legislation initiated in 1930s Germany.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_39">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_75">If Mr. Shatter was in government, which is not entirely hypothetical as he has been a Minister before and recently a Dáil election candidate, how would he deter the Israeli Government from continuing its genocide and starvation of Palestinian families, including their children?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_76">I would deal with it entirely differently. First, the Deputy's depiction of what is happening is inaccurate. There is currently a war taking place between what was the government in Gaza and Israel with the government of Gaza having invaded Israel and committed terrible atrocities. There is only one reason this conflict continues and it is because to this day, Hamas continues to retain hostages it abducted 646 days ago, 20 of whom are still alive and are not allowed access to the Red Cross and 30 who are apparently deceased and their remains will not be released.</p>
+          <p eId="para_77"> If I was in government, I would do three things. First, I would call in the Iranian ambassador and demand he go back to Tehran and ask the Iranian Government to direct Hamas, which is a proxy of the Iranian Government, to end the conflict, release the hostages and do exactly what the IRA-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_78">Mr. Shatter will have to be quick on points two and three.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_79">-----which was decommission their weapons and announce the war is over, for the sake of the Palestinian people and the Israeli people, to give peace a real chance and a permanent solution a real chance.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_80">I thank Mr. Shatter. </p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_44">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_81">I thank the guests for being here. I observe two things at the outset, to respond to Mr. Cohen's statements. It is important to put on the record I abhor antisemitism and I regret very much if there are people from the Jewish community who have felt any increase to that in recent years. It is wrong and it should absolutely be the case the Jewish community feels welcome and a part of Irish society. It is not right for anyone to put responsibility for the actions of the Israeli Government on individual Jewish people in Israel. It is vitally important to put that on the record.</p>
+          <p eId="para_82"> I agree with the point that has been made by several speakers, and what Mr. Shatter said is incorrect that there has been no legislation which has dealt with occupied territories in other locations. The previous legislation, which was far superior legislation and was authored by Senator Frances Black, would conceivably have captured issues in occupied territories in any place across the world. There is much to recommend such an approach. This would have included Moroccan-occupied Western Sahara, Russian-occupied Crimea and Turkish-occupied Cyprus. It is important to put that on the record.</p>
+          <p eId="para_83"> My first question is for Mr. Shatter and it is one in the abstract. Does he accept Ireland is bound by customary international law?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_84">Every country is bound by customary international law-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_46">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_85">Thank you.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_86">-----but unfortunately the reality is - I am someone who studied international law - in recent years, international law has been politicised, weaponised and distorted within political debate to no one's benefit or advantage, certainly not to the advantage of Palestinians.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_48">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_87">Thank you. Mr. Shatter has made the point regarding the balance between effect and symbolism and so on and he has also made the point on the scale of goods and so on. Is it fair to say-----</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_88">Sorry, Deputy. I missed the last three words.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_50">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_89">The interplay of symbolism and effect of political actions. Is it not fair to say Ireland is a small country and many actions undertaken by an Irish Government in the international context could be categorised as limited in impact?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_90">There is much more we could do than symbolism. We have learned, as the Deputy will be familiar, an enormous amount arising from our peace process and the 30 years of violence on this island. There is so much of a positive nature we could bring to seeking to play a real role, not just a rhetorical role, in trying to bring Israelis and Palestinians together, to teach people how to bring about a peace process and the baby steps necessary. Instead, we choose rhetoric and demonising over and above productive, substantive engagement and that is deeply regrettable.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_52">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_91">This cannot be the only element of Ireland's approach to the Middle East, Israel and the occupied territories. Clearly, a great deal more is needed. As an international conference happens this week and next week, it is important the Irish Government plays a full role in it, however, as legislators we must also look to what we can do ourselves domestically.</p>
+          <p eId="para_92"> A similar charge relating to impact could have been made in relation to the sanctions taken against the South African Government in the 1980s. Mr. Shatter was a Deputy at the time and I know he rejects the comparison and I am not asking him to evaluate it. For any political situation, however, surely limited trade alone is not a reason to oppose sanctions or legislation to ensure the application of international law.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_93">Except the problem is what is being done is completely irrelevant in the practical terms of resolving this dreadful, awful conflict. There is much more of a positive and beneficial nature which we could genuinely do with a different form of engagement. The current engagement generates newspaper headlines of no benefit to Palestinians. It has not affected the release of a single hostage, will not stop the violence and will not end the conflict.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_94">I call Deputy Brennan next.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_95">May I just add-----</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_56">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_96">I thank the Chair and congratulate him on the balance he is bringing to this debate. We have listened to the history, the financial aspects and complex legal argument but we also have to listen to the humanitarian side of it.</p>
+          <p eId="para_97"> I did not expect to go down this route but I will speak on something I did not expect to speak about. I am not sure what Mr. Shatter did over the weekend but I got on a plane and went to Cairo to meet the people on the coalface. I went on my own; there was no media circus. I went on a personal capacity and paid my own way. I met the NGOs who are on the coalface. These are hardened NGOs and have been all over the world and have seen catastrophic scenes but what is going on in Gaza is simply on a different scale.</p>
+          <p eId="para_98"> I went and sat on a bed with a young man who was in the prime of his life and he has two months to live because of what is happening in Gaza. I played football with teenage kids who are orphans because of what is happening in Gaza. I held the hand of a two-year-old child who had bullet wounds because of what is happening in Gaza.</p>
+          <p eId="para_99"> When Mr. Shatter says to me and this committee this is a token gesture and fantasy politics - performance politics - I totally reject that. How dare he come in here and make such statements. "A Father Ted Bill." You speak to the people on the ground who matter and listen to what they have got to say about this Bill. They knew everything about this Bill. The NGOs have seen what is going on. The humanity coming from Mr. Shatter, with all due respect, is just simply lax. Let me speak; it is my time to speak. </p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_100">I thought you were-----</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_58">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_101">The most important thing we should do is listen to the people who matter most which are the people on the ground. They are asking us to continue - and I use the word continue - for Ireland and its Government to continue to take the lead. That is a huge statement in their fight for peace and justice, for the people of Palestine and to find a long-term solution. Can Mr. Shatter please explain to me why he thinks this is fantasy politics?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:40:00+01:00"/></from>
+          <p eId="para_102">First, I welcome the Deputy making that visit. I have visited Israel and the West Bank so many times I cannot recall the number of occasions I have been there and the different people I engaged with. I visited Gaza in the past immediately after a previous conflict and engaged with people there.</p>
+          <p eId="para_103">I will address why I am saying this is fantasy politics. This current conflict is horrible and should never have happened. On 6 October 2023, there was an existing ceasefire. The 1,200 people slaughtered the following day were still living. All the people who have lost their lives in Gaza were still living. Hamas chose to launch a war in circumstances where there was no police-----</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_60">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_104">Will Mr. Shatter please answer the question?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_105">I am giving the answer.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_62">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_106">I know the facts. I have been there.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_107">Hamas chose to launch a war-----</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_64">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_108">I have been on the ground. I know the facts. I am asking Mr. Shatter to answer the question.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_109">Hamas chose-----</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_66">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_110">Why is Mr. Shatter calling this fantasy politics-----</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_111">Because it is-----</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_68">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_112">-----when we are dealing with people losing their lives while we are sitting here?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_113">You are not dealing with the lives of people. What you are doing is trying to ban the importation of a small amount of olives and avocados from the West Bank and East Jerusalem, the total value of which over five years came to €685,000. It is a thing of complete irrelevance in the context of conflict resolution.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_70">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_114">The point I am making, which Mr. Shatter is not listening to, is that it is not irrelevant to the people on the ground.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_115">It is irrelevant because, if they think this is meaningful and is going to contribute to peace and a resolution of this horrible conflict, they are being misled by Irish politicians. I am as committed as the Deputy to seeing permanent peace between Israelis and Palestinians, no further wars and people getting on in security and harmony in their lives.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_72">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_116">I will agree to disagree because I think actions speak far louder than words.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_117">I do not think a single visit to Egypt is the be-all and end-all of resolving the conflict.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_74">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_118">I did not say that. Mr. Shatter said that.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_119">This Bill certainly will not resolve the conflict.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_120">Deputy and witness, let us just take a little moment. I remind you of the long-standing parliamentary tradition of respecting witnesses and members. I absolutely appreciate the fraught nature of the conversation. You all have my great respect for the way you have behaved yourselves up until now.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_77">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_121">In the first instance, I would like to ask all the witnesses if they accept that Israeli settlements in Palestinian territory are contrary to international law. It is a simple one-word answer, yes or no.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Maurice Cohen<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_122">I am going to give exactly the same answer I gave the Deputy beforehand. I will not be forced into single-word answers.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_123">Would Rabbi Wieder like to say anything? You have not said anything.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Rabbi Yoni Wieder<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_124">We feel the exact same pain of every innocent life lost in Gaza. We want to see an end to this war and we want to see Israelis and Palestinians living together in peace. However, this Bill, together with so much of-----</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_81">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_125">I am sorry. That is not the question I asked.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_126">Will the witnesses give a yes or no answer to Deputy Ward's question?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_127">I do not have a yes-no answer because there is not one.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_84">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_128">That is okay.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_129">However, if the Deputy is suggesting that no Jewish person should live or reside in East Jerusalem, the Deputy knows nothing about history.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_86">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_130">I am sorry but Mr. Shatter is consistently twisting what is being said. This is a very simple question.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_131">It is but it is a question that gets us nowhere.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_88">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_132">It is either contrary to international law to occupy Palestinian territory by force and settle Israeli people there or it is not. Can Mr. Shatter answer that question, yes or no?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_133">I will answer if the Deputy will allow me to do so in more than one word. He may not recall it, but there was a war in 1967 when Jordan, Egypt and other states were engaged in trying to obliterate Israel. Jordan occupied the West Bank and East Jerusalem, which it had occupied since 1948. Israel acquired those territories. No Palestinian----</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_90">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_134">This does not answer the question. What this is doing is saying-----</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_135">No Palestinian state existed at that time.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_92">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_136">This is whataboutery.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_137">No, it is not whataboutery. It is just factual history.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_94">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_138">It is either illegal to occupy territory-----</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_139">It is actual factual history, which unfortunately is ignored in this House.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_140">I am going to interject here. The Deputy has asked for-----</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_97">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_141">Could I hear from Ms. Hausdorff?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_142">The simple response is that one cannot occupy what is one's own sovereign territory. The example of Russia's occupation of Crimea has already been referenced in the committee sessions on this Bill. That is a direct parallel. If Ukraine were to recover Crimea from Russia in the current war in the same way that Israel recovered East Jerusalem and Judea and Samaria, the West Bank, from Jordan - as Mr. Shatter has just explained, Jordan occupied that territory between 1948 and 1967 - then no one-----</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_99">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_143">Is this not also whataboutery? Can Ms Hausdorff not answer the question as to whether Israel's enforced occupation of Palestinian territory is contrary to international law?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_144">The question is predicated on the misconception that this was not Israeli sovereign territory in the first instance, which is contrary to the application of-----</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_101">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_145">We can agree to disagree on that.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_146">I will let the Deputy continue.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_103">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_147">May I ask Ms Hausdorff a separate question?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_148">I gave my answer and the reason for it.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_105">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_149">I know Ms Hausdorff has been cut off a few times. I do not mean to do that but all witnesses here have constantly conflated Jews and Israelis. I presume Ms Hausdorff would accept that they are not the same thing. There are Jews who are not Israelis and there are Israelis who are not Jews.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_150">This is a very important point. Of course, this Bill will target Israeli Arabs, Israeli Jews and Palestinians who operate in these businesses. It is important to stress that this Bill concerns goods that are produced by businesses and not settlements, as has been repeatedly misstated by members of the committee.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_107">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_151">They are all settlers if they are in settlements, are they not?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_152">Of course not.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_109">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_153">If they are producing goods in settlements, then they are targeted and, in my view, they are appropriately targeted because they are acting contrary to international law.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_154">Let me correct that also. Where these goods are produced and sold by private businesses in the vicinity of settlements, not by settlements, which is the reality of the situation, in any view these businesses are not illegal. I am afraid that is again incorrect.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_111">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_155">Does Ms Hausdorff accept that there has been conflation and that statements from other persons that this Bill is antisemitic conflates the idea that it is targetting Jews? Jews may be affected by it but, in fact, it targets settlements and people who are generating business illegally within illegally held land.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_156">Not at all, because this is not illegally held territory. The only reason that label is being applied is an objection to the existence of Jews living in this territory. The phrase "<i>Judenrein</i>", which Mr. Shatter has used, is entirely appropriate in that context. The motivation behind this Bill has to be understood. The politics concerning it cannot fundamentally override the applicable law.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_113">
+          <from>Deputy Barry Ward<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_157">Ms Hausdorff believes the motivation behind the Bill is antisemitism, however. That is totally incorrect.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_158">The Deputy's time is up. I am the next speaker. I am not going to take a huge amount of time. Does Mr. Cohen think the Irish Government's motivation in introducing this Bill is antisemitic?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Maurice Cohen<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_159">I think that may be an outcome of the Bill. I am not necessarily certain it is the motivation behind it.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_160">I am conscious that Ms Hausdorff is trying to get my attention. I am going to give her 90 seconds if there were some points she wanted to make but could not.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_161">I am grateful. In the context of assessing the motivations of the committee and the proponents of the Bill, it is important to recognise what the impact would be. One of the Deputies spoke very powerfully about Palestinian suffering. As far as I can see, none of the witnesses have sought to negate that. However, it is important that the cause of that suffering is correctly identified. It is not the result of Israel's policy here. It is squarely on the shoulders of Hamas and other Palestinian terrorist groups that continue to abuse, subjugate and terrorise their own civilians. I differ with Deputy Shatter on what the Bill does because this is not simply symbolic-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_162">It is Mr. Shatter.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_163">Forgive me; it is Mr. Shatter. This is not simply symbolic. It gives succour to Hamas and worsens the situation the Deputy outlined earlier. Why would those Deputies and Senators who truly care about Palestinians or who at least profess to do so seek to extend their suffering and prolong this appalling situation by providing this sort of support to internationally proscribed terrorist organisations? It is not enough that Hamas celebrated the International Court of Justice's advisory opinion and other measures including those related to the South Africa's case at the ICJ. That speaks volumes as to the impact this sort of legislation will have, which is to worsen the situation both for Palestinians and Israelis. If that is the impact, then the only motivation for this can be antisemitic. It is not, as those proponents of the Bill profess it to be, to support Palestinians because it will only do the exact opposite.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T15:50:00+01:00"/></from>
+          <p eId="para_164">I thank Ms Hausdorff. I will just make a few points because they should be on the record. The first is that the events of 7 October were condemned by everybody and are continuously condemned. The Taoiseach condemned them in the House again today. The Irish Government has continuously reiterated its objectives, which include the return of hostages, the cessation of violence and opening up the flow of humanitarian aid. They are separate to the Bill.</p>
+          <p eId="para_165"> There have been some comments made about people's motivations and other people can answer for themselves but, as Chairman, I will say that it is the descent of the Israeli Government and the Israel Defense Forces into the darkest of places that motivates, as far as I can see, all members of this committee from a humanitarian perspective and no other perspective, and very definitely not an antisemitic perspective.</p>
+          <p eId="para_166">We find that hugely hurtful, offensive and slanderous and we reject it in its entirety. I do not think my colleagues here would thank me if I did not make that point.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_121">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_167">I begin on the Chair's latter point. He expressed the view of the entire committee. In fact, with respect to our guests, who are welcome and important contributors to the debate, by making remarks that it could be antisemitic, they almost fuel that and create such a scenario. It is regrettable. It is far from antisemitic. I go back to the question, and I ask this specifically of Mr. Shatter or whoever wishes to answer. It is about what we, the ICJ in 2004 and the international court contend to be illegal settlements and the dispersed nature of those settlements, which are expanding recently in the West Bank. One witness said they are legal or quasi-legal. We contend the contrary but the expansion of those settlements and their dispersed nature surely prevent a two-state solution. I would like Mr. Shatter to answer this because he referenced the two-state solution. If you are already putting pockets of settlements through the West Bank and Jerusalem, are you not by definition ending the prospect of a two-state solution?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_168">If the Senator has a second question he should ask it now.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_123">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_169">I would like that one answered first, if the Chair does not mind.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_124">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_170">Sure, if the witness can allow a little time.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_171">The reason there has been no two-state solution is because it has proved impossible for the Israelis and the Palestinians to agree a two-state solution. There were two huge moments in this. One was under President Clinton and the other under George Bush. One was at the end of Clinton Administration and the other was towards the end of the Bush Administration when a two-state solution was practically negotiated. On the first occasion Yasser Arafat, who I met many times, walked away. On the second occasion, Mahmoud Abbas walked away. I agree that ultimately the only solution is that Palestinians and Israelis live side by side, be it a two-state solution or some other legal arrangement that they agree-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_126">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_172">Surely there could not be settlements right through it.</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_173">The settlements being constructed are in Area C, as designated by the Oslo Accords in 1993. Yes, if there is too much building in that area it will create a problem. The only reason I mentioned each of those events under Clinton and Bush is that on both occasions, in return for Israel retaining territory in which the settlements were constructed the Palestinians were offered alternative adjacent land to facilitate the creation of a Palestinian state. They rejected that.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_128">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_174">I turn to my second question. Would Mr. Shatter not accept the very fact that the EU is today constructing its ten options is an implicit and widening acceptance at EU level that something has to be done here? There is widening acceptance that there has to be an interference and a moral stance, and even a stance that puts commercial situations way behind morality and the lives of human beings.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_175">Sure. I have one sentence on the previous issue, and I will rapidly respond to that. Hamas, Islamic Jihad and Iran all reject the two-state solution, and their only objective is Israel's total destruction. The Palestinians are incapable of agreeing a two-state solution, which is the primary reason we have continuing conflict. On what is happening in Europe today, there are apparently ten options of possible action different European governments may take. I am not, and neither is the Senator, privy to what discussions are going on behind the scenes so I cannot act as the prophet. I do not know what if any-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_130">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_176">There is an implicit understanding.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_177">-----decisions will be made. I do know within European Union countries there has been huge conflict-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_132">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_178">The EU is now saying we need to do something.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_179">There is a conflict of perspective.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_180">We must move on to Deputy Seán Ó Fearghail.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_181">I think Ms Hausdorff has been trying to get in.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_182">I will give her 30 seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_183">I will assist the Senator with the realities on the ground, which are that the Palestinians do have self-governance. They have self-determination in Areas A and B of the West Bank under the Palestinian Authority, and in Gaza under Hamas since Israel's withdrawal in 2005. If we note the consequences of that withdrawal, it has been the creation of a terror statelet and the necessary disastrous consequences in the past 21 months. I am sure that is not what members of the committee would wish on other areas, which are currently under Israeli administration in accordance with the international agreements that Mr. Shatter referenced, namely, the Oslo Accords. It is also significant that the key reason for the lack of a more prosperous Palestinian self-governance is the lack of a feasible working economy, which is something this Bill would do further damage to, as opposed to building the prospects of peaceful co-operation in the future. Again, these are the complete opposite consequences of what is plainly intended by the good intentions of those in this room.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_138">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_184">It is rather hard to know where to start on something that is so deeply felt and so emotional. Ms Hausdorff talked about people who truly care, and Rabbi Wieder correctly referenced the Jewish people's care for the people who are being slaughtered in this war. In being here and enacting this legislation, we are responding to an Irish people who truly care, who have been concerned about the continuation of the creation of settlements throughout the West Bank, people who compare those settlements with the plantations that happened centuries ago. If you are going to talk about history, why stop at 1948 or 1967 or whenever else? Let us go right back as far as we like, but there is that comparison in the hearts of the Irish people. As the Chair has said, we are to a man and woman, here and I am sure in Israel, Palestine and across the world - I was in France at the weekend and all that people could talk about was the horror of what is happening, which was described so accurately to us by Deputy Brian Brennan. It is the horror of the actions of Hamas and the horror being carried out under the instructions of Netanyahu. That is what revolts people. That is what goes beyond what we could consider normal in any set of circumstances. Okay, maybe this legislation is reactive. Maybe it is symbolic but maybe this small country of ours can only offer symbolism at this stage because we have a way to go yet before our practical peacemaking skills can come into play.</p>
+          <p eId="para_185"> I will ask one question of all witnesses. There is food relief and medical aid rotting on the border of this land waiting to gain access. What do they say to the international agencies who have so far failed in their requirement to deliver that aid, and what do they say to the Netanyahu regime about that aid? Should it not be forthwith made available to the women, children and elderly men of Palestine so that they at least may see some future?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Maurice Cohen<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_186">I think we are too far from the situation to know exactly what is happening with aid. There are various different narratives with the aid. It has got to be stopped from getting into the hands of Hamas because then it does not actually reach the Palestinians who need it or if it does it is at exorbitant prices, which puts it out of their reach. From my understanding, and I am sure different people have different understandings, the aid distribution that the Israeli Government has put in place is delivering enough food on a continual basis where they can, once they are not running afoul of Hamas.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_187">I call Deputy Cathy Bennett.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Rabbi Yoni Wieder<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_188">Can I respond to what the-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_189">I will give you an opportunity at the end if that is okay. Thank you.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_143">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:00:00+01:00"/></from>
+          <p eId="para_190">The witnesses have claimed this Bill would harm Palestinians if it goes through.</p>
+          <p eId="para_191">That is not what the Palestinians say. We have letters of support from 60 Palestinian NGOs, human rights organisations and trade unions. Palestinian farmers told <i>The Irish Times</i> last week that the Bill is a source of hope. A Palestinian advocate will appear before this committee shortly strongly supporting this measure. The Palestinian representative to the UN formally called all states to end trade with Israel's illegal settlements. Do the witnesses think that Palestinians are not able to determine what is in their own interests and that they know better? That is to any of the witnesses.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_192">I will come to Rabbi Wieder. He can answer the previous question as well in this question, if he wishes.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Rabbi Yoni Wieder<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_193">I want to respond to the previous point that was made. If, as Deputy Ó Fearghaíl says, all Ireland can do at this stage is a matter of symbolism, and that is important, I ask why is the symbolism always focused on blaming Israel? Why do we hardly ever see blame put on Hamas? Do they not need to lay down their arms and not keep on saying they want to eradicate Israel and to repeat 7 October? Why is the blame never put on Iran? Why do we very rarely hear calls for the release of the hostages? This Bill is just another example of the symbolism that is always focused on demonising Israel and laying all the blame squarely on Israel's shoulders and not recognising that there is Iran, Hamas and everyone else involved in this as well.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_194">Can I answer both of these together because they are linked?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_147">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_195">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_196">The key is the misinformation that Hamas and its supporters are putting out. Some 1,847,915 tonnes of aid have been facilitated by Israel into the Gaza Strip throughout this war. As of last weekend, 73 million meals had been distributed by the Gaza Humanitarian Foundation in its first couple of months of operation. That is the reality. What we are hearing from so many of those who profess to speak on behalf of the Palestinians, including NGOs who frankly should know better, is a false narrative here. The proof of that pudding was in the fact that they immediately came out to tell Palestinian civilians not to accept aid from the Gaza Humanitarian Foundation. The reason for this is because it is the first mechanism that has successfully delivered aid which is not then being diverted to Hamas. The theme here continues: it is succour for Hamas and support for Hamas. At the core of the prolongation of this conflict is the misinformation about aid and the misinformation that circulates about blood libels, genocide or the targeting of civilians, which is completed contrary to what Israel has created.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_149">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_197">We have another question.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_150">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_198">Sorry, I am still on my time. This statement came from an agricultural worker. Just so we are clear and the witnesses are dismissing the views of the Palestinian trade unions, which have strongly supported this measure. They do not know what is in their own interests. Is that what the witnesses are saying? They do not know? This is what they are stating. They want this Bill.</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_199">The Palestinians that I listen to are those who were interviewed by Ohad Hemo from Channel 12 on the ground in Gaza in November, not reports that made it into the international media because it does not support the Hamas narrative. They said that Hamas was killing them and that Israel and the Americans were giving them aid. They said they wanted Israel to win against Hamas. Those are the Palestinians that I listen to. Those are the Palestinians that I care-----</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_152">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_200">Sorry, can I cut across again? I never mentioned Hamas. I referred to an agricultural worker who said that the people of Palestine want this Bill to go through. It has nothing to do with Hamas. This is the Palestinian people on the ground. This is an agricultural worker and a union.</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_201">I am saying that on basis of-----</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_202">That is part of the problem.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_203">Ms Hausdorff has the floor.</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_204">I am saying that on the basis of the evidence that I have seen, it is Hamas that is spinning this narrative and that is supporting this Bill because it stands to benefit from the repercussions of it, not the ordinary Palestinians. If we care about those ordinary Palestinians then we should, as they hope, be advocating the removal of Hamas and the defeat as soon as possible of-----</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_157">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_205">Excuse me, can I just go back to my question. I never got my full answer.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_158">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_206">And that may be what the record records, Deputy Bennett. You are out of time.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_159">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_207">I just want to put this on the record; do the witnesses not believe the Palestinian people in their own interests, if they want this Bill, they are not in agreement with that?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_208">As I said previously, tragically and sadly this Bill will contribute absolutely nothing to resolving the conflict-----</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_161">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_209">But the Palestinian people have said-----</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_210">Then they are being fooled and misled.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_163">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_211">Misled by who?</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_212">Perhaps by the Irish Government. The reality is this Bill, which will ban a small amount of olives and avocados coming from the West Bank and will require every traveller into this country being questioned and searched about whether they have some item in their possession, is of no help to Palestinians.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_165">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_213">Mr. Shatter made these points in his submission.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_166">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_214">At this point in the proceedings it is worth reminding the committee that all of the witnesses so far have failed to recognise that the settlements in the occupied Palestinian territories are illegal. None of them done it in their written testimonies or in answers to questions from this committee. That is a fundamental point of divergence at the very start of this Bill, which is what we are discussing and we have to write a report on. I also think that it heavily caveats, with all due respect, subsequent arguments and testimonies that have been given by the witnesses in terms of arguing against this Bill if they fundamentally do not believe, which they do not, that the settlements are illegal. That is contrary to EU law, UN law and the International Court of Justice, ICJ, and the shared political view of the majority of this committee. We may disagree on other elements of the Bill, but we do not disagree on the settlements. That is a fundamental point in terms of this entire hearing. There is that fundamental disagreement. We diverge at the very start with all the witnesses on this. I think it heavily caveats the proceedings. Mr. Cohen, Rabbi Wieder and the other two witnesses say that this is the only time that Ireland has brought in such a Bill and targeted Israel and that Israel is the only country that Ireland has ever targeted. In 2014, an identical ban was passed into Irish law prohibiting trade in goods and services with Russian-occupied Ukraine. Do the witnesses accept that as a precedent and that Israel is not the only example of the Government deploying such a law? </p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_215">Can I answer that question because it is a technical legal issue?</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_168">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_216">With all due respect, Mr Shatter, you can come in after. I directed the question to-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_169">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_217">I want to be fair to Mr. Shatter on that.</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_218">The boycott or ban the Deputy is referring to is one that was agreed at European Union level by European Union states to be imposed on Russia for its aggression. There is no similarity of any description here. Deputy Smith's depiction and his focus on the occupied territories, I do not think members of this committee want to explicitly state that East Jerusalem should be <i>judenrein</i>, that no Jew should ever set foot in or live there, that no Jew should ever set foot in the West Bank, never mind live there, and that no Jew should ever work with Palestinians together in harmony to generate economic benefits to all.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_171">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_219">None of that is in the general heads of this Bill.</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_220">This is what this Bill affects. One example-----</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_173">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_221">That is Mr. Shatter's interpretation of it. That is his heavily-----</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_222">Deputy, let me conclude, please.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_175">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_223">I have one minute left.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_176">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_224">I will allow Deputy Smith a few extra seconds. When Mr. Shatters finishes his piece, I will come back.</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_225">It is a quick point. The Barkan industrial estate in the West Bank employs 20,000 people, 10,000 of whom are Israelis and 10,000 of whom are Palestinians. It has survived this continuing conflict. They work together in peace and harmony and have done so for many years. It is the type of thing that we need to see, but if this Bill is implemented, goods imported from this park into Ireland would be confiscated, it would be illegal and people could be prosecuted for trying to sell them in their shops. This is where this Bill creates division. It does not bring about reconciliation.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_178">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_226">One of the witnesses mentioned that all of the areas are in Area C. Not of all of them are in Area C. It is not a big point but it is another example of throwing in something as a fact when it is not a fact. Lauding the aid that has been given by the Gaza Humanitarian Foundation is unbelievable. It is the biggest act of hubris and misinformation. We have been engaging with the NGOs on the ground and receiving testimonies from those that have been delivering for decades and are no longer able to give it. For the witnesses to say that the Gaza Humanitarian Foundation is somehow doing a great job, is the height of hubris and something that needs to be disregarded by this committee when we are doing our report.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_179">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:10:00+01:00"/></from>
+          <p eId="para_227">I thank the witnesses for taking the time to attend. They must be very tired with all of these questions. Mr. Cohen stated, and I am quoting him directly: "The only country in the world you choose to boycott by law is the one Jewish state ... not Russia for Crimea." That is factually incorrect.</p>
+          <p eId="para_228">A ban on trade with Russian-occupied Crimea was passed into Irish law in 2014. Would Mr. Cohen be willing to correct the record because what he said is not the case.</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Maurice Cohen<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_229">If that is correct, I will certainly correct the record.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_181">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_230">I thank Mr. Cohen. I appreciate that.</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_231">That was on foot of a decision made at European level-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_183">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_232">I thank Mr. Shatter. That was just a question-----</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_233">-----not by Ireland unilaterally.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_185">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_234">We still imposed it.</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_235">That is a different thing. It was not a matter of Ireland unilaterally imposing a trade restriction.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_187">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_236">Could Mr. Shatter let the Senator speak?</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_188">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_237">My next question is for Mr. Shatter. He has spoken before about the Bill being antisemitic and likened it to something from Nazi Germany. Just yesterday, we received a letter from a number of high-profile Israelis who strongly support the Bill, among them a former Israeli attorney general, supreme court judges, recipients of Israel’s highest national prize, speakers of the Knesset and former Israeli ambassadors. Is Mr. Shatter really going to claim the policy supported by these Jewish Israelis is antisemitic?</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_238">The brilliant thing about Israel is that it is a democracy. People have different views. There are extreme left-wing individuals, right-wing individuals and centrists. I have not seen the letter; I saw it reported. The signatories are entitled to their view. We are simply detailing our perspective on the Bill.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_190">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_239">I suppose Mr. Shatter recognises, then, that there is diversity of opinion within the Jewish community and Israeli state.</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_240">Of course there is a diversity of opinion, but we come back to one very simple-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_192">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_241">That is it. I thank Mr. Shatter very much.</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_242">Please do not cut me off.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_194">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_243">I am running out of time.</p>
+        </speech>
+        <speech by="#" eId="spk_195">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_244">I have done the Senator the courtesy. She asked me a question, so she should not cut me off. When I was a member of this committee, I never did that to a guest.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_196">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_245">We really appreciate that, but we have a quite tight time slot-----</p>
+        </speech>
+        <speech by="#" eId="spk_197">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_246">If I could just conclude-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_198">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_247">I will give a few seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_199">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_248">The only individuals the Bill intends to target are Jewish people in East Jerusalem and on the West Bank. It inadvertently targets Israeli Arabs, Israelis of all denominations, including Christians and Muslims, and Palestinians. I was astonished that when Christian Aid representatives were before the committee, they did not address the negative impact of the enactment of this legislation on the Christian community in East Jerusalem.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_200">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_249">I thank Mr. Shatter very much. Earlier, he spoke a little about the peace process. He might be able to tell I am from the North. Regarding our own peace in Northern Ireland, the Mitchell principles set out that peace negotiations can work only when all parties agree to ceasefire activity, having regard to international law. In the context of what we are seeing now, Israel is quite literally pouring concrete on Palestinian land. That is illegal under international law. Does Mr. Shatter really believe that refusing to acknowledge that breach of international law would not be considered unbalanced?</p>
+        </speech>
+        <speech by="#" eId="spk_201">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_250">I am very familiar with the Mitchell principles and with George Mitchell. George Mitchell tried to effect the same resolution on Israelis and Palestinians as he effected in Northern Ireland. It did not work because there was absolute division within Palestinian society. The same principles he applied to Northern Ireland, he tried to apply to the Israeli–Palestinian conflict. Sadly and tragically, and to sum up in the words of a very famous Israeli Foreign Minister, Abba Eban, the Palestinians never miss an opportunity to miss an opportunity. This conflict could have ended so many years ago and so differently without the dreadful events we are witnessing today.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_202">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_251">I thank Mr. Shatter. I have a got few seconds left, so I will make the most of my time. Mr. Shatter said that this Bill is a matter of consensus in the political bubble only, but polling in the <i>Irish Independent</i> just a few weeks ago showed an overwhelming majority of the Irish public support the Bill. I believe the number is 74%. The public support a ban on trade in goods, and indeed services, with the illegal settlements.</p>
+          <p eId="para_252"> Mr. Shatter has dismissed as wrong the views of the entire EU, the UK, the ICJ and the UN. Does he think it might be he who is a little out of touch when we talk about this bubble?</p>
+        </speech>
+        <speech by="#" eId="spk_203">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_253">The political bubble is one in which there is an absolute consensus. Everyone in this room supports the Bill. The only issue, really, has been whether it should extend to services. That goes across both sides of the Houses. I know from my 30 years of experience that if the Bill is enacted when there is consensus at that level on a really difficult issue and critical faculties are suspended, it will be realised in years to come that not only was it an exercise in futility but also that it was an exercise that sadly embarrassed and detrimentally impacted economically upon this State. I love this State – I love Ireland – and do not want to see us depicted in the international community in the manner this Bill will result in us being depicted. I want us to be further advancing our economic well-being through the systems of all the American multinational companies located here. I do not want us to do anything either to frighten them away or to inhibit their engagement.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_204">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_254">We are coming to our last speaker.</p>
+        </speech>
+        <speech by="#" eId="spk_205">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_255">May I address the legal aspect, please?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_206">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_256">I will allow Ms Hausdorff to answer at the end.</p>
+          <p eId="para_257"> The issue of consensus is interesting. There is not an antisemite in this room or in the Dáil, yet there sometimes appears to be what I will not describe with a term as strong as “consensus”. The Chair of the US Senate Foreign Relations Committee seemed to reflect a consensus on where Ireland comes from in relation to this, referring to a position of “profound antisemitism”. People will not find antisemitism here. Mr. Shatter would do this country, which he and we all love, a great favour by promulgating that view as widely and strongly as he possibly can.</p>
+          <p eId="para_258"> The final speaker is Senator-----</p>
+        </speech>
+        <speech by="#" eId="spk_207">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_259">The problem is that the perception the Bill creates internationally is the one the Chair of the Senate Foreign Relations Committee articulated.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_208">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_260">Mr. Shatter, a former Member who is influential, has not found that view here. He has found a committee motivated by purely humanitarian motives. I cannot influence him in one way or the other but, as Chair the committee, I implore him to take that on board, if nothing else, when he leaves today.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_209">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_261">I thank the witnesses. I listened carefully to what Mr. Cohen said and believe it was heartfelt and very sincere. It concerns me that he feels we are trying to target Jews or Jewish life. He says Jewish communities here in Ireland may be driven further into fear and isolation. Again, that is concerning. He also mentioned the matter of people taking sides. This should not be about taking sides, as such, but if there were sides and I took one, it would be on behalf of the 58,000 people who have been killed, the 138,000 people who have been injured, the 75% of people who have been displaced and are suffering from hunger, thirst and disease.</p>
+          <p eId="para_262"> The only point on which I find myself in agreement with Mr. Shatter is that relating to the possibility of economic fallout. That has to be concern for all of us. Mr. Shatter called the Bill fantasy politics, but I believe it positions Ireland as a principled voice within the international community.</p>
+          <p eId="para_263"> I put it to the witnesses now, because I am conscious of time, that I would like them to provide clarity on how opposition to this Bill would not be seen as tactical endorsement of settlement expansion. I would like them to address the concern that continued trade with illegal settlements may entrench the occupation and actually incentivise further land appropriation.</p>
+        </speech>
+        <speech by="#" eId="spk_210">
+          <from> Mr. Alan Shatter<recordedTime time="2025-07-15T16:20:00+01:00"/></from>
+          <p eId="para_264">I will be very brief. The importation of €685,000 of goods over a period of five years is entrenching absolutely nothing. It is a thing of complete irrelevance. In the context of the other issues that have been raised, the perception that the Chairman referred to derives from the focus, as stated by the Chief Rabbi and Maurice Cohen, on Israel, and the fact that this committee and the Houses do not prioritise calling in the Iranian Government. Apart from calling for the release of hostages, they do nothing about it. There has never been a call from these Houses for the Red Cross to visit hostages in Gaza. There has never been an expression of critique because Hamas does not allow that. The macabre spectacle presented on the release of hostages who looked like concentration camp victims elicited no reaction from any member of this committee. If the members believe we are being harsh by saying there is a perception that this Bill is antisemitic, they should note that the perception derives from the one-sided approach to this horrible conflict.</p>
+          <p eId="para_265"> I come back to one specific fact about which I will say no more tonight unless somebody asks me about it. It has been a fact since 7 October 2023.</p>
+          <p eId="para_266">If Hamas had released all the hostages, this conflict would have been over long ago. It is being normalised within the Irish political system that men, women and children would be retained as hostages and negotiating cards and that they would be kept in tunnels and starved. This is why there is a perception of a lack of balance and antisemitism. I reiterate that the one fact which drives many families in Israel to distraction is that the hostages have now been kept for 646 days and we are talking about the export of minuscule numbers of olives and avocados as if it is the most important issue in the world.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_211">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:30:00+01:00"/></from>
+          <p eId="para_267">I thank Mr. Shatter. We are out of time. I am aware that it has been more difficult for our remote witnesses to get in, so I will give her one minute. I do not want her leaving this meeting feeling she was not heard. She has one minute if she wants to make some comments.</p>
+        </speech>
+        <speech by="#" eId="spk_212">
+          <from> Ms Natasha Hausdorff<recordedTime time="2025-07-15T16:30:00+01:00"/></from>
+          <p eId="para_268">I was invited to address the matters under EU and international law. It is disappointing that I was not permitted to answer those questions. There is a pattern of international and EU law being erroneously dealt with before this committee in previous sessions. In my very limited time, I will reference just two examples and encourage committee members to consider the voluminous and detailed submissions made on behalf of the Ireland Israel Alliance and UK Lawyers for Israel.</p>
+          <p eId="para_269"> The Senator who posed the question on Russia and Ukraine has repeatedly misunderstood the importance of the Rosneft case. In fact, it squarely militates against this proposed Bill being in any way lawful. As Mr. Shatter identified, this was a measure that was implemented by the European Union. It was EU policy, not unilateral action by a member state. Therefore, it has no bearing in the manner which has been suggested by professors previously. The case, crucially, did not insist on the analysis of public policy, as has been repeatedly represented in evidence. It is critical that members of the committee understand that in paragraph 116 of the judgment, the court was clear that the relevant provision was in fact public security.</p>
+          <p eId="para_270"> In the case of Russia threatening EU member states, that was, of course ,of a completely different order. In that paragraph, it is clear that the broad discretion enjoyed by the council necessary for the protection of essential EU security interests and the maintenance of international peace and security was at the core. Other cases that have been mistakenly referred to include the Confédération Paysanne case, which affirmatively concluded that where policy was covered by other elements of EU law, including in that case, law regulating agricultural products, member states could not invoke Article 24.4 of the public policy exemption. Those are just two examples of cases that have been cited in support of this Bill by proponents that say the exact opposite of what is being suggested.</p>
+          <p eId="para_271"> I would advocate on that basis that the detailed, carefully compiled and accurate legal submissions that I have referenced be considered and reported by the committee. Whatever the Attorney General's advice may be - I know it is hotly awaited - it must necessarily consider the realities of the case law and the completely unprecedented action that this Bill would necessitate, putting Ireland outside both EU law and the national consensus - the policy that has been carefully curated by the European Union, including its trade agreement with Israel.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_213">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:30:00+01:00"/></from>
+          <p eId="para_272">I thank the former Deputy, Mr. Shatter, Ms Natasha Hausdorff, Mr. Maurice Cohen and the Chief Rabbi for appearing before the committee today, for their valuable contributions and for the respectful manner in which the session was conducted. If there is something they did not get to say and they feel it is really important, they can submit it in writing to me, as Chair, or to the secretariat.</p>
+          <p eId="para_273"> We will suspend for five minutes. Our session must finish by 5.30 p.m., as another committee will be meeting here then.</p>
+          <p eId="para_274"> I again thank the witnesses for their contributions, in particular our remote witness. I hope she got to say everything she wanted to say.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Sitting suspended at 4.34 p.m. and resumed at 4.45 p.m.</i>
+        </summary>
+        <speech by="#JohnLahart" eId="spk_214">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:40:00+01:00"/></from>
+          <p eId="para_275">I call the committee to order. I am sorry for keeping the witnesses waiting. There was no disrespect intended.</p>
+          <p eId="para_276"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. In this regard, I ask any members participating via MS Teams that, prior to making their contribution to the meeting, they confirm they are on the grounds of the Leinster House campus. I will not permit a member to participate where he or she is not adhering to this constitutional requirement.</p>
+          <p eId="para_277"> Members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction. As the witnesses were already informed, the committee will publish the opening statements on its website following the meeting.</p>
+          <p eId="para_278"> We are here to continue our pre-legislative scrutiny of the general scheme of the Israeli settlements in the occupied Palestinian territory (prohibition of importation of goods) Bill 2025. I will accept reference to it as just "the Bill" for the purposes of this committee. That was acceded to at the previous session of the meeting.</p>
+          <p eId="para_279"> I acknowledge at the outset that there are strongly held views in relation to the general scheme of this Bill. Notwithstanding this, the debate should at all times be focused on the general scheme of the Bill before us, and in accordance with the witness protocol, witnesses should be treated fairly and with respect. The same is expected of witnesses in this session. Equally, I expect that witnesses and members who contribute today will speak and behave with the dignity and decorum befitting a sitting of a committee of the Houses of the Oireachtas.</p>
+          <p eId="para_280"> Today, we also have guests in the Public Gallery. They are all very welcome. I remind our guests in the Public Gallery that they may not under any circumstances interrupt the committee's proceedings.</p>
+          <p eId="para_281"> I welcome our witnesses to the second session. From the Ireland Palestine Solidarity Campaign, I welcome Ms Fatin Al Tamimi, vice-chairperson, and Dr. John Reynolds. From Sadaka - The Ireland Palestine Alliance, we have Mr. Éamonn Meehan, chair, and Ms Marie Crawley, board member. The format of the meeting should be that we will hear the witnesses' opening statements but we are a little constrained timewise because another committee is meeting here afterwards. With the approval of the witnesses, we could take their statements as read and go straight into questions and answers. If any witness really wants to read the statement, he or she should please indicate that. Mr. Meehan wishes to do so. Is he the only one?</p>
+        </speech>
+        <speech by="#" eId="spk_215">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T16:40:00+01:00"/></from>
+          <p eId="para_282">I wonder if I could just read a paragraph from the opening statement rather than the whole of it?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_216">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:40:00+01:00"/></from>
+          <p eId="para_283">Absolutely, yes. We do not want to constrain the witnesses in any way. We want to make sure we get the maximum understanding.</p>
+        </speech>
+        <speech by="#" eId="spk_217">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T16:40:00+01:00"/></from>
+          <p eId="para_284">I understand.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_218">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:40:00+01:00"/></from>
+          <p eId="para_285">We are down to about three minutes speaking time for each member. The views of the witnesses are very well represented in the House generally, and in the committee.</p>
+          <p eId="para_286"> The witnesses are very welcome. I invite Ms Al Tamimi to make her opening statement. Mr. Meehan can then read his paragraph and then we will allow members to ask questions. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#" eId="spk_219">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T16:40:00+01:00"/></from>
+          <p eId="para_287">I thank the Chair and the committee for inviting us here today. I am a Palestinian whose family is originally from Hebron or Al-Khalil in the occupied West Bank. In the very heart of our city, 800 colonial settlers and hundreds of occupation soldiers hold Hebron hostage.</p>
+          <p eId="para_288">They control every aspect of life and death for 200,000 indigenous Palestinians. This is the Israeli settler colonial apartheid regime in microcosm. The settlements and violence are not unfortunate byproducts, they are the point.</p>
+          <p eId="para_289"> While we Palestinians remain steadfast, it is not always easy to maintain hope. The past 21 months have been the most hopeless of all, watching a live-streamed genocide of people unfold before our eyes while western powers at best sit on their hands and at worst are completely complicit. For me, the past two years have been a living hell of constant fear and worry about my sister and her family trapped in Gaza. At any moment they could be bombed or simply shot while trying to get food aid. Yet, my pain is nothing compared to those who have lost family or friends. None of it compares to the daily horror that people in Gaza exist in and witness and feel daily.</p>
+          <p eId="para_290"> However, I do find hope. I find it in the hundreds and thousands of Irish people who come out in their thousands day after day and month after month, in every city, town and village in Ireland, to demand an end to this genocide and real action from the Irish Government. Polls show the vast majority of Irish people not only stand with Palestinians but support stronger measures from the Government. The most recent polling shows three quarters of the Irish voting public supports the passing of the full occupied territories Bill, including banning goods and services. Only 15% oppose it. This trade helps to ensure the economic viability of illegal settlements in the West Bank and potentially in Gaza, where Israeli ministers have openly said they plan to ethnically cleanse and build more settlements.</p>
+          <p eId="para_291"> We are not asking for special favours. We are asking that Ireland live up to its legal obligation not to assist war crimes, ethnic cleansing and genocide. We need to ban the trade in settlement goods and services. The world is watching and I ask Ireland to please do its best, and to do the right thing and pass the occupied territories Bill and give the Palestinians hope.</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T16:50:00+01:00"/></from>
+          <p eId="para_292">I thank the committee for inviting us to meet it today. The International Court of Justice has ruled that Israel's occupation of Palestinian territory is illegal. The ICJ clearly also recognises that Gaza is part of occupied Palestinian territory. That is, it is unlawfully occupied by Israel. The ruling of the ICJ applies to Gaza as much as to the West Bank, including East Jerusalem. The destruction of Gaza is not some separate action divorced from Israel's policies and practices in the West Bank. It is fully aligned with those policies and practices and follows years of blockade.</p>
+          <p eId="para_293"> In 2024, the ICJ also awarded provisional measures against Israel in the case brought by South Africa to protect Palestinians from the plausible denial of their rights as protected under the Genocide Convention. Israel has blatantly ignored these measures. The ICJ is also very clear, in paragraph 105 of its ruling of 19 July 2024, that an occupation must be managed for the benefit of the local Palestinian population. This is absolutely central to the ICJ judgment and to everything that flows from it. An occupation in international humanitarian law must be managed for the benefit of the local population. Clearly, there is no place throughout occupied Palestinian territory where this is the case.</p>
+          <p eId="para_294"> We have heard on many occasions that an advisory opinion from the ICJ is not legally binding. Advisory opinion is the mechanism through which the UN General Assembly seeks advice and clarification from the ICJ. The law, written and drafted by the ICJ, is not new. There is no new law here. What it has done, in the most authoritative fashion, is clarified what the international law is. This is from where our obligations here stem. In our view this is legally binding.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_221">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:50:00+01:00"/></from>
+          <p eId="para_295">The witnesses have given us some comfort timewise and I am very grateful for it. I ask Deputy O'Flynn to confirm he is on the premises.</p>
+        </speech>
+        <speech by="#KenOFlynn" eId="spk_222">
+          <from>Deputy Ken O'Flynn<recordedTime time="2025-07-15T16:50:00+01:00"/></from>
+          <p eId="para_296">Yes, I am on the premises but in the interests of brevity I will waive my right to speak.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_223">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T16:50:00+01:00"/></from>
+          <p eId="para_297">I appreciate that. I call Senator Higgins.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_224">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-15T16:50:00+01:00"/></from>
+          <p eId="para_298">My first question will be for Mr. Reynolds as he has not made an opening statement. I have read the opening statements, which mention the settlements are part of Israel's acquisition of Palestinian territory by force and that there have been recent reports of more settlements in the E1 area. This means, contrary to what we have heard recently about limited areas, that there are expanded areas. Will Mr Reynolds speak on the significance of what this expansion of settlements means? A point was made earlier by another colleague on what this does regarding the viability of a two-state solution.</p>
+          <p eId="para_299"> We have heard a lot about various opinions on various case law on public policy. Is it not the case that the tacit admission now from High Representative Kallas and the Commission, whereby they have acknowledged one of the available actions is to use public policy grounds to ban goods, effectively settles the question of public policy being grounds in this matter? It is now being acknowledged by the Commission. If Mr. Reynolds has a chance, I ask him to comment briefly on this.</p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T16:50:00+01:00"/></from>
+          <p eId="para_300">I thank Senator Higgins for the question. On the point on acquisition of territory by force, ultimately what the Bill is about is highlighting and addressing the settlements in illegally occupied territory as an obstacle to peace and a form of annexation of Palestinian territory. Everybody is very well aware of the growth and expansion of settlements over time, and of the fact that at the time of the Oslo Accords in the 1990s there were approximately 250 illegal settlers in Palestinian territory, by the time the original version of the Bill was introduced a number of years ago there were more than 600,000 and now the figure is approaching 800,000. We can see the exponential growth of the settlements.</p>
+          <p eId="para_301"> The one area slated for settlement construction and expansion throughout all of this time since the 1990s is what is known as the E1 corridor. It is a crucial, central part of the West Bank. If it were to be settled by Israel, it would entirely sever the north and south of the West Bank. It would affect the largest remaining area of Palestinian land in the Jerusalem, Bethlehem and Ramallah area. This has been a very clear red line for the European Union for a long time. It is also the one Israeli policy the US has strongly opposed.</p>
+          <p eId="para_302"> The Israeli Government, having kept it on hold for a long number of years, is actively moving to approve and go ahead in the coming months and years with more than 3,000 settlement units in this area. The Israeli finance minister is on record as saying that this is something the government is working on professionally, that this is how to kill the Palestinian state de facto, and that, God willing, there will be Israeli sovereignty in the West Bank during this term of government. This is the reality of the annexation and the urgency of the situation.</p>
+          <p eId="para_303">How will the international community respond to this continuing drive for the construction of further settlements? The International Court of Justice has stated that the settlements and the settlement infrastructure amount to de facto annexation if allowed to be maintained. It said that not only in last year's advisory opinion but in its 2004 advisory opinion. It is clear that it is long past time for Ireland, the European Union and the wider international community to take concrete action. With these developments in mind, I urge the committee to recommend the most ambitious version of the Bill.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_226">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_304">I am glad to hear that Ms Al Tamimi's sister and family are safe. Long may that continue. She says that real action is needed from the Irish Government. I am sure she will acknowledge the work to date of the Irish Government. My question is for her initially but also for the wider panel. It will be my only question in the interests of time and brevity. Where do the witnesses see the most effective action from the Irish Government? What is the most effective thing we can do? Is it unilateral action, such as the occupied territories Bill, or its modern incarnation, and similar? Is it multilateral action through our partners in the EU? We can press the EU, which is a much bigger ship that has far more impact, to seek a solution. I am sure the answer is a combination of both, but I would be happy to hear the thoughts of the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_227">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_305">I will leave it to others to comment. I want both. The occupied territories Bill is called "symbolic" but it is a step forward in terms of holding Israel accountable for its war crimes against my people in Palestine. It is a solid and most needed action.</p>
+        </speech>
+        <speech by="#" eId="spk_228">
+          <from> Ms Marie Crawley<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_306">What we are witnessing is the most profound abuse of human rights that we have seen in our generation. We are witnessing a genocide. We are witnessing the most appalling crimes. When you are dealing with a situation that is so extreme, devastating and horrific, you try every possible action and work on a multiplicity of levels. While we must try unilateral action and fully implement the Bill as initially intended, with its combination of goods and services, we should continue to pursue, as the Irish Government is doing, further review of the Israel-EU trading agreement at a European level and consider all other possible measures, including looking to Israel's position on the UN General Assembly when that comes up in September. We must operate at the domestic, EU and UN levels and use every possible mechanism at our disposal to try to stop the horrendous actions that are taking place in full view of the world.</p>
+        </speech>
+        <speech by="#" eId="spk_229">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_307">I will add one line to that. It goes back to the second question from Senator Higgins about the options paper and what the European Union is discussing at the moment. There is now recognition that there are important initiatives the European Union can undertake as a Union. It has now been accepted and recognised that member states can block imports from settlements at their respective national level for public policy reasons. The arguments about that exemption and that permissibility, which were made in these Houses for many years, have been accepted.</p>
+          <p eId="para_308"> At a European level, we should not underestimate the role that Ireland played in that regard. There was the recent letter by the nine member states. That it is now explicitly accepted as a policy option shows that there will be a need for the two layers of national member states and the European Union to proceed with as much urgency as possible.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_230">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_309">Others have covered some of the ground I was going to cover. The objections to the Bill are on a number of bases. The first is whether it is economically wise, and how to balance that against the moral question. We will have further discussion of that. The second is whether it is possible under EU law. We have had fair discussion of that point. The third is whether the occupied territories are legal. Unfortunately, we have heard that view brought forward, contrary, I think, to the view of everyone on this committee. I do not think it is a widely held view. The fourth is that this is fruitless and pointless, and ultimately does not achieve anything. I would respond to that, and have responded to that, by saying that any action Ireland can take may be cast as a small country acting alone. It is worth putting this question to whichever of our guests wishes to answer. Is it not the case that if we in this country are successful in passing the strongest possible legislation, it will act as an example to countries across Europe and the globe? While the scale of imports from the occupied territories to Ireland is relatively small, action across the board would have a significant impact on the ability of the Israeli Government to continue to develop and expand the settlements. Anyone who wishes to may come in.</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_310">I remind the Deputy of the existing EU policy around labelling. The EU differentiates between goods coming from Israel and goods coming from the occupied Palestinian territory. They are required to be labelled. That policy only arose in the noughties because, first of all, the UK, then a member of the EU, insisted that it would require labelling on products coming from settlements. Denmark moved next and a number of other countries moved thereafter. At that point, the Commission decided it could not have a free-for-all and opted to introduce an EU-wide measure. That is why we have labelling. That in itself is not effective because it is not fully complied with by trade from settlements and by Israel. It is, however, an example of a mover deciding to do something and deciding on a policy, with another country and then another following. Eventually, because the Commission does not want a free-for-all, it decides this must become EU policy. As Dr. Reynolds has outlined, we have already seen the change in this from the June meeting of the foreign ministers and the paper presented by Kaja Kallas. The same thing is happening here.</p>
+          <p eId="para_311"> We obviously look forward to the outcome of today's meeting. Is taking unilateral action pointless? Absolutely not. I was involved in the anti-apartheid campaign here in the 1980s and early 1990s. We were told precisely the same thing about banning South African goods coming into this country. That was highly effective.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_232">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_312">I will direct my question to anyone else but will also add a supplementary point. Would Dr. Reynolds, Ms Crawley or Ms Al Tamimi have a view that were those actions to be replicated, the symbolism and economic impact on the settlements would be considerable? Would that happen if such a position were adopted by multiple European countries and others across the world?</p>
+        </speech>
+        <speech by="#" eId="spk_233">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_313">Yes, for sure. The reality is that because this legislation was first brought up here seven years ago, Ireland is leading on this and is seen to be leading on it. Other states are following and draft legislation is now going through the process in Chile, Norway and many other countries in Europe and beyond. Those countries are considering the situation. As Ireland led the way in banning imports from apartheid South Africa, people are looking at developments here. There will be a wave of similar legislation and policies to follow. If bigger powers with bigger economies than Ireland's get involved, the impact will snowball.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_234">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T17:00:00+01:00"/></from>
+          <p eId="para_314">As I mentioned earlier, I recently returned from a trip to Egypt. My abiding memory as I came home was of the young people. My God, what does the future hold not only for Palestine but for the world? These young people have lost half their body weight because they are starving. They have lost their kids, brothers and sisters, parents and grandparents. A huge factor is that they have little or no education. Where will they be in six years' time? That is a fear. In my opinion, they are going to be angry young men and women. They will think that all of this went on in their lives when they were young and the majority of the world looked on. That is why, if legally possible, we should do everything to continue to take the lead. I hear people say this is a feel-good Bill or performance politics. I know the answer to this question, but I would like Ms Al Tamimi to let us know what she thinks the people of Palestine feel about Ireland taking a stand.</p>
+        </speech>
+        <speech by="#" eId="spk_235">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_315">The children the Deputy is talking about include my nieces and nephew.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_236">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_316">If Ms Al Tamimi wants to take a bit of time, there is no hurry. I will come back to her, sorry.</p>
+        </speech>
+        <speech by="#" eId="spk_237">
+          <from> Ms Marie Crawley<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_317">Can I respond and then we will go back to Fatin because obviously it has particular personal ramifications? In fact, my comment will also respond to the question asked by Deputy Ó Laoghaire in terms of the alleged futility of this measure.</p>
+          <p eId="para_318"> Ireland has form in terms of us taking a lead in relation to Palestine, as members will have seen in my written statement. We were the first country, through the Bahrain Declaration, to explicitly state that the Palestinian people had a right to self-determination and the establishment of an independent state of Palestine. That subsequently became the policy of EU member states and, indeed, the EU itself.</p>
+          <p eId="para_319"> In 2022, the Oireachtas passed a motion recognising that what is happening in the West Bank amounts to annexation. It is now generally accepted that Israel is annexing Palestinian territory. Even a year ago, at the start of this genocide, it was the then Taoiseach, Deputy Harris, and the Prime Minister of Spain who called for a review of the EUROMED agreement. Now there is a much wider block calling for a review of the EUROMED agreement. We have history in terms of taking the lead and taking that first step. Likewise, we should do that in relation to this Bill.</p>
+        </speech>
+        <speech by="#" eId="spk_238">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_320">Palestinians, including my sister, my niece and nephew, her husband, my aunts and everyone in Gaza and everywhere in Palestine, are looking up to Ireland. They are waiting for Ireland's decision to pass this occupied territories Bill. This is the least Ireland can do. Let Ireland be the beacon of hope and pass this legislation in solidarity with the Palestinian people.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_239">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_321">I thank all of the witnesses for their meaningful and heartfelt statements. Mr. Meehan spoke about the labelling of goods. It was good to get the historical background. If we were to include services in this Bill, and it has been indicated that we are looking at the possibility of a legal framework for that, how could we label services? That is a little more difficult because tech and tourism form a significant part of services and because it involves distinguishing between services from the occupied territories and from Israel itself. I would appreciate Mr. Meehan's response to that.</p>
+          <p eId="para_322"> It is always important to hear from people who are personally affected. We see and hear reports on our phones, in our newspapers, on television and on social media, but meeting Fatin, a young person talking about her concerns about her family, her sister and nephew and niece, is shocking. When Ms Al Tamimi asks, as she did in her statement, that Ireland live up to its legal obligation not to assist war crimes, ethnic cleansing and genocide, what does she say to the other European countries and, indeed, countries globally given that Ireland is the only country examining a Bill to prohibit services?</p>
+        </speech>
+        <speech by="#" eId="spk_240">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_323">I ask for Ireland to take the lead. When Ireland starts everybody will follow because it is a legal obligation. It is a moral obligation for all countries, including Ireland. I am speaking about Ireland because I am an Irish-Palestinian living here and I am here with the committee to talk about this. It is important for Ireland to start and then everybody will follow because the whole world is watching and waiting for Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_241">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_324">In relation to services, the committee has had a considerable amount of input from legal experts on this and I will not be able to address the issue to the same level of detail. However, in our research, we are very clear that there is no distinction in trade between goods and services. When the International Court of Justice discussed trade with the occupied Palestinian territory, it did not distinguish goods and services and divide them. The concept of trade is a unitary concept.</p>
+          <p eId="para_325"> It is also clear, in terms of services, that if the Bill bans goods only, a significant amount of trade with illegal settlements will continue and will fall under the label of services. The committee received evidence previously about the ability of Irish citizens to engage with properties, owned by Palestinians and taken by Israeli settlers, which are available to rent and for which people who rent those properties will receive documentation and a receipt from a company headquartered here in Dublin. It seems to me that we would be leaving a very big hole in the legislation if it confined itself to goods only.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_242">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_326">I thank the Chair and guests. With the horror that is Gaza, there has been a distraction or a lack of focus on the increasing settlements in the West Bank. The witnesses might elaborate on that because we have a wide and increasing audience for this issue. I ask them to explain what has been happening in the relatively recent past as regards increasing settlements in the West Bank. I will have some supplementary questions afterwards.</p>
+        </speech>
+        <speech by="#" eId="spk_243">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_327">I mentioned earlier some of the longer term trends and figures since the 1990s. The reporting and evidence are freely available. There have been record-breaking levels of settlement construction going on in recent times. Since 2009 and the first iteration of this series of Netanyahu governments, the acceleration of settlements has continued to ramp up. In East Jerusalem alone recently, there are plans for nine new settlements with over 20,000 housing units. The UN documentation reports are all there.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_244">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_328">I thank Dr. Reynolds. We know that the settlements are horrible, inhumane, immoral and amoral. Would Dr. Reynolds explain the legal basis for stating that they are illegal? I understand it is an ICJ judgment from 2004. Tragically, we heard earlier people contending that they are legal. Will Dr. Reynolds outline in simple layman's terms for those of us who do not practice international law exactly why they are illegal?</p>
+        </speech>
+        <speech by="#" eId="spk_245">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_329">I thank the Senator for the question. It is important to be clear on that. There are some legal issues, as the Senator will have heard, across a range of legislation that the Houses work on. There are legal issues that are sometimes arguable either way. The Attorney General may say one thing and a Supreme Court judge may say another. Not many issues of international law, or of any law, are as black and white as this issue of the illegality of the settlements. There is no dispute. There is no indeterminacy. There is no ambiguity.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_246">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_330">Would Dr. Reynolds list the fundamental laws?</p>
+        </speech>
+        <speech by="#" eId="spk_247">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:10:00+01:00"/></from>
+          <p eId="para_331">Article 49(6) of the Fourth Geneva Convention says that it is prohibited for an occupying power to transfer the civilian population into the occupied territory. This is because the whole point of occupational law is to preserve the situation during or at the end of a war. It is a temporary situation until things return to normal. The military may need to be there for a very short transitional period but there is no basis for a civilian settlement or civilian population to be moved in. Obviously, the absurdity of the Israeli occupation of Palestinian territories is that it has gone on for as long as it has. It is a violation of humanitarian law under the Geneva Convention. It is a war crime under the International Criminal Court founding statute, the Rome Statute. It also a war crime under Irish legislation.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_248">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_332">I have a final quick question following up on Deputy Brennan's point. It is something that has been lost in the narrative.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_249">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_333">I ask the Senator to be brief.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_250">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_334">I refer to the potential radicalisation of young people arising from what is happening contemporaneously. Will the witnesses comment on that and its implications for the West?</p>
+        </speech>
+        <speech by="#" eId="spk_251">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_335">It is hard to talk about radicalisation in a situation where close to 100 Palestinians are being massacred every day, a third of whom are children. Before the end of the meeting, I can give the committee some updated figures from recent research on the casualties in Gaza. In considering radicalisation and its impact on us, we need to consider that the two-state solution, as I said in my opening statement, is something the international community has talked about for decades, but almost nothing has been done to bring it about.</p>
+          <p eId="para_336"> As a country, as a member of the European Union and as a member of the United Nations, can we please, after this Bill becomes law, play a leadership role in trying to bring about a peace process that, this time, is meaningful and balanced and where, to be blunt about it, the United States does not act as Israel's lawyer and the European Union is not completely supine? We need to do that, in recognition of our own history, as others said earlier. I have often thought, and I have discussed it with Palestinians, that if there could be a reconciliation, Jewish Israelis, I firmly believe, will have no better friends than their Palestinian neighbours. That is the ultimate objective. It is not for us to say what that will look like politically but it is the objective.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_252">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_337">That is very hopeful.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_253">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_338">I discussed the settlement issue with no less a person than Sulaiman Abu Ghaith several years ago. He said quite clearly to us that the Israelis would be content to talk about a two-state solution for decades while at the same time building the settlements. Everyone here has tried to highlight the utter importance of that.</p>
+          <p eId="para_339"> I have two very quick questions. What about unity in Palestine? We have absolute unity on this issue in Leinster House and in Dáil Éireann, which does not happen too often, but what is happening about unity there? Second, given this legislation has been accepted by all of us as being highly symbolic, how do we, having enacted it, which we will do shortly, please God, move beyond the symbolism? How do we then use it in order that more people follow our lead?</p>
+        </speech>
+        <speech by="#" eId="spk_254">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_340">Unfortunately, unity is weakening among Palestinians. However, I do not think the unity of Palestinians has anything to do with our issue today. We are talking about the legislation. Unity is weakened for the Palestinian people, unfortunately, but that is nothing to do with the solidarity of the international community with the Palestinian people to end this injustice against them. Then they can focus on their unity.</p>
+        </speech>
+        <speech by="#" eId="spk_255">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_341">On the Deputy's second question, if Ireland takes seriously its role as an actor in the international community, the work should not just stop with this Bill. Obviously, there is a huge struggle at European Union level to try to move things forward. There are different competing camps and perspectives. However, the EU, as well as the UN, is somewhere that Ireland can really intervene and take this beyond the national context.</p>
+          <p eId="para_342"> It is important to note there is a summit going on right now in Bogotá, Colombia, led by the Hague Group. That group is made up primarily of global south states that have come together to say we need to transform international law to make it more progressive, and to enforce it more progressively, because the way the likes of Israel, Russia and the United States are acting is undermining the very principles of international justice, human rights and dignity. That initiative is being led by the global south but it is essential for states like Ireland, Spain and others that have been trying to push things at European level to engage in the wider global context and also bring it into the UN.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_256">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_343">When Mr. Meehan spoke about a two-state solution, I was thinking that the first thing to be done is to recognise there are two states. That is one element in which Ireland has played a key role. The point was made to Deputy Ó Laoghaire in the previous session that the Bill is only symbolic. In fact, that strengthens the case to do it, as outlined by Ms Crawley. There is a number of situations where Ireland played a leading role and was accused of acting symbolically but it has had a ripple effect. It seems to me that if we do this, it opens opportunities for other countries to do the same.</p>
+          <p eId="para_344"> I do not know whether the witnesses heard the contributions in the previous session. I hope they did as my two questions somewhat relate to positions put forward during that session. Whoever wishes to answer them can do so. The point was made that the Bill will have an effect on tourists buying products in East Jerusalem, with those products potentially being confiscated when they come back to Ireland and the people who bought them potentially being prosecuted and put in jail. Will the witnesses give their perspective on that? It seems to me it is kite-flying.</p>
+          <p eId="para_345"> A number of questions were raised earlier about the blocking of aid into Gaza. Most contributors expressed concern that the aid might go to Hamas. Will the witnesses explain in a simple way for people watching and listening how the aid that is being blocked from going into Gaza, if it is allowed in, will get to the people? It is not the case that people cross the border and ask, "Where is Hamas, so we can give this to them?". How, in simple terms, is the aid delivered?</p>
+        </speech>
+        <speech by="#" eId="spk_257">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T17:20:00+01:00"/></from>
+          <p eId="para_346">I will address the question on aid. As a result of the blockade of Gaza, going back to 2007 or 2008, a huge UN system developed within the strip whereby approximately 600 trucks entered it every single day. Some 80% of the population of Gaza depended to some extent on food aid, other forms of aid and the provision of healthcare and education. All of that was provided within the UN system through UNRWA, UNICEF and the World Health Organization. As we keep hearing, the UN and international NGOs had more than 400 individual locations throughout the Gaza Strip where aid was distributed locally to people and families known to need assistance. That entire system has been completely and utterly destroyed. To their great credit, the UN agencies and many of the international NGOs continue to do everything they can to sustain some elements of that system with minimal support and minimal provisions.</p>
+          <p eId="para_347"> What Israel has done is create an absolute abomination. It is saying it is providing aid to the people of Gaza in four locations and then shooting and killing people when they go to get that aid. It is provided at locations where most Palestinians do not live, so they have to travel. We have endless stories of people who have travelled 10 km, 20 km or 30 km to try to pick up food, sometimes not getting it, and then having to return home.</p>
+          <p eId="para_348"> The aid system has been deliberately destroyed. UNRWA has been deliberately dismantled. That is a key component of the negotiations on a ceasefire, which we hope will be successful very soon. Without the UN and the NGOs being facilitated and without a massive influx of aid, including everything from fuel for incubators and water treatment plants to medicines, clean water, food and sanitary items, this will just continue and it is going to get worse. We see the situation of starving children.</p>
+          <p eId="para_349">We have figures from the most recent research that indicate that the death toll in Gaza is 40% higher than the current estimate of 58,000. I will provide the evidence to the committee.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_258">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_350">We can do that by the following mechanism. I have a three-minute slot. Before that three-minute slot is Deputy Cathy Bennett, then Senator Patricia Stephenson. I will give Mr. Meehan my three minutes at the end if he wants to update us on the figures.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_259">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_351">Some critics have claimed that this legislation will not help Palestinians and it is not warranted. I was very struck by Ms Al Tamimi’s opening comments on the hope felt from initiatives like this. Could she tell us how significant this initiative would be and how it is viewed by Palestinians?</p>
+        </speech>
+        <speech by="#" eId="spk_260">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_352">As I said before, all Palestinians are looking up to Ireland, waiting for this legislation, because it does help. It means Ireland knows what is happening in the occupied West Bank. My people, my family and my extended family live in Hebron, which is controlled by these illegal settlers who attack them, uproot their trees and go on night raids protected by the Israeli army. When this legislation goes through and becomes a law, that will stop these illegal settlers and illegal settlements being in their land and harassing and attacking them day and night.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_261">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_353">The reason is that they will not be able to sell the products. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_262">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_354">Of course, because that will affect them. Settlements are illegal under international law anyway, so they should not be there in the occupied territories in the first place.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_263">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_355">A case was filed in the European Court of Justice yesterday against the European Commission and the European Council under Article 265 of the European treaty for failure to act. Do the witnesses believe the EU is in breach of its human rights obligations, in particular regarding its obligations under the EU-Israel association agreement? Is it presently in breach of human rights?</p>
+        </speech>
+        <speech by="#" eId="spk_264">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_356">Since I have started working and researching these issues, which was in 2004 or 2005, Palestinian organisations and human rights organisations in Europe have been calling for what is happening now - this discussion about suspending the association agreement and other measures. It is more than 20 years of inaction. Even the report that the EU circulated found Israel to be in breach, but it still has not decided on taking action yet. Clearly, there is grounds to say there has been a failure to act.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_265">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_357">Does Dr. Reynolds think Ireland can be a leader here, showing Europe that this is what everyone needs to do? Can it translate that Europe will follow on from us and we are leading by example?</p>
+        </speech>
+        <speech by="#" eId="spk_266">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_358">I think so. Ireland has taken time to get there has well. There has been a lot of tireless work done by organisations across the country to push on these issues. However, it was Ireland and Spain that sent that letter more than a year ago now to start the process. It is shameful that the European Union takes this long to even get to the discussion point, but through all of that process Ireland has been leading, and it should continue with even more urgency.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_267">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_359">I specifically thank Ms Al Tamimi for coming in. It is not easy to talk about things that are impacting your family and loved ones in this kind of setting. I am sure it can be quite emotional and exhausting, so I thank her.</p>
+          <p eId="para_360"> The ICJ last year found that Israel’s legislation and measures impose and serve to maintain a near complete separation in the West Bank and East Jerusalem between settler and Palestinian communities. It talked about this leading to racial segregation - apartheid. We received an input from Dr. Reynolds and Professor John Dugard, who was a former UN special rapporteur on Palestine and a judge at the ICJ at one stage as well. Could Dr. Reynolds speak about this specifically and its implications?</p>
+        </speech>
+        <speech by="#" eId="spk_268">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_361">I thank the Senator for the question. Professor Dugard is a South African international lawyer who was one of the leading anti-apartheid lawyers during the apartheid regime in South Africa. Much of his analysis as special rapporteur and in his scholarship has been about the dynamics and nature of an apartheid regime in occupied Palestine. It is relevant to the issue because the settlements are central to the entire two-tier system of law, administrative regulations and military courts for Palestinians and Israeli civil courts and civil law for Israeli settlers. For the same offence or crime in the same territory, it is two entirely separate legal systems. There is physical segregation and separation, movement restrictions, large-scale confiscation and theft of land, and the division of the population into separate reserves and ghettos. All of that is what is defined as apartheid under international law. Apartheid has a legal definition that comes from the experience in southern Africa but is not limited to that. This is the analysis that Palestinian organisations and lawyers have been doing for many decades. In recent years, some of the leading Jewish Israeli organisations, including B’Tselem, and the international human rights organisations, as the Senator may be well aware, have done extensive and detailed reporting on this. Relevant to the Bill, this is not separate from the issue of the settlements. The settlements are a core part of the reason that an apartheid regime exists in the first place. Therefore, to address the apartheid regime, you have to address the settlements and <i>vice versa</i>. The prohibition on apartheid and racial discrimination is at that<i> jus cogens</i>-peremptory norm level, from which there are no exceptions or derogations. All states, regardless of whether they have signed particular treaties, are bound in their responsibilities not to aid, assist or support an apartheid system.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_269">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_362">The witnesses have eight minutes to do with what they wish to make up for the opening statement piece. I am very grateful for that. Mr. Meehan wanted to update us on figures, so we might start with him and give him three minutes. He can get a lot said.</p>
+        </speech>
+        <speech by="#" eId="spk_270">
+          <from> Mr. Éamonn Meehan<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_363">This is an independent piece of research that has just been published. I will make it available to the clerk of the committee as well. This is research conducted by a research team from the University of London and the Catholic university of Leuven in Belgium. It was conducted in December 2024 and January of this year. It involved face-to-face interviews with 2,000 randomly selected households across each of Gaza’s five governorates. Participants were asked to list household members present before the war and their current status, providing an on-the-ground snapshot of mortality through direct testimony. Essentially, the research found that the actual numbers up to date – the real number – is 40% greater than those provided by the Gaza ministry of health. The reason for that is many of those who have died never reach a health facility or a morgue and, therefore, are not counted. The figure includes direct fatalities as a result of bombardments and shootings, and indirect deaths as a result of perhaps people who have cancer but have no treatment, dialysis not being available and all of that kind of situation. They estimate at least 90,000 people have died in Gaza since October 2023. We are told the current figure is 58,000, but extrapolating that, according to this research, by an additional 40% brings that number to more than 90,000. This is published in <i>New Scientist</i>. The commentary I have seen on it from other researchers is positive in terms of how it was conducted, the methods and the numbers. This is in accord with other research we saw published in <i>The Lancet </i>in 2024 and also with some work done by Harvard University.</p>
+        </speech>
+        <speech by="#" eId="spk_271">
+          <from> Ms Marie Crawley<recordedTime time="2025-07-15T17:30:00+01:00"/></from>
+          <p eId="para_364">Senator O’Reilly asked earlier about potential radicalisation in the Middle East. I think we are already witnessing the worst excesses of Israeli radicalisation in the Middle East. I also think that the framework of international law is at risk of becoming an abstract set of ideals as opposed to a framework for justice.</p>
+          <p eId="para_365">Israel has totally disregarded international law for decades and acted with total impunity. Now is the time for us not to speak to our obligations under international law, but to act according to those obligations and give the slightest glimmer of hope to the people of Palestine who, as we sit and discuss this in committee, are enduring a living hell. That is the opportunity we have and that is what we must do. </p>
+        </speech>
+        <speech by="#" eId="spk_272">
+          <from> Ms Fatin Al Tamimi<recordedTime time="2025-07-15T17:40:00+01:00"/></from>
+          <p eId="para_366">I thank our friends in Jews for Palestine Ireland who supported us and sent us a statement. I cannot read it all, but I am going to read a small paragraph of it, which says:</p>
+          <p class="indent_1" eId="para_367">We stand in solidarity with our Palestinian brothers and sisters in opposing Israeli apartheid, notions of racial supremacy, ethnic cleansing and now forced starvation and genocide. Children die of hunger and baby formula is banned by Israel. Passing this Bill, including trade and services is absolutely the right thing to do. Not in our name. Pass the Bill. </p>
+          <p eId="para_368"> That is from Jews for Palestine Ireland. </p>
+        </speech>
+        <speech by="#" eId="spk_273">
+          <from> Dr. John Reynolds<recordedTime time="2025-07-15T17:40:00+01:00"/></from>
+          <p eId="para_369">I wish to make a final point from the perspective of an international lawyer on the importance of this Bill in upholding our obligations under international law. Obviously, the primary purpose and driver of the Bill is about intervening in a way that protects Palestinians from further dispossession and destruction, but there is also a responsibility and duty on us as a State to uphold. Clearly, enforcement of international law is not an automatic and easy, self-enforcing thing. There are an array of different intersecting obligations and ways it gets done. The role of the national Parliament is fundamental to that. </p>
+          <p eId="para_370"> Thinking about the figures we have heard from the genocide in Gaza, we cannot think of our duty and obligations to prevent and respond to genocide in Gaza as separate from our duties in response to the illegal occupation or apartheid. One of the things the International Court of Justice says about these duties is that they will differ from state to state. The duty to prevent genocide, for example, is commensurate with the type of relations a state has with the perpetrating or offending state and its ability to influence them. When we see some of the responses from around the world over the past one or two years, it may not be a settlement goods and services ban in the way that Ireland, Chile or Norway are thinking about. In the case of Colombia, it is a coal export ban. In Malaysia’s case, it is restrictions on shipments and cargo deliveries to Israel. Every state has its role to play based on the way it can contribute. This is something tangible, concrete and practical that has been on the table and discussed at length in the Irish context. It is an essential way to enforce our obligations. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_274">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T17:40:00+01:00"/></from>
+          <p eId="para_371">I thank Dr. John Reynolds, Ms Fatin Al Tamimi, Ms Marie Crawley and Mr. Éamonn Meehan, as well as those in the Visitors Gallery. I particularly wish to thank the support team, the secretariat and our legal advisers for their assistance in preparation for this twin session. The meeting is now adjourned until tomorrow, Wednesday 16 July at 6.30 p.m. I hope witnesses feel they have been heard and that they were given sufficient time to make the points they wanted to make. I thank them for the generosity of their disposition in relation to the time constraints. We very much appreciate that.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee adjourned at 5.44 p.m. until 6.30 p.m. on Wednesday, 16 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

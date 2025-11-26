@@ -1,0 +1,620 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-15/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-15/debate"/>
+          <FRBRdate date="2025-07-15" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-15/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-15/debate/mul@"/>
+          <FRBRdate date="2025-07-15" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-15/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-15/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AengusOSnodaighSF" href="/ie/oireachtas/member/id/Aengus-Ó-Snodaigh.D.2002-06-06" showAs="Aengus Ó Snodaigh"/>
+        <TLCPerson eId="CatherineConnolly" href="/ie/oireachtas/member/id/Catherine-Connolly.D.2016-10-03" showAs="Catherine Connolly"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="EvanneNiChuilinn" href="/ie/oireachtas/member/id/Evanne-Ní-Chuilinn.S.2025-01-29" showAs="Evanne Ní Chuilinn"/>
+        <TLCPerson eId="JoeConway" href="/ie/oireachtas/member/id/Joe-Conway.S.2025-01-29" showAs="Joe Conway"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="ShaneCurley" href="/ie/oireachtas/member/id/Shane-Curley.S.2025-01-29" showAs="Shane Curley"/>
+        <TLCPerson eId="ShaneMoynihan" href="/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29" showAs="Shane Moynihan"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>Joint Committee on the Irish Language, the Gaeltacht and the Irish-speaking Community</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Comhchoiste na Gaeilge, na Gaeltachta agus Phobal Labhartha na Gaeilge</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-15">Dé Máirt, 15 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-15">Tuesday, 15 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoeConway">Joe Conway</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ShaneMoynihan">Shane Moynihan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ShaneCurley">Shane Curley</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SeanKyne">Seán Kyne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#EvanneNiChuilinn">Evanne Ní Chuilinn.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#NaoiseOMuiri">Naoise Ó Muirí</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#AengusOSnodaighSF">Aengus Ó Snodaigh.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputies Sorca Clarke and Conor D. McGuinness.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#CatherineConnolly">Teachta / Deputy Catherine Connolly sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i>Tháinig an comhchoiste le chéile i seisiún príobháideach ar 11.43 a.m., cuireadh an suí ar fionraí ar 11.55 a.m. agus cuireadh tús leis arís i seisiún poiblí ar mheán lae.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Tuarascáil Bhliantúil 2024 agus Caighdeán na Seirbhísí Poiblí Dátheangacha: Oifig an Choimisinéara Teanga<recordedTime time="2025-07-15T12:00:00+01:00"/></heading>
+        <speech by="#CatherineConnolly" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_13">Cuirim céad míle fáilte roimh na finnéithe: Séamas Ó Concheanainn, an Coimisinéir Teanga; Órla de Búrca, bainisteoir gearán, ról nach bhfuil éasca; Eibhlín de Paor, bainisteoir imscrúduithe; agus Maggie Ní Chadhain, bainisteoir oibríochtaí. Bhí siad ann go mion minic. Is dóigh go bhfuil na rialacha agus na treoracha de ghlanmheabhair acu ag an bpointe sin so ní chuirfidh mé iad tríd an bpróiseas sin.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_14">Gabhaim buíochas leis an gCathaoirleach agus le comhaltaí uilig an choiste as an gcuireadh teacht ina láthair chun plé a dhéanamh ar phríomhthorthaí thuarascáil bhliantúil m’oifige do 2024. Fáiltím roimh an gcuireadh freisin trácht a dhéanamh ar dhá chrann taca atá tábhachtach d’fheidhmiú an phlean náisiúnta um sheirbhísí poiblí Gaeilge agus do láidriú cearta teanga sna blianta beaga amach romhainn. Is iad sin an fhoráil go mbeidh inniúlacht sa Ghaeilge ag 20% den fhoireann a earcófar chuig comhlachtaí poiblí agus córas na gcaighdeán teanga, trína leagfar dualgas ar chomhlachtaí poiblí seirbhísí poiblí nua a sholáthar trí mheán na Gaeilge. I mo theannta anseo inniu tá Órla de Búrca, bainisteoir gearán na hoifige; Eibhlín de Paor, bainisteoir imscrúduithe; agus Maggie Ní Chadhain, bainisteoir oibríochtaí Oifig an Choimisinéara Teanga.</p>
+          <p eId="para_15"> Mar is léir ó thuarascáil bhliantúil m’oifige, a foilsíodh le gairid, tá fianaise shoiléir sna 594 gearán a fuair m’oifig in 2024 gur driseacha cosáin le seirbhísí poiblí i nGaeilge a fheabhsú i láthair na huaire iad an easpa foirne le Gaeilge mhaith atá fostaithe sa tseirbhís phoiblí agus an easpa dualgas atá ar an Stát go fóill seirbhísí poiblí bunúsacha a sholáthar i nGaeilge. Bhain 37% de líon iomlán na ngearán a fuair m’oifig in 2024 le gealltanais i scéimeanna teanga. Tá sé ríthábhachtach bunaidhm chóras na scéimeanna teanga faoin Acht teanga bunaidh in 2003 a choinneáil i gcuimhne. Ba í an bhunaidhm sin ná gur trí chóras na scéimeanna teanga a chuirfí go leor de na seirbhísí poiblí bunúsacha i nGaeilge nár leagadh síos sa mbun-Acht féin in 2003 ar fáil, mar shampla, seirbhísí tacaíochta custaiméara ar an teileafón, ag deasca cabhrach agus fáiltithe. I bhfocail eile, bhíothas ag brath ar chóras na scéimeanna teanga don ghné chriticiúil sin den tseirbhís cumarsáide labhartha idir pobal na Gaeilge agus baill foirne na gcomhlachtaí poiblí a chuireann seirbhísí ar fáil don phobal. </p>
+          <p eId="para_16"> Bhí sé ríshoiléir le blianta fada nach raibh córas na scéimeanna teanga oiriúnach don fheidhm a leagadh amach dó. Rinne an tAire Stáit sa Roinn Turasóireachta, Cultúir, Ealaíon, Gaeltachta, Spóirt agus Meán, mar a bhí, aisghairm ar bhunú scéimeanna nua teanga i mí na Nollag seo caite, in 2024. Níor tugadh feidhm go fóill do chóras nua na gcaighdeán teanga atá le teacht ina áit chóras na scéimeanna teanga. Is é bunfheidhm chóras nua na gcaighdeán teanga dualgas soiléir agus leanúnach a leagan ar chomhlachtaí poiblí le seirbhísí poiblí nua a sholáthar agus an leibhéal inniúlachta a chaithfidh a bheith ag baill foirne na gcomhlachtaí poiblí sa nGaeilge a bheidh ag soláthar na seirbhísí a shainiú. Is den ghéar-riachtanas é go dtabharfar córas nua na gcaighdeán teanga i bhfeidhm gan mhoill le dul i ngleic leis an bhfolús reatha atá cruthaithe ag aisghairm ar dhaingniú scéimeanna teanga nua.</p>
+          <p eId="para_17"> Cé go bhfuil go leor seirbhísí tacaíochta custaiméara de chuid an Stáit seo á gcur ar fáil ar líne anois, is gné lárnach de go leor seirbhísí poiblí i gcónaí an chumarsáid ó bhéal a tharlaíonn idir an pobal agus foireann na gcomhlachtaí poiblí. Faraor, léiríonn go leor de na gearáin a tháinig faoi scáth m’oifige in 2024 ní hamháin nach bhfuil dóthain foirne a bhfuil Gaeilge mhaith acu ar fáil le freastal ar éilimh phobal labhartha na Gaeilge, ach nach bhfuil go leor bunseirbhísí poiblí ó Ranna Rialtais agus ó údaráis áitiúla, mar shampla, ar fáil ar líne i nGaeilge i láthair na huaire. Cuir i gcás clárú, iarratas nó coinní a dhéanamh.</p>
+          <p eId="para_18"> Tógaimis an tairseach náisiúnta MyGovID ina chás den chineál seo. Is tairseach í seo a bhfuil raon leathan seirbhísí poiblí bunúsacha ar fáil uirthi. Cuir i gcás iarratas a dhéanamh ar phas, ar chárta seirbhísí poiblí, ar cheadúnas nó ar thástáil tiomána. Nuair a scrúdaítear leibhéal an tsoláthair i nGaeilge ar an tairseach lárnach Rialtais seo i láthair na huaire, feictear go bhfuil éagothromaíocht ollmhór idir caighdeán agus cuimsitheacht na seirbhíse atá ar fáil i mBéarla agus an tseirbhís thearc agus bhearnach atá ar fáil i nGaeilge. Scáthán atá i riocht reatha na tairsí MyGovID ar an leatrom atá á dhéanamh i láthair na huaire ar fhíorú chearta teanga phobal na Gaeilge nuair nach bhfuil na seirbhísí poiblí is bunúsaí, atá an pobal trí chéile á lorg go tréan gach lá, ar fáil ar ardchaighdeán i nGaeilge. Faraor, is léiriú eile ar na bearnaí tromchúiseacha atá luaite agam an t-imscrúdú a rinne m’oifig in 2024 ar Oifig na bPasanna de chuid na Roinne Gnóthaí Eachtracha, mar a bhí, maidir leis na baic atá ar phobal na Gaeilge i láthair na huaire seirbhís phoiblí chomh bunúsach le hiarratas a dhéanamh ar phas i nGaeilge gan bhac.</p>
+          <p eId="para_19"> Ba chloch mhíle thábhachtach i bhfeidhmiú na reachtaíochta teanga nua é foilsiú an chéad phlean náisiúnta um sheirbhísí poiblí Gaeilge i stair an Stáit i mí Dheireadh Fómhair 2024. Rinne an coiste comhairleach um sheirbhísí Gaeilge, a bhunaigh Aire na Gaeltachta le réiteach an phlean a stiúradh, cinneadh stuama taighdeoirí ó Acadamh na hOllscolaíochta Gaeilge, Ollscoil na Gaillimhe, a fhostú ar chonradh soláthair le cabhrú le foireann na Roinne an plean a fhorbairt. Is é an plean náisiúnta an fheithicil a tharraingeoidh le chéile na sruthanna pleanála straitéisí éagsúla a chinnteoidh go dtiocfaidh feabhas as cuimse ar sheirbhísí poiblí i nGaeilge ar scála náisiúnta. Tá na sé mhórthéamaí straitéiseacha sa phlean le moladh. Ní féidir bunchloch láidir a leagan faoin bplean náisiúnta, áfach, gan feidhm iomlán a thabhairt gan mhoill do dhá chrann taca a bhfuil feidhmiú éifeachtach an phlean náisiúnta ag brath go mór orthu; is iad sin feidhmiú chóras na gcaighdeán teanga agus feidhmiú na forála 20% d’earcaigh a bheith inniúil sa Ghaeilge idir Meitheamh 2022 agus Nollaig 2030.</p>
+          <p eId="para_20"> Is creatlach straitéise náisiúnta an-luachmhar atá sa bplean náisiúnta faoi láthair d’fhonn aghaidh a thabhairt ar an mórsprioc seirbhísí poiblí i nGaeilge a fheabhsú. Dála aon straitéise, is é an cur i bhfeidhm an chuid is dúshlánaí d’fhíorú straitéise ag leibhéal Stáit nó eagraíochta fiú. Beidh na chéad chéimeanna eile d’fheidhmiú an phlean náisiúnta criticiúil chun bonn taca láidir a chur faoi dhul chun cinn leis an mórsprioc náisiúnta seirbhísí poiblí i nGaeilge a fheabhsú as cuimse. Gan an dá phríomhchrann taca den phlean a bheith faoi lánseol laistigh de mhórán ama, is iad sin lánfheidhm a bheith tugtha ag an Aire Forbartha Tuaithe agus Pobail agus Gaeltachta do chóras na gcaighdeán teanga agus earcú fórsa saothair a bhfuil inniúlacht sa Ghaeilge acu a bheith á fheidhmiú ar bhonn córasach laistigh de chomhlachtaí poiblí, is deacair dul chun cinn suntasach i bhfeabhsú soláthar seirbhísí poiblí i nGaeilge a shamhlú sa gcúpla bliain amach romhainn. Dá réir, tá tábhacht mhór ag baint leis an bplean gníomhaíochta a bhfuiltear ag súil lena fhoilsiú go luath ón Roinn Forbartha Tuaithe agus Pobail agus Gaeltachta le feidhmiú chrainn taca an phlean agus táscairí feidhmíochta gaolmhara a leagan amach go soiléir.</p>
+          <p eId="para_21"> Tá fianaise i leith an ghéarghá córas na gcaighdeán teanga a thabhairt i bhfeidhm sa bhfíric gur bhain 41% de líon iomlán na ngearán a rinneadh le m’oifig in 2024 le laigí chóras na scéimeanna teanga. Dhaingnigh Airí Gaeltachta éagsúla scéimeanna teanga le ballaíocht 140 comhlacht poiblí le 20 bliain anuas. Bhí cúis mhaith leis an daingniú sin. Roghnaíodh comhlachtaí poiblí a raibh seirbhísí poiblí forleathana agus criticiúla á soláthar acu don phobal. I measc an 140 comhlacht poiblí sin, tá Ranna agus áisíneachtaí Rialtais, údaráis áitiúla, institiúidí oideachais agus comhlachtaí poiblí móra eile; mar shampla, Feidhmeannacht na Seirbhíse Sláinte.</p>
+          <p eId="para_22">Bunriachtanas a bheidh ann go dtabharfaidh an chéad sraith de chaighdeáin teanga na catagóirí thuasluaite uile de chomhlachtaí poiblí isteach faoina scáth maidir le soláthar seirbhísí criticiúla idirghníomhacha ar líne, seirbhísí faisnéise teileafóin agus seirbhísí deisce cabhrach.</p>
+          <p eId="para_23"> Caithfear a bheith thar a bheith airdeallach faoi scála, scóip agus éagsúlacht na seirbhíse poiblí agus an dara crann taca don phlean náisiúnta, is é sin pleanáil d’fhórsa saothair ag a bhfuil inniúlacht i nGaeilge idir lámha. Tá breis agus 500 comhlacht poiblí forordaithe faoin reachtaíocht teanga. Léiríonn figiúirí a d’fhoilsigh an Roinn Caitheachais Phoiblí, Bonneagair, Athchóiriúcháin Seirbhíse Poiblí agus Digitiúcháin go raibh 397,121 duine fostaithe sa tseirbhís phoiblí ag deireadh an cheathrú ráithe in 2023 agus gur tháinig méadú de bhreis agus 13,000 fostaí ar an meán in aghaidh na bliana ar fhoireann na seirbhíse poiblí idir 2018 agus 2023.</p>
+          <p eId="para_24"> I bhfianaise scála agus scóip na hidirbheartaíochta atá ag teastáil le dóthain foirne atá inniúil i nGaeilge a earcú ar bhonn náisiúnta, dar liom, teastóidh aonad comhordúcháin agus tuairiscithe straitéise a aithint nó a bhunú le tacú leis an gcoiste comhairleach um sheirbhísí Gaeilge maoirseacht a dhéanamh ar earcú foirne atá inniúil i nGaeilge ar bhonn córasach trasna na seirbhíse poiblí. Mura ndéanfar comhordú, tomhas agus tuairisciú ar bhonn leanúnach ar fud na seirbhíse poiblí ar fheidhmiú an chrainn taca seo den phlean náisiúnta, tá riosca mór ann nach n-éireoidh leis an Stát a chuid dualgas reachtúil maidir leis an bhforáil 20% d’earcaigh atá inniúil i nGaeilge a fhíorú. </p>
+          <p eId="para_25"> Ar cheann de na rioscaí is mó a bheidh le bainistiú ag an gcoiste comhairleach, tá an ceap tuisle a bhain de chóras na scéimeanna teanga in imeacht na mblianta a sheachaint ar ais nó ar éigean, is é sin, gurb é a bheadh sa bpleanáil fórsa saothair i ndeireadh na dála ná cur chuige scaoilte le heaspa comhordúcháin ar bhonn náisiúnta, staid a chinnteodh nach dtiocfadh an feabhas as cuimse atá riachtanach ar sheirbhísí poiblí i nGaeilge.</p>
+          <p eId="para_26"> Tá sé criticiúil go mbeidh dóthain acmhainní ag an aonad comhordúcháin, tomhais agus tuairiscithe a thacóidh leis an gcoiste comhairleach agus an Roinn Forbartha Tuaithe agus Pobail agus Gaeltachta crann taca an bheartais náisiúnta earcaíochta a neadú i gcroílár an phlean náisiúnta. Thacódh an t-aonad comhordúcháin agus tuairiscithe straitéise go mór, dar liom, lena chinntiú go neadófar pleanáil agus earcú fórsa saothair atá inniúil i nGaeilge i bpleanáil eagraíochtúil na gcomhlachtaí poiblí fud fad na seirbhíse poiblí. Beidh fíorú thiomantas an Stáit seo d’fheabhsú seirbhísí poiblí i nGaeilge ag brath go mór ar na struchtúir bhuanú thacaíochta a chuirfear ar fáil lena chinntiú go dtabharfar faoi fheidhmiú an phlean náisiúnta ar bhonn córasach go náisiúnta.</p>
+          <p eId="para_27"> I mí na Nollag 2024, leag mé tráchtaireacht ar obair an choiste chomhairligh don tréimhse idir an 20 Meitheamh 2022 agus an 31 Nollaig 2023 mar a fhorordaítear faoi alt 18F(3) d’Acht na dTeangacha Oifigiúla (Leasú), 2021, faoi bhráid an Aire Turasóireachta, Cultúir, Ealaíon, Gaeltachta, Spóirt agus Meán, mar a bhí.</p>
+          <p eId="para_28"> Tá cur síos in aguisín A faoi iamh ar na fearainn éagsúla d’fhonn bonn seasmhach a chur faoin bplean náisiúnta. I measc na bhfearann sin, tá earnáil na hollscolaíochta Gaeilge. I bhfianaise scála an bhirt atá de dhíth d’fhonn dóthain foirne atá inniúil sa Ghaeilge a sholáthar don tseirbhís phoiblí, beidh sé riachtanach go leagfar amach conair sa phlean náisiúnta trína bhforbrófar straitéis nua don ollscolaíocht Ghaeilge go náisiúnta chun sruth de chéimithe ag a bhfuil Gaeilge mhaith a sholáthar. Dar ndóigh, bheadh ról ar leith ag an Roinn Breisoideachais agus Ardoideachais, Taighde, Nuálaíochta agus Eolaíochta, an tÚdarás um Ard-Oideachas, an Roinn Forbartha Tuaithe agus Pobail agus Gaeltachta agus institiúidí tríú leibhéal ina leithéid. Gan ach comhthéacs amháin a lua, tá an soláthar reachtúil atá in alt 8(1)(b) d’Acht an Údaráis um Ard Oideachas, 2022 maidir le cláir ardoideachais lán-Ghaeilge nua a fhorbairt fíorthábhachtach le tacú le gnóthú an ardaithe shuntasaigh ar fhoireann atá inniúil i nGaeilge.</p>
+          <p eId="para_29"> Dar ndóigh, is iad na scoileanna atá i mbun an oideachais lán-Ghaeilge ag leibhéal na bunscolaíochta agus na hiarbhunscolaíochta laistigh den Ghaeltacht agus lasmuigh di a chothóidh mic léinn tríú leibhéal an lae amárach. Tá na heasnaimh mhóra a mheastar a bheith i soláthar na Roinne oideachais d’earnáil na hiarbhunscolaíochta lán-Ghaeilge go náisiúnta i láthair na huaire á n-imscrúdú agam chun críoch cearta teanga a fhorordaítear san Acht Oideachais, 1998. </p>
+          <p eId="para_30"> Ní mór breathnú go géar ar bhonneagar náisiúnta do sholáthar seirbhísí poiblí i nGaeilge. Tá bonneagar náisiúnta pleanála teanga á fhorbairt ag an Stát le blianta beaga anuas sna limistéir phleanála teanga, i líonraí teanga agus i mbailte seirbhíse Gaeltachta. D’fhéadfaí leas a bhaint as an mbonneagar náisiúnta pleanála teanga sin le molchampais seirbhísí poiblí a fhorbairt a chuirfeadh raon leathan seirbhísí poiblí ar fáil i nGaeilge. Chruthódh na molchampais dlús seirbhísí i nGaeilge, dlús foirne a bheadh ag seachadadh na seirbhísí poiblí agus dlús éilimh ón bpobal teanga. Tá deiseanna suntasacha ann go dtógfadh na molchampais ar an mbonneagar oideachais tríú leibhéal, ar an mbonneagar teicneolaíochta, na Gteiceana, mar shampla, agus ar an mbonneagar sealbhaithe agus buanaithe teanga atá forbartha ag an Stát sa Ghaeltacht cheana féin.</p>
+          <p eId="para_31"> Beart an-dearfach atá idir lámha ag Údarás na Gaeltachta ná uirlis úrnua don Ghaeilge a bheidh bunaithe ar an intleacht shaorga a fhorbairt. Mar aon le hacmhainní nua intleacht saorga i nGaeilge a fhorbairt a d’éascódh rochtain ar sheirbhísí faisnéise poiblí i nGaeilge, ba chóir breathnú ar na deiseanna freisin a chothóidh an intleacht shaorga i gcomhthéacs na molchampas ilsheirbhísí thuasluaite. Is féidir na molchampais a shamhlú mar chumasc den nuatheicneolaíocht, lena n-áirítear an intleacht shaorga, agus den acmhainn daonna inniúil i nGaeilge a bheadh ag soláthar taisclann de sheirbhísí poiblí i nGaeilge ar líne agus ar láthair fhisiciúil sa Ghaeltacht, i mbailte seirbhíse Gaeltachta agus i líonraí teanga. </p>
+          <p eId="para_32"> Léiríonn na dúshláin a bhaineann leis an mhoill i bhfoilsiú na gcaighdeán teanga, agus i bhforordú dátaí faoina ndéanfar na seirbhísí go léir a chuireann comhlacht poiblí ar fáil sa Ghaeltacht a sholáthar i nGaeilge, scála na hoibre atá romhainn. Mar a luaigh mé níos luaithe, cinneadh stuama agus meáite a bhí i gcinneadh an choiste chomhairligh clár taighde ollscoile a choimisiúnú ar mhaithe le dúshraith théagartha eolaíoch a leagan faoi fhorbairt an phlean náisiúnta. Creidim gur beart criticiúil a bheidh ann go mbainfidh an coiste comhairleach úsáid as an gcumhacht reachtúil atá aige faoi alt 18C(1)(c) d’Acht na dTeangacha Oifigiúla, 2003 mar atá leasaithe lena chinntiú go mbeidh dóthain cúnaimh agus saineaolais sheachtraigh agus acmhainní ar fáil don chomhchoiste agus don Roinn le crainn taca an phlean náisiúnta a leagan agus a bhuanú.</p>
+          <p eId="para_33"> Is mór an tábhacht a bhaineann leis an soláthar in alt 18C(4) den Acht freisin ina bhforordaítear go mbeidh na cumhachtaí go léir is gá ag an gcoiste comhairleach ar mhaithe le feidhmiú an phlean náisiúnta.</p>
+          <p eId="para_34"> Léiríonn alt 10A, maidir le fógraíocht ag comhlachtaí poiblí, an tionchar dearfach atá ag feidhmiú na reachtaíochta teanga go tráthrialta ar láidriú cearta teanga. Tá úsáid agus feiceálacht na Gaeilge ar na meáin éagsúla i bhfad níos suntasaí anois ná riamh de thoradh na forála seo. De thoradh na forála fógraíochta, rinne comhlachtaí poiblí fógraíocht dar luach €3.8 milliún ar mheáin Ghaeilge i gcaitheamh na bliana 2023 agus fógraíocht i nGaeilge dar luach €10.4 milliún ar mheáin Bhéarla freisin i gcaitheamh na bliana 2023. Léiríonn an fhoráil seo an dlúthcheangal atá idir feidhmiú cearta teanga agus cothú bhisiúlacht na Gaeilge. Ábhar dóchais freisin is ea go raibh 50 as 51 comhlacht poiblí a ndearnadh faireachán orthu géilliúil d’fhoráil san Acht leasaithe 2021 a d’fhorordaigh go n-ainmneofaí ball foirne den bhainistíocht le cúram a dhéanamh d’fheidhmiú na reachtaíochta teanga laistigh den chomhlacht poiblí.</p>
+          <p eId="para_35">Tá tábhacht nach beag ag baint leis an bhforáil seo maidir le treisiú sícé rialachais na gcomhlachtaí poiblí maidir le feidhmiú na gcearta teanga laistigh de na comhlachtaí poiblí aonair.</p>
+          <p eId="para_36"> Is cinnte go bhfuil cúpla bliain chinniúnach romhainn le bonn láidir a leagan faoi fheabhsú seirbhísí poiblí i nGaeilge. Beidh ról cinniúnach ag dea-fheidhmiú an phlean náisiúnta ar threisiú chearta teanga phobal na Gaeilge sa chúpla bliain seo romhainn. Tá mo oifig tiomanta go hiomlán do chomhlíonadh a cuid feidhmeanna uilig chun na críche seo. Gabhaim buíochas arís leis an gCathaoirleach agus baill uilig an chomhchoiste as a n-aird agus a dtacaíocht leanúnach don cheist náisiúnta seo.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_37">Gabhaim buíochas leis an gcoimisinéir agus is cinnte gur óráid tosaigh téagartha le gach rud leagtha amach a bhí ansin. Tá an t-uafás oibre déanta aige agus ag an oifig. Thug sé léargas cuimsitheach ar na rudaí atá le déanamh agus ar na rudaí dearfacha freisin ó thaobh comharthaí. Tiocfaimid ar ais chuige. Glaoim ar an Teachta ó Snodaigh.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_4">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_38">Tréaslaím leis an gcoimisinéir as an méid atá ráite aige. Tá sé tábhachtach go gcloisimid a leithéid chomh lom sin. Tá sé seo achtaithe ó 2021 agus trí bliana go leith níos déanaí, níl na caighdeáin ann. Bhíomar ar fad ag tnúth leo. Is cuimhin liom an díospóireacht fúthu. Bhíomar ag tnúth leo laistigh de sé mhí. Dúirt an tAire nach mbeadh aon fhadhb agus go mbeadh siad ann laistigh de thrí mhí, ach táimid fós ag fanacht. Tuigim na deacrachtaí agus an dúshlán atá i gceist ach tá dainséar ann ag an staid seo nach sroichfimid an sprioc atá leagtha síos do 2030. Caithfimid bheith réalaíoch faoi sin. Leag an coimisinéir síos go soiléir cé chomh lárnach is atá na caighdeáin sin. An tarna rud a leag sé béim air ná an gá go mbeidh straitéis againn ó thaobh an córas oideachais sna hollscoileanna agus ag an dara leibhéal chomh maith. Luaigh sé go bhfuil imscrúdú á dhéanamh ag Oifig an Choimisinéara Tenaga ar earnáil na hiarbhunscoileanna. Cén uair a bheidh sé sin críochnaithe aige? An bhfuil tuairim aige faoi sin? Tá sé chomh lárnach sa straitéis a bhaineann le gach rud atá luaite aige.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_39">Gabhaim buíochas leis an Teachta. Tá an ceart aige go bhfuil sé i gcroílár an bheartais náisiúnta atá ag teastáil ó thaobh cúrsaí oideachais. Tháinig roinnt gearáin i dtreo m’oifig agus chinn muid imscrúdú a sheoladh go sonrach ar son soláthar atá an Roinn oideachais ag déanamh ag leibhéal na hiarbhunscolaíochta lánGhaeilge. Go ginearálta tá an leibhéal soláthair bunaithe ar na figiúirí atá foilsithe go poiblí agus atá á iniúchadh againn ag léiriú go bhfuil an soláthar ag leibhéal na hiarbhunscolaíochta lánGhaeilge i bhfad níos ísle. Tá sé faoi bhun 3% go náisiúnta lasmuigh den Ghaeltacht i gcomparáid leis an soláthar ag leibhéal na bunscolaíochta. Táimid i lár an imscrúdaithe faoi láthair agus tá íogaireacht áirithe ó thaobh obair m’oifige timpeall air sin, ach is féidir liom a rá go bhfuilimid ag breathnú ar an soláthar sin thar leibhéal deich mbliain go náisiúnta, agus go bhfuil muid ag breathnú ar chás staidéar i gcontaetha agus i limistéir ar leith a dhéanann iniúchadh ar aon bhearna suntasach atá ann nach bhfuil deis ag daltaí ag leibhéal na bunscolaíochta lánGhaeilge a chur ar aghaidh go dtí leibhéal na hiarbhunscolaíochta lán Ghaeilge mar gheall ar easpa soláthair. Is clár taighde suntasach eolaíoch atá ann a bhreathnaíonn ar an gcomhthéacs polasaí atá ag an Stát le deich mbliain ó thaobh cúrsaí oideachais. Tá súil agam an t-imscrúdú a bheith tugtha chun críche roimh dheireadh na bliana. Táimid ag cuir acmhainní ar leith i dtreo an imscrúdaithe sin ar na cúiseanna a luaigh an Teachta agus an tábhacht a bhaineann leis go mbeidh ábhar mac léinn leibhéal na hollscolaíochta lánGhaeilge ar fáil ag leibhéal i bhfad níos airde mar atá faoi láthair.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_6">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_40">Measaim, ionas go n-éireoidh linn sa mhéid atá leagtha síos san Acht sin, gur gá dúinn tabhairt faoi sin agus gan díreach fanacht ar an imscrúdú. Tá súil agam go bhfuil rudaí ag tarlú ach ní fhaca mé aon rud go dtí seo. Tá eagrais ann nach dtiteann faoi na scéimeanna atá ann faoi láthair a bhunaíodh tar éis 2003. Tá siad ag fanacht ar na caighdeáin. An bhfuil ról ar leith i gcás eagraíocht ar nós Sláinte Leanaí Éireann, nó Children's Health Ireland mar a luaitear i gcónaí? Deireann lucht Children's Health Ireland nach gá dóibh aon teideal Gaeilge a úsáid, agus nach gá teideal Gaeilge a chumadh don ospidéal leanaí atá á dtógáil ach oiread. An bhfuil lacuna ann a ligeann dóibh a leithéad a rá? An féidir leithéidí Children's Health Ireland a tharraingt isteach faoi na scéimeanna nó na dualgaisí atá ann faoi na scéimeanna?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_41">Ar an gcéad dul síos is dualgas é d'Aire na Gaeltachta na comhlachtaí poiblí nó na háisíneachtaí Rialtais a fhorordú. Faoin am go bhfuil sé sin déanta, tá forálacha dearfacha sa reachtaíocht nua, mar a luaigh an Teachta, ina measc teidil comhlachtaí poiblí agus úsáid lógóanna. Don chéad uair anois, tá dualgas nuair a leasaítear lógó nó nuair a chruthaítear lógó nua, tá dualgas ar an gcomhlacht poiblí forordaithe lógó a bheith i nGaeilge nó go dátheangach. Is dul chun cinn mór é sin maidir le feiceálacht na Gaeilge sna comhthéacsanna is bunúsaí sa Stát.</p>
+          <p eId="para_42"> Táimid thar a bheith airdeallach go bhfuil áisinteachtaí ann atá ag cur seirbhísí ar fáil thar ceann comhlachtaí poiblí mar thriú pháirtí. Tá dea-scéal bainteach leis sin sa reachtaíocht nua. Faoi alt 9E den Acht leasaithe, beidh dualgas ar chomhlachtaí poiblí déanamh cinnte má tá áisinteachtaí ag cur seirbhísí poiblí ar fáil faoina scáth go bhfuil na seirbhísí sin ag cloí le forálacha na reachtaíochta ar nós cúrsaí comharthaíochta, fógairtí taifeadta béil agus cumarsáid i scríbhinn leis an bpobal. Tá an soláthar atá san Acht nua go maith, ach is é córas na gcaighdeán teanga - mar a luaigh an Teachta - a tharraingeoidh gach rud le chéile. Leagamar an-bhéim san aitheasc ar na seirbhísí labhartha, is é sin an ghné cumarsáideach don Ghaeilge. Mar gheall nach bhfuil córas na gcaighdeán teanga ann faoi láthair, tá folús maidir leis na seirbhísí nua sin atá ag comhlachtaí seanbhunaithe agus comhlachtaí nua ó thaobh na dualgais reachtúla a chur i bhfeidhm. Go dtí go mbeidh córas na gcaighdeán teanga i bhfeidhm, ní bheidh bunchloch láidir téagartha faoin bplean náisiúnta ná faoi láidriú cearta teanga. Tá dea-scéalta go cinnte sa reachtaíocht nua ach d'fhéadfaí coimriú ar na caighdeáin teanga mar scafall a tharraingeoidh na forálacha éagsúla le chéile mar go gceanglóidh siad an dualgas atá ar chomhlacht poiblí na seirbhísí poiblí praiticiúla á chur ar fáil i nGaeilge ó lá go lá.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_8">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_43">Gabhaim buíochas leis an gcoimisinéir. Ba mhaith liom a chuid oibre agus obair na hoifige a mholadh. Dár ndóigh, molaim an tuarascáil atá déanta acu chomh maith. Tá laghdú tagtha ar an méid gearán atá ag dul isteach go dtí Oifig an Choimisinéara Teanga ó 2020. Bhí thart ar 600 gearán in 2020 agus 700 gearán in 2021, ach tá an uimhir ag teacht aníos. An bhfuil aon cúis leis sin? An bhfuil feabhas tagtha ar chúrsaí? An é go bhfuil níos lú daoine ag cur gearáin isteach? Céard atá ann i dtuairim an choimisinéara?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_44">Is ceist mhaith í sin. Tá dhá ghné ansin. Ar an gcéad dul síos, tá an taithí atá ag pobal na Gaeilge ar chaighdeán na seirbhísí poiblí atá ar fáil i nGaeilge an-lag. Mar atá luaite agam i roinnt comhthéacsanna, déanann sé sin creimeadh iomlán ar mhisneach agus ar éileamh. </p>
+          <p eId="para_45">Dá réir sin, tá mé den tuairim go bhfuil tionchar aige sin ar líon na ngearán atáimid ag fáil. Ar an lámh eile, idir 2023 agus 2024 tháinig méadú de 55% ar líon na gcásanna gur chuir muid comhairle ar chomhlachtaí poiblí fúthu, nó feasacht faoin ndualgas atá orthu. Bhí os cionn 500 cás gur chuir muid comhairle orthu. Bhain 70% de na cásanna sin leis an bhforáil nua ar fhógraíocht, alt 10A. Bhí an oifig réamhghníomhach ag cur comhairle ar chomhlachtaí poiblí faoin ndualgas reachtúil atá orthu. Tá mé cinnte go bhfuil tionchar aige sin ar líon na ngearán a choinneáil íseal nó a bheith beagán níos ísle ná mar a bhí.</p>
+          <p eId="para_46"> Ag deireadh an lae, go dtí go bhfeicfidh pobal na Gaeilge agus pobal na Gaeltachta go bhfuil fás ar sheirbhísí poiblí ar ardchaighdeán i nGaeilge, tá sé an-deacair an mhisneach sin sa tseirbhís phoiblí a chothú. Tá straitéisí foilsithe ag an Rialtas a leagann béim ar luachanna sa tseirbhís phoiblí ó thaobh iontaofacht agus oscailteacht na seirbhíse atá á cur ar fáil. Is luachanna iad atá ag an OECD agus tá an Rialtas ag rá go mbeidh siad seo fite fuaite sna seirbhísí atá sé ag cur ar fáil go poiblí i gcoitinne. Faraor, níl muid ag feiceáil an caighdeán sin, nó fiú amháin na luachanna, i gcur chuige an Stáit trí chéile maidir le seirbhísí bunúsacha poiblí i nGaeilge a chur ar fáil. Luaigh muid cuid acu ansin. Tá siad chomh bunúsach le hiarratas a dhéanamh i nGaeilge ar phas nó ar cheadúnas tiomána. Tá an Rialtas ag déanamh lárú ar go leor seirbhísí poiblí go digiteach. An sampla a thug mé ná an tairseach MyGovID. Má dhéanann tú scrúdú air sin, tá dhá eilimint ann. Is féidir foirm a líonadh le hiarratas a dhéanamh ar do phas, mar shampla. I gcás cuid de na seirbhísí, tá an tseirbhís ar líne réasúnta ach má tá ort labhairt le ball foirne sa gcomhlacht poiblí, titeann an tseirbhís óna chéile. Mar sin teastaíonn cur chuige córasach. Tá tionchar ag an gcaighdeán íseal seirbhísí poiblí ar an trust agus ar an gcreidiúint atá ag an bpobal i seirbhísí poiblí i nGaeilge.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_10">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_47">Ceann do na gearáin is mó atá feicthe agam, agus ceann mór atá agamsa chomh maith, ná nuair atá sloinne cosúil le mo cheannsa “Ó Cearúil” le dhá fada sa sloinne, nach nglacann cuid de na córais ríomhaireachta atá ann leis an fada. Tagann an rud ar ais aisteach. An bhfuil aon sórt imscrúdú déanta ag Oifig an Choimisinéara Teanga air sin leis na córais poiblí? </p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_48">Bhí go leor d’obair na hoifige in 2017 dírithe ar an gcóras Eircode. Bhí an obair sin dírithe go sonraí ar sheoltaí ach dár ndóigh bhí ainmneacha agus sloinnte i gceist freisin. Tá píosa nua faoi sa reachtaíocht nua atá tagtha i bhfeidhm - Acht 2021 - ach táimid ag fanacht ar Aire na Gaeltachta chun treoirlínte a eisiúint ar cén chaoi a chuirfidh comhlachtaí poiblí na córais teicneolaíochta a thagair an Teachta dóibh i bhfeidhm, le bheith in ann d’ainm, do shloinne, do theideal agus do sheoladh a phróiseáil agus a úsáid go cruinn i nGaeilge, agus úsáid an tsínidh fhada san áireamh. Mar a luaigh mé níos luaithe, tá go leor den soláthar san Acht nua go maith ach caithfear é a chur i bhfeidhm. Tá na treoirlínte sin ag teastáil go géar ag an bpointe seo. Tuigeann muid go bhfuil obair ar siúl ag an Roinn orthu.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_12">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_49">Gabhaim buíochas leis an gcoimisinéir as an bhfreagra sin. An cheist dheiridh atá agamsa ná ó thaobh na tuairisce a rinne Oifig an Choimisinéara Teanga le Comhairle Contae Chill Dara. Is Teachta Dála mé i gCill Dara agus bhíos mar bhall de Chomhairle Contae Chill Dara ar feadh 11 bliain. Tá oifigeach Gaeilge ann go lánaimseartha anois agus tá an-obair á dhéanamh ag Muireann Ní Bheaglaoich ann. Tá coiste Gaeilge ann chomh maith. Bhí an Teachta Shónagh Ní Raghallaigh ina suí ar an gcoiste sin liomsa sular toghadh an bheirt againn go dtí an Dáil. Bhí an tuairisc a rinne Oifig an Choimisinéara Teanga le Comhairle Contae Chill Dara bainteach le pleanáil an chontae. Tá moltaí ann agus tuigim sin ach cén fáth nach bhfuil pionóis ann? An é nach bhfuil an chumhacht ag Oifig an Choimisinéara Teanga pionóis a ghearradh ar comhairlí contae nó an é go bhfuil sé níos fearr moladh a thabhairt seachas pionóis agus daoine a thabhairt linn seachas a bheith ina gcoinne?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_50">Mar atá sé leagtha amach sa reachtaíocht teanga ag dul siar go dtí Acht 2003, i measc na céimeanna atá an Coimisinéir Teanga in ann a thógáil ná imscrúdú, nó fiosrú foirmiúil a dhéanamh ar an ábhar. Sa chás seo, níor fhoilsigh Comhairle Contae Chill Dara an dréachtphlean forbartha go comhuaineach i nGaeilge agus i mBéarla. Déantar fionnachtana agus moltaí agus ansin déanann Oifig an Choimisinéara Teanga monatóireacht air. Tá chumhacht eile ag Oifig an Choimisinéara Teanga a úsáidtear ó thráth go chéile, sé sin gur féidir linn tuairisc a leagan faoi bhráid Thithe an Oireachtais sa gcás go bhfuil an oifig den tuairim nach bhfuil moltaí nó cuid de mholtaí atá déanta in imscrúdú foirmiúil curtha i bhfeidhm. Is cumhacht tábhachtach atá ansin. Mar atá sa reachtaíocht teanga faoi láthair, níl sé de chumhacht ag an gcoimisinéir fíneáil a ghearradh. Tá mé ag ceapadh gur chuid de phróiseas a bheadh ansin. Le teacht i bhfeidhm na reachtaíochta teanga nua i láthair na huaire, beidh tréimhse ann ina mbeidh an reachtaíocht sin ag fáil a cosa. Má tá sé soiléir go bhfuil feabhas ag teacht ar sheirbhísí poiblí i nGaeilge, is dóigh liom go bhfuil na feidhmeanna nó na cumhachtaí atá agam faoi láthair dóthanach ag an bpointe seo ach is ábhar é go gcaithfear súil ghéar a choinneáil air.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_14">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_51">Gabhaim buíochas leis an gcoimisinéir.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_52">Anois, glaoim ar an Seanadóir Curley.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_16">
+          <from>Senator Shane Curley<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_53">Gabhaim buíochas leis na finnéithe as ucht a bheith anseo inniu. Ar an gcéad dul síos, rinneadh taighde le déanaí a léirigh go raibh inniúlacht sa Ghaeilge ag thart ar 5% de hoibrithe sa Státseirbhís. Tá thart ar 2,000 duine á n-earcú san earnáil phoiblí in aghaidh na bliana faoi láthair. Níl na figiúirí cearta againn ach is é sin a deirtear. Ciallaíonn sé sin go mbíonn Gaeilge ag thart ar 200 duine a earcaítear in aghaidh na bliana sa Státseirbhís agus go mbeidh gá le hardú 400% i líon na ndaoine le Gaeilge a bheidh ag teacht isteach. An gceapann an Coimisinéir Teanga go bhfuil an sprioc sin indéanta?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_54">Is é an cnámh droma atá ag an rud uilig ná go ndeirtear san fhoráil sin go bhfuil sé riachtanach go mbeadh Gaeilge ar a dtoil ag duine as cúigear a earcaítear isteach sa tseirbhís phoiblí. Is léir ó na figiúirí a ndearna muid staidéar orthu idir 2018 agus 2023 sa tseirbhís phoiblí ina iomlán - áit a bhfuil beagnach 400,000 duine ag obair - earcaítear 13,000 duine ar a mheán gach bliain. Sa bplean náisiúnta, dhírigh na taighdeoirí – cuid thábhachtach a bhí ann – ar cén leibhéal soláthar a bhí ann i láthair na huaire do chúrsaí i nGaeilge. Ansin, líon breis agus 4,000 ball foirne suirbhé i nGaeilge, agus is léargas a bhí ansin ann féin go bhfuil 4,000 duine taobh istigh den tseirbhís phoiblí faoi láthair atá compordach ag feidhmiú trí Ghaeilge. Luaigh 3,844 de na baill foirne sin go raibh leibhéal idir B2 agus C2 do Chomhchreat Tagartha na hEorpa um Theangacha acu. Mar sin, tá bunús ansin. Luaigh mé ar ball earnáil na hollscolaíochta Gaeilge. Má tá fás as cuimse le teacht ar líon na ndaoine a bhfuil Gaeilge mhaith acu gur féidir a fhostú isteach sa tseirbhís phoiblí, caithfear borradh agus cur go mór le líon na gcéimithe le Gaeilge atá ag teacht chun cinn. Má bhreathnaímid ar an tSeirbhís um Cheapacháin Phoiblí agus na comórtais uilig a ritheann sé, tá sé go hard sna céadta - suas le 600 - in aon bhliain amháin do chomórtais earcaíochta i mBéarla. Tá sé, nó bhí sé, an-íseal i nGaeilge. Agus é sin mar phointe tagartha, an cheist ná an bhfuil acmhainneacht á fhorbairt sa gcóras le tuilleadh fostaithe le Gaeilge a fhostú. Chomh maith le hearnáil na hollscolaíochta Gaeilge, tá obair mhaith á dhéanamh ag áisíneachtaí eile cúrsaí feidhmiúla sa Ghaeilge labhartha agus i nGaeilge scríofa a chur ar fáil. Mar sin, beidh orainn teacht air ón dá thaobh: cúrsaí ollscoile agus cúrsaí praiticiúla. Is é sin an fáth go leagaim béim, mar atá san aguisín, ar earnáil na hollscolaíochta agus clár náisiúnta foghlaim an teanga mar chrann taca den phlean freisin.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_18">
+          <from>Senator Shane Curley<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_55">Tá ceist agam faoi chúrsaí ar bhonn fadtréimhseach. </p>
+          <p eId="para_56">Dúirt an coimisinéir go mbeidh sé ag teastáil go mbeidh an Ghaeilge ag duine as gach cúigear a bheidh ag teacht isteach. Dar leis an CSO, níl an Ghaeilge ach ag 10% den phobal go ginearálta. Ciallaíonn sé sin go mbeidh líon dúbailte, go garbh, ag dul isteach san earnáil phoiblí i gcomparáid le chuile earnáil eile. Tá dhá cheist agam. An bhfuil gá le dreasacht airgeadais chun daoine le Gaeilge a mhealladh isteach? An bhfuil gá práinneach le hábhar tras-Ranna anois chun dul i ngleic leis an bhfadhb a fheicim féin? Ó mo thaithí féin mar mhúinteoir meánscoile Gaeilge, tá a fhios agam nach bhfuil aon dreasacht chun Gaeilge a labhairt sa seomra ranga. Anois, táthar ag laghdú na marcanna a bheidh ar fáil don scrúdú béil san ardteist. Tá a fhios agam go bhfuil daoine sa seomra seo tinn tuirseach de bheith ag éisteacht liom ag labhairt faoi seo cheana féin ach an gá dul i ngleic leis sin leis an NCCA, Coimisiún na Scrúduithe Stáit agus araile?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_57">Tagaim go hiomlán leis an méid atá ráite ansin. San aitheasc, leagaimid béim ar cé chomh tábhachtach atá sé comhordú a dhéanamh ag leibhéal náisiúnta ar earcú foirne a bhfuil Gaeilge mhaith acu. Má théann muid ar ais go dtí na bunfhigiúirí, tá 400,000 duine ag obair sa tseirbhís phoiblí. Tá 13,000 duine sa bhreis fostaithe chuile bhliain ar an mheán. Tá 500 comhlacht poiblí a thagann faoi scáth na reachtaíochta teanga. Tá 18 Ranna Rialtais againn agus 31 údarás áitiúla. Cén chaoi a ndéanfar comhordú nó cén chaoi a dtógfar droichead idir an plean náisiúnta agus an cur i bhfeidhm praiticiúil a theastódh leis an rud atá luaite ag an Seanadóir a bhaint amach? Táimid go láidir den tuairim go dteastaíonn aonad a aithint nó a bhunú a dhéanfaidh comhordú, tomhais agus tuarisciú ar bhonn leanúnach, go háirithe sna blianta tosaigh, ar an earcaíocht agus cárb as a bhfuil na hearcaigh ag teacht, is é sin, na réimsí a rinne an Seanadóir tagairt dóibh. Mura mbeadh sé sin ann, bheadh imní orm go bhféadfaimis a bheith i suíomh mar a bhí le córas na scéimeanna teanga, córas atá scaoilte agus a bhfuil easpa leanúnachais leis. Tá gá le struchtúr lena dhéanamh cinnte go bhfuil muid ag baint amach 5%, 10% agus ansin 15%.</p>
+          <p eId="para_58"> Ó thaobh cúrsaí dreasachta, dar ndóigh, bhí an liúntas Gaeltachta ann, ar cuireadh deireadh leis roinnt blianta ó shin. Má tá cur chuige náisiúnta ann, má tá sé soiléir don tseirbhís phoiblí agus do chomhlachtaí poiblí go bhfuil an t-aitheantas cuí á thabhairt don Ghaeilge trí chur chuige córasach náisiúnta, má tá treoir a fháil ag comhlachtaí poiblí, áit a bhfuil ról criticiúil ag an gcoiste comhairleach, agus má tá sé soiléir gur tosaíocht náisiúnta é seo, feicfidh daoine aonair deiseanna dul chun cinn ó thaobh cúrsaí a dhéanamh i nGaeilge agus freastal ar an nGaeltacht. Tá samplaí an-mhaith ag ollscoileanna éagsúla. Caitear tréimhsí sa nGaeltacht, áit a bhfuil an tumadh teanga fite fuaite ann. Ba cheart breathnú air sin a leathnú amach. Ach, mura dtarlófar comhordú náisiúnta agus mura dtógfar droichead idir an plean náisiúnta agus an cur i bhfeidhm ó lá go lá, tá sé an-deacair dul chun cinn a fheiceáil sa gcúpla bliain amach romhainn.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_20">
+          <from>Senator Shane Curley<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_59">Tá ceist pharlaiminte curtha isteach ag mo chomhghleacaí, an Teachta O'Meara, maidir leis an tréimhse Ghaeltachta sin.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_60">Tá múnlaí ann, mar shampla, an Erasmus Gaeilge atá bunaithe ar an Erasmus idirnáisiúnta. Tá sé sin á chur ar fáil. Freisin, tá scéim na bhfoghlaimeoirí teanga, atá á reáchtáil ag Roinn na Gaeltachta le fada an lá. Tá go leor de na struchtúir agus na múnlaí ann ach teastaíonn comhordú a dhéanamh orthu go náisiúnta chun go bhfeicfidh na comhlachtaí poiblí go bhfuil gualainn an Rialtais agus an Stáit taobh thiar de seo.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_22">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_61">Cuirim fáilte roimh na finnéithe agus gabhaim buíochas leo as ucht a bheith anseo. Táim ag féachaint ar an dá shíneadh fada in ainm Shéamas Ó Concheanainn. Teastaíonn uaim é sin a rá leis an Teachta Dála chomh maith. Tá triúr páiste agam. Níl aon rud cearr leo ach tá siad i gcóras ospidéal na leanaí agus ní féidir leis an gcóras sin déileáil leis an síneadh fada. Bíonn páistí an-chrosta nuair nach bhfuil na síntí fada ar a n-ainmneacha. Luaigh an Teachta Ó Snodaigh an deacracht mar gheall ar Children's Health Ireland. Tá deis anois é seo a chur i gceart leis an ospidéal nua. An gceapann an coimisinéir nach mbeidh orainn fanacht i gcomhair córais nua don tír ar fad agus do na comhlachtaí agus gnóthaí ar fad agus gur féidir linn tosú amach le córas nua leis an ospidéal nua nuair a osclaíonn sé, fiú muna bhfuil na heagraíochtaí eile réidh leis an gcóras sin?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_62">Tá dhá phíosa sa reachtaíocht atá in ann dul i ngleic leis sin. Is é an chéad cheann ná córas na gcaighdeán teanga, faoina leagann an tAire dualgas soiléir ar chomhlachtaí poiblí na córais teicneolaíochta faisnéise agus cumarsáide, na córais clarúcháin a bhfuil tagairt déanta ag an Seanadóir dóibh, a chur i bhfeidhm go dátheangach. I láthair, níl an dualgas sin ann in go leor áiteanna. Mar sin, forbraítear an córas i mBéarla agus, fiú go bhfuil dualgas tánaisteach ar chomhlachtaí poiblí córais ríomhaireachta a chur ar fáil tríd gealltanais scéime teanga, tosaítear ansin ag iarraidh an córas atá forbartha cheana féin i mBéarla a leigheas le réiteach a chur ar fáil i nGaeilge. Is toradh <i>post factum</i> atá sa réiteach i nGaeilge go minic. Trí chóras na gcaighdeán teanga, tá deis ann a leagan síos go soiléir gur gá na seirbhísí idirghníomhacha seo ar líne a chur ar fáil go dátheangach ón tús. Is é sin an chéad ghné.</p>
+          <p eId="para_63"> Thagair mé don dara gné i bhfreagra eile ar ball. Tá dualgas reachtúil anois ar chomhlachtaí poiblí na córais atá acu a bheith in ann déileáil le d'ainm i nGaeilge, an síneadh fada san áireamh. Leis an dá fhoráil sin ag oibriú as lámh a chéile agus a bheith i bhfeidhm, táim dóchasach go mbeidh athrú ollmhór le feiceáil ar an gcás atá luaite ag an Seanadóir sna blianta amach romhainn. Deireann comhlachtaí poiblí go minic go bhfuil airgead ollmhór a chaitheamh acu le córais teicneolaíochta agus go bhfuil sé costasach iad a athrú ach, mar riachtanas reachtúil teanga, caithfidh an Ghaeilge a thabhairt isteach sa bpleanáil tionscadail ag an tús ach an oiread leis na hábhair eile a dtugtar isteach nuair atá pleanáil á dhéanamh do chlár nó córas atá a fhorbairt.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_24">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_64">Is rud an-simplí é i ndáiríre. An bhfaigheann oifig an choimisinéara mórán gearán ina leith sin?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_65">Faigheann. Ó thaobh céatadáin de, d'fhéadfadh gearán maidir le húsáid córais ríomhaireachta a bheith isteach faoi bhun 10% chuile bhliain. Tá sé an-leathan. Baineann 40% de ghearáin le córas na scéimeanna teanga go heisiach. Tógann sé sin san áireamh úsáid chruinn d'ainm. Léiríonn sé sin an tábhacht a bhaineann le córas na gcaighdeán teanga a thabhairt i bhfeidhm. Le go leor de na córais nua seo atá á bhfeiceáil againn, MyGovID agus araile, tá sé leagtha amach go soiléir ag an Rialtas go bhfuiltear ag súil go mbeidh suas le 80% de shaoránaigh ag úsáid tairsí ar nós MyGovID faoin mbliain 2030 agus gur féidir le suas le 90% de sheirbhísí poiblí a bheith ar líne ach cá bhfuil an soláthar den tseirbhís i nGaeilge? Mar sin, tá sé an-tábhachtach go dtógfar an ré dhigiteach san áireamh. Tá tagairt láidir déanta dó sin sa bplean náisiúnta. Caithfidh na straitéisí atá an Stát ag feidhmiú do sheirbhísí poiblí i gcoitinne a bheith ag caint leis an bplean náisiúnta lena dhéanamh cinnte go bhfuil na seirbhísí idirghníomhacha seo ar fáil i nGaeilge freisin. Tá soláthar maith sa reachtaíocht idir an fhoráil maidir le do cheart d'ainm, do shloinne, do theideal agus do sheoladh poist a bheith á n-úsáid agus taifeadta go cruinn agus córas na gcaighdeán teanga. Táim ag glaoch crann taca ar an gcóras sin. Is gné chriticiúil den bhunchloch é mar is ansin a leagfar síos na seirbhísí nua-aimseartha nach bhfuil leagtha síos san Acht féin.</p>
+          <p eId="para_66">Is ansin a leagfar an dualgas ar na comhlachtaí poiblí.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_26">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_67">Tá ceist amháin eile agam. Luaigh an Coimisinéir Teanga go mbeadh aonad á bhunú nó go mbeadh droichead éigin ann idir an plean leis an sprioc 20% agus an cur i bhfeidhm. An dóigh leis go mbeadh an córas oideachais in ann feidhmiú mar dhroichead? Luaigh sé muintir na Gaeltachta. Ní féidir brath ar mhuintir na Gaeltachta chun na poist seo ar fad a dhéanamh. Ní as an nGaeltacht dom ná do chuid mhaith daoine ar an gcomhchoiste seo, ach tá Gaeilge againn. Tá an-tábhacht ag baint leis an gcóras oideachais. Tá sé sin luaite ag mo chomhghleacaí freisin. An mbíonn deis ag Oifig an Choimisinéara Teanga plé leis an Roinn oideachais nó leis an Aire, an Teachta McEntee?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_68">Bíonn. Mar a luaigh mé i mo fhreagra don Teachta Ó Snodaigh, tá imscrúdú an-tábhachtach ar siúl againn faoi láthair. Má breathnaítear ar na figiúirí ginearálta taobh amuigh den Ghaeltacht i láthair na huaire, tá isteach is amach ar 7% ag freastal ar an mbunscolaíocht lán-Ghaeilge. Tá an figiúr sin thart ar 3% ag leibhéal na hiarbhunscolaíochta lán-Ghaeilge. Tá titim ollmhór ansin go dtí thart ar 1% ag leibhéal na hollscolaíochta Gaeilge. Mar sin, cén chaoi a bhforbrófar acmhainneacht sa chóras tríd an Roinn oideachais agus an Roinn ardoideachais agus breisoideachais le déanamh cinnte de go bhfuil tuilleadh oiliúnaithe, foghlaimeoirí agus céimithe ag teacht amach as an gcóras? Is é sin an fáth gur leag muid an-bhéim ar na fearainn nó na domains éagsúla a caithfidh teacht le chéile le déanamh cinnte go mbainfear amach an sprioc 20%. Is é an ról cinniúnach a bheidh ag an aonad ná comhordú a dhéanamh air. Tá ról ag an Aire, Roinn na Gaeltachta agus go háirithe an coiste comhairleach chun stiúradh a dhéanamh ar fheidhmiú an phlean náisiúnta, ach is cinneadh an-mhaith a bhí ann taighdeoirí a thabhairt isteach leis an bplean náisiúnta a chur le chéile mar tá bunús eolaíoch leis.</p>
+          <p eId="para_69"> Ar bhealach, tá an cuid is crua den obair le teacht, is é sin, an cur i bhfeidhm, lena n-áirítear na caighdeáin teanga, dóthain foirne le Gaeilge mhaith a bheidh á bhfostú agus earnáil na Gaelscolaíochta agus na hollscolaíochta Gaeilge ag cothú na sruthanna a theastaíonn le cinntiú go mbeidh na daoine sin ann. Ní dóigh liom gur féidir breathnú ar aon cheann de na fearainn nó domains sin ina aonar. Tá siad uilig fite fuaite ina chéile. Tá muid ag pointe tábhachtach le breithiúnas a dhéanamh cé acu an bhfuil nó nach bhfuil an acmhainneacht ann i láthair na huaire le déanamh cinnte go dtógfar an droichead sin idir an plean náisiúnta agus an cur i bhfeidhm. Ní féidir liom réamhbhreithiúnas a thabhairt ar an bplean gníomhaíochta a bheidh á fhoilsiú ag an Roinn agus an tAire san fhómhar, ach beidh sé sin an-tábhachtach.</p>
+          <p eId="para_70"> Ó ghéaráin atá muid ag fáil, feiceann muid go dteastaíonn straitéis chomhtháite atá fite fuaite ina chéile sna hearnálacha sin uilig le dul i ngleic leis na gearáin. Ag teacht ar ais chuig an dhá chrann taca, is córas na gcaighdeán teanga a leagfaidh an dualgas chun na seirbhísí nua a chur i bhfeidhm, cosúil leis na seirbhísí idirghníomhaíochta sa chóras sláinte a luaigh an Seanadóir, mar shampla. Chomh maith leis sin, caithfear a chinntiú go bhfuil dóthain foirne le Gaeilge ar fáil, go háirithe i gcásanna nuair atá duine ag déanamh iarratas ar líne agus teastaíonn ón duine sin labhairt le duine le Gaeilge. Le comhthéacs a thabhairt air, in go leor cásanna, bíonn na hoifigigh Ghaeilge ag obair mar chadhain aonair. In go leor comhlachtaí poiblí, níl iontu ach duine amháin agus tugtar cúraimí éagsúla dóibh. I mo thuairim, ba cheart go mbeadh socruithe mar sin mar chuid den stair. Caithfear breathnú ar raon foirne le Gaeilge. Is é seo an ról criticiúil a bheidh ag an cineál seo aonaid. Beidh air tagarmharcáil nó slat tomhais a dhéanamh.</p>
+          <p eId="para_71"> Má fhorordaítear do chomhlacht poiblí go gcaithfidh sí seirbhísí tacaíochta faisnéise a chur ar fáil cúig lá sa tseachtain, i láthair na huaire, d’fhéadfadh comhlacht poiblí amháin a rá go dteastaíonn cúigear uaithi lena dhéanamh agus d’fhéadfadh comhlacht poiblí eile a rá gur féidir le duine amháin é a dhéanamh. Mar sin, teastaíonn an tacaíocht sin. Ní mór an pleanáil straitéiseach a leagan amach céard is dóthain foirne ann leis na seirbhísí a bheidh leagtha síos sna caighdeáin teanga a chur i bhfeidhm. Muna dtarlaíonn sé sin go luath - tá sé seo á fheiceáil againn sna gearáin - tá sé deacair a fheiceáil go mbeidh ráta earcaíochta suntasaí ná méadú ar an ráta earcaíocht d’fhostaithe le Gaeilge. Sin an fáth go bhfuil an tSeirbhís um Ceapacháin Phoiblí chomh tábhachtach, <i>publicjobs.ie</i>, mar aonad le breathnú ar an gcaoi ar féidir cur go mór le líon na gcomórtas d’fhostaithe le Gaeilge atá á reáchtáil agus an áit a mbeidh na fostaithe sin ag dul. Ní mór an obair sin ar fad a thabhairt le chéile in aonad, i mo thuairim. </p>
+          <p eId="para_72"> Dar ndóigh, tá an cúram sin ar an gcoiste comhairleach agus an Roinn Forbartha Tuaithe agus Pobal agus Gaeltachta chun an plean a stiúradh, ach caithfidh muid bhreathnú ar ualach na hoibre a bhaineann leis an bplean náisiúnta, anois agus na réimsí seo ann, lena n-áirítear an pleanáil fórsa saothair, réimse na hollscolaíochta agus rud nár luaigh mé fós, is é sin, an bonneagair seirbhísí poiblí sa Ghaeltacht agus na molchampais.</p>
+          <p eId="para_73"> Le teacht ar ais chuig an gceist a bhí ag an Teachta ar ball faoi líon na ngearán, is dóigh liom go bhfuil creimeadh á dhéanamh ar mhuinín an phobail i seirbhísí poiblí i nGaeilge le roinnt mhaith blianta. Nuair a théann daoine ag tóraíocht na seirbhísí, bíonn an taithí atá acu go dona nó lag i go leor cásanna.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_28">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_74">Gabhaim buíochas leis an gcoimisinéir.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_29">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_75">Cuirim fáilte roimh na bhfinnéithe. Gabhaim buíochas leo as ucht a bheith anseo linn inniu. Bhí an Coimisinéir Teanga ag caint ó thaobh chóras na gcaighdeán teanga. An bhfuil sé ag caint air sin go ginearálta? Tá cúpla ceist agam. Labhair sé ó thaobh an chóras ó leibhéil A1 go C2. An bhfuil bunchloch nó caighdeán aontaithe? Sin an cheist. Tá caighdeán teanga aontaithe gur féidir a thomhas. Sin mo chéad ceist. An bhfuil sé sin aontaithe óna thaobh de? An bhfuil an tuiscint sin againn? Tá sé sin mar chuid den ábhar seo.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_76">Tá sé lárnach ann. Is é ceann de na difríochtaí móra idir córas nua na gcaighdeán teanga seo agus seanchóras na scéimeanna teanga ná nuair a leagfar dualgas ar chomhlacht poiblí seirbhís a chur ar fáil, caithfear an leibhéal inniúlacht teanga, más B2 nó C1 é de chuid an chomhchreat Eorpach, a bheith sonraithe sa chaighdeán teanga. Is dul chun cinn suntasach atá ansin.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_31">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_77">Níl sé sin aontaithe fós, áfach. Is é sin atá á rá ag an gCoimisinéir Teanga.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_78">Nuair a fhoilsíonn Aire na Gaeltachta, an Teachta Calleary, na caighdeáin teanga, beidh an leibhéal inniúlachta teanga a bheidh ag teastáil ón bhfoireann a bheidh ag cur na seirbhíse ar fáil sonraithe.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_33">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_79">Tuigim. Is féidir é a thomhas ag an bpointe sin.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_80">Go díreach.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_35">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_81">Okay. Go raibh maith agat. Dúirt an Coimisinéir Teanga go mbíonn, ar an meán, 13,000 duine á n-earcú isteach sa tStátseirbhís chuile bliain. Oibríonn 20% den méid sin amach mar 2,600 duine in aghaidh na bliana. Is figiúr an-mhór é sin i ndáiríre. Cuirfidh mé ceist chrua ar an gcoimisinéir. An bhfuil an figiúr sin de 2,600 duine in aghaidh na bliana réadúil faoi láthair?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_82">Tá sé thar a beith dúshlánach. Ar na cúiseanna a luaigh mé ar ball, níl muid ag feiceáil mórán fianaise i láthair na huaire go bhfuil earcaíocht réamhghníomhach ag leibhéal suntasach ag tarlú trasna na n-earnálacha poiblí. Tá cúis a d’fhéadfaí a lua leis sin, áfach. D’fhéadfaí a argóint go mbeadh earcaíocht ag tarlú i bhfolús gan chóras na gcaighdeán teanga. Leagfaidh córas na gcaighdeán teanga na seirbhísí nua amach agus inseoidh sé do na comhlachtaí poiblí céard iad na seirbhísí breise a chaithfidh siad a chur ar fáil trí mheán na Gaeilge agus cén leibhéal cumais sa Ghaeilge a chaithfidh a bheith ag an bhfoireann. Má tá an t-eolas sin agat, is féidir iallach i bhfad níos mó a chur ar chomhlachtaí poiblí chun a bheith ag earcú. Tá ceisteanna ann, áfach. Cé a thacóidh leis an earcaíocht? An ndéanfaidh an tSeirbhís um Ceapacháin Phoiblí í? Cad as a dtiocfaidh na céimithe? </p>
+          <p eId="para_83"> Is figiúr suntasach atá luaite ag an Teachta más ionann 20% d’earcaithe agus 2,600 duine. Tá sé luaite sa phlean náisiúnta - tá sé go maith - go thug isteach is amach ar 1,700 duine faoi chúrsaí oiliúna i nGaeilge in 2022. Caithfear a leithéid den cohórt sin a aithint mar thosach, is iad sin, na daoine atá fostaithe cheana sa tseirbhís poiblí. Ansin tabharfar daoine nua isteach nó aistreoidh daoine idir comhlachtaí poiblí. Maidir leis an sprioc 20%, nuair a chuirtear an dhá chohórt sin le chéile, cén chaoi a mbreathnaíonn na figiúirí sa chéad bhliain, sa dara bhliain agus sa tríú bhliain? </p>
+          <p eId="para_84">Cén chaoi a bhfuil tú ag gearradh isteach sa 2,600 den 13,000? Is é atá i gceist againn leis an aonad a aithint ná cé go praiticiúil atá chun comhordú a dhéanamh go náisiúnta - tásc agus tuairisciú ar an obair sin uilig - go háirithe sna blianta tosaigh. Teastóidh tacaíocht ó chomhlachtaí poiblí agus ó earnálacha ar nós earnáil na n-údaráis áitiúla. Tá sé an-tábhachtach a lua go bhfuil aonaid taobh istigh den Roinn Caiteachais Phoiblí, Bonneagair, Athchóiriúcháin Seirbhíse Poiblí agus Digitiúcháin ag déileáil go sonrach le pleanáil fórsa saothair den tseirbhís phoiblí cheana féin. Eisíonn sé múnlaí cén chaoi le tabhairt faoin bpleanáil fórsa saothair go córasach. Tá múnlaí ann leis na teimpléid le taispeáint go n-aithnítear poist shainithe ar leith. Chonaiceamar i gcúrsaí athrú aeráide é agus i dtaca le cosaint sonraí siar seacht nó ocht mbliain ó shin go n-aithníonn an comhlacht poiblí dualgas nua atá ag teacht chun cinn bunaithe ar an reachtaíocht. Tá na múnlaí sin ann ach caithfear a chinntiú go bhfuil na comhlachtaí poiblí i mbun pleanáil fórsa saothair le Gaeilge anois le déanamh cinnte go bhfuil tuilleadh fostaithe le Gaeilge ag teacht isteach.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_37">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_85">Agus an coimisinéir ag caint faoin ionad sin, an gceapann sé gur fiú an sprioc 20% faoi 2030 a bhriseadh síos? D'fhéadfaimid a rá gur gá 5% a shroichint faoi 2026, 10% a shroichint faoi 2027 agus mar sin de. Ar chóir an sprioc a ghearradh amach mar sin bliain i ndiaidh bliana? An rud is measa a tharlódh ná go shroichfeadh muid 2030 gan a bheith i ngar in aon chaoi den sprioc sin. An mbeadh ról ag Oifig an Choimisinéara Teanga leis an eolas sin a chur le chéile? Tá ceangal aige leis na húdaráis áitiúla, na grúpaí agus na Ranna ar fad. Ó thaobh an t-eolas sin a tharraingt le chéile, a thuairisciú agus a thomhas, an mbeadh ról ag an oifig?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_86">Tá an cur-chuige céimniúil atá luaite ag an Teachta criticiúil. Bunaithe ar na figiúirí atá luaite ag an Teachta, cén chaoi a mbainfear amach an 5% ar dtús? Cén áit as a bhfuil na céimithe sin agus na foghlaimeoirí Gaeilge le teacht? An bhfuil siad le teacht ó earnáil na hollscolaíochta Gaeilge? Leis an gceart a thabhairt, tá an clár foghlamtha náisiúnta luaite go maith sa phlean náisiúnta. Cén chaoi a bhfuiltear ag cinntiú go bhfuiltear ag cur leis an tsoláthar sin bliain ar bhliain? Tá sé tábhachtach go mbrisfear síos an tréimhse idir seo agus 2030 síos ina fochéimeanna, mar atá luaite ag an Teachta. Cén chaoi a dhéanfar an chéad sciar mór a bhaint amach chuige sin?</p>
+          <p eId="para_87"> Tá mé thar a bheith coinsiasach agus feidhmeanna reachtúla na hoifige - monatóireacht agus feasacht, agus comhairle a roinnt - á gcur i gcrích ag m'oifig. Táimid ag iarraidh tacú leis an bpróiseas forbartha straitéise an oiread is gur féidir tríd na pátrúin agus na gearáin atáimid ag fáil. Tá an-bhéim curtha againn ar sin - an cur chuige atá ag teastáil le breathnú ar an straitéis seo ina iomláine go náisiúnta - i dtuarascáil bhliantúil 2024 agus san aitheasc inniu. Tá ról reachtúil ag an gcoiste comhairleach a bhunaigh Aire na Gaeltachta in 2022 maoirseacht agus stiúradh a dhéanamh ar an bplean náisiúnta. Dar ndóigh, tá ról ag Roinn na Gaeltachta agus ag an Rialtas na hacmhainní náisiúnta le tacú leis sin a chur ar fáil. Tacaímid leis an straitéis an oiread agus is féidir ach mar atá feidhm an Choimisinéara Teanga-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_39">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_88">Tuigim sin.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_89">-----leagtha síos faoi láthair, níl dualgas againn i dtaobh straitéis na Gaeilge, mar atá ag coimisinéirí teanga i ndlínsí eile go hidirnáisiúnta.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_41">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_90">Tuigim sin. Gabhaim buíochas leis an gcoimisinéir.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_42">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_91">Cuirim fáilte roimh an gcoimisinéir agus roimh foireann na hoifige. Tá cúpla ceist gonta agam má tá sé sin ceart go leor. Baineann an chéad cheist leis an bpróiseas. Nuair a dhéantar gearán go dtí Oifig an Choimisnéara Teanga, cén turas a bhíonn i gceist ón ngéarán sin go dtí an t-imscrúdú foirmeálta? Conas a thiontaítear é?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_92">Ceist is ea sin atá ag croílár an chaoi ina oibríonn ár n-oifig. Faigheann muid isteach nó amach ar 600 gearán ar an meán in aghaidh na bliana. Tá próiseas tosaigh againn go ndéantar iarracht an gearán sin a réiteach go neamhfhoirmiúil trí chur chuige i gcomhar leis an gcomhlacht poiblí agus leis an ngearánach. I bhformhór na gcásanna, éiríonn linn é sin a dhéanamh. Sa chás nach féidir teacht ar réiteach ar an ngearán, agus má tá sé soiléir go bhfreagraíonn sé don ghearán a bhí ag an mballl den phobal, téimid i dtreo imscrúdú foirmiúil, mar shampla, an t-imscrúdú a rinneamar ar Oifig na bPasanna. Mar sin, tá dhá chéim ann: an próiseas a réitíonn gearán go luath agus an próiseas foirmiúil tríd a dhéantar imscrúdú. Bíonn finnéacht i gceist leis an imscrúdú. Déantar moltaí agus cuirfear faoi bhráid an chomhlacht poiblí iad. Déantar monatóireacht orthu le déanamh cinnte go bhfuil siad á gcur i bhfeidhm.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_44">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_93">Bheadh sé féaráilte le rá go ndéantar deileáil le formhór na ngearán a fhaigheann oifig an choimisinéara trí bhealach neamhfhoirmeálta?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_94">Go huile is go hiomlán. Déantar sin le mórthromlach acu.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_46">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_95">Tá sé sin spéisiúil. Tá an-chuid caint ar earcaíocht agus a leithéid. Tá an ról atá ag an Roinn caiteachas poiblí i leith pleanáil fórsa saothair luaite i dtuairisc bhliantúil Oifig an Choimisinéara Teanga. Cén sórt idirghabháil atá idir an oifig agus an Roinn maidir leis an bpleanáil sin? Tá a fhios againn ar fad gur ar ghualainn na Roinne sin a thiteann an fhreagracht i dtaobh pleanáil an fórsa saothair. Tá na ceisteanna atá ardaithe i dtuairisc an choimisinéara maidir le cumas sa Ghaeilge mar chroílár na ceiste agus ba chóir go mbeadh sé mar chroílár aon straitéis pleanála fórsa saothair. Cén sórt idirghabháil atá ann idir Oifig an Choimisinéara Teanga agus an Roinn ina leith sin? </p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_96">Is dócha gurb í an tuarascáil bhliantúil an uirlis is tábhachtaí atá ag an oifig le léargas a thabhairt ar céard iad na bearnaí atá ann. Cuirtear i láthair na Ranna Rialtais éagsúla é sin. Tá ról criticiúil ag an gcoiste comhairleach mar tá ballraíocht ón Roinn Caiteachais Phoiblí, Bonneagair, Athchóiriúcháin Seirbhíse Poiblí agus Digitiúcháin. Is í an fheithicil sin an phríomhbhealach inar féidir tabhairt faoin gceist atá curtha ag an Teachta ó thaobh na hearcaíochta. Táimid mar oifig ar fáil le feasacht a roinnt faoi na gearáin atáimid á fheiceáil taobh istigh de na cúraimí atá ormsa mar choimisinéir teanga agus ar an oifig.</p>
+          <p eId="para_97"> Táimid tar éis ceannaireacht a ghlacadh maidir leis an straitéis náisiúnta a theastaíonn ionas go gcuirfear i bhfeidhm na príomhriachtanais atá ag teastáil, mar shampla, an pleanáil fórsa saothair ach go háirithe, chomh maith le córas na gcaighdeán teanga a thabharfaidh an tAire isteach agus an feabhas atá le teacht ar an infreastruchtúr. Is léir dúinn go bhfuil an t-eolas sin an-tábhachtach ag an bpointe seo le déanamh cinnte go bhfuil tuiscint ar na dúshláin atá romhainn. Ag breathnú air go ginearálta, ní rud iontach casta atá anseo; is féidir é a bhriseadh síos. Táimid ag caint ar phleanáil fórsa saothair a chur i bhfeidhm agus córas na gcaighdeán teanga a bheith ann a thabharfaidh soiléiriú do na comhlachtaí poiblí.</p>
+          <p eId="para_98"> Ag teacht ar ais go dtí ceist an Teachta, tá ról chinniúnach ag an Roinn Caiteachais Phoiblí, Bonneagair, Athchóiriúcháin Seirbhíse Poiblí agus Digitiúcháin sa phróiseas mar déantar go leor cinntí ansin maidir le treochtaí sa tseirbhís poiblí ó thaobh earcaíochta agus maoiniú a chur ar fáil. Beidh m’oifig réamhghníomhach le haon chúnamh a thabhairt sa phróiseas sin.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_48">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_99">An fáth a chuirim an cheist ná go mbeadh díomá orm dá mba rud é nach raibh an stór eolais mór atá bailithe ag an oifig ó na gearáin curtha isteach go dtí leithéidí treoirlínte pleanála fórsa saothair.</p>
+          <p eId="para_100"> Tá ceist agam a bhaineann leis an gcomhphobal idirnáisiúnta. Táim thar a bheith sásta a fheiceáil sa tuairisc go bhfuil an-bhaint ag Oifig an Choimisinéara Teanga le coimisinéirí teanga eile ar fud an domhain. Cén sórt dea-chleachtais atá foghlamtha ag an gcoimisinéir agus a chuid oifigigh ó choimisinéirí teanga ó áiteanna eile ar fud an domhain atá siad tar éis tabhairt isteach san oifig?</p>
+          <p eId="para_101">Tá Cumann Idirnáisiúnta na gCoimisinéirí Teanga bunaithe ó 2014 agus bhí páirt lárnach ag an gCoimisinéir Teanga ag an am, Seán Ó Cuirreáin, i mbunú an chumainn sin. Cumann an-bhisiúil atá ann. Ar an gcéad dul síos, tá comhdháil Chumann Idirnáisiúnta na gCoimisinéirí Teanga le bheith i nGaillimh in 2026. Céard atáimid ag foghlaim? Táimid ag roinnt saineolais, ag teacht ar ais ag an gceist a bhí ag an Teachta níos luaithe ó thaobh an phróisis le déileáil le gearáin, ar an gcaoi ina bhfuil oifigí na gcoimisinéirí teanga éagsúla ag baint leasa as na bealaigh éagsúla le gearáin a réiteach go neamhfhoirmiúil. I gcásanna eile go bhfuil imscrúduithe foirmiúla i gceist, táimid ag breathnú ar chóras na gcaighdeán teanga mar shampla. Tá sé sin i bhfeidhm sa Bhreatain Bheag le roinnt mhaith blianta agus ag éirí thar barr leis maidir le caighdeán na seirbhísí poiblí i mBreatnais a fheabhsú. Sin rud amháin. Táimid ag breathnú ar na feidhmeanna a bhíonn ag na coimisinéirí teanga éagsúla maidir le tacú le teangacha neamhfhorleathana nó mionteangacha a láidriú agus ar an gcomhthéacs ina gcaithfimid maireachtáil i saol an mhórtheanga go minic. Tá foghrúpaí againn a bhíonn ag déileáil le cúrsaí taighde, le polasaí agus le cúrsaí cumarsáide agus reachtaítear sraith seimineáir. Tá cathaoirleacht an chumainn sin ag m’oifig faoi láthair agus táimid ag pleanáil don bhliain seo chugainn don chomhdháil idirnáisiúnta. Tá go leor den taithí agus de na sainscileanna inaistrithe, áfach. An sampla is fearr atá ann ná cén chaoi ar féidir linn foghlaim ó chur chuige na Breataine Bige maidir le córas na gcaighdeán teanga nua sin le seirbhísí poiblí sa sprioctheanga a fheabhsú.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_49">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_102">Beidh an Cathaoirleach thar a bheith sásta go mbeidh an comhdháil sin ar bun i gContae na Gaillimhe an bhliain seo chugainn.. Baineann an cheist dheiridh atá agam le cúrsaí intleacht shaorga. Tá léargas an-mhaith tugtha ag an gcoimisinéir ar thairseach MyGovID agus a leithéid. Bhí Údarás na Gaeltachta istigh linn cúpla seachtaine ó shin ag rá linn conas atá sé ag tabhairt faoi uirlisí a fhorbairt do phobal labhartha na Gaeilge i ré na hintleachta saorga. Céard iad na hullmhúcháin atá idir lámha ag Oifig an Choimisinéara Teanga maidir leis sin? Is dócha gurb é sin an chéad dúshlán eile a bhéas ann ó thaobh seirbhísí poiblí a chur ar fáil as Gaeilge.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_103">Rinne mé tráchtaireacht air seo le gairid. Feicim go bhfuil ról tábhachtach ag an intleacht shaorga. I go leor de na gearáin, mar shampla na cásanna a bhíomar ag plé níos luaithe faoi sheirbhísí bunúsacha maidir le faisnéis tosaigh a chur ar fáil nuair a chuireann duine glaoch ar comhlacht poiblí, is féidir leis an intleacht shaorga déileáil le go leor, nó roinnt mhaith, de na fiosruithe tosaigh, Chuirfinn aguisín tábhachtach le sin, áfach; is é sin go dteastóidh an tionchar daonna i gcónaí leis an tseirbhís iomlán a chur ar fáil. Mura mbeidh sé sin ann, beidh seirbhísí poiblí Gaeilge in áit an leathphingine. Is é sin an fáth go bhfuil sé chomh tábhachtach go dtreisítear agus go gcuirfear dlús leis an earcaíocht ar fhoireann a bhfuil Gaeilge mhaith acu.</p>
+          <p eId="para_104"> Maidir leis na molchampais laistigh den Ghaeltacht agus sna bailte seirbhíse Gaeltachta, feicimse go bhfuil obair mhaith déanta ag an údarás le blianta beaga ar na Gteiceanna. Is moil dhigiteacha atá iontu. Níl aon dabht ach go mbeidh an intleacht shaorga ag teacht chun cinn sna seirbhísí atá á gcur ar fáil sna moil sin ach teastóidh foireann freisin a bheith ar an láthair. Is féidir an margadh a shamhlú a bhéas ann d’fhoghlaimeoirí teanga agus do mhic léinn tríú leibhéil. Beidh sé go hard sna mílte. Tá sé seo luaite ag an Roinn go bhfuil sé san áireamh sa bplean gníomhaíochta agus fáiltím go mór roimhe ach cén fáth nach bhféadfaí breathnú ar champais ar scála atá thar a bheith suntasach? Is é sin, ar bhealach, athbhrandáil a dhéanamh ar sheirbhísí poiblí i nGaeilge go bhféadfaí an ghné oiliúna tríú leibhéil a bheith ar chuid den champas agus an tseirbhís poiblí ar an gcuid eile. Chruthódh sé sin mais chriticiúil do sheirbhísí agus do dhlús fhoirne. Feicimid ó ré Covid go bhfuil daoine ag iarraidh a bheith ag obair ó láithreacha taobh amuigh de na ceantair uirbeacha. Beidh sé an-tábhachtach staidéar féidearthachta agus cur i bhfeidhm a dhéanamh air sin taobh istigh d’achar an-ghearr.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_51">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_105">Gabhaim buíochas leis an gcoimisinéir.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_52">
+          <from>Deputy John Connolly<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_106">Tá brón orm go raibh mé déanach. Má chuirim ceist ar na finnéithe a bhfuil freagra tugtha cheana uirthi, tá brón orm faoi sin. Tá cúpla ceist sciobtha agam. Ar mhiste leo a chur in iúl dúinn céard iad na comhlachtaí poiblí is mó a fhaigheann Oifig an Choimisinéara Teanga gearáin faoi? An dtagann na comhlachtaí poiblí céanna os comhair an choimisinéara go minic? An bhfoghlaimíonn siad as sin? Tá a fhios agam go ndúradh gur tar éis próiseas neamhfhoirmiúil a thagann an choimisinéir ar thoradh leis na comhlachtaí poiblí sin, ach más rud é go bhfuil ar a oifig dul tríd an bpróiseas foirmiúil, cad iad na moltaí nó na treoracha a thugtar? An féidir sampla a thabhairt do na moltaí nó na treoracha a thugann Oifig an Choimisinéara Teanga do na comhlachtaí sin? An mbaineann siad seo le rudaí simplí amháin nó an gá don gcoimisinéir rudaí níos casta a fhiosrú agus b’fhéidir próiseas earcaíochta a fhiosrú nó rud éigin mar sin? Luaigh sé níos luaithe agus chuir sé figiúirí os ár gcomhair maidir leis an méid próisis earcaíochta a bhíonn i mBéarla amháin. An bhfaigheann sé gearáin faoi chomórtais earcaíochta mar sin? An raibh ar Oifig an Choimisinéara Teanga moladh a thabhairt do chomhlacht poiblí tosú arís ar phróiseas earcaíochta agus rá leo go ndearnadh botúin nach raibh an próiseas ar fáil i nGaeilge? Chuirfinn ceist eile leis seo chomh maith maidir leis na treoracha a thugtar do na comhlachtaí poiblí tar éis an ghearáin. An bhfaigheann Oifig an Choimisinéara Teanga idirghníomhaíochtaí dearfacha ó na comhlachtaí seo nó an mbíonn drogall orthu glacadh leis an méid a mholann an oifig dóibh?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_107">Go raibh maith agat, a Theachta. I gcás na comhlachtaí poiblí is mó a fhaighimid gearáin fúthu, tagann sé ar ais chuig cuid de na samplaí a bhí muid ag lua níos luaithe ar nós an tairseach MyGovID. Tá go leor Ranna agus údaráis áitiúla ag cur seirbhísí bunúsacha ar fáil ar nós ceadúnais tiomána a fháil, tástáil tiomána nó iarratas ar phas, na seirbhísí is mó a bhfuil an pobal i gcoitinne ag éileamh chuile lá. Mar sin, nuair atá éileamh ar sheirbhís is as sin an áit is mó a thagann na gearáin. Táimid ag moladh go láidir do na seirbhísí nua, mar shampla na seirbhísí eolais teileafón agus na córais ríomhaireachta nua, go leagann na caighdeán teanga síos mar thús dualgas ar an 18 Roinn agus an 31 údarás áitiúil na seirbhísí criticiúla sin atá ar fáil ar ardchaighdeán i mBéarla a chur ar fáil i nGaeilge. Leanann líon na ngearán an trácht agus an t-éileamh atá ar sheirbhísí poiblí. Tá ról suntasach freisin ag Feidhmeannacht na Seirbhíse Sláinte mar gheall ar scála na seirbhíse sin. Bhí roinnt samplaí againn níos luaithe agus imscrúdú roinnt blianta ó shin nuair a bhí ball den phobal ag iarraidh clárú do sheirbhís i nGaeilge agus nach raibh an tseirbhís sin ar fáil. Bhí dualgas ar chomhlachtaí poiblí na córais ríomhaireachta a chur ar fáil go minic trí ghealltanais scéim an teanga. Tá deireadh ag teacht le córas na scéimeanna teanga mar níor oibrigh sé agus tá córas nua na gcaighdeán teanga le leagan síos. Nuair a dhéanann muid ansin imscrúdú nó fiosrúchán ar ghearáin, foilsítear tuarascáil imscrúdaithe agus bíonn fionnachtain agus moltaí ansin. Ceann de na príomhchúraimí atá ar m’oifig ná monatóireacht a dhéanamh ar fheidhmiú moltaí imscrúdaithe. Thagair muid do chás ar ball freisin. Má thagann an Coimisinéir Teanga den tuairim nach bhfuil moltaí imscrúdaithe nó aon ghné den reachtaíocht á gcur i bhfeidhm, is féidir leis breathnú ar chéimeanna breise ar nós tuarascáil a leagann faoi bhráid Thithe an Oireachtais. Le ceist an Teachta a fhreagairt, tríd is tríd bíonn ceannacht isteach nó rannpháirtíocht mhaith againn ó chomhlachtaí poiblí. An dúshlán atá romhainn i láthair na huaire ná na céimeanna suntasacha a chaithfear a thógáil ionas go mbeidh dóthain foirne le Gaeilge mhaith sna comhlachtaí poiblí agus go mbeidh dualgas ar na comhlachtaí poiblí na seirbhísí bunúsacha, ar nós iad siúd atá ar fáil ar an tairseach MyGovID, ar fáil i nGaeilge. Is é sin an bunchloch. Is seirbhísí iad seo atá á éileamh againn chuile lá. </p>
+          <p eId="para_108">Muna bhfuil siad sin ar fáil, tá sé an-deacair dul chun cinn a fheiceáil sna blianta amach romhainn.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_54">
+          <from>Deputy John Connolly<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_109">Thagair an Coimisinéir Teanga do phróisis earcaíochta nach bhfuil ar fáil i nGaeilge. An bhfaigheann a oifig gearáin faoi sin go minic? An mbíonn ar an gcomhlacht poiblí an próiseas sin a thosú arís mar gheall ar mholtaí ó Oifig an Choimisinéara Teanga?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_110">I láthair na huaire, is í an t-aon áit ina bhfuil dualgas ar chomhlacht poiblí maidir le hearcaíocht ná sa scéim teanga. Daingníonn Aire na Gaeltachta, an Teachta Calleary, an scéim teanga leis an gcomhlacht poiblí. Bhí easpa leanúnachais agus soiléireachta ag baint leis na scéimeanna teanga maidir le dualgais ó thaobh earcaíochta. I gcásanna, is minic go mbíonn comhlacht poiblí ag rá go n-earcófar foireann le seirbhís ar leith a chur ar fáil, ach cuireann sí aguisín ar leith leis sin le rá go mbraitheann sé ar acmhainní. Sin an fáth go bhfuil córas nua na gcaighdeán teanga agus an pleanáil fórsa saothair chomh tábhachtach. Nuair a leagfar síos seirbhísí nua a chaithfear a chur ar fáil i nGaeilge, beidh pleanáil córasach ar siúl taobh istigh den chomhlacht poiblí le déanamh cinnte go bhfuil dóthain foirne ar fáil leis an seirbhís a chur ar fáil. </p>
+          <p eId="para_111"> Cabhróidh sé go mór le caighdeán na seirbhísí a fheabhsú go mbeidh an leibhéal cumais sa Ghaeilge a chaithfidh a bheith ag an bhfoireann, B2 nó C1 mar shampla, luaite sna caighdeán teanga. Sa reachtaíocht, mar a sheasann sí faoi láthair agus go dtí seo, bhí sí thar a bheith easnamhach ó thaobh earcaíocht foirne de. I gcásanna, fuair muid gearáin ó bhaill den phobal maidir le poist a raibh úsáid na Gaeilge mar chuid dóibh. Gan dualgas soiléir a bheith ar an gcomhlacht poiblí an dualgas sin a chur i bhfeidhm, áfach, níl mórán deise ag m’oifig ionramháil a dhéanamh ar an gcás. Athróidh sé sin le córas na gcaighdeán teanga mar beidh an leibhéal inniúlachta atá ceangailte le seirbhís ar leith a chur ar fáil soiléir. Tá sé sin ar cheann de na hathraithe is suntasaí atá sa reachtaíocht teanga nua.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_56">
+          <from>Deputy John Connolly<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_112">Tá cheist bheag eile agam. Tá ról an oiliúna agus an teagaisc ó thaobh an leibhéil Ghaeilge a fheabhsú sa chóras, mar atá sé faoi láthair, luaite go minic. Nuair a bhí oifigigh na Roinne os comhair an chomhchoiste seo coicís ó shín, nó thart faoin am sin, dúirt siad linn go raibh méadú suntasach le sonrú ar líon na ndaoine atá ag glacadh páirt i gcúrsaí fhoghlaim na Gaeilge. Bhí an leibhéal rannpháirtíochta suas go 123% sa Státseirbhís. Is léir ón méid a léigh mé ó thuairisc an Choimisinéara Teanga ar maidin go bhfuil fadhb mhór fós ann, áfach. An luíonn an fhadhb leis an gcáilíocht do theastas Eorpach na Gaeilge? An bhfuil an caighdeán maith go leor? An bhfuil aon ról ag Oifig an Choimisinéara Teanga chun measúnú a dhéanamh ar an gcaighdeán sa chúrsa sin?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_113">Is cúram d’Aire na Gaeltachta, an Teachta Calleary, an leibhéal cumais a leagan síos a theastóidh sa chaighdeáin teanga nó sa tseirbhís nua a bheidh á cur ar fail. Is é an ról a bheidh againn ná monatóireacht a dhéanamh ar an soláthar sin. Ó thaobh ceist soláthair de, tá ról cinniúnach ag earnáil na hollscolaíochta Gaeilge. Theastódh clár náisiúnta foghlamtha do dhaoine atá ag obair sa Státseirbhís cheana agus cáilíochtaí ollscoile acu i réimsí eile. Má shamhlaíonn muid an tseirbhís phoiblí, lena n-áirítear riarachán poiblí, bainistíocht, acmhainní daonna agus pleanáil straitéiseach, beidh cúrsaí ollscoile nua ag teastáil sna réimsí sin le déanamh cinnte go neadófar riachtanais na gcearta teanga ag chuile leibhéal taobh istigh den chomhlacht poiblí. I láthair na huaire, tuigim go bhfuil clár nua ar leith á thionscnamh ag ollscoileanna le freagairt don fhoráil 20%, ach tá sé soiléir nach bhfuil aon straitéis náisiúnta nua don ollscolaíocht Gaeilge foilsithe go fóill ná tomhas soiléir déanta ar líon na daoine a theastaíonn le dul i treo na sprice 20%. Caithfear tomhas cruinn a dhéanamh ar líon na ndaoine a theastódh faoi cheann dhá bhliain, ceithre bliana agus mar sin de le dul i dtreo na sprice sin de 20%. Sin an fáth go bhfuil béim leagtha againn go gcaithfear cúram ar leith a thabhairt d'aonán le déanamh cinnte go bhfuil comhordú leanúnach á dhéanamh sna blianta tosaigh ar an bpleanáil fórsa saothair agus le díriú ar na háiteanna as a dtiocfaidh na céimithe.</p>
+          <p eId="para_114"> Muna n-éiríonn le comhlachtaí poiblí fostaithe le Gaeilge mhaith a fhostú i ngráid agus poist éagsúla, beidh sé deacair a shamhlú cén chaoi a ndéanfar fréamhú ar chearta teanga agus ar sholáthair seirbhísí poiblí i nGaeilge trasna na gcomhlachtaí poiblí agus ón bhun go barr. Sin an fáth gur leag muid amach go sonrach na príomhréimsí a shamhlaíonn muid atá ag teastáil le tacú leis an bplean náisiúnta, is iad sin ná earnáil na hollscolaíochta Gaeilge, an bonneagair Ghaeltachta agus náisiúnta, an pleanáil fórsa saothair agus, dar ndóigh, córas na gcaighdeán teanga.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_115">Tá beirt fágtha anois. Glaoim an Seanadóir Joe Conway.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_59">
+          <from>Senator Joe Conway<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_116">Cuirim fáilte roimh na finnéithe. Tá brón orm go raibh orm imeacht níos luaithe ach bhí dualgais eile le déanamh agam. Is mian liom cúpla rud a rá faoin oideachas sna bunscoileanna. Sular toghadh i mo Sheanadóir mé, d’oibrigh mé le coláiste oideachais, is é sin, Hibernia College, le scór bliain. Roimhe sin, bhí mé i mo phríomhoide agus ag múineadh gasúr i nDún Mór i gContae Phort Láirge. Tá taithí fairsing agam ag féachaint isteach sna seomraí ranga lá i ndiaidh lae go dtí beagnach mí Eanáir na bliana seo. Is é an rud atá ag cur isteach go mór ormsa maidir leis an todhchaí agus staid na teanga go ginearálta ná caighdeán mhúineadh na Gaeilge atá le feiceáil sna seomraí ranga, go speisialta i measc na n-oidí óga. Ag féachaint orthu, caithfidh mé a rá go bhfuil an cuid is mó acu go feidhmiúil neamhlitrithe sa Ghaeilge. Is cúis imní agus bróin mhóir dom é. Más amhlaidh an cás é go forleathan, níl cuma rómhaith air sin do thodhchaí na Gaeilge. Cé go bhfuil muid ag caint faoi líon na ndaoine sa Státseirbhís agus sa tseirbhís poiblí sa chruinniú seo, muna bhfuil an teanga á múineadh i gceart sna bunscoileanna, tá deacrachtaí romhainn. Is mian liom cloisteáil ó na finnéithe faoina gcuid dearcthaí ginearálta ina leith sin. An aontaíonn siad liom? An bhfuil an dearcadh céanna acu go ginearálta is atá agam?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_117">Gabhaim buíochas leis an Seanadóir. Is earnáil criticiúil an earnáil atá luaite aige. Tá béim leagtha againn go bhfuil, i láthair na huaire, isteach is amach 7% do phobal na ndaltaí go náisiúnta lasmuigh den Ghaeltacht ag freastal ar Ghaelscoileanna. Luaigh sé a chuid taithí oibre féin ag obair le coláiste ar leith. Ó mo thaithí ag obair le hollscoil roimhe seo, tá fíorthábhacht ag baint leis na tréimhsí tumthacha sa Ghaeltacht. Caithfidh ábhair oidí dhá thréimhse coicíse a chaitheamh sa Ghaeltacht i láthair na huaire. Is dóigh liom go bhfuil an cur chuige sin thar a bheith tábhachtach i gcomhthéacs an phlé níos leithne atá againn anseo maidir le hoibrithe agus fostaithe don seirbhís poiblí i gcoitinne ag cur lena gcuid cumais teanga.</p>
+          <p eId="para_118"> Is cinnte go bhfuil dúshlán ann maidir le teagasc na Gaeilge ag leibhéil éagsúla sa chóras scolaíochta in Éirinn. Is dualgas é sin a thiteann ar an Roinn oideachais ar an gcéad dul síos. Tá ról tábhachtach ag an Chomhairle Múinteoireachta dar ndóigh agus ag na coláistí oiliúna. Bhí dea-scéal ann roinnt blianta ó shín nuair a bunaíodh clár fo-chéime B.Ed. ar leith le sruth d’oidí nua a chur chun cinn. Is dóigh liom go dteastaíonn uainn tógáil ar an sampla sin. Muna mbreathnófar go sonrach ar phlean don earnáil oideachais agus an chaoi a bhfeabhsófar an inniúlacht atá ag oidí trasna an chórais trí chéile, is dócha go mbeidh dúshlán againn ag déanamh cinnte go bhfuil Gaeilge ag leibhéal sásúil ag mic léinn nuair a fhágann siad an córas dara leibhéal le dul ar aghaidh le tabhairt faoin ollscolaíocht Gaeilge. </p>
+          <p eId="para_119">Ach an oiread leis an mbéim atá leagtha againn ar phlean don sprioc 20%, is cuid lárnach den soláthair duine as cúigear le Gaeilge mhaith an méid atá ag tarlú san earnáil oideachais. Ba cheart breathnú air sin mar fho-earnáil ar leith. Bhíomar ag plé níos luaithe an sprioc 20% agus, má bhristear síos é, cén chaoi a mbainfear 5% nó 10% agus mar sin de. Dar ndóigh, taobh istigh den 5% sa chéad chúpla bliain bheadh earnáil an oideachais lán-Ghaeilge mar ghné chriticiúil de sin. Ba cheart go mbeadh plean ar leith ann maidir le cén chaoi a bhfeabhsófar cumas teanga an fhórsa saothair sin trí chéile.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_61">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_120">Much to my embarrassment, I do not have a lot of Irish. I apologise profusely. I am not quite there yet to be able to ask this question sufficiently through Irish. I do not want my inability to have an impact on the question. Is the coimisinéir aware of a document, Autism Good Practice Guidance For Schools, that the Government published in 2022? It states:</p>
+          <p class="indent_1" eId="para_121">Autistic students whose first/preferred language is Irish or who attend Irish medium schools, should be taught through Irish as this is the language which is used in their school environment.</p>
+          <p eId="para_122"> It has recently come to my attention that when a Gaelscoil in my constituency was approached by the NCSE to open a second ASD class, it was told that technically its ASD class should be run in English and that there needed to be flexibility around tumoideachas. I ask the commissioner's opinion on that.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_123">Leanfaimid ar aghaidh i nGaeilge.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_124">Gabhaim buíochas leis an Teachta as sin. Tá sé tábhachtach tagairt a dhéanamh don Acht Oideachais. Tá soláthar ar leith san Acht Oideachais maidir leis an dualgas atá ar an Aire agus ar an Roinn seirbhísí tacaíochta a chur ar fáil do mhic léinn agus do dhaltaí. Tagann an cás atá luaite aici faoi scáth an tsoláthair sin. Má tá an Teachta nó ball den phobal ag iarraidh teagmháil a dhéanamh leis an oifig, breathnóimid go sonrach ar an gcás atá luaite aici. Níl cáipéis ar thagair sí dó léite agam, ach táim breá sásta breathnú air i gcomhthéacs an cás atá luaite agus aon sárú ar chearta teanga a d'fhéadfadh a bheith i gceist. Leagtar amach go sonrach san Acht Oideachais go bhfuil sé de dhualgas ar an Aire seirbhísí taca a chur ar fáil do scoileanna, do dhaltaí agus do mhic léinn a thógann san áireamh an méid atá luaite aici i gcomhthéacs cearta teanga.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_64">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_125">Gabhaim buíochas leis an gcoimisinéir. I will be in contact.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_65">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_126">Is maith an deis é seo cás áirithe a bhaineann le Scoil Gharbháin i nDún Garbhán, i mo thoghcheantar, a phlé. Baineann sé le cearta teanga agus le rochtain ar an oideachas trí mheán na Gaeilge. Is dócha go bhfuil an Roinn oideachais ag cur isteach ar chearta tuismitheoirí oideachas trí mheán na Gaeilge a roghnú dá bpáistí mar gheall ar an easpa dul chun cinn ar spásanna a fhorbairt sa scoil. Tá an scoil tar éis cur isteach ar tuilleadh spásanna agus seomraí ranga le blianta anuas. Is é Scoil Gharbháin an t-aon bhunscoil lán-Ghaeilge in iarthar Chontae Phort Láirge taobh amuigh den Ghaeltacht. Tá sé lastigh de baile seirbhíse Ghaeltachta; sé sin, Dún Garbhán. Mar gheall ar an easpa dul chun cinn seo ag an Roinn oideachais, ní féidir le tuismitheoirí a bpáistí a chur ann a thuilleadh, níl a dhóthain spásanna ann. Ba mhaith liom tuairim an choimisinéara faoin gceist seo a chloisteáil. Mar is eol don choiste, chuir mo chomhghleacaí an Teachta Ó Snodaigh rún os comhair na Dála níos luaithe i mbliana ag iarraidh go mbeadh an ceart bunúsach seo - rochtain ar oideachas trí mheán na Gaeilge - fógartha agus leagtha síos go sonrach. Tuigimid go léir go bhfuil ceart freastal ar oideachas agus go bhfuil an Ghaeilge mar phríomhtheanga náisiúnta agus mar theanga oifigiúil, srl. Ba cheart go mbeadh an ceart sin aitheanta. Is í sin mo cheist.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_127">Gabhaim buíochas leis an Teachta. Ar an gcéad dul síos thagraím d’alt 6 don Acht Oideachais. Tá dhá fhoráil ar leith a leagann síos go gcaithfidh aon duine atá baint acu le feidhmiú an Acht sin a bheith airdeallach faoi chuspóirí náisiúnta maidir le leanúint an dátheangachas agus go mbainfí úsáid níos mó as an nGaeilge ar scoil. Tá foráil thábhachtach ann maidir le riachtanais teanga agus cultúr an mhic léinn a chur chun cinn ag féachaint go rogha na dtuismitheoirí. Luaim go sonrach an dá fhoráil sin mar tá siad ábhartha don soláthar ag leibhéal na bunscolaíochta agus na hiarbhunscolaíochta i gcomhthéacs an imscrúduithe atá á dhéanamh againn ag leibhéal na hiarbhunscolaíochta agus ar an Roinn oideachais. Breathnaíonn m'oifig go rialta ar chásanna aonair i gcomhthéacs an bhfuil sárú á dhéanamh ar chearta teanga ag leibhéal na bunscolaíochta lán-Ghaeilge de réir an tsoláthair atá san Acht Oideachais. Bheinn breá sásta breathnú ar mhionsonraí an cháis sin má tá an Teachta nó aon bhall den phobal ag iarraidh teagmháil a dhéanamh linn.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_67">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_128">Tá ceist eile agam faoi sin. An bhfuil cás ar leith a bhaineann leis an bpobal i gcoitinne nó an bhfuil an coimisinéir ag caint faoi thuismitheoirí nach féidir leo rochtain a fháil ar spás sa scoil sin de dheasca easpa spásanna i seomra ranga, nó an dá rud?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_129">Tá na cearta teanga leagtha síos ag leibhéal an bhall aonair den phobal. Mar sin is féidir le duine den phobal teacht i dteagmháil liomsa nó le m'oifig ag aon phointe faoi aon líomhain go bhfuil sárú reachtúil á dhéanamh. Táimid soiléir faoin Acht Oideachais go bhfuil forálacha ar leith ann a dheimhníonn cearta teanga an tsaoránaigh. Táimid réamhghníomhach chuige sin.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_69">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_130">Gabhaim buíochas leis an gcoimisinéir.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:30:00+01:00"/></from>
+          <p eId="para_131">Tiocfaidh mé ar ais chuig éinne ar mhaith leo teacht ar ais isteach. Cuirfidh mé cúpla ceist mé féin. Déanaim comhghairdeas leis an gcoimisinéir as an tuarascáil iontach seo. Tá sé leagtha amach go héifeachtach. Tá sé soléite i mBéarla agus i nGaeilge. Eiseamláir atá ann do dhreamanna eile. Is uirlis eolais agus foghlama é; an dá rud.</p>
+          <p eId="para_132"> Tá athrá i gceist arís is arís tríd an tuarascáil, an píosa cainte atá déanta ag an gcoimisinéir agus a ráiteas tosaigh. Tá sé thar a bheith tábhachtach go bhfuil dhá chrann taca i gceist. Tá i bhfad níos mó ann ach tá dhá chrann taca i gceist: na caighdeáin teanga; agus cúrsaí foirne i gcomhthéacs na sprice 20%. Faraor, i mo thuairim - b'fhéidir go bhfuil mé mícheart - níl mórán dul chun cinn déanta sa dá chás sin. Táimid fós ag fanacht ar na caighdeáin teanga. Sin an chaoi a mhothaímse. B'fhéidir nach mothaíonn na baill eile an bealach céanna. Is é Séamas Ó Concheanainn an tríú coimisinéir teanga atá tar éis teacht os ár gcomhair. Tá sé soiléir le fada - níl a fhios agam cé mhéad bliain - go bhfuil teip iomlán ar na scéimeanna teanga. Sin an fáth a bhfuil géarghá leis na caighdeáin teanga. </p>
+          <p eId="para_133">Táimid san áit fós nach bhfuil tásc ná tuairisc ar na caighdeán teanga sin. Níl an réamhobair déanta ó thaobh an sprioc 20% a bhaint amach. An rud a léimeann amach as ráiteas tosaigh an choimisinéara ná go bhfuil riosca mór ann nach n-éireoidh leis an Stát a chuid dualgas reachtúil maidir leis an bhforáil 20% a fhíorú. Chun a bheith féaráilte, tá rudaí dearfacha leagtha amach aige freisin ach tá mé ag díriú isteach ar an riosca sin. Is ráiteas mór é sin, nach ea?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_134">Is ea, mar ag teacht ar ais ag cuid den phlé a bhí againn níos luaithe maidir le muinín na seirbhísí poiblí i nGaeilge, táimid ag feiceáil go leor cásanna nuair a théann baill den phobal sa tóir ar sheirbhísí bunúsacha mar a luaigh muid ansin, go leor acu atá ar fáil ar MyGovID, mar shampla cúrsaí oideachais, go bhfuil easpa struchtúir agus easpa cur chuige córasach ann i láthair na huaire. Is dea-scéala atá ann go dtiocfaidh córas na gcaighdeán teanga i bhfeidhm, go leagfar dualgas reachtúil soiléir don chéad uair riamh ar chomhlachtaí poiblí na seirbhísí bunúsacha a chur ar fáil agus go mbeidh sé luaite ag cén leibhéal cumais sa Ghaeilge a chaitheas a bheith ag an bhfoireann a bhéas ag cur na seirbhísí ar fáil. Tá an ceart ag an gCathaoirleach áfach. Ar bhealach, tá earcaíocht d’fhoireann le Gaeilge ag brath go huile is go hiomlán ar na gcaighdeáin teanga mar go dtí go bhfuil siad sin leagtha síos tá sé dúshlánach do chomhlachtaí poiblí léargas a fháil ar cén líon foirne a chaithfidh siad a earcú. Ba cheart go mbeadh an phleanáil sin níos soiléir ag an bpointe seo agus feicimid é seo i nádúr na ngearán atáimid ag fáil.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_72">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_135">Tuigim. An bhfuil aon eolais ag an gcoimisinéir ar cén fáth go bhfuil moill chomh mór sin ar na caighdeáin teanga a bhfuil géarghá leo?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_136">Déarfainn go bhfuil sé luaite i gcúpla babhta anseo. Ceann de na fáthanna ná scála na hoibre atá i gceist. Tá 400,000 duine ag obair sa tseirbhís phoiblí. Tá breis agus 500 comhlacht poiblí a thagann faoi scáth na reachtaíochta teanga agus tá an-bhéim curtha againn-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_137">Ach bhí an t-eolas uilig sin ar fáil roimhe seo.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_138">Bhí agus thóg muid sampla don chur chuige go dtí seo a d’oibrigh go maith, is é sin gur tugadh cúnamh isteach ón taobh amuigh - taighdeoirí ollscoile - le plean náisiúnta a chur le chéile a bhfuil creatlach an-mhaith ann ach ar bhealach tá na chéad chéimeanna eile chomh criticiúil céanna agus atá an plean. Is éard atá mise ag moladh ná go gcaithfear breathnú ar an acmhainneacht atá ag na páirtithe leasmhara uilig, sa Roinn agus ar an gcoiste comhairleach, agus cén chaoi a dtabharfar faoin obair seo ar bhonn pleanála. Ní féidir liom réamhbhreithiúnas a thabhairt ar an bplean gníomhaíochta ach tá sé an-tábhachtach go leagfar amach cur chuige a ndéanfar comhordú, tomhas agus tuairisciú ar bhonn leanúnach air agus go bhféachfar ar cén chaoi a dtabharfaí faoin earcaíocht. Luaigh mé sampla praiticiúil amháin níos luaithe ón tSeirbhís um Cheapacháin Phoiblí. Tá fíricí nó fianaise ann go bhfuil treisiú á dhéanamh ar líon na gcomórtas atá á reáchtáil ag an tseirbhís ar <i>publicjobs.ie</i> d’earcaithe le Gaeilge. Is slat tomhais amháin é sin. Caithfidh sé sin tarlú taobh istigh de chur chuige leanúnach má tá muid ag braith ar chomhlachtaí poiblí a bheith ag tuairisciú ar ais gan an chuid eile den phleanáil, don chomhordú agus don tomhas. An sampla a thug mé níos luaithe ná má leagtar dualgas ar dhá údarás áitiúil seirbhísí faisnéise teileafón a chur ar fáil, chaithfí comhairle shoiléir, leanúnach a bheith ar fáil don údarás áitiúil go dteastaíonn líon áirithe - más ceathrar nó cúigear é – de dhaoine le Gaeilge mhaith leis an tseirbhís sin a chur ar fáil.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_139">Cloch mhíle a bhí ann nuair a foilsíodh an plean náisiúnta ach níl tásc ná tuairisc ach an oiread ar an bplean gníomhaíochta. An raibh nó an bhfuil aon ionchur ag an gcoimisinéir maidir leis an bplean gníomhaíochta?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_140">Tá, agus bíonn teagmháil rialta againn leis an Roinn ar mhaithe le feasacht an scéil atáimid ag insint sa tuarascáil bhliantúil agus san aitheasc inniu maidir le cá bhfuil na poill mhóra i láthair na huaire agus céard atá nádúr na ngearán atáimid ag fáil ag insint dúinn maidir leis na bearnaí. Is dóigh liom go bhfuil sé sin déanta againn chomh maith agus is féidir léargas a thabhairt ar na céimeanna praiticiúla a chaithfear a thógáil. Táimid imithe isteach sa gcur síos, mar shampla ar an riachtanas atá ann d’aonad a aithint nó a bhunú. Tá sampla cheana atá ag oibriú trasna na seirbhísí poiblí-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_141">Dúirt an coimisinéir é sin. Laistigh de cén Roinn a bhéas an t-aonad?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_142">Is cinneadh den Aire agus do Roinn na Gaeltachta a bheidh i gceist a rá cá háit a bhfuil an acmhainneacht chuí le tabhairt faoi na fearainn a fheiceann muid atá criticiúil ionas go dtarlóidh sé seo ar bhonn comhordaithe agus ar bhonn córasach go fadtéarmach.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_143">Tá cúpla ceist sciobtha eile agam. Tá dualgas ar an gcoimisinéir monatóireacht a dhéanamh ar an gcoiste comhairliúcháin agus thug sé tuarascáil don Aire. Cé chomh minic is atá air é sin a dhéanamh? An bhfuil an tuarascáil a thug sé ag an gcoiste comhairliúcháin foilsithe? An féidir é a léamh anois? Cad iad na rudaí a d’eascair as nó a léim amach dó?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_144">Maidir leis an tuarascáil a leag mé faoi bhráid an Aire i mí na Nollag 2024, bhí sé leagtha síos sa reachtaíocht go gclúdódh an chéad tuarascáil sin Meitheamh 2022 go dtí Nollaig 2023. Tá sé luaite sa reachtaíocht go gcuireann an tAire faoi bhráid an Rialtais é agus ansin go bhfoilsítear go poiblí é. Mar a thuigeann muid, níl sé foilsithe ag an bpointe seo ach tá an scéal atá sa tráchtaireacht sin á fheiceáil sna gearáin atáimid ag fáil ó lá go lá agus a bhfuil tuairisciú déanta againn orthu freisin sa tuarascáil bhliantúil. Tá an-tábhacht le ról an choiste chomhairligh mar tá feidhmeanna an-tábhachtach aige ar an gcead dul síos stiúradh a dhéanamh ar an bplean náisiúnta. Is féidir leis an gcoiste comhairleach moltaí a chur faoi bhráid an Aire maidir le seirbhísí ar cheart caighdeán teanga a leagan amach leo agus cumhachtaí criticiúla eile mar a léirigh an choiste sa chinneadh a rinne sé taighdeoirí ollscoile a thabhairt isteach leis an bplean a fhorbairt. Is féidir leis an gcoiste comhairleoirí a fhostú le haon ghné den fhorbairt atá ag teastáil. Leagaim an-bhéim air sin. Is bealach é sin leis an acmhainneacht a theastaíonn le scála na hoibre seo a thabhairt chun críche, le déileáil leis agus le tacú le foireann na Roinne dár ndóigh.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_145">Cén uair a bheas oraibh an chéad tuarascáil eile a chur os comhar an Aire? </p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_146">Roimh dheireadh na bliana seo. Tá tráchtaireacht ar obair an choiste chomhairligh go 2024 faighte agam le roinnt seachtainí anuas agus beidh orm an chéad tuarascáil eile a dhéanamh laistigh de sé mhí.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_84">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_147">Is dócha go bhfuil sé ráite go poiblí agam go bhfuil teipthe ag an Aire a chuid dualgais faoin reachtaíocht a chomhlíonadh agus tá sé sin leagtha amach anseo freisin ag an gcoimisinéir. Bhí spriocanna ama le leagadh síos ag an Aire laistigh de trí mhí. Níl sé sin comhlíonta aige.</p>
+          <p eId="para_148"> Tá neart féidearthachtaí ann do na moil dhigiteacha agus don champas atá á mholadh ag an gcoimisinéir ó thaobh na Gaeilge de. D’fhéadfadh Státseirbhísigh freastal ar chúrsa agus comhthreomhar leis seo a gcuid oibre a dhéanamh sna Gaeltachtaí ag an am céanna.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:40:00+01:00"/></from>
+          <p eId="para_149">An taithí atáimid ag feiceáil sna gearáin ná gur beag feiceálacht ar bhonn náisiúnta atá ar sheirbhísí poiblí i nGaeilge ar ardchaighdeán i roinnt comhthéacsanna. Luaigh muid go bhfuil gá athbhrandáil nó athdhearadh a dhéanamh ar céard is seirbhís poiblí ar ardchaighdeán i nGaeilge ann. Tá mé go láidir den tuairim go bhféadfadh ról criticiúil a bheith ag na moil sin taobh istigh den Ghaeltacht agus sna bailte seirbhíse Gaeltachta. Ná déanadh muid dearmad freisin ar na líonraí pleanála teanga ach an oiread ionas go mbeadh hubs, moill, agat a bheadh ag cur an meascán de na seirbhísí ar líne agus den tseirbhís ar a láthair le chéile. Cruthaíonn sé sin trí rud: cruthaíonn sé dlús do na seirbhísí atá ar fáil i nGaeilge; feiceann an pobal go bhfuil siad ar fáil; agus cruthaíonn sé éileamh. Freisin, beidh dlús foirne ó thaobh iompar teanga agus gurb í an Ghaeilge an teanga nádúrtha iontu. D’fhéadfadh sé sin tionchar ollmhór a imirt ar an bpróiseas pleanála teanga sa Ghaeltacht ó thaobh láidriú an infreastruchtúir. Tá infheistíocht ollmhór déanta ag an Stát sa bpróiseas pleanála teanga agus seo pleanáil teanga i mbealach eile trí infreastruchtúr. </p>
+          <p eId="para_150">Cuireadh sé go mór le líon na bhfostaithe atá ag obair go sonrach trí mheán na Gaeilge sa Ghaeltacht. Tá mé ag samhlú go bhféadfaí a bheith ag caint ar thionscnaimh ollmhóra in imeacht aimsire. Chun an cheart a thabhairt don Roinn agus don choiste comhairleach, tá sé sin luaite go soiléir acu leis an aonad lárnach aistriúcháin. Tá an dhá thionscnaimh sin, na moil digiteacha agus an t-aonad lárnach aistriúcháin, luaite mar thionscnaimh a mbeidh siad ag díriú go sonrach orthu. Tá sé sin le moladh.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_151">Gabhaim buíochas le Séamas Ó Choncheanainn. An bhfuil aon duine eile ag iarraidh teacht isteach? Níl. Gabhaim buíochas leis na finnéithe. Tá neart oibre déanta acu. Tá ardmholadh tuilte acu. I ndáiríre, is iad atá ag díriú spotsolais ní hamháin ar na bearnaí, ach ar na réitigh freisin. Tá sé sin thar a bheith tábhachtach. Gabhaim buíochas leo go léir. </p>
+          <p eId="para_152"> De réir mar a thuigim, ní bheidh Órla de Búrca os ár gcomhair arís.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Órla de Búrca<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_153">Ní bheidh.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_154">Go n-éirí leat agus tú ag dul ar scor. Is dócha go bhfuil bóthar nua romhat.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Órla de Búrca<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_155">Le cúnamh Dé.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Séamas Ó Concheanainn<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_156">Is mian liom mo bhuíochas a ghabháil le hÓrla de Búrca. D’oibrigh sí leis an triúr Coimisinéir Teanga, Seán Ó Cuirreáin, Rónán Ó Domhnaill agus mé féin, ó bunaíodh an oifig. Bhí sí ann ón tús. Tá an stair uilig aici. Tá saothar eisceachtúil agus sainscileanna dochreidte aici. Is í an imní atá orainn anois ná cén chaoi a bhfeidhmeoidh an oifig. Tá oidhreacht fhíorshaibhir fágtha ag Órla agus is mian liom mo bhuíochas a chur in iúl di as an obair sin.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_157">Go n-éirí le hÓrla. Déanaim comhghairdeas léi.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Ms Órla de Búrca<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_158">Go raibh maith agaibh.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_159">Is dócha go raibh an t-am uilig, nó cuid den am, caite ag snámh in aghaidh easa, ach lean tú ar aghaidh agus ar aghaidh agus thug tú dóchas dúinn i gcónaí.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Órla de Búrca<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_160">Bhí sásamh i gceist i gcónaí. Bhí muid i gcónaí ag plé le pobal an-deas a raibh an spéis aige sa rud a bhí ar bun againn. Bhí tacaíocht an phobail ag an oifig i gcónaí. Mar a luaigh Séamas, d’oibrigh mé faoi stiúir triúr Coimisinéir Teanga agus bhí an triúr acu thar cionn ar fad. Bhí tacaíocht láidir ann ón bhun aníos agus ón mbarr anuas.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_161">An seasann aon rud faoi leith amach?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Ms Órla de Búrca<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_162">An tAcht in 2021. Thabharfadh sé an-dóchas duit dá gcuirfí i bhfeidhm é. Clúdaíonn sé a lán rudaí a bhí ag teastáil ón phobal le blianta fada. Sular thosaigh mé ag obair le hOifig an Choimisinéara Teanga, d'oibrigh mé roimhe sin sa Státseirbhís in áiteanna cosúil le hOifig na gCoimisinéirí Ioncaim agus mar sin de. Mar sin, tá taithí agam ar feadh na mblianta agus tuigim an dá thaobh, go háirithe gnéithe cosúil le hainmneacha agus seoltaí, mar a luaigh duine éigin. Tá síneadh fada i m'ainm atá os mo chomhair amach. Tá “d” beag ar an chéad litir de mo shloinne chomh maith. Go minic agus mé i suíomhanna mar seo, bíonn “d” mór curtha air. Is rudaí den chineál sin atá i gceist agam, agus más féidir fheidhm chuí a thabhairt dóibh, beidh toradh an dearfach leis.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:50:00+01:00"/></from>
+          <p eId="para_163">Gabhaim míle buíochas le hÓrla. Cuireann sé sin deireadh lenár mbreithniú inniu. Is mian liom mo bhuíochas a ghabháil leis an gCoimisinéir Teanga arís agus leis na hoifigigh as an bplé fiúntach agus tairbheach seo. Molann muid go gcuirtear an cruinniú ar athló go dtí go bhfilleann an Dáil agus an Seanad i mí Mheán Fómhair. An bhfuil sé sin aontaithe? Aontaithe.</p>
+        </speech>
+        <summary eId="sum_7"> Cuireadh an comhchoiste ar athló ar 1.53 p.m. <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

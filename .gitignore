@@ -45,3 +45,7 @@ lerna-debug.log*
 # Build artifacts
 dist-ssr
 *.local
+
+# Large GeoJSON files (keep detailed-0.001 as it is the active one, ignore others to stay under 100MB)
+public/assets/ireland-constituencies-simplified-*.geojson
+attached_assets/*.geojson

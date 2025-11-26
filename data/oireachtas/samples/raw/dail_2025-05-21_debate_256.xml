@@ -1,0 +1,308 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-05-21/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-05-21/debate"/>
+          <FRBRdate date="2025-05-21" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_further_and_higher_education_research_innovation_and_science"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-05-21/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-05-21/debate/mul@"/>
+          <FRBRdate date="2025-05-21" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-05-21/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-05-21/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-24" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BrendanSmith" href="/ie/oireachtas/member/id/Brendan-Smith.D.1992-12-14" showAs="Brendan Smith"/>
+        <TLCPerson eId="DeeRyan" href="/ie/oireachtas/member/id/Dee-Ryan.S.2025-01-29" showAs="Dee Ryan"/>
+        <TLCPerson eId="EoghanKenny" href="/ie/oireachtas/member/id/Eoghan-Kenny.D.2024-11-29" showAs="Eoghan Kenny"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FionntanOSuilleabhain" href="/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29" showAs="Fionntán Ó Súilleabháin"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MaeveOConnell" href="/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29" showAs="Maeve O'Connell"/>
+        <TLCPerson eId="MikeKennelly" href="/ie/oireachtas/member/id/Mike-Kennelly.S.2025-01-29" showAs="Mike Kennelly"/>
+        <TLCPerson eId="PaulDaly" href="/ie/oireachtas/member/id/Paul-Daly.S.2016-04-25" showAs="Paul Daly"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BREISOIDEACHAS AGUS ARDOIDEACHAS, TAIGHDE, NUÁLAÍOCHT AGUS EOLAÍOCHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Further and Higher Education, Research, Innovation and Science</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-21">Dé Céadaoin, 21 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-21">Wednesday, 21 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#PaulDaly">Paul Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#EoghanKenny">Eoghan Kenny</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DonnaMcGettigan">Donna McGettigan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MikeKennelly">Mike Kennelly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MaeveOConnell">Maeve O'Connell</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#FionntanOSuilleabhain">Fionntán Ó Súilleabháin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#BrendanSmith">Brendan Smith.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#ErinMcGreehan">Teachta / Deputy Erin McGreehan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-21T12:30:00+01:00"/></heading>
+        <speech by="#ErinMcGreehan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T12:30:00+01:00"/></from>
+          <p eId="para_15">Apologies have been received from Deputy Frankie Feighan.</p>
+          <p eId="para_16"> Before we proceed, I have a few housekeeping matters to go through as follows. In according with Standing Orders, I wish to make the following declaration:</p>
+          <p class="indent_1" eId="para_17">I do solemnly declare that I will duly and faithfully, and to the best of my knowledge and ability, execute the office of Cathaoirleach of the Joint Committee on Further and Higher Education, Research, Innovation and Science without fear or favour, apply the rules as laid down by the House in an impartial and fair manner, maintain order and uphold the rights and privileges of members in accordance with the Constitution and Standing Orders.</p>
+          <p eId="para_18"> I remind members of the constitutional requirement that in order to participate in public meetings, Members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in public meetings, Members must be physically present within the confines of the place where the Parliament has chosen to sit. In this regard, I ask that any Member partaking via Teams, prior to making their contribution to the meeting or further meetings, confirm that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_19"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if a Member's statements are potentially defamatory in respect of an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_20"> As regards my own housekeeping matters, a chairde agus a chomhaltaí coiste, as the Chair of the joint committee, it is a great honour and privilege to open our first meeting. I welcome all members and look forward to working alongside each and every one of them in the time ahead. This committee will play a vital role in shaping the future of our education system, our research environment and our national capacity for innovation and discovery. It is a brief that will carry a real impact, not just for today but for the generations to come. I am hopeful that our work together will be defined by a positive tone and that we can engage in a spirit of partnership, inclusion and productivity. While we come from different perspectives, I know we share common goals to support learners, to foster innovation and to ensure that the opportunities provided by education and research are accessible to all.</p>
+          <p eId="para_21"> As we commence, it is fitting to acknowledge the work of the former Committee on Education, Further and Higher Education, Research, Innovation and Science during the last Oireachtas term. The members of that committee carried out very valuable activity, including production of several impactful reports on matters such as the future funding of higher education. They highlighted key issues that will remain relevant to us on this committee. I thank them and I hope that together we will be able to build on their work over the term ahead.</p>
+          <p eId="para_22"> This, of course, is a new committee. It has been established in order to better consider the matters relating to the Department of Further and Higher Education, Research, Innovation and Science. This underscores the importance of the Department's portfolio. Among the priorities I hope we can focus on together is accessible education for all. Education should not be a privilege; it should be a right. Whether through further or higher education pathways, we must continue to break down financial, geographic and social barriers that prevent individuals from reaching their full potential. Another priority is expanding on educational offerings and diversity. Ireland's future depends on a system that reflects the diversity of our people and the dynamism of our economy. That means expanding access to apprenticeships, digital skills and lifelong learning and supporting new and emerging areas of study. A further priority is to support learners with disabilities. We must place inclusion at the heart of everything we do. Students with disabilities deserve not just access but meaningful supports to succeed through services, funding and accommodations that enable full participation in all aspects of student life. We must champion research and innovation. Ireland has long punched above its weight in science and research. We must ensure that researchers are supported, that their innovation is nurtured and that our institutions remain competitive on a global stage while serving the needs of Irish society.</p>
+          <p eId="para_23"> I do not need to remind members that we meet for the first time today in a moment of geopolitical and economic challenge for Ireland. It is a moment, too, of profound and rapid technological change, as seen particularly in the ongoing impact of artificial intelligence. Our work together will be critical in this context. Ireland has enjoyed the competitive advantage over recent decades of a highly educated workforce. We must ensure that that remains the case by prioritising a well-resourced higher and further education system. This must be a tertiary education system that is adequately and sustainably funded. It must be one in which each and every student is supported in order to make the most of their individual talents. They deserve no less.</p>
+          <p eId="para_24"> Vital, too, over the years ahead will be maintaining Ireland's position as the world's leading home of research, innovation and science. If the world is changing rapidly, Ireland must remain at the cutting edge of that change. We must continue to produce and attract the brightest talent. This will play a pivotal role in shaping all our futures. It will be central to supporting Ireland's prosperity as a small and open economy.</p>
+          <p eId="para_25"> I look forward to our deliberations, from hearing from stakeholders to producing work that informs policy and strengthens public confidence in the system. For my part, I will approach the Chair with consensus and fairness. I believe we can work best together on a united basis on which all members can contribute and feel that their efforts are worthwhile. I will always endeavour for that to be the case. Let us approach our work ahead with purpose, openness and a shared ambition to deliver for our students, our educators, our researchers and our communities across Ireland. Go n-éirí linn agus muid ar an mbóthar an-tábhachtach atá romhainn.</p>
+          <p eId="para_26"> Do any members wish to make their own comments?</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_2">
+          <from>Senator Pauline Tully<recordedTime time="2025-05-21T12:30:00+01:00"/></from>
+          <p eId="para_27">A Chathaoirligh, I congratulate you on your appointment as Chair of this committee and I look forward to working with you - again. We worked very successfully on the disability matters committee during the last Government's term. It was an excellent committee with a lot of cross-party co-operation, and I am sure the same will happen under your control of this committee.</p>
+          <p eId="para_28"> There are a lot of issues we need to tease out and look at in further and higher education. First, I commend everybody involved in our education sector on the tremendous work they do. We are and have to be very proud of our education sector and how well educated our young people are in comparison with other countries and jurisdictions, but there is always room for improvement. There are a number of issues I would like to see prioritised.</p>
+          <p eId="para_29"> One is student accommodation because it really affects student life at the moment. It is tied in with the housing crisis but has to be tackled by our third level institutions to ensure there is sufficient student accommodation close to colleges in order that students can benefit from college life.</p>
+          <p eId="para_30"> Tied in with that is the student contribution charge and the Student Universal Support Ireland, SUSI, grant scheme. The latter really needs to be reformed, especially in the context of mature students having to move back home to live with parents, again because of the housing crisis and how that affects the funding of third level courses.</p>
+          <p eId="para_31"> Planning around third level education is another issue. We must ensure we are educating the people we need in our society, within the construction sector, our health system and so forth, and tie that in with apprenticeships. College and university are not for everybody, and apprenticeships are a great way of learning as you work and should be expanded into other areas. We need to increase the number of people involved not only in the construction sector but also in other areas.</p>
+          <p eId="para_32"> I would like to see greater North-South co-operation. That is really important. We must also expand the ability to learn through Irish, which is nonexistent at the moment at third level and further level.</p>
+          <p eId="para_33"> I also want to see greater mental health supports and health supports in general. Learning from the last committee we were on, Chair, which you mentioned, supports for disabled people are another issue. Again, part of that might involve the reform of the SUSI grant in order that people can engage in study part time or remotely, working from home and so forth, to ensure that all students, regardless of ability or disability, are able to participate in further education.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_3">
+          <from>Senator Paul Daly<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_34">I congratulate the Cathaoirleach, a former colleague in Seanad Éireann, not only on her appointment as Cathaoirleach, but formally on her elevation - perhaps it is a demotion - to the Lower House. We are delighted to see her make that progress and be appointed to this committee. I will not rehash any of the fantastic statements she made at the outset. She covered almost everything. She, like many others, will not be surprised if I squeeze agriculture in, in some shape or form.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_35">I hope you will.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_5">
+          <from>Senator Paul Daly<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_36">I hope to bring the issue of the agricultural colleges to the committee. They fall between the cracks because of their name. If people have an issue with them, they head for Agriculture House, but these are third level and higher education institutions so I hope we will get to deal with them going forward in this committee. I will not take any more time other than to wish the Cathaoirleach the best of luck. I look forward to working with her on the committee.</p>
+        </speech>
+        <summary eId="sum_5"><b>Deputy Donna McGettigan:</b> I congratulate the Cathaoirleach on her appointment. I look forward to working with her and everyone on the committee. I will not go over everything that has already been said. The National Training Fund needs to be looked into, as does the core funding deficit. I am glad to see that better support for those with disabilities will be looked at. Cross-Border collaboration has great potential and we need to look into it. On research and innovation, we need to ensure Ireland becomes a leading European centre for applied blue sky research. We also need to work to lower the cost of housing because it is a big burden on PhD researchers. One of the last things I have on my list is mental health awareness. That needs to be a big part of this committee's work.</summary>
+        <speech by="#FionntanOSuilleabhain" eId="spk_6">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_37">Likewise, I congratulate the Cathaoirleach on her elevation to this position. It is a great honour for her, I am sure, to hold it. My background is that I was a primary school teacher for almost 35 years. The education and training board, ETB, in the south east and the South East Technological University that will come on stream shortly are big areas of interest to me. Like previous speakers, student accommodation is number one for me, along with keeping people here rather than educating them and sending them to Sydney, Brisbane and such places. We need to do everything we can within our remit on that. No person, especially those from the countryside, should have to drop out of college, as quite a few have in County Wexford, because they could not get accommodation. That should never happen.</p>
+          <p eId="para_38"> Apprenticeships were always the poor relations and looked down on in many ways over the years. People saw it as necessary to have a university degree or other college degree, but the country is now crying out for apprentices in many areas, especially in the areas of retrofitting, plumbing and even school bus drivers. We cannot solve the crisis with school transport unless we have the drivers. We need to train them and work with the ETBs to do so. As was mentioned, mental health supports are needed. There has been a massive crisis since the lockdown, especially among third level students, but for students in general. The influence of the smartphone has contributed significantly to it.</p>
+          <p eId="para_39"> As we start thinking more on an all-Ireland basis, we need to see more co-operation North and South to develop cross-Border links.</p>
+          <p eId="para_40"> The promotion of the Irish language is also important. It has become much more popular this year than it was in the past decade, and that is a great thing to see. Is rud iontach ar fad é sin a fheiscint. Ba mhaith liom dul chun cinn na Gaeilge a fheiscint ansin chomh maith. We should do anything we can to facilitate people to have third level education through Irish, as Senator Tully also mentioned, and to broaden the use of the Irish language throughout third level institutions and put a marker on it. An Irish university or other third level institution is not like such institutions anywhere else in the world. It is distinct. They are a few of my areas of interest.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_7">
+          <from>Senator Dee Ryan<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_41">I congratulate the Cathaoirleach on her appointment to the role and thank her for her well considered words. I am looking forward to working with the Cathaoirleach and other colleagues on the committee. My background is in business and, as a Senator from Limerick, I am keenly aware of how important the institutes of learning were for us in the aftermath of the crash and recession in 2008 and 2009. The collaboration between the institutes of learning and industry really helped to regenerate our economy locally and develop Limerick into the engine for the whole economic region of the mid-west. I will be approaching my work from three perspectives. I am interested in strengthening the relationship between industry and institutes of learning. From the perspective of the institutes of learning, which are huge employers in Limerick, I want to know how best we can support them. From the student perspective, the critical issue of accommodation has been well discussed here already this morning, but customer service for students and students' relationship with the institutes of learning and how the institutes deal with the students is of vital importance. It not only makes it easy for them to get through their work and focus on their studies, but also sets the tone of professionalism and respect with which we treat students and the expectation for what we would like to see from them.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_8">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_42">I congratulate the Cathaoirleach. I look forward to working with her. I will introduce myself briefly because I am a first-time TD. I am Fine Gael spokesperson for higher education. One of the reasons I have that role is that my background is in higher education. Until I was elected, I was a lecturer in Technological University Dublin, TUD. I taught across three different campuses during the years I was there so I have encountered first hand many of the challenges and am fully aware of them. I welcome the comments by the Cathaoirleach and other contributors on the issue of accommodation. It is certainly one of the key challenges. One of the impacts I used to see was the division between people based in the city and could stay for the weekend, and those who were up from the country and had to travel home every weekend. There was a division on campuses between those two cohorts, which is not very healthy for a class or society or the campus. That is one of the things that will be interesting to discuss. It was also exhausting for students who had to engage in it and that potentially has an impact on their final outcomes, which we do not want to see.</p>
+          <p eId="para_43"> The other cohort I would like us to look at is the junior staff who are doing a similar thing. They are travelling up from the country to stay for a few days during the week and then travelling back down. They are on poor, low, entry-level salaries for their skills. Many people are on hourly pay and yet these are the very cohort we expect to teach, encourage and retain in order to expand higher and further education. We need to recognise that we need to focus on them more. The Minister has made a commitment at second level to a continuity of contracts, if people have a one-year contract. We need to discuss that type of thing at further and higher education levels as well.</p>
+          <p eId="para_44"> The other area I would like us to look at is the leaving certificate. There is a role for further and higher education institutions to look beyond the leaving certificate, at a more aptitude-based assessment process. Some courses already include that. I would like to see it expanded. My classes were full of very accomplished kids but they were in the wrong classes or programmes and that resulted in drop-outs. The most disappointing thing for me was the hit to their confidence. They were very smart but they were just doing the wrong programme and it did not suit them. People can lose a few years through that, so there is a role for third level in that regard which I would like to discuss.</p>
+          <p eId="para_45"> I welcome all the comments about supporting apprenticeships and other alternative higher and further education pathways after the leaving certificate. I saw plenty of other options for my students. I would love to see us making those options more accessible to them.</p>
+        </speech>
+        <speech by="#BrendanSmith" eId="spk_9">
+          <from>Deputy Brendan Smith<recordedTime time="2025-05-21T12:40:00+01:00"/></from>
+          <p eId="para_46">I congratulate the Cathaoirleach on her appointment. I, like others, warmly welcome her introductory remarks. She covered the broad area of the remit of this committee. I particularly welcome her focus on inclusion. She said it has to be at the front and centre of all our work and that is important at every level of education.</p>
+          <p eId="para_47"> During the previous Oireachtas, the Cathaoirleach, Senator Tully and I were members of the Good Friday Agreement committee. We did a lot of work in the context of examining issues on an all-Ireland basis. This is one area we have often referred to. We did some work on it, but we have to be very strong in this committee with regard to further and higher education and research on an all-Ireland basis. Northern Ireland and our State are too small as jurisdictions to be thinking in an isolated manner. Our island is too small not to be co-operating on an even more intense basis.</p>
+          <p eId="para_48">There has been a sea change in collaboration and co-operation on an all-Ireland basis since the signing of the Good Friday Agreement in 1998, but there is much more we can do. One area I have a particular interest in is further education. The development of the further education sector on an all-Ireland basis must be progressed intensively if at all possible.</p>
+          <p eId="para_49"> Senator Daly mentioned agriculture education. I was involved many years ago with having a course established in Ballyhaise agriculture college that gave a pathway to the food science degree course in Dundalk Institute of Technology. We know that many students who did not have the points to go directly into UCD to do the bachelor of agricultural science or go to Dundalk got a pathway through the agriculture colleges and have gone on to top-class careers in the areas of food, science, agriculture and farming practices. Senator Daly made the valid point that colleges, be they further or higher education, will complain to us that they are not funded enough, but by God, the agriculture colleges have a bigger grievance in that respect. It is an area we should look at.</p>
+          <p eId="para_50"> All the comments that have been made are valid and important. I presume that over the next few meetings we will be developing a work programme, and that will be important. As the Cathaoirleach knows from her experience on previous committees, we need to get out and visit those colleges and meet the people. It is better than people sending memos and presentations and them coming in here and putting their best foot forward. Let us go out and meet them in the colleges and see what deficiencies and challenges they have, as well as the opportunities they have to develop.</p>
+          <p eId="para_51"> The parliamentary term goes round very quickly. If we do not do some visits on our island - not abroad although they have to be done as well - in the early part of the Oireachtas term, they will not be done at all. That is the reality. We should give some consideration to trying to get out and meet people in the sectors in all the regions. I would start in the north east, in Dundalk, Cavan and Monaghan, just as an example or suggestion, and I presume the Cathaoirleach will agree with that.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T12:50:00+01:00"/></from>
+          <p eId="para_52">That is a great suggestion.</p>
+        </speech>
+        <speech by="#BrendanSmith" eId="spk_11">
+          <from>Deputy Brendan Smith<recordedTime time="2025-05-21T12:50:00+01:00"/></from>
+          <p eId="para_53">Congratulations again to the Cathaoirleach on her selection and unanimously supported appointment as Cathaoirleach of the committee.</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_12">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-05-21T12:50:00+01:00"/></from>
+          <p eId="para_54">I congratulate the Cathaoirleach on her appointment to the role. This is a significant and important committee. The role that further and higher education and research and innovation plays in the majority of people’s lives across the country is very important. There is much work to be done. Importantly, we need to look at the barriers to further and higher education. There are serious issues in nearly every facet of what we talk about now in terms of housing, cost of living, access to purpose-built accommodation for students and not being in the same rental market as families, single people or couples, and access to third level education or further or higher level for those in the most disadvantaged communities. I was lucky to teach in a school in Cork in a socioeconomically disadvantaged, poor area. I was lucky to get the opportunity to teach those students, who genuinely feel they are locked out of further or higher education because of the community they are brought up in. Issues include access to home school liaison people, further access to the SUSI grant and other incentives we could provide to these students in disadvantaged areas. We need to look at the opportunities to enable them to progress their academic career.</p>
+          <p eId="para_55"> Research is also of particular focus for me. My predecessor, the former Deputy Seán Sherlock, was a champion for research and innovation when he was Minister of State. We should look at how we can attract international students to our fantastic universities, and in particular at stipends and visa applications. I mentioned this on the floor of the Dáil. If a PhD course is going to be provided for four or five years, giving students an opportunity to get a four- or five-year working visa is very important.</p>
+          <p eId="para_56"> As mentioned before, the role of apprenticeships is important. More than likely, everybody here has been in contact with their local authority, trying to get a plumber, carpenter, tradesman or tradeswoman out to a house to fix something and we just cannot get them. Most importantly, apprenticeships should be paid a minimum wage. For far too long in this country we have allowed apprenticeships to go unnoticed with regard to pay.</p>
+          <p eId="para_57"> Coming from a rural part of Cork, I believe it is also very important that we look at public transport. I think we can feed into that very well here so that mothers, fathers or guardians will not be bringing students to colleges or further or higher education facilities and then having to go to their own work as well.</p>
+          <p eId="para_58"> We need to work extremely hard, and I agree with Deputy Smith. We need to work extremely hard with students' unions and student bodies right across the country. They are the ones on the ground, listening to concerns that students are raising with them. Working with them and with the likes of Youth Work Ireland is going to be an essential part of this committee.</p>
+          <p eId="para_59"> It is a privilege to be part of this committee. I hope we can perhaps leave politics at the door and work cohesively across the chamber for the benefit of everybody trying to access further and higher education and for the promotion of research and innovation in Ireland.</p>
+        </speech>
+        <speech by="#MikeKennelly" eId="spk_13">
+          <from>Senator Mike Kennelly<recordedTime time="2025-05-21T12:50:00+01:00"/></from>
+          <p eId="para_60">I congratulate the Chair on her role. I am a first-time Senator from Kerry. I invite everyone down to Kerry as well while the book is open. I congratulate the Chair and wish her every success. I hope we will all work together and be united in everything we say here today.</p>
+          <p eId="para_61"> In the programme for Government, there are many challenges and barriers we need to iron out. Hopefully, with the support of everyone here, we can come to an agreement to knock every barrier for every kid who wants access to education and be inclusive.</p>
+          <p eId="para_62"> I want reform of the SUSI grant situation over the term while we sit on this committee and I want it to be sorted. Regarding accommodation, I come from rural north Kerry, and accessibility to further education is a big barrier. I need this committee to really work on that.</p>
+          <p eId="para_63"> I mentioned the programme for Government, which I will work on strongly. One aspect of it is the apprenticeship pathway, which we as a nation forgot about. Six years ago, I proposed an apprenticeship roll-out within Kerry County Council and it fell on deaf ears. At this stage, we have seen the issues we missed on housing and the barriers that we set up. We could have prevented this. It is one issue that I really want to work on, as well as the agriculture business with the colleges. I hope that, working together, we will not leave any element of society unattended and will help everyone.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_14">
+          <from>Deputy John Connolly<recordedTime time="2025-05-21T12:50:00+01:00"/></from>
+          <p eId="para_64">I join everyone else in wishing the Cathaoirleach well in the role. I look forward to working as a member of the committee.</p>
+          <p eId="para_65"> Much has been said, so I will not add a huge amount to it. There are a couple things I hope we might focus on that are of particular interest to me. This week, the theme has been the lack of services for disabled children and children with autism. We need to examine carefully the spaces within the third level sector for those therapists, who are crucial in meeting the needs of children with disabilities, such as speech and language therapists, physiotherapists, psychologists and occupational therapists. We should start by examining the service providers and getting real insight from them as to how difficult they are finding it to recruit people. Perhaps they could give us some insight as to how we can increase the numbers of people willing to take up those posts or take that up as an option for learning at third level.</p>
+          <p eId="para_66"> Talking about numbers in health professions, I noted that last year, the highest number of work permits the country gave out were for nurses. Some 5,000 work permits were given out for nurses to come to Ireland to apply their trade here. I do not have the precise detail on it but I understand we train many nurses who leave the country. We need to examine that. Five thousand is a very significant figure in terms of work permits. We need to look at whether we are training enough nurses in our third level sector to meet the demand of our own system.</p>
+          <p eId="para_67"> I agree with the comments about apprenticeships. Another thing we should do is a review. We are coming to the end of a five-year national strategy on apprenticeships. It included a provision that local authorities and other government bodies would initiate apprenticeship programmes. We should review that to see whether it happened and what did and did not work well in that strategy.</p>
+          <p eId="para_68"> Maidir leis an nGaeilge, tá dualgas reachtúil orainn go mbeadh 20% d’fostaithe san earnáil phoiblí líofa sa Ghaeilge faoi 2030. There is a legislative obligation that 20% of the workforce of our public sector be competent in Irish by the year 2030.</p>
+          <p eId="para_69">The last estimate was around 3%. There is a huge amount of work to do there. Mar aon leis na daoine eile, tugaim cuireadh do chuile dhuine. I extend an invitation to everyone to come to Connemara where we have the educational resources to train those people in the Irish language, which is important from a legislative perspective and from a national cultural perspective. We need to examine the funding of the third level sector.</p>
+          <p eId="para_70"> I have a slight concern that it is becoming increasingly corporate. My own third level institution, of which I am a proud graduate and which sustained my family, which worked there for generations, spent six figures on naming and rebranding. I am concerned about the funding, the necessity for it to do that and why it felt that was important. Other third level institutions have never changed their name. In my lifetime to this point, the university in Galway has changed its name three times. What is that about? I think it is corporatism and I am concerned about that. Regarding funding, it is important that third level institutions link with local industry, particularly with regard to research and information. We need to examine that.</p>
+          <p eId="para_71"> Our postgraduate cohort is a related issue. It is welcome that people from across the world see Ireland as a place where they would like to undertake postgraduate studies but I have a slight concern about what impact that is having on those who want to do their undergraduates studies in Ireland.</p>
+          <p eId="para_72"> I recognise fully that a number of people have commented on barriers, including funding, accommodation and transport. I am not sure how far we can stray into the education system but I am concerned that some of those barriers start much earlier in life, including at primary school. I am a primary school teach and, not to profile people, but it was possible to tell at a young age who was destined to maintain their presence in the education system into their early adult years and who was not. Those are matters I would like to look at too. I look forwards to working with the committee.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_15">
+          <from>Senator Laura Harmon<recordedTime time="2025-05-21T13:00:00+01:00"/></from>
+          <p eId="para_73">I wish the Cathaoirleach well in her role and congratulate her. I look forward to working with everyone on this committee. I have presented to this committee a number of times over the years with different hats. I was president of the Union of Students in Ireland ten years ago and, just recently, I was director of the Irish Council for International Students, so this is an area that I have great interest in. I think many of us are on the same page about the issues and priorities for the committee.</p>
+          <p eId="para_74"> Student housing needs to be looked at. When people decide to pursue an apprenticeship or further and higher education, the fact that they might not be able to find accommodation should not be a factor in that decision. It should be about where they want to study or what they think the best course for them is. Unfortunately, that is often not the case. Funding needs to be made available to technological universities to be able to borrow and to build purpose-built student accommodation for their campuses.</p>
+          <p eId="para_75"> The overall cost of education needs to be looked at, including the contribution fee. This country has the lowest employment rate for people with disabilities, which came up in the disability matters committee earlier. We need to look at pathways to education, which is key to addressing that. Regarding mature student access and progressing access to education for the Traveller community, I wholeheartedly agree with the comments about apprenticeships, how apprentices are paid and keeping them in their courses. A living wage for them absolutely has to be pushed for.</p>
+          <p eId="para_76"> Many higher education institutions are leading the way with lifelong learning programmes, adult learning and adult literacy. They are important outreach into our communities to address intergenerational access barriers to education, particularly the literacy rates for parents, which can then be passed on to their children. They are having a big impact, which needs to be looked at as something which can be transformative.</p>
+          <p eId="para_77"> There is a funding deficit in the higher education sector. I believe we need to move towards a publicly funded model. There is creeping corporatism and I do not think education courses should be dictated by corporations. We need to have them in public ownership.</p>
+          <p eId="para_78"> It is vital that we engage with students and their representatives directly, whether that is the national students' union or local students' unions, or indeed the student support services on campuses, which do amazing work day to day. Many of our colleges have led the way on issues in society in general, particularly the issue of consent. Bystander intervention programmes were led by UCC. There are many diversity and inclusion initiatives on our college campuses to tackle racism. Perhaps there is an opportunity for this committee, at some point, to delve into some of the work that is being done.</p>
+          <p eId="para_79"> I know that the Minister is looking extensively at Student Universal Support Ireland, SUSI, reform with regard to access to education and supports. Another area which I do not think has been mentioned is the English language sector, with students coming from abroad to learn English. There is a lack of regulation of that sector in many aspects. That needs to be looked at, including with regard to Ireland's reputation and, more broadly, at international students who contribute much through fees and the supports in place for them, including before they even come to the country and the guidance they receive about the cost of living here.</p>
+          <p eId="para_80"> We have an opportunity as a committee to engage with the unions that represent our staff working in further and higher education about pay and conditions. I am thinking of the Irish Federation of University Teachers, for example. We have a good opportunity. I look forward to the work of the committee.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_16">
+          <from>Deputy Paul Murphy<recordedTime time="2025-05-21T13:00:00+01:00"/></from>
+          <p eId="para_81">I congratulate the Chair. Apologies, because I have to run in five minutes to do a First Stage speech. I look forward to working with members. Most areas have been well covered, including access to education, with student housing being a key focus, and the question of apprenticeships. The point about corporatisation of third level education is important and we could look at it. I will highlight two additional areas which I think will be interesting. One is building on the point that Deputy O'Connell made about the points system. During Covid, there was a discussion about the points system because the problems with it were highlighted. Since active Covid and measures to do something about Covid have gone, it has been accepted that this is the norm and is how we ration access to third level education. This is not the norm in other European countries. A discussion where we look at other ways of organising access to third level education and look at other countries would be genuinely interesting and might point to a different way forward.</p>
+          <p eId="para_82"> The issue of working conditions in our third level institutions has been touched on. There are incredible rates of precarity. A high percentage of those who work in our third level institutions are not on full-time, permanent contracts. A subset of that issue is the treatment of our PhD workers, who have had some minor improvements over the past couple of years because of much campaigning, but are still treated pretty poorly. That would be an area we could look at.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_17">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T13:00:00+01:00"/></from>
+          <p eId="para_83">I thank everyone for their well wishes. We are off to a good start because I do not think there is any dissent so far. Let us hope it continues. The first item on the agenda today is nominations for leas-chathaoirleach. As members are aware, a committee may choose to elect a leas-chathaoirleach who can perform the duties and exercise the authority of the Cathaoirleach in my absence. I propose to request nominations for the position of leas-chathaoirleach. Members might wish to consult one another and send nominations to the clerk by 30 May 2025. I further propose that the election of a leas-chathaoirleach will take place at the next private meeting of the committee. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee went into private session at 1.09 p.m. and adjourned at 1.30 p.m. until 12.30 p.m. on Wednesday, 11 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

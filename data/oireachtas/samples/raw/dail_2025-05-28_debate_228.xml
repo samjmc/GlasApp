@@ -1,0 +1,575 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-05-28/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-05-28/debate"/>
+          <FRBRdate date="2025-05-28" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-05-28/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-05-28/debate/mul@"/>
+          <FRBRdate date="2025-05-28" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-05-28/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-05-28/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-31" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="GeraldNash" href="/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09" showAs="Ged Nash"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="PaschalDonohoe" href="/ie/oireachtas/member/id/Paschal-Donohoe.S.2007-07-23" showAs="Paschal Donohoe"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform." href="/ie/oireachtas/role/minister/public_expenditure__national_development_plan_delivery__reform." showAs="Minister for Public Expenditure, National Development Plan Delivery and Reform."/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM AIRGEADAS, CAITEACHAS POIBLÍ, ATHCHÓIRIÚCHÁN SEIRBHÍSE POIBLÍ AGUS DIGITIÚCHÁN, AGUS AN TAOISEACH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-28">Dé Céadaoin, 28 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-28">Wednesday, 28 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PearseDoherty">Pearse Doherty</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PaschalDonohoe">Paschal Donohoe (Minister for Finance)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ErinMcGreehan">Erin McGreehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AindriasMoynihan">Aindrias Moynihan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#GeraldNash">Ged Nash</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#EdwardTimmins">Edward Timmins.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MaireadFarrell">Teachta / Deputy Mairéad Farrell sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2025<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 7 - Office of the Minister for Finance (Revised)<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Vote 8 - Office of the Comptroller and Auditor General (Revised)<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_5">
+        <heading>Vote 9 - Office of the Revenue Commissioners (Revised)<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_6">
+        <heading>Vote 10 - Tax Appeals Commission (Revised)<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:30:00+01:00"/></from>
+          <p eId="para_12">No apologies have been received.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> Sitting suspended at 3.38 p.m. and resumed at 3.39 p.m.</i>
+        </summary>
+        <speech by="#MaireadFarrell" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:30:00+01:00"/></from>
+          <p eId="para_13">Is mian liom na riachtanais bunreachtúla seo a leanas a meabhrú do chomhaltaí. Nuair atá páirt á nglacadh acu i gcruinnithe poiblí, caithfidh siad a bheith i láthair go fisiciúil laistigh de theorainneacha suímh Theach Laighean. Ní cheadófaí do chomhaltaí páirt a ghlacadh i gcruinnithe poiblí nuair nach bhfuil said ag cloí leis an riachtanas bunreachtúil seo. Mar sin, má ghlacann aon chomhaltaí páirt ó lasmuigh den suíomh, iarrfaidh mé orthu an cruinniú a fhágáil. Maidir leis seo, iarraim ar chomhaltaí a dheimhniú go bhfuil siad i láthair laistigh de phurlán Theach Laighean sula ndéanann siad aon ionchur sa chruinniú ar Microsoft Teams. </p>
+          <p eId="para_14"> Fiafraítear de chomhaltaí cleachtadh parlaiminte a urramú, nár chóir, más féidir, daoine nó eintiteas a cháineadh ná líomhaintí a dhéanamh ina n-aghaidh ná tuairimí a thabhairt maidir leo ina ainm, ina hainm nó ina n-ainmneacha ar shlí a bhféadfaí iad a aithint. Chomh maith leis sin, fiafraítear díobh gan aon rud a rá a d’fhéadfaí breathnú air mar ábhar díobhálach do dhea-chlú aon duine nó eintiteas. Mar sin, dá bhféadfadh a ráitis a bheith clúmhillteach do dhuine nó eintiteas aitheanta, ordófar dóibh éirí as an ráiteas láithreach. Tá sé ríthábhachtach go ngéillfeadh siad leis an ordú sin láithreach.</p>
+          <p eId="para_15">I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask members participating via MS Teams to confirm they are on the grounds of the Leinster House campus prior to making their contribution to the meeting.</p>
+          <p eId="para_16"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. If their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> The Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach is meeting for the first time today to consider the Revised Estimates for Votes 7, 8, 9 and 10 with the Minister for Finance. The Estimates process is Dáil Éireann's method of allowing the Department of Public Expenditure, National Development Plan Delivery and Reform to seek to withdraw funds from the Exchequer to meet most Government spending obligations. Articles 17.1.1° and 28.4.4° of the Constitution provide for the presentation to and consideration of Estimates by Dáil Éireann, respectively. Standing Order 217 requires Estimates to be considered in committee. It is well established practice that they are referred to the relevant sectoral select committees. Once the hearing is concluded, the committee sends a message to Dáil Éireann, which generally approves Estimates without debate. Committees cannot amend Estimates and have no formal role in approving them. However, Standing Order 223 provides that committees may make a report to the Dáil in respect of their consideration of Estimates. The Revised Estimates Volumes for public services provide considerably more detail at subhead level, as well as performance metrics. Revised Estimates are the revised final proposed spending for the next year and form the basis for parliamentary scrutiny of allowed expenditure. I now invite the Minister to make his opening statement.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform." eId="spk_3">
+          <from>Minister for Public Expenditure, National Development Plan Delivery and Reform. (Deputy Paschal Donohoe)<recordedTime time="2025-05-28T15:40:00+01:00"/></from>
+          <p eId="para_18">I thank the Cathaoirleach for the opportunity to appear before the committee today to discuss the 2025 Revised Estimates. As Minister for Finance, I will be discussing the four Votes within the finance group of Votes. These are: Vote 7 - Department of Finance; Vote 8 - Office of the Comptroller and Auditor General; Vote 9 - Office of the Revenue Commissioners; and Vote 10 - the Tax Appeals Commission.</p>
+          <p eId="para_19"> The net funding allocation sought for the finance group of Votes for 2025 totals just over €628 million, which compares to a 2024 group total of almost €590 million, an increase of just under 7% or almost €39 million. I will deal with Vote 7 first. The Department of Finance is structured around one directorate, the economic, fiscal, banking and financial services directorate. The mission of the Department is to lead in the achievement of the Government's economic, fiscal and financial policy goals, having regard to the commitments set out in the programme for Government. The net allocation sought for the Department of Finance Vote in 2025 is €50.7 million, of which some €11 million is provided for a fuel grant scheme for disabled drivers. The Department’s allocation provides for both administrative and non-administrative costs. The single biggest cost remains payroll, at €31 million, or 60%, of the total Estimate. A further €5.8 million, or 11%, is provided to cover facilities and non-pay administrative costs. The remaining allocation funds other services such as the Financial Services Ombudsman, legal costs and other necessary outlays.</p>
+          <p eId="para_20"> The allocation for Vote 8, the Office of the Comptroller and Auditor General, C and AG, is applied towards a single audit and reporting programme. The Comptroller and Auditor General is an independent, constitutional officer whose mission is to provide independent assurance that public funds and resources are used in accordance with the law, managed to good effect and are properly accounted for. The office assists the Comptroller and Auditor General in his statutory functions and is staffed by civil servants. The C and AG’s financial audit role covers around 289 sets of accounts produced by public bodies. Together, these bodies had financial transactions with a value of over €350 billion last year. The net allocation for this Vote in 2025 is €11.6 million, which is an increase of approximately 4% on 2024. This is to fund higher staffing costs.</p>
+          <p eId="para_21"> The Office of the Revenue Commissioners, as our tax and customs administration, plays a vital role in our economy by collecting taxes and duties due to the State and in implementing customs controls. Revenue has been allocated a net budget of just over €562 million, an increase of just over €30 million on the net budget for 2024. The original net budget for 2024 was just over €512 million. In addition, there was a Supplementary Estimate granted of just under €20 million. The total net budget for Revenue in that year was just over €532 million. Over three quarters of the total net budget allocation is related to payroll for an employment ceiling of 7,163 staff.</p>
+          <p eId="para_22"> In 2024, Revenue collected a record €152.9 billion in gross tax receipts, including almost €31 billion collected by Revenue on behalf of other Departments and agencies. The total relative cost of administration remains low, at 0.39% of net collections, and Revenue continues to maintain high levels of compliance for the taxes and duties under its care and management.</p>
+          <p eId="para_23"> In 2025, Revenue will support the Department of Finance in the ongoing evaluation and development of the tax and duty policy framework, particularly in the context of global tax changes and EU developments in the VAT and customs arenas. Revenue continues to manage EU external borders through its frontier management and customs functions, ensuring overall supply chain safety and security while facilitating trade. During 2024, there was a further increase in the number of customs declarations. A total of 60.5 million declarations were processed in 2024 compared with 50.3 million in 2023, an increase of one fifth. However, in this context, some 90% of freight vehicles arriving from the UK were “green routed”, which means they travelled freely on arrival into the State without any undue delays arising from customs formalities. Revenue will continue to implement customs controls in a manner that encourages legitimate trade, enhances competitiveness and supports business, while managing compliance risks. Customs enforcement also led to over 21,000 detections and seizures valued at €361 million in 2024.</p>
+          <p eId="para_24"> Revenue maintains its risk-based approach to managing instances of non-compliance. In circumstances where timely compliance or meaningful engagement was not forthcoming, Revenue continued to pursue those who did not meet their tax and duty obligations. In 2024, there were 310,989 risk management interventions carried out with a yield of €591 million. As 2025 progresses, Revenue will continue to respond to the challenges of international tax reform, while implementing and supporting tax initiatives and collecting the taxes, duties and other charges on behalf of the Exchequer.</p>
+          <p eId="para_25"> Finally, Vote 10 for the Tax Appeals Commission, TAC, has a net budget allocation of €3.9 million, an increase of 3% on the 2024 Estimate. The 2025 Estimate is to provide for the TAC to advance its programme of modernisation and reform and to address its caseload, while also meeting its obligations as an independent Civil Service entity.</p>
+          <p eId="para_26"> I thank members for their attention and I commend the 2025 Revised Estimates to the committee. I am happy to answer any questions that members may have.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:40:00+01:00"/></from>
+          <p eId="para_27">Go raibh míle maith agat. I now invite members to discuss the Revised Estimates. I remind those participating remotely to use the raised hand feature and to cancel it when they have spoken. An Teachta Nash is first.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_5">
+          <from>Deputy Ged Nash<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_28">I note I do not have the backing track the Chair had earlier. The Minister is welcome. I will keep my questions short because I appreciate the time we have available is limited. I will go through my questions on the basis of the Votes in chronological order. In respect of the fuel grant scheme for disabled drivers, will the Minister update us on the current status of the disabled drivers and passengers scheme? Where are we with that? This relates to Vote 7. </p>
+          <p eId="para_29"> On Vote 9, which relates to the Office of Revenue Commissioners, broadly speaking, I note comments in <i>The Irish Times </i>this morning, which were attributed to the chief economist in the Irish Fiscal Advisory Council, IFAC, that suggested we are likely to see an increase, in the short term, in corporation tax receipts this year. Does the Minister agree with that assessment? I note as well, based on the Minister’s remarks, the significant increase in customs declarations in 2024. A total of 60.5 million declarations were processed in 2024, compared with 50.3 million in 2023. Does the Minister or the Revenue Commissioners anticipate any kind of drop in that regard, especially given the reset in relationships between the UK and the European Union? We are waiting to see what meat is placed on those bones. Does the Minister have comments or a position on that? </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_6" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_30">I thank Deputy Nash. I will deal with each of his questions in turn. In respect of the current status of the Disabled Drivers Medical Board of Appeal, particularly in the context of the scheme it oversees and for which my Department has responsibility, as the committee will be aware, all of the board members who were in place resigned in November 2021. Subsequently, five new members were appointed. The board is currently working. There are currently 431 applications on the waiting list which will need to be considered by the board in due course. As for the scheme itself, I accept it no longer fulfils the purpose for which it was set up. The Department of the Taoiseach has asked my Department and the Department of Transport to explore a more appropriate scheme to take its place. We are now looking at options for a new grant-based scheme. While responsibility for such a scheme is likely to sit with the Department of Transport, I will have responsibility for phasing out the current scheme and creating the environment for a new scheme to take its place. It will require close work between the Minister, Deputy O’Brien, and I. That work is now under way at an official level. It is a real priority to see how we can move that issue forward. I am aware of the difficulty it has caused to many for so long. </p>
+          <p eId="para_31"> To address the Deputy’s point regarding corporation tax forecasts, it is certainly possible that, due to the potential impact of tariffs on trade, purchases and supply chain developments took place in the early part of the year. That could well have an impact on the corporation tax receipts we collect later in the year and into next year. It is certainly conceivable we might see corporation tax receipts continue to fare well for a little more time. I would not be banking on it at the moment, however. The negotiations between the United States and other OECD countries, which are at an early stage, are one development that could have a material effect on our corporation tax receipts. The second issue which could materially affect them is the changes being considered at US level to the operation of its corporate tax code. While it is possible there will be an increase, I am certainly not assuming it will happen. This is a key issue my officials and I will need to engage on in advance of the budget. On budget day itself, we will publish a revision as to what we believe corporate tax receipts will be for next year.</p>
+          <p eId="para_32"> In the context of custom declarations, while, of course, we welcome the restart and new approach that has taken place between the EU and the United Kingdom, what is most likely to happen is that custom declarations will probably stabilise at their current level. Any further increase will now be driven by the kind of normal growth in trade that we have seen happen in recent years. We do not, at this point, anticipate that will have an effect on customs declarations. </p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_7">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_33">I thank the Minister for coming before the committee. On Vote 9, which concerns the Office of the Revenue Commissioners, under administration, No. 7, there was a substantial increase, of 33%, relating to policy reviews, consultancy services and research. Does the Minister know what is driving that substantial increase of 33%? Similarly, there was a 67% increase in respect of compensation and losses. Can he explain what is driving that 67% increase? </p>
+          <p eId="para_34"> The Minister commented on the scheme for disabled drivers and has recognised the need for change in this area. There will be a new grant-based scheme administrated by the Department of Transport, which the Minister will have input into. What is the timeline for that new scheme? There have been issues, some of which are very unsatisfactory, with the current scheme for several years. What is the timeline on bringing this matter to a conclusion? </p>
+          <p eId="para_35"> With regard to the Minister’s comments on corporation tax forecasts and the potential changes at US level to its corporation tax code, Dr. Aidan Regan of UCD, writing in the <i>Business Post</i>, stated that nearly €1 trillion in intellectual property-related assets have been shifted into Irish subsidiaries of US multinationals. Does the Minister have any concerns in that regard? Is that something that could affect the forecasting around corporation tax receipts? Has work been done in this area? What are the Minister’s views and thoughts on this? </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_8" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_36">I thank Deputy O’Callaghan for his three questions. I will begin by addressing the issue of consultancy and the use of outside consultants and industry experts. The majority of the consultancy requirement in 2025 is caused by the need for Revenue to employ outside consultants for complex tax appeal cases. This is primarily concentrated in the work Revenue does with large corporate taxpayers and high-wealth taxpayers. Revenue also employs independent valuers to deal with the issue of donations of heritage items and property. Consultants will also be needed when it comes to the implementation of the automatic number plate recognition systems that are going to be implemented in Dublin Port and Rosslare Port. They are the three main drivers of the figures. In my time engaging with the Revenue Commissioners, I am always impressed with the amount of expertise they have built up in-house. I assure the Deputy that external advice or experts are only needed in rare instances and when it is in the best interest of the taxpayer. The purposes of such consultancy, which I have outlined, are quite limited and specific. </p>
+          <p eId="para_37"> Deputy O’Callaghan raised a question with regard to the timing of the new scheme. Work is currently under way. I am happy to revert back to the committee with a timeline. Given how long this issue has gone on, and the number of different Departments involved in different ways, I really want to, in my current time as Minister for Finance, work with the Minister for Transport, Deputy O’Brien, to put in place a system that deals with all of these issues.</p>
+          <p eId="para_38">I am sure Deputy O'Callaghan has constituents who contact him about the scheme. The waiting list for appeals is a cause of frustration. At the same time, there are genuine policy issues relating to the scheme itself that I must consider and on which I will come back to the committee. I will come back to the Deputy with a timeline on it, so he can be informed on it.</p>
+          <p eId="para_39"> On the point he made about the analysis of intellectual property that was highlighted by the <i>Business Post </i>in particular over a number of weeks, I continue to make the argument to the committee that the vast majority of intellectual property that is located in Ireland is here because there are also operations of substance located here. There are workers involved in research and development in many companies that have been here for a long time. That leads to a position where we have not only the people, but also the research and development and either services or manufacturing that has led to the location of IP because Ireland has had a stable and competitive tax regime. Anything that happens now with regard to the location of intellectual property within Ireland could have an effect on the corporate tax receipts that we collect. It is also likely that such an effect would develop over a number of years. That is why all of the work that is under way on corporate tax policy will really matter to the revenue that is likely to come to the country in the years ahead.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_9">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_40">I thank the Minister for the answers but he missed one of the questions I asked. It was on Vote 9.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_10" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_41">Which question was that?</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_11">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_42">It was on Vote 9, administration, No. 10, compensation on losses. There is a 67% increase and I asked what is driving that.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_12" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_43">My colleagues here inform me that the issue relates more to the volatility of the figure rather than it necessarily being a sustained increase. Again, if Deputy O'Callaghan is interested in this, which I am sure he is, I can come back to him with more information on it. The team here inform me that the costs go up and down in any given year. If it has gone up now, it is likely to be because the increases that happened at other points were not as big, and Revenue thinks issues will arise that will require a greater level of capacity than we have had in recent years. I can come back to the Deputy with more information on it.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_13">
+          <from>Deputy Shay Brennan<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_44">I thank the Minister. I have five short questions. It is probably best if I just ask him the five together rather than asking them one at a time.</p>
+          <p eId="para_45"> On Vote 7, I see a line item for the EU Presidency of €1 million. I am curious because it is a nice round number. It is a big amount. What is the Minister planning to use those funds for?</p>
+          <p eId="para_46"> On Vote 8, the Comptroller and Auditor General, three additional bodies are being audited over last year. Could the Minister elaborate on what they are? We are looking at 289 as opposed to 286.</p>
+          <p eId="para_47"> If we move on to Vote 9, the Revenue Commissioners, salaries have risen by 8%. Could the Minister give some background on that? It seems out of line with other Departments.</p>
+          <p eId="para_48"> There is one small figure that I am curious about. It is only €140,000 but it is under "miscellaneous capital". Does the Minister have any information on what is behind that? If he does not-----</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_14" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_49">Could Deputy Brennan just tell me again where he saw that figure? Was it under "capital miscellaneous"?</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_15">
+          <from>Deputy Shay Brennan<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_50">It is for €140,000 for the 2025 Estimate under appropriations-in-aid. There is a reference to income of €140,000 under "miscellaneous capital". There is a large current figure there but I am wondering what the capital amount relates to.</p>
+          <p eId="para_51"> It is probably too soon to realise the impact of having to employ additional staff or systems in order to collect tariffs. We do not know if tariffs are coming in or not, but there is no allowance or contingency made for that. If tariffs do materialise, do the Revenue Commissioners anticipate an extra operational cost to deal with that? If so, why do we not have a contingency figure?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_16" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_52">I will do my best to deal with each of the questions in turn. I will begin with the question about the EU Presidency. As the Deputy is aware, we will take over responsibility for the Presidency of the European Union in the second half of next year. That staffing will be used for two purposes in particular: the first one will be for additional staff in my Department in Dublin, in the Department of Finance, to give us the ability to chair all of the different ECOFIN working groups that we will be responsible for.</p>
+          <p eId="para_53"> Second, within the permanent representation that is located in Brussels, we have now begun to significantly increase the number of attachés that we will have there, again to deal with all the work that we will lead on behalf of the EU. It is all about providing the staff that will be needed to resource the countless working groups we will be responsible for. I know every Minister will talk about the amount of work that needs to be done under the EU Presidency, but the amount of work that will take place under the finance stream of it is considerable. We want to ensure that we can do it well on behalf of the country. They are the two areas the allocation will be used on. I thank the Deputy for raising the issue.</p>
+          <p eId="para_54"> On the three other bodies that have come under the aegis of the Comptroller and Auditor General, I will look to my colleagues here. I have a line here explaining to me why it has changed but I have to find out which bodies the changes relate to. I will do that. I cannot give the Deputy the answer at the moment but I will certainly find out for him.</p>
+          <p eId="para_55"> On salaries in the Revenue Commissioners, the increase is mainly due to the additional staff we are anticipating the office will continue to need as we move through next year. Currently, we are anticipating that we will have 7,050 whole-time equivalents working in Revenue for 2024. The additional pay figure that is there is a combination of two things: first, the additional people that we will need and, second, the impact of the pay agreement for those new people and for existing staff. I understand that, for example, some of the areas in which we will need to ensure we have the right level of staff in place include the implementation of the local property tax. I will be before the committee about that in the coming weeks.</p>
+          <p eId="para_56"> My officials tell me that the €140,000 is a matter relating to appropriations-in-aid. As such, we will again have to come back to the Deputy on whether a particular item underpins that. There may not be, but we will find out for the Deputy.</p>
+          <p eId="para_57"> With regard to tariffs and whether additional staff are needed for their collection, currently, we are confident that we have an adequate level of staffing in place to deal with the various developments that could take place on tariff policy across the year. It does depend on what will happen. For example, if we see very big changes in tariff levels or different sectors bearing different levels of tariffs, it is something that we will have to review. At the moment we believe the level of staffing in place is adequate to deal with those developments. It could well be the kind of issue we need to review during the year and then engage on again with the committee.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_17">
+          <from>Deputy Edward Timmins<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_58">I have a brief technical question on Vote 9, the income of the Revenue Commissioners. In the bottom paragraph it states that in 2024 Revenue collected a record €152.9 billion. I am trying to reconcile that with gross tax income, which is of the order of €105 billion. What accounts for the difference between those two figures?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_18" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_59">The main difference would be attributable to PRSI we do not include within our tax figures, for example. There would be customs, and there is also the revenue we collect on behalf of other Departments. I am happy to get a breakdown for the Deputy on the exact difference and revert to him on it.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_19">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_60">Cuirim fáilte roimh an Aire chuig an choiste. Tá cúpla ceist agam. Cuireadh mo chéad cheist cheana ach tá soiléireacht á lorg agam.</p>
+          <p eId="para_61"> On the Department of Finance, a question was asked about the €1 million for the EU Presidency. All of this relates to staff in two areas, namely the Minister’s Department and the permanent representation. How many additional staff is the Minister seeking to employ in his Department over the six-month period?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_20" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_62">Approximately 30.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_21">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_63">Will there be another ten or so for the permanent representation?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_22" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_64">That would include our permanent representation.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_23">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_65">On the same Vote, there is a staff complement of 415 in the Department. I am aware that the Minister is going to increase the number at the end of the year for the reasons he outlined. Are all 415 positions filled or are there staff on secondment? Are there vacancies?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_24" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_66">The vast majority of them have been filled. I will be happy to come back to the Deputy with an exact breakdown. There is a ceiling of 415, and I believe we are very close to it. I can come back to the Deputy with the exact figures if he wishes.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_25">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_67">The committee has asked about forecasting. The Revenue Commissioners do quite a large amount of forecasting, but how many staff are dealing with this in the Department?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_26" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_68">With tax forecasting?</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_27">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_69">Yes, including economic forecasting.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_28" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_70">I will be happy to come back to the Deputy on that. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_29">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_71">It would be helpful.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_30" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_72">I will check the figures. I know the individuals who do the work, but I am reluctant to give a figure in case it is wrong. If the Deputy wishes, I can come back to him with a breakdown for each directorate and tell him who is involved.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_31">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_73">That is what I was going to suggest. I thank the Minister.</p>
+          <p eId="para_74"> With regard to the 415 employees, there is Exchequer pay of just above €30 million. The line below the one relating to that concerns Exchequer pensions, which amount to €250,000 in respect of ten employees. Could the Minister explain that?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_32" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_75">I am just getting a note on that for the Deputy. If I receive the answer for him during this hearing, I will give it to him.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_33">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_76">Does the Minister want me to move on?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_34" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_77">If the Deputy does not mind.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_35">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_78">No problem at all.</p>
+          <p eId="para_79"> Let me move abroad with the next question. Questions have been asked about tariffs, but there is also the matter of the implementation of the BEPS process. Could the Minister outline the undertaxed profits provision rule, which relates to any jurisdiction that does not apply a minimum effective tax rate of 15%? We know some jurisdictions may calculate it in a different way if outside the BEPS process. Where we have a subsidiary of a relevant company in this State, we have to tax the entity here in Ireland. I am asking this having regard to the US. The measure came into effect on 1 January, or the fiscal year after 31 December last year, so it now has been in play for several months. This issue has been raised in the discussions on the US tariffs. Since the US has, unfortunately, withdrawn from the agreement – I hope it will come back under it – could this State, in light of legislation that has passed through the Houses, have to levy tax from an American company because it has a subsidiary here?</p>
+          <p eId="para_80"> I have asked this numerous times, but we are getting closer and closer to the Finance Bill. I made the point, when dealing with a previous Finance Bill, that it was never envisaged that a global entity such as the US would not be part of the deal. There was always a threat under pillar 1 but pillar 2 is now an issue. Does the Minister envisage a need to revisit this as a result of decisions that have been made, particularly by the US?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_36" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_81">Let me go back to the Deputy’s earlier question on the €250,000. This relates to pension payments that have been made to bodies under the aegis of the Department of Finance as opposed to officials within it. The official pension figures are covered elsewhere. I can get more detail on the subhead for the Deputy if he wants. The figure refers to responsible agencies, and the Deputy knows which ones they are.</p>
+          <p eId="para_82"> On the issue the Deputy raised regarding corporate tax policy, he was correct about the risk he described. We signed up to a global tax agreement and while there were always genuine issues regarding how the US would enter the pillar with regard to the reallocation of taxing rights, the Irish Government had the reasonable expectation at the time that the US would be part of the agreement on the rate. The US authorities have now made a statement that they are going to withdraw from this. I have two points to make. First, the US has indicated it is going to participate in the OECD. At the first meeting since the announcement was made, the US had a full delegation. It has indicated it wants to engage with other countries on this issue. I can only interpret that as a positive signal. At least it wants to engage.</p>
+          <p eId="para_83"> On the direct question on the minimum effective tax directive, we negotiated and put in place the directive with the aim of delivering tax equity. I believed it created competitiveness issue but that we could manage it. For now, I want to determine whether we can find a way to keep the US inside the framework, at least in respect of the rate. That is the basis on which we are trying to engage with it. For me, it is too early at this point to say what changes we might need to make if this is not successful. I want to make the case to the committee – I am doing so elsewhere – that it is in our interests and those of the US to be part of a global tax agreement. I hope we can preserve what we have managed to negotiate.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_37">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_84">I could not agree more with the Minister. Could he state the time at which it will become real for Revenue to apply the tax? Will it be later this year?</p>
+          <p eId="para_85"> Let me move on to the subject of the Comptroller and Auditor General. I will group some of my questions. Could the Minister clarify whether the Comptroller and Auditor General has sought additional staff resources from Revenue?</p>
+          <p eId="para_86"> With regard to the Revenue Commissioners, which comprise an impressive outfit, the figure for digital capital investment and expenses is €98 million. Under the Government, there has been considerable waste of public money, some of this has been in relation to digital. I am not suggesting in any way that the Revenue is involved. In the context of the Minister’s Department or agencies under its control, has any wasteful expenditure, such as on a botched IT system, for example, been brought to his attention?</p>
+          <p eId="para_87">If so, will the Minister outline that to us? Has he actually asked about this? I know one of his colleagues has asked agencies under his control.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_38" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_88">I thank the Deputy. I will deal with his question about IT spend and what it is for. It is for implementing a number of different things: the first phase of VAT modernisation; the auto-enrolment pension system; and DAC 8, which is the EU directive in regard to administration and co-operation between tax regimes. It is also due to changes Revenue wishes to make with regard to artificial intelligence, AI. There is great ambition within Revenue to use AI to deal with automating routine tasks. It also relates to the European Union customs code and the EU digital tax residence certification. There are a lot of different IT projects going on. In fairness, the Deputy acknowledged that Revenue is good at digital and IT and has successfully avoided issues around the use of taxpayers' money in recent years. In regard to other issues within my Department from an IT perspective, I am not aware of any.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_39">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_89">Not just on IT, but any wasteful spending the Minister is aware of.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_40" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_90">I am not aware of any. I deal with all of the different agencies regularly. I met representatives of all of them when I had the privilege of being appointed Minister for Finance again. I asked questions on these topics. I absolutely expect the agencies to bring any issues up with me, even if I do not ask, and I am not aware of any.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_41">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_91">My final question again relates to the Revenue Commissioners and the €12.8 million spend. Will the Minister explain what subhead 8 is, which is vehicles in frontier management expenses? I presume it relates to having Revenue officials on the road.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_42" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_92">It refers to a number of different things: motor vehicles; a new Revenue cutter, which is a naval vessel; mobile X-ray scanners; specialised detective equipment; and areas of expenditure that would be expected with regard to the crewing, maintenance and then disposal of the <i>MV Matthew</i>. Those are the main items underneath that subhead.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_43">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_93">I thank the Minister. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_44">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_94">My apologies for being late. The Minister's opening statement mentioned that customs enforcement led to more than 21,000 detections. That is more than 400 per week, yielding €361 million. It works out at approximately €6.94 million per week. It sounds extremely high. </p>
+          <p eId="para_95"> I also want to check the issue of online purchasing and whether there has been an increase in items not being in compliance with customs.</p>
+          <p eId="para_96"> The Minister said that in 2024, there were 310,989 risk management interventions carried out that yielded €591 million, which is a substantial sum. Will the Minister outline what risk management interventions are? I had not heard of them before. It is certainly a lot of money. Between these two items, we are talking about more than €800 million and nearly €900 million.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_45" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_97">I thank the Deputy for the variety of issues he has raised. In regard to the customs figures we talked about, there are two different issues at play: first, the impact on all of the customs arrangements we have on the island of Ireland in the aftermath of Brexit; and second, the work that customs does with regard to seizures and all of its efforts with regard to alcohol, drugs, cigarettes and mineral oil. I can give the Deputy further detail on that if he wishes.</p>
+          <p eId="para_98"> In regard to the interventions the Deputy referred to, that is basically when the Revenue looks at a particular taxpayer and forms the view that it is necessary to engage with that taxpayer to make sure he or she is paying the correct level of tax. That could range from anything from an individual to a large company.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_46">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_99">That is 310,000 interventions. It sounds extremely high in real terms and also the yield from it is high. It sounds like a very high level of interventions.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_47" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_100">The volume does indeed sound quite large. I take the Deputy's point. In terms of where the yield comes from, it comes from a relatively small number of the total number of interventions. I do not want to sound glib at all in what I am about to say but we have so many taxpayers in our country now that if Revenue is forming the view that it is part of its routine work to ensure the correct level of tax is being paid by all of the taxpayers, the volume can mount up pretty quickly.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_48">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_101">To come back to the issue of the seizures valued at €361 million, what happens with those seizures then? Is the sum of €361 million the yield from selling on the seizures or what is the yield from that?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_49" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_102">That is the market value of the seizures made.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_50">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_103">So it is not an income, as such.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_51" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_104">No, definitely not.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_52">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_105">As regards items that are seized, what is the-----</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_53" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_106">The vast majority would be destroyed.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_54">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_107">Some of the items would be disposed of.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_55" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_108">The vast majority would be. There could be items such as drugs, alcohol and cigarettes and they would be disposed of.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_56">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_109">When cigarettes, say, are confiscated, what route is subsequently taken? When alcohol or cigarettes are seized, how are they disposed of?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_57" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_110">I do not know how cigarettes and those items are disposed of, but I can find out for the Deputy.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_58">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_111">The issue I have about goods that are seized is that some of the cigarettes would be of a low standard, and that would be a health issue.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_59" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_112">That is why the goods are disposed of, due to concerns regarding the health standards involved in some of the items.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_60">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_113">The other issue was the online shopping that is coming through. What is the situation as regards goods that come in through the postal service or by other means which are purchased online? How is that monitored from a Revenue point of view, or is it monitored from a Revenue point of view?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_61" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_114">We have a parcel division within Revenue that exists within the frontier management unit of Revenue. It monitors the volume of parcels coming in. It is fair to say that this is a growing area of policy focus. At EU and national levels, there is a far higher level of awareness of the volume of packages and parcels now coming into the EU, what the value of them is and whether we have the right customs policy in place. This is an issue the EU, and the Polish Presidency in particular, are working on. They are trying to reach agreement on a new framework for how we deal with this issue. I know that at a total EU level, there has been a huge increase in the number of parcels coming into the European Union. This is something I think there will be a new policy on shortly.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_62">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_115">What about the arrangement with the UK?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_63" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_116">Is that from a parcels point of view?</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_64">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_117">Yes.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_65" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_118">It would be subject to the agreement we have now in the aftermath of Brexit.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_66">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_119">Have we put in additional mechanisms in place to deal with that?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_67" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_120">Is that in regard to parcels, in particular?</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_68">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_121">Yes.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_69" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_122">I would imagine we have. Well, I am sure we have but I imagine they are minor enough. One of the issues we have had to deal with in the aftermath of Brexit is the parcel deliveries that go backwards and forwards from the UK. A lot of it is about customs declarations and making sure customs has been paid on the items being received.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_70">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_123">I thank the Minister for attending. I have a very brief question. There are high levels of compliance for taxes and duties under Revenue. Earlier this year, there was an error on the system in Revenue. Some decisions and requests from clients and customers of the Revenue system were denied access to payment breaks and so on because of a time delay in servicing those requests. </p>
+          <p eId="para_124">When there are potential administrative errors - which can happen in any good organisation - what contingency is there for rectifying that? I have heard horror stories of customers who were denied a payment break because of an error in the system and were then threatened if they did not pay or were not compliant with liquidation, which would be the next thing. Nobody was willing then and Revenue would not be receiving any funds out of that. What processes are in place in Revenue to rectify problems in favour of both the customer and Revenue?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_71" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_125">I thank Deputy McGreehan for that. </p>
+          <p eId="para_126"> My officials and I are not aware of any particular customs or systems error that developed during last year but as the Deputy has fairly said, it can happen in any good organisation. If an issue did develop, I expect Revenue would be open enough to acknowledge if an error happened in its work and the taxpayer should not pay for it. I expect this is the attitude it would adopt. If the Deputy has any concerns this has not happened, she can either contact Revenue herself or raise it with me and I am happy to follow up on her behalf. </p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_72">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_127">I thank the Minister. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_128">We are running close on time - I will come in briefly - but an Teachta Timmins can come in now. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_74">
+          <from>Deputy Edward Timmins<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_129">If we went through the 290-page document in full detail, we would never get to the bottom of it, however, I have two questions on that. First, is that full detail available to us for our consumption? In other words, if we wanted to drill further down on anything, is there any place where we would have to request it or is it available somewhere? My second question relates to the Estimates. Many of the numbers have rounding figures. For example, on page 48 compensation and losses are listed at €1 million and training and development, under the heading Revenue Commissioners, is at €3,340,045. </p>
+          <p eId="para_130"> When the Department is doing Estimates going forward, these should be based on assumptions. An assumption could be, for example, a 5% increase or a 3% increase or whatever. I am suspicious of round numbers and that is my point. </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_75" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_131">I thank Deputy Timmins. </p>
+          <p eId="para_132"> The information the Deputy has is the full amount of information publicly available and is the basis on which we present the Revised Estimates to the Oireachtas. If the Deputy has any questions regarding a particular line or any work contained within it, please let me know and we can give him more information on it. </p>
+          <p eId="para_133"> I will bear in mind the Deputy's suspicion regarding round numbers for the future. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_134">I realise we are close on time now but we had some technical issues. If I could, I will ask two quick questions.</p>
+          <p eId="para_135"> Regarding the 4% increase in funding for the Comptroller and Auditor General's office, how much of this relates to new staff being hired after bringing RTÉ under the remit of the C and AG? Can the Minister tell me how much of it, whether it is 4% or part of that 4%, and how many staff this will relate to?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_77" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_136">I cannot tell the committee how much of it relates to RTÉ and bringing RTÉ under the C and AG's responsibility - which I assume must be one of the three questions Deputy Brennan raised with me earlier on which I should have thought of. The reason for this is the level of staffing and funding must be agreed between the Department of public expenditure and the C and AG and then we account for it. </p>
+          <p eId="para_137"> I am sure some of the additional funding must be driven by the fact it now has additional agencies but I can find out for the Deputy. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_138">It would be great if we could get that breakdown. </p>
+          <p eId="para_139"> Following up on an Teachta Brennan's question relating to that €1 million and the EU Presidency, the Minister mentioned it has to do with staff. Would this include the payment of staff from the Commission with that €1 million or is it completely different staffing?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_79" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_140">No, that would just be our own staff. We would not be paying for Commission staff. They are employed from Presidency to Presidency. They are permanently employed by the Commission and will be available for all Presidencies. This figure refers to our own staff in several different locations. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_141">Tá sé sin iontach. Gabhaim buíochas leis an Aire agus le gach duine go léir as páirt a ghlacadh sa choiste seo. That concludes the select committee's business in public session and I thank members for participating in today's meeting.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_7">
+        <heading>Message to Dáil<recordedTime time="2025-05-28T16:30:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_142">In accordance with Standing Order 110, the following message will be sent to the Clerk of the Dáil:</p>
+          <p class="indent_1" eId="para_143">Tá an Roghchoiste um Airgeadas, Caiteachas Poiblí, Athchóiriúchán Seirbhíse Poiblí agus Digitiúchán, agus an Taoiseach tar éis a bhreithniú ar na Meastacháin Athbhreithnithe seo a leanas i gcomhair seirbhísí poiblí le haghaidh sheirbhís na bliana dar críoch an 31 Nollaig 2025 a chríochnú: Vóta 7 – Oifig an Aire Airgeadais; Vóta 8 – Oifig an Ard-Reachtaire Cuntas agus Ciste; Vóta 9 – Oifig na gCoimisinéirí Ioncaim; agus Vóta 10 – An Coimisiún um Achomhairc Chánach. </p>
+          <p class="indent_1" eId="para_144">The Select Committee on Finance, Public Expenditure, Public Services Reform and Digitalisation and Taoiseach has completed its consideration of the following Revised Estimates for public services for the service year ending on 31 December 2025: Vote 7 - Office of the Minister for Finance (Revised); Vote 8 - Office of the Comptroller and Auditor General (Revised); Vote 9 - Office of the Revenue Commissioners (Revised) ; and Vote 10 - Tax Appeals Commission (Revised), under Standing Order 102(1).</p>
+        </speech>
+        <summary eId="sum_6">The select committee adjourned at 4.36 p.m. <i>sine die</i>. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

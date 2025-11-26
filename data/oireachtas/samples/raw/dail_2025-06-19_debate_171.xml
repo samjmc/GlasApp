@@ -1,0 +1,1492 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-06-19/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-06-19/debate"/>
+          <FRBRdate date="2025-06-19" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_defence_and_national_security"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-06-19/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-06-19/debate/mul@"/>
+          <FRBRdate date="2025-06-19" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-06-19/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-06-19/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-24" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="BrianStanley" href="/ie/oireachtas/member/id/Brian-Stanley.D.2011-03-09" showAs="Brian Stanley"/>
+        <TLCPerson eId="CatherineCallaghan" href="/ie/oireachtas/member/id/Catherine-Callaghan.D.2024-11-29" showAs="Catherine Callaghan"/>
+        <TLCPerson eId="DonnchadhOLaoghaire" href="/ie/oireachtas/member/id/Donnchadh-Ó-Laoghaire.D.2016-10-03" showAs="Donnchadh Ó Laoghaire"/>
+        <TLCPerson eId="DuncanSmith" href="/ie/oireachtas/member/id/Duncan-Smith.D.2020-02-08" showAs="Duncan Smith"/>
+        <TLCPerson eId="GerardPCraughwell" href="/ie/oireachtas/member/id/Gerard-P-Craughwell.S.2014-10-10" showAs="Gerard P. Craughwell"/>
+        <TLCPerson eId="MaeveOConnell" href="/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29" showAs="Maeve O'Connell"/>
+        <TLCPerson eId="RobbieGallagher" href="/ie/oireachtas/member/id/Robbie-Gallagher.S.2016-04-25" showAs="Robbie Gallagher"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="SeanKyne" href="/ie/oireachtas/member/id/Seán-Kyne.D.2011-03-09" showAs="Seán Kyne"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCPerson eId="TomBrabazon" href="/ie/oireachtas/member/id/Tom-Brabazon.D.2024-11-29" showAs="Tom Brabazon"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM CHOSAINT AGUS SLÁNDÁIL NÁISIÚNTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Defence and National Security</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-19">Déardaoin, 19 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-19">Thursday, 19 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#TomBrabazon">Tom Brabazon</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#GerardPCraughwell">Gerard P. Craughwell</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#CatherineCallaghan">Catherine Callaghan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#OllieCrowe">Ollie Crowe,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PaulMcAuliffe">Paul McAuliffe,*</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#RobbieGallagher">Robbie Gallagher</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MaeveOConnell">Maeve O'Connell</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#SeanKyne">Seán Kyne.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DonnchadhOLaoghaire">Donnchadh Ó Laoghaire</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DuncanSmith">Duncan Smith</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#BrianStanley">Brian Stanley.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Ryan O'Meara and Senator Diarmuid Wilson.</summary>
+          <summary eId="sum_5">I láthair / In attendance: Deputy Sinéad Gibney and Senator Alice-Mary Higgins.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#RoseConwayWalsh">Teachta / Deputy Rose Conway-Walsh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>General Scheme of the Defence (Amendment) Bill 2025 : Discussion (Resumed)<recordedTime time="2025-06-19T09:30:00+01:00"/></heading>
+        <speech by="#RoseConwayWalsh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:30:00+01:00"/></from>
+          <p eId="para_14">Apologies have been received from Deputies Eamon Scanlon and Ryan O'Meara, as well as the Vice Chair, Senator Diarmuid Wilson. </p>
+          <p eId="para_15"> The joint committee is meeting today in public session to continue with pre-legislative scrutiny of the Defence (Amendment) Bill 2025. On behalf of the committee, I welcome Dr. Edward Burke, University College Dublin, and Mr. Declan Power, independent defence and security analyst. The witnesses are here to discuss the general scheme of the Bill with us. The format of the meeting is I will invite each witness to make an opening statement and this will be followed by questions from members of the committee. Each member has a seven-minute slot to ask questions for the witnesses to respond.</p>
+          <p eId="para_16"> I advise Members of their constitutional requirements that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a Member to participate where they are not adhering to this constitutional requirement. Therefore, a Member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any Member partaking via Microsoft Teams that prior to making their contribution to the meeting, he or she confirms they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_17"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way to make him, her or it identifiable or otherwise engage in speech that may be regarded as damaging to the good name of the person or entity. Therefore, if statements are potentially defamatory regarding an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative any such direction is complied with.</p>
+          <p eId="para_18"> As the witnesses are probably aware, the committee will publish the opening statement on its website following this meeting. The witnesses are reminded of the long-standing parliamentary practice to the effect they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if witnesses' statements are potentially defamatory regarding an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative witnesses comply with any such direction. </p>
+          <p eId="para_19"> I invite Dr. Burke to make his opening statement, followed by Mr. Power. On behalf of the committee, I once again thank the witnesses for being here this morning. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:30:00+01:00"/></from>
+          <p eId="para_20">It is a pleasure and I thank the Cathaoirleach, Deputies and Senators. I am very grateful for the opportunity to appear before you this morning. </p>
+          <p eId="para_21"> In my previous role as an employee of the European External Action Service, I had the privilege of working directly with members of the Defence Forces and An Garda Síochána. While at the start of the century, Ireland and Europe was a place of considerable optimism – the European Union was growing, international law was on the march and there were more democracies in the world than ever before – that landscape has fundamentally changed. Hybrid conflict is here. A major European war is ongoing and EU member states are asking for our help. Our democracies and critical infrastructure – energy pipelines, fibre-optic cables and cyberspace – are vulnerable to attack.</p>
+          <p eId="para_22"> At the outset of Ireland’s membership of the United Nations, the then Taoiseach, Eamon de Valera, warned Ireland should not allow its military to be entirely subject to the whims of the permanent members of the Security Council - particularly those with significant colonial baggage - should the latter decide to embark on a war. The Dáil would have precedence as mandated under the Constitution. The same principle applies today to inaction or deliberate spoiling on the part of China, the Russian Federation or the United States. Russia has recently threatened to veto EU peacekeeping missions hosted by UN member states unless the EU increasingly grants it concessions or weakens the mandates of its missions in places such as the Balkans. The UN Charter is clear: Chapter VIII states regional peace-building in accordance with the principles of the UN Charter does not require a UN Security Council mandate. A Security Council resolution is, however, necessary to carry out peace enforcement under Chapter VII of the UN Charter.</p>
+          <p eId="para_23">This is an important distinction.</p>
+          <p eId="para_24"> Ireland has played a limited role in Chapter VII missions yet there has been a long-standing insistence on the necessity of a UN Security Council resolution as a key legal test as to whether the Government can deploy a Defence Forces contingent to a peacekeeping operation. This proposed legislation, the defence (amendment) Bill, removes an unnecessary legislative barrier. I have every confidence that, as in other small European democracies, our democracy, comprising the Oireachtas, the Constitution, the judicial system and our citizens, is well equipped to ensure that our Defence Forces adhere to domestic and international law in cases where permanent members of the UN Security Council are clearly not fulfilling their duty to act according to the principles of the UN Charter.</p>
+          <p eId="para_25"> In a submission to the committee there was condemnation of militarist and Jean Monnet university-based agents in this country who are involved in propaganda dissemination. There are very few Jean Monnet professors in the country and they are easily identifiable. It is an esteemed position in European academia and the selection process involves the best international scholars on the Continent of Europe. Whatever disagreements we may have with our academic colleagues, the use of the term "agent" is particularly regrettable. It implies control of that person by external forces. It is a term frequently used to describe those who work for foreign intelligence services. This is not the way to speak about other members of the academic community or any other citizen without evidence. We all need to be respectful, including to all of our academic colleagues, Members of the Oireachtas and citizens in general. As academics we need to show leadership on this. I thank the committee and I look forward to discussion and questions.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_26">My perspective on this issue covers a variety of areas but particularly that of how it affects the State with regard to its independence and course of action, which is very important at a policy level, at a political level and, crucially, given my background in the Defence Forces and other organisations, at an operational level. One of the things that concerns me most about how the triple lock has evolved is how it affects our agility to engage in applying our own foreign policy in real and meaningful ways. We have seen, and we will probably be discussing in the course of today's discussion, various missions and various initiatives from which we have been precluded from being engaged, even though they were in line with the assent of the Government and public representatives and in line with our national foreign policy, and other initiatives which were stymied on an international platform because of threats of vetoes. This is something we really have to take into account.</p>
+          <p eId="para_27"> In terms of the origins of this, it is important for us to acknowledge the triple lock did not start with the Lisbon treaty although, perhaps, the nomenclature did so then. This goes back to Dáil debates in 1946, when we started to consider the United Nations. At that point people were concerned as to how this would affect our independence, our course of action and our military neutrality. There was general assent at the time, and Éamon de Valera himself was in agreement, that this was for the greater good.</p>
+          <p eId="para_28"> Fast forward a little bit to section 2 of the Defence (Amendment) Act 1960, which was in the lead-up to the Congo mission. This was, to use a modern-day term, particularly with regard to a fear of mission creep in UN missions. What became the triple lock was created so that we would have safeguards. The interpretation of what the Security Council and its permanent members could do was seen very differently back at that point. The UN was the only game in town when it came to international conflict resolution. The fear was that the UN Security Council would get involved in a direct conflict which was not in line with our needs or wants, or that it would extend a mission to which we had already signed up. The triple lock, as it was developed at that point, would prevent this or at least would give us elbow room to consider it. This is ironic when we think about it; I do not know how familiar many members are with the Congo operation but it is classic example of where the nature and character of the operation changed. It was meant to be a police action but then we had the mission into Katanga when the southernmost province ceded. There were combat operations from low intensity to varying levels of reasonably high intensity. This led to the deaths of Irish troops at Niemba, and committee members are probably familiar with the siege of Jadotville. There were numerous other engagements also. It reminds us that no matter what we have in place, if we are involved in the business of peacekeeping and peace enforcement it can get messy, it is dangerous and things can change rather rapidly.</p>
+          <p eId="para_29"> In the time back then, there were things that did not exist which do exist now. What we have now is a variety of instruments whereby regional organisations can engage in conflict management, peacekeeping and peace support. With the publication of the Brahimi report in 2000, Kofi Annan, the then Secretary General of the United Nations, spoke about the need for more partnership with regional organisations. This means the likes of the European Union, which led a very successful mission to Chad. It had a start, middle and end. I am intimately familiar with it because I was across the border in Darfur with the UN. Many UN personnel asked me why we could not have a mission like that there because it was better organised and it probably saved more lives. This was because it had very streamlined mission objectives. There is also the African Union, and there is NATO which is considered a regional security partner of the United Nations.</p>
+          <p eId="para_30"> Where we are today I see as an opportunity to explore where we want to be. I am a big supporter of the UN - anybody who has worn an Irish Defence Forces uniform is - but I am also a big believer in not putting all of Europe's strategic eggs in one basket.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_31">I thank Mr. Power and Dr. Burke. We will now take questions. I am allowing seven minutes for each committee member. The first speaker who has indicated is Deputy Stanley.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_5">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_32">I thank our guests for coming before the committee and for their papers and opening statements. My first question is for Dr. Burke. Will he briefly explain his definition of the difference between peacekeeping and peace enforcement? I ask him to be brief because we have a short time and I do not want to be abrupt with him.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_33">I thank Deputy Stanley. Peacekeeping I would say is commonly defined as a mission with consent, not least of the host country. Essentially it is seen as the forces not engaging in peace enforcement or being at war. It is consensual between the parties. It is normally assumed that the host country or countries have requested the mission to be there. It is traditionally points to Chapter VI.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_7">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_34">And what about peace enforcement?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_35">Peace enforcement commonly does not require the consent of the parties to what is an attempt to impose peaceful resolution of conflict by force without consent.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_9">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_36">Does it involve military engagement and conflict?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_37">Yes, the assumption is that it would be much more kinetic and it would be without consent.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_11">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_38">In other words, the guns would be pulled.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_39">Sorry?</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_13">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_40">The guns would be loaded and drawn.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_41">Absolutely but this would also be the case under Chapter VI. We have seen in Lebanon that occasionally there has been rather robust, sometimes called "Chapter VI 1/2" peacekeeping operations, where the mandate is extended. Mr. Power mentioned the Congo, where the mandate changed in the 1960s and it became very close to peace enforcement.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_15">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_42">They are very different things.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_43">Chapter VI and Chapter VII?</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_17">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_44">Peace enforcement and peacekeeping.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_45">Certainly, but there is always some ambiguity and I will give an example of the Congo, if I could.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_19">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_46">I am familiar with it. I thank Dr. Burke. In his opening statement Dr. Burke said our democracy, critical infrastructure, energy pipelines, fibre-optic cables and cyberspace are vulnerable to attack. I understand the Government has ordered a new radar system and the Navy will be beefed up, which I welcome and support. I see the need to protect them. I am trying to match this with why we need to be part of a regional force or another body outside the UN.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_47">If we look at what we have at present, we see that we have the EUNAVFOR MED IRINI in the Mediterranean. This is important.</p>
+          <p eId="para_48">Russia has been particularly against that, or very critical of it, not least because it has interdicted Russian arms. There is a UN resolution to try to bring about a peaceful settlement to Libya. Russia has been arming one of the parties. IRINI, the EU task force, has sometimes interdicted ships carrying Russian weapons to Libya, so obviously it is against that.</p>
+          <p eId="para_49"> In the Atlantic, we may also need a maritime security strategy. That may involve EU countries including Ireland. It is possible there may be an Atlantic task force in the future.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_21">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_50">It looks like some of the western powers have attacked underseas infrastructure, such as the northern gas pipeline.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_51">Which one is the Deputy talking about?</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_23">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_52">The one just after the Ukraine war started - shortly after Russia's invasion of Ukraine.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_53">Has the evidence come before the committee on that?</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_25">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_54">No. As I understand it, the speculation is more towards some western involvement in that.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_55">I would say we are at the speculation phase at this point and I do not have definitive answers as to who is responsible for that.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_27">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_56">I will turn to Mr. Power. In his statement, he quoted Taoiseach Seán Lemass back in the sixties telling the Dáil, when dealing with the Defence (Amendment) Act 1960, the following:</p>
+          <p class="indent_1" eId="para_57">The purpose of the present measure may be simple. Its purpose is to authorise ... for duties of a police character on behalf of the United Nations and, secondly, to provide in respect of ... members of the Defence Forces ... [that they] may volunteer in overseas [missions]...</p>
+          <p eId="para_58"> I do not understand. You cannot volunteer. Once you join the Defence Forces, you are in. Am I correct in that? When you join the Defence Forces, if you are told you are going to Lebanon or something else, you are going and that is it.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_59">You can be detailed, yes.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_29">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_60">If we join the regional force and are part of something outside of the United Nations, a young person joining the Irish Army would, as a result of how things may evolve, have to go to Ukraine or somewhere in the Middle East, for example, if detailed? They would have to go.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_61">Yes.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_31">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_62">That is as per the rules of the Army at the moment.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_63">Yes, but it should be understood that whether we retain the triple lock or not - this is a very important point for us to absorb - any deployment of Irish troops would be in line with the UN Charter.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_33">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_64">I get that.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_65">The amendment to allow to Irish troops to be detailed was taking into account the changing character of the requirements for the Defence Forces, because otherwise there would be an unfair weight on certain members of the Defence Forces and it would not be a balanced experience. Most people enlist to serve abroad.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_35">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_66">I will return to the proposed Bill for a moment. It provides for peacekeeping, conflict prevention and strengthening international security. As I understand it, I hear what Donald Trump says and the Russians would say they are strengthening their international security by what they are doing wrongly in Ukraine. Israel would say it is strengthening security by blasting the middle out of Tehran and levelling Gaza. Would Mr. Power agree that is a pretty broad definition?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_67">I would, yes.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_37">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_68">This could turn into anything. As a layperson-----</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_69">The Deputy made a very valid point that is worth noting. As I said in my opening statement, one has to take into account that when you deploy troops, whether it is directly under the UN flag or under a UN-mandated mission that could be under the EU flag, the NATO flag or the African Union flag-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_39">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_70">It is pretty messy, as Mr. Power said.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_71">-----the changing tempo of operations on the ground dictates the pace.</p>
+          <p eId="para_72"> The Deputy made a statement earlier that is worth coming back to. Peacekeeping was meant to be peacekeeping. There was no such thing as peace enforcement. The Cold War brought about the need to differentiate. The reality is that the peacekeeping mission in Lebanon led to the Battle of At Tiri. The peace enforcement mission in Sierra Leone was one of the more peaceful missions that Irish troops ever served on, even though they were configured much more for war fighting in Sierra Leone than they were in Lebanon. That is the reality of operational life on the ground.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_41">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_73">It can get very messy, as Mr. Power said. I will ask Mr. Power about one issue I am curious about. If you were deployed as part of an international force, you would be under some kind of a joint command. Let us say Ireland and a coalition of the willing made up of some group of countries or other got involved in a mission. It could be commanded by a NATO commander or a German commander. Would that be correct?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_74">That has been the case since we have been involved in UN operations.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_43">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_75">We have been commanded by a NATO commander, have we?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_76">Yes, we have, since the 1960s.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_45">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_77">Mr. Power is a former Army officer.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_78">I served as a non-commissioned officer in the Defence Forces.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_47">
+          <from>Senator Seán Kyne<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_79">I will start with Dr. Burke. He classified peace-building and peacekeeping as the same. He referred to “regional peace-building”. Is that-----</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_80">Peacekeeping can be an activity within wider peace-building. There could be mediation, humanitarian relief, development activities or UN Security Council Resolution 1325 dealing with gender issues post conflict, for example. Peacekeeping is primarily a military activity within wider peace support operations.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_49">
+          <from>Senator Seán Kyne<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_81">Is the present Irish involvement in UN missions regarded as peacekeeping or peace enforcement?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_82">With regard to peacekeeping, the bulk of our commitment, particularly our major commitment, is UNIFIL. There is KFOR, for example, where we have a small presence in Kosovo, which is our PfP-led mission. There is more scope there potentially for KFOR to intervene to enforce the peace, if necessary, for example, if there is an outbreak of violence in Kosovo. That mandate is a little bit more flexible.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_51">
+          <from>Senator Seán Kyne<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_83">It was said a UN Security Council resolution is necessary to carry out peace enforcement. Let us say, for example, Ireland wished for that to be changed to remove the permanent five, or P5, veto. What would that look like in terms of an Irish Government deciding that this should be changed at UN level?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_84">We should be careful about assuming that the UN Security Council always gets it right in respect of how it mandates and organises UN-sanctioned UN forces. For example, in October 2003, UN Security Council Resolution 1511 mandated the Multi-National Force-Iraq. Multi-National Force-Iraq was a UN-mandated mission. It changed the coalition of the willing, if you wish. It changed the highly controversial illegal invasion of Iraq into Multinational Force-Iraq, and many European countries had major problems with that because they still regarded it as essentially an occupation. Even though the Security Council had now given permission for this to go ahead, Ireland looked at that and said “No, that is not something we wish to contribute to”. That was very sensible and wise. It would not take much legal advice in this country, thinking about international humanitarian law and looking at the rules of engagement that were being practised by the United States, for example, that were highly controversial at the time, to say we do not want part of that. The UN said “Yes, go ahead” and Ireland said it was not sending a contingent. That is what this country and countries like Sweden do well. Many European countries do it well. They look at their international humanitarian law and they look at the law of armed conflict obligations. We understand that very well in this country and we make decisions about where to send contingencies, including to UN-mandated missions. That avoids what Éamon de Valera feared, which is that there would be an automatic going to war for the United Nations once the Security Council said "Yes". We do not do that, and I think we should continue in that line.</p>
+          <p eId="para_85"> I do not think a United Nations Security Council resolution will necessarily mean that you comply with IHL or LOAC - the law of armed conflict. You have to look at it, use your legal expertise and talk to the International Commission of Jurists and the International Court of Justice, which actually warned of a war of aggression in respect of the invasion of Iraq. Countries like Ireland took that very seriously. Our mandate on the Security Council finished in 2002. We had mandated the International Security Assistance Force in Afghanistan, ISAF. Ireland voted for ISAF during our time on the Security Council. We mandated that. However, we took legal advice, and Iraq was something we did not want to contribute to. That was a very good decision and I think we are capable of making those decisions.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_53">
+          <from>Senator Seán Kyne<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_86">In Mr. Power’s written opening statement he stated: “Another aspect of the Triple Lock not often considered, is that it has made us unreliable partners for many of the missions that are very much in line with our foreign policy and values.” Can he expand on that?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_87">This is referred to also in my submission.</p>
+          <p eId="para_88">The UNIFIL mission is up for review at the moment. If the US withdraws its support for or vetoes that mission, it will collapse the mission. To offer a hypothetical just to illustrate the point, if it was the case that a group of EU countries that were already <i>in situ</i> decided to stay - Ireland is a central figure there because of our long-time engagement - we would not be able to continue being involved in a mission like that, even if it was authorised by the EU and in line with the UN Charter, because of the triple lock. There have been other missions as well. There was the 1999 mission to Macedonia. Due to a spat between China and the former Yugoslav Republic of Macedonia, which recognised Taiwan, that led to China withdrawing its support. Once is enough for us to learn our lesson. There are other examples, such as Operation Sophia and Operation Pontus. The latter was a humanitarian naval mission. We were delayed in getting to deploy on that. There were other missions that were not even considered for being put before the permanent five because of threats of a veto.</p>
+          <p eId="para_89"> We should not abandon the UN or anything like that. Rather, we should attempt to reform from within while recognising the reality that, at the moment, the Security Council is very much frozen. We have an unreliable actor in, regrettably, the United States at the moment as well as two totalitarian states in Russia and China, which are both in a position to stymie us. We need to be very clear and honest about this. We have this national conversation, and that is good, but we are also listened to abroad and there are those who have nefarious intent on the international stage, particularly with regard to what is happening in the Middle East, who would see our stance and use it. Unwittingly, our stance could be used as an instrument to sabotage the precarious levels of peace that exist in the likes of south Lebanon, where we made that peace a thing that exists through the expenditure of Irish blood. We should be mindful of that.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_55">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_90">Dr. Burke and Mr. Power are very welcome. To make my position clear before I start, the triple lock is a red herring in the Defence Forces' current context and we should be discussing the other aspects of the Bill. The Chair said we will get to those, and I accept that, but they are far more important when we talk about the impact of courts martial, the power to suspend personnel, etc. We would not have the wherewithal to send people on missions even if we got rid of the triple lock in the morning. That is why I say it is a red herring. Furthermore, I am very happy Dr. Burke adverted to some of the language being used with respect to academics in this area. It seriously undermines the actual project we are trying to deal with.</p>
+          <p eId="para_91"> I believe in a neutral Ireland. We were not around in 1907 when the Hague Convention was founded, but since Ireland became a republic, at no stage have we ever registered in the Hague our neutrality. At the start of the Second World War when there still was a Government in the Netherlands, we did not register as a neutral state. Therefore, I do not believe we are neutral. I would like to see an honourable, neutral State capable of defending itself.</p>
+          <p eId="para_92"> I have three questions for the witnesses. First, is Ireland a neutral country in the context of customary international law? If the witnesses believe it is, what are the tangible elements that lead to any assertion of Ireland being a neutral country, other than the Government stating it is, without any such assertion being contested with empirical evidence?</p>
+          <p eId="para_93"> Second, if they believe Ireland is a neutral state, why is it that Austria and Switzerland, and Finland and Sweden until recently, pursued their neutrality in a polar opposite manner to Ireland's alleged neutrality?</p>
+          <p eId="para_94"> Third, Article 2 of the Hague Convention reads: “Belligerents are forbidden to move troops or convoys of either ammunition or war supplies across the territory of neutral Power.” Ireland's borders are on land, at sea and in the air, and we have legislation before the House that seeks to amend the Air Navigation and Transport Act to prevent the transit of weapons through Irish airspace. We do not know what is up there, and even if we did, we could not get up there to see it. In the witnesses’ view, is this absolute tokenism for the sake of a headline? If we cannot do anything about it, why are we wasting our time even thinking about it?</p>
+          <p eId="para_95"> I will leave it at that for the moment. I will have further questions later.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_96">I worked in the UK until 2022 and suffered a lot of general slander about my profession regarding experts and academics. I would not like to see that culture recreated in my own country. In the same way as I really admire all of the committee members for going into politics, which is extremely difficult in our contemporary time, we need to be very careful about language and assertions when it comes to my profession, because once one loses that confidence, it is gone and it is very hard for our universities to get it back. That is why I urge caution.</p>
+          <p eId="para_97"> With regards to neutrality, I will put my cards on the table. Ireland is an aligned country. We do not have treaty obligations that ensure we will automatically go to war for our partners or allies. We are not a member of NATO and there is no prospect of us being a member of NATO, but we are aligned to the European Union. If one talks to people in Switzerland about why they could not join the European Union, it is because they have the view that their neutrality is still in play, albeit just about. They believe that joining the United Nations in 2002 seriously dented their neutrality in terms of the understanding of neutrality under the Hague Convention, which is complete non-alignment.</p>
+          <p eId="para_98"> That is my view on the matter. It is obviously not the Government's view. It does not mean we are going to join NATO any time soon, but it means we have European Union obligations. We are involved in EU missions in Ukraine, for example, and we are stating very clearly that we are politically not neutral within the EU context. Defence and military strategy flows from policies. If I say that here is my policy but my strategy is completely different, that is incoherent. I do not think many other EU member states, particularly central and eastern European ones, understand that. It is not clear to them.</p>
+          <p eId="para_99"> We need an absolute focus on our defence capabilities. I welcome the committee's attention to that. The position of the Naval Service within the wider Defence Forces is completely untenable. As an island country, this should have been recognised a very long time ago. We could reconfigure the Defence Forces to a maritime role, which would make a lot of strategic sense in terms national defence and would perhaps include marines as well as a much greater maritime special forces and maritime Air Corps capability. There is a logic to that. I welcome the committee's future focus on this area. Many of our debates about defence in Ireland are quite lofty. These are important issues but we need to do both at the same time. We need to have this conversation, but I look forward to the committee digging into a maritime security strategy and capabilities and making sure that some of the recommendations of the Commission on the Defence Forces - I will let the committee decide which ones it strongly advocates on behalf of - are implemented as quickly as possible.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_100">I will address the Senator’s questions. This will be as best I remember them, so he should feel free to correct me if I go off piste. We have not signed up to the Hague Convention, but neither have a lot of countries. It is important for us to understand that one of the things that give rise to the problems we have in some of the discussions on these matters is that people have very different interpretations and definitions of what neutrality is. The Senator mentioned the Swiss. It is interesting. I will offer a brief interpretation of the Swiss and the Swedes from my own perspective, having worked alongside a number of them. Aside from my military service, I have spent considerable time on deployment as what is termed a civil-military co-ordination officer within UN missions, which has given me an insight, both civil and military, into the capacities of different countries. The Swedes and the Finns were largely very much aligned with NATO long before they joined it.</p>
+          <p eId="para_101">A senior member of the Swedish security services told me - we knew each other for quite a while - after the invasion of Ukraine that when Sweden declared it was going to join NATO, it was for political reasons. It was to show the Russians there was pushback. It was very easy for Sweden to do that because it had everything in place to be able to align, co-operate and co-ordinate. I thought there was a lesson there for us in that Sweden had maintained a particular foreign policy option until it was no longer suitable for the country. For the good of its national security and people, then, it was able to throw the switch very quickly. I think this is something we need to be considering. Just because you prepare does not mean you have to go down that route. We prepare all kinds of fire defences, but not in the desire to see a fire.</p>
+          <p eId="para_102"> I have one other thing to say that I think the committee will find interesting and some members may remember it. </p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_103">I am sorry, we are over time. </p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_104">I am sorry, but I think this is an important point. During the forums on international security, Professor Laurent Goetschel of Basel University's Swiss peace institute was asked a question about Swiss neutrality versus Irish neutrality. He said neutrality is not a religion but is a foreign policy concept that must be handled in the interests of a state and adapted to certain contexts and situations. As regards Switzerland's attitude to NATO, which the committee might find interesting, he said it seeks to strengthen international co-operation and that the Swiss seek to be close to and co-operate with the EU and NATO but that from a defence perspective, the Swiss value their relationship with NATO more. The Swiss also have an interoperable partnership with NATO through PfP, as do we, and seek to contribute to NATO too rather than just to receive, in respect of resilience, crisis management and cybersecurity capabilities. In other words, the Swiss are saying they continue to be neutral but also continue to develop relationships so they can co-operate and co-ordinate. Dr. Camino Kavanagh, a researcher on maritime matters for the UN, reminded us at a conference in this country that when it comes to the sea, Ireland cannot police the seas it is responsible for by itself.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_105">I thank Mr. Power. I allowed him to go on longer because I thought those were significant points.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_106">I thank the Chair. I appreciate it.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_107">Before I move to the next speaker, I take the point made by Senator Craughwell. We will be discussing it in a private session in terms of the options available to us to cover the entirety of this Bill in the way it needs to be covered. We will discuss this issue in private session. I call Senator Clonan.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_63">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_108">I welcome our guests and thank them for coming in. I have a couple of conflicts of interest I have to declare. First, I served and soldiered with Declan Power in a couple of different guises. I think he has been one of the most powerful voices for the recognition of the service of our troops in the Congo. I think he has done outstanding public service in this regard. I do not think he gets enough credit for it in terms of organisational justice and natural justice. I take this opportunity to commend him for doing that. He has been a very powerful voice for those veterans and their families. Turning to Dr. Burke, he and I are trading letters in <i>The Irish Times</i>. Little did I know when I was in the Christian Brothers' school in Finglas that one day I would be exchanging letters in <i>The Irish Times</i> with a professor of war from UCD. I feel I have kind of arrived if I am doing that.</p>
+          <p eId="para_109"> I am sorry that I missed the initial contributions. I was at the health committee and I must return there because we have representatives from Children's Health Ireland in. I did, however, read their submissions. As I said to both witnesses outside, I think we agree on about 99% of things. My concern about the triple lock is that it is not being amended, altered or modified. It is simply being removed. We will then have a situation where any future Government by a simple, whipped majority will be able to send any number of Irish troops anywhere in the world at any time. Now, whatever we might think about the current Government, this concerns any future Government and will give it this power. My concern is that if we are going to do away with the triple lock, there should be some other mechanism to try to replace it. Last week, I asked Professor Ray Murphy if he could think of an alternative and he said "No", and just keep it instead.</p>
+          <p eId="para_110"> Mr. Power, Dr. Burke and I know what has happened to Ireland's defence and security over the last ten to 20 years. We have seen what has happened. I refer to the community of decision-makers and experts, political and in the Department. I do not include the members of the general staff in this context because they do not have the power to articulate their views. They are very much constrained by the Defence Acts and aspects of Defence Forces regulations that prohibit their public communication or communication with the media. The members of the general staff are very constrained in how they can advocate for the Defence Forces. Would Mr. Power and Dr. Burke, however, trust that community of decision-makers and experts that has the Defence Forces literally on their knees and has left Ireland provocatively weak and provocatively undefended? We are Europe's weakest link in terms of cyber, ground, maritime and air defence. Would the two witnesses trust that community of decision-makers and experts to make a competent decision as to where we should send our troops in the absence of the triple lock mechanism? If we do away with the triple lock, do the witnesses believe there should be some alternative safeguard? Do they have any ideas on what it might consist of or look like?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_111">It is good to see Senator Tom Clonan again. My simple answer is "Yes". I trust our Government far more, whatever issues I might have with whatever government. I feel privileged to be a citizen of a country that has a strong and vibrant democracy. I served in uniform, like the Senator did, under several Governments. I gave my oath of allegiance to the Constitution of this country, which I still consider myself to be bound by. I continue to trust in the judgment of government and also in the judgment of the Irish people and the Irish democratic system that allows us to have these kinds of discussions and debates. Things are far from perfect regarding defence in this country and they have been this way for a long time. That is a whole discussion in its own right but I do find it bizarre - and I think generations in time to come will find it bizarre - that we considered it a better option to let the P5, the permanent Security Council members, dictate Irish foreign policy and dictate situations where Irish troops could or could not go.</p>
+          <p eId="para_112"> To answer the other question of whether there is a better way to do it, we are outliers on this issue. We just need to come back in line with other democracies, particularly European democracies. They go by the UN Charter regarding the deployment of troops. I would not see there being any change. We have embarked on a number of missions, some that were UN-directed, in other words, blue helmet missions, some that were EU-led with a UN mandate and some that were NATO-led with a UN mandate. They all had for us at the time a UN Security Council resolution. As I outlined, however, that was problematic. What we want is to be agile. As long as we adhere to the tenets of the UN Charter and work within regional security organisations, where required, this would not stop us taking part in a UN peacekeeping mission but one has not been authorised since 2014 and it is very unlikely that one will be authorised. This is the way I see it at this point in time.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_113">I thank Senator Clonan very much. We will not exchange too many scholarly compliments but it is a pleasure to be here and I thank him for his questions. On the question of whether I trust the community of decision-makers and experts, broadly, in terms of our Constitution, legal system, Departments and the Attorney General, I do trust our democratic system to oversee this aspect. I do want to see a stronger Department of Defence. In terms of alternative safeguards, I would like to see a committee like this one having more powers, in the way the parliaments of other EU member states have, to push for accountability on defence. I think it would be wonderful if we could revisit the committee powers for the Oireachtas. The referendum was a difficult time but it is something that would be very healthy. Strengthening the Oireachtas is something I am particularly in favour of when it comes to national security. I think it is very important.</p>
+          <p eId="para_114">Things are made better by people, like the Deputies and Senators on this committee, asking the pertinent questions and sometimes demanding answers if necessary and getting them. Like Mr. Power, I have faith in that.</p>
+          <p eId="para_115"> When it comes to UN Security Council resolutions, I talked a bit about UN Resolution 1511 and the multinational force in Iraq in 2003. Norway, which is a NATO member state, looked at that resolution and said there were serious problems with it. Despite it being a UN-mandated mission, Norway did not want to send a serious contingent there because there were a lot of problems with the rules of engagements. It also had concerns about LOAC and international humanitarian law. Norway did not do it for those reasons. That was the right decision by Oslo. We are also capable of making those decisions in a similar way, taking legal advice and looking at the situation. We are well equipped to do that, particularly with the Oireachtas keeping a close eye on our legal obligations. I will leave it there because I am conscious of time.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_66">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_116">I thank Dr. Burke and Senator Tom Clonan. We will have another round. Next is Deputy Maeve O'Connell. She will be followed by Deputies Duncan Smith and Ó Laoghaire.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_67">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_117">I apologise for arriving late. I enjoyed reading both the witnesses’ opening statements. I absolutely recognise their expertise and competence in this area. There was great clarity of thought and language in both statements to help us understand the issues we are facing here.</p>
+          <p eId="para_118"> I wish to get a bit more clarity around some of the comments Mr. Power made. He said we are seen as an outlier in how we allow the permanent members of the UN Security Council to hold sway on our policy. I am trying to understand a bit more about how we are seen as an outlier. What are the implications of that in terms of partners with whom we have worked and with whom we will be working with in the future? What are the implications, on an ongoing basis, for all our other operations?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_119">That is a pretty straightforward question. In my experience, it is not that other countries are continually talking about it. Sometimes, there is a genuine surprise in certain circles when it is realised that an Irish deployment is completely reliant on a UN Security Council resolution going through. It is not that other countries want to deviate from that. If there is going to be a Security Council resolution, most countries prefer for that to be passed. However, they are not dependent on it. They can start to get ready and deploy. They can move assets into place, whereas we cannot. That is when it pops up. I am probably talking more at the operational level. There is a bit of head scratching in those scenarios. For example, if the Irish were in favour of sending a ship to take part in Operation Pontus, other countries would question the delay or ask when they can expect staff officers to be deployed to start co-ordinating the operation. It is in that scenario that it is realised that Ireland must wait for the resolution to go through.</p>
+          <p eId="para_120"> My key point is that this makes us an outlier. I do not know of any other state in the European Union, including some of the traditional neutral states, such as Austria and Switzerland, or former neutral states, such as Sweden and Finland, that have this impediment. It was never intended to be that. Times change and we have to adapt.</p>
+          <p eId="para_121"> Being a reliable partner is important. That will become apparent going forward. While no one can predict the future, the UN Security Council is very much frozen right now. It is becoming a political instrument of the big powers, particularly the totalitarians. No one knows what is going to happen with it. If we want to stay involved in making the contributions that we have, it is probably going to have to be through regional security organisations, the EU being the most obvious and appropriate one.</p>
+          <p eId="para_122"> The operation in Chad was successful. That was a peace-enforcement mission at the start. It then became a direct UN-led mission. The Irish stayed throughout. We started off wearing EU insignia and finished wearing UN insignia. I would like to see us have that kind of agility. At the moment, we cannot say we have that. We can be an unwitting cat’s paw for other countries that want to use our triple lock legislation to maybe interrupt or stymie a mission.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_69">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_123">Can Mr. Power give us any examples of that? I love the cat’s paw expression.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_124">Examples of missions.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_71">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_125">Examples where that has occurred.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_126">The Macedonian mission is an example, although I am not saying the Chinese sat down and planned that because of Ireland. What I am saying is that what happened was totally in line with our foreign policy. It was considered quite an important mission for the stability of the region, and particularly for Macedonia. We were not able to take part because of a political row between the Chinese and the Macedonians. If we did not have the triple lock impeding us, we could have stayed as part of that EU-led mission. What happened was wholly in line with our foreign policy and the UN Charter. This is the thing.</p>
+          <p eId="para_127"> I can foresee situations in which the UN Assembly votes for something but the permanent five members of the UN Security Council do nothing about it. Regardless of what has been said in recent times in the media about 1956 when the UN Council managed to authorise a peacekeeping mission, that would not be possible now. While it might pass a resolution, the operational button does not get pressed in UN terms unless the Security Council authorises it.</p>
+          <p eId="para_128"> Rwanda is probably a good example. While there are a whole lot of things one could say about Rwanda, I refer to being able to put together, in quick time, a coalition of some sort that would deploy and save lives there. An even better example might be non-combatant evacuation operations. Depending on the size of such operations, Ireland would be precluded from taking part, even though it might be our citizens in need of evacuation. Why would we shackle ourselves? This is not going to change our foreign policies. To steal a line from Senator Craughwell, I see this issue as a bit of a red herring in many respects. I ask that we consider what we need to do to unshackle ourselves from a policy and an operational point of view in order that we maintain our independence and agility.</p>
+          <p eId="para_129"> To answer the Deputy’s question, examples of such missions include Operation Pontus, Operation Althea, the Macedonian operation and various exercises. This was not the intention behind the triple lock. It was to do with what I argue were overly legalistic interpretations. In the original legislation, namely the Defence (Amendment) (No. 2) Act 1960, there was nothing about whether it should be 12 or 50 troops. At least the proposed Bill will properly quantify issues to do with the deployment of troops. The figure of up to 50 troops who could be deployed without having to go through the Oireachtas is appropriate if you want to have an autonomous military entity that is able to quickly get on the ground to rescue people.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_73">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_130">I thank Dr. Burke and Mr. Power for their opening statements. I will begin by welcoming Dr. Burke’s comments on the integrity of academics and academia. That is hugely important. The vibrancy of our academic sector and our academics comes from differences of opinions and pushing each other’s work. Calling into question the integrity or bona fides of any academic deeply wounds that and is deeply troubling.</p>
+          <p eId="para_131"> I agree with Senator Craughwell to an extent when he says this issue is a red herring. I reached a different conclusion, however. Our party position is to keep the triple lock. The current proposal in the current legislation to just remove it, without any kind of attempt at reform, is needless. What is driving us as a party is that we do not want to cut the link to the United Nations as severely and as quickly without at least having a conversation about it. Mr. Power referenced the Uniting for Peace resolution that was passed by General Assembly in the 1950s and how it does do not have legal standing in terms of deploying a force. The triple lock, as currently constituted and interpreted, allows Ireland to take part in a mission if a UN General Assembly resolution is agreed at the General Assembly. It does not have to be agreed at the UN Security Council. To speak to Mr. Power’s point about agility, we could, in theory, take part in missions that have been given the imprimatur of the General Assembly.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_132">I do not share the Deputy's confidence. Various Attorney Generals have-----</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_75">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_133">I am not confident; I am putting it forward as a discussion point. I am just saying, as a theory, that we can take part in regional missions that have the imprimatur of or that have at least have gone to the UN General Assembly and have been passed.</p>
+          <p eId="para_134">They may then be vetoed at the Security Council, but the Irish Government could say that it was taking part in a certain mission in a particular country and that the UN General Assembly had passed a resolution, and that is the third part of our triple lock. In theory, that could happen. It might be a bit convoluted.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_135">I disagree.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_77">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_136">Why?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_137">I disagree because the point has been proven. We could, if we did not have the triple lock. What has happened with the triple lock has been over the years. There was nothing in the original legislation about numbers of troops. This has been interpreted, I argue, because of varying political climates down through the years, where different Attorneys General took different positions on it, and it has shackled us. I am not a lawyer, but that has locked us into a position that what the Deputy just outlined, a very reasonable point of view with which I am largely in agreement, I do not believe can happen. We have painted ourselves into a corner, and it is time we painted ourselves out of that corner in order to be able to achieve the kinds of things the Deputy is talking about.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_79">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_138">There is a lot that our Defence Forces can do, however, notwithstanding that they have been under-resourced and so on. We take part in training missions, exercises, PfP operations and so on. There is a great deal we have done and have been capable of doing.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_139">They have all been the subject of Security Council resolutions.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_81">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_140">Every single one.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_141">Yes. It is needed to deploy Irish troops in any meaningful way. It got to the point that it was not only operational deployments that the triple lock was starting to interfere with but also the deployment of small numbers of personnel for military training and educational purposes. I am not 100% sure it would have been possible for us to take part in certain types of multinational exercises, although we have done. It was becoming as precarious as that.</p>
+          <p eId="para_142"> Returning to the point, as regards operational deployments of Irish troops to a conflict area that requires a Security Council resolution and the assent of the Dáil and the Government-----</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_83">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_143">The point Mr. Power made earlier was what makes more sense. Sorry, it might have been Dr. Burke. The point that what will make increasing sense is a regional-based peacekeeping force, probably through the EU.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_144">Depending on the situation. It is not the only game in town. Sometimes it is entirely appropriate and sometimes a direct blue helmet, authorised, lightly-armed peacekeeping mission may be appropriate – a police action of some sort. There is a sliding scale of scenarios, and we should be in a position to take part in any and all.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_85">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_145">Mr. Power accepts the concerns. He also stated we need to welcome reform of the UN and passionately believes we should support the UN.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_146">Absolutely, yes.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_87">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_147">That is where we are at. My concern is that we cut the triple lock without reform with this proposed legislation and then what emerges on the dancefloor is an EU or a regional-based sphere, that is the most likely stage which would be operated on. What we have in the EU now, for understandable reasons, particularly on its eastern borders, is this rising sense of militarism, defence spending, the threat from the east and all the rest. We would have no break and we would have removed a break that we probably need to ensure that we are not moved on a sliding scale towards something that is beyond a regional peacekeeping force.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_148">The EU is one of the places where our voice is more compelling than in the UN at the moment. In the EU, as has been proven by the actions of Hungary, one member can stymie things. This country has had unbelievable success in getting legislation for an entire community of nations adapted for our needs. It is really a classic example of a rules-based approach.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_89">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_149">It has also had huge success in the history of the UN, Mr. Power would agree-----</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_150">I would say less so because-----</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_91">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_151">Nuclear non-proliferation treaties-----</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_152">I agree. That is Ireland’s success. However, I am talking about a small country like Ireland in the UN. If the P5 decides to do what it does, a country like ours is shackled by that. If the European Union decided to shift gears on defence, Ireland has a very strong position, as has been proven in legislative amendments that took place after the Nice and Lisbon treaties.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_153">I am just reminding the Deputy of time in case Dr. Burke wishes to contribute.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_94">
+          <from>Deputy Duncan Smith<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_154">I know I did not direct any questions to Dr. Burke. Does he have any comments to make? I have another seven minutes in which to throw questions at him.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_155">Just a short contribution, maybe.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_156">I am very sympathetic to the idea that the General Assembly should be more proactive. Unfortunately, we have not seen that in recent years. Richard Gowan, the UN director of the international crisis group has done a study of various attempts by member states to try to get the General Assembly to break the deadlock we see in the Security Council. Unfortunately, that has not borne much success. There does not seem to be a huge appetite to take on this role, sadly. We saw that in Myanmar in 2021, when the attempt there did not really get anywhere. I would be concerned that there is not an alternative, and UN reform, including of the Security Council, is something we have been an advocate for. Various governments have advocated for that for years. Of course, the P5 is completely unrepresentative. It should be reformed, but, unfortunately, we are deadlocked because of the veto, etc.</p>
+          <p eId="para_157"> Chapter VIII of the UN Charter is very important. The UN was not designed for the Security Council to always be arbiter of everything, particularly when it comes to regional peacekeeping. This is specifically outlined in Chapter VIII. I would hate to see a situation such as Operation IRINI, where the Bosnian Government is asking us to stay and help it and there is a veto from Moscow which means that suddenly we have to tell it that we cannot help and that we cannot be part of EUFOR's Operation Althea. That seems to be counterproductive and against the terms of Chapter VIII, particularly if it is very much peacekeeping by consent and at the request of the host government. For Ireland to pack its bags at a time of major growing tensions in the Balkans, where we will probably need more peacekeepers rather than fewer in future because of those tensions, would be really regrettable for our reputation on the Continent and, indeed, in Sarajevo.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_158">I have to cut it there. We have four permanent members left, namely Deputies Ó Laoghaire and Callaghan, Senator Gallagher and Deputy Brabazon. I will then allow the other Members present to have five minutes each.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_98">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_159">To clarify for our guests, the permanent members of the committee do not get a veto or anything like that. It is just priority in terms of who speaks first.</p>
+          <p eId="para_160"> First, to pick up on Dr. Burke’s point, last week, in the context of one of the members of the committee saying they had received some abuse online and so on for their pro-neutrality position, I said it was important that this debate be conducted in a respectful way. I agree entirely with Dr. Burke's remarks. The word “agent” did not leap off the page at me in the course of last week’s session, but I would say that was wrong. I have no reason to doubt his honour or positive intentions, regardless of whatever disagreements we may have. It should be possible to have a productive discussion, and I hope this is not the last engagement we have. We are starting with the triple lock and the proposed legislation relating to it, but it is an ambition of this committee generally to ensure that the areas of security and defence get an awful lot more attention than they may have in recent years.</p>
+          <p eId="para_161"> I will start with Dr. Power. His use of the term “overly legalistic” was quite interesting, and it is an important point. Some of the discussion on the triple lock and the examples that have been given relate to humanitarian evacuation and drug interdiction. The Department of Defence has told us that strictly speaking the triple lock does not prevent humanitarian evacuation, and I suspect that, strictly speaking, it does not prevent drug interdiction either, but perhaps it may have been the interpretation of Attorneys General, as Mr. Power cited, who, with an abundance of caution, advised that we need to be particularly cautious in that regard. I appreciate that Mr. Power’s position is that the triple lock should not be retained, but I imagine he would be of the view that it would be possible to amend the proposed legislation to clarify the potential to deploy Irish troops for humanitarian evacuation or drug interdiction without removing the requirement for a UN mandate for deployment of international forces.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_162">First, I thank the Deputy for the promotion, but I do not have a doctorate. I agree with his points to a certain extent. The problem is the overly legalistic interpretations. In this country, we may have learned lessons down the years from when we tried to build on bad foundations.</p>
+          <p eId="para_163"> I am thinking of the various episodes that we are now at the other end of regarding issues to do with abortion and other things of that nature. For a while, we made things worse by not realising that we needed to excise the problem. That is where we are at now, in this situation. I think our sentiments are all largely similar here but where we differ is that I do not see this being improved by trying to rebuild the triple lock. The triple lock was of its time and it has been overtaken by scenarios and events. One of the crucial things to understand is that when it was conceived of with the Defence (Amendment) Act 1960, the UN was seen in a certain way. Peacekeeping was peacekeeping and there was not even a deviation. Peace enforcement in the form of Chapter VII missions did not exist, even though it physically did exist on the ground, as was proven in the Congo.</p>
+          <p eId="para_164"> Coming back to my point about agility, the question is whether we want to retain that agility. We do not have it at the moment because of the legalistic interpretations. What is to be gained by having totalitarian states, or other states, being able to interfere with our foreign policy? It is one thing within the European Union where we have agreed to common foreign policy stances. We do not get any say in that with the P5. It is not fit for purpose, it has outlived its utility, if it ever had utility, and it is time for us to move on from it. We need to keep working on reform within the UN and work from the UN Charter, as our partner nations do.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_100">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_165">I thank Mr. Power. I certainly agree with the latter point he made. It seems that if the Minister had brought forward legislation - and this Bill contains clarifications, which is important - that clarified instances where there have been difficulties, it would have been relatively uncontroversial. I think it would have got the support of the committee, maybe not unanimously but broadly speaking. I am limited for time so I will ask questions in two further areas.</p>
+          <p eId="para_166"> This is directed primarily to Mr. Power but Dr. Burke may answer as well, although I think he has addressed it already. Is it a desirable policy for the Irish State to be neutral? I think Dr. Burke has answered that he thinks it is arguable whether it is or not. Either of the witnesses may answer the question.</p>
+          <p eId="para_167"> In evaluating our situation, it is fair to say that Ireland will never be a major military power. Ireland's strength internationally is the fact that we command respect because of the service of our peacekeepers and also because of the role we have played in multilateral organisations. I understand that both Mr. Power and Dr. Burke might say that this can be overstated. As a small country, anything we do can be overstated to some extent. How we preserve that respect in a volatile world is the question. Dr. Burke gave the example of the former Yugoslav republic of North Macedonia, as it is now. He also outlined the position taken by China in response to the recognition of Taiwan. While that response is different from my position, I would observe that it reflects the fact that politics bleed into situations like this. China responded politically. The witnesses reflected about our ability to evaluate our own situation, the institutions of State and the Constitution. All of those points are valid and I think we do have a robust democracy. Nonetheless, is it not the case that, because of politics, small countries can come under pressure where there are military interventions and other obligations or things owed to other countries? Is it not the case that it does happen that countries come under pressure to participate in missions and deployments? Does the triple lock not offer a protection to any Irish Government that may be reluctant to participate in such a deployment?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_168">No, I disagree. As a proud Irish republican, I am sure the Deputy would agree with the idea that Ireland should have been able to participate in a mission we decided was of crucial importance to the stability of Macedonia and that to be elbowed out of that by China's actions is repugnant to us, as an independent nation.</p>
+          <p eId="para_169"> I will quickly answer the Deputy's other question on whether I think neutrality is a good idea. We have to stop deceiving ourselves to an extent in this country. I believe in our independence in course of action. I believe that if we were to have the kind of neutrality that some people think we should have, we would have to leave the European Union. I do not want to see us get sucked in to being, to use the term again, the "cat's paw" of bigger nations. We have demonstrated our ability, going back to and including the Second World War, to forge our own, honourable course of action and to assist where we see it being pertinent, but not to be bullied into any actions. Whether the triple lock exists or not does not change that. Again, I will steal a line from Senator Craughwell: it is a red herring as regards to Ireland's stance on military neutrality. Clearly, we are not neutral on the wars in Gaza or Ukraine. Speaking as an Irish citizen, I do not think we should be, but what we do is decide our own course of action in how we provide support.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_170">Thank you, Mr. Power. I am afraid we have run out of time but, in answering the other questions from other members, I ask that you respond to some of the other points Deputy Ó Laoghaire made.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_103">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_171">I thank Mr. Power and Dr. Burke for coming in and giving the committee their time. My questions will be very simple and straightforward because I believe that the regular person on the street just needs clarification about some simple things. Regarding the triple lock and our neutrality, how does the current format of the triple lock inform or impact our neutrality? Does it strengthen or weaken it?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_172">I would say that it has no impact. It was never designed to have an impact. In the discussions that created the legislation in the Defence (Amendment) Act 1960, it was not an issue. It was never meant to be that. Joining the UN was never something that was meant to enhance our neutrality. I would argue that it is a whole different conversation to talk about neutrality; it is not relevant to the triple lock.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_173">It is interesting to look at the Multi-National Force - Iraq, MNF-I, that was mandated on 20 October 2003 and then look at the International Security Assistance Force, ISAF, in Afghanistan, which Ireland voted to set up as a member of the Security Council. On both missions, Ireland said that these were UN-mandated missions. The UN Security Council and the United States put pressure on Ireland, regarding Afghanistan, to do more. Members can look at WikiLeaks from 2009, if they wish, but they are Members of the Oireachtas, so they would not do that. There were some very interesting cables from Dublin. US diplomats were making strong representations and the Government position was that it understood there was a UN Security Council resolution, but that was not Ireland's posture. That is not what we do. That is not the type of operation we want to engage in. The Government made the choice that this was not something that would be brought before the Oireachtas. That view of who we were in terms of our military policy played out in terms of not putting Irish troops into UN Security Council-mandated operations. The United States maintained that these operations were peace support. Yes, there was an expansive mandate to deal with the Taliban but the US maintained that Ireland should be entirely in favour of this as a member of the United Nations. They questioned why Ireland would not do it. We made a choice on that and that is important. When I was in Afghanistan, ISAF had seven soldiers. Because of our policy, they were only doing counter-IED work. Our primary task was working with the Ministry of Interior Affairs, MOI, and the Ministry of Defense, MOD, to do counter-IED training. The gardaí who were there were much more operationally expansive. The emergency response unit, ERU, worked with me there. The gardaí were operational in the provinces of Afghanistan in a way that the Defence Forces were not. They were very focused on ISAF headquarters and on the MOD and MOI.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_106">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_174">Ireland chose not to be involved. We had autonomy and said no, that we were not getting involved. </p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_175">Yes, absolutely.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_108">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_176">To follow up on that, if the triple lock is removed, how would that impact the current state of neutrality? Would it strengthen it, weaken it or change it in any way?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_177">No, because I think we would still make the same decisions based on our policy, and policy is what matters. The invasion of Iraq was not a NATO war. Norway objected strongly to it, as did many other European countries. When the Multi-National Force - Iraq was then set up, Norway said it was not compliant with LOAC or international humanitarian law and it did not want any part of it. That is what mattered for Norway, not the UN mandate. Similarly, if we do not want to do something, that is a question for the Oireachtas and the Government.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_110">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_178">I thank Dr. Burke. I do not want to cut him short but I have other questions I need to ask. Our voters at home need simple clarity on these issues. It is really interesting and it is important that we understand the context of it as well.</p>
+          <p eId="para_179">I might get Mr. Power's view on that. If we were to remove the triple lock, would it impact our current neutral status in any way?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_180">No.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_112">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_181">Thank you.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_182">It is one of the things the Deputy might be aware of herself from her own service. The good doctor was talking about Afghanistan. Every nation has caveats that they will list in their deployments. Various troops from paid-up NATO nations took part in the Afghanistan mission. They had very strict requirements about what their troops would or would not do. The Swedes and the Germans did not serve outside Kabul, at least for a long time. That is not often realised. They did not have a triple lock but they had very strict requirements about what their troops would or would not do.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_114">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_183">There is an idea that, by removing the triple lock, we are sending our Defence Forces personnel, our young men and women, off to fight a war, and that it is going to be an option for us now or is just going to happen. From my point of view, that is a misrepresentation and not what is going to happen. Turning to our conflict resolution, which was mentioned, is there conflict in conflict resolution? For Irish troops going into a peacekeeping or peace enforcing situation for conflict resolution, are our troops going into the conflict? Are they going to be involved in that?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_184">It very much depends. These things depend on the nature of the mission and the status of forces agreement, for example, if it is a UN contingent when they are deployed. A simple example from more recent times might be the UNDOF mission in Syria. The Irish took part in that and were the quick reaction force. Their job was to provide for force protection for that entity. The Deputy may remember that, in 2014, I think, that changed radically when Filipino and other peacekeepers were virtually held hostage in their own camps and the Irish had to effect a rescue operation. Thankfully that was done with a mixture of diplomacy and show of force. It could have been very ugly. I would put it down to our troops' experience in that region. It is an example of how a lightly armed peacekeeping force can suddenly find itself in a limited war fighting situation. The same thing happened in Lebanon in 1980 in what became known as the battle of At Tiri that led to the awards of four medals of gallantry for Irish personnel. A lightly armed peacekeeping force can often find itself having to fight for its life.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_116">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_185">That was going to be my next point. Mr. Power had mentioned in his opening remarks that it can be messy and dangerous. Is it more messy and more dangerous for an Irish peacekeeper abroad who has 11 of their comrades with them? Is that more dangerous than having 49 alongside them?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_186">There are two interesting points I would make there. Irish casualties and fatalities have taken place on UN-led operations even though we have been on others. Granted, there have not been as many of the others. UN missions are dangerous. We should remember that. One other thing that has emerged, though, is when we go on a direct UN-led operation, we have no real control over who we have to partner up with. Sometimes our contingents have found themselves alongside other contingents with questionable human rights practices and policies. That can be different. Personally speaking, if I was still serving in uniform, I would be much happier about going on a UN-authorised EU-led or even NATO-led mission because I would know the processes and procedures would be in place for protection and for human rights.</p>
+        </speech>
+        <speech by="#RobbieGallagher" eId="spk_118">
+          <from>Senator Robbie Gallagher<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_187">I welcome both gentlemen here this morning and thank them for bringing their expertise and clarity to their arguments. I have found it very useful. Following on from Deputy Callaghan's point on the whole debate, unfortunately, we live in a world where the headline dictates the story in many ways. It can be very difficult to move beyond the headline because the world moves so fast, . The adage, "when you are explaining, you are losing" springs to mind, especially when it comes to this debate. Somebody can say we are throwing away or weakening our neutrality. We are trying to explain that we are not. It takes a while to explain all of that. Deputy Callaghan's seven minutes were taken up with it. It is probably difficult for people to tune in and get a rational picture from both sides. That is unfortunately where we are at. I suppose the fear is that the current system with the UN Security Council and the P5 is beyond reform. Is that our guests' opinion? Has it become redundant, really? Is it a case that we are just going through a point in time where the world seems to be in turmoil and we might get over this blip, if I can use that phrase? Perhaps by removing it, as some people would say, we are more or less sounding its death knell and that is the end of that. Are we at a point where it has gone beyond reform? That is my first question to both our guests.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_188">No, it is not gone beyond reform. The UN, including the Security Council, clearly needs to remain. We are going through an extremely difficult period. Since 2014, since the invasion and annexation of Crimea, it has been particularly difficult. We are also seeing tensions now with European states, not least our own, wanting to do more in respect of the occupied territories and Gaza. That is extraordinarily difficult as well. We are concerned about our peacekeepers in Lebanon. We are going through an enormously taxing period. There have been other taxing periods in the past. I think we should not be too despondent yet. However, Chapter VIII of the UN Charter is important. There has perhaps been in this country a sense that everything must go through those P5 on the Security Council for us to be able to do things in Europe that are peacekeeping or peacebuilding efforts. It is important that we take some European responsibility, that we can do things. Countries, for example, the government in Sarajevo and so on, want us to do things. It could simply be about trying to prevent the situation in Libya from escalating further in terms of a naval mission like IRINI, for example. There is nothing wrong with that. It is completely consistent with how the UN Charter was designed to allow member states to do that. In some ways we are boxing ourselves in unnecessarily. Chapter VIII is very clear that, if there is peace enforcement, you do need a UN Security Council resolution. These missions we are talking about are not Chapter VII peace enforcement.</p>
+          <p eId="para_189"> I would also say that we need to be careful about absenting ourselves entirely from things like responsibility to protect. Ireland is saying that we are a huge advocate of R2P, the responsibility to protect, that we should never have what happened in west Africa or Rwanda again, and that UN member states should step forward and use responsibility to protect. However, we are also saying that we do not do war fighting or Chapter VII. If you go to Oslo or Stockholm, that is not what they say. They do not say they are going to completely absent themselves from war fighting, including responsibility to protect. Responsibility to protect is very important, whether it is Sierra Leone, Liberia or elsewhere. It is important that there is UN intervention if necessary to save lives. We need to be careful about assuming that our peacekeepers will never engage in war fighting under responsibility to protect. It is very important to recognise that sometimes we do need to conduct peace enforcement. It is sometimes necessary, to prevent genocide, for example.</p>
+          <p eId="para_190"> Ireland needs to look to Sweden and other countries in being a little bit more candid and possibly more ambitious in what it does for the UN. Various people in the UN General Assembly in New York will say Norway has really established a reputation for peacebuilding across the board, mediation, development and resolution 1325. Norway is exceptional. It is also a NATO member state as well as being an exceptional UN member state. We are not joining NATO. I am not advocating for Ireland to join NATO. We will not find ourselves in a treaty obligation like Article 5. Nonetheless, when it comes to the European Union, we need to be clear with our public that there are certain obligations about the EU when it comes to maritime security or the Mediterranean, including trying to deal with situation in Libya, which is extremely dangerous and threatening, not least to the people there. IRINI is necessary to try to help that and prevent weapons coming in to exacerbate the conflict in Libya. If Russia wants to strip away that UN Security Council resolution because it was arming a party, General Haftar, in Libya, providing arms to a faction there and therefore wants to get rid of an EU mission, we should think very carefully about whether it is the right thing for the EU to decide that the policing of the Mediterranean and its efforts to bring stability in the southern Mediterranean are something it cannot do any more because Moscow says "No". Indeed, in Bosnia, the Bosnian Government has really appreciated EU assistance and wants more of it to help peacebuilding in that country. Are we simply going to say no, we cannot do that either as an EU member state?</p>
+          <p eId="para_191">Is that our policy? Is it what we are telling other EU member states to do? It would be highly regrettable.</p>
+          <p eId="para_192"> In some ways, the Irish public is confused because we need to explain our EU position a little better as regards what is the Common Foreign and Security Policy, CFSP, what our political community is, what Europe needs and the fact that a major land war is going on in Europe right now. Our democracy is under attack from Russian sponsored disinformation. Critical infrastructure is being attacked. The Russians carried out the Salisbury attack and assassinations in Germany. We have seen murder on our streets sponsored by the Russian intelligence services. We are in a threatening time when we need to fight for and work hard for the survival of European democracy. Therefore, if it comes to trying to prevent the exacerbation of armed conflict in the Mediterranean or anywhere else, the EU may need to engage in peacebuilding efforts there and have naval missions, and if Russia threatens the EU, perhaps we need to think carefully about our response to that.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_193">Briefly, I come back to the reinforcement training packages, RTPs. The fact that a policy is in place does not always mean it is adhered to. That is sometimes one of the problems on UN missions. I served in South Sudan at one point and there was a mass killing of people from the Dinka tribe in a place called Bor, where the officer in charge of a UN contingent chose not to interpret that his mandate gave him the right to protect. In other words, he put the lives of his soldiers ahead of the lives of unarmed civilians who were killed in front of him. I do not think any Irish citizen, soldier, politician or officer would want to see such a thing. If we get involved in any kind of conflict management or peacekeeping mission, we need to ensure our forces have the capacity to do what they need to do.</p>
+          <p eId="para_194"> I will make one point with regard to that. The committee might consider bringing in members of the Permanent Defence Forces Representative Association, PDFORRA, or the Representative Association of Commissioned Officers, RACO, to hear from practitioners at the coalface about those and other matters pertaining to the defence Bill.</p>
+        </speech>
+        <speech by="#TomBrabazon" eId="spk_121">
+          <from>Deputy Tom Brabazon<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_195">I thank the witnesses for their clear presentations.</p>
+          <p eId="para_196"> First, as a riposte to part of the contribution by Deputy Ó Laoghaire on the drug interdiction and the statement that it is potentially possible to get involved in drug interdiction without a change to the legislation, I would hate to be a prosecutor defending the legality of evidence brought before a court where this is brought up by a defence team.</p>
+          <p eId="para_197"> One of our witnesses last week, Professor Ray Murphy, stated, "I consider that we have compromised our military neutrality by very close arrangements with NATO, the Partnership for Peace and so on", and:</p>
+          <p class="indent_1" eId="para_198">Doing away with the requirement for a UN mandate is so fundamental that it will have a really dramatic impact on our participation in UN activities in the future and the perception of Ireland abroad ... The narrative sometimes is that the Russians and Chinese are vetoing Irish participation. They are not vetoing Irish participation but they are vetoing a UN security resolution for a potential force in a part of the world.</p>
+          <p eId="para_199"> What do the witnesses have to say about that?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_200">I disagree with Professor Murphy, respectfully. I know him and have spoken about these matters with him before. His point of view is out of time. Fundamentally, one thing we need to keep in mind is that the Irish State has a responsibility primarily to the security of its people and the integrity of the State. We have to leave room for ourselves to deal with that. Like Dr. Burke, I am not suggesting we join NATO. However, like the UN to an extent, I believe we need to have a relationship with various security actors, because, as Dr. Camino Kavanagh reminds us, we cannot manage security and defence of this island unilaterally. We need to be able to co-ordinate and co-operate. That does not require us to change our stance on mutual defence and common defence issues. We can take leaves out of the book the Nordic states wrote with regard to Nordic Defence Cooperation, NORDEFCO, where Swedes, Danes, Norwegians and Finns at the time all had different policies. Some were in NATO, some were not and some were in the EU, some were not, yet they all managed to co-ordinate on matters to do with their own territorial security. We need to be a little more agile.</p>
+          <p eId="para_201"> I was asked whether Ireland's position ever comes up. Once we are able to do what we say we can do, it is accepted by our partners. It is putting ourselves in a position where at the last minute we cannot deliver that can really damage our reputation.</p>
+        </speech>
+        <speech by="#TomBrabazon" eId="spk_123">
+          <from>Deputy Tom Brabazon<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_202">Does Dr. Burke have anything to add to that? No. One of our other witnesses last week put forward the theory that, if we pass this legislation, we will unpick the Lisbon treaty and by extension other EU treaties, which I felt was a rather dramatic interpretation of matters. What do the witnesses have to say about that?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_203">That would be news to me. A whole host of other nations were involved in those treaties. Ireland boxed well. We boxed above our weight as regards getting them adapted to our needs. As regards unpicking them, we do not need to. They serve our needs well, as has been proved. It shows that our participation in the EU has been largely beneficial to maintaining our <i>status quo</i>.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_204">I will briefly add to that a system problem when I was in my 20s and at university - Richard Sinnott's research picked up on this - which was the paucity of debate about Ireland's strategic interests and defence policy. There were a lot of do-not-knows around the time of the Nice and Lisbon treaty referendums. I thought it was regrettable in some ways that we did not have a more frank discussion about what precisely neutrality is, what alignment is, whether it is possible to be aligned with the EU and not be a NATO member state and therefore not bound to automatically go to war. There are things we can do as an EU member state that may move away from the kind of concept of neutrality that really only took root later. Seán Lemass remarked that neutrality was simply a temporary tool of the Government and that we were western aligned.</p>
+          <p eId="para_205"> There was a reason we went to the Congo in July 1960. It was because the United States, Belgium and France asked for white only troops to go to Katanga in August 1960 and UN headquarters acceded to that request. That is something we should not have done. The then Prime Minister of the Democratic Republic of Congo, Patrice Lumumba, was absolutely against it and we should have had a much more advanced political debate about why there were only Swedish and Irish troops in this area and African troops were excluded. They were later included but only after Patrice Lumumba, the Prime Minister of DRC, was deposed in a western intelligence fostered coup. My point is that we need to think carefully about why we do things, what our strategic interests are, and what the international humanitarian law and obligations under the law of armed conflict are. If we had thought about that more carefully in the summer of 1960, we might have had a more informed and careful UN operation at that time. I would also argue that even on EUFOR Chad, when it came to France, the former colonial power with lots of interests, we should have had a more developed debate and discussion in the Oireachtas about what this would mean for the perception of Ireland in that part of Africa with France being the dominant power, including in EUFOR in Chad, even if we were the force commander, etc.</p>
+          <p eId="para_206"> More involved discussions are needed. I welcome this conversation. This is fantastic because it is not easy. This is no shibboleth. There are no easy slogans. Neutrality has different meanings for different countries and different people. We cannot assume there is a given definition that everyone understands. I have tried to explain why I think we are aligned with the European Union and I do not have a problem with that. It does not mean we are going to war. We do not have any treaty obligations to do so, but we can help Ukraine and the Baltic states and EU defence. There is nothing wrong with that, including with some people in our university centre being able to contribute to the future of defending European democracies. I have no problem with that at all.</p>
+        </speech>
+        <speech by="#TomBrabazon" eId="spk_126">
+          <from>Deputy Tom Brabazon<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_207">If the Constitution enshrined military neutrality or non-military alignment, would this legislation stand up to the constitutionality test?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_208">Just to clarify, the Deputy is asking about if military neutrality were somehow enshrined in the Constitution. For a start, it would be foolish because we would shackle ourselves for the future. No one has a crystal ball. We would be putting decisions that are best made by military and defence practitioners in front of judges and it would be a disaster. It would also be hard to define. We have learned that messing around with the Constitution on matters that are hard to define only leads us down culs-de-sac. We should leave the Constitution where it stands. We should maintain our independence in course of action and have robust conversations that lead to good solid policy.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_209">I have been in university situations where there are very long debates about what a legal definition of neutrality is, including going back to the Hague Convention. It has not ended in agreement; it has ended in serious disagreement. There would be a lot of senior counsels making a lot of money trying to go around the world looking for a definition we can adopt, and then a few years later there would be an attempt to change that and a new challenge. Ultimately, this is a policy issue we have to decide in this place. I think it is the correct place to do it.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_210">I now move on to the non-permanent members, starting with Senator Alice-Mary Higgins and then Deputy Sinéad Gibney. I remind members that it is five minutes each and to make the best use of their time. I will then go back to permanent members for anybody who wishes to have a supplementary question. We are finishing at 11.30 a.m.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_130">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_211">I will begin with a very short question and get a quick answer because of my limited time. Do the witnesses believe that the recent bombing by Israel of Iran falls under the definition of self-defence under the UN Charter?</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_212">No.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_213">No.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_133">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_214">That is interesting because what we have heard is all about our alignment with the EU and a reference to the idea of a common EU foreign policy, which of course we do not have. It is important to say that. It is not an EU competency, but right now, we have Germany saying:</p>
+          <p class="indent_1" eId="para_215">This is the dirty work that Israel is doing for all of us. I can only say [I have] the greatest respect for the fact that the Israeli army had the courage to do that, and that the Israeli state leadership had the courage to do this.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_134">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_216">Chair, I do not understand what this has to do with the legislation.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_135">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_217">Excuse me, this is extremely important.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_136">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_218">No, it is not. We are here talking about Irish legislation-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_137">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_219">It is extremely relevant.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_138">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_220">-----not about other conflicts.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_139">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_221">Excuse me, this is extremely important because it relates to-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_222">Senator-----</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_141">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_223">In fairness now-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_142">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_224">I would like my time to be added to at the end because that was inappropriate.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_225">The Senator has an opportunity to link it to the legislation.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_144">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_226">This is very relevant. From Ursula von der Leyen, the head of the European Commission: "Israel has the right to defend itself" in response to this action. From Mr. Emmanuel Macron: "Israel's right to defend itself". This is around the interpretation of international law, and that is why it is extremely relevant. The UN Charter refers to "self-defence if an armed attack occurs against a Member", yet we have the EU, including the head of the European Commission-----</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_145">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_227">How is that going to impact this legislation?</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_146">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_228">It is extremely relevant and this is inappropriate heckling.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_147">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_229">No, it is not. It is a political point and the Senator is using the committee for political reasons.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_148">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_230">That is not true.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_149">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_231">Excuse me, that is not true. I would like to continue uninterrupted and have my time at the end as well.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_232">Yes.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_151">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_233">I thank the Cathaoirleach. Why it is relevant is that this is around the interpretation of international law. As the witnesses have outlined, this is around how we will be interpreting the UN Charter. We have been told constantly there will be references to how the UN Charter is being interpreted. However, we are seeing at the same time a lot of language about the need to align with and work with our EU partners. We have had clarity around EU-led missions but we are seeing from the EU interpretations of self-defence under the Charter that are wrong. I know Dr. Burke will say Ireland may disagree with those but there is a concern with regard to that. I want to focus on-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_152">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_234">The question.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_153">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_235">On my second question, I am not going to focus on the question of-----</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_236">What was the question?</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_155">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_237">My question was around it being very interpretable, and concerning with regard to how partners Dr. Burke has highlighted are interpreting the UN Charter.</p>
+          <p eId="para_238"> Second, I would go to the question of how. I am not going to focus on the mandate of how it is given, and I do believe it can be given by a General Assembly but I want to know what the mandate is for and what the purposes of it are.</p>
+          <p eId="para_239"> I actually agree with Dr. Burke with respect to the idea around Article 8 and "with consent". I think there should maybe be flexibility and something like a reform should be looked to but that is not what this legislation does. This legislation moves from a situation where we had "for the performance of duties of a police character". That is what was in the 2006 Act; it is not just that it is from the mandate from the UN General Assembly or Security Council but it is "for the performance of duties of a police character". Now it is for purposes that include not just peacekeeping but conflict prevention and strengthening international security.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_156">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_240">We need the question.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_157">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_241">Is war an option? It sounds to me that is not the language the witness used around "responsibility to protect". That is not the language that is in this Bill. The language that is in the Bill is "strengthening international security". Do the witnesses believe that opens up a space where war is an option, and where actions beyond the principles of protection are applied, particularly in light of the interpretations we have seen around self-defence and pre-emptive action?</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_158">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_242">We have just over a minute for both witnesses to cover that.</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_243">The Senator covered a lot of ground there. It is good to see her again, by the way. The last time I saw her was at the IIEA.</p>
+          <p eId="para_244"> On what the Senator was talking about regarding EU member states taking different positions, I can understand her concern. Is it not also the case, however, that it is because of an entity like the EU that countries like Ireland and other like-minded states were able to get together a coalition of the willing to recognise Palestine? Inasmuch as the Germans are currently saying something that the Senator disagrees with - and so do I, quite frankly - the EU has been a very useful place-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_160">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_245">My time is limited.</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_246">-----to pull together positions that have meaningful outcomes as well. It cuts both ways. That is my answer to that.</p>
+          <p eId="para_247"> On the other point about this legislation, I do not really grasp what the Senator is saying. My interpretation is that this legislation will not alter UN Security Council construction and configuration one way or the other.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_162">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_248">It says "strengthening international security" versus policing.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_163">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_249">The Senator is out of time.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_164">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_250">Our current legislation refers to a police function. Now it will say "strengthening international security".</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_251">I do not see whether us continuing to uphold or discard the triple lock as contributing either way to international security. Going back to "responsibility to protect", which is a real thing, that is something that may end up being done at some point by regional security organisations with UN assent in some shape or form.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_252">I have to cut it off there-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_167">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_253">It was around the language in the Bill specifically.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_168">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_254">-----because Dr. Burke wants to make one comment on it.</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_255">On Chapter VII, Ireland has refrained from many UN-mandated missions. I talked about Iraq in 2003. Ireland did not do that because of the policy made in the Houses of the Oireachtas about neutrality. The policy said "No". Everything was in line with respect to the UN, and if you could have got it through the Oireachtas, you could have sent a contingent of Irish Defence Forces to Iraq to serve under US command. We did not do that. The emphasis here is on the Oireachtas being clear about Ireland's policy. The Security Council is not the safeguard around whether Ireland joined Iraq in 2003 or not. It is these Houses and our policy, our courts and the European courts.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_170">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_256">I have allowed extra time, so I am going to have cut it off at that.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_171">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_257">With respect because I was so interrupted-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_172">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_258">With respect, I have allowed a minute and a half extra.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_173">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_259">I wish to have the opportunity to answer Dr. Burke on the purposes, not who gives the mandate. The purposes in this Bill are very different to previous purposes, in that "strengthening international security" is used rather than "the performance of duties of a police character".</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_174">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_260">What we will do-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_175">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_261">I would just really like to have that answered.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_176">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_262">Yes, but the Senator's time is up and I have allowed her in.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_177">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_263">I know.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_264">I would ask the witnesses to maybe finish answering that question in a written contribution to the committee, if that is okay. That is what we have done on other occasions when we have been cut short. I want to be fair to every member on this committee. I will move on to Deputy Gibney now.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_179">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_265">I thank the witnesses for attending. We have talked about the need for clarity in this area. Deputy Callaghan has spoken about the fact that, when there is confusion out there, the debate is hard to achieve. One of the things I find people are confused about is that the Government, the Department a couple of weeks ago in the committee and now the witnesses here today all hold the position that the triple lock does not have a connection to our neutrality. Is that essentially what the witnesses are putting forward today?</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_266">"Yes" is the simple answer.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_181">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_267">Do the witnesses agree that the triple lock is about multilateralism and enshrining multilateralism in some way into our troop deployment? Do they see that connection?</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_268">No.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_183">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_269">Mr. Power does not.</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_270">No. I see the triple lock as an unnecessary impediment. As I said before, it makes us outliers and prevents us-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_185">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_271">I appreciate that, that we have ideological differences on what the triple lock does, and essentially different policy positions-----</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_272">Experiential differences too, I might add.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_187">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_273">-----but does Mr. Power see a connection between the triple lock and multilateralism even? Does he concede that?</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_274">No.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_189">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_275">Mr. Power does not. Does Dr. Burke?</p>
+        </speech>
+        <speech by="#" eId="spk_190">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_276">I would like to see us as multilateral as Sweden, for example.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_191">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_277">I am not asking that question.</p>
+        </speech>
+        <speech by="#" eId="spk_192">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_278">Sweden does more for multilateral organisations than us.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_193">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_279">That is not the question I am asking.</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_280">It actually limits our multilateralism and obstructs it.</p>
+        </speech>
+        <speech by="#" eId="spk_195">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_281">That is correct.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_196">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_282">So, Dr. Burke does not see that it in any way supports multilateralism? He sees the opposite.</p>
+        </speech>
+        <speech by="#" eId="spk_197">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_283">No. On the contrary, I think it obstructs it.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_198">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_284">Does Dr. Burke agree that multilateralism strengthens neutrality, no matter what the interpretation of neutrality?</p>
+        </speech>
+        <speech by="#" eId="spk_199">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_285">No.</p>
+        </speech>
+        <speech by="#" eId="spk_200">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_286">Does multilateralism strengthen neutrality? Neutrality is a very unilateral act.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_201">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_287">It is an active policy position. Mr. Power does not see that multilateralism is a way of strengthening neutrality in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_202">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_288">No. The Deputy and I are speaking different languages here.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_203">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_289">That is what I am trying to get to the bottom of, in fairness.</p>
+        </speech>
+        <speech by="#" eId="spk_204">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_290">Sure. Okay.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_205">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_291">When we talk to people they say that neutrality is important to them. We know it is important to the Irish people. We know that poll after poll tells us that. Yet, it is so confusing for people when they continuously hear from the Government, the Department and now the witnesses that there is no connection between this legislation, the triple lock, and even neutrality itself, even though during the Nice and Lisbon treaties-----</p>
+        </speech>
+        <speech by="#" eId="spk_206">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_292">Yes, there is not.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_207">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_293">-----we were told this would help to protect our neutrality at a time we were being pulled into greater and stronger European Union membership.</p>
+        </speech>
+        <speech by="#" eId="spk_208">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_294">To answer Deputy Gibney's question, I am in favour of multilateralism. We have achieved things when we approach things in a multilateral way. By whatever definition you might pursue of neutrality, it is a unilateral act. Neutrality is staying aloof. The things we have achieved were not because we were neutral; they were because we were multilateral. Norway has achieved a huge amount of things and is recognised in the Third World as a bona fide peace broker.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_209">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_295">I have a couple of other questions, so I want to leave it there.</p>
+        </speech>
+        <speech by="#" eId="spk_210">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_296">Multilateralism and neutrality are not compatible.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_211">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_297">You are holding the position that multilateralism and neutrality are not connected and that the triple lock and multilateralism are not connected either.</p>
+        </speech>
+        <speech by="#" eId="spk_212">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_298">I agree with what Dr. Burke said. The triple lock is an impediment to multilateralism.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_213">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_299">That is fine. Building on some of the European Union features that have arisen here today and that Senator Higgins touched on, with the withdrawal from the Golan Heights to facilitate the participation in EU battlegroups it seems that we are focusing more on EU military missions. Meanwhile, some EU member states have recently left the cluster munitions treaty. Is there a potential for this Bill to allow Irish troops to serve in missions where cluster munitions may be used as long as - we have all heard this caveat - the Government of the day is satisfied with our participation?</p>
+        </speech>
+        <speech by="#" eId="spk_214">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_300">I very much doubt it because Ireland has very much been to the fore on this issue. I served with an officer who was a specialist to the committee on cluster munitions so I think it is highly unlikely.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_215">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_301">It is unlikely on the basis that the Government would not agree with it, but there is nothing in this legislation to prevent it .</p>
+        </speech>
+        <speech by="#" eId="spk_216">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_302">Does there need to be?</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_217">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_303">That is my question.</p>
+        </speech>
+        <speech by="#" eId="spk_218">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_304">We have treaty obligations when it comes to the use of cluster munitions. There would be legal advice about what is legal for the Defence Forces when it comes to the use of munitions. For example, if you are taking a battlegroup and you are taking a mechanised company of the Defence Forces serving in a wider battalion, clearly if that battalion believed it was legal-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_219">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_305">But it is-----</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_306">Sorry, if I could just finish-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_221">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_307">No, no. I would like to finish, please-----</p>
+        </speech>
+        <speech by="#" eId="spk_222">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_308">Deputy, I have to finish the answer, because there was a question.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_223">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_309">No. Multiple times the witnesses are saying-----</p>
+        </speech>
+        <speech by="#" eId="spk_224">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_310">Ultimately, a legal officer is deployed to armed forces units-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_225">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_311">Excuse me-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_226">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_312">Maybe just answer the question-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_227">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_313">I have let him answer the question.</p>
+        </speech>
+        <speech by="#" eId="spk_228">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_314">You asked me a question. I have not actually said very much in the past few minutes.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_229">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_315">I have let you answer the question. I am simply trying to say that what this legislation does is take away the legal frameworks and legal guardrails. It allows for policy. Dr. Burke has said that policy is what matters, but unfortunately our concern is that the policy is determined by the Government of the day without any oversight or guardrails around it. That is the issue we have with this legislation.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_230">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_316">The Deputy's time is up, but I will give Dr. Burke 30 seconds to finalise his reply.</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_317">Thank you very much. Treaty obligations, the law of armed conflict and the law all matter. In the Defence Forces, there is always a legal officer who will define the rules of engagement for the Defence Forces based on Ireland's treaty obligations and legal obligations. Our Defence Forces are very clear on what those are and cluster munitions are included in that.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_232">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_318">We have seven minutes left. I want to divide it between the members of the joint committee. Three minutes is not a target but I ask them to try to keep within three minutes for the exchanges. I am starting with Deputy Stanley followed by Senator Craughwell and Deputy Ó Laoghaire.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_233">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_319">Could I ask Dr. Burke about a commitment given in 2002 by the Taoiseach of the day regarding the Lisbon and Nice treaties? The commitment in question swung a third of the population. Approximately two thirds of the electorate rejected it, but this commitment brought about a swing that meant it was rejected by just one third of the electorate. In one word, does Dr. Burke accept that as a solemn declaration to the Irish people?</p>
+        </speech>
+        <speech by="#" eId="spk_234">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_320">I could not make you out there, Deputy Stanley, apologies.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_235">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_321">I was asking about commitments regarding the triple lock that were given by the Taoiseach and the Government of the day to get the Nice and Lisbon treaties passed. Does Dr. Burke accept that those commitments were taken by the people who changed their mind as a solemn declaration to the Irish people, or the people of this State anyway? There had been opposition among two thirds of the electorate and acceptance among one third, but it swung the other way.</p>
+        </speech>
+        <speech by="#" eId="spk_236">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_322">I think the policy in this State has evolved since the wars in Crimea in 2014 and Ukraine in 2022.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_237">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_323">There are people in this room who changed their-----</p>
+        </speech>
+        <speech by="#" eId="spk_238">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_324">A major land war in Europe has changed the security situation for Ireland and the European Union.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_239">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_325">I will come to all that.</p>
+        </speech>
+        <speech by="#" eId="spk_240">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_326">I think we have to be able to respond to that.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_241">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_327">I am asking Dr. Burke a different question. Does he accept that a solemn declaration given to the people of this State brought about a swing from two thirds to one third? It went the other way around. It swung a third of the population who voted to go in a different direction after they accepted it. Does Dr. Burke believe that it was a solemn declaration to the Irish people living within this State, and that they took it as a solemn declaration?</p>
+        </speech>
+        <speech by="#" eId="spk_242">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_328">I think commitments made by politicians-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_243">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_329">Was it just bullshit?</p>
+        </speech>
+        <speech by="#" eId="spk_244">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_330">I have to say I do not think commitments made 23 years ago-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_245">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_331">Sorry-----</p>
+        </speech>
+        <speech by="#" eId="spk_246">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_332">-----by politicians should be an unending commitment into the future. It should not be the case that a current Government, post Ukraine 2022, cannot change policy. I do not want to speculate about the intentions of Brian Cowen or whoever it was at that time.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_247">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_333">I took it as a solemn declaration.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_248">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_334">Deputy Stanley, can I ask you to withdraw that previous remark?</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_249">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_335">Okay, I withdraw it.</p>
+        </speech>
+        <speech by="#" eId="spk_250">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_336">The Deputy referred to something there. Can I add something that might help this? We are fixating very much-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_251">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_337">We were hoodwinked.</p>
+        </speech>
+        <speech by="#" eId="spk_252">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_338">In the solemn declaration, the Government included a change to provide that defence policy would be consistent with the national character and with decisions made at national level. That has not changed, so I think you are being a little bit disingenuous in what you are saying there.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_253">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_339">Just one other question-----</p>
+        </speech>
+        <speech by="#" eId="spk_254">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_340">It does not hinge on the triple lock.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_255">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_341">When Seán Lemass, who was a very active and well-respected Taoiseach, outlined the 1960 Act, he spoke about "duties of a police character on behalf of the United Nations". Does Dr. Burke accept that this characterisation is very different from what is proposed now in this Bill, which is about peace-keeping, conflict prevention and strengthening international security, which, as has been outlined already, could mean a lot of things?</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_256">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_342">A short answer, please.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_257">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_343">This is a yes-no question. Does Dr. Burke accept they are two different things?</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_258">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_344">Yes or no?</p>
+        </speech>
+        <speech by="#" eId="spk_259">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_345">I am unsure of the question. I cannot make it out.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_260">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_346">The question is very straightforward. I thought I was talking in very clear language.</p>
+        </speech>
+        <speech by="#" eId="spk_261">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_347">It is completely out of date.</p>
+        </speech>
+        <speech by="#" eId="spk_262">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_348">Deputy Stanley is quite quiet. I cannot hear him.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_263">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_349">When the 1960 Act was outlined by Seán Lemass - the legislation is very clear - he referred to "duties of a police character on behalf of the United Nations". What is being proposed now is very different. The Bill we are seeing now is about conflict prevention and strengthening international security. They are very different.</p>
+        </speech>
+        <speech by="#" eId="spk_264">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_350">It is incorrect to say that.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_265">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_351">I am quoting the Bill.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_266">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_352">Okay, I am going to have to cut this off.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_267">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_353">I am asking Dr. Burke whether he agrees that they are two different things, "Yes" or "No".</p>
+        </speech>
+        <speech by="#" eId="spk_268">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_354">Is the legislation different from the 1960 Act? Yes, it is.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_269">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_355">They are very different. Thank you.</p>
+        </speech>
+        <speech by="#" eId="spk_270">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_356">That is why it is new legislation.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_271">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_357">I am moving on to Senator Craughwell.</p>
+        </speech>
+        <speech by="#" eId="spk_272">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_358">Just to add that we have served on at least four different peace enforcement missions.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_273">
+          <from>Deputy Brian Stanley<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_359">I understand all that.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_274">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_360">Sorry, we have moved on to Senator Craughwell. We are very tight for time.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_275">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_361">We are tight for time. I have a couple of very quick questions about the triple lock and sovereignty. Where does the sovereignty of the State lie when we go outside the State for permission to deploy troops? Could the Seanad fill the same role as the United Nations Security Council with a significant majority required to deploy troops? Finally, there has been a lot of talk here about the Nice treaty. We are part of the European Union. Several countries within the European Union currently feel they are under threat from Russia. If there is an attack on one of those countries, does Ireland have any obligations towards those countries in light of the amendment that was made to our Constitution in the referendum?</p>
+        </speech>
+        <speech by="#" eId="spk_276">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_362">Senator Craughwell referred to the Seanad. Other European countries and countries such as New Zealand have strengthened defence committees whereby they can get operational legal advice. I think the Oireachtas is key. I would like to see more powers for the Oireachtas, including getting advice on the rules of engagement, with the Attorney General and others talking about the law of armed conflict and international humanitarian law. It is all very good for the Oireachtas to have a lot of information on that, really as much as the Government. I am not sure that has been the case in the past, for example in the case of EUFOR Chad. I hope that getting more advice on potential difficulties, legal understandings and rules of engagement is developed in the future. In terms of obligations, clearly there is a mutual assistance clause within the treaty but that is not understood to have anywhere like the strength of Article 5 of NATO. We are aligned in that there would be an expectation of assistance in the way that we have provided assistance to the Ukrainian military, not necessarily in lethal aid but we do lots of things for them in terms of military hospitals, etc. </p>
+          <p eId="para_363">There would be an expectation of assistance. That does not mean that Irishmen and Irishwomen would be deploying to a warzone in the morning, far from it; but there is such an expectation.</p>
+          <p eId="para_364"> As I said earlier, there are different definitions of neutrality. We could talk to a Swiss Government lawyer about why Switzerland cannot join the EU. We would be told that its neutrality is the reason. In some ways, there is a total lack of clarity about working definitions of "neutrality" both internationally and in Ireland. It has become a sentiment, and sentiments sometimes do not lead to good policy. We need to work a little more to explain how we marry this sense of being not politically neutral but militarily neutral with the fact that we are in favour of the EU helping Ukraine to defend itself. These are things that the Irish public and other EU member states do not understand well. We have tried to be a little too clever with some of these things and not straight enough with the Irish public about where we are in terms of European security and threats to Irish democracy in 2025.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_277">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_365">I first want to put a position on the record. Statements have been made to the effect that the proposed legislation does not affect neutrality and that it is irrelevant to it. I do not think they are the same. It is Dr. Burke's position that in the final assessment, because of various safeguards that he believes exist institutionally and constitutionally, and international law and so on, Irish neutrality, insofar as it exists - and perhaps that is questionable - is unchanged by what is proposed in the general scheme. That is a different position from that held by those who have tried to suggest it is irrelevant to neutrality. Political representatives in these Houses have suggested it is irrelevant. I do not think there is any way you can stretch plain English words to suggest that the legislation which governs how Irish troops are deployed is irrelevant to neutrality. It is clearly relevant and salient. I am not making that assertion against the witnesses but I have heard public representatives at this committee and elsewhere make that suggestion. It is plainly not irrelevant.</p>
+          <p eId="para_366"> Dr. Burke did not get the opportunity to address the question I asked earlier. It seems to me to potentially be the case, with politics and so on, that there may be consequences for small countries. I am not so much thinking of high-profile and hot wars because the politics around those are different. For smaller scale deployments of a kind that may not previously have been anticipated by the Irish Government, are there circumstances in which Ireland or other countries could conceivably find themselves under pressure to participate despite the fact it might not align with their policy of political philosophy? In the real world, pressure can come on a country because of various things that other countries might feel are owed to them in terms of trade, politics and so on.</p>
+        </speech>
+        <speech by="#" eId="spk_278">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_367">That is why having the Oireachtas review mandate is important. These deployments evolve. I will add one point about moving up to the 50 figure. I was comfortable with the figure of 12 because it allowed for deployments of people to headquarters. If the Oireachtas has to vote on sending three soldiers to peacekeeping missions abroad, such as the United Nations Mission in the Democratic Republic of Congo, it can be quite onerous for the Legislature. Fifty is quite a large number. It is a reinforced platoon number, which includes a platoon and support. It is important that the Oireachtas can review that. I understand that in an emergency, as international situations change, the Government may need to deploy small numbers of troops to support the UN at very short notice. I understand that. Other countries have a six-month window to come back and reassess. If more than 12 soldiers, perhaps 50, are being deployed, it is a number that should have parliamentary assent. My view is that should be assessed regularly. It is not irrelevant, to answer the Deputy's first question.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_279">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_368">That is an important clarification point, and I understand it. Is it Dr. Burke's position that if he were drafting the general scheme, he would have left the 12-peacekeeper limit alone and kept all the other bits?</p>
+        </speech>
+        <speech by="#" eId="spk_280">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_369">I understand there may be a need to send more than 12, for example, 50, at short notice.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_281">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_370">That might require parliamentary scrutiny.</p>
+        </speech>
+        <speech by="#" eId="spk_282">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_371">Yes. The number of 50 is sizeable. Those are not necessarily just headquarters roles, which would generally require less than 12. It would be helpful to come back six months later and have a window and a limit whereby the Oireachtas can give its assent. I would be concerned about that.</p>
+        </speech>
+        <speech by="#RobbieGallagher" eId="spk_283">
+          <from>Senator Robbie Gallagher<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_372">I will make a general point. I noted Dr. Burke's comments on the issue of neutrality. It seems that we are long overdue a sensible and calm debate about neutrality and what it means in the context of where we are in today's world. What does our neutrality mean? Does anyone really know what neutrality means in a day's work? I do not know. I am not sure what it means. We need to be open and frank, as Dr. Burke outlined, in respect of where we are on neutrality. It has been thrown in here. Everyone else's interpretations of neutrality might be different to mine. We are long overdue that debate.</p>
+          <p eId="para_373"> The manner in which Dr. Burke has shared has been excellent; I say that for him. I said on the first day I came to the committee that I have come with a totally open mind on this subject. We listen respectfully to people's opinions, whether they are contrary to what may be developing in our own minds or not. Some of the contributions today have been so lengthy that they have been statements rather than questions. When you are trying to ask a question at the end of your allotted time, there is not time for a reasonable answer to the point you are making. That is very unfair. People have come into the meeting with preset agendas and are doing this committee no favours whatsoever. They are doing the witnesses no favours whatsoever either. They speak for five or six minutes and in the last 30 seconds, look for yes-no answers. That is disrespectful to the permanent members of this committee and I make that point.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_284">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_374">It is a matter for members, with their mandate, how to manage their time. At no committee should we try to manage what someone says. I take on board what the Senator said, but members' time is their own.</p>
+        </speech>
+        <speech by="#RobbieGallagher" eId="spk_285">
+          <from>Senator Robbie Gallagher<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_375">We are meant to be here to open our minds, listen and learn.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_286">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_376">Absolutely, but it is up to members how they want to use their time.</p>
+        </speech>
+        <speech by="#" eId="spk_287">
+          <from> Dr. Edward Burke<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_377">May I say something briefly? We need to look at neutrality but also be conscious of how we exercise our sovereignty. Right now, for example, if we do not have access to the Partnership for Peace and the NATO cyber excellence framework and centre, our ability to protect our democracy is greatly limited. I know how much the communication and information services, CIS corps of the Defence Forces and other parts of the security infrastructure of the State value that access. We need to be realistic with the Irish public. There is a reason we want to exercise more sovereignty. Absenting ourselves and saying we do not need to develop these capabilities with partners from other European democratic countries, for example, means that our services will have less capability to deter and defend against cyberattacks and disinformation. These are important things. I am in favour of the Partnership for Peace for that reason. However, I am not asking for us to sign up to Article 5. We need to find a middle ground. The Irish public has an appetite for and understanding that Irish sovereignty matters. The way to protect it in this cyber, AI and digital era is quite complicated. People are clued in. They know about their privacy. They understand what happened in Ukraine. They are aware of threats. That is why the polling is a little all over the place in terms of where the Irish public stands on security. They want more security for their sovereignty, but we need to do that with our European partners. It is extremely difficult, and almost impossible, to do it otherwise.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_288">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_378">I thank the witnesses for coming in. I will speak as quickly as I can. To correct the record, if I said, or was interpreted to have said, that our militarily neutral status is irrelevant, I did not mean it is insignificant. I was speaking about it not being relevant to the conversation about the triple lock. I, too, have signed the oath of allegiance to the State. I have worn the blue beret. Our military neutrality is embedded within me and is important. I do not want to conflate the notion that our neutrality and the removal of the triple lock are the same thing. They are not. They are two separate conversations. I agree with my colleagues that we need a robust conversation about our neutrality, as the Cathaoirleach mentioned.</p>
+          <p eId="para_379">Just to get to my question, in their expert opinion, can our guests foresee any detrimental, unintended consequences that could arise from the removal of the requirement for Ireland to ask permission from the US, UK, China, France and Russia for where we deploy our own troops?</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_289">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_380">Or the General Assembly, for accuracy.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_290">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_381">The General Assembly, as was pointed out, can make a recommendation but, it is my understanding-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_291">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_382">Which is sufficient for us to-----</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_292">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_383">It is not.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_293">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_384">-----it cannot compel to act-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_294">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_385">Just for accuracy, that allows us-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_295">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_386">I am sorry Senator Higgins, but-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_296">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_387">Apologies but-----</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_297">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_388">It cannot compel to act. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_298">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_389">It can allow action.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_299">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_390">Senator, this is Deputy Callaghan's time. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_300">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_391">Apologies, I will stand back but I just wanted-----</p>
+        </speech>
+        <speech by="#" eId="spk_301">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_392">With respect, it does not, because we are not going to do something unilaterally of an operational nature. If the council did something that legally allowed us to do something, there is no way that Irish troops are going to deploy on their own. </p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_302">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_393">This is Deputy Callaghan's time.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_303">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_394">I am finished. My question is about any unintended consequences that our guests might see. We are talking about the triple lock all of the time but really what we are asking to remove-----</p>
+        </speech>
+        <speech by="#" eId="spk_304">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_395">The power of the veto.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_305">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_396">-----is the requirement for us to ask permission from other countries to determine where we, as an Oireachtas and a Government, have already decided that we are happy for our troops to go to.</p>
+        </speech>
+        <speech by="#" eId="spk_306">
+          <from> Mr. Declan Power<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_397">The simple answer is that it would be a bad thing for us to be in a position where a big power could, through its veto, cause us to have to pull out of a mission and potentially collapse a mission. That is a reality that could happen and has been proven by the Macedonian mission in 1999 and the other examples that I mentioned. Macedonia is probably the most pertinent example and I would argue that it should only happen once for us to realise that there is an inadequacy there that needs to be addressed and that is what I see this Bill as addressing.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_307">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_398">We will conclude with that. On behalf of the committee, I thank our witnesses for their time this morning and for the written materials circulated to the committee in advance of today's meeting. We will suspend briefly and then go into private session. </p>
+        </speech>
+        <summary eId="sum_7"> The joint committee suspended at 11.42 a.m , resumed in private session at 11.47 a.m. and adjourned at 1.05 p.m. until 6.p.m. on Tuesday, 24 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

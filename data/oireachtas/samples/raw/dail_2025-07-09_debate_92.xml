@@ -1,0 +1,641 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_further_and_higher_education_research_innovation_and_science/2025-07-09/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_further_and_higher_education_research_innovation_and_science/2025-07-09/debate"/>
+          <FRBRdate date="2025-07-09" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_further_and_higher_education_research_innovation_and_science"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_further_and_higher_education_research_innovation_and_science/2025-07-09/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_further_and_higher_education_research_innovation_and_science/2025-07-09/debate/mul@"/>
+          <FRBRdate date="2025-07-09" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_further_and_higher_education_research_innovation_and_science/2025-07-09/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_further_and_higher_education_research_innovation_and_science/2025-07-09/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BrendanSmith" href="/ie/oireachtas/member/id/Brendan-Smith.D.1992-12-14" showAs="Brendan Smith"/>
+        <TLCPerson eId="DonnaMcGettigan" href="/ie/oireachtas/member/id/Donna-McGettigan.D.2024-11-29" showAs="Donna McGettigan"/>
+        <TLCPerson eId="EoghanKenny" href="/ie/oireachtas/member/id/Eoghan-Kenny.D.2024-11-29" showAs="Eoghan Kenny"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FionntanOSuilleabhain" href="/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29" showAs="Fionntán Ó Súilleabháin"/>
+        <TLCPerson eId="FrankFeighan" href="/ie/oireachtas/member/id/Frank-Feighan.S.2002-09-12" showAs="Frankie Feighan"/>
+        <TLCPerson eId="JamesLawless" href="/ie/oireachtas/member/id/James-Lawless.D.2016-10-03" showAs="James Lawless"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="MaeveOConnell" href="/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29" showAs="Maeve O'Connell"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science" href="/ie/oireachtas/role/minister/further__higher_education__research__innovation__science" showAs="Minister for Further and Higher Education, Research, Innovation and Science"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM BREISOIDEACHAS AGUS ARDOIDEACHAS, TAIGHDE, NUÁLAÍOCHT AGUS EOLAÍOCHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Further and Higher Education, Research, Innovation and Science</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-09">Dé Céadaoin, 09 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-09">Wednesday, 09 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#FrankFeighan">Frankie Feighan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#EoghanKenny">Eoghan Kenny</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#JamesLawless">James Lawless (Minister for Further and Higher Education, Research, Innovation and Science)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DonnaMcGettigan">Donna McGettigan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MaeveOConnell">Maeve O'Connell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#FionntanOSuilleabhain">Fionntán Ó Súilleabháin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#BrendanSmith">Brendan Smith.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Jen Cummins.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#ErinMcGreehan">Teachta / Deputy Erin McGreehan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2025<recordedTime time="2025-07-09T12:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 45 - Further and Higher Education, Research, Innovation and Science (Revised)<recordedTime time="2025-07-09T12:30:00+01:00"/></heading>
+        <speech by="#ErinMcGreehan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T12:30:00+01:00"/></from>
+          <p eId="para_11">We have no apologies. You are all very welcome, and I ask anyone joining remotely to mute himself or herself when not contributing so that we do not pick up any background noise or feedback. As usual, I remind all those in attendance to ensure their mobile phones are on silent mode or switched off.</p>
+          <p eId="para_12"> Members attending remotely are reminded of the constitutional requirement that, in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. Members are also reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against a person or entity outside of the Houses or an official, either by name or in such a way as to make him, her or it identifiable. As the Minister is present, it is not expected that officials would speak in this public session.</p>
+          <p eId="para_13"> The Select Committee on Further and Higher Education, Research, Innovation and Science is meeting for the first time today with the Minister to consider the Revised Estimates, Vote 45 - Further and Higher Education, Research, Innovation and Science. The Estimates process is Dáil Éireann's method to allow the Department of public expenditure, national development plan delivery and reform to seek to withdraw funds from the Exchequer to meet most Government spending obligations. Articles 17.1.1° and 28.4.4° of the Constitution provide for the presentation to and consideration of Estimates by Dáil Éireann respectively. Standing Order 217 requires Estimates to be considered in committee. It is a well-established practice that they are referred to the relevant sectoral committee. Once a hearing concludes, committees send a message to Dáil Éireann, which generally approves Estimates without debate. Committees cannot amend Estimates and have no formal role in approving them. However, Standing Order 223 provides that committees may make a report to the Dáil in respect of their consideration of Estimates. The Revised Estimates Volumes, REV, for public services provide considerably more detail at subhead level, as well as performance metrics. Revised Estimates are the revised final proposed spending for the next year and form the basis for parliamentary scrutiny of allocated expenditure.</p>
+          <p eId="para_14"> I will now allow the Minister five minutes to make his opening statement and then we will proceed to a question and answer session.</p>
+        </speech>
+        <speech by="#JamesLawless" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science" eId="spk_2">
+          <from>Minister for Further and Higher Education, Research, Innovation and Science (Deputy James Lawless)<recordedTime time="2025-07-09T12:30:00+01:00"/></from>
+          <p eId="para_15">Gabhaim buíochas leis an gCathaoirleach, leis na Teachtaí agus leis na Seanadóirí. Actually, I think it is only Teachtaí eile today, as this is the select committee. Gabhaim buíochas as an gcuireadh chun a bheith anseo inniu chun na Meastúcháin Athbhreithnithe 2025 don Roinn Breisoideachais agus Ardoideachais, Taighde, Nuálaíochta agus Eolaíochta a chur i láthair.</p>
+          <p eId="para_16"> I am very pleased to be with members here today for the 2025 Revised Estimates for my Department, the Department of Further and Higher Education, Research, Innovation and Science. The 2025 Estimate provides a gross allocation of €4.6 billion to my Department, across both the Vote and the National Training Fund. This represents a 7.4% increase on 2024. The funding will allow the Department to continue its investment in innovation, creativity and inclusivity and ensure that we, along with our agencies, can respond to the key economic and societal challenges our country is facing.</p>
+          <p eId="para_17"> My Department is expanding and creating learning opportunities, building a society with equity of opportunity and making a lasting impact on our education system. This funding will benefit over 444,000 further and higher education students, 27,000 apprentices and 98,000 workers throughout Ireland. In 2025, I have made strategic investments in apprenticeships, student supports, upskilling incentives for small and medium enterprise and core funding in higher education, as well as a significant capital investment.</p>
+          <p eId="para_18"> Budget 2025 sees a further €77 million secured for the apprenticeship system, which represents the single largest investment in apprenticeships since the formation of my Department. The total apprenticeship budget, being some €337 million, has increased by 83% since 2020, clearly demonstrating the Government’s commitment to delivering quality training, supporting Ireland’s global competitiveness. I am allocating €20 million to fund initiatives for enterprises and individuals, including: expanding the upskilling incentivisation scheme for small and medium enterprises, which supports firms to embed innovation and entrepreneurial practices; supporting Enterprise Ireland and local enterprise offices to deliver training to small and micro enterprises; expanding skills training essential for the green transition, including modern methods of construction skills; and developing a 21st century social economy in the community, voluntary and social enterprise sectors.</p>
+          <p eId="para_19"> I am enhancing access to supports for students with disabilities by establishing a person-centred model to deliver supports closely aligned to the students' needs, increasing the fund for students with disabilities, and widening the geographical provision of courses to students with intellectual disabilities. To address income disparity, I have adjusted the special rate of maintenance threshold in line with social welfare increases and increased all other maintenance and student contribution grant thresholds by 15%.</p>
+          <p eId="para_20"> Through the National Training Fund, I will invest an additional €1.45 billion over the next six years, directed towards higher and further education, research, skills and decarbonisation. Sample measures include support for additional healthcare, medical and veterinary places; investing in research skills and infrastructure, and increasing PhD stipends; funding skills requirements across micro, small and medium enterprises; developing a construction and green talent pipeline to address key Government and national priorities under Housing for All and the national climate action plan, while meeting our housing and climate challenges; and providing decarbonised training facilities to support meeting those climate action targets. </p>
+          <p eId="para_21"> Budget 2025 also saw an investment of €7.5 million in annual and recurrent funding for student accommodation initiatives in addition to the €100 million capital investment already committed to student accommodation and announced in 2024 through the national development plan.</p>
+          <p eId="para_22">This funding will activate additional student beds, ensure a strategic standardised approach to new developments and develop a technological university pilot programme focusing on alternative options, including a campus-led accommodation action plan and the promotion of sustainable travel and digs accommodation.</p>
+          <p eId="para_23"> All of this further advances the work my Department has done in progressing the tertiary education system, ensuring it is accessible and meets the skills needs of our economy. It also affirms our commitment to utilise the National Training Fund surplus by providing vital additional resources to fund research, higher and further education, skills and decarbonisation. I have set out the figures in a variety of tables and documents supplied to the committee. I hope the overview and the documents are of assistance and I am happy to take questions as we go through the Revised Estimates.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_24">I thank the Minister. We do not have an agreed speaking rota for the select committee in the way we do for the joint committee. On that basis, I propose that members indicate if they wish to contribute and I will call them in the order of the lámha suas. Furthermore, I also ask that members refer to the relevant subhead from the briefing document provided by the Department when asking questions. That would be very much appreciated. The members will have eight minutes and there will be a second round. I call Deputy Eoghan Kenny.</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_4">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_25">I thank the Minister and the Department. There was a lot to take in from the Minister's opening statement. Having looked over it briefly, much of it is to be welcomed. The 7.4% increase on 2024 is certainly to be welcomed. I genuinely think this is one of the most important of all the portfolios and Departments in government. As the Minister knows, I have a real grá for higher education especially. It is to be welcomed that €4.6 billion is being allocated to the Department.</p>
+          <p eId="para_26"> However, I wish to touch on several areas mentioned in the Minister's opening statement, focusing specifically on apprentices, a topic we have had several discussions on before, and their role throughout the country. If I were to contact my local authority in the morning and ask it to go to a local authority house to fix a leak, something to do with carpentry or an electrical fault, it would often be the case that I would be told workers were just not available to do it. This reason has been given to me by the clerk of works. Whether it is Cork City Council or Cork County Council, it has been the clerk of works who has informed me of the situation. Will there be a specific focus on apprentices for our local authorities within this newly increased budgetary allocation to enhance the number of workers they have? I ask this because we spoke yesterday evening about apprentices for the private sector and how difficult it was for employers there to take on apprentices.</p>
+          <p eId="para_27"> Moving to student accommodation, the Minister is acutely aware of the lack of student accommodation in my county of Cork. We are being informed by the students unions of the definite figure of 18% as the total amount of purpose-built student accommodation in Cork. This is extremely difficult to comprehend because I have friends renting houses in Cork city and, as the Minister knows, sleeping in detrimental conditions. Before the general election, my party leader and I visited UCC and met representatives of the students union and the president of UCC. It was quite a stark experience to meet the representatives of the students union because I was let in on several issues I would not have been aware of. One specific case concerned a situation where a student was not able to afford the cost of a house and was travelling from Sligo to Cork every day. This meant he spent two days every week sleeping in his car. It has been a very sad indictment and failure of this Government in recent years that purpose-built student accommodation has not been made available.</p>
+          <p eId="para_28"> This moves me to the topic of international students and the stipend offered. We have a great legacy in terms of the research and innovation endeavours this country provides. Specifically on the stipend, I have a great friend currently doing a PhD course in UCC in chemical engineering where the main focus is on air quality. He has travelled on several occasions representing the country. Most recently, he went to Austria, where, ultimately, on top of his poster is University College Cork, Ireland. That same student and that same friend has to apply every eight months for a new visa. This is the difficulty I find in this area. He has been given the opportunity to undertake a PhD course in a very good college in a very good department for four or five years but he must apply for a visa every year. I do not understand it. On top of that, there is the issue of the stipend. I welcome that his fees are paid for, but the stipend he is on is not enough to cover his day-to-day living costs.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_29">The Deputy will have to leave time for the Minister to reply.</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_6">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_30">Yes. I think the most important part of this debate and of this Department is the progression of research and innovation. I ask the Minister to outline the research aspect of his Department's work and the allocation of funding for it. I apologise to the Minister because I have only left him a couple of minutes to respond.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_7" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_31">No, that is great. I thank Deputy Kenny very much for his continued interest in and advocacy for the sector. Let us take the issues in the order the Deputy raised them and start with the apprenticeships' issue. I think there is a great story to tell around apprentices. One of the real success stories of recent years has been the broadening of that spectrum. We now have apprenticeship courses in things like digital marketing and my own Department has a digital marketing practice working within it in this context and making great strides. We also have apprentices in cybersecurity, as well as accounting technicians and town planners. We have all sorts of occupations that were never traditionally part of the apprenticeship programme coming into it because it is a very successful earn-while-you-learn model, which I think is a good ambition for anybody. It is something I wish to continue to expand. I have met several professional bodies across different traditional professions as well as other ones in the short time I have been in the Department to explore what further apprenticeship courses we can provide. In this budget, there was additional investment in apprenticeships of €77.4 million, which is the largest ever single investment in the apprenticeship system. That is in this budget, the one before us today in terms of the revision. The total budget for apprenticeships is now €337 million, which is a significant 83% increase since 2020.</p>
+          <p eId="para_32"> The Deputy also asked about the local authorities and apprenticeships, and I think he is right in that regard. One of the goals we have – I brought a memo to the Cabinet in the last couple of weeks on this issue – is to increase the public sector participation in apprenticeship programmes. We must walk the walk as well as talk the talk. We have to lead by example.</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_8">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_33">Yes.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_9" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_34">I have a target to grow the public sector apprenticeship programme. My Department is already involved in it. We have been making pretty good progress in this regard over the last two years. There is more that can be done and we have a target to continue to grow public sector participation. The Deputy is right about the local authorities, in that they have to be part of this as well. I very much hope they are up for it. I would certainly encourage them and give them whatever supports they need. I have published an apprenticeship plan for public bodies that answers any questions and queries and gives a roadmap for those to take on apprentices.</p>
+          <p eId="para_35"> I am moving quickly because I know time is ticking away. On student accommodation, I hear what the Deputy is saying. We are doing several things. We invested €100 million earlier this year in what we call a short-term activation fund. This was capital spending with the goal of assisting colleges that had sites ready to go already. There was then a general call put out. UCC was included in that call, but it did not take up the offer on this occasion. I am not sure why. This might be something that could be looked into locally. Perhaps the Deputy might look into it.</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_10">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_36">Yes.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_11" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:40:00+01:00"/></from>
+          <p eId="para_37">I visited UCC recently and saw its tremendous work. I want to give full credit to John O'Halloran and his team. I visited the Tyndall National Institute as well, which is a leading-edge institute. People like Professor Séamus Davis are there. He is the leading quantum physicist of his generation, at the Nobel prize-winning-type level. This is where he is headed. This is happening in UCC in and around the Tyndall National Institute and on the campus proper, so there is a really good story to tell there.</p>
+          <p eId="para_38"> Specifically on student accommodation, I think the Crow's Nest student accommodation was supported through my Department, as we discussed before. I met the representatives of the students union in UCC when I visited recently as well. I discussed things like the standardised design guide I brought through for student accommodation. Those colleges that did put their hands up for the €100 million fund were DCU, UCD and Maynooth University. Maynooth University has 116 beds coming on stream this September, while UCC recently had 493 beds and there is a tender with DCU's board to consider. This is the first phase out of multiple phases of that initiative. I am dependent on national development plan funding for it because this is capital funding.</p>
+          <p eId="para_39">That is something I will continue to chase and I hope we get that ramped up at scale. We can take all sorts of measures but ultimately, purpose-built student accommodation on campus is the answer to the student accommodation challenge. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_12">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_40">I thank the Minister for this presentation. It looks like there is a lot that is good in this. I commend the Minister with regard to CERN and other things he is doing. We met TUS this morning, however, and I know SUSI will need major reforms because according to TUS, just over 42% of students did not receive any funding for their studies. These are some of the stark issues coming out of the presentation this morning. The figures are shocking. Just over 80% of students said they struggle to pay rent and find it hard to support themselves. The OECD has stated that we are among the most highly educated, which is great, but according to that body we are among the lowest in terms of funding per student, so I hope the Minister's new figures will help in that regard. </p>
+          <p eId="para_41"> One positive element in the presentation this morning was that despite all that is wrong with students trying to get to college, they will do it again tomorrow. That is on the students themselves, which shows a great thing for the type of students we have. The Minister is working on borrowing for student accommodation. Could we get an update on that because they do not have any accommodation? The initiative would solve so many issues. </p>
+          <p eId="para_42"> I have met representatives of UCC, MTU, Maynooth University and TUD. The last time I spoke to MTU last week in Cork, it representatives told me about international students. They stated that the impact of these students on the local economy is huge with a figure of €18 million being mentioned. MTU told me that it has to turn some of them away because once again, it does not have accommodation so that would really help. It is not just helping the economy. It is also helping the students and mental health. The only issue is that as we could start using international students as cash cows, which would not be a good thing, there needs to be a balance. </p>
+          <p eId="para_43"> The issue of fees will come up once again. We are looking to see whether the students will be paying €2,000 or €3,000. While the Minister stated he did not say there would be a fee hike, he did say that they would reset. As "reset" means up to €3,000, could we get clarity on that? </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_13" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_44">I thank Deputy McGettigan. I have not passed a budget yet. I am working with the budget from my predecessor and the Department as I found it when I came in. This is my first provision of Estimates that I am bringing before the committee. I will do my own budget in October where I will put my stamp on things in terms of the issues we are talking about today and our shared interests. I look forward to our engagement at that point on the priorities because choices are hard, have consequences and have opportunity costs because if we choose to do one thing, it may mean that we cannot do something else. I look forward to the committee's involvement in that. If the committee wishes to make pre-budget submissions, they would be welcome being guided by the choices we have to make. This is something we can have a conversation about as we get closer to the budget. </p>
+          <p eId="para_45"> I note that Deputy McGettigan met a group from TUS this morning. I would have liked to attend but I was visiting one of the Dublin colleges so was unable to attend. I have visited TUS. I was in Athlone and opened its new building, which is a fantastic new campus. I met Vincent Cunnane and the team there, including Josephine Feehily, its chairperson. We had a really good engagement. They shared some of their ambitions with me, which I share. I also signed off on a TUS Limerick campus getting capital funding last week. It is part of a really significant bundle 2 announcement. We spent €380 million across the higher education sector in terms of new buildings for TUS in Limerick, ATU in Galway, ATU in Letterkenny and SETU in Carlow and Waterford, so there is continued investment in the campus and real estate that are there. TUS is one of the beneficiaries of that in Athlone and will be a beneficiary in Limerick soon. I will work to see that all those projects are delivered on time and on budget. This is very much the focus we bring to the next round of them as well. </p>
+          <p eId="para_46"> I have engaged with TUS and other technological universities on the borrowing framework. There is a commitment in the programme for Government to do that and put a borrowing framework in place in order that technological universities can enter into negotiations themselves with international funds, the European Investment Bank or whosoever they wish to engage with. They will enjoy autonomy. There is a difficulty in terms of on-balance sheet and off-balance sheet. If they are considered to be on-balance sheet, the State is effectively exposed and state aid rules and European regulations come into play so it is not a trivial problem to solve but it is one I am engaging with the technological universities on to try to progress and I will continue to do that. I have a few ideas about it but I will not share them publicly at this stage because some of them may have a degree of sensitivity in terms of some alternative proposals but I agree that technological universities having autonomy to borrow and pursue their own projects is the ultimate goal. </p>
+          <p eId="para_47"> As I said last night and every day since February, and I have done multiple interviews and answered multiple parliamentary questions on it, I inherited a situation regarding students fees where cost-of-living measures were temporary and they are not available to me this year as it stands. However, I will certainly look for permanent measures in the budget that will very likely include the student fee element but also other measures across the board because the fee is one very important aspect of student costs and student budgeting but there are many others as we have heard today such as accommodation, travel, materials and the cost of living. I will be looking for a package in the budget that includes the student fee but also those other measures as well. The situation we are in is the one that prevailed last year, the year before and the year before that, since cost-of-living supports were introduced. It has drawn attention to the issue in terms of them being temporary, expiring each year and then being renewed each year. If, as appears, they are not being renewed this year, I have to do something else, which is to seek that funding from a different source, which is what I intend to do. I cannot, however, predict the budget negotiations until October so that is where we are on that. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_14">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_48">September is when students are going back to college. The Minister said that fees will reset. Does that mean that it will be €3,000 in September? </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_15" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_49">Does the Deputy know what it was last September? </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_16">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_50">It was €2,000. </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_17" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_51">No, it was €3,000 last September, €3,000 the September before that and €3,000-----</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_18">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_52">But the cost of living-----</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_19" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_53">It was €3,000 last September. Allow me to explain. What happened was a cost-of-living intervention and subsequently there was either a rebate or the instalments that followed were discounted, so it is exactly the same as it was last year. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_20">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_54">So there will be no cost-of-living package this year, which means it will be €3,000 this year. </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_21" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_55">It was €3,000 last year and €3,000 the year before. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_22">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_56">Students want to know about this year.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_23" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_57">The situation is as it has been for the past couple of summers. The budget takes place in October and has taken place in October for a long time. Any measures that go towards student supports, and there are several, which I will walk through in a moment, will be effective from October. Fees are usually paid in instalments. Any measures that apply to them will be applied from October onwards. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_24">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_58">So it will be €3,000 in September. </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_25" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_59">The situation this year is the same as it was last year. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_26">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_60">I am not talking about last year. Students want to know about-----</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_27" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_61">I cannot answer that. I made that very clear and the Deputy will not get a new answer from me today that she has not received in the past six months. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_28">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_62">If the Minister cannot answer that today, what are they going to do in September? </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_29" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_63">The exact same as they did last year. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_30">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_64">They are going to pay €3,000. </p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_31" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_65">They will pay whatever their college asks of them in the first instalment. I cannot advise them; that is a matter for colleges and students. All I can do is come in in October with the budgetary measures that can be applied from that point on. </p>
+        </speech>
+        <speech by="#FrankFeighan" eId="spk_32">
+          <from>Deputy Frankie Feighan<recordedTime time="2025-07-09T12:50:00+01:00"/></from>
+          <p eId="para_66">I thank the Minister for coming before us today to present the Revised Estimates for 2025. I thank him for his work. We have had a few issues in the north west and I thank the Minister for listening to them and intervening. I appreciate that work is ongoing regarding student accommodation and the fund activating student beds involves a standardised approach to new development. I am a bit concerned that although we are trying to provide student accommodation, there might not be the expertise in the Department and the amount of red tape might be cumbersome. Is the Minister looking at liaising with the Department of Housing, Local Government and Heritage because student accommodation is critical and not just for students? In the case of ATU in Sligo and Letterkenny in the north west, if we can provide for 500 student accommodation units, it would take pressure off housing. I really believe this is not just a matter for the Department of Further and Higher Education, Research, Innovation and Research but that a lot more Departments are involved. What is the Minister doing in this area? </p>
+          <p eId="para_67"> On the student contribution fees, Deputy McGettigan summed things up correctly in that, as a committee and as colleagues, we will be happy to do anything we can to try to resolve the matter. We will be only too happy to help.</p>
+          <p eId="para_68"> I am aware that the SUSI grant is being reformed and examined and that this is quite difficult, but every year most TDs and Senators find they have to deal with confusion. What exactly does the Minister hope to do in this regard?</p>
+          <p eId="para_69"> The €77 million secured for apprenticeships is very welcome. Much has been done in this regard in the past few years. We certainly missed a few years a decade ago but there has been a lot of great work since. I am very happy to attend many award ceremonies for apprentices to see their great joy. I say to them that what they are doing is useful. I like to see apprenticeships in education because, to me, they are much more useful than what is on the academic side. I tell all the apprentices that I hope they will make loads of money because we need them. It is good to see the success with apprenticeships. One of the most useful measures this committee can work on concerns apprenticeships in higher education, notwithstanding the other important aspects the Minister is dealing with. I thank the Minister and his officials for their great work.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_33" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:00:00+01:00"/></from>
+          <p eId="para_70">I thank the Deputy. That was very well said. On the point on making money, I stated when responding to parliamentary questions last night that the median wage of an apprentice two years out is €935 per week and that 90% of the apprentices stick with it. Sometimes we talk about the rates when apprentices enter the system but they do well when they come out the far side of it. They generally stick with it at that point. One of the many benefits of an apprenticeship is that the learner tends to stay in the associated occupation for the long haul because he or she will have made connections, and, I suppose, friendships. They learn as they go.</p>
+          <p eId="para_71"> I completely agree on working with other agencies. I am working with the Department of housing on student housing under section 28. We are working on the section 28 guidelines. I have published a standardised student accommodation design that puts in place parameters concerning room size, shared spaces and design, be it the design of a landing or a staircase. There are all sorts of architectural models. Rather than having every college figure out for itself the way to go, we have a series of blueprints that each is encouraged to download and work with according to its plans. This will be embedded in the section 28 housing guidelines.</p>
+          <p eId="para_72"> We worked with the National Finance Agency on the public–private partnership element and measures in that regard. There is very much a joint effort across several Government bodies.</p>
+          <p eId="para_73"> The special rate of maintenance grant income threshold for September has increased from €26,000 to €27,400. All other maintenance and student contribution grant thresholds have increased by 15%. This is worth repeating. Households with an income of up to €115,000 will now receive some or full supports. That is higher than it has ever been. The postgraduate fee contribution threshold and the part-time undergraduate fee contribution threshold have been increased along with that. I signed an instrument shortly after taking up office to increase the number of part-time schemes funded through the grant scheme for the first time ever. Again, that is very positive and I am keen to make progress on it. Several Deputies and Senators have raised in the past the income disregard when students are working at weekends or over holiday periods. They rightly say they should not be penalised later when it comes to grant allocation, so I want to examine the income disregard and see whether we can do something practical regarding it that will have an impact on students.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_34">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:00:00+01:00"/></from>
+          <p eId="para_74">I thank the Minister for being with us. I welcome his presentation. When he said the budget was decided last year and that this is his first chance to make some impression on it, a couple of points stood out for me. The first concerns the targeted measures, which the Minister has always spoken about. He mentioned at the outset how he is increasing funding to ensure access for people with disabilities in the third level sector. Could he give us more information on that? How will the funding be disbursed? How many students will benefit from it? What institutions are advising the Minister that they want the money for the purpose of disability access? We would all welcome it if more institutions came forward to do so.</p>
+          <p eId="para_75"> The other area concerning access, which the Minister mentioned in response to Deputy Feighan, is the SUSI thresholds. How many students will benefit from the changes? What is the increase in the number of pupils who will not have to pay any fees as a result of the increased threshold? The Minister has spoken about targeted intervention to eliminate barriers to ensure those who face barriers can participate in third level education. I realise it is difficult to give numbers because of all the various thresholds, but maybe the Minister could give the number of pupils who have no fees as a result of the income threshold change.</p>
+          <p eId="para_76"> Another area, a very obvious one, is research. In this regard, there may be a departure from previous years. I have not been a member in previous years but will speak from my experience. Under subhead C4 – programme for research in third level institutions – there has been a 141% increase in funding for research. That is very substantial. There was previously a programme whose title, I believe, was the programme for research in third level institutions. Are we initiating that programme again? If so, it is very welcome. It is another mark of what the Minister has said since taking up his role, namely that he wants to see an environment amenable to research and that enables third level institutions to do more. How will third level institutions gain access to the funding available owing to the 141% increase? I hope to see it grow in the coming years.</p>
+          <p eId="para_77"> The Minister announced recently investment in the accelerating research to commercialisation hubs. Is the funding from the programme budget in question or the infrastructure budget? On the infrastructure budget, I noticed a slight, or very marginal, decrease this year. We all know that all educational institutions like to have modern buildings and equipment, so it is a slight concern that there has been a slight reduction for infrastructure development.</p>
+          <p eId="para_78"> On a general point, can the demands that the Department of public expenditure puts on third level institutions regarding the development of infrastructure projects be mitigated somewhat? One institution, which I suppose I should not name, advised me it found proceeding with an infrastructure project extremely frustrating. It said it was asked too often to review what it had done. I am not sure whether this was to reduce costs or otherwise. This seems to be an area of some concern for institutions.</p>
+          <p eId="para_79"> Regarding three other figures that were noteworthy in the Minister’s presentation, I would like him to give some indication as to where the additional expenditure is going. There has been an increase of 183% for miscellaneous grants and service provision for various grant projects identified as a priority. That is a startling increase. Would it be three times the amount of money? It is twice anyway. Could we have information on that? There has been a 20% increase in the international and North–South activities provision to meet costs arising from membership of UNESCO and contribute to the College of Europe and other projects. How is that increase coming about?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_35" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:00:00+01:00"/></from>
+          <p eId="para_80">I will take the last question first. I thank the Deputy for his views, which were very helpful. Subhead B15, concerning miscellaneous grants and services, refers to what may not necessarily fit under existing subheads. With regard to healthcare expansion, for example, there is a sum of €2.8 million. There is a sum of €1.45 million in the additional and miscellaneous category. There is provision for various campaigns, such as Building Heroes, an apprenticeship take-up campaign that has had a really positive effect. It also relates to gender balance. There have been some really strong young female apprentices. The programme has been very good. The figures pertain to spending on these kinds of campaigns, including on marketing.</p>
+          <p eId="para_81"> I am providing additional supports to encourage and enable the Traveller and Roma communities to access higher and further education and some learner supports. I am also making provision for some associated digital projects on access, including tertiary access. All of these measures are just under subhead B15.</p>
+          <p eId="para_82"> We all depend on the Department of public expenditure as the paymaster of the Government. Most of what I do, or of what any Minister does, is subject to its approval.</p>
+          <p eId="para_83">That can be frustrating, difficult and challenging at times. I am not surprised to hear the colleges are going through that. It is correct there would be due diligence and rigour applied, but from speaking to the Minister, Deputy Chambers, I understand there is an intention to maybe streamline some of those toll gates. The public spending code has a number of different gates, as people call them, to pass through and this can mean projects are elongated, complicated and in some cases perhaps do not make it over the final line despite significant merit. My understanding from the Minister is it is his intention to revisit that, while applying the correct rigour, to get projects moving and get them delivered, more importantly, because it really is all about delivery.</p>
+          <p eId="para_84"> The Deputy is absolutely right about the research and innovation piece. I have an ambitious agenda for this space. It is what has cemented our economic success for several decades. We are at risk of falling behind. We have fallen from a position where we were a leader in the area back to being one of the lowest in the OECD or EU tables when it comes to public spending on research and development. We spend perhaps 0.3% or 0.4% of our GDP on it, whereas the EU average is about 0.74%. Small, leading, advanced economies that should be our comparators, the countries we are competing with for investment decisions, prosperity and innovation, are significantly ahead again. We really need to make that leap, and to do that we need significant investment in the area. I intend to bring about a PRTLI-type programme, a successor programme, and I have also engaged the Irish Universities Association on this. It has made a very good case for everything, including equipment renewal. Equipment that was funded under the previous programme 20 years ago is beginning to become obsolete in some cases and some of it is out of use and requires replacement across the board. That is almost business as usual, but I would like to go further to things like quantum computing, AI, digital, renewable energy, semiconductors, healthcare and bioinformatics. There are a huge number of areas where we have the opportunity to be, and remain, world-class and become world leaders. There needs to be a degree of competition about that as well, so we do not just fund projects for the sake of capital funding but actually reward excellence. I mentioned Professor Séamus Davis and the Tyndall institute and the quantum lab at UCC a few minutes ago. We have many more of those who maybe have not put their heads up yet or have not been identified yet and we have the opportunity to identify some really leading-edge centres and people and have them operating out of Ireland. Many of them already are, with significant funding.</p>
+          <p eId="para_85"> On disabilities, the PATH 4 programme looks at students with intellectual disabilities. I recently got Cabinet approval to extend that, including enough funding so 11 more institutions across Ireland can benefit. That is a really impactful programme. Students with intellectual disabilities for the first time ever are able to access a higher education campus. I have visited some of the centres as well.</p>
+          <p eId="para_86"> On the target point, we have to make a decision as a society about whether, if we have limited resources, we target them where they can be most impactful. This means targeting them where they can make the difference, such as for a student entering college or education for the first time ever, perhaps being the first in their family to make that leap which will have transformational consequences for that individual and their family to come, and so on, or by targeting somewhere else and using a broad brush that risks not really pleasing anybody. Perhaps we do a bit of both, but there is a very strong evidence-based case for targeting investment where it has the most impact.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_36">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-07-09T13:10:00+01:00"/></from>
+          <p eId="para_87">I thank the Minister for the presentation. I welcome the 7.5% increase because student accommodation is really key in all this. Preferably it would be State accommodation on campus. That is something I would like to see in our area with the South East Technological University. State accommodation should be factored in to that because too often it has been left to international investors to provide such accommodation. As my party colleague Deputy McGettigan pointed out, this morning we had a really interesting engagement with TUS students who represent four counties. There were very shocking surveys with alarming results. Up to 40% have to live at home and often travel long commutes because of the difficulty securing accommodation. Many of them said they would be happy to accept any sort of mouldy little flat or bedsit if they could get it, but they cannot even get that. It is certainly a very different experience since the Minister or I went to college. The whole student experience is a completely different world now because a large percentage of the student body are missing out on all that and the freedoms and independence that go with that because they are basically desperate. It was also pointed out in the survey that, very shockingly, the practice of sex for rent is becoming a huge problem for international students at the moment. That is something that really needs to be tackled. Deputy McGettigan also pointed out third level education is being very much commodified and this is something we need to guard against. International investors are seeing large numbers of international students as cash cows, as do the providers of international accommodation. This is problematic for all, especially our local Irish students. It is obviously a huge problem.</p>
+          <p eId="para_88"> Do we have numbers for the number of State accommodation units provided for students on campuses, or plans for same? Could State-owned and State-funded on or near campus be a focus for the five years ahead? Could we also move away from the international investor model?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_37" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:10:00+01:00"/></from>
+          <p eId="para_89">I thank the Deputy. On the numbers for State-sponsored student accommodation, I think I mentioned earlier that there is €100 million allocated to the first phase, which is sort of an acceleration phase. There was a general call-out done on that and the three institutions that put their hands up and said they were ready to go with it were Maynooth, UCD and DCU. Maynooth moved quickly and it now has 116 beds ready to come on stream this September. UCD recently confirmed 493 beds to be provided on site or at the college. I have been on site, seen the plans and seen exactly where it is going to go. That is moving pretty swiftly forward. DCU has a project of a similar number before its board for appraisal at the moment. That brings us to about 1,000 beds between those three. That is sort of kickstart project worth €100 million. My intention would be, very much as the Deputy suggested, to invest significantly in provision of further State-sponsored accommodation over the next couple of years. I published a standardised design strategy quite recently. I just got that approved by the Government two weeks ago and published it and I intend to publish a student accommodation strategy by the end of this year, which will set out how we plan to tackle the challenge of student accommodation. I meet those students as well and I hear the stories the Deputies have described. They are universal and they are across the country, so I completely understand.</p>
+          <p eId="para_90"> On the statistics, I brought to Cabinet this week the education indicators report, which is a framework that shows the story of education in the country. We have more people in higher education, further education, apprenticeships and research, including PhDs, then ever before. It is very much a success story. The level of educational attainment is at a higher level than ever before. The level of capital and current investment is greater than ever before and the outcomes are almost universally positive also. That goes back to investment in the system over many years. For the first time, that indicators survey includes student accommodation, so there is a breakdown between student-specific accommodation, private rental, digs and living at home. Roughly speaking, it is about 45% student-specific accommodation, maybe 30% private rental, 16% in digs and the rest are commuting from home. While it is not a silver bullet, and indeed nothing is, digs are an increasingly popular option. They are a sort of a traditional option but there were a couple of campaigns run by my Department in recent years to create awareness and encourage the provision of digs accommodation and its use by students. Most colleges now have a website or portal that people can check to see if beds are available. In most cases that is a live resource people can look at. Often in cases where there may not be accommodation available in a dedicated apartment in student-specific or private rental, there are digs beds available in the same area, so it is an option perhaps for new students in first or second year. Typically when they make friends and move on, they tend to organise themselves in later years, but digs are very much an option as well and one we are encouraging through a number of schemes, various Revenue reliefs as well as practical campaigns. It is between those different options. I agree with the Deputy that this is what we need to do. We need to invest in State-built student accommodation. That is happening and is part of the student strategy that will be published later this year.</p>
+        </speech>
+        <speech by="#BrendanSmith" eId="spk_38">
+          <from>Deputy Brendan Smith<recordedTime time="2025-07-09T13:10:00+01:00"/></from>
+          <p eId="para_91">Like other members, I welcome the Minister's presentation of these Estimates. It is good there is a 7.4% increase in the financial provision for his Department this year. I agree with Deputy Feighan's observations on apprenticeships and their importance. It is very good the apprenticeship budget has increased by 83% in less than five years.</p>
+          <p eId="para_92">That is a welcome measure. The Minister cited the remuneration available to apprentices. The public at large do not believe the level of remuneration is as good as what the Minister cited. There needs to be a better information campaign in regard to the necessary remuneration for young people going through apprenticeships. I hope the Minister can do that.</p>
+          <p eId="para_93"> The Minister is aware that there is some concern among apprentices going into the second phase of their apprenticeships that there may be delays. Some apprentices who are due to start the second phase in September have not yet been notified whether that will commence. Reassurance needs to go out that there will be no undue delay in those apprentices being facilitated with the transition to the second phase of their apprenticeship. It is important that message goes out as soon as possible.</p>
+          <p eId="para_94"> I heard the Minister speak over the past few days about the SUSI eligibility limits changing for the better. Again, a better campaign is needed to encourage people to take up the options if they qualify. The deadline for the initial application is 10 July. If that could be put back, it would be helpful. Perhaps a graduated application process - I am not exactly clear - or some type of campaign is necessary to encourage people to ensure they avail of SUSI if they are within the income eligibility limits.</p>
+          <p eId="para_95"> With regard to cost-of-living measures, I am sure the Minister's officials will be aware of me raising an issue over the past few years. I was very annoyed that students from our State studying in the other part of our country in our neighbouring jurisdiction or in Britain were denied that cost-of-living measure in three different years. A student studying in Belfast, Derry, England or somewhere else in Europe or their parents should have been able to avail of that €1,000 cost-of-living measure. If there are measures in the future, we must ensure that students studying outside our State, be it in our neighbouring jurisdiction in our country or abroad, are not denied any of those benefits. I sincerely hope that will be addressed in the future.</p>
+          <p eId="para_96"> I spoke to the Minister on a number of occasions about the welcome capital programme for the further education sector. Over the past five years since the Department was established, there has been a welcome emphasis on the role of the further education sector in preparing and upskilling people for jobs or as a pathway to higher education. It has been a great success and I am familiar with the institute in Cavan town since its early days. A proposal is with the Minister's Department in regard to the development of major additional permanent accommodation as part of a college of the future facility. I hope that will be progressed to the next stage as soon as possible.</p>
+          <p eId="para_97"> Concerning skills, apprenticeships and further education, more has probably been done at a higher education level in opportunities for co-operation and collaboration on a North-South basis. We have those opportunities. We must drive it from our State's point of view. Many years ago, there were more students from Northern Ireland colleges here than there may be today. We need better student mobility North-South and South-North. The two south Ulster counties I have the privilege of representing, Cavan and Monaghan, are beside Enniskillen and other towns in Northern Ireland. There has to be collaboration between colleges of further education, which there is, but it needs to be driven more intensively for deeper collaboration and more co-operation. It exists at the minute but can be brought to a higher scale. I wish the Minister well with his work. I have no doubt he will continue to give the Department the good leadership it needs. I know he is a person who likes to get out, meet the stakeholders and listen to them and deal with those issues.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_39" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:20:00+01:00"/></from>
+          <p eId="para_98">I thank the Deputy. I think I agree with everything he said. There are a number of points. I have spoken about the eligibility limit a lot recently. The eligibility limit in this revision increases to €115,000 at the higher end. Every threshold in the system has increased by 15%. That brings more people than ever before into the SUSI system for different grants and supports. I think the Deputy is right that there may not be full awareness of that. In fact, it is evidenced by last year, when 40,000 were estimated to be eligible at the higher end of the income threshold. Of those 40,000, only 18,000 drew down a grant towards the student contribution. Some analysis needs to be done as to why that might be so - if measures are available that are not being availed of, why that is the case. That is an important analysis. It is right across the board. Everything in the system is moving up - thresholds, grants, amounts and contributions from the State. As things stand, there is €404 million in student supports being paid out in this revision. That is on top of almost €1.7 million across the higher education piece which in some cases includes fee stipends as well.</p>
+          <p eId="para_99"> The Deputy also spoke about the North and cross-Border co-operation. Fees are higher in the North at £5,600, almost double the highest rate of fees here. Students from the Republic attending there have the SUSI supports carried over; we pay SUSI supports for them. I take the Deputy's point about the cost-of-living interventions. As I understand, there will not be one this year but I understand his point about previous years and whatever other measures are done, that should be considered. It is a good point.</p>
+          <p eId="para_100"> I am familiar with the Cavan college of the future project, which the Deputy raised with me previously. Cavan-Monaghan college of the future has cleared the preliminary business case. The local ETB, Cavan-Monaghan ETB, is now working on the next phase which will include the appointment of a design team. That is positive; it is moving forward. The Deputy asked me before and I am happy to visit that site with him at a future date and see it for myself. I was in Cavan with him and colleagues not so long ago in my previous role. It is worth doing. I have been getting out and about as much as I can around the country. I must put that on my list as well.</p>
+          <p eId="para_101"> I attended the North-South Ministerial Council and met Minister Archibald, my opposite number in the Northern Executive, recently. I visited the Magee campus in Derry for the graduation of the first medical class just two weeks ago. I visited Queen's in Belfast as well. Some of the issues around cross-Border mobility are technical. For example, a student from the North taking A levels who got maximum points in their system could not achieve 600 points in our system because there was a bit of a dichotomy. That has been addressed. I have worked with Minister Archibald on it. An additional, optional course taken earlier in the term now gives a points bonus so they can get parity. A straight A student in the North and a straight A student in the South, because of the three-versus-six issue, did not quite match, so we have addressed that.</p>
+          <p eId="para_102"> Another issue worth mentioning, which I mentioned at the North-South Ministerial Council and elsewhere, is that apart from the points anomaly, typically colleges in the South have a European or other language as a matriculation requirement. Students in the North do not necessarily take a European language as a subject for their A levels. There is that matriculation requirement and perhaps wider issues about subject choice and even European integration. That issue has been raised by the colleges. Some Northern students applying may not have a European language and therefore may not meet the matriculation requirements, regardless of points.</p>
+          <p eId="para_103"> There are a number of research collaborations North-South. I made a number of submissions to the shared island fund for research collaborations that can be progressed, some of which are up and going and some I hope to do more on. It is key. The National Training Fund will commit money to further education and apprenticeships in a big way, including, in due course, the Cavan-Monaghan project and the Cavan ETB.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_40">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-07-09T13:20:00+01:00"/></from>
+          <p eId="para_104">I thank the Minister for being here. It was a long night for him last night. I appreciate he is having a couple of busy days with us. I have a few questions. Coming back to the student fees discussion, in the options paper the Minister will submit, will he consider including that as an option to try to address that issue? People have referred to the students we met today and it is certainly something they are looking for. I also welcome the Minister's focus on student accommodation and particularly standardised design. I look forward to seeing those through to the end of the year.</p>
+          <p eId="para_105"> I also welcome the work the Minister has done to date in improving the apprenticeships options and that more will be coming through in the future, particularly in the area of healthcare, where we know there are some deficits in career choices for people. How can we simplify access to apprenticeships? Plenty of young people have pointed out to me that most of the onus is on them. They have to seek the employer and do an awful lot of legwork. Not every young person is up to that challenge, particularly if they do not know what they want to do, which is one of the challenges. As a former lecturer myself, I have come across “I do not know what I want to do. I fill out my CAO form and just pick the five things that I think I am vaguely interested in." College then may not be a good fit for them but there would have been other paths that could have led to the same ultimate end in qualification but would have suited them better. Thus, there is a potential route they may have missed out on.</p>
+          <p eId="para_106"> Will the funding for ETBs be addressed in these Estimates?</p>
+          <p eId="para_107"> Many people here have raised the SUSI grant. My view is that the funding should follow the student. Has the Minister considered extending the eligibility of the SUSI grant to institutions that are not currently eligible? I am thinking particularly about Griffith and Dublin Business School. There are courses there that are QQI-approved and so on but there is not a SUSI grant for them, so students cannot access them.</p>
+          <p eId="para_108"> I am thinking a little bit more long term because as the Aungier Street campus closes down and moves over to Grangegorman, there will not be a college in what is an area close to people who would not traditionally have gone to college. It has always been the strategy of successive Governments to locate campuses to make it easier for people to go to college. I also taught in Blanchardstown. That was critical. People just would not have travelled into town. If it was not on their doorstep, they would not have done it. I feel the same challenge will arise here. Does the Minister have any thoughts on that? It is maybe not an issue today but going forward, particularly, as I said, when Aungier Street closes down and it moves across to Grangegorman.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_41" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:30:00+01:00"/></from>
+          <p eId="para_109">I thank the Deputy. Indeed, it has been a couple of long days and there are probably many more to come, but if we join the army, we have to soldier. That is part of the job of being a Minister. I was on site in other colleges this morning before I came here as well, so I have been on the road already. There will many more days like it.</p>
+          <p eId="para_110"> On student fees, the options paper, which I intend to publish later this summer, will set out all the conceivable options that are being suggested, that are in the public debate and that the Department and I have considered. I am also open to submissions as to other options that should form part of that. It will set out the costings for different options right across SUSI, grants, fees and thresholds, and set out a framework of parameters and a good number of costed tables that people can then use to guide the discussions and to inform the debate better as we come into the budget. All options will be on the table in terms of costings. I am very open-minded and keen to support students to the maximum extent. My only limit is what resources are made available to me by the Minister for Finance and the Minister for public expenditure in the budget. Within the parameters that I have, I will maximise the outcome for students. All conceivable options will be costed up and put out as part of that.</p>
+          <p eId="para_111"> Regarding the eligibility of more colleges to the SUSI scheme, this is something I am aware of and I have had some conversations on. Going back to my other point, for every one thing that we do, there is something we cannot do. We cannot cut the student contribution fee and widen the SUSI net to many other new colleges at the same time possibly. We can have that discussion but we cannot do everything, and certainly not in the first budget of the first year. There are things we can do and cannot do. There is a prioritisation around those with regard to which we might do first and, when we get things progressed, what we might do at a later stage. In fairness, the Deputy acknowledged that is something that might be for the long haul, and I get that.</p>
+          <p eId="para_112"> The point about the learning coming close to the learner is key. I visited Blanchardstown recently. I opened a new building for another one of our capital projects that we have invested in. That campus is a great success, and it is close to learners in that area. One of the success stories of this Department has been the tertiary education programmes, whereby a student commences training in their local ETB or further education centre. It usually is not a traditional university environment but it is familiar, it is closer to home, it allows them to combine other commitments, such as caring, family duties, part-time work or whatever else they have going on in their lives, and it is maybe less intimidating for some students than stepping through the gates of a large, established college for the first time. They then progress through a course for one or two years. They have a qualification that they can bank at the end of it. Should they wish, and many of them do make this leap, they can progress to a university, be that a TU or traditional university, for the third and subsequent years, leading to a level 8 or higher qualification. I was in Blanchardstown and I met some learners, and I have met some learners at Grangegorman from around the country, who had done that. Some of them told me that they had never seen themselves in a university environment. It was just not within their sphere of experience or their family’s history. Being able to take that first step in a further education environment close to home gave them to confidence to build, grow and then move on. It is a successful course. It goes back to something that I have believed in for a long time, which is that we should not be stereotyped or boxed in from an early stage. We should not say, “Well you have been signed up for this on the CAO at year 1 at 17 years of age, and that is you forever”. We should have more options and pathways through education, lifelong learning, upskilling and reskilling, as well as the ability to do building blocks. We have things like micro-credentials, where you can take a course, sometimes online and sometimes physically, and you can then build them together. Over time, those blocks accumulate into a qualification. You might take a number of them, and then you stack them. They are stackable courses. All of that is about giving flexibility to the learner to learn on their own time, in their own environment and in a way that works for them. That can then be combined and added to at later stages so that they go up the qualifications tree, enhancing their career prospects and their own economic journey and social journey from that. The Deputy is spot on. That is exactly the way I see this system continue to develop, and there is much good work done on that already.</p>
+          <p eId="para_113"> Is there anything else?</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_42">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-07-09T13:30:00+01:00"/></from>
+          <p eId="para_114">I asked about the funding for the ETBs.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_43" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:30:00+01:00"/></from>
+          <p eId="para_115">What was the question, sorry?</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_44">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-07-09T13:30:00+01:00"/></from>
+          <p eId="para_116">I asked whether that is being addressed going forward because there has been a lot of highlighting in the media about-----</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_45" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:30:00+01:00"/></from>
+          <p eId="para_117">Okay. The SOLAS issues. My Department gave SOLAS an increase last year of €41 million across the board. Some ETBs are experiencing funding difficulties. One of the reasons for that is because apprentices took longer to exit phase 2 than they should have. There was a backlog in the system last year and the year before. This meant that ETBs underestimated the cost of having those apprentices on their books because the apprentices have a training rate of pay which is associated not necessarily with the stage of progression but how long they have been in the system. If the apprentices are in the system for longer than they should have been because backlogs that arose last year and the year before, they are then getting higher rates of pay, which means the overall funding pressures are greater. That was brought to my attention in the past couple weeks. I immediately wrote to SOLAS. The first directive I gave it was that no apprenticeship courses should be cancelled anywhere and that they have to be ring-fenced and supported. I am engaging with the Department of public expenditure to find additional resources for that, and I have also had some conversations with SOLAS as to how it might manage that in the short term. I will also speak to the board of SOLAS tomorrow. I am intensely engaged on that issue and very aware of it. I think we will have a resolution quite soon on that, which, let us be honest, should not have arisen in the first place. It should not have happened. However, since it has been raised with me, I am taking steps to manage it and proactively address it.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_46">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T13:30:00+01:00"/></from>
+          <p eId="para_118">The Minister had a very late evening yesterday and here he is again, working hard and fresh with his answers. I thank him.</p>
+          <p eId="para_119"> I am delighted to see the move forward in this area. I have four sets of questions. On accommodation, in each university or third-level institution, will there be student accommodation on site? The Minister does not have to tell me all the figure if he does not know now. Will the costs be student costs as opposed to the ridiculous costs for private places? I have mentioned my own constituency of Dublin South-Central loads because that is where private student accommodation is. I understand it is for-profit and so on, but at universities it should not be that way. What would the rough costs be and how many units?</p>
+          <p eId="para_120"> Second, I noticed that the funding for external bodies and subscriptions to international organisations has gone down. That will not affect CERN, will it? I noticed the funding has gone down. The Minister just announced that. I am concerned. Maybe that is in a different one. I do not know but maybe it is not.</p>
+          <p eId="para_121"> I have a question that is a little bit different, and I asked about it in that last meeting here. It is regarding trainee teachers doing PMEs. They are working in schools. Discussions are ongoing with regard to teacher training and the postgraduate master’s in education, that is, teachers learning for a year and then working in schools, and an apprenticeship model for that, which would alleviate the costs to the student. The fees are very high, as I am sure the Minister is aware.</p>
+          <p eId="para_122">Also, for the schools, with regard to teacher recruitment, it would alleviate what is a huge difficulty at the moment. That is not to replace fully qualified teachers; I am saying it will assist and would provide for a certain number. Could the Minister's Department maybe discuss with the HEA how to progress that model?</p>
+          <p eId="para_123"> As for my final question, I am sure the Minister is aware of the protest at the moment outside Leinster House. They are the adult educators who have had new contracts issued to them by the ETBs. There is a challenge, and I have been contacted by many of those adult educators. In my previous role, I worked on the school completion programme, as the Minister may know. We were based in an adult education service in Ballymun. For a number of years I have had a lot to do with adult educators. My husband is also an adult educator. They are concerned that these people who have had contracts under the four years have been given these contracts and are now being told they have to apply for their own jobs in an open competition, that they may have no work in September and that their hours are being cut from what they were previous to that employment. That is being communicated to them. This is not just one ETB; it is several. I have concern for the teachers or the educators, as they are now called, but I also have huge concerns for the learners. People who return to adult education are often people who have been failed by the system at primary and secondary and they are back learning and it takes a huge amount of guts to go back to learn as an adult. Those are to be targeted as courses not running next year because there is not the funding model, yet I note from the budget here that there is an increase in budget to SOLAS and to further and higher education. How does that marry together? I appreciate the Minister's answers.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_47" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_124">There are a couple of questions there. As regards the adult educator issue, €6 million is paid out by my Department to SOLAS for the adult educators. There are additional moneys in this revision as part of the FET pay structures there, so €6 million is being provided. I am aware of the protest and am engaging with the group. I am happy to meet them if they wish to arrange. Perhaps if she has contacts there, she might want to set that up.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_48">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_125">I am happy to do that.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_49" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_126">We might do that. I think that is worth doing.</p>
+          <p eId="para_127"> On CERN, the Deputy asked about C5. That is close to my heart as well. That again epitomises our ambition. Really, we should be taking our place at CERN and we are now, thankfully. It is something I have long campaigned for. I was pleased to be able to do that when I became a Minister. We are joining that as of this month, I think, but even though it is the same hub, there is not any risk to that or other international members' bids. The slight decrease comes from shared island money supplementing other moneys, so there is just an accounting exercise in moving money from shared island to a different fund coming in on the back of something else. There is a technical adjustment from C3 and C4, so it is just how moneys are accounted for as opposed to anything in particular going up or down there.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_50">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_128">That is for the future years as well, as we-----</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_51" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_129">Absolutely, because it is an ongoing commitment. We are joining as associate members. I share the aspiration that we would become full members, but the feedback from the physics community that are closest to this is that we are probably not ready yet to go the full way because there is an expectation around the level of activity on projects and researchers and engagement from the nation joining. Our research community tells me that they are at the stage that they are very comfortable and very excited about associate membership, but they may in all honesty not be ready to go with full membership. It is part of the opportunities to grow that community and increase the participation. CERN is a particle physics laboratory at its most fundamental but it is also so many other things: data science, blockchain, sensors, photonics, huge data sets, engineering, including civil engineering, and building the experiment, so there are so many different activities. Even though it is seen as being very abstract, very advanced science, and it is, there are opportunities for everybody from electricians to civil engineers right across the board. Some Irish companies are already collaborating and will be able to be part of that commercial exercise as well as the economic exercise we are in.</p>
+          <p eId="para_130"> As regards the accommodation, I might get the Deputy a note on the student accommodation, but she is right and raises a really good point. There has been a tendency from some of the colleges, which I understand but do not necessarily like, that they like to fill summer beds with visiting tourists. Students are typically not there in the summertime. That makes sense. There should be utilisation of all available assets and capacity should be utilised, but it should not be at the expense of students. One of the things in my standardised design that I brought through is to say that this is for students, and if there is some spare capacity in downtime or outside of term time, by all means, if there is another way for the university to collect revenue, but the design should be towards the students. They will be the ones using them.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_52">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_131">We did a bit a dive into this. In other European countries, if you go to Germany, for example, you can stay in your accommodation. Often when we talk about students we think they have parents to go back to. Sometimes you are an adult and you are not going back to your parents' home, so it is important that they can stay there and that it is a full immersion in student accommodation. We need a better vision for that here than we currently do, and I appreciate that the Minister is working towards that.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_53" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_132">The Deputy is dead right. There was a measure brought in recently, and I think there was general cross-party support for it, to reduce the length of the typical student lease to 41 weeks from 51 weeks, but that does not suit everybody either. We may begin to see the advent, particularly with the increase of purpose-built student accommodation, of a change to the typical student experience in that a lease was in September and out in May or June. Some students may well decide to stay for the long haul. If they are in a four-year course, maybe they will try to book in for four years or two years or whatever it may be. That typical exodus every early summer may not necessarily be a feature long term, and maybe people-----</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_54">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_133">Especially if they have to repeat modules in August.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_55" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_134">That is true as well, yes.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_56">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_135">I have talked to a few people who say their summer is ruined because their child has to repeat a module. Students themselves feel the same, so that should be available to them throughout the time.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_57" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_136">Definitely. That is a good point.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_137">I thank the Minister for being here. As regards the capital investment into further and higher education facilities, local to me, in County Louth, we have Ó Fiaich College in Drogheda and DKIT, but because of the success of the further education sector, because what it is doing is really good, there are a great many more people wanting to go into the advanced entry courses, the fees for which are very low. It is really easy to go to these courses and, like other members have been saying, they are local. I refer to Ó Fiaich College in particular because it is stuck for space. How does an institution like that go about expanding and getting access to that capital funding? Obviously, it goes through its ETB and so on, but Ó Fiaich College is a victim of its own success at the moment.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_59" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_138">Your own ETB, LMETB, is exemplary. I visited it with you, both the advanced centre and Dundalk IT but also the ETB centre for advanced manufacturing. They are an outstanding example. I know they have been ambitious to do a lot more as well. There is an increase of €40 million on 2024. In terms of the capital allocation to the FET sector overall, there is €106 million allocated in this revision, which is an increase of €40 million on the previous position. There are a number of different projects that are bidding or in the mix for that funding, but I am sure that LMETB will be putting in its bid as well, and that is well deserved. That is the first question as to how they go about their expansion.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_139">On a slightly separate issue but one that goes to the core of accessibility, the European Accessibility Act came into effect for all public bodies and for everybody on 28 June. Has there been interaction between the Department and the education bodies in making sure that everything is accessible, that we are not charged and fined under the Act for not having an accessible website, let us say?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_61" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_140">I think for new buildings, that would come in as part of the building standards. For the existing estate-----</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_141">Sorry, I am referring to technology and their courses and all their offerings.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_63" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_142">So assisted technology and disability enhancements and that sort of thing. We might come back to you on that-----</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_64">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_143">Yes, please. That would be great. Thank you.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_65" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:40:00+01:00"/></from>
+          <p eId="para_144">Absolutely. As I mentioned earlier in response to Deputy Conway's question, I have increased the investment into provision for students with disabilities. We have a number of different programmes. PATH 4 is for students with intellectual disabilities, but there are a number of different types of disability, obviously, and there is a disability demonstration project being put together, which is a new initiative from the Department just during my time. It will allow for an engagement on different options: what supports are available, what is the best model, looking at best practice and trying to roll that out, and in a way that is unique to each learner's needs because what might work for one may not work for another and we should not presuppose that.</p>
+          <p eId="para_145">One issue that is raised a lot is having what are known as PAs for learners in third level or further education. The feedback is that is not necessarily helpful to a student who wants to socialise or find their feet. They do not necessarily want somebody accompanying them. It is maybe different at primary level but as students go on through education, they want to enjoy a degree of dignity, autonomy and independence. There is a balance with that in terms of the person accompanying them, which is one model but there are others as well. There is quite a bit happening with that. We will get a note to the Deputy on that separately.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_66">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_146">As a follow-up to that on accessibility of courses for students with disabilities, I hear there are fantastic offices in each higher education institution. They do an awful lot of work and they are getting a lot of resources. Resources are tight in the further education sector and I hear from tutors and the principals in the FET institutions that there are limits to what they are able to offer. They would love to be able to do more because the idea of the further education sector is that people are local and familiar with the building and it suits people with disabilities - it suits many different people - to go local and get educated locally by people they know.</p>
+          <p eId="para_147"> The Minister said extra funding was given to SOLAS and the ETBs, but from a departmental point of view, should it dictate to make sure there is sufficient funding coming from the money it is awarding to the further education sector to make sure it is supporting people with disabilities as best it can and the best it is able to do?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_67" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_148">On disability and enabling students, there is also the disability access route to education, DARE, programme, for higher education. One of the ways that works is that 5% of places are ring-fenced for students with disabilities, and within that 5% students with disabilities are competing with each other, not other students. That is one way to level the playing field or an attempt to. There is an additional €5 million in this revision for students with disabilities. It covers things like the fund for students with disabilities and miscellaneous methods to ensure students can fully participate and not be advantaged because of their disabilities. That fund is getting €1.5 million.</p>
+          <p eId="para_149"> On the people centred supports that we spoke about there and the learner unique model being matched, there is a pilot programme, which I have allocated €2.85 million to, running now. I have also increased the path for a second phase of that about intellectual disability significantly. I got Cabinet approval for that just three weeks ago. There is a lot of work going on in that area but we will do a note for the Cathaoirleach on further supports as well.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_68">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_150">An awful lot of questions were about student accommodation but specifically accommodation for the technological universities. I am thinking of DkIT and thinking local. Where is the Department on delivering the accommodation action plan?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_69" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_151">There is a technological university support fund for the provision of accommodation and there is engagement going on between the Department and the TUs on that. It as at preliminary business case stage so that is being worked through. I am putting a lot of emphasis on State-sponsored student accommodation but the private sector is also free to take up the guidelines I produced and begin to offer accommodation. They can do that in partnership with universities and some of them are doing that already, which is providing much needed beds for the sector as well.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_152">I thank the Minister.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_71">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_153">I have one quick question on PATH 4 again. It is being extended to 11 additional institutions from September. That is really welcome.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_72" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_154">Yes. We can do a note for the Deputy on that as well. We will get that to him.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_73">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_155">Fantastic. It is about future funding then because is the current round the round that was supposed to end in 2026?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_74" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_156">Yes.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_75">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_157">Do we have any-----</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_76" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_158">I have extended it. It will go for Cabinet approval-----</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_77">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_159">The Minister has extended it already. That is fantastic.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_78" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_160">Yes. We can get a note to the Deputy on that.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_79">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_161">That would be great.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_80" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_162">That is a very important project. I have seen the difference it makes. I visited the Trinity Centre for People with Intellectual Disabilities, the Field of Dreams in Cork and others. It is amazing.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_81">
+          <from>Deputy John Connolly<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_163">My compliments on that.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_82">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_164">I thank the Minister and wish him well in all he is trying to do. I hope everything comes to fruition. I have a couple of questions. Some of the issues with ETBs is that adult educators are teaching in primary schools yet they are on an adult educator contract. That is an issue because they are not in adult education and they are being forced into this contract.</p>
+          <p eId="para_165"> Digs have saved some people and there are positives to digs, but in the presentation this morning 71% said they do not have any contracts so they have no security. There have been severe issues around it. I do not know if that falls under the Minister's Department or the Department of housing. It could be a mixture of the two. Regulation needs to be introduced because digs are a good way of solving the issue.</p>
+          <p eId="para_166"> In terms of what the Department is looking at for student accommodation, are there shared bathrooms in those? I would not be comfortable having to pay and to then share a bathroom. It is something I wanted to flag. With the rest, I wish the Minister the best going forward.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_83" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_167">I thank the Deputy. On digs, the current model has a licensing agreement. That is standardised and prepared by the Department. It is made available to all digs providers. They operate under the rent-a-room scheme mostly. There is a Revenue tax relief for them if they do that. The idea is to encourage people in any walk of life but often older people who have a spare room and are living in a university town to consider making it available to students. Some of them might have done it for years while others might have never done it before. There is a balance to be struck. I hear what the Deputy said about regulation but overregulation could completely discourage any take up of that. It is additional accommodation coming onstream. Some of those private individuals open up their own private homes where they also live. It might be the bedroom next door or on the same landing. They need a bit of coaxing to even take that step. There is a risk that if they find themselves too encumbered, they may not do it. It is discretionary and no one can force them to do it. It is usually their family home as well. What is the balance for that? The licence agreement is a good balance for it and that is making a difference.</p>
+          <p eId="para_168"> On shared bathrooms, the standardised design model includes multiple different options. Some recent designs have had every single room being en suite. When I was a student, I certainly did not have an en suite. I shared a room with others. If we look at what they do in the UK, US and on the Continent, the norm for student accommodation is not single, en suite bedrooms. Some of the feedback we are getting, including from students, is that it actually promotes social isolation as well. Rather than living in a shared space with a shared kitchen, lounge areas and social areas, as one might expect in a college environment for people to mix in small groups - I am not talking about 100; I am talking about eight, six or even four, sharing a common studio, kitchen workspace and lounge area - students were going into their rooms, closing the door, going on their phones for the night and coming out the next day. They would spend a whole term not making any friends. It is not healthy for mental health either so there is a balance to be struck here.</p>
+          <p eId="para_169"> The manual has looked at best practice around the world, primarily in countries with a similar OECD ranking as ourselves, in similar states of development and with similar economic circumstances, to see what is done internationally and what is best practice. It then gives a number of options to the colleges and says, "Here is a suite of examples. See what you want to do with these." They are really good. It is best practice and what they do in Oxford, Cambridge, the Massachusetts Institute of Technology and the University of Copenhagen. I tend to ask why is Ireland so different. If it is not going to work for us, why not? It is pretty reasonable. I would happily live in it. I lived in an awful lot of student accommodation that was nowhere near the specification we are providing now. It is good we are raising the bar but there has to be some social interaction as well. That was maybe missing from some of the previous designs.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_84">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_170">I know it is very early stages for the Wexford campus of the South East Technological University, which the Minister was dealing with recently anyway. Does he have any details of plans for proper, State-funded accommodation on that campus? It is early stages but these things have to be planned long in advance. That will be key.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_85" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T13:50:00+01:00"/></from>
+          <p eId="para_171">There is where the educational institute as an enormous institution has to come to me with plans. Technically, it actually has to come to the HEA with plans. I am very ambitious for that campus. I would love to see that developed to its full capacity. There is a great opportunity there. The local authority is heavily engaged with it as well. The soccer club also has plans to move onto that campus as well.</p>
+          <p eId="para_172"> There are a number of elements to that. I would love to see the entire campus developed to its maximum potential. I have responsibility over the education part of it and the higher education part of it in particular, and I have discussed this with South East Technological University. I have met Veronica Campbell and Patrick Prendergast on it. I have encouraged them to be ambitious for the site. There is a lot they can do. There is a mountain of heritage around Wexford town. Certain skill sets are being used for that around renewable energy and so on.</p>
+          <p eId="para_173">There are already some activities there on the sites they have, but there are some really useful areas that they could lean into in their offerings that would be complementary to the history of the town and the area and the skill sets that are needed for our national ambitions going forward across areas like energy, sciences, etc. As regards the next step, the ball is in their court to come forward with a proposal, to go to the HEA and to seek approval. It is a project I am ambitious for, and I share the enthusiasm of I am sure the Deputy and others in Wexford to see that develop. I very much hope it can happen on my watch. As regards the CPO, etc., funding is available from my Department. I wish the project every success.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_86">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_174">I am sorry; I keep running in and out. It is just such a busy day.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_87" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_175">I know.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_88">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_176">Would the Minister be able to come back to me about the apprenticeship model for teacher training?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_89" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_177">Yes.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_90">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_178">At a later date is totally fine.</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_91" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_179">Absolutely.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_92">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_180">I have been contacted by somebody who has contacted several Oireachtas Members about further education and training, the external authenticators and the tax implications they have in comparison with somebody working for the State Examinations Commission. It just does not seem to be the same. Does the Minister have any knowledge of that, and is anything being done to look at it?</p>
+        </speech>
+        <speech by="#JamesLawless" eId="spk_93" as="#Minister_for_Further_and_Higher_Education,_Research,_Innovation_and_Science">
+          <from>Deputy James Lawless<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_181">Absolutely. Some work is being done on external authenticators. We will come back to the Deputy on that.</p>
+          <p eId="para_182"> As regards the teacher model, I am keen to take up that discussion further. It is something I would like to explore. If the Deputy wants to arrange something, I would be happy to do that as well. We will have to engage with the unions as well and see what the views of the professional bodies are, but it would be a very helpful contribution at a time when we need to improve and increase the numbers of graduate teachers. If there are other ways to bring them into the system, I am all for it. The same goes across a number of professions at the moment.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_183">I thank the members for their participation and thank the Minister and his officials.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Message to Dáil<recordedTime time="2025-07-09T14:00:00+01:00"/></heading>
+        <speech by="#ErinMcGreehan" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T14:00:00+01:00"/></from>
+          <p eId="para_184">In accordance with Standing Order 102, the following message will be sent to the Clerk of the Dáil:</p>
+          <p class="indent_1" eId="para_185">The Select Committee on Further and Higher Education, Research, Innovation and Science has completed its consideration of the following Revised Estimate for public services for the service year ending 31 December 2025: Vote 45 - Further and Higher Education, Research, Innovation and Science.</p>
+        </speech>
+        <summary eId="sum_6"> The select committee adjourned at 2.03 p.m. <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

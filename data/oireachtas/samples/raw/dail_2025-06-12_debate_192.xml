@@ -1,0 +1,738 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-12/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-12/debate"/>
+          <FRBRdate date="2025-06-12" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_children_and_equality"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-12/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-12/debate/mul@"/>
+          <FRBRdate date="2025-06-12" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-12/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-12/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-17" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="ClaireKerrane" href="/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08" showAs="Claire Kerrane"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="MikeKennelly" href="/ie/oireachtas/member/id/Mike-Kennelly.S.2025-01-29" showAs="Mike Kennelly"/>
+        <TLCPerson eId="NessaCosgrove" href="/ie/oireachtas/member/id/Nessa-Cosgrove.S.2025-01-29" showAs="Nessa Cosgrove"/>
+        <TLCPerson eId="NormaFoley" href="/ie/oireachtas/member/id/Norma-Foley.D.2020-02-08" showAs="Norma Foley"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SharonKeogan" href="/ie/oireachtas/member/id/Sharon-Keogan.S.2020-03-30" showAs="Sharon Keogan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Children,_Disability_and_Equality" href="/ie/oireachtas/role/minister/children__disability__equality" showAs="Minister for Children, Disability and Equality"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM LEANAÍ AGUS COMHIONANNAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Children and Equality</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-12">Déardaoin, 12 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-12">Thursday, 12 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 10:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 10:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NessaCosgrove">Nessa Cosgrove</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MikeKennelly">Mike Kennelly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SharonKeogan">Sharon Keogan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AidanFarrelly">Aidan Farrelly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ClaireKerrane">Claire Kerrane</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#CharlesWard">Charles Ward.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#KeiraKeogh">Teachta / Deputy Keira Keogh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Priority Issues Facing the Department: Minister for Children, Disability and Equality<recordedTime time="2025-06-12T10:00:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:00:00+01:00"/></from>
+          <p eId="para_14">Apologies have been received from Senator Bradley.</p>
+          <p eId="para_15"> At a private meeting on 29 May, the joint committee agreed the minutes of the meeting of 22 May 2025.</p>
+          <p eId="para_16"> The agenda item for consideration this morning is engagement with the Minister for Children, Disability and Equality, Deputy Foley, on the priority topics and issues facing the Department. The purpose of the meeting is to give the Minister the opportunity to provide some insight for our members into priority topics facing the Department that fall under the children and equality remit. Accompanying the Minister are: Ms Laura McGarrigle, assistant secretary; Dr. Anne Marie Brooks, assistant secretary; Ms Carol Baxter, assistant secretary; Mr. David Byrne, principal officer; and Mr. John Gilbane, principal officer. They are all welcome to the meeting.</p>
+          <p eId="para_17"> As this is our first engagement with the Minister, I take the opportunity to say that the members of the committee are looking forward to working closely with her. We have the opportunity to effect change and influence legislation that will help to ensure that our systems of care, support and protection are effective, compassionate and grounded in the rights and dignity of every child and individual in Irish society. I think members will agree that we look forward to ongoing engagement. I thank the Minister and her team for already engaging with us so well, and especially for giving us a briefing last week on the announcements on core funding. It was much appreciated.</p>
+          <p eId="para_18"> Before we begin, I have a few housekeeping matters to go through. I advise members that the chat function on MS Teams should only be used to make the team on site aware of any technical issues or urgent matters that may arise and should not be used to make general comments or statements during the meeting.</p>
+          <p eId="para_19"> I remind members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit members to participate where they are not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask members participating via MS Teams to confirm, prior to making their contributions, that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_20"> In advance of the Minister delivering her opening statement, I advise her of the following as regards parliamentary privilege: witnesses are protected by absolute privilege in respect of the presentation they make to the committee. This means they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty as Cathaoirleach to ensure this privilege is not abused. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_21"> The Minister has been allocated seven minutes to deliver her opening statement, which will be followed by a question-and-answer session with the members.</p>
+        </speech>
+        <speech by="#NormaFoley" as="#Minister_for_Children,_Disability_and_Equality" eId="spk_2">
+          <from>Minister for Children, Disability and Equality (Deputy Norma Foley)<recordedTime time="2025-06-12T10:00:00+01:00"/></from>
+          <p eId="para_22">I am pleased to be here. As this is, as the Cathaoirleach said, our first engagement, I look forward to working with members of the committee, the Cathaoirleach and the committee staff. I appreciate the manner in which many members have engaged with me on a personal basis and through the briefings we have provided in the Department. I look forward to the years ahead. I will begin by giving an overview of some of the key topics and will be happy to answer questions afterwards.</p>
+          <p eId="para_23"> Foster care is one of the key areas of focus for me and the Department. I express gratitude to foster carers for the hugely important work they do in caring for children and young people, in particular those who can no longer live at home. We want them to be safe, to be cared for and to thrive. Foster care is key to all of this. Currently, 87.2% of children in care are cared for by foster carers. Although this is a significant percentage, I would like to see it increase and I will work to achieve that. I am conscious that great work is being done by Tusla to encourage more people to take up fostering, with support from the Department. In the years ahead, I am committed to ensuring foster care spaces are made more and more available for vulnerable children who need them. A number of important commitments to further support foster care are outlined in the programme for Government and I am committed to following through on those. We have seen an increase in the range of supports available to foster carers in recent years, including increases to the foster care allowance, which now stands at €400 for children under 12 and €425 for children over 12. It is my absolute intention to build on the range of supports available to foster carers to support them in the valuable service they provide.</p>
+          <p eId="para_24"> Other aspects of work include special emergency arrangements. I assure all my colleagues here that Tusla is making every effort to reduce the use of these arrangements and to ensure that where they are used, they are safe and of good quality. Special care and children missing from care also form a key part of my engagement with Tusla. I recognise that there have been particular challenges in attracting staff into the area of special care. In this respect, I am pleased to confirm to the committee that following engagement with the Department of public expenditure, a new special care grade has been agreed. This development, coupled with the recruitment drive abroad, which looks promising, should significantly improve the availability of staff working in the area of special care and that is positive.</p>
+          <p eId="para_25"> I make particular reference to the work of early learning and care and school-age childcare and to the efforts we are making to improve the affordability of, and accessibility to, childcare. State investment in early learning and childcare is, as the committee will be aware, at unprecedented levels. This has served to improve affordability for parents and inclusion of children with disabilities and children who experience disadvantage and to pay for staff. I recognise, however, that we need to go further and build on the recent reforms that provide us with a solid foundation for the next phase. In that respect, I acknowledge that core funding, which was introduced in 2022, will see investment rise to €390 million for the fourth year of the scheme to deliver improved pay and support quality, manage parental fees and support providers. The core funding scheme has been key to starting to unlock some of the long-standing challenges in the sector and it facilitates the introduction of the maximum fee cap from 1 September, which I announced in recent days. The Cathaoirleach referenced the briefing that was provided to the committee.</p>
+          <p eId="para_26"> The joint labour committee process has seen the agreement of two rounds of employment regulation orders, establishing new minimum rates of pay for staff at different grades, supported by core funding.</p>
+          <p eId="para_27">This has resulted in pay increases for a large cohort of staff in the sector but, and I say this sincerely, I recognise the need to build on this to ensure that qualified staff are attracted and retained in the sector. In this context, I provided details on the additional €45 million being made available for the coming programme this year.</p>
+          <p eId="para_28"> The national childcare scheme has increased subsidy rates paid to families which, along with fee controls and other reforms to the scheme, are delivering much greater affordability for parents. Helped by the incoming maximum fee cap, hard-pressed families facing the highest fees nationally will see further improvements in affordability as will families who use childminders, owing to recent regulatory changes. The access and inclusion model, AIM, has been extended to children in the early childhood care and education, ECCE, programme outside of ECCE hours and further extensions for younger children are being considered. Equal Start has been introduced this programme year to support inclusion of children from marginalised backgrounds in early learning and childcare.</p>
+          <p eId="para_29"> For the first time, Government is committing to introducing an element of public provision with State-led facilities to add capacity. Taking a more strategic approach to forward planning and the option of public delivery offers much greater scope to influence the type and number of places available and better align with families’ needs. Very importantly, we are committing to progressively reduce the cost of early learning and childcare to €200 per child over the lifetime of the Government.</p>
+          <p eId="para_30"> Government is committed to recognising the failings of the past and responding to the priority needs and concerns of survivors of mother and baby and county home institutions. This is reflected in the programme for Government commitment to continue to deliver the action plan for survivors and former residents of mother and baby and county home institutions, which was published in November 2021. Within the many measures set out in that plan, there were seven major commitments as follows: a State apology; immediate counselling support; an enhanced model of engagement through a new special advocate for survivors; access to identity information through the birth information and tracing legislation; a basis for excavation and dignified burial through the Institutional Burials Act and the establishment of the Tuam office; financial payments and health supports through the mother and baby institutions payment scheme; and memorialisation and a commitment to non-recurrence through the national centre for research and remembrance. Six of these seven commitments are now delivered and in place, while the seventh - the national centre for research and remembrance - is progressing apace. I will conclude by again thanking the committee for this opportunity to discuss these important issues, and I look forward to a positive and constructive exchange of views.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:10:00+01:00"/></from>
+          <p eId="para_31">I thank the Minister very much. It is proposed to publish the opening statement to the Oireachtas website. Is that agreed? Agreed.</p>
+          <p eId="para_32"> Before I call members, I wish to remind them all that they will be allocated seven minutes, and this allocation must include the response from the Minister. I also draw everyone's attention to the fact that the clocks are currently not working, so our very capable clerk to the committee will use her stopwatch and I will let members know when they have one minute remaining. If time permits at the end, I will also allow a brief second round of questioning. However, members should indicate to me if they wish to ask additional questions after we complete the first round. I also ask that when putting their questions, members ensure to strictly adhere to the agenda topic under consideration at this meeting. I will call members in accordance with the circulated speaking rota. We have had a couple of changes to facilitate people going to other meetings and to the Chamber, but I will call members as indicated. Once again, I would ask members participating via Microsoft Teams to confirm that they are on the Leinster House campus before putting their questions. We will move first to Deputy Farrelly who has seven minutes.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_4">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-12T10:10:00+01:00"/></from>
+          <p eId="para_33">I thank the Minister and her colleagues for their time and attendance this morning and for her opening statement. I want to echo the Chair's comments. I would like to think we have gotten off to a very positive collaborative start, certainly when it came to the announcement last week to take the time to brief us as a committee, which was really productive. I thank the Minister for that.</p>
+          <p eId="para_34"> The first question I would like us to start a discussion on focuses on the report from the Children's Rights Alliance this week, which established that more than 100,000 children in 2024 were experiencing consistent poverty. I have worked in the sector over a number of years but having listened to experts in the field, be they academic or representative bodies, they say that a major part of this is the manifestation of policy and the major solver of this is improving policy. Does the Minister have thoughts on that report on the concerning trend given that this was an increase of 45,000 children in a year who were experiencing consistent poverty? What is the Department looking to do as part of this Dáil term and what could this committee also look to progress with regard to child poverty?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_5" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:10:00+01:00"/></from>
+          <p eId="para_35">I thank the Deputy very much. I appreciate his comments at the outset as well. I acknowledge his personal interest and experience in this area.</p>
+          <p eId="para_36"> Specifically with regard to issues of consistent poverty, it is an absolute agenda by Government to decrease the numbers of children experiencing poverty. It is for that reason there is within the Department of the Taoiseach a unit dedicated to eradicating child poverty. Many initiatives have been taken to date. I can speak from my experience in my previous Department about issues such as access to free schoolbooks and hot school meals. They have all been seen as a positive step in this direction. In terms of this Department, significant work has begun to ensure that all children have access to supports from an early age in terms of early learning. It is interesting to note that even in terms of ECCE, more than 70% of parents say they would never have accessed that free tuition opportunity if it had not been for the fact that it was free and accessible. That is about levelling the playing pitch and that is what we are about here. We also have programmes like First Start, recognising where there are particular areas of disadvantage that particular additional resources would be applied for.</p>
+          <p eId="para_37"> In addition to that, other schemes are in place to ensure that children with disabilities also have equality of opportunity. That is very much part of the AIM scheme. We have seen an extension within that scheme to include supports to ECCE-aged children by three hours per day and six additional hours per day out of term. Then, of course, there is the absolute access to childcare and the work we are doing to support parents to ensure there is a reduction in cost and greater availability. The Deputy referenced the fee cap that was introduced for the very first time this year, which will ensure that more and more parents are in a position to access that support and, of course, we have the free freeze as well. The Young Ireland implementation, which was launched in November of 2023, recognises that no one single Department can really tackle this issue. It has to be cross-departmental; it has to be all different Departments working together. We will continue to drive out that agenda.</p>
+          <p eId="para_38"> Other aspects would be to continue to ensure that we are rolling out more and more supports. One that I am particularly interested in, because it builds on the DEIS model we have in our primary and post-primary schools, is the Equal Start programme to which €25 million has been allocated. It is very much specific to this equality of access for children who are most at risk. That is just a flavour of some of the measures.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_6">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-12T10:10:00+01:00"/></from>
+          <p eId="para_39">I thank the Minister very much for that response, which I appreciate. I am not going to ask her for an answer on this today, but I implore her to consider really going to bat for a second targeted children's allowance in this budget. That would be a surefire way to make a significant impact on the experiences of children and young people in this country. If we could see that coming from Government, that would be a really progressive step forward as part of budget 2026.</p>
+          <p eId="para_40"> There is another issue, although hopefully I will have the time to raise two more. I would like to very quickly draw to the Minister's attention the idea of emergency accommodation, specifically for children and young people going through the asylum and refugee processes in the State. We have concerns with regard to health and safety, their lived experiences and the minimum standards that might be absent. Again, I am not going to ask the Minister for an answer on that but just draw her attention to it. I am concerned that it is not just a Department of justice issue, and that we could see collaboration and interdepartmental work on that to ensure that for the time children experience direct provision or emergency accommodation, those experiences are positive and fruitful and that their rights and their development are really prioritised in whatever the Minister can do in that regard.</p>
+          <p eId="para_41"> This is the last issue because I am conscious that I am probably running out of time. I am like a broken record with the Minister, and I respect the many positive and constructive engagements we have had in a short period on early years education and childcare.</p>
+          <p eId="para_42">Notwithstanding the very positive start the Minister has made and the Department's continued work, I still believe a special time-bound committee on the future of childcare and early years education is warranted now more than ever before. We are seeing record Government investment and yet we are still seeing really significant issues with access and recruitment and retention. I urge the Minister and the Government to consider a special time-bound committee. Our committee has many other things to pursue. If such a committee could work towards a Sláintecare approach, as was taken with healthcare, and plot out a series of recommendations for the future of early years education and childcare in this term, that is something we could all be very proud of.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_7" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:20:00+01:00"/></from>
+          <p eId="para_43">On children in IPAS accommodation, there is a unit in the service that is dedicated to child welfare. On special emergency arrangements, I note that staff working there are vetted and qualified. A compliance unit has been set up in respect of those special emergency arrangements. The children are visited every week. I appreciate the Deputy's bona fides. We absolutely do have a duty of care. We have made significant strides but there is more work to be done.</p>
+          <p eId="para_44"> I have heard the Deputy speak very eloquently before about the time-bound committee and "páistecare". I am very taken with his choice of words. I like it very much and might borrow it somewhere along the line. I like it because it is child-centred. We have committed to very broad consultation on the action plan. We have three objectives. One is to reduce the cost for parents. We are beginning that journey with the cap this week and the commitment to a monthly cost for parents of €200. We are improving accessibility. Just two weeks ago, I announced a €25 million investment to extend provision through existing providers. There is also the core funding element, which supports providers. Equally as important as cost and accessibility - it is almost like a trinity - is ensuring that those who work in the sector are paid appropriately. Significant work has been done in that regard and I can elaborate on that later.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:20:00+01:00"/></from>
+          <p eId="para_45">We have gone a good bit over time. I will move to Deputy Ward, who has seven minutes.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_9">
+          <from>Deputy Charles Ward<recordedTime time="2025-06-12T10:20:00+01:00"/></from>
+          <p eId="para_46">I thank the Minister and her staff for coming today. I appreciate it. I have two questions for the Minister. I will be brief. According to mental health research conducted at the University of Ulster by Professor Karen Kirby and Oisin Keenan, there is a severe mental health crisis in Donegal among children who live in homes built with defective concrete. We estimate that this is impacting between 2,000 and 3,000 children, although that is a rough estimate. Some 90% of homes built in Carndonagh are destroyed and the children in the school there are all suffering. Professor Kirby did a survey and it was shocking to say the least. I would appreciate it if the Minister would engage with these children in Donegal to see if we could get some kind of counselling or something off the ground. When we are dealing with this defective concrete crisis and the children involved over the long term, we have to take steps now to put in place counselling services for them to avail of down the line. That is my first question.</p>
+          <p eId="para_47"> Moving to my second question, in her opening statement, the Minister said she intends to address childcare capacity. How exactly does she plan to add capacity? Has she considered childcare facilities that have been impacted by defective concrete? I ask because we are potentially dealing with between 40 and 50 areas in Donegal where childcare facilities have been affected. We are trying to keep things going but, as these buildings deteriorate, there is no scheme in place for them. There is a childcare facility in Raphoe that cannot be used at the moment. The service is moving to Volt House in Raphoe. The stuff must be packed up in the evening and taken across to a storage facility. The children are impacted by this because some of them are living in defective homes. I look forward to working with the Minister on this in the long term. We can make progress.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_10" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:20:00+01:00"/></from>
+          <p eId="para_48">I appreciate the Deputy's perspective and experience, which are important. On mental health support for children, I acknowledge that significant improvements are under way, although it is a long journey. For the first time, we are introducing pilot supports in our primary schools. Counselling supports will be made available there. We have begun that journey and I hope to see it rolled out to all primary schools. We have never done that before in education. It is something that needs to be done more and more. That pilot has begun and I am confident that my colleague the Minister, Deputy McEntee, will want to roll it out further. There is also a recognition at post-primary level. I acknowledge the great work staff within those school environments do. For the first time, we have rolled out additional supports provided by outside providers such as Jigsaw. These are providing additional supports directly into schools. I am open to seeing if there is capacity to do more in that space because I appreciate the points the Deputy has raised.</p>
+          <p eId="para_49"> With regard to childcare, Deputy Ward has raised mica issues for childcare providers and facilities in Donegal. The city and county childcare committees are engaging directly with childcare providers that have been impacted by mica with the intention of supporting them whether with relocation in the short term or with any other needs. We are very happy to do that. I keep an open view as to what we can potentially do in that area. It is my own personal aim and objective, which is shared across government and by the Department, to increase the availability of childcare places. We need to protect the ones that are there. We are looking at everything possible. This includes the public model where there is not provision in an area and it also includes supporting existing providers. That includes those impacted by mica. I will be fully briefed on how those engagements with the childcare committees are going and we will take it from there.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_11">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-12T10:20:00+01:00"/></from>
+          <p eId="para_50">I thank the Minister and her Department team. I look forward to working with her. Core funding is working for many parents and providers but the nature of our work is to focus on those it is not working for. While I know it was before the Minister's time and a different Minister was in charge, when the adjustments were brought in, was the Department fully aware of the impact this was going to have on subsidies for parents? I am talking about parents on universal and enhanced subsidies. </p>
+          <p eId="para_51"> On universal subsidies, last September, fees were set to be cut by an average of 25%, bringing overall subsidies available up to 50% of the bill for childcare. That is what was communicated to parents. That was in September but some parents lost some or all of that increase when fee adjustments were approved two months later, in December. Has there been any discussion about further increases to subsidies for parents who lost some or all of what I will call the "September lift" in universal subsidies? I will illustrate the scale of this issue. In Fingal, there were 95 applications for fee adjustments across our 264 services that are in the core funding system. By February, 63 requests had been approved. There will be more now.</p>
+          <p eId="para_52"> I will move onto the enhanced subsidies, which are based on means tests. When the fee adjustment process was outlined, parents were assured that any increases would not go beyond the September subsidy lift of €33 a week but there are parents who have been left out of pocket because of fee adjustments. That has to be fixed because these are mainly the parents and families who need this the most. Parents who were on enhanced or targeted subsidies did not get that increase or lift of up to €33 in the first place so, when the fee adjustments kicked in, they were left out of pocket.</p>
+          <p eId="para_53">That is my read of the situation. ECCE hours were also not included in the increase so those 15 hours per week were impacted by the increases. Was the Department aware of this? Is it aware of the number of families out of pocket? What is the plan to deal with that? I do not have sight of how big an issue this is but one provider in Dublin West was granted fee adjustments across 11 services. It was told the fee increase would not surpass the increase in the affordable childcare scheme and families would not be out of pocket but 33% of those families were impacted.</p>
+          <p eId="para_54"> A question I have asked frequently in the Dáil Chamber and in parliamentary questions is about the national development plan. There was €45 million in the plan over the past two years for childcare infrastructure. In education in 2025 there is a capital budget of €1.5 billion. We have an opportunity for State-led provision and facilities. What engagements has the Minister had with the Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation on the national development plan? This is our opportunity to put our money where our mouth is in delivering childcare capacity.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_12" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:30:00+01:00"/></from>
+          <p eId="para_55">Regarding the national development plan, there is intensive engagement including bilaterals with the Minister. I have met with the Minister, as have officials in the Department. There is considerable engagement around this. We have an ambitious programme. It is reflected in the programme for Government. That is across all levels and supporting many aspects of childcare. The Deputy referenced the public model. There is a determination to recognise what has been provided by existing providers and supporting them in their capacity to do more in schemes like building blocks. Where no one is available or stepping in, we will pursue the public model. The Deputy is correct that the more money we have at our disposal, the better it is. That is our objective with the national development plan. We are one of many Departments seeking significant uplifts there but we are pursuing it with vigour and determination. I am hopeful but I cannot give a definitive answer as the engagements are ongoing. We are engaging vociferously - that would be a good word for it.</p>
+          <p eId="para_56"> The Deputy mentioned core funding. The level of funding provided by the State to the sector is unprecedented. Never before has it happened. The State is a significant provider and actor in support of the sector, with €390 million this year. Not all fee increases absorbed the full NCS increase. In many counties, the average subsidy for income assessed was above the county average in terms of the fee assessment. I hear what the Deputy is saying about the adjustment and the need to look at it again. It is my objective to make the schemes we have work for everybody - providers, parents and those working in the sector. As I read myself into this brief and see challenges or capacity to do more or look a second time, I am happy to do that. We are in the process of looking at everything within the system.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_13">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-12T10:30:00+01:00"/></from>
+          <p eId="para_57">We are seeing massive jumps in childcare funding and that is great. We communicated to parents that they would be getting on average a 25% uplift. I am looking for information from the Department as to whether that was delivered. Where did the subsidies bring us? I am aware of a family who have had to leave their childcare place. They could not afford it because of the changes. It is an issue and I want to bring it to the Department's attention. It is all about knowing how big the problem is. I am asking for data on those families who were negatively impacted. They are on enhanced subsidies and are out of pocket. That is a serious issue.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_14" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:30:00+01:00"/></from>
+          <p eId="para_58">On average, families have seen a 50% reduction in charges. There were further reductions last week and we have given a commitment that over the lifetime of the Government it will reduce to €200. There has been significant support offered to parents, alongside supports for providers and, going forward, hopefully, to the workers. We cannot do everything by magic overnight but that is our objective and we are seeing significant improvement already.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_15">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-12T10:30:00+01:00"/></from>
+          <p eId="para_59">I welcome the Minister and her team. It is great to have the opportunity to raise these issues. I will start with foster care and aftercare services. I worked in that sector in a commissioned service. The Minister said in her opening statement that aftercare services are for 16- to 21-year-olds and are extended to 23 for young people remaining in education settings. Is there any way that could be taken out of it so that they would not have to continue in education? Many young people get into homelessness when they leave aftercare. Aftercare is really important and a great support for young people leaving the care system. Would it be considered to extend the service to 23 regardless of training or education?</p>
+          <p eId="para_60"> I turn to special emergency arrangements in special care. I worked in a commissioned service and found the creative community alternatives, CCA, programme is a fantastic initiative for keeping people out of care. Due to lack of multi-annual funding and short-term contracts for staff, it is often hard to recruit staff. Because it so focused and targeted, multi-annual funding should ensure staff would be recruited and remain in the sector. </p>
+          <p eId="para_61"> On early years, I am delighted to hear of the introduction of public provision with State-led facilities. Could we get more details on that? Will it happen within school settings? Will community-led childcare provision be taken over?</p>
+          <p eId="para_62"> It is fantastic the AIM programme is being extended to younger children. I know from meeting many parents of children with additional needs that school-age children are struggling in after-school. Could the programme be extended to services providing after-school or for school-age children? Could they get level 5 supports, which are physical adaptation supports? Most importantly, could they get level 7 funding so the staff-children ratio could go down? That has come up more and more. It is great for preschool and it is great it has been extended to younger than the ECCE programme but could it be extended to school-age children as well?</p>
+          <p eId="para_63"> Sorry for throwing all these questions at the Minister but my next one is about the equal start programme. It is a fantastic initiative. It is really targeted. The Children's Rights Alliance report yesterday referred to 100,000 children living in consistent poverty. Equal start is a successful initiative. I know that from my community and from families I have worked with. Will it be extended, particularly where direct provision and IPAS centres have been opened? Particularly in rural areas where the facilities might not be there in the first place, those targeted measures would be fantastic to see when these services or facilities are being opened.</p>
+          <p eId="para_64"> Providers of ECCE-only services, particularly small community-based providers, often feel overlooked and unable to compete with large chains and full daycare settings. Are any additional supports available in the core funding model for these ones that just provide ECCE services?</p>
+          <p eId="para_65">I thank the Minister for listening to all the questions.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_16" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:40:00+01:00"/></from>
+          <p eId="para_66">I thank the Senator. I want to be entirely supportive of foster care. It is the right solution for children. As I said earlier, 87.2% of children in care are in the foster care system and I want to see even more than that in it because I think it is the right environment for them.</p>
+          <p eId="para_67"> Distinct to that, the Senator talked about the aftercare. It is, as she said, tied to education. I am happy to look at everything and anything, to be honest, but the Senator is talking to a former Minister for Education here now. I will be straight up and say that I have an abiding loyalty to and respect for the education system and the opportunity it might provide, but no one system or box suits everybody. That is why I would like to see young people get the opportunity, whether it is apprenticeships, further or higher education or whatever kind of education it is. I am happy to look because there will always be exceptions where things might not be as straightforward. I want to be honest about my loyalties to the whole education thing. It is the greatest leveller of all, and I say that with more than 25 years' experience working in the world of education.</p>
+          <p eId="para_68"> On the recruitment of staff, it is hugely important - not just recruitment but the retention of the staff we currently have there. We are doing a body of work to ensure there is greater opportunity there.</p>
+          <p eId="para_69"> With regard to early years in the public model, yes, we are committed to that. I want to be clear that it is alongside the support for providers, to give the maximum. The public model will be an important model. The Senator asked-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_17">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:40:00+01:00"/></from>
+          <p eId="para_70">The Minister has one minute remaining.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_18" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:40:00+01:00"/></from>
+          <p eId="para_71">-----if it would be in school buildings or whatever. In some instances, that may be the case, and it might be an outside provider coming in to do whatever in the school building. Last year, we launched within the schools a system whereby if they are in a position to give over any element of their property, anything they make out of it they hold themselves. The principle of schools being used for support to the community is an important one. That may well be the case but it is not limited to that. It is wherever the facility might be - build, buy, lease, whatever we have to do. It is important that the State would provide that opportunity.</p>
+          <p eId="para_72"> On the AIMs aspect of it, I am a big supporter of that because that is inclusion at its best. We are looking at this notion of afterschool and what potential might be there. There is a whole plethora of things we would like to do. A lot of it is dependent on how budgets go and everything else but with regard to what we do not achieve on the first day, I would hope we have a number of years to achieve it.</p>
+          <p eId="para_73"> On Equal Start, it is our intention to expand that as much as possible. I am out of time, am I?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_19">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:40:00+01:00"/></from>
+          <p eId="para_74">I am a hard taskmaster. Everyone is eager to get the last second out of it. Senator Mike Kennelly is next.</p>
+        </speech>
+        <speech by="#MikeKennelly" eId="spk_20">
+          <from>Senator Mike Kennelly<recordedTime time="2025-06-12T10:40:00+01:00"/></from>
+          <p eId="para_75">I thank the Chair. First, I welcome the Minister, Deputy Foley, and her colleagues here this morning. I look forward to working with her. We served well in the last chamber we worked in together, in Kerry County Council. We worked well together and I sincerely wish her well in this very important role as Minister for children and equality. It is one role that every member inside here really has a personal stake in.</p>
+          <p eId="para_76"> On the Minister's opening statement and her continued commitment to the children and equality committee, I acknowledge the significant areas she has addressed, including foster care, childcare and the legacy of mother and baby institutions. Each of these domains impacts on lives at the most personal and vulnerable levels.</p>
+          <p eId="para_77"> Let me begin with foster care. One family in north Kerry retired after 40 years fostering only last week. I join the Minister in commending the tireless work for foster carers. They play an indispensible role in providing stability and compassion for children who have faced significant trauma. While the Minister has highlighted increases to the foster care allowance, with €400 for the under-12s and €425 for the over-12s, I would question whether this alone is enough to reverse the troubling decline in the number of foster carers nationwide. Have we done enough to address the wider structural issues deterring people from fostering, such as administrative burdens, delays in placements and a lack of respite support, which is vital? Financial assistance is welcome but fostering is more about the ecosystem of support than it is about the money. Could we not commit to a wider strategy that includes mental health support, which has been mentioned already, respite services and perhaps even a dedicated support liaison for every foster family?</p>
+          <p eId="para_78"> The Minister acknowledged the continued use of special emergency arrangements and Tusla's efforts to reduce them but those efforts may not be enough. How many children are currently placed in inappropriate or temporary settings simply because there is no alternative? What is the timeline to ensure every child in the care of the State has a stable, suitable and regulated place to call home?</p>
+          <p eId="para_79"> Turning to early learning and childcare, the Minister has rightly noted the unprecedented levels of State investment, and I obviously welcome the introduction of core funding. The intention to cap these fees and further reduce childcare costs to €200 per child per month is fantastic news for hard-pressed families. However, I would like to better understand how the Minister's goal will be achieved. Is there a concrete timeline for when this reduction will be phased in, and how will we ensure the necessary resources are allocated to support childcare providers in meeting this target without compromising the quality of care? Furthermore, as has been asked, how we do plan to balance this reduction with the needs of rural childcare providers, which may face higher operational costs?</p>
+          <p eId="para_80"> I also acknowledge the positive steps taken through Equal Start and the inclusion model. These are critical for breaking cycles of disadvantage, but the goal must remain not just access but equitable quality of care. Is the pay increase for early years staff translating into lower turnover and better outcomes for children on the ground? That is a vital question. It would be helpful to see data on this as the core funding scheme matures.</p>
+          <p eId="para_81"> I thank the Minister, and I look forward to working constructively with her and her Department within the committee to ensure our ambitious plans result in real, measurable improvements in the lives of our children.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_21" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:40:00+01:00"/></from>
+          <p eId="para_82">I thank the Senator, and as always I am delighted to balance things out by having somebody else from the Kingdom at any committee I attend. I am delighted to be here in the Senator's company.</p>
+          <p eId="para_83"> With regard to some of the points he has raised, the last one was around early years staff, funding, moneys and all of that. I have said it previously; the committee that makes the decision here is an independent one. I absolutely respect that. The Government has put €45 million on the table to ensure there are increased salaries and wages for those who work in this sector. They are incredibly important in the delivery of the service. It is my absolute ambition and wish, although I recognise the independence, that every last penny of that €45 million will go to the purpose for which it has been ring-fenced. I respect the independence and the decision-making process there but I would say that 100 times over. No matter how many additional places we provide or how much we cut fees for parents, if we do not have the staff to run the service, we are going nowhere.</p>
+          <p eId="para_84"> On the €200 and the commitment that has been given, it has been given as a commitment over the lifetime of this Government. We have a fee freeze in place, as the Senator will be aware, and for the first time a fee cap is being introduced, which is a significant step forward. For many average families, who will be paying €325 for full-time care, that is reduced to €295, and when the subsidies are included, it is less than €200 per week. It is a step forward, mindful that there will be a number of steps to follow.</p>
+          <p eId="para_85"> On foster care, I absolutely agree with the Senator's point that it is a hugely valuable and important service. I have met with their national representatives and people who, as individuals, are providing foster care as well. I acknowledge the phenomenal record from the family at home who were mentioned, with their long service. Many families are like that. They give incredible long service. The programme for Government makes a number of commitments to support foster carers as well. I know the Senator referenced the increase in the money and the 21%. It was actually a 21% increase on budget 2024 for the foster care allowance. I do not underestimate the importance of that, and there is a further commitment in the programme for Government to do more. We are also seeking to introduce more and more people into it, and to do that, a new initial placement payment is being offered as well. In the programme for Government, there is also a commitment around the pension, which is very important.</p>
+          <p eId="para_86"> On the issues with the back-to-school allowance, I hear what the Senator is saying about the administrative burden that is there, mental health supports and all of that. I am engaging with them nationally to see what potential we have.</p>
+          <p eId="para_87">I do not underestimate the very valuable service they provide and I will do all that I can to support existing ones and to bring more into the system as well.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_88">I do not think Senator Kennelly will get another question in in four seconds so we will move on to Deputy Boland. </p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_23">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_89">I welcome the Minister and thank her very much for coming in. I really look forward to working with her. The two areas we really need to make progress on in order to achieve equality are childcare and the equalisation of statutory leave for both parents. On childcare, I represent Dublin Fingal West, which is one of the youngest areas in the country. The Minister has heard this several times already but Balbriggan, for example, is the youngest large town and is culturally diverse. We have sites in Balbriggan, Rush, Lusk and Skerries. We are littered with sites for unbuilt childcare facilities and we have huge demand. It was one of the top issues that came up during the general election campaign. Not only did it come up because I knocked on doors; I lived it. I have eight-year-old twin girls and I could never get access to childcare facilities for them. I am extremely passionate about this. I have girls so I am determined that they do not face the same issue. We really need to be focusing on areas of high priority. I was very encouraged to see what was included in the programme for Government in relation to strategic forward planning. Can the Minister tell us where we are at and how we are going to ascertain the demand and prioritise the areas we need to?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_24" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_90">I thank the Deputy. I want to acknowledge that she has engaged with me on an ongoing basis, particularly in respect of her own constituency and I do accept the challenges that are there. It is the absolute vision, as the Deputy has referenced, of the programme for Government. I was honoured to be part of the negotiating team that wrote that up and I absolutely accept that while there is demand everywhere, there is significant demand in some areas. The forward planning unit within the Department is doing a body of work to identify where there is provision but also where there is ongoing lack of provision, as the Deputy has referenced. It is in that instance that the Government has made two commitments, to either support the existing providers to do more through schemes like building blocks or to step in itself and build or rent facilities, whatever the case might be. We are making significant progress there. I am in the middle of the NDP review and trying to maximise the capital that we have to actually do that. </p>
+          <p eId="para_91"> That is the public model but I also want to make the point that there are significant challenges around the planning guidelines. There exists a commitment that for every 75 houses a childcare facility is put in place but I know of instances where facilities were built that were never used for the purpose for which they were built. Eventually, for some of them, there was a change of use and something else went in there. That is not acceptable. That is not part of the vision and I am engaging at present with the Minister for housing in relation to updating those guidelines and doing a better job than what is being done at present. In many instances we can actually identify facilities that should be providing childcare today. That is another body of work. We are looking at the planning guidelines, the forward planning unit is stepping in and we are also supporting the existing providers. Particular attention will be given to the areas where there is unmet demand.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_25">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_92">I really appreciate that and I welcome the Minister's comments, particularly around the planning guidelines and a strategic focus. In terms of the building blocks capital programme, while it was great to see, it was a very small amount. I know the Minister is doing her best and the previous Minister was doing his best but €25 million was not enough. There were only six weeks to apply for the scheme over the Christmas break which was not sufficient. In terms of eligibility requirements, they needed to be much wider. It needed to be both private and public for each of the eligibility requirements. I have spoken about this previously on the floor of the Dáil Chamber and would really encourage the Minister to look at this, to plead with the Minister for finance and to launch the scheme again with more funding, wider eligibility requirements and really good publicity about it. I know of providers who would have availed of this if they had qualified for it but they did not. Also, the timeline of six weeks over Christmas was not appropriate.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_26" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_93">I recognise that those who received support through building blocks experienced a very positive uplift. There has to be strict criteria regarding what providers will give in return for receiving funding. Some of the funding was quite significant at over €700,000 so there has to be an absolute guarantee that the providers will give that back for the benefit for which it was given in the first place, which is to ensure not just that providers create places but that those places will remain. Obviously, we will look at everything going forward. I would love to do more in this space but it is a question of having the finance. I want to be realistic and say that we are spreading ourselves now, in terms of the public model, but I want us to continue to support private providers.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_27">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_94">That was my point about the eligibility. Part of it was that was only applicable to public providers but in my area, it is nearly all private providers. We do not have public providers so we were not doing anything to support existing providers. The funding was not fully drawn down. Only €23.2 million has been provided for and €25 million was not a lot to start with so we were not quite delivering on it.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_28" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_95">I would have to say that the €25 million was what we had. It was what we achieved-----</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_29">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_96">I know that but it was not even fully allocated. I got a response to a parliamentary question telling me that only €23.2 million has been allocated. That should have been fully allocated. We need to look at that again and make absolutely sure that everything we have is fully allocated.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_30" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_97">Where there is scope before year's end, I am confident that will be the case.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_31">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_98">I really appreciate that. I will now turn to equality legislation. I am a lawyer and have worked in this space a lot. The Equality Acts are completely inaccessible and very difficult to navigate. They are difficult to navigate for a lawyer, someone who has worked in this space for a long time. People who try to use the Equality Acts generally are referred to the WRC where they do not get their legal fees paid. We need to do better. I would really like to hear that there will be some work done on the codification of the Equality Acts.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_32" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_99">There is a body of work being done on that. Specifically, we have made contact with the committee regarding some of the work that is to unfold on the general scheme of the equality Bill. I appreciate that the committee has contacted the Department to say that it has a full schedule in terms of prelegislative scrutiny here and asked that it be extended out. I also want to acknowledge that there was some miscommunication and I apologise for that. In terms of the specific request, I recognise that prelegislative scrutiny is hugely important so I am of a mind to agree to that.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_33">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_100">Is that general scheme for codification or is it a separate Bill?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_34" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_101">Yes. It is for codification, or at least that is my understanding. Sorry, I do not want to lead the Deputy astray on this. We specifically named certain reforms. For example, there was something in the Seanad recently in terms of socioeconomic background being a source-----</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_35">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_102">I welcome that but it is going to be yet another Act in a hotchpotch patchwork of legislation, which is not appropriate for the space we are in.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_36" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_103">Okay.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_104">Thank you Deputy Boland.. We will move now to Deputy Kerrane.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_38">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-06-12T10:50:00+01:00"/></from>
+          <p eId="para_105">I welcome the Minister and her officials. I will run through my questions in one go. The first is on foster carers and ensuring a State pension for them, which is really important. I raised this with the Minister's predecessor a number of times and suggested that he would use the mechanism that is there for family carers and I hope the current Minister will do so. The State pension was extended to family carers and that would be the quickest way in which we can ensure a State pension for foster carers. I ask the Minister to look at that as a mechanism. It is really important, in speaking about valuing our foster carers, that they have a State pension and a level of income security at the end of their time providing that care. </p>
+          <p eId="para_106"> The findings of the recent special care report that was carried out on behalf of Tusla make for very stark reading.. The report read to me like a cry for help in terms of other State agencies not coming to the table and not supporting Tusla in its really complex work supporting some of our most vulnerable children. What I also noted from the report was that there appears to be an attitude that children with issues around addiction or mental health need special care, we will put them in there and they will be sorted and yet there are no supports there for addiction or mental health difficulties.</p>
+          <p eId="para_107">We really need to look at that area of special care. That report certainly raised an alarm bell in terms of special care. Given beds are limited, we must ensure we are using them in the best way and that the children being put into special care facilities have the supports they need, rather than putting in children who need supports for addiction and mental health that are not there.</p>
+          <p eId="para_108"> On early years education, I understand a review of year one of core funding is under way. I would like clarity as to whether that meets the commitment in the programme for Government. My understanding is that it is an overall, almost independent review of core funding. That is essential to be done very quickly.</p>
+          <p eId="para_109"> Pay for early years educators is an issue I have raised regularly with the Minister. We can forget about building capacity if we do not provide our early educators with the pay to which they are entitled. As I have said previously, I have little or no faith in the joint labour committee, JLC. The most recent pay increase was 65 cent. Really good educators are leaving the sector. Again, alarm bells should be ringing because we will have no capacity if we do not have the educators. I am really concerned that agreement is not being reached regarding the €45 million that has been ring-fenced. I am very concerned that agreement will not be reached by September.</p>
+          <p eId="para_110"> I refer to the regulations that have been introduced for childminders. I met a childminder the other day who has been childminding for 30-plus years and currently looks after six children. She told me she does not want to be sitting at her table with paperwork. She wants to be out in the garden and the farm with the children, sowing potatoes and so on. She does a wonderful job, which is replicated across many childminders, especially in rural areas. Childminders are key to capacity and we must give parents options. Particularly for parents who are engaged in shift work and parents in rural areas, we can build capacity by way of childminders. I am concerned about the regulations. Childminders do not want to be at the table doing paperwork. They want to be out with the children, which is something they love. We need to be conscious of that.</p>
+          <p eId="para_111"> I would like an update on the broad consultation and the detailed action plan on early years education. There is an issue with the building blocks scheme, especially for rural areas. I gave the example of the childcare facility in Ballinasloe where the developer built the childcare facility and sold it to the provider. The developer owns another part of the site and the provider wants to build an extension on this land, which it does not own. That will be an issue in many rural areas. Is there any way around that wherein we can show a demand and the benefit for taxpayers' money?</p>
+          <p eId="para_112"> Regarding the mother and baby home institutions, there was a huge overspend last year in excess of €158 million and serious exclusions in terms of the institutions payment. I think always of Michael Grant, a survivor I met last year, who was in Blackrock from when he was four weeks old to almost one year old. His mother paid a so-called rent for him during that time. That facility is deemed a hospital by the Department, yet he lived there for almost a year. We really need to look at the situation of those excluded from the scheme.</p>
+          <p eId="para_113"> I presume the Department was overloaded by expressions of interest regarding the national forum on family resources centres. Will the Minister provide an update in that regard?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_39" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:00:00+01:00"/></from>
+          <p eId="para_114">If I miss anything in the time available to me, the Deputy might come back to me on it.</p>
+          <p eId="para_115"> Regarding foster carers and the pension, there is a commitment in that regard in the programme for Government. Obviously, it is not within my gift to deliver but, rather, that of the Minister for Social Protection. However, there is an absolute commitment in this regard. I appreciate the Deputy's preference in terms of the mechanism. That will be a matter for the Minister to decide but there is an absolute commitment to achieve it and it is fair and right that we do so.</p>
+          <p eId="para_116"> The issue regarding special care is on foot of a High Court order. I have been honest right from the start in saying there have been significant challenges in terms of getting the appropriate level of staff in place and everything else. I am pleased to confirm that, as at 5 June, no children were awaiting a special care bed. While this is positive progress, it is not at all to say that we do not need to do much more in the space of attracting people into this area of work. The new special care category that has been agreed with the Department of public expenditure is positive. The work Tusla is doing to attract staff from abroad is also indicating positively.</p>
+          <p eId="para_117"> Regarding pay for early years workers and the provision of €45 million, I absolutely acknowledge that the Deputy has been stringent on this issue and her view is very similar to mine. The €45 million is on the table and is for a singular purpose, which is to do with funding for workers. If that is not done, I will have to consider what we can do as we go forward. I am being really clear on that. I will have to look at core funding and what we must do to move forward. That is my personal view as Minister but I have to respect the independence of the committee to make its own decisions.</p>
+          <p eId="para_118"> In terms of red tape, a review is ongoing with a view to minimising it. Our purpose is to make things easier, not more difficult, as we go forward.</p>
+          <p eId="para_119"> I will get back to the Deputy on the other points she raised.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_40">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-12T11:00:00+01:00"/></from>
+          <p eId="para_120">I thank the Minister and her officials for being here today and for their engagement with the committee to date. I thank her for her briefing last week and her personal engagement with me on questions and issues I have raised.</p>
+          <p eId="para_121"> I was delighted foster care was the first issue she mentioned in her opening statement. It is a topic I am very interested in and that is very close to my heart. I have a close relative who came to our family through adoption, having first been in the foster care system. It was amazing to see at first hand what joining the family did for my niece. Most foster carers do not do it for the money. It is not a career but we should see it as a career. It is a labour of love but we should see it as labour foster carers are doing for us and for families. Senator Kennelly and Deputy Kerrane, especially, made the case eloquently for supports for foster carers. Counselling is a massive factor. In my family situation, my relatives took in a very small baby for seven months and, in effect, raised her as their own. She shared a room with them and they brought her up from a very vulnerable child. A lot of the time, foster carers are left to pick up the pieces themselves. In my relatives' situation, baby and baby book were handed to a new family. It all worked out very well in the end but it is very important that there be provision of counselling, that foster carers are remunerated adequately and that we look after them into their old age for the service they do for the State.</p>
+          <p eId="para_122"> The same applies to our childcare providers. We all rely on them, day in and out, or have close family members who do so, as part of rearing children. Pay, retention and progression in their careers are all extremely important. I would like to know more about what measures the Department is undertaking in that regard.</p>
+          <p eId="para_123"> Surrogacy is another issue very close to my heart. It will be dealt with by the Department of Health under the Health (Assisted Human Reproduction) Act but I wonder whether the Minister has any thoughts on surrogacy leave.</p>
+          <p eId="para_124"> Reference was made to the Child Poverty Monitor report this week. Tusla's referrals have absolutely skyrocketed but its staff has increased by only 30%. Are there plans to address that?</p>
+          <p eId="para_125"> The Minister mentioned the DEIS model. I am not sure whether it really falls within her remit but I find it quite a complex area to understand. In a rural part of my constituency, there is one primary school that is under DEIS but the secondary school in the same area is not. I am not sure whether that falls under this discussion but I wanted to put the question to her.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_41" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:00:00+01:00"/></from>
+          <p eId="para_126">I will begin with the first point the Deputy raised, which concerned foster carers. I 100% agree with her in this regard. I deliberately spoke about foster carers first because we want to do all we can to support those who are in the system to stay and to attract more into it. The Deputy is right that the programme for Government includes significant commitments regarding the pension, as Deputy Kerrane and others have raised. That absolutely is an objective of ours. Regarding remuneration, there was a 21% increase in that provision in budget 2024. We gave a commitment in the programme for Government to continue to do more in this space over the lifetime of the Government.</p>
+          <p eId="para_127">I hear the Deputy's point on the supports, including counselling supports. The Deputy is not the first person who has raised that with me and it was also raised at this committee. It is not just for those who provide the foster care support but for the children themselves. I have been engaging with many individuals and the organisation nationally. I ask the Deputy to leave that one with me because it is something that is recurring. Senator Kennelly has also raised it with me.</p>
+          <p eId="para_128"> With regard to the childcare providers, as I referenced earlier, the money is on the table and the joint labour committee will make an independent decision. I want to be abundantly clear about this: €45 million is ring-fenced and it should be used for that purpose. If it is not used for that purpose, I will have to go back to the drawing board and look at what we are doing regarding core funding and the purpose of core funding - I really will. I will not say much more at this point but I want to make it absolutely clear that I am going to go back to the drawing board if things are not done as I would expect them to be done.</p>
+          <p eId="para_129"> Regarding surrogacy, the Deputy is 100% correct that it is in the programme for Government. I am very favourably disposed towards that. I acknowledge there is a role for the Department of Social Protection regarding funding. We have to work collaboratively with the Department of Health, as the Deputy referenced, and that cross-departmental work is ongoing. It is an absolute commitment in the programme for Government.</p>
+          <p eId="para_130"> The funding for Tusla increased by 50% over the five years of the previous Government and running into this Government, and is at €1.2 billion now. It is a significant allocation of funding and is very important. I will ensure that where funding is required for Tusla, which is looking after the most vulnerable children, we will do all we can to provide that. We have seen significant uplift and we will do more going forward. Did I miss anything?</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_42">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_131">There was the question on DEIS.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_43" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_132">I have to tell the Deputy that it is one for the Minister for Education but I will give my tuppence worth. Unless there is an exact mirror of children in primary school and post-primary school, it is going to be a different cohort of children. There might be 20% or 50% of the children from primary school going to post-primary school but unless it is a 100% mirror, they are going to be very different. It is the greatest need and the greatest majority that results in the DEIS status. That is the model. The single biggest expansion of DEIS took place in the last couple of years. More work will be done in that area with the model of DEIS Plus being introduced as well.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_44">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_133">Fáilte roimh an Aire. I welcome the Minister and her officials and thank them for taking the time out of their busy schedules to be here before us today. I thank the Minister for her opening statement and for the clarity and conviction she brings to her role as Minister. I commend her and her Department on the breadth of progress under way across children and equality policies. It is clear that at the heart of her work and at the heart of her Department is a sincere focus on dignity, inclusion and opportunity for all, especially the most vulnerable in our society. I thank everyone involved for that.</p>
+          <p eId="para_134"> The disadvantage of being so far down the list of members asking questions is that some of my questions have been touched on by my colleagues. However, I would like to dig a bit deeper into some of them. We spoke previously about the fact that €45 million is ring-fenced in the coming year’s core funding as wages for childcare workers, which is very important. To me, the childcare workers are the engine room of this whole section and have to be looked after. I note the Minister is awaiting updated regulation orders from the independent early years service joint labour committee. Although the Minister has touched on this already, when can we expect the official update? I am concerned as to whether there will be any negative impact on the workers because of this delay in the committee coming back to the Minister.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_45" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_135">I thank the Senator. I know this is of particular interest to her and she has raised it with me on an ongoing basis. She is right. I like the phrase that they are the engine room because it is true. Every single person who spoke here today has referenced the fact that we cannot achieve anything if we do not have the workers in place.</p>
+          <p eId="para_136"> The joint labour committee is independent and I cannot tie it down to a timeframe in that respect. I know it is seeking to do its work as expeditiously as possible. In terms of certainty for people, the earlier it can be done, the better. However, I respect the processes it must engage in, and there are a number of processes involved in that.</p>
+          <p eId="para_137"> The €45 million is contingent on an updated ERO, and I have to be clear about that. That is the purpose of the €45 million. It is meant to go directly to the workers and that is where I would like to see it go, notwithstanding the independence of the committee to make the decision. I am going to be clear, and I have said it at least three times now. If that €45 million does not go to the workers and to the intention for which it is ring-fenced, I am going to start from scratch by looking at core funding and what it is we are seeking to achieve. They deserve the money. The money should be theirs. It is put on the table for them. I expect it to be done. I also acknowledge the independence of the committee, and I have to say that as well.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_46">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_138">To go back to the building blocks funding, as we know, it helps existing service providers to expand their services to more children. How many facilities will benefit from this funding and how many places will it deliver? Does the Minister foresee any challenges to the scheme?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_47" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_139">Reference was made previously to building blocks. I think it is a very good scheme because it provides additional places. A total of 1,500 additional places will be provided for under the recently announced building blocks scheme and there were 78 applications, of which 49 have gone through. I would like to see us do more in this space, although it is obviously contingent on the funding that is available. It is to ensure that we are tackling at many different levels the need to provide greater availability of spaces. That work is in conjunction with work on the public model that we speak of, and all of it is playing into the single purpose of ensuring we have more spaces. As to the potential to do another one going forward, that is contingent on the money that will be made available via the budget. We will certainly fight the good fight in that regard.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_48">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_140">Thank you. With regard to foster carers, the programme for Government commits to examining the back to school clothing and footwear allowance eligibility criteria to allow flexibility for foster carers, who we all admit are doing a great job. It is important that they are looked after and supported and that children in foster care are treated equally. Has the Minister had any engagement yet with the Minister for Social Protection? Can she provide an update on this extremely important commitment?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_49" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_141">I acknowledge there are a number of commitments in the programme for Government for foster carers and that includes the pension, as has already been referenced. It also includes back to school, and I have spoken directly with the Minister in that regard.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_50">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_142">What is the back to school allowance at the moment?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_51">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_143">You will be coming in next, Senator.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_52">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_144">I am sorry. That is okay.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_53" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_145">With regard to the back to school clothing and footwear allowance, I think that should be provided for in the foster care environment. It should be an absolute priority. There has been ongoing engagement over and back with the Department previously and with the present Minister in that Department. I would like to see progress being made on it. It is in the gift of the Department of Social Protection and the Minister, Deputy Dara Calleary. It is very important that this is got over the line. It is only right that foster parents would be treated similarly and that the back to school clothing and footwear allowance would be made available to them. I am absolutely clear on that and the Minister knows my views on it too.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_54">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-12T11:10:00+01:00"/></from>
+          <p eId="para_146">I might ask another quick question. I will stay with the whole area of foster care.</p>
+          <p eId="para_147">Will I wait until the next round, Chair? You are rushing me now.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_55">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:20:00+01:00"/></from>
+          <p eId="para_148">The Senator will get a second round.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_56">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:20:00+01:00"/></from>
+          <p eId="para_149">The Minister and the officials are very welcome here this afternoon. Fostering is something I am very passionate about. I was a foster parent for very many years. I literally gave it up about two years ago. I have a number of questions, mostly to do with the foster care system and the children in aftercare. My first questions are to do with the deaths of children under Tusla care. In 2023, 29 deaths of children and young people in care, in aftercare or known to Tusla were noted by the national review panel. What concrete actions has the Minister's Department taken to address this? Has she engaged with Tusla or the Department of education to ensure vulnerable children receive adequate educational and welfare supports, but also mental health supports?</p>
+          <p eId="para_150"> My next question relates to children who are missing from Tusla care. According to <i>The Irish Times</i>, 37 children have gone missing from Tusla care this year alone, with early reports saying that potentially hundreds of children went missing from 2018 to 2022, many of whom were unaccompanied minors or at risk of trafficking. What safeguards are being put in place to prevent such disappearances? How are schools and educational welfare officers being supported, along with foster parents? Many of these children actually go missing from foster care settings so support should be given to protect these children.</p>
+          <p eId="para_151"> On the delays in reporting, a 2024 update of the Ombudsman's Taking Stock report found persistent delays in Tusla's handling of child protection cases. What steps has the Department taken to ensure these delays do not leave children in vulnerable settings? Indeed, as you go into primary school settings with counselling, you will find more vulnerable children as a result of that. We need to know what we have set up for that because Tusla, at this moment in time, cannot cope with what it has.</p>
+          <p eId="para_152"> The Ombudsman also found that the children's complaint system is under-resourced and lacks transparency. Will the Department support the establishment of an independent oversight mechanism to monitor Tusla's engagement with school and child welfare services? In relation to the gaps in aftercare provision, the Barnardos report, Moving On: Aftercare Provision in Ireland, highlights that many young people leaving State care face significant challenges, including housing insecurity, the lack of mental health supports and the limited access to education and employment pathway. However, for people over the age of 18, the guardian <i>ad litem</i>, or GAL - their court advocate - leaves that child at the age of 18. That GAL should stay on until the person is 23 if that person is still under Tusla's care. That is something I would like the Minister to consider. That person is so important because as a foster parent, I have no say when the child turns 18 but this particular person does. There is the aftercare worker, but the aftercare worker does not really hold much weight whereas a GAL certainly does.</p>
+          <p eId="para_153"> What steps has the Department taken to ensure aftercare services are comprehensive, consistent across regions and tailored to the individual needs of care leavers? How is the Department addressing the postcode lottery in aftercare access that has been raised as a major problem by advocacy groups? On the monitoring the outcomes of care leavers, the Ombudsman's 2024 annual report noted a rise in complaints from young people who felt unsupported after leaving care, particularly in relation to housing and mental health services. I will highlight this again. I literally have to fight for people who are over the age of 18 to continue getting their adult services. It is just awful and I should not have to do it, but what mechanisms are in place to track the long-term outcomes of young people who exit the care system? Will the Minister commit to publishing annual data on education, employment, housing and well-being outcomes of care leavers to ensure transparency and accountability?</p>
+          <p eId="para_154"> It was probably driven by Covid but in November 2020, I called for a youth recreational voucher of €250 per annum for teenagers to improve their mental health. This could be used for gym membership, sports or anything to do with sports, learning music, crafts, art or whatever. This year, 140,000 students did their leaving cert. Imagine what that little €250 voucher would mean to that young teenager. Not every teenager has the money to go down and join the gym. I see this in my community all of the time. Something like this would equalise children across the board. Some parents might avail of it - people who are wealthy may not avail of it for their children - but those who are deprived and living in deprived communities and economically stressed households might avail of this.</p>
+          <p eId="para_155"> I have to say that I cannot stand the residential care setting. I just cannot stand it. I know we just do not have the parents and families that step up to foster care in this country and it pains me to say that. If we can foster, each and every one of us should look at fostering a child. A loving and caring home is the best setting in which to bring up a child. We just have to stop the residential setting-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:20:00+01:00"/></from>
+          <p eId="para_156">There is one minute remaining for the Minister to answer.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_58" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:20:00+01:00"/></from>
+          <p eId="para_157">I thank the Senator. I did not realise she came with all that experience in foster care and I want to acknowledge it. I want to say to her that I am very happy to sit down with her and hear, first-hand, her lived experience of it. Obviously, she is 100% right. I personally believe that the foster care setting is the right setting. The rate is at 87.2% of all children in care. I would like to see more and more. I will not get through everything but I am very happy to meet with her again.</p>
+          <p eId="para_158"> On some of the points she raised on the GAL system and all of that, I am committed to reforming that piece of work with the GALs and see what we can do. Preparation is underway for a new GAL office and a director is in place but it is a very important link between the system.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_59">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:20:00+01:00"/></from>
+          <p eId="para_159">I am not stopping the Minister because I am next but time is up. We are now moving to myself as the last speaker and we will then do a second round. I have really enjoyed all the lively discussion so far.</p>
+          <p eId="para_160"> In my area of Mayo, as I am sure it is with every area, childcare is an issue. It is especially an issue if we look at west Mayo and the likes of Westport, Newport, Louisburgh and villages close to that. I recently met with a packed meeting of parents and 56 took one survey, and 40 took another survey. There were mothers, fathers and grandparents all struggling to access childcare - access was the main challenge. I really want to thank the Minister's assistant secretary, Anne-Marie Brooks, and her team who were helpful to me last week in providing targeted support. I would love to think outside the box on what we can do.</p>
+          <p eId="para_161"> If we look at the building blocks scheme in this area of Mayo, only one facility applied for the building blocks scheme. How do we support more facilities in pinchpoints to apply for that scheme if there will be a further tranche of funding in the coming months? If we look at the State-led response, if any pilots are to happen in the coming years I would like to put that area forward because one of the big barriers we are finding is a place to house the facility. It is very difficult to rent or buy any property there. If you are talking about a council purchasing or renting a building, we are actually twinned with another town in eastern Europe that has done that in a fantastic way. I would love to show the Minister the brochure for that.</p>
+          <p eId="para_162"> There is only one registered childminder in those three towns. The parents in that area are not actually accessing that NCS funding. I spoke with some of the private childminders privately, who are nearly afraid to go to the briefings because they are afraid they will potentially bump into Revenue or different things. Could we maybe find other pathways for them to get the information so they do not leave the area of childminding before they have to be registered in 2027, which is a real risk in this area?</p>
+          <p eId="para_163"> The last point on this is what the Minister touched on earlier about the planning regulations surrounding the 75 houses. In big cities like Dublin and Cork where there are big estates being built, that 75-house or 75-unit rule comes into play but if you look in this area, there might be one estate built with 30 houses, another with 20 and another with 50. We should look outside the box in terms of a cumulative build-up of houses in an area and then there is a requirement for facilities to be put in. I would love the Minister's thoughts on those issues.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_60" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_164">I thank the Cathaoirleach. In terms of access to childcare, that is one of the key issues that have been identified over the past while and it is for that reason we are saying no one measure will solve this. </p>
+          <p eId="para_165"> In regard to the public model the Cathaoirleach referenced, we now have the forward planning unit within the Department looking at areas where there is very clear and specific need, as referenced by Deputy Boland, or the absence of a facility. That is the first thing. As for how will we do that, it will take different shapes in different places. We may rent, build or whatever. </p>
+          <p eId="para_166"> The Cathaoirleach mentioned the planning issues. There is a very serious issue with the planning guidelines. They are not working the way they should be working. We would be surprised what may be brought onstream when we manage, with the Minister for housing, to revisit all of that. It is a shame because we have those facilities but they are not being used for that purpose. The Cathaoirleach mentioned smaller developments of 25, 30 or whatever. I attended a meeting yesterday and the point was made that perhaps there is an opportunity to have one key facility that caters for smaller developments. I am happy to look at that and the Cathaoirleach is right to use the phrase "outside the box". We have to look at every aspect. </p>
+          <p eId="para_167"> The public model is a massive step forward for the Government. It has never been done by the State before. Coupled with looking at the guidelines, we will look at everything. The Department is prepared to look at everything.</p>
+          <p eId="para_168"> In regard to childminders, I want childminders to be supported. I want to make it beneficial to them to come into the system. They are very important in the work they do. They provide a wonderful facility as well. It is a different facility for childcare but it is an equally valuable and important one. I do not want there to be any issues there around childminders and we are happy to work with them to give them confidence to come into the system. There are a number of years yet to do that, so it is an ongoing body of work.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_169">In relation to the mother and baby redress scheme, Deputy Kerrane spoke about the lack of uptake so far. I know it is still early in the scheme. I really welcomed that there was a debate on Philomena's law this week in Westminster which was really significant for the number of survivors living in the UK who were afraid their benefits would be impacted. That is very welcome. I also wish the best of luck to the office of the director of authorised intervention in Tuam as it starts its excavation next week and its work on dignified burial. From the Minister's Department, now we have reached the later stages of the scheme, what plans are afoot to get greater uptake of that redress scheme?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_62" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_170">As the Cathaoirleach referenced the UK, I acknowledge the great work of Liam Conlan, MP. I have met him in London and here as well. He is really driving this forward and I want to acknowledge that body of work.</p>
+          <p eId="para_171"> In terms of Tuam, I want to acknowledge the great sensitivity that has been shown here and I compliment the work of Daniel MacSweeney, the director of authorised intervention in Tuam. I do not underestimate how difficult and challenging this is for families. The way families are being accommodated, the respect that will be shown and the whole process will culminate with a very sensitive reburial. I want to acknowledge all of that.</p>
+          <p eId="para_172"> In terms of the mother and baby homes and the take-up of the scheme, to date there have been 6,500 applications and more than 4,000 have received awards. There is a significant amount of time left, until 2029, and it has been the experience in previous schemes that the greatest uptake happens to be in the last year or so.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_173">I thank the Minister. I met Daniel MacSweeney yesterday and he will endeavour to keep the committee updated on his work. I will go to Deputy Ó Murchú, who will have seven minutes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_64">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_174">I apologise; I had a couple of questions for the Ministry the Minister held previously. Tá fáilte romhaibh go léir. There is no shortage of issues. We had a meeting of the Committee on Disability Matters yesterday and Cara and Mark Darmody appeared before it. They have huge qualms about where the assessment of need, AON, process is going and they fear the only solution the Government will offer will be to change the legislation such that the Government will not be breaking the law, whereas I think everybody will be open to a solution that works. As I have said previously, if we have to change the nature of the assessment of need, our plan has to be to deliver assessments within at most six months. We are talking about figures of 15,000 people where we have not been able to follow through on that six-month-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_175">Apologies Deputy, we will try to keep the questions relevant to this Department if that is okay.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_66">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_176">Well, I thought-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_177">The assessment of need process is with the disability matters committee.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_68">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_178">All right. If the Minister was willing to give any information, I would be only too delighted. I would just like to see where the assessment of need process is going as regards delivery. The Minister has to play a huge part in that.</p>
+          <p eId="para_179"> In regard to foster care, again, the problem with some of these issues is that they cross many Departments. Sometimes we have the issue of guardianship and payments, which needs to be resolved in social protection, but it needs to be looked at. I get the sense we do not have enough foster carers. We were speaking about special emergency arrangements and while these are imperfect, there are also situations where we do not have the capacity to take kids out of circumstances that are not good. I understand that the idea needs to be to try to maintain the family unit, but there are times when action needs to be taken and I am not always sure we are in that place. Is there anything we can do about this?</p>
+          <p eId="para_180"> The Minister spoke about early supports and Tusla. That is work this committee will do. We have spoken about planning-for-life-type schemes. Springboard, when it operated in my constituency, was able to focus on a smaller number of families and was probably able to deliver a far better result. We have been talking about dealing with underlying child poverty. What are the Minister's aims in regard to that? Some of these issues have been brought up when we talk about early learning and childcare. We all know there is an insufficient amount of it and at this stage TDs are receiving calls from people who cannot access services.</p>
+          <p eId="para_181"> I have a question about AIM and afterschool. Due to the way some crèches I know of operate, they have dropped below the ratio. They have put rooms aside to be sensory rooms and by taking kids with challenges, they probably end up with more. A very specific piece needs to be done on that. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_69" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_182">I thank the Deputy. Very quickly, in regard to the AON, the focus is to ensure parents and children themselves have faster access to therapy.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_70">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_183">I appreciate that.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_71" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:30:00+01:00"/></from>
+          <p eId="para_184">That is the issue because it is not working as it stands, and that is the abiding guidance we are working under here. It is true to say, for example, that 30% of children can go through the entire very drawn-out process to be told at the end that they do not have a disability, but they have a need and the need has to be focused on at an earlier point. That is the motivation there.</p>
+          <p eId="para_185"> In terms of foster carers, I absolutely agree and I said it earlier. We need to do more and more in that space because it suits children best and, therefore, significant efforts are being made to support foster carers. There is the new initial placement payment. A peer support programme is being introduced for new people coming into the system. There has been significant engagement in terms of meetings, both online and in person, by Tusla in this regard. I can point to the public advertising campaigns being run to bring more people into fostering. This is fostering month and the launch was held recently at Bloom. Reference was made earlier to pensions, back-to-school clothing, footwear allowances and so on. Those supports should be put in place as well. </p>
+          <p eId="para_186"> In terms of the AIM and early learning and childcare, fundamentally early learning and childcare is so important.</p>
+          <p eId="para_187">Early learning and childcare is so important. The AIM model is equally important because it involves provision for children with additional needs to ensure they are catered for in the system. It has two aspects that involve either hiring an additional educator to work in the preschool room or operating with a reduced ratio. It is intended that there will be flexibility. There has been an extension to include supports for ECCE-age children by three hours per day and six hours per day out of term. We are looking consistently at the model. I am not saying anything is perfect but we will continue to look at that model to see that we do more and more because it is a singular grace mechanism at the minute in terms of ensuring children with additional needs are catered for in the setting. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_72">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_188">I am not allowed to ask questions about the CDNTs?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_189">No. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_74">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_190">That is dreadful. We will have to discuss that later. There is a specific piece of work when we are talking about early learning centres. A number of these centres probably have taken more children than others and are dealing with issues ranging from behaviour to other challenges. I agree with the Minister that there needs to be flexibility. It involves looking at how AIM involves the hours provided to it and after-school beyond that. We need to look at that piece in a holistic manner. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_75" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_191">I appreciate that. I would never say that any model is perfect in its entirety so I am happy to continue to look at that. </p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_76">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_192">Can the Minister come back regarding the mother and baby homes institutions payment scheme and the exclusions? I cited the example of Michael Grant. Can she address the family resource centres and the level of interest in respect of inclusion in the national forum, which I presume is enormous? Can she provide an update on the broad consultation and the detailed action plan on early years? </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_77" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_193">In respect of the mother and baby homes, the criteria have been set. I acknowledge that the criteria are in place. Reference has been made to the uptake. We would expect that there will be greater uptake towards the end of the scheme. Regarding those who have been excluded, there will be a review in September 2026. That is also set down so I have to look at that in September 2026. There are so many other aspects to what has been provided for here that we should not forget the importance of birth information and tracing. This has been hugely important. It is the issue that has been raised the most with me. There have been 16,000 applications. It involves counselling supports and special advocacy has been put in place. It is multifunctional. We should not forget the significant impact of birth information and tracing. </p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_78">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_194">Can I pass on my earlier questions to the Minister's officials and they might come back to me with answers? My question concerns the missing Gender Recognition Act impact assessment. In 2018, a review group recommended extending legal gender recognition to non-binary individuals but acknowledged the need for a comprehensive impact assessment. The reply to a parliamentary question from 2023 confirmed that this work was stalled during the pandemic. Has the Department contributed to this interdepartmental group? Will the Minister support a new independent review of the Gender Recognition Act? What steps will be taken to ensure that any future review is neutral, evidence-based and child rights-compliant? In the wake of the Cass review and the closure of the Tavistock clinic in the UK, how many children were referred to the Tavistock centre between 2011 and 2020? Has the Department conducted any follow-up assessments of those cases? What is being done to ensure that gender identity services are evidence-based and multidisciplinary and are not reliant on the discredited Tavistock model? </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_79" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_195">This area falls under the remit of the Department of Social Protection and not my Department-----</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_80">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_196">That is exactly what the Minister for Social Protection said. He said it fell under the remit of the Minister's Department. It was raised at yesterday's meeting and the Minister then said it fell under the remit of the Minister's Department. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_81" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_197">I think I can say categorically that it is under the remit of the Minister for Social Protection. </p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_82">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_198">Well, the Minister for Social Protection is kicking the bucket down the line to the Minister. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_83" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_199">I will follow that up again but gender recognition has always been under the remit of the Department of Social Protection. It was with the previous Minister for Social Protection, Heather Humphreys, and is now with the current Minister, Deputy Dara Calleary. </p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_84">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_200">I tabled a parliamentary question about the number of applications for the building blocks programme. There were 78 applications in total, 29 of which were deemed unsuccessful or ineligible. This is quite a high number - about 40%. Is there an appeals process and if so, will it utilise the money that has not been allocated? Obviously, childcare providers are very interested in this scheme and we want to see more of them in it. </p>
+          <p eId="para_201"> The Minister and I have spoken about the planning guidelines. Can she give me a timeline for when the review will take place or when we will see the outcome of that? We must address the exemptions around one-bedroom apartments, the fact that a builder can say that they do not need to put in a crèche because there is a crèche in the area even though there might be a waiting list and the fact that it is based on individual planning applications for developments of 75 rather than the cumulative number so communities can miss out. As for the financial expectations around purchasing those very expensive buildings, will that form part of the Minister's public stepping into State-led facilities as well? </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_85" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_202">There is a limited appeals system for the building blocks scheme. It is an opportunity. I recognise that there could be a simple error on a form or a miscalculation so there is a limited appeals process there. Perhaps that will-----</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_86">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_203">It is just that a rate of 40% of people being unsuccessful is very high. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_87" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_204">At the same time, I would say that a criterion is a criterion but if there is any misstep in the application form, that will be picked up. </p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_88">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_205">Barely a day goes by when I am not told how lucky I am to have such a supportive husband and it is true. I am very lucky to have a very supportive husband, who does a great job, but our marriage is a partnership. I do not believe many of my male colleagues get the same commentary. The cultural biases regarding fathers as parents really need to change. The CSO and ESRI data show that the take up of paternity leave is at 50% while the take up of parent's leave is 25%. There is limited data on parental leave. I would encourage the Minister to look at how we can change societal norms and the culture in workplaces. We have to set examples from the top and we have to be vocal about it. I would like to hear what work the Minister will try to do to deliver on that because equality of leave, including statutory leave, is so important to delivering on progress in equality. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_89" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_206">I appreciate what the Deputy is saying. We live in a different world and we live in a world where I would like to think there is equality in terms of parents. Family leave has been extended. Parent's leave has been extended to nine weeks per parent. </p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_90">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_207">It is very welcome. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_91" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_208">I will keep family leave entitlements under review and we will see how we go. </p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_92">
+          <from>Deputy Grace Boland<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_209">And a public campaign on awareness. </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_93" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_210">Yes, okay.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_94">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_211">On the foster care sector, can the Minister expand on the types of incentives or outreach that are being used to encourage fostering, particularly in areas where it barely exists? </p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_95" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:40:00+01:00"/></from>
+          <p eId="para_212">Some of the outreach is around information meetings. There has been a significant number of those meetings in person and online conducted by Tusla. An initial foster care placement payment has been introduced, which is an extra week's payment, for those who might be coming into the system for the first time. </p>
+          <p eId="para_213">A new peer support pilot programme is also being provided to support new people coming into the system. There has also been a revised mileage payment scheme, which has been advocated for for some time.</p>
+          <p eId="para_214"> Importantly with respect to foster care, a strategic lead has been employed by Tusla to promote foster care and give it particularly priority within its Department. I earlier referenced fostering awareness month. Some 130 information sessions, online and in-person, were provided by Tusla. An information hub is now available for foster carers. As I said, we gave further commitment in the programme for Government to increased foster care allowances, in addition to the 21% that was provided for in the previous budget.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_96">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_215">That is very good. I thank the Minister.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_97">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_216">My main question relates to the Minister's plans for early and long-term family supports, which can benefit children and families, to ensure children make their way eventually into a better life, including education and employment, despite considerable levels of disadvantage. There seems to be a fair amount of funnelling into family resource centres, FRCs, at the moment. I worry about the long-term sustainability of organisations that do not receive the funding. I know of a number of good projects in Dundalk that are at that at the minute.</p>
+          <p eId="para_217"> In writing, I have questions about a birth and tracing anomaly and about someone who was in a mother and baby home and may be excluded from a scheme on the basis of bad records. I will put those questions in writing to the Minister.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_98" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_218">I thank the Deputy and ask him to follow up directly with me in respect of those last two points.</p>
+          <p eId="para_219"> I value the work of FRCs. I met their national representatives recently. As the Deputy is aware, an application process is under way for the creation of five additional FRCs. I wish it were more but that was the funding provided in the previous budget. I hope we can do more in that space, going forward. There is also an issue in respect of their viability. They have been clear on that point, notwithstanding they were all brought up to the point of €160,000. They are seeking more funding. Everything is dependent on how we negotiate the budget. There are many competing demands, many of which have been raised at this meeting. We will do all we can.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_99">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_220">I also mentioned early family supports, planning for life and those sorts of projects and springboards. That is something that we-----</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_100" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_221">I absolutely agree. Particularly in the early years sector, we now recognise the need to bring equality to the system. The earlier we intervene the better. As the Deputy said, we need to be across it from the earliest point to the latest point.</p>
+        </speech>
+        <speech by="#MikeKennelly" eId="spk_101">
+          <from>Senator Mike Kennelly<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_222">I have a question to ask on behalf of a family. Foster parents have been looking after a kid for many years, since he was five years old. He will shortly turn 22. He has high enough dependencies in the context of independent living and stuff like that. The only pathway for this family is full-time foster care for this person. What is the best advisable mechanism for this family? They want to secure his future and Tusla is being kind of heavy-handed about placing him into full-time care.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_102" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_223">The Senator could give me the details of the case separately and I will ask for it to be followed up.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_224">I will ask about the EU directive on pay transparency and valuing equally the work of men and women through pay transparency and enforcement mechanisms. Like everybody else, I am seeing the advertisement on the television at the moment about getting employers ready to report on the pay gap. The Minister mentioned that the centralised portal for reporting was under way. What is the progress in that regard? When will employers get more support for that reporting?</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_104" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_225">The Cathaoirleach raises a good point. Gender pay reporting is important because it is a key tool in tackling the gender pay gap. The requirement has now been extended on a phased basis and the regulations have now come into effect so that anybody who has 50 or more employees must report through the portal this year. The Department is doing all it can. This was done on a phased basis and employers were aware it was coming. It is necessary because if it is not published, there is no incentive for people to do what they should be doing in the first instance. It is beyond me why somebody would be paid a particular remuneration on the basis of their gender. We need to respect the principle of equal pay for equal work and do all we can to ensure it is happening. I am fully supportive of the portal and its being publicly advertised.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_226">I thank the Minister. For some organisations, it will shine a light for their own benefit on something they not have realised. We have time for one more question and Senator Keogan had indicated.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_106">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_227">My question relates to unaccompanied minors. I do not know if the Minister is aware of what is happening around the country. Residential care settings are popping up in many areas. They are mixed, which I am a little concerned about. It is sometimes hard to verify a person's age when they come into this country. I want to make the Minister aware of the situation. As she knows, residential care settings do not provide the best care for children. I have always advocated for foster families or people who can foster to come forward. I want to make the Minister aware of the situation. Residential care settings are popping up throughout the country.</p>
+          <p eId="para_228"> Last year, there were 50,000 unaccompanied minors in the EU. I do not know how many of them ended up in Ireland. I do not have the numbers for Ireland. It is becoming a trend. I do not think that any of the settings need planning permission so a residential placement with five or six children can be set up. I want to make the Minister aware of the situation. These placements are mixed.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_107" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_229">I thank the Senator. In those settings, staff must be vetted and qualifications must be in place.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_108">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_230">I know that. I am well aware of all that.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_109" as="#Minister_for_Children,_Disability_and_Equality">
+          <from>Deputy Norma Foley<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_231">I appreciate that but in deference to those who are working in those settings, I want to acknowledge that. These are children and unaccompanied minors, and provision must be made for them. I hear the point the Senator is making. If there is a specific setting she wants to raise with me, I am happy to engage after the meeting.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_110">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_232">I thank the Minister.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_111">
+          <from> An Cathaoirleach<recordedTime time="2025-06-12T11:50:00+01:00"/></from>
+          <p eId="para_233">I thank the Minister for her thoughtful answers to all the questions. I also thank her Department officials for taking the time to be with us. We appreciate it. All the members of the committee have found it an informative engagement.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 11.57 a.m. until 9.30 a.m. on Thursday, 19 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

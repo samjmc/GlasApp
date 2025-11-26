@@ -1,0 +1,1090 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/committee_of_public_accounts/2025-05-15/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_of_public_accounts/2025-05-15/debate"/>
+          <FRBRdate date="2025-05-15" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/committee_of_public_accounts"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/committee_of_public_accounts/2025-05-15/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_of_public_accounts/2025-05-15/debate/mul@"/>
+          <FRBRdate date="2025-05-15" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/committee_of_public_accounts/2025-05-15/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_of_public_accounts/2025-05-15/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AlbertDolan" href="/ie/oireachtas/member/id/Albert-Dolan.D.2024-11-29" showAs="Albert Dolan"/>
+        <TLCPerson eId="CatherineConnolly" href="/ie/oireachtas/member/id/Catherine-Connolly.D.2016-10-03" showAs="Catherine Connolly"/>
+        <TLCPerson eId="CathyBennett" href="/ie/oireachtas/member/id/Cathy-Bennett.D.2024-11-29" showAs="Cathy Bennett"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JoannaByrne" href="/ie/oireachtas/member/id/Joanna-Byrne.D.2024-11-29" showAs="Joanna Byrne"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="PaulMcAuliffe" href="/ie/oireachtas/member/id/Paul-McAuliffe.D.2020-02-08" showAs="Paul McAuliffe"/>
+        <TLCPerson eId="SeamusMcGrath" href="/ie/oireachtas/member/id/Séamus-McGrath.D.2024-11-29" showAs="Séamus McGrath"/>
+        <TLCRole eId="An_Cathaoirleach_Gníomhach" href="/ie/oireachtas/role/office/an_cathaoirleach_gníomhach" showAs="An Cathaoirleach Gníomhach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>COISTE UM CHUNTAIS PHOIBLÍ</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>COMMITTEE OF PUBLIC ACCOUNTS</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-15">Déardaoin, 15 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-15">Thursday, 15 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">The Committee met at 10:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_2">MEMBERS  PRESENT:</summary>
+          <table>
+            <tr>
+              <td>
+                <p eId="para_1">
+                  <person refersTo="#CathyBennett">Deputy Cathy Bennett</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_2">
+                  <person refersTo="#JamesGeogheganFG">Deputy James Geoghegan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Deputy Grace Boland</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#EoghanKenny">Deputy Eoghan Kenny</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JoannaByrne">Deputy Joanna Byrne</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PaulMcAuliffe">Deputy Paul McAuliffe</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AlbertDolan">Deputy Albert Dolan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SeamusMcGrath">Deputy Séamus McGrath</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AidanFarrelly">Deputy Aidan Farrelly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JoeNeville">Deputy Joe Neville.</person>
+                </p>
+              </td>
+            </tr>
+          </table>
+          <summary eId="sum_3">
+            <person as="#Chair" refersTo="#CatherineConnolly">DEPUTY CATHERINE CONNOLLY IN THE CHAIR.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_4"><b>Mr. Seamus McCarthy </b><i>(An tArd Reachtaire Cuntas agus Ciste)</i> called and examined.</summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Committee<recordedTime time="2025-05-15T10:00:00+01:00"/></heading>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_1">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:00:00+01:00"/></from>
+          <p eId="para_11">One apology has been received from Deputy Ardagh. We are joined by the Comptroller and Auditor General, Mr. Seamus McCarthy, who is a permanent witness to the committee. Everyone is very welcome. I remind everyone to turn off their mobile phones, including mine, which is not off. I have a few housekeeping matters. I remind members of the constitutional requirements that in order to participate in public meetings, members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. Before we proceed with the rest of the meeting, members are reminded of the long-standing practice and ruling of the Cathaoirleach to the effect that members should not comment on, criticise or make charges against a person outside the House or an official by name or in any such a way as to make him or her identifiable.</p>
+          <p eId="para_12"> The public business before us this morning is as follows: minutes of the previous meeting; accounts and financial statements; correspondence; election of Leas-Chathaoirleach; and any other business. We will begin with the minutes of the meeting of 8 May 2025. Are there any matters arising under that? Are the minutes approved? Are we happy with the accuracy? They are agreed.</p>
+          <p eId="para_13"> A total of 106 sets of accounts and financial statements have been laid between 4 November 2024 and 9 May 2025. I will ask the Comptroller and Auditor General, Mr. Seamus McCarthy, to address them before opening the floor to members.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:00:00+01:00"/></from>
+          <p eId="para_14">Go raibh maith agat, a Chathaoirligh. Because the list is so long, it may be best that if Deputies have questions as I go, we can maybe take them when we are at a particular point, so they should feel free to interrupt or signal and I am happy to give further detail to the extent that I can.</p>
+          <p eId="para_15"> The list of financial statements and accounts is very much longer because there has been such a gap since the last PAC meeting. Typically, what we do is close off on the preceding Friday and that is what makes the list for each week. Members will see in the way the table is laid out that there is an indication of the turnover of each of the bodies. That is generally based on the total expenditure in the year, but if total income is significantly greater, we may use that as the turnover figure. In some cases, there are funds, and we signal what the balance in the fund at the end of the period is if that is maybe of interest or the significant issue. In most cases, the period of account is the calendar year ending on 31 December. The exceptions are technological universities where their period of account runs from 1 September to the following 31 August. For the other universities, the year of account is from 1 October to 30 September. There are one or two others that have a non-calendar year of account. The bulk of what is being presented is with regard to 2023 where the audits would have finished during 2024 and then there would have been some delay to their presentation.</p>
+          <p eId="para_16"> In general, a period of approximately three months from my signing of the certificate is allowed and then the accounts are supposed to be in the Oireachtas Library. Most of them manage to come in within that period or very shortly after the three months. To take them from the top, they are grouped into sectors for ease of reference and so on.</p>
+          <p eId="para_17">No. 1 is the residential institutions redress special account - Caranua. There was nil turnover in that and it received a clear audit opinion. No. 2 is the National Council for Special Education for 2023, which received a clear audit opinion. No. 3 is Longford and Westmeath Education and Training Board for 2023, which received a clear audit opinion. Dublin City University received a clear audit opinion. The National University of Ireland received a clear audit opinion. </p>
+          <p eId="para_18"> University College Dublin for the year 2022-23 received a clear audit opinion but I drew attention to a material level of procurement non-compliance. This has been a recurring issue. The committee will see it in connection with a number of the accounts and statements here. If non-compliant procurement exceeds €500,000, which is a flat figure we apply, we draw attention to it. It can be more significant for a smaller body. A figure of €500,000 may be a significant proportion. It might be less for a bigger institution like University College Dublin but it has been a focus of interest of the committee in the past and good progress has been made in bringing down the number and value of non-compliant procurement. In this case, the figure for non-compliant procurement was €4.4 million. </p>
+          <p eId="para_19"> No. 7 is Munster Technological University, which received a clear audit opinion. However, I drew attention to a cyberattack experienced by the university that resulted in direct costs of €3.5 million in responding to the incident. I also drew attention to a material level of procurement non-compliance. </p>
+          <p eId="para_20"> No. 8 is the Royal Irish Academy, which received a clear audit opinion. No. 9 is the Grangegorman Development Agency, which received a clear audit opinion.</p>
+          <p eId="para_21"> No. 10 is Technological University Dublin for 2022-23, which received a clear audit opinion. However, I drew attention to the fact that the university incurred a deficit of €8.4 million to the year end 31 August 2023. That followed a deficit in the prior period of account of €3.8 million. Note 29 explains how the governing body is satisfied to present the financial statements on a going concern basis. I also drew attention to a material level of procurement non-compliance. In that case, it was €794,000. </p>
+          <p eId="para_22"> No. 11 is the Qualifications and Quality Assurance Authority of Ireland, which received a clear audit opinion. No. 12 is Mayo, Sligo and Leitrim Education and Training Board, which received a clear audit opinion. No. 13 is Limerick and Clare Education and Training Board, which received a clear audit opinion, but I drew attention to a material level of procurement non-compliance - in this case, €1.6 million. No. 14 is Galway and Roscommon Education and Training Board, which received a clear audit opinion. No. 15 is Tipperary Education and Training Board, which received a clear audit opinion. No. 16 is Kildare and Wicklow Education and Training Board, which received a clear audit opinion, but I drew attention to a material level of procurement non-compliance totalling €693,000. No. 17 is Cork Education and Training Board, which received a clear audit opinion. In that case, attention was drawn to a material level of procurement non-compliance totalling €1.8 million. No. 18 is Kerry Education and Training Board, which received a clear audit opinion. </p>
+          <p eId="para_23"> No. 19 is Dublin and Dún Laoghaire Education and Training Board, which received a clear audit opinion, but I drew attention to a high-risk data breach in March 2023. I understand this was reported to the Data Protection Commissioner but it was not brought to the attention of the board as required by the board's policy and the education and training board code of governance practice. I also drew attention to a material of procurement non-compliance totalling €2.1 million. Do Deputies have any questions?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_3">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_24">We will take questions at the end. We will finish the education grouping. </p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_25">No. 20 is Laois and Offaly Education and Training Board, which received a clear audit opinion. No. 21 is Atlantic Technological University, which received a clear audit opinion but I drew attention to a bad debt provision of €371,000 relating to patents and licence fees due from a company in which the university had a minority shareholding and which has subsequently gone into liquidation. In that case, attention was drawn to a material level of procurement non-compliance totalling €1.1 million. No. 22 is the South East Technological University, which received a clear audit opinion. No. 23 is St. Angela's College and involved the cessation or final accounts for St. Angela's College, which has been merged into Atlantic Technological University. St. Angela's College received a clear audit opinion. </p>
+          <p eId="para_26"> No. 24 is Louth and Meath Education and Training Board, which received a clear audit opinion but attention is drawn to the impact of the delay in the purchase of a property for €6.5 million where the funds have been held in a non-interest-bearing account since September 2023. I understand that those funds are still in a non-interest-bearing account. The transaction has not been completed. </p>
+          <p eId="para_27"> No. 25 is the Ireland-United States Commission for Educational Exchange financial statements for 2023-24. They received a clear audit opinion. No. 26 is the Ireland-United States Educational Fund. This account relates to 2023. That received a clear audit opinion. This is the end of the education sector. </p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_5">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_28">I apologise for doing it this way but there are 106 to go through so I thought it better to go through the education ones first. What is the highest figure for non-compliant procurement? </p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_29">It is in the health sector.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_7">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_30">What is the highest figure for this group?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_31">Of this group, it was the figure of €4.4 million in University College Dublin. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_9">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_32">Could the Comptroller and Auditor General add some context regarding the number of statements we are going to see? There were 26 there. Is this everything in the education sector? </p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_33">No, education bodies that presented in October and September 2024 are part of the batch. There is a total of 106 here. In the first meeting in September, after the summer recess, I presented a listing of about 65. At the end of September, there were 44 or 45 Vote accounts, so that is about 100 more. Between September and the end of October, there were a number of other ones. Between three lists, one would get a picture of about two thirds of all of the accounts and statements. I can have those circulated to members.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_11">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_34">I am just curious because one might see a trend. At the first meeting, one gets hit with education and wonders whether it will involve a lot of education bodies. To add context, the Comptroller and Auditor General is saying this is about one third, or slightly less than that.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_35">It is about one third.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_13">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_36">I was just curious about that. Procurement jumps out as an issue. Is that a trend with the rest of them or is it a general issue? The Comptroller and Auditor General found fault with a number of them.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:10:00+01:00"/></from>
+          <p eId="para_37">I think the education sector might crop up more than others. The Deputy will see that there is quite a batch of general semi-State bodies on this list as well. It does come up occasionally but it is less common than it is in the education sector. Having said that, previous committees did have a very strong focus on non-compliant procurement. My sense is that the quantum is becoming lower and there are fewer bodies. Maybe three or four years ago, this list was worse on the education side. There is a slight improvement there.</p>
+          <p eId="para_38">An area where there is perhaps more of a systemic problem is the health sector bodies.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_15">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_39">I was surprised to hear Kildare and Wicklow Education and Training Board, KWETB, included because it had issues in the past. I would have expected its procurement to be clean as a whistle. I was surprised to see that. </p>
+          <p eId="para_40"> Data breaches and-or cyberattacks jumped out a few times. That had an impact on costs. I do not have a specific question but it is something that jumped out to me.</p>
+          <p eId="para_41"> My third point is about the €6.5 million sitting in the non-interest-bearing account. That has probably cost the State approximately €500,000 in interest that could have been earned in that period, being conservative. That is a significant cost, not to mind the fact that the property has not been bought and the costs will eventually skyrocket so we are losing on both sides. That needs to be taken away in general because it is probably not a single issue with that education and training board. It is probably endemic across the State culture so it is good the Comptroller and Auditor General noted it. We should be really conscious of it across the State sector. That was a very good point.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_42">I would not like to put a figure on the estimated-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_17">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_43">If it was 4% interest over two years, it is not hard.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_44">It is significant and the potential loss of value-----</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_19">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_45">That is generous.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_20">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_46">No, it is not, not with that amount of money.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_47">-----to the State is significant. That is why I drew attention to it.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_22">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_48">For the benefit of other members, normally when Mr. McCarthy presents the accounts we might tease out issues he has drawn to our attention, we might seek clarification from the relevant body in advance and we might make a recommendation about whether we want to invite it to appear before the committee. On that basis, there are three issues I would like to tease out.</p>
+          <p eId="para_49"> Did Mr. McCarthy say that non-compliant procurement at UCD was at its highest level?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_50">No, it is the highest of this particular sub-group.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_24">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_51">The figure is not mentioned.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_52">It is €4.4 million. In the listing Deputies have, there are links they can click on. If they look under the name of the body, they can click to view the whole set of financial statements, which are in the Oireachtas Library. If they click on the other side, where I draw attention to something, they will come to the text where they can see the explanation the body has given for the non-compliant procurement.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_26">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_53">In UCD, was it specific to a project or was it part of a wider issue of non-compliant procurement?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_54">There is not much detail given about the make-up of it. In those circumstances, the committee's practice has been to write to the body to request more of a breakdown. I do not have detail of it today. It says €4.4 million of expenditure relating to 33 suppliers, so I suspect it is made up of a considerable list of relatively small amounts.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_28">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_55">I agree that writing to UCD to seek clarification would be useful.</p>
+          <p eId="para_56"> The second issue relates to the Technological University Dublin, TUD, at Grangegorman. I do not recall whether it was at this committee or in public commentary in the media that issues were raised about the amount of debt published in its accounts in any one year. Is the Comptroller and Auditor General satisfied that there is no issue with how debt is being represented in the accounts?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_57">I would not give a clear audit opinion if I had a doubt about the representation of transactions or balances.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_30">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_58">The stuff that sits with the Grangegorman Development Agency is separate from TUD, although they are on the same campus. They present two different sets of accounts. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_59">Yes, the Grangegorman Development Agency only exists to develop the campus, to construct the buildings, enter contracts and then hand them over to TUD. Once the campus is fully developed as regards the major development, I would expect Grangegorman Development Agency will cease to exist.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_32">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_60">The last issue is in regard to the €6.5 million in the non-interest-accruing account. I suggest that we write to seek an explanation. It may have been that the ETB predicted funds would need to be released sooner, but we should get some details from it.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_61">Yes, I think there was a title issue, but in that circumstance, it is undesirable that money would be taken out of the Exchequer and just be sitting in a non-interest-bearing account.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_34">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_62">Again, I suggest we write to it.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_35">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_63">The Deputy suggests we write to all of them.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_36">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_64">I thank the Comptroller and Auditor General for the presentation so far. I will make a general observation on the consistent noting of a material level of non-compliance. When I looked into the detail on some of the ETBs specifically, I started to understand why, for some of the goods and services, it might not be possible to get a contract. Does Mr. McCarthy have an overall opinion on that, considering it is so consistent in some ETBs that it appears to be a trend? It seems that a material level of non-compliance is almost going to be ever-present. Is that a fair assumption to make, based on the types of goods and services some ETBs engage with regularly?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_65">If you look at the list, perhaps half of them did not have non-compliant procurement identified. That is the answer. They should all be capable of bringing it down to an absolute minimum. That has been the emphasis. Previously, more of them would have been called out for non-compliant procurement above €500,000, but they have got their acts together on procurement. The nature of it with ETBs is that it tends to be supplies for such courses as woodwork, metalwork and so forth, or perhaps maintenance work on schools. Local suppliers are interested in being able to compete and that is the point of competitive and compliant procurement - that everyone who is in business is entitled to make a pitch. If it is not put out competitively, and that is the reason it is non-compliant, then some suppliers do not have an opportunity to compete.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_38">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_66">When the Comptroller and Auditor General highlights an issue in his report, such as a data breach or a procurement concern, is it only highlighted in the report or does he refer it to other bodies such as the Data Protection Commission or is it up to them to pick up on the highlighted issue? Does his office flag it?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_67">On that specific example, there is a stringent requirement on a public body or any other body that loses personal data to report it very promptly to the Data Protection Commissioner. It would be a serious breach or matter of non-compliance if it had not been done. If we found there had been a serious data breach that was not reported, we would expect, once we pointed it out, for the body to go immediately to the Data Protection Commissioner and report it because that is the fastest way. It would take time for us to complete the process. Generally, we would not have to report it in those kinds of circumstances.</p>
+          <p eId="para_68"> There is an obligation on us as auditors, if we suspect fraud in a body, to report any such circumstances to An Garda Síochána. We would do that, but we normally would not talk about a specific instance publicly. I would not refer to that as there may be a danger of tipping off. There are circumstances where we will report things, but normally the onus is on the body, if we point out to it that there might be a matter it needs to clarify with the Revenue Commissioners, for example. That is usually what happens</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_40">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_69">Does the same apply to procurement issues? The Comptroller and Auditor General would not necessarily refer them to the Department of Public Expenditure, NDP Delivery and Reform. It would be highlighted in the report. Does it go anywhere beyond that?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:20:00+01:00"/></from>
+          <p eId="para_70">There is an obligation on Government Departments to report to me and the Department of public expenditure, once a year, any case where there is non-competitive procurement, not even non-compliant procurement.</p>
+          <p eId="para_71">There can be circumstances where there can be non-competitive procurement if, for example, there is only one supplier. That is routinely reported by Departments. With non-Government departments, or non-Vote holders, the requirement is not as stringent, so our bringing it to attention in the financial statements is also the way it comes to the Department of public expenditure. We send the same list to the Department of Public Expenditure, NDP Delivery and Reform on a routine basis, so it is alerted that way.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_42">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_72">That is great. On the €6.5 million in the account without any interest, I presume the argument is that it may be needed on demand and so on, but it does not seem to be a good use or good treasury management that it was not earning some degree of interest. I am sure there are financial products out there where you can have money on demand and still receive some interest, so I think that is certainly something we need to pursue.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_73">From recall it is actually with the solicitors for the purchaser. That is the body.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_44">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_74">We will come back to it, I am sure.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_45">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_75">This is a parochial question from me, if nobody else is coming in, about the GRETB in Galway. It has got its act together and got a clear audit, so I just want to acknowledge that because there were difficulties in the past. I also raise a general point because Mr. McCarthy said that 50% in education generally are compliant.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_76">I was giving an example in response to Deputy Farrelly about what can be done about the others.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_47">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_77">Is that an improvement from previously?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_78">I think it-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_49">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_79">Are we going in the right direction? That is my general question.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_80">That is my sense in the education sector. It has improved from a number of years past.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_51">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_81">Okay. I apologise to Deputy Dolan as I did not see him. I would not have come in if I had known he was coming in.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_52">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_82">I apologise because I was just observing a set of financial statements and they prompted a question for me. Grangegorman had a 6.6-fold increase in its travel and subsistence expenditure between 2022 and 2023. It is a very material sum. It went from €1,500 for the year to €10,000. I spotted it and I was curious as to why there was a 660% increase in travel expenses. It does not seem reasonable. Would the Office of the Comptroller and Auditor General carry out a reasonableness test on every changing figure between years, or would this have been scoped out because of materiality?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_83">It is obviously a detailed question. I do not believe we would particularly pursue that. I cannot remember the organisation's turnover offhand.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_54">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_84">I do not even know-----</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_85">The turnover is €16 million in that year. We would certainly be looking for trends and would have looked for an explanation from the client body. That would be a routine part of the audit. In the period moving from 2022 to 2023 you were getting back to normal business after Covid. If the Deputy wants a further explanation as to why the increase came, I suggest writing to the body and getting more detail.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_56">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_86">I propose we write to the Grangegorman entity and ask for an explanation as to how the travel expenses increased six times. It is a significant increase. Maybe as Mr. McCarthy said, that is possible coming out of Covid, but I said I would flag it.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_57">
+          <from>Deputy Grace Boland<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_87">I am conscious that we have an awful lot of accounts to go through today and we only got the documents yesterday. If, having reviewed the accounts, we want to come back and query anything, can we do that at our next PAC meeting or do we write to the Chair or the clerk? Is that how it works?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_58">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_88">The staff are very helpful. The Deputy can raise any matter here now if she wants.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_59">
+          <from>Deputy Grace Boland<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_89">I am conscious we have so many, and we probably have not had an opportunity to go through them. Three good points have been raised on that, but is there anything else in the education sector that Mr. McCarthy thinks we should be querying with any of the education bodies?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_90">No, the point of drawing attention to matters that arise are that these are the things that seem to be unusual to us. If there were a systemic issue, I felt may need further attention, I would usually do a sector-wide survey and then report formally to the committee. If it wants further detail, it is open to the committee to write to the bodies, because that is what the process is here. If there is something in the financial statements it needs a further explanation for, the committee needs to get it from them. I am the auditor. What I am fundamentally trying to do is ensure that the information presented in the accounts is true, fair and accurate. It is then for the committee to identify what it wants to follow up on. The attention being drawn is maybe a help to the committee, and it will see patterns over time within a sector or a body.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_61">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_91">I think there have been four proposals to write. We might come back in private session to look at the practical difficulties for all of us accessing these documents. It is a major nightmare, so I think we all agree with that. We might discuss that in private. Computers and technology have helped but it is very difficult. We will go back to the proposals. Deputy McAuliffe had two proposals. We will take the first one.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_62">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_92">The Deputy is challenging me to remember them now. If I recall, it was to write to UCD to seek clarity on the 33 items.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_63">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_93">Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_64">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_94">The second was to write to Louth ETB about the €6.5 million. I got an answer on the Grangegorman issue.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_65">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_95">Is that agreed? Agreed. There was a third from Deputy Dolan.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_66">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_96">That was a proposal to write to Grangegorman to query its six-fold increase in travel expenses between the years 2022 and 2023.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_67">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_97">Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_68">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_98">That was not noted in the opinion, and I raise some hesitancy about such a small financial figure, given the context we had in 2022 and 2023. If it is pertinent I am happy to support it, but at the same time we could end up getting into very specific detail if it was not flagged by the Comptroller and Auditor General at this point.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_69">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_99">I think it is open to all members. The Comptroller and Auditor General carries out the audit. He is here as the auditor, and he highlights certain issues. It is up to any member to highlight any other members.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_70">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_100">The sum we are talking about is so small. It is just to raise that. It is a small figure.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_71">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_101">That is fair. It is a small figure. As we go down through financial statements there are a significant number of things that will fall below materiality levels, but that does not mean it is not important and it does not mean it is not important to flag it. I am not asking to bring them here. I am just asking to write for them to explain it further.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_72">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_102">We move on to the next block, which is slightly smaller. There are 17 entities here under the broad health remit. We will go through those now.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_73">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_103">But they are interesting.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_74">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_104">Very good.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_105">Does the Chair want to wait to the end?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_76">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_106">Yes, I do. We have 106 to go through, Deputy McAuliffe, so we will go through them in blocks.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:30:00+01:00"/></from>
+          <p eId="para_107">No. 27, Leopardstown Park Hospital, received a clear audit opinion. No. 28, St. James's Hospital Board, received a clear audit opinion. However, in that case I drew attention to a material level of procurement non-compliance. In this case, it reports that 86% of its €256 million procurement was compliant. If you do the reverse, that would imply that an estimated €35.4 million of its procurement was non-compliant. That is quite significant. Beaumont Hospital, No. 29, received a clear audit opinion, but I also drew attention to a material level of procurement non-compliance. In that case the figure is an estimated €18.5 million.</p>
+          <p eId="para_108"> No. 30 is Children's Health Ireland, which will be before the committee in the coming weeks. This received a qualified audit opinion. This is an unusual issue but it does arise in the health sector. The reason for it is that, in my view, the accounts give a true and fair view of the financial transactions and the financial position of Children's Health Ireland except that they account for the costs of retirement benefit entitlements of staff only as they become payable. The accounts are accrual accounts and, in the normal way, to give a true and fair view, they should be accruing the liabilities in relation to pensions that have been incurred in the period of account. Because of a direction from the Minister for Health, which is long-standing, in the health sector, they account for pensions only as they are paid. Therefore, I have to give a qualified audit opinion on that specific point. Otherwise, as I said, they give a true and fair view.</p>
+          <p eId="para_109"> Separately on that account, I draw attention to a number of items. First, claims to the value of €250,000 from Children's Health Ireland were rejected by private insurers as they had not been submitted on time and were outside the required timeframe, so that was a loss of potential income. A second matter is that at the end of the previous CEO's contract, a settlement agreement was reached to appoint her to a new strategic director role within Children's Health Ireland on her existing remuneration level. Where there is a matter of settlement with a chief officer of a body, I will normally draw attention to that. Finally, I drew attention to a material level of procurement non-compliance in Children's Health Ireland which I have done previously as well. This was for a total value of €5.2 million.</p>
+          <p eId="para_110"> No. 31 is the Health and Social Care Professionals Council. Again, there is a qualified audit opinion. It is the same standard issue that the accounts give a true and fair view except that they account for the costs of retirement benefit entitlements of staff only as they become payable.</p>
+          <p eId="para_111"> The Medical Council received a clear audit opinion but I drew attention to a material level of procurement non-compliance in that case.</p>
+          <p eId="para_112"> No. 33, the National Disability Authority received a clear audit opinion. </p>
+          <p eId="para_113"> No. 34, the Health Insurance Authority received a qualified audit opinion. Again, this was because of the accounting treatment for retirement benefit entitlements. I should point out here that, in the financial statements that were presented for the Health Insurance Authority, there is a second account. This is the account of the risk equalisation fund. It is not called out separately on the list. The turnover on the risk equalisation fund in 2023 was €860 million. That is the more important aspect of these financial statements but the transactions on the fund are accounted for separately. It received a clear audit opinion. We might amend the list so that it is clear these were presented together.</p>
+          <p eId="para_114"> No. 35, the National Treatment Purchase Fund received a qualified audit opinion. Again, this is the standard one of the accounting treatment for retirement benefit entitlements.</p>
+          <p eId="para_115"> No. 36, the Nursing and Midwifery Board of Ireland, received a qualified audit opinion on the same basis. Otherwise, it was a true and fair view.</p>
+          <p eId="para_116"> No. 37, the hepatitis C insurance scheme, which is a special account managed by the HSE. This received a clear audit opinion.</p>
+          <p eId="para_117"> No. 38, the Health Service Executive consolidated patients' private property account, received a clear audit opinion.</p>
+          <p eId="para_118"> No. 39, a special account for the purposes of the health repayment scheme, received a clear audit opinion.</p>
+          <p eId="para_119"> No. 40, the health repayment scheme donations fund account, received a clear audit opinion. For Nos. 39 and 40 there were no transactions in relation to it. They are almost dormant accounts at this stage.</p>
+          <p eId="para_120"> No. 41, the Pre-Hospital Emergency Care Council, received a qualified opinion on the basis of how it accounts for retirement benefit entitlements. I also draw attention to an additional tax liability to the value of €812,000 in relation to external assessors, who had been treated as contractors by the council but who should have been treated as employees. The council had to pay an additional €812,000 to Revenue to settle that liability.</p>
+          <p eId="para_121"> No. 42, the National Haemophilia Council, received a clear audit opinion.</p>
+          <p eId="para_122"> No. 43, the Health Research Board, received a qualified audit opinion on the retirement benefit accounting.</p>
+          <p eId="para_123"> No. 44, the National Paediatric Hospital Development Board, received a qualified audit opinion in respect of the accounting treatment of retirement benefit entitlements. Secondarily, I drew attention to an additional payment of €107.6 million, excluding VAT, in respect of critical delay events on the construction project where court proceedings have been initiated. The €107.6 million is not recognised as a payment in the year. It is only disclosed in the contingent liability note, but that payment has actually been made to the contractor. I think the committee will have the opportunity examine that further next week when the board is before the committee.</p>
+          <p eId="para_124"> Those are the health sector ones.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_78">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:40:00+01:00"/></from>
+          <p eId="para_125">Mr. McCarthy wanted to correct something. We are in agreement with that? Yes. Deputy Geoghegan is the first speaker.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_79">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T10:40:00+01:00"/></from>
+          <p eId="para_126">In relation to Children's Health Ireland, I will try not to use the word "shocking" too much when I am on this committee, but it does seem to me to be shocking that Children's Health Ireland lost a quarter of a million euro because it simply had not submitted the forms to the private insurer on time. In the context of the overall revenue of Children's Health Ireland, it is a small amount, but in the real world, a quarter of a million euro simply evaporating because, procedurally, the relevant forms were not submitted is really demoralising and bad. Does Mr. McCarthy have any additional information that has been supplied to him by Children's Health Ireland in relation to this issue? If he does not, subject to his answer to that, perhaps we might write to Children's Health Ireland in advance of it coming before the committee asking it to give a full account of the control mechanisms that are in place in respect of this issue and how forms are submitted to private insurers. Was the board informed in relation to this? What actions has it subsequently taken to ensure something like this would not take place again?</p>
+          <p eId="para_127"> Regarding the remuneration of the previous CEO, will Mr. McCarthy elaborate on the detail of this? I do not want to presuppose what the facts are because I am not overly familiar with what is publicly available on the facts in relation to what happened. A CEO resigned and a mediation process took place and, arising from that, that person now has a role as strategic director in Children's Health Ireland. I am just trying to understand. Mr. McCarthy said that he flags these things generally. Is there anything else that he wants to flag in relation to that outcome?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:40:00+01:00"/></from>
+          <p eId="para_128">As a general principle, obviously we will have more detail in relation to these matters, but it is not for me as the auditor to present additional detail. If I am presenting something, I will present it in the report. What I am trying to do here is to draw the committee's attention to these matters which it can then choose to pursue with the entity, either by writing to it and looking for additional information or by it appearing before the committee and giving further explanation.</p>
+          <p eId="para_129">On the claims, the paragraph in what is called the statement on internal control in the financial statements states, "During 2023, claims to the value of €250,000 were submitted to a private insurer for payment and were either rejected or are expected to be rejected on the basis that the fully collated claim forms as signed off by all participating parties or the queries arising thereon were not submitted nor addressed within the required timeframe in accordance with underlying agreements." My purpose is to draw members' attention to that statement and it gives them an opportunity to pursue it with the entity.</p>
+          <p eId="para_130"> In relation to the chief executive, and it is a matter that would have been discussed at previous committees, settlements will typically have a non-disclosure clause in them. Children's Health Ireland was reluctant to make any disclosure in relation to either the fact or the content of that settlement. There is no further information in the financial statements on that. I have further information but it is not for me to give it to the committee. I have drawn attention to the fact that it is there and it is really for Children's Health Ireland to provide what further explanation it can give on the matter. As I said, a settlement in relation to any chief officer is a very significant matter and those that fund the organisation should be aware of it. If it were somebody at a lower level in the organisation, there is a process around settlements and I would not normally be drawing attention to that unless there were very specific circumstances, like, for example, that a significant settlement did not have proper sanction from the parent Department or from the Department of expenditure and reform which might be required in many cases.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_81">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_131">I thank Mr. McCarthy for going through that. There is a lot of interesting stuff. Just following up on the CEO, it is called a settlement. A settlement would typically indicate that somebody has moved on, but obviously this person was reappointed to a different role within the same group. We know that it is called strategic. Strategic can mean anything; it is very open. Do we know what role the CEO was reappointed to?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_132">I think strategic director is the name of the role. The hospital will be able to provide a job description.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_83">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_133">When we meet with them, we will be able to go through a job description. When somebody keeps the same salary as the CEO, it would indicate that it should be a very senior role. If it is not, it obviously creates more questions. It is important that Mr. McCarthy has raised it because, as he has said, when it is somebody in a very senior position, it has to be called out and questioned. Ultimately, they are big salaries and big responsibilities. Mediation agreements and sign-off need to be brought up in this context. I welcome that.</p>
+          <p eId="para_134"> On the nature of the qualified opinion, as an accountant myself I know it is highly unusual from a financial perspective not to be doing accounts on an accrual basis. Everybody who has done a set of accounts knows they have to be done on an accrual basis. What was the original context behind that? Does that make any sense?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_135">It is a very long-standing position of the Department of Health. Obviously, Ministers for Health need to issue the directions. If they were accounting for the retirement benefits as everybody else does, they would be identifying the accrued liability and they would have a matching asset, and so it would not have any effect on the bottom line. That can be seen in most of the State bodies. I cannot technically give a true and fair opinion or the body is not giving a true and fair opinion if it is not fully compliant. That is why it is an "except for" qualification in this case. Most of the State bodies would be presenting their financial statements under FRS 102 and so we would expect to see a full and fair opinion. For a number of bodies that are not preparing their accounts on an FRS 102 basis, what I would be stating and what a clear audit opinion means is that they are properly presented in line with whatever framework for accounting has been directed by the Minister, usually with the approval of the Minister for public expenditure. In many cases, I state I am satisfied that this statement gives a true and fair view, but in other cases and particularly with voted appropriation accounts, I will be stating that I am satisfied that they are properly presented in conformance with-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_85">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_136">Was the €250,000 loss and the inability to claim it due to failure in process?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_137">That would certainly be the indication from what was stated in the fully collated form signed off by all participating parties. There is the difficulty that they need signatures to confirm the nature of the work, operation or treatment that was provided. They need a number of sign-offs in relation to that. Typically a claim will be for treatment and for accommodation in the hospital.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_87">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_138">The contractor one there was very interesting, I think it was the pre-hospital emergency-----</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_139">Pre-Hospital Emergency Care Council.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_89">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_140">Yes. I have been in business and we have had a lot of contracts. I have never made the mistake where we have contractors who turn out to be employees and were treated in one way. That would also indicate a large failure in process, procedure and how things are dealt with. It is one thing to have to pay the extra tax. Is that PRSI?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_141">It would be income tax.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_91">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_142">There would be employer's PRSI. Did it pay any other taxes on behalf of the people?</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_143">Yes. They are liabilities of the contractors but the council ended up picking up the tab.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_93">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_144">That would be the individual liabilities for those contractors. Those contractors were paid a certain way, and because they were redesignated as employees, there were additional costs which obviously would have gone to the contractors but instead the State had to pay them. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_145">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_95">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_146">So the State had to pay an additional bill. If it had been done correctly, it would have paid them correctly and would not have been in that situation. There was obviously a major significant error.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_147">They had proceeded for a number of years in employing investigators and so on, so it was mistaken.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_97">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_148">I do not want to bury the lead. The most material number there is probably the €107 million for the national paediatric hospital. We can talk about the €250,000 and the €800,000, but that is the number that jumps off the page.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_149">There is some more detail on that in note 13 in the financial statement, outlining the circumstances.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_99">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_150">Will we be able to go through those individual circumstances?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_151">The Deputy will be able to talk to them next week.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_101">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_152">That will provide us with an opportunity to go through that in detail.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_102">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_153">We have a number of speakers. I will not stop any of them. However, for the next round we will take it by groups. We will not have as much interchange; we will not have time. I will continue as I am doing for this round and then I will slightly change the approach. The next speaker is Deputy Bennett.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_103">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_154">I am trying to give myself a briefing on everything that is in here. This section relates to hospitals and health bodies. Are they solely funded by Government or are some of these organisations self-financing? Are they all getting money from central government? Is all that funding under the auspices of the HSE? Does the HSE have a general income and expenditure sheet and do they all come under that? I have never even heard of some of these bodies before. It is very interesting to see the amount of funding they are getting. Is that coming solely from Government funding or is any of it self-financed?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T10:50:00+01:00"/></from>
+          <p eId="para_155">Certainly with the preponderance of the hospitals, money is coming from central government through the Vote for health and maybe through the Vote for the HSE.</p>
+          <p eId="para_156">Some of it may be coming directly from the Department but a lot of it is going through the HSE. For bodies like the Medical Council, there would be registration fees involved, so they would have income. Maybe the bulk of the money for the Medical Council is coming from registration fees paid by doctors. The same is probably true of nursing and midwifery, for example.</p>
+          <p eId="para_157"> No. 38 is unusual in that it is patients' private moneys, their own private property. It is where individuals are in HSE-run nursing homes or long-stay units and their funds are managed for them by the HSE. While the turnover in the year was €43 million, the balances at end 2023 were about €104 million. There are obviously issues there around safeguarding, appropriate use, assisted decision-making and so on.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_105">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_158">One that stood out to me was the Medical Council. I am trying to see which number that was again.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_159">The Medical Council is No. 32.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_107">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_160">Yes. The turnover is €22 million. Mr. McCarthy is saying that came mostly through registration of doctors.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_161">From memory, yes, that is the case. It should be clear in any of the financial statements. They should indicate how much of the funding is coming from public sources and where it is coming from. They cannot just say they get it from the Department of Health. There should be an indication of which subhead of the Vote for health they receive the funding from.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_109">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_162">Can we get details of income and expenditure from the Department of Health and what bodies it gives money to?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_163">Yes. Obviously, there are very many. Members can certainly ask the Department. If they look at the appropriation account of the Department, they should get a good indication. For example, regarding the medical research body, there should be an indication in the Vote of how much money the Department is sending to health research. Then you would expect to see it matched on the other side. There is a difficulty in that the Department operates on a cash-accounting basis while the bodies operate on a accrual-accounting basis. That can give rise to some discrepancies but they are reconcilable.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_111">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_164">I thank Mr. McCarthy for the consistent dialogue. A number of supplementary questions arise for me but, from looking at previous Committee of Public Accounts debates, my sense is supplementary questions should be directed to the bodies as opposed to Mr. McCarthy. I am saying that out loud to seek assurances. Is that-----</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_165">That is correct</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_113">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_166">Okay. I will hold all my supplementary questions on CHI and the board for next week when we have the opportunity to ask them. I propose we write to the Pre-Hospital Emergency Care Council under No. 41 to seek assurances that the practice regarding that €812,000, whereby assessors were to be treated as contractors, has ceased in the council.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_114">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_167">On a general point, procurement is coming up again and again in terms of the health sector, the education sector and so on. We are under pressure this morning time-wise but we need a discussion on how those issues are addressed. Cumulatively, it can add up to a lot of money that is not used correctly in procurement procedure and getting value for money. There appears to be a significant issue with public bodies as a whole not being fully compliant with the procurement system. Maybe it is not for this morning, as we are under pressure, but it is a theme that has repeated itself in the short time we have been here.</p>
+          <p eId="para_168"> In relation to CHI and the insurance claim, that is a catastrophic failure. It is a quarter of a million euro. It does not appear liability is contested. It is purely on the basis of a claim not being lodged on time, which is unforgivable in many respects, given that €250,000 would provide a lot of health services. We need to follow up on that one.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_115">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_169">I support the suggestion to write to the pre-hospital emergency board. I ask that we get details of the number of people impacted and, on an anonymised basis, of the liability, so that we can get an idea of the scale of the impact. The total turnover is €4 million and €800,000 is 20% of that. It is a very significant amount of money and we need to get to the bottom of it.</p>
+          <p eId="para_170"> On the accounts for Children's Health Ireland and the National Paediatric Hospital Development Board, it is important members read the statement issued by the Committee of Public Accounts on 5 November. The Chair expressed a view that many members had, which was that effectively CHI and the National Paediatric Hospital Development Board had a strategy of waiting out the dissolution of the Dáil. There was a date agreed. That date was put to them and an issue arose whereby neither body was able to attend. We believed that to be unacceptable. The Dáil was sitting, though it was facing dissolution, yet the previous Committee of Public Accounts was not able to ask the questions it sought to ask. It is worth members going back and looking at that statement. That is important.</p>
+          <p eId="para_171"> The Angela Kerins judgment has had a significant impact on the way we do our work because we are obliged to give good notice of the areas we will be raising, as well as in terms of remit with other committees. Given the Comptroller and Auditor General has presented new accounts to us and these matters are raised in the audit, I suggest we notify them that we intend to raise the payments for private health insurance and severance arrangements. </p>
+          <p eId="para_172"> I would like to pursue with them the use of the National Treatment Purchase Fund for operations within the hospital group. My specific interest is in orthopaedic operations. I am not seeking to extend our remit beyond financial concerns. The health committee will deal with the fall-out of the investigation but I would like to get some answers on how the National Treatment Purchase Fund channels funding into operations, specifically in orthopaedics.</p>
+          <p eId="para_173"> I suggest we include the two points the Comptroller and Auditor General raises and notify them that we will be raising those, and that we include the NTPF funding of operations in the hospital with a focus on orthopaedics.</p>
+          <p eId="para_174"> I would like to get the advice of the Comptroller and Auditor General on the following. It is often the case severance packages are required to have sign-off from a Department. Do we believe that happened or do we need to ask representatives from the Department of Health about that, as they may be here anyway?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:00:00+01:00"/></from>
+          <p eId="para_175">On the last point, my understanding is it was signed off by the Department of Health and by the Department of public expenditure, which is required in relation to a settlement with a chief officer. CHI will be able to give further detail on that.</p>
+          <p eId="para_176"> In fairness to the Pre-Hospital Emergency Care Council, the settlement was in respect of the years 2018 to 2022. You would have to divide the settlement and relate it to the pay over four years, rather than a single year.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_117">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_177">I understand a representative from the Department of Health will be here next week.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_118">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_178">Could we agree to notify the organisation of the three items I have raised?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_119">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_179">We will come back to all of those. There will be different proposals. We will come back to them formally. The last speaker is Deputy Dolan.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_120">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_180">In light of the fact that Children's Health Ireland is coming in next week and that the Comptroller and Auditor General has raised with us the fact that a previous CEO's contract and the settlement of same led to her being reappointed within the entity as a strategic director, would it be possible for us to ask Children's Health Ireland to prepare a briefing for us as to that person's role, function and remit within the organisation? I have just looked it up online and have seen that the CEO of Children's Health Ireland was paid €177,000 in 2022. It is quite a sizeable sum. If a strategic director is to be on the same money while not operating as the CEO, it would be of benefit to the committee to have sight of that role and the function and outcomes of that job. If we are writing to the organisation, can that be included?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_121">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_181">An bhfuil aon duine eile ag iarraidh teacht isteach? Does anybody else want to come in?</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_122">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_182">Is the Cathaoirleach Gníomhach asking if anyone has proposals in this regard?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_123">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_183">We are going to come back to proposals.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_124">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_184">Is that after the next section?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_125">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_185">No, we will come back to it after the Comptroller and Auditor General clarifies matters.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_186">The next batch relates to statutory funds. It does not relate to-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_127">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_187">We are not moving onto the next batch. Do any issues arise from-----</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_188">No.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_129">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_189">The Comptroller and Auditor General was being asked a specific question about the remit of that person following the settlement and her re-employment.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_190">I am sorry. Can-----</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_131">
+          <from>Deputy Albert Dolan<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_191">I was not really asking a question. I just wanted to make sure that we get the strategic director's job description when Children's Health Ireland comes in next week.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_192">I understood I did not need to respond to that. It is obviously-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_133">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_193">That is the end of that number of entities. We are now going to take the formal proposals to make it easy for the staff. Deputy Geoghegan was the first to speak.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_134">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_194">On the proposals, could we write to CHI to ask it for a full explanation and to give us an understanding of the €250,000 it failed to collect from the private insurers for whatever reason? It may have had to do with filling out forms or so on. Can we also ask the extent to which the board was aware of or notified about these issues and the actions that were subsequently taken in respect of the whole issue?</p>
+          <p eId="para_195"> My second proposal relates to what Deputies McAuliffe and Dolan have stated. I propose that we write to CHI asking for all relevant matter relating to the former CEO and her new strategic director role. When we asked him, the C and AG explained that he had information but that it was not for him to share with us, but for CHI. Whatever that information is, CHI should share it with the committee in addition to providing information on any other matters.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_135">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_196">The proposals were that all of the bullet points under-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_136">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_197">Is what Deputy Geoghegan proposed agreed to?</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_137">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_198">Yes. It is all of the bullet points in the C and AG's report regarding CHI so that the organisation will know all of those issues will be raised. In addition, we should mention the funding and operations of the National Treatment Purchase Fund.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_138">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_199">We are going to move onto the next block. That will take us up to No. 60.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_139">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_200">Can we have clarification that correspondence is going to the Pre-Hospital Emergency Care Council?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_140">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_201">Yes, that was said.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_141">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_202">I am going to table a parliamentary question about all the entities the Department of Health funds. I will do that myself. It would be interesting to see how much money is involved.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_142">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_203">I am moving onto the next group, which will take us up to No. 60. With the co-operation and agreement of the committee, I am going to take three questions this time.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_204">I have very little to call out in this batch anyway. No. 45 on the list is the State property miscellaneous deposits account. This received a clear audit opinion. No. 46, the Travellers' Protection Fund investment account, received a clear audit opinion. No. 47, the land bond winding-up account, received a clear audit opinion. No. 48, the local loans fund, received a clear audit opinion. No. 49, the climate action fund, received a clear audit opinion. No. 50, the intestate estates fund account, received a clear audit opinion. No. 51, the National Training Fund, which is a very substantial account with a turnover of €1.1 billion and a fund balance of €1.5 billion, received a clear audit opinion. No. 52, the insurance compensation fund, received a clear audit opinion. No. 53, the circular economy fund, which is a new fund with the first period of accounts relating to 1 July 2023 to 31 December 2023, received a clear audit opinion. No. 54, the public trustee account, received a clear audit opinion. No. 55 is the biggest account we audit. The Account of Receipt of Revenue of the State collected by the Revenue Commissioners for 2024, with a turnover of €153 billion, received a clear audit opinion. I should say that the public trustee account also relates to 2024. It is one of the earliest of the 2024 accounts.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_144">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_205">Will the Comptroller and Auditor General keep going until No. 60?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_206">I audit the North-South bodies in co-operation with my counterpart in Northern Ireland. No. 56, Tourism Ireland, received a clear audit opinion. No. 57 is the Food Safety Promotion Board, which received a clear audit opinion. No. 58, the special EU programmes body, received a clear audit opinion. No. 59, the Loughs Agency, received a clear audit opinion. No. 60, Waterways Ireland, received a clear audit opinion.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_146">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_207">There are no questions so we are going to move on.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_147">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_208">Are we satisfied that the issues the previous committee raised regarding the insurance compensation fund are now resolved, that nothing is outstanding and that the recommendations have been implemented?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_209">I am not calling out anything. I do not have any concerns about the operation of the fund.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_149">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_210">Am I correct in saying the climate action fund relates to the collection of what is known as the carbon tax and its distribution through things like the-----</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_211">It is a fund into which the increment of carbon tax is accruing. I am actually doing a bit of work on the fund at the moment. I may report further in that regard in due course. It is an interesting fund. An interesting point that the committee might want to note is that the value of the resources in the fund is €277 million and the turnover in the year is just €80 million.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_151">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_212">Níl aon duine eile ag iarraidh teacht isteach. Is iontach é sin. We are more than halfway through now. We will move onto the next group.</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:10:00+01:00"/></from>
+          <p eId="para_213">The next group is what we have described as other State bodies. They are not sectors as such. No. 61 is the Horse Racing Ireland group accounts, which received a clear audit opinion. However, I draw attention to a further loss of €1.6 million in 2023, which relates to HRI's investment in an associate company, Curragh Racecourse Limited. The cumulative loss on the investment in Curragh Racecourse Limited to the end of 2023 was €10.6 million. Nos. 62 to 70, inclusive, are all subsidiaries of Horse Racing Ireland. I do not believe it is necessary to refer to those. They all received a clear audit opinion.</p>
+          <p eId="para_214"> No. 71 is Pobal, which received a clear audit opinion. It had a turnover of €1.3 billion. Pobal is a payment agency that receives funds from various Votes and then administers the payments.</p>
+          <p eId="para_215">No. 72, the Ombudsman for the Defence Forces, received a clear audit opinion. No. 73 is the Housing Agency, which received a clear audit opinion. No. 74 is Microfinance Ireland, which received a clear audit opinion.</p>
+          <p eId="para_216"> No. 75, Water Safety Ireland, received a clear audit opinion. However, the statement on internal control discloses the failure of the council to carry out a review of the effectiveness of the system of internal financial control in the manner required by the code of practice for the governance of State bodies. The code of practice is applicable to all State bodies. One of the key requirements is that the system of control is formally reviewed by the board of the entity, and that should be done during the period of account or very shortly thereafter. Normally, it should be done within, at most, three months after the end of the year. They did not do that, so that is why I am drawing attention to it.</p>
+          <p eId="para_217"> No. 76 is the Credit Union Restructuring Board, which received a clear audit opinion. No. 77 is Coimisiún na Meán, which received a clear audit opinion. Published with that is the broadcasting fund, which is No. 78, which received a clear audit opinion. No. 79 is the National Library of Ireland, which received a clear audit opinion. No. 80, the Judicial Council, received a clear audit opinion. No. 81, the Competition and Consumer Protection Commission, received a clear audit opinion. No. 82, Oberstown Children Detention Campus, received a clear audit opinion.</p>
+          <p eId="para_218"> No. 83, the Institute of Public Administration, received a clear audit opinion. However, in that case, I draw attention to an impairment charge of €2.1 million in relation to valuation of the institute’s properties. It has had to take an impairment charge in respect of one of the properties it acquired around 2005 or 2006, at the peak of the boom, because of a revaluation and the drop in value of office property in Dublin.</p>
+          <p eId="para_219"> No. 84, the Insolvency Service of Ireland, received a clear audit opinion. No. 85, the Legal Services Regulatory Authority, received a clear audit opinion. No. 86, Science Foundation Ireland, received a clear audit opinion. No. 87, the Property Services Regulatory Authority, received a clear audit opinion. No. 88, the associated Property Service Compensation Fund, received a clear audit opinion. No. 89, the Irish Horseracing Regulatory Board, received a clear audit opinion. No. 90, the Parole Board, received a clear audit opinion.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_153">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_220">We might stop at that point.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_154">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_221">On the Institute of Public Administration, I was looking at the note on the impairment. A few things could require clarity, and a letter might be written to it. It is six protected Victorian houses with a large contemporary extension to the rear of Lansdowne Road in Dublin 4. As I read the note, one of the properties of those six properties had a lower value, or resulted in the impairment. It is just not clear to me, if this property was purchased in 2006, which is a long time ago, why the impairment is only taking place now. I do not know if the Comptroller and Auditor General has an answer to that or if he could guide me on that. This is the Institute of Public Administration. We have to hold these people to a fairly high standard. They are the people who set the governance in some respects.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_155">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_222">Regarding No. 61, given the investment the State has on the lands and potentially shares in the company through HRI, it would be pertinent for us to invite Horse Racing Ireland in to give some context on what seems to be a continuing loss-making venture. It would be good for us to get some context on that.</p>
+          <p eId="para_223"> With regard to No. 75, would it be possible to write to Water Safety Ireland to confirm that the review of effectiveness has taken place?</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_156">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_224">I recommend that we bring both the Arts Council and the National Gallery before us in regard to the well-reported issues around the X-ray machines.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_157">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_225">The Arts Council is coming before us.</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_226">I did not get to them yet.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_159">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_227">I refer to the Arts Council and also the National Gallery, in regard to the X-ray machine, which are both noted in the Comptroller and Auditor General's report.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_228">On the valuation and the Institute of Public Administration, the five houses it originally had, it has had for decades, so they were being carried at historic cost. The building it bought in 2005 or 2006 was at the peak of the market. It is being used as an office building, and the impact of Covid on the office market in Dublin has been very significant, particularly for older, energy-inefficient buildings. Therefore, there has been a significant write-down in general, in public and private bodies, in respect of properties like that. When the valuation was done, the property it acquired at the peak of the market, taking account of the significant drop in value, resulted in the impairment. It has suffered the impact of movement in the property market. There is not much more it could have done with it other than avoid having bought at the peak.</p>
+          <p eId="para_229"> On the Arts Council and National Gallery, I will be coming to them in relation to that matter.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_161">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_230">I ask for clarity on that. Are we just moving on?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_162">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_231">No, we are not moving on. There is a just a line of speakers.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_163">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_232">Sorry, I thought we were moving on to No. 91. Apologies. Just mark me down.</p>
+        </speech>
+        <speech by="#JoannaByrne" eId="spk_164">
+          <from>Deputy Joanna Byrne<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_233">I echo my colleague's sentiments on Horse Racing Ireland. I read through the note, which is quite detailed, but the more the detail goes on, it poses more questions. Is the historic loan of €1.6 million included in the grant funding of €12.5 million earlier or is that separate?</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_234">I think it is additional.</p>
+        </speech>
+        <speech by="#JoannaByrne" eId="spk_166">
+          <from>Deputy Joanna Byrne<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_235">Despite the historic €1.6 million loan, why in 2020 did it go further with the €9 million? There are a lot of grey areas in that, particularly with the stringent criteria that is around the €1.6 million in respect of key timelines and criteria for repayments. It goes as far as to set out what might happen if the repayments are not met by the end of 2026, going into the five annual repayments. I echo the sentiments that HRI should be added to the work programme and should perhaps be brought in for us to explore a little bit further.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_167">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_236">I have a follow-up question to Deputy Geoghehan’s point. On the impairment, in fairness to Deputy Geoghehan's point, in 2010, the value of that property would have been far less than it was in 2006. I completely get it and I completely agree, as I know what has happened in the property market, from a business perspective, since Covid. At the same time, however, it seems like an interesting point when it could have been done in 2008, 2009, 2010, 2011, 2012, 2013, 2014 and 2015, at which point it started going up, so it would not have been done. It is interesting it was done in 2022.</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_237">I think it is because of what has happened to the values in the office market.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_169">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_238">They would have fallen much quicker with regard to 2006, let us be honest.</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_239">There would have been a fall but the loss in the office market is extraordinary.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_171">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_240">I know, but in 2010, it was also extraordinary.</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_241">The Central Bank developed an office building on which it spent more than €300 million. It had to impair it by €150 million within four or five years. That is a measure of what Covid has done to property markets in Dublin.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_173">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_242">Do any other members wish to speak? No. We will return to the proposals.</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_243">To No. 91?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_175">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:20:00+01:00"/></from>
+          <p eId="para_244">We will do the proposals before we go to No. 91.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_176">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_245">The Arts Council is already coming before the committee, but obviously we want to inform the representatives that we will be raising the specific issues that are raised in the audit. The second point is that the National Gallery would also come before us.</p>
+        </speech>
+        <summary eId="sum_5">(Interruptions).</summary>
+        <speech by="#PaulMcAuliffe" eId="spk_177">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_246">Apologies. I am ahead of where we are at.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_178">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_247">I wish to clarify regarding the Arts Council, which is coming before the committee, while it was previously raised that we would invite the Accounting Officer, which is the standard practice, in this instance, are we also inviting the board or the chair of the board?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_179">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_248">We are going to come back to this in private session. For the moment just to clarify, the Department is coming before us and the Arts Council. We will be asking for representatives from the National Gallery. We will not get through all of this. We are going to come back to that issue and clarify who is actually coming before us and what we are doing about it. Are there are any other proposals I have ignored?</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_180">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_249">I have two. I have one proposal to invite HRI to come before us, if possible, to speak specifically about the Curragh Racecourse Limited.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_181">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_250">That will be on the work programme.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_182">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_251">It is maybe precedent to write to it in the first instance, if we can do that.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_183">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_252">We will do that.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_184">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_253">No. 75 is to seek assurances through a letter of correspondence with Water Safety Ireland that the review of the effectiveness has taken place.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_185">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_254">Certainly. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_186">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_255">I am happy based on the reply that there is no further inquiry.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_187">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_256">We are moving on to the last round, which is No. 91, to take us up to the end.</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_257">No. 91, the Arts Council, received a clear audit opinion. One thing I wish to draw attention to here is that I signed the audit certificate on 24 June. It was only presented on 12 February 2025, which is well outside the directions of the Department of public expenditure for presentation. The normal expectation is that, within three months of certification, the accounts should be in the Oireachtas Library. The council received a clear audit opinion but I drew attention to the determination of the grants management system development. The original budget set for the project to develop the grants management system was €3 million, with an expected delivery date of the end of 2021. Work on the development of the system had cost €6.5 million to June 2024 when the project was discontinued. The overall loss of value in respect of the project to June 2024 is estimated at €5.3 million. The balance of €1.2 million is considered to be reusable in the implementation of an off-the-shelf grants management system.</p>
+          <p eId="para_258"> No. 92, the National Economic and Social Development Office, received a clear audit opinion.</p>
+          <p eId="para_259"> No. 93, Citizens Information Board, received a clear audit opinion.</p>
+          <p eId="para_260"> No. 94, the Office of the Director of Authorised Intervention in Tuam, received a clear audit opinion.</p>
+          <p eId="para_261"> No. 95, the Legal Aid Board, received a clear audit opinion, but I drew attention to a material level of procurement non-compliance to a total of €2.2 million.</p>
+          <p eId="para_262"> No. 96, the National Gallery of Ireland, received a clear audit opinion, but I drew attention to ineffective expenditure on an X-ray system purchased in 2017 at a cost of €125,000. The gallery had no suitable location in its premises to accommodate safe operation of the system.</p>
+          <p eId="para_263"> No. 97, the Criminal Assets Bureau, received a clear audit opinion.</p>
+          <p eId="para_264"> No. 98, the Western Development Commission, received a clear audit opinion.</p>
+          <p eId="para_265"> No. 99, the National Concert Hall, received a clear audit opinion. In that case, there was a somewhat late submission of the financial statements, which the committee might wish to pursue with it.</p>
+          <p eId="para_266"> No. 100, the Commission for Railway Regulation, received a clear audit opinion.</p>
+          <p eId="para_267"> No. 101, An Coimisinéir Teanga, received a clear audit opinion.</p>
+          <p eId="para_268"> No. 102, Sport Ireland, received a clear audit opinion. I drew attention, which may be of interest to the committee, to the sports energy support scheme run by Sport Ireland where funding of €35 million was received from the Department of Tourism, Culture, Arts, Gaeltacht, Sport and Media in 2022 to provide additional financial support to the sports sector. A total of €6 million of the funding was unused and refunded to the Department in 2023. However, a further €8.4 million, which had been advanced to sporting bodies, was recouped and refunded to the Department before the end of 2024. It was found they did not require that funding for energy expenditure.</p>
+          <p eId="para_269"> No. 103, Sport Ireland Facilities Designated Activity Company, which is a subsidiary of Sport Ireland, received a clear audit opinion. </p>
+          <p eId="para_270"> No. 104, Fís Éireann, or Screen Ireland, received a clear audit opinion.</p>
+          <p eId="para_271"> No. 105, Aquaculture Licences Appeals Board, received a clear audit opinion.</p>
+          <p eId="para_272"> Finally, and gratefully, I am sure, No. 106, Inland Fisheries Ireland, received a clear audit opinion. However, I drew attention to the circumstances where resignations of two chairpersons of the board in April 2022 and January 2023, along with a further four resignations from the board during 2022 and in January 2023 left it unable to reach the required quorum. The Minister removed the remaining board members on a no-fault basis in February 2023 and appointed two persons to perform the functions of Inland Fisheries Ireland pending the reconstitution of the board. A new board was appointed by the Minister on 16 January 2024. I also drew attention to significant internal control matters that resulted in the commissioning of a number of reviews and reports. The current status of those were disclosed in the statement of internal control. Related to that, I am just about to complete a report examining some of those internal control issues. I will have more to present to the committee on that.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_189">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_273">Is that on this specific entity?</p>
+        </speech>
+        <speech by="#" eId="spk_190">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_274">Yes. It is on this specific entity, Inland Fisheries Ireland. </p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_191">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_275">I have five speakers who have indicated they wish to speak.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_192">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_276">I thank Mr. McCarthy for his time on this. I am going to hold my supplementary questions. My questions relates to the Arts Council about the concern with regards to the difference between the date the accounts were certificated and the date the accounts were presented. Are we confident that the entity responsible for presenting the dates will be here alongside everybody else to be able to answer the context for the rationale as to the delay for entering those dates?</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_277">As I understand it, the Department is being asked to send a representative. I would expect they will be able to explain. The normal process is that there is approximately one month from the signing of the certificate to the submission of that to the parent Department and then the parent Department has two months to present it to the Oireachtas. In exceptional circumstances, where a memorandum has to be sent to the Cabinet in advance of submission of the accounts, there is an allowance of three months. A period of four months should be the maximum that there would be a delay between my signing and the accounts being presented.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_194">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:30:00+01:00"/></from>
+          <p eId="para_278">Okay, but we are happy that someone from the Department will be here. On No. 102, regarding Sport Ireland, I have done a little bit of reading on this regarding the headline figures. I am sure many of us are involved in sports clubs and that we all know of multiple sport clubs that would snap the hands off you for this kind of money. However, when you actually look into the reporting and accounting mechanisms for the energy support scheme, it seems, perhaps, to have fallen down on some of that kind of bureaucracy as opposed to the demand for it not necessarily being there. I am happy to go with the committee's idea on this. Do we need more clarification, if further energy support schemes are to be rolled out, that Sport Ireland is in a position to facilitate those or are we happy collectively?</p>
+          <p eId="para_279">I just wanted to raise it to see what we think might be further or next steps. Based on what Mr. McCarthy is saying, it might be prudent to wait for his further report on Inland Fisheries Ireland before we seek more clarification on governance.</p>
+        </speech>
+        <speech by="#" eId="spk_195">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_280">I do not think it is time sensitive at this stage in relation to that one. It is probably better to wait and have more information.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_196">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_281">I thank Mr. McCarthy.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_197">
+          <from>Deputy James Geoghegan<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_282">I am sorry for jumping the gun on the Arts Council. I was led astray by Deputy Paul McAuliffe. I thought he would know what he was doing.</p>
+          <p eId="para_283"> I do not know if this is the appropriate moment to do it but I would like to formally request that we do not confine our witness list in respect of the Arts Council to just the director, who I believe is the Accounting Officer, and that we also ensure we have the board of the Arts Council, including the chairperson and other representatives. If we read the statement of internal control, which the Comptroller and Auditor General has brought to our attention in the financial accounts, it is very much the position of the council, that is, the board, that it had robust governance and constant review of the project. I do not see how we can get the answers to those questions unless we also probe members of the board in addition to the Accounting Officer.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_198">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_284">It is good to see the Arts Council listed here. As regards the reference to "the Department", I suppose in that case it is the Department of Tourism, Culture, Arts, Gaeltacht, Sport and Media. I would support that. With regard to the National Gallery of Ireland, my question is whether it is represented by that Department or is there also a role for the Office of Public Works. I do not know the answer to that question. Should we require a representative from both Departments if that is required? I would certainly want both of them to attend at the committee for meetings on the National Gallery of Ireland and the Arts Council. I look forward to the Inland Fisheries Ireland report. That would be more a appropriate time before we decide to bring them back again.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_199">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_285">I call Deputy Neville.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_200">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_286">I just want to raise-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_201">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_287">I beg the Deputy's pardon, I got caught up on the fishing issue. I was just thinking of something else. We have taken three speakers so we will just deal with those and then the Deputy will be the next speaker.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_202">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_288">That is no problem.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_203">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_289">Is there anything Mr. McCarthy wishes to address in respect of those contributions?</p>
+        </speech>
+        <speech by="#" eId="spk_204">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_290">On the National Gallery of Ireland issue, as I understand it the gallery bought the machine before it had established what the requirements would be to operate the machine. I am not sure that there is accountability of the OPW in that regard.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_205">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_291">I just wanted to clarify that.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_206">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_292">On the Arts Council, one thing that shocked me as well - Deputy Geoghegan alluded to this - was the constant review of the project. Ultimately, the annual report states why the council scrapped it in the end, which is a fascinating few lines: "Rationale for the decision included lower implementation cost being €1.5m as distinct from a further €5.3m required for the implementation of the discontinued project together with a projected annual operational cost saving of €0.325m." Obviously it was a sensible decision not to spend a further €3.8 million, whatever about the €5 million that was already spent. The report also states, "Other matters Included in the rationale included a shorter delivery timeline, lower delivery risk and a simpler solution to implement." Basically, in all these categories and after millions of euro were spent, the council ultimately decided it was going to be cheaper, quicker and more effective to do it the cheaper way. It seems that after this constant review it should never been at this point. This is the shocking part of it.</p>
+          <p eId="para_293"> With regard to who will be coming in, I know people speak to the board but, ultimately, the people who are engaged in the day-to-day are key here as well. Do we know who had actual responsibility for being in charge of this? I am aware that responsibility goes up the line but was it the chief financial officer or the chief operations officer who acted as the operations officer overseeing this? I know there would have been review by the board but, ultimately, we need to speak to the person who was making the day-to-day decisions and probably making recommendations to the board more than anything.</p>
+          <p eId="para_294"> On the National Gallery of Ireland, is it as simple as the gallery jumping the gun, buying the machine, not having a place for the machine and still looking for a place for it? Is it as simple as that?</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_207">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_295">The Deputy can ask his further questions as well.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_208">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_296">My apologies, I will get used to it. On Sport Ireland, as Deputy Farrelly alluded to, was it simply the case that money was put aside but the issue was the mechanism for distributing the funding? Was it to reduce energy prices when the energy prices were really high? Was the funding there but the delivery mechanism to get it back out to the clubs was not effective and ultimately the funding was not used? Is that Mr. McCarthy's take on it?</p>
+          <p eId="para_297"> On Inland Fisheries Ireland, the issues are very interesting. When there are multiple people resigning, multiple people pulling down, and then significant control matters where there are lots of reviews and reports, is there a larger issue? This is jumping out in a way that some of the others have not. The others involve individual issues and items that we have gone across, but with Inland Fisheries Ireland there seems to be a question mark over the whole entity. People are coming in and looking and saying, "I do not want a part of this." Is that what we feel is happening there? Are there endemic cultural issues and issues with the process? I am sure that people are going in with the best of intentions but are they walking away after six months? Is that what we are seeing there? I know some of this could end up being anecdotal or speculation but at the same time it might hint at a core issue.</p>
+        </speech>
+        <speech by="#JoannaByrne" eId="spk_209">
+          <from>Deputy Joanna Byrne<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_298">There are questions that still need to be asked here of Sport Ireland despite a note accounting for a change in accounting policy and the ring-fencing of grant aid. The underutilisation of €4 million in 2022 and the further underutilisation of nearly €6 million in 2023 involve staggering amounts of money that could have been, and probably should have been, fed down the chain to sports clubs. It certainly warrants writing to them to ask for further clarity and an explanatory note on this. I would be interested to see whether it continued on into 2024. There are also questions to be asked of the Department of sport in this regard. The committee should write to the Department. Is it enough to call the representatives in? I am not sure but I understand there might have been difficulties getting Sport Ireland to appear before the last committee. Is that correct? It was flagged the other day in the context of the Irish Amateur Boxing Association and Sport Ireland. If it was the case - perhaps that could be clarified with the clerk - it could be the pathway forward to call them in. I am very strong in my view that we need further information from Sport Ireland and we also need further information from the Department of sport on this.</p>
+        </speech>
+        <speech by="#" eId="spk_210">
+          <from> Mr. Seamus McCarthy<recordedTime time="2025-05-15T11:40:00+01:00"/></from>
+          <p eId="para_299">On the question about the National Gallery of Ireland and jumping the gun, the difficulty with the room was that because it was radiation equipment it needed lead lining of the room. The gallery has not been able to find a room that would take the weight of the lead lining, which will obviously be additional expense to create the chamber the camera can be used in. In the meantime the camera is not being used.</p>
+          <p eId="para_300"> On the energy scheme, there is an important principle in public expenditure called the regularity principle and it states that funding is only used for the purposes intended by the Oireachtas. While the funding was provided to support clubs and sports bodies with their energy expenditure when energy prices went up, in fact the energy bills did not rise as high as expected. Some of the money was actually paid to governing bodies and to clubs but it had to be recovered because they were unable to satisfy the conditions under which it had been provided. The money had to be given back. As it was only provided for one purpose, they could not divert it to another use even though there would be many good uses it could have been put to, but that is the regularity principle.</p>
+          <p eId="para_301">It was not only in the sports area where that was an issue. There was funding of, I think, about €500 million provided for business. However, business did not claim that kind of money and much of that money was surrendered back to the Exchequer as well. It may be that because of the delay in price rises within the period being grant funded, it was not sufficient to justify the drawdown of the grants. That is probably the explanation the committee will get from Sport Ireland on that.</p>
+          <p eId="para_302"> On Inland Fisheries Ireland, I prefer not to give a blanket view on the issues that have arisen until I have presented the report. I do not want to prejudge my final consideration of that. That is all I have to offer at this stage.</p>
+        </speech>
+        <speech by="#CatherineConnolly" as="#An_Cathaoirleach_Gníomhach" eId="spk_211">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Connolly)<recordedTime time="2025-05-15T11:50:00+01:00"/></from>
+          <p eId="para_303">Can we agree to note the listing of accounts and financial statements? Agreed. The listing of accounts and financial statements will be published as part of our minutes.</p>
+          <p eId="para_304"> I propose that we go into private session to discuss additional matters. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6"> The committee went into private session at 11.51 a.m. and adjourned at 12.21 p.m. until 9 a.m. on Thursday, 22 May 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

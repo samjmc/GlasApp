@@ -1,0 +1,789 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-09/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-09/debate"/>
+          <FRBRdate date="2025-07-09" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-09/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-09/debate/mul@"/>
+          <FRBRdate date="2025-07-09" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-09/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-09/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-15" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="FrancesBlack" href="/ie/oireachtas/member/id/Frances-Black.S.2016-04-25" showAs="Frances Black"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCPerson eId="TeresaCostello" href="/ie/oireachtas/member/id/Teresa-Costello.S.2025-01-29" showAs="Teresa Costello"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-09">Dé Céadaoin, 09 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-09">Wednesday, 09 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#TeresaCostello">Teresa Costello</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Frances Black.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-07-09T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T09:30:00+01:00"/></from>
+          <p eId="para_15">We will now go into private session to consider some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>The joint committee went into private session at 9.32 a.m., suspended at 9.41 a.m. and resumed in public session at 9.42 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Legal and Policy Gaps in Adult Safeguarding: Discussion<recordedTime time="2025-07-09T09:40:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T09:40:00+01:00"/></from>
+          <p eId="para_16">The joint committee will today consider the legal and policy gaps in adult safeguarding. To commence our consideration of this matter, I welcome from Safeguarding Ireland, Ms Patricia Rickard-Clarke, chairperson, Ms Annmarie O'Connor, programme manager, and Mr. Mervyn Taylor, member of the board. From the Irish Association of Social Workers, I welcome Ms Caroline Walker-Strong, chief operations officer, Mr. Liam Keogh, principal social worker, and Dr. Sarah Donnelly, associate professor of social work in UCD.</p>
+          <p eId="para_17"> I will start with a note on privilege. Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in such speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_18"> Members are reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against a person outside the Houses or an official either by name or in such a way as to make him or her identifiable.</p>
+          <p eId="para_19"> I invite Ms Rickard-Clarke to make the opening statement from Safeguarding Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T09:40:00+01:00"/></from>
+          <p eId="para_20">Safeguarding Ireland welcomes the opportunity to appear before the health committee. I am the chair of Safeguarding Ireland, and I am joined by Annmarie O’Connor, programme manager, and Mervyn Taylor, who is a board member and was formerly CEO of Sage Advocacy. We appear today in the aftershock of the "RTÉ Investigates" documentary, "Inside Ireland’s Nursing Homes", which follows the Grace, Emily and Brandon cases, and the risks to nursing home residents during the Covid-19 pandemic.</p>
+          <p eId="para_21"> Safeguarding Ireland has its origins in the aftermath of the investigation into the adult abuse issues in the Áras Attracta care facility and was designed to bring together perspectives of how adult safeguarding could be addressed in health and social care services. From the start, stakeholders recognised that adult abuse was occurring beyond health and social care and more broadly across all sectors of Irish society. These very harrowing cases give only a partial insight into the extent of adult abuse.</p>
+          <p eId="para_22"> The committee’s focus is on gaps in policy and legislation, but I want to first underline the urgent requirement to move beyond analysis to implementing a comprehensive response to adult abuse across all sectors of society. An adult safeguarding Bill introduced in 2017 could have addressed many of the issues that remain of urgent concern. In 2022, Safeguarding Ireland published the document, Identifying Risks - Sharing Responsibilities, which identified the gaps and proposed an overarching response in the form of adult safeguarding legislation and the establishment of an independent adult safeguarding authority. In April 2024, the Law Reform Commission published its comprehensive analysis of the gaps in policy and legislation, proposed draft adult safeguarding legislation and pointed to the need for an adult safeguarding authority. In May 2024, the Joint Committee on Disability Matters published its report, Ensuring Rights Based Adult Safeguarding in Ireland. It also recommended establishment of a national safeguarding authority.</p>
+          <p eId="para_23"> It is evident from Safeguarding Ireland’s engagement with the public and our national safeguarding advisory committee, which is a cross-sectoral group of almost 40 national organisations, that there are very extensive legal and policy gaps in adult safeguarding, which extend far beyond health and social care. Safeguarding Ireland does not provide a service to the public, yet almost every day it receives concerns from professionals, organisations, family members and other members of the community concerned for the safety of adults at risk. These concerns cover a broad range of abuse types, suggestive of very serious violations of human rights. The alleged harms occur, in the main, in the community, with a component also relating to people in residential care. The alleged perpetrators are very often close family members or trusted others. Often two or more abuse types occur together. Concerns also relate to the provision of services to adults at risk by bodies not funded by the HSE or covered by HSE or health policy.</p>
+          <p eId="para_24"> While Safeguarding Ireland sometimes refers cases of high risk or urgency to An Garda Síochána, more often it signposts to a diverse array of organisations that may have some partial support to offer. In many cases, the concern is sent to Safeguarding Ireland after other avenues have already been investigated. Safeguarding Ireland often refers to relevant legislation or policy, including, in particular, the Criminal Justice (Withholding of Information on Offences against Children and Vulnerable Persons) Act 2012 and the Criminal Justice Act 2011. We also refer to the HSE’s policy on safeguarding vulnerable persons at risk of abuse. There is no single authority on adult safeguarding in Ireland. Getting support or resolution with a concern about the abuse of a vulnerable person requires navigating a Byzantine system where no single body is responsible or has the authority, expertise or resources to resolve the issues.</p>
+          <p eId="para_25"> With regard to the ongoing alleged abuse of adults at risk, there is no relevant legislation. All that exists is the HSE’s 2014 policy which is acknowledged as being outdated, limited in scope and narrow in its application and interpretation. Increasingly, we advise people who contact us about an ongoing risk of harm to an adult to contact An Garda Síochána.</p>
+          <p eId="para_26"> In addition, Safeguarding Ireland receives ongoing queries related to governance, compliance, organisational policy, legislation and training. Organisations and professionals across all sectors and disciplines are encountering adult abuse. They want to respond. They want to know who to refer to and they want assurance that the referral will be acted on. Again, I emphasise, there is no single authority in this regard, no central source of expertise and guidance.</p>
+          <p eId="para_27"> As I mentioned, Safeguarding Ireland published a comprehensive discussion document on the gaps that exist in adult safeguarding in 2022. It evidenced a legislative void in terms of authority to act effectively in safeguarding situations. It showed existing regulations fall far short in respect of the settings to which they apply, the types of abuse they can deal with and their legislative basis. Even where organisations have relevant powers to act, there is an apparent lack of proactivity. There are major gaps relating to co-ordination and co-operation. There are serious gaps in both corporate and individual accountability, self-neglect, coercive control, financial abuse, data sharing and recognition of independent advocacy. There are also deficits in the implementation of the Assisted Decision-Making (Capacity) Act.</p>
+          <p eId="para_28">The main gaps are the absence of legislation and of an independent adult safeguarding authority. We are agreed, across the range of groups that we work with, that the current safeguarding policy being developed by the Department of Health, while welcome, is not the level of response required to address the ongoing shortcomings in adult safeguarding. This policy is too narrowly focused on just health and the policy has no legislative powers of enforcement or conviction.</p>
+          <p eId="para_29"> The appropriate overarching response that needs to be taken is the establishment of a national safeguarding authority which must be an independent statutory agency with functions and powers in relation to adult safeguarding, to protect people from harm, abuse and exploitation. Its main functions must be to receive reports of actual or suspected abuse or harm occurring in any sector; to respond to reports and ensure that action is taken; to have the power to direct the HSE and other statutory or non-statutory bodies to take actions to safeguard at risk adults; to have a co-ordinating role and conduct serious incident reviews, which is vital for transparency, accountability and improvement; to set standards and monitor compliance; to assist with developing safeguarding plans; to put in place preventative measures; and to have oversight of data collection, research, training, education and awareness.</p>
+          <p eId="para_30"> The other overarching development that needs to occur is to progress implementation of the Law Reform Commission's report on a regulatory framework for adult safeguarding. Safeguarding Ireland again asks the Government, as a matter of urgency, to use the mechanisms of the crossdepartmental Cabinet Committee on Health to establish an interdepartmental working group on adult safeguarding led by the Department of Health and working closely with the Department of justice, the Department of Social Protection and the Department of Children, Disability and Equality and in close consultation with Safeguarding Ireland. The twin objectives are to progress adult safeguarding legislation which covers all Government Departments and agencies of the State based on the draft legislation developed by the Law Reform Commission; and to plan the establishment of an independent adult safeguarding authority, as provided for in the legislation.</p>
+          <p eId="para_31"> Other State bodies with significant roles in the overall adult safeguarding architecture that need to be centrally involved in an inter-agency working group include the Data Protection Commission; HIQA; the HSE's National Safeguarding Office and the National Independent Review Panel; the Policing and Community Safety Authority; An Garda Síochána; the Decision Support Service; the Central Bank of Ireland and the Financial Services and Pensions Ombudsman. The working group should progress the establishment of an independent adult safeguarding authority; the completion and enactment of adult safeguarding legislation, which is already substantially drafted in the LRC report; the completion and application of a statutory framework for adult safeguarding which includes new offences, including an offence of neglect, ill-treatment, intentional abuse, reckless endangerment, withholding of care and-or the necessities of care or practices or systems which create the conditions in which such offences become normalised; an offence of exposure to risk of serious harm or sexual abuse; an offence of coercive control that extends to a broader range of relationships beyond the Domestic Violence Act 2018; and an offence of coercive exploitation to include financial exploitation.</p>
+          <p eId="para_32"> We must give adult safeguarding the same legislative and policy priority accorded to domestic abuse. The development of Cuan provides a very useful roadmap. Safeguarding Ireland is asking this committee to apply its resources and authority to progress, with urgency, the establishment of the above working group and for it to commence its work this autumn. We have included a draft roadmap in the documentation we sent to the committee. We will develop this into a briefing document and provide it to the committee in September.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T09:50:00+01:00"/></from>
+          <p eId="para_33">I thank the committee for the opportunity to speak today on behalf of the Irish Association of Social Workers, IASW. The IASW has more than 1,800 members and represents social workers working in all areas of social work across the country. Social work is the lead profession in adult safeguarding in Ireland and our expertise was recognised as such in the Law Reform Commission's regulatory framework for adult safeguarding. I am here to highlight our key recommendations regarding adult safeguarding in Ireland, drawing on the professional expertise of front-line professionals and the evidence base from recent inquiries, reviews and high-profile cases. I would like to introduce my colleagues and members of the IASW: Dr. Sarah Donnelly, associate professor at the school of social policy, social work and social justice in UCD; and Mr. Liam Keogh, social worker in disability services.</p>
+          <p eId="para_34"> The IASW acknowledges the Department of Health’s ongoing consultation with us. In particular, we fully support the landmark report of the Law Reform Commission on adult safeguarding. We also welcome the introduction of a chief social worker position in the HSE and support the development of that role, with its specific focus on adult safeguarding.</p>
+          <p eId="para_35"> Regarding decongregation and rights-focused care services, prevention is better than cure and that is particularly true in adult safeguarding. We caution that neither regulation nor safeguarding is a magic wand. It is our position that adults are safest when they live full, rich lives with autonomy and choice in their own communities, with care delivered through accountable, public services. Ireland has accelerated the sale of both home care and residential care in recent years to the private sector. Dr. Nicholas O'Neill, a postdoctoral researcher in DCU, has set out international evidence showing the association between the private sector care model and poorer outcomes for residents. This should serve as a wake-up call to Ireland.</p>
+          <p eId="para_36"> Despite commitments made during Covid by our Government to downsize and decongregate large nursing homes, we continue to see planning approval for large-scale privately run nursing homes, often built on the outskirts of towns. Older people enter nursing homes and rarely return to participate in community life. They are never again seen in their local restaurants, at their GAA club, or at the local library. Why? In other jurisdictions, the connections between residents and their local communities are nurtured. Their rights within their new homes are better understood and residents form part of the interview panels for recruiting staff, or teach on staff induction programmes, and have resident councils. In Ireland, it was disappointing but unsurprising to note that following the recent "RTÉ Investigates" programme, many people and voices were featured in print and broadcast media, yet nobody interviewed a single nursing home resident to ask their views. Residents and people receiving care are the true experts, yet they are often silenced and invisible. This is why the known sexual abuse of people with disabilities was tolerated by the system in the Brandon case, and why the women with dementia who tried to tell staff that they had been sexually assaulted were ignored in the Emily case. Residents are too often seen solely as recipients of care, rather than adults with rights. We recognise individual homes are providing good care, but life is about much more than receiving good care. We have to ask ourselves this: who among us would like to age into our current care model?</p>
+          <p eId="para_37"> In the UK, the Care Act 2014 enshrines the rights of people who need care and support. We need a similar social care Act in Ireland which recognises and responds to the rights of people with care needs. Too often, social workers identify risks to adults, but cannot implement a safety plan as the person may have no right to access social care resources, like a bed, transport or home care support. This can result in their premature and otherwise avoidable entry to long-term care.</p>
+          <p eId="para_38"> I must stress that the IASW agrees with the Law Reform Commission that the current system for adult safeguarding is not fit for purpose. It is fragmented, inconsistently applied, and leaves too many adults at risk of serious and often preventable harm. In other words, with the right legislation, better social policies, structures and services, social workers could work with adults at risk of abuse far more effectively. This will increase their sense of safety and well-being to live the life we all want to live as adults, a life free from abuse.</p>
+          <p eId="para_39"> We repeat our calls for the introduction of a comprehensive regulatory framework for adult safeguarding as proposed by the Law Reform Commission. This body has provided crystal-clear evidence of an informed roadmap for the Government. We need no further deliberations or consultation; action is now urgently required. It is vital that this regulatory framework includes, as the LRC recommends, the introduction of mandatory reporting. We have a two-tier system in Ireland, where employees are mandated to report child protection concerns, but not adult protection concerns. This sends an unintentional but clear message from the State to wider society that the abuse and neglect of adults is less serious. We saw this in practice in the Brandon case, when staff observed the repeated sexual assault of people with disabilities and did not report, when staff listened to women with dementia who tried to disclose sexual abuse and did not act and again, when the abuse and neglect of residents in "RTÉ Investigates" was unreported by staff. The IASW supports mandatory reporting which will ensure staff report abuse and neglect of adults at risk of harm in particular circumstances. This includes when abuse and neglect occurs in a care setting. We need a system that fully utilises best clinical knowledge and experience and applies appropriate and proportionate responses to reporting. The IASW calls for mandatory reporting in specific circumstances and we are happy to clarify this further in this session.</p>
+          <p eId="para_40"> The IASW supports the Law Reform Commission's calls for effective interagency cooperation, which is practically non-existent in front-line services at present and this is hampering HIQA, safeguarding and protection social workers, gardaí and other professional groups from sharing information and working collaboratively in cases involving the abuse and neglect of adults. It is fair to say there is consensus across the safeguarding sector that the establishment of an independent safeguarding authority with oversight of safeguarding activity in all organisations is essential. </p>
+          <p eId="para_41">It is on the public record that in the Brandon case, the Emily case and the Grace case, professional expert social work advice was ignored by HSE management. We need a new system that ensures that staff with genuine safeguarding concerns, working within the HSE and other organisations, have a clear pathway to expert, independent safeguarding oversight. This will deliver more transparent and robust safeguarding intervention. We can never again have a case, like the Emily case and the Grace case, where expert social work guidance is ignored and overruled by less qualified HSE managers.</p>
+          <p eId="para_42"> We call for improved engagements between regulation and safeguarding. HIQA plays a key and vital role as a systems regulator. It is not designed to handle individual safeguarding investigations. These require specialised, clinical expertise, particularly from trained, registered social workers. This is often poorly understood by Government. We call on HIQA to publish transparent information each year on the number of referrals it makes to adult safeguarding and protection teams and to the Garda. We call for a memorandum of understanding between HIQA, the HSE and the Garda with regard to the identification and reporting of abuse and neglect of adults. We fully support proposed HIQA regulation of safeguarding and protection teams, and recommend HIQA is resourced for any training it may require to carry out this vital work We also echo the call for an urgent review of regional inconsistencies in social work safeguarding practice. People in one part of the country should not receive a different standard of support and protection from those in another.</p>
+          <p eId="para_43"> We call for a reform of safeguarding review processes. We are concerned about inconsistent quality and transparency of safeguarding reviews carried out across agencies, many of which are run by private unregulated operators. Many reports remain unavailable to the victims. We support the expansion of the national independent review panel, NIRP, which is a safeguarding review body staffed by qualified safeguarding experts. NIRP should carry out fully published reviews in all organisations, including section 38 and 39 organisations. We cannot overstate the trauma experienced by victims and families when poor quality reviews are conducted and then not published.</p>
+          <p eId="para_44"> We call for the regulation of advocacy services. While independent advocacy is a vital part of adult safeguarding, social workers are increasingly concerned by the number of unregulated advocates with no recognised qualification engaging in adult safeguarding work. There is currently no agreed training or qualification for advocates despite the highly skilled and sensitive work with which they are tasked. While advocacy is vital, it must be safe and professional. When advocates intervene in complex safeguarding scenarios without adequate training, it could lead to poor outcomes.</p>
+          <p eId="para_45"> We are calling for the formal regulation and accreditation of independent advocates; defined training and scope of practice, particularly in safeguarding contexts; and a temporary pause on the expansion of advocacy services until these safeguards are in place. Finally, we call for effective evaluation of how safeguarding works in Ireland, as was most recently highlighted in "RTÉ Investigates". Victims and families often share their frustrations in attempting to access quality safeguarding services. We need to research these experiences and understand how to implement meaningful, helpful measures of safeguarding activity to ensure quality services are delivered.</p>
+          <p eId="para_46"> Gaps in adult safeguarding protections are not just policy issues; it is a moral imperative. Every day that reform is delayed, adults are left vulnerable to neglect, abuse and systemic failure. Ireland has the chance now to build a safeguarding system that is rights-based, responsive and, above all, effective. We urge the committee to take decisive action to support the calls we have outlined today. The IASW stands ready to support this important reform. I thank the members for inviting us to the committee today. We are happy to answer members' questions.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:00:00+01:00"/></from>
+          <p eId="para_47">I thank Ms Walker-Strong. I thank all the organisations for the extensive consideration of the issues and the detail set out in the supporting documents, which is very helpful for our consideration of these important issues. A number of members have speaking slots in the Dáil and Seanad so may have to leave and come back. We intend to take a break at around 11 a.m. for five minutes. We will now move through the members list and take questions and answers. We hope to get to all members. We will take eight minutes per member in the hope that we reach everybody and give everybody the same amount of time. We will start with the first slot, which is Fianna Fáil. I call Deputy Daly.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_6">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-09T10:00:00+01:00"/></from>
+          <p eId="para_48">I thank the witnesses today from Safeguarding Ireland and the Irish Association of Social Workers for their statements, which were very comprehensive.</p>
+          <p eId="para_49"> One thing struck me, and I am satisfied that they have extended the scope beyond what we were considering, which was the recent nursing home scandal and the other scandals, which involved institutional care. I want to be careful how I say this - I am happy that the witnesses have identified this as an endemic problem and that it is widespread, and that it is not just simply institutional but that it is in the community. I would say the vast majority of adult abuse is in the community rather than in institutions. The responsibility of regulation of institutions possibly comes under Government and under the HSA and HIQA, but there is widespread abuse. As a GP I would have seen this, and some of it can be very subtle. I am taken by the issues around both deprivation of liberty and the financial abuse of people. We often associate it only with older people, but it is people of all age groups who are vulnerable, and it is people who perhaps are living with disability.</p>
+          <p eId="para_50"> I am also struck by the chaotic system we have at the moment, with no one organisation having overall responsibility for the investigation of adult abuse. The witnesses quite rightly point out in both their documents that there is no one gate for people to go through. There is the HSE and HIQA. I note that officials from HIQA were here a couple of weeks ago and they would have been quite clear that they had no role in individual complaints but rather institutional complaints. They were looking for an extension of powers. However, it is clear from both organisations' documents that the legislation needs to be progressed, and that there needs to be a setting up of an adult safeguarding authority that would have an overarching role the investigation of this.</p>
+          <p eId="para_51"> I am also taken by the number of complaints that Safeguarding Ireland receives and can do nothing but send them to various institutions and there is no co-ordination. Both organisations' documents have put that out very clearly, and that is a job of work. I will first ask a question of Safeguarding Ireland and Ms Rickard-Clarke. I thank her for coming today. What does she feel are the things we need to do immediately to get this right? The Minister of State, Deputy O'Donnell, has committed to progressing and expediting the safeguarding legislation. It has been around since 2017, however, and it has crystallised in the nursing home scandals of the past number of months that we really need to progress this. I will ask that question first.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:00:00+01:00"/></from>
+          <p eId="para_52">It is the setting up now of our working group, first, to analyse the Law Reform Commission's report, although there is a very clear blueprint in terms of the legislation. As the Deputy knows, it produced a criminal law Bill and a civil law Bill, which have been set out in detail. Therefore, some of those offences - in fact, those offences that occurred recently in the nursing home - could actually be enacted straight away because the Law Reform Commission suggested that some of those offences can be included to expand the withholding of information Act of 2012 and in other criminal law legislation. We do not, therefore, need the overarching adult framework to deal with some of those offences straight away. Apart from that, we need the setting up of the working group, and the Cabinet committee to instigate it. From speaking to Departments and public servants, they are waiting for a direction from Government as to the next steps they should take, so it is really important that they get a direction from Government to have a working group that is interagency and interdepartmental. As the Deputy said, financial abuse is not documented; there is no data. It is widespread among all aspects. We have done surveys and found that even for the person with the disability at age 19 or the cuckooing, all those issues have been identified by the Law Reform Commission. We need the working group set up to analyse the Law Reform Commission's document report and then have a timetable for the actual enactment of the legislation.</p>
+          <p eId="para_53"> I mentioned the Assisted Decision-Making (Capacity) Act. Again, a lot of training is needed on that. There was a Bill in 2008. That Act did not commence until 2023. Meanwhile, people's human rights are being abused and all of that. We have delayed on the deprivation of liberty. We again had consultation in 2017. We have another consultation now. We are now waiting on that legislation. There is a delay with everything. Meanwhile, people are being abused, exploited and neglected, and there is no body to deal with that. When an issue arises, like in the Grace case, we then look at the different mechanisms and ask whether it is a commission of investigation or a one-man investigation or a public inquiry instead of having safeguarding boards, like in other jurisdictions such as Scotland and others, whose obligation is to carry out those investigations.</p>
+          <p eId="para_54">It does not need to be a large body as it can call in the expertise it needs. It would have the oversight, timelines and budget, which are all very necessary, and the learnings. We do not have any learnings from any of the previous reports. Where are the learnings? We are still repeating the abuses. I hope I have answered the question.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_55">The lights have gone off. They should be back in a minute. We just have to reset the lights.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_9">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_56">I thank Ms Rickard-Clarke for her comprehensive reply.</p>
+          <p eId="para_57"> The Irish Association of Social Workers made a number of points about the widespread, endemic abuse, often committed by family members, sometimes by carers and sometimes by a concerned neighbour who does jobs. I have seen that in my experience. The witnesses made some comments about the nursing home sector. I agree that the day of the small community nursing home at the edge of, or in, the village where relatives, families and grandchildren were able to come in and out are gone. Will the witnesses expand on that view of how they feel things could be improved in that area?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_58">As the Deputy correctly pointed out, we are now in a situation where many residents of nursing homes, whether they are older people or people with disabilities, are effectively isolated from their local communities. It is common practice that when someone enters a nursing home, effectively, all their engagement with other activities, social life and cultural events ceases. There are some excellent, fantastic nursing homes that support person-centred care with a human rights-based approach and try to provide a high quality of life with social stimulation, but there are also many facilities that are very institutionalised where people are disengaged from their families, local communities and identities and that is not the type of society we want. There are excellent examples from across Europe and the world where there are smaller nursing homes - household models - where, as we mentioned in our statement, there would be perhaps six people in a smaller community-based house. That is what we need to aspire to. We need to integrate our residents, whether they are younger people with disabilities or older people, more into local communities. This is an issue that not only affects current residents. It will affect each and every one of us because of our ageing population. That is something that is easily rectified.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_59">We will suspend for five minutes to try to get the lights back. I reassure members that the transcript and video are still being recorded.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Sitting suspended at 10.12 a.m. and resumed at 10.14 a.m.</i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_60">Our next speaker is Deputy Cullinane.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_13">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_61">I welcome the witnesses. They have been here on a number of occasions to speak about the same issues, so I am conscious that we are having the same discussion over and over again. I am struck by what both opening statements said, which is that we need delivery and we need to move on all these issues.</p>
+          <p eId="para_62"> There is commonality across the two opening statements and with what is in the Law Reform Commission's report, which is substantial. I read it again yesterday in advance of this committee session. A huge amount of work was done by the Law Reform Commission and much of what it set out in its report is echoed in the two opening statements. We can take as given that the experts and stakeholders agree that we need an independent safeguarding authority, proper legislation and a statutory legal framework to ensure we have proper adult safeguarding.</p>
+          <p eId="para_63"> For the purposes of the committee session, I am acting as rapporteur for the committee to do a report, which is designed to put pressure on the Government and Minister to deliver. We want to set out what we see as the immediate concrete steps that need to be taken and how to progress them. It will be similar, I imagine, to the roadmap set out by the two organisations.</p>
+          <p eId="para_64"> Any of the witnesses can take this question. Will they explain in as wide a sense as possible what they mean by safeguarding? Sometimes it can be seen to have a narrow remit, through the prism of health, as outlined in one of the opening statements. I know it is wider than that. Perhaps Ms Rickard-Clarke could set out her and her organisation's interpretation of what safeguarding is in its widest sense.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_65">It is the responsibility of all to safeguard people, to protect them from neglect, abuse and exploitation, regardless of their circumstances. People look at safeguarding as relating to people with disabilities or older people who perhaps have dementia. It is much wider than that. People in particular circumstances or at a particular time of their lives may be at risk. They may be in isolation, lonely or bereaved or have health issues. Safeguarding is about protecting people who may be at risk and ensuring they are protected against abuse, neglect and exploitation.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_15">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_66">Does Ms Walker-Strong want to add to that?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_67">I echo the definition of Safeguarding Ireland. What is important is that while it is social work led, it is not social work exclusive. It needs a multidisciplinary approach. It is about protecting people where they are at the time. Any of us could end up being an at-risk person depending on our health, where we are living at the time or family members. We could end up in a situation where we need protection by the State and need someone to call. That does not necessarily need to be a professional. It could be a long-standing neighbour who starts to notice something is happening next door. We do not have that at the moment. There is no one to call.</p>
+          <p eId="para_68"> Perhaps Mr. Keogh would like to add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Liam Keogh<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_69">I think that is it. One of the things we advocate for through the IASW is the human rights perspective. It is about ensuring the State vindicates people's rights so they get to live the life of their choosing as best they can.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_18">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_70">We already identified the weaknesses in the past few years and in the past few weeks when HIQA was before the committee. HIQA cannot investigate individual complaints. We do not have a single independent safeguarding authority that can deal with safeguarding. The problems have been acknowledged.</p>
+          <p eId="para_71"> The Law Reform Commission report makes an interesting point. It stresses the need for adequate resourcing and changes in culture, which I think are equally important. I noticed the opening statement by the IASW called for mandatory reporting. I do not see that in the statement from Safeguarding Ireland and I am trying to tease out whether there is a difference of opinion on the need for mandatory reporting. I will come to Ms Walker-Strong first about why IASW feels it would be an important element of any safeguarding legislation.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_72">I might ask Dr. Donnelly to answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:10:00+01:00"/></from>
+          <p eId="para_73">I thank Deputy Cullinane for the question. IASW acknowledges some continued disagreement across the sector about the introduction of mandatory reporting. In our view, those who are cautious about mandatory reporting often place disproportionate weight on the value of education, training and guidance as a means to encourage voluntary reporting, which we currently have. This approach, however, is not evidence informed. Following the Brandon case, intensive safeguarding training and education was provided in HSE CHO area 1. This and the availability of an adult safeguarding team did not prevent further failures to report concerns in HSE-run services, leading HIQA to publicly express a lack of confidence in the HSE's ability to run safe services in the area.</p>
+          <p eId="para_74"> In addition, the members of IASW continue to encounter delays in timely reporting, which puts adults at further risk of harm, and failure to report concerns, including in settings where adult safeguarding education and training have been provided.</p>
+          <p eId="para_75">Social workers report that adult abuse or neglect continues to be minimised, overlooked or reframed as poor care despite safeguarding education. Our other primary motivation-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_21">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_76">Let us cut to the chase. Ms Donnelly would have a view that mandatory reporting is really important.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_77">It is very important. Ms Rickard-Clarke referenced the 2012 withholding information against vulnerable children and persons Act. There has been no monitoring and compliance of that. It has not really been utilised in the way it is intended.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_23">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_78">Is it also fair to say there is a difference between mandatory reporting and investigating? It does not mean that everything reported is necessarily investigated-----</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_79">No.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_25">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_80">There is an obligation to report suspected abuse, neglect or harm.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_81">We argue that mandatory reporting should not be universal, and it should only apply in certain circumstances aligned with the principles of the Assisted Decision-Making (Capacity) Act and the adult at risk must be at the heart of all activities. First, it would apply in situations where the adult at risk lacks capacity to consent or there is a significant query about their ability to give capacity or understand the risks that they might be subject to.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_27">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_82">I will bring in Ms Rickard-Clarke as I only have a minute and a half left.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_83">The Law Reform Commission made a statement that it recommends universal mandatory reporting in the adult safeguarding context should not be introduced in Ireland. Obviously, we look at other jurisdictions like Australia, where every little complaint is escalated or whatever. The Law Reform Commission specifies mandatory reporting with regard to specified incidents and the expansion of offences in the criminal justice withholding of information Act to include coercion, endangerment, intentional or reckless abuse, neglect or ill-treatment, exposure to risk, harm or sexual abuse and coercive exploitation. It also suggests the extension of regulations under the Health Act with regard to notifiable incidents. It also recommends a wide list of mandated persons who have a statutory obligation to report. That is where things fall down a lot. Even if a complaint is made to a director of nursing it is not-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_29">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_84">That is helpful. Can I take it from both responses that there is agreement on what the Law Reform Commission sets out?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_85">Absolutely, yes.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_31">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_86">Perfect. I thank the witnesses.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_32">
+          <from>Senator Maria Byrne<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_87">I thank the witnesses for coming this morning. This is an important issue. One line I picked up in the Safeguarding Ireland report was about giving adult abuse the same legislation, policy and powers in line with the domestic abuse legislation, using Cuan as an example. Do the witnesses think there would have to be many additions to it to make the policy document for safeguarding robust? Another thing I picked up on was that HIQA does not have the power to investigate an individual if there is a complaint about an individual in a nursing home, unless it is asked by the Minister. I do not see a Minister getting involved in it, so how can we overcome that? Have they suggestions as to how that should be solved? I turn to training. It is important that everybody receives the same training and is at a certain standard. Is there a training body out there, which is at that level, or would we have to reinvent the wheel and develop a new training policy? Would the organisations also comment on replacing holistic social care with a human rights-based healthcare model?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_88">I will start with Cuan. The analogy we were making was that Cuan was set up on a non-statutory basis before the legislation, so there is now nothing to stop the setting up of that independent statutory authority and working towards the enactment of the detailed legislation, but we need a body now to deal with a lot of the issues.</p>
+          <p eId="para_89"> I will ask my colleague to talk about HIQA. Before doing so, I turn to training. The HSE carries out training for HSE staff. We get a lot of enquiries from organisations around the country about training, and it is difficult to get a body that is equipped and has the expertise. One of the functions of the independent adult safeguarding authority would ensure standards of training and all of that. It is an important issue. We fully endorse the principles set out in the legislation by the Law Reform Commission, which is the rights-based approach. People need to be trained in that to understand the right of an individual. Regardless of whether they can make a decision or not they have certain constitutionally protected rights. There is also the empowerment and person-centred protection and the safeguarding body, so again those principles. The Law Reform Commission points out that all organisations or individuals interacting with an at-risk person must abide by the principles. They are protection, prevention and proportionality, so only as necessary and proportionate. We have no integration, no co-operation or data sharing. There are huge issues to be addressed. There is then accountability. Recently, the Law Reform Commission also recommended that financial service providers amend their business regulations to include individual accountability. That is again coming from Europe. We need individual accountability in the health and social care contexts, and in the wider safeguarding issue. We need accountability by owners, directors, leaders or whatever it is right up the line. Those principles are really important to underpin the legislation.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T10:20:00+01:00"/></from>
+          <p eId="para_90">It is true when HIQA says it does not have enough powers, but I want to comment on that. It is a bit more subtle. HIQA says it cannot investigate an individual issue. However, it can take the information provided to it into account at its next visit and may arrange for an unannounced inspection or visit. Anybody with a will can use the existing system to chase an issue and can ask questions in such a way that they can elicit answers or be dissatisfied with the lack of answers. In a way you are stretching what you have. Before you give more powers, use the powers you have. That is the first issue.</p>
+          <p eId="para_91"> On the issue of the Minister having been given some powers, I was deeply involved in that. It related to the terrible conditions surrounding the death of a man called Ultan Meehan, arising out of care in a nursing home in the north east. It is said it is woolly. An amendment that came in under the patient safety open disclosure Act was influenced by those events. If the Minister can ask HIQA to investigate certain things, it should be possible to explore creating a class of things that could be investigated or making regulations in that regard. It is about using what you have in front of you to the utmost. The grave danger is that everybody rushes out saying to give more powers. Use what you have. That is the issue.</p>
+          <p eId="para_92"> Another issue gets missed here. People are focusing on HIQA. The big issue is really the HSE and clinical governance. The biggest weakness across the whole sector, which is by and large now privatised, is the lack of any overarching clinical governance approach. For example, a consultant geriatrician in Galway or in Castlebar, County Mayo, is not in any way in a position to interfere or intervene in a situation of care in a particular place, although it is in a HSE region. In the regionalisation of the HSE, which came out of the Sláintecare report, it had no plans for bringing all nursing homes within the overall ambit of the regional health authorities or areas, or the local integrated healthcare areas.</p>
+          <p eId="para_93">The issues are complex but the issue of nursing homes in particular deserves its own special session. We are not just talking about whether they are owned by the Chinese, the Americans or the French. Some nursing homes that are part of the Orpea group were bought over the years from another group, which was Irish. I recognise their practices because I remember sitting in one of those nursing homes late at night with a deputy person in charge who was in tears about some of those practices. A special session on nursing homes really is needed.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_94">We could do a session with the Minister for older people and HIQA and tease out many issues around nursing homes. It is certainly something we will come back to.</p>
+          <p eId="para_95"> I have a number of questions for Safeguarding Ireland. One of my key frustrations is the length of time it is taking to progress legislation. The Oireachtas and TDs, including Ministers, often call for increased productivity in public services across the board but we need a more productive Parliament and to progress legislation more quickly. We are seeing a national safeguarding committee set up. We had a Private Members' Bill in 2017 and widespread support for legislation in the House but nothing was done to progress it. One year ago, the Law Reform Commission published its report and draft legislation. I find it deeply frustrating the Oireachtas has not tackled this, legislated or progressed legislation. It is clear from Safeguarding Ireland's opening statement that it believes the Law Reform Commission draft legislation should be progressed immediately and I agree with that. Are there any matters not provided for or addressed in the draft that should be included in the final legislation?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_96">It is a 1,000-page report. We met with the commission a number of times. The emphasis on the multidisciplinary issue is important. Even if it is led by social workers - and they are a very important cohort in the whole care arrangement - we need forensic accountants and other people with expertise in serious issues. There are questions of homeless people, human trafficking and so on. I do not think there is a realisation these are very serious issues happening in society. There is no data collected.</p>
+          <p eId="para_97"> The commission highlighted the Department of Social Protection but did not go into detail. This year €25 billion will be spent by that Department on disability, State pensions and all of that. There is no clear oversight of those payments. We had the man who lived to 110 or whatever and his pension was being collected on an ongoing basis. In England, they have the Department for Work and Pensions and when a person is appointed an agent to collect a pension, there is an interview with the beneficiary and an interview with the prospective agent. Here, when you reach 67 years of age and get the State pension, you give the Department your bank details and it is logged with no oversight or check-up. We want the banks to follow up on that, as well as the Department. The Department has been reviewing its agency arrangement since 2017 but it has not yet been finalised. </p>
+          <p eId="para_98"> To answer the Cathaoirleach's question on the Law Reform Commission report, it is a comprehensive body of work. Some parts need further drilling down. One thing we disagree with is the suggestion of setting up, on an interim basis, the authority under the HSE. We feel that involves a huge conflict of interest and does not comply with the UN Convention on the Rights of Persons with Disabilities, among other reasons. Complaints would go to that HSE body, which is not equipped to deal with them and does not have the expertise or statutory role to deal with them.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_99">The Department of Health has been leading on this but, as Ms Rickard-Clarke points out, this applies to issues around social protection and justice. They are much wider. Is the Department of Health the right body for an independent body to sit under?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_100">Our view is it should be the Department of justice, if you are talking about crimes that have been committed, rights, data sharing and so on. That is our view in Safeguarding Ireland. We said it could be led by the Department of Health because that seems to be what we hear from the public servants and we want to get it moving. That is why we emphasise other Departments and the Cabinet health committee, which includes a number of Ministers across the board.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_101">That is an important point.</p>
+          <p eId="para_102"> In its opening statement, the Irish Association of Social Workers drew attention to the need for a social care Act to enshrine the rights of people who need care and support. It states such an Act exists in the UK and Ireland needs similar legislation. Will it provide more detail on what it would like to see in such legislation?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_103">The best way to safeguard people is by enabling them to safeguard themselves. Part of that is putting preventative supports in place. Currently, the system in Ireland is a postcode lottery. That is well documented in several research studies and it creates significant barriers to putting in the supports people need to protect themselves, whether home care, respite, day care or nursing home care. Aligned with that, approximately 80% of all care is provided by family carers - unpaid, informal family caregivers who are poorly supported. We need to look at supporting the family unit. As we mentioned in our opening statement, the UK has the Care Act 2014, social care legislation which enables support to be provided to the adult at risk but also to the person providing care for him or her. This is fundamental preventative work in adult safeguarding.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_104">The opening statement also raised concerns about independent advocacy, particularly the number of unregistered advocates with no registered qualifications. Does the association have data on the number of unqualified or unregulated advocates working in the area? For whom do these independent advocates work? What are the necessary qualifications for such a role? Would they need to be social workers?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_105">To answer the question in short, we do not have data on it. That is part of the concern we have. Many of our members raise concerns there is not a scope of practice or a standardised training or education requirement. It is quite broad. A number of advocacy agencies operate at the moment. The concern our members have is that the scope is expanding and expanding and there are concerns for the people who could be at risk. Who will look after that? How do you complain? How does a family member engage with the service?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_106">My understanding is the Law Reform Commission has recommended a code of practice for advocates. Is a code of practice enough?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_107">Our members would feel strongly there needs to be regulation of it, a defined education standard and defined training involved. We are dealing with people who could be at risk and with very complex situations. We need to ask how this works within the current system as well.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_108">Generally, I would agree, as a former CEO of a national advocacy service for people with disabilities. The numbers of people in the field are small. The national advocacy service would probably have 60 to 80. We have about 60 staff and they are not all advocates. We are dealing with a relatively small number of people. There was a position in the past where people were calling themselves advocates - and they still are - and entering into hospitals. We have had situations where we have had to interact with hospital management about that. Self-appointed advocates are the issue of concern.</p>
+          <p eId="para_109"> Many safeguarding teams interact effectively and leave much complex work in the financial area to Sage Advocacy. I want to emphasise the skills that exist in the national advocacy service for older people, which is Sage, and others. There are different horses for different courses and we want regulation because there are far too many people out there trying to appoint themselves as advocates.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_46">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-09T10:30:00+01:00"/></from>
+          <p eId="para_110">I welcome the witnesses and this session. We are touching on enormously important issues. The witnesses have painted a stark and damning picture of a wholly deficient system, frankly, with regard to legislation and to the appalling lack of interagency co-operation between the big beasts of the HSE, HIQA and An Garda Síochána, and all the agencies that need to play a fundamental role.</p>
+          <p eId="para_111">The issue at Áras Attracta was 21 years ago. Safeguarding Ireland and the Irish Association of Social Workers have done great work. This has been going on for years. My question is for Patricia Rickard-Clarke because she has been working in this area for so long. What are the blockages to making progress in this space? As I have said, there is a number of big beasts involved here. Ms Rickard-Clarke answered the question on the Department that should take the leading role in this regard. While there is a role for us in the Oireachtas, crucially, the blockages may lie elsewhere.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_112">There is a lack of understanding of what is really happening at the coalface. Our culture in Irish society is such that decisions are made for older people. Their money is taken from them. No issues are raised and everybody turns a blind eye. We identified that in our 2022 paper. There is a passive acceptance of abuse, if I can put it that way. Every Department and organisation works with a silo mentality. There is no interaction. If we are talking about sharing information to protect somebody, under GDPR, you can certainly share information to protect a person. We have been asking the Data Protection Commission for a guidance document on sharing data since 2018. A regulation is required under the Data Protection Act 2018. We have asked the Minister several times to make such a regulation on the processing of personal data in the public interest.</p>
+          <p eId="para_113"> There are all of those gaps and there is no activity on any of those issues. We are very frustrated. We had the Bill in 2017 and the Oireachtas joint committee report in 2018 saying that adult safeguarding was an urgent matter. We are now in 2025. We did our paper in 2022 because the Law Reform Commission had done an issues paper a couple of years previous and we were very anxious to state what was there. In other jurisdictions, if a law reform commission produces a document and a report, the government has to reply within 12 months. We do not have that mechanism. We were trying to get that when I was in the Law Reform Commission. The commission has done a very good job in setting out very detailed Bills so there is not a lot of work to do. Where there is a will, there is a way. If the decision is made to go ahead, it can be done. Again, organisations and professions work in their own silos. There are turf wars and all of that. We need work across agencies and Departments to solve this issue and to ensure that we are protecting very at-risk adults.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_48">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_114">Great credit is due to the Law Reform Commission and the witnesses for that detailed proposal being at such an advanced stage. However, Government and the political system have yet to take it on. I would like to by crystal clear on something Ms Rickard-Clarke has just said. In 2018, Safeguarding Ireland asked the Data Protection Commission for-----</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_115">We asked for a guidance document.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_50">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_116">That has not been received.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_117">We have not yet received it. It was not just Safeguarding Ireland that asked but a number of stakeholders as a group. We were promised it before the end of 2023 and then before the end of 2024. We are now halfway through 2025. Again, it is all about education and training. People do not know what the guidance is. With GDPR, you need consent but there are certain circumstances in which you can share data to protect people. We need that guidance document and we need the regulation.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_52">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_118">GDPR has been the greatest thing for people trying to cover themselves over recent years. On the Assisted Decision-Making (Capacity) Act 2015, Safeguarding Ireland has made the point that there is a deficit with regard to implementation. The Irish Association of Social Workers has called for a social care Act. Its representatives have made the powerful point that residents are too often seen as recipients of care rather than adults with rights. Of course, the intent behind the Assisted Decision-Making (Capacity) Act was to change that model and framework of care from one that is very paternalistic to one that sees residents as adults with rights. I have come across many issues with the implementation of the Act. Parents of adult children feel very frustrated that they are constrained as advocates but that is a conversation for another day. I would like to hear from both organisations as to the deficits with the Assisted Decision-Making (Capacity) Act and how we can better ensure the rights of adults, including their right to care, if that makes any sense.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_119">The Act is about making sure the voice of the person is heard. Culturally, we are not in that space yet. There is a lot of training and education to be done in that regard. On the implementation of the Act, there is again a serious deficit in training and understanding among the professions to change from the 1871 legislation to the current legislation and current thinking on human rights. There are again many people who have not planned in advance. We have run public awareness programmes on these issues over recent years.</p>
+          <p eId="para_120"> To again come back to regulations, we had a strong response to our campaign on advance healthcare directives. A register has been set up in the Decision Support Service. We need the Minister for Health to make a regulation to operationalise that so people can register their advance healthcare directives. We have been asking for that for a number of years. It does not amount to much.</p>
+          <p eId="para_121"> Around the country, certain groups of people can make an application to the court while others, such as the HSE, must first make <i>ex parte </i>applications. That is a court application. In publishing <i>Voice Matters</i> recently, Sage Advocacy pointed out that those <i>ex parte</i> applications for consent to make an application should be made to the country registrar to speed things up. In some counties, the court does not meet for three to six months. If it is adjourned or whatever, there are significant delays. There are things like that.</p>
+          <p eId="para_122"> We also need an assisted decision-making capacity forum to be set up. This would get people together to look at the issues, the deficits and what needs to be done. Again, there is training online but you really need in-house in-person training and discussion of cases and issues. We need to achieve a significant change of culture. Families who collected the pension and spent it as family money do not think their adult child has a right to make their own decisions on issues like that.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_54">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-09T10:40:00+01:00"/></from>
+          <p eId="para_123">The witnesses are all very welcome. I thank them for coming here. I apologise; I am on the Committee on Disability Matters so I am over and back to the meeting. Ms Rickard-Clarke mentioned culture. The Irish Human Rights and Equality Commission is reporting on the gaps in Ireland's implementation of the UNCRPD and that issue of culture comes up again and again. It was mentioned that we are outliers and that there is a lack of political will to put safeguarding on a legislative footing. All the witnesses have highlighted the delays in that respect. Is this a simple case of inherent paternalistic conservatism in Ireland or does it have to do with the business model that dominates care provision in Ireland? Do the witnesses have experience or evidence of a pushback from for-profit care providers against safeguarding measures because of all the attendant oversight and expense that would entail? Have they heard about that anecdotally? We saw from the "Prime Time Investigates" documentary that many of the problems relate to inadequate funding and staffing of facilities.</p>
+          <p eId="para_124"> I will go through my four questions as quickly as I can. I have a question about research for Ms Donnelly. I know the witnesses as social workers and academics. We go to international conferences and hear about contributions to knowledge in the area of safeguarding. Is anyone doing research on the fact that we are outliers here? Is there any kind of comparative analysis being undertaken? Is anybody looking at Ireland and comparing us to what is happening in other jurisdictions?</p>
+          <p eId="para_125"> The Law Reform Commission was mentioned and many of the questions the Cathaoirleach put were answered. The witnesses would support that legislation.</p>
+          <p eId="para_126"> There was mention of some of the residential settings in other jurisdictions in the European Union that are highly participative in the community and where numbers are small.</p>
+          <p eId="para_127">Is there a safeguarding model or jurisdiction we could look to that is worth emulating? I would welcome any of the witnesses jumping in to answer the question.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_128">Dr. Donnelly can talk about the research.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_129">I can start on the research piece. I am not aware of any specific research on the comparative piece in Ireland. We have had several pieces desk-based research carried out by me, the Department of Health and Mazars comparing adult safeguarding systems across different jurisdictions, primarily Australia, Canada and the UK. There are elements of all the models that have positives. One of the things that struck me from my own work is the importance of empowering people to protect themselves. Often that is the best way to safeguard in terms of education and training. Things like residents' committees in nursing homes, family forums and complaints boxes are really important. We also need support mechanisms for people who are non-verbal and need communication support. Again that comes back to the multidisciplinary team approach that we need.</p>
+          <p eId="para_130"> We need community awareness and societal awareness but also things like in-reach into the nursing homes and outreach out. There is one very good example in Ireland. A facility called CareBright in Bruff is a not-for-profit social enterprise and dementia village. It is really embedded into the local community. It has a café and a day centre. In other jurisdictions we see things like intergenerational solidarity-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_57">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_131">What is it called? I did not catch that.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_132">It is called CareBright in Bruff. It is a dementia-specific village but it follows the model of six people in a very small house. It is not-for-profit and is very embedded in the local community and village. That is what we want to aspire to, where people who need nursing home care can feel that it is their home and they are still part of the community they grew up in. There are some really good examples we can look to.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_133">I will ask Mr. Taylor to reply to some of the questions.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_134">The Senator has made a very important point about culture. At the end of the day, culture beats all these other things, including legislation. Legislation can help but it is more about how people are towards each other and the power relationships. I would caution about taking the approach that if it is private, it must be more suspect. Not too many years ago, I was involved with a particular large-scale facility which is a Famine-era building currently in use. The issue there was trying to get staff who had the real power to work later so the people were not having their tea in the late afternoon in order to be put to bed early. I may be getting older, but I am not that old. This is recent.</p>
+          <p eId="para_135"> I take the point about the residents' committees. We have had considerable experience of supporting some of them. At the end of the day, it comes down to the culture at the top. A residents' committee will only work if people want it to. Many residents do not want to engage. In some places it is a very difficult thing and people are almost going through the motions of it.</p>
+          <p eId="para_136"> This is why I would encourage a special session on the future of nursing homes. Dr. Donnelly mentioned Bruff. We have a number of facilities, but they are small enough. I am working on a project in Mayo, smart sustainable neighbourhoods. Some really good things are happening around the country. The communities are doing things but they do not know about each other and they are not talking to each other. I remember sitting in a small room recently with a builder looking at the drawings and plans. People were saying if they had known that, they would not have gone for the planning permission that way.</p>
+          <p eId="para_137"> I make this important point before I finish. I checked it yesterday. There are over 1,000 pieces of literature on evidence-based design - the impact of the design of buildings. That RTÉ programme effectively shows a hotel-style design. The big issue is that 30% to 50% of the culture in any organisation is determined by the physical design of the building. People going down long corridors, answering bells and all this background noise disorients people. Why are we talking about a shortage of hoists when in fact there are load-bearing structures? Some places are as big as the local hospital. Why are we talking about large numbers of people when they can be broken down into smaller units whereby people have to interact with each other and they can relate far better with the staff? That is good design. There are examples of it around the country, including in Dundalk, Drogheda and Crinken Lane in Shankill. Wherever we try to progress these ideas of household models, we run into enormous official resistance because the unit costs are not suitable.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_61">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_138">Are we the only jurisdiction that-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T10:50:00+01:00"/></from>
+          <p eId="para_139">Sorry, Senator, we have reached the end of the time slot. We will take a quick comfort break now for five minutes and will resume at 11 o'clock.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Sitting suspended at 10.56 a.m. and resumed at 11.02 a.m.</i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T11:00:00+01:00"/></from>
+          <p eId="para_140">We will continue the committee's consideration of the legal and policy gaps in adult safeguarding.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_64">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-09T11:00:00+01:00"/></from>
+          <p eId="para_141">I will fire through my questions. I have just realised I am extremely chaotic; my questions are everywhere. My first point is more of a statement than a question. I have been heard culture and cultural issues being mentioned but I never hear personal responsibility mentioned any more. Do people actually take a look at how they are behaving? Does anyone reflect on how they carry themselves in a professional or caring setting? There is a basic need for common decency. All of us need to look towards ourselves because the idea of culture and more culture has worn thin with me. At the end of the day, we are all people and we can all make decisions on how we treat others and conduct ourselves in work.</p>
+          <p eId="para_142"> Will the witnesses elaborate on how an independent safeguarding authority would differ in practice from current structures? Mandatory reporting was mentioned, as was the fact that not everything needs to be reported in that manner. What specific scenarios would require mandatory reporting? How can HIQA's safeguarding role be strengthened without duplicating social work efforts?</p>
+          <p eId="para_143"> When it comes to advocacy services and their regulation, what specific risks arise from having untrained advocates in safeguarding scenarios? What particular qualifications or training should be required for independent advocates?</p>
+          <p eId="para_144"> Coercive control was also mentioned. Should legislation be introduced to extend the range of relationships beyond those set out in the Domestic Violence Act 2018?</p>
+          <p eId="para_145"> To return to advocates, the age-friendly co-ordinators are working well in my community. This is a programme provided by South Dublin County Council where advocates go out to older persons. They are a brilliant link who give advice and let people know what their entitlements and rights are. We also have great age-friendly housing schemes. Through infill projects in our community and downsizing, people are getting to live independently in the community. This is working well. Towards the end of my time on South Dublin County Council, I could see these people bedding into their new housing and having lovely, comfortable environments to live in. While they are independent and have their own front door, there is also a little community hub. Should we look at, acknowledge and speak about what is working well? There are so many negative things happening that we sometimes drown out the positive. People do not realise there are good options available. I am a huge advocate for age-friendly co-ordinators because they are trustworthy people who really care. I have dealt with them personally on several occasions. People like that and programmes that are being done and regulated properly should be embraced.</p>
+          <p eId="para_146"> In respect of the nursing home situation, there should be financial penalties and accountability. The nursing homes in question took money from people to provide care and then abused them. The money should be taken off them because people were paying for a service and ended up being abused. That is where I stand on that. I do not understand how the nursing home company in question is still in operation after an investigative journalist uncovered what was going on with that same company in France, which caused its share price to plummet. It is disgusting. There should be financial penalties. Every penny those nursing homes took from the people affected should be returned because they did not provide the service people signed up for.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T11:00:00+01:00"/></from>
+          <p eId="para_147">I might be able to answer a couple of points. Culture and accountability are important. It is important for people to be accountable for their behaviour. One of the changes we are calling for is an expansion of the national independent review panel. While that is about accountability and what went wrong, it is also about learnings. We keep ending up in the same place. We had the Emily and Grace cases. We keep coming to the same place and the learnings are being lost. In terms of that culture piece and accountability, it is important to expand the independent review panel.</p>
+          <p eId="para_148"> With regard to the Senator’s question about an independent safeguarding body and what it would do differently, we do not have one mechanism at the moment for looking after adult safeguarding. Safeguarding Ireland covered this issue quite well. While we have a number of State bodies to which a person can report concerns, those State bodies are not speaking to each other. Everyone has one little piece of the jigsaw puzzle but no one has the whole puzzle to put it together and say that a case has reached a certain threshold that goes beyond just a concerned family. We need somewhere where all the information is shared. Safeguarding Ireland also alluded to the sharing of information and data protection. A memorandum of understanding and training on the ground would help to let the HSE staff, members of An Garda Síochána and the staff members working know that they can share this information because it relates to the welfare of a person and arises from the genuine concerns they have, so long as it is not being done maliciously.</p>
+          <p eId="para_149"> When it comes to independent advocacy, I am glad to hear that Safeguarding Ireland agrees with us and would also like regulation around this area, where people who act as representatives for local people are voicing concerns on their behalf. I cannot remember the title the Senator used for the advocates for older people working in her local community.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_66">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-09T11:00:00+01:00"/></from>
+          <p eId="para_150">The age-friendly co-ordinators.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T11:00:00+01:00"/></from>
+          <p eId="para_151">That is a slightly different role from what the independent advocates do. When people go into places claiming they are advocates but are not from a formal body, the family does not have a right to complain and there is no mechanism for family members to express their concern about who that person is.</p>
+          <p eId="para_152"> In the context of the education and training of advocates, abuse of older people is so wide that it is difficult to say there is one type of training that fits the bill. There is financial abuse, which means there is a need for people who understand accountancy, money, how money can go missing and the exchange of money. People with an understanding of human rights, who will assume at the start that the person has capacity, are also needed. We tend to have a culture in Ireland of assuming at the start that certain groups do not have capacity. We need to move towards a culture and practice where we assume someone has capacity. That is the starting point. That is where we are looking for a better scope of practice around the advocates, their work and what they are doing.</p>
+          <p eId="para_153">This would be as much for the advocates themselves, so that they do not step into territory that is outside their scope of practice and that they would know that something has become criminal or something in which they need to involve another member of a multidisciplinary team. It is to have a rounding on it.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Liam Keogh<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_154">Safeguarding is quite broad and there is no one-size-fits-all solution. For me, there are three aspects to safeguarding. The best form of safeguarding is prevention and all that happens before. This is about empowering people to keep themselves safe. Then it is about looking at how we respond, and the clinical expertise and training needed to respond to the issues and concerns we have. Afterwards, it is about what we do to support people's lives after they experience trauma and how we best support that. These are the three aspects of safeguarding.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_69">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_155">I thank the witnesses for the conversation and information this morning. My instinct as a TD and a human is to ask why we are still having this conversation. There is no single authority or relevant legislation, and the policy we have is 11 years old. The public would be absolutely horrified if this were to be a headline on a national newspaper, and they would be right to be absolutely horrified.</p>
+          <p eId="para_156"> I will begin on safeguarding. Mr. Taylor said something earlier on which I would like to get more information and more detail. I believe we need a single authority but I want that single authority to be effective. I want it to have teeth and to maximise the power it has. I also want it to be accountable. In terms of what accountability looks like, I do not want to keep talking about HIQA but what came across very strongly when HIQA was before the committee was that where a complaint is made, an individual is held to account, and the entity, which in some cases is a corporate entity, is not held to account. How do the witnesses see this aligned with the clinical governance that was mentioned earlier? If this authority were to emerge in the morning, what would be the accountability, to whom would it be accountable, where would the Minister fit in to it and where would the individual and the corporate fit in to this framework? I know it is a bit of a mouthful but that is my first question.</p>
+          <p eId="para_157"> The work done by social workers is phenomenal. They do it in some of the most difficult of circumstances. In terms of safeguarding, I fully agree with the content of the opening statement on the moral imperative. If we begin from there, and from somewhere that is very person centred, what comes out will always have a level of value added to it, simply from starting with these perspectives. There was a reference in the opening statement that when concerns were raised by social workers they were ignored by the HSE. In the realm of safeguarding, to separate those who need separating from those who would be responsible for providing it and ensuring it is adhered to, what were the repercussions for the social workers who raised concerns? Were there repercussions? Did those individuals who were ignored then face additional scrutiny? Were there consequences for them coming forward to raise concerns?</p>
+          <p eId="para_158"> Embedding nursing home residents' voices in their day-to-day life is a wonderful idea. It is a home and not an institution. They should not be excluded from their communities. I know there are some places that do it very well but in my experience they do so despite the lack of support rather than being encouraged. We need to fix that.</p>
+          <p eId="para_159"> I believe there is a role for advocates but this is a role for effective advocacy. We have seen in some circumstances that those with little or no training, and even less knowledge, have put themselves in a position that has been damaging to other people outside the scope of safeguarding. Do the witnesses see an advocate being an individual with a wide range of qualifications or would we have special advocates in very specific circumstances?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_160">There are a number of questions to unpack. There is probably a role for having advocates for various scenarios. I would have to go to my wider membership to confirm that but I suspect it is what would come back. Certainly, there needs to be overarching training on what is the advocate's role in any given situation. At present, this is a little bit vague. Certainly, many of our members have raised concerns that when an advocate becomes involved they are unsure of the scope of practice with regard to where does the role of the advocate begin and end. It is about the terms of engagement for that.</p>
+          <p eId="para_161"> I have lost my train of thought. What other questions did Deputy Clarke ask?</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_71">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_162">I asked about the potential repercussions for a social worker who was ignored after raising concerns.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_163">That is also an issue raised by our membership. We have set up a working group to look at the social work voice and what happens next. It has been widely publicised in the press that whistleblowers, particularly those in the Grace case, regretted their whistleblowing. It is incredibly regrettable for all of us if we have social workers who now say they will not go down that road. We are aware this abuse is still happening but who will raise their hand now? Where are the protections for those people raising concerns and who consistently go to meetings and say we need to change the situation for a person but nothing is happening. I hear more and more from my members the term "moral injury". It is coming up increasingly often. The resources, policies and structures are not there to support the advice being given. This is across the lifespan of people and not only about the care of older people. Recommendations are being made by social workers but the supports and resources are not there to carry out the plan. A plan B then has to come into place.</p>
+          <p eId="para_164"> With regard to adult safeguarding, it is well documented. Dr. Donnelly has done research and included some vignettes earlier that cover some of this. Recommendations are made but the appropriate supports are not available.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_165">I want to mention the repercussions for social workers in these situations. One of the difficulties has been that senior managers in the HSE do not always have clinical expertise. That is the case more often than not. This has been a significant issue and challenge with regard to supporting the decision-making and assessment of social workers in their recommendations. One of our recommendations is that all senior managers in the HSE should be mandated to take adult safeguarding training. This training is mostly online. We need to move back to face-to-face adult safeguarding training.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Annmarie O'Connor<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_166">With regard to concerns that might be raised in other sectors, a range of concerns coming to Safeguarding Ireland emanate from civil society organisations. They are not mandated to comply with HSE policy unless they are HSE funded. A large sector is voicing concerns but there is no avenue where they can be explored or registered. Likewise, there is very limited or no training available to improve their practices with regard to adult safeguarding. Most organisations are very effective anyway with regard to child protection but there is a complete void when it comes to adult safeguarding.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_167">To deal with the question of accountability of the safeguarding body, the Law Reform Commission in its principles has accountability for organisations, people and individuals across the board. It specifically provides that the safeguarding body and its authorised officers who take action or intervention under the adult safeguarding legislation are accountable and answerable for their actions and interventions. We believe, because it is interagency and interdepartmental, that the body should report to an Oireachtas committee rather than a particular Minister because it is across the board. We are very clear there is a huge void with regard to abuse in the community. People do not realise these problems are there. With emigration now, these problems are increasing all the time. Our demographics are such that the percentage of older people is increasing significantly. There is no data and no documentation, there is nobody to deal with it and nobody is accountable.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_76">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-09T11:10:00+01:00"/></from>
+          <p eId="para_168">I thank both sets of witnesses for coming before the committee. Listening to both opening statements, I have to ask why this is continuing. Quite a number of years ago, we thought much of this was behind us. I am taken by the deficiencies mentioned in both statements. I sincerely thank the witnesses for being so graphic in how they have outlined those deficiencies. Both organisations are pleading for positive change and asking the committee to make progress with urgency.</p>
+          <p eId="para_169">That is quite strong, and it is necessary. The thing that strikes me is that if we did not have whistleblowers and "RTÉ Investigates", this would continue. Therein lies the problem for me and for the general public. You can do all the research you like, but when it comes to inquiring how patients are being managed within the care settings, nursing home staff are obviously going to say residents are very happy, are being well-cared for and that there are no deficiencies. Yet, no patient was interviewed with regard to any of this. There are many fine people who, for one reason or another, have been confined to nursing homes and who have the wherewithal to be part of any process relating to compiling a report on how nursing homes are performing.</p>
+          <p eId="para_170"> One of my first jobs was working in a nursing home, and that is not to today or yesterday. One of the things I found - and, of course, the same situations exist today - was that there were people who were completely unsuited to care roles. For a caring role, one of the strongest attributes required is a level of empathy and of being at the patient's level. Quite honestly, one of the sickening images we saw on the "RTÉ Investigates" programme was of two people who seemed to be shuffling patients who were very vulnerable as if they were going to the mart. We cannot allow people in care homes to be treated like some animals would be treated in the mart when being readied for sale. I found that really disgusting. It begs the question as to the suitability of some people in the context of performing a caring role. If they do not have the necessary attributes, they simply should not be involved. The responsibility in that regard falls on the management of nursing homes. There must be some way that those in management can be held responsible.</p>
+          <p eId="para_171"> In the not-too-distant past, I stated that people sometimes look for a job that gives them a wage. In a care home, however, what people should be looking for is a career where they have all of the attributes and skills necessary to allow them to carry out their duties with dignity and respect for both the patient and themselves. No matter what policies we put in place, we are almost certain to have some repeats when there are people who are incompetent in this regard. The task is enormous.</p>
+          <p eId="para_172"> On having a single entity to manage matters going forward, Safeguarding Ireland has advocated for an independent safeguarding authority with oversight powers. What I want to ask is how it could clarify that this body would interact with existing bodies such as HIQA and the HSE? How would that be managed? Will both organisations indicate how we avoid duplication of roles between the new authority we want, or for which we are pleading, and entities like the decision support services of An Garda Síochána? Those are my questions.</p>
+          <p eId="para_173"> I reiterate that was taken by the opening statements. As regards the deficits, it is embarrassing, to say the least, that we are still managing an area in respect of which so many questions have been left unanswered. I commend the witnesses on the work they are doing.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_174">I will ask Mr. Keogh to talk about the suitability of people, because what I think the Deputy is referring to is a level of clinical governance in terms of the management of those who are caring for people.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Liam Keogh<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_175">It certainly would have come up previously. When the representatives from HIQA were here, they talked about the need for good clinical leadership and the setting up of a clinical advisory panel to allow for some level of oversight. We have talked about social workers feeling that they are not being heard or are not able to report on things. In the context of workers who, as the Deputy said, may not be engaging in the process, who are feeling alienated and who are perhaps not delivering what they need to deliver, namely good quality care, it is important that there is good clinical oversight. We certainly feel that there is a good level of care available. There is often high motivation and great interest. Why we have not progressed more may be down to the fact that there are a lot of pockets of good work happening. Perhaps what we need to do is look at those and learn from them and from what we know. We have a lot of expertise in the room here. People have a great deal of information on this. It is about building on that and working together. In other words, agencies working together and co-ordinating in order to find a good response and supporting staff teams to allow them to deliver what they need. We must provide the training they need to respond and to provide good care.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_176">I will answer the question on an independent statutory authority. We see it as a small enough body which, if were to carry an investigation or whatever, would contract in the necessary expertise. However, its main role would be setting out standards for services. It would not provide services. HIQA and the HSE provide the services. There would be no duplication. As stated, there are huge gaps at the moment. There is no authority that sets standards, monitors and receives reports from people. As regards care assistants who tried to report within their organisations, matters were not escalated or dealt with. There is a need for a safeguarding plan.</p>
+          <p eId="para_177"> I mentioned also that the function of such an authority would be to ensure that there would be training, education and public awareness about issues. Therefore, it will not be duplicating roles but it would have statutory authority to intervene and ensure that action would be taken when issues arise and that people would be held accountable for what they do and how they interact. It is really important people understand that this would not involve duplication because we have nothing in place at the moment. The wider community and safeguarding issues really need to be addressed. The principles of standards for the HSE are across the board, but we need that overarching body to ensure that they-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_178">There is just over half an hour remaining. I have four members left to come in, so I propose that we take Senator Ryan, Deputy Burke and Senators Black and Boyle. We will conclude by 12 noon.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_81">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_179">I welcome the witnesses. I will be brief. I apologise if I duplicate questions that have already been asked. It has been one of those manic days. In the experience of the witnesses, how prevalent is the issue of abuse being framed as poor care? What could we do to challenge that?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_180">That is a really important question. Our very chequered history in terms of Emily, Grace, Brandon, Áras Attracta and "RTÉ Investigates" is very clear evidence that poor care is often constructed as not being institutional abuse and that there is a failure to recognise some of the institutionalised practices we see in nursing homes where there are very rigid meal times, bed times, lack of person-centred care for what they are. However, we have to look at the wider context. I was really glad that Senator Roche mentioned the issue of staffing levels. For me, that is the elephant in the room that we have not really addressed today in terms of safe staffing in nursing home settings. There is also the value we place on care work. Whether that is in nursing homes or in home care, it is very problematic. As a society, we do not value it. We do not value it as regards the actual value we place on it or in the context of people's working terms and conditions. Until we see improvements there, we are going to continue to struggle with provision in the areas of home care and community care. When I started as a social worker 20 years ago, the issue and challenge we had was that there was not enough of a budget for home care packages. We are now seeing the reverse, whereby there is funding for home care but we do not have the workforce to deliver that care. I have colleagues and friends in different parts of the country who have older parents and who cannot get home carers for them. Until we rectify that situation, we will continue to have difficulties around providing safe care.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_83">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-09T11:20:00+01:00"/></from>
+          <p eId="para_181">Has Ireland gone too far as regards the privatisation of care? In Dr. Donnelly's opinion, to what risks does that give rise in the context of adult safeguarding?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_182">There are significant risks. As Ms Walker-Strong alluded to in her opening statement, the work of Dr. Nicholas O'Neill has been very enlightening on those worse outcomes in private, for-profit nursing homes. We have seen a significant shift since the early 2000s. When I started in social work then, nearly 70% of nursing homes were publicly funded and run. We now have the reverse, where nearly 80% of nursing homes are private, which is problematic. For me, there will always be an ethical tension between profit margins and providing good, high-quality care. Some of this comes down to staffing. We really need to look at the landscape of private versus public nursing home provision. There is no reason we cannot develop more not-for-profit or social enterprise models. That is really where we need to go.</p>
+          <p eId="para_183"> Another thing we are doing poorly in Ireland is that we have home care, nursing home care and very little in between the two. We have very little access for older people or people with disabilities to supported housing. This is a significant gap regarding enabling people to age in place.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_85">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_184">My third question is directed to everyone. Are the regional inconsistencies in how safeguarding services are delivered in different CHOs a cause for concern? </p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_185">There are inconsistencies, because each safeguarding team responds to a different director. In other words, the national safeguarding office tells us that it does not have an operational role in the oversight or standards around the country. We need an overarching body to ensure consistency in standards, training, etc., so that the same high standards are in place around the country. I know that the nine teams are now working towards being six teams but there is still inconsistency there. </p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_87">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_186">My final question is to both groups. How can we promote a more rights-based approach to care, especially for older people living in residential care, which in turn is their home? We often see in nursing homes or care homes residents with dementia or Alzheimer's who are almost removed from their capacity to be able to make a choice. </p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_187">That is about culture and education as well. We need to make sure that people understand that this faces all of us who have the privilege of getting older. In our opening statement, we asked whether people in this room would want to age into our current system. My answer to that is certainly "No". It goes back to what Ms Donnelly said about the options in between. We need to go back to looking at having more localised services available to people. When people age in place in their own communities, they are known, linked in and can have conversations with people. If a person gets a visitor, they may talk about someone local, so they are included in that. This empowers them to advocate for themselves and to pop down to the shop if they want to. However, what we are seeing at the moment is that once people go into nursing homes, they vanish from their local communities. They may not have transport to get back or they may not have the mobility to access the local town. This diminishes their own voice and their right to self advocate. We need to look at a massive shift in how we do things, with better planning for the future and how our local towns look at zoning areas for there to be housing in the local community, rather than putting large planning applications in on the edges of towns. Our opening statement mentions examining this and looking at how we can get people to advocate for themselves in a much stronger way. </p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_188">A rights-based approach is necessary but it can often be a soothing phrase that we suck on. Earlier, Deputy Roche used the phrase, "confined to nursing homes". A soldier might also be confined to barracks and there is a certain connotation of control in both cases. In many nursing homes, one can see that the physical environment makes it, for a range of reasons, not easy to get in or get out. People can talk about this from one perspective but then somebody is found dead at the base of a cliff in Bray and there is a hue and cry. It is difficult to get the balance right. I do not want to go down the rabbit hole on this, as it needs a separate discussion, but we are so focused on the way things are currently designed that we have very little idea of what good design looks like. There are very few models of how the care is organised at a household level. This is what we really need to be focused on. The HSE's facilities are large and some of the private ones are getting larger. The issue is not just about ownership, but also about how we are organising the care so that rights can be expressed.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_90">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_189">I had an issue with a person who had dementia and was living on his own. More than €100,000 was taken from his bank accounts over the course of 12 months. When I filed a full complaint with An Garda Síochána, no action could be taken because the man would not be able to give evidence. How do we deal with cases like this? It is a challenge in the sense that there is clear evidence that money was taken out of the man's accounts over a 12-month period. It was also clear that the man did not withdraw the money, but An Garda Síochána would not take any action. How does Safeguarding Ireland deal with such an issue? </p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_190">It is very familiar to Safeguarding Ireland. </p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_191">Yes, it is hugely familiar, but we did not plant that question. One time, we discussed this with one of our great board members, the late John O'Driscoll. At the moment, these things get dealt with and lost because the person may feel obliged, because of family dynamics, not to do anything about it. That is one issue. Sometimes we may not chase up on an issue because the person was led by another person. While some gardaí do have the skills, most gardaí do not have the skills or the practice in the area. As far as I am aware, An Garda Síochána does not have a safeguarding policy developed----- </p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_192">As yet.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_193">As yet, and that is one of the problems. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_95">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_194">The witnesses accept that it is an issue and I was very annoyed over it. It could have been done.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_195">It could be chased in this way, Deputy. I referred to John O'Driscoll earlier. In cases like this, we were looking at the idea that the local profiler of the Criminal Assets Bureau, CAB, could be involved. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_97">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_196">How this money disappeared makes it very hard to track it, which is the problem.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_197">That is exactly what the Criminal Assets Bureau is----- </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_99">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_198">It is a challenge for older people with dementia, especially those living on their own. Gardaí may find that they cannot give clear instructions. It is a challenge and the question is about how people can be protected in that scenario. There are various legal issues that can be dealt with but it is a challenge that we need to deal with. </p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_199">My response is to complete my previous sentence. The Criminal Assets Bureau is one mechanism that can be looked at. If people are in receipt of money, they have to explain how they got it. The role of the person from whom the money is taken is secondary to the fact that the person is now in receipt of money. It is the same principle as what happens in some drug situations. There are different ways to tackle it. This brings to the fore the fact that this is not to do with social work or independent advocacy but rather with policing and forensic accounting. That is where we have agencies of the State, but we need to get them active. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_101">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-09T11:30:00+01:00"/></from>
+          <p eId="para_200">But we still do not-----</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:40:00+01:00"/></from>
+          <p eId="para_201">If I might add, there is a provision in the Criminal Justice Act 2011, section 19, whereby if people have a reasonable belief a crime is being committed, they should report it. This arises all the time at home or in nursing homes and we find nobody reports it. There is no reporting. That is where the safeguarding authority would set the standards, reporting obligations or whatever. We need very clear direction for people interacting with people at risk. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_103">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-09T11:40:00+01:00"/></from>
+          <p eId="para_202">I will move onto the next issue of nursing homes. People are referring, and rightly so, to the RTÉ programme and the abuse that was clearly identified, but there are also two other challenges in nursing homes. One is in the gap between what public nursing homes are getting per bed per patient, which is around €1,969 per bed per week, whereas private nursing homes get something like €1,200 per bed per week. That is a gap of €750, so there are huge pressures on private nursing homes to deliver the same quality of service. How would the witnesses address that? </p>
+          <p eId="para_203"> My other issue around private nursing homes is that we now have over 10,000 private nursing home beds that are controlled by a very small group of companies. Do we need to introduce legislation to ensure that is not allowed to happen into the future? If one of those companies decided to cease operations in the morning, how would we then deal with the vacuum created? </p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Mervyn Taylor<recordedTime time="2025-07-09T11:40:00+01:00"/></from>
+          <p eId="para_204">There is danger of a partial collapse in the market - I hate to use that word but that is how some people are viewing it. There is a danger of a partial collapse in the sector. If one looks at the <i>Business Post </i>any given Sunday, one will see ads along the lines of "Nursing home for sale - 50 beds – owner retiring". Some of those were almost social enterprises where they were owned by the garda married to the nurse who bought an acre of land outside years ago, and availed of the tax incentives and ran a reasonably good show. Post Covid, they are absolutely tired, including of HIQA, and they just want out and to retire. The issue is that, in those circumstances, the State is not stepping in at the level it should. In each HSE region, there needs to be a university-linked teaching nursing home facility designed to the best quality of international practice so that people start learning what good looks like. I have been told by people who are in the business that they tried to get private investors to invest in the newer models but they will not invest because they do not have the confidence that the State is backing this new approach and, as far as they are concerned, the State wants hotel-type nursing homes. That is a core issue.</p>
+          <p eId="para_205"> The Deputy rightly raised the issue of what the NTPF paid. I would argue it is time to get the National Treatment Purchase Fund out of this picture altogether because it is for the regulator to have the role of the regulator in this. We have one body negotiating, supposedly, or telling 80% of the sector's members what they get. It does not negotiate with 20%. The system is administered by the statutory health service, which is the provider of last resort and does not get involved in any way in the running of those things. It is then regulated by a body that, as yet, does not set any indicators in relation to staffing levels and does not have any role in funding levels. It is a completely dangerous situation. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T11:40:00+01:00"/></from>
+          <p eId="para_206">We will suspend again until the lights resume. </p>
+        </speech>
+        <summary eId="sum_9">
+          <i>Sitting suspended at 11.44 a.m. and resumed at 11.46 a.m. </i>
+        </summary>
+        <speech by="#FrancesBlack" eId="spk_106">
+          <from>Senator Frances Black<recordedTime time="2025-07-09T11:40:00+01:00"/></from>
+          <p eId="para_207">I am not a member of the committee, so I thank the Cathaoirleach for allowing me to come in. This is a really important issue. I want to thank all the witnesses for the phenomenal work they are doing in this area. Their dedication and commitment are phenomenal.</p>
+          <p eId="para_208"> I cannot believe we are here again discussing this issue. My colleague, former Senator Colette Kelleher, introduced this legislation in 2017. I have to pay credit to her. That was really important.</p>
+          <p eId="para_209"> Without doubt, safeguarding our older vulnerable citizens should not just be a policy issue. It is a moral obligation on all of us. Vulnerable citizens have built this country. They are our mothers, fathers and grandparents and we have to take care of them. That is the reality. They deserve to live their later lives away from fear and neglect and we have to move beyond this debate and take concrete action.</p>
+          <p eId="para_210"> I have three questions. The first I will put to Ms Rickard-Clarke. Does she have confidence in building on the structure and processes that are already in place to protect against abuse and ensure prompt action?</p>
+          <p eId="para_211"> I do not mind who answers my second question. I remember when we were introducing the domestic violence legislation around coercive control. The then Senator Kelleher raised amending the legislation around coercive control of all vulnerable adults. Is that something the witnesses would recommend? It would mean the legislation would have to be amended. It is something we could possibly take action on immediately.</p>
+          <p eId="para_212"> I will have to run out the door at about two minutes to 12 noon but my last question is around prevention. I would like the witnesses to expand a little. They said prevention was the best cure for everything. Will they speak more about prevention and how they see that? I have loads of other questions and I wish I had an hour with the witnesses but those are my three questions.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T11:40:00+01:00"/></from>
+          <p eId="para_213">I thank the Senator. There is no overarching framework at the moment. I heard comments in the debates about building on existing structures. The existing structures are very limited. They are very siloed and they work within health or social care or whatever but not across the board. This morning, we in Safeguarding Ireland are trying to emphasise huge community issues in terms of people at risk.</p>
+          <p eId="para_214">The systems in place now need to be upgraded and standardised, have a safeguarding lens applied to them and so forth. We would not be in favour of anything less than what we are looking for, that is, an independent adult safeguarding authority. I again emphasise that this is a requirement under the UNCRPD.</p>
+          <p eId="para_215"> On the issue of coercive control, there is nothing to stop an amendment. We also tabled a detailed amendment two and a half years ago when the Criminal Law Act and the offences against the person Act were being updated. The Law Reform Commission has set out a very acceptable issue about behaviour and so forth. That could be done tomorrow if there is a will to do it. Again, the overarching adult safeguarding framework is not needed to do that. I emphasise that the offences of neglect, abuse and so on can be introduced in a criminal law Bill immediately without waiting for an overarching framework.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T11:50:00+01:00"/></from>
+          <p eId="para_216">On coercive control, I agree with the comments Ms Rickard-Clarke made. However, I add that it is a complex area of practice. Often the older person or person being coercively controlled wants the abuser harm to stop but for the relationship to continue. It can often take months or years of intensive relationship-based practice to build trust with the person and bring them to a place where they feel safe taking action against the coercive control. We need legislation as a deterrent to be able to proceed with prosecution if that is the person's will and preference, but we also need the resources for social workers, public health nurses and others who are supporting older people in the community to build a relationship where they feel safe to take action.</p>
+          <p eId="para_217"> Prevention was the other main area the Senator raised. We have covered come of it in the need for a social care legislative framework, similar to that in the UK. We need increased supports for family caregivers. Within the UK Care Act there is a requirement to assess the person for their need for care and support, but also the family caregiver. Given the amount of care family carers are providing, that dual approach is absolutely needed. This is something Safeguarding Ireland talked about. We have a very fragmented health and social care system with respect to adult safeguarding. We could have a one-stop shop or even a helpline people could easily ring where they could access one contact point. It can be an absolute nightmare, even as a social worker in practice, to try to orientate who we should contact about a particular circumstance. That is one thing that would help significantly. Also, routinely having safeguarding competencies in job descriptions for staff would be a significant improvement and, as we said earlier, greater enforcement and monitoring of the 2012 Act would significantly help, as would the cessation of senior HSE managers with no safeguarding or clinical experience making significant decisions in safeguarding cases.</p>
+          <p eId="para_218"> I do not know if my colleagues want to add anything.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Liam Keogh<recordedTime time="2025-07-09T11:50:00+01:00"/></from>
+          <p eId="para_219">In response to the Senator's question on prevention, part of that is reflecting on and learning from the events, trauma and instances that have happened over the years and also looking at what is going well and what we are achieving because a lot of good work has been done, including the work of former Senator Colette Kelleher. We can learn from what has gone well so far and what could be improved. When we were looking at developing advocacy initiatives in the service at one stage, we asked people what it would look like if we were getting it right. They said it would be that we listen to them. We then asked what it would look like if we do not get it right and they said it would be that we had not listened to them. It is as basic as that. Certainly, that is where it begins and ends - listening to those we serve and their families about how we get this right.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_110">
+          <from>Senator Frances Black<recordedTime time="2025-07-09T11:50:00+01:00"/></from>
+          <p eId="para_220">I will not ask more questions because I am conscious of time, but I hope this will be made a priority of the Committee on Health going forward. I am not a member, but I know the Chair is good about this issue.</p>
+          <p eId="para_221"> I thank all the witnesses for the amazing work they do. It must get very frustrating for them at times. I cannot imagine what it is like to receive horrific stories every day and not be able to do anything. I hope today will make a difference. Míle buíochas leo. I apologise that I have to leave.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_111">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T11:50:00+01:00"/></from>
+          <p eId="para_222">I thank Senator Black for joining us. We normally leave non-members to the end of the list, but in this case Senator Boyle kindly agreed to allow Senator Black to go ahead of him in the final slot. I now call Senator Boyle.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_112">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-09T11:50:00+01:00"/></from>
+          <p eId="para_223">This is all very welcome. It is good to see the witnesses. This is an important issue and I cannot understand why it is taking so long to understand. I am new to the Joint Committee on Health. It beggars belief that this issue keeps being kicked down the road. I feel the witnesses' frustration. At the end of the day, we all have to look after our elderly people. It is totally wrong that there is nothing in place.</p>
+          <p eId="para_224"> Dr. Donnelly spoke about safe levels of staff. HIQA was here last week and that was one of the things I asked about. Is there any way we can push forward that a nursing home or other place has to have adequate staff? What I am hearing from inside nursing homes is that there is staff on duty, but there might only be one nurse for X number of patients and then only general operatives are working around the place. It should be mandatory that the number of staff is adequate for the patients they are looking after.</p>
+          <p eId="para_225"> I think it was Ms Walker-Strong who talked about training. Could we not make it compulsory before anyone gets a job in a nursing home that the safeguarding training is rolled out? It could be a module that has to be done. In my line of business, no one can come to work for me unless they have a safe pass and have completed manual handling and confined spaces training. Could we not make it mandatory in nursing homes going forward that staff have to do a full day of induction and cover this course?</p>
+          <p eId="para_226"> In Ardara, beside me in County Donegal, there is a sheltered home accommodation which is working brilliantly. A nurse comes in the morning, at dinner time and in the evening to make sure everything is all right. Up to 20 people live there and every one of them I have spoken to in recent times is more than happy. Mr. Taylor is right that we have to change the whole attitude of these big industrial homes and try to get people out into the local community. We could have six in Bruckless, Dunkineely and Killybegs. That is the way to go because they would be living in their communities. People who were in football clubs all their lives might have a problem now, but they still want to go to the football match on Sunday to see how their club is getting on. From the nursing home no one sees them. They are just sitting there wasting away. We have to rethink the whole thing going forward. Mr. Taylor is right that it has to be community based. We have to get our people out into the community.</p>
+          <p eId="para_227"> Covid-19 was a big problem at home. My father went to visit many elderly people every day. He would just call in, but when Covid-19 came, that all stopped. For people in rural communities, if we could get our people into where they need to be living, among the community, it would be a far better way of looking after them than putting them into nursing homes.</p>
+          <p eId="para_228"> Will the witnesses respond to those points please?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Dr. Sarah Donnelly<recordedTime time="2025-07-09T11:50:00+01:00"/></from>
+          <p eId="para_229">I thank the Senator for raising the issue of safe staffing again. It is critical. My colleague in UCD, Professor Jonathan Drennan, is doing a large-scale piece of research on that in nursing homes in Ireland. We need to look at what it indicates. I did some work in 2022 with the Irish dementia working group. They are people living with dementia who are part of the Alzheimer Society of Ireland. One of their key recommendations for human rights and adult safeguarding in nursing homes was the need for staffing levels to align with those recommended in the common summary assessment form, which every older person or person with a disability completes when transitioning to a nursing home. It is as basic as that because we have to take into consideration different dependency levels and staffing needs and accommodate that. HIQA absolutely has a role in monitoring safe staffing.</p>
+          <p eId="para_230">Things can be done there.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_231">On the training piece, there is a role for training in this but it is not just about training. As we outlined in our opening statement, there is no magic wand that will fix this. It is not just about the legislation and the training. It is about a shift in culture and how we think about this. I could not agree more that it is about the options being available. There may be a necessity for some of the larger nursing homes to remain but there is nothing in between at the moment. There are odd pockets - Dr. Donnelly gave a good example of Bruff in County Limerick - of those things happening but our membership would certainly be very concerned about the privatisation of care across the care spectrum, not just in older persons' care. We would be worried about the State moving more towards the privatisation of care and what that means. Returning to Dr. Nicholas O'Neill's research, we know that outcomes are poorer in privatised care. We agree on that point.</p>
+          <p eId="para_232"> I cannot remember what the third point was. I am sorry. Was it on training and staffing levels?</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_115">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_233">It was on Covid. I remember when my father used to visit people, but that all stopped when Covid started.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_234">Yes.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_117">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_235">If we could get our people back out into the community and the small pockets and work with that, it would be-----</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Caroline Walker-Strong<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_236">Our members have said that an awful lot of things changed post Covid, even down to the training of the team and the staff members. A lot of that has moved online now. One cannot replace the face-to-face training; people get a much richer experience, can share their personal experiences and get to explore the good practice that is going on. We have got out of the pre-Covid visiting of people and other habits, but we do need to return to them. The Senator is right but the post-Covid space has had an impact in lots of areas of older persons' care.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Patricia Rickard-Clarke<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_237">We must not forget about home care. We have been talking about it for a very long time. We need people to live in their communities and we need proper home care to provide for that. Looking at our demographic, there are many older people who have no family members or others and end up in a nursing home because they have nothing else. They have no proper home care and they have no community primary care. The Law Reform Commission made recommendations in 2011 about the regulation of home care. That still has not happened and we still have no proper home care, although we are hearing every day that it is imminent.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T12:00:00+01:00"/></from>
+          <p eId="para_238">I thank our witnesses for joining us today. They have given us a lot of food for thought. I thank them for their detailed consideration in advance and for answering all of the questions so fully today.</p>
+          <p eId="para_239"> We will now adjourn the committee. Our next meeting is a select committee, which will be at 9.30 a.m. next Wednesday, 16 July, with the Minister for Health to consider the Health Information Bill 2024 . Following that there will be a brief joint committee meeting with the Murphy sisters from Tralee who won the BT Young Scientist and Technology award for the app they have developed. There will be a short session and then we will conclude for the summer recess.</p>
+        </speech>
+        <summary eId="sum_10"> The joint committee adjourned at 12.03 p.m. until 12.30 p.m. on Wednesday, 16 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

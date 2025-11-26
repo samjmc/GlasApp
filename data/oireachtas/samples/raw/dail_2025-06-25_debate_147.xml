@@ -1,0 +1,887 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_infrastructure_and_national_development_plan_delivery"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-30" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="EileenFlynn" href="/ie/oireachtas/member/id/Eileen-Flynn.S.2020-06-29" showAs="Eileen Flynn"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="PeadarToibin" href="/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09" showAs="Peadar Tóibín"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCPerson eId="TonyMcCormack" href="/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29" showAs="Tony McCormack"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BONNEAGAR AGUS SEACHADADH AR AN BPLEAN FORBARTHA NÁISIÚNTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Infrastructure and National Development Plan Delivery</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#OllieCrowe">Ollie Crowe</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#TonyMcCormack">Tony McCormack</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AidanDavitt">Aidan Davitt</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#EileenFlynn">Eileen Flynn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#LouisOHara">Louis O'Hara</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ConorSheehan">Conor Sheehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PeadarToibin">Peadar Tóibín.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#SeanFleming">Teachta / Deputy Seán Fleming sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-06-25T15:40:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_13">We have received apologies from Deputy Cronin. I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. Private meetings are a different matter. I also remind them of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of a person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with such a direction, if it arises.</p>
+          <p eId="para_14"> The first item on the agenda is the minutes of the last meeting. They have been circulated. Are they agreed? Agreed.</p>
+          <p eId="para_15"> We move to correspondence. This is the second item on the agenda. The first item of correspondence is No. 012. It is an email from the Irish Academy of Engineering. It is a recent response to a consultation by the Department on barriers to infrastructural delivery. The document also provides links to academy reports on energy and infrastructure. It offers its support for the committee's work. It sent this to the Department and sent us a copy of the same submission. I suggest we note and publish it. That is agreed.</p>
+          <p eId="para_16"> The next item of correspondence is an email on behalf of the Czech ambassador, Pavel Vošalík. It notes that a committee of the Senate of the Parliament of the Czech Republic will visit Ireland in the autumn. The Senate Committee on National Economy, Agriculture and Transport will visit the Houses of the Oireachtas on the days between 15 and 20 September and has requested to meet the members of our committee. In advance of this, it has requested a meeting with the clerk to discuss the matter further. Do members agree the clerk should meet with the representative of or assistant to the ambassador? I suggest we have an informal meeting with them. It can be a joint meeting with the Department of agriculture, but not a formal meeting. I say that because that is the week the Dáil is back and we are not back until the Wednesday. Then on the Thursday some Members of the Oireachtas might be interested in attending a little ploughing match taking place all that week. I would not like to have a formal meeting on the Thursday, taking into account the quorum. I suggest an informal meeting so some members can attend. That is the offer we will make to them. That is agreed.</p>
+          <p eId="para_17"> No. 023 is an email from the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation providing further information sought at our meeting on 21 May. They were the first people in. The correspondence sets out the information requested during our meeting with the Department, including information on the two public consultations and engagement with the public. There are two documents detailing the existing list of projects over €200 million contained in the Project Ireland 2040 tracker and a note from the Department of Transport regarding the N24 and N25 roads. One of our members requested information on that roads situation and that is in that document. The N24 and N25 are listed under minor projects. There is a note on the N24 and N25, which is Waterford to Cahir, Waterford to Glenmore and Cahir to Limerick, and the allocation. Also included are the N11-N25 Oilgate to Rosslare and the N25 Midleton to Youghal. There was a €700,000 allocation.</p>
+          <p eId="para_18"> The information is there on the issues specified but I have an issue with the general information provided by the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation in the other section of the reply. We asked when the major projects currently in the system were first initiated or considered and we requested the completion date. All the Department has given us are the dates of construction and completion. Sometimes planning and discussion could have been going on for a decade. I am sending this schedule back and asking when the first piece of paper arrived in the Department on a particular project and when it was completed. The schedule states that it concerns projects over €200 million which have not gone to construction. They include MetroLink, DART and the M20 Cork to Limerick. Many are still subject to appraisal. They have it broken down by Department. Health is there. The national maternity hospital is subject to appraisal. On the water side, it has the greater Dublin drainage scheme. The start date is 2028. That must be the construction start date. That is a long time in the pipeline, if you will pardon the pun. Energy, housing, tourism and flood relief projects are also there. I want the Department to give us the date on which the matter first came to the Government's attention for consideration. Then it moves on to completed projects and talks about O'Devaney Gardens' completion date. It says the start date was in 2023. That project has been around as long as I have, so that date must refer to construction.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_2">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_19">The plan for flood defences in Midleton was promised in 2017. The planning permission is not even written yet. We need to know the whole timescale, not just for construction.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_20">Absolutely. I propose to return this correspondence and ask for a breakdown of when they were considered and when they went to tender, planning and construction. Some will not be at that stage yet. For those that are under way, we want to know how long it has taken. If we are looking at delivery of the next national development plan, we need to know. The best way to know what the system can do is by knowing what it has been doing up to now and how long projects have taken. I am returning the schedule in its entirety through the secretariat. If they have to communicate, they can come back to me to ask precisely what we are looking for.</p>
+          <p eId="para_21"> Another thing in the reply is not good enough either, though I understand it to a point. MetroLink seems to have only a couple of categories of expenditure: €200 million to €500 million; €500 million to €1 billion; and over €1 billion. It just tells us a MetroLink project is over €1 billion; that could be €2 billion, €10 billion or €17 billion. I will ask the Department to provide the cost estimates including a category of, let us say, over €10 billion because those are the really big ones. A range as big as €1 billion to €5 billion is not commercially sensitive. We need to know which are the big projects of well over €1 billion. I will ask for anything over €10 billion. Is that agreed? Agreed.</p>
+          <p eId="para_22"> No. 024 is an email from the Joint Committee on Disability Matters. The Cathaoirleach, Deputy Quinlivan, requests committees actively seek to engage with persons with disabilities during committee proceedings and notes it is especially important as committees are preparing their work programmes and schedules for 2025. We all agree with that completely. Especially with infrastructure, disability matters. Services for people with disability will have to be worked into all the major capital projects we are talking about. We will bear it in mind. I propose we forward that correspondence directly to the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation so all projects are considered by it and not just at committee level.</p>
+          <p eId="para_23">We will note and publish that letter and then we note and publish the earlier response we received from the Department of public expenditure and reform on the matters just discussed about the scale and timescale of the projects. We will get further information back.</p>
+          <p eId="para_24"> The next item of correspondence is a briefing note from the committee's policy adviser on the recent accelerating infrastructure consultation held on Wednesday, 18 June 2025. This gives us an overall view of the accelerating infrastructure consultation. The event was conducted as part of a broader public consultation. It sought input from public stakeholders on how the provision of infrastructure may be accelerated. This meeting was held in Athlone last week. The policy adviser, on behalf of the committee, attended and there is a brief note, Accelerating Infrastructure, Athlone, Westmeath, dated 18 June, which our committee secretariat prepared as a summary of that meeting. There were approximately 60 people at the meeting. The Irish Academy of Engineering, health services, Transport Infrastructure Ireland, the Northern and Western Regional Assembly and Southern Regional Assembly attended and various matters were discussed. It is an information note that was prepared for the committee, a representative having formally attended. I was invited to attend, as Chair, but the secretariat attended. It was an afternoon event held in Athlone. As we are in public session, the committee secretariat cannot speak but they have provided a good information note. The committee is tracking what is going on with that matter. We will note and publish that as well so it will be available to the public.</p>
+          <p eId="para_25"> As per our previous meeting, we did not have a clock in operation and we agreed members would be allocated a six-minute speaking slot. There can be a second round of speakers, but just so everyone is not waiting for too long, it will be a six-minute slot. That is for questions and answers so it is very tight when answers are added in. The plan is to have the time shown on the screen today. I am not sure if the IT is working. If it is working, the time will be on the screen and people will see how much time they have left. If it is not working, we will keep as close an eye on the time as possible, and I hope it will work the next day if not today.</p>
+          <p eId="para_26"> Another item I want to mention is that we indicated at the previous meeting that we want to produce a report on our first series of meetings to date before we break for the summer because we want to see a bit of action and not just sit back until the autumn. I accept there will not be firm conclusions at this stage because we will only have had initial meetings, but we will tease out the key information and observations we have going forward and it is good to put even that on the record. So far, we have held a number of meetings and, over the next couple of weeks, the committee will meet representatives of An Coimisiún Pleanála, formerly An Bord Pleanála, and the Office of the Planning Regulator on 2 July. The meeting will not be about how they make their decisions but timescales, priorities and delays. The following week, on 9 July, the committee will meet representatives of the Courts Service for exactly the same purpose. Judicial reviews can go on forever, as it seems to some people, and some projects just get abandoned because of the time they take, so the meetings will be about the efficiency and timescales of these organisations. On 16 July, the committee will meet representatives of the Environmental Protection Agency.</p>
+          <p eId="para_27"> The committee secretariat has been working on summarising the meetings so far and the committee will have a meeting next Thursday. For that meeting it is planned to have a draft report of what has been done with a view to members making observations by close of business the following Monday. This will not be an extensive report. I believe long reports get left on the shelf and short reports get read. That is my style. There will be an opportunity at a meeting next week to take on board any amendments people want to make to the draft report. It was agreed that we sign off on the report at our meeting on 9 July and launch it formally on the Plinth or the audiovisual room or wherever on Thursday, 10 July. I think we need to show a bit of urgency on the matter. Is that agreed all round? Agreed. If members have observations on the draft report, send them to the secretariat in the five days between the meetings - I know they include a weekend. I would like to show some-----</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_4">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_28">What is the focus of the report and why are we doing a report? This is only one of the first public meetings of the committee. I just ask out of curiosity.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_29">We looked at the structure of the report so far. There will be a formal introduction. The report will be a summary of the key points from the groups we have met so far and is to show, at the end of this Dáil year, the work the committee has done. We will have done a summary and we will have clear observations on it but there will not be final conclusions because it is too early to draw any absolute conclusions. The first-----</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_6">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_30">My question is not a challenge; it is only for us, as a committee. When we launch the report, will it contain recommendations or will it just be a summary of the groups we have brought in?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_31">Exactly that. The report will contain a summary of the groups we have met: the Department of public expenditure, Uisce Éireann, transport infrastructure projects - we had transport groups in - and IBEC. They will be contained in the report. We will not have firm conclusions but will have key what I would call observations - what the committee has observed so far.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_8">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_32">Okay.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_33">There will not be definite conclusions. It would be premature to draw conclusions after a few meetings. We will have clear expressions of our views, such as the letter we are sending back to the Department of public expenditure on the information it provided, but there will not be formal conclusions because it is a first report.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_10">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_34">Would you call it an interim report?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_35">Yes, it will be an interim report. It will not be a final report.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_12">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_36">Again, I am not challenging this. I am just making sure we are not all looking like eejits landing a report.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_37">No, I expect there will be interest in the report because we had bodies such as Uisce Éireann, Transport Infrastructure Ireland and the National Transport Authority in, so a lot of the report will be about what they are saying and they will have highlighted some of the difficulties. This is what the committee wants to make observations on.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_14">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_38">Brilliant. I have to leave to vote. I thank the Chair.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_15">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_39">The committee asked the Department of Transport representatives to provide a comparative analysis of regulation in other jurisdictions and they said they would. It would be great to get that back before the report is complete. Regulations are one of the big challenges we have in this country, and planning.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_40">We chased this up this morning and I have been told it is on the way.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_17">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_41">That is great.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_42">They are the type of issues that will be contained in the report. I think it would be remiss of the committee to disappear. As I said at the beginning, when this new committee was set up, "delivery" was the most important word in our title. It is not just about talk, it is about delivery, and we need to show a bit of urgency by having an interim report.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_19">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_43">To summarise what we have learned, basically.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_44">Exactly.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_21">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_45">I will pick up on that point. There were a number of requests made by the committee for formal documents, reports or actions. The Chair spoke about the urgency that is needed of the committee. As a symbol of what the committee means in terms of our intentions and urgency, we should set a deadline of a week, that if we meet on Wednesday, we meet on the following Wednesday. Here we are now and the witnesses from last week have not delivered. It reflects everything we are talking about on a larger scale. In essence, to show the level of intention and urgency, we have to set our deadlines that if we meet this Wednesday and make a request for a formal action, it should be delivered upon before we meet the following week. If that cannot be delivered, where are we going in terms of the delivery of large-scale infrastructure projects?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_46">It is five weeks since we had our first meeting and we asked the then Department of public expenditure, national development plan delivery and reform for a series of information items and we have really only received the first batch of them after a month. I say publicly on the committee's behalf that all of the organisations' responses to requests for information are a disgrace.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_23">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_47">Absolutely.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_24">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_48">How can a national development plan and key projects be delivered if they cannot even respond to an Oireachtas committee request for straightforward information? We said the last day, and I will put it on the record, that we would give every organisation a fortnight to respond because sometimes the list of questions submitted is even longer than what was asked at the meeting. I said a fortnight, and if they could give us 90% of the information, give the 90% with the 10% to follow.</p>
+          <p eId="para_49">However, it looks as if they are waiting until they have 100% of the information before we get anything. The pace at which responses have been given to this committee in public session by everybody who has been before us has been a disgrace. It is unacceptable.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_25">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_50">We find ourselves in a situation where perfection is getting in the way of progress and, as a result, we are delivering nothing.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_51">Can we stick with the deadline of a fortnight? Those representatives could be going off for two busy days off site or something. A fortnight is reasonable. If there is an element they cannot answer, I ask them to send a note to the committee. It will take an extra five days or something like that. I have been around other committees in the past. I put on the record again that the performance of all those groups has been a disgrace. I use that word carefully but it is a factual description.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_27">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_52">The lack of urgency is seriously telling.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_53">Absolutely. I am going even stronger than what the Deputy has said. I appreciate that. We will suspend for a moment while our guests from IBEC take their seats.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i>Sitting suspended at 4.01 p.m. and resumed at 4.03 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>IBEC Report on Infrastructure Ambition for a Competitive, Productive and Resilient Economy: Discussion<recordedTime time="2025-06-25T16:00:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_54">In this session, the committee will discuss the findings set out in IBEC's report, entitled "Our Infrastructure Ambition for a Competitive, Productive and Resilient Economy". I am pleased to welcome Mr. Aidan Sweeney, head of infrastructure and environmental sustainability, and Mr. Gerard Brady, head of national policy and chief economist.</p>
+          <p eId="para_55"> On privilege around speaking at the meeting, witnesses are reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against a person outside the Houses or an official either by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory - this also applies to members - in relation to any identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_56"> I remind members that they will be afforded a six-minute speaking slot for questions and answers. There will be an opportunity to come back in if members want further time thereafter.</p>
+          <p eId="para_57"> I invite Mr. Sweeney to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_58">I thank the members of the committee for the opportunity to discuss the IBEC policy paper, "Our Infrastructure Ambition for a Competitive, Productive and Resilient Economy". IBEC welcomes the establishment of this committee, as it represents a political commitment to transforming the delivery of infrastructure in Ireland.</p>
+          <p eId="para_59"> Governments everywhere are refocusing on competitiveness and productivity. There is a global shift by governments to focusing on their own domestic controllables at a time of exceptional international uncertainty. Infrastructure is a key competitiveness issue for our member organisations right across the country and, as such, this was the first paper to be published as part of the Our Business Ambition campaign. The paper contains over 40 solutions on how to improve how we deliver infrastructure projects to make decisions quicker, manage risk appropriately, improve the planning and consent system, and deliver skills and capacity.</p>
+          <p eId="para_60"> The global economy is in a period of heightened uncertainty. The rules-based global order on which Ireland has built five decades of economic progress is changing. Ireland already has significant commitments it will need to meet in the next decade. We will add close to 1 million people to our population. We will need to meet a carbon budget for the five years after 2035 that has 40% of today's emissions. We will also need to build at least 500,000 homes and significantly upgrade our infrastructure.</p>
+          <p eId="para_61"> Given the challenges and opportunities facing Ireland in the coming years, spending on infrastructure must be prioritised ahead of all other forms of spending or tax cuts. We must not repeat the macroeconomic mistake that we have consistently made over the past 50 years, which is deprioritising public investment when the economy has slowed. The programme for Government commitment to maintain capital spending in the event of an economic downturn is the right one. The Government should introduce a fiscal investment target to our fiscal rules that is explicit over the long term. This would provide a fiscal anchor for the capital budget through good times and bad. To meet our needs as a society, we will need to spend close to 5% of national income on public capital annually through to 2035. This will require public funding of around €200 billion in total over those ten years to maintain capital spending momentum at its current level in real terms.</p>
+          <p eId="para_62"> However, Ireland has an infrastructure delivery problem. Capacity constraints and infrastructural bottlenecks have built up due to inconsistent investment and underinvestment over recent years. This will require a fundamental shift in mindset. Beyond efficiency, our view is that an overriding concern should be the effectiveness of project delivery.</p>
+          <p eId="para_63"> Getting economically and societally important projects completed is as important as optimising value for money. In an open economy where demand is driven by external forces and targets such as carbon net zero are blind to economic cycles, a lack of delivery on infrastructure projects is a recipe for long-term competitiveness losses and a permanent capacity deficit. Ireland will need decades of consistent investment, regardless of the economic cycle, to meet its infrastructure needs. This requires significant investment in the State's capacity. Our record on delivery in recent decades has been mixed. For example, of the 44 projects identified as being in Ireland’s major infrastructure pipeline in 2019, only 24 have been completed and 20 are still awaiting completion.</p>
+          <p eId="para_64"> Now is the time for concerted action by the Government in implementing high-impact reform measures to accelerate project delivery. State-imposed barriers must be urgently addressed. The Government must look to streamline the procurement process to the greatest extent possible. We must also move to multi-annual budget envelopes for key infrastructure projects and delivery bodies. Too many major infrastructure projects under the current NDP have been delayed in recent times for a lack of relatively small amounts of funding to move through the approvals process.</p>
+          <p eId="para_65"> Improving our ability to deliver infrastructure can be achieved within the current system by: cutting the decision-making timelines; giving a single entity the statutory powers to co-ordinate and prioritise large infrastructure projects through the planning and consenting systems; funding and resourcing relevant bodies in the planning system to meet statutory deadlines; facilitating faster infrastructure delivery through the new exempted development regulations; and giving greater opportunity for public input at the outset of local development plans.</p>
+          <p eId="para_66"> Infrastructure delivery in Ireland is highly fragmented. Construction of large infrastructural projects requires a significant number of regulatory consents. These relate not only to planning, environmental considerations, construction, connection, commissioning and operation, but also consents for access to, and use of, transport infrastructure during the construction process. There is no central co-ordination of these processes for major projects, which can be delayed by minor construction-related consents that are not prioritised according to strategic significance. A central body responsible for these large-scale projects, with the powers to advance their consenting and prioritisation in the planning system, is required to move forward critical projects at pace.</p>
+          <p eId="para_67"> It is also important to realise that not all infrastructure is provided directly by, or in partnership with, the State.</p>
+          <p eId="para_68">The private sector plays a key and often lead role in delivering critical national infrastructure across telecommunications, energy, transport, utilities, healthcare and education. Not only is this overlooked, but so too is the fact that attracting international capital to fund the delivery of these projects is an important source of foreign direct investment. The Government's approach to addressing barriers to delivery must include the challenges faced by these companies. We are calling for the establishment of a standing forum with private sector deployers of critical private infrastructure to address issues around securing further investment for Ireland.</p>
+          <p eId="para_69"> Efforts to streamline infrastructure delivery through the Planning and Development Act 2024 must not be considered complete. Infrastructure delivery reforms must be aligned with the planning and permitting system. This is being actively pursued by other countries. Projects critical to meeting national strategic objectives must be prioritised. The Government must immediately issue ministerial directions to An Coimisiún Pleanála to prioritise underpinning infrastructure such as critical utilities infrastructure where delays in the delivery of those projects risk undermining other projects.</p>
+          <p eId="para_70"> The definition and prioritisation of projects as strategic infrastructure should be extended to international connectivity, infrastructure resilience and critical infrastructure protection. Adherence to the statutory timelines set out in the new Planning and Development Act is also important. Resourcing right across the planning system requires immediate and concerted attention. Finally, we must ensure that planning and licence applications can be considered in parallel.</p>
+          <p eId="para_71"> Securing infrastructure delivery in Ireland is extremely complex because of the level of access to third-party planning appeals, which is much less in many other European countries. Individual objectors can exercise considerable power through the delivery process, including judicial reviews. On the other hand, the dispersed public good from these projects is often given less weight by our system. As a result, projects that are clearly in the public interest are delayed, become more expensive or are even abandoned. This cannot be allowed to continue. The Government should implement with urgency recommendations from the report of the Review of the Administration of Civil Justice that remain outstanding, such as utilising adequate alternative mechanisms to judicial reviews when rectifying deficiencies and allowing for corrective actions to be taken.</p>
+          <p eId="para_72"> An expert review group should also be established to review the structure of the Irish planning system, within the European context which it operates, to review the balance between individual rights and the public good when it comes to major infrastructure projects. It should report within six months with recommendations on a rebalanced system up to and including constitutional reform.</p>
+          <p eId="para_73"> We cannot continue with the <i>status quo</i> and just hope for improved outcomes. Effective and sustained infrastructure delivery will result in large-scale projects that can transform our economy and society, service homes at the pace required, upgrade infrastructure to meet the standards of a modern economy, achieve our climate goals and support balanced regional development.</p>
+          <p eId="para_74"> I thank the committee for its attention. We look forward to answering questions or addressing specific issues that members of the committee may have in relation to our infrastructure ambition.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_75">I thank Mr. Sweeney. Deputy Tóibín has indicated to be the first speaker. I have a few brief questions for the witnesses first. In the document they published, Our Infrastructure Ambition, they show on a chart the number of days to get from dealing with construction tendering practices to a decision. The average in Ireland is about 300 days. That is the same as Greece and a little bit worse than Bulgaria, whereas across other EU countries, it is half that time. Why would that be? One would have thought, once we got to the tendering stage, that we would be nearly there, but not quite there. Why is it, in the witnesses' experience? They must know from their colleagues in other European countries.</p>
+          <p eId="para_76"> The big question I have is about labour force. There is money. Funding is available for investment. There are many reasons why there are logjams. Can the witnesses give an indication, though they might not have the information today, of the number of projects and the breakdown of the cost of the project between pre-construction and actual construction? That includes land acquisition. They might not have all that here today but I am sure they have information. We have seen with motorways and road projects that there used to be high construction costs. Now the cost of land acquisition, the non-construction parts and all the reports can be greater than the construction costs. By the time we get to the tendering stage, which is something the Government has looked at, 60% of the funding for the project might have been spent. What we hear when we get the final tender is whether we decide to go or not, but it is hard to abandon a project if we have already spent 60% of what the project is expected to cost. The witnesses might give us an observation on that.</p>
+          <p eId="para_77"> Does IBEC have figure on the labour force? Its members are the employers so they should know. What percentage of the workforce in Ireland works in construction? Has that changed in recent decades? When I talk about construction, I am talking about the physical construction rather than the pre-construction aspect and the changing skills in that area. Do we have enough construction workers to do everything that we are going to do in the national development plan review? Do many of IBEC's members have projects overseas with Irish people who could come back and help with some of these? The witnesses talked about people coming here under the critical skills programme. They might address the labour force element. That is my last question until I call Deputy Tóibín. If the witnesses do not have the answers to hand, they can send them in writing.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_78">I might take the first question and then Mr. Brady will take the second. The key thing for us on the procurement side is to recognise that the focus of infrastructure delivery and the Government's accelerating infrastructure task force is not just on the planning system. It is right through the whole delivery lifecycle. Public procurement is one of those key areas. The specific chart the Cathaoirleach was talking shows just the time to make a decision. That is from when bids are submitted until the decision to award them. It takes three times longer than is the case in the best performing countries. We highlighted that figure, which came from the European Court of Auditors in a 2023 procurement study. The issue for us is that we want the public procurement market and the NDP pipeline to be as attractive as possible for bidders for those contracts and to allow the value chains and supply chains to scale up.</p>
+          <p eId="para_79"> Our key thing is partly that we had decisions that were not awarded simply because the approval process was pulled and the budget was not approved at the first stage. In that length of time, the decision-making has impacted on the ability and appetite to bid.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_80">Is Mr. Sweeney saying a project went to tender without having the funds in place before it went to tender?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_81">Yes.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_82">Okay. That is a key takeaway here.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_83">The key thing for that is to recognise that, yes, we can talk about investment in the procurement process and the different sort of procedures that are used, but we have to invest in the skills of procurement officials. I understand the Government is working on its new national procurement strategy. Our key point is that, across Europe right now, the number of bidders has fallen dramatically. When we come to a national development plan, we want to be as attractive as possible to get the right companies bidding for that work. We want an average of seven to eight, where it was, whereas now it is one to two across Europe. We need to get people bidding. The appetite and length of time of a procurement process is unlikely to encourage someone to bid because they are locking up many resources without a decision actually being made. That is just one element.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_84">I might come back on the labour market side. There are a number of things in that. There are about 170,000 people in the construction sector broadly at the moment. That will need to grow in the coming years. We are doing work, which we will share with the committee, that looks at the scale of the investment targets. We will update it once we have the new NDP in July, or look at the scale of investment needed. We will need in the realm of 100,000 extra workers in that sector over the next decade to reach the targets in public and private. That is growth in the economy plus the green targets that we have set and the investment needed there. The major investment is in the national development plan, the various commitments across Government and the plans for rail and everything else. Many investment needs are coming down the line.</p>
+          <p eId="para_85">It is the right thing to do for the economy but will need a concerted effort to build capacity. Several areas are important in building capacity. The one we hear about over and over again is trust in the pipeline being critical. We have even talked to companies abroad that could bring capacity into the economy and start to build here. Going back to the motorway network, many of those roads were built by foreign contractors. We could bring in capacity for a lot of jobs or bring back capacity in respect of Irish companies building abroad using Irish workers, but they need to trust the infrastructure funding is there and if there were to be an economic downturn, the funding would continue to be there. In terms of the money put away in the various infrastructure funds in recent years, we now see the signal coming out of them in terms of backstopping infrastructure, the new NDP and the associated dedicated funding, the use of the Apple money and how that is outlined. This will be very important in sending a signal to Irish contractors and contractors abroad. We have a great deal of capacity in the form of large Irish engineering companies and companies in the construction sector generally that are undertaking projects across Europe, the Middle East and elsewhere in the world that could do more here, especially on the large engineering projects side.</p>
+          <p eId="para_86"> On the housing side, there probably is a two-tier aspect. Lots of companies say they are not operating at capacity at all and could do more with what they have in housing, especially if a commitment were given on modern methods of construction and using this in the social and affordable housing area. There is a commitment in the programme for Government to move towards having a minimum amount of this type of housing constructed using modern methods of construction. This would create a pipeline which would mean those companies could invest in using more of those modern methods of construction. It reduces the labour need. In both cases, there is a need for the kind of trust that the system will prioritise infrastructure and investment funding to ensure companies can then build towards something. We do not have a track record that is great on this aspect, so the messaging in this regard and the funding is very important. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:20:00+01:00"/></from>
+          <p eId="para_87">I call Deputy Tóibín, who indicated first. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_39">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-06-25T16:20:00+01:00"/></from>
+          <p eId="para_88">Obviously, infrastructure is the biggest problem in the country now. Recently, I looked at figures that showed the cost of congestion in Dublin now is €336 million and is expected to be €1.5 billion in 2040. The average speeds in Dublin are now less than they were in the 19th century during the horse-and-cart period because infrastructure is becoming so congested. The figure of 294 days from bid to tender evaluation is a damning one for Ireland. One of my biggest frustrations is the Navan-to-Dublin rail line. This is a big project we have been campaigning on for years, and the route selection is taking longer than it took to build the original line in 1852 with picks and shovels. We are spending so much in resources on the front-end of these projects rather than actually the real element, the construction.</p>
+          <p eId="para_89"> On the labour issue, we launched our Operation Shamrock policy yesterday. The idea is to bring back some of the tens of thousands of construction workers who left Ireland and are now working in the likes of Australia and Canada. The Government has spent €170,000 on its social media campaign to bring them home, but there is no evaluation of whether anyone came home as a result of that social media campaign. We do need to take seriously the objective of bringing home some of those workers to augment the 100,000 people it has been said we need for this process. Does IBEC have any comparative analysis in terms of the management, regulation or resourcing of infrastructural projects in other European countries? Taking the rail line example, how many people are put to work on the job of route selection in the planning process of all those elements? Obviously, the more resources put in the front-end, the shorter the time it should take to achieve that front-end of those types of projects.</p>
+          <p eId="para_90"> On regulation, I believe in regulation. It is important. There does seem to be a pendulum effect in regulation, however, and right now Ireland is suffering from it. Is there any comparative analysis in terms of other European countries in respect of regulation? Have any comparative analyses been done examining the State's focus on infrastructure projects and how the private sector does it? How efficient is the State compared to the private sector projects? What impediments are there in law? The A5 road did not go ahead in the North because of the climate action Bill there. Is there legislation stopping infrastructure efficiencies here? Is there an accountability issue? If the private sector had built the national children's hospital, would someone have got fired in relation to it and the amount of money spent on it and the length of time it has taken? Is there an accountability deficit in how the public sector deals with these types of projects? I ask the witnesses to address those questions first. </p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:20:00+01:00"/></from>
+          <p eId="para_91">For the sake of full disclosure, I will say that I look after the Dublin and eastern region for IBEC and we are supportive of the Navan rail line. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_41">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-06-25T16:20:00+01:00"/></from>
+          <p eId="para_92">Very good. </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:20:00+01:00"/></from>
+          <p eId="para_93">On co-ordination and delivery, and where Ireland ranks internationally, we need to be consistently investing in not just the projects but in the delivery structures and getting those right, whether this involves the procurement officials, the planners or having the right skills at all the different levels. There are bottlenecks right across the system that are going to impact our ability to deliver. If we were to look at the example of the MetroLink project for Dublin, the delivery body to deliver that project will almost be double the size of Transport Infrastructure Ireland. I refer to the management co-ordination aspect. Big projects will need to have resources for a particular purpose and we need to be looking at this element. If we were to draw a conclusion about how we deliver infrastructure in Ireland, we have had many examples of motorway projects and big transport projects that have been delivered quite effectively over the years. We need to get back to that. We also need to look at how some of our commercial semi-States and that mind set, and how they deliver their projects.</p>
+          <p eId="para_94"> We are seeing that part of the problem we have - and brings us back to the European benchmarking - are the examples of the regulatory challenges we have, how we navigate them and the time it takes to navigate them. Let us take wind turbines as an example, and this came from the Draghi report. Ireland is actually taking 50% longer than most European countries for an onshore wind farm. Essentially, it is nine years, whereas the likes of Finland, for example, can do it in two to three years - a country that has to navigate the same regulatory regimes as we have. It is, therefore, about our approach to how we do this. We need to be looking at how we creatively look at how the projects are throughout the procurement process, getting the multi-annual budget approvals, how we sanction these projects, having a clear and well prioritised national development plan, and then right through to tackling the planning and permitting system and recognising that each interacts with the other. An example would be a problem where something going through the planning system may take three or four years and then it has to go to get an EPA licence, with that taking another two or three years. The question is when it will be actually possible to get to put a shovel in the ground. </p>
+          <p eId="para_95"> This is the sort of process we are talking about. I will speak about what we want to do. We need to say at the outset - and this is part of why we are talking about a co-ordinating entity - that there is a need to walk through a project, look at all the milestones it needs to get through and design the system around that. It should not just be about the point of view of the regulator in terms of its efficiency perspective. It is fine if it hits a year's timeline, but they must all be added together. We then suddenly see what the lead-in time is for delivering a project. Our core approach to this issue is looking at and understanding it from the perspective of our ability to deliver a project. This leads us back to accountability and all those other issues. I refer to having clear and measurable goals. The Planning and Development Act 2024 refers to an aim to get to 48 weeks to get a large project through the planning system, but not all projects, critical infrastructure projects, can go straight to the board. They go to the local authorities first and then may be referred to the planning board. There is a need for clear, strategic and sectoral guidance, whether this is for national aviation policy, the rail network, ports or whatever, to guide projects and determine that these are national strategic projects. This should give as much instruction as possible to those regulators to make those decisions in a timely manner. This is where we need the clarity of that sort of direction too.</p>
+          <p eId="para_96"> On the national development plan and the ability to attract people to return to Ireland to work on projects, we would like to see the marketing of projects internationally but also marketing with respect to the skills required for the projects. It is a case of considering the two because, for some large projects, we will need international companies to come here to help with construction, although we will be looking to local supply chains and skills. We need to market for both the projects and the skills.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_97">Let me add one point to that. With regard to multi-annual funding, we have seen many projects that could have gone to the next stage quicker but that had to wait for a budgetary cycle to get what were small amounts of funding in the grand scheme of projects to proceed to route selection or the next stage in the process. That can add months to a project and, in some cases, a large number of months. I refer to giving the bodies delivering on the projects multi-annual budgets in order to be able to operate, even outside the budgetary cycle. From talking to European colleagues, I am aware that it is not necessarily a question of their not having access to the courts or planning system in the same way we do but of the time it takes to get a decision made through these. It goes back to prioritisation. A major critical national infrastructure project might end up in the same queue as the extension to a bungalow, for example, so it is a matter of trying to get these programmes prioritised in the system and also, as Mr. Sweeney said, parallel consenting. When applying for licensing and planning permission, one has to come after the other, but it should be possible to have both at the same time to get them through the system quicker.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_44">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_98">I thank the witnesses for the presentation. In the interest of time, we might have a back-and-forth. Does the timeline for delivery – 294 days, which is at the bottom of the league table – have an impact on private infrastructure development? How is it being perceived in international markets in terms of investment funds?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_99">To be clear, the statistic is just for construction-related public contracts.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_46">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_100">Just public. </p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_101">What it has done is that it has weakened the appetite to invest in bidding for work. The statistic refers to 294 days after bids are submitted, but the bids could take a year or a year and a half to put together. The investment to put together project teams and respond to detailed plans involves a considerable cost. Therefore, the question for us is whether we can attract enough people to bid for our projects such that we will end up with competitive bidding processes ensuring value for money. The key point is that those concerned are reluctant based on previous experiences. Contracts used to be awarded and were then cancelled, but bidders will have gone through 295 days. The projects might not have been progressed at all, just cancelled.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_48">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_102">Reference has been made to mainland Europe but Ireland is a small island. If we have five or six projects of a similar scale around the country, should we put them out to tender as a bundle? If we bundled half a dozen projects, would we achieve more efficiency?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_103">Bundling can work but it depends on the case. If you have a regional lotting approach to certain public contracts, for instance, you might get people who will bid only for certain regions and not others. Therefore, we need to make sure there is bundling where it makes sense. Bundling across sectors can work. Potentially, bundling could be considered where a locality had a primary care centre project, a school building project and a few other projects. The key-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_50">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_104">I am sorry to interrupt but I am conscious of time. Should we be considering more the concept of town development plans? If there is a need for new school, a new primary care centre and a new library, should we put the three projects together and opt for one tender? Is that the road we should be going down?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_105">Without giving a definitive answer, we need to say, particularly regarding public procurement, that market engagement needs to happen. There is a need to understand the level of ability to deliver the projects. We do not want circumstances in which no one bids on a bundle; we need to be able to understand the commercial landscape right now.</p>
+          <p eId="para_106"> With regard to master planning and the various areas, we believe the national development plan should be aligned with the national planning framework, the regional special economic strategies and the 31 local development plans. I refer to having a bottom-up approach with consistent ideas for localities and identification of the strategic priorities we believe should be reflected in the national development plan. Then one should consider the best way to award contracts so they may be delivered.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_52">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_107">Those in the concrete industry recently referred to quarry materials shortfalls. Other speakers have mentioned building resources and capacity, but have the witnesses any thoughts on raw materials in general?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_108">Our issue, as with the quarrying issue of the concrete industry, is that a large part of this stems from the planning and licensing process itself. We should stop looking at infrastructure in isolation and instead look at all the various elements needed to deliver the projects. On the materials side, there are certain elements for which concrete has to be used, but there are others, as with social housing, for which we can consider rolling out modern methods of construction and other building technologies. Part of what is key for us is signalling, with the national development plan, a well-sequenced project pipeline and testing it to determine the ability of the supply chains to service the projects. This has to be factored into the risk element. It is about considering what would potentially be a gain-sharing mechanism for extraordinary circumstances, as in the past owing to inflation affecting construction products, for example. We need to build resilience into the procurement process as well.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_54">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_109">It was stated there is capacity to build additional housing at present. If we know where we need to get to, which is fine, and considering we are in the depths of a housing crisis, what is the one reason we are not at full capacity now? Maybe I am oversimplifying it.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_110">Viability. It is not profitable to build certain units, particularly apartments, at the moment. Apartments comprise a big chunk of the housing in the targets and will comprise a big chunk of the housing in new targets. It is a question of viability. It is too expensive to build in the country.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_56">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_111">It was said that we need to return to big motorway projects. If the witnesses had a silver bullet to eliminate many of the obstacles, what would it be?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_112">Multi-annual funding for roads projects has been a major issue over recent years. Road projects were held up because they did not have the in-year funding and had to wait for the budget cycle to move on to the next phase. We have a great track record of building roads on time and on budget but multi-annual funding could move projects along quicker.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_113">For me, it is the prioritisation of projects in the planning system. We may need to take radical steps to ensure critical projects, such as the water supply project in the eastern and midlands region, can be progressed through the planning system in a timely and expeditious manner because of their role in supporting other development.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_59">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_114">I thank our guests.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_115">Senator Flynn has gone to vote, so I will hold her slot until she comes back. I call Deputy Sheehan.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_61">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_116">I thank the witnesses. I have several questions. Do they believe the new planning and development legislation will address the legalistic nature of the planning system, which causes so many problems? Is the shortage of judges, for example, putting in place obstacles to getting judicial matters dealt with?</p>
+          <p eId="para_117"> With regard to the concept of a single entity with statutory powers to co-ordinate and prioritise infrastructure projects, how do the witnesses envisage it working? Is the Department of public expenditure the right entity to deal with infrastructure? As an outsider looking in, I feel it is the problem in many cases and that the infrastructure unit should not be contained within the Department that controls the purse strings and in many cases stops things or holds things up.</p>
+          <p eId="para_118">With regard to the comment on the decision-making timeline for contract awards, I agree 150% with the need for parallel consenting. With this bid and tender evaluation taking 243 days, is there an example of a gold standard somewhere in the European Union where this has been able to be done in a timely manner? One thing we are very good at in this country is designing tortuous systems. Whether that is the delivery of housing or capital infrastructure, it makes it almost impossible to draw down the funding and deliver the infrastructure. I would welcome the witnesses' thoughts on that. </p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_119">I will take the Deputy's question on the courts first. Ireland has fewer judges than most of the rest of Europe does and it is a major challenge in getting things through the courts. We spoke to a group of our Swedish colleagues who were recently in Ireland to look at the planning and consenting system and see what they could learn from it. I am afraid they did not leave with many positives. They did say one thing, however, which we took a lot from. Where they go to the courts for projects, the timeline is maybe six months. Here, we are talking about maybe two years, and that might be after spending two or three years in the planning system before that and having to go back into it. There is an enormous challenge there. </p>
+          <p eId="para_120"> There is also a big challenge, as we have said, on the consenting side. The new EPA Bill is important in progressing this. There are things in that Bill that will speed up the consenting process and getting that Bill through will be important to that. In general, however, our timelines are multiple times longer than those in other European countries, although not in respect of the number of areas where someone can appeal against a project or where a project could be delayed. It is not that we have more steps but that the steps take much longer in between to get through the process. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_63">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_121">Would it be fair to say that unless there is a corresponding increase in the number of judges we have, we will have the same issues with the new Planning and Development Act? It is often presented by the Government as an Act that will deal with everything. </p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_122">It is resourcing across the system. We have the same issue with planners. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_65">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_123">Yes, I know that. </p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_124">We need more planners. One of the issues we have is that where we get more planners in one part of the system, it is taking them away from other parts that need them. We have seen progress on this recently regarding work permits for planners. We have also seen progress on the courts. These are all things that are recognised but they will need more resources in the coming years as we scale up the new NDP in particular. We will have more projects coming into fruition and we will need more capacity throughout the public system to be able to deal with them. </p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_125">I have the same difficulty as Deputy Sheehan in getting used to it now being the Planning and Development Act rather than a Bill. As for whether it will help with judicial reviews, there are certain parameters around reforms to the judicial review process but we do not feel it has gone far enough in the reviews recommended by the civil justice review. There are well-stepped measures to say the court should not be a consenting body or there for planning permission; it should just deal with matters of the law. The Kelly report recommends implementing the outstanding recommendations not taken in the planning and development Act. It wishes to allow an Coimisiún Pleanála to rectify the deficiencies and deal with them in a public way, and to allow them to draft decisions and different processes to correct the decisions that should not be done through the judicial review process. That is one of the key things we feel needs to be done. </p>
+          <p eId="para_126"> With the planning and development Act itself, we feel there is an obligation right now on the Department of public expenditure and reform, as well as the line and sectoral Departments around transport, to ensure the clear strategic guidelines are published, whether that is for onshore or offshore wind, rail or the national aviation policy for Dublin Airport, for instance. It is about how we give the powers to the planning authorities to say this is what our Government wants for our public national policies and this is what we should base our judgments on. Those need to be in place. There are stronger powers in the Planning and Development Act to do that. </p>
+          <p eId="para_127"> The national planning framework, the revised national planning framework and the subsequent revisions, and the regional spatial and economic strategies and development plans should be clear in particular areas that will then limit the roles where the grounds for objection could be. There needs to be an obligation to ensure there are clear structures in those plans. One of the things we say, unlike other countries, is that when the development process moves to ten-year development plans, if we slightly lengthen the public consultation period by making those plans at a local level, that would allow the Government and the public to define what is in the public good for each area. It would narrow the parameters. It would involve putting into the plan a clear definition, based on public submissions, of what would be good for the area. It would also help to rebalance the public good accruing from the process. </p>
+          <p eId="para_128"> On the Planning and Development Act, in terms of infrastructure delivery right now, we believe creative thinking around exempted development regulations, which have now moved from primary to secondary legislation, could make a difference.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_68">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_129">Is that in water infrastructure?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_130">We are seeing it in the UK, for instance. We are seeing it in places that might have a capacity increase with a no-build application that should not be through the planning system. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_70">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_131">I agree.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_132">We should not be gumming up the planning system with unnecessary cases that could be regulated by other areas in a transparent manner or should not be through the planning system at all. Why are we compounding a planning system with cases that should not be before it? Those are some of our observations. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_72">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_133">If I can go back to my question relating to the Department of public expenditure being the right entity to deal with infrastructure, Mr. Sweeney might address that. </p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_134">We welcome the commitment to the new infrastructure division in the Department of public expenditure and reform and the input to the accelerating infrastructure task force. We believe the key thing to recognise is that infrastructure delivery is not necessarily delivered by any one Department. In fact, it is bodies further away from the centre, whether commercial semi-States, the NTA or Transport Infrastructure Ireland, that can deliver the projects. We would like the strongest commitment to look at how we co-ordinate the delivery of projects and remove those barriers that are there. That is our focus right now. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_135">By way of clarification, Mr. Sweeney remarked that the court should not be a planning authority or make planning decisions. I thought the courts recently, in some cases anyway, have referred appeals that have come to them for judicial review back to An Bord Pleanála for it to reconsider its decision as opposed to the courts making that decision. Will Mr. Sweeney explain that difference to me? </p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_136">The issue with this is that the granted leave to appeal or take a case has now been narrowed. The court can potentially refuse to deal with a minor deficiency and send it back to An Coimisiún Pleanála. We would like to make that even stricter. That is what the Kelly report recommended. It said deficiencies or errors in judgment can be corrected and that wish to be corrected does not have to be for someone objecting. It could be for the person who has made the application. The key thing for us is to recognise that An Coimisiún Pleanála is a quasi-judicial body anyway, so it should be the one making the pure planning-related issues and the court should only be there for matters of legal argument.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_137">When the court sends it back to An Coimisiún Pleanála, does the applicant have to go through the public consultation? What happens then?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_138">We have heard from members that when cases are referred back to the board, they have taken longer than the original application.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_139">What are they obliged to do? Do they start the appeals process from scratch? </p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_140">Yes, because in many cases, the environmental impact assessment may have gone out of date. We would say that if a case is remitted to An Coimisiún Pleanála, it should be prioritised in the planning system and should not go to the back of the queue.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_141">We will now go back to Senator Flynn, who had been next to speak. </p>
+          <p eId="para_142">She had to vote and now she is back. The Deputy is next after that. I am catching her on the hop but is Senator Flynn ready?</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_81">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_143">No, that is grand. I thank the Chairman. I have a few questions so I hope the witnesses will bear with me. They call for rebalancing the system to provide the common good over individual rights. Who decided what the common good is and why should affected communities lose their voice?</p>
+          <p eId="para_144"> Second, they call for a "standing forum with private sector deployers". Will this forum also include trade unions, community groups and public interest voices or will it only include business representatives?</p>
+          <p eId="para_145"> IBEC's €200 billion public investment target is large. What shares of that sum should go to regional inequalities and funding social infrastructure such as healthcare and education?</p>
+          <p eId="para_146"> Its climate proposal focuses on hitting targets quickly. How will it ensure climate projects do not place extra costs or risks on working-class communities?</p>
+          <p eId="para_147"> Private-public partnerships in housing often let developers avoid building accessible homes or inclusive playgrounds. Councils then have had to spend extra on conversions. How will IBEC make sure private partners deliver full accessibility and inclusive infrastructure from the start?</p>
+          <p eId="para_148"> IBEC promotes PPPs as central finance investment. Given the cost overruns and accountability issues with PPPs such as the national children’s hospital, how does it justify this approach? I know that is a lot of questions.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_149">I might take three of them and leave three for Mr. Sweeney. First, on the forum on infrastructure with private sector providers, many bodies are providing critical infrastructure for the economy - telecoms being one, healthcare another as well as education and various places - where private companies are doing their provision and funding. The challenge they face, similar to the challenge in the public sector in delivering these projects, is that if the projects are difficult to deliver, means it is harder to attract the capital to deliver those projects in Ireland. If companies are trying to build a telecoms network or a network elsewhere in the country and trying to attract capital in, the delays in planning and consenting affect their’ ability to attract capital into the country and develop those networks. We see that forum as a way to bring together many of the different bodies, semi-States, public sector and the private sector organisations, which are trying to build things in the country to fix some of the problems in terms of process. Whoever is on that forum should be the people who are relevant to building and delivering those projects. </p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_83">
+          <from>Senator Eileen Flynn<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_150">Just to be clear, that does not include trade unions or the community groups.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_151">No. What we are looking for is recognising an infrastructure delivery. There needs to be recognition that not all infrastructure the public consumes is actually funded by the State. It is about how when it comes to infrastructure that is privately funded, the barriers those providers face are also accounted for in the work of the reforms by the Government through the accelerating infrastructure task force in different areas such as the licensing or permitting throughout the planning system. Engagement structures where there might be trade unions and business exist under the construction sector group that is chaired by the Department of public expenditure and reform and there are other areas where we work with the trade unions on addressing many of those delivery issues. This is purely about the providers of private infrastructure. It is a mechanism for the barriers they are facing to be addressed. That is separate. It does not include the national broadband plan or different issues. It is about other infrastructure.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_152">Second, on the climate proposal, that is the Government and the climate law we are referring to there rather than IBEC setting a target. These are the targets that are already in law.</p>
+          <p eId="para_153"> On the common good and affected communities, we said in the document that there should be more engagement with communities at an earlier stage so that we get better quality engagement early. That better quality engagement would avoid the need to go through legalistic mechanisms down the road if we get out ahead of it. </p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_154">On the common good, again, it is about making sure with projects that are critical, whether that is water infrastructure or climate requirements, that there is a balancing between what is good for the country as a whole or a community versus an individual objector. It is about having a balance and clear understanding why these projects are needed. </p>
+          <p eId="para_155"> On public-private partnerships we are looking for a well-balanced programme in the national development plan and the potential always of delivering projects and funding them. PPP is not our issue. There might be a misinterpretation about what we are saying, namely a partnership approach with industry in delivering the projects versus traditional PPP models of delivery, which is design, build, finance and operate. What we are talking about is that with the decision to invest, it is for the Government to make a speedy decision on how it will deliver a project, what models it will use and what the procurement processes are. There are value-for-money approaches and so on for how it might evaluate. However, our key issue around this is making sure that any project that is out is well scoped and the right terms and conditions are used for the right contracts and suitable models are used. We want to get them to look at the full suite of potential procurement options for delivering projects.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_87">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_156">IBEC is proposing a direction should be given to An Coimisiún Pleanála to prioritise some critical infrastructure projects such as utilities and the regulatory consents. Why do the witnesses think that has not happened? It seems like a common-sense solution. Have they received any justification for the current situation?</p>
+          <p eId="para_157"> I may have missed some of this but how does IBEC propose a central body responsible for co-ordinating and advancing the projects would work? Will the witnesses expand on that?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_158">On why ministerial directions are needed, I am sure members will have had accounts of this, but when someone is trying to find out where a project is in a planning process and he or she goes onto the old An Bord Pleanála website, it would only say that it has been submitted and the application is with the inspectorate. That is where the visibility stops. An Bord Pleanála was using a prioritisation process for how it cleared its backlog of planning applications. We would like to make sure clear directions are given by the relevant Ministers to say that certain projects are supporting national objectives and they should be there. At the moment there are two main categories, namely everything that is strategic infrastructure, which is usually defined by size, or other projects. As Mr. Brady said, that could be the extension of a house and a school at the same time. Which takes precedence? Our key call is to give clear direction to say which projects should be treated in a expeditious manner and would be backed up by having clear sectoral guidelines, which would be put into local development plans, and all the planning guidelines that inspectors have to adhere to in making a decision.</p>
+          <p eId="para_159">We now think that with An Coimisiún Pleanála, and the new structures, new chief executive and new oversight board, which is separate to the commissioners, there is an opportunity for better and more transparent case management systems and better prioritisation of the cases through it. That is one of the things on which ministerial guidelines should be issued, stating what the key priorities are so we do not end up with a situation, say, like the airport passenger cap, of being stuck in the board. Will we end up with other projects out there, whether it is BusConnects or different issues that are there, where we do not know when they are going to pop out? That is the key thing for that visibility.</p>
+          <p eId="para_160"> The second point is to emphasise there is also an issue for us in that what might be strategic or critical pieces of infrastructure may not be recognised as strategic in the planning system because strategic infrastructure is a specific class of development. We are trying to say that if these are recognised in national policies as critical or strategic, they should be immediately prioritised. Our NDP projects should be classified as priority projects through the planning system. That will at least help in knowing when, up to the 48 weeks, those decisions can be made.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_161">There are particular areas, such as water, wastewater and the grid, where other projects cannot progress without those projects getting through first, which is a big area of concern for us. There are a lot of things that might get built on their merits, but the underpinning infrastructure and prioritisation of that will be critical in the coming years. If lots of towns throughout the country - there is rightly lots of focus on Dublin - are without that underpinning infrastructure, it will get increasingly difficult to deliver housing, in particular, but also industrial projects.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_90">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_162">In the context of multi-annual funding and ensuring projects progress to the next stage, projects in the NDP that have stalled as a result were mentioned. Is it possible to give some examples? Mr. Brady made a point about companies not doing a lot on housing that could do lot more. He mentioned modern methods of construction in respect of public housing. Will he expand on that as well?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_163">Multi-annual funding cuts across pretty much every category of infrastructure. One that has been brought up with us many times relates to road infrastructure, where road projects had got to a certain point but TII did not have the funding by the end of the year to move the project forward. It had to wait until it got to the next budget cycle and the next year to move things on to the next stage. Projects are getting held up for periods of months, just for consenting new funding through the system. That should not be happening. The parts of State bodies that are delivering these projects should be getting the funding over a multiyear cycle so that they can move on multiple stages and not get caught within the year.</p>
+          <p eId="para_164"> On the housing side, pretty much every large developer we talked to - it is a little different for smaller developers - said there is capacity to build more. In particular, there is capacity to build more urban densified housing. There is a commitment in the programme for Government to have a certain percentage of housing, whether that is social, affordable or cost rental, delivered by the State using modern methods of construction, which is something we have sought for a number of years. The reason that would be really helpful is that at the moment, only very large companies can invest in modern methods because they know they have their own demand and their own supply chain. If somebody is a smaller builder or even a medium-sized builder, it is harder to invest in those modern methods because that individual is not 100% sure if the pipeline will be there in a number of years to justify that investment. The State taking on the role of leading the development of that space by effectively guaranteeing a pipeline for those smaller and medium-sized builders would be a huge advantage in their ability to say they can now invest with a certain amount of certainty and take on those modern methods. It would be enormously efficient for construction. To go back to Deputy Clendennen's question about materials, it could also reduce the cost and waste of materials. There is a major advantage in speed of construction and less labour is needed to put into it, but it also means a lot less materials are needed and it brings down cost. Being able to do that would make us more efficient and able to deliver more with less. We will need to deliver more with less and invest in productivity. That is one way to create that market.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_92">
+          <from>Deputy Tony McCormack<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_165">I thank for Mr. Sweeney and Mr. Brady for coming in and for their opening statement. I agree with most of what they said. Infrastructure is highly important. There are many areas where it needs to be improved, no more than in planning. As mentioned, there are many bottlenecks and hold-ups under planning legislation, and what is happening in councils and in An Bord Pleanála and what have you. We need to quicken that up. That has been talked about at length.</p>
+          <p eId="para_166"> Trying to attract people from our diaspora in other countries was mentioned. I am sure the witnesses have had round-table discussions with their members. Those discussions have probably borne fruit in how we attract those people back into the country. How do they think we will fill the deficit in the number of planners we have? We need more. Where do they think that will come from?</p>
+          <p eId="para_167"> If we look at what is happening around the world with wars and what have you, everybody else will be looking for critical goods to build their infrastructure afterwards. Where does that leave us as a country? What do we need to be importing now in order that we will not be left short of it in the future?</p>
+          <p eId="para_168"> I have a couple of questions on digital infrastructure. Is Ireland's broadband roll-out under the national broadband plan meeting the needs of businesses and rural areas? How can Ireland position itself as a digital infrastructure leader in Europe? What infrastructure is needed to support AI, big data and smart industry initiatives? What concerns does IBEC have regarding cybersecurity infrastructure at a national level? There is a lot in that. The representatives will probably not get to it in the time we have. Will they hop on just some of them to give me some answers?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_169">I will do a quick run through them. We have talked to a lot of people regarding the diaspora around the boardroom table, as the Deputy mentioned, but also around the dinner table at Christmas. A lot of people know these issues. People are afraid to come back because they are afraid they will end up in the same situation they were in 2009, 2010 or 2011, where the pipeline of work will not be there for them. That is a massive part, as Mr. Brady said, of trying to market that pipeline of both the projects and the people needed for those projects who are abroad, in addition to trying to convince them that the pipeline of projects is going to stay. These funds, including the infrastructure, climate and nature funds, the use of that money, the use of the Apple money and the commitments we make in those kinds of areas will be very important in being able to sell that story. There is a kind of trust deficit with-----</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_94">
+          <from>Deputy Tony McCormack<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_170">Mr. Brady mentioned that people want security and maybe they have not got that security where they are at the moment either, but the lifestyle and weather are better. If we look at what we need in this country, however, we need houses and we need other infrastructure, such as roads, rail or whatever, we can see there is probably a good 20 years there and it is growing in every year that goes by. As far as I am concerned, they have that security for work going forward.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_171">One of our slides indicated that our track record on this has not been great compared to other countries. You can see investment over time in other countries is high and flat and ours is kind of-----</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_96">
+          <from>Deputy Tony McCormack<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_172">Up and down.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_173">-----a see-saw effect. That is one of the challenges.</p>
+          <p eId="para_174"> To go to the Deputy's other questions on getting materials, modern methods of construction are probably the best way of reducing the reliance and need for materials because we would use them much more efficiently. There will be challenges with materials. There will be a lot of demand for materials across Europe over the coming decades. That will be something we will need to watch, but those are global supply chains and I do not think there is much we can do about it, apart from being more efficient in how we use our own stuff here at home.</p>
+          <p eId="para_175"> On planners, changes in respect of work permits are very important. We have started to see some progress on that. There will need to be investment in planning courses and bringing people into the system, but progress is certainly being made, which will hopefully continue.</p>
+          <p eId="para_176"> The broadband plan has been a huge success from our members' perspective. It has been really welcome. There are still parts of the country where people will complain about digital accessibility, but it is much smaller than it was six, seven or eight years ago, and a much smaller issue than it had been. It has been a huge success in roll-out and a welcome one. I chose a piece of infrastructure we have developed really well and efficiently.</p>
+          <p eId="para_177">As to how we can support the roll-out of more of that type of infrastructure, and as regards this forum we have talked about, a lot of that will be delivered by the private sector rather than as public infrastructure. Similarly, a lot of AI-related infrastructure will be delivered by either semi-States or the private sector. Those are looking for funding from abroad to try to win more investment into Ireland, so we need to treat it more like we do IDA clients, that if you are winning investment into the country, you need more support in trying to attract it in the first instance.</p>
+          <p eId="para_178"> On the AI question about what infrastructure is important for that, grid and water are the two pieces. Grid in particular will be hugely important. We are challenged in both those areas at the moment and will be for the next five or six years at least, so it is important that we are able to win projects in that space. We see other countries, particularly France and other European countries, doing really well because they have both nuclear and very advanced grid and water systems. We have a track record with those companies but we are starting in a challenging place. The more priority that can be given to that underpinning infrastructure the better, particularly through the Apple money and the Infrastructure, Climate and Nature Fund and the use of those funds.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_98">
+          <from>Deputy Tony McCormack<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_179">I noticed Mr. Brady used the Apple money quite a few times in his-----</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_180">I have, for the same thing every time.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_100">
+          <from>Deputy Tony McCormack<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_181">There is not that much of it.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_182">The key thing is that the global infrastructure marketplace is highly mobile. For Ireland, we tend to be with the UK, which has gone to the Middle East to chase big projects. A lot of those are Irish-led. We have been talking to a number of different companies that are looking at investing in Ireland to deliver a lot of the projects. They may come in for the metro but they will look at social housing and all the other opportunities there. What they want is a consistent pipeline with the NDP that is certain that these projects will be awarded and delivered. As regards the steps now with the infrastructure division and the accelerating infrastructure, these are positive soundings out there to tackle some of these barriers. We want to see what the details are with those.</p>
+          <p eId="para_183"> As regards the issues about particular priorities around digital infrastructure and the telcos and all those issues the Deputy referred to, we are making our submission to the national development plan tomorrow and we will happily circulate it to the committee following that. We are also making detailed recommendations on the accelerating infrastructure task force the following week, for 4 July. Those will identify the barriers to delivery across different areas and the solutions. We are talking about AI and the digital infrastructure. We are thinking about the fact that the guidelines for phone masts from 1996 drastically need to be updated because we cannot roll out next-generation technologies on guidelines that were released 30 years ago.</p>
+          <p eId="para_184"> It is the same on some of the forestry guidelines and things like that. We talk about the resilience with the recent storm and the different issues like that. We have a couple of different examples even on those areas as to where we see that small tweaks can help with the roll-out and the resilience the Deputy mentioned. A couple of other areas will be in our NDP submission as well.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_185">Have you any idea or have you access to the information as to how much of the total construction happening in Ireland as we speak is publicly funded versus private? I refer to people building factories, warehouses, IT and so on, as well as housing. What is the scale of-----</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_186">The vast majority in recent years has been private but it is rebalancing now that we are seeing-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_187">Give us an indication of-----</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_188">This is very roughly off the top of my head. It was probably 70:30 over recent years that-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_189">It was 70:30 in favour of what?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_190">Private. I refer in particular to large multinationals and pharmaceuticals and those kinds of places, the building of many data centres and those kinds of projects. A big chunk of it was the Intel campus, which was an enormous project. There are really large private sector projects that have come through, some coming to an end now. We also see that a lot of decisions that we would have seen on private sector industrial projects that would have been made in previous years, because of the tariff and the global situation, are being held off on now for a period. We have talked to a lot of global corporates about what it means long-term in terms of those projects and their view is that at the moment, the uncertainty means no one is making decisions, so there might be a bit of a slowdown in some of those areas. Interest rates also played a role. Commercial property has slowed down an awful lot in recent years. It was booming because, again, interest rates rose and there was not as much demand. It pushed it back, so the share that will be taken up by State investment is getting much bigger as we go along. Similarly, in housing, nearly half of housing now being delivered is funded in one way or another by the State, so the State is taking on a bigger role. When it comes to the kind of critical infrastructure that will allow the private sector to continue to grow, we probably went through a decade post the financial crisis where it was all private or very much private and very little State. There will have to be a little more State involvement in the coming decades to be able to do the grid, the water, the housing and all those kinds of areas and transport as well to catch up, in effect. We are now catching up on the public side with what has been a strong decade in terms of private infrastructure.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_191">If there is less construction activity in the private sector, does that mean there might be more people available to work on some of these projects if the balance is moving to the public sector? That is the logic of what you are saying. Tease that one out.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_192">It is. It is a global trend as well. We see fewer decisions being made on projects globally, which means that where there are projects there are potentially more people interested in delivering them and available to deliver them. We have seen a decade in which interest rates were effectively zero for the first time in human history and a huge number of private projects were built. That has slowed a small bit, mainly because of interest rates but also because of the global economy. It gives a chance for not only more capacity for delivery but also better value for money in delivery over the next decade, but it needs that pipeline certainty to be able to attract it, as Mr. Sweeney said, and to get more bidders into the process to be able to get best value.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_193">I see the plus and the minus but I am sure the taxpayer is concerned that more of the construction activity going forward will have to be funded by the taxpayer proportionally than has been the case, and that is a bigger burden on the taxpayer. Going back over the years, and maybe you do not know this, were we in that ratio in the past where the majority of construction was from the State or are we heading into new territory where the majority of construction costs will come from the taxpayer? That is not sustainable either with 5 million people.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_194">It is not and it is very reliant on corporate tax. In effect, the NDP and its expansion has been paid for and underpinned by corporate tax receipts, so it is not that we are paying more income tax for it. We are getting that infrastructure, in effect, from larger corporate tax receipts. We have concerns-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_195">That is a big risk you are highlighting.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_196">It is. It is a big concern. I refer to the funds in which the Government has put money away and the money we have fortuitously come across in some cases in terms of the Apple judgment, for example. We might not have expected to get that money but we have it now. We have to be able to ring-fence that money for infrastructure because there is not a guarantee that we will continue to get the tax. I am not saying it will fall off a cliff, but there could be declines in future years and we will have to find a new way of funding it. The more we put away now of the money we are fortunate to have the more we will have in future to backstop-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_197">Can you put it in context in terms of the construction activity in Ireland last year? How does the Apple tax fund of about €16 billion compare? It is really only about a year's funding. Some people think this Apple fund will-----</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_198">Fund everything. No.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_199">-----keep us rocking away for the next-----</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_200">It is not a huge amount of money and, as we have outlined, there will need to be about €200 billion in funding over the next decade.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_201">Yes. The Apple tax is only 4% of that. Are we overestimating what the Apple tax can do?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_202">No. It can provide a backstop for some projects, for critical projects, but we will need to have a steady tax base to be able to pay for all this. There is no doubt about it. We will need a stable tax base, and corporate tax has helped us in the last decade to have that, or to have a tax base capable of funding it. If we did not or if we had a fall-off in corporate tax, we would have to have a much different discussion.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_203">Corporate tax is at least 30% of the total tax revenue in Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_204">It is. It is 30% now, and what we have said is that the infrastructure needs to take priority. If something were to happen, infrastructure would need to take priority over everything else like housing, water infrastructure and whatever else. In previous times, where we have run short of money we have cancelled all the projects. That is the biggest reason we now have value-for-money problems because we are building at the exact top of the cycle. When things were soft in the economy and you could have built more for less, we were cutting back. Now we are trying to build at the top of the cycle and trying to get people when the labour market is really tight. Building at the bottom of the cycle would be a radical change in Irish policy and a really welcome one if we could do it. It is certainly our priority.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_205">We do not want to get to the bottom of the cycle.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_206">We try to avoid it as much as we can in the first instance.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_124">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_207">The point is 30% of tax comes from corporation tax, mainly foreign companies. The Apple tax, out of the €200 billion mentioned for future expenditure, is only about 4% of that. People think it is the cure for all our ills; it is significant money but is only-----</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_208">We need a stable tax base to be able to fund the things we are going to fund. We have a healthy tax base at the moment but it is not necessarily stable into the future, given the overreliance on corporation tax. In a normal European country, 10% of tax revenue would come from corporation tax even with much higher rates than we have. We are at 30%, which is a big risk.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_209">Income tax is another 35%; more than two thirds come from those two. I call Senator Stephenson.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_127">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_210">I apologise; I was in the Chamber discussing the Supports for Survivors of Residential Institutional Abuse Bill 2024. I have not been following along with what the witnesses have said, but I will go back to it. This might be a bit duplicative, for which I apologise if it is the case.</p>
+          <p eId="para_211"> The witnesses have been talking about tax challenges. I think in May last year, IBEC warned the Government about handouts to households - I think it used the term "handouts" - and urged that budget policy focus on longer term investment rather than utility bill subsidies or the broader relief in the form of supports to individual families. At the same time, IBEC is stressing the need to match other countries' financial incentives to attract investment. It feels like a bit of a double standard to label supports for ordinary people as wasteful or, indeed, handouts - I think that is the term IBEC used directly - while championing tax breaks, grants or incentives for corporations. The witnesses have spoken about the need for greater tax around corporations. How does IBEC perceive funds that prioritise corporate tax incentives over direct measures that alleviate cost-of-living challenges?</p>
+          <p eId="para_212"> In its policy paper, IBEC spoke about rebalancing individual rights in planning in favour of the public good. How would democratic accountability be ensured? How would we ensure communities' voices are not trampled upon in a rush to streamline infrastructure delivery, recognising the need for infrastructure delivery? The witnesses might say "consultations" but community consultations are often very thin and many communities do not feel they have a meaningful voice in them. In practical terms, who defines the public good? What safeguards could be put in place to prevent the powerful infrastructure body often overriding the needs of communities and environmental protections?</p>
+          <p eId="para_213"> My next question is about the key role the private sector plays in infrastructure and what can be done to prevent corporate interests having undue influence over public infrastructure priorities. Democratically accountable bodies must lead on that. There have been instances in the past of corporations having closed-door meetings with the Government on certain infrastructure projects that would support them in their work. I understand that but there are communities with infrastructural needs that do not get the same direct line to have conversations with senior officials. We must balance corporation needs with community needs. How does IBEC perceive that?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_214">I will take the question about budgetary policy. We were not saying take in less tax from corporates but that we will need to continue to take a lot of tax from corporates if we are to underpin public infrastructure projects. Last year, we said some of the money in short-term schemes was needed and some was not. Some was given to households that did not need it. There are other priorities for society, including housing and public infrastructure, that could have used it ahead of that. It is not that we need more breaks; we said in our opening statement and in the document that public infrastructure needed to be prioritised ahead of tax cuts and all other priorities for spending. We are saying infrastructure first rather than anything else.</p>
+          <p eId="para_215"> On private sector corporate interests getting access to the Government, a lot of companies trying to deliver infrastructure feel they are still challenged in doing so. There are companies trying to deliver a lot of projects. Housing, public transport, water, wastewater and the electricity grid are all shared priorities between us and lots of other groups. It is not that business has one set of infrastructure priorities and households have a different one.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_129">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_216">I suspect in the case of data centres it would be, given where the priorities lie in terms of infrastructure developments. It is often quite geographically based. It sometimes depends on what business is in that geographical area, leading to other communities missing out.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_217">Some sectors potentially have self-interest, but so do certain communities. Everyone has a right to input into these plans with the Government.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_131">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_218">They have the right to make an input but some voices are heard more readily. Perhaps that is not in IBEC's remit.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_219">I would not agree with that. I do not think we will agree one way or the other on it. A lot of the infrastructural priorities, particularly the focus on housing in recent years, come from employers saying their workers and the people they are trying to hire are having real trouble accessing the rental market and housing. We work closely with lots of groups and bodies across the trade union movement and the community and voluntary pillar on lots of these issues because they are shared. Perhaps not all, but about 90% of our infrastructural priorities are societal objectives rather than business objectives. We have had a big focus in the past seven or eight years on the sense that quality of life is one of our biggest challenges. Ireland's biggest attractor for companies is skills. We do not get people to come here to work or keep skilled people in the country if there is not a high level of quality-of-life investment in areas like housing, better public realm and better communities. There are areas where we have individual infrastructural priorities that just affect business but there are a lot of areas - even the vast majority - where they are beneficial for the business community and the broader communities in which they are situated.</p>
+          <p eId="para_220"> I will ask Mr. Sweeney to comment on democratic accountability and planning.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_221">The key for us concerning democratic rights and planning issues is the need to rebalance the public good versus the individual objector.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_134">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_222">Who is the individual?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_223">An individual objector-type issue for a key piece of infrastructure. It might be a project that is good for the climate, for example, or water for Dublin and someone on the Shannon says "No" because that is his or her water and Dublin cannot have it. It is how to rebalance those decisions. We are talking about a couple of things. An expert group needs to be set up to review within six months the functioning of the Irish planning system in the context of how it operates across Europe within the same systems, the same Aarhus Convention and the same processes, to see if we have got the balance between the public interest in the planning system. Is it too weighted towards the individual? That is one approach.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_136">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_224">On the planning Bill, which IBEC probably followed at the end of last year into October, how does the outcome of the Bill relate to IBEC's analysis around the public good and the changes that Bill introduced to the planning system?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_225">The Planning and Development Act 2024 is one element. The judicial review process also needs to be looked at, stemming from the Kelly report that investigated the operation of civil justice in Ireland. The remaining items under the judicial review for the planning process need to be brought forward to make sure the court is not a consenting body. It should just deal with the matters of legal argument. Any issues to do with deficiencies in planning decisions should automatically go back to An Coimisiún Pleanála to deal with. It was felt in the Kelly report that it would serve the legal good and be the most proportionate and appropriate body to deal with those issues.</p>
+          <p eId="para_226"> The second element about the Planning and Development Act is to look forward to see how to leverage the issues around the development process.</p>
+          <p eId="para_227">This is a core thing at the local input level as it moves to ten-year development plans. The question is whether we can follow what happens in Denmark and other member states where there are longer consultation processes when development plans are being made with the local councillors and the public's input. This allows for and provides a clear statement of what is in the public and local interest for that community.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_138">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_228">Forgive me if this is not the right question, as it relates to the planning legislation. I would be interested to hear Mr. Sweeney's perspective on that when he is talking about the good of the local community. With the planning legislation, many local communities felt that decision making was being taken away from them and brought upwards to higher levels rather than sitting with the communities. They were feeling that it was less democratic and that they were being more disenfranchised in the process under the new planning legislation. What does Mr. Sweeney think about this? </p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_229">It clarified issues of standing and different mechanisms for who could take a judicial review and the grounds for doing so. We also have to recognise that it is quite extensive on the environmental side so that judicial reviews can automatically go to the court. It depends on the substantive issues at hand and what the grounds for the appeal or objection are.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_140">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_230">Many environmental activists think that it does not provide enough safeguards in this area. Mr. Sweeney talked about constitutional change regarding the concept of the public good. Does Mr. Sweeney have ideas about how to define the term "public good", at any given time, if he were to seek constitutional change? I say this because what the "public good" was ten or 20 years' ago compared with what it will be in 20 years' time is really contextual. I would worry about how that could be interpreted.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_231">We have elected representatives, and processes in the planning system that are decided by those elected representatives, when we talk about local development plans, for example. There is a lot of public input into these plans and we are saying that there needs to be more engagement earlier. What we have seen is that, compared to a lot of the rest of Europe, the Irish system has a more constrained input in the early stage and then a very judicial system down the road. A person has to go to the courts if he or she objects to something down the road. We are saying that we need more focus at the start when there is more input from everyone in local communities and local businesses. That then goes through the same system of developing a local development plan. At least it can be said further down the road that there is a more defined set of objective facts about what local communities think the public good is for their community. To avoid going into the courts and getting dragged through them for years, we should engage with communities much earlier and much better than what we are doing at the moment. The planning legislation gives us this opportunity because there are longer local development plan timelines, which means we have more space to do that than we did under the previous regime.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_232">The Senator may not be aware but we have agreed that, from now on, there will be speaking slots of six minutes for questions and answers per member. The Senator has gone six minutes over her time but that is fine. I will give her latitude because she did not hear that at the beginning of the meeting.</p>
+          <p eId="para_233"> Deputy Neville, do you have a final question?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_143">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_234">Unfortunately, I had a meeting with the Tánaiste in Government Buildings but I came down because I wanted to speak to the witnesses. As someone who worked a lot in business, I know the importance of investing correctly and doing so on a timely basis. I read the opening remarks and the information that the witnesses sent. A lot of it chimes with what I think myself. We know that there is a crisis in delivery of infrastructure. This is something in our culture that has been going on over a long period. This is not a new problem but it does seem to be exacerbated. We have seen wins with the likes of the Luas delivery, so we know that some things can get done. We also got a good motorway network built, but at the same time, things have slowed down. We need to get back to that and we need to be able to have projects costed and delivered on a timely basis.</p>
+          <p eId="para_235"> I am from north Kildare, where I was a county councillor for many years. I have seen at first hand the difficulties of getting a second bridge in Celbridge and the DART+ out to Kilcock. LIHAF gave €10 million for a relief road in Maynooth in 2011 and it still has not been done. Clane needs a second bridge. One might say that they are only one part of our infrastructure but the water pipes in Celbridge are at the point where we have to decrease the water pressure at the weekends, where people's taps do not work, just so the pipes do not burst. Outside the Intel plant, a pipe has burst three times in the past year. These are all basic things that we are struggling to get done. Some of them are under capital programmes for the next three or four years and some are not. The witnesses wrote the letter and went through what they wanted to discuss and, obviously, that is why this infrastructure committee is here. My key question to the witnesses is on what they see as the biggest difficulties, summarised in one or two points, and the biggest weaknesses in how the system is operating. Is it planning or is it the cost of the house?</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_236">As a resident of north Kildare, I agree with all of the infrastructural priorities that the Deputy mentioned. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_145">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_237">We will not call out the town but I am sure there are restrictions.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_238">The challenges we see are multifaceted but as we say in our document, the focus on efficiency in delivery is our main objective. It is about getting projects built. Often, we get obsessed about overruns, which are important, but we do not get obsessed enough about when things are not built and the challenges of, in many cases, knowing for decades that a piece of infrastructure needs to get built and it not getting built. We will have major issues, particularly with water and wastewater in the coming years, and with things we have known were issues for three decades that are still not getting through the processes of the system. We have tried to outline ways to speed up delivery and the effectiveness of said delivery as much as putting a focus on any other area of cost or anything else. Our big challenge, which we hear all the time from the business community, is the frustration caused by projects that have been on the books for years, in some cases decades, not getting delivered and the cost this imposes. When we do not deliver these projects, it is not the case that the projects just are not built. They never get cheaper; they always get more expensive over time and there are massive costs to not building them in the first instance.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_147">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_239">It is the opportunity cost of deciding not to build. The witnesses make good points. I am very conscious that the economy is going well but the biggest thing we have done is always to turn off the money tap when it is not going well, when ultimately that is when we need to be spending on capital projects. First of all, it gets cheaper and it keeps the economy going.</p>
+          <p eId="para_240"> I was also interested to hear the points on comparisons with other countries. Do the witnesses have any information on benchmarking in Denmark, say, which Mr. Sweeney referred to? We do not do enough of that here and maybe we could learn more from our European partners on it. At the end of the day, these are all tendered out across the EU. We hear about Spain being able to do this and France being able to do that. What are the key difference between them and Ireland? What are the witnesses' thoughts on this?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_148">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_241">A vote has been called in the Dáil.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_149">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_242">Has there? We can do this minute and then go. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_243">Yes, but be very brief. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_151">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_244">I have only one minute. I am fine.</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Aidan Sweeney<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_245">Our issue with this is trying to identify one country that does everything well. There are challenges, depending on the issues. Their licensing, permitting and starting procedures appear to be dramatically different, for instance. They use the environmental impact assessment first and then they determine the process afterwards, which speeds up getting things going.</p>
+          <p eId="para_246"> On the procurement side and the different measures, there are benchmarks for each of these different categories and we just need to pull them all together. One of the key things we will be emphasising to the accelerating infrastructure task force is to look at the different aspects of it, not focus just on the planning system and look right across project delivery. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_153">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_247">To that point, there was a key multinational that actually got a huge project - everyone probably knows what I am talking about - a little bit before and after Covid. It did not seem to stop it attracting the investment. Would we have the same confidence that a State project would have been delivered in the same way in that process? That is a key question we have to ask ourselves. </p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Mr. Gerard Brady<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_248">We can come back to the Deputy with more details on some of the comparisons with other countries and where we see the gaps as well. We attend BusinessEurope and other bodies where we share information with other countries.</p>
+          <p eId="para_249">We regularly have visits between Ireland and other countries, where we learn more about how we deliver infrastructure quicker. Across multiple measures, Ireland stands out as being slow.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_155">
+          <from>Deputy Joe Neville<recordedTime time="2025-06-25T17:40:00+01:00"/></from>
+          <p eId="para_250">Mr. Brady spoke about having an overall group. That is the thing. This council does W, another council does X, TII does Y, the NTA does Z and the Department of housing and Uisce Éireann do something else. They are linked. It is about an overarching agency, which is essentially the Department. Rather, it is the new area of focus that has been set up under the Department of public expenditure. That is why this committee is here. This committee can be successful. It is new and can have oversight of it. At the same time, something the Chair has been keenly focused on is our need to collect as much information at the outset regarding benchmarks and thoughts like that so we can use them to ask questions. The Chair will probably agree with me that the effectiveness of this committee will not show right now, but in one, two or three years' time when we can push back, point to statements bodies have made and ask what the benchmarks are.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_156">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:40:00+01:00"/></from>
+          <p eId="para_251">We will have to end the meeting now, given the vote in the Chamber. I apologise to the Senator. I thank the witnesses for assisting the committee today. If there is any information they have committed to forwarding, please send it to the committee within a fortnight.</p>
+          <p eId="para_252"> There being no other business, I wish to say something. I want to hear from all the people who attended the committee at previous meetings. The Department of public expenditure was here on 21 May. We got some information from it but it was inadequate. We want it here by next Tuesday. Uisce Éireann was here on 28 May. We have had no reply from Uisce Éireann four weeks on. That is totally unacceptable. On 11 June, the Department of Transport, Transport Infrastructure Ireland and the National Transport Authority appeared before the committee and we asked them questions, but we have had no reply to date.</p>
+          <p eId="para_253"> I am telling the witnesses who were at previous meetings that they are hereby summoned to appear before the committee on 9 July to provide the information they were asked for weeks ago. They will be excused from attending provided that we receive the information by 2 July, which is a week from today. All of those bodies have one week to provide the information requested of them several weeks ago. It is a disgrace that they cannot reply to simple questions they were asked three or four weeks ago. If they do not have the information by next week, each witness who attended those previous meetings will be summoned to the meeting on 9 July to explain why they did not provide the information to this Oireachtas committee. If they cannot deliver a simple reply to an Oireachtas committee after three or four weeks, God help us in terms of the national delivery plan. The message is loud and clear.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 5.42 p.m. until 3.30 p.m. on Wednesday, 2 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

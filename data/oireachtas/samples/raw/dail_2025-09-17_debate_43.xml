@@ -1,0 +1,878 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-09-17/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-09-17/debate"/>
+          <FRBRdate date="2025-09-17" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-09-17/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-09-17/debate/mul@"/>
+          <FRBRdate date="2025-09-17" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-09-17/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-09-17/debate/mul@.akn"/>
+          <FRBRdate date="2025-09-20" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CathalByrne" href="/ie/oireachtas/member/id/Cathal-Byrne.S.2025-01-29" showAs="Cathal Byrne"/>
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="GeraldNash" href="/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09" showAs="Ged Nash"/>
+        <TLCPerson eId="JoeOReilly" href="/ie/oireachtas/member/id/Joe-O'Reilly.S.1989-10-01" showAs="Joe O'Reilly"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM AIRGEADAS, CAITEACHAS POIBLÍ, ATHCHÓIRIÚCHÁN SEIRBHÍSE POIBLÍ AGUS DIGITIÚCHÁN, AGUS AN TAOISEACH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-17">Dé Céadaoin, 17 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-17">Wednesday, 17 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#CathalByrne">Cathal Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#JoeOReilly">Joe O'Reilly.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PearseDoherty">Pearse Doherty</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GeraldNash">Ged Nash</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#EdwardTimmins">Edward Timmins.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Linda Nelson Murray.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MaireadFarrell">Teachta / Deputy Mairéad Farrell sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Insurance Matters: Engagement with the Alliance for Insurance Reform<recordedTime time="2025-09-17T15:30:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T15:30:00+01:00"/></from>
+          <p eId="para_11">Níl aon leithscéalta faighte againn ó Teachtaí nó Seanadóirí. We have received no apologies. Is mian liom na riachtanais bhunreachtúla seo a leanas a mheabhrú do chomhaltaí agus páirt á glacadh acu i gcruinnithe poiblí. Caithfidh comhaltaí a bheith i láthair go fisiciúil laistigh de theorainneacha shuíomh Theach Laighean. Ní cheadóidh mé do chomhaltaí páirt a ghlacadh i gcruinnithe poiblí nuair nach bhfuil siad ag cloí leis an riachtanas bunreachtúil seo. Mar sin, má dhéanann aon chomhalta iarracht páirt a ghlacadh ó lasmuigh den suíomh, iarrfaidh mé orthu an cruinniú a fhágáil. Maidir leis seo, iarraim ar chomhaltaí a dheimhniú go bhfuil siad i láthair laistigh de phurlán Theach Laighean sula ndéanann siad aon ionchur sa chruinniú ar MS Teams.</p>
+          <p eId="para_12"> Fiafraítear de chomhaltaí cleachtadh parlaiminte a urramú, nár chóir, más féidir, daoine nó eintiteas a cháineadh ná líomhaintí a dhéanamh ina n-aghaidh ná tuairimí a thabhairt maidir leo ina ainm, ina hainm nó ina n-ainmneacha ar shlí a bhféadfaí iad a aithint. Chomh maith leis sin, fiafraítear díobh gan aon rud a rá a d’fhéadfaí breathnú air mar ábhar díobhálach do dhea-chlú aon duine nó eintiteas. Mar sin, dá bhféadfadh a ráitis a bheith clúmhillteach do dhuine nó d'eintiteas aitheanta, ordóidh mé dóibh éirí as an ráiteas láithreach. Tá sé ríthábhachtach go ngéillfidh siad don ordú sin láithreach.</p>
+          <p eId="para_13"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings.</p>
+          <p eId="para_14">I will not permit a member to participate where he or she is not adhering to this constitutional requirement. A member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member participating via MS Teams to confirm prior to making a contribution to the meeting that he or she is on the grounds of the Leinster House campus.</p>
+          <p eId="para_15"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of a person or entity. If their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction.</p>
+          <p eId="para_16"> Today the joint committee is engaging with the Alliance for Insurance Reform on insurance matters, with specific reference to motor insurance and public liability insurance. This item has been identified as a priority on the committee's work programme and this engagement is timely given the launch of the action plan for insurance reform in July and the recommendations of the Judicial Council to increase personal injury awards. I welcome Mr. Brian Hanley, CEO of the Alliance for Insurance Reform, and Mr. Vincent Jennings, chair of the Alliance for Insurance Reform and CEO of the Convenience Stores and Newsagents Association. I invite Mr. Hanley to make the opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:35:00+01:00"/></from>
+          <p eId="para_17">Chair, Deputies, Senators - thank you for the opportunity to address the committee today. The Alliance for Insurance Reform represents 48 civic and business organisations across Ireland. Collectively, our members represent over 55,000 organisations, 700,000 employees, 622,000 volunteers and 374,000 students. I hope nobody asks me to count them again. We exist to highlight the negative impact of persistently high liability in motor insurance costs in Irish society and have provided the committee with a detailed submission regarding same in advance of this session. </p>
+          <p eId="para_18"> In recent years, the Government and the Oireachtas have delivered important reforms. We acknowledge the scale of that work, from the introduction of the personal injury guidelines to new data from the Central Bank's national claims information database, a strengthened Injuries Resolution Board and changes in duty of care law, as well as initiatives on insurance fraud.</p>
+          <p eId="para_19"> These reforms were presented by insurers as the conditions needed for premiums to fall but the evidence shows they have not. According to the Injuries Resolution Board, claim volumes fell by 40% between 2019 and 2023. Median awards are down by one third, yet the Central Bank reports liability premiums increased by 17% between 2020 and 2023 while insurers reported profits of 13% in 2023, more than double international norms. Our survey of 775 organisations this year found 74% faced premium increases in the past two years and only 14% saw reductions; 20% had only one insurer willing to cover them and 90% said they had yet to benefit from the reforms. Case after case shows small businesses and voluntary groups are paying more for less cover, despite safer practices and fewer claims. These costs are damaging competitiveness, investment and community services across the country.</p>
+          <p eId="para_20"> The gap between reform and reality must now be closed. There are four key areas where action is urgently required. First, the personal injury guidelines were designed to ensure consistency and bring awards more into line with those of other countries, which they have clearly helped to do. However, we have seen this year that the process for reviewing them is flawed. We support recommendations to amend the Judicial Council Act 2019 to extend the review cycle, introduce international benchmarking and mandate proper consultation with the Injuries Resolution Board. We also believe that amendments are required to afford greater legislative discretion to amend or reject recommendations and that this committee should be required to consider any future recommendations before the Government takes a decision.</p>
+          <p eId="para_21"> The second key area is competition. The liability insurance market has seen no new entrants in over a decade. Too many businesses report being effectively captive to one or two underwriters. The office to promote competition in the insurance market must be properly and additionally resourced, be given KPIs and have a published strategy. The Competition and Consumer Protection Commission should review the barriers to entry and the impact of recent broker consolidations. Without real competition, premiums simply will not go down.</p>
+          <p eId="para_22"> The third key area is transparency in data. We need faster and fuller publication of NCID reports within 12 months of year end, not 18 months later, as is often the case with liability reports. Additional information is required regarding insurers' practices when it comes to reserving, reinsurances and remittances. The proposed transparency code in the new action plan for insurance reform must apply to liability as well as motor cover and must be independently designed, not co-written with insurers.</p>
+          <p eId="para_23"> The fourth and final key area is claim resolution and legal costs. Two thirds of liability claims are still settled through litigation, even though the average award values for claimants are broadly the same whether they settle at the Injuries Resolution Board or through the courts. The only major difference is cost. Average legal fees are under €1,000 via the Injuries Resolution Board but over €23,000 in litigation. These often-unnecessary legal costs add years of delay and tens of thousands of euro to the final bill, which is ultimately borne by businesses and voluntary groups. We want to see a far greater number of cases settled at the board and fee scales introduced to control legal costs. Transforming the board into a decision-making body similar to the Workplace Relations Commission should also be examined.</p>
+          <p eId="para_24"> Reforms have been delivered, yet businesses and voluntary groups will experience the full benefit of reforms only if the key areas of competition, transparency, the personal injuries guidelines and legal costs are addressed. At the same time, patience with insurers has worn thin. The repeated justifications for failing to pass on the savings while profits in the liability market continue to grow are no longer credible. Premiums should now reflect the clear reductions in claim volumes and awards. Without this alignment, competitiveness and community activity will remain under pressure. Our message is straightforward: the process of reform is not yet complete. Further measures are needed and will certainly help, yet there is no reason meaningful and sustained reductions in premiums cannot begin in advance of any additional changes.</p>
+          <p eId="para_25"> The next stage should focus on ensuring outcomes that are felt on the ground, not just recorded on paper. The alliance will continue to engage constructively with members to help to achieve that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T15:40:00+01:00"/></from>
+          <p eId="para_26">Go raibh míle maith agat as sin. We will now move to members' questions, beginning with an Teachta O'Callaghan, Senator Nelson Murray agus an Teachta Burke.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_4">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:40:00+01:00"/></from>
+          <p eId="para_27">I thank Mr. Hanley very much for attending and for his opening statement. The situation is very serious but there have been very significant reforms over the years. Despite the fact that claim volumes fell by 40% between 2019 and 2023, average premiums went up 9% in the first half of last year and insurers' profits are increasing at a rate of about 13%, which Mr. Hanley said is twice the international norm. There has been a call by Mr. Pat McDonagh of Supermacs for a full inquiry and investigation into what is going on. What is Mr. Hanley's view on that? Does he believe there needs to be a full investigation and inquiry, because the reforms are not resulting in the passing on of savings? While I am aware that Mr. Hanley has made a number of recommendations, on which I will go into detail, what is his view on the full inquiry?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:40:00+01:00"/></from>
+          <p eId="para_28">I do not think we have formed a view yet on Mr. McDonagh's recommendation that there be a full review. It is important that we are here today and that we continue to be brought in to advise members on what is happening on the ground because we have had a myriad of excuses, one after the other, as to why we need to wait another day, month or year. The message is twofold: one, we do not need to wait a day longer for the for the benefits to be passed on; and two, yes there are additional reforms that are needed that will help to improve the situation for policyholders. The Alliance for Insurance Reform's board has not considered Mr. Pat McDonagh's suggestion, which I am aware came out only within the last 24 to 48 hours.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_6">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:40:00+01:00"/></from>
+          <p eId="para_29">I am going to get into detail on the additional reforms Mr. Hanley has been asking about but first want to refer to the key point on benefits being passed on. We are here years later and there are still struggling businesses, voluntary and community groups and sports clubs. They are doing their absolute best to keep everything moving, and households are under huge pressure as well. The political system has delivered a range of reforms but people are not seeing the benefit of them. Therefore, what needs to be done to realise that benefit now, as well as further reforms?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:40:00+01:00"/></from>
+          <p eId="para_30">One of the most important things is demonstrating politicians are going to stay the course on this issue. That is why I really think it is important we are here. Vested interests can play the long game. They can wait people out and wait the pressure out while people move on to another issue and another challenge. It was really interesting that in the survey we did of 775 businesses, sports clubs and community groups, almost 90% rated this issue at the top of the scale. It is still a very important issue for them, despite all the other challenges and pressures they face. Our being here sends a clear and powerful message that we did see support, whether it was in election manifestos from all the parties or the programme for Government. Now we have the new action plan for insurance reform.</p>
+          <p eId="para_31">It is important that Members of the Houses persist with their interests and in putting pressure on insurers to the effect that what they are doing is not acceptable to the people of Ireland or their representatives. That needs to be said publicly and often. It is one of the important things to do beyond the specific reforms we think are necessary.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_8">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_32">It was stated that profits here were 13% in 2023, which is more than double what international norms are. Will Mr. Hanley provide more detail on that? Are there any examples of what the norms are in the UK, France or Germany?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_33">Certainly. I am happy to provide the committee with something more detailed on that in order that it will have various examples subsequently. For instance, I think it was the CEO of Aviva who said publicly in March that he would be very happy with a 5% margin. I guess the industry is taking the other 8% in sufferance because it is currently making about 13% on average across all insurers. They have indicated what a reasonable profit margin would be, but we are far in excess of that. In fact, if we go back through Central Bank data, we can see that the operating profit in 2022 was 14% and 10% in 2021. We are comfortably in excess of what is a reasonable amount.</p>
+          <p eId="para_34"> Nobody has any objection to people making a reasonable profit. Many of our members come from a business background. It is absolutely essential and right that they would do that, but the narrative was framed by insurers that if these reforms came in, we would see premiums come down. It was accepted that they were very high. The reforms have come in, but instead what we have seen are profit levels of more than double international norms.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_10">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_35">Mr. Hanley talked about the office to promote competition in the insurance market needing to be properly resourced, given KPIs and have a published strategy. Will he talk us through, from his understanding, what the current situation is with that office? The fact is it does not have a published strategy or KPIs and is not properly resourced. What is going on there?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_36">The office to promote competition in the insurance market-----</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_12">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_37">Is it understaffed? Is it under-resourced?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_38">Yes. It requires additional resources. As I understand it, it is part of the competence of a number of capable civil servants but it is only a small aspect of their role. If competition is the silver bullet to really try to drive down premiums, then it should be treated as such. It should be properly resourced and there should be additional resources. The new action plan makes positive mention of various initiatives that could help, and maybe the involvement of other State bodies, to drive up competition. We suffer from a poor reputation. It will take longer to shift that than it took to bring in some of the reforms. There needs to be a dedicated singular focus. We need to see some kind of clear outputs from that office. If everyone says that competition will be one of the keys - if not the key - to reducing premiums, then we need to move heaven and earth to resource it properly. Additional resources are absolutely required. At present, it just forms a constituent element of the role of a number of officials. It needs additional resources so that it can be more focused.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_14">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_39">On controlling legal costs, Mr. Hanley talked about fee scales being introduced. Are there precedents on that he can tell us about?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_40">I understand that fee scales are a part of District Court costs already. It seems strange that if it is permissible in the District Court, it would not be permissible in other courts. I believe that already exists. I note too that fee scales were part of the minority recommendations of the Kelly report. When that came out a few years ago, that was something it strongly recommended. Ultimately, fee scales would also bring in a greater degree of predictability and transparency, which is beneficial to insurers in knowing what their reserves and so forth ought to be in making decisions like that. It is also beneficial to claimants and respondents who are trying to decide what position they are in to challenge something and what the likely costs will be. It would be good for the insurance market and the costs there. It already exists so it is certainly something that should be considered. We are in a place now where it is not uncommon for legal costs, and we hear this regularly and certainly anecdotally, to far exceed the awards, and the compensation claims and so on. It is something that requires further scrutiny.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_16">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-17T15:45:00+01:00"/></from>
+          <p eId="para_41">The submission the Alliance for Insurance Reform made to the public consultation on insurance reform stated that the central claims database should be managed by the Injuries Resolution Board rather than by Insurance Ireland. Will Mr. Hanley talk us through that? How could that be done? What are the challenges around getting the management of that transferred? What would the benefits be?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:50:00+01:00"/></from>
+          <p eId="para_42">It is strange, <i>prima facie</i>, that the database all perspective insurers would want to see before making a business decision to join the market is held by an entity whereby the admittance of new entrants would be contrary to the interests of the existing members. That always seemed strange because it is not in the interests, <i>per se</i>, of the members of Insurance Ireland for additional competition to come in and put downward pressure, theoretically, on prices and so on. I always thought it was a strange place for it to be housed. There were some issues a few years back regarding anti-trust concerns. The European Commission was involved, and various assurances and protocols were put in place to ameliorate those. This goes to show that it is not the best place to house that data in the context of it being freely and effectively accessed by potential new insurers interested in coming into the market. It just does not seem like the right place to have it.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_18">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-09-17T15:50:00+01:00"/></from>
+          <p eId="para_43">I thank the Cathaoirleach for allowing me to speak. This is not my regular committee. For the benefit of transparency, I wish to state that I was a director with the Alliance for Insurance Reform many years ago. I thank it for all the great work it continues to do. I was part of the Alliance for Insurance Reform because I was in the very position we are still talking about today, that is, unavailability and lack of fairness when it comes to getting public liability insurance.</p>
+          <p eId="para_44"> I will speak a bit about me and where I feel things are not changing and where they are. I was one of a few people in the leisure industry who nearly lost their business seven years ago. I was approximately 11 days away from closing my business because I could not get public liability insurance. I ended up with a few other like-minded people travelling around Ireland and talking to other businesses. We brought approximately 120 of them together to form Play, Activity and Leisure Ireland, PALI. We were all frustrated. Many businesses were already closed, and we were worried we were all going to have to close ourselves.</p>
+          <p eId="para_45"> To make the story much shorter, what we ended up having to do was to try to get the Government to bring in reforms. I spoke to Insurance Ireland, which I will talk about in a few minutes. We had to set up the organisation to try to get a group scheme. To this day, we are still under a group scheme. I still cannot, even with all the reforms that have happened, get public liability insurance like I can with my gas, electricity and other offerings. I have to be part of a group scheme. I am with another 100 businesses that still avail of the group scheme. It is wrong that we have to do that. We are very lucky that we have the premium among us all to be able to do that. Our premium is worth more than €1 million. We were able to do that because there is so many of us involved.</p>
+          <p eId="para_46"> A great deal of work is done every year by the committee of PALI, of which I am no longer a member. A lot of work is put in for it to be able to outsource and try to get insurance. While we are paying less than we were paying individually years ago, I would not be able to get insurance if I was an individual applicant. There is something wrong when I cannot get insurance for my business, which, thankfully, has had no claims in five years. I still cannot get insurance. There is something that we need to be doing in that regard.</p>
+          <p eId="para_47"> I sat with Insurance Ireland as part of all the work I was doing at the time. It mentioned the need for personal injury guidelines and the duty of care legislation to come into effect, which I worked on along with my colleagues, including Deputy Doherty. We got the legislation through and we were promised that would bring premiums down. That has not happened.</p>
+          <p eId="para_48"> Only before the Seanad broke for the summer, we were told that personal injury awards were going to increase by up to 17%. We all worked very hard to make sure that did not happen. I spoke to my party, Fine Gael, to make sure that we ensured that would not happen. It is not going to happen, which is another great thing. It is another thing we have stopped because there is no doubt it would have been used as an excuse to increase premiums.</p>
+          <p eId="para_49"> A particular community that has a playground still cannot get insurance. Someone who sets up anything in the leisure sector, a boating experience, for example, still cannot get insurance unless he or she is part of a bigger group or whatever.</p>
+          <p eId="para_50"> We talk about increased competition in the market, but it has not happened in the public liability sector. It has happened in the motor sector and other sectors, but it has not happened for leisure businesses. We are a still in a serious position. Insurance was such a hot topic a few years ago. Although it very much still is, it is now submerged in the increased cost of doing business. Businesses are really feeling the struggle in this regard. We have to remember, especially at this committee, to highlight the importance of getting fair insurance, especially for businesses.</p>
+          <p eId="para_51"> What I am worried about is that we have not seen the arrival of competition.</p>
+          <p eId="para_52">Even with all the work I have done, I still do not understand why there is not more competition coming in. As people who are all here to meet the witnesses because we are all very interested in working on insurance reform, what can we do to encourage the Minister involved to encourage more business to come in? Are there examples of other countries where this was the situation? What did they do to try to get more competition in? I will start with those questions and may come back to the witnesses after that.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T15:55:00+01:00"/></from>
+          <p eId="para_53">I fully agree that competition is the key. In contrast, in motor, where we saw some entrants in recent years, that put downward pressure on premiums for a period. Unfortunately, that has not been the case for about 24 months. It reduced premiums by about 20% or 25%, no doubt influenced by the additional entrants. It takes a long time to shift a reputation. It will take even longer if we do not work at it. Ireland had a reputation around the size of awards, the volume of claims and so on. Insurers were well aware of it and they crunched the numbers. That has changed now, dramatically, with a 40% reduction in the volume of claims over a sustained period. It was not a Covid drop, but from before and since, it is down by almost 40%. That alone, if nothing else happened, should warrant premium reductions.</p>
+          <p eId="para_54"> It did not stop there; we also have the personal injury guidelines. Members were very relieved they did not see the increase in awards because awards are still far higher here than in other countries. If it is going to take some time to change the reputation, then we need to work at it constantly and it needs to be a priority in how it is addressed. That is why the alliance recommends and suggests a meaningful published strategy with KPIs. There are some very good initiatives in the action plan but if there are no additional resources added, then what is really going to change? All we can base the prognosis on is what has happened in the past. We have not seen any new underwriters in the liability space for at least a decade. That is why we are pushing it so heavily. I think it worthwhile to ask the CCPC to undertake a further review, post the reforms, of the liability market to see if there are any other impediments to the underwriters joining and to see what can be done.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_20">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-09-17T15:55:00+01:00"/></from>
+          <p eId="para_55">That is exactly it. It is to get a full understanding through the CCPC or the liability market of why we are not getting more in. From a business point of view, it is very frustrating.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T15:55:00+01:00"/></from>
+          <p eId="para_56">To add to what has been said, it is important for this committee's members to accept their own frustrations regarding how much the Government and all parties have assisted the insurance companies to have a fairer system in place, not just in motor but also in liability. There have been scores of changes brought about. The committee members must be furious that there is no movement whatsoever from the insurance companies. When they hear us coming in to them with the statistics, we are telling them things they hear day in, day out in their clinics and from businesses, for example, of people paying more than they were five years ago even though those people have not had a claim in five years and have sweated hard to get to that point. It is a cost of business that is unfair. We all understand we need insurance, and we have all paid insurance for all the years, but not at this level and not to fatten up these people who are taking two and a half times more than the European average. The members must be furious; we are furious.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_22">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-09-17T15:55:00+01:00"/></from>
+          <p eId="para_57">It is still so hard to understand. Even with our group's scheme and policy, which I think went out to 12 insurers that could undertake public liability insurance, two or three came back but the rest were just not interested. You hear the fear of the big injury but there are only so many times you can hear that when it has not happened. They are always worried about that big injury that could happen when it comes to leisure. I am sorry I am talking about leisure but I think it applies to every business. They are doing their part when it comes to health and safety.</p>
+          <p eId="para_58">We have put more health and safety in place than has ever been seen, between getting soft play structure tested every single year, making sure that everyone's first aid is up to date, making sure that HR is up to date, making sure there are health and safety risk assessments - everything. We are being asked to do all this, and every year there seems to be another box we have to tick to even get insurance. Businesses are playing their part. The Government, in fairness, has really done its part in terms of the reforms, although we have more to do. It is time for insurance companies to do their part. It is like I am looking for the magic thing to see how we get them to do their part. I am very grateful we have the group scheme, and I acknowledge and really appreciate the two or three that gave us a quote for that, but there are businesses that cannot get it and they should not have to be in a group scheme to be able to obtain insurance.</p>
+          <p eId="para_59"> I, for one, will absolutely continue to do what I can to help the witnesses and to help businesses like ours. I will continue to speak to the Minister of State, Robert Troy, and people in our party. I hope we can see the witnesses get through to them and see businesses being able to obtain fair insurance. I would like to see if there is anything that has been done in another country, maybe Australia or somewhere else, and see if there is an example there of how we can do this.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T16:00:00+01:00"/></from>
+          <p eId="para_60">Thank you, Senator. You can always come back in in the second round.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_24">
+          <from>Deputy Colm Burke<recordedTime time="2025-09-17T16:00:00+01:00"/></from>
+          <p eId="para_61">I thank the witnesses for the presentation. On the issue of a 40% reduction in claims between 2019 and 2023, in real terms it is really far more than 40% because employment in that period increased by over 450,000. Therefore, we are talking about a far greater reduction in claims because the more people one employs-----</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:00:00+01:00"/></from>
+          <p eId="para_62">Yes, it is relative.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_26">
+          <from>Deputy Colm Burke<recordedTime time="2025-09-17T16:00:00+01:00"/></from>
+          <p eId="para_63">-----the more an insurance company will demand from the employer. In real terms, then, the reduction is probably far greater, around 60% to 65% in claims, if we look at it from that point of view. If we look, for instance, at employment claims - accidents at work - and do a comparison with the position ten years ago and the number of claims per employee in the country, there is a huge difference in real terms. At the same time, the insurance companies are still demanding very high premiums.</p>
+          <p eId="para_64"> May I ask about one issue? I think there is a significant lack of knowledge of it and I am not sure we are doing enough work on it. I refer to the exposure of companies. A lot of commercial companies are not aware that an insurance company can decide to cover the first €6 million. I have seen employers get to a stage where if there is a claim greater than €6 million, then a second insurance comes into place. I am not sure if we are doing enough education on that whole area. What is the witnesses' experience of that?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:00:00+01:00"/></from>
+          <p eId="para_65">I agree very much that an education piece is needed. In fact, I think it is referenced in the new action plan for insurance reform. It does not stipulate that but it does create the opportunity for issues like the one Deputy Burke has raised for those more complex insurance packages to be raised. We run our own education sessions regularly because there is that knowledge piece missing, certainly. What we have noticed as well is that there has been a clear dilution in the quality of the policies that people are paying for, whether that is through increased excesses or greater exclusions. People are probably not even aware a lot of the time that this has happened. I think there is an opportunity within the new action plan for insurance reform and I certainly hope it can be raised by members here with officials in the Department of Finance to make sure that things like that are included because there is certainly a knowledge gap for a lot of people.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_28">
+          <from>Deputy Colm Burke<recordedTime time="2025-09-17T16:00:00+01:00"/></from>
+          <p eId="para_66">One of the other issues that I think there is a huge lack of knowledge of is that when one has an insurance policy and, say, €6 million cover, that €6 million cover is for any one event. If 20 people are injured, the limit of the claim for the 20 people is not €6 million each but €6 million between the 20. I hope that never arises, but a lot of people are not aware that it is any one event that they are insured for, not any one individual.</p>
+          <p eId="para_67"> I also think there is a need for education regarding the limit on policies. I have come across cases where, for instance, insurance companies are refusing to pay out on claims even though they have collected the premium. In one case, a broker filled out the application form and encouraged the person to change insurance companies but what was not disclosed when they were filling out the application for the new insurance company was that there were small claims for less than €5,000 against a previous insurance company. When there was a serious incident, the new insurance company refused to cover because there had not been full disclosure. I wonder about the failure to get that information out there. Every incident counts no matter how small it is. Once a claim goes in against one company, if you are moving companies, you must disclose it.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:05:00+01:00"/></from>
+          <p eId="para_68">That is interesting but the vast majority of members are experiencing similar or raised premiums based on, quite frequently, a greater level of exclusions being applied to them or their brokers not bringing to their attention that the cover that is now there is not the same cover as they had previously. The recent speeded-up consolidation of brokers around the country is potentially leading to a lack of competition. Perhaps the CCPC should look at that. When it comes to the exclusions and the lack of additional cover, we have seen people believe that they had cover for false arrest or an allegation of defamation and then, when they had an unfortunate incident, were told by their broker that the insurance company said that they were not provided with that cover even though they had it previously. Although the €6 million multiplied by 20 is an exception, I can tell the Deputy that, in the thousands, our members and members across the alliance are being hit with exclusions all the time and that is one of the scandals that needs to be looked at. It comes about from lack of competition.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_30">
+          <from>Deputy Colm Burke<recordedTime time="2025-09-17T16:05:00+01:00"/></from>
+          <p eId="para_69">One of the problems with exclusions is that every time you get a policy now, there are additional exclusions, especially if you have a business where the people who are in charge or are under pressure do not realise that every line in a policy counts and, unfortunately, when the policy comes back after paying the premium, do not examine it in detail. I have gone through policies myself where I have gone back to the policyholder and said this is now excluded and were they aware of that. I would say nine out of ten people were not aware of the exclusion. There is a need for education on that whole issue of the importance of examining the policy. People get notice of the premium, they pay it, and they think they have the same as what they had last year when in fact there are now exclusions. Can we get more information out on that whole area?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:05:00+01:00"/></from>
+          <p eId="para_70">I think so. Brokers have a crucial role in that respect because they are the interface between the customer and the insurer if there are changes, and typically people are working with their broker for many years and have relationships with them. That is an important role within the whole function in terms of sharing that information because the Deputy is right. Policyholders are essentially paying more now and getting less in terms of the product because of the exclusions and so on. Brokers have a key role in the education piece and any critical changes in policies. It is an area well worth pursuing.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_32">
+          <from>Deputy Colm Burke<recordedTime time="2025-09-17T16:05:00+01:00"/></from>
+          <p eId="para_71">There is also a need for employers to make sure that employees are aware. One example I have involves a builder who is asked whether he uses blow torches for removing paint and says no. If he is on a building site, someone offers an employee a blow torch to remove paint and the building goes on fire that night, his insurance company will say that it will not cover him because when he filled out his application form, he said he never used them.</p>
+          <p eId="para_72">This is a simple example of where something can go radically wrong. There is a need also for employers to advise employees of the exclusions and what they are or are not entitled to do. We sometimes forget about that as well. I am just wondering about getting information out. Do the witnesses believe we can do a lot more about getting out information about exclusion clauses and the importance of going through the final document when they get it rather than just the application form itself?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:10:00+01:00"/></from>
+          <p eId="para_73">I believe there is an opportunity to do something more in this area of the content. Having it referenced in the new action plan for insurance reform provides the vehicle by which that can be done. I would have thought this is something that would be well worth raising with the Minister of State, Deputy Troy. It is something we can bring to him ourselves the next time we meet him as an area that needs to be looked at in the context of any information work they propose doing on the key changes in the terms and conditions and the level of cover, how we can inform the public generally, and maybe if there are specific ways of doing it, whether through brokers or otherwise. There is an opportunity to do something about it and it is timely that the Deputy has raised it because it is desperately needed in the context of the ever-shifting policies that people are now paying for.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_34">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T16:10:00+01:00"/></from>
+          <p eId="para_74">I thank Mr. Hanley and Mr. Jennings. I have a series of questions here covering a couple of areas. I will just try to maybe stick to one area and, when I come back in, I will move on to the next area.</p>
+          <p eId="para_75"> The witnesses are pointing to a lack of competition as a problem here. I fully agree with them. If there was more competition, it certainly seems to be something that could help unlock this. It would appear that with a 30% average profit margin, which is two and half times the EU average, it is quite a lucrative market for insurance companies. It is probably the most lucrative in all of the EU. That does beg the question as to why there is not more competition, regardless of any Government agency or body to promote it. The underlying economics certainly suggest that the Irish market is one an EU operator should naturally be looking at. The witnesses pointed to there being barriers to entry. Will they elaborate on what they feel are those barriers to entry? The witnesses' submission encourages a Government agency - I cannot recall which one - to have a look at that. The witnesses must know, even anecdotally, what are those barriers to entry.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:10:00+01:00"/></from>
+          <p eId="para_76">One of the things to point to, in fairness, is the relative size of the Irish market. We are a smaller country with a smaller population compared with other countries. I am sure that is a factor. The reputational issue is another reason that needs to be addressed. There is a need now to promote the stability of the market and Ireland as a destination because of the reforms that have come in. That needs to be beefed up. It is important to get that message out there. Sometimes the older views can take a longer time to shift. As I said earlier, there have been issues around access to data for businesses making decisions about whether to enter the market. Those have been somewhat addressed but perhaps a longer term solution is needed as well. Ultimately, I think that is what is required.</p>
+          <p eId="para_77"> It is difficult to understand why 20% of the 775 organisations that responded have only one underwriter willing to provide cover and the guts of 40 with only two. There is a dearth of competition. One of the eternal frustrations of some of our members, albeit perhaps the more niche sectors, is why their counterparts in Sweden, Germany and France can get insurance for this activity but they cannot get it in Ireland. There is no satisfactory answer. Whether it is in the arts, particularly in the performative arts, there are some issues whereby the same insurers will cover it in other countries but not here. There is no satisfactory answer that we have been able to yield or elicit from them as to why that is the case. Perhaps market size is the only thing, but with the work, there is an opportunity now because of all the reforms and the promise of additional reforms the new action plan holds. A lot of positive steps have happened but that is only good if you tell people about it.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_36">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T16:15:00+01:00"/></from>
+          <p eId="para_78">I found the name of that agency; it is the Office to Promote Competition in the Insurance Market. It should have been on the tip of my tongue. Does the alliance appreciate that despite calling for additional resources for that body, it cannot do anything to affect the size of the Irish market? If market size is the key problem here, we might need to look at other potential solutions, for example via the EU through standardisation or opening up the borders a bit more within the industry. I notice it is not pointing to such potential solutions. Have these areas been discussed or considered?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:15:00+01:00"/></from>
+          <p eId="para_79">The role of the EU probably needs further examination. It probably has not been considered as much in recent years. It is an area that would benefit from greater scrutiny. I would not say that market size is the single biggest reason. Certainly nobody has officially said that to me, if that makes sense. I am sure it is a consideration. In 2019 - only a few years ago - awards in Ireland were a multiple of 4.4, or 440%, greater than those in the UK. That is relevant to prospective insurers looking to enter the market. Another relevant factor was the fact that the volume of claims was disproportionately high in Ireland relative to its size. Previously, the quantum meant that we did not know what the elbow was going to be worth in terms of a claim. The new personal injury guidelines are much more prescriptive and fair. By clarifying what one gets if one’s injuries are of a certain duration and a certain severity, they afford predictability and stability in the market, which to be fair to insurers is something they need. I fully take the Deputy's point about the European angle. It is something that needs to be explored further.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_38">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T16:15:00+01:00"/></from>
+          <p eId="para_80">This is a problem across the financial services industry in general. There is a lack of competition in the banking sector as well. Measures will have to be taken in order to address that. Would the alliance see insurance rolling up in that? Does it believe there is potentially a broader solution in the financial services sector, or would it prefer to push for a single insurance solution?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:15:00+01:00"/></from>
+          <p eId="para_81">We will have to give consideration to that. Those of us in the business - we represent the voluntary community as well - believe in the model of competition. We consider that the first thing to look for would be competition. Should that competition be limited to companies that are registered and trading only in Ireland, or should it be further outside? What are the downsides to it? The last thing we want to do is to see a slew of money going outside of the country, bringing all kinds of difficulties when there are claims or otherwise. We believe that at all stages the primary matter should be held within Ireland. If the Government cannot get the insurance companies to play fair - again, they are not playing fair - certainly this committee needs to remind of the insurance industry of all the benefits it has been given. The committee can list them out. Members know them because they passed the legislation to allow for those benefits or administrative changes. In light of all of those benefits, why are the citizens and businesses of the State still experiencing these difficulties? Every week and every day of every week, a company is closing because it cannot afford cover or cannot get cover. Ultimately, the members of this committee are wrongly being blamed for that, so they have to fight back as well. We all have to fight back. The insurance companies hold us in contempt with the way that they have been behaving.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_40">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T16:15:00+01:00"/></from>
+          <p eId="para_82">Mr. Jennings will find that part of the reason we are having this committee hearing today is to attempt to join our witnesses in that fightback. We are seeking to find out where the problems actually are and what we need to deal with them.</p>
+          <p eId="para_83"> That takes me to my next point. Mr. Jennings touched on the lack of willingness from the insurance companies to engage. It seems to me, as I look at this, that a kind of black box scenario is going on here. We cannot see into the insurance companies. They charge twice the premiums and make two and a half times the EU average in profit. That would suggest that if they want to and put their minds to it, they can adjust their profits downwards.</p>
+          <p eId="para_84">Mr. Hanley pointed to the CEO of Aviva sounding almost perplexed that they were making so much profit and saying they would like to make 5%. I do not know what we need to do to encourage them to get there. Given all the reforms we have introduced, the insurance companies' profits have not actually changed. Mr. Hanley mentioned profit figures in the low teens across a range from 10% to 14%, or roughly 13% on average. We cannot see into the companies. Mr. Hanley would be closer to this than I would. Are there any structural issues within the insurance companies? For example, is it the case that issues with their cost base, problems with their investments or some reinsurance that they are doing with their parent companies are not allowing them to pass these profits on to the consumer by way of lower premiums? Does Mr. Hanley understand what I am saying?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:20:00+01:00"/></from>
+          <p eId="para_85">I am not aware of any particular impediment that is preventing them from reducing premiums while still making a reasonable profit. There are areas where the welcome introduction of NCID reports has provided us with greater transparency around insurers, premiums, volumes of claims, policies held, profits and so on. However, there is a need for even greater transparency from within that tells us on a macro level what, say, 80% of the market insurers are doing. There is a benefit in being able to see how the large individual insurers are treating reserves, remittances and reinsurance over a period of years because they are also important devices that make up the overall package-----</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_42">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T16:20:00+01:00"/></from>
+          <p eId="para_86">I apologise for interrupting. This is exactly what I am trying to get at here. The simple solution from the outside would be to halve the profits, halve the premiums and all get on with this. Is there something in their books, such as the reinsurance or investment problems, that means they cannot do that?</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T16:20:00+01:00"/></from>
+          <p eId="para_87">We will wrap up on that and let others in. I ask Mr. Jennings to answer succinctly.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:20:00+01:00"/></from>
+          <p eId="para_88">There is no problem. If they wanted to, they could, but nobody is forcing them.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T16:20:00+01:00"/></from>
+          <p eId="para_89">That is fairly succinct and to the point.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_46">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:20:00+01:00"/></from>
+          <p eId="para_90">We are kidding ourselves if we think the insurance companies are going to find some generosity. They want to maximise their profits with their shareholders. That is a non-runner. We could examine their overheads and see that they are paying themselves massive salaries, paying out big dividends and so on, but that is not going to get us anywhere. Competition is the challenge and the problem. Within the EU the problem is that we are supposed to live in a free market and an open market, but we do not. I recently read that in services within EU countries there is effectively either a 110% or 140% - let us say 110% - equivalent of a tariff because of the barriers to entry between different countries. Unfortunately, we do not live in a free Europe. When it comes to trading in goods, there is effectively a tariff of approximately 40% in real terms. When it comes to trading in services, it is estimated that because of all the barriers, the equivalent of a tariff of over 100% is being faced. That is the problem. It is a deep wide problem within Europe. If we try to solve to that, it will certainly help the Alliance for Insurance Reform. There is no question about that.</p>
+          <p eId="para_91"> I do not understand the barriers. Deputy Brennan asked the witnesses about the barriers. Perhaps we could look separately at the barriers to entry for other insurance companies throughout Europe and the UK, our nearest neighbour that uses the same language, to find out what those barriers are. Clearly, competition is the only way the cost will be driven down. We will not be expecting any goodwill from the insurance companies. The Government can do so much to put manners on them, but it is not going to drive down their profits. They want to keep their high profits. They will charge what they can get away with. That is the way businesses work. I am sure some of the alliance's members think the same way.</p>
+          <p eId="para_92"> I wish to focus on one thing from my own experience of working for small businesses for most of my life. Every year, we dread what the insurance company fee going to be because it is the unpredictable figure that lands on our desk. We do not know what it is going to be and we often get a shock. We ask how we are going to mitigate it, and whether we need to increase our excesses to pull it down. That is the real world and what businesses are faced with. I wish to focus on brokers. </p>
+          <p eId="para_93">Brokers come in and they are meant to represent the companies to get the customer the best deal with the insurance companies. However, the broker is often operating on the basis of a percentage of the premium. Therefore, they actually gain if the premium goes up. I tried this in a company I worked for. Have any members of the Alliance for Insurance Reform tried saying to the brokers "I'll give you X amount of a fee or a higher percentage fee if you get my premium to reduce"? The brokers are in a slightly contradictory position that the higher the premium, the better their income is.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_94">When I started in business 40 years ago brokers charged the company. They were given a commission and the customer did not pay anything. In fairly recent times as the Deputy will have seen with his home insurance, many of them are applying an administration fee or a brokerage fee. This has been slipped in. It can be €75, €50 or €350. It can be any number. The brokers are getting the money from both sides. They are getting money from the insurance company and from the client.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_48">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_95">What is the incentive for the broker to get a reduced premium? I do not see one.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_96">No, there is not and few of them are prepared to do that. That is the awful thing. They are all playing the same game and it seems to me they are at the behest of the insurance companies rather than looking after their clients. That is the truth.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_97">It is a curious model that the worse a broker does for a client, the more money they make. As a business model from a consumer's point of view, <i>prima facie</i> that seems unfair. I accept it is common practice in countries beyond here but it does not seem on the face of it to be fair to consumers that that would be the case. There is also another challenge. For many small businesses, it is not that there is a power imbalance but they are very dependent on their local broker to help them and so on. A larger entity might have some negotiating power but that certainly is a challenge for-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_51">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_98">The Government published a 30-page action plan on insurance reform in July. What is the witnesses' opinion of that? Did they have input into that? Do they think it is a good document? I guess they will probably say it needs follow-up as they said at the beginning. What are their thoughts on that document?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_99">I think it is very welcome. The first thing it does is send a clear message to insurers that public representatives are not going away and are committed to addressing this issue for the next five years. That was an important message to send after the last programme. There were 66 actions in the previous one and at least another 25 or 28 are committed to here. There is a lot of potential in it but the devil will be in the detail for some of the things. There are commitments to review, to consider and so on. The outcome of those considerations will determine whether they will really add value or make any difference.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_53">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_100">It is really about action and about the Government doing things. We can all talk and bemoan the fact that insurance companies are making lots of money but it comes down to what actions we actually take. I note there are deadlines and timelines for many of those actions although not for all of them.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_101">We need to remind everybody that Ireland will assume the European Presidency in 2027. It is not likely that much domestic stuff will get done during that period. It is best to front-load as much as possible in advance of that and we will all benefit from that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_55">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_102">It may be an opportunity for us to promote competition at EU level when we have the Presidency.</p>
+          <p eId="para_103"> Have the witnesses done benchmarking on comparable awards in European countries? Do they have information on that?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_104">This is something that came up in the context of the proposed 17% increase in personal injury awards. We know that some benchmarking was done prior to the introduction of the personal injury guidelines in 2021 which replaced the book of quantum. Earlier I gave the example that made it very clear. Two reports were written. The Personal Injuries Commission was chaired by the former President of the High Court, Nicholas Kearns. It found significant disparities in awards. The example-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_57">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:25:00+01:00"/></from>
+          <p eId="para_105">There are figures published somewhere that someone can send to us.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_106">Let me refer to what is needed now. We are potentially looking at personal injury awards being increased or reviewed again in another two years. What is in the action plan, what we have called for and indeed what Insurance Ireland and others have called for is the undertaking of benchmarking exercises before any changes are made to the awards. It is in the action plan as something that needs to be considered. We certainly want it to be introduced. On the whole idea of the increase, there is a lot of scope to improve how personal injury awards are determined. An example is having the Injuries Resolution Board part of the benchmarking exercises, because it processes a huge volume of cases annually. There should be more democratic oversight by this committee. Any recommendations from the Judicial Council as to any increases should also be looked at. There is a lot that could be done to make sure awards are fair going forward. We have been the outlier and the issue has been one of the biggest problems.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_59">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_107">I do not know the percentage that insurance comprises of the overheads of a small business but I would imagine it is 3%, 4% or 5%. Would that be fair enough to say? The Government is seeking to promote small businesses. In hospitality, it reduced the VAT from 13.5% to 9%, effectively adding in the order of 4% to their bottom line. If we could reduce insurance premiums by something similar, it would achieve something, with no cost to the Exchequer.</p>
+          <p eId="para_108"> How can we ensure more claims are settled through the Injuries Resolution Board, not the courts?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_109">A few things can be done to promote that. The first thing we have is the data we can point to state all our Central Bank reports will tell you now that you are getting the same average award whether you settle at the injuries board or through the litigation channel. It is important that we have that independent source of data that we can stand over. The personal injuries guidelines are the guidelines for everybody and for every claim. It should, broadly speaking, be the same, and it is great to have data now that shows what I say is the case. I hope it will incentivise people if they appreciate they are not going to get any more by settling through another channel and that they will have to wait an additional two or three years to get the reward if they do so. In theory and technically, the reward will actually be worth less to them if they have to wait six years for it instead of settling in maybe two and a half years at the Injuries Resolution Board. There is probably education to be done. There is scope to examine or consider a different model, whether one makes the Injuries Resolution Board a decision-making body akin to the Workplace Relations Commission or otherwise. It is at least worth examining because we are still seeing an increasing number of cases going to litigation. That number has gone up.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_61">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_110">Why is that?</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_111">Could Mr. Hanley wrap up on this?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_112">There is scope to consider a different model for the injuries board. We need to be very clear in our messaging that the awards are the same regardless of the channel through which one settles. That is borne out now by independent data.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_64">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-17T16:30:00+01:00"/></from>
+          <p eId="para_113">The witnesses are very welcome. This is an important interrogation of issues that concern all of us. Hardly a week or two goes by when I do not receive a call about them. I imagine colleagues are in precisely the same situation.</p>
+          <p eId="para_114"> The calls are received from local businesses and voluntary groups, and indeed from ordinary consumers. They ask why, if there has been all these reform over the past few years, and acknowledging the Government has done a good job in driving the agenda, they are paying more this year than last year. They ask why they have exclusions they were not made aware of and that have been imposed on them without their direct knowledge, maybe through not having read the small print.</p>
+          <p eId="para_115"> I want to give the Government credit on this and some members of the Opposition who have driven this agenda. Deputy Doherty did a particularly good job over the past few years on motor insurance and so on. We are united in our concern and frustration but it seems we are dealing with a business and a sector that is utterly shameless. There is no justification for this level of profit in the context that both guests have described and in the context of the information we now have in this new era of transparency, in which things are clearer in terms of costs and all the various factors concerning the sector. It is very difficult to justify.</p>
+          <p eId="para_116"> Let me pick up on the last point that Deputy Timmins made, which Mr. Hanley addressed to an extent.</p>
+          <p eId="para_117">The mind boggles when one considers that all the evidence shows that comparable awards are made whether people go through the Injuries Resolution Board or they go down the litigation route. In fact, they are better off choosing the former as going down the litigation route takes longer. If people want a more expeditious resolution, they should go through the Injuries Resolution Board. There definitely is work to do in educating people on this. Culturally, we are used to going to our solicitor, who may, depending on the severity of the case, brief a barrister and then seek to secure the client the best possible outcome. A culture change is required and we all have a responsibility in that regard.</p>
+          <p eId="para_118"> I am interested to know what level of engagement the Alliance for Insurance Reform has had with the Law Society of Ireland, the Bar Council and the relevant Department, whether that is justice or Finance, on the question of legal costs. With the Bar Council especially in mind, I can imagine the very haughty, boring and long-winded justification for its bizarre Byzantine fee structures, which are far from transparent and impose a huge cost on consumers and on business. What kind of response do the witnesses get when they raise the issue of control of legal costs, which is feeding into the issues we are discussing, with Departments or the Law Society?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:35:00+01:00"/></from>
+          <p eId="para_119">There is a clear acknowledgement that legal costs are a significant part of the challenge in terms of the overall cost-of-claims pie and that they need to be looked at in more detail. The role of the Injuries Resolution Board was modified by the previous Government to try to attract and retain additional cases. There is absolutely no issue with people accessing legal advice for particularly complex or contentious cases. If they need to go to court, that is absolutely fine. However, it is difficult to believe that a good portion of the guts of 70% of liability cases are sufficiently intractable, contentious and complex that they could not be resolved at the Injuries Resolution Board. The numbers going to litigation are far too high and it is reasonable to ask questions as to why such a significant portion of cases are going that route. Hard questions need to be asked in that respect of the representatives because it is not clear why this is happening. If there is no obvious benefit accruing to the litigation route, as the data suggest is the case, we need to look at ways of addressing that. I note that the new action plan for insurance reform mentions considering the issue of legal costs at the Injuries Resolution Board, but no more detail than that is provided. We will have to watch that space to see what comes of those considerations.</p>
+          <p eId="para_120"> I absolutely agree with the point about reforms coming in to benefit insurers and those savings not being passed on to claimants. Equally true is that far too many cases are going to litigation, which, in many cases, is unnecessarily doubling the overall cost of settling claims. We have a perfectly good model that needs to be promoted more and used far more, while accepting that people, as they should, always reserve the right to legal advice and access to the courts.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_66">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-17T16:35:00+01:00"/></from>
+          <p eId="para_121">That goes without saying. It is, and should be, the case in a democracy.</p>
+          <p eId="para_122"> Mr. Hanley mentioned the CCPC in a couple of contexts, including its possibly being asked to review bars to entry. We are all agreed that competition is key in this area. Has the Alliance for Insurance Reform made a formal request to the CCPC to undertake an exercise of that nature?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:35:00+01:00"/></from>
+          <p eId="para_123">We included it most recently in our submission on the new action plan for insurance reform. We hoped to see it included in the plan but it was not. The CCPC undertook a review of the liability market circa 2019 or 2020. It would seem timely now, five years on and with the benefit of all the reforms, to go back and see how many of its recommendations are outstanding and what changes have happened in the marketplace in the context of the reforms. It seems a very opportune time to do that and we thought the best place to push for it was in the action plan for insurance reform, but that did not happen.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_68">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-17T16:35:00+01:00"/></from>
+          <p eId="para_124">The case is especially strong for that because the Office to Promote Competition in the Insurance Market is approximately five years old now and it is ten years since there has been a new entrant to the market. Five years into the lifetime of that office, we still have no new entrants. The office should not just be concerned necessarily with competition for the market by new entrants but also how competition is working internally within the market.</p>
+          <p eId="para_125">That then speaks to my next question, which concerns the function brokers play. I was taken by Mr. Jennings' reference to the fact - I know it is a generalisation, and I hope I am paraphrasing him correctly - that brokers used to look after the interests of the customer but it now seems that they are almost doing the bidding of the providers themselves. In a way, that speaks to the problem of market concentration. When they are dealing with so few underwriters and active actors in the sector, they may feel beholden, which restricts their opportunities to operate in the way they may be used to. It is interesting how that dynamic has changed. Mr. Jennings referenced that the CCPC may have a function in examining the impact of broker consolidation. By "broker consolidation", I assume that Mr. Jennings is saying that a number of small independent local brokerages have been bought by larger concerns in recent years and this market concentration may be having a knock-on effect on competition and, therefore, on value for consumers. Is that the case?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:40:00+01:00"/></from>
+          <p eId="para_126">The CCPC carried out an investigation into the broker market a number of years ago, but I am talking specifically about what has happened since this new strain of consolidation came about and companies from outside the country took on board a load of smaller ones. That has changed the dynamic. At least prove me wrong.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_70">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-17T16:40:00+01:00"/></from>
+          <p eId="para_127">If there is evidence to the contrary, show us that and we will accept that but let us interrogate that.</p>
+          <p eId="para_128"> Another point that is worth making is that it is fair to assume that peer countries are doing better and businesses, voluntary groups and consumers in those countries are generally doing better with lower premiums. Their providers have more modest profits but profits that are healthy and are maintaining their businesses at a decent level, shareholders are getting value, staff are being paid properly, senior staff are being remunerated properly and everything is functioning in the way it should. We have an unusual case in Ireland where, as Mr. Jennings said at the outset, everything is coming down except their profits. This is the key point and requires our attention. Due to the financial crash and the banking situation previously, we have a banking union, we have clarity about banking products and services and the area is heavily regulated across the EU. In the context of the new form of competitiveness we need in Europe - the Draghi report is very interesting about how Europe needs to shape up in terms of competition, innovation, enterprise and supporting SMEs - is there a case for some form of European intervention to make sure there is more fairness across the European market? If we take it that one of the problems we have in terms of the functioning of Irish SMEs is around accessing insurance and that this may be a bigger Europe-wide problem, is there a function for the EU in examining the insurance market?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:40:00+01:00"/></from>
+          <p eId="para_129">I would much prefer to believe that we can have an Irish solution to what is an Irish problem.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:40:00+01:00"/></from>
+          <p eId="para_130">I agree that internal competition is an important consideration, as is attracting new underwriters in. The difficulty is trying to get independent data to know who is doing what. Very often, we will go in and insurers will advise the Minister that such and such insurer has entered this market and that market. That is great but it is anecdotal. I then go to my members in the same sector and they do not know. They have not seen or heard anything about it. Maybe the new insurers are going in, but agreeing to cover two pubs in Carlow is not exactly deep penetration into the licensed sector. I would love to see some way of independently tracking, be that a role for the Central Bank or otherwise, what level of penetration the big market players would have in different sectors. I appreciate that it is a difficult ask but would it not be much better if we could actually deal with independent data rather than "he said, she said"?</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_73">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-17T16:40:00+01:00"/></from>
+          <p eId="para_131">Much of the area was covered by colleagues. I know some other members talked about how the profitability of the insurance companies had not changed, but it has changed and has changed dramatically.</p>
+          <p eId="para_132">These reforms have absolutely worked, but they have worked for the insurance companies. Those companies have made a fortune, many millions, on the back of the reforms introduced in these Houses. I campaigned for those reforms, and I stand by them. At the time, however, I also called, as did the Alliance for Insurance Reform, for a clear commitment from the industry to pass on the savings made. Anyone who is surprised, shocked or aghast that the insurance companies are pocketing this money is silly and stupid. This is what insurance companies do. We should not be surprised in any way whatsoever.</p>
+          <p eId="para_133"> I have been listening to this debate for quite a while. I will speak freely and frankly. The Government is a puppet of the insurance industry. The types of reforms we need will not be achieved when I have heard Ministers of different hues - it is nothing to do with personality - over the years regurgitating the stuff the industry is telling us that it takes a while for reforms to have an impact and all the rest.</p>
+          <p eId="para_134"> There is so much to be done when it comes to insurance. Some of the reforms outlined in the programme are needed. We have to ask ourselves who we, as legislators, are doing this for? Are we introducing reforms in order that we deepen the pockets of the insurance industry? That is what we have done. That is unacceptable. Premiums are not going down; they are going up. The insurance companies sat here in 2018, when they were begging us to introduce reforms, and told us that if premiums did not go down by 20%, the committee would need to be calling them in and asking serious questions. In 2019, representatives from company after company, including AIG and Aviva, sat before this committee and said they would target a rate of 5%, which is the insurance industry norm. What are they getting? It went up to 8%, then 10% and then 13%. When it hit 10%, the Central Bank of Ireland, a conservative organisation in itself, said the companies were making bumper profits.</p>
+          <p eId="para_135"> We can talk about legal costs, which are a real issue. We can talk about competition, which is another issue. There is a bit of facade whereby we kind of pretend we are doing something about competition when we really are not. It will all mean nothing unless the elephant in the room is dealt with. The elephant in the room is that the insurance companies are not passing this on.</p>
+          <p eId="para_136"> I have no appetite to introduce insurance reforms that are going to benefit and deepen the pockets of the industry. We should not do it any more until we get the commitments that were sought. Former Minister of State, Michael D’Arcy, sat down with those companies in 2019 and asked for commitments in the context of reducing premiums. They did not give him those commitments. We are kidding ourselves if we keep on going through this.</p>
+          <p eId="para_137"> I have a question for everyone in this room. I will put it to the Alliance for Insurance Reform. What measure in the new programme of insurance reforms will actually lead to reduced premiums for customers? Is there more than one measure, because I cannot find one? There are things that may increase the profitability of the industry, but I do not see any measure. I heard Leo Varadkar, when he was Taoiseach, talk about giving the industry six months or else. I have never seen what the “or else” looked like. I heard the Minister, Deputy Donohoe, the former Minister and current European Commissioner, Michael McGrath, and the former Minister of State, Michael D’Arcy, speak in the same vein. What the industry is doing to customers is a joke.</p>
+          <p eId="para_138"> I got an insurance premium renewal. There is competition in the motor insurance sector. We would rather that there was more. It is great to have more competition, but there are plenty of insurers in the insurance sector. Serious profits are being made. My insurance premium renewal included an increase of 34%. I had no claims, accidents, crashes, additional penalty points or any of that. How does this happen? It is just a pure and utter rip-off. It is happening because it is allowed to happen. I have asked for legislation to be brought in to show exactly how much the companies are making as a result of these reforms, but this has been stopped by this committee and by Members who are sitting here and giving out about what is happening. That is the elephant in the room. We are wasting our time unless we deal with the main issue.</p>
+          <p eId="para_139"> While I know Mr. Hanley is saying that we, as a committee, will take the insurance companies to task – and we no doubt will - it will just be a case of one excuse after another unless it is called out. Representatives of the insurance industry were before this committee talking about fraud until we challenged them on it. They do not mention fraud any more. Then it was about the reforms we introduced. The CEO of Insurance Ireland said that there impact would not be immediate and that it would take six months. Six months have come and gone. Six years have come and gone, and insurance premiums are going up.</p>
+          <p eId="para_140">Now, it is something else and something else again. There are things that are pushing up prices; I am not naive about that. Cars are more expensive. Repairs are more expensive. There is all that. When you strip it all back, however, profitability is way out of sync with European averages. That is the issue here.</p>
+          <p eId="para_141"> The insurance industry agreed a schedule of reductions via reforms when the first suite of reforms came in about 20 years ago. I will put the question to the alliance. I commend the work it is doing. What measure in the new programme - the new suite of measures and the action points - will guarantee reduced premiums for customers?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:50:00+01:00"/></from>
+          <p eId="para_142">I do not think we would be that brave or foolish, to be honest. I am calling on the members of the committee to be as furious as we are. We can do nothing. We have to have insurance. Liability insurance for a business is an absolute necessity. However, we are paying more. We are really upset, and the members must be even more so. To Deputy Doherty's credit, and as his colleagues have pointed out, he was to the fore in so much of this, but we really are at the end. The action plan is great, but if all it does is increase the profits of insurance companies, then shame on those who brought it through. I ask members not to give up on it either.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_75">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-17T16:50:00+01:00"/></from>
+          <p eId="para_143">I thank Mr. Jennings for his answer. I have absolutely no intention of giving up on it. This committee has done really good work on insurance in the past. Members have mentioned my legislation and so on, but we have acted really well as a committee to challenge the industry and get it to deal with some of the core issues. There was a point when the committee, with some of the reforms that were taking place, had started to see some improvements over a two-year period, but the stuff that is happening now is crazy.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:50:00+01:00"/></from>
+          <p eId="para_144">Green shoots.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_77">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-17T16:50:00+01:00"/></from>
+          <p eId="para_145">As to how long this has been going on, the working group for insurance reform was set up in 2016. We had the programme in 2019. Now we have a second programme and all the rest. As I said, I campaigned for some of this. I was not alone; others here campaigned for it and other parties put forward legislation. If you look back, however, and ask if it has been a success, the answer is that it absolutely has not. It has not been a success in the context of the objective we had, which was to make sure that insurance would be affordable and fair for people. It just has not. It has created a far more stable environment, but there is excuse after excuse being given by the industry.</p>
+          <p eId="para_146"> Doing a deep dive was mentioned in terms of insurance. That is what needs to happen. It is only when you get underneath the bonnet that you can expose what is happening.</p>
+          <p eId="para_147"> I agree with the presentation that has been made today. As regards liability premiums, what is happening is just crazy. There has been a 17% increase since 2022.</p>
+          <p eId="para_148"> There are members from other parties sitting here. I will raise this matter in the Dáil next week and a Minister will state that insurance premiums have come down. This is the problem. We have to be on the same page, and the big issue here is the profitability. One of the big frustrations is that you cannot rely on CSO data. The CSO is brilliant - I engage with it - but as regards the way in which it collects the data in terms of the cost of insurance rising, I remember the Minister telling me that insurance premiums had gone down by 17% a number of years ago. They were actually going up, but it is the way in which the CSO takes a sample - a basket of indicators - whereby the Central Bank now looks at every premium that is cut. The problem we have is that we are so far back we do not have a real indication - right here, right now - as to what is happening. If you talk to anybody on the street, however, you will discover that the cost of motor insurance is going up quite a bit.</p>
+          <p eId="para_149"> I will finish on this point. The witnesses might give their views on it. I mentioned my insurance premium. Sometimes insurance can go up because your risk appetite is out from the algorithm. When I phoned my provider up and instead of just clicking renew, said the price was ridiculous and amounted to a 34% increase, I was offered a reduced price straight away. When I said that price was still higher than its competitors', because I had searched online, it met its competitors' prices.</p>
+          <p eId="para_150">This is nothing to do with risk appetite. This is a complete and utter rip-off. That is what is happening. Anyway, that is my piece. I am sorry for going over.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_151">I ask the witnesses would like to reply succinctly because everybody seems to be going over time.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_152">Motor insurance is a particular problem. We all acknowledge that repair costs etc. are something to watch with inflation and so on but the increases in this sector are running far in excess of inflation now. It is funny that the Deputy mentioned an increase of over 30%. When I was on the radio this morning, the person interviewing me said that 30% was the increase they had experienced this year compared to last year. I got my own quote this week. I have not paid what they are charging since my early 20s. I have had no accidents and I drive a nice, boring car. It is something that needs to be monitored. We can use inflation but unless it is properly monitored and tracked it cannot be used as a Trojan horse for premiums to skyrocket. It has to be looked at.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_80">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_153">I welcome the witnesses. I have come across a case or two lately of shopkeepers who had claims made against them, and the insurance companies settled the claims for “economic reasons”, which was the phrase they used. They settled them at low money, or reasonable money. My point is that the insurance companies did not challenge the case at all. Is that a general thing? If so, is it a contributing factor? What would the witnesses say about it in general?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_154">It is infuriating that when we do business with an insurance company, the company effectively takes hold of all matters relating to the claim. You might feel that you have a defendable case - perhaps something happened as a result of a set-up, or the person who is claiming is doing so as part of a strategy - but when you tell the insurance company or the insurance broker that you do not want them to settle the claim, they will say the only way they will deal with it is on their terms. They will do the quick numbers and calculate that to settle it now would cost, say, €8,000 whereas if it went to court and followed that whole route, it would cost €30,000. They make the economic decision on that basis. There are only a few people who do not take this approach. Pat McDonagh is a classic example because he fights every last thing. Dunnes Stores is similar because it fights every last thing. Most independent retailers do not have the ability to dictate to our insurance companies what to do or fight it ourselves.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_82">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_155">I have some other questions. Quickly, could this be rectified? What could the Government do to deal with it?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_156">There is a situation at the moment. In a very short time, the Oireachtas will be able to assist by taking on board some amendments to the defamation Bill, which is being considered by the Seanad. There has always been a defence of qualified privilege, yet at the same time we keep having people coming at us. We ask to be allowed to use the little gatekeeper of serious harm whereby when someone says they have been really defamed and they can show the harm, we allow it to go to court but otherwise not. Those are the things that can most clearly be done.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_84">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_157">I thank Mr. Jennings for that. We will keep an eye on it in the Seanad. I know Deputy Timmins raised this but can the witnesses delineate fairly quickly the specific obstacles to more companies coming into the market and more competition?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T16:55:00+01:00"/></from>
+          <p eId="para_158">There are two elements. There is the internal piece in terms of existing insurers moving and increasing the risk appetite for different sectors. I think there is a need for new ways of tracking and identifying who the larger players are so that we can verify whether there is adequate competition in certain markets.</p>
+          <p eId="para_159">Externally, we need to resource the Office to Promote Competition in the Insurance Market properly so that it can promote Ireland as a destination to come to, and to make sure there are absolutely no problems in accessing the relevant data that insurers need when deciding whether they need to come in. However, this is something that needs to be part of trade missions and so on. Insurance needs to be talked about. Ireland is a place to come and write business.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_86">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_160">I thank Mr. Hanley for that. We should do something about that.</p>
+          <p eId="para_161"> The 17% premium increase and the 13% profit increases relative to 5% internationally were well referenced earlier. There are a number of elements creating those increases, but is there specific consumer law that could deal with that? Has the Alliance for Insurance Reform researched potential laws that could be used there?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_162">I am not aware of any that could be used in those circumstances. At the end of the day, there is a piece of-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_88">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_163">None of the existing laws, but there is potential in the defamation law. That is all.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_164">I suppose the truth of the matter is the style of economy we work under allows for people to earn as much profit as they can. Whether these Houses are going to put a cap on it is a different matter altogether. If they were to allow people to get the benefits of reduced premiums, naturally there would be reduced costs. How would you force them?</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_90">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_165">They are not doing that.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_166">I am sure there are enough occasions-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_92">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_167">If they are going up 17% at a time of 13% profit-----</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_168">-----when the insurance company needs the State and maybe the State should not be as free in offering facilities to them.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_94">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_169">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_170">Auto-enrolment is the classic case.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_96">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_171">Turning to my next question, Mr. Hanley will forgive me because I was up to speed with this many years ago in a role I played but I am not in that role now. If, to simplify it, I have a claim against my local shopkeeper because I fell on the floor of my local shop, why does that not automatically go the resolution board?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_172">It does, in virtually all circumstances. Cases go there but they are able to leave. You do not have to agree to settle there. What is happening is-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_98">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_173">I, the client, can leave the resolution board-----</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_174">You can.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_100">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_175">-----even if I am offered fairly standard money. That begs the question - it is our issue here - whether something should be done to prevent that. If I have trouble with my employer or with a worker in the shop, they must go to the WRC and there is a process.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_176">It works wonderfully.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_102">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_177">This needs to work similarly.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_178">The truth of the matter is that if the resolution board offers, say, €20,000, based upon the guidelines, I can guarantee that nine times out of ten, two years later you will have only received the self-same amount of money-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_104">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_179">Through the other courses.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_180">-----but your legal advisers will have received 23 times more.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_106">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_181">That is bizarre. That is in the alliance's presentation.</p>
+          <p eId="para_182"> Will they explain how the issue of litigation goes? We all have a duty in our roles to find out what is happening in the world around us. Anecdotally, I am picking up that small claims are being settled. Rather than going the whole way, they are being settled on or even before the steps of the court on economic grounds. We discussed that earlier. How does the diversion into litigation happen then? I fall on the shop floor. I seek my claim. Where does it go to litigation, if it is settled outside?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_183">If it is settled, it is settled. It is when it is rejected that it goes to litigation.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_108">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_184">It goes into the courts. If the person claiming rejects, it must go through the whole process.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_185">Or the insurance company. Generally speaking, it is going to be-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_110">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_186">The client, the individual.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_187">-----the person who is bringing the case.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_112">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_188">This is where the resolution board is not functioning properly.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:00:00+01:00"/></from>
+          <p eId="para_189">The injury board, to be fair, has done very well.</p>
+          <p eId="para_190">Its model is excellent. During the previous Government, it introduced a new mediation service to try to deal with more contentious things. It can now deal with psychiatric injury. It has been trying to bring more cases in there to settle. Now that we have the data to show the awards are just the same, as they should be, because they should all reflect the personal injury guidelines, there is even less justification-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_114">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_191">Nobody wants an individual damaged in the process.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_192">Everyone should get their just desserts - there is no question - and be appropriately compensated. We would just like to see more cases settled and considering at the very least whether it could be a model similar to the Workplace Relations Commission and could become a decision-making body. We would like, and it is important, that more cases are settled there.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_116">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_193">Could a mechanism be put in place that would make transparent to consumers and to everyone the amount the brokers are getting from the companies and the amount they are getting from the clients? Could that be transparent and written up in policies? In other words, when I go in for my insurance, I should know how much the broker is getting off the company and how much it is getting from me.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_194">They know how much they are getting from the Senator because it is on his bill.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_195">They will tell him that much. I do not know-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_119">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_196">They will not tell me what the company is giving them.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_197">We have all seen this and it goes back a long way into the groceries order. There are ways that people get remunerated and rewarded that are not necessarily upfront.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_121">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_198">Like holidays-----</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_199">Yes.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_123">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_200">-----and football matches.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_201">Or you get the cumulative effect and long-term agreements. It is not always just going to be on the day, “That policy earned me that.” The cumulative effect of all those brings more money in.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_125">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_202">We will let Senator Byrne in as he has not had a chance yet, and then open up for a brief second round for those who wish.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_126">
+          <from>Senator Cathal Byrne<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_203">It is helpful to have the witnesses come in and I thank them for the work being done in this area. I read through the presentation and opening remarks. To be honest, I found some of the data in it absolutely shocking. I know previous speakers have highlighted this as well. However, you see in the 2024 reports that the awards in employers' liability are down 31%, in public liability awards are down 34% but premiums are up 4% in 2024 and up 17% since 2020. Average profits by the insurance companies in Ireland are €175 million, taking a 13% margin. It was previously pointed out that for many years, the insurance companies sang a song saying there were false claims, fraud and excessive claims but year after year, the profits get bigger, and the awards go down. I am interested to know what mechanisms the witnesses think can be brought in by the Oireachtas to make the insurance companies pass on the reductions in awards they are paying out to the people paying the premiums, be it private motor insurance or claims for commercial entities, businesses, professional insurance and so on.</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:05:00+01:00"/></from>
+          <p eId="para_204">I said this before the Senator arrived so I repeat that one of the most important things that can be done is the Oireachtas showing it is maintaining an interest in this issue. It is in the programme for Government, there is a second action plan for insurance reform and it is to make that clear to insurers because big institutions like that can wait it out. They will hope some other issues crop up and politicians' attention is drawn elsewhere, so they can carry on as they are doing and weather the storm. It is critically important that there is another action plan and a renewed focus, even as evidenced by our invitation today. Mr. Jennings also mentioned something about the attitude that needs to be taken by public representatives to the insurers. Public representatives have more power than they perhaps realise in making clear what our expectations are, the fairness and their role in civic society. Insurers have interests they are concerned about as well, as we all do. As Deputy Doherty said earlier, clear commitments and assurances were made in rooms like this that savings would be passed on. It is quite past time they honoured those commitments.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_205">Yes, I would not give them a single additional piece of Government benefits until we get the benefits of what they have already got. We have slogged through six years of work to make it more viable. All of those reforms were necessary and welcome but it must benefit all of us, namely, those in business, the voluntary community and the general polity.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_206">I will allow for a second round of about five minutes each because I know there is very keen interest. I do not want to curtail the debate. An Teachta Timmins has indicated that he wants to ask a question. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_130">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_207">Mr. Jennings mentioned the leverage the Government might have and the pension reforms. Will Mr. Jennings elaborate on that point about leverage? </p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_208">A substantial amount of money will be taken from employers and employees over the next number of years - sorry, I should say, <i>ad infinitum - </i>and that is a welcome development. However, I am not so sure if any of the existing insurance companies are worthy of being able to get that money unless it is shown very clearly that they are playing the game. They cannot get it every way. They cannot get money at these 13% margins and auto-enrolment moneys. They just cannot. Why should they be given something to bolster them further? </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_132">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_209">What is the alternative to those insurance companies for auto-enrolment? </p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_210">Maybe there are financial institutions. Maybe there are groupings that can actually manage to work in a fairer, more transparent and just fashion. Maybe the State should be involved. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_134">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_211">My second question uses that dreadful word, "cartel". Do the insurance companies in Ireland operate as a cartel? Mr. Jennings will probably not be able to answer that. </p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_212">Ask me not to answer that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_136">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_213">Have they been investigated for running a cartel? </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_214">I do not think we can pursue this line. We have to be careful.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_138">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_215">Are the witnesses aware of any investigation? </p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_216">I am not aware of any investigation. </p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_217">Not in Ireland. </p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_141">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_218">As Deputy Timmins was saying, I do not think we should shy away from that collaboration question. I know we do not have privilege or-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_219">It is more in terms of our privilege in all those things.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_143">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_220">I understand that but there are not many explanations that make all of this tally. If we cannot go into it then so be it. Ireland is a small market and people know each other. Nothing has been proven so-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_221">We can explore the idea of it but we cannot mention any names. Is that okay? </p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_145">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_222">I will move on to questions.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_223">You can explore the idea. </p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_147">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T17:10:00+01:00"/></from>
+          <p eId="para_224">That is fair enough. There are two things in relation to the alliance itself. The alliance is a major body, with close to 1 million members from the statistics given by the witnesses earlier. It seems to me that there is scope for the alliance to do certain things as well. One would be something along the lines of communication regarding the IRB and the need to try to avoid the courts, where possible. It should certainly be stressed that the outcome from the courts is generally no greater and can be more costly. Obviously, many of the members of the witnesses' organisation are the same people are taking court cases, so I think there is scope there.</p>
+          <p eId="para_225"> My second point is in relation to the power that the alliance has by the number of members it has. Has something along the lines of one big switch ever been considered? In such a scenario, the members would get together and threaten the insurance companies that they will change providers if more appropriate premiums are not provided. It is probably taking it too far but an extension of that is that in certain industries there might be scope for the industry itself to set up a reassuring body. </p>
+          <p eId="para_226">I am thinking of Senator Nelson Murray who talked about the creation of PALI after businesses got together and they now pay €1 million a year in premiums. I think there is more scope to do things like that. It is not the answer but could be part of the answer coming from the actual consumer side.</p>
+          <p eId="para_227"> I am concerned about the 20% who can only get one quote. I know that finding was as a result of the witnesses' survey. Do the witnesses have any insights into formal statistics that have been drawn up in that space or what direction that is going in? If it is 20%, was it 10% or 40%? Is the situation improving or disimproving?</p>
+          <p eId="para_228"> The witnesses talked about personal injury guidelines and saw a role for this committee in signing off on the recommendations. It would be interesting, now that they are here, to get them to expand on that a little bit.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:15:00+01:00"/></from>
+          <p eId="para_229">I will just take the last part. I would like there to be collaboration of both finance and justice because we saw how close we went on the most recent occasion where it seemed very clear that the Minister was of a mind to accept. Not only was he of a mind to accept, but there were at least five instances where judges awarded an additional 17% and 18% extra in awards in anticipation of something coming through. It is very clear that the original judgment by the courts said that the Oireachtas should be in charge of accepting the Judicial Council guidelines. The Oireachtas - I am not educating members - is more than the Government; it is the Houses. I think that some of the committees of the Houses should debate the recommendations the next time rather than it being done in one Department - the Department of justice - or with the assistance of the Department of Finance. Democracy is best upheld by being transparent and open, as in these committee rooms, and that is what I was talking about. My colleague will talk about the other matters. Certainly, I believe that the committees, both this committee and the committee on justice, should actually decide those or, if they cannot decide, make recommendations based upon having a full hearing of the matter with all stakeholders present.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:15:00+01:00"/></from>
+          <p eId="para_230">On having one underwriter, the number has come down. There were more sectors five years ago that had only one underwriter, or indeed could not get any access to cover at all, and the officials in the insurance section of the Department of Finance certainly were working with some of those sectors and there has been progress. However, it is still a significant number - 20%. A lot of them are in tourism, arts and so on, maybe tour operators, historic houses and all sorts of areas you might not think of. It is a perilous place to be because it is an existential issue. I know of one tourism representative body that told me of a time when an insurer stated that, in three months' time, it was pulling out of the sector and there was nobody else. Thankfully, that insurer stayed on or a new one was found but a lot of livelihoods are wrapped up in something when it is that perilous. They are the stakes in terms of competition. It is not just about premiums. It is ultimately about livelihoods as well and local communities that those jobs support. While good work absolutely has been done, to be fair, in reducing the number of sectors that cannot get cover, the issue for many now is access to affordable cover. That is where the challenge lies. Thatched cottages are in an invidious position. Some of the arts have huge difficulties. Some tour operators in the tourism space have either one underwriter or none at all and that is problematic.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_150">
+          <from>Deputy Shay Brennan<recordedTime time="2025-09-17T17:15:00+01:00"/></from>
+          <p eId="para_231">When you have one underwriter, they are a monopoly, essentially. Is there any evidence that additional super-normal profits are being made in that area where there is only one underwriter, above and beyond the industry in general?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_232">There is no data that I am aware of or that I have seen that shows that any comparative analysis has been done, not that it might not be worthwhile, but-----</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Vincent Jennings<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_233">It may be buried. Assuming that it is a company that provides a number of different styles of cover, it is buried within its overall annual data, so you would not see the thatched element as part of that.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_153">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_234">I want to go back on Deputy Brennan's point. He talked about this committee getting involved, and the response from the alliance is that it should be multidisciplinary committees getting involved in terms of the judicial guidelines and the personal injury guidelines. When the Minister for justice received that from the Judicial Council, it was considering going up by 17%. We would never ask the Judicial Council to come up with settlements for murder or theft. If there is separation of powers, I do not understand why there was not separation of powers there. It is very important that that is done in the future.</p>
+          <p eId="para_235"> I want to quote an excerpt from the draft guidelines that were presented:</p>
+          <p class="indent_1" eId="para_236">In carrying out its review, the Committee has had regard to two matters in particular. The first is the fact that in the three years since the adoption of the 1st Edition, significant global and national inflation has occurred. The second is the jurisprudence of the Superior Courts that has emerged in the same period regarding the proper approach to the assessment of damages in multiple injuries cases.</p>
+          <p class="indent_1" eId="para_237">The Committee has not found it possible to carry out any meaningful analysis of the quantum of court awards given under the Guidelines to date that might inform this review.</p>
+          <p eId="para_238"> It therefore had not got the proper information but was saying we just need to go up by 17% anyway. It will be very scary if that happens again in two years' time, so it is very important that this committee works on that and that we come up with a way in which the Injuries Resolution Board is brought in on that. That is key. We will see this in two years' time because it is taking a few years to get through the Injuries Resolution Board and to get to the courts system so you do not have to pull it back.</p>
+          <p eId="para_239"> The report also stated, "The Board decided to modify the guidelines in order to reflect the HICP rate applicable at the time of its own consideration of the draft amendments to the guidelines." I am not an expert on inflation, but it just seemed to be all wrong. The whole thing was all wrong. I am glad we did stop it but I would be worried in a couple of years if we do not sort it out.</p>
+          <p eId="para_240"> What I will take from today is that there are a few key and very important messages that we need, from our point of view as political people, to put out, whether on radio, on television - I am putting my marketing hat on here - about culture change. We have spoken about competition. The biggest thing that has been mentioned today is the lack of competition in the market. We need to let people know that there has been a culture change and that the Injuries Resolution Board is the place to go when you have a claim, while, as was said, not taking away from solicitors when it is something very serious that can go down that road then. Also, the message from our competition Department needs to go out to Europe that Ireland is open for business, including from public liability, that we have sorted out all these reforms and that we now need the business here in our country in order that the profits that the businesses that are here already have can be shared. That is what we need to do as a Government. We need to encourage our Minister and our competition Department to go out and say we are definitely open for business and to make sure there is nothing stopping that business coming into Ireland, going back to a couple of other points raised earlier.</p>
+          <p eId="para_241"> I thank the witnesses for coming in.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_154">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_242">One last tiny question.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_243">Go ahead.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_156">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_244">Mr. Hanley said 13% profit is typical in Ireland. Insurance companies are obviously multinationals. They are part of groups, etc. I just question that figure of 13%. That is based on an Irish-registered company trading just in Ireland, so are the witnesses confident enough that that figure of 13% for profit relates just to activity in the Republic of Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Mr. Brian Hanley<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_245">Yes. My understanding is that the Central Bank data from 2023, which relates specifically to liability - I am not talking about motor or any other form of insurance but in terms of liability, public employer and so on - showed a 13% operating profit margin across insurers specifically in the liability sector for that year. Of course, they are part of larger entities - I totally accept that - so what happens with reinsurance costs, remittances and reserving and so on needs to be looked at more fully. If we want full transparency, then we should have it, but I am happy enough that that is the Central Bank data for that year.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_158">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T17:20:00+01:00"/></from>
+          <p eId="para_246">Go raibh míle maith agaibh. That was a great debate. It was brilliant. It just shows the interest, and I think it was Mr. Jennings who said the importance is that we keep the interest, or perhaps it was Mr. Hanley, but either way that the interest is there. Today's discussions and everybody going slightly over time, which was fine, showed really the interest that is here.</p>
+          <p eId="para_247">I really appreciate what we heard today. Go raibh míle maith agaibh go léir.</p>
+          <p eId="para_248"> That concludes the joint committee's business in public session for today. The meeting now stands adjourned until we meet again on Wednesday, 24 September 2025.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 5.25 p.m. until 3.30 p.m. on Wednesday, 24 September 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

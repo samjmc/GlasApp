@@ -1,0 +1,1254 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-02/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-02/debate"/>
+          <FRBRdate date="2025-07-02" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-02/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-02/debate/mul@"/>
+          <FRBRdate date="2025-07-02" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-02/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-07-02/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ChristopherOsullivan" href="/ie/oireachtas/member/id/Christopher-O'Sullivan.D.2020-02-08" showAs="Christopher O'Sullivan"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCPerson eId="TeresaCostello" href="/ie/oireachtas/member/id/Teresa-Costello.S.2025-01-29" showAs="Teresa Costello"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-02">Dé Céadaoin, 02 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-02">Wednesday, 02 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#TeresaCostello">Teresa Costello</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-07-02T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T09:30:00+01:00"/></from>
+          <p eId="para_16">We will go into private session to consider some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> The joint committee went into private session at 9.35 a.m., suspended at 9.45 a.m. and resumed in public session at 9.47 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Management of Hospital Waiting Lists and Insourcing and Outsourcing of Treatment: Discussion<recordedTime time="2025-07-02T09:40:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T09:40:00+01:00"/></from>
+          <p eId="para_17">I welcome everyone to the Joint Committee on Health. Today, the committee will consider the management of waiting lists for hospital treatment and the insourcing and outsourcing of such treatment. To commence our consideration of this matter, from the HSE I welcome Mr. Bernard Gloster, chief executive; Ms Sandra Broderick, regional executive officer for HSE mid-west; Mr. Stephen Mulvany, chief financial officer; Dr. Colm Henry, chief clinical officer; and Ms Sheila McGuinness, director of HSE access and integration. From the National Treatment Purchase Fund, I welcome Ms Fiona Brady, chief executive officer; Ms Alison Green, director of waiting list governance and reform; and Ms Bernadette Weir, director of commissioning. The witnesses are all very welcome to the committee and I thank them for attending.</p>
+          <p eId="para_18"> I will start with a note on privilege. Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in such speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_19"> Members are reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against a person outside the Houses or an official either by name or in such a way as to make him or her identifiable. I remind members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, any Member who attempts to participate from outside the precinct will be asked to leave the meeting. In this regard, I ask members taking part via Microsoft Teams to confirm, prior to making a contribution to the meeting, that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_20"> As I said, the focus of today's meeting is on waiting lists, in particular outsourcing, insourcing and the potential misuse of public funds. As a committee, we were concerned about the HSE's growing reliance on the National Treatment Purchase Fund, NTPF, to address long waiting lists. By way of context and background, the NTPF was set up as a short-term measure more than 20 years ago. Its funding has since increased to €230 million. The committee also had concerns about the recent allegations on the misuse of the NTPF, including an apparent lack of oversight and insourcing arrangements.</p>
+          <p eId="para_21"> A HSE report on insourcing and outsourcing was published by the Minister late yesterday evening. I circulated it to members as soon as I became aware of it. This report is welcome and I note the significant recommendation it made to end insourcing by 30 June next year.</p>
+          <p eId="para_22">I have no doubt this will form the basis of much of our discussion today. As I indicated previously to the Minister for Health, it is difficult for the committee to fully consider these reports without adequate time and it would be appreciated in future if the committee was given more time to consider these key reports in advance of meetings.</p>
+          <p eId="para_23"> To commence our considerations of the matter, I invite Mr. Gloster to make the HSE's opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_24">Good morning. I thank the committee for the invitation to attend today’s hearing, together with colleagues from the National Treatment Purchase Fund, to discuss the management of waiting lists for hospital treatment and the insourcing and outsourcing of such treatment. I am joined today by my colleagues, as outlined by the Chair, and supported by my general manager, Ms Niamh Doody. </p>
+          <p eId="para_25"> Waiting lists for healthcare have long been a challenge in several jurisdictions, with various attempts to respond to increased demand through capacity measures, reform and special initiatives. OECD reports, including in 2020, note that various policy attempts in different countries and getting the right policy mix are dictated by the health system specific to an individual country. The balance between short-term initiatives helping, but only in the short term, together with additional capacity being overtaken by increased demand are indicators that successful policy direction is not binary when it comes to this aspect of our health system. I have previously noted at meetings of health committees that the one absolute shared experience internationally is that the focus is and needs to be on time waiting rather than the traditional narrative of volume waiting.</p>
+          <p eId="para_26"> Reviewing waiting lists in Ireland for 2023 and 2024 gives us some perspective on how a focus on time waiting is, without doubt, in the public interest. We have shown through a combination of approaches that we can substantially disrupt the time waiting. For example, at the end of 2023, we reduced the overall average waiting time, improving on the previous year from 9.2 months to 7.2 months. The numbers waiting more than four years reduced by 85% when, through a targeted focus, 29,000 people from that category were removed, leaving an unprecedented low of 5,000 people. For this to be effective, the three-year list also had to be tackled and this was reduced by 81%, with 57,000 removals from that category, also leaving a new low figure of 13,000. These outcomes were against an increase of almost 188,000 more additions than in 2022. That is a growth of new additions to waiting lists of 12% and an enormous 23% more in new additions than in 2019.</p>
+          <p eId="para_27"><b>
+						</b>At the end of 2024, the weighted average wait time for outpatient departments moved to 6.8 months, down from 12.2 months in 2021. Improvements were made to inpatient and day-case times, which were down from eight to six months, and in gastrointestinal scopes, times reduced from nine months to 2.7 months. Some 85% of all patients on the key hospital waiting lists at the start of 2024 were seen, treated and removed by the end of the year. This is again despite further unprecedented growth in new referrals.</p>
+          <p eId="para_28"> These improvements are welcome and impact on the lived experience of people. They have been achieved through a set of measures and reforms, including capacity building in workforce and infrastructure; new contract arrangements; target setting and measurement in the form of Sláintecare; new approaches to the Did Not Attend challenge; modernised pathways; and trialling of different patient initiatives in the form of central referrals and patient-led reviews. All of these together came with increased investment.</p>
+          <p eId="para_29"> It is equally the case, however, that the pace of reform has presented challenges in the context of increasing demand. Such was the demand post-pandemic that our projection methods were greatly challenged. Thankfully, we believe we have got to grips with this in 2025. Reform has been slow in some respects and achieving it both timely and consistently is now our greatest priority. We will only know this has occurred to a satisfactory degree when our capacity and productivity combined bring us from circa 32% of people waiting inside Sláintecare timelines to that being the experience of all. Regardless of how improved we have made it for those outside the Sláintecare target, all our effort must be focused on that single goal.</p>
+          <p eId="para_30"> It is also important to recognise that we have had to, and continue to, use other measures to complement reform. The experience of the public in waiting times would be totally unacceptable if we did not take additional steps. The unintended consequence is we have developed an unsustainable reliance on short-term measures, such as insourcing. This is coupled with outsourcing, which has been a feature of our system for 20 years since the establishment of the NTPF.</p>
+          <p eId="para_31"><b>
+						</b>In 2023, I commenced examination on some of the issues of outsourcing and insourcing and published an internal audit report in 2024 in a small number of hospitals. This was at the time more concerned with ensuring adherence to procurement and other financial regulations. In 2025, the Minister for Health, Deputy Carroll MacNeill, requested I conduct a nationwide review with particular focus on insourcing, specifically dependency and activity. This week I submitted my report to her. This is the report the Chair referred to, which was published last night by the Minister.</p>
+          <p eId="para_32"> Taking an extract from that report, prior to its publication, I reviewed a 27-month period across 2023 and 2024 and quarter 1 of 2025. This was to identify the scale of dependency. For clarity, the definition is what I referred to when discussing this activity called insourcing:</p>
+          <p class="indent_1" eId="para_33">Insourcing refers to the practice of engaging external companies or third-party providers to deliver services often outside of normal working hours, using HSE-owned facilities and equipment. In many cases, these providers may employ or subcontract staff who are already directly employed by the HSE, effectively re-engaging internal staff through a separate commercial arrangement, typically at premium rates. It is not the use of standard overtime within employment contract arrangements of existing staff which is a different form of insourcing.</p>
+          <p eId="para_34"> Some of the key observations from this survey indicate that, through the course of the 27-month period, €1.1 billion is the identified combined spend on these two areas of patient service provision, with 73%, or €830 million, being in the acute setting and the greatest amount of that being in outsourcing. Within acute settings, some €739 million of the spend is outsourcing and this ranges from private hospital care to private ambulances to laboratory products. That is to say, not all outsourcing is for waiting list management. Within acute settings, between €71 million and €91 million appears to be insourcing. For caution, the rounded figure of €100 million is used here. That is because we have validated some €71 million, with €20 million yet to be defined. This gives the figure of €91 million. As I said, for rounded figures for this discussion, €100 million is the appropriate figure. </p>
+          <p eId="para_35"> Regarding activity, it is important to put the instances of care for the waiting lists we are addressing into context. The following shows the number of instances of care we can see through our core work versus outsourcing and insourcing in the period measured. Members can clearly see that in the period measured, on the three key waiting lists on which we are focused, 13,211,000 instances of care were provided through our normal service plan activity or what we call core business. The initiative-funded or extra purchase of outsource activity can be seen in the form of the NTPF, at 171,000, and the HSE had some additional 26,000. Insourcing combined between NTPF and HSE special waiting list funding reaches a figure of more than 500,000 instances of care. This indicates that in waiting list management, we have developed an overreliance on insourcing to supplement our core activity.</p>
+          <p eId="para_36"> Insourcing, by its nature, carries risks and having assessed these, I have agreed with the Minister and the Department the need to take a series of steps which first reduces those risks and increases safeguards and, second, removes our dependency on insourcing. I hope to finalise those steps when the Minister has had an opportunity to consider the report in full. Any next steps at her direction will be communicated clearly.</p>
+          <p eId="para_37"> I record my thanks to the many staff across the health service who come to work every day to improve patient and social care in all our settings. I equally recognise that today there are people who will be waiting for a consultation, procedure or other service and for them, that wait is simply too long. I apologise to them and recognise that regardless of our improvements and progress, we simply have to do better. It is therefore important that our policy and procedure steps are carefully considered, balancing all the variables of demand, capacity, productivity, reform and short-term initiatives.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_38">We will now move to questions from members, operating from our speaking rota. We aim to take a five-minute break in about an hour's time. Each member will be given a speaking slot of ten minutes. We will move through the rota. Deputy Sherlock is currently in the Dáil so may miss her slot, but when she comes in I propose to take her at that point, if members are agreeable.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_5">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_39">I thank Mr. Gloster and his team for coming. I reiterate his tribute to the public health workers in hospitals, the community and various settings throughout the country. The vast majority carry out their roles with distinction but there are questions, some of which he identified. He touched upon the one that is possibly the most sensitive to this committee, namely, the moral hazard of the NTPF, especially where services are being provided at public sites by people, some of whom are already employed in the public sector in their day jobs. That is not simply my reflection on it. It is not simply about doctors. I am not here to defend anyone. If there is wrongdoing there is wrongdoing, but it seems a system-wide issue because I do not think people understand that hospitals also gain by providing a NTPF service. It becomes a form of revenue, which creates that moral hazard and perverse incentive.</p>
+          <p eId="para_40"> Unfortunately, we have had allegations regarding CHI. I will not dwell on that perverse incentive, as it has been well aired, but there is an allegation of a different level of productivity compared with the five-day week, if someone is doing a private clinic, with maybe not all the resources, on a Saturday morning. That is a question the public are asking. They are sophisticated and can see through this. We need to make sure that the NTPF, which was set up to deal with long waiting lists and to provide services to patients when the public system was at full capacity, is not used for any other reason, including as a revenue generator for public hospitals that should be carrying out this work. The Minister was here last week. She suggested there was significant investment in our hospital sector and a very inconsistent response in certain hospitals. There was a different level of performance. There was very significant investment for some hospitals, but a lack of proportionate response and activity. That might point to some of the issues we are trying to deal with here.</p>
+          <p eId="para_41"> On the insourcing issue, and the NTPF will speak for itself, it has been pointed out that governance lies with the hospital providing the service. Is there no overarching audit system between the NTPF, the HSE and voluntary hospitals on how to regulate that? It seems there is a gap in governance. We are relying on hospitals that are looking for revenue to police themselves. With the best will in the world, when those sort of incentives are created, people tend to go through the easiest gate and the one that is open.</p>
+          <p eId="para_42"> What is the governance around NTPF insourcing and the governance of former and current employees who are providing such services? As was pointed out, it is not illegal to be the director of a company, but there must be robust governance of activity that might reward individuals and institutions. Who are the voluntary hospitals, such as CHI group and other voluntary hospitals, answerable to? Are they answerable to their board, to the regional CEO of the HSE or to the Minister? Will Mr. Gloster reflect on the performance of the public sector versus the private sector, which seems to stand out in respect of that particular allegation around the 2021 report into CHI where the clinics were carried out on Saturday mornings? There appeared to be much greater performance on Saturday mornings than there was during the week. </p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_43">I thank the Deputy. I absolutely agree with his observation that this is not about doctors. I am not prepared to participate in demonising any one group. This is about a whole health system. We are all people who have responsibilities in it. I want to be clear about that to be fair to everybody.</p>
+          <p eId="para_44"> In respect of governance, of course there are mechanisms of governance. Hospitals make declarations and are part of regions. Regional executive officers have systems. We have financial regulations and procurement rules. The effectiveness of the governance is probably questionable in the context of where insourcing got to. Our focus was predominantly on rushing to do the right thing to get waiting lists down and waiting times reduced. Hospitals and staff are under pressure to do that. We are all under pressure to do that. The very great success we had on the activity side perhaps caused us a risk on the governance side. When you outsource, you can have very good governance on it because it is a very transactional thing. When insourcing is enmeshed in your own system, the governance of it becomes very difficult and, let us face it, quite questionable. It would be wrong of me as the CEO of the Irish health service to come here and say anything different. One of the things that will be seen in my report to the Minister is my recommendation for a robust form of governance improvement.</p>
+          <p eId="para_45"> I saw the Deputy's committee engagement with the Minister. On the voluntary hospitals and who they answer to, my personal view is that while voluntary hospitals do great work, have very good people working in them and are quite similar to our own, they have very historical board constructs that are all different. Some board members are appointed by the Minister and some of them are not. In simple terms, for public money, they report to my regional executive officers through a service level agreement. That comes on up the line to our system and then they may have some governance reporting to the Department, depending on the structure of their board. I personally think, for a health system the size of Ireland's, and I welcome all of its participants, we have too many governance systems. It is very difficult to stay on top of all of those in a country this size. There is a multitude of them, which is not to take from the good work they do.</p>
+          <p eId="para_46"> The Deputy is quite right about the issue of performance. There is incontrovertible evidence of different levels of productivity and performance, depending on the part of the service, whether somebody is working in it at a point in time and what the incentives are. Again, I cannot say anything different from that. Part of my view on that is the best place to go is to look at our capacity, which has improved, to get the best out of the new consultant contract, with increased staffing and five-over-seven working, for the public. After we are satisfied we have maxed out on the productivity side of it, if we need additional capacity, that should primarily be outsourced rather than insourced, as I recommended in the report. That will take a few months to do. The Minister has to come back to give me direction on it but fundamentally it is easier, more clear, more visible and more transparent to manage outsource than it is to manage insource.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_7">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_47">I will come back to the reporting system. It is clear from the 2021 internal report from CHI, which Mr. Gloster did not know about, that there was a breakdown. There did not seem to be a view within CHI management that the report should have been progressed to the HSE. That points to a gap in governance. That is a question the public really wants to know about. Can something that is, on the face of it, so egregious, be internalised, not just in terms of the governance around the NTPF but also the culture in that particular hospital? We still do not know what hospital it was. There is a suggestion that report will never be published for various reasons. How do we learn from that? How do we change things if we cannot get there? </p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_48">That is a very appropriate question. There are three parts to it. On the publication of the report, to be fair to CHI, it has a view, it has taken advice and has articulated that at the committee. I have a different view. I believe that report could have been pseudonymised and published without interfering with somebody's rights. That is my view and I stand over it. I will not resile from that. To be fair to a lot of people who work on initiative funding in hospitals, including doctors, nurses and others, not all of it is characterised in the way that the alleged incidents were.</p>
+          <p eId="para_49">As the Deputy said, they are most egregious and should be dealt with as that. I do not, however, think that defines the totality. I do not think that is the way it works in most cases. The Deputy will have seen the level of seriousness with which I viewed that when I heard it. This is because I can see the difference in the content. It was very clear to me that the difference in the content, albeit alleged, met the threshold to be further investigated. This is where it stands and it will be judged in its own time. I really think the governance between the voluntary sector and the State and the State funding of hospitals is something we have to tighten much further.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_9">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_50">I thank Mr. Gloster.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_10">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_51">I wish to touch first on the CHI report because this was the first this committee heard of extremely serious issues regarding funding for the NTPF. In fact, it has led to this session where we can now discuss this report the HSE has done, which is a much deeper dive into insourcing and outsourcing. CHI says the HSE had sight of that report in March 2022. Is this the case?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_52">From everything I have seen, no. I was not in this post in 2022, but I have checked the relevant reference points of the meetings where I understand it is believed the HSE had some awareness of that report, and nothing I have seen has shown me the HSE had an awareness of that report.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_12">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_53">Given the seriousness of what was in that report, is it Mr. Gloster's contention that the HSE should have been made aware of the existence of the report?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_54">Without fear of contradiction, yes.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_14">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_55">Okay. I will come to some of the issues. Is it also fair to say as well that in this report Mr. Gloster has submitted to the Minister and which was published yesterday, he was very clear that we now have an unsustainable reliance on what is called "insourcing"?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_56">That is correct.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_16">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_57">Mr. Gloster has said it is an overdependency.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_58">Yes.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_18">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_59">It was about €90 million over those 27 months.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_60">Yes, it was 27 months.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_20">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_61">How many third-party companies have been identified as having been involved in that €90 million of spending?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_62">To ensure accuracy, I will ask the CFO to comment on the totality of the companies comprehended in the survey.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_22">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_63">I just need the number.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_64">It was 950 in the entire survey, of which 534 were in the acute part of it.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_24">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_65">There were 950 companies.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_66">Yes. These were everywhere from the very largest to the very smallest, which would be-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_26">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_67">How many of them are very large?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_68">The top 50 companies make up the vast bulk of the spending. In the 534 companies in the hospitals, 99% of the spending is in the top 100-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_28">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_69">Taking those top 50 companies - because we want to get to conflicts of interest and, potentially, perverse incentives, which have been talked about recently too - are there current and former members of the HSE who are now directors of those companies?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_70">Yes, and I articulated in my report to the Minister - and again, I have been very clear it is not illegal to hold a directorship of a company - that there are standards public servants have to adhere to in terms of declarations to avoid conflicts of interest. My chief internal auditor did one simple analysis for me. It is not by any means finished. This showed that of approximately 140 companies, there is a total of more than 300-odd directors, and 93 directorships held by 83 people were either serving or former HSE employees.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_30">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_71">Okay. I want to get to risks because these are also discussed concerning insourcing. Obviously, in relation to managing waiting lists, we have core HSE activity, which Mr. Gloster referred to, and obviously overtime, and then this third wheel of insourcing. We want to get to a seven-days-a-week health service and get more productivity. This is linked to productivity across the health service in relation to a dependency on insourcing. In fact, with the new public-only consultant contract, it will be six days a week, with five over six days. Given the existence of this insourcing, and if continued on its current plan - as far as I can see, the spending is and has been increasing - is this a risk, and what I would call a perverse incentive, to getting to a point where we get more through core activity?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_72">It absolutely is. It is a risk because we now have a facility agreed with the unions as of last week for five over seven days for the workforce and we obviously have the public-only contract. For everything else apart from the management of waiting lists, I think we will get there in terms of having effective rosters by the end of the summer. In terms of managing the waiting lists, however, while we have the scale and type of insourcing that we have now developed a reliance on, you could not possibly-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_32">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_73">It is not just a risk. I am talking about a perverse incentive here, which is more problematic. I refer to the existence of these companies. We know current and former HSE employees are directors of these companies. We are a small country, and it is the same consultants, by and large, doing the work. In my view, given the existence of this insourcing, there is a perverse incentive in relation to managing waiting lists.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_74">Yes. I was just getting to that at the end of my answer. For as long as we have this type of third-party insourcing - overtime is fine, that is a good insourcing - then we will not get to a five over seven days system for the management of waiting lists, productivity will not be encouraged and the risk of conflicts of interest will remain.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_34">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_75">Exactly. It is an impediment to getting to that five over seven days, which is what we want.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_76">It absolutely is.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_36">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_77">Is Mr. Gloster adamant this can be ended by June 2026?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_78">I have recommended that to the Minister. This is my best assessment of it. I am very clear the pathway I set out in the report - in fairness to the Minister, she wants time to consider it and she may well add measures to it - is to balance the protection of service to people today, and not just to completely stop something, which would cause huge consequences. It is about putting in safeguards and then starting to wind down the dependency on insourcing. As I said, where we are left with a gap, we go outsourcing.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_38">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_79">I accept that, and I saw what Mr. Gloster referred to. I submitted a parliamentary question seeking a breakdown of the information on all these companies, including how many exist and what funding has been given to them over the last number of years. I shared that information with the HSE, but I did not get any response other than being sent somewhere else, which made no sense whatsoever. Can this committee be furnished with that information? We now know there are more than 900 companies and 50 top companies. I think it is not unreasonable for us to ask for a breakdown of those top 50 companies, to include how much they have got, broken down by year and per hospital, and the numbers of current and former HSE staff members who were aware of the work in all those companies. For me and other members of the committee to hope to be satisfied in relation to value for money, can that information be provided?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_80">Certainly, in terms of the actual companies, yes, the list can be provided. The top 50 companies are the ones the CFO referred to. The numbers of people who are directors of those companies can be provided. The information concerning the numbers who work for them is more difficult because on a Saturday-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_40">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_81">I accept that. I am talking about the amount of money the companies received from the HSE.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_82">Yes, completely. We can, of course, provide that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_42">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_83">Okay, that is the information I am looking for. There is a related issue here that troubles me. I am looking at spending on agencies. For me, we have the same level of dependency in this regard and these issues are very much linked. In 2019, the spending on agencies was €349 million. What was the spending in this regard in 2024?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_84">I do not know. The CFO will have a look for that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_44">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_85">It was €734 million. Do we have any idea how many companies operate in that space?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_86">Yes, because we have a procured framework for that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_46">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_87">How many companies are we talking about?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_88">The vast bulk of it will be with the top ten companies. It is the insourcing top companies the Deputy is looking for.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_48">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_89">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_90">Again, there are fewer than ten companies of any value in that space, so we can certainly-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_50">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_91">Okay. I am looking at the agency spending. First of all, does Mr. Gloster accept we have a problem here where we have gone from €349 million in 2019 to €734 million in 2024?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_92">Yes, and I think I have been very clear about that here.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_52">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_93">Mr. Gloster has been very clear, but the problem is it has still gone in the wrong direction. In 2023, it was €647 million and then it increased to €734 million in 2024.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_94">Yes, and it goes up for two reasons. It goes up in terms of increased use but also in terms of price. Every time there is a pay agreement in the public sector, the cost of using agencies goes up because agency workers have to be paid the same under an EU directive. There are cost and utilisation aspects therefore, but, yes, the dependency on the agencies has absolutely gone up. This is why I made provision in the pay and numbers strategy to put agencies along with full-time employment and along with overtime together.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_54">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_95">I suggest we have a lot more to do. The figures are alarming.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_96">There is no dispute on that point.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_56">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_97">I accept that. If we come back to insourcing----</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_98">It was just a pity, if I can say so, that we could not get the service we needed out of all that agency money and we still had to go to third-party insourcing. That is the shame of it.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_58">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_99">It is, and it is the shame in relation to accountability. I want to come back to the productivity and savings task force that was established. I read all the reports the body has published and nowhere do I see insourcing. How is it that the productivity and savings task force completely missed this issue of insourcing?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_100">The productivity and savings task force is looking more at the productivity of the system we have and trying to find ways to make it more productive.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_60">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_101">I know, but Mr. Gloster said in his opening statement that there were links between productivity and dependency. </p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_102">It is very focused on agency. The issue of insourcing would have been discussed in the other critical forum that deals with waiting lists. That is the waiting list action plan forum between the HSE and the Department. We would have discussed that concern quite often. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_62">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_103">I am not sure if it is the NTPF or Mr. Gloster that would have the answer to this question. It has to do with outpatient clinics in CHI Crumlin over the past number of years. In 2015, a total of 51 were conducted on a Saturday. In 2024, the figure was 1,426. How in God's name could it have gone from 51 to 1,426? </p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_104">Maybe the NTPF can assist with some of the numbers on that. I do not have that information. I suspect it was driving initiatives to reduce waiting lists, funded by either the HSE or the NTPF. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_64">
+          <from>Deputy David Cullinane<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_105">Insourcing as well?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_106">Insourcing and outsourcing. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_66">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_107">I know that the vast majority of people in the HSE work extremely hard and are committed to delivering a service for the population. I notice a lot of focus on moving from five days to seven days. One of the issues that came to my attention about two years ago is about use of operating theatres in the HSE compared to the private sector. For instance, I know of one hospital where no patient is allowed into theatre after 4 p.m. on the basis that the finishing time is at 5 p.m. What have we done to try to increase the number of people who can be treated, rather than finishing everything at 5 p.m.? This would involve working with staff to work until 8 p.m. so that a lot more work could be done in that period. That is what most of the voluntary hospitals do. I am not sure if we are using facilities to their full potential in the HSE system. What kind of examination has been done in this area to try to get more people through the system? </p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_108">I will ask the chief medical officer to talk about the work we have done on theatre utilisation and then Ms Broderick can explain the efforts that are made at hospital level to do that. </p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_109">We have a theatre enhancement programme on which we work in partnership with the RCSI, which looks at all of our hospital groups. The programme examines current utilisation, available utilisation and unused utilisation. This is channelled through to waiting list initiatives. Through this partnership, we have identified significant unused capacity. I would note that there is great variation between hospital sites. This unused capacity can be used for waiting lists. This work is ongoing and it is delivering us information on potential----- </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_69">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_110">Regarding everything finishing at 5 p.m. in outpatient day clinics, has the HSE looked at where it can roster staff in such a way that some people work from 8 a.m. until 2 p.m. and others work from 2 p.m. until 8 p.m.? Has that been looked at to make the system more efficient? We have the manpower to do it but the organisation of said manpower seems to be a problem. </p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_111">Efficiencies regarding outpatients do not just relate to timing and, yes, we run evening clinics already. Using the public-only consultants contract, POCC, we are going to run Saturday clinics, too. It is also about how clinics are used. The new patient-to-returning patient ratio is 2.5:1 across all specialties. We can improve on this and have set a target of a new-to-return ratio of 2:1. This will not apply, clearly, to some hospital critical specialties, such as oncology and nephrology. We are also going to look at central referrals, where we pool referrals into one single recipient in a hospital rather than have one consultant hold on to waiting lists. We have did not attend, DNA, initiatives looking at high DNA rates. There is a menu of-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_71">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_112">Have we actually increased the volume of people? The figures show that we have not done so in real terms, taking into account the huge increase in the workforce. </p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_113">We have. In recent years, our activity shows year-on-year increases, but more people are being added onto waiting lists. For example, we have had an addition of 30% to waiting lists since 2019. In gynaecology alone, the number of referrals in 2024 compared to 2023 increased by 19%.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_73">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_114">There was a consultant running a clinic in a particular hospital four years ago and then an additional two consultants were appointed. There are now three consultants dealing with the particular area. The question then is about support staff. Have we done enough to make sure that the backup support staff are there to work with the consultants? That is one of the issues coming up; that there is only the same space available in theatres and outpatient clinics and, as a result, even though there are now three consultants, the HSE is still only dealing with the same volume. This has happened, especially in the smaller hospitals.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_115">We are taking two steps to deal with that. This goes back to the five over seven working of the workforce that we need to support consultants. To be fair, we sometimes make it all about consultants, but it is a whole health system. Each of the regional executive officers has the five over seven agreement from the unions as of last week.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_75">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_116">We have not got the figures on treatment abroad. In the Cork area, we have a huge number of people still travelling abroad for ophthalmology. What have we done regarding increasing the volume? I know we have opened the new unit in the South Infirmary and there are two new theatres but have we seen an increase in the numbers going through the system as a result of this development? A new service is provided in the primary care centre in Ballincollig as well, but have we seen an increase in numbers going through? </p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_117">I will finish my answer to the first question. Now that we have the five over seven agreement and the public-only contract, each of the regions has to establish at least one speciality doing outpatient clinics on Saturdays from the end of August. This is to use the space and the new agreement and also to increase the productivity. Getting over the insourcing hump will be the point at which we will turn that around to be able to scale it up, but I do not want to wait to scale it. I want to start it straight away. </p>
+          <p eId="para_118"> Regarding ophthalmology in Cork, I do not have the exact figures with me but I was in Ballincollig two weeks ago. The new pathway that is working there is seeing more patients. There is no question about that. The eye and ear hospital is seeing many more patients. The problem is that demand is outstripping what we are able to do at the moment. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_77">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_119">Regarding forward planning, one of the issues I have raised in the last two weeks is that of dental treatment. We do not appear to be doing forward planning for key areas. For instance, with the ophthalmology service in Cork, it took us eight or nine years to get it up and running. Are we now looking at forward planning for a number of key areas where we will have an increase in numbers? We are reacting rather than being proactive. </p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_120">I will ask the regional executive officer to give the Deputy one example of how a region is doing forward planning. </p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Sandra Broderick<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_121">In the mid-west, our public health consultants are leading out on a number of studies on the idea of population health planning. One of the first studies looked at the sociodemographics of the mid-west region. Ten thousand attendances at the emergency department during a two-year period were reviewed. The study found that people who lived in significant deprivation were three times more likely to attend an acute emergency department than someone from a more affluent area. They were also more likely to be admitted to hospital and more likely to stay longer in hospital.</p>
+          <p eId="para_122"> We have identified 70,000 people in our region who fall into that category. Instead of planning for a 70,000 population in terms of emergency attendances, we now have to plan for the fact that they are three times more likely to attend. When we talk about sociodemographics and, in particular, areas of significant deprivation, it is important to note the outcomes in rates of cancer and surgeries. A lot of research is being done in the mid-west region on all of this. This needs to be factored into the core funding base we have in order to meet the needs of our population as individuals.</p>
+          <p eId="para_123"> We also have the older population and the Deputy will have seen the ESRI piece this week that spoke about the demand and the 60% increase in the number of long-term care beds to be put into the system by 2040. There is planning going on for the demographics element.</p>
+          <p eId="para_124"> I would also note that it is very challenging to attract the right level of consultant and make sure that we can get the required number of nurses and are not dependent on overtime or agencies. That is really important to the workforce plan.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_80">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_125">I want to go back briefly to the issue of closing down at 5 p.m. and many services being closed on Saturdays.</p>
+          <p eId="para_126">It is fine to say we will get consultants and registrars to be available, but will we have the backup staff that they require to operate those clinics?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_127">I assure the Deputy that is what the five over seven agreement with all of the health unions was about last week – the admin staff, the allied health professionals, the advanced nurse practitioners, the clinical nurse specialists, the junior doctors and, of course, the consultants.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_82">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_128">What percentage increase does Mr. Gloster see with regard to trying to improve the service? We are paying quite a lot of money to outsource work. We are dealing with the treatment purchase fund and the treatment abroad fund. We have a lot of money going there, whereas if it were spent within the hospitals, we would get continuous service and a better outcome for patients in real terms.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_129">I will say two things. The first is that I feel a huge obligation – this is why I want to do the weekend and five over seven – in the position I am in to demonstrate to the public the value of, and getting the value out of, what we have already got. We got an increase in our workforce of more than 20%. There are 25,000 additional people since a couple of years ago. Like the Deputy said, we have very good inpatient services that work 24-7, but our routine healthcare system is still predominantly a Monday-to-Friday, daytime system, supplemented by insourcing and outsourcing to support waiting lists at the weekend. The first thing is to use what we have.</p>
+          <p eId="para_130"> The second thing has to do with planning what we need going into the future. To be fair to the Minister and the Department, we now have an agreement with the Government - it came off the back of the Frank Clarke report in Limerick - whereby we are not planning to build new beds without planning well ahead for the staff we need around them. This regional executive officer will open 96 beds in Limerick in September and she has already recruited the workforce to open them. That is unheard of in how we line up our planning, so the situation is improving.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_84">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_131">I have a number of questions. Looking at the report published last night, one of the things that jumped out at me was the key concerns related to insourcing. They are concerns that have been articulated within the House previously. Insourcing led to the potential of: creating conflicts of interest; non-compliance of procurement rules; inequitable use of public funds; disincentivising normal job plan delivery; undermining long-term workforce sustainability; limited productivity improvements and reform of public health services; risk of abuse, misuse and fraud; and low public confidence. It is a remarkable list of key concerns on a practice that is happening in hospitals. I welcome that the insourcing arrangements will be phased out completely by the end of June 2026. It is the starkest list of concerns. They have been articulated by members here before. In the interim, it will be more tightly regulated.</p>
+          <p eId="para_132"> The point about potentially removing dependency on outsourcing entirely is also welcome, although I would have liked a stronger commitment in that regard. I accept that this cannot be done overnight, given how reliant our system has become on outsourcing, unfortunately.</p>
+          <p eId="para_133"> What are Mr. Gloster’s plans to advance this aim in the medium-to-long-term? Will he accelerate reforms of elective care to achieve that? Regarding the opening of elective hospitals, two will be in Dublin and one in Cork and Galway. They were recommended as part of Sláintecare, with a delivery timeline of 2027 and 2028. However, we are nowhere near meeting the targets for those elective hospitals. Elective-only hospitals would free up capacity in existing hospitals and, crucially, would significantly reduce waiting lists.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_134">The worst thing I could do is come in here say that I can do all of that. I will take it back to what I said about the OECD report. The OECD reported balanced very well the fact that, even where a service puts in long-term measures like new capacity, new beds and new staff, they get overtaken by demand. Healthcare demand is only going in one direction. That is not just due to the demographics of the population. It is also modern-day ways of practising medicine and people keeping themselves healthy as opposed to just looking for services when they are unwell. All of that plays into this.</p>
+          <p eId="para_135"> We have to reduce the dependency on third-party insourcing and make our system productive. We still have to respond to people because it is a good thing to respond to people’s waiting times. One of the most harmful things to people is not being on a waiting list, but the length of time they are on it. Therefore, we will need outsourcing for a time to come. I absolutely believe that is the case. Ultimately, the Government will give us policy direction on that and how we get there.</p>
+          <p eId="para_136"> If we want to reduce dependency on both insourcing and outsourcing, it is not as simple as going out today and building a certain number of hospitals or beds. It is also about the ways we work. It is about elective hospitals and separating elective care from emergency care. It is about reformed, modernised care pathways, which now take a treatment from five steps to two steps. It is about ways of working, clinical innovation and all of those things, and they take time. The first thing we have to do is deal with the third-party insourcing because of the risks I listed. Those risks are too high for the public for us to keep doing it, but we have to back out of it in a sensible way.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_137">I understand it takes time, but it is taking too much time.</p>
+          <p eId="para_138"> I wish to tease out some of the pieces on the employees acting as company directors and some of those numbers. The report states that 83 current or former health service staff were employees acting as directors in 148 companies involved in outsourcing. Of those, 58 were HSE and 25 were section 38 employees. A breakdown of the HSE staff was provided: 35 former employees and 23 current employees. However, the same has not been done for the section 38 employees. Does Mr. Gloster have this breakdown? It would be important to know how many current employees in section 38 hospitals are directors in these companies.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_139">I wanted to give the Minister the report so that she could start considering it and because I was conscious of attending this meeting. It would be quite disingenuous to be here without the report being out there. I cannot give out about CHI not publishing reports if I am not doing it myself, quite frankly.</p>
+          <p eId="para_140"> The chief internal auditor just did an initial scan. With the report, we simply looked at name, date of birth and address and cross-referenced that information with the employment database. The chief internal auditor is doing more work on that. I will eventually have that breakdown, but it takes a little bit of time. That work is quite forensic because there are names, maiden names, different company registrations. There are lots of variables.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_141">Are there issues in accessing data from the section 38s?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_142">In terms of this particular issue and cross-referencing and matching, it should not be a problem. Let me put it this way. The declarations of no conflict of interest that people are required to make above a certain salary level every year would deal with that alone. I am quite satisfied that it is reasonable for us, in the public interest, to conduct that search. I am not in the business of outing or castigating people or interfering with their private names. I do not even know their names, nor should I. There is not a basis for me to do so at the moment. We can certainly do the numerical part of it.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_143">Will Mr. Gloster give us a breakdown of the locations of serving members of staff who are also acting as directors in these companies?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_144">I am not sure about that. Due to data protection reasons, I would have to check it. I do not want to give the Chair a false promise. I would also be concerned that somebody who is legitimately and lawfully involved in a business and not doing anything untoward would be identifiable and targeted equally. It is a small number of people. I will check that and come back to the Chair. I do not have any particular reason not to give it to him, but I just need to check that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_145">Does Mr. Gloster have a figure for CHI?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_146">As in the number of directors?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_147">Yes, the number of employees who are acting as directors.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_148">No, they would be in the section 38 breakdown if they were in it at all. I do not have a separate CHI figure.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_149">Mr. Gloster might get that figure if he can.</p>
+          <p eId="para_150"> The other piece I was unsure about when reading report was on page 8, where there is a reference to a derogation on a particular type of insourcing. Can Mr. Gloster explain that?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_151">When I started this, I requested the system to pull back from a particular type of third-party insourcing. This is one of the reasons I recommended the process as I did, which will take up to next June. The delivery system came back to me and said that, if it were to do that in the way I had asked it to do it right then, the following services would collapse that day. I obviously cannot do that. It is a risk assessment. The six regional executive officers are now allowed to derogate themselves to sign on or off on whether third-party insourcing can continue in the short term. However, I told them that they could not enter into any new contracts. It can only be on a day-to-day basis until we can wind back from it. In addition, new protections as regards conflicts of interest and other necessary safeguards are being put in place. That is what I meant by the derogation.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_98">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_152">With regard to some of the clinical targets, the then Minister for Health, Stephen Donnelly, wrote to the HSE last year to request that outpatient clinical targets for individual consultants, departments and specialties be agreed. This was in the context of budget 2025 and the need to maximise productivity. Have these been actioned? The new dashboard shows the number of consultants and the number of outpatient appointments per consultant. Are there targets? Some of the data is interesting.</p>
+          <p eId="para_153">In 2016, there were 1,812 consultants. In 2024, there were 3,061. However, the number of appointments per consultant fell from 1,686 in 2016 to 1,209 in 2020. Since 2020, the number of appointments has plateaued at 1,200. If consultants were operating at the same level of productivity as ten years ago, 1.5 million more appointments could have been held last year, which is extraordinary.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_154">Our main focus is on waiting times for departments. That means each manager on each site will drill down to each consultant level. As I said earlier, they will work on efficiencies such as reducing the new to return patient ratio and having pooled consultations in order that there is a central referral in each outpatient department, rather than having waiting lists attached to one consultant. We will work this through hospitals down through departments with a focus on reducing the metrics of waiting times, particularly in cases that are deemed urgent. They have gone up in recent years. In endoscopy, for example, there has been an 11% year-on-year increase, with an increase in urgent cases from 40% to 52%. Our focus is on getting people seen sooner and reducing inefficiencies in departments.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_100">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_155">The HSE is not doing the Minister's request for individual targets per consultant. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_156">We are not at that stage. We are trying to get there, but-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_157">The intention is to get there.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_158">That is the intention. Inpatient and outpatient care could make up different parts of a consultant's specialty and he or she will have different productivity targets. I know that sounds like a dreadful, dirty word, but we have to get there at some point. An example of a first step could be the new surgical hub we opened at Mount Carmel. It is a public-only facility. We have set a measure that 10,000 procedures can be done in a year there. That is the type of productivity target we are seeing.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_159">Does the HSE have a timeline of getting to individual targets for consultants?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_160">As we move back from outsourcing and redefine the elective programme, we will get there. I imagine we will get further than we are today over the next period of months.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_106">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_161">I thank the witnesses for attending. I echo what my colleagues said. Staff in the HSE work very hard in very difficult circumstances. The Department of Health gets away with murder on a daily basis. I find that a rhetorical device is used that everything is the fault of the HSE, but there are wider systemic and political causes. Anything I say this morning is not meant with disrespect or any hostility. It is simply a reflection that there is a number of very pressing concerns related to outsourcing and insourcing.</p>
+          <p eId="para_162"> Last week, CHI appeared before the committee. Dr. Henry sat through that session. I think I even apologised to him at the end. His position was unenviable to hear about all the rabbits that were pulled out of the hat at the meeting. I have had sight of the reports that CHI is not making available. They are an appalling vista. One of my colleagues said it was not clear which hospital the dysfunction was. There is a broken, toxic culture with abhorrent work practices on all three sites. </p>
+          <p eId="para_163"> A narrative has been pushed by the management, the board and the senior leadership at CHI that this is an issue regarding rogue consultants. That is not the case. The so-called rogue consultants are merely a symptom of the systemic failures of the board and the senior leadership team. That point is reiterated continuously throughout the reports by their authors. In the conclusions and executive summaries, the authors point to the fact that the senior leadership team and the board are not fit for purpose and are not capable of not only meeting the challenges posed by the scoliosis and urology waiting lists, but are not fit to oversee and manage the migration of the three current children's hospital sites to CHI.</p>
+          <p eId="para_164"> I will try to bundle my questions. First, based on what Dr. Henry heard last week and what is in the reports, does he have confidence in the board and senior leadership team of CHI to oversee, manage and drive the migration of services to the new children's hospital campus? Unfortunately, I was the last speaker at the meeting and did not have an opportunity to ask another question, but I asked the chief medical officer of CHI about the urology waiting lists and the fact that a number of young male and female teenagers have become infertile and been de facto sterilised by a failure to intervene with routine surgical interventions. I asked Dr. Goldman how many of those children and teenagers had become infertile. He said it was "impossible" to know. That is a huge red flag. Even as a layperson, I am <i>au fait</i> with the concept of medical records. It is not a huge cohort of people. I could do a desktop exercise. I know this as a layperson that exactly how many people have become infertile in an afternoon. I am appalled by that response from the CHI's chief medical officer that it was "impossible" to know. Do the witnesses share my concern in that regard?</p>
+          <p eId="para_165"> I will be as quick as I can because i am conscious of the time. Since last week's meeting, I have been contacted by many parents of children on the urology waiting list who have told me their children have become infertile. These are children whose little penises have not developed properly and young girls whose reproductive organs have not developed properly and who have become incontinent. They have an increased risk of bladder, bowel and testicular cancers.</p>
+          <p eId="para_166"> I got a phone call. I will protect this person's identity and not say whether they are a male or female. I was contacted by a very high-profile person who is a household name in this country and whose child has also had these concerns on the urology waiting list. When that high-profile person who is sufficiently educated and articulate enough to advocate for his or her child asked for his or her child's medical records in order to get a second opinion elsewhere, he or she was told that he or she was not entitled to his or her child's medical records. As the report states, this is a toxic workplace culture with abhorrent practices. I have raised these issues in the Seanad again and again, including well over a year ago with the previous Minister. The previous Minister refused to attend those Commencement matters debates, but they were widely reported in the national media.</p>
+          <p eId="para_167"> With regard to scoliosis, Ms Brady recently responded to a parent with a letter, which states:</p>
+          <p class="indent_1" eId="para_168">Since 2017, the NTPF has not received funding to outsource scoliosis procedures. Nor have we received funding to support public hospitals to undertake additional scoliosis procedures in-house or through their own outsourcing initiatives. The NTPF has not tendered for scoliosis procedures to our panel of private hospitals under outsourcing initiatives and we have never entered into any agreement with private hospitals to perform scoliosis procedures under an outsourcing arrangement.</p>
+          <p eId="para_169"> That disclosure is really helpful. As parents, we were amazed at these kinds of responses-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_170">The Senator must allow the witnesses time to respond to the questions.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_108">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_171">I will use my time. I thank the Chair.</p>
+          <p eId="para_172"> Where is the urgency? Children are becoming inoperable on the scoliosis waiting list. Insourcing and clinics are being made available in places such as Blackrock Clinic. I know from talking to parents that the decision and triage are not based on clinical need but on whether an operation or a number of procedures can be done on a Saturday. The more complex cases are being left on the public waiting list and are becoming inoperable.</p>
+          <p eId="para_173"> I do not have enough time to go through the letter, but I have letters from parents in front of me describing how their child's upper spine has now autofused and is no longer operable. Children are becoming infertile and incontinent unnecessarily. Children's upper spines are becoming autofused and are becoming inoperable. This is happening now. We have been highlighting this for a number of years. The board of CHI used the resources of companies such as Q4 Public Relations to spin and do its crisis communications. Does the HSE think the positions of board members are tenable at this point?</p>
+          <p eId="para_174">Finally, the Health (Scoliosis Treatment Services) Bill will go through all Stages in the Seanad this evening. The Government indicated that it will not oppose it. It will make it legally mandatory for the HSE to treat our scoliosis patients within the therapeutic timeframe. This is now coming to a head.</p>
+          <p eId="para_175"> I will finish up on this. I am sorry about the length of time but there is so much to communicate. One parent came into me yesterday. She is a medical professional whose child has been impacted by neurological and spinal issues. She said to me that she does not want any more apologies. She said she does not want any more people like me saying how awful everything is. She said she wants an action plan. My final question is: based on the legislation that Senator McDowell and the Independent Group are tabling for tonight, is Mr. Gloster will get to grips with this, because CHI is not going to do this? It is incorrigible and recidivist. That is quite clear. Dr. Henry or the chief financial officer could also answer. What would that look like? How can we deal with these cohorts of kids and get them sorted? We have only had two surgeries in Great Ormond Street Hospital, even though we have been talking about this for a couple of years now. I think 14 have gone to the United States. How do we solve this problem? What would that action plan look like?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_109">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_176">I will say to all members that if we want adequate answers from the witnesses, we need to allow them time. I will not entertain complaints that we are not getting adequate answers if we do not allow enough time for the witnesses who we have invited before us to answer the questions. There is less than a minute left, Mr. Gloster.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_177">I will deal with the confidence question and Dr. Henry will deal with the neurology question. I will try to touch on scoliosis. On confidence, I do not wish this to sound like anything other than an absolutely clear answer. I have confidence in the new CEO who has gone into CHI and in her ability. The new board interventions the Minister has made give me confidence in the organisation to manage at the moment. I want to be clear. I have said in many different fora that I believe the entity is seriously challenged. We have a way to go to see whether the entity is sustainable or not in the long term. That is ultimately a decision for the Government to make. In the meantime, I would put fairly strong systems of support from the HSE directly around CHI to deal some of the challenges the Senator is talking about, so, <i>de facto</i>, we are much more involved.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_111">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_178">I thank Mr. Gloster. That is the time in that slot. We have one more slot before the break, so we will move to the next round, the next slot of which is Fianna Fáil. I call Senator Costello.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_112">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_179">These are pressing national issues.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_180">Yes. Senator-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_114">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_181">Deputy Sherlock is not here. Would the Cathaoirleach give Dr. Henry an opportunity? What would an action plan look like? How could we solve this problem?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_182">Senator Clonan, you are out of order. Your time is up. I did warn you that you were running out of time and you did not heed that warning. The next slot is a Fianna Fáil slot. You are taking other members' time and it is unacceptable.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_116">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_183">I want to touch on a few things quickly. Regarding outsourcing and insourcing, what is the HSE going to do to change the culture regarding overtime? If people are being paid a premium through insourcing, why would they not just do overtime when it is offered to them? How is the HSE going to change that culture?</p>
+          <p eId="para_184"> The witnesses spoke about the ratio of patients returning to hospitals. There is a failure with breast care which I think is systematic, where people would be referred by their GP, go to the breast care clinic, be looked at and be sent away to be brought back for a scan. It is a specific age cohort. I am really worried about it because sometimes people can be waiting for six months before they are called back. I do not understand why they are not being scanned on the day. Eleven years ago, when I was brought in, I was scanned on the day and I do not know what has changed since then. Back then, I was not coming across anybody who was not scanned on that day. It is like they are being triaged two or three times. That is probably a point to look at.</p>
+          <p eId="para_185"> There is a practice in public hospitals, when people have been admitted, where the administration comes and asks them to sign a health insurance form even though they are getting public treatment. I do not understand why that is happening in hospitals. I have experienced it first hand and have asked if the patient is going to be put in a private bed or semi-private bed. They said that, no, there is no semi-private or private bed. I do not understand why that is happening. Obviously somebody is getting charged somewhere if a form is being brought out for somebody to sign. I would like a bit more information about it.</p>
+          <p eId="para_186"> I have a bit of feedback about the administration of waiting list lists. Many people have said to me that they find it irritating that they have been waiting for 18 months and then get letters asking if they still want to come in. They are not getting their appointments so, yes, they do. Some complain that when they feel really sick, it is maybe not convenient for them to go reply, and some may not be computer literate. Maybe there could be a phone call or a follow-up, because they nearly feel forgotten about and that they are being left on the wayside.</p>
+          <p eId="para_187"> I am also interested in the question Deputy Cullinane asked. I would like to hear the witnesses' answer to that too.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_188">I will let Dr. Henry speak about the need to return and the CFO might talk about the insurance process forum. On the issue of how to change the culture, I really want to be careful not to be perjorative about individual staff who legitimately did nothing wrong and participated in something they were asked to do. It is important to make that distinction. There is only one way to change the culture of dependency on insourcing, and that is to end it. That is it. There is no other way to do it. You are not going to sit down, have a cup of coffee and talk about it, but you have to end it sensibly and over time. To be fair to the Minister, she really wants to give that thought. I think she has spoken to the Chair and I think she intends to come back to the committee later in the month with me and her officials to talk about how we will do that. Dr. Henry will speak about the need to return.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_189">On the breast clinic, every screening programme has two sides. There is the screening itself and what that leads to for those for whom there are findings. We have seen increased demands in the breast screening programme since 2019 and increased recall rate. We have seen a big increase in the recall rate, in the order of 30% to 40%, driven not just by demographics but different technologies and perhaps in some ways a more cautious approach in some interpretations of the mammograms. That means that we have had to invest in and link with those centres, because screening programmes must link to treatment centres, which are the symptomatic breast clinics, to ensure that once we identify an abnormality, any time waiting to attend a symptomatic breast clinic and get additional investigations is minimised. We watch that closely.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_119">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_190">The increase is probably in people who are being sent away without being scanned. They could hear that they are going to be returning, whereas in years gone by, you were scanned on the day and either had cancer or did not, so there was a chance that people would not have to return. I have noticed it.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_191">The proportion of people who are returning is much higher since 2019. We were operating a system which had a relatively low recall rate in 2019. It has gone much higher, driven by a number of factors pertaining not just to the screening population, which is age 50 to 69, but also to some characteristics of that population and how that lends itself to interpretation of mammograms. People who know about screening who attend these screening programmes will note that the interpretation is not often binary. It is not absolute.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_121">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_192">It is not with regard to the screening programmes. It is actually when they present to the symptomatic breast clinic, so when they have a lump in their breast, they are sent away that day with the lump and told to come back, and that a scan will be sent out to them. Eleven or 12 years ago, when I went, I was scanned on that day. If I had not had cancer, I would not have been a return. That is where I think there are many people returning.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_193">On insurance, just over ten years ago, the legislation changed and broke the specific link between a private or semi-private bed and private treatment. Since then, the issue is whether patients elect to be treated privately, whether they are going through the elective route or the emergency department. People should only be asked to sign the form if they have said yes to the question of whether they wish to be treated privately.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_123">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_194">I think that needs to be investigated because people are asked to sign forms when there is no way of electing to be treated privately.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_195">We are very happy to check any individual instances.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_196">On the letters, I think the NTPF witnesses could accuse me of dumping my questions on them for the last hour but that is part of the validation process. I might ask Ms Brady to comment on that.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_126">
+          <from>Senator Teresa Costello<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_197">If there is time, could Deputy Cullinane's question be answered too?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Sandra Broderick<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_198">Regarding the validation process, the NTPF is the national validation unit. We would have a cycle of validations that we have heard in each individual hospital.</p>
+          <p eId="para_199">I completely understand why some patients on a waiting list would be frustrated on getting a letter. I reassure members that what we are doing is ensuring the patient still wants the treatment. We touch base with the patient to know they are still on the waiting list. This means our waiting lists become clean. When we set up the national validation unit in 2019, we had a removal rate of 24%, but this is now down to 15%. Our lists are really clean, which means that when the commissioning team in the NTPF steps in to make an offer, we know the patient will not say they would prefer not to have the treatment, do not want it or no longer want to be on the waiting list. While I understand the frustration over receiving letters, they are a necessary part of waiting list management.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_200">We will now take a comfort break and resume in approximately five minutes. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i> Sitting suspended at 11.01 a.m. and resumed at 11.09 a.m.</i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_201">We will now continue our consideration of the management of waiting lists for hospital treatment and the insourcing and outsourcing of such treatment. Several members are willing to contribute in this session and each will have six minutes. I hope to give everybody a chance to contribute and ask questions. We will try to stick to the schedule as much as we can. First up is Deputy Sherlock.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_130">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_202">I thank the Chair for accommodating me and I thank all the witnesses. There are very many questions I could ask but, given the small amount of time I have available, I will just ask some specific ones.</p>
+          <p eId="para_203">The NTPF is saying there are strong financial oversight procedures and processes in place to administer the insourcing funds and yet we saw the issues in Beaumont, which incidentally were quite late in coming to public attention. I ask the NTPF to explain what happened in Beaumont. What is the situation now? The media coverage appears to suggest that doctors were not aware that their time was being invoiced to the NTPF as opposed to directly to the hospital. I ask for an explanation of that.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_204">In early March of this year, I was reviewing the finances with the committee team and the director of finance in the NTPF to see what we had committed to for the HSE hospitals in relation to insourcing. I noticed that Beaumont Hospital had not applied as it normally would in January for some initiatives; it had spent about €8 million in the previous year. I was aware that there was a new CEO there and I made an appointment to meet her to chat through the waiting list to see what we would do. When I was there, she-----</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_132">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_205">I am looking for a brief and specific answer.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_206">She gave me the letter from the rheumatologist which I took away. It was agreed that I would review one year of invoices, which I did. I sent them over and Ms Coyle and one of the rheumatologists confirmed that they had actually seen all those patients in core clinics but the NTPF had been billed as if it had been additionality, which it was not.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_134">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_207">Was there a failing in the NTPF systems to actually pick up on what had happened?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_208">No, I would not say that. It had followed the MOU. We have an MOU and have processes in place in relation to that. Hospitals apply for initiative. We automatically check if there is a problem with that waiting list. We agree a price per patient with the hospital, never with the consultant. We always make sure the patients have been on the waiting list for quite a long time, looking at the longest waiters. That was all agreed with Beaumont at the time. When they invoice us, we make sure that those patients have been suspended or removed and that each invoice matches a patient and that patient has never been paid for before. That was all checked from a finance perspective in the NTPF. We would never have been aware that that was not additional activity.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_136">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_209">Who was to blame? Where did the fault lie? Was it with hospital management?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_210">I would not say that either. From our perspective I think all the processes were followed, but I am not-----</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_138">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_211">Could it happen again? Could it happen in another hospital? Has it happened in another hospital?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_212">Not that I have been made aware of. In fairness, we do have processes. A lot of the insourcing we do works really well. Mr. Gloster has sent in the internal audit team and we will await the outcome of that.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_140">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_213">Is Ms Brady satisfied that the situation in Beaumont is not replicated in any other hospital?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_214">Not that I am aware of.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_142">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_215">What is happening in Naas at the moment? The documents indicate there is an issue in Naas.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_216">The regional executive officer in Naas has asked internal audit to look at an issue that was raised with her in correspondence. Given the way the CHI report appeared in <i>The Sunday Times</i>, it is not unusual that we would start to see sequentially people starting to express concern. There is concern about how NTPF funding was used or governed by Naas hospital. An internal audit will look at that. One of the reasons I stayed focused on the nationwide survey was that if I did not do that and produce the report the Minister published last night, we could sequentially go through every hospital in Ireland and have to audit to give assurance which would not be a productive way to deal with what fundamentally appears to me to be a systemic issue, albeit very different in every hospital.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_144">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_217">When will the report into Naas be completed?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_218">The audit in Naas has just started. The auditor has commissioned and given the formal audit notice. He or she will start to gather all their documentation. Depending on the scale of documentation to be reviewed, I would say conservatively it will take about three months.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_146">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_219">Have there been any interventions or direct action taken to suspend any activity in Naas at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_220">My understanding is that the NTPF is satisfied with the steps being taken by the hospital in Naas. We also need to ensure that Naas is able to respond to waiting lists. The intervention made there is that there are additional controls.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_148">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_221">Are there any suspensions of NTPF activity?</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_222">I am not aware. The NTPF may have a view on that.</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Ms Sandra Broderick<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_223">At its own volition, the hospital in Naas stopped its insourcing temporarily while it liaised with me and my executive team. We are happy that it will rectify this as a matter of priority. Therefore, there are no further concerns.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_151">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_224">I see the additional conditions with regard to third party insourcing. I find it remarkable that these conditions are only being applied now. The whole point was that all internal capacity should have been exhausted first. I ask for the community healthcare outsourcing-insourcing to be defined, that €300 million. I ask the witnesses to shine a bit of light on that.</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_225">The vast bulk of that is outsourcing. It is for the likes of private nursing homes and for a mental health charity organisation that we fund. Therefore, it is not in the acute hospital sector. It appears that very little of it could possibly be insourcing. It is largely outsourcing.</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_226">For completeness because I do not want to be accused of misleading the committee, the likely insourcing element in the community is in assessment of needs for those with a disability where we use the private sector, which may hire some of our staff out of hours.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_154">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_227">I thank the witnesses. I will launch straight into questions because we have lost four minutes compared with previous commentators. I want to follow up on something Mr. Gloster touched on regarding insourcing and outsourcing for assessment of needs. In response to a query put to it about a tender taking eight months to get a reply, the HSE advised it wanted to look at this and that it needed to be reformed. We now expect 25,000 children to need an assessment of need, to which they are legally entitled, by the end of the calendar year. What is the HSE's plan and what element of insourcing or outsourcing will be used?</p>
+          <p eId="para_228"> The State spends €93 million annually on outsourcing mental health care. What types of services are outsourced? Who are the providers? Are there any large providers that were referenced previously in relation to other levels of care? What metrics is the HSE using to measure the potential impact on this outsourcing for the likes of CAMHS and primary care psychology in particular given that the CAMHS waiting list now has 2,000 more children than it had five years ago?</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_229">On assessments of need, the plan is to max out the staff we have to try to get as many assessments done as we can. We recruited more staff last year and we are continuing to recruit stuff. Clearly, that will not meet the demand we have and while we are waiting for other reforms in disability and increasing supply and staff, yesterday I confirmed that we use private capacity to do assessments. I met the young advocate Cara Darmody and her dad yesterday. She told me that she believed we are not using all the private sector capacity available or that we are too slow in using it. I have agreed to go back widely to the market of private providers to see what suitable skilled people are there to provide assessments privately. Whatever is there, subject to it meeting quality tests, we will use that and we will rely on that for as long as we can to get as many assessments done as possible.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_156">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_230">That would be the outsourcing; is any insourcing used for assessments of need and mental health care?</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_231">The only insourcing that we would plan to do that would be what we call legitimate insourcing would be overtime, which we would offer to our staff. Many of them are not interested in that. It is different from a hospital because it is in the community and it is harder to see. Some outsourcing companies may hire our staff at the weekend, which comes back closer to insourcing. That can happen and does happen.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_158">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_232">Does Mr Gloucester have any indication as to the extent to which that is happening?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_233">I do not and that is a difficulty. I do not want to mislead the committee by saying that I have. I just do not have the detail on the mental health services that may be outsourced.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_234">I ask the Deputy for the source of that and we can come back to her.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_161">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_235">It was a response to a parliamentary question.</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_236">I will check which parliamentary question that was.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_163">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_237">Is Mr. Mulvany disputing the €93 million.</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_238">No, I just need to understand the detail behind it.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_165">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_239">Let me ask the question again.</p>
+          <p eId="para_240">Of the outsourced mental health budget provided by the State, what are the services that are being provided and who are the biggest providers of those services?</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_241">While I wish to come back to the Deputy with clarity, I suspect there are two categories. One consists of the small number of private mental health providers, such as St. Patrick's Mental Health Services and St. John of God Hospital, while the other category relates to supporting community teams with expertise like dietetics and others for eating disorders. I suspect that is what it is, although I need to check that. </p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Mr. Stephen Mulvany<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_242">Private external residential mental health placements for complex needs will be the last big element of that. We just need to tie it together with the €93 million. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_168">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_243">Supplementary to that, how much of that money is spent on eating disorder treatments in the UK? </p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_244">I need to check that. There is no issue providing that information. I just need to get the right detail. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_170">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_245">Okay. When outsourcing of mental health care is provided, what metrics are used to compare the value for money or the cost per patient being provided with the necessary care through a private provider versus the equivalent level of care in the HSE?</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_246">The simple answer is that we do not do enough comparative analysis of the value of both. I am going to be honest with the Deputy. Right now today if we buy a residential place for someone with an enduring mental health condition, the value we measure is the success of that placement contributing to that person's well-being and care.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_172">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_247">I tend to be of the same opinion, although I would like to see it provided through our public system. </p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_248">I do not disagree with that. When it comes to the comparative cost piece and that analysis, we are not that mature in our metrics, to be honest. Perhaps we should be. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_174">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_249">With regard to adult ADHD services and their funding, how effective are they when compared with the level of demand presenting to those services?</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_250">In fairness to the Minister of State, Deputy Butler, during the two Dáil terms she has held this portfolio, she has been focused on building sub-specialist teams, whether they be for eating disorders in the child or adult space, adult ADHD teams or otherwise. We still have a way to go until we can say we have a level of adequacy to respond to the demand.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_176">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_251">Does Mr. Gloster envisage any change in criteria for accessing these adult ADHD services, given the current level of demand? </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_177">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_252">I ask Mr. Gloster to respond briefly as we are out of time. </p>
+        </speech>
+        <speech by="#" eId="spk_178">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_253">We will have to look at the access for all of our community healthcare services, be they mental health, disability or other services. The criteria are too rigid and too many people are being moved between different goalposts. We have to look at a greater level of flexibility. </p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_179">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_254">First, Mr. Gloster and his staff are welcome. It has not been long from the establishment of the committees until we have found them before this committee. I welcome that. I am not going to, under any circumstances, add to their grief or put any undue pressure on them. </p>
+          <p eId="para_255"> My first contribution this morning is one of good news. I had a good reason to spend some time in hospital visiting a loved one in recent times. She is a young mother of young children. I was taken by the positive interaction with what is called the welfare team. They made contact with the schools to inform them of the condition of this young mum and they provided for the mother and her young children’s welfare, particularly when it came to exams and that kind of stuff. It was the first time I realised the level of work that goes on, which sometimes goes unknown to the general public. I was compelled and really pleased. I have said that many times in recent days. I wish to thank the staff for the way they did that during the most difficult time in our lives and the children’s lives. They made that time easier by linking in with the teaching staff and making them aware of the situation. Sometimes, we have to acknowledge when there are great things going on that need to be acknowledged. I wish to do that here today. </p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_256">I thank the Deputy. </p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_181">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_257">My second point, while not bad news, relates to waiting times. They are a challenge in every hospital. I represent east Galway where the main hospital, like all of County Galway, is University Hospital Galway, as well as Merlin Park hospital just down the road. One of the problems I see and have encountered, especially for those who have to visit these hospitals regularly, is the maxed-out car park. That is a massive problem for us at University Hospital Galway. I have observed at times the car park maxed out and queues of cars waiting to get in. As a consequence, some cars were spilling on to a busy junction. Some had to park elsewhere. As a consequence of that, I hear stories of people missing appointments or not being on time for appointments. I am referencing this to find out whether there are any plans to address what I consider to be, at times, a chronic issue. Of course, like every other hospital, there are times when it is not as big a challenge. Is consideration being given to the issue of car parking and how it might be remedied in order to give some comfort to people? This issue affects elderly people as well as young people bringing elderly relatives in. Not being able to find a car parking space leads to frustration. I am not going to go on much further. The questions I was considering earlier have all been asked. Therefore, I thought I would say a word of thanks, as well as ask that question. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_182">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_258">I remind members that, by and large, we need to stick to the issues on which we have invited witnesses to attend. In this case, they are waiting lists and insourcing and outsourcing. If Mr. Gloster is happy to take the question, then-----</p>
+        </speech>
+        <speech by="#" eId="spk_183">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_259">I am happy to answer the question. First, I thank the Deputy for his kind remarks about our staff. It is hard to get that out there every day. I can absolutely assure the Deputy that all of us as health care professionals come to work to care. We care about the people we serve. While there are many people on X today who say we do not care, we do. I am glad to hear he had that experience and is prepared to set it out. </p>
+          <p eId="para_260"> With regard to the issue of parking, I visited University Hospital Galway last year for the establishment of a dedicated project board, which has now come to almost final fruition in a full development control plan for that whole site. Up to now, planned development was block by block, which can lead to quite chaotic scenes. Within that development control plan, thankfully, modern day health planners plan for parking. While I am sure there will be some who will criticise me for this, there is only one way to do parking in a hospital in the modern era, that is, to build up with tower block car parking. When you build, you also go underground. The fantastic underground parking under the new emergency department in Limerick is a successful example of that. The notion and days of parking on the footprint of a site are gone. We need every bit of green grass we have to build the services we need. </p>
+        </speech>
+        <speech by="#ChristopherOsullivan" eId="spk_184">
+          <from>Deputy Christopher O'Sullivan<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_261">I apologise to the witnesses but I will have to be quick because the time is reducing. I welcome them to the committee. I have spoken to Mr. Gloster before. My wife is a senior medical scientist in CUH. My sister-in-law is a psychiatric nurse. My sister is a radiographer. I go to family dinners on occasions with dread because all we talk about is the HSE. That said, they love their jobs and I know the public, by and large, as Mr. Gloster just said, value the service they provide. </p>
+          <p eId="para_262"> I was listening with interest. I do not mean to sound facetious, sarcastic or condescending in any way when I make this point. If a nurse is required to do extra time at work, he or she gets paid overtime or is on call. It is the same for a medical scientist or any of the other professions I just mentioned. How have we found ourselves in this system? I am assuming it has to do with where the focus lay. I am not saying it was done in any devious or underhanded way. Rather, the focus was obviously on the waiting lists and getting down the list. It probably is, or was, necessary. How have we arrived at a situation where, be it a consultant or someone more senior, can provide this insourcing or outsourcing, while a nurse, or anyone else for that matter, is expected to just do overtime?</p>
+        </speech>
+        <speech by="#" eId="spk_185">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_263">In the report, I tried to explain the pathway from 20 years ago to how we have got to where we have got to. Certainly, I will not go back over a history lesson of the health service. The scale of third-party insourcing has grown into a formal thing from what perhaps started as a genuine, localised thing. It has grown and people see an opportunity, entrepreneurially or otherwise.</p>
+          <p eId="para_264">The best honest answer I can give to the public is in the level of the scale of it, we took our eye off the ball. That is all I can say. It is very difficult to ask a nurse or anyone else to do ordinary overtime on a Saturday when the possibility now exists that in a very different construct, they can get paid significantly more. It is a feature of what it is. That is why we have to safeguard it first, and then unwind from it. That is the credible thing to do.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_186">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_265">To be fair, Mr. Gloster has come in here and been fairly honest. He has held his hands up and I appreciate that. When he was talking about governance earlier, I think he said governance around insourcing would be questionable.</p>
+        </speech>
+        <speech by="#" eId="spk_187">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_266">Yes.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_188">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_267">Mr Gloster outlined recommendations to the Minister and it is up to her now to give him direction. We are talking about a big sum here. Can any other short-term measures be implemented to get us away from this practice as quickly as possible.</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_268">If the controls I have recommended come into play. The Minister just has to finalise them and perhaps add to them. This has developed over several years. Subject to committee dates, the Minister has committed to bringing her proposal to Cabinet based on my report - I spoke to her this morning - and to herself, her officials and myself coming back before the committee before the end of July and setting out exactly how quickly the steps can be taken to deal with this. I would rather wait for that. I have set out the best attempt I can at what the control environment needs to be. As one of Deputy's colleagues asked, would it not be reasonable to expect that this would always have been the case? It would, but it is not. I did mention that governance is questionable. To be fair to all of my hospital managers and colleagues around the country, when I say that, I include myself. It is a reflection on all of us when our governance is weak. We have to stand up, we have to assess it, we have to accept it and then we do something about it.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_190">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_269">It goes back to the question about overtime for middle-rank or front-line staff. Based on the practice that has evolved over many years, I could be facetious and say to understaffed and under-resourced medical scientists, or whoever it may be, that maybe they should stop doing their call on their overtime and set up some kind of a consultancy or some kind of a business. I know medical scientists are understaffed and under-resourced because I live with one of them. </p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_270">The call in the overtime is part of people's contracts so I would not recommend they stop doing that. To be fair, this was extra work that was bought and it has grown into something else even for core service provision.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_192">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_271">Can that be built into the new contracts and whatever else going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_272">I said earlier in reply to the Senator sitting beside the Deputy that wee can talk about changing it and have esoteric conversations around that, but there is only one way to change it and that is to stop it.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_194">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_273">Mr, Gloster has been honest enough here today. My last question is to the NTPF and it is to clarify something. Ms Brady stated: "The process involves senior management in public hospitals applying to the NTPF to secure funding outlining their opportunity to get long waiting lists treated faster." Can the witness define what senior management is? Are we talking consultants or HSE managers? Who are the senior management making these decisions?</p>
+        </speech>
+        <speech by="#" eId="spk_195">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_274">There are no set rules for us. From my own experience of running Our Lady of Lourdes Hospital in Drogheda, I know that any initiative we applied for were run by myself as the manager of the organisation and the clinical director. That is to ensure that we have maxed out the core capacity within the system before someone applies for an insourcing or outsourcing initiative.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_196">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_275">Senior management are making applications. I would like to think that the senior management making these recommendations do not have a stake or skin in the game in terms of membership or directorship of anything. Is that part of the assessment?</p>
+        </speech>
+        <speech by="#" eId="spk_197">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_276">Not to my knowledge.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_198">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_277">Their membership or directorship would not be considered as part of the process.</p>
+        </speech>
+        <speech by="#" eId="spk_199">
+          <from> Ms Fiona Brady<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_278">Not from an NTPF perspective, no.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_200">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_279">I am going to ask a direct question on accountability. What disciplinary or legal consequences have been pursued in the case where internal audits have been flagged a misuse of funding initiative, particularly in the audits underway in Beaumont Hospital, CHI and Naas General Hospital?</p>
+        </speech>
+        <speech by="#" eId="spk_201">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_280">The answer to that is in the question. The findings of the completed audits determine whether there is a question of accountability for an individual or individuals and then that gets discharged. I have made it very clear that we have to treat people fairly and with fair procedures. I also made it very clear that there is a difference between somebody doing something lawfully and somebody manipulating something for financial gain. If it is in the latter of those, I have been clear that I will only be going one place with that and that is a referral to the Garda but I cannot presuppose what those audits will tell me.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_202">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_281">In terms of CHI, the audit is complete and we all know what we know now.</p>
+        </speech>
+        <speech by="#" eId="spk_203">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_282">No, the audit is not complete. There is the 2022 report, which CHI has one view of and which I have a different view of. I am now doing an internal audit of all of the access measures in CHI. In terms of the 2022 report, I have directed my regional executive officer and she has referred it to the Garda. That is where the question of accountability has to be dealt with first.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_204">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_283">What is the HSE's response to finding out that many hospitals gave vague answers, such as ongoing or case-by-case, when they were asked how often third-party contracts were reviewed? Does this not indicate a systematic failure in oversight? This is in the report that the committee members saw for the first time last night.</p>
+        </speech>
+        <speech by="#" eId="spk_205">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_284">I am sorry, I cannot-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_206">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_285">Did Mr Gloster not hear me? What is the HSE's response to finding out that many hospitals gave vague answers, such as ongoing or case-by-case, when asked how often they reviewed their third-party contracts?</p>
+        </speech>
+        <speech by="#" eId="spk_207">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_286">They have given us that answer. I am delighted that they have given us that variety of answers because people were being truthful. I condensed that in my report into a summary of those answers. We now have to go back and that is why the recommendations in the report are clear. We have to go back and set out very specifically the rules that everyone has to adhere to in terms of the number of reviews and the frequency of them for those contracts. There is no automatic rule book that says you have to do it by the month, or by two months, or by three months.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_208">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_287">Should there be one, though?</p>
+        </speech>
+        <speech by="#" eId="spk_209">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_288">Yes, absolutely. That is why I said that we have changed the control environment between now and next June while we are still using it.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_210">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_289">How is the HSE addressing the risk of parallel systems developing where patients with private connections or knowledge of routes such as the cross-border directive are better able to access timely care?</p>
+        </speech>
+        <speech by="#" eId="spk_211">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_290">First, the cross-border routes are a good thing to have. They give patients choice. The treatment abroad scheme is a good thing to have. The Northern Ireland scheme post Brexit is a good thing to have. That is people's choice to exercise. What I am fundamentally concerned with, and what the Minister and Government are concerned with, when it comes to the reform of elective care is removing the private construct from public hospitals and making very clear delineations and separations. It does not mean we will never have private care again in Ireland. We have to allow citizens have their choice, but when it interfaces with the public system we have seen what we need to do in terms of safeguards. A parallel system has developed in areas like third-party insourcing, and they are parallel systems that we should not continue to rely on.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_212">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_291">What mechanisms are in place to ensure clinical governance, continuity of care and patient safety standards are upheld during third-party insource procedures, particularly in diagnostic and surgical care?</p>
+        </speech>
+        <speech by="#" eId="spk_213">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_292">Dr. Henry can give the Senator a better view on that. The one thing I will say is this, if I was to say one thing was good in all of this story that has many consequences to it is it is happening on our own sites, it is happening in our own services and it is our own people. I would at least like to believe and have every reason to believe they apply the same clinical standards as they would when they are in doing their normal work.</p>
+        </speech>
+        <speech by="#" eId="spk_214">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_293">Because it is largely our own staff on our sites the same guidelines, the same standards and the same adherence to patient safety standards, which are the cornerstones of clinical governance, should prevail. Whatever concerns there may be about insourcing, in the area of clinical standards, I do not see how they would vary from those that operate during the week.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_215">
+          <from>Senator Nicole Ryan<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_294">In CHI we saw that the clinical standard and governance was not really there. We saw that it had only just put in a clinical committee to look over the ethics and that kind of stuff.</p>
+        </speech>
+        <speech by="#" eId="spk_216">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_295">At least one of the reports coming from CHI certainly raised concerns over clinical standards and over variations in, for example, in thresholds in DDH surgeries, and over the clinical governance of the spinal unit at CHI.</p>
+          <p eId="para_296">That issue is separate from insourcing where there were certainly concerns leading to who is responsible for ongoing adherence to standards, good practice, safety and good guidelines. There were concerns and those are the subject of a number of investigations.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_217">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_297">We have three slots left and three members remaining who have not spoken. We will aim to conclude on time at midday.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_218">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_298">I thank the witnesses for coming in. It is great to see them here and great to get answers to questions. The waiting time has improved, decreasing from 9.2 months to 7.2 months. Does the HSE see the wait time further improving? Outpatient wait time has decreased from 12 months to 6.8 months. Will there be further movement in that regard? Some hospitals seem to be doing a lot better than others on waiting lists. Is that due to management or funding? What is the reason? I do not want to put the witnesses on the spot but from looking at the report, some hospitals are doing a lot better than others.</p>
+          <p eId="para_299"> I will be a wee bit parochial about Donegal. Cancer treatment waiting times in Letterkenny are up to 22 days. The HSE says the average wait time is 15 working days and in hospitals in Mayo it is down to 13 days. We really need to get on top of this. It is totally wrong that people are discriminated against on the basis of where they live and cannot get the same care as people in other counties. It is a big question in Donegal, and maybe one I should not ask, but seeing as the officials are here, what is the position regarding a surgical hub? I have been inundated with queries about it since I came here on 18 February. The issue is growing legs and people think Letterkenny hospital is being left behind.</p>
+        </speech>
+        <speech by="#" eId="spk_219">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_300">I thank the Senator. When a Donegal man tells me he does not want to put me on the spot I know he is doing exactly that. Ms McGuinness will talk about the waiting times and Dr. Henry the cancer services, so I will be very brief. Why do some hospitals perform better than others? It is down to the history of the hospital in question, the resources it has and the skill, energy and innovation of its workforce. There are lots of reasons. Part of it is down to management - there is no question about that. We blame doctors and nurses a lot of the time as regards productivity but managers have to be productive as well.</p>
+          <p eId="para_301"> On the question about the surgical hub, which is a well-aired and well-publicised story, I will say two things. My read is that they did land on Sligo - I think that has been articulated - for the location of a surgical hub. A surgical hub is usually population-based. We have not submitted a final business case to the Department on the basis of concerns people have. Having spoken to my team, rather than just look at the surgical hub I want to look at the totality of what we can recommend to the Minister. Donegal and the north west need not just surgical hubs but other supports. I am happy to tell the Senator and put on the public record that I firmly believe Donegal needs increased capacity and at a scale of priority. I will not speak for her but I believe the Minister does not disagree with me on that. I think the Senator will hear more about it. I believe the Minister has committed to going back to the people of the north west within the month with a more firm decision. I will leave it at that, to be fair to her.</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Ms Sheila McGuinness<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_302">I thank the Senator. He is right that our waiting time is at an average of 6.8 months. We would expect waiting times to improve. We have a target this year of 5.5 months and they have improved significantly since 2019 when they were 12 months. The key approach of the waiting list is around waiting times, so we are targeting those people who are waiting the longest. Mr. Gloster, in his opening statement, spoke about those over three years and those over four years. This year, we are targeting those over two years and those over 12 months. Again, we are seeing a significant reduction in that and by the end of the year, we expect over 90% of people to be waiting less than a year. We are very hopeful that there will be improvements this year.</p>
+        </speech>
+        <speech by="#" eId="spk_221">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_303">We run three types of rapid access clinics nationwide. One is on prostate cancer and our metric is the percentage seen within 20 working days of referral. We are at over 90% for that metric. The second is in lung cancer. We are a little bit below the target there. With breast cancer, we are running at 76%. There is some regional variation there. I think the clinic that pertains to Letterkenny is the breast cancer urgent referral. We are short of our target. We work with the local to in make sure we get people within that target or as close to it as possible given the urgency of the situation. I am not sure of the exact metric for Letterkenny hospital. Nationwide we are falling a little bit short of our expected target.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_222">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_304">There is a good news story too. A lot of people travel down to Galway to the prostate clinic. I have encountered so many men who they think it is great. Could that not be replicated in Donegal? Some people tell me you go down and meet the consultant on the first day, go home and then you have to go back down again to get a biopsy done and then back down again to get an MRI done. To get to the end game, you have to make five visits to Galway. The staff are there. Could we not try to replicate that in Letterkenny?</p>
+        </speech>
+        <speech by="#" eId="spk_223">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_305">The Senator will recall, I am sure, that the national cancer strategy laid down where the cancer centres would be. There are eight centres and Letterkenny has special status for breast cancer. That was a function of Government policy at the time. The current policy is to have those eight centres, with Donegal having special status for breast cancer. It is onerous. There are other services established in Altnagelvin Hospital to try to minimise the challenges people with cancer face in Donegal, notably for radiotherapy, in the Altnagelvin centre. I recognise the long journey Galway but, as I said, our job in the HSE is to implement a strategy that directs where those centres are.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_224">
+          <from>Deputy Michael Cahill<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_306">I welcome Mr. Gloster and his team. Through the National Treatment Purchase Fund and the cross-Border initiative, the HSE has succeeded in reducing waiting times, which is obviously very welcome. Over the years, patients from County Kerry have been travelling in big numbers to Belfast and the taxpayer is obviously footing the bill for that. Why do they have to travel to Northern Ireland? The UK is not cheap by any means. Is it that it can provide this service cheaper and, if so, why is that? What is the difference in monetary terms? Is the difference about value for money? What is it about the health service that costs are spiralling out of control, as we see every day, month and year? When will all this end? The public is outraged, and rightly so, about the stories coming out all the time. They deserve answers.</p>
+          <p eId="para_307"> Is anyone present a director of a company outside the HSE or involved in insourcing of any type? I wanted to ask that question for transparency.</p>
+          <p eId="para_308"> Oireachtas Members are coming across difficult, complicated and very serious surgery cases. Is there any individual or section of the Department that can help us progress these cases? I believe Mr. Gloster met Davin Godfrey at one stage in north Kerry.</p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_309">I did.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_226">
+          <from>Deputy Michael Cahill<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_310">I find that man unbelievable in every sense. There have been huge delays with the north Kerry CAMHS look-back review. Is there any progress or updates there?</p>
+        </speech>
+        <speech by="#" eId="spk_227">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:40:00+01:00"/></from>
+          <p eId="para_311">Dr. Henry might assist me with the Kerry CAMHS piece. He was previously involved in it, although to be fair it is not his responsibility now.</p>
+          <p eId="para_312">The Deputy asked a couple of questions there. The first was why people travel from Kerry for ophthalmic surgery in Northern Ireland? They do so quite simply because the demand is ahead of the capacity we could provide. We have made improvements to that capacity. The Minister opened an additional new cataract theatre in the national eye and ear hospital recently. I have asked the hospital how much facility it can make to the whole country to help us. Very substantial progress has been made in the Cork side of the south-west region.</p>
+          <p eId="para_313"> On the question of costs, it is not a cost issue. When we refund Northern Ireland we do so based on what we assess the cost to be here. It is not that we are getting it cheaper. I regret that people have to go to Northern Ireland. I am glad they have that option, rather than having to wait, but I regret that they have to go. We are making some improvements on that.</p>
+          <p eId="para_314"> I do not know if anyone here is a director of a company. I certainly am not. The only thing I was ever a director of was a school swimming pool, which never got opened, so I was not very successful. I am not a director. I do not mean to be facetious about that but I assure the Deputy that I am very happy to declare I am not a director of any private entity. I am prevented in law from being so, based on the position I am in, which is a very good thing.</p>
+          <p eId="para_315"> Perhaps Dr. Henry will assist me with the question on CAMHS. I met Davin Godfrey. He is a fantastic young man and great advocate. He has the generosity to take what was a dreadful life experience for him and share it for the benefit of others. I have huge regard for him. On the pace of that review, it has picked up and I would like to see it conclude a lot quicker.</p>
+        </speech>
+        <speech by="#" eId="spk_228">
+          <from> Dr. Colm Henry<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_316">For the sake of accuracy, I will bring the Deputy a written update because I do not have the exact update on the number of people who were involved in disclosure. I will provide a written reply.</p>
+        </speech>
+        <speech by="#" eId="spk_229">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_317">On the overall issue of why people are frustrated in the cost of the health service, we have a high pay cost economy. That is probably a good thing for the citizens who work here. Sometimes we talk about the Irish health system as if we were the complete laggards in terms of the international experience. Between January and December of last year, we had removed 85% of people who were on the list at the start of the year. That is pretty unprecedented in most jurisdictions. Ireland has the best life expectancy outcome. Ireland has some of the best outcomes from chronic disease and the traditional killers, including cardiovascular disease. We still have a way to go but Dr. Henry would probably articulate it much better than I could. We actually do not have a bad healthcare system. What we are fundamentally challenged by is the amount of access that is needed versus the amount of capability we have to respond.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_230">
+          <from>Deputy Michael Cahill<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_318">I do not have any issue with people going to Northern Ireland for treatment if that will address the problem. I recall a former TD for Kerry, John Brassil, raising this issue many years ago in the context of such procedures being offered in the Bon Secours Hospital in Tralee.</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_319">We are fundamentally better now than we were when the then Deputy Brassil raised the matter. The difference now is our ageing population, the prevalence of eye disease in an ageing population, and the demand for cataract surgery. It is just that the demand is outstripping all of the capacity we are putting in.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_232">
+          <from>Senator Maria Byrne<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_320">I thank Mr. Gloster and the team for coming today. This meeting has certainly been very informative. In the past two years, appointments in University Hospital Limerick had to be cancelled on a number of days because of emergencies in the emergency department. Has that had a knock-on effect on waiting lists? While I understand that some of the waiting lists have come down, others are still over 12 months and 24 months. I ask the witnesses to comment on that.</p>
+          <p eId="para_321"> I remember a report in October of 2024 which showed that the majority of people waiting in UHL were waiting for cardiology, vascular surgery, dermatology and endocrinology services. These are pretty serious issues that people have. Have the waiting lists come down for those services?</p>
+          <p eId="para_322"> The numbers of children waiting on dental care have increased. There are not enough dentists, although there are plans in place to expand the number of people qualifying as dentists. I ask for comment on that. In the school services dentists have to decide what child is critical and needs to be seen next ahead of another child. That is a shocking revelation. I ask the witnesses to comment on those three issues.</p>
+        </speech>
+        <speech by="#" eId="spk_233">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_323">I thank the Senator. Ms Broderick will talk to the detail of UHL as that is her patch. On the dental question, we actually have loads of dentists in Ireland. They just do not want to work in the public dental scheme or operate the dental treatment services scheme, DTSS, any more. The Minister has said the numbers are failing despite increased incentives around fees. We fundamentally need to revisit that and what we are going to do about it. I do not want to presuppose where the Minister will land with that but we are trying to make interventions. I believe the DTSS is one scheme that has to be radically reformed.</p>
+          <p eId="para_324"> On the overall position of UHL, while the hospital uses third-party insourcing, again, it is a question of what benefit the public gets for that. Going back to Deputy Cahill's reference to hospitals and comparisons, UHL gets a lot of criticism, from me included, and it deserves it sometimes, but it is one of the best performing hospitals in the country in terms of managing its waiting lists.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_234">
+          <from>Senator Maria Byrne<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_325">I am glad to hear Mr. Gloster acknowledge that.</p>
+        </speech>
+        <speech by="#" eId="spk_235">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_326">It is really important when we have that information that we acknowledge it. On the specifics, Ms Broderick is the chief there and she will talk on that.</p>
+        </speech>
+        <speech by="#" eId="spk_236">
+          <from> Ms Sandra Broderick<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_327">The waiting list three years ago for inpatient day cases was 26,300 across the UHL group. Today, that figure stands at 6,300. This is from our core funding, insourcing and outsourcing and the NTPF funding. To say that it has been beneficial for the mid-west would be an understatement. It has been phenomenally successful. That is not to say that we have not become overreliant on it.</p>
+          <p eId="para_328"> My colleague spoke earlier on our weighted average times. The national average is about seven-odd months and we are doing it in five and a half months. The Senator is right to spell out the specialty piece. We are really working on that and we have been raising with Mr. Gloster the number of specialty consulting posts we have in the region. This is something we need to build upon. We have a lot of reliance on locum consultants. Reference was made earlier to the agency spend. We need to attract the highest quality consultants into the region and put that specialty base in. While I am here to talk about the mid-west region, it would be remiss of me not to say that the specialty disparity between our region and other regions is pretty big. We are getting a lot of support with that and it is something we expect to see improvement on in the coming years. This will not happen overnight. There is not just an abundance of consultants out there ready to be appointed.</p>
+        </speech>
+        <speech by="#" eId="spk_237">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_329">The weighted average time in UHL is below the national average, which is a really significant achievement because it is the time people are waiting. There was insourcing involved in that but at least that was the return. We are converting the locums to permanent appointments to build up the resilience of the hospital. Ms Broderick is right about increased specialties. I must say, however, no matter that she is sitting next to me, the hospital will only get them if it can show it can use them.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_238">
+          <from>Senator Maria Byrne<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_330">I was visiting somebody in a hospital recently, not UHL, and there was somebody in the bed opposite them. The person, a public patient, was brought because they were waiting on an MRI scan. They were told if they went home, they would lose their place. To me that person was bed blocking because they realistically did not need to be in that bed. I am sure this is happening across different hospitals. How can we address that issue? In that ward three people were bed blocking for different reasons. We should expect people to be able to get an MRI scan without having to go into hospital.</p>
+        </speech>
+        <speech by="#" eId="spk_239">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T11:50:00+01:00"/></from>
+          <p eId="para_331">One of the greatest dysfunctions of our system is that we have taught our people to behave in such a protectionist way that they hold a bed to get something else to happen. We should be able to tell people to let go of the bed and we will guarantee that the other thing will happen. That is where the person should go home and return for the MRI the following day. We are trying to push that practice very hard, not just for MRIs but for a whole range of diagnostic tests. It is a bit of a hill to climb because people are used to particular ways. It is not that long ago in Ireland that if you were going in for a procedure you would go in on Sunday to make sure you got the bed on Monday. We cannot do that any more.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_240">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T12:00:00+01:00"/></from>
+          <p eId="para_332">That concludes our session. I thank the representatives of the HSE and the NTPF for their engagement with the committee. I know there are a number of questions we did not get answer to because of time allowances. With the witnesses' agreement we might submit written questions and get written answers to those if that is agreeable.</p>
+        </speech>
+        <speech by="#" eId="spk_241">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-07-02T12:00:00+01:00"/></from>
+          <p eId="para_333">Agreed.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_242">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T12:00:00+01:00"/></from>
+          <p eId="para_334">I thank the witnesses for their time and for the preparation that went into today's work.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 12 noon until 9.30 a.m. on Wednesday, 9 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

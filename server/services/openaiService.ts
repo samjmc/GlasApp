@@ -9,7 +9,7 @@ dotenv.config();
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 let openai: OpenAI | null = null;
 
-function getOpenAIClient(): OpenAI {
+export function getOpenAIClient(): OpenAI {
   if (!openai) {
     if (!process.env.OPENAI_API_KEY) {
       throw new Error('OPENAI_API_KEY is required but not set. AI analysis features are disabled.');

@@ -1,0 +1,863 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-02/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-02/debate"/>
+          <FRBRdate date="2025-07-02" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_education_and_youth"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-02/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-02/debate/mul@"/>
+          <FRBRdate date="2025-07-02" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-02/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-02/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="RuthCoppinger" href="/ie/oireachtas/member/id/Ruth-Coppinger.D.2014-05-23" showAs="Ruth Coppinger"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole eId="An_Cathaoirleach_Gníomhach" href="/ie/oireachtas/role/office/an_cathaoirleach_gníomhach" showAs="An Cathaoirleach Gníomhach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM OIDEACHAS AGUS ÓIGE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Education and Youth</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-02">Dé Céadaoin, 02 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-02">Wednesday, 02 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RuthCoppinger">Ruth Coppinger</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JenCummins">Jen Cummins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#GarethScahill">Seanadóir / Senator Gareth Scahill sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_5">
+          <i>The joint committee met in private session at 12.31 p.m. Sitting suspended at 12.53 p.m. and resumed in public session at 12.54 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Education for Children with Special Educational Needs: Discussion<recordedTime time="2025-07-02T12:50:00+01:00"/></heading>
+        <speech by="#GarethScahill" eId="spk_1">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T12:50:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputy Cathal Crowe and Senator Curley.</p>
+          <p eId="para_13"> I welcome the witnesses. I ask everyone attending remotely to mute themselves when not contributing so the committee does not pick up any background noise or feedback. As usual, I remind all of those in attendance to ensure their mobile phones are in silent mode or switched off.</p>
+          <p eId="para_14"> Members attending remotely are reminded of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. As they are aware, within the precincts of Leinster House witnesses are protected by absolute privilege in respect of the presentation they make to the committee. This means they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty, as Cathaoirleach, to ensure this privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_15"> Members are also reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against a person or entity outside the House or an official of the House either by name or in such a way as to make him or her identifiable.</p>
+          <p eId="para_16"> On the agenda for the first session of today's meeting of the committee is education for children with special educational needs with the following witnesses: from the Irish Primary Principals Networks, IPPN, Mr. Páiric Clerkin, chief executive officer, and Ms Caroline Quinn, special educational needs, SEN, specialist; from the National Association of Principals and Deputy Principals, NAPD, Ms Rachel O'Connor, deputy director; from the Equality of Education campaign, Ms Charlotte Cahill and Ms Rebecca Meehan; and from the National Parents Council, NPC, Ms Áine Lynch, chief executive officer, and Ms Carmel O'Shea, advocacy manager. They are all very welcome to today's committee meeting.</p>
+          <p eId="para_17"> I am going to get straight into it because we are a little restricted by time. I call Mr. Clerkin of the IPPN to make an opening statement. He has five minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Páiric Clerkin<recordedTime time="2025-07-02T12:50:00+01:00"/></from>
+          <p eId="para_18">I thank the committee for giving the IPPN an opportunity to address its members on the subject of special educational needs. The IPPN’s role as the professional body for school leaders is to empower the principals and deputy principals of primary and special schools to focus on their core purpose and what they are qualified and skilled to do, that is, the leadership and management of teaching and learning in their schools. This includes the 54% of principals and 98% of deputy principals who teach full time on top of leadership and management responsibilities, which is often forgotten.</p>
+          <p eId="para_19"> All the research shows that high-quality leadership has a significant impact on the quality of learning and thus on the outcomes for children. Yet many school matters unrelated to teaching and learning take leaders’ time away from their core purpose. IPPN collaborates with our fellow education partners, including management bodies, the unions, and the NPC, to support the aims that are in their remit, particularly where the aims align.</p>
+          <p eId="para_20"> Regarding special educational needs in schools, IPPN fully supports the principle of equal access to quality inclusive education for all learners, alongside their siblings and friends in the local area in which they live. Where a child enrolling in a school has special educational needs, those needs must be planned for, supported and fully resourced and cannot be limited by a lack of time, capacity or resources. If the level of resources made available within the system is dictated by budgetary constraints, it cannot be claimed that special educational needs are fully met. It can merely be asserted that the needs are met only to the level allowed by the budget allocated for it. Prioritising access to inclusive education in an appropriate setting for one cohort of children with additional needs in such a way that it compromises access for another cohort of children with additional needs is not equitable. Resourcing must meet the actual demand that exists. The only realistic approach to identifying the full extent of need is to allow schools to self-report on the level of need in their schools.</p>
+          <p eId="para_21">Up to 5% of the population has autism, one among many other examples of additional needs to be accommodated, yet the level of resourcing has not kept up with the demands on the system. The current budget-driven deficit model is at the heart of the issues we hear about from school leaders. Furthermore, pressures are being brought to bear on some schools to open additional special classes when other schools in the same catchment area do not have any. Other schools are being pressured to enrol a seventh and even an eighth child into special classes designed for six children. This is inequitable and unfair. At the very least, these schools require emergency enhanced SET and other measures to meet the needs of the children, until a new special class place opens up or a new special class is built.</p>
+          <p eId="para_22"> Regarding allocations and timings, mainstream primary schools received their SET allocation for the 2025-26 school year on 11 February. Special schools received theirs on 18 June. As we wrote this, on 26 June, hospital schools had not yet received their allocation. This is simply not conducive to proper planning for the year ahead. A cut-off at the February mid-term needs to be put in place for all schools to receive both SET and SNA allocations.</p>
+          <p eId="para_23"> Regarding school buildings, every child should be provided with a school place in a timely manner. Simply clearing admission lists is not good enough. We must also ask of the system what happens when the child turns up for their first day in school. Are the appropriate infrastructural supports in place to give that child a chance to succeed and thrive? There has been progress but we have a long way to go to achieve a truly inclusive system. Flexibility in the provision of appropriate supports is key. As an interim measure, until such time as the new special class place can be provided or a new classroom can be built, the IPPN calls for a SET-plus allocation model, providing an emergency additional SEN and SNA allocation, as appropriate, to mainstream schools where a special class or school placement is delayed. This would ensure that children can attend school with their siblings but in a suitable learning environment with the appropriate resources available on a temporary basis. </p>
+          <p eId="para_24"> Every school needs access to, and is entitled to, an accredited educational psychologist, yet many schools do not have one. This causes great difficulty in planning, accessing assessments, reports and supports. Sufficient trained educational psychologists must be recruited to ensure each school has one allocated at all times. The low number of NEPS referrals available to schools causes significant concern and frustration. School leaders have to prioritise among children based on identified need, as set out in the school's continuum of support and the student support file, which describes the targets and the interventions already put in place. Parents often lay the blame on schools when their child is not prioritised, whereas it is the system that has imposed the restriction on the number of assessments per school. To address this, the system needs to increase the capacity for schools to refer more children to NEPS. I thank the committee.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_3">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:00:00+01:00"/></from>
+          <p eId="para_25">I thank Mr. Clerkin and I now invite Ms O'Connor of the NAPD to make an opening statement, for which she will have five minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Rachel O'Connor<recordedTime time="2025-07-02T13:00:00+01:00"/></from>
+          <p eId="para_26">On behalf of the National Association of Principals and Deputy Principals, NAPD, I thank the committee for the opportunity to present the views of post-primary school leaders on the topic of education for children with special educational needs. The NAPD represents the leaders of second-level education across all sectors. As school principals and deputy principals, we are not only tasked with managing our schools but with leading learning, fostering equity and ensuring that no student is left behind. Our submission reflects this ethos.</p>
+          <p eId="para_27"> A core belief among our members is that inclusive education is not a bonus or an add-on but is fundamental to the mission of every school. Inclusion means meeting the needs of every student in the same school and, where possible, in the same classroom. This mirrors the kind of pluralist and compassionate society we want to build. In March, the NAPD hosted a national symposium entitled "Equity in our Schools: Does the system deliver for all young people?". The event brought together students, parents, school leaders, academics, policy makers and agency representatives. Across all sessions, one message was clear, which is that it is time to move from equality to equity. Equality offers the same to all. Equity, however, recognises that different students start in different places and that support must be proportionate to their needs. Students with special educational needs, whether physical, emotional, intellectual, neurodivergent or socioeconomically disadvantaged, require tailored responses to thrive. In this context, the ongoing review of the Education for Persons with Special Educational Needs Act is timely and essential.</p>
+          <p eId="para_28"> The pressures on post-primary schools in this regard are real and growing. We have a large increase in students diagnosed with autism spectrum disorder, double the rate of a decade ago. In response, more than 2,300 special classes are now operational nationally, twice as many as in 2017. Our members consistently report increasing demand for therapeutic supports, specialist interventions, assistive technologies and access to psychological services. While increased investment in special education, now at more than €2.7 billion annually, is welcome, the supports on the ground are often delayed, inconsistent or mismatched to need. Timely access to these resources is critical. For example, the needs-based model for special education teacher allocation is a positive development. This year's early notification in February allowed schools to plan effectively. However, the same cannot be said for special needs assistant allocations, which were delayed. This disrupted timetabling, recruitment and planning for students whose care needs were already known. Predictable and early allocation is essential. Another concern is the chronic under-resourcing of the National Educational Psychological Service. NEPS plays a vital role in assessment, planning, and intervention yet many schools wait a year or more for support.</p>
+          <p eId="para_29"> Our physical infrastructure also needs urgent attention. Many post-primary schools, particularly older buildings, are simply not accessible or inclusive. They lack the physical spaces, sensory environments and adaptive facilities needed for students with complex needs. While we welcome Circular 64/2024 and the Department's commitment to fund special class provision, capital investment still lags behind.</p>
+          <p eId="para_30"> Beyond infrastructure and staffing, we must support the people at the heart of inclusion, namely, teachers, SNAs, and school leaders. Professional development for inclusion must be systemic and not <i>ad hoc</i>. A national framework for training in inclusive practice should span initial teacher education, continuous professional learning and school-based communities of practice. This aligns closely with the principles outlined in the Looking at Our School 2022 framework, which places a strong emphasis on inclusive and learner-centred practices as a hallmark of effective leadership and teaching.</p>
+          <p eId="para_31"> Our education system must also offer diverse and respected pathways. Students with additional needs must have access not only to academic routes but also to further education, apprenticeships, and applied learning. All pathways should be equally valued, resourced and accessible. We also call for the extension of equity supports, such as the DARE and HEAR schemes, to students progressing via PLCs or alternative routes and not only to those entering directly from the leaving certificate.</p>
+          <p eId="para_32"> We must continue to strengthen supports at key transition points, especially going from primary to post-primary education. These are moments of vulnerability, and well-resourced transition programmes, including summer provision and tailored supports, can make a significant difference. Inclusion is not a slogan; it is a measurable and tangible commitment to removing barriers to learning and participation. It demands political will, joined-up thinking and a belief that every young person, regardless of background, ability or diagnosis, has a right to thrive. As school leaders, our commitment to this work is unwavering. We are proud of the progress made but we recognise that much more must be done. The five recommendations from our symposium are redefining special class provision, investing in professional learning, amplifying student voice, strengthening transitions and embedding multidisciplinary supports. These offer a roadmap for action. We thank the committee for its attention and its continued focus on this crucial issue. The NAPD is committed to working collaboratively to help build an education system that is truly inclusive, equitable and fit for every learner.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_5">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:00:00+01:00"/></from>
+          <p eId="para_33">I thank Ms O'Connor. I now invite Ms Charlotte Cahill to make an opening statement on behalf of the Equality in Education campaign, for which she will have five minutes. I note the opening statements of Ms Cahill and Ms Meehan, also representing the Equality in Education campaign, have been combined. In the interests of time, we may need to cut short the opening statements. Perhaps Ms Cahill and Ms Meehan will take two and a half minutes each.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T13:00:00+01:00"/></from>
+          <p eId="para_34">Yes.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_7">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:00:00+01:00"/></from>
+          <p eId="para_35">That is perfect.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T13:00:00+01:00"/></from>
+          <p eId="para_36">I thank the committee for the opportunity to speak on education for children with special educational needs. As a parent and an advocate, I witness first-hand the strain on Ireland's special education system. Despite committed educators, urgent reform is needed to ensure timely, inclusive and appropriate education for children with special educational needs.</p>
+          <p eId="para_37"> My family has experienced more than 60 school refusals for my daughter, despite assurances from the Government that all children known to the NCSE would have a school place.</p>
+          <p eId="para_38">Only after legal action did I receive a section 67 place, highlighting the ongoing crisis many families face. To make matters worse, our place is dependent on building work, with no confirmed date, leaving our child's future uncertain.</p>
+          <p eId="para_39"> The current system for allocating special needs assistants and special education teachers is deeply flawed. Parents are excluded from meaningful involvement. The focus on primary care needs like toileting ignores essential regulation and emotional support needs, especially for children with neurodivergent profiles such as autism, ADHD or trauma backgrounds. Children who are continent and mobile but who struggle with anxiety, sensory overload or disregulation are often denied SNA supports because their needs are viewed as behavioural. This excludes and undermines inclusion and the spirit of the EPSEN Act 2004 and the UN Convention on the Rights of Persons with Disabilities. We urge the Department to revise the primary care needs framework to include sensory regulation and emotional safety and to create transparent child-centred criteria for SNA allocations.</p>
+          <p eId="para_40"> Additionally, the home-based summer provision programme faces recruitment challenges due to significant pay disparities between SNAs and teachers combined with heavy taxation and delayed payments. Fair pay and conditions are essential to retain these vital staff. Parents seek fairness, transparency and accountability, a system that supports children from the start, not just after advocacy, and legal action.</p>
+          <p eId="para_41"> I thank the committee for taking the time to listen to us and I look forward to any questions.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Rebecca Meehan<recordedTime time="2025-07-02T13:10:00+01:00"/></from>
+          <p eId="para_42">I thank the Chairperson and members of the committee for the invitation to contribute to this crucial discussion on education for children with special educational needs. I am a mother to a wonderful son with additional needs and a member of the Equality in Education Ireland committee. We advocate alongside many families across Ireland who tirelessly navigate the school system to access our children's constitutional rights in education. Our experience shows that Ireland's education system is constantly firefighting at present, from early intervention right the way through to secondary school, with little forward planning or choice for parents. Families are often encouraged to accept whatever place they are offered, regardless of suitability.</p>
+          <p eId="para_43"> This year, we have seen increased efforts from the Department to address the growing need in special education - we are very thankful for this - including the sanctioning of 399 new special classes. As of February 2025, 3,275 children were notified to the NCSE as needing a school place for September 2025. The Minister for Education has stated that 92% of these children have received offers, but approximately 8% remain without a place today.</p>
+          <p eId="para_44"> The expansion of classes often requires building works or modular accommodations. However, with some classes sanctioned as late as April or May, there are serious concerns that these will not be ready for September. Examples of such schools are Libermann school, Dublin; Rochestown special school; Corpus Christi National School, Dublin; St. Mary's Boys' National School, in Lucan; Carrignavar special school, in Fermoy; and East Cork Community Special School.</p>
+          <p eId="para_45"> Parents are often offered home tuition as an alternative to schooling, but this is not a viable option for many families. Many homes are not suitable environments for education, especially where there are multiple children or limited space. Additionally, qualified tutors are extremely difficult to find. I have personally interviewed five tutors over the past two years for my son's July provision alone and none of them could meet his needs.</p>
+          <p eId="para_46"> Another critical issue is the shortage of educational psychologists within the National Educational Psychological Service. Principals report receiving only about three assessments per year on average, covering both mainstream and special classes. In some cases, psychologists have only been able to update reports for special classes without seeing the children directly. One parent on our committee has reported that NEPS hours were used to advise teachers on behavioural and sensory issues without direct child assessments, with parental permission given for discussions. If a child's needs are to be discussed, they must receive direct psychological support. We welcome the recent changes reducing the NEPS report requirements where children move between equal settings, hoping this will increase the support for children currently waiting.</p>
+          <p eId="para_47"> We urgently call on the Department and the NCSE to provide transparent, realistic timelines for building works and class readiness for September 2025; develop and implement a plan B for our children whose school buildings will not be ready, ensuring that interim arrangements meet individual needs and involve parental agreement; and address the shortage of educational psychologists to meet assessment and support demands. I thank the committee for its time and consideration.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_10">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:10:00+01:00"/></from>
+          <p eId="para_48">Thank you, Ms Meehan. I now call on Ms Áine Lynch of the NPC to make an opening statement, for which she has five minutes also.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Ms Áine Lynch<recordedTime time="2025-07-02T13:10:00+01:00"/></from>
+          <p eId="para_49">Carmel O'Shea will make the opening statement.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_12">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:10:00+01:00"/></from>
+          <p eId="para_50">Sorry. I call Ms O'Shea.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Carmel O'Shea<recordedTime time="2025-07-02T13:10:00+01:00"/></from>
+          <p eId="para_51">The National Parents Council thanks the Oireachtas Joint Committee on Education and Youth for the invitation to the meeting on education for children with special educational needs. To prepare for this meeting, the NPC carried out a survey to gather feedback from parents. The survey was developed and guided by the areas presented by the Oireachtas joint committee for discussion at its upcoming meeting and therefore looked at how and when schools are told how many special education teachers and special needs assistants they will have, whether school buildings are suitable for students with additional needs, and how easy it is to access supports like the National Educational Psychological Service. It also asked parents whether delays or problems in these areas have affected their children. The findings presented in this opening statement are based on the results of this survey conducted by the NPC between 24 and 26 June 2025 with a total of 418 parents who completed the survey.</p>
+          <p eId="para_52"> For some parents who responded to the survey, the education system was working well for their children. However, parents also told us where they felt the system let their children down. For this opening statement we are referring to the areas that have been identified as not working well. However, I understand the committee has the full consultation report to examine all the feedback from the parents. Parents across the country who have responded to the survey have shared their concerns about the delays and difficulties in accessing essential educational supports for their children. These include special education teachers, special needs assistants, NEPS assessments and suitable school buildings.</p>
+          <p eId="para_53"> First, as regards delays in assessments and supports, many parents reported long waiting times for NEPS assessments. In most schools, only one or two students can be referred each year, which means many students are left waiting for years or are never assessed at all. Some parents said they did not know NEPS existed until late in the process. Some students are only assessed in sixth class, which parents believe is too late to provide early intervention. When there are delays or families do not know what help is available, they often feel the only choice they have is to pay for private assessments, even if it is too expensive. Even when students have a diagnosis or professional recommendations, schools often cannot guarantee support. Parents described situations where they felt that their child's SNA or SET hours were reduced or removed because another student was assessed as having a higher priority. This creates a sense of competition between students for limited resources, which parents find deeply unfair and distressing.</p>
+          <p eId="para_54"> Second, as regards inconsistent and limited SNA and SET support, parents expressed frustration that they believed that SNA and SET support is not always based on need. Some students receive help only after a serious incident or behavioural crisis. Others lose support because they are doing well - ironically, because the support was working. Many parents said their children were left without SNA support because they did not meet the strict criteria for "primary care needs", even though they needed emotional or learning support. There is also concern about how support is managed. Parents reported that SETs are often pulled away to cover other classes. They also reported that SNAs are used as general classroom assistants and can be left supervising classes in place of teachers.</p>
+          <p eId="para_55"> Lack of communication and transparency was another theme. We were told about poor communication between schools, parents and services. Many parents said they were not informed about NEPS referrals, SNA changes or SET plans. Some only found out about changes after they had already happened. Others said they had to fight for every bit of support, sending multiple emails or making complaints just to be heard. They said it often felt like everything was up to them. Parents reported that they had to manage the process alone, without help, even when they did not understand how the system worked. Parents also said they felt excluded from decisions about their children's education. They want to be more involved and better informed about what support is available and how to access it. They also want clearer processes and more consistent policies across schools.</p>
+          <p eId="para_56"> Finally, as regards inadequate school buildings and facilities, parents reported that many schools are operating in temporary buildings or outdated facilities that are not suitable for students with additional needs. Parents described schools without sensory rooms, quiet spaces or proper toilets. Some schools are still waiting for promised extensions or new buildings, with delays lasting years. These poor conditions, parents reported, make it harder for students to learn and feel safe. Parents said that students with sensory issues, physical disabilities or emotional needs are especially affected. They want the Department of Education to prioritise building improvements and ensure that all schools are accessible and inclusive.</p>
+          <p eId="para_57"> The call for change is that parents overall feel that the system is broken. They are tired of fighting for basic support and watching their children struggle.</p>
+          <p eId="para_58">Parents also said schools should offer basic therapies and better summer support for students with extra needs. They want clearer communication and more involvement in decisions, faster and fairer access to NEPS assessments, more SNA and SET staff in schools, better training for teachers and SNAs, therapy sessions like occupational therapy and speech therapy in schools, summer support that is easier to access and school buildings that are safe, accessible, and properly equipped. Parents believe that every student deserves the chance to learn and thrive in school.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_14">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_59">I thank Ms O'Shea and the other witnesses for those opening statements. We move to the question-and-answer session with members. The speaking rota has been circulated.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_15">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_60">I thank the witnesses, especially the parents, for coming in. It is very difficult to come in to a committee. I am very new on this committee as well, so I still find it a little scary coming here. However, I am not talking about my personal experiences, whereas the witnesses are. I commend them on that. It is not right that they have to come in here and fight so hard for their children.</p>
+          <p eId="para_61"> Listening to the contributions, what emerged for me was that this system is broken. That is what I am hearing very loudly from all parties. The word "equity" features in a number of the statements. We talk about equality, but it is actually equity that is really important. The system and things like buildings are inaccessible for many children. That is not how we want the system to be and it is definitely not the way it should be.</p>
+          <p eId="para_62"> I hear that the witnesses are tired. Staff in schools are also exhausted. We need to build a system that is enhancing for families and children. We need to ensure every support is given in schools to children and their families and the people who are giving the support. You cannot support people in a school as a principal, teacher or SNA if you are not supported. If there are not supports in place for those people, the system will crumble.</p>
+          <p eId="para_63"> I am surprised that 8% of the children in question still do not have a school place. The committee has found it very difficult to find out exactly what those numbers are, so I thank the witnesses for telling us what it is. It seems to be a phantom number. We do not know what the actual numbers are. In a proper, functioning system the NCSE would know exactly how many children there are, who and where they are and what they need. In the context of the education system we should be aspiring to, that is not asking for much. We are just asking for the basics, namely, that the relevant bodies know who those children are. As so many people have rightly said about the rights of the child and of people with disabilities, this has to be child-centred. One child had 60 refusals. Parents have enough to do as it is without having to do that amount of administration.</p>
+          <p eId="para_64"> If we had everything, what would be the blue-sky version and what would make things easier for the witnesses? What one thing would the parents fix in schools if they had a magic wand? We need to aspire to doing that.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Rebecca Meehan<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_65">A huge issue is the fact that, as the Deputy said, it is a broken system. For it to be in any way fixable is going to take a long time. I will give an example of an autism class I have in Cashel. Six children in the class will go into secondary school in September 2026. They need cognitive assessments and the class has been told it will get two assessments, as two children are being prioritised based on behavioural issues. What about the other four children? We can see that history will repeat itself again and again unless the proper supports are put in place for teachers, SNAs, children and parents. We are going to have children who cannot access what they need and will either get an inappropriate school place or else their parents will have to access the service privately. That will still not guarantee a place will be made available for their child because they do not have a cognitive assessment when they notify the NCSE. That is a huge and an ongoing gap, even in autism classes, to this day and even for children who should be in special schools. There are three children going into St. John's Special School in Dungarvan who are aged ten or over. They should have been in special school since they were four but they have been in autism classes trying to get into special school every year. That is a huge issue.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_66">The biggest issue is the lack of forward planning. We are probably more than five years behind. Some 399 classes were sanctioned this year. That number needs to continue for the next five to ten years to catch up on what we have lost. There is no point in saying every year that a given amount of classes are being sanctioned. Unless there are enough classes every single year, we are going to be chasing our tail.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_18">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_67">I thank the witnesses very much for being here. This is a really important session. Some of them might be aware that yesterday was a very important day for us in Dublin 15, in that the report of the Dublin 15 task force for the forward planning of special education provision was finalised with different stakeholders, including the Department, the NCSE, patrons and some of the people present. Ms Lynch was involved and Helena Trench represented the IPPN. I thank Ms Lynch for her involvement. It is directly based on the lived experience of Dublin 15 in formulating future policy. Dublin 15 was the hardest place in the country to get a school place for children with additional needs last year. If we can fix the policy on Dublin 15, we can fix it everywhere. While I am here, I thank the parents who were involved in that, including Fiona, Sheila and Catriona, and our principals, Helena and Pat, for their relentless hard work and advocacy on this.</p>
+          <p eId="para_68"> It strikes me that data sharing and communication are an important part of this. That these are not working is having a detrimental impact on families who feel everything is up to them, as the witnesses said. Based on that, I want to ask them about circulars 8/24 and 39/25 which outline a new process and timeline for 2026 and shortening the notification period now required by parents and schools to the NCSE if children require a special education placement. It is good we are moving towards a more established timeline, but to address Ms Cahill’s point, we need forward planning. We need a five-year forward plan. What needs to happen to support that process and make it effective? The Government is talking about a campaign through the NCSE, but does this need to go wider than that? Do we need to talk to preschools, CDNT teams and HSE primary care teams? Some of the parents are asking me what is going to happen if the deadline is missed. I want to know what the witnesses think about that process and what we need to watch out for.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_69">That is really important because I find a lot of DEIS communities do not get this information. We have a WhatsApp group with over 150 parents in it and the majority did not know about the circular last year. There is not enough information. Sending out a circular when the SENOs did not even know about it was absolutely shameful. Parents were in panic last year. I remember getting a call last year from a school asking me if I had the letter to say my child was eligible for the school. I thought "Oh my God, what letter is this?". I did not have the letter and nor did I know how I was going to get it. The SENO did not know what it was about. It is vital we reach out to preschools, primary schools and CDNTs. We need to reach out to anybody directly linked with parents who have children with additional needs to get that message out to the wider public, and reach out to advocacy groups like ours to get that message out.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_20">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_70">We need a Government of Ireland campaign. Does anyone else want to come in quickly?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Áine Lynch<recordedTime time="2025-07-02T13:20:00+01:00"/></from>
+          <p eId="para_71">That circular and the one last year very much put the onus on parents to contact the NCSE. On an interim basis, that seems reasonable because we need to get the information wherever we can, but we cannot rely on parents to know what to do at that age. It is not just that we cannot rely on parents, but that we should not have to, because these children are already in the system.</p>
+          <p eId="para_72">We have the greatest number of children in our early years system. People know about these children. They are involved in the HSE services with the CDNT so we know these children in the main. Parents should obviously have the right to contact the NCSE and inform it but there should be a robust data-sharing system in place that means these children, as soon as they are known in the system and hit the radar of the system, are followed and supported.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_22">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_73">I thank Ms Lynch. I now call Deputy Dempsey.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_23">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_74">I thank all the witnesses for being here and for their really informative opening statements. As a public representative and in my more important role as a mother, it is very difficult to hear their personal stories and those of the parents who fed into Ms Carmel O'Shea's report. It is particularly difficult for the parents. As was already said, as a new TD this room can be quite intimidating even on this side of it, when we are not sharing our personal information. It is fantastic that those present have done so. Ms Cahill mentioned the 60 refusals for her child. I am sure every one of them was a dagger to her heart. I probably do not have the right to say this but I feel that with her. I could not picture it. I have a little girl starting primary school next year and when I think of what she goes through as a parent, I commend her bravery and her strength. Regardless of what qualities they had as people before, they definitely have to have these qualities as parents of children with additional or special needs. The shame is that they have to fight every single day. I often find that when people come to me with kids who have special needs, they could ask for something that does not relate particularly to the child's immediate needs. I had a couple who wanted the path dropped outside their house to make the wheelchair access a little bit easier. I had to tell them that the council needed to licence it and spend huge money on it, and that was what broke them. That was the straw that broke the camel's back. I am getting off the topic now. I should be asking the witnesses questions but I wanted to really thank them for being here.</p>
+          <p eId="para_75"> Ms O'Shea mentioned the irony of the removal of services when schools and the children with additional needs in them perform well. I have that exact situation in a school near Trim. Kilbride National School, which is renowned in the area for being an excellent school for children with additional needs, is constantly under threat of losing its supports because its reports are good. This is because the principal, every teacher, every SNA and everything is focused on those children. They are not just focused on the mainstream; they all take an active part in the kids with special needs. I do not know how to do it but how can that be addressed? </p>
+          <p eId="para_76"> Mr. Clerkin mentioned school self-reporting. My understanding is that we have moved away from that and to a certain extent children's needs are now assessed not by the principal or the teachers but by the NCSE. Is that a grey area? Do some principals agree with it and some not agree? </p>
+          <p eId="para_77"> I have one final question. Mr. Clerkin briefly mentioned working principals. In a way, it is probably related more to the wider context as opposed to just special education but is there a lobby or a campaign to move away from working or I should say teaching principals? That is really important. We do not ask our CEOs to be HR managers or administrators. A principal can guide a lot of this special education and how their teachers act but not if they are doing the jobs of many. I am after going way over, apologies.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Páiric Clerkin<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_78">I thank Deputy Dempsey for raising the issue of teaching principals. It is a topic of great concern to the Irish Primary Principals Network. There is ongoing work in respect of putting better supports in place for those who find themselves in that position. Very good work is happening through the small schools research project. A number of pilot projects have been supported by different organisations such as ourselves, the INTO and the CPSMA, whereby an administrator is being provided to support schools in those positions. That is obviously a pilot project. We want to see that being upscaled. Those sorts of supports will be of great benefit to the system into the future to ensure those teaching principals can focus on leading teaching and learning. All the research we have produced recently shows the greatest concern is that these leaders of teaching and learning are being distracted and taken away from their core purpose, which is to lead teaching and learning, to basically focus very much on administration. There is also a pilot project about to start in September for larger schools and we are working with our colleagues in the NAPD in this regard. Again, they are really important supports. Apologies; I have only addressed one of the questions.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_25">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_79">Sorry, it was my fault.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_26">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_80">I remind each member that the four minutes includes the response.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_27">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_81">I know, sorry; I got carried away.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_28">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_82">I call Senator Nelson Murray.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_29">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_83">I thank everyone for coming before the committee. As my colleagues have all said, they are very brave. I came before the finance committee a few years ago when I was trying to save my business. The witnesses here today are trying to do all they can for their kids. It puts my issue into perspective when I compare it to what they are trying to do. I say "well done" to them.</p>
+          <p eId="para_84"> I wish to bring up a few things. Ironically, over the past three weeks, I have been speaking to a few parents so my questions are for Mr. Clerkin and the National Parents Council. I will say one thing on the principals. Principals are not only teaching principals; they are architects, transport managers and SNAs. They are everything. I do not know if we have figured out yet what we do to support that. By way of example, I am on the board of a special school in Navan. I have raised this previously. My colleagues may be tired of me saying this because it is my third time to say it, but I genuinely feel we need to have a pilot programme for transport managers for special schools in order to ensure principals and vice principals are not out in the school yard arranging 25 to 30 buses. If they are not doing that and not taking phone calls in the morning, the kids in the back of the bus do not get to school. I am trying to push that. It could be good, even for the special schools, that principals have someone to help them. It may be a co-ordination officer in total who helps to co-ordinate administration, buses and new school planning applications. The beautiful new building of St. Joseph’s Mercy Primary School in Navan has just opened and the vice principal and the principal are absolutely wrecked going in to the summer with all they had to do to get that first phase opened. We really need supports that way. I am conscious of the time here.</p>
+          <p eId="para_85"> I would like to address the three parents. A mother came to me in total panic after the principal came to her and said that her child had some reading difficulties in sixth class. It was brought up then. The mother is in a total tailspin because the child is going into secondary school. She wonders if she has picked the right one, if the child is going to the right one and will she have the supports. How do we stop it happening again that it takes until sixth class to find this out? She has been told that girls have a better way of disguising it than boys when it comes to English and learning.</p>
+          <p eId="para_86"> Another thing that keeps coming up is parents feeling left out, to blame and helpless. They feel their children are being singled out when they are brought out of the room to learn a bit of extra reading. It seems like something that could be done better. Can we do it in part of the classroom so that they are still included? Should we have a teacher-parent liaison officer? Parents are saying it is very hard to get on to the teacher and talk to them about their issues. What can we do to help that?</p>
+          <p eId="para_87"> Lastly, it is mentioned in the opening statements that more training is needed for the SNAs. What way do the witnesses see that happening? It is already a year-long course. Is there a need for ongoing training or what do they see happening?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Caroline Quinn<recordedTime time="2025-07-02T13:30:00+01:00"/></from>
+          <p eId="para_88">I will take that one. I will take the questions from the bottom up. Regarding the SNA continuing professional development, we are delighted that, through University College Dublin, a year-lone course was developed for SNAs and many of them have already taken that up. That is hugely beneficial. One of the things we would call for is continuing professional development. If the SNA is dealing with a child with a particular disability, they should be able to access some kind of training for whatever that is. That would be very important. As regards seeing the teacher, parent-teacher meetings formally happen once a year but it should be easy for any parent to access an appointment in the school. We would certainly support that. It is interesting that the Senator brings up the children with dyslexia because that relates directly back to the issue with NEPS. There are not enough NEPS psychologists out there. When a school may only have two or three assessments, as was described earlier, it is going to go with the children with the most complex needs first. </p>
+          <p eId="para_89">The children with dyslexia fall down a little in the priority list. That is really important. </p>
+          <p eId="para_90"> We would very much support some kind of centralised management of transport because it is difficult. The anomaly is that bus escorts are employed by the school board but the system is run by Bus Éireann. It subcontracts to bus drivers locally but the Department oversees it. That is one very confusing system that we work through.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_31">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_91">Gabhaim buíochas ar fad le gach duine. I will be quick because I want to hear from the witnesses. I will start on SNA allocation and go to the parents first. At the moment SNAs are allocated solely on the basis of on what we consider primary care needs, but we know that secondary needs being adequately met is crucially important for the success of children in our schools. Sensory and emotional regulation is paramount for the learning of children with autism. I have been a teacher for nearly 20 years in a primary school so I know at first hand how we, and the children, rely on that support. We might hear from the parents first on that and then Mr. Clerkin or Ms Quinn might speak on how they see the effects of that in the classrooms, le bhur dtoil.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_92">I do not think they are secondary needs. I think they are primary needs, to be fair, for the majority of our autistic or neurodivergent children. Many of our children with neurodivergent profiles need sensory regulation to be able to access the curriculum. It is absolutely vital that how allocations are set is looked at and revised. Sensory needs should be primary care needs.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Áine Lynch<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_93">It is also important to bear in mind that when schools are looking for resources, they have very little choice so it is an SNA, an SET or teacher. Sometimes things that do not fall within traditional teaching get referred to the SNA but the new therapeutic support pilot that is coming into schools should support a lot of this too. What we need is real specialist people working with children who have different needs. It is not always that the role of the SNA needs to be expanded. Some of these children need really professional specialist support so we would very much welcome the therapeutic supports coming into schools to do that too.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Caroline Quinn<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_94">Returning to the primary care needs or, as many of us would say, the secondary care needs that the Deputy would be well used to, it is great to see that the SNA workforce development group has been working for the last 18 months on the whole area of looking at the role of the SNA. We do not just have what we traditionally call primary care needs. The children have to be able to access the curriculum, but they cannot access the curriculum and learning to the best of their ability and reach their potential if there is not that sort of support there for them. We support the work of the SNA workforce development group and look forward to seeing the new circular and the review of the role coming out shortly.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Rebecca Meehan<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_95">Before we move on, I would make the point that it can have a detrimental impact on a child with a PDA profile who might thrive in a mainstream environment if they are left without SNA support. It is absolutely crucial that they would get that support from the get-go because its absence can have a negative impact on the child’s experience in school and cause severe issues into the future.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_36">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_96">I agree. I am curious about the opinions of Mr. Clerkin and Ms Quinn on IEPs. The Department says they are impractical due to the high administrative burden they place on school staff. Others have called out the Government on this, saying that scrapping IEPs is a means of limiting the support the State is obliged to provide. If this proposal is fully implemented, where will this work land? Are Mr. Clerkin and Ms Quinn concerned that it may have a negative impact on the amount of contact time received by children if this responsibility falls on already overburdened teachers? What can we do to prevent this?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Páiric Clerkin<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_97">I come back to the point around ensuring the proper infrastructure is in place to ensure everyone within the system can thrive. Central to that are the needs of the child, looking at the child and ensuring those supports are in place. Several members have pointed to the lack of some of those supports. Our system is getting ever-more complex but it is still structured very similarly to the 1960s and 1970s model. We are coming to a tipping point on how we will support that system and ensure we can really stand over the concept of a truly inclusive system. That means that every child will be able to attend school with their siblings, if at all possible. We are not achieving that at the moment because we are firefighting in so many aspects. We have to look at the infrastructure and ensure it is fit for purpose into the future. </p>
+          <p eId="para_98"> If anyone visits a special school, they will see the work that is undertaken by that team. It may be a small number of teachers, it might be six to ten, but there could be a team of 80. It is only in the last year or so that we have actually provided them with the support of an administrative deputy principal. That is to be commended but we need to do more.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_38">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_99">I thank all the witnesses. I will focus specifically on school buildings for the newly sanctioned classes. The parents’ opening statement referred to their concerns about buildings being in place. Will they reflect on that point? I would ask the same of the other witnesses. They talk of the possibility of a plan B. The IPPN mentioned the prospect of an emergency SET-plus plan. Is there something in the planning system, for example? So my question is on school buildings which are newly sanctioned: will they have places in September and what can we do about it?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Rebecca Meehan<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_100">Returning to the 399 classes that were sanctioned, I only have seven examples here but there are over 20 that we are aware of in our little group that need these modulars or building delivery for September 2025. We are in a position now where we are receiving calls from the NCSE asking us what is an interim option for our children. Our children have already gone in for induction days. They have already met their SNAs and teachers. There needs to be more done to deliver it faster. Whatever needs to happen for that delivery, whether that is a task force that needs to be set up, it needs to come quickly because we are now in July. Some of these were only sanctioned in April or May. The likelihood of them ever happening was slim to none and we did know that. The Deputy was talking about project managers earlier. I feel like I am a project manager for these modulars. I have contacted the Department of education and have looked for numbers on <i>gov.ie </i>as a parent to understand where they are. In one case, I found out it had not even crossed the Department’s desk and it was still at the application stage. There is a huge disconnect in transparency and communications between the NCSE and the Department of education and the delivery, and the communication with the principals. You cannot leave this on the shoulders of principals who are doing everything they can and have welcomed our children with open arms. It has to happen and it comes from the Department.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Rachel O'Connor<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_101">My experience is as a post-primary principal for ten years. We were sanctioned a new building, including two ASD classes, in 2018. We have opened four ASD classes and we still do not have that new building. There was a child coming into us who was quadriplegic and had cerebral palsy. We knew he was coming into us from third class and I only got money to convert toilets into universal access toilets-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_41">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_102">What is it? Is it planning or bureaucracy?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Rachel O'Connor<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_103">It is literally the whole system. The left hand is not talking to the right hand, in terms of planning, the Department, funding and the principal being the overall co-ordinator liaising with the project design team. It is an absolute frustrating nightmare.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_43">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_104">Okay. That is very useful.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Áine Lynch<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_105">Obviously the forward planning and the data we spoke about earlier are essential to this but there should also be more outrage. If this happened for children without disabilities or special education needs, there would be public outrage. We accept it when a parent is told that their child will not start in September, it might be nearer December and in the in-between time we can sort out some home tuition. There should be outrage at that because we would not accept it for children without special education needs.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_45">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_106">In fairness, I think there is a particular focus on this committee. Mr. Clerkin has 40 seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Páiric Clerkin<recordedTime time="2025-07-02T13:40:00+01:00"/></from>
+          <p eId="para_107">We have to trust our admissions process and we have to ask what is happening when that system is not working because every child should be able to get a place within their local community. Yes, there will be times when schools are oversubscribed. A fair system would ensure that the older children would gain access. I am talking about getting into primary school not post-primary where they are transferring. The older children in that case would gain access and the other children would gain access the year after. However, there can be situations when even that system is under pressure and one might need what we call a shared admissions policy or for schools to come together. </p>
+          <p eId="para_108">There needs to be a process to facilitate that at central level. This system works well when schools are co-operating, but we should look at the admissions process to see why children are not accessing places and whether there is something we need to do around that. We have been arguing for a long number of years that we need a two-year lead-in from a special education point of view.</p>
+          <p eId="para_109"> The last point is in relation to SET-plus or a SET model, because this is crucial. Children who need access to special classes do not come in neat bundles of six. Unfortunately, we have situations where a child cannot access his or her local school because the special class is full. Often, what we find is that those children are from outside the catchment areas because there is no class in their particular schools. The SET-plus model that we are talking about is to help us move to a situation where every child is able to access his or her local school. In a situation where the class is full, we are calling for extra resources to be put in place through the SET model and through the SNA model to ensure that children can go to schools in their local communities until such time as places or new classes are made available.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_47">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_110">I welcome the witnesses. I commend them on the outstanding contribution that they are making to society in support of all of those children we are talking about today in terms to access to education. Somebody mentioned the right to thrive. What the witnesses have done is compelling.</p>
+          <p eId="para_111"> It almost feels like a bit of burden to have to listen to the woes and deficits there are that should not be there. I know we have a growing population and Mr. Clerkin stated in his submission that 5% of the population of children had autism. Therein lies not a massive problem, but a real demand for greater response.</p>
+          <p eId="para_112"> I am anxious to understand something. Given the ongoing challenges that parents face during the transition - Ms O'Connor may have mentioned these - of children with additional needs from primary to post-primary education, will the witnesses outline what specific measures or supports their organisations believe are most urgently needed to ensure continuity of care, inclusion and effective communication between schools and families? At times, people feel that there is a vacuum, and that is causing a problem.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Rachel O'Connor<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_113">I would agree that transition from primary to post-primary is crucial and it needs to begin as early as possible. For example, with that child who was coming in to us, we knew about it from third class but the system would not accommodate anything other than us getting to know the child, etc. In terms of his physical and primary care needs, we had nothing. In a building that was only 45 years old, we had nothing. Earlier intervention will benefit children and put the parents at ease. Now that child is going home to a situation where everybody is more comfortable knowing that this is what is ahead.</p>
+          <p eId="para_114"> It is important to remember that, just because a parent might be lucky enough to be part of a feeder system into a school where there just so happens to be an ASD place available, it does not mean the special class is a magic tick-the-box answer. When one meets a child with autism, one meets a child with autism. In 2016, Dr. Selina McCoy of the ESRI did a huge piece of research for the NCSE on the impact of special educational classes on the children who get places and whether we were creating parallel systems. Are we creating a system where we have exclusion within mainstream, with students being syphoned off into special classes due to lack of resources and lack of accommodation? Schools being lucky enough to get modular buildings that are three fields away is not inclusion. It is exclusion. There is a lack of expertise, ongoing training, etc. There is a bigger picture that needs to be looked at but the journey needs to begin much sooner than when a child comes to visit me in sixth class for open night. I need to be able to guarantee that place for that child in two or three years' time so that we can start that journey and, as has been said repeatedly, put in place forward planning to ensure a smooth transition.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_49">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_115">It was mentioned that, once a need was established, be it for a building or whatever, the length of time it took to be met meant that the student had often finished with national school. Therein lies a crisis.</p>
+          <p eId="para_116"> I am more enlightened after today's contribution from the witnesses. It just proves the body of work that the Department has to do. It is as simple as that. There are deficits and they need to be addressed.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_50">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_117">I will take the next slot. I am on the rota. I will allow the witnesses to do most of the talking, if that is all right. I will even let Mr. Clerkin go first, if he would like.</p>
+          <p eId="para_118"> I thank the witnesses for their contributions. It is important that we as a committee got to hear their stories, and I thank them for that. The group, and the parents within it, should not have to be going through the experiences that they have explained to us. It has hit a note with the committee. It is something that we will work on.</p>
+          <p eId="para_119"> I am constantly listening to parents who are trying to access the system talk about their paperwork, the teachers' paperwork in the schools and then different bodies accessing that paperwork. How can communication and collaboration between schools, parents and external support services, such as the NCSE, NEPS and the HSE, be improved to better serve children with SEN?</p>
+          <p eId="para_120"> I will give the witnesses two or three questions because I have to run out in a moment. From a parent's perspective, we have heard about the challenges of navigating the system. How can parents be more effectively empowered and supported to be true partners in the child's education, particularly when their child has SEN? What specific resources or adequacy mechanisms would be most beneficial? If we have time at the end, I would love to hear the witnesses' opinions on key priorities for advocacy or action in the next 12-to-24 months regarding SEN education. Those questions are for whoever would like to take them.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Rebecca Meehan<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_121">From the perspective of how to empower someone as a parent or advocate, Ms Cahill mentioned how she applied to and got rejected from 60 schools. I applied to one school. I chose the nearest special school to where my son was going and I decided that was where he was going. As his parent, that was my legal right as his first educator under the Education Act, so that is exactly what I did. I campaigned tirelessly for the last six months. I am hoping that will not occur for the parents coming after me next year thanks to changes made by this committee and the Department.. The onus is on me as a parent. I am his mother, so I will make that choice for him. I will stop at nothing until he gets what he needs. Every parent needs to have the same mindset. We do not all have the same opportunity or experience. I am really grateful for that today, even here, but it is a legal right. We are already empowered as parents under the Constitution.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Caroline Quinn<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_122">We have talked a lot about five-year forward planning, having some kind of a strategy and knowing where we are going. If we know that 5% of the schoolgoing population needs to be supported, then 28,000 children need to be supported. By the end of the decade, trends show that it will probably go to 42,000. If we know that, then we have enough data to plan for five years as to what actions should be happening.</p>
+          <p eId="para_123"> We have seen the education plan, which was published in the past week. We welcome that hugely but if budgetary constraints continue to limit what the system can give to us, the progress will be slow.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Páiric Clerkin<recordedTime time="2025-07-02T13:50:00+01:00"/></from>
+          <p eId="para_124">The Leas-Chathaoirleach asked how the system could better serve and ensure that we catered more effectively. Children must be central to all of those thoughts. I will give an example and show what can be achieved when the different parties come together and work to achieve a purpose. The summer programme for special schools has made enormous strides over the past couple of years where the partners in education have come together and focused on looking at how we can make things happen in a better way that is more supportive of the system. We have already engaged with the NCSE on how we can fill some of the gaps that we know are there in terms of supporting the schools that lack the infrastructural supports that were pointed to. We are determined to working with them.</p>
+          <p eId="para_125">We have had conversations with the National Parents Council on what more we can do to put appropriate supports into the system. Bringing people together can make great strides in taking on some of these challenges, because we are dealing with a very complex system.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Áine Lynch<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_126">Schools are key to parental advocacy and partnership. Schools need more resources, upskilling and support regarding how they work in partnership with parents, because parents of children with special educational needs need to work effectively with their schools. That is just not something that everybody can do. They need support in doing that.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i> Senator Pauline Tully took the Chair.</i>
+        </summary>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_55">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_127">I thank all our guests for their attendance and their presentations. There was a lot in common in all the presentations regarding the issues facing the sector.</p>
+          <p eId="para_128"> I want to talk about SNA allocation. It was stated that it was very late compared to the set allocation. A school contacted me to say it had three students with significant needs hoping to enrol for September. It stated that, to accept their enrolment, an additional SNA allocation would be required. It sought a review in March and felt it was going to be approved for an additional SNA – a “0.83” post – for a junior infants class. When it received its allocation, it was still at the old level. Is this something the guests are hearing from schools? We were told by the Minister that the allocation would change, but has it increased sufficiently to meet incoming needs? When I contacted the NCSE, it told me it would come up with an appeals process. I said the school had already gone through a review and had planned ahead so it could tell parents it could accept their sons or daughters. I am wondering whether this is something-----</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_129">That has come up quite a lot at the committee I am on. An example is Libermann special school in Templeogue. It hopes to have two new special classes opening in September of this year, and because of those two new classes its SNA allocation has automatically been put under review. This puts another burden on the parents because it means the school needs accurate reports to support the fight to keep SNA provision in the classroom at a one-to-one level for the children. I hope my daughter will be attending the school. I had to go back to the CDNT and chase up the psychologist who produced my daughter’s report. She was on maternity leave. I had to go back to the manager and try to get somebody to adjust my daughter’s report to make it as clear as day to the NCSE that she needed one-to-one support so the school would not lose any SNAs. This issue comes up constantly. We raised it with the Minister of State, Deputy Moynihan, at the last committee meeting and spoke in depth to Mr. John Kearney. He told us that no SNAs would be taken from the school, which we have seen is untrue.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Caroline Quinn<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_130">It is deemed that there will be 23,179 SNAs in the system in September. That breaches the cap that has been set, perhaps by the likes of the Department of public expenditure, over the years. The system has sought, under the reviews, to see where there is surplus in the system. We are aware that there is surplus in some schools and not enough SNAs in others, but the redeployment of SNAs will not happen until the following school year. That is actually causing quite an issue for the 2025–26 school year.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_58">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_131">I know. I have been told by the NCSE that it will carry out another review or appeals process in August. That is so late. How can schools plan?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_132">How can SNAs even apply for a mortgage? They do not even know whether they will have a job in September. That has come up multiple times. SNAs are saying they do not know where they will be in September as they have no assurance as to whether they will have a job.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Caroline Quinn<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_133">Also, there are schools that are trying to plan for September. Children on the list will generally have access to an SNA rather than a one-to-one SNA. Circumstances are such that the school leadership team will be considering prioritising one’s child over somebody else’s. That is not a good place for the school leader to be in either.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Páiric Clerkin<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_134">The redeployment scheme will be of benefit but it will come the year after. It will help to progress things. Time is needed to plan, and that is why we have been calling for a two-year lead-in. Legislative change to the admissions process is needed so we can plan effectively and ensure that children, when they go to school, have the experience they should expect. We have to consider what happens on day one. If things are last-minute because the SNA has literally been appointed in August, what does it say to the child and his or her parents regarding the experience on day one? It is firefighting, not planning.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_62">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_135">I thank the delegates for their answers. The next speaker on the list is Deputy Coppinger.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_63">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_136">Last but not least. I welcome all the delegates. I apologise because the meeting is so compressed. I was one of the TDs who insisted we have a whole session on special education. We did not envisage the slots for the whole shebang would be squashed into four minutes. The NCSE is coming in separately, which it insisted upon.</p>
+          <p eId="para_137"> Ms Cahill and Ms Meehan are heroic. I do not know how they get up in the morning, never mind come in here looking amazing, present in the way they have and advocate on others’ behalf. I am aware that they have been sleeping out as well as being on the inside. The State neglect of neurodivergent and disabled children has been criminal and it is only beginning to be addressed because of parents like them battling. The word “battling” comes up time and again. As a teacher, I am aware that Ms Cahill and Ms Meehan have educated teachers big-time. Teachers are playing catch up with them.</p>
+          <p eId="para_138"> I am really struggling to compress the questions I wanted to ask because I wanted to ask about both primary and secondary levels. I will concentrate on parental exclusion, because that was mentioned, and also the modern understanding of disability and inclusion. Even at meetings of this committee, "ASD" is a term that people do not really want to use anymore. It is being used in many documents today, so I think we should all take that position on board. What do the delegates believe is the most important way in which parents could be included?</p>
+          <p eId="para_139"> I was a secondary teacher. We know all about the fall that happens after primary level, where there is at least some provision. Suddenly in secondary school, children are not meant to be autistic any longer. I taught English classes of 30 pupils and could see immediately five or six students with neurodivergence issues in each. I noticed in the presentation on secondary level that the associated number was lower than at primary level. It was stated that 5% were autistic at primary level and that one in 65 was at secondary<b>
+						</b>level. That is an important difference. Is there less recognition at secondary school? How do Ms Cahill and Ms Meehan think parents can be included more?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Charlotte Cahill<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_140">As a parent, I know my child better than anybody. I know that girl inside and out. I know her needs. People should listen to me when I tell them she does not like something or that a certain way of teaching her does not work for her. I know her profile. I have been dealing with my daughter since the day she came out of my body, so people should please listen to me. That is the most important thing I would say to any educator or person giving therapy or anything like that. People should listen to me, as her mother and advocate.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Rebecca Meehan<recordedTime time="2025-07-02T14:00:00+01:00"/></from>
+          <p eId="para_141">The point on the terminology we use was put well. It is an absolute honour to raise our children. It is the system that is broken at the moment, unfortunately.</p>
+          <p eId="para_142"> With regard to including parents more, it is a question of the connection between the school and the parent and making wraparound services available so our children will have the ability to thrive. As Ms Cahill said, we know our children better than anybody and exactly what they need, including in respect of regulation for them even to access the curriculum. We are asking them to go to school for an education; we are not asking for babysitters, and that is why it is so important that we be listened to and that our children's needs be met.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Rachel O'Connor<recordedTime time="2025-07-02T14:10:00+01:00"/></from>
+          <p eId="para_143">That is a great point and there are a couple of factors that could be in there. The first could be an inadequate system for the transfer of information from primary to post primary. Then, I would go back to what Ms Lynch said about issues to do with self-reporting to the NCSE and parental capacity to do so. Choice is also an issue. I would have students who transfer and do not want that because of what I mentioned about whether we are excluding children by way of the set-up of special classes at post primary. When children are coming to their teenage years they do not want to be seen as being in a different class from the mainstream. This is a great point that needs to be investigated further. </p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Caroline Quinn<recordedTime time="2025-07-02T14:10:00+01:00"/></from>
+          <p eId="para_144">It is also important to note that the parent knows their child best. In our school, we had a really good experience with what is called authentic assessment. This is an alternative to the NEPS assessments that we are used to. With the authentic assessment, all of those working with the child, but centrally the parents, were around the table, looking at the individual education plans, setting the targets, following them and reviewing them several times over the year. Authentic assessment is more used in England than here but it would certainly be hugely beneficial in making parents more central around the table. </p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Áine Lynch<recordedTime time="2025-07-02T14:10:00+01:00"/></from>
+          <p eId="para_145">As Ms Quinn has outlined, it is really important to note that we get lots of reporting and it is mentioned in the survey as well, that parents are never consulted, they are never in the room and they do not know assessments are happening. We need to shift that. As I mentioned before, schools need to be supported and CPD needs to be given, because it is not just an automatic ability to work in partnerships with parents. It is a very complex relationship, so we need to support our schools better with that partnership work. </p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_69">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:10:00+01:00"/></from>
+          <p eId="para_146">On behalf of the committee, I thank you all for attending and engaging with us today. We will now suspend briefly to allow the witnesses for the second session to come in and take their seats.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Sitting suspended at 2.12 p.m. and resumed at 2.15 p.m. </i>
+        </summary>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_70">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:10:00+01:00"/></from>
+          <p eId="para_147">You are all very welcome. I ask anyone attending remotely to mute their microphones when not contributing, so that we do not pick up any background noise or feedback. As usual, I remind all those in attendance to ensure that their mobile phones are in silent mode or switched off. </p>
+          <p eId="para_148"> Members attending remotely are reminded of the constitutional requirement that in order to participate in public meetings they must be physically present within the confines of the Leinster House complex. As you are within the precincts of Leinster House, you are protected by absolute privilege in respect of the presentation you make to the committee. This means that you have an absolute defence against any defamation action for anything you say at the meeting. However, you are expected not to abuse this privilege. It is my duty as Cathaoirleach Gníomhach to ensure that this privilege is not abused. Therefore, if your statements are potentially defamatory in relation to an identifiable person or entity, you will be directed to discontinue your remarks. It is imperative that you comply with any such direction. </p>
+          <p eId="para_149"> Members are also reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against a person or entity outside of the Houses or an official of the Houses, either by name, or in such a way as to make him or her identifiable. </p>
+          <p eId="para_150"> On the agenda for the second session of today's meeting of the committee is education for children with special educational needs with witnesses from the National Council for Special Education, NCSE, which is represented by Mr. John Kearney, CEO and Ms Helen Walsh, head of inclusion and education support services. You are very welcome to the meeting. I call on Mr. Kearney to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:10:00+01:00"/></from>
+          <p eId="para_151">I thank the committee for the kind invitation to be here today representing the National Council for Special Education. I am privileged to be CEO of the NCSE. I am accompanied today by my colleague, Ms Helen Walsh, head of inclusion and education support services</p>
+          <p eId="para_152"> The NCSE was established more than 20 years ago to improve the delivery of educational services to persons with special educational needs arising from disabilities, with particular emphasis on children. In the last decade, a significant and exponential growth in activity in special educational needs resulted in an 81% increase in SNA numbers, a 40% increase in SET numbers, a fivefold increase in the number of special classes and a doubling of applications and sanctions for transport and assistive technology. In the last five years alone, there has been significantly accelerated growth in special provision. This has resulted in 16 new special schools being established. Almost 1,700 new special classes have been delivered and, as we speak, almost 28,000 children are being supported in specialist placements for the coming academic year. All in all, a total of 3,700 special classes nationwide are up and running for the coming year. </p>
+          <p eId="para_153"> The NCSE has a vision of a world-class inclusive education system for Ireland, where children, young people and adults with special educational needs are supported to achieve better outcomes in their education and are enabled to reach their full and true potential. The NCSE supports schools to enable students with additional needs to develop skills for life in order that they can participate meaningfully and to their fullest potential in society. The restructuring of the NCSE has effectively enabled the organisation to deliver a multidisciplinary integrated national programme of teacher professional learning and direct student support. Teacher professional learning research indicates that a sustained model of simultaneous support for both teacher and student is required to embed practice across school communities in achieving inclusion and belonging. Since 2023, the NCSE has worked to deliver a multimodal teacher professional learning programme in tandem with tier 3 supports to students.</p>
+          <p eId="para_154"> In the last decade or so the NCSE has provided six policy advice publications to the Minister for Education across a wide range of areas relevant to the provision of special education.</p>
+          <p eId="para_155">The most recent policy advice on an inclusive education for an inclusive society was presented early last year and was prepared following an extensive period of research, consultation and deliberation undertaken by the NCSE. Great care was taken to establish a strong evidence basis to inform this policy advice paper and involved extensive consultations and school visits, a multi-strand programme of research, international study visits and examined evidence of how education provision for students with special educational needs is supported within other jurisdictions.</p>
+          <p eId="para_156"> There are already exceptional inclusion practices occurring in our schools right across the country that provide supportive and nurturing learning environments for students. Schools are using innovative approaches to teaching and learning tailoring interventions to meet students’ needs and accessing specialist support to ensure that all students have access to the curriculum and achieve their true and full potential. The NCSE commends and celebrates these best practices and seeks to embed these practices across the education system.</p>
+          <p eId="para_157"> Last year saw the introduction of the school Circular 80/24, which enabled the NCSE to have a greater overview of specialist demand at both special class and special school levels. The NCSE established the notify system for parents and guardians and NCSE SENOs and team managers worked closely with school leaders, school boards of management and school patrons to establish with quicker timelines prior to Easter 399 sanctioned classes for the coming year. The NCSE is also supporting the establishment of five new special schools in Dublin, Monaghan, Tipperary and Cork. School Circular 39/25 affords the opportunity of providing strengthened delivery for pupils, parents and schools.</p>
+          <p eId="para_158"> In addition to the SENO service, the NCSE provides a professional learning programme to all schools nationwide. This programme includes the delivery of seminars, webinars and in-school bespoke training to teachers and whole school communities. The NCSE visiting teacher service provides teaching and professional learning supports directly to students, their families and to schools. NCSE therapy is an educationally based therapy service and operates a scope of practice encompassing a sustained in-school therapy and a regional therapy model.</p>
+          <p eId="para_159"> The NCSE advisory service provides an integrated service that is underpinned by multiple educational interventions. This service is facilitated by adviser-therapy-SENO-visiting teacher school visit and case resolution interventions that deliver internationally recognised teacher professional learning programmes. A suite of teacher learning programmes will provide 431 professional learning opportunities for over 27,000 teachers in the coming year. A productive inspector to adviser delivery memorandum of understanding has been established with the inspectorate to enrich inspectorate inter-discipline report reviews and school-based practice. The NCSE advisory participates in all Department special needs assistant workforce development unit, SNAWDU, development working groups and is progressing an evaluation of school practice in SNA reviews. The NCSE has facilitated the first national special needs assistants' training course developed in collaboration with the school of education in University College Dublin and currently being by delivered by St. Angela's College, Sligo, which is a college of the Atlantic Technological University. This course has provided training to close on 3,500 SNAs in our schools and has assisted these wonderful SNAs around the country to have a greater understanding of their students' strengths and needs.</p>
+          <p eId="para_160"> The Minister for Education and Youth, Deputy McEntee, and the Minister of State with responsibility for special education and inclusion, Deputy Michael Moynihan, recently published the education plan 2025. This comprehensive plan aims to deliver a world-class education system that breaks down barriers and ensures every child can achieve his or her full potential. This education plan confirmed that Government approval to establish the education therapy service had been secured and highlighted the intention of the Minister and Minister of State that the NCSE will progress work to provide 90 therapists to work in 45 special schools in the next school year. This recent ministerial announcement by the Minister and the Minister of State for the establishment of the education therapy service for schools envisages further expansion for the NCSE. The NCSE warmly welcomes the opportunity to assist the important work of the Joint Committee on Education and Youth on matters relating to supporting young children with additional needs. I look forward to this afternoon's deliberations.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_72">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-02T14:20:00+01:00"/></from>
+          <p eId="para_161">I thank the witnesses for their attendance and the overview provided. How will parents notify the NCSE that they need an additional space? Should they ring the NCSE? What happens? Will there be a social media campaign and maybe a campaign on the airwaves and television about that? We all know about that because we are here but I am not sure other parents know about that so how will the NCSE advertise that?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:20:00+01:00"/></from>
+          <p eId="para_162">Regarding parents knowing fully about us, the introduction of Circular 80/24 presents a significant opportunity for parents to be aware of us because before that circular, they did not quite know about us. </p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_74">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-02T14:20:00+01:00"/></from>
+          <p eId="para_163">Parents do not get circulars. </p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:20:00+01:00"/></from>
+          <p eId="para_164">I know that. When we opened special classes, 50% of young students were aware of it. The new circular moved that on very quickly in the sense of the NCSE notifying parents of email and website contact details. We did a lot of work last year with parental bodies and advocacy groups, which have direct engagement in tandem with our schooling engagements, to ensure there was a greater profile of parents being aware of us. Taking stock of that, we also know we need to do more in that regard. We intend to highlight the profile in terms of ensuring that all parents of children with additional needs know about us and come to us. The benefit of parents coming to us means we have a national lens in terms of demand. That informs our future planning and we can work proactively with the school communities around the country. </p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_76">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-02T14:20:00+01:00"/></from>
+          <p eId="para_165">It might be easiest for me to set out all my questions. Take a situation where a child reaches 18 and should progress to the next stage but cannot for whatever reason and while the parent and the school are saying that, the NCSE is refusing that. That needs to be re-evaluated because the parents and schools should take precedence. Does the NCSE have a role in transport for children with additional needs? Is there a pause on that at moment because somebody contacted me to say the problem is that there is a freeze on recruitment so the child has to be driven? The issue of mild general learning disabilities is so important. Those schools really need to be protected. When a school is given sanction for additional spaces, who fills them? Is it the school or the NSCE? I am aware of a school that did give out places but as the NCSE stated it should not have done that, I would like some clarity on that. I have so many questions and there is so little time. </p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:20:00+01:00"/></from>
+          <p eId="para_166">I thank the Deputy for those wide-ranging questions. I will cover some of them while my colleague will cover the queries about what happens when a child reaches 18 and transport. Each school is responsible for its own admissions policy. By and large, it is the school that is enrols students in individual special class enrolment, which is part of the overall enrolment criteria for individual schools. </p>
+          <p eId="para_167"> The Deputy mentioned mild general learning disabilities. I assume she is referring to the new circular pertaining to special schools. I can clarify that there will be no significant change for this year and the coming year. There are ongoing discussions on this because I have no doubt that the committee is aware of the significant distances young students with additional needs are travelling. It is all with a view to ensuring that those distances are tighter and young students can attend special schools in their local communities. There are 30 schools of that designation in the country roughly half of which have broadened their enrolment criteria. </p>
+          <p eId="para_168">That is done in a process of consultation and engagement. That is what has been envisaged within the provisions of the circular in terms of progressing.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_78">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_169">Sorry, I have to interrupt because we are going over time.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_170">My colleague will follow.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_80">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_171">Similar questions might be asked again or there might be time at the end to come back in. I ask members to be conscious of time. The four minutes is for questions and answers. I ask members to keep that in mind.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_81">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_172">I thank the witnesses for coming in. I hope it is the first of many engagements with them. How many students who live in Dublin 15 still do not have a confirmed special education placement for September 2025? I am including in that children who have been referred to as being on a pathway to a place. How many do not have a confirmed placement?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_173">There is a national perspective to this as we work progressively, ensuring that all students have an offer of a school-----</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_83">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_174">I just want to know if Mr. Kearney knows the Dublin 15 number.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_175">Yes, I have a complete lens. The confines of the circular mean there is a complete national lens, broken into the three categories of special class attached to primary, special class attached to post-primary and special school. That was, in essence, the first time, with the provision of the circular from last year, that the NCSE had a national lens of that. We have a lens of a county-wide basis in that regard and are working progressively through to individual regions as well. We have worked very closely – in fact, every week – with both the Minister, Deputy Helen McEntee, and the Minister of State, Deputy Michael Moynihan, on the submission of the numbers. The data changes weekly. The enrolment numbers are changing because enrolments are a fast-moving dynamic. The Minister-----</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_85">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_176">I am just looking for a number.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_177">The numbers will come in due course. I am aware that the Minister, Deputy McEntee, is going to Cabinet in respect of the overview of enrolment trends as we close it out, and we are closing it out quickly. The Minister is going to Cabinet-----</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_87">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_178">So Mr. Kearney knows the number but he will not tell me.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_179">I know the number and I am confirming that the Minister is going to Cabinet. The Minister has previously indicated to this important committee that she will provide the data. I am confident that will happen in due course.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_89">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_180">I just wanted to know the number. I do not know why there is a lack of transparency about local representatives knowing the status on the ground.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_181">There is no issue of lack of transparency. As I indicated, the overview is with the Minister. In due course, the Minister will no doubt bring the data the Deputy requires to the attention of this joint committee.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_91">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_182">Have admissions been completed across the new primary school classes for September? We have 12 new primary special classes across Dublin West and 11 in Dublin 15.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_183">Again, to give the national perspective, school boards of management were written to in December. That was very quickly followed by patron engagement to ensure, come the week of the Easter holidays, and months ahead of time, that 399 special classes were sanctioned nationwide. That was then followed by communications from both the Department and us. Once schools were sanctioned, admissions would commence as quickly as possible. There are a finite number of schools that did not commence as quickly as we would have liked. We are working with those, ensuring that the admissions processes are sped up, with a view to ensuring that students and families are aware of placements.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_93">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_184">How many schools in Dublin 15 do not have their finalised lists for new students?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_185">What we can definitely say at this point is that most schools are running through the final numbers in terms of offering places. We are all aware of the systemic issues, in that when a school offers a place a parent has some time to respond, and that parent may take that time as it is his or her right to do in order to consider the right place for the child. That has a knock-on effect for the next parent on the list. We will not call it a delay but there is a natural process there with regard to time.</p>
+          <p eId="para_186"> There are no issues with schools that are actively enrolling students because we know they are doing their work and getting on with it. As Mr. Kearney noted, we are working very thoroughly with the small number of schools that have not completed or even commenced enrolment. The NCSE does not want children to be outside schools. We do not want schools closing before admissions commence and we do not want parents waiting until August until they receive an offer of a place. Our SENOs are working intensively with schools to try to encourage that. We also have access to waiting lists, so we can see the children who are likely to be offered places. We are cross-referencing those waiting lists to ensure we know there is a security for each child. The process Mr. Kearney referenced is precisely that - schools with different admissions times running processes simultaneously or one after the other. Schools, for the most part, have worked intensively with us to do this.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_95">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_187">I thank the witnesses for being here. We had, as they are probably aware, other bodies in earlier and some parents’ representatives. I can safely say the message we got loud and clear was that parental engagement is key to solving the issues in the system. I was glad to hear some of the comments in the opening statement, but concrete efforts need to be made to engage with those parents. What further measures, if any, will the NCSE be implementing?</p>
+          <p eId="para_188"> Of the 399 classes that have been sanctioned, how many are physically ready and how many will be ready by September? How many are staffed? How many will actually welcome students in September or perhaps later in the academic year, as was suggested to us earlier? Most important, how many have no timeline or are there any that the witnesses are not just not sure when they will open?</p>
+          <p eId="para_189"> There is a school in my constituency of Meath West, in Athboy, that was ready to open a class and pushed hard through many different channels, including me, to ask the NCSE to sanction the class. It would have stopped children travelling from Oldcastle through Athboy to get to Nobber, which although it is still Meath, is technically in the separate constituency of Meath East. Those children are travelling 45 minutes. They would have to travel 30 minutes to get to Athboy, which is still too far. Just because we are providing children with a school place, it does not necessarily mean it is in the right place. I stress how important it is that our children are educated locally, ideally with their siblings. Ironically, the school in question has to open a class now because of the new rules. On the basis of its size, it will need a fourth class anyway. This year, the parents and children have missed out, which is heartbreaking.</p>
+          <p eId="para_190"> I will stop talking because I got caught out the last time. If the witnesses can answer any of those questions, it would be great.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:30:00+01:00"/></from>
+          <p eId="para_191">I will endeavour to answer all the queries the Deputy raised. First, and it has already been referenced by the two previous speakers, parental engagement is essential to this. As an organisation, we want to know all the families who want placements for their young children. The circular last year was a significant improvement in that regard. The strengthened circular even sets out a detailed timeline in respect of the creation and putting in place of special classes. That is, of course, factored in with the NCSE knowing every single parent in the country who wants a placement for their child. Regarding the NCSE raising the profile of the organisation, and the importance and centrality of parents coming to us, we will endeavour to progress that.</p>
+          <p eId="para_192"> As I mentioned earlier, there are approximately 400 special classes sanctioned for the coming year. On the query the Deputy raised, it is 80% in terms of physical infrastructure. With regard to how we work closely with the Department of education, we focus exactly on schools in communities where the infrastructure is available. Some 20% are coming on stream, with additional modular considerations. We work on a weekly basis with the Department. We know the timeline windows in which modular facilities are being delivered. We work directly with the schooling communities on transitional arrangements, and with families supporting the transition itself.</p>
+          <p eId="para_193"> The minute a special class is sanctioned, it triggers the sanction to a school for the recruitment of staff, whether it is teaching or special needs assistant staff. The schools, as the employer of those staff, can commence its own individual recruitment campaign straightaway for that.</p>
+          <p eId="para_194"> Regarding the timelines for schools, classes, special class placements or special school arrangements not going ahead, there are arrangements for every single special class and special school placement.</p>
+          <p eId="para_195">There are timelines and project lines around that to ensure students are properly supported and in their placements as quickly as possible.</p>
+          <p eId="para_196"> On the final query on Athboy Community School, we are aware of the good work in the school and the commitment and passion of the school leadership, supported by the school board of management, in terms of additional placements being provided. We were working towards students being known to us for 1 February. The students in question were predominantly known after that date. The Deputy mentioned the provision in Meath. There are 17 new primary special classes coming on stream this year and 22 new special classes at post-primary level but more are required. Athboy Community School will be factored in for next year in the context of students already in the school who require support.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_97">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_197">Míle buíochas leis na finnéithe as ucht a bheith anseo inniu. I will jump straight in. I want to ask about specific speech and language disorder classes. The criteria for accessing these classes are discriminatory as they deny access if a child has a disability. A working group was established last June by the previous Minister for disability to revise Circular 38/2007 and remove the discrimination. However, this year it was revised in Circular 24/2025 and a new discriminatory clause was inserted stating children were only permitted if their speech and sound disorder was of an unknown origin. I am informed it was the advice from a senior speech and language therapist in the NCSE to insert that terminology into the new circular, which is still discriminatory. Why was this advice provided by the speech and language therapist working with the NCSE?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_198">I thank the Deputy for her question. The new circular has been welcomed in many areas. I take the Deputy's point on board. There is no perfect way to form this circular to include all of the students who may need a class. There is a specific number of those classes around the country which are dependent on supports from a HSE CDNT, in other words, 0.33 of a post going in.</p>
+          <p eId="para_199"> On the original circular - I will come to the new one in a moment - it was long established and well out of date. It referenced the cognitive element which was the real kicker in students accessing those particular classes. There is no intention in this circular to discriminate. However, it has to fall within particular parameters. I accept the Deputy's point in relation to denying access for students with disability but these are specific classes established for students over a specific period within an educational context, hence the wording. There are other measures in the school context to support students. While every circular has parameters, at the same time, it intends to include as many students as possible. The intention of this circular in particular was to try to remove the original circular, which was the biggest issue for students and parents.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_99">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_200">It is still extremely discriminatory. For example, children with Down's syndrome are invisible in this conversation. For some children with Down's syndrome, their IQ may be over the level where they are not entitled to be given these supports but they have a speech impediment. They are left out because it is not of an unknown origin. We need to do more.</p>
+          <p eId="para_201"> My next question is about registration of demand. Will the witnesses speak to the widely report practices of SENOs of refusing to issue letters of eligibility despite having the recommendations from multidisciplinary teams? How many such cases are there? On what basis are those decisions taken?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_202">Circular 80/2024 is very clear, perhaps for the first time, on the eligibility criteria that govern students' access to special classes. It is being improved upon in Circular 39/2025. The assumption in NEPS is that a student is able to access mainstream. To a certain extent, the assumption within Irish education is that a student can go to mainstream placement. Special class or special school eligibility is then determined by the level of complex needs. Circular 80/2024 outlined this, which was not simply the diagnosis of autism or the presence of complex needs but a rationale as to why this particular placement is required. Those three elements together form and determine the eligibility. If evidence of complex needs is not there - the diagnosis for the most part is there - alongside the rationale as to why a student should not be within a mainstream place, eligibility was not determined in that context. Our later circular, Circular 39/2025, also added the element that the student must be known to the NCSE. That is to join up planning and enrolment and for all of us to ensure that the national agency knows the students who will be placed within that context. Outside those criteria, there would not be a reason I could see why eligibility would not be determined. It very much depends on the nature of the report and the context of that report.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_203">I have a general observation in response to the two specific queries the Deputy raised. There is also the broader ambit in the set allocation of mainstream teachers. There are close to 21,000 teachers in the system now, representing the most significant investment by the State to date in the full continuum of support for young students. There are specific categories to which the Deputy alluded but in respect of overall holistic school supports for schools from a special education teacher perspective and SNA allocation, they have never been at such a high level as they are currently.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_102">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_204">I will probably speak on the same lines. On the new allocation of special classes for 2025-26, I think just over 1% and 2.3% of special classes are allocated for children with mild and moderate general learning disabilities. Is that discrepancy the same issue? Is it connected with the 2024 circular? Is there a move away from providing those specific types of special classes? How does that relate to the real move in terms of the proposal for special school places for mild and moderate general learning disabilities?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_205">There is not a move away from it as such. There is a certain level of provision with the system and that has remained static for quite a number of years. I made a similar point on the extensive support provided by the level of special education teachers and SNAs in the system. From the provision of the circular to which the Deputy alluded on mild and moderate general learning disabilities for special schools-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_104">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_206">For example, children are presenting now with a recommendation for a mild general learning disability special class. However, the SENOs will say they do not provide them.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_207">A couple of things have governed the number of classes. Classes have stayed static in some parts. Some classes have not had the numbers so the classes have gone away. There has not been demand within the system for those particular classes. For students with mild general learning disabilities, to a large extent their needs can be met within the mainstream environment. That does not go for everybody, which is why we have special schools for children with that disability and often a more complex profile. In reality, the supports required for students are, generally speaking, within the sector. The set allocation system within primary and post primary is specifically designed for students and teachers to be able to provide the resources required.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_106">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_208">I have to say I am hearing very different things. I am hearing there is a cohort of children falling through the cracks. They are being lost in the system because we do not have disaggregated information. In the first session, parents of these children said they are not being listened to by the National Council for Special Education. The EPSEN review published yesterday, which is a comprehensive piece of work, reported that 25% of parents said their contact with the NCSE was very unhelpful. Is that of concern to the witnesses? What are they doing about it?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:40:00+01:00"/></from>
+          <p eId="para_209">Obviously hearing a statistic like that is of immense concern to us. We constantly engage with parents to take the barometer of the quality of our engagement with them. Within the confines of the circulars that have been strengthened, that gives us a more immediate and streamlined access and contact point with parents. I am not for a second suggesting our quality of engagement is perfect with parents. As an organisation that is completely focused and driven by continuous improvement, we will always be trying to-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_108">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_210">There is a big difference between not being perfect and 25% saying it is very unhelpful. I am making this point respectfully. As a public representative and spokesperson for education, I am hearing from parents that the system is not providing for their children and is not listening to their concerns. It does not hear them. </p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_211">In terms of listening to parents and trying to provide supports for them, it must again be borne in mind - in terms of quickened delivery - that as of Easter over 400 special classes were actually delivered. That could only have been delivered to the extent it was by the NCSE constantly and proactively engaging with parents and working with schools to ensure the classes are sanctioned. As we work towards ensuring the placements are being delivered on stream to families and their children, that can only be achieved by direct and constant engagement with parents. Of course, we have to take on board if the quality of the engagement has to improve. We will certainly be considering trying to do that.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_110">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_212">I think the NCSE has a lot of work to do. </p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_111">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_213">I call Deputy Peter Roche. </p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_112">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_214">I thank Ms Walsh and Mr. Kearney for being here and for their statement. I had an experience recently where a student had been identified as someone who would need a special needs resource in a school in east Galway. Internally, the school did exactly what we would expect it to do, which was to make an application for the resource, but it was refused. It should not have been, but it was, and therein lies the problem. Last week, I was reminded that the school must appeal that decision. The system should be simplified. It beggar's belief that an application was made based on the needs identified. Many things were presented in the context of that case, only for it to be rejected. We then find the school will have to appeal the decision. I am not sure if that is because of the policy or if it is just that this school did not present it in the way it should have. In any event, it is traumatising for parents to have the burden of having a child who needs that special educational support, but it is quite another story when what they feel their child requires by way of intervention and support and the first steps to getting a good education is being refused. It is hard.</p>
+          <p eId="para_215"> I have a question for Ms Walsh or to Mr. Kearney. In light of the persistent delays in assessments and resource allocation reported by families and schools, what immediate steps is the NCSE taking to improve transparency, timeliness and accountability of the delivery of supports for children with special educational needs, especially those entering a new stage of education?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_216">I thank Deputy Roche. On the specifics in relation to the type of support requested, it may in that particular case have been SNA support or additional special education teaching, SET, support. There are probably two different elements and lens on each process. In terms of the individual needs of students, our education system provides for whole-school supports. If a school, for example, is looking for additional SNA support, this request will be analysed by the local SENO, who will know the students and who spends considerable time in the school getting to know them, their particular needs, the deployment practices in the school and school practices. The individual needs form is one component of that analysis. The SENOs spend significant time trying to come to a complete appraisal of it. In that particular circumstance, the school may not have agreed with the outcome and it absolutely does have a right to appeal. It might be that the rationale of the outcome, though, was that in this case additional supports were not required and school deployment might be the appropriate response. Obviously, schools are expected to cater for students with the greatest level of needs in the most efficient way. Any SENO or adviser going out to have a look will take this into account. Equally, in SET allocations, which would be more to do with teaching supports, the adviser takes all that into account, including all the individual students and their needs, alongside whole-school practices.</p>
+          <p eId="para_217"> We empathise with schools because they put considerable work into the application, parents are aware of it and then the outcome can be frustrating and deflating. We appreciate that, but there is a process there to challenge it. If an SNA allocation has not been in keeping with the expectation, we encourage schools to appeal. We are not saying our process is completely perfect, but we will give a fair hearing when it comes to the appeal. It is the same with SET. On SET, what I would say, without taking up all the Deputy's time, is that sometimes we see deployment in schools can be an issue. Particularly relating to SET applications this year, our first line out to the school is not to say "No" and nothing else, but perhaps to say "No" for now, but let us have an adviser go out to the school and sit down and go through the nitty-gritty of how the school supports students. This is often a better support than putting more of something into a school if it is not quite sure if it needs that support and deployment. The appeals mechanism is there. When schools are frustrated, this process is there to challenge a decision. Equally, however, our advisers and SENOs spend considerable time taking all those factors into account. </p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_218">I will just follow-on from Ms Walsh. In terms of a resource request, of course we know the schools do not take it on lightly. In the context of the resource request not being sanctioned, as the school perhaps sees it, as well as there being the appeals mechanism, there is also the element of the quality of engagement with the school and parents. We very much endeavour and strive to offer that constant engagement and supportive environment to schools and parents in instances like that. </p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_115">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_219">I have a few questions. I am aware of several schools looking for classes and reaching out because they recognise a need within the school population or among incoming junior infants or first years. Are schools with physical space getting priority over schools without such space, despite the fact the need might be greater in the school without the physical space? I know some building works have been sanctioned, but there are delays in this regard too. Basically, are budgetary constraints impacting schools opening classes where there is an identifiable need?</p>
+          <p eId="para_220"> Some schools do not have classes, do not want classes and are resisting opening a class. We see more classes in other schools. These could be schools that already have two classes and are then forced to open a third one, whereas other schools are trying to avoid opening classes. Can something be done about ensuring other schools open classes? I see this issue particularly in certain types of second level schools.</p>
+          <p eId="para_221"> One thing that came up from the earlier presentation was the SNA allocation being very late. Is it envisaged this will be much earlier next year? Another question concerns a case I raised with Mr. Kearney. It concerns a school that knows there is an incoming need that will require additional resources. For a school in that situation to enrol students and know it will be able to provide for their needs, it will need to know it will get an increased allocation, yet it did not. It is like a chicken-and-egg situation. How can schools accept and enrol children without knowing in a timely fashion that the resources will be there to accommodate the needs of those children?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T14:50:00+01:00"/></from>
+          <p eId="para_222">I thank the Cathaoirleach Gníomhach. I will cover the majority of the questions in relation to the placements. First, at primary level, roughly 50% of schools have special classes and 50% do not. What we worked on in a very strategic sense with our colleagues in the Department this year was collaborating and working with large primary schools that had eight teachers and one special class or no special class to ensure the larger primary schools had that degree of access.</p>
+          <p eId="para_223"> Nationally, as well, the demographics are changing at primary level. It makes sense from an Exchequer perspective, in terms of the best use of capital outlay, that we are focusing on the areas where available space is coming on stream. They are doing so. As an organisation, we conducted 1,600 site visits to schools. We constantly engage with schools. There are changing dynamics, very much along the lines of the complexities the Cathaoirleach Gníomhach alluded to. We are, though, trying to optimise the solution that caters for the level of need right throughout the country.</p>
+          <p eId="para_224"> To clarify regarding the post-primary level, there is a collective responsibility right across that level now. Some 70% of schools actually have special classes. In line with the Department's strategy, it is envisaged from a capital outlay perspective that every post-primary school in the country will have a special class, from a 500-pupil school that would two special classes, right up to a post-primary school of 1,000 capacity that would have four special classes. Over time, that will reconcile itself in terms of every single post-primary school having special classes.</p>
+          <p eId="para_225">I was a school principal myself. I know the importance of school recruitment, having an allocation of teachers and SNAs, and then progressing that as quickly as possible over the summer months, so that you can have your staff up and running. There is a general commitment right across the system, very much led by both Ministers, that the SET and SNA allocations for next year will be out earlier. As an organisation, we will fully subscribe to that. My colleague will take the Chair through the SNA appeals and review mechanisms.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_226">Any school can appeal its current SNA allocation. They can do that from this point forward and into the future academic year. Regarding schools which have not had reviews yet, in an average year to date, the NCSE would have completed about 450 SNA allocation reviews over the course of the year. This year, with our own improved processes to try to streamline it, we completed at least 1,200 SNA reviews. By the time the circular issued, we paused at that particular point, but we immediately recommenced with schools to reschedule. Anybody who has a particular need, any school that has a child coming in with a medical or complex physical need, any school that has no SNA or any school that has a number of quite complex cases can make that application to us in the standard way. The NCSE will work on those applications right through July into August and we will complete any school that wants us out there from September onwards. No school will be left without a review, particularly in those most complex of cases. To reinforce that, a school can make an appeal at any point in time. It can decide to appeal in September or October and we will take that seriously and work through that completely.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_118">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_227">One primary school, knowing that three students were going to come in, sought a review in March and thought that it was getting 0.83 of an SNA to cover the junior infants class, only to be left with just the two. I do not know what the purpose of the process was if it was just going to be ignored.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_228">I have been in direct contact with that school. It has been confirmed that the appeals mechanism will facilitate the request of the school for the resources it is seeking consideration of.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_120">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_229">That is more work for the principal, going through another process when they have gone through a process already.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_230">That work is done and will be taken into account in the context of the appeal.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_122">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_231">I thank the witnesses for coming in. With all the things I wanted to ask, it is really unfortunate that this meeting is so short. The first question I will ask is similar to what was asked before. I asked it of the Minister last week and it was asked of the other Minister the week before. The schools are closed. We should know now how many children do not have school places. Is it the witnesses' information that 3,275 children were made known to them as having a special educational need and that 8% of those do not have school places? Is there any update on that? How many children do not have a school place?</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_232">To give the context, in excess of 3,000 parents, as the Deputy rightly identified, contacted the NCSE as per the provisions of the school circular that was issued in the first week of October last year. We systematically categorised those parents with regard to need, including a special class attached to a primary school, a special class attached to a post-primary school, and a special school. Over the last couple of months, we have been systematically working through it. Progress to ensure that students are being offered placements is going well, as alluded to by both Ministers in the last engagement with the committee. It is very much continuing in that direction.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_124">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_233">Is it 260 who do not have a place?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_234">As I have said to previous speakers, the Minister is going to Cabinet quite shortly with an overview of placements. The Minister has already given-----</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_126">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_235">Mr. Kearney is probably not allowed to say by the Minister-----</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_236">It is not necessarily not allowed. It is that I am well aware that the Minister is going to Cabinet and will be reverting to us.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_128">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_237">Okay, so we will still not be told that information. We are dealing with parents who do not have school places. I absolutely appreciate the pressure that the NCSE is under. I often feel that it is easy for Government TDs to focus on the witnesses rather than on their own Ministers, but at the same time, we should be privy to this information.</p>
+          <p eId="para_238"> The primary school principals were in and made the point in their statement that schools are often pressured to open additional special education classes when other schools in the catchment have none. Why is that happening? Why have some schools been allowed not to provide any special education? Can the witnesses clarify the breakdown of religious patronage schools that do not provide special education, Educate Together and ETBs? Is there a difference? I have one other question after this.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_239">The Deputy has asked a multifaceted question and I will try to give a multifaceted answer to it. First of all, as I have alluded to in a previous reply, at post-primary level, we are working towards every post-primary school in the country having a special class. That will take time to deliver. It is well on its way to 70% of post-primary schools having special classes. Over a period of time, the remaining 30% will come on stream. To break down school patronage, a collective responsibility is being taken on board-----</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_130">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_240">Is there a difference between religious-run schools and-----</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_241">There is not, and the statistics match that. When you actually look at them, at post-primary level, there is due responsibility, collective responsibility-----</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_132">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_242">At primary level?</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_243">It is a different dynamic at primary level with school patronage, obviously, with the Catholic patronage of schools. That is reflected in the trends. They are the main promoter and subscriber of their individual schools having special classes. You are dealing with roughly 800 post-primary schools in the country. That means there are about 3,200 primary schools. It is about a 50:50 breakdown. There are different dynamics to that around the country and in large urban areas. A total of 50% of primary schools have-----</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_134">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_244">So 50% of primary schools do not have classes.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_245">Last year, as I indicated earlier, we were working with the larger primary schools that did not have a special class or that had only one special class. That is where the vast majority of efforts will be this year, to have a greater representation of larger schools having special classes, but also greater use of the available-----</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_136">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_246">How many of the sanctioned classrooms that have been talked about will be ready by September? For example, in Dublin 15, it was reported earlier that there were 16 sanctioned additional classes. Will they all be ready and open? There was a list that parents gave, including Libermann school in Dublin and others that are sanctioned. Will the special schools be ready? I know it is hard in the timeframe.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_247">I want to answer the Deputy's question as accurately as I can with the available information that I have in front of me. Collectively, at national level, we have 400 special classes sanctioned. A total of 80% of them will have their physical infrastructure up and running. As I indicated earlier, we work on a weekly basis with our Department colleagues. We have detailed project timelines relating to the delivery of modular and other infrastructural requirements for schools, and our transition-supporting arrangements with both parents and schools. The Deputy is asking about specific detail on Dublin 15. I do not necessarily have that.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_138">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_248">There was a task force in that area. We had protests and everything last year, so I thought Mr. Kearney might know.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Ms Helen Walsh<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_249">The majority of accommodation in Dublin 15 is internal. Because of the timelines for the sanction earlier this year, principals could start from that moment forward. Some of the projects are devolved, so the principals themselves are working through it and it is up to contractors and so on to get it in line. In reality, any school that has a class that was sanctioned from February or March on is in a really strong position to have that complete. There were some schools in Dublin 15 with additional modular accommodation. Some of that planning has happened from last summer, so we would expect to see that in place. For some, there will need to be contingency measures, but I would say that is on the small end.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:00:00+01:00"/></from>
+          <p eId="para_250">I suggest, because there was a targeted question about resource requirements for Dublin 15, that we come back to that and give an overview. Equally, regarding the specific question the Deputy asked about Danu, it will be coming on-site for September. It will be accommodating the immediate need for the coming year. There will also be a long-term planning perspective in that regard.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_141">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-02T15:10:00+01:00"/></from>
+          <p eId="para_251">That is a year late, in the sense of places being allocated last year.</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:10:00+01:00"/></from>
+          <p eId="para_252">Yes, and we would have been working in terms of the contingency for that. I can definitely reassure the Deputy again that from the latest information we are provided with by the Department of education at our weekly engagement with it that it will be up and running in September, but again there is a long-term planning perspective in terms of the broader expansion of the Danu school for that.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_143">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T15:10:00+01:00"/></from>
+          <p eId="para_253">I thank the Deputy. I thank Mr. Kearney and Ms Walsh for their attendance and engagement with the committee. I am conscious we have gone over time. I think we would have loved a much longer session, though the officials might not have. Anyway, I am sure we will be engaging with them again in future.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. John Kearney<recordedTime time="2025-07-02T15:10:00+01:00"/></from>
+          <p eId="para_254">We really welcome the opportunity to be present with Deputies and Senators this afternoon. We commend the engaging work they do and look forward to possible opportunities in future.</p>
+        </speech>
+        <speech by="#PaulineTully" as="#An_Cathaoirleach_Gníomhach" eId="spk_145">
+          <from>An Cathaoirleach Gníomhach (Senator Pauline Tully)<recordedTime time="2025-07-02T15:10:00+01:00"/></from>
+          <p eId="para_255">I thank Mr. Kearney very much.</p>
+        </speech>
+        <summary eId="sum_8"> The joint committee adjourned at 3.11 p.m. until 9.30 a.m. on Thursday, 10 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,299 +1,267 @@
 /**
- * Stance Extraction Job
+ * Politician Stance Extraction Job
  * 
- * Analyzes debate chunks to extract explicit political stances on topics.
- * This powers:
- * 1. Flip-flop tracker and consistency scoring
- * 2. TD ideology dimension updates (economic, social, etc.)
- * 3. Party aggregation downstream
+ * Extracts structured policy positions from debate chunks using LLM analysis.
+ * Populates the `policy_positions` table for the Politician Clone feature.
  * 
- * Run with: npm run debates:extract-stances
+ * Usage:
+ *   npx tsx server/jobs/extractPoliticianStances.ts [--limit N] [--politician "Name"]
+ * 
+ * Options:
+ *   --limit N          Process top N politicians (default: 10)
+ *   --politician "X"   Process only a specific politician
+ *   --all              Process ALL politicians (expensive!)
  */
 
 import 'dotenv/config';
 import { supabaseDb } from '../db';
-import OpenAI from 'openai';
-import { TDIdeologyProfileService } from '../services/tdIdeologyProfileService';
-import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '../constants/ideology';
+import { getOpenAIClient } from '../services/openaiService';
 
-const BATCH_SIZE = 10;
-const TOPICS = [
-  'housing',
-  'healthcare',
-  'immigration',
-  'taxation',
-  'climate',
-  'education',
-  'crime',
-  'economy',
-  'EU',
-  'Northern Ireland',
-  'agriculture',
-  'transport',
-  'childcare',
-  'pensions',
-  'defence',
-  'workers_rights',
-  'business',
-  'social_welfare',
-  'justice',
-  'foreign_policy'
-];
+// Parse CLI args
+const args = process.argv.slice(2);
+const limitArg = args.indexOf('--limit');
+const politicianArg = args.indexOf('--politician');
+const processAll = args.includes('--all');
 
-// Map topics to ideology dimensions for automatic ideology updates
-const TOPIC_TO_IDEOLOGY_MAP: Record<string, Partial<Record<IdeologyDimension, number>>> = {
-  // Economic dimension: positive = free market, negative = state intervention
-  'taxation': { economic: 1 },           // Tax discussions often reveal economic stance
-  'business': { economic: 1 },
-  'economy': { economic: 1 },
-  'workers_rights': { economic: -1, welfare: 1 },
-  
-  // Social dimension: positive = progressive, negative = conservative
-  'immigration': { social: 1, globalism: 1 },
-  'justice': { social: 1, authority: -1 },
-  
-  // Environmental dimension
-  'climate': { environmental: 1 },
-  'agriculture': { environmental: 0.5 },
-  
-  // Welfare dimension: positive = pro-welfare
-  'healthcare': { welfare: 1 },
-  'social_welfare': { welfare: 1 },
-  'childcare': { welfare: 1 },
-  'pensions': { welfare: 1 },
-  'housing': { welfare: 0.5, economic: -0.5 },
-  'education': { welfare: 0.5, technocratic: 0.5 },
-  
-  // Authority dimension: positive = pro-authority
-  'crime': { authority: 1 },
-  'defence': { authority: 1 },
-  
-  // Globalism dimension: positive = internationalist
-  'EU': { globalism: 1 },
-  'foreign_policy': { globalism: 1 },
-  'Northern Ireland': { globalism: 0.5 },
-};
+const POLITICIAN_LIMIT = processAll ? 999 : (limitArg !== -1 ? parseInt(args[limitArg + 1]) || 10 : 10);
+const SPECIFIC_POLITICIAN = politicianArg !== -1 ? args[politicianArg + 1] : null;
 
-let openai: OpenAI | null = null;
-
-function getOpenAI(): OpenAI {
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+async function extractPoliticianStances() {
+  if (!supabaseDb) {
+    console.error('❌ Supabase client not available');
+    process.exit(1);
   }
-  return openai;
+
+  const startTime = Date.now();
+  console.log('\n' + '═'.repeat(70));
+  console.log('🧠 POLITICIAN STANCE EXTRACTION JOB');
+  console.log(`📅 ${new Date().toLocaleString('en-IE')}`);
+  console.log('═'.repeat(70));
+  console.log(`Mode: ${SPECIFIC_POLITICIAN ? `Single politician: ${SPECIFIC_POLITICIAN}` : `Top ${POLITICIAN_LIMIT} by activity`}`);
+  console.log('═'.repeat(70) + '\n');
+
+  // 1. Get list of politicians
+  let query = supabaseDb
+    .from('td_scores')
+    .select('id, politician_name, party')
+    .eq('is_active', true)
+    .order('total_stories', { ascending: false });
+
+  if (SPECIFIC_POLITICIAN) {
+    query = query.ilike('politician_name', `%${SPECIFIC_POLITICIAN}%`);
+  } else {
+    query = query.limit(POLITICIAN_LIMIT);
+  }
+
+  const { data: politicians, error: tdError } = await query;
+
+  if (tdError) {
+    console.error('Error fetching politicians:', tdError);
+    return;
+  }
+
+  console.log(`Processing ${politicians.length} politicians...`);
+
+  for (const [index, politician] of politicians.entries()) {
+    console.log(`\n[${index + 1}/${politicians.length}] Processing ${politician.politician_name}...`);
+    await processPolitician(politician);
+    // Add a small delay to avoid hitting rate limits too hard
+    if (index < politicians.length - 1) {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+  }
+
+  console.log('✅ Extraction complete.');
 }
 
-interface ExtractedStance {
-  topic: string;
-  stance: 'supports' | 'opposes' | 'neutral' | 'mixed' | 'unclear';
-  summary: string;
-  confidence: number;
-  intensity?: number; // 1-5 scale of how strongly they feel
-}
+async function processPolitician(politician: any) {
+  // 2. Fetch recent debate chunks using a stratified sampling approach
+  // Instead of just the last 60, we want to cover the last 12 months to detect evolution
+  
+  // First, get the date range
+  const { data: dateRange } = await supabaseDb!
+    .from('debate_chunks')
+    .select('date')
+    .eq('politician_name', politician.politician_name)
+    .order('date', { ascending: true });
+    
+  if (!dateRange || dateRange.length < 5) {
+    console.log(`   ⚠️ Not enough debate data (${dateRange?.length || 0} chunks). Skipping.`);
+    return;
+  }
 
-async function extractStancesFromChunk(chunk: any): Promise<ExtractedStance[]> {
-  const prompt = `Analyze this political speech excerpt and extract any clear stances on policy topics.
+  const minDate = new Date(dateRange[0].date).getTime();
+  const maxDate = new Date(dateRange[dateRange.length - 1].date).getTime();
+  const oneMonth = 1000 * 60 * 60 * 24 * 30;
+  
+  // If history is short (< 3 months), just take all/most recent
+  let chunks: any[] = [];
+  
+  if ((maxDate - minDate) < (3 * oneMonth)) {
+    const { data } = await supabaseDb!
+      .from('debate_chunks')
+      .select('id, chunk_content, date, topic')
+      .eq('politician_name', politician.politician_name)
+      .order('date', { ascending: false })
+      .limit(60);
+    chunks = data || [];
+  } else {
+    // Stratified sampling: Get chunks from different quarters
+    // 1. Recent (last 3 months) - Heavy weight (30 chunks)
+    // 2. Mid-term (3-12 months ago) - Medium weight (20 chunks)
+    // 3. Old (12+ months ago) - Light weight (10 chunks)
+    
+    const now = new Date();
+    const threeMonthsAgo = new Date(now.getTime() - (3 * oneMonth)).toISOString();
+    const twelveMonthsAgo = new Date(now.getTime() - (12 * oneMonth)).toISOString();
+    
+    const [recent, midTerm, old] = await Promise.all([
+      supabaseDb!.from('debate_chunks')
+        .select('id, chunk_content, date, topic')
+        .eq('politician_name', politician.politician_name)
+        .gte('date', threeMonthsAgo)
+        .order('date', { ascending: false })
+        .limit(30),
+      
+      supabaseDb!.from('debate_chunks')
+        .select('id, chunk_content, date, topic')
+        .eq('politician_name', politician.politician_name)
+        .lt('date', threeMonthsAgo)
+        .gte('date', twelveMonthsAgo)
+        .order('date', { ascending: false }) // Gets the "newest" of the old stuff
+        .limit(20),
+        
+      supabaseDb!.from('debate_chunks')
+        .select('id, chunk_content, date, topic')
+        .eq('politician_name', politician.politician_name)
+        .lt('date', twelveMonthsAgo)
+        .order('date', { ascending: false })
+        .limit(10)
+    ]);
+    
+    chunks = [
+      ...(recent.data || []),
+      ...(midTerm.data || []), // Spread to get temporal coverage
+      ...(old.data || [])
+    ];
+    
+    // If we didn't fill our quota from history, fill up with more recent stuff
+    if (chunks.length < 40) {
+       const { data: fill } = await supabaseDb!
+        .from('debate_chunks')
+        .select('id, chunk_content, date, topic')
+        .eq('politician_name', politician.politician_name)
+        .order('date', { ascending: false })
+        .limit(60);
+       chunks = fill || [];
+    }
+  }
 
-Speech by ${chunk.politician_name} (${chunk.date ? new Date(chunk.date).toLocaleDateString() : 'date unknown'}):
-"${chunk.chunk_content}"
+  // Remove duplicates (just in case)
+  chunks = chunks.filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
 
-For each topic where the speaker takes a clear position, extract:
-1. topic: One of [${TOPICS.join(', ')}] or "other:[specific topic]"
-2. stance: "supports", "opposes", "neutral", "mixed", or "unclear"
-3. summary: One sentence summary of their position (max 100 chars)
-4. confidence: 0.0-1.0 how confident you are in this extraction
-5. intensity: 1-5 how strongly they feel (1=mild preference, 5=passionate advocacy)
+  if (chunks.length < 5) {
+    console.log(`   ⚠️ Not enough debate data after filtering (${chunks.length} chunks). Skipping.`);
+    return;
+  }
 
-Rules:
-- Only extract stances that are EXPLICITLY stated or very clearly implied
-- Don't infer stances from tangential comments
-- If they criticize a policy, that's "opposes"
-- If they praise/advocate for something, that's "supports"
-- "mixed" means they explicitly acknowledge both pros and cons
-- Skip topics not mentioned at all
-- intensity=5 for passionate statements like "absolutely unacceptable" or "we must urgently"
-- intensity=1 for mild statements like "perhaps we could consider"
+  // 3. Prepare Prompt
+  // We group chunks by date to help the LLM see the timeline
+  const sortedChunks = [...chunks].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const contextText = sortedChunks.map(c => `ID: ${c.id}\nDate: ${c.date}\nTopic: ${c.topic || 'General'}\nText: "${c.chunk_content.substring(0, 600)}..."`).join('\n\n---\n\n');
 
-Return JSON: {"stances": [{"topic": "...", "stance": "...", "summary": "...", "confidence": 0.X, "intensity": N}, ...]}
-Return {"stances": []} if no clear stances found.`;
+  const prompt = `
+    You are a political analyst building a "Belief Graph" for ${politician.politician_name} (${politician.party}).
+    Analyze their debate transcripts chronologically to identify core policy positions and consistency.
+    
+    CRITICAL: You are provided with records spanning from ${sortedChunks[0].date} to ${sortedChunks[sortedChunks.length-1].date}.
+    Look specifically for contradictions or shifts in stance over this period.
+
+    Input Transcripts (Chronological):
+    ${contextText}
+
+    Task:
+    Extract 4-8 distinct policy positions.
+    For each position, analyze if they have been consistent or if their stance has evolved.
+
+    Definitions:
+    - "stable": Consistent view over the time period.
+    - "hardening": Becoming more strict/firm on the issue over time.
+    - "softening": Becoming less strict/more compromising over time.
+    - "reversal": A clear contradiction or 180-degree turn on a previous position.
+    - "new": Only appears in very recent records (< 3 months).
+
+    Return JSON format:
+    {
+      "positions": [
+        {
+          "topic": "Housing",
+          "position_summary": "Consistently argues for state-led construction over private developers.",
+          "strength": 0.9,
+          "trend": "stable",
+          "supporting_chunk_ids": ["uuid-1", "uuid-2"]
+        }
+      ]
+    }
+  `;
 
   try {
-    const response = await getOpenAI().chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' },
-      max_tokens: 500,
-      temperature: 0.3 // Low temp for consistent extraction
+    // 4. Call LLM
+    const response = await getOpenAIClient().chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: "You are a precise political data extractor. Output valid JSON only." },
+        { role: "user", content: prompt }
+      ],
+      temperature: 0.0,
+      response_format: { type: "json_object" }
     });
 
-    const content = response.choices[0].message.content || '{"stances":[]}';
-    const parsed = JSON.parse(content);
-    return Array.isArray(parsed) ? parsed : (parsed.stances || []);
-  } catch (err) {
-    console.error('Extraction error:', err);
-    return [];
-  }
-}
+    const content = response.choices[0].message.content;
+    if (!content) throw new Error("No content from LLM");
 
-async function getPreviousStance(politicianName: string, topic: string): Promise<string | null> {
-  if (!supabaseDb) return null;
-  
-  const { data } = await supabaseDb
-    .from('politician_stances')
-    .select('stance')
-    .eq('politician_name', politicianName)
-    .eq('topic', topic)
-    .order('statement_date', { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  
-  return data?.stance || null;
-}
+    const result = JSON.parse(content);
+    const positions = result.positions || [];
 
-async function saveStance(
-  chunk: any,
-  stance: ExtractedStance,
-  previousStance: string | null
-): Promise<void> {
-  if (!supabaseDb) return;
-  
-  const isPositionChange = previousStance !== null && previousStance !== stance.stance;
-  
-  await supabaseDb.from('politician_stances').insert({
-    politician_name: chunk.politician_name,
-    topic: stance.topic,
-    stance: stance.stance,
-    stance_summary: stance.summary,
-    confidence: stance.confidence,
-    source_chunk_id: chunk.id,
-    statement_date: chunk.date,
-    previous_stance: previousStance,
-    is_position_change: isPositionChange
-  });
-  
-  if (isPositionChange) {
-    console.log(`🔄 POSITION CHANGE: ${chunk.politician_name} on ${stance.topic}: ${previousStance} → ${stance.stance}`);
-  }
-  
-  // Update ideology dimensions based on stance
-  await updateIdeologyFromStance(chunk, stance);
-}
+    console.log(`   ✨ Identified ${positions.length} positions.`);
 
-/**
- * Convert a stance extraction into ideology dimension adjustments
- * This powers the TD ideology profiles and party aggregations
- */
-async function updateIdeologyFromStance(chunk: any, stance: ExtractedStance): Promise<void> {
-  const topicMapping = TOPIC_TO_IDEOLOGY_MAP[stance.topic];
-  if (!topicMapping) return; // Topic doesn't map to ideology dimensions
-  
-  // Calculate direction multiplier based on stance
-  let directionMultiplier = 0;
-  switch (stance.stance) {
-    case 'supports':
-      directionMultiplier = 1;
-      break;
-    case 'opposes':
-      directionMultiplier = -1;
-      break;
-    case 'mixed':
-      directionMultiplier = 0; // Mixed views don't shift ideology
-      return;
-    case 'neutral':
-    case 'unclear':
-      return; // No ideology update for unclear stances
-  }
-  
-  // Calculate intensity factor (1-5 → 0.4-1.0)
-  const intensityFactor = 0.4 + ((stance.intensity || 3) - 1) * 0.15;
-  
-  // Build ideology adjustments
-  const adjustments: Record<string, number> = {};
-  for (const [dimension, baseValue] of Object.entries(topicMapping)) {
-    // Raw delta: direction × base mapping × intensity
-    // Scale to ±0.3 max (the TDIdeologyProfileService will further cap this)
-    adjustments[dimension] = directionMultiplier * (baseValue as number) * intensityFactor * 0.3;
-  }
-  
-  // Apply to TD ideology profile
-  try {
-    await TDIdeologyProfileService.applyAdjustments(
-      chunk.politician_name,
-      adjustments,
-      {
-        sourceType: 'debate',
-        sourceId: chunk.id,
-        policyTopic: stance.topic,
-        weight: 1.0,
-        confidence: stance.confidence,
-        sourceDate: chunk.date,
-        sourceReliability: 0.95 // Parliamentary debate = high reliability
-      }
-    );
-    
-    console.log(`   📊 Updated ideology for ${chunk.politician_name} from ${stance.topic} stance`);
-  } catch (err) {
-    console.error(`   ❌ Failed to update ideology: ${err}`);
-  }
-}
-
-async function processChunks(): Promise<void> {
-  if (!supabaseDb) {
-    console.error('❌ Database not available');
-    return;
-  }
-
-  console.log('🔍 Starting Stance Extraction Job...');
-  
-  // Get chunks that haven't been processed for stance extraction
-  const { data: chunks, error } = await supabaseDb
-    .from('debate_chunks')
-    .select('id, politician_name, chunk_content, date')
-    .not('id', 'in', 
-      supabaseDb.from('politician_stances').select('source_chunk_id')
-    )
-    .order('date', { ascending: false }) // Process recent chunks first
-    .limit(BATCH_SIZE);
-
-  if (error) {
-    console.error('❌ Error fetching chunks:', error);
-    return;
-  }
-
-  if (!chunks || chunks.length === 0) {
-    console.log('✅ No new chunks to process');
-    return;
-  }
-
-  console.log(`📦 Processing ${chunks.length} chunks...`);
-
-  let stancesExtracted = 0;
-  let positionChanges = 0;
-
-  for (const chunk of chunks) {
-    const stances = await extractStancesFromChunk(chunk);
-    
-    for (const stance of stances) {
-      if (stance.confidence < 0.6) continue; // Skip low-confidence extractions
+    // 5. Upsert into policy_positions
+    for (const pos of positions) {
+      // Clean up IDs (ensure they exist in our list)
+      const validIds = pos.supporting_chunk_ids.filter((id: string) => chunks.some(c => c.id === id));
       
-      const previousStance = await getPreviousStance(chunk.politician_name, stance.topic);
-      await saveStance(chunk, stance, previousStance);
-      
-      stancesExtracted++;
-      if (previousStance && previousStance !== stance.stance) {
-        positionChanges++;
+      // Calculate time span from the supporting chunks
+      const supportingChunks = chunks.filter(c => validIds.includes(c.id));
+      const dates = supportingChunks.map(c => new Date(c.date).getTime()).filter(d => !isNaN(d));
+      const minDate = dates.length ? new Date(Math.min(...dates)).toISOString() : null;
+      const maxDate = dates.length ? new Date(Math.max(...dates)).toISOString() : null;
+
+      const payload = {
+        politician_id: politician.id,
+        topic: pos.topic,
+        position_summary: pos.position_summary,
+        strength: pos.strength,
+        trend: pos.trend,
+        key_quote_ids: validIds,
+        time_span_start: minDate,
+        time_span_end: maxDate,
+        updated_at: new Date().toISOString()
+      };
+
+      const { error: upsertError } = await supabaseDb!
+        .from('policy_positions')
+        .upsert(payload, { onConflict: 'politician_id,topic' });
+
+      if (upsertError) {
+        console.error(`   ❌ Error saving ${pos.topic}:`, upsertError.message);
+      } else {
+        console.log(`   💾 Saved: ${pos.topic} (${pos.trend})`);
       }
     }
-    
-    process.stdout.write('.');
-    
-    // Rate limiting
-    await new Promise(r => setTimeout(r, 500));
-  }
 
-  console.log(`\n✅ Done! Extracted ${stancesExtracted} stances, found ${positionChanges} position changes.`);
+  } catch (err) {
+    console.error(`   ❌ LLM/Processing Error:`, err);
+  }
 }
 
-// Run the job
-processChunks().catch(console.error);
-
+extractPoliticianStances().catch(console.error);

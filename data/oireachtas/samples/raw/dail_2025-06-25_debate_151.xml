@@ -1,0 +1,833 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_climate_environment_and_energy"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-30" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="BarryHeneghan" href="/ie/oireachtas/member/id/Barry-Heneghan.D.2024-11-29" showAs="Barry Heneghan"/>
+        <TLCPerson eId="CiaranAhern" href="/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29" showAs="Ciarán Ahern"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="MalcolmNoonan" href="/ie/oireachtas/member/id/Malcolm-Noonan.D.2020-02-08" showAs="Malcolm Noonan"/>
+        <TLCPerson eId="MarkDuffy" href="/ie/oireachtas/member/id/Mark-Duffy.S.2025-01-29" showAs="Mark Duffy"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM AERÁID, COMHSHAOL AGUS FUINNEAMH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Climate, Environment and Energy</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CiaranAhern">Ciarán Ahern</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LorraineCliffordLee">Lorraine Clifford-Lee</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MalcolmByrne">Malcolm Byrne</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MarkDuffy">Mark Duffy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaDaly">Pa Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MalcolmNoonan">Malcolm Noonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#BarryHeneghan">Barry Heneghan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NoelODonovan">Noel O'Donovan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Gillian Toole.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#NaoiseOMuiri">Teachta / Deputy Naoise Ó Muirí sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Carbon Budget: Climate Change Advisory Council<recordedTime time="2025-06-25T12:30:00+01:00"/></heading>
+        <speech by="#NaoiseOMuiri" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T12:30:00+01:00"/></from>
+          <p eId="para_15">Apologies have been received from Deputy Réada Cronin. No. 1 on the agenda is engagement with the Climate Change Advisory Council, CCAC, on carbon budgets, which is the purpose of our meeting today. The carbon budget represents the total amount of emissions that may be emitted in the State in the five-year period, measured in tonnes of CO2 equivalent, under the Climate Action and Low Carbon Development Acts 2015 and 2021. Dáil Éireann referred the latest carbon budget programme, covering 2031 to 2035, with a provisional budget proposal for 2036 to 2040, on 20 May 2025. We are required to report back to Dáil Éireann by 6 October.</p>
+          <p eId="para_16"> I welcome the following witnesses to our meeting. Ms Marie Donnelly is online. She is chairperson of the CCAC. Mr. George Hussey and Ms Meabh Gallagher are the secretariat manager, and carbon budgets team lead, respectively, for the CCAC. They are all very welcome.</p>
+          <p eId="para_17"> I ask everybody to make sure they have their mobile phones either on silent mode or switched off. Before I invite representatives to make their opening statements, I advise everybody of the following in respect of parliamentary privilege. Just bear with me as we have to go through this. Witnesses and members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in any such way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of that person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_18"> With regard to the way the meeting will operate, I will invite the witnesses to make an opening statement for a maximum of five minutes. Once that has been delivered, I will then call on members of the committee in the order in which they indicate to me to put their questions. This committee operates a rota that provides each member with an initial six minutes to engage with our witnesses. It is important to note that the six minutes is for both questions and answers, so it is essential that members put their questions succinctly and that witnesses are succinct in their responses. When all members who have indicated have had their initial engagement, and time permitting, we will do a second round, where each member will have to up to three minutes for both questions and answers. Please note that we have a limited duration for the meeting and, therefore, the times must be strictly adhered to. I ask everyone to be focused on their contributions.</p>
+          <p eId="para_19"> I call the CCAC representatives to deliver their opening statement, which will delivered by Ms Marie Donnelly online, as chairperson.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:30:00+01:00"/></from>
+          <p eId="para_20">I thank the committee for the invitation to join today. I hope the screen and the sound work okay. We have given a written opening statement. It is a little long, so with the Chair's indulgence, I will just identify some of the key points from it but we will happily take questions on any of the elements of the opening statement or indeed any other questions that might arise.</p>
+          <p eId="para_21"> Why are we are here today? The council, as required by the legislation, has come forward with recommendations for carbon budget 3, as we call it. This is from 2031 to 2035. We had a provisional one and now we are coming back with a definitive proposal, as well as a provisional proposal up to 2040. We are required to do that by the legislation. We came out with that just before Christmas, which was in time for the deadline.</p>
+          <p eId="para_22"> What are we proposing? In essence, we are proposing a pathway that will allow Ireland to achieve climate neutrality. By “climate neutrality”, we mean that Ireland would no longer be contributing to global warming. It is a key element of the Paris Agreement. In that context, we have set out some numbers just to refresh. For carbon budget 1, we had a maximum emissions quantity of 295 MtCO2eq. Carbon budget 2 was 200 MtCO2eq, so we can see it is reducing. For carbon budget 3, we are proposing and recommending 160 MtCO2eq, and for the provisional carbon budget 4, we are recommending 120 MtCO2eq. We can see that, over the period of time, the amount of emissions provided for and allowed within a carbon budget declines, which will allow us to get to a trajectory that will achieve the objective of the legislation, which is climate neutrality - in other words, we would no longer be contributing to global warming. In that context, I wish to say how much the council appreciates the support we received from the members of the carbon budget working group. This was a number of experts drawn from across academic and other institutions in Ireland. It is a testament to their knowledge, skill and expertise, as well as their time commitment, that we were able to do the kinds of analysis we did and that allowed us to come forward with this recommendation. I thank them very sincerely for that.</p>
+          <p eId="para_23"> A key element of our recommendation, and probably pivotal in this context, is the message we have been making as part of our recommendations for the past number of months now, which is that Ireland needs to phase out and ultimately eliminate fossil fuels. Fossil fuels, for the most part, are imported. We spend plus or minus €9 billion a year importing oil, diesel and gas. We cannot be sure of the supply. Indeed, just over the weekend there were some jitters in the energy market. We did not know whether supply would be continued if the Strait of Hormuz was closed. We did not know whether prices would vary. We are very vulnerable in terms of the amount of fossil fuels we use.</p>
+          <p eId="para_24"> It is also an issue that fossil fuels are more than half - nearly 60% - of the emissions we have in the country. The opportunity does exist because we have our own natural resources that allow us to have energy in a sustainable way but not from fossil fuels. We put much emphasis in our recommendation on this pivotal act, which is to phase out and ultimately reduce fossil fuels, and instead use our own sustainable energy for the energy services we have in society and in our economy.</p>
+          <p eId="para_25"> Clearly, we need very urgent action. We cannot wait.</p>
+          <p eId="para_26">Our carbon budget puts a limit on the amount of emissions that we can emit over a period. The impact of when those emissions come out is also important. Going from 100%, 100% and 100% over the first three or four years to zero actually creates more global warming than if we decline on a routine basis, preferably at an early stage, through the emissions we give out. In that context, urgent action is needed. We have the figures for where we are today. We have the projections from the EPA about where we are likely to be by 2030. As the committee is aware, we recently did an analysis with the Irish Fiscal Advisory Council of the implications of Ireland not achieving not just our own national legislation but indeed the targets that have been set for us at a European level. In that context, the message we are trying to get across is that it is better to spend the money now rather than to pay fines and compliance costs later on. Let us get the benefit from it now, as soon as possible, so that we can all benefit in the country.</p>
+          <p eId="para_27"> This, of course, will require real political leadership. It means making decisions about investments for the transition. A key issue will be infrastructure investment but also investments in upskilling and indeed reskilling of people and businesses, as well as the introduction and adoption of new technologies. In that context, for example, the national development plan, NDP, review, which is due next month, will be key in addressing how the planning aspect of our economy and society can support the transition in a less impactful way on citizens by virtue of the policy decisions that are taken. All of this can only happen with the participation, active and otherwise, of the people of Ireland. We need comprehensive decision-making. This quest for a sustainable society where we have managed control of our cost of living, with reduced emissions and therefore no further contribution to global warming, can only happen when people are involved, are part of the solution themselves and are supported in what they do to make the transition happen. As we have said before, in this transition, we cannot afford to leave anybody behind.</p>
+          <p eId="para_28"> That is a quick canter through our opening statement. I am happy to deal with any aspect in more detail or indeed go through any of the detail of the opening statement that I have not covered thus far.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_3">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_29">I thank the witnesses for their work and contribution. Their objective is clearly to move Ireland away from fossil fuels. For that to happen, we need to have a sufficient number of renewable energy sources. My view is that we need an abundance of energy to be able to meet all of the needs of the country going into the future. Do the witnesses think as a State that we are moving quickly enough to meet our renewable targets? What more does the State need to do to ensure that we can?</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_30">I thank the Deputy for the question. He has pointed to one of the key elements of our proposal, which is the necessity to have our own sustainable energy available to us. We had targets up to 2030 for the roll-out of onshore wind and solar. Unfortunately we are not on track for those. We are considerably off-track on our targets of 9 MW of wind and 8 MW of solar. We have considerable delays. We have many structures in place to achieve that but it is just not happening fast enough on the ground. Those targets are not just targets for the sake of it. They have been put together to match the energy demand in the country, to allow us to become closer to self-sufficiency in energy by achieving those targets. What are the areas-----</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_5">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_31">When does Ms Donnelly reckon we might actually reach those targets if we continue going as we are at present?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_32">I think it is very unlikely that we will achieve our current targets by 2030. For the moment, I have not even mentioned offshore wind. Focusing on onshore wind and onshore solar, which is what we would use in our own society and our own economy, we are not on track and we are looking at some years past 2030 before we can achieve that. We can change it, of course. It is in our gift to decide that we will roll out more onshore wind, more solar and indeed more microgeneration to support individual households and businesses, to get us closer to the point where we will be able to be self-sufficient in our own energy into the future, but that will require a significant change in some of the provisions that are currently happening. We have the renewable electricity support scheme, RESS, auctions where we have pricing for the competitive bids on both wind and solar. We have delays in access to the grid. We know we have difficulties with the grid, which needs to be reinforced as a matter of urgency. We know we have difficulties with planning, where planning decisions have changed halfway through the development process of projects. Stability into the market, assurance of stable policy and application of stable policy is key in order to ensure that we get sufficient investment on the ground to deliver the targets that we need.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_7">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_33">Ms Donnelly is saying that we will not meet the targets by 2030. If we are to meet the onshore targets by 2032, and I still hope we can meet the offshore targets by 2032, what are the three things that Government needs to do and prioritise?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_34">We need to ensure that when decisions are taken with regard to access to the grid and planning, the provisions of section 15 of the Act are taken into account. This has recently come to the fore. It has not been implemented in a very strict sense up until now. It is important that all public bodies in particular follow the provisions of the legislation and take into account the impact of their decisions on our emissions. That is a key issue. There is a second issue where we need to be able to talk to people and explain why we are making this transition. Why is there a wind farm going up down the road from people and what does it mean for them and their society? We may need to think about the community support benefit schemes to ensure that they give long-term benefits to communities, not just short term, which has tended to be the case up until now. A third area is that I believe it is important that once projects are in the pipeline, either they are processed through the RESS auction system or they are fed into a corporate power purchaser agreement system in order that they can be implemented, developed, built and energised as quickly as possible.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_9">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_35">Why in Ms Donnelly's opinion are we not meeting our offshore targets?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_36">We are somewhat behind on some of the legislation and policy provisions for offshore. As the Deputy knows, one of the five offshore companies has now pulled out. The challenge that we will face is that we are in competition with other markets that are developing offshore wind, which had experience in offshore wind. I am looking, for example, at off the east coast of the UK or the North Sea near Denmark and Germany. We will be innovators in going out to the Irish Sea. It is a high-risk strategy and we need to ensure that the policies are not only in place but are carefully, thoroughly and precisely followed to support the flow of investment, because these will be big investments and we need to have clear policy positions coming from Government, supporting that level of investment.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_11">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_37">Does Ms Donnelly think that we can still make some of those targets and by when?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_38">We definitively can make some of those targets. I am somewhat sceptical that we would do it by 2030 but I think we will be able to get offshore wind off the east coast in the early part of the next decade. That will be significant because the proximate nature of offshore wind on the east coast is important with regard to the level of demand for energy on the east coast. They will fit together well. It is a priority for the Government to make the policy known, to publicise it, deliver on it and reassure investors that we are sticking to the line and we are delivering.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_13">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_39">I thank Ms Donnelly for the presentation. I have a couple of questions. To follow on from Deputy Byrne, it is clear that it will be difficult, and probably impossible, for us to meet our offshore wind targets at this stage, but there will be some offshore wind coming online. Does Ms Donnelly believe that energy should be prioritised for households?</p>
+          <p eId="para_40">At the moment, the Government is very focused on the increased demand from data centres and other large energy users and enabling a sort of privatisation of renewable energy. From my perspective, that renewable energy should go to households first. It should displace existing fossil fuel usage and not just meet increased energy demands from an ever-growing industry. Perhaps I could have some comments on that, please.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_41">The council is on record as recommending to the Government that both EirGrid and ESB networks apply strategic prioritisation in granting access to the grid. Up until now, we have always operated a system of first come, first served. While that is very equitable, it means that an individual house somewhere in the country - I do not mean this disrespectfully - can sometimes get priority over a factory, hospital or some other energy user. We have recommended that the Government apply a system of prioritisation for access to the grid. It will be a Government policy to decide what is the ranking of the priority. I would imagine that vulnerable elements, such as schools, hospitals and nursing homes, would be priority areas. It could well be that critical infrastructure aspects would also be a priority. For example, support to the data centre that supports An Garda Síochána would or could be considered a priority area. That would be a decision for the Government as to how it would rank the prioritisation.</p>
+          <p eId="para_42"> From the perspective of residential homes, there are two very important aspects. First is the roll-out of microgeneration, where people can afford it, and having it provided to social houses. This is an important element of supporting individual residential outlets in terms of their own electricity generation and consumption. The second issue is not investing in the grid and the development of our renewable energies. Not only will industry be challenged, but households will as well. It is a national priority to invest in the grid and the generation of sufficient power, be it onshore or offshore. We have already asked for strategic prioritisation for the two regulated entities in this space.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_15">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_43">Following on from that, the current analysis says that 30% of our electricity demand will be going to data centres. However, that is prior to any consideration of AI and how that will influence the industry and a shift in Government policy towards being more open to data centres. Does Ms Donnelly believe this is consistent with our ability to meet our emissions targets and the provisions of the Act?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_44">This is an issue, as the Deputy can imagine, that the council has discussed at great length. We have a very clear view - we have published this as our position - that because they are large energy users, data centres coming on stream should already have a corporate power purchase agreement in place and be energised to the value of the energy that they are going to use in order not to displace renewable energy coming onto the system.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_17">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_45">I apologise for talking over Ms Donnelly but I am really conscious of the time. On that point, there is only a certain amount of ability, even from a construction perspective and a planning perspective, for us to get offshore or other renewable energies up and running. We are already hugely constrained. If we have data centres looking to set up their own wind farms so they can energise themselves, does Ms Donnelly not see that as an issue, in that it is displacing the ability of other entities to provide energy to residential homes and the normal operations of a state?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_46">The Deputy is pointing quite correctly to the stress the grid is currently under. Our grid needs considerable investment and reinforcement to be able to take this power. It is very important that we understand that corporate power purchase agreements, PPAs, private wires and hybrid connections are key elements in delivering the volume of energy that will be needed. The dilemma is that, as we go forward in this transition, there are what are called the three "Ds" we must keep in mind. We are very strong on the first, which is decarbonisation. This is sustainable energy using our own natural resources. The second is decentralisation. This includes corporate PPAs wherever they are located but also residential rooftop solar at business and home levels. The third area is digitalisation. Many of the changes to the ways we will live and work will require automation. Automation will come from things like data centres. We are in a little bit of a catch-22 situation here. In a way, we need them but we do not necessarily need to have them coming on stream, for example, with their own fossil fuel-powered sources, which the council is very opposed to. We are very keen that the amount of and rate at which energy is coming on stream is managed in line with our capacity to generate sustainable electricity.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_19">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_47">I thank Ms Donnelly.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_20">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_48">I thank the council members for attending and giving us the benefit of their expertise. Obviously, they have done an incredible amount of work in getting the report to us. That has to be commended. On a very high-level basis, I have questions about some of the methodology the council has used. I understand that, between this report and the council's most recent budget, the council has moved from using the Paris test to a temperature neutrality test. I am interested to hear the witnesses' thoughts about why it has changed from one to the other. Perhaps the council members could address this first.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_49">I could start on this one but Ms Gallagher and Mr. Hussey are considerably more expert in this space than I. I will explain it at my level of understanding. As we went into the whole process of developing the recommendations for carbon budgets 3 and 4, CB3 and CB4, we looked at the distinctive greenhouse gas emission profile of Ireland. As members will be aware, Ireland has a much higher level of agricultural emissions than would be the case almost anywhere else in the world. I believe that New Zealand is the only other country that would have the numbers we do. Upwards of 30% to 40% of our emissions are coming from agriculture, be it from animals or the land. If we look at the European Union, the closest member state to us in this regard would be the Netherlands at 14%. We have a very distinct profile of emissions. We wanted to be sure that we were using the right models in order to allow us to take that into account. I will use some technical words here and ask Mr Hussey and Ms Gallagher to explain them. On this occasion, we have used what are called reduced-complexity climate models. These models, which are now being used also by the IPCC, allow us to assess the dynamic changes coming from emissions of different greenhouse gases. They also allow us to put our emissions into the context of global emissions. By doing that and using the fair climate model, it allows us to look at emission scenarios that achieve the Paris temperature goal. Is is not that we abandoned Paris <i>per se</i>. In fact, we are very insistent on the Paris objective of temperature neutrality, but we have access to newer models now that can reflect the actual situation in Ireland better. This is why we use those.</p>
+          <p eId="para_50"> I will ask Mr. Hussey or Ms Gallagher to explain the models a little bit because, as was rightly pointed out, they are quite complicated.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_51">For the first programme of carbon budgets, the primary constraint on that proposal from 2021 out to 2030 was the climate Act target of a 51% reduction in emissions. For this proposal, the council is looking at the post-2030 period. The primary constraint on the budgets this time is the overall objective of the national climate objective and climate neutrality, which the council has been explicit in its interpretation as temperature neutrality and the achievement of emissions reductions so that Ireland is no longer contributing to global warming. For the first programme, the Paris test was carried out as a simple scaling of Ireland's contribution to global warming. This time around, we have had access to a more nuanced analysis using these reduced-complexity climate models, which allows for a more accurate assessment of Ireland's historical contribution to global warming in the first instance.</p>
+          <p eId="para_52">It also includes F-gases and aerosols, which were more poorly represented in the first analysis. As Ms Donnelly was outlining, it also allows us to explore the impacts of emissions reductions across the different main greenhouse gases and look at that temperature impact of early reductions in methane emissions. Finally, this approach has allowed us to take account of and consider the context of global emissions pathways and specifically take account of global emissions pathways that would constrain global warming to 1.5°C in line with the most ambitious element of the Paris temperature goal.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_23">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_53">I thank Ms Gallagher for explaining that. We might come back to it later. Very briefly, the council has spoken about a fossil fuel phase-out by 2039 and this being an absolute imperative. Is the Government's decision to overturn its policy on the importation of fracked gas and the construction of new fossil fuel infrastructure by way of LNG terminals compatible with our imperative phase-out of fossils fuels by 2039? Has the council had any engagement with the Minister in relation to this change of policy and how it impacts on our carbon budgets? </p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_54">We have, of course, met with the Minister on a number of occasions. The council has not actually issued a statement so in this context, I am speaking from my own perspective. I understand the rationale and logic of saying we should have LNG storage because at the moment we receive all of our gas from the twin pipes coming from Moffat in Scotland. In the event these pipes were damaged, either by accident or design, we would have no gas. Currently, we have no capacity to store gas on the island. Given the importance of gas in our economy today, that would have devastating consequences for houses which rely on gas for heating, for example, and on industry that relies on gas for industrial processes. The economic impact of a disruption to our gas supply would be very severe. We have to acknowledge that and accept that this is the case today. The key issue is that depending on the timing of the roll-out of such a decision and also the speed at which we reduce the use of fossil fuels, it may well be that the necessity of storage will reduce over time if we deliver on our proposal of phasing out fossil fuels and instead use renewable gas that we can produce, for example, through anaerobic digestion, here in the country as the backup and support to our sustainable electricity system. It is a question of timing. We have about 15 years to phase out fossil fuels. If we did it in five years, clearly we would not need an LNG terminal. If we do not do it in 15 years, we possibly would need it and therefore, as I understand it, the decision of the Government was taken on that basis. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_25">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_55">The next speaker is Deputy Ó Cearúil. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_26">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_56">I thank Ms Donnelly, Mr. Hussey and Ms Gallagher for being here and for the opening statement. </p>
+          <p eId="para_57"> Touching on what Deputy Ahern has alluded to regarding the elimination of fossil fuels by 2039 as stated in the opening statement and also relaying back to Deputy Byrne's questions around the reality of meeting our onshore and offshore renewable energy targets by 2030, particularly when it comes to onshore, how can we square the circle and stand over the ambition to eliminate fossil fuels by 2039 if we cannot match our energy demands through renewables by that stage? </p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_58">The simple answer is that by 2039, we not only can, but must match our energy demands with sustainable electricity. We have a constraint and it may be challenging to get 5 GW of offshore wind in place between now and 2030 but it should be achievable in the early part of the next decade. As we continue to roll out both onshore wind and solar, and microgeneration of solar, we will be able to match our energy demand with sustainable electricity, certainly by 2039. The key issue in this context is the sector in which emission reduction is the most challenging and that is the transport sector. We have mechanisms in place to substitute quite effectively fossils fuels in our heat demand, be it at home or in many parts of industry. The real challenge we are facing is in the area of transport, where we have a very high share of our privately owned fossil fuel vehicles and these are giving emissions coming from petrol or diesel. That is one of the reasons, and the Deputy may have heard the council recently coming out with a chapter on transport, we are really looking for out-of-the-box ideas for the transition of our transport system into low- or zero-emission possibilities. That is why we wanted to have the opportunity for lower-income households, particularly those who are removed from public transport options, to have additional supports so that they could buy EVs and not just reduce emissions, which we are concerned with, but more importantly reduce their annual cost of operating their transport by as much as €1,500 a year. That is what we are looking at. There are mechanisms and there are stages that can be taken. We have provisions, as the committee will know, at European level for zero-emission vehicles to be put on the market from 2035. That means our fossil fuel fleet will be out of date by then and we will have to do something. Our recommendation is to start moving people into low- and zero-emissions transport possibilities now so that they can get the benefit from now and not wait into the middle of the next decade. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_28">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_59">I thank Ms Donnelly. She will be happy to know I am moving to an electric vehicle next week. </p>
+          <p eId="para_60"> I have a question related to the private wires Bill. There is a lot of conversation and debate around the energy use of data centres, notwithstanding the expansion of artificial intelligence and the competing demands there. From my perspective, the private wires Bill should, in essence, allow data centres to create renewable energy on-site that would allow them to maintain the energy needs they have while not drawing from the main grid. Has the council analysed the beginnings of the private wires Bill? Will the witnesses share any thoughts they have on it and how it could contribute to our targets?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_61">I can point to the fact that it is about three, if not four, years ago that the council was recommending the Government to bring in the possibilities for both private wires and hybrid connections. I suppose I cannot name names but in my own part of the country we have a very large manufacturing facility - it is not a data centre; it is actually a pharmaceutical company - that has set up its own solar farm across the road. However, the question is how you get the power from one side of the road to the other side of the road if you do not have access to private wires. That is just a micro-illustration of some of the initiatives industry itself is making. This possibility of private wires, properly managed, is key in that context, as indeed is this whole concept of hybrid connections where you could perhaps have wind and solar batteries in the same location rather than having separate locations for them. Innovative approaches to how we manage our electricity system in a safe and efficient way are key to delivering the efficiencies and the sustainable energy system we need into the future. I have not looked at the specifics of the Bill. I do not know whether my colleagues have done so and they may be able to comment. Certainly, the council has called for this on a number of occasions.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_62">Do the witnesses have any comment on the Bill? No. Okay. I call the next speaker, Senator Noonan.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_31">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_63">Cuirim fáilte roimh na finnéithe. I commend the advisory council on the work it did with the Irish Fiscal Advisory Council earlier this year on the report on the costs of missing the targets. It is an excellent report.</p>
+          <p eId="para_64"> I have a couple of questions, one based on some of the public submissions, from Professor John Sweeney and others, as regards their conclusion around the current proposals that they have not been formulated in a way that clearly or transparently meets the requirements of the climate Act. They say it is essential that the Government urgently brings forward substantial new and additional interventions to directly and reliably reduce greenhouse gas emissions much more quickly than has been achieved to date. I would welcome a comment on that. Chair, this will require further sessions, I think, for consideration.</p>
+          <p eId="para_65"> I have a question about the Paris test and the technologies around carbon capture and storage. The report states:</p>
+          <p class="indent_1" eId="para_66">The Integrated Assessment Model scenarios with low or no CCS deployment require considerable increases in energy efficiency and near-term rapid fall in energy demand to meet commitments under the Paris Agreement.</p>
+          <p eId="para_67"> Is the council factoring that little or no deployment of CCS into the modelling and, if so, are our initial targets set out in the Act now much more onerous and urgent?</p>
+          <p eId="para_68"> I have a second question about the biodiversity chapter, where reference is made to tradeoffs at catchment scale and the positive and negative impacts on biodiversity. We are aware of these as we move to deploy ORE, but on land as well there are significant challenges when there are proposals for additional forestry. We see the impacts the two big storms have had on forestry, with 26,000 ha lost. Professor Yvonne Buckley has spoken about trees being planted today that may not be in the right place in 20 years' time. As regards the tradeoffs around nature restoration and looking at the nature restoration plan and restoring habitats to a reference period rather than optimising land use for forestry, does the council have a view on those tradeoffs as to what is better in terms of carbon reduction and sequestering carbon from restoring peatlands versus planting forestry?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_69">I will try to respond to those questions. If I leave something out, I ask the Senator to tell me.</p>
+          <p eId="para_70"> He mentioned the issue of energy efficiency. Arguably, it is as important as the phase-out and elimination of fossil fuels. Ireland has a target for 2030 to achieve in terms of energy efficiency, and this is a target in legislation that Ireland has agreed to along with other member states. We are currently in excess of that target by 20%, and this is 2025, so the direction of travel on energy efficiency is a very challenging route that we have to follow and take. Of course, as they say, the energy we do not use is the cheapest and the most sustainable energy we have. We really face a challenge in that regard. Yes, we have an issue with the data centres, but it is not just data centres. The amount of energy being used in the country in terms of final energy is going up every single year and it is costing the country not just in emissions but also in terms of money. The Deputy is absolutely right to point to energy efficiency. Demand reduction is a key element because the lower the energy consumption the easier it is to achieve the targets in our carbon budgets 3 and 4.</p>
+          <p eId="para_71"> One of the areas we deliberately did not put a great deal of emphasis on in the proposal was some of the new technologies that have been relied on in other parts of the world. The Senator refers to carbon capture and storage. Carbon capture and storage requires quite a bit of technology. It increases the costs of operation of those who capture the carbon and ultimately send it for storage. Then it requires an ongoing cost <i>ad infinitum</i> for its storage. Geographically speaking, we are not well served in Ireland with suitable cavern-type areas where we could store carbon dioxide, which probably would mean that we would have to pipe it to the coast and send it in a ship to somewhere, for example, off Norway. It is theoretically possible, possibly even technically possible, but on the current analysis very expensive. It has not actually been operated in any-----</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_33">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_72">I am sorry to interrupt Ms Donnelly. Is it not really a pipe dream anyway, globally? It is factored into the Paris Agreement but is it not really just pie-in-the-sky stuff, fictitious, in terms of its ability to do anything meaningful?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_73">I was trying to be much more diplomatic than that. That is why we have not really built them in, because, as we said, we really need to get technologies that we know can work and that we can afford and will not distort the situation. That is one of the very clear reasons we did not rely too much on those.</p>
+          <p eId="para_74"> The Senator mentioned forestry, which is a real source of concern to the council. We have a forestry programme in the country, we have a very good financial support for it and our forestry is in total disarray. We have a national target of planting 8,000 ha a year. We are currently somewhere between 1,500 and maybe, in a good year, 2,000, so we are a long way away from achieving our own targets for the current round of forestry, not to mention the targets we would need going forward to meet the nature restoration law and some of the provisions at European level.</p>
+          <p eId="para_75"> It is a real challenge to understand and deal with the reluctance of those who have land, farmers and others, to invest in forestry. We really need it. It is good not only for biodiversity reasons but also from an economic perspective in that we can grow wood here which we can use in building houses using modern methods of construction. We can use wood in other formats where we can embody the carbon in the wood products. We have an industry, we have knowledge within the sector and we have the capacity to do it but we are just not planting enough trees.</p>
+          <p eId="para_76"> Having said that, the key issue is to plant the right tree in the right place. We need a mixture of trees and a diversity of species coming through. Yes, we can have commercial trees, and yes, we can have native species. It is a mixture we need. One of the issues the council is very clear on - I am not saying it has happened - is that if any of the windblown happened on deep peat soils, we are very opposed to replanting on deep peat soils because it releases the locked-in carbon. Each site needs to be considered and developed appropriately with, as I said, the right tree in the right place, but it is a real nut to crack to know how we will be able to increase the volume of forestry being developed in the country. As I said, we have policies and we have money; it is just hot happening. It is probably fair to say that, more generally, everybody is looking for good ideas in this space.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_35">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_77">Just on that point-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_78">Sorry, Senator. You are way over time.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_37">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_79">I apologise.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_80">I will let you back in. I call Deputy Daly.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_39">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_81">The witnesses are all very welcome. I apologise but I had another thing in the Chamber so the witnesses should stop me if they think they have heard this one before. In the CCAC's recent report with the Irish Fiscal Advisory Council, it mentioned the up to €26 billion, possibly, in fines. I take it that the witnesses would probably accept that we will not meet the 2030 targets. Have they any idea how much the fines will be? Could they be even higher? Will they be lower? Will we have to pay any of these fines before 2030?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_82">The work we did with the Irish Fiscal Advisory Council was extremely interesting. We took a series of directives, legislation as they are, that Ireland is committed to and governed by at a European level where we have targets to achieve. We projected forward where we are likely to be in 2030 for each of those pieces of legislation. By the way, to go back to Senator Noonan, we did not include the energy efficiency directive, which is another one that will have a target with a compliance fine on it. We estimated what it would be to pay the compliance fines. The figures are very variable because we are trying to project what prices might be five years from now and prices will be influenced by very many things, not least of which is scarcity of supply. One would be what the cost of carbon will be in the ETS. I will not say that is predictable but there is certainly a trajectory there that allows us to build in those numbers. The second part is that in order to comply, we will need to buy credits from other member states.</p>
+          <p eId="para_83">Other member states also have tough targets to achieve, so the availability of credits is likely to be very low. That means they could be very expensive. We did it when we failed to meet our 2020 targets. We spent €150 million buying credits from Denmark and Estonia. These credits probably will not be as available in 2030 so are likely to be much more expensive. That is why the numbers are quite variable. I think €28 billion is at the outer edge. I hope it is. At this stage we just know it is going to be a lot of money. Will we have to pay some of this money in advance? We will not for these targets because they kick in in 2030 and it will be 2032 before we have the actual numbers. However, we must remember that we have still not achieved our 2020 targets. Even though we bought the first year off, we will still be confronted with the failure to achieve our 2020 targets until such time as we achieve them and we are not there yet. </p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_41">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_84">On the Government proposal for the State-backed liquefied natural gas, LNG, terminal, what are the Ms Donnelly's view on that? Is it consistent or how inconsistent is it with the lowest emissions energy scenario as is laid out in the budgets? Has Ms Donnelly any view on that? I am tight for time and want to ask one further question after that. </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_85">It is a similar question to the one from Deputy Ahern. LNG, as a security of supply option now, makes sense if we do not actually deliver on the recommendation of the council, which is to rapidly phase out fossil fuels. If we could rapidly phase out fossil fuels, we would do that more cost effectively, more efficiently, than building an LNG terminal. It is a balance of timing. Can we phase out fossil fuel so we do not depend on importing gas fast enough so we do not need the terminal or are we going to be too slow which means we will need the terminal? That is the key issue the council is concerned with. We understand security of supply is a concern but, equally, if we really did put our minds to phasing out fossil fuels, we would not need an LNG terminal. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_86">I believe Mr. Hussey wants to make a quick comment. </p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_87">To add a little bit of nuance to Ms Donnelly's response on the previous question, once the emissions accounting has been carried out for 2025, which will happen sometime in 2027, it is possible some of the payments might arise after that date. One thing that is already arising on an annual basis is the emissions trading system, ETS, flexibility that Ireland is availing of whereby we, essentially, hand back the right to auction some ETS units, which would otherwise generate revenue for the State. That is an ongoing thing every year. I wanted to clarify that. </p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_45">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_88">I raise the Commission for Regulation of Utilities, CRU, opinion given recently about data centres not having the obligation to ensure their own connections or their own energy sources. I see Deputy Heneghan nodding his head. No doubt he is going to mention private lines. What do witnesses feel about that issue in the context of the emission reductions envisaged in the carbon budgets? They are swallowing up all of the increased renewable energy being delivered. </p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_89">The council is on record on the position with regard to data centres. Our view is data centres should have their own energy supply, a corporate power purchase agreement, PPA, for example, in place and energised, prior to the commencement of its operations. We are also against the idea of self-generation on site, largely because the mechanism and fuel that would be used on that basis would be a fossil fuel and that would mean basically investing in ongoing assets that will continue to be used and would continue to give emissions. We have a position we have been very clear on in that context. We are not against data centres, but that means the managed roll-out of data centres where they have a sustainable electricity supply that is not adding to fossil fuel emissions.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_47">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_90">I thank Ms Donnelly for that answer in respect of data centres. Examples of where we may need them in certain instances were mentioned. It struck me that the managed roll-out is quite different to what we are seeing at the moment in terms of policy. That is a very significant increase. We have gone to 21% consumption. It does seem the current roll-out strategy is outpacing the renewable energy. Ms Donnelly mentioned data centres having their own corporate supply. In terms of managing the roll-out, is it not also around ensuring we stabilise the supply of renewable energy for us as a State and for the other functions and purposes we need? Part of managing that is getting to a point where we have renewable energy coming on stream sufficiently for the grid and for the many other purposes, rather than solely asking can they get enough because they are the biggest customers. They will often be able to access in ways others cannot. Is managing part of that?</p>
+          <p eId="para_91"> This relates a little bit to renewables. What about the role of the State as an actor in this space? We know, for example, other countries have state-owned and run data centres. So, we would not have questions like whether a commercial data centre might have Garda Síochána information on it. I am quite concerned by that for different reasons. That does allow data that is crucial for the functions of the State to be stabilised and to ensure we know where it is stored so it is not lost in the space of commercial actors. The witnesses talked a lot about incentivising investment in the renewable area and in offshore. Is there a role for State-led renewable energy initiatives, rather than simply incentivising commercial investment because we know that is what other countries have done and it can deliver.</p>
+          <p eId="para_92"> Regarding land use, 7% of the land is owned by the State and Coillte. We talk a lot about those targets. Would it be strategic, out of the box, proper thinking to use that 7% of the land we own not all for forestry, because much of it is peat land and not appropriate, and for the State to lead by ensuring it is all delivering for either our climate targets or our nature restoration obligations? Maybe that would be an early action that could be taken. </p>
+          <p eId="para_93"> We did not quite go into peat land rewetting. I note the witnesses stated that in all land-use scenarios they are assuming ambitious levels of rewetting, nature restoration and improved management of soils. Unfortunately, I do not know that all of the policy scenarios we are seeing from Government deliver that. So, could they clarify how crucial rewetting and the restoration of peat land is? It is in all of their scenarios. Otherwise, we would be in a worse situation. </p>
+          <p eId="para_94"> On climate justice, which is crucial, I am concerned and not just around the Paris test. In the report the council says if it had considered the moral considerations of what would be a fair and just contribution from Ireland to global emission reductions, with regard to national carbon budgets, that would have led to more stringent carbon budgets. Surely we should be doing that. That is what is consistent with the Paris Agreement. It is not about focusing just on where we will be in 2050. It is what happens in all the years before that, in our collective, global space that is available in terms of emissions. I am wondering why not have a component of fair-share. Maybe we could get copies of what it would look like if we were morally delivering our targets. That is crucial and it seems to be something that was a choice to leave that out and focus on that single end point on where are we in 2050 and whether we have achieved temperature neutrality. Can I ask if the US, and its withdrawal from the Paris Agreement, was factored in, including relating to LNG which may be coming from the US and which may not be measured? </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_95">To be fair, I am trying to give the witnesses a chance. You have asked a lot of broad questions. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_96">I will start with the issue of using the land both for rewetting and for forestry. </p>
+          <p eId="para_97">The council has repeatedly asked the Government to finalise the land use review and, when it is finalising it, to come forward with policies for the restoration and rewetting of lands so that we can start the process of achieving those outcomes. One concern we have has come up in conversation with the agricultural sector, for example. We have not had clarity yet from the Government on what the land use review will say on actions that need to be undertaken depending on the kind of land. In the case of mineral soils, peat soils and deep peat soils, for example, we need to know what actions that are beneficial to the climate, to nature and to nature restoration need to be taken. The first question is what needs to be done, the second question is how it will be done and the third question is how can landowners and farmers be supported in doing that. In some instances, it will mean a decline in productivity which is a decline in income. We have to be fair; we cannot have one sector of society suffering without suitable compensation. We have repeatedly called for the Government to finalise the land use review and come forward with policies and implementations, including timelines and support measures, for the achievement of the objectives of that exercise.</p>
+          <p eId="para_98"> On justice and the transition, we said in our analysis that the transition is not necessarily equal for all in society in Ireland because some sectors will need considerably more support than others. This is part of the just transition we need to ensure is in place. At a global level, regarding the Paris Agreement, we have focused on the temperature issue but the agreement is not just about temperature; it is also about technology transfer and financial support for the countries suffering most because of climate change. When we say we need to have a fair and just approach to the delivery of the Paris Agreement, we emphasise that climate and temperature monitoring are key elements. As a nation, we have a responsibility to support other parts of the world with technology transfer and financial support.</p>
+          <p eId="para_99"> On Government clarity on the roll-out of renewables, the incentives for commercial investment in generation are in place, consistent with the European electricity directive. The issues we are most concerned with are that the parameters around the development of renewables sites, be it wind or solar, are causing delays. The delays cost us not only emissions but also money. We have repeatedly said that the provisions for planning, for example, need to be revisited. I know we have a new planning Bill, some of which has been commenced but not all. There are provisions in this Act, in Article 15, which allow measures to move forward. At a European level, there is the recommendation of overriding public interest in areas where investments are required to ensure we can make an efficient and cost-effective transition to a more sustainable society. These are the kinds of things the council is putting some emphasis on and calling on the Government to take on board as part of its policies.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_50">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_100">Gabhaim buíochas le Marie Donnelly. Aontaím le gach rud a dúirt sí. I apologise for being late; I was speaking about the same issue. I have a question about private wire legislation. The Minister informed me it will be brought before the Government before the summer recess. When it comes in, it is important it is not used as a greenwashing tactic. I agree that the CRU's recent announcement about data centres will probably mean, especially for Dublin, that data centres will be along the M50 where the fibre interconnectivity is good. It is important that thermal power generation is used as a rare backup and that excess wind power on the grid is used to charge battery banks in the winter when solar generation is low. Data centres need to be part of the solution. If they have, for example, 10 MWh on-site battery storage, that could be used to decentralise our energy system - please God it never happens - should a situation like the one in Spain occur. I would like the council's opinion on that. I agree strongly with Senator Higgins. It is important we bring the CRU before the committee to make sure data centres do not use private wires to greenwash.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_101">On the private wires issue, it is an innovation in the electricity system as is hybrid connection. Part of the challenge across Europe, as we saw in Spain and Portugal with the recent blackout, is how to manage the stability of the grid. Part of that is ensuring the availability of power. If you produce apples in Donegal and you sell them in Dublin, you have to have a connection so the truck can get to Dublin to deliver the apples. Part of our difficulty is that our grid is just not there. We are on a single-lane highway to try to deliver electricity around the country. It is not enough. We need to ensure there is investment in the grid so that when we get investment in generation, we can distribute it. Backup supply in the system is hugely important. Ireland has invested a lot in batteries. I was at a meeting in Brussels after the incident in Spain and Portugal. There, they said that Ireland has nearly five times as many batteries as Spain which allows us to back up in a situation which unfortunately had the consequences it did in Spain and Portugal. The council fully agrees that data centres need to be integrated into the energy system in electricity supply and demand and heat. A point in our recommendation is that we need to change our heating system, particularly in urban spaces, to district heating mechanisms and draw the heat from places like data centres as feeders of heat into heating systems that can support houses, hospitals and schools. The pilot in Tallaght is working extremely well. This should be the norm; it should not be the exception. It should be a standard provision across all data centres that they have energised sustainable electricity before they commence operation, they become part of the electricity system and they supply heat to district heating systems in their vicinity to benefit the residential and commercial environment around them.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_52">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_102">I did my thesis on the Tallaght district heating system and the feasibility of waste heat utilisation. I am well aware of it and I agree with Ms Donnelly that hospitals or public buildings should be used. When we talk about data centres being integrated into the district heating system, we should bear in mind that we do not have a district heating system in Dublin other than that one. I think there are plans for a few others. The reason data centre waste heat utilisation is done so well in the Nordic countries is that they already have an established district heating system. Utilising waste heat from data centres is not always a good idea when you look at the whole life cycle and the carbon emissions of installing district heating systems. That is why what Ms Donnelly said about using it for hospitals or locations that already have built-in systems is very important. I agree with her 100%. On the issue with data centres, when will we have the CRU before the committee to scrutinise what it is coming out with? It is completely against the programme for Government.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_53">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_103">Is there a question for the witnesses?</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_54">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_104">I agree with Ms Donnelly. It is great that we have battery storage available, but are those batteries currently connected to the grid? Will private wires help them to connect more quickly? We have gigawatts waiting for connection. I was talking to a solar farm developer last week who has been waiting 18 years for connection. </p>
+          <p eId="para_105">That is the main reason I think private wire legislation would be very beneficial for us.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_106">The Deputy can take it that the batteries are connected to our grid. I know there is extensive backup to the grid coming from batteries. In many cases they are connected. It is not all batteries, of course. Since the Deputy is obviously an expert in district heating-----</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_56">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_107">I am not an expert.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_108">The council has been calling for the policy for district heating, the programme for district heating, the necessary legislation for district heating and the roll-out of the investment. We have seen that it works in other parts of Europe. It makes sense. It is an expensive investment and it is infrastructure. However, the long-term deliverable from it is very real.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_109">As a layperson, I am very reliant on the technical work that the CCAC does in formulating carbon budgets and its models, including all the assumptions that underpin that work. I read the report. With the last budget that was submitted in 2022, give or take, effectively the committee just accepted the budget. It did a lot of other good work but it really accepted the budget that the CCAC did. Is Ms Donnelly comfortable that the CCAC is using the best model? It sounds like it has improved its methods. Ms Donnelly has already covered at least one scenario where it has changed its model to make it more modern, more simple and more straightforward. Is the CCAC comfortable that it is using the very best of what is available now to come up with effectively a set of two numbers that this committee has to consider?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_110">Of course I will say "Yes" to that question. I will ask Ms Gallagher to give some idea of the composition of the carbon budget working group. The method that we used was as follows. We set up a carbon budget working group, which brought together an enormous amount of expertise within Ireland. They worked together over a period of more than a year. They did a number of analyses using different models and different scenarios. They routinely reported to the council so that we were aware of - not interfering with - what was going on. They produced the reports for the council. At the end, the council went through the final analysis to make the selection of the scenarios that would fit the criteria of the Act. That is how we came up with the numbers we have there. Mr. Hussey is the chair of the carbon budget working group. I ask him to outline who was there, what kind of analysis was taking place and what kind of expertise we were able to draw into the carbon budget working group in order to give us the best knowledge and best expertise in producing this recommendation.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_111">I will start and Ms Gallagher can come in with more detail. We do not have a single model that can do all of this work for us. We are reliant on the expertise coming in from across the sectors. We have considerable expertise on the energy side coming in from UCC and considerable expertise on land use change coming in from our colleagues in Galway. Teagasc is also heavily involved in the process. We had a number of iterations. We asked them to do this more than once so that we could feed back what it looked like to the council, get feedback from the council, give it back to them and so on. The main work of the working group was the delivery of a suite of modelling outputs. We then brought in external expertise from UCD to do the work on the temperature neutrality that Ms Donnelly and Ms Gallagher have already spoken about.</p>
+          <p eId="para_112"> The group met on 18 occasions. It contained expertise from a variety of other areas including - I will not capture everybody here - people from the biodiversity, climate justice and just transition sides, as well as from the EPA, which has a significant role. We need to take careful account of the EPA data, inventories and projections. I am sure I have forgotten somebody and I apologise to them, whoever they are. The SEAI was also deeply involved and was able to look at the outputs of one model and provide feedback. Similarly, the NTA was able to look at the outputs of the energy model and give its feedback. There is an incredible wealth of experience from both within and outside the government system. Most of it is from within but some comes from academia. They were brought together to deliver over 1,000 scenarios that our expert on the temperature neutrality side was then able to apply his modelling to in order to work out where they fit in terms of the temperature neutrality. That does not really do justice to the thing at all. Ms Gallagher might like to add a few comments.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_113">In the absence of an integrated assessment and model, three iterations allowed for sharing of assumptions or allowing the models to speak to one another in a limited way to consider aspects such as biodiversity, for example, and dependency on bioenergy. After that third iteration the council was left with over 1,000 permutations and combinations of scenarios. After the assessment of that long list of scenarios for the warming impact, there was a shorter subset in which the council considered aspects such as feasibility, compliance with EU targets and ultimately the higher ambition of the Paris temperature goal. That left the council with 15 scenarios which underpin the proposal. The report contains the detail of the assumptions underpinning those 15 scenarios. Inherent in there is the trade-off on the levels of ambition between agriculture, land use and energy. Targeting the lower level of ambition across all three would not be sufficient to deliver the budget. That provides the optionality for the Government's considerations in the approval of the budget and subsequent assignment of sectoral emissions ceilings in line with that budget.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_114">If I take it we are happy that the model has been improved, what about the charge, which I have heard a few times, that we are not taking equity in global efforts into account in the model? In layman's terms, it sounds as if based on our history, we may have an historical debt to do more based on what we have done or how we have performed in the past. What is the CCAC's assessment of that? How does that square with the model?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_115">In the reporting, the council was explicit that the reduced complexity climate modelling has shown that given Ireland's historical contribution, if all other countries were to have emitted in line with Ireland's per capita emissions, we would be in a situation of 3.6°C warming. The council has been very transparent and explicit about that issue. In assigning a carbon budget to an individual country, there are significant moral considerations. The council has set out the judgment and the assumptions that have been made there.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_64">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_116">As people have indicated that they want to come in again, we will do another round, with three minutes per individual. I remind members that the primary consideration from Dáil Éireann's perspective is 2031 to 2035 and 2036 to 2040. The period from 2026 to 2030 is set in stone. The climate advisory committee is proposing a change for the period from 2031 to 2035 and it is proposing for the first time a budget for 2036. That is what we have been asked to consider by the Oireachtas.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_65">
+          <from>Deputy John Clendennen<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_117">I thank the witnesses for coming in. As they have said, this is a transition which will be disruptive and expensive. Based on our journey so far towards carbon neutrality, what has been the biggest learning from an initiative that was proposed, discussed and rolled out but did not succeed? How have we taken that on board in terms of where we are now in this exercise?</p>
+          <p eId="para_118"> I fully agree with what other members have said about data centres. They are a reality. None of us wants our daily phone usage to be restricted and we need to find a solution there. Private wires definitely form part of that solution.</p>
+          <p eId="para_119">In terms of investment from a public versus private perspective and a cost-benefit analysis, have the witnesses any breakdown as to how they see that unfolding?</p>
+          <p eId="para_120"> I turn to disruption, which I raised in the past about moving from carbon fuel usage in home heating to full deep retrofit and potential intermediary use of HVO or other fuel sources. HVO has worked in transportation. Why can it not work in home heating?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_121">The Deputy's first question is subjective as to what has worked and not worked. It is fair to say we have marked success in the area of retrofit in Ireland. It possibly worked because we have had the carbon tax in place. That has been ring-fenced and used to finance and support people in the deep retrofit of their homes. One area that has been less successful, which I have already mentioned, is forestry. Notwithstanding the fact that we have a Government policy in place and financial backup to that policy, we have not yet succeeded in achieving the targets for forestry plantation in the country. That is an area where we and, I am sure, the Government are looking for good ideas to do something. In the macroeconomic analysis we have looked at the investment level necessary. Investment by Government would be required but clearly all investment cannot come from the Government. It will be private funding as well as Government funding. Part of that private funding will come because of Government policy. We were talking about renewables, particularly offshore renewables, and it is the framing of Government policy that attracts private investment into these large ventures that delivers results for us. It will be Government through direct funding and other kinds of grants and activities, but private funding is also a hugely important area.</p>
+          <p eId="para_122"> Hydrogenated vegetable oil is a scarce resource. There is some challenge as to whether the amount being used currently across Europe is sustainable. Investigations are ongoing in that respect. It may turn out that it is not sustainable. You can take a vat of vegetable oil, contaminate it, and it is suddenly HVO. Reliance on HVO is targeted at the hard to decarbonise areas, which would put transport higher up the list than heating, especially low temperature heating, at temperatures somewhere between 25°C and 30°C. We just do not have enough HVO, either in the country or available globally, to do a panacea solution across all our needs. We need to prioritise for it. I will pass to my colleague for some detail on the macroeconomic analysis we did.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_123">We had some macroeconomic analysis carried out by Professor John FitzGerald, our former chairperson, in tandem with the Central Bank. They looked at the energy side and the agricultural side. I cannot answer the question directly. The additional investment required across the energy scenarios examined by University College Cork will be up to 1.4% of gross national income in the 2026 to 2030 period. That is additional investment required. The response of investment to both scenarios is similar in the short term, with an investment front-load in both scenarios, rising to between 9.5% and 11% above the baseline level of investment in the period to 2030. It drives additional labour demand, putting upward pressure on wages and a deterioration relative to its trading partners as indicated. Some work has also been done on this area in the private sector, but I do not have that set of numbers available at the moment. Apologies for that.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_68">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_124">I will go back to biodiversity. The nature restoration plan is in train. Is there tracking looking at the higher ambition of the nature restoration plan to meet all of the articled requirements in terms of rewetting peat soils and woodlands, etc? Is that being given consideration in the context of potential for carbon sequestration? The witnesses are also right to say the land use plan needs to be brought forward and that it could be at odds with forestry targets. If we look at the trade-offs of restoring nature versus looking at land for planting forestry, that could be a real challenge.</p>
+          <p eId="para_125"> My next question relates to overshoot and the option to carry that over into the next budgetary cycle. How onerous is that? Does it put any extra burden on the subsequent budgetary period, given that we already have an overshoot from the previous one?</p>
+          <p eId="para_126"> Another question is on the public submission from Professor John Sweeney, Professor Barry McMullin and Mr. Paul Price. One of its recommendations states it is essential that the Government urgently bring forward substantial, new and additional interventions to directly and reliably reduce greenhouse gas emissions more quickly than has been achieved to date. I know we had a previous discussion because it is also politically challenging. That is our job. Does the council have a view on what is being recommended in that public submission?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_127">This week we had a dedicated meeting on biodiversity. We plan to come out with a specific chapter of our recommendations review on biodiversity, probably in October. I confess that one of the messages I was getting from that, which I thought was a good expression, was that biodiversity is an all-of-government and all-of-society challenge. It is hugely important in the area of emissions and what we do to capture emissions acting as a sink. However, biodiversity is of course wider than that. It is about species, animals and plants. It is about invasive diseases and invasive insects coming into the country. It is about our capacity to grow food going forward to adapt to the climate changes coming down the track. The Senator is right on biodiversity. The plan for the nature restoration law is being developed. I think the last time I saw a list of 190 actions in it. One of things we perhaps need to do is prioritise and regroup some of the actions, so we get greater clarity as to what we need to do now and how we are going to it. If it is too long a list, it will disappear into the woodwork. Biodiversity is a key part of what we are looking at and we will come out with a chapter on that in a couple of months.</p>
+          <p eId="para_128"> On the overshoot, the legislation is clear that an overshoot is subtracted from the next carbon budget. On current reckoning, we will overshoot carbon budget 1 to some extent. Carbon budget 1 was a fairly low level. We knew it would take time. We knew it would take time to make the investments and changes in the policies. It was an easier carbon budget than carbon budget 2, but the overshoot for carbon budget 1 goes into carbon budget 2 and, worse still, the overshoot from carbon budget 2 goes into carbon budget 3 and so on. It is important to remember that the carbon budget numbers we recommend are the ceilings. They are the maximum emissions possible. From that maximum will be deducted the overshoot, which then becomes the maximum we can emit. The numbers we have recommended are challenging. They become even more challenging when the overshoot is taken into account.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_70">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_129">I go back to the point on the submission from Professor Sweeney. It refers to the Government bringing forward substantial and new additional interventions to directly and reliably reduce greenhouse gas emissions more quickly than has been achieved to date. Does Ms Donnelly have a view on that?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_130">I can only agree. It is what the council has been saying all along. We need more measures, we need them urgently, we need them implemented and we need them on the ground in operation as soon as possible. We cannot afford to delay, so in that context we are entirely on the same page.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_72">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_131">I have a quick question on the Paris test. The rationale for making the change has been explained but I would think it would be quite unusual for any scientific analysis, such as a modelling programme, that covers a considerable number of years to change its methodology to that extent in the middle of the programme. It is my understanding that the first and second budgets had the Paris test assigned to it but now the council is changed that. So carbon budget 1's figure was 295 MtCO2eq and carbon budget 2's was 200 MtCO2eq. What would they have been if the council had applied the same test as it applied to carbon budget 3? I am trying to see what the impact of shifting from one test to another is.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_132">It is not that we suddenly decided to change methodology just because we thought it was a good idea. We have adopted the newer techniques that are being used by the IPCC. These newer techniques are being used because they are more comprehensive in their assessment of the impact of greenhouse gas emissions. They allow us to differentiate between short-acting and long-acting emissions, which is particularly relevant in the Irish context. They allow us to consider a wider range of emissions, for example, fluoride gases, and they allow us to scale it up at a global level. It is not that we did not like the Paris one and, therefore, decided to change methodology. This is a more comprehensive, structured approach, which is being used by the IPCC and we have followed as part of the analysis and preparation for these budgets.</p>
+          <p eId="para_133"> On the specifics of what CB1 and CB2 would look like, I am afraid I do not have those numbers. I am not too sure whether my colleagues can comment.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_134">It is important to note that the CB1 and CB2 numbers were very much driven by the 51% reduction. They were not driven by an assessment of what might we do if we were looking at the long-term objective. It is somewhat of a case of apples and oranges in terms of trying to make a direct comparison.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_135">The energy and agriculture scenarios were constrained to the sectoral emissions ceilings out to 2030 for the analysis for the second carbon budget proposal. However, as we have seen in the EPA's projections, full implementation of the climate action plan would only achieve a 43% reduction in emissions by 2030.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_76">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_136">Having read the report, is it not the case that full implementation of the climate action plan would result in a 23% reduction in emissions? It is not 42%, but 23%. Last year, the EPA calculated it to be 29%. I noticed that in the report and assumed it was a typo.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_137">We need to differentiate. The "with additional measures" scenario in the report does, as the Deputy says, reach 23%. The EPA also says in the report that quite a number of measures in the climate action plan are not included in the "with additional measures" scenario because the EPA does not have enough specific information to properly quantify them. I think the EPA made a statement along the lines of it being a conservative estimate that the inclusion of these additional measures would get the numbers to about 43% below-----</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_78">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_138">It is very unusual for the council to pluck out that 42% figure for a best-case scenario, which the EPA said it could not quantify, and not use the 23% figure. I am surprised at that.</p>
+          <p eId="para_139"> There has been a change in how the analysis is done. I am not sure if the council has already done this, but it would be useful and important for the council to provide a comparison between the methodology used now with what was applied previously.</p>
+          <p eId="para_140"> Ms Donnelly mentioned short-lived emissions but it is stated later in the document that it is no longer the State's strategy to incorporate that aspect in the analysis. An EPA report was referenced. How does that match up? If the Paris test is not being used because there are better methodologies and more explicit analysis and quantification of, say, methane in terms of short-lived emissions but at the same time the State is saying that it will not use that in its long-term strategy, how do those two match up?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_141">I must confess I am a bit confused.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_80">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_142">I found the part in the document. Ms Donnelly is saying that the council has considered scientific advice regarding the distinct characteristics of biogenic methane as it behaves as a short-lived climate forcer, which I presume is part of the reason the Paris test is no longer being applied. The council is applying the other test because it is giving more emphasis to that. However, the document then says that, while the European climate law targets include the short-lived climate forcers in their 2050 net-zero targets, Ireland's latest long-term strategy does not. That seems contradictory. We are using an analysis of our budgets that the State is not taking into account in its 2050 strategy. It does not look like I am explaining it properly. On the one hand, the council is saying that it is going to take into account short-lived climate forcers and that is why it is changing from the Paris test and, on the other hand, the State is saying we are not going to take that into account in our long-term strategy. Does Ms Donnelly not see the difference in approaches?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_143">From what the Deputy has just described, I can hear a difference in approach. I can hear what the council is doing and I hear what the Deputy says the State is doing. We are two separate bodies and it will be for the State to decide and determine whether it will continue in that way or take an alternative approach.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_82">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_144">Given that the council is including short-lived climate forcers, does Ms Donnelly have concerns about the State removing them from its long-term strategy?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_145">The Deputy has me on a paragraph now that I do not know off by heart. I find it a little surprising that the State would not take that into account because biogenic methane is a pivotal part of our emissions and, indeed, the provisions of the Act and, therefore, the State would be constrained by that just as we are. I am not too sure whether there is another issue that is related to that. Maybe my colleagues could help me out on that.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_146">I do not think so. The actions of the State will be determined by European law as well as national law. There is no particular reason methane would be taken out of either national, international or EU law.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_85">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_147">There is a line in the council's report that refers to an EPA document that was put into one of the working groups. The exact same line is in the EPA document. I do not know where this has come from. I have never heard that there is a change in the long-term strategy. This concerns me, as I do not know what it means.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_148">Perhaps we can follow it up.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_87">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_149">Yes.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_150">Is that okay?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. George Hussey<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_151">Yes.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_90">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_152">I want to discuss LNG again. Based on what Ms Donnelly said, the council's view of the State's strategic reserve is that we are only going to need that if we are failing in respect of our climate targets. The fact that the State is proposing that is in itself nearly an admission of failure on the part of the State and that we are not going to meet our targets. Has the council done any modelling on this or has it thoughts on alternatives to the floating LNG strategic reserve? In terms of additional interconnectors, battery storage and iron-air storage in Donegal, has our guests a view on that? More broadly, the State's entry into this strategic LNG reserve has opened the door to the entry of commercial LNG, as we see through Shannon LNG. Has the council got a view on whether that is compatible with our budgets from 2030 onwards?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_153">We currently import all of our natural gas from Scotland. We have no storage capacity for gas. It represents a risk for security of supply that we have no storage capacity in the country. I assume that is the reason the Government decided to establish a floating LNG facility. It is called a floating facility because it is basically a ship that can be tied into a harbour. It is less expensive to buy and easier to put in place than a built facility. If we did not need gas, we would not need LNG storage. In our electricity chapter, we asked what is the dispatchable electricity supply that will be available to the country in the next decade to balance the variable renewable generation coming from wind and solar. At the moment, we are looking at natural gas. The council is asking whether we can look at alternatives, particularly bio-energy produced in the country, such as biogas coming from anaerobic digestion. In the longer term, hydrogen might be used in the turbines to produce a back-up. These are the questions we are asking with regard to balancing the policies and the expenditures in place for security of supply.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_92">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_154">To come back to the budgets, I have a few questions. The council has told us about bringing in additional gases and extra factors but that does not really address why the decision was made not to look at the equity aspects. As I understand it, there is now a very strong focus on that moment in 2050 and whether or not Ireland will be contributing to global temperature increases at that moment rather than on the decades previous to that point. As has been said, it is not solely about temperatures. There are common but differentiated responsibilities. That is what is in the Paris Agreement. The agreement also has regard to capacity. There is the idea that those who can do more should do more, along with those who have a greater responsibility, which has been outlined. </p>
+          <p eId="para_155"> When the Chair asked, we were told that the council acknowledges climate justice as an issue. It is also narratively acknowledged in the report but it is still not clear how it figures in the calculations, mechanisms and modelling, which seem to be entirely confined to the question of what our contribution to the temperature will be in 2050. The ultimate question is who will be making use of the space we have for emissions on this planet over the next 10 or 20 years and how much of that space will be used. As has been suggested, it would be really useful to be given some sense of how a fair share would be modelled. I do not see how that is incompatible with modelling all of the gases and doing the work on temperature because it is another specific calculation. Could we get something on that? The council also mentioned feasibility. A set of assumptions in respect of feasibility were factored in. If we can factor in feasibility, surely we can factor in fairness to see how it affects the models. It would be useful for the committee to be told what those assumptions were. It was mentioned that a number of assumptions regarding feasibility were included in the model. It would be good to know what they were so we can unpick them.</p>
+          <p eId="para_156"> The council has increased the budget for the next iteration. It was going to be the equivalent of 151 MtCO2eq but it has now gone to 160 MtCO2eq. Why has the budget been increased? It just seems surprising. Perhaps it would be useful to get a model where we only hit 23% by 2040. Such a model would be very useful to us. We do not want to sign off on a fantasy budget. Why increase it so that we are going to be using more? </p>
+          <p eId="para_157"> I have one last thing to raise. Was the United States' exit from the Paris Agreement factored in given that a greater global effort may be needed from all those who are going to act to achieve that ultimate objective, keeping us within the temperatures?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_158">On feasibility, one of the things I will point to is that, as Ms Gallagher has pointed out, the modelling exercise included more than 1,000 scenarios. We reduced these to 15 in the end. Some of the provisions we applied related to temperature and feasibility. To achieve some of the scenarios would have meant a very great burden on forestry, agriculture or energy. This is where elements of feasibility and cost came into consideration, allowing us to narrow down the scenarios that would deliver the temperature outcome. One of the points included in that, which is very important to point out here, was fairness. We are delivering a pathway that allows Ireland to no longer contribute to global warming. This will require an emissions reduction of approximately 67% by 2040. The Senator has already pointed to the fact that we are not on track for that. We will need a considerable increase in effort, time and investment to bring us back on track for the 2030 and 2040 targets if we are to deliver a 67% reduction in emissions by that time. As to why CB3 was changed, I will ask Ms Gallagher to give us the technical reason for that. The US exit had been discussed but not yet decided upon by the time we signed off on our recommendation. Our recommendation was signed off around about the time the election took place in the United States. There was a likelihood the US would pull out but it was not yet certain. Perhaps Ms Gallagher will explain why CB3 changed.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_159">At the time of the proposal for the provisional CB3, it was based on a linear interpolation from 2030 out to 2050. In the years since then, we have had more up-to-date analysis and projections as to the achievement of that 51% reduction by 2030. None of those more than 1,000 combinations of scenarios achieved a 51% reduction in emissions by 2030. That resulted in a more nuanced analysis of the feasibility of emissions reductions out to 2030 and led to the increase in the budget under the final proposal for CB3.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_95">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_160">The budget plans for us not to meet the 51%.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_161">It is more so that the scenarios informing the most up-to-date proposal were not able to achieve that 51%.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_97">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_162">We have five years.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_98">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_163">To follow on from the point regarding looking at future budgets and trying to project into the 2030s, that will be critical as we experience both a green revolution and a tech revolution, which are not mutually exclusive. On the private wires policy, it might be useful for the committee to write to the Minister to ask about the status of that policy to inform us. There are a couple of elements. I raised an initial point on making sure we have an abundance of clean energy to support what we want to do, which will be critical to bringing us forward without negatively affecting the achievement of our climate targets. There is a question as to how AI can help us ensure targeted energy generation and energy use. If we are looking at the 2030s, we must consider the role of nuclear energy. To what extent has the advisory council considered nuclear energy? I could also ask about fusion power but that might be a little bit futuristic. I ask about AI's role in helping us meet our targets and about nuclear energy.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_164">When it comes to the role of AI, as I mentioned, we are looking at the three Ds, namely, decarbonisation, decentralisation and digitalisation. Of course, AI is part of digitalisation. The possibility, or ultimately the necessity, of using AI in how we use energy is hugely important. We have already identified the need to reduce our energy demand, both the volume and in terms of displacement in time. The Deputy will be aware that the peak for electricity is between 5 p.m. and 7 p.m. every day and then it is low at night. Imagine what it would mean in terms of investment in the grid and the electricity system if we had a straight line application of electricity consumption instead of curves going up and down. While we cannot achieve that by people getting up in the middle of the night to turn on their washing machines, we can do it through technology and by having automated systems that will manage these programmes for us and deliver those kinds of results. AI, therefore, can potentially be useful and beneficial for the transition and change of behaviour in a less invasive way. We will be looking at that going down the track.</p>
+          <p eId="para_165"> On the issue of nuclear energy, we did not look at the energy sources. Rather, we looked at energy in the context of its emissions. That was primarily focused on renewables. We did not build nuclear energy into the system. From my perspective - and this is a personal comment - there has never been a nuclear power station built on time or on budget anywhere in the world. If we are going to go down that route, it is an expensive proposition. The timeline for delivering it-----</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_100">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_166">I appreciate that but it can be a challenge to deliver all sorts of projects on time and on budget, not just in the energy space. It is about the principle. We have to create an abundance of energy. That is the principle. We need clean energy to do everything we need to do. It is the principle of Ireland possibly using nuclear energy in the future. We have talked about offshore renewables. They have not been delivered on time yet either. It is the question of the principle of exploring nuclear energy.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_167">Coming as part and parcel of our recommendation to phase out fossil fuels is the need to become self-sufficient and autonomous. That means using our own natural resources, which in essence are bioenergy, wind and solar. Nuclear energy requires uranium, which we do not have in Ireland. We would need to import it. It is a scarce commodity that can be jealously guarded by those who currently have it. It can be held hostage. It is possible to store it for long periods of time, however. Access to uranium in a nuclear situation creates a question mark, one which we would have to consider. Of course, we would also have to consider spent uranium and how we dump, store and manage that as an issue. That is also a concern.</p>
+          <p eId="para_168"> CERN is optimistic that it might get the first amount of energy out of fusion in 70 or 80 years’ time. It is a long haul there and uncertain it will be delivered within that timescale.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_102">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_169">A licence application for uranium mining in Donegal was rejected. We have to explore before we can say there is no uranium in Ireland. I am not coming at this on nuclear energy, however. I am following on from what Deputy Whitmore said about the EPA report, which stated the maximum reduction in emissions Ireland will deliver by 2030 is 22%, unless we invest millions of euro right now. What is the council doing in this regard? While it says this matter is the State’s responsibility, what recommendations is it making to the State when it comes to building infrastructure capacity, especially with regard to projects such as the North-South interconnector? The interconnector was identified in 2008 but it still has not been built. As I said, the recent Spanish grid failure should be a wake-up call for us all. If we need to build resilience and help people who are in energy poverty, it is estimated that the North-South interconnector will result in a reduction of approximately 5%.</p>
+          <p eId="para_170"> What is the council's opinion on the end life of solar farms and offshore and onshore renewable energy? What circular economy solutions has it suggested in that regard?</p>
+          <p eId="para_171"> I am very much in favour of green hydrogen. I understand it is difficult to contain hydrogen. If we are looking at LNG as an interim measure and we cannot row back on that, would the site for the LNG be a possible site for a green hydrogen electrolysis station? The infrastructure will already be there and we could quickly adapt it. </p>
+          <p eId="para_172"> While we have already invested €90 million into Cork Port for its expansion, we need to invest between €250 million and €350 million in that port and other ports in the west if we are to be serious about this. The giant vessels that will be building the offshore renewable energy terminals cannot get into the port at the moment. We need to expand. Is the council putting pressure on the State to make that investment? Without it, we all know what fines we will face. I ask for the witnesses' opinions on those issues.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_173">In respect of investment, the North-South interconnector is one of the areas we have identified as a priority in upgrading our grid. While the North-South interconnector is one such priority, it is not the only one. There are 43 priority projects for upgrading the grid. They need to be done as soon as possible, yesterday if possible.</p>
+          <p eId="para_174"> The Deputy mentioned the end of life of solar energy. There are two aspects in this regard. As the Deputy will know, planning provisions for some wind farms in Ireland have a duration of 15 years, which are now coming to an end. In some instances, it means wind farms will have to be dismantled. We do not have a 15-year planning period for other power generation sources. The council has identified this issue. There are 258 turbines at risk of decommissioning in the next five years because of the planning duration shortage. We have pointed this out to the Government and said that wind farms are being decommissioned because back then we said it would be a 15-year period but now we see it as a considerably longer period. That is an issue we need to address. It can be done by the Government. Solar and the recycling of solar panels, as well as wind blades, are issues currently being developed. We identified those in the chapter we did last year on the circular economy on waste.</p>
+          <p eId="para_175"> Obviously, the council is clearly in support of green hydrogen. We have already recommended to the Government in its national ports policy to take up the issue of the size and investment of ports from two fronts. First, it will support offshore wind and ultimately hydrogen. Second, from the perspective of resilience, it will benefit us. We have seen this issue with Holyhead Port which was out of action for a number of weeks following a storm. Investment in our ports is a key issue. If we are going to invest in ports, as part and parcel of that, we will have to think about and plan in advance where we are going to put the electrolysis facilities and, from the electrolysis facilities, where and how we are going to store hydrogen. I am not an engineer but I understand that storing hydrogen is not exactly the same as storing natural gas. I am not sure whether they are interchangeable. I will have to check with some engineering colleague to ask about that. Certainly, it has to be part and parcel of the policy and the roll-out for the development of green hydrogen in the country.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_104">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_176">I have a couple of final questions. They are more to do with the areas of just transition and affordability. We have had a number of difficulties with heat pumps and the move to EV cars. They are generally accepted to be out of reach to people with limited incomes. What does the council think of the schemes put in place in recent years, the lack of take-up of them and the lack of charging facilities and affordability? Do the witnesses have any opinions as to what should be done? Are more resources needed? What is their opinion?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_177">The question around EVs was one we addressed most recently as part of our transport chapter. We are cognisant of the slow uptake of EVs. While there is a good uptake of hybrid cars, there is a slow uptake of EVs.</p>
+          <p eId="para_178">We are also conscious of the fact that the capital cost required is significant and makes it impossible for some parts of our society to avail of these more efficient and more cost-effective options in terms of transport. That is why we recommended an out-of-the-box recommendation that the Government increase and have dedicated grants of perhaps as much of €10,000 for the purchase of the cheaper EVs, worth less than €35,000, particularly for those in lower-income households and those who do not have ready access to public transport.</p>
+          <p eId="para_179"> A targeted approach to support people to get into these technologies is needed, not just from the climate perspective - it is good from a climate perspective - but also because it is cheaper. Going from a fossil fuel car to an EV will save a driver approximately €1,500 a year on the running costs. That is significant in terms of cost-of-living savings. Yes, the hurdle of capital investment is there. That is where Government investment can come in, through grants and other measures. People can then get the benefit themselves from these technologies that are cheaper and more efficient for them to run.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_106">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_180">When Ms Donnelly referred to a targeted approach, did she mean for more rural areas where public transport might not be as accessible? Is she suggesting grants for second-hand EVs would be paid directly to the purchaser?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_181">At the moment we have been focused on new cars. On rural areas, yes, because that would fit the parameter of those who do not have ready access to public transport. The recommendation we made was for new cars. We are actually at a level of approximately 3.5% of EVs in the country's car stock. We need to increase that figure up to closer to 15%. We need to encourage the purchase of new cars. Obviously, as they come on stream, there will be a better second-hand market for EVs.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_182">A few members have indicated they wish to come in again. As this is an important topic, I will allow members who want to speak again two minutes each as a final round.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_109">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_183">I have a question with regard to the assumptions that are underlying the scenario modelling. Section 4(a) outlines the transport scenarios and the incorporated assumptions on which the modelling was based. One is that there will be an end of sales of new internal combustion engine vehicles by 2025 for private vehicles. That is clearly not going to happen. I do not know if that is a typo. I would be concerned if the Climate Change Advisory Council were using assumptions that have zero chance. We are in the year 2025 now, so that will not happen. Was it a conscious decision to use 2025 as the goal for the end of internal combustion engine, ICE, vehicles? If so, why? What impact would it have on the scenarios? It is a questionable assumption to be using.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_184">I will hand that question to Ms Gallagher because she knows it very well.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_185">That is fundamental to the TIMES-Ireland model used to model the energy system scenarios. It is a technology optimisation model which essentially finds the most low-cost technology solution to achieving the emissions reductions. That is correct. An output and key finding of the model is that electrification of the fleet is the low-hanging fruit in achieving emissions reduction in the transport sector. The assumption is no further sales of internal combustion engines from the end of this year, with full electrification of the fleet in 2040.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_112">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_186">The council picked the most extreme assumption for the model. Is that it? Why is it modelling something that is just not going to happen?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_187">Inherent to the model it is that it finds the cheapest, most readily available technology solution across all levels of ambition for the energy scenarios. The finding is significant in and of itself in that it is pointing to fleet electrification as one of the low-hanging fruit technology solutions for the transport sector.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_114">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_188">I am wondering if there are other assumptions in a similar vein. Interestingly, there is no mention of public transport or active travel within the scenarios and assumptions used by the council for the transport scenario. It is very much private-car oriented.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_189">An important thing to note in the energy scenarios is that for each of the two levels of ambition of the energy scenarios that informed the proposal is that these core scenarios assumed a business-as-usual energy demand projection. The modellers also looked at a sensitivity case for a low-energy demand. It increases the feasibility of the emissions reductions pathways and allows for a less rapid deployment of those technologies, with a lower reliance on some of the more speculative measures such as carbon dioxide removal technologies. It would also allow for a later electrification of the fleet. Key to that lower energy demand is a greater incentivisation of public transport and less car use overall.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_116">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_190">I want to touch base on the data centres issue again. We all know that they are gobbling up so much of our electricity. I want to touch base with regard to what was mentioned about the district heating system. I know Codema has done an amazing job in Tallaght. What it has done shows that it can be done, but it would not be the best route to go down in every single scenario. What was said about AI is very true as well. AI is optimising the cooling methods of data centres. We are seeing that with different racks and different methods being done. When talking about data centres earlier we have already established that.</p>
+          <p eId="para_191"> I now want to discuss the other huge part of our energy consumption, namely, the heating aspect. What is the council's opinion on the current grants available for heat pumps and solar panels? Does the council think we need to increase them to incentivise the public to do more in that regard, seeing as it is one of the huge aspects of our carbon emissions? Having spoken to people in my constituency, it is still economically unviable for them to make the initial leap toward an energy revamp of their houses. Do we need to do that? What are the council's recommendations for the grants?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_192">The council has come out with a recommendation on heat pumps. There should be a consideration of considerable financial supports for heat pumps in houses that are not yet fully retrofitted. A heat pump can be used, for example, in any house built to building specifications after 2007. What we have said is that, in circumstances like that, we have a heat pump grant of almost €10,000, but we need additional funding for adjustment of the radiator sizes and locations to complement that for houses that have not gone through a full retrofit. That is a specific area we addressed in our recommendations last June.</p>
+          <p eId="para_193"> On solar energy, I am sure the Department of Finance would not like to hear this, but we have brought in grants of €5,000 for EVs, for example. In July 2023, we then reduced the grant to €3,500. Perhaps this was due to global issues as well, but in 2024 the sales of EVs reduced considerably. They are beginning to increase again. We are reducing grants on solar panels at the moment. Perhaps the speed at which we reduce grants is too fast. We need time for people to understand what new technology is, to talk to neighbours about it and see what neighbours have done to understand how it would fit in their own context and then to make the decision to go ahead. A rapid decrease of grant aiding does not facilitate that. That is why we are saying we need to look at the grants and capital investment people must make with regard to EVs and to support people in making that capital investment in order that they can make the choice and then get the benefit.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_118">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-06-25T14:30:00+01:00"/></from>
+          <p eId="para_194">I have three things I want to say, but I will just say one. I will go back to private wires. During the recent storm, without private wires the eco-villages were completely knocked off the grid, which is completely unfair. We need to bring in legislation in order that people with solar panels who have their own energy will still be on the grid.</p>
+          <p eId="para_195"> What Ms Donnelly said is right, but all current projections show that there a huge influx of cheaper EVs from China will hit the EU market. At the moment, our grid and entire charging system are not ready for that. That is something we really need to push for the State.</p>
+          <p eId="para_196">As other Deputies and Senators have said, there is a lot of mention of private cars here. It is something that is sadly still in society. If we are going to mitigate the change, we need to make sure charging points are available for those who are taking up the cheaper cars.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_197">I thank the Deputy and support him on that point. In the electricity chapter this year, we specifically highlighted issues such as what happens to one’s own energy supply from one's own solar panels in the event of a storm such as the one we had earlier this year, what the interrupter switch does, what one's backup is, the extent to which we need support at an individual level, and the extent to which we need bidirectional flow of power to an EV battery but also from an EV battery into the house in times of shortage.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_120">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_198">I have two questions. First, can the council go into more detail about the recommendation to bring legal mandates to public bodies in accordance with the 2021 Act in the context of carbon budgets 3 and 4. I know we did this with the National Biodiversity Action Plan when we put a biodiversity duty on public bodies. It is really important to get that recommendation brought forward as quickly as possible.</p>
+          <p eId="para_199"> My second question is more of a curious one. The CCAC tends to call for a lot of things from the Government. Is it frustrated at the slow pace of response from the political system? That is a general question.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_200">We have called for an explicit revision of the legal mandates of public bodies to take account of the climate Act. It is not sufficient to say that the Act is there and it is to the side. If we have a mandate that established, for example, a public utility or other public body, and it does not expressly say it, the board may not feel it has to take it into account fully. Yes, we have called for that, and we strongly believe it is a fundamental thing that needs to be done as soon as possible.</p>
+          <p eId="para_201"> On the response to the recommendations, we do an analysis every year of the recommendations we have made and what has or has not happened, as the case may be. Some of our recommendations have been taken up and implemented, but not all of them. Again, I am being diplomatic.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_122">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_202">I wish to come back to the methodology used in this report. The move from the Paris test to temperature neutrality is key to us in considering the next budget. Ms Donnelly mentioned earlier that the IPCC is using the Paris module, or Paris test. My understanding is that the IPCC does not prescribe any metrics regarding these types of things. It says that rapid reduction in methane, rather than temperature stabilisation, is required. There is a new differentiation of biogenic methane coming into the discourse around emissions as well. The criticism here is that this gives the agricultural sector easier targets. It is felt that this model and some of the CCAC's modelling assumes business as usual in agriculture, and that some of these methodologies might be juking the stats in order to give agriculture easier targets. I ask for Ms Donnelly’s response to that criticism.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_203">When we looked at the 15 scenarios, we saw that they were built on the basis of the balance between energy, agriculture and forestry. We had two different scenarios for the agricultural area, and a number of different scenarios for forestry and energy. In the agricultural scenarios, there are two different levels, S1 and S2. Ms Gallagher may be able to explain this a little bit better than I can. They relate primarily to the roll-out, and the speed of the roll-out, of modernisation of techniques within farming practice in Ireland and the methodology of animal husbandry. They have an impact on the balance of effort that would be done in other sectors. Therefore, we have a targeted methane reduction. It is consistent not only with the IPCC but also with the European level to allow us to achieve both the European targets and indeed our own carbon budget for 2040. I ask Ms Gallagher to give us an overview as to what the S1 and S2 situations are for agriculture.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_204">Absolutely. Two activity level scenarios were considered in the scenarios informing the council's proposal. S1 is a base-case scenario of business-as-usual activity, which for example would see total cattle inventories projected to decrease by 7% by 2050. We must also consider the S2 scenario of lower agricultural activity, which would see total cattle inventories projected to decrease by 22% by 2050. It is important to speak about the pathways for adoption of mitigation measures. There were two pathways modelled: a P1 ambitious adoption of mitigation measures, and a P2 very ambitious adoption of mitigation measures. When I say "very ambitious", I am talking about the most ambition possible, in which these measures are adopted at the technical maximum. It is worth noting that those mitigation measures, including protected urea, feed and slurry additives, reduced age of slaughter and improved animal genetics, are already proven. The P1 or lesser rate of adoption of those measures was not deemed sufficient to deliver the carbon budget. All of the agriculture scenarios, including the lower activity levels and business-as-usual activity levels, require a very ambitious adoption of mitigation measures.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_125">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_205">Ms Gallagher is saying these budgets are not based on business as usual?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_206">There are two elements to the scenario. There is the activity-level element but in tandem there is the upper level of adoption of mitigation measures.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_127">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_207">I did not really get an answer on the question of the equity point. It does seem that it is modelled on that point in 2050 and where we are there, rather than the common but differentiated responsibility in the interim period, as to how the next decade or 20 years are used. I would appreciate a description of the 15 scenarios and some of the assumptions, including the economic assumptions, because it does sound like there are many economic assumptions being applied on how these scenarios are being envisaged.</p>
+          <p eId="para_208"> There are a number of economic scenarios. If we could get those in writing, it would help us to tease them out. Are there intentions to remodel based on the very significant fact, for example, of the United States having left the Paris Agreement based on the revised concerns?</p>
+          <p eId="para_209"> On a related note, I am concerned that I am seeing a level of almost greenwashing as regards technology that is coming through. We can imagine a scenario where it can help, but in terms of any new major energy usage at this point, is it not the case that we need to have a very rigorous cost-benefit analysis which looks to the full assessment of cost and impact? Ultimately, are we going to use more energy than we have left on this planet for AI and chatbots, or are we going to use it for the developing world to be able to build sewage infrastructure or solar capacity? Those are some of the choices in terms of how much energy is left to be used.</p>
+          <p eId="para_210"> I would like an answer on fairness. Why not go for fair-share modelling? Looking at different forms of gases does not prohibit doing the fairness modelling. Could we get one? At this stage, we still have time. To be clear, I refer to global fairness modelling.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:40:00+01:00"/></from>
+          <p eId="para_211">In terms of the 15 scenarios, of course we can make those available. They are probably buried somewhere on the website at the moment. We will certainly extract them and make them available to the committee.</p>
+          <p eId="para_212"> I will answer the question about fairness of energy consumption by reference to what would happen if the whole world went to sustainable energy using either wind or solar. I remember learning many years ago when I worked in the Commission that we have 3,000 times the supply of energy in solar a day than we actually use. There is no limitation of energy coming from solar, but there is a limitation on our ability to capture it. The second part of the Paris Agreement, which I mentioned earlier, is the whole issue of technology transfer and financial support for regions that may not have the opportunity to capture those kinds of energies and get the benefit from them. We have a temperature target we are looking at, but that does not end our responsibilities under the Paris Agreement. We have additional responsibilities. For example, the technological and financial responsibilities remain in place and need to be delivered on as we go forward. </p>
+          <p eId="para_213">We can certainly make the modelling available.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_129">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_214">Is part of that responsibility not contributing to the continued extraction of fossil fuels globally? This relates to the import of things like LNG.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_215">We are very much in agreement that the continued development of and exploration for fossil fuels are not consistent with our climate ambition, either from Paris or at a national level.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Ms Meabh Gallagher<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_216">We can follow up with additional detail on the assumptions for those scenarios. In addition to the agricultural scenarios I just went through, in terms of land use and forestry, there are two key scenarios informing the proposal. Both assume a more sustainable management with longer rotations and continuous forest cover but with a continuation of the current policy target of 8,000 ha per year and then more ambitious afforestation.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_132">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_217">Were scenarios around greater public ownership regarding things like energy and land use in terms of State land - a more interventionist state not solely in terms of incentivising businesses but a larger state role in the provision of energy and perhaps land use - modelled in terms of allowing us to achieve our targets?</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_218">The short answer is "No" because we were not looking at who was funding the individual activities. At a macroeconomic level, we looked at what the investment costs are likely to be, identifying that part of it would be public funding and part of it would be private funding. We have those numbers. They are in the macroeconomic analysis. The question of whether public funding would come through support for individual or collective action or through public ownership of the assets was not an element we looked at in the macroeconomic analysis.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_134">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_219">I have to disagree slightly with Senator Higgins. It is as important for the developing world that it has access to artificial intelligence and its potential. I do not think we should be making it a binary choice between sewage treatment plants and access to AI in the developing world. It is the same in Ireland. A binary choice should not be presented between housing and our digital future as some would seem to suggest. It comes back to the question of abundance.</p>
+          <p eId="para_220"> I would challenge Deputy Ahern's assertion that agriculture is being let off the hook. The targets are quite ambitious and I think the council has analysed issues around land use. A critical issue regarding how we ensure that the agricultural community meets its targets is working with farmers, who are front-line workers, and those in rural communities. Has there been analysis done of issues around land ownership because one concern is the changing nature of farming? We are either moving to large-scale corporate farm operations or the main form of income is off-farm income and farming is, for want of a better phrase, part time. The policies we pursue in encouraging people to farm in a greener fashion may have an impact on the social fabric of those farms and whether they continue. Success lies in supporting those farmers on the ground to do things in a greener way because farmers will respond, particularly if we pay them to do so. All the evidence is there. The mistake we made in farming for a long time was to focus on productivity rather than on profitability. I am curious about the council's modelling. I accept that it has been done on land use but my question is more around ownership and the social impact of the policies we might pursue.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_221">Our analysis on the agricultural side is a techno-economic one that is basically the Teagasc marginal abatement cost curve one looking at the measures that can be taken to achieve emission reductions. We have also been in dialogue on the just transition side and had conversations with agricultural activists and representatives about the impact of agriculture in localities. We are aware from the Teagasc income survey that comes out every year of the average earning per hectare per farm for dairy, beef or tillage farming. We are aware that in many instances, beef farmers in Ireland are reliant on the grant system. Some economists have even asked whether it makes sense. The reality is that within a rural community, those grants are funding the community. They are making the money spin through the community and are important, not just to the individual farmer but to the local community. This is an integral part of the just transition. We can come with theoretical solutions or even technological solutions that can work but before we make choices, we must understand the implications for people's lives and society in general. That is one of the areas we have looked at as part of the analysis.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_136">
+          <from>Senator Mark Duffy<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_222">I am a Senator from Mayo. I have been very active in the community of Ballina and the community there has been very active in trying to lead a greener and more sustainable future for our town. We worked with the UCD Centre for Irish Towns and were recognised by the New European Bauhaus awards for efforts regarding disadvantaged neighbourhoods that are sometimes neglected or at least feel neglected. Unfortunately, sometimes it can be politicised or divisive and it should not be because it is something we all share. We need to work together for a greener and more sustainable future for all of our communities. There is so much that can unite communities. That everybody can get behind warmer, cleaner and safer homes and more connected and sustainable communities is something that needs to be kept at the centre of all conversations. Things like retrofitting derelict houses are very good measures. Transport has a big part to play.</p>
+          <p eId="para_223"> Coming from an area in the north west of Ireland that often feels that it does not get its fair share, we have no shortage of proposals involving infrastructural upgrades that can complement the climate targets we have. Does the council comment publicly on infrastructural projects that can make a marked difference, for example, the western rail corridor, which could improve sustainable travel modes, get people out of cars and connect communities in places that require them? Can this be done because there are lots of things can unite people, improve quality of life and improve the carbon footprint of towns, communities and counties?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T14:50:00+01:00"/></from>
+          <p eId="para_224">The council is very supportive of the rail strategy and the expansion of public transport, be it road or rail, particularly into rural areas. Senator Noonan asked whether anyone listens to our recommendations. I am not sure whether it was because they listened to our recommendation but when we look at rural transport through Local Link and the numbers of passengers that are now using Local Link to their benefit, we can see that it has been quite dramatic in the past two or three years. We have heard people say that they used to have a bus once a week and now they have it seven days a week and that this makes not having a car feasible for them. We have seen improvements in supports for public transport in areas outside urban spaces. It can improve. The idea of being able to dial into Local Link to be collected is an important innovation.</p>
+          <p eId="para_225">It will probably rely on AI, ultimately, to be successful. These are the recommendations we are making. Even the recommendation on the grant for an EV was made to take account of the fact that people do not always have easy choices. We have to facilitate them to make the choice to become more sustainable. This is why we wanted to be able to reach out to people who, up to now, have not been able to afford to get an EV. It is so they could get an EV and get the benefit of it. Getting everybody out of their cars in the short term might be a challenge. Getting everybody into an EV is also a challenge but, perhaps, is just that little bit easier.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:00:00+01:00"/></from>
+          <p eId="para_226">Part of what the committee has been asked to do is to scrutinise the work of the Climate Change Advisory Council and what it puts forward, which is what we have done today. Several issues have arisen. Questions have been asked about the move away from the Paris test to a temperature neutrality test, the rationale for it and changing the model. The onus is on the CCAC to respond, not right now but as part of the process of addressing it. The witnesses have also offered to share the 15 scenarios that could form part of this. An issue has also come up on whether the ask of agriculture is fair and whether it is enough. I would like to see the CCAC consider this and respond to it. I propose that the witnesses take away the issues that have arisen and produce a paper specifically on them. They can decide what goes into it. The witnesses understand the request and I ask them to respond to the committee with a paper in this regard. Is that okay?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T15:00:00+01:00"/></from>
+          <p eId="para_227">Absolutely. We will certainly do that and we will try to get it done as quickly as we can, so the committee has it available for its consideration.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:00:00+01:00"/></from>
+          <p eId="para_228">I appreciate that and I thank Ms Donnelly. I propose that we publish the opening statement on the committee's website. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_141">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-25T15:00:00+01:00"/></from>
+          <p eId="para_229">Would it be possible to add something to the report back to the committee? I know it is more complex, and we still do not have the land use review, but is it possible to engage on the nature restoration plan and how the potential figures at the upper end of the restoration targets might potentially positively impact on sequestering carbon? It is a much more complex area than straight energy reduction or the energy demand side of it but is it something the CCAC might be able to help us with?</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Marie Donnelly<recordedTime time="2025-06-25T15:00:00+01:00"/></from>
+          <p eId="para_230">I believe we can certainly write a note on it for the committee. We are working on it at present.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:00:00+01:00"/></from>
+          <p eId="para_231">If we could have that included in the paper it would be great. I thank Ms Donnelly, chairperson, for joining online, and Mr. Hussey, secretariat manager, and Ms Gallagher, who leads the carbon budget team, for being in the committee room. We appreciate their attendance. The joint committee will now adjourn until 12:30 p.m. on Wednesday, 2 July when the committee will meet in public session for engagement with the Minister on the carbon budget.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 3.03 p.m. until 12:30 p.m. on Wednesday, 2 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

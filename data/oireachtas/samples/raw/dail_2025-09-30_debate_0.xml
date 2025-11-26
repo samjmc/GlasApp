@@ -1,0 +1,738 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-30/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-30/debate"/>
+          <FRBRdate date="2025-09-30" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-30/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-30/debate/mul@"/>
+          <FRBRdate date="2025-09-30" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-30/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-30/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-04" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-30">Dé Máirt, 30 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-30">Tuesday, 30 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Senator Lynn Ruane.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Artificial Intelligence and Older People: Discussion<recordedTime time="2025-09-30T11:00:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:00:00+01:00"/></from>
+          <p eId="para_13">I welcome everyone to this meeting. There are apologies from Senator Lynn Ruane; Senator Alice-Mary Higgins may replace her. Deputy Naoise Ó Cearúil is Leas-Chathaoirleach of the committee for an Gaeilge, whose Chair, Deputy Catherine Connolly, is busy with other things at the moment, but he may be able to join us.</p>
+          <p eId="para_14"> We are looking at the issues around artificial intelligence. The committee has divided it into a range of modules. We will be looking at AI and the State, AI and healthcare and AI and energy, but we initially felt it was very important to get a couple of key perspectives. People will be aware that last week, we had a session on AI and children and young people. Next week, we will focus on AI and disability, but we decided we would focus on the issue of AI and older people this morning. For the representatives of older people's organisations, we want to be very citizen-focused so when the committee gets to consider all these issues, we can ensure that the concerns of all sectors of society are taken into account.</p>
+          <p eId="para_15"> I remind people of the usual terms and conditions, as they say, of appearing before our committee. Members must be physically present in the confines of Leinster House. If members are joining on MS Teams, as a number are, they should confirm they are present in the House.</p>
+          <p eId="para_16"> I thank all our witnesses and the representative groups who have come here. I will invite each of them to deliver a brief opening statement. Mr. Seán Moynihan is the chief executive officer of ALONE; Ms Camille Loftus is head of advocacy and public affairs at Age Action; and Ms Sharon Casey is membership development officer with the Irish Senior Citizens Parliament. Following their presentations, we will go to questions and answers from members. I invite Mr. Moynihan to make his opening statement.</p>
+        </speech>
+        <summary eId="sum_6">(Interruptions).</summary>
+        <speech by="#MalcolmByrne" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:00:00+01:00"/></from>
+          <p eId="para_17">Sorry to interrupt. There is a slight issue with the microphone. I ask people, when they are going to speak, to please switch on their mics. </p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T11:00:00+01:00"/></from>
+          <p eId="para_18">A Chathaoirligh and committee members, thank you for the opportunity to speak about how AI can and will impact older people. In 2024, ALONE supported nearly 44,000 older people across our services. Our work centres on helping older people age at home, increasingly using new technology. Last year, we delivered 6,590 assistive technology interventions to help over 4,000 older people. We are currently rolling out smart technology for remote health monitoring, alongside digital training and other projects. Our management information system captures data on those we support and generates valuable insights.</p>
+          <p eId="para_19"> AI is becoming an important part of our journey. We recently introduced an AI tool to match older people with volunteers for our support and befriending service. By analysing geography, preferences and availability, this reduces waiting times, streamlines administration and ensures more personalised services. We believe AI can transform and empower older people, but only with the right policies, infrastructure and resources to ensure ethical and equitable access.</p>
+          <p eId="para_20"> The Government’s vision is for Ireland to be an international leader in responsible, person-centred AI. We agree that well-being must come before economic interests. We urge the committee to consider that leading in both AI development and ethics may not be feasible, and national policy needs to set clear boundaries to ensure safe, ethical innovation.</p>
+          <p eId="para_21">We welcome the Government's commitment to an AI in health strategy, and HIQA’s forthcoming framework for responsible usage. However, Ireland lags in electronic health records, ranking lowest in the EU for e-health and citizen access. Effective implementation of strategies like Digital for Care, the HSE data ecosystem roadmap and the Health Information Bill 2024 is essential to embed AI successfully. The Government counter-disinformation strategy has been criticised for failing to address harmful social media algorithms that amplify extreme material. We urge the committee to identify which policies should be fast-tracked and which need further development to strengthen Ireland’s AI policy framework in line with the EU AI Act.</p>
+          <p eId="para_22"> On system readiness, in our experience, the major barrier to adoption of technology is the lack of system readiness, which relates to technical infrastructure and workforce. No matter how advanced a technology is, it will not succeed without appropriate training and support for those expected to use or deliver it.</p>
+          <p eId="para_23"> In healthcare, AI holds enormous promise for early diagnosis, care co-ordination and personalised treatment. However, the World Health Organization warns that inadequate data will lead to AI discrimination, affecting who gets access to services. Older people are often excluded or underrepresented in clinical trials. In Ireland, many surveys group people over 65 and ignore the diversity among the group. Overreliance on incomplete data risks misinformed decisions. The national centre for AI highlighted the importance of embedding fairness into the AI systems.</p>
+          <p eId="para_24"> AI systems for public use should be shaped and co-produced by users. Research by ALONE and UCC found that older people often feel excluded from technology design. We support the IPPOSI citizens' jury recommendations, including those for workforce training and healthcare AI, ensuring humans in the loop in all design and development.</p>
+          <p eId="para_25"> Regarding impact on older people, AI should complement, not replace, human contact. Research shows older people accept AI in healthcare when integrated along with human providers, with strong usability, tailored solutions and robust security. Personal contact is a key determinant of outcomes for older people supported by ALONE. We plan to use AI to reduce administrative tasks, embedding staff with more time with older people. The committee should consider how AI could enhance processes, such as faster housing adaptation grants and timely hospital discharge.</p>
+          <p eId="para_26"> Equitable access is critical. Many older people face difficulties accessing in-person services. In this context, 41% of over-75s have never used the Internet, and a new AI divide could deepen inequalities. Media literacy training should be embedded in digital literacy programmes to combat misinformation<u>.</u></p>
+          <p eId="para_27"> In conclusion, ALONE recognises AI benefits for older people only if developed ethically, equitably and inclusively. We need systems that are ready, representative data sets, investment in digital literacy and co-designed solutions. We must proactively shape AI to serve the social good and establish a robust regulatory sandbox, which, if delayed, means the market will dictate its development without regard to society. Crucially, all AI should complement, not replace, human contact.</p>
+          <p eId="para_28"> We urge the committee to ensure AI policy includes civil society voices, empowering rather than excluding. Drawing on our experience supporting many thousands of vulnerable older people and using AI in our services, we would welcome the opportunity to work with the new national AI office to ensure policy reflects lived experience. If we do this, Ireland can lead by example, showing how technology can serve the well-being of all.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:05:00+01:00"/></from>
+          <p eId="para_29">I thank Mr. Moynihan very much. I should have acknowledged that he is joined by Dr. Aileen O Reilly, who is the head of research evaluation and policy. I should also acknowledge that with Ms Loftus is Mr. Niall Carroll, who is a volunteer with Age Action, and Ms Casey is joined by Mr. Pat Mellon, national co-ordinator for the Irish Senior Citizens Parliament.</p>
+          <p eId="para_30">I call Ms Loftus on behalf of Age Action. She is very welcome.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:10:00+01:00"/></from>
+          <p eId="para_31">I thank the committee for this invitation to address it. We very much welcome the fact it has taken this focus on older people.</p>
+          <p eId="para_32"> Age Action works to promote equality for all of us as we age, combat ageism and build an inclusive and age-positive society to enable us all to live full and independent lives as we age and in our older years. We recognise that AI brings both potential benefits and risks for older people. Digitalisation has too often made older people feel excluded and left behind. We need to learn from that experience now in approaching artificial intelligence.</p>
+          <p eId="para_33"> Ageism is the process whereby stereotypes influence how we think, leading to prejudice in how we feel and resulting in discrimination in how we act. Ageism is pervasive in society and is often reflected in how we have approached digitalisation. For example, particularly in the private sector, which is the sole provider of many essential goods and services, digitalisation often seems to prioritise cost reductions without considering the needs of older customers, who may no longer be able to access a service, may have to pay more for the service, or may be exposed to safeguarding risks as a consequence. I am sure members will all have received representations, for example, in relation to the recent decision by Ryanair to stop accepting anything other than a digital boarding pass.</p>
+          <p eId="para_34"> Many ICT education and training initiatives are focused on younger people. Even the data we use to measure the impact of digitalisation, the EU’s digital economy and society index, excludes people aged 75 or older. We have no data on that group at all. The digital divide is particularly acute for older people. Those managing on low fixed incomes find investment in expensive devices, such as smartphones, challenging, along with the cost of maintaining broadband connections to their homes. The only State support in this regard is the telephone allowance and only about a sixth of older people get it. It is paid at a rate of a mere €2.50 per week, which has not been increased since 2018.</p>
+          <p eId="para_35"> Digital skills among older people correlate very strongly with levels of educational attainment. It is important to remember that the current generation of older people did not get access to the kind of educational opportunities that are taken for granted by young people now. Digital skills among the older population correlate very strongly with that. If they are one of the very small minority who got a third level education, their skills are good. If they are one of the vast majority who finished school much earlier, went out into the workforce and made a contribution, their digital skills are often poor. My colleague, Mr. Carroll, works indefatigably on a whole bunch of dimensions within Age Action and also volunteers as a tutor on our getting started programme, which to date has helped over 48,000 older people to build their digital skills and confidence. Over 40% of participants report improved confidence online and growth in their knowledge as a consequence of participation. Our volunteers on that programme are now being trained to support older people to engage with AI in a safe and beneficial way.</p>
+          <p eId="para_36"> I will make a couple of points on how we can learn from digitalisation in approaching AI. We urgently require some regulation in this regard. That is one of the key learnings we can take from our experience with digitalisation to date. We know that when artificial intelligence is being designed, older people are often excluded entirely from the datasets used to develop and train applications. When they are included, they are often treated as one homogenous group. This encodes ageism within artificial intelligence. Age-friendly artificial intelligence is built on a clear understanding of older people’s needs, values and priorities, the issues it is intended to address, and detailed consideration of both positive and negative outcomes. The only way of accomplishing this is to include older people, their families and those who provide care for them, and to consult them throughout AI product development, including in datasets, product design and testing and roll-out.</p>
+          <p eId="para_37">Data should be disaggregated in order to understand and analyse the diversity of older people, taking account of differences such as differing physical, sensory and cognitive capacities, levels of education, familiarity with digital technology, socioeconomic profile, urban-rural location, and living and care arrangements, etc. Older people are a diverse population with a wide range of experience and needs, and that diversity is only likely to increase in the future.</p>
+          <p eId="para_38"> Data privacy and informed consent are critical elements of informed AI technology. Protection of user data and individual privacy must be considered a premium in any regulatory regime, with clear communication of what data is being collected, who has access to it and for what purpose. Users should easily be able to turn features on and off and decide who has access to their data. We are all familiar with the legalistic and lengthy consent messages we get when we are trying to access any app. None of us is reading them and those of us who are have no idea what the consent factually provides for. We need succinct, clear, plain English communication to enable users to understand and exercise free choice and control the way data on them is collected and used.</p>
+          <p eId="para_39"> AI applications should be transparent and accountable in communicating what they can and cannot do and that they will make mistakes. Safeguards to protect users from harm as a consequence of errors should be an integral part of AI design requirements.</p>
+          <p eId="para_40"> Finally, I note that older people who need assistance to negotiate digital platforms must often divulge very sensitive information to those who are helping them. This exposes them to a critical safeguarding risk. Adult safeguarding legislation is long overdue. From a financial and health perspective, it needs to take account of the safeguarding risks that are created by these new technologies.</p>
+          <p eId="para_41"> AI also creates the risk of more intense social isolation for some older people who are susceptible to AI companions who can mimic empathy. People who are experiencing cognitive decline, dementia or grief, for example, can be left very vulnerable to potential exploitation and manipulation through such applications, so monitoring post-deployment should also include the impact of AI applications on quality of life, loneliness and well-being.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:15:00+01:00"/></from>
+          <p eId="para_42">I thank Ms Loftus. We have a slight problem with the clocks. I am less worried about the speakers but am more worried about members sticking to time, so we are trying to resolve the issue. I now invite Ms Casey to make her opening statement on behalf of the Irish Senior Citizens Parliament.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T11:15:00+01:00"/></from>
+          <p eId="para_43">The Irish Senior Citizens Parliament offers a strong, unified voice representing the needs and rights of older people at local, national and European levels. Our aim is to influence policy and decisions that affect the lives of older people. We seek to enable and encourage older people to self-advocate and to build capacity and confidence to speak for themselves on all issues. Our vision is an Ireland where older people are valued as equal citizens, can enjoy the full protection of their human rights and are encouraged and facilitated to be full and active participants in society.</p>
+          <p eId="para_44"> The ISCP has, at the core of its work, the issue of equality and rights for older people. We work to ensure the implementation of policy commitments pertinent to ageing and older people. A fundamental element of this relates to ensuring our members, and older people generally, have their voices and experiences taken into account in public policy. The ISCP thanks the Oireachtas Joint Committee on Artificial Intelligence for the opportunity to contribute to the discussion on AI and older people.</p>
+          <p eId="para_45"> We met with a cohort of our member base to listen to their views on this emerging and fast-changing issue and the following content is the result of this discussion, together with results from our annual pre-budget surveys. A number of high-profile audio, image and video deepfakes are in the public domain, including former Taoiseach Leo Varadkar, actor Brendan Gleeson, Professor Luke O’Neill and news anchors on RTÉ and Virgin Media. Our members, and the Irish public in general, currently have high levels of trust in State institutions.</p>
+          <p eId="para_46">The sophistication and accuracy of deepfakes is concerning. The committee members, as politicians, must also be concerned about being misrepresented and fakes being viewed and listened to by large numbers of the public. Having the content removed is not sufficient remedy as trust is eroded.</p>
+          <p eId="para_47"> We noted the use of the term "open AI" during the opening session of the committee on 10 June 2025. Many technological advances are available for free at the outset. However, when they achieve a high market saturation, the service is monetised. The often repeated phrase is, "If you are not paying, you are the product."</p>
+          <p eId="para_48"> Facebook and WhatsApp remain popular with many of our members. They have not migrated to other platforms in the same way as other age cohorts. Facebook introduced subscription charges to continue use without ads. Managing preferences for personal data is intricate and convoluted. It has not received the memo about plain English. WhatsApp introduced Meta AI in 2025. Users were not offered a choice to opt out. WhatsApp groups are in common use among our membership, being relatively easy to use.</p>
+          <p eId="para_49"> Many of us who have access to Microsoft offerings for free through our employment forget that subscription charges apply for basic use of common items such as Word and Excel. Those are the very tools with which older people who are retired are familiar.</p>
+          <p eId="para_50"> The cost of either purchasing or upgrading devices is another challenge. This is a particular challenge to our members and blocks access to those who either cannot afford to upgrade devices or whose technical skills or cognitive abilities struggle with change.</p>
+          <p eId="para_51"> Accessing <i>mygov.ie</i> and banking apps was used as an educational tool in digital skills classes in recent years. However, they can no longer be used. Additional security steps have been introduced that require the use of up-to-date smartphones. This leads people back into calling in person to offices, where they still exist, or using telephone services with elements of AI embedded in them and dealing with the resultant struggles.</p>
+          <p eId="para_52"> The cost of connecting to devices is prohibitive. Those of our members who qualify for the living alone allowance and fuel allowance receive €2.50 per week in telephone support allowance, which is way below the cost of Wi-Fi.</p>
+          <p eId="para_53"> In recent weeks, I have attended information sessions on digital literacy training by NALA and Solas, which are welcome initiatives. The cost to upgrade or obtain devices to avail of training is not affordable to those on fixed incomes. Much of the narrative about AI literacy training relates to education and workplace settings. Those who have retired from the workforce risk being left behind.</p>
+          <p eId="para_54"> There are concerns in respect of AI being put forward as a solution to loneliness and having someone to chat to. The experience of isolation from other humans during Covid-19 restrictions was life-altering for many of our members. Some have not achieved their pre-Covid levels of interaction. It has reduced their quality of life.</p>
+          <p eId="para_55"> Our members are open to exploring how AI might prompt them to action if their cognitive ability becomes impaired, for example, to remind them of important tasks. However, the idea of AI replacing human interaction is abhorrent to many and they do not think they are the only sector of Irish society that thinks like that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:20:00+01:00"/></from>
+          <p eId="para_56">I thank Ms Casey and all the witnesses. We will now move to questions from members. There might be a slight problem with the order. However, I will go with the order that is on the sheet. Everyone has seven minutes for questions and answers. We have the slight difficulty because there is a technical problem with the clocks. Ms Laura Pathe, clerk to the committee, will signal to members when they have one minute left in their contributions. Very soon after the expiration of seven minutes, I will interject. If everyone sticks to the time limit, we may have time for another round. If people have questions for specific witnesses, they might identify them. I call Senator Scahill.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_9">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-30T11:20:00+01:00"/></from>
+          <p eId="para_57">I thank the witnesses. It is important to have their input to this conversation.</p>
+          <p eId="para_58">Lots of interesting and good points were made.</p>
+          <p eId="para_59"> I come from the north west of Roscommon. We have one of the oldest demographics in the country. All of these are matters I can relate to. Bridging the digital divide is something we have spoken about for years. I am very supportive of LEADER and local development companies and of trying to get additional support, through the Common Agricultural Policy, CAP, and Europe, of trying to deliver the training that is needed to aid groups like this, and of SICAP and all of that. The technology is changing so fast. We need to give those people who reach a certain age every opportunity to take advantage of it. There are massive advantages available here. We talk about empowering people for independent living. AI could be a key driver in that.</p>
+          <p eId="para_60"> Our guests all touched on individual points. While we, as public representatives, would have acknowledged them all at various stages, in the context of this demographic, I possibly did not think about matters in that way. Mr. Moynihan mentioned the Government's counter-disinformation strategy and how it has been criticised for failing to address harmful social media algorithms. Somebody else referred to deepfakes. I recall getting a phone call from a constituent in Roscommon recently enough who said he is a big supporter of a particular politician and asked if I knew how he could go about sending him the money he was looking for on social media. I was taken aback and was trying to figure out exactly what this elderly gentleman was talking about. It was one of these schemes whereby he was going to get a weekly return because he had obtained information online from a particular individual whom he trusted. I had to cut that off very quickly and tell him to block that thing.</p>
+          <p eId="para_61"> If they do not get them through social media, there are WhatsApp messages and text messages. The opportunities are there and are abundant in every walk of life as to how this demographic is being taken advantage of or targeted. The witnesses made very good points that we will have to take on board when we are trying to produce a document at the end of this process. Mr. Moynihan also mentioned that we are lowest ranked in the EU in terms of e-health and citizens' access to information. A big message that all our guests have mentioned is that AI should only complement what is already there. Things should still be led by humans and should involve an interactive element. That very much came to the fore in our discussion with young people last week. It is great to see certain recommendations trending with the different demographics.</p>
+          <p eId="para_62"> I like the idea of trying to use AI to improve applications for things like house adaptation grants, timely hospital discharges and so on. That is good. We have all been out to people's houses trying to help fill out these application forms. The witnesses are right to mention that sometimes when we are having a personal interaction, we have to ask for sensitive information that they might feel easier typing in if they had the opportunity.</p>
+          <p eId="para_63"> Licensing is a major issue. It is something I am going to take away. When we have the tech companies in it may be something we can raise with them to see if they have some way around it, which would give the members of the organisations represented here access to these things collectively, or something like that, and in a cheaper way.</p>
+          <p eId="para_64"> All our guests made some brilliant points. Ms Loftus said that users should be able to easily turn features on and off and decide who has access to their data. We got a very similar message from the young people last week. It is not age related, it is across the board, the issue of what our data is being used for. I took note that the explanations of what the data is being used for need to be targeted at the different age demographics they are engaging with at the time. That is another thing I will try to take away from this. I do not have any questions but I would like the witnesses to engage further with us and keep in touch. Their viewpoint and the groups they represent are going to be very important in assisting us in coming up with a proper strategy for tackling this.</p>
+          <p eId="para_65">I thank them.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_66">The clock is back. Do not feel obliged, but if anyone wants to make a comment on or respond to what Senator Scahill has said, they may. I call Mr. Mellon.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_67">I welcome what the Senator has said. A great sport in Ireland is kicking your politician. We do that and love it. However, we ultimately respect politicians. We have voted for them and given them the power of representation. I would like the committee to consider a scenario whereby a pharmaceutical company or doctor released a virus across the world that could replicate and change to suit its own benefits. What would committee members do in that case? We would expect and want them in any such case to take the steps to control the virus. AI has been released. It will replicate. We trust and want our politicians to take steps to keep control. Across the Atlantic, a politician is surrounded by Bezos, Zuckerburg and Musk. They are not there for the good of the politician or of the people. That is why we will be asking the politicians, whom we trust, to keep control of this. When representatives of the technology companies come before the committee, I ask members to remind them that they represent the people.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_68">I thank Mr. Mellon. Ms Loftus has indicated. I ask her to make her point succinctly.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_69">One of the things we need to consider, and that I hope the committee will consider, is that we need digital rights to protect us, as consumers. The Senator pointed out that many of these issues have been raised across different age groups. We know from the experience of digitalisation that it is not strong enough or sufficient to say it should do certain things and should not, for example, replace human interaction. We need some legislative heft in order to manage these safeguards.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_14">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_70">I thank the witnesses for appearing before the committee for this informative discussion. At our most recent hearing, we had advocates for young people and people who were young. I am not going to suggest that there are advocates for old people and people who are old here. We are all advocates for the issues that the witnesses are raising. I am interested to hear, and I asked the kids the same question, about the witnesses' own use of AI. We might go around the panel if the witnesses could give me an indication of their own use of AI, to their knowledge at least.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_71">I use it very little. I had the good fortune to be a mature student and did a module on what the Internet is doing to me. The legends who taught that module frightened me. There was a programme about data on "Prime Time". I was talking about that issue two years ago, not fully understanding it but having been shown it in a lecture. I am 56. I told my friends to clear their cache before they buy their train tickets with Irish Rail. They asked why. I am sceptical. I can see there are benefits to AI. I was a late adopter of forums such as Facebook or whatever else. Most of the people who encouraged me to use it are not using it themselves now. I know my way around devices.</p>
+          <p eId="para_72"> I was on a trip with my dad earlier this year. I asked for his permission to say the following. I booked the tickets. We went with Ryanair. I printed off his boarding pass and it was with his passport because I should not be in charge of him. He is well able. He uses a walking stick because he needs to but his cognitive abilities are good. If we take a similar trip in November, I will have to take full control and have all his things and mine. That really frightens me.</p>
+          <p eId="para_73"> I am doing workshops with our members on the decision support service. I have to tell them that to get in through <i>mygov.ie</i>, they need an email address. Our members tell me they do not have email addresses and ask how they can access the service. I am delighted we are before the committee and able to raise some points but it is not just private companies we need to consider.</p>
+          <p eId="para_74">It is also services within the State, that for very good reasons have to increase security, but forget some of the people who had emails and were able to function on <i>mygov.ie</i> cannot use it now because they need a smartphone with an authenticator app and they do not have that. It is really important. When we think of ourselves, we have someone who helps us with our IT. Most of us here get our software package for free and can call on someone for help. I was at a workshop-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_16">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_75">Sorry, if it is okay I might go round the table because I am have limited time, but Ms Casey raised some serious issues.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_76">I would use AI oftentimes to inform myself on what other views are on what is coming and what is out there but I come with a healthy amount of scepticism and am slightly cynical. I reiterate that, in a lot of cases, if someone wants to contact Departments now there is not even a phone number and that is a problem. It is, "Thank-you for your email and we will get back to you in two or three days". </p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_18">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_77">How does Mr. Mellon find using AI? I do not know if he is a technical whizz in any event, but does he find it easier or harder using AI versus other technologies?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_78">I find it easy to use but I also find myself cross checking, "do I believe this?" I look for another source. I find AI easy to use and one could get lazy in using it. We have all said to our kids over time to be careful what they put up on Facebook and all of that. We are faced with that now, needing to be careful what we believe when we use AI.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_79">Quite similarly, I use AI as a research tool with an extraordinary degree of scepticism. I check everything. It is an efficient way of collecting sources. That is the way I treat it. </p>
+          <p eId="para_80"> In regard to the issues of access around data and what is being scraped, I have no idea what they are getting from me every time I use AI. None whatsoever. I know I clicked one of those consent lists. It was a big long consent list, which even if I sat down for several days to read, I would still not know what they are using the data for. We have myriad examples of this, of people scraping data and using it for purposes nobody intended. Maybe they should be paying us for our data because it is valuable. </p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_81">I am actually retired from ICT, with 30 years' of IT behind me. I am crossing the fence to being retired at the age of 71. I see the difficulty in AI with the students we teach in the Age Action getting started programme. </p>
+          <p eId="para_82"> I use AI cautiously and as a companion more so than anything else. While we are giving AI the information it will disseminate it and if we want a shorter version or handout that is what I use AI for.</p>
+          <p eId="para_83"> It is also a good tool for research but we have to be mindful of the people who are over the age of 65, on that side of the fence. </p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_22">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_84">When Mr. Carroll mentioned the Age Action programmes he is doing, he is speaking presumably about elderly people who are interacting with digital literacy.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_85">Actually, it is people aged over 55.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_24">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_86">Over 55. I do not know when people are called elderly any more. I will not go into that space.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_87">I am a senior citizen.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_26">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_88">What is their experience of interacting? What does Mr. Carroll observe?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T11:35:00+01:00"/></from>
+          <p eId="para_89">What I have observed is that people are actually very sceptical and nervous of using AI. That is really why they come to a programme like the one we run. ALONE has similar programmes and I have heard of programmes mentioned by our other colleagues. We concentrate on a one-to-one basis whereby we talk to people about they are afraid of and what their needs are in a social atmosphere.</p>
+          <p eId="para_90">That can range from booking a holiday to online shopping to get their groceries. They are still sceptical, however, about what they will see when they start to pay and whether it is a fake website. The Deputy's colleague mentioned a certain politician and contributions. My wife and I do online shopping and get our groceries on a weekly basis. Those are the things that are assisting aged people but, as mentioned, a lot of them have not got emails. We have taken note of that and we help generate an email for them and explain it.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_28">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_91">I am out of time. Thank you so much.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_92">We will probably get time to come back.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_30">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_93">I thank everyone for being here and for their statements. I had the privilege of working in this very specific area of digital literacy for older people. I worked in Google for a period. The flagship programme that we ran in the corporate social responsibility team was called age engage. I worked with many of the witnesses' organisations to develop programmes to help bridge that digital divide. It is very clear to me, particularly from the statements provided today, that not only has that divide sharpened but it has become increasingly more complex. When we talk about things like hardware, access and data, there are just so many ways in which we are leaving people out of the conversation. I am particularly interested in that element of how we as legislators and policymakers do a better job of addressing that.</p>
+          <p eId="para_94"> My first question is for Mr. Moynihan and is related to the comments he made. I am particularly interested in the co-production piece, or the co-design, in regard to AI. That is a really interesting way of framing it. Currently, people have very little power or influence over the AIs that are increasingly shaping our lives. What steps does he think we can take as policymakers and regulators to force big tech to include users' voices in the development of AI?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_95">The interest and the safeguards we need to put in place probably affect all age groups. Marginalised groups, at any age, probably need more protection. If we look at the Government's policies, and the work done by the World Health Organization and UNESCO on how we do this, everything talks about how we do design, how we keep people safe around datasets and how we ultimately make sure that we use this responsibly.</p>
+          <p eId="para_96"> On co-design, what I can do is maybe tell the Deputy a story about this. We have been on a journey around older people using technology for probably five to seven years. We ultimately let people lean in to where they might use technology to maximise their independence, autonomy and decision-making and we support managing the risks, especially for those in advanced old age with healthcare. That means talking to people, seeing what people are comfortable with and producing the research. From all the pilots and different things we have done, we produced research that actually showed what worked, what older people embrace and what they feel safe about, whether that is the use of their data or how they access it and what they want control of. That is the challenge here.</p>
+          <p eId="para_97"> The Deputy identified the programme she worked for with Google. That is part of an outreach programme, where you ultimately go out to talk to groups like ours, to our members and to people who use services to see what works for them and what needs to be done. Every report being produced by different areas indicates, and anybody who has been on the journey learns, that is what people want. They want to be involved in the creation of that to ultimately use it. People realise this is something that can actually help them, but they are worried about the safeguards, about whether they and their information are protected, about becoming dependent or that somebody might take advantage. I think that is universal. What the committee has heard from us and others is that those who maybe have less voice, or those who are marginalised at every age group, are the ones most likely to be left out of a conversation and most likely to be taken advantage of or to have fear and anxiety, Maybe in that case, they will not get the benefits.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_32">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_98">Exactly. There is a really interesting point within this.</p>
+          <p eId="para_99">I have great admiration for the NGOs working in the ageing space in Ireland on older people's rights. They do an incredible job. There is great co-operation across the sector as well. This is addressed to Mr. Moynihan and to anybody else who has comments on this. Is the Government doing enough to include civil society in the conversation around AI regulation? Since I got to know the area a bit, I became genuinely privileged to understand the issues around ageing because it shifted my whole worldview about the privilege of getting older. Obviously, the alternative is not so good. I still hear patronising comments and infantilisation in so much conversation around older people's rights. There is terrible stereotyping around older people as this homogeneous group of frail people. Can the witnesses talk to me about how that intersects with technology? I see it acutely. I see this assumption. I know there are differences in adaptation to technologies in older age groups. I know there is anxiety that is unique to older people. However, I do not like the framing of it. I wonder has anybody thoughts on either of those points. </p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_100">I will answer the first part. That is why in our statement we stated the dual goal of being the leaders in AI development and ultimately to lead on the ethics as well. That is hard balancing act.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_34">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_101">I think they need to be flipped. </p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_102">Probably the message you get from this side is on the ethics and the boundaries. In some ways, when you do a deep dive on this and start going into it, a huge amount of great policy and research is being produced by civil society, by the Government and by the HSE. There is so much commonality. </p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_36">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_103">I am going to move on, to give Ms Loftus and Ms Casey a chance, please. </p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_104">I welcome the Deputy's comments and really appreciate that. We require things like legislation. If you want to provide an AI app to the HSE then you have to demonstrate that you did co-production to develop it in the first place. If you want a licence to bank in Ireland, let us see how you incorporated the views of your users in the terms of the development of that. I do not think it is going to happen otherwise. </p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_38">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_105">Does Ms Loftus believe the EU AI Act facilitates that? </p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_106">I do not. One of the issues on which all of us get the most frequent representations is an intense frustration with being forced into using sets of technology people do not want to use, which are not delivering any benefits to them and which are not being delivered in any sort of transparent fashion. To do your banking now you have to use the banking app. In order to use the banking app you have to give them the consent. </p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_40">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_107">I thank Ms Loftus. I will give Ms Casey an opportunity to jump in as well.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T11:45:00+01:00"/></from>
+          <p eId="para_108">I concur with what everybody has said. We actually got an email less than two weeks ago from somebody who has been retired for several years, was an early adopter of technology, has used online banking for 20 years, was encouraged to get a tablet and now one of the main associated banks has removed the option to have its app on the tablet. Another one of the banks removed that about 18 months ago. However, I would bring it home to what we can do. Within our public services, when somebody is making a case, we need to increase the security here to keep everybody safe. They should actually include the voice of people who are marginalised in what this will this look like. For instance, will this make people who were able to manage to use these services able to renew service with the Department of Social Protection? Maybe they have been trying to get an enduring power of attorney up but you have to have an email and it requires quite a skill set to be able to separate what is a spam email from something that is real. That is a journey some of us have been on for a long time. We could do stuff that is within our power. It is not just private companies. Obviously, while it is important to keep the technological infrastructure of the State safe, we need to include support systems. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_42">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_109">I thank the witnesses for their insightful contributions and for the important work they do. From listening to them this morning I am left with more fear and worry than positivity. They raised some important concerns and flagged a number of important issues. I was struck by the fact that Ms Loftus mentioned there is relatively no data in relation to this for those aged over 75. We also know we are an ageing population in this country. We were recently named the loneliest country in Europe as well. There is a great deal of loneliness among older people. My worry is that AI would be seen to be replacing human interaction. That absolutely cannot be the case. I am very much struck as well by the issue arising from this moving away from hard copies. One example mentioned was boarding passes. In daily life many of us see that when paying for things with our cards or our phones, often the price cannot be seen. It is often not displayed so there is a lot of scope for scamming. Can Ms Loftus elaborate on some of the legislative actions she would like to see and how we can clamp down on the risk of scams and impersonations? Older people are particularly vulnerable in relation to this.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_110">That partly goes back to design. The comment I made to Deputy Gibney in that regard is that these have to be requirements, not options. How we dropped the ball on digitalisation was saying that this would be a nice thing to have and it would be better if things were done this way. What we have seen with the way that has been implemented is that it has not happened. As I understand it in relation to the development of technology, Ireland is unlikely to be a leader but it certainly can be a leader in relation to regulation. Older people provide a good opportunity in that regard, because our population is still younger than that of most of our European neighbours. However, all rich countries are moving in the same way; the same factors are influencing us all. We are having smaller families and we are all, happily, living longer. I look to AI and think that may help to keep me at home in old age and avoid the dreaded nursing home. It requires legislation like that to build those safeguards in. There is a good deal of talk about the regulatory sandbox where we can test things out and try things out. Ireland could use this opportunity as a way of demonstrating that this is how regulation of AI can in fact be human first. It can in fact be person first. We could have a situation whereby people are not running around after the tech companies and accepting what we are given. However, we need to demonstrate, by engaging with people, by making that regulation and by showing how the involvement of those populations in the co-design process in fact enhances the product, rather than being a tedious box that needs to be ticked. I do not believe it will happen unless we require it. It will not happen unless we demonstrate what the benefits of that approach are. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_44">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_111">How do we reach older people who want to improve their education in relation to AI? What is the best way to reach them? Much of this now happens in educational settings or maybe in workplaces. Have Mr. Moynihan and Dr. O'Reilly any recommendations there? </p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Dr. Aileen O'Reilly<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_112">Mr. Moynihan mentioned some of the services we provide. Like other organisations, we offer digital literacy skills training. That is provided in a variety of ways including in physical locations. There is an intergenerational element to it. There are ways to embed that AI training within those components. I was also struck when I started to do a bit of reading around AI by how much information there is around risk and how much needs to be managed. However, it is important to remind ourselves of the enormous potential. As well as providing the digital literacy skills training, ALONE provides assistive technology. Mr. Moynihan mentioned that. Such items as PanPan watches and Pebbell alarms are critical pieces of technology that support people to age well at home. We also have a visitation support and befriending service where we match older people with volunteers who visit them once a week and provide companionship and support. </p>
+          <p eId="para_113">There is a practical element to that. We introduced an AI matching tool to match up our volunteers and older people, reducing the administrative time for our staff and enabling them to work with more older people and reach more volunteers. We anticipate it could actually double the number of assessments and matches we are able to make. There are definitely ways in which this can really facilitate older people. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_46">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_114">I thank Dr. O'Reilly and I know-----</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_115">Just to make a quick point on that, public libraries are really important. Lots of older people use public libraries. That is where we do an awful lot of our Getting Started training. Older people in particular often use public libraries as a way of meeting up with their friends. This is another reason why public libraries are really important. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_48">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_116">Great. That is a good point. I thank Ms Loftus. I want to give Mr. Moynihan and Dr. O'Reilly the opportunity to answer Deputy Geoghegan's question about how they use AI or their attitude to it. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_117">Yes, it is a great question. It makes us all reflect. In some ways, you cannot separate your personal and your professional life. From an agency point of view of the older people we serve, the question is how we guide forward our 250 staff members and 5,000 volunteers, and the impact of that. It is also about how we drive human contact, cut down administration and meet the growing number of people coming to us while at the same time making sure that ultimately, the people always come first and that we are co-designing it with older people. From a professional point of view, it is difficult. We are on a journey like everybody else. There is no handbook for this. As a CEO, there is nothing I can pull off the shelf to say this is the direction it is going. Not everybody is sure and the deliberations today are to try to find out. </p>
+          <p eId="para_118"> From a personal point of view, there are things that irritate me and which I worry about. I will not name it but there is an app I always use to look up the score of football matches etc. When you dive into it, you learn it has 651 partners that are scraping your data. Then if you go into the app and decide to switch the consents off and reject all this, the next time you go in they do it again. They do it again and again and eventually you go into the app, you are exhausted by it and you give way. On the other hand, embracing AI, we can take things like ChatGPT. You are worried about the questions you ask it in some ways when you put that in but on the other hand, there is the opportunity. Whether it used for research or reports - and as a person for whom spelling and grammar is a mystery - it is brilliant for tightening things up. There are so many benefits in some ways but then there is the worry about where that information is going, will it be compromised or will it come back. There is the worry that somebody will know a piece of information that might affect me if I ever apply for a loan or a credit card. Is all that data gone off to partners who at some stage might discriminate against me, especially as I get older or as I may have less economic power or influence in the future? The question is how this be used in the future because the Internet never forgets.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_119">I will allow Dr. O'Reilly 20 seconds. </p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Dr. Aileen O'Reilly<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_120">Yes, it is a mystery. As my background is in research, AI and education is something a lot of us in our community are thinking and talking about. We had to have a discussion in our team and with the oldest member of our team about using AI in our work and draw up some guidelines within the team. I thought that was interesting. A lot of organisations such as the academic institutions are trying to catch up with that now. There is research in the UK that shows about half or 48% of NGOs over there are using some form of AI, but we lag behind with the policies. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_52">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-30T11:55:00+01:00"/></from>
+          <p eId="para_121">I thank the witnesses for their presentations and for their work. They have really got to the nub of the issues as regards the relationship between ethics and the market, who is driving this, whose interests are being driven and what will happen if we do not interfere with that market-driven development. I will begin on that. If we think back to the early days of social media, this was sold to us all - and many of us believed it - as a way for us to be more connected and to stay in touch with workmates, school friends or whatever. We were going to be more connected than ever before and it was going to be great. Yet, somehow, people have this feeling that it has led to a society where people are less connected and more alienated from one another than we were before, even though we can see one another's pictures on the Internet and so on. It is a sense that we signed up to this in order to be connected and then somehow, some kind of impersonal forces have actually made us less connected and our world less connected and more divided than previously.</p>
+          <p eId="para_122">I fear the same can definitely happen in terms of AI. It is the same people, mostly, who are involved in driving it and certainly the same motivation. That relates to a particular question I direct to Age Action on the question of chatbots. The likes of Mark Zuckerberg and Elon Musk will tell us the chatbots are going to be great. They will explicitly say that older people are going to have a companion in chatbots. What is the witnesses' view on that perspective? Do they know of any case studies or examples of people using chatbots as companions or so on? </p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_123">I find the notion of spending my old age talking to a chatbot dystopian. I find that one of the most depressing things I can possibly imagine. There are many possible uses to which a chatbot might usefully be put. Personally, I do not think I have engaged one that can do anything other than send me a web address but I presume at some point they will get a little fancier than that. I do know that lots of older people who are lonely are susceptible to all manner of relationships. I was contacted by somebody recently who had begun a relationship with a carer because of the attention and the focus that was being provided. That was somebody who had been recently widowed. Therefore, the risks in that space are enormous. This is a sexist thing to say but I think men are a bit more vulnerable to it. We women expect to be on our own as we get older. Men necessarily do not. People may remember there was a conversation at some point about how the postman was the only person an older person might see every day. Again, a postman's job is not to provide contact; it is to deliver the post. First, a chatbot is not a substitute for human companionship and second, unless there are really deep safeguards built into that there are real risks about it compounding the issue. We have already seen people having relationships with Alexa, and they are not necessarily older either. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_54">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_124">I thank Ms Loftus. I have a related question for anyone who wants it. A feature of our discussion last week with young people and young people's representatives was the issue of social media algorithms, which are all AI-driven, and how people are exposed to, without choosing, toxic, misinformation, misogynistic, pro-eating-disorder or pro-suicide content; horrific stuff. I would be interested if the witnesses know of any experiences of older people who might be more isolated and more vulnerable going down a rabbit hole of misinformation and if the witnesses have a view on the idea of these algorithms. We would propose that these algorithms are turned off for young people, full stop, but that for adults that they would be turned off by default and that people could choose with their open eyes to turn them on or not and make their own choices. I welcome any opinions on that.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_125">If I may just come in there for a second because loneliness has come up a few times. It has in been several programmes for Government. As an agency that has campaigned and run the loneliness task force and also runs the loneliness network, the challenge there is that we have no strategy or plan. The danger is that these things get developed in substitute for the plan we have. If we do not have a plan, that is what will happen. The Deputy used the phrase "market-driven". The point is, if we do not have a strategy around how we combat loneliness - and research shows it is higher in younger people than it actually is in older people - it is an emotional connection and it will damage your physical and mental health far more than an awful lot of people think. We can provide evidence of that. In the absence of a strategy, this is what is going to happen. Similarly with all AI tools, if we do not have a strategy or a plan, we will go wherever we are led by multinationals, etc., though that does not mean they are all good or bad. We have examples of this already. An awful lot of healthcare has been privatised. I am not saying that is a good or a bad thing but it was not a policy decision. There is no evidence of what was good about it or what the pros and cons were of using the private sector for this compared to social care. There is no policy on it; it just happened. We have a huge number of services to older that are completely privatised without anybody looking at it and asking what are the pros and cons. That is the danger here. With no loneliness strategy, what will happen is, if there is a demand for a service here because of the levels of loneliness, ultimately the vacuum will be filled and we will have no control.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T12:05:00+01:00"/></from>
+          <p eId="para_126">A lot of it goes back to the point that when you retire, there is no strategy for a gradual implementation of retirement and how to cope with it. There are quite a number of people who suffer from severe depression after they retire, like myself. I went through that phase and I know what it is like. It is terrible. One suggestion is we can suggest to large employers there should be a gradual implementation of retirement, whereby they take a long-serving person off the floor and bring them into a HR situation to train new apprentices. Gradually, they shorten their working week to maybe a four-day week and then a three-day week as they get closer to retirement. That would actually help.</p>
+          <p eId="para_127"> Regarding chatbots, there is a good side and a bad side. We try to put that across to our students. We try to separate what can be asked and what should not be delved into when we are on a one-to-one basis. It is working but there is one thing to note. We actually have a third workforce in this country; namely, retirees. They are free. Alright, the Government pays our pensions and everything itself but why not motivate them to get involved with things such as what their speciality was when they were working. The men's shed model is a good example of practical involvement and working with the community.</p>
+          <p eId="para_128"> Where I live now in Wexford, I like to think there is quite a big community of people involved in different social aspects of things. That sort of loneliness is also something that can be combated too. From our point of view, the social aspect with the student is another aspect whereby we unlock what they already know. It is surprising how much they know but they are afraid to use it. That is where we come in with the Getting Started programme. It is very successful. It runs for five weeks, two hours a week, and they are totally different people when they leave. They are so happy that they have done something. Friendships actually grow from it. We also keep our group small and keep it to six to eight students at a time. That is a group of 12 to 16 people and they are all in the room so they can interact with them.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_57">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-30T12:05:00+01:00"/></from>
+          <p eId="para_129">I thank the witnesses. It has been a really informative session. It is worrying, too. A lot of questions have been asked but I took down a few notes. Obviously, there is inequality built into the system. Someone mentioned the costs and we know the costs are going up and up. Smartphones are now €500, €600 and €1,000 each.</p>
+          <p eId="para_130">What pensioner can afford that, when the pension is €250? It is ridiculous. Something will have to be changed. Apart from the Government side, we definitely have to do something on that. The data is another thing that frightens me. Beyond the age of 75, there is no information whatsoever. That is frightening. If you have an AI system developing code and programmes, how can it develop a programme if it has no data on that particular age group? You cannot do it and that is frightening. There is a gap there.</p>
+          <p eId="para_131"> Legislation was also mentioned. That is probably the only thing we actually can do. Having listened to the witnesses, clearer consent processes are needed so that you press a button for age, consent or whatever. That definitely has to be built into the system. How can we do that? I am not sure. As Mr. Mellon said about the individual owners of these massive companies, I looked at a thing where they were talking about their profits the other day. It is now in the quadrillions. It went from billions to trillions and now they are talking about profits of quadrillions. Their profits are not based on looking after people, particularly older people. That is an issue we have.</p>
+          <p eId="para_132"> Digital literacy is an issue we have as well. Could Mr. Carroll speak on that and how older people are engaging with AI in the programmes Age Action is running itself? Age-related bias was actually included in the system for what was probably the first time ever. As far as I can see, it is not included when you look at all the other stuff. That is very important. Maybe I could get answers on some of those issue.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_133">I thank the Deputy for those questions and I might even go back to an earlier one. We are a huge advocacy group and we have nearly 200,000 members. One of the things we find when we talk about AI, which we use, is that we are getting a lot of calls from people who are not using AI but are being used by AI. They are coming to us. I have seen this in things like healthcare abroad. The data has been scraped. They are identified and they are sold something without realising in the background, there are algorithms.</p>
+          <p eId="para_134"> We talked about how there is no data for 75-year-olds when they are designing coding. Take AI for healthcare. If an app is designed for healthcare or artificial intelligence is designed for that, how do they make allowances for falls? If we are going to use healthcare in the home and somebody falls in the house but they do not have data from people aged 75 or their expectations, will they have fall data from somebody who is between 55 and 65 but not 75? It is those kind of things.</p>
+          <p eId="para_135"> I use AI. I am sceptical of it but an awful lot of people do not realise AI is using them. That is where a certification, if that is what you want to call it, for the likes of these organisations comes in. If they want to operate, they are called to account and held to account by the committee members, our public representatives. That is what we ask. We ask for our public representatives to use their power, for which they were voted in, to do that and hold all these people to account.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_136">I want to divert slightly. There is one thing that nobody has mentioned except Deputy Mythen and that is the cost of accessing the Internet. The service provider has complete control and a monopoly over what it charges for senior citizens or anybody else. If you replaced the TV licence with a digital licence and a PPP with semi-State bodies like NBI and SIRO, they could actually come together and formulate that. Instead of issuing a pensioner with a TV licence, they could be issued with a data licence so they can actually access it because they will have to.</p>
+          <p eId="para_137">On integration, regarding what Deputy Mythen was saying, the programme centres around teaching and having people develop confidence with their devices, their smartphones, tablets and laptops. We now incorporate AI teaching. In my group, I have sorted out a pros and cons sheet as to what to look for, what is fake and what is not fake. There are markers that they should look out for.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_60">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-30T12:15:00+01:00"/></from>
+          <p eId="para_138">Is there built-in discrimination and ageism in the system at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:15:00+01:00"/></from>
+          <p eId="para_139">If you are not including the data sets, not monitoring what digital skills and broadband access people have over the age 75 and not including them in co-design as Mr. Mellon and others have said, you are de facto building ageism into artificial intelligence. There is no dispute about it. You are encoding it within the system, whether through access, design issues or whatever. Yes.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_62">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-09-30T12:15:00+01:00"/></from>
+          <p eId="para_140">I thank the witnesses. I would like to ask each of them for their perspective on what good, ongoing engagement with this sector would look like. There has been mention of co-design and ensuring the voice of older people is heard. We are at a fairly nascent stage of the development of this technology as well as of the wider governance structures in this State. Do the witnesses have a perspective on how we might best deliver an engaged AI sector in Ireland? What might it look like in terms of legislation or regulation? There is a range of governance structures in development, including the national AI office, the AI strategy, the AI observatory, talk of regulatory sandboxes and the implementation of the EU Act. What would good engagement look like and how might we ensure it happens? Judging by a significant amount of what we have heard heretofore from the likes of Google or other companies, it is largely on their own initiative, maybe with some ESG in mind. I do not think it is mandatory in any real sense. Perhaps the witnesses have some international comparisons or examples of good practice in other areas, which we might take from as we move forward.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:15:00+01:00"/></from>
+          <p eId="para_141">I do not have examples of good practice because I have not seen anywhere that has done this well. I do think the key is regulation. I do not think we are going to be the ones developing the technology but I do think we have the capacity as a country and as a European Union to say that if the companies want to use these applications with our populations, there are things we are going to require them to have done. They should have to be able to demonstrate how they involved these groups throughout the design process. Our regulators need to engage on a constant basis with a well-supported panel representing different subgroups within the population so they are constantly up to speed. This is moving and changing all the time.</p>
+          <p eId="para_142">On the investment in education and training, Ireland has done pretty well in some regards. We have made some good progress. We are not telling people how to assess information. That is not happening. That is one of the things we are very vulnerable to. On the point I made around training and education investment, it tends to be focused around the workforce and around children. Some of the most important user groups of AI applications are older people. We are not thinking about that at all. It is a regulatory challenge. We here in Ireland are trying to position ourselves as having regulatory competence in this regard. We have not collectively managed the way digitalisation has happened well so far, in that lots of people feel left behind by it. We need to learn from that and not leave it to aspiration, and require it in regulation instead. We need to focus that regulation around the needs of the end user and not solely around the needs of the producer.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_143">If we asked everybody whether they believed the industry would be served by self-regulation, I think nobody would say yes. We have a data protection structure in this country which is doing very well. This needs to be taken at European level. We can see the malignant actors who are using artificial intelligence all around us at the minute. We see the interventions in elections for public representation all across Europe. We see it in Ireland at the moment in the presidential election. We see that kind of carry-on. Ireland should take the lead on pushing Europe to design the protection of the European citizen, not have it exported across the Atlantic for no reason. Self-regulation in this industry will not work. That is for the legislators to regulate and call and hold to account.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_144">Mr. Mellon's point is really important. Somebody mentioned the European AI Act earlier. Article 10 of that Act refers to representative data sets requirements and being bias-free. Article 14 provides for a human oversight requirement. Article 4 refers to AI literacy applications. Article 50 refers to transparency obligations. The future for us and the European Union is trying to get something of the scale that prevents us from just going wherever we are ultimately taken on this journey. It has been thought out and is provided for within the EU Act. It is about how we embrace that and bring it down to a local level. Within the EU, there are certain things, for example the Spanish employment services, which is how people access social supports within Spain, and examples in Germany, that are now being put forward as best practice for how governments can embrace these things. We will have to talk to colleagues and have a wider conversation outside of Ireland. </p>
+          <p eId="para_145"> I would like to go back to the issue of equitable access. For many years, even with the budgets coming quick and fast now, everyone has been campaigning to change the phone allowance to a communications allowance, whether it is around broadband or access to assistive technologies, but there has been no movement on that. There are simple things we can do locally to ensure equity of access while campaigning at national and European level. The HSE has around €800 million for access to traditional technology such as crutches and assistive devices for older people and people with disabilities. The list of approved assistive technological devices could be altered and they could be distributed to people who may not have the capacity to get access themselves.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_66">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_146">I thank the witnesses. I used to work with Older and Bolder, an alliance of age organisations. What I found then was the incredibly clear-eyed analysis.</p>
+          <p eId="para_147">We hear a lot about digitalisation and not leaving people behind. However, what we are hearing today is how can we make digitalisation catch up with the concerns, issues and needs. It has been described as really meaningful innovation. The European Union and Ireland and others leading on innovation are making that technology better and work better and holding it to those standards. That is not a thing that lags and I think that is really important. We have a lot of narrative about the deregulation and the idea that it speeds innovation. I believe that regulation drives better innovation. We saw that on data protection in the past as well and we see it here. </p>
+          <p eId="para_148"> I want to address a couple of the areas that were mentioned because they are really key, such as clarity around regulation. The Data Protection Act 2018 was mentioned and there was disappointment with some of the AI Act in that it gave a stronger self-interpretational piece to industry than maybe for example the Data Protection Act 2018, which was very rights-centered. I stress the importance of continuing to apply our equality legislation and the Data Protection Act 2018 and folding those into the regulatory approach we take and not allowing the AI Act to set a limit on our ambition and regulation. I ask the witnesses to comment on that. The question of whether or not AI will make mistakes is crucial because it is not something we hear enough acknowledgement of, even from industry people. Also, AI will misrepresent and can be set to agendas by its owners. These are facts too. When we look at, for example, citizen information services, these were largely volunteer-run by older people with the core principle of people having access to accurate information. Is there a danger of that kind of access to accurate information through things like citizens information services getting swamped by AI information which may or may not be accurate? </p>
+          <p eId="para_149"> I refer to the consent thing and the idea that we are the product if not. It is not just the clarity on consent but also the piece about whether there should be things which people should not be asked to consent to because they should not be allowed. Again, this is under data protection. There are certain areas which are legislatively prohibited, rather than consent allowed, because the power imbalance is said to be off. In those circumstances where the power imbalance is off, should there be certain things which we know people will feel they have to consent to and which, as such, should not be in it? That comes on to ongoing consent. I ask the witnesses to comment on explainable AI and the idea that people do not just sign up at the beginning but, rather, that on an ongoing basis they should have clarity on why they are being shown something or asked something, in the context of public services as well as private actors. </p>
+          <p eId="para_150"> Similarly, there should be the right to appeal to a human decision-maker when a person feels that a decision has been made using AI . On the point about clarity, how important is it that people are always told where an automated decision or an AI or an artificial chatbot or whatever else is used? Sorry, that is a lot of questions. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:25:00+01:00"/></from>
+          <p eId="para_151">We have three minutes and I am generous, but Mr. Moynihan is indicating first. </p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:25:00+01:00"/></from>
+          <p eId="para_152">I did not catch all that so I will go with one or two of them and other colleagues might fill in. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_69">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-30T12:25:00+01:00"/></from>
+          <p eId="para_153">Sorry. </p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:25:00+01:00"/></from>
+          <p eId="para_154">No, I think the regulation is really interesting. The tradition in Ireland is that something comes in and we regulate it afterwards. Home care is an example of regulation coming in later. That makes it much more difficult. It takes longer, people have to be brought on the journey and the regulation has to be retrospectively applied. Whatever we do on regulation, we should do now before it is all-pervasive. Once something is in the system, retrospectively applying regulation is much harder, it takes much longer, it is always the older person or the consumer who loses out and ultimately there is a huge lag. This is a really difficult journey for everybody. If we take the example of the HSE in healthcare, there is probably a person coming in every day with a new piece of software or a new device that is the answer to everything. There are questions about how that can be procured and installed and how people can be trained on it. These practical questions are really quite difficult. Ultimately, it will come from these types of engagements.</p>
+          <p eId="para_155">It will come from regulation and from the direction the committee sets. That will make it safe for us all to be in this conversation on how we do it ethically. </p>
+          <p eId="para_156"> On informed consent, when we are signing up somebody to use any technology we use or even onto our management information systems, consent is required and part of the training for our staff is to consider if the older person is in a position to give informed consent at that time, in that place. This is something that needs to be unpacked. </p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_157">Senator Higgins mentioned private actors, and that is what they are, private actors. We are dealing with the public, and it is that thing. Very recently, we were looking at the data harvesting of the location of people's phones. Why does data harvesting only work in one direction? They harvest from us. Why are we not insisting that we harvest from them to know where it is all going and what they are doing with it? That is the kind of thing we need. If a company wants to operate AI, that is fine, but it is a problem if it will not tell us how, where and why it is doing it. For a long time now, around football pitches, the advertising of alcohol and cigarettes has been banned. Why do we not have a warning on AI? We need some sort of a warning to people, like there is on a packet of cigarettes. A person does not buy one packet of cigarettes and see the warning once; they see it every time. There should be a warning on this. There should be a flag on this in that respect. </p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_158">Consent is only relevant where there is a choice to engage in another way. A person might have lifelong issues with literacy or their cognitive abilities might change. Consent needs to be an ongoing process. A person may consent to something in 2025 but may not want to consent to it in 2026 or 2030, so it is an ongoing conversation. This is no disrespect to the experts who are doing the programming and who have done research but we need to have the voice of the people who are most affected by this at the table when conversations are happening. This is a great opportunity here. At the moment there is a lot of talk about public patients coming together and about making medical advances better. In that sphere they are realising that we need the voice of the patient to be represented in the outcomes. We are not patients, but the voices of groups that could be marginalised by AI need to be involved at the conversation table. </p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_159">The point about involving the user groups as part of the regulatory process to make the product better is the one that we have to hang on to. There are oodles of examples in law about not being able to ask for a person's consent for something that is illegal. There are plenty of precedents for that kind of stuff. Lots of super-smart people are developing this technology. They are of no use unless they are engaging with the people who the technology is supposed to serve. That is where we as a country can lead, in making sure that those are requirements all of those companies have to engage with in terms of those products, rather than it being an optional extra. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_160">Okay. We will have time for another round. It now falls to me to contribute. This has been a really engaging session. Two of the big long-term challenges and opportunities for Ireland centre on the pace of change of the technological revolution, which is phenomenal, and demographic changes and looking at how we are ageing as a society. It is great that we are living longer. I see with both of these challenges that there is going to be a relationship.. </p>
+          <p eId="para_161">In many ways technology has helped us to be able to live longer but, at this point, it is about what we need to do to deploy safe AI. We cannot make the AI safe when it is already out there.</p>
+          <p eId="para_162"> Part of the role of the committee will be on making recommendations to the Government on the safe deployment of AI in a number of areas. AI is already being used quite a lot in healthcare. Do the witnesses have views on recommendations on AI in healthcare, particularly with regard to older people? Mr. Mellon mentioned that older people are very engaged with traditional media in particular and trust them. I am a great believer in public information campaigns. The campaign on the misuse of intimate images was very effective. We need to look at a campaign explaining what an algorithm is. Do the witnesses have any thoughts on public information campaigns specifically targeted at older people? With regard to the training data issue, we will meet many of the companies that develop AI platforms. If there were a one-sentence message the witnesses want to deliver to them, particularly on training data, what would it be?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T12:35:00+01:00"/></from>
+          <p eId="para_163">In one way, the AI people themselves are controlling us at the moment. The cameras in here are controlled by AI. If we look around, day to day there is a lot more integration than we think. Healthcare is an area that can be advanced incredibly for a person who has a condition. I would welcome being able to access more information on the subject itself. Do not be hoodwinked by the players in AI.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Dr. Aileen O'Reilly<recordedTime time="2025-09-30T12:35:00+01:00"/></from>
+          <p eId="para_164">This is very important. We cannot build a house without a good foundation so citizen access is critical. AI in healthcare holds enormous promise for treatment plans and early diagnosis. We have some good examples in the HSE. Many of us were probably at the HSE integrated care conference. Somebody there is leading AI in the organisation and spoke about good examples of AI, such as the Spark programme, and how AI has helped to improve productivity, which is now a focus in the health service. We have already mentioned our tool, which has supported us to deliver more of our visitation support and befriending service. We already have good examples of how it could support us.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:35:00+01:00"/></from>
+          <p eId="para_165">I agree with all of what has been said so far. One of the benefits of AI is big health data. We can collect an awful lot of information and learn much more about the path of disease and what will work, and develop more tailored programmes. The issue of consent is critical and very tight safeguards need to be built around it.</p>
+          <p eId="para_166"> Another issue I see flagged with regard to health and AI is an ethical concern. If I have been given certain health advice, will AI monitor me to see whether I am complying with it? Will it rat me out to my doctor?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:35:00+01:00"/></from>
+          <p eId="para_167">Should it?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:35:00+01:00"/></from>
+          <p eId="para_168">I do not think it should, no. It would be a horrendous infringement on civil liberty. In the context of the anti-smoking debate a number of years ago, there was proposal to stop smoking in nursing homes. When someone gets to 80 they are old enough to make these decisions, and informed enough for themselves, and people should stop telling them what to do. What that monitoring would do would be to make people say they do not want it in their house. This is a risk and a problem.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:35:00+01:00"/></from>
+          <p eId="para_169">If AI is going to be a huge benefit and learning tool for everybody in the development of healthcare and practical implications, it should not all just go to the industry.</p>
+          <p eId="para_170">If AI is going to be used then it, and alternatives, should be available to the people who need the healthcare. The danger is that some of the big pharmaceutical companies or the big medical companies will get the information and use it for their benefit. It also has to work the other way so people are given alternatives.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_171">If there is a public information campaign, what messaging would ALONE want for its members?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_172">Public information campaigns always help. Older people are their own best resource. It is our experience, and the ESRI study in 2023 showed, that older people are enthusiastic about this area. They are enthusiastic about using technology and being involved in the conversation. They are also enthusiastic about seeing the benefits it can bring to them, whether in healthcare or other areas. This is also part of the message when we meet the large organisations. Older people make up roughly 20% of the population. We will have 1 million people over the age of 65 in the coming two to three years. There is an enormous opportunity to involve older people. Ultimately, they are a large constituency and a large customer base, and there is a benefit in this also.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_173">At the risk of generalising, one of the benefits of trying to reach the age cohort of people we all represent is that a lot of them listen to the radio and watch TV. I am not saying everybody does but rather than having to have a campaign on 12 different platforms, TV and radio are the way to go.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_174">And they read the newspapers.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_175">Yes, they read newspapers. I thank Ms Loftus. Rather than having to have advertisements on a lot of apps-----</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_176">I have one quick point in this regard. What will people be informed about? At present, what we will have to inform them is that this is risky.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_177">This is the question I put to the witnesses. We will come back.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_178">When the safeguards are developed so we can then tell people they are protected from these abuses in this way, and this is how the protection is activated, the answer will be "yes".</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_179">I will say, as a member of the Oireachtas committee on the media, that many TV, radio stations and newspapers will be delighted to hear that the witnesses recommend the Government increases advertising spend in the sector.</p>
+          <p eId="para_180"> We will have a quick second round of four minutes and we will begin with Deputy Gibney.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_90">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_181">I apologise in advance for my rudeness because I will have to ask the questions and then run. I must be over on the other side of the campus in three minutes. I will watch back the answers. Today has been hugely helpful. It is clear there are ways in which we consider the needs of older people and there are ways in which we do not. This area is a huge timebomb. Recently we saw with the beds in sheds the potential for the unintended consequence of people being pushed out of their own homes by younger generations in their family through this type of leniency in regulation.</p>
+          <p eId="para_182"> We speak about financial abuse but I do not think we speak about digital abuse, or it is certainly not in the common domain. We need to start thinking about this because in the age of AI, when all of this is turbocharged, there are so many ways in which older people, and anybody on the wrong side of the digital divide, are vulnerable and the potential for exploitation and abuse is huge.</p>
+          <p eId="para_183"> I want to ask specifically about scamming. Recently I listened to a podcast series, "Scam Inc.", which was released by <i>The Economist</i>. I would recommend it to anybody. It describes the transfer of wealth into the scam industry, which is now as big as the drugs trade globally. It is absolutely huge. Of course, we know the concentration of wealth in our population around the globe is with older people so they are the primary target. Technology is being used, and AI is being increasingly used, to make it more sophisticated as an industry in and of itself. Do the witnesses hear about this? I know there is so much shame around the reporting of it. It is all based around relationship development with people who, perhaps, are lonely or just human and have a vulnerability. Does anybody have experience from among their members? I apologise as I must run across campus. If the witnesses give their answers I will watch them back.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:40:00+01:00"/></from>
+          <p eId="para_184">I thank Deputy Gibney. We hear about this on a regular basis. It works from every angle. If somebody is digitally excluded, it can be a relative who is the connection between them and their bank accounts, and Mam or Dad or whoever it is trusts their son, daughter or whoever.</p>
+          <p eId="para_185">At the same time, that is a risk. Because they are digitally excluded, they decide they will get someone else to do it. That is a risk as well. The banking industry and all of those industries need to be part of this. With the technology that is there, there is very little excuse for banking scams, in a way, because they should be able to tell. It is something that needs to be done.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:45:00+01:00"/></from>
+          <p eId="para_186">We do not have adult safeguarding legislation yet. That is a failure but it is also an opportunity. We think about safeguarding solely in relation to healthcare settings. This is one of the most important realms in which we need to think about safeguarding. My father passed away about a year and a half ago. I helped him to do his taxes online for the first time in his entire life during the latter stages of his life. As I walked through the process, my God, I started to think about the opportunities, although I was being super-ethical in this regard. He had never disclosed his income or his account details to me before, even though we were the best of buddies. Now, here I was, providing the assistance, with access to all of that information. We have nothing in place to safeguard people in that regard. Mr. Mellon is right: family is a real risk in this space.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:45:00+01:00"/></from>
+          <p eId="para_187">Many older people will trust more than just family.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:45:00+01:00"/></from>
+          <p eId="para_188">I will address some of the points made by the Deputy. The concentration of wealth is an area where there is not one homogeneous group. The vast majority of people who come to us, statistically, would have twice the usage of primary care and seven times the usage of acute care when compared with the average of the older age group. They have much lower levels of house ownership. The vast majority are on their own and living on a pension. Unfortunately, there is no wealth to transfer, so there is no money to scam in that respect. They also tend to be more digitally excluded. In some ways, we do not get huge feedback from older people about being scammed on the basis that they may not have access to that. That is also part of the story that we try to get across about older people.</p>
+          <p eId="para_189"> The second highest area we deal with involves housing issues, which were raised by the Deputy, yet there is a perception that older people do not have housing issues. That is part of the richness of the conversation.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_95">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-30T12:45:00+01:00"/></from>
+          <p eId="para_190">A point was made about a public education campaign. It would be very useful that this would be funded and I would like to see the input of the organisations that are represented here today. That is what we are talking about. Mandated transparency has to be built into AI decisions. The witnesses referred to public services, and Ms Casey spoke about how they are changing and becoming more difficult to access. People must have access to smartphones and all of that to get services. We are not serving the public well by not providing a proper training programme for them. The witnesses might elaborate on that point.</p>
+          <p eId="para_191"> We know that AI systems profile people and use and sell their data because data is big money. They can also make assumptions about people's health, spending habits or cognitive ability. That is where the danger is. Someone mentioned scams, which is one of the biggest issues when the algorithms get together. We saw examples during the week of cyberattacks against the car industry in England that involved AI, and we had our own situation at the airports. It is a serious situation. We need transparency. This has to be regulated. I would ask the witnesses to comment.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:45:00+01:00"/></from>
+          <p eId="para_192">I fully agree. As an organisation, we have over 200,000 members in that age category and they come to us on a regular basis with issues. When it comes to an information campaign, we want to be on song with the legislation and the regulations. That is why we are calling on the politicians to give this to us.</p>
+          <p eId="para_193">We will deliver it but we want the politicians to give us strong regulations. We need strong regulations so we can say to somebody living in Offaly, Kerry, Wexford or wherever else that they can come to us and we can say, “Here are your protections and you are guaranteed those protections.” We will do that without question. We are asking the politicians. The people trust the politicians here. Let us keep it that way.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_194">This is very important. There is the issue of the creation of a national AI office. I was looking at the five goals of the committee. It is a big and broad remit, so it is a big task that the committee has embraced. Ultimately, as the Government and Oireachtas Members make decisions, we would want to be careful that, whether it is a national AI office or whoever is the gatekeeper, it is well resourced. This is a generational transformation involving the whole economy and people. If we do not resource the engagement, public information and regulation, ultimately, we could be at risk inadvertently.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_98">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_195">That follows on perfectly because Senator Ruane had asked me to put forward one question in particular. In the AI governance structure, we know there is an AI advisory committee, which is largely drawn from people who are experts academically or from the industry and technology side. This is the “who you are led by” piece. Do the witnesses think there should be a civil society advisory group looking at those kinds of public interest and ethical issues as part of the new governance structure that is put in place? Is there a role for that as a formal component within the governance structure?</p>
+          <p eId="para_196"> Somebody referred to cost benefit, which is a good thing. I worry about this. I feel we often get told, when it is asked if there is a benefit, that there is, that is great, so let us go. That is the kind of narrative we get, whereas we need a cost-benefit approach. Within health, for example, there is the idea of an interrogation, and I am thinking particularly in terms of the public sector usage of AI. How important is it that a cost-benefit analysis is constantly being applied? It might be said that one of the proposed costs is that we would share all of the data but, actually, we would want to put a safeguard on that. How important is that cost-benefit analysis, even if it simply means proceeding but taking steps to mitigate the costs and widen the benefits? The witnesses might comment on cost-benefit analysis within public usage.</p>
+          <p eId="para_197"> I also ask for feedback on the issue of people being able to request information, especially regarding decisions that affect them. How important is that alternative? We need to make sure intentional obstacles are not placed around people who want to be able to access an alternative or appeal to a real human decision-maker.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_198">The witnesses are eager to respond. I call Ms Casey.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_199">I feel strongly that having a separate committee advising is dangerous. Those whom we represent should be represented as part of the advisory group because, otherwise, there is a risk of it being hierarchical and it also puts unnecessary layers into this.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_101">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_200">That is a very good point. It is a widening of the advisory group.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Dr. Aileen O'Reilly<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_201">I would echo that. There is a danger that by not having those voices in the room, we rely only on the published evidence about technology, because that is what the researchers and experts will look at. Therefore, the technology and the actual reality of implementation and lived experience will not reflect the evidence. It is critical that, in whatever structure is defined and agreed, there is representation on it.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_202">To reinforce the point, we had a digital strategy and we then had a digital inclusion strategy that ran separately from it. What got the focus was the main strategy and digital inclusion did not happen. It needs to be integrated as part of it. I agree fundamentally with what my colleagues have said.</p>
+          <p eId="para_203"> We have no idea what the implications of this are going to be. Deputy Murphy mentioned that when we were told about digital in the first place, it was going to bring us closer.</p>
+          <p eId="para_204">We were going to know each other and do all of these kind of things. As it turns out, it has had a whole bunch of effects that nobody anticipated at all. That seems to be something that we can take is likely to happen exponentially with this particular piece of technology. On the issue of post-deployment monitoring, we are going to start picking up things that nobody thought were going to happen. If we are not doing that sort of monitoring and we are not requiring constant feedback in that regard, we are always going to be chasing to keep up. We are always going to be following round after this. Again, this is a regulatory issue.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_104">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_205">So there will be an ongoing cost benefit.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_206">Totally. We do not know what the benefits will be. The bot is supposed to reduce loneliness. There is already evidence to indicate that it increases loneliness not reduces it.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_106">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_207">We heard about the bias. We know that is around how it is designed in terms of who uses it, but there is also bias in what it presents. There is a single individual photograph of a very old pair of hands that I complained about to newspapers for about eight years. The same photo was used every time an older person was mentioned in an article. That, of course, has been turbo-charged. The piece about bias and also inaccuracy. Is there a danger of that kind of information being so available through AI and so turbo-charged that it drowns out things like actual public information sites?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_208">I am going to allow Mr Mellon and Mr Carroll two sentences to respond.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_209">There is a concept out there already that because the age sector needs care, it is only care. The fact of the matter is everyone needs care. What the age sector has is the resources and the knowledge. If that is recognised in those things that is how we keep the bias and the profiteers out of it.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Niall Carroll<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_210">I agree with what has been said.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_211">I would love it if that sentence was used more often in these Houses. I am going to wrap up with a final question. It relates to something Mr. Moynihan said at the start. After our session on AI and disability, we are going to move on to AI and the State. Part of my view around any new technology, not just artificial intelligence, is if it can deliver services more efficiently and effectively to citizens then we should definitely explore it. </p>
+          <p eId="para_212"> I was struck by the reference to ehealth records in Mr. Moynihan's opening statement as it is a frustration that I have. The failure to digitialse the State's health records is costing close to €1 billion a year, but there is also the impact it has on healthcare and individuals. AI technologies could be deployed in areas like that. It is being done right across the public sector at the moment and the guidelines for the responsible use of AI in the public sector have been published.</p>
+          <p eId="para_213"> There are lots of older people I know who are very engaged with technology. In terms of the people the witnesses represent and engage with, where would they like to see the technology deployed to improve the delivery of public services? Are there times they bang their heads against the wall and asking if someone could use all of the huge data that is there and more effectively target it?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Sharon Casey<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_214">The public transport app with real-time information is regularly wrong. There is no need for it with the technology they have. I think it would be of great benefit to people.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_215">So AI and public transport.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Seán Moynihan<recordedTime time="2025-09-30T12:55:00+01:00"/></from>
+          <p eId="para_216">There are so many things. If we got a flip chart out, we could be here for the day. For example, in social protection, there are eight different types of means-testing for different grants. That could all be automated. If a person qualifies for one, the officials know which other ones they qualify for and all that could be standardised. I mentioned home adaptation grants. Lots of TDs have huge experience of dealing with them for young and old and how long they take. For probably five and a half months of the six months it takes to get a grant through, the form is going between different people's desks. </p>
+          <p eId="para_217">Things like that are where we can really improve public services and actually drive on and get much more value for the people who contribute their time.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Pat Mellon<recordedTime time="2025-09-30T13:00:00+01:00"/></from>
+          <p eId="para_218">To reiterate what Mr. Moynihan said, we all have PPS numbers. The simple fact of the matter, as Mr. Moynihan said, is that there are so many different grants in so many different Departments. The PPS number tells us the age we reach. Even for a TV licence, at a certain age, if you are entitled to it, Revenue has that information and it should be automatic. People should not have to go look for it. Their TV licence, medical card, or whatever it is should arrive. People should not have to look for it or sign anything.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T13:00:00+01:00"/></from>
+          <p eId="para_219">On all of that, please let us be careful about consent. I am a former welfare rights worker. You are not supposed to be sharing this information, so you have to be clear about the purpose of it.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T13:00:00+01:00"/></from>
+          <p eId="para_220">How can we do that responsibly? I agree with Mr. Mellon. One of my frustrations is that bodies have my PPS number, the same as every citizen, and we should just be able to press a button and see what we are entitled to. I totally get it about the means test. How can we do that? How can the State deliver those services more efficiently but make sure that we safeguard data?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Camille Loftus<recordedTime time="2025-09-30T13:00:00+01:00"/></from>
+          <p eId="para_221">Regarding certain cohorts, we would all be able to sit down and say, as the Cathaoirleach would, what benefits someone might be entitled to as an older person. We can link those up and ask explicitly for consent in that regard to make sure that we are doing that right. The place I would most like to see it deployed is in the development of more home care options. It has huge potential in that regard. After the horrors of the "RTÉ Investigates" programme that we saw earlier this year, I am reminded that no one has ever said, "I cannot wait to go to the nursing home." Nobody has ever said that and nobody wants to be there. We all want to be at home. The HSE is making good steps in that regard. We hope that the budget will resource it to continue to make those steps. This type of technology could be really valuable and useful in that regard, including on the safeguarding of patients themselves.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T13:00:00+01:00"/></from>
+          <p eId="para_222">I thank all our witnesses for what has been a useful discussion. It is to inform us as we are engaging with these issues and making policy recommendations. For the groups and anyone who is watching, we are always open to submissions. If people have heard something today, the email address is <i>ai@oireachtas.ie. </i>For those who want to write in rather than email, we will certainly make accommodations. I thank everybody for the work that they do in their organisations more generally. We think it is important that we hear the voices of the older generation. That concludes today's meeting. We will adjourn until 7 October. There may be something else on that day, but our committee is meeting that morning to discuss AI and disability.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 1.03 p.m. until 11 a.m. on Tuesday, 7 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

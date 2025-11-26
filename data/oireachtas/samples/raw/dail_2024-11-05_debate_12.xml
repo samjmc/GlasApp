@@ -1,0 +1,991 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach/2024-11-05/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach/2024-11-05/debate"/>
+          <FRBRdate date="2024-11-05" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/33/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach/2024-11-05/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach/2024-11-05/debate/mul@"/>
+          <FRBRdate date="2024-11-05" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach/2024-11-05/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_and_reform_and_taoiseach/2024-11-05/debate/mul@.akn"/>
+          <FRBRdate date="2024-11-07" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BernardJDurkan" href="/ie/oireachtas/member/id/Bernard-Durkan.D.1981-06-30" showAs="Bernard Durkan"/>
+        <TLCPerson eId="HildegardeNaughton" href="/ie/oireachtas/member/id/Hildegarde-Naughton.S.2013-07-19" showAs="Hildegarde Naughton"/>
+        <TLCPerson eId="JamesOConnor" href="/ie/oireachtas/member/id/James-O'Connor.D.2020-02-08" showAs="James O'Connor"/>
+        <TLCPerson eId="JimOCallaghan" href="/ie/oireachtas/member/id/Jim-O'Callaghan.D.2016-10-03" showAs="Jim O'Callaghan"/>
+        <TLCPerson eId="JohnMcGuinness" href="/ie/oireachtas/member/id/John-McGuinness.D.1997-06-26" showAs="John McGuinness"/>
+        <TLCPerson eId="KieranODonnell" href="/ie/oireachtas/member/id/Kieran-O'Donnell.D.2007-06-14" showAs="Kieran O'Donnell"/>
+        <TLCPerson eId="NealeRichmond" href="/ie/oireachtas/member/id/Neale-Richmond.S.2016-04-25" showAs="Neale Richmond"/>
+        <TLCPerson eId="PaschalDonohoe" href="/ie/oireachtas/member/id/Paschal-Donohoe.S.2007-07-23" showAs="Paschal Donohoe"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform" href="/ie/oireachtas/role/minister/public_expenditure__national_development_plan_delivery__reform" showAs="Minister for Public Expenditure, National Development Plan Delivery and Reform"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Finance" href="/ie/oireachtas/role/minister_state/finance" showAs="Minister of State at the Department of Finance"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform" href="/ie/oireachtas/role/minister_state/public_expenditure__national_development_plan_delivery__reform" showAs="Minister of State at the Department of Public Expenditure, National Development Plan Delivery and Reform"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM AIRGEADAS, CAITEACHAS POIBLÍ AGUS ATHCHÓIRIÚ, AGUS AN TAOISEACH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Finance, Public Expenditure and Reform, and Taoiseach</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2024-11-05">Dé Máirt, 05 Samhain 2024</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2024-11-05">Tuesday, 05 November 2024</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 01:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 01:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RoseConwayWalsh">Rose Conway-Walsh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#PaschalDonohoe">Paschal Donohoe (Minister for Public Expenditure, NDP Delivery and Reform)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#BernardJDurkan">Bernard J. Durkan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#HildegardeNaughton">Hildegarde Naughton (Minister of State at the Department of the Taoiseach)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JimOCallaghan">Jim O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#KieranODonnell">Kieran O'Donnell (Minister of State at the Department of Public Expenditure, NDP Delivery and Reform)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#NealeRichmond">Neale Richmond (Minister of State at the Department of Finance).</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy James O'Connor.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#JohnMcGuinness">Teachta / Deputy John McGuinness sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2024<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 11 - Public Expenditure, National Development Plan Delivery and Reform (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Vote 12 - Superannuation and Retired Allowances (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_5">
+        <heading>Vote 13 - Office of Public Works (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_6">
+        <heading>Vote 14 - State Laboratory (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_7">
+        <heading>Vote 17 - Public Appointments Service (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_8">
+        <heading>Vote 18 - National Shared Services Office (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_9">
+        <heading>Vote 19 - Office of the Ombudsman (Supplementary)<recordedTime time="2024-11-05T13:00:00+00:00"/></heading>
+        <speech by="#JohnMcGuinness" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T13:00:00+00:00"/></from>
+          <p eId="para_10">I welcome the Minister, Deputy Donohoe, and the Minister of State, Deputy O'Donnell, who are here to present the Estimates. I remind them of the note we receive on privilege. I remind members not to name or identify anyone outside of the Houses. They are covered by full privilege if they are here on the campus of Leinster House. If they are not, they may only be entitled to part-privilege. We have been asked to review the Estimates for Public Services 2024 in respect of Votes 11 to 14, inclusive, and 17 to 19, inclusive. I propose to take opening statements from the Minister and the Minister of State, if that is what they had planned, and to open it to members' questions immediately afterwards.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform" eId="spk_2">
+          <from>Minister for Public Expenditure, National Development Plan Delivery and Reform (Deputy Paschal Donohoe)<recordedTime time="2024-11-05T13:00:00+00:00"/></from>
+          <p eId="para_11">I thank the Cathaoirleach and members for the opportunity to be here this afternoon. I am here to engage on six Supplementary Estimates proposed for Votes under the Public Expenditure, National Development Plan Delivery and Reform Vote group. I will detail the requirements for each Vote but, in summary, they comprise a technical Supplementary Estimate of €1,000 for Vote 11; a technical Supplementary Estimate of a net €1,000 and gross €22.1 million for Vote 12 – Superannuation and Retired Allowances; a technical Supplementary Estimate for a net €1,000 and a gross €120,000 for Vote 14 – State Laboratory; a technical Supplementary Estimate for a net €1,000 and a gross €665,000 for Vote 17 – Public Appointments Service; a technical Supplementary Estimate of a token €1,000 for Vote 18 – National Shared Services Office; and a technical Supplementary Estimate of a token €1,000 for Vote 19 – Office of the Ombudsman. Altogether, the proposed Supplementary Estimates would result in an increased allocation of €6,000 in net terms and €22.9 million in gross terms across the six Votes. A further Supplementary Estimate under the ministerial Vote group is being sought for the Office of Public Works. My colleague, the Minister of State, Deputy O'Donnell, will speak to that.</p>
+          <p eId="para_12"> With regard to Vote 11, we are seeking a technical Supplementary Estimate to allow for the transfer of funding between departmental subheads. This is to ensure that adequate funding is available for programme A16, which relates to pensions for bodies under the aegis of the Department, particularly the ESRI, the IPA and the Office of the Regulator of the National Lottery. As public servants are only required to give one month's notice of retirement, it is difficult to forecast the cost of lump sums and pensions. In 2024, it is expected that €612,000 extra will be required in programme A16. No additional funding is required in 2024 other than the token amount of €1,000 as there are savings within programme A1, which relates to salaries, wages, pensions and allowances, that can offset this expected overspend. The 2025 estimate for pensions for bodies under the aegis of the Department has increased from €1.536 million to €2.206 million to mitigate any potential future overspends.</p>
+          <p eId="para_13"> With regard to Vote 12 – Superannuation and Retired Allowances, this is for a net amount of €1,000 and will, if agreed, allow the Vote to utilise additional appropriations-in-aid to fund projected expenditure. The receipts for appropriations-in-aid are higher than forecast due to greater than expected contributions on subhead B7, single public service pension scheme. This proposal utilises additional appropriations-in-aid and will increase the gross ceiling of Vote 12 by €21.1 million. The technical Supplementary Estimate in respect of the superannuation Vote will bring the total 2024 Estimate for that Vote to €891.7 million gross and €225.4 million net. This Estimate arises due to a higher number of retirements than expected for 2024. This has resulted in costs under the pension scheme for established civil servants being higher than forecast. Expenditure in this regard is dependent on the number and grade mix of those who retire, and varies year to year.</p>
+          <p eId="para_14"> The Supplementary Estimate for Vote 14 is for a net amount of €1,000 and will allow the Vote to utilise appropriations-in-aid, in addition to savings in salaries, wages, pensions and allowances, to fund higher than expected electricity and gas costs. Savings in subhead A1 arise as a result of delays in recruitment of staff in the first half of the year while appropriations-in-aid are due to a higher number of tests completed and billed in 2024, and this will result in an increase in the gross ceiling of Vote 14 by €122,000. </p>
+          <p eId="para_15"> A technical Supplementary Estimate is sought for the Public Appointments Service. This is again for a net amount of €1,000 and will allow the Vote to utilise appropriations-in-aid to fund the delivery of enhanced recruitment for An Garda Síochána. In 2024, PAS and An Garda Síochána agreed that PAS would facilitate a process for enhanced Garda recruitment on the basis that An Garda Síochána agreed to transfer €664,000 to PAS. This, therefore, requires a technical Supplementary Estimate which will result in an increase in the gross ceiling of Vote 17 by €664,000.</p>
+          <p eId="para_16"> The Supplementary Estimate for Vote 18 – National Shared Services Office is a technical Supplementary Estimate of €1,000 to provide for the reallocation of funding within the Vote to areas experiencing pressures. The Supplementary Estimate will allow for €7.295 million in savings across a number of programme areas to be allocated mainly to address pressures arising within the area of enterprise IT. Given the nature of the office, the NSSO is a significant consumer of IT related services and costs in this area have been increasing year on year.</p>
+          <p eId="para_17"> A technical Supplementary Estimate of €1,000 is sought for Vote 19 – Office of the Ombudsman to provide for the reallocation of funding within the Vote to areas experiencing pressures. It will provide scope for the office to increase the legal fees subhead by €710,000 in 2024 to meet the cost of legal fees and settlements which are expected to fall due towards the end of the financial year. Cases span a number of years and the timing of the conclusion of each case is difficult to estimate. Therefore, the exact amount of legal costs and the timing of when those costs are due can vary from the original Estimate.</p>
+          <p eId="para_18"> Approval of the Supplementary Estimates outlined will enable the Votes concerned to provide key services and projects to the end of the year. I have, on a few occasions in my opening statement, used the term "token". That is not to say that €1,000 is a token amount of money. It is just to say that, in keeping with accounting best practice, when we are moving money around inside a Vote, we have been asked to indicate that by a Supplementary Estimate of €1,000 or an amount thereof to indicate to the Oireachtas that a change is happening inside a Vote.</p>
+          <p eId="para_19"> I commend these Estimates to the committee and I look forward to any questions that the Chairman and the members will have.</p>
+        </speech>
+        <speech by="#KieranODonnell" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform" eId="spk_3">
+          <from>Minister of State at the Department of Public Expenditure, National Development Plan Delivery and Reform (Deputy Kieran O'Donnell)<recordedTime time="2024-11-05T13:10:00+00:00"/></from>
+          <p eId="para_20">As Minister of State with responsibility for the Office of Public Works, I am here today to propose a Supplementary Estimate for the office.</p>
+          <p eId="para_21"> While the OPW’s net Estimate for 2024 on Vote 13 is €624 million, profiled expenditure for the year indicates an expected excess of €40.336 million on capital expenditure and €15.624 million on current expenditure. When account is taken of expected savings on the Vote of €5.611 million, the net overall request for a Supplementary Estimate for Vote 13 is €50.349 million. </p>
+          <p eId="para_22"> An additional amount of just over €40 million on capital expenditure is due to a number of factors. Approximately half of the sum required, €20.336 million, is to fund the data centre project in Backweston. When the national development plan allocations for the period 2021 to 2030 were agreed by Government in 2021, the estimated cost of the project was €57 million and this was provided for in the OPW’s multi-annual NDP allocation. Prior to going to tender, the Department of Public Expenditure, NDP Delivery and Reform was advised by the OPW that the pre-tender estimate had reached €80 million. The Department agreed in November 2022 that any additional funding required would be provided when it fell due and authorised the OPW to proceed with the procurement competition for the delivery of the project. </p>
+          <p eId="para_23"> This project is also partly funded by the EU under the national recovery and resilience plan with an allocation of €40 million being provided from that source. That is 50% of the value of the contract. The data centre is on schedule to be completed in mid-2025. It will replace a number of older centres that are no longer fit for purpose and will facilitate the continued development of digital services across government. The new facility will also be more energy efficient than the existing centres, thus making a valuable contribution to meeting the Government’s climate action targets to reduce the State’s carbon footprint. This is the latest important infrastructural development that has been located at the Backweston campus following on from the recently completed Forensic Science Laboratory that was formally opened earlier this year. The successful completion of the data centre project represents a further tangible demonstration of the Government’s commitment under the national development plan to provide the critical infrastructure the State needs to deliver services into the future. </p>
+          <p eId="para_24"> The remaining €20 million sought for capital expenditure includes €6 million for RePowerEU related expenditure on a major refurbishment project at the OPW’s former offices at 6 Ely Place, Dublin 2. A further €9 million of EU funding will be provided during 2025 towards the €35 million overall cost of this project, so €50 million of the overall cost is provided from the EU. It is scheduled for completion by the end of 2025. At that point, it will facilitate the consolidation of a number of areas of the Department of Justice in the State-owned office accommodation complex that extends from Nos. 51 and 52 St Stephen’s Green to Ely Place. A key feature of the project's design was to make better use of the space available, resulting in an increase in available workspaces from 300 to 380. A significant upgrade of the building fabric will improve the energy efficiency of the building in alignment with Government policy on climate action to reduce the State’s carbon footprint in its buildings.</p>
+          <p eId="para_25"> A further €7 million relates to the fit-out of Smithfield Hall, also known as the Distillers Building. The OPW has taken out a 25-year lease on this modern, energy-efficient and strategically located building in the Smithfield area of Dublin, close to public transport and other major State offices, and will provide almost 1,000 workstations. The total project budget is estimated at €60 million. When the works are completed during 2025, the building will be the headquarters of Tailte Éireann, which has been created through an amalgamation of the Valuation Office, Ordnance Survey Ireland and the Property Registration Authority. The building will also accommodate the Valuation Tribunal, the Insolvency Service, and the Chief State Solicitor’s Office. When the building is completed and occupied, it will enable the OPW to exit other poor quality accommodation and make these State-owned buildings available for refurbishment and other State uses.</p>
+          <p eId="para_26"> The €7 million balance of the €20 million is required for a new build on Leeson Lane which will provide a modern, energy-efficient office block in a strategically important location at an overall cost of €50 million. The project is expected to be completed by the end of 2024 with staff moving into the building on a phased basis commencing in quarter 1 of 2025. The main occupier of this new State-owned building will be the Department of Tourism, Culture, Arts, Gaeltacht, Sport and Media. Some staff from the Department of Finance will also be accommodated in the building. The building will provide 350 workstations in a predominantly open-plan environment with minimal use of cellular offices to meet the requirements of the occupying Departments in a cost-efficient manner.</p>
+          <p eId="para_27"> These four key projects are being delivered on time and within the budgets and programmes agreed following tendering for the works involved. They represent a combined investment of €225 million in important State infrastructure that is essential for the effective delivery of public services.</p>
+          <p eId="para_28"> The requirement for non-capital expenditure is €15.624 million which is net of a projected increase of €3.569 million in appropriations-in-aid for 2024.</p>
+          <p eId="para_29">A figure of €3.9 million is required for a number of pay items. These include a provision of €1.6 million toward the overall cost to the organisation of implementing the public service pay agreement, which had not been finalised in time for its provisions to be reflected accurately in the Revised Estimates Volume for 2024 when it was published late last year. A further €1.4 million relates to the cost of staff who are working on the Rosslare Europort project, which was previously funded from the Brexit adjustment reserve, BAR. BAR funding is no longer available to meet these staff costs and, accordingly, €1.4 million is required under the A1 pay subhead. The balance of €900,000 is required to fund the backfilling of vacancies and the staffing required to deliver OPW services.</p>
+          <p eId="para_30"> An allocation of €408,000 is required to fund an increase in subsistence rates in 2024 to cover rising costs for operational services, encompassing supplies and sundries equipment and rising costs for digital investment and IT expenses. The latter covers software licences and additional contract staff hours in the ICT area. An additional €1.39 million is required in the arterial drainage area due to a number of factors, including the increased cost of carrying out essential maintenance works driven by fuel costs and general construction cost inflation, as well as the need to fund the cost of unexpected significant and essential environmental and archaeological survey costs. Ongoing engineer recruitment challenges have also resulted in a requirement to engage contract engineers to ensure essential works can continue.</p>
+          <p eId="para_31"> The modest increase in the OPW's non-capital allocation for 2024 of 1.5% did not adequately cover the expected increase in the OPW’s cost base at the time when the 2024 Estimate was settled. As a result, estate management requires additional funds to cover the cost of inflation and increases in the number of buildings moving to maintenance. Several high-tech buildings, now coming under the B7 property maintenance budget, have significantly higher than usual maintenance costs. In addition, increases in insurance costs means that the overall requirement for estate management comes to just under €13.5 million. As I noted earlier, there are savings of €5.611 million available that will partially offset these costs.</p>
+          <p eId="para_32"> In summary, the overall amount of the Supplementary Estimate required for both current and capital purposes is €50.349 million. I commend them to the House.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_4">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_33">What is on people's minds today as the Minister and Minister of State come looking for the extra money to be added on is how people know they are getting value for money on this. What is the total additional amount that is being requested for the OPW?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_5" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_34">The total amount being requested is €50.349 million. That includes capital and current expenditure. Capital expenditure amounts to €40 million of that, of which €26 million is coming from Europe. A total 65% of the capital funding is not a cost to the Exchequer. The money is coming directly from Europe.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_6">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_35">Obviously the Minister of State will agree that it does not matter whether it is coming from Europe or from here, people need to know that they have value for money. The thing people have asked me about the most when I have called to the doors in recent weeks is value for money. The two words that have been put to me are "bike shed". How do people know they are getting value for money in this? Will the Minister of State talk me through the €40 million extra on capital and how that has come about? What, specifically, is the largest proportion of money there?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_7" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_36">The best thing is if I guide the Deputy through the four projects because she will get a good appreciation of them.</p>
+          <p eId="para_37"> First is the original project, which is Backweston. That is an €80 million project, of which €40 million is coming from the EU fund. It started in March 2023 and will be completed in May 2025. It is on time and on budget. In terms of the way the funding came, in the 2023 Estimates, just over €80 million came from the national recovery and resilience fund from Europe. In the Estimates for 2024, €30.664 million was provided. A further €20.336 million is now being provided through the national recovery and resilience fund through the Supplementary Estimates. In 2025, €8.227 million is in the Estimates. There will be a balance of retention in 2026 of €2.391 million, which is the full €80 million.</p>
+          <p eId="para_38"> The refurbishment of 6 Ely Place started in August. It will be completed in late 2025, with a total cost of €35.936 million. Exchequer funding amounts to €20.936 million. Funding of €15 million is coming from Europe through RePower EU. The way that is being funded today is €6 million is coming through the Supplementary Estimates now. That is the first allocation to that project. In the 2025 Estimates, €12.692 million is coming. A further €9 million will come through RePower EU in 2025 and a balance of funding is coming in 2026 from the Exchequer of €7.659 million, which amounts to just under €36 million.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_8">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_39">What was the Ely Place refurbishment estimated to cost?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_9" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_40">It is estimated to cost €35.936 million.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_10">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_41">How much is it costing?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_11" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_42">It is costing that. It is coming in on budget and on time. Work commenced on the Distillers Building in Smithfield in July 2024. It will be completed in August 2025. It is a €60 million project. The Exchequer provided €9.5 million in the Estimates for 2024. We are providing a further €7 million in the Supplementary Estimates. There will be €36 million through the Estimates in 2025, and then a balance of €7.5 million will come in the 2026 Estimates, which is €60 million. That is all Exchequer funding.</p>
+          <p eId="para_43"> Leeson Lane is a €50.064 million project. That is the budget. It is on budget and on time. It started in 2023 and will be finished at the end of this year. A total of €30.853 million was funded through the resilience fund from the EU. The 2024 Estimates were €12.1 million. A further €7 million is being provided through the Supplementary Estimates now, which comes to the full €50 million. It is on time and on budget. I have looked at those four projects and how they were funded. All four are on budget and on time.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_12">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_44">Okay. I raise the legal fees subhead for the Office of the Ombudsman. It states it will "provide ... for the office to increase the legal fees subhead by €710,000 in 2024 to meet the cost of legal fees and settlements". Will the Minister speak to that and the main driver of it?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_13" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_45">The main driver of that would be the expenses incurred by the Ombudsman in the delivery of their services. It is very difficult for us to be able to form a very accurate view and predict with total accuracy what its costs are going to be in any given year from a legal perspective. That is because the number of cases the office is involved in varies. The settlement period for cases is difficult to predict as well. While it is possible to predict with some accuracy what our legal costs are going to be, it is difficult to predict what could be the costs of adverse outcomes from legal activity the Ombudsman is involved in.</p>
+          <p eId="para_46"> Two actions are being taken to contain those costs over time. First, the Office of the Ombudsman has delivered and developed its own legal services unit, which provides legal advice on the exercise of statutory functions. Second, the office has moved the negotiation of the amount of opposition costs to the State Claims Agency once an award of costs has been made by the court. As the Deputy knows, the activities of the Ombudsman are entirely separate to my own Department, as they should be. In my answer to the Deputy, I have tried to outline the challenges in predicting the costs and the actions that have been taken to contain those costs over time.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_14">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_47">How much has been paid out in settlements from the State in the past year or recent years?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_15" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:20:00+00:00"/></from>
+          <p eId="para_48">I would not have that information with me because that covers off such an array of legal actions the State is involved in.</p>
+          <p eId="para_49">I can certainly try to find out for the Deputy and revert to her with an answer, but, obviously, it will transcend massively the activity of the Ombudsman.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_16">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_50">People are interested in this particularly in the context of health and the number of incidents that are happening within the health service whereby people are being denied proper healthcare. They want a take on how much is paid out and are asking whether, even in the context of the moratorium on the hiring of staff and the absence of safe staffing levels, we might be better off investing in staff and our hospitals to prevent claims being made at the other end and the State being held to account.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_17" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_51">I completely take that point. Of course, the Oireachtas should know, and I am sure the people want to know as well, what level of money is involved in the settlement of legal cases. All I would say is that that will have little interaction with the work of the Ombudsman. Not only is the Ombudsman independent, it covers off a particular set of functions. Many issues relating to the settlement of legal matters with regard to health fall to the State Claims Agency, which is the responsibility of the Department of Finance. I say that only to explain that few of them, if any, will be included in those figures. I nonetheless take the Deputy's point, and I will ask my officials to come back to her with an answer if such an answer exists, as I am sure it does.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_18">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_52">Yes, it has to exist, and those people want to know what their money is being spent on.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_19" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_53">Of course they do, but it may not be being spent by the Ombudsman. That is my point. Of course the figure exists, but it is almost certainly not within the Ombudsman. If the Ombudsman does have health-related expenditure, I anticipate that would constitute a small share of its overall legal costs.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_20">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_54">I thank the Minister, the Minister of State and their officials for coming before the committee. I have a couple of questions on the national development plan and the reform thereof. To what extent has that reform taken place, and to what extent has the economy from any reforms that have taken place or that are proposed?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_21" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_55">If I were to highlight two reforms I believe are making a difference, the first is the way in which we have changed the process with regard to the public spending code. We have increased the threshold above which a further level of work needs to be done in evaluating the business case and where additional processes need to be triggered because the cost of the project is high. We have changed the threshold of that, allowing more projects below a value of €200 million to move forward with more speed.</p>
+          <p eId="para_56"> An additional change we have made, which the construction sector raises often with me, is the work we have done in building information management. We are trying to bring more of the information that is needed to deliver and build complex projects. It is available digitally and is shared in real time with everybody who is involved in delivering the project.</p>
+          <p eId="para_57"> Those are reforms from different ends of how we spend the country's money, but I believe they are having an impact. If I were to point to the biggest top-line difference I can see in capital spending this year versus that of previous years of the Government, it is that in the first couple of years of the Government's term we were not able to spend our full capital budgets, which was due to the pandemic. Even after the pandemic had lifted, however, some Departments still had difficulty spending their full capital budgets. For the past two years, that has been a thing of the past, as is again the case for this year. If I were to say whether this is having a benefit, I would say it definitely is and I would point to new school buildings, the roll-out of the national broadband plan and extensions to certain hospitals as the most tangible examples of the difference it has made.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_22">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_58">Various snags and obstacles have impacted negatively on some, though not all, public projects in the past. Is the Minister satisfied at this stage that these matters have been brought into focus for review and improvement and is that likely to happen? For example, I was recently looking at an application to a local authority for something very small. It contained a file that was about 4 in. or 5 in. thick. I recall when those files would be three or four pages long. I am sure somebody is going to tell me that things have moved on, which is true, but it now takes more people longer to assess a file that is 4 in. or 5 in. thick than it did to assess files that were only four or five pages long.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_23" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_59">In the lifetime of this Government, by some way the most disruptive issue to us delivering our capital projects has been the impact of cost-price inflation. It has meant the costs for certain projects, through nobody's fault, have moved significantly ahead of what they would have been expected to be because the costs of concrete, steel, wood and energy have all changed over the past two years in particular. By some way, therefore, I would highlight that as the biggest challenge we have faced.</p>
+          <p eId="para_60"> Because this challenge has come largely from beyond our shores, the first step we have taken to address it is that changes have been made to the contracts for certain capital works to allow the risk in respect of those contracts to be better shared between the State and those who are involved in building the projects, because we recognise that inflation has had a big impact on them. Second, we have made changes to the level of our capital budgets whereby, in many cases, we have had to allocate additional money to projects simply because they are costing more, given that the cost of building them has increased due to inflation. That is the single biggest issue we have had to deal with.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_24">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_61">Has any assessment been carried out to identify the direct causes of the inflation? I accept the Minister's point that costs have increased generally and so on, but there appear to be some cases where inflation comes in under a heading, and individual rates of inflation that seem to have a further impact come in under numerous headings, and the inflationary spiral continues. Is that continuing at the moment or has it abated at all? To what extent is it possible to carry out a forensic test to find out exactly what negative effect the rising costs are having?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_25" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T13:30:00+00:00"/></from>
+          <p eId="para_62">The Office of Government Procurement has done work to examine what the drivers of inflation I referred to are. It has been able to relate that back to raw materials and evaluate how the change in the cost of raw materials has impacted on the costs of projects and the procurement process.</p>
+          <p eId="para_63"> As for whether it is abating in any way, there have been some signs the rate of inflation is moderating but, as the Deputy will know, a slower rate of inflation still means prices are increasing. It just means they are increasing at a slower pace. We will need to have a fair bit of low inflation under our belts before we can say it has abated to the extent that it is going to make a big difference to the issues I described. We have mainly accommodated those inflationary pressures by increasing our capital ceilings, which has allowed us to deliver on our commitments and on some additional projects at the same time.</p>
+          <p eId="para_64">Our capital ceiling going up has allowed us to deliver on our commitments and some additional projects at the same time. </p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_26">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:40:00+00:00"/></from>
+          <p eId="para_65">I will move on to the OPW. I am not going to ask the question the Minister might think I am going to ask. I am going to ask a different question. This is regarding the arterial drainage issues all over the country. Given the situation that has arisen in Spain recently and recognising that in Ireland has fairly high levels of rainfall in any given year, is the Minister of State in any way concerned about the progress on any of the schemes, those that are pending, proposed or have been delayed for whatever reason?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_27" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:40:00+00:00"/></from>
+          <p eId="para_66">What happened in Spain was horrific, with a huge loss of life. During my time in the OPW, I have made flood relief schemes a significant priority. In that time, we have finalised a scheme for Midleton. We have finalised a €5.8 million individual property protection scheme for Midleton, to cater for 923 people, on a case-by-case basis. Furthermore, the design of that scheme means that there is no outlay of costs to the homeowner or business owner. We looked at it in great detail and it is designed in a way whereby the council provides an independent assessor to look at the home or business. From that, reports come back and the council is involved in two elements. The council goes out to tender on Irish and European sites on the basis that one of the features that came back to us was that there may not be sufficient supply within the domestic market for individual property protection measures. We are dealing with the supply issue and, in terms of value for money, going out to tender. The council will then engage contractors to install them. This is a huge body of work in Midleton.</p>
+          <p eId="para_67"> Schemes will take time because there are processes such as environmental ones that have to be gone through. I am very keen on interim measures. We put quite a number into Midleton and the surrounding areas such as Rathcormac, Mogeely and Castlemartyr. Deputy O'Connor will be very familiar with these. More recently I have been to Bantry and we are looking at the issues there. There is a mains scheme and there is also a culvert, which is in a very bad state of repair, going through the town. We are looking at ways to expedite its repair. That will go for planning by Cork County Council very shortly. We are also looking at interim measures. We have had two meetings with Cork County Council over the last few weeks. We have a further meeting scheduled tomorrow. The OPW chairs an interdepartmental flood policy co-ordination group. At the most recent meeting, I invited all the local authorities to attend to discuss flood preparedness. The CEOs and directors of services of the local authorities attended and we discussed the supports they required and their readiness. They assured me that they were ready. One of the key elements that came out of the meeting was communication. With Storm Ashley Galway City Council did a great body of work. The council did a huge amount of communication in a timely manner on road closures and road openings. Having dealt with the local authorities and our own staff in the OPW, I am satisfied that we are taking very co-ordinated measures on flood relief schemes. </p>
+          <p eId="para_68"> The relief schemes for Crossmolina, King's Island in Limerick and Castleconnell are going ahead. Kilkee is proceeding to planning. We have all these schemes and I want to see them continue to be rolled out. It is a huge priority for us.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_28">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:40:00+00:00"/></from>
+          <p eId="para_69">Is the Minister of State satisfied that plans are sufficiently advanced at this stage to be able to reassure the people who have been the victims of flooding more than once, in recent times, suffering damage to their properties and businesses?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_29" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:40:00+00:00"/></from>
+          <p eId="para_70">All the schemes I have dealt with in the OPW have two elements. First, I want to see the main schemes progressed as quickly as possible. However, one thing we have learned from Lough Funshinagh is that we cannot bypass the process. We have to work within the process while seeking to expedite it. Second, we have to see if we can bring interim measures prior to the main scheme being ready. That is a key feature for me. In Bantry, this involves progressing work on the culvert project prior to the main project. In Midleton, it means putting in interim measures. I am satisfied that the process in place is robust. We must remember that we have to be true to people. When the schemes go ahead, we must be certain they are robust and fit for purpose. If it transpires that a scheme goes to judicial review, it must be able to withstand that. Side by side with that, it is about putting those interim measures in place to ensure people are safe until the main scheme is built.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_30">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:40:00+00:00"/></from>
+          <p eId="para_71">A considerable amount of time has elapsed since the original scheme for Lough Funshinagh was abandoned, following judicial review or whatever the case was at the time. The case was taken by someone who did not live in the area at all. My concern is coming directly from people who live in my constituency. Householders and farmers have been discommoded severely in going about their business. They have been discommoded in not being able to live in their homes in some cases. They have been discommoded by virtue of the roads that have to be closed off. Who pays for all this in the final analysis? For example, if the judicial review was sufficiently grounded to cause the scheme to be abandoned and restarted, who is to blame for all of that? Is it the case that the local people should not have been living there in the first place, as someone tried to tell me at one stage? That does not wash with the local people. At this stage, the local people are asking how long more must this go on. I acknowledge that the Minister of State said that it is in process but the process is taking an inordinate amount of time for the people who have been directly and negatively affected.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_31" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:40:00+00:00"/></from>
+          <p eId="para_72">I have had a lot of engagement with people living around Lough Funshinagh. They are exceptional people who have been through very difficult times. There is currently an injunction in place for the main scheme in Lough Funshinagh. This requires Roscommon County Council to make an application to the board on the main scheme itself. Subject to that being granted, the council would have to go back into court to get the injunction lifted to enable the remainder of the scheme to be completed. About two thirds of the pipe is laid. When I looked at this I realised it would take a period of time, with process. Working with my officials and with the support of the Taoiseach, I made a decision to put an interim measure in place for the people of Lough Funshinagh. The Deputy will appreciate my reticence because there is an application before the board at the moment for an interim measure to deal with the situation in Lough Funshinagh until the planning permission for the main scheme goes through. We are awaiting a decision from An Bord Pleanála on that at the moment. This is something I worked on with the OPW, Roscommon County Council, the consultants and, in particular, the people of Lough Funshinagh. I have met the people three or four times. In a nutshell, we have to have a main scheme but we also have to cater for the period until the main scheme is completed. I feel very strongly about this and Lough Funshinagh is a classic example of it.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_32">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_73">How do we prevent a recurrence?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_33" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_74">I am not technical and the Deputy will appreciate that this is layman's language. Ultimately the main scheme has a measure to lower the level of the turlough when there is high rainfall, which provides protection. It is a technical process that we have come up with. Roscommon County Council, in parallel with the interim measure that has gone through An Bord Pleanála, is currently preparing an application to the board for the main scheme. As the Deputy will be aware, the main scheme was a pipe, of which 2 km have been completed and 1 km has not been completed. That has to go through a process again. It will take time to get planning permission and then to go back into the court to get the injunction lifted to enable the council to complete the remainder of the project. In the meantime, we did a highly concentrated body of work to get an application to the board, which went in in September, for an interim measure to deal with the issue for the people of Lough Funshinagh until the main scheme is concluded.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_34">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_75">The question is who is to blame. Who is to compensate whom? The people of the area have been disadvantaged.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_35" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_76">The people of the area, as I got to know first hand, have a deep connection with the turlough, with nature, and with their area. They want to be able to live in harmony with the turlough. There are rising water levels. They want a permanent measure in place. They have worked with us on the interim measure. The task for the OPW and particularly Roscommon County Council is to stick with the process and get the main scheme through in time. I do not want to in any way prejudice any decisions by the board, but if we get an interim decision from the board, it will alleviate the situation for the people of Lough Funshinagh until the main scheme is concluded.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_36">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_77">How is Backweston data centre progressing with regard to energy consumption and so on?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_37" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_78">The new facility will be more energy-efficient than the existing centre, thus making a valuable contribution to meeting the Government's climate action target and reducing the State's carbon footprint. We will get the Deputy a technical note on the specific point and forward it to him. It is very valid.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_38">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_79">I appreciate the opportunity to speak. I acknowledge that it is just over 12 months since Storm Babet hit east Cork. The incident has left an enormous footprint on our landscape, homes and businesses, and on much of our public amenities, whether public roads, community hospitals, Garda stations or schools in the area. People are dealing with the trauma of that. I acknowledge the enormous contribution made by our emergency services locally and by the responders on the county council who worked around the clock this time last year to get people back on their feet and back into their homes where possible. That was a long process over many months for hundreds of homeowners and business owners in the area. As I am sure the Minister of State will know, Cork County Council has worked diligently wherever it can from an engineering point of view, on an interim basis, working with community stakeholders, local county councillors, me as a Dáil Deputy for the people of east Cork, and the Minister of State. I acknowledge that the Minister of State took the time to come to us on so many occasions. Not many do that on a repeat basis, but Deputy O'Donnell did, and that needs to be said.</p>
+          <p eId="para_80"> I do not want to be overly critical of what the OPW has been doing over the last months. I have been very familiar in the last 12 months, post Storm Babet, of its ongoing efforts. I think almost everything that can be done is being done. I know there is frustration and people who are rightly emotive about their own homes. I raise a couple of key questions. Yesterday, we had a meeting of the council engineers to go through, in committee, some of the emergency responses pertaining to the OPW. These are valid questions. People need the reassurance. We have seen €5.8 million allocated under what is now the largest ever individual property protection, IPP, scheme. It is envisaged to protect about 920 homes and businesses in the area affected by Storm Babet.</p>
+          <p eId="para_81"> A small proportion of people's applications have been declined. They would appreciate the questions being asked. Is it worth that level of scrutiny for some of the homeowners who have shown, in photography, water coming right up to their porches and doors? In some cases, these people managed to get home on time. They worked their hearts out to get small, interim measures done, with makeshift barriers and sandbagging of their homes. They have seen their applications turned down. Could the Minister of State look at this? It takes from the enormous work that is being done by the county council. He knows that. He has been there. He has seen the work that has been put in by the director of services, John Slattery, our county engineer. Could we look at marginally increasing the budget to deal with a number of extra cases, which would be less than 100? It is so limited. Is it worth doing what we can so that it is done and provides a sense of reassurance to those people?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_39" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_82">I acknowledge the Deputy's contribution in Midleton. I have been there. The community was exceptionally patient. We wanted to have an IPP scheme announced and up and running. We wanted it to be easy to operate and to have no cost to either the homeowners or businesses. We have followed up with Cork County Council on the particular matter the Deputy raised. We would like to see it being done case by case. The original scheme was based on specific units. The Deputy will appreciate that, for value for money, we had to design it in a way where people came forward with the specific number involved. Many applications came in. Cork County Council has committed to us that it will look at the measure when it processes the main scheme. We will have a further follow-up with it. If the number of houses involved is not enormous, maybe it is something that we can do on a case-by-case basis. I give that commitment, that we will go back to Cork County Council about that. There is a reassurance that it will be looked at when the council processes the main applications. We might do a further body of work to see how many are involved and whether it can be done on a case-by-case basis even at this particular moment.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_40">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_83">I appreciate that commitment. It is helpful to know that the Minister of State is willing to do that. I was with my Oireachtas colleagues yesterday, Deputies Stanton and Buckley. The three of us were there together and have worked in unison in the Oireachtas to raise this in the Chamber.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_41" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_84">We might ask Cork County Council to do a small body of work to see what the situation is. I know we are dealing with people's homes and real lives but, once again, I am a believer in process and a structured approach. With regard to advancing that work, we will maybe ask Cork County Council to do a small body of work.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_42">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T13:50:00+00:00"/></from>
+          <p eId="para_85">I appreciate that. I have a secondary point to make, expanding on the €5.8 million individual property protection scheme. Another valid point that has been made is that we obviously have different homes at different scales.</p>
+          <p eId="para_86">We have semi-detached housing, detached housing and housing estates. We have one-off sites that have flooded along the urban area of Midleton and also terraced housing. Regarding terraced housing that flooded in Midleton, I am thinking particularly about areas like the Mill Road, and down towards Midleton College where terraced homes are at risk of flooding. There is a fear about the cut-off of the IPP schemes. The fear is that in a similar or comparable event to Storm Babet, the support to those individual homes would stop. We hope this will not happen before the construction of the main Midleton flood relief scheme. There is a fear that where individual property protection schemes are in place, the water may be pushed up further, perhaps to the last home or last two homes in a row. That is a valid point. It is not a situation to draw straws from. I am in no way seeking to politicise it. This matter has been brought to our attention and I just want to put it on the Minister of State's desk.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_43" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_87">We will ask Cork County Council to incorporate that further element of a structured approach in the body of work it is doing.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_44">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_88">All political representatives locally have been decent on this to a large extent, and have been willing to work with the Minister of State on this.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_45" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_89">Yes, very collegial.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_46">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_90">We appreciate the Minister of State's work. I will come back to him on that.</p>
+          <p eId="para_91"> I want to refer to something else that has been raised. I know this has been before the Committee of Public Accounts. We have had two schemes in tranche 2, almost in an indefinite pattern, since 2018. That is in relation to what is going on in Rathcormac. I know the Minister of State did not get a chance to go there yet-----</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_47" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_92">I am due to.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_48">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_93">-----but I brought the former Minister, Michael McGrath - the predecessor of the Minister, Deputy Donohoe - there for a visit after Storm Babet. We met residents there. I have been there. I want to get a sense for the people of Rathcormac and Castlemartyr, whose two schemes have been caught in tranche 2 for some years, going back to 2018 and even prior to that when the schemes were designed. Given that these settlements have flooded on multiple occasions, as their Government TD in the constituency I have an obligation to ask why this is not being done. I have not missed an opportunity to raise this. I have brought it up with the Minister of State in the Dáil Chamber and in the Committee of Public Accounts over the last 12 months, for anyone who is unaware of that fact. I want to ask, once again, whether the Department of public expenditure and the OPW can bring forward funding to get those two schemes knocked on, considering the damage that has been done in both communities.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_49" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_94">We are talking about Rathcormac and-----</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_50">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_95">Castlemartyr.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_51" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_96">The OPW has provided funding for a minor works scheme in Castlemartyr. It is up to Cork County Council to come forward with a similar scheme for Rathcormac. I want to make an observation from my viewpoint. Major schemes take a significant amount of time. If I have learned one thing from the short time I have been in the OPW, it is that we must look at interim measures. These measures could take different forms such as in Moore's Bridge in Midleton and in Lough Funshinagh. I ask Cork County Council to look at Rathcormac, which I have committed to visit. The scheme is already there in Castlemartyr. In many cases, these measures can be put in place much more quickly than what would be deemed a larger scheme and can be hugely effective in protecting people's homes in much shorter periods of time. Tranches 1 and 2 come out of the CFRAM, study. In fairness, I take the Deputy's point. It is something we look at on a continuous basis. Castlemartyr has been approved for a minor works scheme and Cork County Council should look at Rathcormac for the same issue. Work is ongoing in Mogeely at looking at options to protect people's homes. The point the Deputy has made is a valid one and I take it on board. I ask the Deputy to look at the minor works scheme as well. It has connotations of being temporary but in many cases it is highly effective in protecting homes and businesses.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_52">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_97">I accept that the Minister of State has done what he can on an interim basis. The Minister of State has visited on many occasions. Nobody can fault him for his sincerity and the follow-ups he has done on his visits. I know some people will be angered by me saying this but on the whole, as Ministers go, the Minister of State has been very diligent in being responsive to questions on these issues in the Dáil. This needs to be acknowledged but I want to make this point once more: when a scheme has been sitting there since 2018, it is a bit like telling a community that a new bus is coming but the engine is missing. It has been sitting there idle when it could be put in place and done with a limited amount of funding in comparison to what is required for major schemes. We are not talking about something of the complexity of the Midleton flood relief scheme, which is trying to protect against fluvial and tidal flooding. It is not at the mouth of a river; it is on top of a hill. It requires drainage channels to be dug. We also need to look at the potential impacts of drainage in the village. Castlemartyr is probably more complex than Rathcormac but both of them are stuck in the CFRAM tranche 2 and have been there for some time. I come from Killeagh, which flooded for the first time in recorded history during Storm Babet. I do not underestimate the seriousness of Storm Babet. It changed the landscape totally. People who know Killeagh and east Cork from walking Glenbower Wood and other areas can see that the storm physically changed the land in the area. The tranche 2 schemes have been sitting there a long time. It has gone from people being patient to having legitimate concerns about the length of time these schemes are taking.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_53" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_98">I want to go back to the process for a moment. The OPW is progressing 55 tranche 2 schemes. Nine staff have been given to Cork County Council to help because it is a resource issue at local authority level as well. If the council brings forward a scheme for Rathcormac, or anywhere else, we will be supportive in terms of tranche 2. In terms of substance over form, there is a pathway. We understand that Cork is an enormous county and there is a resource issue there but we have given many additional staff. If the council comes forward with a scheme and even if it is deemed to be tranche 2, we will support the scheme to progress it.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_54">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_99">When the Minister of State visits, there may be an opportunity for that conversation. Fingers crossed, he will come down after the general election. We have to get that out of the way first.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_55" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_100">We have to get re-elected first.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_56">
+          <from>Deputy James O'Connor<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_101">Touch wood, we may all be back again. Hopefully the Minister of State will still be in a position to do that as it would be much appreciated. I thank the Chairman for allowing me to speak here today.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_102">You are welcome, Deputy O'Connor. The Minister, Deputy Donohoe, has been before this committee many times when we have spoken about report 42 and the payment to public servants under that category. This was progressed with the Workplace Relations Commission. Agreement was reached that these retired people from the HSE would be paid but they are not being paid. It has been stalled within the Department. I know one could say that this is a matter for the Minister for Health but it is unfair that they have gone through a process, got to the end of it and now it is not being paid. The money has to come from somewhere. I presume this would go to the Department of Public Expenditure, National Development Plan Delivery and Reform because it is a pay issue. What can be done?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_58" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_103">As I have only come before the committee today with a small number of Supplementary Estimates, I am not prepared to be able to give the Chairman a good answer to that question. He has raised it with me before but I do not have the material with me today to give him the right answer. I will find out and come back to the Chairman later this week on the matter.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_59">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_104">It is important for polling day.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_60" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_105">Yes, I accept that. I will get an answer and come back to the Chairman on it during this week.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:00:00+00:00"/></from>
+          <p eId="para_106">There is a similar situation with section 38 and section 39 workers.</p>
+          <p eId="para_107">Pensioners being paid by those organisations are reliant on the HSE, presumably, to process increases in their pensions. That is not happening either. When I ask about former SOS employees in Kilkenny who were employed under one of these sections, it is up to the employer to pay them but the employer is reliant on the HSE to provide funding to pay them, so they are not being paid their proper pensions. I bring it to the Minister's attention because it is an issue. Employees have worked hard to get to their pensions and are now being deprived of their proper pensions. It is difficult to deal with an organisation like St. Patrick's SOS because it is multilayered. By the time you get to the person making the decision, they come to me, I ask a parliamentary question and am told it is a matter for the organisation itself. However, it is not. Maybe the Minister can redirect that query.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_62" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_108">I will do that.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_109">The retired public servants who count the votes make a superannuation contribution.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_64" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_110">That is "the votes" as opposed to these Votes.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_111">That is the votes that will be counted after 29 November. There will be retired public servants there who will be stopped their superannuation payment but get no benefit from that. Maybe it is not the Minister's area but I want to find out from someone. It is just in case there is a tie and I need a friend across the counter. Why are they stopped the contribution for that day? Will the Minister get someone to give me a-----</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_66" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_112">If there is any group of current-----</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_113">These are all very important and are raised at the doorway.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_68" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_114">They are, and if there is any group of current or retired civil servants I am particularly sensitive to, it is the ones who will be counting votes in a few weeks' time, which is all the more reason to come back with an accurate answer on it. I will do that.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_115">Is there any Estimate here that deals with the coroner's office or probate office? Does that fall under any of the Minister's headings?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_70" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_116">No, the coroner's office is the Minister for Justice and the probate office is the same.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_117">The Minister of State gave me a note on the flood relief scheme in Kilkenny. He went back over the history of it. I recommend looking at the original tender, which was far less than €42 million. I am not saying this to embarrass anyone but we should explain to people how it can move from €4 million or €5 million to €42 million. It is worth showing the record of how that project was delivered. It was a fantastic scheme, even though there was a huge difference from start to finish. That would help people to understand. In Kilkenny during that project, the River Nore was diverted and trucks forming part of the construction team were driving up and down the bed of the river. There is a record of it. It explains how these jumps in cost can occur. The Minister of State tries to justify the cost by saying it saved 200 properties but he is not doing himself justice; it saved an awful lot more than that. It has been of huge benefit to way more than 200 properties. I am trying to be helpful.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_72" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_118">It is almost a case study.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_119">Yes. I looked at that river during the really heavy rain and without that flood relief scheme, it would have flooded nearly to the same level as the 1947 flood, which came up to the windows in John Street. Yet all the centre and beyond was saved.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_74" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_120">Point duly noted.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_121">People need to understand.</p>
+          <p eId="para_122"> In all the notes the Secretary General gave me, he did not give me a note on my request about getting the Pangur Bán document for display in Kilkenny Castle.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_76" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_123">I remember you bringing it up.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_124">All politics is local.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. John Conlan<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_125">We undertook to do that and will do so.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_126">Would they get a curator over there? It will not cost an arm and a leg.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_80" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_127">We will have it definitely tomorrow.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_128">It is very worthwhile because of the association between that document and the company in Kilkenny.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_82" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_129">I remember the case. It was to do with-----</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_130">A cat.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_84" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_131">Well, no. I felt there was a need for discussion between the OPW and the people in Kilkenny. I think that would be far more fruitful because it looked that some people were being ultra-cautious with what was involved. Apart from going back to the Chair, maybe we could arrange a meeting through his good self with the people in Kilkenny to see if there is-----</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_132">I know the castle is positive about it because of the association between the document and Cartoon Saloon. I am interested in bringing the document for display in Kilkenny Castle. It would be a great way to publicise the castle and the association with Cartoon Saloon, which is of international renown.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_86" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_133">We will do that.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_134">Will the Minister of State go back to the museum on the far side? It is willing to co-operate.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_88" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_135">There is a need for further discussion. We will arrange that and come back to the Chair with the note.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_136">We spoke about Bennettsbridge Garda station. I see much work has been done on it. Will it go back to the Garda for use? Is there another proposal for the use of the property?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_90" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_137">No.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_138">It just goes back to the Garda, I presume, when the work is done on it.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_92" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_139">Yes.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_93">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_140">I cannot leave without asking for the timeline in Crossmolina.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_94" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_141">There was a standstill period. That finishes on 3 December. We will be on site before Christmas. It is a three-year build. It is our own staff and they will be on site before the end of this year.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_95">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_142">So we are talking about 2028.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_96" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_143">It will be the end of 2027. I can count, just about.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_97">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_144">For the people of Crossmolina, it is 13 years since the floods.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_98" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_145">I appreciate that.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_99">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_146">Are any interim measures proposed in case there is flooding between now and then? We are heading into winter.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_100" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:10:00+00:00"/></from>
+          <p eId="para_147">To give clarity on the scheme, the period before which anything can be commenced concludes on 3 December. The OPW, etc., will be on site before the end of the year. It is a three-year build. I will talk to the officials.</p>
+          <p eId="para_148">Individual property protection was introduced in Crossmolina a number of years ago. The Deputy will obviously continue to engage with Mayo County Council to see if it is going to propose any interim measures to the OPW.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_101">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_149">I certainly will but we cannot pretend it is normal to wait 13 years for a project.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_102" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_150">Once again, it is important to note that the project is proceeding. The grant came through the Department of Public Expenditure, NDP Delivery and Reform. It is a very important scheme. I will ask the officials to engage with Mayo County Council on any interim measures. Normally, such measures come forward from the local authority. The OPW will look at any proposals from a technical perspective with a view to providing support and funding.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_103">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_151">Is the Minister of State satisfied with it having taken 13 years to do this project?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_104" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_152">May I make a general observation? I am not a technical person. Schemes take a long time but that scheme is now going ahead. There is absolute certainty on that. The IPP scheme was brought in as an interim measure for Crossmolina. I have no doubt that people are very frustrated but the scheme is now going ahead and will provide absolute reassurance to the people of the Crossmolina area.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_105">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_153">I will leave it at this but the problem is that nobody can develop the area and no business can invest in the area until that is done. It is about the opportunity cost rather than just the fears of the people living in the area since 2015. It is just not acceptable at all that 13 years would-----</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_106" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_154">May I just make a very general observation? I am conscious that the period is up to 4 December so there could be reviews. We want the scheme to go ahead. The Deputy will appreciate that I do not wish to comment on the scheme in great detail because we are still in that period. We want to get to 4 December so that the OPW can then commence construction of the scheme.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_107">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_155">I agree. The Minister of State referred to 10,000 extra call-outs. Why were there 10,000 extra call-outs? What was the driver of that? It comes under subhead B.7, which relates to property maintenance and supplies.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_108" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_156">That relates to extra buildings and the state of older or obsolescent buildings.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_109">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_157">No, it is said that there has been a significant increase in helpdesk call-out activity, with 10,000 additional call-outs to date in 2024 at an average cost of €300 per call-out. Why were there 10,000 extra call-outs?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_110" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_158">There are three elements to it. One is the increase in the number of buildings. Another is the profile of those buildings, with many being obsolete. The helpdesk has been extended on a more geographical basis in the last year. People are therefore able to avail of the service a lot more.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_111">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_159">The last time the Minister was here, I asked about the local State solicitors service. Does that come under the Minister, Deputy Donohoe's remit?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_112" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_160">It falls under the justice Vote.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_161">Is it under Vote 5?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_114" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_162">I am sorry; I have just been corrected. It falls under the Vote for the Chief State Solicitor, which is under the Department of the Taoiseach. It is under the office of the DPP.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_163">That is it. We probably will not be-----</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_116" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_164">I have just been informed it is under the Office of the Attorney General. In any event, it is not under our remit but that of the Taoiseach.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_165">I thank both Ministers and all of their officials for coming along and for their interaction during the course of this term. I wish them well in the forthcoming election. It is great to know that we all started our apprenticeship together in the Committee of Public Accounts.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_118" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_166">We were under the Cathaoirleach's stewardship.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_119" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Paschal Donohoe<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_167">I wish the Cathaoirleach and all committee members the very best of luck.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_120" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_168">I wish you all best of luck in the election.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_169">Is it agreed that consideration of the Supplementary Estimates for the Department of Public Expenditure, NDP Delivery and Reform has concluded? Agreed.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_10">
+        <heading>Message to Dáil<recordedTime time="2024-11-05T14:20:00+00:00"/></heading>
+        <speech by="#JohnMcGuinness" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:20:00+00:00"/></from>
+          <p eId="para_170">In accordance with Standing Order 101, the following message will be sent to the Clerk of the Dáil:</p>
+          <p class="indent_1" eId="para_171">The Select Committee on Finance, Public Expenditure and Reform, and Taoiseach has completed its consideration of the following Supplementary Estimates for public services for the year ending 31 December 2024: Vote 11 - Public Expenditure, National Plan Delivery and Reform; Vote 12 - Superannuation and Retired Allowances; Vote 13 - Office of Public Works; Vote 14 - State Laboratory; Vote 17 - Public Appointments Service; Vote 18 - National Shared Services Office; and Vote 19 - Office of the Ombudsman.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i> Sitting suspended at 2.25 p.m. and resumed at 2.31 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_11">
+        <heading>Vote 9 - Office of the Revenue Commissioners (Supplementary)<recordedTime time="2024-11-05T14:30:00+00:00"/></heading>
+        <speech by="#JohnMcGuinness" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_172">We will continue our consideration of the Estimates. I welcome the Minister of State, Deputy Richmond, and his team of officials. As usual, we will have an opening statement and members can then question the Estimates.</p>
+        </speech>
+        <speech by="#NealeRichmond" as="#Minister_of_State_at_the_Department_of_Finance" eId="spk_124">
+          <from>Minister of State at the Department of Finance (Deputy Neale Richmond)<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_173">I am pleased to have the opportunity to appear before the committee today to discuss the 2024 Supplementary Estimates. As Minister of State at the Department of Finance, I will be discussing one of the four Votes within the finance group of Votes, namely, Vote 9 - Office of the Revenue Commissioners. I look forward to a fruitful and positive exchange.</p>
+          <p eId="para_174"> The Office of the Revenue Commissioners plays a vital role in our economy by collecting taxes and duties due to the State. In 2023, Revenue collected a record €127.9 billion in gross receipts against total administrative costs of €585.1 million. </p>
+          <p eId="para_175"> The UK's departure from the European Union has had a major impact on Irish businesses and necessitated a shift in trade patterns, supply chains and the system of customs and other controls. The Revenue Commissioners and other State agencies are required by law to comply with customs controls, sanitary and phytosanitary checks and regulations in respect of goods moving between the United Kingdom and Ireland. The advent of such checks has necessitated investment in our ports and the need to replace temporary facilities with permanent infrastructure. </p>
+          <p eId="para_176"> The infrastructure at Rosslare Europort is being developed by the Office of Public Works on behalf of Revenue and other Departments and agencies. The permanent infrastructure project consists of the construction of terminal 7, enabling works and a new border control post. The works consist of various phases of construction that will deliver new and improved facilities, entry and exit access, and significant upgrading of the infrastructure across several areas. The total cost for the Rosslare project is €236 million inclusive of VAT. Costs are being apportioned across the relevant Departments and agencies. The apportionment ratio in respect of the Revenue Commissioners is 34.4%, with Revenue's total portion over the lifetime of the project expected to cost €81.3 million. The funding requirements for the remainder of 2024 for Rosslare are €17.2 million. </p>
+          <p eId="para_177"> Also included in the Supplementary Estimate is funding for the continued detention of the <i>MV Matthew</i>. It was seized in October 2023 and it has since been held at the Port of Cork in connection with ongoing court proceedings against eight persons who have been charged in relation to the seizure of more than 2,253 kg of cocaine from the vessel. In order to meet the remaining Rosslare infrastructure costs along with funding for the continued detention of the <i>MV Matthew</i>, a Supplementary Estimate of just under €20 million is required by the Office of the Revenue Commissioners. </p>
+          <p eId="para_178"> I thank members for their attention. I commend the 2024 substantive and technical Supplementary Estimate for the Revenue Commissioners to the committee and I am happy to address any questions that members may have. </p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_125">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_179">Does Deputy Conway-Walsh wish to contribute?</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_126">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_180">I thank the Minister of State. I do not have any questions. It is straightforward.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_127">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_181">Can the Minister of State fill us in a little on the boat that is being held? The Minister of State outlined it there. It is a €20 million cost.</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_128" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_182">I am limited in what I can say because it is subject to court proceedings.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_183">That is okay.</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_130" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_184">The boat has been held for some time in order to allow it be submitted as evidence to those court proceedings and it is hoped that process will conclude in the coming months. It requires quite a bit of maintenance through this period. We hope we will not require it much longer than another month or so.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_131">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_185">Who gains from the payment of that €20 million? How does it happen?</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_132" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_186">The €20 million is paid to the people who maintain the boat and are harbouring it in the Port of Cork. This is keeping the scene preserved in order that it can be used in court proceedings.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_133">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_187">I understand. Can the Minister of State tell me a little about the black economy and the Revenue Commissioners' examination of containers that come in through our ports relative to cigarette smuggling, alcohol smuggling and so on? We have been told by those at the coalface of retail business that there is a huge amount of undetected cigarettes and alcohol coming through the ports and that the Revenue Commissioners do not have the appropriate number of scanners available to them in the ports to increase their scrutiny of what is coming into the State.</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_134" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_188">The surveillance of all ports of entry into the State, both regulated and unregulated, is carried out via a multi-agency process. An Garda Síochána, the Revenue, the ports services themselves, the Department of agriculture and many other bodies are involved in this process. As the Cathaoirleach will have noted from the headlines in the media last year, there has been a huge number of seizures of illegal drugs, but also illegal alcohol and illegal cigarettes - some of the largest seizures we have seen in the history of the State. The direct funding is made to the Revenue Commissioners to play their part in that.</p>
+          <p eId="para_189"> I met with the retailers the Cathaoirleach mentioned - all the representative bodies - because prior to taking on this role I was the Minister of State with responsibility for retail, a role similar to that the Cathaoirleach once held. We acknowledge their concerns but funding has continued to increase for Revenue to make sure that it is appropriately and suitably equipped for this. It is something on which we always take a proactive approach to make sure they have all the resources they need in this regard. </p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_190">That does not take from the fact that it is reported to us that there was a €48 million loss of revenue to the State because of the quantity of cigarettes and alcohol being smuggled through our ports. That affects small retailers. I understand that one can buy illegal cigarettes within a stone's throw of this House. There are known outlets that sell illegal cigarettes. There are individuals, and I would say businesses now, that are known to Revenue that sell single cigarettes. Likewise, when on looks at the trade across the Border, there is an amount of fuel, both coal and diesel, but particularly coal, coming in. The Minister of State has probably met the merchants' representative group. They constantly complain, and provide figures to back this up, that Revenue and the local authorities have not cracked down on the illegal transactions taking place. That is a huge concern. A lot of the highly populated areas here in Dublin almost have a shop selling illegal cigarettes. I cannot match that with the loss of revenue to the State and the need for more scanners. Has the Department ever received a request from Revenue to provide extra funding for scanners and other equipment that would intervene and stop the progress of these illegal imports?</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_136" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:30:00+00:00"/></from>
+          <p eId="para_191">The concerns the Cathaoirleach raises are 100% valid. I do not doubt them for an instant. As the Cathaoirleach will be aware, I have had these conversations with retailers. Of course, the responsibility for enforcement in this area lies with a number of agencies, including Revenue.</p>
+          <p eId="para_192">Next year, Revenue will receive a record budget of €610 million to ensure it has adequate provisions in terms of both equipment and people to ensure it has the highest number of checks. This is an ongoing issue, and I refer to the record haul of illegal cigarettes seized this year, which is something to be welcomed. Fuel smuggling across the Border remains a concern, however, in terms of solid fuel and red and green diesel. That is a long-standing issue we have encountered. We have also seen quite a number of diesel washing plants busted over the past year. We continue to invest it. Every request for additional funding that has been received will be met. It is not necessarily just about funding, but this is chasing an illicit activity that requires that continuing increase in investment and resources. Of course, our doors are always open to any representative bodies or individual traders who are aware of this activity. We make sure the Revenue Commissioners, other agencies and State bodies are fully funded to ensure they can chase this activity down as best possible. Indeed, I put the appeal out to any individuals who are aware of illegal cigarette sales, individual cigarette sales or whatever they may be that this is illegal activity which should be reported to An Garda Síochána first and foremost.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_193">I will not labour the point. The retailers have reported it to me, the Garda and any public representative they have met in this House. It seems there is almost a reluctance to tackle that illegal activity head-on and prevent it. They refer to the lack of scanners at the various entry points to the country. I am highlighting it here because my background was in retail at one stage, and I understand the margins are tight, as is the regulation. Yet, we have these illegal activities going on affecting people and their family businesses. We have to do everything we possibly can to stop them. The Minister of State should put it to Revenue and ask if there is a requirement for more infrastructure to enable it to do its job fully across the different Departments you would meet at a port for investigation.</p>
+          <p eId="para_194"> Likewise, I raised a question. I do not expect the Minister of State to know the answer, nor am I looking for it. This issue was in the courts. A taxpayer, Mr. Dermot Tobin, appeared before the committee. The case has a huge impact on farming and businesses and relates to the period within which Revenue can go back. I think it is four years. In this case, Revenue went back a multiple of that and brought the man to court as a kind of test case. I asked the chairman of the Revenue Commissioners, and I now ask the Minister of State, to look at that case, and, where appropriate, bring forward the necessary legislation to ensure the four-year rule is protected, because businesses and the Law Society are concerned about the outcome of that case and the impact it will have in the future because it was a test case. This man has now been left to pay all of his legal costs, even though he paid his taxes and everything. He was found, in some cases, to be right in what he did and was not trying to do anything illegal, but Revenue wanted to prove a point so that, presumably, it can apply that precedent everywhere. It is an issue. People are very concerned about raising it because it might seem like tax fraud; it is not. It is a real concern for businesses, and I ask the Minister of State to look at that with the Revenue chairman.</p>
+          <p eId="para_195"> It is very difficult to engage with Revenue's public offices. Some of them are not open or do not open and it is hard to get people on the phone. That is not the case for a public representative, however, as a good service is in place. For ordinary citizens, however, who want to engage on their issues with Revenue, it is a concern that the public office facility is not more available to those who have a concern. I am raising these issues with the Minister of State because they have been raised at meetings of this committee and elsewhere. I ask the Minister of State to take note of them.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_138">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_196">I have a question about Brexit-associated costs on Rosslare and any other locations. What has the total been and who has borne it?</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_139" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_197">I thank Deputy Durkan. On the Chairperson's point, I assure him I will undertake the two latter issues he raised, particularly regarding the issue of the illicit smuggling of cigarettes. I am more than happy to make sure Revenue has, as I said, the adequate resources it requires. I share the Chair's concern in that regard. On the other two issues regarding the legal case and public offices, I completely understand them.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_198">Since it is placed on record, the Minister of State might send the committee a copy of a note to that effect and maybe raise it with the chairman of Revenue and ask him to correspond with the committee, whoever is here after 29 November, or whenever it is going to be. We will be able to take it up. They are genuine, honest-to-God cases.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_141">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_199">I attended the meeting on the four-year rule. I support the Cathaoirleach's request given the damage that has been done in that regard. If the Minister of State looks at it with clear eyes, he will see this needs to be rectified. I want to be associated with that.</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_142" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_200">I thank the Deputy. I will make sure a letter is sent from me to the Chair and make sure a copy is furnished to the committee. I will allow the Chair to make sure the copy is circulated to all members of the committee.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_201">I thank the Minister of State.</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_144" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_202">I was doing a little bit of mathematics in my head. I appreciate Deputy Durkan raising this issue. The total amount the taxpayer has paid so far is €68.5 million to the end of this year, which will cover the required costs at Rosslare post Brexit.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_145">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_203">All the installations?</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_146" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_204">All the installations.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_147">
+          <from>Deputy Bernard J. Durkan<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_205">I support the point made by the Chairman and my colleague. Revenue can look back as long as it wishes, but the taxpayer can only benefit to a maximum of four years. It used to be different once upon a time, but we all support the concept that it is fair for everybody.</p>
+        </speech>
+        <speech by="#NealeRichmond" eId="spk_148" as="#Minister_of_State_at_the_Department_of_Finance">
+          <from>Deputy Neale Richmond<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_206">It is important to note that approximately €51 million of the money for Rosslare, most of it, qualified for Brexit adjustment reserve funding through our good friends across the European Union.</p>
+        </speech>
+        <speech by="#JohnMcGuinness" eId="spk_149">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_207">I propose that we agree that consideration of Supplementary Estimates for the Department of Finance has concluded. Is that agreed? Agreed.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_12">
+        <heading>Message to the Dáil<recordedTime time="2024-11-05T14:40:00+00:00"/></heading>
+        <speech by="#JohnMcGuinness" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2024-11-05T14:40:00+00:00"/></from>
+          <p eId="para_208">In accordance with Standing Order 101, the following message will be sent to the Dáil:</p>
+          <p class="indent_1" eId="para_209">The Select Committee on Finance, Public Expenditure and Reform, and Taoiseach has completed its consideration of the following Supplementary Estimate for public services for the year ending 31 December 2024: Vote 9 - Office of the Revenue Commissioners.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i>Sitting suspended at 2.48 p.m. and resumed at 7.03 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_13">
+        <heading>Vote 4 - Central Statistics Office (Supplementary)<recordedTime time="2024-11-05T19:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_14">
+        <heading>Vote 5 - Office of the Director of Public Prosecutions (Supplementary)<recordedTime time="2024-11-05T19:00:00+00:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_15">
+        <heading>Vote 6 - Chief State Solicitor's Office (Supplementary)<recordedTime time="2024-11-05T19:00:00+00:00"/></heading>
+        <speech by="#BernardJDurkan" eId="spk_151">
+          <from> An Leas-Chathaoirleach<recordedTime time="2024-11-05T19:00:00+00:00"/></from>
+          <p eId="para_210">We will consider the following Supplementary Estimates: Vote 4 - Central Statistics Office; Vote 5 - Office of the Director of Public Prosecutions; and Vote 6 - Chief State Solicitor's Office. I invite the Minister of State to make her opening statement.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_152">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:00:00+00:00"/></from>
+          <p eId="para_211">I thank the committee for making time available today to consider this request for Supplementary Estimates. I am seeking a Supplementary Estimate a €400,000 for the Central Statistics Office in respect of Vote 4; €4.667 million for the Office of the Director of Public Prosecutions in respect of Vote 5; and €3.58 million for the Chief State Solicitor's Office. A detailed briefing of each of these Votes has been supplied to the committee in advance of the meeting.</p>
+          <p eId="para_212"> In relation to the Central Statistics Office, the CSO, is Ireland’s national statistical institute and is an independent office under the Statistics Act 1993. It is responsible for the production, co-ordination and qualitative oversight of official statistics in Ireland. The CSO provides independent statistical information to support and promote understanding and debate across Government, business and society.</p>
+          <p eId="para_213"> Turning to the CSO's supplementary request, the CSO is currently projecting a gross additional need of €1.73 million. The pressure on the Vote is driven by several elements. The projected overspend in subhead A1 - salaries, wages and allowances - is due in the main to the underfunding of the 2024 pay increases and an ambitious and early recruitment schedule in 2024. Additional requirements are projected in respect of subhead A3 - training and development; subhead A4 - operational services, supplies and sundry equipment; and subhead A7 - policy reviews, consultancy services and research.</p>
+          <p eId="para_214"> In relation to the training and development subhead, the organisational capability review of the CSO completed earlier this year noted the importance of the CSO investing in training to meet statistical and administrative skills needs and to meet skills needs in new specialist and developing areas such as artificial intelligence, AI; geographic information systems; cybersecurity; and data science and data analysis. The demands for training are continuing to grow as CSO staff numbers increase.</p>
+          <p eId="para_215"> The additional need in the operational services, supplies and sundry equipment subhead is driven by increased postal and advertising costs. Postal charges and the number of post outs have continued to increase, even with increased use of online response facilities. Advertising is necessary to raise public awareness of the value of participating in CSO surveys, with a view to increasing engagement with surveys and assuring quality. Maintaining and increasing response rates is key to the quality of data with falling response rates a serious organisational risk. The additional need in the policy reviews, consultancy services and research subhead relates to increased requirements for cybersecurity related consultancy in 2024.</p>
+          <p eId="para_216"> The CSO has reviewed all subheads to maximise savings available and to minimise the additional need requirements. The CSO has successfully identified savings of €1.03 million from within administration subheads and also proposes to reduce the additional need requirement by using an excess of €300,000 in appropriations-in-aid. As a result of these efforts, the CSO has reduced the projected additional demand on the Vote to a net figure of €400,000 and is therefore requesting a substantive Supplementary Estimate of €400,000.</p>
+          <p eId="para_217"> A Supplementary Estimate of €4.667 million is requested on behalf of the Office of the Director of Public Prosecutions, DPP. The key function of the Office of the DPP is to provide a prosecution service that is independent, fair and effective for the people of Ireland. While the Taoiseach has certain responsibilities to the Oireachtas for administrative matters in the Office of the DPP, the office operates independently of the Department.</p>
+          <p eId="para_218"> There are three factors which give rise to the need for this Supplementary Estimate. I will address these in the order in which they are listed in the Vote. In subhead A2, an additional allocation of €785,000 is required on the administration non-pay subheads. The additional funding is required to fund investment in ICT, staff training, accommodation and to meet increased travel costs in relation to staff servicing an increased number of court sittings, particularly outside of Dublin.</p>
+          <p eId="para_219"> Subhead A3, fees to counsel, expenditure on fees to counsel is, to a large extent, dependent on the level of activity in the courts at any time, and so is always difficult for the Office of the DPP to forecast. The projected overspend of €5.52 million on this subhead can be attributed to a general increase in the number of indictable prosecutions directed across all the courts, and to a significant increase in activity in the Central Criminal Court. The number of judges assigned has increased from five to 12. As a result, there has been a very significant increase in court sittings, trials and lists to be supported by the Office of the DPP.</p>
+          <p eId="para_220"> The factors giving rise to the overspend in 2024 are likely to continue into 2025 with the appointment of additional judges by Government. However, an additional allocation of €6.6 million has been added to this subhead for 2025 to respond to increased levels of court activity around the country. The Department of Public Expenditure, NDP Delivery and Reform sanctioned an increase in fee rates of 10% with effect from 1 January 2024. This has also had an impact on overall expenditure on fees to counsel in 2024.</p>
+          <p eId="para_221">Notwithstanding this, the fee rates payable to criminal barristers in 2024 are still 16% below those which were paid in 2008.</p>
+          <p eId="para_222"> With regard to A4, the law costs subhead covers the payment of legal costs awarded by the courts in judicial review matters and other legal proceedings. The projected overrun of €400,000 in 2024 is principally due to an increased number of claims arising from a significant general increase in court activity in recent years. These cases were settled on behalf of the Office of the Director of Public Prosecutions by the State Claims Agency, which manages third-party legal cost claims against State authorities. The additional expenditure I have advised the committee of amounts to a total of €6.705 million. However, savings of €1.86 million anticipated on the A1 administration pay subhead and increased appropriations-in-aid contributions of €0.178 million has reduced the amount required by way of net substantive Supplementary Estimate to €4.667 million.</p>
+          <p eId="para_223"> On Vote 6, a Supplementary Estimate of €3.58 million is sought this year for the Chief State Solicitor’s Office. The CSSO is a constituent part of the Office of the Attorney General and acts as solicitor to Ireland, the Attorney General and to Government Departments and offices. While the Taoiseach has certain responsibilities to the Oireachtas for administrative matters in the CSSO, the office operates independently of the Department. This Supplementary Estimate is sought to cover extra expenditure on three subheads within the Vote in 2024: A4, fees to counsel; A2, administration - non-pay, relating to digital capital investment and IT services; and A3, external legal services.</p>
+          <p eId="para_224"> Subhead A4, fees to counsel, is the largest proportion of the moneys sought. The CSSO's mission is to provide the highest standard of professional legal services to Government, Departments and offices as economically and efficiently as possible and to support adherence to the rule of law. As part of the delivery of this service, the office incurs expenditure on counsel fees. The management of expenditure on counsel fees is a key activity for the office. These are primarily fees payable to external counsel following the delivery of the relevant legal service where they represent Government Departments and offices in litigation before the Irish courts, other tribunals and the Court of Justice of the European Union. They also include fees payable for the provision by external counsel of specialist legal advice for the State, whether sought for the Attorney General’s office or for Departments and offices. The overall level of these fees is, to a large extent, demand led, dependent on the level of activity in the courts at any time and complexity of the given cases. Therefore, they can be difficult to forecast.</p>
+          <p eId="para_225"> In recent years, the office has seen a marked increase in the complexity and volume of work in areas such as commercial and procurement law, property law, planning and environmental law, social welfare law, commercial litigation and mass litigation. A major growth area over 2023 and 2024 to date has been in judicial review litigation against the State. This increase is driven primarily by a number of factors, including immigration and asylum related judicial review and large-scale judicial review litigation in areas such as social welfare, education, integration-international protection reception conditions and planning and environmental law.</p>
+          <p eId="para_226"> An allocation of €17 million was made for expenditure on fees for counsel in 2024 - a reduction of €2.5 million on 2023. This reflected the fact that particular project work involving counsel had come to an end. However, the current position shows that after the fees requested by counsel undergo a value for money assessment, this will leave a shortfall of €3 million in this area over the allocated amount.</p>
+          <p eId="para_227"> On subhead A2, with regard to the expenditure on digital capital investment and IT services, the office is operating in an increasingly digital environment. Access to reliable electronic case and records management systems are central and critical to the delivery of solicitor services to the Attorney General and to Government. Increasing problems with the reliability, performance and accessibility of the case and records management systems posed significant risks to the continuity of delivery of the core legal service to Government and necessitated an essential upgrade in 2024. The work undertaken should ensure a more robust and reliable system going forward. The shortfall for this subhead is €859,000.</p>
+          <p eId="para_228"> Regarding subhead A3, an additional allocation of €50,000 is required to cover a projected overspend under this subhead. The CSSO has identified savings of €329,000 in subheads A1, administration pay, and A5, general law expenses, which can partially reduce the estimated overspend. Following the offsetting of the identified savings, the net substantive Supplementary Estimate required is €3.58 million.</p>
+          <p eId="para_229"> I welcome the opportunity to discuss the Supplementary Estimates with the committee.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_153">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2024-11-05T19:10:00+00:00"/></from>
+          <p eId="para_230">I thank the Minister of State and her officials for coming before what is probably the last meeting of this select finance committee. Obviously, the function of the committee is to consider the Supplementary Estimates. If we had to approve them, I am sure they would be approved.</p>
+          <p eId="para_231"> I wish to raise one issue with the Minister of State that she identified in her opening statement. It concerns Vote 5, which is the Supplementary Estimate for the Office of the Director of Public Prosecutions. I note what she said about how a significant part of the Supplementary Estimate is due to fees to counsel, that is, to barristers practising in the criminal courts.</p>
+          <p eId="para_232"> I welcome the fact that this Government has significantly increased the level of resources that have been put into the criminal courts. As the Minister of State mentioned, it is apparent that we used to have just five judges on the Central Criminal Court, but now we have gone up to 12. Much more work is happening there. The benefit of that is it speeds up the criminal justice process for persons who are accused or, more importantly, for the victims and their families, who want to see cases get on promptly.</p>
+          <p eId="para_233"> One of the consequences of the increase in the amount and capacity of the Central Criminal Court is that is has spread the work more widely among barristers, which is a good thing. Previously, some of the work was concentrated on a small number of barristers. Now since there are 12 central criminal courts and, of course, there are circuit criminal courts, the work is spread much more broadly. It is not possible for one barrister to hold on to a lot of work.</p>
+          <p eId="para_234"> That brings me to the point I wish to raise about counsel’s fees. I am a barrister but I do not practise in the criminal courts. As the Minister of State will be aware, as a result of and from the time of the financial crash, between 2008 and 2011, a cut of more than 28% was applied to the fees paid to criminal barristers. Fortunately, this Government has done a lot to restore some of those cuts. In budget 2024, the restoration process started, and I think there was a restoration of 10% announced in budget 2024 that came into effect from 1 January this year. In budget 2024, I think the Minister, Deputy McEntee, announced a further 8% restoration. However, it is still the case that fees paid to criminal barristers are approximately 10.5% below what they should be. I am conscious and I welcome that the Minister, Deputy Donohoe, earlier this year confirmed that all other FEMPI-era measures had been fully reversed and unwound. I am not asking the Minister of State and I am conscious she cannot give a commitment in respect of it. Does she think there is an awareness in Government that something probably needs to be done in respect of the ongoing, continuing cuts that were applied and implemented since 2008? I note in her presentation that fees to counsel are an important part of having an effective administration of justice. My concern is that if we do not, we start losing people from that area of the profession. I am not worried about the interests of barristers but it will damage the administration of justice because we will not have sufficient interest in that area of the law to prosecute cases.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_154">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:10:00+00:00"/></from>
+          <p eId="para_235">I thank Deputy O’Callaghan for his question. He is correct. During the financial downturn, a number of cuts were applied to counsel fee rates, including two separate reductions, which he referred to, 8% in March 2009 and April 2010, which mirrored cuts provided for by the Financial Emergency Measures in the Public Interest Act. An additional reduction of 10% was applied from October 2011, which had no parallel in the emergency legislation. While the Minister for public expenditure sanctioned a 10% increase in fee rates effective from 1 January 2024, restoration of the other two cuts of 8%, dating back to 2009 and 2010, still remain outstanding. Accordingly, fee rates payable to criminal barristers in 2024 are still 16% below those paid in 2008.</p>
+          <p eId="para_236">In reference to the Deputy's question, I understand that this matter remains under consideration by the Minister for Public Expenditure, NDP Delivery and Reform. I absolutely take the points he raises regarding its importance. </p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_155">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_237">I thank the Minister of State.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_156">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_238">On the CSO, we have requested before, through the finance committee but also the budgetary oversight committee, to have better congruence of the data of the CSO and the statistics office in the North. Has any progress been made on that to have congruence across the island and the data that is available?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_157">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_239">A joint all-Ireland census publication based on the 2022 census and the 2021 Northern Ireland census is being developed in collaboration with the CSO and the Northern Ireland Statistics and Research Agency and that will be published in quarter 1 of next year.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_158">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_240">What will that tell us then? When is the next census due?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_159">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_241">It is due in 2027 and that is going to be partly online as well as obviously paper-based.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_160">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_242">What efforts are being made to ensure the information that is being collected in 2027 will be able to give us comparative data for the North as well?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_161">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_243">That collaboration for that all-Ireland census publication is happening as we speak. There is ongoing review and they are constantly ensuring the data that is being collected is accurate and evidence-based. That work is ongoing but I can get the Deputy more information on that specific ask.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_162">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_244">I thank the Minister of State. It is not just the data. It is that we can compare and contrast and we have the evidence there for all of the research that is being done at the moment and that we are prepared for 2027 then to be able to design the questions on an all-island basis.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_163">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_245">There was also a pilot that was carried out. The new questions in the pilot included questions about where households, for example, park their cars, gender, sexual orientation, mental health and the way that third level qualifications were obtained. Following the learnings and the experiences of that pilot, further development of all census systems and procedures will commence. Now that the collection phase of the census pilot survey is complete, the census team will review that information gathered. Once the final context is agreed and approved by the census advisory committee, the census questions will be sent to Government for approval. That will take place in 2025. A full report of the pilot will be published as well on the CSO website at this stage. Regarding the North-South, I will come back to the Deputy on that.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_164">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_246">I do not really have any other questions outside of those. I have questions around the Attorney General and regarding the advice he gave in relation to pyrite but we will not go into that here today. I will save the Minister of State that.</p>
+          <p eId="para_247"> Regarding the State Claims Agency, the Minister of State referred to the projected overrun of €400,000 in 2024 being "principally due an increased number of claims arising from a significant general increase in court activity in recent years". She reports that these cases were settled on behalf of the Office of the DPP by the State Claims Agency which manages third-party legal cost claims against State authorities. Will the Minister of State speak to that for a moment to tell me the types of things involved? </p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_165">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_248">There was a projected overrun on the general law expenses. The law costs subhead covers the payment of legal costs awarded by the courts in judicial review matters and other legal proceedings. The projected overrun of €400,000 in 2024 is principally due to an increased number of claims arising from a significant general increase in court activity in recent years. These cases were settled on behalf of the office of the State Claims Agency, which manages third-party legal cost claims against State authorities. Following the court's decision to award costs, the other party makes its claim. In the case of smaller, more straightforward cases, a figure may be agreed prior to the court making a final order in the case. If not, the other side will draw up a bill of costs following the awarding of costs by the court. This is forwarded to the State Claims Agency, which manages third-party legal cost claims against State authorities. Following negotiations, the State Claims Agency will agree a figure, pay the claim and recover this amount then from our office.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_166">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_249">Do we have an aggregate figure for the State Claims Agency and what has been paid out, or is it available somewhere?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_167">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_250">No. I may be able to get the most up to date figure if we have one.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_168">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_251">Will the Minister of State do that for the last, say, three years so that we have an idea?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_169">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_252">I will provide the Deputy with that.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_170">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_253">That is it. That is all I have.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_171">
+          <from> An Leas-Chathaoirleach<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_254">I have one quick question on the extent to which backlogs that were in existence for quite a long time have been overtaken in the various courts. How is that progressing? Is it progressing satisfactorily given the extra investment, which was of course necessary?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_172">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_255">There has been an increased volume of work by this office in recent years. To give a taste of some of the activities, there was increased activity in the Central Criminal Court since 2019 and there has been a 149% increase in the number of court dates in the Central Criminal Court. The committee will be aware the Central Criminal Court deals with very serious offences, including murder and rape. There has also been increased activity in the Circuit Criminal Courts. In criminal matters, the Circuit Court deals with all matters prosecuted on indictment except murder, rape and aggravated sexual assault. Over the period of 2019 to 2023, there has been a 24% increase in the number of Circuit Court sitting dates in the Dublin Circuit Criminal Courts and the total number of investigation files received in the directing division for decision increased by 13% between 2019 and 2023.</p>
+        </speech>
+        <speech by="#BernardJDurkan" eId="spk_173">
+          <from> An Leas-Chathaoirleach<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_256">As compared with the period of five years ago, the progress mentioned by the Minister of State is obviously reflected in the throughput. Is that true?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_174">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_257">Through the courts, yes.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_16">
+        <heading>Messages to Dáil.<recordedTime time="2024-11-05T19:20:00+00:00"/></heading>
+        <speech by="#BernardJDurkan" eId="spk_175">
+          <from> An Leas-Chathaoirleach<recordedTime time="2024-11-05T19:20:00+00:00"/></from>
+          <p eId="para_258">In accordance with Standing Order 101, the following message will be sent to the Dáil:</p>
+          <p class="indent_1" eId="para_259">The Select Committee on Finance, Public Expenditure and Reform, and Taoiseach has considered the following Supplementary Estimates for public services for the year ending 31 December 2024: Vote 4 - Central Statistics Office; Vote 5 - Office of the Director of Public Prosecutions; and Vote 6 - the Chief State Solicitor's Office.</p>
+        </speech>
+        <summary eId="sum_8"> The select committee adjourned at 7.27 p.m. <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

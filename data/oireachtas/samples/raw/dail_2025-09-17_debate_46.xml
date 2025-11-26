@@ -1,0 +1,982 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-09-17/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-09-17/debate"/>
+          <FRBRdate date="2025-09-17" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_disability_matters"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-09-17/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-09-17/debate/mul@"/>
+          <FRBRdate date="2025-09-17" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-09-17/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-09-17/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-07" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LiamQuaide" href="/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29" showAs="Liam Quaide"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichaelMoynihan" href="/ie/oireachtas/member/id/Michael-Moynihan.D.1997-06-26" showAs="Michael Moynihan"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SeamusHealy" href="/ie/oireachtas/member/id/Seamus-Healy.D.2000-06-22" showAs="Seamus Healy"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Education_and_Youth" href="/ie/oireachtas/role/minister_state/education__youth" showAs="Minister of State at the Department of Education and Youth"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM NITHE A BHAINEANN LE MÍCHUMAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Disability Matters</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-17">Dé Céadaoin, 17 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-17">Wednesday, 17 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichealCarrigy">Micheál Carrigy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SeamusHealy">Seamus Healy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#LiamQuaide">Liam Quaide</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#GillianToole">Gillian Toole.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MauriceQuinlivan">Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Inclusive Education for Persons with Disabilities: Discussion<recordedTime time="2025-09-17T09:30:00+01:00"/></heading>
+        <speech by="#MauriceQuinlivan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T09:30:00+01:00"/></from>
+          <p eId="para_14">As we have a quorum, I advise members that we are now in public session. Apologies have been received from Senator Nikki Bradley. The purpose of today's meeting is to continue our discussion on inclusive education for people with disabilities. On behalf of the committee I extend a warm welcome to the Minister of State at the Department of Education and Youth, Deputy Michael Moynihan, who has responsibility for special education and inclusion. </p>
+          <p eId="para_15">I also welcome the following officials from the Department of Education and Youth accompanying the Minister of State today: Martina Mannion, assistant secretary with responsibility for special education; Brendan Doody, principal officer with responsibility for special education; Barbara Mulhall, principal officer with responsibility for school transport; and Mark Kelly, principal officer in the planning and building unit.</p>
+          <p eId="para_16"> Before we begin, I will read out a note on parliamentary privilege and housekeeping matters. All witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against a person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, I will direct them to discontinue their remarks. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege.</p>
+          <p eId="para_17"> I remind members of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the place where the Parliament has chosen to sit. In that regard, I ask any members partaking via Microsoft Teams prior to making a contribution to the meeting to confirm they are on the grounds of the Leinster House complex.</p>
+          <p eId="para_18"> The Minister of State may call on officials to speak briefly for clarification during the meeting where a specific or technical point arises and the officials may clarify issues for the committee. Any follow-up questions should be put to the Minister of State who is the accountable person before the committee.</p>
+          <p eId="para_19"> I am aware that a wide range of issues will be the subject of discussion today. If necessary, further and more detailed information on certain issues may be sent to the clerk of the committee for clarification to members. I now call on the Minister of State, Deputy Moynihan, to make his opening statement.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" as="#Minister_of_State_at_the_Department_of_Education_and_Youth" eId="spk_2">
+          <from>Minister of State at the Department of Education and Youth (Deputy Michael Moynihan)<recordedTime time="2025-09-17T09:35:00+01:00"/></from>
+          <p eId="para_20">I am delighted to be here this morning to discuss the important topic of inclusive education for persons with disabilities. I am not sure whether it is gamekeeper turned poacher or poacher turned gamekeeper but I am at the other side of the table here. I really enjoyed my term as Chairperson of the Oireachtas Committee on Disability Matters in the previous Dáil. Mairéad and all the team who worked on it were absolutely second to none. I know they are continuing that good work. I also know that you, Chairperson, have a huge interest in it as well. I wish the very best of luck to you, as Chair, to the team behind you and to all members of the disability matters committee. It is a hugely important piece of the Houses of the Oireachtas and is highly relevant to everybody living with a disability. I wish you the very best of luck.</p>
+          <p eId="para_21"> We are keeping a keen interest in the work of the committee, and in my new role as Minister of State with responsibility for special education and inclusion I hope we will have regular engagement. Since my appointment as Minister of State in January, I have met numerous children, young people, parents, school teams, advocacy groups and other interested stakeholders. I have a keen sense of the huge volume of work we need to progress to improve the day-to-day lives of our children and adults with disabilities. I am keen to make progress quickly where possible within my own area of responsibility in special education.</p>
+          <p eId="para_22"> As members will be aware, the challenges facing children and adults with disabilities and their families is rightly receiving a lot of attention. Improving the day-to-day lives of people with disabilities is a key priority for the Government. This was clearly articulated earlier this month by the publication of the national disability strategy by my colleagues the Minister, Deputy Norma Foley and the Minister of State, Deputy Hildegarde Naughton.</p>
+          <p eId="para_23"> The new strategy sets out an ambitious whole-of-government approach to advance the realisation of the UN Convention on the Rights of Persons with Disabilities. Extensive consultation was undertaken with my Department in developing the strategy, which of course has committed to delivering on a number of actions. Leading this is our development of a roadmap for an inclusive education, which is underpinned by the vision incorporated in Article 24 of the UNCRPD of all learners being educated together irrespective of need or ability.</p>
+          <p eId="para_24"> The invitation for today’s meeting kindly set out a number of topics that the committee wishes to discuss. I will touch on each of these shortly but at the outset I want to give the committee a brief update on the position regarding special classes and special school places for this school year and the plans for the 2026-27 school year. I know that this is an issue of significant interest to all members.</p>
+          <p eId="para_25"> While there is a lot of focus on special classes and special school places, it is always important to recall that the majority of children with additional needs are supported to attend mainstream classes with their peers. For children with more complex needs a special class place is provided and for children with the most complex needs a special school place is provided.</p>
+          <p eId="para_26">To meet the needs of these children, my Department and the National Council for Special Education, working with schools, has accelerated the provision of new special classes and special school places over recent years. This month alone, approximately 30,500 students with more complex needs will be enrolled in special classes and special schools, which is an increase of over 12,000 students since 2020. Every new school building project or extension is reviewed to consider how additional special education capacity can be provided within the school.</p>
+          <p eId="para_27"> An average of 400 new special classes and over 300 additional special school places are being provided annually. Sixteen new special schools have been established, with the most recent five of these opening this week or very shortly in Cork, Tipperary, Monaghan and two in Dublin.</p>
+          <p eId="para_28"> In recognition of the need to better support parents of children and young people seeking a special class or special school place, the number of front-line special educational needs organisers, SENOs, in the NCSE doubled at the start of the last school year. To further ease the burden on parents in relation to school admissions, the Department is also committed to introducing a common application system which will end the requirement to apply individually to multiple schools. As a first step, a single online application is being piloted for admission to post-primary special classes for the first year for the 2026-2027 school year in five towns.</p>
+          <p eId="para_29"> Over recent months, both the Minister, Deputy McEntee, and I have met the chief executive of the National Council for Special Education and senior Department officials on a weekly basis to track the progress being made in respect of special education places for children and young people with more complex needs for this school year and to discuss forward planning for 2026 and 2027.</p>
+          <p eId="para_30"> The latest information from the National Council for Special Education outlines that all of the children and young people outside of Dublin known to it by the February 2025 deadline under the new parents' notification scheme have a place for this school year. The NCSE continues to work with a very small number of families in Dublin to access available special class places. Significant capacity has been created through the provision of over 400 new special classes and 300 additional special school places, as well as the places that become available through the normal movement of students from primary to post-primary and finishing post-primary and special schools.</p>
+          <p eId="para_31"> Looking forward to the next school year, a lot of work has been done to ensure that new classes can be sanctioned quicker than in previous years. In my short few months in the role I have witnessed first-hand the commitment of the Department and NCSE teams to ensure that sufficient special class and special school capacity is available. I assure the committee that the Department and the NCSE have undertaken significant forward planning and preparatory work to ensure that new provision for the next school year, 2026-2027, is confirmed at an earlier stage. The aim of both the Department and the NCSE is to get classes sanctioned by the end of September this year for the following school year, which will provide clarity and certainty for both parents and schools. This will allow for greater lead-in times and will ensure that the facilities and accommodation are provided in time for children to attend school in September 2026. I remind parents of children and young people seeking a special class or special school place of the need to make contact with the NCSE before 1 October to ensure it has all relevant information on children seeking a specialist placement next year. I ask the members of the committee, because they have a sphere of influence in their communities, to bring attention to that date. The more information we have on 1 October, the better we can plan for the 2026-2027 school year. I ask all members to use whatever is at their disposal to get that date out there.</p>
+          <p eId="para_32"> Touching briefly, in the time available to me, on some of the other topics which I know committee members will wish to discuss in greater detail during the meeting, I wish to give the following updates. The EPSEN Act has now been reviewed and 51 recommendations arise from that review. The Department is now looking at how to best implement them. All those 51 recommendations have been accepted by the Government.</p>
+          <p eId="para_33"> Considerable work has already progressed in establishing the new therapy services<b>
+						</b>within the National Council for Special Education, which will ensure that no matter where a child is enrolled, he or she will have access to occupational and speech and language therapies that will augment those available through the HSE.</p>
+          <p eId="para_34"> A review of the assistive technology scheme is ongoing to see this support move from a diagnosis-led to a needs-based and more child-centred approach, in keeping with departmental policy.</p>
+          <p eId="para_35">This will alleviate the need for parents to provide professional reports when looking to secure technologies to support their child’s learning. It is also hoped that the application process will be digitised and streamlined to make it quicker and easier to apply for and receive technologies. </p>
+          <p eId="para_36"> I hope this gives some updates on the work we are doing. I look forward to the questions from members. If we have the information, I will give it at today's meeting. However, if it the case that we have to go back for further information, we will certainly look at it. I look forward immensely to engaging with members.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T09:45:00+01:00"/></from>
+          <p eId="para_37">I thank the Minister of State, Deputy Moynihan. I invite members of the committee to put their questions. When I call a member to speak, I ask him or her to adhere to the agenda and the item scheduled for discussion. All members have seven minutes for their contribution and this includes answers. If we get an opportunity, we will go into a second round. I propose we publish all of the opening statements on the committee's website. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_4">
+          <from>Deputy Gillian Toole<recordedTime time="2025-09-17T09:45:00+01:00"/></from>
+          <p eId="para_38">Good morning everybody and I apologise for being few minutes late. I thank the team for the preparation in advance of today and all of the documents. I thank the Minister of State for his updates. I will list off my queries. Could the members of the Minister of State's support team - the senior members of the Department - outline their roles and areas of responsibility? As a new TD, I am not familiar with them.</p>
+          <p eId="para_39"> What is happening in the area of early years and preschool? I am specifically interested in the issue of recruitment in respect of both the NCSE and the HSE. Are there difficulties arising there because both are effectively recruiting from the same pool of professionals? How is that going? I previously inquired in the Dáil, and when Mr. Bernard Gloster appeared before the committee, whether it would be possible to use the cross-border directive or the National Treatment Purchase Fund or both to assist parents in covering or being reimbursed for the costs of the very expensive assessment of needs. Is there a data collection agreement in place between the Department, the NCSE and the HSE?</p>
+          <p eId="para_40"> Is anything happening in the area of alternative therapies such as emotional regulation, etc., as referenced in the Act and discussed previously? We have presentations in this area in our work plan for this term from providers. Is the Department officially looking into anything or will it be a case of the committee referring the issue to it and working from there?</p>
+          <p eId="para_41"> The Minister of State made two references to the EPSEN Act 2004. Regarding the continuum of the support model, the one-stop access point for parents and for teachers to flag for pupils is very welcome. The pilot will commence on the transition from primary to secondary education. Is anything happening for students enrolling in primary school? Is anything happening to provide a seamless transition and the continuum of support for these children? Are there developments or matters for consideration in the realm of the wonderful provision of care by special needs assistants? This is purely for information but it will also assist me and probably my colleagues in our interactions with constituents' queries.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_5" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T09:45:00+01:00"/></from>
+          <p eId="para_42">I thank the Deputy for her questions. I will start with the SNAs. A lot of work has been done by the Department on the workforce development programme for SNAs. At the outset, I note the hugely positive impact that SNAs have within school communities and in making sure that children with additional needs attend and flourish in school. SNAs have developed into a hugely important part of the system. They do amazing work and are committed to it. </p>
+          <p eId="para_43"> The Deputy referred to the early years sector. The early years sector is under the aegis of the Department led by the Minister, Deputy Norma Foley, and the Minister of State, Deputy Hildegarde Naughton. However, we are very conscious of it. </p>
+          <p eId="para_44">One of the issues we noticed over the past while was that we were not getting as early as possible the information that would be available to the Department of children, including on the access and inclusion model, AIM, programme in the early childhood educations schools, or that which would be with the Department of Social Protection regarding children who qualify for the domiciliary care allowance. We are working in silos. We need to work better together, to have an understanding and to have information available to us at an earlier stage.</p>
+          <p eId="para_45"> The Deputy mentioned alternative therapies. There is a huge volume of work going on in this regard. It probably is not one of my Department's roles, but work is going on right across the system, within the HSE and, in particular, service providers, on developing alternative therapies for children and people with additional needs. There is an issue with securing additional occupational therapists. All parties to the Cabinet subcommittee on disabilities have being working to ensure we work as one, including the Department of higher and further education, under the Minister, Deputy Lawless. We must expand the number of occupational therapists and speech and language therapists coming through the system. The number has been increased as of this year, and a roadmap is in place to have more people graduating. We cannot rob Peter to pay Paul by bringing therapists into one system and taking them out of another. We need to work together to ensure we have sufficient therapists.</p>
+          <p eId="para_46"> There are a number of other issues. We are looking to simplify the process whereby CORU and other bodies regulate the speech and language therapists and occupational therapists coming into the country. We must ensure that they are coming in and that there are no complications. It is about making sure every road block is taken down to enable as many people as possible to work within the system.</p>
+          <p eId="para_47"> On having one access point, there has been much discussion within the HSE about the one-door policy. The difficulty is there are a number of challenges for parents of children with additional needs in having to go here, there and everywhere to get information. We want a streamlined, one-door policy. There is enough pressure and stress on parents. Streamlining the access point is something all of us in the Departments of education and disability are very much keen to do.</p>
+          <p eId="para_48"> Reference was made to the transition from primary to post-primary school. There are probably four pressure points in the lives of people with additional needs, namely going into preschool, going from preschool to primary school, going from primary to post-primary and the transition from education. The transition from primary to post-primary is hugely challenging, and then it is about making sure there is a pathway after people complete their education. The national disability strategy makes specific reference to going from primary to post-primary because it is one of the areas in which we see challenges.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_6">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-09-17T09:50:00+01:00"/></from>
+          <p eId="para_49">I welcome the Minister of State and his officials and thank him for taking time out of his busy schedule. I congratulate him on how he has approached his role with sympathy and empathy. Well done, and fair play to him so far.</p>
+          <p eId="para_50"> I will put my questions one by one. I am a great believer in lived experience, as I know, from his statement, the Minister of State is too. How is his Department engaging with people with disabilities and with their families, who play a huge part in their lives? How is the Department engaging with them in order to shape policy as we go forward?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_7" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T09:50:00+01:00"/></from>
+          <p eId="para_51">"Lived experience" is one of the phrases we constantly used when I was Chair of the disability committee. Many people may have various theories on how policy should be developed but it is only when we walk in the shoes of the people affected that we understand the challenges they face. Over the past couple of months, I placed a particular emphasis on meeting as many people as possible.</p>
+          <p eId="para_52">I have met as many parents as possible at their own kitchen tables, sat down with them and listened to them. Throughout my political life going back many years, I have had huge engagement with the disability sector. We have worked with them and parents right through from domiciliary care to different issues on it. There is a sense of that as well when we go to schools and hear at first hand the challenges that are being faced at the school gate. However, we are constantly seeking to listen to the families and the communities. The education advocacy forum was started in 2021 to ensure that we would have a cross-section of interested groups bringing policy together but it is only by proper engagement with the people with the lived experience that we can shape policy properly going into the future. </p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_8">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-09-17T09:55:00+01:00"/></from>
+          <p eId="para_53">With regard to rural schools, it is important that all children, including those with special needs, are educated in their own area. It enhances friendships outside of school. We all like our children to have their little buddies near them. Can the Minister of State provide a timeframe for, say, a rural school that has the room for a new class and has staff lined up? Why is there a delay in setting up a special class? </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_9" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T09:55:00+01:00"/></from>
+          <p eId="para_54">Many rural schools have come to us that have room and capacity. A total of 80% of the special classes that we have opened this year have been opened in existing facilities while 20% of them were modular or had to be added on to. We are trying to match the location of the school with the need within the community. In the first instance, we get the figures from families who would have indicated a need, and then we work back to see where we can best place those. Some rural schools have come forward looking for special classes but if there is need within that community, we certainly engage fully with those schools to make sure we are opening special classes within it.</p>
+          <p eId="para_55"> The question the Senator asked is fundamental because we want to have education within every community. We are spending a huge amount of money on school transport and transporting children in and out of their communities. We are trying to make sure we have it within the communities. However, if specific schools have expressed an interest in opening a special class, it is hugely important they are in contact with the NCSE over the next number of weeks. We certainly will be working with them if there is need within that community. There are grants available up to €100,000 for existing buildings to be repurposed for the purpose of a special class. We have funding in place but it is to ensure that we are opening the class where the need is. </p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_10">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-09-17T09:55:00+01:00"/></from>
+          <p eId="para_56">Will the Minister of State expand on the role of the regional education and inclusion officers, where they are being deployed, and what impact they are having? </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_11" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T09:55:00+01:00"/></from>
+          <p eId="para_57">Since this time 12 months ago we have increased the number of SENOs by up to 120. This is hugely important. Going back over many years since the Education Act 1998, the Department inspectors were the ones on the ground but now we have the SENOs. We have to embed the SENOs into their communities in order that they are the contact and are liaising between the families and schools. We need to have the SENOs properly empowered and properly bedded in, as they are a crucial piece of the jigsaw to ensuring that families know where to go. We then have the regional officers to map out what the need is across the regions as well. The first instance is to make sure that the special needs co-ordinators are embedded in the communities. An awful lot of work has been done. Over the past 12 months, we can see incrementally over the months that as they were embedded into their communities, they were becoming more empowered. They knew the challenges they were meeting at first hand. We hope that will work. </p>
+          <p eId="para_58"> On the regional education and inclusion officers, there are 120 SENOs, 21 team managers and 2 national co-ordinators.</p>
+          <p eId="para_59">The important piece is the SENOs on the ground. They feed information up to their team managers and then on to the national co-ordinators. I have seen over recent months that they have become more empowered within their communities. That will give us more information on families and children with special education needs. We have to continue to work to ensure that is embedded properly into the education system.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_12">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_60">Cuirim fáilte roimh an Aire Stáit ar maidin. Is iontach, agus ait, é a fheiceáil ina shuí trasna an tseomra in ionad ina shuí ag barr an tseomra. Tá ceist shimplí agam ar dtús. How many children with special or additional needs do not have school places as we speak?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_13" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_61">It is in single figures. We started out with a huge number of them, and the NCSE and Department of Education worked extremely hard. We are now in single figures in terms of the number of children who do not have school places. There is constant engagement between the NCSE, the families and the Department to ensure we are able to provide those places for children.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_14">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_62">It was predicted in <i>The Irish Times</i> earlier in the year - I think in July - that there would be 260 without places. What is the quantum in those single figures?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_15" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_63">We do not want to get into a political argument regarding those figures given in July. They were calculated on the basis of the number of children who had been notified to the NCSE in February or March. It was over 3,000 children, and 92% or 93% of them had been allocated places by early July. The calculation was done and came up with over 200, but that was not the case at that time. We were talking about a very small cohort. An awful lot of work has been done in recent months, particularly in July and August. We are talking about single figures. I assure you-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_16">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_64">Can you give me an idea? Is it 70 or 80 or-----</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_17" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_65">It is fewer than ten - single figures. The Senator is passionate about disability. I assure him that the NCSE, the Department and ourselves are working extremely hard with the families to find a solution for those affected. It is fewer than ten.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_18">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:00:00+01:00"/></from>
+          <p eId="para_66">The Minister of State said that the challenges facing children and adults with disabilities are rightly receiving much attention. I would say they are receiving attention because, generally speaking, they are in crisis. I listened carefully and with great interest to our colleague Deputy Ardagh on RTÉ radio. I do not know if the Minister of State heard her interview. She spoke movingly and passionately about the experience and challenges of accessing proper places for her children.</p>
+          <p eId="para_67"> In the context of the publication of the new strategy on the rights-based approach to disability, will the Minister of State speak to his colleagues the Minister, Deputy Foley, and the Minister of State, Deputy Naughton, about the nature of the consultation involved? Neither Deputy Ardagh nor I was at the launch of that strategy, but I have read through the document in some detail and will comment on it later. It does not really address the urgency of the crisis we face. I say this to the Minister of State because I know the person that he is and the integrity and passion he has for this issue. We share that. It is not intended to be a criticism, but I do not get a sense of urgency or crisis in respect of all aspects of disability.</p>
+          <p eId="para_68"> I want to ask the Minister of State a question that is also for his colleagues.</p>
+          <p eId="para_69">It relates to the education therapy service that is being rolled out. Who designed this education therapy service? What clinician signed off on it? What risk assessment was taken? We know that no clinician signed off on the progressing disabilities model, which has led to absolutely appalling harm to tens of thousands of disabled citizens around the State. I believe that matter will be visited in great detail at some point in the future. What clinical team or clinical sign-off, having learned the lessons from that, endorsed the design of the education therapy service?</p>
+          <p eId="para_70"> As we speak, there are no speech therapists in the Central Remedial Clinic, CRC, in Clontarf, which is a national centre of excellence for therapies for disabled children. It is an extraordinary situation that there is no speech therapy available in that national centre. In that context, I wonder who designed the education therapy service. What risk assessment was undertaken? I want to be really specific. Who is the clinician who signed off on this?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_19" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_71">I do not have the individual's name. There has been a huge amount of collaboration between the Department of education, the NCSE, the HSE and the Department of children and disability. Last year, 39 therapists were put back into special schools across the country. They were at the highest level. We had a constant debate at Government level and right across the Departments on how this would work, would be overseen and would have the trust of the families and children that would benefit from it. Therefore, we had to have it signed off by the HSE and the Department of children. Any therapist who comes in and is working within the system has to be approved by CORU and the clinical teams in order to be regulated. We have to have it right. In regard to the work that is being done, one of the major pieces is to get more and more. The Senator made a point about the CRC. Right now, we do not have enough therapists in the system. In response to the Senator's question about who did the clinical sign-off on this, I can inform him that the clinical sign-off is the State, the HSE and the Department of children and disability.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_20">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_72">After the committee meeting, perhaps one of the Minister of State's colleagues from the Department could write to us and let us know precisely who that liaison in the HSE is.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_21" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_73">I will get that information.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_22">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_74">I apologise but I must attend the health committee at 10.30 a.m. When the Minister of State sees me leave, that will be where I am going to.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_23" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_75">I can get that information, but I would prefer to provide details of the structure that is in place with regard to who is signing off on it, if that is okay with the Senator.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_24">
+          <from>Senator Tom Clonan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_76">Yes. I thank the Minister of State.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_25">
+          <from>Senator Maria Byrne<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_77">I apologise for not being present for the Minister of State's opening statement, but I read it and I know of his commitment to this whole area. I also apologise because I know he was in Limerick last Thursday visiting schools, but unfortunately I was not around on the day. I know from feedback from people in those schools that the Minister of State's visit went very well. I thank him for his commitment to that.</p>
+          <p eId="para_78"> I wish to raise the shortage of speech and language therapists. How does the Department intend to tackle that? I know that during Covid, a number of speech and language therapists took early retirement. How do we entice people back into the system, or entice people to apply for these jobs?</p>
+          <p eId="para_79"> How is the Department meeting the targets under Article 24 of the UNCRPD, which relates to inclusive education? I know we were behind. Could I have a rough outline of where we are now?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_26" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:05:00+01:00"/></from>
+          <p eId="para_80">I will begin by speaking about the decision in relation to therapists within the education system. There were therapists within the education system going back over many years. When the therapists were in the special schools, the staff said they were empowered by having therapists on site. The decision to put the therapists back into the education system was the correct one. It will take a huge volume of work because we have a shortage of therapists. The Department of further education has increased the number of therapists who are being trained in our third level education systems at the moment.</p>
+          <p eId="para_81">The second thing is that CORU must be streamlined to ensure we have a faster recognition or registration of people who want to come from abroad to work in Ireland as occupational therapists and speech and language therapists. We have developed a cumbersome system over the years and we have to streamline it. There is serious commitment at Government level to streamline it to get more therapists in. There is no point in me talking about the need to have therapists within schools, special schools and special classes if we do not have the physical therapists. One of the major aims of the Government is to make sure we have the therapists. We are working to that. </p>
+          <p eId="para_82"> With regard to Article 24 of the UNCRPD and inclusive education, it is hugely important that we have inclusivity in every level of education. We have to be mindful, however, that not every education setting is suitable for individuals. There are people with very complex needs. I visited such a setting the last day. I was hugely empowered by the commitment to education shown by the teachers, community groups and the SNAs within the education system. As a matter of fact, there was one woman who was actually physically putting a chair together in the special school. She gave me a sense of the commitment and passion these people have in providing education and how they love their job in encouraging and helping people with additional needs. I was really inspired. I was walking down the corridor and I saw her with a measuring tape in her hand. I salute people in that regard.</p>
+          <p eId="para_83"> We have to be mindful that we have developed additional special classes. This year, we have five extra special schools. We are looking at having more special schools for next year. We have a huge amount of work ongoing in that regard. By 1 October 2025, we will know the level of need that is going to be there for 2026 and 2027.</p>
+          <p eId="para_84"> Another point with regard to Article 24 is that 97% of our children are educated within mainstream schools. Where the next 3% are concerned, we have to make sure that it is right for pupils and families.</p>
+          <p eId="para_85"> Sometimes, special schools were at the end of the laneway or were separate to other educational systems. In some of the places we have seen, the campuses encompass the primary school, the special school and the post-primary school on the one site. That is the ideal. The Holy Family school and the Christian Brothers school in Charleville are almost on the same site and they work in collaboration. While that collaboration may not be in any meaningful headline kind of way, they work in collaboration and affect one another. It is hugely important to bring that model in so that children with additional needs are being supported and are part of the school community. Article 24 is very much mindful of that. The one thing that we have to do is ensure the campuses are built. The Department has taken decisions that require special classes to be part of any ongoing school building works. That is important. </p>
+          <p eId="para_86"> We were in Scotland earlier this year, with Mr. Doody and others. A campus was built there where the primary school and the special school were together. There was a little forest between them that both schools could use. The smallest of things can make the greatest of difference to children with additional needs right across the spectrum.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_27">
+          <from>Senator Maria Byrne<recordedTime time="2025-09-17T10:10:00+01:00"/></from>
+          <p eId="para_87">I thank the Minister of State. One other thing that I have experience of in the past, and I think the Minister of State mentioned it in his reply, is that there used to be a rule that a child had to go to a school within a certain radius in miles from his or her home or to the nearest school. Sometimes, the school may not be suitable to the needs of that child with special needs. There might be more emphasis in one area compared to another school. Is that rule still there or is there a degree of flexibility now? At that stage, it was very much the case that the child either went to that school or had no place. How can that be overcome?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_28" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:10:00+01:00"/></from>
+          <p eId="para_88">In recent years, there has been a new emphasis to make sure the NCSE is engaging with parents and families in order that the need of the child is best met.</p>
+          <p eId="para_89">That is the encouraging aspect. Of course, we want to ensure that children's educational needs are met as close as possible to home. That is extremely important. Parents can send their children to a school of their choice. They have that choice. Ultimately, however, we have to mindful of the needs of the child and ensure that these are met.</p>
+          <p eId="para_90"> There are over 15,000 special education teachers in mainstream schools. If we look at the funding provided from 2020 onwards or over the past ten or 15 years, we can see there has been a huge investment in special education-----</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_29">
+          <from>Senator Maria Byrne<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_91">It has improved an awful lot.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_30" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_92">-----and quite rightly so.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_93">We now move on to Sinn Féin's Ruairí Ó Murchú. The Deputy has seven minutes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_32">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_94">Tá fáilte roimh an Aire Stáit agus an bhfoireann uilig. The Minister of State is saying that the number of children who do not have appropriate places is in single figures. That is the total number. I want to check the position because our information is that a significant number are sitting at home because a building has not materialised, many more who requested special classes are in mainstream classes, even more who are in special classes when they want to be in special schools and a huge number for whom there has been pick-up in the context of home-schooling. I will take a wild guess that the number is probably greater. What is the number of children who are not in appropriate places?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_33" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_95">The Department and the NCSE have been working very closely with families to try to ensure that we have a pathway to education for every student, that we meet the needs of the students head-on and that there is engagement with them. The number of children for whom we do not have a pathway or a place is in single figures. We have families who are looking for further or different educational processes, and we work with them to try to find solutions. It is not the case that the closing date is 1 September and that is it. We are constantly engaging with families because the needs of students change throughout the year for different reasons. We are working intensely with families to make sure that any changes needed are made or that better accommodations can be found. We are certainly working on that.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_34">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_96">I appreciate that. I accept that the Minister of State may not have the numbers now. Whatever about those who are in some sort of classroom setting, as imperfect as it may be - in some cases it may work out - what sort of numbers are we talking about in the context of those who are sitting at home because class places are not available? If the Minister of State does not have that information, can he ensure that it is provided to us as soon as possible?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_35" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_97">On the classes that are available, modular buildings are being put in place in a very small number of schools at present. I compliment the departmental officials and the school authorities on the work they have been doing. We have been given different dates for different schools, but the information we get each Friday shows that the dates are being pulled back better and that the work is being carried out in a more timely fashion. There is an awful lot of work taking place to ensure we have all the places available, particularly in modular buildings. That work is being done as fast as is humanly possible.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_36">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T10:15:00+01:00"/></from>
+          <p eId="para_98">That is fair enough. Will the Minister of State get a timeline and the numbers to which I referred as quickly as possible? That would be really useful.</p>
+          <p eId="para_99"> The Minister of State spoke about the no-wrong door approach and the single point of application. We need to really reduce the number of disasters that happen every year and the stress this causes to students and their families.</p>
+          <p eId="para_100">My party has proposed, and has legislation going through on this, that families could do the application process for kids with disabilities almost two years beforehand. It is about everything that would facilitate the school and whoever else being in place. Will the Minister of State tell me, and I know he has made some changes, how exactly this looks at the minute and how it will look into the future as regards somebody applying for his or her kid to get into school?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_37" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_101">The closing date last year for notification of the NCSE was 1 February. That was moved out another week or so because of Storm Éowyn. We have brought that date back to 1 October 2025 for parents to notify the NCSE of requirements for special educational needs into the 2026 school year. Our commitment is that we will have that planning done between now and Christmas. That work was being done in April and May of this year. We want to ensure that families have clear roadmaps of where their children can go to school in September 2026 before the year 2026 starts. We are taking the stress out of it. There was some negative commentary about us pulling back the date to 1 October, which I refute completely. It is important that we move it back, that we have timelines in place and that very serious decisions would be made by the NCSE and the Department of education. When we know the need on 1 October, we will be looking at the figures and where the need is across the country. We will try to match the need with the school communities and also make sure that the students who have been notified to us will be advised of places as early as possible. Our commitment is that we will have those decisions before Christmas 2025.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_38">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_102">Before Christmas 2025. We would need that to happen. I would argue that, at times, we need to look at this even earlier, but I accept that is a move in the right direction.</p>
+          <p eId="para_103"> The issue for an awful lot of children and schools is that of assessments of need. I know that every Minister says this is not necessarily required in relation to schools, but schools will say different. How do we propose dealing with that?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_39" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_104">Assessment of need obviously falls within the children and disability Ministry, but a huge amount of work is being done by the Minister, Deputy Norma Foley, and Minister of State, Deputy Hildegarde Naughton, at Government level to ensure that we are tackling the huge waiting list for assessments of need. The assessment of need is a highly important piece for any family and any child. Work is being done to try to make sure that we are, and there are a lot of-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_40">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_105">Schools also require it, no matter what anyone says, in relation to where a child will go and making sure it is the appropriate class. When children are waiting on that, that is a problem.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_41" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_106">It is important that parents who believe that their children will need specialised school places, or special classes or a special school, are notified to the NCSE before 1 October. The commitment is that the Department and the NCSE will work with those families to try to ensure that we have the best possible place for people in September 2026.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_42">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_107">Everyone will make every effort to make sure that information is out there. I also make the argument that some of that information should already be known to the Department, even if we are talking about kids and the access and inclusion model, AIM, and all the rest.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_43" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_108">The AIM programme is within the Department of children and disability. On that piece of information not being shared with the Department of education, in respect of domiciliary care from the Department of Social Protection and AIMS from the Department of disability, we need a whole-of-government understanding of what the need is so that it is not just one particular arm of the Government knows it and the other does not. It is a whole-of-society and a whole-of-government issue. It is for the betterment of every child that we need to pull it together.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_44">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T10:20:00+01:00"/></from>
+          <p eId="para_109">The Minister of State and colleagues are very welcome. I will use my time to again highlight to him the clear need for increased special education provision in the Youghal catchment area of east Cork. I will go into quite a bit of detail but he will be very familiar with the case from previous engagement on it.</p>
+          <p eId="para_110"> As the Minister of State knows, I have been working with a parents' campaign group in Youghal, which has set out a case in a very thorough, carefully considered document for substantial secondary level provision that would allow children in the Youghal catchment area to be educated locally. Those children have additional needs that are not currently met in mainstream schools. Youghal has just one secondary school, Pobalscoil na Tríonóide, which has somewhere between 1,100 and 1,200 students. That school has what is known as an autism hub. Within the catchment area for this one secondary school in Youghal, there is a total of 18 primary level special classes.</p>
+          <p eId="para_111">However, that one secondary school has just three special classes and is oversubscribed. An extension is planned for the school, but my understanding is that it will not add capacity beyond what is currently provided in modular accommodation. It will essentially replace those temporary buildings with permanent ones.</p>
+          <p eId="para_112"> As regards some of the parents I have engaged with and whom the Minister of State met with in March in Youghal, their children are attending primary school in Bunscoil Mhuire, and those children are happy with the level of support and the setting provided there. The pobalscoil is an excellent secondary school with committed staff and an autism hub that does invaluable work, allowing children who attend it to integrate in the secondary school, but the hub is not suitable for all autistic children. For many, the sheer busyness of a large secondary school, the sensory overload of crowded corridors and the recurring changes of teacher and classroom all create a very uncomfortable environment where it is extremely difficult to learn and to regulate emotions. These children need settings that are calmer, more predictable and with less disruption. They need an environment that is built around their needs, not one where they are expected to continually adapt to circumstances that are overwhelming for them.</p>
+          <p eId="para_113"> I will give the Minister of State one example. A 16-year-old autistic girl in Youghal tried her best to settle in the pobalscoil. She was very much supported by her family and the school. She has a high level of intellectual ability but was overwhelmed by the clamour of the school setting, and despite the best efforts of herself, her family and the school staff, she could not sustain a placement there. She is now attending a grind school in Cork city where she will complete her leaving certificate and where she is thriving academically. Because of the smaller class sizes, the calm and the predictability there, she is much more at ease within herself and better able to focus on her schoolwork. To access that, however, she must travel into Cork city every day, and that involves hours lost sitting in traffic on long journeys simply because the right kind of provision does not exist in her own town. That is not fair on her and not fair on her family.</p>
+          <p eId="para_114"> Of course, she is not alone because, at present, 22 children from the Youghal catchment travel to St. John's Special School in Dungarvan, County Waterford. To access St. John's, a child has to have a diagnosis of an intellectual disability. For some children as young as five, their day starts with a bus leaving at 7.10 a.m. and they may not arrive at the school until almost 9 o'clock, after multiple stops. That is over an hour and a half each way on a bus for a five-year-old every day. You can only imagine the stress this causes over time, with children arriving to school and home exhausted and emotionally disregulated and families worn down over time.</p>
+          <p eId="para_115"> When we have conveyed these realities to the Minister of State's Department, with regard to planning, not just for the future of the Youghal catchment but for the present also, the response so far has been essentially "computer says no". There has been no meaningful engagement with the details of the case that was presented in March by the campaign group, and there is a lot of frustration and disappointment about that. The group is very constructive and keen to re-engage.</p>
+          <p eId="para_116"> The Minister of State mentioned the financial cost of school transport. In the 2023-24 school year, €78.9 million was spent by the State on taxis for children for journeys out of area. A total of €15.7 million of that was for Cork. The parents I engage with in Youghal speak of facing a cliff edge on completion of secondary school. They are very happy with the level of support they have at the moment but they are facing into serious uncertainty.</p>
+          <p eId="para_117"> It is clear we need a very significant increase in special education provision in Youghal and the surrounding catchment. One oversubscribed secondary school cannot meet the full spectrum of need for that large catchment of 18 primary level special classes. We cannot have children with intellectual disabilities travelling daily to Dungarvan or Carrigtwohill, very significant distances, or, worse, to Waterford city or Cork city. We cannot have autistic children with average or above-average intellectual ability having to drop out of secondary school and risk poor attainment, reduced career opportunities and mental health setbacks because they too do not have a school equipped to meet their needs in their community, as is the right of all children with disabilities.</p>
+          <p eId="para_118"> The Bridging the Gap campaign group in Youghal is not asking for luxuries; it is seeking the basics and the same chance for its members' children to reach their potential, as any other family would expect. What are the Minister of State's plans for increasing special education provision for families in the Youghal catchment area? Will he and his colleagues here meet with the Bridging the Gap campaign group again in the near future?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_45" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:25:00+01:00"/></from>
+          <p eId="para_119">I did meet with the group in March of this year in relation to its proposals. In the first instance, as regards all schools that are putting on or getting extensions at the moment, one of the main criteria we are looking at is their provision for special education and whether there is an increase in that regard.</p>
+          <p eId="para_120">That is a given and a must within every school, whether a primary or post-primary school right now, right across the country. Both the Department and the NCSE are clear on that, and I am clear on it as well. We need to increase the capacity. We have challenges in relation to post-primary education as well because primary education, by and large, has been very good but primary students will go on to be post-primary students. Bridging the Gap in Youghal provided a very serious and coherent proposal to us. This year, we have opened five extra special schools across the country over the last number of months. They opened on 1 September and others are opening in the next week or so. After 1 October, when we will understand the need that is within the entire country, we will be making decisions on where the next number of special schools will be opened.</p>
+          <p eId="para_121"> I take the Deputy's point very seriously with regard to travelling to St. John's, to Carrigtwohill, and to both cities, Cork and Waterford. If we are to have a sustainable special education system into the future, we have to make sure we are reducing travel because that is going to continue to be a current expenditure on the State. We are very mindful of that, and of making sure we reduce that when making decisions on it. There is no point in me giving the Deputy cast-iron guarantees. I understand and I met with the group. I understand the questions it has. We will be engaging with the group and we will be looking at the area but we have to understand the need as well, and we will be trying to meet that need across the country. I think we have opened 16 special schools over the last number of years, and this year it looks like we will be opening five or six. We will be going to-----</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_46">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_122">I appreciate the broader picture. Could the Minister of State make a commitment to meeting with them in a reasonable timeframe?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_47" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_123">We will re-engage with them but-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_124">The Deputy's time is up.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_49" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_125">-----not until I have the information together. When I have the information together, I will engage with the Deputy, Oireachtas Members and the group.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_50">
+          <from>Senator Maria Byrne<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_126">Apologies, Cathaoirleach, but I have to go to the health committee.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_51">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_127">I thank the Senator. We will move on to Deputy Keogh from Fine Gael, who has seven minutes.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_52">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T10:30:00+01:00"/></from>
+          <p eId="para_128">I wish the Minister of State a good morning and welcome him back to the disability committee. I was listening to his opening statement online. I wish his officials a good morning.</p>
+          <p eId="para_129"> I congratulate the Minister of State on the national human rights strategy for disabled people. It was fantastic to be in attendance and to see the visual representation of the whole-of-government response with so many Ministers present. We hear "nothing about us without us", and it was fantastic to see the involvement of disabled people in putting together this strategy, and again at the launch. It seems we are walking the talk now and not just talking it, and hopefully we will deliver everything in this strategy in a timely manner.</p>
+          <p eId="para_130"> I wish to pick up on what Senator Murphy O'Mahony said about Article 24 of the UNCRPD. We are aiming to ensure people with disabilities can access inclusive, equality-based and free primary and secondary education on an equal basis with others in the communities where they live. This is something I am struggling with, being from County Mayo. We have lots of different rural schools and we are obviously trying to open special schools where the need is but we are looking at the need as numbers. This does not really reflect back on Article 24, which refers to "communities in which they live". If you have a small rural school that is struggling to keep the numbers, it is not going to reach the need but you have principals and teachers who are willing to open a special class, be that with two or three children. It is about looking at the need as not necessarily numbers, and that we need six or eight children to open the class. If you look in Mayo, you will see many special classes in bigger towns like Castlebar rather than in rural villages. By putting the emphasis on numbers, we are going against Article 24. It would be nice to get the Minister of State's thoughts on that and on how we are going to move forward. I know many rural schools that would love to open a class to ensure children can go to school with their siblings and peers.</p>
+          <p eId="para_131"> On the school places being at single digits, I am going to respectfully disagree in the sense that we might say somebody has a school place but if they are not in school, then they do not have a school place. I think of a school I have been engaging with deeply in the last four to five weeks. In fairness to the Minister for education, she is working with me on it.</p>
+          <p eId="para_132">The school has been forced to take two new children. A section 39 action is about to be taken against it. It was told it had to send out enrolment forms and get these kids in, and then it would be given resources. When the school asked what resources it would get, given that it was already under-resourced in terms of SNAs, with appeals in place, it was told it would have to get the kids in first and then it would get the SNAs. There is a plan to change that for next year, but we are now at week 3 and these two children are at home because the principal cannot safely take them into the school without knowing he is going to have SNAs.</p>
+          <p eId="para_133"> I think of another boy who is not on the single-digit list because he is technically in school, but he is in school in a mainstream setting that is not appropriate for him. If he has to be changed, he must go home because the school does not have changing facilities for him. When he is on the playground, he is followed around because it does not have a fence high enough for him. The special school where he will hopefully be going in October is waiting on modular buildings. He is not on the Department’s list. If we take those three children that are not on the list for school places because they technically have school places, two are not in school and one is not in an appropriate place. I ask the Minister of State for his thoughts on these two issues.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_53" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:35:00+01:00"/></from>
+          <p eId="para_134">I take the point on the three children the Deputy mentioned. When children have enrolled in a specific school, that need is documented right through to the Department and the NCSE. We try to make fast decisions about the supports to be put in place. I am well aware of a number of children in special classes or mainstream classes awaiting modular buildings being completed. We are working extremely hard to make sure those modular buildings are completed in a meaningful time. The one commitment I will give is that because we moved the date back to 1 October 2025 for the school year starting in 2026, we will not have children waiting for modular buildings. Decisions will be made earlier in the school year and the buildings will be open in a meaningful time. The people on the ground, for example, SENOs and the NCSE, are constantly advising us of challenges with particular children in particular counties. There are a number of issues within the numbers. We are not blind to the challenges across the country with specific children and specific places. We fully understand that.</p>
+          <p eId="para_135"> During the year, parents will start off by trying to mainstream their children and when they see that is not working, they look for special classes. We will engage with them to ensure we do that. We are not blind to the challenges that are there, but we have pathways for most people. There are spaces available. We will be working with those families and children throughout the year.</p>
+          <p eId="para_136"> The one thing I ask is that the Deputy share with us the specifics of the school authorities waiting on resources.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_54">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T10:35:00+01:00"/></from>
+          <p eId="para_137">To be fair to the Minister, she is working closely with me on it. There is a principal I met in August who came in to try and resolve issues like this. He is stressed beyond belief. He has kids in long-term palliative care. The school is already down SNAs and is being told it must enrol these two children. A parent shared with the school an email in which a SENO advised the parent to take section 39 action against the school. The principal says he wants to take in these two children and has sent them enrolment forms but cannot safely take them in. If we are to be honest, then these children have school places but we are on week 3 and they are at home. The principal still does not know if he is going to get SNAs. If he gets approval for SNAs, he then has to advertise for them and interview and train them. It is going to be into October when these kids start school. When we say the number of kids waiting for school places is in the single digits, that might be technically true, but there are probably many children at home. We have to be really clear with the NCSE and SENOs to actively work and support principals rather than putting them under increased pressure.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_55" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:35:00+01:00"/></from>
+          <p eId="para_138">I take the point. There is a lot of work going on. I do not think there was a principal off during the month of August. Many principals and school authorities were engaging with us on a daily basis on the challenges they were facing.</p>
+          <p eId="para_139">I compliment the school authorities because they are very serious people and they are very genuine about trying to ensure that they accommodate families and children with additional needs. It is on their backs and those of the special needs assistants and teachers that we are building the special education system across the country. When it comes to saying we have a place or pathway, we are working to ensure any additional help that we can give will be given and any resources that can be put in place will be. We are going into the budgetary process again to make sure we have further SNAs and teachers in the process to make sure we have a better system again next year. We are not blind to the challenges out there.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_56">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-17T10:40:00+01:00"/></from>
+          <p eId="para_140">Cuirim fáilte roimh an Aire Stáit agus a fhoireann anseo. I wish the Minister of State well in his work in his brief. It was welcome to see the publication of the new disability strategy last week, which I attended. I hope it will be implemented in full and there will be consultation throughout with disability organisations and DPOs.</p>
+          <p eId="para_141"> On recruitment of therapists, a new piece of research published in July, led by the Royal College of Surgeons in Ireland and University College Cork, found that there were serious flaws in the current CDNT model in terms of the provision of care. Less than a quarter of the speech and language therapists who took part said they spend their time directly delivering care to children. Much of their time was taken up with administration and meetings as well as unmanageable caseloads. They stated a lack of clinical supervision as part of that. Some said they were heartbroken because of the workload and their inability to deliver in their roles. The Irish Association for Speech and Language Therapists also stated that-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:40:00+01:00"/></from>
+          <p eId="para_142">Some of the issues the Senator is raising would be directly for the HSE rather than the Minister of State. She may continue but it is up to the Minister of State to respond if he can and if he wants to.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_58">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-17T10:40:00+01:00"/></from>
+          <p eId="para_143">I thank the Cathaoirleach. The conditions that the Irish Association for Speech and Language Therapists are concerned about include workloads, that therapists are leaving the country or moving into private practice. Of course, that will have a direct impact. We mentioned recruitment and college places earlier. How serious is this? Are we at risk of losing them to private practice and from the country, because it is not just a pipeline issue?</p>
+          <p eId="para_144"> My second question is on waiting lists for assessments of need and how they impact on special schools. The HSE was at the committee before the summer recess. When I questioned Bernard Gloster here, he agreed and admitted he was particularly concerned about Cork in relation to assessments of need. There are 1,292 on the waiting list in Cork as of the second quarter of this year. Most are waiting more than nine months and we know that is reflected throughout the country. How is this impacting special schools throughout the country? What is the direct impact of these waiting lists?</p>
+          <p eId="para_145"> It has been asserted that there is a difference in the provision of care for children with autism at primary and post-primary levels. How can we bridge that gap, if there is a gap, to ensure that care continues at second level?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_59" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:40:00+01:00"/></from>
+          <p eId="para_146">Some of the questions relate to the Department of children and disability but it is all a whole-of-government approach, to be honest. The therapists we are putting back into special schools and onwards into special classes and schools in general is a very serious body of work being done by the Government. The Department of education has engaged with the associated bodies for the speech and language therapists and the occupational therapists in a very meaningful way.</p>
+          <p eId="para_147">We must get the training and the third level education system right. The Department of further education, under the Minister, Deputy Lawless, is increasing the places that are available for occupational therapy and speech and language therapy. As I said in respect of CORU, the registering body, if there are people from other countries willing to work in Ireland, we must ensure that their registration is processed in a timely way. We have a shortage of therapists within the CDNTs and the education system but we are working to try to resolve that. We will only be judged well if we have the resources and therapists in place to deliver the therapies in a meaningful way.</p>
+          <p eId="para_148"> There is a perception out there that the primary education system has developed in a meaningful way in terms of special education but that post-primary is a different body of work. Some of the post-primary schools with special classes that I know of and have visited place a huge emphasis on integration and have done amazing work. That has empowered the schools and the second level education providers, but we have an awful lot of work to do at post-primary level. I know the challenges at post-primary level are very difficult but we must ensure there is special education there as well.</p>
+          <p eId="para_149"> When the disability strategy was announced last week, there was a specific reference to children transitioning from primary to post-primary, so we do understand the challenges that are there. There is more anxiety at school level and student level in relation to what is the right thing to do for students going into post-primary education. It is something we will work on over the while. The right thing to do is to make sure that special classes are available in every post-primary school the length and breadth of the country, for the students themselves and for the students in mainstream, so that there is a fully integrated education system and we have them in post-primary. This is something we will work on very seriously.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_60">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-17T10:45:00+01:00"/></from>
+          <p eId="para_150">I thank the Minister of State. I might just ask one more question.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:45:00+01:00"/></from>
+          <p eId="para_151">Very briefly.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_62">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-17T10:45:00+01:00"/></from>
+          <p eId="para_152">In relation to universal design, will the Minister of State outline plans for new schools and classrooms that will be built in the future and if there will be training provision for teachers?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_63" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:45:00+01:00"/></from>
+          <p eId="para_153">On universal design, the planning and building unit in the Department of education is looking very seriously at all the proposals that come into it. The first thing we are looking at now is what is the special education provision within a new campus or a repurposed building. We have to make sure of this when we are building. There is no point in building physical buildings that are not going to meet the needs of all our children. If we are true to Article 24 of the UN convention, we have to be very mindful that any money being spent on school buildings into the future also considers special education.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_64">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-09-17T10:45:00+01:00"/></from>
+          <p eId="para_154">I apologise for being late but I was listening in on Teams. I thank the Minister of State for his presentation. It is great to see that there has been a significant reduction in the number of children waiting for school places in September. I look forward to the full roll-out of the model where applications are done up to two years in advance so that parents can know six months before September that their child has a place and do not have to be waiting over the summer.</p>
+          <p eId="para_155"> I have a couple of points. I do not want to go back over questions that the Minister of State has already answered. I just want to highlight an issue in my local area where a number of families have children who are on a waiting list for a place in a special school in Longford. I ask that the Minister of State would take this information away. We have had a fantastic school, St. Christopher's, for over 50 years. I would like to make sure that whatever supports and access are needed are put in place to make sure those families have places. I am working with a number of them who are on a waiting list.</p>
+          <p eId="para_156">That needs to be dealt with immediately, as far as I am concerned, so I ask the Minister of State to take it on board.</p>
+          <p eId="para_157"> On the summer programme, I chaired the joint committee on autism, as the Minister of State knows, and we still have our all-party committee on autism, which meets on monthly basis. The Minister of State was in with us before the recess. We produced a special report on the summer programme. We worked with the Department of special education, including the then Minister of State, former Deputy Madigan, and officials, to expand the number of people eligible to work in it to try to ensure more schools would take part. Unfortunately, it is still the case that around 50% of the schools are not taking part. It should be mandatory for every special school. What are the thoughts on putting it in place? Will the Minister of State re-examine the report? The reason one school in the southern half of the country gave for not doing the summer programme was that the school was being used for summer camps run by someone who was hiring it privately. That is not acceptable. We need to get to a place where the summer programme is in place in every special school. These schools have the kids with the greatest needs. We had a case where the principal of a special school approached a mainstream school to see whether the kids could do the summer programme in it. That is not acceptable.</p>
+          <p eId="para_158"> The Minister of State referred to speech and language therapists coming into schools. They are to be employed by the NCSE. I welcome that. A significant number of kids in special schools are non-verbal. The previous committee did a great deal of work in this area. We had young Fiacre Ryan from Mayo in with us. He was the first child to sit the leaving certificate exams using the rapid prompting method, RPM, of communication, yet that is still not acceptable within our education system. In two weeks' time, we will have the first meeting of the term of the new all-party committee. I will have a parent and a teacher who teaches RPM before the committee to show how it works and that it can be done. I have seen the results. Children are able to communicate by using this method of communication. I ask that this be looked at, particularly in order that non-verbal kids can communicate while we are bringing in the speech and language therapists. I ask the Minister of State to deal with those few questions first.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_65" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:50:00+01:00"/></from>
+          <p eId="para_159">We will monitor the proceedings of that meeting very closely. Constant new thinking will improve the system as we go forward. I would appreciate it if the Deputy reached out to us and the team after the meeting to give us the up-to-date position. We will work with the Deputy in the special school in Longford, St. Christopher’s, and the issues that exist. I am aware that this is very dear to the Deputy's heart and that he has done a lot of work on it. We will engage on the issues.</p>
+          <p eId="para_160"> There was a huge increase in the number of schools – or over 220 or 230, I think – that took up summer provision in 2025 by comparison with 2024. In some schools I have visited over the past couple of months, particularly the special schools, those concerned were saying there were a number of reasons why they were unable to get staff and participate in the summer programme. Since the entered the Department, I have been very open to any pilot schemes or initiatives that could be put in place to encourage special schools to operate the summer provision programme. However, there is a matter to which I have been giving an awful lot of thought, on the basis that the State has made a huge investment in special schools across the country. Some of the new ones have great facilities – a few have hydrotherapy pools and the like – but these are closed for a number of months during the year. Consider the campuses that have been developed by some of the service providers. Over many years, the State has, as a result of lobbying by community activists and public representatives, put an awful lot of money into this. Some of the facilities are closed at 5 o'clock on a Friday evening and opened at 9 o'clock on a Monday morning.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_66">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-09-17T10:50:00+01:00"/></from>
+          <p eId="para_161">We should take those schools. They belong to the taxpayer and should be open.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_67" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:50:00+01:00"/></from>
+          <p eId="para_162">That is the point. Parents and groups we meet talk about alternative respite or different facilities.</p>
+          <p eId="para_163">The State has invested significantly over a long number of years in many facilities and it pains me to see those facilities not being used even at the weekends or during the summer holidays. We must be very innovative about how we move forward with those facilities. If we are going to build as inclusive a model as possible, the first thing we need to do is use every piece of built infrastructure at our disposal because we have seen deficits in different areas where there is no built infrastructure or development. Where there are developments and facilities, we should be looking at models for how to use them as alternative respite on Saturdays and Sundays and through the summer holiday period. This body of work needs to be done not just by the Department but across the disability area and the HSE. We are constantly looking for more money to build more facilities. We have buildings in place and we should be using them to the maximum extent possible. If you travel to some facilities and find they are closed for two or three months of the year, that simply is not right. This is something I will work on. There has been a significant increase with regard to special schools, in that in the past three years, 85% of special schools have opened for summer provision. July provision is a huge lifeline and has a very good social aspect for students who participate in it because many of the activities are outside school and involve travelling and different days of fun and activity. We have to make sure that every special school is participating in it. Regarding our trips around the country listening to special schools about legitimate challenges they have regarding summer provision, we must recognise that and build a system that will work. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_68">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:55:00+01:00"/></from>
+          <p eId="para_164">It was really encouraging to see the Minister of State in Limerick last week. I met him when he visited schools with significant numbers of students with additional needs. I first met him at St. John the Baptist Boys' National School in Garryowen. Another school we visited was Le Chéile National School, which is based in the Southill-Galvone area of the city. The vice principal of that school outlined to us that he estimates that up to 80% of his students have one additional need and nearly 50% have two or more additional needs. I am sure the Minister of State will agree with me and the school that these numbers are incredible. The school has been crying out for additional services, has been passed from one Department to another and has yet to receive additional supports, particularly around speech and language therapy. I raised this matter in the previous Dáil on a number of occasions and in this Dáil as well. During that meeting, the discussion focused on a metric plan to track student development. A relatively small amount of money was needed for this. Has the Minister of State considered the additional supports the Department can provide to the children of Le Chéile National School? </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_69" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:55:00+01:00"/></from>
+          <p eId="para_165">We met the vice principal on Thursday or Friday of last week and I was very encouraged by the commitments there. I saw some very good and innovative ideas in the school. When I go to special schools or primary schools, I am always encouraged by the way they have integrated horticulture and so on. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:55:00+01:00"/></from>
+          <p eId="para_166">They were impressed that the Minister of State was a farmer. </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_71" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T10:55:00+01:00"/></from>
+          <p eId="para_167">I was impressed by them, particularly the shape of the polytunnel in St. John the Baptist Boys' National School. We will have a very healthy generation of young people because they are really being encouraged as regards where food comes from. We will work with the schools on a number of the issues raised by the Cathaoirleach and will relay information back to him. I compliment the schools we visited in Limerick on the amount of work they are doing. I noticed that the school leadership and school authorities were very much engaged regarding how we can do better and the next level to which we can take this. That is great to see. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_72">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T10:55:00+01:00"/></from>
+          <p eId="para_168">Another question also relates to my constituency. The Minister of State will probably be aware that the University of Limerick is partnering with schools in some of the most disadvantaged areas across Limerick to deliver school interventions in psychotherapy, occupational therapy and speech and language therapy. </p>
+          <p eId="para_169">The schools included are Our Lady Queen of Peace School, Janesboro, St. Mary's primary school, Corpus Christi primary school, which will present at the committee next week, Gaelscoil Sheoirse Clancy, Le Chéile, which the Minister of State also visited, and Our Lady of Lourdes primary school. The Health Alliances for Practice-based Professional Education and Engagement, HAPPEE, project, places UL students training in these fields directly in the classroom. It has created a positive experience for children, parents and teachers alike. Given its success, it has expanded from the initial pilot in one school in 2021-2022 to the six schools I mentioned. While the project has received funding through the What Works programme, I am inquiring if consideration is being given by the Department to renewing this funding on a longer term basis so that this positive scheme can be maintained in the existing schools and potentially expanded to additional schools in Limerick and the mid-west. That is the HAPPEE programme.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_73" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:00:00+01:00"/></from>
+          <p eId="para_170">The level of data collection, serious engagement and research by UL and school authorities in Limerick has to be complimented. Mary Immaculate did further studies in relation to its Oscailt report on it. The communities are blessed to have a number of influential third level institutions. Some are really engaging with school authorities as to what the challenge is and how it can be met. The HAPPEE programme is a great initiative and there are other programmes. There is the enthusiasm of school authorities and a number of the parents I met last Thursday on the visit at the back of the meetings away from the cameras were very impressed and bought into what was being done at school level. It is the engagement by UL and others. It is a programme I will be watching carefully to see if we can do more in other communities.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:00:00+01:00"/></from>
+          <p eId="para_171">In your opening statement, you spoke about introducing a common application system. I think everybody would welcome that. As a TD for Limerick, we have a common application system already in place for people transitioning from primary to secondary level, which works well but not brilliantly - it could work better. I have raised concerns about that but it works better than what it was. It was brought in because people from disadvantaged communities - I come from one myself - were not getting access to schools. We had this annual problem in Limerick which by and large has been eliminated. Will you outline your thoughts?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_75" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:00:00+01:00"/></from>
+          <p eId="para_172">Five schools across the country are being piloted for the 2026 school year. We have to do more than piloting because it is important. If you listen to any media reports, parents are on and they are talking about the number of letters of rejection they are getting. Going back over many decades at this stage, the CAO system for third level education was developed in a meaningful way long before the level of technology we have now - they were able to do it. It is important we look at that and try to embrace it. It will take the stress out of it. The Cathaoirleach is right in terms of disadvantaged areas and going to particular schools. There were some teething problems in Limerick but that was worked through between the Department of education and all communities in Limerick. We are rolling it out on a pilot basis. We will be looking at the results with a view to rolling it out nationally. It is a key piece of the jigsaw. The Minister, Deputy McEntee, and I are at one on this to make sure we roll it out nationwide as soon as possible.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_76">
+          <from>Deputy Gillian Toole<recordedTime time="2025-09-17T11:00:00+01:00"/></from>
+          <p eId="para_173">Go raibh maith agat. I thank the Minister of State for all of the interaction and information we glean in these sessions. He has definitely hit the ground running, so I thank him on behalf of children and parents in Meath East. The improvements are coming thick and fast, as they should. Why did things not happen with as much of a sense of urgency and importance prior to this? That is probably quite an open-ended question.</p>
+          <p eId="para_174"> On early years, the Minister of State mentioned AIM. This is not quite the remit of his Department but now that there is interdepartmental communication and collaboration, has the salary of providers, etc., come up at joint committees?</p>
+          <p eId="para_175"> Again, to return to my question on the funding of assessment of need, is there communication with the HSE on the use of National Treatment Purchase Fund, NTPF, or cross-border directive to guide parents? I ask because I have directed to local credit unions those parents who would be in financial difficulty in terms of affording assessments.</p>
+          <p eId="para_176"> On alternative therapies, it is fantastic to hear about recruitment and the increase in college places. There are alternative therapies such as art therapy, drama and equine therapy. Is there a specific fund for them that schools can access? In my own area people fundraise to provide these therapies using GoFundMe, bake sales, etc. There is great therapeutic benefit to be gained from the horse boy method, etc. as they assist with emotional regulation and hormone release for an overall calming benefit. There is science to back these therapies. Is there a fund that principals, when approached, can access? </p>
+          <p eId="para_177"> I do not know who raised the following issue but it would be great, if possible, to get an update on, dare I say, the inappropriate places. It is fantastic to hear that the numbers are in single digits on which I highly commend the Minister of State and his team. Purely for my own information I would like to know the number of inappropriate places.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_77" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:05:00+01:00"/></from>
+          <p eId="para_178">We are monitoring all the places that we have been provided. We started off when the need was clear earlier this year and we looked at what was needed to try to make sure that we did the best we can by every child and every family. We are continuing to work on that. It is not something that is stopped on 1 September. It is something that we are very much engaging on right throughout the school term. The NCSE and so forth will continue to work with all families because we need to support them and to have direction and we need to understand the needs as well.</p>
+          <p eId="para_179"> In terms of what the Deputy asked at the very outset, an awful lot of work has been done over the last number of years. The budget for special education has increased dramatically over the last five years. There has been a huge increase in the amount of need not just in Ireland but across the developed world. I shudder to think what is happening in the undeveloped world but there is a huge increase and Ireland has met that. Some countries will say that they have met it better but we have met it head on over the last number of years. We have increased the funding in terms of schools and school places. We have 15,000 extra teachers now in special education provision. We have 23,000 special needs assistants. Across the country we have more special needs assistants than we have gardaí or others within the system. They do phenomenal work and we must continue to increase the number. We have increased the staffing within the NCSE as well. There is a lot of work within the jigsaw to find it right. Are we there yet? No, not by a long shot. We have an awful lot of more work to do but I and the Department of education and the NCSE are deeply committed to trying to make sure that we have a better system into the future that is future-proofed in terms of resources and how best to use State resources.</p>
+          <p eId="para_180"> On AIM, they are issues for the Department of Children, Disability and Equality. I will refer the question to that Department and maybe get an answer from them for the Deputy, if that is okay.</p>
+          <p eId="para_181"> Ms Mannion will comment next, if that is okay. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:05:00+01:00"/></from>
+          <p eId="para_182">Very briefly, yes. </p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Martina Mannion<recordedTime time="2025-09-17T11:05:00+01:00"/></from>
+          <p eId="para_183">In the context of supports for well-being, the most important support for well-being in our system is the National Educational Psychological Service. We have 237 psychologists working across our schools. They provide a huge level of support not just to children but to teachers and staff. In addition, NEPS provides the counselling in primary schools pilot scheme and well-being practitioners, of which members may be aware. Also, the Department partnered with the Jigsaw service to provide the Neart programme, which was announced in April. That is providing massive support in post-primary schools in terms of well-being.</p>
+          <p eId="para_184">We are trying to provide a range of measures across the system at primary and post-primary levels, both with NEPS and the additional services we have underneath it.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_185">We are now in the second round and will move back to Independents. I call Deputy Healy.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_81">
+          <from>Deputy Seamus Healy<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_186">I thank the Chair and apologise for the lateness. The traffic out there is a nightmare. I am not sure there is a need for the extensive road closures we have. I have a question for the Minister of State on assessment of need. Is there a plan? We all know there are almost 17,000 children on the waiting list. We are told that may go to 20,000 by the end of the year. Is there a targeted, time-limited plan to tackle that situation? Does the Department have that? Does the HSE have that? Is it set out anywhere? Where can we see a plan that shows we are going to make serious inroads into the huge delays we have out there? We have to remember those delays are effectively breaches of the law by the Department, the Department of Health, the Department of children, the HSE and the Government. Have we a specific plan to deal with this? If there is a plan, what are the time limits and the targets and when are we going to make serious inroads?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_82" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_187">The assessment of need comes under the Department of children and disability, but it is an aspect that has been discussed more than most at the Cabinet subcommittee on disability, with reference to how we are going to meaningfully tackle the waiting lists. The Deputy mentioned a figure and talked about it growing. The Government is desperately serious because getting an assessment of need is a hugely important piece of the jigsaw for every family. Deputy Toole mentioned the treatment purchase fund. There is a fund there for some, but we have to ensure that assessment of need issue is tackled. We discuss it more than most issues at the Cabinet subcommittee and the HSE and the Department are working to try to bring forward meaningful proposals that will meet it head-on and deliver results.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_83">
+          <from>Deputy Seamus Healy<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_188">The Minister of State is saying we do not have a plan currently.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_84" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_189">There has been a huge amount of work done at Government level because of the challenges that are there. There is a huge amount of work going on at the moment.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_85">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_190">The Minister of State touched on this already, but maybe he will expand on how we can get the word out to parents about a school place so they are not waiting until August. Parents of a child in mainstream know a year beforehand whether they have a place, and they nearly always have, but parents of a child with a disability are going through enough without having to wait to see whether they have a school place. Does the Minister of State have plans that will help that situation?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_86" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:10:00+01:00"/></from>
+          <p eId="para_191">That is one of the most fundamental issues. In one of the first interviews I did after being appointed, I said we have to bring back the timelines. Last year, the deadline for parents to contact the NCSE was 1 February. This year's deadline is 1 October, which is a couple of weeks away. We hope the need will be established in a couple of weeks. We are going to work to try to ensure children have been given a placement by December of this year, rather than have them waiting into July and August. Going back a couple of years, I was at a school gate one day and there was a parent waiting for their child. The child was finishing primary school on 26 June and the parent had no idea where their child was going in the last week of August. One thing that drives me on every day is ensuring that situation does not happen.</p>
+          <p eId="para_192">I had been a public representative for a number of years by that time and I was walking away from the parent saying to myself that this was totally unacceptable. What drives me every day is the need to ensure that system is torn down. That is why the Department of education and the NCSE have moved back the date to 1 October to bring certainty to families so that they will know earlier and will not be waiting until 15 August or later.</p>
+          <p eId="para_193"> At the outset, I asked members to use their own spheres of influence, including on social media, to highlight the fact that 1 October was the deadline. It is hugely important that everybody knows. The Minister, Helen McEntee, and I have done a social media piece over the last while. The process has been open for people to apply since 5 August this year. We would ask members to use their spheres of influence, as respected public representatives who are known within their communities, to make sure that the 1 October date is known to families. The school communities know it and we have also reached out to the preschools and other relevant bodies. I ask members to also reach out because if we have the information early, we can plan accordingly.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_87">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-09-17T11:15:00+01:00"/></from>
+          <p eId="para_194">That is great, thanks. The Minister of State mentioned targeted investment in community-based supports. How is he ensuring that these supports reach rural areas in particular or areas where there are little or no services?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_88" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:15:00+01:00"/></from>
+          <p eId="para_195">We are getting information from SENOs and public representatives right across the country. A large number of public representatives, from all political parties and none, are hugely invested in the families of people with additional needs. We get a considerable amount of information from them, even just going along the corridor, about particular parts of the country that do not have services or about people who are travelling long distances to attend special classes or special schools or for therapies. We are looking at areas where there are challenges, including people having to travel long distances or people being isolated, with a view to spreading services more equally across the country.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_89">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-09-17T11:15:00+01:00"/></from>
+          <p eId="para_196">The Minister of State referenced the importance of cross-departmental collaboration in advancing the inclusion of disability. How is that working, from the perspective of his Department? Are outcomes being assessed or is it up to the individual Departments themselves?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_90" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:15:00+01:00"/></from>
+          <p eId="para_197">The new section on disabilities that has been established within the Department of An Taoiseach is the lead body. The subcommittee on housing has met most often to date but the subcommittee on disability is second in that regard. That subcommittee comprises all of the Ministers and Secretaries General of the Departments, senior departmental officials, together with representatives of the HSE and other relevant bodies. It meets once a month to move issues forward. There is a very serious level of engagement by all stakeholders in order to make the lives of people with disabilities better into the future. All Ministers, Departments and officials are coming to that in a very meaningful way in order to make a difference.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:15:00+01:00"/></from>
+          <p eId="para_198">Deputy Carrigy is next.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_92">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-09-17T11:15:00+01:00"/></from>
+          <p eId="para_199">I want to read something out, which is why I am looking at my phone. This message from two weeks ago is from a child doing rapid prompting method, RPM, therapy who had never communicated.:</p>
+          <p class="indent_1" eId="para_200">One day I went to see a shark with school. It was fun swimming in the shark tank. The shark nibbled my toes. I screamed and the shark swam away. The shark threw the nine students in the tank. The shark nibbled the students' toes. Yes, we started something special.</p>
+          <p eId="para_201"> That is from a child who had never communicated. This message came after the child had done RPM, which was funded privately through fund raising. I would like some of the officials to attend our meeting next week where we will have a parent and a person who is trained in RPM in to chat about how it works. It does work.</p>
+          <p eId="para_202"> I ask the Minister of State to outline his thoughts on speech and language and occupational therapy assistant positions.</p>
+          <p eId="para_203">Five ETBs were involved a year ago. Are there plans to roll out more of those?</p>
+          <p eId="para_204"> While the Minister of State would not be aware of this, I spoke with the previous Minister and I met one of the departmental officials who is present, Mr. Doody, with regard to a support app for AIM teachers, teachers involved in ECCE, SNAs and teachers in schools to allow them to be in a position to support kids. I have worked with a number of speech and language therapists here and in England. We held a trial in a number of schools from January up to the summer. I will have a report shortly on how that worked. One of the schools involved was my school, which I asked to take part in it. It was extremely beneficial to all the teachers to have a support app devised by qualified speech and language therapists who have 30 or 40 years' experience. There are ways and means. Deputy Toole mentioned alternatives to help children in the classroom. The technology is there. I ask that it be looked at because it could simply be given to every teacher, SNA, and person involved with AIM and ECCE who works with kids every day of the week.</p>
+          <p eId="para_205"> I concur with the comments about alternative therapies. My young lad has been going to equine therapy for many years. It is something he looks forward to. It is the best thing we have ever done. It gives him an out and brings the words out of him as well.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_93" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:20:00+01:00"/></from>
+          <p eId="para_206">It was remiss of me not to talk about alternative therapies, including equine therapy. I chaired the education committee 20 years ago, and there was discussion about the horse boy method. People in the Middletown centre in the North of Ireland were talking about the information coming from Texas. We are lucky that it has been developed very successfully in Liskennett, which is between Limerick and Charleville. The people there would be the experts on it. David Doyle has put considerable effort into it, and it is highly beneficial.</p>
+          <p eId="para_207"> The system has been slow in accepting that this is a really meaningful alternative therapy and something that should be rolled out across the country. Everybody who has had experience of it is very appreciative of it and understands the methods involved. The science behind it, including the movement and everything else, stacks up. It has very positive outcomes. Equine therapy should be available for every special class and special school. A huge amount of investment is necessary in getting horses with the right temperament and having the right facilities. However, it is something that works in a very meaningful way.</p>
+          <p eId="para_208"> We should never underestimate the importance of the connection with nature, including animal therapy for those with additional needs. Many schools have embraced it through the use of therapeutic gardens and so forth. This is something we also need to look at in the long term.</p>
+          <p eId="para_209"> The Deputy read out a piece there. It is outcomes that matter, and he has seen some of that. I received an email yesterday along the same lines outlining how someone had spoken for the first time in 11 years. I would love to say that I could read it into the record, but it would be beyond me to be able to keep it together while reading it because it was such a powerful piece.</p>
+          <p eId="para_210"> The officials will liaise with the committee. We will be very open to engaging in respect of the app and the information available to SNAs and the teachers. The assistant principal officers in the Department are working with the committee on the roll-out of that. The assistant therapist is part of the educational therapist programme. Many people who are providing therapies within schools have no formal training but are superior therapists.</p>
+          <p eId="para_211">Because of the human beings they are, they have built those therapies and have developed that-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_212">I thank the Minister of State. We will move on to Sinn Féin's Deputy Ó Murchú, who has five minutes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_95">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_213">I appreciate the Minister of State saying that he will provide information in respect of those kids who are not in appropriate places. He said he receives an update every Friday in respect of building. In that regard, does he know the number of kids affected as of last Friday? He may or may not know.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_96" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_214">We get updates. Heretofore meetings involving the NCSE, the Department of Education and Youth and ourselves to discuss special classes and working through the numbers were taking place every Wednesday. We get information as it becomes available from the Department as to which projects are progressing. Some of the schools and school authorities are reaching out and updating me on the physical building that is moving on apace. They send me updates on Fridays. It could happen at any stage. I welcome the initiative. Some projects are due to commence in the coming weeks, and there is considerable work going on. Yesterday, there were 45 people on one of the building sites. They are working to ensure the building involved opens as soon as possible. In respect of anything we have committed to in terms of modules, we are working desperately hard to have places available as soon as possible.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_97">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_215">Perhaps we could get that information on building and on the schools and kids impacted as soon as possible.</p>
+          <p eId="para_216"> Are we any closer to a timeline for in-school therapies? We all know that approximately 445 positions for therapists in the CDNTs are not filled. We will be looking to fill those vacancies at the same time. I am looking for a timeline for special schools, for when therapists will be moved into autism classes and for when that facility will be introduced to mainstream classrooms.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_98" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_217">The position taken at Government level was that we would put therapists back into special schools and special classes, as well as mainstream classes. That was the fundamental decision. In the school year 2025-26, 45 special schools will be getting therapists. There are a number of pieces we need to do, including in respect of recruitment, appointments, schools and so forth. We are working on those and the work is continuing apace. A considerable amount of work has been done. The concern was that we would be moving the therapist from one part of the disability sector to the other. That would not represent success. We want to ensure we are complementing each other. That will be rolled out as soon as possible. In the current school year, therapists will be put into 45 special schools.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_99">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_218">We have no notion of the numbers to expect in other years to fill out the entirety of our special schools. The idea is to have therapists in every school, even if that involves shared facilities or whatever.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_100" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_219">Yes, this year. The decision was made mid-year, even before budgets and everything else, to bring this forward. That has been done. It will be rolled out to those 45 special schools, as I said. That is the initial phase and we will continue from there.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_101">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_220">Perhaps any further information could be provided to the committee. We need that. Everyone buys into the idea of putting the resources where the need is. That could lead to less pressure on CDNTs and whatever else as we go on. I reiterate what has been said an awful lot. We need to ensure we have those who can provide the therapies but must also back them up with assistive technology. We have all seen it previously. That will be great reinforcement for parents, SNAs, teachers and all who are involved, including, in an awful lot of cases, the children themselves. It is constant reinforcement and something that can be updated. As much as it is great to have a therapist in place, he or she is not going to be there all the time. This is a service we definitely need. I assume I will have an opportunity to come back in later.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_221">That is probably not the case.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_103">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:25:00+01:00"/></from>
+          <p eId="para_222">We all know the issues in respect of SNAs.</p>
+          <p eId="para_223">I spoke to the Minister of State about a particular issue before and I know his office has been over and back on it. It relates to an incredibly visually impaired young kid who attends a school in north Louth. He also has a bone condition. He does not have a full-time SNA. Those who have dealt with him state this is a requirement. I think it is a health and safety issue. His mother told me that he has already had a number of falls this year. I get the rules about the allocation of SNAs, but there sometimes needs to be flexibility when we are talking about cases like this. I can speak to the Minister of State after. I do not know how much information he can provide me with now.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_104" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:30:00+01:00"/></from>
+          <p eId="para_224">Will the Deputy please reach out to me about those individual issues? We will not be turning water into wine any time soon, but we will try to help.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:30:00+01:00"/></from>
+          <p eId="para_225">I thank the Minister of State. We will now move on to Deputy Martin Daly of Fianna Fáil.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_106">
+          <from>Deputy Martin Daly<recordedTime time="2025-09-17T11:30:00+01:00"/></from>
+          <p eId="para_226">I thank the Cathaoirleach and apologise for the delay; the traffic was intolerable. I listened to the Minister of State's opening statement and I thank him for coming to committee with his team. It was a comprehensive statement. It gave a sense of the urgency that he has displayed since he was appointed to the development of accessible education for children with special and additional needs. Since his appointment, he has been approachable, accessible and empathetic and has demonstrated a real commitment to solving the very significant issues around education for children with special and additional needs.</p>
+          <p eId="para_227"> I know the Minister of State has covered some of this ground, but I have some observations. In relation to SNAs, there was a particular issue raised by principals in County Roscommon during the summer. It related to recommendations made by SENOs. There seemed to be a reform or rejigging of SNA provisions for certain schools that were doing very good work; schools that were at the forefront of providing this type of education going back many years. In one particular case - I will not name the child but will give the Minister of State the details afterwards - we made representations in respect of a four-year-old boy suffering from an extremely rare genetic condition, pontocerebellar hypoplasia. He has a very significant intellectual disability and also a physical disability. He was in a preschool in Four Mile House in County Roscommon and had a full SNA until he went to national school. He has got an SNA for the hours he is in national school, but he has lost the hours he had for when he goes back into after-school care. Two other children who he was sharing the SNA with have lost their allocations. I know the volume of work done and the commitment that is there to provide for these children, but there seems to be an issue around the redistribution of SNA resources. It might be something that the Minister of State can address.</p>
+          <p eId="para_228"> In relation to transport, some teachers have said to me that children are being transported out of their areas when they could provide space for them in their schools. They may not have ideal spaces, but they would have space within their community schools. I would like to know the Minister of State's thoughts on this issue and what the Department's policy is.</p>
+          <p eId="para_229"> In relation to providing additional SEN rooms, is the Department committed to a multi-annual budget? There seemed to be a big push this year to get as many spaces as possible available for this September. Are we planning forward over a number of years with a multi-annual budget?</p>
+          <p eId="para_230"> I will leave it at that. I thank the Minister of State for coming and his commitment to this area.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_107" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:30:00+01:00"/></from>
+          <p eId="para_231">I thank Deputy Daly. There are a number of issues here. We got funding for 1,600 additional special needs assistants in the last budget. We will be working with Government again to increase that for 2026-27. I think there are 23,500 special needs assistants within the system at the moment. That has increased by 30% over the past five or six years. We are meeting the needs in it. We are very mindful that we have a huge amount of money invested. SNAs are doing huge work.</p>
+          <p eId="para_232">When one goes into a special school or a special class in mainstream, one is genuinely empowered by seeing the work the SNAs are doing, and we salute them for that. An SNA development programme is ongoing. There are always anomalies within the system. I have no difficulties in taking details from members to see whether we can get a resolution to issues they raised.</p>
+          <p eId="para_233"> There is a multi-annual budget for the special education allowance. We have been working very hard, coming up to this month, to ensure the special classes and special schools are in place. By having the 1 October deadline, we hope to be in a better place next June or July, rather than having to squash everything into the July and August period. We will work with schools. We will know the need on 1 October, which will be four months earlier than last year. We will work to find where we need the special classes. We hugely welcome that many schools have put their hand up looking for special classes. However, there are some schools that really need to buy into the process. Departmental officials spent most of yesterday meeting with the patron bodies at second level to impress on them the need to work together. We have been working on this right through the summer and that work is ongoing. When we know the need on 1 October, we will make plans to ensure we have a better roll-out for next year.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_108">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T11:35:00+01:00"/></from>
+          <p eId="para_234">The Minister of State said the number of children without a special class placement for this school term is in single digits. It is fair to say that took us all by surprise. There is more complexity behind that figure, as alluded to by Deputies Keogh and Ó Murchú. It is a very different experience having a school placement in the community where one lives compared with having a placement a long distance from one's community. The difference is stark, involving, in many cases, an addition of chronic stress, dislocation of children from their community and all the adversity and disadvantage that go with that. What kind of information does the Department have on the number of children who have to travel outside their locality? Are those distances and travel times quantified? I make that distinction because, depending on the circuitous nature of the route, the number of stops if travelling by bus and the levels of traffic congestion, the journey could be much longer than a regular journey over the same distance.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_109" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:35:00+01:00"/></from>
+          <p eId="para_235">Going back a number of months, a huge amount of money is being spent on special education transport. That predominantly relates to children being driven long distances, getting on buses early in the day and not returning until late in the evening. Our aim is to ensure we have an inclusive education system, with children, insofar as is possible, attending schools as near as possible to them. There is a fundamental issue in trying to ensure the complexity of needs of children is met, insofar as possible, within their communities. That applies in both urban and rural areas. The picture is painted of people travelling long distances in rural Ireland, but there is the same issue in urban Ireland. Nearly every member has mentioned the traffic this morning.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_110">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T11:35:00+01:00"/></from>
+          <p eId="para_236">My question was whether we have data on the number of children travelling outside their locality. I mentioned earlier that there are 22 children from the Youghal catchment area travelling to Dungarvan, County Waterford. Do we have data on that situation nationally?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Barbara Mulhall<recordedTime time="2025-09-17T11:35:00+01:00"/></from>
+          <p eId="para_237">We have that data but we do not have it with us today. We will look it up.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_112">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T11:35:00+01:00"/></from>
+          <p eId="para_238">That information is crucial to gaining a more meaningful picture regarding appropriate school placements. For children in Youghal, it is very different having a school placement in the town versus having to go to Waterford city or Cork city.</p>
+          <p eId="para_239"> To be considered for admission to a special class or special school for the 2026-27 academic year, all applicants must have a letter from the NCSE confirming the child is known to them and has the required diagnosis and recommendation for a special class. This requirement is in addition to the child already having a diagnosis of special educational needs contained in a professional report, a demonstration of the child's complexity of overall need and clear professional recommendations to that effect. As the Minister of State set out in his opening statement, the application deadline for the 2026-27 academic year has been brought forward to 1 October of this year.</p>
+          <p eId="para_240">I can see the rationale for all of that in the context of forward planning. However, I wish to clarify the following. What will happen in the case of a family that is waiting for an assessment of need for a prolonged period? Therefore, the clinical report for the child may come too late for that October deadline. Related to that, what will happen if a family has not connected in time with their local SENO because they were, by necessity, attending private services or may be out of reach of services due to their social circumstances? Is there any context in which a SENO can overrule the recommendations of a clinical report for a special school or special class placement? I ask that to clarify. Is the SENO letter that is now required confirming the diagnosis and recommendations purely for data collation purposes?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_113" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_241">To answer the first question, the more data and information we have the better we can plan. The date of 1 October is crucially important. We need the information if we are going to do this right and have it done in a timely manner. We will work with families. The 120 SENOs, who have been embedded within the communities, will work with the families. If there are reports that are coming or have not come yet, we will certainly work with families. Both the SENOs and the Department of education will be working with families throughout. It is not as if everything has to stack up. I appeal to everybody who believes their child needs additional help and support next year to come to the NCSE before 1 October. I ask members to make that date available to people as well because the more information we have the better we can do this for families and children. </p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_114">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_242">It sounds like there is some flexibility there. In relation to the SENOs-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_243">Unfortunately, the Deputy's time is up. </p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_116">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_244">I had another question that was not answered. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_245">I ask the Minister of State to be brief. </p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_118">
+          <from>Deputy Liam Quaide<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_246">Is the new letter that is required from the SENO confirming the diagnosis and recommendations purely for data purposes?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_119" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_247">It is hugely important that we have the data. If we are to make changes and improve the situation as we go forward, the more data and information we have the more we can better plan into the future. For whoever is here in years to come, we have to have all the information together so we can be meaningful and reach the targets that we need. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_248">The next speaker is Fine Gael's Deputy Keogh. She has five minutes. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_121">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_249">Going back to Deputy Ó Murchú's questions around the national therapy services and following on from that, I worked in a school where therapists were on-site, and I have seen the benefit at first hand. We are going to have some modules on that in the coming weeks. In relation to the 45 special schools that are getting rolled out this year, have any therapists been recruited so far? </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_122" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_250">The therapists are being recruited at the moment. I do not think we have any contracts issues. That work started in the past number of weeks. We will be rolling them out the minute we have them recruited and making decisions as to where those 45 schools will be. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_123">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_251">Is there a timeline for the first therapist on site? Is it going to be before Christmas or after? </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_124" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_252">It will be as early as possible in this school year. There is no point in me giving the Deputy a date unless I can stand over it. We are recruiting at the moment. We hope to have those recruitment processes finished as early as possible. When we have that in place we will not be delaying in rolling out the schools. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_125">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_253">As regards what this looks like from a practical perspective, does each school get a speech and language therapist, occupational therapist and behaviour specialist on-site? Is it only to that school or do they have a number of schools under them? How is that going to look? </p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_126" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_254">The occupational therapist, speech and language therapist and behavioural therapist will be in those 45 schools. They will empower the school communities on it. We cannot develop a system where we have a small little bit of therapies going into each place. We want to make sure there are meaningful numbers of therapists going into schools, that they are based in the schools and doing the work they can. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_127">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_255">What does that look like? As they are being recruited now and going through that process, is it going to be that they are going to be two days per week in one school and three days in another school or will they be in one school five days per week?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_128" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:40:00+01:00"/></from>
+          <p eId="para_256">They might be full-time in some schools depending on the size of the school and depending on the need within the school. They will be employed by the NCSE and it will depend. If we are talking about a large special school, they will not be shared with another school. If we are talking about a small special school that is only in its infancy and starting to develop it might be shared, but it depends on the size of the school.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_129">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_257">Will it be a mix of one-to-one sessions, classroom supports and teacher training?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_130" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_258">Yes, absolutely. In the most meaningful way, the outcomes for children with additional needs will be met in an holistic way within the school community.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_131">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_259">As I mentioned, this committee will look at this matter thoroughly over the next few months. We have some specialists coming in from the speech and language area and psychology. Does the Minister of State have a policy document or anything he could share with us in relation to the job descriptions being given to those therapists so that we can work through that in the committee? I know it will be a pilot project but if we are working together on best practice, we have speech and language therapists and psychologists who have already been doing this in schools and who would like to contribute.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_132" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_260">We will share that information with the committee. We have no difficulty in doing that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_133">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_261">Deputy Quaide mentioned earlier that some children were on buses for very long periods of time. As a behavioural consultant who worked in the area for 20 years, I was regularly hired by parents privately to consult on bus situations. I recall one particular example of a bus escort in a school asking me to write a letter in support of restraints for a child on a bus. As it turned out, she had very sensitive hearing and there was a child on the bus who was very loud with vocal stims, so we just had to teach her to wear ear defenders and a Walkman and she was able to drown out his noise. If I had not intervened, she was going to be restrained. A lot of times, bus escorts are absolutely fantastic but they do not necessarily get that support where children might be travelling for an hour who cannot say they feel sick or that they need to go to the toilet. Then, we see distressed behaviours or dysregulation. They often do not get the support they need. Will these therapists also be engaging with bus escorts in relation to support?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_134" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_262">It is with the entire school community. The Deputy will understand more than most that putting therapists back into special schools is not just going to empower the work the therapists are going to do, but will empower the entire school community. The information we got about where the therapists were heretofore was that they felt they had a place to go to ask for advice. The entire school community will benefit. That is practical. It is a challenge that is met not just in the special schools but also in the special classes every day in relation to bus escorts and issues on buses. That is an issue that needs to be met and will be met by the therapists.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_263">I call Senator Harmon.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_136">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_264">I thank the Minister of State. I have a number of questions. Are there particular international best practices we should be looking at? Are there countries we should be looking towards? Earlier, I mentioned assessment of need waiting times. It was above 15,000 during the summer. That is projected to rise to 25,000 by the end of the year. How does this impact forecasting in terms of the school place that are needed? How can there be more co-ordination between the HSE, the NCSE and the Department of education in relation to this?</p>
+          <p eId="para_265"> On the school transport issue, in the transition from primary to secondary, there can often be a big gap or significant distances that students need to travel. Can commitments be made or are targets being looked at for new regional hubs for these schools?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_137" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:45:00+01:00"/></from>
+          <p eId="para_266">On international best practice, in my previous role as Chair of the disability committee and anecdotally, across Europe, Scotland in particular was one of the places that developed the best special education system, particularly because it was developed after the devolved government was formed in the late nineties. We went to see what was happening and we saw some great practice and integration. We then met the secretary for education. We spoke about how they developed the Scottish system. She said that, whatever we did, we should not start with Scotland because it had so many challenges. People come to Ireland to see what we are doing, looking at the practice we have developed.</p>
+          <p eId="para_267">We have a lot of good work on it. We have a long way to go in making sure that we have our full potential reached.</p>
+          <p eId="para_268"> In any of the studies or documentation that one looks at, they talk about 5% of the student population having special educational needs. This is a blunt figure but it is what they are looking at across the developed world. We are less than that at the moment but this is the figure they are looking and it is the figure we are trying to ensure would be within the system. On the basic practices, and going back to earlier comments in the meeting, the lived experience, the information we get from families, and the outcomes we get definitely inspire our policy.</p>
+          <p eId="para_269"> On the transport issue, a lot of work has been done by our team in the Department of education and in Bus Éireann to try to meet the needs of special needs children over the last number of weeks - and right throughout the year as well, as we take applications for school transport right throughout the year. The aim is to have the special class or the special school as local as possible to the students. That also means we have to look at other issues in relation to admissions and so forth and to have regional hubs. We are trying to make sure that people are not travelling long distances. We all know of children who are getting on buses at 7.30 in the morning or beforehand and are not back until four or five o'clock in the evening. That would try the children who do not have complex needs but for children with complex needs it is hugely difficult and hugely challenging.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_138">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_270">Will the Minister of State comment on the assessment of needs list in relation to forecasting? How does that impact?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_139" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_271">On the assessment of needs, as I said earlier there is a huge volume of work being done at Government level because we do understand that this is one major issue in terms of children and additional needs, and that the assessment of need is done in a meaningful and timely fashion. We are working with all Government agencies at the moment to break down the silos in order that cross-departmental information can be shared from the HSE, the Department of children and the Department of Social Protection so that we are better informed about the decisions we have to make in the provision of special education at primary level and at post-primary level.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_272">I thank the Minister of State. That concludes our second round. If anyone wants to come in again very briefly I am conscious of the Minister of State's time.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_141">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_273">The Minister of State spoke earlier about the need for this to be a whole-of-government approach. We do not always have flexibility. Reference was made to school transport. I will put forward a very straightforward scenario. A number of kids with disabilities choose to go on the regular school bus. The parents, families and the school community believe this is very useful from the point of view of socialisation and the skill set learning by the kids. The problem is they are marked down as concessionary and do not necessarily have a right to that place. A case was brought to my attention in north County Louth by a family that is very well known to me, and their Down's syndrome child. Due to the lottery, he and his two brothers were the only three concessionaries who did not get a place on the bus. Obviously this has been deeply traumatic for the child and the family and has impacted them greatly. It is north County Louth and is within Sheelagh. It is also about the issues in relation to school numbers that we spoke about whereby numbers get reduced because the school has two fewer students on a particular date in September but there may be an intake that also takes into account a number of kids who may have Down's syndrome or whatever else. I know it is a lot to throw at the Minister of State but those are my two questions.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_142" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_274">It is my understanding that if a person qualifies for special educational transport the concession does not apply. That is for mainstream. Perhaps the Deputy will share the information with us in relation to the children he spoke about and we will follow it up. I believe that with the education system there is a process-----</p>
+        </speech>
+        <summary eId="sum_5">
+          <i>Senator Margaret Murphy O'Mahony took the Chair.</i>
+        </summary>
+        <speech by="#RuairiOmurchu" eId="spk_143">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_275">The Minister of State is correct but they wanted them on the regular bus.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_144" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_276">Send the information on to us and we will certainly follow it up.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_145">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:50:00+01:00"/></from>
+          <p eId="para_277">Deputy Keogh has one minute. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_146">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_278">The other issue in relation to the school with the numbers being cut-----</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_147">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_279">Deputy, you are on your third round. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_148">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_280">-----it does not take into account that there are other kids or that there can also be an intake. Flexibility is something we need to look at.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_149">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_281">Deputy-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_150">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_282">I do not expect the Minister of State to deal with it here and now but-----</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_151" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_283">It has been an ongoing issue since I arrived here many years ago. We had one student missing and everything else. There are appeals processes that can stack up but I accept that it is an ongoing issue.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_152">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_284">I thank the Minister of State. Will Deputy Keogh keep to her minute, please?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_153">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_285">I really welcome the Parents Notify system, which will allow parents to have that single point of application rather than having to ring six or 12 schools. I know of two schools that are already at capacity. One school has students coming in from a primary school in September. Its building works are at stage 2A, we will say. It is not going to be ready for next September and these kids will not be able to start. They will have to go to a school perhaps an hour away or get home tuition. I know we can plan for SNAs and SEN hours but is there a plan to rush those buildings through?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_154" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_286">There is. I would like to get the details of the issue in that school. If the Deputy is saying children will be without a place in September 2026, now is the time to notify us. If the Deputy can get the information to us, we will work on it for her.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_155">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_287">I have and I have sought an update. I was told the work is at 2A and is progressing normally. However, what I am being told is that even if they get it soon, it will not be open for September, but the school has not been told that yet. I do not know where these kids are going to go.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_156">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_288">I thank the Deputy.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_157" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_289">If Deputy Keogh gets the details to us, we will work on it.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_158">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_290">I refer to the connection between the AIM programme for the preschool being in a different Department and the Minister of State in special education, the crossover and knowing the numbers coming into the system. Regarding the Middletown Centre, I was just speaking to its representatives at the Autism Europe Congress 2025, we had them in at our committee and we visited the centre. I do not think we are utilising the asset that it is. One of the recommendations of the joint committee report which we issued was that the centre should be rolling out a standard of training for SNAs and teachers across the country. Is is possible to use the shared island fund that is there and invest more into it for training across the country?</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_159" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_291">Some of the schools that have special classes and some that do not, particularly at post-primary level, engaged with the Middletown Centre this spring. When I went to the Middletown Centre, they nearly knew more about it than I knew myself because they had gained the information at school level. The information and the guidance that Middletown gave those schools is invaluable. Going back to the first question regarding AIM, one thing that struck me is that we have constantly talked about silos within the public sector and each Department. For accountability and everything else, it has to be funnelled in a particular way, but there could be shared information so that we have the best possible outcomes for children and their families. We are working very closely during the past number of months. One of the decisions that was made very early on at the Cabinet committee on disability related to the AIM programme, getting that information across to us and to the Department of education and that we would have the information about children on domiciliary care so that we could plan better for the future. It seems like a simple thing, but if we can get those simple things right, we can be in a far better position to make informed decisions for families and children into the future.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_160">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_292">I thank the Minister of State. The last contribution is from Deputy Healy.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_161">
+          <from>Deputy Seamus Healy<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_293">I have a couple of quick questions.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_162">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_294">You have one minute, Deputy.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_163">
+          <from>Deputy Seamus Healy<recordedTime time="2025-09-17T11:55:00+01:00"/></from>
+          <p eId="para_295">Does the Minister of State have information regarding the number of children who have been allocated school places but have not been able to take up those places yet because of the lack of facilities provided? I also ask about the criteria for the approval of units in schools. The reason I ask is because I am aware of a school that was ready, willing and able and applied to have a unit. That unit was refused, yet children were allocated subsequently to another school that was much further away - 26 miles in one case and 15 miles in another. What are the criteria for the approval of units in a school?</p>
+          <p eId="para_296">Another general transport issue which is impacting on children with special needs is the lack of bus drivers.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_164">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-17T12:00:00+01:00"/></from>
+          <p eId="para_297">Thank you, Deputy.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_165">
+          <from>Deputy Seamus Healy<recordedTime time="2025-09-17T12:00:00+01:00"/></from>
+          <p eId="para_298">As the Minister of State will know, Bus Éireann will not allow drivers to drive school buses if they are over the age of 70. However, those same drivers are driving children to football matches and swimming lessons, etc.</p>
+        </speech>
+        <speech by="#MichaelMoynihan" eId="spk_166" as="#Minister_of_State_at_the_Department_of_Education_and_Youth">
+          <from>Deputy Michael Moynihan<recordedTime time="2025-09-17T12:00:00+01:00"/></from>
+          <p eId="para_299">A report on the over 70s was done last year and was published in August 2024. It specifically mentioned the challenges that would arise in approving people over the age of 70. During the programme for Government discussions in January, it was mentioned specifically. The Department of Transport has taken the lead on this. A report on the policy and the criteria is being done. I understand that a report on how we should proceed should be available in the next couple of weeks. This issue constantly comes up. The programme for Government gave a commitment to look into it, work on it and see what can be done on the over 70s. We are working on that.</p>
+          <p eId="para_300"> One of the main criteria is the need in communities. The Deputy mentioned someone coming from 26 miles away, which is a huge distance for people to travel. I have no problem in taking the information he has given and working with him on it. Our aim is to make as many special classes and places as possible available in the communities, as near as possible to the children.</p>
+          <p eId="para_301"> The Deputy spoke about the number of children who cannot take up their places because the school is not ready. This is changing week by week as school places are becoming available. Some places that were to open last week or next week are now ready to open because of the work that has been done on site. A lot of work is going on to try to make sure that places become available as a matter of urgency for everybody who has been allocated a place. I want to reiterate that the Department, the NCSE and ourselves have said we are bringing the deadline back to 1 October this year so that we will not be in the same position next year. We want to ensure the physical places will be ready and we will be better planned for the next school year.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i> Deputy Maurice Quinlivan resumed the Chair.</i>
+        </summary>
+        <speech by="#MauriceQuinlivan" eId="spk_167">
+          <from> An Cathaoirleach<recordedTime time="2025-09-17T12:00:00+01:00"/></from>
+          <p eId="para_302">I thank everyone for their contributions. I thank the Minister of State and his officials for attending today and for their insightful contributions. We all found it very useful. With members’ agreement, we will go into private session to deal with some housekeeping matters. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee went into private session at 12.03 p.m. and adjourned at 12.09 p.m. <i>sine die. </i></summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

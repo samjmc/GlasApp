@@ -1,0 +1,800 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-19/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-19/debate"/>
+          <FRBRdate date="2025-06-19" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_children_and_equality"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-19/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-19/debate/mul@"/>
+          <FRBRdate date="2025-06-19" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-19/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-06-19/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-24" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="ClaireKerrane" href="/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08" showAs="Claire Kerrane"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="NessaCosgrove" href="/ie/oireachtas/member/id/Nessa-Cosgrove.S.2025-01-29" showAs="Nessa Cosgrove"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SharonKeogan" href="/ie/oireachtas/member/id/Sharon-Keogan.S.2020-03-30" showAs="Sharon Keogan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM LEANAÍ AGUS COMHIONANNAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Children and Equality</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-19">Déardaoin, 19 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-19">Thursday, 19 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NessaCosgrove">Nessa Cosgrove</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#GarretKelleher">Garret Kelleher,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SharonKeogan">Sharon Keogan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AidanFarrelly">Aidan Farrelly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#SeanKyne">Seán Kyne,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ClaireKerrane">Claire Kerrane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#CharlesWard">Charles Ward.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Senators Mike Kennelly and Nikki Bradley.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#KeiraKeogh">Teachta / Deputy Keira Keogh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Election of Leas-Chathaoirleach<recordedTime time="2025-06-19T09:30:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:30:00+01:00"/></from>
+          <p eId="para_15">Apologies have been received from Senator Mike Kennelly. Senator Garret Kelleher will substitute for him. Apologies have also been received from Deputy Seán Ó Fearghaíl, who will be substituted by Deputy Paul McAuliffe. Senator Nikki Bradley also sends apologies and is being substituted by Senator Seán Kyne. As members will be aware, two nominations for the position of Leas-Chathaoirleach have been received in the following order: Deputies Aisling Dempsey and Claire Kerrane. We will consider the nominations in the order in which they were received, the first nomination being for Deputy Aisling Dempsey. It is proposed, "That Deputy Aisling Dempsey be elected Leas-Chathaoirleach of the joint committee." Is that agreed? Not agreed. </p>
+        </speech>
+        <summary eId="sum_6"> Question put and declared carried. </summary>
+        <speech by="#KeiraKeogh" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:30:00+01:00"/></from>
+          <p eId="para_16">I declare Deputy Aisling Dempsey elected as Leas-Chathaoirleach of the joint committee. I congratulate her. We will now go into private session to discuss housekeeping matters. </p>
+        </speech>
+        <summary eId="sum_7"> The joint committee went into private session at 9.33 a.m., suspended at 9.38 a.m. and resumed in public session at 10:00 a.m.</summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Engagement with Children's Rights Alliance<recordedTime time="2025-06-19T10:00:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_17">The agenda item for consideration this morning is engagement with Children's Rights Alliance. The purpose of this meeting is to provide insight into the priority topics and issues of the Children's Rights Alliance which are relevant to the remit of this committee. Representing Children's Rights Alliance are Dr. Naomi Feely, who is policy director, and Dr. Maria Corbett, who is child protection and alternative care project co-ordinator. They are very welcome to this meeting. It was lovely to meet their CEO, Tanya Ward, at the launch this week of the report from the Community Law and Mediation Centre on meeting the legal needs of children and young people in Ireland and enhancing access to justice. It was very informative and we hope we will meet her again soon.</p>
+          <p eId="para_18"> Before we begin, I have a few housekeeping matters to go through. I advise all that the chat function on MS Teams should only be used to make the team on site aware of any technical issues or urgent matters that may arise and should not be used to make general comments or statements during the meeting. I remind members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any members partaking via MS Teams that, prior to making their contribution to the meeting, they confirm they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_19"> To our witnesses, in advance of inviting them to deliver their opening statements, I advise them of the following in relation to parliamentary privilege. They are protected by absolute privilege in respect of the presentation they make to the committee. This means they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege, and it is my duty as Cathaoirleach to ensure this privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_20"> Dr. Feely and Dr. Corbett will be allocated five minutes total speaking time to deliver their opening statements. I kindly ask that they adhere to the five minutes. The opening statements will be followed by a question and answer session with our members. I now invite them to deliver their opening statements.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_21">I thank the Cathaoirleach. We welcome the opportunity to be here today to discuss with the committee the priority issues for the Children's Rights Alliance. Before I begin, I do want to pass on the sincere apologies of our CEO, who is delayed this morning. She may be in a position to make it a little later, but she gives her sincere apologies.</p>
+          <p eId="para_22"> The Children's Rights Alliance is a national organisation, uniting 160 members throughout Ireland. We work together to make Ireland one of the best places in the world to be a child. We change the lives of all children by making sure their rights are respected and protected in our laws, policies and services. We are not only concerned with analysing the issues and problems that may be facing children and young people in Ireland today but also strongly want to offer solutions, particularly in terms of policy and legislative change.</p>
+          <p eId="para_23"> This morning we are going to look at four or five key issues that we are working on at the Children's Rights Alliance. I am going to deal with two of them first before passing on to my colleague. The first issue which we have been very concerned with over the past number of years is the issue of early childhood care and education. I know the committee has had strong engagement with the Minister last week on this issue, but what we have seen over the past three budgets is a €1 billion investment in this area. This is critical, both in terms of breaking the cycle of child poverty and investing in this sector to ensure that children have access to strong quality services.</p>
+          <p eId="para_24"> Among the areas of investment over the past two budgets, the Government has launched a new programme called Equal Start. This is a specific funding model which seeks to tackle the issue of disadvantage in early childhood education and care settings. It provides specific funding for services which deal with both disadvantage at the local level within communities and families attending services. For the Children's Rights Alliance, it is really critical that the forthcoming budget and subsequent budgets invest significant funding in this funding model to ensure that early childhood education and care can be delivered to all children in Ireland and that it gives all children the best start in life.</p>
+          <p eId="para_25"> The other issue we are concerned with in the area of early childhood education and care is moving towards a public model of childcare. We have seen a welcome commitment in the programme for Government to move to looking at how we can advance towards this model but also reducing the cost of childcare for parents to €200 per month. We think that will be critical. However, there will need to be a series of steps taken to deliver on this. We would like to see a public model of childcare to take a children's rights approach, very much drawing on the recommendation from the UN Committee on the Rights of the Child, ensuring that children have access to quality services. A key aspect of this is ensuring the workforce are of high quality and receive the pay and recognition they deserve for their work.</p>
+          <p eId="para_26"> The final issue I am going to speak on before handing over to my colleague, Ms Corbett, is the issue of child poverty. Many members will be aware that we launched last week the latest edition of our Child Poverty Monitor. At the Children's Rights Alliance, what is of key concern to us is that we tackle the issue of child poverty, taking a three-pillar integrated approach. First, we should ensure families have access to an adequate income and, second, that they can get access to quality services. This includes providing responses right across a range of service areas such as, as I mentioned previously, early childhood education and care and taking steps in education to invest in specific measures to tackle poverty and disadvantage. We also know it is critical that we invest in services such as a dedicated public health nurse service for children and families.</p>
+          <p eId="para_27"> The other issue that we are extremely concerned about and will be at the forefront of many members’ minds after listening to the media commentary on the issue of the housing crisis is the fact there are 4,775 children living in emergency accommodation. The issue that perhaps we do not see or hear enough about is overcrowding. For many families, while they may enter homeless accommodation, others will return to their family home and they may be in situations of overcrowding. We looked specifically at this issue because it was raised by our members and colleagues working in social work in Tusla, and what we found is that while overcrowding in Ireland was low compared with the European average, when we look at children living in households that are income poor, the rate was 22% in 2024. That is a doubling of what the rate was in 2021 when it was just 11%. We do not know the consequences overcrowding is having on children and their families, but of key concern is the issue of child protection. I will pass over now to my colleague, Dr. Corbett.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_28">If Dr Corbett could be brief, as we are already over the five minutes, it would be appreciated. </p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_29">No problem. The key point I would like to make is about the care system, which comprises foster and residential care. There is an acute shortage of places around the country. There is a need for more places, but there is also a need for diversification in the type of placements available, and that will require legal, policy and regulatory reform. What I am talking about here is a different type of placement that would often be described as high support, that offers not just a residential or foster care placement but also therapeutic supports and maybe a higher staff ratio, and, which is critical, potentially restrictive practices in terms of being able to restrict a child's movement, access to their phone or access to the Internet. That is a gap and we cannot fill it unless we have policy, regulatory and legal reform to allow the system to reintroduce high support. We had it in the past but we do not have it under the current model.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_30">It is proposed to publish the opening statement to the Oireachtas website. Is that agreed? Agreed.</p>
+          <p eId="para_31"> Before I call members, I remind them they will be allocated seven minutes' speaking time. Unfortunately, the timer still is not working, but we will do our best. This allocation must include the response to questions. If time permits at the end, I will allow a brief second round of questioning. However, members should indicate to me if they wish to ask additional questions. I also ask members, when putting their questions, to ensure they strictly adhere to the agenda topic under consideration at this meeting. I will now call the members in accordance with the speaking rota circulated, and I ask members participating via MS Teams to confirm they are on the Leinster House campus before putting their questions. We will start with Senator Keogan.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_8">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_32">I thank Dr. Feely and Dr. Corbett for coming here this morning to our committee. The role of the civic organisation is to act as a voice of conscience that forces the Government into action. The alliance represents more than 160 organisations. The Children's Health Alliance is before the health committee. Some of the groups come from the disability sector and the inclusion sector and the alliance's voice is important in speaking also for children with disabilities.</p>
+          <p eId="para_33"> Why is the Government's score higher this year than last year when the report shows that children's welfare has worsened and we have more children at risk of poverty and homelessness? We continue to have gaps in home visits and counselling, which have all worsened. The witnesses referred to child placements and the lack of available spaces. Why was there a better score? The alliance has already highlighted where we are failing, so why would it give the Government a good score?</p>
+          <p eId="para_34"> I want to focus on two areas - child poverty and family support and alternative care. In light of the findings of deep income inadequacy, has the alliance considered the administrative and physical implications of introducing a child-specific audit mechanism for targeted payments like the child support payment to ensure that the funds are being directed for the benefit of the child?</p>
+          <p eId="para_35"> Given the report for benchmarking social welfare to the minimum essential standard of living, what is the alliance's position on introducing a tiered payment model that adjusts supports based on the age and development needs of the child, in particular for older children who face higher costs?</p>
+          <p eId="para_36"> Has the alliance explored the implications of integrating the child support payment and the working family payment into a unified means-tested child income support, as proposed in some ESRI models? What governance or data-sharing challenges might arise in implementing such a reform in family support and alternative care?</p>
+          <p eId="para_37"> Beyond a call for increased Tusla funding, what are the witnesses' views on the national framework for evaluating the effectiveness of family support intervention, in particular in terms of measurable child outcomes such as school attendance, health indicators and so forth?</p>
+          <p eId="para_38"> The alliance highlights the need for expanded home visiting programmes. Has it explored how these services could be integrated with existing community-based supports to avoid duplication and ensure cost-effectiveness, in particular in rural and under-resourced areas?</p>
+          <p eId="para_39"> Has the alliance conducted any research on the possibility of oversight to ensure family support payments, in particular those to households with a history of domestic violence, addiction or neglect, are being used to directly benefit the child and not to sustain dysfunctional environments? I welcome hearing the CRA's views on conditionality or direct in-kind supports.</p>
+          <p eId="para_40"> For me, the most shocking statement this morning was that, during the month of April, Tusla received 8,580 referrals. That is absolutely shocking. The more we roll out counselling programmes in primary schools, the more the number will increase. We do not have a system set up to support children who could be in desperate need. I warn the witnesses about that. Residential placements are not the right solution for children. Unfortunately, this is what is happening. The witnesses can go into that. Perhaps they could answer those few points for me.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_41">I will deal first with the question on income support payments. In our Child Poverty Monitor, we very clearly highlight the higher costs of older children to families. We do advocate for additional supports for the older child because we know such families are in need of targeted supports. In terms of our advocacy around the budget, we will advocate for resources to be provided for the child support payment, which is paid with the weekly social welfare rate for poor families.</p>
+          <p eId="para_42"> In terms of a second-tier payment, we have examined the research undertaken by the ESRI. There are two reports which look at exploring a second-tier payment. There are some very welcome findings in them and there needs to be clear consideration of them, but if we do introduce a second-tier payment, we must ensure that families do not lose out. There must be careful consideration of when it is introduced, how it is targeted and what the tapering-off effects are. I will hand over to Dr. Corbett as I do not want to take up all the time.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_43">I thank Senator Keogan very much for her questions. One of the key things that is always so difficult is to try to understand whether the right children are in care and if the children who are at home are safe and well cared for. Tusla may or may not have eyes on children who live in families where there is domestic violence or chronic neglect and the State is engaging with those children. It is a very important point that is subject to ongoing discussion and concern. In terms of how to address it, one of the critical things the Children's Rights Alliance is doing is in the area of child protection and alternative care. I have just started a post on it this week, literally a few days ago. What we are about to do now is to consult the membership, which is so large. It stretches right across the country, including in rural areas through the various organisations. We are going to consult Children's Rights Alliance members about their experience of child protection on the ground, what they see as good practice, where the gaps are and what the difficulties are. We will integrate the points Senator Keogan made about family support into the work we are doing with them.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_11">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_44">I thank the witnesses very much for their opening statements. It is great that Dr. Feely and Dr. Corbett are here this morning. I was honoured to attend the launch of the Child Poverty Monitor last week. The findings were stark. As a State, are we trending the right way when it comes to services and lived experiences for children and young people experiencing poverty in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_45">What has been very positive in recent years is that we have seen a political commitment at the highest level of Government, through the Department of the Taoiseach, with the establishment of the child poverty and well-being unit. That is going to be critical in driving cross-government action and investment in services. We have taken some very good and welcome first steps in the provision of targeted services for families and children experiencing poverty. However, we must have a consistent approach and invest incrementally over sustained budget cycles in these services in order for us to break the cycle of poverty within one generation.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_13">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_46">I thank Dr. Feely. With regard to child poverty specifically, given that so much of the testimony addressed that, and I acknowledge that there is no silver bullet, where are the gaps in terms of policy?. Dr. Feely has spoken about incremental funding. As a State, how do we target those gaps?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_47">It is important that we had very welcome comments from the Taoiseach at the national economic dialogue yesterday. He said that every Minister will be charged with addressing child poverty in the budget. From the perspective of the Children's Rights Alliance, what we see as a key gap is that we need to take an integrated approach on where we focus not only on income and services but also on enabling children to participate in society. When we look at the things that are important to children, one of the most important things for them tends to be play. It is something we do not talk about enough. We would like to see the establishment of a national play policy.</p>
+          <p eId="para_48"> We want to focus on investing our resources carefully and strategically in terms of Exchequer funding.</p>
+          <p eId="para_49">Investing in things like education, such as providing investment for the new DEIS plus model of funding that will be applied to schools operating in areas of high levels of disadvantage, will be important because we have to ensure that all children can reach their full potential in education. There needs to be a further ramping up of the Equal Start programme in early years education. I understand the funding currently stands at €25 million per programme year. However, we need about €50 million for that programme in each programme year in order for it to have the greatest impact on children and their families.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_15">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_50">In recent weeks, we have seen significant and concerning reports and investigations by HIQA and RTÉ with regard to elder residential care. Based on the correspondence of the alliance with its membership around the country, have we any cause to be concerned about the rights of children living in residential care, whether that is in State-run residential care or children and young people living in direct provision or temporary accommodation? Would the alliance be confident that the rights of children are held as being of paramount importance when experiencing residential care?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_51">HIQA inspects some of the residential care settings that children are in, but Tusla inspects others. There are two inspectorate systems based on, in effect, a legal issue whereby Tusla does not have the remit to inspect all settings. It is an issue that has been discussed for a long time. We need all of the residential settings to come under the remit of HIQA.</p>
+          <p eId="para_52"> In terms of the quality of residential care, HIQA reports can provide their own evidence. There has been concern recently that when Tusla does not have enough beds, whether in foster or residential care, it has been forced to find accommodation for children in unregistered placements, which have been referred to as special emergency arrangements. Clearly, Tusla does not want to do that. It is an emergency response. It has monitored and inspected such settings. There has been real concern about the quality of some of those services. That is a matter of public record. It is something we do not want to become embedded in the system. We want to ensure that any child placed officially in care is placed in a registered placement.</p>
+          <p eId="para_53"> Some of the IPAS centres are outside of my remit and, therefore, I will not comment on them.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_17">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_54">There are concerning reports in <i>The Irish Times</i> today with regard to children and young people's exposure to content online. Does the alliance have a stance on that, based on feedback from its membership, in terms of a policy response to children and young people's access to online content and use?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_55">It might be something we can follow up with the Deputy. It is not a specific area I work on, but we have a large campaign on online safety that we are working on. We can certainly link the Deputy with those colleagues in order to provide him with a more comprehensive understanding of that area. I do not want to not do them justice today. I would be delighted to provide that link.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_19">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_56">I thank Dr. Feely.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_20">
+          <from>Deputy Charles Ward<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_57">I thank the witnesses for appearing before the committee. I will be brief. I read the report. It shows how massive the issue of poverty was in 2024. As a committee, we must prioritise this. The report stated that one in every five children was living in a household that was unable to afford the goods and services considered minimum essentials for a decent standard of living, such as being able to buy a winter coat, in 2025, not 1925. That is a shocking indictment of what is going on in the country. As a father of four, I find it baffling that we are in this situation in this country today.</p>
+          <p eId="para_58"> The statement does not mention the child poverty and well-being programme office. Have the witnesses had any engagement with the office since the former Taoiseach established it? Will the office play a role in engaging with the alliance in addressing these issues?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_59">We have had really good engagement with the office. The then Taoiseach announced the establishment of the office in a speech in December 2022. We met him shortly after that to share our views on what the focus of the office could be. We have had sustained engagement with the office on specific issues and it has spoken at our events. The assistant secretary spoke at the recent launch of our child poverty monitor event. We have raised issues around food poverty with the office, along with broader issues relating to child poverty. We were also in attendance at the inaugural child poverty summit held last year. We did not mention the office in our opening statement. In our child poverty monitor, however, we highlighted the work the office has done, including its analysis of the two most recent budgets and how they have responded to child poverty.</p>
+          <p eId="para_60"> On the Deputy's initial statement on the level of deprivation, it is hugely concerning to the alliance. It is something that we cover quite comprehensively in the child poverty monitor. I am happy to speak further on that if the Deputy wishes.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_22">
+          <from>Deputy Charles Ward<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_61">The manifesto of the Simon Communities states that the largest age group among the homeless population is infant to four-year-olds, who account for 11.4% of the total. I spoke about this yesterday. The report also highlights a rise in the number of children in emergency accommodation and states that children between infancy and 17 years of age are at the highest risk of poverty. Does the alliance know why these numbers are rising? Is it due to an increase in population? Why are we seeing high rates of children compared to other age groups?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_62">Is the Deputy referring to emergency accommodation?</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_24">
+          <from>Deputy Charles Ward<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_63">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_64">When we conducted the analysis for the child poverty monitor, we discovered a lack of affordability in things like the private rental sector and a contraction of the private rental market. Families who are dependent on the housing assistance payment, HAP, find it increasingly difficult to access a home in the private rental sector. They are then pushed into emergency accommodation or, as I mentioned in my opening statement, may be forced to return to an original family home. Those families are vulnerable to the operation of the market. We also need an increase in the number of social housing completions. That is critical because we know social housing offers a far more sustainable and long-term tenancy and housing situation for families.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_26">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_65">I thank the witnesses and ask them to give our best regards to Ms Tanya Ward if she does not make it to the committee. The alliance's work over the years has made a positive contribution to the area of children and equality and I am very grateful for all of that work.</p>
+          <p eId="para_66"> I want to ask the witnesses about the recommendations on national play and recreation policy. I agree with the alliance that we need a new strategy and policy on the importance of play. However, I was struck that the alliance did not mention after-school care for those of school age in its contribution. The alliance's opening statement is one of the best I have received because it is so thorough. The statement refers to a focus on the need for green spaces and recreational facilities, combined with a review of what currently exists at local authority level, which should be a key area of focus in the plan. I ask the alliance to discuss what needs to happen in after-school services. We do not have enough after-school facilities in our communities. The quickest way to provide that is through school buildings.</p>
+          <p eId="para_67">The witnesses will probably be aware that boards of management can stop access to those buildings. It is within their power. Another issue with after-school care is that it is not as simple as moving the tables out of the way and expecting that to become the best form of care. Play is important in after-school childcare provision. Has the Children's Rights Alliance done work in that area? What would it like to see? I expect it to be about facilities as well as the approach.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_68">For the Children's Rights Alliance, thinking about play in an integrated way is critical. We are not just thinking about green spaces and playgrounds, but about how we plan our cities. I read one report about the development of the Cork development plan during which they consulted children. It was not just children thinking about play in terms of whether they can go to a playground. Children and young people tend to be engaged around climate action. They looked at such things as integrating bicycle lanes in the streetscape so that they are not only getting access to recreation but also improving the amenities for everyone in the community. Therefore, the Deputy's point about how we use school buildings to access after-school care and enabling children to participate in play is critical. What we would like to see in a national play policy is a holistic consideration of the issue so that we are thinking about all aspects of our community and where we can facilitate play and integrate it within planning and within the community.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_28">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_69">That is really positive in relation to the public realm. We have work to do on the approach to after-school care and ensuring families have access to facilities.</p>
+          <p eId="para_70"> My next question is about Equal Start. Will Dr. Feely describe how it looks from a practical perspective for families? We know how impactful the DEIS programme has been and that comes in the form of breakfast clubs, home-school liaison officers, higher capitation grants, higher funding opportunities and such things. Will Dr. Feely describe how Equal Start works for a family?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_71">Yes, sure. For a family attending an Equal Start service, the service will have increased resources as regards the staff time that can be offered. There will be phased implementation of the entire plan. Additional supports are being offered around food, which is critical. We saw in a survey we conducted last year of early childhood education and care providers that the issue of food is of critical concern for many families. Specific supports are provided around that. Within Equal Start there is also specific targeting of groups such as Traveller children and families, providing additional supports within the service. It could be through a specific support worker. It means that families who go to those services will benefit from the additional resources the service has, whether that be additional support within the day of operation of the early years service or children being able to access food while they are at the childcare service.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_30">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_72">Does the Children's Rights Alliance have any reports or statistics on the effectiveness of Equal Start so far?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_73">We do not because the roll-out of the first programme year began in September. The Children's Rights Alliance did a survey of childcare providers in October and asked them whether they had been designated as Equal Start providers. However, that was only one month into the programme. We are now coming towards the end of the programme year. As an evaluation aspect has been embedded into Equal Start, I think the Department will be collecting data around that, which will be important.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_32">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_74">I find the points Dr. Feely made about community childcare very interesting because that is my experience of it as well. Is Dr. Feely aware that, for instance, just 6% of childcare facilities in Fingal where I am based are community childcare facilities? Will Dr. Feely comment on the sustainability of community childcare facilities and how important they are as they are inclusive environments?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_75">As I mentioned, we did a survey last year. It was a small-scale survey with 95 respondents, with a mix of community and private providers. However, it was clear from the analysis that community providers were proportionately providing additional support for key cohorts who may be experiencing social exclusion, such as children experiencing homelessness. Community providers are critical and a really important aspect of childcare provision in Ireland and we would like to see further investment from the Government to develop a public model.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_76">I welcome Ms Tanya Ward, who is the CEO of the Children's Rights Alliance.</p>
+          <p eId="para_77"> I will announce the next group of speakers because the schedule has gone a bit all over the place. Senator Nessa Cosgrove will be followed by Deputy Aisling Dempsey, Senator Margaret Murphy O'Mahony and Deputy Claire Kerrane.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_35">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_78">The Children's Rights Alliance is welcome. As Deputy Currie said, it provided a fantastic briefing which was a welcome read. I will keep my questions specific.</p>
+          <p eId="para_79"> It is welcome that the Children's Right Alliance is gathering information about children living in long-term extreme poverty. The number of Tusla referrals is shocking. Senator Keogan was right to say that. I have worked in the commissioning service for Tusla. It is great the alliance is getting this information. However, a lot of people are in receipt of HAP, as Dr. Feely said, but might not be involved with any Tusla services directly through Meitheal, commissioning services or child protection. Where will we get information about their levels of poverty? They have been living in intergenerational poverty due to overcrowding and the housing situation. Do we have any other way to get that data?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_80">While they may not be engaging with services through Tusla, they will be engaging with services that are members of the Children's Rights Alliance. For example, they may be getting access to family support services through large providers such Barnardos, the Daughters of Charity and so forth. They may also be engaging with the likes of Focus Ireland. Another critical support in the community is family resource centres, FRCs. They may be accessing supports through them. As Dr. Corbett mentioned in one of her responses earlier, we will be engaging with our members on what issues they are seeing in child protection and so forth on the ground. That will involve an awareness of engagement with Tusla services as well as broader issues that may not have met the threshold for engagement with Tusla. Those organisations in the community and voluntary sector will be critical in informing us and informing policy development about what is happening for those families. One of our members is the Society of St. Vincent de Paul, which I am sure the committee members are all familiar with in their constituencies. It does critical work in responding to families who may not need specific intensive supports. The Society of St. Vincent de Paul is supporting them and brings a wealth of knowledge and insight on this issue.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_37">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_81">That data is being collected alongside the Tusla information about people living in poverty. A lot of children probably are involved in family support services, particularly if there are services in their communities, such as Springboard projects, FRCs, DEIS schools and so forth. However, there is definitely a cohort of people who are still living in consistent poverty who are not engaged in any services. I worked in the voluntary and community sector and I think the work is wonderful.</p>
+          <p eId="para_82"> That brings me to my next question about the early years sector. The Labour Party wants to see a move to a fully State-led public model of childcare. However, in the interim, there will be a third pillar. Recruitment and retention of staff is still a huge issue. I would love to see information about that. </p>
+          <p eId="para_83">I do not know if this is even the witnesses' brief. Of the people who graduate in early childhood care and education, ECCE, how many of them actually end up working in and staying in the sector? Likewise with social care, I know recruitment and retention of staff through my own experience as well. Are people staying and are they encouraged to stay? Are we going to end up in a situation where there is a public model eventually but the staff are not there?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_84">We know there are really critical issues there. Over the last number of years, we have seen significant reform in the sector, certainly with the introduction of the core funding and tying that to - the name escapes me now - the joint labour commission payments. It is "JLC". That is really important because we are establishing a wage for the sector. However, it will be really critical as we move towards a public model to look specifically at wages for the sector. We would certainly like to see that being the first move - that the State would take on the payment of workers in the sector. That guarantees quality for children, which is of critical concern with respect to a children's rights-based approach.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_85">My apologies to the committee. I got stuck in a medical appointment I could not get out of. To add to what Dr. Feely has said, the Pobal data is telling us that about one in four is leaving the sector. The main issue is the lack of parity of esteem. I was talking to the professor from Mary Immaculate College yesterday and she said they all went in with the same aspirations but the primary school teachers will stay in that area of education while the early years educators will not because they cannot live on the wages and salaries.</p>
+          <p eId="para_86"> One of the big things that needs to happen is we need to give parity of esteem to the staff, and in any move towards affordability and a public model, the first thing has to be recognition, pay and conditions for the staff working in the services. As Dr. Feely said, children benefit when qualified people are looking after them. We do not pay enough attention to the experiences of very small children. In fact, aged zero to one is the most important time. One would often hear people saying that you do not need a degree to change a nappy. Actually, the research says you do. There is a truth to it.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_40">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_87">Yes. I totally agree.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_88">If the committee could centre or focus on that, that needs to be the game-changer this Government achieves because the sector will continue to limp on and people will get their qualifications and transfer into primary school education until the salary issue is resolved.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_42">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_89">I thank Ms Ward for saying that. Likewise across the whole social care sector, section 37 and 56 workers are experiencing the same lack of pay parity.</p>
+          <p eId="para_90"> Another question I wanted to ask was about the Equal Start programme. I can see from the witnesses' report and briefing that the greatest amount of children involved with community-based settings are experiencing high levels of poverty and hunger. Would the Equal Start programme be better targeting all of that money just towards community-based settings like Springboard settings or Lifestart rather than having it go to private providers or Equal Start. Is that programme available from private providers as well?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_91">I might allow a brief reply, if that is okay, and we will move on.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_92">There is quite a sophisticated system to identify who gets to be part of the Equal Start programme, and it is the deprivation measures. It can be the community-based or for-profit settings as well, depending on what the needs of the community are. We think that is a good thing-----</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_45">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_93">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_94">-----in terms of the way the programme has been put together. The issue is they have not put sufficient funding out and those services we have consulted have told us they cannot expand. Without any capital expenditure, they all have waiting lists. Some of them have 100 or 200 children. We will not really see the main impact of that programme doing what it needs to do, which is really transforming the lives of small and young children.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_47">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_95">Absolutely. Am I out of time?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_96">The Senator will get a second round. We will move to our Leas-Chathaoirleach, Deputy Aisling Dempsey.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_49">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_97">I thank the witnesses for attending. I suppose it is very difficult to read the child poverty monitor and find anything positive in it. As has been referenced already, it is quite heartbreaking reading. The huge increase in numbers in 12 months is quite shocking. Not to try and find a positive in it but to ask a genuine question, are there measures that have been brought in in the last 12 to 18 months that might not be captured there yet, so the positive effects of them have not been found in the report? Should we see a significant decrease in the next monitor report? I refer to things like the hot school meals and the expansion of the free schoolbooks scheme. Will we see a decrease in the next monitor report?</p>
+          <p eId="para_98"> On that, they are universal measures, and we have had quite a lot of universal measures in response to the cost-of-living crisis and all of those things, but it is hard to see how many more of those we can sustain, or why we would. Targeted measures are our next steps. What are the main targeted measures the witnesses see as being needed? One of them that came to mind was child benefit. I am not advocating that we move away from child benefit for all but that it would be means tested; there would be a base across the board and then it would be means tested thereafter. Do the witnesses think that will make any difference?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_99">I might answer because I am late. It is a really good question. The statistics would have been worse without the introduction of hot school meals and free schoolbooks. The ESRI did its own piece of work that came out a few days after our child poverty monitor. It was able to demonstrate that they affected child poverty by several percent. Those measures actually worked to help reduce child poverty. We know universal measures are internationally accepted in the research, and they are the best kinds of measures to do if we are going to go universal. All children benefit but children in poverty benefit the most.</p>
+          <p eId="para_100"> What does the Government need to do? This particular budget, or the next couple of budgets, need to focus on targeted measures that are going to lift children out of poverty. Starting with income, there is a good bit of discussion in the media around a second-tier child benefit payment, and the Government seems to be open to that. What that proposal is trying to do is take a few of the additional child payments and put them into one. If someone was on a particularly low level of income, he or she would get that as a top-up. That would seem like a good idea. I would have to examine what that looked like in practice because children at the lower end might lose out, but is clear that a lot of children, where they are at risk of poverty or their families are at risk of income poverty, would benefit from a measure like that. That is a really important measure for the Government to explore and implement. In any case, increasing the child income payment for families on welfare and increasing the working family payment actually gets to the families most in need.</p>
+          <p eId="para_101"> The other targeted measure that is going to be groundbreaking if the Government can roll it out is a DEIS plus model. The DEIS scheme is very successful but the truth is it needs a lot more supports to deal with the kinds of complexities teachers are dealing with in those communities. In the north inner city, there are the organised criminal gangs operating on their doorsteps. There are people in prison, they are dealing with huge levels of inequality and grandparents are raising children. Children need a lot of extra support, including counselling, psychological and social work support, etc. A DEIS plus model is meant to do that so rolling that out would be very important.</p>
+          <p eId="para_102"> The other thing is that there are a lot of children in poverty, particularly in rural Ireland, who will not feature enough in the statistics to attract a DEIS plus model. What we know those children would benefit from are home school liaison officers. This is one of the most important interventions with regard to breaking the cycle of poverty. It is consistently stated that they know exactly what is going on in the households. They are the ones who help parents and help children to do well in school. Extending those out to non-DEIS schools but also extending out additional budgets to children and schools in the non-DEIS programme is what the schools are crying out for. Principals would say they have several children in their schools who are on very low incomes. They need help with buying a school uniform and to pay for the school tour. The schools need extra supports for them and need to do it in a non-stigmatising way. That is the kind of thing the Government needs to be thinking about as it moves forward.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_51">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_103">Foster care was referenced quite a bit in the opening statement. We had the Minister here last week, and it was top of her agenda, which was wonderful to see. We had a lot of contributions on it from the floor as well.</p>
+          <p eId="para_104">It is one of our main focuses. We talked about their pension rights. This week we saw the back-to-school allowance being extended to foster carers. Does Dr. Corbett think more measures like that will encourage more foster carers into the system because we need them?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_105">Foster care is the backbone of the care system. It is absolutely critical. In some parts of the country the anecdotal evidence is that there are not sufficient foster carers for children, including for very young children and babies. There are not enough foster carers. The Department of children is commencing the roll-out of a national policy framework - I think that is what they are going to call it - which is effectively a strategy on alternative care. We do not have one at the moment. Tusla has its own agency-based plan in terms of foster care, residential care and aftercare but we do not have a national plan. It is really important that we have a national plan. Tusla is critical in terms of its engagement with foster carers. As Deputy Dempsey mentioned, we need to have some reflection on the experience of foster carers now in terms of pension rights and other elements, including interaction with schools. What additional supports do they need? Why are foster carers leaving the system? Why are we not getting new categories of people engaging in fostering? We need to explore the sense of exit and entry, and all of those things. We have to look to see how we can plan to ensure we have foster carers in the future.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_53">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_106">I welcome Ms Ward, Dr. Corbett and Dr. Feely and thank them for coming in. When I knew they were coming in, I did some research and was very struck by their vision to make Ireland one of the best places in the world to be a child. I was very touched by that, so I say "well done". It is a great vision. I am a big believer in and advocate of the idea that every child deserves a childhood and every youth deserves a youth. We, as adults, know the troubles the world brings. Children and youths should be sheltered from all of that until they become adults. I congratulate the witnesses on the work they do. Some of the questions I have were asked already. I will touch back on Equal Start, which is a great idea. Where does it start? What groups will be targeted first or is it going to be rolled out everywhere at the same time?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_107">Dr. Feely may want to add to this. The methodology they have developed is around the deprivation indicators. They are using the same kind of methodology around the DEIS programme as well. They are also trying to use other information sources that they can find because in particular areas of inequality - down near Dublin's docklands, for example - the deprivation indicators do not tell the full story. That is how they have tried to identify them. A bit like the DEIS programme, they put them into bands which will dictate whether they will get sufficient support.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_108">One of the other cohorts that they were really concerned about when they were developing the model was children from Traveller families. There are specific parts of the Equal Start model that target Traveller families. The reason and rationale for that is that there are lower participation rates among Traveller children in early childhood education and care compared to the general population. They are specifically introducing measures that will provide supports for those families to enable them to access early childhood education and care and to enable their full participation within services when they do access them.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_56">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_109">It is very targeted at the start. Regarding the shortage of care placements, what role do the witnesses see for the community and voluntary providers in bridging the gap that is there? How do they suggest that the Government might support their involvement?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_110">The community and voluntary sectors are significant in the provision of residential care. Many of those organisations are members of the Children's Rights Alliance. We are commencing a consultation with them to get their views on their experience of child protection and alternative care, and to ascertain what capacity they are providing and what they need to be able to increase it. There are many outstanding issues relating to payment, the funding model and pensions. One of the other things that is critical is ensuring there is clear stakeholder consultation and engagement between Tusla and the community and voluntary sector providers so that there are good flows of communication. All of this is critical in ensuring we can meet the need for residential care.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_58">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_111">Regarding the public childcare model, what reforms could we consider that would ease the financial pressures on providers while moving towards proper structural change?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_112">For us, the first reform must involve dealing with the staffing issue. In the same way that the State pays the salaries of primary school teachers, it could take on the payments of the salaries. That would be the first important step and a groundbreaking move. The second reform involves getting a better insight into the cost base for the providers and what supports they need. Some services need higher levels of subsidisation than others, particularly those in smaller, community-based settings which children actually prefer. According to our consultations, children like to be cared for at home by their parents or in a home-type situation. Sometimes those situations are not viable because of the overhead costs. If one thinks about those kinds of community settings, or settings in rural Ireland, that would be an opportunity to provide higher levels of subsidisation for those types of services.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_60">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_113">Is there an example from another jurisdiction, maybe within the EU so that we could identify with them, that we could draw inspiration from in developing a national play policy?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_114">That is something we are looking at. There have been a number of positive initiatives in the UK in this area. We are looking at what international examples exist. It is critical that we are not just looking at a focus on playgrounds. We need to look at the whole public realm, at how we design our planning and at how ensure we have child-friendly approaches. An area that is particularly interesting that the committee may want to consider is the Vienna model. We can see the incorporation of child-friendly approaches in the Vienna model of social housing. One thing that struck me in the Vienna model is that apartment buildings are only built two to three storeys high so that people can look over and see children playing and can hear them which enables children to play independently. When we looked at planning guidelines and apartment guidelines in Ireland, we saw a kind of approach where there needs to be consideration of noise coming up and how that might disturb residents. We need to be thinking about things in more of a growth mindset around enabling children to participate and to have lots of different opportunities to play, be safe and have access.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_62">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_115">May I begin by congratulating our Leas-Chathaoirleach on her election? I thank the witnesses for coming in and for their detailed opening statement. In relation to child poverty, income support is really important. While there has been a lot of talk about child benefit, I believe that in a lot of cases the mechanism is already there. Rather than going through the long child benefit process, we use the qualified child increase, which is a targeted measure. It is targeted at children in vulnerable households. We use that and the working family payment, which is essentially a top-up to people who are in low-income employment. I would like to get the witnesses' views on the use of those two targeted measures to get to the most vulnerable children.</p>
+          <p eId="para_116"> When I come to child poverty, I always raise the issue of children in one-parent families. We know that the rate of consistent poverty, the at-risk-of-poverty rate and the deprivation rate are always higher among children in one-parent families. </p>
+          <p eId="para_117">I have advocated for a long time in respect of child maintenance. I published policies three times on the establishment of a maintenance service similar to that in place in the North of Ireland. At the moment, one parent can go to court and a court order may be made but it does not mean it is followed. I worked with the previous Minister, Heather Humphreys, on the removal of the means test from child maintenance. It was an important step. I would like the views of the witnesses on how we go further for children in one-parent families, because all the research shows that where maintenance is paid it can assist in lifting children out of poverty.</p>
+          <p eId="para_118"> Reference was made to the significant spike in consistent poverty. This is a major issue of concern. Are there measures the witnesses believe could be taken quickly that would have an impact on the figures?</p>
+          <p eId="para_119"> The special care report made for frightening reading. It was almost like a cry for help from Tusla. I read into it that the other State agencies are not at the table and are not doing as much as they should be. Children are going into special care places, the number of which is limited, who have either addiction or mental health issues, yet there are no supports for them. We are putting them in a place where they cannot get the support they need, which makes the situation worse. The report and its recommendations are very important. We will have the CEO of Tusla in shortly and we will raise those issues with her as well.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_120">l will come in on the income support piece. I take the Deputy's point about the existing structures and what might be of benefit, particularly to one-parent families. We advocated for an increase in the child support payment in the Child Poverty Monitor, in particular targeted at children over 12. We would like to see a minimum of a €12 increase in the over-12s rate and a €5 increase in the rate for under-12s, but that would just be the minimum we seek.</p>
+          <p eId="para_121"> The point the Deputy makes about one-parent families is very interesting and relates to the one she raised about maintenance. When we are introducing increases in the budget, we need to think about this holistically. In 2020, there was an increase in the earnings disregard for the one-parent family payment, which meant that those families could work for a certain number of hours per week on the national minimum wage. However, now that the national minimum wage has increased, they get a reduced benefit. They can only work for 12 hours now. I am not sure whether the previous figure was 16 hours or 20. I will come back on that.</p>
+          <p eId="para_122"> What happened in respect of maintenance and the means test disregard last year was very welcome. However, this is another area where it does not really make sense because we can see that it is not disregarded in the calculations for NCS. Some but not all local authorities are looking at that when calculating differential rent. We need to bring in holistic measures, and it is critical that we take a cross-government approach.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_123">I was involved with the four-person review group that carried out an independent review of special care. It is great that the committee is engaging with the CEO on it. The report maps out a series of recommendations. As stated earlier, a critical issue is the retention and recruitment of the social care staff in special care units. There are real difficulties in the context of retention and recruitment. Some of those difficulties relate to the salary on offer, which is the same that for working in a different unit. There is a very small top-up, particularly in light of the nature of the work these people do. As was stated in the report, some progress has been made on that but not enough.</p>
+          <p eId="para_124"> On the interagency piece, the nature of the issues children present with requires more engagement from specialists in addiction and mental health. When we were reviewing it, we could see that while the assessment, consultation and therapeutic service, ACTS, which is the service in Tusla that provides specialist support, exists, we could not document that there was sufficient therapeutic support being provided in the units. As the Deputy will be aware, special care is unique in the sense that it is the civil detention of a child in circumstances where they have not committed a crime, and there must be a therapeutic rationale. That is stated in case law but it is not in statute. One of the recommendations is that it would be important to clarify that in the statute. In our engagement, we were a bit concerned that there was not as much of a focus on that. The focus was more on the fact that the child is at risk, but people only really need to be detained if there is a therapeutic benefit. In addition, you also need to evidence that you are making the effort to provide therapeutic support in order to ensure that the detention is clearly lawful, particularly as it is a significant intervention. I am very happy to talk further about the report at a different time if that is of use.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_125">I thank Dr. Corbett. We will move to Deputy Ó Murchú.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_66">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_126">Cuirim fáilte roimh na finnéithe. I thank the witnesses. As a previous speaker said, the opening statement was incredibly comprehensive. We have had many discussions on child poverty but, to be honest, I do not think anyone has got anyway serious enough about addressing it. We often talk about whole-of-government interventions and intergenerational poverty. However, we have a set of rules - and there is a lack of supports - that do not take into account what we get in big urban settings, namely prison, addiction and the chaos that goes with all of that. There are families on which it is a hell of a lot more impactful than it is perhaps half mile from where they live. Even within an estate, it is sometimes two or three streets. Reference was made to the Vienna model. Could the witnesses go into that a bit more? I assume some of it relates to demographics, peer groups and related issues.</p>
+          <p eId="para_127"> If we could choose from all the asks before us, in an ideal world, I would like to see that bit relating to early family supports. They would happen straight away and they would need to be a lot more comprehensive than is the case at present. There are cases where it is not perfect to keep a family unit together, as that is not helpful to anybody. I know that begs other questions, for example, about what supports can be provided when we do not have enough foster carers. We could talk about early childhood learning but I will start with that.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_128">Early intervention for families is utterly critical. We wrote to the committee already about the Daniel McAnaspie case. His case was reviewed by the child deaths review panel. He is called "Ben" in the review. Some of his case was read into the public record at the inquest. The truth of it is the case has not been published. What we see in that case - and the other case that deeply concerns us of Kyran Durnin, who has never been found - is what is clearly important is all the other services that deal with vulnerable families and children. What we see happen in Daniel's case is that all through his life, all the services missed what was happening to him. It was pretty apparent that he was in difficulty at a very young age. The first public record on him is from Crumlin, which showed he was underweight. He was on a poor diet and he was fretful. He was there for a respiratory illness.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_68">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_129">I will interrupt for a moment because Ms Ward got straight to the point there. We have seen this before. We have had pilots that did this sort of work very early and then there was a long-term intervention. A point person would notice all of this stuff and make sure that all the agencies are involved. That is the bit that is missing.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_130">A key recommendation in the national early years policy framework has not been implemented yet. It relates to a child-dedicated health workforce. There is meant to be specialised public health nurses to which every child in the country gets access in the early years. It is a non-judgmental service with developmental checks. We talked already about vulnerable families being referred to the right service.</p>
+          <p eId="para_131">If public health nurses were in place in all communities and able to reach all families, they would be able to do that and be able to pick up cases such as Daniel's or Kyran's. They would be able to intervene and make sure that the right social work response was actually getting to the families as needed. That is something on which the committee could put a focus.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_70">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_132">Yes, that is the catch. I suppose an intervention team is then needed rather than a pile of talking heads.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_133">That is right. I know Tusla has a new front-door approach with an early intervention team. I know Kate Duggan will appear before the committee soon. If that reform were rolled out correctly, that would be the team, to be honest, if it is a child protection, social work and family support type of response. The health system would have to have a response as well because among some of the issues children are facing are speech and language issues. There are some things that Tusla cannot provide and it has to be the HSE that creates that response. That is the linchpin that is missing at the moment.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_72">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_134">A trigger.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_135">Yes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_74">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_136">That is the exactly the answer that I wanted, but that is it; somebody is needed to catch the problem and then we make sure the intervention is there, that it is significant and long term. That could mean many cases then do not require Tusla's intervention, and, in some cases, when it is already far too late and the damage is done. Did the Vienna model go beyond better planning, connectivity and all the rest? I assume the Vienna model also included a huge number of people across socioeconomic groups who are living together, rather than what we have done at times when we have forced poverty into particular areas and then it has become endemic with all the other issues that go with it.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Dr. Naomi Feely<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_137">That is what is really critical about the Vienna model. The approach to social housing is that a huge proportion of the population is living in social housing and it is not segregated. That is what is really important. There is a very comprehensive planning approach to it, certainly from a children's perspective. We should have integrated spaces for children to play and that they are not seen as segregated within the planning system and to approach this from a family-friendly point of view. It would require a complete shift in mindset, but they are the best practice examples that we should be looking toward.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_76">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_138">I will come back in a while. I suppose the play piece is about involvement and integration, particularly when it gets to sport and everything is useful. It is about ensuring that a child is not left out of society. Again, it brings a child into something positive and makes connections with others and all the rest of it. It is about supports with regard to delivering that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_139">I thank the Deputy. We will move to my own slot now. Before I ask questions, I want everybody to be aware that we need to be careful when talking about specific cases that everything is in the public domain. I think we are all right for now, but as we go forward, I ask that we pay close attention to that for the rest of the meeting.</p>
+          <p eId="para_140"> I thank Ms Ward for her contributions so far. I echo my colleagues' remarks on her opening statement being so thorough. It gave us good reading. One thing I was happy to hear today is that the hot school meals have been making an impact. They have received a lot of negative press recently, and they definitely need to improve in terms of options and nutrition, but if one child or two children in a class are getting a hot meal that day, maybe those who have enough hot meals at home might be more mindful of that. I raise the statistics of the increase of children going into child poverty. We are a very proud nation. One's neighbour or best friend might be close to poverty and may not even want to talk about the fact that they are happy that the children are getting fed in schools. As a society, we need to be more mindful of that.</p>
+          <p eId="para_141"> I will go back to the model of childcare and the need for accessing early childcare. We want accessible and affordable childcare to be capped at €200 per month. One of my bugbears is that the planning regulations specify that 75 units should be built before a setting where childcare can go in. In small towns, there may be 20, 30 or 50 units, but that cumulative point is not reached. If we were to change the planning regulations, that might need to go to a county council to buy or lease a building. I know a city called Valek in eastern Europe which has a fantastic model. They built a beautiful facility and are subletting it for 15 years. What are Ms Ward's thoughts on those planning regulations with regard to the units and what developers put in? Maybe a facility will not have a baby sleep room or things such as that.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_142">It is obviously relying on a privatised model trying to address something that is a public good. That is the truth of it. We probably need to take a fresh look at how we develop supply. I know that is something the Department is looking at because there has been a big increase in the number of young children. It is a bit harder to predict what the uptake will be, unlike primary school, for example, because of the way the Department of education's plans are based on the number of children on child benefit. While some parents may go back to work, some may not. They may only want to drop the child in for a couple of hours a day or week. There needs to be a little bit more flexibility in the options. There is no doubt that there needs to be capital investment in creating settings. That is true. Looking at the privatised model and how the developers work needs to be reviewed alongside that.</p>
+          <p eId="para_143"> A particular option the State could explore is through the Department of education and its development of the education and training boards, ETBs. Ireland is quite different from other countries. The local municipality or local council would actually control and manage education. The Department of education has a ready-made structure to develop facilities in educational settings, which could be relied upon to develop new settings. The Government could commission and build and then other providers could provide the early years services. We hope all of those things could be explored going forward to deal with the supply issue.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_144">Earlier, my colleagues raised families who are in emergency accommodation but are not linked in with other services. In my own county, I visited an emergency accommodation centre in Charlestown recently. I was really pleased with the services in the kitchen, the washing facilities and with how clean and spacious it was. I met one lady whom I linked with the Society of St. Vincent de Paul because she wanted to buy an outfit for her son for his confirmation. The toys within the children's play area were not sufficient. I am just wondering about that. Tusla does not have access to the families that are not linked in. What are Ms Ward's thoughts on people who are finding themselves in emergency accommodation but have never been linked in with services before?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_145">It is of huge concern, to be honest. Living through homeless accommodation puts parents under enormous pressure and stress. They often need extra support. One of the ways in which the Government has tried to support people in homeless accommodation is through putting in child support workers. Focus Ireland would say that there needs to be an expansion of the numbers of child support workers in order that every child can get access to one. That might just be to help the parent to navigate how to get the child to school or it might be to get Tusla social workers involved in a place.</p>
+          <p eId="para_146"> Focus Ireland has a centre specifically for families on Gardiner Street. Those kinds of centres are really important because a family can come in, make the dinner, wash the clothes and do that kind of thing. It also means there are professionals there who can work with them and potentially refer them in. In the most serious child protection cases that have happened where children have slipped through the net, one of the most famous of which was the Victoria Climbié case on the UK, families have been moving around in homeless accommodation and have lost the connection with the child protection social worker. That kind of front-facing intervention is important to make sure the really vulnerable child does not slip through the net.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_147">There are very different needs in cities and rural areas. There may be lots of young families in one location, whereas there might be a mix in rural Ireland. I have about one minute left and then I will come back again.</p>
+          <p eId="para_148"> I am really passionate about online safety for children. I am behind the Tánaiste in pushing for age verification at 16, but one thing that is not getting a lot of coverage is access to porn. A lot of children are seeing violent sexual scenes that are way beyond their age and there is no verification on the porn sites. I think Pornhub has removed itself from France, but what are Ms Ward's thoughts on that? Is she seeing much of that?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_149">It is an absolutely massive issue. It is extraordinary with the level of ownership of smart phones. Data from CyberSafeKids show that children as young as eight have a phone and are able to access this material. We know from the studies that the impact on children is not exactly clear but we know that the younger they come into contact with violent pornography, the most disturbed they are. The rape crisis centres are suggesting it is a feature in some of the sexual assaults that are happening for teenagers. Some of those teenagers present as adults when they come looking for treatment. It should be the case that no child should land on a pornography site. We need to put the onus on the providers to ensure children are not accessing the site. The providers know these are children. They know from their behaviour online that a child is using the device. At this point, they have got away with it and have not been held to account for what they have done. I would put the emphasis on the providers to prevent children from landing on this material at all.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_150">I thank Ms Ward. We have 39 minutes left. I would like an indication as to who would like to speak. I have Senator Keogan, Deputy Ó Murchú, Senator Murphy O'Mahony, Senator Cosgrove and me. Would Deputy Kerrane like to speak?</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_84">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_151">I am okay, thank you.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_152">Let us go with seven minutes per slot. We will aim for that and if other members come in, we will need to reduce. I call Senator Keogan.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_86">
+          <from>Senator Sharon Keogan<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_153">I thank Ms Ward for joining us today. On online age verification, there is a Bill before the Dáil and Seanad at this moment, the Protection of Children (Online Age Verification) Bill, which was brought in last July by a number of us Independent Senators. That legislation is there and I hope it will see the light of day. It puts the obligation on the Internet providers and app store services to ensure that persons under the age of 18 are not able to access pornographic material online.</p>
+          <p eId="para_154"> I am going to go back to the care sector, the child protection system and Tusla. I am going to talk specifically about children in residential care. There are approximately 800 children between the Children's Rights Alliance's residential and other placements. Many of them, perhaps as many as 60% or 70%, are without education. It is in their care plan that they must go to school or attend an educational setting. It is mostly post-primary students who go into residential settings. They are mostly over the ages of 11, 12 or 13. There is no school policy to ensure that those children go to school or another educational setting. That worries me. What advocacy is the Children's Rights Alliance doing for that?</p>
+          <p eId="para_155"> On aftercare, I do not know where the role of the Children's Rights Alliance stops. For me, when children are in the care of the State, they should be in that care until the age of 23. That is the remit. We are their guardians. The guardian <i>ad litem</i> leaves a child when he or she turns 18. That must stop and perhaps the Children's Rights Alliance could advocate for that. Sometimes as a foster parent, you do not have any say. The aftercare worker has minimal say. The guardian <i>ad litem</i> holds massive sway. If the Children's Rights Alliance could try to increase that to the age of 23, I would appreciate it. That is an important piece of work.</p>
+          <p eId="para_156"> Social workers go into residential placements. Very often, new cases come in and we can see that referrals are coming in this month. When new cases come in, those children must be assessed. The children who are put into residential placements can be there for years, sometimes until they age out. The role of national placement teams in getting them back into a family setting and working quicker is important for those children. A child should go into a residential placement for a maximum of one year. We must try to place children into family settings.</p>
+          <p eId="para_157"> I do not know if there are many mother and baby units around the country, within Tusla or wherever else. How many of those still exist? What advocacy is the Children's Rights Alliance doing for the children in those units and their mothers?</p>
+          <p eId="para_158"> There are children in the care of the State and might be receiving residential care out of the State. I do not now what the numbers are now, but what is the Children's Rights Alliance's role in respect of those children?</p>
+          <p eId="para_159"> Inspections of residential service providers are very often announced. In fact, I would say that 99% of inspections are announced. It would be interesting to see what those reports would look like if they were not announced. Those are the couple of matters I wanted to raise.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_160">Will I go through a few of those?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_161">I was going to answer on the education and welfare side and pass over to Dr. Corbett to talk about the care side. For children in the care system, there is generally a very good take-up of education. For those children who are not in education, what concerns us is that sometimes there is no education and welfare officer following up. If you scratch below the surface of what has happened, it is because Tusla does not have enough education and welfare officers to serve the community. Every year, we advocate for an increase in the numbers of education and welfare officers. Tusla has been advocating for the same thing. There have been some increases over time but, to be honest, we do not have enough. Education and welfare officers should be critical for children in the care system, making sure they are attending school and if they have not been attending, finding out why not and identifying what additional support they require. I will pass to Dr. Corbett.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_162">There is a national policy that residential care should be for children over the age of 12. Historically, residential care has been for children who come into care in their teenage years. They may want to stay with a sibling or there may be some other reason. In my previous role, I was with the Child Law Project. We were doing the court reporting of cases and published a number of cases of very young children being placed in residential care. The issue there is that those children have behavioural issues, most likely linked to disability. They are in some way distressed and the foster carers are unable to manage them. There is a real need for us to look again at the types of care placements we have and the level of support. We could potentially explore introducing specialist foster carers to manage the behaviour of those types of children or consider what the disability services are doing. Did they address this child's needs at an earlier stage? Do they know of this child's case? Residential care has an important role within the alternative care suite of services but we need to be careful about children, in particular those very young children, being placed inappropriately in residential care. That is one thing.</p>
+          <p eId="para_163"> On aftercare, there is considerable concern around homelessness for care leavers. Empowering People in Care, EPIC, which is one of the member organisations of the Children's Rights Alliance, has been advocating around that issue.</p>
+          <p eId="para_164"> The Senator also asked about mother and baby units. I did a piece of work with one of the maternity hospitals. There is very little opportunity for a mother to stay with her child in a residential setting and provide family support. There is the Bessborough Centre in Cork but we do not have a range of services like that. There is a piece of published work from the maternity hospitals that may be of interest. I can share it with the Senator.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_165">I thank Dr. Corbett. Would Deputy Ó Murchú be okay if Senator Cosgrove went next? Go ahead, Senator.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_91">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_166">I want to ask about the national play policy. The Government has committed to a child poverty strategy.</p>
+          <p eId="para_167">The issue of local authority direct funding for the upkeep of play parks came up earlier. This ties in with the Vienna model which has play areas within each housing estate. Many of the play parks are run down and the local authorities do not have the money to do them up. One thing we could do is ensure there is a stream of funding just for the upkeep of play parks or recreational parks. Kids are playing in dirt because there is nothing at all. Insurance costs for using schools after hours are crazy. Public buildings such as schools should be able to be used by anyone, regardless. Primary schools have to take out public liability insurance. Most children do and that covers them for 24 hours. Many of the schools would agree that these buildings should be used for after-school use.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_92">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_168">I am sorry to interrupt. Dublin City Council facilitates this in some places. It can be done.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_93">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_169">It is just not nationwide. Could the committee work on that? Publicly owned play areas are just sitting there, not being used after school and during the summer holidays.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_170">I agree. A national and local planned approach could be taken. As Deputy Ó Murchú mentioned, Dublin City Council and some other councils are doing things. It is just not national or co-ordinated. Many different things could be done. Dr. Feely already mentioned the Vienna model. I was in Copenhagen recently where there are designated streets for play. All over the city on these designated streets, there are such things as sandboxes, tables and things for the kids to climb on. A street can be designated a play area and the cars kept out of it. There is a real opportunity, particularly as part of the just transition, to try to reduce reliance on cars, move towards a carbon-neutral economy and open up and create more safe spaces for children. They are not walking to school the way they used to because they do not feel safe. When asked about it that is what they say. There is a huge opportunity.</p>
+          <p eId="para_171"> The other thing I loved about Copenhagen was there are lots of outdoor swimming pools. There are a couple of them in Ireland and they are hugely successful.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_95">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_172">There is one in Leitrim. </p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_173">There is one in County Carlow too. That is the kind of thing it would be good to see replicated throughout the country as part of a policy like this. It would have a really transformative effect on children and young people.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_97">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_174">The Alliance for Insurance Reform is trying to work with local authorities and public participation networks, PPNs, to have play areas taken under the various councils' public liability insurance. The issue of underused school facilities is huge. In the housing estate where I live there is a school right beside us that will be locked up for the whole summer. It has a full basketball court. The committee could look at how to change that. Schools are public property owned by the State and they should be used. The schools would agree. It is just about insurance. There should be something the committee could do on that. </p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_175">As part of that, there could be school gardens. There are a couple of those. Being in nature makes a huge difference to young people. That is how memory is formed. It helps to reduce anxiety when you get to hang out in a green space and interact with nature. All of this could be part of a national approach.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_99">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_176">Yes, that is great.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_100">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_177">There is an idea that on some level Tusla might be better served, and forget the rights and wrongs and failings of Tusla at the minute, if there were two separate organisations as in a part that would be involved in interventions and whatever and then a second piece that deals with the disaster situation where somebody has to be taken into care. Sometimes there is then an issue where people lack trust when dealing with Tusla. A number of people have raised that with me, so I ask that question.</p>
+          <p eId="para_178"> There are also child protection and whole-of-government pieces. I was taken with the comments on specialist health nurses and a triggering mechanism. Dr. Corbett spoke about diversification in relation to the settings but also the particular piece that might be needed on high support. That is enough for a start.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_179">Is the Deputy asking whether there needs to be two separate agencies or one agency doing early intervention and child protection?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_102">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_180">It was said to me that on some level it would make sense to separate out. Parents can have a fear and we do not want them to be worried about intervention or to fear that these people will eventually take their kids.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_181">It is an issue. People are afraid of an engagement with a child protection social worker when in actual fact it is a continuum of support. That is actually how Tusla does its job. Usually, if it is just an early intervention that is needed, Tusla funds Barnardos, a charity, and sends it in to do that kind of work at the initial stages. Tusla is doing work on its own identity and branding. That is going to be very important as it rolls out its new reform model. Segregating these areas could interfere with the continuum of care.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_104">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_182">On some level, it is more the branding idea and dealing with that issue. However, it is an issue. I go back to the question of what a whole-of-government response looks like in a perfect world.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_183">From my interactions, I go to interdepartmental meetings all the time and Tusla is present. It is, like us, the advocate for children at the table. It has the expert knowledge about what children need. It would be great to hear Tusla staff more on the airwaves actually talking to parents about how to deal with the kind of challenges they have to deal with at home and what are the different social work contributions in place. Often, when Tusla spokespersons are on the airwaves it is in response to a HIQA model. As Tusla rolls out its communication strategy and plays a bigger role in advising us as a sector, and advising parents on how to look after their children and get the best outcomes, that will help to improve how communities view Tusla. That will make a big difference.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_184">The traditional way to think about child protection cases is that you would have a parent who is unable to care for the child and the child needs to be taken into care. What is happening now, and we can see the trends, is that parents often surrender their children into care because they just cannot manage them. The child protection system is now dealing with mental health issues that do not meet the threshold for CAMHS or an inpatient psychiatric unit. There is a huge gap in terms of a range of mental health issues and a range of disabilities, cognitive impairment and all of those issues.</p>
+          <p eId="para_185"> There are also children who are being engaged in criminal exploitation. There is gang involvement, drug involvement, trafficking, all of those issues. To look at what we have available at the moment, we have foster placements, standard residential care units and special care. There are only a few special care beds so we have nothing in the middle to meet the needs of these children. That brings in the concept of high support, which could be a foster care bed but, more generally, it would be conceptualised as a small residential unit that would have the expertise around the disability and the mental health expertise built into it. It may need to have some restrictive measures built in so that, in the case of children who are victims of trafficking or exploitation or where there is a concern around trafficking and exploitation, the child could be taken out of the community in which they are being targeted, maybe down to rural location, and you could maybe get access to the child's phone to break the connection. Access to disability and mental health support are needed. At the moment, the alternative care system is very isolated. It is just special care and then Tusla has to go knocking on the door of the HSE for those other supports. It has started building up its own Tusla therapeutic supports in-house. We need that to be embedded into the actual care placements in a much more organised way. There is still a lot of engagement between Tusla and the HSE around critical services for these children with high complex needs. It often reaches a pinnacle. After the age of 18, the children will always transfer to the HSE in any case. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_107">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_186">This is about emergency cases where we have failed to deal with them at an earlier stage. I accept we need many more foster carers. I have questions. I understand the resource issues and the position of Tusla, but the nuclear intervention is sometimes required.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_187">When one looks backwards at a child's life one can see the missed opportunities and difficulties beginning to build for the child.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_109">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_188">That is why early intervention and connection, and maintaining that, are important. They mean one catches those things and works with families, which leads to a scenario whereby children become involved in education and then employment and a proper life which breaks a cycle of dysfunction, poverty and all the rest.</p>
+          <p eId="para_189"> The public childcare model goes without saying and fits into the DEIS-plus idea, which involves early childcare and school. Those working in a setting in a disadvantaged area would also deal with kids with challenges, be it autism or whatever else, which means such settings end up dealing with a greater number of such children than many other settings. The ratio of staff to children was reduced in terms of keeping everybody safe and making sure services could provide what they wanted to. Some rooms were developed into sensory rooms. As a business model, that makes things more difficult. We need to take such issues into account.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_190">I will allow a brief reply and then I will go to Senator Murphy O'Mahony.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_191">The Deputy is correct in that the most important thing for services is a lower staff to child ratio. We have visited a few of our members who are providing these services. One I would recommend is Ballyfermot Star in Ballyfermot. The service works with people in the community and parents dealing with addiction. It deals with children with very complex needs and the staff are carrying high levels of risk. Their job is quite stressful. They sometimes worry whether children are being fed over a weekend because of the level of challenges they are dealing with.</p>
+          <p eId="para_192"> If asked, they tell us they need more time per child. If more funding goes into the equal start programme, that should, it is to be hoped, allow more direct contact with children. Some organisations are very small and are trying to get funds from different areas. Instead of spending time with the child or the service, they are spending time trying to get small pots of money.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_112">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_193">From Healthy Ireland or whoever else.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_113">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_194">I admire the work the Children's Rights Alliance does. What can we, as a committee, do to help it in terms of oversight and follow-through or to implement its recommendations in legislation? What role does the alliance see the committee playing in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_195">I will speak first and then pass over to Dr. Corbett. On child homelessness, it would be great to see some engagement from the committee because the homelessness and housing crises are now in a different phase due to the high numbers of children in homeless accommodation and overcrowded conditions. Sometimes two committees have come together to produce a report. Could this be an area where the children's committee and the housing committee come together to produce a report? Committees have a significant effect on how Departments prioritise, the work they do, etc. That could be an important intervention.</p>
+          <p eId="para_196"> On the focus on funds, in particular going into child protection and welfare services, one of the problems for Tusla was that because it was founded during a recession, it did not have a lead-in time prior to it being established. A lot of political pressure was put on it and it has always been playing catch-up. Even though it receives significant increases in each budget, its funding is still behind what it needs to be based on the needs of the population that is coming through. A focus on that would be important.</p>
+          <p eId="para_197"> I will pass over to my colleague, Dr. Corbett, to speak further on Tusla and some of the other child protection and welfare issues.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_198">It is great that Tusla will come before the committee. In terms of roles, Tusla has operational responsibility for services and the Department for Children, Disability and Equality holds the policy and legal remit. Over the next year, it will produce a national strategy on alternative care. In terms of exploring with the Department the issue of high support care, the committee could examine that because Tusla cannot bring that under its remit even if it had funding as it does not have a policy or legal framework to do so. It makes <i>ad hoc</i> arrangements for children at the moment. It will work directly with the HSE and establish a special arrangement for a child, but it cannot create a new set of high support units. It needs the Department of children to engage on that.</p>
+          <p eId="para_199"> In terms of the special care report that we spoke about and the suite of recommendations, some of which are internal to Tusla while others go back to other Departments, the overarching recommendation is that we continue to fund the three existing centres and move to create a new centre of excellence, that is, a new purpose-built unit. There are many recommendations and we need the Department of children to engage on that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_200">I again thank the witnesses for all of their engagement so far. I will stick with special care. We have touched on some traumatic cases in respect of Tusla. I do not think the general public is aware of how challenging and difficult some special care cases can be. We discussed recruitment, the need for more salary bursaries and so on. The fantastic support workers are in danger at times and the work is very difficult. Wraparound services may not be in place. Dr. Corbett mentioned a high support unit.</p>
+          <p eId="para_201"> There are children in their late teens who may, as has been said, be involved in criminal activity or children with disabilities. I have worked in the area of neurodiversity for 19 years. Sometimes when there is not enough respite available for parents they are forced to go to accident and emergency departments and ask to hand over a child because the family or child is not safe. Can the witnesses discuss the high support unit or centre of excellence and what a five-star service would look like?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Dr. Maria Corbett<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_202">There are 26 beds in special care, but only about 13 or 14 which can be opened at the moment because the staffing is not in place. There is significant demand for places. The difficulty is that children who are at home, in the community or in foster or residential care are waiting to get into special care but there is no in-between place for them to be sent. A high support unit could fill that gap. That might meet some children's needs and they may never need to move into secure or special care.</p>
+          <p eId="para_203"> The other difficulty is that once a child is in special care, it is not easy to discharge them because there is nowhere for them to go. We need another high support unit on the other side. There are transition units on both sides. Staff face difficulties in terms of the financial element, including salary, but also in terms of their ability to go to work and feel they are making a difference. From the work we have done, we know some children are staying in special care for a very long time, up to two years, because there is nowhere else for them to move on to. In terms of the overall experience of a worker of dealing with a child who is supposed to be in a service for three months, which is the legal order, nine months would be a longer order.</p>
+          <p eId="para_204">There is no sense of achieving the aim, which is to stabilise the child and move him or her on. That is why high support is so important. It could take some of the children who will never need to get to special care and also give others somewhere to move on to.</p>
+          <p eId="para_205"> On a centre for excellence, the three units are no longer fit for purpose physically. In one of the units where children live for a long period, they cannot open a window to get fresh air into the building. The creation of a new centre for excellence should have a secure unit on the campus and step-down high-support units nearby. In addition to having a deprivation of liberties special care secure unit, these high-support units would allow the child to experience what it is like not to be in a fully secure unit or a lesser unit. That child could then move between the two. That is the model. The models are there across Europe. There are some very good models in the UK. The setting would be looked at. Nature would be brought back into the setting and it would be made to feel like a therapeutic environment. The current units would need a lot to move them up in quality.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_206">That is especially so if a child is aged 16 or 17 going into special care and, at 18, can no longer be kept. I will not say "held there". Step-down would be great, as Dr. Corbett said, before the child goes back to society.</p>
+          <p eId="para_207"> Ms Ward and I attended the launch of a report, entitled "Meeting the Legal Needs of Children and Young People in Ireland and Enhancing Access to Justice - A Children's Rights Analysis", this week. There was a discussion on the need for a specialised legal service. Will she talk a little about that?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_208">What I will say is based on our experience from our information helpline for members of the public. One of the things that is clear is children sometimes look for advice but often through someone else, such as a parent. Many times, however, the parents who come to us are really broken because they have experienced so many difficulties, maybe in interacting with a school. There is a need, and this might involve legal aid throughout the country, for a parent to be able to get legal advice without having to pay €250 or €400 per consultation. That is the problem with the way the system is operated at present. In other countries, people can get a consultation. Sometimes, people need just one consultation or one session, or maybe one letter, and the issue is addressed for them. That is the bit that is probably missing for us in Ireland at the moment. Free legal advice services, for example, are very overburdened. They are trying to do their best on very low amounts of money. Not enough money is being made available through the civil legal aid scheme for law centres to open throughout the country. The ones that do exist are doing it on a shoestring.</p>
+          <p eId="para_209"> Cases that are taken to litigation should be exceptional. One of the things I said at the event I attended with the Cathaoirleach was that more was happening in the political space than ever for children. There is more access to decision-makers than ever but there are particular situations where, potentially, a case needs to be taken to address a particular issue. That is where a specialised service could be very important for families in taking a case. Funding should be made available through the civil legal aid scheme to ensure that can happen.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_210">I was very impressed with the youth advocacy group that spoke at the event. It would be very helpful to have it before the committee. One of the things that struck me was, "Nothing about us without us". I have been doing a little work lately, especially in my area of County Mayo, meeting people from Mindspace, which is a centre to support mental health for teenagers aged between 12 and 18. The space was designed by young people for young people. It even has some drop-ins, which there would never be into a legal aid centre. The space is welcoming and friendly for children. There is always somebody there to meet them at the door. Having spoken to Pieta House, there is now an uptake from people as young as 14 calling in. It is not always related to their mental health. It might just be they feel this is somewhere they can access. It is definitely a space to explore more.</p>
+          <p eId="para_211"> We have a little time. Would Deputy Ó Murchú like one more question?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_121">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_212">Will the representatives come back to us on the proposal? Have they had any interaction with the Government on it? We keep talking about this unit being set up. I imagine, if people are dealing with child poverty-----</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_213">Is this the child poverty unit?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_123">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_214">Yes. Has the Children's Rights Alliance dealt with that idea of specialist help? What was the interaction like in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_215">The interaction has been very good. It is welcome that the unit is being established in the Department of the Taoiseach. This has happened a couple of times. It first happened with the Brown-Blair British Government and was one of the groundbreaking things it did. Of course, the Tories got rid of it. Similar ones opened in New Zealand and Scotland. Those units tried to bring addressing poverty to the heart of political decision-making. The Department of the Taoiseach is important because it is the Department that probably has the most influence on other Ministries in getting things done. The thing about that unit, and any of these kinds of measure, is it will take about ten years. It will take nearly ten budgets to try to row back the impact of poverty.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_125">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_216">That is the problem. Even if everything is put in, the pay-off will not be for ten or 15 years. It is sometimes about what does not happen.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_217">It is a long-term investment. It is very welcome that this Government maintained the unit. The unit has excellent expertise. It has people I would have hand-picked myself to lead the work. It would be welcome to have them before the committee to talk about what they have been doing. One of the things they have been doing is providing an evidence base to other Departments about what the problem is and what measures might work. They have also brought consortiums of different practitioners and decision-makers together to look at how to address child poverty issues. One of the things I did not anticipate with the establishment of the unit was how the national discussion on poverty, including child poverty, changed. We just thought it was a good idea that we had seen happen in other countries and had resulted in change. Suddenly, once the Department of the Taoiseach named it as a key issue, people were having conferences and discussions about child poverty throughout the country that we had never seen before. That in itself is very positive because it promotes awareness of how this is something that we have to address together nationally.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_127">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_218">The importance and impact of housing and homelessness was referenced. We all get the idea of more resources being given to people. The fewer resources, the worse the decisions we make and the worse the decisions we can make. I assume it would be worthwhile to look at taking those in and-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_219">We are taking note of them. We can discuss it with the rest of the committee-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_129">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_220">We could make an executive decision here.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_130">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_221">Just the two of us.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_131">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_222">It is about actually making it happen. It is all well and good to have really good discussions. The witnesses have plainly put the idea of a specialist health nurse. I am not wrong in saying that a specialist nurse would be a triggering mechanism for a full intervention. We have not seen that go anywhere next or near to a proposal yet. The Children's Rights Alliance obviously does have a proposal, though.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Ms Tanya Ward<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_223">It is already a national policy under the first five strategy. A team of people is working on it. It is just taking them longer than it should. No doubt, Covid intervened in any of the health responses. Everything was delayed by a number of years but the committee could talk to that team, which is in the Department of Health. The HSE and the Department of children are working on a proposal. That strategy runs out in three years' time. We would love to see that service established by then. Every child in the country should have access to it. It is critical. All of this work happening on the education side has to happen on the health side as well.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_133">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_224">I thank Ms Ward, Dr. Feely and Dr. Corbett. It was really informative and the engagement was very welcome. I thank them for taking time this morning. I will adjourn the meeting. We will reconvene on Thursday, 26 June.</p>
+        </speech>
+        <summary eId="sum_8"> The joint committee adjourned at 11.59 a.m. until 9.30 a.m. on Thursday, 26 June 2025. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

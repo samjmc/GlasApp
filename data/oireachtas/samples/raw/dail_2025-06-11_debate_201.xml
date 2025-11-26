@@ -1,0 +1,785 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-11/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-11/debate"/>
+          <FRBRdate date="2025-06-11" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_climate_environment_and_energy"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-11/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-11/debate/mul@"/>
+          <FRBRdate date="2025-06-11" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-11/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-06-11/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CathalByrne" href="/ie/oireachtas/member/id/Cathal-Byrne.S.2025-01-29" showAs="Cathal Byrne"/>
+        <TLCPerson eId="CiaranAhern" href="/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29" showAs="Ciarán Ahern"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="MalcolmNoonan" href="/ie/oireachtas/member/id/Malcolm-Noonan.D.2020-02-08" showAs="Malcolm Noonan"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCPerson eId="ReadaCronin" href="/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08" showAs="Réada Cronin"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM AERÁID, COMHSHAOL AGUS FUINNEAMH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Climate, Environment and Energy</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-11">Dé Céadaoin, 11 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-11">Wednesday, 11 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CiaranAhern">Ciarán Ahern</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#CathalByrne">Cathal Byrne,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MalcolmByrne">Malcolm Byrne</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#OllieCrowe">Ollie Crowe,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MalcolmNoonan">Malcolm Noonan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaDaly">Pa Daly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#BarryHeneghan">Barry Heneghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen,+</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Senators Noel O'Donovan and Lorraine Clifford-Lee.</summary>
+          <summary eId="sum_5">+ In éagmais le haghaidh cuid den choiste / In the absence for part of the meeting of Deputy Réada Cronin.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#NaoiseOMuiri">Teachta / Deputy Naoise Ó Muirí sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="" eId="dbsect_2">
+        <heading>CLEAR Report on Lady's Island Lake: Discussion<recordedTime time="2025-06-11T12:30:00+01:00"/></heading>
+        <speech by="#NaoiseOMuiri" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T12:30:00+01:00"/></from>
+          <p eId="para_14">Apologies have been received from Senators Mark Duffy and Alice-Mary Higgins.</p>
+          <p eId="para_15"> The first item on the agenda is the engagement with stakeholders on the Coastal Lagoons: Ecology and Restoration, CLEAR, report on Lady's Island Lake in County Wexford. The purpose of this meeting is to engage with a number of stakeholders on this EPA funded report. Although representatives from the EPA were invited, they were unable to attend due to their commitment to hosting a water conference in Galway today. I would like to place on the record our appreciation for submissions on this topic provided by An Taisce, Coastwatch, Teagasc and Mr. Jim Hurley.</p>
+          <p eId="para_16"> I welcome the following witnesses to this meeting: Brendan O'Connor, co-author of the report; Dr. Cilian Roden, co-author of the report; and Dr. Eddie McCormack, associate director, Aquafact; Mr. Eamonn Hore, deputy chief executive; Mr. Brendan Cooney, senior executive scientist; and Mr. Eoin Kinsella, executive agricultural scientist, Wexford County Council; and Ms Caitriona Ryan, director of national parks and nature reserves; Ms Ciara O'Mahony, divisional manager eastern division; and Dr. Andy Bleasdale, director of scientific advice and research, National Parks and Wildlife Service, NPWS. I remind everybody in attendance, including myself, that their phones should be switched to silent or off.</p>
+          <p eId="para_17"> Before I invite the witnesses to deliver their opening statements, I want to advise everybody of the following in respect of parliamentary privilege: members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of that person or entity. Therefore, if members' statements are potentially defamatory in respect of an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_18"> In terms of the format of the meeting, I will invite each organisation in turn to make an opening statement for a maximum of five minutes. Once all opening statements have been delivered, I will call on the members of the committee in the order in which they indicate to put their questions. The committee will operate a rota system that provides each member with an initial six minutes to engage with the witnesses. It is important to note that the six minutes is for both questions and answers, and, therefore, it is essential for members to put their questions succinctly and for witnesses to be succinct in their responses. When all members who have indicated have had their initial engagement and, time permitting, a second round will commence where each member will have to up to three minutes for both questions and answers with our witnesses. Please note that the duration of this meeting is limited and, therefore, the times must be strictly adhered to. I ask everybody to focus on their contributions and co-operate with me as I try to move business along.</p>
+          <p eId="para_19"> I call on each organisation to deliver an opening statement as follows: Dr. Brendan O'Connor, Aquafact and co-author of the report; Mr. Eamonn Hore, Wexford County Council and Ms Ciara O'Mahony, NPWS </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T12:30:00+01:00"/></from>
+          <p eId="para_20">Lagoons are brackish or partly saline water bodies. They are classed as priority habitats under the habitats directive and must be protected by the State. Ireland has a total of 2,400 ha of this habitat with Lady’s Island Lake in Wexford at 300 ha being one of the largest.</p>
+          <p eId="para_21"> Recent EPA surveys have shown that many lagoons, including Lady's Island Lake, are in bad ecological condition, as defined by the water framework directive. The CLEAR project proposed by Aquafact and Roden and Oliver Associates, and funded by the EPA, was designed to establish what had caused the significant deterioration in ecological quality when compared to the near pristine conditions in the 1970s. The project also included a survey of the nearby Ballyteige flooded sandpit, which was used as a control site. Surveys included monthly visits to the lagoon and the lake to collect water samples from ten locations in Lady's Island Lake, one site in Ballyteige and six streams that flow into Lady's Island Lake to establish levels of nutrients such as nitrogen, phosphorous, ammonium and chlorophyll a, which is a measure of algal biomass. The shallow and deeper waters of both locations were sampled to document the plants and animals present.</p>
+          <p eId="para_22"> The results from the Lady's Island Lake surveys showed highly elevated levels of nutrients and chlorophyll a, with chlorophyll levels being six times greater than in Ballyteige. These highly elevated levels of chlorophyll a, or planktonic algal blooms, block sunlight from reaching the bed of the lagoon. As a result, the plants of the lagoon bed had died due to the lack of light. Decay of algal biomass resulted in de-oxygenation of the sediments and the death of the animals on the lagoon bed. A comparison with a survey of Lady's Island Lake in 1977 by Mr. Richard Bates proves the lagoon was once in near pristine condition but has now lost most of its characteristic biota. The reason for these changes lies in the excessive growth of algae and cyanobacteria caused by massive increases in inflowing nitrogen and phosphorus, estimated as 12 times greater than at Ballyteige, which is in good ecological condition as per the water framework directive.</p>
+          <p eId="para_23"> The reason for these high levels are the high nitrogen and phosphorus concentrations in the inflowing streams feeding the lake. In turn, these levels can be related to intensive agriculture in the lake’s catchment. Poorly maintained septic tanks may also contribute. The problem is cumulative. Every year, more nutrient is added to the lake’s catchment. Some gets washed out to sea and some is released to the atmosphere but a large fraction accumulates in the lake sediments, which now have a sevenfold higher nutrient concentration compared to our control site.</p>
+          <p eId="para_24"> Ireland imports hundreds of thousands of tonnes of fertiliser annually. Part is exported in food but the greater part is discharged into Irish ecosystems with extremely serious consequences, including loss of fisheries, destruction of wildlife heritage, pollution of drinking water and damage to tourism. In addition, the fertiliser lost to agriculture has to be replaced by importing yet more nitrogen and phosphorus thus aggravating the problem.</p>
+          <p eId="para_25"> Lady's Island Lake exemplifies the problems involved in managing Irish lagoons. A number of problems must be solved on a national scale before habitat restoration is possible. These will require the following measures: reducing the use of imported fertilisers on farmland and research on the recycling of nutrients, increasing measures designed to retain nutrients on farmland such as buffer zones, wetland restoration or creation, or tree planting should be considered. Similar measures should be considered for commercial forestry and maintaining or restoring the salinity regime of Irish lagoons. Any restoration plan for Lady's Island Lake or any of the impacted Irish lagoons needs to be site specific. Restoration will be difficult and the efficacy of proposed plans should be tested on a demonstration site. Ultimately, the problem must be solved on a local scale with the involvement and support of local people. Burren Beo in County Clare, The Bride River project in counties Cork and Waterford or The Lough Carra Catchment Association in County Mayo have developed this approach with notable success.</p>
+          <p eId="para_26"> Sin deirimid fé. Go raibh maith agaibh go léir.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T12:30:00+01:00"/></from>
+          <p eId="para_27">Lady's Island Lake or Loch Tóchair is an important natural heritage site on the south Wexford coast. Tóchair is the Gaelic word for causeway. The site is protected by two overlapping areas, including a special protection area, SPA, which was designated in 2010 for terns and several species of water birds, and a special area of conservation, SAC, designated in 2018 for habitats, including coastal lagoons, reefs and vegetated shingle.</p>
+          <p eId="para_28"> Lady’s Island Lake is one of the largest lagoons in Ireland measuring 340 ha or 840 acres. Under the water framework directive, Lady’s Island Lake lies within the Ballyteigue–Burrow catchment and the Kisha 010 sub-basin. The Kisha 010 sub-basin is approximately 7,339 acres, with approximately 4,734 acres draining into Lady’s Island via 12 feeder streams and other sub-drainage systems.</p>
+          <p eId="para_29">No conversation about Lady’s Island Lake would be complete without mentioning Our Lady’s Island, one of the most ancient shrines to Our Lady and one of the oldest pilgrimages in Ireland. Although there is no record of Our Lady’s pilgrimage until the coming of the Normans, a tradition has always existed in the Barony of Forth that it was a place of pilgrimage from the earliest days of Christianity in south Wexford. The two most challenging management issues currently impacting on Lady’s Island Lake are improving water quality and controlling the water level of the lake. Water quality in Lady’s Island Lake has been poor since at least the early 1980s, over 40 years ago. The most recent research report on the status of Lady’s Island Lake, published by the EPA, prepared by Aquafact and cofunded by the NPWS, confirms the long-understood reality that the lagoon and its feeder streams are badly polluted. Agriculture is clearly the main pressure with large inputs of nutrient, namely, nitrogen and phosphorus run-off from land, causing severe pollution and damage to the ecology of Lady’s Island Lake. The CLEAR project, which brought the subject report to publication in January this year, has outlined that a five-to-seven-fold reduction in nitrogen and phosphorus inputs to Lady’s Island Lake will be necessary to return the lagoon to its earlier condition.</p>
+          <p eId="para_30"> Wexford County Council welcomes this report as it further highlights the creeping deterioration of the lake’s water quality over the past 40 years, confirms that the main issue is with current agricultural practices and points to a considered way forward in an effort to reverse the lake’s poor water quality status. Agriculture within the sub-basin draining to Lady’s Island Lake consists of 72 farms. There are 13 farms where their primary enterprise is tillage, 16 farms where their primary enterprise is dairy, 24 farms where their primary enterprise is beef, six farms where their primary enterprise is sheep, and the remaining 13 farms are equine related or specialise in hay and silage for sale. Only seven farms in derogation are stocked above 170 kg organic N/ha. Of the above farms, there are approximately 56 farms draining to Lady’s Island Lake. The catchment is known for its early potatoes, including the famous Carne potatoes known right across Ireland, and varieties such as Homeguard, Premier and British Queens. That is almost ironic if we remember An Gorta Mór. The agricultural practices problem clearly outlined in the EPA report and as evidenced over many years is not the fault of the farmers involved, all of whom are operating substantially within the rules and advice for application of nutrients as per the Department of agriculture controls.</p>
+          <p eId="para_31"> Since 2018, Wexford County Council has conducted 30 farm inspections under planning application requirements and good agricultural practices audits and through environment complaints. A further 90 inspections of septic tanks were conducted under the national inspection plan between 2018 and 2022, of which 63 failed the inspection. There were 21 systems found to directly discharging to surface waters in the catchment area. Six septic tank failure cases remain open and are being actioned by Wexford County Council.</p>
+          <p eId="para_32"> As to solutions, the EPA CLEAR report suggests a series of remedial techniques that Wexford County Council agrees with, including the fencing of watercourses, provision of water troughs, buffer zones to drainage outlets, hedgerow planting, native woodland planting, elimination of cattle drinking points, sediment traps, settlement ponds, riparian zones, arable grass margins, soil sampling and nutrient management plans. We would also include in that additional advice for farmers on their specific enterprises, farmyard design, land topography and land use. Wexford County Council is suggesting a European Innovation Partnership scheme or similar national scheme to be cofunded or funded directly by the Department. The Duncannon EIP scheme, which has delivered measurable success within the Duncannon drainage catchment area, is included in the appendices. The Duncannon EIP scheme was commenced in 2018 and finalised in 2023 as a voluntary scheme that addressed the sources of pollution and went above and beyond the nitrates directive, whereby individual farmers were paid grant amounts for works carried out - examples of the works are set out in the document - and were also paid on an annual reward basis contingent on specific outcomes. Regarding the costs involved, an EIP scheme similar to that in Duncannon would cost in the region of €2.25 million. I have looked at cost for the level control that is also an issue and the most recent costs show that it could be between €3 million and €3.6 million.</p>
+          <p eId="para_33"> We welcome the recent focus on the pollution of Lady’s Island Lake and the invitation to address and interact with the joint committee. We sincerely hope that this recent focus will lead to a practical and workable solution. It will take the expertise of the various environmental and agricultural bodies working together to solve the problem and, of course, adequate funding. Wexford County Council is happy to lead on such a solution.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T12:40:00+01:00"/></from>
+          <p eId="para_34">Our final opening statement is by Ms Ciara O'Mahony from the National Parks and Wildlife Service.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Ciara O'Mahony<recordedTime time="2025-06-11T12:40:00+01:00"/></from>
+          <p eId="para_35">I thank members for the invitation to attend this committee, to discuss the Coastal Lagoons: Ecology and Restoration, CLEAR, report prepared for the Environmental Protection Agency, identifying the serious water quality problems in Lady’s Island Lake. The NPWS and the Environmental Protection Agency cofunded this report. It may be helpful to first set out the role of NPWS a regards water quality at Lady’s Island Lake.</p>
+          <p eId="para_36"> As the State’s nature conservation body with responsibility for implementing the birds and habitats directives, the NPWS designates lands and waters as protected areas for nature conservation, sets conservation objectives for their management and reports to the European Commission on the condition of protected habitats and species. Lady’s Island Lake is designated as a special area of conservation, SAC, for lagoon and other habitats, and as a special protection area, SPA, for a number of bird species, including four species of tern that nest on islands in the lake.</p>
+          <p eId="para_37"> While the regulations that implement the birds and habitats directives - the European Communities (Birds and Natural Habitats) Regulations SI 477 of 2011 - assign roles, including the designation process, to the Minister, the regulations are also clear that where responsibilities have been assigned to another public authority, those responsibilities remain with that public authority. The NPWS's role is further qualified as to "consult with, co-operate with, advise, assist and seek the assistance" of other public authorities. So, all public authorities have responsibility for ensuring their roles and functions, such as the regulation of land use or discharges in respect of water quality, achieve compliance with the directives and the implementing regulations, and support the achievement of the conservation objectives for protected areas. NPWS is proactive in reaching out to these authorities by liaising either nationally or locally as appropriate. For Lady’s Island Lake, this includes attending national and local operational committees for implementation of the water framework directive and by direct liaison with Wexford County Council, LAWPRO, the Department of Agriculture, Food and the Marine and others.</p>
+          <p eId="para_38"> Additionally, the new LIFE Strategic Nature Project for Ireland, SNaP, co-ordinated by the National Parks and Wildlife Service with our, partners the Department of Agriculture, Food and the Marine and Coillte, will invest in new data systems to underpin biodiversity decision-making that will support planning, funding and delivery for nature conservation and restoration. In time, the project will specifically include building capacity in lagoon expertise and will deliver a national coastal lagoons restoration strategy for Ireland, with initial work planned for Lady’s Island Lake SAC and Tacumshin Lake SAC. Restoration measures on these lagoons will be delivered using a multi-agency approach, involving the NPWS, the Department of Agriculture, Food and the Marine and Wexford County Council, in close collaboration with landowners and surrounding communities. Concrete conservation measures will be delivered in Lady’s Island Lake under the direction of the coastal lagoons expert to be recruited over the lifetime of the SNaP. Nature conservation projects are also being delivered by NPWS locally at Lady’s Island Lake, with a high degree of support and co-operation from landowners and the local community, which is greatly appreciated and acknowledged here today. Each year, with landowner permissions, the NPWS arranges daily wardening of the internationally important tern colonies nesting on islands in Lady’s Island Lake. Associated with this is NPWS’s role in cutting a drainage channel through the seaward barrier each spring to drop water levels around the island in time for nesting season. This is done with permission from, and on behalf of, Our Lady’s Island Lake drainage committee. The NPWS, along with staff from the Botanic Gardens of the Office of Public Works, manages a project to save the last remaining population of cottonweed in Ireland or the UK, which is found on the seaward barrier of the lagoon. The NPWS has also recently installed monitoring equipment in the lagoon to measure water level, temperature, dissolved oxygen, turbidity and salinity and has commissioned a survey of two rare lagoon plant species: foxtail stonewort and bearded stonewort.</p>
+          <p eId="para_39"> The NPWS welcomes this discussion of water quality problems in Lady’s Island Lake lagoon and that the potential solutions are being discussed. Pollution is identified in the CLEAR report as arising in the wider catchment, and in particular through surface run-off from farmed land.</p>
+          <p eId="para_40">While existing farming schemes are in place nationally, the NPWS is supportive of the ambition to deliver new, tailored and additional agri-environment solutions in the catchment, and we are willing to work with our colleagues in other public authorities to achieve this ambition.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_6">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_41">I thank the witnesses and I welcome them and Councillors Lisa McDonald and Ger Carthy from the area. Even though it is not quite my constituency I am very familiar with Lady's Island Lake and the Duncannon scheme which was mentioned. It is a model scheme that can be used. Let us be optimistic about the existing programme; when can we anticipate the lake to return to pristine condition?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_42">I am the senior executive scientist with Wexford County Council. It will take time and there is no two ways about it. This is for the simple reason that our farmers have been doing exactly as they have been asked to do for the past number of decades. They have been looking at one thing only and that is production. They have done an absolutely superb job of it. They were told it is all about production and they are brilliant. The thing is though, to get this they have had to use increasing amounts of fertiliser through nitrates and phosphorus. The nitrates are not conserved and go through the soil quite quickly but they do go into the groundwater and it takes time for them to bleed out. However, the phosphorus is conserved and once it goes on as a fertiliser it is bound to the soil particles and it takes time for it to come off. It could take years or even decades. We have some evidence that what we are doing is starting to have an impact, in that it is not getting worse. We took some samples way back in 2009 when we were looking at this. Some of the small rivers at the time had higher levels of phosphorus than were coming out of the sewage treatment plant in Lady's Island Lake.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_8">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_43">I apologise for interrupting but I am conscious of time. I am thinking about this from a policy perspective. We are now in negotiations on the next round of CAP and a critical question is on the derogation. It was mentioned that seven farms in the area are currently in derogation. From a policy perspective does Mr. Cooney have any view or advice on this?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_44">An awful lot more restrictions have been made. The most recent set of results we took were earlier this year and they indicate the problems coming out of the streams are not getting any worse. It is possible that whatever was put in there in recent years is at least stopping but we do not know yet. If we speak to anybody in the Department of agriculture, Teagasc or the EPA they say there is a backlog of stuff in the environment. The nitrates and phosphorus are in there and they have to come out of the system at this stage. I feel as though I am speaking for the IFA but this is the science of it. There is now a need to let it settle for a while. I understand where people are coming from, in that they need to start getting things done quickly, but the amount of nutrients that have been put in there will take time to come out. It could take years. When we go to CAP and make demands, we could demand that more stringent measures be put on farmers but they might not really be needed just yet.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_10">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_45">I am glad there is good engagement with the IFA and farm organisations. Certainly in the Duncannon scheme there is very positive engagement, which is welcome.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_46">We have had great engagement with farmers because we have been open with them. We go up to them and they talk to us and we talk to them. Mr. Kinsella was a private agricultural consultant before he joined us at Wexford County Council. He knows most of the farmers around the county and that is brilliant.</p>
+          <p eId="para_47"> Last year we came up with a code of practice as to how we would run engagement with farmers during the national agriculture inspection programme. We were the first county in the country to do this. Other counties have taken it on board now and they are all doing it. It gives fair play to the farmers and to us. We are looking for them to work with us. We have had very good engagement.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_48">I was the project manager of the five-year Duncannon European innovation project. Although the project mainly looked at bacteria levels because of the Blue Flag status at Duncannon we saw a reduction in nitrates at all 12 sites. They were measures above and beyond the nitrates regulations. The current nitrates action programme can be tweaked a little bit to work with farmers but what are needed for Lady's Island Lake are measures above and beyond the nitrates regulation. It is exactly what we did in Duncannon.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_13">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_49">I certainly think the Duncannon model is very effective. I am conscious of time but I have another quick question. It is critical to involve the local community and have engagement with local schools to have an understanding. Deputy Whitmore and I were at Brittas Bay national school in Wicklow recently, where there is a wonderful project on engagement with the sea. It is critical to involve the future generations around Lady's Island Lake. Is there active engagement with the students in the area on understanding these issues?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_50">In the past we have had public meetings, which included kids. Jim Hurley is the oracle on Lady's Island Lake and he has certainly helped us engage with the kids. I hope that from today we will get something concrete. It obviously needs funding and that will certainly involve the entire population of Lady's Island and beyond. Mr. Kinsella has a very interesting perspective. He is our agricultural scientist and he also farms in the area. He has a very good understanding of what the issues are.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_15">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T12:50:00+01:00"/></from>
+          <p eId="para_51">I welcome everyone here today. It is very important that we are having this discussion. I acknowledge the work of Jim Hurley, who has been speaking about this issue for 40 years. He is looking in today and I want to acknowledge that.</p>
+          <p eId="para_52"> I am very familiar with Lady's Island Lake. I am originally from Wexford town and I spent an awful lot of time there when I was much younger. We have had problems at Lady's Island Lake for more than 40 years. This is not something that just happened recently. It has been going on for a very long time. We have a large amount of data on the site. Studies, surveys and monitoring have gone on for this entire period. The work of Aquafact has lent to this and highlighted the issues. We know what the problems are and solutions have been identified. We now need to look at our next steps and how we move forward from here. Lady's Island Lake does not have that much longer. I do not know whether it is recoverable at this stage. It is a real shame if it is the case that we are at that point.</p>
+          <p eId="para_53"> When I was down at Lady's Island recently I saw water being pumped into the lake. I rang the EPA with concerns about it. The EPA told me to speak to Wexford County Council. I rang Wexford County Council and was told to speak to Uisce Éireann. Uisce Éireann went down and looked at the site and said it was an issue for Wexford County Council. Then it came back and said no, it was an issue for Uisce Éireann. I contacted the Minister and asked what his responsibility was and I was told it was a LAWPRO issue. When everybody is responsible no one is responsible, and this is what we have here. This is the biggest problem. We need someone to put up their hand and say they will oversee management of this problem across government and portfolio and make sure there is funding. I hope the committee will make recommendations to the Minister. I would like to see this happen. Unless someone really stands responsible for this we will never solve the problem.</p>
+          <p eId="para_54"> There are 56 farms at Lady's Island Lake, which to me is not a lot and it is not an insurmountable problem to support these farmers to manage what they are doing on the land so they are not impacting on the site. When I was there I saw a 5 ft pile of manure draining directly into Lady's Island Lake. I have questions about how farms are managing their slurry and nitrogen on site. My first question is for Wexford County Council. How many inspections has it carried out this year, and how many did it carry out last year and the year before, specifically on those farms in the catchment area of Lady's Island Lake?</p>
+          <p eId="para_55">The role of the NPWS is to designate the site and it is responsible for setting the conservation measures there. It is also responsible for reporting to the EU. Has it ever raised any flags or highlighted it with the EU or the Department to say that the site was in great danger and that there was no management of it whatsoever and to see what could happen? Unless someone starts taking responsibility for sites of ecological and national importance, we are going to see them die before our very eyes, which is what we are seeing here.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_56">There was one question for Wexford County Council and one for the National Parks and Wildlife Service. We will take the county council first.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_57">I will take it. Again, since 2018, Wexford County Council has conducted 30 farm inspections. Earlier, there was a series of reports and we also held a number of public meetings. We did a lot of work back then. We are not blaming agriculture but back then, under the water pollution Act 2012, we served section 23 notices for measures to be taken to try to control water pollution. There was a court case. There was great engagement with farmers, but that has not happened since 2018. Since 2018, we have carried out 30 farm inspections.</p>
+          <p eId="para_58"> I agree with the Deputy that somebody must take control. As I said in the opening statement, we would be happy to take control but it does require funding. She asked about the EU measures. We applied twice to LIFE. Like anybody else, we have been aware of it. Mr. Jim Hurley was mentioned. I put up the statistical gauge with him 40 years ago. This is a long-standing problem but it is going to take funding for it to work and collaboration with the farmers to resolve it because, as Mr. Kinsella and I have pointed out, farmers are operating within the regulations. I take the Deputy's point on manure and the water pumping into the lake. I am not quite sure who she got, but I guarantee her that is not the norm.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_18">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_59">I thank Mr. Hore.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_60">I thank the Deputy for the question. The science is not in dispute, so it is a waste of time and effort today to discuss the science. It is now more about a call for action arising from the science , as presented through the CLEAR report, for which we were happy to cosponsor the funding.</p>
+          <p eId="para_61"> To the extent that we know how things work: it is through the localisation of issues and their resolution through co-ordination and integration at site level. We can give lots of examples of where that worked in the past, for example, in the Burren and in Duncannon for the corncrake and for breeding waders, among others. We can do this. It is a mistake to focus on a fund or the lack of funding. Funding is not the issue; it is about the co-ordination and integration piece. A whole series of players have been mentioned, such as the Department of agriculture, the water division of our Department, LAWPRO, ourselves, Wexford County Council and the EPA. There are many schemes. We could multiply the number of bodies by three or four for the schemes that exist to resolve these problems. What we now need to do is to work in partnership and be given a mandate to so do to resolve and regularise the problems that exist in Lady's Island Lake. It would be difficult to progress even if the co-ordination were to happen tomorrow. Funding is not the issue. We are happy to bring our funding to bear through the SNaP project and in co-ordination with Wexford County Council and the Department of agriculture. In the absence of co-ordination, we will go back into our individual silos and reporting to the Commission on the poor status of habitats, either at that site or nationally. We have submitted reports to the Commission on it. The question is what we do with that reporting. The science can do all the science and monitoring in the world but unless we act on it, it will be an exercise in futility. If there is a mandate coming from today to build that capacity to co-ordinate and integrate and to build the existing schemes to adapt to the needs of Lady's Island Lake, we will be on the road to success.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_20">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_62">I thank Dr. Bleasdale. Could I have a minute to come back on that?</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_63">Yes, briefly.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_22">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_64">That is very welcome. I thank Wexford County Council and the NPWS for the leadership they are showing here. I hope we could write to the Minister and seek that mandate but I would also like each of the organisations to write to the Department or the Minister in their own right to say that they have attended this meeting today and it has been identified, and as a result of the work of Aquafact, that the statistics and all the data that are needed are there, that they are prepared to join forces with all the various agencies to get the necessary co-operation and collaboration and to set up a working group to ensure that all the inspections are done and that every element that needs to happen can happen and that we see the process working across government. That would be very positive.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_23">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_65">I welcome the witnesses. I am not that familiar with the area. I am a Dublin TD and I am reading about it today. I have read all the statements that have been submitted. My conclusion is exactly the same as Deputy Whitmore's, which is to ask who is responsible for this and how have we got to this point where we know there has been a problem for 40 years. Presumably, those reports have been shared with the county council many times. There does not seem to be anyone to blame. The county council is at pains not to blame agriculture. To be fair, An Taisce seems to agree with the council. It states that the regulations and measures on nitrates and other such issues have been inadequate for a long period. Broadly speaking, farmers are complying with the measures that are being enforced. How long has the council and other bodies known that the regulations are not adequate? How many times has this been raised with local councillors? Have special presentations been given to councillors about what can be done? If, broadly speaking, everyone is operating within the law, then the laws and rules need to change. What proactivity has there been in recent years in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_66">I will take this. That is part of the problem. Farmers are substantially compliant with the current legislation. If nitrate levels are reduced, there will have to be changes in the Department's rules or we will have to help farmers to farm in a slightly different way. That was mentioned among the findings of the report done by Dr. O'Connor and Dr. Roden. They gave a list of things that we do. We put in buffer zones that are bigger than required. We have buffer zones of 10 m instead of 3 m. We actively manage the buffer zones rather than just putting in a buffer and walking away.</p>
+          <p eId="para_67"> In addition, we could put in constructive wetlands. It is a larger effort that will take out the sediment. Much of the sediment that comes off the catchment is where the phosphorus is located. We could put in a buffer zone around the lakeshore as well. Farmers will be able to continue farming exactly as they are but it will help them to reduce their impact on the water. That is what it comes down to.</p>
+          <p eId="para_68"> The Deputy is correct that the Department of agriculture needs to be involved in this. Dr. Bleasdale mentioned that as well. We are not the only bodies involved. A number of other bodies must come together to work with this. As Mr. Hore said, we are happy to run with it. We did it with the Duncannon project. Duncannon lost its blue flag and then it lost its bathing waters so nobody could swim in the place. We got European integration partnerships, EIP, funding. An agricultural scientist, Dr. Mairead Shore, designed the project for us. She was with Teagasc. We engaged with the farmers and we put in additional measures beyond what was required by the Department of agriculture. It worked very well. We had public engagement. Farmers engaged once they saw what was needed and that they were not the only ones who were involved. We also engaged with Uisce Éireann on sewage that was coming out in those areas. We got significant engagement and we all pulled together. Mr. Kinsella managed it. It worked very well. We have our bathing water status back.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_25">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_69">I thank Mr. Cooney. That is good to hear, but even An Taisce has said that measures like the kind of extended buffer zones would be useful for phosphorus sediment and ammonia but not necessarily for nitrates. It said that the only highly ranked measure for nitrate mitigation is reducing the nitrate load, for example, through a reduction in livestock units per hectare. Have such conversations taken place?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_70">The problem there is that it is tillage. They do not have livestock units.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_27">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:00:00+01:00"/></from>
+          <p eId="para_71">There is a mix of farm types.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_72">There is. It is about tackling many different things, knitting them all together and having somebody to manage that project.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_73">I have a quick observation regarding the national level. We import something in the order of 300,000 to 400,000 tonnes of nitrogen every year. We produce food that has approximately 100,000 tonnes of nitrogen in it. Under our present system of production, we are adding the balance every year. My figures are approximate but, as a general statement, we produce 1,000 billion litres of milk every year, putting more nitrogen into the environment as a result. Our agricultural system is such that to produce more food is to put more nitrogen into the ground. That is our starting point. There are two things we have to talk about. The first is whether we should reduce food production. If that is not acceptable, we have to do something about efficiency. With all due respect to Teagasc, our agriculture sector is a little bit like a car that is giving you ten miles to the gallon and belching out black smoke behind it. As long as we have that, for every year you see more food exported, the consequence will be more nitrogen put into our environment. That system will go on until such time as we produce considerably greater efficiencies or are forced to at least reduce milking.</p>
+          <p eId="para_74"> Where is this nitrogen ending up? It is ending up in many different parts but one of our report findings was that there is something in the order of 1,200 to 1,500 tonnes of nitrogen at the bottom of Lady's Island Lake. Until that is removed, is it going to be quite difficult to restore the lake.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_30">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_75">It is nice to see some familiar faces. I welcome Councillors Ger Carthy and Lisa McDonald. I worked with them on the county council. They are two fine councillors. There is no point in talking about the past. The past is done. The issue is saving the lagoon. That is the main reason we are here. I will ask a few practical questions. The witnesses spoke about the 12 feeder streams. What is the main balanced solution to resolve the problem? Are all the streams polluted in the same way? Could some of them be diverted? The report also states that a reduction of 80% in nitrates and phosphates is needed along with a reduction in imported nitrogen. I was on the agriculture committee last year, and the nitrates derogation is a very hot topic. There are 80,000 farmers out there who have to earn a living. There is a balance to be struck. Is there an alternative form of fertiliser farmers can use? Thinking about coastal areas, seaweed and stuff like that can be used locally.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_76">We might just get answer to those questions and then bring the Deputy back in.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_32">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_77">Yes. I have three more questions.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_78">Scientists carry out research. It is quite clear that, with an efficiency of 25% to 30%, 70% of our nitrogen, which costs a lot of money to import, is being flushed into the lakes. We are pushing it into the bottom of Lady's Island Lake. I am not an expert in that area but, as a scientist, I fully believe that if we put the research into it, we could come up with far more efficient systems. I am not much of an expert on Teagasc but I would think that any national programme would demand far higher efficiencies. That means new fertilisers, new ways of applying it and new crops. We have to do this research.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_79">The Deputy mentioned diverting streams. That is quite a complicated thing to do because it really could affect the ecology of the lake. It would require a Natura impact statement. Any action like that would be very difficult to get through. Some people have mentioned the idea of digging out the sediments to take the phosphorous and nitrogen out directly. There would be issues for the National Parks and Wildlife Service with regard to how that would affect the existing ecology of the lake, even though that ecology is poor. Whatever method is used, it has to be assessed. We have to look at the potential impact of those actions on the ecology of the lake.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_35">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_80">Mr. Hore mentioned funding. Is there any mainstream funding from Europe that we are not using but could use? There was also reference to the Duncannon European Innovation Partnership scheme. Could something like that be set up for Lady's Island? What would it take to set up a demonstration site or control site in Lady's Island? What would the witnesses like to see arise from their engagement with the committee? What actions need to be taken now?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_81">I will invite Mr. Kinsella in because he has experience in respect of nitrates and he has a particular view on the issue that is very relevant.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_82">Having sampled in April of this year, we found that 11 of 13 sites had elevated levels of nitrates. It will take a number of mitigation measures to get those levels down. On diversion, I agree with Aquafact. It is complex. It is probably important for the ecological status as well. On alternatives to chemical fertiliser, there is efficiency in organic manures. Farmers need to become more efficient with the slurry they are applying, their farmyard manure and that type of thing.</p>
+          <p eId="para_83"> The EIP was co-funded by the Department of Agriculture, Food and the Marine under the previous rural development programme. We were one of 12 projects selected. We were the first and only local authority to lead on an EIP. Numerous other EIPs have been funded since then. There is currently a move towards farm welfare, farm health and safety and that type of thing. There is a slight movement as regards EIP funding.</p>
+          <p eId="para_84"> With regard to other actions, there are a great many projects out there. I go back to Deputy Whitmore's statement. Farmers, rather than Wexford County Council, do not know where to look for funding. That is the big issue. Looking at the types of funding out there now, we have the national water EIP, which is being run by LAWPRO. Teagasc is involved in the Farming for Water project, which highlights mitigation measures. There is funding out there but many farmers are stepping back and away from it. There are issues with ACRES as regards funding, payouts and farmers waiting for years and years. There is a major trust issue arising from farmers applying for a scheme and not getting paid for two years but, with regard to the EIP, auditing and that type of thing, we did a final survey with the EIP in Duncannon and the farmers were paid in the first quarter of the following year and that was it. It comes back to small-scale locally led schemes. That is what we should be looking at.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T13:10:00+01:00"/></from>
+          <p eId="para_85">I will repeat something we have said a few times already. We need to be careful not to try to find an heir to the blame here. There is a multiplicity of problems here that need to be resolved. I would also argue against trying to find a solution to national policy that could happen quickly enough to resolve the issues at Lady's Island Lake. They are two separate conversations. One is about the national focus, which will involve a slow evolution, and the other is about a quick pivot as regards the needs of Lady's Island Lake.</p>
+          <p eId="para_86"> I would be cautious about trying to work out how to address the pollution problems here in this room but it is a source issue and pathway issue as it gets into the lake. There will be varied issues around the margins of the lake. Some areas will be more important than others as regards threats and pressures. I would argue for co-ownership of the solutions in partnership with the bodies we have already mentioned. These bodies should work together, bringing whatever schemes they have available with them, tailoring them, applying whatever additional funding is required to bring added value to them and making them localised, flexible and nimble. We should respond quickly to the brainpower in those groups to work out where the pressures are, what the solutions might be, how those solutions could be resourced and how farmers could be brought on the journey towards those resolutions over time, although I would hope quite quickly.</p>
+          <p eId="para_87">Again, the mandate is needed to constitute the group. I do not believe funding should be the issue or will be the limiting factor. Existing schemes could be tailored and adapted to the needs of Lady’s Island Lake.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_39">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_88">I thank the committee for hosting today’s proceedings. It is important that the report be analysed in detail. I acknowledge the presence of the Lady’s Island drainage committee chair, Councillor Ger Carthy, and Lisa McDonald, a former Member of Seanad Éireann. As a former member of Wexford County Council, I acknowledge the contribution of the representatives from the council.</p>
+          <p eId="para_89"> I have quite limited time and a number of questions I want to get to grips with. The first is this: who is ultimately responsible for addressing this? I noted the comment that there should be not an air of blame but, to achieve that, we must get to grips with this. Earlier, it was mentioned that four different agencies were contacted on this issue and each said another was responsible. Who is ultimately responsible for addressing this, and is there a need for a task force to get people together? Maybe it will emerge from this meeting that there is a need for a task force. Which agency is actually responsible for taking the lead on this? That is my first of four questions.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_90">There is no simple answer. There are four bodies, at least; it is as simple as that, not a question of pointing the finger and saying one body is going to be responsible. One body can take charge and lead, but it is not as simple as saying one body is responsible for the fault. There are several factors.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_41">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_91">If one agency were to take the lead role, which would it be?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_92">As the director said, we will put ourselves forward. We have proven ourselves to be able to do what is required with the Duncannon projects. We have experience-----</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_43">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_93">Do the other agencies whose representatives are here agree it should be Wexford County Council?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_94">We met officials from the National Parks and Wildlife Service on this twice in the past couple of weeks, so it is not as if there is no discussion going on. I will wait for the Senator’s other questions because I have a few-----</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_45">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_95">Is it agreed between-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_96">Just one second. I have an indication from the National Parks and Wildlife Service.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Ciara O'Mahony<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_97">I will<b>
+						</b>speak from the local perspective. I have been privileged to join with Wexford County Council and see what it has done through the Duncannon EIP. It is excellent. It shows a proven track record of delivering.</p>
+          <p eId="para_98"> I also wish to speak about what has come up a couple of times now, namely, the question of which agency should be responsible, which leads to the comment that it is everybody and nobody. That is a genuine frustration. The water policy area is incredibly complex. There is a water plan, produced in 2024 by the water policy division of the Department of housing, and it spells out really clearly the responsibilities of all the various agencies. That is a helpful source but, beyond that, what we need for Lady’s Island Lake is a local coming together of a certain number of key bodies, including ourselves.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_48">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_99">The CLEAR report mentioned the tourism opportunities that exist and the Harper’s Island visitor centre, which has 20,000 visitors per year. Has the proposal been advanced in any way? Will it be included in the application for funding and will tourism proposals be incorporated into the work that is going to be done? It seems that if the report is to be implemented fully, all the recommendations should be included, including the one on tourism.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_100">I will take that. In my opening statement I left a couple of things out because I had only five minutes. Tourism is one of the areas we did tackle. There are so many items of interest in relation to this. They include not only tourism but also birdwatching, pilgrimage, nature classes, history and cycling – the area is on the EuroVelo route – and also mumming, music, language, including the Yola language, walking, blessed wells, cottonweed, heritage and folklore. These will all be part of anything we move forward with because there has to be some added value not only for the farmers but also for the community.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_50">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_101">My third question is as follows: where do the representatives envisage the funding for this coming through? Will it be EU funding, Government funding or local council funding? This is a multimillion euro project. The director mentioned €2.25 million earlier.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_102">I will take that, too, and maybe somebody else will want to follow on.</p>
+          <p eId="para_103"> What I have heard today is that we need new research, an assessment and enforcement. You can only enforce what is enforceable. I was looking for the figures before and noted there were 81 farmyard inspections, 21 warning notices and section 12 notices. Aquafact has stated there is what is obviously a very serious problem at the bottom of the lake. The research and assessment could go on but right now we have to do what is necessary to prevent additional nutrients from going into the lake, and that is what was suggested in both the CLEAR report and through what we carried out in the locality work, which relates to all those measures. That needs to happen now. We do not have to wait for research; the research and everything else can go on as it is happening.</p>
+          <p eId="para_104"> There were seven sources of funding mentioned in the CLEAR report, but they are all over the place. How do you bring all of them together? We need one source of funding, entailing an exemplar project at Lady’s Island involving the Department of Agriculture, Food and the Marine. We would be happy to work on that. While that one source of funding would be significant, you either put a value on the lake and what is there or you do not. That is my opinion. We applied for LIFE funding before but it did not come through. If you ask me, I would say there should be one source of funding, collected from wherever. I know the problems with that but without doing what I suggest, it is all over the place. That is my view on it.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_52">
+          <from>Senator Cathal Byrne<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_105">The Chair might indulge me and give me time to ask my last question. What is the impact on the ground of the Irish Water plant adjoining the site?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_106">We know exactly what that is. The input from the Irish Water plant is less than 1% of the total nitrogen. We also have a solution for that but I do not think it would be money best spent. Maybe it would be in the future. The solution is to bring the effluent from Lady’s Island to Tagoat. It is only that far. That is assuming that the Tagoat–Rosslare Harbour scheme goes ahead. This is currently being examined by Uisce Éireann and would cost €6 million. One would like to reduce every input but the phosphorous input from the Uisce Éireann treatment plant is less than 1%.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_54">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_107">I have what is more of a general question following on from what Mr. Kinsella was saying. If anyone else wants to respond to it, they should feel free to do so. I thank the guests for all their contributions. I apologise for being late. I was in the Chamber.</p>
+          <p eId="para_108"> Mr. Kinsella, in particular, mentioned a few of the schemes, such as ACRES, and the frustration among farmers. All around the country, including at Lough Neagh and in my county, there is a problem with effluent from domestic septic tanks going into rivers. Has Mr. Kinsella any suggestions as to how they should be streamlined? Obviously, there should be more funding and maybe more efficiency within the Department. To reduce the amount of nitrates getting into the system, are there one or two things in particular that might make a big difference?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_109">On current schemes, when we look at reducing chemical nitrogen into the system, we have to look at the nitrates action plan that currently exists. There have been reductions in this regard over the past couple of years. Since 2022, there has been a reduction of 10%. However, with regard to mitigation measures, it is a case of farm system change through white and red clover incorporation and multispecies swards. Then it is a question of various other measures, such as in-drain settlement ponds. The solutions all exist and are tried and tested. Teagasc is doing a lot of work at the moment. A smarter buffers project was recently run. We were a stakeholder in that and I joined the group.</p>
+          <p eId="para_110"> With regard to efficiency from a funding point of view, it is a matter of a locally led scheme. It is the only way to go. I am referring to a small locally led scheme with enough funding and possibly lasting for five years.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:20:00+01:00"/></from>
+          <p eId="para_111">As Ms Kinsella said and as I believe has been said before, there are many solutions available already. There are the buffers, wetlands, protected urea, multispecies swards and clover incorporation. However, it is a matter of getting somebody to pull things together. When we carried out the Duncannon project, everybody was doing everything in their own different directions. As Mr. Bleasdale was saying, we need somebody to drag all the elements together. That is what we are looking for.</p>
+          <p eId="para_112">That is when you start to see reductions in things like that. With regard to Teagasc in Johnstown Castle, we were very fortunate to have Johnstown Castle beside us because we often go along and talk to the lads and ladies out in the research centre. We often have discussions. We often go out there and listen to all the things they are doing.</p>
+          <p eId="para_113"> It is out there but it is a matter at this stage of pulling it together. I disagree a little bit with Dr. Bleasdale in that I think there is an element of funding needed. There are no two ways about it. You have to have funding for somebody to manage it and put in some of these measures. They are additional measures to what is in the nitrates action plan. They are built on top of them. We need them, and you need to put in things such as the larger buffer zone because it is unfair to ask the farmers to do all this work and not be compensated for it. It is like where somebody with a business builds a great big shed and we suddenly say they cannot use 10% of after they have invested all of that money in that shed. You are asking the same thing of farmers as well. You cannot ask them to put all these measures, fund this type of thing and have a reduction in their salaries just because we want clean water. Yes, they need clean water and we want clean water but we cannot expect them to have it all on their backs.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_114">I have an observation for the committee. In the west of Ireland there are two schemes that have tackled these problems. There is Dr. Brendan Dunford's great work in the Burrenbeo, and an organisation I am involved in myself, the Lough Carra Catchment Association, which brought in a LIFE grant of about €5 million. In both cases, you are dealing with a local group that tries to recruit members locally and acts as the ginger group, for want of a better word. In the Lough Carra LIFE project, we have involvement with Mayo County Council, the National Parks and Wildlife Service and Coillte but the driving force, if you wish and if that is the right phrase, is the Lough Carra Catchment Association. It holds meetings every two months. We have a membership of 200 or 300 people, including a county councillor, anglers, farmers and scientists. You need a group on the ground that actually cares about the place. I fully accept it is a total maze with respect to where the money comes from, but certainly in the LCCA we do not think that is our biggest problem. Our biggest problem is getting the work done, but if you know what you want to do and you have a clear plan, then the other things have a tendency to fall into place. That said, obviously we need better State focus.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_58">
+          <from>Deputy Pa Daly<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_115">Was it the Carra catchment or Carraig?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_116">The Lough Carra Catchment Association. I am messaging and promoting it shamelessly. It is in County Mayo.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_117">It is a lake. Lough Carra.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_118">It is a beautiful marl lake. Tell me when to shut up. It is a beautiful marl lake-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_119">Okay, Dr. Roden is out of time.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_120">-----and it is in danger from exactly the same things, but probably more phosphorous than nitrogen. A group came together about seven or eight years ago led especially by Dr. Chris Huxley and Mr. Tom Byrne. They formed an association and said that what we needed here was a LIFE project grant. They got a LEADER grant to write the project, and we got our LIFE funding. I have noticed since then other reasonably large sums of money have come our way, around €50,000 and €100,000. The point is, we have a group of people who want action on the ground and have formed a mechanism. It is what the Deputy is talking about - who is in charge? To an extent, in Lough Carra's case, there are many people with different responsibilities but the LCCA is there giving out stink if things do not happen.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_121">To clarify my earlier point about funding, and not to be misrepresented, I do not think funding is insubstantial and needs to be found. Farmers will have to be incentivised to make any change that is required and that will cost money but, to my mind, that is the easier challenge to overcome. The bigger challenge to overcome is integration, the pulling together of relevant players, looking at existing schemes, and the working out of how those schemes need to be tailored, tweaked and adapted and become flexible to the needs of Lady's Island Lake in this case. Money will be needed but that, to my mind, is the easier of the problems that exist. The co-ordination, integration and collaboration forms the more challenging piece.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_65">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_122">I apologise for being late. I had business in the Dáil, so I am sorry I missed the witnesses' opening statements.</p>
+          <p eId="para_123"> I have a few questions for the NPWS and other groups. The public authorities have responsibility for ensuring the roles and functions are kept within the regulations. We are where we are now, and you can reach out to these authorities and see. What does that look like? We are recommending that these authorities ensure the regulations are set out properly. Will the witnesses talk to us about their contact with Wexford County Council and the Departments they mentioned? What does it look like? The <i>status quo</i> has got us to this situation so how are things working? How do the witnesses think things are working, and how can we change it? They mentioned the establishment of a coastal lagoons restoration strategy, but is there going to be an investigation into how Lady's Island Lake got into such a state? The restoration is all well and good but we should be investigating how the lake actually arrived at this place. What we are doing now is what has got us to this situation.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_124">I can try to answer that question. We have already tried to explain the complexity of the management of water and the variety of bodies that-----</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_67">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_125">I am sorry if I missed it and the witnesses have gone through it already.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_126">No, it is fine. It is actually worth repeating because it is a very busy space. We have the water framework directive, the co-ordination across the Department of agriculture of the schemes it runs that are intended to protect water, and we have our own water division in our Department, which manages the water action plan and the zoning of the country with regard to certain catchments that are more sensitive than others. Then there is our role within the National Parks and Wildlife Service in the context both the SAC and SPA networks. We are talking about one lake here that is only one of 441 SACs we have to manage nationally, and only one of the SPAs out of 167 we manage nationally. The question is how we pivot and turn our attention to one extremely problematic area, that is, Lady's Island Lake in this case. We are saying we need to pull all of the responsible Departments, agencies and bodies together in a think-tank or to constitute a task force. This would work out, regardless of the national problems that exist everywhere and need to be resolved yesterday, how we plan for tomorrow in the context of Lady's Island Lake, look at the existing schemes, controls and responsibilities of each of those players, almost leave all of that at the door and work out how we work together to provide solutions, including the funding piece but, more importantly, the co-operation and collaboration.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_69">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_127">When the NPWS reaches out to those different authorities, what does that look like? Is it able to ensure that regulations are enforced? What penalty do they have to face if they are not adhering?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_128">In our opening statement, we outlined that while the NPWS has a statutory responsibility with regard to biodiversity in nature, the regulations empower other authorities to take on their own responsibilities with regard to the schemes, programmes and regulations they run. That would include the Department of agriculture and every Department and agency with regulation and control. We are not the thought police that goes around the country waving a stick trying to make everybody compliant. Everybody needs to take on board their own need for compliance. It is easy to say that but that can then lead to problems at site level. That co-ordination piece is now needed to work out the unique situation that presents in Lady's Island Lake, and through partnership, that site and its resolution can be worked out, if that is helpful. I am not sure if that is entirely clear but I hope it is.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_71">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T13:30:00+01:00"/></from>
+          <p eId="para_129">I know biodiversity has to be seen as an all-island project as well. There is a problem up in Lough Neagh too. We should be preparing for a united Ireland as well. If we could find out what happened here and make sure it does not happen again, we can share that in the North. One thing is certain: the British Government does not care what happens with biodiversity in the Six Counties, and we should be making sure our Departments are preparing for Irish unity and ensuring that works.</p>
+          <p eId="para_130"> On the CLEAR project, the bad impact that fertiliser has on tourism and the damage that it causes to tourism have been mentioned.</p>
+          <p eId="para_131">Will the witnesses expand on this? I know it is hard to put a figure on it but, clearly, the Government sees fertiliser as very lucrative because we import so much of it. Could we look at the damage that it causes to tourism, including to Lady's Island Lake?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_132">I was at Lady's Island Lake approximately six weeks ago and what struck me very forcibly was the smell. It is not great for tourists to come along and get this quite strong odour. It is hydrogen sulfide. There is also a visual impact. A lot of algae is washed up on the lakeshore, which is not visually impressive. These are two immediate issues I can point to and perhaps somebody else might like to make additional comments.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_73">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_133">Is there any way we could look at a figure on this? The Government tends to think about the bottom line all the time.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_134">It is certainly not our area of expertise. We are ecologists. We do not deal too much with tourism statistics.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_135">On a national scale as regards inland fisheries, specifically our salmon and wild trout, which motivate us on Lough Carra, there is a colossal loss that may not be quantifiable. To give one quick example, if we look at Oughterard on the side of Lough Corrib, there used to be four hotels that catered for the mayfly season but only one of them is now in business. I am not sure whether that is cause and effect.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_76">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_136">I welcome the witnesses. I apologise, as I am double jobbing and I have come from the arts committee. I missed the presentations but I had a good read through the CLEAR report and the other supporting documentation. I have a general comment. If we leave this committee room with a recommendation on collaboration and bringing agencies, bodies, farmers, representatives and all the stakeholders together to try to move towards a long-term plan to resolve this serious ecological problem, then we will have done some good work. If the committee has done any good, it is in bringing everyone together for this session.</p>
+          <p eId="para_137"> I see a number of opportunities through the nature restoration plan, the MPA LIFE project and many other funding opportunities, including through what Dr. Bleasdale spoke about, which is the interconnectedness of the water action plan and the national biodiversity action plan. All of these give us an opportunity to try to look at how we can collaborate, be that on an application for a LIFE project or an EIP that works with landowners. Farm plan schemes may also have been mentioned.</p>
+          <p eId="para_138"> Working farm by farm and landowner by landowner could provide some way forward but it requires someone to take the lead and put together a stakeholder group that would begin the process of looking at how we can collectively address the situation. It will take more than a five-year LIFE project. It will require a much longer term view. The problems have been persistent for decades. I suggest that putting together a recommendation from the committee that might lead us to a place where an agency, be it Wexford County Council or another body, takes the lead on bringing together the stakeholders, looking to see where the funding opportunities lie and seeing where the collaboration can begin to emerge. I know there have been many individual efforts but what this is about now is bringing together much more collaboration to try to address the challenges we have. I hope this is of some use in finding a way forward.</p>
+          <p eId="para_139"> There was some mention of septic tank inspections. There was a pretty damning EPA report on this a number of weeks ago. Only four local authorities carried out 95% of inspections in the country, Wexford being one of them. Of the approximately 90 inspections, 60 failed to meet the standards. The septic tank grant is not fit for purpose. It is too onerous and too difficult to apply for. The criteria for application are too difficult. The Government needs to look at this. It is something we might consider at some stage. It is a serious problem throughout the country. It may not be the main contributor to this problem but it is something we should give consideration to.</p>
+          <p eId="para_140"> Perhaps we can look at finding a way forward, try to work together and try to bring stakeholders together to examine where the funding opportunities lie. I agree wholeheartedly and do not see it as compensation. Farmers need to be paid for ecosystem services and carrying out actions on their land that will improve it. BurrenLIFE was mentioned. Results-based payment schemes are the way forward. Separately, we need to look at challenges such as this and look at the design of the next ACRES and how it might fit into what we are trying to achieve.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_141">I have a couple of questions. Deputy Malcolm Byrne asked a question on how long it would take for this to work its way out. If agricultural activity on nitrates were to stop tomorrow and the bed of Lady's Island Lake was dredged satisfactorily, what would be the witnesses' best estimate of the time it would take to come back?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_142">I would guess up to 20 years. It is a very slow process for nitrogen to be released from the sediment. It will take a long time. Something else that would be important is that, during the recovery phase, animals come down, sit into the sediment and eat it. This is another way it can be bioprocessed. Once we get this system going, it speeds up. Without intervention of any sort - intervention is also problem because of the area's status as an SAC and SPA - it will take this length of time.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_143">Ballyteigue has been mentioned and geographically it is not that far away from Lady's Island Lake. What is it that is different? Is it just where it sits? What is it that is so different that it can be taken as a reference?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_144">In a nutshell, there is very little agriculture close by.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_145">Regarding the county council, every committee member has raised the issue of who owns this problem. It is incredible. The local authority is happy to take a mandate to deal with it. It will be great if it can get a mandate to lead on it, but it is incredible that no agency is obliged to deal with this problem. It is an enormous water body. This is not just with regard to Wexford. Throughout the country, water bodies are large ecological systems and no one State agency seems to lead their management or restoration. It is beyond belief. I am happy that Wexford County Council has indicated it is willing to lead on this but priming this, taking the lead and making it happen are very important.</p>
+          <p eId="para_146"> There has been a total failure of leadership at State agency level for more than 40 years, and I mean "State agency" in its broadest definition. If Wexford County Council will be the leader on this, that is great but it will have to pull everybody together. I agree with the NPWS that funding is not an issue. Funding will be secondary. We will all work as members of the committee to try to deal with any issue. We are coming from a position where nobody seems to have owned this issue or owned up or decided to take it on. No public agency has done so for approximately 40 years. It is incredible. I welcome Wexford County Council saying it will do this but that is predicated on it working well with the other agencies that are here and those that are not here, including the EPA. Everyone will have to work together. I am not really asking a question; I just want to know that everyone is on board.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T13:40:00+01:00"/></from>
+          <p eId="para_147">It is what we said in our opening statement. With the Duncannon EIP project, we have shown it can be done and we can lead it out. If people are saying funding is not a problem, I will be delighted. I hope the Cathaoirleach and Dr. Bleasdale are right because we are speaking about serious money. We know what the Duncannon scheme cost. On this basis, the minimum of what we want to do will cost €2.25 million. If we are also to solve the lake cutting issue, we are looking at another €3.6 million. Beyond this, there will be other issues.</p>
+          <p eId="para_148"> I have a couple of things to add. Wexford County Council, the local authority, has to take the lead on this because we know more about it. Dr. Roden mentioned a local interest group. There is not a more interested local group than the Lady's Island Group, which met 68 times in the past 30 or 40 years. There have been ongoing discussions about resolving this, but it takes more. The council can only enforce what is enforceable. I have said that before. We are happy to take the lead on it.</p>
+          <p eId="para_149"> We brought the Duncannon scheme forward quickly, and it has proved successful. The two councillors from the region are showing interest. Ger Carthy heads up the drainage committee, as did his father before him. We could not have a more interested group. As I said, Jim Hurley is the oracle down there. We have known what the issue is and we have proven with Duncannon that it can be resolved. I would be annoyed if somebody else were to take the lead. I want Wexford County Council to take the lead.</p>
+          <p eId="para_150"> Funding was mentioned. It does take funding. This could start within six months if the funding was promised. I do not like the idea of going through all seven sources of funding trying to cobble something together. It takes one Department, probably the Department of agriculture, to do that. That is my opinion. If something needs to be handled quickly, that is the way to go forward from here.</p>
+          <p eId="para_151"> Senator Noonan was very succinct in stating that it needs an entity such as Wexford County Council, working with the National Parks and Wildlife Service, Teagasc, an Taisce, the scientists and everybody else, to bring this forward. We are happy to deal with it, but our hands are tied. We have to go way beyond regulations to resolve this problem. We need to start immediately. As I said before, one can only enforce what is enforceable. Farmers are doing what they are allowed to do. We have to go way beyond that.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_152">I accept Mr. Hore's point. That is very interesting. He stated that farmers are working within their standards in the main, but that means the standards are too low in this situation. There are other factors at play here regarding water values, etc. In response to Mr. Hore's point, that will take time. One will never work that out. It is a whole shift or change.</p>
+          <p eId="para_153"> The NPWS mentioned the ecological aspect. Is there an ecological rationale for draining Lady's Island Lake?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Ciara O'Mahony<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_154">There is an historical practice that has gone back hundreds of years. It is the outlet for a 20 sq. km catchment. Historically, the catchment has been drained by cutting a line through the barrier at least once a year. The wildlife service has been doing that on behalf of the local community since 1982. As acknowledged in our opening statement, I have never come across a community as motivated by the natural heritage value of their area. I say that genuinely. We work with them. We sit on the Lady's Island Lake drainage committee, which gives us the permission to go ahead with that cutting every year. We do it because it is timed to lower the water level to open up nesting areas for terns. It is also effectively a form of flood relief for that local community. It has always been a form of flood relief for that local community.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_85">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_155">I want to make a comment. This is my second term. I have been on committees for five and a half years. This is actually the most positive committee experience I have had in that time because I can actually see a potential movement and something coming out of this, which is really welcome.</p>
+          <p eId="para_156"> It is great that Wexford County Council is going to take the lead on this. The work that is done at Lady's Island Lake could be an example for the rest of the country. This will be important work. I agree that we cannot wait for funding. The funding will have to come after, but a lot can be done before the funding is provided. Mr. Hore said that something could be set up six months' time. I would love it if Wexford County Council and the NPWS were to leave this meeting today with a plan to meet and think about who the different stakeholders are and started working and bringing people together. Mr. Kinsella has huge connections with the farming community there. There are many different funding programmes. We could even get those people into a room with the different funders and see what could be done pretty quickly.</p>
+          <p eId="para_157"> This is not something that is within the legislative framework, but what I saw on one of the farms was very concerning. It was very public and obvious. A lot of work could be done with the farmers to make sure that they improve the practices on their sites. Assuming that the mandate is given for this to happen, I would love to bring the group back in again in six or nine months to discover what is happening, the different steps that have been taken in order that we know that the stakeholder group is together and find out where they are with it and how we can help. If, at that stage, there is an issue of funding for dredging or whatever, then we could highlight that need, but a huge amount of work could be done before that point. I would love it if we were to have the group back in and do something positive about this.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_158">Deputy Whitmore mentioned writing to the Minister. Can we clarify or agree on which Minister? The way we have structured this discussion, the areas of climate, housing and agriculture have all featured. Is there a particular Minister we feel would be the most suitable?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_87">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_159">I imagine that each of these entities need a mandate from their own line Ministers. We may need to actually-----</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_88">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_160">A number of Ministers.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_89">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_161">Yes. The NPWS would need approval from the Minister, Deputy Browne. As he is a Wexford man, hopefully he would be keen to see this happen. Similarly, the EPA will require approval. It might get a bit confusing but-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_162">We will determine that. Our request of the witnesses is that they write, as agencies, to their own line Ministers, but we will do it here from this committee as well. I call Deputy Ahern.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_91">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_163">I was interested to hear that this is Deputy Whitmore's most positive committee experience. I am a new TD, and this is my first time questioning people-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_164">It is all downhill from here.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_93">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_165">We are starting at the top; that is great.</p>
+          <p eId="para_166"> Looking at the solutions in the CLEAR report and mentioned in the county council's statement, it struck me that a lot of solutions are already out there, many of which are fairly basic things such as fencing off watercourses, the provision of water troughs and so on. Presumably, some, if not a great deal, of this is already being done. How much is being done? Approximately 71% of some of the feeder streams are already done from riparian zones. Maybe the council was talking about extending them as well-----</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_167">Yes-----</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_95">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_168">I will briefly finish the point. How many of these solutions are already partially or fully in place? What else needs to be done? How quickly can the solutions be implemented?</p>
+          <p eId="para_169"> Results-based payments were discussed. They were used successfully elsewhere. Do we need to look at just transition measures here for some of the farmers in surrounding areas, given that it seems the intensity of the farming going on in the area is incompatible with the restoration of the lake? I do not know if the witnesses agree with that proposition. It is not necessarily mentioned in the statement as one of the solutions, but it should inform part of the solutions.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_170">The farmers are farming within the regulations.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_97">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_171">Agreed, I understand that.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_172">As Mr. Hore pointed out, we cannot ask the farmers to do more than what they are legally obliged to do. We legally cannot start prosecuting them for things-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_173">May I stop Mr. Cooney? That has been noted. The question is about the intensity of farming <i>vis-à-vis</i> the restoration of the water body. The question was about how we make them sit together.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Brendan Cooney<recordedTime time="2025-06-11T13:50:00+01:00"/></from>
+          <p eId="para_174">The legislation is there. Even Dr. O'Connor said it. We have seen it as well in the results we have to share. The Houses could enact all the legislation, including really draconian stuff, but it could still take years to see results. If the Deputy is looking to see results within six weeks, six months or a year, it is not going to happen.</p>
+          <p eId="para_175">It just will not happen, no matter how draconian it is. You could remove every single farmer, take all the sheds down and evacuate the place but it could still be a problem in six or ten years' time because of what is there. What I am trying to say is that the legislation put in place at this stage could already start to have an impact. It could be a case of just stabilising it and it will not get worse but we need to put in additional measures. There are repairing zones but they are not that big. In Duncannon, we put in bigger repairing zones, sediment traps on the rivers, reed beds and septic tank inspections. The septic tank inspections, as Mr. Hore pointed out, have had quite a small impact.</p>
+          <p eId="para_176"> It was acknowledged that agriculture is the biggest thing happening at present. If good-sized repairing zones are put in, some kind of funding is needed for farmers to do it. Fencing, for example, is not cheap. Somebody must be paid to put in all this fencing. Excavators can be brought in to put in silt traps and reed beds but you need funding to do things like that. You also need someone managing it who is able to talk to all the different organisations and co-ordinate everything together. I would not jump in straight away to say we need more draconian things. It could be that an awful lot of what we already have is starting to have an impact but putting in additional things could stabilise it and start making it better.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_177">Deputy Cronin wants to come back in.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_102">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_178">I have a question for Wexford County Council. We received a submission from Teagasc which had recommendations for improving the site and ensuring farmers adhere to buffer zones for slurry spreading. What kind of engagement has the council had with farmers and Teagasc, and how is this enforced? I have visited farms and seen the buffer zones but how can we be certain they are being enforced and farmers are doing that? There were 56 farms - some were tillage farms while there were 16 dairy farms, 24 beef farms, six sheep farms and 13 equine farms. I believe the dairy and beef farms are causing most of the damage to Lady's Island Lake. What kind of enforcement is there to ensure they are adhering to the buffer zones? </p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_179">In our opening statement, we mentioned that since 2018, we have carried out approximately 30 inspections within that catchment. We have had minor non-compliances. When I say "minor"-----</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_104">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_180">What happens when the council finds non-compliance?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_181">If there is a minor non-compliance, we are obliged to cross-report it to the Department of agriculture, in which case the Department will sanction them with a penalty under the single farm payment-----</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_106">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_182">Could Mr. Kinsella tell me what kind of sanction this would be?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_183">It could be anything from 5% up to 100%. It could be as low as 1%. The weighting that the Department puts on it depends on how severe the non-compliance is. We are tied down to five SIEs. We have four assistant scientists carrying out farm inspections under the new NAIP, launched by the EPA. We are currently tied to those regulations. The majority of our minor non-compliances are dealt with in-house. It could be as little as a downpipe, a gutter or a soil yard mismanaged. We deal with that in-house. We write to the farmer and revisit the matter in three months, for example. A major non-compliance would be a discharge to surface water.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_108">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_184">Are farmers fined for this?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_185">The penalties are a percentage of the overall single farm payment. If a farmer has a major non-compliance - such as spreading slurry outside the season, maybe coming up to Christmas - it is a straight 20% penalty. All farmers are aware of that regulation. To put this in context, a 20% penalty of my basic income would be substantial. These are the types of scenarios we come across. As for Lady's Island Lake, we have just under 4,500 farmers in the county. This year and going forward, we will be obliged to carry out 271 inspections under the GAP regulations. We are concentrating on different areas around the county. Since 2018, we have carried out 30 inspections. We are coming across very minor issues of non-compliance under the SI at present.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_110">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_186">Has there been a change in farming recently? Has there been an increase in dairy farmers or anything like that?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_187">Since the abolition of the milk quotas, there has been a small increase but we have a very small number of dairy farmers in the area. If I am correct, the report of the Clare project had different figures in terms of cattle farming only and tillage farmers. If the whole catchment was to change to tillage only or arable only, the excess nitrate would be a lot higher. If it were pasture only, it would be a lot lower. A few little things, such as imported feeds, were not taken into account. There has not been any major change. Those of us who are living and farming in the area have probably seen more on the tillage side. For the dairy farmers, it is about the season and the arable side in taking up grassland for the production of milk.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_188">We are probably coming towards the end of this session. Aquafact mentioned a couple of exemplar projects. If I asked for one exemplar project for this committee to look at as an example of best practice, would it be Lough Carra? Is that the organisation's recommendation?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_189">If I said otherwise, I would be shot when I got home. No, there are several examples. Pioneering all this work was Brendan Dunford in Burrenbeo 15 years ago. At the core of that project, he worked with farmers and everybody else involved. This must be the foundation. The State cannot come in and impose on these farmers. The same story applies to the Lough Carra catchment and the Bride River project. They have all this in common.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_190">Okay. From the committee's perspective, the Burrenbeo project is probably the example to-----</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Dr. Cilian Roden<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_191">The Lough Carra project is closer to what one must do technically. The Burrenbeo project is a good example of getting communities to comply.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_192">Okay. Before I pick up on something that Deputy Whitmore said, I wish to give the three organisations here today - one group and two agencies - an opportunity to provide two recommendations to put on the record. They may not have anything they wish to recommend. The recommendation may be to get the group together and get moving which is fine. The organisations might have a quick think about what they wish to put on the table as two recommendations for the committee.</p>
+          <p eId="para_193"> Deputy Whitmore raised a point about timing. We should be looking to build momentum and to bring this group before us again in March 2026. I think nine months would be fair. There is no election. In 2026, we will get this group back here, hopefully with a view to having structures up and running and making progress. Perhaps there will be a discussion on resourcing, and where funding finance is at, but let us at least agree that we will be back here in this committee looking at this issue again in March 2026 with the view to seeing some activity on progress. Is that okay?</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_117">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_194">I have one question for the council. Is there any evidence of farmers continually breaching and having to be fined? I am thinking of wealthy farmers who do not-----</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_195">No. I came into the council in 2018. Previous to that, I would have been contracted into Teagasc. We do not have any serious breaches in Lady's Island Lake that we have observed. This comes back to my last observation that we only have minor non-compliances. We do not have farmers being brought to court every year. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_119">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_196">There are plenty doing it.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Eoin Kinsella<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_197">There are plenty of them out there.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_121">
+          <from>Deputy Réada Cronin<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_198">Thank you. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_199">Do Members agree we will be back here in March 2026 specifically on this topic? Agreed. The witnesses can provide two recommendations if they wish, starting with Aquafact.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Dr. Brendan O'Connor<recordedTime time="2025-06-11T14:00:00+01:00"/></from>
+          <p eId="para_200">I certainly take up what the Deputy said on writing to the Ministers. We can do that independently because we are not associated with anybody; we can write to everybody. </p>
+          <p eId="para_201">What I will say is that this was very fruitful. We see a definite, positive approach to dealing with this problem. However, there are very many others out there, in exactly the same sort of habitat. The reason we picked Lady's Island Lake is that it is the worst, but we have many other examples of places that are very close to being as bad. That will require a different kind of management and a different route, but I would encourage the committee to write to the Minister.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_202">If Lady's Island Lake is the worst, we should make it an exemplar and then it should be easier when it comes to all of the other water bodies. People keep saying that it is easy, but to quote a line from a film, "Show me the money". People have said that finance is going to be easy, but we have to start paying farmers for taking good land out of production if we are to resolve this.</p>
+          <p eId="para_203"> Deputy Whitmore said we should speak to the NPWS. We have had two meetings and have already started that process. I said six months. We are working on that, but I am giving some of the Departments six months to come up with the money. If we are looking for exemplars, we should take on board what Aquafact has said. We are saying that we should look at the exemplar, and I have included it in the appendices. We should look at Duncannon, where the engagement with locals, the blue flag beach committee and farmers worked very well. That is our view.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Catriona Ryan<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_204">In terms of the funding and what Mr. O'Connor said, obviously we work under voted funding. Our funding is allocated for a specific purpose. When the committee is writing to the Minister, it would be useful to identify where the voted funding is going to come from. We will be heading into the Estimates process for budget 2026 soon. In that context, if we identified one point of funding, it would be useful. I definitely agree that funding is not the issue. We need to get this moving. We will find the funding but obviously we have voted funding. It is not for agricultural schemes but if we knew now what organisation or body was going to seek the funding under the Estimates process, that would be very useful.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Ciara O'Mahony<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_205">I would like to respond to the question about action points. They are straightforward. The report outline has a section on changes in farming practices. We could speak about regulation, but, realistically, the kind of actions that are needed are about intercepting nitrogen. Those kinds of actions, like greater buffer areas, need to be paid for and delivered through a targeted process. It is a very unusual catchment in terms of the kind of farming involved and the sensitivity of the lagoon. My first wish for Christmas, if I can put it like that, is for a locally led scheme of some form. The second-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_127">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_206">A local what?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Ciara O'Mahony<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_207">A locally led agri-environment scheme. That halts the decline and hopefully may lead to some improvement over time but there is still a residual problem, as has been outlined. The second piece is in train with the LIFE Strategic Nature Project. As a result of that, we will have a plan for the lagoon in terms of its restoration.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_208">Just to add one minor thing. We will do our own homework in relation to getting a mandate from our Minister in the context of participating in the task force. What I cannot say, but I will say anyway, is that it would be no good unless all of the relevant parties were in the room in that task force. It is important that all players are involved. I cannot speak on behalf of other Departments or agencies regarding their respective roles or other commitments they may have, but if we are talking about getting stuck in, getting deep down and getting our hands dirty in the context of Lady's Island Lake and proposing solutions, it will involve all of the other bodies we have mentioned that I am not going to mention again.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_130">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_209">Is there any body in particular that Dr. Bleasdale wants to mention again?</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Dr. Andy Bleasdale<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_210">The water division in our Department has a great deal of skin in the game. There is also the Department of agriculture, Wexford County Council which is represented here today and which is committed and the EPA. I cannot speak on their behalf, but we cannot be speaking in a vacuum. We need those relevant voices in the room.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Eamonn Hore<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_211">I have one final comment, if I may. Mr. O'Connor said it could take 20 years but that is 20 years quicker than the 40 years it took us to get here, so there is some optimism.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_133">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T14:10:00+01:00"/></from>
+          <p eId="para_212">I thank everybody for coming in and giving of their time. We really appreciate it. We look forward to seeing all of our guests again in nine months' time.</p>
+        </speech>
+        <summary eId="sum_7"> The committee went into private session at 2.19 p.m. and adjourned at 2.28 p.m. until 12.30 p.m. on Wednesday, 25 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

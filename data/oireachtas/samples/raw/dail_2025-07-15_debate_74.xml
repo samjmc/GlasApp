@@ -1,0 +1,959 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-07-15/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-07-15/debate"/>
+          <FRBRdate date="2025-07-15" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_fisheries_and_maritime_affairs"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-07-15/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-07-15/debate/mul@"/>
+          <FRBRdate date="2025-07-15" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-07-15/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-07-15/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-22" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="DavidMaxwell" href="/ie/oireachtas/member/id/David-Maxwell.D.2024-11-29" showAs="David Maxwell"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="NiallBlaneyIND" href="/ie/oireachtas/member/id/Niall-Blaney.D.2002-06-06" showAs="Niall Blaney"/>
+        <TLCPerson eId="PadraigMacLochlainn" href="/ie/oireachtas/member/id/Pádraig-MacLochlainn.D.2011-03-09" showAs="Pádraig Mac Lochlainn"/>
+        <TLCPerson eId="PatTheCopeGallagher" href="/ie/oireachtas/member/id/Pat-the-Cope-Gallagher.D.1981-06-30" showAs="Pat the Cope Gallagher"/>
+        <TLCPerson eId="SarahOReilly" href="/ie/oireachtas/member/id/Sarah-O'Reilly.S.2025-01-29" showAs="Sarah O'Reilly"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM IASCACH AGUS GNÓTHAÍ MUIRÍ</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Fisheries and Maritime Affairs</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-15">Dé Máirt, 15 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-15">Tuesday, 15 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NiallBlaneyIND">Niall Blaney</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PatTheCopeGallagher">Pat the Cope Gallagher</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SarahOReilly">Sarah O'Reilly.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PadraigMacLochlainn">Pádraig Mac Lochlainn</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#DavidMaxwell">David Maxwell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#CharlesWard">Charles Ward</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#ConorDMcGuinness">Teachta / Deputy Conor D. McGuinness sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Planning Challenges in Offshore Renewable Energy: Discussion<recordedTime time="2025-07-15T11:00:00+01:00"/></heading>
+        <speech by="#ConorDMcGuinness" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:00:00+01:00"/></from>
+          <p eId="para_13">Maidin mhaith gach éinne, fáilte romhaibh go dtí an cruinniú choiste seo. I call the meeting to order. Apologies have been received from Senator Craughwell, who cannot be with us this morning.</p>
+          <p eId="para_14"> Before we begin, as I do at every meeting, I want to bring to everyone's attention a note on privilege. Witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. This means a witness has full defence in any defamation action for anything said at a committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at the Chair's direction. Witnesses should follow the direction of the Chair in this regard. They are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precincts - I do not believe we have any today - are asked to note that they may not benefit from the same level of immunity from legal proceedings as a witness giving evidence from within the parliamentary precincts. They may consider it appropriate to take legal advice on this matter. Privilege against defamation does not apply to publication by witnesses outside of the proceedings held by the committee of any matters arising from the proceedings.</p>
+          <p eId="para_15"> I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via Microsoft Teams that, prior to making their contribution to the meeting, they confirm verbally they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_16"> Members are also reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name, or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative they comply with any such direction.</p>
+          <p eId="para_17"> We have one item on the agenda for the meeting. This is the topic of planning challenges in the offshore renewable energy, ORE, sector. The committee will hear from the following officials from Wind Energy Ireland: Mr. Paul Kelly, chairperson; and Mr. Justin Moran, director of external affairs. We are also joined by Captain Robert McCabe, who chairs the seafood ORE working group. From the Maritime Area Regulatory Authority, MARA, we have Ms Laura Brien, chief executive officer; and Mr. Eoin Leahy, director of policy and external affairs. I welcome the witnesses and thank them for giving their time to discuss these matters and answer questions from the committee.</p>
+          <p eId="para_18"> I will give each group five minutes to read their opening statements. I ask them to keep within the five minutes. I remind witnesses and members that we have clocks located around the room and they will count down the time, both for the opening statements and for the questions and answers. To explain from the outset, I will give each member of the committee who indicates to speak a ten-minute slot, but that slot has to include time for the responses. It must include both questions and answers. I will lenient enough in terms of how they engage on that. I ask the members to direct their questions to a particular witness or a particular group to make it clear who the question is directed at.</p>
+          <p eId="para_19"> I advise members there is a select committee meeting tonight at 6 p.m. They are all aware of that, but I wish to reiterate it. There is a joint committee meeting at 7.15 p.m. today. I ask them to make an effort to be here so we can get that business concluded in good time.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:05:00+01:00"/></from>
+          <p eId="para_20">I thank the committee for the opportunity to appear before it today. On behalf of Wind Energy Ireland, and our more than 200 members, I express our appreciation for the committee's engagement with the renewable energy sector. I am joined today by my colleague, Mr. Paul Kelly, who is the offshore development manager for RWE Renewables. He is also the chairperson of our fishing working group.</p>
+          <p eId="para_21"> It may surprise some members to learn that there was a time when Ireland was a global leader in offshore wind energy. It was 21 years ago last month when our only existing offshore wind farm, Arklow Bank 1, was connected and started producing electricity. At that time, those turbines were the most powerful ever deployed. The lessons learned there were used on countless projects all over Europe, but not in Ireland. It is only in recent years that we have started again to look seriously at developing some of the best offshore wind resources in the world, to seize an incredible opportunity to build a resilient economy, and to revitalise coastal communities with clean affordable energy.</p>
+          <p eId="para_22"> There has been significant progress. The first group of offshore wind projects is in the planning system. The second offshore wind auction will take place later this year. This month marks the second anniversary of the opening of the Maritime Area Regulatory Authority. We commend the work of the team there in building the agency and developing a strong regulatory framework. We would like to see more support for MARA to recruit additional staff and we would like to see confirmation of the list of maritime activities which do not require a maritime usage licence. This could reduce the team's workload and speed up timelines. Another welcome development was the Government’s announcement recently of the development of a national designated maritime area plan, DMAP, which will identify sites around Ireland that are suitable for fixed and floating wind energy projects. However, it is clear that Ireland will not meet its target of 5 GW of offshore wind energy connected to the electricity grid by 2030. </p>
+          <p eId="para_23"> In May, we launched our offshore wind action plan. We have copies for committee members today. It sets out the critical actions required to build a competitive, sustainable and robust offshore wind industry. I will highlight two actions that are relevant for this committee. As our April 2023 report showed, it is common across Europe for the state to invest in port infrastructure when there is a clear social and economic case to do so. The Government should update the national ports policy - a consultation on that will take place in September - to facilitate direct investment in our ports to ensure we maximise the economic benefit to Ireland from the development of offshore wind. We want to build Irish offshore wind farms from Irish ports. The Government must also ensure the necessary funding is available to deliver the national DMAP by the end of 2027. </p>
+          <p eId="para_24">This will be a significant task. It will require a strong core staff team as well as resources for technical, environmental and legal expertise. It will also require extensive consultation in which coastal communities, and those who depend on the sea, need to be empowered and given every opportunity to have their voices heard. It is vital that the resources are put in place to ensure the DMAP is delivered on time if not earlier.</p>
+          <p eId="para_25"> In setting out our hopes for this industry, we are conscious that we are looking to develop offshore wind energy in a shared space. We recognise the importance of Ireland’s seafood industry to the country’s economy and food security, as well as its significance to the local economy and culture of our coastal communities. Over the past three years, representing our industry on the seafood ORE working group chaired by Captain Robert McCabe, we have heard at first hand the pressures facing the seafood industry. We want fishermen to keep fishing and benefit from the opportunities which the development of offshore wind energy will provide.</p>
+          <p eId="para_26"> We ask for the committee’s support in three key asks that are shared by our two industries. First, there should be no effort to ban fishing from all operational wind farms. Fishing takes place within the boundaries of wind farms in Britain. There is no reason this cannot happen here. In the footnotes of my opening statement, there is a link to a video showing how this is being done in Britain. However, fishermen tell us they firmly believe that if wind farms are built, the Government or some other State agency will prevent fishing. It would be very helpful, and would provide reassurance to the seafood industry, if the committee could encourage the Government to give a commitment on this matter and to ensure there is no ban on fishing in all offshore wind sites.</p>
+          <p eId="para_27"> Second, Irish fishermen should be permitted, where their vessels are suitable, to carry out guard duties on offshore renewable developments and support safety at sea. Fishermen in Britain and those registered in the North of Ireland can do this and get paid for it, but Irish fishermen cannot. This issue is set out in more detail in "Use of Fishing Vessels for Commercial Work on ORE Projects - A Guide to Registration" - it is probably not the catchiest of titles - which was produced by the seafood ORE working group.</p>
+          <p eId="para_28"> Third, we want to work with the seafood industry to put in place a national framework agreement for co-operation payments. A fair, transparent and evidence-based system is needed. To put this in place, and to ensure it operates fairly, it is critical that the Department of Agriculture, Food and the Marine, and the relevant agencies, have the resources they need to work with ourselves and the seafood industry to develop, produce and oversee such an agreement.</p>
+          <p eId="para_29"> I thank the committee members for their time. I look forward to seeing the Irish wind energy industry grow into a major source of employment, investment and new opportunities for our coastal communities and all alongside whom we will work with in the maritime area.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:10:00+01:00"/></from>
+          <p eId="para_30">I invite Captain McCabe to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T11:10:00+01:00"/></from>
+          <p eId="para_31">I greatly appreciate the opportunity to appear before the committee and share with it and the members some reflections from the seafood ORE working group on the important topic on the agenda today. The seafood ORE working group was established in May 2022. I have been the independent chair since that time. The current membership of the working group comprises 17 organisations representing the seafood sector, four organisations representing the ORE sector, three Government Departments and eight State agencies. It important to understand that this goes beyond fishing. It includes aquaculture and all seafood activity within Ireland. The role of the working group is to facilitate engagement on matters arising from the interaction of the Irish seafood and ORE industries, to promote and share best practice, and to encourage liaison with other sectors in the marine environment.</p>
+          <p eId="para_32"> All of our work is in the context of and grounded in the national marine planning framework. Our work to date has included engagement. It is important for the members to understand that engagement is at the heart of everything we do. The importance of direct engagement between our members from the seafood ORE working group and officials from Government and State agencies simply cannot be overstated. It is what it is all about. Continuing active engagement at in-person meetings is an important part of establishing trusted relationships between various stakeholders. The consistent attendance and engagement of members indicates a commitment from the membership to the work of the group. The working group has published agreed guidance on seafood and ORE sector engagement in Ireland, dispute resolution and ORE support work by fishing vessels. I have shortened the catchy title that Mr. Moran used. Copies of these documents have been circulated to members of the committee in the briefing information. </p>
+          <p eId="para_33"> We have an active subgroup arrangement within the working group. Those subgroups are established when they are required to progress particular issues. There are presently two active subgroups. One is looking at the terms of reference of our group because it is three years in now. At the end of this year or the start of next year, we should be looking at what the future of that group should look like. </p>
+          <p eId="para_34">We also have an active subgroup on coexistence and related issues, which will be among the topics that will arise today. A previous subgroup focused on guidance on engagement. Our first guidance document on how people involved in these sectors should engage with each other was a particularly important piece of work early in the group's existence. We also had a subgroup on dispute resolution because it was recognised early on that a means of resolving disputes, short of going to court, was absolutely required. That mechanism is up and running at the moment, although we have a second phase to come. Other subgroups included those dealing with the commercial use of fishing vessels; the impacts of surveys on fish and fisheries; the extent of fishing activity and the data related to it; and data issues in general. All of these subgroups produced reports within the committee.</p>
+          <p eId="para_35"> We also take presentations on topics of interest. We have been favoured with really good presentations, both from our own members, so that we can better understand each other, and from bodies such as An Bord Pleanála, now An Coimisiún Pleanála; MARA; and UK interests involved in the same work we are doing. These presentations have really served to inform us about the two sectors.</p>
+          <p eId="para_36"> There is also outreach activity. We are conscious that while we have a really strong membership, there are always people beyond that membership who might not be aware of what we do. We have the minutes of our meetings publicly available on the Department's website. We attend relevant conferences and meetings outside of our group. In an effort to ensure we are well engaged with the fishing sector, we sent by post all of the guidance documents and our annual report to all of the fishermen on the register. We are seeking to make sure we reach out as best we can to everybody involved.</p>
+          <p eId="para_37"> I will briefly summarise the current issues before us. We are awaiting policy guidance on big-picture issues around socioeconomic and cumulative impacts of ORE developments. That follows on from a bilateral process in which both the ORE and the seafood sectors engaged with the two relevant Departments, namely, the Department of Agriculture, Food and the Marine and the Department of Department of Climate, Energy and the Environment. That process produced papers and we are now awaiting a response to that. We hope to have that very quickly because it will unlock the next phase of our work, which is completing the coexistence and related issues guidance. Part of that will involve a framework agreement on how survey activity can take place. It is critical that there is certainty regarding the ability of the ORE sector to undertake the surveys it needs for the roll-out of the phase 1 projects, for DMAP preparation by Departments and for future DMAPs. The establishment of key baseline data is particularly important to us. Spatial data for inshore fishing is important, as is clarity on the DMAP roll-out process. Issues that are not directly on our committee agenda, like marine protected areas, will have an impact on the spatial squeeze at sea in the maritime area and are undoubtedly of interest to us if not directly within our remit.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:15:00+01:00"/></from>
+          <p eId="para_38">I thank Captain McCabe. I invite MARA to make its opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T11:15:00+01:00"/></from>
+          <p eId="para_39">I thank the members of the committee for the invitation to be here today. I am joined by Mr. Eoin Leahy, director of policy and external affairs at MARA. </p>
+          <p eId="para_40"> First, we commend the Government on its increased maritime focus and on establishing this committee to focus on fisheries and maritime affairs, reflecting the importance of the maritime resource to Ireland. Ireland’s maritime area encompasses a jurisdiction of around 900,000 sq. km and holds great potential as a food source and also as a source of offshore renewable energy. We have high ambitions for the diverse needs of all users of the maritime space. MARA is a key component of the Government's objective to have robust, transparent and effective maritime regulatory frameworks in place to support a sustainable society, economic development and a well-protected environment. The Maritime Area Planning Act established MARA and we are now underpinned by resourcing and supported by an overarching policy framework to establish a transparent, robust and fit-for-purpose system for the governance of Ireland’s far-reaching and diverse maritime area. </p>
+          <p eId="para_41"> As it is our first appearance before this committee, I will provide some background information on MARA. It was established as an independent regulatory agency under the aegis of the Department of Climate, Energy and the Environment in July 2023, as part of the implementation of the Maritime Area Planning Act. MARA's functions as set out in the Act are manifold. </p>
+          <p eId="para_42">They include assessing maritime area consent, MAC, applications for the occupational and specified use of particular regions of the maritime area, which are required by developers in general before development permission can be granted. We are also responsible for granting maritime usage licences, MULs, for specific activities. We are responsible for compliance and enforcement of MACs, licences and offshore development consents. We are also responsible for administering the existing foreshore consent portfolio. We carry out investigations and, if necessary, prosecutions of unauthorised activity, and we have a role in fostering and promoting co-operation between regulators in the maritime area.</p>
+          <p eId="para_43"> Since establishment, we have been actively working to implement all of these functions. We launched our first statement of strategy in 2024, setting out a clear vision for MARA through the next three years. We have four key strategic priorities around facilitating coherent and transparent decision-making as well as providing regulatory certainty for development in the maritime area. Since it was established, MARA has been accepting applications for maritime area consents and maritime usage licences, including those for critical marine infrastructure that support all aspects of development within the maritime area. This includes port development, ORE developments such as offshore wind projects and other areas of maritime development, including telecommunication cables and electricity transmission.</p>
+          <p eId="para_44"> During this initial start-up period, significant time was required to build staffing capacity, which is ongoing. The recruitment process at MARA continues to be targeted as we gain experience and identify areas that require resourcing. In addition to the foundational work of operationalising MARA’s legislative regulatory remit required for the development of processes and procedures, we have been making decisions and establishing appropriate standards that will be set for future applications. We have received more applications to MARA across the various areas than we have been able to process in a speedy way. For this reason, we have ranked our applications according to four specific prioritisation criteria, namely, national and European priorities; policy and regulatory objectives; assessment status; and application age. This prioritisation process is available on MARA's website and we review it monthly. In addition to processing applications that have come to us, we have also been actively engaging with Departments, industry and environmental NGOs to ensure MARA understands the broader policy environment in which it operates and to establish best practices. </p>
+          <p eId="para_45"> Finally, with specific reference to ORE, noting the national priority to deliver ORE within the climate action plan, we have been focused on ensuring that applications for both MACs and MULs related to this sector have been prioritised. To date, MARA has received 18 applications related to ORE and 13 have been determined. I think it is now 14 as we got one more out last week. This includes a recent application from Eirgrid to support survey work required to connect the next DMAP area to the south-east coast. There has also been a large amount of work related to supporting changes to the phase 1 MACs to support developers that are looking to get their projects through the planning process, and also for further site investigation surveys.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:20:00+01:00"/></from>
+          <p eId="para_46">I thank Ms Brien. The opening statement was very comprehensive. I am sure the witnesses will come back to some of the detail in response to members' questions. We will hear from Deputies Connolly and Mac Lochlainn and Senator Boyle in that order.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_8">
+          <from>Deputy John Connolly<recordedTime time="2025-07-15T11:20:00+01:00"/></from>
+          <p eId="para_47">My questions are primarily to Mr. Moran in response to his opening contribution. He mentioned the review of the national port policy, the public consultation that will occur in the autumn and the expectation that a new policy will be launched early next year. How important is the proximity of a suitable port for the development, management and maintenance of an offshore wind farm?</p>
+          <p eId="para_48">Given the progression in the development of turbines and their increasing size, and possibly the need for increased maintenance of turbines, what are the minimum standards and criteria a port would require to service such a facility and to play a part in developing such a facility? I refer, for example, to the depth of the navigation channel, the width of the turning basin and the size of the berthing basins. What would a port need? How many of our existing ports could facilitate and participate in ensuring the development and servicing of wind farms?</p>
+          <p eId="para_49"> On the current categorisation of ports as tier 1 and tier 2, it seems to me that ports now need to be categorised according to the quantity of sustainable energy they can participate in developing, not purely in terms of tonnage. Do the witnesses have any opinion on that?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:25:00+01:00"/></from>
+          <p eId="para_50">It is important to distinguish between the two different kinds of ports, as the Deputy did in his question. There are ports used to develop or construct an offshore wind farm, of which we have none available in this State. Belfast is the only port that can be used to actually construct an offshore wind farm. One of the concerns we have is that we should not act as if Belfast will be simply available, waiting for us. Belfast has contracts to service British wind farms on their side of the Irish Sea. Having a port available to construct and develop a wind farm is critical to us. There have been some great announcements in recent times, with additional funding from the Ireland Strategic Investment Fund, ISIF, for the Port of Cork. Rosslare is moving ahead with its projects as well and might have recently obtained a maritime area consent. On the west coast, Shannon Foynes is looking at that opportunity as well.</p>
+          <p eId="para_51"> We can also send to members a detailed breakdown of exactly what is needed on port infrastructure. Basically, it is very strong, reinforced quays, deep-water approaches and a huge amount of space, which can accommodate the turbines. In terms of the service opportunity, that is something more for smaller ports. If we look at the projects we have in the Irish Sea, Arklow Harbour and Wicklow Harbour have been identified by Irish Sea Projects as harbours where it would have an operations and maintenance base. It would need crew transfer vessels to be able to move in and out there. In the long-term, that is potentially the greater opportunity because we are talking about an operations and maintenance base with 60 or 80 people working there full-time for the duration of the operational lifetime of the offshore wind farm. It is a really great opportunity for smaller ports that are better able to accommodate that.</p>
+          <p eId="para_52"> I agree with the Deputy. We have to ensure the final version of the national ports study facilitates investment in this infrastructure. From an economic point of view, a service port needs to be in close proximity because crew transfer vessels are going in and out all of the time. To be frank, we could build an offshore wind farm from Cherbourg or Wales. We do not want to do that. We want to build them from Irish ports, but if Belfast is the only port and it is unavailable, we still have to build them.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T11:25:00+01:00"/></from>
+          <p eId="para_53">My colleague Mr. Moran is correct. In essence we need to aggregate the ports into construction phase ports and operational phase ports. Larger ports are for the construction phase and smaller ports for the operational phase. The operational phase typically lasts 30, 35 or 40 years.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_11">
+          <from>Deputy John Connolly<recordedTime time="2025-07-15T11:25:00+01:00"/></from>
+          <p eId="para_54">It is of concern that we are relying on Belfast at the moment and the other three ports are currently only in planning phases.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:25:00+01:00"/></from>
+          <p eId="para_55">To correct what I said, Cork has started construction activity, so there is construction activity going ahead in Cork. Without being critical or suggesting I am picking a port, Cork is probably the most advanced.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_13">
+          <from>Deputy John Connolly<recordedTime time="2025-07-15T11:25:00+01:00"/></from>
+          <p eId="para_56">The other concern that generates for me is that we have a whole area of coast, from Cork all the way around to Belfast, where we do not have a port capable of facilitating the development of offshore wind farms. The national ports policy should review and amend that and hopefully develop plans. I agree with the witnesses. I do not want to see this being done from Cherbourg and if wind farms are being developed on the west coast, I do not want to see that being done in Belfast or Cork. I would like to see those being facilitated by a port along the west coast. I imagine the companies developing a wind farm would seek that type of proximity as well. In terms of the development of our national ports strategy, that should be considered.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_14">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-07-15T11:25:00+01:00"/></from>
+          <p eId="para_57">I thank the witnesses for their presentations. I have questions for all three organisations.</p>
+          <p eId="para_58">I welcome the acknowledgement of the seafood/ORE working group and commend Captain Robert McCabe on his excellent stewardship of the group. Understandably, there are concerns in fishing communities about the impact of offshore renewable energy. Those communities also understand the need for us to move towards energy independence, attain energy security and have affordable energy. We can do all of those things together. I am a strong advocate of co-creation so, rather than telling fisherman where these wind farms are going and asking them for their feedback, they are actually involved in the process. That applies not just to fishermen, but also to people who are involved in the marine environment and have concerns around that. That work is crucial.</p>
+          <p eId="para_59"> Wind Energy Ireland raised the issue of reassurance from Government that there would not be a ban on fishing around operational wind farms. Will the witnesses elaborate on that? My second query is on this issue of permitting fishermen, where their vessels are suitable, to carry out guard duties on offshore renewable energy developments and support safety at sea. I strongly support both those objectives. I want to get a sense of what we, as a committee, can do to advance them.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:30:00+01:00"/></from>
+          <p eId="para_60">In terms of the ban, what we see in other European markets is that in some countries fishing activity is banned from the footprint of an operational offshore wind farm. That is not the case in Britain where fishing can take place. It is a very site-specific circumstance depending on the various types of fishing, which can be worked out, and the actual layout of the turbines. Certainly, a wind farm can be designed in such a way, where the site allows it, to facilitate fishing to continue. That is what we want to happen. Instead of having a blanket rule, let us sit down with the fishing community to try to work it our and ensure fishers can continue fishing.</p>
+          <p eId="para_61"> On the issue of guard vessels, I thank Deputy Mac Lochlainn for raising this in a legislation going through the Department of Transport last year. The challenge is that if there is a vessel that could function as guard duty and it is on the fishing register, it needs to be taken off the fishing register and apply to go back on the commercial register to carry out the guard duty. Once that is done, the commercial licence has to be handed back and an application made to go back on the fishing register. Someone might say it is technically possible for an Irish fishing vessel to do guard duty, and technically it is, but as the documentation put together by the seafood/ORE working group under Captain McCabe's chairmanship shows, it is completely impractical. British fishermen and those based out of the North of Ireland are entitled to continue operating guard duty and continue fishing. That is something we would like to see done here in Ireland.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_16">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-07-15T11:30:00+01:00"/></from>
+          <p eId="para_62">I know we have a meeting later this evening to look at the next period in the autumn, but I ask that the committee consider corresponding with the Government on the issue of access for fishermen to those sites. If that is hugely important in getting consensus, we should consider doing that. I will discuss that at the meeting later. </p>
+          <p eId="para_63"> The ideal outcome for us as a country would be that we can develop offshore renewable energy, protect our fisheries, which are under serious pressure, and also protect the marine environment. I ask Captain McCabe for his perspective on that. Having chaired the working group for some years, how does he believe we can advance that?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T11:30:00+01:00"/></from>
+          <p eId="para_64">I thank the Deputy for his question, which is a broad one. There are some really good signs there. One of the reasons I mentioned, in the short summary, doing things in the context of the national marine planning framework is that I think maritime spatial planning is really important. It is at the heart of everything here as we try to get those shared uses. The marine planning policy statement is out for consultation at the moment. The objectives within that statement are an enabler for what we want to do, which is exactly as the Deputy said. As Mr. Moran mentioned, fishermen want to continue to fish. They do not want to be compensated or anything. They want to fish. That is certainly a strong message they bring to our group. They want to continue with the other seafood uses as well. They want to carry on and develop and meet those food needs.</p>
+          <p eId="para_65">They are more than content to do that in co-operation with offshore renewable energy and any other matters that may arise on the sea. In the early days of the group much of what we did was bringing people together to understand each other better. We have probably now reached the point where we need to deal with some of those difficult issues. Co-existence and certainly co-location will not always be possible. We need to look at the balance of benefits.</p>
+          <p eId="para_66"> A really good model for that was how what is now the Department of Climate, Energy and the Environment ran the south coast DMAP. It was a very good, open, responsive and consultative process. That is the model we need. We need people engaging and talking, and that is what our group brings to it. I often say to people that we are a small but important part of the jigsaw. We are that odd looking piece with four tabs and six little indents on it; we will never fit easily. The overall engagement between all the parts is important.</p>
+          <p eId="para_67"> I would be quite positive about the future. We have seen many positive developments, a number of which the group had an input into although we are not by any means claiming credit for them. I am talking about things like the Maritime Area Planning Act, the establishment of MARA, the first south coast DMAP, the plans for the next DMAPs and the offshore renewable energy options. All of these things are very positive because they show a process. We are all awaiting the outcome from An Coimisiún Pleanála of the first applications because the conditions on them will speak to many of the issues we have raised. As a group, we are awaiting some policy guidance on the overall issues. I am an optimist by nature; anyone who works with the sea is an optimist. Our group can play a real part in the future.</p>
+          <p eId="para_68"> I would be quick to point out that I am not an expert on fishing or on ORE. Those experts are in the room. They are the people directly representing the industry in the room. I know the maritime industry and I know the Irish coast very well. However, I am not the expert. The experts are coming from fishing, aquaculture, ORE, the Departments and the agencies. It has been a privilege to chair the group and there is still really good engagement within the group. That is a sign that we will progress and do some good. I apologise for the long answer.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_18">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-07-15T11:35:00+01:00"/></from>
+          <p eId="para_69">I am just sorry we do not have more time. I hope we will get another round later on.</p>
+          <p eId="para_70"> My next question is for Ms Brien on the important functions MARA performs. We recently spoke to representatives of the Marine Institute and the Aquaculture Licences Appeals Board. They have new chairpersons. We looked at the issue of resourcing. Is Ms Brien happy that MARA has the necessary resources? Obviously, there is a very serious responsibility on its shoulders to grant licences in a reasonable timeframe and then make sure there is the necessary oversight of all of that. MARA has a very important role in what I just discussed with Mr. McCabe. Does MARA need more resources? Is Ms Brien happy that MARA has what it needs to do things in a timely fashion.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T11:35:00+01:00"/></from>
+          <p eId="para_71">As I said in the opening statement, MARA was established just over two years ago and by the end of June we had recruited a staff of, I think, 57. We have a group of new staff coming on board, so by the time we get to the end of July it will be somewhere in the mid-60s. Our current approved headcount is 68. We have recruited a broad mix of people with expertise in legal, regulatory, engineering, marine science and ecology as well as all the support services in the corporate spine such as HR, finance and IT.</p>
+          <p eId="para_72"> Now that we have been established for two years, we have a much better sense of the level of demand for our services which we did not have when the original workforce plan was put together. We are in the process of doing a holistic review of demand for our services and timelines. We will be developing a revised workforce plan which we hope to share with the Department of Climate, Energy and the Environment over the next month or so. We will engage with the Department on where we believe certain targeted recruitment would be of benefit.</p>
+          <p eId="para_73"> There are new functions that we, as a regulator, have been given under the Planning and Development Act, particularly regarding establishing a planning register. We will also be responsible for the maritime authorisation database. Again, that will require new skills and expertise that we will have to recruit for.</p>
+          <p eId="para_74">It is probably an ongoing process. I am neither saying "Yes" nor "No" at this point. I am saying we are looking at it. We are doing a very detailed piece of work to identify what new functions we have coming to us, what we need and how long it takes to make individual decisions. We are very conscious that we do not want to be an agency that is blocking or delaying any of the necessary development.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:40:00+01:00"/></from>
+          <p eId="para_75">We will move on to Senator Boyle and I am sure we can pick this up in the next round, if that is okay.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_21">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T11:40:00+01:00"/></from>
+          <p eId="para_76">The witnesses are very welcome. The important thing is that the fishermen and fisherwomen of Ireland need to be looked after first. There can be no progress without everybody being on the one wavelength. As someone who comes from a fishing background, I believe the easiest way is to include everybody. I am glad that the group has taken everybody's views on board. I thank it for that because there is no way this can move forward without everybody being on the one wavelength.</p>
+          <p eId="para_77"> On the national ports policy, I am coming strictly from a Killybegs view here. I know we are designated as a fishery harbour centre. I seek clarification on this. Does that make any difference as to why we cannot be put on the list of ports? We have 13 m at low tide. We have some of the deepest waters in Ireland. We have a proven track record. We have handled everything from the Corrib gas field in Mayo. We had one of the biggest pipe-laying vessels in the world in there. Everything went to plan. In the years to come, Killybegs should be designated as a centre for it. Welders, fitters, electricians and all the expertise needed for offshore development are based in and around the town because they look after the fleet. </p>
+          <p eId="para_78"> Are any projects shovel ready at the moment and just waiting? How long do the witnesses think it will be?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:40:00+01:00"/></from>
+          <p eId="para_79">The three projects that are most advanced are in the planning system. We hope to be able to respond to the requests for further information, RFIs, we got from An Coimisiún Pleanála within the year. If we get construction started by 2029 or 2030, we would be doing well.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_23">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T11:40:00+01:00"/></from>
+          <p eId="para_80">What are the reasons for the delays? What is holding this process up?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:40:00+01:00"/></from>
+          <p eId="para_81">The projects went into planning in April of last year. The requests for further information from An Bord Pleanála were extensive. That is quite a good thing in some ways because it shows An Bord Pleanála was resourced up thoroughly to investigate those applications. One of the challenges for us causing delays in many cases is that the RFIs asked us to do things that, had we been asked to do three or four years ago, our members could have done at that time. State agencies did not have the resources to engage with us in advance. That is one of the reasons it will take so long to respond to their requests for further information. Rolling forward from that, assuming we get planning permission, unfortunately we believe that projects will be sent for judicial review. That period of time will need to elapse. Once that happens, we can then move to construction. However, unfortunately it will take time.</p>
+          <p eId="para_82"> I strongly agree with the Senator's point about ensuring everyone is on the same wavelength and everyone is involved. That is why the national DMAP is so critical. As Mr. McCabe said, the Department did a good job on the south coast DMAP, but that was a consultation and engagement for a very defined area. In doing that for the entire island of Ireland, how can we ensure that fishers from Killybegs get their voice heard?</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_25">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T11:40:00+01:00"/></from>
+          <p eId="para_83">I know the fisheries people up there. I was talking to Mr. McCabe and the feedback is good. That is what we want to hear. The last thing we need to hear is that something is shovel ready and there is somebody objecting to it, leading to problems.</p>
+          <p eId="para_84"> Earlier, Mr. Moran spoke about the guard vessels. Given that every other country is doing it, why can we not do it? At the time when Shell was going in Mayo, the fishers thought they would get in on it and it came down to them not having the proper load lines. Is this something that can be sorted out fairly handily? What is the problem?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T11:45:00+01:00"/></from>
+          <p eId="para_85">I will take that, if that is okay. The offshore wind industry, together with the fishing industry, has been strongly advocating what the Senator has referred to. We engage with the relevant organisations – the Marine Survey Office and the Department of Transport. Ultimately, their concern is safety and the quality of the vessels used for guard duties, as well as the competency of individuals who switch from fishing activity to providing protection services at sea. It is a question of making sure there are no scenarios where a vessel might interact with cable-laying activity, for example. We believe the current process could be streamlined and that facilitatory work should be done, while not compromising safety.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_27">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T11:45:00+01:00"/></from>
+          <p eId="para_86">I agree. Vessels around this coast can sail any place. Why they cannot simply sit on guard duty is beyond belief. It would give the fishers a financial reward for buying in.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T11:45:00+01:00"/></from>
+          <p eId="para_87">I agree. The offshore wind energy industry needs competent mariners. The projects are significant infrastructural projects at sea that require individuals with the necessary skills. It is also a matter of safe regulation.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T11:45:00+01:00"/></from>
+          <p eId="para_88">Let me add briefly to what Mr. Kelly said. It is not a simple issue, as was evident when the working group examined it. As Mr. Kelly mentioned, safety underpins it all. I do not believe anybody would like to interfere with that, but a range of other issues arose, associated, for instance, with the existence of any loans or grants and the status of equipment fitted to a vessel moved off the fishing register. Issues can arise over quota that are way beyond my understanding but that experts in fishing tell me could have implications for a vessel because quota is attached to it. While we did map out the current process, it was agreed by the working group that we probably would not progress further in trying to find changes because they were quite complex, even though the offshore wind energy industry would welcome the availability of additional vessels and the fishing industry would welcome the extra few bob.</p>
+          <p eId="para_89"> There was one good outcome from that process: a course running in the NMCI, Cork, to qualify fishing vessel crews as masters of vessels of less than 500 gross tonnage. I am not claiming our working group alone achieved this but we had a good input into it. It will have positive impact. The first class – of 11, I think – finished late last year, and the second class may well be up and running now for all I know. If it is not, it will be shortly. It is funded by Green Tech Skillnet, with funding through the industry. Therefore, there are some good outcomes but the change is quite complex.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_30">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T11:45:00+01:00"/></from>
+          <p eId="para_90">Ms Brien talked about foreshore licences. Why do they take so long to get through? Some people say it takes an awful long time to get one.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T11:45:00+01:00"/></from>
+          <p eId="para_91">Since MARA's establishment, it has taken over the management and administration of the existing foreshore licences. Licence applications under the old Foreshore Act, that of 1933, are still with the Department of Climate, Energy and the Environment if they were in the process before MARA was established. That Department is working through the residual foreshore license applications. MARA is now implementing a new licensing regime for licences we are calling maritime usage licences, MULs. We are only now working on the applications that are coming directly to us, and those are for a very specified list of activities. These are in Schedule 7 of the Act and cover the likes of dredging, site investigation, salvage, some of the survey work, and telecommunications cables that transition our exclusive economic zone but do not land in the system. There are two regimes that will be working in parallel temporarily until the old foreshore applications work their way through the system. No new ones are coming in under the Foreshore Act 1933. Everything now comes into MARA. Where MARA has a list of applications coming in, it prioritises according to European and national considerations, and then regulatory considerations, having regard to time within the system.</p>
+          <p eId="para_92">Within MARA over the past 18 months or so, we have very much been prioritising licenses related to offshore renewables activity, including site investigation licenses related to telecommunications activities and for dredging, and also site investigation licences for some of the ports seeking to develop to support offshore renewable energy activity and other activities.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_32">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-15T11:50:00+01:00"/></from>
+          <p eId="para_93">I thank all the delegates for attending and for their presentations.</p>
+          <p eId="para_94"> The west coast of Ireland has the potential to generate up to 70 GW of electricity from floating offshore wind energy. We have repeatedly heard about proposed offshore wind energy projects in Clare. The lack of certainty around planning and consents has proved to be a huge stumbling block for investors, unfortunately. It is clear that floating offshore wind energy technology is still evolving. If we want to take very seriously the opportunity to generate momentum, attract investment and ensure we are prepared to move at pace as the technology matures, we do not need to wait for the DMAP process to finish before we consider the development of the technology. My belief is that we need to run both together.</p>
+          <p eId="para_95"> I have a question. Do the delegates believe we should create pilot designated areas for research into, and the development of, floating offshore energy projects? Doing so would speed up the development of the technology, ensuring Ireland takes full advantage of the potential of offshore wind. I am thinking in particular of the area off the coast of Clare, given the onshore facilities at Shannon Estuary and especially at Moneypoint. What are the delegates' views?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:50:00+01:00"/></from>
+          <p eId="para_96">Interestingly, it is about four years since we published "Revolution", the first document setting out a vision for the development of floating wind energy in Ireland. We would have been keen to see wind energy move forward more quickly than it has since we published the document. Speaking particularly about the location the Deputy has identified, I note the port of Shannon Foynes, which I should acknowledge is one of our members, is very keen to move forward with the development of floating wind energy generation. We are running four or potentially five different research projects to examine which floating wind technology is suitable for the Atlantic coast. As the Deputy will be aware, that coast has very tough wave conditions in which to develop floating wind energy infrastructure. It might be useful to share some of the material with the committee to give an idea of the research.</p>
+          <p eId="para_97"> My reluctance in answering the Deputy's question relates to our biggest worry, which is that the national DMAP will not be delivered on time. Regrettably, over the past seven years, Ireland has not had a reputation internationally as a country that is delivering on its policy changes concerning offshore wind energy on time. This is not a criticism because people have put a lot of work into different things. Delivering the DMAP would be a massive piece of work, involving environmental and technical surveys around the entire maritime space. There would be a massive programme of community engagement, which would be really challenging. That does not get the attention it deserves. If we identify a location on the south coast, there are at least lines on a map and people can identify where the projects will be. If we are talking about the entire maritime area, how do we encourage and facilitate people to participate to share their expertise and knowledge? If we were to move ahead with a pilot floating project, my concern would be that there would be a diversion of resources and focus from the national DMAP project. I would be more interested in knowing whether we could deliver, in advance of the end of 2027, on fixed and floating targets.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_34">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-15T11:50:00+01:00"/></from>
+          <p eId="para_98">Could this position Ireland as a global centre of excellence for such developments, creating an innovative and entrepreneurial ecosystem for the development of technologies to support floating offshore energy generation and, importantly, allow for research into its impact on the wider marine and coastal environment – for example, fisheries, tourism and protected areas? What are the delegates' views on that?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:50:00+01:00"/></from>
+          <p eId="para_99">I agree. It explains one of the focuses of our research department over the past year. We have more research programmes on floating wind energy generation than anything else. I think we might be doing as much on floating wind energy generation as on everything else combined at this point because there is an enormous innovation opportunity for us in that regard. There are operational floating wind farms in other parts of the world but none that has been developed in the kind of deep water we have off our Atlantic coast.</p>
+          <p eId="para_100">What is really important to stress to committee members is that, as well as the massive opportunity to innovate and do new designs, we must be able to deliver floating wind energy affordably. That is critical. Offshore wind energy needs to be delivered as an affordable source of electricity to Irish families, businesses and other consumers. We are in an economic competition between the European Union, China and America. Europe has the most expensive electricity, and within Europe, Ireland is one of the most expensive countries for electricity. We really need a focus on trying to bring that down. That is why one of the pieces of work we are trying to do is to ensure that we not only develop floating wind energy, but also identify the best way to develop it at the best possible price for the Irish electricity consumer.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_36">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_101">How seriously should the Government consider this idea?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_102">Sorry, Deputy Cooney. I think Mr. McCabe indicated he wanted to add to that.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_38">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_103">Sorry.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_104">I will roll the two questions into one and try to be brief. I will try to give a working group view of the questions. Mr. Moran described the expertise in the technology very well. From the working group perspective, we want to see progress on our climate emergency targets and that it be done in an inclusive way. Quite a lot is happening, including the An Coimisiún Pleanála process for the six phase 1 projects, the forthcoming auction for the forthcoming south coast DMAP, and the decision on how to deal with the national DMAP and, indeed, whether that would include a demonstrator site or a test bed site.</p>
+          <p eId="para_105"> The working group is really concerned that we not lose any inclusivity as we move forward on that. The south coast DMAP was a success. The challenges that Mr. Moran set out around how to consult on a wider DMAP are very real but we would not want to lose the progress that has been made. The developer-led phase 1 projects, by necessity, had a very different process because they started 20 years ago. The DMAP process is much better. If it included a test bed, so be it, so long as it did not delay the process or in any way reduce the engagement with the sectors affected, particularly seafood.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_40">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_106">My final question was on how seriously the Government should take the idea that I put to the floor.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_107">The target for 2040 was 20 GW of offshore wind energy. We cannot hit a 20 GW target without floating wind energy. It is definitely an area of policy on which the Government needs to give focus. We would work with the Government through the offshore wind delivery task force but also through the work on the future framework with the Department about trying to identify ways to move forward with floating wind energy. It is critical that we ensure it is at the heart of the future development of offshore wind energy in Ireland.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_42">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_108">Would there be any consequences for the country if we did not?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_109">What we are trying to achieve is not only decarbonisation of our energy system but also energy independence and we cannot deliver that with the increase of electrification that we are going to see in the years to come without significant volumes of offshore wind energy. The nature of the Irish seabed means that, in terms of the deployment of fixed-bottom turbines, the deepest we have gone is about 60 m or maybe a little more. For anything beyond that, we either need to develop additional new fixed-bottom products or we need to be using the kinds of floating product the Deputy is talking about. That is why it needs to be a critical part of the Government's focus.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_110">I thank Deputy Cooney. Deputy Ward is next.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_45">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T11:55:00+01:00"/></from>
+          <p eId="para_111">I thank everyone for coming. In developing an offshore renewable energy industry in coastal towns, especially since our fishing industries, particularly in the north, are in a serious state of decline, the most important thing is that we need to ensure that sustainable livelihoods and continued economic growth for our fishing communities are guaranteed and will not decline because of wind farms becoming the main industry on the west coast. We need to make sure we have a proper plan in place to sustain our fishing industries because, at the moment, they are in a sad state of decline. I know many experienced fishers between Killybegs and elsewhere along the coast of Donegal who are turning to offshore work because it is more sustainable and the income is more reliable.</p>
+          <p eId="para_112"> My first question is for Wind Energy Ireland. Why is it that so many of these fishers are forced to go abroad to seek offshore work on wind farms? Is there a lack of opportunities for offshore work in Ireland and how do we address this?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_113">In the context of the delivery of offshore wind in Ireland, we have that one pre-existing project off the coast of Arklow that is now at the end-of-life stage, so the amount of active work that is ongoing in relation to phase 1 of offshore wind is limited to geophysical and geotechnical surveys. The members we represent all employ fisheries liaison officers to provide a direct point of contact for the fishing community in respect of projects. Those survey activities require offshore fisheries liaison officers and onshore fisheries liaison officers, but there is a limit to the number that are required at survey stage. What is critically important is to deliver this first phase of offshore wind farm projects where those resources are going to be required to be supplemented. This is because there will be thousands of jobs created in the delivery of phase 1 of offshore wind, with multiple vessels involved in the construction phase of the projects that provide those opportunities. It is very important to deliver this infrastructure using an informed and inclusive plan-led process in order that those opportunities become predictable and programmed such that people are supplementing their income from fishing activity by working on an offshore wind project, and that the latter becomes reliable and does not become fits and starts of opportunity where people cannot make long-term strategic decisions. The work Captain McCabe is leading under the seafood-ORE working group is really the genesis of our relationship, which will need to last for 40- to 50-plus years in order that both industries can work together to maximise those opportunities.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_114">Captain McCabe mentioned it earlier, but we might send the Deputy and the committee details of the training programmes we are running to give fishermen the opportunity to transition into the sector.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_48">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_115">That is grand. Has the organisation had any input in where the national designated maritime area plan for offshore wind would be developed? Was the north west considered for the development? Are there any plans to work with coastal communities to ensure jobs are ring-fenced for these areas? I understand what the witnesses have said about the college places. I totally agree with that.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_116">To be honest, we will need to see what emerges from the Government on the approach it is going to take to develop the national designated maritime area plan. Once it does that, there will be a consultation with which everyone will be involved. Our members will certainly participate in that. It is really important that it is not just an ORE consultation and that it would involve coastal communities as opposed to just fishermen. There are many communities which use the maritime space for pleasure, hobbies, business or trade, so they need to be given the opportunity to participate.</p>
+          <p eId="para_117"> Looking at ORE development, as we said earlier, if you develop an offshore wind farm and you need an operations and maintenance base, a critical part of that is to be as close as is humanly possible to that offshore wind farm. Looking at projects in Scotland in particular that I would be familiar with, they have absolutely transformed coastal towns or communities that had depended on either the fishing or fossil fuel industries. They are now depending on the ORE industry. Those are relationships we can build up over a long period. As my colleague Mr. Kelly mentioned, in many cases there are active fishermen who do two or three days a week on a crew transfer vessel and two or three days a week fishing. It allows them to keep doing the work they need to do for ORE, and also enhances food security.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_50">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_118">My final question is for Captain McCabe. What type of interactions has the working group had with the Irish seafood industry? How often do such interactions take place? Can he outline some of the concerns that have been put forward by the industry regarding offshore renewable energy?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:00:00+01:00"/></from>
+          <p eId="para_119">The interactions are very frequent. We meet once a month, generally. We do not meet in August, but otherwise we meet once a month. The subgroups also develop relationships. The latter involve smaller numbers of people sitting together trying to get to grips with the issues that both sectors face. A lot of interaction goes on.</p>
+          <p eId="para_120"> The issues that arise can be very broad, and I could probably spend the rest of the afternoon talking about them. There are always concerns about the future of fishing in the broadest sense of the term. Earlier, we discussed briefly whether one could fish in a wind park. Of course, there is absolutely no barrier to that at present. However, fishermen would have concerns about the extent to which you can do it.</p>
+          <p eId="para_121">Depending on the direction of wind and tide – and everything at sea depends on that – the number of vessels that could fish within a wind park could be different. The test will always be for the skipper in a vessel, where a prudent mariner would go. They have concerns about impacts on their industry. The have concerns about direct impacts of any development at sea, whether it is ORE or marine protected areas. Anything that reduces their fishing space has an impact and can move vessels from one area to another, because it is a mobile business. They have concerns about the movement of fishing vessels from one area to another. They have concerns about activity that is outside the remit of our working group. We look at ORE issues, and we now have very good relationships in that space.</p>
+          <p eId="para_122"> There is, of course, other activity on the water that is outside that space. For example, there are telecommunications cables. People are concerned about including those in the group's work. Overall, there is a concern about the unknown. As Wind Energy Ireland set out, the final design of offshore floating wind off the west coast is not known. There are concerns around what the impact and footprint of that will be and what the implications could be if there an issue arose.</p>
+          <p eId="para_123"> On a more positive note, having worked at lea for most of my life, when things do arrive and when are developed, seafarers work together. They work with whomever is there. We should bear that in mind. Relationships on the water are always around trying to help each other out.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_52">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_124">I thank the witnesses for their presentations. It is great to have them here. I will engage in a little backwards and forwards; first, with Wind Energy Ireland. We have an 80% electricity generation target for renewables. What is the target for offshore for 2030? On the current trajectory, what does Mr. Moran think we will reach?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_125">The target is 5 GW of offshore wind energy connected to the system and generating. At this point, it is fair to say that we will miss this target. We hope to see projects connect in maybe 2031 or 2032. I do not think we are counting on having offshore wind energy connected to the system and generating in 2030 in order to hit that 80% target.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_54">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_126">Will we have any offshore wind?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_127">We hope to have projects moving into construction, and we hope to see construction activity taking place. At this point, however, we acknowledge, in the context of the offshore wind action plan, that the likelihood of having significant offshore wind energy assets constructed and connecting to the grid by 2030 is very low.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_56">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_128">Arklow has been decommissioned. I was looking at it the other day; it is being taken apart. We have gone backwards when it comes to offshore wind production because we no longer have that one entity producing.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_129">That is true. One note of clarification: the blades have been taken down at Arklow for maintenance and the facility has applied for decommissioning. Planning permission has to be obtained in order to decommission the wind farm. The process is under way. The facility is not generating electricity.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_58">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_130">It is not generating. As a result, we have no electricity being generated offshore and it is unlikely we will have any by 2030.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_131">Yes.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_60">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_132">That is very worrying. Can anything be done to expedite the relevant projects?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:05:00+01:00"/></from>
+          <p eId="para_133">That is our number one priority. As the Deputy will see in the action plan, it is about to try to move forward with those phase 1 projects as much as possible. We are working through the RFI requests that we have received now. One of the things we have highlighted to the Government is the challenge whereby we get a request and it is often a case of being told, "Go talk to this or that State agency”. The agency involved may not have the resources to meet us this within a month or two months, so there is a real gap there. A good deal has been done by the Government to invest in An Bord Pleanála, which is what delivered the robust RFI. Trying to ensure that the State agencies we now need to deal with to respond to the RFI are resourced and that they prioritise this is important.</p>
+          <p eId="para_134"> We also want to see better co-ordination between the phase 1 projects, the Government and the State agencies resolving issues that remain outstanding. One of the issues we are trying to deal with in conjunction with the Government relates to the grid connection agreements and how they will function. It is important to try to resolve those issues. To be fair, I do not have any doubts about the commitment of the Department, EirGrid or anyone else to try to accelerate these projects, but we are trying to do a massive amount of work in a short time. Does Mr. Kelly want to come in on that?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_135">That is essentially it.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_63">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_136">One of the things that has been raised with me by those in the industry is that there is not any pre-planning consultation with national parks. As a result, when An Bord Pleanála or An Coimisiún Pleanála come back, they look for information that those to whom I refer believe could have built into their planning applications head of time. They see that as quite a constraint. Does Mr. Moran know how many people within-----</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_137">I do not have that specific detail. I will make two points. First, a learning, for want of a better way of putting it, for when the next project goes in, the Tonn Nua project – whichever company is successful with that – is to try to ensure that statutory agencies and stakeholders are funded upfront in order that when pre-planning consultations happen, they are as productive as they can be. That would speed up the process. That is something we can learn for the future. With regard to what we are doing now, ensuring that the National Parks and Wildlife Service has the resources and capacity, is giving priority to offshore wind projects that have been the subject of requests for further information and is seeking to engage would be very helpful.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_65">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_138">I am not sure there are many different stakeholder groups. Is there any stakeholder group that involves MARA, An Bord Pleanála, Wind Energy Ireland, the national parks and the State agencies and at which issues can be raised?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_139">There is. I do not think it necessarily includes all the entities the Deputy mentioned, but MARA is involved with the offshore wind delivery task force chaired by the Minister, Deputy Darragh O’Brien. I do not know whether Ms Brien wishes to pick up on that point. I do not think it brings in An Bord Pleanála because there would be a regulatory issue with the latter being involved. It is a place where various different State agencies and Departments come together to try to unlock this and move it forward. I think it has been successful in doing so. As a lobbying organisation, we always want it faster, but it is moving in the right direction.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_67">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_140">It is very worrying that we will have zero wind energy from offshore by the 2030 deadline, at which point we will be at risk of €26 billion in fines for not meeting our climate targets. We need to push for better co-ordination and resourcing. I know certain entities are struggling with that.</p>
+          <p eId="para_141"> All three groups might be able to respond on this. The marine protected areas legislation should be in place by now, both for the witnesses and in order to ensure that a more holistic and robust system is in place to enable the production of wind energy and the continuation of the fishing sector. Unfortunately, we are three years into the process and we still do not see any legislation forthcoming. What is now being mooted by the Government is not to proceed with a stand-alone piece of legislation but to incorporate what is required as an amendment to the DMAP process. What are the witnesses' thoughts on that?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_142">It does not fall directly within MARA’s remit. We welcome anything that provides clarity with regard to marine spatial planning because the more clarity there is around what activities are actively being designated in an area or a marine protected area, the more it will enable our decision-making to be more robust and speedier. Ultimately, the decision as to how best to bring forward the MPAs rests with the Government in terms of policy. Once an MPA has been designated, then MARA has a role in making sure that we incorporate that designation, and any constraints or mitigating actions will then be driven on the basis of the objectives relating to that MPA. We welcome the DMAP process for ORE because it provides clarity. If what you are trying to do is provide greater spatial clarity for different activities in different areas, we are agnostic. However, we welcome clarity on the process moving forward.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:10:00+01:00"/></from>
+          <p eId="para_143">Similarly to what Ms Brien said, it is all about marine spatial planning, and the need for certainty and clarity is absolute. The seafood-ORE working group would welcome anything that brought certainty and clarity to the process. The seafood industry in general, and fishermen in particular, have a background in protecting their environment and protecting their species in quota management and so forth.</p>
+          <p eId="para_144">They understand what is at stake. Certainly, those in the ORE sector very much understand what is at stake here. However, we would like to see clarity in order that we can understand how we all work together in that one maritime space and what the impact of this will be on the two sectors that are represented at the seafood-ORE working group. Of course, I have a selfish interest and only look at those two sectors. I am aware that there is an awful lot beyond that, but I only look at those. Clarity will always be welcome.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_70">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_145">I thank Mr. McCabe.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_146">It has always been our position there should be a stand-alone marine protected areas Bill. We have called for that jointly with Fair Seas, which is an organisation that has campaigned on the matter, on a number of occasions. That said, we do not necessarily know exactly what approach the Government is going to take. If there is a way that has been found to deliver those MPAs more swiftly with the same level of robustness, we would certainly be open to looking at that because we are very desirous that it would inform the development DMAP such that the designation of MPAs or the identification of potential MPAs could be integrated into that work.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_72">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_147">I thank Mr. Moran. I have many concerns about moving from one process to another, particularly when it was so close to being delivered or potentially delivered. Folding it in with another process that is, in itself, quite complex, especially from a consultation perspective, as was said, and loading another layer of consultation and objectives on that is quite worrying.</p>
+          <p eId="para_148"> Is MARA operating out of Wexford at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_149">Yes, our headquarters are in Wexford.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_74">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_150">I am very familiar with that area. I am from there. It is great to see. Wexford has such a strong maritime history. My family, going back many generations, worked on the sea. It is great to see the authority down at the bottom of Fishers Row. Maybe if I am down there someday I will pop in. I am just wondering from a-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_151">We are at time now, Deputy Whitmore.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_76">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_152">Can I just ask about timelines?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_153">We will come back for another round if that is okay.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_78">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_154">That is grand.</p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_79">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-07-15T12:15:00+01:00"/></from>
+          <p eId="para_155">I thank the witnesses for coming. It might be important for them but it is equally important for us. It is an education for us to know what their briefs are and they are very helpful in explaining and responding to particular questions. When the Wicklow wind farm was being established, were there many issues? Did many people object to it? There is a perception that wind farms could have serious implications for the fishing sector. From what the witnesses stated, it is the last thing they want. If we take the UK and, indeed, Northern Ireland, as a template, it will not be an entire area that will be an exclusive zone just for fish farms. Are there guidelines for where there is a turbine or a fish farm in place? In what proximity of these should vessels be obliged not to enter? We talk about 2029 and 2030, and I hope we can achieve the target in that regard. In the meantime, however, how many applications are with An Coimisiún Pleanála? If there are applications before it, who submitted them? All State agencies can do is create the atmosphere conducive to investment by the private sector. I have always believed that the engine of growth in the economy is the private sector. Do the witnesses find there is an interest from those in the private sector who want to invest in Ireland? Is it seen as a risky business, especially in the early stages when there might be teething problems.</p>
+          <p eId="para_156"> On ports, I am very much a Donegal man. I am very proud of the investments that were made in Killybegs, some of which happened when I had responsibility in this area. Only recently, I was told that 30 or more cruise vessels are visiting Killybegs. That was born out of a very simple meeting I had in Miami many years ago. I was envious of the ports around Europe that were benefiting from this and thought, "Why not us?"</p>
+          <p eId="para_157">It came to fruition because the infrastructure is there. Does Killybegs have the infrastructure required to service? If you go up and down the coast, there is not much more available to do that. If other ports require investment - this question is as much for Ministers as it is for the witnesses - do the witnesses believe the Government should invest in those or maybe improve the one in Killybegs if that is necessary?</p>
+          <p eId="para_158"> Did the witnesses have an input in the Maritime Area Planning Act 2021? I appreciate one of the organisations was not established until 2023. Was there input or was the Bill decided unilaterally almost by officials in the relevant Department? Have the witnesses taken the opportunity to visit wind farms in other parts of Europe and the world? They are the templates. If they have, I would be interested to know what their views are. I might have more questions, but I will give the witnesses the opportunity to respond.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_159">I might ask Mr. Kelly to come in on the setback distance from the turbines, but first I will go through a few of the questions the Deputy asked. We are not aware of any objections or opposition to Arklow Bank 1, the existing wind farm that is out there. I think until the blades came down there was a tourist company providing rides where you could get on a boat and sail out to look at the wind farm. There are currently six planning applications for offshore wind energy projects with An Coimisiún Pleanála. They are Sceirde Rocks off the coast of Galway, Oriel off the coast of Louth, the north Irish Sea array off the coast of north County Dublin, the Dublin array off the coast of Dún Laoghaire, Codling off the coast of Wicklow and Arklow Bank 2 off the coast of Arklow.</p>
+          <p eId="para_160"> On the Maritime Area Planning Act, we engaged with the Department of housing in the pre-legislative process to try to feed into that legislation and then to try to shape it. It was good legislation. Setting up the Maritime Area Regulatory Authority was a big step forward and we welcome it.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_161">I thank the Deputy for his range of questions. On Arklow and the array being decommissioned, I grew up on the coast between Wicklow and Wexford. I have looked at the Arklow wind farm for my entire life and its full duration. It is just part of the receiving environment in Arklow at this stage. There is affection towards that wind farm. A lot of fears about the implications of offshore wind were really debunked by the presence of the farm.</p>
+          <p eId="para_162"> One of the benefits of the maturing of the technology over the last 20 years is the technology is getting bigger and the consequences of technology getting bigger is that the separation distances between turbines gets bigger. The phase 1 projects that are in the planning process at the moment have separation distances typically of 1 km between turbines, so there is sufficient space for fishing to occur within wind farms. Fishing within wind farms is really a function of the type of fishing, as I am sure the Deputy is aware. Careful planning in consultation with the local fishing community is very important in that context. There is static fishing, as in fishing with pots and ropes, occurring in wind farms all around the coast of the UK. There is dredging fishing occurring within wind farms in the UK. That can, therefore, occur. What an operator of a wind farm would suggest - and it is not restricted by legislation in the UK - is to respect a 50 m advisory distance from the edge of infrastructure, just from the perspective of safe maritime practices.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_163">Both Ms Brien and Captain McCabe indicated they wished to come in on this question.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_164">I will let Captain McCabe come in. I would like to come back to the investment question from the Deputy when he gets an opportunity.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:20:00+01:00"/></from>
+          <p eId="para_165">I will deal with only one specific aspect of the Deputy's question as other parts of it are a little beyond my remit. He mentioned the concerns of fishermen. One issue we need to address in that respect is the absence of good baseline data.</p>
+          <p eId="para_166">The committee will see it in the introductory remarks in the briefing note circulated. A substantial issue to address is to gather good baseline data on the ecology and hydrography of the areas where we will establish the DMAPs. This feeds a concern for fishermen that they may not be able to demonstrate the impacts because there was not sufficient baseline data.</p>
+          <p eId="para_167"> Similarly, from a renewable energy perspective, there is a need for improved data on the spatial activity of vessels, particularly sub-12 m vessels. As most will probably know, the latest figures from Bord Iascaigh Mhara show 81% of our fishermen are operating in vessels in less than 12 m. There is not good spatial data on this to support the fishermen and their efforts and to provide good data to the renewable energy sector. These are issues that are on our agenda in the working group but we need to improve both the sharing of the data we have and to acquire new data.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Eoin Leahy<recordedTime time="2025-07-15T12:25:00+01:00"/></from>
+          <p eId="para_168">I thank the Deputy for his questions. To add a little on the way we designate marine area consents, we do not do this on an exclusive basis. We designate the marine area consents for a specific use and that does not preclude another use of the space. An example of this could be a wind farm. We could designate a marine area consent for the wind farm but there would be a separate marine area consent for the cable connecting that farm to the shore. The consenting process does not exclude other activities from happening within that space.</p>
+          <p eId="para_169"> To respond to one of the Deputy's last points, I personally visited a wind farm and my colleague, Ms Brien, has also done so. We have a programme where we are encouraging the staff of MARA to go and actively visit them. I was at one in Nantes last year in France and it was interesting to see the coexistence there, with tourist vessels, wind farms, fishing and wildlife all in the same space.</p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_86">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-07-15T12:25:00+01:00"/></from>
+          <p eId="para_170">I know there are only seconds left but perhaps, at a later stage, if we wanted to see something in practical terms and how it worked, the witnesses could recommend a wind farm to visit to understand this more fully.</p>
+          <p eId="para_171"> When the witnesses say Arklow has been decommissioned now-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:25:00+01:00"/></from>
+          <p eId="para_172">We do not have time for an additional question but there will be a chance to come back in after, if that is okay with the Deputy. I am conscious others have been waiting to come in.</p>
+        </speech>
+        <speech by="#NiallBlaneyIND" eId="spk_88">
+          <from>Senator Niall Blaney<recordedTime time="2025-07-15T12:25:00+01:00"/></from>
+          <p eId="para_173">The witnesses are all very welcome and I thank them for their presentations. They have been most useful.</p>
+          <p eId="para_174"> Like others, I believe fishers are responsible workmen and workwomen. At the end of the day, conservation is in their own interest and the majority of fishers would recognise that. I will ask all my questions if the witnesses do not mind and then they can respond.</p>
+          <p eId="para_175"> My first question relates to sites and how lucrative some of these sites are. The witnesses mentioned six sites had planning. Being another Donegal man, I have a strong interest in the north-west coast and the west coast generally. I have been told, rightly or wrongly, that the area off our north-west coast is possibly the second most lucrative site in the world and some in the industry have been looking at it in that regard. From the witnesses' knowledge, where would those six sites mentioned, if their potential is realised, sit with the north-west site? This is all happening on a small basis on the east coast, getting larger as we move around the south coast and head north. The planning has started on the east coast. From my perspective, an awful lot of time has been wasted on those small sites on the east coast, when we should have had the best of the whole lot from day one to meet our targets. We cannot turn the boat around at this stage - pardon the pun - but I feel we are at the bottom of the pile. Is there a possibility we could be left out altogether?</p>
+          <p eId="para_176"> Do the witnesses have any concerns regarding the grid and the potential sites having the network to carry the extra power? If so, could they spell those out? If we develop all these sites, do the witnesses envisage us being in a position to export power to the EU?</p>
+          <p eId="para_177"> I have visited both Killybegs and Rossaveel. Last year, when I was running in the European elections, a number of people got on to me about Rossaveel and I visited the area a couple of times.</p>
+          <p eId="para_178">An awful lot of work has been done there and it would not take an awful lot more to make it a viable site. I hear a lot of talk of Cork and other parts of the south. With a little planning and extra work and spend, Rossaveel could be a viable site. What are the witnesses' opinions on that?</p>
+          <p eId="para_179"> Killybegs was also at a very early part of the presentation but there was very little word on it. It is probably one of the best piers in the country. There are then smaller piers on the north-west coast that have potential, such as Greencastle and Rathmullan, one of the deeper sea ports in the country. </p>
+          <p eId="para_180"> Regarding the DMAPs, I have heard it said this is not meeting its targets. When will the mapping be done in the north west?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_181">I thank the Senator for his questions. The first question related to Donegal and the development of offshore wind there. The phase 1 projects have been in development, typically going back to 1999, and for various regulatory and market reasons, those projects never progressed. There is an urgent need for the delivery of phase 1 projects and that is why those projects have gone into the planning process. In respect of offshore wind, however, the off-take from the infrastructure, which is electricity, is very important. The requirement of maritime area consents is you have to connect to the Irish electricity transmission system. Those phase 1 offshore wind farm projects are using conventional and proven technology which will bring the benefits of cost-saving from those technologies to the Irish consumer. There is a balance of the cost-effectiveness, the capacity of the grid and the availability and supply chain to provide that technology which is what has led to the phase 1 projects moving forward first.</p>
+          <p eId="para_182"> The national DMAP is the mechanism by which future sites can be identified. What is critically important is that Donegal does have wind and good water depths, particularly on the near shore in towards Donegal Bay. It is also important that there is an off-take for the product of offshore wind, which is electricity. The electricity investment in the grid is important from a Donegal perspective. I am not sure if Mr. Moran has anything else to add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_183">At present, it is challenging for us to get the onshore power generated in Donegal out of Donegal and into the rest of the electricity grid.</p>
+        </speech>
+        <speech by="#NiallBlaneyIND" eId="spk_91">
+          <from>Senator Niall Blaney<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_184">I am aware of that. </p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_185">The challenge is even more exacerbated with the offshore projects.</p>
+        </speech>
+        <speech by="#NiallBlaneyIND" eId="spk_93">
+          <from>Senator Niall Blaney<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_186">Is offshore wind generation in Donegal in jeopardy because of that?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_187">The lack of grid is probably one of the biggest challenges facing us. One of the reasons we are on the east coast is that the demand centre is Dublin. If we want to get electricity out of north Mayo, Donegal, Derry, Sligo or Leitrim, we need a stronger electricity grid up there.</p>
+          <p eId="para_188"> Taking one of the Senator's last points on the potential for export, if we deliver the projects, that will mostly deal with Irish domestic demand. We may be able to export small amounts of it and import at other times. The long-term potential is that we will certainly be able to generate a huge amount of electricity in Ireland. The question is then if we export it or try to attract investment into Ireland. One of the things we are really keen to see the Government do relates to identifying in the DMAP new locations for offshore wind energy. Hypothetically, if the DMAP said there was potential for offshore energy off the coast of Donegal, that is an argument to get investment into Donegal which could use that electricity.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T12:30:00+01:00"/></from>
+          <p eId="para_189">It might be worth clarifying that the Government adopted the plan-led approach for offshore wind development in 2023. This approach provided that, whereas the first six projects, which were primarily located on the east coast with one on the west coast, were chosen by the developers, all future development, rather than being developer-led, would take place on the basis of a plan-led approach. The first outworking of that plan-led approach was the south coast DMAP, with four sites designated. The next piece of that plan-led approach is the national DMAP, which will identify further sites which have been characterised as good for development around the rest of the country.</p>
+          <p eId="para_190">That will by definition include Donegal. The drivers of those locations are a combination of things. As Captain McCabe said, it is a data-driven approach. This is a role that the Department of Climate, Energy and the Environment will carry out. It will look at patterns of use for other things, whether it is MPAs and specific conservation objectives, navigation or fishing usages. When all of these usages are identified, good marine and spatial planning will show what areas can be assigned for offshore wind development. One of the things that will feed into that, as Mr Kelly said, is the availability of grid to take the electricity ashore.</p>
+          <p eId="para_191"> The other important aspect to note is that it generally takes between eight and ten years to identify the sites, allocate the right to occupy the site for an activity, get the wind farm built and energised and then have the electricity come ashore. The indication is that having the longer term national DMAP in place means that other organisations and other agencies can then do the planning to match up the grid development with the areas where offshore wind is likely to be developed in the future.</p>
+        </speech>
+        <speech by="#NiallBlaneyIND" eId="spk_96">
+          <from>Senator Niall Blaney<recordedTime time="2025-07-15T12:35:00+01:00"/></from>
+          <p eId="para_192">If we were to set aside the difficulties with the grid, when do we expect the mapping for the north west to be completed?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T12:35:00+01:00"/></from>
+          <p eId="para_193">What the Department of Climate, Energy and the Environment has said, and again I am reflecting what it previously said, is that it is looking for 2027 to be the timeframe for completing the national DMAP process.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_98">
+          <from>Deputy David Maxwell<recordedTime time="2025-07-15T12:35:00+01:00"/></from>
+          <p eId="para_194">I thank the witnesses for coming in. I have an observation rather than a question. It is important that the witnesses have come in and briefed us on the issue. It has given us an insight into the offshore wind energy industry. As someone from an inland county, I do not know much about fishing or offshore wind. I see the wind turbines inland and I have always thought that out in the sea is the place to have them. They are away from people. I visited Killybegs a month ago when I was appointed to the committee and saw the boats tied up. If I was a fisherman, I would see the threat from quotas and then now the possibility of wind turbines being installed on the fishing ground that I fish. Mr. Moran or Mr. Kelly said that some fishing can take part in other parts, which is something to look at. We need to consult fishermen. That is important. We should not go so far down the line and then bring in the fishermen; they should be brought in from the start to get buy-in. I spoke to fishermen and they are not against turbines. However, if you have been fishing a certain fishing ground for the past 20 years and the next thing turbines are to go up in a wind farm that is 30 km wide, that would be a worry.</p>
+          <p eId="para_195"> To going back to what Senator Blaney and Deputy Gallagher said, there is a massive dock in Killybegs. One would think that is ripe for the wind industry and that there would not have to be much money spent in Killybegs to allow boats to come in to do this work. There seems to have been a lot of talk about looking at different areas. I would have thought Killybegs is an option. There has been investment in the port and it is not a big jump to get to the next stage that it could be a port for this activity on the west coast. Perhaps there are other ports better developed; I do not know. The quay there must be 200 m or 300 m long. There was nothing tied up when I visited. What do we need to get onto the west coast? If you drive down to Rosslare, you will see the Arklow Wind Farm. What will it take to get us to that wind? We all know that offshore wind will get us to that magical decarbonisation or reduce our carbon footprint. What can this committee do to help wind energy developers to get to the west coast and get it working.</p>
+          <p eId="para_196">My point is they need to engage with the fishermen early. We do want to be bringing the witnesses back here in two years, tit-for-tat, and asking why they are not engaging with the fishermen. We need to try to bring everyone with us. I think the fishermen will work with them and we can arrive at something that is mutually beneficial to everyone, including the consumer, which at the end of the day is what we want as well.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_197">I have a couple of quick points. In terms of delivering on the north west, there are two things I would argue, and then I will bring in my colleague Mr. Kelly to talk about the importance of early engagement. The first thing we need to do is deliver the phase 1 projects we have at the moment. That delivers a supply chain and confidence in Ireland as a place in which to invest. My waking nightmare is that we would lose those projects in the planning system or a judicial review. Trying to sustain investment in Ireland for offshore wind energy anywhere on the island would then go out the window. The critical number one thing is delivering the phase 1 projects. The second issue, which Senator Blaney touched on in his comments, is the importance of the electricity grid. Last year was our second-worst year on record for the amount of wasted wind energy. About 14% of the electricity we could have produced was wasted. We had to switch off the turbines. That is 14% nationally. The figure is significantly higher in the north west and in north Mayo because the electricity grid is not strong enough. We have onshore wind energy projects that have full planning permission and are shovel ready as the saying goes. We are not building them. We actually may never build them because the electricity grid is not strong enough to get out the onshore power that those can generate. If you are talking about a much bigger offshore project, the real challenge is trying to reinforce the electricity grid. That means delivering projects like the North-South interconnector, which we have been awaiting for some considerable time. I know EirGrid is also working on other grid reinforcement projects in the north west but we need to get them built and connected. We are not going to build an offshore windfarm to stand idle in Donegal Bay, nor would the committee members want us to.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_198">In relation to consultation with the fishermen, one of the mechanisms which we strongly advocated for was the setting up of the national ORE-seafood working group. There is quite a splintered representational structure for fishermen in Ireland. We strongly advocate that they engage with the representative organisations because it is an effective way to communicate engagement on a national basis and for them to stay aware of what is happening in this space. Communication can be challenging with the community. All projects that our members are progressing which are mature and have entered into the planning process have dedicated points of contact. While they are all large energy companies, it is important that there is an individual to whom people, particularly those from the fishing sector, can go. Developers have facilitated that process. The quality of that engagement needs to recognise that it is a long-term relationship. The concept of wind turbines on planning drawings is one thing. All of the decisions regarding how the cable infrastructure gets put into the seabed and how it is protected still need to be made on a practical basis. We strongly recommend that those communities continue to engage with those projects and recognise the long-term nature of that engagement.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Eoin Leahy<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_199">I will speak about the consenting and licensing process. That engagement starts at the designated marine area plan where the State sets out what sites it wants to designate. Consultation is a key feature of that. Wearing my former hat, when I was based in Brussels Ireland was singled out for the quality and extent of its engagement as an example of good practice among the other EU member states. Going back to our role in MARA, we set conditions of our licences. For example, we recently did a licence for EirGrid which will be the survey work to connect the next south coast DMAP where fisheries liaison officers are required to be part of the survey process. That engagement is right through the process from start to finish.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:40:00+01:00"/></from>
+          <p eId="para_200">I have a brief general point to make. At the end of his contribution, Deputy Maxwell asked what the committee could do. It is important not to lose sight of what the committee is doing already. We have in the room legislators, Deputies and Senators, looking out to sea. That in itself is quite remarkable in that the focus is on the sea. It is really important that the committee is doing that work. The sea is becoming increasingly relevant in our lives, as we can see. I think Covid-19 and the Suez crisis taught us that. Well done on what has been done to date.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_103">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T12:45:00+01:00"/></from>
+          <p eId="para_201">I thank the witnesses very much for coming in today. I just have a couple of questions. In his statement, Mr. Moran said this is an "incredible opportunity to build a resilient economy, and to revitalise coastal communities, with secure, affordable, clean energy". A while ago, he touched on it being affordable. We do see - I know it is different - we have more onshore wind farms than ever before but customers are still paying the second-highest prices in Europe. The onshore wind farms made the same promise of cleaner and more affordable energy. How does Mr. Moran propose to combat the same things that have happened on land happening in respect of offshore?</p>
+          <p eId="para_202"> Turning to the representatives of MARA, can a timeline be given to provide the list of maritime activities that do not require maritime usage licences? It was also mentioned that best international practice was looked at. What countries are seen as having the best practice?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:45:00+01:00"/></from>
+          <p eId="para_203">First, if we look at the track record of the onshore wind energy projects, since 2000 these onshore wind farms have saved Irish electricity consumers about €1 billion. Between 2020 and 2023, Irish onshore wind farms saved consumers around €320 per person. They do this by pushing gas off the system. What is setting the price and driving the prices up is our dependence on imported fossil fuels. This is what is driving electricity prices up and it will continue to drive electricity prices up while we allow gas to set the price. Every Irish electricity consumer will lose out as a result.</p>
+          <p eId="para_204"> One of the updates that should be received from our office monthly - in fact, it should be received today - is a dashboard we produce showing the amount of electricity on the system in the previous month. It also shows the wholesale price of electricity on the windiest days, the average wholesale electricity price in the preceding month and the wholesale electricity price on the days when we must rely on fossil fuels. On the days we rely on fossil fuels, the wholesale electricity price is generally about twice as much as when we have onshore wind on the system. I think people are conscious that having wind on the system pushes gas off. What they may not be as familiar with is that wind energy pushes off the most expensive gas generator on the system at that time, and this is what helps to lower the wholesale electricity price. If we can deliver offshore wind energy, therefore, we would hope to see this continue to happen. One thing I do agree with the Senator on is that we need to find ways to deliver renewable electricity in Ireland more cheaply and more affordably. This is something we would be keen to work on with people in future. It will certainly be a priority for us. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_105">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T12:45:00+01:00"/></from>
+          <p eId="para_205">What is the biggest cost that would push the price up? </p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:45:00+01:00"/></from>
+          <p eId="para_206">We produced a report in 2020 called Saving Money. It was very much focused on onshore wind in respect of identifying the things driving costs up. One of the things we would be keen to do with the Government would be to sit down and work on what goes into the price of an offshore wind farm that Ireland can control and what we cannot. Ireland cannot control European interest rates or the price of steel, for example, but there are things we can control in terms of the development and network costs and the form of the contract available in the ORESS, the auction system run by the State. One of the things we would be keen to do, looking at onshore and offshore wind energy, would be to see what the Government can do to lower costs and to sit down and work through those aspects systemically to try to bring down costs for Irish electricity consumers. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_107">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T12:45:00+01:00"/></from>
+          <p eId="para_207">I thank Mr. Moran.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T12:45:00+01:00"/></from>
+          <p eId="para_208">I thank the Senator. To respond to her two questions, in terms of potential exemptions for the need to hold a licence for certain activities, we engaged with the Marine Institute in 2024 to do a report for us to identify what activities may not need to be licensed by MARA and, in particular, to facilitate the requirements of the ORE sector. We have shared that report with the Department.</p>
+          <p eId="para_209">We are aware the Minister has recently consulted with several State and industry stakeholders to identify the suitable activities that could be included in exemption regulations. We participate in these consultations. We are actively supporting the officials in the Department and we are awaiting them to bring forward the regulations that would support that exempted activity. In terms of timelines, then, this question would be better answered by the Department than by us. We do expect the timelines to be forthcoming.</p>
+          <p eId="para_210"> Regarding best practice, we have certainly had the opportunity as a new agency to learn from other countries. One of the particular areas we have engaged on internationally is permitting across licences and seabed rights, what we call a "maritime area consent" and other people call a "seabed right". We have spent quite a bit of time talking to colleagues in the Netherlands and Denmark about their approaches to allocating seabed to particular developers and the basis on which they do it, such as whether they offer it based on the price offered or on non-price factors. We will shortly be coming out with our own industry engagement around a competitive MAC process that will apply to those sites within DMAPs that are not going to go through a renewable energy support scheme process. We expect some of the south coast DMAPs to come through that competitive MAC process, so we have been actively engaging in this regard. As I said, the Netherlands and Denmark, in particular, are two countries we see as leading in this area. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_109">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_211">Finally, to pose a question to Captain McCabe, it was said in the submission that there are 17 organisations representing the seafood sector and fishermen. Are they all still engaged?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_212">The total of 17 organisations is made of regional and national organisations. Obviously, if we took in every organisation in the country - there are quite a lot of local organisations in the seafood sector - we would be overwhelmed with numbers. As I said, there are 17 regional and national organisations, ranging from the producer and processor organisations, through to organisations supported by BIM, such as the national inshore fishery forums and the regional inshore fishery forums. There are also the national inshore fisheries associations. They are all still there and still engaged. They cover the country geographically and the sectors involved. The IFA represents aquaculture, and it is a member too. All the organisations still attend. Certainly, as I mentioned in the brief, we are reviewing the terms of reference now. One of the concerns is that perhaps we have too many people in the room. To try to get work done, we might need to see if there is a better way to do things. We are always trying to get better outcomes and better ways of doing things. It is not, though, a working group where there is going to be a vote, so there is never any concern that there are too many from this sector and fewer from another one, or whatever. It is a working group that is very much consensus driven. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_111">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_213">Does the group get feedback from them?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_214">We get very good feedback from the organisations in the room. We would always have a concern that we are not getting good feedback from people not in the room. The seafood industry is made up of individuals and to get to every individual is quite difficult. We are always conscious of trying to reach out to people who may perhaps not be in contact with an organisation. They may well be a member of one, but they may not be an active member. We do get really good feedback in the room.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_113">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_215">It was said that 81% of Irish fishing vessels are under 12 m and that the working group has recommended that vessels without monitoring systems should avail of the scheme from the Marine Institute, which makes this equipment available without charge. Is there a good uptake in this regard or is this known? Are vessels availing of it? </p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T12:50:00+01:00"/></from>
+          <p eId="para_216">No. There is not a good uptake. There is a very poor uptake. For reasons that are perhaps historical, people do not like others to know where they are fishing. We probably named the system badly because having the word "monitoring" in it means it is not a good name. We really want people to have their own data. If we think of the benefit that data brings, it brings a benefit to the fishermen, because they can say here is what they have done in the last three years. It also brings a benefit to the DMAP process, because the people involved in it can tell where the different types of fishing are concentrated.</p>
+          <p eId="para_217">The data brings a benefit to ORE because those involved can look at it and have a strong evidential chain around the activity. There is also a natural suspicion of data relating to where a person stores their vessel and we are pressing quite hard to get a solution to that. It is one of the things we need to address because it is important and we understand where the concerns stem from.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:55:00+01:00"/></from>
+          <p eId="para_218">I have a number of questions but first I thank the witnesses. The engagement up to this point has been fantastic and informative. I have learned a lot and enjoyed hearing people's perspectives and the questions posed by members.</p>
+          <p eId="para_219"> I represent County Waterford. The south coast DMAP is on a location off the shore of County Waterford so it is a really important issue for the people in my constituency and the people whom I represent. Due to the coastal conditions and maritime environment in the region there is huge potential to develop the offshore renewable energy sector to give energy security to our nation and generate sustainable carbon-free electricity for the environment, which is extremely important. My take on all this is that the Government needs to employ a pragmatic approach. Careful consideration needs to be given to the pros and cons of every single step we take but that should not hold back or slow down progress, which is key because we will be hit with huge fines if we do not meet our targets.</p>
+          <p eId="para_220"> I want to first ask Wind Energy Ireland about the benefits for coastal communities. They will be asked to give up an awful lot, as they see it, and I tend to agree with them. I ask the witnesses to outline specific items in terms of job creation, apprenticeships, upskilling, economic diversification and investment in ports.</p>
+          <p eId="para_221"> Separately, in terms of community dividend for onshore wind generation there is the RESS system. Is there an opportunity to move beyond that system and put something together that is a little more concrete, transparent and embedded in the community?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T12:55:00+01:00"/></from>
+          <p eId="para_222">On the south coast DMAP, the potential is exactly as the Cathaoirleach has outlined. One thing that would be really helpful to deliver that potential is that the DMAP is supposed to have an implementation board to implement all of the policies that are in the south coast DMAP. I do not think that implementation board is in place at the moment. An implementation board would be a really useful exercise in maximising delivery of the DMAP and would ensure that people are as involved as possible.</p>
+          <p eId="para_223"> On benefits to communities, the community benefit fund in the offshore renewable electricity support scheme is set at €2 per MW/h. For a wind farm of the size of Tonn Nua we are talking about millions if not tens of millions of euro over the course of the project.</p>
+          <p eId="para_224"> I am interested in getting feedback from committee members on the following. The Government has put in place the RESS. The offshore scheme is not the exact same but it is similar. It is more transparent than what has been there before. Projects are required to report on an annual basis. That information is published on the website by the SEAI. Control of where the funds go is in the community route now rather than that of the owner of the wind farm. Those are really positive steps.</p>
+          <p eId="para_225"> I will take this opportunity to say that one thing we have highlighted on a number of occasions is that there is an opportunity to ensure some of the community benefit fund goes to support the fishing and seafood communities. That is not there at the moment. There is no restriction on where the money should go but it would be useful guidance to give to communities.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T12:55:00+01:00"/></from>
+          <p eId="para_226">My perspective, for what it is worth, is that there should be a separate allocation for displacement of fishing effort and for the fisheries community rather than having the two come under the same umbrella and share the same fund. These wind farms will generate electricity and they will also generate huge profit for the members the witnesses are representing here today. There should be a very strong economic and social dividend in the communities that will host these developments off the coast. We are not getting into what we have seen in other countries and, indeed, in the midlands here where there has been an extractive approach adopted to generating energy or creating wealth.</p>
+          <p eId="para_227"> My next set of questions is for MARA and I will start by talking about proximity. Tonn Nua, at its closest point, is 12 km off the Waterford coast, which has led to a huge amount of disquiet among inshore fisheries and people living in the region and running businesses there.</p>
+          <p eId="para_228">While we do not have an idea of where the eventual winners of the auction will locate the wind farm, most people in Waterford and around the coast would say that we need to develop this. What is international best practice for the offshore distance in terms of wind turbine arrays? From the witnesses' knowledge, where are we with floating wind farms like those off the coast of Norway where conditions might be significantly worse than off the relatively milder south coast of Ireland? In the professional opinion of the witnesses, are additional safeguards required for designated amenity or scenic areas of coastline where there is a developed tourism industry that has been significant for the local economy?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_229">I will answer to the best of my ability because some of the aspects of the questions are a little beyond the remit of MARA.</p>
+          <p eId="para_230"> In terms of proximity and other countries, it really depends on seabed topography and legislation. Historically, jurisdiction was out to 12 nautical miles, so there are a lot of wind farms in other countries, such as in the Netherlands, that are located well within 12 nautical miles because that was what their legislation allowed them to do. The introduction of the Maritime Area Planning Act, known as the MAP Act, and regulatory jurisdiction moving out to 200 nautical miles to the edge of the EEZ opened up that additional space to be available for development in a regulated manner. The future will differ from the past, given how everything along the east coast or, indeed, Sceirde Rocks, which was one of the six phase 1 projects, were all within 12 nautical miles because that was what the legislation allowed them to do. Other countries have gone different distances.</p>
+          <p eId="para_231"> The second piece is that it really does depend on the seabed topography and the wind and wave conditions as to what makes something commercially viable. One has to trade off a lot of things that range from the legislation, the commercial viability, the wind strengths and what the seabed looks like. There is probably no single answer anywhere across Europe.</p>
+          <p eId="para_232"> The Cathaoirleach mentioned floating wind farms in Norway. The interesting thing, if I have got this right, is that the seabed in Norway is actually really deep close to the coast and shallower farther off. Norway's closer-in or cheaper-to-develop sites are in deeper waters because it has a trench close offshore. That is why Norway has opted for floating technology. From the viewpoint of cost effectiveness and distance from shore, it is cheaper for Norway to put floating in rather than fixed technology. It really does depend.</p>
+          <p eId="para_233"> I want to pick up on one of the questions asked of Mr. Moran. Within the ORESS community benefit fund, one of the actions of the future framework for offshore renewable energy's policy statement was moving the host of that community benefit fund from the ORESS, which was the support scheme, into the marine area consent, MAC, which is authorised by MARA. The reason for that is that, over time, the expectation is that not all plants that are developed will be supported through an ORESS. Indeed, two of the first phase 1 projects do not have an ORESS and, therefore, do not have an obligation to provide a community benefit fund. All projects will have a MAC because a MAC is needed in order to occupy the space. The intent of the future framework was to include the community benefit fund provisions in the MACs rather than the ORESS. That action is scheduled. There is a plan for it and I think it will need some legislation change.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:00:00+01:00"/></from>
+          <p eId="para_234">I have a question for Mr. McCabe. I understand that his work was with the fisheries and seafood sector and offshore renewable energy. I am keen for that model to be utilised to encourage engagement between the local commercial and economic development sector, the tourism industry, the public at large and the community sector.</p>
+          <p eId="para_235">Are there some lessons that Mr. McCabe could suggest that might underpin such engagement? We want these relationships to work, we want people to feel heard and we want local input but, ultimately, we want offshore renewable energy. I am interested in hearing some of the lessons from Mr. McCabe's experience in the seafood sector.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_236">I will be brief. First, it works. In fairness, it has worked over three years. We have built more trusting and respectful relationships that are productive, so it does work. I am always wary of expanding it too much because that would become challenging and there would be too many voices in the room. It needs a number of groups rather than trying to expand one large group. There are not a lot of lessons in international best practice on it. I thought there would be. I thought it would be easy and I could just ring counterparts around Europe but there are not that many. Ireland is actually doing really good work on this.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_237">We have a few minutes left before the meeting ends. Deputies Mac Lochlainn and Gallagher had already indicated, so we will start with the former.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_122">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_238">My questions are for Ms Brien. The representatives of fishers talk about the issue of spatial squeeze. I assume the marine protected areas will advance in due course. When we are looking at sites for offshore renewable energy and marine protected areas, where does the fishing community fit in?</p>
+          <p eId="para_239"> My next question relates to the fisheries management and mitigation strategy, FMMS. Have the provisions of the FMMS been effectively delivered and critically assessed in the planning process? </p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_240">The first question would be more appropriately targeted to the Department of Climate, Energy and the Environment, which is responsible for delivering the DMAP process. It is taking all of the data that is available to manage, as the Deputy says, the spatial squeeze. It is the DMAP process that will identify the areas that best allocate space and manage that spatial squeeze.</p>
+          <p eId="para_241"> On the second question, I have to say that I am not aware of that.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_124">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_242">I am happy if Mr. Kelly wants to take the question.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_243">Fisheries mitigation and management strategies are quite a common inclusion within the planning application for phase 1 projects. They are generally called planning-stage fisheries mitigation and management strategies that typically set out a protocol for engagement between the fishing community and developers of offshore wind farm projects. They move from the planning stage into the construction stage and then to an operational phase. The strategies are quite a conventional tool to document the commitments from developers in relation to that engagement with the fishing community. They are currently the subject of live planning applications and we still await the outcome of that planning process. They are a common enough deliverable.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_126">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_244">Ms Brien suggested that we bring in the Department of Climate, Energy and the Environment to deal with issues that were outstanding. The issue of reassuring fishers that they will not be blocked from fishing, which Mr. Moran spoke about in his presentation, is important. Maybe we could bring the Department in to address those issues in the autumn.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_127">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_245">That is a great idea.</p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_128">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-07-15T13:05:00+01:00"/></from>
+          <p eId="para_246">I ask Mr. Moran to repeat the six locations where planning permission had been applied for. Is each one of those applications in the name of individual companies? What is the life expectancy of the wind farms? Is there anything in the legislation to deal with situations where something goes wrong and a wind farm becomes dormant?</p>
+          <p eId="para_247">Whose responsibility is it to ensure we get back to where we were?</p>
+          <p eId="para_248"> Finally, will the witnesses indicate to us a few locations that we could consider visiting as a committee? If they give us a few options, we can then decide at a later stage if we should do that.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_249">I will ask my colleague, Mr. Kelly, to take the question about the operational lifespan of an offshore wind turbine.</p>
+          <p eId="para_250"> I will name the projects for the Deputy. The first is Sceirde Rocks, which is off the coast of Galway and owned by Corio Generation, is in the planning system, although we do not expect that project to proceed. The next one is Oriel off the coast of Louth, which is owned by ESB and Parkwind. Then we have the North Irish Sea Array, NISA, off the coast of north County Dublin, which is owned by Statkraft. Next is the Dublin Array project, which is off the coast of Dún Laoghaire and is owned by RWE Renewables. We have Codling Wind Park off the coast of Wicklow, which is a joint venture between EDF and Fred. Olsen Seawind and, finally, Arklow Bank Wind Park 2, which is off the coast of Arklow and owned by SSE Renewables. I am mildly pleased that I managed to get all of those in the right order. I will now ask Mr. Kelly to answer the question on the operational lifetime.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_251">The operational lifetime of a wind farm is typically dictated by the technology invested in and the design that is put into that technology. Everything has a design life. The phase 1 planning applications that have been submitted have typically sought between about 25 and 35 years of an operational lifetime but they ultimately have a long stop date dictated by their maritime area consent, MAC, under which the projects need to be decommissioned after a life of 45 years, typically, from the time that the maritime area consent was granted. The consent is granted early in the development phase of the projects. Therefore, between the development timeline, the consenting timeline, the construction and operational timeline, those phase 1 projects need to be decommissioned by 2067, typically.</p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_131">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_252">We will put it on the agenda.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_253">Sorry?</p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_133">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_254">I am being facetious. We will put it on our agenda.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_255">I hope to be there, Deputy.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_256">We will come back to the committee with suggestions on specific offshore wind farms that might be of interest.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_257">There is a specified duration for the holder of the MAC but within that MAC there are obligations around rehabilitation and decommissioning the projects. These are included as part of the planning conditions. MARA is responsible for making sure those planning conditions and the decommissioning are carried out. The MAC also requires the holder of the MAC to have a bond in place to cover the costs of the decommissioning work.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_258">Senator O'Reilly has indicated.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_138">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_259">I will come back to what Deputy Mac Lochlainn spoke about earlier with regard to fishers and the potential loss that they see from this because of the effects on their fishing grounds. Fishers need to be reassured because they feel they were sold out previously. In relation to the developers' community benefit funds, will they acknowledge that the people most affected will be fishers?</p>
+          <p eId="para_260"> Reference was made earlier to international investors. We need to protect the Irish taxpayer if we are investing in offshore wind farms.</p>
+          <p eId="para_261"> A wind farm in Jutland was decommissioned recently. Do our guests know why that happened?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T13:10:00+01:00"/></from>
+          <p eId="para_262">I will take the first question about the fishers, which brings us back to marine spatial planning and the national marine planning framework. When An Bord Pleanála - now An Coimisiún Pleanála - was making a presentation to us, it was very strong on how it used the national marine planning framework as a measure of what a correct application was. That framework, from a fishing perspective, has avoidance at the very top. Avoiding any impacts is the first step, followed by mitigating impacts and so on. Where there are then residual impacts after that process, but not instead of it, discussions have to take place around where the national interest lies.</p>
+          <p eId="para_263">That involves us then in the piece of work we are about to engage on around coexistence and disruption and displacement issues.</p>
+          <p eId="para_264"> The community benefit fund is seen as slightly separate to that. Fishing is specifically mentioned in it but, as I understand it, it is not intended to be a fund to compensate for any disruption or displacement. Disruption or displacement should be avoided if at all possible, but it should be handled separately. The community benefit fund is for the overall community benefit but it specifically includes seafood and fishing interests. I hope that was helpful.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_265">Does anybody have information on the question on Jutland?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_266">I might pick it up with the Senator afterwards, as I am not familiar with the project. I might ask her for more information on it. We can then commit to following up on it and we will get back to the committee.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_142">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_267">I appreciate that.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_143">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_268">I reiterate what Deputy Mac Lochlainn and Senator O'Reilly said: at the end of the day, the fishers are the ones who need to be looked after here. That is very important.</p>
+          <p eId="para_269"> I have two quick questions. Why did the Sceirde Rocks project not proceed? Financially, what is the difference between floating and fixed? Is there a massive difference money-wise between the cost of doing the two options? Fixed is probably the cheapest off the north coast now. Am I right in saying that floating is probably about ten years away? There are people looking at it and universities trying to diversify and see what can be done with it.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_270">In relation to fixed technology versus floating technology, the reason the economies of scale for offshore wind have become affordable is because there is a mature supply chain for the foundations for the turbines. From a floating perspective, the view of our members is that the industry has not settled on the optimum floating mooring system, so it has not been able to mature the supply chain for the mooring system and floating will continue to be more expensive than floating until the supply chain settles on what the most cost-effective mooring system is. There are some prototypes and early and pre-commercial stage floating wind farms starting to connect to the grid but from a cost perspective, fixed technology continues to be the gold standard for reliability and supply chain.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_271">We are talking about a difference of roughly two and a half or three times more for floating, although it can vary depending on market conditions and the project. One of the pieces of research we are engaged on is looking at those foundations and trying to come up with the right solution.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_146">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_272">Why did the Sceirde Rocks project fall by the wayside?</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_273">I would have to point Senator Boyle to the statement that was issued by Corio Generation on that. My understanding is that it identified information relating to environmental conditions it was not aware of and, as a result, it could not proceed with the project. We can speak for the industry but we would generally leave individual projects to the companies concerned.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_148">
+          <from>Senator Manus Boyle<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_274">I thank the witnesses.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_149">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_275">I have a quick question. Infrastructure-wise, when it comes to the grid, if Donegal had a more advanced, up-to-date grid that could handle it, would it be the prime location because of where we are strategically placed, in that we are well used to having a bit of wind? Are the witnesses saying we cannot harvest that because of the grid? Is that true?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_276">It would certainly be one of the biggest drawbacks. I will give a very concrete example of this. The reason that the first DMAP was done on the south coast is because it has the strongest area of the grid to take additional capacity. We have projects already on the east coast and there are challenges in the west and north west. The greatest grid capacity was available on the south coast. That is the reason that was the first location identified for the DMAP.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_151">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T13:15:00+01:00"/></from>
+          <p eId="para_277">If we had a wish list and we had a grid in Donegal that was second to none, would it be the prime location?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_278">It is a good question. One of the things the State is trying to achieve with the plan-led approach is to make sure there is an inclusive consultative process, not only with the fishing industry but also with the geotechnical and environmental communities. The short answer to his question is that when we are designing a wind farm we need to look at the seabed conditions. Another factor apart from wind, because the wind is particularly good, is what we metocean conditions, or the size of the waves. The waves put pressure on foundations.</p>
+          <p eId="para_279"> Donegal has plenty of potential but I would not say there is universal potential all around its coast. We need to be very careful with the site we select for the technology. It is not only the grid – there is lots of potential, but it needs to be informed by good plan-making.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_153">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_280">This is my last question. If we are looking at wave technology where we have a mobile system rather than a fixed one, would there be potential for somewhere like Donegal where foundations would be affected by a deep build? Would that be something to consider in the future for somewhere on the north coast where we have an abundance of wind? Where there is sufficient depth of the ocean floor, could we have fixed-mobile units in place as we would not be tied to a particular coastal location? At the moment, that is not really being looked at.</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_281">Does Deputy Ward's question relate more to wave technology?</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_155">
+          <from>Deputy Charles Ward<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_282">Yes, more wave technology.</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_283">There are a number of test sites around the coast for wave technology. The issue with it is scalability. It depends on what we are trying to achieve. From a test-bed perspective, there are opportunities to test the new technology. Ireland has such a significant marine resource that it should continue to invest in innovation and in exploring ways of bringing on new technology, but we need to do it in a way that protects the consumer in terms of the price of electricity. We need to develop our offshore potential and it needs to be multifaceted. We need to get the first projects on the grid, which would demonstrate that we are an effective place to do business, and then the rising tide will lift all boats in terms of other technologies beyond that.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_157">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_284">I have one further question for Wind Energy Ireland. It relates to what I said earlier in terms of harnessing the power of offshore and renewable energy to be a driver of economic growth and economic development in the areas in which they are located. In the case of the south coast DMAP we are talking about Waterford in particular. What opportunities are there for economic growth arising in the areas immediately inshore from the wind farms? I am thinking in particular about opportunities for technological advancement partnerships with universities like the South East Technological University, for example, and the use of regional airports for drones for monitoring, inspection and related issues. There is also the training and apprenticeship piece and the third level courses that could sustain and help to develop the sector. There is an understanding that this could be a game changer for regional economies. I would like to hear the opinions of the industry representative group on the opportunities for the likes of Waterford.</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:20:00+01:00"/></from>
+          <p eId="para_285">The opportunities are enormous if we can develop the projects. I stress two points in that regard. The first is the need to move forward with the delivery of Powering Prosperity, the offshore wind industrial strategy. The next iteration of it will go out to consultation before the end of the year. The expectation is that the next version of the strategy will be launched in quarter 1 or quarter 2 of next year.</p>
+          <p eId="para_286"> In terms of the potential to drive the industry, that is a really good opportunity for this committee to engage on. Wind Energy Ireland represents the people who build and operate the wind farms. We also represent the entire supply chain from beginning to end. We are very keen to build a strong Irish offshore renewable energy industry.</p>
+          <p eId="para_287"> There is a secondary opportunity in looking at the interest that is out there in accessing clean energy. One of the things we will be keen for the Department of enterprise to pursue is trying to locate green energy parks for large energy-demand medtech super conductors. Waterford is a perfect location for it, not just because of the academic supports and the strong business community that is there but because we will have enormous amounts of renewable energy that can come onshore in the Waterford-Cork-Wexford area. Let us try to use that as a way to attract investment into the south east.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_159">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_288">Is the use of drone technology something Wind Energy Ireland's member organisations have looked at? Is it a feature of the operation of offshore renewable energy in other countries?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_289">A number of our members are involved with unmanned maritime vehicles. We carry out survey activity using these vehicles. I am not sure if we have aviation drones. We have used planes for surveys but I believe they are normally manned.</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. Paul Kelly<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_290">One of the things that is very important in a plan-led approach is the opportunity to develop a marine cluster. For example, in the Dún Laoghaire area, there is a former ferry terminal that has planning permission to support new development in marine technologies. My personal view is that, as we build out offshore wind facilities around the coast of Ireland, we will need to develop these clusters, which would be networked together and led by a national strategy, whether the national industrial strategy or work led by the Department of Enterprise, Tourism and Employment. This would give us a cluster effect and generate research and development opportunities around the coast.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_162">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_291">That brings to an end our questioning. We have a number of minutes left. I am happy to give each group of witnesses a minute and half each if they would like to make a closing statement. Otherwise, we will draw a line under the meeting. Is there anything the witnesses feel was left unanswered that they would like to address?</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Mr. Robert McCabe<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_292">I do not think so. We would just like to thank the Chairman and the members again for the time and the opportunity. If they have follow-up questions, I ask them to please contact us. In my experience, I usually think of the best thing to say on the way home in the car. If there is anything else, I ask the committee to please follow up with us.</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Ms Laura Brien<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_293">I also thank the committee for the opportunity to be here. If there are any further questions, we are happy to respond via written submissions.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Mr. Justin Moran<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_294">My colleague has copies of the offshore wind action plan, which we might share with the TDs and Senators.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-07-15T13:25:00+01:00"/></from>
+          <p eId="para_295">As Cathaoirleach, I thank the witnesses very much for their time and the members for the incisive questions they asked. This is the first of what I imagine will be many such meetings and hearings in which we will be discussing offshore renewable energy and how we can harness it in the best interests of our country. With that said, we will adjourn the meeting. I remind members that we have a number of meetings of the committee later this evening so I ask them to please be around.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 1.27 p.m. <i>sine die.</i></summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

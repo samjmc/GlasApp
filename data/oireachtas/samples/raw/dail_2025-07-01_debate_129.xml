@@ -1,0 +1,866 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-07-01/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-07-01/debate"/>
+          <FRBRdate date="2025-07-01" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/committee_on_budgetary_oversight"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-07-01/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-07-01/debate/mul@"/>
+          <FRBRdate date="2025-07-01" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-07-01/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-07-01/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnnyGuirke" href="/ie/oireachtas/member/id/Johnny-Guirke.D.2020-02-08" showAs="Johnny Guirke"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COISTE UM FHORMHAOIRSIÚ BUISÉID</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Committee on Budgetary Oversight</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-01">Dé Máirt, 01 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-01">Tuesday, 01 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CathalCrowe">Cathal Crowe</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MaireDevine">Máire Devine</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MaireadFarrell">Mairéad Farrell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#JohnnyGuirke">Johnny Guirke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#JohnPaulOShea">John Paul O'Shea.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Gillian Toole.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#EdwardTimmins">Teachta / Deputy Edward Timmins sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Select Committee<recordedTime time="2025-07-01T15:00:00+01:00"/></heading>
+        <speech by="#" eId="spk_1">
+          <from> Clerk to the Committee<recordedTime time="2025-07-01T15:00:00+01:00"/></from>
+          <p eId="para_10">As both the Cathaoirleach and the Leas-Chathaoirleach are unavoidably absent, I seek nominees for the position of temporary Chairperson.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_2">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-07-01T15:00:00+01:00"/></from>
+          <p eId="para_11">I nominate Deputy Cian O'Callaghan.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Clerk to the Committee<recordedTime time="2025-07-01T15:00:00+01:00"/></from>
+          <p eId="para_12">Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i> Deputy Cian O'Callaghan took the Chair.</i>
+        </summary>
+        <summary eId="sum_7">
+          <i> The select committee went into private session at 3.08 p.m and resumed in public session at 3.27 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Fiscal Assessment Report: Engagement with the Irish Fiscal Advisory Council<recordedTime time="2025-07-01T15:20:00+01:00"/></heading>
+        <summary eId="sum_8">
+          <i>Deputy Edward Timmins took the Chair.</i>
+        </summary>
+        <speech by="#EdwardTimmins" eId="spk_4">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_13">I ask everyone to put all mobile phones and devices on silent. Before we begin, I wish to explain some limitations to parliamentary privilege and the practice of the Houses as regards references witnesses may make to other persons in their evidence. They are protected under absolute privilege in respect of the presentation they make to the committee. This means they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty as Chair to ensure that this privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_14"> I remind members of the constitutional requirement that in order to participate in public meetings they must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the place where Parliament has chosen to sit. In this regard, I ask any member partaking in the meeting via Teams to ensure that prior to making their contribution, they confirm that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_15"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity, by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_16"> This afternoon's engagement is to discuss the fiscal assessment report. I welcome Mr. Seamus Coffey, chair of the Irish Fiscal Advisory Council and lecturer in the department of economics at University College, Cork; Dr. Adele Bergin, Irish Fiscal Advisory Council member and associate research professor at the Economic and Social Research Institute; and Mr. Niall Conroy, acting chief economist and head of secretariat at the Irish Fiscal Advisory Council. I thank the witnesses for being here today.</p>
+          <p eId="para_17"> The fiscal assessment report, Ireland's Outlook: Strong Today, Uncertain Tomorrow, was published in June. The Irish Fiscal Advisory Council publishes two fiscal assessment reports each year and this is one of its main reports. This report assesses the Government's annual progress report.</p>
+          <p eId="para_18">It looks at the economic environment, the overall fiscal stance, the forecast and how it complies with fiscal rules.</p>
+          <p eId="para_19"> The committee welcomes the opportunity to engage with the council on this report. I now invite the council members to make their opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_20">I thank the Chair and members for inviting us to appear before the committee once again. As the Chair noted, I am joined by my colleague, Dr. Adele Bergin, and our chief economist, Mr. Niall Conroy. We value our engagements with the Oireachtas highly and consider these opportunities an integral part of our work.</p>
+          <p eId="para_21"> As an official independent body established under the Fiscal Responsibility Act 2012, the council's mandate currently revolves around four elements: endorsing and assessing the official macroeconomic forecasts, assessing official budgetary projections, monitoring compliance with fiscal rules, and assessing the Government's overall fiscal stance. There may be additional elements that arise from the transposition of a 2024 EU directive on independent fiscal institutions in national law, which is required to be done by the end of the year. The focus of the fiscal council is on the broader fiscal and macro perspective rather than any individual tax or spending measures.</p>
+          <p eId="para_22"> In our latest fiscal assessment report, we assess the Government's official projections as set out in the 2025 annual progress report. The Irish economy is in a strong position as it enters a period of high uncertainty. Employment is at a record high with very low rates of unemployment. The economy is operating flat out, with no spare capacity. Employment in Ireland has increased by almost 500,000 since 2019. This job growth has been focused in two areas: multinationals and the public sector. However, tariffs and policy uncertainty could impact investment and exports. Even if trade policies revert to their 2024 terms, the uncertainty caused by the stop-start nature of tariffs has already disrupted investment plans and trade patterns. What sectors are included or excluded from tariffs will determine their impact in Ireland. Pharmaceuticals and the tech sector have avoided tariffs so far. These are two key sectors of the Irish economy that provide many high-paid jobs.</p>
+          <p eId="para_23"> Given the economy is in a strong position, it does not require support from budgetary policy. Standard economics suggests the Government should support the economy when it is weak and show restraint when the economy is strong. A good example of budgetary policy helping during an economic downturn occurred during the Covid-19 pandemic. The council was in favour of budgetary policy supporting the economy in that instance. By contrast, recent budgets have pumped money into an economy that is already performing well. After accounting for exceptional corporation tax and a strong economy, the Government is running a substantial deficit. This is equivalent to more than €2,500 per worker. This is coming at a time when the European Central Bank is cutting interest rates, which also adds to demand in the economy.</p>
+          <p eId="para_24"> Looking to budget 2026, if the economy continues to perform well, spending growth, net of tax changes, should be no faster than the sustainable growth rate of the economy. That is not to say the Government cannot try to improve public services, support households that are struggling or upgrade Ireland's infrastructure, but it means that choices would need to be made. If the Government wants to spend more in a certain area, or tax less in another, it needs to offset that by doing less in other areas. If the economy does suffer a significant downturn, a different strategy is required. In that case, budgetary policy should provide assistance.</p>
+          <p eId="para_25"> One of the key themes of our report highlights the need for planning and medium-term budgeting. We anticipate significant spending overruns again this year. This is because spending overruns from last year were not taken into account when budgeting for 2025. This has been a repeated issue in recent years. So far this year, the first five months show spending overruns in many different areas. We estimate that current spending overruns of €2 billion are likely for this year. Expected overruns for this year need to be incorporated into expenditure forecasts for 2026.</p>
+          <p eId="para_26"> Forecasts in the annual progress report only cover this year and next. They represent the bare minimum to meet legal requirements. In contrast, budget 2025 had five-year-ahead fiscal forecasts so this shift marks a clear backsliding on previous practice. Good planning and medium-term budgeting require forecasts that go more than 20 months ahead. The council has consistently stressed the need for budgetary forecasts that go at least five years ahead. The absence of medium-term budgetary forecasts shows that the Government has no fully realised medium-term budgetary strategy. By having such a short forecast horizon, the fiscal challenges from an ageing population and climate change cannot be adequately reflected in budgetary forecasts.</p>
+          <p eId="para_27"> There is no effective framework for fiscal policy at present. The European fiscal rules do not work well for Ireland. They rely on GDP and ignore the risks linked to corporation tax. As a result, Ireland is unlikely to face external scrutiny at an EU level. This means a domestic fiscal framework is important, yet it remains weak. The Government is yet to propose a clear plan for a domestic fiscal rule. This means there is no formal guide for budgetary policy.</p>
+          <p eId="para_28"> There are three key challenges the Government is facing. First, an ageing population will lead to higher spending on pensions, healthcare and long-term care. The Government has taken two steps to prepare for an ageing population. It has established the Future Ireland Fund. The council welcomes this and it should help to offset some of the future costs of ageing. The Government has also planned gradual increases in PRSI, to help fund increased spending needs. Second, the climate transition will need to be managed. There will be budgetary implications, with higher spending required to facilitate the transition. Some revenues will also need to be replaced as we move away from fossil fuels, which are quite heavily taxed at present. However, doing nothing would be extremely costly. If Ireland fails to reduce its emissions, as it currently looks set to by a wide margin, we may have to transfer an enormous amount of money to neighbouring countries. Third, Ireland’s infrastructure is approximately 25% behind its peers. Regardless of what happens to the international environment, these infrastructure deficits need to be addressed. If the economy weathers the changing environment, it will have high levels of employment and high demand for infrastructure. If there is some form of downturn, having adequate infrastructure would be key to restoring low unemployment and a prosperous society.</p>
+          <p eId="para_29"> To conclude, let me highlight four key recommendations the Council makes. First, the Government needs to ensure budgetary policy reduces the ups and downs of the economic cycle. This means showing restraint when the economy is strong and being more generous when the economy is struggling. Second, the Government needs to set some limits on spending net of tax changes that it thinks are sustainable. Otherwise, budgets will, yet again, be subject to the vagaries of annual pressures as budget day approaches. The new Government is yet to outline any concrete proposals in this regard. Third, the Government needs to focus on competitiveness and infrastructure. While there is uncertainty over many issues, the shortage of infrastructure will need to be addressed regardless of what the international environment looks like. Fourth, the Government needs to improve how it forecasts spending. When formulating budget 2025, the Department did not account for the money it was going to overspend in 2024 when planning for 2025. This created unrealistic budget figures from the beginning - a problem that keeps recurring. To avoid repeating this mistake, budget 2026 and future medium-term plans must start with accurate baseline figures that include all likely overspends in 2025. Otherwise, spending projections will be wrong from the outset.</p>
+          <p eId="para_30"> I thank the members for their attention. We remain committed to assisting the Oireachtas in achieving fiscal responsibility and economic stability and look forward to the members' questions and the discussion.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_6">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_31">I will open up to members to ask questions following our speaking rota. Does Deputy Neville want go first?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_7">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_32">I do not mind, yes. I thank the members of the council for coming in here today. Some of my questions might be starting off from the perspective of a bit of background on them and how they might view the committee as being not of assistance, but able to be assessed by them. I am first-time TD. It is only our third meeting here. Has Mr. Coffey been in front of the committee previously?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_33">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_9">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_34">Would Mr. Coffey have found it instructive and helpful?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_35">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_11">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_36">How would Mr. Coffey see the fiscal council's role?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_37">I suppose I would see it as one of collaboration. In terms of our overall aims and objectives, there would be a shared sense of purpose in respect of budgetary oversight. From a fiscal council perspective, we would be outside of the Government and very much independent. To get the view from within the Government within the Parliament, our interaction with the Oireachtas is quite important, as we look to take a broader view of the budgetary position. We have various measures at an individual or household level with regard to spending and tax that other committees look at. What we have seen in Ireland in our history over the past 40 or 50 years is that the broad overall perspective, the impact of budgets on the economy, the position of the economy and whether we are operating in a sustainable fashion is hugely important. We have got it wrong too often for that not to be something that gets a lot of attention here. We think this committee, and our contribution to it, is maybe one of collaboration that we can identify some of these risks and try to avoid some of the mistakes we made in the past.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_13">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_38">I will ask Mr. Coffey a left-field question and then come back to the main one. Is our inability to set our own interest rates much of an issue?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_39">That is monetary policy. Some would see it as an external factor.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_15">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_40">Does that lead to a lot of the topics Mr. Coffey is talking about?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_41">It is not something that the fiscal council would have any direct role on.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_17">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_42">No, but Mr. Coffey might have an opinion.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_43">This is very much my own opinion on it and I will take off my fiscal council hat.</p>
+          <p eId="para_44">Clearly, when we joined up to the euro in 1999, we ceded the ability to set our own domestic interest rates and became part of a common currency area - an incomplete common currency area - which has continued to evolve. Whether the ability to set domestic interest rates would have made a significant difference in Ireland is very hard to know. We do not know what those rates would have been or whether they would have been appropriate. </p>
+          <p eId="para_45"> In a sense, we had a form of independent monetary policy leading up to 1999. It was not absolute - once we got independence, one of the first things we did was tie any new Irish currency to sterling. Essentially, the Irish pound was the regional version of the sterling which used UK interest rates. For 20 years, we had our own independent monetary policy which was not without its ups and downs. We can look at interest rates, which were at 14% or 15% in the early 1980s and again, in the 1990s. When a small currency like Ireland was trying to be pegged against a larger currency like the Deutsche Mark, this came under speculative attack. To try to maintain the value of our Central Bank at the time, we increased those interest rates and saw more interest rates rise to 14% and 15%. </p>
+          <p eId="para_46"> There are arguments in both directions. One is the flexibility it gives you; you can set your own rates. As we noted in our opening statement, the ECB is currently in a cycle of reducing and cutting interest rates, which might be appropriate for economies like Germany that are struggling and are currently somewhat anaemic when it comes to growth, however, this is not necessarily appropriate for Ireland which is strongly growing and has very low rates of unemployment. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_19">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_47">It seems to be similar to 2004, 2005 and 2006. </p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_48">There are some echoes there.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_21">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_49">To be honest, that is the theme I heard when listening to Mr. Coffey and what came through in his opening statement. He struck me as being quite fiscally conservative in his thinking. I am looking at my three colleagues to my left who might potentially have different opinions but that is just based on the policies of the parties. The witness is almost saying we are probably at risk of overspending which he referenced in individual budgets which are a different context again. I just want to use that term. I am not talking about overspending in individual budgets because Mr. Coffey referenced that already. Does he, however, feel we are at risk of hothousing if we continue to spend and have a similar budget to prior years? </p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_50">I do not want to get bogged down-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_23">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_51">We had two Ministers in last week who said exactly this, that we potentially need to save for a rainy day. It is interesting to hear the witness wants to pull the gears back even further. Is that what I heard? </p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_52">To a certain extent, yes. On the view of being conservative, some would link this to the size of Government but that is not something we have any views on. We are looking at sustainability. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_25">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_53">Fiscally then, yes. </p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_54">You could say spending is too high and on the other hand argue tax is too low. If you have a certain level of spending you are targeting, we want it done in a sustainable fashion. What we are trying to avoid is the sort of boom-bust cycles we have seen previously where spending has been increased but not on a sustainable tax base. The Deputy mentioned 2004, 2005 and 2006 where it was clear - looking back at least - those spending increases were on the basis of temporary tax revenues from the construction sector. When they evaporated, significant spending cuts were introduced. </p>
+          <p eId="para_55"> Regardless of the level of Government spending - which is something the fiscal council does not have a view on - we are looking for spending to be sustainable. We are looking at a tax revenue base which provides those funding sources every year, not just when the money comes in. Whether that is conservative - that is down to the definition you use - we are agnostic on the size of the Government sector but we do not want to see this boom-bust cycle that has plagued Irish fiscal policy for 40 or 50 years. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_27">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_56">Once again - and I do not want to put words in Mr. Coffey's mouth - he is essentially saying if we want to spend more that is fine, as long as we are taxing more. It is about fiscal conservatism, that is, not spending more than you are taking in, as opposed to any other-----</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_57">When we look at what is happening currently with spending, one of the key concerns we have is its unbudgeted nature. We had a budget in October and as we progressed through the year, we saw overruns developing in many areas and additional policies introduced for the budgetary year. We are supposed to be getting ready for budget 2026 but even at the start of July, we are probably looking out for some budgetary measures that will be introduced for 2025. It is that planning there. We are not saying the level of spending is wrong or there is overspending happening. There is clearly unplanned spending that is beyond what is set out in the budgetary figures. A committee such as this, budgetary oversight, should be looking to get accurate budgetary figures. We are tasked with assessing budgets every year. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_29">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_58">I have a specific question to ask but I know I will be cut off in six seconds but we need to spend more on infrastructure. We have seen it all. We need to do more and the witness referenced this. How do we interlink the need to spend more on capital infrastructure while maintaining, not hothousing, the current expenditure?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_59">The big issue there is countercyclicality, not pumping a load of money into the economy when it is already performing well, which it appears to be doing at present. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_31">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_60">How do you not do that if you need infrastructure?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_61">It means you need to make choices. You have three choices when making the budget: what the level of tax will be; what the current level of spending will be; and what your capital spending will be. You cannot increase all three of those at once if the economy is going well. You cannot cut taxes then increase current spending and capital spending all at once. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_33">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_62">We are trying to do that. </p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_63">Exactly, and that is not a good idea. This is an inappropriate time to do that. The other thing we need to focus on is the many ways of addressing the infrastructure we have which do not involve spending a huge amount of public money. Many of the deficits we have are because of issues in the planning system and blockages that are not enabling the private sector to play its role. If you can enable those, it would not necessarily cost a huge amount of public money and could help to address the infrastructure deficits as well as the public spending playing its own role. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_35">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_64">I thank the witnesses for that. I know it was varied but I just wanted to see where it all fit together. </p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_36">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_65">I thank Mr. Coffey, Mr. Conroy and Dr. Bergin for their presentation. When you have a strong economy, it is about choices. Deputy Neville mentioned our overspending. I would suggest we would not spend it on super junior Ministers at this stage when the economy is strong. The average household spends more than €3,000 per year on groceries and it has just been announced in the past few days that there will be an increase to student fees. Would the witnesses be in favour of keeping those in place and finding the money somewhere else? The people who need it most are those who are struggling to put food on the table and put their kids through college. The difference between €2,000 and €3,000 is massive. Would the witnesses agree with that and where else would they find that money? </p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_66">There is no doubt we would agree with the view there are certainly difficulties out there. The mandate we have is not necessarily looking at those specific measures. This is about looking at the overall impact. It is ultimately down to the political system to choose how it uses the resources. As my colleague Mr. Conroy said, we view it as being about choices. It is one thing when you find yourself in a position where the economy is performing very well. We have very high rates of employment that generate a lot of income tax revenue and other sources of tax revenue. We have very low rates of unemployment, which reduce the social welfare spending and of course, we have these surging corporation tax receipts. </p>
+          <p eId="para_67"> This means those choices may not be as evident and if we were to rely on the economy remaining at the very high level it is now - which will not persist as we are at a very high point in the upward cycle - if we were to rely on these very concentrated and significant corporation tax revenues and they were to downturn, some of the measures spoken about, if introduced or changed, might be reversed. We are looking for things to be in a stable and sustainable fashion to highlight these risks. There is no doubt both the economy and public finances are in a strong position, at least at a headline level. That strong position is down to those two factors, namely, where the economy is and those surging corporation tax receipts. </p>
+          <p eId="para_68"> We can talk about specific measures but from our perspective, it is up to looking at the overall position. Yes, the Government does have scope to do things. A lot of the costs are built in because of demographics and the standstill scenario of the cost of doing what we are doing now, however, there is some capacity to do additional things. Here, however, choices must be made. We do not have the resources to cut taxes, keep ramping up current spending and hugely increase capital spending. Yes, you can look at particular measures but it is really down to the political process to choose which ones are at the top and what is the priority. If it is some of those measures, absolutely go for them but do not expect to be able to do everything.</p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_38">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_69">How would additional tariffs affect this report?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Dr. Adele Bergin<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_70">The biggest risk for the macro economy at present is the potential impact of tariffs. At this stage, what we are seeing in the macro data is more the effects of uncertainty and how that may impact investment decisions. As Mr. Coffey said earlier, even if everything was to unwind to where the trade positions were in 2024, that uncertainty has already been impacting business decisions.</p>
+          <p eId="para_71"> The Department, in its annual progress report, looked at a range of scenarios of how tariffs would impact the Irish economy. </p>
+          <p eId="para_72">Obviously it depends on the level they are at and whether there are retaliatory measures. One of the important points to mention for Ireland is that at present some of our biggest exporting sectors, such as pharma, are outside of the proposed tariffs. If there were separate measures for them we could see much bigger impacts than what has already been projected.</p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_40">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_73">The report mentions that the cost of missing climate targets could be €26 billion. What specific measures should the Government take to avoid these costs and where does the figure of €26 billion come from?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_74">To look at the estimate of the cost, it is the compliance cost for missing the targets and it is at the upper end. We have to make a lot of assumptions to come up with a figure. This is joint work between the Irish Fiscal Advisory Council and the Climate Change Advisory Council. We look at by how much a country is likely to miss its targets and then, crucially, when the targets are missed how much it has to pay for the credits. We do not yet know what this price will be. Looking at the price as it was at the time the research was done, and looking at by how much we might miss our targets, clearly an upper limit of the figure was suggested. It is a very broad range. The one thing we note is that at the time the research was done the range did not include zero. It was all positive values. Whether we put Ireland as getting close to reaching its targets, or the price of carbon credits as being relatively low, there would be significant fiscal cost to missing these targets by 2030. This will be transferred to those other countries which would have credits to sell. We will end up having to buy them and we do not know what the demand might be.</p>
+          <p eId="para_75"> In terms of measures, we have various action plans for what can be done in the next couple of years. If fully implemented these would reduce the costs. They would reduce our carbon emissions and get us closer to achieving our 2030 targets. There are some ways we can look at this, such as, for example, a case where the economy is in a very strong position. Some of this requires resources that we have to have here and there are difficulties because we do not have spare capacity. If we look at transitioning our fleet of cars from fossil fuels to electric, the vehicles could be imported. If we have the financing to do so, we could get workers in other countries to make them and import them here. If we focus on measures such as retrofitting existing housing, we cannot get workers in other countries to do this and we have to do it here. Then, we might have competing commitments as we want to build more new housing. We then face the choices my colleagues have referred to. Climate change is significant. It is something where taking action has benefits. There is the benefit for the climate of reducing our emissions and another benefit is that the compliance cost will be lower. The 2030 deadline is coming very close.</p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_42">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_76">The report mentions infrastructure lagging behind. In County Meath there are large infrastructural deficits, specifically when it comes to water, wastewater and sewerage. If the Government is to meet its housing targets this will need to be addressed. How would the Irish Fiscal Advisory Council advise the Government on the spend on infrastructure?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_77">This is a bit outside our remit in terms of dealing with specific issues regarding a particular type of infrastructure. Taking my fiscal council hat off and giving a personal view, we have areas where infrastructure tends to work relatively well and where we do not have these deficits and shortfall. It seems to come down to the funding model in place. I can give the example of two services connected up to most households. These are electricity and water. One seems to be working quite well. It gets knocked down every so often and is repaired pretty quickly. The other seems to be a pretty significant constraint. Perhaps the funding approaches can be looked at. Again, there is the issue of capacity in the economy. If we are to ramp up production of water infrastructure, where will the workers come from? It is certainly a bottleneck that is slowing down the economy. My colleague might take this further.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_78">When we looked at how Ireland's infrastructure compares to many other countries in Europe, we found that for water Ireland is about average. We were surprised at this given the experience that many people have. Part of the problem is that Ireland is a very heavy user of water. It has industries such as pharmaceuticals, data centres and tech companies which are very heavy users of water. This is part of why we are struggling to keep up.</p>
+          <p eId="para_79"> More specifically, Uisce Éireann has stated it does not believe it will be able to support much more than 35,000 new housing completions per year due to connecting them up. It is looking for a higher level of funding to be able to support its work to enable this. Uisce Éireann and ESB Networks represent the two most important pieces of infrastructure to enable higher levels of housing completions.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_45">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_80">I thank the witnesses for coming before the committee. I want to follow up on the point that has just been made. Much of what the witnesses are saying is that, in an overall sense, we have to make responsible choices. We cannot increase spending and reduce taxation all at once. Did Mr. Conroy say that spending on water infrastructure or investment over the years is at average levels?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_81">The level of infrastructure we have at present is about average for a high-income European country.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_47">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_82">What is out of sync though is the demand on that infrastructure.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_83">Demand is higher than in other countries, yes.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_49">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_84">Is Mr. Conroy saying that what has to be done is either increase investment to meet the demand or make choices on regulating the demand? There have been many discussions on this recently.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_85">There are choices to be made there and perhaps this is more political than our realm. The reality at present is there is very high demand for water services, geographically and between various sectors of the economy. For the moment, unless a choice is made on regulating demand for water, it will probably have to be a case of increasing supply.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_51">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_86">It is one or the other or we could do a bit of both.</p>
+          <p eId="para_87"> On the macro risks to the economy, the witnesses were saying the tariffs are the main risk. Work has been done on potential non-tariff changes that could affect corporation tax receipts. I am thinking of the work done by Dr. Aidan Regan in UCD, and published in the <i>Business Post</i>, on the amount of intellectual property being shored on Ireland, how a significant amount of corporation tax is coming in from this, and that if there were changes to the taxation regime which could affect this it could be a threat. How does IFAC rate this threat or risk to the Irish economy or to our corporation tax intake?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_88">The potential impact is very large. Clearly our corporation tax receipts have surged in recent years. We can go back to 2014 when they were between €4 billion and €5 billion. On an underlying basis now, excluding Apple, they are close to €30 billion. It is an enormous amount of money. It is linked to changes in international rules at OECD level and, perhaps, changes in domestic rules in the US. This is very much about US companies and where they place their intellectual property. Up to six or seven years ago much of it would have been in no-tax jurisdictions, such as Bermuda and the Cayman Islands. The OECD rules changed, in that their IP had to go somewhere else because they had no substance there.</p>
+          <p eId="para_89"> Many of these US companies had two locations to assess. They could bring the IP back to the US and the parent company, or bring it to where their international headquarters is, such as in Ireland. Some companies took their IP back to the US. Google and Facebook relocated their IP from those no-tax jurisdictions to the US. I should say these jurisdictions have no income tax. They do have indirect taxes as they have to fund their services but they do not do so through direct taxes. Other companies, particularly in manufacturing, moved their intellectual property to Ireland. We saw a position where we had the intellectual property of high-end manufacturing. The surge in profits linked to these two key elements saw the amount of profit and the amount of corporation tax collected here soar.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_53">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_90">The witnesses have said the potential impact is very large. Does Mr. Coffey have an assessment of the risk of something happening?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_91">The likelihood is something that is very difficult to assess. In part it is down to legislative changes, particularly in the US, which is inherently unpredictable. It is down to the profitability of some of the companies. It is also down to the decisions they might make about their intellectual property. Moving intellectual property is not something that is done on a regular basis. It is quite difficult. We have yet to see significant outflows of the intellectual property that is here. It began to arrive from 2015 on, with surges in 2019 and 2020, and it continues to be here.</p>
+          <p eId="para_92"> It is the US tax system that generates these intellectual property assets. German, French, Japanese and Australian companies do not have the ability to place the international rights to their intellectual property in other countries. Their tax systems state they keep their international rights domestically. The US allowed them to leak out. Some of them have gone back but most have stayed external. Many of them are now in Ireland because it is where the companies have their substance. Would these companies choose to move the intellectual property back to the US? They would face a difficulty getting out of Ireland as we now have an exit tax, which is yet to be fully tested. There is also the ongoing instability in the US, and whether that is a regime they would choose to go back to remains to be seen.</p>
+          <p eId="para_93">The risks are huge because the revenues are huge. The revenues are close to €30 billion, but it is hard to place down and say this or that is likely to happen. In terms of changes in policy, late last week we had the G7 agreement that certain parts of pillar 2 would not apply to US companies. That was announced last Thursday. For Ireland, it does not seem that significant initially. It depends on EU implementation of our minimum top-up tax. That is in legislation and that legislation would need to be changed for companies not to pay that. It just highlights the uncertain policy environment in which all of us operate. Trying to identify the risks is the right thing to do but it is very difficult to do with any sort of precision.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_55">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_94">I have a lot more questions but I have a final one in this round. On the issue of climate change and the warning in the council's March report about the potential for €26 billion in fines. Mr. Coffey stated in the opening statement that this would be a colossal waste of taxpayers' money and the equivalent to €5,000 per person if the Government does not take effective action. Since the council issued that warning in March, have the witnesses seen anything to indicate it is being heeded or acted on?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_95">I do not have a great sense of that on an official level. It has landed with the general public. Plenty of people are aware of these potential costs and that it is something we should try to address. In terms of solid action that has been taken in the meantime, it would be hard to point to anything super-concrete that we have seen as a result of the warning. One could say that we are in the early stages of the new parliamentary term and maybe the timing has not allowed for that yet. That would be our sense so far.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_57">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_96">I agree with much of what the witnesses have said, even though there were some sweeping statements there. In the area of taxes, a lot of the tax we rely on is income tax from people employed by the multinationals. It does not get as much coverage as the corporation tax. I have around ten questions. Do all of the council's spending warnings take account of inflation and population increases? The population goes up 2% per year and inflation could be 5% or 6%.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_97">Absolutely, the impact of inflation is clearly important. When we are in a period of high inflation, we should increase spending more to keep things fixed in real terms. We have made frequent points about the changing nature of the population, including changes in size and demographics. That does need a more medium- to long-term view. These things do not necessarily show up when one looks at a short-term, year-on-year basis, or 20 months as the most recent report looked at. Our stand-still scenario takes into account population growth, inflation and demographics. It is an issue we look at repeatedly.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_59">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_98">It is often lost on the public. One may see a 7% increase in the budget but it is just in order to stand still. In real terms-----</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_99">Our stand-still scenario would be close to €5 billion a year and you get nothing new for that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_61">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_100">Does the council distinguish between capital expenditure and day-to-day expenditure in terms of its warnings? The council's warnings are broad. I do not think that capital expenditure and the investment in infrastructure should have the same level of warnings because of the returns the country gets.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_101">In recent times many of our concerns have been about current spending, particularly the planning and budgeting of current spending. Most of the significant overruns occur on current spending. It is the largest and if there are large overruns they have a significant impact on the budgetary position. When it comes to capital expenditure, one of the things we have been looking at in recent years is whether we have been able to increase it fast enough, given the capacity constraints in the economy, as well as our strong position and low unemployment. We do not have idle construction workers to get projects up and running. We have projects that are stuck in planning. We make a distinction between current and capital spending. Many of our warnings and concerns are on budgeting, planning and the overall approach when it comes to current spending rather than on the capital side.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_63">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_102">There should be a real distinction. Obviously some current expenditure, such as on education, is also an investment but there should be a clear distinction between the two. The witnesses referred to the €2,500 per head and the underlying deficit of €4.2 billion this year going to €6.4 billion next year, but do they have any suggestions on where spending should be reduced? Do they wish to comment on where we are overspending or where we should raise taxes?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_103">On specific measures, no, our mandate does not cover individual measures. We look at the broad overall picture. For example, if spending is ahead of what is budgeted, should cutbacks be made? First of all, we look for more consistent and accurate budgetary forecasts so that we do not get these persistent overruns. We assess a budget when it is published in October but if by the time we get to the following year those budgetary figures have been exceeded by a number of billion euro, that assessment is-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_65">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_104">Does the council not analyse the different areas of the budget and say, "God, this area of the budget shot up and this area did not"?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_105">There are repeated overruns in the Department of Health, but that does not mean we are spending too much on health. It just means that we are planning badly, particularly current spending on health.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_67">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_106">Does the council point out where the expenditure increases are, rather than just a blanket assessment across the board?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_107">Yes. We made an assessment that we expect on a no-policy-change basis, although we are expecting further policy announcements as the year progresses, that there will be €2 billion of overruns in 2025. Much of that will be driven by the Department of Health because overruns in 2024 were not factored in. Deputy Timmins referred to population growth. The health services are very much demand driven, but it we can see the population growth, the demographics and the spending from last year, we should be able to incorporate that into our plans for this year.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_69">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_108">Does the council not comment on every Department? Mr. Coffey referred to the overspend in health and there are good reasons for that which people understand. Does the council not comment on whether one Department's expenditure is too high while another's is okay? </p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_109">I am not of the view that the spending in any Department is growing too high. What we want to see is planned and careful analysis of our spending patterns. Each year we set out a budget for the HSE and each year by the time we get to the end of the year it needs a Supplementary Estimate. In some cases it exceeded €1 billion euro and sometimes it has been even higher. That suggests there is a systematic or functional problem with our planning of health spending if every year a supplementary budget is needed. We are not necessarily saying that spending is too high, but if we are assessing a budget at the start of the year, let us have it based on-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_71">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_110">I do not mean to focus on health. I need to focus on everything else. I will move on because I have two minutes left. In the opening statement, Mr. Coffey referred to employment increasing by 500,000 since 2019 and that it is focused mainly on multinationals and the public sector. I would have thought there was significant job growth in other areas as well. Does he have a breakdown of the numbers? If he does not, that is fine.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_111">Broadly speaking if you take the 500,000 of additional employment, it is split into three areas: the public sector dominated areas, such as health, education-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_73">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_112">I am just interested in the figures. What is the figure for the public sector?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_113">I would struggle to get it off the top of my head, but it is approximately 150,000. These are public sector dominated areas. There could be increases in private sector parts of the health service. Those employees would not necessarily be public servants but they are in an area of the economy that is public sector dominated.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_75">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_114">And the multinationals?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_115">The multinationals is again about 150,000.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_77">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_116">That leaves a balance of about 200,000. I wanted to get a breakdown of that.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_117">Those areas would typically be much smaller than two thirds. They would typically be about one third of the workforce but have accounted for two thirds of the employment growth over that period.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_79">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_118">In the opening statement, the phrase "pumped money into an economy" was used. Is the council referring to cost of living expenses there? In the same paragraph, a deficit of €2,500 per worker is referred to. Is that the underlying deficit I referred to earlier, of €4.2 billion this year and €6.4 billion next year?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_119">When we used the phrase "pumping money into an economy", it primarily referred to 2024. The public finances should respond to inflation and inflation was high in 2023. That is something the council took into consideration when making its assessment there, but inflation was much lower in 2024 and spending growth was far in excess of even the real growth of the economy plus inflation. It was expansionary in a climate that did not necessarily need it. On the underlying deficit, we just make two adjustments. We adjust for the current high cyclical position of the economy. We have very high employment and low unemployment. What if they were to go back to more normal levels? The second adjustment looks at corporation tax. This one is difficult; what is the excess? We can look at the excess linked to maybe the performance of the economy. If you make those two adjustments, you get that underlying or structural deficit. That shows that, while at a headline level the public finances look in a strong position, there is an underlying weakness there because it is reliant on two things, namely, the economy continuing to perform strongly and the Exchequer continuing to collect these excessive large corporate tax receipts.</p>
+          <p eId="para_120">If these were to reverse, a deficit would emerge and some of the things we have done in recent years would have to be reversed.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_81">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_121">I have more questions but I will get to them in round two.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_82">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_122">I thank the witnesses for coming. It has been very interesting so far. One of the very interesting things that was mentioned a few times is the responsibility the committee has to look at how the budget overspends, etc. One of the things I found particularly frustrating at this committee in the previous term is Ministers would come in the week before the budget talking about figures that were totally different from those presented on budget day. That is what we do historically but it can be very frustrating in terms of the work we are supposed to do.</p>
+          <p eId="para_123"> My first question relates to corporation tax receipts. It was mentioned these are likely to be higher than projected. The Minister for Finance was before the finance committee recently and I asked him about the projections for corporation tax receipts versus what actually happened in the end over the past five years. For four of those previous five years the out-turn exceeded projections by approximately €7 billion. Is the Department's annual forecasting of corporation tax receipts too conservative? If we are looking at what are we dealing with in the budget, the committee should know.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_124">It is an issue where we can look back and see the evidence of it, but forecasting Irish corporation tax receipts is very difficult. We have seen these sorts of level shifts. There were maybe two of them from 2015, and again in 2021-22, when those receipts surged. We can look back and see them but they were very difficult to forecast at the time. It is also because it is so concentrated. The top ten companies account for close to 60% of the receipts. Work by staff in the fiscal council shows that the top three account for more than a third. We are down to very firm-specific factors. On whether the forecasts are conservative, they have clearly been outperformed by the out-turns over recent years. It could be said there are some measures that have not been taken into account. When we look at it over the medium term, we see some elements that could cause Irish corporation tax receipts to rise further, maybe beyond what the projections have set up, but there could be other factors we do not see that cause them to fall.</p>
+          <p eId="para_125"> Some of these companies may drop in profitability. We referenced intellectual property that came to Ireland six or seven years ago. The capital allowances linked with many of those assets are set to run out. That might expose more of the profits to our corporate tax rate. We have the minimum tax where liabilities are accruing from 2024, which is not yet fully built into the forecasts. Again, the policy environment of other US companies being subject to this is all up in the air. We just highlighted that the receipts are huge.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_84">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_126">Apologies, but I am conscious of time. The G7 and the announcement a few days ago regarding the US and pillar 2 were mentioned. Does IFAC have any concept of what the impact of that could be? Is that too-----</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_127">In the case of Ireland it would require legislative change. We have put in the minimum top-up tax in line with the EU directive. The EU would have to change the directive and then we would have to change legislation in Ireland. The primary issue announced last week referred to the income exclusion rule and the undertaxed profit rule, which are about other countries reaching out into profits elsewhere. When it comes to the minimum top-up tax, that is domestic. We have legislated for that. Liabilities are accruing now because it came into force for 2024. Legislative change would be required to amend that, which could be down to an EU directive. If the EU reaches agreement that the US is not subject to these taxes, maybe that directive will be revised and we will have to change our domestic legislation.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_86">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_128">Okay. It is interesting times ahead. Table 1 of the fiscal assessment report identifies sectors such as pharma, ICT and others being impacted by tariffs. Drinks and food are identified as being the worst hit, which we can understand. We have heard from different sources, such as the Parliamentary Budget Office, PBO, that pharma is unlikely to be impacted based on the fact that it has not been included so far in the tariffs. What is the IFAC projection based on? Is IFAC assuming it will be included, despite it being said otherwise? What is it based on?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_129">The process we followed to try to come up with some estimates of what the impact could be on public finances was to take work done by the Department of Finance and the ESRI, where they estimated the potential impact of tariffs on employment. What we tried to do was break that out into a sectoral level. That obviously matters a lot as some sectors are much more tax-rich than others. We did a judgment-based scenario to try to see what sort of sectors would be most likely to be impacted. That got us to that aggregate number of the effect on unemployment, which was approximately 3%.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_88">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_130">How exactly was pharma identified? Where was the risk coming from there?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_131">Part of the issue we saw there was around lower global demand generally. If these high level of tariffs were <i>in situ</i> in several countries, we could see lower levels of employment here in pharmaceuticals, but it did not have as big an impact as that seen in some other sectors. We think that is because those companies already have big investments here and large plants already operating here. As a result, there was a smaller impact than we had in some of the other sectors that are very global.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_90">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_132">It is just that IFAC stated some sectors are likely more exposed to tariffs than others. Pharmaceuticals was one of them. Those companies are saying that it will not be included in tariffs. IFAC just means that as regards the global trend and the economy broadly tariffs could have an impact on pharma.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_133">Some of this is being framed as jobs being lost or employment being lost. It could just be that jobs are not created. The uncertainty effect of these tariffs means large companies do not make an investment in a plant here they otherwise would have made, if we had a stable trade policy over that period.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_92">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_134">I thank Mr. Conroy for that. It was mentioned that the tax base has narrowed. There can be a lot of conversation about that. This might be a policy question but I will ask it regardless. Does IFAC believe there is scope to increase taxes on institutional property funds, given that these funds already benefit from a whole host of uncosted tax expenditures? Who wants to jump first?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_135">I do not know what the answer is. There is scope to increase any tax. It is a political choice whether it is done or not. When it comes to specific measures, it would not be something we have strong views on. We tend to view institutions as stand-alone or separate entities. I am not an expert in the area, but I imagine much of the tax would be due at the level of the individual investor who owns a share in the fund. Whether the fund itself pays tax is potentially a separate matter. It is not something we have a strong view on, but like any tax there is scope to increase it.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_94">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_136">That is a good diplomatic answer. Uncosted tax expenditures in general probably need to looked at. I will come back in for my second round.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_95">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_137">What is the IFAC view on the potential spending on social welfare? We have not touched on that.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_138">It is maybe the largest individual component of Exchequer spending, once the Social Insurance Fund is added in. We see things being relatively well managed or well predicted for lots of areas, when it comes to the number of OAPs, the number on various payments and the unemployment rate being stable. In the main, we do not necessarily see significant overruns when it comes to social welfare, unlike other areas. We seem to be able to factor in the demographics and the demand in one key large area.</p>
+          <p eId="para_139"> One thing that happens every year is Christmas. Every year, the Government gives a double payment for social welfare at Christmas time, which is absolutely fine, but does not put it into the budget figures. The cost is €300 million to €400 million every year. It is done every year, yet we assess a budget that does not include it. I am pretty sure we will get an announcement from the Minister for Social Protection over the coming weeks that the payment will be made again this year, but even up to now it is not in the figures.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_97">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_140">Okay. What is the unemployment number at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_141">The rate is just over 4%. The labour force is approximately 3 million so the number of unemployed is about 120,000.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_99">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_142">How much of that is long-term unemployment?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_143">It is a very low amount. When it comes to the-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_101">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_144">How much of that is transitional? How much of it is actual-----</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_145">Some of the figures will be off the top of my head. Looking at the live register, where the recipients are, which includes those who have been receiving it for three months, six months, nine months and 12 months, the number of long-term recipients is relatively low compared with where it was-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_103">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_146">What is the number for more than 12 months?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_147">I do not have the number in my head, but it is low compared to the 1980s when it was the majority of the live register and the post-2008 period, in 2010, 2011 and 2012, when a very significant number were on the live register for more than a year. If we look at the figures now, and I do not have them to hand, we call the current figures low relative to that.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_105">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_148">Mr. Coffey would say anything we are spending on that is reasonable or understandable.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_149">I think it is in line with-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_107">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_150">Questions have been asked on that. We have got full-----</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_151">It is in line with a 4% unemployment rate. If unemployment were to go back to more normal levels of 6%, 7% or 8%, we would see that level of spending rise. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_109">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_152">It would trickle up. To change tack entirely, what would IFAC base the budget on considering the fact there are six key contributors to corporation tax?</p>
+          <p eId="para_153">What would the council recommend we do with the intake from that and how would we factor that into our revenue take in the budget?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_154">Is the Deputy referring to the overall fiscal strategy or how to go about assessing the revenue side?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_111">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_155">The overall fiscal strategy because we are ultimately putting our eggs in one basket. The issue is sustainability. We are trying to build an economic platform over a number of years but at the same time, one element of it is based on an uncontrollable, to a degree. Mr. Coffey alluded to that himself. He said that it might even grow more, especially in the short term. This year, it will probably grow way beyond what we thought because of external factors. Obviously, that might change back again but how would the council factor that into a fiscal platform if it was preparing a budget?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_156">Government spending is important. Government supports and services are crucial right across society but these are things we need to be doing on a sustainable basis every year.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_113">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_157">How do we know something is sustainable? It is sustainable until it is gone, potentially. That is obviously what Mr. Coffey is getting at.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_158">Yes, we do not have a forecast that corporation tax receipts are going to go over a cliff edge and-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_115">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_159">Mark Zuckerberg cannot foresee it either. That is the nature of the beast.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_160">From our perspective, we can take a second view and look at the economy. Our corporation tax receipts are a bit odd when it comes to taxes. From an economic perspective, we generally consider taxes to be a withdrawal from the economy. The Government is collecting income tax from workers or collecting VAT and excise duty from transactions and is taking money out of the circular flow. However, our corporation tax is coming from within a small group of very large US companies. They are paying that to the Irish Exchequer from customers and their trade abroad. They are not here to service the domestic market. They are here to service international markets and we are getting 12.5% off the top of the huge trade that those companies are doing. If that money is then spent into the economy, that is like an injection. It did not come out of the economy first; it came from these companies and now we are spending it in the economy.</p>
+          <p eId="para_161"> One issue is the sustainability of it. We have income supports, education and health services and a whole range of important stuff that the Government does. We have seen in Ireland two very painful episodes where very painful cutbacks were introduced in the 1980s and post 2008 because services and supports were funded on the basis of unsustainable tax revenues. If we want to expand and increase Government services, we should do so on a sustainable basis, not on the basis of what seem to be huge tax revenues but may not be permanent in nature.</p>
+          <p eId="para_162"> We would recommend running surpluses, which we are doing, although they may not be sufficiently large because of the underlying structural deficit that we referenced earlier. If we want to do more things, maybe we have to make choices about raising additional tax revenue. It seems very perverse to say we should be increasing taxes in certain areas when tax revenues are pouring in, but if we look back to the period post 2008 and the services and supports that the Government is offering now, would we be in a better position if we had funded those from tax increases in 2005, 2006 and 2007 or funded them from stamp duty, which disappeared?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_117">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_163">The council is advocating for the rainy day fund to be added to.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_164">Yes.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_119">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_165">Following on from that line of questioning, it is striking that in the opening statement and in the work that was done in the 2023 paper on infrastructure, the IFAC has assessed that Ireland's infrastructure is about 25% behind our peers, those being, other high-income countries like Belgium, Denmark, Germany, France, Italy, Luxembourg, the Netherlands, Austria, Finland, Sweden and Norway. They are all ahead of us, while Greece is the only high-income country behind us. That is significant. The council has also noted that the current spending overruns are looking likely to be about €200 billion this year. On the very issue that has just been discussed, does Mr. Coffey think there is a problem with windfall corporation tax receipts going into current expenditure? Would it be preferable to put some of that into capital expenditure? Does he have a view on using it for day-to-day spending as opposed to capital investment? Clearly, we are behind on capital investment.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_166">It is difficult to say. Going back to an earlier exchange, we would view some of the planning and budgeting for current and capital spending as being somewhat different. Money is fungible. We could say that we are putting the additional corporation tax revenues into capital spending but we cannot differentiate between income flows and say that one income flow is going to a particular area. Income flows into a pot, where it is all put together and then we decide how we are going to allocate it. Trying to delineate and saying that this money is going towards a particular area is not necessarily instructive. We have to look at the overall picture of what is being done in totality, rather than trying to silo things. We argue that we should have more capital spending, but using additional corporation tax to fund it is not necessarily the way to go about it.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_121">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_167">There is an issue around sustainability if we are relying on windfall corporation taxes for day-to-day expenditure. In terms of the risk that is posing to the economy, if the intellectual property shifts and the profits are being paid elsewhere, that corporation tax is not available any more. We are then in a situation of having to cut day-to-day expenditure on services and people are -----</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_168">It will be a political choice and our history would suggest that what would be cut most severely would be capital spending. Remember, post 2008, public capital spending was cut by 60%.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_123">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_169">Current spending would have to be cut if we were reliant on corporation taxes to fund it-----</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_170">No, we would not be siloing and saying that, if a current revenue source fell, then current spending had to fall. We would not look at it from that perspective.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_125">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_171">It would have to fall if the money was not there. If we are reliant on corporation windfall taxes to fund some of our current expenditure and they dry up, then we do not have a political choice on it. The money is gone and we cannot fund those current services. </p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_172">It would be a political choice but the choice could be to cut capital spending and not to start new projects. A political choice could be to increase tax revenue to try to fund the shortfall. It would be about looking at the overall picture rather than trying to silo and saying that this money is going in that direction. Historically in Ireland, when it came to those periods where unsustainability was allowed to fester within the public finances, capital spending was the one that was cut. We have seen the problems that creates five, ten or 15 years later. In the good times, capital spending tends to be the one that rises very rapidly, so we have this boom-bust cycle of trying to catch up in the good times for the difficulties we created in the bad times.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_127">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_173">On the proportion going into current and capital spending, is the IFAC of the view that we have got that right, given that we are lagging behind other countries? That is a key budgetary issue.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_174">When we compare internationally, Ireland is spending slightly more on capital spending as a share of its national income compared to other European countries. However, as the Deputy has said, we need to catch up on our infrastructure so there are good reasons for doing that. A lot of the factors that are inhibiting us from delivering the capital projects that we want are not necessarily shortages of money. It can be shortages of resources, of capacity in the construction sector and so on. They seem to be the more pressing constraints at the moment, rather than funding itself.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_129">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_175">I have a few questions. In its opening statement, the council says that spending overruns from last year were not taken into account when budgeting for 2025 and that this has been a repeated issue in recent years. That seems like a very basic thing to be happening. I cannot understand why it is happening. Do our guests have any quick answers as to why that is happening?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Dr. Adele Bergin<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_176">What we saw in 2024 was inadequate budgeting to begin with and the Estimates for current spending just got ramped up over the course of the year. Most recently, around the time the annual progress report came out, we had the final Estimate for 2024, which was well above what was currently planned. One of the things that makes it really difficult then is that it tends to flatline the expenditure forecasts for subsequent years. If we take the final Estimate for 2024 and look at the most recent Estimate for 2025, the actual amount of growth that is allowed for is actually quite low. It is in the region of 1% to 2%.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_131">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_177">The council talks about good planning and medium-term budgeting requiring forecasts to go on more than 20 months ahead. I could not agree more. I have raised here and in many other fora the fact that we need to be looking five or ten years ahead. The medium-term fiscal and structural plan does look five years ahead, although it does not go into the level of detail that we would like a budget to go into. There are lots of percentages but there are top line numbers for expenditure. Is the council aware of that plan?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_178">Yes, and we are waiting for it. A technical version was done towards the end of last year. It was done on a no policy change basis and that was understandable given that the Oireachtas was facing a general election. Now we are seven or eight months beyond that. The new Government has been established and a new medium-term plan is set to be submitted, but-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_133">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_179">I would suggest that we look ten years ahead, especially as we know what is going to happen with demographics and pensions in ten or 15 years' time. Would it be fair to say we should be looking further down the line? </p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_180">Absolutely, and maybe even further.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_135">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_181">Twenty years or a generation. </p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_182">The spending growth limits are set in terms of the cycle of the Government. I think we should be looking out beyond that to see where this Government will get us to and what will be happening after that. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_137">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_183">Mr. Coffey referred to GDP. We all know GDP, leprechaun economics, call them what you like. In fairness, the Minister for Finance has based a lot of his figures on what he calls modified domestic demand. I know this is not GNI* but to make that comment, the finance Minister does recognise the limitations of GDP. </p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_184">Absolutely. We would maybe like to see it more formally introduced. There should be a fiscal framework for Ireland and we should do it in terms of our own national income rather than the EU approach of GDP. The EU limits of 60% debt and 3% deficit, in terms of GDP, are pretty much meaningless to Ireland because our GDP figure is so elevated. We recognise that GNI* and MDD are used in the annual progress report, but we would go so far as to put them on a formal basis. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_139">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_185">The witnesses referred to Ireland's infrastructure being 25% behind its peers. I am interested to know how you came up with that figure of 25%.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_186">There is European data on the capital stock in each European country. It is available on the Eurostat website. We took that in what we would call a constant process and compared it <i>per capita</i> across a number of high-income European countries. We took the average of the high-income European countries and compared where Ireland stood. Ireland was about 50% behind in the mid-nineties. We have closed some of the gap and we are now about 25% below. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_141">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_187">There is a real-life statistic demonstrating that. </p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_188">Yes, there is. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_143">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_189">This is my last question. Does the council have a view on additional borrowing for infrastructure? </p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_190">I do not think financing is one of the key constraints we face at the moment. This year, the Government is set to run a surplus of €8 billion to €9 billion. As Mr. Conroy said, some of the constraints are more on the real side, including labour and planning. If the economy continues to perform strongly and corporation tax continues to pour in, it is not something we would see on the horizon. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_145">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_191">I want to talk about public procurement, which I have an interest in. It is madness how little information we have on the spend. We are talking about a yearly spend of €22 billion and we do not have information on it. This was one of the first things I noticed when I was first elected to the Dáil. I find it crazy that the level of data on and oversight of the spend is really low. We do not know how many contracts came in on time in a year or how many overran. We do not know the types of procurement procedure or where contracts were awarded directly versus those that went to competitive tender. We do not know the level of non-compliant tenderable expenditure. There is a lot more. </p>
+          <p eId="para_192"> Does the IFAC believe that this is an area of spend where significant improvements in transparency and oversight need to be made? At the moment, it is just like a black box where we do not know. Not only is it a huge area of spend, but it is one that can have an impact on particular areas, by which I mean local area economies. In Donegal and the west coast in general, there is a massive infrastructural deficit. The spend could be done in a way that included labour activation and apprenticeships. Does this area need greater oversight? </p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_193">Yes, there should be more oversight and transparency. In terms of particular areas, however, even one as large as the Deputy mentioned, it would not come under our remit. Given some of the issues the Deputy referred to, it would perhaps be more appropriate for the Comptroller and Auditor General or colleagues here in the PBO to look at the finer detail of those types of programme. We are completely in favour of oversight and transparency. Even at that scale, it is possibly worth looking at, but the lack of data at the moment limits the capacity to look at that. It is possibly a job for somebody else. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_147">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_194">Fair enough. The issue is the lack of data. I had a Bill in the Dáil last week and it will be voted on tomorrow night but has been pushed down for two years. It is about the whole concept of having the data at least. It not necessarily saying that everything is going to be an overspend or anything like that. It is about the fact that if we are spending that amount of money in economy, then we need to know where it is going, how it is being spent, what it is being spent on and how we can actually improve the economy for the people here. That is what I wanted to come back in on. Does Mr. Coffey have anything else to say on it?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_195">In one way, it comes down to how we choose to provide services, which is something that the fiscal council does not look at. The question is whether to do it directly through State employment or public procurement. The Deputy is right that there needs to be a broader debate on how we go about the provision of services that are funded by the Government, for example, directly or through public procurement, but that is not in our remit.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_149">
+          <from>Deputy Gillian Toole<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_196">I am parachuting into this committee, as I am not a member. I thank the witnesses for the work they do.</p>
+          <p eId="para_197"> I have two questions. One is similar to that asked by the Leas-Chathaoirleach. Multi-annual funding is something I would consider necessary in the area of healthcare, for example, the HSE dispersing money to section 38 and section 39 agencies for planning ahead. Correct me if I am wrong, but that is something the IFAC would encourage in several departmental areas. Is it within the council's remit to give advice to the Department of public expenditure and the Department of Finance? If so, have approaches been made in this regard and how might that progress? </p>
+          <p eId="para_198"> My second question is related to local authority spending and departmental spending. Coming from a background as a small business owner, I believe that the country should be run like a person might run a household or a small business, where every penny counts. Is IFAC in a position to advise on budgets being limits rather than targets and training <i>vis-à-vis </i>spending, whether it is current or capital-type spending? It may not be within the council's remit. </p>
+          <p eId="para_199"> I had a third question on procurement for SMEs but that has been covered. Go raibh maith agaibh.</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_200">We have been calling for multi-annual budgeting for a long time. We think many areas could benefit from having greater certainty about what their funding will be over a number of years rather than planning on a year-to-year basis. Part of that is just having the forecasts to begin with. As the Deputy said, the forecast in the annual progress report only went 20 months ahead. A more multi-annual budget is something we would definitely welcome. We have been calling for it for a good while. </p>
+          <p eId="para_201"> In the new EU fiscal rules, there are some things we take issue with, particularly to do with the use of GDP and the treatment of corporation tax. They do at least give a framework for thinking more long term and setting binding budgetary ceilings for multiple years in advance. I hope this will assist with taking more of that approach. </p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_202">It would be good to get to the position where budgets are set two, three or four years in advance so that we know we will be able to this additional thing in two years' time or three years' time. We very much have a one-year focus where we do not do long-term planning. It is a case of only announcing what we are doing now and funding what we are doing now and in 12 months' time we will come back for the year after. If we set out a plan for two or three, we cannot do everything at once. Of course, it sounds like we are delaying something or not doing it quickly enough but doing it in three years' time and not announcing it now or doing it now for three years' time are much the same, but one is much more planned and organised. This approach of multi-year financing is something we have long called for. </p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Dr. Adele Bergin<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_203">Would the Deputy mind repeating her second question? </p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_153">
+          <from>Deputy Gillian Toole<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_204">It might be politically incorrect but I will give it a go anyway. My question is on local authority and departmental budgeting processes and training and advice on budgets being limits rather than targets. It is linked to the multi-annual piece as well, that there be longer-term planning. I am talking about losing the budget as opposed to transferring into the following year. One would plan ahead in private business. Does this come up in conversation or is it outside the council's remit?</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Dr. Adele Bergin<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_205">It is something we would be very happy to see if it was done better but it is not something that is within our remit.</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Mr. Niall Conroy<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_206">One thing I might add is that at the moment, if a Government Department fails to spend its full capital allocation, it can carry over some funds to the following year up to a limit of about 10% of what its allocation was for capital spending in that year. There is some scope but it is pretty limited.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_156">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_207">Does Deputy Neville want to come back in?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_157">
+          <from>Deputy Joe Neville<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_208">No. I have had two bites of the cherry and if I cannot get it done there, there is a problem.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_158">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_209">I will take a third one quickly. What happens with cost control is something that is often in my head. Do the witnesses express any views on cost control, or do they have any words of wisdom as to how we can improve cost control?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_210">It is not something we would look at specifically. Taking off the fiscal council hat, it is something that is general, whether you are looking at the public or private sector. Some projects go well and come in on or close to budget. They do not tend to get much attention. Other projects seem to get a whole load of attention for problems that emerge. Even if you did a small-scale construction project yourself, you would know the difficulties in trying to keep to the original budget. There are television shows that make an entertainment form out of running over budget. It is not just limited to the public sector but it is clearly an issue.</p>
+          <p eId="para_211"> Some of the stuff that goes under the radar does not get the attention it might deserve. We built a second runway and it was done pretty close to what the original plan was because of long-term thinking, not over five to ten years but over 30 to 40 years. In terms of sterilising land, we can see the cost of building an additional runway over in Heathrow compared with what we did here. Then you have the alternatives and the large-scale projects like the children's hospital and maybe some small-scale projects around the complex here that do get a lot of attention. It is something that arises. It is something you might like to see better control of but it is a factor with certain projects. Whether it is public or private sector, these things do arise.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_160">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_212">Does Mr. Coffey think cost control would work better if we had long-term capital expenditure budgets? Let us say metro north, which is going to cost €2 billion. If they, or Irish Rail, knew they were going to get €200 million a year for the next ten years, they could plan accordingly. It is that kind of idea, that they have security of funding. You would never be 100% you would get funding in that the economy could go bust in ten years' time and you might not have that, but we should still plan ahead. Does Mr. Coffey think that would be helpful?</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. Seamus Coffey<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_213">I think it would. If you could get particular agencies or entities to do those projects and say this is going to take five to ten years and here is a budget plan set out over that time, there might be changes but that sort of medium-term thinking would be appropriate.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_162">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_214">Are there any other contributions? No. That concludes this session. I thank the members of the council and their officials for attending here today. The meeting stands adjourned until Tuesday, 8 July.</p>
+        </speech>
+        <summary eId="sum_9"> The select committee adjourned at 4.42 p.m. until 3 p.m. on Tuesday, 8 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

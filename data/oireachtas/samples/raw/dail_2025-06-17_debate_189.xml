@@ -1,0 +1,669 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-06-17/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-06-17/debate"/>
+          <FRBRdate date="2025-06-17" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_foreign_affairs_and_trade"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-06-17/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-06-17/debate/mul@"/>
+          <FRBRdate date="2025-06-17" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-06-17/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-06-17/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-19" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="CathyBennett" href="/ie/oireachtas/member/id/Cathy-Bennett.D.2024-11-29" showAs="Cathy Bennett"/>
+        <TLCPerson eId="DonnchadhOLaoghaire" href="/ie/oireachtas/member/id/Donnchadh-Ó-Laoghaire.D.2016-10-03" showAs="Donnchadh Ó Laoghaire"/>
+        <TLCPerson eId="FionaOLoughlin" href="/ie/oireachtas/member/id/Fiona-O'Loughlin.D.2016-10-03" showAs="Fiona O'Loughlin"/>
+        <TLCPerson eId="GarretAhearn" href="/ie/oireachtas/member/id/Garret-Ahearn.S.2020-03-30" showAs="Garret Ahearn"/>
+        <TLCPerson eId="JoeOReilly" href="/ie/oireachtas/member/id/Joe-O'Reilly.S.1989-10-01" showAs="Joe O'Reilly"/>
+        <TLCPerson eId="JohnLahart" href="/ie/oireachtas/member/id/John-Lahart.D.2016-10-03" showAs="John Lahart"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM GHNÓTHAÍ EACHTRACHA AGUS TRÁDÁIL</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Foreign Affairs and Trade</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-17">Dé Máirt, 17 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-17">Tuesday, 17 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CathyBennett">Cathy Bennett</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#GarretAhearn">Garret Ahearn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#BrianBrennan">Brian Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#FionaOLoughlin">Fiona O'Loughlin</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#NoelMcCarthy">Noel McCarthy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JoeOReilly">Joe O'Reilly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DonnchadhOLaoghaire">Donnchadh Ó Laoghaire.</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#JohnLahart">Teachta / Deputy John Lahart sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>The Work of Dóchas: Discussion<recordedTime time="2025-06-17T15:05:00+01:00"/></heading>
+        <speech by="#JohnLahart" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T15:05:00+01:00"/></from>
+          <p eId="para_13">I advise members of the constitutional requirements that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any members partaking via MS Teams that prior to their contribution to the meeting they would confirm they are on the grounds of the Leinster House complex. Members are reminded of long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name, or in such a way as to make him her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. If their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction.</p>
+          <p eId="para_14"> As the witnesses will probably be aware, the committee will publish the opening statements on the Oireachtas website following the meeting. Witnesses are reminded of the long-standing parliamentary practice to the effect that they should not criticise or make any charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in a speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity they will be directed to discontinue their remarks. It is imperative that the witnesses comply with this direction.</p>
+          <p eId="para_15"> The representatives from Dóchas are very welcome. It is the first time the organisation has appeared before the committee. We have had individuals before us and we have had a private meeting, and we have had the Minister. I welcome Ms Jane-Ann McKenna, CEO of Dóchas; Mr Jim Clarken, CEO of Oxfam Ireland; and Ms Karol Balfe, CEO of ActionAid Ireland. The three witnesses and their three organisations are very welcome.</p>
+          <p eId="para_16"> The format of the meeting is to hear the opening statements, followed by a question-and-answer session with the members of the committee. I ask members to be concise in their questions. Then we will follow the structure the witnesses were emailed. The witnesses are all very welcome today. We look forward to hearing from them on the work of their organisations. I call Ms McKenna to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:05:00+01:00"/></from>
+          <p eId="para_17">I thank the Chairman, Deputies and Senators for the invitation to meet with the committee today and to brief them on the work of Dóchas and the key priorities and challenges facing the sector at the moment. Dóchas is a network of 55 international development and humanitarian organisations that are committed to human rights, justice and the eradication of poverty. They demonstrate this with their work in international development, healthcare protection, humanitarian assistance, education and inclusion.</p>
+          <p eId="para_18"> Right now global needs and extreme poverty are escalating and increasingly concentrated in countries where we see a convergence of conflict and climate change. At the very moment these needs are rising international donor funding is sharply declining forcing difficult choices about who receives assistance. Today more than 300 million people are in need of humanitarian assistance and protection and a record 120 million people are displaced. One in every five children in the world, which is approximately 400 million children, is living in or fleeing conflict zones with women and girls bearing the brunt of violence, displacement, and health emergencies.</p>
+          <p eId="para_19"> With global temperatures expected to remain at or near record levels over the next five years the impact of climate change on livelihoods and food systems, and its contribution to vulnerabilities globally, is increasingly apparent.</p>
+          <p eId="para_20"> As the world faces growing hunger, violence and death by preventable illness, aid programmes are being dismantled. In 2024, the world faced a $25 billion gap between the funds required for UN appeals and funds received. That gap is now set to more than double and its impact on affected populations will be devastating. This comes at a time when progress towards the sustainable development goals, SDGs, is critically off track, with only 17% of SDG targets on course to be met.</p>
+          <p eId="para_21"> Ireland has maintained a principled stance, thereby developing a remarkable international standing underpinned by its values of peace, humanitarianism, equality and justice. It has delivered quality funding and humanitarian assistance where it is needed most and has a strong legacy as a valued partner. The role of development co-operation and humanitarian assistance as an expression of Ireland's values on the global stage has never been more important. Research shows the vast majority of Irish people – three in four – support the Government's spending on overseas development aid, ODA; a figure that has been consistent every year for the past five years. </p>
+          <p eId="para_22"> However, our values must be matched by our commitments and our ability to deliver upon them. Therefore, we ask that Ireland uphold its commitment to the furthest behind around the world and continue to increase ODA spent overseas in budget 2026 to realise our target of spending 0.7% of GNI on ODA by 2030. We encourage the Government to work more closely with civil society organisations that deliver effective community-led solutions locally. We ask for a commitment to provide at least 30% of Ireland's ODA through civil society. We are also asking for an increased commitment to climate finance. Ireland will likely hit its annual target of €225 million this year but we can go further by increasing our financing to a minimum fair share of €500 million annually.</p>
+          <p eId="para_23"> In an increasingly volatile world, Ireland has the opportunity to be a strong, principled voice that elevates human rights, brings solidarity and justice back on the agenda and works with like-minded countries to seek transformative solutions to address the multiplicity of challenges now facing the international community. Ireland's participation in the UN International Conference on Financing for Development at the end of this month, our participation at the G20 and our Presidency of the European Council next year present opportunities to reframe the sustainability agenda by moving away from international development and humanitarian aid as a charitable cause and, rather, advocating for its retention as a strategic investment in present and future generations, global stability and prosperity, and, ultimately, peace and security for all. </p>
+          <p eId="para_24"> I am joined today by Ms Karol Balfe, CEO of ActionAid Ireland, and Mr. Jim Clarken, CEO of Oxfam Ireland, who will elaborate further on the upcoming International Conference on Financing for Development, the broader impact of the aid cuts and the importance of Ireland's leadership in this area.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T15:10:00+01:00"/></from>
+          <p eId="para_25">I thank the Chairman, Deputies and Senators for the opportunity to appear before the committee today. As Ms McKenna highlighted, there is huge importance in retaining, developing and growing Ireland's strong track record on development assistance and meeting our target of 0.7%. This comes in the context of a major global focus on development. On 30 June, in Seville, Spain, the UN will host the International Conference on Financing for Development, which the Minister of State, Deputy Richmond, will attend. This is a key moment to bring about transformative change to the international financial architecture. It is an opportunity to redefine global economic governance, support sustainable and inclusive development and reaffirm the importance of multilateral co-operation. Structures and mechanisms must be put in place that are truly inclusive, democratic and representative. </p>
+          <p eId="para_26"> Top of the agenda at the summit will be the issue of debt. In 2025, 54 countries are in debt distress, which means they must cut spending on basic public services and climate action to pay external debts. Lower- and middle-income countries have a total external debt of $1.45 trillion between them. In 2023 alone, they paid $138 billion just to service those debts, thereby sacrificing people's rights and sustainable development for wealthy creditors. More than 75% of lower- and middle-income countries spend more on debt than they do on healthcare. In 55% of those countries, expenditure on servicing debt is more than double what is spent on healthcare.</p>
+          <p eId="para_27">This has a devastating impact on the majority of people but particularly women, young people and people on low incomes.</p>
+          <p eId="para_28"> There is growing consensus around this issue of fairness and justice and that there is a series of historical, practical or moral debts that rich countries owe, related to climate change, colonialism, slavery, illicit financial flows or failures to meet our ODA commitments since the 1970s, as agreed collectively by the United Nations.</p>
+          <p eId="para_29"> In a major study, it is calculated that rich countries have achieved up to 70% of their economic growth by appropriating more than their fair share of the atmospheric commons, or to put it simply, by overshooting their global carbon share. The climate debt they are liable to pay, by very conservative estimates, would be $107 trillion. That is 70 times what they owe in debt. If that climate debt was repaid, it would involve transferring over $4 trillion per year to lower- and middle-income countries.</p>
+          <p eId="para_30"> These external debts that lower- and middle-income countries face accelerate the climate crisis. They lock countries into a negative spiral, forcing governments to shape their economies and societies to pay back their debts in foreign currencies and exporting products, further harming the climate in the process. In contrast, lower- and middle-income countries, who owe a fraction of the amount owed by rich countries, are forced to sacrifice the health, education, social protection, well-being and future prospects of their citizens, often having to follow strict austerity policies imposed by the International Monetary Fund. Women and girls are the first to suffer. They lose access to those services and to decent work the services might provide, and they pick up the share of unpaid care that is not there when public services fail.</p>
+          <p eId="para_31"> The issue of illicit financial flows is also hugely important here. The State of Tax Justice 2024 report showed that multinational corporations are shifting on average $1.13 trillion worth of profit into tax havens, causing governments around the world to lose an average of $294 billion a year in direct tax revenue. A further $145 billion in direct tax revenue is lost to offshore wealth tax evasion. Unfair global trade rules lock low-income countries into dependency on commodity exports, enabling this extraction of goods and profits.</p>
+          <p eId="para_32"> What this means in human terms is that in 48 countries with a collective population of 3.3 billion people across the world, governments are spending more on external and domestic interest repayments than on health or education. This unjust global financial architecture is dominated by institutions like the IMF and World Bank, which really have colonial-era structures. They were established in 1944 when many of these lower- and middle-income countries were still colonies. This preserves the interests of rich nations and large corporations, continuing to enforce them to pay external and often illegitimate debts as the top priority.</p>
+          <p eId="para_33"> There is an urgent need to revamp these deeply unfair systems and institutions. A fairer and inclusive system managed by a democratic institution where all countries have an equal say, such as the United Nations, is crucial. In Seville, we urge Ireland to play a role within the European Union to agree to a common framework for debt cancellation and restructuring, and to put political support behind a UN mechanism on debt. This would allow governments to invest more money in public services in their countries, sustainable development, human rights and climate action.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T15:15:00+01:00"/></from>
+          <p eId="para_34">I thank the committee for having us; it is great to be here. I am going to specifically focus on the impacts of cuts to aid across the globe and the importance of Ireland's ongoing commitment to growing its aid budget.</p>
+          <p eId="para_35"> Oxfam recently published analysis that shows the Group of Seven, G7, countries, which together account for nearly three quarters of all official development assistance, are set to slash their aid spending by 28% compared with 2024 levels, driven by the US, Germany, the UK and France.</p>
+          <p eId="para_36">This is the biggest cut in aid in G7 countries since it was established in 1975. Cuts are putting vital public services at risk in some of the world's poorest countries, such as Liberia, Haiti, Malawi and South Sudan, where USAID made up 40% of health and education budgets, leaving them heavily exposed. As Mr. Balfe mentioned, combined with the debt crisis and the amount of repayments required by these countries, it is leaving these governments in a position whereby they do not have the ability to care for their people.</p>
+          <p eId="para_37"> Global aid for nutrition will fall by 44% compared with 2022. Just €128 million worth of US-funded child nutrition programmes will result in an extra 163,500 child deaths per year. At the same time, 2.3 million children suffering from severe acute malnutrition are now at risk of losing their lifesaving treatments.</p>
+          <p eId="para_38"> Overall, we estimate that the US Agency for International Development, USAID, cuts will lead to up to 3 million preventable deaths every year, with 95 million people losing access to healthcare. This includes dying from the lack of vaccines for preventable diseases, pregnant women losing access to care and the rising deaths from malaria, TB and HIV, and reminds us how much progress has been made in those areas in recent decades.</p>
+          <p eId="para_39"> The UN's ambition for requests for funding are dropping. The United Nations Office for the Coordination of Humanitarian Affairs has stated it is reducing its appeal by over one third, down to €29 billion. These are the deepest funding cuts ever. It will refocus on the most critical emergencies under what it calls a "hyper-prirotised" plan. Similarly, the United Nations High Commission for Refugees, UNHCR, is slashing thousands of staff despite the fact that more people are now fleeing than at any time in history and the services of the UNHCR are needed more than ever. The consequence will be that refugee women and girls will be left at extreme risk of rape and other abuse. They are already losing access to services that kept them safe. Children are being left without teachers or schools, pushing them into child labour, trafficking or early marriage. Refugee communities will have less water, shelter and food.</p>
+          <p eId="para_40"> We say all these things so the committee understands the scale of the cuts and how deep the impact will be. There will be deaths from hunger and preventable diseases. Across the world, aid agencies will have to make cruel decisions about where the aid goes. As the head of the UN relief agency said, it will now be forced into "a triage of human survival". The world will be a far more dangerous place to be a child, particularly in the global south. It will be a far more dangerous place for women. We know the Guttmacher Institute has estimated that 47.6 million women will have no access, or much reduced access, to sexual and reproductive health rights. We know there will be a spike in gender-based violence and a lack of service provided to those who have been affected.</p>
+          <p eId="para_41"> We know the committee is well aware of Ireland's strong history in this area. As the world becomes increasingly insecure, it is incumbent on those nations that have decided not to turn inwards, such as Ireland, and who still value a multilateral world to turn more outwards and stand squarely with the countries of the global south. We know this because of our unique history as a colonised country and all the history that goes with it. We want no less for the countries of Africa, in particular, and their children, who want the chance not only to survive but to thrive.</p>
+          <p eId="para_42"> Ireland's role in development co-operation plays a large part in our global soft power. We know our position on bodies such as the UN Security Council and the Human Rights Council, which we are looking to be a part of, is due in no small way to the support we get from those countries that believe Ireland's bona fides and value our role as a small player with an outsized impact. That significance has a dramatic impact. We can see the effects of this leadership when it comes to Palestine, for example, where EU countries are now backing Ireland's position on the EU-Israel trade association agreement. Our voice is significant. Morale leadership means something, as it always did, but even more particularly in today's world, which gets more insecure and dangerous by the day.</p>
+          <p eId="para_43"> True security is not built on military force alone. It is built through commitments to stability, diplomacy, democracy and development. Reducing aid will not make our world safer. In fact, it will make it much more fragile. It will increase humanitarian crises and fuel the conflicts we seek to prevent, ultimately undermining long-term global security and stability. Now is the time for Ireland and Europe to scale up its role in tackling poverty, humanitarian crises and inequalities.</p>
+          <p eId="para_44">We ask members to protect and increase aid budgets so we can address global challenges together with communities and partner countries in the global south and build a safer, fairer, more connected world for all.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T15:25:00+01:00"/></from>
+          <p eId="para_45">Thanks. There are a few acronyms in Mr. Clarken's written submission and this is a new committee. I know BEPS is about tax avoidance but will Mr. Clarken elaborate on that? The submission states, "Ireland should urge the European Union, and use all their resources available as a member state, to push for European ODA (mostly financed through the NDCI instrument)...". Will Mr. Clarken say a little more about that?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T15:25:00+01:00"/></from>
+          <p eId="para_46">The BEPS process was base erosion and profit shifting. That was a process, led by the G20, to look at money flows and how globally those bodies could look to improve that system. Ireland embraced that process, which we would say was flawed but was certainly a start, and helped look at that. We would advocate for a UN body to look at tax fairness, tax justice, tax flows and money flows. </p>
+          <p eId="para_47"> Somebody might help me with NDCI. It is basically the neighbourhood fund from the European Union. It is described as the external-facing elements of that fund.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T15:25:00+01:00"/></from>
+          <p eId="para_48">Okay, good. The first speaker is Deputy Ó Laoghaire.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_8">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-17T15:25:00+01:00"/></from>
+          <p eId="para_49">Gabhaim buíochas leis an gCathaoirleach. I thank the witnesses for their attendance and the important work they do. I was with the Minister of State, Deputy Richmond, a week or two ago. It was very sobering. The phrase "triage of human suffering" really sticks with you. The invidious choices facing aid organisations around the world, including potentially those of the witnesses, are - I do not know what the word is. It is just depressing, to be honest. </p>
+          <p eId="para_50"> Unfortunately, the gaps left by the cuts in USAID are so large it seems no one can fill them, even with the best will in the world, and the best will in the world does not exist. It does not seem to be possible. A fair degree of attention is shifting to the issue of debt. It was a substantial part of our discussion with the Minister of State. Is there a sense that momentum building is behind this or is it too early to say that? My understanding is that because USAID was assumed to be always the biggest player, the architecture of many projects was built on existing larger projects. The foundations were US funded and projects by Irish, Dutch, Polish or whatever aid organisations would build on top of that. Can the witnesses give examples of that? To what extent is the footprint based in the world's poorest continent, Africa? Are projects in other developing countries at significant risk?</p>
+          <p eId="para_51"> Many governments, particularly in southern African countries like South Africa and Botswana, are concerned about AIDS. The cuts could lead to tens of millions of deaths, apparently. Do any of the witnesses' organisations have projects related to that? The witnesses have spoken about projects relating to women and girls. Through development, science, public health interventions and other advances, much progress was made. Many people still get sick and, unfortunately, die but huge progress was made. Now we potentially face much of that progress being reversed. Those are my questions and I direct them to any speaker who wishes to respond.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:25:00+01:00"/></from>
+          <p eId="para_52">Regarding the aid cuts, Mr. Clarken can build on this but USAID was a key funder of PEPFAR. Much of the treatment for HIV-AIDS has been decimated because of that. Not only was it funding large organisations like ours but also local clinics and community hospitals.</p>
+          <p eId="para_53">Many countries in Africa now have a very advanced system of healthcare, particularly with regard to the treatment of HIV and AIDS in terms of the mobility of care and being able to really become ingrained in communities. We are seeing not just the immediate impact of these drugs being stopped but the direct impact of this on the communities and of the decimation of some of the key areas that enable a number of communities to function. I will ask Ms Balfe to answer the question on the momentum at present.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T15:30:00+01:00"/></from>
+          <p eId="para_54">These crucial negotiations probably have not received a significant amount of attention or discussion in Ireland to date but they are very important. The proposals for a UN debt framework are very much being put forward by the small island nations and a group of African countries. Countries like Kenya, Pakistan and Brazil are strongly advocating for this. This is one of the areas where Ireland has an excellent track record in solidarity with the global south. This is a way we should demonstrate that solidarity. There is momentum among the global south consistently calling for this, particularly the G77 group. Unfortunately, over the past week, we have seen the EU, the UK and the US pushing back against the idea of a global UN debt framework. They have watered down the wording in the draft outcome that is being discussed and that will be, we hope, agreed in Seville. We are not seeing enough momentum from the richer countries. It is very similar to the OECD base erosion and profit shifting. It is a mechanism for the rich countries but it is not global and democratic, it is not clear how decisions are made and it is not factoring in the interests of global south countries. When we see these cuts, and Mr. Clarken has highlighted very well the very human and real impact of these cuts, debt relief matters now more than ever. The last time we had this significant focus on debt was in 2000 for the Jubilee campaign. A total of $130 billion was given in debt relief. It was significant. It was not enough but it had a real impact. They were able to track more school enrolments in particular countries. Countries were able to put that money back into public services so it is something in respect of which this committee could play a strong role. It could ask the questions about why we are not fully supporting a global UN mechanism on debt. </p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T15:30:00+01:00"/></from>
+          <p eId="para_55">I do not have an awful lot to add. I did touch on other forms of financing, including taxation. In the most recent G20, which Ireland has been invited to attend this year, the outcome statement very much focused on inequality in taxation. It involves how we can look to fully embrace and engage with global taxation systems that will help to fill some of those gaps, recognising that despite BEPS, a lot of money flows from the global south through countries like Ireland and onwards where it is not taxed fairly and, ultimately, the countries that pay these vast amounts of debt are not given the resources that are rightfully theirs to pay for health, education and all the protection services they need. The USAID architecture, as the Deputy rightly said, affects a wider system than just the USAID-funded projects. It involves a lot of UN agencies and collaboration with countries like Ireland and others, so that has a multiplier effect in a lot of ways. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T15:30:00+01:00"/></from>
+          <p eId="para_56">Has the aid been withdrawn? Has that process started? Have the witnesses' organisations begun to see the impact? </p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:30:00+01:00"/></from>
+          <p eId="para_57">Organisations on the ground are starting to see the impact. In particular, it has had an immediate impact on local organisations in terms of having to let go of staff. It has effectively closed programmes overnight because there were no cash reserves. There was no area where they could continue activities until they found other means of financing. A lot of reorganisation is taking place in international organisations and UN organisations in terms of what is feasible to be able to continue and the resources that need to be let go based on the realities of the lack of funding. </p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_14">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-06-17T15:30:00+01:00"/></from>
+          <p eId="para_58">I thank my party colleague Deputy Brian Brennan for facilitating me. A delegation from home is meeting a Minister. I will be as brief as I can. There is huge admiration throughout the country for the organisations, as evidenced by the three in four people who support overseas development aid.</p>
+          <p eId="para_59">There is huge admiration for the work the witnesses organisations do and huge buy-in to it. It is wonderful that, despite the bits of tension we have had in society in recent years and the difficulties arising from the Ukraine war, none of that has dissipated. That support for them remains very strong. The statistics in the opening remarks are very stark and it is no harm to stick one or two of them on the record before I ask a few questions. It is an awful indictment of contemporary society internationally and we all should hang our heads in shame at the fact that 300 million people are in need of humanitarian assistance, 120 million people are displaced and 400 million are fleeing conflict zones, with women and girls bearing the brunt of violence, displacement and health emergencies. Those figures merit repeating for the record. It is a shocking indictment and underscores the importance of the witnesses' work. Basically, they are pushing an open door with members right across the committee. </p>
+          <p eId="para_60"> Ms McKenna said we should accelerate towards 0.7% aid from Ireland. Will she flesh that out a little as to how she sees that happening and where we are at in terms of that figure at the moment? Regarding debt forgiveness, it seems logical to me that this should be done. It is logical that the ultimate cost of leaving those people frozen, without health services and basic services and in a state of economic paralysis, is far greater than any alleged benefit from taking the money from them. Has Dóchas or other people supported by the organisation done any cost-benefit analysis on debt forgiveness? Are there figures on that? If there are, it would be helpful to circulate them among us. It would be helpful for us to be aware of those figures, particularly if we are talking to the Minister of State, Deputy Richmond, who is going to the conference shortly. Common sense would suggest to me that there should be debt forgiveness and debt restructuring on the premise that, even apart from the wrong, the immorality of it and the human suffering, even if you were to look at it more coldly and dispassionately, in economic terms the cost must be greater. It would be interesting to have some empirical research there.</p>
+          <p eId="para_61"> Ms McKenna referred to US aid being closed off. I have a very good friend who is involved in overseas aid as a front line worker who told me their projects are drying up and going to end. It would not be proper to name them here. The person visited me recently. I went to school with one of them. They were in my home and they said their work will be drying up. Is the stable door fully closed or is there a way you can go back, almost like the tariffs, with the begging bowl and get an agreement for some US aid? I presume it is not going to close every form of aid. Is it a grand gesture that we may be able to negotiate out of? Is that in progress? I suspect there must be an opportunity there. The Taoiseach said at COP26 that Ireland would give at least €225 million in climate finance. I think Ms McKenna in her document refers to a figure of €250 million per year. We are very close to it if that is the case. Will she tell us what the differential is? I will leave it at that and I appreciate the understanding of my colleagues. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T15:35:00+01:00"/></from>
+          <p eId="para_62">Okay. Will the witnesses keep an eye on the clock? We run a tight ship here. I will come back at the end if we can. </p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_16">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-06-17T15:35:00+01:00"/></from>
+          <p eId="para_63">Yes. I will have to leave fairly soon after Ms McKenna answers.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:35:00+01:00"/></from>
+          <p eId="para_64">I will come in on some of the stats and figures. On the 0.7% and our target to 2030, at the moment, according to the provisional OECD DAC figures from 2024, we are at about 0.34% for ODA that is spent overseas. We have removed in-donor refugee costs, which are costs incurred here in Ireland, but, in effect, the figure for overseas aid, which is how the ODA is intended, is 0.34%.</p>
+          <p eId="para_65">To bring us on track to achieve 0.7% by 2030, we are looking at an increase of approximately €300 million per annum. We know it is a substantial amount but this figure is based on our own GNI, so if our GNI goes down or is not as estimated in the next year or two due to other external factors, that will reduce. We are looking at between €250 million and €300 million per annum.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_18">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_66">I personally think it should be done.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_67">The climate finance figure is €225 million or that is what the Taoiseach, Deputy Micheál Martin, committed to at COP26. I think we will reach that in 2025 and it will be on target, but we have put in an estimate of €500 million because that is based on calculations around what is Ireland's fair share in terms of climate finance, and that is what we will be advocating for. Although the target of €225 million was very welcome at that stage, it was not necessarily based on what we would consider our fair share to be, given how we would make those calculations.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_20">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_68">There was the issue of the cost-benefit analysis of USAID and debt. Is that door not fully closed?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_69">Oxfam is taking the US Administration to court to look to fight some of these issues. It remains to be seen. There is still some aid flowing, to my knowledge, but it is greatly reduced. As was pointed out earlier, given the fact it is not flowing, organisations have come to a standstill because they did not have reserves and would not have had the opportunity to build reserves over years. The need is facing them right now and not in six months so those programmes have been closed and the impact is being felt right now and immediately. We would hope that Ireland, as a partner with USAID and a partner with American foreign policy over the years, continues to use its own influence in whatever way it can, and others too. Ireland as part of the EU also plays a vital role. For now, we can assume it has essentially dried up. Things may change but a lot of effort and a lot of pushing needs to happen.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_22">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_70">Has a study been done on debt?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_71">We will come back to that point. I want to stick to the time. I call Senator Stephenson.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_24">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_72">I thank the witnesses for their introductory comments. Given that countries in the global south are pushing for this UN debt mechanism, what are the kinds of impacts that the witnesses foresee more broadly around multilateralism if that were not achieved in terms of the existing relationships we have on a global scale and how reliant we are on the multilateral system to be effective? Some highlight the role of existing mechanisms like the G20 common framework. Do the witnesses think it would be duplicative to have a new mechanism or would they be supportive of that?</p>
+          <p eId="para_73"> Will they speak more broadly about what this new economic model would look like in relation to debt distress, debt forgiveness and debt restructuring? If we were to forgive debt today, what would that look like on a broader scale in relation to the debt and borrowing of nation states going forward?</p>
+          <p eId="para_74"> The witnesses spoke about stability and prosperity, and peace and security. Do they have specific examples in their work as to how our aid relates to peace outcomes? This applies in terms of physical peace as it relates to the absence of conflict, but also societal peace as it relates to the absence of famine or transnational health concerns.</p>
+          <p eId="para_75"> The witnesses spoke about multilateralism, our relationship with countries that have had a similar experience around colonisation and Ireland's soft power. What recommendations would they have for the Department of foreign affairs regarding the international forums where we have a voice and influence? On that specific piece around Ireland's power, what would they wish the Irish Government to do?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T15:40:00+01:00"/></from>
+          <p eId="para_76">Multilateralism is clearly under threat at the moment. In America and globally, there are so many issues. The global south is witnessing a double standard that they see from the global north regarding climate finance, Gaza and accountability towards Israel. There is a deep distrust of the power dynamics there.</p>
+          <p eId="para_77">If we ignore the calls of the global south for a UN framework, we fuel that. We should defend multilateralism but not defend broken systems that do not work. We should recreate more inclusive, democratic and multilateral systems. This is where the UN debt framework is so important and where we challenge claims the G20 is an established model on debt. The G20 common framework was set up five years ago. About seven countries have benefited from some debt restructuring. It is described by the Overseas Development Institute as too little, too late and too complex. There is a lack of transparency about the amount of debt relief available, the process and the decision-making. Countries in critical debt distress such as Kenya and Pakistan were not even included in the mix. We challenge what the Irish Government has said and the EU more broadly in relation to the G20 being the mechanism for debt. It is problematic. We need a global mechanism. There are three fundamental things that a global debt mechanism would try to do. It would shift inequality and unfair power dynamics between rich and poor countries to make it more global. It would try to stop debt crises happening again. We can be sure this is something the G20 has not been able to do. When there is debt distress, it would put in place clear rules, regulations and frameworks around this, including rules on sovereign lending and rules for creditors. A key trend is the increase in private creditors. In the case of Zambia, which has one of the highest poverty levels in the world, one of its major creditors is BlackRock, which also plays a major role in fuelling the climate crisis. It will make 110% profit from the debt deal with Zambia. There is no way it cannot afford to give debt relief. Private creditors have to be within the mix.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:45:00+01:00"/></from>
+          <p eId="para_78">On the question in relation to peace outcomes, we will see the destabilising effect of aid cuts more acutely in the coming months. When the bottom of the existing investment, particularly in health and education and in other areas is taken out, it will ultimately have a destabilising effect in many fragile and conflict-affected countries in the global south. I will ask Mr. Clarken to elaborate.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T15:45:00+01:00"/></from>
+          <p eId="para_79">We as Oxfam worked with the support of Irish Aid for many years in Rwanda on rebuilding peace at a community level - the Senator mentioned communities. We worked neighbourhood by neighbourhood, community by community. It was hugely impactful local peace. It can be seen in South Sudan, working between those who herd and those who farm. There are intercommunity spaces where key, small amounts of funding, relatively speaking, have made a big difference in keeping stability and building cohesion among communities. The Senator also asked about Ireland in the multilateral space. We cannot take for granted Ireland continuing to do what it is doing to fully embrace and be a champion for multilateralism. We see others withdrawing. It has always been in our interest as Ireland but it is really in the global interest. We must also look to allies. We have seen recently on the EU-Israel Trade Agreement, for example, engagement with Spain, Norway, Luxembourg and other countries. There are like-minded countries out there. They need to see Ireland in the room with its strong reputation; Ireland is considered as a responsible global citizen. It played an important and significant role at the UN Security Council when it was on the body. We must not lose sight of that and keep up the momentum, not allowing contagion to frighten us from being in those spaces and creating those opportunities to engage with others.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:45:00+01:00"/></from>
+          <p eId="para_80">During the current negotiations on the multi-annual financial framework at EU level, Ireland has a critical role in ensuring human development is included in the development and humanitarian instruments. There is a shift towards a far more transactional approach to development. We need to ensure we put people at the centre of what we want in our overseas development assistance whether directly or through our European overseas development assistance.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_29">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-17T15:50:00+01:00"/></from>
+          <p eId="para_81">This is earlier than I expected to speak. I would like to begin where Ms McKenna left off in terms of the question about the multi-annual financial framework and the transactional point that was made. One of the things we are very proud of in Ireland, and it is really important, is the principle of untied aid. We are engaging in this for humanity rather than to further our interests in terms of how we apply these resources. We know that others in the EU may not have that untied aid approach. I ask Ms McKenna to comment on the transactional versus the untied aid point. It is important not just that Ireland maintains its untied approach but also evangelises it a bit in terms of others taking that approach on.</p>
+          <p eId="para_82"> I was very struck by the points made about debt. It strikes me that we cannot treat this as a normal moment. We seem to be in a moment that is intensely dangerous. These are not usual levels of cuts in aid. It is almost a shift in the idea that all humanity must survive and that we should contribute to it and raise it. There seems to be an abandonment there. </p>
+          <p eId="para_83"> In that context, regarding the idea that countries are still paying back these debts, I was very struck by the point made by Ms Balfe that 75% of low and middle income countries are spending more on debt servicing than they are on health. To my mind, that is shocking. I know the point was with regard to the G20 but the debt cancellation position was mentioned - not just debt reservicing or restructuring - and what we should advocate for in that regard.</p>
+          <p eId="para_84"> The other point is about the question of historical, practical and moral debts owed by wealthier countries. We know that has been coming through in terms of loss and damage and some of the discussion about reparations related to slavery and colonialism. Will the witnesses comment on the argument for a very strong push on debt cancellation, looking to those other related debts that sit there?</p>
+          <p eId="para_85"> The conference in Seville was mentioned. What messages should Ireland be bringing to the discussions there and to the G20?</p>
+          <p eId="para_86"> I want to focus on hunger. We are all absolutely horrified by the wilful and intentional starvation that Israel is inflicting on the children of Gaza at the moment. I am conscious that acute malnutrition and famine conditions are present in many other places in the world and they are places where we can get the aid in, effectively. Will the witnesses comment on Sudan, in particular, and Yemen in the context of food insecurity and malnutrition and what can be done?</p>
+          <p eId="para_87"> In terms of choice, I was struck by the figure of there being a $25 billion gap in the context of what the UN was asking for, and it was mentioned this gap may rise to $50 billion. That is very small when compared with the €800 billion the EU is talking about on arms spending. The sum of $25 billion would fill the gap between what is being asked for and what is being given. Is there a point where we need to be looking to the escalation in arms spending? It is being routed not just from social cohesion funding within Europe but it is being rerouted, so that goes back to the multi-annual financial framework. I should probably give the witnesses a chance to answer.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T15:50:00+01:00"/></from>
+          <p eId="para_88">In regard to Sudan, Dóchas appeared before this committee last September to talk about Sudan in detail. There are 24.6 million people in Sudan today who are facing acute levels of food insecurity. The situation is catastrophic, to say the least. One of the effects we have seen from the aid cuts is the decimation of many of the mutual aid groups that were, in effect, running a lot of the communal kitchens, which was very much a community-based way of being able to support getting food to those who need it most.</p>
+          <p eId="para_89">That is just one of the ways it is becoming increasingly challenging. It has always been challenging, particularly with the reduction of the aid cuts, to facilitate and get some of that food aid in to where it is needed. I will ask Mr. Clarken to speak to EU funding in terms of the direction of travel with the MFF. There is not a huge focus at all on fragile or conflict affected states at the moment in the negotiations. That they are not really represented at all, particularly in the development space. This direction of travel is very much about investment, the return on investment, the global gateway and seeing where it is to the advantage of Europe to invest in countries rather than in global security.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T15:55:00+01:00"/></from>
+          <p eId="para_90">I will answer and might hand over to Ms Balfe as well. The direction of the EU is summed up in two main theme: securitisation and what is called "simplification". We know what securitisation is about. It is basically channelling funds towards arms, as the Senator said, and the protectionism Europe feels it needs. Simplification is the reduction or removal of very key pieces of legislation and safeguards to protect people across the EU and outside of it. We have seen it with individual countries and the worry of where the EU might travel with this. The real concern is that all funding for development assistance will be seen through a transactional lens - so, what are we getting for this? Does it financially benefit us as the EU? Does it deliver what it was intended to deliver, which is a rights-based development support programme, for countries that need it based on need, human rights and democracy and spreading what the EU describes as its "values"? Clearly, there is a real concern about the direction of travel towards that transactional approach. It is deeply worrying. </p>
+          <p eId="para_91"> There is a lot to happen between now and the negotiations and we believe Ireland can, and should, play a role over the next number of months and leading into the Presidency. Ireland has in its own right played an important role as an independent state but it needs to amplify that voice in the European context, again working with allies and others to make sure that global gateway and these instruments do not become purely transactional matters.</p>
+          <p eId="para_92"> Finally, with regard to the Senator's question about historical debt, Ireland rightly acknowledged the fact we are a victim of a colonial background. However, Ireland has also benefited in ways that we need to be open and clear about. The manifestation of the climate impact is probably the clearest way as a country that has developed itself using a very large portion of carbon.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_32">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-17T15:55:00+01:00"/></from>
+          <p eId="para_93">I thank the witnesses for joining us. I appreciate them making the effort to come in and for taking the time. I also commend them on all the work they do for those around the world who are less well off than us. That is very much appreciated by everyone in this room.</p>
+          <p eId="para_94"> My questions fall into three categories and I will ask them reasonably quickly as I am conscious to give the witnesses time to get into the answers. Broadly, what is the appetite for debt forgiveness and for climate reparations? How has this changed since the USAID withdrawal? </p>
+          <p eId="para_95"> In regard to the debt itself, where are these loans from? I read somewhere - and I hope I am correct in this - that up to 40% of them are from private institutions. If that is the case, what is their appetite for debt forgiveness? I imagine these institutions are banks and funds, etc., and would be answerable to their shareholders. It would be more difficult for them than for a sovereign government to forgive debt. Do the witnesses have any comments or thoughts on that?</p>
+          <p eId="para_96"> Are there currently interest rates on these loans? Are these countries paying interest?</p>
+          <p eId="para_97">If so, that perhaps should be immediately addressed and those interest rates brought to zero while the discussions elsewhere are ongoing.</p>
+          <p eId="para_98"> Does Ireland or any Irish institution hold any of this debt?</p>
+          <p eId="para_99"> I apologise for the quick-fire questions. What is the witnesses' position on linking debt forgiveness to climate reparations, and what steps are Irish NGOs taking to advocate this debt cancellation as part of climate justice? In particular, what are the main barriers the witnesses are meeting at an international level?</p>
+          <p eId="para_100"> Finally, I noted that Ms Balfe mentioned earlier that the EU, among others, is pushing back against the UN global debt framework. I would like to understand why that is.</p>
+          <p eId="para_101"> Again, I thank the witnesses for their time.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:00:00+01:00"/></from>
+          <p eId="para_102">As regards the appetite, which links to why the EU is pushing back, among the richer countries there is limited appetite to really look at this in a transformative way. Among the global south majority there is a strong appetite to address it because they are the ones bearing the brunt of it. I think the reasons behind this are to do with self-interest of the richer countries. The debt is about 61% to private creditors, 26% to multilateral creditors and about 14% to bilateral creditors. China is playing an increasing role in this but, obviously, the IMF plays a huge role in it as well. One of the problems is that, whether it is a private creditor or sovereign debt, the IMF is always the body turned to on a one-to-one basis and the power dynamics are very skewed. The IMF typically imposes cuts on public sectors, the public sector wage bill and public services provision, which leads to austerity in those countries. That is one of the justice and fairness elements and linked to Senator Higgins's question about health and public services.</p>
+          <p eId="para_103"> This is having a real impact on people. ActionAid did a survey of 600 public health workers across six countries in Africa, and 97% of healthcare workers said they did not have enough to meet their food, housing or living needs. We see children in classrooms of 200. We see people waiting for access to medical treatment that they just cannot get because of the public sector wage cuts and other cuts. There is, therefore, a huge moral and legal argument in respect of debt being looked at in this way. It is very much linked to climate because part of the reason countries end up in debt distress is that they have a massive climate shock or a climate impact. They bear the brunt of climate change, and that puts their economy into shock. Covid, the Ukraine war and the financial crash of 2008 all played a role as well, but it is a massive link and it is a vicious cycle whereby they are put in the debt crisis because of a climate disaster and then their response, fuelled by IMF measures, leads them to exacerbate the climate crisis. That is the vicious cycle in which they are trapped.</p>
+          <p eId="para_104"> Even if there is no appetite, we have to push. Ireland has benefited so much from being a European country. We have among the highest emissions in Europe. We have these climate responsibilities and obligations. It is very much linked to this debt. If we were to pay the amount of climate finance that is owed to global south countries and pay the ODA we had committed to pay, countries would not be in this debt crisis either, arguably, so we have this moral responsibility and legal obligations. We have to push through. Creditors probably do not have the appetite. They are driven by their shareholders. Many organisations have asked them to cancel debt for various countries and they have declined to engage. This is where governments need to play a role. We need better corporate regulation of this. This is why we need a global governance framework. We need better accountability from corporates because otherwise we have this constant cycle of poverty, inequality and conflict that we will not get out of.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_34">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-17T16:00:00+01:00"/></from>
+          <p eId="para_105">I asked about any Irish institutions holding any of this debt. There was also the interest rate question.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:00:00+01:00"/></from>
+          <p eId="para_106">I do not know exactly but I do know that many of the big global financial institutions use Ireland's foreign direct investment. In the example from Zambia I gave, BlackRock channels significant amounts of money through Ireland's FDI.</p>
+          <p eId="para_107">I do not know whether Irish institutions are involved, I am afraid.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:05:00+01:00"/></from>
+          <p eId="para_108">You will have more time, Deputy. If there was stuff you did not get to, I will come back and give more time. The next speaker is Deputy Cathy Bennett.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_37">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-06-17T16:05:00+01:00"/></from>
+          <p eId="para_109">I thank the witnesses for coming in and for all the great work they do. First, I want to talk about Ireland's contribution to overseas development aid. Ireland, through the UN target, is supposed to give 0.7% of its GDP to ODA. As regards the money that would have been used for the Ukrainian refugees, will the witnesses outline to the committee what we are really at when that funding is taken out of the account? Does that leave us with a shortfall, and has that been refunded or have the organisations got that money back?</p>
+          <p eId="para_110"> I am aware that the organisations' committees and sister organisations have people on the ground in Gaza. What is going on there presently?</p>
+          <p eId="para_111"> Ireland's upcoming Presidency of the Council of the European Union was referred to. While much of the focus in Europe currently relates to militarisation, do the witnesses have any indication that Ireland will take the opportunity to bring a focus at a European level to global poverty, the drivers of migration such as climate crisis and war, and the recognition, which the witnesses have referred to, that investments in this regard are of strategic security import to Ireland and other member states?</p>
+          <p eId="para_112"> Dóchas's opening statement referred to women and children. I would like to see us, with Europe and the new Presidency coming forward, keep that as a priority.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:05:00+01:00"/></from>
+          <p eId="para_113">On the figures, the total amount including refugee costs in 2024 was about €2.2 billion. That was 0.57%, approximately. The figure we use then is really €1.3 billion, which is the ODA less the in-country refugee costs, which is that approximately 0.34%. We would argue that, in terms of real or non-inflated ODA, we are at the 0.34% mark because this is actually as ODA was intended in terms of being spent overseas on international development.</p>
+          <p eId="para_114"> I will go to Mr. Clarken if he would like to come in on that.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:05:00+01:00"/></from>
+          <p eId="para_115">Oxfam has been working in Gaza for decades and we have been there throughout the conflict. We were in a position to support 1.2 million people up to the time the borders were closed and all access was stopped. We have millions upon millions of dollars and euro worth of aid on the border waiting to enter the country and it is not being allowed, obviously. Worse than that, this Israeli Government aid development agency, backed by the US, has clearly, as we said, not functioned. Worse than that, it has been very dangerous. Many people have been killed, shot dead. It is not delivering aid, and we would argue that it may never have been intended to do so. We need Ireland to continue to advocate and really push hard. The situation on the ground is extremely dire. The population is on the verge of famine. I have referred to this before but I apologise for repeating-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_40">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:05:00+01:00"/></from>
+          <p eId="para_116">May I just stop you there? What was its intention? Was it to sow confusion?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:05:00+01:00"/></from>
+          <p eId="para_117">Ultimately, it was to control and to decide who gets the aid and who does not. As aid agencies, we have a mandate to ensure that those in the greatest need get the assistance. It is as simple as that. We have to be impartial and neutral and we have to make sure that the aid is directed to those who most need it.</p>
+          <p eId="para_118"> One of the things that, as I said, I have said elsewhere but I will repeat is that the life expectancy in Gaza has gone from 75.5 years to just over 40 years. That is a drop of 35 years in the past year and a half. It is the lowest by a distance anywhere in the world, and that is directly because civilians are being killed and young people and babies and children are being murdered. That is the situation. It is getting worse. There is a real concern that because of what is happening with Iran and Israel now, there will be a distraction, which may well have been part of the intention, from the genocide and the massacre that is happening.</p>
+          <p eId="para_119">We need Ireland to continue to be a good voice and to amplify that in all the spaces it can, particularly by putting pressure on the EU. The EU-Israel trade agreement is a game-changer in the relationship with Israel and what could be done. More than 30% of all Israeli exports end up in the EU. If the agreement were suspended, it would dramatically change everything.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_42">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-06-17T16:10:00+01:00"/></from>
+          <p eId="para_120">My other question relates to the upcoming Presidency of the Council of the European Union. Have the organisations reiterated calls that this should be a top priority of that Presidency?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:10:00+01:00"/></from>
+          <p eId="para_121">Ireland has already expressed some desire and continues to work on how that might manifest during the course of the Presidency. The Deputy specifically mentioned women and children. Part of Ireland's development assistance and foreign affairs policy for decades has focused specifically on women's rights. We want to make sure that continues to have a multiplier effect, working with other like-minded countries and within the EU to put pressure on its institutions.</p>
+        </speech>
+        <speech by="#CathyBennett" eId="spk_44">
+          <from>Deputy Cathy Bennett<recordedTime time="2025-06-17T16:10:00+01:00"/></from>
+          <p eId="para_122">Are the other witnesses happy with how Ireland is advocating?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:10:00+01:00"/></from>
+          <p eId="para_123">Ireland has been working closely with the Department of foreign affairs over the past year or so, particularly around the MFF negotiations and the lead-up to negotiations happening now. Ireland is championing what we would like to see in human development, focusing on those furthest behind. We cannot shout loud enough in that regard because there is a real curtailing of human rights and principled overseas development assistance at a European level. It is being eroded but it is vital. We work with the Department on this and encourage it to push ahead on all avenues. In the lead-up to the Presidency, we will engage with the Department particularly on key priority areas where we believe Ireland has a voice and can bring along other EU member states.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:10:00+01:00"/></from>
+          <p eId="para_124">We in the committee have the opportunity to produce papers. Without discussing it with members, it sounds like that might be an appropriate tool. The witnesses might be able to assist us. Given the Presidency is some time away, we will have a bit of time.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_47">
+          <from>Deputy Brian Brennan<recordedTime time="2025-06-17T16:10:00+01:00"/></from>
+          <p eId="para_125">I am in total admiration of what the witnesses' organisations are doing. In my previous life, I was in Sri Lanka after the tsunami. I went over there as a private citizen. Twenty years on, I have six orphanages out there. It is a terrible term but I have skin in the game. I know exactly what is going on. With that in mind, and I hope I am not being insulting, when money is announced, people want to know how much will go to the coalface. From my point of view, based on my interactions, I want to know how much goes to NGOs, which I trust, and how much goes to the government in those countries. Will the witnesses comment on that?</p>
+          <p eId="para_126"> There are two huge problems. The first is that we have to try to increase aid and the second is the ongoing debt crisis. With my background, I am 100% for increasing aid. Will the witnesses reassure us that most of the funds are going to the coalface? That is essential. The Irish people just want to be assured of that. It is a key factor. My concern is that we hear so much money will now have to be spent on defence and various other things due to the geopolitical situation, which is frightening. We do not know from one hour to another, never mind one day to another, what is going on. I would like a commitment in that regard. I can see the reservations but I am 100% for it. The global governance framework is hugely important but when I hear the term "lack of engagement" with regard to debt forgiveness by multinational companies, some based in Ireland, that is wrong in so many aspects. It has to be tackled. We have to use our position to help the witnesses' organisations. They said 61% is private funding, and I can read between the lines. Some of those companies are in Ireland. As Deputy Shay Brennan brought up earlier, they have to engage. I would love to dissect the percentage to see how much money they make from it.</p>
+          <p eId="para_127">Who are the shareholders? This is a very private story that should be made a lot more public. There are two issues that have to be addressed. On debt forgiveness, when a country spends more on repayments than on its health system, that is shocking.</p>
+          <p eId="para_128"> There is a huge focus on Gaza but other countries are being left out and ignored. How can we bring them into the equation?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:15:00+01:00"/></from>
+          <p eId="para_129">On the question about how funding is spent, from Irish Aid reports - the Department might be able to give more detailed figures - we know approximately 18% of the overseas development assistance budget is channelled through civil society organisations. That percentage declined slightly over the past number of years. Civil society organisations are one of the most effective ways to deliver to communities on the ground, particularly those further behind, which is part of Ireland's policy. We advocate for that percentage for all civil society in its broadest sense because it is the most effective. On Sudan, last year in particular the Government stepped up and put a focus on Sudan. We advocated for that and it is brilliant to see it in the programme for Government but there are other countries on which a spotlight must continue to be shone even when they go out of the news cycle. I will ask Mr. Clarken to comment on the other questions.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:15:00+01:00"/></from>
+          <p eId="para_130">I thank Deputy Brennan for the work he has done. It has had a huge impact on the lives of many children which would not have happened without him, no doubt. Beyond Gaza, organisations like Oxfam work in conflict zones all over the world. We work in 30 different conflict zones today that many people are not even aware of. It is not that we or anyone in our sector are forgetting those other places. It is the biggest story in the world and the reason is we know it is deliberate and entirely preventable. All crises like this are preventable but we know how it could change immediately in this case. There is huge investment by Ireland and agencies like us in working on the ground. The Deputy asked about money going to governments which I think Ms McKenna answered. There are robust mechanisms in place, which I think everyone on the committee knows, for the supervision of the funding agencies like ours gets. We are accountable to the Government, Irish Aid and the Department of foreign affairs. There is robust reporting and oversight. I hope there is plenty of confidence in that. I will hand over to Ms Balfe.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:15:00+01:00"/></from>
+          <p eId="para_131">We want the amount going to civil society to increase but the funding from Irish Aid that goes to civil society is very good quality. I was in Nepal with Irish Aid in February visiting some of the communities and partners we fund. That was the mechanism to make sure the money is going where it should, holding us to account and engaging with the community. The communities we work with are extraordinarily marginalised women. There are lots of different ethnic groups that face huge discrimination. Women, societally, could not even speak in public. We have been working with local community groups around gender-based violence and women's economic empowerment. Irish Aid was there monitoring that and the accountability. There are very high standards of accountability for the money that goes there. As a donor, Irish Aid is focused on reaching the furthest behind first. Nepal is not a country that comes to most people's minds but it is extremely vulnerable to the climate crisis. There is a huge level of gender-based violence and debt - 56% of Nepal's money is spent repaying debt. It is hard to separate those issues. To answer Deputy Brian Brennan's question, this is where the issue of injustice manifests in interest repayment. Counter to the logic of what one might expect, that the interest rate should be around 0%, it is extortionately higher than that of rich countries with debt such as the US and UK. An African country could pay up to 12% interest whereas Germany pays 0.8% and the US 2.3%.</p>
+          <p eId="para_132">Therefore, it is one of the fundamental issues of injustice concerning debt. Companies are making huge profits and that is why we are seeing the growth of creditors. To address this huge injustice, engagement and a global system are absolutely required.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_51">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-06-17T16:20:00+01:00"/></from>
+          <p eId="para_133">I welcome the witnesses. I apologise for not being here earlier. I had a conflicting commitment in the Seanad Chamber. However, it is good to have this opportunity. I thank all our guests for their work. I worked with Mr. Clarken in the past as a member of an Oireachtas committee. He gave of his time and wisdom and it was very much appreciated.</p>
+          <p eId="para_134"> On what we are all doing and discussing, we live in such a worrying world. It is just so difficult. On every continent now, we are seeing war and man’s inhumanity to man. We are seeing it in a physical way and a financial way. Reference has just been made to a rate of 12%. I read a statistic that more than 75% of all low- and middle-income countries spend more on debt servicing than on healthcare. This is frightening. If we want to try to work towards an equal and just world, we need to do all we can to rectify that.</p>
+          <p eId="para_135"> I had the opportunity to be involved with two Irish Aid projects in Tanzania and Uganda maybe 15 years ago. They related to young people with intellectual disabilities. In countries that are left behind, anybody born with a disability is completely left behind. As Ms Balfe will know, in many cases the dad will be gone and the mum will be left. Where there was a lot of AIDS, a girl of 11 or 12, a sister, might have been looking after the family or somebody with an intellectual disability. The funding provided by Irish Aid was small, amounting to €200,000 over a three-year span, but on the ground and through grassroots implementation, it made an incredible difference to the lives of children and families, even to the extent of providing an education scheme for growing fruit and vegetables sustainably and preparing them in a healthy way. The families started to grow the fruit and vegetables and had some income from them. The work on the ground is really good.</p>
+          <p eId="para_136"> On Irish Aid, my colleague Deputy Brennan asked very pertinent questions about debt and important ones about where we go in this regard.</p>
+          <p eId="para_137"> I understand Dóchas is an umbrella body and that it provides a lot of guidance, which is very important, but what role does it play in ensuring accountability and coherence in the developmental efforts of Ireland?</p>
+          <p eId="para_138"> I have a related question. How does Dóchas support and strengthen the collaborative impact, both internationally and nationally? It was said that Dóchas has a lot of dealings with the Department of Foreign Affairs and Trade.</p>
+          <p eId="para_139"> I am also interested in the Dóchas Worldview public engagement research project. While I am aware that it is ongoing, there have been no conclusions yet. Will the impact of immigration over the past few years make a difference to people’s views? Are we at that really delicate point? How do we overcome it? We need to.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:20:00+01:00"/></from>
+          <p eId="para_140">I will go through some of those. Dóchas has been bringing the sector together for more than 50 years and it is very much focused on international development and humanitarian organisations. Other networks are broader in terms of charity bases. With regard to accountability, it was actually Dóchas that set up the governance code. This was years ago before the Charities Regulator was in place. We looked at how we could align our governance to ensure best standards of practice. That was superseded by the regulator but we are still looking at key standards of practice within the sector.</p>
+          <p eId="para_141">A couple of standards on which we are working with member organisations concern safeguarding. We have a leadership safeguarding charter for applying best standards of practice on the ground. There is also a focus on ethical communication. It is a case of asking how to represent and speak about those we exist to support in the communities. These are some of the key standards of practice. They concern where we feel, with our members, that they need the most support and where they want us to come together and have peer learning in various areas.</p>
+          <p eId="para_142"> More broadly, we consider several different areas, including programmatically in terms of disability inclusion, as the Senator mentioned. It is actually a matter of shared learning and peer learning and of seeing where there are opportunities to partner up, as often happens among our members. We have organisations – they would be more mainstream – that partner up with the likes of Christian Blind Mission, CBM, for training on, for example, disability inclusion in their programmes. Therefore, there are opportunities. A number of our members come together and actively collaborate to enhance their programmes. That is really what we try to do. Obviously, we do a lot of policy work in these areas, particularly around ODA, climate and debt. While we engage with the Department on that, we are also really focused on ensuring and building collaboration between organisations and seeing where we can work together for the best impact.</p>
+          <p eId="para_143"> Worldview, which has a timeframe of five years, is a tool for our members and for organisations related to the question of how we can bring the Irish public along with us. The geopolitical situation is changing rapidly and we want to ensure that when we are talking about these issues, including overseas development, what is happening in Gaza and the importance of independence and impartiality, we are able to communicate effectively in a way people understand. Part of what Worldview is about is understanding a little more about where the public are and how we can bring them along regarding some of these key issues.</p>
+          <p eId="para_144"> Through the Worldview research, which entails a longitudinal study, we can compare today with five years ago. We know that three out of four people, or 75%, on average support ODA, and that has remained consistent, but we are seeing increasing polarisation between those who are very in favour and others. There is a slight increase in the proportion of people who are disengaged. What we are seeing is that the middle grouping in the Irish population is getting smaller, whereby people may not be so much staying on the fence as going to one side or the other. It is really important for us to understand that in order that we can ensure we are communicating more effectively and that people understand what the issues we are talking about, including debt and climate, mean for those on the ground in the global south and why it is important that Ireland leads on them.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_53">
+          <from>Senator Garret Ahearn<recordedTime time="2025-06-17T16:25:00+01:00"/></from>
+          <p eId="para_145">I thank the guests for attending today and outlining very starkly the realities in developing countries across the world. A number of my questions have been asked already, so I will not repeat them. </p>
+          <p eId="para_146"> Ms McKenna stated the gap between the funds required and those received has doubled. Has that been since the announcement of the US?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:25:00+01:00"/></from>
+          <p eId="para_147">Yes.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_55">
+          <from>Senator Garret Ahearn<recordedTime time="2025-06-17T16:25:00+01:00"/></from>
+          <p eId="para_148">With regard to Irish funding and seeking to get to 0.7%, Ms McKenna said we are 0.34% at present. How much is Ireland giving in aid and, of that, how much is going directly, which is the criterion on which Dóchas bases its position? Ms McKenna said we need €300 million per annum. In an ideal world, we would have it in the budget coming up in October – I should not say that because it should just be given – but in the world we live in what is a likely timeframe to get to the €300 million?</p>
+          <p eId="para_149"> Ms McKenna stated when talking about the rate of 0.7% that we need to work more closely with groups on the ground. While I do not necessarily want to put her in an awkward position, could she state whether there an issue with the Government not working with those on the ground and with not getting a true reflection of what is happening? She stated 30% needs go through civil society. Can she outline the difference that would make in terms of the funding that would be given?</p>
+          <p eId="para_150"> My last question is on the EU Presidency, which is coming up in just over a year. Can Ms McKenna outline what we should be doing or can do during that Presidency of six months?</p>
+          <p eId="para_151"> I have two questions for Mr. Clarken. In his contribution he said that an expected 3 million citizens a year are going to die because of the reduction in aid. We had the Minister and departmental officials in a couple weeks ago and I asked them what was the impact on deaths and the impact in countries around word. They said it is too early to say. Is there research done on that figure, as given to us today by Mr. Clarken, by Oxfam or is there research done by anyone? Perhaps he will provide that research to the committee.</p>
+          <p eId="para_152"> He spoke very frankly on Gaza. What is happening there at the moment is just depressing to be perfectly honest. He said the EU trade agreement will be a game changer. We had a delegation brought in by the Chairman last week. They named five issues that are critical but the two that are most critical are recognition of Palestine as a state and EU countries following Ireland, and the EU trade agreement. Again, I do not want to put the witnesses in a position that is quite political but in the programme for Government we have the occupied territories Bill and there are other issues in terms of bonds. What would work on the ground? Mr. Clarken said the EU trade agreement is a game-changer. In what way is that a game-changer?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:30:00+01:00"/></from>
+          <p eId="para_153">I might take a couple of the questions first before handing over to Mr. Clarken. On the budget, as I mentioned we are going for €1.3 billion in ODA, excluding refugee costs. Approximately €800 million of that is going through Irish Aid. The Minister of State, Deputy Richmond, was in a couple of weeks ago outlining what this entails. We are seeing that, although the figure of €300 million that we are putting forward is significant, and we would not deny that. If we look back, in areas in budget 2024, for example, Ireland stepped forward and actually increased the budget for ODA by more than €100 million. We really demonstrated at that time there was a significant crisis in the Horn of Africa, but we saw Ireland step forward and say that actually this is really important and that it was vital for us to pay our contribution of what we feel is most effective. That is really the moment we are coming to now again where we are really looking for that leadership. If we look at Ireland's positioning globally, we have a unique standing, whether it is through the G20 coming up, or our candidacy for the Human Rights Council, and the EU Presidency, and we have such a huge amount of credibility on the issues of development and humanitarian aid, and looking at what we need to do. We need to be able to back that up and we need to be able to show that we are also making significant inroads into trying to achieve 0.7% of GDP. A number of other European countries have reached it. It would lend into Ireland's legitimacy to be able to really advocate on this topic, which is such a key area for Ireland.</p>
+          <p eId="para_154"> When we look at the civil society piece, which is more targeted, Irish Aid contributes just over €100 million to international NGOs with the partnership agreement over a four-year period. When that is trickled down, however, all international organisations are very much working through local organisations. It is very much around locally focused local partners and communities that are supporting their own communities. We are seeing when it comes to other multilateral funding or institutional funding, let us say from the UN, that trickle-down effect is not really happening with funding that is going to locally-led organisations or civil society organisations. That is where we really want to see the difference in Ireland, not only just pushing forward so that through all of its funding mechanisms, we would see an increase in funding going to civil society and local organisations, but also to women-led organisations. This is where we feel we can do more on where we spend the money but also what we are advocating on others to do and where to put the money, particularly in the UN institutions. I will ask Mr. Clarken to come in on a couple of the other points.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:30:00+01:00"/></from>
+          <p eId="para_155">I thank the Senator. I reinforce what Ms McKenna has said on the focus of organisations such as ActionAid and Oxfam and others in working with local partners who know the needs better and who have all the expertise that is required, and making sure that Irish funding finds its way into that space in an efficient way in the way that we try to do.</p>
+          <p eId="para_156">To answer the Senator's question on the 3 million preventable deaths, it is my understanding that this figure comes from the World Health Organization. They specifically look at those who would not be treated for preventable diseases, those who would not get vaccines, the pregnant women losing access to care, and the rising deaths from malaria, HIV and TB. As I mentioned, we were gradually getting our arms around those diseases and now with this dramatic cut in funding it is likely to get much worse in the coming years. It is shameful really, when we think about the human suffering and when we consider how much progress had been made, that this is happening at this point. We can certainly provide some research and some backup information for the Senator that might be helpful.</p>
+          <p eId="para_157"> The reason I talk about the trade agreement as a game-changer is that the EU takes in 30% of all of Israel's exports. In any trade arrangement that is an absolute game-changer. The fact is that the EU has been dragging its heels, and not just dragging its heels it has been blatantly resisting this. Some countries in particular really need to change the way it is understood, the way it manifests, to acknowledge the crimes and horrendous things that have been happening in the past and to make sure nobody ever forgets and all those really important things. When we see what is happening today, who is being impacted, who is actually delivering, who is causing the genocide in Gaza and what is happening in Palestine, the EU has a really important role to play. We talk about the US all the time but the EU has a massively important role to play and it needs to do that.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:35:00+01:00"/></from>
+          <p eId="para_158">I have a slot but I will take only three minutes, and then four minutes for others if people wish to come back for an answer. In Ms Balfe's contribution she said that "it is calculated that rich countries have achieved up to 70% of their economic growth by appropriating more than their fair share of the atmospheric commons". Will Ms Balfe explain a little bit more about that?</p>
+          <p eId="para_159"> The second point was the foreign direct investment piece and BlackRock. That is potentially a fairly incendiary thing to say and I would just like Ms Balfe to clarify. I am not arguing the point, I would just like Ms Balfe to clarify what is the factual state on that.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:35:00+01:00"/></from>
+          <p eId="para_160">The 70% figure comes from a really significant study that was completed by Fanning and Hickel. We can share this with the committee so that members have it.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:35:00+01:00"/></from>
+          <p eId="para_161">What is that 70%? Is this 70% of developing countries' wealth?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:35:00+01:00"/></from>
+          <p eId="para_162">It looks at rich countries' global carbon emissions and how much they have overshot, and the fact that they have overshot it by 70%. Africa, for example, is responsible for 4% of global greenhouse emissions. The study basically looks at the economies of richer countries that have been fuelled by fossil fuels or where urbanisation has been fuelled by fossil fuels and so it calculates the figure on that basis. It looks at the fact that the industrialisation and urbanisation has happened at the expense of the global south in terms of global carbon overshooting. I can share that study with the committee. The study looked at the potential of calculating this back from 1890, 1940 and then the 1990s, so the $170 trillion that is owed is actually a conservative figure, rather than going back closer to the industrial age. It is a very reputable study by reputable academics.</p>
+          <p eId="para_163"> With regard to BlackRock and foreign direct investment, ActionAid did a piece of research with Trócaire where we looked at the financial flows that are coming through Ireland's foreign direct investment for new fossil fuels expansion globally. Initially ActionAid had conducted this research just looking at the global south but we also looked at global fossil fuels. Basically, it is largely American or western financial institutions that are using Ireland's foreign direct investment as a hub for transiting their fossil fuel expansion. We looked at the year 2024, when €31 billion came through Ireland in one year for fossil fuel expansions, and 90% of those were new fossil fuel expansions.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:35:00+01:00"/></from>
+          <p eId="para_164">How does that work?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:35:00+01:00"/></from>
+          <p eId="para_165">It works through Ireland's foreign direct investment model where we have many financial institutions. We have foreign direct investment that is providing jobs in Ireland and which has brought great benefit to the Irish economy, but we have foreign direct investment that is using Ireland for low tax reasons or for favourable regulation for transiting that money as part of their global investment.</p>
+          <p eId="para_166">It is their European headquarters. In this case, from its American headquarters, BlackRock is using Ireland's foreign direct investment as a global hub. We can share that research with the committee. It was calculated based on information that is available. The €31 billion that is looking at fossil fuels is miniscule. It is 0.02% of the overall.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_64">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_167">How does it constitute foreign direct investment? I get the impression it is just kind of-----</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_168">It is passing through. It was the IMF that criticised Ireland when it stated a lot of it is phantom investment. Arguably, a lot of this foreign direct investment by those financial institutions for global expansion would count as phantom investments, where the money is touching Ireland. Some of these financial institutions might provide employment. They might have big operations, but a large part of their money is for transiting through Ireland.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_66">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_169">The witnesses have three minutes for questions they did not get to fully. We will then have a second round.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_170">Is there anything Mr. Clarken would like to mention?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_171">That is great. I thought the Chair was going to send us out. We are happy to be here. This has been really informative and insightful. I am conscious this is a new committee. We are all available on an ongoing basis to probe into any of these things, or other issues that emerge, in much more detail. It is a great opportunity for us. We are very grateful.</p>
+          <p eId="para_172"> Something struck me following Ms Balfe's comment about the atmospheric commons. I was in Zambia just before Christmas, where I met with a local minister. I had just seen Victoria Falls. I saw how dry it was and how little water is flowing through the Zambezi. The minister told me that Zambia is a country that had a development trajectory based on a sustainable energy model. It was using hydropower as one of its key drivers of energy and its sustainable future but, because of climate change, the rivers are not flowing. That country is now digging for coal when it intentionally and purposefully did not. It had kept that carbon in the ground, as we say, and now it is being forced to do this. That is just one manifestation of that huge inequality and the huge issue that has been created, which is manifesting elsewhere, despite the best efforts of countries that already have very low carbon emissions to do better.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_173">I have just a couple of points to make. I will comment on the EU Presidency because it came up. We would welcome the opportunity to come in again to explore some of our key priorities a little more. Fundamentally, our biggest priority when it comes to the EU Presidency and the lead-up to it, a key time when Ireland is about to have the Presidency, is around the multi-annual financial framework, MFF, negotiations and ensuring we are protecting both the development and humanitarian instruments that are there, while also ensuring that a principled approach to ODA is retained and that human development remains at the centre of it. That will be core to what we believe Ireland can offer during those negotiations. We will also look at where there are some key priority areas where Ireland can uniquely push such priorities during a period and bring other member states along as well.</p>
+          <p eId="para_174"> A number of the areas we have discussed today are included within the Dóchas pre-budget submission, which represents all of our members. That will be launched next week. I will share a copy of that with each of the members of the committee. We have touched on a number of topics today. I thank the committee for having us in. We are also very open to seeing how we can bring in other members and organisations, which are more specialist in whatever area, to be able to elaborate further with the committee on any of the issues we raised today.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_175">There is a second round. One of the things we agreed about the programme for work is the idea of four themes or pillars. We will try as best we can to rotate through each one of those four, one of which is overseas development aid. That is the intention. We will have approximately two minutes each again. Deputy Ó Laoghaire is first. There will be a question and answer exchange within those two minutes.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_71">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-17T16:40:00+01:00"/></from>
+          <p eId="para_176">I will direct this to Mr. Clarken because he answered a few questions on it. I will take the opportunity to raise the situation in Gaza.</p>
+          <p eId="para_177">On what is happening on the ground at present, I agree that the approach being taken by this new organisation, backed by the US Administration, is about control. It is a weaponising of it. To have a starving population, this situation on top of it and the deaths that have now followed in the mishandling of it all, is terrible. Will the witnesses give an insight into when organisations such as theirs and UNRWA were channelling aid, say, five or six months ago? I know that is not necessarily right but I picked an intermediate point when the humanitarian situation was severe but was in advance of the blockade of aid. How many people were being served by UNRWA and the likes of the organisations here? What is the equivalent now? Do they believe that people, either individuals or groups of people, or particular locations, are being deliberately deprived of aid for political reasons or whatever?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:45:00+01:00"/></from>
+          <p eId="para_178">Truthfully, everybody is being deprived of aid. As I touched on earlier-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_73">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-06-17T16:45:00+01:00"/></from>
+          <p eId="para_179">I appreciate that, but in select ways.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:45:00+01:00"/></from>
+          <p eId="para_180">Oxfam was able to support 1.2 million people, which is nearly half the population of Gaza, during the period and in the intensity of it. UNRWA is a vital life-serving and life-saving organisation. These are organisations that work within international humanitarian law. We have very strict rules and guidelines that we have to adhere to. Otherwise, we are not doing our jobs. This organisation that was set up does not do that. It was never designed to do that. Almost no aid is flowing. There are propaganda videos out there showing this alternative universe but our experience, and that of our staff on the ground who we are in daily contact with, tells us the situation is dire and getting direr every day. We are in famine-like conditions. It would be an absolute abomination if a famine were declared in a place like Gaza, which was not wealthy but could sustain itself for all these decades. It is absolutely not working. It was never going to work and all the agencies said that from the get-go, including the UN, international bodies and so on. We must restore proper humanitarian access. The aid is there. People are there who need it desperately.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_75">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-06-17T16:45:00+01:00"/></from>
+          <p eId="para_181">Will the representatives briefly discuss the issue of the importance of funding going into a country, but also the specific impact funding cuts are going to have on local organisations? Ms McKenna spoke about women's organisations. How will those cuts impact them and perhaps lead to their eventual disappearance or eradication?</p>
+          <p eId="para_182"> Deputy Brennan talked a little about funding going to NGOs as opposed to governments. Dóchas might not have modality of support that relates to budget support in any of its member organisations but how does it feel about budget support as a principle? Some of the EU funding goes towards that. </p>
+          <p eId="para_183"> I also ask for a response on the global humanitarian fund that we are seeing in Israel. Does Ms McKenna see any attempts to mirror that in other humanitarian contexts? Is there concern about this private approach to aid that will manifest itself in other ways going forward in the wider sector? </p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:45:00+01:00"/></from>
+          <p eId="para_184">On the Senator's first question regarding the impact on local organisations, UN Women launched a report in the past couple of days, which looked at more than 400 locally led women's organisations in 44 different contexts. What came out of that is more than 51% have been forced to suspend programmes. When we look at the types of programmes that are being most acutely hit, it is our gender-based violence, GBV, programmes. As you can imagine, those are probably the most acute type of programmes that are needed, especially in crisis contexts, which, unfortunately for many women, now no longer exist. We are looking at that knock-on effect of local organisations that have been hit by funding cuts the most being forced into having to suspend programmes and, essentially, are not only laying off staff but, unfortunately, are not able to provide those services to communities.</p>
+          <p eId="para_185"> On the global humanitarian piece and private funding, there is a reality in terms of what the future financial model for global humanitarian response will look like. It all comes back to the intention behind it.</p>
+          <p eId="para_186">Humanitarian principles are based on independence, impartiality and neutrality. They are also what development work is based on. When we start to look at private financing flows to support development those are the principles that must be upheld to ensure it is not based on one's creed, religion, where one is from, what country and what it is producing, but is based on need.</p>
+          <p eId="para_187"> I will come back to Deputy Ó Laoghaire's comment on Gaza. I have worked in the humanitarian field for many years and the most important thing in terms of being able to work in some of the most contested conflict areas is the acceptance of the local community and if one does not have that acceptance one simply cannot deliver effective aid assistance. As Mr. Clarken said, it can be seen very clearly what is happening in Gaza today. That incident highlights that if one does not have the acceptance of the community, one cannot deliver aid effectively. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_77">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-17T16:50:00+01:00"/></from>
+          <p eId="para_188">To build on that point, how important has Ireland's neutrality and principle-based approach been in terms of acceptability, access and credibility? That is, Ireland being a neutral country and operating a principle-based rather than interest-based foreign policy.</p>
+          <p eId="para_189"> At a time when the need is so high and the crunch is so hard on every area of aid, what is the importance of still having advocacy being funded? I know it is a time when food and health programmes and everything is under pressure.</p>
+          <p eId="para_190"> If we are to switch some of the models in terms of this global civil society - here in Ireland as well - will the witnesses comment on development education? There are organisations such as Comhlámh and returned development workers. Will the witnesses comment on the advocacy piece in Ireland and internationally? Mr. Clarken mentioned the omnibus Bill. Will he comment on the deregulatory simplification of corporate accountability we are seeing and the danger that has for the human rights piece? </p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Jane-Ann McKenna<recordedTime time="2025-06-17T16:50:00+01:00"/></from>
+          <p eId="para_191">On the advocacy piece, what we see at European level in particular is civil society organisations being squeezed in terms of funding, particularly environmental organisations . We are seeing that trend. Ultimately, when we marry that with this transactional approach of the EU, for example, what we are left with is that unfortunately, organisations that are championing the furthest behind do not the capacity to be able to do that and cannot compete with private lobby groups that are fighting for the private sector. There is a case that it is vitally important to ensure civil society organisations are supported in advocacy work. I will ask Ms Balfe to answer the question about principles.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:50:00+01:00"/></from>
+          <p eId="para_192">The neutrality aspect is hugely important in terms of Ireland's reputation, credibility and legitimacy. Along with that, our history of being formerly colonised complements that in the eyes of many in the global south. Another crucial part of that is the fact our aid policy focuses on human rights, gender equality and governance. It connects with the advocacy issue because for many advocacy feminist organisations around the world, it is really difficult to get the funding to challenge the <i>status quo</i> in different countries.<i>
+						</i> Therefore, it is hugely important we continue that support and that focus of our aid work really being based on those strong values of human rights, gender equality and governance.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_80">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-17T16:50:00+01:00"/></from>
+          <p eId="para_193">First I will state, and maybe this is for the finance committee, that I would not like to think that international funds are using Ireland's tax efficient structure to maximise their profits while charging 12% to those who are worse off. That is something that either this committee or the finance committee needs to examine because if that is the case it would simply be outrageous.</p>
+          <p eId="para_194"> I will move to the climate aspect of this issue. I understand how these countries in the global south get their allotment of carbon credits but I suspect they are not fair compared with what more developed countries would have received. I suspect they are being exploited, to a certain extent.</p>
+          <p eId="para_195">Perhaps there is a mechanism to assist them in accessing the carbon credit market in a more transparent way that would go some way to addressing the climate injustice aspect of this. Have the witnesses come across any discussions in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_196">I think we caution a high degree of wariness and scepticism about carbon credits. It is something we would urge the Irish Government not to do and not to look at because it is often associated with carbon offsetting and false solutions. We need to reduce the use of fossil fuels. We need to make the transition to renewables. We need to pay climate finance, including loss and damage, mitigation and adaptation. There are buckets of research we can share with the committee that show how problematic carbon credits are. I am very happy to do that.</p>
+          <p eId="para_197"> In regard to foreign direct investment, it is one of the cases in Ireland that this economic model is such a part of our DNA and we are defending it against the tariffs and the Trumps. We have to have greater analysis of our foreign direct investment because there are parts of it that are absolutely job-providing and Ireland has benefitted from. There is no question about that. However there are parts where profits have been shifted, that have taken that money from global south countries and they are part of this extractive model where fossil fuel expansion is being channelled through Ireland and we would be very happy to bring that research to the committee and share it.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_198">What does Ms Balfe mean by "channelled"? Does she mean funded?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_199">The global investments come through Ireland. It is not that-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_84">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_200">What do they invest in, in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_201">The money is coming into Ireland and going out of Ireland. The investments land with BlackRock headquarters or State Street headquarters and then often goes for investment elsewhere in the world. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_202">How long does the money land for?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_203">It is opaque and it is difficult to get this information. We had Profundo, an established research organisation, examine this area using Bloomberg and established financial databases to look at the money flows coming through Ireland. There was a very detailed methodology. As for how long the money actually stays in Ireland, I do not know but we know how much comes through Ireland and how much goes out through fossil fuel expansion globally. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_204">What does Ms Balfe mean by "fossil fuel expansion"? Is it the expansion of mining?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Karol Balfe<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_205">It is coal, oil and gas expansion. </p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_90">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_206">That is mind blowing and something we would like to have the opportunity to examine to see if dividends are being paid in Ireland or whether Ireland Inc. is benefitting from that because it is certainly concerning.</p>
+          <p eId="para_207"> In the minute I have, am interested in countries that the witnesses' organisations are trying to help - those that are vulnerable and disadvantaged - and to which they are trying to bring some type of health and education. What is the relationship the NGO on the ground and the government there - because we know there are corrupt regimes? I want to try to understand what control some of those corrupt regimes have over the money that comes in. Obviously there have to be protocols, etc., but I would like to get a sense of that relationship.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_208">I thank the Senator and it is great to see her. Of any funding that is provided from Irish Aid through any of our agencies, we can stand over how that money is spent. We publish huge amounts of information on that. We have a lot of confidence the funding is doing what it is purported to do and wants to do. We all work beside and alongside governments in all the places in which we work. They are sometimes very strong, positive relationships. Sometimes we can do seed work and then they can amplify that work through bigger programmes. We have to work hand in glove at times but we are very much separate. There is no financial oversight by those governments on the spending we have. None whatsoever. To reassure the Senator on this point, the oversight comes from here; from the Oireachtas through the various committees and the Department of foreign affairs.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_92">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_209">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T16:55:00+01:00"/></from>
+          <p eId="para_210">There are also progressive governments that are trying to do the right thing and that we, Irish Aid and the Department of foreign affairs partner with very effectively. Someone asked about bilateral funding earlier on, so it is important to acknowledge that.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T17:00:00+01:00"/></from>
+          <p eId="para_211">What would be an example of other progressive governments?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T17:00:00+01:00"/></from>
+          <p eId="para_212">I would talk about the Government in Malawi, for example, which is doing really strong work on gender equality and fighting gender-based violence. We worked not just with the Government there but with civil society and parliamentarians across that country. Oxfam had a specific programme on trying to get more women elected and, when women were elected, making sure they were put into positions of power, like being made chairs of committees and key spaces. There is a real appetite for change and an acknowledgement of the need to change. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T17:00:00+01:00"/></from>
+          <p eId="para_213">Who would be the progressive donors still? The UK was clearly a big loss from the perspective of the EU.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Jim Clarken<recordedTime time="2025-06-17T17:00:00+01:00"/></from>
+          <p eId="para_214">Certainly Ireland has to be seen as a progressive donor and we are very proud of that. We want to continue that tradition and keep Ireland on the front foot. Obviously, the Nordic countries, all of which have gone to 0.7%, or beyond it in many cases, are very principled donors. They are very clear and strong on things like gender justice and equality and human rights-focused development. There is also those that focus not just on immediate humanitarian need but also everything that surrounds it and have a development focus. To answer a question from earlier, progressive donors are those who continue to fund advocacy because advocacy can help to move the dial. Humanitarian work will help to save lives but if we want to change things, we have to focus, in particular, on locally led advocacy and issues like gender equality. </p>
+          <p eId="para_215"> I also want to answer a question that was posed earlier in relation to the omnibus proposal on the corporate sustainability and due diligence directive. This is EU legislation which we are deeply concerned will be watered down as part of this so-called simplification, which is really a matter of rowing back on really important legislation that many have fought for over many years in order to ensure that corporates act in a way that does not have a negative impact on human rights across their supply chains in the developing world and in Europe or on climate. We are deeply concerned about it and will continue to work on it. Ireland has played a positive role in that regard and we would encourage the Minister to do the same. </p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_98">
+          <from> An Cathaoirleach<recordedTime time="2025-06-17T17:00:00+01:00"/></from>
+          <p eId="para_216">I raised it because it came up in committee previously but the parent Department for that is the Department of Enterprise, Tourism and Employment. That is just the way the strictures are here. </p>
+          <p eId="para_217"> I thank all of you for being here. We could have gone on for longer but we will see you again. You have given us quite a bit of food for thought. On behalf of the committee, I thank you and the officials for the work you do and for being such generous contributors today in answering our questions. You have given us a lot of pause for thought. That concludes the public part of our meeting.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee went into private session at 5.03 p.m. and adjourned at 5.55 p.m. until 4.45 p.m. on Tuesday, 24 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

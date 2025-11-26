@@ -1,0 +1,1038 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-07-08/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-07-08/debate"/>
+          <FRBRdate date="2025-07-08" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-07-08/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-07-08/debate/mul@"/>
+          <FRBRdate date="2025-07-08" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-07-08/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-07-08/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-12" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="DeeRyan" href="/ie/oireachtas/member/id/Dee-Ryan.S.2025-01-29" showAs="Dee Ryan"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LynnRuane" href="/ie/oireachtas/member/id/Lynn-Ruane.S.2016-04-25" showAs="Lynn Ruane"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NiamhSmyth" href="/ie/oireachtas/member/id/Niamh-Smyth.D.2016-10-03" showAs="Niamh Smyth"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment" href="/ie/oireachtas/role/minister_state/enterprise__tourism__employment" showAs="Minister of State at the Department of Enterprise, Tourism and Employment"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-08">Dé Máirt, 08 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-08">Tuesday, 08 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LynnRuane">Lynn Ruane</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Introduction to Artificial Intelligence: Discussion (Resumed)<recordedTime time="2025-07-08T11:00:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T11:00:00+01:00"/></from>
+          <p eId="para_14">In the run up to the recess, we agreed to do a state-of-the-nation discussion. We have been lucky enough so far to hear from Taighde Éireann - Research Ireland and the AI advisory council. This morning we are very happy to have Ireland's first Minister of State with responsibility for artificial intelligence, Deputy Niamh Smyth, and officials from her Department, to talk about her role and more broadly about where the Government sees AI and the plans for the years ahead. </p>
+          <p eId="para_15"> We have agreed to operate in modular format. From the autumn, we will be looking at the issues of AI in the State. We will start with three sessions in the autumn, one on AI and children and young people, one on AI and older people and one on AI and disability. We want to ensure that the possibilities of this technology be inclusive and that every sector of society is involved. </p>
+          <p eId="para_16"> After the Minister of State delivers her opening statement, each member of the committee will have seven minutes to ask and have answered questions. If we have time, we will go to a second round, but we may be under pressure because most people are here. After our public meeting with the Minister of State we will then meet the AI unit of the Houses of the Oireachtas to explore how AI will be used in the Houses of the Oireachtas. No apologies have been received. Before the Minister of State makes her opening statement I need to do the terms and conditions piece. </p>
+          <p eId="para_17"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via MS Teams, that prior to making their contribution to the meeting, they confirm that they are on the grounds of the Leinster House complex. </p>
+          <p eId="para_18"> Joining the Minister of State are: Ms Jean Carberry, assistant secretary of the digital division of the Department of Enterprise, Tourism and Employment; Mr. Declan McCormack, principal officer with responsibility for AI and digital regulation; Ms Michelle Kearney, principal officer at the national artificial intelligence unit and Ms Orla Mulready, assistant principal at the digital and AI programmes unit. Thank you all very much for being with us today. I now invite the Minister of State to give her opening remarks. </p>
+        </speech>
+        <speech by="#NiamhSmyth" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment" eId="spk_2">
+          <from>Minister of State at the Department of Enterprise, Tourism and Employment (Deputy Niamh Smyth)<recordedTime time="2025-07-08T11:05:00+01:00"/></from>
+          <p eId="para_19">I thank my colleagues for being here today for the first session of the week. I appreciate them all being here. I compliment the Chair on the state-of-the-nation hearings he has done so far. I have listened to bits and pieces of some of them, but I admire the approach the committee has taken on the three modular pieces regarding AI. It is really critical because it goes to the heart of what it is about: protecting our citizens. The committee is exploring AI's impact on people with disabilities, children and older people to make sure we do this inclusively. I congratulate the committee on that.</p>
+          <p eId="para_20"> I am delighted to have the opportunity to appear before the committee for the first time since my appointment as a Minister of State in the Department of Enterprise, Tourism and Employment. I congratulate the committee and wish it every success in its important work. It is essential that we continue to have open, informed and balanced conversations about AI, including its opportunities, its challenges and its role in our society’s future. The committee's contribution to the national conversation on AI will be of great value to me and to the Department as we navigate this new digital landscape.</p>
+          <p eId="para_21"> My appointment as the first Minister of State with responsibility for artificial intelligence reflects the Government’s recognition that AI requires dedicated focus, not just as an economic opportunity, but as a societal transformation that must be managed thoughtfully. We are living through a time of extraordinary technological change, which brings with it both immense opportunity and profound responsibility. Our vision is clear: to build an Ireland where AI and digital innovation serve the common good, empower our people and strengthen our economy in a way that is ethical, inclusive, and sustainable. Ireland's national AI strategy, AI: Here For Good, refreshed in November 2024, provides our roadmap to deliver on this vision. The strategy takes a human-centred approach to governance, emphasising fairness, transparency and the building of public trust in AI. It sets out a whole-of-government approach to putting the necessary enablers in place to harness AI for our greater good.</p>
+          <p eId="para_22"> Along with the enormous opportunities AI presents, there are challenges and risks we must address. Ireland is working closely with other member states to create an effective governance framework for AI, with the EU Artificial Intelligence Act at its core. My Department has lead responsibility for the implementation of this landmark legislation and I am pleased that work is well under way to fulfil our obligations under the Act. In March 2025, the Government decided that Ireland will adopt a distributed model of implementation of the EU AI Act, with a central authority that will act as Ireland’s AI office.</p>
+          <p eId="para_23"> The decision to use the existing national framework of sectoral authorities for enforcement will make compliance with the EU AI Act easier for businesses, which can continue to work with regulators who understand their specific challenges and opportunities. In March 2025, the Government agreed the designation of an initial list of eight competent authorities for the Act, namely, the Central Bank of Ireland, Commission for Communications Regulation, Commission for Railway Regulation, Competition and Consumer Protection Commission, Data Protection Commission, Health and Safety Authority, Health Products Regulatory Authority and Marine Survey Office at the Department of Transport. The AI Act prohibits AI being used to engage in social scoring or to exploit vulnerabilities of specific groups, including those identified by age, disability and social or economic circumstances. The Act also directly addresses the issues surrounding discrimination affecting marginalised communities, including people with disabilities and economically disadvantaged populations.</p>
+          <p eId="para_24"> In October 2024, Ireland identified the national public authorities responsible for supervising and enforcing compliance with fundamental rights, particularly the right of non-discrimination with regard to certain high-risk uses of AI systems. These authorities will receive additional powers under the AI Act to help them in protecting the fundamental rights in circumstances where the use of AI may pose a high risk to those rights. These powers will apply from 2 August 2026.</p>
+          <p eId="para_25">These fundamental rights authorities are An Coimisiún Toghcháin, Coimisiún na Meán, the Data Protection Commission, Environmental Protection Authority, Financial Services and Pensions Ombudsman, Irish Human Rights and Equality Commission, Ombudsman, Ombudsman for Children’s Office and the Ombudsman for the Defence Forces. </p>
+          <p eId="para_26"> My key focus this year is to drive AI adoption and AI literacy and awareness, particularly in small and medium-sized business sector. SMEs are the backbone of the economy and a vital source of jobs in every town and community across Ireland. In today’s complex global environment, it is more important than ever that we provide them with the tools and support they need to thrive. The grow digital portal, which was launched in 2024, showcases digital success stories where businesses have embraced AI and digital solutions to increase efficiency and reduce costs. We have introduced targeted grant funding, such as the grow digital voucher, and advisory supports for business which we will continue to grow. This means we are well positioned to drive accelerated adoption of AI in the coming years.</p>
+          <p eId="para_27"> In addition, Ireland’s four European digital innovation hubs provide expertise, training and testing opportunities to SMEs, either for free or at a reduced cost. CeADAR has been designated as Ireland’s European digital innovation hub for AI and specialises in enabling the uptake of AI and data analytics.</p>
+          <p eId="para_28"> I will finish by making three commitments: a well-resourced AI office which will be at the centre of Ireland’s AI governance system and will be a repository of expertise in AI; a strong programme of AI literacy and awareness for the SME sector; and a focus on driving AI adoption by Irish business. I look forward to the committee's comments, observations and questions.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T11:10:00+01:00"/></from>
+          <p eId="para_29">I thank the Minister of State. Members have been circulated with the speaking order. They have seven minutes for questions and answers. The first is Senator Dee Ryan. </p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_4">
+          <from>Senator Dee Ryan<recordedTime time="2025-07-08T11:10:00+01:00"/></from>
+          <p eId="para_30">I congratulate the Minister of State on her appointment to this role. She will do critical work in the coming years for the business community and it is so relevant across all walks of life in Ireland. I offer her and her team my best for the work they will do in the coming years. I thank her for her very informative opening statement. I have questions on areas that may allow her to expand a little on some of the points she has made. I commend the Department and the section on the work done so far on digital transformation and assisting SMEs in particular in taking that journey and welcome the Minister of State’s focus on SMEs. </p>
+          <p eId="para_31"> Will she outline how Ireland is progressing on implementing the EU Digital Services Act, particularly in comparison with other member states? Is she satisfied with where we are so far? Is she concerned about anything? Is she considering strategies to accelerate where needed?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_5" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:10:00+01:00"/></from>
+          <p eId="para_32">The Digital Services Act is one of those opportunities for Ireland in terms of the protection of our citizens online. The Senator is specifically asking about the business piece. I will come back to her on that. I might get one of my officials to answer her specifically on that, if that is all right?</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_6">
+          <from>Senator Dee Ryan<recordedTime time="2025-07-08T11:10:00+01:00"/></from>
+          <p eId="para_33">Absolutely. I know it is a key focus for the Minister of State in her term and a big piece of work she will do.</p>
+          <p eId="para_34"> She announced the regulation of AI Bill in February. A key part of that is the creation of the AI sandbox. Given the number of companies in the digital space and the tech space in Ireland, that will be very important for them in ensuring they have a safe space to do their research and development. What progress is being made on the digital sandbox?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_7" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:10:00+01:00"/></from>
+          <p eId="para_35">As we have seen in recent days, the Central Bank has had an interesting couple of weeks with its own sandbox and how it is extrapolating fintech in terms of its development as a piece of technology that helps our online banking and protects our citizens along the way.</p>
+          <p eId="para_36">Our own sandbox is intended to provide certainty for start-up companies. The sandbox will be devised as an entity to give those start-up companies an opportunity to extrapolate their own creativity. It will give them assurances in relation to compliance and regulatory requirements. Given the substantial preparatory work required by our regulators within the scope of the AI Act to fulfil their responsibilities, we are adapting a phased approach to the sandbox implementation. To meet out EU AI Act deadline of August 2026, we will initially establish a regulatory sandbox focused on regulatory guidance. The big question for everybody relates to regulatory guidance. It will be hosted by a new central co-ordinating AI office, and will primarily provide legal guidance for businesses seeking AI Act compliance. The feedback I have received from engaging with business is that it is important to have that certainty and a one-stop shop to which they can go to know they are working within the law. That is certainly the intention of the sandbox itself.</p>
+          <p eId="para_37"> Once the AI Act is fully embraced with a regulatory system, sufficient expertise is in place and it has been developed across all relative regulators, we will expand the programme's scope to incorporate a testing environment that supports AI systems and evaluation. The sandbox will be devised to give certainty regarding regulation in the creation of new technology in order that they know that they are acting in accordance with the law.</p>
+          <p eId="para_38"> CeADAR, established by this Department through EU funding, is an exemplar to which I can point where companies can engage in terms of developing their technology. It allows AI start-up companies to develop their technology and opens doors for them too in terms of where they can get their technology into across Ireland. It also provides certainty for AI companies in order that they are working within the confines of the law. We hope to have the sandbox up and running by August 2026.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_8">
+          <from>Senator Dee Ryan<recordedTime time="2025-07-08T11:15:00+01:00"/></from>
+          <p eId="para_39">The Minister of State will be <i>au fait</i> with the Mario Draghi report and that she has a focus on EU competitiveness for all of us, particularly for our SMEs. She stated that she has a particular focus on SME competitiveness. Does she see an opportunity for us next year when Ireland takes over the EU Presidency to be ready to outline and showcase the steps we are taking with AI?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_9" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:15:00+01:00"/></from>
+          <p eId="para_40">The EU Presidency will provide a wonderful platform to every Department, but particularly to this one, to demonstrate that Ireland takes a rules-based approach and that it is not the wild west when it comes to AI any more than it was for the social media companies.</p>
+          <p eId="para_41"> The Senator raised competitiveness. The Minister, Deputy Burke, and I are working on including AI and the sandbox in the competitiveness action plan in order that it allows for innovation and ensures we continue to hold our global reputation for competitiveness. To answer the Senator's question, that would be one of the purposes of the sandbox. The competitiveness is also at the forefront of our mind, that we remain a country in which it is good and easy to do business, be it in the SME sector or in AI.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_10">
+          <from>Senator Dee Ryan<recordedTime time="2025-07-08T11:15:00+01:00"/></from>
+          <p eId="para_42">Will there be an opportunity during Ireland's EU Presidency to bring together the Minister of State's equivalents and counterparts from other member states?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_11" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:15:00+01:00"/></from>
+          <p eId="para_43">There is a great opportunity. We saw President Macron did exactly that during the AI summit. I think all member states looked at that and thought it would be wonderful to do. I think that as well. It is really important that we work in collaboration with tech companies. They want to work with us in a collaborative way to ensure they are working within the rules-based and risk-based approach to ensuring our citizens are protected at all costs, no matter what technology they may be devising. To answer the Senator's question, the EU Presidency provides a wonderful opportunity for us to platform Ireland as a global leader.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_12">
+          <from>Senator Gareth Scahill<recordedTime time="2025-07-08T11:15:00+01:00"/></from>
+          <p eId="para_44">I thank the Minister of State for attending this morning and wish her the very best of luck in her new role. I compliment her on her ability the other Senator's questions without prompting. It demonstrates her understanding of this particular brief.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_13" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:20:00+01:00"/></from>
+          <p eId="para_45">I will just put a caveat on that. I may not have all the answers, but I will attempt to give all the answers. For anything I cannot answer, with the assistance of my officials, I will come back to members, as I will to the Senator on his first question. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_14">
+          <from>Senator Gareth Scahill<recordedTime time="2025-07-08T11:20:00+01:00"/></from>
+          <p eId="para_46">One of the things I was trying to figure out was how we will align Ireland's national AI strategy, AI: Here for Good, with the EU AI Act. However, in her statement the Minister of State has given us an outline of that and the bodies that will be co-ordinating it. Is she confident that the expertise is there at the moment or is she confident that we can recruit the expertise needed to meet the timelines that are set in the Act and Ireland's strategy? </p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_15" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:20:00+01:00"/></from>
+          <p eId="para_47">It is a challenge. Having engaged quite a bit with my officials at this point, Ireland is probably ahead of the other 26 member states, in having everything in place to enact the legislation and to ensure that we have the enforcement element ready to do the policing of AI across the board. This is not to say that it is not challenging; of course it is. I know that the officials in the Department have their sleeves rolled up and are working might and main to ensure that we are in a good position.</p>
+          <p eId="para_48"> There is a huge amount of expertise available. When the national AI office is established, there will be huge interest in it. The AI Advisory Council, which appeared before the committee last week, has also suggested the AI observatory. This is critical to enable us to predict AI trends and how that will impact jobs into the future. </p>
+          <p eId="para_49"> For our first deadline in August 2025, our main objectives are: to designate the market surveillance authorities, when the Government has decided who they are; to notify the EU Commission on a single point of contact, a one-stop shop that they can go to. I am in the Department of Enterprise, Tourism and Trade, and I am sure all of us have areas of particular interest, whether it be education or justice, this particular unit has a focus on SMEs but is engaging with all Departments across the board to ensure that we are not pigeonholed. I do not think we can be; we have to be much broader than that. The final goal for August 2025 is to report to the Commission the capacity and capability of the financial and human resources of the market surveillance authorities. There are three very clear deadlines for August 2025, with the enforcement element to begin in 2026. I hope that answers the Deputy's question. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_16">
+          <from>Senator Gareth Scahill<recordedTime time="2025-07-08T11:20:00+01:00"/></from>
+          <p eId="para_50">The Minister of State mentioned research. Very recently, the Financial Services Union, FSU, produced some research. Some 70% of the respondents felt that they were uncomfortable with their ability to utilise AI tools in their work on a daily basis. The research also mentions people's fears for their jobs in that particular sector. I believe that would be replicated in all enterprises and all jobs in the country. How confident is the Minister of State that the Department will be in a position to reassure people about future jobs in this particular area? </p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_17" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:20:00+01:00"/></from>
+          <p eId="para_51">Overall for AI, I am very excited by the opportunity for the highly-skilled jobs that it can provide. Ireland has had a strong academia-led approach to developing AI talent. Over the past five years, Research Ireland has committed to spending of nearly €200 million on AI research. The majority of this funding goes to centres for research and training. There is huge investment in this area. We have to acknowledge that there will be a certain displacement. It would be foolish to think there would not be. However, I hope that the establishment of the AI observatory will give us clear data and analysis to see where this going, where the jobs are being impacted and how we can mitigate this. This could happen either through reskilling in the universities or through Skillnet Ireland, which is on the case on this aspect of it. My hope is twofold, that the investment in research and academia, coupled with the observatory, will enable us to predict trends on where we are going and where job losses may come to mitigate the effects and look at retraining and reskilling those who might be most impacted.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_18">
+          <from>Senator Gareth Scahill<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_52">I am optimistic as well about the future of jobs and the earning potential of people in that sector. It is important that the Minister of State and her Department are also giving out that message to the general public so there is optimism on that side.</p>
+          <p eId="para_53"> The Minister of State mentioned that it is vital to have sources of jobs in every town and community and that she will provide them with the tools and supports needed to thrive in this environment. Does she have any idea of the cost associated with implementing this strategy and is she sufficiently resourced to be able to do so?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_19" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_54">If the Senator were to ask my officials, the first answer he would get is that we are not sufficiently resourced. We would always like to have more money, but the budget is coming and I will certainly be making the case for resourcing a new national AI office to the Minsters, Deputies Chambers and Donohoe, and that the Department should be ready for that.</p>
+          <p eId="para_55"> Are we prepared at a granular level? Our local enterprise offices, LEOs, and enterprise boards are doing a huge amount of work on this. We have quite a few digital hubs around the country - I have the exact number for the Senator - and the digital hubs in our local authorities work with Enterprise Ireland, IDA Ireland and Skillnet Ireland and are out doing the business of trying to promote digitisation in companies and small businesses. The biggest challenge for us will be to make sure the SME sector is not left behind when we are talking about enterprise because bigger companies will perhaps have entire units to adapt and bring their staff with them. We have a bigger body of work to do on bringing the smaller SME sector along with us.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_20">
+          <from>Senator Gareth Scahill<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_56">The digital transition fund has about €58 million in it at the moment. That is the fund the LEOs are tapping into for SMEs. Is that sufficient or does the Minister of State see it being increased moving forward?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_21" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_57">It will always be necessary to increase it. The figure I have is that, under Ireland's national recovery and resilience plan, €85 million has been made available to accelerate the digitisation of enterprise with funding being made available under the digital transition fund, which the Senator also alluded to. The European digital innovation hubs are designated as the go-to one-stop shops, whether it be for AI or industry. That is their job. I would always imagine that more funding will be required in the future, to answer the Senator's question as directly as I can.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_58">I look forward to the day when a Minister says less funding is needed for a project.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_23">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_59">I thank the Minister of State and officials for showing up. I congratulate Deputy Smyth on having the role of Minister of State with responsibility for AI. Will she explain to me, others here and people watching the committee proceedings what a regulatory sandbox is?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_24" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_60">I am glad the Senator asked that question. As it has been explained to me, it is an entity and will be a place companies can go, especially start-ups, and work on innovation and get the expertise and advice that can guide them on the regulations. It will also allow them to work on their technology. If they have an app or business idea for AI, it will be somewhere that all the expertise is in place from a national AI office which can help and guide them. The biggest problem for companies and start-ups is the unknown. No more than what is happening geopolitically, the EU AI Act has been described to me by companies as concerning legislation that is coming towards them. The sandbox will be there and is designed to give certainty to start-ups and scale-up businesses. It will be somewhere they can go where all the expertise is in place for them to be able to ask questions about how to develop their technology and be certain that they are doing so within the regulations and the law.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_25">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_61">The Minister of State mentioned the Central Bank has established its own regulatory sandbox. How many regulatory sandboxes is it envisaged the State will have? Is it that the Central Bank will have one and the State will have another or how many are envisaged?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_26" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:25:00+01:00"/></from>
+          <p eId="para_62">If there is a specific answer, I will get it for the Senator. My understanding is that the Central Bank has one because it has to devise and develop a different type of technology.</p>
+          <p eId="para_63">Within enterprise, the sandbox will be geared towards how start-up businesses are developed in the AI world and field. Will there be more? I will try to get clarity for the Senator on that matter.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_27">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_64">I would like to understand the relationship with the competent authorities the Minister of State identified and the supervisory authorities. Will they have their own regulatory sandboxes flowing from them? Will specific Departments have regulatory sandboxes or will there be a Central Bank regulatory sandbox for financial services companies that engage with it and a State regulatory sandbox which will feed into everything else? What is the plan?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_28" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_65">My understanding is that we will have one main sandbox, which will be supported by the competent authorities and fundamental rights authorities and everything will feed into it so there will be one central place people can go to about the development of their technology.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_29">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_66">Where will that one main sandbox come from? Will it be in the Minister of State's Department under the proposed AI office and will there be a CEO of an AI office? What will it look like?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_30" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_67">There will be one and that will come under the Department of enterprise, but as I said, I do not think it is envisaged that it will only focus on enterprise and trade. Arguably, it would be well suited to the Department of the Taoiseach or a Department that is more broadly placed than the Department of enterprise. However, that is where it is at the moment. This Department is developing the sandbox. However, that is not to say it will focus entirely on enterprise and trade. The Department has already engaged with the Department of Education and Youth about how to roll out AI literacy to teachers and students. It has also had engagement with other Departments. That will be the way it is done in the future. One main office within the Department of enterprise will draw from the expertise of the competent authorities.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_31">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_68">Is it fair to say no Government decision has been taken yet about which Department the AI office, which will be the one regulatory sandbox, will come from or whether it will be a stand-alone office with a CEO or someone running it? What will it look like? Has a Government decision been taken yet on that point?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_32" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_69">The Government has made a clear decision that it will be in the Department of enterprise. That is the Department that has been authorised and charged with the establishment of the sandbox and the national AI office. We are also taking on the work of the observatory piece. At the moment it is in the Department of enterprise, to answer the Deputy's question.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_33">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_70">However, the Minister of State is suggesting it might move.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_34" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_71">I do not think so. There are no plans for it to move at the moment.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_35">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_72">When it comes to justice, education and all the other issues outside the Department's remit, it will act as a liaison essentially with all those entities. Is that the idea?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_36" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_73">That is the plan at the moment, but, as I said, my view is that perhaps we could look at moving it to a broader Department such as the Department of the Taoiseach in the future. However, as of today, the plan is for the sandbox, the AI office and the observatory to all be established from the Department of Enterprise, Tourism and Employment.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_37">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_74">A lot of debate is raging at a European level now about the implementing regulations flowing from the AI Act. Do member states and Irish officials engage in deciding what the implementing regulation will look like and how it will be implemented or will that be done at a European level? What is the level of engagement?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_38" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:30:00+01:00"/></from>
+          <p eId="para_75">There is constant engagement. The negotiation of the AI Act took place over a two-year period and ended with the adoption of the AI Act in March 2024. Ireland played an active and constructive role in the development of the AI Act to ensure its alignment with the Government's commitment to human rights and ethical considerations. The Department represents Ireland on the EU artificial intelligence board and has ensured appropriate, qualified participation across the system of each of the ten thematic subgroups established by the EU AI Act.</p>
+          <p eId="para_76"> In essence, there has been constant engagement in recent years and that continues to be the case. My officials are regularly in Brussels to ensure we are on the same page because the last thing we want is a fragmented approach where each member state is doing something different. We want a co-ordinated approach under the EU AI Act and to ensure we have that co-ordinated approach.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_39">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_77">Finally, one of the questions I put to the chair of the AI council when she was before us was this suggestion, which Senator Dee Ryan took up there, that during the EU Presidency, Ireland would host an EU AI summit similar to what President Macron did. It would be slightly different in the sense that it would give Ireland an opportunity to showcase that we have our regulatory house in order, there is clear certainty for those companies the Minister of State is talking about and Ireland is the place in Europe to do business when it comes to AI. Has the Minister of State had discussions with the Taoiseach about this idea of hosting an AI summit yet? She is favourable to doing so but obviously this would have to come from on high, as they say. Is this something on which the Minister of State had a discussion with the Taoiseach? Is it realistic in the EU Presidency that Ireland could have an AI summit attached, with Heads of State in attendance and all of the major enterprises involved in a way that we could showcase Ireland as the best regulatory sandbox in the European Union?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_40" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_78">I would be supportive of that. As the Deputy will be aware, I have said publicly and within the Department that I would like to see that happening. The Taoiseach is keen to see Ministers coming forward with ideas, proposals and suggestions. I am working on that. I have not presented that idea to the Taoiseach yet but I will do so.</p>
+          <p eId="para_79"> The Deputy is absolutely right. It is critically important because it gives us a platform to show we can be a European leader, if not a global leader, in terms of having certainty for companies that we do business with a rules-based approach, that we have that regulatory piece in hand and that we have enforcement in hand. It would showcase Ireland as being a good place to encourage other companies, more businesses and more jobs to develop here in Ireland.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_41">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_80">I thank the Minister of State.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_42">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_81">I thank the Minister of State for being here. I have concerns over the approach the Government is taking and the balance that I wish to see in terms of supports for industries, innovation and enterprise versus the concerns and mitigation I would see as regards the risks of AI across society, by which I mean labour displacement, discrimination, climate and misinformation. I will give a couple of examples of this. In its strategy document, AI - Here for Good, the Department states the EU AI Act will place few, or no, obligations on most businesses which use AI to improve their productivity and effectiveness. The Minister of State, in her statement, outlined three commitments, two of which - the two direct ones - are around supports for business. In the programme for Government, there are 22 commitments under the heading, Ireland as a Leader in the Digital Economy and Artificial Intelligence, only one commitment under climate which does not really address AI issues at all, and two commitments under education and policing, which do not deal with those AI challenges either. My concern is that the Minister of State, in her portfolio, will face difficulty in achieving that balance between supports for business and mitigating risks. How can we address those issues and provide oversight when it seems they are not even acknowledged within Government plans?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_43" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_82">I thank Deputy Gibney for her question. The Deputy and I attended an important discussion in the National Concert Hall a number of months ago around-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_44">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_83">I have five and a half minutes so I would love if the Minister of State could get straight to it.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_45" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_84">The overarching point is that the EU AI Act is there to protect citizens. It takes a risk-based approach and is about protecting human beings. Of course, there is the creativity piece as well.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_46">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_85">The strategy states that the EU AI Act will place few, or no, obligations on most businesses which use AI to improve their productivity and effectiveness. I would argue that good regulation imposes obligations on us all, as we all saw ten years ago with the introduction of GDPR. Does the Minister of State intend to introduce any additional obligations, for example, domestic legislation, around the use of AI?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_47" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_86">It is too early to say, to be frank and honest. As I said, I appreciate what the Deputy is saying.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_48">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_87">Is the Minister of State open to it?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_49" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_88">Of course I am. I like to work in a conciliatory way, in the sense that we can have a frank discussion about how to do this best. My concern is obviously to protect citizens but also not to stifle innovation. The Deputy stated this is open-ended and she does not feel-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_50">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_89">It is imbalanced.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_51" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_90">The primary focus of our approach is to put guard rails in place to protect-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_52">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:35:00+01:00"/></from>
+          <p eId="para_91">Can the Minister of State say that given that it is clear from what I outlined that the primary focus is on innovation and enterprise?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_53" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_92">Under the Department of trade and enterprise, there has to be an emphasis on-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_54">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_93">This is the AI unit we have discussed, which will determine national strategy.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_55" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_94">It is to create a balance between not stifling innovation and allowing creativity to happen while also ensuring it does not in any way damage people's fundamental human rights.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_56">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_95">I will zone in on a specific example. I appreciate the Minister of State is in the Department of Enterprise, Tourism and Employment but we have agreed that the brief is wider because artificial intelligence touches most things. Among low-risk uses with no additional obligations is the use of AI in marketing. We know that AI used to create advertisements or art uses the work of others, sometimes copyrighted, to create that output. Does the Minister of State have any plans to regulate these machines or the businesses that use them with respect to the theft of intellectual property, IP, and artists' work?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_57" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_96">Obviously, intellectual property is critically important here. We have to go with the fact that the EU AI Act takes a risk-based approach, which is what-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_58">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_97">It does not cover this, however. Is this an example of where additional domestic legislation could be introduced here? Is there any legal impediment to us prohibiting the use of AI in art and advertising? Just as we see different advertising standards in many countries, does the Minister of State see any legal impediments to us introducing legislation that would prevent art theft?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_59" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_98">From 2 August this year, the requirements of the AI Act, general-purpose AI, will apply with all models available in the EU. This requires technology providers to put in place a policy to comply with copyright and to provide information on models for their training to regulators on request. In August 2026, further obligations will apply, requiring regenerative AI systems to make sure AI outputs are in a machine-readable format. This will allow us to know what is content and AI-generated. It will be crucially important to our companies and citizens alike. That is to demonstrate the balance.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_60">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_99">If we come up short in that, is there any legal impediment to us introducing additional legislation, for example, if we are not comforted that the AI Act will prohibit theft?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_61" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_100">To answer Deputy Gibney absolutely correctly, if she does not mind, I will ask one of the officials to put together an answer to her question.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_62">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_101">That is no problem.</p>
+          <p eId="para_102"> On a couple of things that have been discussed already, the Minister of State mentioned the competent authorities in her opening statement. Will they get corresponding additional resources to accompany the obligations they will get?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_63" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_103">To be frank, that will have to be worked out.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_64">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_104">In terms of the sandbox, an effective sandbox, if it is to be a regulatory one, should be independent of any Department. As the Minister of State said, the Department of the Taoiseach could be considered but, arguably, the regulatory framework is where it should sit because that is the only way you will be able to test it.</p>
+          <p eId="para_105"> I want to ask a specific question on this. How can the sandbox address risks related to the use of live personal data? In terms of fundamental rights, discrimination, etc., that is where many of the issues occur. How can that be done in a sandbox setting? How can the start-up companies that seek to develop apps and products which use live personal data develop in a sandbox?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_65" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_106">As a said, we are taking a risk-based approach and using the EU AI Act to ensure we do that. Within the sandbox I am talking about-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_66">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_107">Will it have live personal data in it?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_67" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_108">To answer the Deputy's question, the sandbox that we are devising is a regulatory sandbox and will be within our own office. We will have a regulatory piece in place, which should ensure that the sandbox does not pose a risk to citizens.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_68">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_109">I appreciate the concept the Minister of State is describing but what I am saying is that many of the risks are to do with the handling and use of live personal data. If it is a sandbox, I would assume the whole point is that it will not use live personal data. How does the Minister of State mitigate those risks? Are there additional tools available to her to mitigate those risks that can be replicated in a sandbox?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_69" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_110">If there are additional tools, I will get that information to Deputy Gibney. As I said, and I do not mean to repeat myself, my understanding of the sandbox is that it will allow for that innovation and creativity piece, ensuring we are doing it-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_70">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_111">I am familiar with what a sandbox is.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_71" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:40:00+01:00"/></from>
+          <p eId="para_112">-----within the confines of the law and that we are taking the risk-based approach of the EU Act with which we are all working.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_72">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-08T11:45:00+01:00"/></from>
+          <p eId="para_113">Let me be clear: I support the sandbox, which is a great idea, but my concern is around the use of live personal data, which cannot technically happen in a sandbox. What else can we do to mitigate the specific risks?</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_73">
+          <from>Senator Laura Harmon<recordedTime time="2025-07-08T11:45:00+01:00"/></from>
+          <p eId="para_114">I thank the Minister of State for her opening statement and the officials for being here. Like many of us, I am learning more about AI and doing research in my own time. I have major concerns about AI and feel we need to explore the concept of more public ownership as an alternative to the corporately owned models in existence. Our social media need to be brought more into the public sphere to enable us to have more control over them. The algorithms are making society more polarised. Ultimately, the algorithms are like news desks whose editorial decisions are made behind closed doors. That is a major concern I have about AI in general and the amount of scope it has to influence not just business marketing, but also politics and people’s political views.</p>
+          <p eId="para_115"> I have several questions, just to have more clarity. With regard to rights protections in Ireland, nine public authorities have been designated to have oversight. My understanding is that a lead regulator will be designated. Could the Minister of State expand on that, the plans that exist, the exact powers the nine authorities will have and what they will be expected to do? Has the national AI Act implementation committee been meeting regularly? I want more clarity on this.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_74" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:45:00+01:00"/></from>
+          <p eId="para_116">On the Senator’s question on public ownership, it is incredibly important to bring the public with us in this debate on AI to ensure we do not leave a cohort of people behind. I am referring to much more than enterprise and trade.</p>
+          <p eId="para_117"> On the governance structure, and as the Senator knows, we have adapted a distributive model for the implementation of the AI Act, and that is in recognition of the capacity and capability currently within the Irish regulatory system. It is a matter of leveraging this expertise in driving Ireland as a centre of regulatory excellence. All of the competent authorities will feed into the AI national office. We want to draw on the expertise we have already established among regulators in Ireland, and we want to ensure that by having in place competent authorities that feed into the national AI office, businesses with particular nuances and challenges – they are not the same across the board – will benefit. I know well from having been a committee member, and from sitting with Members who are now members of this committee, that the social media platforms to which the Senator alluded in her comments have certainly comprised the Wild West. Coimisiún na Meán is a good platform for Ireland as it sets out to regulate and protect our citizens, as is the Online Safety and Media Regulation Act.</p>
+          <p eId="para_118"> I am not quite sure if I have answered the Senator’s question. If she wants more detail, I can come back to her.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_75">
+          <from>Senator Laura Harmon<recordedTime time="2025-07-08T11:45:00+01:00"/></from>
+          <p eId="para_119">What do we need to be doing more of to ensure wider public awareness of the Act? I am thinking about schools, college settings, communities and, in particular, the Garda, which must deal with scamming that can occur. I received a scam by text on my phone this morning. I am sure there will be more voice-recognition scamming in the future. In this regard, businesses in particular are concerned about protecting themselves. What needs to be done to raise public awareness in general?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_76" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:45:00+01:00"/></from>
+          <p eId="para_120">A huge public awareness campaign is needed to ensure people are aware of the AI technologies, their capabilities and how they can be used for fraud and to fool people.</p>
+          <p eId="para_121">ADAPT and one of the colleges here in Dublin are working on an AI literacy and transformation campaign that will target older people specifically to ensure we do not leave that cohort behind. The AI advisory council puts a specific focus on building public trust around AI. That is certainly a responsibility that I take very seriously. Experts from the council have participated in hundreds of public engagements, as the Senator knows. As she quite rightly said, there has to be a much broader approach in respect of the national AI office. I do not think we can focus solely on enterprise and trade; rather, we must also take justice into consideration and how AI tools can assist gardaí in policing. We must also consider how we can assist teachers and children in education. The digital strategy for schools for the period to 2027 refers to embedding digital skills and including AI at school level. That is happening through the Department of education. I am sorry for repeating myself but the officials present, although focused on enterprise, are engaging with the other relevant Departments.</p>
+          <p eId="para_122"> The ADAPT Research Ireland centre at Dublin City University, in partnership with TU Dublin, has secured significant national funding to lead Ireland’s first dedicated AI literacy campaign for older adults. The initiative will target about 60,000 older people. We should also remember the great work that CeADAR does. Not everybody may know about the CeADAR office or the European digital hubs, so we have a body of work to do in ensuring we create the necessary public awareness and, in doing so, create public trust.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_77">
+          <from>Senator Laura Harmon<recordedTime time="2025-07-08T11:50:00+01:00"/></from>
+          <p eId="para_123">I was reading the report on AI of the Financial Services Union and noted that 80% of those it surveyed said they were concerned about job displacement and that 30% of workers said they would feel very underprepared to incorporate AI tools into the workplace in the future. What are the future risks for employers and workers in terms of upskilling and job displacement?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_78" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:50:00+01:00"/></from>
+          <p eId="para_124">The biggest risk is that we will not get them on the transformational train, given that it will run with or without them and us, and that businesses will be unaware of the funding streams supports that may be available through LEOs, Skillnet and Enterprise Ireland. There are supports and funding in all of those Government agencies but the biggest threat is that people in the SME sector will not engage or feel AI does not have a role to play in their businesses. As we know, AI is not just for businesses that are technology based; it could also be used in the hospitality sector, for example. When I visited the team at CeADAR, it gave the example of its work in collaboration with Fáilte Ireland and local authorities. An anecdotal example is from County Kerry, where there is engagement with the various agencies - the LEO, the local authority and Fáilte Ireland - to work with the hospitality sector. I am not referring to working with the big hotel chains, because we all know they have got teams in place to do the work, but with the smaller independent hotels to determine how they can use AI technology to do the more gruelling parts of their jobs and help them to promote their businesses a little bit better. The focus is on ensuring we bring all of these kinds of business along.</p>
+          <p eId="para_125"> To answer the Senator’s question more directly, the biggest risk is leaving these businesses behind such that they will not see how AI can actually help them.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_79">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:50:00+01:00"/></from>
+          <p eId="para_126">This is a very difficult time, especially with the economic uncertainty, so I wish the Minister of State well in her new role.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_80" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:50:00+01:00"/></from>
+          <p eId="para_127">I thank the Deputy.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_81">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:50:00+01:00"/></from>
+          <p eId="para_128">In her statement, the Minister of State said societal transformation must be managed thoughtfully. How does she believe her Department’s top guide rails should be set regarding societal transformation?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_82" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:50:00+01:00"/></from>
+          <p eId="para_129">The most important part of Ireland’s response to the EU AI Act is putting guard rails in place to protect citizens, ensure companies can develop their technology within the rules of the law, and, most important, give certainty to citizens and businesses that use AI tools regarding what they see in front of them.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_83">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_130">What are the main obstacles to building national trust in AI?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_84" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_131">It is back to that piece of head-in-the-sand where people may feel it does not impact them and does not have a role to play in their industry or in education or retail. If people working in those areas do not see how AI can impact them positively, it may be a question they want to park to one side and feel that it does not affect them. It is a body of work for me, the Department, and the Government to ensure that people know the guardrails are in place and that they have confidence in our national AI office when it is established. I compliment the advisory council on all the work it had done long before I came into the role. Ensuring public trust has been the top of its list of priorities. Our body of work is to convince people and to have that education-awareness piece around that. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_85">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_132">The Minister of State's stated the Government decided on the a distributed model of implementation of the EU AI Act with eight competitive authorities. Is there a collaborative agent between all eight authorities? Is there an overseer? Very often Departments act in silos.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_86" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_133">Yes, the role of the national AI office will be in oversight and governance. The sectoral agencies will feed into that. That expertise with the regulators we have established in Ireland will feed into the national AI office and will give their expertise in developing that.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_87">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_134">What does the Minister of State see as the balance between regulations on one hand and innovation on the other?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_88" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_135">It is a balance we have to strike, and it is a big ask to ensure we do that but we have to send a very clear message to those in the business of AI such as the creators, the small start-ups and the scale-up businesses that Ireland is not going to create regulation that will stifle business in anyway and that we have a risk-based approach that is proportionate in how we create that regulation that does not stifle innovation or creativity.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_89">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_136">There is very light regulation on innovation in the Act.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_90" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_137">I am picking up different views across the board. Some people see it as light regulation; others feel it is stifling. That is my job and I take that responsibility. It is hugely important. As the Deputy will know, the Draghi report, which was published some months ago, acknowledges the fact that across the EU regulation has had a tendency to be very bureaucratic and to hold people back from developing their businesses. There is a concerted determination within this Department, led by the Minister on competitive piece. That is why we are currently drawing up an action plan that answers that. Lighter, faster and simpler is the theme across Europe. That is not to say regulation is non-existent or a light touch in anyway. Citizens and companies know where this is going because of the EU AI Act. They know where this is going in terms of what Ireland is heading towards for August 2025 and in terms of the enforcement piece. We are trying to do it in a very collaborative way in order that businesses have certainty and citizens can be brought on board as well. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_91">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_138">The Minister of State mentioned an advisory support programme for SMEs. How many SMEs have received support so far? How will the advisory support programme be rolled out nationwide? When will that be?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_92" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T11:55:00+01:00"/></from>
+          <p eId="para_139">There are a number things happening. One of CeADAR's roles is to provide advice and support to companies interested in developing AI and in bringing AI tools into their business. </p>
+          <p eId="para_140">The Department itself is working with Government agencies such as Enterprise Ireland, IDA Ireland, local enterprise offices and digital hubs. This cannot be done by one particular agency. It is going to take a whole-of-agency approach as well as a whole-of-government approach to ensure we tap into every segment of society, whether you are in business and using AI, whether you are in education and want to bring AI tools into your classroom, whether you are in retail and do not see AI as having a role to play. All of those agencies, along with ourselves in government have a job to do to enure that everybody is moving at the same pace with this digital transformation that is happening, whether we like it or not.</p>
+          <p eId="para_141"> The Deputy asked a very specific question about the number of supports. I will get him figures and will ask the Department to share them with him. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_93">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-07-08T12:00:00+01:00"/></from>
+          <p eId="para_142">I thank the Minister of State. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_94">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-08T12:00:00+01:00"/></from>
+          <p eId="para_143">I congratulate the Minister of State on her elevation. She has taken to the role and shown a great interest in artificial intelligence and her wider remit. I thank her for her engagement with me on different policy proposals, particularly on a national AI office, so I welcome her comment that it is an ambition to establish a national AI office. It needs to be a stand-alone office, similar to the Data Protection Commission and Coimisiún na Meán. The national AI office should have a stand-alone commissioner and be answerable to the Oireachtas. If it was to be within the Department for Enterprise, Tourism and Employment, for example, it would have a natural focus on SMEs. If it were stand-alone, we could look at it from a justice perspective, from a health perspective, and across society. When the concerns about AI are shared, having a competent strong regulator will be critical not just from our perspective, but also as a hub within Europe with large tech companies. The Data Protection Commission and the Coimisiún na Meán are excellent examples of regulators we have established in this country and have acted as best practice internationally. </p>
+          <p eId="para_144"> Will the Minister of State consider, liaising with colleagues at Cabinet and with the Taoiseach, establishing the national AI office as a stand-alone entity rather than within the Department of enterprise or the Department of An Taoiseach?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_95" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:00:00+01:00"/></from>
+          <p eId="para_145">I apologise if I was not clear about this in my initial remarks. It is to be a stand-alone entity. While it is hosted by my Department, it will be a stand-alone entity in how it is established and how it is created and will have oversight of all sectors, not just enterprise. It will include education and all those other sectors we have discussed during the meeting. It will have key responsibilities and a central role in co-ordinating the authority to assure the EU AI Act is implemented in the most effective and efficient way. I do not want to use up the Deputy's time because I am sure he has more questions. My ambition is to establish the national AI office established, which will be stand-alone, and to establish the observatory to help forecast where AI trends are going. We are also looking at something like what France has with STATION F in terms of having an innovation centre and creative hub that allows businesses to flourish, grow, move on and develop. I hope that answers the question. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_96">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-08T12:00:00+01:00"/></from>
+          <p eId="para_146">It does. I thank the Minister of State for the clarification. Another clarification might be helpful for the committee. There were questions on sandboxes but some members may have misunderstood what is involved.. Sandboxes are essentially a piece of software. Let us take Lotus Notes as an example, which we use here and which is like a CRM system for representations that we get. A sandbox would be allowing Lotus Notes with dummy data so it is not real data. That is one example of a sandbox. The sandbox in this instance would allow software companies, technological companies or industry to create software and test it in a safe manner before releasing it to the public or releasing it publicly or privately. That is just a clarification..</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_97" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:00:00+01:00"/></from>
+          <p eId="para_147">I am sorry if I was not clear about it. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_98">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-08T12:00:00+01:00"/></from>
+          <p eId="para_148">That was not from the Minister of State. </p>
+          <p eId="para_149">The follow-up I have relates to innovation. One concern that has been shared here is the potential for job losses across various sectors. One of those sectors that a lot of people have not been speaking about is the technological sector where a lot of the AI emanates from. My fear is that there will be a brain drain. We have attracted top talent to this country to work in our tech industry. A lot of Irish people have come through second level and third level education and are working in that same industry. Enterprise Ireland has previously mentioned a scale enterprise fund that . There has not been a firm commitment from the Government or the Minister of State's Department. However, another policy position I have written is on securing a quarter of that. It is proposed that it will be €400 million for a scale enterprise fund. It would be great to see €50 million or €100 million centred around AI companies and Irish AI innovation. If we look at the Draghi report, what is crucial from a competitiveness point of view is that we create AI companies and companies within our own country. </p>
+          <p eId="para_150"> Would the Minister of State be supportive of a scale enterprise fund for Enterprise Ireland? Would she be supportive of ring-fencing a quarter of that funding for AI first companies?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_99" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:05:00+01:00"/></from>
+          <p eId="para_151">Of course, I would. It is important that we provide support. Enterprise Ireland is the agency that will support, fund and develop those companies. It is important that we respond to the Draghi report in a meaningful way, that is, that we do not stifle innovation. The Department, along with the ESRI and National Competitiveness and Productivity Council, is undertaking research on the impact of AI on key sectors within the economy and will report those results soon. Working with Skillnet Ireland, which is doing a lot of work on this, and with our academia we will try to make every effort to mitigate against the displacement of jobs.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_100">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-08T12:05:00+01:00"/></from>
+          <p eId="para_152">On digital literacy, AI is here. There is no getting away from it. There is no pause or stop button. It is about trying to catch up and trying to make sure our citizens can utilise it and not just businesses. Digital literacy is a key aspect of that. I would love to see within the national AI office a key function for digital literacy, particularly around enabling. The local enterprise office have a bit more to do. There needs to be an upskilling of the LEOs to upskill SMEs and the public at large in relevant counties. Will the Minister of State comment on upskilling LEOs to allow them to be in a position to provide the training properly? </p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_101" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:05:00+01:00"/></from>
+          <p eId="para_153">The regional enterprise groupings have a role to play in all of this. The Deputy is right. Some LEOs have a digital hub within their area. My county has one of those. County Cavan has a LEO. It works in tandem with the digital hub. It is something we need replicate. We have quite a few digital hubs around the country at this point. They are working in tandem with IDA Ireland, Enterprise Ireland and Skillnet Ireland. They might become a leading light in how AI develops and assist our LEOs. I agree with the Deputy there is work to be done in resourcing our LEOs a little bit better with this particular expertise without duplicating what digital hubs are doing. A little bit more collaboration is required..</p>
+          <p eId="para_154"> CeADAR is the European digital hub that is charged with the work of ensuring AI technologies are developed and encouraging businesses to use AI tools. With the next round of European funding coming through, the four European digital hubs will have an emphasis on it because up to now it has been CeADAR. My understanding is that all four European digital hubs will have a specific role in AI. It is testament to where AI is going.</p>
+          <p eId="para_155">It is taking one directory and that is shooting for stars. It is about having those supports in place for the companies and enterprises.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_156">I am conscious that some Deputies will come in and out. I propose Senator Ruane will be next following by Deputies Murphy, Keogh and O'Rourke..</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_103">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_157">I welcome the Minister of State. On the digital sandbox, currently there is a digital divide. There is a literacy divide and a digital literacy divide on top of that. If those who are behind in digital literacy do not have the literacy levels to engage in the testing of different innovations or technologies within a sandbox, and if there is a divide in the interaction with what happens within that sandbox, how does the sandbox protect against compounding those inequalities?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_104" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_158">The Senator is right that this is a digital divide in the sense there are a cohort of people who are not as proficient with digitalisation and, therefore, they are not proficient with AI. We will have a body of work to do to bring those people along. At a more granular level, our ETBs have a part to play in closing that gap. There is no doubt the sandbox will be for the highly proficient users of digitalisation and AI.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_105">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_159">How does the sandbox protect against the vulnerabilities or the inequities in-built into financial institutions and so on? If people are not proficient enough to engage, how does a sandbox work when only those who are either privileged enough or proficient enough are able to engage?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_106" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_160">I hope the risk-based approach in all our regulation and in devising our sandbox and observatory will take that into consideration so that we do not leave anybody behind. The reality is there are a cohort of people there. As Deputy Ó Cearúil referenced, the sandbox is software. If people are not digitally proficient, they cannot use it in the first place. </p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_107">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_161">The testing of it would potentially have either bias or inadequacies in it. Does it risk having inequity built into it if we are testing particular technologies or innovations within the sandbox but have a cohort of people who cannot participate in that? </p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_108" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_162">I cannot say for certain today that is not a possibility, but I am conscious of it. As I referenced in my opening statement, I am conscious and mindful that we do not leave a cohort of people behind, and that we do not impact or compound inequalities, discrimination or any of the concerns the Senator, I, and everybody around this table have. We will do our best to devise a sandbox that has an ethical approach and to bring people along with us. The AI Act requires data sets to be representative of society. Maybe that is a more eloquent way answering the question.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_109">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_163">It is about how to get those data sets in and how to participate in it.</p>
+          <p eId="para_164"> On the EU digital charter, I read a quote from the Minister of State of the Department on encouraging the different sectors to sign up to the charter. She mentioned community leaders. What is meant by community leaders in the context of the charter? Who does the Minister of State see as community leaders?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_110" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_165">I sit on and chair the expert digital advisory group within the Department. We have had two or three meetings since I started. The Department had work on devising the digital charter well under way. I cannot take any credit for it. It is an attempt to ensure the SMEs within this country that do not have a big AI or digital department will have the bigger companies almost buddy up with them and bring them on this journey of digitalisation of their companies and businesses.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_111">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_166">Does the Minister of State see community services as part of the charter and what the charter needs to consider? </p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_112" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:10:00+01:00"/></from>
+          <p eId="para_167">There is no reason it could not.</p>
+          <p eId="para_168">Our ETBs do incredible work, along with other agencies on the ground. I am sure the Senator has agencies in mind that we could perhaps engage with in future. If she sees an opportunity there, I would be happy to liaise with her on that.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_113">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_169">I am more thinking about historically, when, say, community services and addiction services introduced customer relationship models, CRMs, used for sales. Addiction services had eCASS specifically, but community services really struggled with that administrative burden of even being able to use technology that was a CRM. My fear is that while SMEs and businesses are taken into account, when it comes to community services and addiction services, and AI starts to get used so much more, that the funding or target will not be there to make sure we are including community services. Even now, I watch community services struggling to use an eCASS system, or an integrated eCASS system if it goes across several different services, say, in a particular drugs task force area. How do we include those now? Sometimes, the conversation seems like SMEs are the bottom of the reach when, for me, even the SME seems far away from where I am working. There is maybe something missing in the building blocks where other services will see AI being integrated in many different ways, whether there are parts we agree with or not. How do we include them now?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_114" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_170">I accept what the Senator is saying. I am sorry if it comes across that this is entirely focused on SMEs-----</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_115">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_171">It is not only the Minister of State necessarily. It is the conversation generally.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_116" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_172">It comes under the Department of enterprise, so there has largely been a focus on that, but I absolutely take the Senator's point. This is organically happening before our eyes, in the sense that departmental officials are engaging with and open to, as is the advisory council, feeding into or taking suggestions and ideas from way more than just the enterprise sector. The Senator is right. If she has a specific proposal for the digital charter for something we can do to infiltrate into community leaders, so we do not leave anybody behind, I would be more than happy to work with her on that.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_117">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_173">How will the Department measure and report on the closing of the digital skills gap? When we look at literacy, and that is the only thing I can compare it to, people think that DEIS has closed the literacy gap. It has not. Literacy increased across the whole nation, regardless of what demographic people were from, but the gap in literacy did not actually decrease. Does the Department have a plan to assess the closing of the digital literacy gap? What does that look like?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_118" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_174">I hope that the establishment of the new national skills council, which will link Government, industry and social partners, will help to achieve that. An expert group on future skills needs very recently commissioned a study to understand and forecast digital skills needs in Ireland up to 2030.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_119">
+          <from>Senator Lynn Ruane<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_175">It might need some indicators and measurements on whether that is being achieved.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_120" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_176">I take the Senator's points. I will use the points she raised to feed into that, if that is okay.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_121">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_177">I thank the Minister of State. I look forward to engagement over the next couple of years. If we really embrace AI, how many jobs are at risk in Ireland?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_122" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_178">I do not know. I do not think I could possibly know at this early point, which is not to obfuscate. I would like to be able to answer the Deputy's question more directly but I hope when we establish the AI observatory, that will give us data and a real knowledge base into where the displacement may come from.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_123">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_179">Is it a concern of the Minister of State? Is it something to be weighed up, in deciding whether we embrace AI, that we might lose tens of thousands or hundreds of thousands of jobs? Some estimates are 200,000.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_124" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:15:00+01:00"/></from>
+          <p eId="para_180">I would like to think we will not be looking at the kinds of figures the Deputy referenced in Ireland. I will be a realist and say there will obviously be some displacement. I would be a fool not to say that. To address the Deputy's opening remarks, we cannot afford not to embrace AI and embrace it in a way that has a risk-based approach that protects our citizens. I am equally very conscious there will be jobs that can be done by AI. We have to look to and work with organisations, such as Skillnet Ireland, to see where the jobs that will be most impacted are and how we can reskill and upskill those who will be impacted.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_125">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_181">What about the impact on the terms and conditions and employment experiences of workers? I do not know whether the Minister of State saw the story last week in <i>TheJournal.ie</i> about workers in Covalen, which is an company outsourced by Meta to train AI. Their workers have joined the CWU. The Minister of State should read the story, which is pretty horrendous. One employee said: "Every day, 150 times a day, I wrote prompts asking an AI how to kill or hurt myself. You cannot imagine what that is like. Eventually – and I really think it would be the same for anyone – those thoughts started to feel normal." Another said: "They are there at your desk saying, ‘Come on, we need you to do this faster, it’s meant to take 30 seconds,’ and it’s like seriously? Do you think this is easy? Pretending to be a paedophile all day?” It is really horrendous stuff in order to train AI. What should be done to protect those workers?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_126" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_182">I am not familiar with the article the Deputy raised. I am more than happy for him to share it with me, if he wants. My understanding is the EU AI Act is intended to protect citizens and to have that risk-based approach. The example the Deputy gave is a very cruel way of using workers. It certainly would not be acceptable in Ireland.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_127">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_183">This is happening in Ireland.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_128" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_184">With Meta.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_129">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_185">Yes, with Meta. It is an Irish firm, Covalen, that is an outsourced company from Meta.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_130" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_186">Okay. I am not familiar with the details so I will have to come back to him on it.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_131">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_187">The Minister of State mentioned that the reason the emphasis is on SMEs is because this comes under the Department of enterprise but, as far as I know, it is the Department of Enterprise, Tourism and Employment, which also deals with workers' rights. Is this something that is under the Minister of State's remit?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_132" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_188">That treatment of workers is certainly not acceptable.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_133">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_189">Good. There was previously a push, pre AI becoming as dominant as it is, to stop the outsourcing. There have been repeated issues of content moderator people all being outsourced by these big companies. Again, pre AI, people had to watch horrendous videos because someone had to watch them, but it was all outsourced. It is a way for the big multinationals to avoid responsibility. Does the Minister of State agree that these jobs should be brought in-house and, therefore, there will be a clear chain of responsibility from the big tech corporations to the workers who are doing this very difficult work?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_134" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_190">What I will say to the Deputy is, and I am sorry for repeating myself but he is giving me a level of detail I am not aware of, that AI systems will do much of the content moderation that is done by humans. On his question, I will again go back to the point that the EU AI Act is there to protect citizens. While I know we are not at the enforcement stage, it is my ambition not only that we can be where we intend to be with our AI office, but also that the regulations will apply to providers and subcontractors. I do not know whether that answers the Deputy's question. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_135">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_191">One of the downsides of AI is the training of it, which is abusive to workers. The other aspect of that training is the breaching of the rights of artists of various sorts. There was a story in the paper the other day about Conor Kostick, who is a member of the Irish Writers Union, who said that 52 of his works, including 24 books, have been scraped or copied from the Internet and used by Meta as an AI model without his permission. Basically, these big language learning models, LLMs, are being trained on material that is effectively stolen, where there are breaches of copyright. Does the Minister of State believe those models should be able to train and use works of art and writing without the permission of those who wrote them and outside of the framework of any normal copyright? I could not go and copy this guy's books.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_136" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_192">My answer is that is "No".</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_137">
+          <from>Deputy Paul Murphy<recordedTime time="2025-07-08T12:20:00+01:00"/></from>
+          <p eId="para_193">Okay, great. The other thing I raised my eyebrows at in the opening statement was that the only mention of the environment referred to the global environment for business. Does the Minister of State consider it an important part of her job to weigh up the intense damage that could be done to our environment, in particular as a result of the massive use of electricity and water?</p>
+          <p eId="para_194">Is the Minister concerned and does she believe we will double the amount of energy used by data centres as a result of using AI? That is generally spoken about. Does the Minister think this puts our efforts to meet our climate targets, which are the bare minimum of what we should be doing, in even further jeopardy? Does she think this full embracing of AI is compatible with having a planet for us all to live in and for our kids to live in?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_138" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:25:00+01:00"/></from>
+          <p eId="para_195">To answer the Deputy's question, I hope we can do both. I hope we can embrace AI in an ethical way that is regulated, that people can use and that does not harm citizens, and that we can also meet our climate targets. I have listened to the Deputy's contributions over the years on data centres and I appreciate where he is coming from. I have equal concerns about our use of energy, but the energy question is one that has to be answered in an energy Department. That is not to obfuscate the Deputy's question but it has to be answered by that Department. </p>
+          <p eId="para_196"> One example of where we can see a positive use of data centres is the district heating system in Dublin. Data centres will have to come round to ensuring they are part of the solution rather than part of the problem with energy. I take the Deputy's comments and arguments on this particular issue very seriously. As I said, I have listened to his comments for quite some time. I was Finland recently visiting some of the companies there which are now looking at Ireland and how we are so far ahead with the development of data centres. They are trying to replicate in Finland what Ireland has done. There is no getting away from the fact that Ireland is now front and centre in being attractive to many companies that have come here.</p>
+          <p eId="para_197"> We have to try to achieve both. I do not think in today's world we can say we are switching off the internet to AI or we are switching off the possibility of data centres or the growth of them. That would be equally damaging to Ireland.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_139">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:25:00+01:00"/></from>
+          <p eId="para_198">I thank the Minister of State. Deputy Keogh is next.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_140">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-08T12:25:00+01:00"/></from>
+          <p eId="para_199">I thank the Minister of State and her officials. I was not physically in the room earlier but I was listening online, thanks to modern technology.</p>
+          <p eId="para_200"> This is a blunt question. I am not questioning Deputy Smyth's ability as Minister of State for AI but does she think the role has been allocated to the right Department? This is a broad question. I come from a psychology background. I know we need to support our SME sector, but the allocation of this remit to the Department of enterprise shows that there is an obvious focus on SMEs and enterprise. Do we need an official in every single Department that will be affected by AI, including children, health, disability and education? The Minister of State said there has been some ongoing engagement with the Department of education and various Departments but I wish to understand that a bit more.</p>
+          <p eId="para_201"> Similar to what Senator Ruane asked earlier, are we leaving different sectors behind? We have good plans for regulations and for supporting SMEs but we also have ideas around education and bridging the gap. What are the Minister of State's thoughts on that?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_141" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:25:00+01:00"/></from>
+          <p eId="para_202">I thank Deputy Keogh for her question. </p>
+          <p eId="para_203"> To answer her question bluntly on whether this portfolio is in the right Department, I will obviously say "Yes". I am hugely enthusiastic about the portfolio itself and it has a huge role to play in enterprise, trade and employment. That is not ignoring the fact that it has a role to play in every walk of life and every Government Department. We saw in recent weeks that the Minister, Deputy Chambers, launched the guidelines for AI in the public sector. While everybody knows that AI has come under my remit, I do not think for one second that every Government Department is not completely aware of the impact AI will have on that Department and the citizens it is working to serve.</p>
+          <p eId="para_204"> The Deputy will find that over the next 12 months, the AI complement of expertise around various Government Departments will grow. I have no sight of that and it is not an announcement but it will be something that will have to happen to ensure every Government Department is cognisant of public policy and how AI impacts on that. </p>
+          <p eId="para_205"> Can the Deputy remind me of the other part of her question?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_142">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-08T12:25:00+01:00"/></from>
+          <p eId="para_206">Could the Minister provide some more concrete examples? We hope Departments will do this. There is a body of work to do. I am looking for concrete examples or timelines of how the Minister has been engaging with other Departments.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_143" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_207">Going back to the national AI office, it will have oversight across all departments and sectors. While it has been established out of this Department, it will be a stand-alone, independent, national AI office that will have oversight across all Departments. It will come at it from a different angle than the Deputy's suggestion but it may happen too that there will be expertise in AI in all Government Departments. I believe this will have to happen. Does that answer the Deputy's question?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_144">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_208">Yes. What is the timeframe for that national office?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_145" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_209">We are working towards 2 August 2026. There is a lot of August 20-something in the coming years and I want to be accurate about that. It is August 2026. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_146">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_210">Perfect, thank you. With regard to the widening digital divide, especially when we look at the economic gap, I am thinking about houses in Ireland at present. Lots of people availed of a retrofitting grant. Is there any consideration for something like this for households? We are talk about schools and different sectors becoming more digital but when you look at people in their homes, some have been able to buy robot hoovers for €600 and have technology to turn on their lights and heat, while others are not able to heat their homes at all. Are there any plans for grants to help households to invest in digital technology? If they do not have digital technology and AI tools, they cannot become literate.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_147" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_211">I thank the Deputy for her suggestion. It is a very good idea and if the Deputy would like to share those proposals with me, I am more than happy to do that. This would probably come under the Minister, Deputy O'Brien's, remit of energy and climate regarding a grant which could be there, as the Deputy said, to mitigate against that energy or digital divide. There is merit in her suggestion and as I said, if she is happy to share her proposal with me, I am happy to share it with colleagues.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_148">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_212">That would be great. I am conscious we can all get the free ChatGPT on our phones but first you have to have a phone to get the free version and then the paid versions are much better. Naturally, this digital divide will come swift and fast.</p>
+          <p eId="para_213"> The Minister of State talked about literacy in schools and it is great this is in the strategy for 2027 and is on the way. Earlier, we spoke about fraud and scams and the need for education. Where are we with plans for public campaigns relating to protecting our older people in particular? Is there any education plan being launched for the public any time soon?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_149" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_214">Yes. Regarding the Deputy's question on older people, ADAPT, a research-based organisation, is working with our universities to ensure we have a public campaign which is targeted at older people. The target is for 60,000 older people to have the information and to be shrouded with the knowledge base they need for that digital transformation we are undergoing.</p>
+          <p eId="para_215"> For schools, the advisory council, which I know the committee had in here last week and it may have spoken a little on this, has done some work on the education piece to make suggestions and recommendations to the Department of education.</p>
+          <p eId="para_216"> As we know, the digital strategy is in place up to 2027 and hopefully that gives a pathway for schools and teachers. I accept, however, it is not easy with all the asks there are of our teachers, principals and schools. Perhaps, some of the big companies could assist in helping with the digital literacy piece. When we sat on the last committee, there was always an ask for investment for the larger committees to ensure digital literacy around education and that funds would be made available for that. Again, it is something we are certainly looking at.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_150">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_217">Thank you. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_151">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_218">I thank the Minister of State for being here. </p>
+          <p eId="para_219"> Regarding the national AI office, the timeline is August 2026 and the Minister of State said 2 August which is a Sunday. Let us just work on August 2026 as the target date. Is there a broad outline of the remit and has it been agreed or refined? </p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_152" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:30:00+01:00"/></from>
+          <p eId="para_220">It is currently being worked on.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_153">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_221">In terms of its staffing cohort, will it be new recruits or is there any sense of where that is at?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_154" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_222">It is a new national AI office, so there will be a recruitment piece done. All of that is still being worked out.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_155">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_223">And the remit. As things stand, it is going to sit within the Minister of State's Department?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_156" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_224">It is a stand-alone entity. It has been established out of this Department. It will not be just answerable to this Department. There would be oversight across Government agencies.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_157">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_225">It will be independent of the Department.</p>
+          <p eId="para_226"> Regarding the relationship between the AI advisory council and the Department or the national AI office, the advisory council appeared before us last week and we got a sense from the general discussion that there was scope for refinement of its role and additional resourcing. Is the Minister of State looking at that?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_158" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_227">The Deputy is right that the council is coming to the end its term of at the end of this year. It has done incredible work up to this point, not just in assisting the Government and our Departments in how we can be AI ready, but also in going out and helping with the public trust piece, doing the engagements and talking to people. It is very broad. I am not sure if the committee had the whole council in. I have met some of its members and will in future, too. I certainly believe it should be something we could do into the future if they are willing to continue that work. In terms of resourcing and the terms and conditions, that will all have to be established if and when we do this and if the council is happy to continue working with us.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_159">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_228">A separate but related point is that there is probably scope to look at its role and how it will relate to the national AI office. My own sense of it-----</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_160" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_229">Even since it was established, things have changed so much. The council would say that itself. We have great expertise there that we can lean on. It is very happy to help all of our Departments in any way, and we need to utilise that.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_161">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_230">I thank the Minister of State. There is a commitment in the national strategy under 3A. It reads:</p>
+          <p class="indent_1" eId="para_231">Commission research which analyses the potential impacts of AI (including generative AI) and other advanced technologies on key sectors of the Irish economy. The research will be forward looking and will identify sectoral use cases and make recommendations, including policy interventions to drive greater uptake ...</p>
+          <p eId="para_232"> Earlier in the strategy, it mentions a landmark study on the potential impact of AI, which feels a little bit different to what I have just read out there. Where is that study? Are the Department and the National Competitiveness and Productivity Council responsible for getting that under way?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_162" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_233">The ESRI, the Department of enterprise and the National Competitiveness and Productivity Council hope to have that later this year.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_163">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_234">Will it be the ESRI? Will it run across Departments ? What will it look like and how long might it run for? I presume the Minister of State is saying it will start at the end of the year as opposed to reporting at the end of the year.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_164" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_235">May I come back to the Deputy, if that is okay? I will get a fuller answer than I can give today. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_165">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_236">Yes. It would be a really interesting piece of work. If it coincided with our committee's work, it would be useful to see and could be complementary.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_166" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_237">Anything we can do to assist.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_167">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_238">A number of the other objectives in the strategy fall to different Departments. Principally, I see a lot in the Department of public expenditure and reform on artificial intelligence in the public service. The strategy is there and was born out of the Minister of State's Department. We do not have the national office up and running yet. The Department of public expenditure and reform has a responsibility, the ESRI has a responsibility, and there is a responsibility on all public service bodies, but who is accountable for overseeing the strategy's implementation? Is it within the office at the minute or will it be the Department?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_168" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_239">It is my understanding that it would be in the Department of public expenditure and with the Minister, Deputy Jack Chambers, who launched the-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_169">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_240">But in terms of the national strategy for AI-----</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_170" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:35:00+01:00"/></from>
+          <p eId="para_241">We are.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_171">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_242">Does the Department intend to publish performance indicators or updates on how progress has been made?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_172" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_243">It would be important for the strategy that we have performance indicators so we know it is being implemented and, a bit like the observatory piece we spoke of earlier, so we can see where trends are going to enable the public sector. The main goal with artificial intelligence is how we can create efficiencies within our public sector. Any performance indicators we can get on that I am sure would be part of the report.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_173">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_244">I drew a comparison the last time I talked about the Artificial Intelligence Advisory Council and the Climate Change Advisory Council. In the previous Dáil term we looked a lot at how we penetrate across all of government with a new way of operating, of assessing risks and of developing policy, for example in response to the climate and biodiversity crisis. Lots of new pillars were established there. My sense is there is a lot we could learn from that approach with AI. Obviously, a whole of government response is needed and a whole new architecture is needed to be established. I just make this comment as an observation.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_174">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_245">Thank you, Minister of State, and your officials for your work. Be assured that this committee wants to work very closely with you on how this transformative technology, and indeed the convergence with other technologies, will impact in all aspects of lives. I agree with Deputy Keogh's point. Regardless of whether it is sandwiched into one Government Department, this is really across all Government Departments.</p>
+          <p eId="para_246"> I applaud you, Minister of State, on the ambition you have outlined today but, just to be clear about what we are looking at achieving, and it is critical, we will see by 2026, next year, the establishment of an independent office on artificial intelligence, which we certainly welcome in the same way as the independent Artificial Intelligence Advisory Council. We will be holding a major summit on artificial intelligence next year, whether as part of the EU Presidency or as a stand-alone event. I welcome the commitment to the establishment of an AI observatory. It will be critical for our universities and other research institutes to feed into that, to look at not just the economic impacts but also the social impacts in all of those areas. The establishment of sandboxes on AI to encourage innovation will be critical.</p>
+          <p eId="para_247"> These objectives are all very ambitious. We as a committee support you in that. I have no doubt in your own ability but are you confident in the ability of your civil servants and across other Government Departments to be able to deliver all of that in 2026?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_175" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_248">We are certainly going to do everything we possibly can to achieve this. If you do not mind, Chair, I will take a moment to thank the officials who are here with me today and some who are not able to be here today. There is such a wealth of knowledge and talent within the Department itself.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_176">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_249">I appreciate that, Minister of State, but you get my point. We want to see all of these things happening.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_177" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_250">Absolutely. That is my goal and my intention.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:40:00+01:00"/></from>
+          <p eId="para_251">Which is very welcome. Regarding the observatory, which will be looking at doing the research which is critical to inform the work we are doing, and a lot of work is being done within our universities, we need to engage very closely with our higher education institutions who are doing a lot of work in this space. It is critical that they also have the digital infrastructure in place to be able to do that. This is more than just data centres. I encourage the Minister of State to engage with the Minister, Deputy Lawless, to ensure we have that in place.</p>
+          <p eId="para_252"> I will touch on some of the education issues. Part of it is about the inclusive question. The Minister of State is familiar with Estonia, which is topping the PISA charts in terms of learning. The Estonian Government has partnered with OpenAI such that every 10th and 11th grader, which is every 16-year-old and 17-year-old, will have access to be able to use a large language model and AI will be integrated into the education process so that there will be upskilling of those within the education system.</p>
+          <p eId="para_253">Will you outline your perspective on what needs to happen within our education system to ensure that our students are prepared for these changes in an inclusive way?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_179" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_254">Thank you for the opportunity. As you said, I have had the opportunity to see what is happening in Estonia, and everything is digitalised and they are on a different level as to where they are with that. We have a body of work to do and I think we will be able to do it best if we work to take a collaborative approach. I do not think this Department can do it on its own. You talk specifically about education. As I said, this Department has been engaging with the Department of education, as has the advisory council. There is merit in having conversations with OpenAI and other organisations like it that can assist in making this transition happen. The Department, with the support of Oide Technology in Education, is finalising guidance on the use of AI in teaching and learning. This is for teachers to mediate the use of AI in teaching and learning and will provide information on the opportunities and risks associated with AI and highlight what should be taken into consideration in using AI in a safe, responsible and ethical manner. Is that not the crux of what we are trying to achieve in ensuring that this is done in a safe and ethical manner?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_180">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_255">Absolutely, but you would agree with the principle that students, in a safe and ethical framework and, obviously, with support from teachers, should have access to large language models and be able to use AI in their learning.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_181" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_256">It would be naive to think they would not, whether it is inside school or outside school. The more we can have those conversations the more we can work in a collaborative way and, I think, have the best outcomes.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_182">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_257">Would you envisage the planned AI summit as part of the EU Presidency or as a stand-alone event, following on from London, Seoul and Paris?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_183" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_258">As I have said before, I think something like that could be very useful in the development of our national AI office, in our observatory and all that, having those conversations and having a collaborative approach, as a summit and as a conference. It is something we should certainly consider.</p>
+          <p eId="para_259"> As regards the EU Presidency, the Department has plans under way around digitalisation and a conference on that during the Presidency. I am sure there is something we can do to ensure that AI is part of that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_184">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_260">We might ask the Department, when those plans have been developed a bit further, to come back before the committee and to work with us.</p>
+          <p eId="para_261"> More generally, as a committee, we have managed to talk about it ourselves, but on a personal level, Minister, and the experience you have had with regard to artificial intelligence, what is it that excites you about the possibilities of AI and what are your biggest fears?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_185" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_262">My excitement is about the innovation of the technology itself. It has been such an eye-opener since I have come into this role what companies like Microsoft and others are doing. I have tried to engage with as many of them as possible. We have eight of the nine companies developing AI here in Ireland, which is fantastic to see, and I think we are the envy of the 26 other member states in that regard. I think there are huge positives in healthcare particularly as regards the development of AI technology.</p>
+          <p eId="para_263"> My concerns are similar to those Deputies Gibney and Murphy raised about the creative sector and how it is impacted most. I come from that background. I was a student in NCAD before I was ever in politics and I did curatorial studies in IADT. I am not sure what this means for the creative industries. As one of my officials said to me this morning, there is an exciting piece in that regard as to how the technology can develop within the creative industries, but I am also mindful of the fact that we do not want artists' work stolen, used, scraped or any of those things either. We therefore have a balancing act to achieve here such that we allow the right environment and ecosystem for the development of innovation and ensure we protect our citizens and the creative industries alongside that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_186">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_264">Thank you, Minister. We have agreed that we will hold a module on AI and the creative sector and cultural industries at some stage.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_187" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_265">I will listen in very closely and attentively.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_188">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:45:00+01:00"/></from>
+          <p eId="para_266">I thank you and the officials. You have outlined a very ambitious programme, and I think our committee will look forward to collaborating.</p>
+          <p eId="para_267">By this time next year, you will be ready for the full implementation of the AI Act, we will either have had or will be preparing for an AI summit, the AI observatory will be on the way to being established, the AI office-----</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_189" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_268">The Chair is really nailing me down here.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_190">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_269">We are. I know that the Minister of State-----</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_191" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_270">That is my ambition. If the committee wants to work with me on any of those ideas, I would be happy to do that.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_192">
+          <from>Deputy James Geoghegan<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_271">Is the AI office being established by existing primary or secondary legislation or are new regulations being issued? Regarding the remit, if it is done by regulation or otherwise, will the Minister of State commit to engaging with the committee on what the remit will look like before the entity itself is established?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_193" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_272">It is primary legislation. There will be heads of a Bill, so there will be an opportunity then to discuss it.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_194">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_273">Great, thank you.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_195" as="#Minister_of_State_at_the_Department_of_Enterprise,_Tourism_and_Employment">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_274">I am conscious that I did not fully answer Senator Ryan's question. I will get back to her with an answer.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_196">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T12:50:00+01:00"/></from>
+          <p eId="para_275">I thank the Minister of State and her officials. We look forward to engaging with you again in the course of our work. We will now go into private session for the rest of the meeting to talk to the Oireachtas AI unit, so I propose we take a quick five-minute break.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> Sitting suspended at 12.51 p.m. and resumed in private session at 1.05 p.m.</i>
+        </summary>
+        <summary eId="sum_6"> The joint committee adjourned at 1.29 p.m. <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

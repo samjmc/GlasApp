@@ -1,0 +1,414 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_transport/2025-09-24/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_transport/2025-09-24/debate"/>
+          <FRBRdate date="2025-09-24" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_transport"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_transport/2025-09-24/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_transport/2025-09-24/debate/mul@"/>
+          <FRBRdate date="2025-09-24" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_transport/2025-09-24/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_transport/2025-09-24/debate/mul@.akn"/>
+          <FRBRdate date="2025-09-30" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="MichaelMurphy" href="/ie/oireachtas/member/id/Michael-Murphy.D.2024-11-29" showAs="Michael Murphy"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM IOMPAR</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Transport</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-24">Dé Céadaoin, 24 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-24">Wednesday, 24 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichaelCollins2016">Michael Collins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoanneCollins">Joanne Collins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PaDaly">Pa Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.+</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#RodericOGorman">Roderic O'Gorman</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LouisOHara">Louis O'Hara.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">+ In éagmais le haghaidh cuid den choiste / In the absence for part of the meeting of Senator Joanne Collins.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MichaelMurphy">Teachta / Deputy Michael Murphy sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i>The joint committee met in private session until 10.18 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Engagement with Chairperson Designate of the Medical Bureau of Road Safety<recordedTime time="2025-09-24T09:30:00+01:00"/></heading>
+        <speech by="#MichaelMurphy" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:10:00+01:00"/></from>
+          <p eId="para_9">The purpose of today's meeting is an engagement with the chairperson designate of the Medical Bureau of Road Safety, Mr. Sean Quigley. He is very welcome. The joint committee will receive an overview of his role and plans for the organisation. </p>
+          <p eId="para_10"> I will read a note on privilege. Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of that person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction. Members are reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against a person outside the Houses, or an official either by name or in such a way as to make him or her identifiable. I remind members of the constitutional requirement that members must be physically present within the confines of Leinster House in order to participate in public meetings.</p>
+          <p eId="para_11">I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via MS Teams that prior to making their contribution to the meeting, they confirm they are on the grounds of Leinster House.</p>
+          <p eId="para_12"> I thank Mr. Quigley for taking the time to appear before the committee this morning. The bureau has such an important role in ensuring road safety in Ireland by detecting and analysing drink- and drug-related driving, supplying and approving testing equipment and contributing to our road safety strategy. I invite Mr. Quigley to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:20:00+01:00"/></from>
+          <p eId="para_13">I thank the Cathaoirleach and committee members for the invitation to appear before them. I will begin by giving a short opening statement outlining some background information about the role of the bureau and my experience.</p>
+          <p eId="para_14"> The Medical Bureau of Road Safety is a corporate body established in 1968 under the Road Traffic Act of that year. The functions of the bureau include receipt and analysis for intoxicants of specimens of blood and urine, issuing of certificates of analysis, provision of equipment to the Garda, approval, supply and testing of equipment to the Garda for alcohol and drug testing, research on drink and drug driving and development of forensic toxicology testing. The board of the bureau comprises five members who are appointed by the Minister for Transport. The current board members are the director, Professor Denis Cusack, Professor Patricia Fitzpatrick, Ms Joan O’Brien, Dr. Denis McCauley and me, as board chair. The director is responsible for managing the day-to-day business of the bureau. The bureau has had an agreement with UCD since 1968 for the use by the bureau of its staff, premises and equipment for the majority of its functions. All testing is carried out in the bureau’s UCD facility on the Belfield campus with shared services.</p>
+          <p eId="para_15"> The bureau is a service organisation and in order to provide an efficient service it must know the requirements of its clients. The bureau communicates regularly with the Department of Transport and the Garda National Roads Policing Bureau about the service being provided and the legislative and operational changes that are required to continue to provide a reliable and efficient service in support of the road traffic legislation and the Government’s road safety strategy. In terms of funding, the bureau receives an annual grant from the Department of Transport.</p>
+          <p eId="para_16"> It is the work of An Garda Síochána that dictates the volume and nature of the work that is carried out by the bureau; in other words, the number of specimens forwarded and whether it is alcohol analysis, drug analysis, or both, that is required. The analytical work and associated activities require highly trained and competent staff. The reputation of the bureau has been built up over the last 57 years of good scientific and administrative practice and each staff member works hard to maintain the high standard required of a national forensic laboratory. The bureau has a focused input to the current road safety strategy, especially with respect to in actions 23 and 119 on alcohol interlock devices and this was successfully actioned in 2024 and 2025 by the testing and approval of five such devices. These devices have the potential to be one of the most significant developments in road safety in decades when rolled out on a statutory basis, recognising that in the region of 30% of road traffic crashes have alcohol presence as a contributory factor. The number of specimens received in 2024 for alcohol analysis continued at a high level of just under 6,000, at 5,900. Specimens received for drugs analysis reached 4,348, which is up from 3,873 the previous year, representing an increase of 12%. There are 81 drug types targeted for testing. Quality assurance is critical for the work of the bureau. There is an annual accreditation from the Irish National Accreditation Board, which I am glad to say the bureau achieved once again in 2025.</p>
+          <p eId="para_17"> In 2024 174 lives were tragically lost in road collisions in Ireland. Alcohol remains the most frequently detected intoxicant in drivers. The levels detected have changed very little over the past decade. Alcohol-intoxicated driving thus remains a very real and significant danger on Irish roads, with many drivers driving when several times over the legal limit. For intoxicants other than alcohol, the three most commonly detected drugs in 2024 were cannabis, cocaine and benzodiazepines. The levels detected are multiples of the set legal limits and continue to reflect the high levels found in drug-intoxicated drivers which, like alcohol intoxication, are a major contributory factor to road traffic collisions. I will not go into the specifics here but there has been a slight decrease in the detection of cannabis, whereas cocaine has increased. I do not think that comes as any surprise.</p>
+          <p eId="para_18"> My professional background is as a chartered accountant. I have held a number of senior leadership roles, including in the Courts Service and Trinity College. I was the director of finance in the Courts Service for 20 years between 1999 and 2019. I also have a professional diploma in corporate governance. I have extensive experience as a non-executive director of a number of State boards and committees. I have also been a board member of a number of not-for-profit organisations. As members know, I was appointed chair of the bureau with effect from October 2024 by the Minister for Transport. I had been a member of the board since November 2020. Other non-executive roles I have include membership of the board of Tusla. I am also a member of the NAMA audit committee. I currently chair the board of Drinkaware. My experience as a non-executive director in different sectors, combined with my experience as a senior executive enables me to bring a wide range of experiences and perspectives to the role of chair of the MBRS board.</p>
+          <p eId="para_19"> As the newly appointed chair of the board I will seek to continue the excellent work of my predecessors and work to ensure that the bureau continues to achieve its mission to provide a high quality national forensic service in alcohol and drug detection in support of the effective operation of road traffic legislation. I will work with the director, Professor Cusack, and other board members to ensure we continue to review how we operate on an ongoing basis and to ensure we comply with the code of practice for the governance of State bodies. I will also work with the director and other board members to ensure we continue to implement our five-year strategic plan and objectives, which include: to continue to provide a high quality national forensic service in alcohol and drug analysis; to maintain our ISO 17025 accredited status; to adapt and incorporate into bureau activities any legislative requirements; to increase Garda capacity to detect intoxicated drivers by continuing to provide drug and alcohol testing devices; and to assist with education, enforcement and legislation measures as set out in the Road Safety Strategy 2021-2030. We will also obviously work with other key stakeholders, including the Minister for Transport and his officials, An Garda Síochána and other key stakeholders, to ensure the effective discharge of the bureau’s statutory and strategic remit.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:20:00+01:00"/></from>
+          <p eId="para_20">I thank Mr. Quigley. Deputy Daly wishes to go first.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_4">
+          <from>Deputy Pa Daly<recordedTime time="2025-09-24T10:20:00+01:00"/></from>
+          <p eId="para_21">I thank Mr. Quigley very much for coming in. If I had known he was involved in finance in the Courts Service I might have had a few extra questions about Tralee Courthouse and how we could save money by refurbishing the current one rather than moving it to another side of the town.</p>
+          <p eId="para_22"> It is staggering that 81 different types of drugs are detected. Is that in the last year or is it over the last number of years? Either way, if there is anything to get people off the roads and onto public transport, it might be realising there are over 5,900 alcohol detections and 4,348 drug specimens received in the last year alone, and 81 different drug types. There were 174 in 2024 and in the year to date about 125. Are the 5,900 alcohol specimens and the 4,348 drug specimens mutually exclusive or in some cases were both drugs and alcohol involved?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:20:00+01:00"/></from>
+          <p eId="para_23">The 4,348 is within the 5,900. The 5,900 is the total number of specimens that were submitted. The testing process looks at alcohol and then looks for the presence of drugs. Some 4,348 of the 5,900 were tested for the presence of drugs.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_6">
+          <from>Deputy Pa Daly<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_24">They were tested for it. Mr. Quigley mentioned alcohol interlock devices. Are the machines used by the bureau being developed all the time in order that new drugs can be detected? I presume they would not have been able to detect 81 different types of drug in people's systems 20 years go.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_25">That is part of the work of the technical staff in the bureau. There are 81 drugs there. It is possible that they will come across new drugs that were previously unrecognised. There are still three main drugs, as I outlined earlier. The important thing is to keep abreast of any new drugs that may be in use of which we were not previously aware.</p>
+          <p eId="para_26"> Regarding the alcohol interlock device referred to by the Deputy, the bureau has a role in testing and approving those devices. They are submitted by companies which want to have their systems approved in order that we will approve them. They are not mandatory. A number of transport companies use them on a voluntary basis but they are not statutorily required.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_8">
+          <from>Deputy Pa Daly<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_27">There has been a staggering increase in cocaine detection - up 37% between 2019 and 2024 - while at the same time, cannabis detection is going down. Obviously, there is more cocaine in society but is that because of an increased number of drug-specific detections being used by An Garda Síochána?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_28">I cannot respond about the role of An Garda Síochána. From an anecdotal perspective, however, and I am not a medical expert either, that there are more detections of cocaine in the samples that are submitted is indicative of what is happening in society.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_10">
+          <from>Deputy Pa Daly<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_29">What are the bureau's priorities over the next five years?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_30">Our priorities are to ensure that the laboratory in UCD is performing to the highest level. That means investing in our staff, making sure they are adequately trained, and in equipment. There is a constant regular programme of upgrading the staff and equipment. Our priorities remain the same, namely, to implement the legislative remit we have and support the Government's road traffic strategy. This primarily means supporting An Garda Síochána and providing it with the best equipment. There have been developments in that in the past number of years where it is now more efficient and effective for gardaí when they stop someone to detect the presence of drugs or alcohol.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_12">
+          <from>Deputy Pa Daly<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_31">Mr. Quigley said that in the region of 33% of road crashes involve alcohol. Does he know the percentage that involve drugs?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_32">I do not have the specific number. I would be reluctant to give a number and then find out that it is wrong. Unfortunately, drugs are probably becoming an increasing factor in road crashes.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_14">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_33">We all have a common goal when it comes to road safety and reducing the number of road deaths. My question concerns specimen testing. The figures for 2024 were outlined. Is the number of specimens being collected increasing or decreasing in comparison with previous years?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_34">The numbers are increasing but not on a major scale. They are trending upwards. It is influenced by the activity of An Garda Síochána. The number of checkpoints, etc., it has will dictate. We are projecting that it will be or 5,900 or 6,000 next year. It is within the range that the laboratory can deal with.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_16">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_35">Could Mr. Quigley talk about the time periods in which specimens must be tested? If a specimen was taken from me right now, how many hours or days does the bureau have to test it to ensure the result is accurate?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_36">The sample is sealed and cannot be tampered with. We would know, when it comes into the bureau, if it had been tampered with. The turnaround time for alcohol testing is approximately two weeks so we would issue the certificate within two weeks. For drug analysis, the testing process is much more complicated and sophisticated. Currently, it takes in the region of 74 days. We have managed to reduce that by about ten days over the past 12 months. Some can take 90 days depending on the process. There are two completely different processes. That is currently typically the turnaround time.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_18">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_37">Regarding the alcohol interlock devices, I know that one of the actions in the road safety strategy published earlier this year involved a proposal for possible mandatory use of alcohol interlock devices alongside rehabilitation as a sanction in drink driving cases. Does Mr. Quigley have any views on that and on what might be required to install these types of devices?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_38">To be clear, the remit of the bureau is to test and approve the devices for use. It is a matter for the Oireachtas to decide on when it becomes a statutory requirement. Based on international experience across a number of European countries, these devices have been used where someone has been found to be over the limit, and it is compulsory for cars to be fitted with them as a deterrent. It is quite possible that we may go down this route, but it is a matter for the Oireachtas to decide when and how that will happen.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_39">I wish to better understand the relationship with UCD. There is a laboratory with a number of people employed in it. Typically, how many laboratory technicians are employed in the laboratory?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_40">I have the information here somewhere.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_41">Mr. Quigley can get back to me. Does the laboratory do other work as well or is this dedicated to drug and alcohol testing in terms of the 5,000-odd specimens that might come in? Does it do other work as well?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_42">To come back to the numbers, we have an approved staffing level of 52. The majority of those will be scientists so approximately 40-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_24">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_43">Are they employed by UCD or the bureau?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:30:00+01:00"/></from>
+          <p eId="para_44">The bureau exclusively deals with drug and alcohol testing. We do not do any other work even though we are based on the UCD campus. The staff are UCD employees.</p>
+          <p eId="para_45">They are effectively seconded to the bureau. UCD pays their salaries and we recoup those salaries. There is a long-standing arrangement, originally going back to 1968, but there is a 27-year agreement in place with UCD. It is effectively a shared service arrangement and it works very well because, on the campus, if we have a vacancy, we have access to a pool of staff. It also benefits the staff in the bureau from a career point of view. The building-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_46">The staff working in the laboratory are employed by UCD.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_47">They are.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_48">And UCD is responsible for the hiring and recruitment of those staff.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_49">We would engage with UCD when a vacancy arises, and we would determine the-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_50">These are fully qualified. I know the bureau is operating to ISO 17025. The staff have been through their educational pathways and so on. These are not trainees for want of a better word.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_51">No, absolutely not. There is an ongoing training programme and a number of the staff there would be undertaking master's degrees and doctorates to advance-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_52">Within that space, if that is the right word, in UCD, they are not doing also other types of analysis of-----</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_53">No.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_54">-----food, medical devices or the pharma sector. It is a dedicated laboratory-----</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_55">Exclusively-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_56">-----and is operated under, for want of a better term, a service-level agreement with UCD.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_57">Correct.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_58">Did Mr. Quigley say that was a 27-year agreement?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_59">Yes, due to expire in 2028. I think it has served the bureau very well.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_40">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_60">Was there some reference to the bureau being involved in supplying equipment? Could Mr. Quigley explain that to me? Was that mentioned in his opening statement? I refer to the provision of equipment to the Garda.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_61">We provide the testing kits to Garda. We will check the equipment that is in the Garda stations twice a year to make sure-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_62">Is that from a point of view of calibration?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_63">Yes.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_64">Measurements of uncertainty and all of that. They are calibrated every year.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_65">Yes.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_66">Does the bureau have a calibration team or is that subcontracted as well?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_67">No, that would be our own team that does that.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_68">The bureau has a calibration team on the road visiting every Garda station and checking the equipment because, as part of ISO 17025, all the equipment has to be properly calibrated. Is the actual equipment gardaí use at the side of the road disposable or reusable?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_69">It is reusable. I think it is. This is where I can get out of my depth when it comes-----</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_70">That is okay.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_71">The apparatus itself is reusable, but the swipe element of it, as I understand it, is replaceable. This year, we have supplied about 35,000 of those devices to An Garda Síochána, and the demand seems to be on the increase from the Garda side.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_72">In terms of the methodologies used for testing, are they similar to methodologies that are used - I presume they are ISO methods - throughout the European Union? Is there a consistency in the types of-----</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_73">I cannot say absolutely, but what I can say is that the director and staff are regularly engaging with their counterparts internationally and make presentations at international conferences.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_74">That is coming to my next point. Mr. Quigley mentioned the two-week turnaround for an alcohol result, or the certification of an alcohol result, as well as a 74-day turnaround. Is that similar to turnaround times in other European districts or countries?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_75">I cannot categorically say. I would imagine that we are seeking to operate to the best international standards. I would not imagine it differentiates too far.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_76">My key question then is whether Mr. Quigley feels that, as chair, he will have the adequate resources and capacity to deal with samples in a timely manner. I notice that there are on average about 113 or 114 alcohol samples per week, and less in the context of drugs. However, I presume there can be peaks and so on. Is Mr. Quigley happy that, as chair of the board, he will have the adequate resources, financial resources and capacity to deal with the demand for testing in the lab?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_77">Yes, and in this regard, I would like to acknowledge the support of the Department of Transport, the Minister and his officials in ensuring that we have the adequate financial resources and staffing. The staffing levels in the bureau have increased over the years. It started out as very small; it is now 52. We are in regular contact with the officials in the Department. There are ongoing discussions now about the funding for next year. All I can say is that we have never been left short. What is critical to this is that we have the ability to meet the demands from An Garda Síochána because gardaí are on the front line. So far, that has not been an issue for the bureau.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_78">My final question is around the trends that are emerging. Bearing in mind that Mr. Quigley is talking to policymakers and legislators here today, is there any message he would like to give us based on the trends he sees emerging in drink-driving and drug-driving?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_79">The director and the staff are constantly researching and studying what is happening in other jurisdictions and we share that with politicians. We had the Minister of State visit the lab back in April and we hope that the Minister, Deputy O'Brien, will visit in the near future. I would say it is a collaborative process in working with the Garda, the Department, the Road Safety Authority and others. The work we are doing in the alcohol ignition interlock area has huge potential. That is an area in which it will be good to see progress in line with what is happening in other European countries.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_80">Mr. Quigley mentioning collaboration has prompted me to ask one additional question. In his role as chair designate, when was the last time Mr. Quigley sat down in a room with the representatives from the RSA and An Garda Síochána and officials from the Department of Transport on the topic of road safety?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Seán Quigley<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_81">I know that the director does that as part of a number of fora that exist. I am relatively new in the role. I meet the officials, and we had the Minister of State out. I have not up to this point met anyone from An Garda Síochána or the Road Safety Authority in my capacity. However, I know there is very regular interaction between the director, the Garda and the Road Safety Authority.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_82">I thank Mr. Quigley. I do not know whether Deputy Daly would like to come back in again.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_63">
+          <from>Deputy Pa Daly<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_83">No.</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_64">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T10:40:00+01:00"/></from>
+          <p eId="para_84">To conclude, I thank Mr. Quigley for coming in today and assisting the committee in terms of this important matter. I acknowledge his important work and that of the entire team at the bureau. The meeting now stands adjourned until 9.30 a.m. on 8 October when the committee will meet again in public session.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 10.48 a.m. until 9.30 a.m. on Wednesday, 1 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

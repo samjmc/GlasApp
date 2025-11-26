@@ -1,0 +1,692 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_further_and_higher_education_research_innovation_and_science"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-01" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BrendanSmith" href="/ie/oireachtas/member/id/Brendan-Smith.D.1992-12-14" showAs="Brendan Smith"/>
+        <TLCPerson eId="DonnaMcGettigan" href="/ie/oireachtas/member/id/Donna-McGettigan.D.2024-11-29" showAs="Donna McGettigan"/>
+        <TLCPerson eId="EoghanKenny" href="/ie/oireachtas/member/id/Eoghan-Kenny.D.2024-11-29" showAs="Eoghan Kenny"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FionntanOSuilleabhain" href="/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29" showAs="Fionntán Ó Súilleabháin"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MaeveOConnell" href="/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29" showAs="Maeve O'Connell"/>
+        <TLCPerson eId="PaulDaly" href="/ie/oireachtas/member/id/Paul-Daly.S.2016-04-25" showAs="Paul Daly"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BREISOIDEACHAS AGUS ARDOIDEACHAS, TAIGHDE, NUÁLAÍOCHT AGUS EOLAÍOCHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Further and Higher Education, Research, Innovation and Science</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#PaulDaly">Paul Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#FrankFeighan">Frankie Feighan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EoghanKenny">Eoghan Kenny</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DonnaMcGettigan">Donna McGettigan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MaeveOConnell">Maeve O'Connell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#FionntanOSuilleabhain">Fionntán Ó Súilleabháin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#BrendanSmith">Brendan Smith.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputies Ruth Coppinger and Jen Cummins.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#ErinMcGreehan">Teachta / Deputy Erin McGreehan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Review of Action Plan for Apprenticeship 2021-2025: Discussion<recordedTime time="2025-06-25T12:30:00+01:00"/></heading>
+        <speech by="#ErinMcGreehan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T12:30:00+01:00"/></from>
+          <p eId="para_13">I welcome everyone. I ask anyone attending remotely to mute themselves when not contributing so we do not pick up any background noise or feedback. As usual, I remind all in attendance to ensure their mobile phones are on silent mode or switched off.</p>
+          <p eId="para_14"> Members attending remotely are reminded of the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the Leinster House complex. As witnesses are within the precincts of Leinster House, they are protected by absolute privilege in respect of any of the presentations they make to the committee. This means they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty, as Cathaoirleach, to ensure that privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_15"> Members are reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against a person or entity outside of the Houses or an official of the Houses either by name or in such a way as to make him, her or it identifiable.</p>
+          <p eId="para_16"> Before we proceed to our engagement with the witnesses, I note that Deputy Maeve O’Connell was elected Leas-Cathaoirleach of this committee at its most recent private meeting. I congratulate Deputy O’Connell on her appointment and wish her the best of luck in the role.</p>
+          <p eId="para_17"> On the agenda for today’s meeting is a review of the Action Plan for Apprenticeship 2021-2025 with the following witnesses. Representing SOLAS, we have before us Mr. Andrew Brownlee, chief executive officer, and Dr. Mary-Liz Trant, director of the national apprenticeship office. From Education and Training Boards Ireland, ETBI, the following representatives are before the committee: Dr. Joseph Collins, director of further education and training; Mr. Tom Grady, chief executive of Mayo, Sligo and Leitrim Education and Training Board; and Ms Caitríona Murphy, chief executive of Dublin and Dún Laoghaire Education and Training Board. The witnesses are all very welcome to today’s meeting.</p>
+          <p eId="para_18"> I will now allow both groups five minutes each to read their respective opening statements, after which we will proceed to the questions and answers session. Mr. Brownlee of SOLAS will go first.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T12:30:00+01:00"/></from>
+          <p eId="para_19">On behalf of SOLAS, I thank the Chair and joint committee members for the opportunity to speak with them today and discuss the Action Plan for Apprenticeship 2021-2025. I am joined by Dr. Mary-Liz Trant, director of the national apprenticeship office. The office was set up in 2022 to take responsibility for the management, oversight and development of the system, and drive the delivery of the plan. It is jointly managed by SOLAS and the Higher Education Authority to reflect the fact that apprenticeship training provision spans across both the further education and training, FET, and higher education, HE, sectors.</p>
+          <p eId="para_20"> The apprenticeship system has continued to transform and grow significantly over the lifetime of the action plan. In 2020, there were just 5,236 new apprentice registrations, but by 2024 this had grown to 9,352. This leaves us on course to hit the 10,000 target for 2025, which is the final year of the plan. There is now an apprentice population of 29,279, having expanded by more than 50% since 2020. There are 77 diverse apprenticeship programmes to choose from, ranging from level 5 to level 10 on the national framework of qualifications, NFQ, serving industries as diverse as biopharma, ICT, recruitment, financial services, retail, hospitality, engineering and construction, with a further 25 in development. Funding for apprenticeships has increased from €142 million in 2019 to €339 million in 2025.</p>
+          <p eId="para_21"> Other key achievements in the delivery of the apprenticeship action plan include the introduction of an employer grant scheme, incentivising employers to recruit across all types of apprenticeships; national surveys of employers and of apprentices, showing very positive feedback on the benefit of apprenticeship options for industry and those embarking on developing their careers; a large increase in options in professional areas of training and development via apprenticeship, including in social work, engineering, accounting and international financial services; the high-profile apprentice of the year awards are now an annual fixture, with the fourth year of these awards taking place in October; growth in participation by under-represented groups, including members of the Traveller community, those from ethnic minorities, women, and people with disabilities, with bursaries and access initiatives put in place; and a plan for the fully integrated apprenticeship system developed via extensive, broad-based consultation.</p>
+          <p eId="para_22"> SOLAS also has a role as the co-ordinating provider for craft apprenticeships. While training is provided by a network of education and training boards, ETBs, and technological universities, SOLAS remains responsible for developing and setting curricula, scheduling off-the-job training across this provider network, setting assessments and overall quality assurance of provision. Craft apprenticeship provision has also grown substantially over the lifetime of the plan despite significant disruption to training capacity due to the pandemic restrictions in 2020 and 2021, leaving a major backlog in apprentices waiting for training. The pre-Covid craft capacity level across phases 2, 4 and 6 in 2019 stood at 10,000, falling to around 7,000 in the next two years. However, there has been a major ramp-up since that time, with capacity growing to 13,256 in 2022, 14,780 in 2023 and 17,000 in 2024. It is currently expected that ultimate capacity in 2025 will approach 17,800, around 4% more than last year, and almost 80% up on pre-Covid levels.</p>
+          <p eId="para_23">Alongside this growth, a number of important steps have been taken over the previous two years to ensure apprenticeship curricula are up to date with rapidly evolving industry and technological advancements. Over the next year, in partnership with training providers, we will roll out revalidated curriculum for 25 craft apprenticeship training programmes and we will introduce new and updated assessments across all training phases.</p>
+          <p eId="para_24"> We believe the work of SOLAS and our partners over the past few years has helped to support a world-class and rapidly expanding apprenticeship system, with the quality of our apprentices acknowledged internationally and on the global stage in WorldSkills competitions. It is a pathway to high quality, well-paid careers, with recent CSO analysis revealing craft apprentices earn on average €49,000 per year just two years after qualifying. There is an excellent foundation from which to further grow and diversify the apprenticeship system.</p>
+          <p eId="para_25"> The Department of further and higher education will lead the development of the next action plan for apprenticeship, which will be published next year. In SOLAS, we look forward to working with the Department on the further development of the system and achieving the Government’s target of 12,500 new apprentice registrations annually, as well as the realisation of an integrated system that will see co-ordinating provider responsibility for craft apprenticeships move from SOLAS to a devolved model.</p>
+          <p eId="para_26"> I hope this provides a brief overview of the reform of SOLAS’ role in the delivery of the Action Plan for Apprenticeship 2021-2025. We look forward to working with the Department on the development of the next action plan and all of the apprenticeship partners to ensure its success. I would like to thank the committee for its time today and welcome further discussion on the matter.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Dr. Joseph Collins<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_27">I thank the Chair and committee members for the opportunity to speak on behalf of Education Training Boards Ireland, ETBI, representing Ireland’s 16 ETBs. We welcome this important review of the Action Plan for Apprenticeship 2021–2025, and we are pleased to share the reflections of ETBs on progress, challenges and future opportunities.</p>
+          <p eId="para_28"> The action plan for apprenticeship sets out an ambitious vision to modernise and expand Ireland’s apprenticeship system, making it more flexible, inclusive, and responsive to the needs of learners, employers and the wider economy. ETBs have been proud partners in delivering on this vision. The establishment of the National Apprenticeship Office, NAO, provides a centralised structure for governance, co-ordination, and stakeholder engagement. ETBs work closely with the NAO and SOLAS. As Mr. Brownlee said, SOLAS is the co-ordinating provider for all craft apprenticeships. Craft apprenticeships follow a seven-phase model, alternating between on- and off-the-job training. Phases 1, 3, 5 and 7 are on-the-job training with employers. ETBs deliver phase 2. Phases 4 and 6 are delivered, in the main, by the technological universities, TUs. ETBs also act as co-ordinating providers for a number of the apprenticeships developed since 2016. For example, these programmes include sales and marketing, engineering, auctioneering and hairdressing and are consortia-led. They are aligned with national skills needs.</p>
+          <p eId="para_29"> In 2024, 9,352 new apprentices were registered. This includes targeted efforts to reach under-represented groups through bursary initiatives. Apprenticeships are a key pillar of Ireland’s tertiary education system. ETBs are committed to ensuring that apprenticeships offer pathways into occupation-specific employment and with routes to further education. To address the backlog of apprentices awaiting training, ETBs facilitated three intakes in both 2023 and 2024, which was an intensive effort that successfully reduced waiting times and ensured continuity of learning. These efforts were supported by SOLAS through targeted capital funding, which enabled ETBs to expand training capacity, invest in new facilities and deliver with the additional and sanctioned staff costs.</p>
+          <p eId="para_30"> In 2024, 7,732 apprentices commenced their phase 2 training in ETB locations. Employers are the cornerstone of the apprenticeship model. ETBs support them through briefings, tailored guidance and the work of authorised officers who are employed by ETBs. Authorised officers are responsible for registering apprentices, approving employers, and ensuring compliance with apprenticeship regulations. They act as a vital link between the apprentice, the employer and the training provider, supporting quality and consistency across the system. One of the ways ETBs and higher education collaborate is through the National Apprenticeship Alliance, NAA, and a related subgroup of providers, which includes representatives from both sectors. Over the previous two years, the providers have been working collaboratively in a proactive and constructive capacity towards the development of a quality assurance framework for apprenticeship into the future, which includes consultation with all stakeholders.</p>
+          <p eId="para_31"> While we are proud of the progress made, we must also acknowledge the challenges currently facing the apprenticeship system. As communicated recently by both the NAOand SOLAS, 2025 is proving to be a particularly challenging year. The NAO is working to manage phase 2 intakes for the remainder of the year. A targeted approach is being adopted to minimise disruption, but delays in scheduling may be unavoidable in some areas subject to timely and confirmed funding allocations. In addition, the increase in phase 4 and phase 6 capacity in 2025 has led to significant increases in apprenticeship allowances, as ETBs pay the apprentice allowances for phases 2 ,4 and 6. ETBs have been advised to honour all allowance obligations in the interim. We welcome this assurance and continue to work with SOLAS to ensure that no apprentice is disadvantaged. SOLAS is actively working with ETBs and the Department of Further and Higher Education, Research, Innovation and Science to identify practical and sustainable solutions, and these discussions are ongoing. However, timely confirmation of funding is needed.</p>
+          <p eId="para_32"> As we approach the conclusion of the current action plan, ETBI recommends the following priorities, starting with a renewed national strategy. A new action plan should set ambitious, but achievable, targets for participation, programme development and employer engagement, while embedding flexibility and responsiveness at its core, including the development of a new quality assurance framework. For sustainable funding, we recommend the establishment of a long-term funding model to support expansion, capital investment, staffing, and learner allowances and supports. On pathways and progression, we recommend ensuring pathways to and for apprenticeships are clear and accessible. On equity and inclusion, we recommend continuing investing in outreach, bursaries and support services to make apprenticeships accessible to all. On employer partnerships, we recommend the strengthening of collaboration with employers, particularly SMEs, to align provision with labour market needs.</p>
+          <p eId="para_33"> By means of conclusion, ETBs have played a pivotal role in the development and delivery of apprenticeships in Ireland. Looking ahead, we are committed to expanding opportunities and ensuring greater accessibility. ETBs will continue to be central to developing a skilled workforce that meets Ireland’s evolving economic and industry demands, while supporting lifelong learning and mobility.</p>
+          <p eId="para_34"> We thank the committee for its ongoing support and look forward to working with all stakeholders to shape the future of apprenticeships in Ireland. Gabhaim buíochas.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_4">
+          <from>Senator Paul Daly<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_35">I welcome the witnesses from ETBI and SOLAS this morning. I have two questions I would like a comment on. Recently, there has been a lot of commentary about delays in off-the-job training because of funding and the breakdown there. The witnesses might comment on that, where it is at and where it is going. I read an article about it recently.</p>
+          <p eId="para_36"> The second question might be broader and I ask this very much as a layman. How is an apprenticeship decided on? We are in an era where there is constant change. New trades, systems and concepts are evolving. In particular, I am thinking of how there was block laying and plastering in my day. It is probably 3D printing now. When and how are apprenticeships moved from being a block layer to a 3D printer. How is it done when it is a new concept? How is a trainer even recruited? How many people need to have an interest in an initial concept or trade before it would be viable or feasible to run that apprenticeship for them? Someone has to be the first. It has to start somewhere.</p>
+          <p eId="para_37"> I am intrigued to know who is the trainer in that scenario, when it is a whole new concept. How can the trainer be trusted to be the trainer because nobody knows anything about a new concept? However, if we do not do it there and then, we are left behind. I am intrigued to know how new apprenticeships are identified to become an apprenticeship, how they are formulated, who initially trains and how trainers are recruited in those scenarios. There are four minutes to answer that and it will probably take it.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T12:40:00+01:00"/></from>
+          <p eId="para_38">I thank the Senator.</p>
+          <p eId="para_39">I will take the start and then Dr. Trant can take the second part. First, we acknowledge there is a bit of funding pressure. I will explain very quickly how the system works. The ETBs sit down with local enterprise offices, LEOs, at the start of the year and figure out how much capacity is available for phase two provision. Then SOLAS, as the funder of the system and as the co-ordinating provider for apprenticeships, sets the budget for the year based on the money that has been allocated through the Government. We then plan and schedule all the phase 2 apprenticeship classes through the year. We are the ultimate planner and scheduler of that. When we made the allocations to ETBs this year for further education and training, FET, and apprenticeships it became clear that there was a much increased liability in our phase 4 and phase 6 allowances. For the benefit those who do not understand the system in depth, ETBs deliver phase 2, the technological universities deliver phase 4 and phase 6, but the ETBs actually have to pay the allowances to the apprentices who are doing phase 4 and phase 6 provision. This is why it is a complicated kind of funding equation. The ETBs came back and said there was a significantly increased phase 4 and phase 6 liability as a result of the ramp-up of the phase 2 provision last year. This prompted a lot of the concern that the members are hearing about and reading about. I will give assurance on that. We have written to the chief executives of the ETBs to assure them funding will be made available to allow them to deliver all the scheduled phase 2 classes and pay all the phase 4 and phase 6 allowances. We are currently finalising a plan for phase 2 provision over the remainder of the year. The idea is that we need to make sure we are training as many people as we are registering. We registered around 7,000 last year. We are going to make sure that the ETBs train at least 7,000 in 2025 as well. From this, they will tell us that the next step they need is confirmation of the funding allocation they will receive in order to address that situation.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_40">The apprenticeship model is very dynamic and we get that feedback from employers. Because there is such a close connection between industry and education, all the emerging technologies and skills coming through an industry can be reflected in apprenticeships. More than 50 new apprenticeships have been developed in the past ten years. What happens is there are employers, education providers and employee representatives around the table and there is a constant dialogue about emerging skills. For example, one of the apprenticeships coming through now is in the area of modern methods of construction. This is all very recent and very new. The apprenticeship model provides an opportunity to develop that and update all that is there already. There is the NAA, a forum that includes employers, providers, social partners and apprentice representatives. This is the forum where new apprenticeship proposals come and are considered. There is a match with emergent skills needs and then there is a whole process of validation and constant updated apprenticeships. It is a very dynamic model and the feedback is that it really suits industry and employers because they can see how the programme is kept up to date.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_7">
+          <from>Senator Paul Daly<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_41">Does SOLAS then follow up, for example like teacher in-service training, for qualified apprentices to catch up with the changes in the technology or the skills that they have learned or qualified in? Is there such a thing as short-term blocks of education to keep them up to speed?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_42">Absolutely. It is part of the further education system more broadly and higher education short courses, which are constantly updating, for example, at the National Centre for Construction Training in Laois and Offaly. There are also short courses in the nearly zero energy building sector, NZEB, and the sustainable technologies where employees can come and up skill. They can do one-day, three day- or five-day courses. Those centres are spreading all around the country. Again, it is that really important partnership between industry and education. Once that is working well it is a very dynamic model.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_9">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_43">I thank all of the witnesses for being here today. I thank them for the important work they are all doing. It is great to have this discussion. I have a number of questions, the first of which relates to pay and the witnesses' views on that. The Labour Party has been very clear that apprentices should not be paid below the minimum wage. We need to have a living wage in place for apprentices. Even Germany and Austria have found a high correlation between low pay and dropout rates, which is concerning. Research conducted by Connect Trade Union found that 20% of craft apprentices drop out and there is non-completion. I would like the views of the witnesses on that and how we can keep people in their apprenticeships first and then encourage them into the professions. Do they believe that pay is a barrier?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_44">I thank the Senator for the question. Apprenticeship is unique in that unlike many other education and training interventions, there is a contract between an employer and the apprentice. There is an onus on that relationship to decide what the pay rate is. When the apprentice is off the job and in training, the rates are agreed across the system. As members are probably aware, and as Mr. Brownlee mentioned, within the phases 2, 4 and 6, the payments or the allowance the apprentices receive increases as they pass through the apprenticeship. These vary with different craft apprenticeships but, for example, it is around €350 per week at phase 2, approximately €460 a week at phase 4, and €660 or €670 on average at phase 7. If I recall correctly, that is for electrical apprenticeships. Those are approximate figures but fairly close, and they do vary slightly from craft type to craft type. Those are agreed wages but sometimes it might be possible that employers would not stick to them. These are, however, the recommended rates and the onus in the overall system is that they should be stuck to and agreed. The rates are reviewed regularly. I believe they were reviewed as recently as January, if I am not mistaken.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_45">The increase in allowances may have contributed to the problem, but in a good way. SOLAS is not party to the pay agreements but I would just bring members back to the start and the opening statement. We know that apprentices now are earning €49,000 a year within two years of qualification, which is higher than the average wage. Part of the challenge for us is getting the message out that this is an amazing career and the person will be earning significant amounts very early in his or her career with potential to go a lot further. That is certainly part of the challenge as well. As members have heard, there is a lot of demand to become apprentices and we want to see that grow even further. Pay is obviously a factor in anyone's decision.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_12">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_46">Do I have some time left? The clock has disappeared.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_47">The Senator has the liberty of no clock at the minute.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_14">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_48">As a follow-up, would the witnesses welcome an increase in the pay rates while people are still apprentices and before they fully qualify? Is this a barrier or is it contributing to non-completion rates? Do they agree that is the case?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T12:50:00+01:00"/></from>
+          <p eId="para_49">We were doing a big piece of work on completion rates. The non-completion rates across the board on average is 11%. It is actually really high. These are our emerging findings and we will have a much more detailed piece of work done on it. The retention and completion rates for apprenticeship, relative to other kinds of learning, are actually very high. Earning potential while on apprenticeship was mentioned. We know that young people are making decisions based on that. The CSO study Mr. Brownlee referred to shows those average earnings. That message about the lifetime earning premia that apprentices get is really powerful and we want to get the message out much more strongly that somebody is actually earning while he or she is learning and it grows, and then when he or she qualifies and emerges into his or her career, the earnings are really attractive and continue growing. There is no student debt and people are earning from the very start of their training. The feedback we have had from a survey of apprentices we did just at the end of last year shows a real appetite and interest in the apprenticeship route. </p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_16">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_50">I thank the witnesses. I was privileged to teach in an ETB school and that is something that will remain with me for the rest of my life. I commend the work of the ETBs and of SOLAS as well. The action plan itself is quite beneficial. In the context of the ETBs' challenges and constrained environment, Dr. Collins stated, "SOLAS is actively working with ETBs and [the Department] to identify practical and sustainable solutions, and these discussions are ongoing. However, timely confirmation of funding is needed." Will the witnesses talk me through that? What are the discussions that are ongoing? Is there a timeframe for the confirmation of funding? </p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_51">No. Mr. Brownlee and Dr. Trant would confirm this but there is something in the region of €40 million of a funding gap at this point to complete the payment of allowances for all of the apprentices who are to be called to phases 2, 4 and 6 between now and the end of the year. It is probably worth giving some context to the issue. There was a very significant backlog in apprenticeships and the focus in the last 18 months to two years has been very much on building the capacity to get those apprentices through the system. There has been significant investment by the Department and the NAO and an awful lot of work by SOLAS and the ETBs in increasing that capacity. When an apprentice is on the ground working their way though their apprenticeship, they start at the rate to which Senator Harmon referred but they should not be disadvantaged by not being allowed to move to the next pay rate because they were delayed. They should-----</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_18">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_52">That is absolutely agreed. I know it was mentioned earlier to my colleague Senator Harmon that it is a significant wage that will be made after two years. However, the ultimate barrier has been that two-year period for a long time now. It is quite disappointing. There is an extract from the action plan that mentions wages quite briefly. A few of my questions relate to this. Will the wage issue will be targeted in the next action plan? Will wages be reviewed and looked at? Everybody in the room who is representing a constituency will agree that the next action plan will have to focus on local authorities and commencing apprenticeships for local authorities. I have one question for the representatives from SOLAS as well. Are they satisfied with the range of trades that are providing apprenticeships now? If they are not, is that because the focus is towards the market rather than towards State agencies and services? I said in my opening contribution at the start of this joint committee that we all know it is nearly impossible now, through a local authority, to get a plumber, a carpenter or an electrician to solve an issue, particularly in local authority housing. It is extremely difficult. If you contact the local authority and the director of services, they will tell you it does not have the staff. Will there be a focus towards apprenticeships for local authorities? It was always the case. Instead, what we are doing now is we are appointing third parties to do the work that we could possibly provide within our local authorities. Is SOLAS satisfied with the range of trades that are providing apprenticeships? </p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_53">There is a specific plan on increasing the number of apprenticeships and apprentices going through the public service, including the local authorities. There is a target of 750 registrations annually. It is probably fair to say progress is not as fast as we would have hoped but there is a very big drive on it now and a focus from the Department of public expenditure and reform, the Department of education and right across the key Departments to make sure this happens. There is a growth starting. We have nearly 80 apprenticeship programmes. There is a huge amount on offer. Another 28 are in the pipeline and then we have 42 more potentials at consultation stage. There is scope for all kinds of skills development, and they are all based on priority need. I do not think there is any shortage of options but it is about starting to build back up. There used to be a lot of skills development through apprenticeship through the local authorities and the public service bodies and that needs to be built up again. However, there is a plan and there will be a focus, and I expect----</p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_20">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_54">I have one further question. "Equity and inclusion" is listed as one of the priorities for the future for the ETB and it is recommended to “continue investing in outreach, bursaries, and support services to make apprenticeships accessible to all.” In poor socioeconomic areas, this is quite difficult. I believe Dr. Trant will think the same. Very briefly, what does the ETB plan on doing for that? </p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_55">I thank the Deputy. I am glad to see our teachers are doing so well. It is great. </p>
+          <p eId="para_56"> ETBs are embedded in the communities nationwide, as the Deputy knows. They are everywhere. In the case of all of our services within the sector, we are a huge supporter of the apprenticeship model but an awful lot of young students in our DEIS schools want to access apprenticeships and other further educational training. We do huge work with our Youthreach and community training centre students. I know this from my own case but it is replicated across the country. We had 130 last week all together in Loughlinstown Training Centre to give them all of the information about the craft apprenticeships and all other apprenticeships. </p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_22">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_57">Brilliant. </p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_58">They were delighted. We had their parents, guardians and other people the week before. About 400 people attended that. We have done an iVet module with one of our schools, which is an introduction to vocational educational training. Adamstown Community College led on it. I have now expanded it to St. Kevin's Community College and to Greenhills Community College in Clondalkin and in Tallaght. These examples are to be seen throughout the country. </p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_24">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_59">That is extremely positive. </p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_60">Finally, as I know we are short of time, there are the pathways and skills development programmes for people out of Baldoyle Training Centre and Tallaght Training Centre as well. In the first pilot of those, five people went on to an apprenticeship, five are waiting to get a place, three are thinking about what to do and the others have gone to further education and training. </p>
+        </speech>
+        <speech by="#EoghanKenny" eId="spk_26">
+          <from>Deputy Eoghan Kenny<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_61">That is very positive. </p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_62">This inclusion through our community is really important to us. </p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_63">I have to go to speak in the Chamber so I will ask the Leas-Chathaoirleach to replace me for ten minutes. </p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Deputy Maeve O'Connell took the Chair.</i>
+        </summary>
+        <speech by="#MaeveOConnell" eId="spk_29">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_64">Good afternoon. This is my first time in the Chair so I ask everyone to bear with me. I call Deputy McGettigan. </p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_30">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-06-25T13:00:00+01:00"/></from>
+          <p eId="para_65">Go raibh maith agat. SOLAS mentioned its surveys earlier. I contacted Connect trade union, which did its own survey of 802 participants and some of the findings are pretty stark. I will provide some of them. Some 46% reported getting paid less than €7 per hour of work during a stage of their apprenticeships, more than 90% reported being paid less than the minimum wages, which as we know is €12.70, during a stage of their apprenticeships, and 26% say their employer has paid them below the agreed minimum pay rates, which can already be below the State minimum wage. Over 95% believed apprenticeships should be paid at least the statutory minimum wage, while 96% said the training allowances paid to apprenticeships are insufficient and need to be increased to take into account increases in cost of living. Indeed, some of those training allowances have not been increased for many years. Some 29.7% had delays of completion for one year; 23.7% had delays of 1.5 years or more and 78% think the Department of further and higher education is doing a bad job in running the apprenticeship systems. A total of 20% stated that they had left or been dismissed by the company, while 38% had been asked to complete work unrelated to their apprenticeship - this is a red flag because this could be leading down the road of cheap labour - or been used as labourers waiting for off-site hours to be completed. A further 45% said they had no workplace assessor to ensure they were attaining the correct standards. It has been stated, as I heard on “Saturday with Colm Ó Mongáin”, that cuts to classes in electrical are coming in July. Is that true or has it just been thrown out there? If it is true, will it affect the backlog? We should call for Government intervention in the area of collective bargaining. The witnesses may have a say on that. Given all this, how do they expect us and those waiting to come in to apprenticeships to have any confidence they will get a good rate of pay, be able to complete their apprenticeship within the timeframe, be able to afford to rent and live off-site on training and not be used as cheap labour while waiting to complete their apprenticeship?</p>
+          <p eId="para_66">If the money is not there, why is it not there as it comes from the national training?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_67">We obviously have considerable respect for the Connect trade union. We work very closely with it on apprenticeship. If that is what its members are hearing and those practices are going on, it is absolutely unacceptable. We make no bones about that. As SOLAS is a government agency, it is really difficult for us to comment on pay and allowance levels because we are not even part of that process. I hope the Deputy understands that I cannot comment on specific arrangements on that.</p>
+          <p eId="para_68"> The Deputy asked about classes. We talked about the progress on the backlog. I appeared before this committee about two or three years ago when the backlog was up at 8,300. We have got it to the position where the number of people who are waiting more than six months to be called for training is down to about 770 at the moment, which shows we have made incredible progress. Like every government agency and Department we have a fixed budget to live within every year, which is not conducive to a demand-led apprenticeship system. However, we are confident that this year we can train as many as we registered last year, thereby maintaining the pipeline of apprentices waiting for training at the same level for phase 2. We want to move all those phase 2 apprentices last year, who had been waiting so long to access training, as fast as we can through phase 4 and phase 6. In a way, the emergency has moved from phase 2 to phase 4 and phase 6. We are still confident we can train as many as we registered last year. There will not be any cancelled classes. We are working on a plan to schedule classes for the remainder of this year and call the apprentices in due course.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_32">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_69">We had some difficulties with the clock but it seems to have sorted itself out. Deputy McGreehan has just stepped out but she will be back shortly.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_33">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_70">I thank the witnesses. Everything they said has been very informative. I missed the beginning of the meeting. I am very interested in this area. I was on WWETB for ten years and I was teaching for 35 years before I started this thing. I see the numbers of apprenticeships have increased. One figure indicated we have 77 and another suggested it was 88. Ten years ago, I attended an event on apprenticeships in Brussels. I believe Germany had over 300 and they were covering areas such as banking and all sorts of areas that we have not even touched upon. Traditionally, we have had an emphasis on crafts. In many ways Irish people have looked down their noses at apprenticeships in favour of colleges and universities. There may have been an element of snobbery in recent decades. It has led to a huge crisis because we are missing very basic services such as bus drivers. We cannot solve the ongoing problems with school transport, which is a big issue in my area of north Wexford and south Wicklow, a rural area. We cannot do it without bus drivers. I know that WWETB had previously engaged with Bus Éireann on that. Do the witnesses have any plans for training bus drivers because there is a huge crisis and a huge need there. WWETB identified it but it met barriers on it.</p>
+          <p eId="para_71"> As mentioned previously, Ireland is crying out for plumbers and carpenters but we cannot get them. We are going back to basics. Some 30 or 40 years ago, we said this was a great apprenticeship to go into and now we cannot find them. Obviously there need to be incentives for employers to take them on. I think one in three apprentices in the crafts area said they had difficulty finding an employer. As my colleague Deputy McGettigan said earlier, the issue of proper payment for apprentices has come up. I have spoken to apprentices who have said that the payment is a big problem, especially with the cost-of-living crisis. Those payments definitely need to be increased. Can we work with Bus Éireann and the ETBs locally?</p>
+          <p eId="para_72"> I welcome the commitment in the document to make apprenticeships more inclusive. Just over a week ago I had a meeting with St. Aidan's disability services, which serves the Gorey area in north Wexford and south Wicklow. I know some of the witnesses are aware of the group. It is a centre that covers intellectual disabilities as well as physical disabilities. Trainees attending the services said it was not just a case of numeracy and literacy but they wanted more basic training in life skills to pare it back to the basics of living. The number of people in Wexford and Wicklow suffering from disabilities is quite shocking. Those young trainees in St. Aidan's services have asked if there could be very basic life skills training as an apprenticeship. They need to have it locally because obviously travel is a huge problem for them. Are there any plans in Wexford or Wicklow for such services for life skill training for those with intellectual disabilities as well as for others?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Joseph Collins<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_73">I will respond to the first question on working with Bus Éireann. The Deputy will be delighted to learn that the ETB sector is working actively with Bus Éireann. A task force has been established by the Department of Transport and the Department of Education and Youth, looking particularly at school bus drivers but also the broader question of a potential apprenticeship for bus driving. The practical consideration that needs to be taken into account is that it does not take long to train as a bus driver, meaning there is an issue with the viability of an apprenticeship connected to that. However the task force is looking at it at the moment and its next meeting will be in the coming weeks. As a sector, we are wrapping around that task force because we have bus driving provision and we are ready to respond by ramping up as necessary.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_35">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_74">That is very welcome to hear. I thank Dr. Collins.</p>
+          <p eId="para_75"> My second question was on basic skills training in the Wexford and Wicklow area.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_76">There has been a lot of work recently with colleagues in ETBs and ETBI. There is a big focus on access to apprenticeship courses and pre-apprenticeship courses. We have identified 86 of those around the country in education and training boards. There are also a range of them in higher education. Those programmes, which meet learners where they are, include skills like developing literacy and numeracy but also life skills; a lot of that happens. The whole idea is to have a pathway for young people and older people to get a job, to get employment as an apprentice and then continue their training. It is a really good stepping stone and pathway and works really well. Our intention is to build on that.</p>
+          <p eId="para_77"> We are also considering introducing a financial bursary linked to those courses because there are real financial challenges owing to the cost of living and so on, even to get started on their apprenticeship, get a set of tools, arrange accommodation or whatever it is. That work is advancing now and we are looking forward to making progress on it. It is a really good vehicle to develop the kinds of skills that have been identified in the area the Deputy was speaking about.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_78">On the WWETB question in Waterford and Wexford, I am sure they do. There is no one from that area here. We have an initiative called specialist training provision where we generally work with organisations like the national learning network to provide courses for people with disabilities to give them pathways into more vocational training and then get them into work. I am sure there is something there, but I do not have it to hand. I will come back to the Deputy with details.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_79">Obviously, I cannot answer for Waterford and Wexford ETB, but a mainstay of training in the Mayo, Sligo and Leitrim ETB for many years has been bus and heavy goods vehicle training through our contracted training system. We also have our ESOL, our literacy and numeracy training for the life skills end and a significant amount of the national learning network that Mr. Brownlee referred to. Those driving programmes are steady through the entire system. While I cannot speak for the Deputy's area, they are well recognised and set programmes that are there.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Deputy Erin McGreehan resumed the Chair.</i>
+        </summary>
+        <speech by="#MaeveOConnell" eId="spk_39">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-25T13:10:00+01:00"/></from>
+          <p eId="para_80">I thank the witnesses for coming here today. It is a very complex area. Like my colleague, I taught in the Institute of Technology in Blanchardstown alongside those in many of the craft areas.</p>
+          <p eId="para_81"> Dr. Collins mentioned the number of new apprenticeships. Dr. Trant mentioned a new apprenticeship called modern methods of construction and said there are another 28 apprenticeships in the pipeline. If we, say, came together to create a consortium of employers and said we see an opportunity for a new apprenticeship, how long would it take to go from the first conversation between the group and SOLAS to being able to start hiring?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_82">Our quickest development was the logistics associate apprenticeship in just nine months. It is hugely successful and is being used by over 100 employers. Other programmes take longer to develop. When we examined why the logistics associate apprenticeship developed so quickly we discovered there was a really coherent and dynamic industry group that had done their research, identified the skills need and found a partner in TU Dublin, which now includes the Blanchardstown campus. The group worked so well together that they got the apprenticeship fully developed and launched in nine months. On average, programmes take about a year and a half to development because a piece of work must be done to identify the skills need and make sure there is a demand. A significant amount of money - up to €80,000 - is made available by the State to develop an apprenticeship. It takes time for due diligence to make sure that something is viable and once it gets under way then it is very much up to the group involved as to level of resource that they can put into it and how quickly they can finish. The time can vary but we know that it is possible to develop a programme within a year.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_41">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_83">TUD is an approving body for pretty much everything.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_84">Yes.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_43">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_85">Would there be any issues if somebody approached a local ETB? Also, would an ETB be able to approve a programme as easily?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_86">My colleague, Tom Grady, will comment.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_87">The Mayo, Sligo and Leitrim ETB is a co-ordinating provider for three new apprenticeships and we have three or four more in development. Sales, digital marketing and craft butchery apprenticeships are three that will have been running since 2019 in steps in between. Our experience has been that it varies, like Dr. Trant has said, because the apprenticeships are consortia-led so inherently they are in an occupational area and those areas vary very much. For example, craft butchery is very much a niche area yet it is a vibrant area in the food industry nationally. We have a number of collaborating ETBs now involved in providing the course. While there may never be huge numbers, it is very steady and successful. By comparison, sales has the potential to be an apprenticeship with really big numbers. For example, there is the automotive industry. In car dealerships, there has never been an apprenticeship for salespeople in the car industry yet for years, the auto technicians in the background in garages have been qualified craft apprentices for years. The development time varies. It varies with the consortia and the amount of different stakeholders. Generally, when it gets to the national apprenticeship office, the process is improving all the time and I think it would be fair to say that the steps we go through there are becoming more consistent. In general, it takes a couple of years.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_46">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_88">Earlier Dr. Trant mentioned completion rates. Clearly, we have published completion rates and non-progression rates in third level education and I am interested in hearing about the equivalent rates in the apprenticeships sphere.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_89">As I mentioned, there is a piece of work under way on completion rates across apprenticeships that tracks back over the last five years. Obviously there is now a range of programmes and there are 30,000 apprentices in the system. We looked at that work in advance of today's meeting because we presumed it would be of interest. The initial emerging findings are really strong completion rates as in that those who do not complete are about 11%, on average. The completion rate for newer programmes is very strong as there is very little drop-out. The rate for craft apprenticeships is slightly higher. The overall average drop-out rate is about 11% so the completion rate is 89%. Obviously there is a huge range of published completion rates across higher education and it is very strong. It is important that we examine why there is non-completion, if any. We must analyse whether it has something to do with the quality of the programme or other valid choices. We are focusing on that as a priority piece of research and we aim to produce findings later this year.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_48">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_90">That is great. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_91">The research over the last five years includes the period of Covid. For us, a class starting with 14 phase 2 apprentices normally finishes with 14 or maybe 13 if something has happened such an illness although normally, that person leaves and comes back again. We want to get apprentices through the phases within four years and the people involved in craft apprenticeships are really determined to get through the phases. As many people have mentioned here, it is difficult to get all of the skilled people that we need so we are seeing very high rates of completion. The completion rate for phase 2 is a good indicator and I suggest that the dropout rates are quite low when compared with other programmes. Generally, in further education and training, FET, retention rates are high because the classes are small and inclusive. We also make sure that everyone gets to the next stage and the next step up.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_50">
+          <from>Deputy John Connolly<recordedTime time="2025-06-25T13:20:00+01:00"/></from>
+          <p eId="para_92">The witnesses are all very welcome and I thank them for their attendance. I should be more familiar with some aspects and I ask the witnesses to provide quick answers to my questions.</p>
+          <p eId="para_93"> I have questions on the minimum educational requirement or minimum age to join an apprenticeship programme. I understand it is traditional for an apprentice to find a company first and then apply to participate in the programme. From that, do we know whether there are young people who want to undertake apprenticeships but struggle to do so because they cannot locate a company?</p>
+          <p eId="para_94"> The plan included the introduction of an employers' grant scheme. Do the witnesses assess that scheme as having been successful? Does it need to be increased? Do we need to do something to increase the number of companies that are happy to employ apprentices?</p>
+          <p eId="para_95"> I had intended raising some of the issues concerning pay and working conditions like some of my colleagues have done. To me, it sounds like there is a gap in service provision and I believe there should be somebody to oversee the standards under which the apprentices are employed. Both SOLAS and the ETBI provide programmes but I gather they do not have that role. We need a body to take up that role even if it is one of the existing labour relations bodies because we need to make sure that apprentices are well treated and suitably remunerated for their efforts.</p>
+          <p eId="para_96"> As has been reflected in the recent positive comments about completion by Ms Murphy, do we know whether apprentices are retained in the companies in which they undertook their apprenticeships? </p>
+          <p eId="para_97"> I will now reflect on the programme that spanned the last five years because we are here today to develop a new programme. There was an ambition to reach 10,000 new apprenticeships a year. In 2020, there were around 5,500 apprenticeships and we have reached 9,000 new entrants as of this year. Are the witnesses confident that we will reach the target of 10,000 apprenticeships annually for the next five years?</p>
+          <p eId="para_98"> The phases of programmes have been mentioned a lot. How many phases are there and how long is each phase? </p>
+          <p eId="para_99"> Mr. Grady mentioned life skills. Does training in life skills form part of every apprenticeship programme? If so, in what phase does it occur? Finally, what is the engagement level by apprentices?</p>
+          <p eId="para_100"> I wish to refer to another issue that was mentioned earlier. I was disappointed to hear that we have not reached the crucial target of 750 apprentices in the public service. I agree with what was said by the speakers earlier in that those are skills that we need not just in local authorities but, as we have heard, they are needed in Bus Éireann and the health service. I noted that the previous plan did have an ambition for the HSE to establish a new consortium to develop an NFQ level 5 apprenticeship for the occupation of healthcare assistant. We struggle to find healthcare assistants and consequently, provide work permits and hire internationally. The whole public sector should be encouraged that they meet their target and maybe the target should be individualised per public sector service. I mean local authorities, the HSE, ETBs and universities. In the past, universities all had tradespeople as part of their staffing cohort but now most of that work is done by subcontractors, which is a disappointment.</p>
+          <p eId="para_101"> My last question is on standards and accreditation.</p>
+          <p eId="para_102">SOLAS remains responsible for developing and setting curriculum and assessment. Does Mr. Browlee still have full confidence in the examination process, the integrity of the examinations and the accreditation of the courses?</p>
+          <p eId="para_103"> I saw some media reports last weekend about how there seems to have been a flaw in the examination process for one programme. In his introductory remarks, Mr. Brownlee stated SOLAS will introduce a rolling out of a new, revalidated curriculum with updated assessments. Is that because of that flaw, or is it a general review that would have happened anyway? That is happening for 25 craft apprenticeships. Should that be done that across all programmes? </p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_104">On the point about public sector organisations employing apprentices, we have three in SOLAS. We walk the walk in that regard. I will answer the Deputy’s question about assessment first, and then Dr. Trant can answer the Deputy’s wider questions around apprenticeships.</p>
+          <p eId="para_105"> Some issues have been raised with us regarding craft apprenticeship assessment, particularly at level 4 and level 6, which is when the provision is delivered by our technological universities. Essentially, we work on a paper-based exam system as the Deputy might have read in the press. I think that was what he alluded to. Somehow, some of those papers are leaked in advance of assessments. This is a major concern. As soon as we heard about it, we took action to revise and update the papers, but clearly there is a systematic flaw. They go in and somehow find a way out.</p>
+          <p eId="para_106"> As part of that revalidation process we are moving to an assessment bank approach. It was part of the plan anyway, because we acknowledge that a paper-based system has to be more robust. Students will do their assessments via an online platform. Nobody will know what questions they will be asked until they walk into the exam hall. This is a much more modern, technology-centred approach. That was in train anyway, but obviously, given the reports that have been raised with us, we are trying to fast track it as soon as possible.</p>
+          <p eId="para_107"> They are exams in phase 4 and phase 6 of off-the-job training. The Deputy asked how many phases there are. There are seven apprenticeship phases. In an electrical apprenticeship, there are 49 different points at which we check in on skills, competencies, demonstrations or tests to ensure people have the right competencies to be able to function effectively as tradespeople. It is only a small part of the journey, but it is very important and we are trying to sort it out.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_108">The Deputy’s first question was about potential apprentices and whether they can find employers. One of the things we did late last year was to set up on <i>apprenticeship.ie </i>a directory that publishes by apprenticeship, every employer hiring apprentices in every county. Guidance counsellors have found that very useful, along with potential apprentices as well. We update it every month. That has been very useful.</p>
+          <p eId="para_109"> Every year, there is a big World Skills Ireland event in the RDS, which is hugely successful. About 30,000 people go through the doors. We hear constantly over those three days from many, transition year, fifth year and sixth year students about their interest and the challenge of finding an employer.</p>
+          <p eId="para_110"> About 10,000 employers are active at any one stage. That is a tiny fraction of all the employers in the country. We definitely need to increase that number. We have organised things like the One More Job campaign, which targets micro-employers and asks them to take on either one apprentice or one more apprentice. That has been very successful, but we also need to look at incentives. </p>
+          <p eId="para_111"> It was mentioned by another Deputy that there needs to be more encouragement for employers to take on apprentices, whether that be one or one more, to increase the numbers. There is definitely a demand out there that is not being met. Ultimately, apprentices need an employer.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_53">
+          <from>Deputy John Connolly<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_112">Has the grad scheme been successful?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_113">It has. Employers say they would prefer if it was more. At the moment, it is €2,000 euro per apprentice per year, which makes a contribution, but they say they would benefit from more, especially to take on more apprentices. There is mentoring and assessment on the job involved. It is quite an investment that an employer has to make. That is an ongoing debate with employers, and will need to be addressed in the new action plan for sure.</p>
+          <p eId="para_114"> The craft apprenticeships have seven phases, but all of the 52 newer programmes have two or three days a week off the job each week, and that works very well. In the future, we will see a mix. The industrial electrical engineer apprenticeship, for example, offers both block release and day release. Employers have the opportunity to pick. That offers great flexibility, especially for smaller employers who do not want to have to try to release somebody for ten or 12 weeks. That is too hard, but they can definitely think about releasing somebody for a day or two days a week. That is the kind of flexibility we need to build into the system for the future.</p>
+        </speech>
+        <speech by="#BrendanSmith" eId="spk_55">
+          <from>Deputy Brendan Smith<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_115">I apologise that I missed the earlier part of the meeting due to another meeting I was attending. I wish to pick up on two or three points my colleague Deputy Connolly mentioned about the difficulties that face young people who want to be apprentices in getting an employer. I am thinking of the young people from vulnerable homes where there is no history of education or employment. I fear the difficulties and challenges facing that would-be apprentice in small communities. Anything that could be done to ensure he or she is accommodated would be very important. </p>
+          <p eId="para_116"> Deputy Connolly also mentioned healthcare assistants. In my own county, in Cavan Institute, there is a healthcare assistant course run in conjunction with the ETB and some of the private nursing homes. That was launched some years ago and is going well to my knowledge. I am sure it can be expanded, but the institute has pushed it as much as it can and has been successful. Local employers welcome it as well.</p>
+          <p eId="para_117"> With regard to people from the households where there are particular challenges, Youthreach is often not given the credit that it deserves for second-chance education. In my own constituency of Cavan-Monaghan, we have had a very strong Youthreach programme for many years. Our Oireachtas colleague Senator Diarmuid Wilson, was the co-ordinator in County Cavan, and from its early days it has been extremely successful. Does the apprenticeship programme target the graduates of the Youthreach programme? I have seen many of those young people go on to successful careers and further education as well, particularly in Cavan and Monaghan institutes. Some attend Dundalk or Sligo TUs subsequently, and achieve very good careers. These are people whose education career in its early days was very poor and looked very bleak. From that point of view, Youthreach deserves a particular emphasis to ensure those people that leave there go on to useful careers. </p>
+          <p eId="para_118"> I apologise if these issues have been covered, but Deputies Kenny and Connolly mentioned the need for more tradespeople in our local authorities, and Mr. Brownlee referred to the public service in general. Does SOLAS co-ordinate with the County and City Management Association on the needs of all the local authorities throughout the country? Is there an adequate spread of training facilities in all regions?</p>
+          <p eId="para_119"> Traditionally in the past, constituents in my county would have gone to Dundalk or Sligo and they still do. However, we thankfully have some training and apprenticeship facilities locally in our own two counties, there has been a welcome emphasis in recent years on apprenticeships. The numbers have grown and I compliment our witnesses and their organisation for what they have done to try to make apprenticeships more flexible and more attractive, but it goes without saying that we need to achieve a lot more. Is there an apprenticeship element within the proposed new colleges of the future in further education? Are they aligned totally? What co-operation and collaboration exists with training centres and colleges of further education in Northern Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:30:00+01:00"/></from>
+          <p eId="para_120">I will come in on one or two of the Deputy’s queries and will reply to Deputy Connolly as well. First, on healthcare assistants, the level 5 programme in Cavan Institute is run throughout a number of ETBs. It is an excellent programme. It is at level 5, and palliative care is included. It is an extremely effective programme. It is there and it is run in many locations. The apprenticeship model was a way to look at how we could increase that, and that still should be looked at because there is an opportunity there. It is an excellent programme; the Deputy is absolutely right. With regard to Youthreach, there are 31 schools in my own location and it is similar in other areas throughout the country, including many DEIS schools, but there are also ten Youthreach centres and three community training centres all under the Youthreach programme. We specifically run a targeted approach for the graduates and those in training in Youthreach to help them with their decisions on how to navigate the pathway into an apprenticeship or further education and training.</p>
+          <p eId="para_121">That is something we do in our own region and I gave a few examples of it earlier. It is probably replicated in all ETBs, I have no doubt, in Cavan, Monaghan, Mayo, Sligo, Leitrim, Waterford and Wexford as well. We assist with the progress because many of those young people will have a major award at level 4 and they are ready to take the step to level 5 or level 6 and beyond, and to keep going. It is something we do and we have lots of examples of that and how we do it. We also assist with pre-apprenticeship to help people going from Youthreach into pre-apprenticeship at level 5 in our colleges or training centres and then they can decide which is the right step for them in terms of apprenticeship. We do that and it is important. </p>
+          <p eId="para_122"> On the colleges of further education and training, the demand for apprenticeships at different levels is co-ordinated by the College of Further Education and Training in Dublin in the three county council areas that I represent and cover. Apprenticeship is an absolute cornerstone, along with all of the other part-time and full-time provision. On the question of involvement with Northern Ireland, I will hand over to Dr. Trant.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_123">We have been running a generation of apprenticeship competition at second level for the last number of years and we have very deliberately targeted Youthreach and community training centres as well. I actually started my career working in a Youthreach centre and am so aware of the opportunities and the really focused effort that needs to be put in to provide them. Two of the winners of this year's competition were from Youthreach in Mountmellick, two young men who developed a fantastic entry. They explored all sorts of apprenticeship opportunities, submitted their entry and won the award. We have developed a video and they are going to be on a poster campaign. That will have a very positive impact in that Youthreach centre and also more broadly because it sends a message that these opportunities are available and people should be considering them. There is the option to go straight into an apprenticeship or to do an access-to-apprenticeship course. It is a group that is so important as we build and provide these opportunities for careers.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_124">On the Northern Ireland point, we have really close ties. I will be meeting with Northern Ireland college colleagues at a PEACEPLUS event soon. Mr. Grady's ETB has experience of partnership projects and it is a big focus for us. On the further education and training college point, I have one brilliant example in Monaghan Institute. Cavan Institute is now going to be funded through the further education and training College of the Future funding call. The whole idea is to break those old legacy FÁS training centres and college of further education silos and bring them all together in one really high-quality learning environment that is just as good as any university that students can attend. That is the whole idea and apprenticeship is very much part of that.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_125">The structure in Mayo, Sligo, Leitrim is such that we have a county-oriented College of the Future and our management structure is focused on making sure that our training centre apprenticeship programme is integrated into our overall further education and training structure. As I mentioned earlier, we are involved in the development of some new apprenticeships in Mayo, Sligo and Leitrim, like many other ETBs. We have some existing ones that we are also collaborating with providers on. There are apprenticeships that are co-ordinated by other entities or other ETBs or institutions and we are a collaborating delivery body. For example, we are running the accounting technician apprenticeship through Mayo College of Further Education and Training. Regarding the national sales apprenticeship and the digital marketing apprenticeship, the latter has about a dozen public service apprentices on it, with a link person in the Department of further and higher education working on it. There are about six Departments involved in that apprenticeship. We are developing an immersive technology-based apprenticeship through Sligo College of Further Education and Training and a business operations apprenticeship through Leitrim College of Further Education and Training. These are just a few examples. My sense is that they are indicative of what is happening generally in the sector but I cannot speak for the whole sector in the way that Dr. Trant or Mr. Brownlee can.</p>
+          <p eId="para_126"> On the Northern Ireland question, likewise, we have close connections with South West College. Our colleagues in Donegal also have close connections and I think the same is true in Cavan and Monaghan. They have close links and alliances with colleges in the North.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_60">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_127">Good afternoon to everyone. By the time we get to the bottom of the list, most of the questions have already been asked but I echo the concerns of my colleagues around low wages. I was recently talking to a young man of 23 who decided to take up an apprenticeship, but receiving only €7 or €8 per hour made it very difficult for him. I am also concerned about the delays in phase 2. Mr. Grady said that apprentices should not be penalised in respect of their wages if there is a delay but, unfortunately, that is not what is happening. Many were left on the lower wages until they had completed phase 2. </p>
+          <p eId="para_128"> In his opening statement, Mr. Brownlee talked about the growth in participation by under-represented groups, including the Traveller community, ethnic minorities, women and so forth. How do the organisations target people within those groups and do they measure it? When they target people to take up an apprenticeship, do they then ensure that they complete it? We have a very low workforce participation rate among people with disabilities in this country. I would welcome anything that can bring people with disabilities into the workforce and ensure that they stay in it. Traditionally, participation of women in the craft industries would have been quite low. Have we seen an increase in that or are the increases in female participation in other types of apprenticeships, such as accounting technician, for example?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_129">Dr. Trant has driven a lot of those access initiatives so I will hand over to her in a second. Part of the message that we hope to get across today is that we cannot separate the apprenticeship stuff from the wider further education and training activity. That is so important, particularly when we are talking about access and inclusion, to getting people in the door, into a learning environment and on a pathway that can take them into apprenticeship or into really interesting areas of work. One in ten adults in Ireland is involved in further education and training, an apprenticeship or a construction skills team. It has grown by about one third over the last five years and that is a really important footprint that we can build on now. </p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_130">In the action plan, one of the key planks is about apprenticeship for all and access. One of the early things that was done was the setting-up of an access and inclusion subcommittee, which includes representatives of the Irish Traveller Movement, of AHEAD, the disability movement, and of the Irish Refugee Council, representing minorities. That group has been meeting very regularly and has a work plan. The apprentice survey that we completed last year was co-designed with that group. We asked questions about background and so on and for the first time ever we got feedback on the profile. The Irish Traveller Movement, for example, told us that the figures tallied. A total of 34 apprentices had identified as being from the Traveller community. The Irish Traveller Movement said that the majority of those would not have so identified to their employers but would do so in an anonymous survey. We need to keep building and developing that. Similarly, we need to start building that capture of data in a very robust and anonymous way, through registration, so that we can really start to track it and see it. I was involved when in that when it was introduced in higher education. Asking those questions has been really powerful as a way of focusing and driving policy.</p>
+          <p eId="para_131"> On women, the Senator is right about having more women in the traditionally more male-dominated areas like finance, accounting and so on. The overall numbers show that about 9% of apprentices are now women but only about 2% of craft apprentices are. There are still some craft programmes where there are no women at all yet. We have been doing a lot of work on this. The Senator has probably seen some really high-profile women, including the Laois Rose of Tralee, talking about being a green craft apprentice and the opportunity that provides. We are really trying to amplify those voices and stories and to provide encouragement to others through actual women who have gone through apprenticeships and have really successful careers. Getting employers on board is also very important. We got some very interesting survey feedback from apprentices about some of their experiences on construction sites and about whether they are sufficiently inclusive and welcoming of women. The answer is that a lot of them are but there is still work to be done. We will be doing a follow-up over the autumn with employers and briefing them on that feedback. We will be working with the Construction Industry Federation because there is work to be done here. We will be asking it what can be done with the particular feedback we got. It is ongoing work that is incredibly important. I would expect to see the whole inclusive element of apprenticeship for all featuring equally strongly in the next action plan. </p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_63">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-25T13:40:00+01:00"/></from>
+          <p eId="para_132">The witnesses mentioned a figure of 5,236 new apprenticeships in 2020 and said that the figures have grown since. </p>
+          <p eId="para_133">That figure seems very low. Was it much higher earlier? Did the recession cause a drop-off in the number of apprenticeships?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_134">It was a little bit above that but not much. It might have been 6,000 a year. That was obviously a Covid year so it was restricted but they were-----</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_65">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_135">If you were to go back ten or 15 years prior to that, would the figure have been much higher?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_136">The highest figure ever was in 2006, when it was approximately 8,000. We actually passed that in 2023. As the Senator will know, it dropped all the way down to under 1,000 when the worst of the recession hit so it was all about building it back up. Over the past two years, the figure has been higher than ever before, as has the population.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_67">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_137">Deputy Ó Súilleabháin mentioned Germany earlier. There are other countries with very high levels of apprenticeships. Do SOLAS and ETBI do comparisons with other countries? Do they look at their models to see if there are lessons to be learned as to how to do things differently?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Joseph Collins<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_138">We have organised some mobility trips for training centre managers to look at that. Last year, a trip to the Netherlands was organised for that very purpose. We have secured some EU mobility funding and are working with Léargas to try to embed that culture of learning from best practice right across Europe.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_139">We have links with Cedefop and the European Commission, which have done a lot of work on this, and with the European vocational education and training groups. All of those connections are there.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_140">The Irish standards-based craft apprenticeship model is a renowned and very good model. It is aligned with Germany and other countries.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_141">It is the Chair's turn to ask a few questions. Back in the day, I went to what was then called the tech, which then became a VEC school, so I am the proud product of an ETB school. I also worked in Cavan VEC back in the day so I have a vested interest. I also come from a family of tradespeople so the success of all of this is very important and personal to me. There has been some great discourse here today.</p>
+          <p eId="para_142"> I will go back to Deputy Connolly's queries on accreditation and the standards we are talking about. Accreditation and trust in that accreditation is very important. I want to dig down into the actions the organisations are taking in that regard. There were media reports that people got their exam papers in advance. Leaving certificate exams are also paper-based so that cannot be an excuse for the release of exams. Accountability goes to the core of trust in a system. These are really important jobs. These people will be fitting boilers and dealing with high-voltage electricity. Is there full confidence in that system? What are the witnesses doing to ensure everyone else has full confidence in it in light of those media reports?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_143">There is full confidence that the apprentices we produce and who graduate have all the requisite skills to be very successful tradespeople. There is lots of evidence that they are valued not just in Ireland, but internationally. The issue of leaked assessments is probably our number one concern and priority at the moment. As I said earlier, the plan in the medium term or as quickly as we can make it happen is to introduce assessment banks so that you will never be able to predict what questions are coming up in your practical or theory exams at phases 2, 4 and 6. That is where we are moving to but we cannot magic it into existence overnight. It needs to integrate with all of the IT systems in the ETBs and TUs. That is the medium-term approach. In the interim, our legal services partners are helping us try to identify how this can happen, how people can leak papers, how they can be made available on openly accessible websites and how people giving grinds can have some type of knowledge of the questions that are coming up. Those are the types of concerns we have. Our partners are trying to give us that accountability. The encouraging news is that the attention that has been brought to the issue probably means that anyone who was involved will now be very aware that this is in the spotlight. We cannot find any kind of relevant information live on the Internet or the web or whatever it is called these days. We are also doing that. We are also working to validate the 49 different skills check-ins across apprenticeships to get further confidence. Apprenticeship is not just about one exam on one day; it is about checking in across a four-year period and making sure that people come out with all the skills they need to do their jobs.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_144">Was the piece in the newspaper the first time SOLAS had heard of this examination leak?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_145">The assessment issue or challenge is there. A Deputy asked whether we were planning to change the approach to assessment before we heard about this. We absolutely were. It is all part of that modernisation and using technology.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_146">Internally, had there been any-----</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_147">There was the bit in the press and a protected disclosure was made to us and to QQI, the quality and qualifications body. We are working very closely with QQI.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_148">That was my next question.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_149">We have protocols with the ETBs and TUs. If any breaches or assessment issues arise, there is a set of actions we take to make sure that everything is covered.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_150">To add to that, with regard to phase 2 and ETB locations, apprentices spend 22 weeks with the instructor working on practice and theory. The protocols around access to that assessment, including how many papers go in and how many come out, are very tight in the ETB training centres. Obviously, things can happen but there is a lot of protocol around the security of assessments.</p>
+          <p eId="para_151"> One of the most important things about the apprenticeship system in Ireland is its reputation and its quality. Deputy Connolly brought up the question of the next action plan but we did not quite get to it. This action plan is very important for the reputation of the apprenticeship system. People have brought up payments and other things. There are authorised officers employed by ETBs to register the apprentices and the employers and to watch how things are going the whole way through. If apprentices need access to their authorised officer because there is a problem, that facility is in place. It is not exactly what the Deputy was talking about in terms of scale but it is very important. It is very important to mention that role in the new action plan. In addition, the plan will also address quality assurance and the future quality assurance framework to ensure the reputation is maintained and is as good as it was.</p>
+          <p eId="para_152"> The other important issue the Deputy raised in respect of the new action plan is the presence of a sustainable funding model to make sure the reputation, the quality and everything else are right. We have an issue this year, which Mr. Brownlee mentioned and Dr. Collins spoke about in his statement. We are hopeful that it will all be rectified. As Mr. Brownlee has said, over the coming weeks, we will be working with SOLAS and the individual ETBs in respect of phase 2 payments to get people through and ensuring that the increases that have been confirmed for phases 4 and 6 will come in a timely manner. This is in addition to the other work that is going on.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_153">If we were making recommendations for the next action plan, one of them would be that the whole area of assessment needs to be looked at again. That has been initiated. Technology has moved on. The revalidation is happening. The ambition of the existing action plan was to have a new single system and for quality to be a key objective. We have made progress but we are certainly not there. Having been through the process of designing new apprenticeships and getting them certified, I know it is expensive and labour-intensive work. It takes a lot of work on the ground to maintain that quality. That is very important to us.</p>
+          <p eId="para_154"> On finance, it is key that ETBs have certainty around finance in the coming weeks because we are in a difficult position with that at the moment. We are confident that it is being sorted out.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_81">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-06-25T13:50:00+01:00"/></from>
+          <p eId="para_155">Once apprentices complete their schemes, the outcomes are very positive.</p>
+          <p eId="para_156">I agree with Deputy Connolly on having an overseer. That is important. If we are going to be moving apprentices into the public service, that has to be put in place before we start moving a lot of people.</p>
+          <p eId="para_157"> I have a question for the ETBs, which I sent to all ETBs around the country. Would the officials have figures for the number and type of courses that have been discontinued in 2024 and 2025?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_158">I have the request. We are having a look at the moment into anything discontinued. We look at changing and moving things every year. There is probably more volume in terms of what is new. We have to look at whether it is a case of discontinued awards or courses that we no longer run. We are in the process of providing that information. I think it came in yesterday evening.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_83">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_159">I refer to the drop-out rate in apprenticeships, which is very high. I assume it is related to wages. Are exit interviews done with all the people who leave apprenticeships to find out why they are leaving?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_160">There is a piece of work under way on that completion rate, which I mentioned earlier. The piece we have not done yet but will need to do is looking at people who do not continue and the reasons why. We did that survey late last year and are completing it now. We are very conscious that it went to current apprentices in the system. We were not reaching those who had left for whatever reason. That is going to be a really important follow-up. We do not have anything on it yet but it is something we are very committed to doing. It is a very small non-completion figure relative to all other education and training, but nevertheless, it would be a really important bit of feedback on the system as well.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_85">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_161">Yes, it is still significant.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_86">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_162">I used to teach in ITB and more latterly in TU Dublin. My experience there was sometimes disappointing in the sense that there would often be students in the classes who were really square pegs in round holes. They were perfectly able to get through it but it was not a good fit for them. That is part of our culture about everyone having to go to college. If people do not succeed at higher education, do we have pathways so they can move into apprenticeships? Is there consideration of their credits or ways they can transfer across? There has been mention of a lot of programmes in which people could potentially make that transfer across and doing so might be more suitable for them. What are the organisations doing to try to reach to schools and equalise the viewpoint of apprenticeships? Many of the programmes that are available and being mentioned are what the students would be interested in, but the students are being pushed towards college. We end up with that square peg in a round hole situation. It is particularly poignant because students' self-esteem is hit if it has not worked out even if they are actually perfectly fine. It is just that the teaching and learning methods did not suit them. What is being done to address those challenges?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_163">Our authorised officers visit all of our schools in TY or fifth or sixth year. It is not just about higher education but all of the options that are available to them. We have 31 post-primary schools in DDLETB, so we reach those, while all the other schools have direct links into our training centres and further education and training colleges. The links between the guidance staff in schools and the recruitment or authorised people in the training centres and colleges are a big outreach for us. We see that many people picked the wrong thing. It is not that they cannot do it. Rather, they did not do what they really loved or wanted to do. We have a route then where they come back into guidance in our further education and training service.</p>
+          <p eId="para_164"> It depends on when they leave their current courses. I do not like the phrase "drop out". If they leave higher education in first year, whether they can join in or have to start the following September depends at what point they leave. Some of the programmes will be modularised and so on. It is a priority for us to make sure that with the very high rates in higher education, we are there and ready to assist people with the guidance, support and help to succeed. They might then go back into higher education when they have done a year or two. That is what we find and what evidence shows.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_88">
+          <from>Deputy John Connolly<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_165">There was one or two things that were not answered after my previous contribution. We do not have data on those who do not find an employer. We do not know how many young people seek an employer for an apprenticeship and do not find one. If we had some way of gathering that information, it would be helpful. Are we confident that we can get to the 10,000 figure that is in the existing plan, in light of the recent commentary and uncertainty about existing funding and funding into the future? Will there be a challenge regarding the staff that our guests' organisations need in terms of tutors and teachers?</p>
+          <p eId="para_166"> Going back to the public sector point, I should have said that the existing plan had an objective to undertake an assessment of skills needs by quarter 1 of 2022, which was to inform a sector-wide apprenticeship recruitment plan for delivery by quarter 3 of 2022. That was specific to the public sector. I gather that did not happen, or maybe it did. We should possibly do that before we develop the new plan. I am not sure if that is our guests' remit but it should be looked at.</p>
+          <p eId="para_167"> I welcome Ms Murphy's point about authorised officers. In the new plan, that role should be extended and should include measures to ensure that the standards they deserve are adhered to in the employment they work in. In fairness to the employees, we need some mechanism to get feedback from them. Perhaps we have something already. Mr. Grady spoke about the life skills end. A number of people have made this point. The education system is really important for developing skills but also for developing people. Maybe we could hear a bit more about that.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_168">On the bit about trying to get feedback from those who do not access employers, there is a regional skills fora network and we work very closely with guidance counsellors at second level. We are getting a certain amount of anecdotal information but it is a challenge to get a handle on that. The feedback we are getting is that mechanisms we have put in place, such as listings of employers by apprenticeship, are definitely helping. It is probably more the case that there are fewer employers. That is about growing the employer numbers.</p>
+          <p eId="para_169"> On the target of 10,000 registrations, there is actually a target of 12,500 in the programme for Government beyond this year, which is great. We hit 9,352 registrations last year, so we are on target as long as the numbers keep growing. We are watching registrations for this year very closely. It is down slightly on the craft side, by about 4% on this time last year. What we are hearing back from around the national apprenticeship alliance table is that employers are watching. There are some big projects, and with the global circumstances, there is a little bit of an impact. We are going to watch that very closely. We are hopeful that we will hit that 10,000 mark. Funding is going to be a really important part of that.</p>
+          <p eId="para_170"> The Deputy's point about the role of the authorised officers goes to the heart of the quality of the system. They have the ability to go into an employer's premises and talk to the apprentice and the employer. That is what they are legally enabled to do. We have about 80 of those personnel around the country but we probably need a lot more. There are 30,000 apprentices and close to 80 programmes with 10,000 employers. We need enough to be able to support that. It is very much part of the new quality assurance framework, examining that and ensuring we can be confident that the quality of the apprenticeship is consistent around the country.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_171">There was a public sector recruitment plan that was acted upon.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_91">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_172">In the agriculture sector, I see there is only arboriculture listed. It is something we need at the moment. There is a huge crisis and a mass exodus of young farmers. Actually, it is not really an exodus because they are not going into it. Fewer than 5% of young people now are going into farming.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T14:00:00+01:00"/></from>
+          <p eId="para_173">We have two farming apprenticeships: farming technicians and farming manager. I am sorry to cut in.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_93">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_174">I did not see those apprenticeships on the list of agriculture apprenticeships. We definitely need those apprenticeships because we all depend on Irish farming for our food three times a day. It has been recognised by farmers' associations recently that people leaving the sector represents a huge crisis. Is there anything more we can do to keep young people in the sector and encourage them? Most farmers do not encourage their children to go into farming because it is a life of poverty.</p>
+          <p eId="para_175"> I see that two of the courses listed are pipe fitting and a level 6 four-year course on industrial insulation. Do our guests have information on retrofitting courses? Do the courses tie in with retrofitting? The training centre in Enniscorthy provides training courses on nearly zero energy buildings, NZEBs. The centre is ranked alongside places like New York and Montreal. Who would have thought that Enniscorthy would be spoken of in the same breath of such places in terms of training? Do our guests have information on that in terms of retrofitting? I ask because retrofitting will be a big area in the future.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_176">The Deputy is right in what he said about Enniscorthy. It led the field by providing the first NZEB retrofitting courses in Ireland. The first centre was established in Enniscorthy and we now have six centres across the country. Actually, the sector is now called zero-energy building, ZEB, techniques. Over 7,000 people have been trained in retrofitting across the six centres, including in Enniscorthy. I think the creation of a new facility in Enniscorthy is being considered because the venue is in quite a small location.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_95">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_177">Excellent. I remember that, a few weeks ago, one of Sinn Féin's Deputies, Máire Devine, had a group of young trainee nurses in from St. Patrick's mental hospital. They made a very good presentation in the audiovisual room. My understanding is that those trainee nurses were not paid for part of their training. Obviously, most Irish nurses have emigrated to places like Sydney and Dubai. There is a huge crisis in terms of keeping our own nurses here. A lot of them are looking for a reason to come home. Our guests probably saw media reports showing a protest outside Sydney Opera House and protesters carrying a banner with the phrase "#GIVE US A REASON TO COME HOME". Have our guests given consideration to the nursing sector? Obviously, I cannot say for certain but I got the impression from speaking to the trainee nurses that they were not getting any payment.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_178">That specific issue concerns higher education and it is dealt with by the HEA. We have tertiary education programmes in place now to try to get more people into nursing. I believe Mr. Grady runs one of them.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Tom Grady<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_179">The three ETBs in the west and north west - Donegal, Galway and Roscommon, and Mayo, Sligo and Leitrim - have a collaboration with the Atlantic Technological University. One of the main tertiary programmes that is designed and delivered by both of us is nursing. Places on the tertiary programmes have been very healthy over the last couple of years. In our case, it is based on a post-leaving certificate delivery and higher education delivery. It does not come under the canopy of an apprenticeship at present. </p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_180">It is an issue for the ATU. I heard about the pay issue, but it is not something in which we are involved.</p>
+          <p eId="para_181"> On agriculture, we will meet Teagasc tomorrow to discuss how we can work together to provide farming programmes, not just an apprenticeship, but in further education as well, to try to address the issue raised by the Deputy. </p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_182">On the collaboration with higher education in general, we all work closely with our local technological universities and universities.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_100">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_183">That is good to hear.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_101">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_184">I thank all our guests for their interesting comments. Every day is a school day at all committees.</p>
+          <p eId="para_185"> I worked in education for years, including in a school completion programme. We always wanted young people to remain in education for as long as possible. I am delighted that, over the last 30 years or so, the prevalence of apprenticeships has increased. However, people were often snobbish about undertaking an apprenticeship and claimed that it was not like going to college. As people have said, apprenticeships were not treated the same, but I definitely think apprenticeships are being treated the same now. In fact, the more options we give people to do that, the better. I was really taken by the fact that there is no debt at the end of doing an apprenticeship. I worked in DCU teaching teachers, so I am aware of the fact that teachers are in college for a long period every single week and when they leave college, they have no money. They work weekends but their course is exhausting. I have thought to myself, and have spoken to lots of colleagues, that it would be ideal if, as with what was said nursing, there was that element of an apprenticeship. When these students are working in schools and hospitals, they are actually working. Mr. Brownlee said that pay was under the remit of the HEA, but what can be done to bridge the pay gap?</p>
+          <p eId="para_186"> On young people with learning disabilities, such as dyslexia and dyscalculia, are they supported through their apprenticeships to ensure they get the best out of their courses? They are very supported in school, further education and higher education. How does it work at an apprenticeship level?</p>
+          <p eId="para_187"> I might come back in afterwards.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_188">On parity of esteem and how to bring more people in, it was a massive milestone a few years ago to get all of the apprenticeship and further education options on the CAO form alongside the university courses. It made people think about all of their options at the same time rather than having to wait to see if they got into university or college and then thinking about an apprenticeship or further education. That is really important. We have talked about the new tertiary degree programmes where people start in further education, FE, and then finish in higher education, HE. Let us consider apprenticeships, PLCs and traineeships. Demand for the types of school-leaver programme that we offer has grown by 14% over the last four or five years. We are moving the dial gradually and young people are starting to realise they can do other things that are more suited to what they are passionate about or have an interest in or are more relevant to where they want to be in ten years' time.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_189">On learning issues such as dyslexia and so on, and colleagues in the ETBs may comment as well, there is a whole range of supports that are available. It was confirmed in the recent survey that there is a slightly higher proportion of apprentices than in the overall system who identify as having some sort of a learning issue. As a result, there is a very proactive offer to apprentices to provide extra supports in terms of writing, maths and so on. There are other disability supports, too. The same goes for higher education. There is a good wraparound. However, we have heard back from colleagues that the challenge is apprentices putting their hand up in time. Sometimes, it is only when apprentices have not succeeded in an assessment when they realise they need a bit of help. There is a constant piece of work to encourage and ensure apprentices know there are supports available to them and then for them to access supports. The situation has improved a lot.</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Ms Caitríona Murphy<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_190">Yes. It may only be when apprentices reach phase 2 in a training centre that they feel comfortable enough to ask for help if they have a diagnosis or whatever may be the case. We then provide supports. We always try to meet the needs of all of our students and learners. Apprentices may experience some difficulty with maths, literacy and different things, so our adult education services in the past have assisted, nice and easily, for the benefit of the class. There is a high maths content in some of the apprenticeship schemes. We meet people where they are at and provide whatever supports we can.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_105">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_191">I have two last questions on community training centres, Youthreach and DEIS schools. Over the years, I have been involved in Youthreach and CTCs and encouraged young people to go to them. What QQI level must applicants attain before they can be accepted for an apprenticeship? Years ago, people could train a bit younger. Is the age now a bit older? </p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Dr. Mary-Liz Trant<recordedTime time="2025-06-25T14:10:00+01:00"/></from>
+          <p eId="para_192">There is a range, Deputy. For craft apprenticeships, people officially must have attained a minimum of a junior certificate education. What we have found over the years, especially as the numbers completing the leaving certificate has increased, employers tend to look for leaving certificate education, be that the leaving certificate applied or the leaving certificate established. Officially, the minimum educational attainment level to undertake a craft apprenticeship is the junior certificate. For newer programmes, it all depends on the level.</p>
+          <p eId="para_193">Some of them are degree-level programmes. Each apprenticeship has a minimum entry requirement and is designed to ensure people will have the ability to succeed.</p>
+          <p eId="para_194"> Recognition of prior learning is built in to all programmes. Deputy O'Connell mentioned people who have done other things and want that to be credited. Recognition of prior learning is an established part of the entire apprenticeship system. There may be advanced entry or certain modules may not have to be completed - it varies. On <i>apprenticeship.ie</i>, we often encourage potential apprentices and guidance counsellors to find out what the entry requirements are and what the pathway to securing the apprenticeship is if someone is interested in doing an apprenticeship.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T14:20:00+01:00"/></from>
+          <p eId="para_195">I thank the witnesses. As they will have seen from the contributions of members, there is huge interest in and support for apprenticeships. We want them to succeed. The Minister spoke in the Chamber this morning about apprenticeships and the €40 million gap. He said that no courses will be cancelled, so the witnesses can take that message home in their pockets. Classes will not be cancelled and we will have full enrolment in apprenticeships, which are a big deal for the Government and this committee. They are about future-proofing the workforce and the economy.</p>
+          <p eId="para_196"> The great thing about apprenticeships is that they are adaptable and dynamic and can be created to suit something specific. I attended an incredible Skillnet event in Drogheda this morning which showcased how to create courses to adapt to the idea of 3D printed houses.</p>
+          <p eId="para_197"> We have so much to offer and so much more we can do. The ETBs and SOLAS have the support of this committee. I thank the witnesses for their engagement and time and the answers they gave.</p>
+          <p eId="para_198"> I propose that the committee suspend briefly to allow the witnesses to leave. We will then resume in private session to deal with housekeeping matters. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_8"> The joint committee suspended at 2.22 p.m., resumed in private session at 2.25 p.m. and adjourned at 2.42 p.m. until 6 p.m. on Tuesday, 15 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

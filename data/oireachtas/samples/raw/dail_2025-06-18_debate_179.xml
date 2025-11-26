@@ -1,0 +1,865 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-06-18/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-06-18/debate"/>
+          <FRBRdate date="2025-06-18" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_education_and_youth"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-06-18/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-06-18/debate/mul@"/>
+          <FRBRdate date="2025-06-18" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-06-18/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-06-18/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-23" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="FionntanOSuilleabhain" href="/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29" showAs="Fionntán Ó Súilleabháin"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="HelenMcEntee" href="/ie/oireachtas/member/id/Helen-McEntee.D.2013-03-27" showAs="Helen McEntee"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="RuthCoppinger" href="/ie/oireachtas/member/id/Ruth-Coppinger.D.2014-05-23" showAs="Ruth Coppinger"/>
+        <TLCPerson eId="RyanOMeara" href="/ie/oireachtas/member/id/Ryan-O'Meara.D.2024-11-29" showAs="Ryan O'Meara"/>
+        <TLCPerson eId="ShaneCurley" href="/ie/oireachtas/member/id/Shane-Curley.S.2025-01-29" showAs="Shane Curley"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Justice." href="/ie/oireachtas/role/minister/justice." showAs="Minister for Justice."/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM OIDEACHAS AGUS ÓIGE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Education and Youth</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-18">Dé Céadaoin, 18 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-18">Wednesday, 18 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RuthCoppinger">Ruth Coppinger</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ShaneCurley">Shane Curley</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JenCummins">Jen Cummins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GarethScahill">Gareth Scahill</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#RyanOMeara">Ryan O'Meara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Fionntán Ó Súilleabháin.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#CathalCrowe">Teachta / Deputy Cathal Crowe sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i> The joint committee met in private session until 12.52 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Engagement with Minister for Education and Youth<recordedTime time="2025-06-18T12:50:00+01:00"/></heading>
+        <speech by="#CathalCrowe" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T12:50:00+01:00"/></from>
+          <p eId="para_15">l welcome everyone to today's meeting. Members attending remotely should put themselves on mute when they are not contributing so that we do not pick up any background noise or feedback. As usual, I remind all of those in attendance to ensure that their mobile phones are on silent mode or switched off.</p>
+          <p eId="para_16"> Members attending remotely are reminded of the constitutional requirement that, in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. If they are within the precincts of Leinster House, they are protected by absolute privilege in respect of the presentation that they make to the committee. This means that they have an absolute defence against any defamation action for anything they may say at the meeting. However, they are expected not to abuse this privilege, and it is my duty as Cathaoirleach to ensure that this privilege is not abused. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> Members are also reminded of the long-standing parliamentary practice to the effect that they should not criticise or make charges against any person or entity outside of the Houses or an official of the Houses either by name or in such a way as to make him, her or it identifiable.</p>
+          <p eId="para_18"> On our agenda for today's meeting is an engagement with the Minister for Education and Youth, Deputy Helen McEntee, on her policy priorities. Before we proceed, I put on record that Senator Gareth Scahill was elected Leas-Chathaoirleach of the committee at our last private meeting. I publicly congratulate Senator Scahill on his appointment and wish him all the best in his new role.</p>
+          <p eId="para_19"> The Minister is very welcome to the committee. I thank her for coming here today. We look forward to working constructively with her. I will allow her five minutes to read her opening statement and we will then proceed to questions from members.</p>
+        </speech>
+        <speech by="#HelenMcEntee" as="#Minister_for_Justice." eId="spk_2">
+          <from>Minister for Justice. (Deputy Helen McEntee)<recordedTime time="2025-06-18T12:50:00+01:00"/></from>
+          <p eId="para_20">I look forward to working with everybody on the committee in the years ahead. I thank the committee for the invitation to attend it to discuss a broad range of matters that are being advanced by my Department to meet challenges and support the delivery of a world-class education system, one that breaks down barriers and, more importantly, ensures every child has the opportunity to achieve his or her full potential. An education system that wraps around all children and young people in every community is essential if we are to achieve the goal. I want the outcome of my time as Minister for Education and Youth to be greater equity and excellence in education for all children and young people. I look forward to working with all my colleagues in that regard.</p>
+          <p eId="para_21"> In the area of special education, I want to support as many children with additional needs in mainstream provision as possible. It is also important to understand that there continues to be a strong and growing need to provide further special classes and special school places for children with more complex needs - in other words, make sure every child has access to the place that is most appropriate for him or her.</p>
+          <p eId="para_22"> In mainstream schools by September 2025, there will be more than 3,700 special classes supporting more than 21,000 children. This is a doubling of the classes in the past five years. Some 400 new special classes will open in the coming September. The Minister of State, Deputy Michael Moynihan, and I have asked the Department and the National Council for Special Education, NCSE, to bring forward all timelines for the 2026-27 school year to ensure better planning for parents and that children are accepted into new special classes at a much earlier point. This will ensure that the majority of new special classes for the next school term are confirmed a number of months ahead of the timeline this year. The key new measures to achieve this are, first, setting out a clear aim for the NCSE to sanction the majority of new special classes for the 2026-27 school year by 31 December 2025 and providing an indicative timeline for schools on how this could be achieved. The second is a requirement for the NCSE to be notified by 1 October 2025 by those parents seeking a special class or special school placement for a child or young person in September 2026, bringing the timeline forward by four months compared to this year.</p>
+          <p eId="para_23"> At post-primary level in particular, we intend that large schools will grow to four special classes each. In 2025, we focused on those primary schools with eight classrooms or more with no special classes and we have secured agreement from many of them to open classes for this year. This was important so that all schools in an area supported children with special educational needs.</p>
+          <p eId="para_24"> In terms of therapeutic supports for children, the programme for Government includes a commitment to introduce a national therapy service, NTS, in education, commencing in special schools and subsequently extending to schools with special classes and mainstream provision. This service will be delivered by the NCSE, building on its previously completed work on the school inclusion model, SIM, and, more recently, the educational therapy support service, ETSS.</p>
+          <p eId="para_25"> In terms of educational disadvantage and social inclusion, my Department has developed a number of universal and targeted measures that support attendance and provide valuable resources to schools to help support children and young people at risk of poor attendance. These measures are included in the delivering equality of opportunity in schools, DEIS, programme, education initiatives in Dublin's north-east inner city, and a summer programme for students with complex special educational needs and those at risk of educational disadvantage. I am committed to ensuring that the necessary resources are in place to support and retain children and young people in school to completion of the leaving certificate so that they can reach their full potential.</p>
+          <p eId="para_26"> The DEIS programme aims to address concentrated educational disadvantage at school level. The gap in retention rates between DEIS and non-DEIS schools halved from 16.8% to 8.4% since the programme began, but I want to do more in that regard. All DEIS urban primary schools and all DEIS post-primary schools are included in the home school community liaison scheme, which currently serves 687 DEIS schools, catering for approximately 207,000 children and young people. As Minister, I am determined to further close the performance gap between DEIS and non-DEIS schools and introduce more innovative solutions to tackle disadvantage and make sure that we can act in a more targeted way to reach children who are not in a DEIS school. I will publish a new DEIS plan in 2025 and set out the actions I will take to further tackle educational disadvantage. This will include the development of a new DEIS+ scheme to target those schools with the very highest levels of disadvantage. That is a priority for me.</p>
+          <p eId="para_27"> In my first speech in the Dáil as education Minister, I outlined for the House the huge and unacceptable increase in absenteeism in schools since the Covid-19 pandemic. The increase is more stark in DEIS schools, with more than 40% of students now missing more than 20 days of school each year. This is a hugely alarming trend. I have already outlined a number of measures to try to tackle this trend, including through an amendment to the Education (Welfare) Act 2000, to strengthen statutory supports for young children. This would bring children under the age of six, who are currently not included, who attend primary school within its scope to ensure earlier intervention. Other actions include expanding the capacity of the Educational Welfare Service and the school completion programme. The new DEIS plan will be aligned with these measures.</p>
+          <p eId="para_28"> The Government has also recognised that the cost of preparing children for school can be a significant barrier to the participation of children and young people in education. I am pleased to say that, from the start of the 2025-26 school year, for the first time ever, all children and young people enrolled in primary, special and post-primary schools in the free education scheme will be provided with schoolbooks and core classroom resources.</p>
+          <p eId="para_29"> School transport is a service much valued by families. By providing a safe and reliable service to their nearest school of eligibility, it ensures that children living in rural and remote areas are not disadvantaged by distance. More than 173,000 pupils benefit from the scheme each day, making it a core component of equitable school access nationwide. There is a very clear commitment to expand the service further.</p>
+          <p eId="para_30"> It is also important for families to have choice for the model and ethos of school their children attend. There are 172 primary schools with a multidenominational or interdenominational ethos.</p>
+          <p eId="para_31">This includes 32 multidenominational primary schools operating where previously there was denominational provision only. The programme for Government commits to seeking to increase choice for parents by ensuring that families can access multidenominational, non-denominational and faith-based education. To help achieve this, my Department will launch a survey of primary school communities shortly.</p>
+          <p eId="para_32"> Regarding teacher retention, Government is fully committed to ensuring that every child has a positive school experience, with access to qualified and engaged teachers who are dedicated to supporting their learning. This is, of course, a priority for all of us. There are more qualified teachers than ever working in the education system. Between 2018-19 and the most recent school year of 2023-24, there was record investment by Government. The number of teaching posts has increased by 10,408, with an additional 5,339 primary and 5,069 post-primary posts. Measures introduced have led to a 20% increase in the number of student teachers graduating between 2018 and 2023 and an increase of more than 30% in the number of teachers registered with the Teaching Council. I was delighted to announce that I will introduce earlier permanent contracts for teachers and will outline further measures in the coming weeks and months to further increase teacher supply.</p>
+          <p eId="para_33"> On the schools building programme, the Department of Education and Youth has a strong track record of delivery, underpinned by a robust forward planning process. The provision of required school places, particularly for children with special educational needs, is an absolute priority. The Department is delivering a record level of investment in school buildings. Since 2020 alone, more than €6 billion has been invested in schools throughout the country, involving the completion of more than 1,375 school building projects.</p>
+          <p eId="para_34"> To conclude, in the programme for Government, we have given a clear commitment to hold a convention on education, bringing together all the education stakeholders. This was done 30 years ago, and many of the actions that came from that laid the foundations for the agencies and structures in the school system now, and they have stood the test of time. As Minister for Education and Youth, I want to make sure that, by bringing together all of our partners once again, I can set out a vision for our education system in the years ahead.</p>
+          <p eId="para_35"> I welcome the opportunity to speak to everybody here today and look forward to hearing their comments.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:00:00+01:00"/></from>
+          <p eId="para_36">I thank the Minister for her opening statement and I thank her officials. We will proceed to members’ questions. First up is Deputy Ruth Coppinger. There will be a timer clock. Everyone has seen in other committee meetings that some members speak for 4.5 minutes and then expect the Minister to be able to answer everything in 30 seconds. Please be cognisant of that. When we get to the end of a member’s time, I will move on to the next member regardless. I ask them to manage their own time slots and we will have a better flowing meeting. If we get to everyone, we will have a second round of questions for members. I will be fair to everyone. The slot is six minutes.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_4">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-06-18T13:00:00+01:00"/></from>
+          <p eId="para_37">Can I clarify how the time is used? If a member asks the Minister something and she answers, is that part of that member’s six minutes?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:00:00+01:00"/></from>
+          <p eId="para_38">Members are in possession of the time. When the six-minute clock runs out, I will allow a few seconds, like we do in the Dáil Chamber, for a wrap-up or whatever. However, I will not allow seven or eight minutes. It will be pretty rigid, and I will be fair to everyone. Members might get an extra 15 seconds or so, and then we will move on to the next member. Six minutes is for questions and answers, so it is shared time between the member and the Minister.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_6">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-06-18T13:00:00+01:00"/></from>
+          <p eId="para_39">The first topic that is absolutely urgent is special needs. I think everybody here will agree about the desperation on the part of parents who still do not have school places for autistic, neurodivergent or disabled children. The Minister said there will be 400 new classes. Will that cover all of the demand? That is the issue. Will they be open by September?</p>
+          <p eId="para_40"> I will give the example of Danu Community Special School in Dublin 15. I have raised it in the Dáil several times, as have other TDs. Children who were promised school places last September still do not have them. Some of them are at home with their parents and it is causing the parents a lot of distress because the children are acting up. Others are in preschool for an extra year, so some of those students will be seven. Will that school building be open? In addition, sanctioned and announced classes are not opened classes, which is a key problem.</p>
+          <p eId="para_41"> I am glad the Minister mentioned post-primary schools and said that her aim is there will be four special classes in each urban post-primary school. Having taught in post-primary during the pandemic and before that, there is not really provision for students who have additional needs.</p>
+          <p eId="para_42"> I finish on that topic by asking the proportion of schools that have not opened any autism or special education classes. Are there are some that are consistent offenders?</p>
+          <p eId="para_43"> I will move on. I have an awful lot because it is the first meeting.</p>
+          <p eId="para_44"> The Minister mentioned school transport. I want to alert her to school transport problems in urban areas and suburbs. For example, there are 11 parents in Tyrrelstown, which is a suburb in Dublin West, who could not get into their local school because there were not enough places, so they had to go a school in Ongar, which is approximately 9 km away. There are no connecting buses between those two areas. They could not get Bus Éireann to give them special transport. They were told they did not qualify. They are left carpooling their children. They cannot continue to do that because many of them do not have cars. What can the Minister do about that situation in urban and suburban areas? I reiterate that in growing areas like Dublin West, closing down a school like Ériu Community College and moving it is not acceptable.</p>
+          <p eId="para_45"> I have to move on to teacher retention. I have taken a huge interest in this in the past few years. We had a campaign in our area a number of years ago because so many subjects were being dropped from secondary schools, particularly practical subjects, but we know there is a teacher shortage in every single subject. The Minister said there are more teachers, but there are also more pupils. Even though there is a 20% increase in intake of student teachers, the problem is that they are emigrating as soon as they can or they are staying in rural areas. There is a shortage everywhere but particularly in more expensive housing areas. The Minister has to consider introducing something special on this. As a secondary teacher, I have seen it myself. Many subjects were dropped in our school when I was there when people retired. I mentioned in the Dáil previously that Britain has the teach first programme and bursaries. They are attracting Irish students. I know two students from this country who will be doing their teaching training in Britain because of this. They are getting paid; why would they not go? The Minister will have to look at introducing a city allowance. There is absolutely no other way. Before she says we need equality, there are allowances of all sorts. There is the Gaeltacht allowance, island allowance and all sorts, but there is no allowance for living in an expensive area. There should be a special education allowance as well. Teachers cannot be attracted. Even if Danu opens, it will have difficulty recruiting the two teachers it needs.</p>
+          <p eId="para_46"> Finally, I mention school buildings and particularly older schools such as the likes of Coolmine Community School, which I believe is the oldest community school in the country. Buckets in a school is not acceptable in 2025. It is not acceptable for students and teachers to be walking around with buckets. Yet, that school was refused a grant. That has to be addressed.</p>
+          <p eId="para_47"> Leaving certificate reform is a topic the committee should return to. The ASTI, which is the biggest secondary teacher union, has just rejected the Minister’s proposal on leaving certificate reform, and I talked to a couple of teachers about why. The main issue was that the Minister was not really introducing reform. She was introducing extra journals and diaries, and she knows perfectly well that it is hard for teachers to assess whether the students have done that work themselves or whether they have used AI. Surveys have shown that people could not detect the difference. This is a whole new area that this committee will have to have a session on. The Minister just ramming it down teachers’ throats and telling them to get on with it is not going to work. That vote came from the grassroots. It did not come from the executive or the union leaders. Therefore, it reflects how teachers feel they are not getting the resources or the support. The leaving certificate, as we know, is extremely stressful, but we want to at least keep it somewhat independent.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:00:00+01:00"/></from>
+          <p eId="para_48">The time is out on that slot, so the Deputy can hang on for the second round of questions. We will try to keep things moving.</p>
+          <p eId="para_49"> I am the next speaker in the rotation. I have quite a few questions and I will try to get through them quickly.</p>
+          <p eId="para_50"> I am glad the Minister is reviewing DEIS across this year. Currently, DEIS is linked to the census, and the census happens every five years. The data set was collected from the previous census in 2022. Data is collected by the census form, it is fed into Pobal, and it is not repeated again for a five-year cycle. The problem with that DEIS model is that it does not capture the transience of the rental market, the transience that has been brought on by international protection, wars in Gaza and all of the conflicts and problems in the world, and the problems with social housing.</p>
+          <p eId="para_51">I made in a proposal in writing to the Department that it produce a new form for examining DEIS involving an in-school census that would be more relevant to what is happening in a school in a particular year rather than this five-year rolling cycle.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_8" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_52">The Cathaoirleach is right. The last census was in 2022. The last time the scheme expanded was in 2022 when 100 schools were added to the scheme. The data was not available to the Department at the time. I hope that when we are developing a new DEIS scheme, we can look not just at what kind of resources are being provided to schools in the scheme but also at how we make sure it is as accurate as possible and the data is as time-sensitive and relevant as possible. This is still being worked through. I gave a very clear commitment when I came into the Department that we would have a new DEIS plan by the end of this year. That is very much on track and that is what I intend to do. My intention is to make sure we have a visible picture in real time as of what school situations are, the make-up of the school, the children in it, what their needs are and how we reflect it in the overall programme. About 260,000 children are already being supported through the scheme. I appreciate that there are many more schools that would like to be included in it but there are other schools that are not DEIS and are not necessarily going to be DEIS but very clearly have children with educational needs and a significant level of disadvantage so the question is how we make sure there is a scheme and supports in place for them.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_53">One of the metrics is employment and economic affluence. My constituency includes Shannon, which is a significant industrial base. A total of 40% of US companies have a presence in Shannon. This situation is repeated in many constituencies with an industrial base of employment. Every morning, people flock there from four counties to work. The census will tell us that a significant number of people are employed in Shannon and that there is economic affluence. However, people are travelling 40 or 50 miles to work there. There is disadvantage in some of the neighbouring housing estates and the current model does not capture that. I am sure this is replicated around the country.</p>
+          <p eId="para_54"> Special schools are given a primary roll number, which is rather unfair in this day and age. They are now supposed to offer a curriculum extending up to the leaving certificate yet they are resourced like primary schools. They are given a primary roll number and I think their capitation is still more linked to primary than it is to secondary. I know of one school that was asked to roll out woodwork, metalwork and all sorts of technical secondary subjects but is being told that these subjects can be offered on a roll-in roll-out trolley into the classroom whereas a mainstream secondary school would have a dedicated subject-specific class. If we expect special schools to offering this significant range of subjects, we need to resource them better. We would have a better model for staffing, allocations, supports and capitation if we had a specifically carved-out roll number identification system for special schools as opposed to primary and secondary schools.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_10" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_55">Special schools receive a higher level of capitation than primary schools. There are different variations in special schools in terms of the curriculum, how it is applied and the students in the school. As capitation increases, it will naturally be possible to include capitation in our special schools as well but this is something that needs to be continuously kept under review. The reason capitation is higher in secondary schools is because there is a higher level of subjects be they woodwork, engineering or science. This obviously requires a significantly higher grant to allow schools to provide the resources and supports. Looking at the difference between our secondary and special schools, this is why it is reflected in the different grants that are being provided. I accept what the Cathaoirleach is saying in terms of increasing overall. My ambition is to make sure that we increase capitation for primary schools, special schools and post-primary schools.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_56">It is over a decade since the infamous Croke Park hours were introduced for teachers requiring them to provide an additional 20 hours' service per annum. I was a teacher for many years and a member of the INTO. I think it is rather insulting to the men and women who take school teams after school and facilitate choirs, drama and fabulous activities like yoga. Every sort of afterschool activity is being offered in schools with no payment. Teachers are giving up their time - giving up family time - to stay on in schools. A decade on, would the Minister say that perhaps the volunteerism of teachers should be rewarded and could be counted as Croke Park hours? I know she is a proud GAA woman. It is acknowledged every July on the steps of Croke Park when a cup is received. The captain always thanks the Cumann na mBunscol structure in the county. The reality is that it is a pittance when they are expected to do a significant amount. Indeed newly qualified teachers go head over heels doing voluntary work after school hoping to get employment and none of it is recognised under Croke Park hours.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_12" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_57">This is being revised at the moment. We are engaging with the ASTI and the TUI on it. It was part of the public sector pay agreement negotiated last year and part of the next stages in that overall agreement but that is something-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_58">The Government should not dismantle it. Rather, it should acknowledge that this is happening after school and count it as Croke Park hours. It would be transformative.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_14" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_59">This is something that was agreed as part of the overall package and both unions signed up to it. What was part of that agreement was that how the hours are used would be looked at and how they would be reflected in that.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_15">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_60">Regarding parents notifying the NCSE by 1 October 2025, how will that be communicated to parents? What if parents get a diagnosis after that date? What will happen?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_16" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_61">This is about making it as public as possible. This is a new process. It started this year. The deadline this year was 1 February. It was extended slightly because of Storm Éowyn. It means that the NCSE has a clear picture of students who are known to it. I appreciate that there will always be students who do not have their diagnosis or who have not applied even this year. The reason we are setting the date and bringing it forward is that the more the NCSE knows, the greater visibility we have regarding who the children are, what their needs are, where they live, what schools are near to them and what schools we need to sanction. Of course, there will be children outside the timeline. If that happens, we will still encourage parents to make their children known to the NCSE but the timeline has to be set to allow us to plan as effectively as possible. We need to make sure we continue to support children after 1 October, which we will. By bringing the timeline forward to 1 October, I hope we can sanction the vast majority of schools by 31 December, thereby bringing ourselves much more in line with the enrolment timeline for every other child at the beginning of January. I want it to be the case that irrespective of the child and what that child's need is, he or she gets that information around the same time. I hope this change in timeline will help us do that. To be clear, everybody after 1 October will work with those children and their parents.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_17">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_62">Will people be encouraged to-----</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_18" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_63">All of our 400 SENOs are aware of this and are engaging with the schools. Any person looking to talk to a school about enrolling his or her child should be informed of this by the principal and teachers in the school so this will be communicated through the SENOs as well.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_19">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_64">I know there is a move to make mild general learning disability schools more catch-all schools to have a broader admissions policy. I am a bit concerned about that and I raised it in the Dáil. I did not get the Minister's answer last time. I am still concerned about that. There is merit in ensuring we can provide for every child in the school. I think this country is rich enough to have schools that cater for people and those experts working with children should be given that opportunity.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_20" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_65">There is concern that children in a special school that is designated as mild will be removed or not have their place in the school. That will not be the case. No child will be removed from his or her school. Children with the greatest need are unable to access schools that are closest to them because of the narrower criteria. It is about making sure over time that special schools are able to cater for those most in need. I appreciate that when some of the schools were opened, we did not have the provision we have in mainstream schools with special classes or special education teachers and SNAs so that was perhaps the only place children could go. It is about making sure that insofar as possible that special schools accept children who are most in need of a place but it will not in any way displace any child in that school.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_21">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-18T13:10:00+01:00"/></from>
+          <p eId="para_66">We may not necessarily agree on that because I think we need to keep those schools and to open additional schools for others. </p>
+          <p eId="para_67">I know it is not about moving those children back to mainstream or into mainstream or whatever, but I am concerned they will be lost in the system. I welcome the educational therapy services, and I look forward to them being rolled out further in as many schools as possible.</p>
+          <p eId="para_68"> With regard to DEIS, I thank the Minister for mentioning the school completion programme. My colleagues will be absolutely delighted it was mentioned in the education committee.</p>
+          <p eId="para_69"> On amending the Education Act to bring in under-six-year-olds, that is a very welcome step. I would encourage that supports and resources be given to HSCLs to fully support parents, because it is about supporting parents at that stage. Regarding school transport, there are reports today that one of five car journeys is educational. It costs about €400 a year for families, between fuel and wear and tear. From an environmental perspective, it would be much more sustainable if school transport was rolled out. The Minister mentioned rural areas, but regarding urban areas, I am contacted on a regular basis by people who want to send their children to different schools outside the area because they do not have the parental choice they want. They have to go outside of school and transport. Transport would be fantastic. Linked to that, I am very happy the Minister mentioned parental choices. I was chair of an Educate Together school for a number of years, and I had Private Member's Business on the issue recently. That survey has been promised for the whole of the academic year. Does the Minister have a date for when it will be published?</p>
+          <p eId="para_70"> The last thing, which is easier for me to address at the end, is leaving certificate reform. I am concerned. As a mother of four, with one of my children doing the leaving certificate, I cannot wait for it to be reformed. Having said that, I appreciate what the unions have said. What is the Department doing to work with the unions to make sure that we hear all voices and can move forward with that? </p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_22" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:20:00+01:00"/></from>
+          <p eId="para_71">Having visited quite a number of schools and met with those working in the school completion programme, I think the work they do is invaluable, if not often seen or heard. For many children, the only reason they are still in school or are coming into school is these individuals, who have a very focused and targeted approach. My approach is that we need more of them, and that is something that I have to work towards with the budgetary process. Regarding under-sixes, again, that is based on what I have heard from the school completion programme leaders and members, who tell me there are children in junior infants who miss 50 or 60 days. They do not come under the date or age profile. We need to work to bring forward legislative change as soon as possible.</p>
+          <p eId="para_72"> In respect of transport, there are two elements to it, one of which is not in my Department but is really important for the urban areas, namely, the safe routes to school programme, which is now in 400 schools. This has seen a change in people's patterns and we need to focus on that still. The programme has recorded a 36% increase in cycling and a 100% increase in park and stride, as well as an increase in walking and a decrease in car use. On top of that, there is a commitment to increase the number of users of school transport by 100,000 students. Currently, school transport is used by 173,000 students. We have to work through how we get to that point.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_23">
+          <from>Senator Shane Curley<recordedTime time="2025-06-18T13:20:00+01:00"/></from>
+          <p eId="para_73">I add my voice to calls by the INTO to increase the capitation grant to €299 per head. Will the Minister comment on why there is disparity between primary and secondary? A capitation grant for a significant number of schools is one of their only sources of income, especially in remote rural areas.</p>
+          <p eId="para_74"> I also have concerns about senior cycle reform. I was a secondary teacher myself, and I really welcome senior cycle reform. It is something I discussed at length with my own students in the classroom. I have seen the damage the leaving certificate does to students. However, the fact that marks for the Irish oral exam are going to be reduced flies in the face of all advice and best practice in the promotion of the Irish language. It is something on which I would like to engage with the Minister, with her Department engaging with the NCCA and the SEC, which I highlighted recently. It has to be looked at. I do not understand why the Department would reduce the marks for the one thing we try to get kids to do, which is to speak the language. I often hear people say to me that they have spent 14 years learning the Irish language and cannot speak two words. This flies in the face of all of that.</p>
+          <p eId="para_75"> The roll-out of the reforms this September has been very contentious. I would like an update on how negotiations are going with the ASTI. Its members have strongly rejected the implementation measures, and there are indications the TUI will not cross the picket line in dual-union schools, which creates a huge problem in September, where we may see schools not opening. My party colleague Councillor Seán Ryan in County Tipperary teaches in Rockwell College, and he has been to the fore on this issue. I ask for an update on that as well.</p>
+          <p eId="para_76"> When new SEN classes are allocated, the new teacher must be<i> in situ</i> in the classroom before they qualify for CPD with the NCSE. They usually have to wait a few months before they get their first session, which means there is a teacher in a classroom with kids with profound needs who may not be equipped to provide the care the kids need. That needs to be addressed.</p>
+          <p eId="para_77"> There is a need for timely clarity to be provided to schools on the allocation of special classes. It is currently mid-June and many schools around the country still do not know where they stand for September. My party colleague Councillor Dominic Finn has been advocating for a third special class to be provided to Scoil Iosaef Naofa in Cobh, which the principal welcomes, as does the board of management, but the Department recently told them it had been paused. I ask that the Minister’s Department engage with the school community on that. Similarly, Councillor Peter Ormond has been advocating for a second special class for Shinrone National School in County Offaly, which has a waiting list of 11 students. Again, an update to the school from the Minister’s Department would be welcome.</p>
+          <p eId="para_78"> There is a huge problem across the board with additional special classes. At home in my own area, Loughrea, County Galway, we do not have a single special class at secondary school level for either of the two secondary schools. It is something the schools are trying to roll out. The ETB school, St Brigid’s College, is trying to get a 13-classroom extension built at speed, but it is having huge problems with the contractors and things like that at local level as it tries to get things rolled out quickly. If the Minister could engage on that particular issue, I would really appreciate it.</p>
+          <p eId="para_79"> On the subject of school buildings, it has become clear that towns around the country badly need either a new school or a new building due to population growth. For instance, my party colleague in the Minister's constituency, Councillor Stephen McKee in Duleek, is eager that the town get a secondary school due to the size of the town and the population it has. We also have the case of a new school building for Holy Trinity National School in Westport, which my party colleague Councillor Brendan Mulroy is eager to see delivered. There are countless more example. They show the huge need to invest in capital schools projects, if at all possible.</p>
+          <p eId="para_80"> I have one more question regarding catering for future school needs and population trends. Is this even on the Department's radar, and if so, how does it gauge future building requirements? For example, if we see a new housing scheme of 500 houses in a town, is this something the Department monitors and acts on in a timely fashion? If not, I ask that it become common practice. My party colleague Councillor Rob Power in County Kildare has huge concerns on this in his local area.</p>
+          <p eId="para_81"> On the topic of AI, I am not sure if the Minister is aware of the Khanmigo project in high schools in the United States. AI has the potential to be a huge tool for good in the classroom. Khanmigo creates lesson plans and content for the teacher. If the teacher puts a few lines of instructions into Khanmigo, it creates the lesson to a high degree of sophistication and delivers it. It teaches it for the teacher, meaning they can become a facilitator, go around the classroom and monitor how well the kids comprehend the content. It also corrects the work to a high degree of sophistication. It weeds out the issues a student may have with an essay or something and produces really good feedback. It takes a huge amount of very unsustainable workload off teachers. I was an Irish and French teacher, and the number of three-page essays I had to correct every Friday after going home to try to have them back in Monday morning for timely feedback, which is best practice, was just not sustainable. If a pilot project could be rolled out in a handful of schools in Ireland, even where they have partner schools with high schools in the US, it could be a huge positive for the country. </p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_24" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:20:00+01:00"/></from>
+          <p eId="para_82">In respect of the capitation, my ambition is to continue to increase this. It went from 183 during the 2023-24 school year to 200 last year and now, from September of this year, it has increased to 224 for primary. There is a commitment in the programme for Government that we will continue to increase that. As I mentioned earlier, although there are different views on this, in secondary schools there are kitchens, science labs, engineering and woodwork. Those requirements are not necessarily found in primary schools. They tend to be larger as well, so there is a greater need there. However, I want to see an increase in both primary and post primary, and that is what has been happening. I want to continue that.</p>
+          <p eId="para_83"> Regarding leaving certificate reform, we are still working through the second, third, fourth and fifth tranches and the specifications for the various different subjects. Tranche 2 will be at committee next week and will come to me. This year we are looking at seven subjects, including three of the sciences and four others, with the two new subjects relating to climate and drama. Any engagement or any recommendations to me are based on the working groups, which have experts, be they in Irish, science, engineering or any of the subjects in that group and that make those recommendations—--</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_25">
+          <from>Senator Shane Curley<recordedTime time="2025-06-18T13:20:00+01:00"/></from>
+          <p eId="para_84">Is the Minister talking about the subject development groups?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_26" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:20:00+01:00"/></from>
+          <p eId="para_85">Yes.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_27">
+          <from>Senator Shane Curley<recordedTime time="2025-06-18T13:20:00+01:00"/></from>
+          <p eId="para_86">When the submissions on the Irish language were welcomed from the NCCA, they never reached the subject development group. It never saw sight of the submissions before making its own recommendations. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_87">We might get a response to that question in the second round.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_29" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_88">Every expert group or group recommended to be on it is on it, to be honest, so any of those recommendations would be made-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_89">I am sorry about being rigid with time, but there will be a second round and the Minister will be able to address some of these questions again later. I call Deputy Emer Currie. </p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_31">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_90">I thank the Minister and her officials for coming before the committee. Starting with teacher training in special education, which is of course necessary for children, teachers and inclusive environments, the Minister signalled that through the Teaching Council and with guidance for higher education institutions, this could be implemented for September 2026. Is this still on course? My view is that every teacher should have a placement in a special school to build confidence in that environment and to encourage recruitment for special schools and classes. How is the Minister also going to reach qualified teachers? This aspect has been touched on. Time and again, however, we hear about special classes opening, and maybe there is training for the teachers when those classes open but not for teachers then starting to teach in the special class. There are anomalies here that need to be fixed.</p>
+          <p eId="para_91"> The Department has said it must forward plan based on figures showing that one in 20 schoolchildren has autism, which represents 5%. It is up from 1.5% in a decade. I am in Dublin West and I have seen directly how difficult it is to secure a school place for a child with additional needs. What are the Minister's plans to change the forward planning system? Will she break the annual cycle of scrambling for places by instituting a forward planning system based on these projections? She has given us the new timeline and it is welcome that the majority of special classes would be sanctioned by 31 December for September 2026. I wish to flag to the Minister, however, that some schools have said the timing they have been given is 48 weeks of a turnaround for modular accommodation if it requires planning permission. In my experience, in terms of this year, there are schools that are moving quicker. We have seen, though, that this does not always work within those timelines. What is the Minister going to do to ensure these new timelines include building requirements so all children can start school at the same time?</p>
+          <p eId="para_92"> Six national schools and one post-primary school in Dublin West still have no special classes. What steps will the Minister take to address this situation? Regarding the designation of special schools, is the Minister aware that special schools in DEIS areas are not awarded DEIS status, which means they are not getting access to breakfast clubs, home liaison teachers and other supports? We already touched on the fact they are given the status of a primary school rather than a secondary school and this impacts things like hot school meals. The meals children are getting are not suitable for boys and girls who are nearly adults. In a post-primary special class, as well, there is an automatic entitlement to 1.5 teachers per six students and two SNAs, whereas in a special school the entitlement is only to one teacher.</p>
+          <p eId="para_93"> On the allowances for special schools, the Minister did say there is a higher capitation grant, but in a special school the needs are different. A special school might only have six classrooms, but it will have many more other classrooms it will also have to cover. This model, therefore, of the capitation grant being based on classrooms and teachers is not working for special schools. Principals and deputy principals are also paid an allowance based on teaching staff. Taking Danu in Dublin West as an example, there is one principal, one deputy principal and eight special class teachers, but then there is also an exceptional teacher, a part-time post-primary teacher, 35 SNAs, ten bus escorts, one caretaker, one part-time cleaner and one full-time secretary. The allowance for these schools is not covering all these staff; it is just covering teachers. It is also not covering the multitude of costs that special schools have. These schools are also covering three curriculums because they are covering the primary school, junior certificate and leaving certificate curriculums. I believe they are entitled to better allowances and to better designation and status.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_32" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_94">In terms of training, work is being done to ensure that for next September anybody who starts teacher training will have that mandatory placement in either a special education classroom or in a special school. It is extremely important that any of our new teachers get this training. On top of that, I confirmed in February that Atlantic Technological University, ATU, had been awarded a contract to provide training for SNAs. We must ensure we are focused on having enough SNAs coming through as well. Almost 3,000 people have completed the course to date. Additionally, 300 plus postgraduate programmes are being funded through the Department specifically focused on special education. We have 40 more NCSE advisers too.</p>
+          <p eId="para_95"> As the Deputy mentioned, though, the key area here concerns the 79,000 teachers plus already <i>in situ</i>. We are now working on the way in which they are receiving training. Anyone intending to become a special education teacher and allocated a class will have the training provided, but it is not necessarily the level of training provided to all our teachers. If 96% of students are supported in mainstream education, then every teacher is going to be engaged with somebody who has an additional need. It is extremely important, therefore, that every one of those approximately 80,000 plus teachers in our schools receive a level of training, so I am working with my Department to see how we can roll-out this training. It is obviously a great deal of work for Oide to ensure everyone can access the training, it gives them the support they need, is as appropriate as possible and makes people feel confident. Being confident is what teachers want to feel going into a classroom. This touches on the point made earlier by the Chair.</p>
+          <p eId="para_96"> Turning to forward planning, and this also touches on one of the other questions asked, a huge amount of work is being done on looking at the population and housing developments, engaging with local authorities and ensuring we have the information as early as possible around SEN. This is why bringing forward these timelines is exceptionally important.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_97">I thank the Minister. She might deal with the other topics during a second round of questioning, if that is okay. I thank the Minister.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_34" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_98">Okay.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_99">I call Deputy Dempsey.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_36">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_100">I thank the Minister and her officials for being here. The first thing I would like to raise concerns the special classes. I acknowledge the work the Minister and the Minister of State, Deputy Michael Moynihan, have done in this area. I believe it is most important to have special classes in primary schools. I know there has been a focus on this aspect this year and there is also a commitment to focusing much more on it in post-primary schools. I think, though, that having special classes at primary school level is most important. We all understand how important early intervention is. It allows us to future proof and future plan in our post-primary schools. I am concerned by the number of parents who have contacted me to say their local primary school in Meath West does not have a special class. I wish to ask the Minister about this matter. Are a large number of primary schools in this situation nationwide, generally, and then specifically in Meath West? What is being done to address this situation?</p>
+          <p eId="para_101"> Also on the topic of special classes, I know of a secondary school in Athboy that fought tooth and nail to get an additional class for next year, which would have allowed pupils travelling from Oldcastle to go to school in Athboy. Instead, they have been placed in a school in the Minister's own constituency of Meath East, as opposed to Nobber in Meath West. While those parents and I, as their representative, are very grateful they have a place, the right school place is very important and it being local. I just wish to pose that question to the Minister first.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_37" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_102">I thank the Deputy for her questions. She is correct that the focus has really been on primary school places and ensuring we have that provision in place. The focus now needs not to move away from primary schools but to broaden ensure there is an enhanced focus on our secondary schools. This is why we are focused on targeting four classrooms per secondary school, which would include Athboy and everywhere else. It is a matter of rolling this out and doing as much as we can every year. At the moment, and again this goes back to previous questions, about 50% of all primary schools have a special education classroom, while about 75% of post-primary schools or secondary schools have special education classrooms. Of course, we wish to increase this provision. There are more primary schools, so we need to keep focused on the primary school level while also ensuring we have this provision in all our secondary schools right across the country too. Some 22 new classrooms are being provided in Meath, 17 in primary schools and five in post-primary schools. As well as the special schools we currently have, our new special school in Meath West has an additional ten places compared to last year. We are, therefore, building the capacity, and not just in primary schools and post-primary schools but also in our special schools.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_38">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-18T13:30:00+01:00"/></from>
+          <p eId="para_103">Moving on to the school bus transport scheme, this is critical and crucial for many parents and guardians. Gone are the days, rightly or wrongly, of mammy having to drive five minutes or 15 minutes to get the bus. A lot of us rely on that bus to get the kids to school. I think we are finding out too late when the routes are agreed, who is getting the concessionary tickets, who is on the pilot scheme, and the new routes themselves. </p>
+          <p eId="para_104">Is anything being done in that area? The transport review has been complete for a long time with only some of its recommendations implemented. One of the big issues for the scheme is the availability of bus drivers. It was raised again today in the Dáil. I have raised the issue of the age of drivers being a factor in them not being allowed to drive school buses. Everyone, including the Taoiseach, has said people should be allowed drive buses over the age of 70 if medically certified on a annual basis. I want to ask the Minister about that. </p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_39" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:40:00+01:00"/></from>
+          <p eId="para_105">Work is under way to examine how we best implement the recommendations of that review. The Minister of State, Deputy Michael Moynihan, has designation for this but, obviously, we are working together in the Department. Regarding the scheme, we have given a commitment to increase the numbers by 100,000. It is currently at 173,000. We do that by expanding the criteria that have been set at the moment. That is why the pilots are in place. The pilots look at a number of different ways it can be done. Some include routes in existence through Bus Éireann, which older schoolchildren can access. Other pilots are routes that would not necessarily be put in place if they were concessionary or were not within the distance set. We must look at how they are working and operating. There will be a further expansion of pilots this year. Based on the outcome of those, the intention is to examine how we can best start to implement the 100,000 target and how we can improve the scheme overall. That would include the timeline and how we would do it. I appreciate for all of us at the end of the summer the phones in our offices are ringing off the hook with parents wanting to know where they are going, whether their children are getting the bus or not. It is about bringing that forward as quickly as possible.</p>
+          <p eId="para_106"> The 70-year-old age limit is something that Bus Éireann has applied to all its drivers, not just for school transport. A review was conducted previously but we have committed to a separate, independent review. That work is being chaired by officials in the Department of transport but we are working closely with them on it. We will have to take any recommendations or outcomes from that review into consideration and on board. What is happening at the moment is a challenge. We are in the three-week window where the payments and the applications have closed. We are working with Bus Éireann to identify who has applied, what routes are in existence, whether there is a possibility for more and what buses and drivers we have. Obviously, that takes time. I expect the parents will know around the beginning of July. However, we can bring that forward in the review of the overall scheme. We will try to do that.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_40">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-18T13:40:00+01:00"/></from>
+          <p eId="para_107">I had Colin McElroy, the principal from Kiltale National School, in today. He spoke about being a working principal and the difficulties it brings. There will be emergency works done at the school. He will be working throughout the "summer break". Is there a policy change likely where principals can be just principals?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:40:00+01:00"/></from>
+          <p eId="para_108">The Deputy might wrap up the question there so we might get a brief answer.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_42" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:40:00+01:00"/></from>
+          <p eId="para_109">It depends on the number of students. There is a cut-off point. If that number is passed, the principal is entitled to a deputy principal or to become an administrative principal as opposed to a working principal. There is a structure and a system in which one can apply. Any changes would mean there would have to be a budgetary process, because by moving principals, we are potentially putting in place more positions, more roles, and it costs more.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_43">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-06-18T13:40:00+01:00"/></from>
+          <p eId="para_110">I thank the Minister and the witnesses for coming in today. </p>
+          <p eId="para_111"> I spoke to a principal of a primary school in the past few days about the mobile phone ban in schools and protecting our young people. They would have preferred, rather than a board implementing a policy or the school implementing a policy, there was a legislative ban on phones in primary schools. They think it would be more enforceable if they did not have to do it themselves. The Minister and I recently met with Youth Work Ireland who are calling for a right to switch off for students who regularly get messages on a Sunday night or the night before school, from their schools or teachers, whether it is via an app, via email or via message. It is causing stress and anxiety. They are looking for a right to switch off at a certain time, which is really important.</p>
+          <p eId="para_112"> Regarding promoting teacher supply, St. Joseph's primary school in Kilmessan have reached out to me to say they will have the enrolment in September for an extra teacher but will have to wait 12 months to get that teacher. What are we doing to promote teacher supply?</p>
+          <p eId="para_113"> Could the Minister give an update on special needs assistant allocations so SNAs will know where they will be in September earlier, rather than at the end of the school year? Staff in one school pointed out to me that they found out yesterday what their SNAs were doing and it did cause a lot of stress. </p>
+          <p eId="para_114"> I agree with Deputy Dempsey's comments on school transport. I have two small kids who get the school bus. Not a month goes by that the bus is not broken down. Our kids are our future. They really are our precious cargo. It scares me as a parent that the buses keep breaking down and that they are so old. Is there investment in buses? I know we are crying out for space on buses but the buses seem to be very old, especially in Meath West anyway. </p>
+          <p eId="para_115"> I have previously mentioned to the Minister, and I will keep raising, transport co-ordination for special schools. If we can save the principal and vice-principal of these schools from the extra work of co-ordinating buses and bus escorts, it would really help their roles in special schools.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_44" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:40:00+01:00"/></from>
+          <p eId="para_116">Regarding the phone ban, for the most part we all agree on it, particularly in primary schools. It is not the case every child brings a phone into school but we are seeing younger and younger children with phones and on social media apps. There are implications that can arise from that but they are also distracting in schools. Regarding a legislative ban, it would be about implementing it. Irrespective of whether there is legislation or otherwise, we need schools and parents to work with us to make sure this is effective. There needs to be consultation with parents. That is what we have asked for in the circular that has gone out to schools. How is this implemented? There is the option, as is currently the case in a number of schools, for parents to agree not to buy phones. Funding is provided to Webwise to give support and clarity to parents as to how they would implement that. Greystones was the school that started it. A school in Termonfeckin mentioned this week that it was doing it. It is about providing guidance and support and helping schools and parents in what they are doing.</p>
+          <p eId="para_117"> When it comes to secondary school, we have to recognise a nine-year-old is different from a 19-year-old. The more transition year students we have, the greater likelihood they will be 18- or 19-years old doing their leaving certificate. It is about working with them. How do we remove phones from the school day while acknowledging there might be times they need them? There might be times they are going to extra-curricular activities. There might be times they have to leave early or they have to use their phone. It is about putting those parameters in place and supporting schools and, importantly, students.</p>
+          <p eId="para_118"> Students and teachers would like the right to switch off and not have to engage at all hours and to respond. That is something I have heard from the teacher representative associations as well. There is certainly a way we can try to align that and make sure teachers do not feel they should be sending messages late at night and that pupils have to reply either. That is something we can work on. </p>
+          <p eId="para_119"> On teacher supply, there is a very set way in which teachers are allocated based on enrolment in September. I appreciate that can be frustrating if a school is losing a teacher based on the previous year's enrolment and it will not get the teacher back until the year after. If the projected enrolment is increasing, this can be appealed. There are schools I know of that have made appeals in the past week and have been successful in keeping that teacher. Overall, in terms of teacher supply, 98% of our allocated teaching posts are filled. I appreciate there are certain areas, certain schools and certain subjects where that is a challenge, whether it is teacher retention or filling posts, but 98% of posts are filled.</p>
+          <p eId="para_120"> A number of measures have been taken in recent years to ensure we keep teachers and encourage more into the profession. The STEM bursary of €2,000 was introduced in this years budget. It is a €2,000 bursary for teachers graduating with a professional masters degree in education. More recently, I announced teachers who conduct their training will be able to get the permanent contract after a year instead of two years. We are making moves to make sure we can recognise qualifications from abroad and make it easier for teachers to come home. I am working with the Department on ways we can help teachers, in particular for schools with teachers who have a base-level degree in certain subjects, but it is not what they are teaching. There have been moves made to make sure such teachers can upskill and start training in those areas, so they might have three subjects instead on two. Some subjects introduced recently are science, physics, Irish, computer science, politics, French and possibly one other. This is with a view to making sure teachers who are there can fill the posts that are available. </p>
+          <p eId="para_121"> Regarding SNAs, my intention is allocations will happen the same way as for teachers. The Senator is right. In the past couple of weeks we have been allocating SNAs. It is too late, and it is not fair on SNAs or on the schools. The plan for next year is, similar to allocation of places for children, I want to bring forward the timeline in order that when we are allocating teachers, SNAs and school will know where they are going at that time. There will be an appeals process, as with teachers. That is so everything is aligned, synched up and people have time a sight of where they are working and going.</p>
+          <p eId="para_122">There will be and has to be redeployment within the system, where the need is not in a school. Importantly, the new redeployment scheme that is to be introduced next year will mean that SNAs do not have to essentially resign, become unemployed and apply again to a different school. If they are being moved, they will be able to move to a school within their area and somebody will not be sent from Cork to Galway. They will have to work within the schools to do that.</p>
+          <p eId="para_123"> Around transport-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_124">We will deal with the rest of it later, if that is okay. I am sorry but I have to be rigid. We will hopefully get to a second round of questions later. I call Deputy Ní Raghallaigh.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_46">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_125">I want to ask about the mild special schools. The Minister told us not to worry and said the children in these schools will not be losing places. These schools provide a unique and valuable service. My worry is not that the children will lose that but that in diversifying the learning profile of these schools, we will crowd out students with mild learning disabilities. I want to know what will be done to ensure these mild special schools continue to operate as such, with more investment in order to have all the options, not either-or.</p>
+          <p eId="para_126"> With regard to NEPS, many schools in Kildare have contacted me to say they have had zero access to a psychologist this year. Is anything being done to guarantee that every school can have access to a psychologist?</p>
+          <p eId="para_127"> When can we expect to see the results of the education for persons with special educational needs review?</p>
+          <p eId="para_128"> Many principals have contacted me recently. In line with the programme for Government goal to trial new administrative supports and arrangements for principals to reduce the non-educational aspects of their workloads, will the Minister consider additional administrative days for vice-principals at primary level, which has been mentioned to me by a few principals in Kildare, and maybe the introduction of the special educational needs co-ordinator, as the union recommended?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_47" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_129">With regard to the mild special schools, we are continuing to build special schools. There are five new ones this year, one each in Monaghan, Waterford and Cork and two in Dublin, and 16 have been built in recent years. It is not that we are saying we have what we have and we need to move it around. We need to continue to build special schools as well as special classes in the mainstream. What is very clear is that, in some instances, entire schools are designated as mild but for children in the area who have more profound needs, it is their local school and they cannot access it because of the narrow criteria for admission. It is about making sure that if there is a special school that is designated for those who most need it and cannot access mainstream or special classes, we provide that support. That is not to say that children who are mild cannot access them either. It is just about making sure that those who have the most profound need can go to the school that is nearest to them. It is about more investment, continuing to build more schools and more special classes, providing more resources in the mainstream for children who need them and making sure that those appropriate places are in place.</p>
+          <p eId="para_130"> With regard to psychologist support, we have a number of different pilots under way that will then come into the education therapy support service. This is probably different to what the Deputy was referencing because it will first be OTs and speech and language therapists. As time goes on, whether it is physiotherapists or psychologists, it is very important that we are providing as much support to students in school, where they spend most of their time and where they need supports most. A certain level is being provided through the HSE and the CDNTs at the moment but it is not applicable to every school so we need to build up the capacity. The Minister for further and higher education brought a memo to Cabinet last week outlining how he has already identified, within the parameters that exist, additional places across all of the various different therapies, including psychologists, OTs and speech and language therapists for this coming September. There is work under way to make sure we have more trained in the system to be able to support schools.</p>
+          <p eId="para_131"> The EPSEN review will be brought forward soon, in a matter of weeks. The Minister of State, Deputy Moynihan, and I will be able to outline what is in that and what the next steps are.</p>
+          <p eId="para_132"> With regard to admin support for principals, I have been working and engaging with the principals and I really appreciate the work they do. To clarify, I referred earlier to “working principals”. All principals are working principals and it is whether they are teaching principals or otherwise. Any changes around admin days, changes to how they work or the number of children that are needed to change the status would have to be done through the budgetary process. We are keen to support and help principals at primary and secondary level in whatever way we can. The issue of the SEN coordinator was set out in terms of the engagement with both of the associations and I am keen to move on that.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_48">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_133">Can the Minister speak to the progress on teacher recruitment and retention? She said a lot is being done. In particular, can she speak to the workforce plan to deal with the recruitment and retention crisis, go háirithe múinteoirí Gaeilge? Bhí liúntas ar fáil don mhúineadh trí mheán na Gaeilge nuair a bhí mé mar mhúinteoir. There was a teaching through Irish liúntas - I do not know the word - payment for teachers because it is a harder job and there is a lot of additional work. That was removed during the course of my career. We know how important it is to teach our national language to children and these teachers are doing a lot of work. Will the Minister consider returning the liúntas chun múinteoirí a mhealladh chuig na Gaelscoileanna agus na Gaelcholáistí agus chuig na Gaeltachtaí?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_49" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_134">There are a number of approaches being taken at the moment to try to support teachers at primary and post-primary and, in particular, new and innovative ways in which technology is helping. There are the new gteic hubs where principals, through the medium of Irish, are able to teach certain subjects to other schools, including the one they are in, using video technology and otherwise. That has been successful in making sure that schools that would not ordinarily be able to do physics or certain subjects because they could not find a teacher proficient in Irish can now do that. It is working successfully in some areas. Second, there are sharing arrangements in place whereby Gaeltacht schools or Gaelscoileanna are able to share teachers and teach subjects where schools are essentially pooling the resources. Again, that is working successfully.</p>
+          <p eId="para_135"> A new plan will be published in September, following on from the Gaeltacht plan, and it has a number of these measures in place. This is specifically looking at Gaelscoileanna and Gaelcholáistí and then a separate plan around English-speaking schools teaching Irish. All of these issues are being looked at, such as teacher retention, how we encourage more teachers into the system and how we make sure that all schools are able to access the different supports.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_50">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_136">Will the Minister consider returning that payment?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_51" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_137">We need to look at everything as part of the process.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_138">The Deputy will be able to come in again shortly. I call Deputy O'Meara.</p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_53">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-06-18T13:50:00+01:00"/></from>
+          <p eId="para_139">I thank the Minister for attending with her officials. I would like to start with school financing. It is a major issue coming up for me across north Tipperary and north-west Kilkenny, but also nationally and among the representative bodies that are in contact with me. The burden and stress being put on principals in many cases is intolerable for some of those who have contacted me. I will give two examples of where funding is not stretching and what principals are having to do, and I am sure we are all aware of the stories. I visited a school recently where the principal had worked in construction in a previous life and he is the handyman or caretaker around the school to fix everything. I had a phone call the other evening with another principal in a primary school. Her son and his friend come in to do some of the work around the school when it needs to be done because the school simply cannot afford that and, otherwise, there would not be cleaning in the school, for example.</p>
+          <p eId="para_140"> What is being raised with me is the uncertainty around budgeting, and the capitation grant, ICT grant, minor works grant and fundraising are examples. It is extremely difficult for principals in primary schools in particular to budget for the year ahead, which they are expected to do when they do not know exactly what funding they are going to get for that year, with ICT grants being a particular example. Fundraising is another issue that I would like to touch on shortly.</p>
+          <p eId="para_141"> That brings me to the capitation grants, which were introduced by Deputy Micheál Martin during his time in the Department of education. In 2007, they were €200 per child at primary level but during the recession, we saw these cut. I welcome that they are coming back to €224 per child for September 2025 but to match the 2007 level, we would need to see about €280 per child at primary level. That does not take into account inflation in the meantime and the disparity that exists between primary and secondary level. I get the points the Minister has made in relation to additional costs at secondary level but I do not think the level of difference is quite justified. Between 2000 and 2019, we saw very low inflation but we have seen inflation balloon since 2019 in all of the key areas that are facing schools, whether it is heating, lighting or beyond that. I welcome that funding is catching up and work is being done on the capitation grant, but we need to see a lot more on this. According to the Catholic Primary School Management Association, in a review of 90 schools it found that between 2019 and 2024 costs increased in those schools by 60% or 70%. That is the level of inflation we are talking about while we try to ensure the capitation grant catches up.</p>
+          <p eId="para_142"> The voluntary contribution receives a lot of discussion, and that is fair enough. For me, if there is to be a voluntary contribution, it is for things that should be “nice to have” as opposed to the necessities. Right now, the voluntary contribution and fundraising by parents is paying for necessities.</p>
+          <p eId="para_143"> A number of schools have come to my attention that have taken in a large number of IPAS or Ukrainian students, which is a very good thing and very welcome.</p>
+          <p eId="para_144">However, in some cases those schools now have such a level of non-national or non-local children that the level of fundraising in the school is decreasing while the financial demands are increasing at the same time. I see a number of schools in my constituency getting caught in that trap. Funding is needed for those schools in particular, which are doing an extraordinary level of work in that area. My question on this first point I am raising on financing is around the capitation grant. Will the Minister consider establishing an independent committee, taking on board stakeholders in the sector, to look at financing for these schools going forward and the level of funding to which we need to increase to provide the finances they really need?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_54" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_145">I acknowledge there is a commitment by the Government to continue to increase the capitation grant. I appreciate that the point we are at is above where we were a number of years ago, but with inflation we need to keep increasing that. I am absolutely committed, as is the Government, to doing that. It is about increasing the capitation grant, making sure schools get the minor works grant and know when they will get it and making sure the ICT grant is paid out. We gave a commitment that we would pay out €200 million over the lifetime of the digital strategy. Some €135 million of that has been paid out to date and schools should be clear that the remaining €65 million will be paid out in the next two years. I want to put a calendar in place in order that schools know exactly when grants will be paid. They know the most recent capitation grant for the coming September was just paid out in June. However, for the other grants for minor works, ICT and everything else, I want there to be a clear calendar in order that schools know and principals can plan for it.</p>
+          <p eId="para_146"> On bringing down costs overall, we have to look at different ways of dealing with this. Instead of just giving more money, which we need to do, we need to look at whether we can bring down costs for schools. Investing in climate adaption is important. We have 1,400 schools that have installations of solar panels. I was in a school in Castletown, County Meath, last week where the solar panels were new, so they have not yet seen the impact. However, other schools have seen a reduction in their bills. The second phase of that is now happening for other schools. The quicker we can retrofit and support schools in that way, the better. There are options for schools to join a procurement framework and I encourage them to do that. It looks at electricity, gas and fuel and other areas. We also need to look at insurance. We talk about it all the time for cars, public liability and other areas for schools. We need to look at insurance and make sure schools are getting the best price possible and we will work with them on that.</p>
+          <p eId="para_147"> For schools that have seen an increase in children who are claiming international protection or children from Ukraine, there has been an increase in the English-as-an-additional-language posts. Schools are getting additional posts and supports. Children coming from Ukraine can access the school transport scheme as well, but we are always looking at ways in which we can try to support schools and especially support those who come from more challenging backgrounds.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_55">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_148">I thank the Minister for being here.</p>
+          <p eId="para_149"> The Minister said that 3,275 special education places were notified to the NCSE for this year under the new arrangement. She said in the Dáil Chamber last week and also on "Morning Ireland" that more than 92% had received an offer. As for the number of children who have not received an offer, being 8% of 3,275, is that 260 or 265 children?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_56" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_150">The 92% is for primary and post-primary schools. Special schools are somewhat different. On average between the two, outside Dublin - I said last week that Dublin is a more complex area - there are pathways for every child. While some children might not have got a place, the enrolment process is-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_57">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_151">What is the number of children,out of the 3,275 who were notified to the NCSE, who have not yet received an offer of a school place?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_58" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_152">That is changing every day.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_59">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_153">What is it today?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_60" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_154">It is changing every day. Work is under way at the moment.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_61">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_155">What is the number? It is not a trick question. What is the number? The number of 3,275 places has been acknowledged. The Minister said more than 92% had received an offer. How many children is that?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_62" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_156">What I am saying is that 92% have an offer or a clear pathway for where they are going. A huge amount of work has been done to make sure the admissions process-----</p>
+          <p eId="para_157"> The Deputy should please let me finish my answer. A huge amount of work has been done to make sure the admissions processes are opened up.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_63">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_158">My question is, what is the number? What is the answer?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_64" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_159">There are different answers for primary school, post-primary school or-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_65">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_160">Out of the 3,275 - that is the Minister's number; this is not a trick question - children notified to the NCSE under the new process as needing a place for September, how many do not have an offer today?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_66" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_161">What I am saying is that 92% of students from primary and post-primary level have identified or have been given a place. It is a slightly lower number for special schools. That is being worked through at the moment and it is changing every day. The figure I might give now would be different from yesterday's figure. Even today, children are being allocated places. Today, enrolment processes are happening and the NCSE is working with schools every day.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_67">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_162">I accept that.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_68" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_163">It is changing every day.</p>
+          <p eId="para_164"> I am saying as of today, approximately 92%, between primary and post-primary, where places have been offered and where we are working those through. For special schools, particularly in Dublin, it is a much more challenging situation.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_69">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_165">It would be really helpful for the committee to get a breakdown for primary schools, secondary schools and special schools, in Dublin and outside Dublin, on the progress that has been made on securing a school place for the 3,275 children. That is a reasonable request.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_70" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_166">What I can say on breakdowns for different counties, is that in Tipperary zero places remain for primary, post-primary or special schools. The same applies in Kerry and Limerick, Clare-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_71">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_167">Is the Minister-----</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_72" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_168">I can go through the different breakdowns, but it is different in every county</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_73">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_169">The Minister has stated there are no children outstanding who are waiting for an offer for everyone who has applied in the four counties. Is that what the Minister said?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_74" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_170">Yes, in the counties I mentioned. It is different in every county and that is why when the Deputy asks for a figure, it is different in every county and in-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_75">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_171">In fairness to the committee, it would be helpful if we got an update between now and September on the progress that has been made.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_76" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_172">I brought an update to the Cabinet two weeks ago. I intend to bring an update in July because of the timeline between now and July. There are 11 schools, for example, that just opened their enrolment policies, so that will allow us to see the huge amount of progress that will be made between now and then.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_77">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_173">In my head, it is a figure of approximately 260 and we can confirm that at some stage. Some 92% out of the more than 3,000 children have received an offer. Will all those children be in a school place on 1 September? How is the Minister tracking that for the 3,275 children? Will there be a school building? Will there be space in the school? Will teachers and SNAs be allocated?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_78" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_174">There will be a mixture. The NCSE is working with schools every week and engaging with families every week. As things change, it is updating parents. Approximately 80% of the 399 new school places that have been sanctioned will be in schools where there is repurposing, that is, classrooms that have not been used and classrooms that have been used for something else. There is a grant of approximately €30,000 for schools to repurpose them. In the remaining 20%, a proportion will have new modular buildings in place and in a proportion, transitional arrangements will be put in place. Some of them already do that. They spend some time at home and some in school. In other schools, where some of the modular buildings are not ready, they will bring the children into and accommodate them within the school.</p>
+          <p eId="para_175"> This goes back to my earlier point. The earlier, we can allocate-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_79">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_176">I do not disagree with any of that.</p>
+          <p eId="para_177"> With 1 September in mind, how many of the 3,275 does the Minister think will not have a physical school place? Is there anything she can do between now and September with planning and fast-tracking to try to improve on that number?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_80" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_178">Absolutely everything that can be done is being done to make sure we have the places as early as possible. However, where schools have only received sanction in recent weeks, it is difficult if site works have to be done to put in place the modular buildings. The earlier we bring those timelines, the quicker we will identify where a school needs an extra place or classroom. However, work will happen throughout the summer. The Minister of State, Deputy Moynihan, and I meet the NCSE every week. It is speaking with schools and engaging with parents. It is not the case that when primary schools close next week, that this will not continue. However, it is changing every day and that is why the figures are changing every day.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_179">Could the July figures be shared with the committee after the Minister presents them to Cabinet?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_82" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:00:00+01:00"/></from>
+          <p eId="para_180">I do not see why not. Yes.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_83">
+          <from>Deputy Peter Roche<recordedTime time="2025-06-18T14:10:00+01:00"/></from>
+          <p eId="para_181">I thank the Minister for her opening statement. It is a pretty comprehensive account of where we are at. I especially thank her for meeting two deputations that were in the House recently, from Trinity school in Tuam and Dunmore National School, on matters that present to both. They brought different issues the Minister. They really appreciated how they were facilitated when they arrived here. </p>
+          <p eId="para_182"> One can say without contradiction that significant progress has been made in expanding the special classes. Will the Minister elaborate how schools will be supported in meeting those deadline? She also mentioned the focus on large post-primary schools growing to four special classes. How will those schools be supported in relation to physical space and staffing? </p>
+          <p eId="para_183"> The national therapy service is a most welcome development. Can the Minister share the timelines and scale of roll-out into mainstream schools and how she is working with the HSE to avoid fragmentation or duplication of services? Also under that heading, will the roll-out of the national therapy services include a focus on the areas outside the major urban areas? For example, I represent Galway East. We all like to be a little parochial when we need to be because we represent the people in that area. In east Galway families often struggle to access timely occupational supports, speech and language supports and behavioural supports. </p>
+          <p eId="para_184"> The Minister’s opening statement referred to the typical 40% absenteeism rate in DEIS schools. I was a little surprised. It is quite a rate of absenteeism. What is the Minister looking at in relation to early intervention and support to reduce that figure?</p>
+          <p eId="para_185"> I had two other questions but one has already been dealt with, namely, where areas have population growth and additional housing developments. That has been asked and the Minister has responded. On permanent contracts for teachers, what additional supports might be considered to encourage newly qualified teachers to take up roles in rural areas and disadvantaged areas?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_84" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:10:00+01:00"/></from>
+          <p eId="para_186">On special classes, as I outlined the intention is the earlier we can identify the need, the quicker we can engage with schools to make sure if there is a new build or modular building needed that can be put in place where there is room to readjust within the school. There is funding from €30,000 to €70,000 or €80,000 depending on whether there are structural or significant works that need to be done. There are set criteria for the allocation of a special education teacher and two SNAs for six children in the classroom. That applies in both primary and post-primary schools. The €30,000 can be used to retrofit or buy whatever resources are needed for within the classroom too, whether it is sensory needs or otherwise. </p>
+          <p eId="para_187"> I have agreement to start rolling out the education therapy service in the current calendar school year. That means starting with special schools. The plan is up to 45 schools will be included in the first phase. We need to make sure we are hiring the speech and language therapists and the occupational therapists to fill those spaces. We have approval for that and I have been working closely with the NCSE, which will roll this out, and with the Minister for Health, Deputy Carroll MacNeill, the Minister of State, Deputy Naughton, and the Minister, Deputy Foley, in their Departments. The intention for the timeline is that the school term 2025-26 will be up to 45 schools and phase 2 is the next year and beyond for the other schools and then phase 3 is the roll-out of all of them. It will be a gradual roll-out but I want to make sure that mainstream and special classes are getting access to these supports as quickly as possible. The work they are doing in our schools is very clear so it is not to take away from the children's disability network teams, CDNTs. This will be support provided directly to children in the classrooms while at the same time supporting their teachers and parents as well.</p>
+          <p eId="para_188"> On the absenteeism rate, it is hugely alarming that the rate among young people, particularly in DEIS areas, is so high. The measures I announced a couple of weeks ago are to try to target that specifically, the key one being the Education (Welfare) Act to support children under six years. There is the roll-out of Anseo, which has already been piloted in four schools where we have gone into schools, helped them to look at their own data and situation – the children, school and the environment – to see if there is something that can be done to help with attendance rates overall. Speaking to someone from the education support service in Tusla, they said other schools are starting to mimic that already. Something as simple as the principal standing at the school gate welcoming students, saying their name, encouraging them and letting them know that people know who they are and they want them there, has actually led to a decrease in absenteeism rates. It is about all the ways we can encourage and support young people getting into school. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:10:00+01:00"/></from>
+          <p eId="para_189">I thank the Minister. Next is Senator Scahill. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_86">
+          <from>Senator Gareth Scahill<recordedTime time="2025-06-18T14:10:00+01:00"/></from>
+          <p eId="para_190">I thank the Minister and her team. She has gone through much of what I had here in relation to capitation grants and transport. On leaving certificate reform and reducing the intense pressure of a single exam, I welcome the additional assessment components and the new curriculum, the drama, film and theatre and especially the climate action and sustainable development subjects. They are very welcome. </p>
+          <p eId="para_191"> I have had a lot of feedback from schools on the leaving certificate engineering syllabus. I have made a number of representations in the Seanad on apprenticeships in the last couple of months. Teachers are worried about the practical element of the exam going. A teacher contacted me to say that at a time when there is a shortage of personnel with practical skills in Ireland, mechanics, plumbers, mechanical engineers and toolmakers to name but a few, it seems a conflict of interest to remove the only true assessment of machine and bench skills that we need now more than ever. Will the Minister speak on leaving certificate reform?</p>
+          <p eId="para_192"> I have been out visiting schools in the area I come from. Many are rural schools with very few teachers. The Department’s small-schools pilot programme in 2021 provided schools with an opportunity for economies of scale, shared resources and administration support. The feedback I hear is very positive. Has the Minister plans to roll it out? Will she expand on that further?</p>
+          <p eId="para_193"> Returning to Deputy Roche’s remarks about the interventions on absenteeism, how successful are the interventions in schools? Will she expand a little more on her plan to tackle that? </p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_87" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:10:00+01:00"/></from>
+          <p eId="para_194">On leaving certificate reform, as the Senator said, it is really about taking the pressure off students and taking the focus away from an exam at the end of two years. There are 28 subjects which already have an additional assessment component so it is not completely new. This is about applying it to every single subject. A lot of work has been done to prepare for this. Much of the change has already happened. The new transition year programme has 60,000 people taking it. There were far fewer many years ago. There are students in special education schools and classes that are now doing specific exams or where the level 1 and level 2 are being rolled out to make sure they are being treated equally to their peers and that they will have results in exams at the same time as everybody else. There are seven subjects being introduced this year with the two new subjects which makes nine overall and then there are the other tranches. With any of the subject changes, whether it is engineering or otherwise, the work is being done through a technical committee that has looked at it and made recommendations with the input of representatives from the engineering body on the committee.</p>
+          <p eId="para_195">It is based on that work and engagement that recommendations come to me, as Minister. Obviously those changes are taking place. As I said, tranche 2 is going to come to a committee next week and will come to me after that. This has been discussed at length with representatives from all of the different areas and they, in turn, made recommendations as to what it looks like. Overall, the overwhelming response from everybody, including teachers, is that this is welcome and that it is going to help in the context of the different skills and needs of students and also of the workforce and the changing environment in which we are living. That is why it is being introduced, for no reason other than to support our young people and to assist them to prepare for future life and for the workforce and the different skills and abilities they might need and everybody agrees with that. The work that has been done with the teacher associations to date has been on a package of measures to try to assist and support them with the roll-out, which they have already agreed. </p>
+          <p eId="para_196"> In terms of the small schools pilot project, it is a programme for Government commitment to enhance and expand that. To date, the feedback has been extremely positive from any of the schools that have taken part in it. We have seen some really great ideas, like clustering hours to create a viable post within the schools where it does not exist. That is now used across the system so we are already seeing areas where the pilots have produced something that is positive and that is being applied elsewhere. It is proposed to extend the pilot but that requires resources. Obviously, we need to make sure that we have those resources to do that. We will have a further evaluation to inform any future policy on this. We are all really clear that we need to protect our smaller rural schools so that they are not just viable but we can enhance and grow them. Some schools that had a decrease in numbers have, through support and measures like this, seen their numbers increase and they are now growing and that is our objective.</p>
+          <p eId="para_197"> On absenteeism, the work that is being done is about making sure we support schools and students who need the most targeted support. The change to our Education (Welfare) Act is supporting schools to identify information they have that might assist in changing the dynamic in the school. A multimedia campaign will be rolled out this September to highlight the basics and why it is important to be in school. It will focus on parents, students and teachers as well. We need to continue to invest in the education welfare service, expanding the number of education welfare officers that we have and making sure that we have more school completion programmes right across the school estate. We also want to increase the number of people working in that area. We have to make sure this is embedded as a priority from early childhood onwards. Some of the measures we have taken, including the pilot I mentioned earlier, Anseo, are already working. In some schools Anseo has had a transformational impact. The more schools we can roll it out to, the better, and the greater the impact we can have overall.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_88">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-18T14:20:00+01:00"/></from>
+          <p eId="para_198">I welcome the Minister this afternoon. She has indicated that she wants to see an increase in capitation. Some schools have made the point that capitation is based on the students enrolled in the school at the end of September so if a student comes to the school after that date, the school does not receive any capitation fee. Is there any way that can be addressed? It also affects the school books grant. A student might move from another school in the country or come to the school from outside the country and if that could be addressed, it would be welcome. </p>
+          <p eId="para_199"> Does the Minister have plans to reform how the Irish language is taught within our schools? I visited a school recently with the Minister of State, Deputy Moynihan. A Ukrainian student stood up and welcomed him in fluent English, although he had only been here since the war started in Ukraine. Within three years he was able to speak English very competently, yet most of us cannot speak Irish after learning it for years in school. </p>
+          <p eId="para_200"> I come from a rural area and school transport is an issue that arises every August. Last year, 18 students in my area who had availed of concessionary tickets on the same school bus for up to four years previously were suddenly told that they would not have any school transport. The issue was resolved after a number of weeks but they were very stressful weeks for their parents. The review of school transport was published over a year ago. The Minister has indicated that she intends to increase the capacity by 100,000 but does she have a timescale for that? How many additional students will be accommodated this year? I was surprised that the Bus Éireann portal did not open any earlier this year in order to plan properly. It takes time to assess capacity requirements, get buses, recruit drivers and so on. What can we expect this year?</p>
+          <p eId="para_201"> Caretakers and secretaries in some schools balloted just last week to go on strike from 28 August, which will mean that schools will not be able to reopen. We have a couple of months before then. This is not just a matter for the Minister for Education and Youth, but also concerns the Minister of public expenditure. Will they be engaging with Fórsa and does the Minister believe this dispute can be resolved before we get to a situation where we cannot reopen some of our schools? </p>
+          <p eId="para_202"> Finally, what proportion of the budget will be going towards youth facilities? The Minister for children, Deputy Foley, announced some teen spaces last year. It is very important that we have facilities for teenagers in particular. That obviously impacts on their education and their lives but there really is nothing in many areas for our young people. Is there something that could be rolled out?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_89" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:20:00+01:00"/></from>
+          <p eId="para_203">I thank the Senator. First, in relation to the capitation grant, this is why it applies for the teacher allocation as well. The school that had the child who has moved will have already received the capitation grant so we cannot then give a second capitation. If a child starts in school A and then halfway through the school year moves to school B, school A has already received the capitation for that child. To then provide capitation to the second school would mean a double payment. We want to make it as fair and as straightforward as possible but obviously, insofar as we can, we want to make sure that the funding is being directed to where the student is and where the school needs it. However, because funding is provided based on a deadline and timeline, we would be providing a double payment, in essence, to certain schools, and the same applies to teacher allocation. We would be providing allocations based on numbers that are not there. That is why we have appeals for that, where the numbers change and where schools can show that their numbers have gone up or are above the threshold that has been set. </p>
+          <p eId="para_204"> On the Irish language, the majority of people I have spoken to would agree that the new plan that was published and is being implemented for our Gaeltacht areas is working really well in terms of supporting Gaeltacht schools, the children in them and those teaching there as well. There are two separate plans looking at teaching Irish in our Gaelscoileanna and Gaelcholáistí and in our English language schools. The same structure and engagement have taken place in the development of those policies as well. I hope to be able to publish them in September and set out the details then. I agree, as I am sure most colleagues will, that we would all love to be better at our native language and to ensure that when children leave school, if they have been taught Irish for as many years as they are, that they are more fluent. That really is the focus. It is important that we bring enjoyment into it. We want children to enjoy learning the language and speaking it and to have as many opportunities to do so as possible. </p>
+          <p eId="para_205"> On school transport, every year we have to assess the children who apply and determine whether they meet the criteria. A child may have had a concessionary ticket in one year but based on the number of students who apply the following year, it might not be available. That is why we want to make sure we have a new scheme with criteria that are not as narrow. We want to open the scheme up to as many students as possible. I said that there would be a further extension of the pilot this year and then based on the review of the work that is under way in the two pilots, we will be able to assess how we roll out the 100,000 places over the lifetime of the Government. We have only started that process but it is our intention to try to increase those numbers every year, bit by bit. </p>
+          <p eId="para_206"> On secretaries, I will start by acknowledging the work they do in our schools. For the most part, schools would be lost without them. Obviously, there have been changes in recent years. Working with Fórsa and the secretaries, a WRC agreement reached in 2022 accepted, in ballot, a package that aligned them with the clerical grade 3 pay scale, entitled them to public sector pay increases and improved their terms and conditions, including annual leave, sick leave and maternity leave. What was not agreed at the time was that they would part of the single public service pension scheme and that is what they have balloted on more recently. It is more complex because it is not just my Department that is involved. Obviously, I cannot make that decision because it is not within my gift to do so. What I will say is that there will be further engagement in the coming weeks. It is really important that we engage with them and try to resolve this insofar as possible.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:20:00+01:00"/></from>
+          <p eId="para_207">We have time for a second round of questions. Members will have two minutes each in this round and then Deputy Fionntán Ó Súilleabháin can come in at the end of the round. I am first on the roster. I will go back to a point I made earlier that a lot of special schools are now expected, and rightly so, to be rolling out a second level curriculum and, with that, specialised subjects. </p>
+          <p eId="para_208">I know a few examples where the Department has communicated to those schools that a trolley in and out of the classroom is sufficient to deliver specialised subjects like woodwork and metalwork. Does the Minister think enough is done to resource special schools to teach those highly technical and specialised second level subjects?</p>
+          <p eId="para_209"> There is a national push to resource ASD classes in almost every school in the country, and rightly so. There was underinvestment for far too long. Now, the diagnoses of ASD are up and the number of children coming through the system in need of support is up. Sometimes, parents ask me whether, in the emphasis on resourcing ASD classes, which I am not trying to take away from because we need more, children with other additional needs like Down's syndrome and mild general learning disabilities are being forgotten. I put this to the Minister and her officials.</p>
+          <p eId="para_210"> Regarding NEPS, does the Minister think it right that principals have to make a loaves and fishes decision each year in the terms of what children are referred to NEPS?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_91" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_211">We are continuously increasing supports and resources for schools, be they primary, secondary or special schools. Where we need to increase funding for specific curricular reform is very much part of the conversation with various unions on leaving certificate reform and how we can make sure that schools have the resources, supports and teachers to roll out the new curriculums. That, of course, includes our special schools as well. We need to make sure that, where we can, we increase any of the resources that are needed. We will engage with the teacher associations and the parents and schools.</p>
+          <p eId="para_212"> It is not the case that one is to the detriment of the other. There are now approximately 44,000 special education teachers and SNAs in our schools across the country. When one considers that there are just under 80,000 teachers in our schools, that is more than half on top of that being provided in additional support in our mainstream classrooms, special education classrooms and otherwise.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_213">I apologise for cutting across the Minister.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_93" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_214">That is okay.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_215">I have to apply my rule to myself too, but I thank the Minister. I might bring it up next week with the Minister of State, Deputy Michael Moynihan.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_95">
+          <from>Deputy Jen Cummins<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_216">I have a question on hot school meals. I welcome that the Department is looking at the nutritional value of those meals. I recently visited a school that had brought in local providers. I was quite hungry at the time, but they looked incredibly nice. I visited schools in England. They were resourced with their own canteens and local staff, so they were not relying on private businesses. I would love to see that model rolled out here so that, in addition to ensuring the food is local and nutritious, it provides employment for people.</p>
+          <p eId="para_217"> The other element is that lots of children in this country do not have kitchen tables and do not sit around the table together to eat as a family or with other people they live with. The social aspect of eating is really important. Will the Minister and her Department look at resourcing, whether through retrofitting or future builds, school canteens in every school and food being provided in those directly?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_96" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_218">The hot school meals are provided through the Department of Social Protection. However, whether with regard to the nutritionist who will be in place from September to look at the overall nutritional value or the roll-out more broadly, we are collaborating with the Department of Social Protection to see how it can work best. Obviously, a lot of primary schools are in older buildings and, for the most part, will not be able to insert or put a kitchen in place. Some of them may have it, but it is mainly secondary schools have that ability. For primary schools, it is about making sure insofar as we can that they have the space and ability for it not to impact or impede on the school environments and classrooms overall. For the most part, that is what is happening, but we need to collaborate on this to make sure it works the best it can. The feedback I am getting is positive. Children are coming to school particularly focused in our DEIS areas. To the Deputy's point, it is not only that they do not sit around a table - they might be coming to school without a meal. That is the sole focus of this. It is about making sure everybody starts the day on a level playing field.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_97">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_219">I am giving the Minister the opportunity to respond on the two outstanding issues. There is the special schools and their designation with regard to DEIS, differences between primary versus secondary and the capitation allowances. It is about the practical issues and the unfair repercussions of the breadth of what the school is doing, which is not reflected in the capitation or allowances for principals and deputy principals, and how that can impact recruitment.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_98" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_220">The first question was about the status of special and DEIS schools. It is the case that special schools get enhanced capitation, which I mentioned. There are also additional supports provided for within the school, whether for the deputy principal post or school transport.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_99">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_221">I hear the Minister on higher capitation, but it has a narrow base that does not relate properly to the work a special school does. I believe it is based on classrooms and teachers, but a special school has many other people involved and is a bigger space than just its classrooms.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_100" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_222">This comes back to the previous question, but special schools can recruit both primary and post-primary teachers. The issue about the allowances is part of the local bargaining that will take place with all of the unions and associations over the summer to see what more can be done in that regard. There is always more we can do to support our special schools and make sure that those in disadvantaged areas in particular get as much support as possible.</p>
+          <p eId="para_223"> The Deputy had a second question.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_101">
+          <from>Deputy Emer Currie<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_224">It was about forward planning, but we are out of time.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_102">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_225">This is a local issue, but I imagine the experience is probably replicated nationwide. We have the former St. Mary's national school building in Trim, which has been vacant for more than a decade. Previously as a councillor, and now as a TD, I have asked about it numerous times. The answer to a question in February was that it was being divested to Meath County Council. We are in dire need of community buildings for use across County Meath. Can that process be sped up somehow?</p>
+          <p eId="para_226"> My second comment is about Scoil Mhuire secondary school, also in Trim. It is thankfully moving to a new campus but leaving a perfectly good educational building empty. When I asked, I found out it was not in the ownership of the Department of Education and Youth and there were no plans to engage with the owners. That is an opportunity wasted. We have other needs in the town, and I would not like to see us wait until Scoil Mhuire moves to its new campus to acquire that building for a Gaelscoil or an Educate Together.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_103" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_227">Being part of the same local authority area, I know we have a really proactive and ambitious local authority and the members of it want to use every space possible to provide for the community. I also want to make sure we can provide school places. If there is a need in an area and an opportunity to purchase a site or land because of that need, then that it is obviously something that has to be looked at. It is about making sure, insofar as possible, that buildings are not put to waste and we use them in the best way possible. That is particularly the case if something has been used as a school previously. That is looked at if there is a need in an area. We have to take all of those factors into consideration: who owns it; what the need is; what it could be used for; and who the partners are we need to engage with. That always has to be the approach taken.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_104">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_228">A lot of the questions have already been asked but I have two quick ones. Irish Sign Language has been an official language of Ireland since 2017 but has yet to be introduced as a leaving certificate subject. I know it is an optional module within the LCA, but it has not been added as a subject yet. Are there any plans for that? I have also heard from some schools in my dáilcheantar that there is talk of separate exams being brought in for Gaeilge sna scoileanna T1 agus T2 don Ardteist agus go mbeidh páipéar difriúil le haghaidh an dá scoil. Is that fair and is that going to happen?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_105" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_229">Will the Deputy translate the last question, if that is okay?</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_106">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-06-18T14:30:00+01:00"/></from>
+          <p eId="para_230">Sorry. There will be separate Irish papers for scoileanna T1, a school where your first language is Gaeilge, and for a school where your second language is Gaeilge; T1 agus T2.</p>
+          <p eId="para_231">There would be separate papers and many students and teachers say that would not be fair.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_107" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_232">In terms of Irish Sign Language, this is something the NCCA is doing work on at the moment. There are no definitive plans but it is looking at whether this can be progressed as an official part of the curriculum. Any changes around the curriculum in Irish are being worked through at the moment, but no decisions have been made overall. </p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_108">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_233">I will start with children with mild general learning difficulties. One class in north Tipperary has, as far as I know, been in existence since the 1970s catering for such children. That school is now getting two extra special classes and that room is being repurposed for the special class, meaning we are losing that space. Parents who I know quite well emailed me today. They have secured a place for their child with Down's syndrome. He does not have an autism diagnosis, meaning he cannot access the new special school in Nenagh or the new special class replacing the mild general learning difficulties class. Instead of going to his local school in Nenagh, in the same area as his siblings, he has to go to a school 42 km away. I am conscious of how much work we need to do to provide classes for children with autism and special classes, and the new special school in Nenagh is very welcome, but we should not rob Peter to pay Paul.</p>
+          <p eId="para_234"> Some schools are coming to me with concerns about the circular that went out recently on the redesignation of schools. They are dealing with mild general learning difficulties and feel they are specialised in an area or are providing education for children for whom it may be their last chance at education. If that is taken from them and they are changed to complex needs only, that would disadvantage one section of children in favour of another with a different need. While I appreciate the work being done on special education, we need to be very careful we are not taking from one sector to provide for another.</p>
+          <p eId="para_235"> For school bus drivers, Bus Éireann's over-70s policy is absolutely ridiculous. The fact they cannot drive children to school on a localised route in the morning and bring them home in the evening, while they could collect those children to drive from north Tipperary to Dublin Zoo and back, is completely contradictory. It is something we need to tackle ahead of September.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_109" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_236">We agree we need to ensure every child is supported, be it in a separate classroom or in mainstream. That is why we have as many SNAs and special education teachers as we do. It is so that children with different needs can be supported, whether in mainstream or otherwise. There is more work we need to do for children who do not have autism and cannot attend autism classes or special schools.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_237">Before I bring in Deputy O'Rourke, his request for figures will matter to many of us. So that it becomes a formal action of the committee, will the Deputy propose it? Will he read out what we are seeking? It is not a question for the Minister; it is a formality so we can action on it as a committee.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_111">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_238">I think we should track the 3,275 children who have notified the NCSE that they have a recommendation for a special class or special school place for September 2025. We should get an update in a reasonable timeframe, and continuing regularly thereafter, on categorised primary and secondary special schools and the children who have offers.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_239">That is good and clear. That is a formal proposal. Does the committee agree to that? Agreed. That will be in due course; we will not get into it now.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_113" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_240">The reason there is not a weekly or monthly update on that is, to Deputy Cummins's point, 3,275 have been identified but a number of children separate to that have been identified within the school but are not known to the NCSE. They come into the figures as well and it changes every day depending on whether a place has been identified or otherwise. That is why we are not giving exact figures, but more general ones. It is changing all the time.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_241">I understand the fluidity but when the Minister next has a data set, we ask that it be shared with the committee.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_115">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_242">I thank the Minister for that. I have raised SNAs with her before. They do incredibly important work. There has been progress on recruiting them but we do not have enough of them. We discussed during priority questions my expectation that there would be 23,600 in schools this September but now the indication is there will be 23,179. Is that related to retirement of other attrition within the system? I wonder how that happens.</p>
+          <p eId="para_243"> I have a number of examples of SENOs around the country saying they have been advised that a circular is due to issue very soon which will set out a new review process and, while that is awaited, all reviews are paused. Will the Minister provide an update on that new circular and what it is intended to do?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_116" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_244">The Deputy raised SNAs last week in the Dáil. SNAs allocated and SNAs in the schools are different timelines. The question the Deputy asked was at a particular point in time so the allocation might have been made but the SNAs were not in the school. To clarify, at the end of 2024, there were 21,579. From this September onwards - because allocations happen throughout the year - there will be 23,179. That is the 1,600 that were secured in the budget. That is the correct figure. There will be 23,179 in September. Allocations and reviews happen throughout the year but the post is not put <i>in situ</i> until September. That is where we get to the 1,600.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_117">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_245">Is there a new approach to reviews?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_118" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_246">Reviews happen continuously throughout the year.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_119">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_247">Is there a new circular to be issued in the coming weeks?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_120" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_248">A number of circulars are going out, setting in train the new processes. It is a constant review so any circulars will show there will be reviews from September. That is the case every year so it will not be anything particularly new.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_121">
+          <from>Senator Pauline Tully<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_249">If the Minister has an opportunity, will she answer the question on youth I asked in the last session?</p>
+          <p eId="para_250"> Schools received their SNA allocation on Friday. One school was in touch with me in shock. It has two SNAs currently. A review was held in March. It was recommended by the SENOs who carried out the review that there would be an increase of 0.83 - an infant SNA - because of projected enrolments. A number of students enrolled with quite considerable needs. Now they have been informed they still only have two. The principal is hoping it is some sort of clerical error. I will write to the NCSE. I am engaging to see what has happened there. Would it be normal a recommendation from a review would not be upheld?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_122" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_251">On youth, over €90 million has transferred over from the Department of children along with the services. I will do my best at budget time to increase that funding and also to look at the capital side of things. The Deputy mentioned spaces and it is important the organisations - Foróige, Youth Work Ireland and many others - have access to up-to-date spaces that are welcoming and inviting for young people. New programmes are being opened up. Ten UBU services were committed to in last year's budget. The process will be opening soon for education and training boards to apply for one project in their area. It is important to focus on ensuring geographical coverage across the country and that every organisation is supported.</p>
+          <p eId="para_252"> On SNA allocations, it was made clear this year to schools and SNAs that schools would see no change to their allocation; or there may be a decrease but it will not come into place until next year when the redeployment scheme is in place to make sure SNAs do not lose their jobs and have to reapply; or, in some instances, schools saw increases in their overall allocation. While I do not know the exact details of the school the Deputy mentioned, there are schools which have received an increase this year. There is an appeal process open to schools which wish to appeal their allocation. That is open to them to do between now and September.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_123">
+          <from>Senator Shane Curley<recordedTime time="2025-06-18T14:40:00+01:00"/></from>
+          <p eId="para_253">I threw a lot of stuff at the Minister earlier and she did not have time to come back on everything, which is fair enough. I mentioned AI as a force for good in the classroom, especially at second level. There is a project being rolled out in America called Khanmigo, which involves an AI tool that can basically teach the class, correct all the homework and give good feedback in a timely fashion. It takes a huge amount of stress off teachers, especially of text-heavy subjects like my own, which were Irish and French at second level.</p>
+          <p eId="para_254">I spent 60% to 70% of my time either planning or correcting as opposed to teaching. It takes an awful lot of your focus away from what you should be doing, which is focusing on how the class will be delivered. The costing of this would be $15 per head per academic year. Is that something that could be rolled out as a pilot project, which the universities could be liaised with about, and maybe even student teachers on their placements?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_124" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_255">I thank the Senator. I agree. I have spoken to many teachers who are already using AI, whether in a special education setting or otherwise, who say it has been helpful. As part of leaving certificate reform and the roll-out, a task force has been put in place to look at teaching, learning and assessment, specifically for leaving certificate reform but it would be helpful for other elements of our school of all years and ages. That would bring together stakeholders. The TUI, which has signed up to it recently, will obviously be part of that with Oide, the State Examinations Commission and the National Council for Curriculum and Assessment, so I do not see why something like this could not be looked at. I suppose it is about making sure that teachers have supports and resources, understand how best to use AI and how they can benefit from it, but also how they can identify challenges and pitfalls too. I am sure the group could be open to looking at how it is done elsewhere and how we learn from other countries where, as the Senator mentioned, it is working well and teachers are using it well.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_125">
+          <from>Senator Shane Curley<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_256">It is not intended to be a replacement of a teacher in the classroom. I know there are fears that teachers could become dispensable quickly, but that is not the intention. It is just a tool that allows the teacher to roam around the classroom and supervise what the kids are actually doing, especially in mixed ability classes where kids are in mainstream who may be coming from a special needs unit and are being integrated into the mainstream. It is a good tool for teachers.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_257">It may be a good idea to do a body of work on that for a future meeting, maybe in the autumn and winter period. It is not an area we have covered so far in the work programme. If the Senator wants to email the secretariat, I am sure we could factor that in.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_127">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_258">The Minister was going to come back in on transport. We just did not have time. I was talking about the precious cargo of kids on buses which are breaking down, how old the buses are, and-----</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_128" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_259">The co-ordinator?</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_129">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_260">Yes.</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_130" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_261">I thank the Senator. The Department of Transport is committed to investing in the school fleet and the overall bus fleet that it has. The vast majority of our buses are Bus Éireann buses, so it is about upgrading them and making them more efficient, including more climate-efficient as well as everything else. The Department of Transport has a commitment to do that. There is also a need for more mechanics to be able to fix the buses. In our constituency, we have had problems with buses breaking down and not turning up. The biggest challenge is getting them fixed. In his previous role, the Minister of State, Deputy Neale Richmond, put people to do that on the list of needed professions that could apply for visas from outside the EU because we were struggling to get people for it.</p>
+          <p eId="para_262"> Regarding the co-ordinator, it would be good to do to take the workload off. We recently met the deputy principal in St. Ultan's. The vast majority of her work is managing the school transport scheme. If there is a way in which we could alleviate the pressures, this would obviously be a budgetary measure or budgetary ask, and we need to make sure that our teachers are given time to teach and do all of the wonderful work that they do in the school. I would be happy to explore it with the Minister of State, Deputy Moynihan, and Senator Nelson Murray.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_131">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_263">Also joining us today is Deputy Fionntán Ó Súilleabháin. We have all parties and none here. The Deputy is welcome. Going forward, I propose that we have our questions and perhaps a second round, and then non-members of the committee can come in afterwards. If everyone agrees, Deputy Ó Súilleabháin has four minutes.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_132">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_264">This may have been covered earlier when I was not here. My first question relates to the NCSE and why the reviews were postponed until September. A parent in Ferns contacted me this week, who was in great distress. Her five-year-old child with Down's syndrome would not be allowed to enter the school in September even though her preschool friends would be going there, because there is no SNA. She emphasised that the school was doing everything it could to facilitate but it said that unfortunately it cannot request a review from the NCSE because all reviews had been postponed until September. I am wondering about the reason for this. Perhaps it was covered earlier.</p>
+          <p eId="para_265"> My second question is about a primary school in the Gorey area and the delay in coming back with the review of the assessment of needs. The principal contacted me to say the school had done an assessment of needs to determine what SNAs would be needed on 4 April. Now it is coming up to the summer and he said there was a fear that teachers, SNAs or even the principal himself could be out on assault leave because of an escalation in aggression. He was wondering what the delay was in getting back to the school. I can provide details later if that is any help.</p>
+          <p eId="para_266"> I have been teaching at primary level for 34 years. I have seen many young colleagues come and go. Many have left for Dubai, Abu Dhabi and places like that. I am wondering about retention. What do we plan to do to incentivise Irish teachers to come home? I know this has been looked at in other areas.</p>
+          <p eId="para_267"> My last question is about school buildings. I raised this in the Chamber. I know that school buildings are often a challenge when it comes to provision for special education. In my parish, we have Ballyfad National School. Sadly, after 70 years, it is closing its doors the week after next. It is a fantastic building. It has a hall next door which is the broadband hub for the area. It overlooks a unique type of natural woodland. It is close to the sea. It has a specially constructed sensory trail in the woods. Many people locally think it would be an ideal location for a special school or such facilities, rather than having it lying there. It is perfectly located on the Wicklow-Wexford border, just between Gorey and Arklow. Could Ballyfad National School be looked at?</p>
+        </speech>
+        <speech by="#HelenMcEntee" eId="spk_133" as="#Minister_for_Justice.">
+          <from>Deputy Helen McEntee<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_268">On the specific case the Deputy mentioned, schools cannot refuse students. While there may be a suggestion that it cannot accept the child because it does not have the support, students really cannot refuse students. What can happen is that the school would engage with the NCSE once the child is in the school to see what needs and supports are there. Reviews happen continuously throughout the year. That will not change. I mentioned earlier that the intention is for a clear timeline to be set out in line with when our teacher allocations happen at the beginning of the year, with reviews and appeals happening at two stages in the year, so that SNAs, special education teachers and everybody knows where they are going and when, with a clear pathway to work with schools, based on need. I stress that schools cannot refuse students because they feel they do not have the resources. Students should be starting in schools and then schools can engage with the NCSE to identify the need and what can be provided.</p>
+          <p eId="para_269"> I might get the details about the second question from the Deputy. It ties into the same thing, including what the need in the school is and what the allocation is. I am not clear on whether a review was done by the NCSE or what happened there. The assessment of need would have been done separately through the HSE. Maybe the Deputy could provide me with the detail of that to help me to understand what is happening there.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_270">The Minister might engage afterwards on the third and final questions.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_135">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_271">Sorry-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-06-18T14:50:00+01:00"/></from>
+          <p eId="para_272">We are out of time. Sorry, Deputy. We are against the clock. Another meeting is to happen here afterwards. I thank the Minister, Deputy McEntee, and her officials for being at our committee. We look forward, over the next years of this Government and this Dáil, to engaging with them further. I thank them. Senator Curley is very efficient and has already emailed the committee about AI. We can consider that next Wednesday at our private meeting. I thank everyone. I thank our secretariat for, as always, being very supportive of the work of this committee. I thank the Minister and her officials.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 2.59 p.m. until 6.30 p.m. on Wednesday, 25 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

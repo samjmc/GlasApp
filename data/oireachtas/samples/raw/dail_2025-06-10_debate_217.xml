@@ -1,0 +1,1177 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-06-10/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-06-10/debate"/>
+          <FRBRdate date="2025-06-10" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-06-10/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-06-10/debate/mul@"/>
+          <FRBRdate date="2025-06-10" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-06-10/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-06-10/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-11" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_1" href="#sum_6" outcome="#lost" refersTo="#sum_5">
+            <count eId="vote_1-count_1" href="#qty_1" refersTo="#ta" value="6"/>
+            <count eId="vote_1-count_2" href="#qty_2" refersTo="#nil" value="8"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="DeeRyan" href="/ie/oireachtas/member/id/Dee-Ryan.S.2025-01-29" showAs="Dee Ryan"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JamesOConnor" href="/ie/oireachtas/member/id/James-O'Connor.D.2020-02-08" showAs="James O'Connor"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LynnRuane" href="/ie/oireachtas/member/id/Lynn-Ruane.S.2016-04-25" showAs="Lynn Ruane"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NoelODonovan" href="/ie/oireachtas/member/id/Noel-O'Donovan.S.2025-01-29" showAs="Noel O'Donovan"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-10">Dé Máirt, 10 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-10">Tuesday, 10 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#NoelODonovan">Noel O'Donovan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LynnRuane">Lynn Ruane</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#JamesOConnor">James O'Connor</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-06-10T11:30:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T11:30:00+01:00"/></from>
+          <p eId="para_16">As we have a quorum of four members, we can commence. I welcome everyone to the first public meeting of the Joint Committee on Artificial Intelligence. I do not believe we have any apologies. Our agenda items today are that we are going to have an introduction to this committee and our work. We will then engage with Research Ireland. I am very grateful to Research Ireland for coming today. Not alone is it the first meeting of our committee but it is the first time Research Ireland in its new guise is appearing before an Oireachtas committee. I hope its appearance before all Oireachtas committees is as pleasant as this one. At the end of the meeting, we will be electing our Leas-Chathaoirleach and we will go into private session briefly after that.</p>
+          <p eId="para_17"> Before I begin there are some housekeeping rules as with all committees. As this is the first meeting of the committee, in accordance with Standing Orders I am obliged to make the following declaration:</p>
+          <p class="indent_1" eId="para_18">I do solemnly declare that I will duly and faithfully, and to the best of my knowledge and ability, execute the office of Cathaoirleach of the Committee on Artificial Intelligence without fear or favour, apply the rules as laid down by the House in an impartial and fair manner, maintain order and uphold the rights and privileges of members in accordance with the Constitution and Standing Orders.</p>
+          <p eId="para_19"> You are all very welcome to this first meeting. We have had a couple of private meetings. Our intention is to engage people on the debate around this new technology that is already transforming so many aspects of Irish society and indeed right around the world. We want to engage with the public and with as wide a range of stakeholders as possible. In our private sessions to date, we have set out the way in which our committee is going to operate. Between now and the summer recess we are going to do a kind of state-of-the-nation look at where artificial intelligence is now, the State's response. We will be hearing from Research Ireland today. In upcoming meetings, we will hear from the AI advisory council, the Minister of State, Deputy Niamh Smyth, and the Government. From the autumn on, our intention is to have a series of modules on AI and the State, AI and democracy, healthcare, energy, and education. We will hear from a variety of witnesses. We want to have public input during that period also. At the end of each of the modules, the intention is that we would produce a position paper with issues for the State and for public debate to consider. Most committees publish a report after a couple of years. We would be rather concerned here that if we waited a couple of years, the technology will be out of date. The intention is to have regular position papers. I know from talking to members that the plan is to work in a collaborative way. It is a learning process for all of us. We are interested in hearing diverse views around these issues.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Introduction to Artificial Intelligence: Research Ireland<recordedTime time="2025-06-10T11:30:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T11:30:00+01:00"/></from>
+          <p eId="para_20">I welcome our witnesses. Dr. Ciarán Seoighe is the deputy chief executive of Research Ireland and will give the opening statement. Professor Alan Smeaton is emeritus professor of computing at Dublin City University. Dr. Susan Leavy is assistant professor in the school of information and communication studies at UCD. We will be hearing from them presently.</p>
+          <p eId="para_21">I will invite each member to speak for a maximum of two minutes, which I know can be a challenge, to set out their vision for the committee or what they see as opportunities, challenges and so on of artificial intelligence, AI. There is a speaking order for questions, but I will go left to right, if that is agreeable. I invite Deputy Paul Murphy to speak first on his views on the opportunities and challenges of AI.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_3">
+          <from>Deputy Paul Murphy<recordedTime time="2025-06-10T11:35:00+01:00"/></from>
+          <p eId="para_22">The Taoiseach wrote an opinion piece in the <i>Business Post</i> a number of months ago in which he said we needed to act decisively now across the whole of government to accelerate the adoption of AI across the public sector, enterprise and wider society. In the article he compared the significance of AI to the industrial revolution and the printing press. The role of the committee should be to say "Let us take a minute". Let us not say the whole of government is going to commit to accelerating AI before we have a chance to have some democratic discussion about the good, useful and bad applications of AI. There has been a massive hype machine built up by big tech corporations which want to inflate their share prices in the short term and increase their profits in the medium to long term. There are then governments like our own following in their wake without having a reasonable discussion about the implications of AI.</p>
+          <p eId="para_23"> One negative implication is the massive expansion of energy use. Trump has spoken about doubling energy use in the US through coal to facilitate AI. That will make it impossible for us to meet our climate targets. Asking a query of ChatGPT uses as much electricity as having a light bulb on for 20 minutes. Is that what we want to do as a society? </p>
+          <p eId="para_24"> AI will lead to the degradation of our public spaces and culture through the proliferation of fake news. We no longer get accurate information from a Google search. We used to get accurate information from Google, but we now get an AI summary which will contain hallucinations of fake news. That is not even being done deliberately. AI is used to spread false information, narratives and so on.</p>
+          <p eId="para_25"> There will be an impact on cultural production, whereby AI will undermine the role of journalists, artists and so on, which is something we need to examine, as well as civil liberties.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_4">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T11:35:00+01:00"/></from>
+          <p eId="para_26">I thank the Chair and welcome the witnesses. My background is in business and I am interested in what the committee, in its work over the next two years, will learn and consider. I am interested in many of the topics Deputy Murphy touched on, but the two areas on I want to focus on in the work of this committee are enterprise and opportunity. With my background in business, I am aware of how businesses have been preparing for digitalisation and the impact the changes in and evolution of AI in its various formats over the past three years will have on the business community.</p>
+          <p eId="para_27"> I am particularly interested in not just supporting SMEs to adopt AI and make them more efficient to ensure their workers are focused on more high-value output and all of the positives that can come to business from that, but also the opportunities for enterprise development for our entrepreneurs and companies and supporting them in the investment they need to make to ensure we are not left behind in this critical industry and new sector that is developing. We need to ensure that we support Irish companies and innovators in being at the forefront and not requiring them to get on a plane and go to America or somewhere else to make something happen. I am interested in what is being done in France and how the French state has become involved in supporting that. I am interested in the contribution of the witnesses today.</p>
+          <p eId="para_28"> Like my colleague, I am particularly focused on energy consumption. We will need to invest more heavily in energy infrastructure and data centres. In planning for data centres, we must plan for them to use renewable energy. I am not speaking about token greenwashing with a solar panel at the front. Rather, I am talking about investing heavily as a State in offshore renewable energy so that there is a consistent supply of renewable energy to fuel this engine.</p>
+          <p eId="para_29">We are going to need that in order to ensure that our economy, at minimum, keeps pace with the rest of the developing world or, in the best case scenario, is actually at the forefront leading.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_5">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T11:40:00+01:00"/></from>
+          <p eId="para_30">I welcome the establishment of the committee. It is important. From a health sector point of view, I have a background in biomedical science. I have worked with large data sets, gene sequencing for targeted therapies, bioinformatics and the potential opportunity in diagnostics and patient management. Examining the potential of AI in health services, hopefully in an ethical way, is something we need to consider. It is on the work programme.</p>
+          <p eId="para_31"> I am my party's education spokesperson. We hear there is an opportunity with AI to bring education to the four corners of the world in an efficient way. At the same time, in Ireland, there are concerns about the impact of AI on the integrity of our leaving certificate, for example.</p>
+          <p eId="para_32"> We must consider the opportunities, challenges and risks associated with AI in all of those areas in a fair way. I have significant concerns when it comes to the energy demand and potential environmental impact of AI. We also must consider the economic impacts, such as jobs and displacement. We have seen bad actors in the technology space, some of whom are close to people of power at the minute. We need to have our eyes open in that regard. I hope we, as a committee, can focus on the issue of AI for the public good and see where it takes us.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_6">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-10T11:40:00+01:00"/></from>
+          <p eId="para_33">I welcome the committee and I am looking forward to working with my colleagues. Hopefully, we can achieve something and put forward some good recommendations. Obviously, there are challenges. I have spoken about the climate element, but there are also challenges in the education, society and, as was said, culture sectors, particularly with regard to artists and musicians. It is the threat to those areas we must look at as well. We must look forward to innovations in medication and so forth, which will be integral to the whole thing.</p>
+          <p eId="para_34"> I am concerned. My concerns relate to the human element involved in developing AI and what control and regulations we can have over that. Another issue that concerns me from reading some of the stuff is the language we use. We must use more concise and understandable language. If we have machines developing stuff, they could interpret language differently than its originally intended input, which could result in bad things. I am also concerned about bad actors and people with vested interests using AI for their own advantage and to the disadvantage of other people.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_7">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T11:40:00+01:00"/></from>
+          <p eId="para_35">I thank the Chair. I wish him well in his role. I look forward to working with all of my colleagues on a cross-party basis on understanding AI and how it is currently impacting this State, other states and sectors on a cross-sectoral basis. Ireland is uniquely placed to play a leading role in the regulatory discussion that is taking place and potentially in the adaptation of AI within our State. We cannot be naive, however, in simply adapting what these companies are creating into our system in a kind of a wild west manner. In fairness, some of the regulatory stuff coming out of the United States at the moment would give us all pause for concern.</p>
+          <p eId="para_36"> I hope this committee can lean on the expertise that exists in this country. Seven of the top 11 large language model, LLM, companies are based here. A lot of them are based in my constituency, apart from anything else. We can learn a lot from what they are doing and from engaging with them. Hopefully, we can engage on a sectoral basis, whether that is the healthcare, education or legal sector, to understand what those sectors are piloting at the moment in order that we as legislators can support the regulation of an area that, regardless of whether we are fearful, is here.</p>
+          <p eId="para_37">We need to respond appropriately in a European way because Europe is a continent of innovation. While we have competitiveness challenges with the United States and China at the moment, we should not lose sight of our own identity. I am confident that Europe can adapt AI in a way that is extremely European. I hope Ireland can use the opportunity presented by what is taking place in the world right now to lead in that regard.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_8">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-10T11:45:00+01:00"/></from>
+          <p eId="para_38">I wish the Chair well in his role and I look forward to working with everybody on this committee. I also welcome the witnesses. </p>
+          <p eId="para_39"> This is a very exciting committee to be a part of. Every aspect of humanity is going to be affected by artificial intelligence in the future. It is going to affect how our societies operate and function in everything, from our education and health systems to business, government and elections and from the media and creativity to policing. The question of how AI develops will raise issues regarding human rights and workers' rights in terms of how workers are treated and how work may or may not be replaced by AI. There is going to be a real need for education to discern what is real and not real and with regard to creative thinking, particularly in terms of the media and social media we consume as well as the false information that is out there. Our society has already seen a rise in cyber-scams, which are becoming even more advanced with AI. That issue also needs to be addressed as part of this.</p>
+          <p eId="para_40"> We know that generative AI technologies consume a lot of energy but AI can potentially also make a valuable contribution to how we address climate chaos and the challenges facing humanity. AI will play a part in that. We have to work with AI to ensure it is contributing to the public good and is being regulated. Because it is developing at such a fast pace, we must ensure regulation stays on top of that. That will be the role of governments across the world, and certainly here in Ireland, going forward. That is why this committee is so important. I am delighted to be a part of it and I look forward to working with everyone.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_9">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T11:45:00+01:00"/></from>
+          <p eId="para_41">I thank the Chair and wish him well in his position. I look forward to working with all my colleagues and welcome the witnesses.</p>
+          <p eId="para_42"> I am approaching this committee from a psychology background. I worked for a long time in the neurodiverse space, mainly in early intervention. I also have a background in tourism, having worked in a tourism business. I am excited about how AI will affect both those areas. Like everybody else, I am both excited and terrified in equal measure. I am excited about the endless possibilities that AI will show us in modern medicine and in saving lives on our roads. We already see driverless cars in Japan and Los Angeles. Those kinds of innovations are very welcome. AI will also assist farmers in rural areas where there are difficulties with succession planning and getting hands on the ground on farms. We just have to make sure we clarify at all times which AI we are referring to.</p>
+          <p eId="para_43"> I am also excited about how AI is going to impact education. Going back to the neurodiverse space, being able to have individualised, one-to-one tutors on the screen will really impact that area. AI can help patients with dementia and Alzheimer's. That is going to be an exciting space.</p>
+          <p eId="para_44"> As I said, I am also terrified. I am worried about the scams, fraud and misinformation and the huge disconnect between generations. To take the simple technology of paying for things using our phone, most of us do that now without thinking but many in the older generation are not there yet. They are scared of it. Will AI move so fast that we leave behind a whole generation? Will it widen the gap economically because some people will have access to better AI or countries in the developed world will have AI and other countries will be left behind? I look forward to working with my colleagues and hopefully producing a good report and recommendations for the betterment of society.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_10">
+          <from>Senator Gareth Scahill<recordedTime time="2025-06-10T11:50:00+01:00"/></from>
+          <p eId="para_45">As my colleagues have done, I wish the Cathaoirleach the very best of luck. I also welcome our guests from Research Ireland.</p>
+          <p eId="para_46"> I am looking forward to working with all committee members on a cross-party basis. We all have a single goal in mind. We all want to see how best Ireland can utilise this technology. We must ensure Ireland does not just keep pace but leads in the global roll-out of this. This will require a lot of investment in infrastructure and education. Most importantly, it will require skills. We need to prepare our workforce now for roles that have not yet been created and that will probably not exist for three or four years. I hope we work on this as a committee.</p>
+          <p eId="para_47"> The potential for this is extremely exciting. There are reservations around the table, among myself and my colleagues, about how it will be rolled out, but the potential outweighs everything. There is potential for data points for healthcare diagnosis to speed things up, for education and developing skill sets for our kids and for people who are neurodiverse. The potential this will open for all of them will have us in a very different place in five years' time. We are not on the crest of the wave; the wave has passed and the water is over our ankles. In the coming months, it will be up to our knees and will sweep us along with it. We need to ensure that we and the various Departments are in the best position to utilise and harness the benefits.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_11">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T11:50:00+01:00"/></from>
+          <p eId="para_48">I wish the Cathaoirleach the best of luck in his role. I thank our guests for coming before the committee. All members bring a wealth of experience to the committee. I am very much looking forward to working with them.</p>
+          <p eId="para_49"> Like others, I am excited. However, that excitement is very much tempered by my concerns about AI. I am coming at this from a background in technology and in rights and equality. One of the key concerns I have is that too much power for the implementation of AI is located with big tech. For AI, we need the hardware, the data and the expertise. No government in the world has all of these. They are centred on big tech. This gives me additional concerns that, as with other policy areas, the Government, unfortunately, is a little too focused on industry and the economy and not enough on all-of-society approaches.</p>
+          <p eId="para_50"> Regulation must be front and centre. Law and policy are simply not yet in place to allow us to deal with what is already here, never mind what is coming. If we focus on a strong regulatory environment at domestic and EU level, we will foster the growth of sustainable AI. I do not want AI to be developed or innovated in way that will have a harmful effect on society. A balance in this regard has to be absolutely front and centre.</p>
+          <p eId="para_51"> Many of my major concerns, which were mentioned by previous speakers, relate to the displacement of labour, rights and discrimination, climate, democracy, creativity and education. The scams mentioned by Senator Harmon constitute an emerging issue about which I have major concerns.</p>
+          <p eId="para_52"> To finish on a positive note, I truly believe that the innovation AI will bring to our society can have a positive impact if we are forthright in the development of positive regulation.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_12">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T11:50:00+01:00"/></from>
+          <p eId="para_53">I echo the well wishes to the Cathaoirleach. I look forward to working with everyone.</p>
+          <p eId="para_54"> This committee makes me nervous. I am nervous about exploring how AI intersects with so many different areas of our lives, whether that be the implications it has for poverty, creating digital poorhouses, human rights, war, how vulnerable poor communities interact with the State and understanding the difference between AI and subsets of AI. What makes me more nervous than anything, however, is not knowing what questions to ask. This has become more apparent in recent years. As we policymakers debate in the Houses, people say headline things but nobody actually understands what is under the bonnet in terms of how people engage with machine learning, how it is made and what are the inputs. What frightens me is that we are having this big conversation, but I do not know whether we fully know what questions to ask to make sure we build a system that is ethical and that does not leave people behind.</p>
+          <p eId="para_55">I have read a number of books, especially from the United States, to try my best to understand how AI intersects with the things I care about, including in relation to how bail is decided in the justice system and the issue of funding being streamed into the best performing classrooms and teachers. AI has the capacity to set us back years with regard to alleviating poverty. There is also this optimistic part of me that asks whether, if we do this right, AI can be used to alleviate these issues. I am nervous and worried about not knowing what to ask. I am also hopeful about trying to engage with those parts of AI that have the potential to lessen that gap. My focus will be on looking at where I feel AI has the potential to widen the gap between those who have and those who have not.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T11:55:00+01:00"/></from>
+          <p eId="para_56">Any new technology presents incredible opportunities but also a lot of challenges. If we can explore, as colleagues have mentioned, how the State can use this new technology to more efficiently and effectively deliver public services so that there are better outcomes, it will be a good thing. I am excited about areas like healthcare and education where, if AI can improve outcomes, it could be transformative.</p>
+          <p eId="para_57"> It is critical that we do not have digital divides and that we bring everybody with us. Technology always carries the risk of creating those divides. There is an obvious challenge for our education and training systems. Lifelong learning is required because this technology will have an impact on everybody. It is not going to impact on only one sector of society. As Deputy Keogh mentioned, AI will impact on agriculture. I have been fortunate to see some of what has been happening in healthcare where AI is transformative in being able to identify diseases early on. While there will be employment displacement, I believe we will see workers who use artificial intelligence replace workers who do not use it. It is about how we equip everybody to address those challenges.</p>
+          <p eId="para_58"> I am one of those people who do not believe that innovation and regulation are mutually exclusive. I think we can have both. It is about getting the right form of regulation and not overregulating. At the same time, as with any new technology, we need to put in place product safety measures.</p>
+          <p eId="para_59"> Senator Ruane is right. Part of our challenge is about knowing the right questions to ask. That is why we will hear from a lot of expert witnesses. It will be a learning process for all of us.</p>
+          <p eId="para_60"> I am conscious that Deputy Ó Cearúil is caught between this meeting and the meeting of the committee on the Irish language. He has left but he indicated he will come back.</p>
+          <p eId="para_61"> I thank my colleagues for their contributions. They have given us a broad flavour of where we are with regard to artificial intelligence. We will allow members to give their perspectives as we move on.</p>
+          <p eId="para_62"> We will now engage with our witnesses. I invite Dr. Ciarán Seoighe, deputy chief executive of Research Ireland, to make an opening statement, after which, on the basis of a draw, we will go to members for questions and answers.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T11:55:00+01:00"/></from>
+          <p eId="para_63">I am delighted to be here on behalf of Taighde Éireann or Research Ireland. I am particularly pleased to be able to contribute to the work of this newly formed committee on AI by which, to lean into Deputy Keogh's comment, I mean artificial intelligence in this case. It was great to hear the questions, concerns and things that are on the minds of members. These are exactly the right kinds of questions that we need to ask right now. We will be delighted to contribute to that in any way we can today and subsequently in providing more access to expertise and beyond. We remain at the committee's disposal at any time.</p>
+          <p eId="para_64"> Taighde Éireann is a new State agency and this is our first time attending an Oireachtas committee meeting. Research Ireland plays a pivotal role in shaping the future of research and innovation in Ireland by funding and supporting world-class research across a range of disciplines. As Ireland's national research and innovation agency, we are committed to fostering a vibrant, diverse and inclusive ecosystem that supports both economic and social progress. Research Ireland builds on the strengths and heritage of its predecessor agencies, namely, Science Foundation Ireland and the Irish Research Council.</p>
+          <p eId="para_65"> I am joined by two experts in the field of AI who are here to support our discussions. They come from publicly funded research. An important aspect of the witnesses and experts we can bring here is that they come from our universities where academic freedom and the freedom to think independently are critical and paramount. That gives us real expertise that we can bring to the committee.</p>
+          <p eId="para_66"> I am joined by Alan Smeaton, emeritus professor of computing at DCU. He has multiple decades - I hope he does not mind me saying so - of pioneering research in multimedia indexing, video processing and AI applications. Alan is a member of various committees and advisory councils nationally and internationally.</p>
+          <p eId="para_67"> On my left is Susan Leavy, who is an assistant professor at the school of information and communication in UCD. Her research focuses on ethical and trustworthy AI and AI governance, which are topics we heard a great deal about in earlier comments. Her background spans artificial intelligence, philosophy, social sciences and beyond. Similar to Alan, she represents Ireland nationally and internationally on various forums and groups.</p>
+          <p eId="para_68"> AI is, as members have alluded to, one of the most transformative and potentially disruptive innovations in many years. While it offers substantial benefits to individuals and society, it also has major implications in areas such as privacy, ethics, security and many more. AI focuses on creating systems or machines that can perform tasks that typically require human intelligence. These include learning, reasoning, problem-solving, understanding language and recognising patterns or images.</p>
+          <p eId="para_69"> As members will be aware, both the OECD and the EU AI Act have provided definitions for what AI is. The EU AI Act focuses on AI as a system. It states:</p>
+          <p class="indent_1" eId="para_70">AI system’ means a machine-based system that is designed to operate with varying levels of autonomy, that may exhibit adaptiveness after deployment and that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations or decisions that can influence physical or virtual environments.</p>
+          <p eId="para_71"> We will probably thrash out this definition a little further over the course of the discussion. The OECD definition is similar, but slightly more nuanced.</p>
+          <p eId="para_72"> AI systems that are used to generate content are referred to as generative AI. These have received huge attention in recent years, as shown by the popularity of tools like ChatGPT, Gemini, Copilot, Claude and many others. Such systems are now widely available and easy to use and are resulting in major disruption across various aspects of society.</p>
+          <p eId="para_73"> While AI has witnessed considerable advancements in recent years, as a research and innovation funder, we have been supporting the critical understanding, knowledge development and discovery of AI through our support for researchers across the higher education institutes in Ireland over the past 20 years, building the knowledge and skills that are extremely beneficial to our country as AI has moved more front and centre in people’s daily lives. Research Ireland has a diverse investment portfolio amounting to in the region of €400 million. This is invested in research in AI and related areas. These include programmes supporting research infrastructure, enterprise and industry partnerships, early career researchers and education and public engagement initiatives through to large-scale collaborative research centres. Key to ensuring that we have the expertise to be at the forefront of this technology, Research Ireland is strategically investing in AI through our network of research centres. These centres bring together academic researchers and industry partners to tackle challenges in AI, from trustworthy machine learning to robotics and natural language processing.</p>
+          <p eId="para_74"> In parallel, we are cultivating the next generation of data, analytics and AI talent through centres for research training, CRTs, that provide cohort-based PhD training. The CRT programme was launched in 2019 with an investment of €100 million, under the theme of data and ICT skills for the future. Research Ireland currently funds six CRTs across the country in the areas of AI, data science, genomics, machine learning, digitally enhanced reality and advanced networks for sustainable societies. The six centres have recruited more than 760 students, over 40% of whom are women, who have undertaken 223 industry placements. It is our ambition to run future iterations of this programme.</p>
+          <p eId="para_75"> Through these initiatives, Research Ireland is not only advancing cutting-edge AI research and innovation but also providing national and international expertise and building a robust pipeline of skilled professionals who will lead Ireland’s digital future.</p>
+          <p eId="para_76"> Research and innovation funding agencies globally play a central role in shaping research by setting priorities, designing funding programmes, managing peer review, and overseeing grants and impact assessments. Increasingly, these agencies are exploring the use of AI to streamline and enhance these processes. When governed responsibly, AI can support tasks such as proposal evaluation and reporting. All of these changes are reflected in the Global Research Council’s principles for AI adoption in research management, which were agreed at a recent meeting. These principles are, by and large, in agreement with the Guidelines for Responsible Use of AI in the Public Sector, recently published by the Department of Public Expenditure, NDP Delivery and Reform. They relate to: AI adoption; ensuring that decision-making is always done with humans in the loop; bridging the digital divide – which, I see, has been covered here many times; international collaboration; watching for bias and fairness in everything that is done; transparency and accountability; data privacy and security; AI literacy, which means that people using the systems know how they are using them; and sustainable development, which has also been discussed here.</p>
+          <p eId="para_77">As the Irish Government representative, I was involved in leading our expert contributions to the recently published UK-led independent AI safety report. This report on the state of advanced AI capabilities and risks was written by almost 100 AI experts, including representatives nominated by 33 countries and intergovernmental agencies. While the report is concerned with AI risks and AI safety, it also recognises that AI offers many potential benefits for people, businesses and society. The report, which is well worth reading if members have time, summarises the scientific evidence on three core questions: what can general-purpose AI do; what are the risks associated with it; and what mitigation techniques there are against these risks? Interestingly, there is currently no consensus among the world’s leading AI experts on what the future for AI holds. Undoubtedly, there are significant risks that need to be considered and also huge benefits that can be realised if we make the right decisions. I have heard that reiterated in the room today. Among researchers, there are those who believe that AI will be a tremendous boon for mankind and those who believe it could be destructive. However, it is generally agreed - this is the key point for anyone to take away today - that the future of AI is not predetermined and the research-informed decisions we make today can create the AI future we want tomorrow.</p>
+          <p eId="para_78"> I will finish by paraphrasing Professor Stuart J. Russell, a leading researcher in AI who said that our job was to make safe AI; it was not to make AI and make it safe subsequently. We should build safety in from the outset. This is the key element of what we want to do, namely, put safety into AI as a core element.</p>
+          <p eId="para_79"> I thank members for their attention. I look forward to the discussion and answering any questions they may have.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T12:05:00+01:00"/></from>
+          <p eId="para_80">I thank Dr. Seoighe.</p>
+          <p eId="para_81"> A draw was done for the order of members' questions. It will rotate at each meeting, so the member who is called first today will be last on the next occasion. Members will have seven minutes for their questions and answers. If they would like specific witnesses to answer their questions, I ask that they identify them. We may then have time for a second, shorter round. Deputy Geoghegan is first, so I will hand over to him.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_16">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T12:05:00+01:00"/></from>
+          <p eId="para_82">I thank the witnesses for coming to the inaugural AI committee meeting. It is greatly appreciated.</p>
+          <p eId="para_83"> I will ask a general question that perhaps all the witnesses could give their tuppence worth on. President Macron held a big AI summit, to which the response was that Europe for too long had been about regulation and we needed to focus more on innovation if we were going to keep up with China and United States. Somewhere in the middle is the citizen we have to keep looking after. Where do the witnesses stand on that debate? What direction should Europe be travelling towards to ensure we get the best out of AI innovations that are taking place, but equally that we protect our citizens in as proportionate a way as possible?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:05:00+01:00"/></from>
+          <p eId="para_84">I will start and then hand over to my colleagues.</p>
+          <p eId="para_85"> I was at that summit and attended many of the panels and discussions. On balance, there was quite a strong view that the right level of regulation was needed. While the reports and takeaway from the summit were that there was too much regulation and we needed to move away from that, my takeaway from the panels was that there was good discussion of everything from creative industries and beyond about the need for guidelines and guardrails. Broadly speaking, this was generally accepted by panel members and speakers who represented industry as well. They said that they would be happier with guiderails within which they could operate. That is my takeaway from it.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:05:00+01:00"/></from>
+          <p eId="para_86">I was also at the summit. It was interesting that the first one was in Bletchley Park a few years ago and it was a safety summit. Then there was one in Korea, which was not about anything specific and the one in Paris was about AI action. The narrative had moved away from safety to President Macron's view about getting things in action.</p>
+          <p eId="para_87"> We do not have a good history of regulating technology and innovation. I do not personally remember this, but in 1865 the red flag Act was introduced in the UK Parliament. It said that for automatic vehicles - cars - a man had to precede the car carrying a red flag at walking speed.</p>
+          <p eId="para_88">That was the introduction of legislation and regulation for motor vehicles. We do not have a very good history in this regard. On the other hand, if we do not regulate - like we have not regulated social media - we get something even more undesirable.</p>
+          <p eId="para_89"> There is a sweet spot in between the two poles of no regulation and over-regulation. The European AI Act was paused in its development when generative AI happened. There was a return to the drawing board because it was felt it was necessary to do it again due to the emergence of generative AI and large language models. That is good. It does have some flaws and some people will knock it, but it is better than the alternative, which is to have no regulation.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_90">I was also at that summit. It was amazing. It is nearly a case of the history of AI before the summit and then after it. Many things happened around that time which changed the landscape for AI, especially in the US. I got a strong sense that the European approach, which I support, is regulation and then the creation of a safe space for innovation. We have a good deal of regulation on the books. There is the EU AI Act and the Digital Services Act. In Ireland, we have the online safety code. It is now about good implementation. I do not know that we need more regulation right now. We have the data strategy and a lot of other regulation. It is now about ensuring the institutions that will be responsible for implementing all these regulations are supported.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_20">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_91">I see Professor Smeaton is on the AI advisory council's working group for education.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_92">Yes.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_22">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_93">He may have seen recent reports where a representative from OpenAI spoke about ChatGPT having been deployed in secondary schools in Estonia and how, following discussions the company had with the Government, the intention is to introduce this technology in Irish secondary schools on a pilot basis. Has this initiative come across the desks of the witnesses? Has the working group, in its deliberations, examined the deployment of AI in primary or secondary schools?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_94">No. There are good guidelines for the introduction and adaption of artificial intelligence in the third level sector. For the primary and secondary sectors, the Department of education is still working on those guidelines. The advisory council has seen drafts of those guidelines, has provided feedback on them and is helping the Department to develop them. I also saw that report in the newspaper, and it caused me to raise my eyebrows. This proposal has not come across our desks. We have an advisory council meeting next week. I expect the issue will come up then.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_24">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_95">In the context of AI deployment in the education sector, which areas has the working group looked at to date?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_96">We came up with four recommendations on the use of various forms of generative AI, particularly in the education sector. The first is that the guidelines to be produced at national level or even down to the level of individual schools should be co-ordinated and consistent. They should not conflict with each other. The second recommendation – and, possibly, the strongest - is that there should be serious investment in the uptake of AI literacy. No one course covers AI literacy for everybody because this material must be nuanced for whomever is the recipient. The third recommendation is that there should be equitable access to AI resources. Members of the committee have previously pointed to unequal access. There should be equal access to AI resources, no matter what kind of school someone is in or their social or demographic background. Everyone should have equal access to these AI tools. The fourth recommendation is to have a national conversation. It is great to see activity such as that in which the committee is engaged - and not just the appearance of newspaper articles such as that to which the Deputy referred about Estonia and the use of AI – in the context of fostering a national conversation on the use of AI in education. It has been slow to start but it is picking up speed.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_26">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_97">I have ten seconds left. What fears about AI keep Professor Smeaton awake at night?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_98">I wish I had ten minutes to answer. Many fears keep me awake at night. I hope that in the answers to some of the other questions I might be able to point those out. I do not want to blow the Deputy's time.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_99">I call Deputy Gibney.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_29">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:10:00+01:00"/></from>
+          <p eId="para_100">I thank the witnesses for being here. I will direct my questions to them, and they can decide who wants to answer. My questions will cover funding, regulation, automated decision-making and so on. I will start with Taighde Éireann's funding.</p>
+          <p eId="para_101">Can Dr. Seoighe let me know even at a basic ratio - if not, he can provide figures more accurately after today's meeting - how much of Taighde Éireann's funding for research in AI and AI-related areas is being put into research around public policy, such as governance, environmental impact, labour displacement and so on?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_102">I do not necessarily have that figure to hand but what I can say is that when we are looking at AI in that context and when we looked at the figures subsequently, it is important to remember that a lot of these things around disciplines blur the edges. Therefore, when we are looking at AI, we might also be looking at data and data privacy, which would be a sort of precursor related to AI, ethics and a vast range of cross-disciplinary areas. We can certainly have a look to see where they are, but it is important to recognise the blurring of the edges of all the different disciplines.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_31">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_103">I appreciate that, but any kind of balance Dr. Seoighe can show or display in terms of the kind of innovation funding versus the more policy-related stuff would be great.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_104">We will have a look at that.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_33">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_105">Sticking with research as an area, in the Global Research Council's principles for AI adoption in research management, bias and fairness are raised as issues. How can we ensure not only accountability for discriminatory decisions that may be made by flawed AI but also a common understanding of how AI is not necessarily a neutral tool and how real-world biases can be embedded in machines?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_106">That is a great question. There is no obvious immediate answer, but researchers are doing work on occasion to unpick the biases in the training material that is used. There are some great examples of Irish researchers who discovered - I am not sure if members are aware of this - that biases were built into the large language models being used in the MIT training data. There were images and then words associated with the images that had inherent biases built into those. Without knowing those and without checking those, the biases are then taught to the machine through the machine learning. Therefore, we do need to be doing that level of research and engagement to check at all times where those biases are.</p>
+          <p eId="para_107"> The other thing is transparency, that is, trying to be as transparent as we can in the outcomes and keeping humans in the loop. Another factor on which there is a lot of research under way at the moment is on how we often talk about the black box nature of AI, which some members mentioned earlier, and the sense that it does this thing and we do not quite know how it has arrived at those conclusions. Some research that needs to be done next is into being able to interpret that black box activity so that we can understand exactly what came out of it and then interrogate that because one of the scariest parts is when something goes into that black box and we cannot fully understand how it arrived at a conclusion. Therefore, we need the research and data into it such that we can then translate back and track back how that particular decision was arrived at.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_35">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_108">If we are coming at it from the research point of view, we must make sure there are principles embedded into the research process itself that will allow for that to happen. This is important in terms of access to justice and particularly for people, for example, in social protection environments who might have a decision made against them where there is no appeal process, and we know this from other jurisdictions, because there is no human involved in the decision-making that led them to a poor outcome.</p>
+          <p eId="para_109"> I will zoom out a little and talk about regulation specifically. I really welcome those closing words of Dr. Seoighe's statement, "our job is to make safe AI, not make AI safe", and that emphasis on how AI should have safety built in rather than the controls introduced later. However, as I said in my opening comments, with policy still flagging behind innovation in this area and private companies dominating the creation of AI, how do we deal with a horse that has essentially already bolted and what I would describe the lack of Government oversight regulation and control of AI development? How are we going to catch up?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_110">This gives me an opportunity to mention one of the fears that keeps me awake at night from a previous question, which is the dominance of big tech. That comes about because those big tech companies have the data, expertise, compute resources and marketing budgets to put these tools basically at our fingertips.</p>
+          <p eId="para_111"> One of the things that does allow me to go to sleep at night in this particular area is the availability of open source and open data sets. This has been tremendous. This only happened within the last nine months. The first of the big tech companies to do this was Meta, which made its Llama models open source, which was a complete surprise. I would believe personally that the reason it did this was because it was a little bit asleep when it came to the development of large language models for chat-type interfaces. Meta figured the quickest way to catch up is to make its openly available, so it was the first to do so. Then, the second to do so on a very large scale was DeepSeek, the Chinese company. Now, it becomes quite feasible for any research organisation or Government Department to download and start to use one of these open access models, to hope-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_37">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:15:00+01:00"/></from>
+          <p eId="para_112">I am sorry; can I stop Professor Smeaton there? It is great that he brought us into the area of open source because that is an area about which I am kind of excited.</p>
+          <p eId="para_113">Call me cynical, but I have concerns about big tech. What I mean by "big tech" is Alphabet, Meta, TikTok, Amazon and so on. I have concerns about their open source approach. I would love to know how innovation is being supported at a public level for the development of transparent open source and publicly owned tools. Is that something Professor Smeaton can enlighten me on?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_114">It is not something that I am seeing first hand. What I am seeing is the availability of these things that enable small enterprises as well as Departments to download, build and use resources independent of the hooks that big tech companies have in them. Departments and agencies already use open source models in-house in a secure cloud environment.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_39">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_115">Does Professor Smeaton really believe that is fully independent and that there will not be any future issues in terms of data sharing and data privacy?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_116">I believe it is secure. It is one-way. It is isolated. The threat is the regeneration of those models.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_41">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_117">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_118">Meta or DeepSeek may decide tomorrow that they are not going to update those models, in which case we are stuck with the 2025 versions of them. That is the only threat, but that is always the threat with open source.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_43">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_119">Perhaps it is something that might get onto Professor Smeaton's radar. The publicly owned piece is very exciting for the witnesses' fields. For example, there is a great initiative that is now looking at publicly owned social media platforms. Professor Smeaton rightly referred to the toxicity that we see there. It would bring us back to the genesis of the Internet being a publicly owned utility, which we have completely lost in the takeover by big tech. We have the opportunity in AI to find that genesis again.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_120">Yes.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_45">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_121">I will finish there. I hope I will get a chance to come back to the witnesses again.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_46">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_122">I thank the witnesses for being here at our inaugural session. This is very much going to be an ongoing conversation that we will have with many experts like the witnesses before us. I thank Dr. Seoighe for the very detailed and informative presentation. I am still very much learning about this area, as a lot of us are. It is evolving at a rapid pace.</p>
+          <p eId="para_123"> I have a number of questions. Could we drill down a little bit more into the risks? Dr. Seoighe mentioned the AI safety report he contributed to. Could he identify the key risks we should be on top of, as public representatives? Which ones would he select for us to focus on? That is a broad question.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_124">It is a very broad question. Part of the answer is also that the risks are going to change. As the model evolves, and the pace at which it is evolving changes, the risks are going to evolve as well.</p>
+          <p eId="para_125"> I will share the time with my colleagues as well, so they can get into the discussion. A lot of risks were raised, especially as we were working on the global safety report. One can imagine how it was with 100 AI experts writing the report, supported by probably hundreds more across all those geographies. One of the greatest risks is that nobody can agree at that level quite what we are facing in terms of risks. There is not scientific consensus in the community on what exactly AI is: there are those who believe AI is the best thing ever and there are those who believe it is the end of mankind. There is quite a diverse view, which the report sets out. The report states we have not reached consensus on this thing: we think it could be really good or it could be really bad. The report then broke down the risks into key categories and areas. It also depends on where you are coming from. There was a reference to the digital divide, which depends on geography. When we compare the global north to the global south, the digital divide is then a much greater issue.</p>
+          <p eId="para_126"> Some of the risks that are going to be facing us include the existence of bad actors and the ability to use the tools that AI provides in ways that create an asymmetry in power. There is a lot of access to information and data and there is an asymmetry in the level of investment that it takes to do bad things with AI. That is one of the things that probably worries me most. Dr. Leavy might wish to add something.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:20:00+01:00"/></from>
+          <p eId="para_127">I am one of the senior advisers on that report. We are going into the next phase of it. The report is probably old already even though it was just released. It is important to pay attention to two areas in the report. The disagreement among AI experts is often about what AI could do in the future, but in the meanwhile we are dealing with things right here, right now that are happening and it is important to separate out those two. There is the social impact right now and there is the daydream about what might happen. Nobody really knows.</p>
+          <p eId="para_128">The two areas for me, which are linked, are the information ecosystem and AI and democracy. The information ecosystem is through recommender algorithms. With the polarisation we are seeing, people may be sent different things and there is also the potential for AI-generated content so that scope is there. The report outlines the possibility for malicious actors to interfere and generate AI content, which could be super-personalised, to sway people’s beliefs or voting patterns and polarise people and that undermines democracy. That is the one that keeps me awake at night. The AI-generated content on social media has not been shown to have had an effect yet in elections. However, we know that political polarisation in society coincides with the proliferation of recommender systems, which is not very advanced but it is the AI we all use most. In addressing that we have the Digital Services Act. Again, it is about implementation and looking at the regulation we have already and making sure that it works. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_129">On the AI safety report, we all agree it is very technically focused. One thing we raised in various iterations, that Dr. Seoighe raised on behalf of Ireland, was its societal impact. Another contributor to my insomnia is the hyper-investment by big tech companies and as a result of that, the functional overreach. By that I mean they claim it will be able to this, that and everything. We see a lot of that in the marketing associated with these services. However, in the various iterations of that report, Dr. Seoighe raised the societal impact. He might want to mention that we were the only one. </p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_130">There was a strong impact from Ireland on that. Many countries were looking at the interim report and one of the objections raised – and we were the only country out of 33 to raise any objections – was that we wanted to see fundamental human rights as part of any risk in any report that came forward and again, that would be driven by the expertise that comes in. However, we also need to look at what we do about these things. That is the other half of the equation. We know about these risks and these are things that are keeping us awake. Our main defence around biases, the risk to democracy, risk of deep fakes and scams is education and public discourse. We need to be talking about this and how people can know what to look for. </p>
+          <p eId="para_131"> When it comes to the other stuff with big tech and their level of investment, there was talk at one point about a really interesting concept which was CERN for AI. As a small state we are not at the scale where we can invest the many millions required to be able to do this level of research and investment but if at a European level we had a large-scale centralised investment of which we could be part, then we would have the scale and power to do real research in the area and stay ahead of the curve. There are some mitigations and options related to each of these risks.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_51">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_132">I thank the witnesses. I only have 20 seconds but as a short follow up, can the witnesses recommend international examples of countries that Ireland should look towards for best practice? If you take mitigating the risks around elections, are there particular countries that have done work on that? </p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_133">I do not know if there are any best practices.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_134">I do not think there is a best practice. </p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_135">It is all so new. </p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_136">I think Ireland is one, to be honest. We are not really as politically polarised a society. We have escaped a lot. We have a good level of cohesiveness within our society. Our education system is robust. Our systems have been shown to be robust and we embrace the regulation and innovation. We are centrally involved in Europe and working with Europe on coming up with solutions to these issues. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_137">The CERN for AI idea is interesting. This week the formal motion on Ireland’s membership of Ireland’s membership of CERN is before the Oireachtas so the timing is perfect. I call Deputy Keogh. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_57">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T12:25:00+01:00"/></from>
+          <p eId="para_138">I will stay with Dr. Leavy. I am looking at her background of philosophy and social science and wondering whether she has asked the big questions to AI. We might leave that for another day. </p>
+          <p eId="para_139"> What is her take in relation to her social science background?</p>
+          <p eId="para_140">Is enough research ongoing regarding the effects of AI on our social interactions, relationships and self-esteem? Many of us now use AI to draft our emails or text messages. Looking at the space where our teenagers are, AI is generating videos or images that make our lives look wonderful, where images are altered to look physically better. What is Dr. Leavy's take on the effects of AI on relationships, interactions and self-esteem?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:30:00+01:00"/></from>
+          <p eId="para_141">The Deputy raised a really important point and I believe the next frontier of that is AI companions. These things tend to pop up. It is a different generation. How AI is framing people's relationships with each other is having a huge effect very fast. That ability to create text or images means people do not know what is real or not real. It breaks our ability to communicate with each other. We have to think through that and that requires research. You do not know how to regulate or what to do with it unless you have the evidence. Unfortunately, that often is after the negative effects are seen and maybe kids end up in accident and emergency when the damage has been done. Research is needed earlier. We need engagement with young people who are feeling the effects already, before it is large enough to comprehend. That idea of social companions is increasingly being focused on. Again, the AI Act will be good on this. There is a great deal of regulation around subliminal manipulation and circumventing people's autonomy. I would not like to be one of those companies within Europe that has those character AI-type personas.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_59">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T12:30:00+01:00"/></from>
+          <p eId="para_142">Those AI companions would have benefits for people with dementia or Alzheimer's or in the neurodiverse space where there can be lots of learning. Sticking with Dr. Leavy, I know she has a big interest in social media governance. I am passionate about the need to work towards verification across the board, not just for teenagers or under-16s, so that if you want to be online, absolutely freedom of speech is favoured but you should be verified to be on that space. Does Dr. Leavy believe that verification would help with the deepfakes, the scams and the fraud or is AI clever enough to get on and get itself verified?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:30:00+01:00"/></from>
+          <p eId="para_143">Many different things are needed. In terms of age verification, there are ways to do that and it is part of the solution. That is in the online safety code. It is being demanded throughout Europe. There are objections to it but there are ways to do age verification but that will not solve everything. At the trilogue negotiations something was put in at the end of the AI Act which is to put a watermark or some way to identify whether an image or even a piece of text, if it is long enough, can be identifiable by a machine as AI generated. That adds an accountability trail, adding accountability, traceability, transparency, explainability to the technology, as well as the likes of age verification. Third-party audits are needed too. All of these things are needed. There is no one easy solution.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_61">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T12:30:00+01:00"/></from>
+          <p eId="para_144">Turning to Professor Smeaton in relation to AI and education, is there much research happening now in relation to education within that neurodiverse space?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:30:00+01:00"/></from>
+          <p eId="para_145">Generative AI offers huge possibilities to support students with all kinds of backgrounds, including neurodegenerative issues, for example, for autism support. I am thinking of what I see at university level, there are wonderful opportunities for taking the content material and having it represented to students based on their favourite or their most suitable kind of media.</p>
+          <p eId="para_146">Student support services in some universities, including mine and probably others, are looking at generative AI tools as a way to repurpose and redeliver content to support students. This is a fairly straightforward process. Looking at how generative AI in particular may be used, there is a good deal of research ongoing. The national forum for teaching and education is looking at it very actively. There is no single new tool which is available and which solves everybody's problems. It needs to be done at an individual level. I know those activities are happening. They tend to happen at a low, almost underground, level rather than appearing in flashing lights.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_63">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_147">We recently had a briefing in our audiovisual room from editors and journalists who are really struggling with AI getting past copyright and using chunks of articles as if it had generated them itself. What is the solution in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_148">That falls within the legal remit rather than mine, which is more technical. The advisory council has had a working group looking at it. Is it fair to answer the question by saying the Deputy should come back in two weeks' time when the committee is meeting with the advisory council? With respect, it is probably better placed and has greater expertise than Dr. Leavy and I would have in this area.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_65">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_149">Thank you.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_66">
+          <from>Deputy Paul Murphy<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_150">I am sorry I missed the opening statement. I have read it. I had to do something else.</p>
+          <p eId="para_151"> To start with a kind of technical question, it seems that some of the discussion in this area is a little confused by the incentive that corporations have to put the term "AI" on everything. It is a bit like blockchain. For a while, everything was blockchain, dotcom or whatever. There is kind of a bubble whereby computers doing anything is called AI. It is sort of true, but it is not really the sense in which we mean it. Could Professor Smeaton separate out new generations of AI and generative AI versus regular computing, which can be described as AI in a sense?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_152">There is a lot of AI-washing. I have been working in this area for multiple decades, as my colleague said earlier. Now I look back at some of the stuff I did in the past, which I would have just called a form of linear regression. That is now being branded as AI. There is a great deal of dumbing down of what is branded as AI. The definition of AI remains very close to the OECD one, that is, something that is able to classify, predict, recommend or generate content in a way which is on a par with what a human is able to do.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_68">
+          <from>Deputy Paul Murphy<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_153">That is very useful. Apologies if my next question has already been asked. Could our guests outline what research is taking place on the environmental impact of AI? It is part of the illusion that this is all happening in the cloud and that we do not see the material footprint, but, obviously, there is an immense material footprint. Data centres globally are responsible for around 3% of electricity usage. There is much talk of that doubling in light of the impact of AI. The likes of Google and Microsoft have effectively given up on their carbon-neutral targets, citing AI. The other impact that is probably spoken about less in Ireland is in terms of water usage, which is also enormous. Is there any information on the research around that?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:35:00+01:00"/></from>
+          <p eId="para_154">I might start on that. There is research being done in Ireland and globally. This is not a specifically Irish problem; it is a global problem. The challenge is the level of power consumption when we are doing this kind of processing for the likes of ChatGPT. In the context of training and in other ways, there is major energy consumption. There are a few things that people are focusing on. We have to look at the efficiency of the algorithms or the transforms. This is where the research comes in. At the risk of being a research hammer where everything is a research nail, we look to find these solutions. The transforms and algorithms could be much more efficient and, as a result, we could process a lot faster. That is coming. There is also research on the efficiency and improvement of the chips used and the energy consumption in that regard. A third element would be around how we reuse the heat. Part of the problem is that heat is generated. It is a new issue as well. They get hot and we need to dissipate the heat. Can we use the heat effectively in other areas? Having fully renewable, proper sources of renewable energy driving the centres in the first place is the fourth element.</p>
+          <p eId="para_155"> The Deputy is quite right that it sounds like it is going into the cloud and getting done somewhere else, but it does have a global impact on the carbon footprint aspect and on energy usage.</p>
+          <p eId="para_156">If one were to take the progress that had been made over the past 18 months or so, extrapolate forward and assume the same levels of growth and so forth, it would quickly get to the point where AI would consume more electricity than the planet generated. Obviously, that is not a sustainable trajectory that we would be on. Things have to change before then.</p>
+          <p eId="para_157"> Those four areas are probably key areas of research where there will be focus nationally and internationally.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_70">
+          <from>Deputy Paul Murphy<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_158">To dig into that a little, DeepSeek was presented as a good news story because it smashed the American models, effectively, given that it was far more efficient. However, does the Jevons paradox apply to AI? Computing has obviously become a lot more efficient over the past 40 or 50 years. Worldwide, however, I would say we use more electricity on computing now than we did 50 years ago. Computing has therefore become more effective but the result has been an increased adoption. Is there research on whether the Jevons paradox applies to the use of AI and more efficiency simply being gobbled up by more usage?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_159">I can take that one. A lot of the energy consumption in generative AI is divided into two things: the training of those models, which takes months and huge volumes of data, and then the inference, which is the processing of a request. These big tech companies are in a kind of prisoner's dilemma. They want bigger and bigger, and the concentration is on building bigger and bigger models. Since these models got so big, they would not fit on devices like our phones and the companies looked at ways in which the sizes of the models could be reduced. The techniques to do that included pruning - in other words, chopping out parts that are not needed - and a technique called quantisation, which is using just 16 b or 8 b instead of 64 b. Those topics are ongoing in research centres in Ireland as well as in those big tech companies.</p>
+          <p eId="para_160"> On the inference side, the great aspect of the story of DeepSeek was that it introduced a clever algorithm to navigate through the model much faster than was done with the big tech companies in the US. The US big tech companies have an approach of just throwing more at it, building bigger data centres, using up more energy and so on. DeepSeek was a moment that showed that the projection of energy increasing and increasing could inflect downwards. Even more recently than DeepSeek, there is a variation of the algorithm in the transformer model called Mamba, which reduces the training time needed. While a lot of the projections that we all read about and accept because there is no alternative talk about the energy demands going up like that, we are already seeing signs of inflection points not only levelling but possibly even going down because these algorithmic changes and developments that Dr. Seoighe mentioned will change the perception of the energy demands for both the training and the inference costs.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_72">
+          <from>Deputy Paul Murphy<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_161">I have a more philosophical question about control and democracy. I opened WhatsApp a few weeks ago and all of a sudden I had this stupid AI thing that I did not want. I just want to chat to people. I could not get rid of it. There is no way. You can ask AI to get rid of it and AI tells you how you can get rid of it but, actually, the option does not exist. You cannot go into it. You google it; you cannot get rid of it. I did not want this. It is archived but it sits there. I did not choose that. Regarding Google, I google for anything now and the first thing I get is a generative response. People are not making these choices; someone else is making them. Who are they, on what basis are they making those choices and how can we have democratic and individual input as to whether we, individually or as a society, go down this road of AI being used everywhere we go?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_162">Do we have time to tackle that?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_163">Thirty seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_164">Maybe one aspect of the answer to that is that, as somebody once said to me, if you are not paying for the product, you are the product. That is an element of the answer to the question, but Dr. Leavy might have a philosophical view as well.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:40:00+01:00"/></from>
+          <p eId="para_165">In a way, these companies are very responsive to what people want. If the majority of people want those summaries at the top, maybe they will get them, but should they have an option to turn them off? Some companies and platforms have such a monopoly that people are sometimes very much tied to using them, like it or not.</p>
+          <p eId="para_166">Europe is good on implementing consumer rights and regulations.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_77">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-10T12:45:00+01:00"/></from>
+          <p eId="para_167">I thank Mr. Smeaton, Mr. Seoighe and Dr. Leavy. I am sure we will have more engagement in the future, which I look forward to. Most of the questions have been asked but I have some general ones. Regarding the European Union AI Act, did the witnesses have any input into it or did Ireland have any input in formulating the Act? Second, at a European level, how will the performance and reliability of AI systems be measured and evaluated? Who should do this? Should this be done by independent entities or by governments? The opening statement said that systems such as ChatGPT, Gemini, etc., are causing major disruption across many areas of society. Will the witnesses give some examples of this in our own country and in others? </p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:45:00+01:00"/></from>
+          <p eId="para_168">I will start and then hand over to my colleagues. Regarding the EU Act, I am pretty sure a number of our academic colleagues were involved and very influential. We have a strong soft power in terms of that and I will give a bit more detail on it in a second. Regarding the statement, the examples range everywhere, in terms of how people are using AI. It goes from schoolchildren using it to all the way through the education system, students using ChatGPT and the like to write essays that they are asked to do at home. Other examples are emails and reports being drafted that way. These tools are being used in an awful lot of ways. As a funder, we look out for one thing in particular. How our process works is that people write applications and submit them to us. We use international peer review on the applications. We then give a recommendation on whether something should be funded. We have to guard against getting to a world where ChatGPT or some other tool writes the application, it goes through and ChatGPT then reviews it on the other side. The recommendations could lose the human in the loop and the human checks. That is what we would be tracking against. The tools are so readily available and easily accessible to people that this is happening. I will give an example I came across. We have ways of watching and tracking for this. The publishers are looking at how people are using ChatGPT to write their articles for papers in magazines like <i>Nature </i>and others. There was an example where one set of researchers actually cited ChatGPT as one of the authors in one of the papers at one point. I am told that this was subsequently banned. However, it is an example of how the regulations are having to keep pace with the changing ability to use the tool. Now, people have to declare where they are using it. Occasionally, people do not and we have seen things reported in papers that get through the whole process. One one occasion, the free version of ChatGPT was asked a question and it said that it had no data beyond a certain date and it could not comment. This made it into a paper and got published. This stuff is being used in many different forms and we all need to track and guard against this. Professor Smeaton might fill in some of the detail on the EU Act. </p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:45:00+01:00"/></from>
+          <p eId="para_169">I think Dr. Leavy will have more to say on it than I do. I agree that it is soft power we have. One of our colleagues was deputy chairperson of the EU AI advisory board, which formulated the definitions that then segued into the EU Act.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T12:45:00+01:00"/></from>
+          <p eId="para_170">That group was hugely influential. We know that terms like "transparency", "accountability" and "explainability" come from those principles. Professor O'Sullivan was chair of that group. With the EU AI Act, I know several researchers are involved. I was not directly involved but we wrote a paper on general purpose AI, such as ChatGPT. It involved putting in the amendments on making sure that the models had some traceability. It is very much soft power. At the moment, I am the representative for Ireland on the group working out the guidelines for harms for prohibited AI. I am sure that I am not the only researcher on this. </p>
+          <p eId="para_171"> Regarding who should conduct the assessments, the DSA and the AI Act call for audits by third-party assessments, if there is high risk. If there is low risk, companies can assess themselves. They are given a check list and they conduct these internal assessments. Otherwise, there should be a rule for third-party audits to investigate and ensure that the companies are transparent.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_81">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_172">I raise the important issue of the interpretation and clarity of language. In the Global Research Council principles for AI adoption and research management, the word "should" appears in five of the nine principles. While "should" implies a recommended action, it leaves room for personal choice. For example, under the heading of Decision Making, it states "Final decisions on research proposals should be made by humans". Under the heading of AI Literacy, it states: "People operating or using AI systems should have all the necessary training..." The language used is very important. Instead of "may" and "should", it should be "must" and should not use ambiguous language. When feeding into machines, machines can interpret it in any way and so it is very dangerous.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_173">The Global Research Council is a grouping that represents or works across all the different autonomous funding agencies around the world. It cannot, specifically as a group, tell each individual funder what it must do. It would have sent out standards or agreed principles saying, "We really think you should be doing the following." However, it does not have the powers of an agency to insist that that is done. I take the Deputy's point; as we take this home into our agencies, we can translate the "shoulds" into specifying what is going to happen.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_83">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_174">I apologise for having been in and out. Another committee is meeting at the same time and I am Leas-Chathaoirleach of that committee so it makes it quite difficult. I appreciate the opening statement which I read through in detail prior to the meeting.</p>
+          <p eId="para_175"> For context, my background is in industry and I worked in AI prior to being elected to this House. I am also the Fianna Fáil party spokesperson on artificial intelligence. I come at it from having professional experience as well. My first set of questions relates to funding and the innovation pipeline. The witnesses referenced €400 million in research investment and 760 PhD students. How much of this is genuinely on AI commercialisation and not just academic outputs? I ask them to outline any success stories about any research pieces around that.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_176">I will start and my colleague Professor Smeaton may wish to join in. In the first instance, not all the research will necessarily be specifically in AI because AI has a broad base, including data analytics and privacy security, and ethics compliance. There is a wide range of things around those too. A lot of people will have been reading about the centres for research training, CRTs, which were established about seven or eight years ago based on a recognition that data analytics was something that was evolving. Our lead times as a funding agency are quite long. If we want to be producing hundreds of PhD graduates in a certain area, we need to be thinking well ahead because between launching a call, recruiting students and training them for four years, we need to be looking six years ahead. That is what the CRTs are about. They engage directly with industry and PhD students are trained in an area so that they are ready to hit the ground running and move at pace.</p>
+          <p eId="para_177"> The €400 million in funding ranges across everything starting from that very individual bottom-up blue-skies early-stage research where people are just thinking about what is coming next. It might not be directly applicable to industry today but it is the thing we need a basis for because ultimately that becomes the future of ideas.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_85">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_178">I might just come in there briefly. The CRTs are quite interesting. I appreciate it takes a long time to complete a PhD. Things change rapidly from day to day, for example, Google's Veo 3 and Apple's new iOS, which was launched today. Is there time or space for those CRTs to have some kind of rapid AI response fund for high-potential and high-speed innovation? While I appreciate that there are longer term research pieces, I am talking about something that could be quick, impactful, and make a change and pivot quite quickly if that makes sense.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_179">Professor Smeaton is itching to get in on this one.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:50:00+01:00"/></from>
+          <p eId="para_180">The CRTs probably provide the best bang for buck in terms of funding from the funding agency.</p>
+          <p eId="para_181">There are 600 or 700 PhD students. It is not a one-to-one mentorship system. Those students have to complete between 60 and 90 credits where they attended modules on commercialisation, IP management and presentation skills. They also have to spend three months working in an industry. Some of them spend more than three months; they go back a second time. For example, one of my students worked for a small start-up in the UCD innovation centre. His task was to go in and take some legacy code which had been written in Fortran and turn it into Python. He reduced the compute time for protein scanning by a hundredfold in that company. They loved him. It was not directly related to his PhD topic but he got that hands-on industry experience. Practically every one of the CRT students would have a similar experience. Some of them worked in large multinationals. Others worked in start-ups. In terms of there being a reaction to the speed of change of AI, I would hate to be doing a PhD in AI right now because it becomes dated so quickly. However, they have to be open and agile. That is why they go to conferences and workshops.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_88">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_182">I appreciate that. To move on to AI and research management, from reading it again, Taighde Éireann is promoting the use of AI in peer review, programme design and grant management. What safeguards are in place to ensure this does not entrench bias or create opacity in decisions about public research funding?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_183">We are looking at it. We are not at that point where we are doing that yet but we are aware of that in terms of the efficiencies and opportunities it would give us. That would be done in a step-wise controlled manner. It would be the case - the Deputy will see the second principle there - that decisions on research proposals should always be made by humans.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_90">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_184">To that point, there would be algorithms. Who would audit any time of algorithm that would be proposed in research management?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_185">One of the things we fund occasionally is research for policy. We would be looking to do independent research to guide that policy to look at those and determine those as we go along. If I can slip in there, the Deputy asked me for an example of a really good one.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_92">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_186">Yes. </p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_187">I was hoping somebody would ask at some point. There are a few, but there is one I thought I would get an opportunity to talk about. AI PREMie is a project out of UCD. It is led by the inimitable Professor Patricia Maguire, who I sometimes wish I could bottle and then share her story. Professor Maguire and her team are using AI to diagnose and revolutionise the management of pre-eclampsia. They are using AI tools to recognise who is at risk and then to be able to do stuff in advance of issues occurring. They have been so successful there that in the past year or so they won one of the UN's top 100 AI projects anywhere in the world. It was recognised for the work Professor Maguire is doing there. The team is rolling out the project in a number of different places. It has achieved the best AI for social good by applications of AI. There is a range of different awards. It is currently being piloted in three of our maternity hospitals in Dublin. This came out of AI high-intensity challenge-based funding research to go out and solve a problem. There was a kind of a solve-for-X approach taken. There are many more examples of AI and there will be many more coming in the future.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_94">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_188">I have one last question. I think I have enough time. It is around the global positioning. Taighde Éireann has cited OECD and EU definitions of AI. From Taighde Éireann's position, which legal or regulatory standard will dominate Ireland's AI strategy moving forward? </p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_189">I guess it will probably be the EU one.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_96">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_190">I am conscious of the number of US tech firms in Ireland and GDPR legislation that obviously has come from the EU. Dr. Seoighe sees the EU legislation, wording and standardisation as being to the fore.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_191">Yes. If those big-tech companies in whatever jurisdiction, whether China or the United States, want to sell into the European Union market, they have to conform to the EU regulations.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_98">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_192">I thank Professor Smeaton and Mr. Ó Cearúil.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_99">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T12:55:00+01:00"/></from>
+          <p eId="para_193">Dr. Leavy mentioned that to some degree we might be a standard bearer in terms of regulation and it was a case of implementation. I have heard the counterargument that the Digital Services Act is light touch. The devil is in the detail as regards what companies are captured by it. For instance, it does not capture Roblox and YouTube.</p>
+          <p eId="para_194"> Specifically, on the issue of recommender algorithms, Deputy Murphy's colleagues have specific legislation. It is my understanding that they are right in saying that it plugs a gap in the Digital Services Act and in online safety.</p>
+          <p eId="para_195">In the Irish context, there is no mechanism to block companies using recommender algorithms. Is the understanding of the witnesses different?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_196">My understanding is that in Ireland the Digital Services Act, which is being implemented, attempts to regulate recommender systems. We also have the online safety code, which deals with content online. Given that we have the Digital Services Act, there is no point in duplicating it. That is my understanding.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_101">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_197">My understanding is that there were earlier drafts of the Irish legislation that included it and the final Act did not.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_198">My understanding is that the decision was made to leave the Digital Services Act to address that. The online safety code addresses something else.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_103">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_199">Okay. My next question has an eye to a conversation on leaving certificate reform. There is some indication that the third level sector is already dealing with additional assessment components, something leaving certificate reform is dealing with, which is essentially continuous assessment, some of which would not be classroom-based. The human involvement would be in the loop, which deals with the potential for students to, for want of a better word, cheat and use AI to prepare course material which is then submitted. Do the witnesses have any experience of that type of thing at third level? Are there processes in place to control for and manage that? I do not know whether any or all of the witnesses want to comment.</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_200">I will say a few words and then Professor Smeaton can come in. It is a huge issue. One panel at the AI safety summit, which comprised some of the world leaders in AI, was worried about this. It is coming fast and has the potential to disrupt the education system and our way of assessing. We need a lot of research and resources very fast because nobody has the answers.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_201">In the third level, university and higher education sector, one of the guidelines we produced related to trying to follow up with this. The Department of Further and Higher Education, Research, Innovation and Science hosted a meeting attended by representatives of that Department, the HEA, QQI and the National Forum for the Enhancement of Teaching and Learning in Higher Education. The Department provided us with a laundry list of things that were ongoing to support and nourish the use of various forms of generative AI in further education. There was also a leadership summit meeting in UCC last week, where heads of universities, or their nominees, came to share their experiences. In the third level sector, there is a lot of activity and sharing rather than each institution trying to develop its own practices and experiences.</p>
+          <p eId="para_202"> The second level sector is not my area, but it is much more difficult. One of the things that makes it difficult is the fast-moving nature of the AI services, products and techniques available to us. While the Department of Education wrestles with trying to come up with guidelines across the second primary level sector, it is very hard to do so when the ground is changing underneath it so rapidly.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_106">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_203">A related question is relevant to the witnesses. How do we ensure the integrity of the research being produced by funded PhD scholars, for example, is their own work and not AI generated?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:00:00+01:00"/></from>
+          <p eId="para_204">In the third level sector, we have changed the nature of assessments. Previously, when I had a course I asked everyone to write an essay on a topic which they submitted and I then read all of the essays, but that does not work anymore. The nature of those assessments has changed. </p>
+          <p eId="para_205">In my case, for example, I asked students not only to write an essay on a topic, but also to create a video production of it. I asked them to summarise it and then I watched the ten-minute video. Alternatively, I may have selected certain people to come in to present an oral presentation or class. We have changed the nature of assessments.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_108">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_206">The nature of assessments has changed.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_207">I will add to that. We have discussed AI hype. AI does not generate new knowledge. Rather, it uses what is already out there. It repositions and recreates it in different forms. To get a PhD and to be a researcher, a person has to generate new knowledge.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_110">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_208">Are those assessment processes robust enough to tell the difference?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_209">That is the whole basis of the academic peer review process and the <i>viva voce</i> people do as part of their PhDs. They challenge that and look for that new knowledge. PhD students are publishing papers in journals. The whole process around that is to check for this.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_112">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_210">There are a lot of examples - Dr. Seoighe gave a number of them himself - where those checks and balances-----</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_211">Yes, people were using AI. When people use AI in papers, they generally use it in order to write an abstract or to support the paper a little bit. I am an inveterate optimist. It is used positively where, for example, people for whom English is not their first language try to create a better way to put their papers. While some people use it incorrectly and get caught out, people will not generate new knowledge with AI.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_114">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_212">Does Dr. Seoighe have concerns going into the future? How can we stay ahead of it?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_213">It could happen, but a lot of experts would say we were a long way from the point where AI could generate new knowledge.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_214">I hope our committee is generating new knowledge.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_117">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_215">There is no such thing as an original thought.</p>
+          <p eId="para_216"> Some of my questions are more for me to better my understanding in this area, so I ask the witnesses to bear with me if I jump around a little bit. Do any of the witnesses have an insight or view on the demographics of those developing AI, machine learning and associated technologies? </p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_217">It is technology companies. While we in-----</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_119">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_218">I am asking for the demographics of the individuals.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_219">The individuals who are developing the technology.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_121">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_220">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_221">It is big technology companies. For us in the public sector, it is our PhD and master’s students and our research assistants. We are at a disadvantage compared with the facilities that big technology companies have available to them. Those companies are a magnet for really bright students. They go and work for them. It is hard to break that cycle.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_123">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_222">To break it down from the abstract concept of a technology company, are we primarily looking at white, middle-class males within those companies?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_223">Anecdotally from looking at the companies, I would say "Yes". There is a good balance, including a good gender balance, in publicly funded research in this area, though.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_125">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_224">Is there a class balance?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_225">I do not think so.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_127">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:05:00+01:00"/></from>
+          <p eId="para_226">These questions are to help me. In the context of education, and this goes back to what Deputy Murphy said about being the consumer, I am concerned about who becomes the consumer and who controls the platform, narrative, information and knowledge. For me, it is not only about ensuring that the working class and more vulnerable groups have access to AI at an educational level, but that we go back a few steps and ensure that those groups are developing AI as well. That is what some of my questions are getting at. I am trying to understand how we do that and how we get there. Google does not even understand my dialect. You would want to see what it repeats back to me. Even being able to engage with certain aspects of machine learning is a concern of mine.</p>
+          <p eId="para_227"> When I was in school, we used free software. Other schools with bigger budgets were able to buy the software the universities were using if they were doing technical drawing or a certain engineering model. This meant they had a broader understanding and capability that was in line with, for example, what Trinity College was using in its engineering school. I am interested in the witnesses’ opinions when it comes to the role of the State, or the Department of education specifically, in ensuring there is a general way of engaging with AI for every school, whether it is fee-paying, private or otherwise, and that there is a responsibility to ensure that access is equal across the board in order that we do not have badly resourced schools that are using only free software that is not of the standard to what other schools are using.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_228">We are not in a position to comment on the demographics of big tech companies. The Senator would have to ask them directly. What we can focus on is what we fund as a public sector funder and the goals that we have for a very inclusive and open research ecosystem where there are equal access and opportunities for everybody to be part of that ecosystem and to get that training insofar as we can possibly arrange it. I cannot comment on what big tech demographics are. </p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_129">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_229">How do you ensure that inclusivity? What are the actual steps involved? Are there community partnerships on different projects, in particular for under-represented cohorts? What efforts are made for inclusivity in the context of research?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_230">There are a couple of those. One aspect of the work we do is education and public engagement. To date, this has involved getting, typically, STEM into broad conversations in the public. It is for schools, parents and the wider public to engage in STEM and recognise that it is for everyone. Traditionally, STEM would have been seen as elitist at a particular point. We have been working on that. We have programmes around that like Science Week and the Discover awards. When we go through the adjudication process, we focus on ensuring that those programmes which can serve previously or traditionally under-represented groups score higher in terms of their ability to attract funding.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_131">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_231">As a politician, you might be at meetings and you might hear another politician or a Minister say they can potentially use machine learning or AI to filter waiting lists or whatever. This has been commented on in the Chamber. I never really know quite what they mean when they say that, even if they do. What I am concerned about, and what I want the witnesses to comment on, is language to the effect that particular demographics are potentially developing machine learning and how this may be closely aligned with those who are already in decision-making roles. Say, for example, a human has to make a decision but the machine involved is learning and is being taught a certain language which is very close to that used by those who already have power. A few weeks back, someone suggested that they were looking at using some sort of AI to filter and shortlist the applications relating to a process for State funding. What concerns me about this is that the AI or whatever machine is involved on the receiving end recognises its own language input. In the context of community services, you have people who left school very young and who are running amazing initiatives in communities, but they do not use the same dialect, grammar or language as the machine involved. My concern is that the machine will start filtering information on the basis of a way of using language because it was built in a particular way by the people who are assessing the applications. Does that make sense?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_232">Yes. The Senator made two important points on the demographics and the latest figures. She is right in that whoever creates these systems, their values will be imbued on those systems and on the data on which the systems are trained. By and large, the large language models are trained on the Internet. As a result, there is a lot of US-based and western data involved.</p>
+          <p eId="para_233"> There are things we do in research such as, for example, participatory design. This relates to when you are designing a system and you get various stakeholders and other people involved. The values and the needs of those people go into the design of that AI from the get-go.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_133">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_234">I will allow Professor Smeaton a further 30 seconds. </p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:10:00+01:00"/></from>
+          <p eId="para_235">One of the things that large language models do is to take a huge volume of language and build a virtual, synthetic or artificial representation of the content. When you interact with them, you get that back. As we have seen with most of the language models, you can get it back in the style of, say, Seamus Heaney’s poetry, "The Simpsons" or whatever. The language that is used to deliver the output from this is independent of the language used, by which I mean dialect, accent and all the other things the Senator mentioned.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_236">It will be in the style of Senator Ruane next.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_136">
+          <from>Senator Lynn Ruane<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_237">I hope so.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_137">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_238">I thank the witnesses for everything they have given us so far today. It has been very interesting and I am learning a large amount. I want to bring them back a little bit to an earlier discussion for my question. Undoubtedly the work they are doing and the research they are funding are contributing to creating the research ecosystem here and the overall ecosystem here for the development of a new technology sector for us in Ireland. We should be ambitious in aiming to do this. We should not only support other people to invest here and to bring what they have developed elsewhere here and sell from here but we should be innovators and leaders in this field ourselves. Dr. Seoighe mentioned that some of the research being funded is on chips and improving their energy-efficiency. Sticking with this theme of the hardware, will he explain a little about what impact all of this technological innovation is having and the consequent impacts for the technology needed to deliver it? Where is this research happening? Are we doing much of the research on the hardware changes and developments? Consequently, does he see potential for us to become leaders in the development and manufacturing of the new hardware that will be required to support AI?</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_239">When the Senator refers to "hardware", effectively she is speaking about the silicon. It is the chips and the silicon we are using in the transistors. This technology is also moving incredibly quickly. I saw recently that IBM can now build chips on the space in which someone's fingernail grows in two seconds. If we think about how slowly our fingernails grow, they can put a chip on two seconds worth of growth. The statistics on this are significant. Where we are playing a role on this in particular in Ireland is in the Tyndall National Institute in Cork. It is doing pilot lines, chip designs and packaging. It is a big field all over the world. We are looking at areas where we can be very good and investing in them. It is an area of investment. A national strategy on semiconductors in Ireland has just been launched. It is an area that is important to us and as we have some of the large players based in the country, it is something that will continue to be important and we will fund the research as best we can.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_139">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_240">I thank Dr. Seoighe. What are the thoughts of the witnesses on the requirement to build more data centres and improve the data centres we have? What discussions are happening internationally? What are they seeing happening in the field internationally?</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_241">I will go back to a previous comment. The projections are based on a straight-line increase, or even a curve-up increase in energy demands, but already we are seeing in research examples where it is deflected down, and I hope it will pivot down. I will not say it is a problem that will disappear but I expect it to be less demanding than current projections. It is still a large consumption of resources, not only of electricity but also of water as Deputy Murphy mentioned, and it is not going to go away. We are going to have to pay for it in some sense but the penalty will not be as steep as what many people believe.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_141">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_242">I have another Ladybird question. Globally, where are most of the data centres geographically located?</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_243">In Europe, it is the Nordic countries, and Ireland is well suited to them for climate reasons. They are in countries that are good on renewables. They are in countries that have a good climate and investment in renewables.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_143">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_244">There is a pull factor for countries that have greater support for renewable energies.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_245">That have renewable energy infrastructure, yes.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_145">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:15:00+01:00"/></from>
+          <p eId="para_246">There is no escaping the need for this. There is no escaping the requirement for greater investment in data centres as a critical component of being able to continue to deliver and keep pace with modern life.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:20:00+01:00"/></from>
+          <p eId="para_247">I think somebody said at one point that the AI genie is out of the bottle. There is a need to be trained and to be aware. Do we keep up with that? We cannot just suddenly ignore it. It is out and it is there. Now we need to be aware of it and make the appropriate decisions around it but recognise that we also cannot be left behind.</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:20:00+01:00"/></from>
+          <p eId="para_248">One of the interesting things about this is that 20 or 25 years ago the big thing was web search engines. Those of us old enough to remember saw that there was a portfolio of a dozen of them available and then one emerged as being really strong. That one has persisted with us for the past two and half decades, which is great.</p>
+          <p eId="para_249"> When it comes to large language models, there is not one. Every big tech company is doing this because there is such huge potential. I do not expect there to be one large language model to bind them all at the end of all of this. It is great to have the choice because competition among them, which currently is"my model is bigger than your model" will eventually turn into "my model is better". It will even turn into "my model is more ecologically friendly than your model" and "my model uses less electricity and energy consumption than your model."</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_148">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:20:00+01:00"/></from>
+          <p eId="para_250">The witnesses have reinforced the need we have as a country to address this technology and ensure we prioritise the delivery of renewable energy for all the very good reasons that we know but also to address the huge increase in demand into the future. This is certainly something we will bring to our discussions at other committees. We will talk to our colleagues about accelerating and prioritising floating offshore wind off the west coast.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_149">
+          <from>Senator Gareth Scahill<recordedTime time="2025-06-10T13:20:00+01:00"/></from>
+          <p eId="para_251">The contributions of the witnesses have been very informative that we will need to use AI to summarise it.</p>
+          <p eId="para_252"> The AI safety report was published in January. Dr. Seoighe has said there was no consensus and that Ireland was the only country out of 33 countries to highlight the social impact and the fundamental human rights aspect. He is the deputy CEO of Research Ireland. What was Ireland's main contribution to the report?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:20:00+01:00"/></from>
+          <p eId="para_253">The main contribution to the report is the experts that we can connect into reasonably quickly in Ireland. One of the reasons we could be so responsive on that report and we could turn around some of the answers faster is they sometimes give us very short deadlines. We are working through windows of 48 hours to go through hundreds of pages and return things. We are very fortunate that we had people like Professor Smeaton, Professor Barry O'Sullivan and assistant Professor Susan Leavy. Those three were the approved experts that would review everything so we would turn things around. The reason we had an impact, and the reason we can be involved in that, is the interconnected nature of Ireland and the fact we have a relatively small AI community. Most of us know each other in the AI community and we all communicate and talk on a regular basis so we can quickly get a response out there.</p>
+          <p eId="para_254"> In terms of impact, as we review the document there are a range of areas. We did talk about human rights, which, as I have said, are a critical element that needed to be in the report. We also talked about how the report needed to bring balance and that it is too easy to scaremonger in these reports and there is a need to bring balance about opportunities and risks, and how those risks are managed.</p>
+          <p eId="para_255"> They are working on the next iteration of the report. The report is great in giving a really good sense of where AI is right now. It is an absolute tour of all the latest thinking and all the ideas. There are literally hundreds of pages of references so members can read the source information, which allows transparency as people are able to track all the information. What the report lacked to an extent, which is what they are pushing, was what should be done by policymakers such as members of the committee. It is great to say that this and that could happen, or that this or that risk could happen but what do we do about it? The next evolution of the report is to start to talk about recommendations and even look for scenarios. Scenarios is a really interesting way to go. For example, there are three or four potential scenarios and here are triggers that would identify on which scenario we might currently be on and, therefore, what steps we should take around going to those scenarios. That is where the report is hopefully going next. It is looking at scenarios, and looking for recommendations and guidelines.</p>
+          <p eId="para_256"> They are very clear that they do not want to tell policymakers what to do. They do not want to encroach on anybody's sovereign rights and authority. Now, if we just go forward from the state of the science to recommendations, it will be a much more helpful report.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_151">
+          <from>Senator Gareth Scahill<recordedTime time="2025-06-10T13:25:00+01:00"/></from>
+          <p eId="para_257">It is an AI safety report. There is an onus on the committee to inform people and ask the questions. There are issues around safety but, as Dr. Seoighe highlighted, there are massive benefits to this too. That is why I was glad he outlined at the end of his submission the potential benefits for people, businesses and society as a whole, and that is also why I asked that question.</p>
+          <p eId="para_258"> Black box decision-making was mentioned, and where the decisions come from. Hallucinations and the misinformation coming out of all of this have been mentioned. The technology is moving at speed. It is like anything in that it is only as good as the information it has to base its decision on. The data points are multiplying. Will the less looking around it is doing for the answers and the less energy it is wasting on the hallucinations make the system more efficient?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:25:00+01:00"/></from>
+          <p eId="para_259">This gives me the opportunity to bring up the last of my insomnia – the things that keep me awake at night – which is that big technology companies are very focused on releasing product rather than on scientifically understanding why, for example, how it came up with that answer. Very few companies are publishing scientific literature, analysis, papers and presentations that reveal the work they are doing in trying to understand why. The exception is probably a company called Mistral, which is French. Regarding all the others, the volume of scientific literature they produce at the major AI conferences has dropped over the past couple years because their human energy is focused on getting product out, getting the next version and getting the next technique available. It concerns me.</p>
+          <p eId="para_260"> Eventually they will realise they are in kind of a prisoner’s dilemma, as I mentioned previously, and they will then be open and focused on understanding why. As consumers, we want to know why. We accept, or recognise, a certain amount of hallucinations come from these systems and we compensate for them by checking them. Eventually, we will get to a stage where we will not accept an error that comes from a system like that and we will want the company to understand why and stop that. We are not at that point yet. We are at the stage of grow, grow, grow, and get product out the door. However, consumer pressure will eventually lead those companies to re-evaluate and refocus on understanding why.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_153">
+          <from>Senator Gareth Scahill<recordedTime time="2025-06-10T13:25:00+01:00"/></from>
+          <p eId="para_261">In certain versions of it, when you tell it the information is wrong, it will actually apologise to you, which is interesting. One of the questions I had down was how policymakers should balance the risks and benefits of AI, but Dr. Seoighe is saying the next report will potentially answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:25:00+01:00"/></from>
+          <p eId="para_262">It will go some way towards it. As I said earlier, education and public discourse are also important – having these conversations, having this dialogue and recognising it is also changing. The answers we might get six months from now might be different from what we get at the moment in terms of all kinds of elements of AI. It is moving at incredible pace. That pace gap is a real challenge for regulators. There is a gap between the speed at which it is operating and the speed at which regulation is keeping up. How do we close the pace gap? We could try to close that regulatory gap by trying to stay ahead of it, or the way the EU acts and others are approaching it is just to provide guardrails that are indicative, send you in a certain direction and tell you how to manage and go around those, without being overly prescriptive because it moves at such a pace. As I talked about as well, there is also an importance to that independent, publicly funded research because it gives us that independent voice, which we can rely on to get advice into these Houses as well.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:25:00+01:00"/></from>
+          <p eId="para_263">It now falls to me. I will invert Deputy O'Connor’s question and put it to Professor Smeaton and Dr. Leavy. Rather than what keeps them up at night - they will have a moment to think about this because I will put a question to Dr. Seoighe first - what excites them about what is happening with this new technology? Related to the last point, which is the question around us as policymakers and legislators dealing with this issue, what is the question they would like us to ask of those in the tech sector and other areas?</p>
+          <p eId="para_264">I might come to Dr. Seoighe because Research Ireland is doing an incredible amount of work in a lot of centres. The hope is that our committee will visit some of those centres over the course of the next period. What can the State do to support research into artificial intelligence, whether on the computing or public policy side? What is Dr. Seoighe's recommendation to the committee?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_265">As a funder, I will always start with that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_157">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_266">Yes, apart from funding.</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_267">It is the obvious place to go. Appropriately funded research is what we want.</p>
+          <p eId="para_268"> On other areas where the committee can help, dialogue is important because building trust between all parties is important, including this dialogue, engaging and allowing us to bring in researchers and have a conversation. As we have some real expertise in the country, it is good to tap into and use that.</p>
+          <p eId="para_269"> Staying close to Europe on EU regulations and guiding and working closely with our colleagues there will also be important to us. We need to consider this with an all-of-government approach to things, because, as we talked about, if we are going to solve for AI and want really good AI, we need data centres, but if we want data centres, we need energy. If we want energy we need water. Therefore, an all-of-government approach is needed to solve this. The committee should remember my opening line, that the future of AI is not predetermined. It is the decisions we make and things we do now that will set the AI future we want.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_159">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_270">What excites Dr. Leavy? What question should we ask?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_271">What excites me at the moment is that it is an exciting time for AI in Europe because I expect a renewed focus on innovation and research. There was a focus on regulation. That is in place and can be implemented, but now there is an urgency to invest and innovate.</p>
+          <p eId="para_272"> What was the second question?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_161">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_273">What question should we be asking?</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_274">Only one? My focus would be on how we can develop AI algorithms with European values at their centre.</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_275">As a scientist what excites me is that there has been more development in computing, technology and algorithms in the past three years than in the past previous decades. What excites me is the pace with which this changes. That is a personal, almost narcissistic view.</p>
+          <p eId="para_276"> A corollary that follows from that is that for years I have been working in computer vision and multimedia analysis and when I try to explain it to people they, say "yeah, really, okay". Now, I can explain my work to my 91-year-old aunt and she can see it and she says that now she thinks she knows what I am working on. It is about the second part, the impact. It is not only an isolated academic discipline I work in. It affects everyone and it is great to see that impact and have that sort of recognition. People now know what I have been doing for all these years.</p>
+          <p eId="para_277"> The question is how to bring the expertise back to Europe, how to anchor it and develop the European response, rather than being wholly dependent on big tech from Silicon Valley or China.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_164">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_278">How does Professor Smeaton think we can get the balance right between innovation and regulation? That is the big debate.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_279">It is about that sweet spot between the two. That is the question. I do not have an answer to it. However, the fact that the committee recognises that there is a sweet spot between over-regulation and the absence of regulation, which is happening in another part of the world, is important. It is a European characteristic that we accept, welcome or want to see an element of control and regulation on many aspects of our society, more so than other places.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_280">Where does Dr. Leavy think Ireland stands in the middle of all this at the moment? Are we well prepared for all this technological change, whether it is us supporting AI innovation and companies or preparing our citizens more generally? Are we to the front or are we a laggard?</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:30:00+01:00"/></from>
+          <p eId="para_281">That is a big question. There are a lot of different aspects to it. We are well placed. We can be agile and move fast as well and we have strong relationships within Europe and with the US.</p>
+          <p eId="para_282">That is important. Our institutions are strong in terms of the education system and our democracy, which is also important.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_168">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_283">I am conscious of and totally agree that we need to infuse AI with European values. Our challenge is that Europe has moved in the regulatory space but there is a fear concerning regulation in the US and China going in a different direction. This is particularly the case with the EU's AI Act. Some of what the Chinese Communist Party is allowing to happen through the use of AI is specifically prohibited in Europe. How can we ensure that European values are applied globally?</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_284">I do not think we can. We can focus on Europe, being the best in class and leading by example. If other people choose to adopt an approach because it has good results, then that is-----</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_285">One of the things we can learn from the GDPR regulations that apply to Europe is that if an organisation, an entity or a company from outside Europe wants to sell in Europe, it will have to conform to those regulations. We have seen that the bar set by the GDPR has been adopted by other companies and jurisdictions because they do not want to have two products. Who wants to have ChatGPT Europe and ChatGPT for the rest of the world? It is too much of an overhead cost for companies to do it. The experience from the GDPR is that they will raise their standards to that bar. I hope and think the expectation with the EU's AI Act is that companies would conform to it, not just to be able to sell a product and deliver it in Europe but to do so globally because that makes it easier to manage.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_171">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_286">What is the timeline for the next iteration of the safety report?</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_287">It will be this year.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_173">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_288">We have time for a quick one-minute round if members have burning questions. They do not have to use the time but they can ask one quick question.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_174">
+          <from>Deputy James Geoghegan<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_289">I thought I would have four minutes, so one minute is going to be challenging. Perhaps this is more a comment than a question. I found the point made about search engines interesting in that we all thought there were going to be lots of them. We used to use AltaVista and the world ended up using Google, but the witnesses do not think this is going to happen in the LLM world. In common parlance, when people think of AI now or even refer to it in media discussions, at least in this jurisdiction, they use the word "ChatGPT". It is the case now, at least, that when people talk about AI they are talking about just one example, OpenAI, although they might not know it. Why do the witnesses think we are going to have this multiplicity of LLMs in future? What will it mean in terms of State adaptation if there is a multiplicity of LLMs? How are we going to improve adaptation in healthcare, education, etc? How can this be done if one organisation does not talk to the other and there is different procurement from Department to Department? I wish the witnesses the best of luck in answering that in less than 20 seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_290">An LLM is available within the Houses of the Oireachtas and it is not ChatGPT but Copilot. Different companies and organisations will either license one or other of the variants depending upon the business deal or how much of a company it is. A company might license Gemini if it was a Google-using organisation. That variety is good. Looking at search engines retrospectively, it was good - and I kick myself for saying this - to have just one search engine because we are all looking for the same thing. When it comes to LLMs, however, it is good to have that variety.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_176">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_291">I again thank the witnesses for their contributions. I also cannot fit everything into one minute. Some of the areas I had wanted to drill down further into include AI in democracy and in defence in particular, so the things that keep us up at night. For instance, I have heard the term "no human kill chain", which is definitely keeping me awake at night. What is the research into this area? Is the upcoming presidential election on the radar of Taighde Éireann as potentially fertile ground for research into AI, democracy and the potential for interference?</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:35:00+01:00"/></from>
+          <p eId="para_292">I will quickly tackle the question on democracy in particular. Last year, because it was the year with the most elections on the planet at one time, I was curious to know if there was any research suggesting those elections had been negatively impacted by AI. The Turing Institute in the UK did a serious study into this topic. It found that across the globe there was negligible impact, which surprised me because I thought there would have been with all the deepfakes, soft fakes, scams and other things out there.</p>
+          <p eId="para_293">Its finding was that there was a negligible impact on the outcomes of elections.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_178">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_294">Is there anything on defence? Is that featured in Dr. Seoighe's research?</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_295">I am not aware, but I thank the Deputy for giving me something else to keep me awake at night with that term.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_180">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_296">No problem. "No human kill chain" is a particularly nasty term.</p>
+        </speech>
+        <speech by="#" eId="spk_181">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_297">There is growing focus on dual-use technologies, of course.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_182">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_298">On AI literacy and the general population, I am conscious that in Ireland, over 20% of the population have low literacy rates in terms of reading and writing. Where do we start with AI literacy to ensure there is a level playing field in education?</p>
+        </speech>
+        <speech by="#" eId="spk_183">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_299">It is the last issue that keeps me awake at night. It is hugely important. According to Article 4 of the EU AI Act, any organisation that uses AI, including the Houses of the Oireachtas, has to have in place an AI literacy programme. I know that the AI literacy package has been prepared within the Houses of the Oireachtas. It is currently being translated into Irish. I was told yesterday that its announcement and availability for Members are imminent. However, AI literacy is different for different constituents and different people. We all need different forms of it and different delivery of it. There is a huge urgency with that because the more we understand what goes on in that black box and the more we have a mental model of it, the more we can appreciate how it can be good, how it can be used for good and how it can also be used for evil, and we can separate the differences.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_184">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_300">I thank the witnesses very much for their contributions. On the digital divide, from an economic viewpoint, what will cause the biggest divide? Will it be physical devices or Internet connectivity? At the moment, we are all using OpenAI, but ChatGPT runs out now after four pictures or something and people have to pay for the pro version. Will it be a combination of all of those factors? What will cause the biggest impact in terms of that economic divide?</p>
+        </speech>
+        <speech by="#" eId="spk_185">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_301">What will cause it is a lack of access. We need a strategy in primary and secondary education for how AI is taught and what, if any, access to technology and services like language models is needed. There is a lot of promise of AI and education in terms of increasing accessibility and supports for different needs in learning. Those products are not widely available yet, but they will be soon. We must make sure that schools who need them have the resources and can avail of the cutting edge that technology has to offer. It is about ensuring equal access to both devices and services.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_186">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_302">The problem is the issue with big tech and the new product and new version, who is going to make the big bucks and who wants to make the big bucks. Morally and ethically, that has to be challenged. Something I read recently that keeps me up a lot is that safety researchers have left some of these big companies in their droves. That is really worrying because having used the algorithms, these people are having moral and ethical challenges. What do the witnesses think of that?</p>
+        </speech>
+        <speech by="#" eId="spk_187">
+          <from> Professor Alan Smeaton<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_303">It is deflating and disappointing to see that since the new Administration in the United States has taken over, many of the big tech companies have taken off the guardrails, so they are basically cycling without stabilisers, and that is very worrying.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_188">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-06-10T13:40:00+01:00"/></from>
+          <p eId="para_304">The witnesses were previously asked about other countries in the EU that are progressing well with AI. France is well ahead, as is Estonia as regards the whole area of digitalisation. I will come back to the previous question I asked around the commercialisation of particular research projects that are coming through the pipeline. I am very conscious that we create an indigenous AI economy, not just here in Ireland but across Europe. There needs to be homogeny across Europe, and we need to stop looking at it from a siloed point of view in terms of each country.</p>
+          <p eId="para_305">What is the engagement like with Enterprise Ireland to ensure funding for those projects and the PhDs that are ready for commercialisation and going into business?</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_306">I will take that question. The three agencies - Research Ireland, IDA Ireland and Enterprise Ireland - work very closely. We try to ensure a little bit of overlap, which is best practice between a funding agency like ours that takes a blue-skies, bottom-up approach, through to the slightly further along applied research and enterprise agencies like Enterprise Ireland. That is what we are trying to find. We do not want to find a place where people try to work so hard there is no overlap and then we end up with a gap where things drop and PhDs do not go further. Every now and again we look to see where the gaps are in terms of innovation training and entrepreneurship training, for example. We build that into our PhD programmes so there is a seamless transition across to Enterprise Ireland's commercialisation fund and other funds.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_190">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_307">My question is about CERN AI. Mariana Mazzucato talks about the innovative state and state investment in pharma, for example, so we end up with commercialised products. It is based on huge state investment initially. Perhaps we are in a different place in the tech sector. A lot of this is tech-led and the question is how we try to influence that. Where is the idea of CERN AI and is it a potential vehicle or just a fringe piece?</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_308">I do not know where it has got to fully yet. Originally, there was a proposition by a number of academics across Europe, who wrote and submitted a paper saying what they think is required for Europe to catch up, stay ahead and bring public trust into AI. There is a lot of discussion at EU level about such investment, which I follow. The most important thing is that, as a member state, we remain close to it and when those opportunities come we are right in the middle of it.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_192">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_309">It is better than actual CERN.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_193">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_310">I am concerned about the micro targeting of marketing and the impact this fast-paced development in technology could have on all of those things. It is irrelevant if I disable the cookies on a website I visit or on something I am viewing because I am going to be profiled, served up and constantly bombarded with a particular set of adverts relating to other content I have viewed. Do we need to update our legislation in that area? What can we do to guard against that?</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_311">We need to implement what we have. The media commission has a big responsibility to implement it. Micro targeting means there is huge scope for grouping people into categories and predicting their behaviour based on attributes. It goes against the approach of treating people equally. It is kind of stereotyping and treating people differently based on their attributes. It goes against a lot of what we have been trying to do in equality legislation and the like. We must implement what we have very well, but also understand that there must be some literacy on the systems that do that and how they work.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_195">
+          <from>Senator Dee Ryan<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_312">Does Dr. Leavy mean critical thinking?</p>
+        </speech>
+        <speech by="#" eId="spk_196">
+          <from> Dr. Susan Leavy<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_313">Yes, but also protection of more vulnerable people.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_197">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_314">If Senators Scahill and O'Donovan do not wish to contribute, I will ask a quick question to wrap up our first meeting of the committee. What is the message of the witnesses to someone out there who has fears about the effect of this new technology, artificial intelligence, on the citizens of Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_198">
+          <from> Dr. Ciarán Seoighe<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_315">As an inveterate optimist, I will start. If we regulate appropriately, we will manage and do things going forward with our eyes open. AI presents huge opportunity in all kinds of things. We talked about personalised medicine and personalised education, but it could really speed up scientific discovery. It could help us find new materials and new drugs for diseases. There is huge opportunity if we keep our eyes wide open and make the decisions now to ensure we capitalise on that opportunity.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_199">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:45:00+01:00"/></from>
+          <p eId="para_316">That is great. I thank Dr. Seoighe very much. I am conscious of time. The clerk is furiously passing me notes about moving on. I thank Professor Smeaton, Dr. Seoighe and Dr. Leavy very much for their contributions. I also thank the wider research community. I am sure we will be engaging a lot more. The witnesses should please feel free to keep in touch. They are welcome to stay for the election of the Leas-Chathaoirleach but they do not have to.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Election of Leas-Chathaoirleach<recordedTime time="2025-06-10T13:50:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_200">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:50:00+01:00"/></from>
+          <p eId="para_317">Two nominations for the position of Leas-Chathaoirleach have been received, Deputies Sinéad Gibney and James Geoghegan. As Deputy Gibney was nominated first, on 22 May 2025, her nomination will be dealt with first.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_5">
+          <summary eId="sum_5">Question put: : "That Deputy Sinead Gibney be elected Leas-Chathaoirleach of the committee."</summary>
+          <summary title="division" eId="sum_6">The Committee divided: Tá, <quantity refersTo="#ta" normalized="6" eId="qty_1">6</quantity>; Níl, <quantity refersTo="#nil" normalized="8" eId="qty_2">8</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_6">
+            <p eId="para_318">Tá</p>
+            <p eId="para_319">
+              <person refersTo="#SineadGibney">Gibney, Sinéad.</person>
+            </p>
+            <p eId="para_320">
+              <person refersTo="#LauraHarmon">Harmon, Laura.</person>
+            </p>
+            <p eId="para_321">
+              <person refersTo="#PaulMurphy">Murphy, Paul.</person>
+            </p>
+            <p eId="para_322">
+              <person refersTo="#JohnnyMythen">Mythen, Johnny.</person>
+            </p>
+            <p eId="para_323">
+              <person refersTo="#DarrenORourke">O'Rourke, Darren.</person>
+            </p>
+            <p eId="para_324">
+              <person refersTo="#LynnRuane">Ruane, Lynn.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_7">
+            <p eId="para_325">Níl</p>
+            <p eId="para_326">
+              <person refersTo="#MalcolmByrne">Byrne, Malcolm.</person>
+            </p>
+            <p eId="para_327">
+              <person refersTo="#JamesGeogheganFG">Geoghegan, James.</person>
+            </p>
+            <p eId="para_328">
+              <person refersTo="#KeiraKeogh">Keogh, Keira.</person>
+            </p>
+            <p eId="para_329">
+              <person refersTo="#JamesOConnor">O'Connor, James.</person>
+            </p>
+            <p eId="para_330">
+              <person refersTo="#NoelODonovan">O'Donovan, Noel.</person>
+            </p>
+            <p eId="para_331">
+              <person refersTo="#NaoiseOCearuil">Ó Cearúil, Naoise.</person>
+            </p>
+            <p eId="para_332">
+              <person refersTo="#DeeRyan">Ryan, Dee.</person>
+            </p>
+            <p eId="para_333">
+              <person refersTo="#GarethScahill">Scahill, Gareth.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_7"/>
+          <summary title="decision" refersTo="#lost" eId="sum_8">Question declared lost.</summary>
+        </debateSection>
+        <speech by="#MalcolmByrne" eId="spk_201">
+          <from> An Cathaoirleach<recordedTime time="2025-06-10T13:55:00+01:00"/></from>
+          <p eId="para_334">In regard to the second motion, I must now put the question, "That Deputy James Geoghegan be elected Leas-Chathaoirleach of the Joint Committee on Artificial Intelligence". Is that agreed? Agreed. I declare Deputy Geoghegan elected as Leas-Chathaoirleach of the committee and congratulate the Deputy on his election. </p>
+          <p eId="para_335"> I am advised by the clerk to the committee that we do not have time for private business. I thank everyone for coming today.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee adjourned at 1.58 p.m. until 11 a.m. on Tuesday, 24 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,1712 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-28/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-28/debate"/>
+          <FRBRdate date="2025-05-28" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_infrastructure_and_national_development_plan_delivery"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-28/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-28/debate/mul@"/>
+          <FRBRdate date="2025-05-28" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-28/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-28/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-30" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_1" href="#sum_6" outcome="#lost" refersTo="#sum_5">
+            <count eId="vote_1-count_1" href="#qty_1" refersTo="#ta" value="5"/>
+            <count eId="vote_1-count_2" href="#qty_2" refersTo="#nil" value="7"/>
+          </voting>
+          <voting eId="vote_2" href="#sum_10" outcome="#carried" refersTo="#sum_9">
+            <count eId="vote_2-count_1" href="#qty_3" refersTo="#ta" value="8"/>
+            <count eId="vote_2-count_2" href="#qty_4" refersTo="#nil" value="1"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="AidanDavitt" href="/ie/oireachtas/member/id/Aidan-Davitt.S.2016-04-25" showAs="Aidan Davitt"/>
+        <TLCPerson eId="CathalByrne" href="/ie/oireachtas/member/id/Cathal-Byrne.S.2025-01-29" showAs="Cathal Byrne"/>
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="PeadarToibin" href="/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09" showAs="Peadar Tóibín"/>
+        <TLCPerson eId="ReadaCronin" href="/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08" showAs="Réada Cronin"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCPerson eId="TonyMcCormack" href="/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29" showAs="Tony McCormack"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BONNEAGAR AGUS SEACHADADH AR AN BPLEAN FORBARTHA NÁISIÚNTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Infrastructure and National Development Plan Delivery</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-28">Dé Céadaoin, 28 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-28">Wednesday, 28 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#CathalByrne">Cathal Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AidanDavitt">Aidan Davitt</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#TonyMcCormack">Tony McCormack</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#LouisOHara">Louis O'Hara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#ConorSheehan">Conor Sheehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PeadarToibin">Peadar Tóibín.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#SeanFleming">Teachta / Deputy Seán Fleming sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:30:00+01:00"/></from>
+          <p eId="para_14">I have received apologies from Senator Eileen Flynn.</p>
+          <p eId="para_15"> I remind members of the constitutional requirements that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I also remind them of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded to damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with such a direction from the Chair.</p>
+          <p eId="para_16"> The first item on the agenda is the minutes. They have been circulated. Are they agreed? Agreed.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Election of Leas-Chathaoirleach<recordedTime time="2025-05-28T15:30:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:30:00+01:00"/></from>
+          <p eId="para_17">At our previous meeting, nominations for Leas-Chathaoirleach were sought. Two nominations have been received – one for Senator Eileen Flynn and one for Deputy Joe Neville. The way the d’Hondt system works here is that it is a long-established position that the first name received is put to the floor. If that person is elected, that is the end of the matter. If that person is not elected, we move to the second nomination. If the second person is elected, so be it at that stage. Everybody understands the system. It is slightly unusual but it is the historic way it is done in Leinster House. I do not think we are the position to change it, even if we chose to do so.</p>
+          <p eId="para_18"> The first name in was that of Senator Flynn. Is it agreed that Senator Eileen Flynn be elected as Leas-Chathaoirleach of the Committee on Infrastructure and National Development Plan Delivery?</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_4">
+          <summary eId="sum_5">Question put: "That Senator Eileen Flynn be elected Leas-Chathaoirleach."</summary>
+          <summary title="division" eId="sum_6">The Committee divided: Tá, <quantity refersTo="#ta" normalized="5" eId="qty_1">5</quantity>; Níl, <quantity refersTo="#nil" normalized="7" eId="qty_2">7</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_5">
+            <p eId="para_19">Tá</p>
+            <p eId="para_20">
+              <person refersTo="#ReadaCronin">Cronin, Réada.</person>
+            </p>
+            <p eId="para_21">
+              <person refersTo="#LouisOHara">O'Hara, Louis.</person>
+            </p>
+            <p eId="para_22">
+              <person refersTo="#ConorSheehan">Sheehan, Conor.</person>
+            </p>
+            <p eId="para_23">
+              <person refersTo="#PatriciaStephenson">Stephenson, Patricia.</person>
+            </p>
+            <p eId="para_24">
+              <person refersTo="#PeadarToibin">Tóibín, Peadar.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_6">
+            <p eId="para_25">Níl</p>
+            <p eId="para_26">
+              <person refersTo="#ShayBrennan">Brennan, Shay.</person>
+            </p>
+            <p eId="para_27">
+              <person refersTo="#CathalByrne">Byrne, Cathal.</person>
+            </p>
+            <p eId="para_28">
+              <person refersTo="#JohnClendennen">Clendennen, John.</person>
+            </p>
+            <p eId="para_29">
+              <person refersTo="#AidanDavitt">Davitt, Aidan.</person>
+            </p>
+            <p eId="para_30">
+              <person refersTo="#SeanFleming">Fleming, Seán.</person>
+            </p>
+            <p eId="para_31">
+              <person refersTo="#TonyMcCormack">McCormack, Tony.</person>
+            </p>
+            <p eId="para_32">
+              <person refersTo="#JoeNeville">Neville, Joe.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_7"/>
+          <summary title="decision" refersTo="#lost" eId="sum_8">Question declared lost.</summary>
+        </debateSection>
+        <speech by="#SeanFleming" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_33">I will now put the question about the second nomination received. On the question that Deputy Neville be elected Leas-Chathaoirleach of the Joint Committee on Infrastructure and National Development Plan Delivery a division has been challenged.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_7">
+          <summary eId="sum_9">Question put: "That Deputy Neville be elected Leas-Chathaoirleach of the committee."</summary>
+          <summary title="division" eId="sum_10">The Committee divided: Tá, <quantity refersTo="#ta" normalized="8" eId="qty_3">8</quantity>; Níl, <quantity refersTo="#nil" normalized="1" eId="qty_4">1</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_8">
+            <p eId="para_34">Tá</p>
+            <p eId="para_35">
+              <person refersTo="#ShayBrennan">Brennan, Shay.</person>
+            </p>
+            <p eId="para_36">
+              <person refersTo="#JohnClendennen">Clendennen, John.</person>
+            </p>
+            <p eId="para_37">
+              <person refersTo="#SeanFleming">Fleming, Seán.</person>
+            </p>
+            <p eId="para_38">
+              <person refersTo="#TonyMcCormack">McCormack, Tony.</person>
+            </p>
+            <p eId="para_39">
+              <person refersTo="#JoeNeville">Neville, Joe.</person>
+            </p>
+            <p eId="para_40">
+              <person refersTo="#LouisOHara">O'Hara, Louis.</person>
+            </p>
+            <p eId="para_41">
+              <person refersTo="#ConorSheehan">Sheehan, Conor.</person>
+            </p>
+            <p eId="para_42">
+              <person refersTo="#PatriciaStephenson">Stephenson, Patricia.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_9">
+            <p eId="para_43">Níl</p>
+            <p eId="para_44">
+              <person refersTo="#PeadarToibin">Tóibín, Peadar.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_11"/>
+          <summary title="decision" refersTo="#carried" eId="sum_12">Question declared carried.</summary>
+        </debateSection>
+        <summary eId="sum_13">Staon: Deputy Réada Cronin.</summary>
+        <speech by="#SeanFleming" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_45">I declare Deputy Neville the Leas-Chathaoirleach. I congratulate him and invite him to say a few words.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_5">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_46">I thank everyone for their support. I look forward to working with all of them and on their behalf. I thank the members who put my name forward, Deputy Clendennen and Senator Byrne.</p>
+          <p eId="para_47"> This is an important committee. Ultimately, we will be working on the future of the State. Infrastructure will be a key topic and the party members belong to is irrelevant to what we are doing here. I look forward to working in the best possible way as a team. It is lovely to see former colleagues from councils working with me here. We are all working on behalf of our constituencies and, parties aside, that is the most important thing.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_48">Before we move on to our major item of business today, Uisce Éireann, we will suspend briefly while the witnesses take their seats.</p>
+        </speech>
+        <summary eId="sum_14">
+          <i> Sitting suspended at 3.53 p.m. and resumed at 3.54 p.m. </i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_10">
+        <heading>Uisce Éireann: Future Work Programme<recordedTime time="2025-05-28T15:50:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_49">The purpose of today's meeting is to hear from Uisce Éireann on its future work programme. I am pleased to welcome, Mr. Niall Gleeson, chief executive officer; Mr. Sean Laffey, asset management and sustainability director; and Ms Maria O'Dwyer, infrastructure development director.</p>
+          <p eId="para_50"> I remind witnesses of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_51"> Before I invite Mr. Gleeson to make his opening statement, I ask members to indicate whether they wish to speak and the clerk will take note.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T15:50:00+01:00"/></from>
+          <p eId="para_52">I thank the Cathaoirleach and members of the committee for the invitation to attend today's meeting. I am CEO of Uisce Éireann and I am joined today by my colleagues, Sean Laffey and Maria O’Dwyer.</p>
+          <p eId="para_53"> We welcome the committee giving the critical role of water services infrastructure high priority in its work programme. Uisce Éireann has consistently stated that progressing water and wastewater infrastructure is crucial to economic growth and development, protecting the environment and the provision of much-needed housing, and we hope to be able to provide the committee with a deeper understanding of our priorities in this regard.</p>
+          <p eId="para_54"> As Ireland’s national publicly owned water services utility, we are responsible for the delivery of secure, safe and sustainable public water services, enabling the Irish economy to grow and communities across Ireland to thrive. To do this, we work closely with our economic regulator, the Commission for Regulation of Utilities, CRU, our environmental regulator, the Environmental Protection Agency, EPA, as well as with the Department of Housing, Local Government and Heritage, local authorities and other State bodies. As this is our first meeting with this committee, we have provided an additional background note that sets out more detail on our establishment and functions.</p>
+          <p eId="para_55"> The scale of what we do is enormous and complex, with a nationwide team of more than 4,000 people directly involved in delivering essential water and wastewater services to more than 4.2 million people every day, as well as an additional 6,000 people in downstream support services and activities. We invest an estimated €2.5 billion per annum in operational and capital expenditure. This includes the construction, management, maintenance and upgrading of more than 8,000 water and wastewater treatment plants and assets and some 90,000 km of pipe network. Our footprint on the Irish economy is also significant. We work with more than 2,000 Irish and international businesses and suppliers to deliver our work programmes, generating economic opportunities nationwide.</p>
+          <p eId="para_56"> Of interest to today’s meeting is our capital investment, particularly in the delivery of national water and wastewater infrastructure. From 2020 to 2024, we invested more than €5 billion in upgrading and improving water and wastewater services infrastructure and assets to improve the quality of life of the people of Ireland, protect our environment and grow our economy. For 2025 to 2029, our strategic funding plan sets out a funding requirement €10.3 billion of investment for capital infrastructure and assets. However, sustained ongoing investment will be required for many decades to offset the years of underinvestment in water services.</p>
+          <p eId="para_57"> Legislative and regulatory compliance has underpinned our investment and delivery to date. Through our governance, risk management and regulated approach, we are required to ensure the resources we have available are directed where they are needed most. We are obliged to prioritise public health and environmental needs during the regulated capital investment cycles, followed closely by consideration of level of service drivers relating to the existing customer base. Significant progress has been made, but with changing regulations and standards, much more investment is needed to keep up with the demands of a growing population and economy. To move beyond compliance in our capital investment and achieve the strategic growth ambitions for the country, we must collectively work to address barriers and improve systems and processes to create a robust but dynamic approach to infrastructure delivery.</p>
+          <p eId="para_58"> The committee, we understand, is seeking meaningful debate around forward planning, future investment, capital delivery and tackling barriers. Uisce Éireann has identified and consistently highlighted our three key priorities for success. They are investment certainty, effective planning and consenting and prioritising strategic projects. We must be supported and funded to provide capacity for growth in the areas where it is going to deliver against national objectives and enable communities to thrive. Uisce Éireann's Strategic Funding Plan 2025-2029 includes an estimated level of investment required based on the Housing for All programme.</p>
+          <p eId="para_59">The Government has put forward a new commitment to build 300,000 new homes by 2030. We estimate that to support Government in realising this new proposed target, an additional ring-fenced funding stream of €2 billion will be required between 2025 and 2030 to deliver the water services capacity needed for housing growth across the country, along with key enabling policy, planning and resourcing. The additional funding being sought to meet these new housing targets would focus on ensuring the appropriate water and wastewater infrastructure is in place to facilitate new housing in those areas that have been prioritised for new development under the national planning framework and is co-ordinated with other utility and service providers to ensure investment delivers capacity where it is needed.</p>
+          <p eId="para_60"> We have a strong record of delivery but for this to continue, having certainty around Government's investment commitments is critical. Many of our stakeholders across the supply chain have highlighted the challenges in being able to meet demands without clarity as to our funding programme and the provision of once-off investment. Additionally, the annual allocation of funding to Uisce Éireann creates further uncertainty year-on-year. An effective solution is to align our funding allocation to our overall investment programme through a multi-annual funding structure so we can better plan and deliver long-term projects, maximise efficiencies and provide greater certainty to our supply chain.</p>
+          <p eId="para_61"> We will need to be able to deliver new infrastructure and upgrade our existing assets to keep pace with growth and increasing compliance standards. This is not solely about funding. Delivering infrastructure will also require key enabling policy and legislative change. In general, it takes five to seven years to get through all stages of a straightforward capital project. However, it can take seven to ten years for more complex projects and more than ten years for very complex ones. Reforms to planning and consenting regulations are needed urgently to ensure we can deliver vital infrastructure efficiently and continue to grant connections for new homes and businesses. The prioritisation of national strategic infrastructure through these processes would enable us to deliver on our mission and allow us to deliver local improvement schemes faster.</p>
+          <p eId="para_62"> Communities throughout the country need critical water and wastewater infrastructure capacity and upgrades to ensure our towns and villages can remain viable places to live and work. It is incumbent on all bodies involved in delivering critical public infrastructure to work together towards the common goal of providing Ireland's communities, businesses and environment with better, safer and more reliable essential services. In the meantime, our water services infrastructure continues to struggle in keeping pace with population, housing and commercial growth. The eastern and midlands region, especially the greater Dublin area, is facing serious water supply and wastewater capacity challenges. These are not just Dublin problems. They have significant implications for Ireland's competitiveness and population. The region and counties therein are home to a large number of our citizens and are a base for economic activity, and they are growing.</p>
+          <p eId="para_63"> Current and future social and economic development in the greater Dublin area and the provision of much-needed new housing is reliant on connections to the water and wastewater networks that can only be guaranteed if there is certainty around the process and timeline for the urgent delivery of the water supply project and the greater Dublin drainage scheme. There is little time to overcome the series of barriers and changes needed to unlock these strategic projects as we are already assessing connection applications to our networks on a case-by-case basis in the region. An urgent approach is needed. We cannot afford to have projects of critical public importance tied up for another decade. To achieve such an approach will require cross-party support that focuses attention on the common good. Uisce Éireann shares the Government’s ambition to deliver much-needed housing and the infrastructure that is required to facilitate its development. We have been engaging extensively with Government members and relevant Departments and are playing a full and active role in the new formations involved in infrastructure and housing delivery.</p>
+          <p eId="para_64"> The picture we present today is challenging but we have solutions. Addressing the key enablers we have outlined here today will bring about a step change in how we deliver critical water services infrastructure to both meet national objectives and achieve Uisce Éireann’s ultimate mission, to provide the people of Ireland with the highest quality drinking water and ensure that wastewater is properly treated and safely returned to the environment. I thank the committee for the invitation to meet and extend our invitation for the committee to visit some of our strategic assets in the future. We look forward to the answering any questions members may have.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_65">I thank Mr. Gleeson. I have a few short questions before I call members in the order that they indicated to speak. He said that he hopes to have a budget between 2025 and 2029, which is five years, of €10.3 billion, which is approximately €2 billion a year. According to the information provided to us, Uisce Éireann had committed capital expenditure in 2024 of €1.37 billion, which is 6% up on the previous year. Is that figure of €10.3 billion before or after the suggested income or transfer of funds from the Apple escrow account? If it is only moving to €10 billion, or approximately €2 billion per annum, that is less than a 10% cumulative increase. When inflation and rising costs are taken out, that eats most of the 10%, so we will not see enough real growth for Uisce Éireann to do much extra and I consider that a small figure. That is the first question. Is the escrow account included? What discussions have taken place on that? I know some schemes before Uisce Éireann have been to design, build and operate. They still exist. The second question is whether Uisce Éireann will continue that route in the future or whether everything will be built directly by it.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_66">The €10.3 billion is the strategic funding plan ask. That includes the figures that were talked about for the escrow account. It has not been completely decided yet how much of the Apple-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_67">Is it included?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_68">We are asking for another €2 billion on top of that to provide growth for housing, so the total ask for Uisce Éireann is €12.3 billion.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_69">What funding would Uisce Éireann have if it did not get the escrow account money?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_70">It is included. We are just asking for €10.3 billion. How it comes to us is a matter for the Departments of Finance and public expenditure and reform. It is not something that-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_71">Does Mr. Gleeson think that a 10% cumulative increase per annum to get to the €10 billion is adequate, given rising costs? That will only be a real increase in investment of 5% or something like that. Is that adequate for the increase in population?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_72">The Cathaoirleach has to understand the journey we have been on. In 2013, the year before Uisce Éireann was formed, approximately €315 million in capital was spent on water and wastewater assets across the country. This year, we are hoping to spend €1.5 billion. We are coming up on €100 million a year extra, but that is as much as our supply chain can bear to expand by. It is not just about money being available. It is about actually having the supply chain. We are a relatively small country. Many of the companies that work in Ireland also have operations in the UK. The regulator in the UK has just approved a five-year, £105 billion investment plan, so our supply chain has many places to go if it wants to. We can only expand so much.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_73">We think the €10.3 billion, plus the additional €2 billion we have asked for to bring it to €12.3 billion, is within our supply chain's capacity to deliver over the next five years. I am not sure we could deliver much more than that.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_74">So, really, we are not looking at a financial constraint here but a construction constraint. Many Irish companies will think that the UK's figures are ten times higher than ours and that there is ten times more work in the UK than there is in Ireland over the next five years. We will end up maybe not having adequate people entering for some of the work if there is more than ten times more work in the UK.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_75">If we get a commitment on the €12 billion and we can demonstrate that we will get that over a multi-annual funding programme, then the supply chain will stick with us here. We have a good supply chain. It has delivered €5 billion over the past five years. We will deliver the €12 billion over the next few years.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_76">Is Mr. Gleeson confident of that?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_77">Yes. Like I said, if we can show them that this money is coming, they will stay here and will deliver. They have committed to that with us but we have to make sure it is an attractive place to work and that the UK does not become a more attractive place to work.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_78">The last question was about the design, building and operation. Is that a model Uisce Éireann can go back to again?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:00:00+01:00"/></from>
+          <p eId="para_79">That was a local authority model but we have the expertise now to run the plants. We will issue contracts on a design and build basis. We might have the contractor or supplier operate for a year or two, while it is bedding in the commissioning period, but then we take over. The original design, build and operate contracts had 20-year lifespans. Ours will be very short.</p>
+          <p eId="para_80">Generally, we are a direct label model and that is how we plan to operate.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_24">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_81">For everyone's benefit, I will list in sequence the people who have indicated a wish to speak. They are Deputies Tóibín, Neville, Clendennen and O'Hara, Senator Stephenson and Deputies Sheehan and McCormack.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_25">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_82">Does every have ten minutes each? </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_83">No more than that. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_27">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_84">Ar dtús, gabhaim míle buíochas as an gcur i láthair. I will follow on from the question asked by the Cathaoirleach. The key constraints in delivery are not funds but the current capacity within the construction industry to fulfil the work that needs to be done. Is that correct? </p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_85">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_86">We have multiple challenges. In order to deliver more for the people we serve, one of our key asks is that we have committed multi-annual funding. When delivering large-scale infrastructure, funding certainty is key to being able to give the supply chain predictable pipelines of work and in that way we are able to deliver more efficiently and effectively. </p>
+          <p eId="para_87"> We also have challenges in being able to get the required consents to deliver our work. That is a challenge we have spoken about of late. The question is how we can get through the different statutory consents that are in front of us in order to get the required permissions to get onto a construction site to do the work. We have found of late that the engineering and actual construction works have become the more predictable part of our work and the piece that is uncertain is getting the multiple different statutory consents necessary to go on site and deliver projects. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_30">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_88">Two questions arise from that. First, given the constraints within the construction industry, how long would it take for Uisce Éireann to be able to provide the necessary infrastructure so that water delivery is no longer a blockage on housing delivery? How many years would that take?</p>
+          <p eId="para_89"> Second, statutory consent was mentioned. Can Uisce Éireann identify the blockages? Who is blocking the delivery of those statutory consents?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_90">To deliver our capital investment plan, there are a number of legislative and statutory consents that we must achieve. They can range from planning permission via a local authority, planning as it relates to An Bord Pleanála and engaging with the EPA for wastewater discharge licenses. The Environmental Protection Agency, EPA, has a new abstraction licensing regime in place. We also require licenses from the Maritime Area Regulatory Authority, MARA, if we are doing work on the foreshore. We have land and wayleave consent. If land is required, we may have a CPO process. All of these can be subject to an environmental impact assessment and then each of them can be subject to a judicial review. Many of them are sequential and getting through them presents a challenge. We have had quite a lot of success in the work we have done. Over 200 water and wastewater treatment plants have been upgraded or newly built.</p>
+          <p eId="para_91"> To answer the Deputy's question on how many years it would take, Uisce Éireann was formed over ten years ago. We knew about the multigenerational problem then in terms of the legacy situation our asset base is in. We have called out that we will probbaly need between €55 billion and €60 billion, out to 2050, as a minimum level of investment just to address the known issues in our water and wastewater asset base. It will take a number of decades to address all of the challenges. </p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_92">It is nobody's fault that these things take time. It is just the way the process has evolved. To be perfectly honest, it was fine when we were a country of 4 million people and the investment was not as big. Now, because it is all sequential, it just takes time.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_33">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_93">Sometimes An Bord Pleanála takes over a year to deal with applications, which is caused by a staffing issue. If local authorities and An Bord Pleanála had the necessary staff, they would be able to deliver consents faster. It is interesting to learn that it will take until 2050 before the necessary shortcomings within the sector will be met with the investment.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_94">My comment is based on what we know at the moment and current standards. New legislation was introduced last year through the European directives, which will raise the bar.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_95">There is also the fact that the plants we built 20 years ago now need to be refurbished and rebuilt. It is a continuous process of upgrading.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_36">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_96">The system is in bad shape in many parts of the country. In my constituency, the town of Trim has been hammered with either water blockages or the water being switched off at night-time such that when people turn on the taps they get dirty water, due to these constant changes. Trucks are being used to deliver water to places like Ballivor and Clonard on a regular basis. The State is struggling with its two responsibilities of keeping the lights on and having water in the taps and it will also take a long period to fix the problems. </p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_97">Yes. After the Celtic tiger crash, we had a population of about 4 million but no money was invested really until we came onto the pitch in 2014 and we have been ramping up ever since. In a lot of places, the infrastructure that serves towns and villages, and some cities, was built for a population that was present in 2007, not the 5.7 million or 5.8 million people that we have at the moment. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_38">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_98">A lot of European countries source their water from aquifers, whereas we tend to take water from surface locations, rivers and so on. We have just had a couple of weeks of nice weather and already there are warnings about hosepipe bans, for example. In the case of the River Boyne, the capacity of the river is gone at the moment because of taps. How can we depend on a supply of surface water given the changes in climate and the reduction in capacity? Should we not focus more on aquifers, etc.? </p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_99">My colleague can explain the groundwater issues. </p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_100">We do not have the geology. Places like northern Germany and northern France have enormous gravel beds, which they tap into for their water supply. We do not have that. Our geology is mainly volcanic. It is granite. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_41">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_101">There is limestone. </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_102">We have some limestone in the west but it is karstic in nature. It is prone to pollution because it is so open.</p>
+          <p eId="para_103"> Surface water is also intimately linked to groundwater. For example, in the case of the River Slaney in Rathvilly, during the months of June, July, August and September, up to 75% of the water in the river is groundwater that emanates from the Wicklow hills, having been deposited during the winter. </p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_104">In Mullingar, for example, there are hosepipe bans due to the low water level in Lough Owel, which is fed by aquifers. They build up over the winter and spring period but we had a very dry winter and spring. The problems, therefore, are not just because we had two weeks of dry weather. They built up over the winter and spring.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_44">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_105">That type of weather pattern is likely to continue. </p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_106">Yes. The reason I mentioned the situation in Mullingar is that if we had the water supply project, which is a pipe coming from the Shannon up through a spine, that would have a tap or a tee-off and that will feed Mullingar. That would be a solution to those groundwater issues. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_46">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_107">People find it very difficult to understand how we could be losing 37% of water out of pipes yet proceed with a project to bring water from the Parteen Basin to Dublin, which is earmarked to cost about €6 billion. Given the inflation associated with capital infrastructural projects in this country, it would be very brave to say that the project will come home at €6 billion. Would it not be better to make sure that we start saving the water from leakages from pipes in the city before we travel the country with it?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_108">We will be doing both. Before we pump any water from the water supply project, we will have Dublin down to below 20% leakage and try to get it lower, but 20% is not a bad European average. We estimate that the project will cost somewhere between €4.5 billion and €6 billion. We are very confident in our scope. This is basically a water treatment plant and a long pipe. We have built lots of water treatment plants. We know how to build them, so we are not concerned about scope creep or anything there. It is a big pipe we have to put in the ground. We are pretty confident in our estimation. Where we would get escalation is where we get delays. The longer it takes us to start that project, the more expensive it will be, but we are pretty confident. As I said, before we deliver any water, we will below the European averages for leakage. </p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:10:00+01:00"/></from>
+          <p eId="para_109">It is important to understand that the project to bring water from the River Shannon is to supply water to Dublin. I understand that people say that if we just fix the leaks, everything will be fine. The River Liffey is the 19th largest river in the country.</p>
+          <p eId="para_110">We take 40% of the flow from the Liffey into our pipes every single year and 85% of the water in the greater Dublin area comes from the Liffey. It is not about leakage. If anything ever happened to the Liffey, such as a pollution incident, 85% of the water into the GDA would be gone. That is the issue. It is about resilience. It is also about climate resilience. The catchment area for the Liffey above Poulaphouca is only 300 sq. km. Above the Parteen Basin, the Shannon is 13,500 sq. km. It is about resilience.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_49">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_111">I thank Mr. Laffey for joining us. We must acknowledge where we have come from with 46% leaks in 2018 and where we were in 2014 with a lack of investment and bursting at the seams. Uisce Éireann's target is 25% by 2030. Is that ambitious enough? If any other organisation was in here looking for €2 billion with €500,000 going to waste - I know it is not directly - we would be asking a lot of questions. How can we sit here comfortably and accept 25% wastage?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_112">Our network is approximately 65,000 km of water mains and we have a very long network for the population that is served. Leakage is a complex thing. When we look at the water we produce and the water we see consumed, everyone calls the gap in between leakage but in the business we call it unaccounted for water. Some of that water is leakage, 100%, but some of that water is actually connections that we do not know about or it could be a second connection to a factory. People tend to think that fixing leaks is simple but it is not. If we take a standard district metering area and say there is 100 km of piping in it, and a large leak is fixed, the first thing that happens is everybody in the area instead of getting 7 litres a second get 9 litres a second and, therefore, part of the saving is gone. The second thing that happens is any leak in the area is now leaking at a faster rate because the pressure has been brought up. The third thing that happens in a lot of pipework is that the pipe further down the line says, "Feck this". It breaks and we have a new leak. The fourth thing that happens with consistent and persistent activity, investment, rehabilitation and fixing leaks is that we will eventually turn the dial back at the plant.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_51">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_113">In terms of Uisce Éireann's planning pipeline, how many houses is it going to deliver this year, next year and the year after?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_114">We do not deliver houses; we deliver capacity.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_53">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_115">I am sorry; I meant connections to houses.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_116">I think Ms O'Dwyer has the figures for last year.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_55">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_117">No, not last year - this year, next year and the year after.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_118">We provide the infrastructure-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_57">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_119">I appreciate Government objectives-----</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_120">It has nothing to do with Government objectives-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_59">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_121">What is Uisce Éireann accounting for? In the next three years - this year, next year and the year after - how many houses?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_122">It depends on the developers and how many connections they approach us for.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_61">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_123">Surely from a resourcing perspective, Uisce Éireann has some sort of an indication.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_124">We are geared up. Like I said, if we compare with what we did last year-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_63">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_125">I have looked at last year. What I would like to know about is this year. Uisce Éireann's annual report for 2023 refers to 40,000 connections. There is not a word about the connections that did not happen. I am cognisant that 547 towns and villages across this country are at capacity and there is no mention of that.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_126">Every year we process way more pre-connection enquiries and connection applications and issue way more connection offers than are ever accepted. Last year, we processed pre-connection enquiries associated with 115,000 housing units. We issued connection offers associated with 52,000 units and we facilitated connections to 32,000 units. Other years, I know the pre-connection enquiry numbers were as high as 180,000 units. At all times, we are probably endeavouring to respond to the market, endeavouring to follow and respond to developers where the requests come in and we will endeavour to do that in the future.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_65">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_127">Does Uisce Éireann do that-----</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_128">In terms of refusals, where we have not been able to say "Yes" to developments on pre-connection enquiries, we were saying "No" to approximately 1.2% of those units and on the connection applications it was 0.3%. Our teams are very much minded to say "Yes" where we can. That does not mean that there are not certain towns and villages where we do not have capacity, but we are endeavouring to ask the development community to engage early with us. If they engage early, we might not be able to develop in this town this year, but we will be able to point them to other locations where we do have capacity.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_67">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_129">How many of the 547 towns and villages will see additional capacity this year?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_130">Our investment programme-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_69">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_131">A number, just a number.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_132">We will have to get back to the Deputy on that. </p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_71">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_133">Uisce Éireann's commercial revenues from 2022 to 2023 increased by 41%. They are expected to increase by another 10%. Is the company unfairly going after commercial revenues to pay for the operation?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_134">It is regulatory model, and it is managed by the Commission for the Regulation of Utilities. The more we spend on capital, the more we have to recover through the billing process. It is not just the operational costs; it is also the capital costs. There is a formula that requires us to recover the capital investment.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_73">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_135">If inflation is running at 1% or 2% and Uisce Éireann is going at 10%, it is five times-----</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_136">The problem is the amount of capital we are spending is not in proportion to a normal regulated entity. It is because we are catching up so much. We are spending significantly more capital than would be normal and, therefore, we have to charge additional. That is the regulated model.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_75">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_137">In terms of the frequency of other utility providers and local authorities, how often does Uisce Éireann sit down with them and look at a map and say this is where we need to focus on? How does that work at local or national level?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_138">Mr. Gleeson said in his statement that we are very much focused on compliance and protecting public health and making sure our plans are in compliance both for drinking water and wastewater. That was the primary focus of what we were doing. We were making sure that our water supplies were secure and that, on a wastewater basis, we were actually looking at the greatest polluting plants in the country and tackling those first. We always put a bit on for growth. We put 10%, 15% or 25% additional capacity into each plant. Now that we are looking just at growth as a driver, what we have done in Uisce Éireann is that we have sat down and looked at the national planning framework, regional spatial and economic strategies, local area plans, county development plans, city development plans and we have pulled out 48 settlements that we are focusing on. There are another 100 in the pipeline. We had to sit down and go through every single local area and county development plan in the country and pull out the areas we are interested in. There is no single database where we can go and do that we are aware of. </p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_77">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_139">Was that a desk research exercise or did Uisce Éireann sit down with local authorities and other providers-----</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_140">No, we have a forward planning section in the asset management part of Uisce Éireann. We work closely with regional assemblies and the local authorities when they are doing their five-year plans. We are very much integrated into that. We talk to and advise them about areas that we could or will be servicing and areas that we cannot.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_79">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_141">I am a newly-elected TD for Kildare North. Some of the issues I will raise will come back to north Kildare because that is my lived experience. I served on the council there as well. I have quite a lot of experience. There are some local issues that are also national issues. I do not want to criticise but at the same time I want to hold Uisce Éireann to account. That is ultimately our job and I thank the witnesses for attending the meeting and answering the questions. It is not always the most ideal situation for everyone. The one thing we cannot live without is water, but unfortunately a lot of people in the Leixlip area are being asked to live without water on a regular basis. There are ongoing bursts in pipes between Leixlip and Maynooth. The water levels are very low in Celbridge. The water is not coming out of taps on a regular basis. We had water outages previously. There are specific plans for the likes of the Hazelhatch works in the capital plan. At the same time, I also know that were no plans for the Leixlip-Maynooth pipeline outside Intel, which is bursting regularly. There are no plans for that to be in a capital programme. How does an item get on a capital programme and another not?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:20:00+01:00"/></from>
+          <p eId="para_142">We prioritise. If we are going to rehabilitate a water main, we look at the numbers affected, and we look at the loss of service to our customers. We can also replace a water main on the basis of quality. Some of the water mains are quite old, especially when they are cast iron. We cannot keep a chlorine residual in them so we cannot guarantee the water. We replace roughly 150 km of water main a year. That costs approximately €1 million a kilometre. A substantial amount of that €1 million a kilometre is resurfacing the road after we are finished. As I said, we have 65,000 km of water main. It is not a large investment in the grand scheme of things but €150 million a year is a lot of money to be putting into the water main side of it.</p>
+          <p eId="para_143">We invest in water treatment plants for extra capacity if required. We also invest in them to make sure they are producing compliant water. On the wastewater side, we invest in terms of environmental impact and improving-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_81">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_144">On wastewater, we have had an odour issue in Leixlip village because of the lack of capital infrastructure investment. A whole community is left with the same issue that has been there since I was a child. There is an environmental impact that has not been resolved because of a lack of investment in the local area. As a representative, I want to highlight those issues, but I am sure such issues exist elsewhere.</p>
+          <p eId="para_145"> How many staff are employed by Irish Water? I apologise, as I meant Uisce Éireann. I always default to Irish Water.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_146">That is no problem. We are transitioning and bringing in local authority staff.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_83">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_147">Exactly.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_148">There are 2,600 direct employees and there are between 1,300 and 1,500 local authority staff still. The total is approximately 4,500.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_85">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_149">There are 2,500 direct employees. What is the overall salary cost?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_150">I mostly prepared for infrastructure questions, but we can revert.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_87">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_151">I thought I might just ask about it. We can move on if Mr. Gleeson does not have the figures.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_152">No, it is fine. It is approximately €100,000 per staff member.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_89">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_153">Will the local authority people coming across change that number?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_154">It will take it down slightly, but it will be in that region.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_91">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_155">The link between capital expenditure and maintenance is real, as maintenance places are ultimately from a capital perspective.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_156">Sure.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_93">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_157">In my example, I have seen pipes burst. In much of our area, we have 80-year-old pipes from the late 1940s into the 1950s. They are asbestos pipes that are causing us significant issues. I know cast iron pipes were referenced, but we see specific issues with asbestos. Are there any risks associated with those pipes or are there any specific areas where they need to be replaced?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_158">We would replace on the basis of bursts and interruptions to service. As the Deputy can imagine, the list of what needs to be replaced is greater than the funding we are allocating to it. However, if there is a particular issue affecting a large enough number of customers, we reprioritise rehab at least four or five times per year. If the details are in the database, it will be ranked by priority.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_95">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_159">Is the capital plan three years or five years?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_160">It is a five-year plan.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_97">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_161">A five-year plan. The Cathaoirleach spoke about how there had been confusion nationally about the capital expenditure requirement from Uisce Éireann. Money is said to have been put forward and then it is said that was already allowed for, and the question is if it is extra. To clarify, it was €10 billion that was required.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_162">The ask is €10 billion.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_99">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_163">For the next five years.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_164">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_101">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_165">Is €2.2 billion being put forward for 2025?</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_166">No, we have asked for €10.3 billion over the next five years. That is the strategic funding plan, but that was based on the Housing for All programme, which was to deliver between 30,000 and 35,000 housing units per year.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_103">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_167">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_168">When the Government came out with its 50,000 target-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_105">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_169">Uisce Éireann is going to need an extra 20%.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_170">We have asked for €2 billion more.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_107">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_171">Exactly, but is Uisce Éireann also getting €2 billion at the moment? What is the current run rate of that €10 billion?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_172">This year, we will spend approximately €1.5 billion.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_109">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_173">€1.5 billion.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_174">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_111">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_175">Has a number for next year been indicated to Uisce Éireann?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_176">We will be ramping up to the overall spend of €10.3 billion. I cannot remember the number off hand. It is probably €1.6 billion.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_177">Out of the €10.3 billion, approximately €1.8 billion is set aside for the greater Dublin drainage and water supply project.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_178">If we get those moving, they will consume quite a lot of that €10.3 billion.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_115">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_179">Let us take a project like the Maynooth transfer pipeline. Is that a next tier down? How are capital projects ranked in a scale? Is there one significant one or is there a bucket of projects of various sizes? How is that ranked?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_180">We operate on a five-year cycle through the regulatory process. Every five years, we go out and consult with our statutory stakeholders on the key priorities for our investments. We then take that feedback, look at the needs and issues we are aware of with our asset base and put together a development plan that basically takes account of all the needs we have. We endeavour to prioritise that, with service resilience being key, including public health, protecting the environment, some obligations on us as a country and servicing growth. We endeavour to achieve a balance across our different investment portfolios.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_117">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_181">I do not want to lose Ms O'Dwyer because she has just made a point. How does Uisce Éireann decide between service and capital expenditure? Capital expenditure is obviously about building new and replacing old. How has the €10 billion been split? Let us say it will be €11 billion if Uisce Éireann gets its Housing for All increase.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_182">Since the need across all of our portfolios is so big, we will take the €10 billion and roughly split it 25% for water treatment, 25% for water network, 25% for wastewater treatment and 25% for wastewater networks. We pretty much spend equal amounts on each per annum. We might spend a little more on water treatment because that directly affects public health. As Ms O'Dwyer indicated, though, between €55 billion and €60 billion needs to be spent on the networks and our assets out to 2050. It is a complex piece of work because, if I am building a new treatment plant in one place, a number of other things are still happening at other treatment plants. I am using up all the headroom and the other plants are getting old. They need capital maintenance and might need to be refurbished. Last year, we brought in a new drinking water directive, which has changed the way we look at drinking water and how we treat it. In the next two years or so, there will be a revised urban wastewater treatment directive, which will also change how and the standards to which we treat our wastewater. It is a complex piece of work. There are a lot of moving parts. As Ms O'Dwyer pointed out, we invest on the basis that we have European Court of Justice cases against Ireland Inc. regarding trihalomethanes on the drinking water side and, on the wastewater side, for not meeting the urban wastewater treatment directive standards. That is how it is prioritised.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_119">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_183">I do not want to take up too much time and will let the others in, but if we get another chance, we might go round again.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_184">By way of clarification before I call Deputy O'Hara, is the refurbishment of the existing network considered a capital investment?</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_185">Yes.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_186">Can we have a breakdown of how much of the capital investment is on new network for all the new houses and industry versus refurbishment of the current network?</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_187">We will revert with that breakdown, if that is okay.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_124">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_188">I would have thought that would be an answer the witnesses knew off the top of their heads.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_189">It is approximately two to three-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_190">How much are we spending on new pipes versus refurbishment? That should be one of the top figures.</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_191">Refurbishment is a capital maintenance programme, which is one section of the capital expenditure. Is the Cathaoirleach asking us what the capital maintenance programme is?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_192">The witnesses mentioned refurbishment.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_193">Does the Cathaoirleach mean of pipes and drinking water?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_130">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_194">It is a bit like I described. It is going along and it needs to be done. How much of that €10 billion is for items like that versus the new greenfield houses?</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_195">Refurbishment is €150 million per year.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_132">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_196">That is €150 million out of Uisce Éireann's capital expenditure, which is €1.375 billion according to the note. That is only 10%.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_197">That is per annum.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_198">That is for water main rehab. Obviously, there would be the same in respect of sewerage.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_199">Some 90% of what Uisce Éireann calls capital is new networks. Am I right?</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_200">No.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_201">Capital would also include treatment plant upgrades.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_202">Will the witnesses revert to us with the breakdown?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_203">Yes. I do not know the figure off the top of my head because it is complicated.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_204">Okay.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_141">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_205">In all fairness, I asked the question before and there was a lot coming at us there.</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_206">I think we could send the committee a table with-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_207">The witnesses get the parameters of the question to clarify what is refurbishment versus what is new.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_208">We have detailed plans on this.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_145">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_209">Of course.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_146">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_210">I thank the witnesses for their time. In their opening statement, reference was made to the need for reform and delivery of enabling policy. A recent <i>The Irish Times</i> article outlined that Uisce Éireann had warned the Government of the critical need for a wide range of regulatory and legislative reforms if Uisce Éireann was to meet the immense tasks it faced, including the new housing targets. This included sending a detailed document to the Government, which was seen by <i>The Irish Times. </i>Has Uisce Éireann published that document and what recommendations were made in it to the Government?</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:30:00+01:00"/></from>
+          <p eId="para_211">We had a meeting with the Minister of State, Deputy Cummins, who has responsibility for planning. He asked us to put our suggestions from that meeting to him into writing. That is what was referenced in <i>The Irish Times</i> article. The newspaper got a copy of it.</p>
+          <p eId="para_212">There was an appendix so there is quite a detailed list of items. I do not know all of them but Ms O'Dwyer may wish to give some examples.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_213">I will give a flavour of some of what we asked for in the context of the new planning Bill. The planning regulations are being worked on at the moment and we have some suggestions regarding exempted development that we think would enable us to deliver our capital investment plan more expediently.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_214">For example, we are allowed to build an additional 10% of our footprint on an existing treatment plant without planning permission but if that went to 25%, that would give us a lot more flexibility and we would not have to bring plans through the planning system. People driving by a plant would not notice if we added in a few extra tanks. We would obviously keep in with the environmental requirements through the EPA's emission limit value, ELV, requirements. There are things we could do that would be relatively easy to deliver across a multi-agency approach. They would be relatively easy for the State to deliver and would make things move more quickly. I suspect we could give this Department that appendix or that letter. I do not see any problem with that. It would have the details of the ask.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_150">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_215">Will Mr. Gleeson give the appendix to this committee?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_216">Yes.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_152">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_217">That would be very helpful.</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_218">As regards the legislation we are seeking to have changed and perhaps some of the discharged regulation from wastewater treatment plants, it is very much focused on trying to speed up the delivery of treatment plants in small towns and villages. It is not the very big stuff, which is so complex that it has to go through the system. There could be a very small treatment plant that is only serving 400 people. If there is a desire to build an extra 30 houses, which is an extra 100 population equivalent, PE, and we had the ability to drop in an additional prefabricated treatment plant alongside to cater for an extra 100 PE and allow people to develop in a village, that is the kind of thing we are looking at.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_154">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_219">That is very important. In my constituency of Galway East we have well over a dozen smaller towns and villages where we cannot have the delivery of new housing because that capacity is not there, in the likes of Ardrahan, Corrofin and Abbeyknockmoy. There has only been an announcement of investment in two villages, namely, Craughwell and Clarinbridge, but we have been told it will be years down the line. The opening statement referenced the capacity issues in the eastern and midlands region. Does Mr. Laffey see similar constraints in the western region as well? How does Uisce Éireann ensure balance across the regions in terms of its investment?</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_220">The small towns and villages issue is very prevalent in places such as Cork, Kerry and all up along the west coast because the populations are more distributed than they are on the east coast and in the midlands. As regards capacity in the main towns, Waterford is okay, Cork is fine and Limerick is okay. We are doing a large upgrade there on the Bunlicky wastewater treatment plant. Galway is okay from a point of view of water and wastewater. We are looking at expanding the treatment plant for drinking water for Galway but it is at a very early stage. </p>
+          <p eId="para_221"> We prioritise on the basis of the need; we do not actually prioritise on the basis of the location. As a result, people get annoyed with us because a certain county is not getting a certain thing in a certain year. We have our mechanisms and those mechanisms have to go through the Commission for Regulation of Utilities and we have to make sure the money we are spending is making the greatest impact.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_156">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_222">To go back to the example in my constituency, just two villages out of well over a dozen are actually getting investment.</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_223">The other thing, and maybe Ms O'Dwyer will comment on this, is that we have to get faster. One of the reasons we are looking for legislative change is that we are not looking to cause damage by any manner or means but maybe if we could have a standardised approach to small towns and villages we could deliver <i>en masse</i>. At the moment, every single wastewater treatment plant we have has its own bespoke licence or certificate of authorisation. I would not say every plant we build is a one-off - the technology is all the same - but we have to build to that specific licence requirement. If we could do something that was standardised at 1,000 population equivalent, we would be able to just turn them out. If exemptions were in place for putting the plants in, we could just turn them out and put them in. We have to speed up.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_158">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_224">Mr. Gleeson referred to the €2 billion in annual ring-fenced funding that is needed. As regards the announcement made towards the end of last year about the €1 billion in funding allocated to Uisce Éireann to fund capital spending, will Mr. Gleeson clarify what that was used for? Was it used for capital spending?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_225">It has been allocated against the €10.3 billion. Uisce Éireann receives a certain amount from the State but we borrow through the Department of Finance based on the non-domestic income we have. We have a loan facility and some of that €1 billion was set against that facility. We wrote to the Minister to ask for clarification and we received that. For us, it is clear that we are getting the €10.3 billion or whatever is the commitment at the moment. I understand that the NDP is being looked at overall. What we are asking of the NDP for the next five years is €12.3 billion - the €10 billion plus the €2 billion - and that is the commitment we hope to get after the NDP review.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_160">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_226">I have some quick questions on behalf of Deputy Cronin, who had to leave the meeting. We know demand from data centres has expanded exponentially in recent years. The first come, first served basis on which capacity is being divvied out is causing housing projects to be delayed. Is there a similar risk with water supply? If we build new data centres, will this impact on Uisce Éireann's capability to support other demand needs for water services elsewhere?</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_227">Prior to Uisce Éireann coming into being, data centres used water for cooling purposes, but we stopped that particular policy. We will supply them with water for domestic purposes - canteens, etc. - but we no longer supply them with water for cooling purposes. It was very wasteful of the water. Even if the data centres were not using the water for cooling, say during the winter, they refreshed their tanks every two or three weeks to avoid a risk of legionella. We have stopped that. The problem is the data centres now cool using closed-loop cooling, which is electric so the pressure is on the network there. </p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_162">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_228">On the eastern and midlands regions project, what are the results of the public consultation? What will be in the planning application submitted to An Bord Pleanála this year?</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_229">In January, we held a non-statutory consultation in six locations along the water supply project in the eastern and midlands region. Approximately 900 people engaged in that consultation. In the main, I believe it was very positive. I attended a lot of the events myself. There were good discussions in the rooms and it was an opportunity for us to talk about some of the construction challenges and the approaches we are taking to that pipeline project. We are working our way through the feedback we received from the consultation and we are still on track to get our planning application submitted by year-end. </p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_164">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_230">I appreciate that and thank Ms O'Dwyer.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_165">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_231">Some of my comments might be a bit repetitive as other colleagues have already made some of the points. I appreciate the scale of the work Uisce Éireann is undertaking and has been undertaking over the past decade. Water supply and wastewater treatment are issues that are quite big issues in the public psyche at the moment, largely because we are receiving a lot of information around new developments and the block on housing supply. The housing emergency we are living in is one of the biggest ones. Mr. Gleeson spoke about the need for multi-annual funding to address long-term planning. Has Uisce Éireann secured multi-annual funding from the Department of housing? Has it been promised or is Uisce Éireann still working on an annual basis?</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_232">We are still working on that. There is a tacit promise of €10.3 billion but it is dependent on the annual Vote so we will not know what we will get for 2026, say, until October 2025.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_167">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_233">What implications does that have? Does it have a negative implication in terms of the work Uisce Éireann is doing for larger planning?</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_234">For construction, it is very difficult because we want to have flexibility. For example, if we have a very mild winter we might run a lot more pipe than we would during a very cold winter. We want that flexibility in the supply chain in order to be able to deliver. Right now we balance our budget on a capital basis to the euro every year, and that is not great. One would not run a construction business in the private sector in that way.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_169">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T16:40:00+01:00"/></from>
+          <p eId="para_235">In terms of the capacity supply chain issues around construction, is that within Uisce Éireann's remit to address?</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_236">If we were to be able to tell the supply chain that we are guaranteed the €12 billion we asked for over the next five years, they will then invest in getting the trades, the equipment and the capital equipment. I do not think we need to do much other than to say, "Here is the pipeline and here are the projects that are coming", and the supply chain will go out and figure out the problems.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_171">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_237">Does Mr. Gleeson see a direct correlation there with the lack of multi-annual funding?</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_238">Yes, especially with the competition we are getting from the UK, where they will spend €100 million. If that is guaranteed, we definitely need to be indicating that the State will spend €12 billion in the next five years.</p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_239">I might add to that. Over the past ten years, our supply chain, to be fair, have really worked with us. We have built up a very strong supply chain, and they have invested in the people and equipment. It is through that that we have been able to achieve the successes we have had in terms of the upgrades we have brought. We have been out meeting our supply chain and we have got a very positive message back that if we are successful in securing the funding that we have asked for, they are of the view that they will step up and be able to support us in delivering for everyone.</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_240">Another example would be our supply chain have invested heavily in tunnelling machines and directional drilling machines. Previously, we would have gone into a field, dug a big trench and put the pipe in. Now, we are doing a lot more tunnelling, which is much more environmentally friendly.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_175">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_241">My colleague, Deputy Rory Hearne, received correspondence from the Ceann Comhairle when he tabled a parliamentary question on Uisce Éireann to the Department of housing. He received correspondence back saying that Uisce Éireann is not accountable to the Department of housing. Is that Mr. Gleeson's understanding of the lines of responsibility? Would Uisce Éireann, as a State-owned company, feel that the Department of housing is its, for want of a better term, line management?</p>
+        </speech>
+        <speech by="#" eId="spk_176">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_242">Yes. The Minister is our shareholder, so I would consider us accountable to the Department. We have a board, obviously, which is an independent board. I am accountable to the board and the board is accountable to the shareholder.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_177">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_243">I am asking because there has been a bit of football with regard to responsibilities when people are in the public sphere. There has been a narrative around chronic water challenges and issues, and there has been a sort of "It is the Department's fault", "No, it is Uisce Éireann's fault", and a challenge there around where responsibility lies. I am not saying that necessarily to point fingers or blame but to try find solutions for that. I want to clarify that from Mr. Gleeson's perspective.</p>
+        </speech>
+        <speech by="#" eId="spk_178">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_244">I think it is clear. That is the way we understand it.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_179">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_245">I think from what Mr. Gleeson has said today I will know the response to this, but I think Uisce Éireann's chairperson a few weeks, or maybe months, ago had an article in <i>The Irish Times</i> that talked about Uisce Éireann not having a mandate around future growth related to housing developments. What is the status of that now?</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_246">Again, we go back to the fact we are compliance-driven. Basically, up to now, we have been working with the EPA on drinking water issues or wastewater. We have wastewater treatment plants that are polluting rivers. We are trying to fix all of those up. Regarding the vast majority of settlements that had raw sewage flowing into a sea or river, that has been sorted. We are about 90% done. We have six projects on the go this year. On the growth area, we do not have a mandate to go in and invest just for growth. If a town does not have an issue with its wastewater plant or drinking water plant, we do not tend to go into that town. We have been saying that if you want an accelerated housing programme, we need to have a mandate to go in. We have asked for the extra €2 billion to spend that money on growth projects. The challenge is we still have a lot of work to do on the environmental side. That will be at the expense of the EPA, which might say it would like that €2 billion to be spent on compliance projects because we have not finished everything. We are saying we will do some growth projects and not delay but do less compliance projects than what might be possible.</p>
+        </speech>
+        <speech by="#" eId="spk_181">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_247">There are investments to date. Wherever we have been doing compliance, we have been taking that opportunity to invest for growth in those areas as well. In that way, we are getting better-----</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_248">We get a natural level of growth because when we go in and fix something, we add some growth</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_183">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_249">Yes, I can imagine Uisce Éireann then updates the system there. Uisce Éireann is in the programme for Government, the growth and development programme, and the NDP - various policy documents. It has a connection to growth within those documents, so I suppose there is a slight contradiction in that regard. The Department or Government feels Uisce Éireann has a remit, or a mandate, as it were, for growth as well as for compliance.</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_250">The approach heretofore was if you can solve the environmental issue and service growth, and if both could be done at the same time, that is a good outcome. The piece of work that Mr. Gleeson and Mr. Laffey were talking about earlier was recognising that growth, as a sole driver in an area, as opposed to growth and compliance, or compliance in the main, and that is the approach we are taking.</p>
+        </speech>
+        <speech by="#" eId="spk_185">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_251">The €10.3 billion compliance programme would have delivered 30,000 to 35,000. It had the capacity for 35,000. There is a growth programme in that, but it is compliance-driven. The distinction is that we would go into areas that do not have issues and develop networks to facilitate future housing.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_186">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_252">The issue might be a lack of supply or lack of a treatment plant, which is impacting on the growth of development.</p>
+        </speech>
+        <speech by="#" eId="spk_187">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_253">It takes us five to seven years to build a treatment plant. Therefore, if there is an issue with treatment plants, that probably will not get hit in the next five years; it will be the following five to ten years where we build additional treatment.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_188">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_254">When the witness was speaking before about the prefabs, was that to do with water supply or treatment?</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_255">It would be both.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_190">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_256">A standard approach for those prefabs was talked about. How do they differ from existing wastewater treatment infrastructure? We probably all have many examples from our own areas of communities being told they will not have new developments for the next five years. What does that look like? How does it differ from what exists? The positives are that it can get done, but what are the negatives?</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_257">We would welcome the Senator to come see a couple different sites to get a greater appreciation for the different scales. When it comes to smaller villages and smaller treatment, we have learned over the years that if you want to scale and deliver faster, you have to be able to standardise what you are doing. We are of the view that if we could move faster and standardise the work we have to do in these areas, we could achieve greater environmental benefit. We have a piece of work to do in working through the regulations and working through the different interested parties in producing the science to back that up. That is where we believe we could engage with our supply to chain on how we develop units where the same unit could be used in multiple different sites. Then the conversation is changed completely from construction on site to engaging in more modular builds and more work happening off site. That is where much of the construction industry is going, and water services will be no different.</p>
+        </speech>
+        <speech by="#" eId="spk_192">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_258">Just so the Senator knows, if we are looking at Ringsend, where we spent €500 million adding additional capacity, that cost about €300 per PE, which is person equivalent. Some of the smaller treatment plants can cost up to €15,000 per PE, so anything we can do to build them off site to a standardised design and standardised output, do and the M and E in a nice, warm, dry factory, and then just go out to site and drop them, plug and play, should bring the cost down substantially, which means we can deliver more of them.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_193">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_259">Is there any barrier to doing that legislatively or-----</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_260">Yes.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_195">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_261">Okay, there is.</p>
+        </speech>
+        <speech by="#" eId="spk_196">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_262">At the moment, we have to get planning for them. We have to go through that system, with all the checks and balances associated with it. Also, where we are looking to do work on a treatment plant, we have to go to the EPA and go for a revised licence because we are putting in more capacity, and that takes time as well.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_197">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_263">The EPA wants to double-check-----</p>
+        </speech>
+        <speech by="#" eId="spk_198">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_264">It sets the standards that the plant has to operate to. If we could get agreement on a standardised output from the plant, for example, to say that if it is below this size, it is X, Y and Z-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_199">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_265">An agreement from the EPA would be where-----</p>
+        </speech>
+        <speech by="#" eId="spk_200">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_266">Through regulation, yes.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_201">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_267">This is my final question. Deputy Tóibín touched around environmental resiliency in terms of climate, water supply during warmer weather and things like that. I would love to hear a bit more about that. It is one of those issues where people always say, "No hosepipe ban in Ireland". We always hear that remark. What are the challenges around that? What can be done to make it more resilient as we face into warmer weather?</p>
+        </speech>
+        <speech by="#" eId="spk_202">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_268">We are seeing the impacts of climate change at the moment. I think it was Storm Bert when a treatment plant flooded in Kerry, and the river beat the old record by 800 mm, which was absolutely unheard of. We are working closely with Dr. Conor Murphy in Maynooth and we are working closely with the European studies on climate change. What it says for Ireland is it will be wetter in the winter and drier in the summer. It will be wetter in the west and drier in the east. There will be a chance of river and coastal flooding. The other thing, which is of significant concern to us, is that the same amount of rain will fall, but the intensity of the rainfall will be much greater.</p>
+          <p eId="para_269">I forgot which Deputy mentioned it. Our supplies are run of river. A total of 85% of our water comes from run of river. If the same amount of rain falls in a lesser time, it will run off the land into the rivers and out to sea before it has time to reach the groundwater. During the summer, a lot of the rivers in Ireland are supplied by groundwater. We are seeing future challenges in supplying communities in mountainous areas like Kerry, Wicklow and parts of Mayo and Donegal with water. </p>
+          <p eId="para_270"> The corollary of that is we also expect the environment to take our treated wastewater. As part of that, we must have assimilative capacity in those rivers. If the rivers are running very low because of climate change and we are discharging the same amount of treated effluent into the river, it could end up polluting the river or killing some of the wildlife or else we have to adapt or adjust the treatment plant to produce a higher standard effluent so that is more money. Yes, it is coming. </p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_203">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_271">Mr. Laffey is talking about the treatment plant having a higher standard of wastewater coming out of it. Is that the only mitigation or are there other mitigations that could be put in place? </p>
+        </speech>
+        <speech by="#" eId="spk_204">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_272">I mentioned the water supply project from the Shannon. It is a climate resilience project. If we can take water from the Shannon, ultimately, it will be 300 Ml, which is about 4% of the average flow in the Shannon. To put that in context, during a flood event, one might get 1,400 cu. m per second going down over the dam so we are looking to take three. We will be borrowing that three from the ESB. The ESB can push 100 cu. m per second through the turbines in Ardnacrusha so when we are abstracting, it will be pushing 97. That is going to be the deal. We will take those 300 Ml across the country and supply various communities along the way. A total of 200 Ml will be for the greater Dublin area while 100 Ml will be for places like Mullingar, Tullamore, etc. This will give us a truly climate-resilient water treatment system - a spine running across the country. Regarding the other significant advantage, at the moment, Dublin is like a black hole for water. We push water into Dublin from Srowland in Athy, the wellfields in Monasterevin, Staleen and Cavan Hill. Once that supply lands from the Shannon, we can turn those plants around so Staleen and Cavan Hill will guarantee a climate-proof supply for Drogheda and Dundalk. Vartry will push it down to places like Dunlavin, etc. Srowland might be used to supply Carlow or back up towards Portlaoise.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_205">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_273">I will go back to the issue of funding and the delivery of housing. Could the witnesses could contrast the level of engagement Uisce Éireann has had with the infrastructure unit of the Department of Public Expenditure, Infrastructure, Public Services, Reform and Digitalisation with its level of engagement with the Department of Housing, Local Government and Heritage? </p>
+        </speech>
+        <speech by="#" eId="spk_206">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_274">The Department of Housing, Local Government and Heritage is the Department to which we report so we would engage directly with it on our overall funding so we would have regular engagement with it. We have seconded one person to the strategic infrastructure group in the Department of Public Expenditure, Infrastructure, Public Services, Reform and Digitalisation. This person is working there full time. I met one time with the other chief executives in the task force and some other members of the task force. I had probably two meetings on that one. We have nominated someone for the housing activation office but we have not engaged fully with it but we do engage with our Department quite regularly.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_207">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_275">Does Mr. Gleeson think that if the housing activation office was underpinned by legislation, it would make it easier to deliver this critical strategic infrastructure? </p>
+        </speech>
+        <speech by="#" eId="spk_208">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_276">The group from the Department of Public Expenditure, Infrastructure, Public Services, Reform and Digitalisation is looking after critical infrastructure such as the water supply project, the greater Dublin drainage project and Metro North so it is looking at the bigger projects. The housing activation office has more to do with the 48 settlements we are looking at, where we invest our ESB, whether it has capacity and whether we have capacity. Somebody is putting all that information together. This is how I see the distinction between the two. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_209">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_277">Does Mr. Gleeson think the housing activation office needs to be underpinned by legislation? </p>
+        </speech>
+        <speech by="#" eId="spk_210">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_278">I would not have any particular views on that. Legislation is there. We are looking at servicing housing across the country. Since it can take between seven and ten years to upgrade or build a new treatment plant, we are going to where we have existing capacity because this is a crisis right now. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_211">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_279">So Irish Water is looking for exemptions for-----</p>
+        </speech>
+        <speech by="#" eId="spk_212">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_280">No, the point I am making is I need somebody centrally telling me today that in seven years time, I need capacity with the following settlements so we need to spend. It should be telling the ESB, TII and the Department of Education and Youth. I know local authorities are the planning authorities for their functional areas and I know we have a national planning framework but if there was a mandate or policy handed down to all the public utilities to say where we are going to go in the next seven years, it would help. At the moment, if we have capacity somewhere where people want to build houses, that is not by design. It is because we had a compliance issue at that location at some point in time. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_213">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_281">What parts of the new Planning and Development Act should be front loaded or commenced first in order to make it easier for Uisce Éireann to get this strategic infrastructure delivered? I am looking at the greater Dublin drainage project, which has been dripping around for the best part of seven or eight years. I am looking at the pipeline that is supposed to come from Shannon. What aspects of this mammoth Act need to be commenced first? What learnings has Uisce Éireann taken from the length of time the greater Dublin drainage project has been in planning and what would it do if it was to do that again? What things would it not do that it did when it went through each stage of the greater Dublin drainage project?</p>
+        </speech>
+        <speech by="#" eId="spk_214">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_282">Ms O'Dwyer has already said this. One needs to look at the planning piece in context. We have environmental legislation, environmental licensing, the planning system and what I call private land matters, which are CPOs, wayleaves, etc. We then have public procurement. This all adds to time. If the Deputy was to ask me about the complex regime within which we sit, if we could have concurrent consenting where one set of documents goes in, there is someone from the EPA, someone from planning and someone from the foreshore licence unit or MARA if required and they make a combined decision rather than us going sequentially from place to place and potentially reworking the same information to different formats because the EPA likes it one way, and I am not picking on the EPA, because it likes it presented in a different way to that favoured by the planning authorities, it would be very good. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_215">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_283">So essentially it would be a one-stop-shop to get critical infrastructure. </p>
+        </speech>
+        <speech by="#" eId="spk_216">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_284">For critical infrastructure, yes. Second, I believe that if there was a policy of the common good-----</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_217">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_285">I agree with Mr. Laffey. </p>
+        </speech>
+        <speech by="#" eId="spk_218">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_286">-----where if it goes to An Bord Pleanála, it does not get stacked up where it lands and make its way through in time. This is something that enable houses, hospitals, etc. </p>
+        </speech>
+        <speech by="#" eId="spk_219">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_287">We think projects of national importance should get priority within State agencies.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_220">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_288">If the greater Dublin drainage project continues to crawl along the bottom of the system, which is my interpretation of it, what happens if that is not delivered in the next decade? Where does that leave Dublin?</p>
+        </speech>
+        <speech by="#" eId="spk_221">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_289">We have a number of interim projects we are hoping to bring through that will give us more time before the Ringsend wastewater treatment plant reaches capacity. We are looking at taking out surface water. There is a lot of surface water-----</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_222">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_290">When will Ringsend reach capacity?</p>
+        </speech>
+        <speech by="#" eId="spk_223">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_291">With current growth rates in Dublin, we are probably talking about sometime around 2028. We drain about four Phoenix Parks' worth of surface water into our networks every time it rains so we have a way of taking those out. We are looking at doing a bit of extra work in Ringsend perhaps to give us more resilience in there.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_224">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_292">So Ringsend is less than three years away from reaching capacity. </p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_293">We have plans to eke a bit more out of it. There will come a point where either we cannot treat to the required standards or we just stop connections.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_226">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_294">Regarding the review of the NDP, how confident is Uisce Éireann that it will get the funding it needs from Government? Is there a firm commitment?</p>
+        </speech>
+        <speech by="#" eId="spk_227">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_295">There is no firm commitment. We have had good soundings. Everybody - rail, transport, schools and hospitals - has a big ask in there so it is up to us to-----</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_228">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:00:00+01:00"/></from>
+          <p eId="para_296">Surely we cannot have the rail and transport-----</p>
+        </speech>
+        <speech by="#" eId="spk_229">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_297">That would be our argument and has been understood. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_230">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_298">What discussions has Uisce Éireann had about the Apple escrow funding? This is something often mentioned by the Government as funding for critical infrastructure. Is there talk of that coming in addition to what is in the NDP review or is it all wrapped up together?</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_299">To be honest, I am not sure. We just go in with a financial request. Where the money comes from is more to do with the Department of Finance and the Department of public expenditure. I do not believe that money is being considered to top up the €12 billion we are requesting. That is my understanding. I believe it will be used as part of the overall NDP ask. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_232">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_300">The idea of standardised wastewater treatment plants was mentioned. That is a good idea and makes a great deal of sense that there would be a common fit like you have in supermarket construction, although that might be oversimplifying it. What level of engagement or discussion has Uisce Éireann had with the Government on that?</p>
+        </speech>
+        <speech by="#" eId="spk_233">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_301">It is one of the matters we have discussed with our parent Department and the Government. It is one of the suggestions we are putting forward to try to create capacity faster. We will need to look at what emission limit values from the treatment plants we think we would have to work to and we have to get that agreed. We will also have to talk to our supply chain, which Ms O'Dwyer manages, to see if it would be prepared to step up and start manufacturing these types of module and so on. It is in its infancy.</p>
+          <p eId="para_302"> We must also come up with our own standardised design. The good thing about these standardised designs is that, if a developer wants to put in its own wastewater treatment plant, puts one of our standard units in and gets a good water body to discharge to, we would certainly be open to taking that wastewater treatment plant directly into public ownership. We would not have the legacy of DPIs we have at present.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_234">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_303">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_235">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_304">One of the key places we are coming from is that time is one of our biggest challenges. It takes us a long time to get the required statutory consents. We have already done a lot to standardise the work we do. It is about trying to take that approach back into the consenting processes further. These are just ideas we have come up with sitting and talking with our own team. We know that other utilities are doing this as well. We are all trying to work together to see how we can do better.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_236">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_305">I thank the witnesses for attending. I am the last person to ask questions today. Many of those I wanted to ask have already been asked, so I will try to go through the ones I have left. I hope I will not repeat questions that have been asked already.</p>
+          <p eId="para_306"> Capacity issues were mentioned in terms of various towns and villages across the country. If we look at what is happening in my own county of Offaly at places like Burr and Banagher, there is not a huge amount of capacity left. In Edenderry, which is the second largest town in the county, we have no capacity there. I have been told it will be 2029 before we will be able to have anything there off-site. In Tullamore, approximately 2,000 houses are being built or in the pipeline and will be finished within the next 18 to 24 months, which will leave the town's capacity very tight. What is happening in terms of capacity in those areas? It is not just in Offaly; we have these issues right across the country. Is there a solution so that we will not come to a dead end where houses will not be able to be built? Is there a temporary fix that can be used or can a temporary wastewater facility be installed? Tullamore has a water treatment plant with a PE of 35,000, which is much more than the population of the town, but we do not have the physical pipe infrastructure to take the waste from one side of the town to the other. It was described to me that it will cost X to sort out the problem on the north side and X plus - we do not know - to sort out the problem on the south side. What is Uisce Éireann doing for towns and villages across the country that are suffering like this and is there a temporary fix that could be implemented to keep the building of housing going?</p>
+        </speech>
+        <speech by="#" eId="spk_237">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_307">There are several projects in the plan for Tullamore and Burr but the Deputy must have the dates because he is calling out some of them. When we communicate those dates, they are probably based on our experience of the system as we understand it today, but much of that time is lost in the piece we do not have full control of. Once we hit site or construction, most of our projects are done within a year and half to three years. The challenge comes back to how we get to site faster. That is why we are back having this conversation and saying it is not just about getting more money, but about how to make the whole system more efficient.</p>
+          <p eId="para_308"> When it comes to the requests, we are clear on the outcomes we are trying to achieve. We are just one agent of the State but I am sure that, like us, all consenting authorities are prioritising the achievement of those outcomes. We can have a chat offline about some of the particulars.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_238">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_309">There is a great deal of work being done within the Government to try to get people around the table in order to cut out bottlenecks and anything else that slows down the progress. We have to understand that housing is the number one infrastructure that needs to be delivered. Everything is being done within the Government to do that. The Government is listening to Uisce Éireann, providers and builders because, just like Uisce Éireann, builders must apply for planning permission. There are huge bottlenecks there. In business, if something is slowing us down or not making us money, whip it out. Obviously, that should be done without impacting on what happens in the future. We must ensure quality and that everything is done properly.</p>
+        </speech>
+        <speech by="#" eId="spk_239">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_310">That is one of our key requests. We delivering public infrastructure that other social infrastructure projects are dependent on. We are seeking for our projects to be prioritised because of others' dependencies on them.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_240">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_311">Are there temporary measures we can put in place? For instance, can builders put tanks in the ground for waste?</p>
+        </speech>
+        <speech by="#" eId="spk_241">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_312">What we are talking about there is looking at prefabbing off-site modules, getting them in faster, having the planning exemptions to do that and having standardised emission limit values so that we can manufacture these in the knowledge they will go in and do the job properly. All of these things are good and will speed matters up. They will drive down the price, which means we can do more of them and get more value for money.</p>
+          <p eId="para_313"> In the current revenue control period of 2025 to 2029, if we get the additional €2 billion, some €300 million of that will be for small towns and villages. We also have approximately €270 million in the RC3. We will be spending more than €500 million on small towns and villages. The faster we can move and the more we can drive prices down, the more bang for our buck we will get.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_242">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_314">This brings me back to value for money, which is very important to us as a Government but also to the public. We have seen situations where we did not get value for money. The fact that Uisce Éireann is looking for an extra €2 billion means it has more money in the coffers, but it will still only have the same number of suppliers or contractors doing the work for it. How will Uisce Éireann ensure that they will not up the price? We are talking about inflation and so on and we know what builders can be like. We saw what happened during the Celtic tiger era, which is probably a term we should not be using. How can we ensure we will get value for money for the public?</p>
+        </speech>
+        <speech by="#" eId="spk_243">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:10:00+01:00"/></from>
+          <p eId="para_315">Regarding Uisce Éireann delivering value for money for the State, it starts with the rigorous investment planning process, the prioritisation of our outcomes and the transparent monitoring we have in place. We have robust governance in place across all of what we do in the capital programme.</p>
+          <p eId="para_316"> When it comes to contracting and sourcing, to ensure compliance with our legal and governance requirements, we are very mindful of managing the risk and protecting Uisce Éireann and the taxpayers' money. However, we seek the most cost-effective, technical and feasible solutions depending on what we are doing. We have a contract strategy in place that is set up for ourselves as a national utility and we adapt different procurement approaches depending on what we are doing, be it the value, time, complexity, capability of the contractors or the work we are doing.</p>
+          <p eId="para_317"> We have established a large number of frameworks.</p>
+          <p eId="para_318">We probably have access to 50 different suppliers through those. We go to the market to test tenders periodically. This is to ensure that we are still getting value through those. Large complex jobs go out subject to EU procurement rules and very much adopt a MEAT process, which is the most economically advantageous tender approach. It is often the quality as much as the value. In general, when we look at our supply chain, we do an amount of early contractor involvement that is open book. We do not believe our contractors are making significant margins. It is middle-single digits. We are very conscious that it is important for us that those in our supply chain are able to invest in their people and plant and that it is important that they can grow for the future as well. We are going to need them if we are to overcome the infrastructure challenges we have here today.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_244">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_319">Contractors will say they are making single-digit profits but sometimes it is probably a bit more than that in real terms. We will not get into that. Big salaries and so on.</p>
+          <p eId="para_320"> The project to take water from Parteen as far as Dublin is huge and very much needed. My ask is about the spurs relating to Tullamore and Mullingar. Uisce Éireann mentioned Mullingar. It is absolutely ludicrous not to do that in the first phase. We should make sure it is done. Leaving it to a later phase means it may not happen for 20 years. We know the way things work out. In light of the problems it is having in Mullingar, Uisce Éireann has said it needs that spur. This means it will have to happen. Going back to value for money, it would be cheaper to get it done now than in ten or 20 years’ time. It will also provide growth for the midlands such that the towns there can grow, the people who live there will be able to get jobs and all the necessary infrastructure can be built.</p>
+          <p eId="para_321"> I have been told the consultation process needs to be a bit better. Also, the area comprising south Offaly and north Tipperary is a hotbed for TB. That will have to be looked at. What other plans does Uisce Éireann have to look after the wildlife when this project is going on?</p>
+        </speech>
+        <speech by="#" eId="spk_245">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_322">We endeavour, across many of our capital programmes, to achieve a net biodiversity gain. That is a key priority for us. We want to be able to leave the environment better than we find it. We want to be able to work with the local community. We have had great engagement, to be fair, from the majority of the farmers along the route. There are 500 different landowners along it. We have had access to 90% of their lands for site investigations. Our land liaison team has been in close engagement with them all. We are hoping to get agreement with the farming bodies in order that we can issue wayleave packages to access the land there.</p>
+          <p eId="para_323"> We are aware that there are issues with TB. That matter is in the news, and the Department of agriculture is working on it. We will support that work, but we would see it very much as being led by the Department. We will work with the farmers wherever we can.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_246">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_324">The reasons for the issues with TB is because of moving soil and badgers’ dens. Badgers that have TB move around. When they do so, the disease spreads. That is what is happening. We have experienced this a lot with, for example, the installation of the greenways. In the 12 months after a greenway is installed, people in the relevant area would have had problems with TB. It will be the same with this project.</p>
+          <p eId="para_325"> I have no more questions, but I wish Uisce Éireann well. This is going to be a major piece of infrastructure for the country. Much work needs be done. As the witnesses said, it will have to be done very quickly. We are here to help Uisce Éireann in any way we can, and we will be pushing in Government to try to remove the bottlenecks or anything else that is slowing the process down. We realise that we need a well-functioning Uisce Éireann to provide the water for the houses we need to build during the lifetime of this Government.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_247">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_326">I thank the witnesses for coming in. I have some questions about some high-level matters and then some more that are more local in nature. There is a theme, and this may go back to the article in <i>The Irish Times. </i>Does Uisce Éireann have confidence in the planning and courts systems in the context of how it feels it will be able to deliver these projects? Ultimately, it is with these systems that we often see many delays.</p>
+        </speech>
+        <speech by="#" eId="spk_248">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_327">We do about 60 planning applications a year. Probably 50 go through without too many issues. We do a lot of small pumping stations and treatment plants. When it comes to the bigger ones, no one wants a wastewater treatment plant. Everyone wants it in their town, but nobody wants it near their house. As a result, they tend to be contentious. It is those tricky ones that we are struggling with. We have the planning and consultation processes, and we do engage very closely with communities to get things done.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_249">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_328">Is it that it is working okay for the local authorities but that it gets bogged down with An Bord Pleanála and the courts?</p>
+        </speech>
+        <speech by="#" eId="spk_250">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_329">I do not have the most up-to-date figures, but I pulled some from last year. Uisce Éireann has had something like 500 planning applications since we started. Of those, five resulted in refusals. We have a good track record of working with the planning system, as Mr. Gleeson said.</p>
+        </speech>
+        <speech by="#" eId="spk_251">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_330">With the local authorities, it is pretty good.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_252">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_331">That is the point I am getting at. Is there a problem with An Bord Pleanála and the courts? That is where I have often seen problems.</p>
+        </speech>
+        <speech by="#" eId="spk_253">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_332">We have had a particular challenge with the greater Dublin drainage project because of its impact. That is the challenge. That is why we say that in future, the outcome or the impact of a project needs to be to the fore when deciding what work should be prioritised.</p>
+        </speech>
+        <speech by="#" eId="spk_254">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_333">The example I gave is that we have just delivered a wastewater treatment plant in Arklow. It is state of the art. There is a population of 35,000 in Arklow. That project received planning permission in 2019 following a public consultation process and after years of trying to get the right site. Eventually, we did agree on a site. We got planning permission through An Bord Pleanála. There was no challenge. We built and delivered that in the past five years. In the same year, we got planning permission for the greater Dublin drainage project but that was challenged in the courts. The matter has gone from the courts back to An Bord Pleanála. We had to go back to MARA to supply additional information. With the judicial review, there were, I think, 18 challenges. Only one was upheld. It was a communications issue between An Bord Pleanála and the EPA - it was nothing we could have influenced – but that has held us up by six years. My challenge is the randomness of that in the context of one project getting through while another does not. We need to take the randomness out of the planning system and the consent system in order that we will know that it will take four or five years to get planning permission. If we knew that, we could plan and organise much better. That does not only apply to the public sector bodies; it also applies to the private sector. We really need to get certainty around the planning and consent processes.</p>
+        </speech>
+        <speech by="#" eId="spk_255">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_334">I mentioned previously the benefit of a common good policy where our application to An Bord Pleanála is dealt with straight away and if we go to the courts, it is also dealt with straight away. We, the utilities, are the bedrock of society; we provide all the services that everything else builds off.</p>
+          <p eId="para_335"> In the context of the courts, many of the cases taken are ostensibly about the process but they often reopen arguments that were settled by the competent authorities. The environmental stuff should be dealt with by the EPA. The planning impacts, etc., should be dealt with by An Bord Pleanála or the relevant local authority. It is a matter of things being dealt with in a timely fashion. I have no issue with people taking a judicial review. It is a very important safeguard----- </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_256">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_336">Many more people are taking them now than was-----</p>
+        </speech>
+        <speech by="#" eId="spk_257">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_337">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_258">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:20:00+01:00"/></from>
+          <p eId="para_338">That is the problem. That will pose a risk if it continues to grow exponentially across all development. That goes for developers or anyone trying to do anything. People are seeking judicial reviews. That is what I was wondering about. </p>
+          <p eId="para_339"> I have some local issues. Deputy Brophy asked me to raise an issue relating to Dargle Wood estate in Knocklyon - this sounds very much like some of the issues relating to my constituency – and the fact that there have been 20 disruptions there over the past three. Will the witnesses come back to me on what it plans to do in respect of that specific case? </p>
+          <p eId="para_340"> An issue that developers have is delays involving Irish Water. Is there work ongoing among Irish Water’s teams on things like pre-connection agreements, getting these fulfilled and deadlines?</p>
+        </speech>
+        <speech by="#" eId="spk_259">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_341">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_260">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_342">Is there not a 16-week deadline?</p>
+        </speech>
+        <speech by="#" eId="spk_261">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_343">Yes, that is correct.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_262">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_344">Even on the other side, there are delays in connections. This is so important.</p>
+        </speech>
+        <speech by="#" eId="spk_263">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_345">To be fair, we can have challenges from time to time but I believe the Deputy will find the connections team is very open. The managers will usually have shared out their contacts, and if there is someone stuck we advise reaching out in case there is a communications issue.</p>
+        </speech>
+        <speech by="#" eId="spk_264">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_346">Sometimes we can be the problem, so we are examining and trying to streamline processes to have a faster turnaround. Last year, we faced a challenge with the refunds process because that added an extra layer of administration, I suppose. We received many more applications because people wanted to get into the refunds system. The many applications last year caught us off guard a little. We have ramped up our staffing level on the connection and developer services side, so we should catch up on the backlog in the next few months. Then we should be able to get below a 16-week timeline.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_265">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_347">I thank the delegates for their time and the Chair for his forbearance. Wearing the hat of a former councillor, it has been nice to ask questions to the CEO and senior management team. It has been good but also important for me, as a TD, to ask the questions. As the other members will state, we are asking the questions on behalf of the people we represent, who ultimately comprise the taxpayer.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_266">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_348">I have a few very quick questions.</p>
+          <p eId="para_349"> Reference was made to what would occur if Uisce Éireann got a planning exemption for schemes for some of the small towns and villages. How much time would that shave off a project? If Uisce Éireann had a exemption and brought in a pre-approved modular, standardised unit, how much time would it shave off a project in practical terms? </p>
+        </speech>
+        <speech by="#" eId="spk_267">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_350">I am not hedging my bets here, but it depends. If we go to a local authority, it has to seek further information or give planning permission within five weeks. It could go straight through, but if there were a judicial review, it could take two years.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_268">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_351">But if Uisce Éireann got its exemption, it would knock off, say, two or three months. Reference was made to what would occur if some planning exemptions were got.</p>
+        </speech>
+        <speech by="#" eId="spk_269">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_352">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_270">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_353">We are very successful today in using the planning exemptions we have but there are some limitations to them, and that is where we would like to see them expanded.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_271">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_354">From 10% capacity to 25%.</p>
+        </speech>
+        <speech by="#" eId="spk_272">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_355">For example.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_273">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_356">Are the witnesses working on that through their Department?</p>
+        </speech>
+        <speech by="#" eId="spk_274">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_357">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_275">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_358">To explain it very simply and perhaps to draw an example from another industry, where there is new technology available we would like to be able to retrofit a plant if we can. A plant may already exist in a community and may already be serving the agglomeration, but if there are a small tweaks or upgrades that we could make, we would like to make them.</p>
+        </speech>
+        <speech by="#" eId="spk_276">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_359">If you drive by a plant we upgrade, you will not see any difference. It is not like we would be building a 20 m stack.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_277">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_360">My last question is on existing villages that do not have a public water supply. Let us say there are 20 houses in a village. What is the delegates' answer for them? I think I got an answer from Irish Water in recent correspondence that stated households should set up a group water scheme.</p>
+        </speech>
+        <speech by="#" eId="spk_278">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_361">Do they have no water or wastewater?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_279">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_362">They all have wells.</p>
+        </speech>
+        <speech by="#" eId="spk_280">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_363">Is it a wastewater issue? </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_281">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_364">Yes, but they want a public supply. </p>
+        </speech>
+        <speech by="#" eId="spk_282">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_365">So they want a public supply?</p>
+        </speech>
+        <speech by="#" eId="spk_283">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_366">A public water supply.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_284">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_367">Yes. What is Uisce Éireann's answer to that?</p>
+        </speech>
+        <speech by="#" eId="spk_285">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_368">There are probably two ways to go about it. If we extend our network to bring in the 20 houses, they, under the current connection policy, will bear the cost of that.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_286">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_369">Which would be phenomenal.</p>
+        </speech>
+        <speech by="#" eId="spk_287">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_370">Yes, it would be pricey. If the households opted for the group water scheme through the rural water section of the local authority, they would get the rural water grants, etc. The agreement we have is that there will be one collection made to our network and we would take the new network into public charge straight away.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_288">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_371">So that is the situation for houses. Are there many group water schemes with connections?</p>
+        </speech>
+        <speech by="#" eId="spk_289">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_372">There are probably 700 or 800 schemes. We have taken in over 200 of them. We are in the process of taking in orphan schemes, etc. We have a memorandum of understanding with the local authorities on how this should be done. Once all the criteria are met, we officially take on a scheme and maintain it at public expense.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_290">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_373">The delegates said at one stage that they do not have a growth mandate. What does that mean? </p>
+        </speech>
+        <speech by="#" eId="spk_291">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_374">The main drivers we have are public health and environmental compliance.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_292">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_375">Rather than the supply of water-----</p>
+        </speech>
+        <speech by="#" eId="spk_293">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_376">Rather than growth.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_294">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_377">Quality before quantity. </p>
+        </speech>
+        <speech by="#" eId="spk_295">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_378">Exactly. </p>
+        </speech>
+        <speech by="#" eId="spk_296">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_379">If a town does not have an issue with its water or wastewater treatment plants, and if everything is fine and the existing community is getting its water and getting its wastewater taken away, we do not go into that town. We would be looking to towns with problems, such as environmental issues or THMs in the water. We fix the problems before we go into areas that need growth projects. We have asked for the €2 billion to be ring-fenced for growth projects, so we will go into a town where somebody wants to build 5,000 houses-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_297">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_380">In other words, it is not that Uisce Éireann does not have the mandate but that it does not have the funds.</p>
+        </speech>
+        <speech by="#" eId="spk_298">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_381">Yes. Well, we need-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_299">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_382">That is what is confusing. It was said that Uisce Éireann does not have a growth mandate, but then Mr. Gleeson said the €2 billion will help-----</p>
+        </speech>
+        <speech by="#" eId="spk_300">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_383">The reason we use the word "mandate" is that we need to talk to the EPA and other bodies to state that, rather than focusing on fixing everything, we will do a little bit of growth work as well, and that we will fix a lot-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_301">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_384">Is it for the regulator or the EPA to decide?</p>
+        </speech>
+        <speech by="#" eId="spk_302">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_385">It is probably for the State to talk to the regulators.</p>
+        </speech>
+        <speech by="#" eId="spk_303">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_386">This relates to our investment prioritisation. We have significant challenges with the legacy asset base, and it is in this regard that we have to make hard decisions at times on what we prioritise and say may have to wait.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_304">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_387">If I picked things up right earlier, the documentation indicated that capital investment from 2020 to 2024 was about €5 billion, or about a billion euro per year. Ms O'Dwyer is now saying the investment from 2025 to 2029 will be €10 billion or €12 billion. Did she mention a figure of €40 billion for the period 2030 to 2050?</p>
+        </speech>
+        <speech by="#" eId="spk_305">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_388">We would have advised the Department that fixing the known needs we are aware of would cost another €55 billion to €60 billion out as far as 2050.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_306">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_389">Over and above the €10 billion?</p>
+        </speech>
+        <speech by="#" eId="spk_307">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_390">That would include the €10 billion, I suppose. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_308">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_391">So it would be another €40 billion. If that means €40 billion over the next 20 years, it means only €2 billion per year.</p>
+        </speech>
+        <speech by="#" eId="spk_309">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_392">That is in 2022 money, based on known standards, but standards are changing and rising. The figure was just to give the Department a sense of the scale of the asset we are dealing with.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_310">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_393">Is there a ballpark figure for the water supply project for the eastern and midlands region?</p>
+        </speech>
+        <speech by="#" eId="spk_311">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_394">We are still very clear on it in that we have advised-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_312">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_395">By the time there is water-----</p>
+        </speech>
+        <speech by="#" eId="spk_313">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_396">When we got Government approval last year, we were saying €4.6 billion to €5.9 billion. We have revised the estimate and are still very confident we can hold the budget range we advised. We are comfortable in the sense that, in determining the figure, we looked a number of different scenarios and contingencies. That indicates the robustness of our investment planning. We are happy at the moment to hold the range mentioned.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_314">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_397">On the last point, when does Uisce Éireann hope the project will be completed?</p>
+        </speech>
+        <speech by="#" eId="spk_315">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_398">We are saying it involves a build of four to five years, so the sooner we can actually-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_316">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_399">But Uisce Éireann is a long way from that stage. </p>
+        </speech>
+        <speech by="#" eId="spk_317">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_400">We probably have what we call a happy plan, an accelerated investment programme, such that if we get our planning application in at the end of this year, we will have it delivered by 2032. That assumes a good path through the consenting process we have to engage in.</p>
+        </speech>
+        <speech by="#" eId="spk_318">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_401">Assuming there are no judicial reviews and that we do not end up-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_319">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_402">Assuming. </p>
+        </speech>
+        <speech by="#" eId="spk_320">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_403">Yes.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_321">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_404">The €4.9 billion is based on today's prices.</p>
+        </speech>
+        <speech by="#" eId="spk_322">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_405">It is €4.6 billion to €5.9 billion.</p>
+        </speech>
+        <speech by="#" eId="spk_323">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_406">The cost is from 2022.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_324">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_407">What?</p>
+        </speech>
+        <speech by="#" eId="spk_325">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_408">No, it is in today's money.</p>
+        </speech>
+        <speech by="#" eId="spk_326">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_409">Today's prices.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_327">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_410">I was giving the outer figure, given what will be the case in 2032. In this regard, I have a suggestion for Uisce Éireann that I have made to other bodies. There are probably estimates of increasing costs expected over the next five to ten years. If, somewhere along the line, Uisce Éireann refers to the actual financial cost at completion, people will not get frightened, but they will get very cross if they are told today that the cost will be €4.9 billion but discover it will have ended up at €8.7 billion. Do the delegates get the point I am making? Sometimes you are better stating honestly what the cost will have been after completion rather than saying that if there are no rising costs and inflation, and if everything else remains the same, the cost will be €4.9 billion. That is not a real price; it is a current price.</p>
+        </speech>
+        <speech by="#" eId="spk_328">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_411">We have also advised on an outer range, which would involve a P95 cost under reference-class forecasting. That would be higher again. We are being very transparent with the Department on-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_329">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_412">What would €4.9 billion be according to that forecasted range of increasing costs?</p>
+        </speech>
+        <speech by="#" eId="spk_330">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_413">We would like to say-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_331">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_414">Could we be sent a note on it?</p>
+        </speech>
+        <speech by="#" eId="spk_332">
+          <from> Mr. Seán Laffey<recordedTime time="2025-05-28T17:30:00+01:00"/></from>
+          <p eId="para_415">We will send the committee a note.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_333">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_416">It is just an assumption.</p>
+        </speech>
+        <speech by="#" eId="spk_334">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_417">The outer figure is if we were to deliver the project in the 2040s as opposed to 2032. That is why there is a very high figure.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_335">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_418">We will get about a note on the expected delivery because-----</p>
+        </speech>
+        <speech by="#" eId="spk_336">
+          <from> Mr. Niall Gleeson<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_419">It would be better to send the committee the figures.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_337">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_420">----- there is no one right answer.</p>
+        </speech>
+        <speech by="#" eId="spk_338">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_421">The key thing is the sooner we can actually get to site with these projects-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_339">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_422">Where we are approaching this from is we have seen other major projects and the final cost after eight years is more than double what people were told it would be in the beginning. That is what makes them cross. People are told it will cost X, but it ends up costing Y. If they were told the final estimated cost based on the final estimated price at the end of the contract, they might take a deep breath on day one-----</p>
+        </speech>
+        <speech by="#" eId="spk_340">
+          <from> Ms Maria O'Dwyer<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_423">We can share that with the committee. We have done all of that analysis already.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_341">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T17:40:00+01:00"/></from>
+          <p eId="para_424">The witnesses know where I am coming from. That is what makes the public cross, when they hear things have gone crazily over budget, whereas if the final cost by the time of completion could be explained, at least there would not be that level of argument. Everybody is well aware of what we are talking about when we say things such as that.</p>
+          <p eId="para_425"> We have completed our business for today. I have no doubt that we will be talking to the representatives of Uisce Éireann again over the period of our work. We look forward to receiving a record of the information Uisce Éireann said it would send on to us.</p>
+          <p eId="para_426"> There being no other matters, we will stand adjourned until 11 June 2025, when the committee will meet in public session with Transport Infrastructure Ireland, the National Transport Authority and officials from the Department of Transport.</p>
+        </speech>
+        <summary eId="sum_15"> The joint committee adjourned at 5.41 p.m. until 3.30 p.m. on Wednesday, 11 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

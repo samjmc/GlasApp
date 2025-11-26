@@ -1,0 +1,886 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-05-20/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-05-20/debate"/>
+          <FRBRdate date="2025-05-20" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_housing_local_government_and_heritage"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-05-20/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-05-20/debate/mul@"/>
+          <FRBRdate date="2025-05-20" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-05-20/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-05-20/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-23" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AubreyMcCarthy" href="/ie/oireachtas/member/id/Aubrey-McCarthy.S.2025-01-29" showAs="Aubrey McCarthy"/>
+        <TLCPerson eId="BrianStanley" href="/ie/oireachtas/member/id/Brian-Stanley.D.2011-03-09" showAs="Brian Stanley"/>
+        <TLCPerson eId="CathalByrne" href="/ie/oireachtas/member/id/Cathal-Byrne.S.2025-01-29" showAs="Cathal Byrne"/>
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="EoinOBroin" href="/ie/oireachtas/member/id/Eoin-Ó-Broin.D.2016-10-03" showAs="Eoin Ó Broin"/>
+        <TLCPerson eId="GeorgeLawlor" href="/ie/oireachtas/member/id/George-Lawlor.D.2024-11-29" showAs="George Lawlor"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="PaulaButterly" href="/ie/oireachtas/member/id/Paula-Butterly.D.2024-11-29" showAs="Paula Butterly"/>
+        <TLCPerson eId="PJMurphy" href="/ie/oireachtas/member/id/PJ-Murphy.S.2025-01-29" showAs="PJ Murphy"/>
+        <TLCPerson eId="RoryHearne" href="/ie/oireachtas/member/id/Rory-Hearne.D.2024-11-29" showAs="Rory Hearne"/>
+        <TLCPerson eId="SeamusMcGrath" href="/ie/oireachtas/member/id/Séamus-McGrath.D.2024-11-29" showAs="Séamus McGrath"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM THITHÍOCHT, RIALTAS ÁITIÚIL AGUS OIDHREACHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Housing, Local Government and Heritage</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-20">Dé Máirt, 20 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-20">Tuesday, 20 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#PaulaButterly">Paula Butterly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#AubreyMcCarthy">Aubrey McCarthy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PJMurphy">P. J. Murphy.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#RoryHearne">Rory Hearne</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SeamusMcGrath">Séamus McGrath</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#EoinOBroin">Eoin Ó Broin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#BrianStanley">Brian Stanley*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Richard Boyd Barrett.</summary>
+          <summary eId="sum_5">I láthair / In attendance: Deputies George Lawlor and Conor Sheehan and Senator Cathal Byrne.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#MichealCarrigy">Teachta / Deputy Micheál Carrigy sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Election of Leas-Chathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></heading>
+        <speech by="#MichealCarrigy" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_11">Good afternoon everyone and welcome to the first public meeting of the Oireachtas Joint Committee on Housing, Local Government and Heritage. We have received apologies from Deputy Thomas Gould and Senator Maria McCormack.</p>
+          <p eId="para_12"> I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. Following the first meeting of the joint committee, we received one nomination for the position of Leas-Chathaoirleach, which was for Deputy Séamus McGrath.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_2">
+          <from>Deputy Rory Hearne<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_13">My apologies but due to some confusion about the time, I submitted my name after the scheduled time. I do not know if I can be considered.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_14">At the end of the previous meeting, members agreed a closing time. We need to start our work in the vein that what we agree is agreed. I am not open to departing from that straightaway. Members agreed a closing time for nominations and we should stick with that. Do members wish to make a comment?</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_4">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_15">It is a poisoned chalice. Deputy Hearne has dodged a bullet.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_16">I will put the question that Deputy Séamus McGrath be elected Leas-Chathaoirleach of the Joint Committee on Housing, Local Government and Heritage. Is that agreed? Agreed. I declare Deputy Séamus McGrath has been elected Leas-Chathaoirleach and congratulate him on taking up the role.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_6">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_17">There will be two members chairing the session and there are only two of us here. Everybody else has gone home.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_18">Deputy McGrath may wish to say a few words. The Leas-Chathaoirleach takes an oath but it must be done when he assumes the Chair at some stage.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_8">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_19">That is no problem. I am delighted to have been elected as Vice Chair of this important committee. I look forward to working with the Chairperson and all the members. We all recognise that while this is a broad committee, housing is the number one issue for it and the Government. I want to work with everyone in a fair and balanced way to try to make progress on these issues. I will leave it at that for now. I thank members for their support.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_20">I thank Deputy McGrath. Do any other members wish to make a comment? No.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-20T15:10:00+01:00"/></heading>
+        <speech by="#MichealCarrigy" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:10:00+01:00"/></from>
+          <p eId="para_21">We will now hear from our first witnesses to the committee, who will give their insights into the challenges facing the delivery of housing. I invite the representatives of the County and City Management Association, CCMA, to come in but before I introduce them, I will say a few words I did not get to say at our first meeting. I am delighted and honoured to have been appointed Cathaoirleach of the Joint Committee on Housing, Local Government and Heritage for the term of the 34th Dáil and 27th Seanad. The remit of the committee covers one of the most acutely important issues for our country at this moment, namely, housing. While I appreciate the remit of the committee is wider than housing and we need balance, we are in a housing crisis and there needs to be significant focus on housing for the term ahead and for as long as required.</p>
+          <p eId="para_22"> I welcome members of the committee. We have a lot of work to do and working together, we can make positive changes. I welcome new members of the committee and, in particular, Deputies Gould and Ó Broin who sat on this committee in the previous term. I commend them on their work and individual contributions on the committee. I also recognise the work of previous committees.</p>
+          <p eId="para_23"> Housing is an emergency. As we start our work today, it is imperative we acknowledge that simple reality. It is an emergency for those seeking a roof over their heads. It is an emergency for families trying to buy their own home and start their own lives. Be it social housing, private housing, planning issues, infrastructure, homelessness or workers in construction, there is one big problem and there are issues in each area that we need to break down. It is an emergency for me, as Chair of the committee, and I know every member brings the same sense of urgency to the role today.</p>
+          <p eId="para_24"> I want us to work together to address the greatest societal and economic challenges our country and its people face. While we all hail from different political persuasions, we share a united purpose to resolve this issue once and for all. The scale of that challenge is immense. It is complex and diverse and requires every arm of the State to act, full stop. There is no lever too small or too big if it needs to be pulled. While we have numerous schemes in place, we must question if they are all working and, if not, whether people are being made accountable for that.</p>
+          <p eId="para_25"> Accelerating supply is now crucial. That means zoning more land for the provision of housing and much better co-ordinated access to the services - water, energy and roads - are needed to support the delivery of housing. It means breaking down barriers, co-ordination, zero tolerance for working in silos and having a viable development environment and a growing construction workforce. My priorities for our work programme will be productive. We will have constructive hearings with relevant experts and stakeholders to play our part in generating solutions in these key areas.</p>
+          <p eId="para_26"> I have listened, as we all have, to constituents detailing the impact this crisis has on every aspect of society. Whether it is a couple or single person living with their family when they save for a deposit or the renter whose bills are escalating consistently, this crisis is having real-life consequences for all and we should not shy away from those realities. I want us to work collaboratively and collectively to find solutions that ease this emergency for families across the country. I will work with anybody and everybody to generate solutions, which is what we all want and need.</p>
+          <p eId="para_27"> The Government will publish a new housing plan shortly. I want us to use the time until then to generate ideas and feed that information into a revised Housing for All strategy. Our work programme reflects the manner in which we conduct our business. We will want to hear from experts and make informed recommendations to the Government. We have the CCMA with us today. In the context of social housing, are the approval processes for local authorities too difficult? Are local authorities using the one-stage process when they can? Why can some local authorities deliver serviced sites and cost-rental housing, while others cannot? In the private area, why are the pillar banks we bailed out not providing finance for smaller developers to build housing?</p>
+          <p eId="para_28"> On planning objections and delays with An Bord Pleanála, as Michael Lohan from the IDA recently commented, we as citizens of the State need to reflect. There are many projects of national need that must get through the planning process. We must get to a point of collective progress as opposed to an individual's concern in the planning process. Just 100 years ago this month, the Dáil debated the legislation to set up Ardnacrusha. One fifth of the entire national budget was spent on the project. There was opposition to it but what was clear was a national interest which required investment and a willingness to make sacrifices. The public good thrived.</p>
+          <p eId="para_29">We have known for years that our water infrastructure is crumbling. Supply in Dublin is on a knife edge. After a few days of good weather recently, we are now talking about water shortages.</p>
+          <p eId="para_30"> I look forward to working with all members in a genuine spirit of partnership and co-operation, generating and sharing ideas through active engagement, capitalising on the best experience and knowledge we have here in this room. All of us here have a shared aim to address the many issues and challenges relating to housing, local government and heritage, and to improve - this is the most important reason we are here - the lives of those who live in our country.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Challenges Relating to the Delivery of Housing: County and City Management Association<recordedTime time="2025-05-20T15:20:00+01:00"/></heading>
+        <speech by="#MichealCarrigy" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:20:00+01:00"/></from>
+          <p eId="para_31">Ireland faces many challenges in respect of the delivery of housing. I am pleased we have the opportunity to consider this and other related matters with the following representatives from the County and City Management Association, CCMA: Mr. Eddie Taaffe, chief executive of Waterford County Council and chairperson of the CCMA housing committee; and Ms Elaine Leech, director of housing, social and community development in South Dublin County Council. They are very welcome. I thank them for giving of their time to come and be the first witnesses before the housing committee in the Thirty-fourth Dáil.</p>
+          <p eId="para_32"> Before we begin, I wish to explain some limitations to parliamentary privilege and the practice of the Houses with regard to references witnesses may make to another person in their evidence. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege. Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_33"> The opening statement has been circulated to members in advance. I now invite Mr. Taaffe to make his opening remarks.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:20:00+01:00"/></from>
+          <p eId="para_34">My name is Eddie Taaffe. I am chief executive of Wexford County Council and I chair of the County and City Management Association committee on housing. I am accompanied today by Ms Elaine Leech, director of services for South Dublin County Council. On behalf of the CCMA, I thank the committee for its invitation to contribute to discussions regarding the challenges facing the delivery of housing in Ireland.</p>
+          <p eId="para_35"> Local authorities are at the heart of housing provision in Ireland and while significant progress has been made, further co-ordinated support is essential to scale up delivery. Local authorities have delivered 24,000 social houses over the period of the current housing for all programme from 2022 to date. The new programme for Government sets out the clear ambition of delivering 12,000 new social homes each year through local authorities and approved housing bodies. This will therefore require a 50% increase in annual output. The scale of that is simply not feasible without urgent structural support.</p>
+          <p eId="para_36"> The CCMA strongly believes that achieving this scale of delivery requires co-ordinated action across several critical enablers. First, the availability and timely access to suitably zoned and serviced land is essential. Without the right land in the right locations, delivery timelines and targets are immediately at risk. Second, local authorities must be equipped with adequate staffing levels and access to the necessary skills, expertise and resources to manage the full project life cycle from design to procurement and through to completion. Third, effective and streamlined procurement and approval processes are required to ensure that projects can progress without unnecessary delay. Underlying all of this is the assumption that the necessary State funding is in place. This includes both the upfront capital needed to fund builds and the borrowing capacity to support cost-rental delivery which forms a vital part of the housing mix. Without sustained financial support, even the most well-designed plans cannot be fully realised.</p>
+          <p eId="para_37"> Delving into the key challenges in detail, the first one is infrastructure and serviced land. One of the most pressing barriers is the lack of servicing infrastructure. Local authorities have identified over 560 landbanks suitable for housing development with a capacity for about 21,500 social and affordable homes. However, 28% of these sites cannot proceed due to inadequate access to essential services, such as water, wastewater and electricity. Utility investment plans need to be fully aligned with local housing strategies. Uisce Éireann and the ESB must co-ordinate with local authorities to proactively service strategic growth areas. The CCMA believes that housing delivery must be backed by dedicated, ring-fenced infrastructure funding aligned with the investment strategies of key utility providers. Infrastructure and utilities must be delivered in tandem with housing to avoid bottlenecks and to unlock development-ready land and accelerated delivery timelines.</p>
+          <p eId="para_38"> The second key challenge is staffing and resourcing. The capacity of housing teams within local authorities is under severe stress. While responsibilities have expanded significantly across all functions, including allocations, estate management, homeless services, energy retrofits and support for vulnerable groups, staffing levels have not kept pace. The complexity of cases has also increased. Many applicants present with intersecting needs, such as mental health challenges, disability and language barriers. Without adequate staffing and specialised supports, our ability to respond effectively and compassionately is compromised. The CCMA in consultation with the Department has established a working group to assess current staffing models and identify what is needed for future delivery. Local authorities require increased staffing levels and sustainable funding for capital delivery teams. These teams are essential to driving programmes forward but they must be adequately resourced to manage the scale and complexity of delivery, particularly in light of new actions under the housing plan.</p>
+          <p eId="para_39"> The third key challenge is the delivery of mixed-tenure and affordable housing. Local authorities have made significant strides under housing for all, delivering over 24,000 social homes and 1,600 affordable homes since 2022 along with 102 cost-rental units. To ensure future housing is both sustainable and inclusive, the delivery of mixed-tenure developments combining social, affordable and cost rental is critical. These schemes support balanced communities and should be complemented by access to schools, healthcare and public amenities. However, current policy mechanisms need to go further. The scale of housing need now calls for enhanced support for affordable housing delivery and streamlined procurement processes to enable more agile responses, including greater use of modern methods of construction.</p>
+          <p eId="para_40"> The fourth key challenge is procurement and approval processes. Local authorities are increasingly using design-and-build procurement processes which is to be welcomed. In addition, delivery of larger mixed-tenure schemes via licence or development agreements is also becoming increasingly prevalent. Increasing use of this procurement procedure should be encouraged as there are demonstrable efficiencies both in project management resources and time savings. The sector must see a strategic application of modern methods of construction alongside procurement models that are fit for purpose, ones that reflect the urgency, pace and scale of the national housing need.</p>
+          <p eId="para_41"> The CCMA believes stronger and more integrated planning and co-ordination of capital programmes is needed in full alignment with the national planning framework to ensure delivery is targeted, efficient and sustainable. Local authorities remain fully committed to delivering housing at scale, but to turn ambition into reality we need resources, infrastructure and systems to support that effort.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:20:00+01:00"/></from>
+          <p eId="para_42">I now invite members to discuss issues and ask any questions they may have. I remind members participating remotely that they must be here on the grounds of the Leinster House complex. When it comes to their turn, I will ask them to declare that they are on the complex and that their camera is turned on. The speaking rota was circulated and has been agreed. That is the speaking rota we are working to until the recess at least. We will stick with the seven minutes that we had indicated and agreed. I know there are some apologies but we have another Member here who has indicated that he wishes to address the committee as well. It will be seven minutes for questions and answers. The clock is working even though it was not working a short while ago. The first speaking slot is for Fianna Fáil and I call Deputy Séamus McGrath.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_14">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T15:20:00+01:00"/></from>
+          <p eId="para_43">I thank Mr. Taaffe and Ms Leech for taking the time to come into us. I am someone who spent many years on council in Cork. I have the utmost respect for councils and the work they do. They are on the front line in the housing crisis that we have.</p>
+          <p eId="para_44">I have great respect for the work being done. I want to focus on operational issues and touch on what was focused on in the opening address on how we can unlock supply to a greater extent. Mr. Taaffe mentioned some of the key issues around land zoning, infrastructure and so on. I will start with operational issues. We had a debate last week in the Dáil on the vacancy rates, the voids and the length of time it takes to turn around vacant housing in local authorities. This is a problem across the country, although it varies depending on the local authority. How is there such a variance across the board? Some local authorities can turn around houses quite quickly while others take much longer. We had statistics on that from some of the debates last week. I am not saying that things are perfect in how the Department and the system is run, but why can some local authorities do better than others? Nothing frustrates and annoys people more than seeing houses empty when we are in the depths of a housing crisis. I would like to get feedback, opinions and suggestion on this from the witnesses on how we can improve this across the board. We need to try to remove some of the anomalies that exist between different local authorities in how they approach this issue. </p>
+          <p eId="para_45"> On housing supply, I want to tease out some of the CCMA's suggestions regarding what is necessary. I agree with much of it in terms of additional zoned land. Thankfully, plans are afoot to do that. Regarding local authorities, does Mr. Taaffe feel they are ready to take on the challenge of opening up the development plans and targeting some key areas for extra housing? Notwithstanding what was said about the infrastructure deficit, does the CCMA believe that there is land that can be developed, subject to zoning? In other words, that it is serviced, deliverable and is land that can be developed. The simple question here is whether additional zoning will assist in making land available. Is there land that can be zoned and is serviced? That is the point I am trying to get to. </p>
+          <p eId="para_46"> The three major utilities, water, wastewater and energy were mentioned. Will the witnesses quantify for us how much of an issue they believe these are? To what extent are these causing difficulties for increasing the supply of housing? This is one of the issues we regularly hear. Again, I am asking for the CCMA's suggestions on what can be done in this area. It cannot be all about money; it has to be about how we manage the resources we have and how we prioritise the utilisation of those resources. The spend from Uisce Éireann, for example, has to be targeted at making land developable for large-scale developments. There is a body of work to be done there and I would like to get the witnesses' opinions on that. </p>
+          <p eId="para_47"> I know my clock is ticking here. One issue I really want to focus on is affordable housing. We have seen great strides being made on social housing, albeit not enough. However, there is a huge variance in delivery between social housing and affordable housing. Mr. Taaffe outlined the figures in his opening statement. The Department needs to address this in its new housing strategy. With the local authorities, I sometimes feel that social housing is maybe the easier option to go with when a developer comes knocking and says that they have a development with permission in place and they want the local authority to sign up to a turnkey development. The default position seems to be social housing. This needs to change. There needs to be a greater balance between social housing and affordable housing. At present we are ignoring that cohort of people who are working, and who are above the social housing income limits but are not in a position to acquire a property in their own right. There is a large cohort of people, both couples and individuals, in this position. The system is not providing assistance to them. Affordable housing is the one avenue to do so. The question is how do we make that happen and what role can the local authorities play. I know I have used up some of my time. I will give the witnesses a chance to respond and maybe I will have the opportunity to come back in. This is my first time doing this so I am not sure how it all works. I would appreciate it if the witnesses were to try to address some of the points I have raised and some of the questions I have asked. </p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:30:00+01:00"/></from>
+          <p eId="para_48">I thank the Deputy for his questions. On the topic of re-let times, different local authorities approach re-lets differently. Some will take the opportunity to carry out significant works to a property because they might be dealing with older housing stock. It might be the first time they have had a chance to do significant works in ten or 20 years. It also depends on the age of the housing stock they are getting back and the ability to employ a contractor to do the work quickly, that is, it depends on the capacity of the local construction sector as well. Some local authorities will also take the opportunity to do a deep-energy retrofit while the house is empty. This could possibly add from six to eight weeks to a re-let time. Because the works are so invasive, the only opportunity they get to do this kind of work is when the house is empty. When the house is re-let it effectively comes back as a brand-new house with a B rating and a much lower energy cost. This definitely impacts on the re-let times.</p>
+          <p eId="para_49"> Some but not all local authorities have choice-based letting, which speeds up the re-let process. More local authorities are moving to choice-based letting. There is very strong evidence that this speeds things up. For those authorities that are not moving to this method, we still would have seen a relatively high refusal rate before choice-based letting came in. The average refusal rate was about one in four. That delays the process as well. Local authorities are focused on that and they all will be moving to choice-based letting to speed things up in the future. </p>
+          <p eId="para_50"> One important statistic is worth mentioning. Local authorities appreciate that they need to focus on re-let times and make them as short as possible. According to the last published data from the National Oversight and Audit Commission, NOAC, the overall vacancy rate in social housing nationally at the end of 2023 was 2.8%. While on the face of it the re-let times appear to be lengthy in some local authorities, the actual vacancy rate is lower in social housing than it is in the wider housing stock, which varies from 4% to 5%. If anything, social housing has a greater occupancy rate.</p>
+          <p eId="para_51"> On the development plans, yes, local authorities are preparing to re-examine their development plans based on the new population figures. This variation process will be initiated as soon as the new figures are published by the Minister and the Department. Local authorities are already preparing and looking at lands and looking at their zonings to prepare for that. It will add to the delivery because it will give those wishing to provide housing more choice in respect of what lands they can apply for planning permission on. As I said, that is subject to those lands being serviced, which I will come to in a minute. Because it will open up more lands for development, it will give greater choice. It can only assist in the delivery of houses. Councils are up for the challenge and task between now and the end of the year. </p>
+          <p eId="para_52"> On the issues around servicing, generally speaking our main towns are well serviced for water and wastewater. It is in the smaller towns and villages around the country that there are capacity constraints. There are landowners and developers who would like to build in those towns and more importantly, people would like to live in those towns but because of the capacity constraints, they are not able to. Most of the capacity constraints relate to wastewater. Water is an easier fix, so to speak, and electricity supply is not as constraining an issue around the country as is wastewater. Wastewater is the primary constraint in towns in the middle layer. </p>
+          <p eId="para_53"> On affordable housing, under the original affordable housing plan I think only 18 local authorities were given access to the affordable housing fund. This is the State-funded mechanism for making houses affordable. The other local authorities were not given a target and initially were not given access to the affordable housing fund because they were not deemed to have a housing affordability issue. That has subsequently changed and now all local authorities can access the fund. That is the reason some local authorities have come later in the day to affordable housing when compared to others. The lag in the beginning caused this but that has been corrected now.</p>
+          <p eId="para_54">Local authorities have been out of affordable housing for a number of years. It takes us a while to build up teams and expertise. Local authorities like my own are partnering in the first instance with housing providers to provide housing. We give them the funding and they provide the affordable housing. It has taken us a while to persuade and get those partnerships up and running but they are there now. That has given us time to deliver our own direct build affordable housing schemes, which we are delivering on now. It has taken a while to get used to it. It is something new for all stakeholders to get up to speed on and comfortable with, but there is now a strong pipeline of affordable housing in local authorities. In my own case in Wexford, we are bringing larger schemes of mixed-tenure housing - social and affordable - all together in one planning process at scale to meet affordable housing needs.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_55">I remind members to try to keep to time. I gave a bit of leeway.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_17">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_56">That was a rookie error.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_57">Try to keep it tight and focus the questions. We will get everybody in and if we have time afterwards, we will get another round of questions. I will be the last speaker as a member of the committee. I will let all committee members speak first and then we will give an opportunity to other Members. Deputy Sheehan has indicated he wants to speak so we want to accommodate that. The next speaking slot is Sinn Féin's. I call Deputy Ó Broin.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_19">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_58">I thank the Chair and I thank Mr. Taaffe and Ms Leech for their presence. Given the importance of social and affordable housing, it is fitting that our first public session is dealing with it. I acknowledge the significant volume of work the witnesses and their teams do, particularly council staff on the front line of tackling the housing and homelessness crisis and working with families in acute need. I ask the witnesses to please convey my thanks to their teams for that important work.</p>
+          <p eId="para_59"> Last year, the Government badly missed its social and affordable housing targets. The new-build social housing target was missed by 15%, or almost 1,500 units. The cost-rental targets were missed by 16%. The affordable purchase targets were missed by 61% - a very small number of units were delivered. The part of Mr. Taaffe's opening statement that struck me most strongly was where he said that meeting the targets - or exceed them, if that is what the Government decided to do - would require urgent structural supports. My questions deal with what that support needs to look like and what needs to be in the revised housing plan in the NDP.</p>
+          <p eId="para_60"> Mr. Taaffe said that land had been identified for 21,000 homes. The current Government housing plan for social, affordable rental and affordable purchase is 72,000 homes over the next five years. With the programme for Government, that will bring it up to about 82,000. My first question is on where the land will come from. I appreciate it is not all from local authorities but if the authorities only have land for 21,000 houses, what are their proposals? What would they like to see from the Government in terms of additional land capacity for the local government sector?</p>
+          <p eId="para_61"> Second, staffing is a significant issue. I appreciate the enormous pressure council housing departments are under with more work and fewer staff. Staff retention, because of the housing crisis, is a major issue. Do the witnesses know the total number of staff in housing departments across the local government sector? Do they know what number is needed? I know there was some additional sanction given under the previous Minister, but will the witnesses identity what the requirements are?</p>
+          <p eId="para_62"> Third, having mixed social, affordable rental and affordable purchase estates is a really good idea. There was a review and there was meant to be a single point of approval in the Department. Will the witnesses give us an update? Is that single point of approval up and running? Is it working?</p>
+          <p eId="para_63"> We will take those three first. The clock has not stopped running from the previous speaker but that is okay. We will get there in the end.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_64">That is an IT glitch.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_65">On additional land, local authority land banks are probably sufficient for the medium term only, as in the next three or possibly four years of delivery at best. That is assuming the lands that are not serviced will come on stream and be serviced in that time. Local authorities need to start building up their land banks again. There is a land acquisition fund available for local authorities to draw from. It is based in and operated by the Housing Agency. Approximately €80 million has been drawn down from that fund but the issue, according to the feedback we get from local authorities, is that the availability of suitable zoned and serviced land on the open market is very small. While there may be, on the face of it, available land, it may not be land that would be considered suitable for social housing for a number of reasons. It might be in the wrong location or prohibitively expensive. We need, if we are to guarantee and build up our land backs, to get back into compulsory purchase orders. They take time but that is really the only mechanism that gives you certainty of getting land.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_22">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_66">I fully support that but another way of doing it is more design and build. Currently when the Department reports to us, it lumps in turnkeys with design and builds. Is there an argument for separating those two out so that where a builder comes to a local authority or AHB with the intention of doing a solely social or social and affordable project, it is categorised as design and build rather than turnkey?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_67">At the moment, they are both categorised under the social housing investment programme, SHIP. We call them SHIP turnkey, which is where a developer comes with the land and, most likely, the planning permission and builds them on its own land. SHIP construction can be employer-design construction, so we design it and the contractor builds it, or it can be design and build. That falls under the general SHIP, which is local authority own builds on their own lands.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_24">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_68">My point is a different one. Turnkey is typically something that started life as a private development. When it got planning permission, it was conceived as a private development. Design and build, while it might originate with a builder-developer, starts life as a conversation between that builder-developer and an AHB or local authority. Should we differentiate between those? They are not the same.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_69">My understanding of design and build is it is where the local authority uses a design and build procurement process. The local authority takes the housing scheme through the Part 8 process to get planning consent. Then, instead of doing the public works contract where one designs everything to the nth degree and gives it to a contractor to build, the preliminary design is passed over to a contractor who finishes the design and builds it. That is what we mean by design and build. It is still a local authority build on local authority land. That is the difference between those.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_26">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_70">There is only a minute left. What about staffing numbers and single-stage approval?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_71">We are in the middle of an exercise with the Department to quantify exactly how many additional staff will be needed. At the moment, there are 1,100 staff in local authorities engaged in the social housing capital programme. That is a mixture of engineers, architects, technicians, clerks of works, quantity surveyors and administrative staff. The exercise is to see what we need to do to go from the current level of delivery up to the target of 1,200.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_28">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_72">Is that just for social? What about the affordable delivery?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_73">The affordable will be a separate exercise, so it will be for both. My opinion is that we will need significant extra staff resources. For example, if one gets involved in CPOs, one cannot go out and CPO any field one wants. One has to have a justification test, which means an analysis of land must be done, which takes resources.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_30">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_74">When does Mr. Taaffe expect that work to be finished? Does he think 20% extra staff are needed, or 40%, or is it too early to say?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_75">It is too early to say until we see the targets for, in particular, affordable. I expect the exercise to be completed in the middle of the summer or late summer.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_32">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_76">Does the single-stage approval process exist?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_77">The single point of approval for mixed-tenure schemes does. It could be streamlined further but there is a single point of contact for mixed-tenure developments. Within the departments, the affordable team will unlock the affordable housing fund for us and the SHIP team, which will deal with the-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_34">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_78">So, it is still two separate processes.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_79">They come together at our point of contact. It has eased things and lets people realise they are joined up.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_36">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_80">The CCMA made a strong case, and rightly so, for a single point of decision-making rather than a single point for application. Would it not be simpler if there was a single senior team to deal with those schemes rather than a person, who is probably a junior PO, having to refer back to the social housing and affordable housing separately?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_81">I am not sure that is causing any delays. Approvals are still coming back to us quickly enough.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_38">
+          <from>Deputy Joe Cooney<recordedTime time="2025-05-20T15:40:00+01:00"/></from>
+          <p eId="para_82">I thank the witnesses for their presentation. I worked as a local councillor for a number of years in County Clare and am well aware of the issues they are trying to deal with.</p>
+          <p eId="para_83">Those issues are not easy to deal with. There are various stumbling blocks in the way that prevent us from moving forward with houses, be they local authority houses in need of repair, vacant houses, or residences over commercial units in urban areas, which is a big issue, given how there are many such residences not being used, unfortunately. Regarding residential spaces over commercial units in urban areas, what are Mr. Taaffe's views on trying to get them back into use? What are the witnesses concerns about not getting them back into use? We are well aware that there are many such residences around the country. How could we get them back into use?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_84">That is exceptionally complex. In a lot of cases, local authorities under the urban regeneration and development fund URDF, are beginning to CPO those vacant properties and put them back on the open market for residential use. In some areas, we have to be realistic and accept that the commercial use is no longer viable on that street or in that part of town and allow those properties to go fully residential. Planning sections are allowing that. If we make the realistic assessment that these units were used as shops in the past but are not going to be used as shops in the future, then we should allow them go fully residential. The planning laws should be looked at to make sure this can happen relatively quickly.</p>
+          <p eId="para_85"> Another element is that we have to come up with innovative and cost-effective solutions to issues concerning fire safety and other building regulations to allow residential use to come back into these areas. It is a complex matter. We have to think outside the box a little bit in terms of our regulations and bring life back to those streets. Many local authorities are doing that through their town centre first policies. They are engaging in CPOs where there is no clear landowner left on some of these properties in order to get them back into use. The croí cónaithe grant of up to €70,000 to bring properties back into use and refurbish them has been very successful and is resulting in a lot of these properties coming back into use. Obviously, though, we need to do more, keep the foot on the accelerator and take sensible decisions on what can turn from old commercial into new residential.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_40">
+          <from>Deputy Joe Cooney<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_86">It is a no-brainer to turn those back into residential. It is a big issue in the centre of towns, given the number of buildings. In fairness, local authorities around the country are doing fantastic work.</p>
+          <p eId="para_87"> The other big issue is a lack of infrastructure, primarily as regards wastewater, which Mr. Taaffe mentioned. Last week, I tabled a question in the Dáil on a modular certified wastewater treatment system. Could such systems be rolled out throughout the country? I believe they could. I am aware of a number of housing developments that would be granted planning were it not the case that, unfortunately, the wastewater treatment systems were up to capacity. If this system was used, the discharge could be let go to the wastewater treatment systems in place. In Arklow where 200 houses were to be developed, the development was held up because the capacity was not there in the wastewater treatment plant. If a modular system could be rolled out around the country, could it be a way of unlocking some development, especially in rural parts? We are well aware of the shortage of wastewater treatment plants in rural parts. Could this system be used going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_88">I believe that we should have more flexibility in allowing developers to provide agreed infrastructure in partnership with Uisce Éireann, so long as the developers are providing the infrastructure to agreed environmental and construction standards with Uisce Éireann. That is an avenue that needs to be explored, with more delivery and more infrastructure provided using that method. There have been pilot schemes with Uisce Éireann on what it calls "self lay", where the developer can do the sewer or water pipe extension itself. That needs to be rolled out more and made as efficient as possible. In many cases that I am aware of, the developers are ready to do this work to service their developments. It is just about getting an agreed mechanism to do that where we can be sure, as an arm of the State, that the quality of the infrastructure they provide is correct. The developers can use the efficiencies they have to build it quickly and cost effectively.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_42">
+          <from>Deputy Joe Cooney<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_89">It is something that needs to be reviewed, especially in rural parts. Uisce Éireann needs to work with the developers. If it is done to Uisce Éireann's criteria and the proper standard, Uisce Éireann should be told that it has to take it over, end of story, and maintain it going forward. That could be a brilliant idea.</p>
+          <p eId="para_90"> Regarding costs and workers, local authorities are finding it hard to get building contractors because of the amount of work out there at the moment. The other big issue has to do with skilled workers and apprenticeships. That needs to be reviewed to see how we can get more young people to take up apprenticeships and get qualified as skilled workers. There would then be workers for developers and building contractors. In Clare, the local authority finds it very hard to even get contractors to tender to renovate some of these old houses as well as some local authority houses that are in a bad condition. What are Mr. Taaffe's views on apprenticeships and how we can get young people to take up trades?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_91">I could not agree more. We need more apprenticeships and skilled workers. Contractors are constrained in the amount of work they can take on, both the small refurbishment work they do for us and the larger projects, because of that. A structured look needs to be taken at school leavers, what they want to do and how there is an alternative career path for them if they want to take up these skills. At the end of the day, it is a good job and can be a well-paid job. There needs to be more awareness of this. In some respects, working in construction has got some negative PR over the past number of years. We do not see it that way, though. We see it as a good job and getting a skill. The more we can emphasise that, the better.</p>
+          <p eId="para_92"> On the other side of that, as a sector and as a society, we need to use and embrace more modern methods of construction as well. There is a lot of technology that can allow fabrication of housing components in a factory setting, which is an easier and, for want of a better term, more comfortable place for people to work. It is not weather dependent and people can become very productive and very skilled in that environment, which should speed up house construction and, more importantly, improve productivity. For example, we are piloting a 3D modern methods of construction, MMC, system in Wexford. It is out to tender at the moment. The houses will be built in 3D format, come in, and be dropped on site and assembled there. We are piloting this to see how it will work. It is something we need to be considering because it gives people a real skill and moves the construction sector from a perceived cold and wet environment into a factory environment that will increase productivity and, I hope, attract more people into the industry.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_44">
+          <from>Deputy Joe Cooney<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_93">I am delighted Mr. Taaffe mentioned choice-based lettings, CBL. It is a fantastic system and working very well in our county. I am aware it is also working well in other counties.</p>
+          <p eId="para_94"> The other big issue is costs and I do not know how we are going sort this. Costs have just gone crazy. This probably turns a lot of young people off building their own houses, given what doing so will cost them.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_95">Yes, there is no doubt about that. Costs are high.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_96">I thank Deputy Cooney. I now invite Deputy Hearne from the Social Democrats. If the clock is not working, we will share the screen where the time is shown on the top middle, just so people will know their time. We are having problems with the IT. Keep an eye on the timer in the middle of that screen.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_47">
+          <from>Deputy Rory Hearne<recordedTime time="2025-05-20T15:50:00+01:00"/></from>
+          <p eId="para_97">I have a number of questions that I would like Mr. Taaffe to give honest answers to. I thank Mr. Taaffe for his presentation. I appreciated it and I appreciate all the work that local authorities are doing around the country.</p>
+          <p eId="para_98"> The first question relates to the level of need of social and affordable housing. Does Mr. Taaffe believe that the current targets for social and affordable housing delivery are sufficient to meet the real housing needs out there, for example, HAP and young adults living at home? When will we have addressed those levels of housing need? Will it be in five years, ten years or 15 years on the basis of current delivery? What additional funding is needed to deliver social and affordable housing? Resourcing and borrowing issues were mentioned. Has Mr. Taaffe any figures for the additional capital that is required?</p>
+          <p eId="para_99">Could the witnesses expand on the issue of borrowing capacity? I know that issue has been raised by a number of councils. What capacity is there and what is needed to change that around to enable local authorities to borrow significantly to deliver, and is there potential to increase that as a source of finance?</p>
+          <p eId="para_100"> Barriers to affordable housing, affordable purchase and affordable cost rental were mentioned. Could the witnesses outline some of the barriers to delivering and expanding delivery of affordable purchase and affordable rental by local authorities? Is it accurate to describe the vacant property refurbishment grant as a form of affordable housing delivery?</p>
+          <p eId="para_101"> Many issues have been raised about the tenants in situ scheme and there were concerns around homelessness. In the witnesses’ knowledge, are there local authorities that cannot process applications or requests related to the tenants in situ scheme due to the changes that have been brought forward in respect of it, or is that likely to happen this year?</p>
+          <p eId="para_102"> I have a general question. It is something I have talked about before and it follows on from Deputy Cooney’s point about employment in construction. Is there a role for the State to employ public construction as a way to guarantee employment and guarantee delivery of housing into the future? That might take different forms.</p>
+          <p eId="para_103"> Finally, is there a potential for regional co-ordination among local authorities to deliver housing, rather than each local authority having to do it itself and develop its own capacity?</p>
+          <p eId="para_104"> I appreciate that I asked many questions. I ask the witnesses to do their best to answer them.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_105">On the level of need, social housing and the construction of social housing cannot solve the housing issue on its own; it is one cohort of it. The solution to providing housing is the overall delivery of 50,000 homes. We need very strong and vibrant public sector housing because that feeds into everybody’s housing need. To answer the Deputy’s question as best I can, social housing cannot do it on its own but a steady delivery of 50,000 homes over a number of years, through all forms of tenure, is the solution to the housing crisis.</p>
+          <p eId="para_106"> On the additional capital requirements, the issue currently and for the past number of years is that funding has been provided to deliver whatever local authorities have progressed. Funding has not been an issue - once the funds are in place and we believe they will be - to meeting those targets. We do not see funding as an issue.</p>
+          <p eId="para_107"> On the affordable purchase element, this is where funding or borrowing becomes an issue, both for local authority cost rental and also local authority affordable purchase. Local authority cost rental involves local authorities borrowing significant sums of money because they have to take up the main bulk of the cost of the provision of the house, and they then get paid back over 40 years. The local authority sector is capped on its overall borrowing requirement and cost rental is only one element of what local authorities need to borrow for. We need to borrow for a whole range of our functions. We are subject to caps, and that will impinge on the local authority sector's ability to deliver cost rental. That needs to be addressed.</p>
+          <p eId="para_108"> On the vacant property refurbishment grant, yes, it is a grant and a form of affordable housing. More important, it has been hugely successful in bringing derelict and underused properties back into productive use, which is only to be welcomed.</p>
+          <p eId="para_109"> On tenant in situ, there has been a tightening of the criteria between 2024 and 2025, which has seen a reduction in the number of people eligible for the scheme, in other words, for properties that we would be in line to purchase. It has tightened the ability of local authorities to deal with issues like that. There is no doubt about that.</p>
+          <p eId="para_110"> On State employment, we have quite an innovative and efficient construction sector. My view on that is once we partner correctly and have correct procurement, the most efficient way of delivering housing is via partnering with the private sector and the efficiencies it brings in terms of contracting, innovation and productivity.</p>
+          <p eId="para_111"> On regional co-ordination, that is more or less happening now anyway. Local authorities operate regional frameworks when it comes to procurement of design consultants and contractors. The housing delivery co-ordination office in the Local Government Management Agency shares best practice on procurement across all local authorities. In fact, there is a seminar tomorrow in Tullamore, at which about 70 local authority technical staff will be sharing best practice on different ways of procuring, such as design and build, and development licences. We are sharing information, documentation, templates and new ways of doing things all the time. We are getting the benefit of that regional approach and regional expertise through mechanisms like that, without going through the additional layers of setting up or changing to a regional structure. We are sharing best practice all the time.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_49">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_112">Would the Deputy like to get one additional short question in?</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_50">
+          <from>Deputy Rory Hearne<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_113">Returning to the delivery of the targets, of that 50,000 figure, how many should be social and affordable to meet housing need?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_114">If local authorities can get to the target of delivering 12,000 social houses across the country, I think there is an area of another, say, 6,000 to 7,000 with some sort of State support. I am not evading the question, but the issue is that there is no single housing market in Ireland. The housing market and housing demand in Wexford are different from those in Dublin. Different solutions are needed in different areas. To give a raw number does not reflect the local and regional variation and the different supports that are needed in different parts of the country.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_52">
+          <from>Deputy Rory Hearne<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_115">There is no part of the country that does not need affordable housing, is there?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_116">Yes and no. Taking my home town of Wexford as an example, you can buy a terraced house in the centre of Wexford for €180,000. That is a lot of money, but it is much easier than trying to buy the same property in Dublin, for example. There are different levels of support, tailored supports and different solutions for different parts of the country. It is not one size fits all.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_117">I thank Deputy Hearne. The next speaking slot is People Before Profit and Deputy Brian Stanley.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_55">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_118">To clarify, I am not a member of People Before Profit; I am an Independent. I know the rota-----</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_119">Sorry, I know you are Independent, Deputy.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_57">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_120">In Deputy Richard Boyd-Barrett's absence-----</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_121">Sorry, yes. In the Deputy's absence, that slot is available.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_59">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:00:00+01:00"/></from>
+          <p eId="para_122">That is okay. I welcome Ms Leech and Mr. Taaffe and thank them for their opening statement.</p>
+          <p eId="para_123"> Obviously, delivery is key. I have some questions on this. The witnesses set out that we need a 50% increase in annual output, just to meet the Government targets. Some of us would argue that the Government targets need to go further, but we will not dwell on that for now.</p>
+          <p eId="para_124"> I wish to talk to the witnesses about speeding up delivery. One of the issues I have consistently raised with the Department, the Secretary General, Mr. Graham Doyle, and some of the officials is the reuse of the same plans. I am not arguing that we go back to 1930s-style or 1950s-style housing. Anybody who ever produced anything - whether it is a carpenter, welder or whoever it is - knows that the way to produce a lot of something, produce it efficiently at the cheapest price, get the best quality and do it in an efficient and swift manner is through mass production. I have not met anybody who wants affordable, social or cost-rental houses who would object to living in the same house in Wexford as people in Donegal or County Laois, where I live. The Department gives a bit of spoof on this. When officials are being questioned about this, as they have been in this committee and in the public accounts committee when I was Chair, they answer that they have standards. When I say standards, I mean the same plan. There are brilliant examples. I am sure every TD here can show examples of good housing. We need one-, two- and three-bedroom houses. In some areas, a different type of housing is needed.</p>
+          <p eId="para_125">We need high-density or low-density, depending on whether it is in Blackwater, Wexford town or Dublin. I was in Blackwater on Sunday, by the way. It was a bit windy but it was nice. We need houses for disabled people and the elderly. It is reckoned that between eight and ten designs are needed. Let the apartments take care of themselves for now; we want houses. Is it the case that the witnesses are being allowed? That is the first question I have. Is it the case that plans are being handed to them? Other county managers have told me that the cost of architectural designs is running up to 15%, which is lunacy, along with slowing things down and shuffling pieces of paper between the witnesses and the Custom House, which is more lunacy. There should be a standardised design for building. Even with the affordable units, you can always change what the porch looks like. You can put a different facade on one of them. One of them could be a plaster finish, one can have more brick or whatever. You can tweak them around to make them look different. As Cairn Homes and all of them are doing it, local authorities should be able to do it. Could the witnesses say a few words on the cost of architects?</p>
+          <p eId="para_126"> On the procurement the witnesses are using, I welcome that local authorities are increasingly using design-and-build procurement processes. On the cost rental units, the witnesses' housing officials will tell them there is a huge gap out there. A whole range of people are coming in who will be elderly and living in expensive private rented accommodation. There are average rents of up to €2,700 or €2,800 in south Dublin at present. Rents are skyrocketing and rent pressure zones are not working. We need cost rentals for those people, that is, homes that are built not for profit, but where the financing of them can happen over 35 or so years to cover the cost of construction and maintenance, which is a model that some of us championed here ten years ago when nobody wanted to hear about it. Could the witnesses give a view on that?</p>
+          <p eId="para_127"> I am watching the time but the other thing I wanted to ask the witnesses about are over-the-shop units. There has been a lot of talk about this and I want to say something to Ms Leech that might be a bit controversial. With regard to a lot of those streetscapes, I can think of towns around the country you can drive through where, if you went about modernising some of them, they would fall down in a pile of dust. They are costly to do. It is very difficult to get fire certificates and reach fire standards because a lot of them are three-storey buildings. The other thing is that you wind up with apartments separated by timber floors with huge maintenance costs. I am suggesting something that has been done in some areas. In some cases, would it not make more sense to hit them with the back bucket of a JCB, load them into a skip, and then put in little streets? A lot of them have long gardens of an acre or more, running down to a walled garden at the back. In some cases, there are good examples where that has been done. It is not to gouge holes in the streetscape, although we may need to stop worrying a bit too much about cosmetics as well, but to put in small streets of housing where you would get in six, eight or ten, and you would get people living not half a mile out the road but in the centre of the village or town, which is what we are supposed to be doing. What are the witnesses views on that?</p>
+          <p eId="para_128"> The last question I have is about staffing in local authorities. I was a member of a local authority for a number of years and one big change I have noticed is that local authorities have gone away from core functions. You can rattle them all off, including water, taxis, etc. They are being diverted into arts and community. What I am being told is the Department will approve, and have approved, legions of people in local authorities in those departments and sections but trying to get somebody approved for housing staff is more difficult. What is the situation with that and what are the witnesses' views on it? Do they feel that local authorities need to get back to core functions and back to basics like water, sewerage, housing, public lights, footpaths, roads, libraries and fire services? These are the things that matter to people. I am not against the arts and community, by the way, in saying that. It is nice but it is one of those things. It is a bit like going out on a Saturday night; you do not necessarily have to but it is nice to go an odd time. The arts are the same. What are the witnesses' views on that?</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_129">Before Mr. Taaffe starts, I ask him to be conscious that the seven minutes are up but-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_61">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_130">And new members.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_131">-----I will leave him time to answer.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_63">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_132">If you gave me three quarters of what Fianna Fáil got, I would be happy.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_64">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_133">No, I will be fair. I am being very fair. The seven minutes are up.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_65">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_134">I know.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_135">I thank the Cathaoirleach and Deputy Stanley is always welcome in Wexford.</p>
+          <p eId="para_136"> On the reuse of the same plans, yes, the standard plans are now in place from the Department for all the housing typologies. They have been published and are available and local authorities are starting to use them. Where the issue comes about is you sometimes have to tailor those layouts to the particular site. That takes a bit of time. It is not about redoing them; it is about tailoring them, so that has been and is working and has-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_67">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_137">The house plan is exactly the same, outside and inside.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_138">Yes.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_69">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_139">Terrific. That is all I want to know. That is good news.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_140">Yes, it is the same layout. That is done and it is in place but you still have to tailor them to meet it.</p>
+          <p eId="para_141"> On architects' costs, yes, costs have gone up on everything. Costs have gone up for consultants. In fact, in some cases, we are lucky to get architectural or engineering firms to even tender for the work, let alone come in at a reasonable cost. That is how tight things are at the moment. We have gone out for tender for some projects, for example, and we have got no tenders back for design teams.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_71">
+          <from>Deputy Brian Stanley<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_142">What percentage of the overall cost is it?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_143">It would not be 15%. For example, what we do in Wexford is we design the architectural element of it in-house and then we might go out for later phases. We do not outsource it all; we do some of it in-house with our own teams. If you outsourced everything for engineers, quantity surveyors and all those tender documents, you could be talking about 12% to-15%, depending on the project.</p>
+          <p eId="para_144"> On cost rentals for older people, this morning, Ms Leech and I sat on a group looking at housing policy for older people, which will form part of the new plan. The policy around cost rental for older people as they retire and their income takes a significant reduction is being looked at in that plan with regard to how it is going to be dealt with. I do not know what policy will be in on that but I know it is certainly going to be part of that.</p>
+          <p eId="para_145"> On over-the-shop, that is absolutely correct. Some of these properties realistically are just not fit for refurbishment and in some cases should be demolished and converted or maybe amalgamated and put into what we call an infill or backyard development where we allow new houses to built on that spot. That is happening. We probably need to do more of it but the issue for us is that if you were to put social housing into that, by the time you have bought the site, demolished the houses and built the four houses, you would have a very expensive scheme. That is not to say it is not the right thing to do because we have to repopulate our town centres. It is about doing a mix of that, as well as the greenfield development, and local authorities are starting to do that. Again, it comes back to the issue of us needing more staff to do that because doing schemes like that takes more staff input. It is the right thing to do, however, and that will be factored into our request for new staff.</p>
+          <p eId="para_146"> On staffing in general in local authorities, we do need more. I agree completely about core functions. In the CCMA, we see the delivery of social and affordable housing as our core function, and we want to do that. We have been doing it at scale up to now. We need to ramp up and do more of that and it is about getting in the resources to do it. We have a mixture of architects, engineers and quantity surveyors in our housing team. Most local authorities do, so we have all the skill sets in-house. We do all our design work in-house, and then we use design-and-build or development under licence to do that. What we are really good at is designing houses. When we design houses, our architects know the locals and the councillors in the area, they know what to look out for when they are designing things, and what will get through the Part 8 and public consultation processes. We absolutely want to be resourced to do that and to do more of it. We want to do more of the things the Deputy has said, such as smaller infill developments that take more resources. We want to do more than that but we need the resources to do it and we will factor that into the work we are doing with the Department regarding our ask for more resources and staff and for getting the architects, engineers and quantity surveyors to do that.</p>
+        </speech>
+        <speech by="#AubreyMcCarthy" eId="spk_73">
+          <from>Senator Aubrey McCarthy<recordedTime time="2025-05-20T16:10:00+01:00"/></from>
+          <p eId="para_147">First, I acknowledge today's contribution from the CCMA and thank the witnesses for it. It clearly reflects what is going on and the reality experienced by local authorities on the ground. I raised some of those issues in the Seanad on 25 March with the Minister of State, Deputy Christopher O'Sullivan. I specifically pointed to the underutilisation of tier 1 service plans and the severe staffing pressures in local authorities. In the witnesses' opening statement, it is very clear that they see the same.</p>
+          <p eId="para_148">In general, what are the most significant obstacles to housing delivery? How do issues such as land availability, planning regulations and infrastructure affect the timely delivery of the housing projects mentioned by Mr. Taaffe? What role does the CCMA play in addressing those challenges at local and national level?</p>
+          <p eId="para_149"> I have a question about the main funding constraints facing local authorities such as Wexford in meeting their housing targets. I work closely with local authorities in Wicklow, Kildare and Dublin on housing. Does Mr. Taaffe believe that the current Government funding mechanisms are sufficient to support the delivery of social and affordable homes? Are there alternatives in innovative funding models that we are not considering that are being used internationally and that could be adapted by us and applied to the housing market in Ireland?</p>
+          <p eId="para_150"> Many people have approached me regarding planning delays and bureaucracy. I know this has been mentioned many times. One email I received said that if a person wishes to buy a house in Meath, it takes five years from the time of looking at the land until he or she finally gets the keys with all the planning and building, etc., so there are significant planning delays. Are there specific legislative or regulatory reforms that would streamline that process?</p>
+          <p eId="para_151"> Regarding public-private collaboration, there were significant issues and a bank bailout. What role do private developers play now in supporting housing delivery and how can collaboration between the public and private sectors be strengthened? Are there innovative housing models - partnership models between public and private - internationally?</p>
+          <p eId="para_152"> How can we future-proof housing policy? How can we make sure it is sustainable in the long term given population growth? What measures can be taken to improve affordability and accessibility for key demographics, including young buyers and renters, particularly with regard to the tenant in situ scheme in Dublin and the budget that has been annihilated?</p>
+          <p eId="para_153"> Mr. Taaffe mentioned the dereliction grant. There are something like 11,000 applicants for the dereliction grant. It is a wonderful initiative that could change town centres but in practice, it is not working. There are 11,000 applications but only 1,450 are after being paid out. I am not too sure of the exact figures. This should be a grant that encourages individuals to take up home ownership and invest in a derelict or vacant home. It is everything to win for. One case with which I am dealing involves a man who has been put through the mill. He has shown me the house and I have seen all the pictures of it. It was derelict. There was no roof and windows. He has nearly had to give his blood type to prove it was actually derelict. It feels as if people are guilty until proven innocent when they are applying for the dereliction grant.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:20:00+01:00"/></from>
+          <p eId="para_154">The biggest constraints are the availability of land and the availability of and funding for staff for local authorities to progress those projects on that land. The CCMA has a twofold function when it comes to housing. Through the housing committee and the formulation of policy and plans as a stakeholder, we feed into the Department of Housing, Local Government and Heritage. The CCMA and the Department fund the housing delivery co-ordination office that is housed in the Local Government Management Agency. This team co-ordinates the activity of the 31 local authorities in terms of social and affordable housing, shares best practice, gathers data on our housing projects and land banks, co-ordinates the programme and activity and acts as a single point of contact on issues for the Department and bodies like the ESB and Uisce Éireann.</p>
+          <p eId="para_155"> There are two funding constraints for local authorities. The first one concerns the ability of local authorities to borrow for cost rental. What is equally important with cost rental is the fact that because of the volume of capital that could be tied up in cost rental and the fact that the housing market has a certain level of uncertainty, local authorities require some sort of backstop when it comes to that borrowing. If rents fall and the income stream on which their borrowing is based falls away, this could have serious financial implications for local authorities. For this reason, we need to have an understanding of what the safety net is for local authorities when it comes to that borrowing. The other issue for us is the funding of significant extra staff resources to see that step change and that significant increase in delivery.</p>
+          <p eId="para_156"> On the innovative funding models, one thing we hear from the private sector concerns the interest rates charged to house builders for their projects. I have heard of developers being quoted rates that are a multiple of the ECB rate or what one would get if one left one's money on deposit in the bank. This seems to be adding significant extra costs to the cost of providing houses and in some cases is making schemes unviable. If we are looking at innovative funding models, it is about making finance available to house builders to allow them to be as competitive, as cost-effective and, let us be blunt about it, as cheap as possible so that those costs are not passed to the cost of delivering housing.</p>
+          <p eId="para_157"> Regarding delays in planning, local authorities use the Part 8 process, which is a statutory process. Generally speaking, there are no delays. It works very well. It is a partnership approach between council officials and councillors on getting schemes through Part 8. With regard to private sector planning applications, local authorities are on a statutory timeframe so it is a very predictable timeframe. Where planning can come unstuck is where there are appeals to An Bord Pleanála or judicial reviews. However, under the new Planning and Development Act, an Coimisiún Pleanála will have statutory timeframes for considering appeals so the issue of timeframes should be addressed under the Planning and Development Act as that is rolled out.</p>
+          <p eId="para_158"> There is a lot of public-private collaboration where we partner with developers. The next stage for delivery of local authority on local authority-owned land is the move towards development under licence. Some local authorities have led the way on that and it is a very efficient way of delivering housing utilising private sector collaboration but still delivering public housing on public land.</p>
+          <p eId="para_159"> Regarding future-proofing housing policy, my opinion is that if we want a sustainable housing supply irrespective of what tenure it is, if we control land and the availability of land to people who want to build houses and if we control it being fed into the market for house constructors, we control the supply of housing. At the moment, we do not have effective State levers to control that supply of land and get it built on and serviced. This is the key issue for future housing policy.</p>
+          <p eId="para_160"> The vacant homes grant has been successful. The reason the payouts are quite low is probably that it takes time to get a builder, get the works done and get the claim in so the payout is the very last part of the process. However, the take-up has been significant and there have been some fantastic projects around the country. It is working and is to be welcomed. It is a relatively new scheme and these things take a while to get to the end point. By the time someone has bought a property, engaged the builder, done the works and made the claim, it can be quite a period but the scheme is hugely successful. I am sure any issues can be ironed out with local authorities.</p>
+        </speech>
+        <speech by="#PJMurphy" eId="spk_75">
+          <from>Senator P. J. Murphy<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_161">I thank Mr. Taaffe for his very informative presentation. He mentioned the fact that 28% of the sites identified by local authorities as being suitable for the construction of social and affordable houses had been deemed undevelopable due to the lack of the three key services of water, wastewater and energy. I come from the southern half of County Galway where, of 14 villages and towns, only two are serviced by a wastewater treatment facility. Galway County Council owns land banks in six of the unserviced villages, which are sitting idle and undevelopable due to the lack of wastewater infrastructure. I am anxious to hear the witnesses' opinion on what a short-to-medium-term solution would be. Small rural villages like the ones I mentioned will not get municipal wastewater treatment plants in the short, medium and, possibly, long terms. How do we get around that anomaly? What is a feasible route to involving on-site package plants or an alternative as a way for a local authority to develop these unserviced sites? How would that be workable for private sector developments?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_162">The lack of services in some of our smaller towns and larger villages is a growing issue. For example, we have some sites in Wexford on which we could deliver housing but there is no wastewater infrastructure nor is there likely to be any.</p>
+          <p eId="para_163"> There are two parts to this issue. First, there are areas where there is a solution. It is a case of putting in a package plant and there being receiving waters - a stream or river - with the capacity to take an effluent discharge from that. We need to come up with a way whereby that can be provided in partnership with Uisce Éireann to an agreed standard and meet all the environmental standards, but constructed in partnership with the private sector to an agreed plan. We need to start considering such an approach and delivering in that way.</p>
+          <p eId="para_164"> The second part is far more difficult. There are areas and small towns and villages where the receiving waters are not capable, making delivery far more problematic. There needs to be a realistic assessment of those areas to say that, since we are never going to be able to come up with a solution that is environmentally sustainable, let us focus on the areas where it can be done. We need to focus on the areas where there needs to be certainty that, if the services are provided, the houses will follow on as quickly as possible. That is a matter for consideration by Uisce Éireann. There have been legacy issues with pre-2008 developer-provided infrastructure. Some of those are still unresolved and causing problems. That is why it must be agreed very early on about where this is technically feasible and advisable while having a realistic conversation about cases where it is never going to be technically feasible. We need to call that now.</p>
+        </speech>
+        <speech by="#PJMurphy" eId="spk_77">
+          <from>Senator P. J. Murphy<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_165">Mr. Taaffe has touched on an interesting aspect, which is very relevant to my own area, namely, that some areas simply will not have receiving waterways. The area I am referring to is the southern half of County Galway and north County Clare, which is the karst landscape of the Burren and Burren lowland. There is no groundwater. There are no drains or rivers because everything runs underground in the karst landscape. There is no surface water in the whole region, which is why we have this challenge, but we cannot simply rule out an area the size of County Louth and say there is no solution. We must find a solution for such a large geographical area. To date, there has not been a solution and building is stagnant. While I agree with what Mr. Taaffe has said, the idea that we can rule out as unsuitable areas that do not have a means of bringing treated water away above ground cannot be an end solution.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_166">While I am no expert in wastewater treatment, some local authorities conducted a pilot for a reed-bed system, where there was no discharge at all from the wastewater. The wastewater went into a reed-bed system of sufficient size and, following evaporation and treatment, there was no discharge into the environment. There are innovative solutions but they cost more and require more maintenance. A reed-bed system may be a solution for certain areas, and it might be the only one that works in the case in question. Perhaps consideration should be given to conducting a pilot of a reed-bed system.</p>
+        </speech>
+        <speech by="#PJMurphy" eId="spk_79">
+          <from>Senator P. J. Murphy<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_167">A reed-bed system was piloted in County Waterford. Again, it was found that the system was more suited to an acidic area as opposed to an alkaline karst landscape because a reed bed must hold water for reeds to grow, which does not fit with a limestone karst landscape. It is quite problematic.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_168">Yes.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_81">
+          <from>Deputy Paula Butterly<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_169">I wish to apologise to the Chair, as I had to attend another committee meeting for the first hour of this meeting, so I missed the opening statements.</p>
+          <p eId="para_170"> I am from County Louth. We have the two very large towns of Dundalk and Drogheda. I have found that the challenges in housing are divided between the urban and rural areas. In rural areas, the challenge is one-off housing. In urban centres, the challenge is that developments have started to sprawl into rural areas where, technically speaking, people cannot even get a one-off house. I would like to hear the opinion of our guests on this matter.</p>
+          <p eId="para_171"> I am from a rural area and, all going well, the public-private partnership that was mentioned will deliver to the Ballymakenny area of Drogheda 7,500 houses in the next couple of years. That would be fantastic but I would like to see local authorities planning infrastructure while addressing the issue of density because we are sprawling from town to country areas even though people who live in rural areas cannot get planning permission. Due to specific policies dictated by the OPR, we are unable to build houses for our own communities within the rural department. I would like to hear the witnesses' opinions on the density issue, the fact that urban dwellings have sprawled into rural areas and one-off housing.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:30:00+01:00"/></from>
+          <p eId="para_172">The Deputy has raised a pertinent issue, in that local authorities will be reopening their development plans based on the new national planning framework guidelines and targets that will be issued by the Minister and the Department in the coming weeks. That will allow the core strategies of local authorities, including housing strategies, to specify the population growth in each town and village through the various tiers. That work must be done in a consultative way with the public and councillors, and councillors will ultimately decide that as a reserved function of the county development plan.</p>
+          <p eId="para_173"> When it comes to large areas, local authorities are adept at doing this. They will master plan such areas. On the face of it, 7,500 houses is a huge amount of housing and might be appropriate, but it is only appropriate where there is a sufficient supply of community services and infrastructure provided in tandem so that there are schools, cycle lanes, roadways and public parks. We must also ensure that everybody is very clear when a big area is due to be developed that the work is done in a planned way as opposed to a piecemeal one. That is the approach that local authorities will adopt for significant developments.</p>
+          <p eId="para_174"> Density levels are set at a national level. Local authorities must adhere to national guidelines and we are mandated to follow design guidelines. We have good examples of where densities can and are being met but they are met in a sustainable way.</p>
+          <p eId="para_175">The key to it is identifying early and providing the supporting infrastructure and community facilities to go with that level of development as early as possible.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_83">
+          <from>Deputy Paula Butterly<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_176">Will Mr. Taaffe give me some examples of where it is working? We talk very much about town centres dying and we are then developing these new towns on the outskirts of existing towns that are struggling to have a vibrant town centre.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_177">Ms Leech will talk about Clonburris and Adamstown in south Dublin.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_178">Clonburris is an area in south Dublin county that was planning led. It is a strategic development zone. It is high density but it was also ensured, as part of the master planning, that all of the community infrastructure like schools is along a strategic transport corridor. Clonburris is a good example of that master planning for approximately 9,000 homes across both local authority and privately owned lands.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_179">Sinn Féin members indicated that Deputy Ó Broin would be taking up their speaking time. I missed that so I will let hm back in.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_87">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_180">I have a couple of quick-fire questions for Mr. Taaffe and Ms Leech because there are couple of issues I want to get through quickly. I will pick up on Deputy Hearne's query. The Government has obviously set out social housing targets of an average 12,000 per year each year over its lifetime. We are waiting for the affordable housing targets and I accept there is a different need in different local authority areas. Has the CCMA taken a position on that? Has it made a submission or is it just waiting for the Government to set out if it is going to stick to the average 4,500 for affordable rental and affordable purchase or if they will go above that in the new plan? That is the first thing.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_181">We have made a general submission on the new plan. We have not delved into the detail of how the targets will be distributed. Previously, social housing targets were distributed on a combination of the existing social housing demand and the projected future housing demand. They were averaged and then the overall figures distributed accordingly. On affordable housing-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_89">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_182">Let me go through the other questions. I just note that the CCMA has not taken a formal position or made a formal submission on what it thinks the actual need for local authority HB and LDA affordable homes should be over the coming five years.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_183">I suppose our view is that the programme for Government contains a figure of 12,000 for social housing so we see that as the-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_91">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_184">But it has not taken a view on the affordables.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_185">Not yet.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_93">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_186">No problem. The second thing is tenant in situ. Obviously, there have been significant net cuts in the funding available for social housing acquisitions this year compared with what was spent last year. I know each local authority is going through the assessment of what I call the overhang, which are the applications from 2024 that were paused. However, it seems there is a sizeable number of applications that are now falling foul of the new rules. Since Ms Leech is in my own local authority, maybe I can ask her this. Last year, there were 102 tenant in situ applications in South Dublin County Council. Colm Ward, the chief executive, told a meeting of TDs earlier this year that there was an overhang somewhere in the region of 70 or 72 that could not progress until the funding and circular were given by the Department. That has now happened. I understand that of those 70 odd, approximately 40 are still under consideration. Will Ms Lynch confirm if my numbers are correct? If they are, does that mean that 30 that are not progressing? Are they all progressing because of the new rules? Does she have a breakdown? Maybe in some of them the landlords just pulled out or there were changes in conveyancing. We are trying to get a sense, first, of what the actual quantum of the cut is. South Dublin will be purchasing less than half this year of what it purchased last year. We are also trying to see how many people are losing out because of the new rules. Will she provide clarity on that?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_187">We obviously gave the Deputy a summary of our position regarding tenant in situ. We have a number of cases where we have committed to the purchase of a property. We are at contract stage and are proceeding with the acquisition of the property. There are a number of expressions of interest that we are currently reviewing in accordance with the revised criteria to ensure that we are purchasing homes for those most in need, whether it be older persons or larger families to avoid homelessness. When we evaluate those expressions of interest between our allocations and acquisitions teams, we are then meeting to review what the options are in those instances where we are not proceeding with the purchase of a property.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_95">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_188">I accept the council has to operate within the terms of the circular. I am not disputing that. That is a row I will have with the Minister separately. Am I correct in the figures that, of the overhang of the figure the chief executive gave to TDs, which I think was 70, that currently only 40 of those are still being considered? On some the decision has been made to purchase and some are still being worked through conveyancing, etc. That means 30 of the overhang have dropped out. Have all of those dropped out because of the new rules, or is there any information Ms Leech can give us on that?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_189">There are other reasons why we do not proceed the acquisition of a property. It might be that following due diligence we do not deem that the property is suitable to purchase.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_97">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_190">Of the 30 that are dropping out, does Ms Lynch have, or will she at a later stage give us, a breakdown of how many will be because they were never going to be purchased when the process was completed, versus those that have fallen foul of the new rules?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_191">I can find those figures if the Deputy has further time.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_99">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_192">Perfect. I will go back to an issue Deputy McGrath raised. Last week, when local authority re-lets were being discussed there was some unfortunate language in the Chamber. We heard about dependency culture among local authorities and local authorities looking for handouts. The NOAC report referenced by Mr. Taaffe is clear. It is an average turnaround time of 33 weeks and there is an average cost of €28,000. When you look at NOAC's breakdown, very few local authorities go significantly above that. There are a few, but there are no big outliers. To what extent is the average turnaround time complicated by local authorities in certain cases having to go to the Department to seek top-up funding for refurbs? Are there any issues with delays in getting sanction for those? I have spoken to some local authority housing managers and staff who cite those issues as two of the challenges. Deputy McGrath is right that there is also a variance across local authorities and that has to be understood, but 33 weeks on average is still quite long and the funding requirements are significant. Will the witnesses respond to those, and do they think local authorities have a dependency culture and are coming cap in hand looking for handouts? Or do they think that when they request money for casual re-lets that it is a reasonable request from the Department?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_193">Local authorities, under the voids programme, which I do not think is an accurate description of what we are talking about-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_101">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_194">They are casual re-lets really.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_195">They are casually re-lets involving pre-let repairs. The Department funds that under the programme to an average of €11,000 per property. That involves cleaning out the property, and in some cases rewiring, replumbing, and putting a new heating system, new kitchen and new sanitary ware into the property. The sum of €11,000 is seen as a reasonable figure, given the age of some of these houses and the fact that those items I have mentioned might not have been replaced in 20 years.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_103">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_196">That is the maximum funding they can request. A local authority cannot go looking for tens of thousands. It can ask for a top-up of €11,000.</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_197">Local authorities can, in limited circumstances where the property, or a group of properties, has gone into such a condition and is so old you can do a SHIP renewal on it, but they are relatively rare and are for houses that might have been built in the 1920s-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_105">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_198">The 1930s or the 1940s.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_199">The pre-let repairs is €11,000, but you can see the amount of money we put into them ourselves. It is important to remember that when a social house comes back, it is not unreasonable to replace a 25-year-old or 30-year-old kitchen or an oil-fired boiler with a modern, efficient boiler, and replace all the plumbing and electrical fixtures. That costs money. Part of the reason for the delays is that we want to do those works while the house is empty because it is not feasible to do them if you have a young family in them, for example, and you want to do a full rewiring. That is why we do it then, because it is less inconvenient and quicker to do it.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_107">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_200">In the voids programme, which is funding casual re-lets now, is there a period where each property has to go to the Department for sanction? Is there a turnaround time for that? What happens there?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T16:40:00+01:00"/></from>
+          <p eId="para_201">Under the voids programme, we are allocated a number of properties. Then on a quarterly basis we make our voids claim and submit the list of properties that have been re-let in that period, the amount each individual property cost and if we hit €11,000. You may not always hit €11,000 but in a lot of cases you will, so we will detail what it cost us to re-let the property and we will then get back the €11,000.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_109">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_202">Will the money be spent up front or will some local authorities, such as smaller ones, be nervous about spending it up front without sanction being provided?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_203">Within our revenue budget each year, we would provide funding for re-lets in south Dublin. We would pay that money up front and recoup it.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_204">It is important to realise that local authorities put significant amounts of their own resources into housing maintenance. I am talking about millions of euro just to keep our housing stock up to scratch. We have planned investment programmes and windows-and-doors programmes. Councillors will be aware of the work we do from our own resources every year.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_205">I thank Mr. Taaffe. Deputy McGrath may now contribute again.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_113">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_206">I have a few quick questions rather than a long introduction, as I had earlier. Reference was made to the Housing Agency fund for land acquisition. That is an important fund. Reference was also made to the CPO process. The supply of land in the pipeline is an issue in many local authorities. I feel from my experience that they were not as proactive as they needed to be on this issue.</p>
+          <p eId="para_207"> I would like Mr. Taaffe to tease out the CPO issue a little. Are the relevant powers now in place for local authorities? I understand they are. Why are there not more compulsory purchases? That is the essential point. Can the fund from the Housing Agency be tapped into for a CPO option? Why are there not more compulsory purchases?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_208">The fund is in place and local authorities have been active in drawing it down and acquiring land. The main reason CPOs have not been more of feature is that local authorities have had a land bank to deliver on. They have been focusing on delivering the associated projects, but they are now looking farther out. At present, there are 30,000 to 35,000 social houses in the local authority pipeline. Local authorities were focusing on activating their existing land banks and getting projects through planning and finished on site. Now they are starting to say they need to start talking about delivery in 2028, 2029 and 2030. They have been acquiring land but land is really not available on the market in many cases. The alternative is CPOs.</p>
+          <p eId="para_209"> To be fair, CPOs are a last resort. We like to do things by agreement. There is a misconception about CPOs. They are more expensive than buying land by agreement because the market value must be paid. There is a risk to local authorities in using a CPO. For example, I was involved with one where the valuer said the land would go for anything between two given prices, but there was a very significant difference between the two. Sometimes it can be difficult enough to quantify what the final CPO cost will be, but we are certain that it is a matter of market value plus a percentage. Under the CPO headings and rules, one has to pay for injurious effects, disturbance and reinvestment costs, which all add to the cost. One of the things we like to see is a formal underwriting process. For example, when we purchase lands compulsorily for a TII project, we know we will be reimbursed for the costs, whereas with a CPO for housing we have to make a claim and there is a level of uncertainty. One of our submissions is that we want underwriting of the CPO cost. Ultimately, if we cannot reach agreement, the CPO cost is determined by a property arbitrator. There is a risk associated with the price that the property arbitrator will ultimately set for land, and we need to be sure that we can recoup it.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_115">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_210">I thank Mr. Taaffe for that. I appreciate it is a sensitive issue and that a CPO is not issued lightly. I foresee compulsory purchases only in the case of land that is zoned and has possibly progressed along but that has just not been activated. That is the land that needs to be examined.</p>
+          <p eId="para_211"> I have a couple of questions on modern methods of construction. What needs to happen for these to be a greater feature in housing supply?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_212">Modern methods of construction are used a lot more in housing than people realise. 2D timber-frame panelling is a modern method of construction and it is widely used in the private sector. What we need to gear up to is the 3D MMC. This effectively implies boxes, for want of a better term. There are three companies in Ireland certified to use such systems. We need to specify in our procurement that only providers of 3D modern methods of construction can apply to tender for the job. We are doing this as a pilot in Wexford. We need to ensure the designs we are preparing for the houses are readily usable by or accessible to the suppliers and manufacturers. There is no point in designing a house for which they cannot provide the system. Therefore, collaboration is required. We are using the pilot to learn how the process works. We need to tailor our designs to the systems that exist and incentivise the relevant companies to tender, outlining that we are not accepting tenders for traditional construction. Ultimately, because there is a limited amount of 3D MMC, it is not that much cheaper at the moment. The scale is not sufficient, so we need to ring-fence projects for the MMC industry so it can compete.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_117">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_213">Deputy Stanley mentioned the standard designs. Whether these fit into the MMC model might need to be looked at.</p>
+          <p eId="para_214"> On cost rental, I hear Mr. Taaffe on the borrowing risks and the caution in the local authorities. These need to be addressed. Mr. Taaffe has explained this fairly well to us.</p>
+          <p eId="para_215"> With regard to the ambition in the programme for Government for 12,000 units of social housing, I have a question and statement. I feel the local authorities, by not building themselves, are taking from private capacity. If a developer comes to a local authority with permission and states a turnkey development can be done, it means the houses will not be available for private purchase. That is happening a lot. For the 12,000 to be achieved, I would like to see more local authorities getting back into the business of building houses on a large scale rather than doing more deals with private developers. The latter takes from private capacity. Mr. Taaffe might refer to that.</p>
+          <p eId="para_216"> My last point is on consistency across local authority areas. Mr. Taaffe mentioned that choice-based letting is not applicable in all local authorities. A right-sizing scheme features in only some local authorities. What is Mr. Taaffe's opinion on this? Should we try to roll out a right-sizing scheme across the board?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_217">All local authorities will have choice-based letting, CBL. That is a commitment and we are all working towards it. Similarly, chances are that the new housing policy could state right-sizing will be applicable in all local authority areas. I do not believe local authorities would have any issue with that.</p>
+          <p eId="para_218"> I have forgotten the earlier question, on the-----</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_119">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_219">I was more of a statement. It was on private capacity being usurped to meet local authority targets.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_220">I agree. The most effective way to control our pipeline is by building local authority houses on local authority land because that can be controlled, as can the pace. We need more staff resources to deliver in this regard. I agree this is the most effective way of proceeding. We have quality schemes, we have the right procurement processes, and we can innovate even more on those processes.</p>
+          <p eId="para_221"> The other element is that when we are designing schemes and their layout, whether it is for one-bed, two-bed or age-friendly housing, we are best placed to know what the need is. I agree that there needs to be a good blend but additional funding for staff in local authorities is needed.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_222">Sinn Féin has an additional slot, of about two minutes. We went over time on a couple of slots.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_122">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_223">Let me make a suggestion because I have already spoken twice. It might be fair if those who have not spoken yet speak now, and the Chair can let me in after that.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T16:50:00+01:00"/></from>
+          <p eId="para_224">That is fair. I am the last member of the committee on the rota. I will take a couple of minutes to ask a few questions.</p>
+          <p eId="para_225"> A refusal rate of 25% was mentioned. Is it the case that every local authority has a policy of removing people from the housing list after two refusals? Should this be changed? In the current climate, should it be a case of being removed after the first refusal?</p>
+          <p eId="para_226"> Several members referred to treatment plants. The second and third largest towns in my county, County Longford – Ballymahon and Edgeworthstown – have not capacity for any additional housing. We actually have a company in the county that makes sewage treatment plants and exports them to councils in other countries. Mr. Taaffe made the point that we should be using these treatment systems for housing in towns and villages whose public systems are at capacity until whatever date they are extended.</p>
+          <p eId="para_227">Does Mr. Taaffe feel that the Department of housing trusts the local authority to deliver housing? There is a four-stage process which is a cumbersome process to deliver housing. It slows it up to two years to two and a half years per project. It is supposed to take 57 weeks. Are enough local authorities using the single stage process? </p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_228">I will leave the refusal rates to Ms Leech to answer. On the treatment plants, we need to do something to address the issue of development in more rural parts of Ireland in smaller towns and villages. We are not going to be to provide Rolls-Royce treatment systems everywhere. We need to think about what we can do and what we do quickly, but the balance has to be struck between environmental and sustainable. We have to be sure that whatever is put in meets the environmental standard, is going to be supervised and put in correctly, will do the job we need it to do and can be maintained. I sound a note of caution on what we call package plants on developer-provided infrastructure. There are still some legacy issues out there from pre-2008, but we need to address those and not say that we cannot do that anymore. We need to come up solutions that will work, will allow us to repopulate and expand some of our towns and villages.</p>
+          <p eId="para_229"> On the four-stage approval process, first it is important to state that roughly speaking, approximately 80% of social housing delivery comes through a single stage process at the moment. The approved housing bodies, AHB, delivery and the turnkeys that local authorities do are all a single stage process. The four-stage process then kicks in for our own delivery on our own lands. There has been a lot of looking at it jointly between ourselves and the Department to streamline, to simply it and to understand it. It is not as a big of delay as it would have been several years ago. There is that trust now. The standard house layouts and the standard templates that we use are a huge assistance in that regard. At the end of the day, we have to have an approval process. We are spending significant amounts of public money here. We need to be sure that we are building the right houses in the right places to meet the right need and to the right standard. Having said that, in my view, the original target of 59 weeks is not achievable because by the time you procure a design team if you are going that way or do up your plans, get through planning and go through tendering, that is not physically possible in many cases. It does take longer than that. The issue on meeting the targets is that we need more projects. We need to keep doing what we are doing but we need more projects to meet our targets. However, that involves more staff, more project management, and more importantly, more land.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Elaine Leech<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_230">Relating to my own local authority, two refusals are permitted. We track the reasons properties have been refused because it is gives us a greater insight as to why a property may not be attractive or if there are multiple refusals on a property, what do we need to do to re-let that property. Again, in terms of the re-let timeframes, refusals do slow it down. On re-lets, if there is a refusal after going the whole way along and at the end the applicant decides to decline the property, then the process has to start again. Choice-based letting is key here because it is applicant sourced. The applicant is making the decision to express an interest in that property. We should see lower rates of refusal on applicant sourced properties through CBL.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_231">There are derelict sites everywhere and while we have a levy, an awful lot of money is not being collected across the levies. If we were stronger nationally on doing that, we would see fewer derelict sites and would see them being brought back into use. I believe that in the region of €20 million is uncollected nationally. Is there any reason that is the case?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_232">In my experience with derelict sites levies, in a lot of instances the owner of the site is not in a position to transfer or pay cash. They do not have the means to pay it over. They might be elderly people. They might be a company that is only a shelf company. It does not exist anymore or it is unclear who the actual owner of the site is. What we do is we put a charge on the property so that if it comes up for sale, we can try to collect it at that point. It is very complex, however. In a lot of cases, in my experience it is not even clear who owns the site. We sometime cannot find who an owner is. We end up doing a CPO on it to clear up the title on it and get it back into the market public for sale with a title document associated with it. It is a very complex area. In some cases, for the amount of levy, it would actually cost us more in legal fees to collect a smaller levy. We have to make that judgment call on spending significant money through the legal process to collect a smaller debt. Our focus is not on collecting levy, it about getting derelict sites back into use as quickly as possible. </p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_233">That concludes the first round. I am conscious that a couple of members of the committee might want to come back in for a couple of minutes before I go to the outside Members. </p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_129">
+          <from>Deputy Rory Hearne<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_234">I have a couple of follow-up questions. I appreciate the time the witnesses are giving today. Do the witnesses have a figure on how much local authority-owned land there is that is currently zoned for residential development? If they do not, maybe they can provide it. Do they know if they can provide that information? That is separate from what they said about potential sites. There is going to be all of this rezoning of land for development under the new planning framework. What can we do to avoid that land essentially spiking in value as a result of the rezoning and that adding to house prices down the line? Do the witnesses think the land value tax will have an impact? It might come back to a CPO question. Is a pre-emptive way of carrying out a CPO on land prior to the rezoning that would keep that value of the land and to ensure it is affordable land going to affordable housing delivery? That essentially would be implementing the Kenny report. How will we avoid this huge rezoning adding to house prices because land is going to go up in value and that is going to feed into higher house prices?</p>
+          <p eId="para_235"> I have questions around the issue of affordable housing need. While Mr. Taaffe made the point earlier relating to Wexford and the cost of housing that can be bought, I looked up the figures while we were discussing this. There are at least 15,000 adults still living with their parents in Wexford. In my understanding, they are not captured in the housing needs and demand assessment. Can the witnesses provide a comment on that? Is there a gap there in terms of that housing needs and demand assessment that we are not capturing affordable housing need properly? Should we be moving to something I have talked about, namely, an affordable housing assessment of need along with a social housing assessment of need that would create what we could call a waiting list? We have a social housing assessments of need and then we would have an affordable housing assessment of need, so we can plan what is the affordable housing level of need because we currently do not have any figures on that.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:00:00+01:00"/></from>
+          <p eId="para_236">The figure that I have at the moment for local authority owned land is 563 sites that have a potential delivery of 21,500 houses. I do not have the subset of that that is zoned. I estimate that all of it is either formally zoned or is in such a format in towns and villages that it would be it be acceptable for development. It might not have a formal zoning on it but the principle of residential development on it would be accepted in the county development plan. </p>
+          <p eId="para_237">I would imagine that is what it was because it would not have made its way into that land bank data without that figure. It is important to say that is the local authority social and affordable housing supply for the next number of years. If you look at it in another way, if our target is 12,000 social houses, that is less than two years' supply. You can see that while it sounds like a big figure, it is not in reality.</p>
+          <p eId="para_238"> On the land value tax, it is too early to say. The RZLT kicks in now at 3%. It is too early to say really but I think it is a worthwhile measure and we should see what effect that has on the price of residentially zoned land.</p>
+          <p eId="para_239"> On the affordable housing need, the HNDA was, I suppose, a model to look at that and house prices in an area, and then look at CSO data on incomes. Then there are obviously people who would like to be able to buy a property but their income limit would not allow them to buy it because of the macroprudential rules from the Central Bank. Their income levels might be too high to qualify them for social housing so they are at that pinch point in the middle. That is what the affordable housing schemes operated by the Department are aimed at.</p>
+          <p eId="para_240"> My opinion on it is that to gauge what that need or demand is, several local authorities have done a survey. They have gone out to people and said they are looking at providing affordable houses in the local authority. They asked them what area they would like to live in, what their salary is, and what they see as an affordable housing price. That is the real gauge of what is out there and what the demand is. Unfortunately, there are a lot of people who aspire to own a property but their incomes will never put them in that bracket where they will be able to afford even an affordable house. We need to assess, and the best way to do that is with the surveys. Cork County Council, Cork City Council and some of the Dublin authorities have done that. We have done a limited one in Wexford but we are going to do a more general one, and that is the real measure of what people see as their need, where they want to live and what their ability is in terms of income to know what is affordable and what is not affordable for them. To my mind, that is the real measure.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_131">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_241">I thank Mr. Taaffe. At our previous meeting, we had an agreement with regard to non-members of the committee who wished to speak, and I know Deputy Sheehan indicated to us previously. We are going to try to give five minutes for questions and answers to Deputy Sheehan, Senator Byrne and Deputy Lawlor, if they wish to ask a question. Do Deputy Butterly or Senator Murphy have any quick questions to want to ask?</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_132">
+          <from>Deputy Paula Butterly<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_242">I have one quick question. The witnesses talked about CPOs. I have always been an advocate for the compulsory sale orders, and considering the challenges you come across with CPOs, whether for recreational infrastructure or, to be quite honest, the onus or burden put on local authorities to follow that lengthy process, what would Mr. Taaffe's opinion be with regard to CSOs rather than that?</p>
+          <p eId="para_243"> I also wish to highlight that everyone is welcome to County Louth to see the 3D houses that were built. We are very proud of them.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_244">Compulsory sale orders are something that should definitely be examined. If you take our URDF funding, where we CPO property, we are actually CPO-ing it to clean title on it. Where there is an owner, really we just want them to sell it. In some cases, the threat of the CPO is enough to make them put it on the market, which is what we want. There is a role for compulsory sale orders for properties like that where you bypass us acquiring it and then selling it, and it just goes straight to the market, which is ultimately what we want.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_245">I thank Mr. Taaffe. Deputy Sheehan has five minutes.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_135">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_246">I thank the Cathaoirleach and I thank the witnesses for their presentation. I wanted to ask about the Minister's upcoming section 28 guidelines regarding the reopening of development plans. Is it the witnesses' understanding, from the way this will be worded, that these guidelines will be advisory and not mandatory? Do they think that if there is not a mandatory mechanism with respect to these guidelines, a lot of this could just amount to something that sounds a lot better than what it would actually transpire to be?</p>
+          <p eId="para_247"> Regarding voids, do the witnesses think local authorities are doing too much work on some of these houses, which is what the Taoiseach said in the Dáil? On the issue of the sanction, do they think it would be easier if the funding could be drawn down more frequently, maybe on a monthly basis?</p>
+          <p eId="para_248"> With regard to the working group looking at staffing, when is that expected to report and is that working group looking at salaries? I know the salary of a technician in a local authority is only €27,000 which, with the way things have gone up in recent years, I personally think - I do not know about the two witnesses - is far too low. It is going to be hard to retain anybody at that salary because you will get much more in the private sector.</p>
+          <p eId="para_249"> On the tenant in situ scheme, do the witnesses think there will be a need for an additional volume of funding this year given that we have had such a fall-off in commencements? It has become very clear to me in the first half of the year that we are not going to be able to build ourselves out of this quagmire this year.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_250">My understanding on the section 28 is that it will be a direction to all local authorities purely because the Minister has used that word himself. He will be directing it. It will be mandatory for all local authorities to vary their developments plan to reflect the new population targets.</p>
+          <p eId="para_251"> On the voids, or the pre-let repairs, which is a phrase I would prefer to use, no, I do not think so. We do the right level of work. We try to aim for the €11,000. We do the level of work that is necessary given the condition of the stock, and given that it is right to replace components of a house that need replacing. We obviously are seeing increased costs in that. Construction costs are nearly double what they were pre-Covid for that type of work and there are only so many contractors who will actually work with the local authorities and turn those houses around quickly.</p>
+          <p eId="para_252"> On the drawdown, generally we draw down quarterly on our voids programme and our routine projects. On the social housing fund, the capital fund for new houses, we draw down as and when required. Generally speaking, that is not a huge issue. It can become a bit of an issue towards the end of the year when there is a huge amount of claims coming in for the capital programme. We can be waiting for a couple of months for significant drawdowns on our capital programme from the Department.</p>
+          <p eId="para_253"> With regard to staffing and starting salaries, that is a very important issue, particularly with respect to the case the Deputy mentioned about technicians. Yes, that should be addressed. One of the issues we also fall foul of when it comes to recruitment is that if we recruit somebody who has not worked in a local authority before, even though they may have years of experience as an architect, engineer, quantity surveyor or whatever it is, because they are coming in as a new entrant to the local authority sector they automatically start at the bottom of the scale. That is even though previously, we would have been allowed to give them incremental credit saying their experience is valid, so we could put them up a couple of points on the scale to reflect that. We are not allowed do that at the moment, and that is a big problem for us with regard to recruiting and attracting people from outside. That is something we think should be changed and needs to be looked at. On the staffing report itself, we hope to have that concluded by the middle of the summer, there or thereabouts, with what our required list will be.</p>
+          <p eId="para_254"> With regard to the tenant in situ scheme, the reality of it is that we, as local authorities, will acquire whatever funding is available. We will utilise what every funding is given to us to purchase tenant-in-situ properties that come to us and meet the criteria. Whatever level of funding there is is a matter for the Minister and the Government, and we will work within those confines.</p>
+        </speech>
+        <speech by="#CathalByrne" eId="spk_137">
+          <from>Senator Cathal Byrne<recordedTime time="2025-05-20T17:10:00+01:00"/></from>
+          <p eId="para_255">I am sure that when Mr. Taaffe thought that when Deputy Lawlor and I ceased being members of Wexford County Council, his days of answering our questions in these settings were over but here we go again.</p>
+          <p eId="para_256"> I have just two general questions I would be interested in hearing the witnesses' thoughts on. First, the local infrastructure housing activation fund that was brought in previously is currently closed to applications. I would be interesting in hearing the witnesses' thoughts on whether they think that is something that should form part of the new Housing for All plan that will be published later this summer.</p>
+          <p eId="para_257"> Second, a point was discussed a few times by other speakers earlier regarding wastewater treatment systems and development-provided infrastructure.</p>
+          <p eId="para_258">I have seen some of the infrastructure failures arising from Celtic tiger-provided infrastructure in County Wexford. I am conscious of the fact that if we are to rely on Irish Water, or individuals building one-off houses, there has to be a mechanism in between what Irish Water does and what one-off houses do, where there are developer-provided wastewater treatment systems. I am interested in how we find that middle ground that works for everybody so we do not have the blockages we currently have or the failures we had in the past.</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_259">It is good to see the Senator. I was involved in some of the LIHAF schemes a number of years ago. A LIHAF scheme is essential, but two things need to be addressed. First, local authorities are required, if memory serves, to provide 25% of the funding from their own resources. It is a very significant challenge for local authorities to provide that level of support. We would like to see it at 100% funding. Second, in numerous cases, if a piece of infrastructure that a developer could provide was involved, for example, a relief road that spanned a number of different landowners, and those landowners and developers were probably best placed to deliver that, one of the terms and conditions of the old scheme was the local authority had to deliver it directly, which slowed things down. There has to be a mechanism where we can partner with the private sector to deliver agreed infrastructure under an agreement or licence, and an agreed cost, so it can get on with it and deliver it quickly.</p>
+          <p eId="para_260"> I urge significant caution and consideration regarding wastewater treatment systems. As the Senator said, we are still dealing with legacy issues in that regard. We have to think outside the box about how we provide wastewater treatment systems and infrastructure in more of our settlements. It is an issue that needs to be considered carefully, so it can be done to the correct environmental standards and is environmentally sustainable. The operational cost of these plants also needs to be considered. They require a fair bit of funding to keep them operational and to make sure they are operated by sustainable groups that will be around, be they Uisce Éireann or whatever. Funding should be in place to operate them correctly so we are not dealing with significant environmental issues in future.</p>
+        </speech>
+        <speech by="#GeorgeLawlor" eId="spk_139">
+          <from>Deputy George Lawlor<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_261">It is good to see Mr. Taaffe again in a different arena. My colleague, Deputy Sheehan, raised the issue of voids, which came up on the floor of the House last week. The Taoiseach effectively scolded local authorities for what he perceived as their inaction in looking for too much money and taking too long to restore properties to use. I raised the issue of dereliction and larger scale derelict sites with the Taoiseach in the House today. Some of those are not within the gift of local authorities but Mr. Taaffe will be aware of the old Wexford county hospital, for instance, which has been a dangerous derelict building for 33 years. The Hookless leisure unit has been a dangerous derelict site for 18 years and St. Kevin's Hospital, Cork city, in the Taoiseach's constituency, has been closed since 2002 and has become derelict and dangerous. The Taoiseach again pointed the finger at local authorities but it takes time to bring these issues to resolution. The Taoiseach informed me that St. Kevin's has now been acquired by the Land Development Agency for the construction of apartments or houses.</p>
+          <p eId="para_262"> In Mr. Taaffe's view, why does it take so long to bring any action against the owners if, as he said previously, we can find them? An answer to a parliamentary question I recently submitted indicated that when properties go into receivership, they are vested with the Minister for public expenditure so they are effectively owned by the State. These are dangerous derelict sites, yet they are left to rot for many years. Do we need to beef up the legislation regarding what local authorities can achieve or do to take action against what are, as Mr. Taaffe will know from the two in Wexford I mentioned, blights on the landscape and are dangerous? This is in the current climate of requiring places close to towns, in particular, to provide accommodation, be it apartments or houses. What is required to beef that up to allow local authorities carry out that work?</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_263">I thank the Deputy. Dereliction is exceptionally complex. Let us separate it into two categories. One is where there is an owner who can be clearly identified. In those cases, owners might not have the funding to do anything with derelict sites or, for a myriad of reasons, might want the property but just do not have the wherewithal to develop it. It is about incentivising such owners to develop or sell those properties. That is the first issue. They are relatively more straightforward to deal with in that you can talk to somebody who owns that property, work with that person and try to point him or her in the right direction of getting the dereliction dealt with.</p>
+          <p eId="para_264"> The more complex cases are those where there is no owner, or there is a dispute over ownership, or the property is in the ownership of a company that has long ceased to trade or exist. The issue there is not the legislation. The legislation gives us the power to serve notice, impose levies and, ultimately, to CPO those properties. In many cases, the issue is these properties require a huge amount of work to render them un-derelict, or to demolish them or whatever. For example, we had a case in Wexford where a number of properties were derelict and dangerous. In fact, one of them collapsed. We had to do emergency works. We expended in the order of €250,000 to make them safe and to demolish them. We then put them back on the open market, where they were valued at €50,000.</p>
+          <p eId="para_265"> Local authorities have to be very careful when they get into this because they could end up with a huge financial burden on the public purse. That is why we tread carefully on these. The idea is not to make money on them but to render them un-derelict. That is where the complexity and risk comes for a local authority. To be fair to the Department, call 3 for the urban regeneration development fund was specifically targeted at dereliction. That has been a game-changer for us in that we have compulsorily purchased quite a number of properties and got them back onto the market. More funding and focus on that may be required. If we had the funding to do that, get involved in that and take the risk out of it, that is how we will make a difference on dereliction.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_141">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_266">Did Deputy Ó Broin want to come back in?</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_142">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_267">Is there time?</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_268">The Deputy has two minutes.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_144">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T17:20:00+01:00"/></from>
+          <p eId="para_269">I have four quick questions. We got reports earlier this year from local authority housing managers of delays in the social housing investment programme, SHIP, the capital advance leasing facility, CALF, and cost rental equity loan, CREL, first-stage approvals, either directly for local authorities or AHBs. Is that still the case or are those approvals back to what their ordinary time would have been? For the benefit of members, will Mr. Taaffe tell people what the borrowing cap is? When people hear what the borrowing cap is in a year for every local authority, they will realise the scale of the challenge. It is a tiny amount of money for all local authority borrowing. Is there any update on where that is at? Since the single-stage process was created, 543 homes have been delivered, which is nowhere close to what was anticipated. My understanding is there is quite a lot of additional risk for the local authority as it is for smaller schemes. Does Mr. Taaffe have any views on why it has not been successful?</p>
+          <p eId="para_270"> The local government cost-rental backstop was promised several years ago. Is there any discussion with the Department about what that might look like? It is obviously necessary. South Dublin, for example, has a very significant and innovative new cost-rental project that is should be commended for. That backstop will be key. If the borrowing and the backstop are not in place, local authorities will not be doing much cost rental beyond Tallaght and St. Michael's, as far as I can see.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:30:00+01:00"/></from>
+          <p eId="para_271">I am not aware of any excessive delays with SHIP or CALF at the moment. Over the winter, there were some schemes that the Department was not able to turn around as quickly as it would have liked. To the best of my knowledge, the situation has largely been resolved, although I have not discussed that with the AHB sector directly.</p>
+          <p eId="para_272"> On the borrowing cap, unfortunately, I do not know what the figure is. I know it is small, and it is certainly under €100 million.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_146">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-05-20T17:30:00+01:00"/></from>
+          <p eId="para_273">It is less than €50 million per year, and that is all borrowing for all local authorities. The reason I am saying this is because the borrowing for St. Michael's Estate, which is the largest cost-rental project so far, is €22 million. Combined borrowing for all local authorities for a year amounts to about €50 million, while the borrowing for one project is €22 million, albeit that it will be staged over a couple of years. This just shows the constraints on local authority borrowing.</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-05-20T17:30:00+01:00"/></from>
+          <p eId="para_274">On the single-stage process, the issue of risk to local authorities and the transfer of risk if there are cost overruns for local authorities, this has been dealt with in the circular, where the limit was moved from €6 million to €8 million. In my opinion, the reason the local authorities do not use it as much as they should is because it probably does not speed up the process of delivery as much as people think. They still have to go through planning, design and procurement. Local authorities have taken the view as they still have to do all of that anyway, they can do the four-stage process while doing it and not have what they perceive as the risk. To be fair to the Department, that issue of risk was raised with it and it said in the circular that it would look favourably at any cost overruns, as it normally would for the four-stage process. As stated earlier, 80% of delivery involves the use of the single-stage process in some shape or form across the AHB sector and the local authority sector.</p>
+          <p eId="para_275"> The cost-rental backstop is in our submission for the new housing plan. I am not aware of any update on the backstop.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_148">
+          <from> An Cathaoirleach<recordedTime time="2025-05-20T17:30:00+01:00"/></from>
+          <p eId="para_276">That concludes our consideration. I sincerely thank Mr. Taaffe and Ms Leech for attending. This is the first meeting of the housing committee for the new Government term. We met early after the committee was constituted in the Dáil in order to hit the ground running and be able to have public meetings. A number of organisations were invited in. The CCMA took up that invite straight away and we sincerely thank the witnesses for that. They have given a comprehensive reply to every question asked by every member. That has informed me and all the members of the position at local authority level in terms of delivering the various projects and where we feel changes need to be made to improve that. I made the point in this regard when I asked whether the Department trusts the local authorities to deliver. I trust my local authority to deliver in my county, and I think we need to see more of that. We need to change and adapt the processes, and we will hit our target of 12,000. However, if we keep going as we currently are, it is not going to happen. Those changes need to be made. I know every local authority in the country wants to play its part to ensure we at least hit the social housing targets for 2025 and the years ahead.</p>
+          <p eId="para_277"> That concludes our public session. I propose that we go into private session to consider other business. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_7">The joint committee went into private session at 5.33 p.m. and adjourned at 6.09 p.m. until 3 p.m. on Tuesday, 27 May 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

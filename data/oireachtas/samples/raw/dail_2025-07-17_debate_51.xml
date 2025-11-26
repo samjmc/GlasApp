@@ -1,0 +1,797 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-17/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-17/debate"/>
+          <FRBRdate date="2025-07-17" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_children_and_equality"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-17/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-17/debate/mul@"/>
+          <FRBRdate date="2025-07-17" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-17/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-17/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="ChrisAndrews" href="/ie/oireachtas/member/id/Chris-Andrews.D.2007-06-14" showAs="Chris Andrews"/>
+        <TLCPerson eId="ClaireKerrane" href="/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08" showAs="Claire Kerrane"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="NessaCosgrove" href="/ie/oireachtas/member/id/Nessa-Cosgrove.S.2025-01-29" showAs="Nessa Cosgrove"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SharonKeogan" href="/ie/oireachtas/member/id/Sharon-Keogan.S.2020-03-30" showAs="Sharon Keogan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM LEANAÍ AGUS COMHIONANNAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Children and Equality</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-17">Déardaoin, 17 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-17">Thursday, 17 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NessaCosgrove">Nessa Cosgrove</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MikeKennelly">Mike Kennelly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AidanFarrelly">Aidan Farrelly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SharonKeogan">Sharon Keogan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#ClaireKerrane">Claire Kerrane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Chris Andrews.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#KeiraKeogh">Teachta / Deputy Keira Keogh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business  of Joint Committee<recordedTime time="2025-07-17T09:30:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:30:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputy Seán Ó Fearghaíl and Senator Nikki Bradley. We will now go into private session to consider some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>The joint committee went into private session at 9.34 a.m., suspended at 9.50 a.m., resumed in private session at 9.53 a.m. and resumed in public session at 9.53 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>General Scheme of the Equality (Miscellaneous Provisions) Bill 2024: Discussion (Resumed)<recordedTime time="2025-07-17T09:50:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:50:00+01:00"/></from>
+          <p eId="para_13">The agenda item for consideration this morning is pre-legislative scrutiny of the general scheme of the equality (miscellaneous provisions) Bill 2024. We are joined by David Joyce, equality officer with the Irish Congress of Trade Unions; and Ms Rachael Ryan, head of the legal rights unit in SIPTU. We are joined by Rebecca Gorman, head of policy and media with the Irish National Organisation of the Unemployed and Andrew Holohan, community activist with All Together in Dignity in Ireland, who are both members of the Add the 10th Alliance. We are joined by Dr. Emer Begley, director of advocacy, and Dr. Meredith Raley, research and policy officer with the Disability Federation of Ireland; Judy Walsh, lecturer in equality studies, University College Dublin; and Eilis Barry, chief executive, and Christopher Bowes, policy and public affairs manager at the Free Legal Advice Centres. If I have got any of the witnesses' names wrong, they can let us know when they start. They are all welcome to this meeting. I thank them for taking the time this morning.</p>
+          <p eId="para_14"> I wish to inform all present that representatives of LGBT Ireland were invited to attend this meeting. However, due to other commitments, they had to unfortunately decline the invitation. I also wish to advise all present that Ms Clíona Kimber, senior counsel, has also had to decline the invitation to appear before the committee due to unforeseen work commitments. The purpose of the meeting this morning is to hear the views of the stakeholders present on the provisions of the general scheme under consideration. It is hoped that this engagement and the engagement last week will assist the committee in the preparation of its pre-legislative scrutiny report on the general scheme.</p>
+          <p eId="para_15"> Before we begin, I have a few housekeeping matters to go through. I advise everyone that the chat function on Microsoft Teams should only be used to make the team on-site aware of any technical issues or urgent matters that may arise and should not be used to make general comments or statements during the meeting. I remind members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit members to participate where they are not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, if any members are participating via Microsoft Teams, I ask that prior to making their contribution to the meeting, they confirm that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_16"> In advance of the delivery of opening statements, I advise witnesses and members of the following in relation to parliamentary privilege. They are protected by absolute privilege in respect of the presentation they make to the committee this morning. This means they have an absolute defence against any defamation action for anything that they say at the meeting. However, they are expected not to abuse this privilege. It is my duty as Cathaoirleach to ensure that this privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> Witnesses will be allocated with three minutes of speaking time to deliver their opening statements. Given the number of witnesses before us this morning, I ask that they adhere to the time allocation. Timers will appear as they start talking. Once the delivery of the opening statements has been completed, they will be followed by a questions and answers session with members. If witnesses require a comfort break during the meeting, they should indicate to me and I will suspend the meeting for a few minutes. If there are any questions that they are not prepared for or are uncomfortable answering, they can also advise me of this.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_3">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T09:50:00+01:00"/></from>
+          <p eId="para_18">There is something on the desk here. What is it? I cannot make it out. Is it a figure?</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:50:00+01:00"/></from>
+          <p eId="para_19">I thank Senator Keogan. If the witness would not mind, we do not have any bottles of water, crisps or anything like that with any branding in here.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. David Joyce<recordedTime time="2025-07-17T09:50:00+01:00"/></from>
+          <p eId="para_20">I thank the Cathaoirleach. Congress welcomes the opportunity to participate in the discussion on this important Bill. I am joined by my colleague from the SIPTU legal unit, Rachael Ryan. Congress and a number of affiliates participated actively in the review of equality legislation, submitting views to the consultation held by the Department. We were also part of the future of equality legislation advisory committee to the Irish Human Rights and Equality Commission, IHREC, which also fed into the review. The heads of Bill we are looking at propose a number of welcome changes to Ireland's equality legislation, including the prohibition of intersectional discrimination. However, that is only in the Equal Status Acts. We think it would be good to include it on multiple grounds or on the basis of a combination of grounds in the Employment Equality Act. The committee might consider looking at that. On equal pay for people with disabilities, the general scheme would remove the exception to the Employment Equality Acts which allows for people with disabilities to receive a lower level of pay in certain circumstances.</p>
+          <p eId="para_21"> There are also a number of important issues which are not addressed by the general scheme, including banning discrimination on the basis of socioeconomic status. I know the Government previously committed to do that and has recently been informed that this is undergoing an SME test, which we will hear the results of in the autumn. I suppose we will await that. Also not addressed is banning discrimination on the basis of gender identity, gender expression and sex characteristics in order to provide explicit protection to all trans and non-binary people. We and SIPTU, in our submissions, also recommended amending section 101 of the Employment Equality Acts to let workers file termination claims under both this Act and the Unfair Dismissals Act.</p>
+          <p eId="para_22">Since this change has not been made or proposed, workers remain limited to one avenue of recourse. We would like the committee to reconsider this proposed amendment also.</p>
+          <p eId="para_23"> There are a number of EU directives that require transposition in the coming period and that could have been better included. The pay transparency directive is referenced in heads 4 and 5, which is very welcome. However, it is clear that what is outlined in the heads comes nowhere close to a full transposition of the directive. There are many other important provisions in the directive that will require implementation, not least a legal right to represent workers and a framework for interaction via joint pay assessments. Perhaps all these will not require primary legislation, but it would be good to get a steer from the Department on what its intentions are in this regard.</p>
+          <p eId="para_24"> The EU directives on standards for equality bodies, which contain binding standards on the mandate, independence, resources, tasks and powers of equality bodies such as IHREC, are also on the table today. I will finish there. I look forward to participating in the discussion.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_25">I thank Mr. Joyce. Ms Gorman and Mr. Honohan are going to deliver the alliance's opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Ms Rebecca Gorman<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_26">I thank the Chair for inviting the Add the 10th Alliance to appear before the committee. We are really grateful for the opportunity.</p>
+          <p eId="para_27"> The Add the 10th Alliance of civil society organisations is calling for the inclusion of socioeconomic status as a tenth ground in our equality legislation. It must be added at this stage in order to be included in the final agreed Acts. Discrimination against people facing socioeconomic disadvantage is a rising concern for communities across Ireland. A CSO report from 2024 shows one in five adults has experienced discrimination. In the context of this group, 17% of discrimination was based on socioeconomic status. The figure rose to 27% when people were looking for work. It is the most common ground for discrimination reported in health services and with An Garda Síochána. Unlike with the other nine protected grounds, there is no legislation in place to allow people to seek redress when they encounter this type of discrimination. It is highly unfair that people are not protected against one of the most common forms of discrimination in Ireland.</p>
+          <p eId="para_28"> The impact of this on people’s lives and dignity is very clear. It is a collective experience in disadvantaged communities and is experienced intersectionally by people who face other forms of discrimination. Not being included as a ground also means socioeconomic status is not covered in other proactive policy measures. We should be proud of having robust protections in our society the aim of which is to leave no one behind. Now is the opportunity for the committee to realise that aim and add socioeconomic status into our legislation as a ground for discrimination.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Andrew Holohan<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_29">Can members imagine a father from a disadvantaged area who goes for multiple jobs interviews? He has all the qualifications, but he does not get the job because he is from this certain area - the accent and the postcode. Can members imagine the mental torture he is going through? All he wants to do is provide for his young family but he is not being given the chance. This all leads to stress and a lack of sleep. Basically, you are in a mental prison. Today, men feel they need to provide for their families and they put on a mask to the effect that everything is all right when it is not. When my wife was in hospital giving birth to our first child, the first person to visit her was a social worker. Due to the fact that we had a history of addiction, the social worker came down on us pretty hard. This really made my wife afraid our baby would be taken away. In the end, the social worker visited our home and everything was fine, but should this be the way you bring your first child into the world, with fear and discrimination instead of support? Last week, we asked my seven-year-old daughter what she wants to be when she grows up. She replied that she wants to be a chef. We then asked if she thought it would be fair if she did not get a job because of where she is from. She replied that it would be unfair. This is my fear, and this is why I fight for this. It needs to be gone.</p>
+          <p eId="para_30"> These are not isolated incidents. They reflect a pattern of deep-rooted discrimination in Irish society that continues to deny people dignity, opportunity and fairness. Individuals affected by socioeconomic discrimination have shared their stories with ATD Ireland through many platforms. Members can see this on our socioeconomic discrimination resource page. Discrimination must end. For the sake of the next generation, I ask members to please add the tenth.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_31">I thank Ms Gorman and Mr. Holohan. Dr. Begley is next.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_32">I extend our thanks to the Chair and committee members for the invitation to attend in order to discuss this important topic. We welcome the committee's consideration of the general scheme. The Disability Federation of Ireland, DFI, is a pan-disability federation. We have over 100 member organisations. We work with our members to support the implementation of the UN Convention on the Rights of People with Disabilities and are guided by values that reflect the rights, dignity and lived experience of disabled people. We believe in a society that values every person equally.</p>
+          <p eId="para_33"> People with disabilities face many practical disadvantages. They are less likely to be in paid employment and are significantly more likely to live in poverty or to be at risk of poverty, in part due to the considerable additional daily costs that come with having a disability. Structural barriers impact opportunities for inclusion, so any reform of equality legislation is timely. DFI notes the progressive elements of the proposed Bill, as already mentioned, such as head 8, which relates to the removal of provisions that allow employers to pay people with disabilities lower wages compared with other employees in the same position. Disabled people often experience multiple forms of intersectional discrimination. We join others in the call for the addition of the tenth ground, socioeconomic status, particularly as this is an area in respect of which people with disabilities are more likely to face additional discrimination in light of the high proportion who experience poverty.</p>
+          <p eId="para_34"> The current definition contained in the Equal Status Act and the Employment Equality Act is not in line with the model of disability expressed in the UNCRPD. It is medically focused and uses negative and derogatory language. Ireland requires a definition that embraces a social model which asserts that people are disabled not just by physical aspects of their disability but by social barriers that exclude them. Such a definition would be in line with current thinking, would reflect a rights-based approach and would further support our implementation of the UNCRPD.</p>
+          <p eId="para_35"> Another important provision is the expansion, under head 14, of the undue burden standard of reasonable accommodation. A failure to accommodate customers is not the biggest challenge people with disabilities face. The Equal Status Act allows insurance companies to charge disabled people higher premiums in some cases. This has resulted in people being unable to secure mortgages due to the high cost of life assurance or as a result of not being granted approval. Others financial barriers are experienced in the form of higher travel insurance costs. Some people have lost job opportunities due to higher employer insurance.</p>
+          <p eId="para_36"> Many of the provisions in the general scheme relate to complaints to the WRC. These are positive, but, again, there is a failure to address barriers that prevent people with disabilities from accessing the WRC in the first place. These include complicated online procedures and paperwork, with limited support and accommodation for filing available. In addition, the lack of free legal aid adds further a further cost, which, in turn, adds to the cost of disability experienced by people.</p>
+          <p eId="para_37"> The DFI believes these changes would move towards a more equal society for disabled people and strengthen our equality framework. However, it is only one step and further work needs to be done for Ireland to fully ratify the UNCRPD. I thank the committee again for the opportunity to contribute. We are happy to take any questions.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_38">I thank Dr. Begley and invite Ms Walsh to deliver her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_39">I thank the Chair. I wish everyone a good morning. I am thankful for the invitation to participate in the committee's assessment of the general scheme. My opening remarks will focus on the Equal Status Acts, which are addressed in heads 13 to 18, inclusive.</p>
+          <p eId="para_40"> Several of the proposed amendments to the Equal Status Acts are welcome. The transfer of discrimination cases against licensed premises to the WRC and the provision on victimisation will both ensure that Ireland complies with the race equality directive, which is the European Union instrument the Equal Status Acts implement. Other proposals in the heads would improve the <i>status quo </i>but could be enhanced. The provision relating to discrimination on multiple grounds should be amended technically in order that the wording would cohere with the language used elsewhere in the proposed legislation, and should be extended to the Employment Equality Acts. Head 14, which is the provision on reasonable accommodation, should be redrafted in its entirety to comply with the UN Convention on the Rights of Persons with Disabilities. The current proposals are too limited. The notification requirement that is currently imposed on people who try to assert their rights before the WRC should be rendered optional rather than merely allowing for the time period to be extended. The rationale for extending the time limit to just 12 months is not apparent and needs to be parsed out.</p>
+          <p eId="para_41"> Overall, the general scheme envisages modifying the law as opposed to upgrading it. It does not consider the addition of new discrimination grounds, as others have already said, or reform of the current grounds. Legal regimes across Europe and globally have evolved in the decades since the Equal Status Acts and the Employment Equality Acts were enacted. This evolution has been driven by the understanding that discrimination does not just arise in the interactions between people at an interpersonal level but is very often baked into laws, policies, organisational cultures and practices. It can be described as being systemic or institutionalised. It is also now widely acknowledged that the burden of enforcing anti-discrimination law should not be placed on individuals. We should look at other mechanisms for enhancing how the law is implemented and complied with in practice.</p>
+          <p eId="para_42"> I will mention some crucial reforms that could be addressed and that should be considered in tandem with the transposition of the EU directives on equality bodies to which the representative from ICTU also referred. The scope of the Equal Status Act could be broadened to include public functions. The WRC complaint mechanism could be rendered more impactful by resourcing the WRC to expedite proceedings and issue interim orders in urgent cases. It could also be enhanced by the introduction of a mechanism for monitoring compliance with its orders. The burden that is placed on individuals to enforce the law could be alleviated by enabling civil society organisations and trade unions to take cases on behalf of individuals and in the public interest. IHREC could be better resourced to exercise the full range of its powers and support a critical mass of cases. The public sector equality and human rights duty could also be revised because it is just not working at present.</p>
+          <p eId="para_43"> The Equal Status Act should be redrafted in plain language. It is inaccessible and contains a maze of exceptions that could be rationalised. I thank members for their attention and look forward to engaging further with the committee.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_44">I thank Ms Walsh and invite Ms Barry to deliver her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_45">I thank the Cathaoirleach and the committee for allowing FLAC to speak about this once-in-a-generation opportunity for equality. FLAC is acutely aware of the huge demand for information, legal advice and representation in relation to this very complex and inaccessible legislation. We are also aware of the limitations of the legislation, including gaps in scope and grounds, procedural issues that make it difficult to make a claim and the poor, ineffective remedies, especially under the Equal Status Act. We are aware of this from our case work arising from our dedicated legal services for the Traveller, Roma and LGBTQI communities and also our casework on behalf of people with disabilities, as well as from the numerous NGOs that contact us all the time seeking information, advice and representation in equality cases that we have to turn away.</p>
+          <p eId="para_46"> We have responded to the overwhelming demand for information, advice and representation in three ways. First, together with the Irish Network Against Racism, INAR, we have trained a group of lay litigants to support people bringing cases on the grounds of race to the WRC. Second, have campaigned continuously for better information, advice and legal representation services from the Legal Aid Board, IHREC, the Citizens Information Board and the WRC. Third, we campaigned for a comprehensive review of the equality legislation. We then worked with IHREC to support the NGOs working directly with groups experiencing discrimination in order to hear about the issues they face and to formulate appropriate law reform responses to those issues.</p>
+          <p eId="para_47"> The significance of the general scheme cannot be overstated. While it requires significant improvement, it represents the first major reform of the legislation in the past two decades. During that time, we have seen a worrying rise in discrimination and prejudice. That requires stronger equality legislation to give effect to our Constitution’s guarantee of equality before the law and to comply with EU requirements. Equality legislation is the expression of our shared values of respect and dignity, values that underpin our belief in human worth.</p>
+          <p eId="para_48"> Some of the measures outlined in the general scheme have the potential to breathe fresh life into the prohibition of discrimination and to encourage the development of a culture of compliance with equality legislation. If enacted as currently drafted, the proposed Bill will have a very positive impact, especially for Travellers and people with disabilities. We particularly welcome the measures to provide for significantly increased compensation under the Equal Status Act, moving the jurisdiction for claims against licensed premises from the District Court back to the WRC and greater accessibility in the process for making a claim, including through extended time limits. However, this needs to be strengthened and improved by: including the grounds of socioeconomic status and gender identity; ensuring that the State and public bodies clearly and expressly come within its scope; simplifying the complaints process further; improving supports for victims of discrimination; and strengthening the equality mandate of IHREC and the WRC, as will be required under the EU equality bodies directive.</p>
+          <p eId="para_49"> We have supplied the committee with a detailed written submission. My colleague Mr. Bowes and I will be happy to answer any questions members may have.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_50">I thank Ms Barry and all of our witnesses for their opening statements and written submissions. It is proposed to publish the opening statements on the Oireachtas website. Is that agreed? Agreed.</p>
+          <p eId="para_51"> Before I call on members, I remind everyone that they will be allocated seven minutes' speaking time. This allocation must include the responses from witnesses. If time permits, at the end I will allow a brief second round of questions. Members should indicate if they wish to ask additional questions. When members are putting their questions, I ask that they clearly state which witness they wish to receive a response from because we have a very full room and time will not permit all the witnesses present to respond to each question. I also ask members, when putting their questions, to ensure that they adhere strictly to the agenda topic under consideration.</p>
+          <p eId="para_52"> I will now call on members in accordance with the speaker rota circulated earlier, following which I will call non-members. Again, if members are participating via MS Teams, I ask that they confirm they are on the Leinster House campus before putting their questions. Deputy Kerrane will be first. She will be followed by Deputies Dempsey and Ó Murchú and Senator Murphy O'Mahony. Senator Andrews is very welcome. He will probably be 12th on the list, if that helps in any way.</p>
+          <p eId="para_53"> I thank all of the witnesses for appearing before the committee and for the very informative and comprehensive engagement we have had so far.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_16">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_54">I thank all of our guests for being here. Many of them have provided detailed briefing documents. That is really helpful to us in our work, and I thank them for so.</p>
+          <p eId="para_55"> My first question is for ICTU. It is on the point relating to the limit that exists for workers whereby there is just one avenue of recourse. I ask them to speak about the impact of that on workers. This is an important point.</p>
+          <p eId="para_56"> My next questions are for the Disability Federation of Ireland. First, is there a definition of disability in place internationally that we should adopt? I agree that it is important that it should be there and that what is currently there is in no way acceptable or appropriate. It would be great if they could provide us with any details in relation to that. Second, in terms of the difficulties that are there - and the federation is clear in saying that the general scheme does not address the barriers that exist when it comes to accessing the WRC in the first place - could the witnesses provide some on-the-ground examples in order that we might have a little more information on the impact of that.</p>
+          <p eId="para_57"> I want to voice my support for the Add the 10th campaign. I particularly want to commend Mr. Holohan for coming here and making his opening statement, because he has shown exactly why that campaign is so important and why it needs to be there. I commend him for that. It is really important that we have heard his voice this morning, and it really shows the absolute importance of doing that. I thank Mr. Holohan.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_17">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_58">Does the Deputy wish to direct her questions?</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_18">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_59">The first question is for ICTU. The others are for the Disability Federation of Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Rachael Ryan<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_60">I thank the Deputy for the opportunity to engage on the issues set out in SIPTU's submission on the review of the Equality Acts. The very practical implication, which is what the Deputy is asking about, is that if a worker has taken a case under the Employment Equality Act, he or she can lodge both an unfair dismissal claim and an employment equality claim. However, if the employment equality claim is heard and fails, unless the director general provided otherwise when the claim first went in, he or she cannot have a claim heard under the Unfair Dismissals Act.</p>
+          <p eId="para_61"> There are equality provisions under the Constitution and there is a requirement for fair procedures and natural justice in the Unfair Dismissals Act. Under the Employment Equality Act, the burden of proof is on the worker and while he or she only has to make a <i>prima facie</i> case and it then shifts to the employer, the essential outcome of this is that if a worker fails under the Employment Equality Act, he or she cannot then argue that procedurally his or her dismissal was unfair. Those very important provisions that are there are based on the Constitution and provide that employers must treat workers with respect up until the point they are dismissed. </p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_62">I will answer the first question on the definition. As I mentioned in the opening statement, the definition that is currently used is medical and negative, using terms "malfunction", "disfigurement" and "disturbed", so it perpetuates many of the stereotypes about disability, such as that it is an undesirable state and that having a disability means there is something wrong with the person. We would advocate for a move towards a definition that leans into the social model of disability, whereby disability is seen as a result of the way society is structured and the way it creates obstacles for the person. The definition used in the UNCRPD is one we would advocate for. This states that "persons with disabilities include those who have long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others." The phrase "equal basis with others" is an extremely important element of that definition. Dr. Raley will answer the second question. </p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Dr. Meredith Raley<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_63">I do not have any detailed case studies regarding the WRC. However, in our original submission on this matter in 2021, we spoke to several people with disabilities. Some of them had tried to access the WRC in the past and told about their experiences and those of their friends. The paperwork to file a complaint is quite complicated and some people had had their cases thrown out because of mistakes in their paperwork that they were unable to correct. Many people also complained that the forms could only be filled out online. There is still a digital divide in Ireland between people who are older and younger and people living in rural and urban areas. Many people, especially older people in a rural area, might not have access to a computer and if they can access one, they might have no idea how to file paperwork on a computer or even how to access the WRC's website. As was said, very little aid is available. People cannot access legal aid for civil matters. Many organisations that would support them are often overwhelmed or cannot access people in isolated areas, who also may not know how to contact NGOs because they may not have computers. The lack of support, the digital divide and having complaints thrown out because of mistakes a person makes because of the first two problems are some of the biggest barriers we have seen. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_22">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_64">I will follow up with regard to disability. It makes absolute sense to use the definition in the UNCRPD. It reads a lot better and is straightforward. When we talk about disability, it is the cradle to the grave. It is everything from State services to where school meets employment or sometimes does not. Everyone has stated that reasonable accommodation is how we all operate within society. The question is how reasonable it is. Could the witnesses provide some specifics on this as regards what the legislation says and what it should look like? </p>
+          <p eId="para_65"> Never mind what the legislation states, there is an issue with how user-friendly the State interfaces are. We are probably not going to fix that. We know there have been attempts at providing a checklist for web interfaces and so on that State services need across the board to make sure they are available but I am not sure we are anywhere near to where that has to be. Sometimes this does not necessarily need to be dealt with under equality legislation. </p>
+          <p eId="para_66"> I add to the words of Deputy Kerrane. Mr. Holohan stated it explicitly. The only good point I can see about the interaction of his wife was that the State on some level had an interaction with him. It obviously should have been a lot better because it should always be about supports that people may need. How does he think it should have happened? It is a matter of how people perceive we will ensure that protection with regard to socioeconomic disadvantage within legislation. I will start with the Disability Federation of Ireland. </p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_67">Regarding reasonable accommodations, if we look at the definition of disability around participation in society equal to others, we are finding that when reasonable accommodations are implemented, they often require people to have information that is not always there to inform themselves, their employers and the schools. They often have to jump through many hoops to get those reasonable accommodations, so in no way is it equal to others in society in that sense. It creates a barrier. Like the WRC example given by Dr. Raley, while there may be accessible aspects outlined or introduced into access to the WRC, there are significant barriers to the person being able to realise those reasonable accommodations. In schools, reasonable accommodations may be available but parents have to know how to go about getting the assessments and to have the report for the school and there is a cost to that. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_24">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_68">It can depend on the school or the staff. </p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_69">It depends on loads of different things. While reasonable accommodations may be there in principle, they do not allow participation on an equal basis for others and are not always there. Another example would be reasonable accommodations within employment. A lot of the reasonable accommodations relate to assistive technologies. The person has to know what assistive technologies that can support him or her are available. This is changing rapidly. The employer has to be willing to accommodate that and there is a cost.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_26">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_70">They have to apply for the scheme. I know this is all being looked at. How do we get the legislation that puts the pressure on with regard to that? What does that look like? On the basis of what Dr. Begley is saying, the general scheme does not deal with that. </p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_71">Dr. Raley is an expert on the UNCRPD so I will defer to her on that. </p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Dr. Meredith Raley<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_72">As the Deputy said, the current scheme does not address all the issues around reasonable accommodation. It expands on them but does not address all of them. There are issues with things like someone not being aware of the accommodations that might be available to them. We have suggested that other legislation on equality such as the Disability Act will need to be amended. In education in particular, large sections of the EPSEN Act, which was passed in 2004, remain uncommenced over 20 years later. This obviously needs a review to see which of the uncommenced sections could be useful and whether the uncommenced sections themselves need to be revised before they are commenced because they are very old. Strengthening those laws would help children and people with disabilities to better access and exercise their rights. Bureaucracy is complicated and can be difficult for people to navigate. We have a national advocacy service, which was meant to be a statutory body. It is part of the Citizens Information Act 2007 but that section was also never commenced so the advocacy service is not on a statutory basis. If it was, it might be able to command more resources, have lower wait times and provide more support for people with disabilities. That could also be very useful to help people navigate the bureaucracy around receiving accommodations. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_29">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_73">Will Mr. Holohan give his view on that? The other witnesses might comment on what they think the legislative socioeconomic solution looks like.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Andrew Holohan<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_74">I feel that if the law had been in place, what happened to my wife would not have happened. My wife was on 2 ml of methadone while she was giving birth. The nurses were coming in and giving other people a break and my wife felt like she was being discriminated against because she was on that. They would not give my wife a break. </p>
+          <p eId="para_75">This was her first child.</p>
+          <p eId="para_76"> I have a book here. The Deputy can have it if he wants want it. It is called <i>Breaking Barriers</i>. It is an approach to defining socioeconomic discrimination. I feel like his answers would all be in that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_77">We might leave it for the second round. We will get a second round. Deputy Ó Murchú knows I am rigid with the rules.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_32">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_78">I welcome all the witnesses. I thank them for their briefing documents and opening statements and congratulate them on the work they do. I will highlight Mr. Holohan's opening statement. He epitomises how lived experience should be brought in to any legislation going forward. I thank him for sharing his story.</p>
+          <p eId="para_79"> How would the DFI propose to balance the disproportionate burden, as Dr. Begley called it, of standards with the capacity of small service providers?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Dr. Meredith Raley<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_80">The disproportionate burden is disproportionate to the organisation being talked about. We do not expect a coffee shop to accommodate people in the same way we might expect a large insurance company to do so. It depends on the resources the organisation has. That has to do with small employers or small providers. We also point out that what are needed are proper State supports in such cases to help smaller businesses and organisations to properly support people with disabilities. In the case of employment, some of those are already there. Employers can access the reasonable accommodation fund through which they can receive money to buy adapted desks or monitors, for example. Most employers do not seem to know it is there. It is always underdrawn. Not only is it important to have State supports in place for smaller organisations to draw on, but since those supports are consistently underdrawn when they exist, it is also important to raise awareness of them and make sure that employers are aware that State supports are there to help them to accommodate people. It is a two-stage approach: making sure the proper funds are in place and making sure the people who can access them are aware of these funds.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_34">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_81">The next question is for ICTU. What are the practical implications of allowing dual claims under equality and unfair dismissal law?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Rachael Ryan<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_82">The practical implication from a workers' perspective would be that, if they were not able to win in a case under the Employment Equality Acts, they would still be able to pursue a case under the Unfair Dismissal Acts. It is not suggested that redress would be awarded under both-----</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_36">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_83">It is just another route.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Rachael Ryan<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_84">It is another route because the test is completely different.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_38">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_85">The next question is for FLAC. The witnesses highlighted the need to strengthen the mandates of the IHREC and the WRC in line with EU directives. What practical steps should be taken to ensure these bodies are adequately resourced and empowered to fulfil their potential expanded roles?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_86">Under the directives, the equality mandate has to be strengthened by mid-2026. There are a number of practical steps that could be taken. For example, a lot of people who come to FLAC are not aware that the Workplace Relations Commission is a place that hears claims of discrimination under the Equal Status Act. Changing the name would be a very obvious and easy task to let people know that claims can be heard under the Equal Status Act before the WRC. Before the WRC was established, there was a separate equality tribunal with the job to investigate, hear and decide claims under equality legislation. The WRC could establish within it a specific structure to deal with equality claims and have specially trained equality officers or adjudication officers to deal with it.</p>
+          <p eId="para_87"> With regards to IHREC, its strategic plan does not specifically go into detail about its equality function beyond talking about making sure the legislation is implemented. It has a large staff. It could set up a legal section that would focus on assisting people to bring claims under the equality legislation. It could have a deputy chief commissioner with particular responsibility for equality.</p>
+          <p eId="para_88"> In the annual reports of IHREC and the WRC, one should be able to clearly see the level of resources and the outcomes in terms of the exercise of their functions around equality.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_40">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_89">FLAC supports the inclusion of socioeconomic status and gender identity as new protected grounds. What challenges do the witnesses foresee in implementing these additions and how can the legislation ensure they are meaningfully enforced? </p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_90">If I take the socioeconomic ground first, we have set out in our submission on page 37 the elements that need to be included in a definition of socioeconomic status. The definition is first. There has been a Bill already that contains almost all of the elements that we have indicated should be included. I encourage this committee to look at the previous Bills. IHREC have also made submissions in this regard.</p>
+          <p eId="para_91"> From FLAC's perspective, one of the things that prompted the request for the review of the legislation was how we were wholly in favour of, and fully saw the necessity for, such a ground because many of the groups already covered under the legislation also experienced discrimination on socioeconomic status ground. Our problem is the inaccessibility of the legislation. Many people do not know about the legislation. There is a requirement in the Equal Status Act that one has to send a written notification within two months of the act of discrimination. A lot of people fail at that hurdle. The remedies under the Act are so low that claims can be bought off for very little amounts of money. There is a real need to strengthen the whole equality infrastructure to make sure that the socioeconomic ground actually has effect.</p>
+          <p eId="para_92"> The Equal Status Act does not explicitly include the functions of the State. Whole areas of public activity and the activities of public bodies are excluded, so if a socioeconomic status ground is introduced without the State formally included within its scope, that very much limits the potential of that ground to have a real impact on the lives of people experiencing socioeconomic status discrimination. Section 5 of the Equal Status Act applies to the provision of goods and services. Case law has established that that does not extend to the functions of the State. For example, the investigation of crimes by An Garda Síochána is not covered. The Prison Service is not covered. There is also an exemption in section 14 that exempts anything in statute. For example, a provision in the Social Welfare Act cannot be challenged. If that impacted on the socioeconomic status, it would very much limit the ground's potential.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_93">Thank you, Ms Barry. I call Sharon Keogan. There will be a second round.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_43">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T10:30:00+01:00"/></from>
+          <p eId="para_94">I am afraid the Cathaoirleach is going to have to keep going because this is my first round.</p>
+          <p eId="para_95"> I welcome all the witnesses and thank them for all the work they have done to date on this legislation. I will get straight on to the question for Ms Barry and Mr. Bowes. FLAC argues that the rising levels of discrimination require stronger legislation, yet Ireland's equality laws have expanded dramatically since the 1990s, from covering only gender in employment to now covering nine grounds across employment, services, education and housing. Meanwhile, reported discrimination has risen from under 3% in 1995 to 22% today. Given this, how do witnesses explain the apparent correlation between more legislation and higher reported discrimination? Could this suggest that legislation alone is not the solution? In fact, do witnesses think it is possible that more laws, more protections and more protected categories incentivise grievances and court cases?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_96">I am not sure that having more laws does incentivise cases. The reason we are in favour of strengthening the legislation is because it does not work. It is too difficult, inaccessible and complex to understand. For the people it is targeted towards and supposed to serve, it is extraordinarily difficult for them to understand the Act. I am a barrister and I found in practice that it was incredibly difficult to understand. There is little information about it and little access to legal advice because the Legal Aid Board does not provide legal advice in this area. It is not allowed to provide legal representation in this area.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_45">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_97">Is Ms Barry saying that the current laws suffice but people do not know those protections are in place?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_98">We are not saying that the law suffices at all. We are saying that people do not know what is there.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_47">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_99">If there was an education policy in respect of employment law in this country and people knew exactly what they were entitled to, does FLAC think the law, as it currently stands, would deal with the issues?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_100">No, it needs to be improved. Even with what is currently in place, in addition to people finding it hard to find information about it, they cannot get legal advice. They have to attend at the WRC where they often will not have representation, they may not be lucky enough to be in a union or the union will be of no assistance to them if the claim is under the Equal Status Act. Time and again, our information line hears from people who are going into the WRC and facing a solicitor and maybe junior and senior counsels on the other side. There is a complete imbalance. The provisions themselves are also very complex. There are four definitions of indirect discrimination within the legislation. That has to be simplified. There is real need to simplify the language, definitions and make it more accessible.</p>
+          <p eId="para_101"> The procedures themselves are difficult. People have to comply with a written notification. Once people get in, they have to establish a <i>prima facie</i> case and most laypeople will have no idea what exactly that means or how to satisfy that burden. The Zalewski judgment in the Supreme Court has ensured that the procedures before the WRC are now much more complex. Initially when it was set up, it was supposed to be accessible for people who were not represented. That is no longer the case. People have to produce evidence and be subjected to cross-examination.</p>
+          <p eId="para_102"> There is also the matter of the WRC not deciding on procedural matters in advance, meaning that people do not know before they go into a public hearing whether they will be granted anonymity. Many of the claims may deal with sensitive issues in disability or sexual harassment, yet people will not know before they go into the hearing whether it will be in private or whether they will have a chance to have their names anonymised.</p>
+          <p eId="para_103"> The remedies themselves, particularly under the Equal Status Act, have proven to be wholly ineffective.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_49">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_104">Would FLAC require more funding to deal with this?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_105">We are only a small NGO.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_51">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_106">I know that.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_107">The national body to deal with the responsibility for promotion of equality and elimination of discrimination is IHREC. Under the directives I referred to earlier, it has to strengthen its equality function and be in a position to provide assistance to victims of discrimination. We would argue that would have to be enough to constitute a culture of compliance with the legislation so that it was not dependent on each individual bringing a claim. The directives also require changes to the WRC. Even changing the name itself would be a victory for claimants under the Equal Status Act.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_53">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_108">I will now ask Mr. Joyce some questions. As a trade union confederation, ICTU's core mission is to protect workers' rights in areas such as pay, conditions and job security. Will Mr. Joyce explain why ICTU is advocating for the inclusion of gender identity, gender expression and sex characteristics in the equality legislation? How does this align with the organisation's mandate to represent the economic and workplace interests of its members? The majority of its voters opposed the Government's attempt to remove women from the Constitution and the majority of Irish people supported protecting single-sex spaces and sex-based protections, so I am sceptical of whether the majority hold the same views as the witness's confederation on this issue. I could be wrong. Has ICTU consulted its members more broadly and extensively on this question?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. David Joyce<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_109">To answer the last question first, we take our leadership from our affiliate trade unions. We recently had our conference in Belfast, where a whole range of motions on a wide range of matters relating to the workplace and broader societal issues were discussed and agreed.</p>
+          <p eId="para_110"> The submission we made in 2021 calls for, as the Senator described, an expansion of the gender grounds. This has been interpreted in a broad fashion up to now but it would be better for it to explicitly outline what discrimination it outlaws. I have no problem in lining up our mission with this. We have a broad range of members, some of whom are transgender, and it would be remiss of us not to include them in our work.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_55">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_111">I thank the Senator and witnesses for that. I just want to check whether we have Senator Mike Kennelly online. I do not hear him, so we will move to Senator Cosgrove.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_56">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_112">I welcome the witnesses and thank them for attending and for their briefing documents.</p>
+          <p eId="para_113"> Many of my questions have already been asked. I welcome the impact of change in the claims under unfair dismissals and equality legislation. There is a person I am currently working with for whom this came up, so this is welcome.</p>
+          <p eId="para_114"> It has been mentioned that people find accessing the WRC and their rights confusing. Is there any way, particularly via ICTU, we could see more emphasis on workers' rights centres included? This could also be done via the Citizens' Information Board, and people would feel it was okay to access and get information.</p>
+          <p eId="para_115"> The right to collective bargaining should be part of this. How can we, within this forum, push this on and include the Respect at Work campaign, for example? This is an area the committee can cover and it would address some of the concerns. It is scandalous that people with disabilities are on lower wages. The EU directive on the adequate minimum wage is something we could discuss. Could I get a lead from the witnesses on how we can ensure that happens? That is my first question, and it is for Mr. Joyce, Ms Ryan or Ms Walsh.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. David Joyce<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_116">I will kick things off and Ms Ryan may like to add to it. As people have said, some of the law regarding the WRC is quite complex. We train with affiliates, have produced a guide to the Employment Equality Act and so on, but it is not enough and much more could be done.</p>
+          <p eId="para_117"> Improvements in collective bargaining, protection for unions in accessing workplaces and so forth, as outlined by the Respect at Work campaign, is a key issue for us in the coming period. The Government is due to develop an action plan on collective bargaining and we have done a detailed submission on it, which we are happy to share if it is of use to the committee in its deliberations. It would certainly strengthen our hand to have a much stronger legal framework for collective bargaining and accessing workplaces for developing this work in terms of protecting against workplace discrimination, etc.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_58">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_118">I commend Mr. Holohan. It is not easy coming to a committee, so well done. I worked in the area of child protection within social work and it was a Tusla-funded organisation. Any new parent should be getting support, be it from a public health nurse or any support he or she needs. How does Mr. Holohan think we could change that? </p>
+          <p eId="para_119">Mr. Holohan felt discriminated against and no doubt he was. An actor of the State such as Tusla should be there as a support. What does Mr. Holohan feel would help?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Andrew Holohan<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_120">We do many classes in Trinity College with social work students and we always talk about the stigma that has surrounded social workers in the past. It would help if there was more good news in the newspapers about what good work social workers can do, instead of just bad news. Changing the name "social workers" to "support workers" would also help. In the past, there has only been bad news about social workers in newspapers and the good they do never gets highlighted. That could be an area that could change. When All Together in Dignity speaks to the students that will never be seen online or in the newspapers. We bring a real-life approach to what people who live in poverty or face discrimination are facing when they hear a social worker is coming to their house. We also took the approach of what the social worker is facing. We do not know how scared or afraid the social worker can be when going into the community. More good news and a change in the name of the profession would help.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_60">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_121">I thank Mr. Holohan. Ireland has the largest disability employment gap. How is that determined? How do we compare with other countries? Does it take in access to work and does it include transport and housing? How is the gap measured? I ask Dr. Begley or Dr. Raley to answer.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Meredith Raley<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_122">The gap as measured is fairly simple. We know the number of adults in Ireland with a disability. At the last census it was one in five people, a little over 20%. Every country knows the number of adults with a disability. It is the number of those adults who are in employment versus the number of adults in the population so it is a fairly simple gap to calculate on that basis. It does not take into account that in Ireland, for instance, many people with disabilities are not seeking employment for various reasons. They would still be counted in the employment gap but would not show up in Ireland's unemployed numbers because they are not currently seeking employment. They live on social welfare or with family.</p>
+          <p eId="para_123"> The gap calculated by the EU takes into account all adults. The EU average is approximately 50% of adults with a disability are in employment where Ireland's average is approximately 30%, so that is quite a gap. It is calculated on that basis. Not everyone is looking for work. Some people have been discouraged from looking for work, some have given up, some feel they cannot work in the current environment and some feel they cannot work at all. The unemployment numbers in Ireland would not fully capture all the people with disabilities who are not working at the moment but possibly could, if the conditions changed.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_62">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_124">That is great. I thank Dr. Raley.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_125">Senator Andrews, I think you have been bumped up. Maybe it is because it is the last day before recess that members are coming and going from lots of committees and meetings.</p>
+        </speech>
+        <speech by="#ChrisAndrews" eId="spk_64">
+          <from>Senator Chris Andrews<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_126">I will do the lotto after this meeting because my luck is changing. I thank everybody for their presentations. I feel that the adding the tenth - socioeconomic status - is really important. With a few exceptions, groups and unions are not doing enough to campaign for the addition of socioeconomic status. There are a few exceptions but I believe there needs to be a very strong campaign on this because the previous Government kicked it down the road and this Government kicked it down the road a month or two ago. It is very timely and important that everybody comes together and campaigns for the addition of socioeconomic status.</p>
+          <p eId="para_127"> As Ms Walsh said, inner city communities face discrimination twice. There is systemic discrimination. The inner city communities I represented in the previous term, and still do, are Pearse Street, Kevin Street and Dublin 2, 4, 6 and 8. The levels of systemic discrimination there are unbelievable. The ongoing neglect of communities, flats and other housing, educational opportunities and employment opportunities is unbelievable. There is a real chance to add the tenth status to the equality legislation but the Government has kicked the issue down the road. ISME and small employers will have a point of view, and that is their right, but it is very important that organisations campaigning for equality get behind the addition of the tenth ground of socioeconomic status. </p>
+          <p eId="para_128"> To echo Mr. Holohan's contribution, we talk about systemic discrimination. The conditions so many people in disadvantaged communities are housed in, not only in inner city Dublin and Dublin 2, 4, 6 and 8 but right across the country, and the lack of educational and employment opportunities available to them need to be addressed, and not just systemically. Adding the tenth ground would give individuals an opportunity to be heard and take their case. I know of one incident involving a fella from the inner city - just off Pearse Street - who was more than qualified for a particular job. He applied for it and a video was circulated of a senior manager in the company calling him a "ginger knacker" and asking how anybody with an accent like that would be employed in the company. This was clear discrimination but he could not take a case. There are many people like him who cannot take a case to the WRC. That has to change.</p>
+          <p eId="para_129"> Even Trinity College has turned its back on Pearse Street in many ways. Walking down from Trinity College where it joins Pearse Street, you can see that the college has turned its back on Pearse Street all the way down to Westland Row. The street is effectively sterile.</p>
+          <p eId="para_130"> There is huge systemic discrimination and there is individual discrimination. Adding the tenth ground would make a big statement and support those who have been discriminated against. The ATD campaign has highlighted the increasing levels of discrimination based on people's socioeconomic status.</p>
+          <p eId="para_131"> What will the groups present do to roll out a campaign of engagement? Obviously, they are here so that is positive. What will they do to ensure there is an increased campaign in light of the absence of socioeconomic status from this Bill? What campaigns will they organise? What actions will they take to ensure socioeconomic status is added to this legislation? Any of the witnesses can answer those questions.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_132">FLAC is a member of the Add the 10th Alliance. We have been part of that campaign but we have also been part of a campaign for a broader review of the equality legislation as well. Going back to 2021, FLAC did a series of seminars on the issues with the legislation, one of which focused explicitly on the need for a socioeconomic ground. Something we zeroed in on at that stage was trying to find the correct definition of that. In the years since, FLAC has done a lot of work to try to figure out the best way to define socioeconomic status and we have landed on a fairly succinct definition in our submission. We think the Senator's Private Members' Bill from 2021 is the one that captures the definition best and is the most inclusive. It also provides clarity and accessibility for people in terms of being covered by the ground.</p>
+          <p eId="para_133">A big priority for us over recent years has been, and continues to be, ensuring that, in addition to being concerned with socioeconomic discrimination and individual incidents of such discrimination, the legislation is able to tackle socioeconomic inequality and the root causes of socioeconomic disadvantage, which the Senator has mentioned. Ms Barry went through a number of the key changes we believe need to be made in order to achieve that. I will not repeat the detail of them but a number of elements needs to be added into the general scheme. These include repeal of section 14 of the Equal Status Act, which pertains to discriminatory laws and their effects, and looking at the definition of functions to ensure that the performance of the functions of public bodies like An Garda Síochána and the Irish Prison Service is covered by the prohibition on discrimination and that people who experience discrimination in those contexts have recourse under the legislation.</p>
+          <p eId="para_134"> Another thing to highlight is that we also talk about strengthening the public sector duty. The introduction of the socioeconomic ground will have the really positive knock-on effect of the public sector duty being engaged and there being an obligation on public bodies to consider equality in performing their functions. Socioeconomic disadvantage will be one of the protected grounds under the legislation so preventing socioeconomic disadvantage will become an element of that duty. All public bodies will have to have regard to it when carrying out their functions. In the submission, we outline a number of ways that duty could be strengthened. That is another way to address the more structural elements and forms of discrimination that all groups face, including on the basis of socioeconomic disadvantage.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_66">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_135">I again apologise. Members have been coming and going all morning. If the witnesses see me on the phone, it is because I have two members in the Committee of Public Accounts meeting next door, another who is in the wrong meeting and people taking part in radio interviews and different things. The witnesses should not feel it reflects on the importance we give this issue. It is just the last day before recess.</p>
+          <p eId="para_136"> It falls to me to ask my question. We will then move to a second round. I will start with Dr. Begley and Dr. Raley. On the disproportionate burden test, I am thinking specifically about augmentative and alternative communication, AAC, devices. Yesterday, we were speaking about increasing voter turnout among people with disabilities. The issues in this regard included transport, technology and registration. How do the witnesses see issues involving AAC devices and related issues impacting on work, voting or other things?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_137">I thank the Cathaoirleach for her question. One of the issues around reasonable accommodations that I mentioned was that funding is available for people to access assistive technology in the workplace but they may not know what assistive technology is needed to support them. In addition, their employer may not be aware of it and there is no obligation on the employer. It is on the individual to access the technology. While there is funding available, there is low uptake of those reasonable accommodations because there is no infrastructure for assessment of changing needs. There is also an issue with ease of access to assistive technologies. If you are in employment, you have to get your own assessment, you have to access the AT yourself and you have to know what is appropriate for you. If there was some infrastructure to support people in accessing assistive technology both in employment and in education, that would go some way towards addressing that massive gap. </p>
+          <p eId="para_138"> I will refer to Dr. Raley around this as well but, under the UNCRPD, there is an obligation on the State to support the political participation of disabled people. We are still seeing structural barriers to participation. One of these is the cost to get a medical certificate to get a postal vote. That is another cost-of-disability aspect. While some measures have been taken to make the physical environments more accessible for people, they still tend not to be fully accessible. There may be a ramp into a building but the built environment does not fully allow people to vote in private. There is also a lack of disability awareness among polling station staff.</p>
+          <p eId="para_139"> There have been very significant advancements in assistive technology and in AI that can support people in employment but the system is not keeping up with that in letting people know they can access things that could support them and in assessing their needs.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Meredith Raley<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_140">On assisted communication devices in particular, as my colleague has said, there are funds to provide devices in education or in work but those devices might stay in the school or workplace so, if you are going out to vote, you cannot take your assisted communication device with you because it is a workplace accommodation. There are other funds to access such devices in your personal life but you have to know those funds exist and apply for them. Even if you draw down all the funds, you might end up with a whole hodgepodge of devices all around you. Combining these funds and allowing people to have one device they can take with them everywhere would obviously make things a lot easier. Poll workers should also be properly trained to know what a device is, how a person might use it to communicate and how long it is likely to take. That would also be really useful in those cases.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_141">One issue I see coming up is that, even for those who manage to get a device, we do not have a mechanism whereby they automatically get a new device if it is broken or if the battery dies. It is a very serious issue. In some schools, the noises of the AAC devices are disturbing other children but those devices are these children's voices.</p>
+          <p eId="para_142"> Ms Walsh has been far too quiet so I will come to her next. On head 16 and the question of whether the 12 months is too much or not enough, last week, we were given the example of somebody who is denied the chance to rent a house because he or she is on HAP and then ending up in emergency accommodation. By the time that is sorted, 12 months may have passed. We had an organisation here last week that felt 12 months was not enough. I am interested because Ms Walsh has a different take on that.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_143">I agree that 12 months is not enough. In reading all of the cases, you see exactly what the Cathaoirleach has just described. People are trying to do the recommended thing and engaging in internal grievance procedures or accessing other complaints mechanisms or they may be saying they cannot do this while in the school or while living in that particular house and so they wait because they are afraid of being victimised or bullied for raising a complaint. You see throughout the case law that there are very legitimate reasons that people should not be expected to make a complaint within 12 months, either under employment equality legislation or the Equal Status Acts. In personal injuries law, the statute of limitations is two years. It is six months for most civil law claims and one year for defamation. It is not apparent to me why it is only 12 months in this case. While the move from six to 12 months is welcome and very useful, why not go further? Both FLAC and I have made the point that the limitation period should start from when an internal grievance process or other complaints mechanism has been concluded. That resort to internal complaints or grievance mechanisms is a big issue in practice.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_144">I thank Ms Walsh. I had picked her up wrong because I thought she saying there should be less time. We are on the same page. I have a brief one minute left. I will be strict on my own time as well as on everybody else's. I really appreciated the personal example Mr. Holohan gave of what happened to his wife. Examples from real life help us, as legislators, in bringing a Bill to life. Can he give us any other examples of where he experienced discrimination based on socioeconomic status or other real-life examples he is aware of?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Andrew Holohan<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_145">I was part of a group. I found out I was having a child so I went for loads of job interviews and stuff like that. Before I did that, I did practice job interviews. The person doing the practice interviews knew my background, that I was homeless and that I had been involved in criminality. That person told me to never say that to an employer so I did not. I went along with how the practice interviews went. I did something like 30 job interviews and did not get one response. I was sick of it because my wife was nearly due. I was then completely honest with an employer about my background and what had happened to me and he hired me. I felt I was discriminated against in the practice interviews because of my past but-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_146">It was different in the real-life interview.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Andrew Holohan<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_147">Yes.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_148">I thank Mr. Holohan. I will definitely bring him in again in the second round. <b>
+						</b>We will suspend for five minutes to give everyone a comfort break. We will resume then, and I will find out where everybody is.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i>Sitting suspended at 11.10 a.m. and resumed at 11.17 a.m.</i>
+        </summary>
+        <speech by="#AislingDempsey" eId="spk_76">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_149">I call Deputy Currie. The Deputy has seven minutes.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_77">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_150">I apologise for my absence earlier. I had another commitment this morning. I have read the opening statements but have not heard the discussion, so I am likely to repeat questions that were asked earlier. Will the witnesses explain why, from each of their organisations' perspectives, the legislation in this area is so important at this time?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_151">This is the first chance we have had to have an input since the laws were introduced in the late 1990s. It is also the first chance that the public has had to make submissions in the context of the review that was announced in 2021.</p>
+          <p eId="para_152"> Stepping back and taking a holistic view, the heads outlined in the general scheme are quite disappointing in that the much broader ambition to look at how the law was working in practice is not fully reflected in the proposals before us. In some of the discussions on the matter, various members and witnesses have continually inquired about how we make what is proposed operate in practice. What I have said is that there is far too much focus on individual enforcement. In other words, a person takes a case and lodges a complaint. The goal when it comes to anti-discrimination law should always be prevention and proactive compliance. In other words, you can improve little technical bits of the law, but, for the most part, it will not be implemented unless there is equality infrastructure in place to support that. Even in the context of things like reasonable accommodation, questions arise. Are employers and service providers aware of their obligations to make provision for reasonable accommodation? Has guidance been provided to them?</p>
+          <p eId="para_153"> We also talked about the public sector's equality and human rights duty and the fact that the provisions in this regard are not working and ought to be radically revised. That is where we start to get into prevention and proactive compliance-type measures.</p>
+          <p eId="para_154"> I am a lawyer, and lawyers love case law and individual enforcement. However, we should not expect people to have to resort to taking cases to the WRC. The norm should be compliance.</p>
+          <p eId="para_155">The Deputy will maybe be aware from the Central Statistics Office, CSO, data that most people who believe they have experienced discrimination do nothing about it whatsoever. The figure in this regard for 2024 was 73%. Just 1% of people make either a legal complaint or an official complaint. Alarm bells should be going off at this juncture as a result of the fact that we have people who believe that something really bad has happened to them and that it is a violation of the law, and yet they either do nothing or feel they can do nothing about it.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_79">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_156">So Ms Walsh feels there is an opportunity for a wider conversation about rights and responsibilities and the role of positive discrimination and proactivity. Is there anybody else who would like to contribute on that?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Dr. David Joyce<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_157">I am happy to do so. I do not want to take up all the Deputy's time. As Ms Walsh said, it is almost 30 years since we introduced most of our equality legislation. At that time, we were sort of ahead of the pack. Much has changed in the world of work in the intervening years. When the review was announced, we were quite excited in terms of the opportunities it could provide to look at our legislation in the round and see how it could be improved. The general scheme is, as I think others would agree, kind of disappointing, particularly if that is it in terms of the results of the review. Many of us put in a great deal of work in terms of creating submissions, attending meetings, etc. To be faced with this as the result, while, of course, there are many welcome elements in it, is disappointing. It would be great if this committee tried to introduce a bit more ambition into it. Otherwise, it would be an opportunity wasted.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Rebecca Gorman<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_158">On behalf of the Add the 10th Alliance, this is the crucial opportunity to finally vindicate the rights of people who experience economic discrimination. This is not the opportune time; the opportune time was decades ago, but now is a better time than never. This is something we have been pushing for since the equality legislation was enacted. It is a real missing ground that will enforce the others, but it also needs to be stand alone because the enforcing cycle of socioeconomic discrimination adds a vicious cycle for generational poverty as well as access and participation and social inclusion in life. For us, the definition needs to be quite broad to make sure it captures everyone who is experiencing discrimination. At this point, it depends on how we measure it, but at least 11 EU countries have some sort of legislation or policy work in this area, so we are falling behind. We are becoming a laggard in terms of our equality legislation, which needs to be brought up to date. We have our own obligations to the UN covenant on economic social and cultural rights. That has mandated us to enact this. Therefore, now is the crucial time. We have concerns around business interests that will create an imbalance when, really, human rights and social inclusion should be a priority for the Government. We would hope to see that enacted in this round. It has had cross-party consensus for a while now, so I do not think it should be slowed down any further. This is the point at which it needs to change. We need to see that sea change for people experiencing it every day.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_159">From a DFI perspective, there are elements of the general scheme that are very welcome, particularly those in head 8 relating to the removal of provisions that allow employers to pay people with disabilities lower wages. It is long past time that matter was addressed. From our perspective, it is an opportunity to look at the definitions of disability and align more with the United Nations Convention on the Rights of Persons with Disabilities. If that does not happen, it will be a real lost opportunity. We ratified the convention in 2018, and we still have a long way to go in terms of reaching the ambitions of that and improving outcomes for disabled people in Ireland. I have to concur with other people who are appearing today around the lack of ambition around the Bill. There could have been much broader reforms, but I have to say, it is a first step in our perspective to strengthening Ireland's legal equality framework. That is from the DFI's perspective.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_160">At this stage, we know what is good and what works in the existing legislation and what does not. We have seen the impact on the poor provisions of reasonable accommodation under the Equal Status Act. We have seen the impact of transferring the jurisdiction from what was then the equality tribunal into the District Court of claims against licensed vintners. We see clearly now how, in effect, the State is pretty much excluded from the ambit of the Equal Status Act because of all the exemptions the Act contains. We have seen the limits of the grounds and the fact that people suffer - people may want to bring claims or may have to bring claims under two grounds - and how the grounds need to be improved, but the concept of intersectionality also needs to be properly introduced. It is a really good time to fix what is wrong, but I would also echo everyone else who said it is a time to be ambitious.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_84">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_161">I thank the witnesses very much. I thank the Deputy. The Chair will not be too happy with me going over on my first go. I thank everyone very much. As it is so early, we have plenty of time for a second round. If everyone can bear with us, we will give members another seven minutes if they so wish. We will start with Senator Keogan.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_85">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_162">This question is for Ms Walsh. She argued that the burden of enforcing equality law should not rest on individuals and that civil society organisations should be empowered to take cases on their behalf. However, does this not risk turning the legal process into a tool for activist litigation, potentially disconnected from the actual experience or wishes of those affected? How does she ensure democratic legitimacy and accountability in such a model?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_163">Allowing civil society organisations, including trade unions, to take cases in the public interest or on behalf of perhaps our members is basically standard across the European Union. Ireland is one of only seven countries that does not permit any form of civil society or trade union litigation. In fact, we already have a provision in our law that enables the Irish Human Rights and Equality Commission to take cases where it believes that discrimination is being generally practised against persons. We already recognise that this should be part of the toolbox and the rationale behind it whenever it is introduced is to, as I said, alleviate the burden placed on individuals who may be extremely vulnerable, for example. Therefore, if a person is living in, for example, direct provision or a care home for older people or if he or she is a young kid in school, should that person be expected to litigate? I would say there are very good reasons why particularly vulnerable people do not want to litigate, even if they are granted anonymity. How that power has been used, where it is available across the European Union and, indeed, outside the European Union, is to alleviate that burden on individuals but also to draw attention to systemic issues. It may be that individual in a care home or person with a disability experienced this, but we have evidence from our research from our membership that these practises are, in fact, occurring regularly. It did not just happen to them. It is actually baked into how-----</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_87">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_164">It is systemic.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_165">Yes. It enables us to have a broader glance at the issues that may be arising.</p>
+          <p eId="para_166"> In terms of the democratic legitimacy question, how that has been dealt with across different countries has been quite different. The general rule under European Union law is that the organisation must have a legitimate interest in pursuing the case, which is quite a light standard, obviously. Then, in different countries, they have established different metrics for demonstrating that people have a legitimate interest. Clearly, we may not want to open it up to absolutely anybody to say they just invented an NGO yesterday and they want to take a case. We may want to say that they must be a registered charitable organisation and that the goal of advancing equality and anti-discrimination must be in their article of association, etc. Therefore, different methods have been used across the European Union to deal with that issue.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_89">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_167">I thank Ms Walsh very much. The Add the 10th Alliance proposed a definition of social economic status that includes factors like accent, address and education level. However, given the broad and sometimes subjective nature of these indicators, how does it ensure this does not create legal uncertainty or open a door to overly expansive claims that are difficult to adjudicate fairly? For instance, in the case of education level, there is sometimes a requirement for a particular role. Many jobs require that people have a certain level of education level or a particular accent.</p>
+          <p eId="para_168">We have hundreds of accents in this country. Will the witnesses answer that?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Ms Rebecca Gorman<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_169">I will, I hope with the support of our legal witnesses. Allowing the ground to be specifically defined and having a broad definition is absolutely necessary to protect people, but we also need to allow for situation-specific analysis. Allowing the courts to define and see their cases is how things are determined and how case law is built over time. Having the definition is important. The other grounds in our equality legislation can also be seen as quite broad, but the courts have been able to work within those definitions and tease out where discrimination is taking place or not.</p>
+          <p eId="para_170"> In the case of accents, it is quite clear that people with accents from certain areas, particularly inner-city Dublin, are treated extremely differently. We can all witness that. Allowing the courts to do the situation-specific analysis is important, as is the case with the other grounds. Perhaps the FLAC representatives will respond as well.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_171">The definition on page 38 of our submission, which was used in a 2021 Private Members' Bill, is quite strong. It relates to things such as accents, address and level of education. They are indicators within the definition but they are not grounds of discrimination in themselves. It is not that one person has an accent and another does not. It indicates that people belong to an identifiable social or geographical group that suffers from disadvantage. Not only do people need to prove they belong to such a group by referencing those indicators but they also need to show that their inclusion in that group is other than on a temporary basis.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_92">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_172">I see that in the submission now. The witnesses have taken care in aligning their recommendations to international best practice. I commend them on that. Have they researched the outcomes in other European countries? For example, in France and Britain, the socioeconomic background protections have not significantly reduced educational or employment disparities.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Deputy Keira Keogh resumed the Chair. </i>
+        </summary>
+        <speech by="#" eId="spk_93">
+          <from> Ms Rebecca Gorman<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_173">Several cases are thankfully building up over time. Case law is important for setting standards and it is how a culture of compliance will come about. Legislation is the first step. Public policy measures need to come in. It will be a few years before we see the impact of the legislation and public policy measures such as actual enforcement of our roadmap to social inclusion commitments and commitments to poverty reduction targets. Those are the things that will make a huge difference, as well as the legislation underpinning the socioeconomic status anti-discrimination measures.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_94">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_174">I do not have time for the last question. I have to leave as I have to go to another meeting. I thank the witnesses. I will listen to all the other contributions.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_95">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_175">I will follow up on what was said previously. It is following on from what I said initially. It is about ensuring we cover socioeconomic disadvantage and discrimination. I understand the arguments. They are laid out on page 38 of one of the submissions, which states the factors that should be taken into account such as accent, employment, poverty circumstances and so forth. I understand the argument that case law then kicks in and to a degree it will always be up to the courts to get into the absolute specifics. I assume the UNCRPDalso deals with that scenario.</p>
+          <p eId="para_176"> I will get specific. When we talk about crime and drugs, we talk about the Portuguese model and the idea of facilitating people into education who have been outside it. Some of that relates to people having spent time in prison and so on. How do we factor that into this legislation?</p>
+          <p eId="para_177"> My second question is specific to former political prisoners. It is a completely separate question, but I think FLAC has been involved with a number of cases in the past that were found in favour of former political prisoners who were released under the Good Friday Agreement. It was accepted on the basis of the right to work and the Good Friday Agreement that the case could be followed through. I think it was Michael Farrell who was involved in that case. I apologise if I am slightly wrong about it. Would this equality legislation be a means of dealing with that?</p>
+          <p eId="para_178"> As I said, they are two very different questions.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_179">On the second question, I think it may have been Michael Farrell but it might have been before his FLAC days. On the issue of criminal conviction, when the review was happening, there was a proposal to create a criminal conviction ground and a Private Members' Bill was proposed, I think by Senator Ruane, in relation to it. My recollection is that it linked the definition of a criminal conviction ground with the existing spent conviction legislation that is in place, which is a sensible approach to take to that ground. If someone has a conviction that is considered to be a spent conviction under existing legislation, they can seek individual redress where someone discriminates against them on the basis of that conviction. That might be worth examining. We looked at a number of grounds in our submission. That one is in our original submission to the review. We looked at the criminal conviction ground and it is certainly something that could be looked at by the committee under the whole area of grounds of discrimination, apart from the intersectionality provision in the general scheme, which needs to be expanded somewhat. The issue of the grounds in the legislation is not looked at in the general scheme at all. We looked at such things as gender identity and the socioeconomic ground. Last week, we heard about the family carers ground and that is in our submission as well, but certainly the criminal conviction ground could be looked at to advance the legislation. It has already been considered to such a degree that there is a draft ground in that Private Members' Bill, which could be examined again.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_97">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_180">That is it. If we are talking about giving people an opportunity or chance, it involves not making it overly difficult for them to get employment. I accept there are convictions for certain crimes for which it is vital information is maintained. That is obvious.</p>
+          <p eId="para_181"> Do the witnesses have a view on the previous question? It is specific. Regarding those conditions I mentioned, would this legislation be means of dealing with that? People who have spoken to me say there were particular conditions. People were convicted and went to jail for political offences but they have been impacted by being unable to adopt children or get insurance and there have been questions relating to employment. Would there be a means to deal with that under this legislation?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_182">It is not something we have looked at in massive detail. I will just say that the criminal conviction grounds certainly exist in other jurisdictions and there are also philosophical belief grounds that can be included, but we have not looked at that issue in detail.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_99">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_183">That is fair enough. There has been a lot of discussion about disability and the socioeconomic ground. Some of this relates to legislation and some of it is just about making public services more accessible. How do we do that? Is it an absolute requirement that we deal with it under this legislation to make sure it happens? Is this the legislation that provides the leverage?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Dr. Emer Begley<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_184">Ms Walsh is a legal expert on this, but from a DFI perspective a lot of it is about attitudes, culture and awareness. However, robust legislation is needed to underpin it for it to be realised. I will revert to Ms Walsh, who has done a lot of work in this area.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_185">At the moment, the definition of reasonable accommodation is really flawed. It is very outdated and does not take into account any of the principles that have been developed since, including those under the UNCRPD. I have a draft that I think would comply with the UNCRPD, if the committee wants it. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_102">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_186">I think we would take it. </p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_187">Okay. That is one thing but, as the DFI has pointed out and as have most of us in our submissions, it is just one part of the jigsaw. What we really need is to ensure that the mechanisms are in place to ensure that duty bearers understand. In other words, shopkeepers, the large public sector organisations and multinational corporations need to understand their obligations and what those may comprise. It is also important that individuals be equipped to get support if they feel they are being denied access to their rights. That is the really critical element here. We could technically amend the law and have a beautiful law on paper - even one that is accessible, which the current one is not - and yet have very poor implementation and compliance. Several of us are pointing out that it would be great if the committee could look at the general scheme in tandem with the directives on equality bodies, for precisely that reason. Two directives were produced by the European Union last year. There is a very brief window to transpose them into Irish law, as they have to be transposed by June of next year. These two aspects are very much integrated. The compliance bit will apply to both the WRC and its redress mechanism system and also to the Irish Human Rights and Equality Commission. I am not sure how it works, but it would be great if the committee could reach out to ask the Government at what stage the transposition is currently. I would see the committee as having a major role in considering both of those sets of issues together. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_188">We can consider that in a private meeting. I move to Deputy Aidan Farrelly. </p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_105">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_189">I will keep it very brief. My apologies for coming in between speakers. I thank everyone for giving of their time and experience this morning. During the sessions we have had, it has been quite consistent that the Add the 10th Alliance has been part of many people's contributions. I was struck by the submission that made an attempt to define what socioeconomic status would look like. I ask the alliance and ICTU to speak a little bit about some of those potential grounds, such as poverty, source of income, illiteracy, level of education and employment status. How could those be characterised? Who would be responsible for setting out what they would look like? Perhaps the alliance could start, given that it was in its document. </p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Rebecca Gorman<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_190">Socioeconomic status needs to be well defined and it needs to be quite broad, given the experiences people face. On the list we have poverty, source of income, illiteracy, level of education, address; type of housing or homelessness, employment status, social or regional accent and any other similar circumstances. It provides a broad enough definition. It is the combined efforts of Private Members' Bills, previous Bills that have been put forward and international legislation that is already in place. The work lies with the courts in that equality legislation has to be broad enough so that those kinds of cases can be brought where they can have interpretation as they see and as they wish. It really should be in place to protect people who are disadvantaged. In my work in the Irish National Organisation of the Unemployed, INOU, I see that people in long-term unemployment face huge amounts of discrimination when they try to access employment. It seems incredibly hypocritical and ironic that it is acceptable to question a person on having gaps in their CV and that because a person may not have been in work for any number of reasons that may have been outside the person's control, they are prevented from accessing employment. There will be excellent employers, but the legislation in place must be able to get to the root of those issues where people are facing systemic discrimination. I think it should be up to the courts in terms of how they interpret it but the main aim and the thrust of the legislation should be to protect people in our society who are most disadvantaged. </p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_191">The issue of definitions has been looked at over a number of years and a huge amount of work has been done on it. As we said in our submission, there is a very strong, carefully considered Private Members' Bill on it. The approach of having a non-exhaustive list of grounds that indicates a person belongs to an identifiable social or geographical group is enough to capture this idea of socioeconomic disadvantage. Another element of it is that it is defined not as socioeconomic status but as socioeconomic disadvantage. In this way it is targeted at groups that suffer discrimination, rather than having some form of privilege, on the basis of their socioeconomic status, which is another very important element of it. While this can be seen as quite a difficult area to define, from our point of view, the work has been done on it now and there is a very workable definition that we think is very implementable. The most important thing is that it is workable from the complainant's point of view. We think people will be able to identify with it. It is also important that from the point of view of the WRC it is enforceable. </p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_108">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_192">I do not want to put words in the mouth of Mr. Bowes but is he saying the broader it is, the better?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_193">Yes, what we are trying to do is capture as many people's experiences as possible. It then falls to the individual who has experienced discrimination on that basis to establish in the WRC a <i>prima facie</i> case, as we term it, that they have experienced discrimination on that basis. For all the grounds across the board, these broad, inclusive approaches are the way to go. We need to make sure that no one is excluded from it and then the individual has the opportunity to pursue a case. </p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_110">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_194">I thank Mr. Bowes. I was particularly struck by Ms Walsh's contribution. At the last meeting we had with other witnesses, many of them said that this is a real opportunity that is nearly but not quite there. Ms Walsh described it as being not an upgrade but a modification. Will she elaborate on this? I apologise for asking her to repeat herself if she has answered this already. What are the easier wins, so to speak, in this legislation that are being missed? Are there very clear gaps that our report should ensure are prioritised? </p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_195">Unfortunately, nothing is super easy in this, if we are genuinely trying to ensure that the law is actively complied with and that we are not expecting people to have to take a case with the WRC to challenge something where it has already gone wrong. To go back to what we just said about adding in new grounds, it is vital that socioeconomic status be included and that its definition be as broad as possible. This is not because we want to facilitate people to take discrimination cases, which of course we do, but because we want to embed that understanding in public sector organisations, private sector bodies and employers. In other words, it should say that we do not tolerate discrimination based on social class. If we do not include it, we are almost legitimising it and saying it is fine and that it is okay that a person was denied a job because of their accent. It has come to the point now where, thanks to the campaigns that have been mounted and the evidence we now have from the CSO surveys, we know this is a major vector of discrimination and exclusion in Ireland. Adding it in does not just mean a person will be able to take a case if they were discriminated against. That is quite complicated to do. The real value of this is that my employer, University College Dublin, for example, will have to add a socioeconomic ground to all of its equality policies. This is the real, macro effect that we want. We put it on the radar of organisations and we say that it is not longer acceptable to do this. Organisations will have to think about how they will ensure that they do not discriminate against people. </p>
+          <p eId="para_196"> We talked a little bit about enhancing the public sector equality and human rights duty. If we are really serious about this review and about enhancing the operation of the legislation, we have to look at the other mechanisms for implementing the Equal Status Acts and the Employment Equality Acts. The public sector equality and human rights duty is at the moment where public sector bodies are meant to show that they are complying with the law and are trying to eliminate discrimination, etc. This is not working. Only 12% of organisations are fully compliant with it, according to IHREC. Having talked to various bodies about this, we find that they are very confused about what they are supposed to do. They do not understand what the human rights limb of it is about. It is not working despite having been in place for ten years. The top item for me would be to have a look at the public sector equality and human rights duty and really ramp it up, change it and streamline it, if necessary, to make it more effective and more understandable to public sector bodies. </p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_112">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_197">I am going to have to go in five minutes so I will try to make this quick. I completely agree with Ms Walsh that we have a way to go when it comes to the attitude, culture and awareness of rights and responsibilities. She is right it is about getting the balance between prevention and enforcement across the board. Does she feel that with the storm clouds due to tariffs and trade this may not get the attention it requires, even though it is because of the impact on poverty that it needs to be addressed now and that the same significance should be attached to this moment in relation to not just housekeeping but the upgrading of our equality laws?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_198">The broader political context nearly always impacts the appetite for reform, or perhaps people's sense of the feasibility of it, at a given juncture. I sit on a trans-European equality law network so I talk to colleagues from every country. I have colleagues in Czechia, Hungary, Romania and Latvia, for example, who are experiencing not just a lack of progress on equality but things going in the opposite direction. Ireland has a major chance to be a leader and say we are a progressive country and want to build on the momentum of things that are globally recognised as major markers, such as the marriage equality campaign, and to say we are going to go forward and not backwards. It is not important just for us and all of us living on this island. It is exceptionally important that Ireland takes leadership in a European sense. We will have the Presidency of the European Council next year. It would be wonderful to be able to announce at that we have just done an upgrade on our equality laws, we stand behind them, we have expanded them and we are trying to enhance them. Not everything will be done overnight but it would be about having the ambition at least to say we want to lead on this.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_114">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_199">I thank Ms Walsh. I have to go.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_200">I thank the Deputy. She has been in multiple committees, interviews and everything else this morning. As I said to the witnesses, the Houses are busy today and it is no slight on the importance of this topic or how much we value them.</p>
+          <p eId="para_201"> Does Senator Andrews want to come in again?</p>
+        </speech>
+        <speech by="#ChrisAndrews" eId="spk_116">
+          <from>Senator Chris Andrews<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_202">Yes. If legislation is passed, the WRC would have an increased workload. What sort of additional resources will it need? I emphasise the need for the addition of socioeconomic status as a ground because as Ms Walsh has said, it is really important not just at a personal level, but at a systemic and an international level. We can be leaders in this and it would be really positive when there is so much turmoil in the world and a feeling of a regression in people's rights and equality. It is more of a technical question, but do the witnesses have any idea what sort of additional resources the WRC would need if the legislation were passed with amendments?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_203">The number of claims brought at the moment is quite low. Without information and advice they will remain low, if those elements are not improved. What would be really important is the setting up of a dedicated equality unit within the WRC and some of the adjudicators developing a particular expertise in equality. That does not involve huge resources. I am sure Ms Walsh would be more than capable of training up the adjudication officers. It is really about enhancing the WRC's visibility and ensuring it is accessible. There have been an awful lot of complaints about the complaint form not being accessible. The commission has changed it, so there is now a separate complaint form under the Equal Status Act, but again it is only available online. There are very simple things that can happen, such as training some of the adjudication officers to specialise in the area of equality, having a dedicated unit that deals with it and then looking at all the procedures to ensure it is much more accessible to make a claim.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Christopher Bowes<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_204">The time to look at this issue with the WRC is now. Ms Walsh mentioned the two new EU directives on equality bodies. There is now a sort of year deadline by which those need to be transposed into Irish law and Ms Walsh is completely correct that this review and this legislation need to be looked at in tandem, so not just the individual complaint process but the overarching piece.</p>
+          <p eId="para_205"> On this issue of the powers of the WRC, in our submission we have some very practical suggestions as to how effect could be given to those directives both in terms of IHREC and the WRC. It is not just a question of resources but powers and functions as well. Those have to be looked at as a matter of EU law, so the time to do that is now.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Rebecca Gorman<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_206">I thank the Senator so much for his support on the socioeconomic status. I echo the need for a societal approach to this. It is great to have seen cross-party support over the years for this kind of legislation. It would be good to give an example of current case we cannot bring forward under existing equality legislation. A case study we have is the unequal treatment of social housing tenants compared with private renters in an apartment complex. They are treated completely differently by the housing body. Social housing tenants are not allowed use the communal facilities in the apartment complex. They are all found in a separate block and the social tenants do not have access. They are not allowed to even pay to access these services, and just by virtue of their being in social housing. The property management company runs activities for the children like toy show boxes at Christmas, Hallowe'en goody bags and Easter egg hunts and the children in council tenancies are not allowed to attend these events. It is clear discrimination but under our equality legislation, they have no case. It is unbelievable. It has a detrimental impact on children to already be told at this point in their lives they are different and lesser. This is probably going to perpetuate throughout their lives and follow them into adulthood. It is just one small example where our laws and culture are not equipped to deal with this kind of case. That is going to have a long-term impact on these children.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Andrew Holohan<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_207">It is funny Ms Gorman said that, because where we live there is a little courtyard and three weeks ago I was sitting down and my kids were playing and I was holding a soccer ball when the security guard came up and stood over me. He said nothing. He just stood and waited because there is a sign up saying, "No ball games". That is another real-life example of discrimination. I see people down there with frisbees and scooters and I felt I was intimidated out of the courtyard back up into my apartment.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_208">Is Deputy Ó Murchú indicating?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_122">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_209">I am always indicating.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_210">There is still time for Mr. Joyce to come in if he wants.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. David Joyce<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_211">On the WRC, FLAC has made some very practical suggestions that could perhaps be implemented. It is a real shame the committee did not get an opportunity last week to engage directly with its representatives. We have members on the board of the WRC so I am happy to have a conversation with them and if there are things, we are happy to follow up with the clerk to the committee.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_125">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_212">I thank Mr. Joyce. I ask Deputy Ó Murchú to be brief.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_126">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_213">I am renowned for being brief. I will deal with the piece Ms Walsh spoke about. Transposing the EU directives provides us with the powers to provide a framework for dealing with the WRC and IHREC and what I think Dr. Begley described as the mechanisms that are not up to scratch for people engaging in the system even if we were to have the perfect legislation.</p>
+          <p eId="para_214">On some level, that provides us with a plan. On the socioeconomic piece, we want the State to intervene. My issue with what Mr. Holohan said was the way it was done. I also accept he was bang on the money that when Tusla enters, people sometimes can have an absolute fear. The supports the State engages in need to happen earlier. We spoke in the committee previously about specialist health nurses who would engage with most families. If one finds a situation or circumstance, supports come in and the more terrible things that can happen later can be avoided. I am quite happy with that because we ask how we could formulate this legislation to be the leverage we can use on the State to ensure it vindicates people's rights, whatever about individual companies. That is the plan. As regards the proposed changes to the legislation and dealing with the transposition issue, does that cover most of the bases? Are we still missing anything significant?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_215">There is an opportunity, certainly, to cover most of the bases, as the Deputy said, in that the WRC will have to be designated an equality body. That has a range of implications for the resourcing of the WRC. In other words, it will have to be properly resourced to carry out all of its functions. It will have to be able to collect data on its own activities. Its accessibility will be put under the spotlight in the process of transposing those directives. On the other side, the other key piece of equality infrastructure, the Irish Human Rights and Equality Commission, IHREC, is the body that is meant to drive compliance with the law, ensure public sector organisations and private sector bodies understand their obligations and, if necessary, enforce the law through special powers it has. It oversees compliance with the public sector equality and human rights duty, which we discussed as being quite weak in its current formulation. It also has the power to refer cases to the WRC and the general courts, conduct equality reviews and issue codes of practice. It has a suite of powers that should be forensically examined, not just if they are there on paper but whether they have been applied in practice and whether IHREC is adequately resourced to use all of its powers. That is right at the beginning of the directives.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_128">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_216">Codes of practice would deal with an awful lot of the issues Dr. Emer Begley spoke about.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Ms Judy Walsh<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_217">There are no codes of practice whatsoever on the equal status legislation, nothing on reasonable accommodation or discrimination in schools, for example. A code of practice would be hugely useful. A lot of the powers are resource intensive. They take a lot of time, collaboration and dialogue. The equality body directives will require members, as legislators, to think about whether it has adequate powers on paper and whether it will be able to exercise those powers in practice, that is, does it have the technical, human and financial resources it will need to exercise its functions effectively. The two things are completely integrated and, ideally, should be considered together.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Eilis Barry<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_218">In addition to the directives requiring the enhancement of the equality functions of IHREC and the WRC, it is still important to look at the exemptions under the Equal Status Act because the State, through exemptions, is largely exempt from the legislation. If one wants the socioeconomic ground to be effective, which everybody does, it is important the State's functions are brought within the equality legislation. One does not want to introduce the ground, bring a case to the WRC only for the State to say it is its functions and is not covered in the legislation. That is a vital part of the whole infrastructure, that the State be brought firmly within the scope of prohibition of discrimination. One has to look at the section 14 exemption and the definition of services in section 5, which only extends to the provision of services but does not include the functions of the State. To give life to the socioeconomic ground and other grounds, it is important that this is looked at.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_131">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_219">There are going to be a lot of amendments to this legislation.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_132">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_220">I thank Deputy Ó Murchú for his brief six minutes. I thank all our witnesses for appearing before the committee and for their comprehensive engagement. It is very helpful. The secretariat will be very busy over the summer putting together the pre-legislative scrutiny report. I thank Ms Ryan from SIPTU, Mr. Joyce from ICTU, Ms Walsh from UCD, Mr. Holohan and Ms Gorman from Add the 10th Alliance, Drs. Raley and Begley from DFI, and Mr. Bowes and Ms Barry from FLAC.</p>
+          <p eId="para_221"> As this is our last meeting before the summer recess, I want to put my thanks to the secretariat on record. You all work so hard behind the scenes. I know you will be working across the summer very hard on this. I also thank Oireachtas staff. I thank Deputies and Senators on the committee. There are only two and an extra one left at the moment but it has been an engaging and collegial committee. I hope we continue in this respect as we go forward in our important work. I also thank your parliamentary assistants and administrative assistants, who I know put in a lot of work making sure your questions are ready and helping you to be briefed for committee meetings. Most importantly, I thank all the witnesses who have taken the time over the past few months to appear before us and help us in our work. When we resume after the recess, we will look at the pre-legislative scrutiny report the secretariat will be very busy compiling over the summer for us. We will then delve into the topic of child poverty and deprivation. When we have finished covering that topic, we will move on to self-esteem and online safety for children. We have a lot of important work to do. I hope members find some time to have a little break in the summer. I know everybody thinks we are going on our laethanta saoire but we will not all be at the beach. There is lots of work to be done. I look forward to seeing members after the recess.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_133">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_222">I will actually be brief this time. I also thank the staff who do fabulous work and colleagues. It is very collegial. The Chair has done a wonderful job, even if she could introduce a bit more flexibility for my good self.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_134">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_223">I would like to say well done to you, Chair. You are a bit strict but you are fair. That is all you can ask for. Well done to the staff and my fellow committee members. We are a very hard-working committee and broad minded. We work well together.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_224">I agree. You are all becoming much more efficient with your questions and rarely going over. We get to a second round and sometimes a third. With that, the meeting stands adjourned.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee adjourned at 12.08 p.m. <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

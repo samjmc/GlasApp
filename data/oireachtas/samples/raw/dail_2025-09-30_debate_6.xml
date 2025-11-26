@@ -1,0 +1,606 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-09-30/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-09-30/debate"/>
+          <FRBRdate date="2025-09-30" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-09-30/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-09-30/debate/mul@"/>
+          <FRBRdate date="2025-09-30" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-09-30/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/comhchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-09-30/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-08" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AengusOSnodaighSF" href="/ie/oireachtas/member/id/Aengus-Ó-Snodaigh.D.2002-06-06" showAs="Aengus Ó Snodaigh"/>
+        <TLCPerson eId="CatherineConnolly" href="/ie/oireachtas/member/id/Catherine-Connolly.D.2016-10-03" showAs="Catherine Connolly"/>
+        <TLCPerson eId="EvanneNiChuilinn" href="/ie/oireachtas/member/id/Evanne-Ní-Chuilinn.S.2025-01-29" showAs="Evanne Ní Chuilinn"/>
+        <TLCPerson eId="JoeConway" href="/ie/oireachtas/member/id/Joe-Conway.S.2025-01-29" showAs="Joe Conway"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>Joint Committee on the Irish Language, the Gaeltacht and the Irish-speaking Community</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Comhchoiste na Gaeilge, na Gaeltachta agus Phobal Labhartha na Gaeilge</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-30">Dé Máirt, 30 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-30">Tuesday, 30 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoeConway">Joe Conway</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#EvanneNiChuilinn">Evanne Ní Chuilinn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#NaoiseOMuiri">Naoise Ó Muirí</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AengusOSnodaighSF">Aengus Ó Snodaigh.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#CatherineConnolly">Teachta / Deputy Catherine Connolly sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_5">
+          <i> Tháinig an comhchoiste le chéile i seisiún príobháideach ar 11 a.m., cuireadh an suí ar fionraí ar 11.17 a.m. agus cuireadh tús le seisiún poiblí ar 11.18 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Teagasc agus Stádas na Gaeilge sna hInstitiúidí Tríú Leibhéal: Plé (Atógáil)<recordedTime time="2025-09-30T11:10:00+01:00"/></heading>
+        <speech by="#CatherineConnolly" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:10:00+01:00"/></from>
+          <p eId="para_10">Anois, déanfaimid ár mbreithniú ar theagasc agus stádas na Gaeilge sna hinstitiúidí tríú leibhéal. Fearaim fáilte roimh na hionadaithe thar ceann na Roinne Breisoideachais, Ardoideachais, Taighde, Nuálaíochta agus Eolaíochta: Jean O’Mahony, ceann an aonaid foghlaimeoirí ardoideachais agus an aonaid scileanna; agus an Dr. Alex Dowdall, príomhoifigeach cúnta.</p>
+          <p eId="para_11"> Tá rud le léamh amach agam. Fan liom ar feadh nóiméid nó dhó. Cuirim ar an taifead go bhfuil na finnéithe go léir ag freastal ar an gcruinniú ó sheomra coiste 3, taobh istigh de phurláin Thithe an Oireachtais. Sula leanfaidh muid ar aghaidh, tá sé de dhualgas orm na rialacha agus na treoracha seo a leanas a leagan faoi bhráid na bhfinnéithe agus na gcomhaltaí uilig. Meabhraím dóibh a chinntiú go bhfuil a ngutháin shoghluaiste múchta le linn an chruinnithe - that is a good idea; déanfaidh mé é mé féin - mar is féidir leis na gléasanna sin a chur isteach ar an gcóras craolacháin, eagarthóireachta agus fuaime.</p>
+          <p eId="para_12">Tá an rogha ag comhaltaí freastal ar an gcruinniú go fisiciúil sa seomra coiste nó go fíorúil ar Microsoft Teams ar an gcoinníoll, i gcás cruinnithe poiblí, gur óna n-oifigí i dTithe an Oireachtais a dhéantar sin. Is riachtanas bunreachtúil é sin. Nuair atá comhaltaí ag freastal óna n-oifigí, ba chóir go mbeadh a bhfíseáin ar siúl an t-am go léir agus iad le feiceáil ar an scáileán. Baineann an coinníoll seo le finnéithe freisin agus iad ag freastal ar an gcruinniú go fíorúil. Chomh maith leis sin, ba chóir dóibh a chinntiú go mbeidh na micreafóin múchta nuair nach bhfuil siad ag caint.</p>
+          <p eId="para_13"> Cuirim ar aird na bhfinnéithe go bhfuil siad, de bhua Bhunreacht na hÉireann agus reachtaíochta araon, faoi chosaint ag lánphribhléid maidir leis an bhfianaise a thugann siad don chomhchoiste chomh fada is atá siad lonnaithe laistigh de phurláin Thithe an Oireachtais agus an fhianaise sin á tabhairt acu. Is fíric é nach féidir le finnéithe brath ar an gcosaint sin agus fianaise á tabhairt acu ó lasmuigh de phurláin Thithe an Oireachtais. Molaim d'fhinnéithe a bheith cúramach agus fianaise á tabhairt acu. Má ordaím dóibh éirí as an bhfianaise a thabhairt i leith ní áirithe, ní mór dóibh amhlaidh a dhéanamh láithreach. Ordaítear dóibh gan aon fhianaise a thabhairt nach fianaise í a bhaineann le hábhar na n-imeachtaí atá á bplé againn. Ba chóir dóibh a bheith ar an eolas go ndéanfar na ráitis tosaigh a chuir siad faoi bhráid an chomhchoiste a fhoilsiú ar shuíomh gréasáin an chomhchoiste tar éis an chruinnithe seo.</p>
+          <p eId="para_14"> Tá mé beagnach críochnaithe. Iarrtar ar fhinnéithe agus ar chomhaltaí araon cleachtadh parlaiminte a urramú nár chóir, más féidir, daoine ná eintiteas a cháineadh ná líomhaintí a dhéanamh ina n-aghaidh ná tuairimí a thabhairt maidir leo ina ainm, ina hainm nó ina n-ainm ar shlí a bhféadfaí iad a aithint. Chomh maith leis sin, iarrtar orthu gan aon rud a rá a d’fhéadfaí breathnú air mar ábhar díobhálach do dhea-chlú aon duine nó eintiteas. Mar sin, dá bhféadfaí a ráitis a bheith clúmhillteach do dhuine nó eintiteas aitheanta, ordóidh mé dóibh éirí as an ráiteas láithreach. Tá sé ríthábhachtach go ngéillfeadh siad leis an ordú sin láithreach. An nglacann na finnéithe leis na treoracha sin? Glacann. Gabhaim buíochas leo.</p>
+          <p eId="para_15"> Anois, iarrfaidh mé ar cheann an aonaid foghlaimeoirí ardoideachais agus an aonaid scileanna á ráiteas tosaigh a dhéanamh thar ceann na Roinne Breisoideachais agus Ardoideachais, Taighde, Nuálaíochta agus Eolaíochta. Is é sin mo chuid. Táim críochnaithe. Táim ag tnúth leis an ráiteas tosaigh.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:20:00+01:00"/></from>
+          <p eId="para_16">Gabhaim buíochas le Cathaoirleach an choiste agus leis na comhaltaí as an gcuireadh freastal ar chruinniú an lae inniu. Tá áthas orm a bheith leo inniu chun ceist thábhachtach theagasc agus stádas na Gaeilge inár n-institiúidí tríú leibhéal a phlé.</p>
+          <p eId="para_17"> Tá an Roinn Breisoideachais agus Ardoideachais, Taighde, Nuálaíochta agus Eolaíochta, maraon lenár gcomhpháirtithe san Údarás um Ardoideachas agus in institiúidí ardoideachais ar fud na tíre, faoi ghealltanas daingean an Ghaeilge a chur chun cinn, a úsáid agus a fhorbairt san ardoideachas. We recognise the importance of the role higher education institutions play in supporting the development of Irish in our society. Firstly and most obviously, institutions offer the Irish language as an academic discipline both singularly and in combination with other disciplines. Academic departments of Irish are centres of research and scholarship into the modern and historical languages and have strong partnerships with the Gaeltacht. Higher education institutions train teachers, whose role in teaching and promoting the language among young people is invaluable. For students, Irish-language societies, clubs and mini-Gaeltachts on campus can foster a love of the language not just among Irish students, but among international students as well.</p>
+          <p eId="para_18"> Under legislation, our higher education institutions are academically and administratively autonomous. This is a core principle of how the system operates, with institutions responding to the needs of their communities and regions and to national priorities, including those set out in legislation. This Department allocates current funding to the HEA for direct disbursement to HEIs as a block grant to support pay and non-pay costs incurred by the institutions. In line with institutional autonomy, the internal allocation of this block grant toward teaching, research and supporting activities, including funding for Irish language courses, is a matter for each institution.</p>
+          <p eId="para_19"> The Government and the Oireachtas have been very clear on the important role the sector plays in supporting the Irish language and the sector's guiding legislation reflects this. Section 12 of the Universities Act 1997 sets out the objectives of our seven traditional universities. This includes the promotion of the official languages of the State "with special regard to the preservation, promotion and use of the Irish language and the preservation and promotion of the distinctive cultures of Ireland". Most recently, the position of the language was recognised in the Higher Education Authority Act 2022. The objectives of the HEA are set out in section 8 of the Act and include a requirement:</p>
+          <p class="indent_1" eId="para_20">to support designated institutions of higher education in contributing to social, economic, cultural and environmental development and sustainability through leadership, innovation and agility and, without prejudice to the generality of the foregoing, such support shall include the promotion and use by those institutions of the Irish language</p>
+          <p eId="para_21"> A range of measures are in place to ensure these objectives can be achieved and I would be pleased to provide the committee with further details today. These measures include a dedicated annual allocation of €900,000 in addition to the HEA block grant, which is provided to strengthen the use of Irish among students and staff, and a specific allocation of €1.76 million to the University of Galway to support the work of Acadamh na hOllscolaíochta Gaeilge. The HEA also supports targeted Irish-language initiatives such as the "gníomhaí Gaeilge" mentoring and awards system supported with €150,000 for 2022-23 and 2024-25. Further funding of more than €220,000 has been approved for the following three years. The new "mo thráchtas i mbeagán focal" competition will launch later this year to promote the use of Irish among postgraduate students.</p>
+          <p eId="para_22"> Students have access to a wide variety of programmes through Irish ranging from undergraduate to PhD level, as well as a growing number of microcredential courses in a range of disciplines. The institutions themselves are embedding Irish in their strategic plans, with 11 having done so already. The Higher Education Authority Act 2022 further strengthens the mandate to promote and support the language across the higher education sector, including in Gaeltacht areas. To inform and guide future provision, the HEA is engaging with the University of Galway on a proposal to assess the demand for Irish courses at third level, including courses through the medium of Irish. </p>
+          <p eId="para_23"> The Department also supports initiatives with a North-South cross-Border dimension. These include the provision of €16,000 per annum for North-South programmes, such as the third level language competitions administered by Conradh na Gaeilge. This initiative, which was first piloted in 2006 and has been funded annually since 2007, continues to promote good practice in cross-Border networking among-Irish language societies.</p>
+          <p eId="para_24"> Through pillar 3 of the human capital initiative, the Department is funding a microcredential learner fee subsidy to expand access for learners and employers and to subsidise microcredential courses in priority skills areas. These include courses in the Irish language, Irish translation and Irish for professional purposes.</p>
+          <p eId="para_25"> Léiríonn na bearta seo tiomantas láidir leanúnach don Ghaeilge san ardoideachas le tacaíocht a thabhairt do mhic léinn agus do bhaill foirne agus le cinntiú go bhfuil ról infheicthe agus inbhuanaithe ag an nGaeilge inár n-ollscoileanna agus inár gcoláistí. Táim ag tnúth leis na nithe tábhachtacha seo a phlé leis an gcoiste agus táim ag súil le haon cheisteanna atá ag na baill a fhreagairt.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:20:00+01:00"/></from>
+          <p eId="para_26">Tá sé oscailte anois do na baill ceisteanna a chur.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_4">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:20:00+01:00"/></from>
+          <p eId="para_27">Tá lánfháilte roimh na finnéithe. Mar is eol dúinn, tá 8% de dhaltaí bunscoile sa Stát seo ag freastal ar scoileanna lán-Ghaeilge. Ag an iarbhunleibhéal, níl ach 3.8% ag freastal ar scoileanna lán-Ghaeilge. Titeann sé sin go 0.68% de na mic léinn ar fad atá sa chóras tríú leibhéal a dhéanann cúrsaí trí mheán na Gaeilge. Céard iad na pleananna atá ag an Roinn chun cur leis an soláthar oideachais tríú leibhéal atá ar fáil faoi láthair?</p>
+          <p eId="para_28"> Cuirfidh mé ceist amháin eile agus ansin stopfaidh mé. An leagann an Roinn síos aon sprioc-chéatadán atá ag teastáil uaithi maidir le mic léinn a bheith ag fáil oideachais trí mheán na Gaeilge, mar shampla, 5% sa 20 bliain romhainn in áit an 0.68% atá againn faoi láthair?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:20:00+01:00"/></from>
+          <p eId="para_29">B'fhearr liom an cheist a fhreagairt i mBéarla, más féidir, chun a bheith cinnte go bhfuilim ag tabhairt freagra chruinn don Teachta. As I said in the opening statement, the approach to the status of Irish-language teaching and the Irish language at third level and the support provided for that can be broken up into three broad boxes.</p>
+          <p eId="para_30">Fundamentally, there is the support for teaching and learning of Irish provided through the €1.67 billion block grant. The third level institutions themselves are autonomous in how they use that block grant. If they decided in the morning that they wanted to expand the provision of Irish language courses, they could. That is not a decision for the State. The Department does not have a role in telling the universities and other third level institutions what courses they may offer. In addition, and recognising the particular role of third level in supporting the use and promotion of the language on campus, there is the additional support I have described, that is, the additional budgets, also known as top slices, one of which is-----</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_6">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_31">Gabh mo leithscéal, what was that?</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_32">Cad é an rud a luadh ansin, top-----</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_33">I am sorry. A ring-fenced budget, also known as a top slice. There is a ring-fenced budget of €900,000 called special provision for the Irish language. That is specifically to support universities and smaller institutions with the use and promotion of the language on campus.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_9">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_34">Is that new?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_35">It has been in existence for a number of years. In addition to that €900,000 allocation for universities and smaller colleges, there is also the €1.76 million additional ring-fenced budget for Acadamh na hOllscolaíochta Gaeilge in the University of Galway. That obviously provides Irish languages courses trí mheán na Gaeilge but it also provides broader support to the system with respect to research and other supports with respect to the language.</p>
+          <p eId="para_36"> The third pillar of the approach of the Department and the HEA to supporting the language is to foster the language on campus, which is the thinking behind the support for the gníomhaí Gaeilge, the student mentoring award system co-ordinated by Conradh na Gaeilge. Funding for that is going to be €220,000 over the next three years. There is also the €16,000 for the North-South activities. Recognising the independence of the institutions, both academically and administratively, which I mentioned in my opening statement, these are the three broad approaches of the Department to supporting the language at third level.</p>
+          <p eId="para_37"> To the Deputy's second question as to whether the Department has a target for increasing the number of students studying the language, I absolutely understand and very much appreciate the policy rationale for considering or setting a target but I will make a couple of observations about that. I acknowledge that, relative to the student population as a whole, the number of students studying exclusively trí mheán na Gaeilge or through a mix of Irish and English is low. I will say a couple of things about that, however. As I have mentioned, the third level institutions themselves are independent. That is a really core principle of the system. The State does not tend to take the approach of setting binding targets for the courses the universities should be putting on. I am talking about binding targets now rather than any voluntary target. The second point I would make is that, by and large, the third level system does respond relatively well to student demand. We can see that in that there are not that many areas where there are very profound skills deficits in the labour market. By and large, the system does respond well to student demand set against the context of the labour market.</p>
+          <p eId="para_38"> There are a couple of things that augur well for student demand with respect to the language. One is the number of students studying at primary and post-primary level through the medium of Irish, which the Deputy referred to. There is also the Government's objective of 20% of recruits into the public sector being Irish speakers by 2030. They are both things that augur very well for demand. With respect to that, if the State were to set an objective or target, albeit a voluntary one, for the number of students studying Irish at third level, it would be prudent to assess the demand and to gather some research, evidence and data on the level of demand for Irish language courses from students studying through the medium of Irish. The HEA is engaged with Acadamh na hOllscolaíochta Gaeilge to look at the potential for such research.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_11">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_39">In Ms O'Mahony's own opinion, if the third level institutes are independent and the figure is 0.68%, should the Department have this sprioc or target?</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_40">Níl mé ag iarraidh cur isteach ar an Teachta ach is coiste Gaeilge é seo. Níl aon locht ar na finnéithe nuair nach bhfuil Gaeilge acu ach tá cluasáin ar fáil. An féidir leis an Teachta leanúint ar aghaidh i nGaeilge? Tá an pointe á dhéanamh agam go ginearálta. Má théann muid an bealach sin, beidh an coiste trí Bhéarla.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_13">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_41">Aontaím.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_42">Tá mé breá sásta na ceisteanna a ghlacadh trí Ghaeilge.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_15">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_43">Tá brón orm, gabh mo leithscéal.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_44">Níl aon ghá le brón ná náire ach leanfaimid ar aghaidh i nGaeilge. Tá cluasáin ansin agus is féidir iad a úsáid.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_17">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_45">Toisc go bhfuil na figiúirí chomh híseal sin, an gceapann Jean O'Mahony gur chóir go mbeadh an sprioc sin ann? Bhí sí ag rá go bhfuil na hinstitiúidí tríú leibhéal neamhspleách ach níl sé sin ag obair so an gceapann sí gur chóir don Roinn sprioc a thabhairt isteach?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_46">Mar a dúirt mé, tuigim go hiomlán cén fáth go mothaíonn daoine gur chóir don Roinn sprioc a thabhairt isteach go mbeidh, mar shampla, 5% de mhic léinn ag staidéar trí mheán na Gaeilge nó 5% de na cúrsaí á reáchtáil tríthi. Tuigim é sin. Rachaidh mé ar ais. Ceapaim féin gur chóir d'éinne a bhfuil sé seo i gceist acu an taighde faoin éileamh sa chóras ar an oideachas sin a dhéanamh ar dtús. I absolutely understand the policy rationale for considering it but it would be prudent to understand what the demand is prior to setting a target such as that. In order to manifest such a target, there would have to be public investment and we would have to know that this investment was ultimately going to result in take-up of the courses.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T11:30:00+01:00"/></from>
+          <p eId="para_47">Gabhaim buíochas as an gceist. Mar an gcéanna le Jean O'Mahony, táim chun freagairt as Béarla má tá sé sin ceart go leor. When we talk about targets, particularly for the university sector, it is important to understand broader Government policy, the broader policy landscape and the fact that there are a number of different policy interventions already in train or emerging at a cross-government level.</p>
+          <p eId="para_48">Obviously, the public sector workforce targets are an important thing to keep in mind. Our colleagues in the Department of Education and Youth have forthcoming policies on the teaching of Irish in English-medium schools and Irish-language education outside of the Gaeltacht. We are collaborating on a cross-government basis with our colleagues on all of those policies. It is important to understand that they will all have implications for the third level sector. It is important to understand things in the round when we are talking about targets. While targets are great, we need to understand what their purpose and objectives are.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_20">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_49">Tá an oiread sin ceisteanna tar éis teacht as an méid atá ráite ag na finnéithe go dtí seo. Is deacair iad ar fad a chur. Fanfaidh mé leis an méid a bhí an Dr. Alex Dowdall ag rá. Measaim nach dtuigeann an Státchóras i gcoitinne, agus an Roinn féin, an polasaí Stáit atá ann. Ní díreach polasaí é; is dlí é anois. Is gá go mbeidh 20% d’earcaithe sa Státseirbhís nó sa chóras poiblí inniúil sa Ghaeilge. Ní féidir é sin a dhéanamh muna bhfuil céimithe le Gaeilge, nó an leibhéal is airde Gaeilge, ag teacht amach as na coláistí. Ní díreach coláiste amháin atá i gceist. Go dtí seo, bhí an Stát ag brath ar Ollscoil na Gaillimhe chun roinnt den toil agus éileamh sin a shásamh beagán. Tá an tírdhreach athraithe anois, áfach. Tá an dualgas seo ar chuile institiúid ardoideachais. Dúirt an Dr. Dowdall amhlaidh ag an tús: dúirt sé go raibh gealltanas daingean ann chun an Ghaeilge a chur chun cinn, a úsáid agus a fhorbairt san ardoideachas. Ní léir dom go bhfuil sé athraithe ón uair a bhí mise ag freastal ar an gcoláiste breis is 40 bliain ó shín.</p>
+          <p eId="para_50"> Tuigim, agus glacaim go dtuigeann gach duine, an áit a bhfuil muid faoi láthair. Is é an rud atá an coiste seo ag iarraidh fáil amach, áfach, ná cad iad na céimeanna a ghlacfar, anois agus i gceann cúpla bliain, le cinntiú go mbeidh an córas ardoideachais agus breisoideachais ag bogadh sa treo ionas go mbeidh earcaithe ann a bheidh inniúil sa Ghaeilge do réimse leathan ról, lena n-áirítear múinteoirí sna ceantair Ghaeltachta agus lasmuigh díobh chun an t-éileamh atá sna scoileanna do mhúinteoirí le Gaeilge a shásamh, banaltraí, dochtúirí, innealtóirí agus céimithe ríomhaireachta. Tá gá le go leor acu siúd chun an sprioc 20% a shásamh. Is é sin díreach an minimum. Chun an minimum sin a shroicheadh, tá gá le hinfheistíocht.</p>
+          <p eId="para_51"> Tá sé ráite ag an Dr. Dowdall go bhfuil bloc deontais ann agus nach féidir leis an Stát cur isteach. Tugann an Roinn bloc deontais do na hinstitiúidí agus ligeann sí dóibh oibriú ar aghaidh. Ní fíor sin, áfach. Mar shampla, muna mbeadh ceann de na hinstitiúidí sin ag comhlíonadh cothromais ó thaobh pá de nó ag tabhairt pá íseal, bheadh an Roinn ag rá léi nach féidir é sin a dhéanamh agus nach bhfaigheadh sí an bloc deontais don bhliain dár gcionn muna ndéanfaí athrú. Níl an cur chuige céanna sin ag tarlú ó thaobh na Gaeilge le cur in iúl do na hinstitiúidí seo ar fad – tá a lán acu ann – muna bhfuil siad sásta tosú anois láithreach ag bogadh i dtreo i bhfad Éireann níos mó cúrsaí a sholáthar, a bhfuil Gaeilge mar chuid díobh nó atá trí mheán na Gaeilge, beidh an Stát ag féachaint ar roinnt den bhloc deontais a tharraingt siar.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_52">Gabhaim buíochas leis an Teachta Ó Snodaigh. There are a couple of things in this regard. Following on from what Dr. Dowdall said, there is a question of what the policy context looks like in the round. Obviously, third level is a significant part of that. The Department does not disagree with the Deputy that increasing the number of students studying Irish at third level would go towards meeting the State’s objective of having 20% of recruits into the public sector as Irish speakers because the numbers currently studying, either through the medium of Irish, through both languages or with an Irish stream, are too low to meet that target. </p>
+          <p eId="para_53"> I note that my colleague, Dr. Aodhán Mac Cormaic, was before this committee and discussed this question. He noted that while the third level sector is an important part of the picture, in order to meet a target as ambitious as 20%, one is necessarily looking at a broad swathe of the population and not solely students who self-select into Irish-language degree courses. Maintaining the capacity, ability, connection, competency, confidence and fluency of students in the Irish language who are coming out of the post-primary system into the third level system and into other areas of work and study will be significant. There is arguably a role for the third level sector in that context, outside of specific degree courses.</p>
+          <p eId="para_54"> I might bring in my colleague, Dr. Dowdall, to talk a little more about the policy context outside of the third level sector in looking to meet that 20% target.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T11:40:00+01:00"/></from>
+          <p eId="para_55">Of course. The focus on core undergraduate and postgraduate provision in higher education is absolutely essential. That is where a lot of the Department’s established initiatives around the Irish language have been focused on up till now. We have mentioned the block grant and the special provision for the Irish language. Some of the other initiatives that we have mentioned so far, such as the gníomhaí Gaeilge initiative, are focused less on the teaching of Irish and more on the promotion and use of Irish as a living language on campuses. That is also an important aspect because we need to remember that there will be people coming into higher education with a good level of Irish but may not necessarily choose to study Irish. We want to encourage them to remain proficient in the language so that they can then go on to use it in their professional careers later.</p>
+          <p eId="para_56"> When we talk about expanding undergraduate and postgraduate provision, we need to remember that the higher education sector is kind of like a super tanker and changing it takes time. New degree cohorts coming on this year will not be graduating for three or four years. If we have 2030 targets, we need to think about flexible provision.</p>
+          <p eId="para_57"> It is important to look at some of the initiatives and examples of good practice which are happening. These are focused on microcredentials and flexible provision and so forth, some of which are delivered through the higher education sector, while others are delivered through further education and in-work training by the likes of Skillnet Ireland. We briefly mentioned microcredentials in our introduction. This has been an important policy focus for the Department in recent years. While we perform very well in European terms when it comes to the production of university graduates, the OECD has called us out on needing to work to improve lifelong learning, upskilling and reskilling. A number of initiatives have been funded by our Department in recent years to support that. The human capital initiative, HCI, is one example. One stream of the human capital initiative funded an Irish Universities Association, IUA, project to develop a website, <i>microcreds.ie</i>, which provides individuals with short, targeted learning offerings in areas of critical skills needs. These offerings will range between one and 30 points on the European credit transfer and accumulation system, ECTS, and usually take approximately one semester to complete.</p>
+          <p eId="para_58">A total of 17 of those microcredentials are offered in Irish. Many of them are about the Irish language, but not all. Some are focused on business management, human resource management and so on. There are also a number of Irish courses specifically designed for professional purposes. In addition, this year in the further education and training sector, Mayo, Sligo and Leitrim Education and Training Board collaborated with Gaelchultúr to establish a new course in Irish for professional purposes at levels 3, 4, 5 and 6, which is free to access as a further education and training course. It is designed to support those who are looking to improve their use of Irish in the workplace. It is important that it is subject agnostic and that people do not have to be trained in a particular skills area to do that course. It is open to people in different sectors of the economy to look at those sorts of initiatives.</p>
+          <p eId="para_59"> There are also good examples of good practice coming through Skillnet Ireland, which is the business development agency of our Department. It funds more than 70 individual skillnets, which are cosponsored by industry. For instance, the Gréasán na Meán Skillnet is focused on the media sector and collaborates with TG4 on a number of specific Irish-language journalism-related courses.</p>
+          <p eId="para_60"> Another recent example is the Green Tech Skillnet, which is the renewable energy skillnet sponsored by Wind Energy Ireland. Like many, it recognises the development potential for renewable energy off the west coast of Ireland. Last year, it organised a new course, in collaboration with Gaelchultúr, on wind energy as Gaeilge. This is designed for community liaison officers or people working in the wind industry who may be engaging with communities in Gaeltacht areas in the context of those anticipated renewable energy projects. That is an example of an industry identifying a critical skills need around the Irish language and using the existing mechanisms in place in order to address that need. While these are just examples of current good practice, the system exists and the opportunity is there to scale them.</p>
+          <p eId="para_61"> To go back to something we may have mentioned at the beginning, a lot of this is demand led. We rely on particular sectors and industries of the economy to come to us to identify where those needs are. Our agencies are then in place and they have the mechanisms capable of addressing those needs, to a certain extent.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_23">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_62">Tá ceist ghairid agam agus ligfidh mé do chomhaltaí eile ceisteanna a chur ina dhiaidh sin. Tá sé seo beagáinín deacair. Mura fuil na cúrsaí ar fáil, ní bheidh innealtóirí le Gaeilge. B’fhéidir go mbeidh Gaeilge acu, ach ní innealtóirí Gaeilge iad mar níl bheidh siad ag foghlaim gach rud faoin chúrsa trí Ghaeilge agus an cur chuige sin. Sa chás a luaigh an Dr. Dowdall maidir le muilte gaoithe a thógáil amach ar chósta an iarthair, b’fhéidir go mbeidh Gaeilge éigin ag na daoine sin toisc go ndearna siad modúl faoin Ghaeilge, ach níl an cúrsa bunaithe ar an nGaeilge.</p>
+          <p eId="para_63"> Dúirt an Dr. Dowdall go raibh sé ag brath ar éileamh agus go dtiocfaidh na cúrsaí má tá éileamh orthu. Tá éileamh ar an nGaeloideachas i gcoitinne ag an mbunleibhéal, áfach. Seasann an t-éileamh sin ag 8% ach titeann sé go 3.8% ag an dara leibhéal toisc nach ndéanann an Stát an t-éileamh ag leibhéal na bunscolaíochta a shásamh. Titeann sé go tubaisteach ansin ag an gcéad stad eile, is é sin, an tríú leibhéal. Níl an t-éileamh ann ag an leibhéal sin mar ba chóir. Mura fuil ach 3.8% de dhaltaí meánscoile ag déanamh oideachais trí Ghaeilge an bealach ar fad suas go dtí an ardteist, tá fadhbanna eile ann. Titeann sé go dtí 0.2% nó a leithéid ina dhiaidh sin. Tá fadhb bhunúsach ansin. Tá an fhadhb sin ann beag beann ar an athrú polasaí faoin 20%. Seachas a bheith ag fanacht ar éileamh, cad atá an Roinn ag déanamh chun an t-éileamh sin a chothú? An bhfuil sí ag dul amach chuig na meánscoileanna lán-Ghaeilge sa tír, sa Ghaeltacht agus lasmuigh di, chun a iarradh ar na daltaí agus na múinteoirí faoi na cineálacha ábhar is cúrsaí ar mhaith leo go mbeadh ar fáil trí Ghaeilge, in áit cúrsaí le beagán Gaeilge ar an taobh? Is trua nach bhfuil sé sin déanta ag an Roinn go fóill, ach measaim gurb é sin an ról atá aici in iarracht tús a chur le bheith ag bogadh i dtreo na sprice 20% a bhaint amach. Tá an sprioc sin dúshlánach, agus dúirt muid sin. Ní shroichfidh muid é bunaithe ar an méid atá cloiste againn go dtí seo, áfach.</p>
+          <p eId="para_64"> Tá an ceart ag an Dr. Dowdall gur juggernaut é an tríú leibhéal nach féidir a chasadh timpeall go tapa. Ritheadh an tAcht sin in 2021, áfach. Tá muid anois ceithre bliana níos faide ar aghaidh. Tá fadhbanna bunúsacha ó thaobh an Stáit de. Níl sé tar éis na caighdeáin nua a leagan amach. Leagfar na caighdeáin sin ar gach uile cheann de na hinstitiúidí a bhfuil muid ag caint fúthu – seachas na cinn phríobháideacha - toisc gur an Státchóras atá i gceist.</p>
+          <p eId="para_65"> Is í an cheist ná, seachas an méid atá curtha os ár gcomhair inniu, cad í an obair atá an Roinn ag déanamh chun an t-éileamh sin a shásamh don bhliain romhainn, b’fhéidir?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_66">I have a couple of points. Glacaim go hiomlán nach bhfuil go leor eolais ag daltaí sna meánscoileanna faoina cúrsaí atá ar fáil i nGaeilge nó fiú na deiseanna gairmiúla, cé go ndéanann COGG a lán oibre tábhachtaí sa réimse sin. Tá cúpla duine tar éis é sin a phlé anseo. Tá muid ag an bpointe anois - we are at the point currently, and I take the Deputy’s point that we were at that point a number of years ago rather than just now, where a number of policy initiatives or policy decisions have been taken with respect to Irish-medium education, both at primary and post-primary levels, and employment in the public sector, with my reference to demand in the labour market, and there is the question of how those policy decisions intersect or meet at third level when it comes to third level policy in the Irish language. I absolutely take the Deputy’s point in that regard.</p>
+          <p eId="para_67"> With respect to second level students, as Dr. Dowdall mentioned, our colleagues in the Department of education are due to bring forward a policy regarding education in Irish-medium schools. We have been liaising with that Department on the transition of second level students from Irish-medium post-primary schools into third level. That is a question that has been raised a number of times at this committee because of the fall-off in the numbers of students who did their education through the medium of Irish and who do not study through Irish at third level. That is a policy question which has been raised between our Department and the Department of education.</p>
+          <p eId="para_68"> Obviously, there is the State’s policy with respect to public sector employment and the actions required to stimulate and meet demand and to adequately train people to do that. I understand our colleagues in that Department are bringing forward and developing an action plan as to how to achieve that target. We have been engaging with them in that regard.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_25">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T11:50:00+01:00"/></from>
+          <p eId="para_69">Faraor, beidh orm an cruinniú a fhágáil ag 12.15 p.m. agus beidh Leas-Chathaoirleach an choiste, an Teachta Ó Cearúil, sa Chathaoir. Sula dtéann muid ar aghaidh – is í an Seanadóir Ní Chuilinn an chéad chainteoir eile – an bhfuil aon sonraí nó bunachar ag na finnéithe ó thaobh na gcúrsaí atá ar fáil? Tá bearna ollmhór agus tá samplaí de dhea-chleachtas tugtha dúinn, ach cá bhfuil na sonraí ó thaobh na gcúrsaí atá ar fáil, ní hamháin na cinn atá bainteach le Gaeilge mar ábhar céime ach na cúrsaí eile, cosúil le cúrsaí innealtóireachta, mar a dúirt an Teachta Ó Snodaigh?</p>
+          <p eId="para_70">An bhfuil na sonraí ag na finnéithe? Ansin leanfaidh mé ar aghaidh. B'fhearr liom freagraí gonta, más féidir.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_71">We engage with our colleagues in the Higher Education Authority on-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_27">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_72">An bhfuil na sonraí ag na finnéithe ó thaobh na gcúrsaí atá ar fáil?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_73">We do have some figures. We have engaged with our colleagues in the HEA on this question. They do not provide these figures as part of their front-facing data dashboards that they have and there are a number of caveats. I already mentioned microcredentials. There are 17 of those.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_74">Táim ag iarraidh an Seanadóir Ní Chuilinn a ligean isteach. An féidir iad a sheoladh chugainn agus cur síos ar na cúrsaí atá ar fáil, cén áit, cathair agus contae ina measc?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_75">Tá liosta againn. Is féidir linn é sin a roinnt leis an gcoiste.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_31">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_76">Tuigim go bhfuil sé deacair polasaí fadtéarmach a athrú go tobann, ach ní dóigh liom gur fadhb thobann atá anseo. Tá sé stairiúil freisin. Luaigh mo chomhghleacaí líon na ndaoine atá ag freastal ar bhunscoileanna agus meánscoileanna lán-Ghaeilge. Tá na daoine ann le Gaeilge. D'fhreastail mise ar bhunscoil Ghaeilge agus meánscoil Bhéarla. Rinne mé céim as Béarla agus iarchéim trí Ghaeilge. Bhí meascán ann. Tá daoine ann agus déanann siad meascán de chúrsaí thar an tréimhse sin. An cheist atá agam ná, leis an 0.6% nó mar sin atá ag déanamh Gaeilge nó mar sin de atá ag déanamh Gaeilge sa tríú leibhéal, an bhfuil na figiúirí do dhaoine atá ag déanamh modúl trí mheán na Gaeilge, chomh maith leis an gcéim san innealtóireacht nó mar sin?</p>
+          <p eId="para_77"> Nuair a bhí mise ag freastal ar an gcéim trí Ghaeilge a rinne mé sa léann cumarsáide i DCU, bhaineadar modúl Gaeilge ón gcúrsa sin an bhliain roimhe. Bhí díomá orm mar bhí sé ar an CAO go raibh Gaeilge ar an gcúrsa. Bhaineadar an modúl agus níl sé ann go fóill. Níl sé ar ais ar an gcúrsa cé gur 25 bliain ó shin atá ann anois. Dá mbeadh muid in ann níos mó modúl Gaeilge a chur ar fáil, is tosaíocht í sin atá réalaíoch agus ciallmhar anois. Tuigim go bhfuil fadhb fhadtéarmach ann chomh maith. An féidir inspreagadh a thabhairt do na hollscoileanna níos mó modúl a chur ar fáil sna cúrsaí ginearálta freisin?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_78">Ó thaobh daoine atá ag déanamh staidéir trí Bhéarla agus trí Ghaeilge, an figiúr atá againn ná 2,625 mac léinn. Sin idir na cúrsaí a bhfuil modúil nó cuid díobh trí Ghaeilge. Tá 28 díobh siúd. Tá 36 cúrsa ina bhfuil Gaeilge mar ábhar, mar shampla, BA nó joint honours nó rud mar sin.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_33">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_79">Cén céatadán a thug na finnéithe ag an tús? An bhfuil na daoine a dhéanann modúl trí Ghaeilge san áireamh sa 0.68% nó an é sin líon na ndaoine a dhéanann oideachas iomlán trí Ghaeilge? Tá líon na ndaoine ag staidéar trí mheán na Gaeilge níos lú fós.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_80">Níor thugamar an céatadán sin. That was not our percentage.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_35">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_81">Tuigim.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_82">That was not our percentage. I think we released these figures to Deputy Ó Snodaigh recently through a parliamentary question. We asked the HEA to do an initial analysis on this. It was not an exercise it does on an ongoing basis, so it had to come at it fresh. Based on that analysis, for the 2023-24 academic year 420 students took courses delivered entirely through Irish. These will be courses in the Irish language or primary education, for instance, that would be taught entirely through Irish. Then, 2,625 took courses partly through Irish. That is largely driven by the education sector still. This includes the professional masters in education for primary school teaching, for instance, where we know that every student on that course has to take a component through Irish. Or it will be denominated entry into an arts, business or law degree, where a student studies law and Irish, business and Irish and so on. What we do not know are the numbers of students who may be taking Irish as part of their general entry undergraduate arts degree, for instance. We do not have those figures. Those are not figures that the HEA currently tracks. More granular again, which I think is what the Senator is asking, neither do we have the figures on the number of modules that are provided. I think this will be linked to the broader question of demand that we mentioned previously and the work the HEA hopes to do with the University of Galway on that.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_83">I think the point about the modules available to students to do part of their course through Irish is a really important one. If you look at the CAO for this year, you can see that there is demand for courses that clearly offer an Irish-language component. I anticipate that the third level sector would understandably need support to develop curriculum material through Irish. That is one of the aspects I had in mind when I referenced that the HEA is engaged with Acadamh na hOllscolaíochta Gaeilge on a potential piece of research to look at demand in the third level sector. I would anticipate that this is one of the enablers that could potentially come out of that, such as how third level institutions need to be supported to deliver modules through Irish.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_38">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_84">Gach seans go mbeidh inspreagadh de dhíth ón Roinn or an incentive do na hollscoileanna. Sin an pointe a theastaigh uaim a chur chun cinn.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_39">
+          <from>Senator Nicole Ryan<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_85">Táim fós ag foghlaim Gaeilge agus mar sin níl an stór focal go léir agam. Cuirfidh mé mo cheist i mBéarla agus is féidir leis na finnéithe freagra a thabhairt i nGaeilge. The witnesses have spoken about how there needs to be a demand for the drive, but it is evident that there is not enough information out there for people to understand that they can use Irish as a language. I also wanted to talk about the initiatives of North and south. The witnesses said the Department supports initiatives North and south of the cross-Border dimension, which includes €16,000 annually. Will the witnesses tell us a bit more about these North-South initiatives that the Department supports? Do they think €16,000 annually is enough?</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Ghlac an Teachta Naoise Ó Cearúil an Chathaoir.</i>
+        </summary>
+        <speech by="#" eId="spk_40">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_86">I might take Senator Ryan's questions in two pieces. On the point about demand, I am not saying definitively that Government policy can only respond to demand, but rather that it would be prudent to understand the demand that exists in order to consider what the policy response should be in order to understand that the State is meeting it, but also that if the State was to fund it, it would be taken up. It was not necessarily a causal piece.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_41">
+          <from>Senator Nicole Ryan<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_87">I get that, but Ms O'Mahony stated that the HEA is not actually recording things at granular level. If the data is not there and the data is not being recorded, there is no sense of the true picture.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:00:00+01:00"/></from>
+          <p eId="para_88">I absolutely agree with that. I think that is a core piece for the consideration of any future policy. There is not enough data about Irish-language speakers at third level or about demand.</p>
+          <p eId="para_89">I would absolutely take that point.</p>
+          <p eId="para_90"> On the support for the North-South piece, this is run out of our international division to support third level Irish language competition on a North-South basis. There is also a US-Ireland dimension. The programme started as a pilot scheme in 2006 administered by Glór na nGael and it awards prizes to Irish-language societies on an all-island basis. Over the past 15 years, Conradh na Gaeilge has been collaborating with Glór na nGael on annual competitions between third level Irish societies. Historically, the competition emphasises good practice in planning and community development and networking. This initiative is about cross-Border relationships grounded in the Irish language. The primary principle is about fostering those North-South relationships as a first principle and support of the language being a second principle.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_43">
+          <from>Senator Nicole Ryan<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_91">What kind of metrics does the Department record in that initiative? I am guessing this is the only initiative that it runs. It states initiatives, but it is just the one North-South initiative. What kinds of metrics does the Department measure in terms of that to see the success? How did the Department decide on €16,000 being enough to foster North-South relationships?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_92">My understanding is that it has been consistently funded over the past 15 years and that there has been consistent demand from student societies on both sides of the Border to participate.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_45">
+          <from>Senator Nicole Ryan<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_93">Did anybody call for more funding on this initiative in previous years?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_94">Not to the best of my knowledge.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_47">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_95">Tá an-díomá orm leis an gcruinniú seo. Ní rud pearsanta é, ach tá an cur chuige lag ó thaobh na ceiste seo. Labhraíomar faoin 0.68% sin, uimhir an-bheag ó thaobh na mac léinn sa tríú leibhéal atá ag déanamh rud éigin as Gaeilge, ach an bhfuil sprioc straitéiseach ag an Roinn ar chor ar bith leis an uimhir sin a mhéadú? Ní chloisim rud ar bith go bhfuil sprioc straitéiseach ann. Tá sé leagtha amach ó thaobh an dlí agus éilimh de. Beidh an t-éileamh ann mar go bhfuil sé leagtha amach sa dlí ó thaobh an 20% faoi 2030, ach níl sprioc ar bith le cloisteáil ó thaobh an tríú leibhéal. An bhfuil sprioc ag an Roinn?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_96">As I mentioned previously, the Government has not set a target for the availability of third level courses through the medium of Irish. That has not to date been a target set by the Government. What I have set out are the streams or the policy and funding which supports the provision of teaching and learning of Irish at third level in the Department to support Irish-language activity specifically by universities through the special provision and the support directly to student societies on campus. To date, that is the policy, recognising the academic and administrative independence of the third level institutions. That has been the policy to date with respect to recognising and placing an obligation through the language obligations in the higher education Act on the HEA and third level institutions.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_49">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_97">I am going to stop Ms O'Mahony there, if she does not mind. I will say it through English. Tuigim gur coiste Gaeilge é seo. If the Department does not have a strategic objective to increase third level participation as Gaeilge, níl seans dá laghad go n-éireoidh linn an sprioc sin a bhaint amach. Ba chóir go mbeadh na daoine Roinn ag rá go bhfuil siad an-bhuartha leis seo, gur seo an leibhéal infheistíochta agus na cúrsaí trí Ghaeilge a bheidh ag teastáil agus seo an cineál struchtúir a theastaíonn le go mbeimid in ann an aidhm seo a bhaint amach. Now, a Rialtais, teastaíonn an infheistíocht uainn - over to you. Mura bhfuil an sprioc straitéiseach sin ann, níl seans dá laghad ann. Beimid ag brath ar Ranna cosúil leis an Roinn seo an obair sin a dhéanamh. Ní thuigim céard atá ar siúl anseo. Bhí an Teachta Ó Snodaigh ag rá go ndeachaigh an reachtaíocht anseo tríd roinnt blianta ó shin. Beimid anseo ar feadh deich mbliana eile mura bhfuilimid in ann brath ar an Roinn dul ar aghaidh mar sin. Céard a cheapann na finnéithe? An aontaíonn siad?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_98">I think the Department would absolutely agree that third level has a very significant role to play in respect of meeting the wider objectives with respect to the Irish language but also Government objectives with respect to employment in the public sector, as Deputy Ó Muirí set out. I absolutely agree with him. The Department would also agree that the numbers currently studying through the medium of Irish and graduating with level 8 or level 9 qualifications, either achieved through the medium of Irish or partly through the medium of Irish, are low. The numbers are very low relative to the ambitious objectives set out by the Government in its policy. We need to make the point that third level is one part of it. It is an important part of it that we are here talking about, but there is obviously a wider piece to it. As I mentioned, with respect to both policies that are being brought forward at primary and post-primary level and with respect to the Irish language in the public sector, there is a role for third level provision in that, while respecting the academic independence of the institutions.</p>
+          <p eId="para_99"> I take the point of the committee that the Government has certain levers at its disposal to support and encourage further third level institutions in certain directions. The special provision for the Irish language and for Acadamh na hOllscolaíochta Gaeilge is part of that, but any future policy with respect to setting a target or increasing the number of courses available through the medium of Irish would be done, I can only posit, in co-operation with the sector. Academic independence is not something that we just pay lip service to; it is a core principle of our third level sector and our system. Any future policy would need to be done clearly in full co-operation with the sector. I am sure that if they were before this committee they would have a lot to say about it.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_51">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-09-30T12:10:00+01:00"/></from>
+          <p eId="para_100">Ó thaobh na ceiste maidir leis an lucht acadúil agus iad a bheith neamhspleách, níl Rialtas ar bith ag iarraidh dul i ngleic leis an gceist sin, ach tá an Rialtas ag cur acmhainní airgid ar fáil don earnáil agus mar sin ba cheart go mbeadh ról éigin ag an Rialtas ó thaobh an polasaí a shocrú.</p>
+          <p eId="para_101">Níl na finnéithe ag rá rud ar bith i ndáiríre. Ar bhealach, bheadh sé níos fearr dá gcloisfinn uathu nach raibh seans dá laghad ann go n-éireodh leo an sprioc seo a bhaint amach faoi 2030 mar gheall ar na fáthanna seo a leanas. Sin eolas éigin a bheimis in ann dul i ngleic leis. Ní féidir linn dul i bhfolach taobh thiar don academic independence ach an oiread. Níl mé ag rá go bhfuil na finnéithe á dhéanamh sin ach níor mhaith liom sin a fheiceáil ó thaobh na ceiste seo de. Tá sé leagtha amach go bhfuil muid ag iarraidh an sprioc seo a bhaint amach. Ní déarfaidh mé aon rud eile.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_52">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_102">Ar mhaith leis an Dr. Dowdall teacht isteach arís?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_103">I might just quickly come back in. I may be just re-emphasising a point I made earlier. The approach to date has been about ensuring that Irish is embedding into the other strategic plans which our Department has. I have mentioned microcredentials. Something which I should have mentioned previously, although it warrants mentioning here, is regarding apprenticeship as well. One of the headline actions that is called out in the public service plan is to develop an apprenticeship programme for an Irish language stream aligned with the executive officer grade in the Civil Service. That is progressing. Colleagues in our own apprenticeship unit are working on that within the broader context of the public sector apprenticeship plan with colleagues in the Department of Rural and Community Development and the Gaeltacht. There is an expressed interest there to secure five places on an Irish-language stream within that apprenticeship programme. Again, it is another example of just how Irish is, and can be, embedded into the broader strategic priorities of our Department across different areas, whether it be skills or apprenticeship and so on.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_54">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_104">An bhfuil sé sin alright, a Theachta? Tá roinnt ceisteanna agamsa anois. Gabhaim buíochas leis na finnéithe as ucht teacht isteach inniu. Rud a chur amú mé ansin ná nuair a cuireadh locht ar an Rialtas nár thug sé sprioc ó thaobh uimhreacha do chúrsaí trí Ghaeilge don tríú leibhéal. Dúirt na finnéithe go díreach nár thug an Rialtas spriocanna don Roinn ó thaobh cúrsaí trí mheán na Gaeilge. An bhfuil na finnéithe ag fanacht an t-am ar fad ar an Rialtas chun spriocanna a thabhairt dóibh ó thaobh cúrsaí gnó nó cúrsaí Fraincise? Ní aontaím ar chor ar bith le cad atá ráite ag Jean O'Mahony ansin. Níl sé sin maith go leor ar chor ar bith. An bhfuil sí ag fanacht ar an Rialtas chun na spriocanna sin a thabhairt?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_105">To be clear, it is just a statement of fact in response to the question. I was asked was there a target and there is no target.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_56">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_106">An bhfuil tú ag fáil spriocanna ón Rialtas ó thaobh cúrsaí eile de - déarfaimis cúrsaí gnó?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_107">No, and this relates to an earlier point about the system responsiveness which I made when we were discussing this. It is exactly that. Currently, the State does not dictate, determine or put a target for how many engineering, French or whatever courses we should have. That is not the structure of third level education we have. One would ask oneself how the system responds then to the needs of society, the labour market and to people's individual academic or professional objectives. By and large, the system does respond to that demand, just to be clear. Tá sé soiléir nach bhfuil mé tar éis a bheith cruinn-----</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_58">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_108">Tuigim, ach ní aontaím leis sin mar níl na cúrsaí ar fáil trí Ghaeilge. Níl dóthain cúrsaí ar fáil trí Ghaeilge. Má bhreathnaímid ar an mbéim, luadh sa ráiteas go bhfuil roinnt cúrsaí trí Ghaeilge ach go bhfuil an tÚdarás um Ard-Oideachas ag breathnú ar an mbéim atá ann ó thaobh cúrsaí trí mheán na Gaeilge: cúrsaí innealtóireachta, dlí nó plé rud. Cén fáth nach ndearna an t-údarás é seo cheana féin? Cén fáth go bhfuil sé á dhéanamh anois, seachas trí nó ceithre bhliain ó shin?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_109">So ní féidir liom an cheist sin a fhreagairt go hiomlán maidir le cén fáth nach ndearnadh cheana é. Na rudaí atá déanta ag an údarás go dtí seo ná maidir leis na teorainneacha atá againn ó thaobh an dlí de agus ó thaobh an chúrsa de. An polasaí go dtí seo, the policy to date has been to fund the teaching, learning and research of our higher education institutions, which obviously includes the academic teaching and learning of Irish, to realise the obligations placed on the HEA and, by extension, on our universities and their application with respect to the use and promotion of the Irish language by enshrining those in the legislation but also in the additional ring-fenced budgets that have been allocated to meet the special provision for the Irish language and the support for Acadamh na hOllscolaíochta Gaeilge, and to support the use of the Irish language by student societies on campus. To date, that has been the policy operating within the administrative and legislative boundaries.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_60">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_110">So, ní raibh tosaíocht ann. There is no priority, essentially. An é sin atá ráite agat?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_111">The priority has been manifested to date with respect to policy and funding through the special provision for the Irish language and the funding for Acadamh na hOllscolaíochta Gaeilge.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_62">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_112">Cén staid ag a bhfuil an staidéar sin ó thaobh na béime? Where is that now?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_113">My understanding is that the HEA is engaging with Acadamh na hOllscolaíochta Gaeilge on the potential for research into demand for Irish-language courses, including through the medium of Irish.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_64">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_114">It is engaging on the potential for research. Níl sé á dhéanamh anois. It is not being done right now.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_115">My understanding is that the process is under way between the HEA and the acadamh but that it has not progressed beyond that.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_66">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_116">It is not commenced.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_117">No.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_68">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_118">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_119">They are engaged in considering how it might be progressed.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_70">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_120">Má bhreathnaímid ar mo bhaile féin i Maigh Nuad mar shampla, feicfear an deacracht a bhíonn ag pobal labhartha na Gaeilge. Ní raibh Gaelscoil ann, ach in 1996, bhunaigh muintir na háite - mo thuistí ina measc - Gaelscoil Uí Fhiaich. Níor thug an Roinn Oideachais aitheantas don scoil sin ar feadh dhá bhliain agus bhí ar na tuistí íoc as na múinteoirí agus chuile shórt chomh maith. Má bhogaimid ar aghaidh go dtí an meánscoil, ní raibh Gaelcholáiste i Maigh Nuad. Tá dhá Ghaelscoil ann anois. Is é sin an méid béime atá ann. Ní raibh Gaelcholáiste i Maigh Nuad. Bhí mise ag déanamh iarracht Gaelcholáiste a bhunú an t-am ar fad agus an t-am uilig an rud a bhí á rá againn ná "béim, béim, béim". Tóg é agus tiocfaidh siad. Is é sin an rud is tábhachtaí, go háirithe leis an nGaelainn. Nuair atá sé ar fáil do mhuintir labhartha na Gaeilge, idir bunscoil, meánscoil agus, sa chás seo, institiúidí tríú leibhéil, rachaidh na daltaí chucu. Caithfear na cúrsaí sin a chur ar fáil do na daltaí. Bogfaidh mé ar aghaidh mar tá roinnt ceisteanna eile agam ach is pointe tábhachtach é sin do na finnéithe. Níl sé maith go leor gurb iad muintir labhartha na Gaeilge atá de shíor á ceistiú féin faoi bhéim.</p>
+          <p eId="para_121"> Bogfaimid ar aghaidh ar aon nós. An príomhrud atá cloiste agam ó na finnéithe inniu ná an ról mór atá acu ó thaobh maoinithe. Tuigim sin. An bhfuil aon sórt ról acu ó thaobh polasaithe de nó an bhfuil siad ag fanacht ar an Rialtas an t-am ar fad na polasaithe sin a thabhairt dóibh?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_122">Polasaí ó thaobh-----</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_72">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_123">Polasaí ó thaobh na Gaeilge agus fiú polasaithe i ngnéithe eile den ardoideachas. Tá na finnéithe ag cur polasaithe le chéile, nach bhfuil? Are they creating policy?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_124">Tá.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_74">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_125">Cén fáth nach bhfuil polasaithe cruthaithe acu ó thaobh na Gaeilge de agus ó thaobh an Ghaeloideachais ag an tríú leibhéal?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:20:00+01:00"/></from>
+          <p eId="para_126">To date, that work has been done through the HEA but there is currently no Government policy with respect to Irish language at third level in the same manner in which there is policy for primary and post-primary.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_76">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_127">Ach cruthaíonn sibhse, mar Roinn, polasaithe sa Roinn. An bhfuil sé sin fíor? Policy is created within the Department. Ms O'Mahony does not wait for policy all the time from Government.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_128">Tá sé sin fíor.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_78">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_129">Mar sin, cén fáth nach bhfuil an Roinn ag cruthú polasaithe é féin ó thaobh oideachais trí mheán na Gaeilge ag an tríú leibhéal? Cén fáth go bhfuil an Roinn ag fanacht ar an Rialtas ina dtaobh sin, seachas é a chruthú é féin?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_130">I might just come in to reiterate what we have said previously. There is no policy document on the Irish language at third level but Irish does feature in policy interventions and other policy documents across our Department. We have outlined on several occasions the funding streams that are in place for apprenticeships and microcredentials, as the areas on which our Department is focused at the moment. Those are spaces that are currently being used to introduce new initiatives around the teaching of the Irish language.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_80">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_131">Dúirt an Dr. Dowdall é sin cheana agus gabhaim buíochas leis, ach an cheist atá agam ná cén fáth nach bhfuil polasaí á chruthú ag an Roinn. Why is the Department not creating it? Is léir, tar éis an chruinnithe seo, go bhfuil sé ag teastáil agus is dóigh liom go mbeadh an Roinn in ann é sin a dhéanamh.</p>
+          <p eId="para_132"> Bogfaidh mé ar aghaidh. Ba mhaith liom rud amháin eile a lua agus deireadh á chur agam le mo chuid ceisteanna. Bhí finné os ár gcomhair an tseachtain seo caite ón earnáil tríú leibhéal. Labhair sí faoin chaoi a cáineadh mic léinn tríú leibhéal ó thaobh na Gaeilge a úsáid, mar shampla sa leabharlann. Is é sin ceann de na cúiseanna go bhfuil mé ag cur na ceisteanna seo faoi na polasaithe. Is léir go bhfuil polasaí níos láidre ag teastáil sna hinstitiúidí tríú leibhéal chun cothromaíocht a thabhairt do mhic léinn atá ag iarraidh an Ghaeilge a úsáid seachas an Béarla. Tá an ceart sin acu agus iad ag déileáil leis na hinstitiúidí Stáit agus ciallaíonn sé sin na hollscoileanna agus na hinstitiúidí tríú leibhéal chomh maith. Bhí mé ag iarraidh é sin a rá leis na finnéithe. Go raibh maith agaibh. An bhfuil aon cheisteanna eile?</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_81">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_133">Tá roinnt ceisteanna eile agam. Bhí na finnéithe ag rá go bhfreagraíonn an Roinn agus na hollscoileanna an freagairt don éileamh. Tá a fhios againn ar fad go bhfuil éileamh ann ó thaobh na Gaeilge de ach nach bhfuil na cúrsaí ann. Má fhéachaimid ar TG4, go minic is ar lucht ceamara, lucht eagarthóireachta na scannáin agus iad siúd ar fad a bhíonn sé cúrsa a dhéanamh seachas go bhfuil na hollscoileanna nó na hinstitiúidí tríú leibhéal á gcruthú. Tá siad breá sásta go bhfuil na cúrsaí ar fáil i mBéarla agus gur leor sin. Má tá Gaeilge agat, happy days, agus is féidir leat casadh uirthi, seachas go mbeadh sí ann ó thús báire. Tá sé mar an gcéanna leis na haistritheoirí. An t-aon fáth go bhfuil aistritheoirí againn i dTithe an Oireachtais nó fiú san Aontas Eorpach ná go raibh ar an Stát seasamh isteach agus íoc as cúrsaí ar leith ionas go mbeadh aistritheoirí ann toisc nach raibh na hinstitiúidí tríú leibhéal ag freagairt don éileamh agus bhí postanna mór le rá ansin. Gach uile áit a théann tú feictear é. Tá múinteoirí mar an gcéanna. Toisc go raibh easpa múinteoirí ann, bhí ar an Aire oideachais cúrsaí ar leith a bhunú, nó brú a chur ar na hinstitiúidí máistreacht a dhéanamh le Gaeilge agus airgead breise a chur ar leataobh. Is é sin an buntáiste atá ag an Aire ach ní na hinstitiúidí atá ag freagairt don éileamh. Tá ar an Stát brú a chur orthu. Ní chóir go mbeadh sé sin ann ach sin mar atá. Tá súil agam go dtuigeann na finnéithe é sin.</p>
+          <p eId="para_134"> Ó thaobh na Gaeilge de, is gá don Stát seasamh isteach agus brú nó coinníollacha a chur leis na deontais ionas go gcaithfidh na institiúidí cloí leis an gcur chuige seo agus líon na gcúrsaí atá ar fáil a mhéadú. Luaigh mé an tseachtain seo caite go bhfuil 174 cúrsa ar fáil in Ollscoil Teicneolaíochta Bhaile Átha Cliath, ach níl ach trí nó ceithre cinn acu sin le Gaeilge mar mhodúl iontu nó as Gaeilge ina iomláine. In UCD, tá 60 cúrsa, trí cinn acu atá trí Ghaeilge. B'fhéidir go bhfuil breall orm leis na figiúirí. B'fhéidir go bhfuil sé níos measa fós. Rinne mise an comhaireamh sin an tseachtain seo caite ar an bhfón agus mé i mo shuí anseo. Mar sin, níl leithscéal ar bith ag an Údarás um Ard-Oideachas nó aon dream eile nach féidir leo na figiúirí sin a chur le chéile cuíosach tapa.</p>
+          <p eId="para_135"> Tá an ceart ag na finnéithe ó thaobh an taighde agus conas is féidir linn a chinntiú, dóibh siúd atá ag teacht amach as na meánscoileanna nó na Gaelcholáistí le Gaeilge, go dtuigeann siad gur féidir leo sa triú, ceathrú, cúigiú nó séú bliain tosú ag smaoineamh ar chúrsaí a dhéanamh trí Ghaeilge. An fhadhb a bhí ag an gcuid is mó daoine, i measc cairde liom féin le páistí agus mo pháistí féin, ná nuair a bhí siadsan ag smaoineamh ar chúrsa, nach raibh na cúrsaí ar fáil as Gaeilge. Dá bhrí sin, chas siad láithreach ar an gceann Béarla. Bhí siad ag lorg jab agus céim so ní raibh siad chun crochadh timpeall ag fanacht leis an éileamh. Go huathoibríoch, d'iompaigh siad ar an mBéarla. Níor smaoinigh siad. Bíonn roinnt daoine eile ag smaoineamh ar bhogadh go Gaillimh. Níl fadhb ar bith agam le hOllscoil na Gaillimhe - bhuel, tá roinnt fadhbanna agam leis - ach ní cheart go mbeadh ar dhaoine bogadh ón gceantar ina bhfuil siad. Chuala muid ar fad an fhadhb atá ag daoine lóistín a fháil. An fáth go raibh siad ag bogadh go Gaillimh ná go raibh an cúrsa ar fáil ansin agus nach raibh sé ar fáil i gColáiste na Tríonóide, in Ollscoil Teicneolaíochta Bhaile Átha Cliath nó i gColáiste na hOllscoile, Baile Átha Cliath. Beidh sé go maith dóibh gur bhog siad agus dearcadh eile a fháil ar an saol ach bhí siad ag bogadh toisc gur sin an áit ina raibh an cúrsa ar fáil dóibh as Gaeilge. Bhí éileamh i mBaile Átha Cliath mar sin. Tá aithne agam ar chúigear, ar a laghad, a bhog ó Bhaile Átha Cliath go Gaillimh i mbliana. Bheadh siadsan ar an gcúrsa céanann céanna i mBaile Átha Cliath dá mbeadh sé ar fáil anseo. Conas is féidir linn dul i gcion ar na coláistí féachaint ar an éileamh seo seachas go mbeadh ar an Stát i gcónaí airgead breise nó airgead ar leith a chur ar leataobh le cinntiú go bhfuil cur chuige ceart ag na coláistí agus go bhfuil cúrsaí ar leith ar fáil chun an sáinn nó an bhearna mhór sin a líonadh?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T12:30:00+01:00"/></from>
+          <p eId="para_136">Gabhaim buíochas leis an Teachta. I think that is the core question here. To be clear, the third level sector is not directly analogous to the primary and post-primary sectors with respect to strategy. There have been, and are, Government strategies to increase the supply of certain skills into the labour market. We see part of that response with respect to planners and with other sectors, such as green energy to which Dr. Dowdall referred. The third level sector plays a really significant part in delivering those strategies. The end is a more skilled labour force. We need to be very clear on what the objective is with respect to increasing the number of students studying at third level through Irish or partially through Irish, or the broader population maintaining the competence and connection they have with Irish through second level. There are quite a number of policy questions in that alone. As Dr. Dowdall has referred to, there are a number of policies across government where the role of the Department of further and higher education is to support the achievement of the stated objective of that Department. As we mentioned, there is a policy coming forward about Irish-medium education, and a Government policy with respect to the availability of people who can independently speak Irish who can be recruited into the public sector. That is an objective which the third level sector has a role in meeting. We need to ask the right policy questions about what we are looking for from the third level sector, respecting that it is a diverse sector that is not directly analogous to our primary and post-primary sectors.</p>
+          <p eId="para_137"> The question of how the third level sector responds to demand is at the core of Deputy Ó Snodaigh's point.</p>
+          <p eId="para_138">To date the emphasis in the Department's policy has been on supporting third level to meet that demand under its own direction and as independent institutions. I very much take the view of the committee that the course options available to people who want to study Irish at third level are not sufficient for demand. I take that point. To date, the policy has been to support independent institutions through financial means, as I have outlined several times, to meet the demand that exists. I absolutely take the point of the committee that its view is that it is not enough and that the numbers are low.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_83">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_139">Tá sé go maith go nglacann Jean O'Mahony leis sin. An freagra atá faighte againn ó na hinstitiúidí ó ritheadh an Acht sin ná go bhfuil siad teoranta nó ní ann dóibh, go dtí seo. Níl siad tar éis bogadh ó thaobh polasaí polaitiúl an Stáit go mbeidh Gaeilge ag 20% d'earcaithe. Ní léir domsa nó don choiste go n-oibreoidh sé sin. Is é sin an fáth go bhfuil na seisiúin seo ar siúl againn. Beidh ceannairí na hollscoileanna ag teacht os ár gcomhair diaidh ar ndiaidh chun go gcuirfidh muid na ceisteanna seo orthu go díreach. Cén fáth nach bhfuil siad ag freagairt don pholasaí poiblí atá ann go mbeidh 20% dóibh siúd atá chun na postanna ag gach leibhéal sa Státseirbhís a líonadh inniúlach sa Ghaeilge? Ní hé go bhfuilimid ag lorg go mbeidh Gaeilge inniúlach ag 20% de na cléirigh, ach go mbeidh sé ag gach leibhéal. Dá mbeadh sé i gceist go mbeadh 20% de dhochtúirí inniúlach sa Ghaeilge, bheadh orainn féachaint ar conas gur féidir é sin a dhéanamh. Tá sé seo ann le ceithre bliana, agus níl sé tar éis bogadh.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_84">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_140">Ba mhaith liom teacht ar ais go dtí an cheist faoin bpolasaí, an sprioc, na haidhmeanna agus mar sin de. Céard a tharlódh sa Roinn tar éis an chruinnithe seo dá dtosódh na finnéithe ag dul i ngleic leis na ceisteanna seo? Cé a dhéanfadh an glaoch fóin amárach ag rá go bhfuil na spriocanna, na haidhmeanna agus na polasaithe, mar atá leagtha amach ag Leas-Chathaoirleach an choiste, le cur chun cinn agus go gcaithfear iad a fhorbairt ag tosú Dé Luain? Tá mé ag iarraidh a thuiscint céard a tharlódh. Cá bhfuil an cumhacht é sin a dhéanamh? An dtiocfadh an cinneadh sin ón Roinn? Mar a thuigim é, bíonn ráiteas nó plean straitéiseach ag gach Roinn ar feadh trí nó cúig bliana. An é sa phlean straitéiseach a chaithfeadh rud mar seo a tharlú? Cén chaoi a tharlaíonn sé go dtosnaíonn na rudaí seo? Tá suim soiléir ag an gcoiste san earnáil tríú leibhéal agus an dream atá ag obair taobh amuigh den chóras tríú leibhéal. Táimid ag iarraidh na huimhreacha a ardú agus an polasaí a chur i bhfeidhm. Cá as a thiocfadh an glaoch sin?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_141">Gabhaim buíochas leis an Teachta. The Government has an objective for the recruitment of Irish speakers into the public sector. If the Deputy is asking what happens behind the scenes with respect to how the Government moves to change or initiate policy to meet such an objectives-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_86">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_142">I am not asking about the Government; I am asking how the Department clicks in and says it is going for it.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_143">We are engaging with the Department of the Gaeltacht with respect to the action plan on the 20% target. Dr. Dowdall will speak to that and I will come back in.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_88">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_144">Does that mean the Department is not going to lead out on it from a third level perspective? Nach mbeadh ceannaireacht á tabhairt ag an Roinn don earnáil tríú leibhéal?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_145">The third level sector is highly collaborative. That is very important to understand. Our Department is the expert when it comes to the third level sector itself, but it is not necessarily the expert in the various subjects that are taught at third level. Regardless of the skills area we are dealing with - renewable energy, digital skills, the teaching of Irish at second level or Irish-language requirements for the public sector - we rely on engagement with our colleagues in the Government Departments and agencies that are the experts in those fields. We have those connections and those engagements. We sit on the steering groups and the groups that are pushing those policies forward. We will continue to do that.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Ms Jean O'Mahony<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_146">The relationship with the third level sector is not the same as the relationship between the Department of education and the school system. As Dr. Dowdall referred to, it is collaborative. There is a need to respect some of the constraints in the sector, as well as the academic independence of institutions. To my point about understanding where policy goes and how the State and the third level sector in particular might meet the objectives set out by the Government with respect to recruitment into the public sector, the HEA has a role in this. It is looking to engage with Acadamh na hOllscolaíochta Gaeilge on initialising a piece of research that can look at the demand for courses. In the development of any policy, such evidence is important. That is a piece of work the HEA is engaging with the acadamh on.</p>
+          <p eId="para_147"> As Dr. Dowdall referred to previously, the Department's support for the Irish language is also delivered through the medium of other policies. There is not necessarily any one single policy for the Irish language at third level. However, with regard to skills policy, Dr. Dowdall mentioned microcredentials and the further education and apprenticeships sector. Our colleagues across government are bringing forward future plans on what policy interventions need to happen to deliver the skills for the policy in relation to the 20% recruitment target. These are pieces of policy work that will be undertaken by the Department. I would also say that obviously we follow political direction. We are seeking to meet the objectives of the Government as set out in its existing objectives.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_91">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T00:00:00+01:00"/></from>
+          <p eId="para_148">Níl ach deich nóiméad fágtha againn, más féidir leis na finnéithe a bheith beagáinín níos gonta. </p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_92">
+          <from>Senator Joe Conway<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_149">Ba mhaith liomsa cúpla rud a rá faoi mo shaol oibre féin. Tá mé i mo mhúinteoir bunscoile scortha agus bhí mé i mo phríomhoide ar bhunscoil chomh maith. Nuair a bhí mé críochnaithe leis an seomra ranga, chuaigh mé amach ag obair le coláiste oiliúna ag déanamh feitheoireacht agus cigireacht ar ábhair mhúinteoirí. Tá cúpla rud le rá agam. Tuigim go bhfuilimid ag díriú isteach ar an tríú leibhéal ach tá an tríú leibhéal bunaithe ar an méid oibre atá déanta ag an gcéad agus an tarna leibhéal. Ón méid a chonaic mé nuair a bhí mé amuigh sna scoileanna, tá fadhb mhór againn le múineadh na Gaeilge sna bunscoileanna. Níl mé ag déanamh aon mhéadú ar an scéal, ach is é an dearcadh atá agamsa faoi na hábhair mhúinteoirí go ginearálta atá sna seomraí ranga ná go bhfuil siad go feidhmiúil neamhliteartha sa Ghaeilge. They are functionally illiterate in Gaeilge. Is cúis mhór imní domsa é go bhfuil muid ag cur gasúir trí na scoileanna ar feadh ocht mbliana agus tagann siad amach óna ré sna scoileanna sin agus níl mórán focal acu. Níl siad ábalta abairt nó dhó a chur le chéile. Má thagann cigire isteach agus cuireann sé ceist i nGaeilge ar aon pháiste i rang a sé, féachann siad ar an gcigire cosúil is go raibh siad lámhachta. Níl focal ag teacht astu ar chor ar bith. Téann na páistí sin isteach sna meánscoileanna - agus táim ag caint anois mar thuismitheoir chomh maith-----</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_93">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_150">Gabh mo leithscéal ach níl ach cúpla nóiméad fágtha againn. B'fhéidir go bhféadfadh an Seanadóir teacht go dtí an cheist.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_94">
+          <from>Senator Joe Conway<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_151">Tá an cheist chomh simplí leis seo. Is deacair an rud é feabhsú ag an tríú leibhéal mura bhfuil sé déanta ag an gcéad leibhéal agus an tarna leibhéal. Mura dtuigeann an Roinn oideachais agus na coláistí oideachais go bhfuil fadhb mhór againn sna bunscoileanna agus ag an tarna leibhéal, tá sé amaideach bheith ag díriú isteach ar fheabhsú ag an tríú leibhéal, toisc nach bhfuil bun ann. There is no foundation.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_152">I thank the Senator for his observations and question. When it comes to education at primary and second level, that is a matter for our colleagues in the Department of Education and Youth. However, we work closely with them. As we previously mentioned, the Department is developing two policies which are particularly important for the issues raised by committee members. First is the policy for Irish-medium education outside of the Gaeltacht. This is going to set out the Department of Education and Youth's vision in relation to Irish-medium education and identifies a number of actions we will aim to support to grow the sector. There has been a comprehensive public consultation as well as cross-government consultation, and we have been involved in that and will have actions in the ultimate plan when it is agreed. Unfortunately, a final version of it has not yet been agreed, so I cannot provide much more detail than that. The other policy which is worth mentioning and goes alongside that is the action plan on the teaching of Irish in English-medium schools. Similarly, there has been a large consultation both public and across government, which we have been involved with. We will have a number of actions.</p>
+          <p eId="para_153"> Our interests in those action plans are around the broader issue of transitions, which I think is what the Senator is approaching: supporting students coming from primary to second level and into tertiary education to be able to maintain a level of Irish-language education. That will be the focus of our actions in those plans. That in turn is linked to a much wider policy focus within our Department on transitions. Another key policy or priority for our Department is to look at improving information and pathways as students move from second level education into tertiary level. That is another example of how we are trying to embed our approach to the Irish language into the broader policy of our Department.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_96">
+          <from>Senator Joe Conway<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_154">Tá cúpla focal gairid agam faoi sin. Táim cinnte go bhfuil an paradigm atá in úsáid sna bunscoileanna fíorbhriste. Níl sé ag obair agus mura nglacann an Rialtas agus an Roinn oideachais leis go bhfuil an model briste, agus is deacair a thuigbheáil conas a chaitheann gach dalta ocht mbliana ag foghlaim aon teanga is go dtagann siad amach i ndeireadh na dála gan focal acu, agus mura dtuigeann an Rialtas go bhfuil fadhb mhór againn, níl aon todhchaí ag an teanga seo.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_97">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_155">An bhfuil freagra ag an Dr. Dowdall air sin?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Dr. Alex Dowdall<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_156">No. Again I thank the Senator for his observations but it is ultimately a matter for our colleagues in the Department of Education and Youth. As I said, we have ongoing engagement with them.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_99">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-09-30T12:50:00+01:00"/></from>
+          <p eId="para_157">Gabhaim buíochas leis an Dr. Dowdall. Sin deireadh na ceiste. Bhí an Teachta Uí Raghallaigh le teacht isteach ach is léir go bhfuil sí imithe. Bhí cúpla ceist aici ach tá cruinniú eile ar siúl aici, is dóigh liom. Más maith leo, is féidir le cúpla ball den choiste fanacht siar i ndiaidh na cruinnithe i seisiún príobháideach le labhairt faoi cad a tharla inniu.</p>
+          <p eId="para_158"> Cuirfidh mé clabhsúr leis an gcruinniú seo. An aontaítear leis sin? Aontaítear. Gabhaim mo bhuíochas le Jean O'Mahony agus an Dr. Dowdall as ucht teacht isteach inniu. Ní raibh na ceisteanna don Roinn pearsanta agus tá a fhios agam go dtuigeann na finnéithe é sin. Gabhaim ár mbuíochas leo mar ionadaithe na Roinne Breisoideachais, Ardoideachais, Taighde, Nuálaíochta agus Eolaíochta as an bplé fiúntach agus tairbheach a bhí againn leo inniu.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Cuireadh an comhchoiste ar fionraí ar 12.58 p.m. agus cuireadh tús leis arís i seisiúin príobháideach ar 1 p.m.</i>
+        </summary>
+        <summary eId="sum_8"> Cuireadh an comhchoiste ar athló ar 1.05 p.m. go dtí 11 a.m., Dé Máirt, an 14 Deireadh Fómhair 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,812 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-01" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="ConorMurphy" href="/ie/oireachtas/member/id/Conor-Murphy.S.2025-01-29" showAs="Conor Murphy"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="EmerHiggins" href="/ie/oireachtas/member/id/Emer-Higgins.D.2020-02-08" showAs="Emer Higgins"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="JackChambers" href="/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03" showAs="Jack Chambers"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" href="/ie/oireachtas/role/minister/public_expenditure__infrastructure__public_service_reform__digitalisation" showAs="Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" href="/ie/oireachtas/role/minister_state/public_expenditure__infrastructure__public_service_reform__digitalisation" showAs="Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM AIRGEADAS, CAITEACHAS POIBLÍ, ATHCHÓIRIÚCHÁN SEIRBHÍSE POIBLÍ AGUS DIGITIÚCHÁN, AGUS AN TAOISEACH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 04:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 04:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ConorMurphy">Conor Murphy.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PearseDoherty">Pearse Doherty</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#ErinMcGreehan">Erin McGreehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#GeraldNash">Ged Nash</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#EdwardTimmins">Edward Timmins.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MaireadFarrell">Teachta / Deputy Mairéad Farrell sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Engagement with Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation<recordedTime time="2025-06-25T16:30:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_12">Tá leithscéalta faighte againn ón Seanadóir Pat Casey agus ón Seanadóir Joe O'Reilly. Apologies have been received from Senators O'Reilly and Casey.</p>
+          <p eId="para_13"> Is mian liom na riachtanais bhunreachtúla seo a leanas a mheabhrú do chomhaltaí agus páirt á glacadh acu i gcruinnithe poiblí. Caithfidh comhaltaí a bheith i láthair go fisiciúil laistigh de theorainneacha shuíomh Theach Laighean. Ní cheadóidh mé do chomhaltaí páirt a ghlacadh i gcruinnithe poiblí nuair nach bhfuil siad ag cloí leis an riachtanas bunreachtúil seo. Mar sin, má dhéanann aon chomhalta iarracht páirt a ghlacadh ó lasmuigh den suíomh, iarrfaidh mé orthu an cruinniú a fhágáil. Maidir leis seo, iarraim ar chomhaltaí a dheimhniú go bhfuil siad i láthair laistigh de phurláin Theach Laighean sula ndéanann siad aon ionchur sa chruinniú ar MS Teams.</p>
+          <p eId="para_14"> Fiafraítear de chomhaltaí cleachtadh parlaiminte a urramú, nár chóir, más féidir, daoine nó eintiteas a cháineadh ná líomhaintí a dhéanamh ina n-aghaidh ná tuairimí a thabhairt maidir leo ina ainm, ina hainm nó ina n-ainmneacha ar shlí a bhféadfaí iad a aithint. Chomh maith leis sin, fiafraítear díobh gan aon rud a rá a d’fhéadfaí breathnú air mar ábhar díobhálach do dhea-chlú aon duine nó eintiteas. Mar sin, dá bhféadfadh a ráitis a bheith clúmhillteach do dhuine nó d'eintiteas aitheanta, ordóidh mé dóibh éirí as an ráiteas láithreach. Tá sé ríthábhachtach go ngéillfidís don ordú sin láithreach.</p>
+          <p eId="para_15"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member participating via MS Teams that prior to making their contribution to the meeting they confirm that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_16"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> As regards the context of today's meeting, the joint committee will engage with the Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation as well as the Minister of State with responsibility for public procurement on matters that fall under their Department's remit. The committee is interested in a broad range of areas, including matters relating to the undercharging of chargeable excess tax and withholding tax due to be paid by some retired senior civil servants since 2010; the provision of infrastructure; fiscal discipline in respect of public spending and budgetary strategy; new capital seedings as part of the NDP; and additional funding for Irish Water required to meet housing targets. The committee will meet with the Minister of State with responsibility for the Office of Public Works next week and welcomes the opportunity to discuss issues relating to that office at length. In this context, I welcome to the meeting the Minister, Jack Chambers, and the Minister of State, Emer Higgins, and invite them to make their opening statement.</p>
+        </speech>
+        <speech by="#JackChambers" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" eId="spk_2">
+          <from>Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Deputy Jack Chambers)<recordedTime time="2025-06-25T16:30:00+01:00"/></from>
+          <p eId="para_18">I thank members of the joint committee for the opportunity to discuss the issues relevant to my Department. My Department operates at the centre of Government to drive the delivery of better public services, living standards and infrastructure. The remit of my Department is broad but can be summarised across three areas: governance and oversight of public expenditure; building capacity across the civil and public service; and delivering effectively across our broad policy remit.</p>
+          <p eId="para_19"> With regard to public expenditure governance, my Department promotes and supports the effective and sustainable application of resources in line with the budgetary parameters with the aim of delivering economic and social progress. It develops expenditure policy in line with agreed Government objectives to deliver on our policy agenda. These include public financial procedures, infrastructure guidelines, procurement guidelines and broader major capital projects. The work my Department does seeks to promote governance, openness and transparency through the code of practice for the governance of State bodies, the regulation of lobbying, protection of whistleblowers and freedom of information. To ensure public expenditure achieves effective outcomes, my Department monitors expenditure from climate, well-being and equality perspectives; produces expenditure and policy reviews via spending reviews; and produces organisational capability reviews in order that Departments and offices achieve their objectives.</p>
+          <p eId="para_20"> My Department is building a public service that can meet the long-term needs of a changing society and environment. It does this through a range of pay, pension and HR policies, including legal responsibility for the appointment, pay and superannuation of Civil Service and public service staff; multiyear public service pay agreements; and a range of policies supporting a more agile and inclusive workforce, such as an apprenticeship programme for the public service.</p>
+          <p eId="para_21"> My Department is also seeking to drive delivery of an ambitious programme of public service reform through the transformation strategy. It is also leading on digitalisation of public services with the Minister of State, Deputy Higgins, to create more integrated, user-friendly and efficient services and promoting and advancing the use of new and emerging technologies, including AI. Delivery has been a key theme of my tenure in the Department, and we are particularly focused on infrastructure. Throughout Brexit, the pandemic, the war in Ukraine and the cost-of-living crisis, our country has responded with resilience and an ability to adapt to changing circumstances. We remain in a strong economic position in the face of these challenges, which has allowed for increased investment in public services, but we must do more to speed up the delivery of infrastructure. It is critical for enhancing our competitiveness, attracting foreign direct investment and supporting our domestic enterprise sector. It is vital that we ensure increased investment across economically strategic areas, such as water, electricity and transport.</p>
+          <p eId="para_22"> To deliver the NDP review and to support accelerated infrastructure delivery, I have established a new infrastructure division in my Department. It is working with deployed sectoral experts and an accelerating infrastructure task force, which I chair, to identify the barriers that are delaying project delivery and the solutions to overcoming them. Last week's national economic dialogue saw good engagement from many sectors, and this feedback, in addition to what we will garner from public consultation, will be invaluable as we look at shaping the solutions we need to really advance delivery. I welcome the views of the committee and look forward to discussing the range of work in my Department.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_23">We will now move to members. I remind members participating remotely to use the raise hand feature and cancel it when they have spoken. There are only three indications at the moment - na Teachtaí Doherty, Timmins agus Brennan. If other people want to indicate, please do so.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_4">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_24">I will go second if that is okay.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_25">I call Deputy Timmins.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_6">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_26">I thank the Chair. I thank the Minister and Minister of State for coming to the committee. I thank them for allowing me to ask technical questions about the Votes. I was unavoidably detained and could not make the first meeting; I apologise. Vote 11, operational services, is up 63% from €665,000 to €1,070,000. Is there any particular reason for that?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_7" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_27">€83,000 was transferred from the Office of Government Procurement, OGP, allocation due to the merger with the corporate division of the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation. Committee fees of €170,000 were transferred from payroll, which mainly led to an overspend in 2024. This subhead also captures expenditure relating to normal day-to-day running. The reason for the increase in 2025 is due to committee fees now being captured in this subhead based on advice from Government accounting, a transfer of budget from the OGP and increases based on the growth of the Department.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_8">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_28">Does that cover item 4, operational services supplies and sundry equipment?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_9" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_29">It does, yes.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_10">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_30">Also in Vote 11, subhead A5, the managed European development fund, went from €39 million in output in 2024 to a target of €67 million in 2025. It is a standout figure of approximately €30 million.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_11" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_31">It provides the technical assistance costs relating to the preparation, management and monitoring audit of Ireland's EU structural funds programmes. It concerns the administration and e-cohesion system for exchanging data electronically. The increase in 2025 is due to capital costs to ensure the systems used by the team to communicate with the EU for claims and audits are kept in line with EU requirements. Should they not be kept in line, it could delay multimillion-euro claims from the EU on some of the cohesion funding.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_12">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_32">It is mainly capital expenditure? It is quite a big number - there is a €28 million increase.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_13" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_33">That is what I have been informed of relating to the increase in the technical assistance cost relating to the e-cohesion system.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_14">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_34">Will the Minister provide more details?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_15" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_35">I am happy to provide that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_16">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_36">On Vote 12, is the increase in the appropriation-in-aid single pension figure from €562,000 to €690,000 credits back? That reduces costs.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_17" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_37">There is variability in receipts relating to the single public service pension scheme and the trends are more stable as the scheme matures. There will always be a variation depending on what receipts are received.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_18">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_38">On Vote 17, there is quite a significant decrease in the appropriation from €870,000 to €206,000. Appropriation-in-aid was €870,000 in 2024 and it is estimated at €206,000 in 2025. That seems a dramatic drop. The deduction is far less in 2025 than it was in 2024.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_19" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_39">The appropriation-in-aid allocation is lower in 2025 because the 2024 allocation was increased in the technical Supplementary Estimate to reflect the transfer of funds from An Garda Síochána. That is why it has dropped.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_20">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_40">Will the Minister provide more detail about that?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_21" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_41">I am happy to do that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_22">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_42">The metrics are all percentages. I would like to see numbers rather than percentages for gender quotas, etc. In light of expenditure overruns in some State boards, would the Minister consider a metric for the number of people on State boards with a professional accounting qualification with a target of at least one?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_23" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_43">A lot of State boards have and reference a specific mix of qualifications in how their composition should be established. Financial management is often a core part of their appointment to respective State boards when a Minister considers them.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_24">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_44">From my limited knowledge, there are boards that have people with no cost control or accounting qualification. I was struck a few years ago by the fact that of the ten or 12 members of NOAC, the board that oversees the operations of councils and does benchmarking of costs, not one person had an accountancy qualification.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_25" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_45">These are matters each respective Minister should consider in order to have a proper mix on State boards in terms of financial management, governance and the mix of expertise required. When competitions happen through the Public Appointment Service, they often reference the specific skills or qualifications prioritised in respective positions. I agree that financial management expertise should be part of the mix of skills on a particular State board.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_26">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_46">On Vote 18, the shared services facility, the Minister spoke about improving efficiencies in shared services going forward, which is an ambition. I know how difficult it is to realise gains when shared services operations are being set up; I was involved in one years ago. Is there any evidence the operation of shared services has reduced costs or has it actually resulted in increased costs?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_27" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_47">We are conducting a full external audit and review of all aspects of the functions of the National Shared Services Office. Part of that will be to fully assess the issues that have evolved over the past number of weeks but also to look at its broader effectiveness. We will do that in the context of the review. It has a broader piece of work around financial management and better aligning its payroll and pensions processes. Part of the external review that will be undertaken will help to inform that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_28">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_48">I appreciate that integrating systems and streamlining payroll systems, centralising and having everyone follow the same rules is a good thing but often it can increase costs and the people who were meant to be replaced are never replaced. They are just left there and the payroll overhead increases. In Vote 19, there is an increase in costs from 2024 to 2025 from €14.5 million to €17 million. Is there a particular reason for that? It is about the Ombudsman.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_29" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:40:00+01:00"/></from>
+          <p eId="para_49">On the Office of the Ombudsman, there have been significant increases in duties and responsibilities between the Ombudsman, the Commission for Public Service Appointments, the protected disclosures commission and the respective offices under its auspices which have expanded in function and breadth over a series of years. It is in that light that it is being resourced more significantly than in the period the Deputy referenced.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_30">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_50">Generally, going through the report, it is obviously not part of the Minister's obligation, but it would help in understanding what is going on if we had staff number metrics. There is none. The figure is in euro and one sees the number going up. Are there are extra staff? I know it is under the Ombudsman now. I looked through the report and could not see any evidence of increase in staff numbers but perhaps I missed that.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_31" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_51">Year on year, from 2023 to 2024, the staff number went up by five individuals. From 2024 to 2025, it went from 154 to 182, so it went up by 19 individuals. There has been quite a significant year-on-year increase in overall staff. We are happy to provide information on staff numbers.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_32">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_52">Am I right in saying that staff numbers are not part of this 250-page report?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_33" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_53">They are part of the broader Estimates but I am happy to provide the staff numbers for each of the agencies under our auspices.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_34">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_54">I will wrap up with two short questions for the Minister of State, Deputy Higgins. What engagement has happened with SMEs to inform the upcoming public procurement strategy?</p>
+        </speech>
+        <speech by="#EmerHiggins" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" eId="spk_35">
+          <from>Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Deputy Emer Higgins)<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_55">I thank the Deputy. We have had really positive engagement with SMEs over the last number of months. At the moment, we are devising our first ever national public procurement strategy. The prequel to that was making sure that we had all of the right feedback from all of the right sectors, so we launched an online survey and reached out to many businesses through their business representative organisations to encourage them to complete that and give us their feedback. We backed that up with interactive workshops in each of the regions. The Minister, Deputy Chambers, hosted one in Dublin. I hosted one in Athlone and one in Cork. They were fruitful and we had fantastic engagement with the businesses and some key buyers within public service, such as the HSE and ETBs. Engagement is absolutely happening and will continue to happen.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_56">There should be an opportunity for Deputy Timmins to come back in.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_37">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_57">This is my last question.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_58">I ask the Deputy and the Minister of State to be brief.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_39">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_59">Can the Minister of State provide any information on the plans for the Government's digital wallet?</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_40" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_60">Absolutely. I do not know how brief I can be on this.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_61">Try to be very brief.</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_42" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_62">Absolutely. As the Deputy may be aware, the Government is investing into apps. The first is the HSE healthcare app, which has been launched in the last months. My team in the Office of the Government Chief Information Officer worked with the HSE to get it to the point where it successfully launched that. That is being rolled out. It is particularly aimed at women going through the maternity services but there is more and more added functionality every number of months. The Minister, Deputy Carroll MacNeill, has been leading that and encouraging people to download it. I encourage people to download it. They can use their verified MyGovID to access it. That same MyGovID is going to form an integral part of the Government wallet. I can see the Chair hurrying me along so I am happy to get into further detail in the next round.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_43">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_63">I want to return to the issues in the NSSO. This is an agency under the Minister's remit and, as I said, a basket case with regard to financial controls. It collected over €2 million in taxes over nine years and did not give it to Revenue. A full review was carried out, which the Minister's Department signed off on. It told the Comptroller and Auditor General that everything was tax-compliant, then we found that there are three other separate cases which involve potentially 13,000 retired individuals, 30 senior civil servants who are retired, and, we now understand from the Minister's current answer, nearly all Ministers in the current Government, with the exception of six.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_44" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_64">I will come in on the-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_45">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_65">Just let me finish the question, if you would not mind.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_46" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_66">To be helpful-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_47">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_67">I will ask the question. I appreciate that. I am sure the Minister will have time to respond. Regarding the 30 retired senior civil servants, as I said previously, to have to pay the chargeable excess tax, CET, you have to have a pension pot in excess of €2 million. It only applies to the portion that is above €2 million. You will be getting a tax-free lump sum of €200,000. The 30 individuals must be some of the most highly paid in the Civil Service. They have to be Secretaries General, in my view. What is the sum total of the money that was overpaid or not collected from these 30 individuals? We know in the case of one, it was €280,000, but can the Minister give us the sum total? Will the Minister clarify whether these individuals paid any chargeable excess tax or was it miscalculated?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_48" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_68">The amount owed is €1.2 million but that is subject to validation and finalisation. The grades involved go from principal officer to Secretary General. The standard threshold relates not only to public sector pension totals but also has to be assessed if people have a private sector pension or other pension contributions that they made prior to their time in the public service. That has to be calculated in the context of the overall amount. The Deputy asked if this is still subject to validation and about former officeholders. The current number is 39. It could rise and has not been finalised. The number of current Ministers is 32. That is likely to be the final number. The present number of retired officeholders is 39 but it could increase.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_49">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_69">The Minister clarified earlier that the current Ministers were overpaid, for want of a better word.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_50" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_70">Not all of them. The vast majority-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_51">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_71">Can the Minister tell me how many were overpaid?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_52" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_72">The number of Ministers who owe something is 32.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_53">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_73">That is the point I made, so of the current Ministers, 32 owe money.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_54" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_74">That is what I was saying earlier. The Deputy asked about retired. The current number of that is 39. It is still subject to finalisation. I was just trying to be helpful.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_55">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_75">Of the current Ministers, 32 owe money back. There are now 39 former Ministers and 30 senior civil servants from Secretary General down to principal officer.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_56" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_76">The assistant principal grade is being checked because it may go below principal officer grade.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_57">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_77">So €1.2 million is owed from that group of people.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_58" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_78">Currently.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_59">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_79">That could change.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_60" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_80">Yes.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_61">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_81">The point I was making earlier is that there might be people watching this who could only dream of what people would see as gold-plated pensions, of €2 million with €200,000 tax-free. The chargeable excess tax is not something that is unknown to senior civil servants at that level. Some of these senior civil servants may have left the Department of Finance or the Department of public expenditure. They are people who are well used to this tax. How under God does this go on for so long without anybody saying "I have been given over a quarter of a million euro more than I should get"?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_62" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_82">To be fair, the Deputy has identified retirees from two particular Departments.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_63">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_83">I said that they "may have"------.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_64" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_84">To be fair to any individual, I do not know who they might be or might not be.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_65">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_85">Is any principal officer or Secretary General-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_66" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_86">To the Deputy's core point, he is absolutely right. People would have or may have known that they have a liability. I am surprised that they did not interact about what their liability may have been of their own volition. That is a fair point.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_67">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_87">The Minister clarified earlier that Revenue drew attention to this. Revenue asked the NSSO to look at this area. There were no whispers at all in the NSSO, the Minister's Department or among the 30 who retired. Nobody peeped up about this. That is my understanding.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_68" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_88">That is my understanding. Revenue asked the NSSO to check the chargeable excess tax and that is how this issue emerged.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_69">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_89">I presume all of them are still alive and with us and in a position-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_70" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_90">I do not know the details of any individuals, nor should any of us, to protect the personal tax information.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_71">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:50:00+01:00"/></from>
+          <p eId="para_91">The Minister's Secretary General signed off on a full review last year. I can read it out to the Minister. The Department doing an audit is not good enough. The NSSO are the guys who are supposed to be deducting and paying the salaries for civil servants. Billions of euro go through the office. This is crazy stuff. I do not understand how, on four completely separate occasions, you could make such mistakes. We are all humans. People make mistakes and will continue to make mistakes, but when you make mistake after mistake after mistake, I think there is a serious issue.</p>
+          <p eId="para_92"> I want to move to another issue before the Chair intervenes, namely, these ghost houses in the Phoenix Park that have been talked about. Is the Minister familiar with the article in the media about these seven properties owned by the OPW that do not seem to be on any register or asset list? Has anybody in the Department located these properties?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_72" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_93">The Minister of State, Deputy Moran, is coming before the committee on this. I am happy to engage further on the issue but I said I was coming before the committee today relating to particular items. I am happy to revert to the committee on the detail of that.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_73">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_94">That is fine, but is the Minister not aware-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_74" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_95">No, I read the articles on it, but I-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_75">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_96">Have the responsibilities yet been devolved to the Minister of State? Has the order been signed?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_76" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_97">The day-to-day functions of the Minister of State are obviously to do with the OPW.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_77">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_98">Has the order been signed?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_78" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_99">No.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_79">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_100">No. Then the responsibility for the OPW legally lies with the Minister. Is that correct?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_80" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_101">Correct.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_81">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_102">Okay, so there are seven houses it seems nobody knew about. The Minister has read the article. As he has the legal responsibility, does he have any information on those houses or does he know what the average rent being charged on them is?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_82" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_103">I do not have any information beyond what has been put in the public domain and I am happy to revert to the committee on it.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_83">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_104">Will the Minister please provide the committee with the following information: the origins of the houses, the average rent being charged for them, and whether the article is accurate in stating a four-bedroom house in the Phoenix Park is being provided to a retired civil servant for what has been suggested to be just above €1,000 per year? That is interesting, to say the least. What is the policy on that? If the Minister can provide any information to the committee, it would be helpful. I appreciate it is not something we flagged with him, but it is in the media and he is responsible for the Department.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_84" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_105">I am happy to respond to the Deputy and the committee on that issue.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_85">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_106">I thank the Minister.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_86">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_107">I thank the Minister and the Minister of State. I have only three or four questions. They are focused on the new infrastructure division within the Department. It is a move I very much welcome. In light of ongoing, or recent anyway, value-for-money concerns, what measures are the Department and the division taking to ensure public spending remains within the agreed ceilings? I am thinking especially of capital projects. What steps will be taken to ensure lessons learned from previous infrastructure delivery challenges, such as the children's hospital, are systematically integrated into the division's approach?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_87" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_108">We have stood up an infrastructure division to centrally drive delivery but also to really examine forensically the project life cycle that exists, which takes too long. The decisions are nearly double in some projects what they were many years ago and that is impeding progress on delivery of capital. We have new infrastructure guidelines that were introduced in the previous Government. Those followed some of the learnings from the national children's hospital and other major capital projects. They set out the checks and balances on major capital projects and we have a major projects advisory group, which advises me and the respective project sponsor on cost control and value for money and independently assesses the business case involved. In many instances the project life cycle and the pure length of time it is taking are costing a significant amount when a project is completed. Really accelerating delivery should truncate the costs themselves. Separately, we are reviewing the public financial procedures that underpin current and capital expenditure within the State to better support fiscal discipline and budgetary decision-making.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_88">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_109">The Minister mentioned the industry experts who are being seconded to the division. What is the selection process? What mechanism is in place to ensure they have the correct expertise for this role?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_89" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_110">I am sorry, but who does the Deputy mean?</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_90">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_111">The individuals who have been seconded to the infrastructure division. My understanding is they are coming from the likes of State agencies such as Uisce Éireann. What mechanism is in place to ensure their expertise is effectively integrated into the Department? How were these individuals selected in the first place? Are they headhunted or is there an application process or a list of skills that exists prior to seeking out an individual?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_91" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_112">Our new infrastructure division engaged with the respective commercial State bodies on who would provide the appropriate expertise on their secondment or redeployment to my Department. If we look at the individuals involved, who are from Transport Infrastructure Ireland, EirGrid, An Bord Pleanála and ESB Networks, their experience has been over decades at senior levels within their respective sectors. They have had a very positive impact so far and are centrally involved in the broader infrastructure reforms that are taking place. Separately, the external members on the infrastructure task force all have a significant background in project delivery and their names have been published, including Sean O'Driscoll and Michele Connolly and others I could list. The mix of both is really supporting the capability in the Department to drive delivery. It was a collaborative effort between my Department and each commercial State body as it identified someone within its organisation who could bring that capacity to support the infrastructure ambition we have in the economy.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_92">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_113">Going back to value for money, I might draw on a project in my constituency to illustrate this, but I am making a broader point. I have referred to it in the infrastructure committee also. It has been much debated over the past decade that the Luas green line needs to be upgraded to a full metro. The infrastructure is there to do it. The underlying system was built to take an upgrade to a full metro. Furthermore, this will have to happen within the next ten years at most given the amount of development in the area and the projected usage. The economics would suggest that if this is done at the same time as the Dublin metro, it will come in at a fraction of the cost of the two projects being done independently. In other words, I mean a scenario where the Dublin metro goes ahead and we come back in five to ten years and start work on the green line metro upgrade. How will the Department make the decision to either proceed with or defer the green line upgrade on the basis of what I have just outlined?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_93" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_114">The Deputy knows transport is a key priority in the context of the national development plan review we are establishing. It is going to receive a significant uplift in its overall allocation. It is for us to work with the Minister, Deputy O'Brien, on how we sequence that capital allocation over a series of years. There will not be an endless amount available, so we need to see what projects can be delivered over a period of years and sequence it accordingly. That is the work we are doing collaboratively with the Minister and clearly public transport infrastructure is a key priority in the broader national development plan.</p>
+          <p eId="para_115"> The project-specific piece is a matter that we will be able to provide greater detail on in the aftermath of the national development plan review and what the allocations will be. For now it is about identifying the key strategic areas, allocating accordingly and trying to sequence delivery. In previous national development plans, we have had capital tied to projects that were in endless delays and then trade-offs and choices were not made on prioritising other projects that could have moved more quickly. We need to see what is deliverable and when and prioritise capital allocations accordingly. That informs the broader allocation of how capital will work through the new national development plan.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_94">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T17:00:00+01:00"/></from>
+          <p eId="para_116">The final question relates to capital. Given Ireland's comparatively low debt-to-GDP ratio, even the adjusted one, we have plenty of headroom to borrow to front-load infrastructure. That is a prudent thing to do given we need the infrastructure now to close up the deficit and given how, if correctly applied, this infrastructure should more than repay the Exchequer over time. I am wondering whether there is an appetite for this. I am putting this to the Minister because in this committee I have asked the Minister for Finance and I got one answer.</p>
+          <p eId="para_117">In the Dáil I asked the Tánaiste, and I got an opposite answer. I am wondering what the Department's appetite for this is.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_95" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_118">The €20 billion we have set aside for the new national development plan to reach in excess of €97 billion, building on the existing plan, consists of three separate funds. One is the Apple escrow, which we have received in the main, the AIB share sales and the Infrastructure, Climate and Nature Fund. That is a big increase in capital over our existing baseline over the coming five years. We are in a position where we continue to run budgetary surpluses. In previous years, and even on an in-year basis, the Exchequer returns have been positive, and we are have been in surplus. However, we are at a point of significant economic risk domestically, and the global position is uncertain. In the programme for Government, we said that we will seek to protect capital in the context of any change to the global environment to build and give certainty to infrastructure delivery over the coming years. We have the capital set aside to do that. We have to be cognisant that if we allocate an additional €20 billion to the existing baseline, we will be at around 5% GNI* in the context of our overall capital spend, which is more than most European economies. We also have to be cognisant that it is not the amount being placed in the area of capital allocations but there is also the management of the labour market, the construction sector and how we manage that context of how we spend on capital in the coming number of years. That is important because labour market dynamics are an important piece of how we manage capital. The Deputy's question hypothesises a disruptive economic environment and an event in which we need to have some borrowing. We are not in that position right now. We need to have discipline on how we allocate it and ensure that it is focused on the growth enabling areas of infrastructure, which contribute to economic growth overall. We need to be cautious about our overall expenditure framework in the context of broader uncertainty.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_96">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_119">I welcome the Minister and Minister of State. It is great to have them here. I will go straight to infrastructure. We all know that the delivery of infrastructure is one of our greatest challenges. It is also one of our greatest opportunities. The Minister mentioned high-quality infrastructure that is critical for enhancing competitive FDI and our domestic enterprise sector. There are also the bottlenecks in housing due to the lack of some infrastructure. Have legislative changes been considered to categorise or classify particular infrastructural projects as critical infrastructure to prevent delays? He spoke about supporting accelerated infrastructure and getting that delivered. We know there are many delays in that delivery. Has the Department considered legislation that would protect a project and make sure it can be fast-tracked? Here I put on my hat as Chair of the higher and further education committee. Will human capital be included in the Department's description of infrastructure? If we are investing in people, our workforce and our education and training, we are also investing in the potential for innovation and potentially cheaper infrastructure in the long run. I have more but will leave it there for now.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_97" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_120">To the Deputy's first point, one piece of work we are doing with the infrastructure task force in the division is on what changes we can make to yield better delivery. Different people have ideas about how critical infrastructure would be labelled, for example. The outworking of our barriers to infrastructure report will set that out. We have reference to the public investment Act in the programme for Government. That is a more medium-term piece of work. What I am prioritising now is how we move that critical infrastructure quickly. A lot of that is within our control. Some of the process there does not have a legislative barrier. It is very much process that is getting in the way of delivery. We can move things with decisions we take in the outworking of the barriers to infrastructure report.</p>
+          <p eId="para_121"> Human capital is a key part of the work of the Department. We have a construction sector working group focused on building capability across apprenticeships, third level institutions and a focus on modern methods of construction to improve the productivity of the construction sector in particular. We know that Ireland can do a lot more to drive increased productivity and that will be important as we place more capital into infrastructure overall. We need to get better use out of the overall workforce that exists. That is also a key part of the work we are doing.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_98">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_122">How does the Department examine this increased expenditure? We are spending a lot of money. What markers is the Department putting in to translate that into measurable outcomes, particularly in health, housing and education? We are spending a lot of money, which is needed and hard got. How is the Department measuring those outcomes? Basically, is there a cost-benefit analysis of it?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_99" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_123">Both prior to and after a budget, we have the SWITCH model, which looks at the distribution analysis. That is within the ESRI and looks at the overall distribution of the budget. Separately the well-being framework is published. It is an important piece of work in the context of the outputs that exist. Overall, we monitor a lot of the trends that exist in different Departments and agencies to measure how expenditure is linked to outputs. We can do more there, and we have to better evaluate outputs in how we review public financial procedures and how we review additional capital that could be allocated to particular Departments. However, if looking at our PISA scores in education, for example, the investment works and yields outcomes and outputs. There is ongoing monitoring of that. We have the government economic and evaluation service in my Department, which sits across different Government agencies and Departments and evaluates the evidence base behind different policies and what the outputs are. There are different metrics In different areas. Similarly, some of the Government accounting process involves the outputs as they are going. With regard to what has happened in recent years, the well-being framework, for example, has looked at a targeted approach to examining well-being and has many indicators across different metrics with regard to quality of life in Ireland. That provides a better breadth of post-budget analysis of how different policy measures work. There is also the distribution analysis. When I was Minister for Finance, it was an informative tool to see how the decisions I was making from a tax policy perspective impacted people and communities in terms of the policy decisions or options that I had. It is a useful tool for me and the Minister, Deputy Donohoe, in advance of the budget process.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_100">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_124">I just have a query on digitalisation and artificial intelligence. The Digital Services Act will apply from 28 June this year. That means digital products and services provided to consumers must comply with the European accessibility act. I fear a lot of work potentially has not been done on a lot of Government and other websites. Online services are not accessible. What is the Department doing to make sure all Departments, State agencies are in compliance and all the other actions that have to be taken are taken so that the State is not liable for fines and to being sued by consumers from 28 June, which is three days away?</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_101" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:10:00+01:00"/></from>
+          <p eId="para_125">I am happy to take that. Digitalisation is a huge part of what the Government is focused on at the moment. We have recently rolled out our new AI guidelines for all public and civil servants to show people that we are here to help them embrace new technologies and use them to ultimately make better decisions.</p>
+          <p eId="para_126">However, we are doing that in a way that always puts the human at the centre of all decision-making and that is vital.</p>
+          <p eId="para_127"> On the accessibility measures spoken about by Deputy McGreehan that will come in on 28 June, officials from the Office of Government Procurement sit on the stakeholder group. That is very much being looked at from the perspective of the stakeholder group, which meets regularly. A number of Government websites are also managed from the Office of the Government Chief Information Officer, for example, the Citizens Information website and a number of other ones on which we work with that office. We are working closely with the Department of children to make sure we are able to transpose those measures into law when they come into effect. </p>
+          <p eId="para_128"> A lot of work is also going on behind the scenes on our national digital strategy and AI strategy. In the next week or so, we will be in a position to give a more public update on that. The pen in that regard is with the Taoiseach and he is leading on that. The reason is that we want to show that this is of such importance that it is something the Department of the Taoiseach is invested in and is leading on. Officials from the Department of public expenditure, particularly in the Office of the Government Chief Information Officer and in the transformation team, are very much feeding into that. We will have workshops, ongoing engagement and consultation on that in the next couple of weeks, which will be announced next week. </p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_102">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_129">Has any funding or support been given to State agencies in respect of bringing up their websites? To take one personal example, the Springboard+ website was not acceptable. It was okay but was not accessible for someone who was visually impaired. It was okay once you got into it but you had to get someone else to help you get into it and then you could escalate the problem. That is one website that I give as a personal example. Have other important State agencies been given funding to make sure we will not be breaking the law in three days' time? </p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_103" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_130">I cannot answer as to whether other Departments have allocated funding for this but it is very much on the agenda. There are monthly meetings with the Department of children on this and it is looking at it because equality comes under that. Our Department, through our officials from the Office of Government Procurement and in the OCGIO, is very much involved in it. I recently met with Vision Ireland, a part of the NCBI Group, which has done an amazing job in offering a lot of advice around this, not just to the Government but also to SMEs and other companies. Obviously, we want all our websites to bear this in mind in the future. I acknowledge the work Vision Ireland does and the training it is doing in this space.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_131">Perfect timing. Go raibh maith agaibh. Leanfaimid ar aghaidh go dtí an Seanadóir Murphy. </p>
+        </speech>
+        <speech by="#ConorMurphy" eId="spk_105">
+          <from>Senator Conor Murphy<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_132">Apologies for missing most of the Minister's presentation but I had to go off for votes in the Seanad. I have a number of questions. The first is regarding projects that have been costed and are hitting delays for one reason or another. Does the Minister have any estimate for what the inflationary cost increases have been on, say, an annual basis? Across the board, what is the rate of inflation for infrastructure and construction at the moment?</p>
+          <p eId="para_133"> On procurement, although this may be the Minister of State’s gig to answer, the Minister stated that the Department has infrastructure and procurement guidelines. What is the status of those guidelines? Are they mandatory for all Departments and all State agencies to follow or are they advisory in that regard? In order to achieve some of the objectives, it was said the Department monitors expenditure from a climate, well-being and equality perspective. Is there an attempt to put in position clauses to ensure that is followed through? I refer, for instance, to social clauses to ensure people who get Government contracts pay at least the living wage to the staff who are working for them. If we want to achieve some climate outcomes and employment of people who are long-term unemployed or ensure people are brought on as apprentices, are there social clauses built in to procurement contracts? From an ethical point of view, how far does that extend down the supply chain? Are we concerned with ethical procurement here on the island but not necessarily for goods and services that Departments and State agencies are procuring from the other side of the world? Are we ensuring there is an ethical follow-through in what the money of taxpayers and the State is being spent on for goods and services from other countries that might not have the same ethical approach in how they produce and deliver goods and as regards the type of practices they have for employees who are involved in that production? </p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_106" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_134">I thank the Senator for those questions and his interest in this topic. His first question was regarding the policy decisions that are made in the Office of Government Procurement and whether they are in law. It depends. We have EU legislation that we have transposed into Irish law. In that case, it is absolutely a legal requirement. Then we have other circulars, which Cabinet will have approved, that go to other Departments and those are directives from Cabinet. It is not law but it is a circular and that is what people abide by. </p>
+          <p eId="para_135"> Regarding policies, we have a lot of policy guidance out there and that is guidance. However, I cannot stress enough that we have an awful lot of expertise in the Office of Government Procurement who are there to help any Department or any State agency that has any questions or concerns or needs a bit of support when it comes to tendering or running mini-competitions. Our office is there to support them through that. We also have the sourcing division, which I spoke about earlier. It is there to make sure we are delivering value for money from a taxpayer's perspective and getting a benefit from economies of scale. </p>
+          <p eId="para_136"> On the social and ethical, yes, a social focus already exists. I recently did workshops in each of the regions. We were in Cork recently and Athlone and Dublin over the last number of months. Some of the feedback I got was that, from a social perspective, it may not be clear what is considered social and what those guidelines are. That is the kind of feedback we are now looking to loop into our first ever national procurement strategy, which we are drafting. We are doing that on the basis of feedback from all of our stakeholders and that was one of the pieces of feedback that came up, in particular from those in social enterprises, whose attendance was high.</p>
+          <p eId="para_137"> From an ethical perspective, I take this opportunity to commend our Office of Government Procurement, which recently received a Kitemark in ethical procurement. All of our OGP team members have undergone training in ethical procurement. That is really important because they are the people providing expert advice to other Departments on this. There is absolutely a focus on social and ethical. In response to the Senator’s first question, it is a mix of law and Government advice. </p>
+        </speech>
+        <speech by="#ConorMurphy" eId="spk_107">
+          <from>Senator Conor Murphy<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_138">Would that advice on the ethics, which people have done an investigation into, include not procuring services from a particular company or region? It is one thing giving guidance. I would hope some study would be done into the ethics of companies that end up in the supply chain for Departments and State agencies, but is it not possible to say our concerns around a particular company mean it should not be used in procurement? </p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_108" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_139">That is legally challenging for us to do but, at the same time, we highlight companies where we feel they have been really good in this space. That is a bonus and we would encourage people to work with them. There is EU law when it comes to this so we have to be very careful to make sure we do not put out any advice that could be defamatory either from the Office of Government Procurement and that we are operating always within the space of the EU directives and our own national law. However, we absolutely have a record of companies that we feel are very positive in this space and we would encourage people to deal with them. </p>
+        </speech>
+        <speech by="#ConorMurphy" eId="spk_109">
+          <from>Senator Conor Murphy<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_140">Is the outcome of the Department's monitoring exercise on these things, that is, monitoring of expenditure from a climate, well-being and equality perspective, made publicly available? </p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_110" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_141">For the well-being index? </p>
+        </speech>
+        <speech by="#ConorMurphy" eId="spk_111">
+          <from>Senator Conor Murphy<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_142">The Minister of State said that the Department monitors expenditure “from a climate, well-being and equality perspective”. I presume that includes procurement, which is part of public expenditure, and that equality would stray into the area of ethics. Is the outcome of that monitoring published? </p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_112" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:20:00+01:00"/></from>
+          <p eId="para_143">We do not publish that. We do publish our guidelines around it. For example, we will have new green public procurement guidelines, which we hope to get approved by Cabinet in the next month or so. That is what we publish, as opposed to the outcomes. While we are monitoring it, we feed a lot of that into the strategy, which we are currently devising as well. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_113" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_144">I thank the Senator for his question. In the 2020 to 2022 period, construction inflation was in double digit territory and the pipeline of projects that were in progress was not being delivered, constructed or tendered for at that point. There was a significant impact and respective delays. One thing that is emerging from the wider work we are doing on the infrastructure task force is the scale of cost that is embedded when particular projects are taking endless time. We know the impact of that. Even though construction inflation was only 3% last year in the tender price index overall in the economy, we know that delays of years in some instances through the planning process, which we need to change, are contributing to higher costs and more difficult choices with trade-offs in future years. That is why a re-examination of every element of the project life cycle from initiation and design right through to delivery is something we are really focused on in the work that we are doing on barriers to infrastructure delivery because we know the ultimate cost is higher if we continue to wait. That is one of the most important reforms we are seeking to advance.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_114">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_145">I wish to follow up on some of the related themes that have been discussed. I was glad the Minister indicated that the intention is to continue and deepen the well-being framework, which previously had been on a pilot basis. I apologise if this may have been discussed already; I was called away for a vote. Will that be extended in the next budget? There was a hearing earlier this afternoon on the sustainable development goals. Social Justice Ireland and others have done a really good exercise on how the 17 SDGs map to the 11 well-being dimensions in the well-being framework. Will the well-being framework be scaled up across all areas of the budget as the Minister anticipates? Has there been any thought on how it may intersect with the kinds of indicators, goals and targets within the 17 development goals?</p>
+          <p eId="para_146"> On the gender and equality proofing of annual budgets, going back to the commitment made not in the last Oireachtas but the previous one, I ask for an update on how gender and equality proofing can be moved forward. At one point Ireland was looking at the Scottish model of having a gender and equality advisory committee and trying to mirror what is done in Scotland where I believe an equality statement accompanies the budget. What is the thinking on that gender and equality proofing? Aside from the distributional impact, is there something more planned in that regard? Those are two questions on the budget.</p>
+          <p eId="para_147"> I have one more question for the Minister and then have questions for the Minister of State. How is the public sector equality and human rights duty as described under the Irish Human Rights and Equality Commission Act 2014 being applied to the Minister's engagement with Departments under public expenditure planning?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_115" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_148">I appreciate the Senator's questions. The well-being framework was launched in 2021. It is a positive and holistic way to assess how Ireland is doing as a country beyond budgetary metrics. The CSO's monitoring of 35 well-being indicators across 11 dimensions is also important in that context. It is progressed within the context of the whole-of-year budget process. We have the national economic dialogue. We have the well-being dashboard terms of CSO and the beyond-GDP quality-of-life assessment published by the Department of Finance. The Department uses the dimensions of the well-being framework to provide a whole-of-government perspective on public expenditure allocations. We also rely on a tagging initiative that provides a high-level summary of the way in which public money supports and enhances people's lives. We can set out more information to the Senator on that.</p>
+          <p eId="para_149"> Equality proofing is really important and we are developing that very specifically. A number of different items exist at present. As I said in response to previous questions, the distributional impact assessments are important. The use of performance information and the extent to which different policies and programmes enhance equality and address inequalities are also important. My Department supports the broader initiative by facilitating the presentation of equality indicators in the Revised Estimates for public services and the public service performance report.</p>
+          <p eId="para_150"> A paper on my Department's approach to developing equality budgeting is being completed and will be published following a peer review process. Ireland is in the process of designing an equality tagging framework that will support the development of a whole-of-government description of the equality purposes for which public resources are being used. The next phase in the development of equality budgeting will build on the work that has been done in the areas of well-being and green budgeting to try to increase transparency in the use of public resources. That work is advancing and I will be in a position to say more about it when the peer review has concluded.</p>
+          <p eId="para_151"> The Senator also asked about IHREC. We support some of what she referenced relating to the Irish Human Rights and Equality Commission Act. In terms of public expenditure planning, we support the funding of the IPA relating to public sector duty in that specific regard. A module for all staff on equality and human rights in the public service is spread across three different units. There is a public sector equality and human rights duty, with human rights in the public service as a module. I think 647 learners have completed that course, which is an important component of leadership in the public service and how what is set out by IHREC is progressed in expenditure management.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_116">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_152">I have one follow-up question before moving on to the Minister of State. I am looking to not just the training but also the reporting. When talking about the key performance indicators for management, where is it factoring in? Related to that because I know I probably will not get back again, I ask about the responsibilities of public bodies under the Climate Action and Low Carbon Development Act 2015. I am talking about the point at which they engage with the Minister over their annual budget requests. Are the public duty in equality and the obligations under the Climate Action and Low Carbon Development Act, possibly including even preventive expenditure, considered at that point of engagement when it comes to funding?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_117" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_153">We take the obligations under the climate Act very seriously, in particular the need for public sector decarbonisation. We know the broader risk of Ireland's not progressing many of the initiatives that are there. That is an important component of our work in line with some of the other areas I have referenced. The equality tagging that is happening will make an impact when it is completed and the peer review process is concluded. It will give a further level of detail on how that advances in the context of-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_118">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_154">Just very briefly-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_155">Time is not the issue, but as there is a vótáil, I will need to suspend unless the Senator can be extremely brief.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_120">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_156">I will quickly ask the question and if we have to suspend before the answer, that is fine.</p>
+          <p eId="para_157"> The question is for the Minister of State. The green public procurement strategy has been referenced and I ask about its roll-out. One of the recommendations in that strategy was to have legislation, actual legislative measures. I am picking up on what Senator Murphy was said. The Minister of State will be aware that I have introduced legislation within the EU guidelines, which proposes a price-quality approach being the default rather than the lowest-cost approach. Inserting price quality or indeed life-cycle costing provides the space to start bringing in those criteria in determining who might get it. On life-cycle costing, does the Minister of State believe the changes to the omnibus Bill might make it harder to track carbon emissions down the line?</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_158">We need to suspend for the vótáil. Is the Minister of State able to stay?</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_122" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:30:00+01:00"/></from>
+          <p eId="para_159">I can stay for two minutes to touch upon some of the Senator's points rather than her getting no answer.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:40:00+01:00"/></from>
+          <p eId="para_160">The issue is that we are approximately four minutes into this, so I think we need to suspend to go and vote. We will come back.</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_124" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:40:00+01:00"/></from>
+          <p eId="para_161">That is fine.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> Sitting suspended at 5.40 p.m. and resumed at 5.56 p.m.</i>
+        </summary>
+        <speech by="#EmerHiggins" eId="spk_125" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_162">I thank Senator Higgins. I know she has a particular interest and passion in this area. I have discussed it with her in the Seanad. I thank her for her positive engagement. I also thank her for encouraging people to avail of the opportunity to participate in the recent public consultation on our first ever national public procurement strategy. A lot is happening in this space at EU and national levels. At EU level, there have been indications that the directives on public procurement will be reviewed. It is likely a lot of that may happen on our watch when the EU Presidency comes to Ireland. At an Irish level, we feed into and influence that at an EU level. We are also preparing our first ever public procurement strategy.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_163">I understand the Minister has to leave in a few minutes. He can call time when he needs to go. I have a few questions. On the EU Commission's review of our protected disclosure regime, is it correct that is due for October? Will the Minister confirm how the concerns of the whistleblowers in recent cases such as the Grace case and CHI will be addressed?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_127" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_164">Significant changes have been made to the protected disclosure legislation relating to the EU directive on whistleblowers specifically, which is managed by the Office of the Protected Disclosures Commissioner. In July 2024, it was indicated that the European Commission must furnish a report to the European Parliament assessing the impact of national law transposing the directives. We have been informed this report will be finalised by the European Commission no later than 2026. That is the latest date.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_165">It is now 2026.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_129" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_166">That is the latest position we have received. I am happy to give more detail.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_130">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_167">The committee in this area in the previous term did a huge amount of work on the issue of protected disclosures. How are the concerns of whistleblowers in recent cases going to be addressed in this review?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_131" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_168">We will await the outcome of the review. It is important we have a strong legislative underpinning which is advanced through the Protected Disclosures Act 2014. The Department also provided grant funding this year of €368,000 to Transparency International Ireland to support its work and support for whistleblowers specifically.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_132">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_169">Will the Minister put in a submission for that review?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_133" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T17:50:00+01:00"/></from>
+          <p eId="para_170">The commencement of the review preceded my role in the Department.</p>
+          <p eId="para_171">Where gaps are identified or where we can strengthen it to protect whistleblowers across our country, that will be our collective approach to the protected disclosures piece. Obviously, we have the office that is being established under the Office of the Ombudsman.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_172">I understand that. To be honest, this is something I am quite passionate about. I am concerned that we have seen a number of cases where whistleblowers have expressed concerns about their treatment and how the system works. Will the Minister be making a submission in relation to that? I would suggest that he does-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_135" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_173">I will review the Deputy's suggestion. Obviously, if there are recommendations in that review, I will take them very seriously in the context of any future changes that may be required.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_174">I have one more question in relation to this. As things currently stand, if a protected disclosure is made to the Minister by a civil or public servant, the Minister can pass that complaint on to the Secretary General. However, the complaint could relate to the Secretary General addressing an issue but due to the Carltona principle, the Secretary General could respond to the complainant in the name of the Minister. Under the aforementioned principle, the Secretary General can take action in the name of the Minister. Is this something that the Minister has been aware of? This is an issue because complainants may not be aware that they are dealing with the person about whom they have complained because the response will be in the Minister's name under the Carltona principle. Is the Minister aware of this issue and does he believe it could be a fundamental weakness at the heart of the regime?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_137" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_175">I will take that specific question away and respond to the committee directly on it. As I said a few minutes ago, we need to ensure that the workings of the protected disclosures system reflect best practice to protect those who should be protected<i> vis-à-vis</i> anything they submit to me or any other individual referred to in the legislation. I will come back to you on the specific workings of what you have outlined in your question, a Chathaoirligh.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_176">Go raibh maith agat. It is an issue of huge concern. I understand that the Minister must leave at this point. We will move on to the Minister of State now. I invite her to finish her point in response to Senator Higgins although I understand that the Minister of State is also under time pressure.</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_139" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_177">In terms of green public procurement, I can confirm that last year the then Department of the Environment, Climate and Communications published Buying Greener: Green Public Procurement Strategy and Action Plan 2024- 2027. That Department is the lead on this but the Office of Government Procurement helped to develop the strategy. We have been given a number of tasks, one of which is action No. 12, which tasks the OGP with replacing Circular 20/2019 to include updated instructions to Government Departments and the public sector regarding the new green public procurement obligations included in the strategy and action plan. That work has been done and the Minister, Deputy Chambers, is currently reviewing it and hopes to bring it to Cabinet in the next number of weeks. In terms of legislation, I agree with the Senator and hear what she is saying. Legislation probably would be very helpful in this space but it would be up to the Department of Climate, Energy and the Environment, which is the lead on this, to bring forward legislation. I reiterate that a lot of work has gone into those green public procurement guidelines, which we hope to be in a position to publish and circulate in the coming weeks.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_178">Is that okay, Senator Higgins?</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_141">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_179">Yes. I had a separate question but I will leave it for now.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_180">I have a few questions myself. A review of the public procurement system is under way at the moment. The Minister of State will also be aware of the Irish Fiscal Advisory Council's recent report which was somewhat critical of the Government for what it described as "poor budgeting". The State spends around €19 billion per year contracting for goods and services but my concern is that we have very little oversight of that spend. This is something we will be discussing in more detail tomorrow. Does the Minister of State believe it is sufficient that the most up to date analysis that we have is the last OGP tendering and spending analysis from 2019? It seems to me that if a review of the public procurement system is not going to put in place the tools needed to at least have an annual report on the state of the procurement system, then it is a bit of a non-starter.</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_143" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_181">I agree data is an issue. We need to have better data to be able to oversee in a better way. Data is something that is very much looked at from an EU directive perspective. It is something that is going to be featuring very strongly in this Government's first ever national public procurement strategy. We want to get to a point where we have better visibility. From the perspective of controls within the budget, the OGP provides extensive guidance in circulars on what levels and thresholds should operate, mini competitions, bigger tenders and so on. Sometimes issues arise when a tender starts out small but additional requirements were added later. That increases the budget but that is not best practice and that is not what we advise. We have a lot of information and do a lot of work with other Departments in this space. Ultimately, other Departments and State agencies are their own accounting bodies. It is not the OGP that is responsible for their budgets. They are responsible for their own budget but we can advise them on how to get the best value for money for the taxpayer. Our sourcing teams do that. The Cathaoirleach mentioned the amount of money being spent on public procurement. Money is also spent through our sourcing teams on delivering direct drawdowns, where tenders already exist and preferred suppliers have already been identified. That is a great value for money proposition and I would encourage other central Government bodies that purchase to look at those CBO arrangements because they really do deliver good value for money.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_182">I am aware we are under time constraints so we can delve into that a bit more tomorrow because I do have a number of concerns. I have one more question which the Minister of State may not be able to answer right now and if that is the case, that is fine. I understand that a circular will be sent out to all Government agencies and Departments warning about overspending and the need to keep spending within budget. It is my understanding that it is due to be sent out shortly. Is there a particular Department or agency that has been on the Minister's mind or the Minister of State's mind in that regard or is the issue broader? I understand that this might not be in the Minister of State's remit.</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_145" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_183">Any circular of that nature would come from the Minister, Deputy Chambers, who is very committed to delivering reform, better value for money and better rigour when it comes to public expenditure. I would imagine the circular is rooted in that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_184">I understand we have three minutes left. I cut short the response from Senator Higgins, so she can make a brief contribution now.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_147">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_185">Does Deputy Timmins wish to contribute?</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_148">
+          <from>Deputy Edward Timmins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_186">No. I had a question for the Minister, Deputy Chambers, but he has left.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_149">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_187">Okay, Senator Higgins, I can give you 30 seconds.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_150">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_188">Public duty, equality and human rights, as I mentioned to the Minister, extends to procurement. We have obligations in the context of equality and human rights. Has there been a review in light of this? We know that some of the very largest companies, a number of whom may have public or Irish Government contracts, have recently been disavowing their commitment to equality. Certain companies have been very publicly rowing back and saying they will remove diversity, equality and inclusion and are actively unravelling any equality measures within their practices. Has there been a review of Ireland's exposure to companies like that? Their stance would be out of spirit with concerns for public duty, equality and human rights in the context of procurement and Irish public contracts. </p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_151" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_189">In terms of procurement specifically, the answer is "No". As new tenders go up online, they are obviously looked at. All of our tenders would go through eTenders and they are looked at against set criteria, which would absolutely include social and ethical clauses. Human rights would come under ethical clauses. To the Senator's wider point, I agree that we are seeing some companies, some of which are based here, implementing quite significant and dramatic changes when it comes to diversity, equality and inclusion strategies. As a former employee of a company that had a really progressive diversity and inclusion strategy, I find that very disturbing. I really do think we are in a very unique space and that it is the exact opposite of progressive. Very many people come to live and work in Ireland because we are a progressive and modern country and I must express my dissatisfaction with some companies' stances on that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_152">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T18:00:00+01:00"/></from>
+          <p eId="para_190">Go raibh maith agaibh go léir. That concludes the committee's business in public session for today. The meeting now stands adjourned.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 6.09 p.m. until 4.30 p.m. on Wednesday, 2 July, 2025. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>
