@@ -258,16 +258,6 @@ export const ArticleTriageJob = {
   }
 };
 
-// Allow running from command line
-if (import.meta.url === `file://${process.argv[1]}`) {
-  runArticleTriage()
-    .then(stats => {
-      console.log('Job completed:', stats);
-      process.exit(0);
-    })
-    .catch(err => {
-      console.error('Job failed:', err);
-      process.exit(1);
-    });
-}
+// CLI entry point removed - use route handler instead
+// The process.exit() was causing issues with bundled ESM builds
 
