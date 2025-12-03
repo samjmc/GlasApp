@@ -7,6 +7,14 @@ import { checkDatabaseConnection } from "./db";
 
 const app = express();
 app.set('trust proxy', 1);
+
+// Simple health check - responds immediately before any middleware
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+app.get('/_health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 app.use(
   helmet({
     contentSecurityPolicy: false,
