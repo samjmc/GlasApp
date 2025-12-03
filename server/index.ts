@@ -10,10 +10,18 @@ app.set('trust proxy', 1);
 
 // Simple health check - responds immediately before any middleware
 app.get('/health', (req, res) => {
+  console.log('🏥 Health check received');
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 app.get('/_health', (req, res) => {
+  console.log('🏥 Health check received (_health)');
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Log ALL incoming requests for debugging
+app.use((req, res, next) => {
+  console.log(`📨 ${req.method} ${req.path}`);
+  next();
 });
 app.use(
   helmet({
