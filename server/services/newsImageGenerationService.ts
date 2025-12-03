@@ -46,29 +46,7 @@ export function getRandomExistingImage(): string {
  * Generate image prompt from article
  */
 export function generateImagePrompt(article: { title: string; content: string; source: string }): string {
-  // Extract key themes from article
-  const title = article.title.toLowerCase();
-  
-  // Determine scene type
-  let scene = 'Irish government building';
-  
-  if (title.includes('housing') || title.includes('homes')) {
-    scene = 'modern Irish housing development';
-  } else if (title.includes('health') || title.includes('hospital')) {
-    scene = 'modern Irish hospital';
-  } else if (title.includes('education') || title.includes('school')) {
-    scene = 'Irish school or university';
-  } else if (title.includes('climate') || title.includes('environment')) {
-    scene = 'Irish countryside with wind turbines';
-  } else if (title.includes('dublin') || title.includes('city')) {
-    scene = 'Dublin cityscape';
-  } else if (title.includes('budget') || title.includes('economy')) {
-    scene = 'Department of Finance building Dublin';
-  } else if (title.includes('election') || title.includes('vote')) {
-    scene = 'Irish polling station';
-  }
-  
-  return `Cinematic news photo of ${scene}, professional journalism style, high quality, realistic, modern Ireland, news photography aesthetic, dramatic lighting`;
+  return `${article.title}. NO WORDS OR NUMBERS IN THE IMAGE.`;
 }
 
 /**

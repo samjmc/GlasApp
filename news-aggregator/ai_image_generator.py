@@ -85,73 +85,8 @@ class AIImageGenerator:
             return article.get('scraped_content', {}).get('top_image')
     
     def _build_image_prompt(self, title: str, summary: str, politician: str, story_type: str) -> str:
-        """Build DALL-E prompt using LLM to understand article context"""
-        
-        # Use LLM to determine what visual would best represent this article
-        visual_description = self._get_visual_from_llm(title, summary)
-        
-        # Create clean, text-free prompt with LLM's contextual understanding
-        prompt = (
-            f"A clean photorealistic editorial image: {visual_description}. "
-            f"Irish setting with natural lighting and subtle green tones. "
-            f"Modern newspaper photography style. "
-            f"CRITICAL: Absolutely NO text, NO words, NO letters, NO numbers, NO signs with writing. "
-            f"Pure visual imagery only, no attempts to write anything."
-        )
-        
-        # Ensure under 1000 chars for DALL-E 2
-        return prompt[:1000]
-    
-    def _get_visual_from_llm(self, title: str, summary: str) -> str:
-        """Use LLM to determine the best visual for this article"""
-        
-        try:
-            # Quick LLM call to get visual description
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",  # Fast and cheap
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are an expert at visual storytelling for news articles. Generate concise visual scene descriptions for editorial images."
-                    },
-                    {
-                        "role": "user",
-                        "content": f"""Based on this Irish political news article, describe a specific visual scene that would illustrate it well.
-
-Title: {title}
-Summary: {summary[:300]}
-
-Provide a concise visual description (2-3 sentences max) that:
-1. Captures the specific context and emotion of THIS story
-2. Is relevant to the actual events/people mentioned
-3. Uses concrete imagery (people, places, objects, actions)
-4. Avoids generic political imagery unless nothing else fits
-
-Examples of GOOD responses:
-- "A worried family looking at eviction notice, empty Dublin apartment, moving boxes packed"
-- "Healthcare workers in understaffed hospital ward, empty beds, concerned medical staff"
-- "Students in overcrowded classroom, teacher at chalkboard, lack of resources visible"
-
-Examples of BAD responses:
-- "Government building" (too generic)
-- "Politicians debating" (doesn't capture specific story)
-- "Irish flag" (not specific enough)
-
-Respond with ONLY the visual description, no explanation:"""
-                    }
-                ],
-                temperature=0.7,
-                max_tokens=150
-            )
-            
-            visual = response.choices[0].message.content.strip()
-            logger.debug(f"LLM generated visual: {visual}")
-            return visual
-            
-        except Exception as e:
-            logger.warning(f"LLM visual generation failed, using fallback: {e}")
-            # Fallback to generic Irish political scene
-            return "Irish government buildings, Leinster House, political scene in Dublin"
+        """Build DALL-E prompt from article title"""
+        return f"{title}. NO WORDS OR NUMBERS IN THE IMAGE."
     
     def _save_image_locally(self, image_url: str, article_id: int) -> str:
         """Download and save image locally"""

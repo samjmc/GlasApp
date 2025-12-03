@@ -207,6 +207,37 @@ export default function TDProfilePageEnhanced() {
     enabled: !!scoreData?.score?.party
   });
   
+  // Fetch voting analysis data
+  const { data: votingStats } = useQuery({
+    queryKey: ['td-voting-stats', politicianName],
+    queryFn: async () => {
+      const res = await fetch(`/api/parliamentary/voting/stats/${encodeURIComponent(politicianName || '')}`);
+      if (!res.ok) return null;
+      return res.json();
+    },
+    enabled: !!politicianName
+  });
+
+  const { data: rebelVotesData } = useQuery({
+    queryKey: ['td-rebel-votes', politicianName],
+    queryFn: async () => {
+      const res = await fetch(`/api/parliamentary/voting/rebel/${encodeURIComponent(politicianName || '')}`);
+      if (!res.ok) return { votes: [] };
+      return res.json();
+    },
+    enabled: !!politicianName
+  });
+
+  const { data: recentVotesData } = useQuery({
+    queryKey: ['td-recent-votes', politicianName],
+    queryFn: async () => {
+      const res = await fetch(`/api/parliamentary/voting/recent/${encodeURIComponent(politicianName || '')}?limit=3`);
+      if (!res.ok) return { votes: [] };
+      return res.json();
+    },
+    enabled: !!politicianName
+  });
+  
   const score = scoreData?.score;
   
   if (isLoading) {
@@ -724,6 +755,133 @@ export default function TDProfilePageEnhanced() {
                 />
               ))}
             </div>
+          </Card>
+
+          {/* Voting Analysis */}
+          <Card className="p-6">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Vote className="w-6 h-6 text-blue-600" />
+              Voting Record
+            </h2>
+
+            {votingStats ? (
+              <div className="space-y-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800/30">
+                    <div className="text-sm text-blue-700 dark:text-blue-300 mb-1">Party Loyalty</div>
+                    <div className="text-2xl font-bold text-blue-800 dark:text-blue-100">
+                      {votingStats.partyLoyaltyRate}%
+                    </div>
+                  </div>
+                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Votes</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {votingStats.totalVotes}
+                    </div>
+                  </div>
+                  <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-800/30">
+                    <div className="text-sm text-green-700 dark:text-green-300 mb-1">Voted Tá (Yes)</div>
+                    <div className="text-2xl font-bold text-green-800 dark:text-green-100">
+                      {votingStats.taVotes}
+                    </div>
+                  </div>
+                  <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-100 dark:border-red-800/30">
+                    <div className="text-sm text-red-700 dark:text-red-300 mb-1">Voted Níl (No)</div>
+                    <div className="text-2xl font-bold text-red-800 dark:text-red-100">
+                      {votingStats.nilVotes}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recent Votes Section */}
+                {recentVotesData?.votes && recentVotesData.votes.length > 0 && (
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                      <Vote className="w-4 h-4" />
+                      Recent Activity
+                    </h3>
+                    <div className="space-y-2">
+                      {recentVotesData.votes.map((vote: any, idx: number) => (
+                        <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:border-blue-300 transition-colors">
+                          <div className="flex justify-between items-start gap-3">
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
+                                {vote.subject}
+                              </h4>
+                              {vote.description && (
+                                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                                  {vote.description}
+                                </p>
+                              )}
+                              <div className="text-[10px] text-gray-400 mt-2 flex items-center gap-2">
+                                <Calendar className="w-3 h-3" />
+                                {new Date(vote.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
+                              </div>
+                            </div>
+                            <Badge 
+                              className={`whitespace-nowrap ${
+                                vote.vote === 'ta' ? 'bg-green-100 text-green-800 hover:bg-green-200 border-green-200' : 
+                                vote.vote === 'nil' ? 'bg-red-100 text-red-800 hover:bg-red-200 border-red-200' : 
+                                'bg-gray-100 text-gray-800 hover:bg-gray-200 border-gray-200'
+                              }`}
+                              variant="outline"
+                            >
+                              {vote.vote === 'ta' ? 'Tá' : vote.vote === 'nil' ? 'Níl' : 'Staon'}
+                            </Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Rebel Votes Section */}
+                {rebelVotesData?.votes && rebelVotesData.votes.length > 0 ? (
+                  <div className="border rounded-lg p-4 border-orange-200 bg-orange-50/50 dark:border-orange-800 dark:bg-orange-900/10">
+                    <h3 className="font-semibold text-orange-800 dark:text-orange-200 mb-3 flex items-center gap-2">
+                      <TrendingDown className="w-4 h-4" />
+                      Rebel Votes ({rebelVotesData.votes.length})
+                    </h3>
+                    <p className="text-sm text-orange-700 dark:text-orange-300 mb-3">
+                      Votes where {politicianName} voted against their party position.
+                    </p>
+                    <div className="space-y-3">
+                      {rebelVotesData.votes.slice(0, 3).map((vote: any, idx: number) => (
+                        <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded border border-orange-100 dark:border-orange-800/30 shadow-sm">
+                          <div className="flex justify-between items-start gap-2">
+                            <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
+                              {vote.subject}
+                            </h4>
+                            <Badge variant="outline" className="whitespace-nowrap border-orange-200 text-orange-700">
+                              {new Date(vote.date).toLocaleDateString()}
+                            </Badge>
+                          </div>
+                          {vote.description && (
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 italic">
+                              "{vote.description}"
+                            </p>
+                          )}
+                          <div className="mt-2 flex gap-2 text-xs">
+                            <span className="font-medium">Vote: {vote.vote === 'ta' ? 'Tá' : vote.vote === 'nil' ? 'Níl' : 'Abstain'}</span>
+                            <span className="text-gray-400">|</span>
+                            <span className="text-orange-600 dark:text-orange-400">Differs from party</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-700">
+                    <Award className="w-4 h-4 text-blue-500" />
+                    No rebel votes recorded. Consistently votes with party line.
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                Loading voting records...
+              </div>
+            )}
           </Card>
 
           {/* Debate Activity */}

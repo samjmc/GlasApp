@@ -6,7 +6,48 @@ import { generateEmbedding } from '../services/openaiService';
 const CHUNK_SIZE_TOKENS = 500; // Approx tokens per chunk
 const CHARS_PER_TOKEN = 4; // Rough estimate
 const CHUNK_SIZE_CHARS = CHUNK_SIZE_TOKENS * CHARS_PER_TOKEN;
-const BATCH_SIZE = 50; // Increased for efficiency with bulk inserts
+
+// BALANCED SPEED: Optimized but stable
+const SCAN_BATCH_SIZE = 200; // Balanced batch size
+const PARALLEL_SPEECHES = 5; // Process 5 speeches concurrently
+
+// Stats tracking
+let totalProcessed = 0;
+let totalChunksCreated = 0;
+const startTime = Date.now();
+
+function logStats() {
+  const elapsed = (Date.now() - startTime) / 1000 / 60; // minutes
+  const rate = totalProcessed / elapsed;
+  console.log(`\n📊 STATS: ${totalProcessed} speeches, ${totalChunksCreated} chunks | ${rate.toFixed(1)} speeches/min | ${elapsed.toFixed(1)} min elapsed`);
+}
+
+// Log stats every 2 minutes
+setInterval(logStats, 120000);
+
+// Graceful shutdown handler
+process.on('SIGINT', () => {
+  console.log('\n\n🛑 SIGINT received - Graceful shutdown');
+  logStats();
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.log('\n\n🛑 SIGTERM received - Graceful shutdown');
+  logStats();
+  process.exit(0);
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('\n\n💥 UNCAUGHT EXCEPTION:', err);
+  logStats();
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('\n\n💥 UNHANDLED REJECTION:', reason);
+  logStats();
+});
 
 async function processDebateEmbeddings() {
   if (!supabaseDb) {
@@ -14,41 +55,102 @@ async function processDebateEmbeddings() {
     process.exit(1);
   }
 
-  console.log('🧠 Starting Debate Embedding Processor...');
+  console.log('🧠 Starting Debate Embedding Processor (SPEED MODE)...');
+  console.log(`📅 Scanning ALL speeches (newest first) - Batch size: ${SCAN_BATCH_SIZE}`);
+  console.log('⏱️  Stats logged every 2 minutes. Press Ctrl+C to stop gracefully.\n');
+
+  let offset = 0;
+  let consecutiveErrors = 0;
 
   while (true) {
-    // 1. Fetch unchunked speeches
-    const { data: speeches, error } = await supabaseDb.rpc('get_unchunked_speeches', {
-      limit_count: BATCH_SIZE
-    });
+    try {
+      // 1. Fetch a batch of speeches - scan ALL, newest first
+      const { data: candidates, error } = await supabaseDb
+        .from('debate_speeches')
+        .select('id, paragraphs, speaker_name, speaker_party, recorded_time, metadata')
+        .order('recorded_time', { ascending: false })
+        .range(offset, offset + SCAN_BATCH_SIZE - 1);
 
-    if (error) {
-      console.error('❌ Error fetching unchunked speeches:', error);
-      break;
-    }
-
-    if (!speeches || speeches.length === 0) {
-      console.log('✅ No more unchunked speeches found. Done!');
-      break;
-    }
-
-    console.log(`📦 Processing batch of ${speeches.length} speeches...`);
-
-    for (const speech of speeches) {
-      try {
-        await processSpeech(speech);
-      } catch (err) {
-        console.error(`❌ Failed to process speech ${speech.id}:`, err);
-        // Continue to next speech
+      if (error) {
+        console.error(`\n❌ Error scanning speeches (Offset ${offset}):`, error.message);
+        consecutiveErrors++;
+        if (consecutiveErrors > 10) {
+            console.error('💥 Too many consecutive errors. Aborting.');
+            logStats();
+            break;
+        }
+        await new Promise(r => setTimeout(r, 1000)); // Faster retry
+        continue;
       }
-    }
 
-    // Efficient delay: Bulk inserts are safe, so we can move faster
-    await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!candidates || candidates.length === 0) {
+        console.log('\n✅ No more speeches found in scan range. BACKFILL COMPLETE!');
+        logStats();
+        break;
+      }
+      
+      consecutiveErrors = 0;
+
+      // 2. Check which ones are already processed
+      const candidateIds = candidates.map(s => s.id);
+      
+      const { data: existingChunks, error: checkError } = await supabaseDb
+        .from('debate_chunks')
+        .select('speech_id')
+        .in('speech_id', candidateIds);
+
+      if (checkError) {
+          console.error('\n❌ Error checking existing chunks:', checkError.message);
+          offset += candidates.length;
+          continue;
+      }
+
+      const processedIds = new Set(existingChunks?.map((c: any) => c.speech_id) || []);
+      const speechesToProcess = candidates.filter(s => !processedIds.has(s.id));
+
+      if (speechesToProcess.length > 0) {
+          console.log(`\n📦 [Offset ${offset}] Processing ${speechesToProcess.length}/${candidates.length} speeches (parallel: ${PARALLEL_SPEECHES})`);
+          
+          // Process speeches in parallel batches
+          for (let i = 0; i < speechesToProcess.length; i += PARALLEL_SPEECHES) {
+            const batch = speechesToProcess.slice(i, i + PARALLEL_SPEECHES);
+            
+            // Process batch in parallel
+            const results = await Promise.allSettled(
+              batch.map(speech => processSpeech(speech))
+            );
+            
+            // Count successes
+            results.forEach((result, idx) => {
+              if (result.status === 'fulfilled') {
+                totalProcessed++;
+                totalChunksCreated += result.value;
+              } else {
+                console.error(`\n❌ Failed speech ${batch[idx].id}: ${result.reason?.message || result.reason}`);
+              }
+            });
+          }
+      } else {
+          // Log progress every 2000 skipped
+          if (offset % 2000 === 0) {
+              console.log(`⏩ [Offset ${offset}] Skipping processed batch...`);
+          }
+      }
+
+      // 3. Advance Offset
+      offset += candidates.length;
+
+      // Small delay to prevent overwhelming the database
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+    } catch (err: any) {
+        console.error('\n❌ Unexpected loop error:', err.message || err);
+        await new Promise(r => setTimeout(r, 3000));
+    }
   }
 }
 
-async function processSpeech(speech: any) {
+async function processSpeech(speech: any): Promise<number> {
   // Handle JSONB paragraphs - might be string or array
   let paragraphs: string[];
   if (typeof speech.paragraphs === 'string') {
@@ -56,19 +158,18 @@ async function processSpeech(speech: any) {
       paragraphs = JSON.parse(speech.paragraphs);
     } catch {
       console.error(`Failed to parse paragraphs for speech ${speech.id}`);
-      return;
+      return 0;
     }
   } else if (Array.isArray(speech.paragraphs)) {
     paragraphs = speech.paragraphs;
   } else {
     console.error(`Invalid paragraphs type for speech ${speech.id}: ${typeof speech.paragraphs}`);
-    return;
+    return 0;
   }
 
-  if (!paragraphs || paragraphs.length === 0) return;
+  if (!paragraphs || paragraphs.length === 0) return 0;
 
   // 1. Chunking Strategy
-  // Simple grouping of paragraphs
   const chunks: string[] = [];
   let currentChunk = '';
 
@@ -84,11 +185,10 @@ async function processSpeech(speech: any) {
     chunks.push(currentChunk.trim());
   }
 
-  // 2. Embed & Save - Bulk Insert Strategy to save IOPS
+  // 2. Embed & Save - Bulk Insert Strategy
   const chunksToInsert: any[] = [];
   
   for (const chunkContent of chunks) {
-    // Skip extremely short chunks (e.g. "Agreed.")
     if (chunkContent.length < 20) continue;
 
     try {
@@ -104,11 +204,17 @@ async function processSpeech(speech: any) {
         topic: speech.metadata?.topic || null
       });
 
-      // Small delay to pace OpenAI calls
-      await new Promise(resolve => setTimeout(resolve, 200));
+      // ZERO delay - maximum speed (OpenAI handles rate limiting)
+      // await new Promise(resolve => setTimeout(resolve, 0));
 
-    } catch (err) {
-      console.error(`Embedding error: ${err}`);
+    } catch (err: any) {
+      // Log specific OpenAI errors
+      if (err.message?.includes('rate')) {
+        console.error(`\n⚠️ Rate limit hit - waiting 5s...`);
+        await new Promise(r => setTimeout(r, 5000)); // Faster recovery
+      } else {
+        console.error(`\nEmbedding error: ${err.message || err}`);
+      }
       continue;
     }
   }
@@ -118,15 +224,19 @@ async function processSpeech(speech: any) {
       const { error } = await supabaseDb!.from('debate_chunks').insert(chunksToInsert);
       
       if (error) {
-        console.error(`Bulk insert error for speech ${speech.id}: ${error.message}`);
+        console.error(`\nBulk insert error for speech ${speech.id}: ${error.message}`);
+        return 0;
       } else {
-        process.stdout.write(`+${chunksToInsert.length}`);
+        process.stdout.write(`+${chunksToInsert.length} `);
+        return chunksToInsert.length;
       }
-    } catch (err) {
-      console.error(`Bulk insert exception: ${err}`);
+    } catch (err: any) {
+      console.error(`\nBulk insert exception: ${err.message || err}`);
+      return 0;
     }
   } else {
     process.stdout.write('.');
+    return 0;
   }
 }
 
@@ -134,4 +244,3 @@ processDebateEmbeddings().catch(err => {
   console.error('Fatal error:', err);
   process.exit(1);
 });
-

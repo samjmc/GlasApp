@@ -156,6 +156,33 @@ const EnhancedQuizPage: React.FC = () => {
     });
   }, [currentCategoryQuestions]);
 
+  // Check if quiz is already completed - redirect to results automatically
+  // This must be BEFORE any conditional returns to satisfy React's rules of hooks
+  useEffect(() => {
+    // Only redirect if we're not already on the results page and results exist
+    const currentPath = window.location.pathname;
+    if (currentPath === '/enhanced-results') {
+      return; // Don't redirect if already on results page
+    }
+    
+    // Check if results exist in context
+    if (isResultsCalculated && results) {
+      setLocation('/enhanced-results');
+      return;
+    }
+    
+    // Check if results exist in localStorage
+    if (isBrowser) {
+      const savedResults = localStorage.getItem('multidimensionalQuizResults');
+      const resultsCalculated = localStorage.getItem('multidimensionalResultsCalculated');
+      
+      if (savedResults && resultsCalculated === 'true') {
+        setLocation('/enhanced-results');
+        return;
+      }
+    }
+  }, [isResultsCalculated, results, setLocation, isBrowser]);
+
   const showSavedIndicator = useCallback(() => {
     if (!isBrowser) {
       return;
@@ -382,11 +409,17 @@ const EnhancedQuizPage: React.FC = () => {
     setIsLoading(true);
 
     try {
+      // Get responses as array BEFORE any state changes
+      const finalResponses = Object.values(responsesMap);
+      
+      // Reset old data first
       resetQuiz();
-      setResponses(Object.values(responsesMap));
-      await new Promise((resolve) => setTimeout(resolve, 0));
-
-      const results = calculateResults();
+      
+      // Store responses in state (for persistence)
+      setResponses(finalResponses);
+      
+      // Calculate results with the responses directly (avoids React state race condition)
+      const results = calculateResults(finalResponses);
 
       if (!results) {
         setIsLoading(false);
@@ -407,23 +440,14 @@ const EnhancedQuizPage: React.FC = () => {
       setTimeout(() => {
         setIsLoading(false);
 
-        const simpleDimensions = {
-          economic: parseFloat(results.economic.toFixed(1)),
-          social: parseFloat(results.social.toFixed(1)),
-          cultural: parseFloat(results.cultural.toFixed(1)),
-          globalism: parseFloat(results.globalism.toFixed(1)),
-          environmental: parseFloat(results.environmental.toFixed(1)),
-          authority: parseFloat(results.authority.toFixed(1)),
-          welfare: parseFloat(results.welfare.toFixed(1)),
-          technocratic: parseFloat(results.technocratic.toFixed(1))
-        };
-
-        localStorage.setItem('tempDimensions', JSON.stringify(simpleDimensions));
+        // Clear session storage
         if (isBrowser) {
           sessionStorage.removeItem(SESSION_STORAGE_KEY);
         }
 
-        setLocation('/dimension-weights');
+        // Go directly to results - dimensions are already stored in multidimensionalQuizResults
+        // via the calculateResults() call above. No need for intermediate storage.
+        setLocation('/enhanced-results');
       }, 1000);
     } catch (error) {
       console.error("Error completing quiz:", error);
@@ -486,32 +510,6 @@ const EnhancedQuizPage: React.FC = () => {
   if (isLoading) {
     return <LoadingScreen message="Analyzing your political profile..." />;
   }
-
-  // Check if quiz is already completed - redirect to results automatically
-  useEffect(() => {
-    // Only redirect if we're not already on the results page and results exist
-    const currentPath = window.location.pathname;
-    if (currentPath === '/enhanced-results') {
-      return; // Don't redirect if already on results page
-    }
-    
-    // Check if results exist in context
-    if (isResultsCalculated && results) {
-      setLocation('/enhanced-results');
-      return;
-    }
-    
-    // Check if results exist in localStorage
-    if (isBrowser) {
-      const savedResults = localStorage.getItem('multidimensionalQuizResults');
-      const resultsCalculated = localStorage.getItem('multidimensionalResultsCalculated');
-      
-      if (savedResults && resultsCalculated === 'true') {
-        setLocation('/enhanced-results');
-        return;
-      }
-    }
-  }, [isResultsCalculated, results, setLocation, isBrowser]);
 
   // Fallback if no questions loaded
   if (!enhancedQuestions || enhancedQuestions.length === 0) {

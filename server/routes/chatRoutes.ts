@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import OpenAI from 'openai';
+import { chatToolsDefinition, chatToolsImplementation } from "../services/chatTools";
 
 const router = Router();
 
@@ -27,8 +28,10 @@ const chatRequestSchema = z.object({
   message: z.string().min(1).max(1000),
   history: z.array(
     z.object({
-      role: z.enum(['user', 'assistant']),
-      content: z.string()
+      role: z.enum(['user', 'assistant', 'system', 'tool']),
+      content: z.string().nullable(),
+      tool_call_id: z.string().optional(),
+      name: z.string().optional()
     })
   ).optional(),
   userContext: z.object({
@@ -64,6 +67,12 @@ Your role:
 - Avoid making political judgments or expressing personal opinions
 - Direct users to the app's tools and features that can help them learn more
 
+CAPABILITIES:
+- You have access to real-time database tools. 
+- ALWAYS use the 'search_politicians' or 'get_politician_details' tools when asked about specific politicians to ensure accuracy.
+- Use 'get_recent_political_news' to find the latest information on topics.
+- Do not guess about voting records or scores—look them up.
+
 Key facts about Irish politics:
 - Ireland has a proportional representation electoral system with transferable votes (PR-STV)
 - The Irish parliament (Oireachtas) consists of the Dáil Éireann (lower house) and Seanad Éireann (upper house)
@@ -84,14 +93,31 @@ Remember that you're part of an educational tool designed to increase political 
 router.post('/', async (req: Request, res: Response) => {
   try {
     // Validate request
-    const validatedData = chatRequestSchema.parse(req.body);
-    const { message, history = [], userContext } = validatedData;
+    // Allow loose validation for history as tool messages are complex
+    const body = req.body;
+    const { message, history = [], userContext } = body;
     
     // Format conversation history for OpenAI API
-    const formattedHistory = history.map(msg => ({
-      role: msg.role,
-      content: msg.content
-    }));
+    let formattedHistory: any[] = history.map((msg: any) => {
+        // Handle basic messages
+        if (msg.role === 'user' || msg.role === 'system') {
+            return { role: msg.role, content: msg.content };
+        }
+        // Handle assistant messages (might have tool calls)
+        if (msg.role === 'assistant') {
+            // Simplified for now - in a full impl we'd reconstruct tool_calls
+            return { role: msg.role, content: msg.content };
+        }
+        // Handle tool outputs
+        if (msg.role === 'tool') {
+             return { 
+                 role: msg.role, 
+                 content: msg.content,
+                 tool_call_id: msg.tool_call_id
+             };
+        }
+        return msg;
+    });
     
     // Create enhanced system message with user context
     let enhancedSystemMessage = getSystemMessage();
@@ -127,7 +153,7 @@ router.post('/', async (req: Request, res: Response) => {
     }
     
     // Construct the full message array including enhanced system message
-    const messages = [
+    let messages = [
       {
         role: "system",
         content: enhancedSystemMessage
@@ -139,21 +165,69 @@ router.post('/', async (req: Request, res: Response) => {
       }
     ];
     
-    // Call OpenAI API
-    const response = await getOpenAIClient().chat.completions.create({
+    const client = getOpenAIClient();
+
+    // First call to OpenAI with tools enabled
+    const completion = await client.chat.completions.create({
       model: MODEL,
-      messages: messages as any, // Type assertion needed due to OpenAI types
-      max_tokens: 800, // Limit response length
-      temperature: 0.7 // Some creativity but not too random
+      messages: messages as any,
+      tools: chatToolsDefinition as any,
+      tool_choice: "auto", 
+      max_tokens: 800,
+      temperature: 0.7
     });
     
-    const reply = response.choices[0].message.content || 
-      "I'm sorry, I couldn't generate a helpful response at this time.";
+    const responseMessage = completion.choices[0].message;
+    let reply = responseMessage.content;
+
+    // Check if the model wants to call a tool
+    if (responseMessage.tool_calls) {
+      // Add the assistant's "thought" (tool call request) to the history
+      messages.push(responseMessage as any);
+
+      // Execute each tool call
+      for (const toolCall of responseMessage.tool_calls) {
+        const functionName = toolCall.function.name;
+        const functionArgs = JSON.parse(toolCall.function.arguments);
+        
+        console.log(`Executing tool: ${functionName}`);
+        
+        let functionResult = "";
+        
+        // Route to the correct implementation
+        if (functionName in chatToolsImplementation) {
+          // @ts-ignore
+          functionResult = await chatToolsImplementation[functionName](functionArgs);
+        } else {
+          functionResult = JSON.stringify({ error: "Tool not found" });
+        }
+
+        // Add the tool result to the history
+        messages.push({
+          role: "tool",
+          tool_call_id: toolCall.id,
+          // @ts-ignore
+          name: functionName,
+          content: functionResult
+        });
+      }
+
+      // Second call to OpenAI with the tool results
+      const secondResponse = await client.chat.completions.create({
+        model: MODEL,
+        messages: messages as any,
+        tools: chatToolsDefinition as any,
+        tool_choice: "auto", 
+      });
+
+      reply = secondResponse.choices[0].message.content;
+    }
     
     return res.json({
       success: true,
       reply
     });
+
   } catch (error) {
     console.error("Error in chat assistant:", error);
     

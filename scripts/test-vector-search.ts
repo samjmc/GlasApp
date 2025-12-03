@@ -42,3 +42,6 @@ async function testVectorSearch() {
 
 testVectorSearch().catch(console.error);
 
+
+
+

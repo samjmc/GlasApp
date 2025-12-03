@@ -931,3 +931,67 @@ export async function generateEmbedding(text: string): Promise<number[]> {
     throw error;
   }
 }
+
+/**
+ * Verify a chatbot response against source context to prevent hallucinations
+ * @param question The user's question
+ * @param context The context provided to the LLM (debates, voting record, etc.)
+ * @param response The LLM's generated response
+ * @returns Verification result with score and explanation
+ */
+export async function verifyFactCheck(
+  question: string,
+  context: string,
+  response: string
+): Promise<{
+  score: number; // 0-100 confidence score
+  is_supported: boolean;
+  reasoning: string;
+  corrections?: string;
+}> {
+  try {
+    const prompt = `
+    You are a rigorous Fact Checker for a political AI.
+    
+    TASK: Verify if the AI's RESPONSE is fully supported by the provided CONTEXT.
+    
+    USER QUESTION: "${question}"
+    
+    SOURCE CONTEXT (Truth):
+    ${context.substring(0, 15000)} 
+    
+    AI RESPONSE (Claim):
+    "${response}"
+    
+    RULES:
+    1. Check every specific claim (dates, votes, positions) against the Source Context.
+    2. If the response makes claims NOT found in the context, mark as unsupported (hallucination).
+    3. If the response says "I don't have records" and the context indeed has no records, that is SUPPORTED.
+    4. Inferring broad positions from specific quotes is allowed, but inventing specific votes or bills is NOT.
+    5. If the response mentions a specific vote (e.g. "I voted Yes on X"), verify it exists in the "VOTING RECORD" section of the context.
+    
+    OUTPUT JSON ONLY:
+    {
+      "score": number, // 0-100 (100 = fully supported, <50 = hallucinated/unsupported)
+      "is_supported": boolean, // true if score >= 70
+      "reasoning": "Short explanation of what is verified or missing",
+      "corrections": "Optional corrected statement if unsupported"
+    }
+    `;
+
+    const verification = await getOpenAIClient().chat.completions.create({
+      model: "gpt-4o-mini", // Fast & cheap
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.0, // Deterministic
+      response_format: { type: "json_object" }
+    });
+
+    const content = verification.choices[0].message.content;
+    return content ? JSON.parse(content) : { score: 0, is_supported: false, reasoning: "Failed to parse verification" };
+    
+  } catch (error) {
+    console.error("Fact check failed:", error);
+    // Fail open (assume supported) to avoid blocking valid responses if checker fails
+    return { score: 100, is_supported: true, reasoning: "Fact check service unavailable" };
+  }
+}

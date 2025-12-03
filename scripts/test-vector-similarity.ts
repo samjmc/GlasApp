@@ -74,3 +74,6 @@ async function testVectorSimilarity() {
 
 testVectorSimilarity().catch(console.error);
 
+
+
+

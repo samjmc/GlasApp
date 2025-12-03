@@ -49,6 +49,7 @@ import TDLeaderboardPage from "@/pages/TDLeaderboardPage";
 import PollingSystemInfo from "@/pages/PollingSystemInfo";
 import PollingDashboard from "@/pages/PollingDashboard";
 import AdminPollingEntry from "@/pages/AdminPollingEntry";
+import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
 import MyPoliticsPage from "@/pages/MyPoliticsPage";
 import AskTDPage from "@/pages/AskTDPage";
 
@@ -192,6 +193,11 @@ function Router() {
           </Route>
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          
+          {/* Quiz routes available for all users */}
+          <Route path="/enhanced-quiz" component={EnhancedQuizPage} />
+          <Route path="/enhanced-results" component={EnhancedResultsPage} />
+          <Route path="/dimension-weights" component={DimensionWeightsPage} />
         </>
       ) : (
         <>
@@ -210,6 +216,7 @@ function Router() {
             }}
           </Route>
           <Route path="/admin" component={AdminPage} />
+          <Route path="/admin/shadow" component={ShadowCabinetDashboard} />
           <Route path="/notifications" component={NotificationsPage} />
           
           {/* Enhanced Quiz Routes */}
