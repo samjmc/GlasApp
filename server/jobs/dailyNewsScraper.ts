@@ -187,12 +187,9 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
         } else {
           console.log(`   ⏭️  No TDs affected - saving as general news`);
           // No TD mentions - save article without TD scoring
+          // Policy opportunities are now generated during multi-agent scoring (newsToTDScoringService)
           const savedId = await saveArticleToDatabase(article, null, null);
-          if (savedId) {
-            stats.policyOpportunityCandidates++;
-            const created = await generatePolicyOpportunity(savedId, article);
-            if (created) stats.policyOpportunitiesCreated++;
-          }
+          // Policy vote generation moved to scoring phase - see newsToTDScoringService.ts
         }
         
         // Rate limiting to avoid API throttling
@@ -221,11 +218,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           });
         } else {
           const savedId = await saveArticleToDatabase(article, null, null);
-          if (savedId) {
-            stats.policyOpportunityCandidates++;
-            const created = await generatePolicyOpportunity(savedId, article);
-            if (created) stats.policyOpportunitiesCreated++;
-          }
+          // Policy vote generation moved to scoring phase - see newsToTDScoringService.ts
         }
       }
     }
@@ -280,9 +273,8 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           const articleId = await saveArticleToDatabase(article, politician, analysis);
           
           if (articleId) {
-            stats.policyOpportunityCandidates++;
-            const created = await generatePolicyOpportunity(articleId, article);
-            if (created) stats.policyOpportunitiesCreated++;
+            // Policy vote generation moved to multi-agent scoring phase
+            // See newsToTDScoringService.ts - only scored articles get policy opportunities
             const updateSuccess = await updateTDScoreInDB(
               politician.name,
               politician.constituency,
@@ -581,68 +573,18 @@ async function markArticleAsScored(articleId: number): Promise<void> {
   }
 }
 
+/**
+ * DEPRECATED: Policy vote opportunities are now generated during multi-agent scoring
+ * This function is kept for backwards compatibility but does nothing.
+ * Policy opportunities are only created for articles that pass the importance filter
+ * and are scored by the multi-agent team. See newsToTDScoringService.ts
+ */
 async function topUpPolicyOpportunities(stats: JobStats, targetRatio = 0.33): Promise<void> {
-  if (!supabaseDb) return;
-  if (stats.policyOpportunityCandidates === 0) return;
-
-  const target = Math.ceil(stats.policyOpportunityCandidates * targetRatio);
-  const deficit = target - stats.policyOpportunitiesCreated;
-  if (deficit <= 0) return;
-
-  console.log(`⚖️  Policy vote coverage below target. Attempting to create ${deficit} additional opportunities.`);
-
-  const { data, error } = await supabaseDb
-    .from('news_articles')
-    .select(
-      `
-        id,
-        title,
-        content,
-        source,
-        published_date,
-        policy_vote_opportunities!left(id)
-      `,
-    )
-    .order('published_date', { ascending: false })
-    .limit(deficit * 3);
-
-  if (error) {
-    console.error('⚠️  Failed to fetch articles for policy vote top-up:', error.message);
-    return;
-  }
-
-  for (const article of data || []) {
-    const existingVotes = Array.isArray(article.policy_vote_opportunities)
-      ? article.policy_vote_opportunities.length
-      : article.policy_vote_opportunities
-      ? 1
-      : 0;
-
-    if (existingVotes > 0) {
-      continue;
-    }
-
-    stats.policyOpportunityCandidates++;
-    const created = await PolicyOpportunityService.generateAndSave(
-      article.id,
-      {
-        id: article.id,
-        title: article.title,
-        content: article.content,
-        source: article.source,
-        published_date: article.published_date ? new Date(article.published_date) : new Date(),
-      },
-      { force: true },
-    );
-
-    if (created) {
-      stats.policyOpportunitiesCreated++;
-      if (stats.policyOpportunitiesCreated >= target) {
-        console.log('✅ Policy vote coverage topped up to target.');
-        break;
-      }
-    }
-  }
+  // Policy vote generation moved to multi-agent scoring phase
+  // Only articles scored by the multi-agent team get policy vote opportunities
+  // This ensures quality over quantity - see newsToTDScoringService.ts
+  console.log('ℹ️  Policy vote top-up skipped (now handled during multi-agent scoring)');
+  return;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -663,7 +605,7 @@ async function saveArticleToDatabase(
   }
   
   try {
-    // Check if article already exists
+    // Check if article already exists (by URL)
     const { data: existing } = await supabaseDb
       .from('news_articles')
       .select('id')
@@ -673,6 +615,21 @@ async function saveArticleToDatabase(
     if (existing) {
       console.log(`   ℹ️  Article already processed (ID: ${existing.id})`);
       return existing.id;
+    }
+    
+    // Layer 1: Quick title deduplication check
+    // Catches "Herzog Park protest" from multiple sources
+    const { TitleDeduplicationService } = await import('../services/titleDeduplicationService');
+    const duplicateCheck = await TitleDeduplicationService.checkForDuplicate(
+      article.title,
+      { lookbackHours: 48, threshold: 0.6 }
+    );
+    
+    if (duplicateCheck.isDuplicate) {
+      console.log(`   🔗 DUPLICATE: "${article.title.substring(0, 50)}..."`);
+      console.log(`      Similar to: "${duplicateCheck.similarTitle?.substring(0, 50)}..." (${duplicateCheck.similarSource})`);
+      console.log(`      Similarity: ${Math.round(duplicateCheck.similarityScore * 100)}% - SKIPPING`);
+      return null; // Don't save duplicate
     }
     
     // Import image generation service
@@ -693,6 +650,8 @@ async function saveArticleToDatabase(
     }
     
     // Prepare base article data
+    // visible: false - Will be set true after importance triage
+    // processed: false - Will be set true after multi-agent scoring
     const articleData: any = {
       url: article.url,
       title: article.title,
@@ -700,7 +659,8 @@ async function saveArticleToDatabase(
       source: article.source,
       published_date: article.published_date.toISOString(),
       image_url: imageUrl,
-      processed: true,
+      processed: false,  // Multi-agent scoring will set this to true
+      visible: false,    // Importance triage will set this to true
       credibility_score: article.credibility
     };
     
