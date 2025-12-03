@@ -43,7 +43,6 @@ export type UpsertUser = typeof users.$inferInsert;
 // User locations table for constituency tracking
 export const userLocations = pgTable("user_locations", {
   id: serial("id").primaryKey(),
-  firebaseUid: varchar("firebase_uid", { length: 100 }).notNull(),
   latitude: decimal("latitude", { precision: 10, scale: 8 }).notNull(),
   longitude: decimal("longitude", { precision: 11, scale: 8 }).notNull(),
   constituency: varchar("constituency", { length: 100 }),
@@ -1191,3 +1190,53 @@ export const insertPolicyPromiseSchema = createInsertSchema(policyPromises).omit
 
 export type PolicyPromise = typeof policyPromises.$inferSelect;
 export type InsertPolicyPromise = z.infer<typeof insertPolicyPromiseSchema>;
+
+// ============================================
+// SHADOW CABINET (Level 10 Agent System)
+// ============================================
+
+export const shadowCabinetAnalyses = pgTable("shadow_cabinet_analyses", {
+  id: serial("id").primaryKey(),
+  articleTitle: text("article_title").notNull(),
+  articleUrl: text("article_url").notNull(),
+  
+  // The Team
+  deployedAgents: text("deployed_agents"), // JSON array ["Economist", "Strategist"]
+  managerReasoning: text("manager_reasoning"),
+  protocolOverrides: text("protocol_overrides"), // JSON array
+  
+  // The Outputs
+  finalVerdict: text("final_verdict"),
+  futuristTimeline: text("futurist_timeline"),
+  agentReports: text("agent_reports"), // JSON string of full reports
+  
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertShadowCabinetAnalysisSchema = createInsertSchema(shadowCabinetAnalyses).omit({ 
+  id: true, 
+  createdAt: true 
+});
+
+export type ShadowCabinetAnalysis = typeof shadowCabinetAnalyses.$inferSelect;
+export type InsertShadowCabinetAnalysis = z.infer<typeof insertShadowCabinetAnalysisSchema>;
+
+// ============================================
+// QA AUDITS (System Health)
+// ============================================
+
+export const qaAudits = pgTable("qa_audits", {
+  id: serial("id").primaryKey(),
+  auditType: text("audit_type").notNull(), // 'internal_consistency', 'external_truth'
+  anomaliesFound: integer("anomalies_found").default(0),
+  report: text("report"), // JSON string of anomalies
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertQaAuditSchema = createInsertSchema(qaAudits).omit({ 
+  id: true, 
+  createdAt: true 
+});
+
+export type QaAudit = typeof qaAudits.$inferSelect;
+export type InsertQaAudit = z.infer<typeof insertQaAuditSchema>;
