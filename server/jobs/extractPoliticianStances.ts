@@ -14,8 +14,21 @@
  */
 
 import 'dotenv/config';
-import { supabaseDb } from '../db';
+import { createClient } from '@supabase/supabase-js';
 import { getOpenAIClient } from '../services/openaiService';
+
+// Initialize a fresh Supabase client locally to avoid any potential config issues
+// with the shared client (e.g. custom fetch agents on Windows)
+const supabaseDb = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+);
 
 // Parse CLI args
 const args = process.argv.slice(2);
@@ -78,20 +91,47 @@ async function processPolitician(politician: any) {
   // 2. Fetch recent debate chunks using a stratified sampling approach
   // Instead of just the last 60, we want to cover the last 12 months to detect evolution
   
-  // First, get the date range
-  const { data: dateRange } = await supabaseDb!
+  // 1. Fast Check: Do they have ANY chunks?
+  const { count, error: countError } = await supabaseDb!
     .from('debate_chunks')
-    .select('date')
-    .eq('politician_name', politician.politician_name)
-    .order('date', { ascending: true });
-    
-  if (!dateRange || dateRange.length < 5) {
-    console.log(`   ⚠️ Not enough debate data (${dateRange?.length || 0} chunks). Skipping.`);
+    .select('*', { count: 'exact', head: true })
+    .eq('politician_name', politician.politician_name);
+
+  if (countError) {
+    console.error(`   ❌ Error checking chunks for ${politician.politician_name}:`, countError.message);
     return;
   }
 
-  const minDate = new Date(dateRange[0].date).getTime();
-  const maxDate = new Date(dateRange[dateRange.length - 1].date).getTime();
+  if (count === null || count === 0) {
+     console.log(`   ⚠️ Not enough debate data (0 chunks). Skipping.`);
+     return;
+  }
+
+  // 2. Get Date Range (Safe fallback if sorting fails)
+  // Try to get min/max date. If sorting by date fails/times out, we'll just grab a sample.
+  let minDate = Date.now();
+  let maxDate = 0;
+
+  try {
+      const { data: dateSample } = await supabaseDb!
+        .from('debate_chunks')
+        .select('date')
+        .eq('politician_name', politician.politician_name)
+        .limit(100); // Grab a sample of 100 chunks
+        
+      if (dateSample && dateSample.length > 0) {
+          const dates = dateSample.map(d => new Date(d.date).getTime()).filter(t => !isNaN(t));
+          if (dates.length > 0) {
+              minDate = Math.min(...dates);
+              maxDate = Math.max(...dates);
+          }
+      }
+  } catch (err) {
+      console.log(`   ⚠️ Date range check failed, assuming generic range.`);
+      // Fallback defaults if date query fails
+      minDate = new Date('2020-01-01').getTime();
+      maxDate = Date.now();
+  }
   const oneMonth = 1000 * 60 * 60 * 24 * 30;
   
   // If history is short (< 3 months), just take all/most recent

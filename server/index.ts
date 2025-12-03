@@ -110,20 +110,26 @@ app.use((req, res, next) => {
     // Centralized error handler (must be AFTER Vite middleware)
     app.use(errorHandler);
 
+    // Initialize Scheduler (Daily Briefing, etc.)
+    const { initScheduler } = await import('./services/scheduler');
+    initScheduler();
+
     // serve the app on port 5000 in development, or use the environment variable in production
     // this serves both the API and the client.
     const port = parseInt(process.env.PORT || '5000');
     const host = '0.0.0.0'; // Bind to all interfaces (IPv4 and IPv6)
-    server.listen(port, host, () => {
+    
+    // Check if port is available before starting
+    const serverInstance = server.listen(port, host, () => {
       log(`Server successfully started on http://localhost:${port}`);
     });
 
     // Handle server errors
-    server.on('error', (error: any) => {
+    serverInstance.on('error', (error: any) => {
       console.error("Server error:", error);
       if (error.code === 'EADDRINUSE') {
         console.error(`Port ${port} is already in use`);
-        console.error(`Run: taskkill /F /IM node.exe to kill existing processes`);
+        console.error(`Wait for previous process to exit or run: taskkill /F /IM node.exe`);
         process.exit(1);
       }
     });
@@ -133,9 +139,11 @@ app.use((req, res, next) => {
       log(`\n${signal} received. Starting graceful shutdown...`);
       
       // Stop accepting new connections
-      server.close(() => {
-        log('HTTP server closed');
-      });
+      if (serverInstance.listening) {
+        serverInstance.close(() => {
+          log('HTTP server closed');
+        });
+      }
 
       // Give active requests time to finish (5 seconds max)
       setTimeout(() => {

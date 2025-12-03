@@ -104,9 +104,8 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
   
   // Save weights to localStorage, notify parent component, and regenerate analysis
   const saveWeights = async () => {
-    // Save to localStorage
+    // Save to localStorage (single key for weights - user preference)
     localStorage.setItem('dimensionWeights', JSON.stringify(weights));
-    localStorage.setItem('resultsWeights', JSON.stringify(weights)); // Also save for results page
     
     // Notify parent component (this is the key part that triggers UI updates)
     if (onWeightsChange) {
@@ -423,7 +422,7 @@ const getDimensionTooltipNegative = (dimensionId: string): string => {
     case 'cultural':
       return "Embraces cultural change, multiculturalism, and reimagining of cultural institutions.";
     case 'globalism':
-      return "Internationalist, supporting global governance, open borders, and multilateralism.";
+      return "Nationalist, prioritizing national sovereignty, restricted immigration, and national interests.";  // FIXED: -10 = Nationalist
     case 'environmental':
       return "Prioritizes environmental protection, sustainability, and limits on growth.";
     case 'authority':
@@ -446,7 +445,7 @@ const getDimensionTooltipPositive = (dimensionId: string): string => {
     case 'cultural':
       return "Preserves cultural heritage, traditions, and national identity against change.";
     case 'globalism':
-      return "Nationalist, prioritizing national sovereignty, restricted immigration, and national interests.";
+      return "Internationalist, supporting global governance, open borders, and multilateralism.";  // FIXED: +10 = Internationalist
     case 'environmental':
       return "Prioritizes industrial growth, resource extraction, and economic development.";
     case 'authority':
@@ -477,8 +476,8 @@ const getDimensionExplanation = (dimensionId: string, value: number): string => 
         : "Values preservation of cultural heritage, traditions, and national distinctiveness";
     case 'globalism':
       return value < 0 
-        ? "Favors international cooperation, open borders, and global governance"
-        : "Prioritizes national sovereignty, independence, and national interests";
+        ? "Prioritizes national sovereignty, independence, and national interests"  // FIXED: -10 = Nationalist
+        : "Favors international cooperation, open borders, and global governance";  // FIXED: +10 = Internationalist
     case 'environmental':
       return value < 0 
         ? "Prioritizes environmental protection and ecological sustainability"
@@ -526,11 +525,12 @@ const getDimensionDetailedExplanation = (dimensionId: string, value: number): st
       return `You are ${positionText.toLowerCase()}, prioritizing the preservation of cultural identity, traditions, and historical continuity.`;
     
     case 'globalism':
-      if (value < -6) return `You are ${positionText.toLowerCase()}, supporting open borders, global governance structures, and international cooperation over national interests.`;
-      if (value < -2) return `You are ${positionText.toLowerCase()}, favoring international cooperation and modest integration while maintaining some national autonomy.`;
+      // FIXED: Scale is Nationalist (-10) to Internationalist (+10)
+      if (value < -6) return `You are ${positionText.toLowerCase()}, strongly advocating for national independence, sovereignty, and pursuing national interests above international concerns.`;
+      if (value < -2) return `You are ${positionText.toLowerCase()}, prioritizing national sovereignty while engaging selectively in international affairs.`;
       if (value < 2) return `You are ${positionText.toLowerCase()}, balancing international cooperation with protection of national sovereignty.`;
-      if (value < 6) return `You are ${positionText.toLowerCase()}, prioritizing national sovereignty while engaging selectively in international affairs.`;
-      return `You are ${positionText.toLowerCase()}, strongly advocating for national independence, sovereignty, and pursuing national interests above international concerns.`;
+      if (value < 6) return `You are ${positionText.toLowerCase()}, favoring international cooperation and modest integration while maintaining some national autonomy.`;
+      return `You are ${positionText.toLowerCase()}, supporting open borders, global governance structures, and international cooperation over national interests.`;
     
     case 'environmental':
       if (value < -6) return `You are strongly ecologically focused, prioritizing environmental protection over economic growth and supporting significant regulations on industry.`;

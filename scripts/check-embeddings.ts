@@ -66,3 +66,6 @@ async function checkEmbeddings() {
 
 checkEmbeddings().catch(console.error);
 
+
+
+

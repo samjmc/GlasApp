@@ -93,6 +93,11 @@ const Header = () => {
             <Link href="/my-politics" className="text-sm font-medium text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
               Profile
             </Link>
+            {isAuthenticated && (
+              <Link href="/admin/shadow" className="text-sm font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 px-3 py-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                Admin
+              </Link>
+            )}
           </nav>
 
           {/* Right Side Actions */}

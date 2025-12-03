@@ -554,16 +554,16 @@ export const enhancedQuestions: QuizQuestion[] = [
   },
   {
     id: 11,
-    text: "Ireland is asked to join an EU rapid-response defence force. What’s your instinct?",
+    text: "Ireland is asked to join an EU rapid-response defence force. What's your instinct?",
     category: "Global Role",
     answers: [
       {
-        text: "Join fully; collective security outweighs neutrality concerns in today’s threat landscape",
+        text: "Join fully; collective security outweighs neutrality concerns in today's threat landscape",
         description: "Step into shared defence, accept joint command, and deepen European solidarity.",
         economic: -1.25,
         social: -1.67,
         cultural: -1.67,
-        globalism: -3.33,
+        globalism: 3.33,  // FIXED: Internationalist answer should be positive
         environmental: 1.67,
         authority: 3.33,
         welfare: 1.67,
@@ -575,7 +575,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 0,
         social: 0,
         cultural: 0,
-        globalism: -1.67,
+        globalism: 1.67,  // FIXED: Leaning internationalist should be positive
         environmental: 0,
         authority: 1.67,
         welfare: 1.67,
@@ -587,7 +587,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 1.25,
         social: 1.67,
         cultural: 1.67,
-        globalism: 3.33,
+        globalism: -3.33,  // FIXED: Nationalist answer should be negative
         environmental: 0,
         authority: -1.67,
         welfare: -1.67,
@@ -599,7 +599,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 0,
         social: 0,
         cultural: 0,
-        globalism: 1.67,
+        globalism: -1.67,  // FIXED: Leaning nationalist should be negative
         environmental: 0,
         authority: -1.67,
         welfare: 0,
@@ -618,7 +618,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: -1.25,
         social: -1.67,
         cultural: -1.67,
-        globalism: -3.33,
+        globalism: 3.33,  // FIXED: EU integration = Internationalist = positive
         environmental: 1.67,
         authority: 1.67,
         welfare: 1.67,
@@ -630,7 +630,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 0,
         social: 0,
         cultural: 0,
-        globalism: -1.67,
+        globalism: 1.67,  // FIXED: Partial integration = leaning internationalist = positive
         environmental: 1.67,
         authority: 1.67,
         welfare: 1.67,
@@ -642,7 +642,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 1.25,
         social: 1.67,
         cultural: 1.67,
-        globalism: 3.33,
+        globalism: -3.33,  // FIXED: National control = Nationalist = negative
         environmental: -1.67,
         authority: -1.67,
         welfare: -1.67,
@@ -654,7 +654,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 1.25,
         social: 1.67,
         cultural: 1.67,
-        globalism: 3.33,
+        globalism: -3.33,  // FIXED: Anti-centralization = Nationalist = negative
         environmental: -1.67,
         authority: -1.67,
         welfare: -1.67,
@@ -664,7 +664,7 @@ export const enhancedQuestions: QuizQuestion[] = [
   },
   {
     id: 13,
-    text: "The UN asks Ireland to double its refugee intake within three years. What’s credible?",
+    text: "The UN asks Ireland to double its refugee intake within three years. What's credible?",
     category: "Global Role",
     answers: [
       {
@@ -673,7 +673,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: -1.25,
         social: -3.33,
         cultural: -3.33,
-        globalism: -3.33,
+        globalism: 3.33,  // FIXED: Open borders/internationalist = positive
         environmental: 1.67,
         authority: 1.67,
         welfare: 3.33,
@@ -685,7 +685,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: -1.25,
         social: -1.67,
         cultural: -1.67,
-        globalism: -1.67,
+        globalism: 1.67,  // FIXED: Leaning internationalist = positive
         environmental: 0,
         authority: 1.67,
         welfare: 1.67,
@@ -697,7 +697,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 1.25,
         social: 1.67,
         cultural: 1.67,
-        globalism: 1.67,
+        globalism: -1.67,  // FIXED: Prioritize domestic = leaning nationalist = negative
         environmental: 0,
         authority: -1.67,
         welfare: -1.67,
@@ -709,7 +709,7 @@ export const enhancedQuestions: QuizQuestion[] = [
         economic: 1.25,
         social: 3.33,
         cultural: 3.33,
-        globalism: 3.33,
+        globalism: -3.33,  // FIXED: Closed borders/nationalist = negative
         environmental: 0,
         authority: 1.67,
         welfare: -3.33,
@@ -1441,14 +1441,15 @@ export const getMultidimensionalIdeology = (
   const { economic, social, cultural, globalism, authority, welfare, technocratic } = dimensions;
   
   // Calculate average scores for major ideological groupings
+  // Note: globalism scale is -10 = Nationalist, +10 = Internationalist (from quizTypes.ts)
   const leftScore = -economic;
   const rightScore = economic;
   const progressiveScore = -(social + cultural) / 2;
   const conservativeScore = (social + cultural) / 2;
   const libertarianScore = -authority;
   const authoritarianScore = authority;
-  const globalistScore = -globalism;
-  const nationalistScore = globalism;
+  const globalistScore = globalism;      // FIXED: +10 globalism = Internationalist
+  const nationalistScore = -globalism;   // FIXED: -10 globalism = Nationalist
   const collectivistScore = -welfare;
   const individualistScore = welfare;
   const technocraticScore = -technocratic;

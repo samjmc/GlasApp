@@ -19,7 +19,8 @@ interface MultidimensionalQuizContextType {
   dimensionWeights: Record<string, number>;
   hasBeenSaved: boolean;
   setResponses: (responses: UserResponse[]) => void;
-  calculateResults: () => IdeologicalDimensions | false;
+  // calculateResults now accepts optional responses parameter to avoid race conditions
+  calculateResults: (inputResponses?: UserResponse[]) => IdeologicalDimensions | false;
   resetQuiz: () => void;
   saveResults: () => Promise<string | null>;
   updateDimensionWeights: (weights: Record<string, number>) => void;
@@ -101,14 +102,22 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
     }
   }, []);
 
-  // Reset quiz state
+  // Reset quiz state - clear ALL quiz-related localStorage keys
   const resetQuiz = () => {
     setResponses([]);
     setResults(null);
     setIsResultsCalculated(false);
     setHasBeenSaved(false);
+    
+    // Clear all quiz-related localStorage keys to prevent stale data
     localStorage.removeItem('multidimensionalQuizResults');
     localStorage.removeItem('multidimensionalResultsCalculated');
+    localStorage.removeItem('resultsDimensions');
+    localStorage.removeItem('tempDimensions');
+    localStorage.removeItem('resultsWeights');
+    // Note: dimensionWeights is intentionally kept as it's a user preference
+    
+    console.log('Quiz reset - cleared all quiz data from localStorage');
   };
 
   // Calculate ideological dimensions based on answers
@@ -205,13 +214,14 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
           break;
           
         case 'globalism':
-          explanation = score < -5 ? 'You strongly support international cooperation and global governance.' :
-                       score < 0 ? 'You favor international engagement while maintaining some sovereignty.' :
-                       score < 5 ? 'You prioritize national autonomy while engaging internationally when beneficial.' :
-                       'You strongly value national sovereignty and independence.';
+          // FIXED: Scale is Nationalist (-10) to Internationalist (+10)
+          explanation = score < -5 ? 'You strongly value national sovereignty and independence.' :
+                       score < 0 ? 'You prioritize national autonomy while engaging internationally when beneficial.' :
+                       score < 5 ? 'You favor international engagement while maintaining some sovereignty.' :
+                       'You strongly support international cooperation and global governance.';
           
-          influence = score < 0 ? 'This leads you to support international institutions and agreements.' :
-                    'This leads you to prioritize national interests in international affairs.';
+          influence = score < 0 ? 'This leads you to prioritize national interests in international affairs.' :
+                    'This leads you to support international institutions and agreements.';
           break;
           
         case 'environmental':
@@ -262,14 +272,20 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
   };
 
   // Calculate results from quiz responses
-  const calculateResults = (): IdeologicalDimensions | false => {
-    if (responses.length === 0) {
+  // Accepts optional inputResponses to avoid race conditions with React state updates
+  const calculateResults = (inputResponses?: UserResponse[]): IdeologicalDimensions | false => {
+    // Use provided responses or fall back to state (for recalculation)
+    const responsesToUse = inputResponses || responses;
+    
+    if (responsesToUse.length === 0) {
       console.log('No responses to calculate results from');
       return false;
     }
     
+    console.log('Calculating results from', responsesToUse.length, 'responses');
+    
     // Calculate dimensions from responses
-    const dimensions = calculateDimensions(responses);
+    const dimensions = calculateDimensions(responsesToUse);
     console.log('Calculated dimensions:', dimensions);
     
     // Determine overall ideology based on dimensions
@@ -301,7 +317,7 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
       dimensionBreakdown,
       
       // Store user responses for answer explanation feature
-      responses: [...responses],
+      responses: [...responsesToUse],
       
       // Timestamp
       timestamp: new Date().toISOString()

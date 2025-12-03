@@ -3,8 +3,6 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import { createClient } from '@supabase/supabase-js';
 import * as schema from "@shared/schema";
-import https from 'https';
-import http from 'http';
 
 console.log('🔌 Initializing database connection...');
 
@@ -32,23 +30,6 @@ process.env.DATABASE_URL ? new Pool({
 
 export const db = pool ? drizzle(pool, { schema }) : null;
 
-// HTTP agents with keepAlive disabled for Windows compatibility
-// This prevents libuv "handle already closing" errors on script exit
-const httpsAgent = new https.Agent({ keepAlive: false });
-const httpAgent = new http.Agent({ keepAlive: false });
-
-// Custom fetch with keepAlive disabled
-const customFetch: typeof fetch = (input, init) => {
-  const url = typeof input === 'string' ? input : input.url;
-  const agent = url.startsWith('https:') ? httpsAgent : httpAgent;
-  
-  return fetch(input, {
-    ...init,
-    // @ts-ignore - Agent type compatibility
-    agent
-  });
-};
-
 // Supabase JS Client (for files that need REST API access)
 // Used by news aggregation system and some specialized queries
 export const supabaseDb = process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -66,9 +47,7 @@ export const supabaseDb = process.env.SUPABASE_URL && process.env.SUPABASE_SERVI
         global: {
           headers: {
             'apikey': process.env.SUPABASE_SERVICE_ROLE_KEY
-          },
-          // Use custom fetch with keepAlive disabled
-          fetch: customFetch
+          }
         }
       }
     )

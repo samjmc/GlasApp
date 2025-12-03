@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import OpenAI from 'openai';
 import { supabaseDb } from '../db';
-import { generateEmbedding } from '../services/openaiService';
-import { getPolicyPositions } from '../services/politicianAgent';
+import { generateEmbedding, verifyFactCheck } from '../services/openaiService';
+import { getPolicyPositions, getVotingRecord, getVotingStats, getRecentVotes } from '../services/politicianAgent';
 
 const router = Router();
 
@@ -105,7 +105,7 @@ router.post('/politician', async (req: Request, res: Response) => {
       if (keyTerms.length > 0) {
         let query = supabaseDb
           .from('debate_chunks')
-          .select('id, politician_name, chunk_content, date')
+          .select('id, speech_id, politician_name, chunk_content, date')
           .ilike('politician_name', `%${politicianName}%`)
           .order('date', { ascending: false })
           .limit(20);
@@ -141,7 +141,7 @@ router.post('/politician', async (req: Request, res: Response) => {
 
     // 3. Build context from retrieved chunks
     let context = '';
-    const citations: Array<{ date: string; content: string }> = [];
+    const citations: Array<{ date: string; content: string; url?: string }> = [];
     let hasRelevantContent = false;
     let positionEvolution = '';
 
@@ -156,6 +156,47 @@ router.post('/politician', async (req: Request, res: Response) => {
       
       if (relevantChunks.length > 0) {
         hasRelevantContent = true;
+        
+        // --- HYDRATE CHUNKS WITH METADATA FOR CITATION LINKS ---
+        const speechIds = relevantChunks.map((c: any) => c.speech_id).filter(Boolean);
+        console.log('[Chat] Hydration speechIds found:', speechIds.length);
+        const urlMap = new Map<string, string>();
+        
+        if (speechIds.length > 0) {
+          try {
+            const { data: metadata } = await supabaseDb
+              .from('debate_speeches')
+              .select(`
+                id, 
+                speech_code, 
+                section_id,
+                debate_sections!inner (
+                  order_index,
+                  debate_days!inner (
+                    date
+                  )
+                )
+              `)
+              .in('id', speechIds);
+
+            if (metadata) {
+              metadata.forEach((m: any) => {
+                const date = m.debate_sections?.debate_days?.date;
+                const sectionIndex = m.debate_sections?.order_index;
+                const speechCode = m.speech_code; 
+                
+                if (date && sectionIndex && speechCode) {
+                  const speechNum = speechCode.replace('spk_', '');
+                  const url = `https://www.oireachtas.ie/en/debates/debate/dail/${date}/${sectionIndex}/#sp${speechNum}`;
+                  urlMap.set(m.id, url);
+                }
+              });
+            }
+          } catch (metaError) {
+            console.error('[Chat] Error fetching citation metadata:', metaError);
+          }
+        }
+        // -------------------------------------------------------
         
         // Sort chronologically (oldest first) to show evolution of position
         const sortedChunks = [...relevantChunks].sort((a: any, b: any) => {
@@ -181,7 +222,8 @@ router.post('/politician', async (req: Request, res: Response) => {
           context += `[${dateStr}]: "${chunk.chunk_content}"\n\n`;
           citations.push({
             date: dateStr,
-            content: chunk.chunk_content.substring(0, 200) + '...'
+            content: chunk.chunk_content.substring(0, 200) + '...',
+            url: urlMap.get(chunk.speech_id)
           });
         }
       }
@@ -224,6 +266,80 @@ router.post('/politician', async (req: Request, res: Response) => {
       console.log(`[Chat] No structured policy positions found for "${politicianName}"`);
     }
 
+    // 3.6 Fetch Voting Record Context
+    // Extract topic keywords from the question for vote search
+    const voteKeywords = question.toLowerCase()
+      .replace(/[?.,!'"]/g, '')
+      .split(' ')
+      .filter(word => word.length > 3 && !['what', 'your', 'about', 'have', 'been', 'with', 'this', 'that', 'from', 
+        'they', 'will', 'would', 'could', 'should', 'there', 'their', 'position', 'views', 'think',
+        'changed', 'over', 'time', 'stance', 'opinion', 'feel', 'believe', 'how', 'does', 'when', 'voted', 'vote'].includes(word));
+    
+    let votingContext = '';
+    
+    // Check if the question is about voting
+    const isVotingQuestion = question.toLowerCase().includes('vote') || 
+                            question.toLowerCase().includes('voted') ||
+                            question.toLowerCase().includes('voting') ||
+                            question.toLowerCase().includes('support') ||
+                            question.toLowerCase().includes('oppose');
+    
+    if (isVotingQuestion || voteKeywords.length > 0) {
+      console.log(`[Chat] Fetching voting record for "${politicianName}" with keywords: ${voteKeywords.join(', ')}`);
+      
+      // Search for relevant votes
+      const searchTerm = voteKeywords.length > 0 ? voteKeywords.slice(0, 3).join(' ') : '';
+      const relevantVotes = searchTerm ? await getVotingRecord(politicianName, searchTerm, 5) : [];
+      
+      // Also get recent votes for context
+      const recentVotes = await getRecentVotes(politicianName, 5);
+      
+      // Get voting stats
+      const votingStats = await getVotingStats(politicianName);
+      
+      if (relevantVotes.length > 0 || recentVotes.length > 0 || votingStats) {
+        votingContext = '\n=== VOTING RECORD ===\n';
+        votingContext += 'Use this ACTUAL voting data when asked about votes, bills, or support for legislation.\n\n';
+        
+        if (votingStats) {
+          votingContext += `VOTING STATISTICS:\n`;
+          votingContext += `- Total votes cast: ${votingStats.totalVotes}\n`;
+          votingContext += `- Tá (Yes): ${votingStats.taVotes}, Níl (No): ${votingStats.nilVotes}, Staon (Abstain): ${votingStats.staonVotes}\n`;
+          votingContext += `- Party loyalty rate: ${votingStats.partyLoyaltyRate}%\n`;
+          if (votingStats.rebelVotes > 0) {
+            votingContext += `- Rebel votes (against party line): ${votingStats.rebelVotes}\n`;
+          }
+          votingContext += '\n';
+        }
+        
+        if (relevantVotes.length > 0) {
+          votingContext += `VOTES MATCHING "${searchTerm.toUpperCase()}":\n`;
+          for (const vote of relevantVotes) {
+            const voteStr = vote.vote === 'ta' ? 'Tá (Yes)' : vote.vote === 'nil' ? 'Níl (No)' : 'Staon (Abstain)';
+            votingContext += `- [${vote.date}] ${vote.subject}\n`;
+            votingContext += `  Vote: ${voteStr} | Outcome: ${vote.outcome}`;
+            if (vote.votedWithParty !== null) {
+              votingContext += ` | ${vote.votedWithParty ? 'With party' : 'AGAINST party'}`;
+            }
+            votingContext += '\n';
+          }
+          votingContext += '\n';
+        }
+        
+        if (recentVotes.length > 0 && relevantVotes.length === 0) {
+          votingContext += `RECENT VOTES:\n`;
+          for (const vote of recentVotes.slice(0, 3)) {
+            const voteStr = vote.vote === 'ta' ? 'Tá (Yes)' : vote.vote === 'nil' ? 'Níl (No)' : 'Staon (Abstain)';
+            votingContext += `- [${vote.date}] ${vote.subject}: ${voteStr}\n`;
+          }
+          votingContext += '\n';
+        }
+        
+        votingContext += '=== END OF VOTING RECORD ===\n\n';
+        console.log(`[Chat] Added voting context: ${relevantVotes.length} relevant votes, ${recentVotes.length} recent votes`);
+      }
+    }
+
     // 4. Build the system prompt
     console.log(`[Chat] Building prompt with context length: ${context.length} chars, hasRelevantContent: ${hasRelevantContent}`);
     
@@ -249,8 +365,18 @@ SPECIAL COMMANDS:
 - "Timeline of your stance on [topic]" → Chronological bullet-point list with dates
 - "What have you changed your mind on?" → List any evolved positions honestly
 
-IMPORTANT: The context below contains your belief graph and REAL parliamentary debate quotes. Always use them to form your response.
+IMPORTANT: The context below contains your belief graph, ACTUAL voting record, and REAL parliamentary debate quotes. Always use them to form your response.
+
+VOTING QUESTIONS: When asked "Did you vote for X?", "How did you vote on Y?", or similar voting questions:
+- ALWAYS check the VOTING RECORD section first
+- Quote specific dates and bill names from your voting record
+- If you voted Tá (Yes), say "I voted in favour of..."
+- If you voted Níl (No), say "I voted against..."
+- If you voted Staon (Abstain), explain why you abstained
+- If no matching vote is found, say "I don't have a recorded vote on that specific bill, but..."
+
 ${structuredMemoryContext}
+${votingContext}
 ${positionEvolution}
 === PARLIAMENTARY DEBATE RECORDS ===
 ${context}
@@ -277,12 +403,32 @@ ${context}
     const reply = response.choices[0].message.content ||
       "I'm sorry, I couldn't generate a response at this time.";
 
+    // 6.5 Fact Check (Hallucination Guard)
+    let finalReply = reply;
+    let verificationResult = null;
+    
+    if (hasRelevantContent || votingContext) {
+       const fullContext = `${structuredMemoryContext}\n${votingContext}\n${context}`;
+       console.log('[Chat] Verifying response for accuracy...');
+       verificationResult = await verifyFactCheck(question, fullContext, reply);
+       console.log(`[Chat] Verification Score: ${verificationResult.score}/100 - Supported: ${verificationResult.is_supported}`);
+       
+       if (!verificationResult.is_supported) {
+         if (verificationResult.score < 40) {
+            // Severe hallucination likelihood
+            console.warn(`[Chat] Low verification score (${verificationResult.score}). Reasoning: ${verificationResult.reasoning}`);
+            finalReply += `\n\n⚠️ AI Discretion Advised: This response may contain details not fully supported by my available records.`;
+         }
+       }
+    }
+
     // 7. Return response with citations
     return res.json({
       success: true,
-      reply,
+      reply: finalReply,
       citations: citations.slice(0, 3), // Top 3 most relevant sources
-      disclaimer: `This is an AI-generated response based on ${politicianName}'s public parliamentary debate records. It is not a direct quote or official statement.`
+      disclaimer: `This is an AI-generated response based on ${politicianName}'s public parliamentary debate records. It is not a direct quote or official statement.`,
+      verification: verificationResult // Optional: expose verification to frontend if needed
     });
 
   } catch (error) {

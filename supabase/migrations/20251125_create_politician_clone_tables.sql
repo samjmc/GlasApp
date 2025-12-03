@@ -90,3 +90,6 @@ comment on table policy_positions is 'Structured belief graph/policy profile for
 comment on table corpus_items is 'Raw text sources other than parliamentary debates (manifestos, interviews, etc.)';
 comment on table corpus_chunks is 'Vector embeddings for corpus_items';
 
+
+
+

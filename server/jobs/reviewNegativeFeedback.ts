@@ -126,3 +126,6 @@ async function getPoliticianId(name: string) {
 // Execute
 reviewNegativeFeedback().catch(console.error);
 
+
+
+
