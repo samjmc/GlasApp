@@ -142,29 +142,55 @@ router.post('/analyze-sample', async (req, res, next) => {
 
 /**
  * POST /api/admin/news-scraper/run - Trigger full news scrape
+ * 
+ * If ?sync=true, runs synchronously (waits for completion)
+ * Otherwise runs in background (for cronjob.org compatibility)
  */
 router.post('/run', async (req, res, next) => {
   try {
     const { limit } = req.body;
+    const runSync = req.query.sync === 'true';
     
     console.log('🚀 Triggering full news scrape...');
+    console.log(`   Mode: ${runSync ? 'SYNCHRONOUS (waiting for completion)' : 'BACKGROUND'}`);
     
-    // Run in background
-    setTimeout(async () => {
+    if (runSync) {
+      // Synchronous mode - wait for completion (useful for debugging)
       try {
-        await DailyNewsScraperJob.run();
+        const stats = await DailyNewsScraperJob.run();
         console.log('✅ News scrape completed');
-      } catch (error) {
+        res.json({
+          success: true,
+          message: 'News scraping completed',
+          stats
+        });
+      } catch (error: any) {
         console.error('❌ News scrape failed:', error);
+        res.status(500).json({
+          success: false,
+          message: 'News scraping failed',
+          error: error.message
+        });
       }
-    }, 100);
-    
-    res.json({
-      success: true,
-      message: 'News scraping job started in background',
-      estimated_duration: '30-60 minutes',
-      note: 'Check server logs for progress'
-    });
+    } else {
+      // Background mode - return immediately (for cronjob.org)
+      // Note: This may not complete if Railway kills the process
+      setTimeout(async () => {
+        try {
+          await DailyNewsScraperJob.run();
+          console.log('✅ News scrape completed');
+        } catch (error) {
+          console.error('❌ News scrape failed:', error);
+        }
+      }, 100);
+      
+      res.json({
+        success: true,
+        message: 'News scraping job started in background',
+        estimated_duration: '30-60 minutes',
+        note: 'Check server logs for progress. Add ?sync=true to wait for completion.'
+      });
+    }
     
   } catch (error) {
     next(error);

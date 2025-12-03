@@ -53,6 +53,9 @@ import regionRoutes from "./routes/regionRoutes";
 import politicianChatRoutes from "./routes/politicianChatRoutes";
 
 import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
+import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
+import shadowRoutes from "./routes/shadowRoutes";
+import votingRoutes from "./routes/parliamentary/votingRoutes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
@@ -69,6 +72,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/ai", quizRoutes); // Quiz assistant
   app.use("/api/chat", chatRoutes);
   app.use("/api/chat", politicianChatRoutes); // Digital Twin politician chat
+  app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
   // Register geographic routes (consolidated - includes constituencies, location, heatmap)
   app.use("/api/geographic", geographicRoutes);
@@ -127,6 +131,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register enhanced parliamentary profiles routes (detailed TD & party info)
   app.use("/api/parliamentary", enhancedProfilesRoutes);
   
+  // Register voting analysis routes
+  app.use("/api/parliamentary/voting", votingRoutes);
+  
   // Register constituency routes (constituency analytics and TD listings by area)
   app.use("/api/parliamentary", constituencyRoutes);
   
@@ -156,6 +163,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/admin/debates", debateAdminRoutes);
   app.use("/api/admin/baselines", baselineAdminRoutes);
   app.use("/api/admin/articles", manualArticleRoutes);
+  app.use("/api/admin/td-scoring", tdScoringAdminRoutes);
   
   // Register user rating routes for TDs
   app.use("/api/ratings", tdRatingsRoutes);

@@ -41,6 +41,7 @@ router.get('/', async (req: Request, res: Response) => {
           console.log('🎯 Finding highest impact articles (with TD effects or policy votes)...');
           
           // Get articles with either TD scores or policy vote opportunities
+          // Only show visible articles (passed triage)
           const { data: allArticles, error: allError } = await supabaseDb
             .from('news_articles')
             .select(`
@@ -49,6 +50,7 @@ router.get('/', async (req: Request, res: Response) => {
               policy_vote_opportunities(id, question_text, answer_options, policy_domain, policy_topic, confidence, rationale, source_hint),
               news_sources!inner(logo_url)
             `)
+            .eq('visible', true)  // Only show visible articles
             .order('published_date', { ascending: false })
             .limit(200); // Get recent 200 articles to calculate impact
           
@@ -100,6 +102,7 @@ router.get('/', async (req: Request, res: Response) => {
           const endOfDayISO = endOfDay.toISOString();
           
           // Get articles from today with TD scores OR policy vote opportunities
+          // Only show visible articles (passed triage)
           const { data: todayArticles } = await supabaseDb
             .from('news_articles')
             .select(`
@@ -108,6 +111,7 @@ router.get('/', async (req: Request, res: Response) => {
               policy_vote_opportunities(id, question_text, answer_options, policy_domain, policy_topic, confidence, rationale, source_hint),
               news_sources!inner(logo_url)
             `)
+            .eq('visible', true)  // Only show visible articles
             .gte('published_date', startOfDay)
             .lte('published_date', endOfDayISO);
           
@@ -128,6 +132,7 @@ router.get('/', async (req: Request, res: Response) => {
                 policy_vote_opportunities(id, question_text, answer_options, policy_domain, policy_topic, confidence, rationale, source_hint),
                 news_sources!inner(logo_url)
               `)
+              .eq('visible', true)  // Only show visible articles
               .gte('published_date', sevenDaysAgo.toISOString())
               .order('published_date', { ascending: false })
               .limit(50); // Get recent 50 to find the best one
@@ -165,11 +170,13 @@ router.get('/', async (req: Request, res: Response) => {
           console.log(`✨ Found ${count} impactful articles from ${dateRange}. Top impact: ${articles[0]?.totalTDImpact || 0}`);
         } else {
           // Regular sorting by date - join with news_sources to get logo_url
+          // Only show visible articles (passed triage)
           let query = supabaseDb.from('news_articles').select(`
             *,
             policy_vote_opportunities(id, question_text, answer_options, policy_domain, policy_topic, confidence, rationale, source_hint),
             news_sources!inner(logo_url)
           `, { count: 'exact' });
+          query = query.eq('visible', true);  // Only show visible articles
           query = query.order('published_date', { ascending: false });
           
           // Apply pagination
