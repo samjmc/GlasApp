@@ -215,6 +215,29 @@ export async function processUnprocessedArticles(
       console.log(`   Importance: ${importance.score} (${importance.topicCategory})`);
       
       try {
+        // Fetch full content if we only have a snippet
+        if (!article.content || article.content.length < 500) {
+          console.log(`   📖 Fetching full article content...`);
+          try {
+            const { scrapeArticleContent } = await import('./newsScraperService.js');
+            const fullContent = await scrapeArticleContent(article.url);
+            if (fullContent && fullContent.length > 200) {
+              article.content = fullContent;
+              console.log(`   ✅ Got ${fullContent.length} characters`);
+              
+              // Update the article in the database
+              await supabase
+                .from('news_articles')
+                .update({ content: fullContent })
+                .eq('id', article.id);
+            } else {
+              console.log(`   ⚠️ Could not fetch full content, using snippet`);
+            }
+          } catch (fetchError) {
+            console.log(`   ⚠️ Content fetch failed: ${fetchError}`);
+          }
+        }
+        
         await processArticleWithMultiAgent(article, importance, stats);
         stats.articlesProcessed++;
         

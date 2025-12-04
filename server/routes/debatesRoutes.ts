@@ -121,6 +121,8 @@ const loadContributionSummaries = async (
     return [];
   }
 
+  // Filter by debate_days.date instead of calculated_at for better user experience
+  // Users expect to see debates from the selected time period, not when they were scored
   const { data: contributionRows, error: contributionsError } = await supabaseDb
     .from('debate_section_score_contributions')
     .select(`
@@ -133,8 +135,8 @@ const loadContributionSummaries = async (
       debate_sections!inner(title),
       debate_days!inner(date, chamber, title)
     `)
-    .gte('calculated_at', startDateTime)
-    .lte('calculated_at', endDateTime);
+    .gte('debate_days.date', startDateTime.split('T')[0])
+    .lte('debate_days.date', endDateTime.split('T')[0]);
 
   if (contributionsError) {
     throw new Error(contributionsError.message);

@@ -4,7 +4,9 @@ import { Progress } from "@/components/ui/progress";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
-import { Info } from "lucide-react";
+import { Info, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { SliderVoteControl } from "@/components/votes/SliderVoteControl";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
@@ -53,6 +55,7 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
   const [pendingRating, setPendingRating] = useState<number>(3);
   const [pendingOption, setPendingOption] = useState<string | null>(null);
   const [userSelectedOption, setUserSelectedOption] = useState<string | null>(null);
+  const [showResults, setShowResults] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -351,6 +354,13 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
       { rating: 1, label: "Strongly oppose", count: voteStats.one_star },
     ];
 
+  const cleanRationale = useMemo(() => {
+    if (!policyVote.rationale) return null;
+    return policyVote.rationale
+      .replace(/This question reveals[^.]*(\.|$)\s*/gi, "")
+      .trim();
+  }, [policyVote.rationale]);
+
   return (
     <Card className="mx-auto w-full max-w-[400px] space-y-4 border-emerald-500/40 bg-gradient-to-br from-emerald-900/20 via-gray-900/30 to-gray-900/10 p-4 sm:max-w-none sm:p-5">
       <div className="flex items-start justify-between gap-3">
@@ -373,10 +383,10 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
         )}
       </div>
 
-      {policyVote.rationale && (
+      {cleanRationale && (
         <div className="text-sm text-emerald-100/80 flex gap-2">
           <Info className="w-4 h-4 text-emerald-300 flex-shrink-0 mt-0.5" />
-          <p>{policyVote.rationale}</p>
+          <p>{cleanRationale}</p>
         </div>
       )}
 
@@ -415,33 +425,53 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
         )}
       </div>
 
-      <div className="flex items-center justify-between text-[11px] text-gray-400 sm:text-xs">
-        <span>Total votes: {totalVotes}</span>
-        {policyVote.sourceHint && (
-          <span className="italic">Source: {policyVote.sourceHint}</span>
-        )}
+      <div className="pt-2">
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          onClick={() => setShowResults(!showResults)}
+          className="w-full flex items-center justify-between text-xs text-gray-400 h-8 px-2 hover:bg-white/5 hover:text-gray-300"
+        >
+          <span>View Community Votes ({totalVotes})</span>
+          {showResults ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+        </Button>
       </div>
 
-      {starStats && (
-        <div className="space-y-2">
-          {starStats.map(({ rating, label, count }) => {
-            const percentage = totalVotes === 0 ? 0 : Math.round((count / totalVotes) * 100);
-            return (
-              <div key={rating} className="space-y-1">
-                <div className="flex justify-between text-xs text-gray-400">
-                  <span>
-                    {rating}★ · {label}
-                  </span>
-                  <span>
-                    {percentage}% · {count} vote{count === 1 ? "" : "s"}
-                  </span>
+      <AnimatePresence>
+        {showResults && starStats && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-2 overflow-hidden"
+          >
+            <div className="pt-2 pb-1">
+              {starStats.map(({ rating, label, count }) => {
+                const percentage = totalVotes === 0 ? 0 : Math.round((count / totalVotes) * 100);
+                return (
+                  <div key={rating} className="space-y-1 mb-2 last:mb-0">
+                    <div className="flex justify-between text-xs text-gray-400">
+                      <span>
+                        {rating}★ · {label}
+                      </span>
+                      <span>
+                        {percentage}% · {count}
+                      </span>
+                    </div>
+                    <Progress value={percentage} className="h-1.5 bg-gray-800" />
+                  </div>
+                );
+              })}
+              {policyVote.sourceHint && (
+                <div className="text-[10px] text-gray-500 text-right italic mt-2">
+                  Source: {policyVote.sourceHint}
                 </div>
-                <Progress value={percentage} className="h-2 bg-gray-800" />
-              </div>
-            );
-          })}
-        </div>
-      )}
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {error && (
         <div className="text-xs text-red-300 bg-red-900/40 border border-red-800/60 rounded-md p-2">

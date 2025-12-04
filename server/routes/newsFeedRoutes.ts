@@ -78,15 +78,28 @@ router.get('/', async (req: Request, res: Response) => {
               };
             });
             
-            // Filter for articles with impact, then sort by recency (most recent first)
-            // Include articles that have TD effects OR policy voting opportunities
+            // Filter for articles with impact, then sort by:
+            // 1. TD-scored articles first (by recency)
+            // 2. Policy-vote-only articles second (by recency)
             articles = articlesWithTotalImpact
               .filter((a: any) => a.hasAnyImpact)
-              .sort((a: any, b: any) => new Date(b.published_date).getTime() - new Date(a.published_date).getTime())
+              .sort((a: any, b: any) => {
+                const aHasTD = a.totalTDImpact > 0;
+                const bHasTD = b.totalTDImpact > 0;
+                
+                // TD-scored articles come first
+                if (aHasTD && !bHasTD) return -1;
+                if (!aHasTD && bHasTD) return 1;
+                
+                // Within same category, sort by recency
+                return new Date(b.published_date).getTime() - new Date(a.published_date).getTime();
+              })
               .slice(0, Number(limit));
             
             count = articles.length;
-            console.log(`✨ Found ${count} high-impact articles (sorted by recency). ${articles.filter((a: any) => a.totalTDImpact > 0).length} with TD effects, ${articles.filter((a: any) => a.hasPolicyOpportunity).length} with policy opportunities.`);
+            const tdScoredCount = articles.filter((a: any) => a.totalTDImpact > 0).length;
+            const policyOnlyCount = articles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
+            console.log(`✨ Found ${count} high-impact articles. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
           }
         } else if (sort === 'today') {
           // TODAY'S (or most recent) Biggest Impact
@@ -253,12 +266,34 @@ router.get('/', async (req: Request, res: Response) => {
             sourceLogoUrl: sourceLogoUrl,
             publishedDate: publishDate,
             imageUrl: imageUrl,
-            aiSummary: article.ai_summary || article.content?.substring(0, 500) || 'No summary available',
+            aiSummary: article.ai_summary || (() => {
+              // Generate a better fallback summary with sentence boundaries
+              if (!article.content) return 'No summary available';
+              const snippet = article.content.substring(0, 600);
+              const lastSentenceEnd = Math.max(
+                snippet.lastIndexOf('. '),
+                snippet.lastIndexOf('! '),
+                snippet.lastIndexOf('? ')
+              );
+              return lastSentenceEnd > 100 ? snippet.substring(0, lastSentenceEnd + 1).trim() : snippet.trim();
+            })(),
             url: article.url,
             politicianName: article.politician_name,
             constituency: article.constituency,
             party: article.party,
-            impactScore: Number(article.impact_score) || 0,
+            // Use real TD scores if available, otherwise null (NOT default 50)
+            impactScore: (() => {
+              const tdScores = tdScoresByArticle.get(article.id) || [];
+              if (tdScores.length > 0) {
+                // Sum of all TD impact scores for this article
+                return tdScores.reduce((sum: number, td: any) => sum + (Number(td.impact_score) || 0), 0);
+              }
+              // Only use article.impact_score if we have a politician_name (older scored articles)
+              if (article.politician_name) {
+                return Number(article.impact_score) || 0;
+              }
+              return null; // No real score available
+            })(),
             storyType: article.story_type || 'neutral',
             sentiment: article.sentiment || 'neutral',
             aiReasoning: article.ai_reasoning,

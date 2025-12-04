@@ -30,7 +30,7 @@ const EnhancedResultsPage: React.FC = () => {
     isResultsCalculated, 
     saveResults, 
     resetQuiz, 
-    hasBeenSaved,
+    hasBeenSaved, 
     calculateResults 
   } = useMultidimensionalQuiz();
   
