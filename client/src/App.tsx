@@ -198,6 +198,10 @@ function Router() {
           <Route path="/enhanced-quiz" component={EnhancedQuizPage} />
           <Route path="/enhanced-results" component={EnhancedResultsPage} />
           <Route path="/dimension-weights" component={DimensionWeightsPage} />
+          
+          {/* Pages linked in header/navigation - available for all */}
+          <Route path="/my-politics" component={MyPoliticsPage} />
+          <Route path="/ideas" component={IdeasPage} />
         </>
       ) : (
         <>

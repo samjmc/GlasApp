@@ -561,9 +561,21 @@ export default function MyPoliticsPage() {
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
             Take a quick quiz to discover which TDs align with your political beliefs
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600">
-            Log In to Get Started
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/login">
+              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 w-full sm:w-auto">
+                Sign In to Get Started
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button size="lg" variant="outline" className="border-purple-300 w-full sm:w-auto">
+                Create Account
+              </Button>
+            </Link>
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+            <Link href="/" className="hover:text-purple-600">← Continue browsing as guest</Link>
+          </p>
         </Card>
       </div>
     );

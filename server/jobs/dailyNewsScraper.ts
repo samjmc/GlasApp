@@ -111,29 +111,34 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
     const potentiallyPolitical = await NewsScraperService.filterPoliticalArticles(articlesForProcessing);
     console.log(`✅ ${potentiallyPolitical.length} articles flagged as political (keywords + classifier)\n`);
     
-    // Step 3: Fetch full content ONLY for political articles from Gript/Ditch
-    console.log('📄 Step 3: Fetching full content for political Gript/Ditch articles...');
+    // Step 3: Fetch full content for ALL political articles with short snippets
+    console.log('📄 Step 3: Fetching full content for political articles...');
     const politicalArticles = [];
     
     for (const article of potentiallyPolitical) {
-      // Fetch full content if needed (Gript, The Ditch have title-only)
-      if (article.content.length < 200 && (article.source === 'Gript Media' || article.source === 'The Ditch')) {
+      // Fetch full content if RSS only gave us a snippet
+      if (article.content.length < 500) {
         console.log(`   📖 Fetching: ${article.title.substring(0, 60)}...`);
         try {
           let fullContent = '';
+          
+          // Use source-specific scrapers for known sites
           if (article.source === 'Gript Media') {
             const { GriptScraper } = await import('../services/customScrapers/griptScraper');
             fullContent = await GriptScraper.scrapeArticleContent(article.url);
           } else if (article.source === 'The Ditch') {
             const { DitchScraper } = await import('../services/customScrapers/ditchScraper');
             fullContent = await DitchScraper.scrapeArticleContent(article.url);
+          } else {
+            // Use generic scraper for all other sources (Irish Times, RTE, Journal, etc.)
+            fullContent = await NewsScraperService.scrapeArticleContent(article.url);
           }
           
           if (fullContent && fullContent.length > 200) {
             article.content = fullContent;
             console.log(`   ✅ Got ${fullContent.length} characters`);
           } else {
-            console.log(`   ⚠️ Content too short (${fullContent.length} chars)`);
+            console.log(`   ⚠️ Content too short (${fullContent?.length || 0} chars), keeping snippet`);
           }
           
           // Rate limit between requests
@@ -684,9 +689,19 @@ async function saveArticleToDatabase(
       articleData.final_adjusted_impact = analysis.bias_adjustments?.final_adjusted_impact;
       articleData.score_applied = false;
     } else {
-      // General political article - generate a simple summary
-      const firstParagraph = article.content.substring(0, 200);
-      articleData.ai_summary = `${firstParagraph}...`;
+      // General political article - generate a better summary
+      // Take first 600 characters, then find a good sentence ending
+      const contentSnippet = article.content.substring(0, 600);
+      const lastSentenceEnd = Math.max(
+        contentSnippet.lastIndexOf('. '),
+        contentSnippet.lastIndexOf('! '),
+        contentSnippet.lastIndexOf('? ')
+      );
+      // Use the sentence boundary if found, otherwise use the full snippet
+      const summary = lastSentenceEnd > 100 
+        ? contentSnippet.substring(0, lastSentenceEnd + 1).trim()
+        : contentSnippet.trim();
+      articleData.ai_summary = summary;
       articleData.impact_score = 50; // Neutral score for general political news
     }
     
