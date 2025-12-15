@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import glasLogo from '@assets/glas_logo_3d_ripple.png';
+import glasLogo from '@assets/Gemini_Generated_Image_v9oiqwv9oiqwv9oi.png';
 
 interface FooterProps {
   className?: string;
