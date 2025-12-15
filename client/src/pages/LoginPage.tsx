@@ -22,12 +22,15 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
-  const { signInWithGoogle, signInWithMicrosoft } = useAuth();
+  const { signInWithGoogle, signInWithMagicLink } = useAuth();
   const [, navigate] = useLocation();
   const { toast } = useToast();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showEmailLogin, setShowEmailLogin] = useState(false);
+  const [showMagicLink, setShowMagicLink] = useState(false);
+  const [magicLinkEmail, setMagicLinkEmail] = useState('');
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
 
   const {
     register,
@@ -48,13 +51,28 @@ const LoginPage = () => {
     }
   };
 
-  const handleMicrosoftLogin = async () => {
+  const handleMagicLinkLogin = async () => {
+    if (!magicLinkEmail || !magicLinkEmail.includes('@')) {
+      setError('Please enter a valid email address');
+      return;
+    }
+    
     setIsLoading(true);
     setError(null);
     try {
-      await signInWithMicrosoft?.();
+      const result = await signInWithMagicLink?.(magicLinkEmail);
+      if (result?.success) {
+        setMagicLinkSent(true);
+        toast({
+          title: 'Magic link sent!',
+          description: 'Check your email for a login link.',
+        });
+      } else {
+        setError(result?.message || 'Failed to send magic link');
+      }
     } catch (err: any) {
-      setError(err.message || 'Failed to sign in with Microsoft');
+      setError(err.message || 'Failed to send magic link');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -94,7 +112,68 @@ const LoginPage = () => {
               </Alert>
             )}
 
-            {!showEmailLogin ? (
+            {showMagicLink ? (
+              <>
+                {/* Magic Link Form */}
+                {magicLinkSent ? (
+                  <div className="text-center space-y-4">
+                    <div className="w-16 h-16 mx-auto bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center">
+                      <svg className="w-8 h-8 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Check your email</h3>
+                      <p className="text-muted-foreground text-sm mt-1">
+                        We sent a login link to <strong>{magicLinkEmail}</strong>
+                      </p>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      className="w-full"
+                      onClick={() => {
+                        setShowMagicLink(false);
+                        setMagicLinkSent(false);
+                        setMagicLinkEmail('');
+                      }}
+                    >
+                      Back to login options
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="magic-email">Email address</Label>
+                      <Input
+                        id="magic-email"
+                        type="email"
+                        placeholder="you@example.com"
+                        value={magicLinkEmail}
+                        onChange={(e) => setMagicLinkEmail(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleMagicLinkLogin()}
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      className="w-full"
+                      onClick={handleMagicLinkLogin}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? 'Sending...' : 'Send magic link'}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      className="w-full"
+                      onClick={() => setShowMagicLink(false)}
+                    >
+                      Back to login options
+                    </Button>
+                  </div>
+                )}
+              </>
+            ) : !showEmailLogin ? (
               <>
                 {/* OAuth Buttons */}
                 <div className="space-y-3">
@@ -130,16 +209,14 @@ const LoginPage = () => {
                     type="button"
                     variant="outline"
                     className="w-full h-11"
-                    onClick={handleMicrosoftLogin}
+                    onClick={() => setShowMagicLink(true)}
                     disabled={isLoading}
                   >
-                    <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
-                      <path fill="#f25022" d="M0 0h11.377v11.377H0z" />
-                      <path fill="#00a4ef" d="M12.623 0H24v11.377H12.623z" />
-                      <path fill="#7fba00" d="M0 12.623h11.377V24H0z" />
-                      <path fill="#ffb900" d="M12.623 12.623H24V24H12.623z" />
+                    <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
                     </svg>
-                    Continue with Microsoft
+                    Continue with Email Link
                   </Button>
                 </div>
 

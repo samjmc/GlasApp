@@ -2,16 +2,17 @@ import { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ManualPWAInstall } from "./ManualPWAInstall";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Search, X } from "lucide-react";
 import { AuthButton } from "@/components/auth/AuthButton";
 import { GlobalSearch } from "./GlobalSearch";
-import glasLogo from '@assets/glas_logo_3d_ripple.png';
+import glasLogo from '@assets/Gemini_Generated_Image_v9oiqwv9oiqwv9oi.png';
 import { RegionSwitcher } from "./RegionSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { useDailySession } from "@/hooks/useDailySession";
 
 const Header = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const { isAuthenticated } = useAuth();
   const { data: dailySession, isLoading: streakLoading } = useDailySession(isAuthenticated);
 
@@ -64,18 +65,24 @@ const Header = () => {
               <img
                 src={glasLogo}
                 alt="Glas Politics"
-                className="h-10 w-auto sm:h-12"
+                className="h-12 w-auto sm:h-16 lg:h-20"
               />
-            </Link>
-            <Link href="/">
-              <span className="hidden text-lg font-semibold text-[#77eab1] dark:text-white lg:block">
-                Glas Politics
-              </span>
             </Link>
           </div>
 
-          {/* Search Bar - Center */}
-          <div className="order-3 w-full sm:order-none sm:flex-1 sm:max-w-xl">
+          {/* Mobile Search Toggle Button */}
+          <Button
+            onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
+            variant="ghost"
+            size="sm"
+            className="p-2 sm:hidden"
+            aria-label="Toggle search"
+          >
+            {mobileSearchOpen ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
+          </Button>
+
+          {/* Search Bar - Hidden on mobile unless toggled, always visible on sm+ */}
+          <div className={`${mobileSearchOpen ? 'order-3 w-full' : 'hidden'} sm:block sm:order-none sm:flex-1 sm:max-w-xl`}>
             <GlobalSearch />
           </div>
 

@@ -22,7 +22,7 @@ interface AuthContextType {
   logout?: () => Promise<void>;
   deleteAccount?: () => Promise<void>;
   signInWithGoogle?: () => Promise<void>;
-  signInWithMicrosoft?: () => Promise<void>;
+  signInWithMagicLink?: (email: string) => Promise<{ success: boolean; message?: string }>;
   login?: (username: string, password: string) => Promise<{ success: boolean; message?: string }>;
   register?: (data: {
     username: string;
@@ -42,7 +42,7 @@ const defaultContext: AuthContextType = {
   logout: async () => {},
   deleteAccount: async () => {},
   signInWithGoogle: async () => {},
-  signInWithMicrosoft: async () => {},
+  signInWithMagicLink: async () => ({ success: false, message: "Not implemented" }),
   login: async () => ({ success: false, message: "Not implemented" }),
   register: async () => ({ success: false, message: "Not implemented" }),
 };
@@ -206,27 +206,25 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  const signInWithMicrosoft = async () => {
+  const signInWithMagicLink = async (email: string) => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'azure',
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
-          scopes: 'email openid profile',
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
       if (error) {
-        if (error.message.includes('popup')) {
-          throw new Error('Pop-up blocked. Please allow pop-ups for this site and try again.');
-        }
-        throw new Error(error.message || 'Failed to sign in with Microsoft. Please try again.');
+        return { success: false, message: error.message || 'Failed to send magic link.' };
       }
+
+      return { success: true, message: 'Check your email for a login link!' };
     } catch (error) {
       if (import.meta.env.DEV) {
-        console.error('Error signing in with Microsoft:', error);
+        console.error('Error sending magic link:', error);
       }
-      throw error;
+      return { success: false, message: error instanceof Error ? error.message : 'Failed to send magic link.' };
     }
   };
 
@@ -287,7 +285,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     logout,
     deleteAccount,
     signInWithGoogle,
-    signInWithMicrosoft,
+    signInWithMagicLink,
     login,
     register,
   };
