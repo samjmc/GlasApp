@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
+import { PageHeader } from "@/components/PageHeader";
 import {
   TrendingUp,
   TrendingDown,
@@ -365,6 +366,17 @@ export default function TDProfilePageEnhanced() {
   
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
+      <PageHeader
+        className="mb-3"
+        title="TD profile"
+        tooltipTitle="What you can do here"
+        bullets={[
+          "Understand a TD’s public performance and recent impact.",
+          "See ideology signals, voting patterns, and debate activity.",
+          "Compare stances and track changes over time."
+        ]}
+      />
+
       {/* Back Button */}
       <Link href="/">
         <Button variant="ghost" className="mb-4 gap-2">

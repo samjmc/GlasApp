@@ -8,7 +8,8 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'wouter';
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Link, useLocation } from 'wouter';
 import {
   Sparkles,
   TrendingUp,
@@ -16,9 +17,11 @@ import {
   Lock,
   AlertCircle,
   CheckCircle2,
-  Heart
+  Heart,
+  ChevronDown,
+  Info
 } from 'lucide-react';
-import { PoliticalQuiz } from './PoliticalQuiz';
+import { PageHeader } from "@/components/PageHeader";
 
 interface PersonalRanking {
   name: string;
@@ -36,10 +39,11 @@ interface PersonalRanking {
 
 export function PersonalRankingsTab() {
   const { user, isAuthenticated } = useAuth();
-  const [showQuiz, setShowQuiz] = useState(false);
+  const [, navigate] = useLocation();
   const [hasCompletedQuiz, setHasCompletedQuiz] = useState(false);
   const [rankings, setRankings] = useState<PersonalRanking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(5);
 
   useEffect(() => {
     if (isAuthenticated && user) {
@@ -58,8 +62,8 @@ export function PersonalRankingsTab() {
       setHasCompletedQuiz(profileData.hasCompletedQuiz);
       
       if (profileData.hasCompletedQuiz) {
-        // Load rankings
-        const rankingsRes = await fetch(`/api/personal/rankings/${user!.id}?limit=20`);
+        // Load rankings - get enough to show top and bottom
+        const rankingsRes = await fetch(`/api/personal/rankings/${user!.id}?limit=200`);
         const rankingsData = await rankingsRes.json();
         setRankings(rankingsData.rankings || []);
       }
@@ -67,26 +71,6 @@ export function PersonalRankingsTab() {
       console.error('Error loading personal rankings:', error);
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const handleQuizComplete = async (answers: any) => {
-    try {
-      const res = await fetch('/api/personal/quiz', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: user!.id,
-          answers
-        })
-      });
-      
-      if (res.ok) {
-        setShowQuiz(false);
-        await loadData();
-      }
-    } catch (error) {
-      console.error('Error submitting quiz:', error);
     }
   };
 
@@ -108,26 +92,6 @@ export function PersonalRankingsTab() {
     );
   }
 
-  // Show quiz
-  if (showQuiz || (!hasCompletedQuiz && !isLoading)) {
-    return (
-      <div>
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-            Find Your Political Matches
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            Answer 8 questions to discover which TDs align with your values
-          </p>
-        </div>
-        <PoliticalQuiz 
-          onComplete={handleQuizComplete}
-          onSkip={hasCompletedQuiz ? () => setShowQuiz(false) : undefined}
-        />
-      </div>
-    );
-  }
-
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -139,155 +103,126 @@ export function PersonalRankingsTab() {
     );
   }
 
-  return (
-    <div className="space-y-6">
-      {/* Header with Retake Option */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Heart className="w-6 h-6 text-purple-600 fill-purple-600" />
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Your Personalized Rankings
-          </h2>
-        </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setShowQuiz(true)}
-        >
-          Retake Quiz
-        </Button>
-      </div>
-
-
-      {/* Rankings Table */}
-      <Card className="overflow-hidden">
-        {/* Table Header */}
-        <div className="bg-gray-50 dark:bg-gray-800/50 px-6 py-3 border-b border-gray-200 dark:border-gray-700">
-          <div className="grid grid-cols-12 gap-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
-            <div className="col-span-1">Rank</div>
-            <div className="col-span-4">TD</div>
-            <div className="col-span-2 text-center">Match %</div>
-            <div className="col-span-2 text-center">Ideology</div>
-            <div className="col-span-2 text-center">Policy Votes</div>
-            <div className="col-span-1 text-center">vs Public</div>
-          </div>
-        </div>
-
-        {/* Rankings List */}
-        <div className="divide-y divide-gray-200 dark:divide-gray-700">
-          {rankings.map((ranking) => {
-            const rankDiff = ranking.publicRank - ranking.personalRank;
-            const isHigherThanPublic = rankDiff > 0;
-            const isSignificantDiff = Math.abs(rankDiff) > 10;
-            
-            return (
-              <Link key={ranking.name} href={`/td/${encodeURIComponent(ranking.name)}`}>
-                <div className="grid grid-cols-12 gap-3 px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors cursor-pointer">
-                  {/* Rank */}
-                  <div className="col-span-1 flex items-center">
-                    <div className="text-xl font-bold text-purple-600 dark:text-purple-400">
-                      #{ranking.personalRank}
-                    </div>
-                  </div>
-
-                  {/* TD Info */}
-                  <div className="col-span-4 flex items-center gap-3 min-w-0">
-                    {ranking.image_url ? (
-                      <img 
-                        src={ranking.image_url} 
-                        alt={ranking.name}
-                        className="w-10 h-10 rounded-full object-cover border-2 border-purple-200 flex-shrink-0"
-                      />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white text-sm font-bold border-2 border-purple-200 flex-shrink-0">
-                        {ranking.name.charAt(0)}
-                      </div>
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-gray-900 dark:text-white truncate">
-                        {ranking.name}
-                      </div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400 truncate">
-                        {ranking.party} • {ranking.constituency}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Overall Match */}
-                  <div className="col-span-2 flex flex-col items-center justify-center">
-                    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                      {ranking.compatibility}%
-                    </div>
-                    <div className="text-xs text-gray-500">total match</div>
-                  </div>
-
-                  {/* Ideology Match */}
-                  <div className="col-span-2 flex flex-col items-center justify-center">
-                    <div className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {ranking.ideologyMatch}%
-                    </div>
-                    <div className="text-xs text-gray-500">values</div>
-                  </div>
-
-                  {/* Policy Agreement */}
-                  <div className="col-span-2 flex flex-col items-center justify-center">
-                    <div className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {ranking.policyAgreement}%
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {ranking.policiesCompared} policies
-                    </div>
-                  </div>
-
-                  {/* Public Rank Comparison */}
-                  <div className="col-span-1 flex items-center justify-center">
-                    {isSignificantDiff ? (
-                      <div className="flex flex-col items-center">
-                        <span className="text-xs text-gray-600 dark:text-gray-400">
-                          #{ranking.publicRank}
-                        </span>
-                        {isHigherThanPublic ? (
-                          <TrendingUp className="w-4 h-4 text-green-500" title="You rank them higher than public" />
-                        ) : (
-                          <TrendingDown className="w-4 h-4 text-red-500" title="You rank them lower than public" />
-                        )}
-                      </div>
-                    ) : (
-                      <span className="text-sm text-gray-500">
-                        #{ranking.publicRank}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </Card>
-
-      {/* Engagement Prompt */}
-      {rankings.length > 0 && rankings[0].policiesCompared < 10 && (
-        <Card className="p-6 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-200">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <Sparkles className="w-6 h-6 text-yellow-600" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">
-                Improve Your Match Accuracy
-              </h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
-                Your rankings are currently based on the quiz. Vote on policy articles in the news feed to refine your matches!
-              </p>
-              <div className="text-xs text-gray-600 dark:text-gray-400">
-                💡 Each vote updates your compatibility with all TDs who took a stance on that policy
+  const renderRankingCard = (ranking: PersonalRanking, index: number, isBottom: boolean = false) => {
+    // For bottom rankings, personalRank might be large, index is local
+    return (
+      <Link key={ranking.name} href={`/td/${encodeURIComponent(ranking.name)}`}>
+        <div className="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 hover:border-purple-500/30 dark:hover:border-purple-500/30 transition-all cursor-pointer shadow-sm">
+          <div className="flex items-center gap-3 min-w-0">
+            {ranking.image_url ? (
+              <img 
+                src={ranking.image_url} 
+                alt={ranking.name}
+                className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 dark:border-gray-700 flex-shrink-0"
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-500 font-bold border-2 border-gray-200 dark:border-gray-600 flex-shrink-0">
+                {ranking.name.charAt(0)}
               </div>
+            )}
+
+            <div className="min-w-0">
+              <h3 className="font-semibold text-gray-900 dark:text-white leading-tight truncate">
+                {ranking.name}
+              </h3>
+              <p className="text-xs text-gray-500 truncate mt-0.5">
+                {ranking.party}
+              </p>
             </div>
           </div>
+
+          <div className="text-right pl-2 flex-shrink-0">
+            <div className={`text-xl font-bold ${isBottom ? 'text-red-500 dark:text-red-400' : 'text-emerald-600 dark:text-emerald-400'} leading-none`}>
+              {ranking.compatibility}%
+            </div>
+            <div className="text-[10px] text-gray-400 uppercase tracking-wide mt-1">Match</div>
+          </div>
+        </div>
+      </Link>
+    );
+  };
+
+  const topRankings = rankings.slice(0, visibleCount);
+  const bottomRankings = rankings.length > 5 ? rankings.slice(-5).reverse() : [];
+
+  return (
+    <div className="space-y-8">
+      <PageHeader
+        title="Your Rankings"
+        tooltipTitle="Improve Your Match Accuracy"
+        bullets={[
+          "Your rankings are currently based on the quiz.",
+          "Vote on policy articles in the news feed to refine your matches!",
+          "Each vote updates your compatibility with all TDs who took a stance."
+        ]}
+      />
+
+      {!hasCompletedQuiz ? (
+        <Card className="p-8 text-center bg-gray-50 dark:bg-gray-800/50 border-dashed">
+          <AlertCircle className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+          <p className="text-gray-700 dark:text-gray-300 font-medium mb-2">
+            Personalized rankings aren’t available yet.
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Vote on policy opportunities in the news feed to build your profile and unlock rankings.
+          </p>
         </Card>
+      ) : rankings.length === 0 ? (
+        <Card className="p-8 text-center bg-gray-50 dark:bg-gray-800/50 border-dashed">
+          <AlertCircle className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+          <p className="text-gray-600 dark:text-gray-400">
+            No rankings available yet.
+          </p>
+        </Card>
+      ) : (
+        <>
+          {/* Top Matches Section */}
+          <section className="space-y-4">
+            <div className="flex items-center justify-between px-1">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Top Matches
+              </h3>
+              <Badge variant="outline" className="bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800">
+                Highest Compatibility
+              </Badge>
+            </div>
+            
+            <div className="space-y-3">
+              {topRankings.map((ranking, i) => renderRankingCard(ranking, i, false))}
+            </div>
+
+            {visibleCount < (rankings.length - 5) && (
+              <Button
+                variant="outline"
+                className="w-full rounded-xl border-dashed py-6 text-gray-500 hover:text-gray-900 hover:border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setVisibleCount(prev => prev + 5)}
+              >
+                <ChevronDown className="w-4 h-4 mr-2" />
+                Load more matches
+              </Button>
+            )}
+          </section>
+
+          {/* Least Compatible Section */}
+          {bottomRankings.length > 0 && (
+            <section className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div className="flex items-center justify-between px-1">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  Least Compatible
+                </h3>
+                <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800">
+                  Lowest Compatibility
+                </Badge>
+              </div>
+              
+              <div className="space-y-3">
+                {bottomRankings.map((ranking, i) => renderRankingCard(ranking, i, true))}
+              </div>
+            </section>
+          )}
+        </>
       )}
+
     </div>
   );
 }
-
-

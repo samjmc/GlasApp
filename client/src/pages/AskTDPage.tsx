@@ -5,7 +5,7 @@ import {
   Send, Bot, User, Sparkles, AlertCircle, MessageSquare, 
   Search, ChevronDown, TrendingUp, TrendingDown, Minus,
   BarChart3, Clock, AlertTriangle, CheckCircle, X, History,
-  ThumbsUp, ThumbsDown
+  ThumbsUp, ThumbsDown, ArrowLeft, Info
 } from "lucide-react";
 
 interface Message {
@@ -76,17 +76,15 @@ const getPartyStyle = (party: string) => {
 
 // ============== SEARCH UTILITIES ==============
 
-// Normalize string for comparison (remove accents, lowercase)
 function normalizeString(str: string): string {
   return str
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Remove accents
-    .replace(/['']/g, "'") // Normalize apostrophes
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/['']/g, "'")
     .trim();
 }
 
-// Calculate Levenshtein distance for fuzzy matching
 function levenshteinDistance(a: string, b: string): number {
   const matrix: number[][] = [];
   
@@ -103,9 +101,9 @@ function levenshteinDistance(a: string, b: string): number {
         matrix[i][j] = matrix[i - 1][j - 1];
       } else {
         matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1, // substitution
-          matrix[i][j - 1] + 1,     // insertion
-          matrix[i - 1][j] + 1      // deletion
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
         );
       }
     }
@@ -114,13 +112,11 @@ function levenshteinDistance(a: string, b: string): number {
   return matrix[b.length][a.length];
 }
 
-// Check if query matches start of any word
 function matchesWordStart(text: string, query: string): boolean {
   const words = text.split(/\s+/);
   return words.some(word => word.startsWith(query));
 }
 
-// Calculate match score (higher = better match)
 function calculateMatchScore(td: TDOption, query: string): number {
   const normalizedQuery = normalizeString(query);
   const normalizedName = normalizeString(td.politician_name);
@@ -129,20 +125,17 @@ function calculateMatchScore(td: TDOption, query: string): number {
   
   let score = 0;
   
-  // Exact match bonuses
   if (normalizedName === normalizedQuery) return 1000;
   if (normalizedParty === normalizedQuery) return 800;
   if (normalizedConstituency === normalizedQuery) return 700;
   
-  // Name matching (highest priority)
   if (normalizedName.startsWith(normalizedQuery)) {
     score += 500;
   } else if (matchesWordStart(normalizedName, normalizedQuery)) {
-    score += 400; // Matches start of first or last name
+    score += 400;
   } else if (normalizedName.includes(normalizedQuery)) {
     score += 200;
   } else {
-    // Fuzzy match on name
     const nameParts = normalizedName.split(/\s+/);
     for (const part of nameParts) {
       const distance = levenshteinDistance(part, normalizedQuery);
@@ -152,21 +145,18 @@ function calculateMatchScore(td: TDOption, query: string): number {
     }
   }
   
-  // Party matching
   if (normalizedParty.startsWith(normalizedQuery)) {
     score += 150;
   } else if (normalizedParty.includes(normalizedQuery)) {
     score += 100;
   }
   
-  // Constituency matching
   if (normalizedConstituency.startsWith(normalizedQuery)) {
     score += 100;
   } else if (normalizedConstituency.includes(normalizedQuery)) {
     score += 50;
   }
   
-  // Handle common abbreviations
   const abbreviations: Record<string, string[]> = {
     "fg": ["fine gael"],
     "ff": ["fianna fail", "fianna fáil"],
@@ -188,7 +178,6 @@ function calculateMatchScore(td: TDOption, query: string): number {
   return score;
 }
 
-// Local storage for recent searches
 const RECENT_SEARCHES_KEY = "ask-td-recent-searches";
 const MAX_RECENT_SEARCHES = 5;
 
@@ -224,16 +213,17 @@ export default function AskTDPage() {
   const [showSearch, setShowSearch] = useState(true);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState<'chat' | 'consistency'>('chat');
+  const [showInfoModal, setShowInfoModal] = useState(false);
+  
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resultsContainerRef = useRef<HTMLDivElement>(null);
 
-  // Load recent searches on mount
   useEffect(() => {
     setRecentSearches(getRecentSearches());
   }, []);
 
-  // Fetch available TDs
   const { data: tdsData, isLoading: tdsLoading } = useQuery({
     queryKey: ["tds-for-chat"],
     queryFn: async () => {
@@ -244,7 +234,6 @@ export default function AskTDPage() {
     },
   });
 
-  // Fetch consistency data for selected TD
   const { data: consistencyData, isLoading: consistencyLoading } = useQuery({
     queryKey: ["td-consistency", selectedTD?.politician_name],
     queryFn: async () => {
@@ -256,11 +245,9 @@ export default function AskTDPage() {
     enabled: !!selectedTD,
   });
 
-  // Smart search with ranking
   const searchResults = useMemo(() => {
     if (!tdsData) return [];
     
-    // If no query, show recent searches first, then popular TDs
     if (!searchQuery.trim()) {
       const recentTDs = recentSearches
         .map(name => tdsData.find(td => td.politician_name === name))
@@ -273,7 +260,6 @@ export default function AskTDPage() {
       return [...recentTDs, ...otherTDs];
     }
     
-    // Score and rank all TDs
     const scored = tdsData
       .map(td => ({ td, score: calculateMatchScore(td, searchQuery) }))
       .filter(item => item.score > 0)
@@ -283,12 +269,10 @@ export default function AskTDPage() {
     return scored.map(item => item.td);
   }, [tdsData, searchQuery, recentSearches]);
 
-  // Reset highlight when results change
   useEffect(() => {
     setHighlightedIndex(-1);
   }, [searchResults]);
 
-  // Scroll highlighted item into view
   useEffect(() => {
     if (highlightedIndex >= 0 && resultsContainerRef.current) {
       const items = resultsContainerRef.current.querySelectorAll('[data-td-item]');
@@ -299,7 +283,6 @@ export default function AskTDPage() {
     }
   }, [highlightedIndex]);
 
-  // Keyboard navigation
   const handleSearchKeyDown = useCallback((e: React.KeyboardEvent) => {
     const maxIndex = searchResults.length - 1;
     
@@ -334,7 +317,6 @@ export default function AskTDPage() {
     }
   }, [searchResults, highlightedIndex]);
 
-  // Chat mutation
   const chatMutation = useMutation({
     mutationFn: async (question: string): Promise<ChatResponse> => {
       if (!selectedTD) throw new Error("No TD selected");
@@ -370,7 +352,6 @@ export default function AskTDPage() {
     },
   });
 
-  // Feedback mutation
   const feedbackMutation = useMutation({
     mutationFn: async (data: { 
       messageIndex: number;
@@ -404,7 +385,6 @@ export default function AskTDPage() {
 
   const handleFeedback = (index: number, rating: 'positive' | 'negative') => {
     const message = messages[index];
-    // Find the preceding user message for context
     const userMessage = messages[index - 1];
     
     if (message.role !== 'assistant' || !userMessage || message.feedback) return;
@@ -439,6 +419,7 @@ export default function AskTDPage() {
     setHighlightedIndex(-1);
     addRecentSearch(td.politician_name);
     setRecentSearches(getRecentSearches());
+    setActiveTab('chat');
     setMessages([{
       role: "assistant",
       content: `Hello! I'm an AI representation of **${td.politician_name}** (${td.party}), based on my parliamentary debate records.\n\nAsk me about my positions on any policy issue. You can also ask:\n• "Have you changed your mind on anything?"\n• "Show me contradictions"\n• "Timeline of your stance on [topic]"\n\n⚠️ **Disclaimer:** My responses are AI-generated interpretations of public debate transcripts. They are not official statements.`,
@@ -454,16 +435,14 @@ export default function AskTDPage() {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, activeTab]);
 
-  // Focus search on mount
   useEffect(() => {
     if (showSearch) {
       searchInputRef.current?.focus();
     }
   }, [showSearch]);
 
-  // Highlight matching text in search results
   const highlightMatch = (text: string, query: string) => {
     if (!query.trim()) return text;
     
@@ -473,7 +452,6 @@ export default function AskTDPage() {
     
     if (index === -1) return text;
     
-    // Find the actual position in the original text
     let actualIndex = 0;
     let normalizedIndex = 0;
     while (normalizedIndex < index && actualIndex < text.length) {
@@ -501,200 +479,307 @@ export default function AskTDPage() {
   const partyStyle = selectedTD ? getPartyStyle(selectedTD.party) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <div className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-20 border-b border-white/10 bg-gray-900/90 backdrop-blur-xl">
         <div className="mx-auto max-w-5xl px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
+              {selectedTD && (
+                <button 
+                  onClick={clearSelection}
+                  className="mr-1 rounded-lg p-1 text-gray-400 hover:bg-white/10 hover:text-white"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </button>
+              )}
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-lg shadow-emerald-500/20">
                 <MessageSquare className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-white">Ask a TD</h1>
-                <p className="text-xs text-gray-400">AI-powered debate insights</p>
+                <h1 className="text-lg font-bold text-white leading-tight">Ask a TD</h1>
+                <p className="text-xs text-gray-400">AI-powered insights</p>
               </div>
             </div>
             
-            {selectedTD && (
+            <div className="flex items-center gap-2">
+              {selectedTD && (
+                <button
+                  onClick={clearSelection}
+                  className="hidden sm:flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-gray-300 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                  <Search className="h-4 w-4" />
+                  <span>Search</span>
+                </button>
+              )}
               <button
-                onClick={clearSelection}
-                className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white transition-colors hover:bg-white/10"
+                onClick={() => setShowInfoModal(true)}
+                className="rounded-lg p-2 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
+                aria-label="About this tool"
               >
-                <X className="h-4 w-4" />
-                <span className="hidden sm:inline">Change TD</span>
+                <Info className="h-5 w-5" />
               </button>
-            )}
+            </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Main content with extra bottom padding for input bar + bottom nav */}
-      <div className="mx-auto max-w-5xl px-4 pb-48 pt-4 md:pb-40">
-        {/* Search & Select TD */}
+      {/* Main content */}
+      <div className="mx-auto max-w-5xl px-4 pb-48 pt-6 md:pb-40">
+        
+        {/* VIEW 1: SEARCH / SELECT */}
         {showSearch && (
-          <div className="mb-6">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+
             {/* Search Input */}
-            <div className="relative mb-4">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={handleSearchKeyDown}
-                placeholder="Search by name, party, or constituency... (try 'fg', 'dublin', 'harris')"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder-gray-500 outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all"
-                autoComplete="off"
-                autoCorrect="off"
-                spellCheck={false}
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+            <div className="relative mx-auto mb-8 max-w-2xl">
+              <div className="relative group">
+                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-30 blur transition duration-500 group-hover:opacity-50"></div>
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={handleSearchKeyDown}
+                    placeholder="Search by name, party, or constituency..."
+                    className="w-full rounded-xl border border-white/10 bg-slate-900 py-4 pl-12 pr-12 text-sm text-white placeholder-gray-500 shadow-2xl outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    spellCheck={false}
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery("")}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+              </div>
+              
+              {/* Keyboard hints */}
+              {searchQuery && searchResults.length > 0 && (
+                <div className="mt-3 flex justify-center gap-4 text-xs text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <kbd className="rounded bg-white/5 px-1.5 py-0.5 font-mono border border-white/10">↑↓</kbd> navigate
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <kbd className="rounded bg-white/5 px-1.5 py-0.5 font-mono border border-white/10">Enter</kbd> select
+                  </span>
+                </div>
               )}
             </div>
 
-            {/* Keyboard hints */}
-            {searchQuery && searchResults.length > 0 && (
-              <div className="mb-3 flex items-center gap-4 text-xs text-gray-500">
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-mono">↑↓</kbd> navigate
-                </span>
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-mono">Enter</kbd> select
-                </span>
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-mono">Esc</kbd> clear
-                </span>
-              </div>
-            )}
-
-            {/* Recent searches label */}
-            {!searchQuery && recentSearches.length > 0 && (
-              <div className="mb-3 flex items-center gap-2 text-xs text-gray-500">
-                <History className="h-3.5 w-3.5" />
-                <span>Recent searches shown first</span>
-              </div>
-            )}
-
-            {/* TD Grid */}
+            {/* Results */}
             {tdsLoading ? (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-                {[...Array(8)].map((_, i) => (
-                  <div key={i} className="h-28 animate-pulse rounded-xl bg-white/5" />
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                {[...Array(10)].map((_, i) => (
+                  <div key={i} className="h-32 animate-pulse rounded-2xl bg-white/5" />
                 ))}
               </div>
             ) : (
-              <div 
-                ref={resultsContainerRef}
-                className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-h-[60vh] overflow-y-auto pr-1"
-              >
-                {searchResults.map((td, index) => {
-                  const style = getPartyStyle(td.party);
-                  const isHighlighted = index === highlightedIndex;
-                  const isRecent = recentSearches.includes(td.politician_name) && !searchQuery;
-                  
-                  return (
-                    <button
-                      key={td.id}
-                      data-td-item
-                      onClick={() => selectTD(td)}
-                      onMouseEnter={() => setHighlightedIndex(index)}
-                      className={`group relative flex flex-col items-center gap-2 rounded-xl border p-4 text-center transition-all ${
-                        isHighlighted 
-                          ? 'border-emerald-500/50 bg-emerald-500/20 shadow-lg shadow-emerald-500/10 scale-[1.02]' 
-                          : 'border-white/5 bg-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/10'
-                      }`}
-                    >
-                      {isRecent && (
-                        <div className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[10px] text-white">
-                          <History className="h-3 w-3" />
-                        </div>
-                      )}
-                      {td.image_url ? (
-                        <img
-                          src={td.image_url}
-                          alt={td.politician_name}
-                          className={`h-14 w-14 rounded-full object-cover ring-2 transition-all ${
-                            isHighlighted ? 'ring-emerald-500' : 'ring-white/10 group-hover:ring-emerald-500/30'
-                          }`}
-                        />
-                      ) : (
-                        <div className={`h-14 w-14 rounded-full ${style.bg} ring-2 ring-white/10 flex items-center justify-center text-white font-bold text-lg`}>
-                          {td.politician_name.charAt(0)}
-                        </div>
-                      )}
-                      <div className="w-full">
-                        <p className="truncate text-sm font-medium text-white">
-                          {searchQuery ? highlightMatch(td.politician_name, searchQuery) : td.politician_name}
-                        </p>
-                        <p className={`truncate text-xs ${style.text}`}>
-                          {searchQuery ? highlightMatch(td.party, searchQuery) : td.party}
-                        </p>
-                        {searchQuery && td.constituency && (
-                          <p className="truncate text-[10px] text-gray-500">
-                            {highlightMatch(td.constituency, searchQuery)}
-                          </p>
-                        )}
-                      </div>
-                    </button>
-                  );
-                })}
+              <div className="space-y-6">
+                {!searchQuery && recentSearches.length > 0 && (
+                  <div className="mb-6">
+                    <div className="mb-3 flex items-center gap-2 text-sm font-medium text-gray-400">
+                      <History className="h-4 w-4" />
+                      <span>Recent Searches</span>
+                    </div>
+                    {/* Filter results to show only recent */}
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                      {searchResults
+                        .filter(td => recentSearches.includes(td.politician_name))
+                        .map((td, index) => {
+                          const style = getPartyStyle(td.party);
+                          return (
+                            <button
+                              key={td.id}
+                              onClick={() => selectTD(td)}
+                              className="group relative flex flex-col items-center gap-3 rounded-2xl border border-white/5 bg-white/5 p-4 text-center transition-all hover:border-emerald-500/30 hover:bg-white/10 hover:shadow-lg hover:shadow-emerald-900/20"
+                            >
+                              {td.image_url ? (
+                                <img
+                                  src={td.image_url}
+                                  alt={td.politician_name}
+                                  className="h-16 w-16 rounded-full object-cover ring-2 ring-white/10 transition-all group-hover:ring-emerald-500/50"
+                                />
+                              ) : (
+                                <div className={`h-16 w-16 rounded-full ${style.bg} ring-2 ring-white/10 flex items-center justify-center text-white font-bold text-xl`}>
+                                  {td.politician_name.charAt(0)}
+                                </div>
+                              )}
+                              <div className="w-full">
+                                <p className="truncate font-medium text-white group-hover:text-emerald-400 transition-colors">
+                                  {td.politician_name}
+                                </p>
+                                <p className={`truncate text-xs ${style.text} opacity-80`}>
+                                  {td.party}
+                                </p>
+                              </div>
+                            </button>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  {!searchQuery && recentSearches.length > 0 && (
+                    <div className="mb-3 text-sm font-medium text-gray-400">All TDs</div>
+                  )}
+                  <div 
+                    ref={resultsContainerRef}
+                    className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+                  >
+                    {searchResults
+                      .filter(td => searchQuery || !recentSearches.includes(td.politician_name))
+                      .map((td, index) => {
+                        const style = getPartyStyle(td.party);
+                        const isHighlighted = index === highlightedIndex;
+                        
+                        return (
+                          <button
+                            key={td.id}
+                            data-td-item
+                            onClick={() => selectTD(td)}
+                            onMouseEnter={() => setHighlightedIndex(index)}
+                            className={`group relative flex flex-col items-center gap-3 rounded-2xl border p-4 text-center transition-all ${
+                              isHighlighted 
+                                ? 'border-emerald-500/50 bg-emerald-500/10 shadow-lg shadow-emerald-500/10 scale-[1.02] z-10' 
+                                : 'border-white/5 bg-white/5 hover:border-white/20 hover:bg-white/10'
+                            }`}
+                          >
+                            {td.image_url ? (
+                              <img
+                                src={td.image_url}
+                                alt={td.politician_name}
+                                className={`h-14 w-14 rounded-full object-cover ring-2 transition-all ${
+                                  isHighlighted ? 'ring-emerald-500' : 'ring-white/10 group-hover:ring-emerald-500/30'
+                                }`}
+                              />
+                            ) : (
+                              <div className={`h-14 w-14 rounded-full ${style.bg} ring-2 ring-white/10 flex items-center justify-center text-white font-bold text-lg`}>
+                                {td.politician_name.charAt(0)}
+                              </div>
+                            )}
+                            <div className="w-full">
+                              <p className="truncate text-sm font-medium text-white">
+                                {searchQuery ? highlightMatch(td.politician_name, searchQuery) : td.politician_name}
+                              </p>
+                              <p className={`truncate text-xs ${style.text}`}>
+                                {searchQuery ? highlightMatch(td.party, searchQuery) : td.party}
+                              </p>
+                              {searchQuery && td.constituency && (
+                                <p className="truncate text-[10px] text-gray-500 mt-0.5">
+                                  {highlightMatch(td.constituency, searchQuery)}
+                                </p>
+                              )}
+                            </div>
+                          </button>
+                        );
+                      })}
+                  </div>
+                </div>
               </div>
             )}
             
             {searchResults.length === 0 && searchQuery && !tdsLoading && (
-              <div className="py-12 text-center">
-                <div className="mb-2 text-gray-400">No TDs found matching "{searchQuery}"</div>
+              <div className="rounded-2xl border border-dashed border-white/10 bg-white/5 py-12 text-center">
+                <div className="mb-2 text-lg text-gray-400">No results found</div>
                 <p className="text-sm text-gray-500">
-                  Try searching by first name, last name, party (e.g., "fg", "sf"), or constituency
+                  We couldn't find a TD matching "{searchQuery}"
                 </p>
               </div>
             )}
           </div>
         )}
 
-        {/* Selected TD Header + Chat */}
+        {/* VIEW 2: SELECTED TD */}
         {selectedTD && !showSearch && (
-          <div className="grid gap-6 lg:grid-cols-3">
-            {/* Main Chat Area */}
-            <div className="lg:col-span-2">
-              {/* TD Info Card */}
-              <div className={`mb-4 rounded-xl border ${partyStyle?.border} border-opacity-30 bg-gradient-to-r from-white/5 to-transparent p-4`}>
-                <div className="flex items-center gap-4">
-                  {selectedTD.image_url ? (
-                    <img
-                      src={selectedTD.image_url}
-                      alt={selectedTD.politician_name}
-                      className={`h-16 w-16 rounded-full object-cover ring-2 ${partyStyle?.border}`}
-                    />
-                  ) : (
-                    <div className={`h-16 w-16 rounded-full ${partyStyle?.bg} flex items-center justify-center text-white font-bold text-2xl`}>
-                      {selectedTD.politician_name.charAt(0)}
-                    </div>
-                  )}
-                  <div>
-                    <h2 className="text-xl font-bold text-white">{selectedTD.politician_name}</h2>
-                    <p className={`text-sm ${partyStyle?.text}`}>{selectedTD.party}</p>
-                    <p className="text-xs text-gray-400">{selectedTD.constituency}</p>
+          <div className="animate-in fade-in duration-300">
+            {/* TD Profile Header */}
+            <div className="mb-6 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="flex items-center gap-4">
+                {selectedTD.image_url ? (
+                  <img
+                    src={selectedTD.image_url}
+                    alt={selectedTD.politician_name}
+                    className={`h-20 w-20 rounded-full object-cover ring-4 ${partyStyle?.border || 'ring-gray-700'}`}
+                  />
+                ) : (
+                  <div className={`h-20 w-20 rounded-full ${partyStyle?.bg} ring-4 ring-white/10 flex items-center justify-center text-white font-bold text-3xl`}>
+                    {selectedTD.politician_name.charAt(0)}
+                  </div>
+                )}
+                <div>
+                  <h2 className="text-2xl font-bold text-white">{selectedTD.politician_name}</h2>
+                  <div className="flex flex-wrap items-center gap-2 text-sm">
+                    <span className={`font-medium ${partyStyle?.text}`}>{selectedTD.party}</span>
+                    <span className="text-gray-600">•</span>
+                    <span className="text-gray-400">{selectedTD.constituency}</span>
                   </div>
                 </div>
               </div>
+              
+              {/* Consistency Badge (Mini) */}
+              {consistencyData?.overallConsistencyScore !== null && consistencyData?.overallConsistencyScore !== undefined && (
+                <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-2">
+                  <div className="text-right">
+                    <div className="text-[10px] uppercase tracking-wide text-gray-500">Consistency</div>
+                    <div className={`font-bold ${
+                      (consistencyData.overallConsistencyScore || 0) >= 80 ? 'text-emerald-400' : 
+                      (consistencyData.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' : 'text-red-400'
+                    }`}>
+                      {consistencyData.overallConsistencyScore}%
+                    </div>
+                  </div>
+                  <div className={`h-10 w-1 rounded-full ${
+                    (consistencyData.overallConsistencyScore || 0) >= 80 ? 'bg-emerald-500' : 
+                    (consistencyData.overallConsistencyScore || 0) >= 60 ? 'bg-yellow-500' : 'bg-red-500'
+                  }`} />
+                </div>
+              )}
+            </div>
 
-              {/* Chat Messages */}
-              <div className="space-y-4 mb-4">
+            {/* Tabs */}
+            <div className="mb-6 border-b border-white/10">
+              <div className="flex space-x-8">
+                <button
+                  onClick={() => setActiveTab('chat')}
+                  className={`border-b-2 pb-3 text-sm font-medium transition-colors ${
+                    activeTab === 'chat'
+                      ? 'border-emerald-500 text-emerald-400'
+                      : 'border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-300'
+                  }`}
+                >
+                  Chat
+                </button>
+                <button
+                  onClick={() => setActiveTab('consistency')}
+                  className={`border-b-2 pb-3 text-sm font-medium transition-colors ${
+                    activeTab === 'consistency'
+                      ? 'border-emerald-500 text-emerald-400'
+                      : 'border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-300'
+                  }`}
+                >
+                  Consistency & Insights
+                </button>
+              </div>
+            </div>
+
+            {/* TAB CONTENT: CHAT */}
+            {activeTab === 'chat' && (
+              <div className="space-y-4">
                 {messages.map((message, idx) => (
                   <div
                     key={idx}
-                    className={`flex gap-3 ${message.role === "user" ? "flex-row-reverse" : ""}`}
+                    className={`flex gap-4 ${message.role === "user" ? "flex-row-reverse" : ""}`}
                   >
                     <div
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full shadow-lg ${
                         message.role === "user"
                           ? "bg-emerald-500"
                           : partyStyle?.bg || "bg-cyan-600"
@@ -708,20 +793,20 @@ export default function AskTDPage() {
                     </div>
                     
                     <div
-                      className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+                      className={`max-w-[85%] rounded-2xl px-5 py-4 shadow-sm ${
                         message.role === "user"
-                          ? "bg-emerald-500 text-white"
-                          : "border border-white/10 bg-slate-800/50 text-gray-100"
+                          ? "bg-emerald-600 text-white rounded-tr-sm"
+                          : "border border-white/10 bg-slate-800 text-gray-100 rounded-tl-sm"
                       }`}
                     >
-                      <div className="text-sm">
+                      <div className="text-sm leading-relaxed">
                         {message.role === "user" ? (
                           <p className="whitespace-pre-wrap">{message.content}</p>
                         ) : (
-                          <div className="prose prose-sm prose-invert max-w-none [&>p]:mb-2 [&>p:last-child]:mb-0 [&>ul]:mb-2 [&>ol]:mb-2">
+                          <div className="prose prose-sm prose-invert max-w-none [&>p]:mb-3 [&>p:last-child]:mb-0 [&>ul]:mb-3 [&>ol]:mb-3">
                             <ReactMarkdown 
                               components={{
-                                a: ({node, ...props}) => <a {...props} className="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer" />,
+                                a: ({node, ...props}) => <a {...props} className="text-emerald-400 hover:underline font-medium" target="_blank" rel="noopener noreferrer" />,
                                 strong: ({node, ...props}) => <strong {...props} className="font-bold text-white" />,
                               }}
                             >
@@ -732,12 +817,14 @@ export default function AskTDPage() {
                       </div>
                       
                       {message.citations && message.citations.length > 0 && (
-                        <div className="mt-3 border-t border-white/10 pt-3">
-                          <p className="mb-2 text-xs font-medium text-gray-400">📚 Sources:</p>
-                          <div className="space-y-2">
+                        <div className="mt-4 border-t border-white/10 pt-3">
+                          <p className="mb-2 text-xs font-medium text-gray-400 flex items-center gap-1">
+                            <Sparkles className="h-3 w-3" /> Sources
+                          </p>
+                          <div className="grid gap-2">
                             {message.citations.map((citation, cidx) => (
-                              <div key={cidx} className="rounded-lg bg-white/5 p-2 text-xs text-gray-300">
-                                <span className="font-medium text-emerald-400">[{citation.date}]</span>{" "}
+                              <div key={cidx} className="rounded-lg bg-black/20 p-2.5 text-xs text-gray-300 border border-white/5">
+                                <span className="font-medium text-emerald-400 mr-1.5">[{citation.date}]</span>
                                 {citation.content}
                               </div>
                             ))}
@@ -745,9 +832,9 @@ export default function AskTDPage() {
                         </div>
                       )}
 
-                      {/* Feedback Buttons (Assistant only) */}
+                      {/* Feedback Buttons */}
                       {message.role === "assistant" && idx > 0 && (
-                        <div className="mt-2 flex items-center justify-end gap-2">
+                        <div className="mt-3 flex items-center justify-end gap-2 opacity-0 transition-opacity group-hover:opacity-100 hover:opacity-100">
                           <button
                             onClick={() => handleFeedback(idx, 'positive')}
                             disabled={!!message.feedback}
@@ -756,9 +843,8 @@ export default function AskTDPage() {
                                 ? 'text-emerald-400' 
                                 : message.feedback 
                                   ? 'text-gray-600 cursor-not-allowed' 
-                                  : 'text-gray-400 hover:bg-white/10 hover:text-emerald-400'
+                                  : 'text-gray-500 hover:bg-white/5 hover:text-emerald-400'
                             }`}
-                            title="Good answer"
                           >
                             <ThumbsUp className="h-3.5 w-3.5" />
                           </button>
@@ -770,9 +856,8 @@ export default function AskTDPage() {
                                 ? 'text-red-400' 
                                 : message.feedback 
                                   ? 'text-gray-600 cursor-not-allowed' 
-                                  : 'text-gray-400 hover:bg-white/10 hover:text-red-400'
+                                  : 'text-gray-500 hover:bg-white/5 hover:text-red-400'
                             }`}
-                            title="Inaccurate or hallucinated"
                           >
                             <ThumbsDown className="h-3.5 w-3.5" />
                           </button>
@@ -783,11 +868,11 @@ export default function AskTDPage() {
                 ))}
                 
                 {chatMutation.isPending && (
-                  <div className="flex gap-3">
+                  <div className="flex gap-4">
                     <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${partyStyle?.bg || "bg-cyan-600"}`}>
                       <Bot className="h-4 w-4 text-white" />
                     </div>
-                    <div className="rounded-2xl border border-white/10 bg-slate-800/50 px-4 py-3">
+                    <div className="rounded-2xl rounded-tl-sm border border-white/10 bg-slate-800 px-5 py-4">
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-2 animate-bounce rounded-full bg-emerald-400" style={{ animationDelay: "0ms" }} />
                         <div className="h-2 w-2 animate-bounce rounded-full bg-emerald-400" style={{ animationDelay: "150ms" }} />
@@ -797,80 +882,125 @@ export default function AskTDPage() {
                   </div>
                 )}
                 
-                <div ref={messagesEndRef} />
-              </div>
+                <div ref={messagesEndRef} className="h-4" />
 
-              {/* Sample Questions */}
-              {messages.length <= 1 && (
-                <div className="mb-4">
-                  <p className="mb-2 text-xs text-gray-500">Try asking:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {SAMPLE_QUESTIONS.map((q, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setInput(q)}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-gray-300 transition-colors hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white"
-                      >
-                        {q}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Consistency Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-20 space-y-4">
-                {/* Overall Score */}
-                <div className="rounded-xl border border-white/10 bg-slate-800/30 p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <BarChart3 className="h-4 w-4 text-emerald-400" />
-                    <h3 className="text-sm font-semibold text-white">Consistency Score</h3>
-                  </div>
-                  
-                  {consistencyLoading ? (
-                    <div className="h-20 animate-pulse rounded-lg bg-white/5" />
-                  ) : consistencyData?.overallConsistencyScore !== null ? (
-                    <div className="text-center">
-                      <div className={`text-4xl font-bold ${
-                        (consistencyData?.overallConsistencyScore || 0) >= 90 ? 'text-emerald-400' :
-                        (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'text-green-400' :
-                        (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' :
-                        'text-red-400'
-                      }`}>
-                        {consistencyData?.overallConsistencyScore}%
-                      </div>
-                      <div className={`mt-1 text-sm font-medium ${
-                        (consistencyData?.overallConsistencyScore || 0) >= 90 ? 'text-emerald-400' :
-                        (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'text-green-400' :
-                        (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' :
-                        'text-red-400'
-                      }`}>
-                        {(consistencyData?.overallConsistencyScore || 0) >= 90 ? 'Rock Solid' :
-                         (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'Highly Consistent' :
-                         (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'Pragmatic / Evolving' :
-                         'Volatile / Unclear'}
-                      </div>
-                      <p className="mt-1 text-xs text-gray-400">across tracked topics</p>
+                {/* Sample Questions (only if chat is empty) */}
+                {messages.length <= 1 && (
+                  <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-6">
+                    <p className="mb-4 text-sm font-medium text-gray-400">Suggested questions for {selectedTD.politician_name}:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {SAMPLE_QUESTIONS.map((q, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setInput(q)}
+                          className="rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm text-gray-300 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white"
+                        >
+                          {q}
+                        </button>
+                      ))}
                     </div>
-                  ) : (
-                    <p className="text-center text-sm text-gray-500">
-                      No stance data yet
-                    </p>
-                  )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* TAB CONTENT: CONSISTENCY */}
+            {activeTab === 'consistency' && (
+              <div className="space-y-6">
+                <div className="grid gap-6 md:grid-cols-2">
+                  {/* Overall Score Card */}
+                  <div className="rounded-2xl border border-white/10 bg-slate-800/50 p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="rounded-lg bg-emerald-500/10 p-2 text-emerald-400">
+                        <BarChart3 className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white">Consistency Score</h3>
+                    </div>
+                    
+                    {consistencyLoading ? (
+                      <div className="h-24 animate-pulse rounded-xl bg-white/5" />
+                    ) : consistencyData?.overallConsistencyScore !== null ? (
+                      <div>
+                        <div className="flex items-baseline gap-2">
+                          <span className={`text-5xl font-bold ${
+                            (consistencyData?.overallConsistencyScore || 0) >= 90 ? 'text-emerald-400' :
+                            (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'text-green-400' :
+                            (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' :
+                            'text-red-400'
+                          }`}>
+                            {consistencyData?.overallConsistencyScore}%
+                          </span>
+                          <span className="text-gray-400">/ 100</span>
+                        </div>
+                        <div className={`mt-2 text-lg font-medium ${
+                          (consistencyData?.overallConsistencyScore || 0) >= 90 ? 'text-emerald-400' :
+                          (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'text-green-400' :
+                          (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'text-yellow-400' :
+                          'text-red-400'
+                        }`}>
+                          {(consistencyData?.overallConsistencyScore || 0) >= 90 ? 'Rock Solid' :
+                           (consistencyData?.overallConsistencyScore || 0) >= 75 ? 'Highly Consistent' :
+                           (consistencyData?.overallConsistencyScore || 0) >= 60 ? 'Pragmatic / Evolving' :
+                           'Volatile / Unclear'}
+                        </div>
+                        <p className="mt-2 text-sm text-gray-400">
+                          Based on analysis of stance consistency across tracked topics over time.
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="text-gray-500">Not enough data to calculate score.</p>
+                    )}
+                  </div>
+
+                  {/* Position Changes Card */}
+                  <div className="rounded-2xl border border-white/10 bg-slate-800/50 p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="rounded-lg bg-yellow-500/10 p-2 text-yellow-400">
+                        <AlertTriangle className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white">Recent Shifts</h3>
+                    </div>
+
+                    {consistencyData?.recentPositionChanges && consistencyData.recentPositionChanges.length > 0 ? (
+                      <div className="space-y-4">
+                        {consistencyData.recentPositionChanges.slice(0, 3).map((change, idx) => (
+                          <div key={idx} className="relative rounded-xl border border-white/5 bg-black/20 p-3 pl-4">
+                            <div className="absolute left-0 top-3 h-8 w-1 rounded-r bg-yellow-500/50" />
+                            <div className="mb-1 flex items-center justify-between">
+                              <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                                {change.topic.replace('_', ' ')}
+                              </span>
+                              <span className="text-xs text-gray-500">
+                                {new Date(change.statement_date).toLocaleDateString('en-IE', { month: 'short', year: 'numeric' })}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm font-medium">
+                              <span className="text-red-400/80">{change.previous_stance}</span>
+                              <ArrowLeft className="h-3 w-3 rotate-180 text-gray-600" />
+                              <span className="text-emerald-400">{change.stance}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex h-full flex-col items-center justify-center text-center text-gray-500">
+                        <CheckCircle className="mb-2 h-8 w-8 opacity-20" />
+                        <p>No major position changes detected recently.</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Topic Breakdown */}
+                {/* Detailed Breakdown */}
                 {consistencyData?.topicScores && consistencyData.topicScores.length > 0 && (
-                  <div className="rounded-xl border border-white/10 bg-slate-800/30 p-4">
-                    <h3 className="mb-3 text-sm font-semibold text-white">By Topic</h3>
-                    <div className="space-y-3">
-                      {consistencyData.topicScores.slice(0, 6).map((topic, idx) => (
-                        <div key={idx}>
-                          <div className="mb-1 flex items-center justify-between text-xs">
-                            <span className="capitalize text-gray-300">{topic.topic.replace('_', ' ')}</span>
-                            <span className={`font-medium ${
+                  <div className="rounded-2xl border border-white/10 bg-slate-800/50 p-6">
+                    <h3 className="mb-6 text-lg font-bold text-white">Topic Consistency Breakdown</h3>
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {consistencyData.topicScores.map((topic, idx) => (
+                        <div key={idx} className="rounded-xl border border-white/5 bg-black/20 p-4">
+                          <div className="mb-3 flex items-center justify-between">
+                            <span className="font-medium capitalize text-gray-200">{topic.topic.replace('_', ' ')}</span>
+                            <span className={`text-sm font-bold ${
                               topic.consistency_score >= 0.8 ? 'text-emerald-400' :
                               topic.consistency_score >= 0.6 ? 'text-yellow-400' :
                               'text-red-400'
@@ -878,9 +1008,10 @@ export default function AskTDPage() {
                               {Math.round(topic.consistency_score * 100)}%
                             </span>
                           </div>
-                          <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                          
+                          <div className="mb-3 h-2 w-full overflow-hidden rounded-full bg-white/10">
                             <div 
-                              className={`h-full rounded-full transition-all ${
+                              className={`h-full rounded-full ${
                                 topic.consistency_score >= 0.8 ? 'bg-emerald-500' :
                                 topic.consistency_score >= 0.6 ? 'bg-yellow-500' :
                                 'bg-red-500'
@@ -888,95 +1019,114 @@ export default function AskTDPage() {
                               style={{ width: `${topic.consistency_score * 100}%` }}
                             />
                           </div>
-                          <p className="mt-0.5 text-[10px] text-gray-500">
-                            {topic.total_statements} statements, {topic.position_changes} changes
-                          </p>
+                          
+                          <div className="flex items-center justify-between text-xs text-gray-500">
+                            <span>{topic.total_statements} statements</span>
+                            <span>{topic.position_changes} changes</span>
+                          </div>
                         </div>
                       ))}
                     </div>
-                  </div>
-                )}
-
-                {/* Recent Position Changes */}
-                {consistencyData?.recentPositionChanges && consistencyData.recentPositionChanges.length > 0 && (
-                  <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4">
-                    <div className="mb-3 flex items-center gap-2">
-                      <AlertTriangle className="h-4 w-4 text-yellow-400" />
-                      <h3 className="text-sm font-semibold text-yellow-400">Position Changes</h3>
-                    </div>
-                    <div className="space-y-3">
-                      {consistencyData.recentPositionChanges.slice(0, 3).map((change, idx) => (
-                        <div key={idx} className="rounded-lg bg-white/5 p-2">
-                          <div className="flex items-center gap-2 text-xs">
-                            <span className="capitalize font-medium text-white">{change.topic.replace('_', ' ')}</span>
-                            <span className="text-gray-500">•</span>
-                            <span className="text-gray-400">
-                              {new Date(change.statement_date).toLocaleDateString('en-IE', { month: 'short', year: 'numeric' })}
-                            </span>
-                          </div>
-                          <div className="mt-1 flex items-center gap-1 text-xs">
-                            <span className="text-red-400">{change.previous_stance}</span>
-                            <span className="text-gray-500">→</span>
-                            <span className="text-emerald-400">{change.stance}</span>
-                          </div>
-                          <p className="mt-1 text-[10px] text-gray-400 line-clamp-2">
-                            {change.stance_summary}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* No Data State */}
-                {!consistencyLoading && (!consistencyData?.topicScores || consistencyData.topicScores.length === 0) && (
-                  <div className="rounded-xl border border-white/10 bg-slate-800/30 p-4 text-center">
-                    <Clock className="mx-auto mb-2 h-8 w-8 text-gray-600" />
-                    <p className="text-sm text-gray-400">Stance analysis pending</p>
-                    <p className="mt-1 text-xs text-gray-500">
-                      Chat to explore their debate record
-                    </p>
                   </div>
                 )}
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>
 
-      {/* Fixed Input Area - positioned above bottom nav on mobile */}
-      {selectedTD && !showSearch && (
+      {/* Fixed Chat Input (Only visible when TD selected and on Chat tab) */}
+      {selectedTD && !showSearch && activeTab === 'chat' && (
         <div 
-          className="fixed inset-x-0 z-50 border-t border-white/10 bg-slate-950/95 backdrop-blur-xl"
+          className="fixed inset-x-0 z-50 border-t border-white/10 bg-gray-900/95 backdrop-blur-xl"
           style={{ 
-            bottom: 'calc(56px + env(safe-area-inset-bottom, 0px))', // Height of bottom nav + safe area
+            bottom: 'calc(56px + env(safe-area-inset-bottom, 0px))',
           }}
         >
           <div className="mx-auto max-w-5xl px-4 py-3">
-            <div className="flex items-center gap-3">
-              <div className="flex-1">
-                <input
-                  type="text"
+            <div className="flex items-end gap-3">
+              <div className="flex-1 rounded-2xl border border-white/10 bg-white/5 p-1 transition-all focus-within:border-emerald-500/50 focus-within:ring-1 focus-within:ring-emerald-500/20">
+                <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={handleKeyDown}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSend();
+                    }
+                  }}
                   placeholder={`Ask ${selectedTD.politician_name} a question...`}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20"
+                  className="max-h-32 w-full resize-none bg-transparent px-4 py-3 text-sm text-white placeholder-gray-500 outline-none"
+                  rows={1}
                   disabled={chatMutation.isPending}
                 />
               </div>
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || chatMutation.isPending}
-                className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg shadow-emerald-500/20 transition-all hover:shadow-emerald-500/40 disabled:opacity-50 disabled:shadow-none"
+                className="mb-1 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg shadow-emerald-500/20 transition-all hover:shadow-emerald-500/40 disabled:opacity-50 disabled:shadow-none"
               >
                 <Send className="h-5 w-5" />
               </button>
             </div>
             
-            <div className="mt-2 flex items-center gap-1.5 text-xs text-gray-500">
-              <AlertCircle className="h-3 w-3" />
-              <span>AI-generated from public debate records • Not official statements</span>
+            <div className="mt-2 flex justify-center text-[10px] text-gray-500">
+              AI can make mistakes. Check official records.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Info Modal */}
+      {showInfoModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="w-full max-w-md rounded-2xl border border-white/10 bg-slate-900 p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-emerald-400" />
+                About Ask a TD
+              </h3>
+              <button
+                onClick={() => setShowInfoModal(false)}
+                className="rounded-lg p-1 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <div className="space-y-4 text-sm text-gray-300">
+              <p>
+                This tool allows you to query the parliamentary record of any TD. The AI responses are grounded in actual Dáil debate transcripts, allowing you to explore their stances, consistency, and policy positions quickly.
+              </p>
+              
+              <div className="rounded-xl bg-white/5 p-4">
+                <h4 className="mb-2 font-medium text-white flex items-center gap-2">
+                  <Bot className="h-4 w-4 text-emerald-400" />
+                  How it works
+                </h4>
+                <ul className="list-disc pl-4 space-y-1 text-gray-400">
+                  <li>Search for any TD to start a session</li>
+                  <li>Ask about their stance on specific bills or topics</li>
+                  <li>Check their consistency score based on past statements</li>
+                  <li>View citations linking back to debate dates</li>
+                </ul>
+              </div>
+
+              <div className="flex items-start gap-2 rounded-lg border border-yellow-500/20 bg-yellow-500/5 p-3 text-xs text-yellow-200/80">
+                <AlertTriangle className="h-4 w-4 shrink-0 text-yellow-500" />
+                <p>
+                  Responses are AI-generated interpretations of public records. They are not official statements from the politicians. Always verify with official sources.
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => setShowInfoModal(false)}
+                className="rounded-xl bg-white text-slate-900 px-4 py-2 text-sm font-semibold hover:bg-gray-200 transition-colors"
+              >
+                Got it
+              </button>
             </div>
           </div>
         </div>

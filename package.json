@@ -29,6 +29,7 @@
     "debates:outcomes": "tsx scripts/generate-debate-outcomes.ts",
     "debates:highlights": "tsx scripts/generate-debate-highlights.ts",
     "debates:evaluate": "tsx scripts/evaluate-debate-participants.ts",
+    "debates:summaries": "tsx server/jobs/processDebateSummaries.ts --limit 50 --concurrency 3",
     "debates:section-contributions": "tsx scripts/calc-debate-section-contributions.ts",
     "debates:pipeline": "tsx scripts/run-debate-scoring-pipeline.ts",
     "policy-votes:backfill": "tsx server/scripts/backfillPolicyOpportunities.ts",

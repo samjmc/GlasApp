@@ -1,0 +1,820 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-03/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-03/debate"/>
+          <FRBRdate date="2025-12-03" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-03/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-03/debate/mul@"/>
+          <FRBRdate date="2025-12-03" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-03/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-03/debate/mul@.akn"/>
+          <FRBRdate date="2025-12-09" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-12-03">Dé Céadaoin, 03 Nollaig 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-12-03">Wednesday, 03 December 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#TeresaCostello">Teresa Costello</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#ColmBurke">Teachta / Deputy Colm Burke sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-12-03T09:30:00+00:00"/></heading>
+        <speech by="#" eId="spk_1">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T09:30:00+00:00"/></from>
+          <p eId="para_12">Apologies have been received from the Chair, Deputy Pádraig Rice. I propose that we go into private session. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> The joint committee went into private session at 9.32 a.m., suspended at 9.38 a.m. and resumed in public session at 9.39 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Delivery of the National Framework for Full Digitisation of Irish Healthcare Records and Information Systems: Discussion<recordedTime time="2025-12-03T09:30:00+00:00"/></heading>
+        <speech by="#" eId="spk_2">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T09:30:00+00:00"/></from>
+          <p eId="para_13">I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings.</p>
+          <p eId="para_14">Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any members participating via MS Teams, prior to contributing to the meeting, to confirm they are on the grounds of the Leinster House complex.</p>
+          <p eId="para_15"> Today, the committee will consider issues relating to progress in the delivery of the national framework for the full digitalisation of Irish healthcare records and information in systems. The framework, which was launched in May of last year, sets out a roadmap to digitally transform the health service and improve access for patients. Its aims include providing citizens with medical records, the integration of patient records and the use of electronic health records. It is built on the recognition of the role that digitalisation will play in shaping our health service and providing the best possible response to the needs of patients. To commence the committee's consideration of this matter, I welcome from the Department of Health Mr. Derek Tierney, assistant secretary, infrastructure division; Ms Rachel Kenna, chief nursing officer; and Mr. Niall Sinnott, principal officer, infrastructure division. From the HSE we have Mr. Damien McCallion, chief technology and transformation officer, Ms Sara Long, regional executive officer, Mr. Fran Thompson, chief information officer, and Dr. Brendan Murphy, chief medical information officer. They are all very welcome.</p>
+          <p eId="para_16"> Members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if speakers' statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> I invite Mr. Tierney to make opening remarks on behalf of the Department of Health.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T09:40:00+00:00"/></from>
+          <p eId="para_18">I am pleased to be here today. I hold responsibility for health infrastructure, including our digital agenda, and I am joined by my colleagues Rachel Kenna and Niall Sinnott. I thank the committee for the opportunity to speak about digital health, technology that makes healthcare safer, faster, and more connected for everyone. Imagine a health system where every patient has one digital record, care is connected across all settings, and clinicians spend more time with patients, not paperwork. That is the future we are building towards. Ireland has achieved remarkable progress in terms of life expectancy, preventable and treatable mortality. These figures show the strength of our healthcare system and the dedication of our professionals who deliver it every day, but behind these successes, we know and understand that patients and clinicians face real challenges. Our patient health records are fragmented and mostly paper-based. Clinicians often lack access to timely data to make decisions. Patients cannot easily access their own health information or be empowered to manage their own care. People are being treated in hospital with conditions that can be managed from home. Without change, rising demand and our population demographics will overwhelm our health service. Fragmented systems will continue to impact quality of care and our ability to deliver integrated care, and will remove any opportunities to counteract the effect of increasing costs or inefficiencies.</p>
+          <p eId="para_19"> Investing in digital health is not a choice, it is a necessity to safeguard the health of Ireland tomorrow. It will empower patients with access to their own health information. It will give clinicians real-time data to make better decisions. It will enable the streamlining of care processes within hospitals and community settings, integrating that care. It will enable the provision of healthcare closer to home. It is a key enabler for the reform and modernisation of our health service. It will also allow us plan services at a population health level. Lastly, it will help us manage demand efficiently and will ensure our resources are optimally deployed, ensuring sustainability for the future.</p>
+          <p eId="para_20"> Digital health is at the core of Sláintecare’s vision to build a health service that works together, puts people first, and gives patients more control and clinicians the tools they need to deliver the best care. Without action, these pressures will not only persist but also lead to unsustainable levels. At the same time, Government and the EU have set clear expectations. Health services must move from paper to digital records, strengthen data security, and give every patient access to their own health information. Meeting these commitments, and delivering safer, more connected care, requires leadership and continued political support. This will also require that we continue to listen to patients, services users, staff and stakeholders to support digital adoption and ensure alternative pathways are available to avoid digital exclusion.</p>
+          <p eId="para_21"> As the Leas-Chathaoirleach said, last year, we published Digital for Care: A Digital Health Framework for Ireland 2024–2030. This strategy sets out a clear vision for a modern, connected health system that empowers patients and supports clinicians to deliver care safely and efficiently. At the same time, we work closely with the HSE to develop an implementation roadmap so we can start delivering tangible benefit as soon as possible. I am pleased to inform this committee that this transformation is already under way at pace and is backed by increased dedicated capital allocation for digital health in the recent NDP. This funding allows us commence the digital infrastructure that underpins and enables safe, integrated care. My colleague, Mr. Damien McCallion, will give a further update across areas of focus. Through increased funding and a clear roadmap, we are deploying advanced digital technologies to connect fragmented processes into integrated care models with the aim of delivering seamless, patient-centred services and equipping staff with tools that meet evolving needs for decades to come.</p>
+          <p eId="para_22"> Progress is real and measurable. This year, we launched the HSE health app. We recently released version 3. Those who have downloaded the app can see what waiting lists they are on and any GP referrals made on their behalf. The national shared care record, which is about joining up a minimum set of data, has quietly gone live in the Waterford–Wexford region and is being used by a small number of clinicians in this first beta use. Over 2026 and 2027, it will scale to create a single, secure view of a core set of patient information across GP practices, community pharmacies, hospitals and where we have data in the community. The maternal and newborn clinical management system went live in the two of the largest remaining dedicated maternity hospitals in 2025. This means that 70% of babies in Ireland are born with a digital record. The focus for 2026 and beyond will be to look to deploy the system in the maternity, gynaecological and neonatal units within our hospitals. Virtual wards are transforming how we deliver care, bringing hospital level care into people’s homes, reducing length of stay and freeing up beds for other patients who need them while improving patient comfort and outcomes. By year end, our goal is for acute virtual wards to be operational in five of our six health regions, and we will scale to six and beyond in 2026. Next, Ireland is preparing to deliver one, fully integrated, secure digital health record for every patient. This is about ensuring digital health records will be secure but at the same time, readily available to the clinicians who care for patients no matter where they are located, making treatment safer and more connected.</p>
+          <p eId="para_23"> The Minister will shortly bring the preliminary business case for a national EHR system to Government and, subject to the Government's decision, will put us on course towards substantial engagement with vendors while also continuing with planning and preparations across the health service, and enact the Health Information Bill to enable this transformation. This will represent a major investment by the State that is aligned with the programme for Government commitment to fully digitise healthcare records and information systems and the ambitions set out in Sláintecare. We will use the technology that underpins the national shared care record to connect data captured by the HSE in the national EHR and connected systems such as diagnostics, laboratories, data lakes with that data collected by GPs, community pharmacies and, in time, other third parties such as private healthcare providers, developing a digital health ecosystem for Ireland's patients. These developments show that digital health is no longer aspirational. It is being implemented at scale, improving patient experience, clinician, management and administration efficiency and, ultimately, systems resilience. Investing now means better care for everyone and ensures Ireland keeps pace with the regulatory landscape emerging from Europe, including the European health data space, the EU Artificial Intelligence Act, and the network and information security directive on cybersecurity.</p>
+          <p eId="para_24"> Investment in digital is also about trust. Health systems worldwide face growing risks, from data misuse, ransomware and cyber threats to cross-border compliance requirements and strict international standards for privacy and security. Without robust digital infrastructure, we risk exposure, reputational damage and falling behind global best practice. By acting now, we are ensuring resilience, compliance and confidence in the integrity of our health system that will deliver a health service for our public.</p>
+          <p eId="para_25"> Alongside this, the Minister will shortly publish our AI strategy for care in the early new year. This will look to leverage predictive analytics that identify patients at risk earlier, and AI-powered decision support tools that help clinicians make faster choices, remove paper and free up more time to dedicate to delivering safer choices. These technologies are also about unlocking new possibilities for personalised care. As we expand digital infrastructure, AI will play a critical role in reducing waiting times, improving resource planning, detecting and speeding up diagnosis and decision support, and ensuring patients receive the right care at the right time.</p>
+          <p eId="para_26">Our ambition is clear; we will deliver a fully connected health system - one digital record for patients, shared seamlessly across all care settings and this journey is under way. However, this is not just about a technology upgrade; it is a fundamental enabler of reform to deliver better health outcomes. This will mean change to how services are currently delivered and staff will need to be supported through this change. Integrated data will support clinicians, empower patients and make care safer, faster and more equitable. This transformation underpins Sláintecare’s vision for joined-up care and ensures digital health becomes a driver of system-wide change, not a stand-alone initiative. </p>
+          <p eId="para_27"> Digital health is increasingly recognised worldwide as essential for better care and healthier communities. It is central to improving outcomes, reducing risk and ensuring sustainability in the longer term. With the committee's continued support, together we can accelerate this transformation and create a health system that is safe, better connected, future-ready and one that delivers world-class care and truly puts patients first.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T09:50:00+00:00"/></from>
+          <p eId="para_28">I thank Mr. Tierney for his presentation about the work the Department is doing in this area. I call Mr. McCallion from the HSE to give his presentation.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T09:50:00+00:00"/></from>
+          <p eId="para_29">I might skip over certain sections that my colleague has covered. I thank members for the invitation to meet with the committee in relation to progress on the national strategy, Digital for Care 2030. I mentioned my colleagues and I am also joined by Treasa Dempsey. </p>
+          <p eId="para_30"> The committee will be aware from Mr. Tierney that the development and delivery of digital health has a clear policy direction provided through the Digital for Care 2030 strategy, which was published in 2024. Building on the foundations of Sláintecare, I am pleased to discuss the progress we have made, future plans and how we aim to address the challenges around digital transformation. </p>
+          <p eId="para_31"> The HSE's digital estate is the largest of any public or private organisation in the country. For example, we have over 144,000 users and process over 2 million emails per day. Despite that significant digital infrastructure, Ireland has performed poorly in some of the EU rankings on digitisation of health records. This is because we have had limited national solutions in place across our health and social care system. The implementation of this new strategy will address this. </p>
+          <p eId="para_32"> The rationale for investment, when we compare it with other areas of our health service that need investment, focuses on supporting the delivery of integrated care in the new health regions; meeting public expectations when interacting with our health services; improving patient care and safety of services; improved employee experience; improved operational efficiencies and productivity; improved access to care; and regulatory compliance. It is critical that we look at this investment through the patient and service lens rather than through the technology. Digital transformation programmes with a greater emphasis on the integration of community-based and acute-based services means that the requirement for the digitisation of healthcare is more prevalent than ever. We have developed a mantra that any solution has to be focused on patients, clinically led, operationally driven and digitally enabled. </p>
+          <p eId="para_33"> Mr. Tierney referred some of the implementations so I will not go over them again, but we have made progress. I want to draw attention to the six maternity hospitals where we have a full electronic health record and can see the benefits. To illustrate the benefits to patients and services, I will highlight the imaging record programme as an example. This will be deployed in all acute hospitals, with the last two hospitals connected by quarter 1 2026. It removes the old films that members may remember from years ago, enables instant access to all images as against retrieving printed paper from filing cabinets, enables radiologists to read images from anywhere in the country and supports research and education. </p>
+          <p eId="para_34"> For example, a young child with a head injury in County Donegal can now have their image read by a specialist in the neuro centre in Dublin. There is huge change in that regard. To further illustrate that nothing stands still, we are already going to upgrade this system in 2026, connecting private radiology providers commissioned by the HSE and introducing artificial intelligence, AI, to support clinical decision-making. The most critical project is the national electronic health record, called our one health record programme, which Mr. Tierney set out. In parallel with the procurement process, the HSE has been working on the procurement strategy, the workforce plan, the technology plan and rolling out a clear communication plan while the business case is approved. We have also commenced additional digital transformation programs, such as the HSE laboratory record, HSE medication record and HSE community care record. This represents a clear and stepwise approach, which we believe is necessary, as we work towards the delivery of integrated records.</p>
+          <p eId="para_35"> The are also wider societal benefits and the implementation of this project will support research and clinical trials with both industry and academia. I have met with IDA Ireland officials and many of the country managers of life sciences in other parts industry are supportive of the programme as it provides the potential for data to be used for research, with the appropriate safeguards in place and in terms of protecting jobs.</p>
+          <p eId="para_36"> The HSE also has a memorandum of understanding for 12 months with Healthtech Ireland. We believe this partnership with industry is important to assist delivery of our digital programme, but also to support businesses in Ireland where we can.</p>
+          <p eId="para_37"> In terms of security, the safety and security of our data and systems are paramount. We all still remember the impact of the cyberattack on the HSE and we continue to apply learning from that attack. As a result, we continue to invest and improve our resilience and response by investing additional resources and expertise in our security systems. </p>
+          <p eId="para_38"> It is clear that technology, particularly AI, is impacting in a substantial way right across our society. There is much speculation on the impact of AI across many industries, both in terms of opportunities and threats to established ways of working. Health and social care are no different. </p>
+          <p eId="para_39"> In order to get ahead of the curve on AI adoption, I appointed the HSE’s first chief data and analytics officer, CDAO, earlier this year. Some of his key priorities were to develop an AI strategy for healthcare, a framework to support the implementation of solutions and to prioritise key services where AI could make a difference. The strategy and framework are now completed, and I expect those to be launched shortly. </p>
+          <p eId="para_40"> It is also evident that for AI to have a positive impact, it needs good quality data. Hence, the HSE commenced a process this year to develop a data strategy and implementation plan that will look at areas such as data standards, data quality, data sharing, secondary use of data and data analytics, while my colleague referred to the health information Bill. </p>
+          <p eId="para_41"> I am always conscious that while digital health is important, we need to understand the digital access challenges some communities face. We must ensure there is a clear alternative for those people who may be more marginalised in terms of digital access, while recognising the need to accelerate digital transformation. </p>
+          <p eId="para_42"> We are also aware that digital transformation presents many challenges to ensure successful delivery. Hence, we have developed and strengthened our digital operating model within the health system to support this transformation programme. Some of the areas we have focused on include good governance, patient engagement, the establishment of one digital community, clinical leadership, operational drive, the establishment of a partnership model in terms of how we use expertise and the establishment of a digital transformation office to drive this forward.</p>
+          <p eId="para_43"> I thank the committee members for their time and their interest in this area. We are starting from a relatively low base. However, we can build on the success to date with support, investment and enthusiasm to radically change our healthcare system using digital health as a key enabler. I would like to acknowledge the commitment of our staff to improving our services through the implementation of digital solutions. This often involves substantial changes in how they work and a need to learn new tools and systems. Despite these changes, I am constantly challenged by our staff to accelerate the digital health and digitisation of our health system to ensure we improve services for our patients and indeed our staff. We have already seen the benefits through targeted investments in areas such as maternity and neonatal services. We want to extend this across our entire health and social care system. This project has, for example, benefited the women using our maternity services, our staff who work in the service and the quality of the service itself. A national digital transformation will not happen overnight, but we are on the right path. Our job now is to stay focused, keep listening and continue to build the solutions that work for people both inside and outside the health system.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T09:50:00+00:00"/></from>
+          <p eId="para_44">I thank Mr. McCallion and all of his staff in the HSE for the progress that has been made. I have no doubt whatsoever that the progress will continue as clearly set out in the plan. I call the first contributor from Fianna Fáil. Each member has seven minutes in this session.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_7">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T09:50:00+00:00"/></from>
+          <p eId="para_45">I thank Mr. McCallion and Mr. Tierney for coming in. It was really important that they did so. This is critical. We do not need imagination to understand what digitalisation in healthcare means. We have gone from the age where we do not leave our parishes, counties or country. We go to Spain, Portugal, United States and the UK, where healthcare is digitalised. Why are the witnesses asking us to imagine a situation like this? We do not have to imagine it.</p>
+          <p eId="para_46"> Mr. McCallion said that Ireland is starting from a relatively low base. My God almighty, we would be a non-league side in soccer terms. We are so far off the charts. We have no chance of meeting the EU digital compass target of all citizens getting access to electronic health records by 2030. We are so far off the top of the league, we are the worst of the worst. It really is difficult.</p>
+          <p eId="para_47"> Mr. McCallion gave the example of someone having an X-ray in one part of the country and a specialist reading it in another. I will very quickly give him a patient experience. A woman with a retinal bleed, which is a bleed at the back of the eye, attended University Hospital Galway, UHG, last Thursday. She had a two and half hour wait and was sent home because there was no senior doctor to see her. She was seen by a junior doctor. She was then seen at 2 p.m. on Friday after waiting four and half hours. At a quarter to six in the evening, she was told by a junior doctor that nothing could be done until the weekend was over. She had travelled an hour to the hospital.</p>
+          <p eId="para_48">Then, in desperation, the family rang every private hospital. They do not have the resources to do that. They eventually went to the optician, who said there was a bleed at the back of the eye, that the case was urgent and that the woman needed to see a consultant ophthalmologist. The woman went back to the hospital on Monday morning and no one knew where her charts were. She waited for nearly eight hours and then went home in frustration. I spoke to her daughter on Monday afternoon and insisted that she go back to the hospital. It was too late to go in at 6 p.m. it was clear to me that she was not going to get a satisfactory service. First, no one could find her chart when she went in. Eventually, after insisting and saying that I, her GP, would write a complaint to hospital management, she was brought to see a senior doctor, who was very kind to her and dealt with her problem. However, he had to start from the beginning because her chart had been left in a van that had brought it to Merlin Park University Hospital, across the city, to be scanned into the system. It was not available in order for her to be examined again. That is the reality of the level at which we are starting in our digitalisation of the health service. None of the fine words about the lead-in, aspiration, imagination and security mean anything to the patient on the ground. We can throw as much money as we like at the health service but unless we digitalise it, we will not achieve commensurate productivity.</p>
+          <p eId="para_49"> My questions are simple. Do Mr. McCallion and Mr. Tierney believe we will meet the 2030 digital compass target of the EU? I ask them to respond briefly.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_50">Sure. To any patient who has had the experience described, we apologise. Obviously, we do not want that to happen. We want to get to circumstances in which a patient’s chart will be available. We have a project called the shared care record project that will enable this through taking information from hospitals and GPs, thus addressing the experience of the patient the Deputy talked about whose chart was sent to the opposite side of Galway city.</p>
+          <p eId="para_51"> My colleague Mr. Tierney might wish to comment on this also. The shared care record will pull information from the various sources. It went live in Waterford and Wexford just in the past week. It will take information from GPs and hospitals. Initially, it will contain information such as discharge letters, laboratory results, radiology results-----</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_9">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_52">I understand that. Is there an adequate budget to deliver on this in the next four years?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_53">I am confident, based on the funding stream we have, that we can deliver on it. We have a budget for the shared care record project and I am confident we can achieve in this regard.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_11">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_54">What is Mr. Tierney’s answer?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_55">I will be a bit more categorical: the answer is “Yes”.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_13">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_56">That is good. Considering the frailty of the HSE’s IT system and the attack on it, what have we done to improve its resilience? The doctor who was very kind to the patient I spoke about described the system as archaic. What has been done to improve the resilience of our systems in case of another cyberattack?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_57">There are two things. From a cyber perspective, in 2021 we did not have in the HSE a chief information and security officer, we had only about ten staff working in this area, and we had no dedicated budget. We now have a senior person, the chief information and security officer, who was recruited externally, and we have 70 staff and over €70 million invested.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_15">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_58">That is good.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_59">It is not just about money and resources as we are trying to modernise and lift up many of the systems the Deputy described. I accept his point that we are at the bottom of the league table but I believe that, with the steps we have set out, we can move ourselves up that league table.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_17">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_60">We are not even at the bottom of the league table. There are four divisions in the English football league but we are non-league. We are the only one. In every single report I have read by the European Court of Auditors, Ireland is mentioned as an absolute outlier. Could Mr. Tierney make a comment on that, please?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_61">Maybe I will deal with where we are in terms of digital maturity. I accept all the criticism. It is fair. We are coming from a low base. We have the most extensive ICT network in the country. However, we will meet the digital decade target substantively by 2030. Our ambition is to get there sooner and go beyond it. The shared care record is the way we unlock that ambition and move up the league table. I am very confident that, even within the next two years, we will start surpassing some of our European peers in respect of our digital maturity.</p>
+          <p eId="para_62"> Let me break down the arrangements we put in place for cybersecurity since 2012. We have mandated the HSE to make a senior appointment at the highest level available in terms of professionalisation. We have established what we call a security operations centre to give dedicated focus. We are now building our cybersecurity maturity in line with an international best practice standard called the network and information systems, NIS, standard and we are moving up the maturity curve. We have ring-fenced annual funding to build our security. We recognise that we have to secure our foundation to deliver on our ambition, and that is what we are doing with intent.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_63">I have one more point. The only guarantee in cybersecurity is that there will be another attack. Therefore, the other aspect is to make sure we are prepared and can deal with it. Even yesterday, we had a session with all our hospitals on having continuity plans, such that when they are more digitally dependent, they will know how to function when an attack happens.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_64">It is well understood now that health data comprise a more lucrative target than financial data in criminally motivated attacks. We recognise that and we are protecting our systems on that basis.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_21">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_65">I appreciate the answers.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_22">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_66">I am going to pick up on cybersecurity. Reference was made to the ransomware attack and ongoing cyber threats. If a cyberattack were to occur during nationwide electronic health record, EHR, deployment, could the HSE guarantee continuity of emergency services, acute care and maternity care? What is the plan for the worst-case scenario? If there were an attack today and nothing were accessible anymore, what would the plan be?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_67">On the process for cybersecurity, we prioritise the critical systems. There are over 3,000 systems within the health service. We have critical systems within the health service, such as our hospital patient management systems, imaging systems and laboratory systems, and each of these has a business-continuity plan for how it will function if the system goes down. To take a simple example we are working through with each hospital, an offline copy for the systems is kept, indicating which patients are in the hospital and which are due to come in. Various reports are produced every day and they are kept manually so that if something goes down – it could be a power outage, which we have had, or a cyberattack – the same continuity plan will apply. That model is applied to all the critical systems. While we develop the arrangement nationally, each hospital and community service has to be able to apply it locally and test it. Next year, we plan to run a full simulation around our cyberattack again. We conduct an annual audit on our cyber-preparedness. Obviously, the report is confidential because it refers to where there could be weaknesses, where we could address them and how we could improve. As Mr. Tierney has said, there is an international standard called NIS 2, which is what we work to. However, this is a constantly evolving challenge.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_24">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_68">Does the duplication of records not increase patient vulnerability?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_69">It increases the risk associated with the impact of an attack, meaning continuity plans are even more important than before if the system goes down. As part of our preparation for the EHR, we talked to the Canadians, the Australians, authorities in the UK, the Germans and the French. One of the things we considered was how, where they have a full electronic record, they maintain services and protect emergency services so as to have the minimal effect. Even today, our ambulance service is highly digitised. We have a full electronic health record in the back of ambulances. All the systems are available. We always have to keep testing and developing the continuity plans.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_26">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_70">Great. Have independent penetration tests been carried out on the shared care record? Will the results be published so public confidence in the system can be restored?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Fran Thompson<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_71">I will answer that question. I thank the Senator for it. Every time a system goes live or we make a change to a system such as the shared care record system, we run independent penetration tests. These are carried out by one of multiple cybersecurity companies that we use. We tend not to publish the results simply because they provide a lot of information on how the systems work at the back end. Any bad actor would be able to utilise the information, combined with other information. However, we do run the tests and have the results assessed and validated independently.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_28">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_72">Great. The HSE knows there is strong industry interest in accessing health data for research and clinical trials, as supported through the memorandum of understanding with HealthTech Ireland, but will patients have a clear opt-out arrangement for any secondary commercial use of their data? Can the HSE guarantee that no private entity will profit from public patient data without public return?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:00:00+00:00"/></from>
+          <p eId="para_73">I will take that. The Senator is talking about the obligations under the European health data space. The European health data space is all about creating an environment in which health information is used for two purposes, the first relating to primary care, including treatment, prevention and diagnosis, and the second to research. We are using the Health Information Bill to give effect to the European health data space, but the clear requirement in the secondary use of data is that it be anonymised in the first instance so it will not be attributable to any individual patient.</p>
+          <p eId="para_74">That is the guarantee by law.</p>
+          <p eId="para_75"> Second, in terms of a patient's requirement to opt in or opt out, I will get the Senator a note on that. I think the legal provision is the safeguard in the first instance.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_30">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_76">Okay, but for a private entity, we see this in pharmaceutical companies, which have influence over medical drugs and people. How can the Department guarantee that a private entity will not have influence as regards patient data-----</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_77">As I said, the primary protection is the legislative provision. Then there will need to be an assurance or an auditing regime around that, but that is the requirement under the Health Information Bill to give effect to the use of patient data for secondary use.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_32">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_78">Okay, but that-----</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_79">If there is a legal obligation, the legal obligation will have to be audited to provide that assurance.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_34">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_80">Who will audit that?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_81">Either ourselves or an independent regulator, to be defined. That is coming as part of the Health Information Bill.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_36">
+          <from>Senator Nicole Ryan<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_82">I will leave it at that. You can move on, Chair. I do not have any other questions.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_83">Next is Deputy Roche.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_38">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_84">I thank the witnesses for coming in and particularly Mr. Tierney and Mr. McCallion for their comprehensive statement. Far be it from me to be critical because the witnesses have come here with what I consider to be great news in terms of the way things will work going forward. I am open to correction but I imagine that the cyberattack that occurred was probably a good thing in the context of what the witnesses are planning now and in conceivably mitigating another attack that could really cause considerable damage. I imagine that, as part of what they are rolling out, that cyberattack impact is factored into the plan they have going forward. Mr. McCallion referred to the commitment or the dedication of the staff who had been part of the implementation of this and - I will not say how it inconvenienced them - how they were a major part in making sure that this plan would be implemented. I commend them on that because most staff have a lot to deal with on any day in any hospital right across the country without having to be cognisant of what is being rolled out. They do not have the time to do that. I think sometimes we ignore the challenges within the health sector. I support the praise that is given to the staff.</p>
+          <p eId="para_85"> I liked the line "It is critical that we look at this investment through the patient ... lens". That is paramount and, to me, demonstrates that this is patient centred as opposed to about processes and procedures. There is something nice about that, as well as the fact that it is operational within the six, I think, maternity hospitals. From the experience of that, is there anything the witnesses consider needs to be improved on, or is the system within those maternity hospitals working exactly as they would have anticipated?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_86">I will ask my colleague Dr. Murphy to talk to that because he led a lot of that implementation.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Dr. Brendan Murphy<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_87">I am a paediatrician and a neonatologist and have been heavily involved in that project from the outset. No system is perfect, but what I will say about the maternity newborn system is that it is operating at a very high level and continues to be optimised with input from the ground up. There is a strict governance within the system whereby any staff member at any stage, if they find something they think could be better or something that is not working well through their lens of patient safety and patient care, can bring it through the system to try to build in a change, if needed. It has been in place in the first hospital since December 2016, so we have nine years of experience at this stage and none of the end users, whether we speak to nurses, midwives, doctors in training or health and social care professionals, wants to go back.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_41">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_88">Great. That is the kind of progress-----</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Dr. Brendan Murphy<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_89">Yes, we are very proud of it.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_43">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_90">-----that we are all reaching out for and trying to perfect.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_91">Even in terms of future development, we launched the new patient app, which has about 120,000 users, last year. Since we have the electronic health record, all those women are able to get their appointments straight through to the app and store them in their calendars. We are looking now at how they could access their chart details through the app or through a browser as well so that they have full access to all their information. There is a constant evolution of all this technology. It never stands still. Ultimately, that is an improved service, in this case for maternity cases for women. They are the sorts of pieces we are trying to develop. The maternity model really showed that we could deliver that but we now need to do it at scale.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_45">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_92">My questions have been a lightbulb moment. Something occurred to me just then. For a patient awaiting an appointment, will the new digital scheme, so to speak, send an electronic message to a patient or will there be a paper copy also? I am cognisant of the fact that some people are not digitally aware. I know it was said that it was patient centred. How will they fit in in terms of that digital environment?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_93">I will give the Deputy a simple example. As regards the electronic health record, we mentioned the business case and the procurement and we are going through the steps on maternity. In the short term, what we are doing with our hospital systems is trying to move to options where people can get all of their appointments. There are 35 hospitals now on the app and people can get their appointments through the Health App. We are moving to texting but we will always give people the option because you could be an elderly person who wants a letter. We are also moving to put a project in place whereby people will be able to declare that once. Many elderly people, for example, or others in the system will link in with multiple services, so we have to know what their communication methods of choice are. When we do not have a single record, that is more complex because we have to do that. Regarding vaccinations, for example, we send texts out. That has a big cost benefit because we can then invest that money in the service. I think the texting costs are probably in the region of €150,000 through this winter. If we were to send all that out by paper, it would have been over €1 million for all that correspondence. That money can be invested in services rather than tied up. Equally, I mentioned people who were marginalised. If someone wants that paper option, we will have to be able to give it to them. We are trying to progress some of that work while we do the electronic record in parallel. Many of our GPs already do that. They have modernised their systems over many years. We are working in the short term to take that out in hospitals, breast screening appointments and other areas of high volume where we have that option for people - they all go to the app at the moment - but we need to know people's preferences. We also have to be able to see whether they have actually opened the message on their app or whether they have received the text and opened it so that we can be assured that they have actually got the contact. If they have not, we have to step through it. The NHS has put this in place and we are working with the NHS in order that we do not just reinvent it all ourselves but we can leverage what it has done.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_47">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_94">Excellent. I have about 14 seconds. Deputy Daly asked about the funding, to which Mr. Tierney gave a categoric "Yes". Can we anticipate that the plan will be implemented within the timeframe that has been suggested?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_95">I will take that. Obviously, we work in investment cycles of five years. We successfully negotiated a sufficient amount to do what we need to do in this first five-year block within our NDP allocation. I will give the Deputy an example. When I started in this role, our capital allocation for digital health was €30 million a year. We started out with 300 staff looking after the entire digital system for health. That is now €200 million a year and our staff number about 1,200 or 1,300. Mr. Thompson might have a few more hidden somewhere in the back drawer, but that is where we are. We will double, and probably treble, it over the lifetime of this NDP because we have to. It is clear. This is what we have to do. That is my intent anyway.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_96">I call Deputy Cahill.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_50">
+          <from>Deputy Michael Cahill<recordedTime time="2025-12-03T10:10:00+00:00"/></from>
+          <p eId="para_97">I welcome our guests. Digitalisation is a no-brainer. It will obviously lead to improved healthcare, improve results and save lives when implemented. We have been speaking about digitalisation for many years now.</p>
+          <p eId="para_98">How come we are so slow to implement changes that will actually benefit our people? All going well, what is the earliest possible date we will have the system fully operational? It obviously cannot happen soon enough. Digitalisation has been actually up and running in private hospitals for a number of years. It has been going for at least ten years. That begs the question as to why we are still in the Dark Ages when we are talking about something that is going to benefit all our people and that will produce improved and fantastic results.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_99">I might start with that question, if the Deputy does not mind. We do not have any choice now but to digitise our health service. If we look back at our investment decisions, we have many priorities and this has not been a priority. I want to be clear and honest with the committee. It is now a priority.</p>
+          <p eId="para_100"> We are taking a staged approach because I need to give the public and all our stakeholders, including the Oireachtas and committee members, confidence that we can start delivering benefits as soon as possible. Our approach has been to launch the app. I would not normally start with an app without a foundation system, but we have put a system behind the app whereby we can start connecting information and giving it back to patients. At a minimum, people can see details of their reimbursed meds, self-declared meds, flu vaccinations, Covid vaccinations and minimum demographic information on the system. We will keep adding function and utility in order that it will become a very purposeful application for members of the public.</p>
+          <p eId="para_101"> We are also launching a shared care record. To break down what this means, we know there is a wealth of information in GP practice systems but it is almost isolated. We need to be able to reach in and take what is important in order to provide care no matter where people are based in the country and no matter what care they are receiving. We need to be in a position to leverage GP data, hospital data, community data, where it exists, and laboratory data, including bloods and diagnostics. It is about bringing all this information together such that, no matter where they live, where they are receiving the service or who is providing it, people will have a minimum set of medical and patient data and history that will help in the context of a degree of diagnosis or decision support.</p>
+          <p eId="para_102"> That will really start to give us a foundation for integrated care because it will mean that people’s records will follow them on their journey. Our enterprise electronic health record, which is a national project, gives us very deep capability. Subject to a Government decision, we have at least a 12-month procurement exercise in front of us because this is a significant investment and we have to do it correctly. I will be pushing Mr. McCallion and the team to see if we can get a deployment starting by the end of 2027 or very early in 2028. I am convinced that our shared care record will really start opening up opportunities for integrated care and will give health providers and patients access to information.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_103">It is about that stepwise approach and about trying to keep the pieces moving and keeping them connected. To show the Deputy the momentum on the electronic health record, we went through our board in April, through the external assurance process in July and through the major project assurance group the Government has for all capital projects in August. The matter is now with the Government for approval. That is in parallel with moving all the other pieces along. We are really putting the necessary pace behind it. The first region that is going to go in will be Ms Long’s region. As the regional executive officer, she might want to talk about what the impact is and why it is so important.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Sara Long<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_104">Dublin and north east will be the first region that will progress with the electronic health care record. At this point, we are working closely with Mr. McCallion and the team. I guess we are doing whatever it is we can to prepare for its implementation. We are not waiting, regardless of the vendor, concerning what steps we can take within the region that will lead us to the best place to move forward most quickly. My executive management team and I have, for example, been to visit the Belfast Trust, where the electronic health record is live right across acute and community services in order to see the benefits it is delivering. The purpose of our visit was also to learn lessons and ask the trust directly what things we can be doing now, regardless of the outcome of any procurement exercise, that will allow us to be best placed to move forward at pace. The trust representatives were very generous with their time and in sharing their learnings with us.</p>
+          <p eId="para_105"> We are not sitting idle waiting for this all to be done before we move forward. We could clearly see on the ground in Belfast the benefits this approach brings for patients but also the benefits it brings in the context of integration. That is what the regions are about and what we are there to do, namely deliver care in line with Sláintecare. It is about a seamless transfer between acute services and community services and back again, and seeing the electronic health care record in the community and the benefits it brings about there. Our community information systems are not where they need to be. We do not have the level of data we would want to have in them. This is a very exciting time for the regions in the context of having the ability to be able to implement this project. It is our commitment that we will implement it at pace as best we can and as the process allows.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_106">We have talked broadly to many different countries that are comparable, including New Zealand, Australia, the UK and Northern Ireland. We are not really interested in the product at the moment. It is more about what the learnings are like. The key thing that comes with this is trying to work out what the best workflows are in terms of how the patients move through the system and what are the clinical pathways for things like sepsis or whatever in order that these are defined once and agreed and delivered. Having multiple variations is where we incur lots of costs and complexities with these sorts of implementations. As Deputy Roche said, this has nothing to do with the system. It is about agreeing the clinical pathways and how a referral will go through the system when a GP refers someone. This is what the system supports. When we see it in operation, as Ms Long said, there is no paper and the potential benefit that gives in lots of areas is phenomenal.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_55">
+          <from>Deputy Michael Cahill<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_107">I thank the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_108">I call Deputy Sorca Clarke.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_57">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_109">I thank the witnesses for coming in. One of the questions I am most often asked when it comes to digitisation is why we do not have it. Unfortunately, we cannot turn back time. We cannot change previous investment and prioritisation decisions. We need to get this in place as soon as possible. It is on that basis that I want to ask a question.</p>
+          <p eId="para_110"> The witnesses are never going to get any objections from this committee when it comes to digitisation. They are not going to get any objections from medical professionals, patients or anybody else. Effectively, though, what we need is something that works and is deliverable. I am really glad to hear that from-the-ground-up feedback from the maternity area is being embedded. In terms of that and in light of the level of investment that will be required, is there a projected lifetime cost for this project to get us from the acute, maternity and all and sundry contexts right through to the community? How are the contracts, particularly those relating to vendors, being structured to ensure that any of those tweaks, changes and feedback are actually being delivered? As I said, we want something that is effective, but no computer system is a stand-alone one. If you stop tinkering at it, you have broken it. This all needs to grow and develop. How are those contracts fitting in with procurement and the lifetime projected cost? On the latter, it can even be a ballpark figure.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_111">I will start and then hand over to Mr. McCallion and Mr. Thompson. We are obliged look at the business case and the benefit to cost. In that context, we have assessed this on a ten-year basis. Our expectation is that we are going to get at least a good 20 years of this system because it is a deep investment. For appraisal purposes, to make the case to get Government support, confidence and buy-in, we assess it on a ten-year basis. At the moment, we are seeing a benefit-to-cost return on a ten-year basis of at least over 3:1. The more we stress the appraisal case with risk, and-ors and what ifs, the minimum benefit we are achieving over the ten years is 1.9. Even on a ten-year basis, and stressing the cost input in terms of risks and what might come - we cannot read the future and that is the point of appraisal, namely to stress the base case - we are still seeing a benefit. That is because the alternative is that we will still be stuck with a paper-based system.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_59">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_112">That is not an alternative.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:20:00+00:00"/></from>
+          <p eId="para_113">It is not really. To use the Deputy's language, it is a no-brainer. This is not just technology. Mr. McCallion made a very important point. We have got to make sure, for the benefit of patients - and this is our goal - that we remove inconsistency of care as we digitise our health service. We have six regions and multiple clinical pathways. Have we achieved standardisation? No. Have we achieved consistency? No. This is how we do it.</p>
+          <p eId="para_114">We sit down with the services and with the people who deliver those services to figure out the best way to map how we deliver services, and then we digitise. That means it is all about getting standardisation on a single configuration because we cannot afford to give everybody what they want for their own needs. This is how we get consistency, this is how we get standardisation and this is how we lift the bar in terms of patient care ultimately.</p>
+          <p eId="para_115"> On the contracting strategy and what our procurement strategy will be, we have already engaged with the market through what we call a pre-market engagement. That engagement has been exceptionally strong. There is such a huge interest now in our plan and our ambition. Our next stage, subject to Government decision, will be to do a shortlisting exercise to narrow the field and make sure we have the right people on the pitch. Beyond the shortlisting exercise, we would enter into a competitive dialogue. Ms Long spoke about engaging the services in parallel with the procurement to start getting standardisation and consistency around what this configuration will look like as we engage the market through competitive dialogue. The dialogue is both ways: "We think we heard you need X", "Can we just test that with you?", "Great we can provide that capability".</p>
+          <p eId="para_116"> In terms of structuring the contracts, ultimately we have our evidence and our research. We have visited quite a lot of EHR deployments. We have been to Alberta in Canada. Our colleagues have been to the UK to look at deployments. We have also learned very closely the lessons in Northern Ireland. You do not wait for perfection, you launch your deployment and then, over three or four years post launch, you start optimising. We know we can tweak, we can tailor and we can do better. You launch your deployment and then you learn from its implementation and you start optimising. The post-launch optimisation period is catered for in the contracts. Ultimately it is covered in our contract strategy. Perhaps Mr. Thompson or Mr. McCallion will add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_117">For the one health record programme, we broke the procurement into three blocks. For the first block, we have already appointed a strategic partner, which is someone who has actually done this in other jurisdictions. We had the maternity experience. We had other experiences that Mr. Thompson would have led. We knew that at a national scale we needed some more expertise, for want of a better word, from the NHS, from the United States or from Australia. We have people now who are helping us with that who have that insight. They have been through some of the pain and there is nothing like that to learn from. That was the first tender. It was awarded earlier this year to support us. The second block, as Mr. Tierney said, is for the product we are going to use and also the hosting of that. It is integrated so we are not getting one part of it and then another part. It is not a case of finding a problem and going to look for the fix. The third block looks at where we need expertise for certain things we might not have ourselves or where we need extra capacity. We are growing our own team. We have reprioritised already within it. We have another 250 resources this year, with the support of the Department, and over 300 coming in next year to work on these programmes. Many of those will be clinical staff whom we need. Dr. Brendan Murphy could talk to this in terms of the team set-up. We can get some of the external high-end digital expertise that we probably could not sustain ourselves. We have good digital teams that can support it but many of these projects need clinicians.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Dr. Brendan Murphy<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_118">At the end of the day this is a clinical project: it is patient centred, clinically led, operationally delivered and technically enabled. Regardless of who the vendor is and what the platform is, it will most likely work because it crosses many jurisdictions. Our emphasis at this point, is to ensure we keep a vision on patient centredness as we engage, even now. We have started the engagement process both with the clinical programmes and out to our regions. It will be using and harnessing that enthusiasm because the clinicians have been waiting for this. It brings its challenges around standardisation but if we engage people from the get-go and from the bottom up to harness the enthusiasm and expertise that is present in the Irish health service, we can-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_63">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_119">I will go back to my first question. What is the projected lifetime cost?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_120">I do not want to go there before we start the procurement because all I will do is put a floor target out there for the market to bid against. We can talk about it offline but I am not going to comment publicly.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_65">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_121">Great.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Fran Thompson<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_122">Many of the teams we have established for our existing programmes are multidisciplinary. As Mr. McCallion has said, they are not just IT people. They include clinical people, nurses, doctors and allied health professionals right across the line. One of the things we are trying to do now is to create product teams. They own the delivery, the support and the optimisation through the lifetime of the project. This is a learning that we have taken through from other projects. We used to do the implementation and then hand it over to some other team to look after it. These product teams will look after the totality of the project, they will get to know it, they will work with the user community and they will work with the patients to make sure the products are delivering what is required right across the line. They will also get the feedback and make the changes. This is built into it.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_67">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_123">I thank the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_124">One of the advantages of the new health regions, as Ms Long has said, is that there is a governance structure that integrates this across each of them. The system has to work across geographies, for the reason Deputy Daly mentioned earlier, but we are putting teams into each of the six regions in order that there is capacity closer to the ground to help to implement it. Otherwise it is coming from national to very local. That allows for a team in the south west, for example. Regional leads have just been appointed in each of the six regions to drive that on and work with the clinical side, including counterparts of Dr. Murphy. For example, there are chief nursing information officers, chief medical information officers and chief digital officers in each of the six regions to make sure that it is an integrated and joined-up approach, and that it is clinically led and not led by the technical side of it.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_125">I thank all of the members for their contributions. I will come back with a second round. I thank our guests for their replies. I will ask a number of questions in relation to issues that have come up. Six maternity units are fully computerised. What is the timescale for the remaining 13 units to be fully digitalised? We have many different systems in all our hospitals. We have HSE facilities and we also have public-private hospitals, such as the Mercy University Hospital in Cork and the South Infirmary Victoria University Hospital. There are a number of hospitals like that in Dublin. What is the co-ordination with them in relation to their systems? What is the co-ordination with the private hospitals? Sometimes people are transferred from a private hospital to a public hospital. It might go the opposite way as well. How are we co-ordinating the purchase of new equipment so it fits into those systems? As I understand it, there might be up to 1,500 or 1,600 different systems between all of the units. What about the co-ordination with the GP service and the pharmacies? Is there a co-ordination process to deal with all of that?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_126">I will leave the Leas-Chathaoirleach's first question for Mr. McCallion and Mr. Thompson because we have now got the six larger maternity hospitals fully deployed. We are now working through the rest and we have a programme to do that.</p>
+          <p eId="para_127"> I will deal with the Leas-Chathaoirleach's question on the Irish public healthcare system, which comprises what we call statutory hospitals and voluntary hospitals. We will be rolling out our digital health record programme right across that landscape. We publicly fund their services. Today we invest quite significant funding to support their IT and digital needs. There is great co-ordination at the moment. We are doing it through our regional structures, as Mr. McCallion said. When we deploy in region one, it will be a mix of voluntary and statutory hospitals together. That is a given and that is understood. That is the plan. It is going quite well. The engagement is quite positive in the context of our digital health programme and our ambition to digitise health records.</p>
+          <p eId="para_128"> In terms of private hospitals, ultimately we will be stipulating a standard within our procurement around interoperability because we know we have to make that connection. People have choice in terms of receiving healthcare in Ireland and we need to be able to bridge that so we will be looking at interoperability. We will be doing it well before we get into an electronic health record. We are even thinking about that in the context of the shared care record.</p>
+          <p eId="para_129"> That gives me a segue into how we make sure we connect GPs and pharmacies, ultimately. We are investing now in a shared care record that will persist forever. That is our way of joining GP, community and pharmacy care and it involves minimum data. In the short term we are connecting that with an electronic health record which is predominantly picking up all health information we gather in our hospital and our community systems in an integrated way. We will have a completely interoperable and connected digital patient record ecosystem when we finish this journey.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_130">I ask Ms Long to comment on the regions and how we bring it together.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Sara Long<recordedTime time="2025-12-03T10:30:00+00:00"/></from>
+          <p eId="para_131">As Mr. Tierney has commented, in my region when we go live with the electronic healthcare record we will be going live across all of our statutory hospitals, our voluntary hospitals and our community services. That will all be done in one approach. Our voluntary hospitals have a key role in the implementation of the electronic healthcare record across the region.</p>
+          <p eId="para_132">They are full participants in everything associated with it and have a key leadership role for us as well.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_133">Is connectivity with GPs in that equation as well?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_134">Shared care is our way to integrate GP and community pharmacy data with our electronic health records system.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_135">There are also a couple of other initiatives in terms of GPs and pharmacists. On the pharmacy side, there is an electronic prescribing project that will connect the prescription and the dispensing because there is often a gap between what is prescribed and what may be dispensed. That is one project. We also have a system that connects the GPs and pharmacists back into the system alongside the shared care record. This is to ensure that when GPs order a test, it happens seamlessly and the results come back seamlessly. A system called Healthlink is there at the moment, and we will continue to evolve that to the next generation.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_136">There is still an issue in pharmacy with non-prescription drugs that become addictive. Someone can go to ten different pharmacies in one day and get the same drug. What can be done from a computerisation point of view to help deal with that issue? It is a major challenge.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_137">What we take in at the moment is publicly reimbursed drugs in the context of our primary care reimbursement service. We have a huge reservoir of data we can look at. Clearly, where there is no reimbursement involved, that is something the pharmacists have themselves.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_138">I will answer that question as well. One of our near-term priorities, which we are out to tender on, is a system called e-prescribing. When implemented that will give us visibility of all prescriptions throughout the State. That starts to give us transparency and visibility of what is being prescribed, in what volume and to whom. That starts to allow for recognised patterns of prescribing.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_139">The problem is when it does not need to be prescribed.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_140">To be honest, that is a challenge. We are focused on what is publicly reimbursed. Pharmacists will have that information. If it is not prescribed, we do not capture that. That will remain a challenge if someone is getting non-prescribed drugs from multiple pharmacies. That will not be an easy thing to pick up. In the short term the priority is to get the prescription working seamlessly when people leave their GP. We have solutions at the moment where the prescription can be emailed. I live in Sligo, and I can pick up my medication in a pharmacy in Dublin when an email is sent up here. It will be more seamless in the future.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_141">I have a question on the long-term plan for computerisation and digitalisation. It relates to accessing files where someone who is suddenly admitted to hospital is unable to give instructions because of their medical condition. In the Danish system, the file can be accessed to see the person's history and what medication they are on. Where do we stand in relation to accessing a file where a person is not able to give instructions?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_142">There are two things. I will ask Mr. Thompson to talk about the shared care record. The Assisted Decision-Making (Capacity) Act sets out how that situation is dealt with today, independently of whether it is a paper or an electronic record.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_143">I am talking about car accidents and so on.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_144">Mr. Thompson will speak to the shared care record and its potential.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Fran Thompson<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_145">The shared care record will bring all the data we have in siloed systems into one place, which will then allow access by clinicians. It will record prescriptions that have been reimbursed through PCRS. We are collecting GP lab results, radiology results, discharge summaries and HIPE, or hospital in-patient enquiry, procedures. It is live today in Waterford and Wexford and will expand next year. It will give a clinician a good understanding of anybody who cannot communicate for whatever reason, whether it is a car accident or other issues.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_146">Will healthcare personnel like doctors and nurses who are on the front line in accident and emergency departments be allowed to get access to that?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Fran Thompson<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_147">They will have full access to it.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_88">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_148">I ask the witnesses' forgiveness. I get animated about this because I see the benefits of digitalisation. I have seen the benefits in general practice, which was largely funded by general practitioners. I also reflect on some of the good developments that happened in the general practice family, with the help of the HSE and the Department, namely, getting lab results electronically and the development of e-prescribing during Covid. I remember a particular issue with data protection. As Mr. Tierney knows because I have had this discussion with him before, we are reliant in the GP community on one provider for 95%. I will come back to that. There was a patch produced within 48 hours to make sure the data was protected. It was about the protection and privacy of prescription data, and it was not going to be available to third-party commercial firms which were obviously quite interested in it, which is interesting in itself. They will probably put their hands up and say they were not, but we know they were.</p>
+          <p eId="para_149"> I want to reflect on that and on getting the radiology results down. I am not particularly computer literate. I have been dragged screaming into the electronic world of banking because you cannot bank without being electronically connected, engage with Revenue or do a whole range of things like booking a holiday and hiring a car. In one respect, coming to the game late, which is why I was interested in what was being said about the learnings from other systems, we have the opportunity to do something great here because we have the expertise in this.</p>
+          <p eId="para_150"> I was delighted when Mr. Tierney said that perfection is the enemy of progress because I have written it down a couple of times here. Sometimes we have got into situations where we have ended up navel-gazing, postulating, producing reports and always looking for the perfect system. I think we have realised that in the electronic world there is no perfect system. There is an evolution of development, and we have to dive in to do that, obviously with safety nets.</p>
+          <p eId="para_151"> I was reassured by what Mr. Tierney said about interoperability. That is a major issue that concerns clinicians and members of the public. It is the idea that there would be different software systems for different hospitals. I will not ask about that in particular because it is probably commercially sensitive when we are dealing with a national product. However, I am reassured that it is an issue the Department and the HSE are considering. We now have the maternity system going. I hope there are not different systems. I made the point that my information suggests there would be different systems in the children's hospital and St. James's Hospital and the system in the maternity hospital is different. We need reassurance that there is interoperability, for patient safety and in terms of exposure to litigation and all the rest of it.</p>
+          <p eId="para_152"> The data piece is important. Senator Ryan made a good point about the protection of data and ensuring it is not used surreptitiously for commercial gain. The Senator is right to be concerned about it because in the NHS there was a big war over this. The NHS was looking to commercially use data that had been collected from NHS patients and sell it to third-party companies. That is something I would be utterly opposed to.</p>
+          <p eId="para_153"> I return to GPs. I will not name the company but the GP community, and the system, are dependent on one particular company. If it fails for any reason, we are in a big mess because the volume of work that happens in that setting is massive. Is any consideration being given to the idea of the HSE and the Department owning the GP software space? There would be value for general practitioners but there would also be value to the State and the health service. I do not think it would cost that much in the overall envelope of what the health service will have to invest. These are only reflections. I will start with Mr. Tierney.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:40:00+00:00"/></from>
+          <p eId="para_154">I first acknowledge Mr. Sinnott who is here. He was elbow-deep in trying to make things happen during Covid, particularly getting access to lab results and e-prescribing and putting them into an electronic format. I acknowledge his work on that.</p>
+          <p eId="para_155"> Even the European Union has recognised that interoperability between EHR systems is a must-have. It will be regulating in that space. That is not a choice any more; it will no longer be optional.</p>
+          <p eId="para_156">We would be wise within our procurement strategy to anticipate that and go after it. In our current landscape we already have EHRs, whether it is in forensics, the National Rehabilitation Hospital, children's or maternity services, but, in time, our challenge is to make sure they are interoperable in terms of daily share. That is on our agenda.</p>
+          <p eId="para_157"> In regard to data, we have GDPR as a legislative provision to protect, safeguard and provide privacy in the context of personal data and how it is used, and we live by that every day. The Health Information Bill, while it reinforces the need to share data, also has to live in that context. That protection is provided for. I take the comment on the NHS's considerations around commercialising data. That is not on our agenda and I fully take on board the comments on that.</p>
+          <p eId="para_158"> In terms of the reliance on GP vendors, the State puts a lot of support into GP practice systems. We recognise that is a consideration. That is a fact today and something we will have to work our way through in the future. I do not have anything definitive to say on that. Maybe Mr. McCallion or Mr. Thompson can reflect on it as they are closer to it.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_90">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_159">That is fine.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_160">I would not have a huge amount to say but it is something we are conscious of. The main thing is that the GP, pharmacy, primary care contractors, dentists, ophthalmologists and so on can connect into the system and out. The shared care record is one aspect of that, as is, as the Deputy mentioned, the ability to exchange information through something like Healthlink, which we have today. Obviously, we will have to grow that even further. It will become more important.</p>
+          <p eId="para_161"> We are looking at how we make sure, from a GP perspective, that works well because the GPs account, effectively, for 95% of the access into the system. That is where most patients go. The shared care record will be a lot of the glue in that when we get more information into that. Waterford and Wexford went live just in the last week, which means, to answer the Vice Chair's question, that if I went to Waterford today and keeled over, the services there would have access to certain information about me, such as the medications I am on, any discharge letters from hospital and procedures I have had. They would not have had that information yesterday or before that went live. Those measures will help and will grow.</p>
+          <p eId="para_162"> This is an issue we are conscious of in our strategy, not just in general practice but in other parts of the system as well. I mentioned imaging, laboratories and other parts earlier. It will not just be done in one system. Even Children's Health Ireland, CHI, while it will have one electronic health record, will still have several hundred other systems to do all sorts of things, from its catering to security. There will be all sorts of other systems that have to be there as well.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_163">Mr. Tierney wants to come back in.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_164">I will make one more point to round out the question. A patient should not have to be worried about who a vendor is within our supply chain. That is not the patient's concern. What we are trying to do in the Health Information Bill is ensure that, no matter where a person is receiving care, a healthcare provider and-or its vendors provide data to support that care. That is the primary provision we are going after in the Bill. Why should a patient have to start worrying about the knots I get into with my vendors? I have to figure that out. The purpose of the Bill is to give comfort and assurance to patients that their patient information travels with them on their care journey.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_165">I know the Deputy used a non-legal analogy earlier and I will take it. I remind him that Wrexham football club, with some investment, has moved up divisions in recent years, nearly to the top division, and we hope to mirror that. We will use that as an analogy.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_95">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_166">That is a fair rebuttal.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_167">It is not rebuttal. It is just where we are at but I take the point. It was a fair observation.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_168">Before I go to the next speaker, I welcome members of the finance committee from the Parliament in Greenland. They are very welcome and I hope they enjoy their stay here. This is the health committee. We are discussing the computerisation of the health service and the upgrading of the computerisation system in our hospitals. There are a number of committee members also attending online, in addition to those in attendance in the meeting room.</p>
+          <p eId="para_169"> I apologise for skipping Senator Boyle a few minutes ago. It was not intentional.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_98">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_170">That is no problem. I had to step out, so I missed a bit of the meeting. The witnesses are all very welcome. This is a very positive step which should have been taken years ago but it is great it is up and going. We might be bottom of the league but I am encouraged by Mr. Tierney's statement that we will be up there with the best of them in a couple of years. One important and very positive development to note, although I know it does not have a lot to do with this meeting, is the virtual ward in Letterkenny hospital for respiratory care. I have met 15 people who attend that clinic, and everybody I talk to says it is second to none. They are so happy with it and have 24-hour care. They can lift the phone or go online and it is a great service. I thank the Department for that because usually it hears bad news rather than good news. The witnesses should be very proud of that virtual ward, which is working very well. In a remote county like Donegal, to have people in Glencolmcille, Fanad and Inishowen who can tap in 24-7 makes a wild difference. I hope the Department has looked for more funding for Letterkenny hospital for that. When I talk to the people on the ground and see their faces, the fact they know there is somebody there means a wild lot.</p>
+          <p eId="para_171"> When I stepped out, I noticed Ms Long's area will be first. When will Donegal, Sligo, Leitrim and Galway come online? Maybe that is an unfair question.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Sara Long<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_172">It is not a fair question for me anyway.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_173">Ms Long has got the north east first. As someone who was born in Donegal, I agree with the Senator on the virtual care side. I have walked it in Letterkenny, seen it myself and talked to some of the patients, and it is super. I will ask Ms Kenna to talk about our plan for wider virtual care because it is really important. Before I hand over to Ms Kenna, I will say we have not prioritised the regions after that yet for the full health record. Simply put, we want to get everyone to a state of readiness. In some ways, we agreed Dublin and the north east first and we will go through a process of making sure people are ready. The important thing is that they have everything in place to be successful because that will be critical. There will be a decision. There are lots of other solutions. The shared care record in Waterford and Wexford will be available in the west and north west next year. We will be rolling out other parts of the system to all areas, including the west and north west, while the main electronic health record will be later.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Sara Long<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_174">We have emphasised, from the outset, that while Dublin and the north east will go first in implementation, it is important that all of the regions are involved from the outset and that all of the clinical community across all of the regions are involved from the outset. On our learning visit when we were in the North, they talked about the concept of pay forward, pay backward. This means that those who went first assisted the people who were being deployed after them on the ground during their implementation. In my region, for example, there will be an expectation that we will assist those coming after as well. It is important to say that we cannot wait until the end of implementation in Dublin and north east before we start to consider the west and north west. They all have to be considered at the same time, and then it is about deployment.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_102">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_175">I totally agree. When Ms Long is talking about the North, is there a cross-Border role? We have patients in Buncrana who attend Altnagelvin Hospital for some kinds of treatment. Will there be cross-Border sharing of information there?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_176">That is the hope. We know what the North has done. Even with our shared care record, I would like to think we could start that interoperability and data sharing because we know quite a number of members of the public in Northern Ireland cross the Border for health services. We have a commitment to cross-Border co-operation, which we want, and Mr. McCallion is involved in that. From a technical perspective, that has to be our ambition. </p>
+          <p eId="para_177"> I will steal a few moments because we have an ambition to move beyond the Letterkenny COPD virtual care model. We are doing virtual ward beds because I can open virtual beds more quickly than I can build them. That is all about boosting capacity and providing greater access. We have the islands project, which is literally shifting care to the left, as far as we can on that coast. I will ask Ms Kenna to give an update on that because it is exciting and important.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_104">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_178">It is.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Rachel Kenna<recordedTime time="2025-12-03T10:50:00+00:00"/></from>
+          <p eId="para_179">I thank the Senator very much for the opportunity and for raising this matter. Letterkenny was one of the first virtual ward concepts that we saw the benefit of for the patient and how we could grow it. In Letterkenny, to give an example, it focuses on respiratory disease but it is a real example of how we target a local issue for the population being served in an area. We have seen an 18% reduction in acute admissions this year alone to Letterkenny Hospital for patients who are using the virtual ward service, and an 83% reduction in emergency attendances three months post-discharge for these patients who are availing of that service. It is advanced nurse practitioner-led and the impacts are really paying dividends in terms of better outcomes for patients. It has seen over 240 patient attendances this year alone, so it is a really successful model for a local project. </p>
+          <p eId="para_180"> On the basis of that, we have ambition to grow the different types of models. We have seen a variety of emerging models. One example is in Cherry Orchard, where there is an integrated model that is largely based in the community. This is targeting older people who would ordinarily require hospital-based care.</p>
+          <p eId="para_181">For example, they can take an occupancy of about 70 patients at any one time. They have had 326 patients admitted through that structure between January and September of this year alone. A total of 94% of the patients who are admitted through this integrated care have had no emergency department attendance or hospital admission during their time in the community virtual ward, which indicates that they are getting appropriate care in the home setting. That is really beneficial.</p>
+          <p eId="para_182"> Interestingly, a greater impact for us is that 89% have had no emergency department presentation or hospital admission in 30 days post discharge from full care. The patients are staying well for longer periods. We are seeing the benefit of that. They are getting on and living their lives. One of the major benefits of providing care in a patient's home is that, particularly for the older population, they are much more mobile in their own home than in the hospital, so we do not seen the same percentage of frailty impact, which is really positive. The ultimate protection is from infection. At this time of year, you do not want older people in a hospital environment, so there is that benefit. The acute virtual wards are really helping us to address the issue of capacity. As Mr. Tierney said, we cannot build physical beds fast enough. We are also seeing the benefits of being able to provide acute care in the home setting. These are all patients who would need hospital-based care.</p>
+          <p eId="para_183"> We started off with two pilot sites. I think we spoke to the committee before about St. Vincent's University Hospital and Limerick. To give an idea of the impact of those, this year alone, we have had more than 1,500 patients admitted through those two wards between January and November. That is an equivalent of over 13,000 virtual bed days. Those are 13,000 bed days that would have taken up capacity in hospitals. It has cleared that capacity for other patients coming in. That is a real benefit for the system and the service, and our ability to be able to provide access to care for a greater number of patients. The good news is that we have opened up four sites as recently as last week, in Drogheda, Tullamore, the Mercy in Cork, and in Kilkenny. We will hopefully go to Galway in January and have it up and running with an acute virtual ward. We have big ambitions to grow it. We have seedling projects that are clinician-led and initiatives that have grown and evolved from champions in the system of showing clinical leadership that we hope to expand to every region as well. We are working very closely across all the regions and making sure that every region has access to virtual care. Having the variety of approaches has enabled us to allow the regions to target problems that are a particular resource issue for them.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_106">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_184">I visited with the Minister. I did not really comprehend what it was all about. A couple of months ago, I visited an elderly patient in south Donegal who was not feeling well, living on her own. She said to me that this is what she does now. She just went on. This gave reassurance to that elderly person. I must compliment the staff who are there. They are top-class. They are so caring. I checked in with her two days after and the staff had rung back on numerous occasions to make sure she was okay. It was like a big family. That is what healthcare is about. It is about looking after one another. I thank the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_185">We have a national tender running at the moment. One of the criticisms is sometimes about how you scale it. We have to make sure that our procurements and all that are in place, so we have a national tender running that facilitates wider deployment, as Ms Kenna said.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_186">As that issue was raised, I raise the issue of hospital admissions, especially coming into the Christmas period, where people are referred to hospitals from nursing homes. Have we a plan of action where a team can give advice to the nursing homes before a decision is made to admit the patient to a hospital? It is about reducing the transfers. I heard of a case of a 98-year-old being admitted to hospital from a nursing home and, four hours later, dying in hospital. Have we a mechanism in place in every part of the country to make sure that people are not transferred out of nursing home care once the advice is given?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Rachel Kenna<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_187">We can get the Leas-Chathaoirleach a comprehensive note on a number of initiatives. They are not necessarily digital, given the topic for today, but there are a number of initiatives in place to safeguard against admissions to hospital and make sure that we have contact with nursing homes. Mr. McCallion might speak on it.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_188">Some of those initiatives, though I am not saying it is universal, would be with the ambulance service. It has a clinical hub and looks at that to see whether there is a need. Sometimes if there are outbreaks in nursing homes, public health will work with them to try to avoid those unnecessary transfers. It is a challenge every year to be frank, which is the reason the Leas-Chathaoirleach is flagging it. We have a range of initiatives in place around the country to try to avoid that, because like the Chair said, someone of 98 years of age does not want to be in an acute hospital if it can be avoided at all. There is a range. We might get the Chair a note on that.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_189">This is extremely important as we come into the flu season. The nursing home wants to transfer the person when the level of care can be easily provided within the nursing home.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_190">Each of the regions are on that. It is not just about demand into hospitals. It is about the right thing for someone who is elderly who really does not need to be in an acute hospital. There are a number of things. That can come through a call to the ambulance service, an outbreak in a nursing home or public health. There is a range of initiatives to try to avoid or minimise that. We might come back to the Chair on that.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_191">It would be helpful to get a briefing note on that.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_114">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_192">I would love a briefing note on that because I think there are some really interesting initiatives there, relating to virtual wards and so on. Is it possible for the committee to get a briefing note on that and on admission rates? It is really heartening to see those initiatives. There was a time in a different era, not that long ago, where a GP would go to a nursing home and talk to a family, and if there was an elderly person, there was a joint decision about where the best place for that care was. Unfortunately, you can understand that nursing staff, often inexperienced or from another jurisdiction, feel they have to make a decision. It is a different era too. Litigation intensifies and there are different expectations. It is heartbreaking to hear of an elderly patient who is obviously moribund ending up in an ambulance and dying in a busy emergency room rather than in their own bed in a nursing home or even in their own home setting, for want of a decision to be made and explained to people. I am heartened about the initiatives. Some of that information was really good. The reduction in readmissions is massive. Those 13,000 bed days being saved in the system is massive. We really need to think that way because with an ageing complication with more complexity of illness, as we get older, if we do not think that way, we will be overwhelmed.</p>
+          <p eId="para_193"> This is a general question. What is the witnesses' view on AI and its role? If we are talking about digitalisation, how might we harness that?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T11:00:00+00:00"/></from>
+          <p eId="para_194">I will start on that and can bring Mr. Damien McCallion and Mr. Fran Thompson in too. We are clear from a policy perspective that we want to promote its use, but it has to be done responsibly, safely and ethically. There is a programme for Government commitment in the Department to develop an AI strategy for health. We have developed that, consulting broadly to make sure that we hear everybody's perspective on that. In tandem, the HSE has developed an implementation plan to put guardrails in place immediately. We see today that AI is already coming into every part of life and it is already embedded in products and devices. We have to manage that risk. It is already regulated and prescribed in legislation.</p>
+          <p eId="para_195"> The other initiative that we have undertaken involved asking HIQA to develop an AI ethical and safe use framework to provide guidance to the healthcare system, whether it is public or private. We know we will not avoid this. It is coming; it is already here. I believe it has a role. Why would it not? It is not only about providing decision support, increasing throughput, being able to diagnose quicker and providing a better and faster service, but ultimately, if you think about the opportunities it provides, in removing inefficiency and taking cost out of the system that we could use elsewhere in the system, removing that layer of administration burden, the research would tell us that you can probably recapture up to 30% of a clinician's time by removing that administrative burden. Would it not be better to use that 30% for patient engagement rather than post-patient care and trying to transcribe and write? Maybe Mr. McCallion will give us a view. We are already trialling ambient listening in three of our acute sites. We are looking to see if we can bolt it on to our electronic health record. Releasing 30% of a clinician's time is the best release of time we can do to provide opportunities to widen patient care and provide more focus on that care.</p>
+          <p eId="para_196">I would say that AI is here. It is already in our health service. We are grabbing it with both arms but we are putting guard-rails in place on the ground. We have a strategy around four domains of use, namely, clinical, operations, research and public health. We have already got initiatives under way.</p>
+          <p eId="para_197"> The clear starting point for the health service is within our imaging and how do we use AI in conjunction with our imaging because it is a contained system. It is safe. We know what comes in and we know what comes out. We can already see even, for example, the use of AI in radiology in the Mater has really increased throughput and that has freed up resource and widened access to treat more patients.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_198">Briefly, as I am conscious of the clock, the strategy for AI that is going to come out in the framework will have four elements. The first will be focused on clinical care and what can we do there. The second is around operations where we can make it more efficient. We have some robots. It is a great phrase - I always think of R2-D2 - but it literally is an electronic robot that, in Galway, for example, matches the National Treatment Purchase Fund, NTPF, waiting list and the waiting list. Someone had to sit there mind-numbingly doing that and now they are making calls around outpatients. They have received an award for that. The third is in terms of research where we think it can offer huge advantages. The last is population health planning, in running scenarios.</p>
+          <p eId="para_199"> I will talk to the clinical care element for a moment. I was in the Mater and its AI centre yesterday. It is one of the hospitals in Ms Long's group. They have done a proof of concept in radiology where they have an AI solution running that will identify pulmonary embolisms at an early stage, certain brain contortions and fractures. I was in the room with the radiologists. There was a young registrar there who said that you could not take this away because at night-time this helps when they are under pressure to prioritise what is there. For maybe more senior clinicians it can help direct some of the work but they also gave examples of where it will help in terms of identification of something that could be missed because it is not, as the committee will be aware, an exact science. It is helpful in that sense. From a quality care perspective, it aids prioritisation of work. Also, for areas such as outpatients where there is a huge demand and you are doing them over a longer period, you can pick them up earlier and get better outcomes. That is a real tangible benefit. We are now looking at that one, scaling it and putting it into our national imaging system where it will be rolled out throughout the country. That, as I said earlier, is probably one of the criticism of the past. We do something really good but then you do not see it move quickly through the country. In this instance, that will be deployed across the country.</p>
+          <p eId="para_200"> Mr. Tierney mentioned ambient listening as well, if Mr. Thompson wants to comment on that.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Fran Thompson<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_201">We have used digital recording heavily in the likes of radiology. We are now moving that to ambient listening for both radiology over a period of time but also, importantly, straight into newborn and maternal. It is trying to work with the current vendors and make sure that the ambient listening product sets that we put in are fully compatible. Even better still, if they are providing them, it makes it much easier and much simpler for us.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_202">The key point is the clinician is always in the loop. It helps you, it guides you. It might speed up your note-taking. It might speed up the summary. It might help identify things earlier but, ultimately, the clinical governance is really important.</p>
+          <p eId="para_203"> On GPs, as the Deputy will be aware, there is already a lot of work going on there. I met one in west Cork recently who is doing some of this.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_119">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_204">I am smiling. I just listened to Professor Geoffrey Hinton, the guy who got the Nobel Prize for the development of artificial intelligence. The worrying thing about that is it may well take us over but that is another day's work. I thank Mr. McCallion.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_205">I am not convinced. I think you will always need the doctor in the loop. Who would fly in a plane even though the plane can fly without a pilot.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_206">I call Deputy Cullinane.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_122">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_207">Apologies for not being here earlier. There was a health debate in the Dáil but I could not come in and not say hello.</p>
+          <p eId="para_208"> First of all, I welcome all of our witnesses. I will start by giving my own observation because we have discussed this issue of digital health systems for a long time. We are making some progress. I recognise that, certainly from a meeting that we had in the Department of Health a number of years ago where there was a detailed briefing, a very good discussion on the issues but a frustration that we were not moving as quickly as possible, and a number of sessions of this committee focused on the topic as well.</p>
+          <p eId="para_209"> Most people do not understand what electronic health records, summary care records or shared care records are but they see trolleys being rolled around hospitals with files on them, they see a paper system that does not make sense and they know instinctively that we are far behind the curve in terms of other countries and there is, or at least was, a hesitancy to accept or embrace change. At least we now have accepted that we need to improve. That is a good starting point and I want to say that.</p>
+          <p eId="para_210"> Can I establish some timelines for the record? The electronic health record would be essentially the bells and whistles. It would be a full digital system, if you like, the full monty. How long are we likely to take to get to that point? To ask the question more explicitly or bluntly, are we likely to achieve that by 2031?</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_211">Briefly, in terms of timelines, Mr. Tierney would have set out earlier that we are bringing the business case in terms of approval. We have been working up in parallel procurement and we are ready to go, effectively, to place a prior information notice, PIN, to go to shortlisting. We have already had a procurement notice out in terms of pre-market consultation.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_124">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_212">But that is not for full electronic health records.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_213">That is for the full electronic health record. We reckon that procurement period is probably around 15 months and then you have to allow approximately three months. The fastest we have seen is Alberta in Canada, which was approximately 16 months in total from PIN to contract negotiation. Some jurisdictions have taken longer.</p>
+          <p eId="para_214"> Effectively, then you have a national bill. Although it is going into Ms Long's region in Dublin and north east first, it will be built for all the regions. Everyone is bought into it. We will not get someone in Donegal, Waterford, Sligo or somewhere saying later that they were not involved. Everyone is in upfront and buys into it and then it is into deployment. The first region would be live, probably a year later, around 2029.</p>
+          <p eId="para_215"> Our plan at the moment, subject to the tender and working with the vendor, is we are doing a so-called "one-one, two-two." The first region is Dublin and north east, then another region and then two regions together. That is based on learning in Northern Ireland where they felt, having got it right and cemented it, they were able to do a number of regions together because there is a huge resources impact on the system. You also would not go live, for example, in the middle of the winter season, in terms of those pressures, so there is timing around that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_126">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_216">I accept all of that. Am I right in saying that it will take at least six or seven years before it is fully embedded across all regions and across all systems? Will that include primary care, mental health, community care, the whole health service?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_217">It is all services.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_128">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_218">On that timeframe, is it likely to be a six- or seven-year time period at a minimum?</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_219">Yes. It will be in that window and what will come down in the tender process. It will be discussions with the vendor, depending on who the successful vendor is, about capacity and all those issues in timing. We are clear that the right approach is this one-one - do one region and then another - and then speed it up with two more each, which you can do in approximately a year each. It will come down to things like timing in those discussions, but broadly 2029 for the first region and then the others to follow each year. We may be able to speed that up. That is something we will have to look at with the vendor.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_130">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_220">Would I be right in saying it is a very expensive undertaking as well?</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. Damien McCallion<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_221">It is, yes.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_132">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_222">I have asked this question previously in relation to costs and I know when you go out for tender you have to be careful. In terms of an overall fund ring-fenced for digital, which would not only be the electronic health record, EHR, as you have the mobile app and lots of other things that would fall under that umbrella, are we talking billions of euro here by 2031?</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_223">I dealt with this earlier on but I am happy to go back. Within the NDP settlement, I categorically stated earlier on we have ring-fenced and secured funding for our full digital agenda, including infrastructure and systems, over the next five years. It is a multibillion euro ambition.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_134">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_224">That is more than €1 billion.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_225">Absolutely.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_136">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_226">Is it more than €2 billion?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_227">We are getting there. I do not want to go any further now because we are close to procurement and, as I said earlier, I do not want to be putting a floor target out in the market.</p>
+          <p eId="para_228"> To go back to the Deputy's timeline question on EHR, he is right. That is the bells and whistles.</p>
+          <p eId="para_229"> I would say the shared care record is going to give us an opportunity to start that foundation for integrated care and we are not even waiting for EHR. We have launched, very quietly, our shared care record first deployment in the Deputy's constituency. Across Waterford-Wexford, that is now live to a small number of clinicians. We are calling them our beta users. Their role now is to start saying is this giving us what we need by access to GP data, access to community data, access to imaging, accessing to labs, whatever hospital data we hold and whatever community data we hold because that is the foundation of value in delivering integrated care and that stepped approach.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_138">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:10:00+00:00"/></from>
+          <p eId="para_230">I want to say, because we have very limited time, I support that approach. I support taking that step-tiered approach as we move towards the full bells and whistles.</p>
+          <p eId="para_231"> To make some closing remarks from my own perspective, I recognise that we are moving forward in this area. That is positive. I am fully supportive of moving to a full digital system because it is not fair on staff. It is not fair on clinicians. The health service depends on data and we had discussions as well about all hospitals tying into these systems, which needs to happen as well. That is really important. Clinicians can differ on lots of things but put data on the table and there can be no dispute. It is important, whether the data is financial, clinical, administrative or whatever.</p>
+          <p eId="para_232"> It helps in responding to parliamentary questions, by the way, as well because we often get responses back that they cannot answer that question because they do not collect the data. I hope we will see improvements in that space as well.</p>
+          <p eId="para_233"> I also want to talk about improvements in technology in healthcare which we are seeing. Mr. McCallion mentioned my own constituency, but we are seeing it right across the health service - in robotics, in AI, in precision surgeries. It is flabbergasting and mind-blowing, when you see what is happening. Virtual wards, where we can treat people at home and manage people with certain conditions, is an important step as well.</p>
+          <p eId="para_234">There is so much potential with technology. It is about embracing it, but it is also about funding and resourcing it. I hope that when we are sitting here in 2030 or 2031 we will have advanced very significantly and will be reaping the benefits of that because it is really important. I acknowledge the work Mr. Tierney and Mr. McCallion have done in this area because it would be transformative if we could get it over the line and get investment. </p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Derek Tierney<recordedTime time="2025-12-03T11:20:00+00:00"/></from>
+          <p eId="para_235">I thank the Deputy. We would be delighted to come back any time over 2026 up to and including 2030 just to show the progress and what we are delivering. It is important we do that so that committee members have our trust and confidence and we can provide that to the public. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_140">
+          <from>Deputy David Cullinane<recordedTime time="2025-12-03T11:20:00+00:00"/></from>
+          <p eId="para_236">Mr. Tierney might come back in a different guise.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-12-03T11:20:00+00:00"/></from>
+          <p eId="para_237">Thank you, Deputy Cullinane.</p>
+          <p eId="para_238"> We received an apology from the Cathaoirleach. I know he is involved in debate in the Dáil, as is Deputy Marie Sherlock. I understand that Senator Maria Byrne was with us online.</p>
+          <p eId="para_239"> I thank all the witnesses for the work they are doing within the Department and the HSE. I have been on this committee since 2011 and I have been raising this issue over that time period. I am delighted to say that, in fairness, that was a very positive report given today about the progress being made. I am delighted that so much progress is being made and that we work together to make sure we can deliver a really comprehensive service. In real terms, there are huge savings for the health service, but there are also huge advantages. Deputy Cullinane made a comment about the people who were working on the ground accessing information rather than having to sit down, start all over again, and spend 30 or 45 minutes taking the notes, especially where a person was unwell health-wise. By getting access to information, there can be a faster response with the care the person needs.</p>
+          <p eId="para_240"> I thank the witnesses for their contributions. I am sorry we did not take a break but it was better to continue because of the progress we were making. I wish the witnesses every success in the future development and roll-out of this digitalised system within the HSE and the Department of Health.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 11.22 a.m. until 6 p.m. on Tuesday, 9 December 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

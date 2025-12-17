@@ -5,21 +5,20 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import {
   User,
   MapPin,
-  Award,
   Users as UsersIcon,
   Calendar,
   ExternalLink,
   Crown,
   Briefcase,
-  TrendingUp,
-  X
+  ChevronRight,
+  Sparkles
 } from 'lucide-react';
 
 interface TDQuickInfoModalProps {
@@ -40,159 +39,125 @@ export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProp
     enabled: isOpen && !!tdId
   });
 
-  if (!isOpen) return null;
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="w-[90%] max-w-md rounded-2xl p-0 overflow-hidden border-0 shadow-2xl bg-white dark:bg-gray-900">
         {isLoading ? (
-          <div className="py-8 text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading TD details...</p>
+          <div className="p-12 text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500 mx-auto mb-4"></div>
+            <p className="text-sm text-gray-500">Loading details...</p>
           </div>
         ) : data ? (
-          <>
-            <DialogHeader>
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {data.name}
-                  </DialogTitle>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <Badge variant="secondary" className="text-sm">
-                      {data.party}
-                    </Badge>
-                    <Badge variant="outline" className="text-sm">
-                      <MapPin className="w-3 h-3 mr-1" />
-                      {data.constituency}
-                    </Badge>
-                    {data.gender && (
-                      <Badge variant="outline" className="text-sm">
-                        {data.gender?.toLowerCase() === 'male' ? '👨' : '👩'} {data.gender}
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </DialogHeader>
-
-            <div className="space-y-6 mt-4">
-              {/* Performance Score */}
-              <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg p-4 border-2 border-blue-200">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600" />
-                    <span className="font-semibold text-gray-900 dark:text-white">Performance Score</span>
-                  </div>
-                  <div className="text-3xl font-bold text-blue-600">
+          <div className="flex flex-col max-h-[85vh]">
+            {/* Header with Score */}
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 p-6 pb-8 text-center relative border-b dark:border-gray-800">
+               <DialogClose className="absolute right-4 top-4 rounded-full p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                <span className="sr-only">Close</span>
+              </DialogClose>
+              
+              <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-white dark:bg-gray-800 shadow-sm ring-1 ring-emerald-100 dark:ring-emerald-900">
+                 <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                     {data.score || 'N/A'}
-                  </div>
-                </div>
+                 </div>
               </div>
+              
+              <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                {data.name}
+              </DialogTitle>
+              
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <span className="font-medium text-emerald-700 dark:text-emerald-300">{data.party}</span>
+                <span>•</span>
+                <span>{data.constituency}</span>
+              </div>
+            </div>
 
-              {/* Key Stats */}
+            {/* Content Scroll Area */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              
+              {/* Key Stats Grid */}
               <div className="grid grid-cols-2 gap-4">
-                {data.yearsInDail !== null && (
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-sm">Experience</span>
+                <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+                  <div className="flex items-center gap-2 mb-1 text-xs text-gray-500 uppercase tracking-wider font-semibold">
+                    <Calendar className="w-3.5 h-3.5" />
+                    Experience
+                  </div>
+                  <div className="font-semibold text-gray-900 dark:text-gray-100">
+                    {data.yearsInDail ? `${data.yearsInDail} years` : 'N/A'}
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+                   <div className="flex items-center gap-2 mb-1 text-xs text-gray-500 uppercase tracking-wider font-semibold">
+                    <UsersIcon className="w-3.5 h-3.5" />
+                    Committees
+                  </div>
+                  <div className="font-semibold text-gray-900 dark:text-gray-100">
+                    {data.committeeCount} memberships
+                  </div>
+                </div>
+              </div>
+
+              {/* Roles Section */}
+              <div className="space-y-3">
+                 {data.topOffice && (
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 p-1.5 rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
+                      <Briefcase className="w-4 h-4" />
                     </div>
-                    <div className="text-xl font-bold text-gray-900 dark:text-white">
-                      {data.yearsInDail} years
+                    <div>
+                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">Current Role</h4>
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{data.topOffice}</p>
                     </div>
                   </div>
                 )}
-
-                {data.committeeCount > 0 && (
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
+                
+                {data.topCommittee && (
+                  <div className="flex items-start gap-3">
+                     <div className="mt-1 p-1.5 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                       <UsersIcon className="w-4 h-4" />
-                      <span className="text-sm">Committees</span>
                     </div>
-                    <div className="text-xl font-bold text-gray-900 dark:text-white">
-                      {data.committeeCount}
-                    </div>
-                  </div>
-                )}
-
-                {data.officeCount > 0 && (
-                  <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-3 border-2 border-yellow-200">
-                    <div className="flex items-center gap-2 text-yellow-700 dark:text-yellow-400 mb-1">
-                      <Crown className="w-4 h-4" />
-                      <span className="text-sm">Offices</span>
-                    </div>
-                    <div className="text-xl font-bold text-yellow-800 dark:text-yellow-300">
-                      {data.officeCount}
+                    <div>
+                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">Primary Committee</h4>
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{data.topCommittee}</p>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Current Office */}
-              {data.topOffice && (
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-4 border-2 border-purple-200">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Briefcase className="w-5 h-5 text-purple-600" />
-                    <span className="font-semibold text-purple-900 dark:text-purple-100">Current Position</span>
-                  </div>
-                  <p className="text-purple-800 dark:text-purple-200 font-medium">
-                    {data.topOffice}
-                  </p>
-                </div>
-              )}
-
-              {/* Top Committee */}
-              {data.topCommittee && (
-                <div className="border-l-4 border-blue-500 pl-4 py-2">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-1">
-                    <UsersIcon className="w-4 h-4" />
-                    <span>Primary Committee</span>
-                  </div>
-                  <p className="font-semibold text-gray-900 dark:text-white">
-                    {data.topCommittee}
-                  </p>
-                </div>
-              )}
-
-              {/* Wikipedia Link */}
               {data.wikipediaTitle && (
-                <a
+                 <a
                   href={`https://en.wikipedia.org/wiki/${encodeURIComponent(data.wikipediaTitle)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                  className="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  <span className="text-sm">View Wikipedia Profile</span>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                    <ExternalLink className="w-4 h-4" />
+                    Wikipedia Profile
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-gray-400" />
                 </a>
               )}
 
-              {/* Actions */}
-              <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-                <Link href={`/td/${data.name}`} className="flex-1">
-                  <Button variant="default" className="w-full gap-2">
-                    <User className="w-4 h-4" />
-                    View Full Profile
-                  </Button>
-                </Link>
-                <Button variant="outline" onClick={onClose} className="gap-2">
-                  <X className="w-4 h-4" />
-                  Close
-                </Button>
-              </div>
             </div>
-          </>
+
+            {/* Footer Actions */}
+            <div className="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+              <Link href={`/td/${data.name}`}>
+                <Button className="w-full h-11 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-sm hover:shadow transition-all">
+                  View Full Profile
+                </Button>
+              </Link>
+            </div>
+          </div>
         ) : (
-          <div className="py-8 text-center text-gray-600">
-            <p>Failed to load TD details</p>
-            <Button onClick={onClose} variant="outline" className="mt-4">
-              Close
-            </Button>
+          <div className="p-8 text-center">
+            <p className="text-gray-500 mb-4">Unable to load information</p>
+            <Button variant="outline" onClick={onClose}>Close</Button>
           </div>
         )}
       </DialogContent>
     </Dialog>
   );
 }
-

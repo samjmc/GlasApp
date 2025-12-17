@@ -1,0 +1,548 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-12-09/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-12-09/debate"/>
+          <FRBRdate date="2025-12-09" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_fisheries_and_maritime_affairs"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-12-09/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-12-09/debate/mul@"/>
+          <FRBRdate date="2025-12-09" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-12-09/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-12-09/debate/mul@.akn"/>
+          <FRBRdate date="2025-12-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="PadraigMacLochlainn" href="/ie/oireachtas/member/id/Pádraig-MacLochlainn.D.2011-03-09" showAs="Pádraig Mac Lochlainn"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM IASCACH AGUS GNÓTHAÍ MUIRÍ</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Fisheries and Maritime Affairs</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-12-09">Dé Máirt, 09 Nollaig 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-12-09">Tuesday, 09 December 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#GerardPCraughwell">Gerard P. Craughwell</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PadraigMacLochlainn">Pádraig Mac Lochlainn</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#DiarmuidWilson">Diarmuid Wilson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#CharlesWard">Charles Ward.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#ConorDMcGuinness">Teachta / Deputy Conor D. McGuinness sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_5">
+          <i>The joint committee went into private session at 11.02 a.m., suspended at 11.14 a.m. and resumed in public session at 11.16 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Marine Protected Areas: Discussion<recordedTime time="2025-12-09T11:00:00+00:00"/></heading>
+        <speech by="#ConorDMcGuinness" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T11:15:00+00:00"/></from>
+          <p eId="para_10">Cuirim fíorfháilte roimh gach duine go dtí an cruinniú seo den Choiste um Iascaigh agus Gnóthaí Muirí. Everyone is very welcome to this meeting of the Oireachtas Joint Committee on Fisheries and Maritime Affairs. I advise everyone that we are in public session. Before we begin and get into the business of the meeting, I need to bring a number of items to the attention both of witnesses and members.</p>
+          <p eId="para_11"> Witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. This means that a witness has a full defence in any defamation action for anything said at the committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at my direction as Chair. Witnesses should follow the direction of the Chair in this regard. They are reminded of the long-standing parliamentary practice to the effect that as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Privilege against defamation does not apply to the publication by the witnesses outside of the proceedings held by the committee of any matters arising from proceedings.</p>
+          <p eId="para_12"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member who is partaking via Microsoft Teams that prior to making their contribution they verbally confirm to me that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_13"> Members are also reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_14"> All of our witnesses have appeared before this committee in recent weeks or months already but they are very welcome back to discuss marine protected areas. At this stage, they know the drill. We will hear opening statements from each of our three sets of witnesses. I ask them to give brief two-minute summaries of those. They have been circulated and members have had an opportunity to read them. It is just to allow for extra time for questions and answers and getting down into the detail. We will then open it up to members and take ten-minute blocks. Each member will get ten minutes, and within those ten minutes we will listen to both the questions and the answers and there will be a bit of back and forth. I ask members to specify which set of witnesses they wish to direct a particular question to just to assist with the conduct of the meeting. If there is something the witnesses disagree with or something they want to raise in relation to evidence that has been provided by another set of witnesses, I ask that they do so through the Chair rather than responding directly to something somebody else has said.</p>
+          <p eId="para_15"> I will introduce our witnesses and then we will kick off with the opening statements. Representing the Marine Institute, we have Dr. Rick Officer, chief executive, Dr. Ciaran Kelly, director of fisheries and ecosystem advisory services, Dr. Oliver Tully, team leader, inshore services, and Dr. Francis O'Beirn, section manager of licensing and policy advice. Representing the Irish Islands Marine Resource Organisation, we have Enda Conneely, leas-chathaoirleach, agus Séamus Bonner, rúnaí. Representing the National Inshore Fishermen's Association, we have Michael Desmond, cathaoirleach, agus Ivan Toole, stiúrthóir. Tá fáilte rompu go léir. I ask the Marine Institute to provide its two-minute summary. There are clocks around the various parts of the room, so witnesses might just keep an eye on them le bhur dtoil. I call Dr. Officer.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:20:00+00:00"/></from>
+          <p eId="para_16">I thank the committee for the invitation to meet its members. I am joined by my colleagues, whom the Cathaoirleach has introduced, Dr. Ciaran Kelly, Dr. Oliver Tully, or Ollie Tully as he is known in the industry, and Dr. Francis O'Beirn.</p>
+          <p eId="para_17"> The statutory remit of our agency is written in the opening statement that we submitted to the committee. We welcome the opportunity to discuss the important work that the Marine Institute undertakes, and our scientific work particularly relevant to marine protected areas, MPAs. While we await legislation to expand Ireland’s MPA network, it is certain that the implementation of MPAs will need to be informed by a robust evidence base and science. That requirement is consistent with the Marine Institute's broad statutory role to provide the scientific evidence and technical expertise that can underpin good policy decisions and the robust management of marine resources.</p>
+          <p eId="para_18"> The work we are proposing to summarise today and to discuss with the committee is across three broad areas that can ensure that MPAs are implemented based on robust data and sound science. Those are the scientific advice and ecological sensitivity analyses we have been involved in, the monitoring and assessment activity we have undertaken in Natura 2000 sites and the efforts we have made in respect of habitat mapping research that has been used to define areas that are now protected, particularly offshore.</p>
+          <p eId="para_19"> Our contribution is all about providing the evidence base through data collection, analysis and expert advice that will enable Ireland to meet its biodiversity commitments while balancing sustainable exploitation of our seas. As the legislative framework for MPAs develops, the Marine Institute is ready to contribute to the eventual policy direction by providing science-led solutions. Our written submission to the committee further elaborates on these key areas of activity within the Marine Institute. We welcome questions from committee members.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Enda Conneely<recordedTime time="2025-12-09T11:20:00+00:00"/></from>
+          <p eId="para_20">I thank the Chairman for the invite. I am joined by Mr. Séamus Bonner, our secretary. I will go through my opening statement rather swiftly.</p>
+          <p eId="para_21"> The islands have a historical connection with the sea. All our lives are linked to the marine in some way. There is traditional knowledge of fishing, seaweed farming and all that kind of stuff that we do not want to lose. There is an intergenerational aspect. We need to pass on that knowledge in a form whereby people will remember it rather than having to learn everything again.</p>
+          <p eId="para_22"> As Dr. Officer said, we are awaiting legislation. We do not know what is going to happen. A lot depends on that legislation. It must incorporate safeguards for all those things. We do not know the structure of it yet, so we will have to wait and see. One of the big problems with the small-scale island fleets is that we cannot move. If you find yourself in a marine protected area, or particularly in a no-take zone, you are finished. That is important.</p>
+          <p eId="para_23"> We are following the UN Food and Agriculture Organization, FAO, guidelines for small-scale fishing. Tenure is very important for us in this context. We have been in the area for a long time, so we need it. We are essentially an indigenous group at this stage but will be wiped out soon.</p>
+          <p eId="para_24"> There are environmental threats. Industrial fishing, certain forms of aquaculture, pollution, run-off and all those sorts of things must be dealt with. The recommendation we have at this stage is that we include traditional knowledge in MPA management. We need legal frameworks for codesign and comanagement so that nobody is left out in the cold. We have been involved in the make fishing fair roadmap, which is included in our submission to the committee.</p>
+          <p eId="para_25">I think my time is up. If there are any questions, we can come back to most of these issues.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T11:25:00+00:00"/></from>
+          <p eId="para_26">I thank Mr. Conneely for that. I call the National Inshore Fishermen's Association next.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T11:25:00+00:00"/></from>
+          <p eId="para_27">Ireland’s coastal waters support a diverse and predominantly small-scale inshore fleet, typically composed of vessels under 10 m and operating within six nautical miles of the shore. It is essential to assess potential socioeconomic risks to these inshore communities. Irish small-scale fisheries are characterised by spatial dependency, seasonality and strong cultural ties to coastal heritage, making them particularly sensitive to spatial restrictions. </p>
+          <p eId="para_28"> Small inshore fisheries play a substantial role in Irish coastal identity and potential MPA impacts include: the loss of intergenerational fishing heritage in communities where fishing is a cultural asset; reduced community viability; declining recruitment of young fishermen, exacerbating ageing fleet trends; and the erosion of local ecological knowledge, which has historically guided sustainable inshore practices. These factors may contribute to depopulation and economic contraction in already fragile rural coastal areas. Irish fishermen have repeatedly expressed concerns regarding top-down decision-making in marine spatial planning, insufficient early-stage consultation during MPA designation, a lack of clarity on allowable gear types, seasonal access, or adaptive measures within proposed MPAs and perceived inequity, where small inshore boats face the strictest restrictions despite their comparatively low environmental footprint.</p>
+          <p eId="para_29"> NIFA now feels a six-mile limit that has been introduced, whereby the largest vessels or those over 18 m in length in the Irish fleet will be restricted from operating inside the six-mile limit and a 7,000 km stretch of coastline which has been protected. This is a massive MPA that has the backing of the vast majority of inshore fishermen and should provide dividends. It should also go a long way in reaching the 30% target set by the EU. Any future MPAs to take up the remaining percentage could perhaps take place in Ireland’s offshore waters to balance both sectors. If extra MPAs are to be put on inshore waters, it has to be done with stakeholder engagement, that is, inshore fishermen and their representatives - both NIFF and NIFA - meeting with officials from the Department of the environment before anything is finalised.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T11:25:00+00:00"/></from>
+          <p eId="para_30">We will open up to questions now, starting with Deputy Mac Lochlainn.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_7">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T11:25:00+00:00"/></from>
+          <p eId="para_31">The Oireachtas previously engaged with the first draft of the Bill. The committee was the housing, local government and heritage committee and this came under the planning aspect of its responsibility at that time. That committee drafted a report in February 2023. I recall it well because provision had been made for some of the fishing organisations to meet the committee in private session. Unfortunately, although not intentionally, there was an oversight where remarkably the fishing organisations were not going to be consulted on on something that would have such impact. The committee had a private session and then drafted the report in February 2023.</p>
+          <p eId="para_32"> I wish to draw attention to a number of recommendations - there are a total of 45 - but two in particular are very important. I am looking here at Mr. Ivan Toole from NIFA because these things are interconnected. If you look at that marine space, you have offshore renewable energy, inshore and offshore fishermen and, of course, environmental campaigners who are looking to protect the marine space. You have stakeholders that all must be respected equally. However, when it came to offshore renewable energy and designation on the east coast, it was disastrous.</p>
+          <p eId="para_33">I think it was appalling how fishing communities were treated and it has led to all sorts of legal battles. I do believe lessons have been learned from that. It is too late for the east coast but in terms of the rest of Ireland there is the DMAPs process, the offshore renewable energy seafood task force, which looks to bring people around the table and find common ground. That is the scene setting that leads me to this recommendation, which is crucial. The previous committee engaged with the Bill at that time. Recommendation No. 25 was that:</p>
+          <p class="indent_1" eId="para_34">The Committee recommends that the MPA designation process should be based on the principle of co-creation [this is really important] whereby all relevant stakeholders are involved in the designation process from the earliest possible stage to ensure that all sectors concerned are considered during designation.</p>
+          <p eId="para_35"> I would strongly recommend that our committee push that. I want to get the witnesses' thoughts on that. Cocreation is very important. Why cocreation? It is because what has happened again and again is fishermen or other stakeholders are presented with a <i>fait accompli </i>telling them what is going to happen and that is not respect. Cocreation is where everybody is at the table from the very start and the issues that are raised by both the islands and inshore groups in terms of what is actually a threat to their safety - where you squeeze people into tighter areas that are dangerous in terms of the conditions and their needs. Cocreation means getting everyone’s view. Do the witnesses agree with the principle of cocreation? To be clear, when I talk about cocreation I am talking about the fishermen, of course, all the organisations that could be impacted, the environmental campaigners – that is fine, they have their interest – and the offshore renewable energy so that you have a full picture of what is happening – in a helicopter looking down – of the whole seascape so it is done in the way that has the least impact on struggling fishing communities but also achieves the goals which, if handled well, could prove very positive for the fishing communities in the long run.</p>
+          <p eId="para_36"> I seek people’s thoughts on that and the Cathaoirleach can ask whoever he wants to take first. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T11:30:00+00:00"/></from>
+          <p eId="para_37">We will start with the Marine Institute and then go to IIMRO.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:30:00+00:00"/></from>
+          <p eId="para_38">I thank the Deputy for the question. We are in a difficult situation in that we do not have legislation that is guiding on how this will be delivered from a policy perspective. I understand the committee has a scheduled meeting with officials from the Department of Climate, Energy and the Environment in the new year, which will shed some light on its approach. My understanding is the approach to that legislation was just adopted in the middle of November and that it is looking to use the existing Maritime Area Planning Act, to amend that Act, to essentially deliver MPAs though DMAPs. The approach that has been adopted now for the delivery of the national DMAP for ORE is indicative of the approach that we would expect the Government to take for delivering MPAs. That approach has included a public participation statement, which articulates how the Government intends to engage with stakeholders throughout the process. This suggests the Deputy’s imperative around cocreation and codesign is to the fore. From our own perspective as an agency, that approach is part and parcel of the way our institute does its business. We have a very strong relationship with the seafood sector through the Irish fishery science research partnership that enables regular good engagement so I would expect it to be maintained. The institute is quite comfortable in this domain. It is a very difficult space but our role is essentially to provide the data and evidence that would enable a good engagement and discussion in the sort of forums the Deputy is articulating. </p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_10">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T11:30:00+00:00"/></from>
+          <p eId="para_39">I thank Dr. Officer. Can we get a response from the fisheries organisations? </p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Enda Conneely<recordedTime time="2025-12-09T11:30:00+00:00"/></from>
+          <p eId="para_40">I thank the Deputy for the question. The main point I see here is that whatever plan comes up has to be adaptive and you do not have something some civil servants will run for the next 40 years.</p>
+          <p eId="para_41">Whatever we have needs to be adaptable and changeable.</p>
+          <p eId="para_42"> A few things came up, including the relationship with the Marine Institute. We are involved as much as possible with it. Some of the studies we have been asking for relate to the pollock, in particular, and various other species we need to have more focus on in the inshore habitats. We must have a look at this. We have some experience with other areas where there is comanagement. Mr. Bonner might like to outline some of these for the committee.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T11:35:00+00:00"/></from>
+          <p eId="para_43">I thank Mr. Conneely. Codesign is crucial. A legal framework should be in place in the legislation to enable it. If the legal framework is not there, then it is not going to happen. We are at the stage now where the legislation is being worked on, so maybe we can incorporate into the law at this stage that the codesign is done in partnership with the communities that are going to be affected by these designations. We have put in our opening statement that we need a national maritime plan. It should not be done piecemeal. ORE, MPAs and fossil fuels should not be done as separate processes. We should have an overall vision instead.</p>
+          <p eId="para_44"> Crucially, as well, one of the points is that we need the designations to come at the end of the process and not at the beginning. <i>Faits accomplis</i> were mentioned, and I think this has been the experience with the likes of the special areas of conservation and special protection areas. Not only does this approach weaken the environmental objectives but it has long-term impacts on the communities as well. Codesign, then, is really important and there are good examples in other places. We mentioned Galicia and Catalonia in Spain. They are probably ten or 15 years ahead of us and I think these would be good examples to look at as part of the work of the committee.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T11:35:00+00:00"/></from>
+          <p eId="para_45">I will give an opportunity for Mr. Desmond to respond to the question. He can have a minute or two. </p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T11:35:00+00:00"/></from>
+          <p eId="para_46">The engagement in codesign is going to be crucial from the beginning. We are very much afraid of what is coming down the line but we do not know what it is. All we hear from the NGO point of view is about stopping fishing. From our perspective, an MPA first of all would be to stop pollution. We have 40,000 seals taking 200,000 tonnes of fish out of Irish inshore waters and there is not a word about it. If no-take zones for us came into the MPA, then that would be the end for inshore fishermen. Lads up in the north-west area already got a phone call a couple of weeks ago to tell them the biggest brown crab buyer there has stopped taking them in the run-up to Christmas. This is the third time it has happened since Covid. The people there do not have a whole lot else to go at if no-take zones came in on top of that for the other stocks they will try to diversify to. It will be the end.</p>
+          <p eId="para_47"> As for what is happening at the moment, it is the opposite to there being protection. Raw sewage and chemicals are being pumped into our waterways. On the east coast, the shellfish stocks have dramatically decreased, including whelk and brown crab. Mr. Toole would be a lot better at talking about what is going on there than me.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Ivan Toole<recordedTime time="2025-12-09T11:35:00+00:00"/></from>
+          <p eId="para_48">As has been pointed out, we have had an awful lot of surveying for offshore wind in our area. We have a big whelk fishery on the east coast, which is a sea snail for anybody who does not know. Since 2001, the fishing has all but collapsed, especially this year. All through the summer, there were the lowest landings ever recorded in 43 or 44 years of whelk fishing. We would tie this directly to the seismic, geophysical and geotechnical surveying done. </p>
+          <p eId="para_49">We have big problems on the east coast and more to come. My worry with the MPAs is the sincerity of the areas being chosen for them. Will people be aware that wind farms are being designated? Will the wind farms be around them or will they be in other areas? We have seen at first hand what happens when fishermen are not involved with these decisions being made. I would be very concerned going forward.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_16">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_50">I thank everybody for coming in. All stakeholders, fishermen and everything, should be involved in this. It is only right. Fishermen know the sea and the coastal areas. Their input into this is very important, especially for habitats. At the end of the day, they are the men out there. They are men I know who have been out fishing in coastal areas for 50 or 60 years. They know exactly what is there. That should all be fed into the plan.</p>
+          <p eId="para_51"> Dr. Officer said the legislation is still not there. How far away is the legislation? Are we a year or two years down the road?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_52">I cannot answer that question because it is a matter for the Department that will be the sponsor of that legislation. That question should be directed towards the Department of Climate, Energy and the Environment when it comes to the committee in the new year. What I understand about the approach that is being adopted is it is trying to amend existing legislation, which is the Maritime Area Planning Act. That provides for the consultative processes we have just talked about. I am not so sure whether that will expedite the delivery of that legislation. It is an amendment rather than new primary legislation. I suggest the Senator directs his question to the Department of Climate, Energy and the Environment when it is here in January.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_18">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_53">Is there is any place shovel-ready for windmills off the coast at the moment? </p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_54">Sorry, I missed that.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_20">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_55">Is there any shovel-ready wind farm ready to go off the coast of Ireland at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_56">The phase 1 projects are going through the planning process. Those are the east coast projects, when it was a developer-led approach. Since then, the Government has adopted a plan-led approach. Last month, there was a successful auction for the first of the concessions off the Waterford coast. There is no immediate metal going into the water for any of these wind farms. There is a long way for the developers to go before they-----</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_22">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_57">What consultation was done with the fishermen and the stakeholders down there? Does Dr. Officer know?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_58">Again, that is a really a question for the Department convening that consultation. I understand it went through a very extensive process with lots of stakeholder meetings. It formed a liaison group and appointed fisheries liaison officers. There is quite some difference in the approach adopted for the south-coast designated maritime area plan, DMAP, for offshore renewable energy, ORE, than existed for the phase 1 projects, which were developer led.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_24">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_59">Maybe Dr. Officer cannot answer this, but there are bound to be other countries, such as Denmark and Holland, which have done this in the past. Did they follow the protocol of talking to fishermen and taking their advice or did they just go on and do it? Did they just put up the windmills and not consult anybody? That is totally wrong. No matter what happens here, every man has to be consulted and everybody's input has to be listened to. People out there in coastal communities have been fishing for generations. If they are going to be pushed to the wayside, that is totally wrong.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_60">I cannot answer easily for what went on in other countries. I am aware there have been some approaches that did not include a great deal of consultation. I understand that under the Maritime Area Planning Act, which is the legislation being used in Ireland, consultation is required. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_26">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:40:00+00:00"/></from>
+          <p eId="para_61">Mr. Bonner mentioned the marine plan. That would be a very good idea. Will he elaborate on that?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T11:45:00+00:00"/></from>
+          <p eId="para_62">From our work with other organisations in Europe, especially the Nordic countries, including Finland, the approach they took was to talk to everybody, find out what was being proposed and look at the culture, economics and environment. All of that is looked at to gain an overall picture and then, as part of that process, they put the structures in place to ensure it is not just a once-off consultation but that there is ongoing input. The Senator mentioned the expertise of the people fishing daily on the water. They spend more time than anyone does on and around the water and they have a lot of knowledge. The experience is that if the traditional knowledge that has been passed down is blended with the science, it leads to a better outcome for communities and the environment.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_28">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T11:45:00+00:00"/></from>
+          <p eId="para_63">As we move forward, if everybody in a fishing community agrees to the installation of windmills, there should be constant feedback into the community. At the moment, big companies take the money and there is no feedback into communities. It is totally wrong. There should be sustained feedback into communities for the sake of those communities. That would be my idea.</p>
+          <p eId="para_64"> What do the witnesses see as the risk pollution-wise? Mention was made earlier of pollution. Surely, when a windmill is in place, there is not much that can go wrong with it?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T11:45:00+00:00"/></from>
+          <p eId="para_65">I was not talking about wind farms. I was referring to landfill sites sending toxic waste into the rivers and directly into the bays. There is an energy company located up the river in Waterford Estuary and, some nights, up to 2 ft of foam and suds can be seen coming down the river. The boats going up from Duncannon do not have to put anti-fouling material on their keels any more because nothing grows on them. There is not a cockle, barnacle or mussel - nothing - up the river from Waterford Estuary. All we hear from the NGOs is advice to stop fishing down further, like that is going to help. It is up to the State or the EPA to stop those chemicals going into the estuary in the first place but all we constantly hear is that fishing is the problem. That is not the case. The most vital thing for the EPA to do is protect the health of the water. That is not happening at the moment.</p>
+          <p eId="para_66"> What is going on along the east coast, and the State is behind it, is seismic surveys are taking place, which all NGOs say will say is a big no-no when it is happening for oil and gas but is no problem when it is done for wind farms. The most powerful underwater drill in the world - the hypersonic vibracore, as it is called - is drilling 80 m under the seabed drillhole, down through shellfish habitats on the east coast. The whelks and crabs have disappeared but there is not a word about it from the environmental associations.</p>
+          <p eId="para_67"> We hear whale numbers on the south and east coasts have gone down compared with what they were a few years ago. In the 1980s, I never saw a whale while fishing off the south-west coast. We are being told that the decrease in whale sightings we see now is because of the decrease in sprat, which is rubbish because there are plenty of sprat there. All the boats were herring fishing in the eighties and nineties because the price of herring was good and there was no need for boats to go sprat fishing. I never once saw a whale off the south-west coast in the 1980s. In the nineties, there were a few pilot whales and then, at the turn of the century, they came - fin whales, humpback whales and every type of whale - for 20-odd years. I could be out prawn fishing south of Cape Clear from dawn to dusk and I would see a dozen to 20 whales in one day. Now those sightings have gone down, while off the Kerry coast, they have gone up.</p>
+          <p eId="para_68"> What has happened? In the eighties and nineties, seismic surveys were being done for oil and gas; specifically for the Kinsale gas field. Since the sightings then, that completely stopped and, for 20 years, there were whales and dolphins everywhere. Now, here we are doing it again and the sightings are going down again.</p>
+          <p eId="para_69">The word "science" means observation based on facts. Does the committee really need a scientist to tell it what is happening and what wind farms are doing on the east coast? </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_30">
+          <from>Deputy Charles Ward<recordedTime time="2025-12-09T11:50:00+00:00"/></from>
+          <p eId="para_70">I thank the witnesses for coming before us. Do they agree with the Government's decision to drop the marine protected areas Bill and instead amend the Marine Area Planning Act 2021? What are the most important amendments any of the organisations could make to this? </p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T11:50:00+00:00"/></from>
+          <p eId="para_71">It is not a matter for the Marine Institute to have an opinion on what is essentially Government policy. Our role is to proceed with assisting in the implementation of Government policy. Our role is about providing the evidence base to support good decision-making in the marine-maritime area.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T11:50:00+00:00"/></from>
+          <p eId="para_72">We do not really know what was in the other Bill so it is very hard to comment. There is talk that the new legislation is going to fit into the Maritime Area Planning Act and that this will be amended but we have not seen or heard about what the amendments will be or when it will be implemented. I think mid-2026 was mentioned at one stage but at the moment, we are in the dark about what form it will take. The Deputy asked about recommendations. One of the things we have been talking about for a while is the lack of data on inshore and small boat activity - where and when they fish. All that information is missing from the official data sets so there is a big gap that needs to be filled. An obvious way of doing it is talking to the communities in the areas they are thinking of designating. </p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Enda Conneely<recordedTime time="2025-12-09T11:50:00+00:00"/></from>
+          <p eId="para_73">I refer to Senator Boyle's question about pollution. Some information is available on problems with the windmills in the sea in other jurisdictions. With microfibres blowing off them, they interfere with certain radar signals. The committee must also remember that when we all add in all the costs of mining required for that, and the Norwegians in particular are getting involved in offshore mining, there are two sides to all these stories. Regarding prawn grounds in the Irish Sea, when one nails a load of these into the sea bed, the prawns will not move and fishermen cannot fish them there. There are problems we do not look at anymore and it is read from a scientific perspective. Those things need to be looked at and not ignored.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T11:50:00+00:00"/></from>
+          <p eId="para_74">We are in the dark about it and cannot really comment until we know. Again, engagement will be key. We have had no meetings with the Department of Climate, Energy and the Environment in the past three years. It is very important to have a chat with it before anything is finalised. </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_35">
+          <from>Deputy Charles Ward<recordedTime time="2025-12-09T11:50:00+00:00"/></from>
+          <p eId="para_75">I have three questions for Mr. Conneely and Mr. Bonner. What has been their experience of stakeholder consultation so far? Do they feel it has been productive? Has the Minister been engaging? </p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Enda Conneely<recordedTime time="2025-12-09T11:55:00+00:00"/></from>
+          <p eId="para_76">Our experience to date has not been great. We have had some consultations but we have largely been ignored. We find that dealing with Departments and the various agencies is an uphill battle. Instead of helping, they tend to find as many reasons as they can for making things awkward. As regards the offshore renewable energy, ORE, consultation, it has been going on for a long time. We found that with some of the other things we were involved in, like the Brexit trade deal stuff, our opinions were ignored. It was the same with some of the inputs we had into various dealings on the Icelandic deal, from both the Commission's and Ireland's perspective. Our position has not really been noted. We were against allowing Iceland into Irish waters. It was pointed out that they were European waters but whichever waters they are, we do not think we should reward a track record of taking more than you should by giving access after the fact. Another question that would be interesting to examine is how quota is allocated in this jurisdiction. It is a public resource. A number of years ago, an island heritage Bill was pushed through but it fell due to a money message or some other advice from the Attorney General that nobody can see. It was suggested that it was contrary to the CFP but we checked with the Commission before it went through and it said that it was not. This must be examined again. We made that point in our submission. There is also the Make Fishing Fair roadmap, which is tied to UN protocols. The short answer to the Deputy's question is that it has not been a great experience.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_37">
+          <from>Deputy Charles Ward<recordedTime time="2025-12-09T11:55:00+00:00"/></from>
+          <p eId="para_77">Does Mr. Bonner think the management systems could work in the likes of Árainn Mhór if the MPA was introduced around the island? How could it be ensured that the islanders and fishers are properly involved?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T11:55:00+00:00"/></from>
+          <p eId="para_78">The point about comanagement and codesign of the MPAs is crucial. The communities that are affected by any designations are the ones that need to be consulted because they are the ones who will make it work. If the communities are not on board or they feel they have not been listened to, it will make things a lot harder. We would not only be back at square one but further back than that. Ongoing consultation with the communities and having a structure where the communities, the scientists and the fishery managers are working together to come up with plans are essential. If those plans work, well and good but if they do not, they can be adapted or changed. That would be key for us. </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_39">
+          <from>Deputy Charles Ward<recordedTime time="2025-12-09T11:55:00+00:00"/></from>
+          <p eId="para_79">Does Mr. Bonner see any issues or difficulties in establishing or managing the MPAs around the island? What impact would they have? How does he see this operating if he was planning forward? What is his vision of this? </p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T11:55:00+00:00"/></from>
+          <p eId="para_80">There are upsides to marine protection. It is in everybody's interests to keep the environment in good condition. </p>
+          <p eId="para_81">That is what makes places like Árainn Mhór nice places to live. It allows you to make a living on the sea and everything else. We are often surprised that the first instinct is what restrictions we need to put in place. We should be asking why is this a wild place or why is this place not working, instead of putting more restrictions as the first option. That is one thing we would recommend to try and do.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:00:00+00:00"/></from>
+          <p eId="para_82">I thank Deputy Ward. I have a number of questions and I might put them at this juncture.</p>
+          <p eId="para_83"> The first relates to that concept of cocreation and codesign and it is particularly to NIFA and IIMRO. Mr. Bonner mentioned comanagement and my question is on management. We are discussing what the legislation, the process and ultimately the MPAs will be but when they come into existence, what role would the witnesses like to see for inshore fishermen in particular in managing those? Do they see that there could be a role out of season, at different times, for working on the management of those? I will put that to both NIFA and IIMRO and then maybe hear from the Marine Institute.</p>
+          <p eId="para_84"> In regard to the experiences of other countries and organisations that, on a similar basis, provide scientific advice on the maritime environment to their respective governments, how have they approached this question in areas where they have instituted MPAs or something similar? I believe North America may be a little ahead of the curve on this. Have it participated in the management of those MPAs and sought the input of fishermen into their management? I might go to NIFA first.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T12:00:00+00:00"/></from>
+          <p eId="para_85">Definitely. It goes without saying. We are the one group that is going to be affected so inshore fishermen should be involved with the Department of the environment from the very beginning. I know all the stakeholders need to but we in particular need to have a sit-down and a day speaking about this. It is huge; 30% of our waters is pretty significant. For us to be told what to do afterwards is just not going to cut it, like what happened with the wind farms.</p>
+          <p eId="para_86"> On the actual design, with regard to our idea of an MPA, I will give an example: the brown crab working group we spoke about here. It had two meetings last year and it has not met in 12 months. That is fishermen looking for a management plan for a fishery. At that - and there was overwhelming support from all the POs present - we asked for pot limits to be introduced, where each fishermen is allowed use X number of pots rather than one fellow bringing in thousands and fishing out an area fast. Everyone at that group who was representing fishing organisations - the regional inshore fisheries forums, RIFFs, the national inshore fisheries forum, NIFF, NIFA, IIMRO, everyone - wanted that. The biggest block was the SFPA, which asked: "How could it be policed?". It is policed in Tasmania, New Zealand, Australia, America, Canada and Norway. There are pot limits everywhere and to have a successful pot fishery anywhere in the world pot limits were introduced, in particular with regard to the brown crab fishery because of the number of inshore fishermen who have been pushed into that fishery.</p>
+          <p eId="para_87"> There are other things. Fishermen have taken it upon themselves to protect the waters. Where I am from, Roaringwater Bay, there is a successful shrimp fishery there. My father and uncle were among the first two people in Ireland to shoot shrimp pots. Here we are now 50 years later and that fishery is as good now as it was then because we use screens to return the small shrimp straight away, within seconds of them coming aboard, and the fishery lasts. On the velvet crab fishery, 65 mm is the length of a velvet crab but we all go 75 mm because you get a higher price for the bigger crab, plus it is stock regeneration.</p>
+          <p eId="para_88">With lobsters, we have v-notched them and returned the biggest and the pregnant females. All of this was industry-led. We have the methods if we are just involved from the beginning, but no take zones are a completely different thing. If that happens, where do we go? If the bay I fish in now is closed in the morning, that is it - I am gone. It is the same for every other fisherman around. Will Mr. Toole add to that?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Ivan Toole<recordedTime time="2025-12-09T12:05:00+00:00"/></from>
+          <p eId="para_89">The key is the involvement of the fishermen. There is scientific data, but there is not anybody who knows the waters better than the fishermen who work those areas. I have seen first-hand what happens when fishermen are not involved with stuff. Our first engagement with wind farms was in 2019 when we were approached by representatives of one of the companies that had picked an area to look at the development of a wind farm. They asked us to meet them in the local hotel, which we did. They had a presentation up on the board. They introduced themselves. Within two minutes, they said to us, "This is happening lads. You need to get onboard." We have seen first-hand what happens when fishermen are not involved. Anything to do with marine protected areas needs to have a high involvement of fishermen. It is critical to identifying areas as well. Even this minute, I can think of several areas along the east coast that would be perfect for marine protected areas and would work for everyone, not just fishermen.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:05:00+00:00"/></from>
+          <p eId="para_90">I have the same question to IIMRO on comanagement as well as codesign and cocreation. </p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T12:05:00+00:00"/></from>
+          <p eId="para_91">Going back to our earlier point about the legislation, it needs to be included in that and the upcoming amendments to the MAP Act to allow for that process and those structures to be put in as well as the resources. It is not just a once-off. This is the legislation we need to have to resource the meetings and travel at the time of the people with the expertise who are going to manage the fishery. That is important as well. For us as a small organisation, we have been taking some initiative. We have worked with the Trinity Centre for Environmental Humanities on governance models. Our members have been involved with a DNA study on lobsters off the Aran Islands. Recently, we have been involved with a vessel monitoring system, VMS, project for vessel trackers for small boats called Fish-X. It is a Horizon EU-funded project. Mr. Connelly mentioned our request through the industry science research partnership to look at inshore habitats. We have limited resources, but we are trying to get ahead of this, so we can participate properly when it arrives. There is a lot that State agencies need to put in place to allow us to do what we can. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:05:00+00:00"/></from>
+          <p eId="para_92">I agree with Mr. Bonner on processes and structures, but also the resources to facilitate that comanagement and to the Marine Institute, in regard to international experiences and working with the sector to monitor, manage, update and change the advice on these MPAs. </p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:05:00+00:00"/></from>
+          <p eId="para_93">As the Cathaoirleach can hear, I am not from around here. I might come back to the first part of his question on international experience. I have personal experience from having working within Queensland and how the Great Barrier Reef Marine Park operates and has operated for both its design implementation and continued operation for 50 years. I will come back to that. I will handle the second element of the question around the consultation first. Stakeholder engagement is crucial to the proper delivery of this. The approach of adopting the MAP Act and amendment to it now designs that in. That is going to need good vehicles for delivering that consultation. I will defer to my colleagues Dr. Kelly and Dr. Tully to explain how this Irish fisheries science research partnership operates and how it is of great utility to the consultation that will be required here. </p>
+          <p eId="para_94">Dr. Kelly might go first.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-12-09T12:10:00+00:00"/></from>
+          <p eId="para_95">The IFSRP is a committee that was established under the Minister for Agriculture, Food and the Marine. It is chaired by the Marine Institute. It is attended by the Marine Institute and Bord Iascaigh Mhara, BIM, our sister agency, and is represented by producer organisations. It was established to provide a vehicle to hold the science to account, as it were. We are involved in monitoring and assessment of marine fisheries resources. We meet on a quarterly basis. We have extended out that meeting profile for next year. We also hold a workshop on issues of interest to the fishing industry. It is a forum where we can get down to talking about brass tacks. NIFA spoke about the fishermen on the ground and what they see, and that is a lot of what we go through in those consultations. We also have to explain the science we are conducting as well. That is an important part of what we do.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:10:00+00:00"/></from>
+          <p eId="para_96">Dr. Tully might introduce some of the particular projects and engagements that are particularly relevant to our colleagues in the inshore sector.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Oliver Tully<recordedTime time="2025-12-09T12:10:00+00:00"/></from>
+          <p eId="para_97">I will follow up on what Dr. Kelly said about the science fishery partnership. In the case of inshore fisheries especially, we also engage with the national inshore fisheries forum and the regional inshore fisheries forums around the coast to consult and to discuss possible monitoring and management measures for shellfish fisheries, which the inshore fleet strongly relies on. There is a strong engagement there.</p>
+          <p eId="para_98"> The possible future role of the industry could be in monitoring and management of MPAs. We do not monitor or manage MPAs at the moment but in our work with them on monitoring of fish stocks, and shellfish stocks in particular, we are completely dependent on them. We have various contracts and relationships with the inshore sector on the use of commercial vessels. We get data directly from vessels to provide evidence for monitoring of fish stocks. We have a number of frameworks in place that are important in delivering evidence directly from the sector into the science space.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:10:00+00:00"/></from>
+          <p eId="para_99">I will come back to the second part of the question on the international experience. I will answer that without prejudice to the policy position that may be adopted in this country. This is purely from experience of having seen this in another country. I worked for several years in the state of Queensland as a science leader for fisheries and aquaculture. This enormous state is about 20 times the size of Ireland. It has one of the world’s largest marine parks, which is about 2,000 km long. About 70% of the commercial fisheries catch in the state of Queensland comes from within the Great Barrier Reef Marine Park. There are everything from no-take areas to areas where there has been trawling for scallops. The marine park has been developed over many years in very tight consultation with indigenous communities, Torres Strait islanders and Aboriginal communities. There has also been lots of engagement with the fishing industry and its subsectors. That has resulted in a mosaic of different forms of protection within the marine park to achieve all sorts of conservation objectives, as well as social and economic objectives, which are very important and include the indigenous rights of individuals and communities who have been living in that area for millennia through to the current day.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:10:00+00:00"/></from>
+          <p eId="para_100">I thank Dr. Officer. That is fascinating. We will get to another round of questions. With the indulgence of members, I will ask a question on a related theme. The idea of a mosaic of protection measures in an MPA is one I find interesting. I will pick out two things our witnesses have said. When no-take zones are placed right on top of fishing grounds used by the inshore sector, where do they go?</p>
+          <p eId="para_101">I think it was Mr. Conneely who said that an island cannot be moved either, so we have to be careful in how we approach this. I am interested in hearing from the three sets of witnesses, very briefly, their take on seasonal and select access and how that might work. Select access refers to the type or scale of fishing activity that could take place. What boats might be able to access it? Obviously, seasonal access speaks for itself. Perhaps I could hear from the two fisheries organisations first and then from Dr. Officer.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T12:15:00+00:00"/></from>
+          <p eId="para_102">Again, these are very good points. This is exactly what we said in the brown crab working group. It has the full backing of the regional inshore fisheries, the national fisheries and all POs. However, there should not be a blanket season whereby Donegal, Cork, Kerry and the east and west coasts all close down at the same time. Area seasonality could be done. If fishers in the south west wanted to stop crab fishing in November, December or January, perhaps those in the north west could close down at a different time of the year. In this way, the processors would still get the product all year round, but there would be breaks in the different areas around the coast. This was something that came up in conversation. That group needs to get going again. It could feed into the Department of the marine or the Department of the environment afterwards if we ever get to have meetings with them. If they are just going to use the DMAP process without consultation, it is not going to work.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T12:15:00+00:00"/></from>
+          <p eId="para_103">I agree with Mr. Desmond on the seasonal fishery practices, which we have been promoting and trying to get back to through the heritage Bill that was mentioned earlier. The other important thing for us, in line with the FAO guidelines, would be customary rights on fishing grounds that are important for communities and have been used for many generations. It has to be recognised that there is tenure. This is an international guideline that I think we should model our legislation on.</p>
+          <p eId="para_104"> The other thing for us is that there would be preferential access for low-impact fisheries in the inshore areas. That is really important. We have seen recently that the hand line fishery for pollock was closed. It is the most low-impact fishing practice possible and it should be the last thing to close, but instead, it was the first. Those types of things need to be addressed as well as the designations and everything else.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T12:15:00+00:00"/></from>
+          <p eId="para_105">I forgot to mention on the seasonality, there is actually proof of it working as well. If we look at the shrimp fishery throughout Ireland, before that was almost all year round and now they have closed it from March to August to allow the shrimp to spawn because they have a short life cycle of only two years. Boats were fishing during the summer months before but they have stopped that now and they do not start until 1 August. The majority of boats bring the gear in just after Christmas, but it is open until March. However, they close it during spawning season. Here we are 50 years after it started, and it is as good as ever. It shows it can be done in conjunction with us. It is just an example to use.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:15:00+00:00"/></from>
+          <p eId="para_106">If ever there was an argument and an example for co-management and fishermen knowing their fishery and being trusted with it, this is it. Dr. Officer is next.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:15:00+00:00"/></from>
+          <p eId="para_107">I will defer to Dr. Tully to address this question.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Dr. Oliver Tully<recordedTime time="2025-12-09T12:15:00+00:00"/></from>
+          <p eId="para_108">In the designation process for designing MPAs, it is really important to have a clear idea of the objective of designation in the first place and what one is trying to protect, whether it is a particular species or a particular habitat.</p>
+          <p eId="para_109">Once you define what that objective is, then you can start to discuss the select access or designing access arrangements around that. There are a lot of examples already of designed access within the existing network of protected sites around Ireland: the special areas of conservation where we have no restriction on static gears and some restrictions on mobile gears; and also no-take zones for very sensitive habitats. There are examples in the system already about how to design selective access in relation to different fishing gears.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_59">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_110">I thank Dr. Tully. I call Deputy Mac Lochlainn.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_60">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_111">The national marine planning framework has been in place for a number of years. The IIMRO has talked about a national marine plan looking at every activity that is taking place in the marine space in order to have a proper picture. I agree with it. I spoke earlier about being in up in a helicopter and getting the helicopter view. Would the national marine planning framework, as it is currently constituted, do the job that the IIMRO has suggested or is there a need for a look at that again?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_112">The institute has been heavily involved in the national marine planning framework from the off in providing some of the baseline data to help to define it. Importantly, the framework is designed to be comprehensive and to look at environmental imperatives and social and economic imperatives. It is intended to be comprehensive.</p>
+          <p eId="para_113"> The Maritime Area Planning Act 2021 gives life to that planning framework. The first designations of DMAPs were around ORE. Perhaps there has been some confusion that this was all about ORE, but the approach that is now being adopted by the Government and delivered through the Department of Climate, Energy and the Environment is about extending that approach to other marine and maritime usages. We are now seeing that in the proposed approach coming forward for MPA designation through amendments to the Maritime Area Planning Act. I think we have a comprehensive framework that could deliver the whole-of-island approach that the Deputy is speaking about.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_62">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_114">That is encouraging. Is the mosaic example Dr. Officer gave from Australia possible within the context of the marine planning framework?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_115">I would see no reason it would not be possible. We will respond to the policy imperatives when they are clear. There will be particular conservation objectives that will be set and then it will be up to the scientific community to inform how they may be best implemented. That could result in a mosaic of areas - a particular habitat may need strict protection for a certain reason - but we would really need to see what those objectives are before we could be definitive.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_64">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_116">I am very interested in the example of the indigenous people of Australia, the Aboriginal people. Obviously, the IIMRO and the inshore sector here would give examples of the longstanding heritage and tradition in fishing communities and island communities, and the need to protect those traditions within the context of a planning framework. In terms of the forthcoming legislation, is there an opportunity in the amendments to the existing legislation to make sure the protection of these immense heritage amenities in terms of inshore and islands fishing communities is legislated for? I appreciate there is a boundary in terms of Government policy. I want to get Dr. Officer's thoughts on international best practice.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:20:00+00:00"/></from>
+          <p eId="para_117">I answered the Cathaoirleach's question on that particular issue without prejudice to an approach here. It was really around experience that I have from abroad. I would see no impediment, though, in the approach.</p>
+          <p eId="para_118">It would be up to the Government to decide whether that is a policy imperative.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_66">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T12:25:00+00:00"/></from>
+          <p eId="para_119">My colleagues here would know that the IIMRO has done a lot of work. It has made the point around the pollock fishery. It is deeply frustrating that there was an allowance for by-catch but there was not an allowance for the most low-impact type of fishing you could possibly do. A young woman, Muireann Kavanagh, has been to Europe repeatedly to talk about how she is being denied the ability to fish in the most low-impact way but the larger vessels have the ability to have a significant by-catch of pollock.</p>
+          <p eId="para_120"> We dealt previously in this committee with the heritage legislation that, unfortunately, is still held up. I would like to get Mr. Bonner's thoughts on the European context - he talked about Galicia in Spain - and maybe he could give examples internationally about how this can be done.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T12:25:00+00:00"/></from>
+          <p eId="para_121">I thank the Deputy. Going back to the point about the national marine planning framework, we have been active over the years. We try as much as we can to put in submissions to all these consultations. It takes up a lot of time and resources. It is important, as an overall umbrella, that the framework is in place. The implementation will be important for communities such as ours on the islands. We need to look at things - even cross-Border interactions such as how it is done in Northern Ireland. In the North, they seem have got a handle on an overall picture whereas we are playing catch-up.</p>
+          <p eId="para_122"> In Spain, they have put a legal framework in place to allow these co-management things to take place. The fishermen work with the scientists and the managers. It is resourced. There was a lot of scepticism at the beginning but everybody is finding that it is working. It takes a lot of time - that comes across from speaking to people who have been doing it for years - but it is time well spent. It will not change things overnight but it will do so in the long run. It is probably the best way, but it has to be resourced and the time has to be put into it to make it happen. If, for example, we as a small organisation take the time to put together a consultation submission, those submissions should not be just fed into the bigger system and disappear without any word or feedback. That is not the way to do it.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_68">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-12-09T12:25:00+00:00"/></from>
+          <p eId="para_123">I thank Mr. Bonner. I appreciate that.</p>
+          <p eId="para_124"> As a final comment, I suggest that as part of our own deliberations on this matter, we might look at the examples highlighted today in terms of Spain and Australia to see if there is anything that we as a committee can utilise as part of our pre-legislative scrutiny. The Minister, in a recent exchange with Deputy Whitmore in the Dáil, indicated it will be the summer of 2026 before the heads are drafted. That probably means autumn or winter of next year and, therefore, we have time. It would be useful if I could recommend that would we have a look at those examples ahead of our scrutiny.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:25:00+00:00"/></from>
+          <p eId="para_125">That is a very good suggestion. I thank Deputy Mac Lochlainn. We will certainly do that. I call Senator Boyle.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_70">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T12:25:00+00:00"/></from>
+          <p eId="para_126">I will come back in on a few matters. Mr. Bonner is right that the island people need to be consulted. Mr. Desmond is right too. They need to get more sit-down meetings with the Department and get their input in there. At the end of the day, fishermen need to be looked after. We have seen in other places where fishermen were not looked after and things erupted. Progress slowed down and there were no winners out of it. A bit of consultation and trying to work together would speed things up.</p>
+          <p eId="para_127"> I have a few questions. What measures would mitigate income lost for small-scale island fishermen if the MPA was expanded?</p>
+          <p eId="para_128">I know fishermen want to fish. That is what a fisherman wants to do, but that is just a worst-case scenario. What legal framework could guarantee to tenure rights for small-scale fishermen under the MPA legislation?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_129">Who would the Senator like to answer that question?</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_72">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_130">It is for whoever is fit to answer it.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_131">In that case, I ask IIMRO to respond first.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_132">In terms of income, there is scope to allow fishing to continue on a small scale, such as we see around the islands, and for people to be able to earn an income in their own area. That is possible and should be facilitated through the legislation, if that fishing is not doing harm to the things that were mentioned and the features being protected within the MPA are not being damaged. A blanket fishing no-take zone is not the way to go. Allowing people to continue to have an income would be our preference. Will the Senator remind me of the second part of his questions?</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_75">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_133">What legal framework could guarantee tenure rights for small-scale fishermen under the MPA legislation?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_134">We mentioned the FAO small-scale fishery guidelines. They speak about it at a high level. It will depend on the amendments to the legislation that will be put forward by the Government and how that is implemented at a national and regional level. We do not have the answer but there are examples elsewhere that could be used as a template to do that.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_77">
+          <from>Senator Manus Boyle<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_135">In other countries are fishers allowed to fish if there is a wind farm off the coast or how near to it is fishing allowed?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Séamus Bonner<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_136">In practice, it is the exception rather than the rule. It tends to be insurance issues that prevent fishing within the area of a wind farm. It is a question of who is responsible if damage is done, and all that kind of stuff. That excludes people from those areas.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_137">Are there any further questions? We have covered a huge amount but if there are no more questions, I will give each group of witnesses a couple of minutes to make a closing statement or speak on any issues they wished to raise but did not have an opportunity to raise. We will start as we began with the opening statements. I call the Marine Institute.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Dr. Rick Officer<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_138">I thank the Cathaoirleach. I will also defer to each of my colleagues. I am conscious that Dr. Francis O'Beirn has not had an opportunity to speak.</p>
+          <p eId="para_139"> With regard to Senator Boyle's last question on opportunities for ongoing income for small-scale and inshore fishing, again I am answering this from my experience of seeing how this operates in a mature MPA set-up internationally. The design was around not just ecological imperatives but also social and economic imperatives. The Great Barrier Reef is an enormous tourism draw for Australia and for the State of Queensland. Visitors coming to the marine park want to experience the reef. They want to go charter fishing and they want to eat the local produce in the restaurants. There is quite a strong synergy enabled there. The commercial fisheries are required to operate to fulfil the seafood market that is demanded in the hotels and restaurants. There is good experience internationally that well-designed MPAs can deliver on these multiple imperatives and actually create opportunity rather than necessarily deny it. I will defer to my colleagues for any closing remarks.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-12-09T12:30:00+00:00"/></from>
+          <p eId="para_140">I draw the committee's attention to a report on MPAs produced by the Department of Housing, Local Government and Heritage in 2020. The section that produced the report has now moved into the Department of Climate, Energy and the Environment. The report dealt with many of the issues discussed today.</p>
+          <p eId="para_141">For example, it in its recommendations and key principles around MPAs, the report states that early and sustained stakeholder engagement should be integral to the selection and management process for MPAs; the engagement should be inclusive and equitable; and the process should be designed to ensure it is transparent, meaningful and facilitating. That is already enshrined in the principles that have been laid out. If the fishers look at that, I am sure they will get some comfort that it is heading in the right direction.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Francis O'Beirn<recordedTime time="2025-12-09T12:35:00+00:00"/></from>
+          <p eId="para_142">I reiterate what Dr. Tully said about knowing what the actual qualifying interests in MPAs are. This is hugely important because one can then properly assess the likely effects of particular activities on these. That would be a good guide in terms of the future direction of that MPA.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Enda Conneely<recordedTime time="2025-12-09T12:35:00+00:00"/></from>
+          <p eId="para_143">I will just add to Dr. Officer's point on the Great Barrier Reef. It covers a huge area and we should probably take the best things from it. In Ireland there are so many bays that could have different protocols and things in place for that. As Dr. Tully said, what is it we are protecting exactly and for whom? We need to include traditional knowledge in the MPA management and we need to get a closer link between that and the science. At many of the science events I have attended, a scientist will come along and say that he met a bunch of fishermen who knew that haddock were talking to one another and nobody believed it until he wrote it down, and now everybody believes it. The knowledge is there. It is just the language of science, and it is the policy that dictates what that is going to be. You need to have a look at that because you could get a harebrained policy and then it has to be supported with the science, when it should be the other way around.</p>
+          <p eId="para_144"> We have outlined the legal frameworks for co-designation. There are good practices in other jurisdictions that we should look at and pick the best bits from. They have made mistakes in certain areas and learned from them, so we should not have to make those mistakes again. The US has a lot of these areas. Some have been successful and some have not. The Make Fishing Fair roadmap we have been engaged in lately is grounded in the FAO regulations and in what we are doing. Equal participation of the small-scale sector is needed because these fishers account for the vast majority of the fishing community all over Europe and they need to be have that place recognised. We have to have a blend of traditional and scientific knowledge really.</p>
+          <p eId="para_145"> Another issue that seems to keep coming up is that we use track record as a measure. People tend to try to build up track record. That is what happened in Norway, Iceland and the Faroes. Once the system is there, people will do it. We in Ireland need to look again at how we allocate fishing opportunities so that we do not end up privatising a public resource for the benefit of very few people and banks. What are we going to do with the population?</p>
+          <p eId="para_146"> To go back to offshore renewables, where fishermen are being displaced as a result of wind energy park, they should be directly compensated. As Mr. Toole said earlier, they were more or less told this was going to happen and they were going to like it. If the wind farm is going to do that, the compensation should go directly to the fishermen they are displacing. The community funds are a different thing. The community will probably benefit from cheap electricity, although I do not know. I thank the Chairman.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Michael Desmond<recordedTime time="2025-12-09T12:40:00+00:00"/></from>
+          <p eId="para_147">The committee is aware of the facts brought before it in the past couple of months. The inshore sector is in the mess it is in because for years it was not at the table but on the menu. That is why the pelagic quota is divided the way it is. That is why we are in the mess we are in. We did not have representation. I know we have representation between NIFA, NIFF and the RIFFs. It Department of the environment has to have proper, meaningful meetings rather than tick-box meetings. There is a fear among inshore fishermen about what is coming down the track. Whether that fear is exaggerated or not, I do not know. However, when you see groups like FairSeas on social media telling us about no-take zones, you wonder where those no-take zones will go and who will be affected. There is the wording of "marine protected areas". Protecting from what? That is the question. These Houses brought through legislation to protect basking sharks. Protect them from what? Were basking sharks at risk of harm? Was there someone fishing for them or after them? Was anything happening to them? Absolutely not. They were just out there every day in conjunction with the fishing industry. What has happened since they were protected? The people lobbying for their protection now have tourism businesses taking hundreds of Americans out to see basking sharks every day around the coast. Before they were protected, they actually were protected. They were left alone. That has to be taken into consideration. Mr. Toole also wants to answer Senator Boyle's question.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Ivan Toole<recordedTime time="2025-12-09T12:40:00+00:00"/></from>
+          <p eId="para_148">The Senator asked about fishing practices. He asked if we could continue fishing in these ORE areas. We did a study with an expert from the wind farms. It is not as straightforward as we would think because we have a lot of tide, in particular on the east coast. We fish long strings of between 50 and 100 pots. When we pick up one end there can be 3 knots of tide we haul across. After we did studies and tracked our movements, we can maybe fall back three quarters of a mile as we are hauling this string. Trying to fish anywhere you have placed a static obstacle in the way will be extremely difficult. There is no doubt that the way we fish at the moment cannot be done in these areas. Maybe it can be done on a different scale, with shorter strings and individual pots. I am not sure. What we do and how we do it now is in jeopardy in the future.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T12:40:00+00:00"/></from>
+          <p eId="para_149">I thank the witnesses for their closing statements. I thank the three groups for being here as we kick-start our discussions and examination of the marine protected areas. I know it is a dirty morning for travelling and I know some of the witnesses travelled a great distance to be here. I thank them for that. As I said, this is not the first time the three bodies have attended this committee in the past couple of months. We are grateful for their presence and contributions. I also thank members for their questions and good conduct in putting those questions and listening to the answers.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 12.44 p.m. until 12 noon on Tuesday, 16 December 2025<i/>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -746,8 +746,7 @@ export default function DailySessionPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-0.5 py-4 text-white sm:px-1">
-      <div className="daily-session-shell relative w-full overflow-hidden text-white">
-        <main className="flex flex-1 flex-col items-center justify-center w-full" style={{ maxWidth: '100%' }}>
+      <main className="daily-session-shell relative w-full overflow-hidden text-white flex flex-1 flex-col items-center justify-center" style={{ maxWidth: '100%' }}>
           {step === "prompt" && (
             <PromptScreen
               streak={session.streakCount}
@@ -818,7 +817,6 @@ export default function DailySessionPage() {
               onFinish={handleFinish}
             />
           )}
-        </main>
         <AnimatePresence>
           {celebration && (
             <motion.div
@@ -845,7 +843,7 @@ export default function DailySessionPage() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </main>
     </div>
   );
 }
@@ -939,7 +937,7 @@ function ArticlePreviewScreen({
 
   return (
     <motion.div
-      className="mobile-card relative flex w-full min-h-[520px] flex-col gap-[var(--mobile-section-spacing)] border border-slate-800/70 bg-slate-950/80 shadow-[0_24px_50px_-15px_rgba(15,23,42,0.7)] transition-colors sm:p-7"
+      className="mobile-card relative flex w-full max-h-[calc(100vh-8rem)] flex-col gap-[var(--mobile-section-spacing)] border border-slate-800/70 bg-slate-950/80 shadow-[0_24px_50px_-15px_rgba(15,23,42,0.7)] transition-colors sm:p-7 overflow-hidden"
       variants={voteCardVariants}
       initial="hidden"
       animate="visible"
@@ -988,7 +986,7 @@ function ArticlePreviewScreen({
       )}
 
       <motion.h2
-        className="text-2xl font-bold leading-tight text-white"
+        className="text-xl sm:text-2xl font-bold leading-tight text-white"
         variants={voteItemVariants}
         custom={animationIndex++}
       >
@@ -996,7 +994,7 @@ function ArticlePreviewScreen({
       </motion.h2>
 
       <motion.p
-        className="text-base leading-relaxed text-slate-300"
+        className="text-sm sm:text-base leading-relaxed text-slate-300 overflow-y-auto flex-1 min-h-0"
         variants={voteItemVariants}
         custom={animationIndex++}
       >
@@ -1027,7 +1025,7 @@ function ArticlePreviewScreen({
       )}
 
       <motion.div
-        className="mt-auto flex flex-col gap-3"
+        className="mt-auto flex flex-col gap-3 flex-shrink-0"
         variants={voteItemVariants}
         custom={animationIndex++}
       >
@@ -1036,7 +1034,7 @@ function ArticlePreviewScreen({
         </div>
         <Button
           onClick={onNext}
-          className="w-full bg-emerald-600 text-white hover:bg-emerald-500 py-6 text-lg font-semibold"
+          className="w-full bg-emerald-600 text-white hover:bg-emerald-500 py-4 sm:py-6 text-base sm:text-lg font-semibold"
         >
           Vote Opportunity →
         </Button>
@@ -1093,7 +1091,7 @@ function VoteScreen({
 
   return (
     <motion.div
-      className="mobile-card relative flex w-full max-h-[667px] flex-col gap-3 border border-slate-800/70 bg-slate-950/80 shadow-[0_24px_50px_-15px_rgba(15,23,42,0.7)] transition-colors sm:p-7 overflow-hidden"
+      className="mobile-card relative flex w-full max-h-[calc(100vh-8rem)] flex-col gap-3 border border-slate-800/70 bg-slate-950/80 shadow-[0_24px_50px_-15px_rgba(15,23,42,0.7)] transition-colors sm:p-7 overflow-hidden"
       variants={voteCardVariants}
       initial="hidden"
       animate="visible"
@@ -1224,7 +1222,7 @@ interface PayoffScreenProps {
 function CompletionTransition() {
   return (
     <motion.div
-      className="mobile-card flex w-full max-w-[360px] sm:max-w-xl min-h-[520px] flex-col items-center justify-center gap-4 border border-emerald-500/30 bg-slate-900/70 text-center text-emerald-50 shadow-[0_25px_50px_-20px_rgba(16,185,129,0.45)] sm:p-8"
+      className="mobile-card flex w-full max-w-[360px] sm:max-w-xl max-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-4 border border-emerald-500/30 bg-slate-900/70 text-center text-emerald-50 shadow-[0_25px_50px_-20px_rgba(16,185,129,0.45)] sm:p-8 overflow-hidden"
       initial={{ scale: 0.94, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.96, opacity: 0 }}
@@ -1308,12 +1306,12 @@ function PayoffScreen({ summary, onNext, isCompleting }: PayoffScreenProps) {
 
   return (
     <motion.div
-      className="mobile-card flex w-full max-w-[360px] sm:max-w-xl max-h-[667px] flex-col gap-3 border border-slate-800/70 bg-slate-950/70 text-emerald-50 shadow-[0_30px_60px_-20px_rgba(15,23,42,0.8)] sm:p-8 overflow-hidden"
+      className="mobile-card flex w-full max-w-[360px] sm:max-w-xl max-h-[calc(100vh-8rem)] flex-col gap-3 border border-slate-800/70 bg-slate-950/70 text-emerald-50 shadow-[0_30px_60px_-20px_rgba(15,23,42,0.8)] sm:p-8 overflow-hidden"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <div className="flex flex-col items-center gap-1 text-center">
-        <h2 className="text-2xl font-semibold">🔥 Session complete!</h2>
+      <div className="flex flex-col items-center gap-1 text-center flex-shrink-0">
+        <h2 className="text-xl sm:text-2xl font-semibold">🔥 Session complete!</h2>
         <p className="text-xs uppercase tracking-wider text-emerald-200/80">
           Streak {summary.streakCount} day{summary.streakCount === 1 ? "" : "s"}
         </p>
@@ -1508,25 +1506,25 @@ function StreakBoostScreen({
         </p>
       </div>
 
-      <div className="mobile-card-tight border border-slate-700/60 bg-slate-900/60 sm:p-6">
+      <div className="mobile-card-tight w-full overflow-hidden border border-slate-700/60 bg-slate-900/60 sm:p-6">
         <div className="flex flex-col items-center gap-[var(--mobile-stack-gap)] text-emerald-50 sm:flex-row sm:justify-center">
           <motion.div
             key={`streak-${displayStreak}`}
             initial={{ opacity: 0, y: 18, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="flex items-center gap-3 text-3xl font-semibold sm:text-5xl"
+            className="flex min-w-0 items-center justify-center gap-2 text-xl font-semibold sm:gap-3 sm:text-3xl md:text-5xl"
           >
-            <span className="rounded-full bg-slate-800/70 px-4 py-1 text-slate-100 text-lg">
+            <span className="shrink-0 rounded-full bg-slate-800/70 px-3 py-1 text-slate-100 text-sm sm:px-4 sm:text-base md:text-lg">
               {previousStreak}
-              <span className="ml-1 text-sm text-emerald-100/70">days</span>
+              <span className="ml-1 text-xs text-emerald-100/70 sm:text-sm">days</span>
             </span>
             <motion.span
               key={`arrow-${displayStreak}`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.28 }}
-              className="text-3xl sm:text-4xl text-emerald-200"
+              className="shrink-0 text-2xl text-emerald-200 sm:text-3xl md:text-4xl"
             >
               ➜
             </motion.span>
@@ -1535,7 +1533,7 @@ function StreakBoostScreen({
               initial={{ opacity: 0, y: 10, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.05, type: "spring", stiffness: 240, damping: 18 }}
-              className="relative flex items-center gap-2 sm:gap-3"
+              className="relative flex min-w-0 items-center gap-1.5 sm:gap-2 md:gap-3"
             >
               <motion.span
                 initial={{ opacity: 0.4, scale: 1.1 }}
@@ -1551,13 +1549,13 @@ function StreakBoostScreen({
                 }}
                 className="pointer-events-none absolute inset-0 blur-3xl bg-amber-200/30"
               />
-              <span className="relative z-[1] rounded-full bg-gradient-to-br from-amber-400 via-yellow-300 to-amber-500 px-4 py-1 text-sm font-semibold uppercase tracking-[0.18em] text-amber-900 shadow-[0_0_35px_rgba(251,191,36,0.45)]">
+              <span className="relative z-[1] shrink-0 rounded-full bg-gradient-to-br from-amber-400 via-yellow-300 to-amber-500 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.15em] text-amber-900 shadow-[0_0_35px_rgba(251,191,36,0.45)] sm:px-3 sm:py-1 sm:text-sm sm:tracking-[0.18em]">
                 streak
               </span>
-              <span className="relative z-[1] text-4xl font-bold bg-gradient-to-br from-amber-200 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(251,191,36,0.55)] sm:text-6xl">
+              <span className="relative z-[1] shrink-0 text-2xl font-bold bg-gradient-to-br from-amber-200 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(251,191,36,0.55)] sm:text-4xl md:text-6xl">
                 {displayStreak}
               </span>
-              <span className="relative z-[1] text-lg font-semibold text-amber-100/80">
+              <span className="relative z-[1] shrink-0 text-sm font-semibold text-amber-100/80 sm:text-base md:text-lg">
                 days
               </span>
             </motion.div>
@@ -1568,7 +1566,7 @@ function StreakBoostScreen({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-3 text-center text-xs font-semibold text-emerald-200 sm:text-sm"
+            className="mt-3 w-full break-words text-center text-xs font-semibold text-emerald-200 sm:text-sm"
           >
             +{streakDelta} day streak bonus locked in.
           </motion.p>

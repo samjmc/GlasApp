@@ -3,6 +3,10 @@ import { spawn } from 'child_process';
 
 const STEPS: Array<{ name: string; command: string[] }> = [
   {
+    name: 'Process debate summaries (prerequisite)',
+    command: ['npm', 'run', 'debates:summaries']
+  },
+  {
     name: 'Evaluate debate participants',
     command: ['npm', 'run', 'debates:evaluate']
   },

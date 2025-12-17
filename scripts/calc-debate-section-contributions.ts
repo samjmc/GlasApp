@@ -126,25 +126,44 @@ function applySoftScoreUpdate(currentScore: number, delta: number): number {
 }
 
 async function loadOutcomeRows(): Promise<OutcomeRow[]> {
-  const { data, error } = await supabase
-    .from('debate_section_outcomes')
-    .select(`
-      section_id,
-      debate_day_id,
-      winner_td_id,
-      outcome,
-      confidence,
-      participant_evaluations,
-      debate_days!inner(id, date, chamber, title),
-      debate_sections!inner(id, debate_day_id, title, word_count)
-    `)
-    .order('created_at', { ascending: true });
+  // Supabase responses are page-limited. If we don't paginate, we can miss the newest outcomes
+  // (which makes TD performance look "stuck" on older periods).
+  const pageSize = 1000;
+  const maxPages = 10; // safety cap (up to 10k outcomes)
+  const rows: OutcomeRow[] = [];
 
-  if (error) {
-    throw new Error(`Failed to load debate outcomes: ${error.message}`);
+  for (let page = 0; page < maxPages; page += 1) {
+    const from = page * pageSize;
+    const to = from + pageSize - 1;
+
+    const { data, error } = await supabase
+      .from('debate_section_outcomes')
+      .select(`
+        section_id,
+        debate_day_id,
+        winner_td_id,
+        outcome,
+        confidence,
+        participant_evaluations,
+        debate_days!inner(id, date, chamber, title),
+        debate_sections!inner(id, debate_day_id, title, word_count)
+      `)
+      .order('created_at', { ascending: false })
+      .range(from, to);
+
+    if (error) {
+      throw new Error(`Failed to load debate outcomes: ${error.message}`);
+    }
+
+    const pageRows = (data || []) as OutcomeRow[];
+    rows.push(...pageRows);
+
+    if (pageRows.length < pageSize) {
+      break;
+    }
   }
 
-  return (data || []) as OutcomeRow[];
+  return rows;
 }
 
 async function contributionsExist(sectionId: string): Promise<boolean> {

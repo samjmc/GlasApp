@@ -1,0 +1,815 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-09/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-09/debate"/>
+          <FRBRdate date="2025-12-09" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-09/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-09/debate/mul@"/>
+          <FRBRdate date="2025-12-09" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-09/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-12-09/debate/mul@.akn"/>
+          <FRBRdate date="2025-12-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AnnGraves" href="/ie/oireachtas/member/id/Ann-Graves.D.2024-11-29" showAs="Ann Graves"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-12-09">Dé Máirt, 09 Nollaig 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-12-09">Tuesday, 09 December 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 06:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 06:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoanneCollins">Joanne Collins.*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AnnGraves">Ann Graves,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy David Cullinane and Senator Nicole Ryan, respectively.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Provisions Relating to Alcohol in the Drugs Strategy: Discussion<recordedTime time="2025-12-09T18:00:00+00:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T18:00:00+00:00"/></from>
+          <p eId="para_10">We have received apologies from Deputy David Cullinane, for whom Deputy Graves is substituting, and Senator Nicole Ryan. I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit members to participate where they do not adhere to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any members participating via MS Teams to confirm they are on the grounds of the Leinster House complex prior to contributing to the meeting. The minutes of the meeting of 3 December have been circulated to members. Are they agreed? Agreed.</p>
+          <p eId="para_11"> This evening, the committee will consider issues relating to alcohol in the drugs strategy. To speak to the context, the committee thought it really important to have a discussion on the central role of alcohol within the drugs strategy. Alcohol is the most widely available drug in Ireland. The majority of drinkers in Ireland consume alcohol in a way that is risky for their health. In 2024, the average alcohol consumption of people aged 15 and over was 9.4 litres. While alcohol use rates are falling and there has been a 14% decrease since the passage of the Public Health (Alcohol) Act 2018, consumption is still too high. In fact, alcohol consumption would need to fall by a further 35% to meet the HSE's guidelines on low-risk alcohol consumption. There are also a huge number of admissions to hospital every year, some 40,000, and a large number of deaths, four every day, relating to alcohol. This presents a huge cost to the Department of Health. The estimated costs to the Department associated with alcohol total approximately €2.35 billion a year. There are a lot of issues to consider in relation to the effects of alcohol, the impact it has and the cost to the State. That will be the subject of our discussions this evening.</p>
+          <p eId="para_12"> To commence the committee's consideration of this matter, from the Coalition for Better Alcohol Policy, I welcome: Ms Paula Leonard, the CEO of Alcohol Forum Ireland; Dr. Noel McCarthy, professor of population health medicine at Trinity College Dublin; Dr. Nazih Eldin, chairperson of the North East Regional Drug and Alcohol Task Force; and Ms Edel Furey. From the Department of Health, I welcome: Dr. David Leach, assistant secretary; Professor Mary Horgan, Chief Medical Officer; Mr. Jim Walsh, principal officer; Mr. Matthew Doyle, principal officer; and Dr. Aisling Sheehan, national lead for alcohol and mental health programmes in the HSE.</p>
+          <p eId="para_13"> Members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if witnesses' statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_14"> I invite Ms Leonard to make the opening remarks on behalf of the Coalition for Better Alcohol Policy. She has five minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T18:00:00+00:00"/></from>
+          <p eId="para_15">I thank the Chairperson and members of the committee for the opportunity to appear here today. We are here today to represent the Coalition for Better Alcohol Policy, which is a broad and diverse coalition of youth work, social inclusion, disability, community, medical, health and social work organisations and professional associations that came together earlier this year to advocate for meaningful inclusion of alcohol within the national drugs strategy. Speaking for so many organisations about a drug that causes multiple harms across multiple areas of Irish life is a challenge so today we will focus specifically on areas where coalition members have identified gaps in services and in policy. I am joined by Professor Noel McCarthy, Ms Edel Furey, whose partner was diagnosed with an alcohol-related brain injury just this year, and Dr. Nazih Eldin, chairperson of the North East Regional Drug and Alcohol Task Force.</p>
+          <p eId="para_16">A total of 16 drug and alcohol task forces are represented within the coalition.</p>
+          <p eId="para_17"> Much progress was made over the lifetime of the previous national drugs strategy, within which alcohol was included. It is important to acknowledge the work of our colleagues in the Department of Health and the HSE in that regard. For us, however, it is quite simple. More action, better policy, better co-ordination and strong political leadership are needed. We are calling on the Government to ensure that increased funding is dedicated to the reduction and the prevention of alcohol harm in Ireland.</p>
+          <p eId="para_18"> While all committee members will be aware of this, it is worth acknowledging that alcohol is, in fact, a drug. It is a neurotoxic, cancer-causing and addictive substance. Chemically, it is a depressant and is the drug that results in the highest numbers of deaths and causes the highest levels of harm in Ireland. According to the HRB, alcohol-related deaths represent 5% of all deaths. Alcohol is the eighth leading cause of death in Ireland.</p>
+          <p eId="para_19"> We welcome the fact that the Department of Health has indicated that alcohol will be included to some extent within the new strategy. We welcome the announcement earlier this year by the Minister of State, Deputy Murnane O'Connor, of an additional €1 million in 2025, rising to €1.8 million in 2026, to expand alcohol and drug treatment services across the new health regions. We are here to ask the Government to ensure that: alcohol is clearly named as one of the priorities within the strategy; that clear action areas around prevention, education, early intervention and community-based supports are identified; and that key performance indicators are agreed for alcohol. It is worth noting that one of the ten recommendations in the evaluation of the last national drugs strategy launched by the Ministers in July recommends that the new strategy should "Strengthen the integration of alcohol within the [new] national drugs strategy".</p>
+          <p eId="para_20"> There is a need for clarity within the Government and the Department of Health with respect to leadership on and responsibility for driving drug policy and action to prevent and reduce alcohol harm. The primary remit of the drugs policy unit is largely in regard to illicit drugs. The tobacco and alcohol control unit indicates that its remit with respect to alcohol extends only to matters relating to the Public Health (Alcohol) Act. At present, alcohol policy within the Department is spread across a number of units, namely the office of the Chief Medical Officer, the tobacco and alcohol unit, the Healthy Ireland unit and the drugs policy unit. External to the Department of Health, many important aspects of alcohol policy fall under the remit of other Departments, including the Department of justice, and Revenue. This ongoing fragmentation leads to a lack of clarity, consensus and co-ordination. We feel, therefore, that the recommendation from the evaluation of the national drugs strategy to "Establish mechanisms for interdepartmental collaboration, reflecting the need for systemic alignment across housing, justice and health sectors" is needed.</p>
+          <p eId="para_21"> In just over one year, Ireland will mark 30 years since the establishment of drug and alcohol task forces, a groundbreaking and transformative model of inter-agency working that was based in communities. Some 16 of those drug task forces are among the broad membership of our coalition. Following publication of the 2012 steering group report on the national substance misuse strategy, the brief of what were then drug task forces was expanded to include alcohol from 2013 onwards. Since that time, many of the groups involved in the coalition have been campaigning for dedicated resources, budgets and actions to be ring-fenced to support task forces in addressing alcohol harm through prevention, education and early intervention.</p>
+          <p eId="para_22"> It is worth highlighting some of the most worrying alcohol health harms and key gaps that are of concern to the coalition. As regards alcohol-related brain injury, about which Ms Furey will speak, the HSE has estimated that 9% of people under 65 years of age living in nursing homes today have a diagnosis for Korsakoff syndrome, which is one form of an alcohol-related brain injury. We simply have to do better. Some 75% of people with an alcohol-related brain injury could, with timely and appropriate support, make a partial or a full recovery. The Chair mentioned hospitalisations. The number of alcohol-related hospitalisations increased by 16.4% between 2001 and 2021. Rates of alcohol-related liver disease increased by 79.9% in the period from 2001 to 2021. Foetal alcohol spectrum disorder, FASD, is the leading cause of preventable intellectual disability in the world. While the prevalence of FASD in Ireland is not known, a 2017 systematic review and meta-analysis estimated prevalence of alcohol use during pregnancy, showing Ireland to have one of the highest rates of prevalence of all countries studied. It was estimated that between 2.8% and 7.4% of the population of Ireland may have FASD.</p>
+          <p eId="para_23"> Traumatic brain and spinal injuries are the leading cause of long-term disability for those under 35 years of age in Ireland. More than 50 people in Ireland acquire brain injuries every day. Figures received from Beaumont Hospital indicate that alcohol was implicated in 22%, 30% and 24% of traumatic brain injuries in the years 2022, 2023 and 2024, respectively. We have started to talk more about cancer. Alcohol causes at least seven types of cancer, with consumption linked to an increased risk of several cancers, including mouth, pharynx, larynx, oesophagus, female breast, liver and colorectal cancers. It is estimated that 1,000 cancers were caused by alcohol in Ireland in 2020. If there is time later, there are multiple other harms associated with alcohol that would be very important to discuss, including the devastating effect on families and children, the link to suicide and self-harm and the increasing number of alcohol-related deaths on our roads.</p>
+          <p eId="para_24"> To strengthen Ireland's efforts to prevent and reduce alcohol harm, we need to recognise that: alcohol is the drug that causes the most harm in Ireland and that results in the highest number of deaths; ensure that reducing alcohol harm is named as a clear priority in the next national drugs strategy and that there are clear actions, targets and budgets ring-fenced to ensure progress on projects; provide a policy context through the national drugs strategy to identify those alcohol-related health harms that require service development, in particular in the areas of foetal alcohol spectrum disorder and alcohol-related brain injury; and, finally, to apply a health-in-all-policies approach to the health, education, justice and community sectors to create a coherent, supportive prevention environment and address the broader determinants of substance use.</p>
+          <p eId="para_25"> The development of a new national drugs strategy provides an opportunity for a coherent and comprehensive response to addressing alcohol harm in Ireland. We strongly feel this opportunity should not be missed. The broad membership of the Coalition for Better Alcohol Policy is committed to working collaboratively with the Government and all our colleagues here today from the Department and the HSE.</p>
+          <p eId="para_26"> I thank the committee for its time.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T18:10:00+00:00"/></from>
+          <p eId="para_27">I thank Ms Leonard and invite Mr. Leach to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T18:10:00+00:00"/></from>
+          <p eId="para_28">I thank the Cathaoirleach and members for the invitation to discuss alcohol in the context of the forthcoming national drugs strategy. I am joined by departmental and HSE colleagues who share responsibility for the different components of public health alcohol policy: Professor Mary Horgan, Chief Medical Officer; Mr. Jim Walsh, principal officer, drugs policy unit; Mr. Matthew Doyle, principal officer, health and well-being; and Dr. Aisling Sheehan, national lead for alcohol, mental health and well-being with the HSE.</p>
+          <p eId="para_29"> Alcohol consumption is a leading risk factor for death and disability worldwide, with higher levels of alcohol consumption associated with a greater burden of disease. In Ireland, in 2024, 73% of people aged 15 years or older reported having drunk alcohol in the preceding 12 months. While alcohol consumption is falling, it remains too high and is well above low-risk drinking guidelines. Hazardous and harmful alcohol use is commonplace, leading to many health consequences, including alcohol-related hospitalisations, alcohol-related deaths and treatment demand for problem alcohol use.</p>
+          <p eId="para_30"> To address these challenges, the Department is co-ordinating a multifaceted public health response to alcohol use, including health promotion and alcohol reduction measures, new legislation to control the sale, affordability and availability of alcohol, and access to treatment for alcohol-related illnesses.</p>
+          <p eId="para_31"> The Public Health (Alcohol) Act, widely acknowledged to be groundbreaking legislation, aims to tackle population-level alcohol use, with a particular focus on protecting children and young people from alcohol-related harms, and has allowed for the introduction of minimum unit pricing for alcohol, separation of alcohol products in retail outlets and other measures to reduce harmful drinking.</p>
+          <p eId="para_32"> Healthy Ireland is the public health framework to improve health and well-being, including alcohol harm reduction. A review of Healthy Ireland has commenced. This will include stakeholder consultations and documentary evidence. The review provides an opportunity to enhance measures to reduce the harms associated with unhealthy alcohol use and to address the social determinants of alcohol use.</p>
+          <p eId="para_33"> A related public health policy initiative is the review of low-risk drinking guidelines being led by HIQA. The latter is undertaking a study to estimate the risk of alcohol-related mortality and hospital admission associated with different levels of alcohol consumption. This work will inform an update by the Department of the national low-risk alcohol guidelines.</p>
+          <p eId="para_34"> I want to highlight Ireland's collaboration with intergovernmental actions to reduce alcohol-related harms. Ireland strongly supports the WHO European framework for action on alcohol, which sets out six priority areas for action and implementation at the national and subnational levels.</p>
+          <p eId="para_35">As the committee is aware, the development of the successor national drugs strategy to Reducing Harm, Supporting Recovery 2017-2025, a health-led response to drug and alcohol use, is under way. The Minister of State, Deputy Murnane O’Connor, has appointed an expert steering group to prepare a draft successor strategy, to be finalised by the end of this month. The steering group is supported by a reference group of diverse community-based service providers, including individuals and families with lived and living experience. The drafting of the successor strategy is informed by the report of the Citizens' Assembly on Drug Use, by an independent evaluation of the previous strategy commissioned by the Department, by consultations with stakeholders, and by the new EU drugs strategy. The Minister of State has indicated her intention to consult the Oireachtas Joint Committee on Drugs Use on the drafting of the successor strategy and to consider any recommendations the committee may wish to make prior to the publication of the strategy in summer 2026.</p>
+          <p eId="para_36"> The new strategy will reflect the Government's commitment to a health-led approach to drugs use. It will deliver an integrated, equitable and evidence-based response to drug and problem alcohol use that considers the major changes in drug and alcohol consumption since 2017. It will also promote the right to health for people with problem drug or alcohol use and the right of the child to be protected from drug use.</p>
+          <p eId="para_37"> Problem alcohol use is a recurring theme in the reports informing the successor strategy. The independent evaluation recommends that we strengthen the integration of alcohol within the national drugs strategy by clearly defining roles, responsibilities and service provisions for the prevention, treatment and recovery of alcohol-related harm, including the roll-out of integrated community alcohol treatment services. Similarly, the consultation states that stakeholders want a stronger focus on alcohol within the new strategy, with more visible actions funded, focused on tackling alcohol misuse, as well as alcohol misuse as a gateway to the use of other substances.</p>
+          <p eId="para_38"> Expenditure on drug and alcohol services in 2024 was €170 million, including over €60 million on community-based services. According to data from the national drug treatment reporting system, there are 366 services that treat alcohol and-or other drugs, with a further 11 services providing alcohol-only services. In 2024, these services treated 8,745 cases of problem alcohol use, the highest annual total in over a decade and an increase of 7% compared with 2023. Of these, 44% were new cases and over half of the cases were classified as alcohol dependent. The number of drinks consumed on a typical day was often more than the weekly low-risk guidelines. Polydrug use, where problem alcohol use is combined with another drug, was reported in 30% of cases. Cocaine was the most common additional drug used, followed by cannabis, benzodiazepines and opioids. A similar pattern of polydrug use is evident regarding the 13,300 drug treatment cases reported in 2024, with problem alcohol use co-occurring in a third of cases with polydrug use. Combining data on all treatment cases, there were 5,500 cases reporting use of alcohol and drugs together, a quarter of the total number of 22,000 cases. The number of cases treated has increased by one third since 2016.</p>
+          <p eId="para_39"> The Department has commissioned an audit of drug and alcohol services in anticipation of the devolved remit to the health regions for the planning, funding and delivery of drug and alcohol services. The analysis of treatment data shows there is inequitable access to services across the country. To address the demand for alcohol treatment on an equitable basis across the country, the Department provided €1 million in 2025, rising to €1.8 million in 2026, for the roll-out of integrated community alcohol treatment services on a national basis. New services are being established in HSE Dublin and midlands and the HSE Dublin and south east, and existing services in HSE Dublin and north east and HSE west and north west are being expanded. This will ensure that integrated community alcohol services are available across all health regions.</p>
+          <p eId="para_40"> The national drugs strategy will reflect the public health priority for our health system and health strategies, focusing on prevention and early intervention in order to reduce harm and improve health outcomes on a long-term basis. I want to highlight two recent prevention initiatives. In 2023, the Department established a national funding programme to support evidence-based drug and alcohol prevention initiatives. The fund, totalling €1.5 million over three years, supports five demonstration projects. One project is specifically focused on alcohol, led by Alcohol Forum Ireland's community action on alcohol network. The project aims to develop, implement and evaluate a multicomponent environmental community action on alcohol project in 12 communities. The second initiative is the development of a digital self-help tool to support people concerned about their drug or alcohol use. This innovative tool addresses alcohol and drug consumption in an integrated way. The Department is allocating over €400,000 to adapt and deliver this e-health tool based on a successful Belgian model, under the leadership of the HSE alcohol programme and my colleague, Dr. Aisling Sheehan.</p>
+          <p eId="para_41"> Alcohol use is a contributory cause to many life-threatening and life-limiting conditions. As such, addressing harmful drinking is a priority for the Department of Health and for our health service. The Department’s response to alcohol use is comprehensive and multifaceted. The national drugs strategy will make an important contribution to this response, together with complementary public health policies and strategies.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T18:20:00+00:00"/></from>
+          <p eId="para_42">We will now move to questions from members. We have a rota and we move on rotation, with ten minutes per member, with Deputy Daly of Fianna Fáil in the first slot.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_6">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T18:20:00+00:00"/></from>
+          <p eId="para_43">I thank the witnesses for coming in today. I really appreciate it.</p>
+          <p eId="para_44"> We are entering the festive season of Christmas. As a GP, and as many other GPs, healthcare workers, gardaí, social workers, people involved with Tulsa, and other organisations that are concerned with the welfare of both adults and children will testify, this is the most dangerous time of the year in relation to alcohol consumption. While many people will take moderate amounts of alcohol to enjoy in the company of other people, there is a huge spike at Christmas time in domestic violence, children going hungry, children being abused, children being neglected, and an increase in accidental deaths and injuries in cars and in domestic situations. We need to recognise the very significant health issues, especially at this time of the year, in relation to alcohol.</p>
+          <p eId="para_45"> The real regret is that, as much as the Department and the representative bodies here will do in relation to alcohol, the industry is extremely powerful and has expended enormous energy and expenditure on defending its position. I have just read an article in <i>The Journal</i> that the industry will go so far as to using much the same playbook that was used with smoking, with fossil fuels, and by other industries that were a risk to health. As a State, we are talking about spending €170 million on drug and alcohol services but the health costs are enormous. Have the witnesses quantified in monetary terms the cost of alcohol to health in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T18:20:00+00:00"/></from>
+          <p eId="para_46">Currently, that is the job HIQA has been given, which is to analyse the cost to the health service and extrapolate from that. That work commenced this summer, so we would expect it to take a number of months to complete. As I referenced in my opening statement, we have asked HIQA to study the risk of alcohol-related mortality and hospital admissions associated with different levels of alcohol use. HIQA is really good at that sort of work and I expect we will have a very good idea from that of an up-to-date position.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T18:20:00+00:00"/></from>
+          <p eId="para_47">HIQA is doing that body of work alongside new guidelines on low-level alcohol use. We expect it to be available in the second quarter of 2026, which is what HIQA is indicating.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_9">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T18:20:00+00:00"/></from>
+          <p eId="para_48">The cost is likely to be enormous if we take into account the fact that it is the leading cause of liver failure in women and that foetal alcohol syndrome is a lifelong affliction a child is going to have to live with. Consider, too, the spinal injuries. In my experience as a GP, I called on people every so often who had fallen down the stairs with alcohol and broken their neck or acquired a brain injury. These are lifelong. While it is a personal tragedy for that person and their families, it is a huge cost on our health service. We need these types of fact in order to counter the narrative from the drinks industry. I am not someone who is a killjoy. I enjoy a drink, I will put my hand up, but the tactics from the drinks industry, for example, in relation to the labelling of alcohol quite recently and the deferral of that, show the power it has over the Government in making the case about jobs and talking spuriously about an EU-wide approach. The industry did everything to deflect away from what was going to be a very reasonable proposal under the legislation to have alcohol labelling. Certainly, when it comes back on the range in 2028, we must pursue it. How do we counter that type of narrative?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T18:20:00+00:00"/></from>
+          <p eId="para_49">In addition to the study HIQA is doing to inform the low-risk drinking guidelines, the Department of Health is also funding an additional study around the cost-benefit of alcohol. The Deputy is right that it is really important we have up-to-date figures.</p>
+          <p eId="para_50">Some of the figures that we are reliant on for looking at the costs and impact on alcohol are quite old. This will provide us with up-to-date figures, both on the economic benefits and harms. It will be important to put those figures side by side to show the differential and looking at that range of costs that Deputy Martin Daly outlined - the hidden harm and the cost to all different aspects of society. I absolutely agree with the Deputy that it is important that we have up-to-date data on that to inform our policy.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_11">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_51">I see from the document that there are a plethora of organisations. The Department's presentation states, "there are 366 services that treat alcohol and-or other drugs, with a further 11 services providing alcohol-only services." Is having such a plethora of people effective in the delivery of alcohol services or should we have a more refined approach?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_52">I would say it is a twin-track approach. It is good to have community-based services. They are accessible. They are local. People can identify them. Over 80% of our drug and alcohol services offer alcohol services and that is a positive thing.</p>
+          <p eId="para_53"> The second element is that we need a more strategic approach. That is why we have funded the national roll-out of the integrated community alcohol service, which is a HSE-led service. It is a very particular model that is integrated into community care. We have invested in it to make sure that every health region has that service. This is a breakthrough in how we approach the issue of alcohol. Dr. Sheehan is very much leading on the roll-out of this new model. The combination of locally accessible services, community-based responses and a HSE-led initiative at the health region level is a good one, but we are not there yet.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_13">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_54">In delivery of residential alcohol treatment beds, how much of that is delivered directly by the HSE and how much is contracted out to section 38 and 39 voluntary organisations?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_55">The vast majority is contracted out to section 39 organisations but the HSE today opened a new facility in Cuan Dara for medically complex cases with drug and alcohol addiction. A new facility of 12 beds currently, that number will rise to 30 next year. It will operate and provide a national service for very complex cases for the first time. It is great to see the HSE showing leadership and mobilising resources to provide this critical service for complex cases, including women who are pregnant with drug addiction. It is a hugely important breakthrough. It is great to see that growing in terms of a service model.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_15">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_56">I welcome that. I recognise the work of many of the voluntary organisations that treat addiction, and also the HSE community addiction officers and alcohol officers.</p>
+          <p eId="para_57"> Many of the voluntary organisations provide residential care and make an impact for people who have committed to giving up alcohol. It is not binary; you do not give it up once. You may have to do it a couple of times to get there.</p>
+          <p eId="para_58"> Coming back to the investment in the education and advocacy piece from the State's perspective in order to counter the narrative from the drinks industry, are we investing enough in telling people the level of health risk and social risk that is associated with alcohol abuse?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Professor Noel McCarthy<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_59">That question stems from the Deputy's earlier comments about what he read in <i>The Journal</i> in relation to the sheer weight of skill and resource that the alcohol industry has.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_17">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_60">And spurious research. It is using certain researchers to give it the narrative it wants.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Professor Noel McCarthy<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_61">It is the narrative that we live in. We live in a narrative where we think of Ireland as a country that likes alcohol. It is part of our culture. I was born in the 1960s. We had less than 5 litres of alcohol per person per annum in Ireland. We are now almost at 10 litres. We used to be relatively low compared to France and countries like that. We are now up there and above them. Italy is at 7 litres to 8 litres. So is Greece. Norway is at 5 litres. We are a culture that traditionally did not have high alcohol that, as we got wealthy and as there was a really well developed and superb industry, has shifted to being a culture of heavy drinking across the population. There is that reality. The only way for us to get the health we want is to get down to levels of 6 litres, as the HSE says, which is not a strange level. On average in the world, that is the level. Europe is at the top of the world, above America and far above everywhere else. Ireland is in the top quarter of Europe now; it never used to be. That is the direct result of the commercial context that we have lived in and we would have to accept that we would lose one third of the income from the alcohol if we were to choose health over that. It is a direct choice.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_19">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_62">I thank Deputy Daly. The next slot is for Sinn Féin. I call Deputy Graves.</p>
+        </speech>
+        <speech by="#AnnGraves" eId="spk_20">
+          <from>Deputy Ann Graves<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_63">I am delighted to be here this evening. I am not a member of this committee but I am the Sinn Féin spokesperson on the national drug and alcohol strategy and I am also a member of the Joint Committee on Drugs Use. This is really interesting and relevant to me.</p>
+          <p eId="para_64"> I thank both groups for their presentations. They were really good. In particular, the statement from the coalition brings into focus the damage that alcohol causes to our society and the need for it to be included in the forthcoming national drugs strategy.</p>
+          <p eId="para_65"> To allow us build to a coherent and comprehensive strategy that will reduce the problems that we are facing as a society from the harm done by alcohol, I have been out to a lot of community groups. One of the problems they have is polydrug use in combination with alcohol. At the Joint Committee on Drugs Use last week, we met a group representing youth. Their biggest concern was the normalisation, particularly of alcohol, and the jump from one to the other. They raised the question of why was alcohol not included in the strategy, which was something that I agreed with and supported at the meeting. I am meeting the Minister of State, Deputy Murnane O'Connor, tomorrow and it will be something that I will be raising with her. I support it. It is the right thing to do.</p>
+          <p eId="para_66"> I have a few questions. I will throw them out to probably the coalition group and then to the Department and whoever feels like answering.</p>
+          <p eId="para_67"> In the last two strategies, alcohol was included. The group mentioned in its submission that there had been some successes. What worked well and what could have been improved to reduce the damage done by alcohol?</p>
+          <p eId="para_68"> How can we improve education and prevention for our young people? How do we deal with alcohol being normalised in our society? People have one reaction to the use of drugs but when it comes to alcohol, it is just a case of saying someone had only had a few drinks. It is normalised. That starts from a young age; it is not older people. Everybody sees it as a way of living.</p>
+          <p eId="para_69"> For the coalition group, I met Alcohol Action Ireland. It has been campaigning for labels on alcohol products. It happens for export but it does not happen for the home market. It looks as those the Government is stalling on this. What are the coalition's opinions? It worked with the smoking ban. With effective messaging, it works. What does the coalition think?</p>
+          <p eId="para_70"> Finally, moving to the back row and having listened to the compelling argument by the coalition group, does Mr. Leach feel alcohol should be included in the drug strategy? Should the group be consulted on the drafting of the strategy? Where do we go from here?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T18:30:00+00:00"/></from>
+          <p eId="para_71">To come in on the Deputy's question around education and prevention with young people, it is important to come back to what Deputy Daly was saying. The big driver of the story of alcohol in Ireland right now is the alcohol industry. It is well crafted and very heavily invested in, with significant amounts of marketing. Some of the work our colleagues in the HSE are doing in secondary schools is really important because it is looking at raising young people's consciousness around marketing and how it is targeting them as young people, but we would very much believe that if you want to counter that narrative, you have to invest in communities, you have to invest in consciousness raising within communities, and you have to empower and enable communities to identify conflicts of interests with the alcohol industry when they exist at that local community level.</p>
+          <p eId="para_72">Some of our communities - which are supported through the building safer communities project talked about by the HSE earlier - have engaged in really good campaigns around the alcohol industry and alcohol industry interference. A number of years ago we were in a campaign to have alcohol industry-funded materials, programmes and teacher training removed from schools. If you invest in communities there is an awful lot you can achieve.</p>
+          <p eId="para_73"> On the labelling, it is very regrettable that the Government has delayed its introduction. If we go right back, 13 governments in the EU objected and eight submitted formal complaints and opinions to the EU under the TRIS notification process. Ireland managed to clear that and to commit to going ahead with the alcohol health labelling. Unfortunately, we have had that delayed until 2028. It is really important we talk about that, keep it on the political agenda and keep it live. In every county in Ireland if you go into an off-licence or supermarket you will see alcoholic products with labels on them - some of the suggested warning labels - because of the way the alcohol industry prepares itself for what is coming, and the sky has not fallen in.</p>
+          <p eId="para_74"> On the legislation, what we are hearing from communities that are doing this consciousness-raising community education and prevention at the grassroots level is we do not just need the legislation, we also need enforcement. I would like to highlight the lack of enforcement of breaches of the Public Health (Alcohol) Act. In the first four years after its implementation, more than 1,900 breaches were identified by environmental health services. From those 1,900 breaches we have had no prosecutions, so there is not just a need for investment in the services, prevention and education - we also need to invest in, expect more from and demand higher results from our regulatory authorities. That was one of the reasons we wanted to appear before this committee rather than the drugs committee, because alcohol was not included. It was to show leadership and to work with other Departments. There is an awful lot the Department of justice could do. At the moment it is talking about liberalisation of alcohol licensing, extending the hours and making it easier to get an alcohol licence. We are already very well served. We have more alcohol licences in Ireland, nearly, than any other country in the EU, so we are right up the top of that tree. It is really important when we are here to have this discussion that we think about it in a broad way and not a very narrow way. With the Department of Health and the HSE there is really good work going on and we acknowledge that, but until we say we need a whole-of-government approach, integration, co-ordination and political leadership and we until have all those things, the industry will go through any cracks it finds, quite simply.</p>
+          <p eId="para_75"> I do not know if any of my colleagues want to come in on the task force bit, because the Deputy asked about locally-based pieces as well.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Dr. Nazih Eldin<recordedTime time="2025-12-09T18:40:00+00:00"/></from>
+          <p eId="para_76">I thank the Deputy. We have a number of projects that have been successful working directly with young people and not just listening to them but implementing their ideas and views on alcohol consumption, especially in relation to sale and providing them with alcohol and things like that. It is limited success but nevertheless it is success. What does not work are speedy projects that want a result tomorrow. You want to change culture and to change culture takes a long time. With smoking for example, it took us years between discovering the link to cancers and banning smoking in the workplace but we had policies and so on. I am grateful my colleagues in the Department of Health are here supporting the inclusion of alcohol with drugs because as Mr. Leach said, it could be the gateway to other drugs but it is a drug in itself and therefore we should treat it as a drug. I also support what we said earlier, which is that quick solutions do not work. We need an integrated policy. The obesity policy and action plan took three years in the making but it is an intergovernmental policy. It was not just the Department of Health working on its own. There was work with the Department of agriculture, with industry and so on to establish that. I am not worried about working with the alcohol industry in relation to that. It contributes – this is an estimate – roughly speaking €2.4 billion to the Irish economy, to the Exchequer but the cost of alcohol in Ireland is 400% more than the income we get. I mean the cost to society in relation to health, justice, workplaces and the impact on families, children and so on. It is estimated at €12 billion in Ireland. If you compare that to what we are saying it is more than 400% and therefore we need the integrated policy.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_23">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-09T18:40:00+00:00"/></from>
+          <p eId="para_77">I thank Ms Leonard and Mr. Leach for their very comprehensive statements. They are very informative and enlightening. They are peppered with statistics and I am really taken by the 2024 figures of €170 million in expenditure and €60 million for community-based services. I would not have dreamed it was like that. There probably would not be any of us or many of us in this room who do not have somebody who is, you might say, the victim of alcohol or drug abuse. In that context I had good reason to visit some very close friends in the most local alcohol and drugs centre near me in east Galway, which is Cuan Mhuire. They do absolutely outstanding work. I have always felt the person who is struggling with alcohol would do well to visit one of those centres and speak to the people who are getting treatment. It is a compelling case when you talk to the people who are in the system and see how devastated and broken they are. It is not just them. There are families broken, communities broken and of course there are places of employment that need that person very badly. I am always taken by that, but very positively, many go on and they live a very normal life afterwards, though they are always alcoholics. Sometimes people think once you are cured that somehow or other you will not fall back into that again, but people do. It takes a lot of willpower to be able to continue on that journey without relying on alcohol.</p>
+          <p eId="para_78"> I have said this before and maybe it is not the most appropriate thing to say, but I feel one of the things is pushing people more towards drugs is the excessive cost of alcohol. It is compelling. Here in the capital it is much more expensive than what it costs down where I live. Consider a night out and the cost of that <i>per se</i>. That is why I believe some people are encouraged to take the cheaper option and start using drugs and as a consequence of that the addiction falls into place. I am quite positive what I am suggesting is a fact for a lot of people. I have often spoken to them and they are lured into it by means of it being a less expensive way of getting their high, if you like, especially when it comes to groups and those under age. One of the things I think is some people feel that to be able to drink alcohol and to be able to drink a lot of it is nearly a fashion and some people think it is great to be able to consume such large amounts of alcohol and still be able to stay standing, which is hard to understand. I am sorry for going on a bit of a rant but that is just my experience.</p>
+          <p eId="para_79"> We have many service providers around the country that are doing extraordinary work.</p>
+          <p eId="para_80">We hear local and national drugs and alcohol task forces are expected to address alcohol harm but do not have adequate resources to deliver prevention programmes at scale, particularly in rural areas. How will the strategy strengthen and sustainably fund community-based prevention and support services, including in my own county of Galway? I do not care who answers that.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_81">We will take turns.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_82">The Deputy mentioned Galway.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_26">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_83">Of course.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_84">Two years ago, the Department funded the development of the Galway alcohol service, the community-based alcohol service. It is one of our pioneering new services, which is linked to making services more accessible. The service has been extended to Mayo and the plan is to extend further again. Galway is leading the way in terms of providing community-based treatment services. It is important to emphasise the community response is the most important. The acute-level cases may require residential treatment, but the vast majority of interventions can be delivered at the community level, whether that involves the GP, or is escalated to the next level. That is where we need to prioritise resources.</p>
+          <p eId="para_85"> An interesting point about the cost of alcohol and drugs is that, of course, drugs involve an unregulated market and supply. People can use different ways of meeting the cost of that, which is to do with global costs. I highlight the incredible costs associated with drugs in terms of debts and how they mount up, and the consequences of that. That is the real sting of what goes on here, in terms of the drugs markets. The role of task forces is hugely important. We need to mobilise the work of the task forces in a coherent way and the new health regions the Department is rolling out with the HSE will provide an opportunity for a more planned approach for services and preventative initiatives.</p>
+          <p eId="para_86"> One of the things we did two years ago was to roll out the first national programme for drug and alcohol prevention initiatives. These initiatives are demonstration projects. One of them is the community alcohol network. We are trying to see what works and how we can scale these up after the first pilot periods. We need to take a more strategic approach to prevention, such as asking local responses. What are the interventions that work? Whether it is school-based interventions, such as Know the Score, or community-based interventions – we are about to roll out an app which will be a self-help tool for people to help them manage their drug use - we need to use all the resources we can to focus on prevention while focusing very much on what works and funding those to make sure they are available and accessible. The self-help tool, which Dr. Sheehan has been leading, is going to be a bit of a game-changer.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_28">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_87">On one thing I am curious about, I listened but I did not pick out any statistics to indicate whether people who rely on alcohol or drugs may have underlying mental health or emotional issues that may as a consequence ease them into finding something to give them a bit of comfort. Are there any statistics on that? </p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_88">Absolutely. There is a huge body of evidence showing the link between alcohol use and mental health. As part of the work HIQA is doing to inform the update of the low-risk drinking guidelines, it is specifically looking at updating a systematic review on the link between alcohol and mental health. Our colleagues in Alcohol Forum Ireland have recently completed a piece of work in developing a training module around the link between alcohol, suicide and self-harm. There is a huge link. It is of huge importance to our work on suicide prevention and our new Connecting for Life suicide reduction policy. My understanding is there will be actions around alcohol and drugs. With our Sharing the Vision policy as well, it is really important that we support implementation of actions around that relationship between alcohol and mental health.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_30">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_89">I thank Dr. Sheehan for that. The clock is beating me. I am very fortunate to hold the role within our own parliamentary party of spokesperson for Fine Gael on mental health. I would be very interested in understanding and hearing more about that. I thank the witnesses for the comprehensive statements and responses.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Professor Noel McCarthy<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_90">If I may come back in on the Deputy's comments on cost and the idea of people being driven into drugs, I have two pieces of evidence on it. Growing up in Ireland has been analysed by one of my colleagues, Margaret Brennan, and one of the best predictors of using cocaine at age 17 and age 24 is how early the individual started drinking alcohol. Alcohol consumption is - as well as being a drug of itself - strongly predictive of using other drugs rather than that sense that there is a split between people using drugs because they are not using alcohol.</p>
+          <p eId="para_91"> The other issue is cost. Hospitality has become much more expensive, but alcohol has not. Alcohol is now much more affordable, as far more of it is sold through off-licences. When people go out and socialise, alcohol is relatively expensive compared to off-licences, but alcohol has actually got cheaper compared with other things over the period we are looking at. </p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_32">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_92">Home drinking is a problem for a lot of people. We hear more and more about it. I thank Dr. McCarthy. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_93">I have a number of questions. To begin, I wish to set out my own concerns around our approach to alcohol policy. Looking at the figures in terms of the cost to the health service and huge level of harm to people as regards alcohol-related cancers, the huge number of admissions to hospital and the cost to the health service, I do not think we have got it right in terms of the State's approach to harm reduction and alcohol policy and the co-ordination of our policy at a national level. At a local level, I see how stretched services are. </p>
+          <p eId="para_94"> When I was a councillor, I was also a member of a local drug and alcohol task force, and we could see the local services really struggling to meet the huge level of need and demand for their services at a local level. I also have concerns around the legislation, and particularly the implementation of the legislation. The Public Health (Alcohol) Act made it illegal to advertise alcohol on sports grounds. One cannot go to a match and not see an ad for alcohol. It is the same near schools and public transport. It is concerning that the law is not being enforced by the Department. I had a Private Members' Bill to clarify the law and to close a loophole on it but I do not think it is required. The law should just be implemented as intended. I would like to discuss that at another point.</p>
+          <p eId="para_95"> Today we are to discuss the strategy and how we can address some of these things in a really co-ordinated way and put alcohol to the centre of that strategy because it is, as we said, the most widely available drug and needs to be a real focus of our drug strategy. As we heard, it has an impact on other drugs as well. I also do not think we can uncritically say other drugs are an unregulated market. We need a serious commission around the legalisation, regulation and taxation of cannabis in particular. That is a matter for another day and another committee, but we do need some critical engagement on that and not to dismiss it just as an unregulated market. It should not be unregulated.</p>
+          <p eId="para_96"> Ms Leonard said in her opening statement that the fragmented approach to alcohol policy leads to a lack of clarity, consensus and co-ordination. Does she believe there is currently capacity in the Department of Health and across Government to generate and implement effective alcohol policy? </p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T18:50:00+00:00"/></from>
+          <p eId="para_97">As for whether it is effective, all of the indicators of harm to others suggest it is not. We have made progress. We have brought alcohol consumption down but we are still talking about four deaths every day. Before we get home to bed tonight, four more people will have died as a direct result of alcohol harm. We wanted to appear here today simply to say we do not want alcohol just tagged into other strategies. We want it to be afforded priority and named, and for some person or persons within the Department to take that approach described in relation to the obesity strategy. We need clear, interdepartmental protocols, consultation and a plan that rises above it. There are so many things around alcohol harm that just slip off the side of the table because nobody is responsible for them. Ms Furey is here today because of her partner's experience of trying to navigate looking for some sort of support for an alcohol-related brain injury, when no services, policy or protocols exist. </p>
+          <p eId="para_98">We have very poor diagnostics. Until we have a comprehensive plan and leadership that says what all of those harms are and who is responsible for them, we will have those types of outliers where things simply fall off the side of a cliff.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_99">Is part of the issue the fragmentation within the Department of multiple units being responsible for alcohol policy and it falling between the gaps? In some instances, external bodies are involved. Is one unit needed within the Department that has a central focus on alcohol? Is that part of the problem from Ms Leonard's perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_100">Historically, that is something lots of organisations and groups that are part of the coalition articulated concern about and the question about one, cohesive lead unit within the Department of Health. Other colleagues have said we need some sort of semi-State body that is responsible for alcohol. I am never convinced about that. It moves it to arm's length from Government itself. We need strong leadership within the Department of Health. There are brilliant people working within the Department but until the structure is right and there is that sort of cohesive leadership, we will be back in front of another committee again talking about the other gaps that continue to exist.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_101">It would be interesting to get a response from the Department about that fragmentation. Is there a need for one unit and more co-ordination of policy?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_102">We acknowledge that any time you have cross-unit or cross-divisional approaches, there is a danger of gaps emerging. Professor Horgan and I sat down in July or August and analysed that because that was something coming back from the committee and through the process with the drugs strategy. We are putting in place an alcohol policy framework to try to address that. It is not that we would create one unit but we would have real clarity about the roles and functions between Mr. Doyle's unit and Mr. Walsh's unit and between the tobacco and alcohol control unit, TACU, which looks after the legislation for that.</p>
+          <p eId="para_103"> Is there strength in having one big unit? The reality is that whether it is our acute services or primary care services, alcohol will impact on everything we do by virtue of the evidence set out by Deputy Dr. Daly. There is a huge role for primary care to play in supporting people to reduce their harmful alcohol use. It is a very complex issue. I know from my own experience in dealing with this from a communications perspective when I was with the HSE that alcohol is very different to dealing with drugs and other things. People have a very complex relationship with alcohol. It is a very different thing in our society. It needs a public health response. It needs a clinical response. It needs a treatment response.</p>
+          <p eId="para_104"> We can improve but I do not know and I do not think anyone can answer the Deputy. We can keep it under review and we will constantly find gaps, as policy and evidence develops. That is clear. We are conscious that it is a problem and I might ask Professor Horgan to give her own perspective.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_105">The CMO division really took a population-level approach to prevention. There were two main aspects: the prevention and education on one issue that is part of the Healthy Ireland framework and what we know works, because it works for a lot of other things, is legislation and enforcement of that legislation, as was said. The Public Health Act on alcohol is the only law we have under which we can implement and continue to expand on implementation. That includes alcohol labelling. Just to be clear on the public health advice when it comes to alcohol labelling, it is no different. There are other reasons decisions are made but from the CMO's point of view, the advice on alcohol labelling is the same.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_40">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_106">Does Professor Horgan accept the delay was just a result of lobbying by the industry? Is that the reason?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_107">I do not know the reasons behind it. My advice at the time was that this is the public health advice and it has not changed.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_108">Does Professor Horgan accept and have concerns that the interests of the industry have been put ahead of public health?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_109">I cannot comment on that because I was not involved in any of the decisions. My job as the CMO is to give the advice.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_110">Does Professor Horgan accept the decision will have an effect on public health?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_111">It is impossible to tell because it has not been brought in. It is hard to figure out what the delay in labelling-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_112">It was included in the Act as a health measure. We expect it would have a positive impact.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_113">The decision on labelling of alcohol was the public health advice that was given. That has not changed any bit. When it comes to prevention and legislation, there is talent. When we are looking at prevention and education, it is not just with alcohol but with obesity and healthy eating. It is about healthy living. There is expertise in the health and well-being unit and TACUs. They are really good in that area.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_114">I have less than a minute left so I will move onto my final question. I am really keen to understand what measures are in place in the Department of Health to safeguard alcohol policy from the influence of industry, lobbying and the profit motive. What safeguards are in place? It seems to me that the interest of the alcohol industry is being put ahead of public health.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_115">I do not think any of us engage with the alcohol industry. We are not susceptible to lobbying. As the CMO said, her voice has been-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_116">It is just the Minister, then.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_117">No, a Chathaoirligh. We live in a democracy. Governments take decisions for all sorts of reasons. We consistently give advice that is based on public health.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_118">Did the CMO against delaying the labelling? If it is consistent with public health advice, was the advice against the delay?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_119">My advice was the advice on putting on labels had not changed in any way.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_120">The advice was to do it.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_121">The advice was consistent.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_56">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_122">I am really glad we are having this session this evening. I warmly welcome the Coalition for Better Alcohol Policy and the officials from the Department of Health. My questions focus on foetal alcohol spectrum disorder. It seems that a huge amount of effort goes into prevention, and rightly so. It feels like there has been a policy of ignoring those who are living with FASD in this country. It is almost like Ireland's guilty secret. I know there is not a clinical diagnosis but that should not be a block to a model of care or having specialist clinics. It has massive implications for those who are living with FASD in terms of access to the health system, education, housing and work.</p>
+          <p eId="para_123"> There is no proper data as to who is living with this but I noticed that last year in response to a parliamentary question, the HSE said it believes 11% to 12% of babies now are born with foetal alcohol spectrum disorder. That is an enormous number. Yet, no real responsibility is being taken with regard to the care and treatment of those children. There seems to be a bit of a passing of the buck between the Department of Health and Department of children and disability. There seems to have been an interaction earlier this year where the Minister for Health said it was a matter for the Department of Children, Disability and Equality. Six days later, the Minister of State with responsibility for disability said FASD is not deemed to be a disability and referred the question back to the Minister for Health.</p>
+          <p eId="para_124"> I do not think there is any mention of FASD in the review of the national drugs and alcohol strategy. It does not seem to be on the Department's radar. There is a position paper from 2022 but that is about prevention. We do not see any reference as to how we actually care and treat for those who are living with this disorder. Why is the Department not taking this seriously? Is it because the cost could be so great in terms of health and all the other aspects of a person's life? Has there been a bit of a burying the head in the sand with regards to FASD in this country?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:00:00+00:00"/></from>
+          <p eId="para_125">It is timely. I appointed a deputy CMO in child health to look at various aspects of children's health, one of which was the impact of alcohol on the fetus and when the baby is born. She has been engaging with colleagues in public health who have a particular interest in this area.</p>
+          <p eId="para_126">There is work ongoing looking at that which Dr. Sheehan will speak about. As the mantra goes, prevention is always better than cure. That is really important. The deputy CMO is engaging with colleagues in the HSE in public health to look at this issue. Because the rates vary quite a bit, some of the information is being updated. Dr. Sheehan will speak about that. I am conscious that it is something that needs focus. I do not have responsibility on delivery of services. That goes across between health and disability. She might give members an update on what is happening with respect to that.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_127">I work in health and well-being. We support the work around FASD prevention. We have an expert advisory group chaired by Dr. Mary O'Mahony, a public health consultant. In developing the position paper on FASD prevention, the group felt really strongly that we needed to include an action around the development of services. We have an action in there that we are progressing and are working with our colleagues on the clinical side, in clinical design and innovation. We have had a number of workshops with clinical colleagues, particularly looking at Scotland, where they have made really good progress over the past ten years around the development of services, and integrated FASD services within neurodevelopmental pathways, so there is not a separate, specialist pathway but it is really integrated across CAMHS, disability, mental health. We are planning a further workshop early in the new year. Absolutely, we can all acknowledge that it is a really significant issue that needs attention and addressing. We have been really fortunate to learn from the Scottish experience and they have been really generous in working with us. We would love to continue to develop that work further.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_128">It is great to hear there is some development and that is really welcome in respect of the deputy CMO. We need to recognise that the life expectancy for people with foetal alcohol spectrum disorder is only in their 40s. There are very serious issues. We could have a whole separate debate on this on another evening. We did research with families who are raising children with a presumptive diagnosis of foetal alcohol spectrum disorder. The research was published by Trinity College Dublin a number of years ago. Of those, one in ten caregivers reported that FASD services were inadequate, while 62% that school staff did not understand what FASD was. The results also showed a high level of financial burden, with almost half of respondents using their savings, giving up necessities and not being able to afford certain extras due to the costs associated with caring for a child with foetal alcohol spectrum disorder. All of this is welcome but it speaks exactly to the fact that we need to accelerate and step up alcohol policy and investment.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_60">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_129">I very much welcome the appointment of the deputy CMO but one of the things for me is that there are thousands of adults out there who are living with this as well. We do not even know the number. While we welcome that development, we cannot ignore that there are adults living day in, day out with this who have been condemned to a life of not being properly recognised or indeed getting the service. I would like to hear a little bit more about the workshops. Who were the workshops with and are they solely taking place within the Department of Health? Is there any interaction with the Department of housing, social protection or education? I note that of the 14 action points, it is a medium-term action to develop a strategy with regard to FASD. When is it hoped that strategy will be developed? Who were the workshops with?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_130">We have had a couple of workshops to date with a range of people within HSE services, across addiction, disability, the clinical side, paediatrics. We have also been engaging with Tusla. There is a huge proportion of children in care with FASD so this is an issue that Tusla is really seeing. We have had engagement with Tusla and have a planned engagement there for the next workshop. Our next workshop is really focusing on working with the clinical programmes within the HSE. There are various clinical leads for different programmes of work such as ADHD. We know there is significant comorbidity with ADHD. Our focus is really on integrating this work into work that is already in train around the development of models of care. Because we do not have a national Government policy around FASD, the progress perhaps is not as quick as we would like. There are so many competing priorities, and huge reform happening across our children's services and disability services. Some political leadership around this would be really valuable just in pushing the agenda forward.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_62">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_131">Is the focus of the workshops on paediatric care or is it both paediatric and adult care? </p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_132">It is both. It needs to cut across right from prenatal all the way up to adult services. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_64">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_133">Including adult services.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_134">Yes, absolutely.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_66">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_135">Is it the intention that there will be a clinical programme for this ultimately, or that it will be dispersed across a number of clinical programmes? I am thinking of the care of an individual. I am interested to hear what the direction of travel is likely to be.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_136">The model in Scotland has been really interesting. The Scottish Government has funded a team that was initially based within the NHS but has since moved in to the University of Edinburgh. It is really driving the support and professional development across CAMHS, disability and mental health services. That model is really interesting and something we would love to explore further with the deputy CMO and our clinical colleagues.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_68">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_137">This discussion is really timely. We are entering into a period when alcohol consumption peaks coming up to Christmas. I was going to ask the coalition about political leadership but I think they have answered that very well. It is interesting to hear Dr. Sheehan also speak about the need for political leadership when it comes to the foetal alcohol aspect of this. On the piece of work HIQA is doing at the moment around mortality, accident and emergency attendance and hospital admissions, and that piece around mental health, I understand that is due to be published in 2026. Is there anything to do with foetal alcohol spectrum disorder that the witnesses are aware HIQA is looking at as part of that study? Will they come back to the committee when the report is published to go through it with us?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_138">For the HIQA study, my understanding is that FASD will not be included. I did actually raise this. The harm to others is not going to be included in the study; the direct impact of harm to self through alcohol use is its focus. We are really keen to look at other opportunities for funding for research specifically around FASD. Ms Leonard mentioned some work the alcohol forum in Trinity College Dublin did around FASD. Some additional research would be welcome.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_70">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_139">I happen to think that is a real missed opportunity. It is a very specific disorder where we can point to it categorically and say we know what its cause is. There are so many other spectrum disorders that we just cannot say that for. Here, we can point and say this is a direct correlation and cause.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_140">I should note that other study I mentioned that the Health Research Board is doing on the cost of alcohol will include harm to others. That will include FASD, which is really welcome.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T19:10:00+00:00"/></from>
+          <p eId="para_141">It is really important to also look at the financial burden that alcohol-related brain injury places on our health services, particularly on our nursing homes. The lifetime cost of maintaining somebody in a nursing home if they have been admitted at 51 years of age, for example, is very high. Treatment options would make sense from a health economics point of view. It is okay with Deputy Clarke, I would like Ms Furey to speak to that for a moment.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_73">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_142">I would love if Ms Furey would do so because it is my next question.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Edel Furey<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_143">I thank the committee for giving me the chance to speak today. I am here not just because I am an advocate but because I am someone who has lived through the devastating impact that an alcohol-related brain injury has on a family. An ARBI is not just a medical term; it is a life-altering reality for countless families across Ireland. It refers to a range of brain conditions caused by long-term heavy alcohol use. The damage alcohol can do to the brain is insidious. It is often hidden for years, only surfacing when it has already changed that person's memory, decision-making skills and ability to manage their daily lives. Imagine watching someone you love struggling to care for themselves. They forget to brush their teeth, they cannot remember simple tasks, and they are not able to make decisions they once handled with ease. This is an ARBI and it is more common than we think. Autopsy studies suggest that one in eight people dependent on alcohol will develop some form of this condition from mild to severe.</p>
+          <p eId="para_144"> The most recognised form of an ARBI is Wernicke-Korsakoff syndrome. This is a two-stage disorder that can be fatal and up to 20% of people with Wernicke's encephalopathy die from it. Of those who survive, 80% go on to develop Korsakoff amnesic syndrome. The tragedy is that with earlier intervention lives can be saved and the quality of life can be dramatically improved. Right now many people with an ARBI are placed in nursing home settings that are simply not equipped to meet their needs.</p>
+          <p eId="para_145"> My partner is 53. He was the managing director and owner of a hugely successful company. He was intelligent, articulate and driven. After a short illness he began drinking heavily and eventually he was diagnosed with Korsakoff's syndrome in September 2024. Our worlds were turned upside down. We knew he needed help but we had no idea how hard we would have to fight to get it. Despite an ARBI being a neurological condition he was not treated for it in Ireland's leading neurological hospital. Instead we were told he needed to go into a care home for the rest of his life and that there was no hope of recovery.</p>
+          <p eId="para_146"> This is not just our story; it is the story of so many families across Ireland. As many as 70% of people with a severe ARBI end up in a nursing home not because it is the best place for them but because there are no specialised rehabilitation or assisted-living services available. A 2021 report called Wasted Lives highlighted that an ARBI is a key reason people under 65 end up in nursing homes in Ireland. According to NHSS data, 1,288 people under 65 are living in nursing homes through the fair deal scheme. This does not count the number of people who are paying privately. The HSE's own figures show that 9% of those aged under 65 in nursing homes have Korsakoff syndrome. Many of these homes are not equipped to deal with an ARBI so people are simply medicated to keep them safe rather than receiving the specialist rehabilitation they need.</p>
+          <p eId="para_147"> My partner spent eight and a half months in an acute hospital. He was warehoused there and not rehabilitated. He was heavily medicated on antipsychotic drugs and not supported to recover. We had to remove him from this hospital and pay for private neurologists, MRI scans, CT scans and neurophysiotherapists. Not everybody has the resources to do this. I estimate that his hospital stay alone cost €350,000. This was without the cost of a one-to-one carer who needed to be with him 24 hours a day.</p>
+          <p eId="para_148"> This is not just a personal tragedy; it is a systematic failure and it is costing us all. We were lucky to find guidance from Alcohol Forum Ireland and it helped us to locate a specialist neurorehabilitation unit but there is none available in Ireland. We had to bring him to Belfast. It should not take sheer tenacity and privilege to access basic care when somebody has been diagnosed with an alcohol-related brain injury. The lack of diagnostic services in Ireland is not just a gap but a chasm. There are no clear pathways, dedicated teams or treatment plans. There is no information, funding or national strategy. Families like ours were left to navigate a broken system alone.</p>
+          <p eId="para_149"> Here is the hope. More than 75% of people with alcohol-related brain injuries can recover fully or partially if they get early intervention and the right supports. These interventions and supports are really not that difficult. They include neurorehabilitation, exercise, occupational therapy and being given vitamin B1 intravenously for a number of weeks, yet in Ireland there is no service for this. A study by Trinity College in 2020 confirmed that early access to neurorehabilitation leads to better outcomes for survivors, their families and society as a whole. My partner's story is not unique. It is the story of families all over Ireland. Ireland urgently needs to include the impact of alcohol on brain health in any new national drug strategy. We need to get better at preventing ARBIs and at diagnosing them and providing real rehabilitation and pathways of care.</p>
+          <p eId="para_150"> Recently 176 health professionals completed nine hours of training with Alcohol Forum Ireland. We need action. People simply do not know the impact their drinking can have on their brain. The greatest injustice is that most of these people could make a significant or full recovery if only they got the appropriate supports and timely interventions. Please do not let any more families fall through the cracks. This is why we are here today. I urge the committee to build a system that offers hope, dignity and recovery for people with ARBIs.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_75">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_151">I am truly desperately sorry that you, your partner and your family are in these circumstances. You are a powerhouse of a woman and a phenomenal advocate. It took real bravery to come to an Oireachtas committee and lay out your personal story for us to hear today. I have one further question I would like to ask the HSE and the Department. Why are there no dedicated pathways and why is there no neurorehabilitation?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_152">I am not involved in the care part. I absolutely hear what Edel it is saying. I have been a front-line clinician and I have seen how difficult it is to place and support people in this situation. A lot of this involves disability and acute services, and how to support somebody in the best and safest environment possible, preferably at home if possible at all but this is not always the case. It is something that certainly the Department would acknowledge. The Department of Health and the Department of disability should be supporting better care for those who have Korsakoff's psychosis or Wernicke’s encephalopathy. It is devastating and I have seen it. It is extremely difficult for the patients themselves, who often do not know, and particularly for the family seeing them in a prolonged hospital stay without a clear place to be safe in the long term.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_77">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_153">Have there been discussions between the Department of Health and the Department of disability about creating these pathways, rehab centres and structures?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Professor Mary Horgan<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_154">It is not my particular responsibility but it is something I certainly will take back to those involved in the services and in disability.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_79">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_155">I ask Professor Horgan to please do so and to update the committee in writing. It would be appreciated.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_156">I thank Ms Furey for her testimony which was very powerful. I thank her for sharing her story. We have some time for additional questions if members want to have another round of questions.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_81">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_157">On the foetal alcohol syndrome issue, how aggressive is our education? We should not be trying to gaslight women who are pregnant but how robust is our education on alcohol and the dangers to babies?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_158">We have a HSE communications campaign on alcohol and pregnancy. There has been a clear message for a number of years that no amount of alcohol is safe during pregnancy at any stage. We can see from market research we have done in the HSE that this message is not necessarily landing with the public. We have an issue with social norms around alcohol use and pregnancy. Our rates are up there among the highest in the OECD countries studied. We are seeing some positive shifts though. We did a round of public market research last summer and we can see that younger women aged from 15 to 34 have a lower rate of alcohol use in pregnancy. It is market research so it is not robust.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_83">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_159">I accept that. Does Dr. Sheehan think it would be a good investment to have addiction counsellors as part of antenatal classes? I am sure it is mentioned by midwives who carry out these antenatal classes that there should be someone specific because it is such a big problem.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:20:00+00:00"/></from>
+          <p eId="para_160">We are working on an updated alcohol in pregnancy communications campaign, which we will launch in the new year, using all of our evidence from recent market research and other sources of evidence. We also have drug and alcohol liaison midwives funded across our maternity services, who play a very important role.</p>
+          <p eId="para_161">Prevention is such a huge piece of this picture. About 40% of pregnancies are unplanned. It is about reducing our <i>per capita</i> alcohol use more generally and the population it is going to impact. That is going to have the most significant impact. We also have more work to do in terms of women getting a consistent message in pregnancy from the healthcare professionals. We can see from our market research as well that they do not always receive consistent messaging around that. We are working on that. We have done a number of different initiatives trying to reach healthcare professionals around that. We have a new pack for healthcare professionals coming out in the new year that we will be launching along with a public communications campaign update. All those broader measures around reducing accessibility and availability and increasing the price are going to be a huge factor in reducing prenatal alcohol use.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_85">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_162">I have another question. I will keep it short as I know other members want to come back in. We have had some success in reducing alcohol consumption over the last 20 years in Ireland. We need to say that also. The culture has been changed in certain respects around drink driving and a lot of other cultural issues. Coming back to that piece again about alcohol consumption and education, does education need to start much earlier in our school system?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_163">Dr. Sheehan might talk about that. We are doing that. Dr. Sheehan will talk about what we are doing in the school system.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_164">We are doing quite a lot of work with the Department of Education and Youth and with the NCCA and NEPS around our development of SPHE resources in schools. We have alcohol and drugs now incorporated across lessons from first year up to sixth year. We are currently working on the senior cycle resources. I know it was referenced by a Senator earlier that for the first time ww will have a lesson around commercial determinants of health, which is really positive, looking at not only the marketing and advertising on alcohol, but also tobacco, gambling and a whole range of other topics. We have it integrated as well into our new sexual health education as well. We need to do more work at primary school level. There is a new well-being framework at the primary school level currently in development. We look forward to working with our education partners around strengthening the work in primary schools as well.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_165">We need to acknowledge that as a people we have a complex relationship with alcohol. When you survey people, the vast majority of people consider themselves light or moderate drinkers. The overall consumption would not back that up. We have a huge amount of public health work to do in terms of convincing people to reduce their alcohol intake. I might ask Mr. Doyle to speak on that. Healthy Ireland has a huge role to play.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_89">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_166">I understand that. There is a conflation between increasing cocaine usage and the overpricing of alcohol. That seems to be a drinks industry narrative. Is that true? Is there evidence there to say cocaine usage has gone up because alcohol prices have gone up?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_167">No. The opposite is the case.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_91">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_168">I want to nail that because it is a false narrative.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_169">We know the higher price of alcohol and minimum unit pricing drives down the level of alcohol intake.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_93">
+          <from>Deputy Martin Daly<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_170">It is a false narrative in other words.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_171">I will ask Mr. Doyle to talk briefly about Healthy Ireland and its role in public health.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Matthew Doyle<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_172">We are currently reviewing the current Healthy Ireland framework. We have been going through the process of documentary evidence that we have had so far. We are doing a public consultation in the new year, hopefully in the first quarter, probably around February. We will be inviting submissions for that as well. We would be happy to hear from members of the committee and from organisations about what they think should be done.</p>
+        </speech>
+        <speech by="#AnnGraves" eId="spk_96">
+          <from>Deputy Ann Graves<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_173">I thank Ms Furey for sharing with us. I have two short questions. During her first experience when her partner was in hospital and basically left there for months on end, was it lack of diagnosis or lack of treatment that was the issue?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Edel Furey<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_174">Lack of treatment. He was diagnosed within days.</p>
+        </speech>
+        <speech by="#AnnGraves" eId="spk_98">
+          <from>Deputy Ann Graves<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_175">They knew straight away.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Edel Furey<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_176">For example, I had to kick up a fuss and contact every TD I could find and the director in the hospital even just to get him some basic attention. Eventually one of the neurological doctors came down to see him. The man had tears in his eyes saying his hands were tied and that he could not help him.</p>
+        </speech>
+        <speech by="#AnnGraves" eId="spk_100">
+          <from>Deputy Ann Graves<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_177">That is desperate.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_178">It is worth noting that we have seen the HSE develop community neurorehabilitation teams. That is a welcome development. We have seen those memory clinics. All those types of things exist. However, right now in Ireland, de facto, ARBI is an exclusion criteria from those services. It is not just that pathways do not exist; it is that the people who develop those conditions are excluded from services that would work for them and could help them to improve their life, their independent living, all of those things. It would be a huge support to family members.</p>
+        </speech>
+        <speech by="#AnnGraves" eId="spk_102">
+          <from>Deputy Ann Graves<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_179">It would be a saving to the Exchequer too. The second question is when Ms Furey eventually went the private route and he got the treatment that he needed-----</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Edel Furey<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_180">He did not actually get treatment. After reading papers that were written about the condition, we learned that there were certain guidelines regarding what you should do; for example, to have a follow-up MRI scan to see if there has been any difference in the brain damage and a few little things. The neurologist that we saw in the private hospital could not understand. She said it was his memory that was affected. He has no short-term memory. He cannot create new memories so it is dangerous. For example, he has probably called 25 times. My phone has buzzed while I have been here because he does not remember he has called. The consultant could not understand why they would not treat that with neurological physiotherapy, occupational therapy. There is a correlation between the systems training.</p>
+          <p eId="para_181"> I am practically an expert on this situation trying to get them to listen and to do the very basic stuff. I had to bring him to places to buy a little set of weights and sit in the hospital trying to get him to do all the little exercises. That could be done by the people in the hospitals. He may have got out of there quicker because they say you cannot create new pathways to the brain by doing these exercises and improving this condition, but they said no and to put him in a care home. That is what they have to do in the hospital because they cannot treat it.</p>
+        </speech>
+        <speech by="#AnnGraves" eId="spk_104">
+          <from>Deputy Ann Graves<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_182">Does Ms Furey think the delay in treatment has had an impact?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Edel Furey<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_183">Yes. We were trying to get him to a dedicated ARBI unit. It was delayed by everything in the hospital. It was also delayed by the legalities and the route for decision-making and stuff like that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_184">I have a number of questions. Our clock is not working, so I will tell members when there is a minute left. It is a bit stuck at the moment. The real focus of why we are here and why we decided to have this meeting was to understand to what extent alcohol will be part of the strategy. I know the coalition welcomed alcohol being included to some extent. To what extent do they think it will be included? To what extent do they think it should be included?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_185">I am not any more clear. It is great that we know it will be in there. It will be considered as part of the prevention work. The development of a prevention framework for Ireland is important. The education prevention piece is essential. I would slightly disagree with the point on the complicated relationship with alcohol. Alcohol policy is not that complicated. If you want to reduce alcohol harm in a population, you look at the marketing of alcohol, the availability of alcohol and the price of alcohol. You invest in screening, brief intervention and earlier intervention. You cannot ignore the huge harms. That goes back to Deputy Sherlock's point about what we do with the adults who are living with foetal alcohol spectrum disorder and other conditions. I have welcomed this evening's discussions, but at the end of the day we want to see a budget with clear actions and alcohol as a named priority. That is what our purpose is.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_186">To what extent has there been consultation with the key stakeholders around alcohol in the strategy from the witnesses' perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Dr. Nazih Eldin<recordedTime time="2025-12-09T19:30:00+00:00"/></from>
+          <p eId="para_187">I am not fully aware of all the consultations that the Department has carried out, but I know for a fact that the original task forces are represented in the reference group for the strategy. Having said that, strategies are not complex. We make them complex. It depends on what you want out of it. As a chair, I cannot ignore the fact that every day three or four people are dead. As a doctor, I cannot tolerate that any more. That is only in relation to death.</p>
+          <p eId="para_188"> With regard to the cost to society in Ireland, it is unacceptable to say we cannot do this, that or the other. We can, and we can succeed. I do not know if members are aware that the task forces are not legal entities at the moment. We need task forces established on a statutory basis with the powers that come with that. We are not going to ask for the €1.8 million necessary to do that. We want the whole policy, and we want an integrated policy. It is not just the Department of Health. I am pleased with what the Department of Health is doing. I am very pleased by what I have heard today. To be integrated, however, it has to include justice, the workplace, health and everything together to make it effective policy.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_189">The point on the budget is important. It has been extremely difficult to nail down exactly how much has been allocated to local drug and alcohol task forces in budget 2026. I have seen suggestions of a 25% cut. The information provided by the Minister of State, Deputy Murnane O'Connor, has not exactly been clear. Will the Department clarify that and the earlier points about the strategy and the extended task force provision?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_190">I will deal with strategy and ask Mr. Walsh to discuss the budget. We had an evaluation we commissioned ourselves that is really critical of the previous one. It is honest and open and points clearly to deficiencies. We had huge public engagement. The group here was included in that and fed into it. The groups that are part of the coalition were all included. Members of the coalition are on the steering group. Members of the task forces are on the reference group and will contribute to the strategy, which will include alcohol. We may not agree entirely on where we get to in the end, but we will disagree agreeably at least, if the Chair knows what I mean. We will keep working together to make it better. It can be seen that the engagement tonight has been hugely respectful and that we are mutually supportive of each other's work. That will continue, including in the context of funding and development.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_191">There is a misinterpretation of the subhead B3 alcohol and drugs budget. I guarantee that there has been no cut. In fact, the Minister of State, Deputy Murnane O'Connor, will shortly announce a new funding programme targeting local drug task forces. This is the first time we have developed a new programme to support community resilience against drugs. We are hoping to put €2 million into that. I think it was a misinterpretation.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_113">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_192">I thank Ms Furey for sharing her family story. She has obviously been through a devastating time. I have dealt with a number of families whose loved ones have had Korsakoff syndrome. The lack of support and care for them is harrowing. A lot of the information provided this evening is illuminating in the context of the extent to which we are getting answers and not getting them. We will need to reconvene these proceedings in approximately 12 months' time in order to discover what progress has been made. We should have the Minister here too at that point.</p>
+          <p eId="para_193"> Will Mr. Walsh clarify whether the funding for the drug and alcohol task forces this year also covers the auto-enrolment pension scheme, because that is the concern?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_194">Yes.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_115">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_195">That is great. A sum of €170 million was spent on drug and alcohol services last year. Some €60 million of that was spent on community-based services. Where is the other €110 million going to? Will Mr. Walsh give us a breakdown of that, please?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_196">That mainly goes to the HSE to run its services.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_117">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_197">I apologise for cutting across. Are these hospital services? If they are not community-based services, what are they?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_198">They are primarily community-based services.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_119">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_199">There is €60 million for community-based services. Where is the other €110 million going to?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_200">The €60 million is for non-governmental section 39 organisations.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_121">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_201">That is not clear. Is Mr. Walsh saying that all of the €170 million is for community-based services?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_202">The total amount is for drug and alcohol services. Within that, €60 million goes directly to non-governmental section 39 organisations. The remaining €110 million is absorbed through the HSE. That would be funding for the alcohol programme I mentioned earlier and for the purchase of residential care. That is where the funding is allocated.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_123">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_203">Can we get a breakdown of that? I would be concerned that some of that money may be allocated beyond alcohol and drugs. It would be useful to get that. On the €1.8 million in 2026, Mr. Leach highlighted the inequity of access to treatment services across the country. What is that €1.8 million going to do? It seems like a small amount. What kind of additional staff are we talking about? Where is it going?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_204">It is for an additional 22 whole-time equivalents across four regions. We already have a number of integrated alcohol services across the region. We are delighted with this additional resourcing. It is really welcome. The work that Mr. Walsh and Mr. Leach spoke to about, mapping that geographical equity of access, will be important in informing next steps about where there may be gaps in provision. We know the waiting lists are growing on some of the services, such as in the mid-west. We can see the treatment figures are rising so we can see that demand is growing. That may be explained in part by increased resources driving that, which is great. We would love to see how we can look at some of those gaps in the future.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_125">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_205">Is that for HSE services?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Dr. Aisling Sheehan<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_206">Yes, community-based services.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_127">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_207">When you say community-based services, you are talking about non-governmental. We need to be clear about that.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_208">The HSE does a lot of work in the community.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_129">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_209">I appreciate that, but there is obviously a view that there have been long-standing organisations providing services. There is a perspective that the HSE is doing more in this area. I welcome that, but I want to be clear about where the money is going.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_210">As Mr. Walsh said earlier, it is important that we take both approaches. Everyone recognises that there is a role to play for both HSE-provided services and community-provided services to perhaps use the Deputy's expression, or which are provided by community-based organisations. I do not think it is either-or. It is a case of both together as we go forward. There are challenges as Dr. Eldin said, with regard to that. We know about that and continue to work with drug and alcohol task forces.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_131">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_211">It is just to be clear on where it is going.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_212">When we talk about the integrated community alcohol service, that is a particular model being developed by the HSE. What is unique about it is that it is integrated into primary care. Many of our drug services are stand-alone services. This is not the model. North Dublin has pioneered this model working with GPs, primary care and nurses and escalating people. It is a comprehensive model and that is why we liked it. We said let us have it across six regions. We have a sense that there is a greater unmet need in terms of alcohol compared with drugs. A superficial look shows 13,500 on drugs and 8,500 on alcohol. However, we know that alcohol is the more commonly used drug. It could be that the model we have is not meeting the need. The model of the HSE community-based service is integrated into primary care, so it is easy for someone to access that through their GP or someone else. It could be about stigma or how accessible the services are. We think this has potential to really drive up the numbers. I will share the model.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_213">This is an important point. We know that people trust their GPs in taking that advice. That is a really important place where they are involved and they understand, aid and support people when they have a problem. It is important that we do that.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_134">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_214">We need more GPs in certain communities that are not well catered for in that regard. It is important to put that on record.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. David Leach<recordedTime time="2025-12-09T19:40:00+00:00"/></from>
+          <p eId="para_215">We need more than ever before.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_136">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_216">I have two questions. My first is to Mr. Walsh. How can he give this committee a categoric answer as he just did, given we have not received a clear, never mind definitive, answer to any budgetary question we have asked since the budget was announced? I draw his attention to page 200 of the expenditure book as part of the budget programme. It specifically says that drugs initiatives were being reduced by 25%</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_217">There is a very straightforward explanation for that. In 2025, we held back the new development funding that we were allocating to the HSE. It was held back in subhead B3, and over the course of the year, all that money we just talked about was released. We just held the money back in subhead B3 to ensure it went to the services we wanted it to. That money was ring-fenced for new developments. It was nothing to do with the drug and alcohol task force. The task force's money is also ring-fenced, so there are two different pots of money. I fully understand it was not clear when one saw the figures-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_138">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_218">No, it was very clear. It said minus 25%.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_219">Yes, but it was not clear whether that implied a reduction in allocation for the drug and alcohol task force.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_140">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_220">We are sitting here two weeks before Christmas. The budget was two months ago. Why is Mr. Walsh the first person to walk through these doors to give a definitive answer to a question on a budget?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_221">All I can say is that we received that query within two days of the budget. We gave a response to that to communicate and clarify that.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_142">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_222">I am going to disagree with Mr. Walsh on that, because I have colleagues waiting six weeks for a response.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Jim Walsh<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_223">When I go back, I will make sure I send that to the Deputy.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_144">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_224">I thank Mr. Walsh.</p>
+          <p eId="para_225"> I ask the next question with a view to the expenditure on the drugs and alcohol services in 2024 being €170 million. Of the 366 services, 40% of the 22,000 people who attended did so for alcohol-related issues. I ask from the perspective of what Dr. Eldin said about the potential impact of alcohol on the total State being in the region of €12 billion. In the coalition's opinion, what is the risk from alcohol not being a named priority in any strategy going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Ms Paula Leonard<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_226">I welcome what has been said this evening around HIQA's analysis and looking at the cost. That will be limited in some sense, as it will not look at harm to others, it will not look at harm to children, it will not look at the burden on the Department of justice regarding road traffic, for example, and all of those things that happen. We are always only getting closer to what the financial burden is. I understand that alcohol is included, but unless it is clearly named as a priority and we are saying this is the strategy that is going to drive forward action on alcohol in Ireland, then I think that the multiple harms and, in particular, the gaps will not just continue to exist, but they will worsen. That is our concern. We want to work collaboratively. We have nothing but respect for people working across agencies. The question raised by the Cathaoirleach this evening in terms of what the leadership is on this is really important. Alcohol continues to fall between Departments and fall between stools within Departments. We welcome the discussion we have had this evening and I thank everyone for that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-12-09T19:50:00+00:00"/></from>
+          <p eId="para_227">I agree with the previous two speakers. We have not fully got answers to many of the questions we entered here with. A lack of clarity remains and I think we will come back to these issues and this discussion again. I also agree with the previous speaker on the budget. It has been extremely difficult to get information more generally from the Department of Health about this year's budget. In our planning session next week, perhaps we will discuss how we can engage with the Department and the Minister to get more clarity on this year's budget and allocation because there seems to be more questions than answers in many respects.</p>
+          <p eId="para_228"> I thank everybody for coming in, for the preparation that went into today, for sharing their very powerful stories and for all of their ongoing work. We all share the common aim of trying to improve people's health and outcomes. We will keep these matters under consideration.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 7.55 p.m. until 9.30 a.m. on Wednesday, 17 December 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -36,6 +36,7 @@ router.get('/', async (req, res) => {
         offices,
         is_minister,
         ministerial_role,
+        image_url,
         last_updated
       `)
       .eq('is_active', true)  // Only active TDs

@@ -1,0 +1,459 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-12-02/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-12-02/debate"/>
+          <FRBRdate date="2025-12-02" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_justice_home_affairs_and_migration"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-12-02/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-12-02/debate/mul@"/>
+          <FRBRdate date="2025-12-02" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-12-02/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-12-02/debate/mul@.akn"/>
+          <FRBRdate date="2025-12-04" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_1" href="#sum_9" outcome="#lost" refersTo="#sum_8">
+            <count eId="vote_1-count_1" href="#qty_1" refersTo="#ta" value="4"/>
+            <count eId="vote_1-count_2" href="#qty_2" refersTo="#nil" value="5"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="AlanKelly" href="/ie/oireachtas/member/id/Alan-Kelly.S.2007-07-23" showAs="Alan Kelly"/>
+        <TLCPerson eId="CatherineCallaghan" href="/ie/oireachtas/member/id/Catherine-Callaghan.D.2024-11-29" showAs="Catherine Callaghan"/>
+        <TLCPerson eId="GaryGannon" href="/ie/oireachtas/member/id/Gary-Gannon.D.2020-02-08" showAs="Gary Gannon"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="JimOCallaghan" href="/ie/oireachtas/member/id/Jim-O'Callaghan.D.2016-10-03" showAs="Jim O'Callaghan"/>
+        <TLCPerson eId="MattCarthy" href="/ie/oireachtas/member/id/Matt-Carthy.D.2020-02-08" showAs="Matt Carthy"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PaulDonnelly" href="/ie/oireachtas/member/id/Paul-Donnelly.D.2020-02-08" showAs="Paul Donnelly"/>
+        <TLCPerson eId="TomBrabazon" href="/ie/oireachtas/member/id/Tom-Brabazon.D.2024-11-29" showAs="Tom Brabazon"/>
+        <TLCEvent eId="bill.2025.44.dail.3" href="/ie/oireachtas/bill/2025/44/dail/3" showAs="Proceeds of Crime and Related Matters Bill 2025: Committee Stage (Dáil)"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Justice,_Home_Affairs_and_Migration" href="/ie/oireachtas/role/minister/justice__home_affairs__migration" showAs="Minister for Justice, Home Affairs and Migration"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM DHLÍ AGUS CEART, GNÓTHAÍ BAILE AGUS IMIRCE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Justice, Home Affairs and Migration</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-12-02">Dé Máirt, 02 Nollaig 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-12-02">Tuesday, 02 December 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 06:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 06:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#TomBrabazon">Tom Brabazon</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#CatherineCallaghan">Catherine Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PaulDonnelly">Paul Donnelly,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GaryGannon">Gary Gannon</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AlanKelly">Alan Kelly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JimOCallaghan">Jim O'Callaghan (Minister for Justice, Home Affairs and Migration)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputies Paula Butterly and Mark Ward, respectively.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MattCarthy">Teachta / Deputy Matt Carthy sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" refersTo="#bill.2025.44.dail.3" eId="dbsect_2">
+        <heading>Proceeds of Crime and Related Matters Bill 2025: Committee Stage<recordedTime time="2025-12-02T18:00:00+00:00"/></heading>
+        <speech by="#MattCarthy" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:00:00+00:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputies Paula Butterly and Mark Ward. Deputy Paul Donnelly is attending in substitution for Deputy Ward. I remind members to turn off their mobile phones or to switch them to flight mode. The meeting has been convened to consider Committee Stage of the Proceeds of Crime and Related Matters Bill 2025. I welcome the Minister, Deputy Jim O'Callaghan, and his officials to our meeting. I note that in order for members to participate in a division in a committee, they must be physically present and cannot vote from a remote location. I understand it is possible that we will have a vote fairly shortly. I propose that we proceed with consideration of the Bill. I understand there are a couple of points the Minister would like to raise and I suggest he does so at this stage.</p>
+        </speech>
+        <speech by="#JimOCallaghan" as="#Minister_for_Justice,_Home_Affairs_and_Migration" eId="spk_2">
+          <from>Minister for Justice, Home Affairs and Migration (Deputy Jim O'Callaghan)<recordedTime time="2025-12-02T18:00:00+00:00"/></from>
+          <p eId="para_13">I thank the Cathaoirleach and the committee for taking Committee Stage of this important legislation. The most important point I wanted to make at the outset is that I still intend to introduce further amendments on Report Stage in the Dáil, if time allows, or on Committee Stage in the Seanad. I mentioned on Second Stage that I expect to introduce a provision in respect of the publication of tax defaulter information with regard to Criminal Assets Bureau settlements. I am also considering further expansion of the assets held in accounts that may fall under the restraint provisions introduced in section 5 of the Bill. The drafting of these amendments is ongoing. Additionally, I am considering transferring responsibility for external confiscation orders under the Criminal Justice (Mutual Assistance) Act 2008 from the Director of Public Prosecutions to the Criminal Assets Bureau. Once that is done, I will not be commencing that provision, if it is enacted, until such time as sufficient resources have been provided to the Criminal Assets Bureau. Those are the important points I wanted to make at the outset.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:00:00+00:00"/></from>
+          <p eId="para_14">I thank the Minister. Is there a rationale for why those amendments have not been made until this point?</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_4" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:00:00+00:00"/></from>
+          <p eId="para_15">The rationale is that we are still working on them. There is quite a heavy workload in the Department and the Office of the Parliamentary Counsel. I hope to be able to introduce them on Report Stage in the Dáil. If I cannot do so and the Bill goes to the Seanad, it will come back to the Dáil at that stage. I apologise that I do not have them. As the Cathaoirleach can see, we have a good body of amendments here today.</p>
+        </speech>
+        <summary eId="sum_6"> Sections 1 to 7, inclusive, agreed to.</summary>
+        <summary eId="sum_7">SECTION 8</summary>
+        <speech by="#MattCarthy" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:00:00+00:00"/></from>
+          <p eId="para_16">Section 8 has an amendment in the name of Deputy Ward and me, but I understand it is being moved by Deputy Donnelly.</p>
+        </speech>
+        <speech by="#PaulDonnelly" eId="spk_6">
+          <from>Deputy Paul Donnelly<recordedTime time="2025-12-02T18:00:00+00:00"/></from>
+          <p eId="para_17">I move amendment No. 1:</p>
+          <p class="indent_1" eId="para_18">In page 13, between lines 29 and 30, to insert the following:</p>
+          <p class="indent_2" eId="para_19">“(c) the insertion of the following subsection after subsection (5):</p>
+          <p class="indent_3" eId="para_20">“(5A) In carrying out the powers conferred by subsection (5), the Minister shall—</p>
+          <p class="indent_4" eId="para_21">(a) ensure that a review of the financial supports to disadvantaged communities, identified in the Pobal HP Deprivation Index, that are affected by crime, is conducted in public consultation with individuals and stakeholders,</p>
+          <p class="indent_4" eId="para_22">(b) ensure that such a review is undertaken every 24 months at a minimum, or more frequently, at the discretion of the Minister, and a report on the review is laid before each House of the Oireachtas,</p>
+          <p class="indent_4" eId="para_23">(c) ensure that the report laid before each House of the Oireachtas identifies any additional financial supports, other than that provided in the annual budget, that may be provided to disadvantaged communities as in paragraph (a) affected by crime in order to alleviate the impact of crime and prevent future criminal behaviour, including the funding of targeted youth educational and development initiatives where appropriate,</p>
+          <p class="indent_4" eId="para_24">(d) give due consideration to the recommendations of any review carried out under this subsection and prioritise, where possible, the use of monies realised in the making of disposal orders under this section for the purposes identified in the review, and</p>
+          <p class="indent_4" eId="para_25">(e) ensure that a report on the use of monies realised in the making of disposal orders under this Act is laid before each House of the Oireachtas on an annual basis.”,”.</p>
+          <p eId="para_26"> I will speak to the amendment tabled by Deputy Mark Ward. Unfortunately, the Deputy is not well today, so he asked me to step in for this debate. The amendment is to ensure there is a review of financial supports for disadvantaged communities identified in the Pobal HP deprivation index. I was talking to Deputy Ward today and he spoke about Dublin West, his constituency, which is an area showing more deprivation. The latest report shows a number of areas where deprivation is increasing, particularly in the Dublin mid-west area. The Deputy wanted me to reflect that.</p>
+          <p eId="para_27"> The amendment states the Minister shall:</p>
+          <p class="indent_1" eId="para_28">(b) ensure that such a review is undertaken every 24 months at a minimum, or more frequently, at the discretion of the Minister, and a report on the review is laid before each House of the Oireachtas,</p>
+          <p class="indent_1" eId="para_29">(c) ensure that the report laid before each House of the Oireachtas identifies any additional financial supports, other than that provided in the annual budget, that may be provided to disadvantaged communities as in paragraph (a) affected by crime in order to alleviate the impact of crime and prevent future criminal behaviour, including the funding of targeted youth educational and development initiatives where appropriate,</p>
+          <p class="indent_1" eId="para_30">(d) give due consideration to the recommendations of any review carried out under this subsection and prioritise, where possible, the use of monies realised in the making of disposal orders under this section for the purposes identified in the review, and</p>
+          <p class="indent_1" eId="para_31">(e) ensure that a report on the use of monies realised in the making of disposal orders under this Act is laid before each House of the Oireachtas on an annual basis.</p>
+          <p eId="para_32"> The reason for this amendment is to look at the supports these moneys provide and to ensure they are getting to the right areas. Much of the money is generated from criminal activities which directly affect the most disadvantaged communities in the State. The community safety fund is a good initiative and certainly something that we support, but there are a couple of issues with it. One is that, unfortunately, projects have to apply for new initiatives. That is fine but many good, ongoing initiatives that require support and could really do with an awful lot of extra funding cannot apply for this particular funding. The funding can only be a once-off. We are reinventing the wheel in some cases. If we get a good initiative that works well, unfortunately, it cannot reapply for that funding. Only organisations that are very well organised and have good structures behind them are able to apply for that funding. That needs to be addressed.</p>
+          <p eId="para_33"> I went through the last three years of applications for funding. Looking at some of the people who have got this funding, I am not sure whether it actually gets into the areas we want it to get to. That is why part of this amendment looks at how we ensure that those communities which are most disadvantaged and most directly affected by drugs in our communities receive funding.</p>
+          <p eId="para_34">In my own area in Dublin West, we can rhyme off the areas that are most directly affected, like my community in Mountview and there is also Corduff and Mulhuddart. Nearly every community is affected by drugs but there are specific areas like the north inner city and in Limerick and Cork. We know them and hear them constantly referenced by Deputies and Senators in relation to that deprivation. We need a particular review of how that funding is disbursed, the value for money and whether it is getting to right places. That is important. If there are organisations doing good work, they should be able to get funding for those ongoing projects.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:10:00+00:00"/></from>
+          <p eId="para_35">Do any other members want to comment before Deputy Gannon?</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_8">
+          <from>Deputy Gary Gannon<recordedTime time="2025-12-02T18:10:00+00:00"/></from>
+          <p eId="para_36">I support the amendment in full. Sometimes, the issue with the community safety fund is it requires a lot of cultural capital to get down there, get the forms together and conjure up a new initiative. In those scenarios, you need boards. A lot of communities we deal with, which would really benefit from this, are already keeping the wolf from the door in trying to organise football, for example. It does not need to create the wheel in terms of new initiatives - give them money for the boxing clubs and football clubs. Often, coaches are people taking it on their own initiative and are mostly doing a nine-to-five job, coming home, starting training at 6 p.m. and they do not have the time. Time is a commodity that is not in large supply when you are keeping the wolf from the door. This amendment is worthy but how can we get into those communities that do not have the time or a solicitor on the board of management who can fill out the forms? There is a lot of worth in the community safety fund. It needs a degree of innovation and latitude for the fact that the communities most impacted by the crime that happens in the community are also the ones that do not have time capital to sit down and fill out the forms.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_9" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:10:00+00:00"/></from>
+          <p eId="para_37">I thank Deputies Donnelly and Gannon for their contributions. I thank Deputy Mark Ward for tabling the amendment. We all agree it is a good idea to use as much of the proceeds as possible from the seizure of criminal assets for the purpose of putting them back into communities. It is a good idea that is done. The community safety fund is the mechanism through which that is done. I recently had an opportunity to give out money in the community safety funds. I have to consider the applications that come in. There is one thing I am trying to ensure happens - it happened a bit this year but I want to see it happen more next year. As Deputy Gannon said, there are entities that are very proficient in applying for funds. They are very deserving of getting funding. They are good at it and organised in doing it. I am trying to ensure with the community safety fund that smaller communities which are probably not as proficient at filling out forms are identified and we give money to them. For the sports capital grant, it is the case, as Deputy Gannon said, that the club that has the accountant or somebody who works in the Civil Service who can do all the forms proficiently is at a huge advantage over the club that does not have those individuals. There are two functions to it. We need to make the process simpler. The sports capital grant is different because there are huge amounts of money. In the community safety fund, the maximum amount I gave out was €150,000. A lot of the funds are about €50,000. We are targeting deprived areas and areas subjected to a lot of criminal activity.</p>
+          <p eId="para_38"> I agree with the principle and spirit of the amendment. There is a huge advantage in redirecting the proceeds of crime seized into the communities most affected by it. However, I am not in a position to accept the amendment. I know the objective; my concern is the amendment sets down in law a very strict statutory procedure for the purposes of determining how money should be allocated. It is €4.6 million this year. I hope to be able to get that up over the coming years. If this amendment was enacted, it would create a formal mechanism for redirecting the proceeds of crime into community projects and that is already Government policy. This year, I announced an allocation of €4.4 million for the community safety fund, supporting 42 community safety projects nationwide. That is a 33% increase on the previous year's allocation. I have already secured a further increase for 2026 so we will have €4.75 million next year. They are significant sums of money.</p>
+          <p eId="para_39"> The statutory architecture to deliver on these objectives in a structured and community-led manner is already being put in place through the Policing, Security and Community Safety Act 2024. It establishes the new local community partnerships we will see throughout Dublin and the rest of the country in the near future. The national office for community safety has responsibility for administering the community safety fund and is also providing support, training and guidance to local community safety partnerships being rolled out nationwide. They will identify issues relating to community safety in their areas and develop responses through tailored local community safety plans.</p>
+          <p eId="para_40"> My view on the amendment, notwithstanding the fact that it is well intentioned, is that it would create a parallel and potentially conflicting process to what I have outlined. That is why I cannot support it. There is €4.7 million to be allocated but, if this amendment were to be adopted, it would put in place a real statutory procedure to ensure there was a review of the financial supports to disadvantaged communities. That is a process that would be ongoing. I would prefer to be able to identify the projects that need the money. TDs and public representatives have a big role in this. In a lot of local areas, the people doing work are not aware that they can apply for this fund. It is better if we can just get people to apply for it and there is a process whereby that money can be given to them. I cannot accept the amendment because it sets out in legislation a very detailed process when this is something that should be simpler. I think all Ministers will recognise when it comes to allocation of this fund that it has to go to the most deprived areas affected by crime.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:10:00+00:00"/></from>
+          <p eId="para_41">I thank the Minister. For the information of members, there is not going to be a vote in the Chamber.</p>
+        </speech>
+        <speech by="#PaulDonnelly" eId="spk_11">
+          <from>Deputy Paul Donnelly<recordedTime time="2025-12-02T18:10:00+00:00"/></from>
+          <p eId="para_42">I thank the Minister. I thank Deputy Gannon for his contribution. It is disappointing. The reason and rationale is that we want to ensure the money goes to the right place. I take on board the bona fides of every Minister who wants to make sure the fund goes to the right place but there is an opportunity for us to ensure there is a constant review of the application of the fund to ensure it goes to the right areas. Going back a good number of years, I am sure most people remember the RAPID programme where there was a very distinct area. It was around the local drugs task force areas, specifically around facilities within those very defined borders. We have done something similar to this before in ensuring there was a defined border and the money going in was going to the places that were the most disadvantaged. Unfortunately, that loosened and money was then going all over the place. Before it was cancelled, it lost its way a bit. Sometimes, unfortunately, national or local politics may get in the way and the essence of what you want to do is lost. This amendment would ensure that at least there would be a review and an opportunity for us to say whether the money is going into the right places, targeting the right people and giving the right supports to ensure those organisations that do not have the solicitor or professionals in their bodies get it. I will give examples - Mulhuddart Football Club. It is a small club. There is also Mountview Boys and Girls Football Club. They do not have the capacity to even look for the small facilities funding Fingal County Council gives in sports grants.</p>
+          <p eId="para_43">It is just beyond them. They are just so busy trying to keep the four or five teams going. There are bigger clubs that have 15 or 17 teams and 400 members. They have big organisations with subgroups on their committees, but I am talking about the small teams and groups. It is not just football, but all types of community organisations that do not have the ability to do that. This amendment would help ensure that we have a constant review and a focus on those groups in the most disadvantaged areas.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_12">
+          <from>Deputy Gary Gannon<recordedTime time="2025-12-02T18:20:00+00:00"/></from>
+          <p eId="para_44">It would be good practice to place a mechanism like this on a statutory footing. Doing so would underline the original intention behind CAB when it was set up in the mid to late 1990s, which was to redirect that money back into the communities most impacted by crime. Crime, poverty and exploitation go hand in hand. There is the boxing club that is charging kids €2 for membership. Some of the larger football clubs that are getting several hundred euro in subscriptions. We are missing something when we fail to recognise that this poverty kind of has taxation built into it, especially for clubs in certain areas. Placing that oversight mechanism on a statutory footing would mean the fund would be used for its intended purpose. Doing so would not be too onerous and would actually be good practice. I urge the Minister to take this on.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_13" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:20:00+00:00"/></from>
+          <p eId="para_45">I will use the example of the community safety fund. This is my first year going through the latter. I did so before the summer. I just make an announcement from the Department saying that the fund is open for applications and people should put in their bids. The application form is relatively simple. There are officials in the Department who assess them. Many of the rejections related to applications for funding for things that did not relate to community safety. An application has to relate to people who are doing something for the safety of the area, like helping those who are caught up in drug addiction or whatever. Some people just thought that this is a fund you can apply to for money. The Department processes the applications. I get to look at the applications and see what is involved. It is worth having a look at the ones that got funding this year. As I said, my concern is that a lot of very worthwhile but large organisations that know how to apply did apply. They were given money because theirs were good applications, but I have asked that next year we try to focus the fund on smaller community entities.</p>
+          <p eId="para_46"> My concern about the amendment is that it would turn the process into a very legalistic one. If the amendment were made, before I did what I did informally, which was to put out a call for applications for funding, I would have to:</p>
+          <p class="indent_1" eId="para_47">... ensure that a review of the financial supports to disadvantaged communities, identified in the Pobal HP Deprivation Index, that are affected by crime, is conducted in public consultation with individuals and stakeholders,</p>
+          <p eId="para_48"> The Department is going to say that in order to comply with that, we would have to set up a public consultation process and consult with stakeholders. The people the Deputies want the money to go to are not those who would be involved in that process. A review would then have to be undertaken every 24 months at a minimum, or more frequently, and a report laid before the Houses identifying any additional financial support. Preparing the report would be a very big process in the context of making sure it complied with everything in subparagraph (c) of the amendment. I, as Minister, would then have to give due consideration to the recommendations of any review, which is fine because it would not be too onerous. I would then be obliged to ensure that a report on the use of moneys realised in the making of disposal orders under the legislation was laid before the Houses. This would turn what is quite a simple, straightforward process into a pretty complicated statutory process whereby, if we tripped up in respect of one part of it, we would be in breach of the law. The Deputies can be sure that if I did not comply with the very strict statutory provisions laid out here, the large entities that know how to apply for funding would challenge me.</p>
+          <p eId="para_49"> The Deputies may say that from a transparency point of view we are better off setting this down in law, but there is a benefit in having one or two schemes which are informal and in respect of which we put out calls for funding. It will facilitate the smaller entities we all want to see getting the money if it is more informal. I do not think the sports capital grant is set out in the statutory regime, but it is a very onerous task for clubs around the country. It is the ones that have the human resources that generally succeed. If we put what is suggested in place, it would have the impact of disadvantaging further smaller entities we all want to see getting the money. For that reason, I cannot support the amendment. However, I welcome the discussion on it. The objective set out in the amendment is the objective I have as the Minister giving out the money.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_14">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:20:00+00:00"/></from>
+          <p eId="para_50">Before I invite members to come back in, I have a question on applications that did not meet the criteria set last year. I am sure the Minister can see gaps in terms of communities that should be benefiting from this funding but that are not. When we are dealing with community development funds, good local authorities, of which my own in Monaghan is one, have a team of people distinct from the people who will be adjudicating on the application who go into communities where they can see gaps or where unsuccessful applications have been made in the past to provide some of that assistance and expertise that might not necessarily be within the community. Has the Minister looked at anything like that in order that his Department could be proactive when it comes to engagement? Obviously, he does not want to create a situation where there could be a vested interest within the Department whereby officials might be working on the applications. What about the possibility of a discrete team of officials working with communities?</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_15" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:20:00+00:00"/></from>
+          <p eId="para_51">They are doing so. I get the list. The Department makes recommendations and I have a look at the list. I see the ones that are categorised as ineligible or that do not meet the test. There was one I wanted to give money to. Deputies Donnelly and Gannon would have wanted to give money to it as well. When we are giving money, we have to ensure that the entity we are giving it to is the entity responsible for, say, employing a person. A lot of this money goes towards hiring individuals who are going to work in communities counselling people who are in drug addiction or something of that nature. If we are giving money to an entity, that entity has to be the one that is going to employ the person who is going to be paid the money. It is issues like that which prevent very worthwhile applications for succeeding.</p>
+          <p eId="para_52"> What I say to officials in my Department - and said in respect of the application in question - is that I want them to meet the people and given them feedback on the way they need to do this. It is tricky for the Department. I can do that once or twice, but I cannot do it for everyone. We need to present applying to the fund in an easier way so people know if they fill out basic information they will get it. I do not want to give too much detail, but some people were refused because they were looking for funding that clearly did not relate to safety. Many of the applications are for CCTV systems. In a small town, people sometimes want money for CCTV. However, with funding for individuals to hire somebody who could counsel kids in an area or try to deter them from getting involved in drugs, paying somebody is involved and there has to be an entity to which I am giving the money that is going to employ the person. If it did not and money went missing or whatever, the Cathaoirleach would correctly be hauling me back in here to ask what kind of procedures I have in place to regulate what happens in respect of the money I give out.</p>
+        </speech>
+        <speech by="#PaulDonnelly" eId="spk_16">
+          <from>Deputy Paul Donnelly<recordedTime time="2025-12-02T18:20:00+00:00"/></from>
+          <p eId="para_53">We all want to be innovative in what we do. There could be new ideas that can make a difference, but there are also other projects that are in place, that are doing really fantastic work and that just need an extra person. It is the same issue. The same work is being done and, maybe, the same strategy is being put in place, but if a project had two workers, it could make a massive difference. I am thinking of a youth organisation I am involved with that has outreach workers. It is brilliant. We are going to be collaborating with other youth organisations on outreach, but it would be great if we had two people to do that, particularly as you cannot send one person out on their own to do outreach in the evenings. I am thinking of work that is already being done and that could be supported.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_17" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:20:00+00:00"/></from>
+          <p eId="para_54">I would have thought they would be in a better position to succeed with an application because, obviously, they have the structures in place already. I do not know where their funding is coming from. It is probably from another State source, in which case they have overcome all the regulatory obligations and requirements to get State funding. An example in this regard is the YMCA. Money was given to it, I recall, under the community safety fund.</p>
+          <p eId="para_55">That was for staff to engage with vulnerable people to try to divert them from getting involved in criminal activity or giving them things to do in terms of social activity for young people. If an entity is in place that is hiring somebody already and it wants to hire two people, that is a fund to apply to. A lot of people do not know about it. There are a lot of funds out there that people do not know about. There are people and commendable entities that know where the funding is coming in. Annually they apply. Very good applications go in and generally they get it. We need to start telling smaller communities - it is my responsibility as Minister - that smaller communities and entities can apply. There has to be some level of formality. It cannot just be an application, getting the money and using it around. People need to set out what they want to use the money for.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_18">
+          <from>Deputy Gary Gannon<recordedTime time="2025-12-02T18:30:00+00:00"/></from>
+          <p eId="para_56">I am going through the recipients. There are lots of worthy recipients of last year's fund. You certainly would not take anything off them that they have been given. That is the problem with initiatives like this. The Minister and I am sure all of us have gone to places in our communities where taking kids off the street is also a safety initiative that is not reflected in something like this. Maybe we can find some way of being a little bit more innovative.</p>
+          <p eId="para_57"> One of the problems I often find is kids paying subscriptions to be part of some sort of youth project, be that any sort of sport you can think of or dancing. Maybe we can find some innovative way that we can make those even smaller but allocate them to any of the groups. We all have an example. It is about finding a way that they can get them that helps to keep young people off the street in some sort of organised setting, be that through the coach or a fund for the subscriptions. That would make a huge difference if we could find some innovative way of doing that.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_19" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:30:00+00:00"/></from>
+          <p eId="para_58">I am not trying to put the ball back onto the Deputy, but members will all know organisations within their own communities. Sometimes what happens is this thing is announced and groups are told the community safety fund is being announced tomorrow. People are not prepared for it. It might be worthwhile, if you know those entities, to tell them to write into the Department so that they can get some information in advance and harass me to see if I can engage. Obviously, I cannot start giving preferential treatment, but if Deputies are prepared for this and tell organisations that they could apply but they will need to have a legal entity and procedures in place to apply and receive State funding, that can be done. Preparation is very helpful.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_20">
+          <from>Deputy Gary Gannon<recordedTime time="2025-12-02T18:30:00+00:00"/></from>
+          <p eId="para_59">Is it possible that we can get from the Department a note about it? The type of football clubs I am working with will be different from what some other person is doing. I do not think it is fair if it becomes a club with a relationship with a particular TD. If it could be more generalised, we could disseminate it through that process.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_21" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:30:00+00:00"/></from>
+          <p eId="para_60">On <i>gov.ie </i>there is a document that my Department put up called Community Safety Fund Guidance Note. It is good document. It sets out the detail.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:30:00+00:00"/></from>
+          <p eId="para_61">As nobody else is indicating, I will ask Deputy Donnelly if he is pressing the amendment.</p>
+        </speech>
+        <speech by="#PaulDonnelly" eId="spk_23">
+          <from>Deputy Paul Donnelly<recordedTime time="2025-12-02T18:30:00+00:00"/></from>
+          <p eId="para_62">I am pressing it.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_3">
+          <summary eId="sum_8">Amendment put: </summary>
+          <summary title="division" eId="sum_9">The Committee divided: Tá, <quantity refersTo="#ta" normalized="4" eId="qty_1">4</quantity>; Níl, <quantity refersTo="#nil" normalized="5" eId="qty_2">5</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_4">
+            <p eId="para_63">Tá</p>
+            <p eId="para_64">
+              <person refersTo="#MattCarthy">Carthy, Matt.</person>
+            </p>
+            <p eId="para_65">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_66">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_67">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_5">
+            <p eId="para_68">Níl</p>
+            <p eId="para_69">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_70">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_71">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_72">
+              <person refersTo="#JimOCallaghan">O'Callaghan, Jim.</person>
+            </p>
+            <p eId="para_73">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_10"/>
+          <summary title="decision" refersTo="#lost" eId="sum_11">Amendment declared lost.</summary>
+        </debateSection>
+        <summary eId="sum_12"> Section 8 agreed to.</summary>
+        <summary eId="sum_13"> Sections 9 to 14, inclusive, agreed to.</summary>
+        <summary eId="sum_14">NEW SECTION</summary>
+        <speech by="#JimOCallaghan" eId="spk_24" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:40:00+00:00"/></from>
+          <p eId="para_74">I move amendment No. 2:</p>
+          <p class="indent_1" eId="para_75">In page 16, between lines 3 and 4, to insert the following:</p>
+          <p class="indent_1" eId="para_76">“<b>Amendment of Schedule to National Archives Act 1986</b></p>
+          <p class="indent_2" eId="para_77"><b>15.</b>The Schedule to the National Archives Act 1986 is amended by the addition of “Criminal Assets Bureau”.”.</p>
+          <p eId="para_78"> This is a technical but important amendment. It proposes a simple change to add the Criminal Assets Bureau to the list of public bodies in the Schedule to the National Archives Act 1986. By adding the Criminal Assets Bureau to this Schedule, I am formally designating it as a scheduled body under the Act. In law, this means its records will now be treated as departmental records and will be subject to the full provisions of our national archives legislation.</p>
+          <p eId="para_79"> The primary effect of this is that the bureau’s records will now be subject to the 30-year rule. This is a cornerstone of the State's commitment to transparency and historical accountability. It ensures that after a period of 30 years, the records of Government bodies are transferred to the archives, where they can be preserved and made available for public inspection. This does not mean that sensitive operational files concerning criminal investigations will be opened in 30 years’ time. The National Archives Act contains robust and long-established safeguards to protect exactly this type of information. Section 8(4) of the Act provides a clear mechanism for an authorised officer to certify that records should not be released if doing so would be contrary to public interest, a breach of confidentiality or statutory duty, or likely to cause distress or danger to a living person. This is the same robust system that applies to records from An Garda Síochána, the Revenue Commissioners and the DPP, all of which are already covered by the Act. The National Archives Act 1986 provides the necessary balance between our duty of transparency and the absolute necessity of protecting sensitive law enforcement information and, crucially, individuals.</p>
+        </speech>
+        <summary eId="sum_15"> Amendment agreed to.</summary>
+        <summary eId="sum_16"> Section 15 agreed to.</summary>
+        <summary eId="sum_17">SECTION 16</summary>
+        <speech by="#JimOCallaghan" eId="spk_25" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:40:00+00:00"/></from>
+          <p eId="para_80">I move amendment No. 3:</p>
+          <p class="indent_1" eId="para_81">In page 16, to delete lines 33 and 34, and in page 17, to delete lines 1 to 4 and substitute the following:</p>
+          <p class="indent_2" eId="para_82">“(b) in section 8—</p>
+          <p class="indent_3" eId="para_83">(i) in subsection (6A)—</p>
+          <p class="indent_4" eId="para_84">(I) in paragraph (a), by the deletion of “or”,</p>
+          <p class="indent_4" eId="para_85">(II) in paragraph (b), by the substitution of “of that Act), or” for “of that Act),”, and</p>
+          <p class="indent_4" eId="para_86">(III) by the insertion of the following paragraph after paragraph (b):</p>
+          <p class="indent_5" eId="para_87">“(c) section 50 of the Criminal Justice Act 2007,”,</p>
+          <p class="indent_3" eId="para_88">(ii) in subsection (7)—</p>
+          <p class="indent_4" eId="para_89">(I) in paragraph (d), by the deletion of “or”,</p>
+          <p class="indent_4" eId="para_90">(II) by the insertion of the following paragraphs after paragraph (e):</p>
+          <p class="indent_5" eId="para_91">“(f) the Director of Public Prosecutions or the Office of the Chief State Solicitor, or</p>
+          <p class="indent_5" eId="para_92">(g) where a relevant body is prescribed by the Minister under subsection (7A), that body for the purposes of that body performing its functions,”,</p>
+          <p class="indent_3" eId="para_93">(iii) by the insertion of the following subsection after subsection (7):</p>
+          <p class="indent_4" eId="para_94">“(7A) The Minister may, having regard to the functions of a relevant body, prescribe by regulations a relevant body for the purposes of subsection (7)(g).”,</p>
+          <p class="indent_3" eId="para_95">and</p>
+          <p class="indent_3" eId="para_96">(iv) by the insertion of the following subsection after subsection (10):</p>
+          <p class="indent_4" eId="para_97">“(11) In this section—</p>
+          <p class="indent_5" eId="para_98">‘Act of 2014’ means the Companies Act 2014;</p>
+          <p class="indent_5" eId="para_99">‘company’ means a company formed and registered under the Act of 2014 or an existing company within the meaning of that Act;</p>
+          <p class="indent_5" eId="para_100">‘relevant body’ means—</p>
+          <p class="indent_6" eId="para_101">(a) a body established by or under an enactment (other than the Act of 2014 or a former enactment relating to companies within the meaning of section 5 of that Act),</p>
+          <p class="indent_6" eId="para_102">(b) a company in which all the shares are held by, or on behalf of, or by directors appointed by, a Minister of the Government, or</p>
+          <p class="indent_6" eId="para_103">(c) a company in which all the shares are held by—</p>
+          <p class="indent_7" eId="para_104">(i) a body referred to in paragraph (a), or</p>
+          <p class="indent_7" eId="para_105">(ii) a company referred to in paragraph (b).”,”.</p>
+          <p eId="para_106"> The amendments that I am proposing introduce targeted but significant enhancements of section 8 of the Criminal Assets Bureau Act 1996. The purpose of these changes is to modernise and strengthen the operational capacity of the bureau, ensuring it has the necessary powers to collaborate effectively and bring all available expertise to bear in its investigations. The amendments can be summarised under two main headings: expanding the scope for specialist non-Garda bureau officers to participate in the questioning of detained persons; and broadening the legal gateways for the bureau officers to share vital information with other key State agencies.</p>
+          <p eId="para_107"> To deal with the first issue, at present, section 8(6)(<i>a</i>) of the 1996 Act allows bureau officers who are tax and social welfare experts to attend and participate in interviews of persons detained for certain drug trafficking and other serious offences. This is a valuable tool. The amendment proposes to extend this capability by including detentions for offences under section 50 of the Criminal Justice Act 2007. The effect of this is to allow those specialist bureau officers to bring their financial and social welfare expertise directly into the interview room for an even wider range of very serious organised crime offences, including the significant firearms offences specified in that Act. This is a practical and important change. It ensures that from the earliest stages of an investigation into the most serious forms of criminality, the multi-agency expertise of the bureau can be deployed to maximum effect.</p>
+          <p eId="para_108"> In terms of broader and more flexible information sharing, it is worth pointing out that section 8(7) of the 1996 Act currently provides a list of people and bodies to whom a bureau officer may disclose information obtained during the course of their work. My amendment proposes to amend this section to enhance interagency co-operation. First, it will explicitly add the DPP and the Chief State Solicitor's office to the list. This formalises an existing information-sharing pathway, ensuring that information gathered by CAB can be seamlessly and lawfully provided for the purposes of criminal prosecutions and court proceedings. Second, it creates a new flexible power for me to prescribe other relevant bodies by regulation. A new subsection 7A will empower me to make these regulations, while the new subsection (11) will provide a clear and robust definition of a “relevant body”. This is confined to statutory bodies, State-owned companies or their subsidiaries.</p>
+          <p eId="para_109"> These amendments are practical, necessary and proportionate. They enhance CAB’s ability to investigate serious crime by bringing specialist expertise to bear at the earliest stage. They also create clearer channels for sharing vital information with key justice agencies and other State bodies. These changes will bolster the operational effectiveness of CAB in its vital work of disrupting criminal organisations and depriving them of their illicit wealth. For that reason, I propose the amendment.</p>
+        </speech>
+        <summary eId="sum_18"> Amendment agreed to.</summary>
+        <summary eId="sum_19"> Section 16, as amended, agreed to.</summary>
+        <speech by="#MattCarthy" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:40:00+00:00"/></from>
+          <p eId="para_110">Amendments Nos. 4 and 5 are related are may be discussed together, by agreement. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_20">NEW SECTION</summary>
+        <speech by="#JimOCallaghan" eId="spk_27" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:40:00+00:00"/></from>
+          <p eId="para_111">I move amendment No. 4:</p>
+          <p class="indent_1" eId="para_112">In page 17, between lines 21 and 22, to insert the following:</p>
+          <p class="indent_1" eId="para_113">“<b>Amendment of section 16 of Criminal Justice (Terrorist Offences) Act 2005</b></p>
+          <p class="indent_2" eId="para_114"><b>17.</b>(1) Section 16 of the Act of 2005 is amended—</p>
+          <p class="indent_3" eId="para_115">(a) in subsection (1), by the substitution of “Subject to subsections (6) and (8), where an interlocutory order has been in force for not less than 2 years in relation to funds, the High Court shall,” for “Subject to subsection (2), where an interlocutory order has been in force for not less than 7 years in relation to funds, the High Court may,”,</p>
+          <p class="indent_3" eId="para_116">(b) by the deletion of subsection (2),</p>
+          <p class="indent_3" eId="para_117">(c) in subsection (6), by the substitution of “Subject to subsection (6A), in proceedings” for “In proceedings”,</p>
+          <p class="indent_3" eId="para_118">(d) by the insertion of the following subsection after subsection (6):</p>
+          <p class="indent_4" eId="para_119">“(6A) For the purposes of subsection (6), a person referred to in that subsection may not seek to reopen—</p>
+          <p class="indent_5" eId="para_120">(a) the finding of the High Court, when the interlocutory order was made in respect of the funds concerned, that the funds were used or were intended for use in committing or facilitating the commission of an offence under section 6 or 13, or</p>
+          <p class="indent_5" eId="para_121">(b) any other findings of fact made by that Court at that time.”,</p>
+          <p class="indent_3" eId="para_122">(e) in subsection (7), by the substitution of “6 months” for “2 years”, and</p>
+          <p class="indent_3" eId="para_123">(f) by the substitution of the following subsection for subsection (8):</p>
+          <p class="indent_4" eId="para_124">“(8) The Court shall not make a disposal order where it is satisfied that there would be a serious risk of injustice if the order were made.”.</p>
+          <p class="indent_2" eId="para_125">(2) Notwithstanding <i>subsection (1)</i>, section 16 of the Act of 2005 as it stood immediately before the coming into operation of that subsection shall continue to apply in respect of an interlocutory order (within the meaning of that Act) that is in force on such coming into operation.</p>
+          <p class="indent_2" eId="para_126">(3) In this section, “Act of 2005” means the Criminal Justice (Terrorist Offences) Act 2005.”.”.</p>
+          <p eId="para_127"> The amendment proposes to amend section 17 of the Criminal Justice (Terrorist Offences) Act 2005.</p>
+          <p eId="para_128">The purpose of this amendment is to streamline the process for the final disposal of funds that have been identified as being connected to the financing of terrorism. This amendment replicates the changes being made to section 4 of the Proceeds of Crime Act 1996 by section 8 of the Proceeds of Crime and Related Matters Bill 2025. Both legislative frameworks will now benefit from the same enhancements - a two-year waiting period for a disposal order, the prevention of re-litigation of decided facts and a shorter adjournment period. This parallel approach is essential to maintain a consistent and harmonised legal framework for tackling illicit assets whether they derive from general organised crime or terrorist financing. </p>
+          <p eId="para_129"> To understand why both Acts are being amended in this way, it is important to see how they interact. The Proceeds of Crime Act 1996 established Ireland's internationally recognised system for the civil non-conviction-based seizure of assets derived from general criminal conduct. The Criminal Justice (Terrorist Offences) Act 2005 later created a specific parallel regime to tackle the financing of terrorism. The assets seizure framework in the 2005 Act was explicitly modelled on the successful Proceeds of Crime Act 1996 and as stated in section 20 of the 2005 Act, many procedures from the 1996 Act are applied to the terrorist financing regime. By reducing the waiting time for final disposal and preventing re-litigation of settled issues, we are making these regimes more efficient and, ultimately, strengthening the State's ability to deprive organised crime groups and terrorist organisations of their illicit assets. </p>
+          <p eId="para_130"> Amendment No. 5 is a technical but nonetheless important amendment to the Long Title of this Bill. The purpose of a Bill's Long Title is to serve as a detailed and accurate summary of its legislative contents and intent. It is a critical component to ensuring transparency for the Oireachtas and the public about the full scope of the legislation before us. When a Bill such as this one seeks to amend multiple existing Acts and introduces a range of new measures, the Long Title must be updated to reflect that broad scope. It ensures that all the laws being effected are clearly signposted from the outset. This Long Title now reflects the true scope and ambition of this legislation, which is to further strengthen the State's ability to seize criminal assets and target the proceeds of crime.</p>
+        </speech>
+        <summary eId="sum_21"> Amendment agreed to. </summary>
+        <summary eId="sum_22"> Section 17 agreed to. </summary>
+        <summary eId="sum_23">TITLE </summary>
+        <speech by="#JimOCallaghan" eId="spk_28" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-12-02T18:50:00+00:00"/></from>
+          <p eId="para_131">I move amendment No. 5:</p>
+          <p class="indent_1" eId="para_132">In page 5, to delete lines 13 to 15 and substitute the following:</p>
+          <p class="indent_2" eId="para_133">“Proceeds of Crime Act 1996; to amend the National Archives Act 1986; to amend the Criminal Justice Act 1994; to amend the Criminal Assets Bureau Act 1996; to amend the Criminal Justice (Terrorist Offences) Act 2005; to amend the Criminal Justice (Corruption Offences) Act 2018; and to provide for related matters.”. </p>
+        </speech>
+        <summary eId="sum_24"> Amendment agreed to. </summary>
+        <summary eId="sum_25"> Title, as amended, agreed to.</summary>
+        <speech by="#MattCarthy" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:50:00+00:00"/></from>
+          <p eId="para_134">Pursuant to Standing Order 194(3), the clerk will report specially to the Dáil that the committee has amended the Title.</p>
+        </speech>
+        <summary eId="sum_26"> Bill reported with amendments.</summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_6">
+        <heading>Message to Dáil<recordedTime time="2025-12-02T18:50:00+00:00"/></heading>
+        <speech by="#MattCarthy" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-12-02T18:50:00+00:00"/></from>
+          <p eId="para_135">In accordance with Standing Order 110, the following message will be sent to the Clerk of the Dáil:</p>
+          <p class="indent_1" eId="para_136">The Select Committee on Justice, Home Affairs and Migration has completed its consideration of the Proceeds of Crime and Related Matters Bill 2025 and has made amendments thereto. </p>
+        </speech>
+        <summary eId="sum_27"> The select committee adjourned at 6.54 p.m. <i>sine die</i>. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

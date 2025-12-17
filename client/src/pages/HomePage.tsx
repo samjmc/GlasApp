@@ -5,6 +5,7 @@ import { OnboardingModal } from "@/components/onboarding/OnboardingModal";
 import { WelcomeBanner } from "@/components/onboarding/WelcomeBanner";
 import { FirstTimeUserTour } from "@/components/onboarding/FirstTimeUserTour";
 import { useRegion } from "@/hooks/useRegion";
+import { PageHeader } from "@/components/PageHeader";
 import USHomePreviewPage from "./USHomePreviewPage";
 
 export default function HomePage() {
@@ -35,6 +36,17 @@ export default function HomePage() {
       <FirstTimeUserTour />
       
       <div className="mobile-shell mobile-stack">
+        <PageHeader
+          className="mt-1"
+          title={title}
+          tooltipTitle="How to use the home page"
+          bullets={[
+            "Catch up on the day's most impactful political story at a glance.",
+            "Browse the live news feed and vote on policy opportunities.",
+            "Switch tabs to view TD rankings or explore constituency data."
+          ]}
+        />
+
         {/* Welcome Banner for new users */}
         <WelcomeBanner />
 
