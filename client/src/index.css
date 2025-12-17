@@ -158,6 +158,16 @@ div.relative.min-h-screen.bg-slate-950 .bg-transparent-override[class*="bg-card"
   }
 }
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 @layer components {
   .mobile-shell {
     width: 100%;
@@ -219,8 +229,8 @@ div.relative.min-h-screen.bg-slate-950 .bg-transparent-override[class*="bg-card"
 .daily-session-shell {
   width: min(100%, 380px);
   margin-inline: auto;
-  padding-inline: var(--mobile-gutter);
-  padding-block: clamp(24px, 5vh, 56px);
+  padding-inline: 0;
+  padding-block: 0;
   min-height: calc(100vh - 32px);
   display: flex;
   flex-direction: column;
@@ -236,7 +246,7 @@ div.relative.min-h-screen.bg-slate-950 .bg-transparent-override[class*="bg-card"
 @media (max-width: 430px) {
   .daily-session-shell {
     width: 100%;
-    padding-inline: var(--mobile-gutter-compact);
+    padding-inline: 0;
   }
 }
 

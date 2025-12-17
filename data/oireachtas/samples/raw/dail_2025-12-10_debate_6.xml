@@ -1,0 +1,999 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_social_protection_rural_and_community_development/2025-12-10/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_social_protection_rural_and_community_development/2025-12-10/debate"/>
+          <FRBRdate date="2025-12-10" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_social_protection_rural_and_community_development"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_social_protection_rural_and_community_development/2025-12-10/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_social_protection_rural_and_community_development/2025-12-10/debate/mul@"/>
+          <FRBRdate date="2025-12-10" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_social_protection_rural_and_community_development/2025-12-10/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_social_protection_rural_and_community_development/2025-12-10/debate/mul@.akn"/>
+          <FRBRdate date="2025-12-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AnneRabbitte" href="/ie/oireachtas/member/id/Anne-Rabbitte.D.2016-10-03" showAs="Anne Rabbitte"/>
+        <TLCPerson eId="EoinHayes" href="/ie/oireachtas/member/id/Eoin-Hayes.D.2024-11-29" showAs="Eoin Hayes"/>
+        <TLCPerson eId="JohnnyGuirke" href="/ie/oireachtas/member/id/Johnny-Guirke.D.2020-02-08" showAs="Johnny Guirke"/>
+        <TLCPerson eId="JohnPaulOShea" href="/ie/oireachtas/member/id/John-Paul-O'Shea.D.2024-11-29" showAs="John Paul O'Shea"/>
+        <TLCPerson eId="LouiseOReilly" href="/ie/oireachtas/member/id/Louise-O'Reilly.D.2016-10-03" showAs="Louise O'Reilly"/>
+        <TLCPerson eId="MarkWall" href="/ie/oireachtas/member/id/Mark-Wall.S.2020-03-30" showAs="Mark Wall"/>
+        <TLCPerson eId="PatTheCopeGallagher" href="/ie/oireachtas/member/id/Pat-the-Cope-Gallagher.D.1981-06-30" showAs="Pat the Cope Gallagher"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="WilliamAird" href="/ie/oireachtas/member/id/William-Aird.D.2024-11-29" showAs="William Aird"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM CHOIMIRCE SHÓISIALACH, FORBAIRT TUAITHE AGUS POBAIL</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Social Protection, Rural and Community Development</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-12-10">Dé Céadaoin, 10 Nollaig 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-12-10">Wednesday, 10 December 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#WilliamAird">William Aird</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaMcCormack">Maria McCormack</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PatTheCopeGallagher">Pat the Cope Gallagher</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#NoelODonovan">Noel O'Donovan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JohnnyGuirke">Johnny Guirke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SarahOReilly">Sarah O'Reilly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#EoinHayes">Eoin Hayes</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#AnneRabbitte">Anne Rabbitte.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#LouiseOReilly">Louise O'Reilly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#MarkWall">Mark Wall.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Martin Conway.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#JohnPaulOShea">Teachta / Deputy John Paul O'Shea sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Community Welfare Service and Supplementary Welfare Payments: Department of Social Protection<recordedTime time="2025-12-10T09:30:00+00:00"/></heading>
+        <summary eId="sum_6">
+          <i> The joint committee met in private session until 9.40 a.m.</i>
+        </summary>
+        <speech by="#JohnPaulOShea" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T09:40:00+00:00"/></from>
+          <p eId="para_14">I will read the note on privilege and housekeeping matters before we begin. Witnesses and members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity either by name or in such a way as make him, her or it identifiable or otherwise engage in speech that may be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction I might make.</p>
+          <p eId="para_15"> Members attending remotely are reminded of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. This is due to the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines or place where Parliament has chosen to sit. In this regard, I ask any members participating via MS Teams to confirm they are on the grounds of Leinster House if they wish to contribute to the meeting. I remind all those in attendance to make sure their mobile phones are switched off or in silent mode.</p>
+          <p eId="para_16"> I welcome the following officials from the Department of Social Protection: Ms Mairín Haran, assistant secretary; Mr. Noel Hand, principal officer; and Ms Sinéad Goodwin, assistant principal. I invite Ms Haran to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T09:40:00+00:00"/></from>
+          <p eId="para_17">I thank the members of the committee for the invitation to attend in order to discuss the community welfare service, CWS. My name is Mairín Haran. I am the assistant secretary general of the Department of Social Protection with responsibility for regional operations, which includes the CWS. I am joined by my colleagues Noel Hand, the principal who leads our CWS, and Sinéad Goodwin, who is an assistant principal on the national CWS management team. I hope that members have found the background briefing material on the supplementary welfare allowance, SWA, scheme and the schemes administered by the CWS that was provided in advance helpful.</p>
+          <p eId="para_18"> The CWS provides financial support to people on low incomes or who are facing exceptional hardship. It is the safety net support in place to help individuals and families whose income is insufficient to meet essential needs. It provides emergency assistance in the form of once-off payments for urgent situations such as unexpected bills or funeral costs, supporting people when life presents unexpected challenges. The CWS operates across the country and has services in place to ensure that no person is left unsupported when they need support. The service provides a range of flexible responsive income supports. It also assists individual and households in response to emergencies, including the aftermath of weather events.</p>
+          <p eId="para_19"> During 2025, the service has supported communities, including the island communities, in the aftermath of Storm Éowyn and most recently in Wexford for Storm Claudia. Community welfare officers, CWOs, have also supported the arrival of sick children from Gaza and other persons fleeing to Ireland from international conflict. While the priority is the provision of critical financial assistance, the CWS has a broader societal role. This role encompasses working collaboratively with community-based social services and other Government agencies to ensure the protection and support of the most vulnerable individuals within our society. CWOs work closely with charities, NGOs such as the Society of St. Vincent de Paul and other State services. They work alongside and liaise with homeless services, palliative care teams, hospital and community social workers, crisis intervention teams, community nurses, gardaí and carers' associations. Our officers engage with tenancy sustainment officers within Housing First organisations, approved housing bodies and local authorities. Officers also support victims of domestic violence ensuring that emergency needs are met quickly and discreetly. This broad level of engagement shows that the CWS is not just about payments; it is about co-ordinated welfare support for vulnerable people across the country.</p>
+          <p eId="para_20"> Access to the CWS is important. The delivery of crucial and locally based community welfare services to meet the challenges and the needs of people across the country is a priority for the Department. The CWS continues to provide a flexible service to meet the different needs of people who may find themselves in a financially difficult or vulnerable situation. It is important that this service is accessible and responsive to people’s needs. People can access the CWS in several ways, namely in person, by phone or email or by making an online application. Local face-to-face engagement with customers continues, however, to be the cornerstone of the CWS and this aspect of the service is in place across the country and will not change.</p>
+          <p eId="para_21"> CWOs are available to meet with the public in over 51 locations across Intreo centres, social welfare branch offices and a number of Department of Social Protection offices across the country. In the majority of locations, CWOs are available on a walk-in basis. There are also CWOs available on designated days each week in number of other locations. In addition, CWOs are available to meet people by appointment, including at a person’s home if requested. Furthermore, a customer does not have to call in person or travel to an office in order to apply for a SWA claim or an additional needs payment or to make an enquiry. If it is more convenient for him or her, a customer can call our national CWS freephone line where he or she can also speak directly to a CWO who can deal with his or her query and if appropriate, arrange the issuing of a payment.</p>
+          <p eId="para_22"> At of this month, approximately 75% of the customer queries to the CWS phone line are dealt with without the need for the person to leave his or her home and to travel to see a CWO. The phone service has a high satisfaction customer rating and an increasing number of customers are availing of this option. It is also important to mention that SWA forms are available in Intreo centres and social welfare branch offices and can also be downloaded from <i>gov.ie</i>. If the person would prefer to have a form posted to him or her, he or she can request a form by phoning the freephone line or completing a form request on <i>gov.ie</i>. In addition, people can apply online for an additional needs payment on <i>MyWelfare.ie</i>. Approximately 30% of additional needs payment applications are now made online.</p>
+          <p eId="para_23"> There are currently 500 whole-time equivalent staff in place across all grades in the CWS, an increase from 412 in 2022. This staffing resource reflects the commitment the Department has to the important and valued work being done by the CWS. The resources include 304.8 whole-time equivalent CWOs based across the country. These CWOs are supported by a network of administrative hubs that undertake routine administrative tasks and functions in support of front-line services. One of the functions of the hubs is to register applications on our systems and ensure claims are ready to be awarded by the relevant CWO. The work done by the hubs ensures that CWOs can focus on front-line activities and provides the capacity and time for CWOs to deliver high-quality services. The hubs include a national rent supplement team that looks after the processing and maintenance of rent supplement claims. Special arrangements are in place to expedite rent supplement claims for victims of domestic violence.</p>
+          <p eId="para_24"> The Department also administers a number of schemes on behalf of the Department of Justice, Home Affairs and Migration that support persons seeking international protection and beneficiaries of temporary protection. The CWS has a dedicated hub based in Sligo that has responsibility for the processing and maintenance of such claims. Notwithstanding these arrangements, it is important to note that any person may visit his or her local Intreo centre or CWO location and be dealt with there by a CWO if and as the need arises.</p>
+          <p eId="para_25"> There are currently no delays with the processing of SWA payments, including additional needs payments. Nor are there any delays with the issuing of payments. In the year to date, 88% of all basic SWA claims are paid within one week and additional needs payment applications are finalised within ten working days. It is important to note that not all additional needs payment claims involve an urgent immediate need. Most claims relate to help with an upcoming expense and there is usually time for the claim to be considered in the normal way hence the ten working days. However, in cases where a person has an immediate need, every effort is made to ensure he or she receives a payment on the same day.</p>
+          <p eId="para_26"> I want to emphasise to the committee, to our customers and to our future customers that we are here to help.</p>
+          <p eId="para_27">We aim to provide a discreet, sympathetic, consistent and responsive service. Our community welfare officers work hard to make sure people get the support they need, and I thank them for the important work they do and for their dedication. </p>
+          <p eId="para_28"> We look forward to the views of the committee members and are happy to help with any questions.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_29">I thank Ms Haran for her introductory remarks. I will now go to members. A number of them have already indicated. Deputy Wall is first.</p>
+        </speech>
+        <speech by="#MarkWall" eId="spk_4">
+          <from>Deputy Mark Wall<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_30">I thank our guests for attending. I will start by agreeing with Ms Haran's final comment about the hard work our community welfare service does. My experience over 20 years of working with community welfare officers is that they are very capable people who do their very best to help those who need help at this time.</p>
+          <p eId="para_31"> My first comment is that it must be an oversight that everyone with whom the community service works, other than public representatives, was mentioned in the opening statement. An Garda Síochána was mentioned, as were TLOs. Everybody was mentioned. I work with the community welfare service on a daily basis. That is because the people who come to my office, and I am sure the offices of my colleagues, need help. They need help now more than ever. The witnesses might reflect on the fact that we were not mentioned in the opening statement and that that is where the co-operation is falling down slightly.</p>
+          <p eId="para_32"> I talk to community welfare officers in Kildare South, County Laois and everywhere else I need to talk to them on an almost daily basis when people come to my offices. There is a major issue with paperwork. My problem with the community welfare office as it stands is the centralisation of the service. Ms Haran mentioned hubs for services. Will she tell us how many hubs there are? Does every community welfare officer have a clerical assistant or is that assistance provided through the hubs? Ms Haran also mentioned that the calls service is working very well and that 75% of the people are getting success on it. How many calls were made to community welfare officer services over the past year?</p>
+          <p eId="para_33"> Community welfare offices offer a brilliant service involving funeral expenses. In recent times, we have dealt with so many families who, unfortunately, have had circumstances in which they need help. My understanding is that this is now being centralised to Sligo. I have experience of three, four and five letters going out to families, at the most inappropriate times, looking for information. In some cases, copies of the same letter have gone out two and three times to families. You can just imagine the effect that has on people. The question people are asking relates to what is happening to their information. Previously, I could pick up the phone and talk to the local community welfare officer in order to try to deal with a matter. Now, I cannot because I do not know who is actually dealing with particular matters. Another issue relates to proof of closed accounts for people who are seeking supplementary or exceptional needs payments. When a letter comes back stating that the customer has the account number with whatever three digits it ends in, they have to go to a bank. The bank then informs them there are three to four weeks for a letter to be provided. These people have been put to the pin of their collars looking for help. How can we overcome that problem?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_34">I thank the Deputy for his comments. I will pass on his kind remarks to the community welfare service, because I know those involved with appreciate them.</p>
+          <p eId="para_35"> There is a lot of work being done on the ground. Apologies again for the oversight of not mentioning Deputies and other public representatives, particularly in the context of the stakeholder group. Much of the feedback we get regarding the service comes from our stakeholders, including public representatives. We have been reviewing our interaction with our stakeholders. As the Deputy knows, there is a huge amount of work going on with the community welfare service. That is not just around dealing with people face to face. It is the reactive stuff and the proactive piece around going out talking to the Society of St. Vincent de Paul, to our partners and to public representatives.</p>
+          <p eId="para_36"> On the review, we have identified that there is a gap in the local knowledge about who the local community welfare officer is and how the service operates now. To that end - the committee is getting a preview now - we are organising a series of events locally for public representatives at Intreo centres in order to introduce people to the service and to the community welfare officers. It is about knowing your local community welfare office and making those contacts. I think that is what Deputy Wall was referring to. Mr. Hand and Ms Goodwin may have some comments in that regard. It is critical.</p>
+          <p eId="para_37"> The community welfare service came to us from the HSE over a decade ago. It came with excellent staff. We were very fortunate when we took on the service that the staff were dedicated, knew their jobs and had a lot of networks built up. Two things have happened. One is natural attrition. People have got older and moved on. People have also changed roles. Individuals have been promoted or retired. As a result, there has been a huge amount of churn in the service.</p>
+          <p eId="para_38"> The second thing that happened - probably during Covid - relates to the outreach piece when people were not as free to move and engage. There is a knowledge gap in that regard that we are very anxious to address. In light of this, we have a series of events planned for the first quarter of 2026. We hope, at the invitation of the Houses, that we will hold an event for everybody here to introduce the services and explain what we do. A huge amount is happening on the ground and is being done centrally. Mr. Hand, Ms Goodwin and the team have done a significant amount of work in reaching out both proactively and reactively. We always have to be there to support people when they need it. We also have to be there on a one-to-one basis. If we lose that, we do not have a service. It is more than that, however. It is about engagement with agencies. I take the Deputy's point. Again, I apologise for not referencing public representatives directly. However, I was waiting for the announcement today that we are going to do that direct engagement. That might be welcome.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_39">We are already running behind. Does Mr. Hand want to comment?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_40">Good morning to Deputy Wall. It is good to see him again. I thank him from our side. I am fully aware of the work that he and his constituency office have done in South Kildare to help people. I remember contacts he made one Christmas Eve in order to help a constituent in need. We went out late in the evening and issued an emergency payment to that person. In recognition of the need for Deputies and Senators to make contact with the service, we have a dedicated public representative contact phone line that operates every day of the week. This is a facility whereby if Deputies or Senators are unable to make local contact, we have a phone line in place whereby they can make contact. The staff who operate that phone line will respond immediately to any contact that is made with them and will try to progress any issue that may be emerging over the course of the day. At the start of every day, we review all the contacts from Deputies and Senators with the service in response to the emerging issues and try to deal with the various cases that arise.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_41">I thank Mr. Hand. We are out of time, so will move on to Deputy O'Reilly.</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_9">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-10T09:50:00+00:00"/></from>
+          <p eId="para_42">I thank our witnesses for the work that they do and for the work of the community welfare service. It is a good service. There are just a couple of things I wanted to ask about. It was stated that CWOs are available to meet with members of the public. That is not my experience. My experience is that CWOs used to be available to meet with members of the public but that is not the case any more. I am frequently contacted by people who find it difficult to access the service. That is not the fault of any one individual, I am sure, but it is the experience.</p>
+          <p eId="para_43"> I have a number of questions. On the decision-making process, is that devolved right down to local level? That can be very opaque. The rationale behind decision-making can sometimes be very hard to understand but also to understand where the power to make a decision lies. Will the witnesses outline that for me? I would also appreciate a breakdown of the type of contact involved. As Ms Haran stated, it can be in person, by phone or by email.</p>
+          <p eId="para_44">I would be very interested to know how many people managed to make an application in person, face to face, as well as through the other methods.</p>
+          <p eId="para_45"> Ms Haran said there is no delay in processing, which is very good and very welcome. I have had personal experience of efforts being made to get a payment made on the day. That is usually in a flashing blue light emergency; it is not every case but it does happen. We have good experience dealing with community welfare services in terms of that. What is causing the delay? If there is no delay in processing, is there a delay in making appointments? There is no delay between the decision to award and the making of the payment. That takes a maximum of ten days. How long does it take, on average, from the point at which a person picks up the phone to the decision being made? The Department refers in its submission to 500 whole-time equivalent staff. Does that represent a full staff and complement at every grade? I note that it does. That is good to know. I am sorry, I was not trying to put words in the witnesses' mouths. I am very interested to know how decisions are made and at what level the power to make those decisions resides. That can be a little opaque.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_46">I will pass on the Deputy’s comments to the CWO. As regards the decisions, as I said, we have a walk-in service in 51 offices and we have 22 other locations where we have dedicated days. If the Deputy has specific examples, she might come back to us about where there are particular access problems. We would be happy to take those on board. The whole point of the service is that people can access it, and we offer a walk-in service on exactly that basis.</p>
+          <p eId="para_47"> On the breakdown of the type of contact, we will have a look at that but there are approximately 4,000 calls to the phone line a week. There are some numbers to come back to Deputy Boyle on. Our call answer rate is 98%. It is the best phone service we have in the Department. Ms Goodwin tells me that 713 people a week speak to a community welfare officer on the phones directly. We take 4,000 calls. Some of those are general inquiries about getting paid, asking for a form or queries about when the person next needs to come into us. Of those, more than 700 people speak to a CWO.</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_11">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_48">That is on the phone.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_49">Yes, that is on the phone, directly to a community welfare officer. It is important to note that the community welfare officer on the phone can issue a payment immediately to the person. The system allows for that now. The CWOs can do that. </p>
+          <p eId="para_50"> On the decision-making process, I will ask Mr. Hand to make a few comments on that in a moment. I will note that one third of all the payments we make across additional needs payments, or what we call our basic supplementary welfare allowance payment, are made by cheque. The person actually gets a cheque. When we look at our figures we can see that of the payments, a third of the first payments people get are actually manual cheques. Therefore, to the Deputy’s question about whether people see our staff in person, it is important to note that is where they get the payment. Again, we could also say that two thirds do not, as I know the Deputy is interested in how that happens. Mr. Hand might speak to that.</p>
+          <p eId="para_51"> There are no delays. In the past, there would have been delays but at the moment, we are in a good space. If somebody comes in to us and makes an application, we will have that additional needs payment paid within ten days, if not immediately. That is the average.</p>
+          <p eId="para_52"> To address the Deputy’s point, we take on board that piece about closing accounts. We have looked at that. We are redesigning our forms because we have taken feedback from both our customers and the agencies which help customers fill the forms. The forms are one size fits all. A person can apply for an additional needs payment for everything from, as the Deputy said, a funeral to a washing machine breaking down to needing money to travel to a hospital appointment. It has to allow for the person to explain why they need the payment. On the other hand, it is an income-tested or means-tested payment, so we require proof and we have to establish the need. To put that into a succinct form is difficult. It is under review and new forms will be launched in 2026. I hope the Deputy will find those more helpful.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_53">The decision-making has remained unchanged. The decisions are made by designated persons appointed under the Social Welfare Act, namely, community welfare officers at higher executive officer level. Community welfare officers are in the Department at that senior level in order to provide them with the ability to make decisions on the complex claims that are presenting. Their first and foremost focus is on the need that presents. If the need that presents is such that the community welfare officer needs to make an immediate payment, they have the ability to be able to do that.</p>
+          <p eId="para_54"> Community welfare officers-----</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_14">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_55">To follow up on that, Mr. Hand is saying the decision is made by a CWO at HEO level or higher. How many of the 500 staff are CWOs and, of those, how many are HEO grade and higher?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_56">The figure is 325, with a whole-time equivalent of 304.83.</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_16">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_57">Are they all at HEO grade?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_58">They are all at HEO grade.</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_18">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_59">They are all empowered to make decisions. Every CWO is at HEO grade or higher, and they are all empowered to make those complex decisions?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_60">Yes, all decisions.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_61">We have a number of executive officers who are also designated persons, and they can make decisions on more streamlined international protection applications, but all the locally based decisions are made at HEO level.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_62">Those executive officers are additional to the 300 higher executive officers.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_63">Yes, we have an additional 40 EOs.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_64">I thank Ms Goodwin. We are out of time. I call Deputy Guirke.</p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_24">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_65">With no energy credits in this year's budget and more than 300,000 people in energy poverty, has the Department seen an increase in footfall in its offices this year compared to last year? It is probably early in the year yet but has it seen a difference? Roughly what percentage of people who make contact with the Department's services qualify for a payment and what percentage do not? Social welfare appeals can be very lengthy. Is there anything being done to shorten that period?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_66">As to the increase in footfall, we have a lower number of applications this year overall, but we have an explanation for that. A significant number of applications for additional needs payments, in particular, if we look at the numbers, come from people seeking protection. They have a statutory entitlement to an additional needs payment for a clothing allowance. We saw a decrease in the numbers of applicants for beneficiary protection earlier in the year. That determines the numbers. They were high last year because we had a lot of people coming in. It is lower this year in the overall scheme of things. We have been monitoring the applications specifically for fuel or household bills. This year to date, it has very much been on a par with last year. As the Deputy said, we are probably coming into the height of the season for applications over the winter months and coming into the beginning of next year. The number of applications we have received and paid in respect of energy-type bills, like fuel or related household bills, is very much the same as it was in 2024. The percentage of people who qualify, having made an application, is about 60%.</p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_26">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_67">Around half.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_68">Yes. We get more applications. As to Mr. Hand's point, the need has to be established. For every 100 applications we get, 60 people get paid, in general, across the entire supplementary welfare allowance scheme.</p>
+          <p eId="para_69"> On the social welfare appeals, we had an issue earlier in the year with backlogs. Thankfully, that has been very much addressed. As the safety net, the community welfare service feels a knock-on effect when there are processing delays across the rest of the Department. If there are delays in appeals, we end up with more applications for supplementary welfare and longer periods. That was my second point about the footfall. The numbers are down this year, also because the appeals process has improved. I will get the exact data-----</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_70">The figure was 21,000 and it is down to 11,000.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:00:00+00:00"/></from>
+          <p eId="para_71">It is under 10,000 with the high-priority appeals. Everything is a priority for the person but there are particular categories - people with disabilities, etc. - that are prioritised.</p>
+          <p eId="para_72">They are well within normal processing times as well, which has had that knock-on effect on us. We are not paying as many people supplementary welfare allowance for the same length of time we were while appeals were in difficulty.</p>
+          <p eId="para_73"> We have also had improved processing in the primary schemes. As the Deputy will know, people get paid supplementary welfare while waiting for their disability payment, jobseeker's payment or whatever. Now that those processes have improved, we have seen the knock-on effect.</p>
+          <p eId="para_74"> The third thing is that we are constantly trying to make efficiencies, improve effectiveness and make things better for people. Pay-related benefit was introduced early in April 2025 for people who are fully unemployed. That is paid almost automatically now, so if you make your application today, you will get paid. Some 60% to 70% of people get paid immediately. Those people are not coming through to us either, and that is a good thing.</p>
+        </speech>
+        <speech by="#JohnnyGuirke" eId="spk_30">
+          <from>Deputy Johnny Guirke<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_75">Finally, what is the amount of the payment based on? Is it on the needs of the person who comes in? Is it on how many family members there are and all that?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_76">If the Deputy does not mind, I might ask Mr. Hand to comment on-----</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_77">It is based on the need presenting. If it is an additional needs payment, the question is what the person is looking for and what they are looking for support with. It could be a washing machine. It could be a utility bill. It is a range of things. It relates to the individual circumstances of the case presenting. The community welfare officer will examine the case based on the need presenting and then make a decision based on the individual circumstances.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_78">I call Deputy Willie Aird</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_34">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_79">I thank the witnesses for their presentation. I remember a time when you went without an appointment to the community welfare office. It could be from 10 a.m. to 12.30 a.m. All the different areas and all the different booths were there for the different people to go into. When they can talk face to face sometimes, it is a lot easier than having to do it over the phone. Sometimes people have never been put in that situation before and some find it embarrassing to be in that position. That was a great service at that time. It has moved on now to the phone and the forms.</p>
+          <p eId="para_80"> The community welfare officer makes the decision. When that is then appealed, who deals with the appeal?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_81">For the basic supplementary welfare allowance, the normal weekly payment goes to the normal appeals office. The additional needs payment goes to what is essentially an appeals officer but is called a review officer just for us to differentiate between the two. They are at assistant principal, or AP, grade and are based around the country. If it is for a local person, that is, somebody making an appeal for an additional needs payment in Laois, they will not be dealt with by the AP responsible for Laois but will be dealt with by the AP responsible for another area, so it is totally independent.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_36">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_82">Does it go back then to the community welfare officer? If the AP decides against the decision of the community welfare officer-----</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_83">It goes back to them to be paid.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_38">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_84">To the community welfare officer.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_85">To the person who made the original decision.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_40">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_86">I just wanted to check that with the witnesses.</p>
+          <p eId="para_87"> Given the ongoing cost-of-living pressures, are current payment rates and support within the supplementary welfare system sufficient at the moment, in the witnesses' view?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_88">Everything is done in a budgetary context and we do not set the rates ourselves. We apply the maximum flexibility available to us to support people when in need. If they present with a need, we will do everything we can to support that person. The community welfare officers, as the Deputy will appreciate, are very good at guiding people-----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_42">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_89">Absolutely.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_90">-----as to what their entitlements are. We see cases presenting for maybe one need and the people end up being paid for something else because, as the Deputy rightly says, when you get a face-to-face conversation - and that can happen on the phone, even though it is not face to face, and that is the value of that kind of interaction - and when we go through the entire circumstance of the person, the need they presented with in the first instance may not be what they end up being supported with. The aim is to support people at all times. We do-----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_44">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_91">When people who are having difficulties with repaying their mortgage apply to the community welfare office, what is the situation? Can the witnesses give me a percentage on that? Are there many people presenting?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_92">We do not have the percentage of the people presenting looking for mortgage assistance because we do not have the mortgage interest supplement payment any more. That was discontinued in 2014. When we are looking at an additional needs payment, we look at not only the person's income but also their outgoings. If they have existing loans, that is factored into the need to see if they have the ability to pay something.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_46">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_93">That is the question I am asking.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_94">Yes, we do that.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_48">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_95">I see regularly now cases where people's mortgages are taking a huge chunk out of their wages, and then they are left with very little disposable income. When the crunch point comes then, that is when they have to go in and to prove their cases. All I can ask the witnesses is that the Department be a little more sympathetic to those people because that core of people would not have been into the community welfare office before. They find themselves in this drastic situation. As regards the cost of living, a child or another member of the family could get sick or whatever, and the first thing they have to pay is their mortgage because if they go into mortgage arrears, they are in serious trouble. They go then to the community welfare office. I would like the witnesses to have a chat among themselves to see if we can have a code of sympathy for people like that. I see this growing a little. I am putting it down to the cost of living. The cost of living has gone up, and the mortgage takes precedence. You pay it and then there is only so much left. Then you come into Christmastime or something similar, perhaps you have to travel to hospital or whatever. There is just pressure coming on the family income, and those people deserve to be helped in situations like that. These are genuine people getting into situations like that.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_96">I will make just a couple of comments.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_50">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_97">We get a second round, do we not?</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_51">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_98">Yes.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_52">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_99">That is all right then.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_53">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_100">I call Deputy Peter Roche.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_54">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_101">I thank Ms Haran, Ms Goodwin and Mr. Hand for being with us. I think we all need to be more informed about this subject. My experience of my interaction with the Department has been extraordinarily positive. I say that in the context of the staff with whom I have engaged in the past frequently. I represent east Galway, and the staff in the Tuam Department of Social Protection offices, in particular, are exceptional. From time to time, when you make that call, you bring them to where that person is to do that face-to-face. I was delighted when Ms Haran said that the face-to-face interaction is of paramount importance and is quite significant. It is. For some strange reason, people who are in dire need think that they have a better chance of succeeding with the face-to-face interaction than with something that is done online or through a paper application. You can sense the relief in them, particularly people who may not be technologically savvy or aware. I suppose a lot depends on the quality of the application for support that comes into the Department. I am sure things are predicated very much on that because very often when they make an application for an exceptional needs payment or whatever the case may be, people miss out on the important thing in their life or their domestic situation that is causing them financial burden. They might not even consider that or put that into an application. As I said, my experience has been good.</p>
+          <p eId="para_102"> Am I right in thinking that an exceptional once-off payment cannot be appealed externally? Is that-----</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_103">It can. An exceptional needs payment comes under the additional needs payment umbrella. It is an appeal under legislation but we call it a review to differentiate between the appeals office and the additional needs payment appeals process. It can be appealed, and where the appeals officer who has looked at it is unhappy with the outcome, they often seek a second review, and we always look at it a second time if new information is provided.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_104">The Deputy is correct that it cannot be appealed to the social welfare appeals office but it has a legislative provision for a review. It is built in. It is not an administrative matter; there is a legislative process for that. It is reviewed by, as Ms Goodwin said, an assistant principal and there is a second review. Essentially, that is the appeals process for an additional needs payment.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_57">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-10T10:10:00+00:00"/></from>
+          <p eId="para_105">Okay, so there is an appeals process <i>per se</i>.</p>
+          <p eId="para_106">I was of the understanding there was not. That is important because it is all, as was said, very much dependent on the quality of the application.</p>
+          <p eId="para_107"> In a response to one of the Deputies, Ms Haran mentioned that the Department will provide the committee with additional information so that we will be more informed about the workings or mechanics of the Department. That is quite significant. By what means can the committee be drawn into that process?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_108">We are going to do it both centrally and locally and we welcome the feedback of the committee as to how that can be done. It is an in-person invitation to commerce industry representatives to meet the staff and provide information to services as well. We can change or adapt that to whatever is suitable.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_59">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_109">I apologise for being late with my presence in the room but I was listening to proceedings as I was coming in. I thank Ms Haran for her opening remarks. The support I get locally from the offices in Loughrea and Tuam has been phenomenal. Like Deputy Roche, I am from east Galway and the support I have received has been phenomenal. There might be one or two areas that can be queried, however, particularly with regard to older people who are downsizing. When I say downsizing, I refer to people who might have been in a three-bedroom local authority property and they now need to go to, perhaps, a one-bedroom property that has become available. Fifteen years ago, those people would have received the once-off payment for white goods. They might have used, say, €1,500 of it, with only €1,200 left. That is the maximum they can get. They cannot get the full allocation. Just this summer, I had a case where someone was downsizing and while they received a proportion for their white goods, they could not get the last bit. Believe or not, when local authorities are handing over the house, they do not do the flooring either. That was the element we were looking for but we could not get it. History held that funds were used in the past. Maybe that is something the Department is looking at reviewing because when it comes to housing, downsizing and encouraging people out of the three-bedroom house into the one- or two-bedroom house, it would make a huge difference if it were seamless.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_110">I do not know whether the Senator has been able to follow up on that particular case.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_61">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_111">I have followed up on it three times. Trust me, I was like a dog with a bone but I lost. I did not win. I tried. Both I and Councillor Ivan Canning in Portumna worked hard on that case. It was one of those unfortunate ones because there is a good story in it if we get it right. I will not dwell on it, however.</p>
+          <p eId="para_112"> The other issue relates to the once-off payment for funerals. I heard Ms Haran talk about it in her opening statement. I have dealt with four unsuccessful applications for it. I know it all depends on the needs at a particular time. I could never bring them over the line. I can understand the complicated ones where there is inheritance or a bachelor has let and there is an assessment going on and all of that. At the end of the day, however, the undertaker still needs to be paid. He is the one who is out the money. That is who I look at, namely, the person out the money. I dealt with a hard case involving a lovely Polish lady whose husband died in a horrific car crash where three other people lost their lives. She was here living in social housing, not working with two young children but she still could not get that payment. Maybe the once-off funeral payment is something we can look at. I have a huge file relating to that particular case and I would love the Department to look at it. Those are the minority of cases, however. The majority have been absolutely phenomenal. I have been doing this job for ten years and I have received great support. I just focused on the negative side and that small element.</p>
+          <p eId="para_113"> In Ms Haran’s contribution, she also spoke about the Department taking over the community welfare service from the health boards, which was a great step. There was a good practice in the health boards that I wish to mention. I am going back a little bit. At the moment, cancer is so prevalent in Ireland. One in two people will get cancer. For people who receive that unfortunate diagnosis, whether terminal or whatever, once they hear the “c” word, they go into a spin. Has the Department considered working with the Irish Cancer Society to develop a booklet or pamphlet to inform people of their entitlements? Back in the old days with the health boards, such a booklet was available. It was nearly like a patients’ one-stop shop of supports, of which the community welfare service covered a huge part. Has the Department considered or looked at that? Is it open to working on that?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_114">I have been meeting the medical social workers based in the hospitals. We have a leaflet ready to go that will be available in the hospitals for people, particularly to advise them about the heat supplement that is based on medical need. It is something we have actively been working on throughout this year. We are hoping to do a seminar as well for the national social work service. I have made contact with it in that regard. We have also put a piece in its newsletter.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_115">I have met the Irish Cancer Society. We have opened a line of discussion with it to do exactly as the Senator mentioned, that is, to support it and the people it deals with, provide it with improved information and support and work with it to help anyone in difficulty in those circumstances. We are trying to be as proactive as possible in that space.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_64">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_116">That is great news. It is welcome because I go back to the one and two. A lot of the people who come into our offices are family members coming in on behalf of someone else. You are nearly giving third-hand information and, somewhere, it gets lost in the whole Chinese whispers by the time they get home. If there were a little booklet, ideally in the environment of the hospital when they get the notice or are being discharged, that would be fantastic. We should make sure it is broad enough and encompasses more than just the heat supplement but other elements as well. Transport is a huge part for people who get a diagnosis and have to attend recurring treatment. That is another element that we should look at. We should also look at what the supplementary could cover and how people could find that they could be able to avail of it.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_117">We have also been proactive in the funeral space. We have met the funeral directors. We have a good line of communication with them to try to educate the funeral directors because they will be dealing directly with the bereaved people. As Ms Haran has said, we are going to improve our application forms for that payment and try to improve and streamline the process. Ms Goodwin has been out around the hospitals. We have met palliative care teams and end-of-life co-ordinators in the various hospitals. We have met private nursing home providers. We are trying to be proactive to identify the particular touch points for the people dealing with our service, not only for the customers themselves but for the particular service providers or NGOs in the particular space to try to improve our general communication and co-ordination with them.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_66">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_118">It goes back to the point Deputy Wall mentioned. We are also a touch point, and a valuable one. I have brought up three different aspects that have come to me, which I have no doubt come to everybody, but our touch point is such that we can inform the Department. I can tell the Department about the four undertakers. I would love to know when the Department started communications with funeral directors. We play a valuable role in bringing real-life experiences to the table that can help inform the booklet and inform or shape the policy. We want to help because it ensures that our constituents are front and centre in the needs at their time.</p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_67">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-12-10T10:20:00+00:00"/></from>
+          <p eId="para_119">I apologise that I was not here for the presentation but I had a quick look at it. To follow on from what Senator Rabbitte and others have said, the touch point is the public representative. I often describe us as another citizens' information bureau. For some reason, people somewhat prefer to come to us and we provide a good service. I do not want to sound patronising but I would like to think that other Departments could emulate the service that social protection or the old social welfare gives. People can ring up and get the information. As I said in the presence of the Minister recently, if that service were not there, there would be so many people answering parliamentary questions. I remember the days when there were hundreds of parliamentary questions on the Order Paper, whereas now people can lift the phone and information is all very accessible.</p>
+          <p eId="para_120">We are not under GDPR because they know we are representing those people.</p>
+          <p eId="para_121"> In relation to the responsibility that was taken over from the old health boards, such as the funeral grants and the single exceptional needs payments, we forget very quickly about the successful cases. We remember the ones that were not successful. I am only sharing this because I had a case recently of a man who lived until he was well into his 70s. He was physically disabled all his life. God rest his mother who kept him at home until she died. His sister kept him then and eventually he had to go into care for about three years before he died. By God, when I looked for the funeral grant, it was rejected on the basis the sister herself had sufficient money in her account to look after it. They had forgotten that had he been in care and his mother been a bad parent and his sister a bad sister, they would have got it, no problem. I wanted to go as far as I could with it but the family were so proud they would not let me do it. It was some moneys that they should have. I think somebody just took a blinkered view of it. Maybe some time I might, but I am just sharing that about when people look after others. It is the same as children who are being cared for by their parents. If the parents were not caring parents, the children would be in long-term care. Actors like that should be taken into consideration. I am just sharing that with the witnesses.</p>
+          <p eId="para_122"> The other one which I think is very beneficial is the reviews. I am straying away from community welfare but the reviews can be dealt with very quickly but, by God, the appeals. I can understand because there is not a section just dealing with appeals for the carer's allowance, carer's benefit or various others. They are all going into the one appeals office, as I understand it, here in Dublin. I know there has been some improvement on it but it can take a long time. The only advantage of it is, if the appeal is successful, there will be a back payment for another period. If an application goes into the appeals section, it is taking a long time and there is a change in circumstances, is it wise to make a fresh application that might be dealt with quickly? If the application were approved, would it take into consideration the commencement date for the application that is with appeals?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_123">I thank the Deputy for his comment about the service. If he wants to raise that funeral grant case with us, we will take a look at it. As the Deputy said, there are learnings in it for us as well.</p>
+          <p eId="para_124"> I agree, the review is an excellent mechanism and we are always happy to take it. If somebody has additional information and wants to come to us rather than go through the appeals process, they can absolutely come in. Just to note, the supplementary welfare allowance can be appealed and those appeals are treated as a priority. If you apply for disability allowance and it is on appeal, we can pay you, but if you are dependent on us to pay you and it is on appeal, it needs to be prioritised, and they are prioritised within the appeals office.</p>
+          <p eId="para_125"> To the Deputy's point, if a person is turned down for something, he or she appeals it and the person's circumstance changes, that person absolutely should make a new application. That is what the person should do. Depending on the circumstances, they can treat that as a review as well. I am generalising a bit but the answer is yes. Those things are taken into account, depending on the circumstances. If there is a change, absolutely somebody should reapply. I thank the Deputy again for his comments. We will pass them on to the team.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_126">I thank the Deputy. Ms Haran on my own behalf I thank her for her presentation this morning. I thank the staff of my own local Intreo offices in Newmarket and Mallow. Obviously, because I cover the county boundary of Kerry and Limerick, I deal with Killarney and Kilmallock as well and I have always found the staff in all of the offices to be very forthcoming and helpful in their deliberations in terms of community welfare and all aspects of social welfare.</p>
+          <p eId="para_127"> We feel community welfare has lost the face-to-face contact on the ground. Mr Haran's presentation says differently this morning but we want to stress that. I remember back in the day when the community welfare officer would do a run around the community centres and the local villages. We do not want to get back to that point because it is probably a waste of time, but I would say there definitely is a lack of face-to-face contact from them. In my own situation we would be dealing more with applications and putting them through rather than having face-to-face contact.</p>
+          <p eId="para_128"> Ms Haran mentioned in her commentary about having 51 offices where the community welfare officers are based. Out of a total of how many offices is that the case? Ms Haran talked about a walk-in services as well. How many clinics or offices have that walk-in service? Does every office have it because I am certainly not aware of the times and dates for those. I will start with those questions.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_129">I thank the Chair for his kind comments. We will pass them on to the team. We have a series of Intreo centres - I think there are 62 - and we have a series of social welfare branch offices, about 60 of them. Of the Intreo centres, 51 have what we call a walk-in service Monday to Friday, 9 to 5. A person can make an appointment but it is what it says, the person can walk into the office and say they would like to see the community welfare officer, they want to make an application or they want some information. Usually what happens is the person comes in and says at the reception of Intreo that they need assistance with something or they have a bill coming up and need assistance with that. They would be given forms, but if they need to see the community welfare officer, they can. As I said, a third of the applications we deal with are paid by cheque in the first instance, so the community welfare officer actually sees the person.</p>
+          <p eId="para_130"> There are an additional 22 locations where we have what we call a part-time service - Ms Goodwin will correct me if I am wrong. We do not have somebody Monday to Friday but they are there on dedicated days. Again I take the Chair's point that that probably needs to be circulated among the public representatives so it is clear on where those people are. I agree that a lot of the old system of having a CWO at lots of various locations for two hours maybe every second week was based around the fact we did not have alternative channels at the time. We did not have an online application. The phone service would not have been as good. A lot of the work at that stage was done around medical card reviews, and the Chair would be aware of that, and back to school clothing and footwear. There were reasons people came in other than to make an application. All of that, thankfully, is dealt with automatically now so people do not need to come and see somebody with all their documents to do a medical card review or apply for the back to school clothing and footwear. That is paid automatically. I suppose it is a balance because it was a way of getting to know people. To the Deputy's point, it is good to see somebody face to face but it can be off-putting. That is why the phone service is so good for us as well because people do not have to identify themselves. I might have an entitlement but I would like to phone anonymously and talk to somebody first before actually coming in and sitting in the Intreo office. That is our experience, that it is welcome, and people say it is great to be able to talk to somebody. It is not replacing the face-to-face contact. All of these things are to complement it, no more than the online application is not to replace that actual face-to-face contact. If someone is at home on a Saturday, they can sit down and rather than filling out a 16-page form, they can go online, send in the form and get a response. That is the idea of it. It is to get the balance right.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_131">Yes, and I appreciate that. It would be great if Ms Haran could forward to the clerk the locations those services are available and the clerk could circulate them to the members.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_132">Absolutely, I will do that.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_133">If you could forward the details of the offices that have the Monday to Friday service and where you have the walk-in clinics on specific days, that would be great. There is a lack of knowledge of where those are at. The other question is, I am in contact with a community welfare officer and most of my contact would be with them. They get the information and the details but then it has to go to an administration hub, which can take a significant amount of time. Ms Haran is saying, however, the decision is made locally in most, if not all, cases and then it only goes to the hub for processing. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_134">We have six hubs around the country, but the application comes into the hub. If the information is all there on that day, it will be registered on the system, the documents will be scanned and it will be sent straight over to the local community welfare officer. Where the documentation is not there, the person in the hub will request the documentation on behalf of the community welfare officer. As soon as the information comes in, it is straight over to the community welfare officer. We have no delays currently in our hubs, and where we have had delays in the past, they have been for a day or two. They have not been significant at all. That is how the process works.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:30:00+00:00"/></from>
+          <p eId="para_135">There was mention of bank accounts that may not be active or have anything in them. That is a real challenge for us because it takes time for the banks to process it, send it our and there is actually a charge in most cases. The person is coming looking for money because they do not have it and then they are automatically being charged by the bank.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_136">I agree; that is an issue. We are looking at that across the entire Department. The community welfare service is not the only body that requests means tests of areas. As other organisations change the way they work, like the banks with e-statements and everything, we need to change as well.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_137">Where the customer is experiencing difficulty getting that information, we accept a declaration from the customer that they cannot access information from the bank, or the account is so old the bank cannot give the information. We have a standard form the customer can sign. While there have been cases where that has not happened in the past, it really should be happening.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_138">Have the officials come across variance between individual community welfare officers, where someone in Cork might be more lenient than someone in County Laois, for example? How is that balanced? I am not saying they are but just for example.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_139">That is one of the benefits of the establishment of the national service. The community welfare service was formed as a national service in January 2022. Since then, we have really worked hard to bring uniformity and standardisation to the decision-making process we have in place across the country. The decision-making by and large should be as uniform as possible, notwithstanding the need that is presented. When we are talking to our community welfare officers, we really emphasise that their decisions should first and foremost be based on the need of the person standing in front of them or presenting to them for support. There will be a variance in decision-making. They have an element of discretion to make decisions based on the circumstances that are presented. Broadly speaking, though, we have tried to bring in standardisation and uniformity of decision-making. We have put a lot of effort into training resources within the service. We have our own dedicated training team to try to assist our officers with their decision-making process.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_80">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_140">Would it be possible to have the timers working for the next meeting? It is very difficult to know how much time is left when we are asking a question.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_141">No bother.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_82">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_142">I was on the council for years. Is there still a lot of joined-up thinking between the community welfare officers and the local authority?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_143">Absolutely. We have extensive engagement with the local authority. We have a CWO who is our national housing co-ordinator and he has been to visit almost every local authority in the country at this stage. We work with them really well, for example, when people are leaving homelessness. We have two staff members, one based in Limerick and one based in Dublin, who are specifically linked in with the local authorities in relation to people leaving homelessness, and then in terms of people moving into new accommodation provided by the council.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_84">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_144">We will leave Dublin out of it for a minute. I presume the local community welfare officers are liaising with the social workers in Laois County Council, for example, for the homeless thing and that. It is so important.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_145">Absolutely.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_86">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_146">How does the community welfare service treat a person who is from a household where there is addiction? I am talking about a family member where addiction has come into a house and they are short because the money has been drained by one particular channel. How does the community welfare officer deal with that person?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_147">I was a community welfare officer as well. I cannot talk to 100% of the staff but 99% would deal sympathetically with anyone coming from a situation like that. The circumstances of that family and what they are going through are taken on board. I could give examples of different situations from even the past few months. We have had to assist families where houses have been damaged and things like that. They would be dealt with sympathetically.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_88">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_148">Have the witnesses seen an increase in that?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_149">The issue of addiction goes beyond drugs and can be gambling and other sources.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_90">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_150">Yes, that is what I am asking.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_151">As Ms Goodwin says, we would deal very sympathetically with those cases. The community welfare service is not going to leave any household hungry or destitute. It is about looking at the need that is presenting. If somebody needs support with food or other emergency needs, we will be supporting them as best we can.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_92">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_152">If someone makes an application to the community welfare officer and they are turned down, and they feel they have a story to tell and would like to meet the officer, is the community welfare officer obliged to meet them?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_153">Are they obliged?</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_94">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_154">Yes. Someone is entitled to ask for a meeting with the community welfare officer.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_155">Absolutely.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_96">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_156">Can the officer say "No"?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_157">The answer would be "No".</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_98">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_158">And that is recorded.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_159">I cannot say absolutely that nobody has ever said otherwise, but no, an officer would never-----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_100">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_160">I am of the same opinion as Ms Haran on the question of them having to meet. It is just to know when we are discussing these matters that they can meet a person if needs be.</p>
+          <p eId="para_161"> Will the officials outline what measures are being taken to reduce the waiting times for supplementary welfare payments? Do we have a clear pathway in urgent cases? The witnesses are telling us they could nearly deal with it on the day. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_162">Yes, and that is still the case. There are two aspects. We do not have any delays at the moment. If we have all the application information we need, that claim gets processed. We acknowledge that the application forms can be difficult. We are looking at the application process and the documents a person needs. Sometimes, there is a delay because the person sends in an application form but we have to send it back. We go out and ask them to give us a document to support the fact that they have an essential need. The process is under review.</p>
+          <p eId="para_163"> The other point is that if the person needs a payment on the day, the answer is "Yes". We paid a third of payments on the day last year, by cheque.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_102">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_164">I thank Ms Haran. I am not asking those questions by way of criticising the Department. I had to go in in urgent cases----</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_165">Absolutely. We have the same objective. We do not want to have delays. We want to get people paid. We want the process to be as straightforward as it can be, notwithstanding the fact that it is not a grant or a universal entitlement and people have to establish a need, as Mr. Hand said, and establish their entitlement. We have to work with people on that. I think everybody has said that there are people who are vulnerable and not at the peak of their----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_104">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_166">In what area is the single biggest increase in requests?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_167">Probably housing.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_168">Yes, the new allocations.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_169">That was the most significant spend we had last year and this year.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_108">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_170">That shows there are a lot of houses coming onto the market.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_171">There are a lot of allocations.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_110">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_172">We might go public on something like that because I think it is good.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_173">There are a lot of allocations. As Ms Goodwin said, we have dedicated a number of resources to make that efficient and effective.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_112">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_174">I would see that in my own town of Portlaoise and County Laois more widely. There is a huge amount of houses being built at the moment. I am not saying it is curing all ills because it is not but there is a huge amount of houses being built. Commuting on the train from Portlaoise to Dublin, every person I am sitting beside on the train in the morning is talking about all the houses that are being built. There are houses everywhere, so that is affecting the community welfare system as well.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_175">The most significant part of our spend is there.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_114">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_176">It is like the local authorities, in that we would all be looking for extra staff, but with such growing demand, are there enough staff in place?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_177">Absolutely. It is staffed across the 26 counties. We have to have staff in place to respond on any given day, wherever the need emerges. It has to be flexible to deal with a whole range of things. In terms of housing, we are very focused on when a person gets the keys to their house and they are really anxious to get into their new apartment or house. We are working very hard to make sure that, when they get their application to us for the support to furnish and kit out the new property, we respond quickly and get it turned around as quickly as possible.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_116">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_178">Do community welfare officers ever get minors coming in to them about a household situation?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_179">Some, Deputy.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_118">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_180">Is that just to tell the officer what is going on?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_181">For sure. Cuan and Tusla are in that space.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_120">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_182">The officer would report it straight away.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_183">Straight away.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:40:00+00:00"/></from>
+          <p eId="para_184">Typically, you might get a child who is fleeing an abusive family situation. They have moved in with their grandmother, perhaps.</p>
+          <p eId="para_185">We have dealt with a couple of cases recently where the grandmother has come forward and is looking for support with the care of the child. I will not say there are many but-----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_123">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_186">They are out there. I came across one recently and I just wanted to know how does the Department deal with it? Does it contact Tusla straight away?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_187">For sure.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_125">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_188">Good.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_189">We also contact Cuan and the other players in that space.</p>
+        </speech>
+        <speech by="#MarkWall" eId="spk_127">
+          <from>Deputy Mark Wall<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_190">I want to put on the record again my thanks, as I have done, to the community welfare officers. I think Ms Haran has heard today that the public representatives have a huge role to play in the service. I think that has been forgotten about, to a certain extent. It was definitely forgotten about in her opening statement. We have established we have a lot to offer to help the service. I know I have spoken to Mr. Hand previously on this. It would be great if we could interact and tick-tack again. I really welcome that the Department will come into us and listen to us.</p>
+          <p eId="para_191"> On the declaration forms, I dealt with five cases in the past two weeks. The declaration form was not mentioned in one case. All five cases looked for the bank account. These are the problems we are having as public representatives. If a declaration form was available, that person, who has not opened that credit union account for 20 years in one case, would have signed it but they are delaying the whole process by not knowing there is a declaration form. That is the type of stuff we need to know. At the end of the day, people are still coming into our offices. They are still engaging with all of the other services mentioned at the start but public representatives are the front line of what these people need. We are the first port of call because we have closed down community advice centres, in the main. It is now public representatives' offices that are getting these queries. To have that information is vital. I really appeal for that.</p>
+          <p eId="para_192"> On the heat supplement that was mentioned earlier, this is almost new to me. I have only come across it in the past number of weeks. Can the witnesses tell us what the heat supplement means for people? As there are 300,000 households in arrears, this is very important. From talking to local community welfare officers, I know they do not want to be a substitute for what Government may or may not be doing. The heat supplement is so important for people who need it at the moment, particularly those with disabilities. That is a main cohort of people who I deal with who need heat. The heat supplement payment is absolutely essential for them.</p>
+          <p eId="para_193"> On the forms and going back to the funeral ones I mentioned before, what I see getting there is a copy and paste form. Sometimes, the box could be ticked and that is the missing information and sometimes, it is not ticked. I can give example after example where some someone comes into me with 14 requests for funeral expenses, even though we have supplied three or four of those funeral expense requests already. This is why I am saying I see the problem with the hubs. If that person forgot to tick they only wanted one of those 14 requests, the person comes in, who has just buried a partner or a loved one, and says to me they are now being asked for 14 requests from them. You can imagine how that is the problem we are having here with those requests. I welcome the fact Ms Haran is looking at these forms again. I appeal to her that the staff, particularly those who are in the hubs, look at the forms that are already there and make sure to tick the boxes only for which they are requesting the additional information. Too often, I have come across that.</p>
+          <p eId="para_194"> Unfortunately, I am coming across more and more domestic violence cases, which is a huge problem. The community welfare officers who I deal with are absolutely brilliant. I have the phone numbers of the central office so I can pick up the phone and talk to it. However, there are times I get a call, be it Saturday night at 7 o'clock, or whenever it is like Mr. Hand mentioned previously in his introduction. Can I suggest a central number for something like that and to have it in an emergency? Is the number that Mr. Hand mentioned earlier the national number? I know I have a local number that I use and it is a brilliant service as well. However, we need a service that is there 24-7 for the increasing number of emergency cases that are coming to us, be it a Friday evening at 6 o'clock or a bank holiday Monday, so we can look at helping those. I agree with that was said at the start that the Department is there to help as many people as possible and I believe that is what it does on a daily basis. I thank the witnesses for it.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_195">I will ask Ms Goodwin to speak to the heat supplement and declaration and Mr. Hand might mention the work we are doing with Cuan on domestic violence and support. I apologise again for leaving public representatives out. They are key stakeholders and that is why we want to do that outreach piece. We appreciate the feedback. A lot of the changes that are coming are because people take the time to come back to us and say this is not working.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_196">Ms Haran will never again leave us out after this morning.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_197">On the declaration, the Deputy can send on those five cases. I know the hub that deals specifically with the Deputy's location so I will 100% follow up afterwards. One of the pieces I am doing at the moment is reviewing all communications sent out from the hubs. We are doing a quality control piece. I and some of the staff have done a National Adult Literacy Agency, NALA, plain English course, with a view to redesigning all of those. We are hoping to have system-based letters for the hubs in place for 2026 where individual officers will not be able to go in and edit. Instead of taking out the things that were already provided and should have happened in those cases and only asking for what is missing, that will automatically happen when they are putting the application through the system.</p>
+          <p eId="para_198"> In relation to the heat supplement, it has always been a payment under the supplementary welfare allowance, SWA. It is specifically for people who have a medical need for extra heating costs. Traditionally, we had two forms. We now just have one form for a customer but it has to be filled in by a GP or consultant. If it is a new diagnosis, we get the customer to fill in the form, set up the heat supplement and review it in three or four months' time based on the next two bills to see if the amount we have given is enough. Another option is that if it is somebody has an ongoing issue and they are coming to us now, we will look at their bills over the previous two months and assess how we can support them with the heating cost. It is separate to fuel allowance, notwithstanding that the fuel allowance has also been increased. More and more people, such as carers, are coming on stream to qualify for fuel allowance.</p>
+          <p eId="para_199"> That is the heat supplement. We have been advertising that actively within the hospitals.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_131">
+          <from>Deputy William Aird<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_200">How long will the letter last?</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_132">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_201">Two seconds, please, Deputy Aird.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_202">In relation to domestic violence, the community welfare service has a big role to play there. The victims in that situation will want to know two things, I suspect. The first is what they need to do to flee the situation in which they find themselves and where they need to go to get to a safe space and all of that. The second part of it is how will I survive? How will I support my children? How will I support myself? We need to provide some more information to all of the stakeholders in that space as to how they can do that, how they can access the service, where they can access it and the particular supports we can then make available to them.</p>
+          <p eId="para_203"> That is separate to the supports we already have in place for rent supplement. We have special arrangements in place to allow for the provision of rent supplement, without a means test, for a period of three months and it is extendable for a further three months. There are two aspects to it.</p>
+          <p eId="para_204"> More and more cases certainly seem to be emerging. We need to identify the different types. It is not a one-size-fits-all approach. There are different types of cases that emerge. This week, we met with Cuan to try to work with it and work with the women's refuges around the country to see what we can do to support people in that space. As the Deputy rightly said, it is immediate. That is probably a very good example of immediate needs cases. We have dealt with a couple of cases around the country where we have dispatched CWOs at a moment's notice who got into their car and got out to meet the person. It is absolutely, 100% an immediate needs situation.</p>
+          <p eId="para_205"> In addition to our on-duty service, we typically have other staff available around the country to respond to immediate needs. We have staff every day in the on-duty service but we also have staff available. If a call comes in, either through our phone line or from a women's refuge or a public representative that we need to get out on the ground to deal with somebody with that immediate need, we will have staff available to do that. It would be immediate in terms of the officer literally downing their pen, getting into their car and getting out and meet the person. It is really all in the moment for that person.</p>
+        </speech>
+        <speech by="#MarkWall" eId="spk_134">
+          <from>Deputy Mark Wall<recordedTime time="2025-12-10T10:50:00+00:00"/></from>
+          <p eId="para_206">I have one quick question to ask. I acknowledge what the Department has done in relation to hospitals. I had a relation in hospital a week ago. The social welfare officer in the hospital came up to them and went through, in detail, what they may or may not be entitled to, including community welfare officer services. That is something that has worked. It is a great service. Well done on it. It is just already feeding back into that. It is a case of well done on that. I congratulate the Department on that as it is already coming back.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_135">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_207">I thank the officials so much for coming in. I apologise that I was late and missed some of the discussions. I hope I do not duplicate too much. I pay tribute to Ms Haran and her team for what they are doing. This is critical work for the most vulnerable people in our society. It is an issue of human dignity and human rights and I am very proud to live in a country that has people like her doing this work, so I thank her for all she and her team are doing.</p>
+          <p eId="para_208"> I am a bit of a numbers guy, so I like understanding the magnitude of certain things. There are about 1.5 million recipients of social protection payments more generally and we are talking about a small subset of that. Each of those people can, as was said, be in complicated situations and vulnerable situations and have individualised issues and each of them deserves dignity. Just to understand the different dynamics with the additional needs payments, ANPs, there are 54,000 payments but can the officials give me a sense of how many recipients there were in that? What was the number of people who received aid under the human assistance scheme in the each of the two events referenced in the officials' documentation? I would also like to understand what accounts for the difference between those in temporary protection or international protection who get the daily expenses allowance, DEA, versus those who are beneficiaries of temporary protection, BOTPs. There is a difference there of about 7,000 people. I would like to get a sense as well of the success rate with appeals when people appeal certain judgments. I have two other questions but I will leave it there for now.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_209">I thank the Deputy for his kind comments, which I will pass on to the team. We can circulate the numbers afterwards, but from what we have available today a recipient number in terms of an ANP is a person. A person applies and it may be in respect of a household but it is an application under a PPSN. Ms Goodwin is going to keep me on the straight and narrow here. There have been 54,221 additional needs payments to the end of October. The amounts would vary because, as we have said, a household kit-out is a much greater amount than a person needing €100 for a particular need or bill, so there is variation across that.</p>
+          <p eId="para_210"> On the humanitarian aid scheme, our big event this year, as we all know, was Storm Éowyn. It ended up with 58,464 people receiving a payment under stage 1, which is the immediate payment. Another 108 people received a payment under stage 2, which is typically for white goods. In a flooding event you might need to replace the white goods in your kitchen, etc. We have 71 stage 3 claims paid, which are the more substantial ones where we had to have house repairs or there was damage to a property and it needed works to make it habitable again.</p>
+          <p eId="para_211"> On the daily expense allowance and the beneficiary of temporary protection payment, we administer the daily expense allowance on behalf of the Department of justice. People have entitlements under the material reception conditions for international protection applicants. One of them is that they receive a daily expense allowance, which is €38.80 per adult per week. As part of that they receive a €100 clothing allowance as an additional needs payment, so that is the DEA cohort - the international protection applicants. As for beneficiaries of temporary protection, a person, typically from Ukraine, who is a beneficiary of temporary protection has the same social welfare entitlements as an Irish citizen other than if they are living in what we call designated accommodation. There are people who the State supports. The accommodation is designated and if you are a resident of a designated accommodation centre you are not entitled to social welfare but you are entitled to a weekly payment we also administer. The rates are similar to the international protection daily expense allowance. There are about 2,600 people currently in designated accommodation centres in receipt of the BOTP weekly payment at €38.80. There is a slightly higher amount where people have to pay the cost of their meals. There is a lot of churn in that because people enter the country, are assigned accommodation and then they move out. It stays around 2,500 but it is 2,500 different people. We can circulate any figures the Deputy wants.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_137">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_212">Last of all on the appeals, how many does the Department get and what is the success or failure rate?</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_213">I have that here. To the end of October we got 761 basic supplementary welfare allowance appeals to the appeals office. To the end of October we got 2,630 requests for review under the appeal legislation for the ANP. That equates to about 12% of the disallowed basic claims and 13% of the disallowed additional needs payment claims. I am not sure on the appeals figure. There are not that many outstanding because as Ms Haran alluded to they are prioritised within the appeals office. Of the 2,630, at the end of October there were 150 outstanding.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_139">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_214">Is that those that were submitted or those that were successful?</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_215">Those that were submitted.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_141">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_216">Does Ms Goodwin have a sense of which-----</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_217">I do not have the breakdown for this year but we can provide it.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_218">Through the clerk if that is all right. Do you have more questions, Deputy?</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_144">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_219">I do, if I have the time.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_145">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_220">You have one more minute.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_146">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_221">One of the things others have spoken of, especially Deputy Wall, has been this question of co-ordination with other agencies. I am just conscious that sometimes with people in vulnerable circumstances there are a lot of other moving parts and it is not all on the Department of Social Protection. I would like to get a little bit of a sense in two areas of how the Department co-ordinates. One is this interaction between rent supplement, HAP and rental accommodation schemes with the local authorities. How does the Department co-ordinate with the local authorities on the individual cases that are across both bodies?</p>
+          <p eId="para_222"> On the question of co-ordinated welfare support for the most vulnerable and charities like the Society of St. Vincent de Paul and all those organisations, how do we ensure that it is joined up and who is the point person in that instance? I am just aware from some cases that have come across my desk where people may have gone to the charities or the public representatives as their first port of call. Making sure the Department has that line of sight and that pathway for people is quite important.</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_223">Mr. Hand might make a few comments on this but as a general comment we are very conscious that the immediate need of a person presenting is the core of community welfare service but we do not want to do that, as was said, in a silo. Some of it is preventative, some of it is proactive and the rest of it has to be reactive because if the person presents what we need to do is respond and react. Ideally we would not be here. I do not mean here in the room but the fewer people who need our services the better for us because it means other things are working well and people's circumstances are good. We have been very proactive in making sure those silos are not there and that there is a lot of engagement. Mr. Hand is driving a lot of that co-ordination so he might want to say few things as well.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T11:00:00+00:00"/></from>
+          <p eId="para_224">There are three layers to it. It is the national, the local and then the individual officer level. At the national level we are keen to make contact with all the relevant actors or players in that space and to meet them and engage with them to educate and communicate with all their key players. We have done that through organising webinars, meetings with volunteers, key workers and all the people involved in that space to try to come out of the shadows and educate and inform them as to what we are about and to speak about the application process. Typically people want to know what we do not fund, what we cannot support, what the barriers are, how the process works and all that. We do it at a national level. At a local level we have staff involved in any committees or meetings of local area groups at the local level across the city. There are multiple groups we meet, though I do not want to name them. We try to be as proactive as we can be within that system, not only with State organisations but also with NGOs and the charity sector - anybody we think is a player involved with us. Then it is at the individual officer level as well and to replicate that down. We really try to be involved in any mechanism whereby the individual community welfare officer can be involved with the crisis intervention. A good example of that is children and young person's CYPSCs, crisis intervention teams where State agencies like Tusla, the Garda and the Probation Service come together to assist a family in crisis.</p>
+          <p eId="para_225">A community welfare officer would be involved. There would typically be a clinical aspect to that, but there are also financial supports that the community welfare service and officer can bring to the table to help that family in need. Often, it can be small things such as a washing machine or fixing a shower. We want to be in that space. We work closely with the particular charities in that area.</p>
+          <p eId="para_226"> There may be a cocktail of supports. An organisation might come to us to tell us it will do this if we can do that. It is about trying to get back into that space. We are actively encouraging community welfare officers to do home visits so that they understand that going to a person's home and engaging with them is important when it comes to making a decision on that person's claim. As Ms Haran said, they may visit for one purpose, and when they go into a home, they see other things we can provide support with. They can also engage with other players working in that area.</p>
+          <p eId="para_227"> There are three layers. That is where we are at. We need to try to be as proactive as possible because we are in the business of trying to help people. That is where we are coming from.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_149">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_228">There is no better business to be in. I have a small follow-up-----</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_229">You are out of time.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_151">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_230">Like other speakers, I am building on points that have been made. I hope I will be able to finish. I refer to the heating supplement. It has been brought into sharp focus. I was not aware of the breadth of support offered by the payment. A person born with a congenital condition may not be in and out of hospital whereas a person who has received a recent diagnosis will be hearing more relevant and up-to-date information. There is a missing area in the information and communications piece.</p>
+          <p eId="para_231"> The service has gathered data on those availing of the heating supplement, including those who may be able to avail of it and how many of them live in social housing. Should we consider EnergyCloud and ensure we get heat pump systems into particular areas? There is a broader conversation to be had.</p>
+          <p eId="para_232"> The service will produce a document on the heating supplement. This needs to come out of hospitals. Not everybody is digitally savvy and people like to have that piece of paper. Those who have received news of a diagnosis are not open and attuned to everything they can avail of. It is only when they go home that people ask about this and that. People could lean on a pamphlet. Our offices would love such booklets.</p>
+          <p eId="para_233"> About three years ago, the then Minister, Heather Humphreys, produced a fantastic easy-to-read document of everything the social welfare system provided. I had one of those booklets. It referred to the disability allowance. Is that document being updated? Where does it stand? I am sure that many new Deputies and Senators who have come to the Houses would like to have one for every member of their staff. It is the Bible of social protection. It is a really good document and I could not compliment it enough. It was available to everybody. With the permission of the Chair, it would be great to have the service give a presentation on the booklet in the audiovisual room, in conjunction with what is being developed for those who acquire a disability or receive a diagnosis, such as what is being done with the Irish Cancer Society. We could launch, or relaunch, such booklets and create awareness with the service's partners that are on the front line.</p>
+          <p eId="para_234"> As regards those partners, I want to make a suggestion. Reference was made to hubs. We want people to have information so that they can get their payments. I am wondering about <i>oireachtas.ie</i>. If somebody comes to me, could I upload the information? Can I send a claim in directly and can it be assessed in a timely fashion in the same manner as hubs? Have the witnesses considered that?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_235">I thank the Deputy for the suggestion. I am not aware of whether the easy-to-read documents have been updated, but we will take that back to our communications people. All three of us have one mission, namely, to simplify every document, letter and piece of correspondence, and make it straightforward so that people can understand it. We are very conscious that there are new communities and English is not the first language for everyone. Literacy and sending complicated letters are issues. We are all as one on that.</p>
+          <p eId="para_236"> Regarding the upload, I am not quite sure what-----</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_153">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_237">I will explain. When I print out forms for the supplementary welfare allowance, I know I need to provide A, B and C with the application. What is required is very clear. Everything is time sensitive, though, so rather than telling a constituent that they need to make their way to Loughrea or Tuam or put it in the post, I could scan and upload the document directly to the community welfare office. That would speed up the process so that a person did not need to have two meetings. The next meeting the person would have would be about getting the support required or it would just be a communication to say that a payment would be lodged in their bank account on Friday. I am trying to sharpen the delivery of services.</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_238">I see. We mentioned we were reviewing all of the forms. We are also reviewing the processes and applications. Let us take that away and see what is possible.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_155">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_239">We have some fantastic staff working in all of our offices who are meeting these people. I am trying to be of assistance to the person at the centre because the staff work very well with our teams.</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_240">Once an application has been submitted, customers can email additional documents . We accept documents by email, but generally what we cannot accept are screenshots. Some people try to screenshot 30 pages of a bank statement, which then have to be printed off individually and scanned as one. I have seen staff in hubs on the phone with customers to advise them how to make a document into a PDF. I am not sure whether we accept the application form by email, but additional information is accepted by email.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_157">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_241">What I have suggested would cut out a step. It is not about trying to remove anybody from their job or anything like that. A community welfare officer might visit people living in Portumna once every three weeks on a round trip, but people cannot wait three weeks for payments. That is all I am trying to say.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_158">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_242">Thank you very much, Senator.</p>
+        </speech>
+        <speech by="#AnneRabbitte" eId="spk_159">
+          <from>Senator Anne Rabbitte<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_243">May I ask a last question on housing? A number of contributors referred to housing. It is no different to the hospital scenario. How community welfare officers work with our local authorities gets a little bit lost in translation. We know from our housing statistics that we have the good, the bad and the ugly of local authorities. The information might not be getting out there. I will again refer to the man who had to choose between a floor and a fridge and whom we were asking to downsize. That is not good practice. There have to be better ways of us supporting people in moving from a three-bedroom property to a one-bedroom unit in order to make the larger property available for a family. We need to be able to tell people they can be connected and supported. I am not looking for gold standards, but for the basics to be delivered.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_160">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_244">Okay. Thank you very much. Does the community welfare service have a good working relationship with the Money Advice &amp; Budgeting Service, MABS? Many constituents who contact us with queries have budgeting issues. They contact MABS in the first instance and then contact the community welfare service.</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:10:00+00:00"/></from>
+          <p eId="para_245">As I said, we are trying not to respond solely to what the person presents. If somebody presents to us with difficulties in paying utility bills, that could be a budgeting or income issue. We have a role in linking with other agencies and providing advice to a person on the additional benefits to which they might be entitled. Everybody has made the point that, sometimes, people do not know about their entitlements. It is not our role to look solely at immediate needs, but also to tell them about things like the working family payment, etc.</p>
+          <p eId="para_246"> Ms Goodwin might discuss MABS.</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_247">We work very closely with MABS. Our application pack has a line on it stating that if you are looking for assistance with household bills and are experiencing difficulty, please be aware MABS is available to support. We signpost MABS on all our application packs and we with closely with it. It could be that somebody has a very large bill and MABS wants them over time to budget and get the bill down. They will do it over a number of payments rather than doing it all in one go because MABS is working with them.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_163">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_248">That is very good to hear. What is the average payment for a standard new house kit-out?</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_249">We do not have it to hand but approximately €4,500 is the average amount we issue.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_165">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_250">How often do all the CWOs around the country get together to share experiences and have a conversation? Does that happen very regularly?</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_251">That is a difficult dynamic because we have our CWOs involved in front-line duties. For us to release staff from that has proven quite a challenge. We have not had a national meeting because there has never been an opportunity for us to down tools and bring everyone together.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_167">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_252">You could have a couple of them all, I suppose, and divide it up.</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_253">We have done that. We have had area meetings.</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_254">We divide them up and have it. We were due to have a meeting in Mullingar with about 50 staff a couple of weeks back. Storm Claudia arrived and we had to cancel. It is just the nature of things and of the business that we are in.</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_255">We did not cancel because of the storm. We cancelled to ensure CWS was available, if necessary. They are on call this morning because of yesterday.</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Mr. John Haran<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_256">They are on standby in relation to any scenario that might present on a given day across the country. It happens as often as we can make them available. We have technology as well. Every Thursday morning, we have a training hour for all community welfare staff. We have video sessions with them every week of the year. They are to discuss various aspects, to bring the uniformity and standardisation we discussed and to bring in guest speakers from the Society of St. Vincent de Paul or other agencies, so they hear directly from people involved in other aspects of service delivery. Technology is of great use to us in that space.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_172">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_257">A real positive in my community is a community welfare officer or social welfare staff visiting a town hall and having a meeting there with the active retired or the age friendly committee. That is positive because many people get to know the local person in the Intreo office or the local community welfare officer by face and name and there is an opportunity to have a discussion locally and see what is available. For me and, I think, for many other members here this morning, sometimes the barrier is finding out what information and supports are available, so I very much appreciate that.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_173">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_258">I come back to the question of rent supplement and the interaction with the local authorities. I am conscious that, taking into account housing costs, we estimate about 200,000 children are in consistent poverty. Housing figures are not really keeping up with social housing and affordable housing demand. People are falling through the cracks. The rent supplement goes a long way in helping some of those people but the number of 6,000 suggests there are more that could be helped. Is that a question of the local authority working with the community welfare officers and the Department of Social Protection? How do they co-ordinate on those issues?</p>
+          <p eId="para_259"> I echo Senator Rabbitte. There is a diversity in how much local authorities interact with other State bodies or take these things seriously. Particularly in Dublin, I am acutely aware of how debilitating housing costs and provision have become for so many people.</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_260">As Mr. Hand said, we work closely with all the local authorities and there are excellent people in them that we work with. We work with the same aim. The local authorities have the main responsibility for provision of housing support. HAP and RAS are the two main ones. We have seen the rent supplement numbers go down significantly as HAP has taken over that responsibility but we still have, I think, about 6,000 rent supplements in payment.</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Ms Sinéad Goodwin<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_261">It is approximately 6,000 and we still get about 100 new applications per week. It is a short-term supplement to allow somebody to apply for HAP or to get somebody who is out of work for a short period over the line.</p>
+        </speech>
+        <speech by="#" eId="spk_176">
+          <from> Mr. Mairín Haran<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_262">While a person is on rent supplement, there is close engagement with the local authority with a view to moving them towards longer-term support on HAP, so that transition is seamless. In a case where a person loses employment for a short period because of illness, they are not a HAP person. The purpose of rent supplement there is to prevent additional financial pressure. Where there is a need, we would start that transitional piece, working closely with the local authority. We have a number of dedicated people on the homeless side and there are working relationships locally. We have excellent working relationships and there are no obstacles.</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Mr. Noel Hand<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_263">That is a really important initiative. We have a CWO embedded in the Dublin Region Homeless Executive who works as part of its multidisciplinary team structure to assist in some hard-edged cases and work on the resolution of issues across the local authorities, working with other agencies as well.</p>
+          <p eId="para_264"> The interaction on rent supplement with the local authorities typically happens at an individual case level. Somebody may be going for HAP or having difficulty. It happens on a fairly regular basis. It is so the person does not fall through the cracks on either side. In some cases I have seen, there is really proactive involvement to get the person a solution. We are seeing cases where people are starting to get into rent arrears or difficulties in getting their place resolved.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_265">I thank Mr. Hand. Are there any other comments or questions from members?</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_179">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_266">I have a very brief one.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_180">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_267">You were just in time.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_181">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_268">It would be neglectful of you not to let me in.</p>
+          <p eId="para_269"> I recall the process to apply for humanitarian assistance after Storm Éowyn. From the initial announcement to when people were substituting applications, the rules changed from the start to the finish. That caused a lot of annoyance. It was the first time in many of our lives that it had to happen but if we are to have another storm of that significance, I anticipate the witnesses' processes would be somewhat more streamlined. Would that be fair to say?</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_270">The word "unprecedented" has become meaningless in a way, but it was unprecedented in terms of the effect, the impact and the requirement to stand people out on the ground. The first priority in the days following the storm was to provide income support for people who needed it. People ended up homeless, there were houses damaged, etc. I agree there were a lot of lessons learned from Storm Éowyn. It is much more streamlined. A significant number of people were paid. It ended up at nearly 60,000. For a storm and humanitarian aid scheme, that is a complete outlier in terms of the support we have provided over the years. It was a very stressful time. I commend the team on the community welfare side who stood up and got people paid. There are lessons learned.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_183">
+          <from>Deputy Peter Roche<recordedTime time="2025-12-10T11:20:00+00:00"/></from>
+          <p eId="para_271">Excellent. I can guarantee the witnesses probably got no request for support with an ESB bill during that time.</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Ms Mairín Haran<recordedTime time="2025-12-10T11:30:00+00:00"/></from>
+          <p eId="para_272">Unfortunately. </p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_185">
+          <from> An Cathaoirleach<recordedTime time="2025-12-10T11:30:00+00:00"/></from>
+          <p eId="para_273">I thank Ms Goodwin, Mr. Hand and Ms Haran for their contributions today and for providing the briefing materials in advance. We very much appreciate it. It is very important to have a discussion about the CWS. It is something the members brought up and something we raised with the Minister when he was in here. This is how today's meeting came to be arranged. I thank the witnesses for taking time out of their schedule to be here with us today. </p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 11.30 a.m. <i>sine die</i>. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

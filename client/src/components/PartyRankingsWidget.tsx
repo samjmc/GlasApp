@@ -7,16 +7,100 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'wouter';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Crown, Users, TrendingUp, Building2, Info, ArrowRight } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { PartyQuickInfoModal } from './PartyQuickInfoModal';
+
+interface PartyCompactRowProps {
+  party: any;
+  variant: 'emerald' | 'blue' | 'purple';
+  onInfoClick: (partyName: string, e: React.MouseEvent) => void;
+}
+
+function PartyCompactRow({ party, variant, onInfoClick }: PartyCompactRowProps) {
+  const colors = {
+    emerald: {
+      text: 'text-emerald-900 dark:text-emerald-50',
+      subtext: 'text-emerald-700 dark:text-emerald-300',
+      score: 'text-emerald-600 dark:text-emerald-400',
+      hover: 'hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10',
+      icon: 'text-emerald-600 dark:text-emerald-400'
+    },
+    blue: {
+      text: 'text-blue-900 dark:text-blue-50',
+      subtext: 'text-blue-700 dark:text-blue-300',
+      score: 'text-blue-600 dark:text-blue-400',
+      hover: 'hover:bg-blue-50/50 dark:hover:bg-blue-900/10',
+      icon: 'text-blue-600 dark:text-blue-400'
+    },
+    purple: {
+      text: 'text-purple-900 dark:text-purple-50',
+      subtext: 'text-purple-700 dark:text-purple-300',
+      score: 'text-purple-600 dark:text-purple-400',
+      hover: 'hover:bg-purple-50/50 dark:hover:bg-purple-900/10',
+      icon: 'text-purple-600 dark:text-purple-400'
+    }
+  };
+
+  const style = colors[variant];
+
+  return (
+    <Link href={`/party/${encodeURIComponent(party.name)}`}>
+      <div className={`group flex items-center justify-between py-2 px-3 -mx-3 rounded-lg transition-colors cursor-pointer ${style.hover}`}>
+        {/* Party Logo */}
+        {party.logo ? (
+          <div className="w-9 h-9 rounded-lg bg-white p-1.5 flex items-center justify-center flex-shrink-0 border border-gray-200 dark:border-gray-700 mr-3">
+            <img 
+              src={party.logo} 
+              alt={`${party.name} logo`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        ) : (
+          <div 
+            className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 border-2 border-gray-200 dark:border-gray-700 mr-3"
+            style={{ backgroundColor: party.color }}
+          >
+            {party.abbreviation || party.name.substring(0, 2)}
+          </div>
+        )}
+        
+        <div className="flex-1 min-w-0 pr-3">
+          <div className={`font-medium text-sm truncate ${style.text}`}>
+            {party.name}
+          </div>
+          <div className={`text-xs truncate opacity-80 ${style.subtext}`}>
+            {party.government_status === 'coalition' ? 'Government' : 'Opposition'} • {party.active_members || 0} TDs
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={(e) => onInfoClick(party.name, e)}
+            className={`opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded ${style.icon}`}
+          >
+            <Info className="w-3.5 h-3.5" />
+          </button>
+          
+          <div className="text-right min-w-[3rem]">
+            <div className={`text-sm font-bold ${style.score}`}>
+              {party.overall_score || 50}
+            </div>
+            <div className="text-[9px] uppercase tracking-wider opacity-60">
+              /100
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export function PartyRankingsWidget() {
   const [selectedParty, setSelectedParty] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
-    queryKey: ['party-rankings-v2'],  // v2 to bust cache after adding logos
+    queryKey: ['party-rankings-v3'],  // v3 for new design
     queryFn: async () => {
       const res = await fetch('/api/parliamentary/scores/parties');
       if (!res.ok) throw new Error('Failed to fetch');
@@ -37,9 +121,14 @@ export function PartyRankingsWidget() {
       <Card className="p-6">
         <div className="animate-pulse space-y-4">
           <div className="h-6 bg-gray-200 rounded w-1/3"></div>
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map(i => (
-              <div key={i} className="h-16 bg-gray-100 rounded"></div>
+              <div key={i} className="space-y-2">
+                <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+                {[1, 2, 3, 4, 5].map(j => (
+                  <div key={j} className="h-8 bg-gray-100 rounded"></div>
+                ))}
+              </div>
             ))}
           </div>
         </div>
@@ -48,140 +137,75 @@ export function PartyRankingsWidget() {
   }
 
   const parties = data?.parties || [];
+  const governmentParties = parties.filter((p: any) => p.government_status === 'coalition');
+  const oppositionParties = parties.filter((p: any) => p.government_status !== 'coalition');
+  const topParties = [...parties].sort((a: any, b: any) => (b.overall_score || 0) - (a.overall_score || 0)).slice(0, 5);
 
   return (
-    <Card className="p-6 md:p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-2 border-blue-200 shadow-lg">
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-blue-200">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-500 rounded-lg">
-              <Building2 className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-100">
-                Party Performance Rankings
-              </h3>
-              <p className="text-sm text-blue-700 dark:text-blue-300">
-                Based on parliamentary activity and attendance
-              </p>
-            </div>
+    <Card className="p-6 border bg-white dark:bg-gray-900 shadow-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 lg:divide-x dark:divide-gray-800">
+        
+        {/* Top Performers */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Top Performers</h3>
+          </div>
+          <div className="space-y-0.5">
+            {topParties.map((party: any) => (
+              <PartyCompactRow 
+                key={party.name} 
+                party={party} 
+                variant="emerald" 
+                onInfoClick={handleInfoClick}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Party Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {parties.map((party: any) => (
-            <div
-              key={party.name}
-              className="group relative"
-            >
-              <Link href={`/party/${encodeURIComponent(party.name)}`}>
-                <div className="flex items-center justify-between gap-3 p-4 rounded-lg bg-white dark:bg-gray-800/50 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all cursor-pointer border border-blue-100 dark:border-blue-800/30 hover:border-blue-300 shadow-sm hover:shadow-md">
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
-                    {/* Rank Badge */}
-                    <div
-                      className={`flex-shrink-0 w-10 h-10 rounded-full font-bold text-lg flex items-center justify-center text-white ${
-                        party.rank === 1
-                          ? 'bg-yellow-500'
-                          : party.rank === 2
-                          ? 'bg-gray-400'
-                          : party.rank === 3
-                          ? 'bg-orange-600'
-                          : 'bg-blue-500'
-                      }`}
-                    >
-                      {party.rank === 1 ? <Crown className="w-5 h-5" /> : party.rank}
-                    </div>
-
-                    {/* Party Logo */}
-                    {party.logo ? (
-                      <div className="w-10 h-10 rounded-lg bg-white p-1.5 flex items-center justify-center flex-shrink-0 border border-gray-200">
-                        <img 
-                          src={party.logo} 
-                          alt={`${party.name} logo`}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <div 
-                        className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                        style={{ backgroundColor: party.color }}
-                      >
-                        {party.abbreviation || party.name.substring(0, 2)}
-                      </div>
-                    )}
-
-                    {/* Party Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-gray-900 dark:text-white">
-                        {party.name}
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                        <Badge
-                          variant="outline"
-                          className="text-[10px]"
-                          style={{ borderColor: party.color, color: party.color }}
-                        >
-                          {party.government_status === 'coalition' ? 'Government' : 'Opposition'}
-                        </Badge>
-                        <span className="text-[10px]">{party.active_members || 0} TDs</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Score & Arrow */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={(e) => handleInfoClick(party.name, e)}
-                      className="p-1.5 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors opacity-0 group-hover:opacity-100"
-                      title="Quick Info"
-                    >
-                      <Info className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                    </button>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                        {party.overall_score}<span className="text-sm text-gray-400">/100</span>
-                      </div>
-                      <div className="text-[10px] text-blue-500 dark:text-blue-600 uppercase tracking-wide">
-                        Score
-                      </div>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        {/* Legend */}
-        <div className="bg-white/60 dark:bg-gray-800/60 rounded-lg p-4 border border-blue-200/50">
-          <div className="flex flex-wrap items-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
-              <span className="text-gray-700 dark:text-gray-300">
-                Score based on parliamentary questions per TD & attendance
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-blue-600" />
-              <span className="text-gray-700 dark:text-gray-300">
-                {parties.length} parties ranked
-              </span>
-            </div>
+        {/* Government Parties */}
+        <div className="space-y-3 lg:pl-12">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Government</h3>
+          </div>
+          <div className="space-y-0.5">
+            {governmentParties.map((party: any) => (
+              <PartyCompactRow 
+                key={party.name} 
+                party={party} 
+                variant="blue" 
+                onInfoClick={handleInfoClick}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Party Quick Info Modal */}
-        {selectedParty && (
-          <PartyQuickInfoModal
-            partyName={selectedParty}
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          />
-        )}
+        {/* Opposition Parties */}
+        <div className="space-y-3 lg:pl-12">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Opposition</h3>
+          </div>
+          <div className="space-y-0.5">
+            {oppositionParties.map((party: any) => (
+              <PartyCompactRow 
+                key={party.name} 
+                party={party} 
+                variant="purple" 
+                onInfoClick={handleInfoClick}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
+
+      {/* Party Quick Info Modal */}
+      {selectedParty && (
+        <PartyQuickInfoModal
+          partyName={selectedParty}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </Card>
   );
 }

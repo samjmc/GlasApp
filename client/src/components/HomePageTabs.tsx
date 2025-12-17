@@ -18,6 +18,7 @@ import { PersonalRankingsTab } from './PersonalRankingsTab';
 import { useAuth } from '@/contexts/AuthContext';
 import { ErrorDisplay, NetworkError } from '@/components/ErrorDisplay';
 import { EmptyNewsFeedState, LoadingState } from '@/components/onboarding/EmptyStates';
+import { PageHeader } from "@/components/PageHeader";
 
 type TabType = 'feed' | 'tds' | 'my-rankings' | 'map';
 
@@ -29,13 +30,12 @@ interface HomePageTabsProps {
 export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTabsProps = {}) {
   const { isAuthenticated } = useAuth();
   const [activeTab, setActiveTab] = useState<TabType>('feed');
+  const [rankingsSubTab, setRankingsSubTab] = useState<'tds' | 'parties'>('tds');
   const [sortBy, setSortBy] = useState<'recent' | 'score'>('score');
   const [page, setPage] = useState(1);
   
-  // Use different limits for different views
-  // Highest Impact: Show ALL articles with impact (typically 20-30)
-  // Recent: Show paginated 10 at a time
-  const articlesPerPage = sortBy === 'score' ? 50 : 10;
+  // Always show 10 articles per page for consistent pagination
+  const articlesPerPage = 10;
 
   // News Feed Query
   const { data: articles, isLoading, error, refetch } = useQuery({
@@ -167,36 +167,107 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
 
               {/* Pagination */}
               {articles.total > articlesPerPage && (
-                <div className="mt-8 flex items-center justify-between border-t pt-6">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="mt-8 space-y-4 border-t pt-6">
+                  {/* Results count */}
+                  <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
                     Showing {((page - 1) * articlesPerPage) + 1} - {Math.min(page * articlesPerPage, articles.total)} of {articles.total} articles
                   </div>
                   
-                  <div className="flex items-center gap-2">
+                  {/* Pagination controls */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => {
-                        setPage(p => p - 1);
+                        setPage(p => Math.max(1, p - 1));
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       disabled={page === 1}
+                      className="w-full sm:w-auto"
                     >
                       ← Previous
                     </Button>
                     
-                    <div className="text-sm font-medium px-4">
-                      Page {page} of {Math.ceil(articles.total / articlesPerPage)}
+                    {/* Page numbers */}
+                    <div className="flex items-center gap-1 flex-wrap justify-center">
+                      {(() => {
+                        const totalPages = Math.ceil(articles.total / articlesPerPage);
+                        const maxVisiblePages = 5;
+                        const pages: (number | string)[] = [];
+                        
+                        if (totalPages <= maxVisiblePages) {
+                          // Show all pages if 5 or fewer
+                          for (let i = 1; i <= totalPages; i++) {
+                            pages.push(i);
+                          }
+                        } else {
+                          // Show first page
+                          pages.push(1);
+                          
+                          if (page > 3) {
+                            pages.push('...');
+                          }
+                          
+                          // Show pages around current page
+                          const start = Math.max(2, page - 1);
+                          const end = Math.min(totalPages - 1, page + 1);
+                          
+                          for (let i = start; i <= end; i++) {
+                            pages.push(i);
+                          }
+                          
+                          if (page < totalPages - 2) {
+                            pages.push('...');
+                          }
+                          
+                          // Show last page
+                          pages.push(totalPages);
+                        }
+                        
+                        return pages.map((p, idx) => {
+                          if (p === '...') {
+                            return (
+                              <span key={`ellipsis-${idx}`} className="px-2 text-gray-500 dark:text-gray-400">
+                                ...
+                              </span>
+                            );
+                          }
+                          
+                          const pageNum = p as number;
+                          const isActive = pageNum === page;
+                          
+                          return (
+                            <button
+                              key={pageNum}
+                              onClick={() => {
+                                setPage(pageNum);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                              className={`min-w-[2.5rem] h-10 px-3 rounded-lg text-sm font-medium transition-colors ${
+                                isActive
+                                  ? 'bg-emerald-500 text-white shadow-md'
+                                  : 'bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                              }`}
+                              aria-label={`Go to page ${pageNum}`}
+                              aria-current={isActive ? 'page' : undefined}
+                            >
+                              {pageNum}
+                            </button>
+                          );
+                        });
+                      })()}
                     </div>
                     
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => {
-                        setPage(p => p + 1);
+                        const totalPages = Math.ceil(articles.total / articlesPerPage);
+                        setPage(p => Math.min(totalPages, p + 1));
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      disabled={!articles.has_more}
+                      disabled={!articles.has_more && page >= Math.ceil(articles.total / articlesPerPage)}
+                      className="w-full sm:w-auto"
                     >
                       Next →
                     </Button>
@@ -212,15 +283,52 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
 
       {/* Rankings Tab Content */}
       {activeTab === 'tds' && (
-        <div className="space-y-8">
-          {/* TD Rankings */}
-          <TDScoresWidget />
-          
-          {/* Party Rankings */}
-          <PartyRankingsWidget />
-          
-          {/* Scoring Methodology */}
-          <ScoringMethodology />
+        <div>
+          <PageHeader
+            className="mb-6"
+            title="Performance Rankings"
+            tooltipTitle="How Scoring Works"
+            bullets={[
+              "TDs are scored (0-100) using AI analysis of 11 Irish news sources.",
+              "Scores combine news sentiment, parliamentary activity, constituency work, and public ratings.",
+              "Bias protection reduces partisan skew by 75-85% to ensure fairness.",
+              "Party scores track activity: 60% attendance and 40% questions asked per TD.",
+              "Rankings update daily at 6 AM using Oireachtas records."
+            ]}
+          />
+
+          <nav className="grid grid-cols-2 gap-2 rounded-2xl border border-gray-200 bg-white/80 p-2 shadow-sm dark:border-gray-800 dark:bg-gray-900/60 mb-6">
+            {(['tds', 'parties'] as const).map((tab) => {
+              const isActive = rankingsSubTab === tab;
+              const labels = {
+                tds: 'TDs',
+                parties: 'Parties'
+              };
+
+              return (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setRankingsSubTab(tab)}
+                  className={[
+                    "h-11 w-full rounded-xl px-2 text-xs font-semibold tracking-wide transition",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900",
+                    isActive
+                      ? "bg-emerald-500 text-white shadow"
+                      : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+                  ].join(" ")}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  <span className="block truncate">{labels[tab]}</span>
+                </button>
+              );
+            })}
+          </nav>
+
+          <div className="animate-in fade-in duration-300">
+            {rankingsSubTab === 'tds' && <TDScoresWidget />}
+            {rankingsSubTab === 'parties' && <PartyRankingsWidget />}
+          </div>
         </div>
       )}
 
@@ -232,16 +340,19 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
       {/* Map Tab Content */}
       {activeTab === 'map' && (
         <div>
-          <div className="mb-6">
-            <h2 className="text-3xl font-bold mb-2">Irish Constituencies Map</h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              Interactive map showing all 43 constituencies. Click any area to see TDs, party breakdown, and performance metrics.
-            </p>
-          </div>
+          <PageHeader
+            className="mb-6"
+            title="Irish Constituencies Map"
+            tooltipTitle="About the Map"
+            bullets={[
+              "Explore all 43 constituencies visually.",
+              "Click any area to see TDs, party breakdown, and performance metrics.",
+              "Toggle layers to see Party Dominance, Performance, Gender Balance, and Government control."
+            ]}
+          />
           <InteractiveConstituencyMap />
         </div>
       )}
     </div>
   );
 }
-

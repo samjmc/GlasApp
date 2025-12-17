@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
-import { Link } from "wouter";
 import { useRegion } from "@/hooks/useRegion";
 
 interface TodaysBiggestImpactProps {
@@ -66,84 +65,107 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
   const sentiment = article.sentiment || 'neutral';
 
   return (
-    <Link href={`/article/${article.id}`}>
-      <Card className={`${cardBase} shadow-lg transition hover:shadow-xl cursor-pointer group`}>
-        {/* Title */}
-        <div className="flex flex-col gap-1 mb-3">
-          <h2 className="text-base font-semibold text-slate-900 dark:text-white group-hover:text-emerald-500 transition">
-            {article.title}
-          </h2>
-          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-            <Badge variant="outline" className="text-[10px] uppercase tracking-wide">
-              {new Date(article.publishedDate).toLocaleDateString("en-IE")}
-            </Badge>
-            <Badge variant="outline" className="text-[10px]">
-              📰 {article.source}
-            </Badge>
-            <Badge
-              variant="outline"
-              className={`text-[10px] ${
-                sentiment === "positive"
-                  ? "border-green-300 text-green-600"
-                  : sentiment === "negative"
-                  ? "border-red-300 text-red-600"
-                  : "border-slate-300 text-slate-600"
-              }`}
-            >
-              {sentiment.charAt(0).toUpperCase() + sentiment.slice(1)}
-            </Badge>
-          </div>
+    <a
+      href={article.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block"
+    >
+      <Card className={`${cardBase} relative overflow-hidden shadow-lg transition hover:shadow-xl cursor-pointer group min-h-[256px]`}>
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          {article.imageUrl ? (
+            <img 
+              src={article.imageUrl} 
+              alt="" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800" />
+          )}
+          {/* Overlay - Dark enough for white text (75% black opacity) */}
+          <div className="absolute inset-0 bg-black/75" />
         </div>
 
-        {/* Metadata Row */}
-        <div className="flex flex-wrap items-center gap-3 mb-3 text-xs text-slate-500 dark:text-slate-400">
-          {/* Impact Score */}
-          <div className="flex items-center gap-1">
-            {isPositive ? (
-              <TrendingUp className="w-4 h-4 text-emerald-500" />
-            ) : (
-              <TrendingDown className="w-4 h-4 text-rose-500" />
-            )}
-            <span className={`text-sm font-semibold ${isPositive ? "text-emerald-600" : "text-rose-600"}`}>
-              {isPositive ? "+" : ""}
-              {impactScore}
-            </span>
-            <span>Impact</span>
+        {/* Content Layer */}
+        <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
+          {/* Title */}
+          <div className="flex flex-col gap-1 mb-3">
+            <h2 className="text-base font-semibold text-white group-hover:text-emerald-400 transition drop-shadow-md">
+              {article.title}
+            </h2>
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <Badge variant="outline" className="text-[10px] uppercase tracking-wide text-gray-200 border-white/20 bg-white/10">
+                {new Date(article.publishedDate).toLocaleDateString("en-IE")}
+              </Badge>
+              <Badge variant="outline" className="text-[10px] text-gray-200 border-white/20 bg-white/10">
+                📰 {article.source}
+              </Badge>
+              <Badge
+                variant="outline"
+                className={`text-[10px] ${
+                  sentiment === "positive"
+                    ? "border-green-300/50 text-green-300 bg-green-500/10"
+                    : sentiment === "negative"
+                    ? "border-red-300/50 text-red-300 bg-red-500/10"
+                    : "border-gray-300/50 text-gray-300 bg-gray-500/10"
+                }`}
+              >
+                {sentiment.charAt(0).toUpperCase() + sentiment.slice(1)}
+              </Badge>
+            </div>
           </div>
-          {article.affectedTDs && article.affectedTDs.length > 0 && (
+
+          {/* Metadata Row */}
+          <div className="flex flex-wrap items-center gap-3 mb-3 text-xs">
+            {/* Impact Score */}
             <div className="flex items-center gap-1">
-              <span className="font-semibold text-slate-900 dark:text-white">
-                {article.affectedTDs[0].name}
+              {isPositive ? (
+                <TrendingUp className="w-4 h-4 text-emerald-400" />
+              ) : (
+                <TrendingDown className="w-4 h-4 text-rose-400" />
+              )}
+              <span className={`text-sm font-semibold ${isPositive ? "text-emerald-400" : "text-rose-400"}`}>
+                {isPositive ? "+" : ""}
+                {impactScore}
               </span>
-              {article.affectedTDs[0].impactScore !== undefined && (
-                <span className={`font-semibold ${article.affectedTDs[0].impactScore > 0 ? "text-emerald-600" : "text-rose-600"}`}>
-                  {article.affectedTDs[0].impactScore > 0 ? "+" : ""}
-                  {article.affectedTDs[0].impactScore}
-                </span>
-              )}
+              <span className="text-gray-300">Impact</span>
             </div>
-          )}
-          {!article.affectedTDs && article.politicianName && (
-            <div className="flex items-center gap-1">
-              <span className="font-semibold text-slate-900 dark:text-white">{article.politicianName}</span>
-              {article.scoreChange && (
-                <span className={`font-semibold ${article.scoreChange > 0 ? "text-emerald-600" : "text-rose-600"}`}>
-                  {article.scoreChange > 0 ? "+" : ""}
-                  {article.scoreChange}
+            {article.affectedTDs && article.affectedTDs.length > 0 && (
+              <div className="flex items-center gap-1">
+                <span className="font-semibold text-white">
+                  {article.affectedTDs[0].name}
                 </span>
-              )}
-            </div>
-          )}
-        </div>
+                {article.affectedTDs[0].impactScore !== undefined && (
+                  <span className={`font-semibold ${article.affectedTDs[0].impactScore > 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                    {article.affectedTDs[0].impactScore > 0 ? "+" : ""}
+                    {article.affectedTDs[0].impactScore}
+                  </span>
+                )}
+              </div>
+            )}
+            {!article.affectedTDs && article.politicianName && (
+              <div className="flex items-center gap-1">
+                <span className="font-semibold text-white">{article.politicianName}</span>
+                {article.scoreChange && (
+                  <span className={`font-semibold ${article.scoreChange > 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                    {article.scoreChange > 0 ? "+" : ""}
+                    {article.scoreChange}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
 
         {/* AI Summary - Full Text */}
         {article.aiSummary && (
-          <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-4">
+          <p className="text-sm text-gray-200 drop-shadow-sm">
             {article.aiSummary}
           </p>
         )}
+        </div>
       </Card>
-    </Link>
+    </a>
   );
 }
 

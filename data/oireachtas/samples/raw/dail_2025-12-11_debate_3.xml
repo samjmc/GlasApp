@@ -1,0 +1,702 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/working_group_of_committee_cathaoirligh/2025-12-11/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/working_group_of_committee_cathaoirligh/2025-12-11/debate"/>
+          <FRBRdate date="2025-12-11" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/working_group_of_committee_cathaoirligh"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/working_group_of_committee_cathaoirligh/2025-12-11/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/working_group_of_committee_cathaoirligh/2025-12-11/debate/mul@"/>
+          <FRBRdate date="2025-12-11" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/working_group_of_committee_cathaoirligh/2025-12-11/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/working_group_of_committee_cathaoirligh/2025-12-11/debate/mul@.akn"/>
+          <FRBRdate date="2025-12-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="BarryWard" href="/ie/oireachtas/member/id/Barry-Ward.S.2020-03-30" showAs="Barry Ward"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="CormacDevlin" href="/ie/oireachtas/member/id/Cormac-Devlin.D.2020-02-08" showAs="Cormac Devlin"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="EvanneNiChuilinn" href="/ie/oireachtas/member/id/Evanne-Ní-Chuilinn.S.2025-01-29" showAs="Evanne Ní Chuilinn"/>
+        <TLCPerson eId="GaryGannon" href="/ie/oireachtas/member/id/Gary-Gannon.D.2020-02-08" showAs="Gary Gannon"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnBrady" href="/ie/oireachtas/member/id/John-Brady.D.2016-10-03" showAs="John Brady"/>
+        <TLCPerson eId="JohnLahart" href="/ie/oireachtas/member/id/John-Lahart.D.2016-10-03" showAs="John Lahart"/>
+        <TLCPerson eId="JohnPaulOShea" href="/ie/oireachtas/member/id/John-Paul-O'Shea.D.2024-11-29" showAs="John Paul O'Shea"/>
+        <TLCPerson eId="LouiseOReilly" href="/ie/oireachtas/member/id/Louise-O'Reilly.D.2016-10-03" showAs="Louise O'Reilly"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="MarkDaly" href="/ie/oireachtas/member/id/Mark-Daly.S.2007-07-23" showAs="Mark Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichaelMartin" href="/ie/oireachtas/member/id/Micheál-Martin.D.1989-06-29" showAs="Micheál Martin"/>
+        <TLCPerson eId="MichaelMurphy" href="/ie/oireachtas/member/id/Michael-Murphy.D.2024-11-29" showAs="Michael Murphy"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Defence." href="/ie/oireachtas/role/minister/defence." showAs="Minister for Defence."/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN GASRA OIBRE DE CHATHAOIRLIGH COISTÍ</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Working Group of Committee Cathaoirligh</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-12-11">Déardaoin, 11 Nollaig 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-12-11">Thursday, 11 December 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnBrady">John Brady</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MarkDaly">Mark Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#BrianBrennan">Brian Brennan,*</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#EvanneNiChuilinn">Evanne Ní Chuilinn.*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#MalcolmByrne">Malcolm Byrne</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MichealCarrigy">Micheál Carrigy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#RoseConwayWalsh">Rose Conway-Walsh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#CathalCrowe">Cathal Crowe</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#CormacDevlin">Cormac Devlin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#MaireadFarrell">Mairéad Farrell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#GaryGannon">Gary Gannon</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#JohnLahart">John Lahart</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_16">
+                  <person refersTo="#ErinMcGreehan">Erin McGreehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_17">
+                  <person refersTo="#ConorDMcGuinness">Conor D. McGuinness</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_18">
+                  <person refersTo="#MichaelMurphy">Michael Murphy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_19">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_20">
+                  <person refersTo="#LouiseOReilly">Louise O'Reilly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_21">
+                  <person refersTo="#JohnPaulOShea">John Paul O'Shea</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_22">
+                  <person refersTo="#NaoiseOMuiri">Naoise Ó Muirí</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_23">
+                  <person refersTo="#MauriceQuinlivan">Maurice Quinlivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_24">
+                  <person refersTo="#PadraigRice">Pádraig Rice</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_25">
+                  <person refersTo="#BarryWard">Barry Ward.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputies James O'Connor, Keira Keogh and Alan Kelly, respectively.</summary>
+          <summary eId="sum_5">I láthair / In attendance: Deputy Naoise Ó Cearúil.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#SeanFleming">Teachta / Deputy Sean Fleming sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Engagement with An Taoiseach<recordedTime time="2025-12-11T11:00:00+00:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:00:00+00:00"/></from>
+          <p eId="para_26">I remind all those in attendance to ensure their mobile phones are switched off or on silent mode. Apologies have been received from Deputies Callaghan, Keogh, O'Donoghue, Kelly, Lawlor and O'Connor. In their place, I welcome the Leas-Chathaoirligh, Deputies Dempsey, Ó Cearúil and Brennan and Senator Ní Chuilinn, who are representing their committees. I also welcome the Taoiseach, who will engage with the Working Group of Committee Cathaoirligh. We are delighted to have him here today. He is accompanied by officials from the Department of the Taoiseach, Mr. Dermot Woods, assistant principal, and Mr. Denis Breen, principal officer.</p>
+          <p eId="para_27"> The purpose of today's meeting, in accordance with Standing Orders 130 and 118, is to discuss matters of public policy, particularly those raised through our respective committees. As the Taoiseach knows, committees allow TDs and Senators to engage meaningfully and directly with Departments, public bodies, relevant stakeholders and the wider public. Today's meeting allows us as Cathaoirligh a chance to discuss the committees' work with the Taoiseach. I trust the meeting will be mutually beneficial.</p>
+          <p eId="para_28"> On that note, we will proceed directly to the substantive part of the meeting. I ask the Taoiseach to make his opening statement.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_2" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T11:00:00+00:00"/></from>
+          <p eId="para_29">Gabhaim buíochas leis an gcoiste as ucht an chuiridh a bheith anseo inniu. Tá súil agam go mbeidh an cruinniú seo úsáideach dúinn go léir. Deis atá ann dom freisin ball an choiste a chur ar an eolas faoi cad atá ar siúl ag an Rialtas agus faoi roinnt de na polasaithe atá faoi chaibidil againn. I thank the Cathaoirleach for the invitation to be here today. At the outset, I acknowledge the importance of our committee system. Committees play a valuable role in the parliamentary process, involving detailed scrutiny of legislation, spending and policies, and engaging with members of the public, stakeholders and officials. I thank the Cathaoirligh and Leas-Chathaoirligh for their contribution to this collective effort. I am keen to hear how their work is progressing and to discuss issues of common interest.</p>
+          <p eId="para_30"> I have a few brief introductory remarks to update members on the work of the Government. It does not cover all of the issues but it gives a snapshot of some of the issues we have been dealing with.</p>
+          <p eId="para_31"> I was very glad to welcome President Zelenskyy and the First Lady of Ukraine last week. We all had the honour of hearing his words in person at the joint sitting. Ireland's solidarity with Ukraine is unchanged. I assured the President of Ireland's continuing support. The Government announced an additional €100 million in non-lethal military support, as well as €25 million for Ukraine's energy supplies to help to counter Russia's ongoing attacks on their vital infrastructure.</p>
+          <p eId="para_32"> In the changed European security environment, Ireland clearly needs to invest more in our security and defence capabilities, including against the growing cyber and hybrid threats. Indeed, there is a shared assessment that Europe needs to do more. It is important that Ireland is an active participant in the process while respecting our traditional policy of military neutrality. In the 2026 budget, the Government provided a record €1.5 billion allocation in defence funding and a record €1.7 billion in defence capital investment as part of our revised national development plan. Very significant work has been and is taking place under the Commission on the Defence Forces to improve our military capability: the acquisition of primary radar and subsea sonar capability; additional air assets; counter drone capabilities; and continued work to tackle recruitment and retention issues. In the modern security environment, no state can counter shared challenges alone. We must and will continue to work with partners in protecting our national interests and our shared European interests. That is absolutely key.</p>
+          <p eId="para_33"> President Zelenskyy thanked Ireland for providing homes and protection to Ukrainians when they needed it most and looked forward to the day when Ukrainians can welcome all their friends to their own country in peace. Ireland will always be a place to offer protection to those fleeing war and persecution and will always adopt a firm but fair approach to migration, which is an essential part of maintaining our successful economy. Ireland fully supports the priority afforded to the EU migration agenda. Europe must collectively address the shared challenges of unplanned migration and operate a predictable and flexible system, characterised by responsibility and solidarity, for the reception and management of protection applications. The EU migration and asylum pact represents a necessary improvement on the current protection system and we propose to modernise and strengthen our legislative and policy framework for both international protection and naturalisation. These changes will ensure closer alignment with established practice in other EU member states and also take account of developments in the United Kingdom.</p>
+          <p eId="para_34"> I met with Prime Minister Starmer last week at the British-Irish Council summit in Wales and we noted the progress made on implementing the commitments in the UK-Ireland 2030 programme of strategic co-operation. We look forward to the second UK-Ireland summit, which Ireland will host in spring next year. The publication on 19 September of a joint framework addressing the legacy of the Troubles represents a clear break with the 2023 UK legacy Act and shows a return to partnership by the two Governments on Northern Ireland, working together as co-guarantors of the Good Friday Agreement. We also referenced the publication this week of the entire Kenova report. I commend the authors of that report, which reveals a very sordid situation in Northern Ireland for over 25 years in terms of the use of agents in collusion but also in terms of appalling campaigns of terror against communities in Northern Ireland by paramilitaries. We also got a summary of the Denton report. I regret that the full report is not available. I look forward to the Dáil debating both reports in the new year.</p>
+          <p eId="para_35"> Through the expanded and strengthened shared island initiative, backed by our commitment of €2 billion to the shared island fund out to 2035, the Government is continuing to work to foster reconciliation, mutual respect and growth. About €500 million of that has now been allocated to a range of projects and programmes. There is the dialogue strand and the research strand. The objective is to bring co-operation and relationships across the island of Ireland to a new level. Last month, the Government announced allocations of over €50 million from the shared island fund for ten new projects that are now being taken forward by Ministers.</p>
+          <p eId="para_36"> The delivery of essential infrastructure is a key driver in ensuring our economy's competitiveness and resilience. In the past five years, more than €65 billion has been invested in capital infrastructure projects. Persistent and accelerated progress in delivery across areas such as housing, healthcare, energy, water and wastewater, innovation, and addressing climate change are crucial in maintaining and strengthening our prosperity.</p>
+          <p eId="para_37"> The Government's new accelerating infrastructure action plan will help drive the efficient delivery of infrastructure across Ireland by addressing critical barriers to infrastructure development. We are moving at pace to reform our planning system.</p>
+          <p eId="para_38">This includes enabling local authorities to zone sufficient land for residential development to support the step-up required in delivery. Last month, the Government published a new housing plan, which aims to deliver 300,000 new homes by the end of 2030. The new plan, informed by the work of the Housing Commission, will empower the State, partners and the private sector to play a critical part in delivery. It is underpinned by the largest ever capital investment in the history of the State, with €275 billion in infrastructure over ten years through the revised national development plan.</p>
+          <p eId="para_39"> We will continue to invest in our economy and our people and the services they need. Budget 2026 demonstrates our strong commitment to plan for and secure Ireland's future, while preserving the jobs, stability and prosperity of today. We are fully aware of the competitiveness challenges we face. We are working hard to ensure Ireland remains a trusted, stable and attractive location for businesses in a rapidly changing world. The recent Government action plan on competitiveness and productivity provides a concrete policy to our economic vision, focusing on elements within our domestic sphere of influence.</p>
+          <p eId="para_40"> As a small global economy, Ireland has greatly benefited from international trade and the European Union Single Market as well as cultivating and nurturing strong international relationships. With our market diversification action plan, published in August, we aim to expand these relationships and identify new market opportunities by utilising our membership of the Single Market, eliminating trade barriers and addressing sector-specific needs.</p>
+          <p eId="para_41"> At the recent meeting of COP30, Ireland stood firmly with the European Union in pursuing ambitious new national contributions aligned with keeping global warming below 1.5°C, while championing adaptation and supporting the world's most vulnerable nations. As a country and as a Government, we are serious about meeting our responsibilities in the fight against climate change. The latest Environmental Protection Agency figures show three consecutive years of emissions reductions. Our emissions are now at their lowest level in 35 years despite very significant population and economic growth over that period. However, progress is not fast enough. We simply need to do more, and we have to do it more quickly. That, obviously, relates to the energy issue.</p>
+          <p eId="para_42"> Ireland has faced real pressures on energy costs but the picture is improving. Renewables are now steadily reducing the cost of electricity. The Government is investing at a record scale to help families cut bills for good. Budget 2026 provides €558 million for energy upgrades and solar supports. If we maintain that, it will be the highest ever. That is a very tangible and effective way of reducing household bills eventually for a lot of houses. We have to keep at that, making homes warmer, healthier and cheaper to heat.</p>
+          <p eId="para_43"> I have just come from a meeting of the climate investment clearing house, which I established in this Government. The offshore wind agenda is absolutely critical. The clearing house brings regulators, industry and Departments together to identify the barriers and potential obstacles because it offshore wind is an economic imperative and opportunity on so many fronts. It is essential for energy security and to meet our climate goals. We simply have to deliver the offshore wind agenda. We are working extremely hard to do that. In parallel with that, we have to move very fast to create a strategic emergency gas reserve. I know there have been some critics of that, but that is fundamentally a security imperative. We are looking at how we can accelerate that in the time ahead.</p>
+          <p eId="para_44"> Budget 2026, the first of five budgets for this Government, reflects our level of ambition and commitment. It is the first step on the journey the Government will take to positively impact disabled people's lives and give them and their families support where they need it most. It has a strong focus on disability, including a record €3.8 billion allocation toward specialist disability services; a significant social protection package with increases to core rates and changes to income disregards for carers; a €3 billion investment in special education and the return of therapists to schools, that is, a school therapy service, which is working well; and a health schedule. The newly established disability unit in my Department will bring a renewed focus, urgency and weight to disability issues. In particular, the unit will look to further drive innovation and get things done, give momentum to policy implementation, improve delivery of services, troubleshoot, as appropriate, and encourage strategic thought on future challenges.</p>
+          <p eId="para_45"> In September, the Government announced its new ambitious target to reduce consistent child poverty to 3% by the end of 2030. In the budget, important milestones were achieved. It is the first year of a multi-year programme to achieve our target. We announced a significant increase in targeted income supports for low-income families as well as increased funding for targeted measures to support access and participation in early learning and school-age childcare through the new DEIS plus scheme and the roll-out of the equal start programme.</p>
+          <p eId="para_46"> In under seven months, on 1 July 2026, Ireland will take on the Presidency of the Council of the European Union for the eighth time. I met President Costa on Tuesday to go through the agenda and the critical items around competitiveness, values and the core issues, such as the multi-annual financial framework that we will be expected to bring to a conclusion during our Presidency, which will be critical for so many sectors of European issues but also Irish interests. We are very determined to resource and deliver a successful Presidency as it is an important opportunity for Ireland to lead the European Union's agenda and to shape the future.</p>
+          <p eId="para_47"> Enlargement will also feature during our Presidency. We are anxious to see real concrete progress on enlargement. Work is continuing across the Government to develop our priorities policy programme, taking account of the EU strategic agenda for 2024-2029 and the legislative programme proposed by the European Commission.</p>
+          <p eId="para_48"> I look forward to hearing members' views on these and any other matters they wish to raise. Go raibh maith agaibh.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:10:00+00:00"/></from>
+          <p eId="para_49">I thank the Taoiseach for his opening statement and the broad range of issues he covered.</p>
+          <p eId="para_50"> Before we move on to the next part of the meeting, I remind members of the long-standing parliamentary practice to the effect they should not comment on, criticise or make charges against a person outside the Houses or an official either by name or in such a way as to make him or her identifiable.</p>
+          <p eId="para_51"> I will give a recap of the procedures we have agreed. We will take questions from Cathaoirligh in groups of three. Cathaoirligh will be called upon in order of their appointment under the D’Hondt system. We will then hear from the Cathaoirligh of the non-D’Hondt committees. A time limit of two minutes per Cathaoirleach will apply. That is the time available because there are a lot of Members here and the Taoiseach has to leave at 12.50 p.m. at the latest. In the event that somebody is not present, I will move on to the next person on the list and if those who are absent come in, we will try to accommodate them later. Deputy Neville, Leas-Chathaoirleach of my committee, is in the first group of Cathaoirligh. He will be followed by Deputy Carrigy, Cathaoirleach of the Joint Committee on Housing, Local Government and Heritage, and Deputy Farrell, Cathaoirleach of the Joint Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach. They have two minutes each in that sequence.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_4">
+          <from>Deputy Joe Neville<recordedTime time="2025-12-11T11:10:00+00:00"/></from>
+          <p eId="para_52">I thank the Taoiseach very much for coming this morning. I am the Leas-Chathaoirleach of the Committee on Infrastructure and National Development Plan Delivery, a new committee that is dealing with probably the single biggest challenge this Government faces. Also, because we do not necessarily deal with legislation, we are trying to figure out exactly where the committee works well and works best. We will see that over time.</p>
+          <p eId="para_53"> We have had a number of speakers and groups appear before the committee. Uisce Éireann highlighted that the greater Dublin drainage system is a key issue. Will the Government provide all possible supports to ensure the project is completed in a timely manner?</p>
+          <p eId="para_54"> Officials from the Department of Transport came in, including the Secretary General. The Luas failed yesterday and it is still not working. We were told last week that the M50 is full to capacity. How is it planned to make Dublin even stronger in that area? A couple of weeks ago, DART+ South West was on the agenda. It is now off the agenda. What we need is to have continuity and plans in place, which is not necessarily the case. We would like to see that done given the situation we are in and the level of capital investment that seems to be in place.</p>
+          <p eId="para_55"> On housing, we had large developers in. One of the issues they raised was the lack of zoning in large rural towns such as Clonmel and Tullamore. That is on the rural side. There is also the cost associated with construction and the potential for profit in the likes of Longford and Mullingar. There is a need for infrastructure in the commuter areas. We also need to tackle the electricity side of things, for example, as regards supply, the grid and judicial reviews. Then there is the issue of multi-annual funding for large-scale projects.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:10:00+00:00"/></from>
+          <p eId="para_56">I thank the Deputy. I move to Deputy Carrigy.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_6">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-12-11T11:10:00+00:00"/></from>
+          <p eId="para_57">I thank the Taoiseach.</p>
+          <p eId="para_58">As a committee, we welcome the recent announcement of the housing plan, the accelerated infrastructure task force report and the aim to deliver 300,000 homes in Ireland by 2030. The reality is that is going to be a challenge due to numerous issues such as planning or the issue of judicial reviews. We currently have judicial reviews in place with regard to the proposed changes to planning regulations for apartments to try and unlock the 30,000 planning permissions for apartments which have not yet been utilised. There are other issues, such as the delay in opening up lands on the way to the airport for the metro north. The Shannon to Dublin water infrastructure project has been held up and has not been delivered. When we had Irish Water before the committee, its representatives told us that on certain days recently it did not produce enough water to supply the current number of homes in Dublin. How are we going to meet our targets to supply new homes if that infrastructure is not put in place? Is it time to do what we did when it came to the bypass for Adare? We put in significant investment to make sure the infrastructure is going to be there in time for the Ryder Cup. We need to bypass some of the legal loopholes that are holding us up when it comes to putting in the infrastructure we need to hit our targets.</p>
+          <p eId="para_59"> There are a number of Bills, such as the apartment and duplex defects remediation Bill and the residential tenancies Bill, on which we are carrying out pre-legislative scrutiny and putting in a considerable amount of work. I ask that those recommendations be taken on board and that we do not leave any of the apartment owners behind or out of pocket. We have to make sure we give them the full support they deserve.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_7">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_60">I will update the Taoiseach on some of the work done by the Joint Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach. In the summer months, we focused on the facilitation of Israeli bonds by the Central Bank and published a report to that effect in early August in anticipation of the review. We have also subsequently dealt with the Central Bank in relation to that.</p>
+          <p eId="para_61"> We also focused on the Security Action for Europe, SAFE, legislation and regulation going through the EU in terms of the €800 billion loans. We are hoping to publish that report, to be entitled Prioritisation of Defence Spending in the EU, next week. We have also worked through numerous pieces of legislation. We obviously had the Finance Bill 2025. Each year, the finance Bill is the largest Bill that goes through the Dáil every year and it goes through our committee.</p>
+          <p eId="para_62"> We will also be looking at the right to be forgotten Bill as soon as it is ready. We hoped to have it before Christmas, but I would say it will be set for after Christmas, at this stage. We have also looked at digital banks. We had the Central Bank and the Banking and Payments Federation Ireland in to discuss the issue of online safety with online banking, digital banks and other banks to try to create awareness in relation to it. Digital banks will also be attending in January to discuss this issue.</p>
+          <p eId="para_63"> Our committee is the committee the Taoiseach comes before. The Revised Estimates will have to be done before the end of February. We look forward to having the Taoiseach in to discuss his own Votes, Votes 1 to 6. How many times does the Taoiseach expect to come before our committee next year? Can we work together collaboratively to ensure he can come in when it is needed? Can we ensure we do the planning at an early stage to make sure it is workable for everybody?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_64">The Taoiseach has four minutes.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_9" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_65">In response to Deputy Neville, mediation is taking place on the Dublin drainage system. The bottom line is that all supports are being given from an investment perspective. Water, grid, public transport and road transport are absolutely essential, in my view. We have huge population growth. Our infrastructure is historically behind, but those are the imperatives. All possible supports will be given. We are looking at and going to produce a critical infrastructure Bill to deal with issues like the Dublin drainage scheme. It is absolutely critical for the people of Dublin to have water.</p>
+          <p eId="para_66"> DART+ South West is not off the agenda. It is on the agenda. I have discussed it with the Minister for public expenditure and the Minister, Deputy Darragh O'Brien. We are conscious of its importance. Deputy Shane Moynihan has been very vibrant in terms of advocating on this, as have others. I want to make it clear that it is not off the agenda. We understand that significant zoning is part and parcel of that. The council needs to go ahead and do the zoning given the housing needs in the area.</p>
+          <p eId="para_67"> In terms of rural towns infrastructure, Uisce Éireann is now working with developers in terms of smaller housing projects in rural areas. The provision of wastewater treatment plants will be developer led to enable housing projects to get off the ground. Uisce Éireann will specify the standards and oversee it afterwards. That will unblock a lot of developments.</p>
+          <p eId="para_68"> We are investing in the Luas and public transport under the national development plan.</p>
+          <p eId="para_69"> On the issue of judicial reviews, which Deputy Carrigy also raised, we have gone out to public consultation on a new cost regime for judicial reviews, which will be far more realistic and sensible in terms of the State's exposure, but also in terms of having a framework that makes sense. A public consultation on the <i>locus standi</i> provisions in the planning Act in respect of judicial review has also been commenced. The Minister for justice will bring forward further reforms in respect of judicial reviews, whereby the balance lies in the public interest as opposed to an individual's interest.</p>
+          <p eId="para_70"> Deputy Carrigy raised similar issues in terms of housing and judicial reviews. I welcome that there is increased mediation taking place in respect of some of these issues. They might unblock some of the challenges. We have substantially resourced An Coimisiún Pleanála. Timelines are improving in terms of outcomes within the statutory time guidelines. The Shannon to Dublin water programme is absolutely essential for the midlands and for the east coast. There are no alternatives in terms of sufficiency of water supply into the future. Again, that is a critical piece of infrastructure. One of the challenges facing us as an Oireachtas is that all Members will come under pressure in their constituencies in respect of some items that have been identified nationally from a macro perspective as essential for the country. Whether Members are in government or in opposition, the reconciliation of all of that is proving challenging on the energy, infrastructure and economic fronts. The bypass of Adare for the Ryder Cup is a good example, but, of course, it had gone through all the planning processes. During Brexit, significant infrastructural work had to be carried out on the ports, and we got it done. Dublin Port, in particular, had to be done quickly. People did what was necessary to enable that to happen. There was an emergency situation-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_71">The Taoiseach's four minutes is up. Will he quickly respond to the issues raised by Deputy Farrell?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_11" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_72">I am sorry. Was it four minutes? First, I appreciate the workload of the committee. Deputy Farrell outlined all its reports. I look forward to the report on the SAFE legislation. It is important. The finance Bill is the largest one. I did the Estimates. I did not do the Supplementary Estimates as I was not in a position to get there.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_12">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_73">As a precedent, will the Taoiseach outline the dates for next year?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_13" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_74">I will outline them. I will go by precedent, but I will try to be facilitative and co-operative as well. I think there was a €3 million Supplementary Estimate for my Department, which I was not in a position to do. We did not think it was the case that previously, a Taoiseach would have turned up for a very small Supplementary Estimate. We will work with the committee in terms of dates and so on. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_14">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_75">I will move on to the next group of Chairs, namely, Deputy Devlin, who deals with the committee on the Good Friday Agreement, Deputy Barry Ward, who deals with the Committee on European Affairs - Deputy Carthy is not here and we will come back to him - and then we will move on to Deputy Lahart, Chair of the foreign affairs and trade committee, as part of this group of three.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_15">
+          <from>Deputy Cormac Devlin<recordedTime time="2025-12-11T11:20:00+00:00"/></from>
+          <p eId="para_76">I thank the Taoiseach for his opening remarks and his mention of the North-South update. The theme of health has featured heavily in our committee since its establishment in May. An appearance yesterday by the Northern Ireland Minister of Health, Mr. Mike Nesbitt MLA, proved very fruitful and there was good, strong engagement. We also had discussions in relation to North-South co-operation and the need to prioritise high-potential projects in the civic engagement and public health spaces, in particular. In health, we focused mainly on cancer care and paediatric cardiology.</p>
+          <p eId="para_77"> The committee also had a very positive engagement on the shared island theme with the Taoiseach's Department in September, which he referred to in his opening remarks. The committee heard of its benefits from a range of stakeholders. In fairness, in nearly every engagement the committee has had, people have referenced potential funding from the shared island initiative.</p>
+          <p eId="para_78">Our committee alone could spend that €2 billion but it has proved exceptionally beneficial for various groups in research and particularly on the infrastructure piece. We are exploring the possibility an all-island league for soccer, both men and women, and it is hoped that will be looked upon favourably if an application comes in to the shared island initiative. Also the committee has received significant support from the Department of Foreign Affairs and Trade, especially on civic engagement, and in relation to the developments on legacy. Members of the Good Friday Agreement committee met the Northern Ireland Affairs committee on 1 December. This was an important opportunity to discuss latter's report on legacy. Members have also taken the opportunity to engage with the British-Irish Parliamentary Association and the North-South Inter-Parliamentary Association. In January, the committee hopes to visit Belfast and engage on regular visits to groups in other parts of Northern Ireland as well as visiting London under strand 3 of the Good Friday Agreement committee.</p>
+        </speech>
+        <speech by="#BarryWard" eId="spk_16">
+          <from>Deputy Barry Ward<recordedTime time="2025-12-11T11:30:00+00:00"/></from>
+          <p eId="para_79">Gabhaim buíochas leis an Taoiseach as a bheith linn. Glacamid i dtús báire leis an méid a duirt sé faoi tábhacht choistí an Oireachtas. As important as the committees are in the pre-legisaltive scrutiny process, there have been a number of instances in the last number of years where committees have made specific recommendations on heads of Bills that have subsequently been completely ignored by the Departments. As a result, the legislation that has come before the Oireachtas has completely discounted what has been recommended by the committee. I do not know whether the Taoiseach feels he can comment on that. If the committees and the pre-legislative scrutiny are important, to what extent are Ministers and Departments bound to consider what they say and actually implement that in the legislation that goes before the Oireachtas?</p>
+          <p eId="para_80"> In relation to my own committee on European affairs, obviously we are focusing in particular on the Presidency that is coming up next year. Will the Taoiseach give us an update on the preparations for the themes and the priorities of the Irish Presidency and the resourcing and logistical preparations, including the security implications of the Presidency?</p>
+          <p eId="para_81"> Another very important issue in our work programme is the EU enlargement agenda, which we feel very strongly is moving too slowly. It is now more than a decade since we last had an accession, in 2013. Accession is good for all of us, particularly for the smaller members, like Ireland. We feel there is a danger that if there is no feeling of progress, the anti-EU elements within the accession countries are given a stick with which to beat those who are pro-Europe. There is a real opportunity for Ireland in the course of the Presidency to advance the enlargement agenda. We have asked the EU Commissioner for European Enlargement, Marta Kos, to come to us to speak to us about that as well.</p>
+          <p eId="para_82"> In relation to the economic side, obviously the multi-annual financial framework will be a big focus over the coming year. The EU Commissioner for Budget, Anti-Fraud and Public Administration, Piotr Serafin, is due to be with us in the new year as well. There is a real opportunity for Ireland to advance, and perhaps the Taoiseach would comment on Ireland's priorities in relation to the MFF negotiations during our Presidency.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_17">
+          <from>Deputy John Lahart<recordedTime time="2025-12-11T11:30:00+00:00"/></from>
+          <p eId="para_83">Cuirim fíorchinn fáilte roimh an Taoiseach anseo inniu. I want to update him on some of work we have done across the four pillars of the Committee on Foreign Affairs and Trade, namely, Anglo-Irish and North American; international, which is everything from Sudan to Ukraine and in between; development aid and development assistance; and the trade piece. The committee has just returned from Canada and the Taoiseach has been there himself on a trade visit, as has the Minister, Deputy Burke. Canada is very much open for business with exciting opportunities there. The Taoiseach's visit went down particularly well there and we are privileged to have a really dynamic ambassador on the ground there also and some very interesting initiatives are coming up there.</p>
+          <p eId="para_84"> In relation to a number of the issues that we covered, the impact of the loss of USAID in terms of the development agenda internationally has exercised the committee. We waived pre-legislative scrutiny on CETA, and I know that is before Government and will be coming back before the committee in January or February. We produced a report on the occupied territories Bill and made certain recommendations in relation to it. That is with Government. We had the EU Commissioner for Trade and Economic Security, Maroš Šefčovič, here. We were also dealing with the EU-Morocco trade piece.</p>
+          <p eId="para_85"> In terms of the EU Presidency, some of the things that we would like the Taoiseach to bear in mind include the sustainability piece, the climate action piece - they are issues that are brought to us - and the development aid piece.</p>
+          <p eId="para_86"> The final bit is in relation to the Middle East, where there is a fragile peace process, as the Taoiseach is more than aware. Ireland has some expertise in that peace space, from decommissioning to the drafting of complex peace agreements and achieving consensus. As a committee we think that is a space we would like to move into early in the new year. We would like the Taoiseach's response to that, especially in relation to Ireland reputation in that part of the world. </p>
+        </speech>
+        <speech by="#MichaelMartin" as="#Minister_for_Defence." eId="spk_18">
+          <from>Minister for Defence. (Deputy Micheál Martin)<recordedTime time="2025-12-11T11:30:00+00:00"/></from>
+          <p eId="para_87">I thank all the Deputies. To Deputy Devlin, first of all, the health area has been quite a significant arena for good North-South co-operation, as he mentioned, for paediatric cardiac surgery in particular. There is an all-Ireland approach to that, and this matters in terms of outcomes and quality of outcomes. The cancer care and cardiac care centres at Altnagelvin Area Hospital provide real opportunities for people in the Republic living within 90 minutes of the centre, which I visited some time ago.</p>
+          <p eId="para_88"> The shared island initiative is proving to be very beneficial and effective, not just in the iconic projects around Narrow Water Bridge and the Ulster Canal but also very good tourism projects that are developing. When completed, these will make Carlingford and the Mourne Mountains area a real destination point. It will enhance the economy and the socialisation of people coming together and engaging. The economy will improve significantly in that region.</p>
+          <p eId="para_89"> On the legacy, for the British Government and this Government, it has been a step change in the nature of the relationship, particularly in terms of the heads-up approach to the legislation and the framework. This is a significant improvement by any yardstick on the previous experience and on the previous legislation. I welcome what the committee is doing in its North-South Inter-Parliamentary Association engagement and its British-Irish Parliamentary Association engagement, which are extremely important.</p>
+          <p eId="para_90"> I would be very interested in an all-Ireland soccer league or tournament because I think it is one sport that has potential for reconciliation and bringing people together again. Rugby has done this very well and has been very effective. It is an area that we certainly would be positive about.</p>
+          <p eId="para_91"> Deputy Ward's points are an-thábachtach ar fad. The Executive is not bound by any recommendations. I can say that as a Minister I always accepted amendments to any legislation that were sensible and intelligent. Every Minister should have an open view and should accept amendments at all stages of the legislative process and should reflect on points that are made and should not offer knee-jerk negativity if good points are made. That is why committees are there, to see if there are agendas. It cuts both ways as there has to be a realistic assessment on the committee side as well as to what is possible. Sometimes things can be properly presented because they are good but it may not be legislatively possible, but it is to and fro. Yes, in short, we should be embracing the idea of amendments. I never brought a Bill through the House that did not change from the time it was initiated.</p>
+          <p eId="para_92"> On the enlargement agenda, we are going to affirm competitiveness and the values of democracy that distinguish Europe. We would like to close all chapters on Montenegro and Ukraine. We think we need a concrete example of where enlargement can happen. It will fall on us to drive the Ukrainian membership agenda. Hungary has proved difficult up to now. The multi-annual financial framework will fall during our Presidency in terms of concluding parts of that.</p>
+          <p eId="para_93"> The Common Agricultural Policy, CAP, will be key. It is nowhere near where it needs to be. It is 80% of what it was the last time. That is very problematic in terms of real money into farmers' pockets to sustain farming.</p>
+          <p eId="para_94"> Horizon Europe is critical for the competitiveness in the future in Europe. We have to be very realistic about the size of the budget. In my view, it is not large enough to accommodate all the various interests. Defence will be part of the next multi-annual financial framework. I favour a GNI approach, which is transparent. We are net contributors.</p>
+          <p eId="para_95"> On foreign affairs, I could not agree more with Deputy Lahart. The Canadian Prime Minister has made it very clear that he is pivoting to Europe strategically and Europe needs to engage. Canada is part of Security Action for Europe, SAFE, for example. We are looking forward to further engagement on the trade front with Canada and the ratification of CETA.</p>
+          <p eId="para_96"> We appreciate the work the committee has done on the occupied territories Bill, which is under Government consideration.</p>
+          <p eId="para_97"> I hear what the Deputy has to say about the Presidency and the importance of the sustainability piece, which will be a core part. </p>
+          <p eId="para_98"> On the Middle East we need to pivot to considering what contribution we can make to the peace process. People are interested in the Irish experience of conflict resolution.</p>
+          <p eId="para_99">We are working with partners on that agenda already, determining how we can contribute given our experience. I would welcome the committee's engagement on that given our experience on this island. That is something we would like to return to the committee on.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_19">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-12-11T11:40:00+00:00"/></from>
+          <p eId="para_100">The Taoiseach is welcome and I thank him for his engagement. We are doing a lot of good work on the Joint Committee on Education and Youth. I acknowledge the presence of our fantastic clerk, Tara, today with her team. They are doing great work. A huge body of work has been undertaken by the committee so far but I will home in on one area in my questioning.</p>
+          <p eId="para_101"> Evidential research shows there have been exponential increases in anxiety, depression and other mental health issues among students, especially since the Covid pandemic. The education and youth committee had a very beneficial meeting on mental health supports in primary and post-primary schools with departmental officials, including some NEPS psychologists. Feedback we received from teachers, parents and students regarding the pilot counselling programme in primary schools has been very positive. The programme is unique in that the counsellors work with students in the school. Their work is complemented by the well-being education practitioners who work with individual students and educate all students about positive mental health through understanding and how to build resilience. It encourages a whole-school culture that supports well-being and negates bullying among the school community. Does the Taoiseach agree there is merit to rolling out the programme nationwide to all primary and post-primary schools? Post-primary students need even greater mental health supports. The current Neart programme at second level is a positive step but is being delivered virtually in classrooms. This is not ideal and it cannot offer the breadth and depth of supports needed by students.</p>
+          <p eId="para_102"> Does the Taoiseach agree the absence of formal links between schools and CAMHS is a serious problem and a barrier to providing students with holistic mental health support? Will he consider establishing these links on a pilot basis so principals and teachers can work with CAMHS to help students and parents in need in a more structured way?</p>
+        </speech>
+        <speech by="#JohnBrady" eId="spk_20">
+          <from>Deputy John Brady<recordedTime time="2025-12-11T11:40:00+00:00"/></from>
+          <p eId="para_103">The public is outraged by the countless recent examples of wasteful spending of taxpayers' money, whether on financial scandals within RTÉ, runaway ICT costs, security huts or bike shelters, all of which have been examined by the Committee of Public Accounts. The list goes on and on. These individual incidents have highlighted a general need to strengthen how the State oversees the spending of public funds. Our statutory framework for the Comptroller and Auditor General is outdated and inhibits the ability of the public accounts committee to play its role as watchdog on public expenditure. The 2020 independent peer review made it clear that limits on the C and AG's powers and independence must be removed. We need to operate according to a genuine follow-the-money principle, removing the 50% threshold that blocks inspections of many Government-funded bodies by the C and AG and the public accounts committee. All bodies in receipt of public funds, including local authorities and commercial semi-State entities, should fall under the remit of the C and AG. The Committee of Public Accounts must also have an expanded and clearer role and be empowered to act quickly on C and AG findings, conduct follow-up inquiries and hold any publicly funded body to account. Oversight should be proactive and not reactive.</p>
+          <p eId="para_104"> I have three questions. First, will the Government commit to the suite of reforms recommended in the 2020 independent peer review for the C and AG? Second, will it honour its commitment to bring RTÉ under the remit of the C and AG? Third, will it commit to expanding the remit of the C and AG and the public accounts committee to enable oversight of all publicly funded bodies?</p>
+        </speech>
+        <speech by="#MichaelMurphy" eId="spk_21">
+          <from>Deputy Michael Murphy<recordedTime time="2025-12-11T11:40:00+00:00"/></from>
+          <p eId="para_105">As Chair of the Committee on Transport, I will focus on road safety. Notwithstanding the ambition in our road safety strategy to reduce road deaths and serious injuries by 50% by 2030, the reality on the ground is sadly different, with 170 precious lives lost on our roads so far this year. We have lost 30 precious lives linked to motorcycle accidents, the highest level in 20 years. You have to go back to 2007 to see similar numbers. We do not have an NCT-type test for motorcycles and this is something the committee will be looking at.</p>
+          <p eId="para_106"> I have three asks. First is that the Taoiseach engage with the Minister and the Garda Commissioner on numbers in our road policing units. The former Commissioner, Drew Harris, appeared before the committee in May 2024 and committed to 150 additional gardaí in our road policing units by the end of this year. Unfortunately, Assistant Commissioner Gunne confirmed in October that only 68 of these positions have been filled, leaving the number 82 short of 150. Bear in mind that current numbers in our road policing units stand at 693 while in 2009, they stood at 1,000.</p>
+          <p eId="para_107"> My second ask is for the prioritisation in 2026 of the passage and commencement of the national vehicle and driver file Bill 2025. This enables the sharing of data between the RSA, An Garda Síochána and local authorities.</p>
+          <p eId="para_108"> Finally, there is something the Taoiseach might raise again with the Minister and the Commissioner. It may surprise him to know that over the past three years 23,000 individuals have failed to surrender their licence after disqualification. Only 4% presented their licence in the courts. The RSA has a system whereby you send your licence after you are disqualified to a PO box in Cork and only 6% did this.</p>
+          <p eId="para_109"> As transport Chair, I acknowledge the work of the road safety advocacy group, PARC, which the committee works closely with.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_22" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T11:40:00+00:00"/></from>
+          <p eId="para_110">First was Deputy Crowe. I thank him for his remarks. There is real concern, and we are picking this up from talking to teachers, about positive mental health, mental well-being, anxiety and depression issues among children and young people. In any schools I visit, there is a strong focus on the various programmes to create a culture of well-being, mutual respect and people looking out for one another. I would be in favour of the pilot counselling programme being rolled out nationally. The well-being programme is effective and impactful. I will talk to the Minister on the plans for the Neart programme.</p>
+          <p eId="para_111"> The Deputy also raised the interesting issue of linkages between schools and CAMHS. There would be clinical issues there. There is the GP issue in terms of primary care being the referral mode but an exchange between the two would be useful. NEPS certainly has a role. I established that body when I was Minister for Education. The idea was to introduce psychology to schooling in a positive, proactive way, not a reactive way, and to spot things much earlier in the life journey of a child through learning. It is particularly important to always nurture self-esteem and self-respect in the child. These are good programmes which we need to resource more into the future.</p>
+          <p eId="para_112"> I could not agree more with Deputy Brady that we need to be very strong on spending, value for money and making sure we do not have overruns. Many of our projects do not overrun. Many are on time. Many Iarnród Éireann projects have been very effective. We need to, collectively and honestly as an Oireachtas, examine ourselves. One of the huge expenditure areas for the past two decades is the methodology we use for inquiries. They never end on time, in terms of the prescribed timelines that people allocate. We are talking about millions and millions. Is that the most effective way to allocate resources or to get the answers that undoubtedly are needed?</p>
+          <p eId="para_113">We never question ourselves in relation to that. Whether in government or in opposition, people will instinctively call for a public inquiry on most issues, notwithstanding the length of time it will take and the costs involved. I fully accept the need in government and across the systems for ensuring value for money but do we as individual representatives in the Oireachtas, every single time we call for this, that or the other actually it check out? The whole idea of the Parliamentary Budget Office was to assist Deputies in costing but it has become different. To me, its remit has broadened. The original concept in Dáil reform in 2016 was that it would cost proposals and give a greater degree of realism in terms of legislation that is brought before the House asking for something, pushing an agenda or so on. There are costs behind everything we do. I welcome the focus on this but I would broaden it to look at ourselves in terms of what we all want, promote and so on, for a bit of discipline.</p>
+          <p eId="para_114"> I agree that RTÉ will come under the remit. We will look positively on the suite of reforms but I reserve the right to examine it in greater detail. There are commitments to expand the remit. We have to be careful of the degree. Are we going to bring in every sports club? We need to think through all of this. Sometimes, we go overboard. Some days, we have committees in here talking about overregulation and the next week the committees will want more regulation. We had the issue with Rehab in the past, when the Oireachtas did not cover itself in glory. The Oireachtas has not allowed itself to be open to accountability on this issue and how it happened, to be frank. We have to make sure we have enough bandwidth to do what we want to do in terms of the expansion. There are clear areas where there should be expansion in terms of the remit and there are also the issues of the capacity to do it and that the resources are there to do it.</p>
+          <p eId="para_115"> To respond to Deputy Murphy, the biggest move in road safety I experienced as a public representative was when Noel Dempsey, the then Minister for road safety, and the late Gay Byrne established the Road Safety Authority. They were unpopular within the Oireachtas because they proposed a whole range of legislative measures, which came through, on alcohol. I remember those fairly testy times and the reception they got but it worked in terms of the reduced number of deaths. This has been eroded somewhat, particularly post Covid. I do not have the full understanding of it. I believe we need to aggressively go at the road safety issue again, given the increase. We saw recently the report on the paediatric unit, which is very worrying in terms of e-scooters. The level of injuries among children and young people is shocking. We need to re-evaluate this. These are life-limiting injuries, according to the report, and what they are receiving in the hospitals demands reflection from us and, may I suggest, from the committee as well. We need to do more. There is no excuse. It is an unacceptable situation. We had 23,000 individuals failing to surrender their licences when the courts required it. It is extraordinary. The system clearly is not working and it has to change.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T11:50:00+00:00"/></from>
+          <p eId="para_116">We will move on to the next group and the first speaker is Deputy Rice, Chair of the Committee on Health. We will also call Senator Ní Chuilinn, who is Vice Chair of the Committee on Arts, Media, Communications, Culture and Sport committee, and Deputy Maurice Quinlivan, the Chair of the Committee on Disability Matters, will be after that. Each member has two minutes.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_24">
+          <from>Deputy Pádraig Rice<recordedTime time="2025-12-11T11:50:00+00:00"/></from>
+          <p eId="para_117">Many of the issues discussed this morning will persist until we have an Oireachtas that functions better. I have concerns about the functioning of the Oireachtas, as do others. At our last meeting of committee Chairs, we received a letter signed by 113 civil society organisations highlighting their concerns about the functioning of the Oireachtas. They highlighted that opportunities to contribute remained opaque, inconsistent and difficult to track in a predictable way. They highlighted that we were ranked fourth lowest out of 38 OECD countries in terms of engagement in developing primary legislation. They highlighted the very late notice given of upcoming Bills. I looked at the Oireachtas website and next week's schedule has not yet been published, so it is very hard for people to engage with it. This leads to a lack of accountability and transparency. State bodies are hard to hold to account when Ministers can, at times, be evasive, deflect responsibility and blame others. At times, this culture comes from the top. This is linked to issues with bureaucracy and a lack of productivity. We need to look at ourselves. We often call for productivity from others but we need to look internally. As a new TD, my assessment is that the Oireachtas is often dysfunctional. Take last night, when we sat until 1 a.m. as a matter of normal course with non-emergency business. I wonder what happened to a family-friendly Parliament. As the leader of the largest party and as Taoiseach, the Taoiseach has a role in setting the tone and leading the way as an example in terms of political reform. Political reform has fallen off the agenda. We need better engagement with civil society organisations and we need to enhance how we do our work here.</p>
+          <p eId="para_118"> I welcome the Taoiseach's comments that Ministers will accept amendments. My experience is that the Minister for Health has not accepted a single amendment tabled by Opposition groups so far, so I would welcome a change of tone on that front. Similarly, all Private Members' Bills are dismissed and rejected by the Government and not engaged with in a meaningful way. I welcome the change on this front.</p>
+        </speech>
+        <speech by="#EvanneNiChuilinn" eId="spk_25">
+          <from>Senator Evanne Ní Chuilinn<recordedTime time="2025-12-11T11:50:00+00:00"/></from>
+          <p eId="para_119">I know the Taoiseach is an avid sports fan and has appreciated our sports stars over the years. There are a few issues I want to bring to the Taoiseach's attention from the Committee on arts, sports, culture and media. I want to raise the issue of a potential tax rebate for some of our Olympic and Paralympic athletes. There is a rebate in place for sports people whereby, on retirement, they can reclaim 40% of their earnings from wages and prize money. This is great for rugby players who have good wages, and maybe for golfers and jockeys who have good prize money, but our Paralympic and Olympic athletes do not earn a wage and they do not win a lot of prize money. Perhaps we could potentially look at a similar rebate, perhaps at a lower rate, for the money they earn from sponsorship. In a lot of cases, this is the bulk of their earnings and they have to pay a huge amount of tax on it. The maximum amount of funding that carded athletes get is €40,000. We are not looking at an awful lot of money to make a living.</p>
+          <p eId="para_120"> The committee also feels very strongly about arts capital funding. One of the recommendations in the report on the development of local and community arts, published during the Thirty-third Dáil, was that the Department would develop an arts capital and equipment programme for investment in local and community arts, with a similar scale and structure as the sports capital grant. On 20 May, the Minister, Deputy O'Donovan, outlined in reply to parliamentary questions that the programme for Government contained a commitment to the arts capital programme. The sports capital programme, as the Taoiseach knows, is brilliant and it is working really well. Our committee would argue it needs to be translated to arts capital funding as well. The Minister, Deputy O'Donovan, detailed that €6 million was allocated for a new programme of capital funding for arts and cultural organisations throughout the country. The maximum grant available is €50,000 and this is not enough when it is considered that some towns do not have dedicated arts centre. Could we get a timeline for the scheme and when it will be deemed that it needs to be expanded?</p>
+          <p eId="para_121"> With regard to the national repository in Swords, the National Museum is in the process of consolidating the majority of its collections in the new facility in Swords, in north County Dublin. The lease on the principal storage space is in place until 2036. Could we be advised on the long-term plan for the storage of Ireland's national treasures?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_26">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-12-11T11:50:00+00:00"/></from>
+          <p eId="para_122">The ongoing crisis in the assessments of need for children is worsening, with more than 18,000 children waiting for an assessment. In my home place of Limerick, not one child has had an assessment completed within the statutory six months. This is zero out of 259 children. The recent announcement by the Minister for children involving the removal of the requirement for a professional assessment of need report for children to enter special classes has been described by the INTO, the union of the very people who teach and care for these children every single day, as a profound breach of trust. They say they were not consulted or notified of this intended change. They also said teachers were already under intense strain and could not be expected to absorb further major systems change, particularly when those were announced through the media rather than through formal channels of communication. With a formal diagnosis not being needed, will the Taoiseach clarify who will carry out these educational assessments? Will it be the teachers themselves? If so, this is a huge responsibility for those who are not qualified psychologists.</p>
+          <p eId="para_123"> The Taoiseach is very well aware that Cara Darmody is about to finish her second protest outside the Dáil. Her frustration is that the promised recruitment campaign was not advertised or promoted properly. Cara described it as being like the third secret of Fatima. The recruitment call did not work and there is a real need for a new one nationally that is promoted better. If the new campaign is not successful, we need to look at expanding it internationally. Does the Taoiseach agree?</p>
+          <p eId="para_124"> I also want to raise with the Taoiseach the work that has been done by Corpus Christi Primary School in Moyross, Limerick. The school has taken great strides over the past decade and it has become one of the finest schools in the city. It, along with other stakeholders, established The Sky Is The Limit programme.</p>
+        </speech>
+        <summary eId="sum_7">This whole-community well-being initiative focused on the school and local family centre has been hugely successful in assisting children and their parents who have suffered trauma and those who live with the daily challenges of poverty and other issues. It is also a proactive initiative of the school and community and has proved extremely successful for them. The committee I chair is finalising a report on inclusive education and much of it aligns with the ethos of the Moyross school's the sky is the limit programme. Acknowledging its success - the Taoiseach might not be aware of it - would the Taoiseach consider rolling it out nationally?</summary>
+        <speech by="#MichaelMartin" eId="spk_27" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_125">We have a strong civil society culture, which is nurtured, supported and funded by the Government in many cases. In contrast with many countries in Europe and internationally, we are one of the more supportive environments for participation in civil society. I do not accept the criticisms Deputy Rice articulated on behalf of some in respect of the Oireachtas, because I am a bit fundamental about the role of elected representatives. In previous Parliaments, there have been criticisms of encroachment on the fundamental role of elected representatives in policy formation and development. The balance has to be right. As individuals, we all engage with civil society and its organisations on an ongoing basis, but the balance has to be that legislation cannot emanate from civil society and perhaps the permanent public service, with all respect to the people on both sides of me. This is an issue. While always facilitating and nurturing civil society, we have to protect the fundamentals of parliamentary democracy in our electoral system.</p>
+          <p eId="para_126"> In the past, I witnessed huge opposition when we developed expansive programmes where elected representatives felt they were outside the loop. That is an ongoing challenge, but I would argue that we are close to and engage regularly with civil society. We are relatively unique in Europe in our electoral system of having parliamentarians who are close to the people on the ground engaging with people on a daily basis. Sometimes when parliamentarians come from other countries, they observe that they see engagement with people fairly regularly and informally.</p>
+          <p eId="para_127"> That said, I agreed last night that it was too late. It invariably happens towards the end of the year. It also happens because of our electoral system and because we are so close to the people. We tend to pack an awful lot into three days of the week. I was not the most popular person in my party when I was in opposition and suggested the Oireachtas should perhaps meet on four or five days of the week. In a previous Oireachtas, we had Friday legislation days. One day would be blocked off for legislation, not for Leaders' Questions and the theatrics that sometimes go on. I am not saying Leaders' Questions is theatrics, but committee members will know what I mean. We would spend one day on legislation and give it time. In other Oireachtas sessions, Private Members' legislation was allowed on a Friday, where an individual parliamentarian might have a particular topic to progress, so I am open to a more family-friendly Parliament. However, there is pressure on everyone in their constituencies, the Parliament, with their international obligations and on the Cathaoirligh of committees and trying to reconcile it all is always problematic. However, the audiovisual room is fairly constant as a facility for civil society. Anyway, we can discuss it another time, but I appreciate the Deputy raising it.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_128">Arts and disability is next.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_29" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_129">I am going through it slowly. I apologise sincerely.</p>
+          <p eId="para_130"> I am supportive of Senator Ní Chuilinn's idea about the Olympics and paralympians. There are perhaps two ways to look at that. From previous experience, I know that the Department of Finance is always reluctant on tax relief and so on, but the Senator's point is valid, that some experience better opportunities through tax relief than others. Paralympians and olympians in general should be looked after and supported because their commitment and dedication and the subsequent roles they play post-Olympics as exemplars for young people and so forth should be rewarded. The precise mechanism we use to reward it is perhaps up for debate but I would support that, particularly the sponsorship earnings issue.</p>
+          <p eId="para_131"> On the arts capital funding, many local authorities have developed strong arts officers and arts programmes. In my early political life, I was chair of the arts committee of my local authority and it was probably one of the best experiences I have ever had. We were lucky that it was a local authority that had a positive view of the arts. We did a lot locally in partnership with the Arts Council. I favour that and I will talk to the Minister about timelines. However, we should not lose the core funding for the national cultural institutions and the Arts Council, which has been transformative historically in the arts. I will engage with the National Museum on its collection - there needs to be permanency - and on how the collection gets used better regionally and locally.</p>
+          <p eId="para_132"> We have made great strides on archives as well. Tomorrow night, I will be honouring my late mentor Professor Dermot Keogh, who was a stickler for archives as a historian and did a lot to push the Department of foreign affairs and other Departments to create the foreign affairs series, digitise and collect archives and so on. The committee will find me and the Department of An Taoiseach supportive of any suggestions it has in that regard.</p>
+          <p eId="para_133"> We dealt with assessment of need yesterday in the House. We have to change the current system. It is simply not fit for purpose at the moment and we need to prioritise the provision of therapists for services for children. Teachers will not be doing the assessments, but there is a whole series of measures the Minister outlined for the autism panels and the pathway, for example, for autism. There will be assessment officers. It has to change. It is not tenable in its current format, particularly since the High Court decisions. I am clear about that, but Deputy Quinlivan's side-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_30">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_134">Just-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_135">Our time is up.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_32" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_136">I did not interrupt. We have also initiated a schools-based therapy service, which we made a red line issue. Going into the general election, I said I wanted that to be done. All parties in the Government are committed to it and the Ministers, Deputies McEntee and Naughton, and the Minister of State, Deputy Moynihan, have gone ahead of schedule with it. It will be in place in the new year in special schools and completed in special schools from September. It will then be expanded into mainstream schools. That is a service to have multidisciplinary teams in schools, but we will come back to the Deputy in detail about all of that.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_137">We will move on to the next group, comprising Deputy John Paul O'Shea, Cathaoirleach of the Committee on Social Protection, Rural and Community Development; Deputy Brian Brennan, Leas-Chathaoirleach of the Committee on Enterprise, Tourism and Employment; and Deputy Naoise Ó Cearúil, Leas-Chathaoirleach of the Committee on Irish Language, Gaeltacht and the Irish Speaking Community, in that sequence. They have two minutes.</p>
+        </speech>
+        <speech by="#JohnPaulOShea" eId="spk_34">
+          <from>Deputy John Paul O'Shea<recordedTime time="2025-12-11T12:00:00+00:00"/></from>
+          <p eId="para_138">Míle buíochas. I thank the Taoiseach. As Cathaoirleach of the Committee on Social Protection, Rural and Community Development, I have two questions, one to address each of the respective areas. The first question is about social protection.</p>
+          <p eId="para_139"> The committee has engaged on a policy and legislative level with the Minister and Department on auto-enrolment. With the launch of the saving scheme imminent, what impact will the scheme have? It is a fundamental initiative in the social protection domain, which will help current and future generations. We know about the demographic challenge facing the country, that three times the current number of people will retire in 25 years, with less than one third of the workforce available to fund pension payments going forward. In what way will the new scheme support better financial security for workers in their later years and promote overall economic stability?</p>
+          <p eId="para_140"> Turning to rural and community development and the Gaeltacht, the committee has been actively engaging with community groups and stakeholders, first, as part of its review of pre-budget submissions and, second, as part of its review of Our Rural Future: Rural Development Policy 2021-2025 and its successor strategy from 2025 to 2030. A key issue that arose in those engagements was the multi-annual funding and budgets to be provided to the many community bodies that contribute to communities. Related to this, the European Commission has published its proposals, including €2 trillion in commitments for the 2028-2034 period. There has been much debate about the proposal on the integration of rural development into broader cohesion funds. On one hand, I welcome the simplification in this ethos. Anything that simplifies the access to funding and reduces the administration hurdles is to be welcomed.</p>
+          <p eId="para_141">However, concerns exist, for example, particularly around the future of the LEADER programme. LEADER has been instrumental in supporting local community groups, private enterprises, jobs and services in rural Ireland. How does the Taoiseach intend to advocate at EU level for the continued prioritisation of rural development funding and the LEADER programme? </p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_35">
+          <from>Deputy Brian Brennan<recordedTime time="2025-12-11T12:10:00+00:00"/></from>
+          <p eId="para_142">In light of the current geopolitical situation and the uncertainty of the American market, can the Taoiseach outline the Government's plans for the new markets? While we welcome the trade with America, we are well aware there are less than 400 million people living there. When you look at populations such as China with 1.4 billion and India with 1.46 billion, what are we doing to attack these markets? We need to engage with these countries and encourage our trade relations and expansion in these markets. </p>
+          <p eId="para_143"> For tourism, I am hugely concerned about the lack of hotels being built in rural Ireland. Currently, it is simply not feasible to build a hotel in rural Ireland. This sector needs to be stimulated. I am passionate about it from my previous background and what this sector is doing for communities. It employs over 100 people in an average hotel, gives an influx of tourists for 365 days of the year and provides business opportunities for local shops and suppliers, but there is also a social aspect. </p>
+          <p eId="para_144"> When I was in a hotel, you took on young people. You got them off their phones and in making money, meeting people and learning how to communicate. You simply cannot put a price on that nowadays. If you were to take two towns - and I am not going to be parochial about this - and you look at Gorey and the success of the town, it has four hotels. I worked out there were 1,200 people coming into the town every weekend. If you go up the road to Wicklow town, it lost a hotel and that has had a devastating effect on the town. </p>
+          <p eId="para_145"> The last question relates to the cap at Dublin Airport. What is the current position of Government on that? It is not necessary; it is simply essential. We must maintain our push to increase the cap to 40 million and we are looking at the forecast going forward, with 60 million people coming in. That will have a huge and positive effect on the tourist industry. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_36">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-12-11T12:10:00+00:00"/></from>
+          <p eId="para_146">De ghnáth, oibrímid trí Ghaeilge sa choiste, ach don chruinniú seo labhróidh mé i mBéarla. Usually, we work through the Irish language but for this meeting, I will speak in English so everybody can understand. </p>
+          <p eId="para_147"> The Chair of the committee, Catherine Connolly, was elected President, so I have been in the Chair, I suppose, since September. We have also been without a researcher. We have one starting in the new year but that has held back some of the committee's work. </p>
+          <p eId="para_148"> The primary focus of the committee has been on the objective that 20% of the new workforce in the public service will be competent and able to work through the Irish language. Many of the witnesses coming before us from the various Departments have come forth without a plan. I ask the Department of the Taoiseach, in particular, to oversee the drive to ensure we reach this particular milestone by 2030, as it goes into every single Department and is not just kept within education or the Irish language. </p>
+          <p eId="para_149"> Another aspect we are focusing on as part of this is learning from contemporaries, particularly in Wales and what it has done in the third level and second level sectors. We will be going to Wales in February to learn from them. </p>
+          <p eId="para_150"> Another thing to bring to the Taoiseach's attention is to note there has been a welcome increase in funding for the Irish language and Gaeltacht, particularly in the most recent budget. Looking at comparable Departments, however, it has not grown in tandem. We ask that future budgets look at percentage increases towards Irish language and Gaeltacht that are similar to the arts, for example, heritage and comparable departments. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:10:00+00:00"/></from>
+          <p eId="para_151">I will reduce the Taoiseach's time from four minutes to three minutes. Otherwise, some people may not get in to talk. </p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_38" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:10:00+00:00"/></from>
+          <p eId="para_152">In response to Deputy O'Shea, auto-enrolment is one of the most transformative things we are doing as a Government. It has been a long time in gestation and we were working on it in the previous Government. It is estimated 750,000 to 800,000 workers currently have no pension provision and this is critical in the future to provide pension provision. Close to over 400,000 people have registered so far which is a very good start. I ask everyone to work with it. People will complain about this, that and the other but it is essential for the workers concerned and for the long-term viability of the country with the demographic changes and so on.</p>
+          <p eId="para_153"> I hear the Deputy on the multi-annual financial framework. This is a big issue for Ireland and I am not too sure it is appreciated by Members of the Oireachtas just how big an issue this is. We have to negotiate hard and strong with the Commission and with other member states on this. We are a net contributor but we have big issues with the Common Agriculture Policy, Horizon and with rural and LEADER funding.</p>
+          <p eId="para_154"> Regarding Deputy Brian Brennan's point on new markets, the European Union is 100% going after this with engagements with Australia and India and is hoping to conclude a deal, as well as in respect of Asia and Indonesia. It is ramping up the trade deals to counteract the US protectionism or tariff imposition by the US. We can do more trade deals. Interestingly, 72% of all trade is still under the World Trade Organization, WTO, frameworks, which is down from about 80%. The world has not collapsed and it is important to bear that in mind. As regards the cap in Dublin Airport, the Minister is bringing in comprehensive legislation to deal with that. </p>
+          <p eId="para_155"> Regarding hotels, these are a vital economic developer. They depend on other economic variables, purchasing power in an area and so on, but they are a critical piece and asset to a town or area. They bring more people in. It is a chicken and an egg in many respects but if you do get a hotel in, it is great.</p>
+          <p eId="para_156"> An rud is tábhachtaí ba mhaith liom a rá leis an Teachta Ó Cearúil ar dtús ná tá i bhfad níos mó daoine ag labhairt na Gaeilge sa daonra inniu ná mar a bhí i 1922, nuair a fuaireamar ár neamhspleáchas. A lot more are speaking Irish today than there were in 1922, which is a good sign. On supporting Gaelscoileanna, Deputy Ó Cearúil is correct that Wales is a very good example of constant innovation. At the British-Irish Parliamentary Assembly, it was creative industries Wales was pursuing and with the Welsh language, they have been very impactful and effective. We can do the same with "An Cailín Ciún" and other developments. There is great interest now in the creative industries in the Irish language. Ukraine asked us about identity and language and how they cultivate it in the context of its issues. Those are areas where Ireland can make an intelligent and informed contribution on how to approach language and so on. I hear the Deputy on the annual funding and I wish him well. His enthusiasm for the Irish language cannot be questioned. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:10:00+00:00"/></from>
+          <p eId="para_157">The next speaker is Deputy Ó Muirí, who chairs the climate, environment and energy committee. I will then call Deputy O'Reilly, who is Chair of the public petitions and ombudsman committee, and Deputy Dempsey, who is Vice Chair of the children and equality committee. In that sequence, they will have two minutes each. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_40">
+          <from>Deputy Naoise Ó Muirí<recordedTime time="2025-12-11T12:10:00+00:00"/></from>
+          <p eId="para_158">Níl agam ach dhá nóiméad. Tá mé chun dhá cheist shonracha a chur ar an Taoiseach.</p>
+          <p eId="para_159"> As Chair of the climate committee, we are interested in the development of offshore renewable energy, which will need dedicated marshalling ports. We heard from the sector on the upcoming review of the national ports policy that this is important, particularly for the sector's development. There is concern that large investment is required for ports and may require State investment. Port policy may preclude that in the way it is being developed. Is this being considered by the Government in the context of that very important development? </p>
+          <p eId="para_160"> On the environmental side, we heard about the Blackwater fish kill, which I am sure the Taoiseach is familiar with, and the illegal turf cutting and peat extraction in the midlands and the west. The common theme was there is blatant disregard for regulations and those agencies responsible for enforcing them are really struggling to enforce. The inland fisheries are looking for additional powers to prosecute at higher courts and the councils have not secured a single injunction or conviction for illegal peat extraction, which entails €40 million worth of irreplaceable peat effectively going abroad per annum. Is the Taoiseach concerned, from a Government perspective, on that front? How can Government sharpen the teeth of the regulators to give them more powers to deal with this?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_161">I call Deputy O'Reilly.</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_42">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_162">I thank the Cathaoirleach for facilitating the swap. I have to go to the Chamber.</p>
+          <p eId="para_163"> I thank the Taoiseach for being here with us. I have a broad point for him on the number of women who chair committees. Without meaning to be party political about it, there is one party whose committee Chairs are all men. The phrase "Can't see, can't be" is not in currency for no reason. I ask the Taoiseach to examine composition. We have a couple of Leas-Chathaoirligh here today who may be taking the bad look off things or making things look a little better than they are. I mean no disrespect to them. We have an issue with regard to women representatives. The Government in particular has an issue. The Opposition, my party in particular, is doing a lot of the heavy lifting in terms of women Chairs. I am the Chair of the Joint Committee on Public Petitions and the Ombudsmen. It is a very busy one. I thank the team I work with, including Alex, Martha and Brian. They are a fantastic bunch of people.</p>
+          <p eId="para_164"> My committee has discussed issues such as flooding in east Cork, pension entitlements for same-sex couples and the treatment of pet theft. By the time people come to the petitions committee, they are often incredibly frustrated by what could generally be called bureaucracy or officialdom. Usually, the people we see have been through every procedure and have done everything correctly. It is frustrating, as the Chair of the committee, to see that when we correspond and make recommendations, they seem to go into something of a void. That picks up a point made by Deputy Ward on the standing of recommendations of committees and the question of what we can do as committee Chairs to ensure recommendations we make are acted on. It would be very simple to say everything should go through the Department of the Taoiseach, because that is the way things might get done, but that is not the answer either. By the time people come to the petitions committee, they have exhausted every possible avenue and are incredibly frustrated. They might have a case or might not but they do not have anyone to say "Yes" or "No" to them and we can bounce around quite a bit. Therefore, any advice or steer the Taoiseach can give in this regard would be appreciated.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_165">I call Deputy Aisling Dempsey.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_44">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_166">I thank the Taoiseach for being here. I am here in my role as Leas-Chathaoirleach of the Joint Committee on Children and Equality in the unavoidable absence of our Cathaoirleach, Deputy Keira Keogh. I am delighted to be here.</p>
+          <p eId="para_167"> At recent public meetings, the Joint Committee on Children and Equality examined the priority policy areas of child poverty and deprivation, child protection matters, and the use of special emergency accommodation. The committee will soon commence a series of public meetings on the topic of technology, social media and children, with a focus on the safety and well-being of children online. It is also the intention of the committee to consider, in 2026, the topic of the implementation of the UN Convention on the Rights of the Child into Irish law. The Taoiseach will agree with me that every child in Ireland deserves a happy, healthy and safe childhood, with equal opportunities to thrive and succeed, regardless of where they start in life.</p>
+          <p eId="para_168"> A recurring theme evident from the examination of the policy priorities by our committee to date is the need for strengthened interagency work and collaboration. Robust interagency collaboration is essential for the delivery of services to ensure the safety, well-being and welfare of Ireland's children, to protect the most vulnerable children and families in society and to enable better outcomes for children and young people with complex needs. Could the Taoiseach please provide an outline as to how interagency work will be delivered during the lifetime of this Government and the timeframe in which robust interagency working will be achieved? This is essential to ensure the experience of children growing up in Ireland is a positive one for all and to support the delivery of services to ensure proper safeguarding and protection of children.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_169">The Taoiseach has three minutes.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_46" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_170">Gabhaim buíochas leis an Teachta Ó Muirí. Offshore renewable energy is essential to our climate goals and so on. This morning again, I attended a clearing house meeting, chaired by my Secretary General, with the industry, regulators and Departments to identify barriers and so forth.</p>
+          <p eId="para_171"> On national ports policy, the Deputy is right in that there is an issue. The core policy has been that ports must be able to wipe their faces financially or be commercially viable. Some ports, such as the Port of Cork, have been successful in getting European and Ireland Strategic Investment Fund funding for the development of infrastructure for offshore renewable energy development. Belfast has been very successful. We now have two ports that will likely be able to facilitate large-scale renewables projects. We need more. The ports policy has to take that into account. The issue of investment must be considered. The ports' turnover and profit margins do not seem to be at a level that could sustain the higher capital requirements to deal with offshore renewables.</p>
+          <p eId="para_172"> Security is also an issue. We have not really factored security considerations into port policy and port development. Considering that 80% of all trade goes through Dublin Port, any disruption to Dublin Port is a huge disruption to the Irish economy. I have asked the relevant Minister and Department to factor security considerations into the development of port policy. There is a shadow fleet operated by Russia, and some of its vessels are environmental time bombs that could be very problematic for our waters, for example. It is an issue.</p>
+          <p eId="para_173"> The Deputy made a very good point on peatland extraction. What is happening is not good enough. I will reflect on what the Deputy is saying, and we will see where we can enhance enforcement.</p>
+          <p eId="para_174"> On the Blackwater, I was very disappointed that the source of what was a huge pollution incident could not be found. It was highly disruptive to biodiversity and marine life in the area. That is a huge issue.</p>
+          <p eId="para_175"> I take Deputy Louise O'Reilly's point. Again, we select according to the D'Hondt system. It all depends on the committees. Some people have a particular interest in some committees, but I hear what the Deputy is saying. It is a matter for each political party.</p>
+          <p eId="para_176"> Flooding in east Cork is also of interest to me.</p>
+        </speech>
+        <speech by="#LouiseOReilly" eId="spk_47">
+          <from>Deputy Louise O'Reilly<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_177">I thought it might be.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_48" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_178">The Deputy got my memory going again. I was down there on a number of occasions to see the flooding. It continues to be a huge issue.</p>
+          <p eId="para_179"> We will reflect on what the Deputy said. I do not want to make a knee-jerk response. The Deputy made the point that although the petitioners come to her committee, it is a question of what happens afterwards and of who engages meaningfully with petitioners in respect of issues. I will examine this with my team and see whether we can develop a mechanism to follow through on the issues that arise.</p>
+          <p eId="para_180"> I appreciate the work the Deputy has been doing. I would imagine it involves a very wide-ranging compass.</p>
+          <p eId="para_181"> Deputy Dempsey referred to children and equality. Safety online is a key issue for parents. Parents want help and the State to intervene to protect children and to support them in protecting children from algorithms and the whole social media revolution. She is right about children deserving a happy childhood.</p>
+          <p eId="para_182"> I realise many people complained about the pouches when we introduced them last year. Four hundred and sixty-two schools have now drawn down the money. One teacher said to me that the children can be heard again in the corridors. I was shocked. In other words, the children are shouting and roaring in the corridors again.</p>
+          <p eId="para_183"> No one should have a mobile phone at a meeting. I am serious. I bring no mobile phone with me to meetings. I am not referring to any Member present. I bring no mobile phone to Cabinet meetings. If you have a mobile phone, you are not concentrating, focusing on the issues or listening to your colleagues articulating points. We provided the pouches in schools.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_49">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_184">We are moving on.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_50" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_185">Have I answered every question? There was one on interagency work. Interagency work is key. The Cabinet subcommittee system is a mechanism. It is hard going and there are many subcommittees, but they bring people together. We had Tusla before the Cabinet subcommittee on children recently. It was very effective, and we got a very good insight into the work of Tusla and its challenges.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_51">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_186">I thank the Taoiseach. We are now moving on to Deputy Erin McGreehan, who is Chair of the Joint Committee on Further and Higher Education, Research, Innovation and Science, Deputy Conor McGuinness, who is Chair of the Joint Committee on Fisheries and Maritime Affairs, and Deputy Malcolm Byrne, who is Chair of the Joint Committee on Artificial Intelligence. They have two minutes each and will be taken in the sequence in which I have mentioned them.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_52">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-12-11T12:20:00+00:00"/></from>
+          <p eId="para_187">I thank the Taoiseach very much for being here. The priorities of the Department of Further and Higher Education, Research, Innovation and Science are central to Ireland's long-term economic strength, social mobility and innovation capacity. As we all know, they shape the opportunities available to our learners, researchers and workers across the entire country. Looking ahead, we need a system that is responsive, more ambitious, more flexible, more inclusive and capable of delivering the talent and research ecosystem required in a modern country and the growing economy we demand. Considering the global economic turbulence, there are gaps domestically. We need considerable funding ambition in the Department. Areas of significant importance are access and capacity within the system, the substantial expansion of places, and research and innovation.</p>
+          <p eId="para_188">We need to significantly scale up the national research fund and innovation hubs, etc.</p>
+          <p eId="para_189"> I raise skills and the workforce. There are acute shortages in healthcare, construction, digital technology and green skills. Inclusion, disability and mental health supports are persistent barriers to education. We need to invest in infrastructure, including campus development and student accommodation. Apprenticeships need a huge increase in investment. I also raise the shared island unit and the huge role it can have, particularly in Dundalk, with the development of the first all-Ireland university with linkage between Queen's University Belfast and DkIT. I am ambitious for this and I look forward to seeing how the shared island unit can invest in Louth.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_53">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-12-11T12:30:00+00:00"/></from>
+          <p eId="para_190">I will run through three of the biggest items that the fisheries and maritime affairs committee has been dealing with over the past number of months. The first will come as no surprise to the Taoiseach today. The December Council begins and the fisheries quota negotiations for next year are under way. The entire committee and I were adamant that these negotiations needed a whole-of-government approach. We have said as much to the Minister of State, Deputy Dooley on several occasions. The industry is in freefall. The Taoiseach met with fishing industry representatives fairly recently. These negotiations are make or break for the fishing industry in Ireland and for our coastal communities. What we need is the Taoiseach as the Head of Government to play a role in these negotiations. A Minister is going over there against larger countries with larger fishing interests with senior Ministers around the table. Negotiating in a silo is not going to cut it to extract the concessions, the Hague preferences and the additional quota that we need. We need the Taoiseach as the head of Government and a whole-of-government approach. What will the Taoiseach be doing today and tomorrow to assist in those negotiations?</p>
+          <p eId="para_191"> The Sea-Fisheries Protection Authority, SFPA, was before the committee recently. It was utterly unsatisfactory in how it engaged with the committee. The SFPA is part of a wider piece of work that we are doing on sea fisheries protection more broadly. My colleague Deputy Pádraig Mac Lochlainn is rapporteur on that. I do not want to pre-empt his recommendations in that report that he will bring before the committee early in the new year, but picking up the mood of the committee members and my own assessment is that there is a deficit when it comes to accountability and transparency from that particular agency. That will necessitate legislative change. I would like the Taoiseach to look at that and to be supportive of those committee recommendations when they do come in the new year and to legislative.</p>
+          <p eId="para_192"> He mentioned offshore renewable energy in his opening statement. What will he do to ensure codesign is at the very core of how offshore renewable energy is developed and that rather than going down the extractive and exploitative model of energy generation off our coast, we have one that benefits coastal communities and ensures that coastal communities that bear the greatest impact of this infrastructure and development get the greatest dividend?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_54">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-12-11T12:30:00+00:00"/></from>
+          <p eId="para_193">I thank the Taoiseach for being with us today. The Joint Committee on Artificial Intelligence is grateful for the support of our secretariat and to the Minister of State, Deputy Niamh Smyth and her officials. We will issue a short report next week, which will make a number of recommendations about how the Government should support the use of AI responsibly but about how the Government itself should adapt and integrate it into government processes to deliver public services more effectively and efficiently. It is critical that we get the right balance between regulation and innovation. What is important in terms of our asks of the Taoiseach is to continue to provide leadership in this space, that the AI office, which will be established next year, will not be a thou shalt not office but one that will be facilitative and support SMEs and civic society organisations to meet their obligations under the AI Act, but also to ensure that Ireland becomes a leader in the adoption of AI in a safe way.</p>
+          <p eId="para_194"> Our committee is also going to support the setting up of an AI observatory, which has a lot of supports, which is an evidence-based, research-led institution that will examine the potential impact of AI on aspects of society and the economy and ensuring that where there is displacement in employment we upskill and reskill. We are aware that the Minister, Deputy Lawless is going to be bringing a number of proposals in that regard. We think it is critical that there is investment in upskilling and reskilling. As part of the EU Presidency, we want to ensure that Ireland positions itself as an AI leader but that in Europe's competitiveness agenda using technology and AI is a key part of that. We welcome the commitment to the AI summit that will be held by the Government in October. We hope that the Taoiseach will attend. We would like to hope that as many heads of Government would be able to attend at the summit as well.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_55" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:30:00+00:00"/></from>
+          <p eId="para_195">I will respond to Deputy McGreehan first. The third and fourth level sectors are central to economic development in this country. It is one of the reasons I initiated the establishment of the Department of higher education in 2020. It has the capacity to underpin future innovation and economic development. Research is key. The INSPIRE programme that the Minister, Deputy Lawless has announced recently represents the step change that I wanted this Department to engage in in the research space. It builds on the PRTLI model of an earlier period in the late 1990s and early 2000s. It will be critical in building a research infrastructure in universities. Universities are adapting a whole range of skills. The Deputy referred to green skills. There are also mental health supports within campuses. I am quite impressed with some campuses where there are better spaces, in terms of people who need to take time out of the hustle and bustle and all the noise and so on. We always need to watch the mental health supports in universities and further education that they are there for the students on an ongoing basis.</p>
+          <p eId="para_196"> On the situation in the shared island, the Queen's University and Dundalk initiative is a significant development. It is important for Dundalk because it was not part of others in the technological university sector. Here is an opportunity now for both colleges to get together and go through governance frameworks and all the necessary work that has to be done. The shared island unit stands ready to support that initiative and to be supportive of it. It is important to get the framework right and all of that. This is a great opportunity. I know the Deputy has been passionately advocating for this. We will take that on board.</p>
+          <p eId="para_197"> Deputy McGuinness spoke about fisheries. It is a core issue. I met with the group. To be frank, I engage with the Commission on a whole range of issues. We have to maintain a constructive relationship with the Commission. I have spoken to President von der Leyen in respect of the derogation on nitrates and the entirety of issues in agriculture. We will have to engage with the Commission on fishing. ICES research is saying it is overfished not by us, but by others that the European Union engages with. Non-EU countries are overfishing the entire area. It will mean a 70% reduction in the pelagic catch. That is on top of a 20% reduction as a result of Brexit. This is existential for the industry. We are going to have to go back to the Commission in respect of whatever supports we want to give from our Exchequer, which, at the moment, would have to take on board state aid rules, which I understand from talking to officials are quite restrictive in respect of what states can do. Given the exceptional nature of what is hitting the industry, we are going to have to be innovative and responsive.</p>
+          <p eId="para_198"> The Minister of State, Deputy Dooley, and the Minister, Deputy Heydon, are negotiating now in terms of the Fisheries Council. It is beyond that in terms of the scale and impact. I take the Deputy's point. I am aware of that. Deputy Pat the Cope Gallagher and all the Deputies in Donegal, west Cork and coastal communities more generally are concerned about this because the impact on those communities will be significant. There are large concentrations of employment in Donegal, Castletownbere, Waterford, Wexford and so forth. We will await the outcome in terms of what the committee is proposing in respect of the authorities on transparency and all of that.</p>
+          <p eId="para_199"> On offshore, the Deputy can use the terms exploitative or extractive, but we need offshore renewable energy. Coastal communities should benefit and there should be a dividend for them. We have to go for it. If we do not, we are in real trouble energy-wise, climate-wise and everything else.</p>
+          <p eId="para_200"> Deputy Malcolm Byrne referenced AI, which connects in to the offshore issue. Our commitment to AI and our capacity to adopt AI will be dependent on having sufficient energy resources because AI is energy intensive. In terms of large energy users, future foreign direct investment will be critical. Regarding the Deputy's point on Government public services, we look forward to his committee's recommendations. I agree with his first-class idea around AI observatories. What we need to do, very quickly, is monitor the employment patterns because already there are signs that it is beginning to manifest itself in some parts of the economy. We need real-time monitoring of what is happening in terms of AI's impact on the jobs market. An interesting report we got from the expert group on future skills needs indicates that Ireland is actually very high on skill levels and our AI competency per capita is one of the highest across Europe but we need to build on that. That is a good news story but areas like energy are less so. </p>
+          <p eId="para_201"> Public service adoption of AI is critical, as the Deputy said. We are working on enhancing digital public services and supporting enterprises to accelerate their use of digital technologies. There is a whole programme on digital public services aimed at 100% digitisation of key public services and driving responsible AI adoption across the public sector. The Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation, Deputy Chambers, has a significant programme in that area, again related to productivity gains within the public sector and better delivery of public services. We want to be a location of choice for ethical AI and digital start-ups and a global hub for innovation. </p>
+          <p eId="para_202"> I take the Deputy's point about the balance between regulation and innovation and that is something we have to work very hard on. The perception is that in Europe the balance is on the regulatory side as opposed to the innovative side. The Commission is trying to correct that with its investment announcements in respect of AI factories and so on. We are trying to piggy-back onto that and be part of that process. It is a transformative area, of that there is no doubt. There will be bumps along the way and highs and lows in respect of this but there is no doubt that the technology will improve, refine and develop. We cannot just put our heads in the sand. We cannot put our heads in the sand in relation to data centres either. We have issues now in terms of energy but data centres are not the great evil. They are a reality of modern life and modern societies and economies globally. That is just a reality but there are limits to what the grid can do at any one time. That is why the offshore wind revolution has to happen. Ireland is probably one of the leaders in integrating renewables onto the grid because of our experience in onshore wind and because of our work in solar. The Oireachtas needs to grapple with this too. When I am in the Dáil, I hear comments about that wind farm, that gas station or that anaerobic digestion facility but equally, we have a more national problem of how to replace fossil fuels with renewables. It is a real challenge for everybody because we must have energy to run the country and to maintain people's high-quality livelihoods. </p>
+          <p eId="para_203"> I have said enough, I apologise. I thought that was the last foray but I see Deputy Gannon lurking menacingly.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:40:00+00:00"/></from>
+          <p eId="para_204">There are three final questioners but the Taoiseach only has ten more minutes because he has another commitment. Deputy Conway-Walsh, Chair of the Joint Committee on Defence and National Security is next, followed by Deputy Gannon, Chair of the drugs use committee and then Senator Mark Daly, Cathaoirleach of the Seanad Select Committee on EU Scrutiny and Transparency and each contributor has two minutes. </p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_57">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-12-11T12:40:00+00:00"/></from>
+          <p eId="para_205">I assure the Taoiseach that we have plenty of energy on the defence and national security committee. This morning we spent time out at the National Cyber Security Centre and I want to acknowledge the great work being done there and thank the centre for hosting us this morning. I welcome the increased funding to address the decades of neglect of our Defence Forces. Oireachtas oversight of national security has never been more urgently needed, especially with Ireland's upcoming EU Presidency and the pending national security strategy. We are lucky that we have an excellent committee comprised of members, both Government and non-Government, with huge experience within the Defence Forces and they take their responsibilities really seriously. Following efforts to examine areas within national security policy, the committee has found that its current remit does not allow proper examination of this policy area. The key stakeholders in the area of national security such as the Taoiseach's Department and An Garda Síochána have both declined invitations to attend meetings of the committee on the basis that its remit does not extend to aspects of national security policy under the control of the committee.</p>
+          <p eId="para_206"> At recent meetings the committee agreed to draft a request to the committee on procedure to seek an extension of its remit to fully cover national security. The committee has found that under its current narrow remit in relation to national security it cannot provide oversight and adequately examine this critical policy area which is included in the committee's name. The committee is seeking to have its remit extended to cover all aspects of national security. As per Dáil Éireann Standing Order 109(3), the committee has reviewed its procedures and its role and is making the request in this context. The committee also notes that other sectoral committees, such as the Joint Committee on Fisheries and Maritime Affairs, have a remit which covers aspects of more than one Department. The committee considers that given that national security is in its title, its remit should extend to all aspects of oversight in the area and not just those under the Department of Defence. I am sure the Taoiseach understands what I am saying and I ask him to have a look at this issue in the context of the geopolitical turbulence and challenges that we are all facing. He said he was very much in favour of protecting the fundamentals of parliamentary democracy and in that vein, I ask him to look at the remit of the defence and national security committee and to enable us to do the job that needs to be done. </p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_58">
+          <from>Deputy Gary Gannon<recordedTime time="2025-12-11T12:40:00+00:00"/></from>
+          <p eId="para_207">I thank the Taoiseach for joining us today. I chair the Joint Committee on Drugs Use. It was formed following the Citizen's Assembly on Drug Use, which was chaired by Mr. Paul Reid. That assembly engaged in the most comprehensive analysis and exploration of drug use in the history of this State. Our committee has a nine-month duration and is putting flesh on the bones of the work of the citizen's assembly. Our committee will report in June but the national drugs strategy is due to be released in draft form in January. We have talked to the Minister of State with responsibility in this area, Deputy Murnane O'Connor, who has agreed to more engagement with the committee in terms of its input to the strategy. I wanted to reference that with the Taoiseach and put it on the record. </p>
+          <p eId="para_208"> One of the issues that we are currently dealing with that is incredibly important is drug-related intimidation, violence and coercion. There are very few communities the length and breadth of Ireland that have not been affected in some form by drug-related intimidation. We saw that in its most hideous, extreme and tragic form last weekend in County Offaly and it is something that all of us must work to confront. These gangs are enforcing intimidation and violence on communities. The stories that we have heard at the committee from the communities that are engaging with us are terrifying, they are real and they require an immediate response. </p>
+        </speech>
+        <speech by="#MarkDaly" eId="spk_59">
+          <from>Senator Mark Daly<recordedTime time="2025-12-11T12:40:00+00:00"/></from>
+          <p eId="para_209">I thank the Taoiseach for being here. I also thank him and Mr. Diarmuid Lynch for their support for the establishment of the EU scrutiny committee back in 2022. The Cabinet made the decision on 12 July that year to establish the committee, which goes to the point he made about gold-plated EU rules and regulations and the examination of those. That committee's original title was the committee for the scrutiny of EU-related draft statutory instruments but we have tightened it up and it is now the committee on EU scrutiny and transparency. The work of the committee includes getting the draft statutory instruments before the Minister signs them and making sure they are passed on to the relevant sectoral committees to give them an opportunity to scrutinise them in advance of them being signed. It also includes examining issues that would affect us in relation to the Windsor Framework or the impact of EU proposals on legislation that would impact our relationship with our big trading partners such the UK, EU, US and Canada. It also includes the big issue of fines. I will give the Taoiseach an example. This is the directive that came in on organ donation. It is 16 pages long. By the time the Department of Health was finished adding to it, the document was 36 pages long. It had to be amended subsequently because it was so badly drafted. </p>
+          <p eId="para_210">That was highlighted by the Irish Kidney Association. Another six pages were added so 42 pages of legislation never went to the health committee and it was the first ever legislation on organ donation in the history of the State. Health committee TDs and Senators never saw it.</p>
+          <p eId="para_211"> The other issue we look at is that of fines. Most recently, we paid a fine of €1.5 million for the late transposition or adoption of the legislation on work-life balance. The last time, the committee - and this is the ask - only got five draft Bills out of a few hundred. So far, we have only received one. The committee is meeting next week in the Seanad Chamber. I will write to the Taoiseach and the committee will write to Departments to ask them to comply with the Cabinet decision that we get the draft statutory instruments - not just us, but that we would be able to pass them on to the various sectoral committees to give them an opportunity to scrutinise them in advance. That is, first, so we do not incur fines but, second, that democratic oversight actually takes place when it comes to what about amounts to more legislation than what the Dáil actually passes.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_212">Can the Taoiseach respond to those? I am conscious that he has be somewhere in five minutes.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_61" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_213">I appreciate the comments Deputy Conway-Walsh made. The Oireachtas sets the criteria; I think the Deputy has now referred it to the procedural committee. I will reflect on what she said. This is a first in regard to national security. We have not had a culture in the Oireachtas for dealing with national security issues like other parliaments historically have. We have to be conscious of confidentiality requirements in respect of what can be revealed at any given public meeting in respect of security. It could create unintended vulnerabilities.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_62">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_214">I completely understand that-----</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_63" as="#Minister_for_Defence.">
+          <from> The Taoiseach<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_215">The Deputy might let me finish. I will certainly reflect on it and I would be interested in what the procedural committee's view on it is as well. There would have to be responses from what at the moment would be the Department of Defence. It should be responding to the Deputy.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_64">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_216">It is.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_65" as="#Minister_for_Defence.">
+          <from>Deputy iseach<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_217">It is. Fair enough. I am glad the Deputy was at the National Cyber Security Centre. It is a very good centre and we have made huge progress in respect of cybersecurity in the past five years. I will reflect on what she said and come back to her in the context of her desires and that of the committee to broaden its remit.</p>
+          <p eId="para_218"> Deputy Gannon spoke about drug use. I will talk to the Minister of State, Deputy Murnane O'Connor, on what he has focused in on and to make sure that happens in respect of national strategy. He is correct that the intimidation, coercion and fear are big worries, when people see people dealing on the streets and creating their territory. It is injurious to normal life and the quality of normal life. It creates a fear and tension in communities and there has been violence and aggression. In many ways, it is an informal subjugation of a community. We will talk to the Garda in regard to a tougher line on this. We are constantly increasing the numbers of gardaí. There is already a steady throughput in Templemore that is enhancing our capacity to police in a more visible way on our streets. That is an important dimension to it as well.</p>
+          <p eId="para_219"> On the EU scrutiny committee, I know it has been a lifelong commitment of the Cathaoirleach of the Seanad, Senator Daly. We will discuss that with the respective committees in regard to what is coming before the committee. There are maybe two areas where there is huge and significant simplification going on with legislation at European level. Sometimes we look at all of this as a <i>fait accompli</i>. We are looking at the end of a cycle and maybe we need to look at stuff earlier in the cycle to see if we can make inputs before it becomes a directive and before we are at the legislative transposition stage. Invariably, when that happens, we are up against a clock that is ticking in regard to fines and public servants are saying if we do not get this over, we could risk a fine. There is new agenda now, however, in regard to simplification, and a desire to try and reduce regulation to some degree in various industries and sectors of the economy. Maybe that is something we should intervene early on. There is a reverse way of looking at this.</p>
+        </speech>
+        <speech by="#MarkDaly" eId="spk_66">
+          <from>Senator Mark Daly<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_220">I thank the Taoiseach.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-12-11T12:50:00+00:00"/></from>
+          <p eId="para_221">To conclude, I wish to thank the Taoiseach, his officials and all the committee cathaoirligh. Some 24 people contributed here as cathaoirligh of Oireachtas committees. A huge number of areas were covered and today's engagement highlights the breadth of work of the Oireachtas committees, the members and the staff who work with our committees.</p>
+        </speech>
+        <summary eId="sum_8"> The joint committee adjourned at 12.55 p.m. <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

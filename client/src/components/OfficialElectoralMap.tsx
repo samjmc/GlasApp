@@ -189,11 +189,8 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
     if (!constituency) {
       // Log missing constituency for debugging
       console.warn(`⚠️  Constituency not found in API data: "${constituencyName}"`);
-      console.log('Available constituencies:', constituenciesData.map(c => c.name).join(', '));
-      
       // For gender layer, return a distinct error color so we can identify unmatched constituencies
       if (activeLayer === 'gender') {
-        console.error(`❌ Gender layer: No data for "${constituencyName}" - using fallback gray`);
         return '#9ca3af'; // Medium gray to indicate missing data
       }
       
@@ -290,7 +287,6 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
           case 4: return '#9333ea';  // Purple - 4 female TDs
           case 5: return '#6b21a8';  // Deep purple - 5 female TDs
           default: 
-            console.warn(`Unexpected female count for ${constituency.name}: ${femaleCount}`);
             return '#9ca3af'; // Gray fallback
         }
       
@@ -417,27 +413,25 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         
         try {
           // First phase: Initialize the map immediately with base layers
-          // This gives the user something to see while data loads
           mapRef.current = L.map(mapContainerRef.current, {
             center: [53.3, -7.5], // Center on Ireland
-            zoom: 7,
+            zoom: 6,
             minZoom: 6,
             maxZoom: 12,
             preferCanvas: false, // Use SVG renderer for accurate colors
             zoomSnap: 0.5, // Allow fractional zoom levels
+            attributionControl: false // Hide default attribution
           });
           
           setMapInitialized(true);
           
           // Add OpenStreetMap tile layer immediately
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Electoral Boundaries &copy; <a href="https://www.electoralcommission.ie/">Electoral Commission Ireland</a>',
             maxNativeZoom: 19,
             maxZoom: 22
           }).addTo(mapRef.current);
           
           // Second phase: Load the GeoJSON data
-          // This can happen in the background while the user sees the base map
           console.time('GeoJSON load and render');
           
           try {
@@ -449,14 +443,11 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             
             if (!mapRef.current) return;
             
-            console.log('Processed boundaries data:', geoJsonData);
-            
             // Create GeoJSON layer with the processed data
             const geoJsonLayer = L.geoJSON(geoJsonData, {
               style: (feature) => {
                 if (!feature || !feature.properties) return {};
                 
-                // Get constituency name from the updated format
                 const constituencyName = feature.properties.CONSTITUENCY || 
                                       feature.properties.CONSTITUENCY_EN || 
                                       feature.properties.NAME_EN || 
@@ -475,7 +466,6 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
               onEachFeature: (feature, layer) => {
                 if (!feature.properties) return;
                 
-                // Get constituency data from the updated format
                 const constituencyName = feature.properties.CONSTITUENCY || 
                                       feature.properties.CONSTITUENCY_EN || 
                                       feature.properties.NAME_EN || 
@@ -485,12 +475,11 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                 const seats = feature.properties.SEATS || 3;
                 const nameIrish = feature.properties.CONSTITUENCY || '';
                 
-                // Add professional tooltip with smooth mouse following
+                // Add professional tooltip
                 layer.bindTooltip(createTooltipContent(constituencyName, seats, nameIrish), { 
                   permanent: false,
-                  sticky: true, // Follow mouse smoothly
-                  direction: 'right',
-                  offset: [15, 0], // Offset from cursor
+                  sticky: true,
+                  direction: 'auto', // Smart positioning
                   className: 'constituency-tooltip',
                   opacity: 1
                 });
@@ -524,12 +513,10 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                 // Add click handler
                 layer.on('click', function() {
                   if (constituencyName) {
-                    // Reset all styles first
                     if (geoJsonLayer) {
                       geoJsonLayer.resetStyle();
                     }
                     
-                    // Highlight selected constituency
                     if (layer instanceof L.Path) {
                       layer.setStyle({
                         weight: 4,
@@ -544,11 +531,9 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                       layer.bringToFront();
                     }
                     
-                    // Update state and call the callback
                     setActiveConstituency(constituencyName);
                     onConstituencySelect(constituencyName);
                     
-                    // Pan to the constituency
                     if (mapRef.current && 'getBounds' in layer && typeof layer.getBounds === 'function') {
                       // @ts-ignore - getBounds exists on these layers
                       mapRef.current.fitBounds(layer.getBounds(), { 
@@ -562,6 +547,10 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             }).addTo(mapRef.current);
             
             setGeoJsonLayer(geoJsonLayer);
+            
+            // Fit bounds to show all Ireland
+            mapRef.current.fitBounds(geoJsonLayer.getBounds(), { padding: [20, 20] });
+            
             setIsLoading(false);
           } catch (err) {
             console.error("Error processing constituency boundaries:", err);
@@ -579,7 +568,6 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
 
     initializeMap();
 
-    // Clean up on component unmount
     return cleanup;
   }, [onConstituencySelect, activeConstituency]);
 
@@ -603,7 +591,6 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             });
           }
 
-          // Update tooltip with fresh data
           const seats = layer.feature.properties.SEATS || 3;
           const nameIrish = layer.feature.properties.CONSTITUENCY || '';
           if (layer.getTooltip()) {
@@ -616,21 +603,18 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
 
   return (
     <div className="official-electoral-map" style={{ width, height, position: 'relative' }}>
-      {/* Initial loading state */}
       {showPlaceholder && (
         <div className="absolute inset-0 z-10 bg-white dark:bg-gray-800">
           <OfficialElectoralMapLoading />
         </div>
       )}
       
-      {/* Map container - always render this so it can load in the background */}
       <div 
         ref={mapContainerRef} 
         className="map-container rounded-lg overflow-hidden shadow-lg"
         style={{ width: '100%', height: '100%' }}
       ></div>
       
-      {/* Corner loading indicator */}
       {isLoading && !showPlaceholder && (
         <div className="absolute top-4 right-4 bg-white bg-opacity-90 p-2 rounded-full shadow-md z-10 flex items-center space-x-2">
           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-green-600"></div>
@@ -638,7 +622,6 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         </div>
       )}
       
-      {/* Error message */}
       {error && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
           <div className="text-center text-red-600 p-4 bg-white rounded shadow-md">
@@ -651,156 +634,10 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         </div>
       )}
       
-      {/* Map information overlay - always display */}
-      <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 p-3 rounded shadow-md text-xs z-5 hidden md:block">
-        <div className="font-bold mb-1">Electoral Constituencies</div>
-        <div className="text-gray-600 text-xs mb-1">Click on a constituency for details</div>
-        <div className="text-gray-500 text-xs italic">Source: Electoral Commission Ireland</div>
+      {/* Discreet custom attribution at bottom right */}
+      <div className="absolute bottom-1 right-1 z-[400] px-1 py-0.5 bg-white/70 dark:bg-black/70 text-[9px] text-gray-600 dark:text-gray-400 rounded pointer-events-none">
+        © OpenStreetMap | © Electoral Commission
       </div>
-      
-      {/* Party layer legend - Responsive: Bottom sheet on mobile, Top-left card on desktop */}
-      {activeLayer === 'party' && !isLoading && (
-        <div className="absolute bottom-0 left-0 right-0 md:top-4 md:left-4 md:right-auto md:bottom-auto bg-white dark:bg-gray-800 bg-opacity-95 md:bg-opacity-90 p-4 rounded-t-lg md:rounded-lg shadow-lg text-xs z-10 w-full md:max-w-xs border-t md:border-none border-gray-200 dark:border-gray-700">
-          <div className="font-bold mb-2 text-sm text-gray-900 dark:text-white flex justify-between items-center">
-            <span>Party Dominance</span>
-            <span className="md:hidden text-xs text-gray-500">Scroll for map</span>
-          </div>
-          <div className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-            Shows which party has the most TDs in each constituency.
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#ef4444' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">Sinn Féin majority</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#66BB6A' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">Fianna Fáil majority</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#1e3a8a' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">Fine Gael majority</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#e5e7eb' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">Mixed/No clear majority</span>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Performance layer legend - Responsive */}
-      {activeLayer === 'performance' && !isLoading && (
-        <div className="absolute bottom-0 left-0 right-0 md:top-4 md:left-4 md:right-auto md:bottom-auto bg-white dark:bg-gray-800 bg-opacity-95 md:bg-opacity-90 p-4 rounded-t-lg md:rounded-lg shadow-lg text-xs z-10 w-full md:max-w-xs border-t md:border-none border-gray-200 dark:border-gray-700">
-          <div className="font-bold mb-2 text-sm text-gray-900 dark:text-white">TD Performance Scores</div>
-          <div className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-            Average performance score of all TDs in each constituency (0-100 scale).
-          </div>
-          <div className="space-y-2">
-            <div className="relative h-8 rounded-lg overflow-hidden mb-3" style={{
-              background: 'linear-gradient(to right, rgb(239, 68, 68), rgb(168, 85, 247))'
-            }}>
-              <div className="absolute inset-0 flex items-center justify-between px-3 text-xs font-semibold text-white drop-shadow-md">
-                <span>Low</span>
-                <span>High</span>
-              </div>
-            </div>
-            <div className="text-gray-500 dark:text-gray-400 text-xs italic">
-              Red = Lower scores • Purple = Higher scores
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Gender layer legend - Responsive */}
-      {activeLayer === 'gender' && !isLoading && (
-        <div className="absolute bottom-0 left-0 right-0 md:top-4 md:left-4 md:right-auto md:bottom-auto bg-white dark:bg-gray-800 bg-opacity-95 md:bg-opacity-90 p-4 rounded-t-lg md:rounded-lg shadow-lg text-xs z-10 w-full md:max-w-xs border-t md:border-none border-gray-200 dark:border-gray-700">
-          <div className="font-bold mb-2 text-sm text-gray-900 dark:text-white">Gender Representation</div>
-          <div className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-            This view shows the number of female TDs in each constituency, ranging from 0 to 5.
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#1e3a8a' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">0 female TDs</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#3b82f6' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">1 female TD</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#60a5fa' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">2 female TDs</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#c084fc' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">3 female TDs</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#9333ea' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">4 female TDs</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-4 rounded border border-gray-300" style={{ backgroundColor: '#6b21a8' }}></div>
-              <span className="text-xs text-gray-700 dark:text-gray-300">5 female TDs</span>
-            </div>
-          </div>
-          <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-            <div className="text-gray-500 dark:text-gray-400 text-xs">
-              <div className="mb-1">Total Dáil: 173 TDs</div>
-              <div>44 female (25.4%) • 129 male (74.6%)</div>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Government layer legend - Responsive */}
-      {activeLayer === 'government' && !isLoading && (
-        <div className="absolute bottom-0 left-0 right-0 md:top-4 md:left-4 md:right-auto md:bottom-auto bg-white dark:bg-gray-800 bg-opacity-95 md:bg-opacity-90 p-4 rounded-t-lg md:rounded-lg shadow-lg z-10 w-full md:max-w-sm border-t md:border-none border-gray-200 dark:border-gray-700">
-          <div className="font-bold mb-2 text-sm text-gray-900 dark:text-white">Government vs Opposition Control</div>
-          <div className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-            This view shows which constituencies have more TDs supporting the current government coalition versus opposition parties.
-          </div>
-          
-          <div className="space-y-2 mb-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-5 rounded border-2 border-gray-400" style={{ backgroundColor: '#10b981' }}></div>
-              <span className="text-xs font-medium text-gray-900 dark:text-white">Majority Government</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-5 rounded border-2 border-gray-400" style={{ backgroundColor: '#fbbf24' }}></div>
-              <span className="text-xs font-medium text-gray-900 dark:text-white">Tied</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-5 rounded border-2 border-gray-400" style={{ backgroundColor: '#ef4444' }}></div>
-              <span className="text-xs font-medium text-gray-900 dark:text-white">Majority Opposition</span>
-            </div>
-          </div>
-          
-          <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-            <div className="text-gray-600 dark:text-gray-400 text-xs">
-              <div className="mb-3">
-                <div className="font-semibold mb-1">Government Coalition (89 TDs):</div>
-                <div className="ml-2 text-gray-500 dark:text-gray-400">
-                  • Fianna Fáil, Fine Gael, Green Party
-                  <br/>
-                  • 8 supporting Independents
-                </div>
-              </div>
-              <div>
-                <div className="font-semibold mb-1">Opposition (84 TDs):</div>
-                <div className="ml-2 text-gray-500 dark:text-gray-400">
-                  • Sinn Féin, Labour, Social Democrats
-                  <br/>
-                  • Aontú, Solidarity-PBP, Independent Ireland
-                  <br/>
-                  • Other Independents
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

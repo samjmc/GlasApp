@@ -875,13 +875,20 @@ router.get('/weekly', async (req: Request, res: Response) => {
     const end = periodRange.endDate;
     const chamber = typeof req.query.chamber === 'string' ? req.query.chamber : null;
 
-    const limit = req.query.limit ? Math.min(parseInt(String(req.query.limit), 10) || 10, 50) : 10;
+    // NOTE: debate_days can contain multiple records per calendar date (multiple sittings/segments).
+    // The UI timeframe selector is based on *dates*, so we:
+    // 1) fetch all debate_day rows in the requested date range (with safety cap)
+    // 2) group them into calendar-day aggregates
+    const rawLimitParam = req.query.limit ? parseInt(String(req.query.limit), 10) : null;
+    const maxRawRows = Number.isFinite(rawLimitParam as number)
+      ? Math.min(Math.max(rawLimitParam as number, 1), 2000)
+      : 2000;
 
     let dayQuery = supabaseDb
       .from('debate_days')
       .select('id, date, chamber, title, word_count, speech_count')
       .order('date', { ascending: false })
-      .limit(limit);
+      .limit(maxRawRows);
 
     if (start) dayQuery = dayQuery.gte('date', start);
     if (end) dayQuery = dayQuery.lte('date', end);
@@ -893,8 +900,9 @@ router.get('/weekly', async (req: Request, res: Response) => {
       throw new Error(dayError.message);
     }
 
-    const dayIds = (days || []).map((day) => day.id);
-    const sectionsByDay: Record<string, any[]> = {};
+    const dayRows = days || [];
+    const dayIds = dayRows.map((day) => day.id);
+    const sectionsByDayId: Record<string, any[]> = {};
 
     if (dayIds.length > 0) {
       const { data: sections, error: sectionError } = await supabaseDb
@@ -907,32 +915,88 @@ router.get('/weekly', async (req: Request, res: Response) => {
       }
 
       for (const section of sections || []) {
-        const list = sectionsByDay[section.debate_day_id] || [];
+        const list = sectionsByDayId[section.debate_day_id] || [];
         list.push(section);
-        sectionsByDay[section.debate_day_id] = list;
+        sectionsByDayId[section.debate_day_id] = list;
       }
     }
 
-    const aggregates = (days || []).map((day) => {
-      const sections = sectionsByDay[day.id] || [];
-      return {
-        id: day.id,
-        date: day.date,
-        chamber: day.chamber,
-        title: day.title,
-        speeches: day.speech_count,
-        words: day.word_count,
-        sectionCount: sections.length,
-        topSections: sections
-          .sort((a, b) => (b.word_count || 0) - (a.word_count || 0))
+    // Group debate_day rows into calendar-day aggregates
+    type DayAggregate = {
+      id: string;
+      date: string | null;
+      chamber: string | null;
+      title: string | null;
+      speeches: number | null;
+      words: number | null;
+      sectionCount: number;
+      topSections: Array<{ title: string | null; wordCount: number | null; speechCount: number | null }>;
+    };
+
+    const groups = new Map<
+      string,
+      {
+        date: string | null;
+        chamber: string | null;
+        dayIds: string[];
+        titles: Set<string>;
+        speeches: number;
+        words: number;
+      }
+    >();
+
+    for (const day of dayRows) {
+      const key = `${day.date ?? 'unknown'}|${day.chamber ?? 'unknown'}`;
+      const group =
+        groups.get(key) || {
+          date: day.date ?? null,
+          chamber: day.chamber ?? null,
+          dayIds: [],
+          titles: new Set<string>(),
+          speeches: 0,
+          words: 0
+        };
+
+      group.dayIds.push(day.id);
+      if (day.title) group.titles.add(day.title);
+      group.speeches += Number(day.speech_count ?? 0) || 0;
+      group.words += Number(day.word_count ?? 0) || 0;
+      groups.set(key, group);
+    }
+
+    const aggregates: DayAggregate[] = Array.from(groups.values())
+      .map((group) => {
+        const allSections = group.dayIds.flatMap((dayId) => sectionsByDayId[dayId] || []);
+        const topSections = allSections
+          .slice()
+          .sort((a, b) => (Number(b.word_count ?? 0) || 0) - (Number(a.word_count ?? 0) || 0))
           .slice(0, 5)
           .map((section) => ({
-            title: section.title,
-            wordCount: section.word_count,
-            speechCount: section.speech_count
-          }))
-      };
-    });
+            title: section.title ?? null,
+            wordCount: section.word_count ?? null,
+            speechCount: section.speech_count ?? null
+          }));
+
+        const titles = Array.from(group.titles);
+        const title =
+          titles.length === 0 ? null : titles.length === 1 ? titles[0] : `${titles.length} sittings`;
+
+        return {
+          id: `${group.date ?? 'unknown'}-${group.chamber ?? 'unknown'}`,
+          date: group.date,
+          chamber: group.chamber,
+          title,
+          speeches: group.speeches,
+          words: group.words,
+          sectionCount: allSections.length,
+          topSections
+        };
+      })
+      .sort((a, b) => {
+        const aTime = a.date ? Date.parse(a.date) : Number.NEGATIVE_INFINITY;
+        const bTime = b.date ? Date.parse(b.date) : Number.NEGATIVE_INFINITY;
+        return bTime - aTime;
+      });
 
     res.json({
       success: true,

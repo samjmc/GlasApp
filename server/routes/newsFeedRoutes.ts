@@ -131,11 +131,11 @@ router.get('/', async (req: Request, res: Response) => {
           let candidateArticles = todayArticles || [];
           let dateRange = 'today';
           
-          // If no articles from today, get the most recent articles (last 7 days)
+          // If no articles from today, get the most recent articles (last 30 days)
           if (candidateArticles.length === 0) {
-            console.log('📅 No articles from today, checking last 7 days...');
-            const sevenDaysAgo = new Date();
-            sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+            console.log('📅 No articles from today, checking last 30 days...');
+            const thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
             
             const { data: recentArticles } = await supabaseDb
               .from('news_articles')
@@ -146,12 +146,31 @@ router.get('/', async (req: Request, res: Response) => {
                 news_sources!inner(logo_url)
               `)
               .eq('visible', true)  // Only show visible articles
-              .gte('published_date', sevenDaysAgo.toISOString())
+              .gte('published_date', thirtyDaysAgo.toISOString())
               .order('published_date', { ascending: false })
-              .limit(50); // Get recent 50 to find the best one
+              .limit(100); // Get recent 100 to find the best one
             
             candidateArticles = recentArticles || [];
-            dateRange = 'last 7 days';
+            dateRange = 'last 30 days';
+          }
+          
+          // If still no articles, get any high-impact articles (no date limit)
+          if (candidateArticles.length === 0) {
+            console.log('📅 No articles from last 30 days, getting any high-impact article...');
+            const { data: anyArticles } = await supabaseDb
+              .from('news_articles')
+              .select(`
+                *,
+                article_td_scores(impact_score),
+                policy_vote_opportunities(id, question_text, answer_options, policy_domain, policy_topic, confidence, rationale, source_hint),
+                news_sources!inner(logo_url)
+              `)
+              .eq('visible', true)
+              .order('published_date', { ascending: false })
+              .limit(100);
+            
+            candidateArticles = anyArticles || [];
+            dateRange = 'all time';
           }
           
           // Calculate total TD impact for each article

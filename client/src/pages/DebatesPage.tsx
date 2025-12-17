@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "wouter";
+import { PageHeader } from "@/components/PageHeader";
 import {
   ResponsiveContainer,
   LineChart,
@@ -199,10 +200,8 @@ type WeeklyDebatesResponse = {
   debates: DebateDaySummary[];
 };
 
-const fetchTopTopics = async (period: { start?: string; end?: string; key: string }): Promise<TopicMetricsResponse> => {
-  const params = new URLSearchParams({ limit: "10", period: period.key });
-  if (period.start) params.set("start", period.start);
-  if (period.end) params.set("end", period.end);
+const fetchTopTopics = async (periodKey: string): Promise<TopicMetricsResponse> => {
+  const params = new URLSearchParams({ limit: "10", period: periodKey });
   const response = await fetch(`/api/debates/topics/top?${params.toString()}`);
   if (!response.ok) {
     throw new Error("Failed to load top debate topics");
@@ -210,10 +209,10 @@ const fetchTopTopics = async (period: { start?: string; end?: string; key: strin
   return response.json();
 };
 
-const fetchWeeklyDebates = async (period: { start?: string; end?: string; key: string }): Promise<WeeklyDebatesResponse> => {
-  const params = new URLSearchParams({ limit: "8", period: period.key });
-  if (period.start) params.set("start", period.start);
-  if (period.end) params.set("end", period.end);
+const fetchWeeklyDebates = async (periodKey: string): Promise<WeeklyDebatesResponse> => {
+  // Let the server decide an appropriate cap for the selected timeframe.
+  // The server groups multiple debate_day rows into calendar-day aggregates.
+  const params = new URLSearchParams({ period: periodKey });
   const response = await fetch(`/api/debates/weekly?${params.toString()}`);
   if (!response.ok) {
     throw new Error("Failed to load weekly debate summaries");
@@ -253,10 +252,8 @@ type DebateAlert = {
   payload?: Record<string, any>;
 };
 
-const fetchAlerts = async (period: { start?: string; end?: string; key: string }): Promise<DebateAlert[]> => {
-  const params = new URLSearchParams({ limit: "12", period: period.key });
-  if (period.start) params.set("start", period.start);
-  if (period.end) params.set("end", period.end);
+const fetchAlerts = async (periodKey: string): Promise<DebateAlert[]> => {
+  const params = new URLSearchParams({ limit: "12", period: periodKey });
   const response = await fetch(`/api/debates/alerts?${params.toString()}`);
   if (!response.ok) {
     throw new Error("Failed to load debate alerts");
@@ -311,10 +308,8 @@ type DebateHighlight = {
   participants?: HighlightParticipantImpact[];
 };
 
-const fetchHighlights = async (period: { start?: string; end?: string; key: string }): Promise<DebateHighlight[]> => {
-  const params = new URLSearchParams({ period: period.key });
-  if (period.start) params.set("start", period.start);
-  if (period.end) params.set("end", period.end);
+const fetchHighlights = async (periodKey: string): Promise<DebateHighlight[]> => {
+  const params = new URLSearchParams({ period: periodKey });
   const response = await fetch(`/api/debates/highlights?${params.toString()}`);
   if (!response.ok) {
     throw new Error("Failed to load debate highlights");
@@ -353,12 +348,10 @@ const fetchHighlights = async (period: { start?: string; end?: string; key: stri
 
 const fetchHistory = async (
   identifier: string,
-  period: { start?: string; end?: string; key: string }
+  periodKey: string
 ): Promise<HistoryResponse | null> => {
   if (!identifier) return null;
-  const params = new URLSearchParams({ periods: "12", period: period.key });
-  if (period.start) params.set("start", period.start);
-  if (period.end) params.set("end", period.end);
+  const params = new URLSearchParams({ periods: "12", period: periodKey });
   const response = await fetch(`/api/debates/td/${encodeURIComponent(identifier)}/history?${params.toString()}`);
   if (!response.ok) {
     throw new Error("Failed to load debate history");
@@ -445,6 +438,7 @@ const formatDelta = (value: number | null | undefined) => {
 const DebatesPage = () => {
   const [periodWeeks, setPeriodWeeks] = useState<number>(1);
   const [selectedMeasure, setSelectedMeasure] = useState<'performance' | 'effectiveness' | 'influence'>('performance');
+  const [activeTab, setActiveTab] = useState<'overview' | 'activity' | 'trends'>('overview');
   const queryClient = useQueryClient();
   const cardClass =
     "mobile-card border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900";
@@ -588,7 +582,7 @@ const DebatesPage = () => {
     refetch: refetchTopTopics,
   } = useQuery({
     queryKey: ["debates", "topic-leaders", periodMeta.key],
-    queryFn: () => fetchTopTopics(periodMeta),
+    queryFn: () => fetchTopTopics(periodMeta.key),
     staleTime: 5 * 60 * 1000,
   });
 
@@ -600,7 +594,7 @@ const DebatesPage = () => {
     refetch: refetchAlerts,
   } = useQuery({
     queryKey: ["debates", "alerts", periodMeta.key],
-    queryFn: () => fetchAlerts(periodMeta),
+    queryFn: () => fetchAlerts(periodMeta.key),
     staleTime: 2 * 60 * 1000,
   });
 
@@ -612,7 +606,7 @@ const DebatesPage = () => {
     refetch: refetchHighlights,
   } = useQuery({
     queryKey: ["debate-highlights", periodMeta.key],
-    queryFn: () => fetchHighlights(periodMeta),
+    queryFn: () => fetchHighlights(periodMeta.key),
   });
 
   const {
@@ -623,7 +617,7 @@ const DebatesPage = () => {
     refetch: refetchWeeklyDebates,
   } = useQuery({
     queryKey: ["debates", "weekly", periodMeta.key],
-    queryFn: () => fetchWeeklyDebates(periodMeta),
+    queryFn: () => fetchWeeklyDebates(periodMeta.key),
     staleTime: 5 * 60 * 1000,
   });
 
@@ -703,7 +697,7 @@ const DebatesPage = () => {
     error: historyErrorObj,
   } = useQuery({
     queryKey: ["debates", "history", topTDName, periodMeta.key],
-    queryFn: () => fetchHistory(topTDName, periodMeta),
+    queryFn: () => fetchHistory(topTDName, periodMeta.key),
     enabled: !!topTDName,
     staleTime: 5 * 60 * 1000,
   });
@@ -730,8 +724,6 @@ const DebatesPage = () => {
 
   const renderRankingCard = (entry: LeaderboardEntry, index: number, variant: "top" | "bottom") => {
     const performanceDelta = entry.lastContribution?.performanceDelta ?? null;
-    const effectivenessDelta = entry.lastContribution?.effectivenessDelta ?? null;
-    const influenceDelta = entry.lastContribution?.influenceDelta ?? null;
     const deltaLabel =
       typeof performanceDelta === "number" ? formatDelta(performanceDelta) : null;
     const deltaClass =
@@ -742,99 +734,52 @@ const DebatesPage = () => {
           ? "text-rose-600 dark:text-rose-400"
           : "text-gray-500 dark:text-gray-400"
         : "text-gray-500 dark:text-gray-400";
-    const badgeClass =
-      variant === "top"
-        ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200"
-        : "bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-200";
-    const badgeLabel = variant === "top" ? "Top performer" : "Needs attention";
-    const lastActivity =
-      entry.lastContribution?.calculatedAt || entry.lastDebateDate || entry.lastUpdatedAt;
 
     return (
       <article
         key={`${variant}-${entry.tdId}`}
-        className="rounded-lg border border-gray-200 bg-white p-3 text-xs shadow-sm transition hover:border-primary/40 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 sm:p-4"
+        className="group rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:border-primary/30 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 w-full"
       >
-        <div className="flex items-start justify-between gap-2">
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-primary/80 dark:text-primary/70">
-              #{index + 1} {variant === "top" ? "overall" : "under-performing"}
-            </p>
-            <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 sm:text-lg">
-              {entry.name || "Unknown TD"}
-            </h3>
-            <p className="text-[11px] text-gray-500 dark:text-gray-400">
-              {entry.party || "Party N/A"}
-              {entry.constituency ? ` • ${entry.constituency}` : ""}
-            </p>
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-1 items-center gap-3 min-w-0">
+            <div
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
+                variant === "top"
+                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
+                  : "bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300"
+              }`}
+            >
+              #{index + 1}
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="truncate text-base font-semibold text-gray-900 dark:text-gray-100">
+                {entry.name || "Unknown TD"}
+              </h3>
+              <p className="truncate text-xs text-gray-500 dark:text-gray-400">
+                {entry.party || "Ind"}
+                {entry.constituency ? ` • ${entry.constituency}` : ""}
+              </p>
+            </div>
           </div>
-          <div className="text-right">
-            <span className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold ${badgeClass}`}>
-              {badgeLabel}
-            </span>
-            <div className="mt-1 text-2xl font-bold text-primary sm:text-3xl">
+
+          <div className="text-right shrink-0">
+            <div className="text-2xl font-bold text-primary">
               {formatPerformanceScore(entry.performanceScore)}
             </div>
-            <div className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Performance
-            </div>
+            {deltaLabel && (
+              <p className={`text-[10px] font-medium ${deltaClass}`}>{deltaLabel}</p>
+            )}
           </div>
         </div>
-        <div className="mt-3 grid grid-cols-3 gap-2 text-[11px] text-gray-600 dark:text-gray-300">
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Effectiveness
-            </p>
-            <p className="font-semibold text-gray-900 dark:text-gray-100">
-              {formatEffectivenessScore(entry.effectivenessScore)}
-            </p>
-            {typeof effectivenessDelta === "number" && (
-              <span
-                className={`text-[10px] font-medium ${
-                  effectivenessDelta > 0
-                    ? "text-emerald-600 dark:text-emerald-400"
-                    : effectivenessDelta < 0
-                    ? "text-rose-600 dark:text-rose-400"
-                    : "text-gray-500 dark:text-gray-400"
-                }`}
-              >
-                {formatDelta(effectivenessDelta)}
-              </span>
-            )}
-          </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Influence
-            </p>
-            <p className="font-semibold text-gray-900 dark:text-gray-100">
-              {formatInfluenceScore(entry.influenceScore)}
-            </p>
-            {typeof influenceDelta === "number" && (
-              <span
-                className={`text-[10px] font-medium ${
-                  influenceDelta > 0
-                    ? "text-emerald-600 dark:text-emerald-400"
-                    : influenceDelta < 0
-                    ? "text-rose-600 dark:text-rose-400"
-                    : "text-gray-500 dark:text-gray-400"
-                }`}
-              >
-                {formatDelta(influenceDelta)}
-              </span>
-            )}
-          </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Last activity
-            </p>
-            <p className="font-semibold text-gray-900 dark:text-gray-100">
-              {lastActivity ? formatDate(lastActivity) : "No recent data"}
-            </p>
-            {deltaLabel && (
-              <span className={`text-[10px] font-medium ${deltaClass}`}>
-                Δ {deltaLabel}
-              </span>
-            )}
+
+        <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-2 text-[11px] text-gray-500 dark:border-gray-800 dark:text-gray-400">
+          <div className="flex gap-3">
+            <span>
+              Eff: <span className="font-medium text-gray-700 dark:text-gray-300">{formatEffectivenessScore(entry.effectivenessScore)}</span>
+            </span>
+            <span>
+              Inf: <span className="font-medium text-gray-700 dark:text-gray-300">{formatInfluenceScore(entry.influenceScore)}</span>
+            </span>
           </div>
         </div>
       </article>
@@ -843,999 +788,809 @@ const DebatesPage = () => {
 
   return (
     <div className="mobile-stack pb-20 w-full max-w-full overflow-x-hidden">
-      <header className="flex flex-col gap-3">
-        <h1 className="text-3xl font-semibold">Debate Intelligence</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Explore debate activity, speaker impact, and premium analysis coming to Glas Politics.
-        </p>
-        <div className="flex gap-4 text-sm">
-          <button
-            onClick={() => {
-              refetchLeaderboard();
-              refetchPartyMetrics();
-              refetchTopTopics();
-              refetchHighlights();
-              refetchWeeklyDebates();
-            refetchAlerts();
-            }}
-            className="rounded-md bg-primary px-3 py-1 font-medium text-white hover:bg-primary/90"
-          >
-            Refresh data
-          </button>
-          <Link
-            href="/debates/workspace"
-            className="rounded-md border border-primary px-3 py-1 font-medium text-primary hover:bg-primary/10"
-          >
-            Media workspace
-          </Link>
-          <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-            <span>Debates:</span>
-            {weeklyLoading
-              ? "Loading"
-              : weeklyError
-              ? "Error"
-              : weeklyDebateSummaries.length}
-            <span>• Ranked TDs:</span>
-            {leaderboardLoading
-              ? "Loading"
-              : leaderboardError
-              ? "Error"
-              : (leaderboardData?.leaderboard.top.length || 0) + (leaderboardData?.leaderboard.bottom.length || 0)}
-          </div>
-        </div>
-        <div className="flex flex-wrap items-center gap-4 text-sm">
-          <label className="flex items-center gap-2">
-            <span className="text-gray-600 dark:text-gray-400">Leaderboard window</span>
+      <PageHeader
+        className="mb-4"
+        title="Debates"
+        tooltipTitle="What you can do here"
+        bullets={[
+          "Explore recent Dáil debate activity by timeframe.",
+          "See ranked TD and party impact from debate contributions.",
+          "Open the workspace for deeper monitoring and analysis."
+        ]}
+        right={
+          <div className="flex items-center gap-2">
             <select
               value={periodWeeks}
               onChange={(event) => setPeriodWeeks(parseInt(event.target.value, 10))}
-              className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+              className="h-9 rounded-lg border border-gray-200 bg-white px-3 py-1 text-sm font-medium text-gray-900 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
             >
               <option value={1}>Past week</option>
               <option value={2}>Past 2 weeks</option>
               <option value={4}>Past month</option>
               <option value={12}>Past quarter</option>
             </select>
-          </label>
-        </div>
-      </header>
+          </div>
+        }
+      />
 
-      <section className={`${cardClass}`}>
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-              TD performance · {periodMeta.label}
-            </h2>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              Top movers and laggards based on debate performance, effectiveness, and influence.
-            </p>
-          </div>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            Window: {leaderboardPeriod.label}
-            {leaderboardPeriod.start && leaderboardPeriod.end
-              ? ` (${formatDate(leaderboardPeriod.start)} – ${formatDate(leaderboardPeriod.end)})`
-              : ""}
-            {leaderboardUpdatedAt ? ` · Updated ${leaderboardUpdatedAt}` : ""}
-          </span>
-        </div>
-        {leaderboardLoading ? (
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={`leaderboard-skeleton-${index}`}
-                className="h-40 animate-pulse rounded-xl border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800"
-              />
-            ))}
-          </div>
-        ) : leaderboardError ? (
-          <p className="mt-3 text-sm text-red-600 dark:text-red-400">
-            {leaderboardErrorObj instanceof Error ? leaderboardErrorObj.message : "Failed to load leaderboard."}
-          </p>
-        ) : topPerformers.length === 0 && bottomPerformers.length === 0 ? (
-          <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
-            No TD performance data available for the last 30 days.
-          </p>
-        ) : (
-          <div className="mt-5 grid gap-6 md:grid-cols-2">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                Top performers ({periodMeta.label})
-              </h3>
-              <div className="mt-3 space-y-4">
-                {topPerformers.map((entry, index) => renderRankingCard(entry, index, "top"))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                Under-performing trend ({periodMeta.label})
-              </h3>
-              <div className="mt-3 space-y-4">
-                {bottomPerformers.map((entry, index) => renderRankingCard(entry, index, "bottom"))}
-              </div>
-            </div>
-          </div>
-        )}
-      </section>
-
-      <section className={`${cardClass}`}>
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Debate highlights</h2>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            {highlightsLoading ? "Loading…" : `${highlights.length} latest`}
-          </span>
-        </div>
-        {highlightsLoading ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Compiling fresh highlights…</p>
-        ) : highlightsError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-            {highlightsErrorObj instanceof Error ? highlightsErrorObj.message : "Failed to load debate highlights"}
-          </p>
-        ) : highlights.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No highlights generated yet.</p>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2">
-            {highlights.map((highlight) => (
-              <details
-                key={highlight.id}
-                className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
-              >
-                <summary className="flex cursor-pointer list-none flex-col gap-2">
-                  <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary dark:text-primary/80">
-                    <span>{formatDate(highlight.debate?.date || highlight.createdAt)}</span>
-                    <span>•</span>
-                    <span>{highlight.debate?.chamber?.toUpperCase?.() || highlight.debate?.chamber || 'DÁIL'}</span>
-                    {highlight.outcome && (
-                      <>
-                        <span>•</span>
-                        <span>{highlight.outcome.outcome?.toUpperCase() || "Outcome"}</span>
-                      </>
-                    )}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 transition group-open:text-primary dark:text-gray-100 dark:group-open:text-primary/80">
-                    {highlight.headline}
-                  </h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Click to view summary
-                  </p>
-                </summary>
-                <div className="mt-3 border-t border-gray-100 pt-3 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300">
-                  <p className="whitespace-pre-line">{highlight.narrative}</p>
-                  {highlight.debate?.title && (
-                    <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                      Debate: {highlight.debate.title}
-                    </p>
-                  )}
-                  {highlight.outcome && (
-                    <div className="mt-3 text-xs">
-                      <p className="font-semibold text-gray-700 dark:text-gray-300">Outcome details</p>
-                      {typeof highlight.outcome.confidence === "number" && (
-                        <p className="mt-1 text-gray-600 dark:text-gray-400">
-                          Winner confidence: {Math.round((highlight.outcome.confidence || 0) * 100)}%
-                        </p>
-                      )}
-                      {highlight.outcome.concessions && (
-                        <p className="mt-1 text-emerald-600 dark:text-emerald-400">
-                          Key concessions: {highlight.outcome.concessions}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                  {highlight.participants && highlight.participants.length > 0 && (
-                    <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs dark:border-gray-700 dark:bg-gray-800/40">
-                      <p className="font-semibold text-gray-700 dark:text-gray-200">Score impact</p>
-                      <div className="mt-3 space-y-3">
-                        {highlight.participants.map((participant) => {
-                          const badge = getRatingBadge(participant.performanceRating);
-                          return (
-                            <div
-                              key={participant.tdId}
-                              className="rounded-md border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-900"
-                            >
-                              <div className="flex items-start justify-between gap-3">
-                                <div>
-                                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                                    {participant.name}
-                                  </p>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    {participant.party ?? "Independent"}
-                                    {participant.constituency ? ` • ${participant.constituency}` : ""}
-                                  </p>
-                                </div>
-                                <span className={`rounded-full px-2 py-1 text-[11px] font-semibold ${badge.className}`}>
-                                  {badge.label}
-                                </span>
-                              </div>
-                              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                                <div>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    Performance
-                                  </p>
-                                  <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
-                                    {formatPerformanceScore(participant.performanceScore)}
-                                    {participant.performanceDelta !== null && (
-                                      <span
-                                        className={`text-[11px] font-semibold ${
-                                          participant.performanceDelta > 0
-                                            ? "text-emerald-600 dark:text-emerald-400"
-                                            : participant.performanceDelta < 0
-                                            ? "text-rose-600 dark:text-rose-400"
-                                            : "text-gray-500 dark:text-gray-400"
-                                        }`}
-                                      >
-                                        {formatDelta(participant.performanceDelta)}
-                                      </span>
-                                    )}
-                                  </p>
-                                </div>
-                                <div>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    Effectiveness
-                                  </p>
-                                  <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
-                                    {formatEffectivenessScore(participant.effectivenessScore)}
-                                    {participant.effectivenessDelta !== null && (
-                                      <span
-                                        className={`text-[11px] font-semibold ${
-                                          participant.effectivenessDelta > 0
-                                            ? "text-emerald-600 dark:text-emerald-400"
-                                            : participant.effectivenessDelta < 0
-                                            ? "text-rose-600 dark:text-rose-400"
-                                            : "text-gray-500 dark:text-gray-400"
-                                        }`}
-                                      >
-                                        {formatDelta(participant.effectivenessDelta)}
-                                      </span>
-                                    )}
-                                  </p>
-                                </div>
-                                <div>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    Influence
-                                  </p>
-                                  <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
-                                    {formatInfluenceScore(participant.influenceScore)}
-                                    {participant.influenceDelta !== null && (
-                                      <span
-                                        className={`text-[11px] font-semibold ${
-                                          participant.influenceDelta > 0
-                                            ? "text-emerald-600 dark:text-emerald-400"
-                                            : participant.influenceDelta < 0
-                                            ? "text-rose-600 dark:text-rose-400"
-                                            : "text-gray-500 dark:text-gray-400"
-                                        }`}
-                                      >
-                                        {formatDelta(participant.influenceDelta)}
-                                      </span>
-                                    )}
-                                  </p>
-                                </div>
-                              </div>
-                              {participant.topics.length > 0 && (
-                                <p className="mt-3 text-[11px] text-gray-500 dark:text-gray-400">
-                                  Topics: {participant.topics.slice(0, 6).join(", ")}
-                                </p>
-                              )}
-                              {participant.reasoning && (
-                                <p className="mt-2 text-[11px] italic text-gray-500 dark:text-gray-400">
-                                  {participant.reasoning}
-                                </p>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </details>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section className={`${cardClass} space-y-4`}>
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Latest debate snapshots</h2>
-          <button
-            onClick={() => refetchWeeklyDebates()}
-            className="text-sm font-medium text-primary hover:text-primary/80"
-          >
-            Refresh
-          </button>
-        </div>
-
-        {weeklyLoading ? (
-          <div className="grid gap-4 md:grid-cols-2">
-            {Array.from({ length: 2 }).map((_, index) => (
-              <div
-                key={`debate-skeleton-${index}`}
-                className="animate-pulse rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900"
-              >
-                <div className="h-5 w-1/2 rounded bg-gray-200 dark:bg-gray-700" />
-                <div className="mt-3 space-y-2">
-                  <div className="h-4 w-full rounded bg-gray-200 dark:bg-gray-700" />
-                  <div className="h-4 w-2/3 rounded bg-gray-200 dark:bg-gray-700" />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : weeklyError ? (
-          <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-200">
-            {weeklyErrorObj instanceof Error ? weeklyErrorObj.message : "Unable to load weekly debate summaries"}
-          </div>
-        ) : weeklyDebateSummaries.length === 0 ? (
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 text-gray-600 shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
-            <p className="text-sm">No debates recorded over the last few days.</p>
-          </div>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2">
-            {weeklyDebateSummaries.slice(0, 4).map((debate) => {
-              const sections = Array.isArray(debate.topSections) ? debate.topSections : [];
-              const topSectionWithContent =
-                sections.find((section) => (section?.wordCount || 0) > 0) ??
-                sections[0];
-              const displayTitle =
-                debate.title && debate.title.trim().length > 0 && debate.title.trim().toLowerCase() !== "debate"
-                  ? debate.title
-                  : topSectionWithContent?.title || `${debate.chamber ?? "Debate"} session`;
-              const debateDate = debate.date ? formatDate(debate.date) : "Recent debate";
-
-              return (
-                <article
-                  key={debate.id}
-                  className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
-                >
-                  <div className="flex items-start justify-between gap-3 text-sm text-gray-600 dark:text-gray-400">
-                    <span className="font-semibold text-gray-900 dark:text-gray-100">{debateDate}</span>
-                    <span>{debate.chamber?.toUpperCase?.() || debate.chamber || "Oireachtas"}</span>
-                  </div>
-                  <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-gray-100">{displayTitle}</h3>
-                  <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    {formatWordCount(debate.words ?? 0)} · {formatCount(debate.speeches)} speeches ·{" "}
-                    {formatCount(debate.sectionCount)} sections
-                  </p>
-                  {sections.length > 0 ? (
-                    <ul className="mt-4 space-y-1 text-xs text-gray-600 dark:text-gray-300">
-                      {sections.slice(0, 4).map((section, index) => (
-                        <li key={`${debate.id}-section-${index}`} className="flex items-center justify-between gap-2">
-                          <span className="truncate">{section.title && section.title.trim().length > 0 ? section.title : `Section ${index + 1}`}</span>
-                          <span className="text-gray-500 dark:text-gray-400">
-                            {formatWordCount(section.wordCount ?? 0)}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">Sections still processing summaries.</p>
-                  )}
-                </article>
-              );
-            })}
-          </div>
-        )}
-      </section>
-
-      <section className={cardClass}>
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Week in review</h2>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            {weeklyDebateSummaries.length > 0
-              ? `${weeklyDebateSummaries.length} debate day${weeklyDebateSummaries.length === 1 ? "" : "s"}`
-              : "Awaiting data"}
-          </span>
-        </div>
-        {weeklyLoading ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Compiling weekly debate activity…</p>
-        ) : weeklyError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">Unable to load weekly debate metrics.</p>
-        ) : weeklyDebateSummaries.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No debate data found for this period.</p>
-        ) : (
-          <>
-            {weeklyTotals && (
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-xl bg-primary/5 p-4 text-sm text-primary dark:bg-primary/20">
-                  <p className="text-xs uppercase tracking-wide text-primary/80 dark:text-primary/70">Words spoken</p>
-                  <p className="mt-1 text-xl font-semibold text-primary">
-                    {formatWordCount(weeklyTotals.totalWords)}
-                  </p>
-                </div>
-                <div className="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
-                  <p className="text-xs uppercase tracking-wide">Speeches logged</p>
-                  <p className="mt-1 text-xl font-semibold">{formatCount(weeklyTotals.totalSpeeches)}</p>
-                </div>
-                <div className="rounded-xl bg-slate-100 p-4 text-sm text-slate-700 dark:bg-slate-700/40 dark:text-slate-200">
-                  <p className="text-xs uppercase tracking-wide">Debate sections</p>
-                  <p className="mt-1 text-xl font-semibold">{formatCount(weeklyTotals.totalSections)}</p>
-                </div>
-              </div>
-            )}
-            {weeklyTotals?.busiestDay && (
-              <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
-                <span className="font-semibold">Busiest day:</span>{" "}
-                {formatDate(weeklyTotals.busiestDay.date || new Date().toISOString())} ·{" "}
-                {formatWordCount(weeklyTotals.busiestDay.words ?? 0)} ·{" "}
-                {formatCount(weeklyTotals.busiestDay.speeches)} speeches
-              </div>
-            )}
-            <div className="mt-4 space-y-3 text-xs text-gray-600 dark:text-gray-300">
-              {weeklyDebateSummaries.slice(0, 8).map((debate) => (
-                <div
-                  key={`weekly-summary-${debate.id}`}
-                  className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-gray-100 bg-gray-50 px-3 py-2 dark:border-gray-700 dark:bg-gray-800/40"
-                >
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-gray-900 dark:text-gray-100">
-                      {formatDate(debate.date || new Date().toISOString())}
-                    </span>
-                    <span className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                      {debate.chamber?.toUpperCase?.() || debate.chamber || "Oireachtas"} ·{" "}
-                      {debate.title && debate.title.trim().length > 0 ? debate.title : "Session highlights"}
-                    </span>
-                  </div>
-                  <div className="flex gap-3 text-[11px] font-semibold text-gray-600 dark:text-gray-300">
-                    <span>{formatWordCount(debate.words ?? 0)}</span>
-                    <span>{formatCount(debate.speeches)} speeches</span>
-                    <span>{formatCount(debate.sectionCount)} sections</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-      </section>
-
-      <section className={cardClass}>
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Party comparison</h2>
-          {partyMetrics?.generatedAt && (
-            <span className="text-xs text-gray-500 dark:text-gray-400">
-              Window: {partyPeriod.label}
-              {partyPeriod.start && partyPeriod.end
-                ? ` (${formatDate(partyPeriod.start)} – ${formatDate(partyPeriod.end)})`
-                : ""}
-              {` · Updated ${formatDate(partyMetrics.generatedAt)}`}
-            </span>
-          )}
-        </div>
-        {partyLoading ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading party aggregates…</p>
-        ) : partyError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-            {partyErrorObj instanceof Error ? partyErrorObj.message : "Failed to load party metrics"}
-          </p>
-        ) : partyChartData.length ? (
-          <>
-            {/* Measure Filter */}
-            <div className="mt-4 flex gap-2">
-              {(['performance', 'effectiveness', 'influence'] as const).map((measure) => {
-                const config = measureConfig[measure];
-                const isActive = selectedMeasure === measure;
-                return (
-                  <button
-                    key={measure}
-                    onClick={() => setSelectedMeasure(measure)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'bg-indigo-600 text-white dark:bg-indigo-500'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    {config.label}
-                  </button>
-                );
-              })}
-            </div>
+      {/* Tab Navigation */}
+      <div className="mb-6">
+        <nav 
+          className="grid grid-cols-3 gap-2 rounded-2xl border border-gray-200 bg-white/80 p-2 shadow-sm dark:border-gray-800 dark:bg-gray-900/60" 
+          aria-label="Tabs"
+        >
+          {(['overview', 'activity', 'trends'] as const).map((tab) => {
+            const isActive = activeTab === tab;
+            const labels = {
+              overview: 'Overview',
+              activity: 'Activity Log',
+              trends: 'Analysis'
+            };
             
-            <div className="mt-4 h-60 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={partyChartData}
-                  margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
-                  barCategoryGap="5%"
-                >
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-700" />
-                  <XAxis 
-                    dataKey="name" 
-                    hide={true}
-                  />
-                  <YAxis 
-                    domain={yAxisDomain}
-                    tick={{ fontSize: 12 }} 
-                    tickFormatter={(value) => Number(value).toFixed(1)} 
-                  />
-                  <Tooltip
-                    formatter={(value: number) => [`${Number(value).toFixed(2)}`, measureConfig[selectedMeasure].label]}
-                    labelFormatter={(label) => `Party: ${label}`}
-                  />
-                  <Bar 
-                    dataKey={measureConfig[selectedMeasure].key} 
-                    name={measureConfig[selectedMeasure].label} 
-                    fill={measureConfig[selectedMeasure].color} 
-                    radius={[4, 4, 0, 0]}
-                  >
-                    <LabelList 
-                      dataKey="name" 
-                      position="inside" 
-                      fill="#fff"
-                      fontSize={11}
-                      fontWeight="medium"
-                      angle={-90}
-                      textAnchor="middle"
-                      className="dark:fill-white"
-                    />
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="mt-6 overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
-                <thead>
-                  <tr className="text-left text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                    <th className="py-2 pr-4">Party</th>
-                    <th className="py-2 pr-4">TDs</th>
-                    <th className="py-2 pr-4">Avg performance</th>
-                    <th className="py-2 pr-4">Avg effectiveness</th>
-                    <th className="py-2 pr-4">Avg influence</th>
-                    <th className="py-2 pr-4">Avg Δ (30d)</th>
-                    <th className="py-2 pr-4">Total Δ</th>
-                    <th className="py-2 pr-4">Top performer</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-                  {(partyMetrics?.parties ?? [])
-                    .filter((party) => party.party && party.party.toLowerCase() !== "unknown")
-                    .map((party) => {
-                    const avgDeltaClass =
-                      party.avgPerformanceDelta > 0
-                        ? "text-emerald-600 dark:text-emerald-300"
-                        : party.avgPerformanceDelta < 0
-                        ? "text-rose-600 dark:text-rose-300"
-                        : "text-gray-500 dark:text-gray-400";
-                    const totalDeltaClass =
-                      party.totalPerformanceDelta > 0
-                        ? "text-emerald-600 dark:text-emerald-300"
-                        : party.totalPerformanceDelta < 0
-                        ? "text-rose-600 dark:text-rose-300"
-                        : "text-gray-500 dark:text-gray-400";
-                    return (
-                      <tr key={party.party} className="text-gray-700 dark:text-gray-200">
-                        <td className="py-2 pr-4 font-medium">
-                          {party.party?.toLowerCase() === "people before profit" ? "PBP" : party.party}
-                        </td>
-                        <td className="py-2 pr-4">{formatCount(party.tdCount)}</td>
-                        <td className="py-2 pr-4">{formatPerformanceScore(party.avgPerformance)}</td>
-                        <td className="py-2 pr-4">{formatEffectivenessScore(party.avgEffectiveness)}</td>
-                        <td className="py-2 pr-4">{formatInfluenceScore(party.avgInfluence)}</td>
-                        <td className={`py-2 pr-4 font-semibold ${avgDeltaClass}`}>
-                          {formatDelta(party.avgPerformanceDelta)}
-                        </td>
-                        <td className={`py-2 pr-4 font-semibold ${totalDeltaClass}`}>
-                          {formatDelta(party.totalPerformanceDelta)}
-                        </td>
-                        <td className="py-2 pr-4">
-                          {party.topPerformer ? (
-                            <div className="flex flex-col">
-                              <span className="font-medium text-gray-900 dark:text-gray-100">
-                                {party.topPerformer.name ?? "Leading TD"}
-                              </span>
-                              <span className="text-xs text-gray-500 dark:text-gray-400">
-                                Score {formatPerformanceScore(party.topPerformer.performanceScore)}
-                                {typeof party.topPerformer.lastPerformanceDelta === "number" && (
-                                  <>
-                                    {" "}
-                                    · Δ {formatDelta(party.topPerformer.lastPerformanceDelta)}
-                                  </>
-                                )}
-                              </span>
-                            </div>
-                          ) : (
-                            <span className="text-gray-500 dark:text-gray-400">—</span>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </>
-        ) : (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            Party metrics will appear after the first aggregation run.
-          </p>
-        )}
-      </section>
-
-      <section className={cardClass}>
-        <h2 className="text-2xl font-semibold">Topic spotlight</h2>
-        {topicsLoading ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading topic leaders…</p>
-        ) : topicsError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-            {topicsErrorObj instanceof Error ? topicsErrorObj.message : "Failed to load topic data"}
-          </p>
-        ) : topTopics?.topics?.length ? (
-          <div className="mt-4 grid gap-3">
-            {topTopics.topics.map((topic) => (
-              <div key={topic.topic} className="space-y-1">
-                <div className="flex items-center justify-between text-sm text-gray-700 dark:text-gray-200">
-                  <span className="font-medium">{topic.topic}</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
-                    {topic.tdCount} TDs · {topic.minutes.toFixed(1)} mins
-                  </span>
-                </div>
-                <div className="h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-indigo-500"
-                    style={{ width: `${Math.min(100, topic.avgShare * 100)}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            Topic coverage will appear once stance extraction is complete.
-          </p>
-        )}
-      </section>
-
-      <section className={accentCardClass}>
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold flex items-center gap-2">
-            <span role="img" aria-label="alert">
-              ⚠️
-            </span>
-            Consistency alerts
-          </h2>
-          <span className="text-xs text-amber-700 dark:text-amber-300">Premium signal</span>
-        </div>
-        {alertsLoading ? (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Scanning debates for shifts…</p>
-        ) : alertsError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-            {alertsErrorObj instanceof Error ? alertsErrorObj.message : "Failed to load alerts"}
-          </p>
-        ) : alerts.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            No major consistency changes detected during this period.
-          </p>
-        ) : (
-          <div className="mt-4 space-y-3">
-            {alerts.map((alert) => (
-              <article
-                key={alert.id}
-                className="rounded-xl border border-amber-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-md dark:border-amber-500/30 dark:bg-amber-950/20"
+            return (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActiveTab(tab)}
+                className={[
+                  "h-11 w-full rounded-xl px-2 text-xs font-semibold tracking-wide transition",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900",
+                  isActive
+                    ? "bg-primary text-white shadow"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+                ].join(" ")}
+                aria-current={isActive ? "page" : undefined}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-amber-700 dark:text-amber-200">
-                      <span>{alert.type === "flip_flop" ? "Flip-flop alert" : "Topic surge"}</span>
-                      <span
-                        className={`rounded px-1.5 py-0.5 text-[0.65rem] font-semibold ${
-                          alert.status === "resolved"
-                            ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-200"
-                            : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-100"
-                        }`}
-                      >
-                        {alert.status === "resolved" ? "Reviewed" : "New"}
-                      </span>
-                      {alert.confidence !== null && (
-                        <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[0.65rem] font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-100">
-                          {(alert.confidence * 100).toFixed(0)}% confidence
-                        </span>
-                      )}
+                <span className="block truncate">{labels[tab]}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </div>
+
+      {activeTab === 'overview' && (
+        <div className="space-y-6">
+          {/* 1. Week in review stats */}
+          <section className={cardClass}>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Week in review</h2>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                {weeklyDebateSummaries.length > 0
+                  ? `${weeklyDebateSummaries.length} debate day${weeklyDebateSummaries.length === 1 ? "" : "s"}`
+                  : "Awaiting data"}
+              </span>
+            </div>
+            {weeklyLoading ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Compiling weekly debate activity…</p>
+            ) : weeklyError ? (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">Unable to load weekly debate metrics.</p>
+            ) : weeklyDebateSummaries.length === 0 ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No debate data found for this period.</p>
+            ) : (
+              <>
+                {weeklyTotals && (
+                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                    <div className="rounded-xl bg-primary/5 p-4 text-sm text-primary dark:bg-primary/20">
+                      <p className="text-xs uppercase tracking-wide text-primary/80 dark:text-primary/70">Words spoken</p>
+                      <p className="mt-1 text-xl font-semibold text-primary">
+                        {formatWordCount(weeklyTotals.totalWords)}
+                      </p>
                     </div>
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{alert.summary}</h3>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">
-                      {alert.topic && <span>Topic: {alert.topic}</span>}
-                      {alert.previousPosition && alert.currentPosition && (
-                        <span className="ml-2">
-                          {alert.previousPosition} → {alert.currentPosition}
-                        </span>
-                      )}
+                    <div className="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
+                      <p className="text-xs uppercase tracking-wide">Speeches logged</p>
+                      <p className="mt-1 text-xl font-semibold">{formatCount(weeklyTotals.totalSpeeches)}</p>
+                    </div>
+                    <div className="rounded-xl bg-slate-100 p-4 text-sm text-slate-700 dark:bg-slate-700/40 dark:text-slate-200">
+                      <p className="text-xs uppercase tracking-wide">Debate sections</p>
+                      <p className="mt-1 text-xl font-semibold">{formatCount(weeklyTotals.totalSections)}</p>
                     </div>
                   </div>
-                  {alert.td?.politician_name && (
-                    <div className="text-right text-xs text-gray-600 dark:text-gray-300">
-                      <Link
-                        href={`/my-politics/${encodeURIComponent(alert.td.politician_name)}`}
-                        className="font-semibold text-gray-900 hover:text-primary dark:text-gray-100"
-                      >
-                        {alert.td.politician_name}
-                      </Link>
-                      {alert.td.party && <div>{alert.td.party}</div>}
-                      {alert.td.constituency && <div>{alert.td.constituency}</div>}
-                    </div>
-                  )}
-                </div>
-                <div className="mt-3 flex justify-end">
-                  <button
-                    type="button"
-                    onClick={() => updateAlertStatus.mutate({ id: alert.id, status: "resolved" })}
-                    disabled={alert.status === "resolved" || updateAlertStatus.isPending}
-                    className="rounded-md border border-transparent bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-500/20 dark:text-emerald-200 dark:hover:bg-emerald-500/30"
-                  >
-                    {alert.status === "resolved" ? "Marked reviewed" : "Mark as reviewed"}
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section className={cardClass}>
-        <h2 className="text-xl font-semibold">Trend spotlight</h2>
-        {historyLoading ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading weekly history…</p>
-        ) : historyError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-            {historyErrorObj instanceof Error ? historyErrorObj.message : "Unable to load history"}
-          </p>
-        ) : topHistory?.history?.length ? (
-          <>
-            <>
-              <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-gray-600 dark:text-gray-400">
-                <span>
-                  {topHistory.td?.name || "Leading TD"} · Past {topHistory.history.length} weeks
-                </span>
-                {trendSummary && (
-                  <span
-                    className={`font-medium ${
-                      trendSummary.direction === "up"
-                        ? "text-emerald-600"
-                        : trendSummary.direction === "down"
-                        ? "text-red-500"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    {trendSummary.direction === "up" ? "▲" : trendSummary.direction === "down" ? "▼" : "→"}{" "}
-                    {Math.abs(trendSummary.deltaWords).toLocaleString()} words (
-                    {trendSummary.percent.toFixed(1)}%)
-                  </span>
                 )}
-              </div>
+                {weeklyTotals?.busiestDay && (
+                  <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+                    <span className="font-semibold">Busiest day:</span>{" "}
+                    {formatDate(weeklyTotals.busiestDay.date || new Date().toISOString())} ·{" "}
+                    {formatWordCount(weeklyTotals.busiestDay.words ?? 0)} ·{" "}
+                    {formatCount(weeklyTotals.busiestDay.speeches)} speeches
+                  </div>
+                )}
+              </>
+            )}
+          </section>
 
-              <div className="mt-4 h-40">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart
-                    data={[...topHistory.history].reverse().map((entry) => ({
-                      label: new Date(entry.periodEnd).toLocaleDateString("en-IE", {
-                        month: "short",
-                        day: "numeric",
-                      }),
-                      words: entry.wordsSpoken,
-                    }))}
-                    margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+          {/* 2. Top Performers */}
+          <section className={`${cardClass}`}>
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                  TD performance · {periodMeta.label}
+                </h2>
+              </div>
+            </div>
+            {leaderboardLoading ? (
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <div
+                    key={`leaderboard-skeleton-${index}`}
+                    className="h-40 animate-pulse rounded-xl border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800"
+                  />
+                ))}
+              </div>
+            ) : leaderboardError ? (
+              <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+                {leaderboardErrorObj instanceof Error ? leaderboardErrorObj.message : "Failed to load leaderboard."}
+              </p>
+            ) : topPerformers.length === 0 && bottomPerformers.length === 0 ? (
+              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+                No TD performance data available for the last 30 days.
+              </p>
+            ) : (
+              <div className="mt-5 grid gap-6 md:grid-cols-2">
+                <div className="min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Top performers ({periodMeta.label})
+                  </h3>
+                  <div className="mt-3 space-y-4">
+                    {topPerformers.map((entry, index) => renderRankingCard(entry, index, "top"))}
+                  </div>
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Worst Performers ({periodMeta.label})
+                  </h3>
+                  <div className="mt-3 space-y-4">
+                    {bottomPerformers.map((entry, index) => renderRankingCard(entry, index, "bottom"))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+
+          {/* 3. Consistency Alerts */}
+          <section className={accentCardClass}>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <span role="img" aria-label="alert">
+                  ⚠️
+                </span>
+                Consistency alerts
+              </h2>
+              <span className="text-xs text-amber-700 dark:text-amber-300">Premium signal</span>
+            </div>
+            {alertsLoading ? (
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Scanning debates for shifts…</p>
+            ) : alertsError ? (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                {alertsErrorObj instanceof Error ? alertsErrorObj.message : "Failed to load alerts"}
+              </p>
+            ) : alerts.length === 0 ? (
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                No major consistency changes detected during this period.
+              </p>
+            ) : (
+              <div className="mt-4 space-y-3">
+                {alerts.map((alert) => (
+                  <article
+                    key={alert.id}
+                    className="rounded-xl border border-amber-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-md dark:border-amber-500/30 dark:bg-amber-950/20"
                   >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                    <XAxis dataKey="label" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} />
-                    <Tooltip />
-                    <Line
-                      type="monotone"
-                      dataKey="words"
-                      stroke="#2563eb"
-                      strokeWidth={2}
-                      dot={{ r: 3 }}
-                      activeDot={{ r: 5 }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-
-              <div className="mt-4 grid gap-3 text-xs text-gray-600 dark:text-gray-300">
-                {topHistory.history.slice(0, 4).map((entry) => (
-                  <div key={`${entry.periodStart}-${entry.periodEnd}`} className="flex items-center justify-between">
-                    <div>
-                      {new Date(entry.periodStart).toLocaleDateString("en-IE", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                      {" – "}
-                      {new Date(entry.periodEnd).toLocaleDateString("en-IE", {
-                        month: "short",
-                        day: "numeric",
-                      })}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-amber-700 dark:text-amber-200">
+                          <span>{alert.type === "flip_flop" ? "Flip-flop alert" : "Topic surge"}</span>
+                          <span
+                            className={`rounded px-1.5 py-0.5 text-[0.65rem] font-semibold ${
+                              alert.status === "resolved"
+                                ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-200"
+                                : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-100"
+                            }`}
+                          >
+                            {alert.status === "resolved" ? "Reviewed" : "New"}
+                          </span>
+                          {alert.confidence !== null && (
+                            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[0.65rem] font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-100">
+                              {(alert.confidence * 100).toFixed(0)}% confidence
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{alert.summary}</h3>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">
+                          {alert.topic && <span>Topic: {alert.topic}</span>}
+                          {alert.previousPosition && alert.currentPosition && (
+                            <span className="ml-2">
+                              {alert.previousPosition} → {alert.currentPosition}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      {alert.td?.politician_name && (
+                        <div className="text-right text-xs text-gray-600 dark:text-gray-300">
+                          <Link
+                            href={`/my-politics/${encodeURIComponent(alert.td.politician_name)}`}
+                            className="font-semibold text-gray-900 hover:text-primary dark:text-gray-100"
+                          >
+                            {alert.td.politician_name}
+                          </Link>
+                          {alert.td.party && <div>{alert.td.party}</div>}
+                          {alert.td.constituency && <div>{alert.td.constituency}</div>}
+                        </div>
+                      )}
                     </div>
-                    <div className="text-gray-500 dark:text-gray-400">
-                      {formatWordCount(entry.wordsSpoken)} · {entry.speeches} speeches · Eff{" "}
-                      {formatEffectivenessScore(entry.effectivenessScore)} · Influence{" "}
-                      {formatInfluenceScore(entry.influenceScore)} · Sentiment {formatSentimentScore(entry.sentimentScore)}
+                    <div className="mt-3 flex justify-end">
+                      <button
+                        type="button"
+                        onClick={() => updateAlertStatus.mutate({ id: alert.id, status: "resolved" })}
+                        disabled={alert.status === "resolved" || updateAlertStatus.isPending}
+                        className="rounded-md border border-transparent bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-500/20 dark:text-emerald-200 dark:hover:bg-emerald-500/30"
+                      >
+                        {alert.status === "resolved" ? "Marked reviewed" : "Mark as reviewed"}
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+      )}
+
+      {activeTab === 'activity' && (
+        <div className="space-y-6">
+          {/* 1. Latest debate snapshots */}
+          <section className={`${cardClass} space-y-4`}>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Latest debate snapshots</h2>
+              <button
+                onClick={() => refetchWeeklyDebates()}
+                className="text-sm font-medium text-primary hover:text-primary/80"
+              >
+                Refresh
+              </button>
+            </div>
+
+            {weeklyLoading ? (
+              <div className="grid gap-4 md:grid-cols-2">
+                {Array.from({ length: 2 }).map((_, index) => (
+                  <div
+                    key={`debate-skeleton-${index}`}
+                    className="animate-pulse rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900"
+                  >
+                    <div className="h-5 w-1/2 rounded bg-gray-200 dark:bg-gray-700" />
+                    <div className="mt-3 space-y-2">
+                      <div className="h-4 w-full rounded bg-gray-200 dark:bg-gray-700" />
+                      <div className="h-4 w-2/3 rounded bg-gray-200 dark:bg-gray-700" />
                     </div>
                   </div>
                 ))}
               </div>
-            </>
-          </>
-        ) : (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            Weekly history will appear once metrics have multiple entries.
-          </p>
-        )}
-      </section>
+            ) : weeklyError ? (
+              <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-200">
+                {weeklyErrorObj instanceof Error ? weeklyErrorObj.message : "Unable to load weekly debate summaries"}
+              </div>
+            ) : weeklyDebateSummaries.length === 0 ? (
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 text-gray-600 shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+                <p className="text-sm">No debates recorded over the last few days.</p>
+              </div>
+            ) : (
+              <div className="grid gap-4 md:grid-cols-2">
+                {weeklyDebateSummaries.slice(0, 4).map((debate) => {
+                  const sections = Array.isArray(debate.topSections) ? debate.topSections : [];
+                  const topSectionWithContent =
+                    sections.find((section) => (section?.wordCount || 0) > 0) ??
+                    sections[0];
+                  const displayTitle =
+                    debate.title && debate.title.trim().length > 0 && debate.title.trim().toLowerCase() !== "debate"
+                      ? debate.title
+                      : topSectionWithContent?.title || `${debate.chamber ?? "Debate"} session`;
+                  const debateDate = debate.date ? formatDate(debate.date) : "Recent debate";
 
-      <section className={cardClass}>
-        <div className="flex items-center gap-2">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Weekly highlights</h2>
-          <button
-            type="button"
-            onClick={() => refetchHighlights()}
-            className="rounded-full border border-gray-200 px-2 py-1 text-xs text-gray-500 hover:border-primary hover:text-primary dark:border-gray-700 dark:text-gray-300 dark:hover:border-primary dark:hover:text-primary"
-          >
-            Refresh
-          </button>
-        </div>
-        {highlightsLoading ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Generating debate highlights…</p>
-        ) : highlightsError ? (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
-            {highlightsErrorObj instanceof Error ? highlightsErrorObj.message : "Failed to load debate highlights"}
-          </p>
-        ) : highlights.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No highlights generated yet.</p>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2">
-            {highlights.map((highlight) => (
-              <details
-                key={highlight.id}
-                className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
-              >
-                <summary className="flex cursor-pointer list-none flex-col gap-2">
-                  <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary dark:text-primary/80">
-                    <span>{formatDate(highlight.debate?.date || highlight.createdAt)}</span>
-                    <span>•</span>
-                    <span>{highlight.debate?.chamber?.toUpperCase?.() || highlight.debate?.chamber || 'DÁIL'}</span>
-                    {highlight.outcome && (
-                      <>
+                  return (
+                    <article
+                      key={debate.id}
+                      className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+                    >
+                      <div className="flex items-start justify-between gap-3 text-sm text-gray-600 dark:text-gray-400">
+                        <span className="font-semibold text-gray-900 dark:text-gray-100">{debateDate}</span>
+                        <span>{debate.chamber?.toUpperCase?.() || debate.chamber || "Oireachtas"}</span>
+                      </div>
+                      <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-gray-100">{displayTitle}</h3>
+                      <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                        {formatWordCount(debate.words ?? 0)} · {formatCount(debate.speeches)} speeches ·{" "}
+                        {formatCount(debate.sectionCount)} sections
+                      </p>
+                      {sections.length > 0 ? (
+                        <ul className="mt-4 space-y-1 text-xs text-gray-600 dark:text-gray-300">
+                          {sections.slice(0, 4).map((section, index) => (
+                            <li key={`${debate.id}-section-${index}`} className="flex items-center justify-between gap-2">
+                              <span className="truncate">{section.title && section.title.trim().length > 0 ? section.title : `Section ${index + 1}`}</span>
+                              <span className="text-gray-500 dark:text-gray-400">
+                                {formatWordCount(section.wordCount ?? 0)}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">Sections still processing summaries.</p>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+
+          {/* 2. Highlights */}
+          <section className={`${cardClass}`}>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Debate highlights</h2>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                {highlightsLoading ? "Loading…" : `${highlights.length} latest`}
+              </span>
+            </div>
+            {highlightsLoading ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Compiling fresh highlights…</p>
+            ) : highlightsError ? (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                {highlightsErrorObj instanceof Error ? highlightsErrorObj.message : "Failed to load debate highlights"}
+              </p>
+            ) : highlights.length === 0 ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No highlights generated yet.</p>
+            ) : (
+              <div className="grid gap-4 md:grid-cols-2">
+                {highlights.map((highlight) => (
+                  <details
+                    key={highlight.id}
+                    className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+                  >
+                    <summary className="flex cursor-pointer list-none flex-col gap-2">
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary dark:text-primary/80">
+                        <span>{formatDate(highlight.debate?.date || highlight.createdAt)}</span>
                         <span>•</span>
-                        <span>{highlight.outcome.outcome?.toUpperCase() || "Outcome"}</span>
-                      </>
+                        <span>{highlight.debate?.chamber?.toUpperCase?.() || highlight.debate?.chamber || 'DÁIL'}</span>
+                        {highlight.outcome && (
+                          <>
+                            <span>•</span>
+                            <span>{highlight.outcome.outcome?.toUpperCase() || "Outcome"}</span>
+                          </>
+                        )}
+                      </div>
+                      <h3 className="text-lg font-semibold text-gray-900 transition group-open:text-primary dark:text-gray-100 dark:group-open:text-primary/80">
+                        {highlight.headline}
+                      </h3>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        Click to view summary
+                      </p>
+                    </summary>
+                    <div className="mt-3 border-t border-gray-100 pt-3 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300">
+                      <p className="whitespace-pre-line">{highlight.narrative}</p>
+                      {highlight.debate?.title && (
+                        <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                          Debate: {highlight.debate.title}
+                        </p>
+                      )}
+                      {highlight.outcome && (
+                        <div className="mt-3 text-xs">
+                          <p className="font-semibold text-gray-700 dark:text-gray-300">Outcome details</p>
+                          {typeof highlight.outcome.confidence === "number" && (
+                            <p className="mt-1 text-gray-600 dark:text-gray-400">
+                              Winner confidence: {Math.round((highlight.outcome.confidence || 0) * 100)}%
+                            </p>
+                          )}
+                          {highlight.outcome.concessions && (
+                            <p className="mt-1 text-emerald-600 dark:text-emerald-400">
+                              Key concessions: {highlight.outcome.concessions}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                      {highlight.participants && highlight.participants.length > 0 && (
+                        <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs dark:border-gray-700 dark:bg-gray-800/40">
+                          <p className="font-semibold text-gray-700 dark:text-gray-200">Score impact</p>
+                          <div className="mt-3 space-y-3">
+                            {highlight.participants.map((participant) => {
+                              const badge = getRatingBadge(participant.performanceRating);
+                              return (
+                                <div
+                                  key={participant.tdId}
+                                  className="rounded-md border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-900"
+                                >
+                                  <div className="flex items-start justify-between gap-3">
+                                    <div>
+                                      <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                                        {participant.name}
+                                      </p>
+                                      <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                                        {participant.party ?? "Independent"}
+                                        {participant.constituency ? ` • ${participant.constituency}` : ""}
+                                      </p>
+                                    </div>
+                                    <span className={`rounded-full px-2 py-1 text-[11px] font-semibold ${badge.className}`}>
+                                      {badge.label}
+                                    </span>
+                                  </div>
+                                  <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                                    <div>
+                                      <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                                        Performance
+                                      </p>
+                                      <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
+                                        {formatPerformanceScore(participant.performanceScore)}
+                                        {participant.performanceDelta !== null && (
+                                          <span
+                                            className={`text-[11px] font-semibold ${
+                                              participant.performanceDelta > 0
+                                                ? "text-emerald-600 dark:text-emerald-400"
+                                                : participant.performanceDelta < 0
+                                                ? "text-rose-600 dark:text-rose-400"
+                                                : "text-gray-500 dark:text-gray-400"
+                                            }`}
+                                          >
+                                            {formatDelta(participant.performanceDelta)}
+                                          </span>
+                                        )}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                                        Effectiveness
+                                      </p>
+                                      <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
+                                        {formatEffectivenessScore(participant.effectivenessScore)}
+                                        {participant.effectivenessDelta !== null && (
+                                          <span
+                                            className={`text-[11px] font-semibold ${
+                                              participant.effectivenessDelta > 0
+                                                ? "text-emerald-600 dark:text-emerald-400"
+                                                : participant.effectivenessDelta < 0
+                                                ? "text-rose-600 dark:text-rose-400"
+                                                : "text-gray-500 dark:text-gray-400"
+                                            }`}
+                                          >
+                                            {formatDelta(participant.effectivenessDelta)}
+                                          </span>
+                                        )}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                                        Influence
+                                      </p>
+                                      <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
+                                        {formatInfluenceScore(participant.influenceScore)}
+                                        {participant.influenceDelta !== null && (
+                                          <span
+                                            className={`text-[11px] font-semibold ${
+                                              participant.influenceDelta > 0
+                                                ? "text-emerald-600 dark:text-emerald-400"
+                                                : participant.influenceDelta < 0
+                                                ? "text-rose-600 dark:text-rose-400"
+                                                : "text-gray-500 dark:text-gray-400"
+                                            }`}
+                                          >
+                                            {formatDelta(participant.influenceDelta)}
+                                          </span>
+                                        )}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  {participant.topics.length > 0 && (
+                                    <p className="mt-3 text-[11px] text-gray-500 dark:text-gray-400">
+                                      Topics: {participant.topics.slice(0, 6).join(", ")}
+                                    </p>
+                                  )}
+                                  {participant.reasoning && (
+                                    <p className="mt-2 text-[11px] italic text-gray-500 dark:text-gray-400">
+                                      {participant.reasoning}
+                                    </p>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+      )}
+
+      {activeTab === 'trends' && (
+        <div className="space-y-6">
+          {/* 1. Trend Spotlight */}
+          <section className={cardClass}>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Trend spotlight</h2>
+            {historyLoading ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading weekly history…</p>
+            ) : historyError ? (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                {historyErrorObj instanceof Error ? historyErrorObj.message : "Unable to load history"}
+              </p>
+            ) : topHistory?.history?.length ? (
+              <>
+                <>
+                  <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-gray-600 dark:text-gray-400">
+                    <span>
+                      {topHistory.td?.name || "Leading TD"} · Past {topHistory.history.length} weeks
+                    </span>
+                    {trendSummary && (
+                      <span
+                        className={`font-medium ${
+                          trendSummary.direction === "up"
+                            ? "text-emerald-600"
+                            : trendSummary.direction === "down"
+                            ? "text-red-500"
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {trendSummary.direction === "up" ? "▲" : trendSummary.direction === "down" ? "▼" : "→"}{" "}
+                        {Math.abs(trendSummary.deltaWords).toLocaleString()} words (
+                        {trendSummary.percent.toFixed(1)}%)
+                      </span>
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 transition group-open:text-primary dark:text-gray-100 dark:group-open:text-primary/80">
-                    {highlight.headline}
-                  </h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Click to view summary
-                  </p>
-                </summary>
-                <div className="mt-3 border-t border-gray-100 pt-3 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300">
-                  <p className="whitespace-pre-line">{highlight.narrative}</p>
-                  {highlight.debate?.title && (
-                    <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                      Debate: {highlight.debate.title}
-                    </p>
-                  )}
-                  {highlight.outcome && (
-                    <div className="mt-3 text-xs">
-                      <p className="font-semibold text-gray-700 dark:text-gray-300">Outcome details</p>
-                      {typeof highlight.outcome.confidence === "number" && (
-                        <p className="mt-1 text-gray-600 dark:text-gray-400">
-                          Winner confidence: {Math.round((highlight.outcome.confidence || 0) * 100)}%
-                        </p>
-                      )}
-                      {highlight.outcome.concessions && (
-                        <p className="mt-1 text-emerald-600 dark:text-emerald-400">
-                          Key concessions: {highlight.outcome.concessions}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                  {highlight.participants && highlight.participants.length > 0 && (
-                    <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs dark:border-gray-700 dark:bg-gray-800/40">
-                      <p className="font-semibold text-gray-700 dark:text-gray-200">Score impact</p>
-                      <div className="mt-3 space-y-3">
-                        {highlight.participants.map((participant) => {
-                          const badge = getRatingBadge(participant.performanceRating);
-                          return (
-                            <div
-                              key={participant.tdId}
-                              className="rounded-md border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-900"
-                            >
-                              <div className="flex items-start justify-between gap-3">
-                                <div>
-                                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                                    {participant.name}
-                                  </p>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    {participant.party ?? "Independent"}
-                                    {participant.constituency ? ` • ${participant.constituency}` : ""}
-                                  </p>
-                                </div>
-                                <span className={`rounded-full px-2 py-1 text-[11px] font-semibold ${badge.className}`}>
-                                  {badge.label}
-                                </span>
-                              </div>
-                              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                                <div>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    Performance
-                                  </p>
-                                  <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
-                                    {formatPerformanceScore(participant.performanceScore)}
-                                    {participant.performanceDelta !== null && (
-                                      <span
-                                        className={`text-[11px] font-semibold ${
-                                          participant.performanceDelta > 0
-                                            ? "text-emerald-600 dark:text-emerald-400"
-                                            : participant.performanceDelta < 0
-                                            ? "text-rose-600 dark:text-rose-400"
-                                            : "text-gray-500 dark:text-gray-400"
-                                        }`}
-                                      >
-                                        {formatDelta(participant.performanceDelta)}
-                                      </span>
-                                    )}
-                                  </p>
-                                </div>
-                                <div>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    Effectiveness
-                                  </p>
-                                  <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
-                                    {formatEffectivenessScore(participant.effectivenessScore)}
-                                    {participant.effectivenessDelta !== null && (
-                                      <span
-                                        className={`text-[11px] font-semibold ${
-                                          participant.effectivenessDelta > 0
-                                            ? "text-emerald-600 dark:text-emerald-400"
-                                            : participant.effectivenessDelta < 0
-                                            ? "text-rose-600 dark:text-rose-400"
-                                            : "text-gray-500 dark:text-gray-400"
-                                        }`}
-                                      >
-                                        {formatDelta(participant.effectivenessDelta)}
-                                      </span>
-                                    )}
-                                  </p>
-                                </div>
-                                <div>
-                                  <p className="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                    Influence
-                                  </p>
-                                  <p className="flex items-center gap-2 text-sm text-gray-900 dark:text-gray-100">
-                                    {formatInfluenceScore(participant.influenceScore)}
-                                    {participant.influenceDelta !== null && (
-                                      <span
-                                        className={`text-[11px] font-semibold ${
-                                          participant.influenceDelta > 0
-                                            ? "text-emerald-600 dark:text-emerald-400"
-                                            : participant.influenceDelta < 0
-                                            ? "text-rose-600 dark:text-rose-400"
-                                            : "text-gray-500 dark:text-gray-400"
-                                        }`}
-                                      >
-                                        {formatDelta(participant.influenceDelta)}
-                                      </span>
-                                    )}
-                                  </p>
-                                </div>
-                              </div>
-                              {participant.topics.length > 0 && (
-                                <p className="mt-3 text-[11px] text-gray-500 dark:text-gray-400">
-                                  Topics: {participant.topics.slice(0, 6).join(", ")}
-                                </p>
-                              )}
-                              {participant.reasoning && (
-                                <p className="mt-2 text-[11px] italic text-gray-500 dark:text-gray-400">
-                                  {participant.reasoning}
-                                </p>
-                              )}
-                            </div>
-                          );
-                        })}
+
+                  <div className="mt-4 h-40">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart
+                        data={[...topHistory.history].reverse().map((entry) => ({
+                          label: new Date(entry.periodEnd).toLocaleDateString("en-IE", {
+                            month: "short",
+                            day: "numeric",
+                          }),
+                          words: entry.wordsSpoken,
+                        }))}
+                        margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                        <XAxis dataKey="label" tick={{ fontSize: 12 }} />
+                        <YAxis tick={{ fontSize: 12 }} />
+                        <Tooltip />
+                        <Line
+                          type="monotone"
+                          dataKey="words"
+                          stroke="#2563eb"
+                          strokeWidth={2}
+                          dot={{ r: 3 }}
+                          activeDot={{ r: 5 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                  <div className="mt-4 grid gap-3 text-xs text-gray-600 dark:text-gray-300">
+                    {topHistory.history.slice(0, 4).map((entry) => (
+                      <div key={`${entry.periodStart}-${entry.periodEnd}`} className="flex items-center justify-between">
+                        <div>
+                          {new Date(entry.periodStart).toLocaleDateString("en-IE", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                          {" – "}
+                          {new Date(entry.periodEnd).toLocaleDateString("en-IE", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </div>
+                        <div className="text-gray-500 dark:text-gray-400">
+                          {formatWordCount(entry.wordsSpoken)} · {entry.speeches} speeches · Eff{" "}
+                          {formatEffectivenessScore(entry.effectivenessScore)} · Influence{" "}
+                          {formatInfluenceScore(entry.influenceScore)} · Sentiment {formatSentimentScore(entry.sentimentScore)}
+                        </div>
                       </div>
+                    ))}
+                  </div>
+                </>
+              </>
+            ) : (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                Weekly history will appear once metrics have multiple entries.
+              </p>
+            )}
+          </section>
+
+          {/* 2. Topic Spotlight */}
+          <section className={cardClass}>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Topic spotlight</h2>
+            {topicsLoading ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading topic leaders…</p>
+            ) : topicsError ? (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                {topicsErrorObj instanceof Error ? topicsErrorObj.message : "Failed to load topic data"}
+              </p>
+            ) : topTopics?.topics?.length ? (
+              <div className="mt-4 grid gap-3">
+                {topTopics.topics.map((topic) => (
+                  <div key={topic.topic} className="space-y-1">
+                    <div className="flex items-center justify-between text-sm text-gray-700 dark:text-gray-200">
+                      <span className="font-medium">{topic.topic}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        {topic.tdCount} TDs · {topic.minutes.toFixed(1)} mins
+                      </span>
                     </div>
-                  )}
+                    <div className="h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-indigo-500"
+                        style={{ width: `${Math.min(100, topic.avgShare * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                Topic coverage will appear once stance extraction is complete.
+              </p>
+            )}
+          </section>
+
+          {/* 3. Party Comparison */}
+          <section className={cardClass}>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Party comparison</h2>
+              {partyMetrics?.generatedAt && (
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  Window: {partyPeriod.label}
+                  {partyPeriod.start && partyPeriod.end
+                    ? ` (${formatDate(partyPeriod.start)} – ${formatDate(partyPeriod.end)})`
+                    : ""}
+                  {` · Updated ${formatDate(partyMetrics.generatedAt)}`}
+                </span>
+              )}
+            </div>
+            {partyLoading ? (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading party aggregates…</p>
+            ) : partyError ? (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                {partyErrorObj instanceof Error ? partyErrorObj.message : "Failed to load party metrics"}
+              </p>
+            ) : partyChartData.length ? (
+              <>
+                {/* Measure Filter */}
+                <div className="mt-4 flex gap-2">
+                  {(['performance', 'effectiveness', 'influence'] as const).map((measure) => {
+                    const config = measureConfig[measure];
+                    const isActive = selectedMeasure === measure;
+                    return (
+                      <button
+                        key={measure}
+                        onClick={() => setSelectedMeasure(measure)}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          isActive
+                            ? 'bg-indigo-600 text-white dark:bg-indigo-500'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                        }`}
+                      >
+                        {config.label}
+                      </button>
+                    );
+                  })}
                 </div>
-              </details>
-            ))}
-          </div>
-        )}
-      </section>
+                
+                <div className="mt-4 h-60 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={partyChartData}
+                      margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
+                      barCategoryGap="5%"
+                    >
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-700" />
+                      <XAxis 
+                        dataKey="name" 
+                        hide={true}
+                      />
+                      <YAxis 
+                        domain={yAxisDomain}
+                        tick={{ fontSize: 12 }} 
+                        tickFormatter={(value) => Number(value).toFixed(1)} 
+                      />
+                      <Tooltip
+                        formatter={(value: number) => [`${Number(value).toFixed(2)}`, measureConfig[selectedMeasure].label]}
+                        labelFormatter={(label) => `Party: ${label}`}
+                      />
+                      <Bar 
+                        dataKey={measureConfig[selectedMeasure].key} 
+                        name={measureConfig[selectedMeasure].label} 
+                        fill={measureConfig[selectedMeasure].color} 
+                        radius={[4, 4, 0, 0]}
+                      >
+                        <LabelList 
+                          dataKey="name" 
+                          position="inside" 
+                          fill="#fff"
+                          fontSize={11}
+                          fontWeight="medium"
+                          angle={-90}
+                          textAnchor="middle"
+                          className="dark:fill-white"
+                        />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                <div className="mt-6 overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                    <thead>
+                      <tr className="text-left text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        <th className="py-2 pr-4">Party</th>
+                        <th className="py-2 pr-4">TDs</th>
+                        <th className="py-2 pr-4">Avg performance</th>
+                        <th className="py-2 pr-4">Avg effectiveness</th>
+                        <th className="py-2 pr-4">Avg influence</th>
+                        <th className="py-2 pr-4">Avg Δ (30d)</th>
+                        <th className="py-2 pr-4">Total Δ</th>
+                        <th className="py-2 pr-4">Top performer</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
+                      {(partyMetrics?.parties ?? [])
+                        .filter((party) => party.party && party.party.toLowerCase() !== "unknown")
+                        .map((party) => {
+                        const avgDeltaClass =
+                          party.avgPerformanceDelta > 0
+                            ? "text-emerald-600 dark:text-emerald-300"
+                            : party.avgPerformanceDelta < 0
+                            ? "text-rose-600 dark:text-rose-300"
+                            : "text-gray-500 dark:text-gray-400";
+                        const totalDeltaClass =
+                          party.totalPerformanceDelta > 0
+                            ? "text-emerald-600 dark:text-emerald-300"
+                            : party.totalPerformanceDelta < 0
+                            ? "text-rose-600 dark:text-rose-300"
+                            : "text-gray-500 dark:text-gray-400";
+                        return (
+                          <tr key={party.party} className="text-gray-700 dark:text-gray-200">
+                            <td className="py-2 pr-4 font-medium">
+                              {party.party?.toLowerCase() === "people before profit" ? "PBP" : party.party}
+                            </td>
+                            <td className="py-2 pr-4">{formatCount(party.tdCount)}</td>
+                            <td className="py-2 pr-4">{formatPerformanceScore(party.avgPerformance)}</td>
+                            <td className="py-2 pr-4">{formatEffectivenessScore(party.avgEffectiveness)}</td>
+                            <td className="py-2 pr-4">{formatInfluenceScore(party.avgInfluence)}</td>
+                            <td className={`py-2 pr-4 font-semibold ${avgDeltaClass}`}>
+                              {formatDelta(party.avgPerformanceDelta)}
+                            </td>
+                            <td className={`py-2 pr-4 font-semibold ${totalDeltaClass}`}>
+                              {formatDelta(party.totalPerformanceDelta)}
+                            </td>
+                            <td className="py-2 pr-4">
+                              {party.topPerformer ? (
+                                <div className="flex flex-col">
+                                  <span className="font-medium text-gray-900 dark:text-gray-100">
+                                    {party.topPerformer.name ?? "Leading TD"}
+                                  </span>
+                                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                                    Score {formatPerformanceScore(party.topPerformer.performanceScore)}
+                                    {typeof party.topPerformer.lastPerformanceDelta === "number" && (
+                                      <>
+                                        {" "}
+                                        · Δ {formatDelta(party.topPerformer.lastPerformanceDelta)}
+                                      </>
+                                    )}
+                                  </span>
+                                </div>
+                              ) : (
+                                <span className="text-gray-500 dark:text-gray-400">—</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : (
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                Party metrics will appear after the first aggregation run.
+              </p>
+            )}
+          </section>
+        </div>
+      )}
     </div>
   );
 };
