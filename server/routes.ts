@@ -1,4 +1,5 @@
-import type { Express, Request, Response } from "express";
+import { timingSafeEqual } from "crypto";
+import type { Express, NextFunction, Request, RequestHandler, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
@@ -7,7 +8,7 @@ import { ActivityTracker } from "./services/activityTracker";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
-import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
+import { isAdmin, isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
 import geographicRoutes from "./routes/geographic";
 import authRoutes from "./routes/authRoutes";
@@ -56,6 +57,46 @@ import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
 import votingRoutes from "./routes/parliamentary/votingRoutes";
+
+const adminJobSecret =
+  process.env.ADMIN_API_SECRET ||
+  process.env.ADMIN_SECRET ||
+  process.env.CRON_SECRET ||
+  process.env.JOB_SECRET;
+
+function safeSecretEquals(actual: string, expected: string): boolean {
+  const actualBuffer = Buffer.from(actual);
+  const expectedBuffer = Buffer.from(expected);
+
+  return (
+    actualBuffer.length === expectedBuffer.length &&
+    timingSafeEqual(actualBuffer, expectedBuffer)
+  );
+}
+
+function getAdminSecretFromRequest(req: Request): string | null {
+  const authHeader = req.headers.authorization;
+  const bearerToken =
+    typeof authHeader === "string" && authHeader.startsWith("Bearer ")
+      ? authHeader.slice("Bearer ".length)
+      : null;
+
+  return (
+    req.header("x-admin-secret") ||
+    req.header("x-cron-secret") ||
+    bearerToken
+  );
+}
+
+const requireAdminAccess: RequestHandler = async (req, res, next) => {
+  const requestSecret = getAdminSecretFromRequest(req);
+
+  if (adminJobSecret && requestSecret && safeSecretEquals(requestSecret, adminJobSecret)) {
+    return next();
+  }
+
+  return isAdmin(req, res, next as NextFunction);
+};
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
@@ -154,16 +195,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/daily-session", dailySessionRoutes);
   
   // Register cache management routes for monitoring and clearing cache
-  app.use("/api/cache", cacheRoutes);
+  app.use("/api/cache", requireAdminAccess, cacheRoutes);
   app.use("/api/account", accountRoutes);
   
   // Register admin routes for news scraping and system management
-  app.use("/api/admin/news-scraper", newsScraperRoutes);
-  app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", debateAdminRoutes);
-  app.use("/api/admin/baselines", baselineAdminRoutes);
-  app.use("/api/admin/articles", manualArticleRoutes);
-  app.use("/api/admin/td-scoring", tdScoringAdminRoutes);
+  app.use("/api/admin/news-scraper", requireAdminAccess, newsScraperRoutes);
+  app.use("/api/admin/parliamentary", requireAdminAccess, parliamentaryAdminRoutes);
+  app.use("/api/admin/debates", requireAdminAccess, debateAdminRoutes);
+  app.use("/api/admin/baselines", requireAdminAccess, baselineAdminRoutes);
+  app.use("/api/admin/articles", requireAdminAccess, manualArticleRoutes);
+  app.use("/api/admin/td-scoring", requireAdminAccess, tdScoringAdminRoutes);
   
   // Register user rating routes for TDs
   app.use("/api/ratings", tdRatingsRoutes);
