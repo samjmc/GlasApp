@@ -7,6 +7,7 @@ import type { Express, RequestHandler } from "express";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
+import { getUserFromRequest } from "./auth/supabaseAuth";
 
 // Extend Express User type for Replit Auth
 declare global {
@@ -29,9 +30,10 @@ declare global {
 
 // Make Replit auth optional - skip if not in Replit environment
 const isReplitEnvironment = !!process.env.REPLIT_DOMAINS;
+const allowLocalAuthBypass = !isReplitEnvironment && process.env.NODE_ENV !== 'production';
 
 if (!isReplitEnvironment) {
-  console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Using local development mode.");
+  console.warn("⚠️  REPLIT_DOMAINS not set - legacy Replit Auth disabled.");
 }
 
 const getOidcConfig = memoize(
@@ -105,7 +107,7 @@ export async function setupAuth(app: Express) {
 
   // Only set up Replit auth if in Replit environment
   if (!isReplitEnvironment) {
-    console.log("ℹ️  Skipping Replit Auth setup - running in local development mode");
+    console.log("ℹ️  Skipping Replit Auth setup - Supabase Auth handles off-Replit requests");
     return;
   }
 
@@ -180,19 +182,39 @@ export async function setupAuth(app: Express) {
 }
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
-  // In local development (non-Replit), allow all requests for testing
+  // Off-Replit deployments use Supabase Auth, but some legacy routes still read
+  // req.user.claims.sub. Map a valid Supabase bearer user into that shape.
   if (!isReplitEnvironment) {
-    console.log("🔓 Local dev mode - bypassing authentication");
-    // Mock user for development
-    req.user = {
-      claims: {
-        sub: "dev-user-123",
-        email: "dev@localhost",
-        first_name: "Dev",
-        last_name: "User"
-      }
-    };
-    return next();
+    const supabaseUser = await getUserFromRequest(req);
+    if (supabaseUser) {
+      const metadata = supabaseUser.user_metadata || {};
+      req.user = {
+        ...supabaseUser,
+        claims: {
+          sub: supabaseUser.id,
+          email: supabaseUser.email,
+          first_name: metadata.first_name || metadata.firstName || metadata.name,
+          last_name: metadata.last_name || metadata.lastName
+        }
+      };
+      return next();
+    }
+
+    if (allowLocalAuthBypass) {
+      console.log("🔓 Local dev mode - bypassing authentication");
+      // Mock user for development
+      req.user = {
+        claims: {
+          sub: "dev-user-123",
+          email: "dev@localhost",
+          first_name: "Dev",
+          last_name: "User"
+        }
+      };
+      return next();
+    }
+
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   const user = req.user as any;

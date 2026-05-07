@@ -340,23 +340,49 @@ async function processArticleWithMultiAgent(
   });
   
   // Step 2: Process each substantial TD mention
+  let successfulScores = 0;
+  let firstScoredTD: { name: string; party: string; constituency: string } | null = null;
+  let substantialMentions = 0;
+  let failedMentions = 0;
+
   for (const mention of highConfidenceMentions) {
     // Check if this is a substantial mention
     if (!TDExtractionService.isSubstantialMention(fullText, mention.name)) {
       console.log(`   ⏭️ Skipping ${mention.name} - only passing mention`);
       continue;
     }
-    
+
+    substantialMentions++;
+
     try {
-      await processTDWithMultiAgent(article, mention, importance, stats);
+      const scoreApplied = await processTDWithMultiAgent(article, mention, importance, stats);
+      if (scoreApplied) {
+        successfulScores++;
+        firstScoredTD ??= mention;
+      }
     } catch (error) {
       console.error(`   ❌ Error processing ${mention.name}:`, error);
       stats.errors++;
+      failedMentions++;
     }
   }
-  
-  // Mark article as processed
-  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], true);
+
+  const scoreApplied = successfulScores > 0;
+  let skippedReason: string | undefined;
+  let errorMessage: string | undefined;
+
+  if (!scoreApplied) {
+    if (substantialMentions === 0) {
+      skippedReason = 'No substantial TD mentions found';
+    } else if (failedMentions > 0) {
+      errorMessage = `TD scoring failed for all ${substantialMentions} substantial mention(s)`;
+    } else {
+      skippedReason = 'No TD scores were applied';
+    }
+  }
+
+  // Mark article as scored only when a TD score row was successfully written.
+  await markArticleProcessed(article.id, importance, firstScoredTD, scoreApplied, skippedReason, errorMessage);
 }
 
 /**
@@ -367,7 +393,7 @@ async function processTDWithMultiAgent(
   tdMention: { name: string; party: string; constituency: string; confidence: number },
   importance: { score: number; topicCategory: string },
   stats: ProcessingStats
-): Promise<void> {
+): Promise<boolean> {
   
   console.log(`\n   🎯 Multi-agent scoring for ${tdMention.name}...`);
   
@@ -419,7 +445,7 @@ async function processTDWithMultiAgent(
   // Save to article_td_scores junction table
   const converted = NewsArticleScoringTeam.convertToArticleAnalysis(multiAgentResult);
   
-  await supabase
+  const { error: scoreError } = await supabase
     .from('article_td_scores')
     .upsert({
       article_id: article.id,
@@ -440,10 +466,14 @@ async function processTDWithMultiAgent(
     }, { 
       onConflict: 'article_id,politician_name'
     });
+
+  if (scoreError) {
+    throw new Error(`Failed to save TD score for ${tdMention.name}: ${scoreError.message}`);
+  }
   
   // Save TD policy stance if present
   if (converted.td_policy_stance) {
-    await supabase
+    const { error: stanceError } = await supabase
       .from('td_policy_stances')
       .upsert({
         article_id: article.id,
@@ -456,6 +486,10 @@ async function processTDWithMultiAgent(
       }, {
         onConflict: 'article_id,politician_name'
       });
+
+    if (stanceError) {
+      console.error(`   ⚠️ Failed to save TD policy stance for ${tdMention.name}:`, stanceError);
+    }
   }
   
   stats.tdsUpdated++;
@@ -485,6 +519,8 @@ async function processTDWithMultiAgent(
       console.error(`   ⚠️ Failed to create policy vote opportunity:`, error);
     }
   }
+
+  return true;
 }
 
 /**
@@ -494,7 +530,9 @@ async function markArticleProcessed(
   articleId: number,
   importance: { score: number; reasoning: string },
   primaryTD: { name: string; party: string; constituency: string } | null,
-  scoreApplied: boolean
+  scoreApplied: boolean,
+  skippedReason?: string,
+  errorMessage?: string
 ): Promise<void> {
   
   const updateData: any = {
@@ -502,7 +540,9 @@ async function markArticleProcessed(
     score_applied: scoreApplied,
     importance_score: importance.score,
     importance_reasoning: importance.reasoning,
-    analyzed_by: scoreApplied ? 'multi-agent' : null
+    analyzed_by: scoreApplied ? 'multi-agent' : null,
+    skipped_reason: scoreApplied ? null : skippedReason ?? null,
+    error_message: errorMessage ?? null
   };
   
   if (primaryTD) {
