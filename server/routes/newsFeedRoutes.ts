@@ -15,6 +15,10 @@ router.get('/', async (req: Request, res: Response) => {
   try {
     console.log('📰 News feed request received');
     const { limit = 20, offset = 0, sort = 'recent' } = req.query;
+    const requestedLimit = Number(limit);
+    const requestedOffset = Number(offset);
+    const pageLimit = Number.isFinite(requestedLimit) && requestedLimit > 0 ? requestedLimit : 20;
+    const pageOffset = Number.isFinite(requestedOffset) && requestedOffset >= 0 ? requestedOffset : 0;
     const regionCode: RegionCode = req.regionCode || DEFAULT_REGION_CODE;
 
     const mockResponse = REGION_NEWS_MOCK[regionCode];
@@ -81,7 +85,7 @@ router.get('/', async (req: Request, res: Response) => {
             // Filter for articles with impact, then sort by:
             // 1. TD-scored articles first (by recency)
             // 2. Policy-vote-only articles second (by recency)
-            articles = articlesWithTotalImpact
+            const sortedImpactArticles = articlesWithTotalImpact
               .filter((a: any) => a.hasAnyImpact)
               .sort((a: any, b: any) => {
                 const aHasTD = a.totalTDImpact > 0;
@@ -93,13 +97,13 @@ router.get('/', async (req: Request, res: Response) => {
                 
                 // Within same category, sort by recency
                 return new Date(b.published_date).getTime() - new Date(a.published_date).getTime();
-              })
-              .slice(0, Number(limit));
+              });
             
-            count = articles.length;
+            count = sortedImpactArticles.length;
+            articles = sortedImpactArticles.slice(pageOffset, pageOffset + pageLimit);
             const tdScoredCount = articles.filter((a: any) => a.totalTDImpact > 0).length;
             const policyOnlyCount = articles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
-            console.log(`✨ Found ${count} high-impact articles. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
+            console.log(`✨ Found ${count} high-impact articles. Returning ${articles.length}: TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
           }
         } else if (sort === 'today') {
           // TODAY'S (or most recent) Biggest Impact
@@ -196,7 +200,7 @@ router.get('/', async (req: Request, res: Response) => {
           articles = articlesWithTotalImpact
             .filter((a: any) => a.hasAnyImpact)
             .sort((a: any, b: any) => b.totalTDImpact - a.totalTDImpact)
-            .slice(0, Number(limit));
+            .slice(0, pageLimit);
           
           count = articles.length;
           console.log(`✨ Found ${count} impactful articles from ${dateRange}. Top impact: ${articles[0]?.totalTDImpact || 0}`);
@@ -212,7 +216,7 @@ router.get('/', async (req: Request, res: Response) => {
           query = query.order('published_date', { ascending: false });
           
           // Apply pagination
-          query = query.range(Number(offset), Number(offset) + Number(limit) - 1);
+          query = query.range(pageOffset, pageOffset + pageLimit - 1);
           
           const result = await query;
           articles = result.data || [];
@@ -380,7 +384,7 @@ router.get('/', async (req: Request, res: Response) => {
           success: true,
           articles: transformedArticles,
           total: count || 0,
-          has_more: (Number(offset) + (articles?.length || 0)) < (count || 0),
+          has_more: (pageOffset + (articles?.length || 0)) < (count || 0),
           last_updated: new Date().toISOString(),
           source: 'Supabase Database',
           sort: sort,

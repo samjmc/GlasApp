@@ -340,6 +340,9 @@ async function processArticleWithMultiAgent(
   });
   
   // Step 2: Process each substantial TD mention
+  let anyScoreApplied = false;
+  let lastScoredMention: { name: string; party: string; constituency: string } | null = null;
+
   for (const mention of highConfidenceMentions) {
     // Check if this is a substantial mention
     if (!TDExtractionService.isSubstantialMention(fullText, mention.name)) {
@@ -349,6 +352,8 @@ async function processArticleWithMultiAgent(
     
     try {
       await processTDWithMultiAgent(article, mention, importance, stats);
+      anyScoreApplied = true;
+      lastScoredMention = mention;
     } catch (error) {
       console.error(`   ❌ Error processing ${mention.name}:`, error);
       stats.errors++;
@@ -356,7 +361,7 @@ async function processArticleWithMultiAgent(
   }
   
   // Mark article as processed
-  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], true);
+  await markArticleProcessed(article.id, importance, lastScoredMention, anyScoreApplied);
 }
 
 /**
