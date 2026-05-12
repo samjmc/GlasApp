@@ -1,11 +1,11 @@
 import cron from "node-cron";
+import { runDailyNewsScraper } from "../jobs/dailyNewsScraper";
 import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
 import { runInternalAudit } from "./qaAgent";
 
 // Lazy imports for scoring services (avoids circular dependency issues)
 let ArticleTriageJob: any = null;
 let NewsToTDScoringService: any = null;
-let NewsScraperService: any = null;
 
 async function loadScoringServices() {
   if (!ArticleTriageJob) {
@@ -15,10 +15,6 @@ async function loadScoringServices() {
   if (!NewsToTDScoringService) {
     const scoringModule = await import("./newsToTDScoringService.js");
     NewsToTDScoringService = scoringModule.NewsToTDScoringService;
-  }
-  if (!NewsScraperService) {
-    const scraperModule = await import("./newsScraperService.js");
-    NewsScraperService = scraperModule.NewsScraperService;
   }
 }
 
@@ -88,9 +84,11 @@ export function initScheduler() {
   cron.schedule('0 */4 * * *', async () => {
     console.log("\n📰 [Scheduler] Running News Scraper...");
     try {
-      await loadScoringServices();
-      const articles = await NewsScraperService.fetchAllIrishNews({ lookbackHours: 6 });
-      console.log(`✅ [Scheduler] News Scraper found ${articles.length} articles`);
+      const stats = await runDailyNewsScraper({ lookbackHours: 6 });
+      console.log(`✅ [Scheduler] News Scraper complete: ${stats.articlesProcessed} articles saved, ${stats.articlesSkippedExisting} duplicates skipped`);
+      if (stats.errors.length > 0) {
+        console.warn(`   ⚠️ Errors: ${stats.errors.length}`);
+      }
     } catch (error: any) {
       console.error("❌ [Scheduler] News Scraper failed:", error.message);
     }
