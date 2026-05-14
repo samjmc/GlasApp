@@ -163,7 +163,9 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
     }
   }
 
-  return rows;
+  // The processor mutates each TD's running score as it walks this array, so
+  // replay the selected outcomes in the same oldest-to-newest order as before.
+  return rows.reverse();
 }
 
 async function contributionsExist(sectionId: string): Promise<boolean> {
