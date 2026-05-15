@@ -75,7 +75,7 @@ export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
   const queryClient = useQueryClient();
   const { user } = useAuth();
-  const canReviewAlerts = user?.email === 'samjmc3@hotmail.com' || user?.role === 'admin';
+  const canReviewAlerts = user?.email === 'samjmc3@hotmail.com';
   
   const { data: scoreData, isLoading, error } = useQuery({
     queryKey: ['td-profile-v2', name],  // v2 to bust cache after adding image_url

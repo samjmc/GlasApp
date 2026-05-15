@@ -443,7 +443,7 @@ const DebatesPage = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'activity' | 'trends'>('overview');
   const queryClient = useQueryClient();
   const { user } = useAuth();
-  const canReviewAlerts = user?.email === "samjmc3@hotmail.com" || user?.role === "admin";
+  const canReviewAlerts = user?.email === "samjmc3@hotmail.com";
   const cardClass =
     "mobile-card border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900";
   const accentCardClass =

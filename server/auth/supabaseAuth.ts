@@ -130,8 +130,8 @@ export async function isAdmin(
       return;
     }
 
-    // Check if user has admin role in metadata or the configured owner email.
-    const role = user.user_metadata?.role || user.app_metadata?.role;
+    // User metadata is self-editable in Supabase; only app metadata is trusted for roles.
+    const role = user.app_metadata?.role;
     const email = typeof user.email === 'string' ? user.email.toLowerCase() : null;
     
     if (role !== 'admin' && (!email || !adminEmails.includes(email))) {
