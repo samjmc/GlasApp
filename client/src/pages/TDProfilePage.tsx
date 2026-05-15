@@ -10,6 +10,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
 import { PageHeader } from "@/components/PageHeader";
+import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/lib/supabase';
 import {
   TrendingUp,
   TrendingDown,
@@ -72,6 +74,8 @@ function formatConfidence(weight?: number): string {
 export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
   const queryClient = useQueryClient();
+  const { user } = useAuth();
+  const canReviewAlerts = user?.email === 'samjmc3@hotmail.com';
   
   const { data: scoreData, isLoading, error } = useQuery({
     queryKey: ['td-profile-v2', name],  // v2 to bust cache after adding image_url
@@ -155,9 +159,21 @@ export default function TDProfilePageEnhanced() {
 
   const updateAlertStatus = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
+
+      if (!accessToken) {
+        throw new Error('Admin authentication required');
+      }
+
       const response = await fetch(`/api/debates/alerts/${encodeURIComponent(id)}/status`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`
+        },
         body: JSON.stringify({ status })
       });
       if (!response.ok) {
@@ -1119,14 +1135,16 @@ export default function TDProfilePageEnhanced() {
                         {alert.confidence !== null && (
                           <div>{(alert.confidence * 100).toFixed(0)}% sure</div>
                         )}
-                        <button
-                          type="button"
-                          onClick={() => updateAlertStatus.mutate({ id: alert.id, status: 'resolved' })}
-                          disabled={alert.status === 'resolved' || updateAlertStatus.isLoading}
-                          className="mt-2 rounded-md border border-amber-300 px-2 py-1 text-xs font-medium text-amber-700 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-500/40 dark:text-amber-200 dark:hover:bg-amber-500/10"
-                        >
-                          {alert.status === 'resolved' ? 'Marked reviewed' : 'Mark reviewed'}
-                        </button>
+                        {canReviewAlerts && (
+                          <button
+                            type="button"
+                            onClick={() => updateAlertStatus.mutate({ id: alert.id, status: 'resolved' })}
+                            disabled={alert.status === 'resolved' || updateAlertStatus.isPending}
+                            className="mt-2 rounded-md border border-amber-300 px-2 py-1 text-xs font-medium text-amber-700 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-500/40 dark:text-amber-200 dark:hover:bg-amber-500/10"
+                          >
+                            {alert.status === 'resolved' ? 'Marked reviewed' : 'Mark reviewed'}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </li>

@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
+import { isAdmin } from '../auth/supabaseAuth';
 import { supabaseDb } from '../db';
 
 const router = Router();
+const ALERT_STATUSES = new Set(['new', 'resolved']);
 
 const PERIOD_PRESETS: Record<
   string,
@@ -1277,7 +1279,7 @@ router.get('/alerts', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
+router.post('/alerts/:alertId/status', isAdmin, async (req: Request, res: Response) => {
   try {
     if (!supabaseDb) {
       return res.status(503).json({
@@ -1289,8 +1291,8 @@ router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
     const { alertId } = req.params;
     const status = typeof req.body?.status === 'string' ? req.body.status : null;
 
-    if (!status) {
-      return res.status(400).json({ success: false, message: 'Missing status in request body.' });
+    if (!status || !ALERT_STATUSES.has(status)) {
+      return res.status(400).json({ success: false, message: 'Invalid alert status.' });
     }
 
     const { error } = await supabaseDb

@@ -14,6 +14,11 @@ const requiredEnvVars = {
   SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
 };
 
+const adminEmails = (process.env.ADMIN_EMAILS || 'samjmc3@hotmail.com')
+  .split(',')
+  .map((email) => email.trim().toLowerCase())
+  .filter(Boolean);
+
 for (const [key, value] of Object.entries(requiredEnvVars)) {
   if (!value) {
     throw new Error(
@@ -125,10 +130,11 @@ export async function isAdmin(
       return;
     }
 
-    // Check if user has admin role in metadata
-    const role = user.user_metadata?.role || user.app_metadata?.role;
+    // User metadata is self-editable in Supabase; only app metadata is trusted for roles.
+    const role = user.app_metadata?.role;
+    const email = typeof user.email === 'string' ? user.email.toLowerCase() : null;
     
-    if (role !== 'admin') {
+    if (role !== 'admin' && (!email || !adminEmails.includes(email))) {
       res.status(403).json({ 
         success: false,
         message: 'Admin access required' 
