@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { PageHeader } from "@/components/PageHeader";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/lib/supabase";
 import {
   ResponsiveContainer,
   LineChart,
@@ -440,6 +442,8 @@ const DebatesPage = () => {
   const [selectedMeasure, setSelectedMeasure] = useState<'performance' | 'effectiveness' | 'influence'>('performance');
   const [activeTab, setActiveTab] = useState<'overview' | 'activity' | 'trends'>('overview');
   const queryClient = useQueryClient();
+  const { user } = useAuth();
+  const canReviewAlerts = user?.email === "samjmc3@hotmail.com" || user?.role === "admin";
   const cardClass =
     "mobile-card border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900";
   const accentCardClass =
@@ -623,10 +627,20 @@ const DebatesPage = () => {
 
   const updateAlertStatus = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Admin authentication required");
+      }
+
       const response = await fetch(`/api/debates/alerts/${encodeURIComponent(id)}/status`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({ status }),
       });
@@ -1016,16 +1030,18 @@ const DebatesPage = () => {
                         </div>
                       )}
                     </div>
-                    <div className="mt-3 flex justify-end">
-                      <button
-                        type="button"
-                        onClick={() => updateAlertStatus.mutate({ id: alert.id, status: "resolved" })}
-                        disabled={alert.status === "resolved" || updateAlertStatus.isPending}
-                        className="rounded-md border border-transparent bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-500/20 dark:text-emerald-200 dark:hover:bg-emerald-500/30"
-                      >
-                        {alert.status === "resolved" ? "Marked reviewed" : "Mark as reviewed"}
-                      </button>
-                    </div>
+                    {canReviewAlerts && (
+                      <div className="mt-3 flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => updateAlertStatus.mutate({ id: alert.id, status: "resolved" })}
+                          disabled={alert.status === "resolved" || updateAlertStatus.isPending}
+                          className="rounded-md border border-transparent bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-500/20 dark:text-emerald-200 dark:hover:bg-emerald-500/30"
+                        >
+                          {alert.status === "resolved" ? "Marked reviewed" : "Mark as reviewed"}
+                        </button>
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>
