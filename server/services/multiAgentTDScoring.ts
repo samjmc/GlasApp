@@ -17,6 +17,7 @@
 
 import OpenAI from "openai";
 import { z } from "zod";
+import { hasMeaningfulELOChanges } from "./eloChangeUtils.js";
 
 // --- TYPES ---
 
@@ -1181,8 +1182,8 @@ export async function applyProcessScoresToELO(
     articleAge
   );
   
-  // Only update if there are meaningful changes
-  if (!changes.overall || changes.overall.change === 0) {
+  // Dimension scores can change even when the overall impact rounds to zero.
+  if (!hasMeaningfulELOChanges(changes)) {
     console.log(`   ℹ️ No ELO changes for ${politician.name}`);
     return;
   }
