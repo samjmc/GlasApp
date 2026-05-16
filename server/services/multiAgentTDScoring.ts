@@ -106,6 +106,14 @@ export interface MultiAgentAnalysis {
 
 let openai: OpenAI;
 
+type ELOChangeSummary = {
+  change: number;
+};
+
+export function hasMeaningfulELOChanges(changes: Record<string, ELOChangeSummary>): boolean {
+  return Object.values(changes).some(({ change }) => change !== 0);
+}
+
 function getOpenAI() {
   if (!openai) {
     openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -1181,8 +1189,8 @@ export async function applyProcessScoresToELO(
     articleAge
   );
   
-  // Only update if there are meaningful changes
-  if (!changes.overall || changes.overall.change === 0) {
+  // Dimension scores can change even when the overall impact rounds to zero.
+  if (!hasMeaningfulELOChanges(changes)) {
     console.log(`   ℹ️ No ELO changes for ${politician.name}`);
     return;
   }
