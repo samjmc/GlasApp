@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 
-import { hasMeaningfulELOChanges } from './multiAgentTDScoring';
+import { hasMeaningfulELOChanges } from './eloChangeUtils.js';
 
 assert.equal(
   hasMeaningfulELOChanges({
