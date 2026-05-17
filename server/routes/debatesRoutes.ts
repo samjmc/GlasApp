@@ -19,6 +19,7 @@ const PERIOD_PRESETS: Record<
 
 const DEFAULT_PERIOD_KEY = '1w';
 const SCORE_BASELINE = 50;
+const DEBATE_DAY_SECTION_BATCH_SIZE = 100;
 
 const clampScore = (value: number): number => {
   if (!Number.isFinite(value)) return 10;
@@ -905,16 +906,23 @@ router.get('/weekly', async (req: Request, res: Response) => {
     const sectionsByDayId: Record<string, any[]> = {};
 
     if (dayIds.length > 0) {
-      const { data: sections, error: sectionError } = await supabaseDb
-        .from('debate_sections')
-        .select('debate_day_id, title, word_count, speech_count')
-        .in('debate_day_id', dayIds);
+      const sections: any[] = [];
 
-      if (sectionError) {
-        throw new Error(sectionError.message);
+      for (let i = 0; i < dayIds.length; i += DEBATE_DAY_SECTION_BATCH_SIZE) {
+        const dayIdBatch = dayIds.slice(i, i + DEBATE_DAY_SECTION_BATCH_SIZE);
+        const { data: sectionBatch, error: sectionError } = await supabaseDb
+          .from('debate_sections')
+          .select('debate_day_id, title, word_count, speech_count')
+          .in('debate_day_id', dayIdBatch);
+
+        if (sectionError) {
+          throw new Error(sectionError.message);
+        }
+
+        sections.push(...(sectionBatch || []));
       }
 
-      for (const section of sections || []) {
+      for (const section of sections) {
         const list = sectionsByDayId[section.debate_day_id] || [];
         list.push(section);
         sectionsByDayId[section.debate_day_id] = list;
