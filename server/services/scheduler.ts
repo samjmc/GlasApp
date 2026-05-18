@@ -128,9 +128,13 @@ export function initScheduler() {
   // Run Internal Audit every Sunday at 00:00
   cron.schedule('0 0 * * 0', async () => {
     console.log("🕵️ [Scheduler] Starting Weekly QA Audit...");
-    const anomalies = await runInternalAudit();
-    if (anomalies.length > 0) {
-        console.warn("⚠️ QA Anomalies Found:", anomalies);
+    try {
+      const anomalies = await runInternalAudit();
+      if (anomalies.length > 0) {
+          console.warn("⚠️ QA Anomalies Found:", anomalies);
+      }
+    } catch (error) {
+      console.error("❌ [Scheduler] Weekly QA Audit failed:", error);
     }
   }, {
     scheduled: true,
