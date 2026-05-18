@@ -7,6 +7,11 @@ export async function runInternalAudit() {
     console.log("🕵️ Running Internal Data Audit...");
     const anomalies: string[] = [];
 
+    if (!db) {
+        console.warn("⚠️ Drizzle database client unavailable; skipping internal data audit.");
+        return anomalies;
+    }
+
     const unified = await db.select().from(unifiedTDScores);
     const legacy = await db.select().from(tdScores);
 

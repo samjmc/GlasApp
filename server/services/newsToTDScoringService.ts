@@ -330,7 +330,13 @@ async function processArticleWithMultiAgent(
   
   if (highConfidenceMentions.length === 0) {
     console.log(`   ℹ️ No high-confidence TD mentions found`);
-    await markArticleProcessed(article.id, importance, null, false);
+    await markArticleProcessed(
+      article.id,
+      importance,
+      null,
+      false,
+      'No high-confidence TD mentions found'
+    );
     return;
   }
   
@@ -340,6 +346,10 @@ async function processArticleWithMultiAgent(
   });
   
   // Step 2: Process each substantial TD mention
+  let attemptedMentions = 0;
+  let scoredMentions = 0;
+  let primaryScoredTD: { name: string; party: string; constituency: string } | null = null;
+
   for (const mention of highConfidenceMentions) {
     // Check if this is a substantial mention
     if (!TDExtractionService.isSubstantialMention(fullText, mention.name)) {
@@ -347,16 +357,29 @@ async function processArticleWithMultiAgent(
       continue;
     }
     
+    attemptedMentions++;
+
     try {
       await processTDWithMultiAgent(article, mention, importance, stats);
+      scoredMentions++;
+      primaryScoredTD ??= mention;
     } catch (error) {
       console.error(`   ❌ Error processing ${mention.name}:`, error);
       stats.errors++;
     }
   }
   
-  // Mark article as processed
-  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], true);
+  if (scoredMentions === 0) {
+    const skippedReason = attemptedMentions === 0
+      ? 'No substantial TD mentions after high-confidence extraction'
+      : `Failed to score ${attemptedMentions} substantial TD mention(s)`;
+
+    await markArticleProcessed(article.id, importance, null, false, skippedReason);
+    return;
+  }
+
+  // Mark article as processed only after at least one TD score was written.
+  await markArticleProcessed(article.id, importance, primaryScoredTD, true);
 }
 
 /**
@@ -419,7 +442,7 @@ async function processTDWithMultiAgent(
   // Save to article_td_scores junction table
   const converted = NewsArticleScoringTeam.convertToArticleAnalysis(multiAgentResult);
   
-  await supabase
+  const { error: scoreError } = await supabase
     .from('article_td_scores')
     .upsert({
       article_id: article.id,
@@ -440,10 +463,14 @@ async function processTDWithMultiAgent(
     }, { 
       onConflict: 'article_id,politician_name'
     });
+
+  if (scoreError) {
+    throw new Error(`Failed to save article TD score for ${tdMention.name}: ${scoreError.message}`);
+  }
   
   // Save TD policy stance if present
   if (converted.td_policy_stance) {
-    await supabase
+    const { error: stanceError } = await supabase
       .from('td_policy_stances')
       .upsert({
         article_id: article.id,
@@ -456,6 +483,10 @@ async function processTDWithMultiAgent(
       }, {
         onConflict: 'article_id,politician_name'
       });
+
+    if (stanceError) {
+      throw new Error(`Failed to save TD policy stance for ${tdMention.name}: ${stanceError.message}`);
+    }
   }
   
   stats.tdsUpdated++;
@@ -494,7 +525,8 @@ async function markArticleProcessed(
   articleId: number,
   importance: { score: number; reasoning: string },
   primaryTD: { name: string; party: string; constituency: string } | null,
-  scoreApplied: boolean
+  scoreApplied: boolean,
+  skippedReason?: string
 ): Promise<void> {
   
   const updateData: any = {
@@ -504,6 +536,10 @@ async function markArticleProcessed(
     importance_reasoning: importance.reasoning,
     analyzed_by: scoreApplied ? 'multi-agent' : null
   };
+
+  if (skippedReason) {
+    updateData.skipped_reason = skippedReason;
+  }
   
   if (primaryTD) {
     updateData.politician_name = primaryTD.name;
