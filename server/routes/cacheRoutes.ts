@@ -5,6 +5,7 @@
 
 import { Router } from 'express';
 import { cache } from '../services/cacheService';
+import { requireAdmin } from '../middleware/adminAuth';
 
 const router = Router();
 
@@ -27,7 +28,7 @@ router.get('/stats', (req, res) => {
 /**
  * POST /api/cache/clear - Clear all cache (admin only)
  */
-router.post('/clear', (req, res) => {
+router.post('/clear', requireAdmin, (req, res) => {
   cache.clear();
   
   res.json({
@@ -39,7 +40,7 @@ router.post('/clear', (req, res) => {
 /**
  * DELETE /api/cache/:key - Delete specific cache key (admin only)
  */
-router.delete('/:key', (req, res) => {
+router.delete('/:key', requireAdmin, (req, res) => {
   const { key } = req.params;
   cache.delete(key);
   

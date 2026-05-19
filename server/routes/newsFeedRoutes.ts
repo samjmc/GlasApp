@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
+import { requireAdmin } from '../middleware/adminAuth';
 import { getCachedOrFetch, CACHE_TTL } from '../utils/serverCache';
 import {
   DEFAULT_REGION_CODE,
@@ -419,7 +420,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 // POST /api/news-feed/save - Save article from Python aggregator
-router.post('/save', async (req: Request, res: Response) => {
+router.post('/save', requireAdmin, async (req: Request, res: Response) => {
   try {
     const article = req.body;
     console.log(`📰 Saving article: ${article.title?.substring(0, 60)}...`);

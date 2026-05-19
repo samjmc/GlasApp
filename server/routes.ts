@@ -7,7 +7,7 @@ import { ActivityTracker } from "./services/activityTracker";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
-import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
+import { requireAdmin } from "./middleware/adminAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
 import geographicRoutes from "./routes/geographic";
 import authRoutes from "./routes/authRoutes";
@@ -72,7 +72,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/ai", quizRoutes); // Quiz assistant
   app.use("/api/chat", chatRoutes);
   app.use("/api/chat", politicianChatRoutes); // Digital Twin politician chat
-  app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
+  app.use("/api/shadow", requireAdmin, shadowRoutes); // The Shadow Cabinet
   
   // Register geographic routes (consolidated - includes constituencies, location, heatmap)
   app.use("/api/geographic", geographicRoutes);
@@ -158,12 +158,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/account", accountRoutes);
   
   // Register admin routes for news scraping and system management
-  app.use("/api/admin/news-scraper", newsScraperRoutes);
-  app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", debateAdminRoutes);
-  app.use("/api/admin/baselines", baselineAdminRoutes);
-  app.use("/api/admin/articles", manualArticleRoutes);
-  app.use("/api/admin/td-scoring", tdScoringAdminRoutes);
+  app.use("/api/admin/news-scraper", requireAdmin, newsScraperRoutes);
+  app.use("/api/admin/parliamentary", requireAdmin, parliamentaryAdminRoutes);
+  app.use("/api/admin/debates", requireAdmin, debateAdminRoutes);
+  app.use("/api/admin/baselines", requireAdmin, baselineAdminRoutes);
+  app.use("/api/admin/articles", requireAdmin, manualArticleRoutes);
+  app.use("/api/admin/td-scoring", requireAdmin, tdScoringAdminRoutes);
   
   // Register user rating routes for TDs
   app.use("/api/ratings", tdRatingsRoutes);

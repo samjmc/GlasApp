@@ -20,6 +20,8 @@ import { db, supabaseDb } from '../../db';
 import { performanceScores } from '@shared/schema';
 import { eq, desc, asc, sql } from 'drizzle-orm';
 import { DailyNewsScraperJob } from '../../jobs/dailyNewsScraper';
+import { unifiedScoreJob } from '../../jobs/unifiedScoreCalculationJob';
+import { requireAdmin } from '../../middleware/adminAuth';
 import { UnifiedTDScoringService } from '../../services/unifiedTDScoringService';
 import { convertELOToPercentage } from '../../utils/scoreConverter';
 import { getCachedOrFetch, CACHE_KEYS, CACHE_TTL } from '../../utils/serverCache';
@@ -348,14 +350,12 @@ router.get('/td/:name/elo', async (req, res, next) => {
 /**
  * POST /api/parliamentary/scores/trigger-scrape - Trigger manual news scrape
  */
-router.post('/trigger-scrape', async (req, res, next) => {
+router.post('/trigger-scrape', requireAdmin, async (req, res, next) => {
   try {
     console.log('🔄 Manual news scrape triggered...');
     
-    const job = new DailyNewsScraperJob();
-    
     // Run in background
-    job.execute().catch(error => {
+    DailyNewsScraperJob.runManual().catch(error => {
       console.error('❌ Background news scrape failed:', error);
     });
     
@@ -896,12 +896,9 @@ router.get('/constituency/:constituency', async (req, res, next) => {
 /**
  * POST /api/parliamentary/scores/recalculate - Trigger comprehensive score recalculation (admin)
  */
-router.post('/recalculate', async (req, res, next) => {
+router.post('/recalculate', requireAdmin, async (req, res, next) => {
   try {
     console.log('🔄 Manual comprehensive score recalculation triggered...');
-    
-    // Import the job
-    const { unifiedScoreJob } = await import('../../jobs/unifiedScoreCalculationJob');
     
     // Run in background
     setTimeout(async () => {
