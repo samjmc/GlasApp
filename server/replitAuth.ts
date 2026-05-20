@@ -7,6 +7,7 @@ import type { Express, RequestHandler } from "express";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
+import { getUserFromRequest } from "./auth/supabaseAuth";
 
 // Extend Express User type for Replit Auth
 declare global {
@@ -29,9 +30,14 @@ declare global {
 
 // Make Replit auth optional - skip if not in Replit environment
 const isReplitEnvironment = !!process.env.REPLIT_DOMAINS;
+const isProduction = process.env.NODE_ENV === "production";
 
 if (!isReplitEnvironment) {
-  console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Using local development mode.");
+  console.warn(
+    isProduction
+      ? "⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Protected routes require Supabase bearer auth."
+      : "⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Using local development mode."
+  );
 }
 
 const getOidcConfig = memoize(
@@ -97,6 +103,30 @@ async function upsertUser(
   });
 }
 
+function attachSupabaseUser(req: Parameters<RequestHandler>[0], user: any) {
+  req.user = {
+    ...user,
+    claims: {
+      sub: user.id,
+      email: user.email,
+      first_name: user.user_metadata?.first_name,
+      last_name: user.user_metadata?.last_name,
+      profile_image_url: user.user_metadata?.avatar_url,
+    },
+  };
+}
+
+function attachDevelopmentUser(req: Parameters<RequestHandler>[0]) {
+  req.user = {
+    claims: {
+      sub: "dev-user-123",
+      email: "dev@localhost",
+      first_name: "Dev",
+      last_name: "User",
+    },
+  };
+}
+
 export async function setupAuth(app: Express) {
   app.set("trust proxy", 1);
   app.use(getSession());
@@ -105,7 +135,7 @@ export async function setupAuth(app: Express) {
 
   // Only set up Replit auth if in Replit environment
   if (!isReplitEnvironment) {
-    console.log("ℹ️  Skipping Replit Auth setup - running in local development mode");
+    console.log("ℹ️  Skipping Replit Auth setup - REPLIT_DOMAINS is not configured");
     return;
   }
 
@@ -180,24 +210,25 @@ export async function setupAuth(app: Express) {
 }
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
-  // In local development (non-Replit), allow all requests for testing
   if (!isReplitEnvironment) {
+    const supabaseUser = await getUserFromRequest(req);
+    if (supabaseUser) {
+      attachSupabaseUser(req, supabaseUser);
+      return next();
+    }
+
+    if (isProduction) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
     console.log("🔓 Local dev mode - bypassing authentication");
-    // Mock user for development
-    req.user = {
-      claims: {
-        sub: "dev-user-123",
-        email: "dev@localhost",
-        first_name: "Dev",
-        last_name: "User"
-      }
-    };
+    attachDevelopmentUser(req);
     return next();
   }
 
   const user = req.user as any;
 
-  if (!req.isAuthenticated() || !user?.claims) {
+  if (typeof req.isAuthenticated !== "function" || !req.isAuthenticated() || !user?.claims) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
