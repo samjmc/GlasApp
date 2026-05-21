@@ -487,10 +487,17 @@ router.get('/user/:userId/value-alignment', async (req, res) => {
  * DELETE /api/policy-votes/:voteId
  * Delete a policy vote
  */
-router.delete('/:voteId', async (req, res) => {
+router.delete('/:voteId', isAuthenticated, async (req, res) => {
   try {
     const { voteId } = req.params;
-    const { userId } = req.body;
+    const userId = req.user?.id;
+    
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        error: 'Authentication required'
+      });
+    }
     
     // Verify user owns this vote
     const { data: vote, error: checkError } = await supabase
