@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, Brain, TrendingUp } from 'lucide-react';
 import { PoliticalEvolution } from '@shared/schema';
+import { getAuthHeaders } from '@/lib/queryClient';
 
 interface PoliticalEvolutionAnalysisProps {
   evolutionData: PoliticalEvolution[] | undefined;
@@ -30,11 +31,12 @@ const PoliticalEvolutionAnalysis: React.FC<PoliticalEvolutionAnalysisProps> = ({
     setError(null);
 
     try {
-      const response = await fetch('/api/political-evolution/analysis', {
+      const path = '/api/political-evolution/analysis';
+      const response = await fetch(path, {
         method: 'POST',
-        headers: {
+        headers: await getAuthHeaders(path, {
           'Content-Type': 'application/json',
-        },
+        }),
         body: JSON.stringify({ evolutionData }),
       });
 

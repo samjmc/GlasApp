@@ -1,4 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { getCurrentSession } from "./supabase";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -14,12 +15,49 @@ type ApiRequestOptions = {
   on401?: "returnNull" | "throw";
 };
 
+function isSameOriginApiPath(path: string): boolean {
+  if (path.startsWith("/api/")) {
+    return true;
+  }
+
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    const url = new URL(path, window.location.origin);
+    return url.origin === window.location.origin && url.pathname.startsWith("/api/");
+  } catch {
+    return false;
+  }
+}
+
+export async function getAuthHeaders(
+  path: string,
+  baseHeaders: Record<string, string> = {},
+): Promise<Record<string, string>> {
+  if (!isSameOriginApiPath(path)) {
+    return baseHeaders;
+  }
+
+  const session = await getCurrentSession();
+  const token = session?.access_token;
+
+  return token
+    ? { ...baseHeaders, Authorization: `Bearer ${token}` }
+    : baseHeaders;
+}
+
 export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T> {
   const { method, path, body, on401 = "throw" } = options;
+  const headers = await getAuthHeaders(
+    path,
+    body ? { "Content-Type": "application/json" } : {},
+  );
   
   const res = await fetch(path, {
     method,
-    headers: body ? { "Content-Type": "application/json" } : {},
+    headers,
     body: body ? JSON.stringify(body) : undefined,
     credentials: "include",
   });
@@ -47,7 +85,10 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
+    const path = queryKey[0] as string;
+    const headers = await getAuthHeaders(path);
     const res = await fetch(queryKey[0] as string, {
+      headers,
       credentials: "include",
     });
 

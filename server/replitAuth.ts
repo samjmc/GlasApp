@@ -7,6 +7,7 @@ import type { Express, RequestHandler } from "express";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
+import { getUserFromRequest } from "./auth/supabaseAuth";
 
 // Extend Express User type for Replit Auth
 declare global {
@@ -29,9 +30,13 @@ declare global {
 
 // Make Replit auth optional - skip if not in Replit environment
 const isReplitEnvironment = !!process.env.REPLIT_DOMAINS;
+const isLocalDevelopmentAuthBypass =
+  !isReplitEnvironment && process.env.NODE_ENV === "development";
 
-if (!isReplitEnvironment) {
+if (isLocalDevelopmentAuthBypass) {
   console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Using local development mode.");
+} else if (!isReplitEnvironment) {
+  console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Supabase bearer auth required.");
 }
 
 const getOidcConfig = memoize(
@@ -180,8 +185,38 @@ export async function setupAuth(app: Express) {
 }
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
-  // In local development (non-Replit), allow all requests for testing
+  // Keep the local bypass for the dev server only; deployed non-Replit
+  // environments use Supabase bearer tokens.
   if (!isReplitEnvironment) {
+    if (!isLocalDevelopmentAuthBypass) {
+      const supabaseUser = await getUserFromRequest(req);
+
+      if (!supabaseUser) {
+        return res.status(401).json({
+          success: false,
+          message: "Authentication required",
+        });
+      }
+
+      const metadata = supabaseUser.user_metadata || {};
+      req.user = {
+        ...supabaseUser,
+        claims: {
+          sub: supabaseUser.id,
+          email: supabaseUser.email,
+          first_name: metadata.first_name ?? metadata.firstName ?? metadata.full_name ?? metadata.name,
+          last_name: metadata.last_name ?? metadata.lastName,
+          profile_image_url: metadata.avatar_url ?? metadata.picture ?? metadata.profile_image_url,
+        },
+      } as any;
+
+      if (req.session) {
+        (req.session as any).userId = supabaseUser.id;
+      }
+
+      return next();
+    }
+
     console.log("🔓 Local dev mode - bypassing authentication");
     // Mock user for development
     req.user = {

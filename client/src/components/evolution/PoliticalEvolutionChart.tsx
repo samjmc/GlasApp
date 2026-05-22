@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
+import { getAuthHeaders } from '@/lib/queryClient';
 
 interface PoliticalEvolutionPoint {
   id: number;
@@ -31,7 +32,10 @@ const PoliticalEvolutionChart: React.FC = () => {
     const fetchEvolutionData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('/api/political-evolution');
+        const path = '/api/political-evolution';
+        const response = await fetch(path, {
+          headers: await getAuthHeaders(path),
+        });
         const result = await response.json();
         
         if (result.success) {

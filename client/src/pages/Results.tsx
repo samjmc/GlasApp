@@ -32,26 +32,23 @@ const Results = () => {
   const saveToEvolutionHistory = async (quizResults: QuizResult) => {
     try {
       // Save political evolution data using an API call
-      const response = await fetch('/api/political-evolution', {
+      const response = await apiRequest({
+        path: '/api/political-evolution',
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+        body: {
           economicScore: quizResults.economicScore,
           socialScore: quizResults.socialScore,
           ideology: quizResults.ideology,
           quizResultId: null, // Will be linked later if needed
           notes: 'Quiz completed on ' + new Date().toLocaleDateString(),
           label: 'Quiz Result',
-        }),
-        credentials: 'include',
+        },
+        on401: 'returnNull',
       });
       
-      if (response.ok) {
+      if (response) {
         console.log('Political evolution data saved successfully');
       } else {
-        // User might not be logged in, which is OK
         console.log('Could not save political evolution data - user may not be logged in');
       }
     } catch (error) {

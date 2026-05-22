@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { getAuthHeaders } from '@/lib/queryClient';
 
 interface AddEvolutionPointProps {
   onSuccess?: () => void;
@@ -75,11 +76,12 @@ const AddEvolutionPoint: React.FC<AddEvolutionPointProps> = ({ onSuccess, onCanc
       // Determine ideology based on scores
       const ideology = determineIdeology(formData.economicScore, formData.socialScore);
       
-      const response = await fetch('/api/political-evolution', {
+      const path = '/api/political-evolution';
+      const response = await fetch(path, {
         method: 'POST',
-        headers: {
+        headers: await getAuthHeaders(path, {
           'Content-Type': 'application/json',
-        },
+        }),
         body: JSON.stringify({
           ...formData,
           ideology

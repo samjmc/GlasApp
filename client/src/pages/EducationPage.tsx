@@ -20,6 +20,7 @@ import { DimensionExplanationEditor } from '@/components/DimensionExplanationEdi
 import { partyDimensionsData, type PartyDimensions as ImportedPartyDimensions } from '@/data/partyDimensionsData';
 import { ChevronDown, ChevronUp, TrendingUp, Shield, CheckCircle, AlertTriangle, Clock, Target, Info, Users, Eye, FileText, ExternalLink, DollarSign, Building, Settings, Vote, BarChart3, Grid3X3, List } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { getAuthHeaders } from "@/lib/queryClient";
 import PledgeVotingInterface from '@/components/PledgeVotingInterface';
 import { ParliamentaryActivity } from '@/components/ParliamentaryActivity';
 import { PerformanceScoreBreakdown } from '@/components/PerformanceScoreBreakdown';
@@ -387,7 +388,10 @@ const TrustworthinessTabContent = ({ selectedPartyId }: { selectedPartyId: strin
   const { data: userVote, refetch: refetchUserVote } = useQuery({
     queryKey: ['/api/party-sentiment/user', selectedPartyId],
     queryFn: async () => {
-      const response = await fetch(`/api/party-sentiment/user/${selectedPartyId}`);
+      const path = `/api/party-sentiment/user/${selectedPartyId}`;
+      const response = await fetch(path, {
+        headers: await getAuthHeaders(path),
+      });
       if (!response.ok) {
         if (response.status === 401) return null; // Not authenticated
         throw new Error('Failed to fetch user vote');
@@ -409,11 +413,12 @@ const TrustworthinessTabContent = ({ selectedPartyId }: { selectedPartyId: strin
   const submitVote = async () => {
     setIsSubmittingVote(true);
     try {
-      const response = await fetch('/api/party-sentiment/vote', {
+      const path = '/api/party-sentiment/vote';
+      const response = await fetch(path, {
         method: 'POST',
-        headers: {
+        headers: await getAuthHeaders(path, {
           'Content-Type': 'application/json',
-        },
+        }),
         body: JSON.stringify({
           partyId: selectedPartyId,
           sentimentScore: sentimentValue,
