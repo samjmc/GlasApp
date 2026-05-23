@@ -27,11 +27,11 @@ declare global {
   }
 }
 
-// Make Replit auth optional - skip if not in Replit environment
+// Make Replit auth optional for local development only.
 const isReplitEnvironment = !!process.env.REPLIT_DOMAINS;
 
 if (!isReplitEnvironment) {
-  console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Using local development mode.");
+  console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled.");
 }
 
 const getOidcConfig = memoize(
@@ -180,10 +180,12 @@ export async function setupAuth(app: Express) {
 }
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
-  // In local development (non-Replit), allow all requests for testing
   if (!isReplitEnvironment) {
-    console.log("🔓 Local dev mode - bypassing authentication");
-    // Mock user for development
+    if (process.env.NODE_ENV === "production") {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    console.log("🔓 Local development mode - bypassing Replit authentication");
     req.user = {
       claims: {
         sub: "dev-user-123",
