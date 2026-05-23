@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
+import { requireAdminOrCron } from '../middleware/adminAccess';
 import { getCachedOrFetch, CACHE_TTL } from '../utils/serverCache';
 import {
   DEFAULT_REGION_CODE,
@@ -419,7 +420,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 // POST /api/news-feed/save - Save article from Python aggregator
-router.post('/save', async (req: Request, res: Response) => {
+router.post('/save', requireAdminOrCron, async (req: Request, res: Response) => {
   try {
     const article = req.body;
     console.log(`📰 Saving article: ${article.title?.substring(0, 60)}...`);
@@ -446,15 +447,34 @@ router.post('/save', async (req: Request, res: Response) => {
       sentiment: article.sentiment || 'neutral',
       impact_score: article.impactScore || article.impact_score || 0,
       ai_summary: article.aiSummary || article.ai_summary || article.summary || null,
-      processed: false, // Will be processed by TD scoring
-      score_applied: false,
       credibility_score: article.credibilityScore || 0.8
     };
-    
-    // Upsert using Supabase (insert or update based on unique URL)
-    const { data: saved, error } = await supabaseDb
+
+    const { data: existingArticle, error: lookupError } = await supabaseDb
       .from('news_articles')
-      .upsert(dbArticle, { onConflict: 'url' })
+      .select('id')
+      .eq('url', dbArticle.url)
+      .maybeSingle();
+
+    if (lookupError) {
+      console.error('Error checking existing article:', lookupError);
+      throw lookupError;
+    }
+
+    const saveQuery = existingArticle
+      ? supabaseDb
+          .from('news_articles')
+          .update(dbArticle)
+          .eq('id', existingArticle.id)
+      : supabaseDb
+          .from('news_articles')
+          .insert({
+            ...dbArticle,
+            processed: false, // New articles will be processed by TD scoring
+            score_applied: false,
+          });
+
+    const { data: saved, error } = await saveQuery
       .select()
       .single();
     

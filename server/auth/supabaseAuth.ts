@@ -125,10 +125,12 @@ export async function isAdmin(
       return;
     }
 
-    // Check if user has admin role in metadata
-    const role = user.user_metadata?.role || user.app_metadata?.role;
+    // Only app_metadata is trusted; users can edit their own user_metadata.
+    const role = user.app_metadata?.role;
+    const roles = user.app_metadata?.roles;
+    const isAdminUser = role === 'admin' || (Array.isArray(roles) && roles.includes('admin'));
     
-    if (role !== 'admin') {
+    if (!isAdminUser) {
       res.status(403).json({ 
         success: false,
         message: 'Admin access required' 

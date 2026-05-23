@@ -63,7 +63,7 @@ function convertSupabaseUser(supabaseUser: User | null): AuthUser | null {
     username: supabaseUser.user_metadata?.username,
     county: supabaseUser.user_metadata?.county,
     bio: supabaseUser.user_metadata?.bio,
-    role: supabaseUser.user_metadata?.role || supabaseUser.app_metadata?.role,
+    role: supabaseUser.app_metadata?.role,
   };
 }
 
