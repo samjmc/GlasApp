@@ -74,7 +74,7 @@ export async function runArticleTriage(
     
     const { data: articles, error } = await supabase
       .from('news_articles')
-      .select('id, title, content, source, published_date')
+      .select('id, title, content, source, published_date, processed, score_applied')
       .eq('visible', false)
       .order('created_at', { ascending: false })
       .limit(batchSize);
@@ -99,6 +99,8 @@ export async function runArticleTriage(
     const scoredArticles: Array<{
       id: number;
       title: string;
+      processed?: boolean | null;
+      score_applied?: boolean | null;
       importance: number;
       reasoning: string;
       topicCategory: string;
@@ -123,6 +125,8 @@ export async function runArticleTriage(
             return {
               id: article.id,
               title: article.title,
+              processed: article.processed,
+              score_applied: article.score_applied,
               importance: importance.score,
               reasoning: importance.reasoning,
               topicCategory: importance.topicCategory,
@@ -134,6 +138,8 @@ export async function runArticleTriage(
             return {
               id: article.id,
               title: article.title,
+              processed: article.processed,
+              score_applied: article.score_applied,
               importance: 50,  // Default to medium if error
               reasoning: 'Error scoring - defaulted to medium',
               topicCategory: 'general',
@@ -166,21 +172,27 @@ export async function runArticleTriage(
     for (let i = 0; i < scoredArticles.length; i++) {
       const article = scoredArticles[i];
       
-      // Determine if this article should get full multi-agent scoring
-      const needsScoring = i < cutoffIndex && article.importance >= minImportanceForScoring;
+      // Determine if this article should get full multi-agent scoring.
+      // Preserve finalized articles so triage never re-queues already applied scores.
+      const alreadyFinalized = article.processed === true || article.score_applied === true;
+      const needsScoring = !alreadyFinalized && i < cutoffIndex && article.importance >= minImportanceForScoring;
+      const updateData: Record<string, unknown> = {
+        visible: true,  // ALL articles become visible
+        importance_score: article.importance,
+        importance_reasoning: article.reasoning,
+        story_type: article.topicCategory,
+        // If not scoring, mark as processed (won't be picked up by scorer)
+        processed: alreadyFinalized ? true : !needsScoring
+      };
+      
+      if (!alreadyFinalized) {
+        updateData.skipped_reason = needsScoring ? null : `Below top ${topPercentile}% (score: ${article.importance})`;
+      }
       
       // Update database
       const { error: updateError } = await supabase
         .from('news_articles')
-        .update({
-          visible: true,  // ALL articles become visible
-          importance_score: article.importance,
-          importance_reasoning: article.reasoning,
-          story_type: article.topicCategory,
-          // If not scoring, mark as processed (won't be picked up by scorer)
-          processed: !needsScoring,
-          skipped_reason: needsScoring ? null : `Below top ${topPercentile}% (score: ${article.importance})`
-        })
+        .update(updateData)
         .eq('id', article.id);
       
       if (updateError) {
