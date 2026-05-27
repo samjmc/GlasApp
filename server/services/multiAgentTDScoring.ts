@@ -1181,8 +1181,10 @@ export async function applyProcessScoresToELO(
     articleAge
   );
   
-  // Only update if there are meaningful changes
-  if (!changes.overall || changes.overall.change === 0) {
+  // Only skip when every computed change rounds to zero. A neutral overall
+  // article can still carry meaningful dimension scores (e.g. integrity).
+  const hasMeaningfulChange = Object.values(changes).some(change => change.change !== 0);
+  if (!hasMeaningfulChange) {
     console.log(`   ℹ️ No ELO changes for ${politician.name}`);
     return;
   }

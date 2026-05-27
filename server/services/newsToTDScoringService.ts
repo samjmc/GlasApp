@@ -246,11 +246,12 @@ export async function processUnprocessedArticles(
         stats.errors++;
         stats.articlesFailed.push(article.title);
         
-        // Still mark as processed to avoid infinite retries
+        // Leave failed canonical articles retryable. Marking them processed here
+        // permanently drops high-importance stories after transient LLM/DB errors.
         await supabase
           .from('news_articles')
           .update({ 
-            processed: true,
+            processed: false,
             score_applied: false,
             error_message: String(error)
           })
@@ -340,6 +341,10 @@ async function processArticleWithMultiAgent(
   });
   
   // Step 2: Process each substantial TD mention
+  let attemptedTDs = 0;
+  let successfulTDs = 0;
+  let primaryScoredMention: typeof highConfidenceMentions[number] | null = null;
+
   for (const mention of highConfidenceMentions) {
     // Check if this is a substantial mention
     if (!TDExtractionService.isSubstantialMention(fullText, mention.name)) {
@@ -347,16 +352,30 @@ async function processArticleWithMultiAgent(
       continue;
     }
     
+    attemptedTDs++;
+
     try {
       await processTDWithMultiAgent(article, mention, importance, stats);
+      successfulTDs++;
+      primaryScoredMention ??= mention;
     } catch (error) {
       console.error(`   ❌ Error processing ${mention.name}:`, error);
       stats.errors++;
     }
   }
   
+  if (attemptedTDs === 0) {
+    console.log(`   ℹ️ No substantial TD mentions found`);
+    await markArticleProcessed(article.id, importance, null, false);
+    return;
+  }
+
+  if (successfulTDs === 0) {
+    throw new Error(`All ${attemptedTDs} TD scoring attempt(s) failed`);
+  }
+
   // Mark article as processed
-  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], true);
+  await markArticleProcessed(article.id, importance, primaryScoredMention, true);
 }
 
 /**
