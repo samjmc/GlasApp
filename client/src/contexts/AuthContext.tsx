@@ -14,6 +14,10 @@ interface AuthUser {
   role?: string;
 }
 
+interface MagicLinkOptions {
+  shouldCreateUser?: boolean;
+}
+
 interface AuthContextType {
   user: AuthUser | null;
   isLoading: boolean;
@@ -22,7 +26,7 @@ interface AuthContextType {
   logout?: () => Promise<void>;
   deleteAccount?: () => Promise<void>;
   signInWithGoogle?: () => Promise<void>;
-  signInWithMagicLink?: (email: string) => Promise<{ success: boolean; message?: string }>;
+  signInWithMagicLink?: (email: string, options?: MagicLinkOptions) => Promise<{ success: boolean; message?: string }>;
   login?: (username: string, password: string) => Promise<{ success: boolean; message?: string }>;
   register?: (data: {
     username: string;
@@ -206,11 +210,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  const signInWithMagicLink = async (email: string) => {
+  const signInWithMagicLink = async (email: string, options: MagicLinkOptions = {}) => {
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
+          shouldCreateUser: options.shouldCreateUser ?? false,
           emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });

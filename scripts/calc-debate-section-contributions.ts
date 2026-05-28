@@ -148,7 +148,7 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
         debate_days!inner(id, date, chamber, title),
         debate_sections!inner(id, debate_day_id, title, word_count)
       `)
-      .order('created_at', { ascending: false })
+      .order('created_at', { ascending: true })
       .range(from, to);
 
     if (error) {
