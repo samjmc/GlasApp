@@ -76,7 +76,7 @@ const RegisterPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const result = await signInWithMagicLink?.(magicLinkEmail);
+      const result = await signInWithMagicLink?.(magicLinkEmail, { shouldCreateUser: true });
       if (result?.success) {
         setMagicLinkSent(true);
         toast({
