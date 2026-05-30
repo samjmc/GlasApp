@@ -72,10 +72,22 @@ export async function runArticleTriage(
     console.log('\n' + '─'.repeat(60));
     console.log('STEP 1: Finding articles to triage...');
     
+    const { error: revealScoredError } = await supabase
+      .from('news_articles')
+      .update({ visible: true, processed: true })
+      .eq('visible', false)
+      .eq('score_applied', true);
+
+    if (revealScoredError) {
+      console.error('❌ Error revealing already-scored articles:', revealScoredError);
+      stats.errors++;
+    }
+
     const { data: articles, error } = await supabase
       .from('news_articles')
       .select('id, title, content, source, published_date')
       .eq('visible', false)
+      .or('score_applied.is.null,score_applied.eq.false')
       .order('created_at', { ascending: false })
       .limit(batchSize);
     
@@ -181,7 +193,8 @@ export async function runArticleTriage(
           processed: !needsScoring,
           skipped_reason: needsScoring ? null : `Below top ${topPercentile}% (score: ${article.importance})`
         })
-        .eq('id', article.id);
+        .eq('id', article.id)
+        .or('score_applied.is.null,score_applied.eq.false');
       
       if (updateError) {
         console.error(`   ❌ Error updating article ${article.id}:`, updateError);
