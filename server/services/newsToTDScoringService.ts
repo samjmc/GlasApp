@@ -95,6 +95,7 @@ export async function processUnprocessedArticles(
       .from('news_articles')
       .select('*')
       .eq('processed', false)
+      .or('score_applied.is.null,score_applied.eq.false')
       .order('created_at', { ascending: false })
       .limit(batchSize);
     
@@ -140,7 +141,8 @@ export async function processUnprocessedArticles(
           importance_reasoning: importance.reasoning,
           skipped_reason: `Below ${topPercentile}th percentile (score: ${importance.score})`
         })
-        .eq('id', article.id);
+        .eq('id', article.id)
+        .or('score_applied.is.null,score_applied.eq.false');
     }
     console.log(`   Marked ${skippedArticles.length} articles as skipped`);
     
@@ -188,7 +190,8 @@ export async function processUnprocessedArticles(
           importance_reasoning: importance.reasoning,
           skipped_reason: `Duplicate of article ${canonicalId} (same event: ${cluster?.eventName || 'unknown'})`
         })
-        .eq('id', article.id);
+        .eq('id', article.id)
+        .or('score_applied.is.null,score_applied.eq.false');
     }
     
     if (duplicateArticles.length > 0) {
@@ -215,6 +218,12 @@ export async function processUnprocessedArticles(
       console.log(`   Importance: ${importance.score} (${importance.topicCategory})`);
       
       try {
+        const claimed = await claimArticleForScoring(article.id);
+        if (!claimed) {
+          console.log(`   ⏭️ Article ${article.id} was already claimed or scored; skipping`);
+          continue;
+        }
+
         // Fetch full content if we only have a snippet
         if (!article.content || article.content.length < 500) {
           console.log(`   📖 Fetching full article content...`);
@@ -254,7 +263,8 @@ export async function processUnprocessedArticles(
             score_applied: false,
             error_message: String(error)
           })
-          .eq('id', article.id);
+          .eq('id', article.id)
+          .or('score_applied.is.null,score_applied.eq.false');
       }
     }
     
@@ -370,6 +380,11 @@ async function processTDWithMultiAgent(
 ): Promise<void> {
   
   console.log(`\n   🎯 Multi-agent scoring for ${tdMention.name}...`);
+
+  if (await hasExistingTDScore(article.id, tdMention.name)) {
+    console.log(`   ⏭️ ${tdMention.name} already has a score for article ${article.id}; skipping ELO update`);
+    return;
+  }
   
   // Determine if TD is in government
   const governmentParties = ['Fine Gael', 'Fianna Fáil', 'Green Party'];
@@ -502,7 +517,8 @@ async function markArticleProcessed(
     score_applied: scoreApplied,
     importance_score: importance.score,
     importance_reasoning: importance.reasoning,
-    analyzed_by: scoreApplied ? 'multi-agent' : null
+    analyzed_by: scoreApplied ? 'multi-agent' : null,
+    skipped_reason: scoreApplied ? null : 'No high-confidence TD mentions'
   };
   
   if (primaryTD) {
@@ -511,10 +527,56 @@ async function markArticleProcessed(
     updateData.constituency = primaryTD.constituency;
   }
   
-  await supabase
+  let updateQuery = supabase
     .from('news_articles')
     .update(updateData)
     .eq('id', articleId);
+
+  if (!scoreApplied) {
+    updateQuery = updateQuery.or('score_applied.is.null,score_applied.eq.false');
+  }
+
+  const { error } = await updateQuery;
+  if (error) {
+    console.error(`   ❌ Failed to mark article ${articleId} processed:`, error);
+  }
+}
+
+async function claimArticleForScoring(articleId: number): Promise<boolean> {
+  const { data, error } = await supabase
+    .from('news_articles')
+    .update({
+      processed: true,
+      skipped_reason: 'Scoring in progress'
+    })
+    .eq('id', articleId)
+    .eq('processed', false)
+    .or('score_applied.is.null,score_applied.eq.false')
+    .select('id')
+    .maybeSingle();
+
+  if (error) {
+    console.error(`   ❌ Failed to claim article ${articleId}:`, error);
+    return false;
+  }
+
+  return Boolean(data);
+}
+
+async function hasExistingTDScore(articleId: number, politicianName: string): Promise<boolean> {
+  const { data, error } = await supabase
+    .from('article_td_scores')
+    .select('article_id')
+    .eq('article_id', articleId)
+    .eq('politician_name', politicianName)
+    .maybeSingle();
+
+  if (error) {
+    console.error(`   ⚠️ Could not check existing score for ${politicianName}:`, error);
+    return false;
+  }
+
+  return Boolean(data);
 }
 
 /**
