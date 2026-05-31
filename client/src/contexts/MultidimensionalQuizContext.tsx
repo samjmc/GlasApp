@@ -82,7 +82,11 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
     
     if (savedResults && resultsCalculated === 'true') {
       try {
-        setResults(JSON.parse(savedResults));
+        const parsedResults = JSON.parse(savedResults);
+        setResults(parsedResults);
+        if (Array.isArray(parsedResults.responses)) {
+          setResponses(parsedResults.responses);
+        }
         setIsResultsCalculated(true);
       } catch (e) {
         console.error('Error parsing saved results:', e);
@@ -352,10 +356,11 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
       const shareCode = generateShareCode();
       
       // Prepare data for API
+      const savedResponses = results.responses ?? responses;
       const resultData = {
         ...results,
         shareCode,
-        answers: responses
+        answers: savedResponses
       };
       
       // Save to database via API
