@@ -6,10 +6,20 @@ const AuthCallbackPage = () => {
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    // Handle the OAuth callback
     const handleCallback = async () => {
       try {
-        // Supabase automatically handles the callback and stores the session
+        const authCode = new URLSearchParams(window.location.search).get('code');
+
+        if (authCode) {
+          const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(authCode);
+
+          if (exchangeError) {
+            console.error('Auth code exchange error:', exchangeError);
+            navigate('/login');
+            return;
+          }
+        }
+
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error) {
