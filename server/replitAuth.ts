@@ -29,9 +29,12 @@ declare global {
 
 // Make Replit auth optional - skip if not in Replit environment
 const isReplitEnvironment = !!process.env.REPLIT_DOMAINS;
+const isLocalDevelopment = !isReplitEnvironment && process.env.NODE_ENV !== 'production';
 
-if (!isReplitEnvironment) {
+if (isLocalDevelopment) {
   console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled. Using local development mode.");
+} else if (!isReplitEnvironment) {
+  console.warn("⚠️  REPLIT_DOMAINS not set - Replit Auth disabled.");
 }
 
 const getOidcConfig = memoize(
@@ -104,8 +107,12 @@ export async function setupAuth(app: Express) {
   app.use(passport.session());
 
   // Only set up Replit auth if in Replit environment
-  if (!isReplitEnvironment) {
+  if (isLocalDevelopment) {
     console.log("ℹ️  Skipping Replit Auth setup - running in local development mode");
+    return;
+  }
+  if (!isReplitEnvironment) {
+    console.log("ℹ️  Skipping Replit Auth setup - REPLIT_DOMAINS is not configured");
     return;
   }
 
@@ -181,7 +188,7 @@ export async function setupAuth(app: Express) {
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
   // In local development (non-Replit), allow all requests for testing
-  if (!isReplitEnvironment) {
+  if (isLocalDevelopment) {
     console.log("🔓 Local dev mode - bypassing authentication");
     // Mock user for development
     req.user = {
@@ -193,6 +200,10 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
       }
     };
     return next();
+  }
+
+  if (!isReplitEnvironment) {
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   const user = req.user as any;
