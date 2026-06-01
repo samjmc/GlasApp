@@ -221,7 +221,8 @@ export async function processUnprocessedArticles(
           try {
             const { scrapeArticleContent } = await import('./newsScraperService.js');
             const fullContent = await scrapeArticleContent(article.url);
-            if (fullContent && fullContent.length > 200) {
+            const currentContentLength = article.content?.length || 0;
+            if (fullContent && fullContent.length >= 500 && fullContent.length > currentContentLength) {
               article.content = fullContent;
               console.log(`   ✅ Got ${fullContent.length} characters`);
               
@@ -231,7 +232,7 @@ export async function processUnprocessedArticles(
                 .update({ content: fullContent })
                 .eq('id', article.id);
             } else {
-              console.log(`   ⚠️ Could not fetch full content, using snippet`);
+              console.log(`   ⚠️ Could not fetch better full content, using existing snippet`);
             }
           } catch (fetchError) {
             console.log(`   ⚠️ Content fetch failed: ${fetchError}`);
@@ -246,11 +247,12 @@ export async function processUnprocessedArticles(
         stats.errors++;
         stats.articlesFailed.push(article.title);
         
-        // Still mark as processed to avoid infinite retries
+        // Leave failed articles unprocessed so transient provider/network errors
+        // can be retried by the next scheduled scoring run.
         await supabase
           .from('news_articles')
           .update({ 
-            processed: true,
+            processed: false,
             score_applied: false,
             error_message: String(error)
           })
@@ -340,23 +342,47 @@ async function processArticleWithMultiAgent(
   });
   
   // Step 2: Process each substantial TD mention
+  let substantialMentions = 0;
+  let successfulScores = 0;
+  let failedScores = 0;
+  let firstSuccessfulMention: { name: string; party: string; constituency: string } | null = null;
+
   for (const mention of highConfidenceMentions) {
     // Check if this is a substantial mention
     if (!TDExtractionService.isSubstantialMention(fullText, mention.name)) {
       console.log(`   ⏭️ Skipping ${mention.name} - only passing mention`);
       continue;
     }
+
+    substantialMentions++;
     
     try {
       await processTDWithMultiAgent(article, mention, importance, stats);
+      successfulScores++;
+      firstSuccessfulMention ??= mention;
     } catch (error) {
       console.error(`   ❌ Error processing ${mention.name}:`, error);
+      failedScores++;
       stats.errors++;
     }
   }
+
+  if (substantialMentions === 0) {
+    console.log(`   ℹ️ No substantial TD mentions found`);
+    await markArticleProcessed(article.id, importance, null, false);
+    return;
+  }
+
+  if (successfulScores === 0) {
+    throw new Error(`Failed to score all ${substantialMentions} substantial TD mention(s)`);
+  }
+
+  if (failedScores > 0) {
+    console.warn(`   ⚠️ ${failedScores} TD mention(s) failed after ${successfulScores} successful score(s); marking article processed to avoid double-applying successful ELO updates`);
+  }
   
   // Mark article as processed
-  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], true);
+  await markArticleProcessed(article.id, importance, firstSuccessfulMention, true);
 }
 
 /**
