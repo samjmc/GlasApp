@@ -128,7 +128,16 @@ export async function processUnprocessedArticles(
     const queuedArticles = articles.filter((article: any) => article.importance_score !== null && article.importance_score !== undefined);
     const untriagedArticles = articles.filter((article: any) => article.importance_score === null || article.importance_score === undefined);
 
-    const topArticles = queuedArticles.map((article: any) => ({
+    const topArticles: Array<{
+      article: any;
+      importance: {
+        score: number;
+        reasoning: string;
+        politiciansMentioned: string[];
+        topicCategory: string;
+        isPrimarySubject: boolean;
+      };
+    }> = queuedArticles.map((article: any) => ({
       article,
       importance: {
         score: Number(article.importance_score) || 0,
