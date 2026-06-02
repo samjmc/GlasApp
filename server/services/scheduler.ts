@@ -5,7 +5,10 @@ import { runInternalAudit } from "./qaAgent";
 // Lazy imports for scoring services (avoids circular dependency issues)
 let ArticleTriageJob: any = null;
 let NewsToTDScoringService: any = null;
-let NewsScraperService: any = null;
+let DailyNewsScraperJob: any = null;
+let triageRunInProgress = false;
+let scoringRunInProgress = false;
+let scraperRunInProgress = false;
 
 async function loadScoringServices() {
   if (!ArticleTriageJob) {
@@ -16,9 +19,9 @@ async function loadScoringServices() {
     const scoringModule = await import("./newsToTDScoringService.js");
     NewsToTDScoringService = scoringModule.NewsToTDScoringService;
   }
-  if (!NewsScraperService) {
-    const scraperModule = await import("./newsScraperService.js");
-    NewsScraperService = scraperModule.NewsScraperService;
+  if (!DailyNewsScraperJob) {
+    const scraperModule = await import("../jobs/dailyNewsScraper.js");
+    DailyNewsScraperJob = scraperModule.DailyNewsScraperJob;
   }
 }
 
@@ -38,7 +41,13 @@ export function initScheduler() {
   // Quick importance scoring, sets visibility, marks top 25% for full scoring
   // Cost: ~$0.0005 per article
   cron.schedule('*/30 * * * *', async () => {
+    if (triageRunInProgress) {
+      console.warn("⏭️ [Scheduler] Article triage already running; skipping overlapping tick");
+      return;
+    }
+
     console.log("\n📋 [Scheduler] Running Article Triage...");
+    triageRunInProgress = true;
     try {
       await loadScoringServices();
       const stats = await ArticleTriageJob.run({
@@ -49,6 +58,8 @@ export function initScheduler() {
       console.log(`✅ [Scheduler] Triage complete: ${stats.articlesProcessed} articles processed, ${stats.articlesMarkedForScoring} marked for scoring`);
     } catch (error: any) {
       console.error("❌ [Scheduler] Article triage failed:", error.message);
+    } finally {
+      triageRunInProgress = false;
     }
   }, {
     scheduled: true,
@@ -60,7 +71,13 @@ export function initScheduler() {
   // Updates TD ELO scores, ideology profiles, generates policy opportunities
   // Cost: ~$0.05-0.10 per unique event
   cron.schedule('0 */2 * * *', async () => {
+    if (scoringRunInProgress) {
+      console.warn("⏭️ [Scheduler] TD scoring already running; skipping overlapping tick");
+      return;
+    }
+
     console.log("\n🎯 [Scheduler] Running TD Scoring (Multi-Agent Team)...");
+    scoringRunInProgress = true;
     try {
       await loadScoringServices();
       const stats = await NewsToTDScoringService.processUnprocessedArticles({
@@ -77,6 +94,8 @@ export function initScheduler() {
       }
     } catch (error: any) {
       console.error("❌ [Scheduler] TD Scoring failed:", error.message);
+    } finally {
+      scoringRunInProgress = false;
     }
   }, {
     scheduled: true,
@@ -86,13 +105,21 @@ export function initScheduler() {
   // News Scraper - Every 4 hours
   // Fetches new articles from Irish news sources
   cron.schedule('0 */4 * * *', async () => {
+    if (scraperRunInProgress) {
+      console.warn("⏭️ [Scheduler] News scraper already running; skipping overlapping tick");
+      return;
+    }
+
     console.log("\n📰 [Scheduler] Running News Scraper...");
+    scraperRunInProgress = true;
     try {
       await loadScoringServices();
-      const articles = await NewsScraperService.fetchAllIrishNews({ lookbackHours: 6 });
-      console.log(`✅ [Scheduler] News Scraper found ${articles.length} articles`);
+      const stats = await DailyNewsScraperJob.run({ lookbackHours: 6 });
+      console.log(`✅ [Scheduler] News Scraper complete: ${stats.articlesFound} found, ${stats.articlesProcessed} processed`);
     } catch (error: any) {
       console.error("❌ [Scheduler] News Scraper failed:", error.message);
+    } finally {
+      scraperRunInProgress = false;
     }
   }, {
     scheduled: true,

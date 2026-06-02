@@ -432,8 +432,19 @@ router.post('/save', async (req: Request, res: Response) => {
       });
     }
     
+    const { data: existingArticle, error: existingError } = await supabaseDb
+      .from('news_articles')
+      .select('id, processed, score_applied, visible')
+      .eq('url', article.url)
+      .maybeSingle();
+
+    if (existingError) {
+      console.error('Error checking existing article:', existingError);
+      throw existingError;
+    }
+
     // Map Python aggregator fields to database schema
-    const dbArticle = {
+    const dbArticle: Record<string, any> = {
       url: article.url,
       title: article.title,
       content: article.content || article.aiSummary || article.summary || '',
@@ -446,10 +457,14 @@ router.post('/save', async (req: Request, res: Response) => {
       sentiment: article.sentiment || 'neutral',
       impact_score: article.impactScore || article.impact_score || 0,
       ai_summary: article.aiSummary || article.ai_summary || article.summary || null,
-      processed: false, // Will be processed by TD scoring
-      score_applied: false,
       credibility_score: article.credibilityScore || 0.8
     };
+
+    if (!existingArticle) {
+      dbArticle.visible = false;
+      dbArticle.processed = false; // Will be processed by TD scoring
+      dbArticle.score_applied = false;
+    }
     
     // Upsert using Supabase (insert or update based on unique URL)
     const { data: saved, error } = await supabaseDb
