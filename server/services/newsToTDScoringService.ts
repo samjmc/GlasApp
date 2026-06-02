@@ -49,6 +49,8 @@ interface ProcessingOptions {
   minImportanceScore?: number;  // Default 40
 }
 
+let processingRunInProgress = false;
+
 /**
  * Process unprocessed news articles with importance filtering and multi-agent scoring
  */
@@ -72,6 +74,13 @@ export async function processUnprocessedArticles(
     errors: 0,
     articlesFailed: []
   };
+
+  if (processingRunInProgress) {
+    console.warn('⏭️ NEWS TO TD SCORING SERVICE already running; skipping overlapping invocation');
+    return stats;
+  }
+
+  processingRunInProgress = true;
   
   const batchSize = options.batchSize || 50;
   const topPercentile = options.topPercentile || 25;
@@ -95,6 +104,7 @@ export async function processUnprocessedArticles(
       .from('news_articles')
       .select('*')
       .eq('processed', false)
+      .or('score_applied.is.null,score_applied.eq.false')
       .order('created_at', { ascending: false })
       .limit(batchSize);
     
@@ -115,14 +125,48 @@ export async function processUnprocessedArticles(
     console.log('\n' + '─'.repeat(70));
     console.log('STEP 2: Scoring article importance...');
     
-    const { topArticles, skippedArticles, stats: importanceStats } = 
-      await ArticleImportanceService.batchScoreAndRank(articles, {
+    const queuedArticles = articles.filter((article: any) => article.importance_score !== null && article.importance_score !== undefined);
+    const untriagedArticles = articles.filter((article: any) => article.importance_score === null || article.importance_score === undefined);
+
+    const topArticles: Array<{
+      article: any;
+      importance: {
+        score: number;
+        reasoning: string;
+        politiciansMentioned: string[];
+        topicCategory: string;
+        isPrimarySubject: boolean;
+      };
+    }> = queuedArticles.map((article: any) => ({
+      article,
+      importance: {
+        score: Number(article.importance_score) || 0,
+        reasoning: article.importance_reasoning || 'Queued by article triage',
+        politiciansMentioned: [],
+        topicCategory: article.story_type || 'general',
+        isPrimarySubject: false
+      }
+    }));
+
+    let skippedArticles: Array<{ article: any; importance: any }> = [];
+    let importanceStats = {
+      scored: 0
+    };
+
+    if (untriagedArticles.length > 0) {
+      const scored = await ArticleImportanceService.batchScoreAndRank(untriagedArticles, {
         topPercentile,
         minScore: minImportanceScore,
         parallelLimit: 5
       });
+      topArticles.push(...scored.topArticles);
+      skippedArticles = scored.skippedArticles;
+      importanceStats = scored.stats;
+    } else {
+      console.log(`   Reusing triage importance for ${queuedArticles.length} queued articles`);
+    }
     
-    stats.importanceScored = importanceStats.scored;
+    stats.importanceScored = queuedArticles.length + importanceStats.scored;
     stats.selectedForScoring = topArticles.length;
     stats.skippedLowImportance = skippedArticles.length;
     
@@ -136,6 +180,7 @@ export async function processUnprocessedArticles(
         .update({ 
           processed: true,
           score_applied: false,
+          visible: true,
           importance_score: importance.score,
           importance_reasoning: importance.reasoning,
           skipped_reason: `Below ${topPercentile}th percentile (score: ${importance.score})`
@@ -184,6 +229,7 @@ export async function processUnprocessedArticles(
         .update({ 
           processed: true,
           score_applied: false,
+          visible: true,
           importance_score: importance.score,
           importance_reasoning: importance.reasoning,
           skipped_reason: `Duplicate of article ${canonicalId} (same event: ${cluster?.eventName || 'unknown'})`
@@ -252,6 +298,7 @@ export async function processUnprocessedArticles(
           .update({ 
             processed: true,
             score_applied: false,
+            visible: true,
             error_message: String(error)
           })
           .eq('id', article.id);
@@ -305,6 +352,8 @@ export async function processUnprocessedArticles(
   } catch (error) {
     console.error('❌ Fatal error in processUnprocessedArticles:', error);
     throw error;
+  } finally {
+    processingRunInProgress = false;
   }
 }
 
@@ -500,6 +549,7 @@ async function markArticleProcessed(
   const updateData: any = {
     processed: true,
     score_applied: scoreApplied,
+    visible: true,
     importance_score: importance.score,
     importance_reasoning: importance.reasoning,
     analyzed_by: scoreApplied ? 'multi-agent' : null
