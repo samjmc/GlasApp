@@ -60,6 +60,10 @@ type RunningScoreRow = {
   metadata: Record<string, any> | null;
 };
 
+type OutcomeProcessingOrderRow = Pick<OutcomeRow, 'section_id' | 'debate_day_id' | 'created_at'> & {
+  debate_days: Pick<DebateDay, 'date'> | null;
+};
+
 const EFFECTIVENESS_WEIGHT = 0.6;
 const INFLUENCE_WEIGHT = 0.4;
 const MIN_SOFT_SCORE = 15;
@@ -135,7 +139,7 @@ function compareNullableStrings(a: string | null | undefined, b: string | null |
 }
 
 export function orderOutcomeRowsForProcessing<
-  T extends Pick<OutcomeRow, 'section_id' | 'debate_day_id' | 'created_at' | 'debate_days'>
+  T extends OutcomeProcessingOrderRow
 >(rows: T[]): T[] {
   return [...rows].sort((a, b) => {
     return (
