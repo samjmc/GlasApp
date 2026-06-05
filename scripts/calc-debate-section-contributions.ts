@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { createClient } from '@supabase/supabase-js';
+import { pathToFileURL } from 'url';
 
 type DebateDay = {
   id: string;
@@ -41,6 +42,7 @@ type ParticipantEvaluation = {
 type OutcomeRow = {
   section_id: string;
   debate_day_id: string;
+  created_at: string | null;
   winner_td_id: number | null;
   outcome: string | null;
   confidence: number | null;
@@ -56,6 +58,10 @@ type RunningScoreRow = {
   performance_score: number;
   last_debate_date: string | null;
   metadata: Record<string, any> | null;
+};
+
+type OutcomeProcessingOrderRow = Pick<OutcomeRow, 'section_id' | 'debate_day_id' | 'created_at'> & {
+  debate_days: Pick<DebateDay, 'date'> | null;
 };
 
 const EFFECTIVENESS_WEIGHT = 0.6;
@@ -125,9 +131,30 @@ function applySoftScoreUpdate(currentScore: number, delta: number): number {
   return Number(adjusted.toFixed(2));
 }
 
+function compareNullableStrings(a: string | null | undefined, b: string | null | undefined): number {
+  if (a === b) return 0;
+  if (!a) return 1;
+  if (!b) return -1;
+  return a.localeCompare(b);
+}
+
+export function orderOutcomeRowsForProcessing<
+  T extends OutcomeProcessingOrderRow
+>(rows: T[]): T[] {
+  return [...rows].sort((a, b) => {
+    return (
+      compareNullableStrings(a.created_at, b.created_at) ||
+      compareNullableStrings(a.debate_days?.date, b.debate_days?.date) ||
+      compareNullableStrings(a.debate_day_id, b.debate_day_id) ||
+      compareNullableStrings(a.section_id, b.section_id)
+    );
+  });
+}
+
 async function loadOutcomeRows(): Promise<OutcomeRow[]> {
   // Supabase responses are page-limited. If we don't paginate, we can miss the newest outcomes
-  // (which makes TD performance look "stuck" on older periods).
+  // (which makes TD performance look "stuck" on older periods). The score updates below are
+  // stateful, so the fetched window must still be processed from oldest to newest.
   const pageSize = 1000;
   const maxPages = 10; // safety cap (up to 10k outcomes)
   const rows: OutcomeRow[] = [];
@@ -141,6 +168,7 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
       .select(`
         section_id,
         debate_day_id,
+        created_at,
         winner_td_id,
         outcome,
         confidence,
@@ -149,13 +177,14 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
         debate_sections!inner(id, debate_day_id, title, word_count)
       `)
       .order('created_at', { ascending: false })
+      .order('section_id', { ascending: false })
       .range(from, to);
 
     if (error) {
       throw new Error(`Failed to load debate outcomes: ${error.message}`);
     }
 
-    const pageRows = (data || []) as OutcomeRow[];
+    const pageRows = ((data || []) as unknown) as OutcomeRow[];
     rows.push(...pageRows);
 
     if (pageRows.length < pageSize) {
@@ -163,7 +192,7 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
     }
   }
 
-  return rows;
+  return orderOutcomeRowsForProcessing(rows);
 }
 
 async function contributionsExist(sectionId: string): Promise<boolean> {
@@ -446,9 +475,13 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((error) => {
-  console.error('❌ Failed to calculate debate section contributions:', error);
-  process.exit(1);
-});
+const isDirectRun = process.argv[1] ? import.meta.url === pathToFileURL(process.argv[1]).href : false;
+
+if (isDirectRun) {
+  main().catch((error) => {
+    console.error('❌ Failed to calculate debate section contributions:', error);
+    process.exit(1);
+  });
+}
 
 
