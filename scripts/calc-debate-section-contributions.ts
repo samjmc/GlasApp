@@ -184,7 +184,7 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
       throw new Error(`Failed to load debate outcomes: ${error.message}`);
     }
 
-    const pageRows = (data || []) as OutcomeRow[];
+    const pageRows = ((data || []) as unknown) as OutcomeRow[];
     rows.push(...pageRows);
 
     if (pageRows.length < pageSize) {
