@@ -76,7 +76,13 @@ const RegisterPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const result = await signInWithMagicLink?.(magicLinkEmail);
+      const result = await signInWithMagicLink?.(magicLinkEmail, {
+        mode: 'signup',
+        metadata: {
+          consent_given: true,
+          consent_at: new Date().toISOString(),
+        },
+      });
       if (result?.success) {
         setMagicLinkSent(true);
         toast({
@@ -105,6 +111,8 @@ const RegisterPage = () => {
       await signUpWithEmail(data.email, data.password, {
         first_name: data.firstName,
         last_name: data.lastName,
+        consent_given: true,
+        consent_at: new Date().toISOString(),
       });
       
       toast({

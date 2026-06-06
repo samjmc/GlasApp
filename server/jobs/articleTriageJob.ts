@@ -22,6 +22,7 @@ interface TriageStats {
   articlesProcessed: number;
   articlesMarkedVisible: number;
   articlesMarkedForScoring: number;
+  articlesAlreadyScored: number;
   articlesSkipped: number;
   averageImportance: number;
   errors: number;
@@ -50,6 +51,7 @@ export async function runArticleTriage(
     articlesProcessed: 0,
     articlesMarkedVisible: 0,
     articlesMarkedForScoring: 0,
+    articlesAlreadyScored: 0,
     articlesSkipped: 0,
     averageImportance: 0,
     errors: 0
@@ -74,7 +76,7 @@ export async function runArticleTriage(
     
     const { data: articles, error } = await supabase
       .from('news_articles')
-      .select('id, title, content, source, published_date')
+      .select('id, title, content, source, published_date, processed, score_applied')
       .eq('visible', false)
       .order('created_at', { ascending: false })
       .limit(batchSize);
@@ -103,6 +105,7 @@ export async function runArticleTriage(
       reasoning: string;
       topicCategory: string;
       isPrimarySubject: boolean;
+      scoreApplied: boolean;
     }> = [];
     
     // Process in small parallel batches
@@ -126,7 +129,8 @@ export async function runArticleTriage(
               importance: importance.score,
               reasoning: importance.reasoning,
               topicCategory: importance.topicCategory,
-              isPrimarySubject: importance.isPrimarySubject
+              isPrimarySubject: importance.isPrimarySubject,
+              scoreApplied: article.score_applied === true
             };
           } catch (err) {
             console.error(`   ❌ Error scoring ${article.title}:`, err);
@@ -137,7 +141,8 @@ export async function runArticleTriage(
               importance: 50,  // Default to medium if error
               reasoning: 'Error scoring - defaulted to medium',
               topicCategory: 'general',
-              isPrimarySubject: false
+              isPrimarySubject: false,
+              scoreApplied: article.score_applied === true
             };
           }
         })
@@ -159,15 +164,25 @@ export async function runArticleTriage(
     console.log('\n' + '─'.repeat(60));
     console.log('STEP 3: Marking articles visible and selecting for scoring...');
     
+    const scoringCandidates = scoredArticles
+      .filter(article => !article.scoreApplied)
+      .sort((a, b) => b.importance - a.importance);
+
+    const cutoffIndex = Math.ceil(scoringCandidates.length * (topPercentile / 100));
+    const articleIdsNeedingScoring = new Set(
+      scoringCandidates
+        .filter((article, index) => index < cutoffIndex && article.importance >= minImportanceForScoring)
+        .map(article => article.id)
+    );
+
     scoredArticles.sort((a, b) => b.importance - a.importance);
-    
-    const cutoffIndex = Math.ceil(scoredArticles.length * (topPercentile / 100));
     
     for (let i = 0; i < scoredArticles.length; i++) {
       const article = scoredArticles[i];
       
       // Determine if this article should get full multi-agent scoring
-      const needsScoring = i < cutoffIndex && article.importance >= minImportanceForScoring;
+      const alreadyScored = article.scoreApplied;
+      const needsScoring = articleIdsNeedingScoring.has(article.id);
       
       // Update database
       const { error: updateError } = await supabase
@@ -177,9 +192,14 @@ export async function runArticleTriage(
           importance_score: article.importance,
           importance_reasoning: article.reasoning,
           story_type: article.topicCategory,
-          // If not scoring, mark as processed (won't be picked up by scorer)
-          processed: !needsScoring,
-          skipped_reason: needsScoring ? null : `Below top ${topPercentile}% (score: ${article.importance})`
+          // Never re-queue articles whose ELO changes were already applied.
+          processed: alreadyScored ? true : !needsScoring,
+          score_applied: alreadyScored ? true : false,
+          skipped_reason: alreadyScored
+            ? null
+            : needsScoring
+              ? null
+              : `Below top ${topPercentile}% (score: ${article.importance})`
         })
         .eq('id', article.id);
       
@@ -188,7 +208,9 @@ export async function runArticleTriage(
         stats.errors++;
       } else {
         stats.articlesMarkedVisible++;
-        if (needsScoring) {
+        if (alreadyScored) {
+          stats.articlesAlreadyScored++;
+        } else if (needsScoring) {
           stats.articlesMarkedForScoring++;
         } else {
           stats.articlesSkipped++;
@@ -203,6 +225,7 @@ export async function runArticleTriage(
     console.log(`📊 Statistics:`);
     console.log(`   Articles processed: ${stats.articlesProcessed}`);
     console.log(`   Marked visible: ${stats.articlesMarkedVisible}`);
+    console.log(`   Already scored: ${stats.articlesAlreadyScored}`);
     console.log(`   Queued for scoring (top ${topPercentile}%): ${stats.articlesMarkedForScoring}`);
     console.log(`   Skipped (low importance): ${stats.articlesSkipped}`);
     console.log(`   Average importance: ${stats.averageImportance}`);

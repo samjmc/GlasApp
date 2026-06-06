@@ -10,11 +10,25 @@ import {
 
 const router = Router();
 
+function parseJsonField(value: unknown, fallback: unknown = null): unknown {
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+}
+
 // GET /api/news-feed - Get all news articles with optional sorting
 router.get('/', async (req: Request, res: Response) => {
   try {
     console.log('📰 News feed request received');
     const { limit = 20, offset = 0, sort = 'recent' } = req.query;
+    const limitNumber = Number(limit);
+    const offsetNumber = Number(offset);
     const regionCode: RegionCode = req.regionCode || DEFAULT_REGION_CODE;
 
     const mockResponse = REGION_NEWS_MOCK[regionCode];
@@ -81,7 +95,7 @@ router.get('/', async (req: Request, res: Response) => {
             // Filter for articles with impact, then sort by:
             // 1. TD-scored articles first (by recency)
             // 2. Policy-vote-only articles second (by recency)
-            articles = articlesWithTotalImpact
+            const impactedArticles = articlesWithTotalImpact
               .filter((a: any) => a.hasAnyImpact)
               .sort((a: any, b: any) => {
                 const aHasTD = a.totalTDImpact > 0;
@@ -93,10 +107,10 @@ router.get('/', async (req: Request, res: Response) => {
                 
                 // Within same category, sort by recency
                 return new Date(b.published_date).getTime() - new Date(a.published_date).getTime();
-              })
-              .slice(0, Number(limit));
+              });
             
-            count = articles.length;
+            count = impactedArticles.length;
+            articles = impactedArticles.slice(offsetNumber, offsetNumber + limitNumber);
             const tdScoredCount = articles.filter((a: any) => a.totalTDImpact > 0).length;
             const policyOnlyCount = articles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
             console.log(`✨ Found ${count} high-impact articles. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
@@ -196,7 +210,7 @@ router.get('/', async (req: Request, res: Response) => {
           articles = articlesWithTotalImpact
             .filter((a: any) => a.hasAnyImpact)
             .sort((a: any, b: any) => b.totalTDImpact - a.totalTDImpact)
-            .slice(0, Number(limit));
+            .slice(0, limitNumber);
           
           count = articles.length;
           console.log(`✨ Found ${count} impactful articles from ${dateRange}. Top impact: ${articles[0]?.totalTDImpact || 0}`);
@@ -212,7 +226,7 @@ router.get('/', async (req: Request, res: Response) => {
           query = query.order('published_date', { ascending: false });
           
           // Apply pagination
-          query = query.range(Number(offset), Number(offset) + Number(limit) - 1);
+          query = query.range(offsetNumber, offsetNumber + limitNumber - 1);
           
           const result = await query;
           articles = result.data || [];
@@ -226,16 +240,23 @@ router.get('/', async (req: Request, res: Response) => {
         
         // Fetch all TD scores for these articles
         const articleIds = (articles || []).map((a: any) => a.id);
-        const { data: allTDScores } = await supabaseDb
-          .from('article_td_scores')
-          .select('*')
-          .in('article_id', articleIds);
+        let allTDScores: any[] = [];
+        let allTDStances: any[] = [];
         
-        // Fetch all TD policy stances for these articles
-        const { data: allTDStances } = await supabaseDb
-          .from('td_policy_stances')
-          .select('*')
-          .in('article_id', articleIds);
+        if (articleIds.length > 0) {
+          const { data: tdScores } = await supabaseDb
+            .from('article_td_scores')
+            .select('*')
+            .in('article_id', articleIds);
+          allTDScores = tdScores || [];
+          
+          // Fetch all TD policy stances for these articles
+          const { data: tdStances } = await supabaseDb
+            .from('td_policy_stances')
+            .select('*')
+            .in('article_id', articleIds);
+          allTDStances = tdStances || [];
+        }
         
         // Group TD scores by article
         const tdScoresByArticle = new Map();
@@ -327,12 +348,8 @@ router.get('/', async (req: Request, res: Response) => {
             isIdeologicalPolicy: article.is_ideological_policy,
             policyDirection: article.policy_direction,
             // Parse JSONB fields (Supabase returns them as objects already)
-            policyFacts: typeof article.policy_facts === 'string' 
-              ? JSON.parse(article.policy_facts) 
-              : article.policy_facts,
-            perspectives: typeof article.perspectives === 'string'
-              ? JSON.parse(article.perspectives)
-              : article.perspectives,
+            policyFacts: parseJsonField(article.policy_facts),
+            perspectives: parseJsonField(article.perspectives),
             isOppositionAdvocacy: article.is_opposition_advocacy,
             hasPolicyOpportunity: !!policyVote,
             policyVote,
@@ -380,7 +397,7 @@ router.get('/', async (req: Request, res: Response) => {
           success: true,
           articles: transformedArticles,
           total: count || 0,
-          has_more: (Number(offset) + (articles?.length || 0)) < (count || 0),
+          has_more: (offsetNumber + (articles?.length || 0)) < (count || 0),
           last_updated: new Date().toISOString(),
           source: 'Supabase Database',
           sort: sort,
