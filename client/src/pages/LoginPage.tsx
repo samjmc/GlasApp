@@ -60,7 +60,7 @@ const LoginPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const result = await signInWithMagicLink?.(magicLinkEmail);
+      const result = await signInWithMagicLink?.(magicLinkEmail, { mode: 'login' });
       if (result?.success) {
         setMagicLinkSent(true);
         toast({

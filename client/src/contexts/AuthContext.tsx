@@ -14,6 +14,13 @@ interface AuthUser {
   role?: string;
 }
 
+type MagicLinkMode = 'login' | 'signup';
+
+interface MagicLinkOptions {
+  mode?: MagicLinkMode;
+  metadata?: Record<string, unknown>;
+}
+
 interface AuthContextType {
   user: AuthUser | null;
   isLoading: boolean;
@@ -22,7 +29,7 @@ interface AuthContextType {
   logout?: () => Promise<void>;
   deleteAccount?: () => Promise<void>;
   signInWithGoogle?: () => Promise<void>;
-  signInWithMagicLink?: (email: string) => Promise<{ success: boolean; message?: string }>;
+  signInWithMagicLink?: (email: string, options?: MagicLinkOptions) => Promise<{ success: boolean; message?: string }>;
   login?: (username: string, password: string) => Promise<{ success: boolean; message?: string }>;
   register?: (data: {
     username: string;
@@ -206,12 +213,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  const signInWithMagicLink = async (email: string) => {
+  const signInWithMagicLink = async (email: string, options: MagicLinkOptions = {}) => {
     try {
+      const mode = options.mode ?? 'login';
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback`,
+          shouldCreateUser: mode === 'signup',
+          data: options.metadata,
         },
       });
 
@@ -219,7 +229,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         return { success: false, message: error.message || 'Failed to send magic link.' };
       }
 
-      return { success: true, message: 'Check your email for a login link!' };
+      return {
+        success: true,
+        message: mode === 'signup'
+          ? 'Check your email for a signup link!'
+          : 'Check your email for a login link!'
+      };
     } catch (error) {
       if (import.meta.env.DEV) {
         console.error('Error sending magic link:', error);

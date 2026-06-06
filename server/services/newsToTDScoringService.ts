@@ -95,6 +95,7 @@ export async function processUnprocessedArticles(
       .from('news_articles')
       .select('*')
       .eq('processed', false)
+      .or('score_applied.is.null,score_applied.eq.false')
       .order('created_at', { ascending: false })
       .limit(batchSize);
     
