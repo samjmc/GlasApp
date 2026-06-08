@@ -69,17 +69,26 @@ const SCORE_SHRINK_FACTOR = 0.92;
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.error('❌ Missing Supabase credentials (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY).');
-  process.exit(1);
-}
+type SupabaseClientLike = Pick<ReturnType<typeof createClient>, 'from'>;
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false
+let supabase: ReturnType<typeof createClient> | null = null;
+
+function getSupabase(): ReturnType<typeof createClient> {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error('Missing Supabase credentials (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY).');
   }
-});
+
+  if (!supabase) {
+    supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    });
+  }
+
+  return supabase;
+}
 
 function clamp(value: number, min: number, max: number): number {
   if (!Number.isFinite(value)) return min;
@@ -125,18 +134,19 @@ function applySoftScoreUpdate(currentScore: number, delta: number): number {
   return Number(adjusted.toFixed(2));
 }
 
-async function loadOutcomeRows(): Promise<OutcomeRow[]> {
-  // Supabase responses are page-limited. If we don't paginate, we can miss the newest outcomes
-  // (which makes TD performance look "stuck" on older periods).
-  const pageSize = 1000;
-  const maxPages = 10; // safety cap (up to 10k outcomes)
+export async function loadOutcomeRows(client: SupabaseClientLike = getSupabase(), pageSize = 1000): Promise<OutcomeRow[]> {
+  if (!Number.isInteger(pageSize) || pageSize <= 0) {
+    throw new Error(`Invalid page size for outcome loading: ${pageSize}`);
+  }
+
+  // Running score updates are cumulative, so every page must be processed oldest-to-newest.
   const rows: OutcomeRow[] = [];
 
-  for (let page = 0; page < maxPages; page += 1) {
+  for (let page = 0; ; page += 1) {
     const from = page * pageSize;
     const to = from + pageSize - 1;
 
-    const { data, error } = await supabase
+    const { data, error } = await client
       .from('debate_section_outcomes')
       .select(`
         section_id,
@@ -148,7 +158,7 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
         debate_days!inner(id, date, chamber, title),
         debate_sections!inner(id, debate_day_id, title, word_count)
       `)
-      .order('created_at', { ascending: false })
+      .order('created_at', { ascending: true })
       .range(from, to);
 
     if (error) {
@@ -167,7 +177,7 @@ async function loadOutcomeRows(): Promise<OutcomeRow[]> {
 }
 
 async function contributionsExist(sectionId: string): Promise<boolean> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from('debate_section_score_contributions')
     .select('section_id')
     .eq('section_id', sectionId)
@@ -182,7 +192,7 @@ async function contributionsExist(sectionId: string): Promise<boolean> {
 
 async function loadRunningScores(tdIds: number[]): Promise<Map<number, RunningScoreRow>> {
   if (tdIds.length === 0) return new Map();
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from('td_debate_running_scores')
     .select('td_id, effectiveness_score, influence_score, performance_score, last_debate_date, metadata')
     .in('td_id', tdIds);
@@ -220,7 +230,7 @@ async function ensureRunningScores(tdIds: number[]): Promise<Map<number, Running
       metadata: {}
     }));
 
-    const { error: seedError } = await supabase
+    const { error: seedError } = await getSupabase()
       .from('td_debate_running_scores')
       .upsert(seedRows, { onConflict: 'td_id' });
 
@@ -411,7 +421,7 @@ async function processSection(outcomeRow: OutcomeRow): Promise<void> {
     return;
   }
 
-  const { error: insertError } = await supabase
+  const { error: insertError } = await getSupabase()
     .from('debate_section_score_contributions')
     .upsert(contributionRows, { onConflict: 'section_id,td_id' });
 
@@ -419,7 +429,7 @@ async function processSection(outcomeRow: OutcomeRow): Promise<void> {
     throw new Error(`Failed to upsert contributions for section ${outcomeRow.section_id}: ${insertError.message}`);
   }
 
-  const { error: scoreUpdateError } = await supabase
+  const { error: scoreUpdateError } = await getSupabase()
     .from('td_debate_running_scores')
     .upsert(runningScoreUpdates, { onConflict: 'td_id' });
 
@@ -446,9 +456,11 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((error) => {
-  console.error('❌ Failed to calculate debate section contributions:', error);
-  process.exit(1);
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((error) => {
+    console.error('❌ Failed to calculate debate section contributions:', error);
+    process.exit(1);
+  });
+}
 
 
