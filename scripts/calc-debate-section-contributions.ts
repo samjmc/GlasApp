@@ -69,11 +69,13 @@ const SCORE_SHRINK_FACTOR = 0.92;
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
 
-type SupabaseClientLike = Pick<ReturnType<typeof createClient>, 'from'>;
+type SupabaseClientLike = {
+  from: (table: string) => any;
+};
 
-let supabase: ReturnType<typeof createClient> | null = null;
+let supabase: SupabaseClientLike | null = null;
 
-function getSupabase(): ReturnType<typeof createClient> {
+function getSupabase(): SupabaseClientLike {
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
     throw new Error('Missing Supabase credentials (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY).');
   }
