@@ -56,6 +56,7 @@ import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
 import votingRoutes from "./routes/parliamentary/votingRoutes";
+import { getRequestUserId } from "./utils/authUser";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
@@ -296,7 +297,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // API route to save multidimensional quiz results with political evolution tracking
-  app.post("/api/multidimensional-quiz-results", async (req: Request, res: Response) => {
+  app.post("/api/multidimensional-quiz-results", optionalAuth, async (req: Request, res: Response) => {
     try {
       const resultsSchema = z.object({
         economic: z.number(),
@@ -319,7 +320,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // If user is authenticated, save to political evolution tracking (primary storage)
       let evolutionResult = null;
-      const userId = req.user?.claims?.sub || req.session?.userId;
+      const userId = getRequestUserId(req);
       if (userId) {
         try {
           evolutionResult = await storage.savePoliticalEvolution({
