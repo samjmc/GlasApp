@@ -10,6 +10,7 @@ import {
   defaultDimensions
 } from "@shared/quizTypes";
 import { apiRequest } from "@/lib/queryClient";
+import { supabase } from "@/lib/supabase";
 
 // Define context type
 interface MultidimensionalQuizContextType {
@@ -357,12 +358,22 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
         shareCode,
         answers: responses
       };
+
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+
+      if (sessionError) {
+        console.error('Error loading auth session before saving quiz results:', sessionError);
+      }
       
       // Save to database via API
       await apiRequest({
         method: 'POST',
         path: '/api/multidimensional-quiz-results',
-        body: resultData
+        body: resultData,
+        accessToken: session?.access_token
       });
       
       // Mark as saved to prevent duplicate saves

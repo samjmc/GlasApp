@@ -12,14 +12,24 @@ type ApiRequestOptions = {
   path: string;
   body?: unknown;
   on401?: "returnNull" | "throw";
+  accessToken?: string;
 };
 
 export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T> {
-  const { method, path, body, on401 = "throw" } = options;
+  const { method, path, body, on401 = "throw", accessToken } = options;
+  const headers = new Headers();
+
+  if (body) {
+    headers.set("Content-Type", "application/json");
+  }
+
+  if (accessToken) {
+    headers.set("Authorization", `Bearer ${accessToken}`);
+  }
   
   const res = await fetch(path, {
     method,
-    headers: body ? { "Content-Type": "application/json" } : {},
+    headers,
     body: body ? JSON.stringify(body) : undefined,
     credentials: "include",
   });
