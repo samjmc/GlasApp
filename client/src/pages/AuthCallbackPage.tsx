@@ -6,10 +6,17 @@ const AuthCallbackPage = () => {
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    // Handle the OAuth callback
     const handleCallback = async () => {
       try {
-        // Supabase automatically handles the callback and stores the session
+        const params = new URLSearchParams(window.location.search);
+        const errorDescription = params.get('error_description') || params.get('error');
+
+        if (errorDescription) {
+          console.error('Auth callback error:', errorDescription);
+          navigate('/login');
+          return;
+        }
+
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error) {
@@ -20,6 +27,16 @@ const AuthCallbackPage = () => {
 
         if (session) {
           // Successful authentication - redirect to home
+          navigate('/');
+        } else if (params.has('code')) {
+          const { data, error: exchangeError } = await supabase.auth.exchangeCodeForSession(params.get('code')!);
+
+          if (exchangeError || !data.session) {
+            console.error('Auth callback exchange error:', exchangeError);
+            navigate('/login');
+            return;
+          }
+
           navigate('/');
         } else {
           // No session found - redirect to login
