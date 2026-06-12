@@ -189,9 +189,24 @@ router.get('/user/me/article/:articleId', isAuthenticated, async (req, res) => {
  * GET /api/policy-votes/user/:userId/article/:articleId
  * Get user's vote on a specific article (legacy - kept for backward compatibility)
  */
-router.get('/user/:userId/article/:articleId', async (req, res) => {
+router.get('/user/:userId/article/:articleId', isAuthenticated, async (req, res) => {
   try {
     const { userId, articleId } = req.params;
+    const authenticatedUserId = req.user?.id;
+    
+    if (!authenticatedUserId) {
+      return res.status(401).json({
+        success: false,
+        error: 'Authentication required'
+      });
+    }
+
+    if (authenticatedUserId !== userId) {
+      return res.status(403).json({
+        success: false,
+        error: 'Not authorized to view this vote'
+      });
+    }
     
     const { data: votes, error } = await supabase
       .from('user_policy_votes')
@@ -487,10 +502,17 @@ router.get('/user/:userId/value-alignment', async (req, res) => {
  * DELETE /api/policy-votes/:voteId
  * Delete a policy vote
  */
-router.delete('/:voteId', async (req, res) => {
+router.delete('/:voteId', isAuthenticated, async (req, res) => {
   try {
     const { voteId } = req.params;
-    const { userId } = req.body;
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        error: 'Authentication required'
+      });
+    }
     
     // Verify user owns this vote
     const { data: vote, error: checkError } = await supabase
@@ -500,6 +522,13 @@ router.delete('/:voteId', async (req, res) => {
       .single();
     
     if (checkError) throw checkError;
+
+    if (!vote) {
+      return res.status(404).json({
+        success: false,
+        error: 'Vote not found'
+      });
+    }
     
     if (vote.user_id !== userId) {
       return res.status(403).json({

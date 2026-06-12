@@ -7,7 +7,7 @@ import { ActivityTracker } from "./services/activityTracker";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
-import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
+import { isAuthenticated, isAdminOrCron, optionalAuth } from "./auth/supabaseAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
 import geographicRoutes from "./routes/geographic";
 import authRoutes from "./routes/authRoutes";
@@ -158,12 +158,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/account", accountRoutes);
   
   // Register admin routes for news scraping and system management
-  app.use("/api/admin/news-scraper", newsScraperRoutes);
-  app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", debateAdminRoutes);
-  app.use("/api/admin/baselines", baselineAdminRoutes);
-  app.use("/api/admin/articles", manualArticleRoutes);
-  app.use("/api/admin/td-scoring", tdScoringAdminRoutes);
+  app.use("/api/admin/news-scraper", isAdminOrCron, newsScraperRoutes);
+  app.use("/api/admin/parliamentary", isAdminOrCron, parliamentaryAdminRoutes);
+  app.use("/api/admin/debates", isAdminOrCron, debateAdminRoutes);
+  app.use("/api/admin/baselines", isAdminOrCron, baselineAdminRoutes);
+  app.use("/api/admin/articles", isAdminOrCron, manualArticleRoutes);
+  app.use("/api/admin/td-scoring", isAdminOrCron, tdScoringAdminRoutes);
   
   // Register user rating routes for TDs
   app.use("/api/ratings", tdRatingsRoutes);

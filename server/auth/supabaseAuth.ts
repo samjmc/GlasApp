@@ -6,6 +6,7 @@
  */
 
 import type { Request, Response, NextFunction } from 'express';
+import { timingSafeEqual } from 'crypto';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Validate required environment variables
@@ -143,6 +144,82 @@ export async function isAdmin(
     res.status(403).json({ 
       success: false,
       message: 'Access denied' 
+    });
+  }
+}
+
+function secretsMatch(provided: string, expected: string): boolean {
+  const providedBuffer = Buffer.from(provided);
+  const expectedBuffer = Buffer.from(expected);
+
+  if (providedBuffer.length !== expectedBuffer.length) {
+    return false;
+  }
+
+  return timingSafeEqual(providedBuffer, expectedBuffer);
+}
+
+function getCronSecretFromRequest(req: Request): string | null {
+  const headerSecret = req.get('x-cron-secret');
+  if (headerSecret) {
+    return headerSecret;
+  }
+
+  const authHeader = req.headers.authorization;
+  if (authHeader?.startsWith('Bearer ')) {
+    return authHeader.substring(7);
+  }
+
+  return null;
+}
+
+/**
+ * Middleware to protect admin endpoints.
+ *
+ * Human admins authenticate with a Supabase JWT carrying role=admin.
+ * Scheduled jobs may use CRON_SECRET via x-cron-secret or Authorization: Bearer.
+ */
+export async function isAdminOrCron(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const cronSecret = process.env.CRON_SECRET;
+    const providedSecret = getCronSecretFromRequest(req);
+
+    if (cronSecret && providedSecret && secretsMatch(providedSecret, cronSecret)) {
+      next();
+      return;
+    }
+
+    const user = await getUserFromRequest(req);
+
+    if (!user) {
+      res.status(401).json({
+        success: false,
+        message: 'Admin authentication required'
+      });
+      return;
+    }
+
+    const role = user.user_metadata?.role || user.app_metadata?.role;
+
+    if (role !== 'admin') {
+      res.status(403).json({
+        success: false,
+        message: 'Admin access required'
+      });
+      return;
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    console.error('Admin/cron check error:', error);
+    res.status(403).json({
+      success: false,
+      message: 'Access denied'
     });
   }
 }
