@@ -5,12 +5,15 @@
 
 import { Router } from 'express';
 import { DailyNewsScraperJob } from '../../jobs/dailyNewsScraper';
+import { requireAdminJobAuth } from '../../middleware/adminJobAuth';
 import { NewsScraperService } from '../../services/newsScraperService';
 import { TDExtractionService } from '../../services/tdExtractionService';
 import { AINewsAnalysisService } from '../../services/aiNewsAnalysisService';
 import { supabaseDb } from '../../db';
 
 const router = Router();
+
+router.use(requireAdminJobAuth);
 
 /**
  * POST /api/admin/news-scraper/test - Test news scraping with one source

@@ -10,9 +10,12 @@
 
 import { Router } from 'express';
 import { ArticleTriageJob } from '../../jobs/articleTriageJob.js';
+import { requireAdminJobAuth } from '../../middleware/adminJobAuth';
 import { NewsToTDScoringService } from '../../services/newsToTDScoringService.js';
 
 const router = Router();
+
+router.use(requireAdminJobAuth);
 
 /**
  * POST /api/admin/td-scoring/triage
