@@ -49,6 +49,8 @@ interface ProcessingOptions {
   minImportanceScore?: number;  // Default 40
 }
 
+let isProcessingArticles = false;
+
 /**
  * Process unprocessed news articles with importance filtering and multi-agent scoring
  */
@@ -76,6 +78,13 @@ export async function processUnprocessedArticles(
   const batchSize = options.batchSize || 50;
   const topPercentile = options.topPercentile || 25;
   const minImportanceScore = options.minImportanceScore || 40;
+
+  if (isProcessingArticles) {
+    console.warn('⚠️ TD scoring is already running; skipping overlapping invocation');
+    return stats;
+  }
+
+  isProcessingArticles = true;
   
   console.log('\n' + '═'.repeat(70));
   console.log('📰 NEWS TO TD SCORING SERVICE (v2 - Multi-Agent)');
@@ -246,11 +255,12 @@ export async function processUnprocessedArticles(
         stats.errors++;
         stats.articlesFailed.push(article.title);
         
-        // Still mark as processed to avoid infinite retries
+        // Leave the article retryable. A transient LLM/network failure should not
+        // permanently remove it from the TD scoring pipeline.
         await supabase
           .from('news_articles')
-          .update({ 
-            processed: true,
+          .update({
+            processed: false,
             score_applied: false,
             error_message: String(error)
           })
@@ -305,6 +315,8 @@ export async function processUnprocessedArticles(
   } catch (error) {
     console.error('❌ Fatal error in processUnprocessedArticles:', error);
     throw error;
+  } finally {
+    isProcessingArticles = false;
   }
 }
 
@@ -340,23 +352,33 @@ async function processArticleWithMultiAgent(
   });
   
   // Step 2: Process each substantial TD mention
+  let substantialMentions = 0;
+  let successfulScores = 0;
+
   for (const mention of highConfidenceMentions) {
     // Check if this is a substantial mention
     if (!TDExtractionService.isSubstantialMention(fullText, mention.name)) {
       console.log(`   ⏭️ Skipping ${mention.name} - only passing mention`);
       continue;
     }
+
+    substantialMentions++;
     
     try {
       await processTDWithMultiAgent(article, mention, importance, stats);
+      successfulScores++;
     } catch (error) {
       console.error(`   ❌ Error processing ${mention.name}:`, error);
       stats.errors++;
     }
   }
+
+  if (substantialMentions > 0 && successfulScores === 0) {
+    throw new Error('Failed to score all substantial TD mentions');
+  }
   
   // Mark article as processed
-  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], true);
+  await markArticleProcessed(article.id, importance, highConfidenceMentions[0], successfulScores > 0);
 }
 
 /**

@@ -9,6 +9,25 @@ const AuthCallbackPage = () => {
     // Handle the OAuth callback
     const handleCallback = async () => {
       try {
+        const code = new URLSearchParams(window.location.search).get('code');
+
+        if (code) {
+          const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+
+          if (error) {
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (!session) {
+              console.error('Auth callback error:', error);
+              navigate('/login');
+              return;
+            }
+          } else if (data.session) {
+            navigate('/');
+            return;
+          }
+        }
+
         // Supabase automatically handles the callback and stores the session
         const { data: { session }, error } = await supabase.auth.getSession();
         
