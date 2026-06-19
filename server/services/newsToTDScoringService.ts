@@ -161,7 +161,7 @@ export async function processUnprocessedArticles(
     console.log('STEP 2: Scoring article importance...');
     
     const { topArticles, skippedArticles, stats: importanceStats } = 
-      await ArticleImportanceService.batchScoreAndRank(articles, {
+      await ArticleImportanceService.batchScoreAndRank(articles as any[], {
         topPercentile,
         minScore: minImportanceScore,
         parallelLimit: 5
