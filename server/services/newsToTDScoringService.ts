@@ -53,9 +53,9 @@ type NewsArticleRow = Record<string, any> & {
   id: number;
   title: string;
   content: string;
+  url: string;
   source?: string;
   published_date?: string;
-  url?: string;
 };
 
 type RankedNewsArticle = {
