@@ -49,6 +49,48 @@ interface ProcessingOptions {
   minImportanceScore?: number;  // Default 40
 }
 
+type NewsArticleRow = Record<string, any> & {
+  id: number;
+  title: string;
+};
+
+async function claimUnprocessedArticles(batchSize: number): Promise<{
+  articles: NewsArticleRow[];
+  error: unknown;
+}> {
+  const { data: candidateArticles, error: fetchError } = await supabase
+    .from('news_articles')
+    .select('*')
+    .eq('processed', false)
+    .order('created_at', { ascending: false })
+    .limit(batchSize);
+
+  if (fetchError) {
+    return { articles: [], error: fetchError };
+  }
+
+  if (!candidateArticles || candidateArticles.length === 0) {
+    return { articles: [], error: null };
+  }
+
+  const candidateIds = candidateArticles.map((article: NewsArticleRow) => article.id);
+  const { data: claimedArticles, error: claimError } = await supabase
+    .from('news_articles')
+    .update({
+      processed: true,
+      score_applied: false
+    })
+    .in('id', candidateIds)
+    .eq('processed', false)
+    .select('*');
+
+  if (claimError) {
+    return { articles: [], error: claimError };
+  }
+
+  return { articles: claimedArticles || [], error: null };
+}
+
 /**
  * Process unprocessed news articles with importance filtering and multi-agent scoring
  */
@@ -91,12 +133,7 @@ export async function processUnprocessedArticles(
     console.log('\n' + '─'.repeat(70));
     console.log('STEP 1: Fetching unprocessed articles...');
     
-    const { data: articles, error: fetchError } = await supabase
-      .from('news_articles')
-      .select('*')
-      .eq('processed', false)
-      .order('created_at', { ascending: false })
-      .limit(batchSize);
+    const { articles, error: fetchError } = await claimUnprocessedArticles(batchSize);
     
     if (fetchError) {
       console.error('❌ Error fetching articles:', fetchError);
@@ -109,7 +146,7 @@ export async function processUnprocessedArticles(
     }
     
     stats.totalArticles = articles.length;
-    console.log(`   Found ${articles.length} unprocessed articles`);
+    console.log(`   Claimed ${articles.length} unprocessed articles`);
     
     // Step 2: Score article importance (cheap LLM triage)
     console.log('\n' + '─'.repeat(70));
