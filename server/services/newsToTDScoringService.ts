@@ -20,7 +20,7 @@
 
 import { supabaseDb as supabase } from '../db.js';
 import { TDExtractionService } from './tdExtractionService.js';
-import { ArticleImportanceService } from './articleImportanceService.js';
+import { ArticleImportanceService, type ImportanceResult } from './articleImportanceService.js';
 import { EventDeduplicationService } from './eventDeduplicationService.js';
 import { NewsArticleScoringTeam } from './multiAgentTDScoring.js';
 import { TDScoreCalculator } from './tdScoreCalculator.js';
@@ -56,6 +56,11 @@ type NewsArticleRow = Record<string, any> & {
   source?: string;
   published_date?: string;
   url?: string;
+};
+
+type RankedNewsArticle = {
+  article: NewsArticleRow;
+  importance: ImportanceResult;
 };
 
 async function claimUnprocessedArticles(batchSize: number): Promise<{
@@ -160,12 +165,15 @@ export async function processUnprocessedArticles(
     console.log('\n' + '─'.repeat(70));
     console.log('STEP 2: Scoring article importance...');
     
-    const { topArticles, skippedArticles, stats: importanceStats } = 
-      await ArticleImportanceService.batchScoreAndRank(articles as any[], {
-        topPercentile,
-        minScore: minImportanceScore,
-        parallelLimit: 5
-      });
+    const importanceResult = await ArticleImportanceService.batchScoreAndRank(articles as any[], {
+      topPercentile,
+      minScore: minImportanceScore,
+      parallelLimit: 5
+    });
+
+    const topArticles = importanceResult.topArticles as RankedNewsArticle[];
+    const skippedArticles = importanceResult.skippedArticles as RankedNewsArticle[];
+    const importanceStats = importanceResult.stats;
     
     stats.importanceScored = importanceStats.scored;
     stats.selectedForScoring = topArticles.length;
