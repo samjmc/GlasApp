@@ -52,12 +52,20 @@ interface ProcessingOptions {
 type NewsArticleRow = Record<string, any> & {
   id: number;
   title: string;
+  content: string;
+  source?: string;
+  published_date?: string;
+  url?: string;
 };
 
 async function claimUnprocessedArticles(batchSize: number): Promise<{
   articles: NewsArticleRow[];
   error: unknown;
 }> {
+  if (!supabase) {
+    return { articles: [], error: new Error('Supabase not connected') };
+  }
+
   const { data: candidateArticles, error: fetchError } = await supabase
     .from('news_articles')
     .select('*')
@@ -73,7 +81,7 @@ async function claimUnprocessedArticles(batchSize: number): Promise<{
     return { articles: [], error: null };
   }
 
-  const candidateIds = candidateArticles.map((article: NewsArticleRow) => article.id);
+  const candidateIds = (candidateArticles as NewsArticleRow[]).map((article) => article.id);
   const { data: claimedArticles, error: claimError } = await supabase
     .from('news_articles')
     .update({
