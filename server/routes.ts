@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { insertQuizResultSchema } from "@shared/schema";
 import { ActivityTracker } from "./services/activityTracker";
+import { requireAdminRouteAuth } from "./middleware/adminRouteAuth";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
@@ -158,6 +159,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/account", accountRoutes);
   
   // Register admin routes for news scraping and system management
+  app.use("/api/admin", requireAdminRouteAuth);
   app.use("/api/admin/news-scraper", newsScraperRoutes);
   app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
   app.use("/api/admin/debates", debateAdminRoutes);
