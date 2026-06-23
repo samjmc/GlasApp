@@ -687,17 +687,10 @@ export async function processArticleById(
   console.log(`\n📰 Processing article ${articleId}: "${article.title}"`);
   console.log(`   Importance: ${importance.score} (${importance.topicCategory})`);
   
-  const stats: ProcessingStats = {
-    totalArticles: 1,
-    importanceScored: 1,
-    selectedForScoring: 1,
-    skippedLowImportance: 0,
-    articlesProcessed: 0,
-    tdsUpdated: 0,
-    scoresChanged: 0,
-    errors: 0,
-    articlesFailed: []
-  };
+  const stats = createProcessingStats();
+  stats.totalArticles = 1;
+  stats.importanceScored = 1;
+  stats.selectedForScoring = 1;
   
   await processArticleWithMultiAgent(article, importance, stats);
   
