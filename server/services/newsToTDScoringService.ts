@@ -49,14 +49,10 @@ interface ProcessingOptions {
   minImportanceScore?: number;  // Default 40
 }
 
-/**
- * Process unprocessed news articles with importance filtering and multi-agent scoring
- */
-export async function processUnprocessedArticles(
-  options: ProcessingOptions = {}
-): Promise<ProcessingStats> {
-  
-  const stats: ProcessingStats = {
+let isProcessingArticles = false;
+
+function createProcessingStats(): ProcessingStats {
+  return {
     totalArticles: 0,
     importanceScored: 0,
     selectedForScoring: 0,
@@ -72,6 +68,22 @@ export async function processUnprocessedArticles(
     errors: 0,
     articlesFailed: []
   };
+}
+
+/**
+ * Process unprocessed news articles with importance filtering and multi-agent scoring
+ */
+export async function processUnprocessedArticles(
+  options: ProcessingOptions = {}
+): Promise<ProcessingStats> {
+  const stats = createProcessingStats();
+
+  if (isProcessingArticles) {
+    console.warn('⚠️ TD scoring already running; skipping overlapping run to avoid duplicate score application.');
+    return stats;
+  }
+
+  isProcessingArticles = true;
   
   const batchSize = options.batchSize || 50;
   const topPercentile = options.topPercentile || 25;
@@ -305,6 +317,8 @@ export async function processUnprocessedArticles(
   } catch (error) {
     console.error('❌ Fatal error in processUnprocessedArticles:', error);
     throw error;
+  } finally {
+    isProcessingArticles = false;
   }
 }
 
