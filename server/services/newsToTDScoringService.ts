@@ -49,14 +49,10 @@ interface ProcessingOptions {
   minImportanceScore?: number;  // Default 40
 }
 
-/**
- * Process unprocessed news articles with importance filtering and multi-agent scoring
- */
-export async function processUnprocessedArticles(
-  options: ProcessingOptions = {}
-): Promise<ProcessingStats> {
-  
-  const stats: ProcessingStats = {
+let isProcessingArticles = false;
+
+function createProcessingStats(): ProcessingStats {
+  return {
     totalArticles: 0,
     importanceScored: 0,
     selectedForScoring: 0,
@@ -72,6 +68,22 @@ export async function processUnprocessedArticles(
     errors: 0,
     articlesFailed: []
   };
+}
+
+/**
+ * Process unprocessed news articles with importance filtering and multi-agent scoring
+ */
+export async function processUnprocessedArticles(
+  options: ProcessingOptions = {}
+): Promise<ProcessingStats> {
+  const stats = createProcessingStats();
+
+  if (isProcessingArticles) {
+    console.warn('⚠️ TD scoring already running; skipping overlapping run to avoid duplicate score application.');
+    return stats;
+  }
+
+  isProcessingArticles = true;
   
   const batchSize = options.batchSize || 50;
   const topPercentile = options.topPercentile || 25;
@@ -305,6 +317,8 @@ export async function processUnprocessedArticles(
   } catch (error) {
     console.error('❌ Fatal error in processUnprocessedArticles:', error);
     throw error;
+  } finally {
+    isProcessingArticles = false;
   }
 }
 
@@ -673,17 +687,10 @@ export async function processArticleById(
   console.log(`\n📰 Processing article ${articleId}: "${article.title}"`);
   console.log(`   Importance: ${importance.score} (${importance.topicCategory})`);
   
-  const stats: ProcessingStats = {
-    totalArticles: 1,
-    importanceScored: 1,
-    selectedForScoring: 1,
-    skippedLowImportance: 0,
-    articlesProcessed: 0,
-    tdsUpdated: 0,
-    scoresChanged: 0,
-    errors: 0,
-    articlesFailed: []
-  };
+  const stats = createProcessingStats();
+  stats.totalArticles = 1;
+  stats.importanceScored = 1;
+  stats.selectedForScoring = 1;
   
   await processArticleWithMultiAgent(article, importance, stats);
   
