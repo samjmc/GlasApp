@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 import { 
     Loader2, Search, ShieldAlert, TrendingUp, Users, 
     AlertTriangle, CheckCircle, Activity, 
@@ -103,6 +104,14 @@ const TEAMS: AgentTeam[] = [
     }
 ];
 
+async function getAuthHeaders(): Promise<Record<string, string>> {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  return session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {};
+}
+
 export default function ShadowCabinetDashboard() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -117,7 +126,10 @@ export default function ShadowCabinetDashboard() {
 
   const fetchHistory = async () => {
     try {
-        const res = await fetch("/api/shadow/history");
+        const res = await fetch("/api/shadow/history", {
+          headers: await getAuthHeaders(),
+        });
+        if (!res.ok) throw new Error(`Failed to load history: ${res.status}`);
         const data = await res.json();
         if (Array.isArray(data)) {
             setHistory(data);
@@ -133,7 +145,10 @@ export default function ShadowCabinetDashboard() {
 
   const fetchQaHistory = async () => {
     try {
-        const res = await fetch("/api/shadow/qa-history");
+        const res = await fetch("/api/shadow/qa-history", {
+          headers: await getAuthHeaders(),
+        });
+        if (!res.ok) throw new Error(`Failed to load QA history: ${res.status}`);
         const data = await res.json();
         if (Array.isArray(data)) {
             setQaHistory(data);
@@ -153,9 +168,10 @@ export default function ShadowCabinetDashboard() {
     toast({ title: "Deploying Shadow Cabinet...", description: "This may take up to 60 seconds." });
     
     try {
+        const authHeaders = await getAuthHeaders();
         const res = await fetch("/api/shadow/analyze", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", ...authHeaders },
             body: JSON.stringify({ url })
         });
         
