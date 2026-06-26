@@ -6,6 +6,7 @@ import { insertQuizResultSchema } from "@shared/schema";
 import { ActivityTracker } from "./services/activityTracker";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
+import { requireAdminSecret } from "./middleware/adminRouteAuth";
 import { registerAuthRoutes } from "./routes/auth";
 import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
@@ -158,12 +159,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/account", accountRoutes);
   
   // Register admin routes for news scraping and system management
-  app.use("/api/admin/news-scraper", newsScraperRoutes);
-  app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", debateAdminRoutes);
-  app.use("/api/admin/baselines", baselineAdminRoutes);
-  app.use("/api/admin/articles", manualArticleRoutes);
-  app.use("/api/admin/td-scoring", tdScoringAdminRoutes);
+  app.use("/api/admin/news-scraper", requireAdminSecret, newsScraperRoutes);
+  app.use("/api/admin/parliamentary", requireAdminSecret, parliamentaryAdminRoutes);
+  app.use("/api/admin/debates", requireAdminSecret, debateAdminRoutes);
+  app.use("/api/admin/baselines", requireAdminSecret, baselineAdminRoutes);
+  app.use("/api/admin/articles", requireAdminSecret, manualArticleRoutes);
+  app.use("/api/admin/td-scoring", requireAdminSecret, tdScoringAdminRoutes);
   
   // Register user rating routes for TDs
   app.use("/api/ratings", tdRatingsRoutes);
