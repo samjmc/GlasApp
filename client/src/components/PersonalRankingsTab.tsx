@@ -163,9 +163,15 @@ export function PersonalRankingsTab() {
           <p className="text-gray-700 dark:text-gray-300 font-medium mb-2">
             Personalized rankings aren’t available yet.
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Vote on policy opportunities in the news feed to build your profile and unlock rankings.
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-5">
+            Complete the enhanced quiz to unlock your rankings. Policy votes will refine your matches after that.
           </p>
+          <Button
+            className="bg-gradient-to-r from-purple-600 to-blue-600"
+            onClick={() => navigate('/enhanced-quiz')}
+          >
+            Take the Enhanced Quiz
+          </Button>
         </Card>
       ) : rankings.length === 0 ? (
         <Card className="p-8 text-center bg-gray-50 dark:bg-gray-800/50 border-dashed">
