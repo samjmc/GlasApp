@@ -13,8 +13,7 @@ interface ProtectedRouteProps {
 export function ProtectedRoute({ children, fallback, requireAdmin = false }: ProtectedRouteProps) {
   const { user, isLoading } = useAuth();
   
-  // Admin check - only samjmc3@hotmail.com has admin access
-  const isAdmin = user?.email === 'samjmc3@hotmail.com';
+  const isAdmin = user?.role === 'admin' || user?.email === 'samjmc3@hotmail.com';
 
   if (isLoading) {
     return (

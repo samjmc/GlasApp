@@ -2,6 +2,7 @@ import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
 import { getCachedOrFetch, CACHE_TTL } from '../utils/serverCache';
+import { requireAdminAccess } from '../middleware/adminAccess';
 import {
   DEFAULT_REGION_CODE,
   REGION_NEWS_MOCK,
@@ -419,7 +420,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 // POST /api/news-feed/save - Save article from Python aggregator
-router.post('/save', async (req: Request, res: Response) => {
+router.post('/save', requireAdminAccess, async (req: Request, res: Response) => {
   try {
     const article = req.body;
     console.log(`📰 Saving article: ${article.title?.substring(0, 60)}...`);

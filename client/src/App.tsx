@@ -63,6 +63,7 @@ import TermsOfServicePage from "@/pages/TermsOfServicePage";
 import ContactPage from "@/pages/ContactPage";
 import BottomNavigation from "@/components/BottomNavigation";
 import CookieConsent from "@/components/CookieConsent";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { QuizProvider } from "@/contexts/QuizContextNew";
 import { MultidimensionalQuizProvider } from "@/contexts/MultidimensionalQuizContext";
 import DailySessionPage from "@/pages/DailySessionPage";
@@ -220,7 +221,13 @@ function Router() {
             }}
           </Route>
           <Route path="/admin" component={AdminPage} />
-          <Route path="/admin/shadow" component={ShadowCabinetDashboard} />
+          <Route path="/admin/shadow">
+            {() => (
+              <ProtectedRoute requireAdmin={true}>
+                <ShadowCabinetDashboard />
+              </ProtectedRoute>
+            )}
+          </Route>
           <Route path="/notifications" component={NotificationsPage} />
           
           {/* Enhanced Quiz Routes */}
