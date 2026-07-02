@@ -7,6 +7,7 @@ import { Router, Request, Response } from 'express';
 import { PersonalRankingsService } from '../services/personalRankingsService.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
 import { supabaseDb } from '../db.js';
+import { isAuthenticated } from '../auth/supabaseAuth.js';
 
 const router = Router();
 
@@ -259,14 +260,22 @@ export function formatRankingsResponse(rankings: any[]) {
 /**
  * POST /api/personal/quiz - Submit quiz results
  */
-router.post('/quiz', async (req: Request, res: Response) => {
+router.post('/quiz', isAuthenticated, async (req: Request, res: Response) => {
   try {
-    const { userId, answers } = req.body;
+    const { answers } = req.body;
+    const userId = req.user?.id;
     
-    if (!userId || !answers) {
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: 'Authentication required'
+      });
+    }
+
+    if (!answers) {
       return res.status(400).json({
         success: false,
-        message: 'userId and answers are required'
+        message: 'answers are required'
       });
     }
     

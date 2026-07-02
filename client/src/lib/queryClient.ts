@@ -1,4 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { supabase } from "./supabase";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -14,12 +15,32 @@ type ApiRequestOptions = {
   on401?: "returnNull" | "throw";
 };
 
+async function getAuthHeaders(): Promise<Record<string, string>> {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (session?.access_token) {
+      return { Authorization: `Bearer ${session.access_token}` };
+    }
+  } catch (error) {
+    console.error("Unable to read auth session for API request:", error);
+  }
+
+  return {};
+}
+
 export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T> {
   const { method, path, body, on401 = "throw" } = options;
+  const authHeaders = await getAuthHeaders();
   
   const res = await fetch(path, {
     method,
-    headers: body ? { "Content-Type": "application/json" } : {},
+    headers: {
+      ...(body ? { "Content-Type": "application/json" } : {}),
+      ...authHeaders,
+    },
     body: body ? JSON.stringify(body) : undefined,
     credentials: "include",
   });
@@ -47,7 +68,9 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
+    const authHeaders = await getAuthHeaders();
     const res = await fetch(queryKey[0] as string, {
+      headers: authHeaders,
       credentials: "include",
     });
 

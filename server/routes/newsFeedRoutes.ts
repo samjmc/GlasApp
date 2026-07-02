@@ -79,9 +79,9 @@ router.get('/', async (req: Request, res: Response) => {
             });
             
             // Filter for articles with impact, then sort by:
-            // 1. TD-scored articles first (by recency)
+            // 1. TD-scored articles first (by impact, then recency)
             // 2. Policy-vote-only articles second (by recency)
-            articles = articlesWithTotalImpact
+            const highImpactArticles = articlesWithTotalImpact
               .filter((a: any) => a.hasAnyImpact)
               .sort((a: any, b: any) => {
                 const aHasTD = a.totalTDImpact > 0;
@@ -90,15 +90,19 @@ router.get('/', async (req: Request, res: Response) => {
                 // TD-scored articles come first
                 if (aHasTD && !bHasTD) return -1;
                 if (!aHasTD && bHasTD) return 1;
+
+                const impactDifference = b.totalTDImpact - a.totalTDImpact;
+                if (impactDifference !== 0) return impactDifference;
                 
-                // Within same category, sort by recency
+                // Within same impact, sort by recency
                 return new Date(b.published_date).getTime() - new Date(a.published_date).getTime();
-              })
-              .slice(0, Number(limit));
+              });
             
-            count = articles.length;
-            const tdScoredCount = articles.filter((a: any) => a.totalTDImpact > 0).length;
-            const policyOnlyCount = articles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
+            count = highImpactArticles.length;
+            articles = highImpactArticles.slice(Number(offset), Number(offset) + Number(limit));
+
+            const tdScoredCount = highImpactArticles.filter((a: any) => a.totalTDImpact > 0).length;
+            const policyOnlyCount = highImpactArticles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
             console.log(`✨ Found ${count} high-impact articles. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
           }
         } else if (sort === 'today') {
