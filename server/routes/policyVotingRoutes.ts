@@ -487,16 +487,30 @@ router.get('/user/:userId/value-alignment', async (req, res) => {
  * DELETE /api/policy-votes/:voteId
  * Delete a policy vote
  */
-router.delete('/:voteId', async (req, res) => {
+router.delete('/:voteId', isAuthenticated, async (req, res) => {
   try {
-    const { voteId } = req.params;
-    const { userId } = req.body;
+    const voteId = parseInt(req.params.voteId, 10);
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        error: 'Authentication required'
+      });
+    }
+
+    if (Number.isNaN(voteId)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid vote ID'
+      });
+    }
     
     // Verify user owns this vote
     const { data: vote, error: checkError } = await supabase
       .from('user_policy_votes')
       .select('user_id')
-      .eq('id', parseInt(voteId))
+      .eq('id', voteId)
       .single();
     
     if (checkError) throw checkError;
@@ -512,7 +526,7 @@ router.delete('/:voteId', async (req, res) => {
     const { error: deleteError } = await supabase
       .from('user_policy_votes')
       .delete()
-      .eq('id', parseInt(voteId));
+      .eq('id', voteId);
     
     if (deleteError) throw deleteError;
     
