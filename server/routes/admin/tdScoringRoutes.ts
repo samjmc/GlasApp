@@ -9,10 +9,76 @@
  */
 
 import { Router } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { ArticleTriageJob } from '../../jobs/articleTriageJob.js';
 import { NewsToTDScoringService } from '../../services/newsToTDScoringService.js';
+import { getUserFromRequest } from '../../auth/supabaseAuth.js';
 
 const router = Router();
+const ADMIN_SECRET_KEYS = ['ADMIN_API_SECRET', 'ADMIN_JOB_SECRET', 'CRON_SECRET'] as const;
+
+const getConfiguredAdminSecrets = (): string[] =>
+  ADMIN_SECRET_KEYS
+    .map((key) => process.env[key])
+    .filter((secret): secret is string => Boolean(secret));
+
+const getHeaderValues = (value: string | string[] | undefined): string[] => {
+  if (!value) {
+    return [];
+  }
+
+  return Array.isArray(value) ? value : [value];
+};
+
+const getBearerToken = (authorizationHeader: string | undefined): string | null => {
+  if (!authorizationHeader?.startsWith('Bearer ')) {
+    return null;
+  }
+
+  return authorizationHeader.substring('Bearer '.length);
+};
+
+const hasValidAdminSecret = (req: Request): boolean => {
+  const configuredSecrets = getConfiguredAdminSecrets();
+  if (configuredSecrets.length === 0) {
+    return false;
+  }
+
+  const providedSecrets = [
+    ...getHeaderValues(req.headers['x-admin-secret']),
+    ...getHeaderValues(req.headers['x-admin-job-secret']),
+    ...getHeaderValues(req.headers['x-cron-secret']),
+  ];
+
+  const bearerToken = getBearerToken(req.headers.authorization);
+  if (bearerToken) {
+    providedSecrets.push(bearerToken);
+  }
+
+  return providedSecrets.some((secret) => configuredSecrets.includes(secret));
+};
+
+const requireAdminAccess = async (req: Request, res: Response, next: NextFunction) => {
+  if (hasValidAdminSecret(req)) {
+    next();
+    return;
+  }
+
+  const user = await getUserFromRequest(req);
+  const role = user?.user_metadata?.role || user?.app_metadata?.role;
+  if (role === 'admin') {
+    req.user = user;
+    next();
+    return;
+  }
+
+  res.status(user ? 403 : 401).json({
+    success: false,
+    message: user ? 'Admin access required' : 'Authentication required',
+  });
+};
+
+router.use(requireAdminAccess);
 
 /**
  * POST /api/admin/td-scoring/triage

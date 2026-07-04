@@ -22,6 +22,19 @@ import { PageHeader } from "@/components/PageHeader";
 
 type TabType = 'feed' | 'tds' | 'my-rankings' | 'map';
 
+const getInitialTab = (): TabType => {
+  if (typeof window === 'undefined') {
+    return 'feed';
+  }
+
+  const tab = new URLSearchParams(window.location.search).get('tab');
+  if (tab === 'tds' || tab === 'my-rankings' || tab === 'map') {
+    return tab;
+  }
+
+  return 'feed';
+};
+
 interface HomePageTabsProps {
   showScrollTop?: boolean;
   onScrollTop?: () => void;
@@ -29,7 +42,7 @@ interface HomePageTabsProps {
 
 export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTabsProps = {}) {
   const { isAuthenticated } = useAuth();
-  const [activeTab, setActiveTab] = useState<TabType>('feed');
+  const [activeTab, setActiveTab] = useState<TabType>(getInitialTab);
   const [rankingsSubTab, setRankingsSubTab] = useState<'tds' | 'parties'>('tds');
   const [sortBy, setSortBy] = useState<'recent' | 'score'>('score');
   const [page, setPage] = useState(1);

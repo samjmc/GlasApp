@@ -11,15 +11,19 @@ type ApiRequestOptions = {
   method: string;
   path: string;
   body?: unknown;
+  headers?: Record<string, string>;
   on401?: "returnNull" | "throw";
 };
 
 export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T> {
-  const { method, path, body, on401 = "throw" } = options;
+  const { method, path, body, headers, on401 = "throw" } = options;
   
   const res = await fetch(path, {
     method,
-    headers: body ? { "Content-Type": "application/json" } : {},
+    headers: {
+      ...(body ? { "Content-Type": "application/json" } : {}),
+      ...headers,
+    },
     body: body ? JSON.stringify(body) : undefined,
     credentials: "include",
   });

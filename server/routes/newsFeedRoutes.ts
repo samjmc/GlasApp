@@ -81,7 +81,7 @@ router.get('/', async (req: Request, res: Response) => {
             // Filter for articles with impact, then sort by:
             // 1. TD-scored articles first (by recency)
             // 2. Policy-vote-only articles second (by recency)
-            articles = articlesWithTotalImpact
+            const sortedHighImpactArticles = articlesWithTotalImpact
               .filter((a: any) => a.hasAnyImpact)
               .sort((a: any, b: any) => {
                 const aHasTD = a.totalTDImpact > 0;
@@ -93,13 +93,17 @@ router.get('/', async (req: Request, res: Response) => {
                 
                 // Within same category, sort by recency
                 return new Date(b.published_date).getTime() - new Date(a.published_date).getTime();
-              })
-              .slice(0, Number(limit));
+              });
+
+            count = sortedHighImpactArticles.length;
+            articles = sortedHighImpactArticles.slice(
+              Number(offset),
+              Number(offset) + Number(limit)
+            );
             
-            count = articles.length;
             const tdScoredCount = articles.filter((a: any) => a.totalTDImpact > 0).length;
             const policyOnlyCount = articles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
-            console.log(`✨ Found ${count} high-impact articles. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
+            console.log(`✨ Found ${count} high-impact articles. Returning ${articles.length}. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
           }
         } else if (sort === 'today') {
           // TODAY'S (or most recent) Biggest Impact
