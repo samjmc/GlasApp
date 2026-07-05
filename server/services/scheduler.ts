@@ -47,7 +47,6 @@ export function initScheduler() {
       console.error("❌ [Scheduler] Article triage failed:", error.message);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 
@@ -75,7 +74,6 @@ export function initScheduler() {
       console.error("❌ [Scheduler] TD Scoring failed:", error.message);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 
@@ -90,7 +88,6 @@ export function initScheduler() {
       console.error("❌ [Scheduler] News Scraper failed:", error.message);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 
@@ -116,7 +113,6 @@ export function initScheduler() {
         console.error("❌ [Scheduler] Failed to run Daily Briefing:", error);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 
@@ -128,7 +124,6 @@ export function initScheduler() {
         console.warn("⚠️ QA Anomalies Found:", anomalies);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 }
