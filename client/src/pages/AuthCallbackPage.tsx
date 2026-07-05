@@ -1,37 +1,104 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
+import type { Session } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
+
+const SESSION_WAIT_MS = 2500;
+
+async function waitForCallbackSession(): Promise<Session | null> {
+  const {
+    data: { session: existingSession },
+  } = await supabase.auth.getSession();
+
+  if (existingSession) {
+    return existingSession;
+  }
+
+  return new Promise<Session | null>((resolve) => {
+    let settled = false;
+    let subscription: { unsubscribe: () => void } | null = null;
+
+    const finish = (session: Session | null) => {
+      if (settled) {
+        return;
+      }
+
+      settled = true;
+      window.clearTimeout(timeoutId);
+      subscription?.unsubscribe();
+      resolve(session);
+    };
+
+    const timeoutId = window.setTimeout(async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      finish(session);
+    }, SESSION_WAIT_MS);
+
+    const {
+      data: { subscription: authSubscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        finish(session);
+      }
+    });
+
+    subscription = authSubscription;
+  });
+}
 
 const AuthCallbackPage = () => {
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    // Handle the OAuth callback
+    let isMounted = true;
+
     const handleCallback = async () => {
       try {
-        // Supabase automatically handles the callback and stores the session
-        const { data: { session }, error } = await supabase.auth.getSession();
-        
-        if (error) {
-          console.error('Auth callback error:', error);
-          navigate('/login');
+        const params = new URLSearchParams(window.location.search);
+        const callbackError = params.get('error_description') || params.get('error');
+
+        if (callbackError) {
+          throw new Error(callbackError);
+        }
+
+        let session: Session | null = null;
+        const code = params.get('code');
+
+        if (code) {
+          const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+
+          if (error) {
+            session = await waitForCallbackSession();
+            if (!session) {
+              throw error;
+            }
+          } else {
+            session = data.session;
+          }
+        }
+
+        session = session ?? await waitForCallbackSession();
+
+        if (!isMounted) {
           return;
         }
 
-        if (session) {
-          // Successful authentication - redirect to home
-          navigate('/');
-        } else {
-          // No session found - redirect to login
-          navigate('/login');
-        }
+        navigate(session ? '/' : '/login');
       } catch (error) {
         console.error('Unexpected auth callback error:', error);
-        navigate('/login');
+        if (isMounted) {
+          navigate('/login');
+        }
       }
     };
 
     handleCallback();
+
+    return () => {
+      isMounted = false;
+    };
   }, [navigate]);
 
   return (
