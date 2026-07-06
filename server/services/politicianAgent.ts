@@ -2,6 +2,8 @@
 import { supabaseDb } from '../db';
 import { generateEmbedding } from './openaiService';
 
+const VOTE_STATS_PAGE_SIZE = 1000;
+
 export interface PolicyPosition {
   id: string;
   topic: string;
@@ -309,14 +311,26 @@ export async function getVotingStats(politicianName: string): Promise<{
     return null;
   }
 
-  // 2. Get all votes with category and rebel info
-  const { data: votes, error } = await supabaseDb
-    .from('td_votes')
-    .select('td_vote, voted_with_party, vote_category, is_rebel_vote')
-    .eq('td_id', td.id);
+  // 2. Get all votes with category and rebel info.
+  // Supabase pages responses by default; aggregate stats must include every TD vote.
+  const votes: any[] = [];
+  for (let from = 0; ; from += VOTE_STATS_PAGE_SIZE) {
+    const to = from + VOTE_STATS_PAGE_SIZE - 1;
+    const { data: page, error } = await supabaseDb
+      .from('td_votes')
+      .select('id, td_vote, voted_with_party, vote_category, is_rebel_vote')
+      .eq('td_id', td.id)
+      .order('id', { ascending: true })
+      .range(from, to);
 
-  if (error || !votes) {
-    return null;
+    if (error || !page) {
+      return null;
+    }
+
+    votes.push(...page);
+    if (page.length < VOTE_STATS_PAGE_SIZE) {
+      break;
+    }
   }
 
   const totalVotes = votes.length;

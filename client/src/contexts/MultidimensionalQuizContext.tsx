@@ -355,7 +355,7 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
       const resultData = {
         ...results,
         shareCode,
-        answers: responses
+        answers: results.responses ?? responses
       };
       
       // Save to database via API

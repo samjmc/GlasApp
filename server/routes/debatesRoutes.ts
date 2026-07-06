@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
+import { isAdmin } from '../auth/supabaseAuth';
 
 const router = Router();
 
@@ -19,6 +20,8 @@ const PERIOD_PRESETS: Record<
 
 const DEFAULT_PERIOD_KEY = '1w';
 const SCORE_BASELINE = 50;
+const CONTRIBUTION_PAGE_SIZE = 1000;
+const ALERT_STATUSES = new Set(['new', 'resolved', 'dismissed']);
 
 const clampScore = (value: number): number => {
   if (!Number.isFinite(value)) return 10;
@@ -123,23 +126,36 @@ const loadContributionSummaries = async (
 
   // Filter by debate_days.date instead of calculated_at for better user experience
   // Users expect to see debates from the selected time period, not when they were scored
-  const { data: contributionRows, error: contributionsError } = await supabaseDb
-    .from('debate_section_score_contributions')
-    .select(`
-      td_id,
-      performance_delta,
-      effectiveness_delta,
-      influence_delta,
-      calculated_at,
-      metadata,
-      debate_sections!inner(title),
-      debate_days!inner(date, chamber, title)
-    `)
-    .gte('debate_days.date', startDateTime.split('T')[0])
-    .lte('debate_days.date', endDateTime.split('T')[0]);
+  const contributionRows: any[] = [];
+  for (let from = 0; ; from += CONTRIBUTION_PAGE_SIZE) {
+    const to = from + CONTRIBUTION_PAGE_SIZE - 1;
+    const { data, error } = await supabaseDb
+      .from('debate_section_score_contributions')
+      .select(`
+        id,
+        td_id,
+        performance_delta,
+        effectiveness_delta,
+        influence_delta,
+        calculated_at,
+        metadata,
+        debate_sections!inner(title),
+        debate_days!inner(date, chamber, title)
+      `)
+      .gte('debate_days.date', startDateTime.split('T')[0])
+      .lte('debate_days.date', endDateTime.split('T')[0])
+      .order('id', { ascending: true })
+      .range(from, to);
 
-  if (contributionsError) {
-    throw new Error(contributionsError.message);
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    const pageRows = data || [];
+    contributionRows.push(...pageRows);
+    if (pageRows.length < CONTRIBUTION_PAGE_SIZE) {
+      break;
+    }
   }
 
   const aggregates = new Map<
@@ -1277,7 +1293,7 @@ router.get('/alerts', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
+router.post('/alerts/:alertId/status', isAdmin, async (req: Request, res: Response) => {
   try {
     if (!supabaseDb) {
       return res.status(503).json({
@@ -1291,6 +1307,9 @@ router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
 
     if (!status) {
       return res.status(400).json({ success: false, message: 'Missing status in request body.' });
+    }
+    if (!ALERT_STATUSES.has(status)) {
+      return res.status(400).json({ success: false, message: 'Invalid alert status.' });
     }
 
     const { error } = await supabaseDb
