@@ -81,7 +81,7 @@ router.get('/', async (req: Request, res: Response) => {
             // Filter for articles with impact, then sort by:
             // 1. TD-scored articles first (by recency)
             // 2. Policy-vote-only articles second (by recency)
-            articles = articlesWithTotalImpact
+            const impactfulArticles = articlesWithTotalImpact
               .filter((a: any) => a.hasAnyImpact)
               .sort((a: any, b: any) => {
                 const aHasTD = a.totalTDImpact > 0;
@@ -93,13 +93,13 @@ router.get('/', async (req: Request, res: Response) => {
                 
                 // Within same category, sort by recency
                 return new Date(b.published_date).getTime() - new Date(a.published_date).getTime();
-              })
-              .slice(0, Number(limit));
+              });
             
-            count = articles.length;
-            const tdScoredCount = articles.filter((a: any) => a.totalTDImpact > 0).length;
-            const policyOnlyCount = articles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
-            console.log(`✨ Found ${count} high-impact articles. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
+            count = impactfulArticles.length;
+            articles = impactfulArticles.slice(Number(offset), Number(offset) + Number(limit));
+            const tdScoredCount = impactfulArticles.filter((a: any) => a.totalTDImpact > 0).length;
+            const policyOnlyCount = impactfulArticles.filter((a: any) => a.totalTDImpact === 0 && a.hasPolicyOpportunity).length;
+            console.log(`✨ Found ${count} high-impact articles. Returning ${articles.length}. TD-scored first: ${tdScoredCount}, Policy-vote only: ${policyOnlyCount}`);
           }
         } else if (sort === 'today') {
           // TODAY'S (or most recent) Biggest Impact
@@ -226,16 +226,22 @@ router.get('/', async (req: Request, res: Response) => {
         
         // Fetch all TD scores for these articles
         const articleIds = (articles || []).map((a: any) => a.id);
-        const { data: allTDScores } = await supabaseDb
-          .from('article_td_scores')
-          .select('*')
-          .in('article_id', articleIds);
+        let allTDScores: any[] = [];
+        let allTDStances: any[] = [];
+        if (articleIds.length > 0) {
+          const { data: tdScores } = await supabaseDb
+            .from('article_td_scores')
+            .select('*')
+            .in('article_id', articleIds);
+          allTDScores = tdScores || [];
         
-        // Fetch all TD policy stances for these articles
-        const { data: allTDStances } = await supabaseDb
-          .from('td_policy_stances')
-          .select('*')
-          .in('article_id', articleIds);
+          // Fetch all TD policy stances for these articles
+          const { data: tdStances } = await supabaseDb
+            .from('td_policy_stances')
+            .select('*')
+            .in('article_id', articleIds);
+          allTDStances = tdStances || [];
+        }
         
         // Group TD scores by article
         const tdScoresByArticle = new Map();
