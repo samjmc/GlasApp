@@ -19,6 +19,19 @@ const PERIOD_PRESETS: Record<
 
 const DEFAULT_PERIOD_KEY = '1w';
 const SCORE_BASELINE = 50;
+const CONTRIBUTION_PAGE_SIZE = 1000;
+
+const CONTRIBUTION_SUMMARY_SELECT = `
+  section_id,
+  td_id,
+  performance_delta,
+  effectiveness_delta,
+  influence_delta,
+  calculated_at,
+  metadata,
+  debate_sections!inner(title),
+  debate_days!inner(date, chamber, title)
+`;
 
 const clampScore = (value: number): number => {
   if (!Number.isFinite(value)) return 10;
@@ -101,6 +114,37 @@ const formatContributionRow = (row: any) => {
   };
 };
 
+const loadContributionRowsForPeriod = async (startDate: string, endDate: string): Promise<any[]> => {
+  const rows: any[] = [];
+  let from = 0;
+
+  while (true) {
+    const { data, error } = await supabaseDb!
+      .from('debate_section_score_contributions')
+      .select(CONTRIBUTION_SUMMARY_SELECT)
+      .gte('debate_days.date', startDate)
+      .lte('debate_days.date', endDate)
+      .order('section_id', { ascending: true })
+      .order('td_id', { ascending: true })
+      .range(from, from + CONTRIBUTION_PAGE_SIZE - 1);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    const pageRows = data || [];
+    rows.push(...pageRows);
+
+    if (pageRows.length < CONTRIBUTION_PAGE_SIZE) {
+      break;
+    }
+
+    from += CONTRIBUTION_PAGE_SIZE;
+  }
+
+  return rows;
+};
+
 const loadContributionSummaries = async (
   startDateTime: string,
   endDateTime: string
@@ -123,24 +167,10 @@ const loadContributionSummaries = async (
 
   // Filter by debate_days.date instead of calculated_at for better user experience
   // Users expect to see debates from the selected time period, not when they were scored
-  const { data: contributionRows, error: contributionsError } = await supabaseDb
-    .from('debate_section_score_contributions')
-    .select(`
-      td_id,
-      performance_delta,
-      effectiveness_delta,
-      influence_delta,
-      calculated_at,
-      metadata,
-      debate_sections!inner(title),
-      debate_days!inner(date, chamber, title)
-    `)
-    .gte('debate_days.date', startDateTime.split('T')[0])
-    .lte('debate_days.date', endDateTime.split('T')[0]);
-
-  if (contributionsError) {
-    throw new Error(contributionsError.message);
-  }
+  const contributionRows = await loadContributionRowsForPeriod(
+    startDateTime.split('T')[0],
+    endDateTime.split('T')[0]
+  );
 
   const aggregates = new Map<
     number,

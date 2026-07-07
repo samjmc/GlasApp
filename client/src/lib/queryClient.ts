@@ -1,4 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -16,10 +17,20 @@ type ApiRequestOptions = {
 
 export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T> {
   const { method, path, body, on401 = "throw" } = options;
+  const headers: Record<string, string> = body ? { "Content-Type": "application/json" } : {};
+
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.access_token) {
+      headers.Authorization = `Bearer ${session.access_token}`;
+    }
+  } catch (error) {
+    console.warn("Unable to read auth session for API request:", error);
+  }
   
   const res = await fetch(path, {
     method,
-    headers: body ? { "Content-Type": "application/json" } : {},
+    headers,
     body: body ? JSON.stringify(body) : undefined,
     credentials: "include",
   });

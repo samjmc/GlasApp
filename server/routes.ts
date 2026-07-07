@@ -57,6 +57,18 @@ import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
 import votingRoutes from "./routes/parliamentary/votingRoutes";
 
+function getAuthenticatedUserId(req: Request): string | null {
+  const user = req.user as any;
+  const rawUserId =
+    user?.id ||
+    user?.user?.id ||
+    user?.sub ||
+    user?.claims?.sub ||
+    req.session?.userId;
+
+  return rawUserId === undefined || rawUserId === null ? null : String(rawUserId);
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
   app.use(sessionMiddleware);
@@ -296,7 +308,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // API route to save multidimensional quiz results with political evolution tracking
-  app.post("/api/multidimensional-quiz-results", async (req: Request, res: Response) => {
+  app.post("/api/multidimensional-quiz-results", optionalAuth, async (req: Request, res: Response) => {
     try {
       const resultsSchema = z.object({
         economic: z.number(),
@@ -319,7 +331,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // If user is authenticated, save to political evolution tracking (primary storage)
       let evolutionResult = null;
-      const userId = req.user?.claims?.sub || req.session?.userId;
+      const userId = getAuthenticatedUserId(req);
       if (userId) {
         try {
           evolutionResult = await storage.savePoliticalEvolution({
@@ -342,25 +354,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
           throw evolutionError; // Fail if we can't save the main data
         }
 
-        if (typeof userId === "string") {
-          try {
-            const legacyAnswers = PersonalRankingsService.convertEnhancedDimensionsToLegacyAnswers({
-              economic: validatedData.economic,
-              social: validatedData.social,
-              cultural: validatedData.cultural,
-              globalism: validatedData.globalism,
-              environmental: validatedData.environmental,
-              authority: validatedData.authority,
-              welfare: validatedData.welfare,
-              technocratic: validatedData.technocratic,
-            });
+        try {
+          const legacyAnswers = PersonalRankingsService.convertEnhancedDimensionsToLegacyAnswers({
+            economic: validatedData.economic,
+            social: validatedData.social,
+            cultural: validatedData.cultural,
+            globalism: validatedData.globalism,
+            environmental: validatedData.environmental,
+            authority: validatedData.authority,
+            welfare: validatedData.welfare,
+            technocratic: validatedData.technocratic,
+          });
 
-            await PersonalRankingsService.saveQuizResults(userId, legacyAnswers, {
-              asyncRecalculation: true,
-            });
-          } catch (syncError) {
-            console.error("Failed to sync enhanced quiz with personal rankings:", syncError);
-          }
+          await PersonalRankingsService.saveQuizResults(userId, legacyAnswers, {
+            asyncRecalculation: true,
+          });
+        } catch (syncError) {
+          console.error("Failed to sync enhanced quiz with personal rankings:", syncError);
         }
       }
 
