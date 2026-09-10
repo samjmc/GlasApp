@@ -30,8 +30,38 @@ process.env.DATABASE_URL ? new Pool({
 
 export const db = pool ? drizzle(pool, { schema }) : null;
 
-// Supabase JS Client (for files that need REST API access)
-// Used by news aggregation system and some specialized queries
+/**
+ * Supabase REST Client with SERVICE_ROLE_KEY
+ *
+ * WARNING: This client BYPASSES Row-Level Security (RLS)
+ *
+ * RLS is the permission system that controls:
+ * - Which rows a user can read/write
+ * - Typically enforces: user_id = auth.uid()
+ *
+ * By using SERVICE_ROLE_KEY, this client ignores RLS policies.
+ * It has full access to all data in all tables.
+ *
+ * SAFE USES (service-role client):
+ * 1. Admin operations (batch deletes, data fixes)
+ * 2. System jobs (news scraping, background tasks)
+ * 3. Analytics (cross-user aggregations)
+ *
+ * UNSAFE USES (would expose data):
+ * - User requests with service-role client
+ * - Public API endpoints using service-role
+ * - Anything user-input-influenced
+ *
+ * CORRECT USER REQUEST FLOW:
+ * 1. Client attaches bearer token from localStorage
+ * 2. Server receives Authorization header
+ * 3. Server calls getUserFromRequest() → extracts user from token
+ * 4. Server uses user.id with Supabase client (normal role, respects RLS)
+ * 5. Supabase RLS policies enforce row-level permissions
+ *
+ * DO NOT use supabaseDb for user requests.
+ * DO use supabaseDb for admin/system operations only.
+ */
 export const supabaseDb = process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
   ? createClient(
       process.env.SUPABASE_URL,
