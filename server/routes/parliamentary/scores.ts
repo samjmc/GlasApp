@@ -1023,39 +1023,30 @@ function loadParliamentaryData() {
 /**
  * GET /api/parliamentary/scores/top-by-questions - Get top TDs by question count
  */
-router.get('/top-by-questions', async (req, res, next) => {
-  try {
-    const parliamentaryData = loadParliamentaryData();
-    
-    if (!parliamentaryData) {
-      return res.status(500).json({
-        success: false,
-        message: 'Parliamentary data not available'
-      });
-    }
+router.get('/top-by-questions', asyncHandler(async (req, res) => {
+  const parliamentaryData = loadParliamentaryData();
 
-    // Convert the parliamentary data object to an array and sort by questions asked
-    const tdsWithQuestions = Object.entries(parliamentaryData)
-      .map(([key, data]: [string, any]) => ({
-        name: data.fullName || key,
-        questionsAsked: parseInt(data.questionsAsked) || 0,
-        party: data.party || 'Independent',
-        attendancePercentage: data.attendancePercentage || 0,
-        constituency: tdConstituencyMap[data.fullName || key] || 'Unknown'
-      }))
-      .filter(td => td.questionsAsked > 0) // Only include TDs with question data
-      .sort((a, b) => b.questionsAsked - a.questionsAsked) // Sort by questions descending
-      .slice(0, 5); // Top 5 TDs for the dashboard
-
-    return res.json({
-      success: true,
-      data: tdsWithQuestions
-    });
-
-  } catch (error) {
-    next(error);
+  if (!parliamentaryData) {
+    return res.status(500).json(
+      formatError('OPERATION_FAILED', 'Parliamentary data not available')
+    );
   }
-});
+
+  // Convert the parliamentary data object to an array and sort by questions asked
+  const tdsWithQuestions = Object.entries(parliamentaryData)
+    .map(([key, data]: [string, any]) => ({
+      name: data.fullName || key,
+      questionsAsked: parseInt(data.questionsAsked) || 0,
+      party: data.party || 'Independent',
+      attendancePercentage: data.attendancePercentage || 0,
+      constituency: tdConstituencyMap[data.fullName || key] || 'Unknown'
+    }))
+    .filter(td => td.questionsAsked > 0) // Only include TDs with question data
+    .sort((a, b) => b.questionsAsked - a.questionsAsked) // Sort by questions descending
+    .slice(0, 5); // Top 5 TDs for the dashboard
+
+  res.json(formatSuccess(tdsWithQuestions));
+}));
 
 // ============================================
 // Simple Unified Score Endpoints
@@ -1066,99 +1057,87 @@ router.get('/top-by-questions', async (req, res, next) => {
  * GET /api/parliamentary/scores/simple/:name - Super simple endpoint
  * Returns JUST the overall score (0-100) - perfect for widgets
  */
-router.get('/simple/:name', async (req, res, next) => {
-  try {
-    const { name } = req.params;
-    const score = await UnifiedTDScoringService.getTDScore(name);
-    
-    if (!score) {
-      return res.status(404).json({
-        success: false,
-        message: `TD ${name} not found`
-      });
-    }
-    
-    // Super simple response - just what you need!
-    res.json({
-      name: score.politician_name,
-      score: score.overall_score,  // 0-100
-      label: getScoreLabel(score.overall_score),
-      change: score.weekly_change,
-      rank: score.national_rank
-    });
-  } catch (error) {
-    next(error);
+router.get('/simple/:name', asyncHandler(async (req, res) => {
+  const { name } = req.params;
+  const score = await UnifiedTDScoringService.getTDScore(name);
+
+  if (!score) {
+    return res.status(404).json(
+      formatError('ENTITY_NOT_FOUND', `TD ${name} not found`)
+    );
   }
-});
+
+  // Super simple response - just what you need!
+  const simpleScore = {
+    name: score.politician_name,
+    score: score.overall_score,  // 0-100
+    label: getScoreLabel(score.overall_score),
+    change: score.weekly_change,
+    rank: score.national_rank
+  };
+
+  res.json(formatSuccess(simpleScore));
+}));
 
 /**
  * GET /api/parliamentary/scores/leaderboard - Leaderboard with simple scores
  */
-router.get('/leaderboard', async (req, res, next) => {
-  try {
-    const limit = parseInt(req.query.limit as string) || 10;
-    const tds = await UnifiedTDScoringService.getTopTDs(limit);
-    
-    // Simple leaderboard format
-    res.json({
-      success: true,
-      leaderboard: tds.map((td, index) => ({
-        rank: index + 1,
-        name: td.politician_name,
-        party: td.party,
-        constituency: td.constituency,
-        score: td.overall_score,  // 0-100
-        label: getScoreLabel(td.overall_score),
-        change: td.weekly_change
-      }))
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/leaderboard', asyncHandler(async (req, res) => {
+  const limit = parseInt(req.query.limit as string) || 10;
+  const tds = await UnifiedTDScoringService.getTopTDs(limit);
+
+  // Simple leaderboard format
+  const leaderboard = tds.map((td, index) => ({
+    rank: index + 1,
+    name: td.politician_name,
+    party: td.party,
+    constituency: td.constituency,
+    score: td.overall_score,  // 0-100
+    label: getScoreLabel(td.overall_score),
+    change: td.weekly_change
+  }));
+
+  res.json(formatSuccess(leaderboard));
+}));
 
 /**
  * GET /api/parliamentary/scores/leaderboard/all - Full leaderboard (all active TDs)
  */
-router.get('/leaderboard/all', async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      throw new Error('Database not connected');
-    }
-
-    const { data: tds, error } = await supabaseDb
-      .from('td_scores')
-      .select('*')
-      .eq('is_active', true)  // Only active TDs
-      .order('overall_elo', { ascending: false });
-
-    if (error) throw error;
-
-    res.json({
-      success: true,
-      leaderboard: (tds || []).map((td: unknown, index: number) => ({
-        id: td.id,
-        rank: index + 1,
-        politician_name: td.politician_name,
-        party: td.party,
-        constituency: td.constituency,
-        image_url: td.image_url,
-        overall_elo: td.overall_elo,
-        overall_score: Math.round(((td.overall_elo || 1500) - 1000) / 10),
-        transparency_elo: td.transparency_elo,
-        effectiveness_elo: td.effectiveness_elo,
-        integrity_elo: td.integrity_elo,
-        baseline_modifier: td.baseline_modifier,
-        historical_summary: td.historical_summary,
-        weekly_elo_change: td.weekly_elo_change || 0,
-        total_stories: td.total_stories || 0
-      })),
-      count: tds?.length || 0
-    });
-  } catch (error) {
-    next(error);
+router.get('/leaderboard/all', asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('DATABASE_ERROR', ErrorCodes.DATABASE_ERROR)
+    );
   }
-});
+
+  const { data: tds, error } = await supabaseDb
+    .from('td_scores')
+    .select('*')
+    .eq('is_active', true)  // Only active TDs
+    .order('overall_elo', { ascending: false });
+
+  if (error) throw error;
+
+  const leaderboard = (tds || []).map((td: unknown, index: number) => ({
+    id: td.id,
+    rank: index + 1,
+    politician_name: td.politician_name,
+    party: td.party,
+    constituency: td.constituency,
+    image_url: td.image_url,
+    overall_elo: td.overall_elo,
+    overall_score: Math.round(((td.overall_elo || 1500) - 1000) / 10),
+    transparency_elo: td.transparency_elo,
+    effectiveness_elo: td.effectiveness_elo,
+    integrity_elo: td.integrity_elo,
+    baseline_modifier: td.baseline_modifier,
+    historical_summary: td.historical_summary,
+    weekly_elo_change: td.weekly_elo_change || 0,
+    total_stories: td.total_stories || 0
+  }));
+
+  res.json(formatSuccess(leaderboard, { count: tds?.length || 0 }));
+}));
 
 // Helper function to get score label
 function getScoreLabel(score: number): string {
@@ -1172,97 +1151,87 @@ function getScoreLabel(score: number): string {
 /**
  * GET /api/parliamentary/scores/parties - Get party performance rankings
  */
-router.get('/parties', async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      throw new Error('Database not connected');
-    }
-
-    // Get all parties with their scores (performance + ideology)
-    const { data: partyScores, error } = await supabaseDb
-      .from('party_performance_scores')
-      .select(`
-        *,
-        parties:party_id (
-          name,
-          abbreviation,
-          color,
-          logo,
-          economic_score,
-          social_score,
-          cultural_score,
-          globalism_score,
-          environmental_score,
-          authority_score,
-          welfare_score,
-          technocratic_score
-        )
-      `)
-      .eq('score_type', 'parliamentary_activity')
-      .order('overall_score', { ascending: false });
-
-    if (error) throw error;
-
-    // Get active member counts for each party
-    const partyCounts: Record<string, number> = {};
-    const { data: activeTDs } = await supabaseDb
-      .from('td_scores')
-      .select('party')
-      .eq('is_active', true);
-    
-    (activeTDs || []).forEach((td: unknown) => {
-      const partyName = td.party || 'Unknown';
-      partyCounts[partyName] = (partyCounts[partyName] || 0) + 1;
-    });
-
-    // Format the response
-    const rankings = (partyScores || []).map((score: unknown, idx: number) => ({
-      rank: idx + 1,
-      name: score.parties?.name || 'Unknown',
-      abbreviation: score.parties?.abbreviation,
-      color: score.parties?.color || '#808080',
-      logo: score.parties?.logo,
-      active_members: partyCounts[score.parties?.name] || 0,
-      
-      // Performance scores (0-100)
-      overall_score: score.overall_score || 0,
-      parliamentary_activity_score: score.parliamentary_activity_score || 0,
-      transparency_score: score.transparency_score || 0,
-      policy_consistency_score: score.policy_consistency_score || 0,
-      integrity_score: score.integrity_score || 0,
-      pledge_fulfillment_score: score.pledge_fulfillment_score || 0,
-      factual_accuracy_score: score.factual_accuracy_score || 0,
-      public_accountability_score: score.public_accountability_score || 0,
-      conflict_avoidance_score: score.conflict_avoidance_score || 0,
-      
-      // 8 Dimensional Political Compass Scores (-10 to +10)
-      ideology: {
-        economic: parseFloat(score.parties?.economic_score as string) || 0,
-        social: parseFloat(score.parties?.social_score as string) || 0,
-        cultural: parseFloat(score.parties?.cultural_score as string) || 0,
-        globalism: parseFloat(score.parties?.globalism_score as string) || 0,
-        environmental: parseFloat(score.parties?.environmental_score as string) || 0,
-        authority: parseFloat(score.parties?.authority_score as string) || 0,
-        welfare: parseFloat(score.parties?.welfare_score as string) || 0,
-        technocratic: parseFloat(score.parties?.technocratic_score as string) || 0
-      },
-      
-      government_status: score.government_status || 'opposition'
-    }));
-
-    res.json({
-      success: true,
-      parties: rankings,
-      count: rankings.length
-    });
-  } catch (error) {
-    console.error('Party rankings endpoint error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch party rankings'
-    });
+router.get('/parties', asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('DATABASE_ERROR', ErrorCodes.DATABASE_ERROR)
+    );
   }
-});
+
+  // Get all parties with their scores (performance + ideology)
+  const { data: partyScores, error } = await supabaseDb
+    .from('party_performance_scores')
+    .select(`
+      *,
+      parties:party_id (
+        name,
+        abbreviation,
+        color,
+        logo,
+        economic_score,
+        social_score,
+        cultural_score,
+        globalism_score,
+        environmental_score,
+        authority_score,
+        welfare_score,
+        technocratic_score
+      )
+    `)
+    .eq('score_type', 'parliamentary_activity')
+    .order('overall_score', { ascending: false });
+
+  if (error) throw error;
+
+  // Get active member counts for each party
+  const partyCounts: Record<string, number> = {};
+  const { data: activeTDs } = await supabaseDb
+    .from('td_scores')
+    .select('party')
+    .eq('is_active', true);
+
+  (activeTDs || []).forEach((td: unknown) => {
+    const partyName = td.party || 'Unknown';
+    partyCounts[partyName] = (partyCounts[partyName] || 0) + 1;
+  });
+
+  // Format the response
+  const rankings = (partyScores || []).map((score: unknown, idx: number) => ({
+    rank: idx + 1,
+    name: score.parties?.name || 'Unknown',
+    abbreviation: score.parties?.abbreviation,
+    color: score.parties?.color || '#808080',
+    logo: score.parties?.logo,
+    active_members: partyCounts[score.parties?.name] || 0,
+
+    // Performance scores (0-100)
+    overall_score: score.overall_score || 0,
+    parliamentary_activity_score: score.parliamentary_activity_score || 0,
+    transparency_score: score.transparency_score || 0,
+    policy_consistency_score: score.policy_consistency_score || 0,
+    integrity_score: score.integrity_score || 0,
+    pledge_fulfillment_score: score.pledge_fulfillment_score || 0,
+    factual_accuracy_score: score.factual_accuracy_score || 0,
+    public_accountability_score: score.public_accountability_score || 0,
+    conflict_avoidance_score: score.conflict_avoidance_score || 0,
+
+    // 8 Dimensional Political Compass Scores (-10 to +10)
+    ideology: {
+      economic: parseFloat(score.parties?.economic_score as string) || 0,
+      social: parseFloat(score.parties?.social_score as string) || 0,
+      cultural: parseFloat(score.parties?.cultural_score as string) || 0,
+      globalism: parseFloat(score.parties?.globalism_score as string) || 0,
+      environmental: parseFloat(score.parties?.environmental_score as string) || 0,
+      authority: parseFloat(score.parties?.authority_score as string) || 0,
+      welfare: parseFloat(score.parties?.welfare_score as string) || 0,
+      technocratic: parseFloat(score.parties?.technocratic_score as string) || 0
+    },
+
+    government_status: score.government_status || 'opposition'
+  }));
+
+  res.json(formatSuccess(rankings, { count: rankings.length }));
+}));
 
 export default router;
 
