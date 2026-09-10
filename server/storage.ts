@@ -10,6 +10,11 @@ import {
   type PoliticalEvolution,
   type QuizResult,
 } from "@shared/schema";
+import {
+  type PoliticalEvolutionInput,
+  type QuizResultInput,
+  type ApiResponse,
+} from "@shared/types";
 import { db } from "./db";
 import { eq, sql, and, desc } from "drizzle-orm";
 
@@ -20,12 +25,12 @@ export interface IStorage {
   upsertUser(userData: UpsertUser): Promise<User>;
   
   // Quiz and political evolution operations
-  saveQuizResult(result: any): Promise<any>;
-  getQuizResultByShareCode(shareCode: string): Promise<any>;
-  savePoliticalEvolution(evolution: any): Promise<any>;
-  getPoliticalEvolutionById(id: string): Promise<any>;
+  saveQuizResult(result: QuizResultInput): Promise<ApiResponse<QuizResult>>;
+  getQuizResultByShareCode(shareCode: string): Promise<QuizResult | null>;
+  savePoliticalEvolution(evolution: PoliticalEvolutionInput): Promise<PoliticalEvolution>;
+  getPoliticalEvolutionById(id: string): Promise<PoliticalEvolution | null>;
   getPoliticalEvolutionByUserId(userId: string): Promise<PoliticalEvolution[]>;
-  updatePoliticalEvolution(id: string, data: any): Promise<any>;
+  updatePoliticalEvolution(id: string, data: Partial<PoliticalEvolutionInput>): Promise<PoliticalEvolution>;
   
   // Party sentiment operations
   upsertPartySentimentVote(userId: string, partyId: string, sentimentScore: number): Promise<PartySentimentVote>;
@@ -61,19 +66,19 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Quiz and political evolution operations - stub implementations
-  async saveQuizResult(result: any): Promise<any> {
+  async saveQuizResult(result: QuizResultInput): Promise<ApiResponse<QuizResult>> {
     // TODO: Implement when quiz_results table is available
     console.log('saveQuizResult called with:', result);
-    return { success: true, message: 'Quiz result saved (stub)' };
+    return { success: true, data: result as QuizResult };
   }
 
-  async getQuizResultByShareCode(shareCode: string): Promise<any> {
+  async getQuizResultByShareCode(shareCode: string): Promise<QuizResult | null> {
     // TODO: Implement when quiz_results table is available
     console.log('getQuizResultByShareCode called with:', shareCode);
     return null;
   }
 
-  async savePoliticalEvolution(evolution: any): Promise<any> {
+  async savePoliticalEvolution(evolution: PoliticalEvolutionInput): Promise<PoliticalEvolution> {
     try {
       // Use Supabase REST client since Drizzle ORM db is null
       const { supabaseDb } = await import('./db');
@@ -114,7 +119,7 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  async getPoliticalEvolutionById(id: string): Promise<any> {
+  async getPoliticalEvolutionById(id: string): Promise<PoliticalEvolution | null> {
     try {
       const [evolution] = await db
         .select()
@@ -141,7 +146,7 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  async updatePoliticalEvolution(id: string, data: any): Promise<any> {
+  async updatePoliticalEvolution(id: string, data: Partial<PoliticalEvolutionInput>): Promise<PoliticalEvolution> {
     try {
       const [updatedEvolution] = await db
         .update(politicalEvolution)
