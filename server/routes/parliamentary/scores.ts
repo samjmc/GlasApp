@@ -26,6 +26,8 @@ import { getCachedOrFetch, CACHE_KEYS, CACHE_TTL } from '../../utils/serverCache
 import fs from 'fs';
 import path from 'path';
 import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector } from '../../constants/ideology.js';
+import { asyncHandler } from '../../middleware/errorHandler';
+import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
 const router = Router();
 
@@ -79,295 +81,247 @@ const serializeBreakdown = (
  * GET /api/parliamentary/scores/widget - Get data for homepage widget
  * Returns top performers, biggest movers, bottom performers, and stats
  */
-router.get('/widget', async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      throw new Error('Database not connected');
-    }
-
-    // Use cache for widget data (5 minute TTL)
-    const widgetData = await getCachedOrFetch(
-      CACHE_KEYS.TD_WIDGET,
-      async () => {
-        // Get all ACTIVE TDs from td_scores table, sorted by ELO
-        const { data: allTDs, error } = await supabaseDb
-          .from('td_scores')
-          .select('*')
-          .eq('is_active', true)
-          .order('overall_elo', { ascending: false });
-        
-        if (error) throw error;
-        
-        const validTDs = allTDs || [];
-        
-        // Debug logging
-        console.log(`Widget: Retrieved ${validTDs.length} TDs from database`);
-        
-        // Top 5 performers
-        const topPerformers = validTDs.slice(0, 5).map((td, idx) => ({
-          id: td.id,
-          name: td.politician_name,
-          constituency: td.constituency || 'Unknown',
-          party: td.party || 'Unknown',
-          image_url: td.image_url,
-          overall_elo: td.overall_elo || 1500,
-          overall_score: convertELOToPercentage(td.overall_elo || 1500),
-          score: convertELOToPercentage(td.overall_elo || 1500),
-          rank: idx + 1,
-          baseline_modifier: td.baseline_modifier || 1.00
-        }));
-        
-        // Bottom 5 performers
-        const bottomPerformers = validTDs.slice(-5).reverse().map((td, idx) => ({
-          id: td.id,
-          name: td.politician_name,
-          constituency: td.constituency || 'Unknown',
-          party: td.party || 'Unknown',
-          image_url: td.image_url,
-          overall_elo: td.overall_elo || 1400,
-          overall_score: convertELOToPercentage(td.overall_elo || 1400),
-          score: convertELOToPercentage(td.overall_elo || 1400),
-          rank: validTDs.length - idx,
-          baseline_modifier: td.baseline_modifier || 1.00
-        }));
-        
-        // Biggest movers - Calculate from td_score_history (last 30 days)
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-        
-        const { data: recentChanges } = await supabaseDb
-          .from('td_score_history')
-          .select('politician_name, elo_change, article_title, created_at')
-          .gte('created_at', thirtyDaysAgo.toISOString())
-          .order('created_at', { ascending: false });
-        
-        // Aggregate changes by politician
-        const changesByPolitician = new Map<string, { totalChange: number; articles: string[] }>();
-        
-        (recentChanges || []).forEach((change: unknown) => {
-          const existing = changesByPolitician.get(change.politician_name) || { totalChange: 0, articles: [] };
-          existing.totalChange += change.elo_change || 0;
-          if (change.article_title && !existing.articles.includes(change.article_title)) {
-            existing.articles.push(change.article_title);
-          }
-          changesByPolitician.set(change.politician_name, existing);
-        });
-        
-        // Get TDs with biggest absolute changes
-        const moversArray = Array.from(changesByPolitician.entries())
-          .map(([name, data]) => {
-            const td = validTDs.find(t => t.politician_name === name);
-            const currentELO = td?.overall_elo || 1500;
-            const previousELO = currentELO - data.totalChange;
-            
-            // Convert ELO change to /100 scale change (preserve decimals)
-            const currentScoreUnrounded = (currentELO - 1000) / 10;
-            const previousScoreUnrounded = (previousELO - 1000) / 10;
-            const scoreChange = currentScoreUnrounded - previousScoreUnrounded;
-            const currentScore = Math.round(currentScoreUnrounded);
-            
-            return {
-              id: td?.id,
-              name,
-              image_url: td?.image_url,
-              change: data.totalChange,
-              change_out_of_100: parseFloat(scoreChange.toFixed(1)),
-              overall_elo: currentELO,
-              overall_score: currentScore,
-              score: currentScore,
-              party: td?.party || 'Unknown',
-              reason: data.totalChange > 0 
-                ? `Positive news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})` 
-                : `Negative news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})`,
-              articles: data.articles.length
-            };
-          })
-          .sort((a, b) => Math.abs(b.change_out_of_100) - Math.abs(a.change_out_of_100))
-          .slice(0, 6);
-        
-        const biggestMovers = moversArray;
-        
-        // Stats
-        const totalArticles = validTDs.reduce((sum, td) => sum + (td.total_stories || 0), 0);
-        
-        // Get news count from database
-        let newsCount = totalArticles;
-        try {
-          const { count } = await supabaseDb
-            .from('news_articles')
-            .select('*', { count: 'exact', head: true });
-          if (count) newsCount = count;
-        } catch (e) {
-          // Use fallback
-        }
-        
-        return {
-          top_performers: topPerformers,
-          bottom_performers: bottomPerformers,
-          biggest_movers: biggestMovers,
-          stats: {
-            total_tds: validTDs.length,
-            articles_analyzed: newsCount,
-            last_update: new Date().toISOString(),
-            sources_active: 11
-          }
-        };
-      },
-      CACHE_TTL.MEDIUM
+router.get('/widget', asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('DATABASE_ERROR', ErrorCodes.DATABASE_ERROR)
     );
-    
-    res.json({
-      success: true,
-      ...widgetData
-    });
-  } catch (error) {
-    console.error('Widget endpoint error:', error);
-    // Return empty data if database fails
-    res.json({
-      success: true,
-      top_performers: [],
-      bottom_performers: [],
-      biggest_movers: [],
-      stats: {
-        total_tds: 200,
-        articles_analyzed: 0,
-        last_update: new Date().toISOString(),
-        sources_active: 11
-      }
-    });
   }
-});
+
+  // Use cache for widget data (5 minute TTL)
+  const widgetData = await getCachedOrFetch(
+    CACHE_KEYS.TD_WIDGET,
+    async () => {
+      // Get all ACTIVE TDs from td_scores table, sorted by ELO
+      const { data: allTDs, error } = await supabaseDb
+        .from('td_scores')
+        .select('*')
+        .eq('is_active', true)
+        .order('overall_elo', { ascending: false });
+
+      if (error) throw error;
+
+      const validTDs = allTDs || [];
+
+      // Debug logging
+      console.log(`Widget: Retrieved ${validTDs.length} TDs from database`);
+
+      // Top 5 performers
+      const topPerformers = validTDs.slice(0, 5).map((td, idx) => ({
+        id: td.id,
+        name: td.politician_name,
+        constituency: td.constituency || 'Unknown',
+        party: td.party || 'Unknown',
+        image_url: td.image_url,
+        overall_elo: td.overall_elo || 1500,
+        overall_score: convertELOToPercentage(td.overall_elo || 1500),
+        score: convertELOToPercentage(td.overall_elo || 1500),
+        rank: idx + 1,
+        baseline_modifier: td.baseline_modifier || 1.00
+      }));
+
+      // Bottom 5 performers
+      const bottomPerformers = validTDs.slice(-5).reverse().map((td, idx) => ({
+        id: td.id,
+        name: td.politician_name,
+        constituency: td.constituency || 'Unknown',
+        party: td.party || 'Unknown',
+        image_url: td.image_url,
+        overall_elo: td.overall_elo || 1400,
+        overall_score: convertELOToPercentage(td.overall_elo || 1400),
+        score: convertELOToPercentage(td.overall_elo || 1400),
+        rank: validTDs.length - idx,
+        baseline_modifier: td.baseline_modifier || 1.00
+      }));
+
+      // Biggest movers - Calculate from td_score_history (last 30 days)
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+      const { data: recentChanges } = await supabaseDb
+        .from('td_score_history')
+        .select('politician_name, elo_change, article_title, created_at')
+        .gte('created_at', thirtyDaysAgo.toISOString())
+        .order('created_at', { ascending: false });
+
+      // Aggregate changes by politician
+      const changesByPolitician = new Map<string, { totalChange: number; articles: string[] }>();
+
+      (recentChanges || []).forEach((change: unknown) => {
+        const existing = changesByPolitician.get(change.politician_name) || { totalChange: 0, articles: [] };
+        existing.totalChange += change.elo_change || 0;
+        if (change.article_title && !existing.articles.includes(change.article_title)) {
+          existing.articles.push(change.article_title);
+        }
+        changesByPolitician.set(change.politician_name, existing);
+      });
+
+      // Get TDs with biggest absolute changes
+      const moversArray = Array.from(changesByPolitician.entries())
+        .map(([name, data]) => {
+          const td = validTDs.find(t => t.politician_name === name);
+          const currentELO = td?.overall_elo || 1500;
+          const previousELO = currentELO - data.totalChange;
+
+          // Convert ELO change to /100 scale change (preserve decimals)
+          const currentScoreUnrounded = (currentELO - 1000) / 10;
+          const previousScoreUnrounded = (previousELO - 1000) / 10;
+          const scoreChange = currentScoreUnrounded - previousScoreUnrounded;
+          const currentScore = Math.round(currentScoreUnrounded);
+
+          return {
+            id: td?.id,
+            name,
+            image_url: td?.image_url,
+            change: data.totalChange,
+            change_out_of_100: parseFloat(scoreChange.toFixed(1)),
+            overall_elo: currentELO,
+            overall_score: currentScore,
+            score: currentScore,
+            party: td?.party || 'Unknown',
+            reason: data.totalChange > 0
+              ? `Positive news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})`
+              : `Negative news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})`,
+            articles: data.articles.length
+          };
+        })
+        .sort((a, b) => Math.abs(b.change_out_of_100) - Math.abs(a.change_out_of_100))
+        .slice(0, 6);
+
+      const biggestMovers = moversArray;
+
+      // Stats
+      const totalArticles = validTDs.reduce((sum, td) => sum + (td.total_stories || 0), 0);
+
+      // Get news count from database
+      let newsCount = totalArticles;
+      try {
+        const { count } = await supabaseDb
+          .from('news_articles')
+          .select('*', { count: 'exact', head: true });
+        if (count) newsCount = count;
+      } catch (e) {
+        // Use fallback
+      }
+
+      return {
+        top_performers: topPerformers,
+        bottom_performers: bottomPerformers,
+        biggest_movers: biggestMovers,
+        stats: {
+          total_tds: validTDs.length,
+          articles_analyzed: newsCount,
+          last_update: new Date().toISOString(),
+          sources_active: 11
+        }
+      };
+    },
+    CACHE_TTL.MEDIUM
+  );
+
+  res.json(formatSuccess(widgetData));
+}));
 
 /**
  * GET /api/parliamentary/scores/all - Get all TD scores (unified 0-100 format)
  */
-router.get('/all', async (req, res, next) => {
-  try {
-    // Get all TDs with unified scores
-    const allTDs = await UnifiedTDScoringService.getTopTDs(200); // Get all TDs
-    
-    // Return in consistent 0-100 format
-    res.json({
-      success: true,
-      scores: allTDs.map(td => ({
-        politician_name: td.politician_name,
-        constituency: td.constituency,
-        party: td.party,
-        
-        // PRIMARY SCORES (0-100) - convert from ELO
-        overall_score: convertELOToPercentage(td.overall_elo || 1500),
-        transparency_score: convertELOToPercentage(td.transparency_elo || 1500),
-        effectiveness_score: convertELOToPercentage(td.effectiveness_elo || 1500),
-        integrity_score: convertELOToPercentage(td.integrity_elo || 1500),
-        
-        // Stats
-        total_stories: td.total_stories || 0,
-        positive_stories: td.positive_stories || 0,
-        negative_stories: td.negative_stories || 0,
-        national_rank: td.national_rank,
-        weekly_change: td.weekly_elo_change || 0
-      })),
-      count: allTDs.length
-    });
-    
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/all', asyncHandler(async (req, res) => {
+  // Get all TDs with unified scores
+  const allTDs = await UnifiedTDScoringService.getTopTDs(200); // Get all TDs
+
+  // Return in consistent 0-100 format
+  const scores = allTDs.map(td => ({
+    politician_name: td.politician_name,
+    constituency: td.constituency,
+    party: td.party,
+
+    // PRIMARY SCORES (0-100) - convert from ELO
+    overall_score: convertELOToPercentage(td.overall_elo || 1500),
+    transparency_score: convertELOToPercentage(td.transparency_elo || 1500),
+    effectiveness_score: convertELOToPercentage(td.effectiveness_elo || 1500),
+    integrity_score: convertELOToPercentage(td.integrity_elo || 1500),
+
+    // Stats
+    total_stories: td.total_stories || 0,
+    positive_stories: td.positive_stories || 0,
+    negative_stories: td.negative_stories || 0,
+    national_rank: td.national_rank,
+    weekly_change: td.weekly_elo_change || 0
+  }));
+
+  res.json(formatSuccess(scores, { count: allTDs.length }));
+}));
 
 /**
  * GET /api/parliamentary/scores/td-scores - Get all TDs for selection/search
  * Used by Ask TD feature
  */
-router.get('/td-scores', async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      return res.json({ success: true, scores: [] });
-    }
-
-    const limit = Math.min(parseInt(req.query.limit as string) || 200, 500);
-
-    // Use cache for TD scores (5 minute TTL)
-    const tdData = await getCachedOrFetch(
-      `${CACHE_KEYS.TD_SCORES}_${limit}`,
-      async () => {
-        const { data: tds, error } = await supabaseDb
-          .from('td_scores')
-          .select('id, politician_name, party, constituency, image_url')
-          .eq('is_active', true)
-          .order('politician_name', { ascending: true })
-          .limit(limit);
-
-        if (error) {
-          console.error('Error fetching TDs:', error);
-          return { scores: [], count: 0 };
-        }
-
-        return {
-          scores: tds || [],
-          count: tds?.length || 0
-        };
-      },
-      CACHE_TTL.MEDIUM
-    );
-
-    res.json({
-      success: true,
-      ...tdData
-    });
-
-  } catch (error) {
-    console.error('TD scores endpoint error:', error);
-    res.json({ success: true, scores: [] });
+router.get('/td-scores', asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.json(formatSuccess([]));
   }
-});
+
+  const limit = Math.min(parseInt(req.query.limit as string) || 200, 500);
+
+  // Use cache for TD scores (5 minute TTL)
+  const tdData = await getCachedOrFetch(
+    `${CACHE_KEYS.TD_SCORES}_${limit}`,
+    async () => {
+      const { data: tds, error } = await supabaseDb
+        .from('td_scores')
+        .select('id, politician_name, party, constituency, image_url')
+        .eq('is_active', true)
+        .order('politician_name', { ascending: true })
+        .limit(limit);
+
+      if (error) {
+        console.error('Error fetching TDs:', error);
+        return { scores: [], count: 0 };
+      }
+
+      return {
+        scores: tds || [],
+        count: tds?.length || 0
+      };
+    },
+    CACHE_TTL.MEDIUM
+  );
+
+  res.json(formatSuccess(tdData.scores, { count: tdData.count }));
+}));
 
 /**
  * GET /api/parliamentary/scores/td/:name - Get specific TD ELO score
  */
-router.get('/td/:name/elo', async (req, res, next) => {
-  try {
-    const { name } = req.params;
-    
-    // In production:
-    // const [score] = await db.select().from(tdScores).where(eq(tdScores.politicianName, name));
-    
-    res.json({
-      success: true,
-      score: {
-        politician_name: name,
-        message: 'Database not yet connected - scores will appear once DB is configured'
-      }
-    });
-    
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/td/:name/elo', asyncHandler(async (req, res) => {
+  const { name } = req.params;
+
+  // In production:
+  // const [score] = await db.select().from(tdScores).where(eq(tdScores.politicianName, name));
+
+  const score = {
+    politician_name: name,
+    message: 'Database not yet connected - scores will appear once DB is configured'
+  };
+
+  res.json(formatSuccess(score));
+}));
 
 /**
  * POST /api/parliamentary/scores/trigger-scrape - Trigger manual news scrape
  */
-router.post('/trigger-scrape', async (req, res, next) => {
-  try {
-    console.log('🔄 Manual news scrape triggered...');
-    
-    const job = new DailyNewsScraperJob();
-    
-    // Run in background
-    job.execute().catch(error => {
-      console.error('❌ Background news scrape failed:', error);
-    });
-    
-    res.json({
-      success: true,
-      message: 'News scraping job triggered in background'
-    });
-    
-  } catch (error) {
-    next(error);
-  }
-});
+router.post('/trigger-scrape', asyncHandler(async (req, res) => {
+  console.log('🔄 Manual news scrape triggered...');
+
+  const job = new DailyNewsScraperJob();
+
+  // Run in background
+  job.execute().catch(error => {
+    console.error('❌ Background news scrape failed:', error);
+  });
+
+  res.json(formatSuccess({ message: 'News scraping job triggered in background' }));
+}));
 
 // ============================================
 // Unified TD Scoring System
@@ -377,34 +331,24 @@ router.post('/trigger-scrape', async (req, res, next) => {
 /**
  * GET /api/parliamentary/scores/top - Get top TDs (unified scoring)
  */
-router.get('/top', async (req, res, next) => {
-  try {
-    const limit = parseInt(req.query.limit as string) || 10;
-    const topTDs = await UnifiedTDScoringService.getTopTDs(limit);
-    
-    res.json({
-      success: true,
-      tds: topTDs,
-      count: topTDs.length
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/top', asyncHandler(async (req, res) => {
+  const limit = parseInt(req.query.limit as string) || 10;
+  const topTDs = await UnifiedTDScoringService.getTopTDs(limit);
+
+  res.json(formatSuccess(topTDs, { count: topTDs.length }));
+}));
 
 /**
  * GET /api/parliamentary/scores/td/:name - Get specific TD unified score (0-100 format)
  * This is the PRIMARY endpoint - returns clean 0-100 scores
  */
-router.get('/td/:name', async (req, res, next) => {
-  try {
-    const { name } = req.params;
-    
+router.get('/td/:name', asyncHandler(async (req, res) => {
+  const { name } = req.params;
+
   if (!supabaseDb) {
-    return res.status(503).json({
-      success: false,
-      message: 'Database not connected'
-    });
+    return res.status(503).json(
+      formatError('DATABASE_ERROR', ErrorCodes.DATABASE_ERROR)
+    );
   }
 
     // Fetch TD data directly from database (already calculated and stored)
@@ -415,13 +359,12 @@ router.get('/td/:name', async (req, res, next) => {
     .single();
 
   if (tdError || !tdData) {
-    return res.status(404).json({
-      success: false,
-      message: `TD ${name} not found`
-    });
+    return res.status(404).json(
+      formatError('ENTITY_NOT_FOUND', `TD ${name} not found`)
+    );
   }
 
-    // Load ideological vectors
+  // Load ideological vectors
   const { data: tdIdeologyProfile } = await supabaseDb
     .from('td_ideology_profiles')
     .select('*')
@@ -436,36 +379,36 @@ router.get('/td/:name', async (req, res, next) => {
         .maybeSingle()
     : { data: null };
 
-    const ideologyVector = emptyIdeologyVector();
-    if (tdIdeologyProfile) {
-      for (const dimension of IDEOLOGY_DIMENSIONS) {
-        ideologyVector[dimension] = Number(tdIdeologyProfile[dimension]) || 0;
-      }
+  const ideologyVector = emptyIdeologyVector();
+  if (tdIdeologyProfile) {
+    for (const dimension of IDEOLOGY_DIMENSIONS) {
+      ideologyVector[dimension] = Number(tdIdeologyProfile[dimension]) || 0;
     }
+  }
 
-    const partyIdeologyVector = partyIdeologyProfile
-      ? IDEOLOGY_DIMENSIONS.reduce<Record<string, number>>((acc, dimension) => {
-          acc[dimension] = Number(partyIdeologyProfile[dimension]) || 0;
-          return acc;
-        }, {})
-      : null;
+  const partyIdeologyVector = partyIdeologyProfile
+    ? IDEOLOGY_DIMENSIONS.reduce<Record<string, number>>((acc, dimension) => {
+        acc[dimension] = Number(partyIdeologyProfile[dimension]) || 0;
+        return acc;
+      }, {})
+    : null;
 
-    // Use actual 0-100 scores from database (preferred) or convert ELO as fallback
+  // Use actual 0-100 scores from database (preferred) or convert ELO as fallback
   const transparency_score = Math.round(((tdData.transparency_elo || 1500) - 1000) / 10);
   const effectiveness_score_raw = tdData.effectiveness_score || Math.round(((tdData.effectiveness_elo || 1500) - 1000) / 10);
   const integrity_score = Math.round(((tdData.integrity_elo || 1500) - 1000) / 10);
   const consistency_score = tdData.consistency_score || Math.round(((tdData.consistency_elo || 1500) - 1000) / 10);
   const constituency_service_score_raw = tdData.constituency_service_score || Math.round(((tdData.constituency_service_elo || 1500) - 1000) / 10);
 
-    // Calculate News Impact score from article_td_scores (3-month sliding window)
-    // Baseline: 50/100
-    // Each article's impact_score (-10 to +10) adds/subtracts a small delta
-    // Scale factor: divide by 5 to get -2 to +2 point adjustments per article
-    
-    // Use 3-month sliding window for relevance
-    const threeMonthsAgo = new Date();
-    threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-    
+  // Calculate News Impact score from article_td_scores (3-month sliding window)
+  // Baseline: 50/100
+  // Each article's impact_score (-10 to +10) adds/subtracts a small delta
+  // Scale factor: divide by 5 to get -2 to +2 point adjustments per article
+
+  // Use 3-month sliding window for relevance
+  const threeMonthsAgo = new Date();
+  threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+
   const { data: articles } = await supabaseDb
     .from('article_td_scores')
     .select('impact_score, created_at')
@@ -696,10 +639,8 @@ router.get('/td/:name', async (req, res, next) => {
       else seniority = 'Junior (0-5 years)';
     }
     
-    // Return with 0-100 scores prominently displayed + enhanced data
-  res.json({
-    success: true,
-    td: {
+  // Return with 0-100 scores prominently displayed + enhanced data
+  const td = {
       name: tdData.politician_name,
       politician_name: tdData.politician_name,
       constituency: tdData.constituency,
@@ -855,73 +796,62 @@ router.get('/td/:name', async (req, res, next) => {
         effectiveness: tdData.effectiveness_elo,
         integrity: tdData.integrity_elo
       }
-    }
-  });
-  } catch (error) {
-    next(error);
-  }
-});
+    };
+
+  res.json(formatSuccess(td, { entity: 'td_comprehensive_profile' }));
+}));
 
 /**
  * GET /api/parliamentary/scores/constituency/:constituency - Get TDs by constituency
  */
-router.get('/constituency/:constituency', async (req, res, next) => {
-  try {
-    const { constituency } = req.params;
-    
-    if (!supabaseDb) {
-      return res.status(503).json({ success: false, message: 'Database not connected' });
-    }
-    
-    const { data: tds, error } = await supabaseDb
-      .from('td_scores')
-      .select('*')
-      .eq('is_active', true)  // Only active TDs
-      .ilike('constituency', constituency)
-      .order('overall_elo', { ascending: false });
-    
-    if (error) throw error;
-    
-    res.json({
-      success: true,
-      constituency,
-      tds: tds || [],
-      count: tds?.length || 0
-    });
-  } catch (error) {
-    next(error);
+router.get('/constituency/:constituency', asyncHandler(async (req, res) => {
+  const { constituency } = req.params;
+
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('DATABASE_ERROR', ErrorCodes.DATABASE_ERROR)
+    );
   }
-});
+
+  const { data: tds, error } = await supabaseDb
+    .from('td_scores')
+    .select('*')
+    .eq('is_active', true)  // Only active TDs
+    .ilike('constituency', constituency)
+    .order('overall_elo', { ascending: false });
+
+  if (error) throw error;
+
+  res.json(formatSuccess(tds || [], {
+    constituency,
+    count: tds?.length || 0
+  }));
+}));
 
 /**
  * POST /api/parliamentary/scores/recalculate - Trigger comprehensive score recalculation (admin)
  */
-router.post('/recalculate', async (req, res, next) => {
-  try {
-    console.log('🔄 Manual comprehensive score recalculation triggered...');
-    
-    // Import the job
-    const { unifiedScoreJob } = await import('../../jobs/unifiedScoreCalculationJob');
-    
-    // Run in background
-    setTimeout(async () => {
-      try {
-        await unifiedScoreJob.triggerManual();
-        console.log('✅ Comprehensive score recalculation completed');
-      } catch (error) {
-        console.error('❌ Score recalculation failed:', error);
-      }
-    }, 100);
-    
-    res.json({
-      success: true,
-      message: 'Comprehensive score recalculation triggered in background',
-      note: 'This combines news, parliamentary, constituency, and trust data into unified 0-100 scores'
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+router.post('/recalculate', asyncHandler(async (req, res) => {
+  console.log('🔄 Manual comprehensive score recalculation triggered...');
+
+  // Import the job
+  const { unifiedScoreJob } = await import('../../jobs/unifiedScoreCalculationJob');
+
+  // Run in background
+  setTimeout(async () => {
+    try {
+      await unifiedScoreJob.triggerManual();
+      console.log('✅ Comprehensive score recalculation completed');
+    } catch (error) {
+      console.error('❌ Score recalculation failed:', error);
+    }
+  }, 100);
+
+  res.json(formatSuccess({
+    message: 'Comprehensive score recalculation triggered in background',
+    note: 'This combines news, parliamentary, constituency, and trust data into unified 0-100 scores'
+  }));
+}));
 
 // ============================================
 // Performance Scores
@@ -931,71 +861,49 @@ router.post('/recalculate', async (req, res, next) => {
 /**
  * GET /api/parliamentary/scores/performance/:name - Get performance score for TD
  */
-router.get('/performance/:name', async (req, res, next) => {
-  try {
-    const { name } = req.params;
-    
-    const performanceScore = await db
-      .select()
-      .from(performanceScores)
-      .where(eq(performanceScores.politicianName, name))
-      .limit(1);
+router.get('/performance/:name', asyncHandler(async (req, res) => {
+  const { name } = req.params;
 
-    if (performanceScore.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: `Performance score not found for ${name}`
-      });
-    }
+  const performanceScore = await db
+    .select()
+    .from(performanceScores)
+    .where(eq(performanceScores.politicianName, name))
+    .limit(1);
 
-    res.json({
-      success: true,
-      data: performanceScore[0]
-    });
-  } catch (error) {
-    next(error);
+  if (performanceScore.length === 0) {
+    return res.status(404).json(
+      formatError('ENTITY_NOT_FOUND', `Performance score not found for ${name}`)
+    );
   }
-});
+
+  res.json(formatSuccess(performanceScore[0]));
+}));
 
 /**
  * GET /api/parliamentary/scores/top-performers - Get top performing TDs
  */
-router.get('/top-performers', async (req, res, next) => {
-  try {
-    const topPerformers = await db
-      .select()
-      .from(performanceScores)
-      .orderBy(desc(performanceScores.overallScore))
-      .limit(10);
+router.get('/top-performers', asyncHandler(async (req, res) => {
+  const topPerformers = await db
+    .select()
+    .from(performanceScores)
+    .orderBy(desc(performanceScores.overallScore))
+    .limit(10);
 
-    res.json({
-      success: true,
-      data: topPerformers
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  res.json(formatSuccess(topPerformers));
+}));
 
 /**
  * GET /api/parliamentary/scores/lowest-performers - Get lowest performing TDs
  */
-router.get('/lowest-performers', async (req, res, next) => {
-  try {
-    const lowestPerformers = await db
-      .select()
-      .from(performanceScores)
-      .orderBy(asc(performanceScores.overallScore))
-      .limit(10);
+router.get('/lowest-performers', asyncHandler(async (req, res) => {
+  const lowestPerformers = await db
+    .select()
+    .from(performanceScores)
+    .orderBy(asc(performanceScores.overallScore))
+    .limit(10);
 
-    res.json({
-      success: true,
-      data: lowestPerformers
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  res.json(formatSuccess(lowestPerformers));
+}));
 
 // ============================================
 // Trust Scores
@@ -1005,89 +913,60 @@ router.get('/lowest-performers', async (req, res, next) => {
 /**
  * GET /api/parliamentary/scores/trust/:name - Get detailed trust scores for TD
  */
-router.get('/trust/:name', async (req, res, next) => {
-  try {
-    const { name } = req.params;
-    
-    const trustData = await db.execute(
-      sql`SELECT * FROM politician_trust_scores WHERE politician_name = ${name}`
+router.get('/trust/:name', asyncHandler(async (req, res) => {
+  const { name } = req.params;
+
+  const trustData = await db.execute(
+    sql`SELECT * FROM politician_trust_scores WHERE politician_name = ${name}`
+  );
+
+  if (trustData.rows.length === 0) {
+    return res.status(404).json(
+      formatError('ENTITY_NOT_FOUND', 'Trust score data not found for this politician')
     );
-
-    if (trustData.rows.length === 0) {
-      return res.status(404).json({ 
-        success: false, 
-        message: 'Trust score data not found for this politician' 
-      });
-    }
-
-    res.json({ 
-      success: true, 
-      data: trustData.rows[0] 
-    });
-  } catch (error) {
-    next(error);
   }
-});
+
+  res.json(formatSuccess(trustData.rows[0]));
+}));
 
 /**
  * GET /api/parliamentary/scores/trust/constituency/:constituency - Get trust scores by constituency
  */
-router.get('/trust/constituency/:constituency', async (req, res, next) => {
-  try {
-    const { constituency } = req.params;
-    
-    const trustData = await db.execute(
-      sql`SELECT * FROM politician_trust_scores WHERE constituency = ${constituency} ORDER BY overall_trust_score DESC`
-    );
+router.get('/trust/constituency/:constituency', asyncHandler(async (req, res) => {
+  const { constituency } = req.params;
 
-    res.json({ 
-      success: true, 
-      data: trustData.rows 
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  const trustData = await db.execute(
+    sql`SELECT * FROM politician_trust_scores WHERE constituency = ${constituency} ORDER BY overall_trust_score DESC`
+  );
+
+  res.json(formatSuccess(trustData.rows));
+}));
 
 /**
  * GET /api/parliamentary/scores/top-trustworthy - Get top trustworthy TDs
  */
-router.get('/top-trustworthy', async (req, res, next) => {
-  try {
-    const limit = parseInt(req.query.limit as string) || 10;
-    
-    const trustData = await db.execute(
-      sql`SELECT * FROM politician_trust_scores ORDER BY overall_trust_score DESC LIMIT ${limit}`
-    );
+router.get('/top-trustworthy', asyncHandler(async (req, res) => {
+  const limit = parseInt(req.query.limit as string) || 10;
 
-    res.json({ 
-      success: true, 
-      data: trustData.rows 
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  const trustData = await db.execute(
+    sql`SELECT * FROM politician_trust_scores ORDER BY overall_trust_score DESC LIMIT ${limit}`
+  );
+
+  res.json(formatSuccess(trustData.rows));
+}));
 
 /**
  * GET /api/parliamentary/scores/least-trustworthy - Get least trustworthy TDs
  */
-router.get('/least-trustworthy', async (req, res, next) => {
-  try {
-    const limit = parseInt(req.query.limit as string) || 10;
-    
-    const trustData = await db.execute(
-      sql`SELECT * FROM politician_trust_scores ORDER BY overall_trust_score ASC LIMIT ${limit}`
-    );
+router.get('/least-trustworthy', asyncHandler(async (req, res) => {
+  const limit = parseInt(req.query.limit as string) || 10;
 
-    res.json({ 
-      success: true, 
-      data: trustData.rows 
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  const trustData = await db.execute(
+    sql`SELECT * FROM politician_trust_scores ORDER BY overall_trust_score ASC LIMIT ${limit}`
+  );
+
+  res.json(formatSuccess(trustData.rows));
+}));
 
 // ============================================
 // Top TDs by Parliamentary Questions
