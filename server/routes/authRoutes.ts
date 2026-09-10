@@ -1,8 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import { insertUserSchema, User } from '@shared/schema';
+import { insertUserSchema, User, userPreferences } from '@shared/schema';
 import { isAuthenticated } from '../middleware/sessionMiddleware';
 import { storage } from '../storage';
+import { db } from '../db';
 import bcrypt from 'bcryptjs';
 import multer from 'multer';
 import path from 'path';
@@ -505,7 +506,23 @@ router.post('/register', async (req: Request, res: Response) => {
         longitude: longitude?.toString() || undefined,
         emailVerified: false
       });
-      
+
+      // Phase 1 dual-write: Insert to user_preferences (idempotent via onConflictDoNothing)
+      if (db) {
+        try {
+          await db.insert(userPreferences).values({
+            userId: user.id,
+            county: userData.county,
+            bio: userData.bio,
+            latitude: latitude?.toString() || undefined,
+            longitude: longitude?.toString() || undefined
+          }).onConflictDoNothing();
+        } catch (prefError) {
+          console.warn('Failed to insert user_preferences row:', prefError);
+          // Non-blocking: continue even if prefs insertion fails
+        }
+      }
+
       // For now, set users as email verified by default but require email confirmation for login
       // In production, you would implement proper email verification
       try {
