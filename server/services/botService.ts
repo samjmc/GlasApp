@@ -1,4 +1,6 @@
 import { storage } from '../storage';
+import { db } from '../db';
+import { userPreferences } from '@shared/schema';
 import bcrypt from 'bcryptjs';
 
 export interface BotAccountConfig {
@@ -38,6 +40,20 @@ export class BotService {
         latitude: undefined,
         longitude: undefined
       });
+
+      // Phase 1 dual-write: Insert to user_preferences
+      if (db) {
+        try {
+          await db.insert(userPreferences).values({
+            userId: botUser.id,
+            county: config.county || 'Dublin',
+            bio: config.bio || 'Automated community member'
+          }).onConflictDoNothing();
+        } catch (prefError) {
+          console.warn('Failed to insert user_preferences for bot:', prefError);
+          // Non-blocking: continue even if prefs insertion fails
+        }
+      }
 
       console.log(`Created bot account: ${config.username}`);
       return botUser;
