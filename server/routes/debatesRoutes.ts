@@ -143,19 +143,19 @@ const loadContributionSummaries = async (
     throw new Error(contributionsError.message);
   }
 
-  const aggregates = new Map<
-    number,
-    {
-      performanceDelta: number;
-      effectivenessDelta: number;
-      influenceDelta: number;
-      lastContribution: unknown | null;
-      lastTimestamp: number;
-    }
-  >();
+  interface AggregateData {
+    performanceDelta: number;
+    effectivenessDelta: number;
+    influenceDelta: number;
+    lastContribution: DebateContributionRow | null;
+    lastTimestamp: number;
+  }
+
+  const aggregates = new Map<number, AggregateData>();
 
   for (const row of contributionRows || []) {
-    const tdId = row?.td_id;
+    const row_typed = row as DebateContributionRow;
+    const tdId = row_typed?.td_id ?? (typeof row === 'object' && row !== null ? (row as JsonObject)['td_id'] : undefined);
     if (typeof tdId !== 'number') {
       continue;
     }
@@ -164,18 +164,18 @@ const loadContributionSummaries = async (
         performanceDelta: 0,
         effectivenessDelta: 0,
         influenceDelta: 0,
-        lastContribution: null,
+        lastContribution: null as DebateContributionRow | null,
         lastTimestamp: Number.NEGATIVE_INFINITY
       };
 
-    record.performanceDelta += Number(row.performance_delta ?? 0);
-    record.effectivenessDelta += Number(row.effectiveness_delta ?? 0);
-    record.influenceDelta += Number(row.influence_delta ?? 0);
+    record.performanceDelta += Number(row_typed.performance_delta ?? 0);
+    record.effectivenessDelta += Number(row_typed.effectiveness_delta ?? 0);
+    record.influenceDelta += Number(row_typed.influence_delta ?? 0);
 
-    const timestamp = row.calculated_at ? new Date(row.calculated_at).getTime() : Number.NEGATIVE_INFINITY;
+    const timestamp = row_typed.calculated_at ? new Date(row_typed.calculated_at).getTime() : Number.NEGATIVE_INFINITY;
     if (timestamp >= record.lastTimestamp) {
       record.lastTimestamp = timestamp;
-      record.lastContribution = row;
+      record.lastContribution = row_typed;
     }
 
     aggregates.set(tdId, record);
@@ -196,7 +196,12 @@ const loadContributionSummaries = async (
     throw new Error(tdError.message);
   }
 
-  const tdInfoMap = new Map<number, any>((tdRows || []).map((row: unknown) => [row.id, row]));
+  const tdInfoMap = new Map<number, JsonObject>((tdRows || []).map((row: unknown) => {
+    if (typeof row === 'object' && row !== null && 'id' in row) {
+      return [(row as JsonObject & { id: number }).id, row as JsonObject];
+    }
+    return [0, {}];
+  }).filter(([id]) => id !== 0));
 
   return tdIds.map((tdId) => {
     const aggregate = aggregates.get(tdId)!;
