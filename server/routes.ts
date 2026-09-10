@@ -22,14 +22,11 @@ import chatRoutes from "./routes/chatRoutes";
 import electionRoutes from "./routes/electionRoutes";
 import personalizedInsightsRoutes from "./routes/personalizedInsightsRoutes";
 import politicalRoutes from "./routes/political";
-import parliamentaryActivityRoutes from "./routes/parliamentaryActivityRoutes";
 import categoryRankingRoutes from "./routes/categoryRankingRoutes";
 import dashboardRoutes from "./routes/dashboardRoutes";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
-import parliamentaryScoresRoutes from "./routes/parliamentary/scores";
-import enhancedProfilesRoutes from "./routes/parliamentary/enhanced-profiles";
-import constituencyRoutes from "./routes/parliamentary/constituencies";
+import parliamentaryRoutes from "./routes/parliamentary";
 import newsFeedRoutes from "./routes/newsFeedRoutes";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
@@ -52,7 +49,6 @@ import politicianChatRoutes from "./routes/politicianChatRoutes";
 import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
-import votingRoutes from "./routes/parliamentary/votingRoutes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
@@ -108,22 +104,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register dashboard routes for consistent metrics across environments
   app.use("/api", dashboardRoutes);
   
-  // Register parliamentary/TD scoring routes (consolidated - includes trust, performance, questions, unified, ELO)
-  app.use("/api/parliamentary/scores", parliamentaryScoresRoutes);
+  // Register consolidated parliamentary routes
+  // Includes: TD scoring (trust, performance, questions, unified, ELO),
+  // profiles (enhanced TD & party info), activity (questions, attendance),
+  // voting analysis, and constituencies
+  app.use("/api/parliamentary", parliamentaryRoutes);
+
   // Legacy routes for backward compatibility
-  app.use("/api/td-scores", parliamentaryScoresRoutes);
-  app.use("/api/unified-td-scores", parliamentaryScoresRoutes);
-  app.use("/api/trust-scores", parliamentaryScoresRoutes);
-  app.use("/api/performance-scores", parliamentaryScoresRoutes);
-  
-  // Register enhanced parliamentary profiles routes (detailed TD & party info)
-  app.use("/api/parliamentary", enhancedProfilesRoutes);
-  
-  // Register voting analysis routes
-  app.use("/api/parliamentary/voting", votingRoutes);
-  
-  // Register constituency routes (constituency analytics and TD listings by area)
-  app.use("/api/parliamentary", constituencyRoutes);
+  app.use("/api/td-scores", parliamentaryRoutes);
+  app.use("/api/unified-td-scores", parliamentaryRoutes);
+  app.use("/api/trust-scores", parliamentaryRoutes);
+  app.use("/api/performance-scores", parliamentaryRoutes);
+  app.use("/api/parliamentary-activity", parliamentaryRoutes);
+  app.use("/api/policy-votes", parliamentaryRoutes);
   
   // Register ideas routes for community solutions
   app.use("/api/ideas", ideasRoutes);
