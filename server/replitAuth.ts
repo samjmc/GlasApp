@@ -179,11 +179,29 @@ export async function setupAuth(app: Express) {
   });
 }
 
+/**
+ * Middleware to verify user authentication
+ *
+ * Authentication logic:
+ * 1. NODE_ENV=development: Allow dev-user-123 (local testing only)
+ * 2. NODE_ENV=production: Require valid Supabase bearer token
+ * 3. Replit environment: Use existing session-based auth
+ *
+ * This CRITICAL security middleware prevents unauthorized access.
+ * All protected routes must use this middleware.
+ *
+ * @param req - Express request (may contain Authorization bearer token)
+ * @param res - Express response
+ * @param next - Next middleware
+ *
+ * Returns:
+ * - 401 Unauthorized if authentication fails
+ * - 200 with next() if authentication succeeds
+ */
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
-  // In local development (non-Replit), allow all requests for testing
-  if (!isReplitEnvironment) {
-    console.log("🔓 Local dev mode - bypassing authentication");
-    // Mock user for development
+  // GATE 1: Development mode allows dev-user-123 for local testing
+  if (process.env.NODE_ENV === 'development' && !isReplitEnvironment) {
+    console.log("🔓 Local dev mode - dev-user-123 active (development only)");
     req.user = {
       claims: {
         sub: "dev-user-123",
@@ -195,34 +213,57 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
     return next();
   }
 
-  const user = req.user as unknown;
+  // GATE 2: Production requires bearer token validation
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      const { getUserFromRequest } = await import('./auth/supabaseAuth.js');
+      const user = await getUserFromRequest(req);
 
-  if (!req.isAuthenticated() || !user?.claims) {
-    return res.status(401).json({ message: "Unauthorized" });
+      if (!user) {
+        return res.status(401).json({
+          message: "Unauthorized - invalid or missing bearer token"
+        });
+      }
+
+      req.user = user;
+      return next();
+    } catch (error) {
+      console.error("Bearer token validation failed:", error);
+      return res.status(401).json({
+        message: "Unauthorized - token validation error"
+      });
+    }
   }
 
-  const now = Math.floor(Date.now() / 1000);
-  if (user.expires_at && now <= user.expires_at) {
+  // GATE 3: Replit environment uses session-based auth
+  if (isReplitEnvironment) {
+    const user = req.user as unknown;
+
+    if (!req.isAuthenticated() || !user?.claims) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const now = Math.floor(Date.now() / 1000);
+    if (user.expires_at && now > user.expires_at) {
+      const refreshToken = user.refresh_token;
+      if (!refreshToken) {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+
+      try {
+        const config = await getOidcConfig();
+        const tokenResponse = await client.refreshTokenGrant(config, refreshToken);
+        updateUserSession(user, tokenResponse);
+      } catch (error) {
+        console.error("Token refresh failed:", error);
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+    }
+
     return next();
   }
 
-  const refreshToken = user.refresh_token;
-  if (!refreshToken && user.expires_at && now > user.expires_at) {
-    res.status(401).json({ message: "Unauthorized" });
-    return;
-  }
-
-  if (refreshToken) {
-    try {
-      const config = await getOidcConfig();
-      const tokenResponse = await client.refreshTokenGrant(config, refreshToken);
-      updateUserSession(user, tokenResponse);
-    } catch (error) {
-      console.error("Token refresh failed:", error);
-      res.status(401).json({ message: "Unauthorized" });
-      return;
-    }
-  }
-  
-  return next();
+  // DEFAULT: No auth method available - reject
+  console.error("⚠️  No authentication method available (NODE_ENV and REPLIT_DOMAINS not set)");
+  return res.status(401).json({ message: "Unauthorized" });
 };
