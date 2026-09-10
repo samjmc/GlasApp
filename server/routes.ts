@@ -78,7 +78,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/heatmap", geographicRoutes);
   app.use("/api/constituencies", geographicRoutes);
   app.use("/api/location", geographicRoutes);
-  app.use("/api/auth", consolidatedAuthRoutes);
+  app.use("/api/auth", authRoutes);
   app.use("/api/bots", botRoutes);
   app.use("/api/activity", activityRoutes);
   app.use("/api/political-evolution", politicalEvolutionRoutes);
@@ -149,7 +149,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register cache management routes for monitoring and clearing cache
   app.use("/api/cache", cacheRoutes);
   // Account deletion endpoint is now consolidated into auth routes
-  app.use("/api/account", consolidatedAuthRoutes);
+  app.use("/api/account", authRoutes);
 
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news-scraper", newsScraperRoutes);
