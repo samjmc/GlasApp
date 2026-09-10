@@ -362,31 +362,64 @@ export interface AppError extends Error {
 // ============================================================================
 
 /**
- * Paginated API response.
+ * Pagination metadata for API responses
+ */
+export interface PaginationMetadata {
+  limit: number;
+  offset?: number;
+  total?: number;
+  hasMore?: boolean;
+  cursor?: string | null;
+  nextCursor?: string | null;
+}
+
+/**
+ * Paginated API response with new standardized format
  */
 export interface PaginatedResponse<T> {
   data: T[];
-  total: number;
-  limit: number;
-  offset: number;
+  meta: {
+    pagination: PaginationMetadata;
+  };
 }
 
 /**
- * API error response.
+ * Success API response with data
  */
-export interface ApiErrorResponse {
-  error: string;
-  code?: string;
-  details?: string;
+export interface SuccessResponse<T> {
+  success: true;
+  data: T;
+  meta?: Record<string, unknown>;
 }
 
 /**
- * Generic API response wrapper.
+ * Error API response
+ */
+export interface ErrorApiResponse {
+  success: false;
+  error: {
+    message: string;
+    code: string;
+    details?: Record<string, unknown>;
+  };
+}
+
+/**
+ * Generic API response wrapper (legacy, for backwards compatibility)
  */
 export interface ApiResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
+}
+
+/**
+ * API error response (legacy)
+ */
+export interface ApiErrorResponse {
+  error: string;
+  code?: string;
+  details?: string;
 }
 
 // ============================================================================
