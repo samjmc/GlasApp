@@ -170,7 +170,7 @@ export async function optionalAuth(
 /**
  * Sign up a new user
  */
-export async function signUp(email: string, password: string, metadata?: any) {
+export async function signUp(email: string, password: string, metadata?: unknown) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -234,7 +234,7 @@ export async function sendPasswordReset(email: string) {
 /**
  * Update user metadata
  */
-export async function updateUserMetadata(userId: string, metadata: any) {
+export async function updateUserMetadata(userId: string, metadata: unknown) {
   const { data, error } = await supabaseAdmin.auth.admin.updateUserById(
     userId,
     { user_metadata: metadata }
@@ -280,7 +280,7 @@ export type SupabaseUser = Awaited<ReturnType<typeof getUserById>>['user'];
 declare global {
   namespace Express {
     interface Request {
-      user?: any;
+      user?: unknown;
     }
   }
 }

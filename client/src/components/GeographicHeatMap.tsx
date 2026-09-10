@@ -186,7 +186,7 @@ const GeographicHeatMap = ({
                 
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
-                    geographies.map((geo: any) => {
+                    geographies.map((geo: unknown) => {
                       const stateCode = geo.properties.postal;
                       const value = getValueForState(stateCode);
                       
@@ -202,7 +202,7 @@ const GeographicHeatMap = ({
                             hover: { outline: "none", fill: value !== null ? getColor(value) : "#EEE", opacity: 0.8 },
                             pressed: { outline: "none" }
                           }}
-                          onMouseEnter={(evt: any) => {
+                          onMouseEnter={(evt: unknown) => {
                             const stateData = mapData.find((d: MapDataPoint) => d.stateCode === stateCode);
                             if (stateData) {
                               const { state, economicAvg, socialAvg, count } = stateData;

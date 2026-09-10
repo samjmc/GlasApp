@@ -43,7 +43,7 @@ async function extractQuestionsForMissingTDs() {
   console.log('📥 Fetching questions from API...');
   console.log('─'.repeat(70));
 
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   const dateStart = '2024-01-01';
   const limit = 500;
   let skip = 0;
@@ -69,7 +69,7 @@ async function extractQuestionsForMissingTDs() {
       
       await new Promise(resolve => setTimeout(resolve, 50));
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error: ${error.message}`);
       break;
     }
@@ -79,7 +79,7 @@ async function extractQuestionsForMissingTDs() {
 
   // Match to our missing TDs only
   console.log('🔗 Matching questions to TDs needing extraction...');
-  const questionsToInsert: any[] = [];
+  const questionsToInsert: unknown[] = [];
   const tdQuestionCounts = new Map<number, number>();
 
   for (const result of allQuestions) {

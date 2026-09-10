@@ -48,7 +48,7 @@ async function watchProgress() {
         lastCount = count;
       }
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error: ${error.message}`);
     }
 

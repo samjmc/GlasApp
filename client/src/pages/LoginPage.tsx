@@ -45,7 +45,7 @@ const LoginPage = () => {
     setError(null);
     try {
       await signInWithGoogle?.();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || 'Failed to sign in with Google');
       setIsLoading(false);
     }
@@ -70,7 +70,7 @@ const LoginPage = () => {
       } else {
         setError(result?.message || 'Failed to send magic link');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || 'Failed to send magic link');
     } finally {
       setIsLoading(false);
@@ -88,7 +88,7 @@ const LoginPage = () => {
         description: 'Welcome to Glas Politics',
       });
       navigate('/');
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || 'Login failed. Please check your credentials.');
     } finally {
       setIsLoading(false);

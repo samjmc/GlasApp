@@ -127,7 +127,7 @@ async function runTest() {
   console.log(`📅 Source: ${testArticle.source}`);
   console.log(`👥 Politicians: ${politicians.map(p => p.name).join(', ')}`);
   
-  const results: any[] = [];
+  const results: unknown[] = [];
   
   for (const politician of politicians) {
     console.log('\n' + '═'.repeat(70));

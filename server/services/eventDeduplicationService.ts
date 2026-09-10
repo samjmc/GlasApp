@@ -209,7 +209,7 @@ Return as JSON: { "clusters": [...] }
     });
     
     const result = JSON.parse(response.choices[0].message.content || '{"clusters": []}');
-    const clusters: ClusterResult[] = (result.clusters || []).map((c: any) => ({
+    const clusters: ClusterResult[] = (result.clusters || []).map((c: unknown) => ({
       eventName: c.event_name || 'Unknown Event',
       eventDescription: c.event_description || '',
       articles: c.article_ids || [],

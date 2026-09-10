@@ -73,7 +73,7 @@ export class BotService {
     }
   }
 
-  static isBotAccount(user: any): boolean {
+  static isBotAccount(user: unknown): boolean {
     return user?.role === 'bot';
   }
 }

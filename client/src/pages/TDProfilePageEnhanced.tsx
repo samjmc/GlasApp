@@ -190,7 +190,7 @@ export default function TDProfilePageEnhanced() {
       defaultDescription: `Attendance, openness and accessibility`,
     },
   ].map((item) => {
-    const data = (components as any)[item.key] || {};
+    const data = (components as unknown)[item.key] || {};
     const weightPercent = data.weight != null ? Math.round(data.weight * 100) : null;
     const rawScore = data.score != null ? Number(data.score) : null;
     const available = data.available === false ? false : Number.isFinite(rawScore);
@@ -571,7 +571,7 @@ export default function TDProfilePageEnhanced() {
                       Recent Activity
                     </h3>
                     <div className="space-y-2">
-                      {recentVotesData.votes.map((vote: any, idx: number) => (
+                      {recentVotesData.votes.map((vote: unknown, idx: number) => (
                         <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:border-blue-300 transition-colors">
                           <div className="flex justify-between items-start gap-3">
                             <div className="flex-1 min-w-0">
@@ -616,7 +616,7 @@ export default function TDProfilePageEnhanced() {
                       Votes where {politicianName} voted against their party position.
                     </p>
                     <div className="space-y-3">
-                      {rebelVotesData.votes.slice(0, 3).map((vote: any, idx: number) => (
+                      {rebelVotesData.votes.slice(0, 3).map((vote: unknown, idx: number) => (
                         <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded border border-orange-100 dark:border-orange-800/30 shadow-sm">
                           <div className="flex justify-between items-start gap-2">
                             <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
@@ -708,7 +708,7 @@ export default function TDProfilePageEnhanced() {
                 Committee Memberships
               </h2>
               <div className="grid md:grid-cols-2 gap-3">
-                {score.committees.map((committee: any, idx: number) => (
+                {score.committees.map((committee: unknown, idx: number) => (
                   <div key={idx} className="flex items-center gap-2 p-3 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border border-blue-200">
                     <Building2 className="w-4 h-4 text-blue-600" />
                     <span className="text-sm font-medium text-gray-900 dark:text-white">
@@ -783,7 +783,7 @@ export default function TDProfilePageEnhanced() {
 }
 
 // Helper Components
-function PerformanceBar({ label, score, weight, color, description, breakdown, available = true }: any) {
+function PerformanceBar({ label, score, weight, color, description, breakdown, available = true }: unknown) {
   const colorClasses = {
     emerald: 'bg-emerald-500',
     blue: 'bg-blue-500',
@@ -825,7 +825,7 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
       {isAvailable ? (
         Array.isArray(breakdown) && breakdown.length > 0 ? (
           <ul className="mt-2 space-y-1 text-xs text-gray-600 dark:text-gray-400">
-            {breakdown.map((item: any) => (
+            {breakdown.map((item: unknown) => (
               <li key={`${label}-${item.label}`} className="rounded border border-gray-200/70 dark:border-gray-700/70 p-2">
                 <div className="flex items-center justify-between text-gray-700 dark:text-gray-200">
                   <span className="font-medium">{item.label}</span>
@@ -854,7 +854,7 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
   );
 }
 
-function RankCard({ label, rank, total }: any) {
+function RankCard({ label, rank, total }: unknown) {
   return (
     <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
       <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
@@ -868,7 +868,7 @@ function RankCard({ label, rank, total }: any) {
   );
 }
 
-function StatRow({ icon, label, value }: any) {
+function StatRow({ icon, label, value }: unknown) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
@@ -880,7 +880,7 @@ function StatRow({ icon, label, value }: any) {
   );
 }
 
-function InfoCard({ icon, label, value }: any) {
+function InfoCard({ icon, label, value }: unknown) {
   return (
     <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
       {icon}

@@ -56,7 +56,7 @@ interface PollingWidgetProps {
 
 export function PartyPollingWidget({ partyId, partyName, performanceScore }: PollingWidgetProps) {
   const [pollingData, setPollingData] = useState<PartyPollingData | null>(null);
-  const [historicalData, setHistoricalData] = useState<any>(null);
+  const [historicalData, setHistoricalData] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);
   
   // Decode URL-encoded party name

@@ -150,7 +150,7 @@ async function fetchNewVotes(): Promise<{
         console.log('   ⚠️  Reached safety limit');
         break;
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error fetching batch: ${error.message}`);
       break;
     }
@@ -162,7 +162,7 @@ async function fetchNewVotes(): Promise<{
   console.log('🔍 Extracting individual TD votes...');
   let voteRecordsInserted = 0;
   let errors = 0;
-  const votesToInsert: any[] = [];
+  const votesToInsert: unknown[] = [];
 
   for (const division of allDivisions) {
     if (!division.tallies) continue;
@@ -259,7 +259,7 @@ async function fetchNewVotes(): Promise<{
           voteRecordsInserted += batch.length;
           console.log(`   ✅ Batch ${Math.floor(i / batchSize) + 1}: ${voteRecordsInserted.toLocaleString()}/${votesToInsert.length.toLocaleString()}`);
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`   ❌ Batch ${Math.floor(i / batchSize) + 1} failed: ${error.message}`);
         errors += batch.length;
       }
@@ -301,21 +301,21 @@ function calculatePartyLoyalty(
 
   // Count ta votes from party
   if (division.tallies.taVotes?.members) {
-    partyTaCount = division.tallies.taVotes.members.filter((m: any) => 
+    partyTaCount = division.tallies.taVotes.members.filter((m: unknown) => 
       m.member?.party === tdParty
     ).length;
   }
 
   // Count nil votes from party
   if (division.tallies.nilVotes?.members) {
-    partyNilCount = division.tallies.nilVotes.members.filter((m: any) => 
+    partyNilCount = division.tallies.nilVotes.members.filter((m: unknown) => 
       m.member?.party === tdParty
     ).length;
   }
 
   // Count staon votes from party
   if (division.tallies.staonVotes?.members) {
-    partyStaonCount = division.tallies.staonVotes.members.filter((m: any) => 
+    partyStaonCount = division.tallies.staonVotes.members.filter((m: unknown) => 
       m.member?.party === tdParty
     ).length;
   }

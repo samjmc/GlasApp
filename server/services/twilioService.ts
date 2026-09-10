@@ -18,7 +18,7 @@ export interface SMSResponse {
   success: boolean;
   sid?: string;       // Message SID if successful
   message: string;    // Success or error message
-  error?: any;        // Error details if unsuccessful
+  error?: unknown;        // Error details if unsuccessful
 }
 
 /**
@@ -45,7 +45,7 @@ export async function sendSMS(options: SendSMSOptions): Promise<SMSResponse> {
   }
   
   try {
-    const messageOptions: any = {
+    const messageOptions: unknown = {
       to: options.to,
       from: fromNumber,
       body: options.body,

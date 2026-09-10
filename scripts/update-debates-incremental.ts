@@ -59,7 +59,7 @@ async function updateDebatesIncremental() {
 
   // Fetch debates since last update
   console.log('\n📥 Fetching new debates...');
-  const newDebateRecords: any[] = [];
+  const newDebateRecords: unknown[] = [];
   let skip = 0;
   const limit = 50;
 
@@ -93,7 +93,7 @@ async function updateDebatesIncremental() {
 
   // Process debates
   console.log('🔍 Fetching debate details...');
-  const debatesToInsert: any[] = [];
+  const debatesToInsert: unknown[] = [];
   let processed = 0;
 
   for (const debateRecord of newDebateRecords) {
@@ -117,11 +117,11 @@ async function updateDebatesIncremental() {
 
       const speakerMap = new Map<number, Set<string>>();
 
-      fullDebate.debateSections.forEach((section: any) => {
+      fullDebate.debateSections.forEach((section: unknown) => {
         const debateSection = section.debateSection;
         const speakers = debateSection.speakers || [];
         
-        speakers.forEach((speakerObj: any) => {
+        speakers.forEach((speakerObj: unknown) => {
           const speaker = speakerObj.speaker;
           if (!speaker) return;
 

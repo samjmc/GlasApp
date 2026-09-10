@@ -26,7 +26,7 @@ interface TDProfile {
   constituency: string | null;
   party: string | null;
   total_weight: number;
-  [dimension: string]: any;
+  [dimension: string]: unknown;
 }
 
 async function fetchTDMeta(politicianName: string): Promise<{ constituency: string | null; party: string | null }> {

@@ -11,7 +11,7 @@ type SavedViewFilters = {
   chamber?: string | null;
 };
 
-function normalizeFilters(raw: any): SavedViewFilters {
+function normalizeFilters(raw: unknown): SavedViewFilters {
   const filters: SavedViewFilters = {};
 
   if (raw && typeof raw === 'object') {
@@ -43,7 +43,7 @@ function csvEscape(value: string | number | null | undefined): string {
   return `"${escaped}"`;
 }
 
-function buildCsv(rows: any[]): string {
+function buildCsv(rows: unknown[]): string {
   const headers = [
     'TD',
     'Party',
@@ -153,7 +153,7 @@ async function fetchMetricsForExport(filters: SavedViewFilters) {
 
   let rows = data || [];
 
-  const tdIds = rows.map((row: any) => row.td_id);
+  const tdIds = rows.map((row: unknown) => row.td_id);
   let focusMap = new Map<number, any[]>();
 
   if (tdIds.length > 0) {
@@ -175,22 +175,22 @@ async function fetchMetricsForExport(filters: SavedViewFilters) {
     }
   }
 
-  rows = rows.map((row: any) => ({
+  rows = rows.map((row: unknown) => ({
     ...row,
     td_issue_focus: focusMap.get(row.td_id) || []
   }));
 
   if (filters.topic) {
-    rows = rows.filter((row: any) =>
+    rows = rows.filter((row: unknown) =>
       Array.isArray(row.td_issue_focus) &&
-      row.td_issue_focus.some((entry: any) => (entry.topic || '').toLowerCase() === filters.topic!.toLowerCase())
+      row.td_issue_focus.some((entry: unknown) => (entry.topic || '').toLowerCase() === filters.topic!.toLowerCase())
     );
   }
 
   if (filters.chamber) {
-    rows = rows.filter((row: any) => {
+    rows = rows.filter((row: unknown) => {
       const activities = Array.isArray(row.metadata?.chamberActivity) ? row.metadata.chamberActivity : [];
-      return activities.some((activity: any) => {
+      return activities.some((activity: unknown) => {
         const chamber = (activity.chamber || '').toLowerCase();
         return chamber === filters.chamber!.toLowerCase() && (activity.minutes || 0) > 0;
       });
@@ -214,7 +214,7 @@ router.get('/views', async (_req: Request, res: Response) => {
     if (error) throw error;
 
     res.json({ success: true, views: data || [] });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to fetch debate saved views:', error);
     res.status(500).json({ success: false, message: error?.message || 'Failed to load saved views' });
   }
@@ -248,7 +248,7 @@ router.post('/views', async (req: Request, res: Response) => {
     if (error) throw error;
 
     res.status(201).json({ success: true, view: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to create debate saved view:', error);
     res.status(500).json({ success: false, message: error?.message || 'Failed to create saved view' });
   }
@@ -282,7 +282,7 @@ router.patch('/views/:id', async (req: Request, res: Response) => {
     if (error) throw error;
 
     res.json({ success: true, view: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to update debate saved view:', error);
     res.status(500).json({ success: false, message: error?.message || 'Failed to update saved view' });
   }
@@ -304,7 +304,7 @@ router.delete('/views/:id', async (req: Request, res: Response) => {
     if (error) throw error;
 
     res.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to delete debate saved view:', error);
     res.status(500).json({ success: false, message: error?.message || 'Failed to delete saved view' });
   }
@@ -327,7 +327,7 @@ router.get('/exports', async (req: Request, res: Response) => {
     if (error) throw error;
 
     res.json({ success: true, exports: data || [] });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to fetch debate exports:', error);
     res.status(500).json({ success: false, message: error?.message || 'Failed to load exports' });
   }
@@ -417,7 +417,7 @@ router.post('/exports', async (req: Request, res: Response) => {
         csvBase64: Buffer.from(csv, 'utf8').toString('base64')
       }
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to generate debate export:', error);
     res.status(500).json({ success: false, message: error?.message || 'Failed to generate export' });
   }

@@ -117,7 +117,7 @@ export const TopicClassificationService = {
 
       cache.set(key, result);
       return result;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Topic classification error:', error.message || error);
       return null;
     }

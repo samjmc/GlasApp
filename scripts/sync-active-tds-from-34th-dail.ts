@@ -20,7 +20,7 @@ async function syncActiveTDs() {
   const response = await fetch(apiUrl);
   const data = await response.json();
   
-  const current34thDail = data.results.map((r: any) => ({
+  const current34thDail = data.results.map((r: unknown) => ({
     name: r.member.fullName.trim(),
     code: r.member.memberCode,
     uri: r.member.uri

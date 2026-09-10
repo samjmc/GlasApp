@@ -87,7 +87,7 @@ async function extractPoliticianStances() {
   console.log('✅ Extraction complete.');
 }
 
-async function processPolitician(politician: any) {
+async function processPolitician(politician: unknown) {
   // 2. Fetch recent debate chunks using a stratified sampling approach
   // Instead of just the last 60, we want to cover the last 12 months to detect evolution
   
@@ -135,7 +135,7 @@ async function processPolitician(politician: any) {
   const oneMonth = 1000 * 60 * 60 * 24 * 30;
   
   // If history is short (< 3 months), just take all/most recent
-  let chunks: any[] = [];
+  let chunks: unknown[] = [];
   
   if ((maxDate - minDate) < (3 * oneMonth)) {
     const { data } = await supabaseDb!

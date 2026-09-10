@@ -170,7 +170,7 @@ router.patch('/:id', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Function to create analysis prompt for OpenAI
-function createPoliticalEvolutionPrompt(evolutionData: any[]) {
+function createPoliticalEvolutionPrompt(evolutionData: unknown[]) {
   const dataPoints = evolutionData.map((entry, index) => {
     const date = new Date(entry.createdAt).toLocaleDateString();
     return `

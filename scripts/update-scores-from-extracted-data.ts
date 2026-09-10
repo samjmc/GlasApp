@@ -44,8 +44,8 @@ async function updateAllScores() {
         .select('question_type')
         .eq('td_id', td.id);
       
-      const oralQuestions = (questionData || []).filter((q: any) => q.question_type === 'oral').length;
-      const writtenQuestions = (questionData || []).filter((q: any) => q.question_type === 'written').length;
+      const oralQuestions = (questionData || []).filter((q: unknown) => q.question_type === 'oral').length;
+      const writtenQuestions = (questionData || []).filter((q: unknown) => q.question_type === 'written').length;
 
       // Count votes directly from td_votes
       const { count: totalVotes } = await supabase
@@ -121,7 +121,7 @@ async function updateAllScores() {
         }
       }
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       errors++;
       console.error(`   ❌ Error processing ${td.politician_name}: ${error.message}`);
     }

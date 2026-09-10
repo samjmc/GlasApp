@@ -26,7 +26,7 @@ async function fixMissingMemberUris() {
   const response = await fetch(apiUrl);
   const data = await response.json();
   
-  const apiMembers: ApiMember[] = data.results.map((r: any) => ({
+  const apiMembers: ApiMember[] = data.results.map((r: unknown) => ({
     fullName: r.member.fullName,
     memberCode: r.member.memberCode,
     uri: r.member.uri

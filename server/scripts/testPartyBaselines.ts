@@ -18,7 +18,7 @@ async function testPartyBaselines() {
     console.log(`\n📋 Testing: ${td.name} (${td.party})`);
     
     // This will create the profile if it doesn't exist
-    const profile = await (TDIdeologyProfileService as any).ensureTDProfile?.(td.name);
+    const profile = await (TDIdeologyProfileService as unknown).ensureTDProfile?.(td.name);
     
     if (!profile) {
       console.error('❌ Failed to create profile');

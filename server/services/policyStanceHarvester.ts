@@ -189,7 +189,7 @@ async function callLLMForStances(
 
     const parsed = JSON.parse(text);
     return Array.isArray(parsed?.stances) ? parsed.stances : [];
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Policy stance LLM error:', error.message || error);
     return [];
   }
@@ -223,7 +223,7 @@ async function callLLMForDebateStances(
     if (!text) return [];
     const parsed = JSON.parse(text);
     return Array.isArray(parsed?.stances) ? parsed.stances : [];
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Debate stance LLM error:', error.message || error);
     return [];
   }
@@ -263,7 +263,7 @@ async function upsertStances(
           },
           { onConflict: 'article_id,politician_name,policy_topic' },
         );
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Failed to upsert policy stance:', error.message);
     }
   }
@@ -338,7 +338,7 @@ async function fetchRecentDebateSnippets(topic: string): Promise<DebateSnippet[]
     const data = await response.json();
     const records = data?.results ?? [];
     return records
-      .map((result: any) => {
+      .map((result: unknown) => {
         const debate = result?.debate ?? {};
         const speech = debate?.speech ?? {};
         const member = speech?.by ?? {};
@@ -353,7 +353,7 @@ async function fetchRecentDebateSnippets(topic: string): Promise<DebateSnippet[]
       })
       .filter((snippet: DebateSnippet) => snippet.text && snippet.text.length > 120)
       .slice(0, 10);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('⚠️ Failed to fetch debate snippets:', error.message || error);
     return [];
   }

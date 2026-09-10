@@ -130,7 +130,7 @@ router.get('/constituencies/summary', async (req, res) => {
       ...summaryData
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching constituency summary:', error);
     res.status(500).json({
       success: false,
@@ -179,7 +179,7 @@ router.get('/constituencies', async (req, res) => {
       ...constituencyData
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching constituencies:', error);
     res.status(500).json({
       success: false,
@@ -262,7 +262,7 @@ router.get('/constituency/:name', async (req, res) => {
       }
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching constituency:', error);
     res.status(500).json({
       success: false,

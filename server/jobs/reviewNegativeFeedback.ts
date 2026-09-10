@@ -46,7 +46,7 @@ async function reviewNegativeFeedback() {
   console.log('\n✅ Feedback review complete.');
 }
 
-async function analyzeFeedbackItem(item: any) {
+async function analyzeFeedbackItem(item: unknown) {
   try {
     // 2. Ask GPT-4 to diagnose the error
     const diagnosisPrompt = `

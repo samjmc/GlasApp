@@ -48,7 +48,7 @@ export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   
   // Only use database session store if DATABASE_URL is available
-  const sessionConfig: any = {
+  const sessionConfig: unknown = {
     secret: process.env.SESSION_SECRET || 'dev-secret-please-change-in-production',
     resave: false,
     saveUninitialized: false,
@@ -75,7 +75,7 @@ export function getSession() {
 }
 
 function updateUserSession(
-  user: any,
+  user: unknown,
   tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers
 ) {
   user.claims = tokens.claims();
@@ -85,7 +85,7 @@ function updateUserSession(
 }
 
 async function upsertUser(
-  claims: any,
+  claims: unknown,
 ) {
   // For now, we'll skip database upsert and just use session data
   // This can be enhanced later once the schema is properly migrated
@@ -195,7 +195,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
     return next();
   }
 
-  const user = req.user as any;
+  const user = req.user as unknown;
 
   if (!req.isAuthenticated() || !user?.claims) {
     return res.status(401).json({ message: "Unauthorized" });

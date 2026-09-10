@@ -55,14 +55,14 @@ const DEFAULT_BOUNDARIES = {
  * @param geojsonData The original GeoJSON data which may have null geometry 
  * @returns GeoJSON with valid geometry for display on maps
  */
-export function processElectoralBoundaryData(geojsonData: any): any {
+export function processElectoralBoundaryData(geojsonData: unknown): unknown {
   if (!geojsonData || !geojsonData.features || !Array.isArray(geojsonData.features)) {
     console.error('Invalid GeoJSON data provided');
     return DEFAULT_BOUNDARIES;
   }
   
   // Check if the input data has null geometry
-  const hasNullGeometry = geojsonData.features.some((feature: any) => !feature.geometry || feature.geometry === null);
+  const hasNullGeometry = geojsonData.features.some((feature: unknown) => !feature.geometry || feature.geometry === null);
   
   // If geometry is not null, return the original data
   if (!hasNullGeometry) {
@@ -74,11 +74,11 @@ export function processElectoralBoundaryData(geojsonData: any): any {
   // Create a new GeoJSON object with the same structure
   const processedData = {
     type: 'FeatureCollection',
-    features: [] as any[]
+    features: [] as unknown[]
   };
 
   // Populate each constituency with usable information from both files
-  geojsonData.features.forEach((feature: any) => {
+  geojsonData.features.forEach((feature: unknown) => {
     if (feature?.properties) {
       // Get constituency details
       const name = feature.properties.NAME_EN || 
@@ -95,7 +95,7 @@ export function processElectoralBoundaryData(geojsonData: any): any {
       
       // Find a matching predefined boundary if possible
       const matchingConstituency = DEFAULT_BOUNDARIES.features.find(
-        (f: any) => f.properties.CONSTITUENCY === name || f.properties.NAME_EN === name
+        (f: unknown) => f.properties.CONSTITUENCY === name || f.properties.NAME_EN === name
       );
       
       // Create a feature for the constituency

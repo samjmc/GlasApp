@@ -465,7 +465,7 @@ const IrelandElectoralMap = ({
         <Tabs 
           defaultValue="constituencies" 
           className="w-full" 
-          onValueChange={(v) => setActiveTab(v as any)}
+          onValueChange={(v) => setActiveTab(v as unknown)}
           value={activeTab}
         >
           <TabsList className="mb-4">

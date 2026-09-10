@@ -58,7 +58,7 @@ const RegisterStepsPageContent = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [registrationData, setRegistrationData] = useState<any>({});
+  const [registrationData, setRegistrationData] = useState<unknown>({});
   const [tempUserId, setTempUserId] = useState<string | null>(null);
   const { executeRecaptcha } = useGoogleReCaptcha();
 

@@ -57,8 +57,8 @@ router.post('/politician', async (req: Request, res: Response) => {
     // 2. Search for relevant debate chunks using VECTOR SIMILARITY (semantic search)
     console.log(`[Chat] Searching for chunks for politician: "${politicianName}" using vector search`);
     
-    let chunks: any[] = [];
-    let searchError: any = null;
+    let chunks: unknown[] = [];
+    let searchError: unknown = null;
     
     // Convert embedding array to PostgreSQL vector format string
     const embeddingString = `[${questionEmbedding.join(',')}]`;
@@ -80,7 +80,7 @@ router.post('/politician', async (req: Request, res: Response) => {
         searchError = error;
       } else if (data && data.length > 0) {
         chunks = data;
-        console.log(`[Chat] Vector search found ${chunks.length} chunks with similarities: ${chunks.map((c: any) => c.similarity?.toFixed(3)).join(', ')}`);
+        console.log(`[Chat] Vector search found ${chunks.length} chunks with similarities: ${chunks.map((c: unknown) => c.similarity?.toFixed(3)).join(', ')}`);
       }
     } catch (rpcError) {
       console.error('[Chat] Vector search exception:', rpcError);
@@ -119,7 +119,7 @@ router.post('/politician', async (req: Request, res: Response) => {
         const { data, error } = await query;
         
         if (data && data.length > 0) {
-          chunks = data.map((chunk: any) => ({
+          chunks = data.map((chunk: unknown) => ({
             ...chunk,
             similarity: 0.5 // Assign default relevance for keyword matches
           }));
@@ -148,17 +148,17 @@ router.post('/politician', async (req: Request, res: Response) => {
     if (chunks && chunks.length > 0) {
       // Use top chunks, prioritizing higher similarity but accepting lower scores
       // Sort by similarity descending and take best matches
-      const sortedBySimilarity = [...chunks].sort((a: any, b: any) => b.similarity - a.similarity);
+      const sortedBySimilarity = [...chunks].sort((a: unknown, b: unknown) => b.similarity - a.similarity);
       // Take top 8 chunks that have at least 0.35 similarity
       const relevantChunks = sortedBySimilarity
-        .filter((c: any) => c.similarity > 0.35)
+        .filter((c: unknown) => c.similarity > 0.35)
         .slice(0, 8);
       
       if (relevantChunks.length > 0) {
         hasRelevantContent = true;
         
         // --- HYDRATE CHUNKS WITH METADATA FOR CITATION LINKS ---
-        const speechIds = relevantChunks.map((c: any) => c.speech_id).filter(Boolean);
+        const speechIds = relevantChunks.map((c: unknown) => c.speech_id).filter(Boolean);
         console.log('[Chat] Hydration speechIds found:', speechIds.length);
         const urlMap = new Map<string, string>();
         
@@ -180,7 +180,7 @@ router.post('/politician', async (req: Request, res: Response) => {
               .in('id', speechIds);
 
             if (metadata) {
-              metadata.forEach((m: any) => {
+              metadata.forEach((m: unknown) => {
                 const date = m.debate_sections?.debate_days?.date;
                 const sectionIndex = m.debate_sections?.order_index;
                 const speechCode = m.speech_code; 
@@ -199,7 +199,7 @@ router.post('/politician', async (req: Request, res: Response) => {
         // -------------------------------------------------------
         
         // Sort chronologically (oldest first) to show evolution of position
-        const sortedChunks = [...relevantChunks].sort((a: any, b: any) => {
+        const sortedChunks = [...relevantChunks].sort((a: unknown, b: unknown) => {
           const dateA = a.date ? new Date(a.date).getTime() : 0;
           const dateB = b.date ? new Date(b.date).getTime() : 0;
           return dateA - dateB;
@@ -207,8 +207,8 @@ router.post('/politician', async (req: Request, res: Response) => {
         
         // Check if chunks span a significant time period (more than 6 months)
         const dates = sortedChunks
-          .filter((c: any) => c.date)
-          .map((c: any) => new Date(c.date).getTime());
+          .filter((c: unknown) => c.date)
+          .map((c: unknown) => new Date(c.date).getTime());
         
         if (dates.length >= 2) {
           const timeSpanMonths = (Math.max(...dates) - Math.min(...dates)) / (1000 * 60 * 60 * 24 * 30);
@@ -233,7 +233,7 @@ router.post('/politician', async (req: Request, res: Response) => {
       // No relevant chunks found - be explicit about this
       context = 'NO RELEVANT DEBATE RECORDS FOUND FOR THIS TOPIC.';
       console.log(`[Chat] No relevant chunks found for "${politicianName}" on question: "${question}"`);
-      console.log(`[Chat] Raw chunks returned: ${chunks?.length || 0}, Similarities: ${chunks?.map((c: any) => c.similarity?.toFixed(3)).join(', ') || 'none'}`);
+      console.log(`[Chat] Raw chunks returned: ${chunks?.length || 0}, Similarities: ${chunks?.map((c: unknown) => c.similarity?.toFixed(3)).join(', ') || 'none'}`);
     } else {
       console.log(`[Chat] Found ${citations.length} relevant chunks for "${politicianName}"`);
     }
@@ -249,14 +249,14 @@ router.post('/politician', async (req: Request, res: Response) => {
       
       // Group by topic
       const byTopic: Record<string, any[]> = {};
-      policyPositions.forEach((p: any) => {
+      policyPositions.forEach((p: unknown) => {
         if (!byTopic[p.topic]) byTopic[p.topic] = [];
         byTopic[p.topic].push(p);
       });
       
       for (const [topic, positions] of Object.entries(byTopic)) {
         structuredMemoryContext += `TOPIC: ${topic}\n`;
-        (positions as any[]).forEach(p => {
+        (positions as unknown[]).forEach(p => {
           structuredMemoryContext += `- ${p.position_summary} (Strength: ${p.strength}, Trend: ${p.trend})\n`;
         });
         structuredMemoryContext += '\n';
@@ -527,11 +527,11 @@ router.get('/politician/:name/consistency', async (req: Request, res: Response) 
     }
 
     // Process positions into consistency scores
-    const topicScores: any[] = [];
+    const topicScores: unknown[] = [];
     let totalConsistency = 0;
     let scoredTopics = 0;
 
-    (positions || []).forEach((pos: any) => {
+    (positions || []).forEach((pos: unknown) => {
       let baseScore = 0.5; // Default
       let positionChanges = 0;
 
@@ -583,9 +583,9 @@ router.get('/politician/:name/consistency', async (req: Request, res: Response) 
 
     // Get recent "changes" (hardening/softening/reversal)
     const recentChanges = (positions || [])
-      .filter((p: any) => ['hardening', 'softening', 'reversal'].includes(p.trend))
+      .filter((p: unknown) => ['hardening', 'softening', 'reversal'].includes(p.trend))
       .slice(0, 5)
-      .map((p: any) => ({
+      .map((p: unknown) => ({
         topic: p.topic,
         stance: p.position_summary,
         previous_stance: p.trend === 'reversal' ? 'Contradictory position' : (p.trend === 'hardening' ? 'Less strict' : 'Stricter'),

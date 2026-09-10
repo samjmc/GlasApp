@@ -65,7 +65,7 @@ async function bulkExtractVotes() {
   console.log('🗳️  Step 2: Fetching ALL votes from Oireachtas API...');
   console.log('This may take several minutes...\n');
 
-  const allVotes: any[] = [];
+  const allVotes: unknown[] = [];
   const dateFrom = '2024-01-01';
   const dateTo = new Date().toISOString().split('T')[0];
   let skip = 0;
@@ -109,7 +109,7 @@ async function bulkExtractVotes() {
 
       await new Promise(resolve => setTimeout(resolve, 500));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error fetching batch: ${error.message}`);
       break;
     }
@@ -162,7 +162,7 @@ async function bulkExtractVotes() {
         totalVoteRecords++;
 
         // Calculate party loyalty
-        const votedWithParty = calculatePartyLoyalty(division, td.party, voteType.type as any);
+        const votedWithParty = calculatePartyLoyalty(division, td.party, voteType.type as unknown);
 
         // Insert vote record
         const voteData = {
@@ -198,7 +198,7 @@ async function bulkExtractVotes() {
               console.error(`   ❌ Insert error: ${insertError.message}`);
             }
           }
-        } catch (error: any) {
+        } catch (error: unknown) {
           errors++;
         }
       }
@@ -224,8 +224,8 @@ async function bulkExtractVotes() {
   const { data: stats } = await supabase.from('td_votes').select('*');
 
   if (stats) {
-    const partyLoyalVotes = stats.filter((v: any) => v.voted_with_party === true).length;
-    const crossPartyVotes = stats.filter((v: any) => v.voted_with_party === false).length;
+    const partyLoyalVotes = stats.filter((v: unknown) => v.voted_with_party === true).length;
+    const crossPartyVotes = stats.filter((v: unknown) => v.voted_with_party === false).length;
     const avgLoyalty = stats.length > 0 ? ((partyLoyalVotes / stats.length) * 100).toFixed(1) : 0;
 
     console.log('\n📈 VOTING STATISTICS:');
@@ -239,7 +239,7 @@ async function bulkExtractVotes() {
 }
 
 // Helper: Calculate if TD voted with their party
-function calculatePartyLoyalty(division: any, tdParty: string, tdVote: 'ta' | 'nil' | 'staon'): boolean {
+function calculatePartyLoyalty(division: unknown, tdParty: string, tdVote: 'ta' | 'nil' | 'staon'): boolean {
   // Count how party members voted
   let partyTaCount = 0;
   let partyNilCount = 0;
@@ -247,21 +247,21 @@ function calculatePartyLoyalty(division: any, tdParty: string, tdVote: 'ta' | 'n
 
   // Count ta votes from party
   if (division.tallies?.taVotes?.members) {
-    partyTaCount = division.tallies.taVotes.members.filter((m: any) => 
+    partyTaCount = division.tallies.taVotes.members.filter((m: unknown) => 
       m.member?.party?.includes(tdParty) || m.member?.showAs?.includes(tdParty)
     ).length;
   }
 
   // Count nil votes from party
   if (division.tallies?.nilVotes?.members) {
-    partyNilCount = division.tallies.nilVotes.members.filter((m: any) => 
+    partyNilCount = division.tallies.nilVotes.members.filter((m: unknown) => 
       m.member?.party?.includes(tdParty) || m.member?.showAs?.includes(tdParty)
     ).length;
   }
 
   // Count staon votes from party
   if (division.tallies?.staonVotes?.members) {
-    partyStaonCount = division.tallies.staonVotes.members.filter((m: any) => 
+    partyStaonCount = division.tallies.staonVotes.members.filter((m: unknown) => 
       m.member?.party?.includes(tdParty) || m.member?.showAs?.includes(tdParty)
     ).length;
   }

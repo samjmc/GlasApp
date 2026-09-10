@@ -4,7 +4,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle, AlertCircle, User } from 'lucide-react';
 
 interface AuthStatusIndicatorProps {
-  user: any;
+  user: unknown;
   loading: boolean;
 }
 

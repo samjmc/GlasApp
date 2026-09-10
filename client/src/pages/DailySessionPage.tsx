@@ -520,7 +520,7 @@ export default function DailySessionPage() {
             });
           }
           break;
-        } catch (mutationError: any) {
+        } catch (mutationError: unknown) {
           const message = mutationError?.message || "";
           const shouldRetry =
             attempt === 0 && message.toLowerCase().includes("failed to fetch");
@@ -541,7 +541,7 @@ export default function DailySessionPage() {
       // For multiple choice, use a neutral celebration (or map option to rating)
       const celebrationRating = currentItem.answerOptions ? 3 : pendingRating;
       setCelebration(getCelebrationPayload(celebrationRating ?? 3, currentItem));
-    } catch (error: any) {
+    } catch (error: unknown) {
       setIsAdvancing(false);
       toast({
         variant: "destructive",
@@ -587,7 +587,7 @@ export default function DailySessionPage() {
         setLocalVotesCompleted(Math.min(finalCount, totalItems));
         playCompletionSound();
         setStep("payoff");
-      } catch (error: any) {
+      } catch (error: unknown) {
         toast({
           variant: "destructive",
           title: "Something broke",
@@ -698,7 +698,7 @@ export default function DailySessionPage() {
         title: "Session skipped",
         description: "Marked as completed (dev mode).",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         variant: "destructive",
         title: "Skip failed",

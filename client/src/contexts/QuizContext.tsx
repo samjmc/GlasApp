@@ -116,7 +116,7 @@ export const QuizProvider = ({ children }: QuizProviderProps) => {
         const { questions } = require('@shared/data');
         
         // Find the question
-        const questionObj = questions.find((q: any) => q.id === question);
+        const questionObj = questions.find((q: unknown) => q.id === question);
         if (questionObj && questionObj.answers[answerIndex]) {
           economicTotal += questionObj.answers[answerIndex].economic;
           socialTotal += questionObj.answers[answerIndex].social;

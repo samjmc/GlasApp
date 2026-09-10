@@ -54,7 +54,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
   
   // Listen for regenerate-analysis events - but check if it's only for analysis
   useEffect(() => {
-    const handleRegenerate = (event: any) => {
+    const handleRegenerate = (event: unknown) => {
       console.log("PartyMatchResults: Received regenerate event", event.detail);
       
       // Check if this is only for analysis components

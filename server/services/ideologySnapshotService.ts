@@ -68,7 +68,7 @@ export const IdeologySnapshotService = {
       } else {
         console.log(`✅ Created ideology snapshot for user ${userId.substring(0, 8)}...`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Snapshot creation failed for user ${userId}:`, error.message);
     }
   },
@@ -109,7 +109,7 @@ export const IdeologySnapshotService = {
       try {
         await this.createSnapshot(profile.user_id);
         created++;
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`Error creating snapshot for user ${profile.user_id}:`, error.message);
         errors++;
       }
@@ -128,7 +128,7 @@ export const IdeologySnapshotService = {
     options: {
       dimension?: string;
       magnitude?: number;
-      metadata?: any;
+      metadata?: unknown;
       label?: string;
       icon?: string;
       eventDate?: Date;
@@ -158,7 +158,7 @@ export const IdeologySnapshotService = {
       } else {
         console.log(`✅ Logged ${eventType} event for user ${userId.substring(0, 8)}...`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Event logging failed for user ${userId}:`, error.message);
     }
   },
@@ -205,7 +205,7 @@ export const IdeologySnapshotService = {
           });
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error detecting major shifts for user ${userId}:`, error.message);
     }
   },
@@ -245,7 +245,7 @@ export const IdeologySnapshotService = {
           icon: '📊',
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error checking milestones for user ${userId}:`, error.message);
     }
   },
@@ -253,7 +253,7 @@ export const IdeologySnapshotService = {
   /**
    * Get user's snapshots for time-series
    */
-  async getSnapshots(userId: string, fromDate?: Date, toDate?: Date): Promise<any[]> {
+  async getSnapshots(userId: string, fromDate?: Date, toDate?: Date): Promise<unknown[]> {
     if (!supabaseDb) return [];
 
     try {
@@ -279,7 +279,7 @@ export const IdeologySnapshotService = {
       }
 
       return data || [];
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Snapshot fetch failed for user ${userId}:`, error.message);
       return [];
     }
@@ -288,7 +288,7 @@ export const IdeologySnapshotService = {
   /**
    * Get user's ideology events for annotations
    */
-  async getEvents(userId: string, fromDate?: Date, toDate?: Date): Promise<any[]> {
+  async getEvents(userId: string, fromDate?: Date, toDate?: Date): Promise<unknown[]> {
     if (!supabaseDb) return [];
 
     try {
@@ -314,7 +314,7 @@ export const IdeologySnapshotService = {
       }
 
       return data || [];
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Event fetch failed for user ${userId}:`, error.message);
       return [];
     }

@@ -216,7 +216,7 @@ export class PersonalRankingsService {
           return;
         }
 
-        const activeScores = (tdScoreRows || []).filter((row: any) => {
+        const activeScores = (tdScoreRows || []).filter((row: unknown) => {
           if (!row?.politician_name) return false;
           if (row.is_active === false) return false;
           return true;
@@ -232,7 +232,7 @@ export class PersonalRankingsService {
         }
 
         const ideologyMap = new Map<string, any>();
-        ideologyRows?.forEach((row: any) => {
+        ideologyRows?.forEach((row: unknown) => {
           if (row?.politician_name) {
             ideologyMap.set(row.politician_name.toLowerCase(), row);
           }
@@ -673,7 +673,7 @@ export class PersonalRankingsService {
       return { usersUpdated: 0, errors: 1 };
     }
 
-    quizUsers?.forEach((row: any) => {
+    quizUsers?.forEach((row: unknown) => {
       if (row?.user_id) userIds.add(row.user_id);
     });
 
@@ -682,7 +682,7 @@ export class PersonalRankingsService {
       .select('user_id');
 
     if (!rankingError) {
-      rankingUsers?.forEach((row: any) => {
+      rankingUsers?.forEach((row: unknown) => {
         if (row?.user_id) userIds.add(row.user_id);
       });
     } else {
@@ -703,7 +703,7 @@ export class PersonalRankingsService {
           // Yield briefly to avoid hammering Supabase
           await new Promise(resolve => setTimeout(resolve, 100));
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         errors += 1;
         console.error(`Error recalculating rankings for user ${userId}:`, error.message ?? error);
       }
@@ -789,14 +789,14 @@ export class PersonalRankingsService {
     }
 
     const dimensionFields: Partial<Record<IdeologyDimension, number>> = {
-      economic: Number((data as any).economic_dimension),
-      social: Number((data as any).social_dimension),
-      cultural: Number((data as any).cultural_dimension),
-      globalism: Number((data as any).globalism_dimension),
-      environmental: Number((data as any).environmental_dimension),
-      authority: Number((data as any).authority_dimension),
-      welfare: Number((data as any).welfare_dimension),
-      technocratic: Number((data as any).technocratic_dimension),
+      economic: Number((data as unknown).economic_dimension),
+      social: Number((data as unknown).social_dimension),
+      cultural: Number((data as unknown).cultural_dimension),
+      globalism: Number((data as unknown).globalism_dimension),
+      environmental: Number((data as unknown).environmental_dimension),
+      authority: Number((data as unknown).authority_dimension),
+      welfare: Number((data as unknown).welfare_dimension),
+      technocratic: Number((data as unknown).technocratic_dimension),
     };
 
     const hasEnhancedDimensions = IDEOLOGY_DIMENSIONS.some((dimension) => {
@@ -851,7 +851,7 @@ export class PersonalRankingsService {
     vector.environmental = convertQuizAnswerToIdeology(Number(data.environment));
 
     const welfareInputs = [data.healthcare, data.housing]
-      .map((value: any) => (typeof value === 'number' ? value : Number(value)))
+      .map((value: unknown) => (typeof value === 'number' ? value : Number(value)))
       .filter((value) => Number.isFinite(value));
     if (welfareInputs.length) {
       const average = welfareInputs.reduce((sum, value) => sum + Number(value), 0) / welfareInputs.length;
@@ -886,7 +886,7 @@ export class PersonalRankingsService {
   static async getPersonalRankings(
     userId: string,
     limit: number = 173
-  ): Promise<any[]> {
+  ): Promise<unknown[]> {
     if (!supabaseDb) return [];
     const hasEnhanced = await this.hasCompletedEnhancedQuiz(userId);
     if (!hasEnhanced) {
@@ -915,7 +915,7 @@ export class PersonalRankingsService {
     const enrichedRankings = [];
     for (const ranking of rankings) {
       const key = ranking.politician_name?.toLowerCase?.();
-      let tdData: any = null;
+      let tdData: unknown = null;
 
       if (key && this.tdCache.has(key)) {
         const cached = this.tdCache.get(key)!;

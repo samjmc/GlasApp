@@ -17,7 +17,7 @@ export class AppError extends Error {
 }
 
 export class ValidationError extends AppError {
-  constructor(message: string, public details?: any) {
+  constructor(message: string, public details?: unknown) {
     super(400, message, 'VALIDATION_ERROR');
     this.details = details;
   }
@@ -48,14 +48,14 @@ export class ConflictError extends AppError {
 }
 
 export class DatabaseError extends AppError {
-  constructor(message: string, public originalError?: any) {
+  constructor(message: string, public originalError?: unknown) {
     super(500, message, 'DATABASE_ERROR');
     this.originalError = originalError;
   }
 }
 
 export class ExternalServiceError extends AppError {
-  constructor(service: string, message: string, public originalError?: any) {
+  constructor(service: string, message: string, public originalError?: unknown) {
     super(503, `${service} service error: ${message}`, 'EXTERNAL_SERVICE_ERROR');
     this.originalError = originalError;
   }

@@ -352,9 +352,9 @@ interface DebateFetchParams {
   limit: number;
 }
 
-async function fetchDebateRecords(params: DebateFetchParams): Promise<any[]> {
+async function fetchDebateRecords(params: DebateFetchParams): Promise<unknown[]> {
   const { startDate, endDate, chamber, limit } = params;
-  const records: any[] = [];
+  const records: unknown[] = [];
   let skip = 0;
 
   while (true) {
@@ -374,7 +374,7 @@ async function fetchDebateRecords(params: DebateFetchParams): Promise<any[]> {
     });
 
     const headCount = response.data?.head?.counts?.debateCount ?? 0;
-    const results: any[] = response.data?.results ?? [];
+    const results: unknown[] = response.data?.results ?? [];
 
     records.push(...results);
     skip += results.length;
@@ -609,9 +609,9 @@ function buildReferences($: CheerioAPI): References {
   return { persons, roles };
 }
 
-function buildSectionMetaMap(record: any): Map<string, SectionMetadata> {
+function buildSectionMetaMap(record: unknown): Map<string, SectionMetadata> {
   const map = new Map<string, SectionMetadata>();
-  const sections: any[] = record?.debateRecord?.debateSections ?? [];
+  const sections: unknown[] = record?.debateRecord?.debateSections ?? [];
 
   for (const item of sections) {
     const section = item?.debateSection;
@@ -732,7 +732,7 @@ function isValidDate(value: string): boolean {
   return Number.isFinite(timestamp);
 }
 
-function buildSlug(record: any, index: number): string {
+function buildSlug(record: unknown, index: number): string {
   const date = record?.debateRecord?.date ?? record?.contextDate ?? 'unknown-date';
   const houseCode = record?.debateRecord?.house?.houseCode ?? 'unknown';
   const type = record?.debateRecord?.debateType ?? 'debate';
@@ -787,7 +787,7 @@ interface FlattenedSection {
   speechCount: number;
   wordCount: number;
   orderIndex: number;
-  metadata: any;
+  metadata: unknown;
   original: SectionRecord;
   isNew: boolean;
 }
@@ -913,7 +913,7 @@ async function persistDebateDayToSupabase(
     }
   }
 
-  const speechRows: any[] = [];
+  const speechRows: unknown[] = [];
   for (const section of flatSections) {
     const sectionSpeeches = section.original.speeches;
     if (!sectionSpeeches?.length) continue;
@@ -1114,7 +1114,7 @@ function flattenSections(sections: SectionRecord[], context: FlattenContext): Fl
   return flatSections;
 }
 
-function buildSectionMetadata(section: SectionRecord, parentSectionCode: string | null): any {
+function buildSectionMetadata(section: SectionRecord, parentSectionCode: string | null): unknown {
   return {
     question: section.question
       ? {

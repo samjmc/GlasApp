@@ -175,7 +175,7 @@ const ConstituencyMap: React.FC<ConstituencyMapProps> = ({
                 const partyData = constituencyData[name]?.parties || [];
                 
                 // Filter out parties with no data (0% or undefined percent)
-                const filteredPartyData = partyData.filter((party: any) => 
+                const filteredPartyData = partyData.filter((party: unknown) => 
                   party.percent !== undefined && party.percent > 0
                 );
                 

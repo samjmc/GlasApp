@@ -147,7 +147,7 @@ export default function MyPoliticsPage() {
   const [rankings, setRankings] = useState<PersonalRanking[]>([]);
   const [visibleRankingsCount, setVisibleRankingsCount] = useState(5);
   const [isLoading, setIsLoading] = useState(true);
-  const [topMatches, setTopMatches] = useState<any[]>([]);
+  const [topMatches, setTopMatches] = useState<unknown[]>([]);
   const [partyMatches, setPartyMatches] = useState<PartyMatch[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'rankings' | 'network'>('overview');
   const [friendSummary, setFriendSummary] = useState<FriendSummary | null>(null);
@@ -203,7 +203,7 @@ export default function MyPoliticsPage() {
       setFriendLeaderboard(data.leaderboard ?? []);
       setFriendStreaks(data.streaks ?? []);
       setPendingInvites(data.pendingInvites ?? []);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error loading friend insights:', error);
       setFriendsError(error?.message || 'Unable to load friend insights right now.');
       resetFriendsState();
@@ -345,7 +345,7 @@ export default function MyPoliticsPage() {
 
   useEffect(() => {
     const listener = async (event: Event) => {
-      const custom = event as CustomEvent<any>;
+      const custom = event as CustomEvent<unknown>;
       const detail = custom.detail;
       if (!detail) return;
 
@@ -441,7 +441,7 @@ export default function MyPoliticsPage() {
         setQuizStatusMessage('Rankings are taking longer than expected. You can refresh the page in a moment to check again.');
         setQuizError(null);
         return false;
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Error polling for ranking data:', error);
         setIsProcessingQuiz(false);
         setQuizError('An error occurred while calculating your matches. Please try refreshing the page.');

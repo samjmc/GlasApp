@@ -37,7 +37,7 @@ async function getEnhancedMemberDetails(memberCode: string) {
     const member = members[0].member;
     
     // Find current Dáil membership
-    const dailMembership = member.memberships?.find((m: any) =>
+    const dailMembership = member.memberships?.find((m: unknown) =>
       m.membership.house?.houseCode === 'dail' &&
       m.membership.house?.houseNo === '34' &&
       !m.membership.dateRange?.end
@@ -50,8 +50,8 @@ async function getEnhancedMemberDetails(memberCode: string) {
 
     // Build membership history
     const membershipHistory = (member.memberships || [])
-      .filter((m: any) => m.membership.house?.houseCode === 'dail')
-      .map((m: any) => ({
+      .filter((m: unknown) => m.membership.house?.houseCode === 'dail')
+      .map((m: unknown) => ({
         houseNo: m.membership.house?.houseNo,
         party: m.membership.parties?.[0]?.party?.showAs,
         constituency: m.membership.represents?.[0]?.represent?.showAs,
@@ -62,8 +62,8 @@ async function getEnhancedMemberDetails(memberCode: string) {
 
     // Find first elected date
     const firstElected = membershipHistory
-      .filter((h: any) => h.startDate)
-      .sort((a: any, b: any) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())[0]?.startDate;
+      .filter((h: unknown) => h.startDate)
+      .sort((a: unknown, b: unknown) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())[0]?.startDate;
 
     return {
       gender: member.gender || null,
@@ -78,7 +78,7 @@ async function getEnhancedMemberDetails(memberCode: string) {
       firstElectedDate: firstElected || null
     };
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`Failed to get enhanced details for ${memberCode}:`, error.message);
     return null;
   }
@@ -186,7 +186,7 @@ async function populateEnhancedData() {
       // Rate limiting
       await new Promise(resolve => setTimeout(resolve, 500));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error: ${error.message}`);
       errors++;
     }

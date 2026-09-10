@@ -11,7 +11,7 @@ import { Info } from 'lucide-react';
 import { PartyQuickInfoModal } from './PartyQuickInfoModal';
 
 interface PartyCompactRowProps {
-  party: any;
+  party: unknown;
   variant: 'emerald' | 'blue' | 'purple';
   onInfoClick: (partyName: string, e: React.MouseEvent) => void;
 }
@@ -137,9 +137,9 @@ export function PartyRankingsWidget() {
   }
 
   const parties = data?.parties || [];
-  const governmentParties = parties.filter((p: any) => p.government_status === 'coalition');
-  const oppositionParties = parties.filter((p: any) => p.government_status !== 'coalition');
-  const topParties = [...parties].sort((a: any, b: any) => (b.overall_score || 0) - (a.overall_score || 0)).slice(0, 5);
+  const governmentParties = parties.filter((p: unknown) => p.government_status === 'coalition');
+  const oppositionParties = parties.filter((p: unknown) => p.government_status !== 'coalition');
+  const topParties = [...parties].sort((a: unknown, b: unknown) => (b.overall_score || 0) - (a.overall_score || 0)).slice(0, 5);
 
   return (
     <Card className="p-6 border bg-white dark:bg-gray-900 shadow-sm">
@@ -151,7 +151,7 @@ export function PartyRankingsWidget() {
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Top Performers</h3>
           </div>
           <div className="space-y-0.5">
-            {topParties.map((party: any) => (
+            {topParties.map((party: unknown) => (
               <PartyCompactRow 
                 key={party.name} 
                 party={party} 
@@ -168,7 +168,7 @@ export function PartyRankingsWidget() {
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Government</h3>
           </div>
           <div className="space-y-0.5">
-            {governmentParties.map((party: any) => (
+            {governmentParties.map((party: unknown) => (
               <PartyCompactRow 
                 key={party.name} 
                 party={party} 
@@ -185,7 +185,7 @@ export function PartyRankingsWidget() {
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Opposition</h3>
           </div>
           <div className="space-y-0.5">
-            {oppositionParties.map((party: any) => (
+            {oppositionParties.map((party: unknown) => (
               <PartyCompactRow 
                 key={party.name} 
                 party={party} 

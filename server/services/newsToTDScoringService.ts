@@ -312,7 +312,7 @@ export async function processUnprocessedArticles(
  * Process a single article using multi-agent scoring team
  */
 async function processArticleWithMultiAgent(
-  article: any,
+  article: unknown,
   importance: { score: number; politiciansMentioned: string[]; topicCategory: string; isPrimarySubject: boolean; reasoning: string },
   stats: ProcessingStats
 ): Promise<void> {
@@ -363,7 +363,7 @@ async function processArticleWithMultiAgent(
  * Process a single TD mention using multi-agent scoring
  */
 async function processTDWithMultiAgent(
-  article: any,
+  article: unknown,
   tdMention: { name: string; party: string; constituency: string; confidence: number },
   importance: { score: number; topicCategory: string },
   stats: ProcessingStats
@@ -497,7 +497,7 @@ async function markArticleProcessed(
   scoreApplied: boolean
 ): Promise<void> {
   
-  const updateData: any = {
+  const updateData: unknown = {
     processed: true,
     score_applied: scoreApplied,
     importance_score: importance.score,

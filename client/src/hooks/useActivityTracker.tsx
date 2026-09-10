@@ -14,7 +14,7 @@ interface ActivityMetadata {
     longitude: number;
     county?: string;
   };
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export function useActivityTracker() {
@@ -76,7 +76,7 @@ export function useActivityTracker() {
     });
   };
 
-  const trackMapInteraction = (interactionType: 'zoom' | 'pan' | 'click', location?: any) => {
+  const trackMapInteraction = (interactionType: 'zoom' | 'pan' | 'click', location?: unknown) => {
     trackActivity('map_interaction', {
       category: 'geographic_exploration',
       interactionType,

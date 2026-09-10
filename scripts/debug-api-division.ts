@@ -21,7 +21,7 @@ async function debugDivision() {
   const results = response.data.results;
   console.log(`Fetched ${results.length} results.`);
 
-  results.forEach((r: any, i: number) => {
+  results.forEach((r: unknown, i: number) => {
       const subject = r.division.subject;
       if (!subject) {
           console.log(`[${i}] No subject`);

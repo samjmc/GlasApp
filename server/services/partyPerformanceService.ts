@@ -136,7 +136,7 @@ async function upsertPartyScoreAverages(aggregates: PartyScoreAverages[]): Promi
       console.log(
         `   ✅ ${aggregate.partyName}: updated news impact score (TDs: ${aggregate.tdCount}, overall: ${aggregate.avgOverall})`
       );
-    } catch (error: any) {
+    } catch (error: unknown) {
       stats.errors += 1;
       stats.details.push({
         party: aggregate.partyName,
@@ -168,7 +168,7 @@ export const PartyPerformanceService = {
       }
 
       return await upsertPartyScoreAverages(aggregates);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('   ❌ Unable to update party scores:', error.message ?? error);
       return {
         partiesUpdated: 0,

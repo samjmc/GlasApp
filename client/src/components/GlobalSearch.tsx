@@ -25,7 +25,7 @@ type ResultType = "td" | "party" | "constituency";
 
 interface FlattenedResult {
   type: ResultType;
-  entity: any;
+  entity: unknown;
 }
 
 export function GlobalSearch() {
@@ -109,7 +109,7 @@ export function GlobalSearch() {
         .sort((a, b) => b.score - a.score)
         .map(({ item }) => item);
 
-    const tds = sortByScore(searchData.tds, (td: any) => {
+    const tds = sortByScore(searchData.tds, (td: unknown) => {
       return (
         scoreText(td.name) * 4 +
         scoreText(td.party) * 2 +
@@ -119,12 +119,12 @@ export function GlobalSearch() {
 
     const parties = sortByScore(
       searchData.parties,
-      (party: any) => scoreText(party.name) * 3
+      (party: unknown) => scoreText(party.name) * 3
     ).slice(0, 5);
 
     const constituencies = sortByScore(
       searchData.constituencies,
-      (constituency: any) =>
+      (constituency: unknown) =>
         scoreText(constituency.name) * 3 + scoreText(constituency.county)
     ).slice(0, 5);
 
@@ -356,7 +356,7 @@ export function GlobalSearch() {
                   <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     TDs ({filteredResults.tds.length})
                   </div>
-                  {filteredResults.tds.map((td: any, index) => (
+                  {filteredResults.tds.map((td: unknown, index) => (
                     <button
                       key={td.id ?? `${td.name}-${index}`}
                       onClick={() =>
@@ -392,7 +392,7 @@ export function GlobalSearch() {
                   <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     Parties ({filteredResults.parties.length})
                   </div>
-                  {filteredResults.parties.map((party: any, index) => (
+                  {filteredResults.parties.map((party: unknown, index) => (
                     <button
                       key={party.name ?? index}
                       onClick={() =>
@@ -428,7 +428,7 @@ export function GlobalSearch() {
                     Constituencies ({filteredResults.constituencies.length})
                   </div>
                   {filteredResults.constituencies.map(
-                    (constituency: any, index) => (
+                    (constituency: unknown, index) => (
                       <button
                         key={constituency.name ?? index}
                         onClick={() =>

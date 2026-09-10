@@ -123,7 +123,7 @@ export async function regeneratePolicyQuestions(
 
         // Rate limiting - 2 seconds between requests
         await new Promise((resolve) => setTimeout(resolve, 2000));
-      } catch (error: any) {
+      } catch (error: unknown) {
         errorCount++;
         console.error(`   ❌ Error: ${error.message}`);
       }
@@ -137,7 +137,7 @@ export async function regeneratePolicyQuestions(
     console.log(`   Errors: ${errorCount}`);
     console.log('==========================================\n');
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Regeneration failed:', error.message);
   }
 }
@@ -211,7 +211,7 @@ export async function validateExistingQuestions(
       console.log(`   npm run policy-votes:regenerate -- --batch ${Math.min(invalidQuestions.length, 20)}`);
     }
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Validation failed:', error.message);
   }
 }

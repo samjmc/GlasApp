@@ -60,7 +60,7 @@ async function extractAll() {
     console.log('🌐 Refresh your browser to see the data on TD profiles!');
     console.log('');
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('\n❌ EXTRACTION FAILED:', error.message);
     console.error('Check the logs above to see which step failed');
     process.exit(1);

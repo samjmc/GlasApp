@@ -1963,7 +1963,7 @@ export class DailySessionService {
       } else {
         for (const article of articleRows || []) {
           articleUrlMap.set(article.id, article.url ?? null);
-          articleImageMap.set(article.id, (article as any).image_url ?? null);
+          articleImageMap.set(article.id, (article as unknown).image_url ?? null);
         }
       }
     }
@@ -1975,7 +1975,7 @@ export class DailySessionService {
     let fallbackIndex = 0;
     for (const item of items || []) {
       const userVote = (item.votes || []).find(
-        (vote: any) => vote.user_id === userId
+        (vote: unknown) => vote.user_id === userId
       );
       const opportunity = voteOpportunityMeta.get(item.article_id);
       const sliderVote = sliderVoteMap.get(item.article_id) ?? null;
@@ -2070,7 +2070,7 @@ export class DailySessionService {
 
     const votesCompleted = formattedItems.filter((item) => item.hasVoted).length;
     const votedItems = (items || []).filter((item) =>
-      (item.votes || []).some((vote: any) => vote.user_id === userId)
+      (item.votes || []).some((vote: unknown) => vote.user_id === userId)
     );
     const voteEntries = votedItems.map((item) => {
       const resolvedDimension =
@@ -2079,7 +2079,7 @@ export class DailySessionService {
       return {
         policyDimension: resolvedDimension,
         delta:
-          (item.votes || []).find((vote: any) => vote.user_id === userId)
+          (item.votes || []).find((vote: unknown) => vote.user_id === userId)
             ?.impact_score ?? 0,
       };
     });
@@ -2312,7 +2312,7 @@ export class DailySessionService {
     const appliedDelta = ideologyResult?.delta ?? intendedDelta;
 
     // Build vote payload - only include selected_option if optionKey is provided
-    const votePayload: any = {
+    const votePayload: unknown = {
       session_item_id: sessionItemId,
       user_id: userId,
       rating: finalRating,
@@ -2523,7 +2523,7 @@ export class DailySessionService {
     let syncedCount = 0;
 
     for (const item of items) {
-      const vote = (item.votes as any[])?.[0];
+      const vote = (item.votes as unknown[])?.[0];
       if (!vote) continue;
 
       const policyVoteId = item.policy_vote_id;
@@ -2760,7 +2760,7 @@ export class DailySessionService {
           resolvePolicyDimensionFromValues([item.policy_dimension]),
         direction: item.policy_direction,
         votes: (item.votes || []).filter(
-          (vote: any) => vote.user_id === userId
+          (vote: unknown) => vote.user_id === userId
         ),
       }))
       .filter((item) => item.votes.length > 0);

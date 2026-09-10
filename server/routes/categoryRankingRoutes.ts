@@ -100,7 +100,7 @@ router.get('/weighted-performance/:partyId?', async (req, res) => {
       });
     }
 
-    let result: any = {
+    let result: unknown = {
       categoryWeights,
       totalVotes: avgRanks.reduce((sum, cat) => sum + cat.voteCount, 0)
     };

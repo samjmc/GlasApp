@@ -12,7 +12,7 @@ async function checkUnchunked() {
   const { data, error } = await supabase.rpc('get_unchunked_speeches', { limit_count: 5 });
   console.log('Unchunked speeches returned:', data?.length || 0);
   if (data) {
-    data.forEach((s: any) => {
+    data.forEach((s: unknown) => {
       const paras = s.paragraphs;
       const paraCount = Array.isArray(paras) ? paras.length : 'N/A';
       console.log(`- ${s.speaker_name}: ${paraCount} paragraphs`);

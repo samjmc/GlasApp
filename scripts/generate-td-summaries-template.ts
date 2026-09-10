@@ -28,7 +28,7 @@ interface TDData {
   questions_asked: number;
   attendance_percentage: number;
   first_elected_date: string | null;
-  offices: any[];
+  offices: unknown[];
   is_minister: boolean;
   ministerial_role: string | null;
   bills_sponsored: number;

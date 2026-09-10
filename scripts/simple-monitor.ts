@@ -63,7 +63,7 @@ async function monitor() {
 
       lastCounts = counts;
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error: ${error.message}`);
     }
 

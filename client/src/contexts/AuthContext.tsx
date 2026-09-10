@@ -165,7 +165,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const message =
           result?.message ||
           (Array.isArray(result?.errors) && result.errors.length > 0
-            ? result.errors.map((err: any) => err?.error || '').filter(Boolean).join('; ')
+            ? result.errors.map((err: unknown) => err?.error || '').filter(Boolean).join('; ')
             : null) ||
           'Failed to delete account. Please try again.';
         throw new Error(message);

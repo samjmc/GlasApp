@@ -29,7 +29,7 @@ const router = express.Router();
 // ============================================
 
 // Load constituency boundary data (cached in memory)
-let constituencyBoundaries: any = null;
+let constituencyBoundaries: unknown = null;
 
 function loadConstituencyBoundaries() {
   if (!constituencyBoundaries) {

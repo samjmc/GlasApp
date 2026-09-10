@@ -34,7 +34,7 @@ interface QaAudit {
 interface Agent {
     name: string;
     role: string;
-    icon: any;
+    icon: unknown;
     status: "active" | "idle" | "deploying";
 }
 

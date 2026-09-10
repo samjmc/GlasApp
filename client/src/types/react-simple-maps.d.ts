@@ -2,7 +2,7 @@ declare module 'react-simple-maps' {
   import React from 'react';
   
   export interface GeographyProps {
-    geography: any;
+    geography: unknown;
     fill?: string;
     stroke?: string;
     strokeWidth?: number;
@@ -24,7 +24,7 @@ declare module 'react-simple-maps' {
   
   export interface ComposableMapProps {
     projection?: string;
-    projectionConfig?: any;
+    projectionConfig?: unknown;
     width?: number;
     height?: number;
     style?: React.CSSProperties;
@@ -33,7 +33,7 @@ declare module 'react-simple-maps' {
 
   export interface GeographiesProps {
     geography: string | object;
-    children: (props: { geographies: Array<any> }) => React.ReactNode;
+    children: (props: { geographies: Array<unknown> }) => React.ReactNode;
   }
 
   export interface MarkerProps {

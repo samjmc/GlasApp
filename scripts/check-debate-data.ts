@@ -55,7 +55,7 @@ async function checkDebateData() {
     .select('id, speaker_name, paragraphs, recorded_time')
     .limit(5000);
   
-  let immigrationSpeeches: any[] = [];
+  let immigrationSpeeches: unknown[] = [];
   if (allSpeeches) {
     for (const s of allSpeeches) {
       const text = JSON.stringify(s.paragraphs || []).toLowerCase();

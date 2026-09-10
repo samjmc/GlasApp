@@ -40,7 +40,7 @@ export default function PartyProfilePage() {
         throw new Error('Failed to load party data');
       }
       const data = await res.json();
-      const party = data.parties?.find((p: any) => 
+      const party = data.parties?.find((p: unknown) => 
         p.name.toLowerCase() === (name || '').toLowerCase()
       );
       if (!party) throw new Error('PARTY_NOT_FOUND');
@@ -501,7 +501,7 @@ function PartyTDsList({ partyName }: { partyName: string }) {
       console.log(`[PartyTDsList] Filtering for party: "${partyName}"`);
       console.log(`[PartyTDsList] Total TDs fetched: ${allData.scores?.length || 0}`);
       
-      const partyTDs = (allData.scores || []).filter((td: any) => {
+      const partyTDs = (allData.scores || []).filter((td: unknown) => {
         const matches = td.party?.toLowerCase().trim() === partyName.toLowerCase().trim();
         if (matches) {
           console.log(`[PartyTDsList] ✓ Match: ${td.politician_name} (${td.party})`);
@@ -526,7 +526,7 @@ function PartyTDsList({ partyName }: { partyName: string }) {
 
   return (
     <div className="space-y-2">
-      {tds.map((td: any) => (
+      {tds.map((td: unknown) => (
         <Link key={td.politician_name} href={`/td/${encodeURIComponent(td.politician_name)}`}>
           <div className="group p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all cursor-pointer">
             <div className="flex items-center justify-between">

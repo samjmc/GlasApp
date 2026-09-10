@@ -2,7 +2,7 @@
 export const getEnvVar = (key: string): string => {
   // For client-side use
   if (typeof window !== 'undefined') {
-    return (window as any).__ENV__?.[key] || '';
+    return (window as unknown).__ENV__?.[key] || '';
   }
   return '';
 };

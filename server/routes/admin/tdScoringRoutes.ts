@@ -42,7 +42,7 @@ router.post('/triage', async (req, res, next) => {
       stats
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Triage job failed:', error);
     next(error);
   }
@@ -77,7 +77,7 @@ router.post('/run', async (req, res, next) => {
       stats
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ TD scoring job failed:', error);
     next(error);
   }
@@ -103,7 +103,7 @@ router.get('/status', async (req, res, next) => {
       }
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Status check failed:', error);
     next(error);
   }
@@ -145,7 +145,7 @@ router.post('/full-pipeline', async (req, res, next) => {
       scoring: scoringStats
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Full pipeline failed:', error);
     next(error);
   }

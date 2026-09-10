@@ -71,7 +71,7 @@ const PoliticalEvolutionChart = ({ onTakeQuiz }: PoliticalEvolutionChartProps) =
     );
   }
   
-  if (error || !evolutionData || (evolutionData as any[]).length === 0) {
+  if (error || !evolutionData || (evolutionData as unknown[]).length === 0) {
     return (
       <Card>
         <CardHeader>

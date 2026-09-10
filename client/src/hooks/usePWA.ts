@@ -17,12 +17,12 @@ interface PWAHook {
 export function usePWA(): PWAHook {
   const [isInstalled, setIsInstalled] = useState(false);
   const [canInstall, setCanInstall] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<unknown>(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   // Check if running as standalone PWA
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
-                       (window.navigator as any).standalone === true;
+                       (window.navigator as unknown).standalone === true;
 
   // Get display mode
   const getDisplayMode = (): string => {
@@ -39,7 +39,7 @@ export function usePWA(): PWAHook {
     setIsInstalled(isStandalone);
 
     // Listen for install prompt
-    const handleBeforeInstallPrompt = (e: any) => {
+    const handleBeforeInstallPrompt = (e: unknown) => {
       e.preventDefault();
       setDeferredPrompt(e);
       setCanInstall(true);

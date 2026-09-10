@@ -138,7 +138,7 @@ const SimpleElectoralMap: React.FC<SimpleElectoralMapProps> = ({ height = 600 })
           defaultValue="constituencies" 
           className="w-full" 
           onValueChange={(v) => {
-            setActiveTab(v as any);
+            setActiveTab(v as unknown);
             setSelectedProvince(null);
             setSearchQuery('');
           }}

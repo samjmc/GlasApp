@@ -45,7 +45,7 @@ export function regionMiddleware(req: Request, _res: Response, next: NextFunctio
   req.regionCode = resolvedRegion;
 
   // Expose region metadata for downstream handlers if needed
-  (req as any).regionConfig = REGION_CONFIGS[resolvedRegion];
+  (req as unknown).regionConfig = REGION_CONFIGS[resolvedRegion];
 
   next();
 }

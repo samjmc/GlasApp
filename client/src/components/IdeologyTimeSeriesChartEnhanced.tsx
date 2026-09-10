@@ -121,7 +121,7 @@ export default function IdeologyTimeSeriesChartEnhanced({
       setEvents(data.events || []);
       setComparison(data.comparison || null);
       setUsingSnapshots(data.usingSnapshots || false);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error loading ideology timeline:', err);
       setError(err.message || 'Failed to load chart data');
     } finally {
@@ -234,7 +234,7 @@ export default function IdeologyTimeSeriesChartEnhanced({
 
   // Add comparison data to timeline for rendering
   const chartData = timeline.map(point => {
-    const data: any = { ...point };
+    const data: unknown = { ...point };
     if (comparison) {
       Object.keys(comparison.data).forEach(dim => {
         data[`${dim}_comparison`] = comparison.data[dim];
@@ -453,7 +453,7 @@ export default function IdeologyTimeSeriesChartEnhanced({
                     <p className="font-semibold text-sm mb-2 text-gray-900 dark:text-white">
                       {data.dateLabel}
                     </p>
-                    {payload.map((entry: any) => {
+                    {payload.map((entry: unknown) => {
                       if (entry.dataKey.includes('_comparison')) return null;
                       return (
                         <p key={entry.dataKey} className="text-xs" style={{ color: entry.color }}>

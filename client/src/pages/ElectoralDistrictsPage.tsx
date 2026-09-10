@@ -9,14 +9,14 @@ import 'leaflet/dist/leaflet.css';
 
 // We need to use dynamic import for Leaflet since it requires window object
 // which doesn't exist during server-side rendering
-let L: any;
+let L: unknown;
 
 const ElectoralDistrictsPage: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<any>(null);
+  const mapInstanceRef = useRef<unknown>(null);
   const [selectedConstituency, setSelectedConstituency] = useState<string | null>(null);
   const [isMapInitialized, setIsMapInitialized] = useState(false);
-  const electoralGroup = useRef<any>(null);
+  const electoralGroup = useRef<unknown>(null);
 
   useEffect(() => {
     const initializeLeaflet = async () => {
@@ -58,9 +58,9 @@ const ElectoralDistrictsPage: React.FC = () => {
           };
           
           // Add electoral constituency boundaries
-          L.geoJSON(electoralConstituencies as any, {
+          L.geoJSON(electoralConstituencies as unknown, {
             style: () => electoralStyle,
-            onEachFeature: (feature: any, layer: any) => {
+            onEachFeature: (feature: unknown, layer: unknown) => {
               const constituencyName = feature?.properties?.CONSTITUENCY || '';
               const seats = feature?.properties?.SEATS || '?';
               
@@ -69,7 +69,7 @@ const ElectoralDistrictsPage: React.FC = () => {
               
               // Add hover effect
               layer.on({
-                mouseover: (e: any) => {
+                mouseover: (e: unknown) => {
                   const targetLayer = e.target;
                   targetLayer.setStyle({
                     weight: 3,
@@ -77,11 +77,11 @@ const ElectoralDistrictsPage: React.FC = () => {
                   });
                   targetLayer.bringToFront();
                 },
-                mouseout: (e: any) => {
+                mouseout: (e: unknown) => {
                   const targetLayer = e.target;
                   targetLayer.setStyle(electoralStyle);
                 },
-                click: (e: any) => {
+                click: (e: unknown) => {
                   map.fitBounds(e.target.getBounds());
                   setSelectedConstituency(constituencyName);
                 }

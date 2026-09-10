@@ -11,7 +11,7 @@ import { Link } from 'wouter';
 import { TDQuickInfoModal } from './TDQuickInfoModal';
 
 interface TDCompactRowProps {
-  td: any;
+  td: unknown;
   variant: 'emerald' | 'blue' | 'red';
   showChange?: boolean;
   onInfoClick: (id: number, e: React.MouseEvent) => void;
@@ -145,7 +145,7 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=top" className="text-xs text-emerald-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.top_performers || []).slice(0, 5).map((td: any) => (
+            {(data?.top_performers || []).slice(0, 5).map((td: unknown) => (
               <TDCompactRow 
                 key={td.id} 
                 td={td} 
@@ -163,7 +163,7 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=movers" className="text-xs text-blue-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.biggest_movers || []).slice(0, 5).map((td: any) => (
+            {(data?.biggest_movers || []).slice(0, 5).map((td: unknown) => (
               <TDCompactRow 
                 key={td.id} 
                 td={td} 
@@ -182,7 +182,7 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=bottom" className="text-xs text-red-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.bottom_performers || []).slice(0, 5).map((td: any) => (
+            {(data?.bottom_performers || []).slice(0, 5).map((td: unknown) => (
               <TDCompactRow 
                 key={td.id} 
                 td={td} 

@@ -98,7 +98,7 @@ router.post('/', async (req: Request, res: Response) => {
     const { message, history = [], userContext } = body;
     
     // Format conversation history for OpenAI API
-    let formattedHistory: any[] = history.map((msg: any) => {
+    let formattedHistory: unknown[] = history.map((msg: unknown) => {
         // Handle basic messages
         if (msg.role === 'user' || msg.role === 'system') {
             return { role: msg.role, content: msg.content };
@@ -170,8 +170,8 @@ router.post('/', async (req: Request, res: Response) => {
     // First call to OpenAI with tools enabled
     const completion = await client.chat.completions.create({
       model: MODEL,
-      messages: messages as any,
-      tools: chatToolsDefinition as any,
+      messages: messages as unknown,
+      tools: chatToolsDefinition as unknown,
       tool_choice: "auto", 
       max_tokens: 800,
       temperature: 0.7
@@ -183,7 +183,7 @@ router.post('/', async (req: Request, res: Response) => {
     // Check if the model wants to call a tool
     if (responseMessage.tool_calls) {
       // Add the assistant's "thought" (tool call request) to the history
-      messages.push(responseMessage as any);
+      messages.push(responseMessage as unknown);
 
       // Execute each tool call
       for (const toolCall of responseMessage.tool_calls) {
@@ -215,8 +215,8 @@ router.post('/', async (req: Request, res: Response) => {
       // Second call to OpenAI with the tool results
       const secondResponse = await client.chat.completions.create({
         model: MODEL,
-        messages: messages as any,
-        tools: chatToolsDefinition as any,
+        messages: messages as unknown,
+        tools: chatToolsDefinition as unknown,
         tool_choice: "auto", 
       });
 

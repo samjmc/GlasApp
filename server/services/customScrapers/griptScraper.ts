@@ -54,7 +54,7 @@ export async function scrapeGriptLatestArticles(): Promise<ScrapedArticle[]> {
     // Extract articles using browser JavaScript
     console.log('  🔍 Extracting articles...');
     const articles = await page.evaluate(() => {
-      const items: any[] = [];
+      const items: unknown[] = [];
       
       // Find all links that look like article links
       const links = document.querySelectorAll('a[href]');
@@ -146,7 +146,7 @@ export async function scrapeGriptLatestArticles(): Promise<ScrapedArticle[]> {
     
     return uniqueArticles;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('  ❌ Failed to scrape Gript Media:', error.message);
     return [];
   } finally {
@@ -216,7 +216,7 @@ export async function scrapeGriptArticleContent(url: string): Promise<string> {
     
     return cleaned;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`  ❌ Failed to scrape Gript article content: ${error.message}`);
     return '';
   } finally {

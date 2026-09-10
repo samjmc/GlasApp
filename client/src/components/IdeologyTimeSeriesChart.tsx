@@ -65,7 +65,7 @@ export default function IdeologyTimeSeriesChart({ userId, weeks = 12 }: Ideology
         }
 
         setTimeline(data.timeline || []);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error('Error loading ideology timeline:', err);
         setError(err.message || 'Failed to load chart data');
       } finally {
@@ -176,7 +176,7 @@ export default function IdeologyTimeSeriesChart({ userId, weeks = 12 }: Ideology
                     <p className="font-semibold text-sm mb-2 text-gray-900 dark:text-white">
                       {data.weekLabel}
                     </p>
-                    {payload.map((entry: any) => (
+                    {payload.map((entry: unknown) => (
                       <p key={entry.dataKey} className="text-xs" style={{ color: entry.color }}>
                         {DIMENSION_LABELS[entry.dataKey as keyof typeof DIMENSION_LABELS]}:{' '}
                         <span className="font-semibold">{entry.value.toFixed(1)}</span>

@@ -25,7 +25,7 @@ async function testVectorSearch() {
   console.log('Error:', error?.message || 'none');
   console.log('Results:', data?.length || 0);
   if (data) {
-    data.forEach((d: any) => {
+    data.forEach((d: unknown) => {
       console.log(`- ${d.politician_name} (sim: ${d.similarity?.toFixed(3)}): ${d.chunk_content?.substring(0, 60)}...`);
     });
   }

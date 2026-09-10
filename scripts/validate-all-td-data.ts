@@ -30,7 +30,7 @@ async function validateAllTDData() {
   const apiResponse = await fetch(apiUrl);
   const apiData = await apiResponse.json();
   
-  const api34thDail = apiData.results.map((r: any) => ({
+  const api34thDail = apiData.results.map((r: unknown) => ({
     name: r.member.fullName,
     code: r.member.memberCode
   }));
@@ -179,7 +179,7 @@ async function validateAllTDData() {
     const byType = groupBy(critical, 'issue_type');
     for (const [type, typeIssues] of Object.entries(byType)) {
       console.log(`\n${type} (${typeIssues.length}):`);
-      typeIssues.forEach((issue: any) => {
+      typeIssues.forEach((issue: unknown) => {
         console.log(`   - ${issue.td_name}: ${issue.details}`);
       });
     }
@@ -231,15 +231,15 @@ async function validateAllTDData() {
   console.log('\n');
 }
 
-function inApi34thDail(td: any, apiMembers: any[]): boolean {
+function inApi34thDail(td: unknown, apiMembers: unknown[]): boolean {
   return apiMembers.some(api => 
     api.code === td.member_code ||
     api.name.toLowerCase() === td.politician_name.toLowerCase()
   );
 }
 
-function groupBy(array: any[], key: string) {
-  return array.reduce((result: any, item: any) => {
+function groupBy(array: unknown[], key: string) {
+  return array.reduce((result: unknown, item: unknown) => {
     const group = item[key];
     if (!result[group]) result[group] = [];
     result[group].push(item);

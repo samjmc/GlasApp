@@ -361,7 +361,7 @@ router.get('/performance/:partyId', async (req, res, next) => {
     const formattedMetrics: PartyPerformanceMetrics = {
       partyId: partyId,
       partyName: party?.name || 'Unknown Party',
-      governmentStatus: performanceScore?.governmentStatus as any || 'opposition',
+      governmentStatus: performanceScore?.governmentStatus as unknown || 'opposition',
       overallPerformanceScore: parseFloat(performanceScore?.overallScore || '50'),
       overallTrustworthinessScore: parseFloat(trustworthinessScore?.overallScore || '50'),
       pledgeFulfillmentScore: parseFloat(performanceScore?.pledgeFulfillmentScore || '50'),
@@ -433,7 +433,7 @@ router.get('/weighted-performance/:partyId', async (req, res, next) => {
     };
 
     // Group pledges by category and calculate weighted average
-    const categoryPerformance: any = {};
+    const categoryPerformance: unknown = {};
     let totalWeightedScore = 0;
     let totalWeight = 0;
 
@@ -449,11 +449,11 @@ router.get('/weighted-performance/:partyId', async (req, res, next) => {
 
     // Calculate weighted performance
     for (const [category, data] of Object.entries(categoryPerformance)) {
-      const categoryData = data as any;
+      const categoryData = data as unknown;
       const categoryWeight = categoryData.categoryWeight;
       
       // Calculate average performance for this category
-      const categoryAverage = categoryData.pledges.reduce((sum: number, pledge: any) => {
+      const categoryAverage = categoryData.pledges.reduce((sum: number, pledge: unknown) => {
         return sum + parseFloat(pledge.score);
       }, 0) / categoryData.pledges.length;
       
@@ -519,7 +519,7 @@ router.post('/category-votes', isAuthenticated, async (req, res, next) => {
     const { votes } = req.body;
     
     // Validate that weights sum to 100
-    const totalWeight = votes.reduce((sum: number, vote: any) => sum + parseFloat(vote.weight), 0);
+    const totalWeight = votes.reduce((sum: number, vote: unknown) => sum + parseFloat(vote.weight), 0);
     if (Math.abs(totalWeight - 100) > 0.01) {
       return res.status(400).json({ 
         success: false, 

@@ -146,7 +146,7 @@ const D3IrelandMap: React.FC<D3IrelandMapProps> = ({
       .enter()
       .append("path")
       .attr("class", "constituency")
-      .attr("d", path as any)
+      .attr("d", path as unknown)
       .attr("fill", (d) => {
         // Get constituency name
         const name = d.properties.name;
@@ -196,7 +196,7 @@ const D3IrelandMap: React.FC<D3IrelandMapProps> = ({
       .attr("class", "constituency-label")
       .attr("transform", function(d) {
         // Get centroid of constituency
-        const centroid = path.centroid(d as any);
+        const centroid = path.centroid(d as unknown);
         return `translate(${centroid[0]}, ${centroid[1]})`;
       })
       .attr("text-anchor", "middle")

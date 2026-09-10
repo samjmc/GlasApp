@@ -39,7 +39,7 @@ export interface VotingFilters {
 }
 
 // Helper to enrich votes with plain English descriptions
-async function enrichVotesWithDescriptions(votes: any[]): Promise<VoteRecord[]> {
+async function enrichVotesWithDescriptions(votes: unknown[]): Promise<VoteRecord[]> {
   if (!votes || votes.length === 0) return [];
   
   const uniqueSubjects = [...new Set(votes.map(v => v.vote_subject))];
@@ -52,7 +52,7 @@ async function enrichVotesWithDescriptions(votes: any[]): Promise<VoteRecord[]> 
       .in('vote_subject', uniqueSubjects);
       
     if (descriptions) {
-      descriptions.forEach((d: any) => {
+      descriptions.forEach((d: unknown) => {
         if (d.description) descriptionsMap[d.vote_subject] = d.description;
       });
     }
@@ -126,7 +126,7 @@ export async function getVotingRecord(
         });
 
         if (!matchError && matches && matches.length > 0) {
-          const subjects = matches.map((m: any) => m.vote_subject);
+          const subjects = matches.map((m: unknown) => m.vote_subject);
           console.log(`✅ Semantic search found ${subjects.length} matches for '${topicOrKeyword}'`);
           query = query.in('vote_subject', subjects);
           semanticMatchesFound = true;

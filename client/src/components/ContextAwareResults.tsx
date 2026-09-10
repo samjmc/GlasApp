@@ -122,7 +122,7 @@ const ContextAwareResults: React.FC<ContextAwareResultsProps> = ({ dimensions, u
   // Add event listener for regenerate-analysis event to allow parent components
   // to trigger regeneration only when explicitly requested
   useEffect(() => {
-    const handleRegenerate = (event: any) => {
+    const handleRegenerate = (event: unknown) => {
       console.log("ContextAwareResults: Received regenerate event", event.detail);
       regenerateAnalysis();
     };

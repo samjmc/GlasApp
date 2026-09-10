@@ -52,7 +52,7 @@ function showUpdateNotification() {
 }
 
 // Install Prompt Management
-let deferredPrompt: any = null;
+let deferredPrompt: unknown = null;
 
 export function setupInstallPrompt() {
   window.addEventListener('beforeinstallprompt', (e) => {
@@ -161,7 +161,7 @@ function trackInstallation() {
 // Check if running as installed PWA
 export function isInstalledPWA(): boolean {
   return window.matchMedia('(display-mode: standalone)').matches ||
-         (window.navigator as any).standalone === true || // iOS
+         (window.navigator as unknown).standalone === true || // iOS
          document.referrer.includes('android-app://');
 }
 

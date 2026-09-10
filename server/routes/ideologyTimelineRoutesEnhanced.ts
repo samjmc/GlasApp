@@ -68,7 +68,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
     // Try to use snapshots first (accurate), fallback to interpolation
     const snapshots = await IdeologySnapshotService.getSnapshots(userId, from, to);
     
-    let timeline: any[] = [];
+    let timeline: unknown[] = [];
 
     if (snapshots.length > 0) {
       // Use snapshots for accurate data
@@ -178,7 +178,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
         .gt('total_weight', 0);
 
       if (allProfiles && allProfiles.length > 0) {
-        const averages: any = {};
+        const averages: unknown = {};
         IDEOLOGY_DIMENSIONS.forEach(dim => {
           const values = allProfiles.map(p => Number(p[dim]) || 0);
           averages[dim] = values.reduce((sum, val) => sum + val, 0) / values.length;
@@ -214,7 +214,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       usingSnapshots: snapshots.length > 0,
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Ideology timeline error:', error);
     res.status(500).json({
       success: false,
@@ -224,7 +224,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
 });
 
 // Helper functions
-function extractDimensions(data: any, type: 'quiz' | 'profile'): any {
+function extractDimensions(data: unknown, type: 'quiz' | 'profile'): unknown {
   if (type === 'quiz') {
     return {
       economic: Number(data.economic_score) || 0,
@@ -250,18 +250,18 @@ function extractDimensions(data: any, type: 'quiz' | 'profile'): any {
   }
 }
 
-function interpolateDimensions(baseline: any, current: any, progress: number): any {
-  const result: any = {};
+function interpolateDimensions(baseline: unknown, current: unknown, progress: number): unknown {
+  const result: unknown = {};
   IDEOLOGY_DIMENSIONS.forEach(dim => {
     result[dim] = baseline[dim] + (current[dim] - baseline[dim]) * progress;
   });
   return result;
 }
 
-function groupByWeek(sessions: any[]): Map<string, Date> {
+function groupByWeek(sessions: unknown[]): Map<string, Date> {
   const weekMap = new Map<string, Date>();
   
-  sessions.forEach((session: any) => {
+  sessions.forEach((session: unknown) => {
     const sessionDate = new Date(session.completed_at);
     const weekKey = getWeekKey(sessionDate);
     
@@ -288,7 +288,7 @@ function daysSince(date: Date): number {
   return (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
 }
 
-function exportToCSV(timeline: any[]): string {
+function exportToCSV(timeline: unknown[]): string {
   if (timeline.length === 0) return '';
 
   // Header

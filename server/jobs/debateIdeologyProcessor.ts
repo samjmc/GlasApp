@@ -74,7 +74,7 @@ async function fetchNewDebates(lookbackDays: number = 14): Promise<{
     console.log(`   Speeches saved: ${result.speechesSaved}`);
 
     return result;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`\n❌ Error fetching debates: ${error.message}`);
     throw error;
   }
@@ -101,7 +101,7 @@ async function runDebateIdeologyProcessor() {
     console.log('📥 Step 1: Fetching new debates...\n');
     try {
       fetchStats = await fetchNewDebates(lookbackDays);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`\n⚠️  Warning: Failed to fetch debates: ${error.message}`);
       console.log('   Continuing with existing debates in database...\n');
     }
@@ -164,7 +164,7 @@ async function runDebateIdeologyProcessor() {
     }
     console.log('\n' + '═'.repeat(70));
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Error in debate ideology processor:', error.message);
     throw error;
   }

@@ -92,7 +92,7 @@ async function main() {
       Analyze these debate excerpts for politician ${td.politician_name} regarding "${topic}".
       
       Excerpts:
-      ${chunks.map((c: any, i: number) => `[${i}] "${c.chunk_content.substring(0, 300)}..."`).join('\n')}
+      ${chunks.map((c: unknown, i: number) => `[${i}] "${c.chunk_content.substring(0, 300)}..."`).join('\n')}
       
       Task:
       1. Summarize their policy position on ${topic} in 2-3 clear sentences. Be substantive (mention specific bills/actions if present).

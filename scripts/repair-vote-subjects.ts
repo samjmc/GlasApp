@@ -78,7 +78,7 @@ async function repairVoteSubjects() {
                 batchFixed++;
             }
             await new Promise(r => setTimeout(r, 50)); // Faster rate limit
-        } catch (err: any) {
+        } catch (err: unknown) {
              console.error(`   ❌ Error: ${err.message}`);
              batchErrors++;
         }

@@ -51,7 +51,7 @@ export async function scrapeDitchLatestArticles(): Promise<ScrapedArticle[]> {
     // Extract articles
     console.log('  🔍 Extracting articles...');
     const articles = await page.evaluate(() => {
-      const items: any[] = [];
+      const items: unknown[] = [];
       const seen = new Set<string>();
       
       // Ghost CMS uses article cards with h2 headings
@@ -155,7 +155,7 @@ export async function scrapeDitchLatestArticles(): Promise<ScrapedArticle[]> {
     
     return uniqueArticles;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('  ❌ Failed to scrape The Ditch:', error.message);
     return [];
   } finally {
@@ -236,7 +236,7 @@ export async function scrapeDitchArticleContent(url: string): Promise<string> {
     
     return cleaned;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`  ❌ Failed to scrape Ditch article content: ${error.message}`);
     return '';
   } finally {

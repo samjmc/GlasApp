@@ -140,7 +140,7 @@ async function extractAllTDQuestions() {
       // Rate limiting - pause between TDs
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error processing ${member.fullName}: ${error.message}`);
       totalErrors++;
     }

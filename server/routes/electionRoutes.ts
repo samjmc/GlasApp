@@ -70,7 +70,7 @@ router.get('/:electionId/results', async (req: Request, res: Response, next) => 
           .orderBy(constituencies.name, desc(electionResults.seats), desc(electionResults.percentage));
         
         // Group results by constituency
-        const resultsByConstituency: any = {};
+        const resultsByConstituency: unknown = {};
         
         results.forEach(result => {
           if (!resultsByConstituency[result.constituencyName]) {

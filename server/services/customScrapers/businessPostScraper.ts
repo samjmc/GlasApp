@@ -53,7 +53,7 @@ export async function scrapeBusinessPostLatestArticles(): Promise<ScrapedArticle
     // Extract articles
     console.log('  🔍 Extracting articles...');
     const articles = await page.evaluate(() => {
-      const items: any[] = [];
+      const items: unknown[] = [];
       const seen = new Set<string>();
       
       // Find all article cards
@@ -147,7 +147,7 @@ export async function scrapeBusinessPostLatestArticles(): Promise<ScrapedArticle
     
     return uniqueArticles;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('  ❌ Failed to scrape Business Post:', error.message);
     return [];
   } finally {
@@ -235,7 +235,7 @@ export async function scrapeBusinessPostArticleContent(url: string): Promise<str
     
     return cleaned;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`  ❌ Failed to scrape Business Post article content: ${error.message}`);
     return '';
   } finally {

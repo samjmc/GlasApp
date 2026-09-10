@@ -22,7 +22,7 @@ interface OfficialElectoralMapProps {
   width?: string;
   height?: string;
   activeLayer?: MapLayer;
-  constituenciesData?: any[];
+  constituenciesData?: unknown[];
 }
 
 const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
@@ -72,13 +72,13 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
       
       if (constituency.tds && constituency.tds.length > 0) {
         // Calculate from actual TDs list - most accurate
-        constituency.tds.forEach((td: any) => {
+        constituency.tds.forEach((td: unknown) => {
           const party = td.party || 'Unknown';
           partyCounts.set(party, (partyCounts.get(party) || 0) + 1);
         });
       } else if (constituency.parties && constituency.parties.length > 0) {
         // Fallback to parties array if TDs list not available
-        constituency.parties.forEach((p: any) => {
+        constituency.parties.forEach((p: unknown) => {
           partyCounts.set(p.party, p.count);
         });
       }
@@ -229,12 +229,12 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         const partyCounts = new Map<string, number>();
         
         if (constituency.tds && constituency.tds.length > 0) {
-          constituency.tds.forEach((td: any) => {
+          constituency.tds.forEach((td: unknown) => {
             const party = td.party || 'Unknown';
             partyCounts.set(party, (partyCounts.get(party) || 0) + 1);
           });
         } else if (constituency.parties && constituency.parties.length > 0) {
-          constituency.parties.forEach((p: any) => {
+          constituency.parties.forEach((p: unknown) => {
             partyCounts.set(p.party, p.count);
           });
         }
@@ -314,7 +314,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         
         // Count TDs by government vs opposition
         if (constituency.tds && constituency.tds.length > 0) {
-          constituency.tds.forEach((td: any) => {
+          constituency.tds.forEach((td: unknown) => {
             const party = td.party || 'Unknown';
             const name = td.name || '';
             
@@ -327,7 +327,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             }
           });
         } else if (constituency.parties && constituency.parties.length > 0) {
-          constituency.parties.forEach((p: any) => {
+          constituency.parties.forEach((p: unknown) => {
             if (governmentParties.includes(p.party)) {
               governmentTDs += p.count;
             } else {
@@ -574,7 +574,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
   // Update colors and tooltips when layer or data changes
   useEffect(() => {
     if (geoJsonLayer && constituenciesData.length > 0) {
-      geoJsonLayer.eachLayer((layer: any) => {
+      geoJsonLayer.eachLayer((layer: unknown) => {
         if (layer.feature && layer.feature.properties) {
           const constituencyName = layer.feature.properties.CONSTITUENCY || 
                                   layer.feature.properties.CONSTITUENCY_EN || 

@@ -10,7 +10,7 @@ import { supabaseDb } from '../db.js';
 
 const router = Router();
 
-export function formatUserProfilePayload(profile: any) {
+export function formatUserProfilePayload(profile: unknown) {
   if (!profile) return null;
 
   const ideology = IDEOLOGY_DIMENSIONS.reduce<Record<string, number>>((acc, dimension) => {
@@ -239,7 +239,7 @@ export function formatUserProfilePayload(profile: any) {
   };
 }
 
-export function formatRankingsResponse(rankings: any[]) {
+export function formatRankingsResponse(rankings: unknown[]) {
   return rankings.map((r) => ({
     name: r.politician_name,
     party: r.td_scores?.party,
@@ -305,7 +305,7 @@ router.post('/quiz', async (req: Request, res: Response) => {
       }))
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Quiz submission error:', error);
     res.status(500).json({
       success: false,
@@ -339,7 +339,7 @@ router.get('/rankings/:userId', async (req: Request, res: Response) => {
       rankings: formatRankingsResponse(rankings)
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Personal rankings error:', error);
     res.status(500).json({
       success: false,
@@ -397,7 +397,7 @@ router.post('/vote', async (req: Request, res: Response) => {
       rankingChanges
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Policy vote error:', error);
     res.status(500).json({
       success: false,
@@ -448,7 +448,7 @@ router.get('/profile/:userId', async (req: Request, res: Response) => {
       profile: formatUserProfilePayload(profile),
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Profile fetch error:', error);
     res.status(500).json({
       success: false,
@@ -480,7 +480,7 @@ router.get('/top-matches/:userId', async (req: Request, res: Response) => {
       topMatches: formatRankingsResponse(topMatches),
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Top matches error:', error);
     res.status(500).json({
       success: false,
@@ -517,7 +517,7 @@ router.get('/party-matches/:userId', async (req: Request, res: Response) => {
         confidence: match.total_weight,
       })),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Party matches error:', error);
     res.status(500).json({
       success: false,
@@ -541,7 +541,7 @@ router.get('/friends/:userId', async (req: Request, res: Response) => {
       streaks: insights.streaks,
       pendingInvites: insights.pendingInvites
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Friend insights error:', error);
     res.status(500).json({
       success: false,
@@ -592,7 +592,7 @@ router.get('/profile/:userId', async (req: Request, res: Response) => {
       profile: formatUserProfilePayload(profile),
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Profile fetch error:', error);
     res.status(500).json({
       success: false,
@@ -624,7 +624,7 @@ router.get('/top-matches/:userId', async (req: Request, res: Response) => {
       topMatches: formatRankingsResponse(topMatches),
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Top matches error:', error);
     res.status(500).json({
       success: false,
@@ -661,7 +661,7 @@ router.get('/party-matches/:userId', async (req: Request, res: Response) => {
         confidence: match.total_weight,
       })),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Party matches error:', error);
     res.status(500).json({
       success: false,
@@ -685,7 +685,7 @@ router.get('/friends/:userId', async (req: Request, res: Response) => {
       streaks: insights.streaks,
       pendingInvites: insights.pendingInvites
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Friend insights error:', error);
     res.status(500).json({
       success: false,

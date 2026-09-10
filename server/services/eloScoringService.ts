@@ -101,7 +101,7 @@ export function updateTDScores(
       const oldScore = currentScores[eloKey] as number;
       const newScore = oldScore + dimensionChange;
       
-      updated[eloKey] = newScore as any;
+      updated[eloKey] = newScore as unknown;
       
       changes[dimension] = {
         oldScore,
@@ -128,7 +128,7 @@ export function calculateRankings(allScores: TDScore[]): Map<string, { national:
     const rank = index + 1;
     const percentile = ((sorted.length - rank) / sorted.length) * 100;
     
-    rankings.set((score as any).politician_name, {
+    rankings.set((score as unknown).politician_name, {
       national: rank,
       percentile: Math.round(percentile)
     });

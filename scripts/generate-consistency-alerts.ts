@@ -126,7 +126,7 @@ async function main() {
     await storeAlerts(resolvedPeriods.current, resolvedPeriods.previous, alerts);
 
     console.log(`✅ Stored ${alerts.length} debate alerts for period ${resolvedPeriods.current.start} → ${resolvedPeriods.current.end}`);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Failed to generate consistency alerts:', error?.message || error);
     process.exit(1);
   }

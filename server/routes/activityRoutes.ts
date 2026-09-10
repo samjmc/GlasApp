@@ -17,7 +17,7 @@ router.post('/log', isAuthenticated, async (req: Request, res: Response) => {
       });
     }
 
-    const userId = (req as any).user.id;
+    const userId = (req as unknown).user.id;
     const ipAddress = req.ip || req.connection.remoteAddress;
     const userAgent = req.get('User-Agent');
 
@@ -49,7 +49,7 @@ router.post('/log', isAuthenticated, async (req: Request, res: Response) => {
 // Get user's activity history
 router.get('/history', isAuthenticated, async (req: Request, res: Response) => {
   try {
-    const userId = (req as any).user.id;
+    const userId = (req as unknown).user.id;
     const limit = parseInt(req.query.limit as string) || 50;
 
     const activities = await ActivityTracker.getUserActivity(userId, limit);
@@ -70,7 +70,7 @@ router.get('/history', isAuthenticated, async (req: Request, res: Response) => {
 // Get user's activity statistics
 router.get('/stats', isAuthenticated, async (req: Request, res: Response) => {
   try {
-    const userId = (req as any).user.id;
+    const userId = (req as unknown).user.id;
     const days = parseInt(req.query.days as string) || 30;
 
     const stats = await ActivityTracker.getActivityStats(userId, days);

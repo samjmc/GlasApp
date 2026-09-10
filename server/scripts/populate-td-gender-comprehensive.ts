@@ -98,7 +98,7 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
         const member = result.member;
         
         // Find current Dáil membership
-        const currentMembership = member.memberships?.find((m: any) => 
+        const currentMembership = member.memberships?.find((m: unknown) => 
           m.membership.house?.houseCode === 'dail' &&
           m.membership.house?.houseNo === '34' &&
           m.membership.dateRange?.end === null
@@ -141,7 +141,7 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
     
     return tds;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Failed to fetch TDs:', error.message);
     return [];
   }
@@ -206,7 +206,7 @@ async function updateDatabaseWithGender(tds: TDGenderInfo[]): Promise<void> {
         updated++;
       }
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error processing ${td.name}:`, error.message);
     }
   }
@@ -261,7 +261,7 @@ async function main() {
     console.log('✅ Gender population complete!\n');
     process.exit(0);
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Script failed:', error.message);
     console.error(error.stack);
     process.exit(1);

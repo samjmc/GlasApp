@@ -65,7 +65,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       .maybeSingle();
 
     // Calculate weekly data points
-    const weeklyData: any[] = [];
+    const weeklyData: unknown[] = [];
     
     // Add quiz baseline as starting point
     weeklyData.push({
@@ -94,7 +94,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       // Group sessions by week
       const weekMap = new Map<string, Date>();
       
-      sessions.forEach((session: any) => {
+      sessions.forEach((session: unknown) => {
         const sessionDate = new Date(session.completed_at);
         const weekKey = getWeekKey(sessionDate);
         
@@ -133,7 +133,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       weeks.forEach(([weekKey, lastDate], index) => {
         const progress = (index + 1) / weeks.length;
         
-        const interpolated: any = {};
+        const interpolated: unknown = {};
         Object.keys(baseline).forEach(dim => {
           interpolated[dim] = baseline[dim as keyof typeof baseline] + 
             (current[dim as keyof typeof current] - baseline[dim as keyof typeof baseline]) * progress;
@@ -175,7 +175,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       quizDate: quizData.created_at,
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Ideology timeline error:', error);
     res.status(500).json({
       success: false,

@@ -62,7 +62,7 @@ async function extract20242025() {
   console.log('📥 Step 2: Fetching ALL 2024-2025 questions from API...');
   console.log('This will take 5-10 minutes...\n');
   
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   const dateFrom = '2024-01-01';
   const dateTo = new Date().toISOString().split('T')[0];
   let skip = 0;
@@ -106,7 +106,7 @@ async function extract20242025() {
       // Small delay to avoid rate limiting
       await new Promise(resolve => setTimeout(resolve, 300));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error on batch ${batchNum}: ${error.message}`);
       break;
     }
@@ -122,7 +122,7 @@ async function extract20242025() {
 
   let matched = 0;
   let unmatched = 0;
-  const questionsToInsert: any[] = [];
+  const questionsToInsert: unknown[] = [];
   const classifyStart = Date.now();
 
   for (let i = 0; i < allQuestions.length; i++) {
@@ -211,7 +211,7 @@ async function extract20242025() {
         const progress = ((inserted / questionsToInsert.length) * 100).toFixed(0);
         console.log(`   ✅ Batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(questionsToInsert.length / batchSize)}: ${inserted.toLocaleString()}/${questionsToInsert.length.toLocaleString()} (${progress}%)`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Batch error: ${error.message}`);
       errors += batch.length;
     }

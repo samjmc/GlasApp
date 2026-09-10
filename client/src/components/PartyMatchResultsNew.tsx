@@ -114,7 +114,7 @@ const PartyMatchResultsNew: React.FC<PartyMatchResultsProps> = ({ dimensions, we
   
   // Listen for regenerate events from parent components
   useEffect(() => {
-    const handleRegenerate = (event: any) => {
+    const handleRegenerate = (event: unknown) => {
       console.log("PartyMatchResultsNew: Received regenerate event", event.detail);
       
       // IMPORTANT: Always fully refresh on regenerate events, even if details are missing
@@ -135,7 +135,7 @@ const PartyMatchResultsNew: React.FC<PartyMatchResultsProps> = ({ dimensions, we
     window.addEventListener('regenerate-analysis', handleRegenerate);
     
     // Also listen for specific party match refresh events
-    window.addEventListener('refresh-party-matches', (event: any) => {
+    window.addEventListener('refresh-party-matches', (event: unknown) => {
       console.log("Received explicit refresh-party-matches event");
       setIsLoading(true);
       setMatchesData(null);

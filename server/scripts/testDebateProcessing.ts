@@ -36,7 +36,7 @@ async function testProcessing() {
   try {
     await analyzeDebateSpeech(speech.id);
     console.log('\n✅ Speech analysis complete!');
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('\n❌ Error:', error.message);
     console.error(error.stack);
   }
@@ -49,14 +49,14 @@ async function testProcessing() {
     .maybeSingle();
   
   if (vote) {
-    const tdMeta = vote.td_scores as any;
+    const tdMeta = vote.td_scores as unknown;
     console.log(`\n🗳️  Testing with vote by ${tdMeta?.politician_name || 'Unknown'}`);
     console.log(`   Vote ID: ${vote.id}\n`);
     
     try {
       await analyzeVoteRecord(vote.id);
       console.log('\n✅ Vote analysis complete!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('\n❌ Error:', error.message);
       console.error(error.stack);
     }

@@ -444,7 +444,7 @@ ${promptParticipants}`;
     return;
   }
 
-  let parsed: any;
+  let parsed: unknown;
   try {
     parsed = JSON.parse(content);
   } catch (error) {
@@ -461,7 +461,7 @@ ${promptParticipants}`;
   const evaluationMap = new Map<number, ParticipantEvaluation>();
 
   for (const participant of participants) {
-    const evaluationRaw = evaluationsArray.find((entry: any) => Number(entry?.td_id) === participant.td.id) ?? null;
+    const evaluationRaw = evaluationsArray.find((entry: unknown) => Number(entry?.td_id) === participant.td.id) ?? null;
 
     const evaluation: ParticipantEvaluation = {
       td_id: participant.td.id,

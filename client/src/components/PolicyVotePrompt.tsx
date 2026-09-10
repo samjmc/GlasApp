@@ -180,7 +180,7 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
           setUserRating(null);
           setPendingRating(3);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("PolicyVotePrompt load error:", err);
         if (isMounted) {
           setError(err.message || "Unable to load policy vote");
@@ -331,7 +331,7 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
           setVoteStats(null);
         }
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('PolicyVotePrompt submit error:', err);
       setError(err.message || 'Failed to save vote');
       toast({

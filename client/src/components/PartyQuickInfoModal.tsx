@@ -158,9 +158,9 @@ export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickIn
                   </h3>
                   <div className="space-y-2 max-h-48 overflow-y-auto">
                     {data.members
-                      .sort((a: any, b: any) => (b.score || 0) - (a.score || 0))
+                      .sort((a: unknown, b: unknown) => (b.score || 0) - (a.score || 0))
                       .slice(0, 5)
-                      .map((member: any) => (
+                      .map((member: unknown) => (
                         <Link
                           key={member.id}
                           href={`/td/${member.name}`}

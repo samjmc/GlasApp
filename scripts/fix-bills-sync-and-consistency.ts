@@ -86,7 +86,7 @@ async function fixBillsSyncAndConsistency() {
   console.log('Loading questions...');
   
   // Load questions in batches (Supabase has limits)
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   let questionOffset = 0;
   
   while (true) {
@@ -107,7 +107,7 @@ async function fixBillsSyncAndConsistency() {
     .select('td_id, bill_title')
     .in('td_id', tds!.map(t => t.id));
 
-  const allVotes: any[] = [];
+  const allVotes: unknown[] = [];
   let offset = 0;
   
   while (true) {
@@ -126,7 +126,7 @@ async function fixBillsSyncAndConsistency() {
   console.log(`✅ Loaded ${allQuestions?.length} questions, ${allBills?.length} bills, ${allVotes.length} votes\n`);
 
   let updated = 0;
-  const results: any[] = [];
+  const results: unknown[] = [];
 
   for (const td of (tds || [])) {
     const tdQuestions = allQuestions?.filter(q => q.td_id === td.id) || [];
@@ -197,7 +197,7 @@ async function fixBillsSyncAndConsistency() {
  * Calculate Question-Bill Match Score
  * Do they introduce bills on topics they ask questions about?
  */
-function calculateQuestionBillMatch(questions: any[], bills: any[]): number {
+function calculateQuestionBillMatch(questions: unknown[], bills: unknown[]): number {
   if (questions.length === 0) return 30; // Low default
   if (bills.length === 0) return 20; // Even lower if no bills at all
 
@@ -256,7 +256,7 @@ function calculateQuestionBillMatch(questions: any[], bills: any[]): number {
  * Calculate Topic Voting Consistency (IMPROVED)
  * Do they vote consistently on topics they prioritize (questions/bills)?
  */
-function calculateTopicVotingConsistency(questions: any[], bills: any[], votes: any[]): number {
+function calculateTopicVotingConsistency(questions: unknown[], bills: unknown[], votes: unknown[]): number {
   if (votes.length < 10) return 50; // Not enough data
 
   // Identify TD's priority topics (based on questions + bills)

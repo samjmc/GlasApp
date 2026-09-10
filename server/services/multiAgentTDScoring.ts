@@ -1176,7 +1176,7 @@ export async function applyProcessScoresToELO(
   // Calculate ELO changes
   const { updated, changes } = ELOScoringService.updateTDScores(
     currentScores,
-    analysisForELO as any,
+    analysisForELO as unknown,
     adjustedCredibility,
     articleAge
   );

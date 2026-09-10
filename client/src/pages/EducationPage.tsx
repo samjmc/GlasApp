@@ -1085,7 +1085,7 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
   // Calculate pledge fulfillment average - both main display and drill-down use same calculation
   const calculateAverageScore = () => {
     if (!pledgesData || pledgesData.length === 0) return 0;
-    return pledgesData.reduce((sum: number, item: any) => sum + parseFloat(item.pledge.score), 0) / pledgesData.length;
+    return pledgesData.reduce((sum: number, item: unknown) => sum + parseFloat(item.pledge.score), 0) / pledgesData.length;
   };
 
   // Only show pledge fulfillment score for government parties
@@ -1584,7 +1584,7 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
 };
 
 // Pledge Details Section Component
-const PledgeDetailsSection = ({ pledgesData, pledgesLoading, getScoreColor, getScoreBadge, formatDate }: any) => {
+const PledgeDetailsSection = ({ pledgesData, pledgesLoading, getScoreColor, getScoreBadge, formatDate }: unknown) => {
   if (pledgesLoading) {
     return (
       <div className="text-center py-8">
@@ -1608,7 +1608,7 @@ const PledgeDetailsSection = ({ pledgesData, pledgesLoading, getScoreColor, getS
 
   const totalPledges = pledgesData.length;
   // Use same calculation as main display
-  const averageScore = pledgesData.reduce((sum: number, item: any) => sum + parseFloat(item.pledge.score), 0) / totalPledges;
+  const averageScore = pledgesData.reduce((sum: number, item: unknown) => sum + parseFloat(item.pledge.score), 0) / totalPledges;
 
   return (
     <Card className="border-2 border-blue-200">
@@ -1636,7 +1636,7 @@ const PledgeDetailsSection = ({ pledgesData, pledgesLoading, getScoreColor, getS
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-green-600">
-              {pledgesData.filter((item: any) => parseFloat(item.pledge.score) >= 80).length}
+              {pledgesData.filter((item: unknown) => parseFloat(item.pledge.score) >= 80).length}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">High Performance</div>
           </div>
@@ -1644,7 +1644,7 @@ const PledgeDetailsSection = ({ pledgesData, pledgesLoading, getScoreColor, getS
 
         {/* Pledges List */}
         <div className="space-y-4 max-h-96 overflow-y-auto">
-          {pledgesData.map((item: any, index: number) => {
+          {pledgesData.map((item: unknown, index: number) => {
             const pledge = item.pledge;
             const actions = item.actions || [];
             
@@ -1785,7 +1785,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
   }
 
   const totalPledges = pledgesData.length;
-  const averageScore = pledgesData.reduce((sum: number, item: any) => sum + parseFloat(item.pledge.score), 0) / totalPledges;
+  const averageScore = pledgesData.reduce((sum: number, item: unknown) => sum + parseFloat(item.pledge.score), 0) / totalPledges;
 
   return (
     <div className="space-y-6">
@@ -1804,7 +1804,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600">
-              {pledgesData.filter((item: any) => parseFloat(item.pledge.score) >= 80).length}
+              {pledgesData.filter((item: unknown) => parseFloat(item.pledge.score) >= 80).length}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">High Performance</div>
           </div>
@@ -1813,7 +1813,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
 
       {/* Pledges List */}
       <div className="space-y-4">
-        {pledgesData.map((item: any, index: number) => {
+        {pledgesData.map((item: unknown, index: number) => {
           const pledge = item.pledge;
           const actions = item.actions || [];
           
@@ -1875,7 +1875,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
                   <div>
                     <h4 className="font-medium text-sm mb-2">Recent Actions</h4>
                     <div className="space-y-2">
-                      {actions.slice(0, 3).map((action: any) => (
+                      {actions.slice(0, 3).map((action: unknown) => (
                         <div key={action.id} className="text-sm bg-blue-50 dark:bg-blue-900/20 p-3 rounded">
                           <div className="font-medium capitalize">{action.actionType.replace('_', ' ')}</div>
                           <div className="text-gray-600 dark:text-gray-400 text-xs">
@@ -2129,7 +2129,7 @@ const PartyPerformanceSection = () => {
                             </div>
                           </div>
                           <div className="space-y-2">
-                            {data.pledges?.map((pledge: any, index: number) => (
+                            {data.pledges?.map((pledge: unknown, index: number) => (
                               <div key={index} className="flex items-center justify-between text-sm bg-gray-50 p-2 rounded">
                                 <span className="flex-1">{pledge.title}</span>
                                 <div className="flex items-center gap-2">
@@ -2304,7 +2304,7 @@ const TrustScoreBreakdown = ({ politicianName }: { politicianName: string }) => 
     );
   }
 
-  if (!trustData || typeof trustData !== 'object' || trustData === null || !('success' in trustData) || !(trustData as any).success || !('data' in trustData) || !(trustData as any).data) {
+  if (!trustData || typeof trustData !== 'object' || trustData === null || !('success' in trustData) || !(trustData as unknown).success || !('data' in trustData) || !(trustData as unknown).data) {
     return (
       <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
         <div className="text-sm text-gray-500">No detailed trust data available</div>
@@ -2312,7 +2312,7 @@ const TrustScoreBreakdown = ({ politicianName }: { politicianName: string }) => 
     );
   }
 
-  const trust = (trustData as any).data;
+  const trust = (trustData as unknown).data;
 
   // Use actual scores from the database for each TD
   const flipFlopScore = trust.flip_flops_score || 0;
@@ -2378,7 +2378,7 @@ const TrustScoreBreakdown = ({ politicianName }: { politicianName: string }) => 
 
 // Component for displaying most trustworthy politicians
 const TopTrustworthyPoliticians = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [topPoliticians, setTopPoliticians] = useState<any[]>([]);
+  const [topPoliticians, setTopPoliticians] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -2470,7 +2470,7 @@ const TopTrustworthyPoliticians = ({ onPoliticianClick }: { onPoliticianClick?: 
 
 // Component for displaying least trustworthy politicians
 const LeastTrustworthyPoliticians = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [bottomPoliticians, setBottomPoliticians] = useState<any[]>([]);
+  const [bottomPoliticians, setBottomPoliticians] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -2562,7 +2562,7 @@ const LeastTrustworthyPoliticians = ({ onPoliticianClick }: { onPoliticianClick?
 
 // Component for displaying top performing politicians
 const TopPerformersList = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [topPerformers, setTopPerformers] = useState<any[]>([]);
+  const [topPerformers, setTopPerformers] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -2657,7 +2657,7 @@ const TopPerformersList = ({ onPoliticianClick }: { onPoliticianClick?: (name: s
 
 // Component for displaying lowest performing politicians
 const LowPerformersList = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [lowPerformers, setLowPerformers] = useState<any[]>([]);
+  const [lowPerformers, setLowPerformers] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -3217,7 +3217,7 @@ const EducationPage = () => {
 
   // Component for displaying top active TDs by question count  
   const TopActiveTDsList = () => {
-    const { data: topTDsResponse, isLoading, error } = useQuery<any>({
+    const { data: topTDsResponse, isLoading, error } = useQuery<unknown>({
       queryKey: ['/api/top-tds-by-questions'],
       enabled: true,
       refetchOnWindowFocus: false,
@@ -3238,7 +3238,7 @@ const EducationPage = () => {
 
     return (
       <>
-        {topTDsResponse.data.map((td: any, index: number) => (
+        {topTDsResponse.data.map((td: unknown, index: number) => (
           <div key={index} className="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg mt-[6px] mb-[6px]">
             <div className="flex items-center gap-2">
               <Avatar className="h-8 w-8">
@@ -3331,9 +3331,9 @@ const EducationPage = () => {
                         dashboardData.data && typeof dashboardData.data === 'object' && 'performance' in dashboardData.data && 
                         Array.isArray(dashboardData.data.performance) && dashboardData.data.performance.length > 0 ? (
                           dashboardData.data.performance
-                            .sort((a: any, b: any) => b.overallScore - a.overallScore)
+                            .sort((a: unknown, b: unknown) => b.overallScore - a.overallScore)
                             .slice(0, 5)
-                            .map((party: any, index: number) => (
+                            .map((party: unknown, index: number) => (
                               <div 
                                 key={party.partyId} 
                                 className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
@@ -3380,11 +3380,11 @@ const EducationPage = () => {
                             <div className="h-6 w-12 bg-gray-300 rounded"></div>
                           </div>
                         ))
-                      ) : dashboardData && (dashboardData as any)?.data?.trustworthiness && (dashboardData as any).data.trustworthiness.length > 0 ? (
-                        (dashboardData as any).data.trustworthiness
-                          .sort((a: any, b: any) => (b.overallTrustworthiness || 0) - (a.overallTrustworthiness || 0))
+                      ) : dashboardData && (dashboardData as unknown)?.data?.trustworthiness && (dashboardData as unknown).data.trustworthiness.length > 0 ? (
+                        (dashboardData as unknown).data.trustworthiness
+                          .sort((a: unknown, b: unknown) => (b.overallTrustworthiness || 0) - (a.overallTrustworthiness || 0))
                           .slice(0, 5)
-                          .map((party: any, index: number) => (
+                          .map((party: unknown, index: number) => (
                             <div 
                               key={party.partyId} 
                               className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg cursor-pointer hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"

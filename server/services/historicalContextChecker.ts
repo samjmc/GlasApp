@@ -78,10 +78,10 @@ const TOPIC_TO_DIMENSION: Record<string, string> = {
  * Check if article represents a flip-flop from party position
  */
 export async function checkHistoricalContext(
-  article: any,
+  article: unknown,
   politicianName: string,
   party: string,
-  analysis: any
+  analysis: unknown
 ): Promise<HistoricalContext> {
   
   const context: HistoricalContext = {
@@ -162,7 +162,7 @@ export async function checkHistoricalContext(
 /**
  * Detect which quiz dimension this article relates to
  */
-function detectDimension(article: any): string | null {
+function detectDimension(article: unknown): string | null {
   const text = (article.title + ' ' + article.content).toLowerCase();
   
   for (const [topic, dimension] of Object.entries(TOPIC_TO_DIMENSION)) {
@@ -177,7 +177,7 @@ function detectDimension(article: any): string | null {
 /**
  * Determine the article's stance on the dimension (-10 to +10)
  */
-function determineArticleStance(article: any, analysis: any, dimension: string): number {
+function determineArticleStance(article: unknown, analysis: unknown, dimension: string): number {
   const text = (article.title + ' ' + article.content).toLowerCase();
   
   // Map dimensions to positive/negative indicators
@@ -239,7 +239,7 @@ function determineArticleStance(article: any, analysis: any, dimension: string):
 /**
  * Check for suspicious timing (after elections, riots, polls)
  */
-function checkSuspiciousTiming(article: any): { isSuspicious: boolean; details?: string } {
+function checkSuspiciousTiming(article: unknown): { isSuspicious: boolean; details?: string } {
   const publishedDate = new Date(article.published_date);
   const now = new Date();
   const daysSincePublished = Math.floor((now.getTime() - publishedDate.getTime()) / (1000 * 60 * 60 * 24));

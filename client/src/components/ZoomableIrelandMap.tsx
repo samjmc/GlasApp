@@ -465,7 +465,7 @@ const ZoomableIrelandMap = ({
       </CardHeader>
       
       <CardContent>
-        <Tabs defaultValue="economic" className="w-full" onValueChange={(v) => setActiveTab(v as any)}>
+        <Tabs defaultValue="economic" className="w-full" onValueChange={(v) => setActiveTab(v as unknown)}>
           <TabsList className="mb-4">
             <TabsTrigger value="economic">Economic Views</TabsTrigger>
             <TabsTrigger value="social">Social Views</TabsTrigger>

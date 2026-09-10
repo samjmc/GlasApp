@@ -105,7 +105,7 @@ async function processDebateEmbeddings() {
           continue;
       }
 
-      const processedIds = new Set(existingChunks?.map((c: any) => c.speech_id) || []);
+      const processedIds = new Set(existingChunks?.map((c: unknown) => c.speech_id) || []);
       const speechesToProcess = candidates.filter(s => !processedIds.has(s.id));
 
       if (speechesToProcess.length > 0) {
@@ -143,14 +143,14 @@ async function processDebateEmbeddings() {
       // Small delay to prevent overwhelming the database
       await new Promise(resolve => setTimeout(resolve, 10));
 
-    } catch (err: any) {
+    } catch (err: unknown) {
         console.error('\n❌ Unexpected loop error:', err.message || err);
         await new Promise(r => setTimeout(r, 3000));
     }
   }
 }
 
-async function processSpeech(speech: any): Promise<number> {
+async function processSpeech(speech: unknown): Promise<number> {
   // Handle JSONB paragraphs - might be string or array
   let paragraphs: string[];
   if (typeof speech.paragraphs === 'string') {
@@ -186,7 +186,7 @@ async function processSpeech(speech: any): Promise<number> {
   }
 
   // 2. Embed & Save - Bulk Insert Strategy
-  const chunksToInsert: any[] = [];
+  const chunksToInsert: unknown[] = [];
   
   for (const chunkContent of chunks) {
     if (chunkContent.length < 20) continue;
@@ -207,7 +207,7 @@ async function processSpeech(speech: any): Promise<number> {
       // ZERO delay - maximum speed (OpenAI handles rate limiting)
       // await new Promise(resolve => setTimeout(resolve, 0));
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       // Log specific OpenAI errors
       if (err.message?.includes('rate')) {
         console.error(`\n⚠️ Rate limit hit - waiting 5s...`);
@@ -230,7 +230,7 @@ async function processSpeech(speech: any): Promise<number> {
         process.stdout.write(`+${chunksToInsert.length} `);
         return chunksToInsert.length;
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(`\nBulk insert exception: ${err.message || err}`);
       return 0;
     }

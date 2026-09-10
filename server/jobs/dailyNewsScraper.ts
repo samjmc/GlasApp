@@ -97,7 +97,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           articlesForProcessing = allArticles.filter(article => !existingArticleUrls.has(article.url));
           stats.articlesSkippedExisting = allArticles.length - articlesForProcessing.length;
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.warn(`⚠️ Unable to pre-check existing articles before filtering: ${error.message}`);
       }
     }
@@ -143,7 +143,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           
           // Rate limit between requests
           await sleep(2000);
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.log(`   ❌ Failed: ${error.message}`);
         }
       }
@@ -394,7 +394,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           stats.articlesProcessed++;
           stats.tdsMentioned++;
           
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error(`   ❌ Analysis failed: ${error.message}`);
           stats.errors.push(`${politician.name}: ${error.message}`);
         }
@@ -421,7 +421,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
       if (scoringStats.errors > 0) {
         console.log(`   ⚠️  Errors: ${scoringStats.errors}`);
       }
-    } catch (scoringError: any) {
+    } catch (scoringError: unknown) {
       console.error('⚠️  TD Scoring failed:', scoringError.message);
       stats.errors.push(`TD Scoring: ${scoringError.message}`);
     }
@@ -464,7 +464,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
       errorCount: stats.errors.length
     }));
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Daily news scraper failed:', error);
     stats.errors.push(`Fatal error: ${error.message}`);
     stats.endTime = new Date();
@@ -512,7 +512,7 @@ async function generatePolicyOpportunity(
       source: article.source,
       published_date: article.published_date
     }, options);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ❌ Failed to create policy opportunity: ${error.message}`);
     return false;
   }
@@ -522,7 +522,7 @@ async function upsertArticleTDScore(
   articleId: number,
   politicianName: string,
   analysis: ArticleAnalysis,
-  changes: any
+  changes: unknown
 ): Promise<void> {
   if (!supabaseDb) return;
 
@@ -557,7 +557,7 @@ async function upsertArticleTDScore(
         },
         { onConflict: 'article_id,politician_name' },
       );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ⚠️  Warning: Failed to record article_td_scores: ${error.message}`);
   }
 }
@@ -573,7 +573,7 @@ async function markArticleAsScored(articleId: number): Promise<void> {
         last_processed_at: new Date().toISOString(),
       })
       .eq('id', articleId);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ⚠️  Warning: Failed to mark article as scored: ${error.message}`);
   }
 }
@@ -657,7 +657,7 @@ async function saveArticleToDatabase(
     // Prepare base article data
     // visible: false - Will be set true after importance triage
     // processed: false - Will be set true after multi-agent scoring
-    const articleData: any = {
+    const articleData: unknown = {
       url: article.url,
       title: article.title,
       content: article.content,
@@ -720,7 +720,7 @@ async function saveArticleToDatabase(
     console.log(`   ✅ Saved article (ID: ${inserted.id})`);
     return inserted.id;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ❌ Error saving article: ${error.message}`);
     return null;
   }
@@ -816,7 +816,7 @@ async function saveArticleAnalysis(
     console.log(`   ✅ Saved article (ID: ${inserted.id})`);
     return inserted.id;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ❌ Error saving article: ${error.message}`);
     return null;
   }
@@ -829,8 +829,8 @@ async function updateTDScoreInDB(
   tdName: string,
   constituency: string,
   party: string,
-  updatedScores: any,
-  changes: any,
+  updatedScores: unknown,
+  changes: unknown,
   articleId: number | null
 ): Promise<boolean> {
   if (!supabaseDb) {
@@ -912,7 +912,7 @@ async function updateTDScoreInDB(
       return true;
     }
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ❌ Error updating TD score: ${error.message}`);
     return false;
   }
@@ -921,7 +921,7 @@ async function updateTDScoreInDB(
 /**
  * Get the primary dimension that changed most
  */
-function getPrimaryDimension(changes: any): string {
+function getPrimaryDimension(changes: unknown): string {
   const dimensions = {
     transparency: Math.abs(changes.transparency?.change || 0),
     effectiveness: Math.abs(changes.effectiveness?.change || 0),
@@ -981,7 +981,7 @@ async function trackPromiseForVerification(
       }
     }
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (!promisePermissionWarningLogged && error.message?.includes('permission denied')) {
       promisePermissionWarningLogged = true;
       console.warn(`   ⚠️ Skipping promise tracking due to permissions: ${error.message}`);
