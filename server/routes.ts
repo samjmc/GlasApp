@@ -21,11 +21,9 @@ import storytellingRoutes from "./routes/storytellingRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import electionRoutes from "./routes/electionRoutes";
 import personalizedInsightsRoutes from "./routes/personalizedInsightsRoutes";
-import partyRoutes from "./routes/political/parties";
-import pledgeRoutes from "./routes/political/pledges";
+import politicalRoutes from "./routes/political";
 import parliamentaryActivityRoutes from "./routes/parliamentaryActivityRoutes";
 import categoryRankingRoutes from "./routes/categoryRankingRoutes";
-import partySentimentRoutes from "./routes/partySentimentRoutes";
 import dashboardRoutes from "./routes/dashboardRoutes";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
@@ -42,8 +40,7 @@ import manualArticleRoutes from "./routes/admin/manualArticleRoutes";
 import { PersonalRankingsService } from "./services/personalRankingsService.js";
 import tdRatingsRoutes from "./routes/ratings/tdRatings";
 import researchedTDsRoutes from "./api/researched-tds";
-import policyVotingRoutes from "./routes/policyVotingRoutes";
-import personalRankingsRoutes from "./routes/personalRankingsRoutes";
+import userRankingsRoutes from "./routes/user/rankings/index.js";
 import ideologyTimelineRoutes from "./routes/ideologyTimelineRoutesEnhanced";
 import dailySessionRoutes from "./routes/dailySessionRoutes";
 import debateWorkspaceRoutes from "./routes/debateWorkspaceRoutes";
@@ -81,7 +78,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/heatmap", geographicRoutes);
   app.use("/api/constituencies", geographicRoutes);
   app.use("/api/location", geographicRoutes);
-  app.use("/api/auth", authRoutes);
+  app.use("/api/auth", consolidatedAuthRoutes);
   app.use("/api/bots", botRoutes);
   app.use("/api/activity", activityRoutes);
   app.use("/api/political-evolution", politicalEvolutionRoutes);
@@ -98,24 +95,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Enhanced profile now in AI analysis module
   app.use("/api/enhanced-profile", aiAnalysisRoutes);
   
-  // Register party routes (consolidated - includes matching, dimensions, info, explanations)
-  app.use("/api/parties", partyRoutes);
+  // Register consolidated political routes (includes parties, pledges, sentiment)
+  app.use("/api/political", politicalRoutes);
   // Legacy routes for backward compatibility
-  app.use("/api/party-match", partyRoutes);
-  app.use("/api/party-dimensions", partyRoutes);
-  app.use("/api/dimension-explanations", partyRoutes);
-  
-  // Register pledge tracking routes (consolidated - includes voting and weighting)
-  app.use("/api/pledges", pledgeRoutes);
-  
-  // Register category ranking routes for simplified importance voting
-  app.use("/api/category-ranking", categoryRankingRoutes);
-  
-  // Register parliamentary activity routes for TD performance data
-  app.use("/api/parliamentary-activity", parliamentaryActivityRoutes);
-  
-  // Register party sentiment routes for public trust voting
-  app.use("/api/party-sentiment", partySentimentRoutes);
+  app.use("/api/parties", politicalRoutes);
+  app.use("/api/party-match", politicalRoutes);
+  app.use("/api/party-dimensions", politicalRoutes);
+  app.use("/api/dimension-explanations", politicalRoutes);
+  app.use("/api/pledges", politicalRoutes);
+  app.use("/api/party-sentiment", politicalRoutes);
   
   // Register dashboard routes for consistent metrics across environments
   app.use("/api", dashboardRoutes);
@@ -149,14 +137,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/debate-workspace", debateWorkspaceRoutes);
   app.use("/api/debates", debatesRoutes);
   
-  // Register policy voting routes for neutral facts + user voting system
-  app.use("/api/policy-votes", policyVotingRoutes);
+  // Register user rankings routes (consolidated - personal rankings, policy voting, category rankings)
+  app.use("/api/user/rankings", userRankingsRoutes);
+  // Legacy routes for backward compatibility
+  app.use("/api/policy-votes", userRankingsRoutes);
+  app.use("/api/personal", userRankingsRoutes);
+  app.use("/api/category-ranking", userRankingsRoutes);
+
   app.use("/api/daily-session", dailySessionRoutes);
-  
+
   // Register cache management routes for monitoring and clearing cache
   app.use("/api/cache", cacheRoutes);
-  app.use("/api/account", accountRoutes);
-  
+  // Account deletion endpoint is now consolidated into auth routes
+  app.use("/api/account", consolidatedAuthRoutes);
+
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news-scraper", newsScraperRoutes);
   app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
@@ -164,12 +158,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/admin/baselines", baselineAdminRoutes);
   app.use("/api/admin/articles", manualArticleRoutes);
   app.use("/api/admin/td-scoring", tdScoringAdminRoutes);
-  
+
   // Register user rating routes for TDs
   app.use("/api/ratings", tdRatingsRoutes);
-  
-  // Register personal rankings routes (quiz, policy voting, personalized TD rankings)
-  app.use("/api/personal", personalRankingsRoutes);
   
   // Register ideology timeline routes (weekly ideology evolution data)
   app.use("/api/ideology-timeline", ideologyTimelineRoutes);
