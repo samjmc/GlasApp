@@ -4,6 +4,7 @@ import { insertUserSchema, User, userPreferences } from '@shared/schema';
 import { isAuthenticated } from '../middleware/sessionMiddleware';
 import { storage } from '../storage';
 import { db } from '../db';
+import { eq } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 import multer from 'multer';
 import path from 'path';
@@ -734,7 +735,28 @@ router.patch('/me', isAuthenticated, async (req: Request, res: Response) => {
     
     // Update user
     const updatedUser = await storage.updateUser(userId as number, validatedData);
-    
+
+    // Phase 1 dual-write: Update user_preferences if profile columns changed
+    if (db && (validatedData.county !== undefined || validatedData.bio !== undefined)) {
+      try {
+        await db.insert(userPreferences).values({
+          userId: String(userId),
+          county: validatedData.county,
+          bio: validatedData.bio
+        }).onConflictDoUpdate({
+          target: userPreferences.userId,
+          set: {
+            county: validatedData.county,
+            bio: validatedData.bio,
+            updatedAt: new Date()
+          }
+        });
+      } catch (prefError) {
+        console.warn('Failed to update user_preferences:', prefError);
+        // Non-blocking: continue even if prefs update fails
+      }
+    }
+
     // If phone number is updated, reset verification status and send verification code
     if (validatedData.phoneNumber) {
       // Generate verification code
