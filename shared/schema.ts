@@ -27,6 +27,17 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// User preferences table for profile/geo data split
+export const userPreferences = pgTable("user_preferences", {
+  userId: varchar("user_id", { length: 100 }).primaryKey().references(() => users.id, { onDelete: "cascade" }),
+  county: varchar("county", { length: 50 }),
+  bio: text("bio"),
+  latitude: varchar("latitude", { length: 50 }),
+  longitude: varchar("longitude", { length: 50 }),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 // Session storage table for Replit Auth
 export const sessions = pgTable(
   "sessions",
