@@ -3,6 +3,7 @@ import {
   partySentimentVotes,
   politicalEvolution,
   quizResults,
+  emailVerificationTokens,
   type User,
   type InsertUser,
   type UpsertUser,
@@ -23,7 +24,18 @@ export interface IStorage {
   // User operations - updated for Replit Auth
   getUser(id: string): Promise<User | undefined>;
   upsertUser(userData: UpsertUser): Promise<User>;
-  
+  createUser(userData: UpsertUser): Promise<User>;
+  updateUser(id: string, data: Partial<UpsertUser>): Promise<User>;
+  getUserByUsername(username: string): Promise<User | undefined>;
+  getUserByEmail(email: string): Promise<User | undefined>;
+  getUserByPhoneNumber(phoneNumber: string): Promise<User | undefined>;
+
+  // Verification operations
+  setVerificationCode(id: string, code: string, expiresAt: Date): Promise<void>;
+  createEmailVerificationToken(userId: string, token: string, expiresAt: Date): Promise<void>;
+  getEmailVerificationToken(token: string): Promise<{userId: string; token: string; expiresAt: Date} | null>;
+  deleteEmailVerificationToken(token: string): Promise<void>;
+
   // Quiz and political evolution operations
   saveQuizResult(result: QuizResultInput): Promise<ApiResponse<QuizResult>>;
   getQuizResultByShareCode(shareCode: string): Promise<QuizResult | null>;
@@ -63,6 +75,97 @@ export class DatabaseStorage implements IStorage {
       })
       .returning();
     return user;
+  }
+
+  async createUser(userData: UpsertUser): Promise<User> {
+    // Alias for upsertUser - uses same insert logic with conflict resolution
+    return this.upsertUser(userData);
+  }
+
+  async updateUser(id: string, data: Partial<UpsertUser>): Promise<User> {
+    if (!db) throw new Error('Database not initialized');
+    const updateData = {
+      ...data,
+      updatedAt: new Date(),
+    };
+    const [user] = await db
+      .update(users)
+      .set(updateData)
+      .where(eq(users.id, id))
+      .returning();
+    if (!user) throw new Error(`User ${id} not found`);
+    return user;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    const [user] = await db
+      .select()
+      .from(users)
+      .where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    const [user] = await db
+      .select()
+      .from(users)
+      .where(eq(users.email, email));
+    return user || undefined;
+  }
+
+  async getUserByPhoneNumber(phoneNumber: string): Promise<User | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    const [user] = await db
+      .select()
+      .from(users)
+      .where(eq(users.phoneNumber, phoneNumber));
+    return user || undefined;
+  }
+
+  async setVerificationCode(id: string, code: string, expiresAt: Date): Promise<void> {
+    if (!db) throw new Error('Database not initialized');
+    await db
+      .update(users)
+      .set({
+        verificationCode: code,
+        verificationExpires: expiresAt,
+        updatedAt: new Date(),
+      })
+      .where(eq(users.id, id));
+  }
+
+  async createEmailVerificationToken(userId: string, token: string, expiresAt: Date): Promise<void> {
+    if (!db) throw new Error('Database not initialized');
+    await db
+      .insert(emailVerificationTokens)
+      .values({
+        userId,
+        token,
+        expiresAt,
+      })
+      .onConflictDoNothing();
+  }
+
+  async getEmailVerificationToken(token: string): Promise<{userId: string; token: string; expiresAt: Date} | null> {
+    if (!db) throw new Error('Database not initialized');
+    const [record] = await db
+      .select({
+        userId: emailVerificationTokens.userId,
+        token: emailVerificationTokens.token,
+        expiresAt: emailVerificationTokens.expiresAt,
+      })
+      .from(emailVerificationTokens)
+      .where(eq(emailVerificationTokens.token, token));
+    return record || null;
+  }
+
+  async deleteEmailVerificationToken(token: string): Promise<void> {
+    if (!db) throw new Error('Database not initialized');
+    await db
+      .delete(emailVerificationTokens)
+      .where(eq(emailVerificationTokens.token, token));
   }
 
   // Quiz and political evolution operations - stub implementations
