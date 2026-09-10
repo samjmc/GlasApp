@@ -1,19 +1,17 @@
 /**
- * Consolidated Party Routes
+ * Party Routes
  * Handles all party-related operations:
  * - Party matching algorithm (with optional dimension weighting)
  * - Party dimensional positions
  * - Party information retrieval
- * 
- * Consolidated from:
- * - partyMatchRoutes.ts
- * - partyDimensionsRoutes.ts
+ * - Party dimension explanations
  */
 
 import { Router } from 'express';
-import { db, supabaseDb } from '../../db';
-import { parties } from '@shared/schema';
+import { supabaseDb } from '../../db';
 import { cached, TTL, CacheKeys } from '../../services/cacheService';
+import { asyncHandler } from '../../middleware/errorHandler';
+import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
 const router = Router();
 
@@ -238,247 +236,189 @@ function getDimensionDisplayName(dimensionKey: string): string {
 // ============================================
 
 /**
- * POST /api/party-match/party-matches - Get party matches using dimension comparison
+ * POST /api/parties/matches - Get party matches using dimension comparison
  * Supports optional dimension weighting for personalized matching
  */
-router.post("/party-matches", async (req, res, next) => {
-  try {
-    // Pull dimensions and weights from the request body
-    const { dimensions, weights } = req.body;
-    
-    // Log the entire request body to debug weights issue
-    console.log("RECEIVED REQUEST BODY:", JSON.stringify(req.body, null, 2));
-    console.log("WEIGHTS FROM REQUEST:", weights ? JSON.stringify(weights, null, 2) : "No weights provided");
+router.post("/matches", asyncHandler(async (req, res) => {
+  const { dimensions, weights } = req.body;
 
-    if (!dimensions) {
-      return res.status(400).json({
-        success: false,
-        error: "Dimensions are required"
-      });
-    }
-    
-    // Validate and clean the user's ideological dimensions
-    const validatedDimensions: IdeologicalDimensions = {
-      economic: parseFloat(dimensions.economic) || 0,
-      social: parseFloat(dimensions.social) || 0,
-      cultural: parseFloat(dimensions.cultural) || 0,
-      globalism: parseFloat(dimensions.globalism) || 0,
-      environmental: parseFloat(dimensions.environmental) || 0,
-      authority: parseFloat(dimensions.authority) || 0,
-      welfare: parseFloat(dimensions.welfare) || 0,
-      technocratic: parseFloat(dimensions.technocratic) || 0
-    };
-    
-    // Parse and validate weights if provided, otherwise use defaults
-    let dimensionWeights: DimensionWeights | undefined = undefined;
-    
-    if (weights) {
-      // Ensure we don't have falsy values like 0 being replaced with defaults
-      // by checking if the value is a number (not just truthy)
-      dimensionWeights = {
-        economic: typeof weights.economic === 'number' ? weights.economic : 
-                 (parseFloat(weights.economic) || 1.0),
-        social: typeof weights.social === 'number' ? weights.social : 
-               (parseFloat(weights.social) || 1.0),
-        cultural: typeof weights.cultural === 'number' ? weights.cultural : 
-                 (parseFloat(weights.cultural) || 1.0),
-        globalism: typeof weights.globalism === 'number' ? weights.globalism : 
-                  (parseFloat(weights.globalism) || 1.0),
-        environmental: typeof weights.environmental === 'number' ? weights.environmental : 
-                      (parseFloat(weights.environmental) || 1.0),
-        authority: typeof weights.authority === 'number' ? weights.authority : 
-                  (parseFloat(weights.authority) || 1.0),
-        welfare: typeof weights.welfare === 'number' ? weights.welfare : 
-                (parseFloat(weights.welfare) || 1.0),
-        technocratic: typeof weights.technocratic === 'number' ? weights.technocratic : 
-                     (parseFloat(weights.technocratic) || 1.0)
-      };
-      
-      console.log("PROCESSED WEIGHTS:", JSON.stringify(dimensionWeights, null, 2));
-    }
-
-    // Get all parties from database (with caching)
-    // Use Supabase REST client since db (Drizzle) is disabled
-    if (!supabaseDb) {
-      return res.status(503).json({
-        success: false,
-        error: "Database connection not available"
-      });
-    }
-
-    const allParties = await cached(
-      CacheKeys.parties.all(),
-      TTL.ONE_DAY,
-      async () => {
-        const { data, error } = await supabaseDb
-          .from('parties')
-          .select('*');
-        
-        if (error) {
-          console.error('Error fetching parties:', error);
-          throw new Error(`Database error: ${error.message}`);
-        }
-        
-        return data || [];
-      }
+  if (!dimensions) {
+    return res.status(400).json(
+      formatError('MISSING_REQUIRED_FIELD', 'Dimensions are required')
     );
-
-    if (!allParties || allParties.length === 0) {
-      return res.status(404).json({
-        success: false,
-        error: "No parties found in database"
-      });
-    }
-
-    // Calculate match percentages using our weighted Euclidean distance function
-    let partyMatches = allParties
-      .filter(party => {
-        // Only include parties with enough dimensional data
-        return party.economicScore !== null && 
-               party.socialScore !== null &&
-               party.culturalScore !== null;
-      })
-      .map(party => {
-        // Parse rationales if available
-        let rationales = {};
-        if (party.dimensionRationales) {
-          try {
-            rationales = JSON.parse(party.dimensionRationales);
-          } catch (e) {
-            console.error(`Invalid rationales JSON for ${party.name}:`, e);
-          }
-        }
-
-        // Calculate match percentage with custom weights if provided
-        // This uses our deterministic Euclidean distance algorithm that factors in weights
-        const matchPercentage = calculateMatchPercentage(validatedDimensions, party, dimensionWeights);
-
-        // Generate reason for the match (this could be enhanced to mention which weighted dimensions were most influential)
-        const matchReason = generateMatchReason(validatedDimensions, party, party.name, rationales);
-
-        return {
-          party: party.name,
-          abbreviation: party.abbreviation || "",
-          matchPercentage,
-          matchReason,
-          color: party.color
-        };
-      })
-      // Sort by match percentage in descending order (highest matches first)
-      .sort((a, b) => b.matchPercentage - a.matchPercentage);
-    
-    // No normalization - show the raw match percentages
-    // This preserves the actual algorithmically calculated match values
-    // and prevents parties from always having a 100% top match
-
-    // Get top 3 matches (highest percentage)
-    const topMatches = partyMatches.slice(0, 3);
-
-    // Get bottom 3 matches (lowest percentage)
-    const bottomMatches = partyMatches.length > 3 ? 
-      partyMatches.slice(-3).reverse() : [];
-
-    return res.json({
-      success: true,
-      data: {
-        topParties: topMatches,
-        bottomParties: bottomMatches
-      }
-    });
-  } catch (error) {
-    next(error);
   }
-});
+
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')
+    );
+  }
+
+  // Validate and clean the user's ideological dimensions
+  const validatedDimensions: IdeologicalDimensions = {
+    economic: parseFloat(dimensions.economic) || 0,
+    social: parseFloat(dimensions.social) || 0,
+    cultural: parseFloat(dimensions.cultural) || 0,
+    globalism: parseFloat(dimensions.globalism) || 0,
+    environmental: parseFloat(dimensions.environmental) || 0,
+    authority: parseFloat(dimensions.authority) || 0,
+    welfare: parseFloat(dimensions.welfare) || 0,
+    technocratic: parseFloat(dimensions.technocratic) || 0
+  };
+
+  // Parse and validate weights if provided
+  let dimensionWeights: DimensionWeights | undefined = undefined;
+
+  if (weights) {
+    dimensionWeights = {
+      economic: typeof weights.economic === 'number' ? weights.economic : (parseFloat(weights.economic) || 1.0),
+      social: typeof weights.social === 'number' ? weights.social : (parseFloat(weights.social) || 1.0),
+      cultural: typeof weights.cultural === 'number' ? weights.cultural : (parseFloat(weights.cultural) || 1.0),
+      globalism: typeof weights.globalism === 'number' ? weights.globalism : (parseFloat(weights.globalism) || 1.0),
+      environmental: typeof weights.environmental === 'number' ? weights.environmental : (parseFloat(weights.environmental) || 1.0),
+      authority: typeof weights.authority === 'number' ? weights.authority : (parseFloat(weights.authority) || 1.0),
+      welfare: typeof weights.welfare === 'number' ? weights.welfare : (parseFloat(weights.welfare) || 1.0),
+      technocratic: typeof weights.technocratic === 'number' ? weights.technocratic : (parseFloat(weights.technocratic) || 1.0)
+    };
+  }
+
+  // Get all parties from database (with caching)
+  const allParties = await cached(
+    CacheKeys.parties.all(),
+    TTL.ONE_DAY,
+    async () => {
+      const { data, error } = await supabaseDb
+        .from('parties')
+        .select('*');
+
+      if (error) {
+        console.error('Error fetching parties:', error);
+        throw new Error(`Database error: ${error.message}`);
+      }
+
+      return data || [];
+    }
+  );
+
+  if (!allParties || allParties.length === 0) {
+    return res.status(404).json(
+      formatError('NOT_FOUND', 'No parties found in database')
+    );
+  }
+
+  // Calculate match percentages using weighted cosine similarity
+  const partyMatches = allParties
+    .filter(party => {
+      return party.economicScore !== null &&
+        party.socialScore !== null &&
+        party.culturalScore !== null;
+    })
+    .map(party => {
+      let rationales = {};
+      if (party.dimensionRationales) {
+        try {
+          rationales = JSON.parse(party.dimensionRationales);
+        } catch (e) {
+          console.error(`Invalid rationales JSON for ${party.name}:`, e);
+        }
+      }
+
+      const matchPercentage = calculateMatchPercentage(validatedDimensions, party, dimensionWeights);
+      const matchReason = generateMatchReason(validatedDimensions, party, party.name, rationales);
+
+      return {
+        party: party.name,
+        abbreviation: party.abbreviation || "",
+        matchPercentage,
+        matchReason,
+        color: party.color
+      };
+    })
+    .sort((a, b) => b.matchPercentage - a.matchPercentage);
+
+  const topMatches = partyMatches.slice(0, 3);
+  const bottomMatches = partyMatches.length > 3 ? partyMatches.slice(-3).reverse() : [];
+
+  return res.json(formatSuccess({
+    topParties: topMatches,
+    bottomParties: bottomMatches
+  }));
+}));
 
 // ============================================
 // Party Dimensions & Information
 // ============================================
 
 /**
- * GET /api/party-dimensions - Get all party dimensional positions (with caching)
+ * GET /api/parties/dimensions - Get all party dimensional positions (cached)
  */
-router.get("/dimensions", async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      return res.status(503).json({
-        success: false,
-        error: "Database connection not available"
-      });
-    }
-
-    // Party data rarely changes - cache for 24 hours
-    const partyDimensions = await cached(
-      CacheKeys.parties.positions(),
-      TTL.ONE_DAY,
-      async () => {
-        const { data, error } = await supabaseDb
-          .from('parties')
-          .select('id, name, economicScore, socialScore, culturalScore, globalismScore, environmentalScore, authorityScore, welfareScore, technocraticScore');
-        
-        if (error) {
-          console.error('Error fetching party dimensions:', error);
-          throw new Error(`Database error: ${error.message}`);
-        }
-        
-        // Map to expected format
-        return (data || []).map(party => ({
-          id: party.id,
-          name: party.name,
-          economic_score: party.economicScore,
-          social_score: party.socialScore,
-          cultural_score: party.culturalScore,
-          globalism_score: party.globalismScore,
-          environmental_score: party.environmentalScore,
-          authority_score: party.authorityScore,
-          welfare_score: party.welfareScore,
-          technocratic_score: party.technocraticScore
-        }));
-      }
+router.get("/dimensions", asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')
     );
-    
-    return res.json(partyDimensions);
-  } catch (error) {
-    next(error);
   }
-});
+
+  const partyDimensions = await cached(
+    CacheKeys.parties.positions(),
+    TTL.ONE_DAY,
+    async () => {
+      const { data, error } = await supabaseDb
+        .from('parties')
+        .select('id, name, economicScore, socialScore, culturalScore, globalismScore, environmentalScore, authorityScore, welfareScore, technocraticScore');
+
+      if (error) {
+        console.error('Error fetching party dimensions:', error);
+        throw new Error(`Database error: ${error.message}`);
+      }
+
+      return (data || []).map(party => ({
+        id: party.id,
+        name: party.name,
+        economic_score: party.economicScore,
+        social_score: party.socialScore,
+        cultural_score: party.culturalScore,
+        globalism_score: party.globalismScore,
+        environmental_score: party.environmentalScore,
+        authority_score: party.authorityScore,
+        welfare_score: party.welfareScore,
+        technocratic_score: party.technocraticScore
+      }));
+    }
+  );
+
+  return res.json(formatSuccess(partyDimensions));
+}));
 
 /**
- * GET /api/parties - Get all parties (with full info, cached)
+ * GET /api/parties - Get all parties with full information (cached)
  */
-router.get("/", async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      return res.status(503).json({
-        success: false,
-        error: "Database connection not available"
-      });
-    }
-
-    const allParties = await cached(
-      CacheKeys.parties.all(),
-      TTL.ONE_DAY,
-      async () => {
-        const { data, error } = await supabaseDb
-          .from('parties')
-          .select('*');
-        
-        if (error) {
-          console.error('Error fetching parties:', error);
-          throw new Error(`Database error: ${error.message}`);
-        }
-        
-        return data || [];
-      }
+router.get("/", asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')
     );
-    
-    return res.json({
-      success: true,
-      parties: allParties
-    });
-  } catch (error) {
-    next(error);
   }
-});
+
+  const allParties = await cached(
+    CacheKeys.parties.all(),
+    TTL.ONE_DAY,
+    async () => {
+      const { data, error } = await supabaseDb
+        .from('parties')
+        .select('*');
+
+      if (error) {
+        console.error('Error fetching parties:', error);
+        throw new Error(`Database error: ${error.message}`);
+      }
+
+      return data || [];
+    }
+  );
+
+  return res.json(formatSuccess(allParties));
+}));
 
 // ============================================
 // Party Dimension Explanations/Rationales
@@ -503,142 +443,128 @@ const partyCodeToName: Record<string, string> = {
  * GET /api/parties/explanations/:partyId - Get dimension explanations for a party
  * Supports both integer ID and party code (e.g., 'ie-sf')
  */
-router.get("/explanations/:partyId", async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      return res.status(503).json({
-        success: false,
-        error: "Database connection not available"
-      });
+router.get("/explanations/:partyId", asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')
+    );
+  }
+
+  const { partyId } = req.params;
+  let party;
+
+  if (!isNaN(Number(partyId))) {
+    const { data, error } = await supabaseDb
+      .from('parties')
+      .select('dimensionRationales')
+      .eq('id', parseInt(partyId))
+      .single();
+
+    if (error || !data) {
+      console.error('Error fetching party rationales:', error);
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'Party not found')
+      );
     }
 
-    const { partyId } = req.params;
-    
-    let party;
-    
-    // Check if it's a numeric ID or a party code
-    if (!isNaN(Number(partyId))) {
-      // Numeric ID - query by ID
-      const { data, error } = await supabaseDb
-        .from('parties')
-        .select('dimensionRationales')
-        .eq('id', parseInt(partyId))
-        .single();
-      
-      if (error) {
-        console.error('Error fetching party rationales:', error);
-        return res.status(404).json({ error: 'Party not found' });
-      }
-      
-      party = data;
-    } else {
-      // Party code - convert to name and query
-      const partyName = partyCodeToName[partyId];
-      if (!partyName) {
-        return res.status(404).json({ error: 'Unknown party code' });
-      }
-      
-      const { data, error } = await supabaseDb
-        .from('parties')
-        .select('dimensionRationales')
-        .eq('name', partyName)
-        .single();
-      
-      if (error) {
-        console.error('Error fetching party rationales:', error);
-        return res.status(404).json({ error: 'Party not found' });
-      }
-      
-      party = data;
+    party = data;
+  } else {
+    const partyName = partyCodeToName[partyId];
+    if (!partyName) {
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'Unknown party code')
+      );
     }
-    
-    if (!party) {
-      return res.status(404).json({ error: 'Party not found' });
+
+    const { data, error } = await supabaseDb
+      .from('parties')
+      .select('dimensionRationales')
+      .eq('name', partyName)
+      .single();
+
+    if (error || !data) {
+      console.error('Error fetching party rationales:', error);
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'Party not found')
+      );
     }
-    
-    // Parse the JSON from dimensionRationales field or return empty object
-    const explanations = party.dimensionRationales 
-      ? JSON.parse(party.dimensionRationales) 
-      : {};
-    
-    return res.json(explanations);
-  } catch (error) {
-    next(error);
+
+    party = data;
   }
-});
+
+  const explanations = party.dimensionRationales ? JSON.parse(party.dimensionRationales) : {};
+
+  return res.json(formatSuccess(explanations));
+}));
 
 /**
  * POST /api/parties/explanations/:partyId - Update dimension explanations for a party
  * Supports both integer ID and party code
  */
-router.post("/explanations/:partyId", async (req, res, next) => {
-  try {
-    if (!supabaseDb) {
-      return res.status(503).json({
-        success: false,
-        error: "Database connection not available"
-      });
-    }
-
-    const { partyId } = req.params;
-    const explanations = req.body;
-    
-    // Determine how to query based on ID type
-    let filterColumn: string;
-    let filterValue: string | number;
-    
-    if (!isNaN(Number(partyId))) {
-      // Numeric ID
-      filterColumn = 'id';
-      filterValue = parseInt(partyId);
-    } else {
-      // Party code - convert to name
-      const partyName = partyCodeToName[partyId];
-      if (!partyName) {
-        return res.status(404).json({ error: 'Unknown party code' });
-      }
-      filterColumn = 'name';
-      filterValue = partyName;
-    }
-    
-    // Verify party exists
-    const { data: existingParty, error: checkError } = await supabaseDb
-      .from('parties')
-      .select('id, name')
-      .eq(filterColumn, filterValue)
-      .single();
-    
-    if (checkError || !existingParty) {
-      return res.status(404).json({ error: 'Party not found in database' });
-    }
-    
-    // Store the explanations as a JSON string in the dimensionRationales field
-    const { data: result, error: updateError } = await supabaseDb
-      .from('parties')
-      .update({ 
-        dimensionRationales: JSON.stringify(explanations)
-      })
-      .eq(filterColumn, filterValue)
-      .select();
-    
-    if (updateError || !result || result.length === 0) {
-      console.error('Error updating party explanations:', updateError);
-      return res.status(500).json({ error: 'Failed to update explanations' });
-    }
-    
-    // Clear cache when party data is updated
-    const { cache } = await import('../../services/cacheService');
-    cache.delete('parties:all');
-    cache.delete('parties:positions');
-    
-    return res.json({ 
-      success: true, 
-      message: `Explanations updated successfully for ${existingParty[0].name}` 
-    });
-  } catch (error) {
-    next(error);
+router.post("/explanations/:partyId", asyncHandler(async (req, res) => {
+  if (!supabaseDb) {
+    return res.status(503).json(
+      formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')
+    );
   }
-});
+
+  const { partyId } = req.params;
+  const explanations = req.body;
+
+  let filterColumn: string;
+  let filterValue: string | number;
+
+  if (!isNaN(Number(partyId))) {
+    filterColumn = 'id';
+    filterValue = parseInt(partyId);
+  } else {
+    const partyName = partyCodeToName[partyId];
+    if (!partyName) {
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'Unknown party code')
+      );
+    }
+    filterColumn = 'name';
+    filterValue = partyName;
+  }
+
+  const { data: existingParty, error: checkError } = await supabaseDb
+    .from('parties')
+    .select('id, name')
+    .eq(filterColumn, filterValue)
+    .single();
+
+  if (checkError || !existingParty) {
+    return res.status(404).json(
+      formatError('NOT_FOUND', 'Party not found in database')
+    );
+  }
+
+  const { data: result, error: updateError } = await supabaseDb
+    .from('parties')
+    .update({
+      dimensionRationales: JSON.stringify(explanations)
+    })
+    .eq(filterColumn, filterValue)
+    .select();
+
+  if (updateError || !result || result.length === 0) {
+    console.error('Error updating party explanations:', updateError);
+    return res.status(500).json(
+      formatError('OPERATION_FAILED', 'Failed to update explanations')
+    );
+  }
+
+  // Clear cache when party data is updated
+  const { cache } = await import('../../services/cacheService');
+  cache.delete('parties:all');
+  cache.delete('parties:positions');
+
+  return res.json(formatSuccess(
+    { message: `Explanations updated for ${existingParty.name}` },
+    { partyId: existingParty.id }
+  ));
+}));
 
 export default router;
 

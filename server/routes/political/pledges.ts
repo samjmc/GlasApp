@@ -1,29 +1,26 @@
 /**
- * Consolidated Pledge Routes
+ * Pledge Routes
  * Handles all pledge-related operations:
  * - CRUD operations for pledges
  * - Pledge actions tracking
  * - Party performance scoring
  * - Category weighting/voting
  * - Individual pledge weighting
- * 
- * Consolidated from:
- * - pledgeRoutes.ts
- * - pledgeVotingRoutes.ts
- * - pledgeWeightingRoutes.ts
  */
 
 import { Router } from 'express';
 import { db } from '../../db';
 import { pledges, pledgeActions, partyPerformanceScores, parties } from '@shared/schema';
 import { eq, desc, sql } from 'drizzle-orm';
-import { 
-  calculatePledgeScore, 
+import {
+  calculatePledgeScore,
   calculatePartyPerformanceScores,
-  type PartyPerformanceMetrics 
+  type PartyPerformanceMetrics
 } from '../../services/pledgeScoring';
 import { insertPledgeSchema } from '@shared/schema';
 import { isAuthenticated } from '../../replitAuth';
+import { asyncHandler } from '../../middleware/errorHandler';
+import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
 const router = Router();
 
@@ -32,375 +29,284 @@ const router = Router();
 // ============================================
 
 /**
- * Create a new pledge
- * POST /api/pledges
+ * POST /api/pledges - Create a new pledge
  */
-router.post('/', async (req, res, next) => {
-  try {
-    const validatedData = insertPledgeSchema.parse(req.body);
-    
-    // Determine score type based on party
-    const [party] = await db
-      .select()
-      .from(parties)
-      .where(eq(parties.id, validatedData.partyId));
-    
-    if (!party) {
-      return res.status(404).json({
-        success: false,
-        message: 'Party not found'
-      });
-    }
+router.post('/', asyncHandler(async (req, res) => {
+  const validatedData = insertPledgeSchema.parse(req.body);
 
-    // Determine if government or opposition party
-    const governmentParties = ['Fine Gael', 'Fianna Fáil'];
-    const scoreType = governmentParties.includes(party.name) ? 'fulfillment' : 'advocacy';
+  const [party] = await db
+    .select()
+    .from(parties)
+    .where(eq(parties.id, validatedData.partyId));
 
-    const [newPledge] = await db
-      .insert(pledges)
-      .values({
-        ...validatedData,
-        scoreType: scoreType,
-        targetDate: validatedData.targetDate ? new Date(validatedData.targetDate) : null
-      })
-      .returning();
-
-    return res.status(201).json({
-      success: true,
-      data: newPledge
-    });
-  } catch (error) {
-    next(error);
+  if (!party) {
+    return res.status(404).json(
+      formatError('NOT_FOUND', 'Party not found')
+    );
   }
-});
+
+  const governmentParties = ['Fine Gael', 'Fianna Fáil'];
+  const scoreType = governmentParties.includes(party.name) ? 'fulfillment' : 'advocacy';
+
+  const [newPledge] = await db
+    .insert(pledges)
+    .values({
+      ...validatedData,
+      scoreType: scoreType,
+      targetDate: validatedData.targetDate ? new Date(validatedData.targetDate) : null
+    })
+    .returning();
+
+  return res.status(201).json(formatSuccess(newPledge));
+}));
 
 /**
- * Get pledge details with actions
- * GET /api/pledges/:pledgeId
+ * GET /api/pledges/:pledgeId - Get pledge details with actions
  */
-router.get('/:pledgeId', async (req, res, next) => {
-  try {
-    const pledgeId = parseInt(req.params.pledgeId);
-    
-    const [pledge] = await db
-      .select({
-        pledge: pledges,
-        partyName: parties.name,
-      })
-      .from(pledges)
-      .innerJoin(parties, eq(pledges.partyId, parties.id))
-      .where(eq(pledges.id, pledgeId));
+router.get('/:pledgeId', asyncHandler(async (req, res) => {
+  const pledgeId = parseInt(req.params.pledgeId);
 
-    if (!pledge) {
-      return res.status(404).json({
-        success: false,
-        message: 'Pledge not found'
-      });
-    }
+  const [pledge] = await db
+    .select({
+      pledge: pledges,
+      partyName: parties.name,
+    })
+    .from(pledges)
+    .innerJoin(parties, eq(pledges.partyId, parties.id))
+    .where(eq(pledges.id, pledgeId));
 
-    const actions = await db
-      .select()
-      .from(pledgeActions)
-      .where(eq(pledgeActions.pledgeId, pledgeId))
-      .orderBy(desc(pledgeActions.actionDate));
-
-    return res.json({
-      success: true,
-      data: {
-        ...pledge,
-        actions
-      }
-    });
-  } catch (error) {
-    next(error);
+  if (!pledge) {
+    return res.status(404).json(
+      formatError('NOT_FOUND', 'Pledge not found')
+    );
   }
-});
+
+  const actions = await db
+    .select()
+    .from(pledgeActions)
+    .where(eq(pledgeActions.pledgeId, pledgeId))
+    .orderBy(desc(pledgeActions.actionDate));
+
+  return res.json(formatSuccess({
+    ...pledge,
+    actions
+  }));
+}));
 
 /**
- * Update pledge
- * PUT /api/pledges/:pledgeId
+ * PUT /api/pledges/:pledgeId - Update pledge
  */
-router.put('/:pledgeId', async (req, res, next) => {
-  try {
-    const pledgeId = parseInt(req.params.pledgeId);
-    const updateData = req.body;
+router.put('/:pledgeId', asyncHandler(async (req, res) => {
+  const pledgeId = parseInt(req.params.pledgeId);
+  const updateData = req.body;
 
-    const [updatedPledge] = await db
-      .update(pledges)
-      .set({
-        ...updateData,
-        targetDate: updateData.targetDate ? new Date(updateData.targetDate) : null,
-        lastUpdated: new Date()
-      })
-      .where(eq(pledges.id, pledgeId))
-      .returning();
+  const [updatedPledge] = await db
+    .update(pledges)
+    .set({
+      ...updateData,
+      targetDate: updateData.targetDate ? new Date(updateData.targetDate) : null,
+      lastUpdated: new Date()
+    })
+    .where(eq(pledges.id, pledgeId))
+    .returning();
 
-    if (!updatedPledge) {
-      return res.status(404).json({
-        success: false,
-        message: 'Pledge not found'
-      });
-    }
-
-    return res.json({
-      success: true,
-      data: updatedPledge
-    });
-  } catch (error) {
-    next(error);
+  if (!updatedPledge) {
+    return res.status(404).json(
+      formatError('NOT_FOUND', 'Pledge not found')
+    );
   }
-});
+
+  return res.json(formatSuccess(updatedPledge));
+}));
 
 /**
- * Delete pledge
- * DELETE /api/pledges/:pledgeId
+ * DELETE /api/pledges/:pledgeId - Delete pledge
  */
-router.delete('/:pledgeId', async (req, res, next) => {
-  try {
-    const pledgeId = parseInt(req.params.pledgeId);
+router.delete('/:pledgeId', asyncHandler(async (req, res) => {
+  const pledgeId = parseInt(req.params.pledgeId);
 
-    // First delete associated actions
-    await db
-      .delete(pledgeActions)
-      .where(eq(pledgeActions.pledgeId, pledgeId));
+  await db
+    .delete(pledgeActions)
+    .where(eq(pledgeActions.pledgeId, pledgeId));
 
-    // Then delete the pledge
-    const [deletedPledge] = await db
-      .delete(pledges)
-      .where(eq(pledges.id, pledgeId))
-      .returning();
+  const [deletedPledge] = await db
+    .delete(pledges)
+    .where(eq(pledges.id, pledgeId))
+    .returning();
 
-    if (!deletedPledge) {
-      return res.status(404).json({
-        success: false,
-        message: 'Pledge not found'
-      });
-    }
-
-    return res.json({
-      success: true,
-      message: 'Pledge deleted successfully'
-    });
-  } catch (error) {
-    next(error);
+  if (!deletedPledge) {
+    return res.status(404).json(
+      formatError('NOT_FOUND', 'Pledge not found')
+    );
   }
-});
+
+  return res.json(formatSuccess({ message: 'Pledge deleted successfully' }));
+}));
 
 // ============================================
 // Party Pledges & Efficiency Scoring
 // ============================================
 
 /**
- * Get all pledges for a party with efficiency scoring
- * GET /api/pledges/party/:partyId
+ * GET /api/pledges/party/:partyId - Get all pledges for a party with efficiency scoring
  */
-router.get('/party/:partyId', async (req, res, next) => {
-  try {
-    const partyId = parseInt(req.params.partyId);
-    
-    // TD count mapping based on 2024 election results
-    const tdCounts: Record<number, number> = {
-      1: 37, // Sinn Féin
-      2: 38, // Fine Gael  
-      3: 38, // Fianna Fáil
-      6: 6,  // Social Democrats
-      8: 2   // Aontú
-    };
+router.get('/party/:partyId', asyncHandler(async (req, res) => {
+  const partyId = parseInt(req.params.partyId);
 
-    const partyPledges = await db
-      .select({
-        pledges: pledges,
-        parties: parties
-      })
-      .from(pledges)
-      .innerJoin(parties, eq(pledges.partyId, parties.id))
-      .where(eq(pledges.partyId, partyId))
-      .orderBy(desc(pledges.lastUpdated));
+  const tdCounts: Record<number, number> = {
+    1: 37, // Sinn Féin
+    2: 38, // Fine Gael
+    3: 38, // Fianna Fáil
+    6: 6,  // Social Democrats
+    8: 2   // Aontú
+  };
 
-    // Calculate efficiency scores for each pledge
-    const numberOfTDs = tdCounts[partyId] || 1;
-    const pledgesWithEfficiency = partyPledges.map(item => {
-      const pledge = item.pledges;
-      const partyName = item.parties.name;
-      const score = Number(pledge.score) || 0;
-      const weight = Number(pledge.defaultWeight) || 0;
-      const contribution = (score * weight) / 100;
-      const efficiencyScore = contribution / numberOfTDs;
-      
-      return {
-        pledge: {
-          ...pledge,
-          contribution: Math.round(contribution * 100) / 100,
-          efficiencyScore: Math.round(efficiencyScore * 100) / 100,
-          numberOfTDs,
-          defaultWeight: weight
-        },
-        partyName
-      };
-    });
+  const partyPledges = await db
+    .select({
+      pledges: pledges,
+      parties: parties
+    })
+    .from(pledges)
+    .innerJoin(parties, eq(pledges.partyId, parties.id))
+    .where(eq(pledges.partyId, partyId))
+    .orderBy(desc(pledges.lastUpdated));
 
-    // Calculate overall party efficiency
-    const totalContribution = pledgesWithEfficiency.reduce((sum, item) => 
-      sum + (item.pledge.contribution || 0), 0);
-    const overallEfficiency = totalContribution / numberOfTDs;
+  const numberOfTDs = tdCounts[partyId] || 1;
+  const pledgesWithEfficiency = partyPledges.map(item => {
+    const pledge = item.pledges;
+    const partyName = item.parties.name;
+    const score = Number(pledge.score) || 0;
+    const weight = Number(pledge.defaultWeight) || 0;
+    const contribution = (score * weight) / 100;
+    const efficiencyScore = contribution / numberOfTDs;
 
-    return res.json({
-      success: true,
-      data: pledgesWithEfficiency,
-      metadata: {
-        partyId,
+    return {
+      pledge: {
+        ...pledge,
+        contribution: Math.round(contribution * 100) / 100,
+        efficiencyScore: Math.round(efficiencyScore * 100) / 100,
         numberOfTDs,
-        totalContribution: Math.round(totalContribution * 100) / 100,
-        overallEfficiency: Math.round(overallEfficiency * 100) / 100,
-        pledgeCount: pledgesWithEfficiency.length
-      }
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+        defaultWeight: weight
+      },
+      partyName
+    };
+  });
+
+  const totalContribution = pledgesWithEfficiency.reduce((sum, item) =>
+    sum + (item.pledge.contribution || 0), 0);
+  const overallEfficiency = totalContribution / numberOfTDs;
+
+  return res.json(formatSuccess(pledgesWithEfficiency, {
+    partyId,
+    numberOfTDs,
+    totalContribution: Math.round(totalContribution * 100) / 100,
+    overallEfficiency: Math.round(overallEfficiency * 100) / 100,
+    pledgeCount: pledgesWithEfficiency.length
+  }));
+}));
 
 // ============================================
 // Pledge Actions
 // ============================================
 
 /**
- * Add a new pledge action
- * POST /api/pledges/:pledgeId/actions
+ * POST /api/pledges/:pledgeId/actions - Add a new pledge action
  */
-router.post('/:pledgeId/actions', async (req, res, next) => {
-  try {
-    const pledgeId = parseInt(req.params.pledgeId);
-    const { actionType, description, actionDate, impactScore, sourceUrl, evidenceDetails } = req.body;
-    
-    const [newAction] = await db
-      .insert(pledgeActions)
-      .values({
-        pledgeId,
-        actionType,
-        description,
-        actionDate: new Date(actionDate),
-        impactScore: impactScore?.toString() || '5',
-        sourceUrl,
-        evidenceDetails
-      })
-      .returning();
+router.post('/:pledgeId/actions', asyncHandler(async (req, res) => {
+  const pledgeId = parseInt(req.params.pledgeId);
+  const { actionType, description, actionDate, impactScore, sourceUrl, evidenceDetails } = req.body;
 
-    // Recalculate pledge score after adding action
-    await calculatePledgeScore(pledgeId);
+  const [newAction] = await db
+    .insert(pledgeActions)
+    .values({
+      pledgeId,
+      actionType,
+      description,
+      actionDate: new Date(actionDate),
+      impactScore: impactScore?.toString() || '5',
+      sourceUrl,
+      evidenceDetails
+    })
+    .returning();
 
-    return res.json({
-      success: true,
-      data: newAction
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  await calculatePledgeScore(pledgeId);
+
+  return res.json(formatSuccess(newAction));
+}));
 
 /**
- * Recalculate pledge score
- * POST /api/pledges/:pledgeId/recalculate
+ * POST /api/pledges/:pledgeId/recalculate - Recalculate pledge score
  */
-router.post('/:pledgeId/recalculate', async (req, res, next) => {
-  try {
-    const pledgeId = parseInt(req.params.pledgeId);
-    
-    const newScore = await calculatePledgeScore(pledgeId);
-    
-    return res.json({
-      success: true,
-      data: {
-        pledgeId,
-        newScore
-      }
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+router.post('/:pledgeId/recalculate', asyncHandler(async (req, res) => {
+  const pledgeId = parseInt(req.params.pledgeId);
+
+  const newScore = await calculatePledgeScore(pledgeId);
+
+  return res.json(formatSuccess({
+    pledgeId,
+    newScore
+  }));
+}));
 
 // ============================================
 // Party Performance Scoring
 // ============================================
 
 /**
- * Get party performance scores
- * GET /api/pledges/performance/:partyId
+ * GET /api/pledges/performance/:partyId - Get party performance scores
  */
-router.get('/performance/:partyId', async (req, res, next) => {
-  try {
-    const partyId = parseInt(req.params.partyId);
-    
-    // Get latest performance scores from database
-    const latestScores = await db
-      .select()
-      .from(partyPerformanceScores)
-      .where(eq(partyPerformanceScores.partyId, partyId))
-      .orderBy(desc(partyPerformanceScores.calculatedAt))
-      .limit(2); // Get both performance and trustworthiness scores
+router.get('/performance/:partyId', asyncHandler(async (req, res) => {
+  const partyId = parseInt(req.params.partyId);
 
-    if (latestScores.length === 0) {
-      // Calculate scores if none exist
-      const metrics = await calculatePartyPerformanceScores(partyId);
-      return res.json({
-        success: true,
-        data: metrics
-      });
-    }
+  const latestScores = await db
+    .select()
+    .from(partyPerformanceScores)
+    .where(eq(partyPerformanceScores.partyId, partyId))
+    .orderBy(desc(partyPerformanceScores.calculatedAt))
+    .limit(2);
 
-    // Parse and format existing scores
-    const performanceScore = latestScores.find(s => s.scoreType === 'performance');
-    const trustworthinessScore = latestScores.find(s => s.scoreType === 'trustworthiness');
-
-    const [party] = await db
-      .select()
-      .from(parties)
-      .where(eq(parties.id, partyId));
-
-    const formattedMetrics: PartyPerformanceMetrics = {
-      partyId: partyId,
-      partyName: party?.name || 'Unknown Party',
-      governmentStatus: performanceScore?.governmentStatus as unknown || 'opposition',
-      overallPerformanceScore: parseFloat(performanceScore?.overallScore || '50'),
-      overallTrustworthinessScore: parseFloat(trustworthinessScore?.overallScore || '50'),
-      pledgeFulfillmentScore: parseFloat(performanceScore?.pledgeFulfillmentScore || '50'),
-      policyConsistencyScore: parseFloat(performanceScore?.policyConsistencyScore || '50'),
-      parliamentaryActivityScore: parseFloat(performanceScore?.parliamentaryActivityScore || '50'),
-      integrityScore: parseFloat(performanceScore?.integrityScore || '50'),
-      transparencyScore: parseFloat(trustworthinessScore?.transparencyScore || '50'),
-      factualAccuracyScore: parseFloat(trustworthinessScore?.factualAccuracyScore || '50'),
-      publicAccountabilityScore: parseFloat(trustworthinessScore?.publicAccountabilityScore || '50'),
-      conflictAvoidanceScore: parseFloat(trustworthinessScore?.conflictAvoidanceScore || '50'),
-    };
-
-    return res.json({
-      success: true,
-      data: formattedMetrics
-    });
-  } catch (error) {
-    next(error);
+  if (latestScores.length === 0) {
+    const metrics = await calculatePartyPerformanceScores(partyId);
+    return res.json(formatSuccess(metrics));
   }
-});
+
+  const performanceScore = latestScores.find(s => s.scoreType === 'performance');
+  const trustworthinessScore = latestScores.find(s => s.scoreType === 'trustworthiness');
+
+  const [party] = await db
+    .select()
+    .from(parties)
+    .where(eq(parties.id, partyId));
+
+  const formattedMetrics: PartyPerformanceMetrics = {
+    partyId: partyId,
+    partyName: party?.name || 'Unknown Party',
+    governmentStatus: performanceScore?.governmentStatus as unknown || 'opposition',
+    overallPerformanceScore: parseFloat(performanceScore?.overallScore || '50'),
+    overallTrustworthinessScore: parseFloat(trustworthinessScore?.overallScore || '50'),
+    pledgeFulfillmentScore: parseFloat(performanceScore?.pledgeFulfillmentScore || '50'),
+    policyConsistencyScore: parseFloat(performanceScore?.policyConsistencyScore || '50'),
+    parliamentaryActivityScore: parseFloat(performanceScore?.parliamentaryActivityScore || '50'),
+    integrityScore: parseFloat(performanceScore?.integrityScore || '50'),
+    transparencyScore: parseFloat(trustworthinessScore?.transparencyScore || '50'),
+    factualAccuracyScore: parseFloat(trustworthinessScore?.factualAccuracyScore || '50'),
+    publicAccountabilityScore: parseFloat(trustworthinessScore?.publicAccountabilityScore || '50'),
+    conflictAvoidanceScore: parseFloat(trustworthinessScore?.conflictAvoidanceScore || '50'),
+  };
+
+  return res.json(formatSuccess(formattedMetrics));
+}));
 
 /**
- * Recalculate all performance scores for a party
- * POST /api/pledges/performance/:partyId/recalculate
+ * POST /api/pledges/performance/:partyId/recalculate - Recalculate all performance scores for a party
  */
-router.post('/performance/:partyId/recalculate', async (req, res, next) => {
-  try {
-    const partyId = parseInt(req.params.partyId);
-    
-    const metrics = await calculatePartyPerformanceScores(partyId);
-    
-    return res.json({
-      success: true,
-      data: metrics
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+router.post('/performance/:partyId/recalculate', asyncHandler(async (req, res) => {
+  const partyId = parseInt(req.params.partyId);
+
+  const metrics = await calculatePartyPerformanceScores(partyId);
+
+  return res.json(formatSuccess(metrics));
+}));
 
 // ============================================
 // Category Weighting/Voting
@@ -408,134 +314,102 @@ router.post('/performance/:partyId/recalculate', async (req, res, next) => {
 // ============================================
 
 /**
- * Get weighted pledge performance by category
- * GET /api/pledges/weighted-performance/:partyId
+ * GET /api/pledges/weighted-performance/:partyId - Get weighted pledge performance by category
  */
-router.get('/weighted-performance/:partyId', async (req, res, next) => {
-  try {
-    const { partyId } = req.params;
+router.get('/weighted-performance/:partyId', asyncHandler(async (req, res) => {
+  const { partyId } = req.params;
 
-    // Get all pledges for the party with their performance
-    const partyPledges = await db
-      .select()
-      .from(pledges)
-      .where(eq(pledges.partyId, parseInt(partyId)));
+  const partyPledges = await db
+    .select()
+    .from(pledges)
+    .where(eq(pledges.partyId, parseInt(partyId)));
 
-    // Default category weights (can be customized later)
-    const defaultWeights: Record<string, number> = {
-      'taxation': 30,
-      'housing': 35,
-      'health': 15,
-      'infrastructure': 20,
-      'social_welfare': 10,
-      'childcare': 10,
-      'justice': 5
-    };
+  const defaultWeights: Record<string, number> = {
+    'taxation': 30,
+    'housing': 35,
+    'health': 15,
+    'infrastructure': 20,
+    'social_welfare': 10,
+    'childcare': 10,
+    'justice': 5
+  };
 
-    // Group pledges by category and calculate weighted average
-    const categoryPerformance: unknown = {};
-    let totalWeightedScore = 0;
-    let totalWeight = 0;
+  const categoryPerformance: any = {};
+  let totalWeightedScore = 0;
+  let totalWeight = 0;
 
-    for (const pledge of partyPledges) {
-      if (!categoryPerformance[pledge.category]) {
-        categoryPerformance[pledge.category] = {
-          pledges: [],
-          categoryWeight: defaultWeights[pledge.category] || 5
-        };
-      }
-      categoryPerformance[pledge.category].pledges.push(pledge);
+  for (const pledge of partyPledges) {
+    if (!categoryPerformance[pledge.category]) {
+      categoryPerformance[pledge.category] = {
+        pledges: [],
+        categoryWeight: defaultWeights[pledge.category] || 5
+      };
     }
-
-    // Calculate weighted performance
-    for (const [category, data] of Object.entries(categoryPerformance)) {
-      const categoryData = data as unknown;
-      const categoryWeight = categoryData.categoryWeight;
-      
-      // Calculate average performance for this category
-      const categoryAverage = categoryData.pledges.reduce((sum: number, pledge: unknown) => {
-        return sum + parseFloat(pledge.score);
-      }, 0) / categoryData.pledges.length;
-      
-      totalWeightedScore += categoryAverage * (categoryWeight / 100);
-      totalWeight += categoryWeight;
-    }
-
-    res.json({ 
-      success: true, 
-      data: {
-        overallScore: Math.round(totalWeightedScore),
-        categoryBreakdown: categoryPerformance,
-        defaultWeights: defaultWeights
-      }
-    });
-  } catch (error) {
-    next(error);
+    categoryPerformance[pledge.category].pledges.push(pledge);
   }
-});
+
+  for (const [category, data] of Object.entries(categoryPerformance)) {
+    const categoryData = data as any;
+    const categoryWeight = categoryData.categoryWeight;
+
+    const categoryAverage = categoryData.pledges.reduce((sum: number, pledge: any) => {
+      return sum + parseFloat(pledge.score);
+    }, 0) / categoryData.pledges.length;
+
+    totalWeightedScore += categoryAverage * (categoryWeight / 100);
+    totalWeight += categoryWeight;
+  }
+
+  return res.json(formatSuccess({
+    overallScore: Math.round(totalWeightedScore),
+    categoryBreakdown: categoryPerformance,
+    defaultWeights: defaultWeights
+  }));
+}));
 
 /**
- * Get category weights
- * GET /api/pledges/category-weights
+ * GET /api/pledges/category-weights - Get category weights
  */
-router.get('/category-weights', async (req, res, next) => {
-  try {
-    const defaultWeights = [
-      { category: 'taxation', defaultWeight: '30.00', displayName: 'Cost of Living & Tax' },
-      { category: 'housing', defaultWeight: '35.00', displayName: 'Housing' },
-      { category: 'health', defaultWeight: '15.00', displayName: 'Health' },
-      { category: 'infrastructure', defaultWeight: '20.00', displayName: 'Infrastructure' }
-    ];
-    res.json({ success: true, data: defaultWeights });
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/category-weights', asyncHandler(async (req, res) => {
+  const defaultWeights = [
+    { category: 'taxation', defaultWeight: '30.00', displayName: 'Cost of Living & Tax' },
+    { category: 'housing', defaultWeight: '35.00', displayName: 'Housing' },
+    { category: 'health', defaultWeight: '15.00', displayName: 'Health' },
+    { category: 'infrastructure', defaultWeight: '20.00', displayName: 'Infrastructure' }
+  ];
+  return res.json(formatSuccess(defaultWeights));
+}));
 
 /**
- * Get user category votes
- * GET /api/pledges/user-category-votes
+ * GET /api/pledges/user-category-votes - Get user category votes
  */
-router.get('/user-category-votes', async (req, res, next) => {
-  try {
-    const defaultWeights = [
-      { category: 'taxation', weight: '30.00', displayName: 'Cost of Living & Tax' },
-      { category: 'housing', weight: '35.00', displayName: 'Housing' },
-      { category: 'health', weight: '15.00', displayName: 'Health' },
-      { category: 'infrastructure', weight: '20.00', displayName: 'Infrastructure' }
-    ];
-    res.json({ success: true, data: defaultWeights, isDefault: true });
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/user-category-votes', asyncHandler(async (req, res) => {
+  const defaultWeights = [
+    { category: 'taxation', weight: '30.00', displayName: 'Cost of Living & Tax' },
+    { category: 'housing', weight: '35.00', displayName: 'Housing' },
+    { category: 'health', weight: '15.00', displayName: 'Health' },
+    { category: 'infrastructure', weight: '20.00', displayName: 'Infrastructure' }
+  ];
+  return res.json(formatSuccess(defaultWeights, { isDefault: true }));
+}));
 
 /**
- * Submit category votes
- * POST /api/pledges/category-votes
+ * POST /api/pledges/category-votes - Submit category votes
  */
-router.post('/category-votes', isAuthenticated, async (req, res, next) => {
-  try {
-    const { votes } = req.body;
-    
-    // Validate that weights sum to 100
-    const totalWeight = votes.reduce((sum: number, vote: unknown) => sum + parseFloat(vote.weight), 0);
-    if (Math.abs(totalWeight - 100) > 0.01) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Category weights must sum to 100%' 
-      });
-    }
+router.post('/category-votes', isAuthenticated, asyncHandler(async (req, res) => {
+  const { votes } = req.body;
 
-    // For now, just acknowledge the vote submission
-    // TODO: Store in database when schema is finalized
-    console.log('Category votes received:', votes);
-
-    res.json({ success: true, message: 'Category votes submitted successfully' });
-  } catch (error) {
-    next(error);
+  const totalWeight = votes.reduce((sum: number, vote: any) => sum + parseFloat(vote.weight), 0);
+  if (Math.abs(totalWeight - 100) > 0.01) {
+    return res.status(400).json(
+      formatError('VALIDATION_ERROR', 'Category weights must sum to 100%')
+    );
   }
-});
+
+  console.log('Category votes received:', votes);
+
+  return res.json(formatSuccess({ message: 'Category votes submitted successfully' }));
+}));
 
 // ============================================
 // Individual Pledge Weighting
@@ -586,124 +460,110 @@ const pledgeWeightings: Record<number, Record<string, number>> = {
 };
 
 /**
- * Get weighted performance using individual pledge weights
- * GET /api/pledges/individual-weighted-performance/:partyId
+ * GET /api/pledges/individual-weighted-performance/:partyId - Get weighted performance using individual pledge weights
  */
-router.get('/individual-weighted-performance/:partyId', async (req, res, next) => {
-  try {
-    const partyId = parseInt(req.params.partyId);
-    
-    if (!partyId) {
-      return res.status(400).json({ success: false, message: 'Valid party ID required' });
+router.get('/individual-weighted-performance/:partyId', asyncHandler(async (req, res) => {
+  const partyId = parseInt(req.params.partyId);
+
+  if (!partyId) {
+    return res.status(400).json(
+      formatError('VALIDATION_ERROR', 'Valid party ID required')
+    );
+  }
+
+  const partyPledges = await db
+    .select({
+      id: pledges.id,
+      title: pledges.title,
+      score: pledges.score,
+      category: pledges.category
+    })
+    .from(pledges)
+    .where(sql`${pledges.partyId} = ${partyId}`);
+
+  const pledgeWeights = pledgeWeightings[partyId] || {};
+
+  let weightedTotal = 0;
+  let totalWeight = 0;
+  const pledgeBreakdown: Record<string, any> = {};
+
+  partyPledges.forEach(pledge => {
+    const pledgeTitle = pledge.title || '';
+    let weight = pledgeWeights[pledgeTitle] || 0;
+    if (weight === 0 && pledgeTitle.startsWith('"') && pledgeTitle.endsWith('"')) {
+      const titleWithoutQuotes = pledgeTitle.slice(1, -1);
+      weight = pledgeWeights[titleWithoutQuotes] || 0;
     }
+    const score = parseFloat(pledge.score || '0') || 0;
+    const contribution = (score * weight) / 100;
 
-    // Get all pledges for the party
-    const partyPledges = await db
-      .select({
-        id: pledges.id,
-        title: pledges.title,
-        score: pledges.score,
-        category: pledges.category
-      })
-      .from(pledges)
-      .where(sql`${pledges.partyId} = ${partyId}`);
-
-    const pledgeWeights = pledgeWeightings[partyId] || {};
-    
-    let weightedTotal = 0;
-    let totalWeight = 0;
-    const pledgeBreakdown: Record<string, any> = {};
-
-    // Calculate weighted score using individual pledge weights
-    partyPledges.forEach(pledge => {
-      const pledgeTitle = pledge.title || '';
-      // Handle pledge titles with quotes by trying both with and without quotes
-      let weight = pledgeWeights[pledgeTitle] || 0;
-      if (weight === 0 && pledgeTitle.startsWith('"') && pledgeTitle.endsWith('"')) {
-        const titleWithoutQuotes = pledgeTitle.slice(1, -1);
-        weight = pledgeWeights[titleWithoutQuotes] || 0;
-      }
-      const score = parseFloat(pledge.score || '0') || 0;
-      const contribution = (score * weight) / 100;
-      
-      pledgeBreakdown[pledge.title || ''] = {
-        score,
-        weight,
-        category: pledge.category,
-        contribution
-      };
-
-      weightedTotal += contribution;
-      totalWeight += weight;
-    });
-
-    // Calculate category summaries
-    const categoryBreakdown: Record<string, any> = {};
-    partyPledges.forEach(pledge => {
-      const category = pledge.category || 'Uncategorized';
-      const weight = pledgeWeights[pledge.title || ''] || 0;
-      const score = parseFloat(pledge.score || '0') || 0;
-      
-      if (!categoryBreakdown[category]) {
-        categoryBreakdown[category] = {
-          totalWeight: 0,
-          weightedScore: 0,
-          pledgeCount: 0,
-          pledges: []
-        };
-      }
-      
-      categoryBreakdown[category].totalWeight += weight;
-      categoryBreakdown[category].weightedScore += (score * weight) / 100;
-      categoryBreakdown[category].pledgeCount += 1;
-      categoryBreakdown[category].pledges.push({
-        title: pledge.title,
-        score,
-        weight
-      });
-    });
-
-    // Calculate average score per category
-    Object.keys(categoryBreakdown).forEach(category => {
-      const catData = categoryBreakdown[category];
-      catData.averageScore = catData.totalWeight > 0 
-        ? (catData.weightedScore / catData.totalWeight) * 100 
-        : 0;
-    });
-
-    const result = {
-      partyId,
-      weightedScore: totalWeight > 0 ? weightedTotal : 0,
-      totalWeight,
-      pledgeCount: partyPledges.length,
-      weightedPledgeCount: Object.keys(pledgeWeights).length,
-      pledgeBreakdown,
-      categoryBreakdown
+    pledgeBreakdown[pledge.title || ''] = {
+      score,
+      weight,
+      category: pledge.category,
+      contribution
     };
 
-    res.json({ success: true, data: result });
+    weightedTotal += contribution;
+    totalWeight += weight;
+  });
 
-  } catch (error) {
-    next(error);
-  }
-});
+  const categoryBreakdown: Record<string, any> = {};
+  partyPledges.forEach(pledge => {
+    const category = pledge.category || 'Uncategorized';
+    const weight = pledgeWeights[pledge.title || ''] || 0;
+    const score = parseFloat(pledge.score || '0') || 0;
+
+    if (!categoryBreakdown[category]) {
+      categoryBreakdown[category] = {
+        totalWeight: 0,
+        weightedScore: 0,
+        pledgeCount: 0,
+        pledges: []
+      };
+    }
+
+    categoryBreakdown[category].totalWeight += weight;
+    categoryBreakdown[category].weightedScore += (score * weight) / 100;
+    categoryBreakdown[category].pledgeCount += 1;
+    categoryBreakdown[category].pledges.push({
+      title: pledge.title,
+      score,
+      weight
+    });
+  });
+
+  Object.keys(categoryBreakdown).forEach(category => {
+    const catData = categoryBreakdown[category];
+    catData.averageScore = catData.totalWeight > 0
+      ? (catData.weightedScore / catData.totalWeight) * 100
+      : 0;
+  });
+
+  const result = {
+    partyId,
+    weightedScore: totalWeight > 0 ? weightedTotal : 0,
+    totalWeight,
+    pledgeCount: partyPledges.length,
+    weightedPledgeCount: Object.keys(pledgeWeights).length,
+    pledgeBreakdown,
+    categoryBreakdown
+  };
+
+  return res.json(formatSuccess(result));
+}));
 
 /**
- * Get available parties with pledge weightings
- * GET /api/pledges/available-parties
+ * GET /api/pledges/available-parties - Get available parties with pledge weightings
  */
-router.get('/available-parties', async (req, res, next) => {
-  try {
-    const parties = Object.keys(pledgeWeightings).map(partyId => ({
-      partyId: parseInt(partyId),
-      weightedPledgeCount: Object.keys(pledgeWeightings[parseInt(partyId)]).length
-    }));
+router.get('/available-parties', asyncHandler(async (req, res) => {
+  const availableParties = Object.keys(pledgeWeightings).map(partyId => ({
+    partyId: parseInt(partyId),
+    weightedPledgeCount: Object.keys(pledgeWeightings[parseInt(partyId)]).length
+  }));
 
-    res.json({ success: true, data: parties });
-  } catch (error) {
-    next(error);
-  }
-});
+  return res.json(formatSuccess(availableParties));
+}));
 
 export default router;
 
