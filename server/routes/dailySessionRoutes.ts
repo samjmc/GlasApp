@@ -63,7 +63,7 @@ router.get("/", isAuthenticated, async (req, res) => {
       session: sessionState,
       regionCode,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Daily session load failed:", error);
     res.status(500).json({
       success: false,
@@ -109,7 +109,7 @@ router.post(
         session: updatedSession,
         regionCode,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Daily vote submission failed:", error);
       res.status(400).json({
         success: false,
@@ -137,7 +137,7 @@ router.post("/complete", isAuthenticated, async (req, res) => {
       summary,
       regionCode,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Daily session completion failed:", error);
     res.status(400).json({
       success: false,
@@ -187,7 +187,7 @@ router.post("/explainer", isAuthenticated, async (req, res) => {
       success: true,
       explainer,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Daily session quick explainer failed:", error);
     res.status(500).json({
       success: false,

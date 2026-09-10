@@ -118,7 +118,7 @@ router.post('/add', async (req, res, next) => {
             article_id: articleId,
             impact: analysis.bias_adjustments?.final_adjusted_impact || analysis.impact_score
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error(`   ❌ Analysis failed for ${td.name}`);
           results.push({
             td_name: td.name,
@@ -251,7 +251,7 @@ function extractTitleFromUrl(url: string): string {
   }
 }
 
-async function saveManualArticle(article: any, tdName: string, analysis: any): Promise<number | null> {
+async function saveManualArticle(article: unknown, tdName: string, analysis: unknown): Promise<number | null> {
   if (!supabaseDb) return null;
   
   try {
@@ -292,7 +292,7 @@ async function saveManualArticle(article: any, tdName: string, analysis: any): P
     console.log(`   ✅ Article saved (ID: ${data.id})`);
     return data.id;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error:', error.message);
     return null;
   }

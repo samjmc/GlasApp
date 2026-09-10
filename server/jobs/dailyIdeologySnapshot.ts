@@ -20,7 +20,7 @@ async function runDailySnapshot() {
     console.log('================================\n');
 
     process.exit(stats.errors > 0 ? 1 : 0);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Daily snapshot job failed:', error.message);
     console.error(error.stack);
     process.exit(1);

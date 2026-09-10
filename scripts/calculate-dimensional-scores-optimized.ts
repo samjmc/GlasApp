@@ -29,7 +29,7 @@ async function calculateDimensionalScoresOptimized() {
   // 2. Get ALL votes at once (fetch in batches)
   console.log('📥 Loading all votes...');
   
-  const allVotes: any[] = [];
+  const allVotes: unknown[] = [];
   let voteOffset = 0;
   
   while (true) {
@@ -67,7 +67,7 @@ async function calculateDimensionalScoresOptimized() {
   console.log('📥 Loading all questions...');
   
   // Fetch in batches to get ALL questions
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   const batchSize = 1000;
   let offset = 0;
   
@@ -157,7 +157,7 @@ async function calculateDimensionalScoresOptimized() {
         console.log(`   Progress: ${updated}/${tds!.length}`);
       }
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ ${td.politician_name}: ${error.message}`);
     }
   }
@@ -182,14 +182,14 @@ async function calculateDimensionalScoresOptimized() {
   });
 }
 
-function calculatePartyMajorities(allVotes: any[]): Map<string, string> {
+function calculatePartyMajorities(allVotes: unknown[]): Map<string, string> {
   const majorities = new Map<string, string>();
 
   // Group votes by vote_uri and party
   const voteGroups = new Map<string, Map<string, any[]>>();
 
   for (const vote of allVotes) {
-    const party = (vote.td_scores as any).party;
+    const party = (vote.td_scores as unknown).party;
     if (!party) continue;
 
     const voteUri = vote.vote_uri;
@@ -226,7 +226,7 @@ function calculatePartyMajorities(allVotes: any[]): Map<string, string> {
 
 function calculateEffectiveness(
   attendancePercentage: number,
-  bills: any[]
+  bills: unknown[]
 ): number {
   // Attendance (60%)
   const attendanceScore = Math.min(100, (attendancePercentage / 95) * 100);
@@ -245,7 +245,7 @@ function calculateEffectiveness(
 }
 
 function calculatePartyAlignment(
-  tdVotes: any[],
+  tdVotes: unknown[],
   party: string,
   partyMajorities: Map<string, string>
 ): number {
@@ -268,7 +268,7 @@ function calculatePartyAlignment(
 }
 
 function calculateConstituencyService(
-  questions: any[],
+  questions: unknown[],
   constituency: string
 ): number {
   if (questions.length === 0) return 30;

@@ -6,7 +6,7 @@ type SavedView = {
   id: string;
   name: string;
   description: string | null;
-  filters: any;
+  filters: unknown;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -19,7 +19,7 @@ type ExportRecord = {
   format: string;
   status: string;
   download_url: string | null;
-  metadata: any;
+  metadata: unknown;
   created_at: string;
   completed_at: string | null;
 };
@@ -80,7 +80,7 @@ const MediaWorkspacePage = () => {
   });
 
   const createViewMutation = useMutation({
-    mutationFn: async (payload: any) => {
+    mutationFn: async (payload: unknown) => {
       const response = await fetch("/api/debate-workspace/views", {
         method: "POST",
         headers: {
@@ -123,7 +123,7 @@ const MediaWorkspacePage = () => {
   });
 
   const exportMutation = useMutation({
-    mutationFn: async (payload: { viewId?: string; filters?: any; requestedBy?: string }) => {
+    mutationFn: async (payload: { viewId?: string; filters?: unknown; requestedBy?: string }) => {
       const response = await fetch("/api/debate-workspace/exports", {
         method: "POST",
         headers: {
@@ -171,7 +171,7 @@ const MediaWorkspacePage = () => {
   );
 
   const computeFilters = () => {
-    let period: any = "latest";
+    let period: unknown = "latest";
     if (formState.period === "7d" || formState.period === "30d") {
       const days = formState.period === "7d" ? 7 : 30;
       const end = new Date();

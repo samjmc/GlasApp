@@ -76,7 +76,7 @@ router.get('/', async (req, res) => {
       note: `Showing all ${rankedData?.length || 0} active TDs. ${researchedCount} have completed AI historical research.`
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching researched TDs:', error);
     res.status(500).json({
       success: false,
@@ -118,7 +118,7 @@ router.get('/stats', async (req, res) => {
       }
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching research stats:', error);
     res.status(500).json({
       success: false,

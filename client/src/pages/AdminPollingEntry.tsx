@@ -183,7 +183,7 @@ export default function AdminPollingEntry() {
 
       setPartyResults(prev => prev.map(r => ({ ...r, first_preference: 0 })));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error submitting poll:', error);
       alert(`❌ Error: ${error.message}`);
     } finally {

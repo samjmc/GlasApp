@@ -44,7 +44,7 @@ export default function TDScoresPage() {
   });
 
   // Filter by search
-  const filteredScores = scores?.scores?.filter((td: any) =>
+  const filteredScores = scores?.scores?.filter((td: unknown) =>
     td.politician_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     td.constituency.toLowerCase().includes(searchQuery.toLowerCase())
   ) || [];
@@ -157,7 +157,7 @@ export default function TDScoresPage() {
             </p>
           </Card>
         ) : (
-          filteredScores.map((td: any, idx: number) => (
+          filteredScores.map((td: unknown, idx: number) => (
             <TDScoreRow key={td.id} td={td} rank={idx + 1} />
           ))
         )}
@@ -180,7 +180,7 @@ export default function TDScoresPage() {
   );
 }
 
-function TDScoreRow({ td, rank }: { td: any; rank: number }) {
+function TDScoreRow({ td, rank }: { td: unknown; rank: number }) {
   const [expanded, setExpanded] = useState(false);
 
   return (

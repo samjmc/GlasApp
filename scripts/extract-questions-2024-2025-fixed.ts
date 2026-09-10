@@ -44,7 +44,7 @@ async function extractQuestions() {
   console.log('📥 Fetching ALL questions from API (this may take a while)...');
   console.log('─'.repeat(70));
 
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   const dateStart = '2024-01-01';
   const limit = 500;
   let skip = 0;
@@ -75,7 +75,7 @@ async function extractQuestions() {
       // Small delay to avoid rate limiting
       await new Promise(resolve => setTimeout(resolve, 100));
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error fetching batch: ${error.message}`);
       break;
     }
@@ -88,7 +88,7 @@ async function extractQuestions() {
   console.log('─'.repeat(70));
 
   const tdQuestionCounts = new Map<number, number>();
-  const questionsToInsert: any[] = [];
+  const questionsToInsert: unknown[] = [];
 
   for (const result of allQuestions) {
     const question = result.question;

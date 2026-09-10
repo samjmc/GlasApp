@@ -165,7 +165,7 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
   
   // Listen for regenerate events
   useEffect(() => {
-    const handleRegenerate = (event: any) => {
+    const handleRegenerate = (event: unknown) => {
       console.log("EnhancedProfileExplanation: Received regenerate event", event.detail);
       
       // For debugging - show exactly what weights we received

@@ -391,12 +391,12 @@ async function callLLMForOpportunity(
     }
     
     // Validate primary_dimension is valid
-    if (parsed.primary_dimension && !IDEOLOGY_DIMENSIONS.includes(parsed.primary_dimension as any)) {
+    if (parsed.primary_dimension && !IDEOLOGY_DIMENSIONS.includes(parsed.primary_dimension as unknown)) {
       parsed.primary_dimension = undefined;
     }
     
     return parsed;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Policy opportunity LLM error:', error.message || error);
     return null;
   }
@@ -434,7 +434,7 @@ async function callLLMForOptionVectors(params: {
 
     const parsed: PolicyOptionVectorLLMResult = JSON.parse(content);
     return parsed;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Policy option vector LLM error:', error.message || error);
     return null;
   }
@@ -476,7 +476,7 @@ async function upsertPolicyOpportunity(record: PolicyOpportunityRecord): Promise
       .maybeSingle();
 
     return existing?.id ?? null;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Failed to upsert policy opportunity:', error.message);
     return null;
   }
@@ -648,7 +648,7 @@ async function getTargetDimension(): Promise<string | undefined> {
       return underrepresented[Math.floor(Math.random() * underrepresented.length)];
     }
     return undefined; // Let it distribute naturally
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('⚠️ Failed to get target dimension:', error.message);
     return undefined;
   }
@@ -664,7 +664,7 @@ async function maybeHarvestDebates(policyTopic: string) {
     return;
   }
   lastDebateHarvest.set(policyTopic, now);
-  PolicyStanceHarvester.harvestRecentDebates(policyTopic).catch((error: any) => {
+  PolicyStanceHarvester.harvestRecentDebates(policyTopic).catch((error: unknown) => {
     console.error('⚠️ Failed harvesting debates:', error.message || error);
   });
 }
@@ -733,7 +733,7 @@ export const PolicyOpportunityService = {
 
     // Ensure primary_dimension is valid
     const primaryDimension = result.primary_dimension && 
-      IDEOLOGY_DIMENSIONS.includes(result.primary_dimension as any)
+      IDEOLOGY_DIMENSIONS.includes(result.primary_dimension as unknown)
       ? result.primary_dimension
       : undefined;
 

@@ -49,7 +49,7 @@ async function extractVotesForMissingTDs() {
   console.log(`\n📥 Fetching divisions from API...`);
 
   // Fetch all divisions
-  const allDivisions: any[] = [];
+  const allDivisions: unknown[] = [];
   let skip = 0;
   const limit = 100;
 
@@ -70,7 +70,7 @@ async function extractVotesForMissingTDs() {
 
   // Process votes
   console.log('🔗 Processing votes...');
-  const votesToInsert: any[] = [];
+  const votesToInsert: unknown[] = [];
   let matchedCount = 0;
 
   for (const result of allDivisions) {

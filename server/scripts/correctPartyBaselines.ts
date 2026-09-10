@@ -46,7 +46,7 @@ async function correctPartyBaselines() {
   }
 
   const partyMap = new Map();
-  parties?.forEach((party: any) => {
+  parties?.forEach((party: unknown) => {
     if (party.economic_score !== null) {
       partyMap.set(party.name, {
         economic: Number(party.economic_score),
@@ -92,7 +92,7 @@ async function correctPartyBaselines() {
       console.log(`   Party baseline: economic=${partyBaseline.economic}, social=${partyBaseline.social}, welfare=${partyBaseline.welfare}`);
       
       // Add party baseline to current profile (preserving any adjustments that were made)
-      const correctedProfile: any = {
+      const correctedProfile: unknown = {
         politician_name: profile.politician_name,
         updated_at: new Date().toISOString(),
       };

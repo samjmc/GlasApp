@@ -261,7 +261,7 @@ router.post("/assistant", async (req: Request, res: Response, next) => {
     
     const response = await getOpenAIClient().chat.completions.create({
       model: MODEL,
-      messages: messages as any, // Type assertion needed due to OpenAI types
+      messages: messages as unknown, // Type assertion needed due to OpenAI types
       max_tokens: 500, // Limit response length
       temperature: 0.7 // Some creativity but not too random
     });

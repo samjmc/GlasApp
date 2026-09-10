@@ -15,7 +15,7 @@ export interface ActivityMetadata {
     longitude: number;
     county?: string;
   };
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export class ActivityTracker {

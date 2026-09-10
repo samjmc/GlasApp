@@ -64,7 +64,7 @@ router.delete('/', isAuthenticated, async (req, res) => {
     let authDeletionError: string | null = null;
     try {
       await supabaseAdmin.auth.admin.deleteUser(userId);
-    } catch (error: any) {
+    } catch (error: unknown) {
       authDeletionError = error?.message || 'Unknown Supabase Auth deletion error';
     }
 
@@ -89,7 +89,7 @@ router.delete('/', isAuthenticated, async (req, res) => {
       success: true,
       message: 'Account and associated data deleted successfully.',
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Account deletion failed:', error);
     return res.status(500).json({
       success: false,

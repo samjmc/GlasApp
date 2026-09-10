@@ -174,7 +174,7 @@ export default function LocalRepresentativesPage() {
   );
 }
 
-function TDScoreCard({ td }: { td: any }) {
+function TDScoreCard({ td }: { td: unknown }) {
   return (
     <Card className="p-6 hover:shadow-lg transition-shadow">
       <div className="flex flex-col md:flex-row gap-6">
@@ -243,7 +243,7 @@ function TDScoreCard({ td }: { td: any }) {
               📰 Recent News ({td.recent_stories?.length || 0})
             </h3>
             
-            {td.recent_stories?.map((story: any) => (
+            {td.recent_stories?.map((story: unknown) => (
               <div key={story.id} className="mb-3 pb-3 last:mb-0 last:pb-0 border-b last:border-0">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">

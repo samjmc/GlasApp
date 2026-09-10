@@ -27,8 +27,8 @@ export class QuizResultsService {
       ideology?: string;
       description?: string;
       detailedAnalysis?: string;
-      politicalValues?: any;
-      irishContextInsights?: any;
+      politicalValues?: unknown;
+      irishContextInsights?: unknown;
     },
     shareCode?: string
   ): Promise<QuizResult> {
@@ -196,7 +196,7 @@ export class QuizResultsService {
   /**
    * Extract dimensions from a quiz result
    */
-  private extractDimensions(result: QuizResult | QuizResultHistory): any {
+  private extractDimensions(result: QuizResult | QuizResultHistory): unknown {
     return {
       economic: result.economicDimension,
       social: result.socialDimension,

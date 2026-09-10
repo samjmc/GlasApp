@@ -9,7 +9,7 @@ interface CacheEntry<T> {
 }
 
 class InMemoryCache {
-  private cache = new Map<string, CacheEntry<any>>();
+  private cache = new Map<string, CacheEntry<unknown>>();
   
   /**
    * Get value from cache

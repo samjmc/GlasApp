@@ -9,7 +9,7 @@ const router = Router();
 router.get('/:category', async (req: Request, res: Response) => {
   try {
     const { category } = req.params;
-    const userId = (req.session as any)?.user?.id;
+    const userId = (req.session as unknown)?.user?.id;
 
     // Get ideas with vote counts and user's vote status
     const ideasWithVotes = await db
@@ -57,7 +57,7 @@ router.get('/:category', async (req: Request, res: Response) => {
 router.post('/vote', async (req: Request, res: Response) => {
   try {
     const { ideaId, voteType } = req.body;
-    const userId = (req.session as any)?.user?.id;
+    const userId = (req.session as unknown)?.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -142,7 +142,7 @@ router.post('/vote', async (req: Request, res: Response) => {
 router.post('/submit', async (req: Request, res: Response) => {
   try {
     const { title, description, fullDescription, category, tags, isAdminSubmission } = req.body;
-    const userId = (req.session as any)?.user?.id;
+    const userId = (req.session as unknown)?.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });

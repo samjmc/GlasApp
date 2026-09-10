@@ -30,7 +30,7 @@ async function debugSearch() {
     } else {
         console.log("Found chunks:", chunks?.length);
         if (chunks) {
-            chunks.forEach((c: any) => {
+            chunks.forEach((c: unknown) => {
                 console.log(`- [${c.similarity.toFixed(3)}] ${c.chunk_content.substring(0, 100)}...`);
             });
         }

@@ -24,7 +24,7 @@ export function log(message: string, source = "express") {
   console.log(`${formattedTime} [${source}] ${message}`);
 }
 
-let viteServer: any = null;
+let viteServer: unknown = null;
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {

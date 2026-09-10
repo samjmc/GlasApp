@@ -59,7 +59,7 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
   
   // Add event listener for regenerate-analysis event
   useEffect(() => {
-    const handleRegenerate = (event: any) => {
+    const handleRegenerate = (event: unknown) => {
       console.log("EnhancedPoliticalProfileExplanation: Received regenerate event", event.detail);
       
       // Directly call the API with fresh values from the event
@@ -103,7 +103,7 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
   const [manualData, setManualData] = useState<CompleteAnalysis | null>(null);
   const [manualIsLoading, setManualIsLoading] = useState(false);
   const [manualIsError, setManualIsError] = useState(false);
-  const [manualError, setManualError] = useState<any>(null);
+  const [manualError, setManualError] = useState<unknown>(null);
   
   // Query for initial data load
   const { data: queryData, isLoading: queryIsLoading, isError: queryIsError, error: queryError, refetch } = useQuery({
@@ -253,10 +253,10 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                       {Object.entries(weights).map(([dimension, weight]) => (
                         <div key={dimension} className="text-sm flex items-center gap-1">
-                          <span className={`font-medium ${parseFloat(weight as any) > 1.5 ? 'text-green-600 dark:text-green-400' : parseFloat(weight as any) < 0.5 ? 'text-gray-400' : ''}`}>
+                          <span className={`font-medium ${parseFloat(weight as unknown) > 1.5 ? 'text-green-600 dark:text-green-400' : parseFloat(weight as unknown) < 0.5 ? 'text-gray-400' : ''}`}>
                             {dimension.charAt(0).toUpperCase() + dimension.slice(1)}:
                           </span>
-                          <span className={`${parseFloat(weight as any) > 1.5 ? 'text-green-600 dark:text-green-400 font-bold' : parseFloat(weight as any) < 0.5 ? 'text-gray-400' : ''}`}>
+                          <span className={`${parseFloat(weight as unknown) > 1.5 ? 'text-green-600 dark:text-green-400 font-bold' : parseFloat(weight as unknown) < 0.5 ? 'text-gray-400' : ''}`}>
                             {weight}×
                           </span>
                         </div>

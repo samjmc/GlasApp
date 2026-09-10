@@ -306,7 +306,7 @@ export async function researchTDBaseline(
     
     throw new Error('Invalid provider specified');
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`❌ Error researching ${tdName}:`, error.message);
     
     // Return neutral baseline on error
@@ -452,7 +452,7 @@ export async function researchAllTDBaselines(options: {
       // Rate limiting - be respectful to AI APIs
       await sleep(3000); // 3 seconds between requests
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error processing ${td.fullName}:`, error.message);
       results.push({
         politician_name: td.fullName,
@@ -520,7 +520,7 @@ async function saveBaselineToDatabase(baseline: HistoricalBaseline): Promise<voi
     } else {
       console.log(`   ✅ Baseline saved to database`);
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`   ❌ Error saving to database: ${error.message}`);
   }
 }

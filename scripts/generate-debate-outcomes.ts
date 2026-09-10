@@ -205,11 +205,11 @@ async function loadRankMap(period: Period, field: 'influence_score' | 'effective
   }
 
   const sorted = (data || [])
-    .filter((row: any) => typeof row[field] === 'number')
-    .sort((a: any, b: any) => b[field] - a[field]);
+    .filter((row: unknown) => typeof row[field] === 'number')
+    .sort((a: unknown, b: unknown) => b[field] - a[field]);
 
   const map = new Map<number, number>();
-  sorted.forEach((row: any, index: number) => {
+  sorted.forEach((row: unknown, index: number) => {
     map.set(row.td_id, index + 1);
   });
 

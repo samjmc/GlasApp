@@ -12,7 +12,7 @@ const sentimentVoteSchema = z.object({
 });
 
 // POST /api/party-sentiment/vote - Submit a sentiment vote
-router.post('/vote', isAuthenticated, async (req: any, res) => {
+router.post('/vote', isAuthenticated, async (req: unknown, res) => {
   try {
     const userId = req.user?.claims?.sub;
     if (!userId) {
@@ -45,7 +45,7 @@ router.get('/:partyId', async (req, res) => {
 });
 
 // GET /api/party-sentiment/user/:partyId - Get user's vote for a party
-router.get('/user/:partyId', isAuthenticated, async (req: any, res) => {
+router.get('/user/:partyId', isAuthenticated, async (req: unknown, res) => {
   try {
     const userId = req.user?.claims?.sub;
     if (!userId) {

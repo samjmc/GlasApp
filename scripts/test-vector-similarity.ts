@@ -31,7 +31,7 @@ async function testVectorSimilarity() {
   console.log('RPC Error:', rpcError?.message || 'none');
   console.log('RPC Results:', rpcData?.length || 0);
   if (rpcData && rpcData.length > 0) {
-    rpcData.forEach((d: any) => {
+    rpcData.forEach((d: unknown) => {
       console.log(`- ${d.politician_name} (sim: ${d.similarity?.toFixed(3)}): ${d.chunk_content?.substring(0, 60)}...`);
     });
   }
@@ -66,7 +66,7 @@ async function testVectorSimilarity() {
   console.log('Dillon RPC Error:', dillonError?.message || 'none');
   console.log('Dillon Results:', dillonData?.length || 0);
   if (dillonData && dillonData.length > 0) {
-    dillonData.forEach((d: any) => {
+    dillonData.forEach((d: unknown) => {
       console.log(`- ${d.politician_name} (sim: ${d.similarity?.toFixed(3)}): ${d.chunk_content?.substring(0, 60)}...`);
     });
   }

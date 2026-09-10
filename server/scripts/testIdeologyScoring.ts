@@ -92,7 +92,7 @@ async function runTest() {
   console.log(`\nThis article should show CLEAR ideology signals as politicians take`);
   console.log(`different positions on immigration/welfare policy.\n`);
   
-  const results: any[] = [];
+  const results: unknown[] = [];
   
   for (const politician of politicians) {
     console.log('─'.repeat(70));

@@ -32,7 +32,7 @@ async function find7Missing() {
   console.log('❌ CURRENT TDs MISSING MEMBER_URI:');
   console.log('═'.repeat(70));
 
-  const missing: any[] = [];
+  const missing: unknown[] = [];
 
   for (const apiMember of apiMembers) {
     // Find in database

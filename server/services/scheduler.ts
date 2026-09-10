@@ -3,9 +3,9 @@ import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
 import { runInternalAudit } from "./qaAgent";
 
 // Lazy imports for scoring services (avoids circular dependency issues)
-let ArticleTriageJob: any = null;
-let NewsToTDScoringService: any = null;
-let NewsScraperService: any = null;
+let ArticleTriageJob: unknown = null;
+let NewsToTDScoringService: unknown = null;
+let NewsScraperService: unknown = null;
 
 async function loadScoringServices() {
   if (!ArticleTriageJob) {
@@ -47,7 +47,7 @@ export function initScheduler() {
         minImportanceForScoring: 40
       });
       console.log(`✅ [Scheduler] Triage complete: ${stats.articlesProcessed} articles processed, ${stats.articlesMarkedForScoring} marked for scoring`);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("❌ [Scheduler] Article triage failed:", error.message);
     }
   }, {
@@ -75,7 +75,7 @@ export function initScheduler() {
       if (stats.errors > 0) {
         console.warn(`   ⚠️ Errors: ${stats.errors}`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("❌ [Scheduler] TD Scoring failed:", error.message);
     }
   }, {
@@ -91,7 +91,7 @@ export function initScheduler() {
       await loadScoringServices();
       const articles = await NewsScraperService.fetchAllIrishNews({ lookbackHours: 6 });
       console.log(`✅ [Scheduler] News Scraper found ${articles.length} articles`);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("❌ [Scheduler] News Scraper failed:", error.message);
     }
   }, {

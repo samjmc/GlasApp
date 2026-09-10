@@ -320,7 +320,7 @@ Make sure to include the Futurist's prediction if available.
 async function runVisionAgent(imageUrls: string[], articleContext: string) {
     console.log(`👁️ Vision Analyst is looking at ${imageUrls.length} images...`);
     
-    const content: any[] = [
+    const content: unknown[] = [
         { type: "text", text: `Analyze these images in the context of this article:\n${articleContext.slice(0, 500)}...` }
     ];
 
@@ -361,22 +361,22 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
     const messages = [{ role: "system", content: systemPrompt }, { role: "user", content: input }];
     const completion = await openai.chat.completions.create({
         model: "gpt-4o",
-        messages: messages as any,
-        tools: tools as any,
+        messages: messages as unknown,
+        tools: tools as unknown,
         tool_choice: "auto"
     });
 
     const responseMsg = completion.choices[0].message;
     if (responseMsg.tool_calls) {
-        messages.push(responseMsg as any);
+        messages.push(responseMsg as unknown);
         for (const toolCall of responseMsg.tool_calls) {
             if (toolCall.function.name === "search_web") {
                 const args = JSON.parse(toolCall.function.arguments);
                 const searchResult = await searchTavily(args.query);
-                messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult } as any);
+                messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult } as unknown);
             }
         }
-        const second = await openai.chat.completions.create({ model: "gpt-4o", messages: messages as any });
+        const second = await openai.chat.completions.create({ model: "gpt-4o", messages: messages as unknown });
         return second.choices[0].message.content;
     }
     return responseMsg.content;

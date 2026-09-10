@@ -64,7 +64,7 @@ async function bulkExtractQuestions() {
   console.log('📋 Step 2: Fetching ALL questions from Oireachtas API...');
   console.log('This may take several minutes...\n');
 
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   const dateFrom = '2024-01-01';
   const dateTo = new Date().toISOString().split('T')[0];
   let skip = 0;
@@ -110,7 +110,7 @@ async function bulkExtractQuestions() {
       // Rate limiting - pause between requests
       await new Promise(resolve => setTimeout(resolve, 500));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error fetching batch: ${error.message}`);
       break;
     }
@@ -124,7 +124,7 @@ async function bulkExtractQuestions() {
 
   let matched = 0;
   let unmatched = 0;
-  const questionsToInsert: any[] = [];
+  const questionsToInsert: unknown[] = [];
 
   for (const result of allQuestions) {
     const question = result.question;
@@ -211,7 +211,7 @@ async function bulkExtractQuestions() {
         inserted += batch.length;
         console.log(`   ✅ Batch ${Math.floor(i / batchSize) + 1}: Inserted ${batch.length} questions (Total: ${inserted})`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Batch error: ${error.message}`);
       errors += batch.length;
     }

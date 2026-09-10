@@ -382,7 +382,7 @@ export async function calculateComprehensiveScore(
     consistency: number;
     constituencyService: number;
   };
-  statistics: any;
+  statistics: unknown;
   confidence: number;
 }> {
   console.log(`📊 Calculating comprehensive score for ${tdName}...`);
@@ -537,7 +537,7 @@ export async function saveUnifiedScore(
         console.log(`✅ Created score for ${tdName}: ${scoreData.overall_score}/100`);
       }
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (error?.code === '42501') {
         logUnifiedScorePermissionWarning();
         return;
@@ -617,7 +617,7 @@ export async function saveUnifiedScore(
       console.log(`✅ Created score for ${tdName}: ${scoreData.overall_score}/100`);
     }
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (error?.code === '42501') {
       logUnifiedScorePermissionWarning(error);
       return;
@@ -629,7 +629,7 @@ export async function saveUnifiedScore(
 
 let unifiedScorePermissionWarningLogged = false;
 
-function logUnifiedScorePermissionWarning(error?: any) {
+function logUnifiedScorePermissionWarning(error?: unknown) {
   if (unifiedScorePermissionWarningLogged) return;
   unifiedScorePermissionWarningLogged = true;
   const detail = error?.message || error?.hint || JSON.stringify(error);
@@ -643,7 +643,7 @@ export async function recalculateTDScore(
   tdName: string,
   constituency: string,
   party: string | null
-): Promise<any> {
+): Promise<unknown> {
   const scoreData = await calculateComprehensiveScore(tdName, constituency, party);
   await saveUnifiedScore(tdName, constituency, party, scoreData);
   return scoreData;

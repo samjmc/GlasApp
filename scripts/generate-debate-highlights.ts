@@ -235,11 +235,11 @@ async function loadInfluenceRanks(period: Period): Promise<Map<number, number>> 
   }
 
   const sorted = (data || [])
-    .filter((row: any) => typeof row.influence_score === 'number')
-    .sort((a: any, b: any) => b.influence_score - a.influence_score);
+    .filter((row: unknown) => typeof row.influence_score === 'number')
+    .sort((a: unknown, b: unknown) => b.influence_score - a.influence_score);
 
   const map = new Map<number, number>();
-  sorted.forEach((row: any, index: number) => {
+  sorted.forEach((row: unknown, index: number) => {
     map.set(row.td_id, index + 1);
   });
 
@@ -258,11 +258,11 @@ async function loadEffectivenessRanks(period: Period): Promise<Map<number, numbe
   }
 
   const sorted = (data || [])
-    .filter((row: any) => typeof row.effectiveness_score === 'number')
-    .sort((a: any, b: any) => b.effectiveness_score - a.effectiveness_score);
+    .filter((row: unknown) => typeof row.effectiveness_score === 'number')
+    .sort((a: unknown, b: unknown) => b.effectiveness_score - a.effectiveness_score);
 
   const map = new Map<number, number>();
-  sorted.forEach((row: any, index: number) => {
+  sorted.forEach((row: unknown, index: number) => {
     map.set(row.td_id, index + 1);
   });
 

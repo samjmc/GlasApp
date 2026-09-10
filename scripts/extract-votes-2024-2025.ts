@@ -41,7 +41,7 @@ async function extractVotes() {
 
   // Fetch votes
   console.log('📥 Fetching divisions...');
-  const allDivisions: any[] = [];
+  const allDivisions: unknown[] = [];
   let skip = 0;
   const limit = 100;
 
@@ -71,7 +71,7 @@ async function extractVotes() {
 
   // Process votes
   console.log('🔗 Processing individual votes...');
-  const votesToInsert: any[] = [];
+  const votesToInsert: unknown[] = [];
   let processed = 0;
 
   for (const result of allDivisions) {
@@ -90,7 +90,7 @@ async function extractVotes() {
     voteCategories.forEach(({ type, vote }) => {
       const members = type?.members || [];
       
-      members.forEach((m: any) => {
+      members.forEach((m: unknown) => {
         const memberCode = m.member?.memberCode;
         const memberUri = m.member?.uri;
         const memberName = m.member?.showAs;

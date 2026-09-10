@@ -89,7 +89,7 @@ const PersonalizedInsightsPage: React.FC = () => {
   useEffect(() => {
     if (constituencies && constituencies.length > 0 && !selectedConstituency) {
       // Try to find Dublin Central as a default or use the first constituency
-      const defaultConstituency = constituencies.find((c: any) => c.name === 'Dublin Central') || constituencies[0];
+      const defaultConstituency = constituencies.find((c: unknown) => c.name === 'Dublin Central') || constituencies[0];
       setSelectedConstituency(defaultConstituency.name);
     }
   }, [constituencies, selectedConstituency]);
@@ -169,7 +169,7 @@ const PersonalizedInsightsPage: React.FC = () => {
                 <SelectValue placeholder="Select a constituency" />
               </SelectTrigger>
               <SelectContent>
-                {constituencies?.map((constituency: any) => (
+                {constituencies?.map((constituency: unknown) => (
                   <SelectItem key={constituency.name} value={constituency.name}>
                     {constituency.name}
                   </SelectItem>

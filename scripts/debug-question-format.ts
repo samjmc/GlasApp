@@ -57,7 +57,7 @@ async function debugQuestionFormat() {
       console.log('\n');
     }
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Error:', error.message);
     if (error.response) {
       console.error('Response status:', error.response.status);

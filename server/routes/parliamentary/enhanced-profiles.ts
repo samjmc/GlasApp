@@ -105,7 +105,7 @@ router.get('/td/by-name/:name', async (req, res) => {
       score: profile
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('TD by name lookup error:', error);
     res.status(500).json({
       success: false,
@@ -320,7 +320,7 @@ router.get('/party/:name', async (req, res) => {
     const allCommittees = new Set<string>();
     members.forEach(m => {
       if (m.committee_memberships && Array.isArray(m.committee_memberships)) {
-        m.committee_memberships.forEach((c: any) => {
+        m.committee_memberships.forEach((c: unknown) => {
           allCommittees.add(c.name || c);
         });
       }

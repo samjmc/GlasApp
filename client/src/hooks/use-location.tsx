@@ -106,7 +106,7 @@ export function useLocation(): LocationResult {
         await saveUserLocation(locationData);
       }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       let errorMessage = 'Failed to get location';
       
       if (err.code === 1) {

@@ -141,7 +141,7 @@ app.use((req, res, next) => {
     });
 
     // Handle server errors
-    serverInstance.on('error', (error: any) => {
+    serverInstance.on('error', (error: unknown) => {
       console.error("Server error:", error);
       if (error.code === 'EADDRINUSE') {
         console.error(`Port ${port} is already in use`);

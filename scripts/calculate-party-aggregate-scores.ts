@@ -55,7 +55,7 @@ async function calculatePartyAggregateScores() {
   console.log('─'.repeat(70));
 
   // Calculate aggregates for each party
-  const partyResults: any[] = [];
+  const partyResults: unknown[] = [];
 
   for (const [partyName, partyTDs] of partyGroups) {
     if (partyTDs.length === 0) continue;

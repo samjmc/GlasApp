@@ -52,7 +52,7 @@ export default function ResearchedTDsPage() {
     const p = new Set<string>();
     const c = new Set<string>();
     
-    data.tds.forEach((td: any) => {
+    data.tds.forEach((td: unknown) => {
       if (td.party) p.add(td.party);
       if (td.constituency) c.add(td.constituency);
     });
@@ -64,7 +64,7 @@ export default function ResearchedTDsPage() {
   }, [data?.tds]);
 
   // Helper function to convert ELO to percentage
-  const getScore = (td: any) => {
+  const getScore = (td: unknown) => {
     if (td.overall_score) return td.overall_score;
     // Fallback: convert ELO to percentage (ELO - 1000) / 10
     return Math.round(((td.overall_elo || 1500) - 1000) / 10);
@@ -87,7 +87,7 @@ export default function ResearchedTDsPage() {
 
   // Filter and sort TDs
   const filteredTDs = (data?.tds || [])
-    .filter((td: any) => {
+    .filter((td: unknown) => {
       const matchesSearch = searchTerm === '' || 
         td.politician_name.toLowerCase().includes(searchTerm.toLowerCase());
       
@@ -97,7 +97,7 @@ export default function ResearchedTDsPage() {
 
       return matchesSearch && matchesParty && matchesConstituency;
     })
-    .sort((a: any, b: any) => {
+    .sort((a: unknown, b: unknown) => {
         // Sort by rank/score
         return (a.rank || 999) - (b.rank || 999);
     });
@@ -179,7 +179,7 @@ export default function ResearchedTDsPage() {
           </div>
         ) : filteredTDs.length > 0 ? (
           <div className="divide-y divide-gray-100 dark:divide-gray-800">
-            {filteredTDs.map((td: any, index: number) => {
+            {filteredTDs.map((td: unknown, index: number) => {
               const score = getScore(td);
               return (
                 <Link 

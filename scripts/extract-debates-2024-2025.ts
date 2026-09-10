@@ -42,7 +42,7 @@ async function extractDebates() {
 
   // Fetch debates
   console.log('📥 Fetching debates...');
-  const allDebates: any[] = [];
+  const allDebates: unknown[] = [];
   let skip = 0;
   const limit = 100;
 
@@ -73,15 +73,15 @@ async function extractDebates() {
 
   // Process debates
   console.log('🔗 Extracting speakers...');
-  const debatesToInsert: any[] = [];
+  const debatesToInsert: unknown[] = [];
 
   for (const result of allDebates) {
     const debate = result.debateRecord; // Fixed: use debateRecord instead of debate
-    const speakers = debate.debateSections?.flatMap((s: any) => 
-      s.debateSection?.speeches?.map((sp: any) => sp.speech?.by) || []
+    const speakers = debate.debateSections?.flatMap((s: unknown) => 
+      s.debateSection?.speeches?.map((sp: unknown) => sp.speech?.by) || []
     ) || [];
 
-    const uniqueSpeakers = new Set(speakers.map((s: any) => s?.showAs));
+    const uniqueSpeakers = new Set(speakers.map((s: unknown) => s?.showAs));
 
     uniqueSpeakers.forEach(speakerName => {
       if (!speakerName) return;

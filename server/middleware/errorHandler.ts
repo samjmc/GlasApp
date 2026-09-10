@@ -24,7 +24,7 @@ export const errorHandler = (
     path: req.path,
     method: req.method,
     ip: req.ip,
-    user: (req as any).user?.id || 'anonymous',
+    user: (req as unknown).user?.id || 'anonymous',
   };
 
   console.error('🚨 Error occurred:', errorLog);
@@ -47,13 +47,13 @@ export const errorHandler = (
       error: {
         message: 'Validation failed',
         code: 'VALIDATION_ERROR',
-        details: (err as any).errors,
+        details: (err as unknown).errors,
       }
     });
   }
 
   // Handle database constraint errors
-  if ((err as any).code === '23505') { // PostgreSQL unique violation
+  if ((err as unknown).code === '23505') { // PostgreSQL unique violation
     return res.status(409).json({
       success: false,
       error: {
@@ -63,7 +63,7 @@ export const errorHandler = (
     });
   }
 
-  if ((err as any).code === '23503') { // PostgreSQL foreign key violation
+  if ((err as unknown).code === '23503') { // PostgreSQL foreign key violation
     return res.status(400).json({
       success: false,
       error: {

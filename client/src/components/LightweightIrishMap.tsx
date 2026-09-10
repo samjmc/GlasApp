@@ -270,7 +270,7 @@ const LightweightIrishMap: React.FC<LightweightIrishMapProps> = ({
             defaultValue="provinces" 
             className="w-full" 
             onValueChange={(v) => {
-              setActiveView(v as any);
+              setActiveView(v as unknown);
               setSelectedRegion(null);
             }}
             value={activeView}

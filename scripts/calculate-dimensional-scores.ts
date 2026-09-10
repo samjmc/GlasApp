@@ -80,7 +80,7 @@ async function calculateDimensionalScores() {
         }
       }
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`❌ Error processing ${td.politician_name}:`, error.message);
       errors++;
     }

@@ -21,7 +21,7 @@ export function PWAInstallButton() {
     // Check if already installed
     const checkInstalled = () => {
       const installed = window.matchMedia('(display-mode: standalone)').matches ||
-                       (window.navigator as any).standalone === true;
+                       (window.navigator as unknown).standalone === true;
       setIsInstalled(installed);
     };
 
@@ -160,7 +160,7 @@ export function PWAInstallButtonCompact() {
   useEffect(() => {
     const checkInstalled = () => {
       const installed = window.matchMedia('(display-mode: standalone)').matches ||
-                       (window.navigator as any).standalone === true;
+                       (window.navigator as unknown).standalone === true;
       setIsInstalled(installed);
     };
 

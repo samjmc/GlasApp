@@ -488,7 +488,7 @@ export async function recalculateAllTDScores(): Promise<{ processed: number; err
       await saveUnifiedScore(score);
       processed++;
       console.log(`   [${processed}/${uniqueTDs.size}] ${tdName}: ${score.overall_elo}`);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Failed to score ${tdName}:`, error.message);
       errors++;
     }

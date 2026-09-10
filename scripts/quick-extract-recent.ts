@@ -68,7 +68,7 @@ async function quickExtractRecent() {
 
   // Fetch questions
   console.log('📥 Step 2: Fetching recent questions from API...');
-  const allQuestions: any[] = [];
+  const allQuestions: unknown[] = [];
   let skip = 0;
   const limit = 500;
 
@@ -106,7 +106,7 @@ async function quickExtractRecent() {
 
       await new Promise(resolve => setTimeout(resolve, 500)); // Small delay
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error: ${error.message}`);
       break;
     }
@@ -118,7 +118,7 @@ async function quickExtractRecent() {
   console.log('🔗 Step 3: Matching to TDs and classifying...');
   let matched = 0;
   let unmatched = 0;
-  const questionsToInsert: any[] = [];
+  const questionsToInsert: unknown[] = [];
 
   for (const result of allQuestions) {
     const q = result.question;

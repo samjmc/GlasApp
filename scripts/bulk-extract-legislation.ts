@@ -95,7 +95,7 @@ async function bulkExtractLegislation() {
   console.log('📜 Step 2: Fetching ALL legislation from Oireachtas API...');
   console.log('Fetching from 2020 onwards (34th Dáil term)...\n');
 
-  const allBills: any[] = [];
+  const allBills: unknown[] = [];
   const dateFrom = '2020-01-01'; // Entire 34th Dáil term
   let skip = 0;
   const limit = 100;
@@ -135,7 +135,7 @@ async function bulkExtractLegislation() {
 
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error: ${error.message}`);
       break;
     }
@@ -149,7 +149,7 @@ async function bulkExtractLegislation() {
 
   let matched = 0;
   let unmatched = 0;
-  const billsToInsert: any[] = [];
+  const billsToInsert: unknown[] = [];
 
   for (const result of allBills) {
     const bill = result.bill;
@@ -222,7 +222,7 @@ async function bulkExtractLegislation() {
         errors += batch.length;
         console.error(`   ❌ Batch error: ${error.message}`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       errors += batch.length;
       console.error(`   ❌ Batch error: ${error.message}`);
     }
@@ -243,10 +243,10 @@ async function bulkExtractLegislation() {
   const { data: stats } = await supabase.from('td_legislation').select('*');
 
   if (stats) {
-    const privateMember = stats.filter((b: any) => b.bill_type === 'Private Member').length;
-    const government = stats.filter((b: any) => b.bill_type === 'Government').length;
-    const enacted = stats.filter((b: any) => b.bill_status === 'Enacted').length;
-    const current = stats.filter((b: any) => b.bill_status === 'Current').length;
+    const privateMember = stats.filter((b: unknown) => b.bill_type === 'Private Member').length;
+    const government = stats.filter((b: unknown) => b.bill_type === 'Government').length;
+    const enacted = stats.filter((b: unknown) => b.bill_status === 'Enacted').length;
+    const current = stats.filter((b: unknown) => b.bill_status === 'Current').length;
 
     console.log('\n📈 LEGISLATION STATISTICS:');
     console.log(`   Total bills in DB:        ${stats.length.toLocaleString()}`);
@@ -257,7 +257,7 @@ async function bulkExtractLegislation() {
 
     // TDs with most bills
     const tdBillCounts = new Map<number, number>();
-    stats.forEach((b: any) => {
+    stats.forEach((b: unknown) => {
       tdBillCounts.set(b.td_id, (tdBillCounts.get(b.td_id) || 0) + 1);
     });
 

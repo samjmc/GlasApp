@@ -367,7 +367,7 @@ export async function analyzeVoteRecord(voteId: number): Promise<void> {
     return;
   }
 
-  const tdMeta = vote.td_scores as any;
+  const tdMeta = vote.td_scores as unknown;
   if (!tdMeta) {
     // Votes should only be from TDs, but check anyway
     console.log(`⏭️  Skipping vote ${voteId} - TD not found in database`);
@@ -524,7 +524,7 @@ async function extractIdeologyFromSpeech(
     }
 
     return result;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error extracting ideology from speech:', error.message);
     return null;
   }
@@ -564,7 +564,7 @@ async function extractIdeologyFromVote(
     }
 
     return result;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error extracting ideology from vote:', error.message);
     return null;
   }
@@ -951,7 +951,7 @@ async function saveToHistory(
   policyTopic: string,
   delta: Record<string, number>,
   statementDate: string,
-  profile: any,
+  profile: unknown,
   sourceType: 'speech' | 'vote',
   sourceId: string,
 ): Promise<void> {
@@ -1060,7 +1060,7 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
     });
 
   // Fallback: if RPC doesn't exist, use direct query with NOT IN subquery
-  let speechesToProcess: any[] = [];
+  let speechesToProcess: unknown[] = [];
   if (speechesError || !unprocessedSpeeches) {
     // Direct query approach - get speeches not in analyzed list
     const { data: allSpeeches } = await supabase
@@ -1077,12 +1077,12 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
         .not('speech_id', 'is', null);
 
       const analyzedSpeechIds = new Set(
-        analyzedSpeeches?.map((s: any) => s.speech_id).filter(Boolean) || []
+        analyzedSpeeches?.map((s: unknown) => s.speech_id).filter(Boolean) || []
       );
 
       // Filter out already analyzed
       speechesToProcess = allSpeeches
-        .filter((s: any) => !analyzedSpeechIds.has(s.id))
+        .filter((s: unknown) => !analyzedSpeechIds.has(s.id))
         .slice(0, batchSize);
     }
   } else {
@@ -1097,7 +1097,7 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
         stats.speechesProcessed++;
         // Rate limiting: 2 seconds between LLM calls
         await new Promise(resolve => setTimeout(resolve, 2000));
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`Error processing speech ${speech.id}:`, error.message);
         stats.errors++;
       }
@@ -1113,7 +1113,7 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
     .gte('vote_date', cutoffDateStr.split('T')[0])
     .limit(batchSize * 2); // Get more to account for filtering
 
-  let votesToProcess: any[] = [];
+  let votesToProcess: unknown[] = [];
   if (allVotes) {
     // Get analyzed vote IDs
     const { data: analyzedVotes } = await supabase
@@ -1122,12 +1122,12 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
       .not('vote_id', 'is', null);
 
     const analyzedVoteIds = new Set(
-      analyzedVotes?.map((v: any) => v.vote_id).filter(Boolean) || []
+      analyzedVotes?.map((v: unknown) => v.vote_id).filter(Boolean) || []
     );
 
     // Filter out already analyzed
     votesToProcess = allVotes
-      .filter((v: any) => !analyzedVoteIds.has(v.id))
+      .filter((v: unknown) => !analyzedVoteIds.has(v.id))
       .slice(0, batchSize);
   }
 
@@ -1139,7 +1139,7 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
         stats.votesProcessed++;
         // Rate limiting: 2 seconds between LLM calls
         await new Promise(resolve => setTimeout(resolve, 2000));
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(`Error processing vote ${vote.id}:`, error.message);
         stats.errors++;
       }

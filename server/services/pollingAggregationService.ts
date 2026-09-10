@@ -76,8 +76,8 @@ export async function calculatePartyTimeSeries(
 
     // Extract data
     const values = polls.map(p => p.first_preference || p.vote_share);
-    const dates = polls.map(p => new Date((p.polls as any).poll_date));
-    const reliabilities = polls.map(p => (p.polls as any).poll_sources?.reliability_score || 0.8);
+    const dates = polls.map(p => new Date((p.polls as unknown).poll_date));
+    const reliabilities = polls.map(p => (p.polls as unknown).poll_sources?.reliability_score || 0.8);
 
     // Calculate statistics
     const stats = calculateStatistics(values, dates, reliabilities);
@@ -430,7 +430,7 @@ export async function updatePollingCache(
     const allTimeHigh = allValues.length > 0 ? Math.max(...allValues) : 0;
     const allTimeLow = allValues.length > 0 ? Math.min(...allValues) : 0;
 
-    const latestPollDate = new Date((latestPoll.polls as any).poll_date);
+    const latestPollDate = new Date((latestPoll.polls as unknown).poll_date);
     const daysSinceLastPoll = Math.floor((now.getTime() - latestPollDate.getTime()) / (1000 * 60 * 60 * 24));
 
     const dataRecency = daysSinceLastPoll < 7 ? 'current' :
@@ -446,7 +446,7 @@ export async function updatePollingCache(
         entity_name: entityName,
         latest_poll_date: latestPollDate.toISOString().split('T')[0],
         latest_support: latestSupport,
-        latest_poll_source: (latestPoll.polls as any).poll_sources?.name,
+        latest_poll_source: (latestPoll.polls as unknown).poll_sources?.name,
         support_30d_avg: avg30d,
         support_30d_change: change30d,
         support_30d_trend: change30d > 1 ? 'rising' : change30d < -1 ? 'falling' : 'stable',

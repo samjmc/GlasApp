@@ -56,7 +56,7 @@ async function main(): Promise<void> {
     try {
       await runCommand(step.name, step.command);
       results.push({ name: step.name, status: 'success' });
-    } catch (error: any) {
+    } catch (error: unknown) {
       const message = error?.message || 'Unknown error';
       console.error(`❌ ${step.name} failed: ${message}`);
       results.push({ name: step.name, status: 'failed', error: message });

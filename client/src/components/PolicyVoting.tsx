@@ -91,7 +91,7 @@ export function PolicyVoting({
       const statsData = await statsRes.json();
       
       if (statsData.success && statsData.stats.length > 0) {
-        const tdStats = statsData.stats.find((s: any) => s.politician_name === politicianName);
+        const tdStats = statsData.stats.find((s: unknown) => s.politician_name === politicianName);
         if (tdStats) {
           setVoteStats(tdStats);
         }
@@ -107,7 +107,7 @@ export function PolicyVoting({
         const userData = await userRes.json();
         
         if (userData.success && userData.votes.length > 0) {
-          const tdVote = userData.votes.find((v: any) => v.politician_name === politicianName);
+          const tdVote = userData.votes.find((v: unknown) => v.politician_name === politicianName);
           if (tdVote) {
             setUserVote(tdVote.support_rating);
           }
@@ -195,7 +195,7 @@ export function PolicyVoting({
       } else {
         throw new Error(data.error || 'Failed to submit vote');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error submitting vote:', error);
       alert(error.message || 'Failed to submit vote. Please try again.');
     } finally {

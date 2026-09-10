@@ -144,7 +144,7 @@ router.get('/widget', async (req, res, next) => {
         // Aggregate changes by politician
         const changesByPolitician = new Map<string, { totalChange: number; articles: string[] }>();
         
-        (recentChanges || []).forEach((change: any) => {
+        (recentChanges || []).forEach((change: unknown) => {
           const existing = changesByPolitician.get(change.politician_name) || { totalChange: 0, articles: [] };
           existing.totalChange += change.elo_change || 0;
           if (change.article_title && !existing.articles.includes(change.article_title)) {
@@ -1257,7 +1257,7 @@ router.get('/leaderboard/all', async (req, res, next) => {
 
     res.json({
       success: true,
-      leaderboard: (tds || []).map((td: any, index: number) => ({
+      leaderboard: (tds || []).map((td: unknown, index: number) => ({
         id: td.id,
         rank: index + 1,
         politician_name: td.politician_name,
@@ -1331,13 +1331,13 @@ router.get('/parties', async (req, res, next) => {
       .select('party')
       .eq('is_active', true);
     
-    (activeTDs || []).forEach((td: any) => {
+    (activeTDs || []).forEach((td: unknown) => {
       const partyName = td.party || 'Unknown';
       partyCounts[partyName] = (partyCounts[partyName] || 0) + 1;
     });
 
     // Format the response
-    const rankings = (partyScores || []).map((score: any, idx: number) => ({
+    const rankings = (partyScores || []).map((score: unknown, idx: number) => ({
       rank: idx + 1,
       name: score.parties?.name || 'Unknown',
       abbreviation: score.parties?.abbreviation,

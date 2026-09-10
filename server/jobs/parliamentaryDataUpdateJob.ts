@@ -89,7 +89,7 @@ export class ParliamentaryDataUpdateJob {
         duration
       };
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Parliamentary data update failed:', error);
       return {
         tdsProcessed: 0,
@@ -125,7 +125,7 @@ export class ParliamentaryDataUpdateJob {
       
       console.log(`✅ Saved to ${dataPath}`);
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Failed to save JSON file:', error.message);
     }
   }
@@ -173,14 +173,14 @@ export class ParliamentaryDataUpdateJob {
             updated++;
           }
           
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error(`   ❌ Error processing ${data.fullName}:`, error.message);
         }
       }
       
       console.log(`✅ Updated ${updated} TDs in database`);
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Database update failed:', error.message);
     }
   }
@@ -188,7 +188,7 @@ export class ParliamentaryDataUpdateJob {
   /**
    * Trigger manual update (for admin use)
    */
-  async triggerManual(): Promise<any> {
+  async triggerManual(): Promise<unknown> {
     console.log('🔄 Manual parliamentary update triggered');
     return await this.execute();
   }

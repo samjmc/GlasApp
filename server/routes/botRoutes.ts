@@ -5,7 +5,7 @@ import { isAuthenticated } from '../middleware/sessionMiddleware';
 const router = Router();
 
 // Admin-only middleware (you can expand this based on your needs)
-const isAdmin = (req: Request, res: Response, next: any) => {
+const isAdmin = (req: Request, res: Response, next: unknown) => {
   // For now, just check if user is authenticated
   // You can add proper admin role checking here
   if (!req.user) {

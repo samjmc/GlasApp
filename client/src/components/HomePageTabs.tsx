@@ -160,7 +160,7 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
           ) : articles?.articles?.length > 0 ? (
             <>
               <div className="space-y-6">
-                {articles.articles.map((article: any) => (
+                {articles.articles.map((article: unknown) => (
                   <NewsArticleCard key={article.id} article={article} />
                 ))}
               </div>

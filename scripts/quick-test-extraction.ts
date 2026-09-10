@@ -69,7 +69,7 @@ async function quickTestExtraction() {
   console.log('🔗 Matching questions to TDs...');
   let matched = 0;
   let unmatched = 0;
-  const questionsToInsert: any[] = [];
+  const questionsToInsert: unknown[] = [];
 
   for (const result of questions) {
     const q = result.question;

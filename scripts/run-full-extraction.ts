@@ -98,7 +98,7 @@ async function runFullExtraction() {
     console.log('🌐 Refresh your browser to see the updated data!');
     console.log('');
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('\n❌ EXTRACTION FAILED:', error.message);
     console.error('Check the logs above to see which step failed');
     process.exit(1);

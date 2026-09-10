@@ -78,7 +78,7 @@ export default function TDLeaderboardPage() {
         <Card className="p-4">
           <p className="text-sm text-gray-600 mb-1">Average Score</p>
           <p className="text-3xl font-bold">
-            {tds.length > 0 ? Math.round(tds.reduce((sum: number, td: any) => sum + td.overall_elo, 0) / tds.length) : '—'}
+            {tds.length > 0 ? Math.round(tds.reduce((sum: number, td: unknown) => sum + td.overall_elo, 0) / tds.length) : '—'}
           </p>
         </Card>
         <Card className="p-4">
@@ -105,7 +105,7 @@ export default function TDLeaderboardPage() {
               <p className="text-sm">Scores will appear as news articles mention TDs</p>
             </div>
           ) : (
-            tds.map((td: any, index: number) => {
+            tds.map((td: unknown, index: number) => {
               const rank = index + 1;
               const rating = getELORating(td.overall_elo);
               const showMedal = rank <= 3;

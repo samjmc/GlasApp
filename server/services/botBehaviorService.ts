@@ -93,8 +93,8 @@ export class BotBehaviorService {
     await ActivityTracker.logActivity(config.botId, randomActivity, metadata);
   }
 
-  private generateActivityMetadata(activity: string, patterns: BotBehaviorConfig['interactionPatterns']): any {
-    const metadata: any = { category: 'bot_activity' };
+  private generateActivityMetadata(activity: string, patterns: BotBehaviorConfig['interactionPatterns']): unknown {
+    const metadata: unknown = { category: 'bot_activity' };
 
     switch (activity) {
       case 'viewed_constituency':
@@ -145,7 +145,7 @@ export class BotBehaviorService {
     return metadata;
   }
 
-  async getBotActivity(botId: number, days: number = 7): Promise<any[]> {
+  async getBotActivity(botId: number, days: number = 7): Promise<unknown[]> {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - days);
 

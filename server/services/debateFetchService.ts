@@ -79,7 +79,7 @@ export async function fetchNewDebates(options: FetchDebatesOptions = {}): Promis
   }
 
   // Fetch debate records from API
-  const debateRecords: any[] = [];
+  const debateRecords: unknown[] = [];
   let skip = 0;
   const limit = 50;
 
@@ -105,7 +105,7 @@ export async function fetchNewDebates(options: FetchDebatesOptions = {}): Promis
       if (results.length < limit) break;
       skip += limit;
       await new Promise(resolve => setTimeout(resolve, 500)); // Rate limiting
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error fetching debates: ${error.message}`);
       break;
     }

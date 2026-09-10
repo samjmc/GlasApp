@@ -109,7 +109,7 @@ const AdminPage = () => {
 
   // Create pledge mutation
   const createPledgeMutation = useMutation({
-    mutationFn: async (pledgeData: any) => {
+    mutationFn: async (pledgeData: unknown) => {
       const response = await fetch('/api/pledges', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -142,7 +142,7 @@ const AdminPage = () => {
 
   // Update pledge mutation
   const updatePledgeMutation = useMutation({
-    mutationFn: async ({ id, data }: { id: number; data: any }) => {
+    mutationFn: async ({ id, data }: { id: number; data: unknown }) => {
       const response = await fetch(`/api/pledges/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -189,7 +189,7 @@ const AdminPage = () => {
 
   // Create action mutation
   const createActionMutation = useMutation({
-    mutationFn: async (actionData: any) => {
+    mutationFn: async (actionData: unknown) => {
       const response = await fetch(`/api/pledges/${actionData.pledgeId}/actions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -567,7 +567,7 @@ const AdminPage = () => {
                   </div>
                 ) : pledges && pledges.length > 0 ? (
                   <div className="space-y-3">
-                    {pledges.slice(0, 5).map((pledge: any) => (
+                    {pledges.slice(0, 5).map((pledge: unknown) => (
                       <div key={pledge.pledge.id} className="border rounded-lg p-3">
                         <div className="flex items-start justify-between mb-2">
                           <h4 className="font-medium text-sm">{pledge.pledge.title}</h4>
@@ -621,7 +621,7 @@ const AdminPage = () => {
                       <SelectValue placeholder="Choose a pledge" />
                     </SelectTrigger>
                     <SelectContent>
-                      {pledges && pledges.map((pledge: any) => (
+                      {pledges && pledges.map((pledge: unknown) => (
                         <SelectItem key={pledge.pledge.id} value={pledge.pledge.id.toString()}>
                           <div className="flex flex-col">
                             <span>{pledge.pledge.title}</span>
@@ -777,14 +777,14 @@ const AdminPage = () => {
                     <div className="flex justify-between">
                       <span className="text-sm">Active Pledges:</span>
                       <span className="font-medium">
-                        {pledges.filter((p: any) => p.pledge.status === 'active').length}
+                        {pledges.filter((p: unknown) => p.pledge.status === 'active').length}
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-sm">Average Score:</span>
                       <span className="font-medium">
                         {pledges.length > 0 
-                          ? Math.round(pledges.reduce((acc: number, p: any) => acc + parseFloat(p.pledge.score), 0) / pledges.length)
+                          ? Math.round(pledges.reduce((acc: number, p: unknown) => acc + parseFloat(p.pledge.score), 0) / pledges.length)
                           : 0}%
                       </span>
                     </div>
@@ -812,7 +812,7 @@ const AdminPage = () => {
                 </div>
               ) : pledges && pledges.length > 0 ? (
                 <div className="space-y-4">
-                  {pledges.map((pledgeData: any) => {
+                  {pledges.map((pledgeData: unknown) => {
                     const pledge = pledgeData.pledge;
                     return (
                       <Card key={pledge.id} className="border-l-4 border-l-blue-500">

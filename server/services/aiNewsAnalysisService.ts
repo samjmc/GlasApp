@@ -115,7 +115,7 @@ export interface ArticleAnalysis {
   confidence: number; // 0-1
 }
 
-const ANALYSIS_PROMPT = (article: any, politician: any, partyPositions: any = {}) => `
+const ANALYSIS_PROMPT = (article: unknown, politician: unknown, partyPositions: unknown = {}) => `
 You are a MAXIMALLY TRUTH-SEEKING political analyst evaluating Irish TD ${politician.name} from ${politician.constituency}.
 
 **CORE PRINCIPLE - TRUTH ABOVE ALL:**
@@ -532,7 +532,7 @@ function processScoreToImpact(processScore?: number | null): number | null {
  * Analyze article with OpenAI (primary analysis)
  */
 export async function analyzeArticleWithOpenAI(
-  article: any,
+  article: unknown,
   politician: { name: string; constituency: string; party?: string }
 ): Promise<ArticleAnalysis> {
   
@@ -583,9 +583,9 @@ Respond ONLY with valid JSON.`
     analysis.consistency_score = normalizeProcessScore(analysis.consistency_score, analysis.consistency_reasoning);
     
     // FLIP-FLOP PENALTY: Apply consistency adjustment based on LLM detection
-    const flipFlopDetected = (analysis as any).flip_flop_detected || 'none';
-    const flipFlopExplanation = (analysis as any).flip_flop_explanation || '';
-    const suspiciousTiming = (analysis as any).suspicious_timing || false;
+    const flipFlopDetected = (analysis as unknown).flip_flop_detected || 'none';
+    const flipFlopExplanation = (analysis as unknown).flip_flop_explanation || '';
+    const suspiciousTiming = (analysis as unknown).suspicious_timing || false;
     
     let consistencyPenalty = 0;
     let needsReview = false;
@@ -622,7 +622,7 @@ Respond ONLY with valid JSON.`
     // Store flip-flop context for display
     analysis.historical_context = {
       hasFlipFlop: flipFlopDetected !== 'none',
-      flipFlopSeverity: flipFlopDetected as any,
+      flipFlopSeverity: flipFlopDetected as unknown,
       flipFlopDetails: flipFlopExplanation,
       needsHumanReview: needsReview,
       suspiciousTiming: suspiciousTiming,
@@ -667,7 +667,7 @@ Respond ONLY with valid JSON.`
  * Analyze article with AI (with optional cross-checking)
  */
 export async function analyzeArticle(
-  article: any,
+  article: unknown,
   politician: { name: string; constituency: string; party?: string },
   options: { crossCheck?: boolean } = {}
 ): Promise<ArticleAnalysis> {
@@ -750,8 +750,8 @@ export async function analyzeArticle(
  * NOTE: Now skipped for opposition advocacy work (determined by LLM)
  */
 async function applyBiasProtection(
-  article: any,
-  politician: any,
+  article: unknown,
+  politician: unknown,
   initialAnalysis: ArticleAnalysis
 ): Promise<ArticleAnalysis> {
   
@@ -816,7 +816,7 @@ async function applyBiasProtection(
 /**
  * Detect if article is announcement vs achievement
  */
-function detectAnnouncement(article: any): boolean {
+function detectAnnouncement(article: unknown): boolean {
   const text = (article.title + ' ' + article.content).toLowerCase();
   
   const announcementIndicators = [
@@ -842,8 +842,8 @@ function detectAnnouncement(article: any): boolean {
  * Generate critical analysis (devil's advocate)
  */
 async function generateCriticalAnalysis(
-  article: any,
-  politician: any,
+  article: unknown,
+  politician: unknown,
   initialAnalysis: ArticleAnalysis
 ): Promise<{
   critical_impact: number;
@@ -942,9 +942,9 @@ function getSourceBias(sourceName: string): number {
  * Batch analyze multiple articles
  */
 export async function batchAnalyzeArticles(
-  articlesWithPoliticians: Array<{ article: any; politician: any }>,
+  articlesWithPoliticians: Array<{ article: unknown; politician: unknown }>,
   options: { crossCheck?: boolean; rateLimit?: number } = {}
-): Promise<Array<{ article: any; politician: any; analysis: ArticleAnalysis }>> {
+): Promise<Array<{ article: unknown; politician: unknown; analysis: ArticleAnalysis }>> {
   
   const results = [];
   const rateLimit = options.rateLimit || 2000; // 2 seconds between requests
@@ -991,7 +991,7 @@ function sleep(ms: number): Promise<void> {
  * - Opposition criticism without naming specific TDs
  */
 export async function extractRelevantTDsFromArticle(
-  article: any,
+  article: unknown,
   options: { useKeywordFallback?: boolean } = {}
 ): Promise<Array<{ name: string; constituency: string; party: string; confidence: number }>> {
   

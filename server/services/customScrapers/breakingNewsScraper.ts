@@ -53,7 +53,7 @@ export async function scrapeBreakingNewsLatestArticles(): Promise<ScrapedArticle
     // Extract articles
     console.log('  🔍 Extracting articles...');
     const articles = await page.evaluate(() => {
-      const items: any[] = [];
+      const items: unknown[] = [];
       const seen = new Set<string>();
       
       // Find all article elements or links to articles
@@ -92,7 +92,7 @@ export async function scrapeBreakingNewsLatestArticles(): Promise<ScrapedArticle
       
       // Also check the live ticker / headlines at the top
       const liveLinks = document.querySelectorAll('a[href*="/ireland/"]');
-      liveLinks.forEach((link: any) => {
+      liveLinks.forEach((link: unknown) => {
         const href = link.href;
         const text = link.textContent?.trim();
         
@@ -145,7 +145,7 @@ export async function scrapeBreakingNewsLatestArticles(): Promise<ScrapedArticle
     
     return uniqueArticles;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('  ❌ Failed to scrape Breaking News:', error.message);
     return [];
   } finally {
@@ -229,7 +229,7 @@ export async function scrapeBreakingNewsArticleContent(url: string): Promise<str
     
     return cleaned;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`  ❌ Failed to scrape Breaking News article content: ${error.message}`);
     return '';
   } finally {

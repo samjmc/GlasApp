@@ -96,7 +96,7 @@ export async function generateArticleImage(
     
     return publicUrl;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('   ❌ DALL-E generation failed:', error.message);
     console.log('   🖼️  Falling back to random existing image');
     return getRandomExistingImage();

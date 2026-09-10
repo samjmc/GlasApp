@@ -44,7 +44,7 @@ router.get('/article/:articleId', async (req, res) => {
       stats: stats || []
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching article vote stats:', error);
     res.status(500).json({
       success: false,
@@ -93,7 +93,7 @@ router.get('/opportunity/:policyVoteId', async (req, res) => {
       opportunity,
       stats: stats || []
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching policy vote opportunity:', error);
     res.status(500).json({
       success: false,
@@ -138,7 +138,7 @@ router.get('/opportunity/:policyVoteId/user', isAuthenticated, async (req, res) 
       success: true,
       response
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching user policy vote response:', error);
     res.status(500).json({
       success: false,
@@ -176,7 +176,7 @@ router.get('/user/me/article/:articleId', isAuthenticated, async (req, res) => {
       votes: votes || []
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching user vote:', error);
     res.status(500).json({
       success: false,
@@ -206,7 +206,7 @@ router.get('/user/:userId/article/:articleId', async (req, res) => {
       votes: votes || []
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching user vote:', error);
     res.status(500).json({
       success: false,
@@ -296,7 +296,7 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, async (req, r
       response: saved,
       ...realtime,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error saving policy vote response:', error);
     res.status(500).json({
       success: false,
@@ -387,7 +387,7 @@ router.post('/', isAuthenticated, async (req, res) => {
       ...realtime,
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error saving policy vote:', error);
     res.status(500).json({
       success: false,
@@ -416,7 +416,7 @@ router.get('/user/:userId/personalized-scores', async (req, res) => {
       scores
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error calculating personalized scores:', error);
     res.status(500).json({
       success: false,
@@ -450,7 +450,7 @@ router.get('/user/:userId/td/:politicianName', async (req, res) => {
       score
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching personalized TD score:', error);
     res.status(500).json({
       success: false,
@@ -474,7 +474,7 @@ router.get('/user/:userId/value-alignment', async (req, res) => {
       alignment
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error calculating value alignment:', error);
     res.status(500).json({
       success: false,
@@ -521,7 +521,7 @@ router.delete('/:voteId', async (req, res) => {
       message: 'Vote deleted'
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error deleting vote:', error);
     res.status(500).json({
       success: false,

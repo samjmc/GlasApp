@@ -64,7 +64,7 @@ async function testDimensionalScores() {
   console.log('═'.repeat(70));
 }
 
-async function calculateEffectiveness(td: any): Promise<number> {
+async function calculateEffectiveness(td: unknown): Promise<number> {
   // 1. ATTENDANCE (50%)
   console.log(`   Attendance: ${td.attendance_percentage}%`);
   const attendanceScore = Math.min(100, (td.attendance_percentage / 95) * 100);
@@ -98,7 +98,7 @@ async function calculateEffectiveness(td: any): Promise<number> {
 
 const partyVoteCache = new Map<string, {ta: number, nil: number, staon: number}>();
 
-async function calculatePartyAlignment(td: any): Promise<number> {
+async function calculatePartyAlignment(td: unknown): Promise<number> {
   if (!td.party) {
     console.log(`   Independent - default score`);
     return 50;
@@ -167,7 +167,7 @@ async function calculatePartyAlignment(td: any): Promise<number> {
   return Math.min(100, Math.max(0, consistencyScore));
 }
 
-async function calculateConstituencyService(td: any): Promise<number> {
+async function calculateConstituencyService(td: unknown): Promise<number> {
   const { data: questions } = await supabase
     .from('td_questions')
     .select('subject, question_text')

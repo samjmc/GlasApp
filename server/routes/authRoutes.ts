@@ -345,7 +345,7 @@ router.post('/verify-email-code', async (req: Request, res: Response) => {
     const { tempUserId, code } = verifySchema.parse(req.body);
     
     // Get temporary registration data
-    const tempRegistrations = (global as any).tempRegistrations || {};
+    const tempRegistrations = (global as unknown).tempRegistrations || {};
     const tempData = tempRegistrations[tempUserId];
     
     if (!tempData) {
@@ -526,7 +526,7 @@ router.post('/register', async (req: Request, res: Response) => {
           userId: user.id
         });
       }
-    } catch (dbError: any) {
+    } catch (dbError: unknown) {
       console.error('Registration error:', dbError);
       
       // Handle specific database constraint violations
@@ -610,7 +610,7 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 
     // Set user in session
-    (req.session as any).userId = user.id;
+    (req.session as unknown).userId = user.id;
     
     return res.status(200).json({
       success: true,

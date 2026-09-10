@@ -164,7 +164,7 @@ router.post('/run', async (req, res, next) => {
           message: 'News scraping completed',
           stats
         });
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('❌ News scrape failed:', error);
         res.status(500).json({
           success: false,

@@ -65,7 +65,7 @@ async function calculateTransparencyAllTDs() {
   console.log(`✅ Loaded ${allBills?.length} bills`);
 
   // Load all votes
-  const allVotes: any[] = [];
+  const allVotes: unknown[] = [];
   let offset = 0;
   
   while (true) {
@@ -88,7 +88,7 @@ async function calculateTransparencyAllTDs() {
   console.log('─'.repeat(70));
 
   let updated = 0;
-  const results: any[] = [];
+  const results: unknown[] = [];
 
   for (const td of (tds || [])) {
     const tdQuestions = allQuestions?.filter(q => q.td_id === td.id) || [];
@@ -164,7 +164,7 @@ async function calculateTransparencyAllTDs() {
   });
 }
 
-function calculateQuestionBillMatch(questions: any[], bills: any[]): number {
+function calculateQuestionBillMatch(questions: unknown[], bills: unknown[]): number {
   if (questions.length === 0) return 30;
 
   // Classify questions by topic
@@ -213,7 +213,7 @@ function calculateQuestionBillMatch(questions: any[], bills: any[]): number {
   return Math.round(matchScore / topicsWithQuestions);
 }
 
-function calculateVotingStability(votes: any[]): number {
+function calculateVotingStability(votes: unknown[]): number {
   if (votes.length < 10) return 50;
 
   const votesByTopic: Record<string, { ta: number; nil: number; staon: number }> = {};

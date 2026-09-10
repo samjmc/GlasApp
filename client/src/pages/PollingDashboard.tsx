@@ -52,7 +52,7 @@ const PARTY_COLORS: { [key: string]: string } = {
 
 export default function PollingDashboard() {
   const [pollData, setPollData] = useState<PollData[]>([]);
-  const [historicalData, setHistoricalData] = useState<any>(null);
+  const [historicalData, setHistoricalData] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -86,7 +86,7 @@ export default function PollingDashboard() {
       }
 
       // Format the data
-      const formattedData: PollData[] = cacheData.map((item: any) => ({
+      const formattedData: PollData[] = cacheData.map((item: unknown) => ({
         party_name: item.entity_name,
         first_preference: parseFloat(item.latest_support || '0'),
         poll_date: item.latest_poll_date,
@@ -100,7 +100,7 @@ export default function PollingDashboard() {
       // Load historical chart
       await loadHistoricalChart();
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       const errorMsg = err.message || 'Unknown error occurred';
       console.error('❌ Dashboard error:', err);
       setError(errorMsg);
@@ -126,7 +126,7 @@ export default function PollingDashboard() {
       }
 
       // Group by party
-      const parties: { [key: string]: any[] } = {};
+      const parties: { [key: string]: unknown[] } = {};
       timeSeries.forEach(record => {
         if (!parties[record.entity_name]) {
           parties[record.entity_name] = [];
@@ -364,7 +364,7 @@ export default function PollingDashboard() {
                         size: 13
                       },
                       callbacks: {
-                        label: function(context: any) {
+                        label: function(context: unknown) {
                           return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}%`;
                         }
                       }

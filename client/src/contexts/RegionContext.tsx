@@ -88,7 +88,7 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
       const currentRegion = regionRef.current || getStoredRegion();
 
       if (!currentRegion) {
-        return originalFetch(input as any, init);
+        return originalFetch(input as unknown, init);
       }
 
       try {
@@ -100,7 +100,7 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
         }
 
         if (!url || url.origin !== window.location.origin) {
-          return originalFetch(input as any, init);
+          return originalFetch(input as unknown, init);
         }
 
         const baseHeaders =
@@ -127,10 +127,10 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
           headers: baseHeaders,
         };
 
-        return originalFetch(input as any, finalInit);
+        return originalFetch(input as unknown, finalInit);
       } catch (error) {
         console.error("Region fetch patch failed", error);
-        return originalFetch(input as any, init);
+        return originalFetch(input as unknown, init);
       }
     };
 

@@ -75,7 +75,7 @@ async function fetchNewDebates(lookbackDays: number = 14): Promise<{
   });
 
   // Fetch debates from API
-  const allDebates: any[] = [];
+  const allDebates: unknown[] = [];
   let skip = 0;
   const limit = 50;
 
@@ -101,7 +101,7 @@ async function fetchNewDebates(lookbackDays: number = 14): Promise<{
       if (results.length < limit) break;
       skip += limit;
       await new Promise(resolve => setTimeout(resolve, 500));
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`   ❌ Error fetching debates: ${error.message}`);
       break;
     }
@@ -187,7 +187,7 @@ async function runDailyDebateUpdate() {
     }
     console.log('═'.repeat(70));
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Error in daily debate update:', error.message);
     throw error;
   }

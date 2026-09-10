@@ -144,7 +144,7 @@ export default function TDProfilePageEnhanced() {
       }
       const payload = await response.json();
       const alerts = payload?.alerts ?? [];
-      return alerts.map((item: any) => ({
+      return alerts.map((item: unknown) => ({
         ...item,
         status: item.status ?? 'new'
       }));
@@ -311,7 +311,7 @@ export default function TDProfilePageEnhanced() {
       description: string;
     }
   ) => {
-    const component = componentWeights[componentKey] as any;
+    const component = componentWeights[componentKey] as unknown;
     const weightPercent = component?.weight != null ? Math.round(component.weight * 100) : null;
     const rawScore = component?.score != null ? Number(component.score) : null;
     const available = component?.available === false ? false : Number.isFinite(rawScore);
@@ -583,7 +583,7 @@ export default function TDProfilePageEnhanced() {
             
             {newsArticles && newsArticles.length > 0 ? (
               <div className="space-y-3">
-                {newsArticles.slice(0, 3).map((article: any, idx: number) => (
+                {newsArticles.slice(0, 3).map((article: unknown, idx: number) => (
                   <a
                     key={idx}
                     href={article.url}
@@ -813,7 +813,7 @@ export default function TDProfilePageEnhanced() {
                       Recent Activity
                     </h3>
                     <div className="space-y-2">
-                      {recentVotesData.votes.map((vote: any, idx: number) => (
+                      {recentVotesData.votes.map((vote: unknown, idx: number) => (
                         <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:border-blue-300 transition-colors">
                           <div className="flex justify-between items-start gap-3">
                             <div className="flex-1 min-w-0">
@@ -858,7 +858,7 @@ export default function TDProfilePageEnhanced() {
                       Votes where {politicianName} voted against their party position.
                     </p>
                     <div className="space-y-3">
-                      {rebelVotesData.votes.slice(0, 3).map((vote: any, idx: number) => (
+                      {rebelVotesData.votes.slice(0, 3).map((vote: unknown, idx: number) => (
                         <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded border border-orange-100 dark:border-orange-800/30 shadow-sm">
                           <div className="flex justify-between items-start gap-2">
                             <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
@@ -973,7 +973,7 @@ export default function TDProfilePageEnhanced() {
                     <p className="text-xs text-gray-500 dark:text-gray-400">No topic breakdown available for this period.</p>
                   ) : (
                     <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-200">
-                      {debateActivity.issueFocus.slice(0, 4).map((topic: any) => (
+                      {debateActivity.issueFocus.slice(0, 4).map((topic: unknown) => (
                         <li key={topic.topic} className="flex justify-between">
                           <span>{topic.topic}</span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">
@@ -989,7 +989,7 @@ export default function TDProfilePageEnhanced() {
                   <div>
                     <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Chamber Split</h3>
                     <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-200">
-                      {debateActivity.chamberActivity.map((item: any) => (
+                      {debateActivity.chamberActivity.map((item: unknown) => (
                         <li key={item.chamber} className="flex justify-between">
                           <span>{item.chamber}</span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">{Number(item.minutes).toFixed(1)} mins</span>
@@ -1020,7 +1020,7 @@ export default function TDProfilePageEnhanced() {
                   <div className="h-32">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart
-                        data={[...debateHistory.history].reverse().map((entry: any) => ({
+                        data={[...debateHistory.history].reverse().map((entry: unknown) => ({
                           label: new Date(entry.periodEnd).toLocaleDateString('en-IE', {
                             month: 'short',
                             day: 'numeric',
@@ -1045,7 +1045,7 @@ export default function TDProfilePageEnhanced() {
                     </ResponsiveContainer>
                   </div>
                   <ul className="mt-3 space-y-1 text-xs text-gray-600 dark:text-gray-300">
-                    {debateHistory.history.slice(0, 6).map((entry: any) => (
+                    {debateHistory.history.slice(0, 6).map((entry: unknown) => (
                       <li key={`${entry.periodStart}-${entry.periodEnd}`} className="flex justify-between">
                         <span>
                           {new Date(entry.periodStart).toLocaleDateString('en-IE', { month: 'short', day: 'numeric' })} –{' '}
@@ -1090,7 +1090,7 @@ export default function TDProfilePageEnhanced() {
               </p>
             ) : (
               <ul className="space-y-3">
-                {debateAlerts.map((alert: any) => (
+                {debateAlerts.map((alert: unknown) => (
                   <li
                     key={alert.id}
                     className="rounded-lg border border-amber-200 bg-white/90 px-3 py-2 text-sm text-gray-800 shadow-sm dark:border-amber-500/20 dark:bg-amber-950/30 dark:text-amber-100"
@@ -1280,7 +1280,7 @@ export default function TDProfilePageEnhanced() {
 }
 
 // Helper Components
-function PerformanceBar({ label, score, weight, color, description, breakdown, available = true }: any) {
+function PerformanceBar({ label, score, weight, color, description, breakdown, available = true }: unknown) {
   const colorClasses = {
     emerald: 'bg-emerald-500',
     blue: 'bg-blue-500',
@@ -1324,7 +1324,7 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
       {isAvailable ? (
         Array.isArray(breakdown) && breakdown.length > 0 ? (
           <ul className="mt-2 space-y-1 text-xs text-gray-600 dark:text-gray-400">
-            {breakdown.map((item: any) => (
+            {breakdown.map((item: unknown) => (
               <li key={`${label}-${item.label}`} className="rounded border border-gray-200/70 dark:border-gray-700/70 p-2">
                 <div className="flex items-center justify-between text-gray-700 dark:text-gray-200">
                   <span className="font-medium">{item.label}</span>
@@ -1357,7 +1357,7 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
   );
 }
 
-function RankCard({ label, rank, total }: any) {
+function RankCard({ label, rank, total }: unknown) {
   return (
     <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
       <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
@@ -1371,7 +1371,7 @@ function RankCard({ label, rank, total }: any) {
   );
 }
 
-function StatRow({ icon, label, value }: any) {
+function StatRow({ icon, label, value }: unknown) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
@@ -1383,7 +1383,7 @@ function StatRow({ icon, label, value }: any) {
   );
 }
 
-function InfoCard({ icon, label, value }: any) {
+function InfoCard({ icon, label, value }: unknown) {
   return (
     <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
       {icon}

@@ -15,7 +15,7 @@ async function findMissingTDs() {
   const apiResponse = await fetch(apiUrl);
   const apiData = await apiResponse.json();
   
-  const apiMembers = apiData.results.map((r: any) => ({
+  const apiMembers = apiData.results.map((r: unknown) => ({
     name: r.member.fullName.trim(),
     code: r.member.memberCode,
     uri: r.member.uri
@@ -32,7 +32,7 @@ async function findMissingTDs() {
   console.log(`DB members (active): ${dbMembers?.filter(m => m.is_active).length}`);
 
   // Find members in API but not in our DB
-  const missing: any[] = [];
+  const missing: unknown[] = [];
   
   for (const apiMember of apiMembers) {
     const inDb = dbMembers?.find(db => 
@@ -61,7 +61,7 @@ async function findMissingTDs() {
 
   // Also find TDs in our DB marked active but NOT in API
   console.log(`\n${'═'.repeat(70)}`);
-  const notInApi: any[] = [];
+  const notInApi: unknown[] = [];
   
   for (const dbMember of (dbMembers || [])) {
     if (!dbMember.is_active) continue;

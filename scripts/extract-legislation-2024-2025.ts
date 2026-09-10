@@ -39,7 +39,7 @@ async function extractLegislation() {
 
   // Fetch legislation
   console.log('📥 Fetching bills...');
-  const allBills: any[] = [];
+  const allBills: unknown[] = [];
   let skip = 0;
   const limit = 100;
 
@@ -68,7 +68,7 @@ async function extractLegislation() {
 
   // Process sponsorships
   console.log('🔗 Extracting sponsorships...');
-  const legislationToInsert: any[] = [];
+  const legislationToInsert: unknown[] = [];
 
   for (const result of allBills) {
     const bill = result.bill;

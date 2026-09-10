@@ -33,7 +33,7 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
   onConstituencySelect
 }) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<'provinces' | 'constituencies' | 'electoral' | 'cities' | 'all'>(initialTab as any || 'provinces');
+  const [activeTab, setActiveTab] = useState<'provinces' | 'constituencies' | 'electoral' | 'cities' | 'all'>(initialTab as unknown || 'provinces');
   const [selectedMarker, setSelectedMarker] = useState<Marker | null>(null);
   const [mapInitialized, setMapInitialized] = useState(false);
 
@@ -269,7 +269,7 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
         await import('leaflet/dist/leaflet.css');
         
         // Fix Leaflet default icon issue
-        delete (L.Icon.Default.prototype as any)._getIconUrl;
+        delete (L.Icon.Default.prototype as unknown)._getIconUrl;
         L.Icon.Default.mergeOptions({
           iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
           iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -360,7 +360,7 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
         const addElectoralConstituencies = () => {
           try {
             // Use our embedded data instead of fetching from URL
-            L.geoJSON(electoralConstituencies as any, {
+            L.geoJSON(electoralConstituencies as unknown, {
               style: () => electoralStyle,
               onEachFeature: (feature, layer) => {
                 const constituencyName = feature?.properties?.CONSTITUENCY || '';
@@ -404,7 +404,7 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
             if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
             const data = await response.json();
             
-            L.geoJSON(data as any, {
+            L.geoJSON(data as unknown, {
               style: (feature) => {
                 const countyName = feature?.properties?.name || '';
                 const province = countyToProvince[countyName] || 'Leinster';
@@ -492,11 +492,11 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
         updateMarkers();
         
         // Store the map and layer groups for future updates
-        (window as any).leafletMap = map;
-        (window as any).markersGroup = markersGroup;
-        (window as any).countiesGroup = countiesGroup;
-        (window as any).electoralGroup = electoralGroup;
-        (window as any).updateMapMarkers = updateMarkers;
+        (window as unknown).leafletMap = map;
+        (window as unknown).markersGroup = markersGroup;
+        (window as unknown).countiesGroup = countiesGroup;
+        (window as unknown).electoralGroup = electoralGroup;
+        (window as unknown).updateMapMarkers = updateMarkers;
         
         setMapInitialized(true);
       } catch (error) {
@@ -508,13 +508,13 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
     
     // Cleanup function
     return () => {
-      const leafletMap = (window as any).leafletMap;
+      const leafletMap = (window as unknown).leafletMap;
       if (leafletMap) {
         leafletMap.remove();
-        (window as any).leafletMap = null;
-        (window as any).markersGroup = null;
-        (window as any).countiesGroup = null;
-        (window as any).updateMapMarkers = null;
+        (window as unknown).leafletMap = null;
+        (window as unknown).markersGroup = null;
+        (window as unknown).countiesGroup = null;
+        (window as unknown).updateMapMarkers = null;
       }
     };
   }, [mapRef.current]);
@@ -523,10 +523,10 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
   useEffect(() => {
     if (!mapInitialized) return;
     
-    const map = (window as any).leafletMap;
-    const countiesGroup = (window as any).countiesGroup;
-    const electoralGroup = (window as any).electoralGroup;
-    const updateMapMarkers = (window as any).updateMapMarkers;
+    const map = (window as unknown).leafletMap;
+    const countiesGroup = (window as unknown).countiesGroup;
+    const electoralGroup = (window as unknown).electoralGroup;
+    const updateMapMarkers = (window as unknown).updateMapMarkers;
     
     // Update markers
     if (updateMapMarkers) {
@@ -571,7 +571,7 @@ const LeafletIrelandMap: React.FC<LeafletIrelandMapProps> = ({
           defaultValue="provinces" 
           className="w-full" 
           onValueChange={(v) => {
-            setActiveTab(v as any);
+            setActiveTab(v as unknown);
             setSelectedMarker(null);
           }}
           value={activeTab}

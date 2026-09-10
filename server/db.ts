@@ -114,7 +114,7 @@ export async function checkDatabaseConnection(): Promise<boolean> {
     console.log(`   🗄️  Database: ${dbName}`);
     console.log(`   📌 Version: ${version.split(' ').slice(0, 2).join(' ')}`);
     return true;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Database connection failed:', error.message);
     if (error.code) console.error(`   Error code: ${error.code}`);
     return false;

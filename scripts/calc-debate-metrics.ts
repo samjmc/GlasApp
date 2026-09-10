@@ -189,7 +189,7 @@ async function main() {
     await persistIssueFocus(aggregated, startDate, endDate);
 
     console.log(`\n✅ Debate metrics computed for ${aggregated.size} TDs`);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('❌ Failed to calculate debate metrics:', error?.message || error);
     process.exit(1);
   }
@@ -578,7 +578,7 @@ async function persistMetrics(aggregated: Map<number, AggregatedTD>, startDate: 
 }
 
 async function persistIssueFocus(aggregated: Map<number, AggregatedTD>, startDate: string, endDate: string) {
-  const issueRows: any[] = [];
+  const issueRows: unknown[] = [];
 
   for (const entry of aggregated.values()) {
     const totalMinutes = Array.from(entry.topicMinutes.values()).reduce((acc, val) => acc + val, 0) || 1;

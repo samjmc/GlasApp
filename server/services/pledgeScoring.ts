@@ -85,7 +85,7 @@ export async function calculatePledgeScore(pledgeId: number): Promise<number> {
 /**
  * Calculate fulfillment score for government parties
  */
-async function calculateFulfillmentScore(pledge: any, actions: any[]): Promise<number> {
+async function calculateFulfillmentScore(pledge: unknown, actions: unknown[]): Promise<number> {
   let baseScore = 0;
   
   // Weight actions by their impact and type
@@ -122,7 +122,7 @@ async function calculateFulfillmentScore(pledge: any, actions: any[]): Promise<n
 /**
  * Calculate advocacy score for opposition parties
  */
-async function calculateAdvocacyScore(pledge: any, actions: any[]): Promise<number> {
+async function calculateAdvocacyScore(pledge: unknown, actions: unknown[]): Promise<number> {
   let baseScore = 0;
   
   // Weight actions by their advocacy impact
@@ -265,7 +265,7 @@ export async function calculatePartyPerformanceScores(partyId: number): Promise<
 }
 
 // Individual scoring functions (simplified for now, would be enhanced with real data)
-function calculatePolicyConsistencyScore(party: any, status: string): number {
+function calculatePolicyConsistencyScore(party: unknown, status: string): number {
   // Base scores based on research of Irish political parties
   const baseScores: Record<string, number> = {
     'Fine Gael': 72,
@@ -283,7 +283,7 @@ function calculatePolicyConsistencyScore(party: any, status: string): number {
   return baseScores[party.name] || 65;
 }
 
-function calculateParliamentaryActivityScore(party: any, status: string): number {
+function calculateParliamentaryActivityScore(party: unknown, status: string): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 76,
     'Fianna Fáil': 74,
@@ -300,7 +300,7 @@ function calculateParliamentaryActivityScore(party: any, status: string): number
   return baseScores[party.name] || 70;
 }
 
-function calculateIntegrityScore(party: any): number {
+function calculateIntegrityScore(party: unknown): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 55,
     'Fianna Fáil': 48,
@@ -317,7 +317,7 @@ function calculateIntegrityScore(party: any): number {
   return baseScores[party.name] || 60;
 }
 
-function calculateTransparencyScore(party: any, status: string): number {
+function calculateTransparencyScore(party: unknown, status: string): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 59,
     'Fianna Fáil': 52,
@@ -334,7 +334,7 @@ function calculateTransparencyScore(party: any, status: string): number {
   return baseScores[party.name] || 65;
 }
 
-function calculateFactualAccuracyScore(party: any): number {
+function calculateFactualAccuracyScore(party: unknown): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 62,
     'Fianna Fáil': 58,
@@ -351,7 +351,7 @@ function calculateFactualAccuracyScore(party: any): number {
   return baseScores[party.name] || 65;
 }
 
-function calculatePublicAccountabilityScore(party: any, status: string): number {
+function calculatePublicAccountabilityScore(party: unknown, status: string): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 57,
     'Fianna Fáil': 50,
@@ -368,7 +368,7 @@ function calculatePublicAccountabilityScore(party: any, status: string): number 
   return baseScores[party.name] || 65;
 }
 
-function calculateConflictAvoidanceScore(party: any): number {
+function calculateConflictAvoidanceScore(party: unknown): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 64,
     'Fianna Fáil': 56,

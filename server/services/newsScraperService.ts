@@ -258,7 +258,7 @@ export async function fetchAllIrishNews(options: FetchNewsOptions = {}): Promise
     const griptArticles = await GriptScraper.scrapeLatestArticles();
     allArticles.push(...griptArticles);
     await sleep(2000);  // Longer delay for web scraping
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log('  ⚠️ Gript scraper not available or failed');
   }
   
@@ -267,7 +267,7 @@ export async function fetchAllIrishNews(options: FetchNewsOptions = {}): Promise
       const ditchArticles = await DitchScraper.scrapeLatestArticles();
     allArticles.push(...ditchArticles);
     await sleep(2000);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log('  ⚠️ Ditch scraper not available or failed');
   }
   

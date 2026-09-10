@@ -47,13 +47,13 @@ export interface PolicyPromise {
   
   // Target
   target_date?: Date;
-  target_metrics?: any;  // What success looks like
+  target_metrics?: unknown;  // What success looks like
   
   // Outcome
   status: 'pending' | 'delivered' | 'partial' | 'failed' | 'broken';
   outcome_verified_date?: Date;
   outcome_score: number;  // Actual score when verified
-  verification_sources?: any;
+  verification_sources?: unknown;
   
   // Tracking
   follow_up_articles: number[];
@@ -67,7 +67,7 @@ export interface PolicyPromise {
 /**
  * Detect if article is an ANNOUNCEMENT vs ACHIEVEMENT
  */
-export function detectAnnouncementVsAchievement(article: any, analysis: any): {
+export function detectAnnouncementVsAchievement(article: unknown, analysis: unknown): {
   isAnnouncement: boolean;
   isAchievement: boolean;
   confidence: number;
@@ -110,11 +110,11 @@ export function detectAnnouncementVsAchievement(article: any, analysis: any): {
  * Only give full credit for delivered results
  */
 export function adjustScoreForAnnouncementBias(
-  analysis: any,
-  article: any
+  analysis: unknown,
+  article: unknown
 ): {
   adjustedImpact: number;
-  adjustedDimensionalImpacts: any;
+  adjustedDimensionalImpacts: unknown;
   adjustment_reason: string;
   track_promise: boolean;
 } {
@@ -184,9 +184,9 @@ export function adjustScoreForAnnouncementBias(
  * Extract and track promises from announcements
  */
 export async function trackPromiseFromAnnouncement(
-  article: any,
+  article: unknown,
   td: { name: string; constituency: string; party: string },
-  analysis: any
+  analysis: unknown
 ): Promise<number | null> {
   
   if (!supabaseDb) return null;
@@ -225,7 +225,7 @@ export async function trackPromiseFromAnnouncement(
     console.log(`   📋 Promise tracked (ID: ${data.id}) - will verify in 6 months`);
     return data.id;
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error tracking promise:', error.message);
     return null;
   }
@@ -234,7 +234,7 @@ export async function trackPromiseFromAnnouncement(
 /**
  * Extract promise details using AI
  */
-async function extractPromiseDetails(article: any, td: any, analysis: any) {
+async function extractPromiseDetails(article: unknown, td: unknown, analysis: unknown) {
   const prompt = `
 Extract the specific promise from this article about ${td.name}:
 
@@ -351,13 +351,13 @@ export async function verifyPromiseOutcome(promiseId: number): Promise<{
       evidence: verification.evidence
     };
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error verifying promise:', error);
     return { delivered: false, score_adjustment: 0, evidence: 'Verification error' };
   }
 }
 
-async function aiVerifyPromiseDelivery(promise: any) {
+async function aiVerifyPromiseDelivery(promise: unknown) {
   // Use AI to search for evidence of delivery
   const prompt = `
 Research if this promise was delivered:

@@ -53,7 +53,7 @@ interface DimensionWeights {
  */
 function calculateMatchPercentage(
   user: IdeologicalDimensions,
-  party: any,
+  party: unknown,
   weights?: Partial<DimensionWeights>
 ): number {
   // Default weights
@@ -140,7 +140,7 @@ function calculateMatchPercentage(
  */
 function generateMatchReason(
   userDimensions: IdeologicalDimensions, 
-  partyDimensions: any,
+  partyDimensions: unknown,
   partyName: string,
   rationales?: Record<string, string>
 ): string {

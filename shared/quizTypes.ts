@@ -70,8 +70,8 @@ export interface MultidimensionalQuizResult {
   description: string;
   
   // Additional data
-  similarFigures?: any[];
-  uniqueCombinations?: any[];
+  similarFigures?: unknown[];
+  uniqueCombinations?: unknown[];
   
   // Enhanced analysis
   detailedAnalysis?: string;

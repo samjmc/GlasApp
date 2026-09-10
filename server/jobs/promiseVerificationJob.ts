@@ -111,7 +111,7 @@ export class PromiseVerificationJob {
           // Rate limiting
           await sleep(3000);  // 3 seconds between verifications
           
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error(`   ❌ Error verifying promise ${promise.id}: ${error.message}`);
         }
       }
@@ -129,7 +129,7 @@ export class PromiseVerificationJob {
       
       return stats;
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Promise verification failed:', error);
       return { promisesChecked: 0, delivered: 0, partial: 0, broken: 0, scoresAdjusted: 0 };
     } finally {
@@ -140,7 +140,7 @@ export class PromiseVerificationJob {
   /**
    * Trigger manual verification
    */
-  async triggerManual(): Promise<any> {
+  async triggerManual(): Promise<unknown> {
     console.log('🔄 Manual promise verification triggered');
     return await this.execute();
   }

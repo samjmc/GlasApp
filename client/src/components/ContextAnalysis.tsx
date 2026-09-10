@@ -37,7 +37,7 @@ interface ContextAnalysisResponse {
     issue: string;
     likely_stance?: string;
     mainstream_stance?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   }>;
 }
 
@@ -97,7 +97,7 @@ const ContextAnalysis: React.FC<ContextAnalysisProps> = ({ dimensions, userLocat
   
   // Listen for regenerate events
   useEffect(() => {
-    const handleRegenerate = (event: any) => {
+    const handleRegenerate = (event: unknown) => {
       console.log("Context Analysis: Received regenerate event", event.detail);
       console.log("EVENT DETAIL for context analysis:", JSON.stringify(event.detail));
       

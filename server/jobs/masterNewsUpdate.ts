@@ -83,7 +83,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log(`   Articles saved: ${scraperStats.articlesProcessed}`);
       console.log(`   TDs mentioned: ${scraperStats.tdsMentioned}\n`);
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Step 1 FAILED:', error.message);
       stats.errors.push(`News scraping: ${error.message}`);
       // Continue with other steps even if scraping fails
@@ -113,7 +113,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       }
       console.log('');
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Step 2 FAILED:', error.message);
       stats.errors.push(`TD scoring: ${error.message}`);
     }
@@ -141,7 +141,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
         }
         console.log('');
         
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('❌ Step 3 FAILED:', error.message);
         stats.errors.push(`Score recalculation: ${error.message}`);
       }
@@ -163,7 +163,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log(`   Parties updated: ${partyStats.partiesUpdated}`);
       console.log('');
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('⚠️  Step 4 failed (non-critical):', error.message);
       // Party scores are nice-to-have, not critical
     }
@@ -184,7 +184,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log(`   User rankings updated: ${rankingStats.usersUpdated}`);
       console.log('');
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('⚠️  Step 5 failed (non-critical):', error.message);
       // Personal rankings are nice-to-have
     }
@@ -201,7 +201,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       
       console.log(`✅ Step 6 Complete: All caches cleared\n`);
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('⚠️  Step 6 failed (non-critical):', error.message);
     }
 
@@ -241,7 +241,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     console.log('   ✓ Party rankings');
     console.log('   ✓ Personal rankings\n');
     
-  } catch (fatalError: any) {
+  } catch (fatalError: unknown) {
     console.error('\n' + '='.repeat(80));
     console.error('❌ FATAL ERROR - JOB ABORTED');
     console.error('='.repeat(80));
