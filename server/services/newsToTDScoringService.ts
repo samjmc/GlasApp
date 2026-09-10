@@ -20,7 +20,7 @@
 
 import { supabaseDb as supabase } from '../db.js';
 import { TDExtractionService } from './tdExtractionService.js';
-import { ArticleImportanceService } from './articleImportanceService.js';
+import { ArticleImportanceService, type ImportanceResult } from './articleImportanceService.js';
 import { EventDeduplicationService } from './eventDeduplicationService.js';
 import { NewsArticleScoringTeam } from './multiAgentTDScoring.js';
 import { TDScoreCalculator } from './tdScoreCalculator.js';
@@ -47,6 +47,61 @@ interface ProcessingOptions {
   batchSize?: number;
   topPercentile?: number;    // Default 25 = top 25%
   minImportanceScore?: number;  // Default 40
+}
+
+type NewsArticleRow = Record<string, any> & {
+  id: number;
+  title: string;
+  content: string;
+  url: string;
+  source?: string;
+  published_date?: string;
+};
+
+type RankedNewsArticle = {
+  article: NewsArticleRow;
+  importance: ImportanceResult;
+};
+
+async function claimUnprocessedArticles(batchSize: number): Promise<{
+  articles: NewsArticleRow[];
+  error: unknown;
+}> {
+  if (!supabase) {
+    return { articles: [], error: new Error('Supabase not connected') };
+  }
+
+  const { data: candidateArticles, error: fetchError } = await supabase
+    .from('news_articles')
+    .select('*')
+    .eq('processed', false)
+    .order('created_at', { ascending: false })
+    .limit(batchSize);
+
+  if (fetchError) {
+    return { articles: [], error: fetchError };
+  }
+
+  if (!candidateArticles || candidateArticles.length === 0) {
+    return { articles: [], error: null };
+  }
+
+  const candidateIds = (candidateArticles as NewsArticleRow[]).map((article) => article.id);
+  const { data: claimedArticles, error: claimError } = await supabase
+    .from('news_articles')
+    .update({
+      processed: true,
+      score_applied: false
+    })
+    .in('id', candidateIds)
+    .eq('processed', false)
+    .select('*');
+
+  if (claimError) {
+    return { articles: [], error: claimError };
+  }
+
+  return { articles: claimedArticles || [], error: null };
 }
 
 /**
@@ -91,12 +146,7 @@ export async function processUnprocessedArticles(
     console.log('\n' + '─'.repeat(70));
     console.log('STEP 1: Fetching unprocessed articles...');
     
-    const { data: articles, error: fetchError } = await supabase
-      .from('news_articles')
-      .select('*')
-      .eq('processed', false)
-      .order('created_at', { ascending: false })
-      .limit(batchSize);
+    const { articles, error: fetchError } = await claimUnprocessedArticles(batchSize);
     
     if (fetchError) {
       console.error('❌ Error fetching articles:', fetchError);
@@ -109,18 +159,21 @@ export async function processUnprocessedArticles(
     }
     
     stats.totalArticles = articles.length;
-    console.log(`   Found ${articles.length} unprocessed articles`);
+    console.log(`   Claimed ${articles.length} unprocessed articles`);
     
     // Step 2: Score article importance (cheap LLM triage)
     console.log('\n' + '─'.repeat(70));
     console.log('STEP 2: Scoring article importance...');
     
-    const { topArticles, skippedArticles, stats: importanceStats } = 
-      await ArticleImportanceService.batchScoreAndRank(articles, {
-        topPercentile,
-        minScore: minImportanceScore,
-        parallelLimit: 5
-      });
+    const importanceResult = await ArticleImportanceService.batchScoreAndRank(articles as any[], {
+      topPercentile,
+      minScore: minImportanceScore,
+      parallelLimit: 5
+    });
+
+    const topArticles = importanceResult.topArticles as RankedNewsArticle[];
+    const skippedArticles = importanceResult.skippedArticles as RankedNewsArticle[];
+    const importanceStats = importanceResult.stats;
     
     stats.importanceScored = importanceStats.scored;
     stats.selectedForScoring = topArticles.length;
