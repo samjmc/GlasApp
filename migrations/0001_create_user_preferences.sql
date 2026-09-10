@@ -11,13 +11,13 @@ CREATE TABLE IF NOT EXISTS user_preferences (
 
 -- Backfill from users table (idempotent via ON CONFLICT)
 INSERT INTO user_preferences (user_id, county, bio, latitude, longitude, created_at, updated_at)
-SELECT id, county, bio, latitude, longitude, createdAt, updatedAt FROM users
+SELECT id, county, bio, latitude, longitude, created_at, updated_at FROM users
 ON CONFLICT (user_id) DO NOTHING;
 
 -- Add FK constraint with ON DELETE CASCADE (safe after backfill)
 ALTER TABLE user_preferences
-ADD CONSTRAINT fk_user_preferences_users
+ADD CONSTRAINT IF NOT EXISTS fk_user_preferences_users
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
--- Add index for updated_at queries
-CREATE INDEX idx_user_preferences_updated_at ON user_preferences(updated_at);
+-- Add index for updated_at queries (idempotent)
+CREATE INDEX IF NOT EXISTS idx_user_preferences_updated_at ON user_preferences(updated_at);
