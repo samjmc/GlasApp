@@ -48,7 +48,42 @@ export const supabaseAdmin: SupabaseClient = createClient(
 );
 
 /**
- * Extract user from JWT token in request
+ * CRITICAL SECURITY FUNCTION
+ *
+ * Extract and verify user identity from Bearer JWT token
+ *
+ * This is the CORE security control that prevents:
+ * - Unauthenticated access
+ * - Fake dev-user-123 identity in production
+ * - Unauthorized operations on protected routes
+ *
+ * SECURITY PROPERTIES:
+ * 1. Returns null if no Authorization header (no implicit trust)
+ * 2. Verifies JWT signature with Supabase (tampering impossible)
+ * 3. Validates token expiration (expired tokens rejected)
+ * 4. All protected routes call this function (via isAuthenticated middleware)
+ *
+ * FLOW:
+ * Client Request:
+ *   GET /api/quiz/save
+ *   Authorization: Bearer eyJhbGc...
+ *
+ * Server Processing (this function):
+ *   1. Extract token from Authorization header
+ *   2. Call supabase.auth.getUser(token) - verifies JWT
+ *   3. Return user object (verified) or null (invalid)
+ *   4. Middleware responds 200 or 401 based on result
+ *
+ * DEPLOYMENT:
+ * - Must be called by isAuthenticated() middleware on all protected routes
+ * - Client must attach bearer token via queryClient.ts
+ * - Supabase auth session must set token in localStorage
+ *
+ * TEST:
+ * - Unauthenticated request (no token) → null → 401 Unauthorized
+ * - Authenticated request (valid token) → user → 200 OK
+ * - Tampered token → null → 401 Unauthorized
+ * - Expired token → null → 401 Unauthorized
  */
 export async function getUserFromRequest(req: Request): Promise<any | null> {
   try {
