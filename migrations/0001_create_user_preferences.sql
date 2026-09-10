@@ -16,7 +16,7 @@ ON CONFLICT (user_id) DO NOTHING;
 
 -- Add FK constraint with ON DELETE CASCADE (safe after backfill)
 ALTER TABLE user_preferences
-ADD CONSTRAINT IF NOT EXISTS fk_user_preferences_users
+ADD CONSTRAINT fk_user_preferences_users
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 -- Add index for updated_at queries (idempotent)
