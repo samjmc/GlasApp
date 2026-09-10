@@ -17,7 +17,7 @@
 import express, { Request, Response } from 'express';
 import { db } from '../../db';
 import { userLocations, users, constituencies, parties, electionResults, elections, quizResults, userPreferences } from '@shared/schema';
-import { eq, and, count, sql, coalesce } from 'drizzle-orm';
+import { eq, and, count, sql } from 'drizzle-orm';
 import fs from 'fs';
 import path from 'path';
 import { cached, TTL } from '../../services/cacheService';
@@ -235,18 +235,18 @@ router.get("/stats/constituencies", async (req, res, next) => {
  */
 router.get("/heatmap", async (req: Request, res: Response, next) => {
   try {
-    // Get all users with location data (Phase 1: read from user_preferences with fallback to users)
+    // Get all users with location data (Phase 1: use user_preferences with fallback to users via LEFT JOIN)
     const usersWithLocation = await db
       .select({
-        latitude: coalesce(userPreferences.latitude, users.latitude),
-        longitude: coalesce(userPreferences.longitude, users.longitude),
-        county: coalesce(userPreferences.county, users.county),
+        latitude: sql`COALESCE(${userPreferences.latitude}, ${users.latitude})`,
+        longitude: sql`COALESCE(${userPreferences.longitude}, ${users.longitude})`,
+        county: sql`COALESCE(${userPreferences.county}, ${users.county})`,
       })
       .from(users)
       .leftJoin(userPreferences, eq(users.id, userPreferences.userId))
       .where(
         // Only include users who have location data
-        sql`${coalesce(userPreferences.latitude, users.latitude)} IS NOT NULL AND ${coalesce(userPreferences.longitude, users.longitude)} IS NOT NULL`
+        sql`COALESCE(${userPreferences.latitude}, ${users.latitude}) IS NOT NULL AND COALESCE(${userPreferences.longitude}, ${users.longitude}) IS NOT NULL`
       );
 
     // Transform data for heatmap
