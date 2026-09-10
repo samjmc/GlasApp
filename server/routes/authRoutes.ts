@@ -372,7 +372,7 @@ router.post('/verify-email-code', async (req: Request, res: Response) => {
       
       // Create actual user account now that email is verified
       const { confirmPassword, captchaToken, verificationCode, createdAt, expiresAt, ...userData } = tempData;
-      const user = await storage.createUser({
+      const user = await storage.upsertUser({
         ...userData,
         password: hashedPassword,
         emailVerified: true
@@ -500,7 +500,7 @@ router.post('/register', async (req: Request, res: Response) => {
       
       // Create user with properly converted coordinates and verification token
       const { latitude, longitude, ...restUserData } = userData;
-      const user = await storage.createUser({
+      const user = await storage.upsertUser({
         ...restUserData,
         password: hashedPassword,
         latitude: latitude?.toString() || undefined,
