@@ -26,12 +26,43 @@ export const sessionMiddleware = session({
   },
 });
 
-// Authentication middleware
-export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
+/**
+ * Session-based authentication middleware
+ *
+ * Checks for authentication via:
+ * 1. Express session (from Replit/OAuth)
+ * 2. Bearer token in Authorization header (Supabase JWT)
+ *
+ * This middleware allows multiple auth methods to coexist.
+ *
+ * Returns:
+ * - 200 with next() if authenticated via session or bearer
+ * - 401 if neither method succeeds
+ */
+export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
+  // Check 1: Session-based auth (Replit)
   if (req.session && req.session.userId) {
     return next();
   }
-  
+
+  // Check 2: Bearer token auth (Supabase) - fallback
+  const authHeader = req.headers.authorization;
+  if (authHeader?.startsWith('Bearer ')) {
+    try {
+      // Import and use Supabase bearer validation
+      const { getUserFromRequest } = await import('../auth/supabaseAuth.js');
+      const user = await getUserFromRequest(req);
+
+      if (user) {
+        req.user = user;
+        return next();
+      }
+    } catch (error) {
+      console.debug('Bearer token validation failed:', error);
+      // Fall through to 401
+    }
+  }
+
   return res.status(401).json({
     success: false,
     message: 'Authentication required'
