@@ -11,8 +11,8 @@ const router = Router();
 /**
  * GET /api/cache/stats - Get cache statistics
  */
-router.get('/stats', (req, res) => {
-  const stats = cache.getStats();
+router.get('/stats', async (req, res) => {
+  const stats = await cache.getStats();
   
   res.json({
     success: true,
@@ -27,8 +27,8 @@ router.get('/stats', (req, res) => {
 /**
  * POST /api/cache/clear - Clear all cache (admin only)
  */
-router.post('/clear', (req, res) => {
-  cache.clear();
+router.post('/clear', async (req, res) => {
+  await cache.clear();
   
   res.json({
     success: true,
@@ -39,9 +39,9 @@ router.post('/clear', (req, res) => {
 /**
  * DELETE /api/cache/:key - Delete specific cache key (admin only)
  */
-router.delete('/:key', (req, res) => {
+router.delete('/:key', async (req, res) => {
   const { key } = req.params;
-  cache.delete(key);
+  await cache.del(key);
   
   res.json({
     success: true,

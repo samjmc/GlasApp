@@ -557,8 +557,8 @@ router.post("/explanations/:partyId", asyncHandler(async (req, res) => {
 
   // Clear cache when party data is updated
   const { cache } = await import('../../services/cacheService');
-  cache.delete('parties:all');
-  cache.delete('parties:positions');
+  await cache.del('parties:all');
+  await cache.del('parties:positions');
 
   return res.json(formatSuccess(
     { message: `Explanations updated for ${existingParty.name}` },
