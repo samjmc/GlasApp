@@ -10,6 +10,8 @@ import { NewsScraperService } from '../../services/newsScraperService';
 import { TDExtractionService } from '../../services/tdExtractionService';
 import { AINewsAnalysisService } from '../../services/aiNewsAnalysisService';
 import { supabaseDb } from '../../db';
+import { formatSuccess, formatError } from '../../utils/responseFormatters';
+import { logger, requestLogger } from '../../utils/logger';
 
 const router = Router();
 
@@ -17,27 +19,26 @@ const router = Router();
  * POST /api/admin/articles/add - Manually add an article from any source
  */
 router.post('/add', async (req, res, next) => {
+  const log = requestLogger(req);
   try {
     const { url, source, tdName } = req.body;
     
     if (!url) {
-      return res.status(400).json({
-        success: false,
-        message: 'URL is required'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'URL is required')
+      );
     }
     
-    console.log(`📰 Manually adding article from ${source || 'unknown source'}...`);
-    console.log(`   URL: ${url}`);
+    log.info({ operation: 'admin.manualArticle.add', source: source || 'unknown source' }, 'Manually adding article');
+    log.info({ operation: 'admin.manualArticle.add', url }, 'URL');
     
     // Scrape full article content
     const content = await NewsScraperService.scrapeArticleContent(url);
     
     if (!content || content.length < 100) {
-      return res.status(400).json({
-        success: false,
-        message: 'Failed to scrape article content or content too short'
-      });
+      return res.status(400).json(
+        formatError('OPERATION_FAILED', 'Failed to scrape article content or content too short')
+      );
     }
     
     // Determine credibility and bias based on source
@@ -62,7 +63,7 @@ router.post('/add', async (req, res, next) => {
     
     // If TD name provided, analyze directly
     if (tdName) {
-      console.log(`   🤖 Analyzing article about ${tdName}...`);
+      log.info({ operation: 'admin.manualArticle.add', tdName }, `Analyzing article about ${tdName}...`);
       
       const analysis = await AINewsAnalysisService.analyzeArticle(
         article,
@@ -73,36 +74,38 @@ router.post('/add', async (req, res, next) => {
       // Save article
       const articleId = await saveManualArticle(article, tdName, analysis);
       
-      res.json({
-        success: true,
-        message: 'Article added and analyzed',
-        article_id: articleId,
-        analysis: {
-          story_type: analysis.story_type,
-          sentiment: analysis.sentiment,
-          impact_score: analysis.impact_score,
-          adjusted_impact: analysis.bias_adjustments?.final_adjusted_impact || analysis.impact_score
-        }
-      });
+      res.json(
+        formatSuccess({
+          message: 'Article added and analyzed',
+          article_id: articleId,
+          analysis: {
+            story_type: analysis.story_type,
+            sentiment: analysis.sentiment,
+            impact_score: analysis.impact_score,
+            adjusted_impact: analysis.bias_adjustments?.final_adjusted_impact || analysis.impact_score
+          }
+        })
+      );
     } else {
       // Extract TD mentions
-      console.log(`   👤 Extracting TD mentions...`);
+      log.info({ operation: 'admin.manualArticle.add' }, 'Extracting TD mentions...');
       const tdMentions = TDExtractionService.extractTDMentions(content);
       
       if (tdMentions.length === 0) {
-        return res.json({
-          success: true,
-          message: 'Article scraped but no TDs mentioned',
-          content_length: content.length,
-          suggestion: 'Specify tdName parameter to force analysis'
-        });
+        return res.json(
+          formatSuccess({
+            message: 'Article scraped but no TDs mentioned',
+            content_length: content.length,
+            suggestion: 'Specify tdName parameter to force analysis'
+          })
+        );
       }
       
       // Analyze for each TD mentioned
       const results = [];
       
       for (const td of tdMentions.slice(0, 3)) {  // Limit to first 3 TDs
-        console.log(`   🤖 Analyzing for ${td.name}...`);
+        log.info({ operation: 'admin.manualArticle.add', tdName: td.name }, `Analyzing for ${td.name}...`);
         
         try {
           const analysis = await AINewsAnalysisService.analyzeArticle(
@@ -119,7 +122,7 @@ router.post('/add', async (req, res, next) => {
             impact: analysis.bias_adjustments?.final_adjusted_impact || analysis.impact_score
           });
         } catch (error: unknown) {
-          console.error(`   ❌ Analysis failed for ${td.name}`);
+          log.error({ operation: 'admin.manualArticle.add', tdName: td.name }, `Analysis failed for ${td.name}`);
           results.push({
             td_name: td.name,
             error: error.message
@@ -127,12 +130,13 @@ router.post('/add', async (req, res, next) => {
         }
       }
       
-      res.json({
-        success: true,
-        message: 'Article processed',
-        tds_found: tdMentions.length,
-        analyzed: results
-      });
+      res.json(
+        formatSuccess({
+          message: 'Article processed',
+          tds_found: tdMentions.length,
+          analyzed: results
+        })
+      );
     }
     
   } catch (error) {
@@ -144,17 +148,17 @@ router.post('/add', async (req, res, next) => {
  * POST /api/admin/articles/bulk-add - Add multiple articles at once
  */
 router.post('/bulk-add', async (req, res, next) => {
+  const log = requestLogger(req);
   try {
     const { articles } = req.body;  // Array of {url, source, tdName}
     
     if (!Array.isArray(articles) || articles.length === 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'articles array is required'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'articles array is required')
+      );
     }
     
-    console.log(`📚 Processing ${articles.length} articles in bulk...`);
+    log.info({ operation: 'admin.manualArticle.bulkAdd', count: articles.length }, 'Processing articles in bulk');
     
     // Run in background
     setTimeout(async () => {
@@ -169,7 +173,7 @@ router.post('/bulk-add', async (req, res, next) => {
           if (content && content.length > 100) {
             // Process article...
             processed++;
-            console.log(`   ✅ [${processed}/${articles.length}] ${item.url}`);
+            log.info({ operation: 'admin.manualArticle.bulkAdd', url: item.url }, `Processed ${processed}/${articles.length}`);
           } else {
             failed++;
           }
@@ -179,19 +183,20 @@ router.post('/bulk-add', async (req, res, next) => {
           
         } catch (error) {
           failed++;
-          console.error(`   ❌ Failed: ${item.url}`);
+          log.error({ operation: 'admin.manualArticle.bulkAdd', url: item.url }, `Failed: ${item.url}`);
         }
       }
       
-      console.log(`✅ Bulk processing complete: ${processed} processed, ${failed} failed`);
+      log.info({ operation: 'admin.manualArticle.bulkAdd', processed, failed }, 'Bulk processing complete');
     }, 100);
     
-    res.json({
-      success: true,
-      message: 'Bulk processing started in background',
-      total: articles.length,
-      estimated_duration: `${articles.length * 5}s`
-    });
+    res.json(
+      formatSuccess({
+        message: 'Bulk processing started in background',
+        total: articles.length,
+        estimated_duration: `${articles.length * 5}s`
+      })
+    );
     
   } catch (error) {
     next(error);
@@ -202,12 +207,12 @@ router.post('/bulk-add', async (req, res, next) => {
  * GET /api/admin/articles/manual - Get all manually added articles
  */
 router.get('/manual', async (req, res, next) => {
+  const log = requestLogger(req);
   try {
     if (!supabaseDb) {
-      return res.status(503).json({
-        success: false,
-        message: 'Database not connected'
-      });
+      return res.status(503).json(
+        formatError('OPERATION_FAILED', 'Database not connected')
+      );
     }
     
     const { data: articles, error } = await supabaseDb
@@ -218,17 +223,18 @@ router.get('/manual', async (req, res, next) => {
       .limit(50);
     
     if (error) {
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to fetch articles'
-      });
+      log.error({ operation: 'admin.manualArticle.list', err: error }, 'Failed to fetch articles');
+      return res.status(500).json(
+        formatError('OPERATION_FAILED', 'Failed to fetch articles')
+      );
     }
     
-    res.json({
-      success: true,
-      total: articles?.length || 0,
-      articles: articles || []
-    });
+    res.json(
+      formatSuccess({
+        total: articles?.length || 0,
+        articles: articles || []
+      })
+    );
     
   } catch (error) {
     next(error);
@@ -285,15 +291,15 @@ async function saveManualArticle(article: unknown, tdName: string, analysis: unk
       .single();
     
     if (error) {
-      console.error('Error saving article:', error);
+      logger.error({ operation: 'admin.manualArticle.save', err: error }, 'Error saving article');
       return null;
     }
     
-    console.log(`   ✅ Article saved (ID: ${data.id})`);
+    logger.info({ operation: 'admin.manualArticle.save', articleId: data.id }, 'Article saved');
     return data.id;
     
   } catch (error: unknown) {
-    console.error('Error:', error.message);
+    logger.error({ operation: 'admin.manualArticle.save', err: error }, 'Error saving article');
     return null;
   }
 }
