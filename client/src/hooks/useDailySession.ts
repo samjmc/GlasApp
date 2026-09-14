@@ -10,6 +10,7 @@ import { useRegion } from "./useRegion";
 
 const DAILY_SESSION_QUERY_KEY = ["daily-session-state"];
 
+/** React hook fetching the current daily session state for the active region. */
 export function useDailySession(enabled: boolean) {
   const { regionCode } = useRegion();
   return useQuery<DailySessionState>({
@@ -20,6 +21,7 @@ export function useDailySession(enabled: boolean) {
   });
 }
 
+/** React hook submitting a daily session vote and updating the cached session state. */
 export function useDailySessionVote() {
   const queryClient = useQueryClient();
   const { regionCode } = useRegion();
@@ -43,6 +45,7 @@ export function useDailySessionVote() {
   });
 }
 
+/** React hook completing the daily session and updating the cached state with the summary. */
 export function useCompleteDailySession() {
   const queryClient = useQueryClient();
   const { regionCode } = useRegion();

@@ -37,6 +37,7 @@ export interface PaginatedResponseEnvelope<T> {
  * });
  * // Returns: { data: [...], meta: { pagination: {...} } }
  */
+/** Format results into a paginated response envelope. */
 export function formatPaginatedResponse<T>(
   results: T[],
   metadata: PaginationMetadata
@@ -67,6 +68,7 @@ export function formatPaginatedResponse<T>(
  * const cursor = buildCursorFromId(123);
  * // Returns: "MTIz" (base64 of "123")
  */
+/** Encode a record ID into a base64 cursor string. */
 export function buildCursorFromId(id: string | number): string {
   const idString = String(id);
   return Buffer.from(idString).toString('base64');
@@ -83,6 +85,7 @@ export function buildCursorFromId(id: string | number): string {
  * const id = decodeCursor('MTIz');
  * // Returns: "123"
  */
+/** Decode a base64 cursor string back to a record ID. */
 export function decodeCursor(cursor: string): string | null {
   try {
     const decoded = Buffer.from(cursor, 'base64').toString('utf-8');
@@ -108,6 +111,7 @@ export function decodeCursor(cursor: string): string | null {
  * const hasMore = calculateHasMore(items.length, 20);
  * // If items.length > 20, hasMore = true
  */
+/** Determine if more pages exist beyond the fetched items. */
 export function calculateHasMore(totalFetched: number, requestedLimit: number): boolean {
   return totalFetched > requestedLimit;
 }
@@ -124,6 +128,7 @@ export function calculateHasMore(totalFetched: number, requestedLimit: number): 
  * const totalPages = calculateTotalPages(150, 20);
  * // Returns: 8 (7 full pages + 1 partial)
  */
+/** Calculate the number of pages for offset-based pagination. */
 export function calculateTotalPages(total: number, limit: number): number {
   if (total === 0 || limit === 0) return 0;
   return Math.ceil(total / limit);
@@ -141,6 +146,7 @@ export function calculateTotalPages(total: number, limit: number): number {
  * const offset = calculateOffset(3, 20);
  * // Returns: 40 (skip first 40 records for page 3)
  */
+/** Convert a 1-indexed page number to a query offset. */
 export function calculateOffset(pageNumber: number, limit: number): number {
   if (pageNumber < 1) return 0;
   return (pageNumber - 1) * limit;
@@ -170,6 +176,7 @@ export interface PaginationLinks {
   last: string;
 }
 
+/** Generate next/prev pagination links for an API response. */
 export function generatePaginationLinks(
   baseUrl: string,
   offset: number,

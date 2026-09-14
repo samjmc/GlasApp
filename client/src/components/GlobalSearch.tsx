@@ -28,6 +28,7 @@ interface FlattenedResult {
   entity: unknown;
 }
 
+/** Global search input with dropdown results for TDs, parties, and constituencies. */
 export function GlobalSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");

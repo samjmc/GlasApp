@@ -1089,6 +1089,7 @@ If NO specific TDs are relevant, return: {"tds": []}
   }
 }
 
+/** AI-powered news analysis service methods. */
 export const AINewsAnalysisService = {
   analyzeArticle,
   analyzeArticleWithOpenAI,

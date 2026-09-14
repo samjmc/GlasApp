@@ -54,6 +54,7 @@ function showUpdateNotification() {
 // Install Prompt Management
 let deferredPrompt: unknown = null;
 
+/** Sets up the browser install prompt and install-tracking listeners. */
 export function setupInstallPrompt() {
   window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent the mini-infobar from appearing on mobile
@@ -159,6 +160,7 @@ function trackInstallation() {
 }
 
 // Check if running as installed PWA
+/** Returns whether the app is running as an installed PWA. */
 export function isInstalledPWA(): boolean {
   return window.matchMedia('(display-mode: standalone)').matches ||
          (window.navigator as unknown).standalone === true || // iOS
@@ -166,6 +168,7 @@ export function isInstalledPWA(): boolean {
 }
 
 // Get PWA display mode
+/** Returns the current PWA display mode (fullscreen, standalone, minimal-ui, or browser). */
 export function getPWADisplayMode(): string {
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
   const isFullscreen = window.matchMedia('(display-mode: fullscreen)').matches;
@@ -178,6 +181,7 @@ export function getPWADisplayMode(): string {
 }
 
 // Initialize PWA features
+/** Initializes service worker registration and install prompt setup. */
 export function initializePWA() {
   console.log('🚀 Initializing PWA features...');
   console.log('📱 Display mode:', getPWADisplayMode());
@@ -261,6 +265,7 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array {
 }
 
 // Export for use in app
+/** PWA utility object bundling install, display mode, and push notification helpers. */
 export const PWA = {
   initialize: initializePWA,
   isInstalled: isInstalledPWA,

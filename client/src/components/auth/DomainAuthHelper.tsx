@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Copy, Check, ExternalLink, AlertCircle } from 'lucide-react';
 
+/** Helper card displaying the current domain for auth troubleshooting. */
 export function DomainAuthHelper() {
   const [copied, setCopied] = useState(false);
   const currentDomain = typeof window !== 'undefined' ? window.location.hostname : '';

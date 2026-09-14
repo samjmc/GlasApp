@@ -60,6 +60,7 @@ export interface ArticleForClassification {
   source: string;
 }
 
+/** Topic classification service methods. */
 export const TopicClassificationService = {
   async classifyArticle(article: ArticleForClassification): Promise<TopicClassificationResult | null> {
     const key = buildCacheKey(article.title, article.content.slice(0, 500));

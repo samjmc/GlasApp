@@ -201,4 +201,5 @@ export class QuizHistoryService {
 }
 
 // Export a singleton instance
+/** Singleton quiz history service instance. */
 export const quizHistoryService = new QuizHistoryService();

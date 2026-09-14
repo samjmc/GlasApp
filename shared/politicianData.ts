@@ -15,6 +15,7 @@ export interface Politician {
   currentlyElected?: boolean;
 }
 
+/** All politicians (TDs) with their profiles and ideological scores. */
 export const politicians: Politician[] = [
   {
     id: "micheal-martin",

@@ -32,6 +32,7 @@ for (const [key, value] of Object.entries(requiredEnvVars)) {
  * Used for user sign-up, sign-in, password reset, and profile updates.
  * Token refresh is automatic; session persistence is enabled.
  */
+/** Supabase client for the app project. */
 export const supabase: SupabaseClient = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_ANON_KEY!,
@@ -50,6 +51,7 @@ export const supabase: SupabaseClient = createClient(
  * Token refresh is disabled; only manual token passing is supported.
  * CRITICAL: Protect this key - never expose to frontend.
  */
+/** Supabase admin client with service-role privileges. */
 export const supabaseAdmin: SupabaseClient = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!,

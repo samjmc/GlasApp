@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 
+/** Renders the toast notifications from the toast context. */
 export function Toaster() {
   const { toasts } = useToast()
 

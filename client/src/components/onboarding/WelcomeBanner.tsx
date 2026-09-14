@@ -10,6 +10,7 @@ import { Card } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/lib/supabase';
 
+/** Dismissible welcome banner shown to authenticated users. */
 export function WelcomeBanner() {
   const { user, isAuthenticated } = useAuth();
   const [isVisible, setIsVisible] = useState(false);

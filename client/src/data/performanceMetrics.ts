@@ -21,6 +21,7 @@ export interface PartyMetrics {
 }
 
 // Calculate overall performance score (weighted average)
+/** Calculates a weighted performance score from party performance metrics. */
 export const calculatePerformanceScore = (metrics: PerformanceMetrics): number => {
   return (
     0.3 * metrics.pledgeFulfillment +
@@ -31,6 +32,7 @@ export const calculatePerformanceScore = (metrics: PerformanceMetrics): number =
 };
 
 // Calculate overall trustworthiness score (weighted average)
+/** Calculates a weighted trustworthiness score from party trustworthiness metrics. */
 export const calculateTrustworthinessScore = (metrics: TrustworthinessMetrics): number => {
   return (
     0.3 * metrics.transparencyScore +
@@ -41,6 +43,7 @@ export const calculateTrustworthinessScore = (metrics: TrustworthinessMetrics): 
 };
 
 // Party metrics data
+/** Performance and trustworthiness metrics keyed by party name. */
 export const partyMetricsData: Record<string, PartyMetrics> = {
   "Fianna Fáil": {
     performance: {

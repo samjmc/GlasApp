@@ -11,6 +11,7 @@ import { isAuthenticated } from '../auth/supabaseAuth.js';
 
 const router = Router();
 
+/** Format a user profile with ideology and engagement metrics. */
 export function formatUserProfilePayload(profile: unknown) {
   if (!profile) return null;
 
@@ -240,6 +241,7 @@ export function formatUserProfilePayload(profile: unknown) {
   };
 }
 
+/** Format personal rankings into a standardized response shape. */
 export function formatRankingsResponse(rankings: unknown[]) {
   return rankings.map((r) => ({
     name: r.politician_name,

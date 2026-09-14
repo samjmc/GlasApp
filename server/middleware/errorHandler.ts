@@ -21,6 +21,7 @@ export type AsyncRouteHandler = (
  * Should be registered AFTER all routes
  * Handles all error types and returns consistent JSON responses
  */
+/** Express error-handling middleware. */
 export const errorHandler = (
   err: Error,
   req: Request,
@@ -112,6 +113,7 @@ export const errorHandler = (
  * @param fn - Async route handler function
  * @returns Wrapped function that catches errors
  */
+/** Wrap an async route handler to forward errors. */
 export const asyncHandler = (fn: AsyncRouteHandler) => {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next);
@@ -122,6 +124,7 @@ export const asyncHandler = (fn: AsyncRouteHandler) => {
  * 404 Not Found handler
  * Should be registered BEFORE errorHandler but AFTER all routes
  */
+/** Express 404 handler for unknown routes. */
 export const notFoundHandler = (req: Request, res: Response) => {
   res.status(404).json(
     formatError('ROUTE_NOT_FOUND', `Route ${req.method} ${req.path} not found`)

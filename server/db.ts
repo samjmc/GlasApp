@@ -16,6 +16,7 @@ if (!process.env.DATABASE_URL) {
 // DISABLED: SCRAM authentication issues with Node.js driver on Windows
 // Use Supabase REST client (supabaseDb) instead via MCP
 // Connection string format: postgresql://postgres:[PASSWORD]@aws-0-[region].pooler.supabase.com:5432/postgres
+/** Disabled Postgres connection pool (SCRAM auth issues). */
 export const pool = null; // Disabled due to SCRAM auth issues
 /*
 process.env.DATABASE_URL ? new Pool({ 
@@ -28,6 +29,7 @@ process.env.DATABASE_URL ? new Pool({
 }) : null;
 */
 
+/** Drizzle ORM instance over the pool, or null when the pool is disabled. */
 export const db = pool ? drizzle(pool, { schema }) : null;
 
 /**
@@ -62,6 +64,7 @@ export const db = pool ? drizzle(pool, { schema }) : null;
  * DO NOT use supabaseDb for user requests.
  * DO use supabaseDb for admin/system operations only.
  */
+/** Supabase service-role REST client that bypasses RLS; null if env vars are missing. */
 export const supabaseDb = process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
   ? createClient(
       process.env.SUPABASE_URL,
@@ -97,6 +100,7 @@ if (supabaseDb) {
 // Jobs and scripts should handle their own cleanup explicitly
 let isShuttingDown = false;
 
+/** Gracefully shut down DB connections and resources. */
 export const shutdown = async () => {
   if (isShuttingDown) return;
   isShuttingDown = true;

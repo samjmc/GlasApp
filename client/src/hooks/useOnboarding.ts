@@ -23,6 +23,7 @@ interface OnboardingActions {
   resetOnboarding: () => Promise<void>;
 }
 
+/** React hook managing onboarding state and actions for the current user. */
 export function useOnboarding(): OnboardingState & OnboardingActions {
   const { user, isAuthenticated } = useAuth();
   const [state, setState] = useState<OnboardingState>({

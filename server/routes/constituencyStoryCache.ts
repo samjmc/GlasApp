@@ -30,6 +30,7 @@ interface StoryCache {
 }
 
 // Load the story cache from file
+/** Load the constituency story cache from disk. */
 export function loadStoryCache(): StoryCache {
   try {
     if (fs.existsSync(CACHE_FILE)) {
@@ -43,6 +44,7 @@ export function loadStoryCache(): StoryCache {
 }
 
 // Save to the story cache
+/** Persist the constituency story cache to disk. */
 export function saveStoryCache(cache: StoryCache): void {
   try {
     fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
@@ -52,12 +54,14 @@ export function saveStoryCache(cache: StoryCache): void {
 }
 
 // Get a story from cache
+/** Get a cached constituency story by name, or null. */
 export function getStoryFromCache(constituencyName: string): ConstituencyStory | null {
   const cache = loadStoryCache();
   return cache[constituencyName] || null;
 }
 
 // Add a story to cache
+/** Add a constituency story to the cache and persist it. */
 export function addStoryToCache(constituencyName: string, story: ConstituencyStory): void {
   const cache = loadStoryCache();
   cache[constituencyName] = story;

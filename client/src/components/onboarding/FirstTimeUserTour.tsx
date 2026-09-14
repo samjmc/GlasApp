@@ -46,6 +46,7 @@ const tourSteps: TourStep[] = [
   },
 ];
 
+/** Guided tour highlighting key UI features for first-time users. */
 export function FirstTimeUserTour() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);

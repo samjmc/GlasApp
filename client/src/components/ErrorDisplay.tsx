@@ -22,6 +22,7 @@ interface ErrorDisplayProps {
  *   type="network"
  * />
  */
+/** Displays API/network errors with optional retry. */
 export function ErrorDisplay({
   title,
   message,
@@ -155,6 +156,7 @@ export function ErrorDisplay({
 /**
  * NetworkError - Specialized component for network errors
  */
+/** Specialized error display for network/connection errors. */
 export function NetworkError({ onRetry }: { onRetry?: () => void }) {
   return (
     <ErrorDisplay
@@ -169,6 +171,7 @@ export function NetworkError({ onRetry }: { onRetry?: () => void }) {
 /**
  * NotFoundError - Specialized component for 404 errors
  */
+/** Specialized error display for missing resources (404). */
 export function NotFoundError({ resourceName }: { resourceName?: string }) {
   return (
     <ErrorDisplay
@@ -182,6 +185,7 @@ export function NotFoundError({ resourceName }: { resourceName?: string }) {
 /**
  * UnauthorizedError - Specialized component for auth errors
  */
+/** Specialized error display for authentication failures. */
 export function UnauthorizedError() {
   return (
     <ErrorDisplay

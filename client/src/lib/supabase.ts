@@ -21,6 +21,7 @@ if (!supabaseAnonKey) {
 }
 
 // Create Supabase client
+/** Supabase client configured with env vars, PKCE auth, and app metadata. */
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     // Auto-refresh the session before it expires

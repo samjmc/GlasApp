@@ -15,6 +15,7 @@ const __dirname = path.dirname(__filename);
 /**
  * Get a random existing image from the news-images folder
  */
+/** Pick a random pre-generated news image path. */
 export function getRandomExistingImage(): string {
   const existingImages = [
     '/news-images/article_0_1827.png',
@@ -41,6 +42,7 @@ export function getRandomExistingImage(): string {
 /**
  * Generate image prompt from article
  */
+/** Generate a DALL-E image prompt from an article. */
 export function generateImagePrompt(article: { title: string; content: string; source: string }): string {
   return `${article.title}. NO WORDS OR NUMBERS IN THE IMAGE.`;
 }
@@ -99,6 +101,7 @@ export async function generateArticleImage(
   }
 }
 
+/** News image generation service methods. */
 export const NewsImageGenerationService = {
   generateArticleImage,
   getRandomExistingImage,

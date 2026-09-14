@@ -12,6 +12,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useLocation } from 'wouter';
 import { LogIn, LogOut, User, Settings } from 'lucide-react';
 
+/** Button showing login/logout and account actions based on auth state. */
 export function AuthButton() {
   const { user, isLoading, isAuthenticated, logout } = useAuth();
   const [, setLocation] = useLocation();

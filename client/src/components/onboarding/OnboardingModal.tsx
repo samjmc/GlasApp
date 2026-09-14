@@ -22,6 +22,7 @@ interface OnboardingStep {
   };
 }
 
+/** Multi-step onboarding modal shown to new users. */
 export function OnboardingModal() {
   const { user, isAuthenticated } = useAuth();
   const [isOpen, setIsOpen] = useState(false);

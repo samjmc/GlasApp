@@ -302,6 +302,7 @@ export async function getUserValueAlignment(
   };
 }
 
+/** Personalized scoring service methods. */
 export const PersonalizedScoringService = {
   calculatePersonalizedScores,
   getPersonalizedRankings,

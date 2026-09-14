@@ -152,6 +152,7 @@ function formatTimeAgo(dateString: string): string {
   }
 }
 
+/** Card displaying a news article with like and comment actions. */
 export function NewsArticleCard({ article }: { article: NewsArticle }) {
   const [liked, setLiked] = useState(false);
   const [localComments] = useState(article.comments || []);

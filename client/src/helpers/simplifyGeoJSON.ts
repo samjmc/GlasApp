@@ -11,6 +11,7 @@ import { Feature, FeatureCollection, Geometry, Position } from 'geojson';
  * @param tolerance The tolerance level for simplification (higher = more simplified)
  * @returns Simplified GeoJSON object
  */
+/** Reduces GeoJSON point count using Ramer-Douglas-Peucker simplification. */
 export function simplifyGeoJSON(geojson: FeatureCollection, tolerance = 0.001): FeatureCollection {
   if (!geojson || !geojson.features || !Array.isArray(geojson.features)) {
     return geojson;

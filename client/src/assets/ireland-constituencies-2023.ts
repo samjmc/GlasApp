@@ -3,6 +3,7 @@
 // This file contains the official Electoral Commission constituency boundary data
 // for use in detailed map visualizations
 
+/** GeoJSON FeatureCollection for the 2023 Electoral Commission constituency boundaries. */
 export const IRELAND_CONSTITUENCIES_2023 = {
   "type": "FeatureCollection", 
   "features": [

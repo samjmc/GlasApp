@@ -22,6 +22,7 @@ import path from 'path';
 // CONFIGURABLE WEIGHTS
 // ============================================
 
+/** Weight constants for TD scoring components. */
 export const COMPONENT_WEIGHTS = {
   news: 0.50,           // 50% - Most visible/impactful
   parliamentary: 0.30,   // 30% - Objective, measurable
@@ -178,6 +179,7 @@ export async function calculateNewsScore(tdName: string): Promise<{
  * Calculate parliamentary activity score (0-100)
  * Based on questions asked, attendance, committee work
  */
+/** Calculate parliamentary activity score (0-100). */
 export function calculateParliamentaryScore(tdName: string): {
   score: number;
   questionsScore: number;

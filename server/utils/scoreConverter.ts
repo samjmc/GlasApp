@@ -14,6 +14,7 @@
  * - 1500 ELO = 50/100 (average)
  * - 2000 ELO = 100/100 (maximum)
  */
+/** Convert an ELO rating (1000-2000) to a 0-100 percentage. */
 export function convertELOToPercentage(elo: number): number {
   if (!elo || isNaN(elo)) return 50; // Default to average if missing
   
@@ -30,6 +31,7 @@ export function convertELOToPercentage(elo: number): number {
  * @param percentage - Score as percentage (0-100)
  * @returns ELO rating (1000-2000)
  */
+/** Convert a 0-100 percentage to an ELO rating (1000-2000). */
 export function convertPercentageToELO(percentage: number): number {
   if (!percentage || isNaN(percentage)) return 1500; // Default to average
   
@@ -43,6 +45,7 @@ export function convertPercentageToELO(percentage: number): number {
 /**
  * Get color class based on score
  */
+/** Get Tailwind color classes and label for a score. */
 export function getScoreColor(score: number): {
   bg: string;
   text: string;
@@ -99,6 +102,7 @@ export function getScoreColor(score: number): {
  * Calculate parliamentary activity score (0-100)
  * Based on questions asked and attendance
  */
+/** Calculate a parliamentary activity score (0-100). */
 export function calculateParliamentaryScore(data: {
   questionsAsked?: number | string;
   attendancePercentage?: number | string;
@@ -130,6 +134,7 @@ export function calculateParliamentaryScore(data: {
  * Calculate unified overall TD score (0-100)
  * Combines multiple data sources with proper weighting
  */
+/** Calculate the weighted unified TD score (0-100). */
 export function calculateUnifiedScore(td: {
   overall_elo?: number;
   questionsAsked?: number | string;
@@ -176,6 +181,7 @@ export function calculateUnifiedScore(td: {
 /**
  * Calculate all dimensional scores (0-100) from ELO
  */
+/** Calculate dimensional scores (0-100) from ELO values. */
 export function calculateDimensionalScores(td: {
   transparency_elo?: number;
   effectiveness_elo?: number;

@@ -495,4 +495,5 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
+/** Shared DatabaseStorage instance for the app. */
 export const storage = new DatabaseStorage();

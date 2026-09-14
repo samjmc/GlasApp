@@ -829,6 +829,7 @@ function normalizeScore(score: unknown): number | null {
  * Determine if an article should be escalated to multi-agent scoring
  * Returns true if article warrants the extra cost of multi-agent analysis
  */
+/** Determine whether an article warrants multi-agent scoring. */
 export function shouldEscalateToMultiAgent(
   article: { title: string; content: string; source?: string },
   politician: { name: string; party?: string; role?: string },
@@ -1036,6 +1037,7 @@ export async function runMultiAgentScoring(
 /**
  * Convert multi-agent analysis to format compatible with existing TD scoring
  */
+/** Convert a multi-agent result to the standard article analysis format. */
 export function convertToArticleAnalysis(
   multiAgentResult: MultiAgentAnalysis
 ): {
@@ -1309,6 +1311,7 @@ export async function applyIdeologyToProfile(
 }
 
 // Export service
+/** Multi-agent TD scoring team service methods. */
 export const NewsArticleScoringTeam = {
   shouldEscalate: shouldEscalateToMultiAgent,
   runTeamScoring: runMultiAgentScoring,
@@ -1318,5 +1321,6 @@ export const NewsArticleScoringTeam = {
 };
 
 // Alias for backwards compatibility
+/** Alias for NewsArticleScoringTeam for backwards compatibility. */
 export const MultiAgentTDScoringService = NewsArticleScoringTeam;
 

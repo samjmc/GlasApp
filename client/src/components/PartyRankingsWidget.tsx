@@ -96,6 +96,7 @@ function PartyCompactRow({ party, variant, onInfoClick }: PartyCompactRowProps) 
   );
 }
 
+/** Widget ranking parties by performance score. */
 export function PartyRankingsWidget() {
   const [selectedParty, setSelectedParty] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

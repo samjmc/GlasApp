@@ -13,6 +13,7 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+/** React context provider for theme state. */
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>(() => {
     // Check for saved theme or use user's preference
@@ -56,6 +57,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   );
 };
 
+/** React hook exposing the theme context value. */
 export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   

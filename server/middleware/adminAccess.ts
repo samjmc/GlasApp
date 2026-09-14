@@ -8,6 +8,7 @@ const adminJobSecret =
   process.env.CRON_SECRET ||
   process.env.JOB_SECRET;
 
+/** Constant-time comparison of two secrets. */
 export function safeSecretEquals(actual: string, expected: string): boolean {
   const actualBuffer = Buffer.from(actual);
   const expectedBuffer = Buffer.from(expected);
@@ -18,6 +19,7 @@ export function safeSecretEquals(actual: string, expected: string): boolean {
   );
 }
 
+/** Extract an admin secret from the request headers. */
 export function getAdminSecretFromRequest(req: Request): string | null {
   const authHeader = req.headers.authorization;
   const bearerToken =
@@ -32,6 +34,7 @@ export function getAdminSecretFromRequest(req: Request): string | null {
   );
 }
 
+/** Express middleware enforcing admin access. */
 export const requireAdminAccess: RequestHandler = async (
   req: Request,
   res: Response,

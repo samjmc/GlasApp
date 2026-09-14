@@ -67,6 +67,7 @@ interface MultidimensionalQuizProviderProps {
 }
 
 // Provider component
+/** React context provider for multidimensional quiz state. */
 export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProviderProps> = ({ children }) => {
   const [responses, setResponses] = useState<UserResponse[]>([]);
   const [results, setResults] = useState<MultidimensionalQuizResult | null>(null);
@@ -408,6 +409,7 @@ export const MultidimensionalQuizProvider: React.FC<MultidimensionalQuizProvider
 };
 
 // Custom hook to use the quiz context
+/** React hook exposing the multidimensional quiz context value. */
 export const useMultidimensionalQuiz = () => {
   const context = useContext(MultidimensionalQuizContext);
   if (context === undefined) {

@@ -233,6 +233,7 @@ interface ErrorBoundaryProps {
  *  3. Reset query errors on "Try Again" so failed queries re-fetch instead of
  *     re-throwing (QueryErrorResetBoundary).
  */
+/** Error boundary that catches render and query errors with a fallback UI. */
 export function ErrorBoundary({ children, fallback }: ErrorBoundaryProps) {
   return (
     <QueryErrorResetBoundary>

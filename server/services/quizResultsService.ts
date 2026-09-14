@@ -238,4 +238,5 @@ export class QuizResultsService {
 }
 
 // Create an instance for use throughout the application
+/** Singleton quiz results service instance. */
 export const quizResultsService = new QuizResultsService();

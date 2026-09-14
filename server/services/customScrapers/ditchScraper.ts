@@ -285,6 +285,7 @@ export async function testDitchScraper(): Promise<void> {
   }
 }
 
+/** Scraper for The Ditch news articles. */
 export const DitchScraper = {
   scrapeLatestArticles: scrapeDitchLatestArticles,
   scrapeArticleContent: scrapeDitchArticleContent,

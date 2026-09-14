@@ -10,6 +10,7 @@
 import pino, { type Logger } from 'pino';
 import type { Request } from 'express';
 
+/** Shared pino logger instance for the server. */
 export const logger: Logger = pino({
   level:
     process.env.LOG_LEVEL ||
@@ -43,6 +44,7 @@ export const logger: Logger = pino({
  * request id and per-request fields), falling back to the shared logger when
  * pino-http has not been wired up (e.g. in unit tests).
  */
+/** Return the request-scoped logger for a request. */
 export function requestLogger(req: Request): Logger {
   return (req as Request & { log?: Logger }).log ?? logger;
 }

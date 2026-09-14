@@ -339,6 +339,7 @@ function calculateMinimalAdaptiveAdjustment(
   return Math.max(-0.2, Math.min(0.2, adjustedDelta));
 }
 
+/** TD ideology profile adjustment service methods. */
 export const TDIdeologyProfileService = {
   async applyAdjustments(
     politicianName: string,

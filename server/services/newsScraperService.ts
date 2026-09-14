@@ -16,6 +16,7 @@ const parser = new Parser({
 });
 
 // Irish news sources with RSS feeds
+/** Irish news sources with RSS feeds and credibility/bias scores. */
 export const IRISH_NEWS_SOURCES = [
   // ESTABLISHMENT SOURCES (Pro-government bias)
   {
@@ -367,6 +368,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 // Export default service object
+/** News scraping service methods. */
 export const NewsScraperService = {
   fetchAllIrishNews,
   fetchRSSFeed,
@@ -376,6 +378,7 @@ export const NewsScraperService = {
   normalizeArticleUrl
 };
 
+/** Normalize an article URL by stripping hash and query parameters. */
 export function normalizeArticleUrl(url: string): string {
   try {
     const parsed = new URL(url);

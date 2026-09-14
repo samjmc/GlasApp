@@ -1,5 +1,6 @@
 // Detailed GeoJSON data for Irish electoral constituencies
 // Based on the Electoral Commission 2023 boundaries
+/** Detailed GeoJSON FeatureCollection of 2023 Irish constituency boundaries. */
 export const IRELAND_CONSTITUENCIES_DETAILED = {
   "type": "FeatureCollection",
   "features": [

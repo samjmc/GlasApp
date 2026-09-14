@@ -46,6 +46,7 @@ interface VoteStats {
   one_star: number;
 }
 
+/** Prompt asking users to vote on a policy, with aggregate vote stats. */
 export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProps) {
   const { isAuthenticated } = useAuth();
   const { toast } = useToast();

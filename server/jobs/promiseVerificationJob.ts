@@ -151,5 +151,6 @@ function sleep(ms: number): Promise<void> {
 }
 
 // Export singleton
+/** Singleton job for verifying TD promises. */
 export const promiseVerificationJob = new PromiseVerificationJob();
 

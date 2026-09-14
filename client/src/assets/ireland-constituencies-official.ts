@@ -1,6 +1,7 @@
 // Official Electoral Commission Constituencies with simplified polygons
 // Based on 2023 election boundaries
 
+/** Official Electoral Commission 2023 constituency boundaries as simplified GeoJSON. */
 export const IRELAND_CONSTITUENCIES = {
   "type": "FeatureCollection",
   "features": [

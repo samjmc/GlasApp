@@ -16,6 +16,7 @@ export interface ConstituencyPosition {
  * Grid layout: 12 rows x 8 columns
  * Positioned to roughly match Ireland's shape
  */
+/** Grid positions for all 43 constituencies arranged to match Ireland's geography. */
 export const CONSTITUENCY_LAYOUT: ConstituencyPosition[] = [
   // ULSTER (Top - North)
   { name: 'Donegal', gridRow: 1, gridCol: 3, region: 'Ulster' },
@@ -74,11 +75,13 @@ export const CONSTITUENCY_LAYOUT: ConstituencyPosition[] = [
 /**
  * Get all 43 constituency names
  */
+/** All 43 constituency names extracted from the layout. */
 export const ALL_CONSTITUENCIES = CONSTITUENCY_LAYOUT.map(c => c.name);
 
 /**
  * Group constituencies by region
  */
+/** Constituencies grouped by region. */
 export const CONSTITUENCIES_BY_REGION = {
   Dublin: CONSTITUENCY_LAYOUT.filter(c => c.region === 'Dublin'),
   Leinster: CONSTITUENCY_LAYOUT.filter(c => c.region === 'Leinster'),

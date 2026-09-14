@@ -27,6 +27,7 @@ interface TDQuickInfoModalProps {
   onClose: () => void;
 }
 
+/** Modal with quick summary info for a TD. */
 export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProps) {
   const { data, isLoading } = useQuery({
     queryKey: ['td-quick-info', tdId],

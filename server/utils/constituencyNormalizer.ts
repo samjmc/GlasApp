@@ -7,6 +7,7 @@
  * Official list of 44 Irish electoral constituencies (2024)
  * Includes Wicklow-Wexford, a new 3-seat constituency created in 2023 from parts of Wicklow and Wexford
  */
+/** Official list of Irish electoral constituencies (2024). */
 export const OFFICIAL_CONSTITUENCIES = [
   'Carlow-Kilkenny',
   'Cavan-Monaghan',
@@ -91,6 +92,7 @@ const CONSTITUENCY_ALIASES: Record<string, string> = {
  * @param name Raw constituency name from database or user input
  * @returns Normalized constituency name, or null if invalid
  */
+/** Normalize a constituency name to its official form. */
 export function normalizeConstituencyName(name: string | null | undefined): string | null {
   if (!name || typeof name !== 'string') {
     return null;
@@ -129,6 +131,7 @@ export function normalizeConstituencyName(name: string | null | undefined): stri
  * @param name Constituency name to check
  * @returns true if valid, false otherwise
  */
+/** Check if a constituency name matches an official constituency. */
 export function isValidConstituency(name: string | null | undefined): boolean {
   if (!name) return false;
   const normalized = normalizeConstituencyName(name);
@@ -141,6 +144,7 @@ export function isValidConstituency(name: string | null | undefined): boolean {
  * @param name Raw constituency name
  * @returns Official constituency name or 'Unknown'
  */
+/** Return the official constituency name for an input, or 'Unknown'. */
 export function getOfficialConstituencyName(name: string | null | undefined): string {
   const normalized = normalizeConstituencyName(name);
   if (normalized && OFFICIAL_CONSTITUENCIES.includes(normalized)) {

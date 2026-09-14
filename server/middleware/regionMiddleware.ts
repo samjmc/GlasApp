@@ -22,6 +22,7 @@ function normalizeRegion(value?: string | null): RegionCode | undefined {
   return isRegionCode(trimmed) ? trimmed : undefined;
 }
 
+/** Express middleware resolving the request region from header, query, or session. */
 export function regionMiddleware(req: Request, _res: Response, next: NextFunction) {
   const headerRegion = normalizeRegion(req.headers[REGION_HEADER] as string | undefined);
   const queryRegion = normalizeRegion(typeof req.query.region === "string" ? req.query.region : undefined);

@@ -26,6 +26,7 @@ export interface PolicyTopicDefinition {
   };
 }
 
+/** Policy domains keyed by PolicyDomain, each with topic definitions. */
 export const POLICY_DOMAINS: Record<PolicyDomain, PolicyTopicDefinition[]> = {
   foreign_policy: [
     {
@@ -219,6 +220,7 @@ export const POLICY_DOMAINS: Record<PolicyDomain, PolicyTopicDefinition[]> = {
   ],
 };
 
+/** Set of high-priority policy topic keys. */
 export const HIGH_PRIORITY_TOPICS = new Set<string>([
   'foreign_aid',
   'asylum_supports',
@@ -228,6 +230,7 @@ export const HIGH_PRIORITY_TOPICS = new Set<string>([
   'cost_of_living',
 ]);
 
+/** Normalise a policy topic string to lowercase snake_case. */
 export function normalisePolicyTopic(topic: string): string {
   return topic.trim().toLowerCase().replace(/\s+/g, '_');
 }

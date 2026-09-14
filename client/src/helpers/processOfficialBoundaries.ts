@@ -13,6 +13,7 @@ proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
  * Initialize Proj4Leaflet CRS for Irish Transverse Mercator
  * This allows Leaflet to use the ITM projection
  */
+/** Irish Transverse Mercator projection definition for leaflet. */
 export const itm = new (L as unknown).Proj.CRS(
   'EPSG:2157',
   proj4.defs('EPSG:2157'),
@@ -75,6 +76,7 @@ function convertGeometry(geometry: Geometry): Geometry {
 // Cache processed data to improve performance on subsequent loads
 let processedDataCache: FeatureCollection | null = null;
 
+/** Converts official Electoral Commission GeoJSON (EPSG:2157) to WGS84 with standardized properties. */
 export function processOfficialBoundaries(officialGeoJson: unknown): FeatureCollection {
   // Return cached data if available
   if (processedDataCache) {

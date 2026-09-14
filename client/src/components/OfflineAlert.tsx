@@ -6,6 +6,7 @@ import { WifiOff } from 'lucide-react';
  * OfflineAlert - Shows a warning when user goes offline
  * Automatically appears/disappears based on network status
  */
+/** Warning banner shown when the user goes offline. */
 export function OfflineAlert() {
   const { isOffline } = useNetworkStatus();
 

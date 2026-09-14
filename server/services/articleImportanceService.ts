@@ -226,6 +226,7 @@ export async function batchScoreAndRank(
   };
 }
 
+/** Article importance scoring service methods. */
 export const ArticleImportanceService = {
   scoreArticleImportance,
   batchScoreAndRank

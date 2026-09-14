@@ -387,6 +387,7 @@ function calculateArticleScore(article: ArticleForClustering): number {
   return score;
 }
 
+/** Event deduplication service methods. */
 export const EventDeduplicationService = {
   clusterAndDeduplicate,
   getSourceReputation

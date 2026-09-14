@@ -1,3 +1,4 @@
+/** GeoJSON FeatureCollection of Irish electoral constituencies with simplified polygons. */
 export const electoralConstituencies = {
   "type": "FeatureCollection",
   "features": [

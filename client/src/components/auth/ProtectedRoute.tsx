@@ -10,6 +10,7 @@ interface ProtectedRouteProps {
   requireAdmin?: boolean;
 }
 
+/** Route guard that redirects unauthenticated or non-admin users. */
 export function ProtectedRoute({ children, fallback, requireAdmin = false }: ProtectedRouteProps) {
   const { user, isLoading } = useAuth();
   

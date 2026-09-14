@@ -14,6 +14,7 @@ import { supabaseDb as supabase } from '../db.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
 
 // Issue salience mapping - same as debates
+/** Issue salience weights per policy topic. */
 export const ISSUE_SALIENCE: Record<string, Record<string, number>> = {
   welfare: {
     welfare: 1.0,
@@ -269,6 +270,7 @@ export async function checkArticleConsistency(
 /**
  * Apply issue salience weighting per dimension
  */
+/** Weight raw ideology deltas by issue salience for a policy topic. */
 export function applyIssueSalienceWeighting(
   rawDelta: Record<string, number>,
   policyTopic: string,

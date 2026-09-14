@@ -269,6 +269,7 @@ function checkSuspiciousTiming(article: unknown): { isSuspicious: boolean; detai
 /**
  * Get adjustment to consistency score based on flip-flop
  */
+/** Get consistency score adjustment based on flip-flop severity. */
 export function getFlipFlopPenalty(context: HistoricalContext): number {
   switch (context.flipFlopSeverity) {
     case 'major':
@@ -282,6 +283,7 @@ export function getFlipFlopPenalty(context: HistoricalContext): number {
   }
 }
 
+/** Historical context checking service methods. */
 export const HistoricalContextChecker = {
   checkHistoricalContext,
   getFlipFlopPenalty

@@ -1,5 +1,6 @@
 export type RegionCode = "IE" | "US";
 
+/** Default region code used by the app. */
 export const DEFAULT_REGION_CODE: RegionCode = "IE";
 
 export interface RegionSummaryCopy {
@@ -160,6 +161,7 @@ const ALL_FEATURES_RECORD: Record<RegionFeatureKey, boolean> = ALL_FEATURE_KEYS.
   {} as Record<RegionFeatureKey, boolean>,
 );
 
+/** Configuration for each supported region. */
 export const REGION_CONFIGS: Record<RegionCode, RegionConfig> = {
   IE: {
     code: "IE",
@@ -248,6 +250,7 @@ export const REGION_CONFIGS: Record<RegionCode, RegionConfig> = {
   },
 };
 
+/** Flat list of configured regions. */
 export const REGION_LIST = Object.values(REGION_CONFIGS).map(({ code, name, shortName, assets, home }) => ({
   code,
   name,
@@ -256,10 +259,12 @@ export const REGION_LIST = Object.values(REGION_CONFIGS).map(({ code, name, shor
   tagline: home.tagline,
 }));
 
+/** Type guard for the RegionCode type. */
 export function isRegionCode(value: unknown): value is RegionCode {
   return typeof value === "string" && (value === "IE" || value === "US");
 }
 
+/** Mock per-region news responses for development. */
 export const REGION_NEWS_MOCK: Record<RegionCode, RegionNewsResponse | null> = {
   IE: null,
   US: {
@@ -325,6 +330,7 @@ export const REGION_NEWS_MOCK: Record<RegionCode, RegionNewsResponse | null> = {
   },
 };
 
+/** Mock per-region daily session state for development. */
 export const REGION_DAILY_SESSION_MOCK: Record<RegionCode, RegionDailySessionState | null> = {
   IE: null,
   US: null,

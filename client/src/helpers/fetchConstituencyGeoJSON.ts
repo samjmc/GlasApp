@@ -95,6 +95,7 @@ function generateFallbackGeoJSON(): GeoJSON.FeatureCollection {
  * @param geoJSON GeoJSON feature collection
  * @returns Processed GeoJSON data ready for Leaflet
  */
+/** Normalizes and standardizes GeoJSON features for Leaflet rendering. */
 export function processGeoJSON(geoJSON: GeoJSON.FeatureCollection): GeoJSON.FeatureCollection {
   if (!geoJSON || !geoJSON.features || !Array.isArray(geoJSON.features) || geoJSON.features.length === 0) {
     console.error('Invalid or empty GeoJSON data received');

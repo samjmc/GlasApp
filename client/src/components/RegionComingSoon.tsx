@@ -62,6 +62,7 @@ type RegionComingSoonProps = {
   headline?: string;
 };
 
+/** Placeholder card shown when a feature is not yet available in a region. */
 export function RegionComingSoon({ feature, headline }: RegionComingSoonProps) {
   const { region, selectRegion, regionCode } = useRegion();
   const copy = FEATURE_COPY[feature] ?? DEFAULT_COPY;

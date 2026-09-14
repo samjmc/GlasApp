@@ -54,6 +54,7 @@ interface PollingWidgetProps {
   performanceScore?: number;
 }
 
+/** Widget showing a party's polling data and historical trends. */
 export function PartyPollingWidget({ partyId, partyName, performanceScore }: PollingWidgetProps) {
   const [pollingData, setPollingData] = useState<PartyPollingData | null>(null);
   const [historicalData, setHistoricalData] = useState<unknown>(null);

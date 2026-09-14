@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Loader2, AlertCircle, CheckCircle } from "lucide-react";
 import { useLocation } from "@/hooks/use-location";
 
+/** Card prompting the user to share their location for constituency detection. */
 export function LocationDetector() {
   const { location, loading, error, requestLocation, hasPermission } = useLocation();
 

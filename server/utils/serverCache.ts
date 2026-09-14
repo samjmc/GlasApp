@@ -7,6 +7,7 @@
 import { cache } from '../services/cacheService';
 
 // Cache keys
+/** Cache key constants for server-side caching. */
 export const CACHE_KEYS = {
   TD_SCORES: 'td_scores',
   TD_WIDGET: 'td_widget',
@@ -19,6 +20,7 @@ export const CACHE_KEYS = {
 } as const;
 
 // TTL values in seconds
+/** TTL values in seconds for cached data. */
 export const CACHE_TTL = {
   SHORT: 60,        // 1 minute - for rapidly changing data
   MEDIUM: 300,      // 5 minutes - for moderately changing data

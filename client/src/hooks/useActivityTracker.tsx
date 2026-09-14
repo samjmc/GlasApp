@@ -17,6 +17,7 @@ interface ActivityMetadata {
   [key: string]: unknown;
 }
 
+/** React hook logging user activity via a non-critical API mutation. */
 export function useActivityTracker() {
   const logActivityMutation = useMutation({
     mutationFn: async ({ action, metadata }: { action: string; metadata?: ActivityMetadata }) => {

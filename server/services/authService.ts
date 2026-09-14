@@ -9,6 +9,7 @@ const SALT_ROUNDS = 10;
 /**
  * Authentication service for user management
  */
+/** Auth service facade with register/login/verification methods. */
 export const authService = {
   /**
    * Register a new user with email verification

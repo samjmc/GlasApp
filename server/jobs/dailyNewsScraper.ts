@@ -476,6 +476,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
 /**
  * Schedule daily news scraping job
  */
+/** Schedule the daily news scraping job. */
 export function scheduleDailyNewsScraper() {
   // Run every day at 6 AM Irish time
   cron.schedule('0 6 * * *', async () => {
@@ -991,6 +992,7 @@ async function trackPromiseForVerification(
   }
 }
 
+/** Scheduled job for scraping daily news. */
 export const DailyNewsScraperJob = {
   run: runDailyNewsScraper,
   schedule: scheduleDailyNewsScraper,

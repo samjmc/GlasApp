@@ -62,6 +62,7 @@ export type ApiResponse<T> = SuccessResponse<T> | ErrorResponse;
  * return formatSuccess(results, { fetchedAt: new Date().toISOString() });
  * // Returns: { success: true, data: results, meta: { fetchedAt: "2026-09-10T..." } }
  */
+/** Format a success response with optional metadata. */
 export function formatSuccess<T>(data: T, meta?: SuccessResponseMeta): SuccessResponse<T> {
   const response: SuccessResponse<T> = {
     success: true,
@@ -94,6 +95,7 @@ export function formatSuccess<T>(data: T, meta?: SuccessResponseMeta): SuccessRe
  * return formatResponse({ message: 'Logged out successfully' });
  * // Returns: { success: true, data: { message: 'Logged out successfully' } }
  */
+/** Format a success response with an optional data payload. */
 export function formatResponse<T = unknown>(
   data?: T,
   meta?: SuccessResponseMeta
@@ -140,6 +142,7 @@ export function formatResponse<T = unknown>(
  * });
  * // Returns: { success: false, error: { message: 'Invalid input', code: 'VALIDATION_ERROR', details: {...} } }
  */
+/** Format a standardized error response. */
 export function formatError(
   code: string,
   message: string,
@@ -171,6 +174,7 @@ export function formatError(
  * Common error codes and their default messages
  * Use these standardized codes across the application
  */
+/** Standard error codes and their default messages. */
 export const ErrorCodes = {
   // Validation errors (400)
   VALIDATION_ERROR: 'Validation failed',
@@ -223,6 +227,7 @@ export const ErrorCodes = {
  *   hasMore: true
  * });
  */
+/** Format a paginated success response. */
 export function formatPaginatedSuccess<T>(
   data: T[],
   pagination: Record<string, unknown>
@@ -234,6 +239,7 @@ export function formatPaginatedSuccess<T>(
  * Map HTTP status codes to error codes
  * Useful for consistent error formatting in error handler
  */
+/** Map HTTP status codes to error codes. */
 export const StatusCodeToErrorCode: Record<number, string> = {
   400: 'VALIDATION_ERROR',
   401: 'UNAUTHORIZED',
@@ -250,6 +256,7 @@ export const StatusCodeToErrorCode: Record<number, string> = {
  * @param statusCode - HTTP status code
  * @returns Default error message
  */
+/** Get the default error message for an HTTP status code. */
 export function getDefaultErrorMessage(statusCode: number): string {
   const codeKey = StatusCodeToErrorCode[statusCode];
   if (codeKey && ErrorCodes[codeKey as keyof typeof ErrorCodes]) {

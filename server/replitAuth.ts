@@ -51,6 +51,7 @@ const getOidcConfig = memoize(
  *
  * @returns Configured session middleware
  */
+/** Configure and return Express session middleware. */
 export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   
@@ -212,6 +213,7 @@ export async function setupAuth(app: Express) {
  * - 401 Unauthorized if authentication fails
  * - 200 with next() if authentication succeeds
  */
+/** Express middleware enforcing session or bearer-token authentication. */
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
   // GATE 1: Development mode allows dev-user-123 for local testing
   if (process.env.NODE_ENV === 'development' && !isReplitEnvironment) {

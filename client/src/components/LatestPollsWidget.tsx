@@ -19,6 +19,7 @@ interface LatestPoll {
   change_from_previous: number;
 }
 
+/** Widget displaying the latest opinion polls. */
 export function LatestPollsWidget() {
   const [polls, setPolls] = useState<LatestPoll[]>([]);
   const [loading, setLoading] = useState(true);

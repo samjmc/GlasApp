@@ -8,6 +8,7 @@ import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
 // News articles table
+/** Drizzle ORM table definition for news articles. */
 export const newsArticles = pgTable("news_articles", {
   id: serial("id").primaryKey(),
   url: text("url").notNull().unique(),
@@ -57,6 +58,7 @@ export const newsArticles = pgTable("news_articles", {
 ]);
 
 // TD Scores table (ELO-style ratings)
+/** Drizzle ORM table definition for TD (politician) ELO scores. */
 export const tdScores = pgTable("td_scores", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull().unique(),
@@ -99,6 +101,7 @@ export const tdScores = pgTable("td_scores", {
 ]);
 
 // Score history for tracking changes over time
+/** Drizzle ORM table definition for TD score history. */
 export const tdScoreHistory = pgTable("td_score_history", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull(),
@@ -124,6 +127,7 @@ export const tdScoreHistory = pgTable("td_score_history", {
 ]);
 
 // News sources configuration
+/** Drizzle ORM table definition for news sources. */
 export const newsSources = pgTable("news_sources", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull().unique(),
@@ -139,6 +143,7 @@ export const newsSources = pgTable("news_sources", {
 });
 
 // Scraping jobs log
+/** Drizzle ORM table definition for scraping jobs. */
 export const scrapingJobs = pgTable("scraping_jobs", {
   id: serial("id").primaryKey(),
   jobType: varchar("job_type", { length: 50 }).notNull(), // 'daily_scrape', 'manual_scrape', etc.
@@ -161,10 +166,15 @@ export const scrapingJobs = pgTable("scraping_jobs", {
 });
 
 // Zod schemas for validation
+/** Zod insert-schema for creating a news article record. */
 export const insertNewsArticleSchema = createInsertSchema(newsArticles).omit({ id: true, createdAt: true, fetchedAt: true });
+/** Zod insert-schema for creating a TD score record. */
 export const insertTDScoreSchema = createInsertSchema(tdScores).omit({ id: true, createdAt: true, lastUpdated: true });
+/** Zod insert-schema for creating a TD score history record. */
 export const insertTDScoreHistorySchema = createInsertSchema(tdScoreHistory).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a news source record. */
 export const insertNewsSourceSchema = createInsertSchema(newsSources).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a scraping job record. */
 export const insertScrapingJobSchema = createInsertSchema(scrapingJobs).omit({ id: true, startedAt: true });
 
 // TypeScript types

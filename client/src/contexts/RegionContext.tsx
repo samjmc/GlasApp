@@ -61,6 +61,7 @@ function computeMockRegion(code: RegionCode | null): boolean {
   return Boolean(REGION_NEWS_MOCK[code] || REGION_DAILY_SESSION_MOCK[code]);
 }
 
+/** React context provider for region state. */
 export function RegionProvider({ children }: { children: React.ReactNode }) {
   const [regionCode, setRegionCode] = useState<RegionCode | null>(null);
   const [status, setStatus] = useState<RegionStatus>("loading");
@@ -242,6 +243,7 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
   return <RegionContext.Provider value={contextValue}>{children}</RegionContext.Provider>;
 }
 
+/** React hook exposing the region context value. */
 export function useRegionContext(): RegionContextValue {
   return useContext(RegionContext);
 }

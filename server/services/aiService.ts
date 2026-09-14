@@ -50,10 +50,12 @@ export class AIError extends Error {
   }
 }
 
+/** Whether OpenAI API credentials are configured. */
 export function isOpenAIConfigured(): boolean {
   return Boolean(process.env.OPENAI_API_KEY);
 }
 
+/** Whether Anthropic API credentials are configured. */
 export function isAnthropicConfigured(): boolean {
   return Boolean(process.env.ANTHROPIC_API_KEY);
 }

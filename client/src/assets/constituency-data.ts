@@ -12,6 +12,7 @@ export interface ConstituencyDetail {
 }
 
 // Using simplified data to avoid formatting issues
+/** Static constituency details (seats, population, urban centers, outgoing TDs) keyed by name. */
 export const constituencyDetails: Record<string, ConstituencyDetail> = {
   "Carlow-Kilkenny": {
     seats: 5,

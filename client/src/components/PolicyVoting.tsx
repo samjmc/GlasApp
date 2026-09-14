@@ -48,6 +48,7 @@ interface PolicyVotingProps {
   tdStanceEvidence?: string; // What the TD said/did
 }
 
+/** Interactive voting control for a policy with options and perspectives. */
 export function PolicyVoting({
   articleId,
   politicianName,

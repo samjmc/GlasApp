@@ -67,6 +67,7 @@ function convertSupabaseUser(supabaseUser: User | null): AuthUser | null {
   };
 }
 
+/** React context provider for auth state. */
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -293,6 +294,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+/** React hook exposing the auth context value. */
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {

@@ -114,6 +114,7 @@ eLimits();
   }
 }
 
+/** Singleton news article manager instance. */
 export const newsArticleManager = new NewsArticleManager();
 
 

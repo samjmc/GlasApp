@@ -22,6 +22,7 @@ async function loadScoringServices() {
   }
 }
 
+/** Initialize and start the scheduled jobs. */
 export function initScheduler() {
   console.log("⏰ Scheduler initialized.");
   console.log("   📋 Article Triage: Every 30 minutes");

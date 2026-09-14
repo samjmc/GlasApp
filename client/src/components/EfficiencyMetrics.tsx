@@ -30,6 +30,7 @@ interface EfficiencyDisplayProps {
   metadata: EfficiencyMetricsProps;
 }
 
+/** Card summarizing a party's efficiency metrics (TDs, pledges, contribution). */
 export function EfficiencyMetrics({ partyName, numberOfTDs, totalContribution, overallEfficiency, pledgeCount }: EfficiencyMetricsProps) {
   const getEfficiencyRating = (efficiency: number) => {
     if (efficiency >= 2.0) return { label: 'Excellent', color: 'bg-green-500' };
@@ -103,6 +104,7 @@ export function EfficiencyMetrics({ partyName, numberOfTDs, totalContribution, o
   );
 }
 
+/** Card displaying a single pledge's score, contribution, and efficiency. */
 export function PledgeEfficiencyCard({ pledge, partyName }: { pledge: PledgeWithEfficiency['pledge'], partyName: string }) {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-600';
@@ -170,6 +172,7 @@ export function PledgeEfficiencyCard({ pledge, partyName }: { pledge: PledgeWith
   );
 }
 
+/** Renders efficiency metrics plus pledge performance ranked by efficiency. */
 export function EfficiencyDisplay({ pledges, metadata }: EfficiencyDisplayProps) {
   const sortedPledges = [...pledges].sort((a, b) => b.pledge.efficiencyScore - a.pledge.efficiencyScore);
 

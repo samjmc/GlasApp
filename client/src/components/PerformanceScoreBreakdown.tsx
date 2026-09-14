@@ -25,6 +25,7 @@ interface PerformanceScoreData {
   notes: string;
 }
 
+/** Breakdown of a politician's performance score by dimension. */
 export function PerformanceScoreBreakdown({ politicianName }: PerformanceScoreBreakdownProps) {
   const { data: performanceData, isLoading, error } = useQuery<{
     success: boolean;

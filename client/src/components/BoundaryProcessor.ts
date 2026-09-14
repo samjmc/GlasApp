@@ -55,6 +55,7 @@ const DEFAULT_BOUNDARIES = {
  * @param geojsonData The original GeoJSON data which may have null geometry 
  * @returns GeoJSON with valid geometry for display on maps
  */
+/** Extracts usable boundary data from GeoJSON even when geometry is null. */
 export function processElectoralBoundaryData(geojsonData: unknown): unknown {
   if (!geojsonData || !geojsonData.features || !Array.isArray(geojsonData.features)) {
     console.error('Invalid GeoJSON data provided');

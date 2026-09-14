@@ -308,6 +308,7 @@ export default function CookieConsent() {
 }
 
 // Optional: Export a function to check if analytics consent is given
+/** Whether the user has consented to analytics cookies. */
 export function hasAnalyticsConsent(): boolean {
   try {
     const consent = localStorage.getItem('cookie_consent');
@@ -320,6 +321,7 @@ export function hasAnalyticsConsent(): boolean {
 }
 
 // Optional: Export a function to programmatically show the cookie banner again
+/** Clears the stored cookie consent and reloads to show the consent banner again. */
 export function showCookieConsent() {
   localStorage.removeItem('cookie_consent');
   localStorage.removeItem('cookie_consent_date');

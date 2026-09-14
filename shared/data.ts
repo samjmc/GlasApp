@@ -1,6 +1,7 @@
 import { PoliticalFigure, PoliticalParty, QuizQuestion } from "./schema";
 
 // Updated Quiz questions with categorized topics
+/** All quiz questions for the political quiz. */
 export const questions: QuizQuestion[] = [
   {
     id: 1,
@@ -602,6 +603,7 @@ export const questions: QuizQuestion[] = [
       }
     ]
   }
+/** All political figures with their ideological positions. */
 ];export const politicalFigures: PoliticalFigure[] = [
   // Left-libertarian figures (economic left, social libertarian)
   {
@@ -983,6 +985,7 @@ export const questions: QuizQuestion[] = [
 ];
 
 // Political parties by country
+/** Political parties by country. */
 export const politicalParties: PoliticalParty[] = [
   // Ireland
   {
@@ -1438,6 +1441,7 @@ export const politicalParties: PoliticalParty[] = [
 ];
 
 // Ideology definitions based on compass positions
+/** Map economic/social scores to an ideology label. */
 export const getIdeology = (economic: number, social: number): { name: string; description: string } => {
   // Helper to check if position is within a rectangular area
   const isInRegion = (eMin: number, eMax: number, sMin: number, sMax: number) => 
@@ -1517,6 +1521,7 @@ export const getIdeology = (economic: number, social: number): { name: string; d
 };
 
 // Unique combinations based on response patterns
+/** Cache of unique ideology score combinations. */
 export const uniqueCombinations = {
   "pragmatic-environmentalism": {
     title: "Pragmatic Environmentalism",
@@ -1541,6 +1546,7 @@ export const uniqueCombinations = {
 };
 
 // Political topic suggestions based on ideology
+/** Ideology-specific politician suggestions. */
 export const politicalSuggestions: Record<string, Record<string, string>> = {
   "carbon-taxation": {
     "Libertarian Socialist": "As a libertarian socialist, you might support community-controlled carbon pricing systems that redistribute revenue directly to affected communities, especially those harmed by climate change.",

@@ -14,6 +14,7 @@ const sessionStore = pool
   : new session.MemoryStore();
 
 // Create session middleware
+/** Express session middleware backed by Postgres or a memory store. */
 export const sessionMiddleware = session({
   store: sessionStore,
   secret: process.env.SESSION_SECRET || 'glas-politics-dev-secret',
@@ -39,6 +40,7 @@ export const sessionMiddleware = session({
  * - 200 with next() if authenticated via session or bearer
  * - 401 if neither method succeeds
  */
+/** Express middleware checking session or bearer-token authentication. */
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
   // Check 1: Session-based auth (Replit)
   if (req.session && req.session.userId) {

@@ -245,6 +245,7 @@ function generateNameVariations(fullName: string): string[] {
 /**
  * Filter TD mentions by confidence threshold
  */
+/** Filter TD mentions by confidence threshold. */
 export function filterHighConfidenceMentions(
   mentions: TDMention[],
   threshold: number = 0.7
@@ -256,6 +257,7 @@ export function filterHighConfidenceMentions(
  * Check if article is substantially about a TD (not just passing mention)
  * IMPORTANT: Only count FULL NAME mentions to avoid false positives
  */
+/** Check whether an article is substantially about a TD. */
 export function isSubstantialMention(text: string, tdName: string): boolean {
   const textLower = text.toLowerCase();
   const nameLower = tdName.toLowerCase();
@@ -312,10 +314,12 @@ export async function reloadTDs(): Promise<void> {
 /**
  * Get current TD count
  */
+/** Get the current count of loaded TDs. */
 export function getTDCount(): number {
   return CURRENT_TDS.length;
 }
 
+/** TD extraction service methods. */
 export const TDExtractionService = {
   extractTDMentions,
   filterHighConfidenceMentions,

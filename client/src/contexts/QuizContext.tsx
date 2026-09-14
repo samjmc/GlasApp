@@ -149,6 +149,7 @@ const getResultsFromLocalStorage = (): {
   };
 };
 
+/** React context provider for quiz state. */
 export const QuizProvider: React.FC<QuizProviderProps> = ({ children }) => {
   // Initialize from localStorage if available
   const { savedResults, savedCalculated } = getResultsFromLocalStorage();
@@ -307,6 +308,7 @@ export const QuizProvider: React.FC<QuizProviderProps> = ({ children }) => {
 };
 
 // Custom hook to use the quiz context
+/** React hook exposing the quiz context value. */
 export const useQuiz = () => {
   const context = useContext(QuizContext);
   if (context === undefined) {

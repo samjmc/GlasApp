@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Sparkles, TrendingUp, Users, Building2 } from 'lucide-react';
 import { Link } from 'wouter';
 
+/** Card explaining how the scoring/rankings work. */
 export function ScoringMethodology() {
   return (
     <Card className="p-6 md:p-8 bg-gradient-to-r from-purple-50 via-pink-50 to-blue-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-blue-900/20 border-2 border-purple-200">

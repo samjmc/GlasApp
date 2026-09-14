@@ -517,6 +517,7 @@ function sleep(ms: number): Promise<void> {
 /**
  * Extract committee memberships from member data
  */
+/** Extract active committee memberships from Oireachtas member data. */
 export function extractCommitteeMemberships(member: unknown): Array<{
   name: string;
   nameIrish: string;
@@ -817,6 +818,7 @@ export async function classifyQuestionTopic(
 /**
  * Analyze answer sentiment using simple keyword analysis
  */
+/** Classify answer sentiment as positive, negative, or neutral. */
 export function analyzeAnswerSentiment(answerText: string | null): string {
   if (!answerText) return 'neutral';
 
@@ -1029,6 +1031,7 @@ function determinePartyLoyalty(
 }
 
 // Export service object
+/** Oireachtas API service methods facade. */
 export const OireachtasAPIService = {
   getCurrentDailMembers,
   getMemberDetails,

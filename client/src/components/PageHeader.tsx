@@ -20,6 +20,7 @@ type PageHeaderProps = {
   className?: string;
 };
 
+/** Page header with title, optional description, bullets, and right-side content. */
 export function PageHeader({ title, tooltipTitle, bullets = [], description, right, className }: PageHeaderProps) {
   return (
     <div className={className ?? ""}>

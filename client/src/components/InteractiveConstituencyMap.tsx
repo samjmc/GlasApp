@@ -27,6 +27,7 @@ import {
 
 type MapLayer = 'party' | 'performance' | 'gender' | 'government';
 
+/** Interactive map of Irish constituencies with selectable layers. */
 export function InteractiveConstituencyMap() {
   const [selectedConstituency, setSelectedConstituency] = useState<string | null>(null);
   const [activeLayer, setActiveLayer] = useState<MapLayer>('party');

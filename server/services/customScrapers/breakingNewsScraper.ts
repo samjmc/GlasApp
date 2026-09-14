@@ -276,6 +276,7 @@ export async function testBreakingNewsScraper(): Promise<void> {
   }
 }
 
+/** Scraper for BreakingNews.ie news articles. */
 export const BreakingNewsScraper = {
   scrapeLatestArticles: scrapeBreakingNewsLatestArticles,
   scrapeArticleContent: scrapeBreakingNewsArticleContent,

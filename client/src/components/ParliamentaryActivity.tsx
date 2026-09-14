@@ -32,6 +32,7 @@ interface ParliamentaryActivityProps {
   showComparison?: boolean;
 }
 
+/** Displays a politician's parliamentary activity with optional comparison. */
 export function ParliamentaryActivity({ 
   politicianName, 
   partyId, 

@@ -282,6 +282,7 @@ class RedisCacheAdapter implements CacheAdapter {
 // Single cache instance, backed by Redis when REDIS_URL is set, otherwise the
 // existing in-memory implementation. No call sites need to know which backend
 // is active.
+/** Redis or in-memory cache client instance. */
 export const cache = process.env.REDIS_URL
   ? new RedisCacheAdapter(process.env.REDIS_URL)
   : new MemoryCacheAdapter(new InMemoryCache());
@@ -292,6 +293,7 @@ setInterval(() => {
   cache.clearExpired();
 }, 5 * 60 * 1000);
 
+/** Cache maintenance service methods. */
 export const CacheService = {
   async clearAllCaches(): Promise<void> {
     await cache.clear();
@@ -335,6 +337,7 @@ export async function cached<T>(
 /**
  * Common TTL constants for convenience (in milliseconds)
  */
+/** Cache time-to-live constants in milliseconds. */
 export const TTL = {
   ONE_MINUTE: 60 * 1000,
   FIVE_MINUTES: 5 * 60 * 1000,
@@ -350,6 +353,7 @@ export const TTL = {
 /**
  * Cache key generators for consistent naming
  */
+/** Cache key generators for consistent naming. */
 export const CacheKeys = {
   // Party data (rarely changes)
   parties: {

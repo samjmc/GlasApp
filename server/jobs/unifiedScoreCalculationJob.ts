@@ -197,5 +197,6 @@ export class UnifiedScoreCalculationJob {
 }
 
 // Export singleton instance
+/** Singleton job for recalculating unified TD scores. */
 export const unifiedScoreJob = new UnifiedScoreCalculationJob();
 

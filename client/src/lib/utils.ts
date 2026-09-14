@@ -1,16 +1,19 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+/** Merges Tailwind class names using clsx and tailwind-merge. */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 // Utility function to calculate Euclidean distance between two points
+/** Calculates the Euclidean distance between two 2D points. */
 export function calculateDistance(x1: number, y1: number, x2: number, y2: number): number {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
 // Generate a unique share code
+/** Generates a random alphanumeric share code of the given length. */
 export function generateShareCode(length: number = 6): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let result = "";
@@ -21,11 +24,13 @@ export function generateShareCode(length: number = 6): string {
 }
 
 // Simple formatter for compass scores
+/** Formats a compass score to one decimal place. */
 export function formatCompassScore(score: number): string {
   return score.toFixed(1);
 }
 
 // Determine quadrant name
+/** Returns the political compass quadrant name for the given economic and social scores. */
 export function getQuadrantName(economic: number, social: number): string {
   if (economic >= 0 && social >= 0) return "Authoritarian Right";
   if (economic < 0 && social >= 0) return "Authoritarian Left";
@@ -34,6 +39,7 @@ export function getQuadrantName(economic: number, social: number): string {
 }
 
 // Convert scores to percentages for positioning on the compass
+/** Converts a -10..10 score to a 0..100 compass position percentage for an axis. */
 export function scoreToPosition(score: number, axis: 'economic' | 'social'): number {
   // Convert -10 to 10 scale to 0 to 100%
   if (axis === 'economic') {
@@ -47,6 +53,7 @@ export function scoreToPosition(score: number, axis: 'economic' | 'social'): num
 }
 
 // Function to get compass color based on position
+/** Returns an RGB color string blended by position on the political compass. */
 export function getCompassColor(economic: number, social: number): string {
   // Blend colors based on position
   const redComponent = Math.min(255, Math.max(0, 128 + economic * 12));

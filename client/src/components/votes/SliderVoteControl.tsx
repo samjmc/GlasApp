@@ -19,6 +19,7 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
+/** Slider-based voting control with min/max labels. */
 export function SliderVoteControl({
   value,
   onValueChange,

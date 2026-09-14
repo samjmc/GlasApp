@@ -33,6 +33,7 @@ interface UserRating {
   rating: RatingData | null;
 }
 
+/** Card for rating a TD's transparency and performance. */
 export function TDRatingCard({ tdName, constituency, party, compact = false }: TDRatingCardProps) {
   const queryClient = useQueryClient();
   

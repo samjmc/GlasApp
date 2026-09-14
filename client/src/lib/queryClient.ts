@@ -84,6 +84,7 @@ export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T
 }
 
 // API Client with axios-like interface
+/** API client with axios-like methods for authorized requests. */
 export const apiClient = {
   get: <T = any>(path: string) => apiRequest<T>({ method: "GET", path }),
   post: <T = any>(path: string, body?: unknown) => apiRequest<T>({ method: "POST", path, body }),
@@ -106,6 +107,7 @@ type UnauthorizedBehavior = "returnNull" | "throw";
  * @param on401 - How to handle 401: "throw" (default) or "returnNull"
  * @returns QueryFunction for React Query
  */
+/** Factory returning a React Query queryFn with automatic bearer-token attachment. */
 export const getQueryFn: <T>(options: {
   on401: UnauthorizedBehavior;
 }) => QueryFunction<T> =
@@ -133,6 +135,7 @@ export const getQueryFn: <T>(options: {
     return await res.json();
   };
 
+/** Shared React Query client with default query options. */
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

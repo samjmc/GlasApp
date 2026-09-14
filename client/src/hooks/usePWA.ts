@@ -14,6 +14,7 @@ interface PWAHook {
   isOnline: boolean;
 }
 
+/** React hook exposing PWA install prompt, display mode, and online status. */
 export function usePWA(): PWAHook {
   const [isInstalled, setIsInstalled] = useState(false);
   const [canInstall, setCanInstall] = useState(false);
@@ -99,6 +100,7 @@ export function usePWA(): PWAHook {
 }
 
 // Hook for online status
+/** React hook returning a boolean for the browser's current online status. */
 export function useOnlineStatus(): boolean {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 

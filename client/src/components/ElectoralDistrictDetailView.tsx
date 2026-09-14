@@ -9,6 +9,7 @@ interface ElectoralDistrictDetailViewProps {
   constituencyData: ConstituencyDetail;
 }
 
+/** Detail view for an electoral district with its constituency data. */
 export const ElectoralDistrictDetailView: React.FC<ElectoralDistrictDetailViewProps> = ({
   constituencyName,
   constituencyData

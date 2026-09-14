@@ -35,6 +35,7 @@ interface PhoneVerificationProps {
   className?: string;
 }
 
+/** Form for verifying a user's phone number via code. */
 export function PhoneVerification({ 
   userId, 
   phoneNumber, 

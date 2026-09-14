@@ -41,6 +41,7 @@ const DEFAULT_MAX_LIMIT = 100;
  * const paged = extractPagination(req.query, { allowCursor: true });
  * // Returns: { limit: 20, offset: 0, cursor: 'abc123', hasMore: false }
  */
+/** Extract and validate pagination params from a request. */
 export function extractPagination(
   query: Record<string, string | string[] | undefined>,
   options: PaginationOptions = {}
@@ -101,6 +102,7 @@ export function extractPagination(
  * const cursor = buildCursorFromId(123);
  * // Returns: "MTIz" (base64 of "123")
  */
+/** Encode an ID into a base64 cursor string. */
 export function buildCursorFromId(id: string | number): string {
   const idString = String(id);
   return Buffer.from(idString).toString('base64');
@@ -117,6 +119,7 @@ export function buildCursorFromId(id: string | number): string {
  * const id = decodeCursor('MTIz');
  * // Returns: "123"
  */
+/** Decode a base64 cursor string back to an ID. */
 export function decodeCursor(cursor: string): string | null {
   // Buffer.from(..., 'base64') silently ignores invalid characters instead of
   // throwing, so malformed cursors must be rejected before decoding.
@@ -146,6 +149,7 @@ export function decodeCursor(cursor: string): string | null {
  *   const { limit, offset, cursor } = req.pagination;
  * });
  */
+/** Express middleware extracting pagination params from the query. */
 export const paginationMiddleware = (options: PaginationOptions = {}) => {
   return (req: Request, res: Response, next: NextFunction) => {
     req.pagination = extractPagination(req.query as Record<string, string | string[] | undefined>, options);

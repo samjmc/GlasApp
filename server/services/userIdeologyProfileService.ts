@@ -14,6 +14,7 @@ interface PolicyVoteVector {
   [key: string]: number | string;
 }
 
+/** User ideology profile management service methods. */
 export const UserIdeologyProfileService = {
   /**
    * Recalculate a user's ideological profile from their recorded policy vote responses.

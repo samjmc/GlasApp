@@ -15,6 +15,7 @@ import {
   Users
 } from 'lucide-react';
 
+/** Empty-state card prompting the user to take the political quiz. */
 export function EmptyQuizState() {
   return (
     <Card className="p-12 text-center bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-blue-900/20 border-2 border-dashed border-purple-300 dark:border-purple-700">
@@ -75,6 +76,7 @@ export function EmptyQuizState() {
   );
 }
 
+/** Empty-state card shown when the news feed has no articles yet. */
 export function EmptyNewsFeedState() {
   return (
     <Card className="p-12 text-center bg-gradient-to-r from-emerald-50 via-teal-50 to-blue-50 dark:from-emerald-900/20 dark:via-teal-900/20 dark:to-blue-900/20">
@@ -106,6 +108,7 @@ export function EmptyNewsFeedState() {
   );
 }
 
+/** Empty-state card prompting the first idea submission. */
 export function EmptyIdeasState() {
   return (
     <Card className="p-12 text-center bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-2 border-dashed border-orange-300 dark:border-orange-700">
@@ -131,6 +134,7 @@ export function EmptyIdeasState() {
   );
 }
 
+/** Empty-state card prompting location access to find local TDs. */
 export function EmptyLocalRepresentativesState() {
   return (
     <Card className="p-12 text-center bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20">
@@ -163,6 +167,7 @@ export function EmptyLocalRepresentativesState() {
   );
 }
 
+/** Empty-state card for loading TD, party, or personal rankings. */
 export function EmptyRankingsState({ type }: { type: 'td' | 'party' | 'personal' }) {
   const config = {
     td: {
@@ -212,6 +217,7 @@ export function EmptyRankingsState({ type }: { type: 'td' | 'party' | 'personal'
   );
 }
 
+/** Skeleton loading state with pulsing placeholder cards. */
 export function LoadingState({ message = 'Loading...' }: { message?: string }) {
   return (
     <div className="space-y-6">

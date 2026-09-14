@@ -1,6 +1,7 @@
 import { supabaseDb } from '../db.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
 
+/** Ideology snapshot service for capturing user ideology profiles. */
 export const IdeologySnapshotService = {
   /**
    * Create a snapshot for a specific user

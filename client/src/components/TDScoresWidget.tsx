@@ -95,6 +95,7 @@ function TDCompactRow({ td, variant, showChange, onInfoClick }: TDCompactRowProp
   );
 }
 
+/** Widget ranking TDs by their scores. */
 export function TDScoresWidget() {
   const [selectedTDId, setSelectedTDId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

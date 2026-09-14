@@ -27,6 +27,7 @@ interface PersonalizedScoreProps {
   userId?: string;
 }
 
+/** Displays a personalized score comparing a politician to the user's views. */
 export function PersonalizedScoreDisplay({
   politicianName,
   objectiveScores,

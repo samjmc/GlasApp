@@ -13,6 +13,7 @@ interface LoginRequiredPageProps {
  * A friendly page shown when authentication is required
  * Shows a nice message with login/register options instead of a 404
  */
+/** Friendly page shown when authentication is required, with login/register options. */
 export function LoginRequiredPage({ 
   title = "Sign In Required",
   description,

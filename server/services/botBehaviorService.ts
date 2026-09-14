@@ -199,4 +199,5 @@ export class BotBehaviorService {
   }
 }
 
+/** Singleton bot behavior service instance. */
 export const botBehaviorService = BotBehaviorService.getInstance();

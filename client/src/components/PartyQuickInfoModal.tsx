@@ -24,6 +24,7 @@ interface PartyQuickInfoModalProps {
   onClose: () => void;
 }
 
+/** Modal with quick summary info for a political party. */
 export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickInfoModalProps) {
   const { data, isLoading } = useQuery({
     queryKey: ['party-quick-info', partyName],

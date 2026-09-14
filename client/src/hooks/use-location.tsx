@@ -17,6 +17,7 @@ interface LocationResult {
   hasPermission: boolean;
 }
 
+/** React hook returning the user's geolocation and a method to request location permission. */
 export function useLocation(): LocationResult {
   const [location, setLocation] = useState<LocationData | null>(null);
   const [loading, setLoading] = useState(false);

@@ -2,6 +2,7 @@
 // The data is structured as GeoJSON with properly formed polygons representing constituency boundaries
 // Based on 2023 Electoral Commission boundaries
 
+/** Detailed non-rectangular polygon GeoJSON for Irish electoral constituencies. */
 export const IRELAND_CONSTITUENCIES_POLYGONS = {
   "type": "FeatureCollection",
   "features": [

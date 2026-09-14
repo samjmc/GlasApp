@@ -37,6 +37,7 @@ export interface PolicyPledge {
 }
 
 // Policy pledges with implementation tracking
+/** Political party policy pledges with implementation tracking. */
 export const policyPledges: PolicyPledge[] = [
   // Fianna Fáil pledges
   {
@@ -292,6 +293,7 @@ export const policyPledges: PolicyPledge[] = [
 ];
 
 // Party manifestos with AI summaries
+/** Political party manifestos with AI summaries. */
 export const partyManifestos: PartyManifesto[] = [
   {
     id: "manifesto-ff-2024",
@@ -456,6 +458,7 @@ export const partyManifestos: PartyManifesto[] = [
 ];
 
 // Educational content for gamified learning
+/** Educational content for gamified learning. */
 export const educationalContent: EducationalContent[] = [
   {
     id: "education-political-spectrum",
@@ -524,6 +527,7 @@ export interface UserEducationProgress {
 }
 
 // Badge definitions for gamification
+/** Badge definitions for gamification. */
 export const educationBadges = {
   "beginner": {
     name: "Political Novice",

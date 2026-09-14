@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Download, Check } from 'lucide-react';
 import { usePWA } from '@/hooks/usePWA';
 
+/** Always-visible button to manually install the PWA. */
 export function ManualPWAInstall() {
   const { canInstall, isInstalled, install } = usePWA();
   const [clicked, setClicked] = useState(false);

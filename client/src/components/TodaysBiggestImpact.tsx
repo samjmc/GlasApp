@@ -14,6 +14,7 @@ interface TodaysBiggestImpactProps {
   variant?: "compact" | "full";
 }
 
+/** Highlights today's biggest-impact politicians (full or compact variant). */
 export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactProps) {
   const { regionCode } = useRegion();
   const cardBase =

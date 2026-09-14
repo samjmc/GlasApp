@@ -15,6 +15,7 @@ export interface PartyDimensions {
   technocratic: number;
 }
 
+/** Party dimension scores keyed by party slug. */
 export const partyDimensionsData: Record<string, PartyDimensions> = {
   'ie-sf': {
     party: 'Sinn Féin',

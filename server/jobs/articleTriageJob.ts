@@ -230,6 +230,7 @@ export async function runArticleTriage(
 /**
  * Article Triage Job export for cronjob.org integration
  */
+/** Scheduled job for triaging news articles. */
 export const ArticleTriageJob = {
   run: runArticleTriage,
   

@@ -149,6 +149,7 @@ async function upsertPartyScoreAverages(aggregates: PartyScoreAverages[]): Promi
   return stats;
 }
 
+/** Party performance scoring service methods. */
 export const PartyPerformanceService = {
   async updateAllPartyScores(): Promise<UpdateStats> {
     if (!supabase) {

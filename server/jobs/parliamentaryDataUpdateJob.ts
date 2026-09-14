@@ -195,5 +195,6 @@ export class ParliamentaryDataUpdateJob {
 }
 
 // Export singleton instance
+/** Singleton job for updating parliamentary data. */
 export const parliamentaryDataJob = new ParliamentaryDataUpdateJob();
 

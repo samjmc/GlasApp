@@ -197,6 +197,7 @@ interface ToastContextValue {
 
 const ToastContext = React.createContext<ToastContextValue | undefined>(undefined);
 
+/** React context provider exposing the toast context value. */
 export function ToastContextProvider({ children }: { children: React.ReactNode }) {
   const toastContext = useToast();
   
@@ -207,6 +208,7 @@ export function ToastContextProvider({ children }: { children: React.ReactNode }
   );
 }
 
+/** React hook returning the toast context, throwing if used outside the provider. */
 export function useToastContext() {
   const context = React.useContext(ToastContext);
   if (!context) {

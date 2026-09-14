@@ -40,6 +40,7 @@ const messageTemplates = [
   }
 ];
 
+/** Form for opting into SMS notifications. */
 export function SMSNotificationForm() {
   const [isSending, setIsSending] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');

@@ -28,6 +28,7 @@ interface HomePageTabsProps {
   onScrollTop?: () => void;
 }
 
+/** Home page tab navigation with optional scroll-to-top button. */
 export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTabsProps = {}) {
   const { isAuthenticated } = useAuth();
   const [activeTab, setActiveTab] = useState<TabType>('feed');

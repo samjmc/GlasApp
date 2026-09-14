@@ -1,6 +1,7 @@
 import { QuizQuestion, IdeologicalDimensions } from "./quizTypes";
 
 // Enhanced multidimensional quiz data with expanded ideological axes
+/** Enhanced multidimensional quiz questions with expanded ideological axes. */
 export const enhancedQuestions: QuizQuestion[] = [
   {
     id: 1,
@@ -1435,6 +1436,7 @@ export const enhancedQuestions: QuizQuestion[] = [
 ];
 
 // Define ideological profiles based on multidimensional scoring
+/** Map multidimensional ideological scores to an ideology label. */
 export const getMultidimensionalIdeology = (
   dimensions: IdeologicalDimensions
 ): { name: string; description: string } => {

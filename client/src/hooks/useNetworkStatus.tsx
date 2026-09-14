@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
  *   return <OfflineMessage />;
  * }
  */
+/** React hook detecting the browser's online/offline status. */
 export function useNetworkStatus() {
   const [isOnline, setIsOnline] = useState(
     typeof navigator !== 'undefined' ? navigator.onLine : true

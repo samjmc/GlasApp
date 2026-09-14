@@ -4,6 +4,7 @@ import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
 // Users table - updated for Replit Auth compatibility
+/** Drizzle ORM table definition for user accounts. */
 export const users = pgTable("users", {
   id: varchar("id").primaryKey().notNull(), // Replit user ID
   username: varchar("username", { length: 100 }).unique(),
@@ -28,6 +29,7 @@ export const users = pgTable("users", {
 });
 
 // User preferences table for profile/geo data split
+/** Drizzle ORM table definition for user preferences. */
 export const userPreferences = pgTable("user_preferences", {
   userId: varchar("user_id", { length: 100 }).primaryKey().references(() => users.id, { onDelete: "cascade" }),
   county: varchar("county", { length: 50 }),
@@ -39,6 +41,7 @@ export const userPreferences = pgTable("user_preferences", {
 });
 
 // Session storage table for Replit Auth
+/** Drizzle ORM table definition for user sessions. */
 export const sessions = pgTable(
   "sessions",
   {
@@ -52,6 +55,7 @@ export const sessions = pgTable(
 export type UpsertUser = typeof users.$inferInsert;
 
 // User locations table for constituency tracking
+/** Drizzle ORM table definition for user locations. */
 export const userLocations = pgTable("user_locations", {
   id: serial("id").primaryKey(),
   latitude: decimal("latitude", { precision: 10, scale: 8 }).notNull(),
@@ -64,6 +68,7 @@ export const userLocations = pgTable("user_locations", {
 });
 
 // User activity tracking table
+/** Drizzle ORM table definition for user activity tracking. */
 export const userActivity = pgTable("user_activity", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
@@ -77,6 +82,7 @@ export const userActivity = pgTable("user_activity", {
 ]);
 
 // Email verification tokens table
+/** Drizzle ORM table definition for email verification tokens. */
 export const emailVerificationTokens = pgTable("email_verification_tokens", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
@@ -86,6 +92,7 @@ export const emailVerificationTokens = pgTable("email_verification_tokens", {
 });
 
 // Phone verification tokens table
+/** Drizzle ORM table definition for phone verification tokens. */
 export const phoneVerificationTokens = pgTable("phone_verification_tokens", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
@@ -97,6 +104,7 @@ export const phoneVerificationTokens = pgTable("phone_verification_tokens", {
 });
 
 // Two-factor authentication tokens table
+/** Drizzle ORM table definition for two-factor authentication tokens. */
 export const twoFactorTokens = pgTable("two_factor_tokens", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
@@ -108,6 +116,7 @@ export const twoFactorTokens = pgTable("two_factor_tokens", {
 });
 
 // Enhanced quiz results table to store multidimensional analysis
+/** Drizzle ORM table definition for enhanced quiz results. */
 export const quizResults = pgTable("quiz_results", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).references(() => users.id),
@@ -145,6 +154,7 @@ export const quizResults = pgTable("quiz_results", {
 // separate raw-SQL "quiz_history" table via quizHistoryService.ts, not this Drizzle table.
 // Physical table renamed to archived_quiz_results_history (see migrations/); the exported
 // TS symbol name is kept unchanged so any existing (dead) code referencing it still compiles.
+/** Drizzle ORM table definition for archived quiz result history. */
 export const quizResultsHistory = pgTable("archived_quiz_results_history", {
   id: serial("id").primaryKey(),
   originalResultId: integer("original_result_id").references(() => quizResults.id),
@@ -172,6 +182,7 @@ export const quizResultsHistory = pgTable("archived_quiz_results_history", {
 });
 
 // Political parties table with 8-dimensional scoring
+/** Drizzle ORM table definition for political parties. */
 export const parties = pgTable("parties", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull().unique(),
@@ -203,6 +214,7 @@ export const parties = pgTable("parties", {
 });
 
 // Constituencies table
+/** Drizzle ORM table definition for constituencies. */
 export const constituencies = pgTable("constituencies", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull().unique(),
@@ -216,6 +228,7 @@ export const constituencies = pgTable("constituencies", {
 });
 
 // Political Evolution table
+/** Drizzle ORM table definition for political evolution tracking. */
 export const politicalEvolution = pgTable("political_evolution", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
@@ -236,6 +249,7 @@ export const politicalEvolution = pgTable("political_evolution", {
 });
 
 // Elections table
+/** Drizzle ORM table definition for elections. */
 export const elections = pgTable("elections", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(),
@@ -246,6 +260,7 @@ export const elections = pgTable("elections", {
 });
 
 // Election results table (stores results by constituency and party)
+/** Drizzle ORM table definition for election results. */
 export const electionResults = pgTable("election_results", {
   id: serial("id").primaryKey(),
   electionId: integer("election_id").notNull().references(() => elections.id),
@@ -258,6 +273,7 @@ export const electionResults = pgTable("election_results", {
 });
 
 // Candidates table
+/** Drizzle ORM table definition for candidates. */
 export const candidates = pgTable("candidates", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(),
@@ -270,6 +286,7 @@ export const candidates = pgTable("candidates", {
 });
 
 // Pledge tracking table
+/** Drizzle ORM table definition for pledge tracking. */
 export const pledges = pgTable("pledges", {
   id: serial("id").primaryKey(),
   partyId: integer("party_id").notNull().references(() => parties.id),
@@ -289,6 +306,7 @@ export const pledges = pgTable("pledges", {
 });
 
 // Pledge actions table (tracks specific actions taken on pledges)
+/** Drizzle ORM table definition for pledge actions. */
 export const pledgeActions = pgTable("pledge_actions", {
   id: serial("id").primaryKey(),
   pledgeId: integer("pledge_id").notNull().references(() => pledges.id),
@@ -302,6 +320,7 @@ export const pledgeActions = pgTable("pledge_actions", {
 });
 
 // Party performance scores table
+/** Drizzle ORM table definition for party performance scores. */
 export const partyPerformanceScores = pgTable("party_performance_scores", {
   id: serial("id").primaryKey(),
   partyId: integer("party_id").notNull().references(() => parties.id),
@@ -322,6 +341,7 @@ export const partyPerformanceScores = pgTable("party_performance_scores", {
 });
 
 // Pledge voting tables
+/** Drizzle ORM table definition for pledge category weights. */
 export const pledgeCategoryWeights = pgTable("pledge_category_weights", {
   id: serial("id").primaryKey(),
   category: varchar("category", { length: 255 }).notNull().unique(),
@@ -330,6 +350,7 @@ export const pledgeCategoryWeights = pgTable("pledge_category_weights", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+/** Drizzle ORM table definition for user category votes. */
 export const userCategoryVotes = pgTable("user_category_votes", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 255 }).notNull(),
@@ -341,6 +362,7 @@ export const userCategoryVotes = pgTable("user_category_votes", {
   userCategoryUnique: unique("user_category_unique").on(table.userId, table.category),
 }));
 
+/** Drizzle ORM table definition for user pledge votes. */
 export const userPledgeVotes = pgTable("user_pledge_votes", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 255 }).notNull(),
@@ -354,6 +376,7 @@ export const userPledgeVotes = pgTable("user_pledge_votes", {
 }));
 
 // New simplified category ranking table
+/** Drizzle ORM table definition for user category rankings. */
 export const userCategoryRankings = pgTable("user_category_rankings", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 255 }).notNull(),
@@ -366,6 +389,7 @@ export const userCategoryRankings = pgTable("user_category_rankings", {
 }));
 
 // Party sentiment votes table
+/** Drizzle ORM table definition for party sentiment votes. */
 export const partySentimentVotes = pgTable("party_sentiment_votes", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 255 }).notNull(),
@@ -378,6 +402,7 @@ export const partySentimentVotes = pgTable("party_sentiment_votes", {
 }));
 
 // Performance scores table
+/** Drizzle ORM table definition for performance scores. */
 export const performanceScores = pgTable("performance_scores", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull().unique(),
@@ -409,6 +434,7 @@ export type PartySentimentVote = typeof partySentimentVotes.$inferSelect;
 export type PerformanceScore = typeof performanceScores.$inferSelect;
 
 // Relations
+/** Drizzle relations for the users table. */
 export const usersRelations = relations(users, ({ many }) => ({
   quizResults: many(quizResults),
   quizResultsHistory: many(quizResultsHistory),
@@ -416,6 +442,7 @@ export const usersRelations = relations(users, ({ many }) => ({
   twoFactorTokens: many(twoFactorTokens),
 }));
 
+/** Drizzle relations for the emailVerificationTokens table. */
 export const emailVerificationTokensRelations = relations(emailVerificationTokens, ({ one }) => ({
   user: one(users, {
     fields: [emailVerificationTokens.userId],
@@ -423,6 +450,7 @@ export const emailVerificationTokensRelations = relations(emailVerificationToken
   }),
 }));
 
+/** Drizzle relations for the twoFactorTokens table. */
 export const twoFactorTokensRelations = relations(twoFactorTokens, ({ one }) => ({
   user: one(users, {
     fields: [twoFactorTokens.userId],
@@ -430,6 +458,7 @@ export const twoFactorTokensRelations = relations(twoFactorTokens, ({ one }) => 
   }),
 }));
 
+/** Drizzle relations for the quizResults table. */
 export const quizResultsRelations = relations(quizResults, ({ one, many }) => ({
   user: one(users, {
     fields: [quizResults.userId],
@@ -438,6 +467,7 @@ export const quizResultsRelations = relations(quizResults, ({ one, many }) => ({
   history: many(quizResultsHistory),
 }));
 
+/** Drizzle relations for the quizResultsHistory table. */
 export const quizResultsHistoryRelations = relations(quizResultsHistory, ({ one }) => ({
   user: one(users, {
     fields: [quizResultsHistory.userId],
@@ -449,6 +479,7 @@ export const quizResultsHistoryRelations = relations(quizResultsHistory, ({ one 
   }),
 }));
 
+/** Drizzle relations for the parties table. */
 export const partiesRelations = relations(parties, ({ many }) => ({
   electionResults: many(electionResults),
   candidates: many(candidates),
@@ -456,16 +487,19 @@ export const partiesRelations = relations(parties, ({ many }) => ({
   performanceScores: many(partyPerformanceScores),
 }));
 
+/** Drizzle relations for the constituencies table. */
 export const constituenciesRelations = relations(constituencies, ({ many }) => ({
   electionResults: many(electionResults),
   candidates: many(candidates),
 }));
 
+/** Drizzle relations for the elections table. */
 export const electionsRelations = relations(elections, ({ many }) => ({
   electionResults: many(electionResults),
   candidates: many(candidates),
 }));
 
+/** Drizzle relations for the electionResults table. */
 export const electionResultsRelations = relations(electionResults, ({ one }) => ({
   election: one(elections, {
     fields: [electionResults.electionId],
@@ -481,6 +515,7 @@ export const electionResultsRelations = relations(electionResults, ({ one }) => 
   }),
 }));
 
+/** Drizzle relations for the pledges table. */
 export const pledgesRelations = relations(pledges, ({ one, many }) => ({
   party: one(parties, {
     fields: [pledges.partyId],
@@ -489,6 +524,7 @@ export const pledgesRelations = relations(pledges, ({ one, many }) => ({
   actions: many(pledgeActions),
 }));
 
+/** Drizzle relations for the pledgeActions table. */
 export const pledgeActionsRelations = relations(pledgeActions, ({ one }) => ({
   pledge: one(pledges, {
     fields: [pledgeActions.pledgeId],
@@ -496,6 +532,7 @@ export const pledgeActionsRelations = relations(pledgeActions, ({ one }) => ({
   }),
 }));
 
+/** Drizzle relations for the partyPerformanceScores table. */
 export const partyPerformanceScoresRelations = relations(partyPerformanceScores, ({ one }) => ({
   party: one(parties, {
     fields: [partyPerformanceScores.partyId],
@@ -503,6 +540,7 @@ export const partyPerformanceScoresRelations = relations(partyPerformanceScores,
   }),
 }));
 
+/** Drizzle relations for the candidates table. */
 export const candidatesRelations = relations(candidates, ({ one }) => ({
   party: one(parties, {
     fields: [candidates.partyId],
@@ -519,23 +557,38 @@ export const candidatesRelations = relations(candidates, ({ one }) => ({
 }));
 
 // Zod schemas for validation
+/** Zod insert-schema for creating a user record. */
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true }).extend({
   latitude: z.number().optional().transform(val => val?.toString()),
   longitude: z.number().optional().transform(val => val?.toString())
 });
+/** Zod insert-schema for creating a user activity record. */
 export const insertUserActivitySchema = createInsertSchema(userActivity).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating an email verification token record. */
 export const insertEmailVerificationTokenSchema = createInsertSchema(emailVerificationTokens).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a two-factor token record. */
 export const insertTwoFactorTokenSchema = createInsertSchema(twoFactorTokens).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a quiz result record. */
 export const insertQuizResultSchema = createInsertSchema(quizResults).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a quiz result history record. */
 export const insertQuizResultHistorySchema = createInsertSchema(quizResultsHistory).omit({ id: true, archivedAt: true });
+/** Zod insert-schema for creating a political evolution record. */
 export const insertPoliticalEvolutionSchema = createInsertSchema(politicalEvolution).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a party record. */
 export const insertPartySchema = createInsertSchema(parties).omit({ id: true });
+/** Zod insert-schema for creating a constituency record. */
 export const insertConstituencySchema = createInsertSchema(constituencies).omit({ id: true });
+/** Zod insert-schema for creating an election record. */
 export const insertElectionSchema = createInsertSchema(elections).omit({ id: true });
+/** Zod insert-schema for creating an election result record. */
 export const insertElectionResultSchema = createInsertSchema(electionResults).omit({ id: true });
+/** Zod insert-schema for creating a candidate record. */
 export const insertCandidateSchema = createInsertSchema(candidates);
+/** Zod insert-schema for creating a pledge record. */
 export const insertPledgeSchema = createInsertSchema(pledges).omit({ id: true, createdAt: true, lastUpdated: true });
+/** Zod insert-schema for creating a pledge action record. */
 export const insertPledgeActionSchema = createInsertSchema(pledgeActions).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a party performance score record. */
 export const insertPartyPerformanceScoreSchema = createInsertSchema(partyPerformanceScores).omit({ id: true, calculatedAt: true, validFrom: true });
 
 // TypeScript types
@@ -585,11 +638,13 @@ export type PartyPerformanceScore = typeof partyPerformanceScores.$inferSelect;
 export type InsertPartyPerformanceScore = z.infer<typeof insertPartyPerformanceScoreSchema>;
 
 // User location schema
+/** Zod insert-schema for creating a user location record. */
 export const insertUserLocationSchema = createInsertSchema(userLocations);
 export type UserLocation = typeof userLocations.$inferSelect;
 export type InsertUserLocation = z.infer<typeof insertUserLocationSchema>;
 
 // Problems table for top-level issues
+/** Drizzle ORM table definition for problems. */
 export const problems = pgTable("problems", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 200 }).notNull(),
@@ -609,6 +664,7 @@ export const problems = pgTable("problems", {
 });
 
 // Solutions table for nested solutions under problems
+/** Drizzle ORM table definition for solutions. */
 export const solutions = pgTable("solutions", {
   id: serial("id").primaryKey(),
   problemId: integer("problem_id").notNull().references(() => problems.id),
@@ -629,6 +685,7 @@ export const solutions = pgTable("solutions", {
 });
 
 // Legacy ideas table (keeping for migration compatibility)
+/** Drizzle ORM table definition for legacy ideas. */
 export const ideas = pgTable("ideas", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 200 }).notNull(),
@@ -649,6 +706,7 @@ export const ideas = pgTable("ideas", {
 });
 
 // Problem votes table for user voting on problems
+/** Drizzle ORM table definition for problem votes. */
 export const problemVotes = pgTable("problem_votes", {
   id: serial("id").primaryKey(),
   problemId: integer("problem_id").notNull().references(() => problems.id),
@@ -660,6 +718,7 @@ export const problemVotes = pgTable("problem_votes", {
 ]);
 
 // Solution votes table for user voting on solutions
+/** Drizzle ORM table definition for solution votes. */
 export const solutionVotes = pgTable("solution_votes", {
   id: serial("id").primaryKey(),
   solutionId: integer("solution_id").notNull().references(() => solutions.id),
@@ -671,6 +730,7 @@ export const solutionVotes = pgTable("solution_votes", {
 ]);
 
 // Legacy idea votes table (keeping for compatibility)
+/** Drizzle ORM table definition for idea votes. */
 export const ideaVotes = pgTable("idea_votes", {
   id: serial("id").primaryKey(),
   ideaId: integer("idea_id").notNull(),
@@ -682,9 +742,13 @@ export const ideaVotes = pgTable("idea_votes", {
 ]);
 
 // Schema exports for problems and solutions
+/** Zod insert-schema for creating a problem record. */
 export const insertProblemSchema = createInsertSchema(problems).omit({ id: true, createdAt: true, updatedAt: true });
+/** Zod insert-schema for creating a solution record. */
 export const insertSolutionSchema = createInsertSchema(solutions).omit({ id: true, createdAt: true, updatedAt: true });
+/** Zod insert-schema for creating a problem vote record. */
 export const insertProblemVoteSchema = createInsertSchema(problemVotes).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a solution vote record. */
 export const insertSolutionVoteSchema = createInsertSchema(solutionVotes).omit({ id: true, createdAt: true });
 
 export type InsertProblem = z.infer<typeof insertProblemSchema>;
@@ -697,7 +761,9 @@ export type SelectProblemVote = typeof problemVotes.$inferSelect;
 export type SelectSolutionVote = typeof solutionVotes.$inferSelect;
 
 // Legacy schema exports (keeping for compatibility)
+/** Zod insert-schema for creating an idea record. */
 export const insertIdeaSchema = createInsertSchema(ideas).omit({ id: true, createdAt: true, updatedAt: true });
+/** Zod insert-schema for creating an idea vote record. */
 export const insertIdeaVoteSchema = createInsertSchema(ideaVotes).omit({ id: true, createdAt: true });
 
 export type InsertIdea = z.infer<typeof insertIdeaSchema>;
@@ -711,6 +777,7 @@ export type SelectIdeaVote = typeof ideaVotes.$inferSelect;
 // ============================================================================
 
 // News articles table
+/** Drizzle ORM table definition for news articles. */
 export const newsArticles = pgTable("news_articles", {
   id: serial("id").primaryKey(),
   url: text("url").notNull().unique(),
@@ -763,6 +830,7 @@ export const newsArticles = pgTable("news_articles", {
 ]);
 
 // TD Scores table (ELO-style ratings)
+/** Drizzle ORM table definition for TD scores. */
 export const tdScores = pgTable("td_scores", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull().unique(),
@@ -805,6 +873,7 @@ export const tdScores = pgTable("td_scores", {
 ]);
 
 // Score history for tracking changes over time
+/** Drizzle ORM table definition for TD score history. */
 export const tdScoreHistory = pgTable("td_score_history", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull(),
@@ -831,6 +900,7 @@ export const tdScoreHistory = pgTable("td_score_history", {
 ]);
 
 // News sources configuration
+/** Drizzle ORM table definition for news sources. */
 export const newsSources = pgTable("news_sources", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull().unique(),
@@ -846,6 +916,7 @@ export const newsSources = pgTable("news_sources", {
 });
 
 // Scraping jobs log
+/** Drizzle ORM table definition for scraping jobs. */
 export const scrapingJobs = pgTable("scraping_jobs", {
   id: serial("id").primaryKey(),
   jobType: varchar("job_type", { length: 50 }).notNull(), // 'daily_scrape', 'manual_scrape', etc.
@@ -868,10 +939,15 @@ export const scrapingJobs = pgTable("scraping_jobs", {
 });
 
 // Zod schemas for validation
+/** Zod insert-schema for creating a news article record. */
 export const insertNewsArticleSchema = createInsertSchema(newsArticles).omit({ id: true, createdAt: true, fetchedAt: true });
+/** Zod insert-schema for creating a TD score record. */
 export const insertTDScoreSchema = createInsertSchema(tdScores).omit({ id: true, createdAt: true, lastUpdated: true });
+/** Zod insert-schema for creating a TD score history record. */
 export const insertTDScoreHistorySchema = createInsertSchema(tdScoreHistory).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a news source record. */
 export const insertNewsSourceSchema = createInsertSchema(newsSources).omit({ id: true, createdAt: true });
+/** Zod insert-schema for creating a scraping job record. */
 export const insertScrapingJobSchema = createInsertSchema(scrapingJobs).omit({ id: true, startedAt: true });
 
 // TypeScript types
@@ -896,6 +972,7 @@ export type InsertScrapingJob = z.infer<typeof insertScrapingJobSchema>;
 // ============================================
 
 // Unified TD Scores table (main authoritative scores)
+/** Drizzle ORM table definition for unified TD scores. */
 export const unifiedTDScores = pgTable("unified_td_scores", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).unique().notNull(),
@@ -966,6 +1043,7 @@ export const unifiedTDScores = pgTable("unified_td_scores", {
 ]);
 
 // Unified Score History table
+/** Drizzle ORM table definition for unified score history. */
 export const unifiedScoreHistory = pgTable("unified_score_history", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull(),
@@ -994,6 +1072,7 @@ export const unifiedScoreHistory = pgTable("unified_score_history", {
 ]);
 
 // User TD Ratings table
+/** Drizzle ORM table definition for user TD ratings. */
 export const userTDRatings = pgTable("user_td_ratings", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id", { length: 100 }).notNull(),
@@ -1010,6 +1089,7 @@ export const userTDRatings = pgTable("user_td_ratings", {
 ]);
 
 // Score calculation log
+/** Drizzle ORM table definition for score calculation log. */
 export const scoreCalculationLog = pgTable("score_calculation_log", {
   id: serial("id").primaryKey(),
   calculationType: varchar("calculation_type", { length: 50 }).notNull(),
@@ -1024,6 +1104,7 @@ export const scoreCalculationLog = pgTable("score_calculation_log", {
 });
 
 // Component weights configuration
+/** Drizzle ORM table definition for score component weights. */
 export const scoreComponentWeights = pgTable("score_component_weights", {
   id: serial("id").primaryKey(),
   componentName: varchar("component_name", { length: 50 }).unique().notNull(),
@@ -1034,6 +1115,7 @@ export const scoreComponentWeights = pgTable("score_component_weights", {
 });
 
 // Zod schemas for unified scoring
+/** Zod insert-schema for creating a unified TD score record. */
 export const insertUnifiedTDScoreSchema = createInsertSchema(unifiedTDScores).omit({ 
   id: true, 
   createdAt: true, 
@@ -1041,11 +1123,13 @@ export const insertUnifiedTDScoreSchema = createInsertSchema(unifiedTDScores).om
   lastCalculated: true 
 });
 
+/** Zod insert-schema for creating a unified score history record. */
 export const insertUnifiedScoreHistorySchema = createInsertSchema(unifiedScoreHistory).omit({ 
   id: true, 
   createdAt: true 
 });
 
+/** Zod insert-schema for creating a user TD rating record. */
 export const insertUserTDRatingSchema = createInsertSchema(userTDRatings).omit({ 
   id: true, 
   createdAt: true, 
@@ -1067,6 +1151,7 @@ export type InsertUserTDRating = z.infer<typeof insertUserTDRatingSchema>;
 // Real-time parliamentary data
 // ============================================
 
+/** Drizzle ORM table definition for parliamentary activity. */
 export const parliamentaryActivity = pgTable("parliamentary_activity", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).unique().notNull(),
@@ -1093,6 +1178,7 @@ export const parliamentaryActivity = pgTable("parliamentary_activity", {
   index("idx_parliamentary_updated").on(table.updatedAt),
 ]);
 
+/** Zod insert-schema for creating a parliamentary activity record. */
 export const insertParliamentaryActivitySchema = createInsertSchema(parliamentaryActivity).omit({
   id: true,
   createdAt: true,
@@ -1107,6 +1193,7 @@ export type InsertParliamentaryActivity = z.infer<typeof insertParliamentaryActi
 // AI researches each TD and assigns fair baseline
 // ============================================
 
+/** Drizzle ORM table definition for TD historical baselines. */
 export const tdHistoricalBaselines = pgTable("td_historical_baselines", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).unique().notNull(),
@@ -1141,6 +1228,7 @@ export const tdHistoricalBaselines = pgTable("td_historical_baselines", {
   index("idx_historical_baselines_research_date").on(table.researchDate),
 ]);
 
+/** Zod insert-schema for creating a TD historical baseline record. */
 export const insertTdHistoricalBaselineSchema = createInsertSchema(tdHistoricalBaselines).omit({
   id: true,
   createdAt: true,
@@ -1155,6 +1243,7 @@ export type InsertTdHistoricalBaseline = z.infer<typeof insertTdHistoricalBaseli
 // Tracks announcements and verifies delivery
 // ============================================
 
+/** Drizzle ORM table definition for policy promises. */
 export const policyPromises = pgTable("policy_promises", {
   id: serial("id").primaryKey(),
   politicianName: varchar("politician_name", { length: 255 }).notNull(),
@@ -1205,6 +1294,7 @@ export const policyPromises = pgTable("policy_promises", {
   index("idx_policy_promises_next_check").on(table.nextCheckDate),
 ]);
 
+/** Zod insert-schema for creating a policy promise record. */
 export const insertPolicyPromiseSchema = createInsertSchema(policyPromises).omit({
   id: true,
   createdAt: true,
@@ -1218,6 +1308,7 @@ export type InsertPolicyPromise = z.infer<typeof insertPolicyPromiseSchema>;
 // SHADOW CABINET (Level 10 Agent System)
 // ============================================
 
+/** Drizzle ORM table definition for shadow cabinet analyses. */
 export const shadowCabinetAnalyses = pgTable("shadow_cabinet_analyses", {
   id: serial("id").primaryKey(),
   articleTitle: text("article_title").notNull(),
@@ -1236,6 +1327,7 @@ export const shadowCabinetAnalyses = pgTable("shadow_cabinet_analyses", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+/** Zod insert-schema for creating a shadow cabinet analysis record. */
 export const insertShadowCabinetAnalysisSchema = createInsertSchema(shadowCabinetAnalyses).omit({ 
   id: true, 
   createdAt: true 
@@ -1248,6 +1340,7 @@ export type InsertShadowCabinetAnalysis = z.infer<typeof insertShadowCabinetAnal
 // QA AUDITS (System Health)
 // ============================================
 
+/** Drizzle ORM table definition for QA audits. */
 export const qaAudits = pgTable("qa_audits", {
   id: serial("id").primaryKey(),
   auditType: text("audit_type").notNull(), // 'internal_consistency', 'external_truth'
@@ -1256,6 +1349,7 @@ export const qaAudits = pgTable("qa_audits", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+/** Zod insert-schema for creating a QA audit record. */
 export const insertQaAuditSchema = createInsertSchema(qaAudits).omit({ 
   id: true, 
   createdAt: true 

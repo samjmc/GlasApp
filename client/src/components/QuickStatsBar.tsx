@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { queryKeys } from '@/lib/queryKeys';
 import { Badge } from '@/components/ui/badge';
 
+/** Sticky bar showing at-a-glance stats. */
 export function QuickStatsBar() {
   const { data } = useQuery({
     queryKey: queryKeys.td.stats(),

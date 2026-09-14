@@ -35,6 +35,7 @@ const getOptionEmoji = (index: number, optionText: string): string => {
   return positionEmojis[index % positionEmojis.length];
 };
 
+/** Multiple-choice voting control with selectable options. */
 export function MultipleChoiceVoteControl({
   options,
   selectedOption,

@@ -350,6 +350,7 @@ async function fetchRecentDebateSnippets(topic: string): Promise<DebateSnippet[]
   }
 }
 
+/** Policy stance harvesting service methods. */
 export const PolicyStanceHarvester = {
   async extractFromArticle(articleId: number, article: ArticleForOpportunity, policyTopic: string) {
     const stances = await callLLMForStances(article.title, article.content, policyTopic);

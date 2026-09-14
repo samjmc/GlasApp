@@ -534,6 +534,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 // Export service object
+/** Historical baseline research service methods. */
 export const HistoricalBaselineService = {
   researchTDBaseline,
   researchAllTDBaselines,

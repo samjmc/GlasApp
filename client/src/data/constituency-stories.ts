@@ -6,6 +6,7 @@ export interface ConstituencyStory {
   economicFocus?: string;
 }
 
+/** Static historical and political stories keyed by constituency. */
 export const constituencyStories: Record<string, ConstituencyStory> = {
   "Carlow–Kilkenny": {
     historicalFact: "Carlow-Kilkenny has been a traditional Fianna Fáil stronghold, consistently electing TDs from the party since the 1930s.",

@@ -481,6 +481,7 @@ function shouldForceCreate(topic: string): boolean {
  * Question Validation
  * Ensures questions follow scenario-based framing rules
  */
+/** Validate scenario-based framing rules for a policy question. */
 export function validateQuestion(
   question: string,
   options: string[]
@@ -664,6 +665,7 @@ interface GenerateOptions {
   force?: boolean;
 }
 
+/** Policy opportunity generation service methods. */
 export const PolicyOpportunityService = {
   async generateAndSave(
     articleId: number,

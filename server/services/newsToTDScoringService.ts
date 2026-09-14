@@ -690,6 +690,7 @@ export async function processArticleById(
   console.log(`\n✅ Article processed. TDs updated: ${stats.tdsUpdated}`);
 }
 
+/** News-to-TD scoring pipeline service methods. */
 export const NewsToTDScoringService = {
   processUnprocessedArticles,
   processArticleById

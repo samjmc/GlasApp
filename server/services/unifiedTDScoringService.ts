@@ -154,6 +154,7 @@ export async function calculateNewsELO(tdName: string): Promise<number> {
 /**
  * Calculate parliamentary activity ELO for a TD
  */
+/** Calculate parliamentary activity ELO for a TD. */
 export function calculateParliamentaryELO(tdName: string): number {
   const normalizedName = tdName.toLowerCase();
   const metrics = parliamentaryData[normalizedName];
@@ -560,6 +561,7 @@ export async function getTDScore(tdName: string): Promise<UnifiedTDScore | null>
   return data as UnifiedTDScore | null;
 }
 
+/** Unified TD scoring service methods. */
 export const UnifiedTDScoringService = {
   calculateNewsELO,
   calculateParliamentaryELO,

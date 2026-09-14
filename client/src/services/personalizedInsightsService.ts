@@ -24,6 +24,7 @@ export interface PersonalizedInsightsParams {
 /**
  * Fetches personalized insights based on user political position and constituency
  */
+/** Fetches personalized insights for a user based on political position and constituency. */
 export const getPersonalizedInsights = async (
   params: PersonalizedInsightsParams
 ): Promise<Insight[]> => {

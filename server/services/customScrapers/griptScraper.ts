@@ -264,6 +264,7 @@ export async function testGriptScraper(): Promise<void> {
   }
 }
 
+/** Scraper for Gript news articles. */
 export const GriptScraper = {
   scrapeLatestArticles: scrapeGriptLatestArticles,
   scrapeArticleContent: scrapeGriptArticleContent,

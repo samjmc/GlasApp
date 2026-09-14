@@ -41,9 +41,14 @@ declare module 'react-simple-maps' {
     children?: React.ReactNode;
   }
   
+  /** ComposableMap component type declaration for react-simple-maps. */
   export const ComposableMap: React.FC<ComposableMapProps>;
+  /** ZoomableGroup component type declaration for react-simple-maps. */
   export const ZoomableGroup: React.FC<ZoomableGroupProps>;
+  /** Geographies component type declaration for react-simple-maps. */
   export const Geographies: React.FC<GeographiesProps>;
+  /** Geography component type declaration for react-simple-maps. */
   export const Geography: React.FC<GeographyProps>;
+  /** Marker component type declaration for react-simple-maps. */
   export const Marker: React.FC<MarkerProps>;
 }

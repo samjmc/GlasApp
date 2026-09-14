@@ -24,6 +24,7 @@ interface DimensionExplanationEditorProps {
   onOpenChange: (open: boolean) => void;
 }
 
+/** Modal editor for a party's dimension explanations across tabs. */
 export function DimensionExplanationEditor({
   partyId,
   partyName,

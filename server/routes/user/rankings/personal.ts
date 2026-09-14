@@ -14,6 +14,7 @@ const router = Router();
 /**
  * Format user profile with ideology labels and engagement metrics
  */
+/** Format a user profile with ideology and engagement metrics. */
 export function formatUserProfilePayload(profile: unknown) {
   if (!profile) return null;
 
@@ -205,6 +206,7 @@ export function formatUserProfilePayload(profile: unknown) {
 /**
  * Format rankings response - standardized ranking output
  */
+/** Format personal rankings into a standardized response shape. */
 export function formatRankingsResponse(rankings: unknown[]) {
   return rankings.map((r) => ({
     name: r.politician_name,

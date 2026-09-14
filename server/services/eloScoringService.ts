@@ -28,6 +28,7 @@ export interface ELOUpdate {
 /**
  * Calculate ELO change based on impact score
  */
+/** Compute ELO rating change for a matchup. */
 export function calculateELOChange(
   impactScore: number, // -10 to +10
   credibilityScore: number, // 0 to 1
@@ -50,6 +51,7 @@ export function calculateELOChange(
 /**
  * Update TD scores based on analysis
  */
+/** Update TD scores based on an article analysis. */
 export function updateTDScores(
   currentScores: TDScore,
   analysis: ArticleAnalysis,
@@ -118,6 +120,7 @@ export function updateTDScores(
 /**
  * Calculate TD rankings
  */
+/** Calculate national rankings and percentiles for TDs. */
 export function calculateRankings(allScores: TDScore[]): Map<string, { national: number; percentile: number }> {
   // Sort by overall ELO
   const sorted = [...allScores].sort((a, b) => b.overall_elo - a.overall_elo);
@@ -140,6 +143,7 @@ export function calculateRankings(allScores: TDScore[]): Map<string, { national:
 /**
  * Get score rating category
  */
+/** Get rating category, color, and description for an ELO score. */
 export function getScoreRating(elo: number): {
   rating: string;
   color: string;
@@ -187,6 +191,7 @@ export function getScoreRating(elo: number): {
 /**
  * Calculate article age in days
  */
+/** Calculate article age in days. */
 export function getArticleAge(publishedDate: Date): number {
   const now = new Date();
   const diffTime = Math.abs(now.getTime() - publishedDate.getTime());
@@ -194,6 +199,7 @@ export function getArticleAge(publishedDate: Date): number {
   return diffDays;
 }
 
+/** ELO scoring service methods facade. */
 export const ELOScoringService = {
   calculateELOChange,
   updateTDScores,

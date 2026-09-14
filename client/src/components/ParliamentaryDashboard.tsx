@@ -58,6 +58,7 @@ interface PartyStats {
   }>;
 }
 
+/** Dashboard of parliamentary statistics and activity across parties. */
 export function ParliamentaryDashboard() {
   const [selectedPartyId, setSelectedPartyId] = useState<string>('');
 

@@ -18,6 +18,7 @@ function getRegionFlagUrl(code?: string | null) {
   return REGION_FLAG_IMAGE[code] ?? null;
 }
 
+/** Dropdown control for switching the active region. */
 export function RegionSwitcher() {
   const { regionCode, availableRegions, selectRegion, status } =
     useRegion();

@@ -79,6 +79,7 @@ export async function sendSMS(options: SendSMSOptions): Promise<SMSResponse> {
  * 
  * @returns Boolean indicating if Twilio is configured
  */
+/** Whether the Twilio client and sender number are configured. */
 export function isTwilioConfigured(): boolean {
   return !!(client && fromNumber);
 }

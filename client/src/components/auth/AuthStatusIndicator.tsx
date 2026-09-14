@@ -8,6 +8,7 @@ interface AuthStatusIndicatorProps {
   loading: boolean;
 }
 
+/** Badge indicating current authentication status. */
 export function AuthStatusIndicator({ user, loading }: AuthStatusIndicatorProps) {
   if (loading) {
     return (

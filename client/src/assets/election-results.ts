@@ -1,6 +1,7 @@
 // Election results data for Irish constituencies
 // Based on sample data from https://gist.github.com/cavedave/f043996ec398267c7a558a95c4dc2601
 
+/** Static sample election results keyed by constituency seat. */
 export const ELECTION_RESULTS: Record<string, string> = {
   // Kerry
   "Kerry1": "Independent",
@@ -48,6 +49,7 @@ export const ELECTION_RESULTS: Record<string, string> = {
 };
 
 // Party colors for visualization
+/** Hex color codes for each party used in map visualizations. */
 export const PARTY_COLORS: Record<string, string> = {
   "Fianna Fáil": "#10823A", // Green
   "Fine Gael": "#0051BA", // Blue
@@ -62,6 +64,7 @@ export const PARTY_COLORS: Record<string, string> = {
 };
 
 // Function to get party color
+/** Returns the hex color for a party, falling back to "Other" if unknown. */
 export function getPartyColor(partyName: string): string {
   return PARTY_COLORS[partyName] || PARTY_COLORS["Other"];
 }

@@ -17,6 +17,7 @@ const CACHE_EXPIRY = 24 * 60 * 60 * 1000;
  * @param constituencyName - The name of the constituency
  * @returns The cached story if available, null otherwise
  */
+/** Returns a cached constituency story if present and unexpired, otherwise null. */
 export function getCachedStory(constituencyName: string): ConstituencyStory | null {
   try {
     // Try to get from localStorage
@@ -49,6 +50,7 @@ export function getCachedStory(constituencyName: string): ConstituencyStory | nu
  * @param constituencyName - The name of the constituency
  * @param story - The story data to cache
  */
+/** Saves a constituency story to the localStorage cache. */
 export function cacheStory(constituencyName: string, story: ConstituencyStory): void {
   try {
     // Try to get existing cache data
@@ -77,6 +79,7 @@ export function cacheStory(constituencyName: string, story: ConstituencyStory): 
 /**
  * Clears all cached stories
  */
+/** Clears all cached constituency stories from localStorage. */
 export function clearStoryCache(): void {
   localStorage.removeItem(STORY_CACHE_KEY);
 }

@@ -11,6 +11,7 @@ import {
 import { getVotingRecord, getRecentVotes, getVotingStats, getRebelVotes, getVotesByCategory, getPolicyPositions } from "./politicianAgent";
 
 // Define the tools for OpenAI
+/** OpenAI function tool definitions for chat tools. */
 export const chatToolsDefinition = [
   {
     type: "function",
@@ -170,6 +171,7 @@ export const chatToolsDefinition = [
 ];
 
 // Implementation of the tools
+/** Implementations of the chat tool functions. */
 export const chatToolsImplementation = {
   async search_politicians({ query }: { query: string }) {
     console.log(`Tool: Searching politicians for '${query}'`);

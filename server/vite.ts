@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename);
 
 const viteLogger = createLogger();
 
+/** Log a message with a timestamp and source tag. */
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
@@ -95,6 +96,7 @@ export async function setupVite(app: Express, server: Server) {
   });
 }
 
+/** Serve the built client from the public directory. */
 export function serveStatic(app: Express) {
   const distPath = path.resolve(__dirname, "public");
 

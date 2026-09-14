@@ -6,6 +6,7 @@ import { sendSMS } from './twilioService';
  * @param length Length of the verification code (default: 6)
  * @returns A numeric verification code as string
  */
+/** Generate a random numeric verification code. */
 export function generateVerificationCode(length = 6): string {
   const characters = '0123456789';
   let code = '';
@@ -24,6 +25,7 @@ export function generateVerificationCode(length = 6): string {
  * @param minutes Minutes until expiration (default: 10)
  * @returns Date object representing the expiration time
  */
+/** Get the expiration date for a verification code. */
 export function getVerificationExpiration(minutes = 10): Date {
   const expirationDate = new Date();
   expirationDate.setMinutes(expirationDate.getMinutes() + minutes);
@@ -75,6 +77,7 @@ export async function sendVerificationCode(phoneNumber: string, code: string): P
  * @param expirationTime The expiration time of the code
  * @returns Boolean indicating if the code is valid
  */
+/** Validate a verification code against stored code and expiration. */
 export function validateVerificationCode(
   storedCode: string | null | undefined,
   providedCode: string,

@@ -11,6 +11,7 @@ export interface IdeologicalDimensions {
 }
 
 // Default dimensions with neutral values
+/** Default ideological dimensions with neutral (0) values. */
 export const defaultDimensions: IdeologicalDimensions = {
   economic: 0,
   social: 0,
@@ -112,6 +113,7 @@ export interface DimensionDisplayConfig {
 }
 
 // Configuration for displaying the dimensions in the UI
+/** UI display configuration for each ideological dimension. */
 export const dimensionDisplayConfig: DimensionDisplayConfig[] = [
   {
     id: 'economic',
@@ -180,6 +182,7 @@ export const dimensionDisplayConfig: DimensionDisplayConfig[] = [
 ];
 
 // Helper functions for multi-dimensional analysis
+/** Get a text description for a dimension score. */
 export const getDimensionDescription = (dimensionId: keyof IdeologicalDimensions, score: number): string => {
   const dimension = dimensionDisplayConfig.find(d => d.id === dimensionId);
   if (!dimension) return '';

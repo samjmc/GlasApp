@@ -7,6 +7,7 @@ import { useOnlineStatus } from '@/hooks/usePWA';
 import { WifiOff, Wifi } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+/** Banner indicating when the user loses or regains connection. */
 export function OfflineIndicator() {
   const isOnline = useOnlineStatus();
   const [wasOffline, setWasOffline] = useState(false);

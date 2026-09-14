@@ -282,6 +282,7 @@ export async function testBusinessPostScraper(): Promise<void> {
   }
 }
 
+/** Scraper for Business Post news articles. */
 export const BusinessPostScraper = {
   scrapeLatestArticles: scrapeBusinessPostLatestArticles,
   scrapeArticleContent: scrapeBusinessPostArticleContent,

@@ -282,6 +282,7 @@ export async function batchCheckForDuplicates(
   }
 }
 
+/** Title deduplication service methods. */
 export const TitleDeduplicationService = {
   checkForDuplicate,
   batchCheckForDuplicates,

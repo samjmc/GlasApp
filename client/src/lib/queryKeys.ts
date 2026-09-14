@@ -8,6 +8,7 @@
  * first element of each key is the API path (or a stable namespace) exactly as
  * used today.
  */
+/** Central query-key factory for all React Query cache keys. */
 export const queryKeys = {
   td: {
     stats: () => ["td-stats"] as const,

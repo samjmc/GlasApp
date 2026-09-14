@@ -53,6 +53,7 @@ export interface PolicyPromise {
 /**
  * Detect if article is an ANNOUNCEMENT vs ACHIEVEMENT
  */
+/** Detect whether an article is an announcement or an achievement. */
 export function detectAnnouncementVsAchievement(article: unknown, analysis: unknown): {
   isAnnouncement: boolean;
   isAchievement: boolean;
@@ -95,6 +96,7 @@ export function detectAnnouncementVsAchievement(article: unknown, analysis: unkn
  * Reduce score impact for announcements
  * Only give full credit for delivered results
  */
+/** Reduce score impact for announcements, only crediting delivered results. */
 export function adjustScoreForAnnouncementBias(
   analysis: unknown,
   article: unknown
@@ -420,6 +422,7 @@ async function applyScoreAdjustment(tdName: string, adjustment: number, reason: 
   }
 }
 
+/** Outcome tracking service methods. */
 export const OutcomesTrackingService = {
   detectAnnouncementVsAchievement,
   adjustScoreForAnnouncementBias,

@@ -37,6 +37,7 @@ interface PersonalRanking {
   overallScore: number;
 }
 
+/** Tab showing the user's personalized rankings. */
 export function PersonalRankingsTab() {
   const { user, isAuthenticated } = useAuth();
   const [, navigate] = useLocation();
