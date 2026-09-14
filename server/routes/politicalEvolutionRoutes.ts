@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { storage } from '../storage';
 import { isAuthenticated } from '../replitAuth';
 import { insertPoliticalEvolutionSchema } from '@shared/schema';
+import { callChatCompletion } from '../services/aiService';
 
 const router = Router();
 
@@ -244,36 +245,24 @@ router.post('/analysis', isAuthenticated, async (req: Request, res: Response) =>
     // Prepare data for OpenAI analysis
     const analysisPrompt = createPoliticalEvolutionPrompt(evolutionData);
     
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a political scientist analyzing political evolution data. Provide insightful, objective analysis of political beliefs and their changes over time. Focus on patterns, trends, and meaningful interpretations while remaining politically neutral.'
-          },
-          {
-            role: 'user',
-            content: analysisPrompt
-          }
-        ],
-        response_format: { type: "json_object" },
-        max_tokens: 1000,
-        temperature: 0.7
-      }),
-    });
+    const completion = await callChatCompletion({
+      model: 'gpt-4o',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a political scientist analyzing political evolution data. Provide insightful, objective analysis of political beliefs and their changes over time. Focus on patterns, trends, and meaningful interpretations while remaining politically neutral.'
+        },
+        {
+          role: 'user',
+          content: analysisPrompt
+        }
+      ],
+      response_format: { type: "json_object" },
+      max_tokens: 1000,
+      temperature: 0.7
+    }, { operation: 'politicalEvolution' });
 
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status} ${response.statusText}`);
-    }
-
-    const aiResponse = await response.json();
-    const analysis = JSON.parse(aiResponse.choices[0].message.content);
+    const analysis = JSON.parse(completion.choices[0].message.content);
 
     res.json({ success: true, data: analysis });
   } catch (error) {

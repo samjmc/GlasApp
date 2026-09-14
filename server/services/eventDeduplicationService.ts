@@ -11,16 +11,7 @@
  * Cost: ~$0.001-0.002 per batch (gpt-4o-mini, ~500-1000 tokens)
  */
 
-import OpenAI from "openai";
-
-let openai: OpenAI;
-
-function getOpenAI() {
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
-}
+import { callChatCompletion } from "./aiService.js";
 
 // Source reputation tiers (higher = more reputable)
 const SOURCE_REPUTATION: Record<string, number> = {
@@ -197,7 +188,7 @@ Return as JSON: { "clusters": [...] }
 `;
 
   try {
-    const response = await getOpenAI().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: CLUSTERING_PROMPT },
@@ -206,7 +197,7 @@ Return as JSON: { "clusters": [...] }
       response_format: { type: "json_object" },
       temperature: 0.2,
       max_tokens: 1500
-    });
+    }, { operation: 'eventClustering' });
     
     const result = JSON.parse(response.choices[0].message.content || '{"clusters": []}');
     const clusters: ClusterResult[] = (result.clusters || []).map((c: unknown) => ({

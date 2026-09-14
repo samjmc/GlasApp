@@ -9,36 +9,8 @@
  * - Public service record
  */
 
-import Anthropic from '@anthropic-ai/sdk';
-import OpenAI from 'openai';
+import { callAnthropicMessage, callChatCompletion, isAnthropicConfigured, isOpenAIConfigured } from './aiService.js';
 import { supabaseDb } from '../db';
-
-let anthropic: Anthropic | null = null;
-let openai: OpenAI | null = null;
-
-function getAnthropicClient(): Anthropic {
-  if (!anthropic) {
-    if (!process.env.ANTHROPIC_API_KEY) {
-      throw new Error('ANTHROPIC_API_KEY is required but not set. Baseline scoring features are disabled.');
-    }
-    anthropic = new Anthropic({ 
-      apiKey: process.env.ANTHROPIC_API_KEY 
-    });
-  }
-  return anthropic;
-}
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. Baseline scoring features are disabled.');
-    }
-    openai = new OpenAI({ 
-      apiKey: process.env.OPENAI_API_KEY 
-    });
-  }
-  return openai;
-}
 
 // ============================================
 // BASELINE SCORING GUIDELINES
@@ -249,8 +221,8 @@ export async function researchTDBaseline(
   console.log(`🔍 Researching historical baseline for ${tdName}...`);
   
   // Auto-detect which provider to use based on available API keys
-  const hasAnthropic = !!process.env.ANTHROPIC_API_KEY;
-  const hasOpenAI = !!process.env.OPENAI_API_KEY;
+  const hasAnthropic = isAnthropicConfigured();
+  const hasOpenAI = isOpenAIConfigured();
   
   let useProvider = options.useProvider;
   if (!useProvider) {
@@ -339,14 +311,14 @@ async function researchWithClaude(
   party: string
 ): Promise<HistoricalBaseline> {
   
-  const message = await getAnthropicClient().messages.create({
+  const message = await callAnthropicMessage({
     model: 'claude-sonnet-4-20250514',
     max_tokens: 4000,
     messages: [{
       role: 'user',
       content: BASELINE_SCORING_PROMPT(tdName, constituency, party)
     }]
-  });
+  }, { operation: 'claudeBaseline' });
   
   const responseText = message.content[0].type === 'text' 
     ? message.content[0].text 
@@ -374,7 +346,7 @@ async function researchWithGPT4(
   party: string
 ): Promise<HistoricalBaseline> {
   
-  const completion = await getOpenAIClient().chat.completions.create({
+  const completion = await callChatCompletion({
     model: 'gpt-4-turbo-preview',
     messages: [{
       role: 'user',
@@ -382,7 +354,7 @@ async function researchWithGPT4(
     }],
     temperature: 0.3,
     max_tokens: 4000
-  });
+  }, { operation: 'gpt4Baseline' });
   
   const responseText = completion.choices[0]?.message?.content || '';
   

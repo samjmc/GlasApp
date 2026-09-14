@@ -1,21 +1,6 @@
 import { Router, Request, Response } from 'express';
-import OpenAI from 'openai';
+import { callChatCompletion } from '../services/aiService';
 import { ConstituencyStory, getStoryFromCache, addStoryToCache } from './constituencyStoryCache';
-
-// Initialize OpenAI client lazily
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. Storytelling features are disabled.');
-    }
-    openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
-    });
-  }
-  return openai;
-}
 
 // Create router
 const router = Router();
@@ -37,7 +22,7 @@ async function generateConstituencyStory(
       .map(party => `${party.name}: ${party.percent}% of votes, ${party.seats || 0} seats`)
       .join('; ');
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024
       messages: [
         {
@@ -64,7 +49,7 @@ async function generateConstituencyStory(
       ],
       temperature: 0.7,
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'constituencyStory' });
 
     // Parse and return the JSON response
     if (response.choices[0].message.content) {
