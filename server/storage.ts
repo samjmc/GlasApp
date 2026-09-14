@@ -30,16 +30,16 @@ export interface IStorage {
   // User operations - updated for Replit Auth
   getUser(id: string): Promise<User | undefined>;
   upsertUser(userData: UpsertUser): Promise<User>;
-  createUser(userData: UpsertUser): Promise<User>;
-  updateUser(id: string, data: Partial<UpsertUser>): Promise<User>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  getUserByEmail(email: string): Promise<User | undefined>;
-  getUserByPhoneNumber(phoneNumber: string): Promise<User | undefined>;
+  createUser(userData: InsertUser): Promise<User>;
+  updateUser(id: string | number, updates: Record<string, any>): Promise<User>;
+  getUserByUsername(username: string | null | undefined): Promise<User | undefined>;
+  getUserByEmail(email: string | null | undefined): Promise<User | undefined>;
+  getUserByPhoneNumber(phoneNumber: string | null | undefined): Promise<User | undefined>;
 
   // Verification operations
-  setVerificationCode(id: string, code: string, expiresAt: Date): Promise<void>;
-  createEmailVerificationToken(userId: string, token: string, expiresAt: Date): Promise<void>;
-  getEmailVerificationToken(token: string): Promise<{userId: string; token: string; expiresAt: Date} | null>;
+  setVerificationCode(userId: string | number, code: string, expiresAt: Date): Promise<void>;
+  createEmailVerificationToken(data: InsertEmailVerificationToken): Promise<EmailVerificationToken>;
+  getEmailVerificationToken(token: string): Promise<EmailVerificationToken | undefined>;
   deleteEmailVerificationToken(token: string): Promise<void>;
 
   // Quiz and political evolution operations
@@ -83,96 +83,15 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
-  async createUser(userData: UpsertUser): Promise<User> {
-    // Alias for upsertUser - uses same insert logic with conflict resolution
-    return this.upsertUser(userData);
-  }
-
-  async updateUser(id: string, data: Partial<UpsertUser>): Promise<User> {
-    if (!db) throw new Error('Database not initialized');
-    const updateData = {
-      ...data,
-      updatedAt: new Date(),
-    };
-    const [user] = await db
-      .update(users)
-      .set(updateData)
-      .where(eq(users.id, id))
-      .returning();
-    if (!user) throw new Error(`User ${id} not found`);
-    return user;
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    if (!db) throw new Error('Database not initialized');
-    const [user] = await db
-      .select()
-      .from(users)
-      .where(eq(users.username, username));
-    return user || undefined;
-  }
-
-  async getUserByEmail(email: string): Promise<User | undefined> {
-    if (!db) throw new Error('Database not initialized');
-    const [user] = await db
-      .select()
-      .from(users)
-      .where(eq(users.email, email));
-    return user || undefined;
-  }
-
-  async getUserByPhoneNumber(phoneNumber: string): Promise<User | undefined> {
-    if (!db) throw new Error('Database not initialized');
-    const [user] = await db
-      .select()
-      .from(users)
-      .where(eq(users.phoneNumber, phoneNumber));
-    return user || undefined;
-  }
-
-  async setVerificationCode(id: string, code: string, expiresAt: Date): Promise<void> {
-    if (!db) throw new Error('Database not initialized');
-    await db
-      .update(users)
-      .set({
-        verificationCode: code,
-        verificationExpires: expiresAt,
-        updatedAt: new Date(),
-      })
-      .where(eq(users.id, id));
-  }
-
-  async createEmailVerificationToken(userId: string, token: string, expiresAt: Date): Promise<void> {
-    if (!db) throw new Error('Database not initialized');
-    await db
-      .insert(emailVerificationTokens)
-      .values({
-        userId,
-        token,
-        expiresAt,
-      })
-      .onConflictDoNothing();
-  }
-
-  async getEmailVerificationToken(token: string): Promise<{userId: string; token: string; expiresAt: Date} | null> {
-    if (!db) throw new Error('Database not initialized');
-    const [record] = await db
-      .select({
-        userId: emailVerificationTokens.userId,
-        token: emailVerificationTokens.token,
-        expiresAt: emailVerificationTokens.expiresAt,
-      })
-      .from(emailVerificationTokens)
-      .where(eq(emailVerificationTokens.token, token));
-    return record || null;
-  }
-
-  async deleteEmailVerificationToken(token: string): Promise<void> {
-    if (!db) throw new Error('Database not initialized');
-    await db
-      .delete(emailVerificationTokens)
-      .where(eq(emailVerificationTokens.token, token));
-  }
+  // NOTE: createUser, updateUser, getUserByUsername, getUserByEmail,
+  // getUserByPhoneNumber, setVerificationCode, createEmailVerificationToken,
+  // getEmailVerificationToken, and deleteEmailVerificationToken are implemented
+  // further below (with JSDoc) — that implementation matches the actual call
+  // signatures used by server/services/authService.ts and
+  // server/routes/authRoutes.ts (object-arg createEmailVerificationToken,
+  // numeric-or-string userId, null-safe lookups). Removed the duplicate,
+  // incompatible-signature versions that used to live here to resolve the
+  // rebase conflict between main and test-gate-fix.
 
   // Quiz and political evolution operations - stub implementations
   async saveQuizResult(result: QuizResultInput): Promise<ApiResponse<QuizResult>> {
