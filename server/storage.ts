@@ -6,6 +6,7 @@ import {
   emailVerificationTokens,
   twoFactorTokens,
   phoneVerificationTokens,
+  emailVerificationTokens,
   userActivity,
   type User,
   type InsertUser,
@@ -13,6 +14,8 @@ import {
   type PartySentimentVote,
   type PoliticalEvolution,
   type QuizResult,
+  type EmailVerificationToken,
+  type InsertEmailVerificationToken,
 } from "@shared/schema";
 import {
   type PoliticalEvolutionInput,
@@ -21,6 +24,7 @@ import {
 } from "@shared/types";
 import { db } from "./db";
 import { eq, sql, and, desc, lte, gte } from "drizzle-orm";
+import { randomUUID } from "crypto";
 
 // Interface for storage operations
 export interface IStorage {
@@ -470,6 +474,106 @@ export class DatabaseStorage implements IStorage {
       .from(users)
       .where(eq(users.role, 'bot'));
     return bots;
+  }
+
+  /**
+   * Retrieve a user by their username. Used for registration uniqueness checks and login lookup.
+   */
+  async getUserByUsername(username: string | null | undefined): Promise<User | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    if (!username) return undefined;
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  /**
+   * Retrieve a user by their email address. Used for registration uniqueness checks.
+   */
+  async getUserByEmail(email: string | null | undefined): Promise<User | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    if (!email) return undefined;
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user || undefined;
+  }
+
+  /**
+   * Create a new user record. Generates the primary key since the users table has no default id generator.
+   */
+  async createUser(userData: InsertUser): Promise<User> {
+    if (!db) throw new Error('Database not initialized');
+    const [user] = await db
+      .insert(users)
+      .values({ id: randomUUID(), ...userData })
+      .returning();
+    return user;
+  }
+
+  /**
+   * Update arbitrary fields on an existing user record (e.g. profile edits, verification flags).
+   */
+  async updateUser(id: string | number, updates: Record<string, any>): Promise<User> {
+    if (!db) throw new Error('Database not initialized');
+    const [user] = await db
+      .update(users)
+      .set({ ...updates, updatedAt: new Date() })
+      .where(eq(users.id, String(id)))
+      .returning();
+    return user;
+  }
+
+  /**
+   * Retrieve a user by their phone number. Used to prevent duplicate phone registration.
+   */
+  async getUserByPhoneNumber(phoneNumber: string | null | undefined): Promise<User | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    if (!phoneNumber) return undefined;
+    const [user] = await db.select().from(users).where(eq(users.phoneNumber, phoneNumber));
+    return user || undefined;
+  }
+
+  /**
+   * Store a phone/SMS verification code and its expiration time on the user record.
+   */
+  async setVerificationCode(userId: string | number, code: string, expiresAt: Date): Promise<void> {
+    if (!db) throw new Error('Database not initialized');
+    await db
+      .update(users)
+      .set({ verificationCode: code, verificationExpires: expiresAt, updatedAt: new Date() })
+      .where(eq(users.id, String(userId)));
+  }
+
+  /**
+   * Create an email verification token for a newly registered user.
+   */
+  async createEmailVerificationToken(data: InsertEmailVerificationToken): Promise<EmailVerificationToken> {
+    if (!db) throw new Error('Database not initialized');
+    const [token] = await db
+      .insert(emailVerificationTokens)
+      .values(data)
+      .returning();
+    return token;
+  }
+
+  /**
+   * Retrieve an email verification token record by its token string.
+   */
+  async getEmailVerificationToken(token: string): Promise<EmailVerificationToken | undefined> {
+    if (!db) throw new Error('Database not initialized');
+    const [result] = await db
+      .select()
+      .from(emailVerificationTokens)
+      .where(eq(emailVerificationTokens.token, token));
+    return result || undefined;
+  }
+
+  /**
+   * Delete an email verification token after it has been used or has expired.
+   */
+  async deleteEmailVerificationToken(token: string): Promise<void> {
+    if (!db) throw new Error('Database not initialized');
+    await db
+      .delete(emailVerificationTokens)
+      .where(eq(emailVerificationTokens.token, token));
   }
 }
 
