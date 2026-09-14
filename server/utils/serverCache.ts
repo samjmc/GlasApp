@@ -1,16 +1,10 @@
 /**
  * Server-side Cache Utility
- * Uses node-cache for in-memory caching of expensive database queries
+ * Delegates to the shared cache adapter (memory by default, Redis when
+ * REDIS_URL is set) for in-memory/distributed caching of expensive queries.
  */
 
-import NodeCache from 'node-cache';
-
-// Create cache instance with default TTL of 5 minutes
-const cache = new NodeCache({
-  stdTTL: 300, // 5 minutes default
-  checkperiod: 60, // Check for expired keys every 60 seconds
-  useClones: false // Don't clone objects (faster, but be careful with mutations)
-});
+import { cache } from '../services/cacheService';
 
 // Cache keys
 export const CACHE_KEYS = {
@@ -36,7 +30,7 @@ export const CACHE_TTL = {
  * Get cached data or fetch from source
  * @param key Cache key
  * @param fetchFn Function to fetch data if not cached
- * @param ttl Time to live in seconds (optional, uses default if not provided)
+ * @param ttl Time to live in seconds (optional, defaults to 5 minutes)
  */
 export async function getCachedOrFetch<T>(
   key: string,
@@ -44,76 +38,63 @@ export async function getCachedOrFetch<T>(
   ttl?: number
 ): Promise<T> {
   // Try to get from cache
-  const cached = cache.get<T>(key);
-  if (cached !== undefined) {
+  const cached = await cache.get<T>(key);
+  if (cached !== null) {
     console.log(`📦 Cache HIT: ${key}`);
     return cached;
   }
 
   console.log(`🔄 Cache MISS: ${key} - fetching from source...`);
-  
+
   // Fetch from source
   const data = await fetchFn();
-  
+
   // Store in cache
-  if (ttl) {
-    cache.set(key, data, ttl);
-  } else {
-    cache.set(key, data);
-  }
-  
-  console.log(`💾 Cached: ${key} (TTL: ${ttl || 300}s)`);
-  
+  await cache.set(key, data, ttl ?? CACHE_TTL.MEDIUM);
+
+  console.log(`💾 Cached: ${key} (TTL: ${ttl ?? CACHE_TTL.MEDIUM}s)`);
+
   return data;
 }
 
 /**
  * Invalidate a specific cache key
  */
-export function invalidateCache(key: string): boolean {
+export async function invalidateCache(key: string): Promise<boolean> {
   console.log(`🗑️ Invalidating cache: ${key}`);
-  return cache.del(key) > 0;
+  await cache.del(key);
+  return true;
 }
 
 /**
  * Invalidate all cache keys matching a prefix
  */
-export function invalidateCacheByPrefix(prefix: string): number {
-  const keys = cache.keys().filter(k => k.startsWith(prefix));
+export async function invalidateCacheByPrefix(prefix: string): Promise<number> {
+  const keys = (await cache.keys()).filter(k => k.startsWith(prefix));
   console.log(`🗑️ Invalidating ${keys.length} cache keys with prefix: ${prefix}`);
-  return cache.del(keys);
+  await Promise.all(keys.map(key => cache.del(key)));
+  return keys.length;
 }
 
 /**
  * Clear entire cache
  */
-export function clearAllCache(): void {
+export async function clearAllCache(): Promise<void> {
   console.log('🗑️ Clearing entire cache');
-  cache.flushAll();
+  await cache.clear();
 }
 
 /**
  * Get cache statistics
  */
-export function getCacheStats() {
-  const stats = cache.getStats();
+export async function getCacheStats() {
+  const stats = await cache.getStats();
   return {
-    keys: cache.keys().length,
+    keys: stats.size,
     hits: stats.hits,
     misses: stats.misses,
-    hitRate: stats.hits + stats.misses > 0 
+    hitRate: stats.hits + stats.misses > 0
       ? ((stats.hits / (stats.hits + stats.misses)) * 100).toFixed(1) + '%'
       : 'N/A'
   };
 }
-
-export default cache;
-
-
-
-
-
-
-
-
-
