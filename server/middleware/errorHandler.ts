@@ -86,14 +86,15 @@ export const errorHandler = (
     );
   }
 
-  // Unknown error - don't leak details in production
-  const isProduction = process.env.NODE_ENV === 'production';
+  // Unknown error - don't leak details to clients outside development.
+  // formatError() additionally strips `details` whenever NODE_ENV=production.
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
   return res.status(500).json(
     formatError(
       'INTERNAL_ERROR',
-      isProduction ? ErrorCodes.INTERNAL_ERROR : err.message,
-      isProduction ? undefined : { stack: err.stack }
+      isDevelopment ? err.message : ErrorCodes.INTERNAL_ERROR,
+      isDevelopment ? { stack: err.stack } : undefined
     )
   );
 };
