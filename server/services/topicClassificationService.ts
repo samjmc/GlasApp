@@ -66,7 +66,10 @@ export const TopicClassificationService = {
     const cached = cache.get<TopicClassificationResult>(key);
     if (cached) return cached;
 
-    if (!isOpenAIConfigured()) return null;
+    if (!isOpenAIConfigured()) {
+      console.warn('⚠️  OPENAI_API_KEY not set. Topic classifier disabled.');
+      return null;
+    }
 
     try {
       const response = await callResponses({

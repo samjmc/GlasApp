@@ -375,7 +375,7 @@ Respond with JSON:
     model: 'claude-sonnet-4-20250514',
     max_tokens: 2000,
     messages: [{ role: 'user', content: prompt }]
-  }, { operation: 'verifyDelivery' });
+  }, { operation: 'verifyDelivery', timeoutMs: 120_000 });
   
   const text = message.content[0].type === 'text' ? message.content[0].text : '';
   const jsonMatch = text.match(/\{[\s\S]*\}/);

@@ -132,8 +132,14 @@ Not an AI call (grep false positive, do not migrate):
   Twilio SMS API, not an AI SDK call.
 
 The wrapper exports `callResponses`/`callEmbedding`/`callImageGeneration`/
-`callAnthropicMessage` which are not yet consumed by any migrated call site;
-they were added to cover the SDK surface for follow-up migrations.
+`callAnthropicMessage` for the non-chat SDK surface; all four are consumed by
+migrated call sites (`callResponses` by policyStanceHarvester and
+topicClassificationService, `callEmbedding` by openaiService.generateEmbedding,
+`callImageGeneration` by newsImageGenerationService, `callAnthropicMessage` by
+historicalBaselineService and outcomesTrackingService). Only `callAI` (the
+convenience string-prompt helper) is currently unused by any call site; it is
+kept because DISPATCH_BRIEF's acceptance criteria require the
+`callAI(prompt, options)` export shape.
 
 ## Self-vetting checklist (per DISPATCH_BRIEF.md)
 
@@ -141,8 +147,10 @@ they were added to cover the SDK surface for follow-up migrations.
       wrapper shape (retries, timeout, fallback, logging) and traced migrated
       call sites back through their callers.
 - [x] Verified actual usage of each wrapper function by grep, not by name
-      assumption — `callChatCompletion` is the only wrapper consumed by migrated
-      sites (plus `callAI` used by some services).
+      assumption — `callChatCompletion`, `callResponses`, `callEmbedding`,
+      `callImageGeneration` and `callAnthropicMessage` are all consumed by
+      migrated sites; only `callAI` is unused (kept per the brief's required
+      export shape).
 - [x] No new abstractions/config beyond what was asked — the only added surface
       is the wrapper API + `AIOptions`; no new dependencies (`dotenv` reused).
 - [x] Changes kept inside the files-to-modify list plus extra direct-AI-SDK
