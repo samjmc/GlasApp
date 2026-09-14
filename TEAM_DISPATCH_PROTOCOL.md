@@ -114,24 +114,31 @@ CONTEXT:
 - Tech stack: React 18, Express, TypeScript, Drizzle ORM, Supabase
 
 STEP 0 — RESEARCH CURRENT BEST PRACTICES (mandatory, before writing any code):
-Before implementing, research the current (not training-data-stale) best
-practice for whatever this task touches — the specific library/framework
-version actually pinned in this repo's package.json, current security
-guidance, and current idiomatic patterns for this kind of change. Concretely:
+Before implementing, do an actual web search — do not rely on training-data
+memory, which goes stale. Concretely:
+- Search for a popular, actively-maintained open-source project or library
+  that already solves the same problem well (e.g. on GitHub — check stars,
+  recent commit activity, open issue health) and use it as a reference for
+  the shape of a good solution, even if you don't adopt it as a dependency.
+- Search Anthropic's engineering blog (anthropic.com/engineering or
+  anthropic.com/research) and any other primary-source engineering blog
+  relevant to the task (e.g. the framework's own blog) for current guidance
+  on structuring this kind of change — testing approach, error handling,
+  security posture, code organization.
 - Check the installed version of the relevant library/framework in
   package.json and look up that version's own docs/changelog — do not assume
   an older or newer API than what's actually installed.
 - If the task involves auth, data handling, SQL, or anything security-
-  sensitive, check for current (this year's) known vulnerabilities/advisories
+  sensitive, search for current (this year's) known vulnerabilities/advisories
   for the libraries involved.
 - If the task involves a pattern this codebase already uses elsewhere
   (Drizzle queries, React component structure, etc.), current best practice
   is usually "match the existing pattern" — don't introduce a newer library
   idiom that the rest of the codebase doesn't use, unless the task explicitly
   asks you to modernize that pattern.
-- Report what you checked and what you found in your delivery report's
-  "Research" section (see TEAM_DELIVERY_REPORT.md) — cite the version/doc/
-  advisory you checked, not just "I know this."
+- Report what you searched and what you found in your delivery report's
+  "Research" section (see TEAM_DELIVERY_REPORT.md) — cite the actual URLs/
+  repos/docs you looked at, not just "I know this."
 
 TASK OVERVIEW:
 [2-3 sentences describing what needs to be done]

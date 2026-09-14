@@ -24,16 +24,16 @@
 
 ## Research — Current Best Practices Checked
 
-[Mandatory. What version of the relevant library/framework is actually
-installed (check package.json, don't assume), what its current docs/
-changelog say, whether any current security advisories apply, and whether
-existing codebase patterns were followed instead of introducing a newer
-idiom the rest of the repo doesn't use. Cite what you checked — "npm view
-X versions", a specific docs URL, a specific advisory ID — not just "I
-know this."]
+[Mandatory. Requires an actual web search, not training-data memory. Cite
+real URLs/repos/docs, not "I know this."]
 
-- Library/framework + installed version: [name @ version]
-- What was checked: [docs/changelog/advisory checked, with source]
+- Reference implementation found (GitHub repo, stars/activity checked):
+  [repo URL + why it's a good reference, or "none needed for this task" with
+  justification]
+- Engineering guidance checked (Anthropic engineering blog / framework's own
+  blog / other primary source): [URL(s) + what guidance applied]
+- Library/framework + installed version: [name @ version, from package.json]
+- Docs/changelog/security advisories checked: [source + finding]
 - Finding: [current best practice for this task, and whether the existing
   codebase pattern already matches it or needed updating]
 
