@@ -1,9 +1,33 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
     throw new Error(`${res.status}: ${text}`);
+  }
+}
+
+/**
+ * Get the current Supabase session's access token.
+ *
+ * The Supabase client is configured with a custom `storageKey`
+ * ("glas-politics-auth"), so the session must be read through the client
+ * rather than a hard-coded localStorage key. Going through
+ * `supabase.auth.getSession()` also lets Supabase refresh an expired token
+ * before it is attached to an API request.
+ *
+ * @returns The bearer token, or null when no session exists.
+ */
+async function getAccessToken(): Promise<string | null> {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    return session?.access_token ?? null;
+  } catch (error) {
+    console.debug("Error reading bearer token:", error);
+    return null;
   }
 }
 
@@ -18,7 +42,7 @@ type ApiRequestOptions = {
  * Make an API request with automatic bearer token attachment
  *
  * This function:
- * 1. Gets the Supabase JWT token from localStorage
+ * 1. Gets the Supabase JWT token from the current session
  * 2. Attaches it as Authorization: Bearer header
  * 3. Sends the request (with session credentials)
  *
@@ -31,23 +55,9 @@ type ApiRequestOptions = {
 export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T> {
   const { method, path, body, on401 = "throw" } = options;
 
-  // CRITICAL: Get bearer token from localStorage
+  // CRITICAL: Get bearer token from the Supabase session
   // This token is set by auth routes after successful login
-  let token: string | null = null;
-  try {
-    const tokenData = localStorage.getItem('supabase.auth.token');
-    if (tokenData) {
-      // Token might be JSON-encoded or plain string
-      try {
-        const parsed = JSON.parse(tokenData);
-        token = parsed.access_token || parsed;
-      } catch {
-        token = tokenData;
-      }
-    }
-  } catch (error) {
-    console.debug('Error reading bearer token from localStorage:', error);
-  }
+  const token = await getAccessToken();
 
   // Build headers
   const headers: Record<string, string> = {};
@@ -88,7 +98,7 @@ type UnauthorizedBehavior = "returnNull" | "throw";
  * Query function factory with automatic bearer token attachment
  *
  * Used by React Query to fetch data. Automatically includes:
- * - Supabase JWT bearer token from localStorage
+ * - Supabase JWT bearer token from the current session
  * - Session credentials (cookies)
  *
  * Without bearer token, server returns 401 Unauthorized.
@@ -101,21 +111,8 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    // CRITICAL: Get bearer token from localStorage
-    let token: string | null = null;
-    try {
-      const tokenData = localStorage.getItem('supabase.auth.token');
-      if (tokenData) {
-        try {
-          const parsed = JSON.parse(tokenData);
-          token = parsed.access_token || parsed;
-        } catch {
-          token = tokenData;
-        }
-      }
-    } catch (error) {
-      console.debug('Error reading bearer token:', error);
-    }
+    // CRITICAL: Get bearer token from the Supabase session
+    const token = await getAccessToken();
 
     // Build headers with bearer token
     const headers: Record<string, string> = {};

@@ -315,8 +315,8 @@ function App() {
     : "flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors duration-200 dark:bg-gray-900 dark:text-white overflow-x-hidden";
 
   return (
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ErrorBoundary>
         <AuthProvider>
           <RegionProvider>
             <ToastContextProvider>
@@ -346,8 +346,8 @@ function App() {
             </ToastContextProvider>
           </RegionProvider>
         </AuthProvider>
-      </QueryClientProvider>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </QueryClientProvider>
   );
 }
 

@@ -4,6 +4,7 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
+import { queryKeys } from "@/lib/queryKeys";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
@@ -20,7 +21,7 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
       ? "mobile-card-tight bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
       : "mobile-card mobile-card-tight bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800";
   const { data, isLoading } = useQuery({
-    queryKey: ['biggest-impact-today-v4', regionCode],  // v4 - includes policy articles + logos
+    queryKey: queryKeys.news.biggestImpact(regionCode),
     queryFn: async () => {
       const res = await fetch('/api/news-feed?sort=today&limit=1');
       if (!res.ok) throw new Error('Failed to fetch');

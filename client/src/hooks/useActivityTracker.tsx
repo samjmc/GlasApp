@@ -21,10 +21,7 @@ export function useActivityTracker() {
   const logActivityMutation = useMutation({
     mutationFn: async ({ action, metadata }: { action: string; metadata?: ActivityMetadata }) => {
       try {
-        const response = await apiRequest('POST', '/api/activity/log', {
-          action,
-          metadata
-        });
+        const response = await apiRequest({ method: 'POST', path: '/api/activity/log', body: { action, metadata } });
         return response;
       } catch (error) {
         // If the API endpoint doesn't exist or returns an error, just return null
