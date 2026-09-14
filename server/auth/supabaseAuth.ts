@@ -27,7 +27,11 @@ for (const [key, value] of Object.entries(requiredEnvVars)) {
   }
 }
 
-// Create Supabase client
+/**
+ * Supabase client with anon key for client-side operations.
+ * Used for user sign-up, sign-in, password reset, and profile updates.
+ * Token refresh is automatic; session persistence is enabled.
+ */
 export const supabase: SupabaseClient = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_ANON_KEY!,
@@ -40,7 +44,12 @@ export const supabase: SupabaseClient = createClient(
   }
 );
 
-// Admin client with service role for server-side operations
+/**
+ * Admin client with service role for server-side operations.
+ * Used for user management, metadata updates, role assignments.
+ * Token refresh is disabled; only manual token passing is supported.
+ * CRITICAL: Protect this key - never expose to frontend.
+ */
 export const supabaseAdmin: SupabaseClient = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -89,6 +98,10 @@ export const supabaseAdmin: SupabaseClient = createClient(
  * - Authenticated request (valid token) → user → 200 OK
  * - Tampered token → null → 401 Unauthorized
  * - Expired token → null → 401 Unauthorized
+ *
+ * @param req Express request object
+ * @returns User object if token is valid; null otherwise
+ * @throws Never throws; returns null on all errors for safe middleware use
  */
 export async function getUserFromRequest(req: Request): Promise<any | null> {
   try {

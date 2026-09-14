@@ -72,7 +72,9 @@ export const userActivity = pgTable("user_activity", {
   ipAddress: varchar("ip_address", { length: 45 }), // For geolocation tracking
   userAgent: text("user_agent"), // Browser/device info
   createdAt: timestamp("created_at").defaultNow(),
-});
+}, (table) => [
+  index("idx_user_activity_user_id").on(table.userId),
+]);
 
 // Email verification tokens table
 export const emailVerificationTokens = pgTable("email_verification_tokens", {
@@ -131,10 +133,19 @@ export const quizResults = pgTable("quiz_results", {
   detailedAnalysis: text("detailed_analysis"),
   politicalValues: text("political_values"), // Stored as JSON string
   irishContextInsights: text("irish_context_insights"), // Stored as JSON string
-});
+}, (table) => [
+  index("idx_quiz_results_user_id").on(table.userId),
+]);
 
 // Historical quiz results to track changes over time
-export const quizResultsHistory = pgTable("quiz_results_history", {
+// ARCHIVED 2026-09-14 (Phase 2B schema cleanup): the only code path that reads/writes this
+// table (server/services/quizResultsService.ts, via server/routes/profileHistoryRoutes.ts)
+// is never mounted in server/routes.ts and has zero live callers in client/src or server.
+// The live quiz-history feature (/api/quiz-history, server/routes/quiz/index.ts) uses a
+// separate raw-SQL "quiz_history" table via quizHistoryService.ts, not this Drizzle table.
+// Physical table renamed to archived_quiz_results_history (see migrations/); the exported
+// TS symbol name is kept unchanged so any existing (dead) code referencing it still compiles.
+export const quizResultsHistory = pgTable("archived_quiz_results_history", {
   id: serial("id").primaryKey(),
   originalResultId: integer("original_result_id").references(() => quizResults.id),
   userId: varchar("user_id", { length: 100 }).references(() => users.id),
@@ -816,6 +827,7 @@ export const tdScoreHistory = pgTable("td_score_history", {
 }, (table) => [
   index("idx_history_politician").on(table.politicianName),
   index("idx_history_date").on(table.createdAt),
+  index("idx_td_score_history_politician_created_at").on(table.politicianName, table.createdAt),
 ]);
 
 // News sources configuration
