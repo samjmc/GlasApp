@@ -3,7 +3,7 @@
  * Generates DALL-E images for news articles
  */
 
-import OpenAI from 'openai';
+import { callImageGeneration, isOpenAIConfigured } from './aiService.js';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
@@ -11,10 +11,6 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const openai = process.env.OPENAI_API_KEY ? new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-}) : null;
 
 /**
  * Get a random existing image from the news-images folder
@@ -58,7 +54,7 @@ export async function generateArticleImage(
 ): Promise<string> {
   
   // If OpenAI not configured, return random existing image
-  if (!openai) {
+  if (!isOpenAIConfigured()) {
     console.log('   🖼️  OpenAI not configured - using existing image');
     return getRandomExistingImage();
   }
@@ -68,12 +64,12 @@ export async function generateArticleImage(
     
     const prompt = generateImagePrompt(article);
     
-    const response = await openai.images.generate({
+    const response = await callImageGeneration({
       model: 'dall-e-2',
       prompt,
       n: 1,
       size: '1024x1024' // DALL-E 2 supports square outputs only; frontend crops to card ratio
-    });
+    }, { operation: 'newsImage' });
     
     const imageUrl = response.data[0]?.url;
     

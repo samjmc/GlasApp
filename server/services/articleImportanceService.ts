@@ -7,16 +7,7 @@
  * Cost: ~$0.0005 per article (gpt-4o-mini, ~200 tokens)
  */
 
-import OpenAI from "openai";
-
-let openai: OpenAI;
-
-function getOpenAI() {
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
-}
+import { callChatCompletion } from "./aiService.js";
 
 export interface ImportanceResult {
   score: number;              // 0-100
@@ -99,7 +90,7 @@ Score the importance of this article for political accountability.
 `;
 
   try {
-    const response = await getOpenAI().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: IMPORTANCE_PROMPT },
@@ -108,7 +99,7 @@ Score the importance of this article for political accountability.
       response_format: { type: "json_object" },
       temperature: 0.2,  // Low temperature for consistent scoring
       max_tokens: 200    // Keep response short
-    });
+    }, { operation: 'articleImportance' });
     
     const result = JSON.parse(response.choices[0].message.content || '{}');
     

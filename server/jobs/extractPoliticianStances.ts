@@ -15,7 +15,7 @@
 
 import 'dotenv/config';
 import { createClient } from '@supabase/supabase-js';
-import { getOpenAIClient } from '../services/openaiService';
+import { callChatCompletion } from '../services/aiService.js';
 
 // Initialize a fresh Supabase client locally to avoid any potential config issues
 // with the shared client (e.g. custom fetch agents on Windows)
@@ -247,7 +247,7 @@ async function processPolitician(politician: unknown) {
 
   try {
     // 4. Call LLM
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [
         { role: "system", content: "You are a precise political data extractor. Output valid JSON only." },
@@ -255,7 +255,7 @@ async function processPolitician(politician: unknown) {
       ],
       temperature: 0.0,
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'extractStances' });
 
     const content = response.choices[0].message.content;
     if (!content) throw new Error("No content from LLM");

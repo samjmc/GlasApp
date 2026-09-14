@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import { callResponses, isOpenAIConfigured } from './aiService.js';
 import { supabaseDb } from '../db';
 import { normalisePolicyTopic } from '../constants/policyTopics';
 import type { ArticleForOpportunity } from './policyOpportunityService';
@@ -23,19 +23,6 @@ interface DebateSnippet {
   date?: string | null;
   text: string;
   source?: string;
-}
-
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI | null {
-  if (!process.env.OPENAI_API_KEY) {
-    console.warn('⚠️  OPENAI_API_KEY not set. Skipping stance harvesting.');
-    return null;
-  }
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
 }
 
 const ARTICLE_STANCE_PROMPT = ({
@@ -161,11 +148,10 @@ async function callLLMForStances(
   content: string,
   policyTopic: string,
 ): Promise<ExtractedStance[]> {
-  const client = getOpenAIClient();
-  if (!client) return [];
+  if (!isOpenAIConfigured()) return [];
 
   try {
-    const response = await client.responses.create({
+    const response = await callResponses({
       model: 'gpt-4.1-mini',
       temperature: 0.1,
       input: [
@@ -182,7 +168,7 @@ async function callLLMForStances(
           }),
         },
       ],
-    });
+    }, { operation: 'articleStances' });
 
     const text = response.output_text;
     if (!text) return [];
@@ -200,11 +186,10 @@ async function callLLMForDebateStances(
   policyTopic: string,
 ): Promise<ExtractedStance[]> {
   if (!snippets.length) return [];
-  const client = getOpenAIClient();
-  if (!client) return [];
+  if (!isOpenAIConfigured()) return [];
 
   try {
-    const response = await client.responses.create({
+    const response = await callResponses({
       model: 'gpt-4.1-mini',
       temperature: 0.1,
       input: [
@@ -218,7 +203,7 @@ async function callLLMForDebateStances(
           content: DEBATE_PROMPT({ snippets, policyTopic }),
         },
       ],
-    });
+    }, { operation: 'debateStances' });
     const text = response.output_text;
     if (!text) return [];
     const parsed = JSON.parse(text);

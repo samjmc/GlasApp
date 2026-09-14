@@ -1,26 +1,12 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import OpenAI from 'openai';
+import type OpenAI from 'openai';
 import { supabaseDb } from '../db';
 import { generateEmbedding, verifyFactCheck } from '../services/openaiService';
+import { callChatCompletion } from '../services/aiService';
 import { getPolicyPositions, getVotingRecord, getVotingStats, getRecentVotes } from '../services/politicianAgent';
 
 const router = Router();
-
-// Initialize OpenAI client lazily
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set.');
-    }
-    openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-  }
-  return openai;
-}
 
 const chatRequestSchema = z.object({
   politicianName: z.string().min(1),
@@ -393,12 +379,12 @@ ${context}
     ];
 
     // 6. Call OpenAI
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini', // Cheaper model for this use case
       messages,
       max_tokens: 500,
       temperature: 0.7
-    });
+    }, { operation: 'politicianChat' });
 
     const reply = response.choices[0].message.content ||
       "I'm sorry, I couldn't generate a response at this time.";

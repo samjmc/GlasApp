@@ -12,12 +12,8 @@
 
 import { supabaseDb as supabase } from '../db.js';
 import { TDIdeologyProfileService } from './tdIdeologyProfileService.js';
-import { OpenAI } from 'openai';
+import { callChatCompletion } from './aiService.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // Issue salience mapping - how ideologically meaningful each topic is per dimension
 const ISSUE_SALIENCE: Record<string, Record<string, number>> = {
@@ -500,7 +496,7 @@ async function extractIdeologyFromSpeech(
   try {
     const prompt = createSpeechAnalysisPrompt(speech, speechText, debateTopic);
 
-    const response = await openai.chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',
       messages: [
         {
@@ -511,7 +507,7 @@ async function extractIdeologyFromSpeech(
       ],
       temperature: 0.3,
       response_format: { type: 'json_object' },
-    });
+    }, { operation: 'speechIdeology' });
 
     const content = response.choices[0]?.message?.content;
     if (!content) return null;
@@ -540,7 +536,7 @@ async function extractIdeologyFromVote(
   try {
     const prompt = createVoteAnalysisPrompt(vote, politicianName);
 
-    const response = await openai.chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',
       messages: [
         {
@@ -551,7 +547,7 @@ async function extractIdeologyFromVote(
       ],
       temperature: 0.2,
       response_format: { type: 'json_object' },
-    });
+    }, { operation: 'voteIdeology' });
 
     const content = response.choices[0]?.message?.content;
     if (!content) return null;

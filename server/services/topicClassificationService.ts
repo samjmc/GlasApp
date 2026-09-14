@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import { callResponses, isOpenAIConfigured } from './aiService.js';
 import NodeCache from 'node-cache';
 import { normalisePolicyTopic, type PolicyDomain } from '../constants/policyTopics';
 
@@ -7,8 +7,6 @@ const cache = new NodeCache({
   maxKeys: 5000,
 });
 
-let openai: OpenAI | null = null;
-
 interface TopicClassificationResult {
   isPolitical: boolean;
   relevance: number;
@@ -16,17 +14,6 @@ interface TopicClassificationResult {
   topic?: string;
   confidence: number;
   reasoning?: string;
-}
-
-function getOpenAIClient(): OpenAI | null {
-  if (!process.env.OPENAI_API_KEY) {
-    console.warn('⚠️  OPENAI_API_KEY not set. Topic classifier disabled.');
-    return null;
-  }
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
 }
 
 const CLASSIFIER_PROMPT = ({
@@ -79,11 +66,10 @@ export const TopicClassificationService = {
     const cached = cache.get<TopicClassificationResult>(key);
     if (cached) return cached;
 
-    const client = getOpenAIClient();
-    if (!client) return null;
+    if (!isOpenAIConfigured()) return null;
 
     try {
-      const response = await client.responses.create({
+      const response = await callResponses({
         model: 'gpt-4.1-mini',
         temperature: 0,
         input: [
@@ -100,7 +86,7 @@ export const TopicClassificationService = {
             }),
           },
         ],
-      });
+      }, { operation: 'classifyArticle' });
 
       const text = response.output_text;
       if (!text) return null;

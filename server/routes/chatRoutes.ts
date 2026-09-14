@@ -1,24 +1,10 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import OpenAI from 'openai';
+import type OpenAI from 'openai';
+import { callChatCompletion } from '../services/aiService.js';
 import { chatToolsDefinition, chatToolsImplementation } from "../services/chatTools";
 
 const router = Router();
-
-// Initialize OpenAI client lazily
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. Chat features are disabled.');
-    }
-    openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-  }
-  return openai;
-}
 
 // Model to use for chat completions
 const MODEL = "gpt-4o"; // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
@@ -165,17 +151,15 @@ router.post('/', async (req: Request, res: Response) => {
       }
     ];
     
-    const client = getOpenAIClient();
-
     // First call to OpenAI with tools enabled
-    const completion = await client.chat.completions.create({
+    const completion = await callChatCompletion({
       model: MODEL,
-      messages: messages as unknown,
-      tools: chatToolsDefinition as unknown,
+      messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
+      tools: chatToolsDefinition as OpenAI.Chat.Completions.ChatCompletionTool[],
       tool_choice: "auto", 
       max_tokens: 800,
       temperature: 0.7
-    });
+    }, { operation: 'chatAssistant' });
     
     const responseMessage = completion.choices[0].message;
     let reply = responseMessage.content;
@@ -213,12 +197,12 @@ router.post('/', async (req: Request, res: Response) => {
       }
 
       // Second call to OpenAI with the tool results
-      const secondResponse = await client.chat.completions.create({
+      const secondResponse = await callChatCompletion({
         model: MODEL,
-        messages: messages as unknown,
-        tools: chatToolsDefinition as unknown,
+        messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
+        tools: chatToolsDefinition as OpenAI.Chat.Completions.ChatCompletionTool[],
         tool_choice: "auto", 
-      });
+      }, { operation: 'chatAssistantSecondCall' });
 
       reply = secondResponse.choices[0].message.content;
     }
