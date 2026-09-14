@@ -63,7 +63,7 @@ import TermsOfServicePage from "@/pages/TermsOfServicePage";
 import ContactPage from "@/pages/ContactPage";
 import BottomNavigation from "@/components/BottomNavigation";
 import CookieConsent from "@/components/CookieConsent";
-import { QuizProvider } from "@/contexts/QuizContextNew";
+import { QuizProvider } from "@/contexts/QuizContext";
 import { MultidimensionalQuizProvider } from "@/contexts/MultidimensionalQuizContext";
 import DailySessionPage from "@/pages/DailySessionPage";
 import { useDailySession } from "@/hooks/useDailySession";
