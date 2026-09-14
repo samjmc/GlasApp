@@ -1,5 +1,5 @@
 import express, { type Request, type Response } from 'express';
-import { supabaseDb } from '../services/db.js';
+import { supabaseDb } from '../db.js';
 import { PersonalRankingsService } from '../services/personalRankingsService.js';
 import { IdeologySnapshotService } from '../services/ideologySnapshotService.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
