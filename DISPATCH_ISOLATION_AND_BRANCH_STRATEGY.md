@@ -100,7 +100,7 @@ ln -s "$REPO/node_modules" "$WT_ROOT/<branch-N>/node_modules"
 
 Then the dispatch brief for each team must say, verbatim:
 
-> Your working directory for this entire task is `$WT_ROOT/<branch-N>`. `cd` there first and confirm with `pwd` and `git branch --show-current` before making any edit. Do not `cd` into or edit anything under `/Users/sammcdonnell/Documents/GlasApp` directly — that is the coordinator's canonical checkout and is shared by other concurrently-running teams. All your commits should land on `<branch-N>`, created from base `$BASE_SHA`.
+> Your working directory for this entire task is `$WT_ROOT/<branch-N>`. `cd` there first and confirm with `pwd` and `git branch --show-current` before making any edit. Do not `cd` into or edit anything under `/Users/sammcdonnell/Documents/GlasApp` directly — that is the coordinator's canonical checkout and is shared by other concurrently-running teams. All your commits should land on `<branch-N>`, created from base `$BASE_SHA`. Write every delivery report (`REPORT.md`, `SELF_REVIEW.md`, `RESEARCH_REPORT.md`) under `docs/agent-reports/<task-slug>/` where `<task-slug>` is the branch name's task identifier (e.g. `phase-3a-ai-service`) — never at the worktree root (see Section 5).
 
 **Cleanup, per team, once its branch is merged or abandoned:**
 
@@ -148,3 +148,20 @@ See Section 1 for full evidence. Original action items, now executed except wher
 2. Rebase `test-gate-fix` onto the reconciled `main` — **done.**
 3. Use the *post-rebase* `test-gate-fix` tip as the new `BASE_SHA` for the next dispatch round — **recorded in `plan.md`.**
 4. This was a one-time reconciliation, not a recurring sync — confirmed no live process was advancing `main` independently, so no ongoing "coordinate with main every round" policy is needed now that reconciliation is done.
+
+---
+
+## Section 5 — Agent report paths & push discipline (cross-reference)
+
+Two conventions adopted alongside the worktree/branch SOP above (specified in detail in `TEAM_DISPATCH_PROTOCOL.md`; both are complementary to, and do not change, the isolation/branch-base mechanics in Sections 1–3):
+
+### 5.1 Namespaced report paths (`docs/agent-reports/<task-slug>/`)
+
+Every dispatched agent writes all delivery reports — `REPORT.md`, `SELF_REVIEW.md`, `RESEARCH_REPORT.md` — under `docs/agent-reports/<task-slug>/`, where `<task-slug>` is the branch name's task identifier in kebab-case (branch `feature/phase-3a-ai-service` → slug `phase-3a-ai-service`). No report file is ever written at the worktree root.
+
+Why this is structural, not cosmetic: parallel task branches cut from the same base each add their own `REPORT.md` / `SELF_REVIEW.md`, and when those branches merge together later each such file is an *add/add* conflict. Empirically confirmed (see `docs/agent-reports/README.md`): `.gitattributes merge=ours` does **not** auto-resolve add/add conflicts — the low-level driver needs a base version and add/add has none — so no attribute/merge-attribute trick preserves both reports. Namespacing per task, with slug derived from the branch name, makes collisions impossible. Section 2's dispatch brief above already instructs agents accordingly; the coordinator's cleanup step (worktree remove / branch delete) is unaffected.
+
+### 5.2 Push discipline (push branch + draft PR per task; push main after every merge)
+
+- **After a task is COMPLETE and committed:** push the task branch to origin and open a draft PR against `main` immediately (`gh pr create --draft --title "[<task-id>] <short title>" --body "..."`, body carrying the DISPATCH_BRIEF.md acceptance criteria). This is a post-execution step in the *coordinator* session; it does not change where agents work or how branches are cut in this document.
+- **After every local merge of a task branch into main/integration:** push that integration branch to origin immediately, never batching multiple merges before a single push (batching recreates the local-ahead-of-origin ambiguity from Section 1/Problem 2). Before the push, run `scripts/git-safety-checks.sh pre-push-gate` (added by a parallel task on branch `feature/git-workflow-infra-a`), or until it exists: `git fetch origin && git merge-base --is-ancestor origin/main main`.
