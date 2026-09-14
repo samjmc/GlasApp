@@ -38,10 +38,7 @@ const PledgeVotingInterface: React.FC<PledgeVotingInterfaceProps> = ({
   // Submit ranking mutation
   const submitRanking = useMutation({
     mutationFn: async (rankings: { category: string; rank: number }[]) => {
-      return apiRequest('/api/category-ranking/submit-ranking', {
-        method: 'POST',
-        body: JSON.stringify({ rankings })
-      });
+      return apiRequest({ method: 'POST', path: '/api/category-ranking/submit-ranking', body: { rankings } });
     },
     onSuccess: () => {
       toast({
