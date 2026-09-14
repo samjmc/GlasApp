@@ -118,6 +118,11 @@ export function buildCursorFromId(id: string | number): string {
  * // Returns: "123"
  */
 export function decodeCursor(cursor: string): string | null {
+  // Buffer.from(..., 'base64') silently ignores invalid characters instead of
+  // throwing, so malformed cursors must be rejected before decoding.
+  if (!cursor || !/^[A-Za-z0-9+/]+={0,2}$/.test(cursor)) {
+    return null;
+  }
   try {
     const decoded = Buffer.from(cursor, 'base64').toString('utf-8');
     // Validate that it's a valid number/ID format
