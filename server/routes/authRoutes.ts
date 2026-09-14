@@ -9,6 +9,11 @@ import bcrypt from 'bcryptjs';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import {
+  formatResponse,
+  formatError,
+} from '../utils/responseFormatters';
+import { logger, requestLogger } from '../utils/logger';
 
 // Extend Request type to include user property
 interface AuthenticatedRequest extends Request {
@@ -105,16 +110,16 @@ async function verifyCaptcha(token: string): Promise<boolean> {
   try {
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     if (!secretKey) {
-      console.warn('RECAPTCHA_SECRET_KEY not configured - allowing registration for development');
+      logger.warn('RECAPTCHA_SECRET_KEY not configured - allowing registration for development');
       return true; // Allow registration if CAPTCHA is not configured
     }
 
     if (!token || token.trim() === '') {
-      console.log('No CAPTCHA token provided');
+      logger.info('No CAPTCHA token provided');
       return false;
     }
 
-    console.log('Verifying CAPTCHA token with Google...');
+    logger.info('Verifying CAPTCHA token with Google...');
     const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: {
@@ -124,17 +129,17 @@ async function verifyCaptcha(token: string): Promise<boolean> {
     });
 
     const data = await response.json();
-    console.log('CAPTCHA verification response:', data);
-    
+    logger.info({ captchaResponse: data }, 'CAPTCHA verification response');
+
     if (data.success) {
-      console.log('CAPTCHA verification successful');
+      logger.info('CAPTCHA verification successful');
       return true;
     } else {
-      console.log('CAPTCHA verification failed:', data['error-codes'] || 'Unknown error');
+      logger.info({ errorCodes: data['error-codes'] || 'Unknown error' }, 'CAPTCHA verification failed');
       return false;
     }
   } catch (error) {
-    console.error('CAPTCHA verification error:', error);
+    logger.error({ err: error }, 'CAPTCHA verification error');
     return false;
   }
 }
@@ -184,6 +189,7 @@ function getVerificationExpiration(minutes: number = 10): Date {
 
 // Step 1: Validate basic info and send verification email (no database creation yet)
 router.post('/register-step1', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const registerSchema = z.object({
       username: z.string().min(3, { message: 'Username must be at least 3 characters' }),
@@ -201,31 +207,29 @@ router.post('/register-step1', async (req: Request, res: Response) => {
     const validatedData = registerSchema.parse(req.body);
     
     // Verify reCAPTCHA (temporarily disabled for testing)
-    console.log('CAPTCHA token received:', validatedData.captchaToken ? 'present' : 'missing');
+    log.info({ captchaProvided: !!validatedData.captchaToken }, 'CAPTCHA token received');
     const captchaValid = await verifyCaptcha(validatedData.captchaToken);
-    console.log('CAPTCHA validation result:', captchaValid);
+    log.info({ captchaValid }, 'CAPTCHA validation result');
     
     // Temporarily allow registration even if CAPTCHA fails for testing
     if (!captchaValid) {
-      console.warn('CAPTCHA verification failed, but allowing registration for testing');
+      log.warn('CAPTCHA verification failed, but allowing registration for testing');
     }
 
     // Check if username already exists
     const existingUser = await storage.getUserByUsername(validatedData.username);
     if (existingUser) {
-      return res.status(400).json({
-        success: false,
-        message: 'Username already taken'
-      });
+      return res.status(400).json(
+        formatError('DUPLICATE_RESOURCE', 'Username already taken')
+      );
     }
 
     // Check if email already exists
     const existingEmail = await storage.getUserByEmail(validatedData.email);
     if (existingEmail) {
-      return res.status(400).json({
-        success: false,
-        message: 'Email already registered'
-      });
+      return res.status(400).json(
+        formatError('DUPLICATE_RESOURCE', 'Email already registered')
+      );
     }
     
     // Generate 6-digit verification code for email
@@ -234,8 +238,8 @@ router.post('/register-step1', async (req: Request, res: Response) => {
     // Create temporary session ID to track registration progress
     const tempUserId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     
-    console.log('Temporary user ID created:', tempUserId);
-    console.log('Email verification code generated:', verificationCode);
+    log.info({ tempUserId }, 'Temporary user ID created');
+    log.info('Email verification code generated');
     
     // Store registration data temporarily (in production, use Redis or database temp table)
     // For now, we'll use a simple in-memory store - in production this should be persistent
@@ -251,38 +255,37 @@ router.post('/register-step1', async (req: Request, res: Response) => {
       // Send verification email with the 6-digit code
       const { confirmPassword, captchaToken, ...userData } = validatedData;
       await sendVerificationEmailWithCode(userData.email, userData.username || userData.email, verificationCode);
-      console.log('Verification email sent successfully to:', userData.email);
+      log.info({ email: userData.email }, 'Verification email sent successfully');
     } catch (emailError) {
-      console.error('Failed to send verification email:', emailError);
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to send verification email. Please try again.'
-      });
+      log.error({ err: emailError }, 'Failed to send verification email');
+      return res.status(500).json(
+        formatError('OPERATION_FAILED', 'Failed to send verification email. Please try again.')
+      );
     }
     
-    res.status(201).json({
-      success: true,
-      message: 'Please check your email for verification code.',
-      tempUserId: tempUserId
-    });
+    res.status(201).json(
+      formatResponse({
+        message: 'Please check your email for verification code.',
+        tempUserId
+      })
+    );
   } catch (error) {
-    console.error('Registration step 1 error:', error);
+    log.error({ err: error }, 'Registration step 1 error');
     if (error.name === 'ZodError') {
       const firstError = error.errors[0];
-      return res.status(400).json({
-        success: false,
-        message: firstError.message
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', firstError.message)
+      );
     }
-    res.status(500).json({
-      success: false,
-      message: 'Registration failed. Please try again.'
-    });
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Registration failed. Please try again.')
+    );
   }
 });
 
 // Step 2: Update location and phone information in temporary storage
 router.post('/register-step2', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const updateSchema = z.object({
       tempUserId: z.string(),
@@ -301,10 +304,9 @@ router.post('/register-step2', async (req: Request, res: Response) => {
     const tempData = global.tempRegistrations[validatedData.tempUserId];
     
     if (!tempData) {
-      return res.status(404).json({
-        success: false,
-        message: 'Registration session not found. Please start over.'
-      });
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'Registration session not found. Please start over.')
+      );
     }
     
     // Update temporary data with location and phone info
@@ -316,28 +318,26 @@ router.post('/register-step2', async (req: Request, res: Response) => {
       longitude: longitude?.toString()
     };
     
-    res.status(200).json({
-      success: true,
-      message: 'Information updated successfully'
-    });
+    res.status(200).json(
+      formatResponse({ message: 'Information updated successfully' })
+    );
   } catch (error) {
-    console.error('Registration step 2 error:', error);
+    log.error({ err: error }, 'Registration step 2 error');
     if (error.name === 'ZodError') {
       const firstError = error.errors[0];
-      return res.status(400).json({
-        success: false,
-        message: firstError.message
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', firstError.message)
+      );
     }
-    res.status(500).json({
-      success: false,
-      message: 'Failed to update information. Please try again.'
-    });
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to update information. Please try again.')
+    );
   }
 });
 
 // Verify email with code and create actual user account
 router.post('/verify-email-code', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const verifySchema = z.object({
       tempUserId: z.string(),
@@ -351,18 +351,16 @@ router.post('/verify-email-code', async (req: Request, res: Response) => {
     const tempData = tempRegistrations[tempUserId];
     
     if (!tempData) {
-      return res.status(404).json({
-        success: false,
-        message: 'Registration session not found. Please start over.'
-      });
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'Registration session not found. Please start over.')
+      );
     }
     
     // Check if verification code has expired
     if (new Date() > tempData.expiresAt) {
-      return res.status(400).json({
-        success: false,
-        message: 'Verification code has expired. Please start over.'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Verification code has expired. Please start over.')
+      );
     }
     
     // Check if verification code matches
@@ -381,30 +379,30 @@ router.post('/verify-email-code', async (req: Request, res: Response) => {
       // Clean up temporary data
       delete tempRegistrations[tempUserId];
       
-      console.log('User account created successfully with ID:', user.id);
+      log.info({ userId: user.id }, 'User account created successfully');
       
-      res.status(200).json({
-        success: true,
-        message: 'Email verified and account created successfully',
-        userId: user.id
-      });
+      res.status(200).json(
+        formatResponse({
+          message: 'Email verified and account created successfully',
+          userId: user.id
+        })
+      );
     } else {
-      res.status(400).json({
-        success: false,
-        message: 'Invalid verification code'
-      });
+      res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Invalid verification code')
+      );
     }
   } catch (error) {
-    console.error('Email verification error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Verification failed. Please try again.'
-    });
+    log.error({ err: error }, 'Email verification error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Verification failed. Please try again.')
+    );
   }
 });
 
 // Verify phone with code (simplified - in production use SMS service)
 router.post('/verify-phone-code', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const verifySchema = z.object({
       userId: z.number(),
@@ -418,27 +416,25 @@ router.post('/verify-phone-code', async (req: Request, res: Response) => {
     if (code.startsWith('2')) {
       await storage.updateUser(userId, { phoneVerified: true });
       
-      res.status(200).json({
-        success: true,
-        message: 'Phone verified successfully'
-      });
+      res.status(200).json(
+        formatResponse({ message: 'Phone verified successfully' })
+      );
     } else {
-      res.status(400).json({
-        success: false,
-        message: 'Invalid verification code'
-      });
+      res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Invalid verification code')
+      );
     }
   } catch (error) {
-    console.error('Phone verification error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Verification failed. Please try again.'
-    });
+    log.error({ err: error }, 'Phone verification error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Verification failed. Please try again.')
+    );
   }
 });
 
 // User registration with email verification (legacy route - keep for compatibility)
 router.post('/register', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     // Validate request body
     const registerSchema = insertUserSchema.extend({
@@ -458,16 +454,14 @@ router.post('/register', async (req: Request, res: Response) => {
     if (validatedData.captchaToken) {
       const captchaValid = await verifyCaptcha(validatedData.captchaToken);
       if (!captchaValid) {
-        return res.status(400).json({
-          success: false,
-          message: 'Invalid CAPTCHA. Please try again.'
-        });
+        return res.status(400).json(
+          formatError('VALIDATION_ERROR', 'Invalid CAPTCHA. Please try again.')
+        );
       }
     } else {
-      return res.status(400).json({
-        success: false,
-        message: 'CAPTCHA verification required.'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'CAPTCHA verification required.')
+      );
     }
 
     // Remove confirmPassword and captchaToken from data before passing to service
@@ -477,19 +471,17 @@ router.post('/register', async (req: Request, res: Response) => {
       // Check if username already exists
       const existingUser = await storage.getUserByUsername(userData.username);
       if (existingUser) {
-        return res.status(400).json({
-          success: false,
-          message: 'Username already taken'
-        });
+        return res.status(400).json(
+          formatError('DUPLICATE_RESOURCE', 'Username already taken')
+        );
       }
 
       // Check if email already exists
       const existingEmail = await storage.getUserByEmail(userData.email);
       if (existingEmail) {
-        return res.status(400).json({
-          success: false,
-          message: 'Email already registered'
-        });
+        return res.status(400).json(
+          formatError('DUPLICATE_RESOURCE', 'Email already registered')
+        );
       }
       
       // Hash password
@@ -519,7 +511,7 @@ router.post('/register', async (req: Request, res: Response) => {
             longitude: longitude?.toString() || undefined
           }).onConflictDoNothing();
         } catch (prefError) {
-          console.warn('Failed to insert user_preferences row:', prefError);
+          log.warn({ err: prefError }, 'Failed to insert user_preferences row');
           // Non-blocking: continue even if prefs insertion fails
         }
       }
@@ -529,59 +521,57 @@ router.post('/register', async (req: Request, res: Response) => {
       try {
         await sendVerificationEmail(user.email, user.username, verificationToken);
         
-        return res.status(201).json({
-          success: true,
-          message: 'Registration successful! A verification email has been sent to your email address.',
-          userId: user.id
-        });
+        return res.status(201).json(
+          formatResponse({
+            message: 'Registration successful! A verification email has been sent to your email address.',
+            userId: user.id
+          })
+        );
       } catch (emailError) {
-        console.error('Failed to send verification email:', emailError);
+        log.error({ err: emailError }, 'Failed to send verification email');
         
         // If email fails, still allow the user to proceed but mark as unverified
-        return res.status(201).json({
-          success: true,
-          message: 'Registration successful! Please contact support if you need to verify your email.',
-          userId: user.id
-        });
+        return res.status(201).json(
+          formatResponse({
+            message: 'Registration successful! Please contact support if you need to verify your email.',
+            userId: user.id
+          })
+        );
       }
     } catch (dbError: unknown) {
-      console.error('Registration error:', dbError);
+      log.error({ err: dbError }, 'Registration error');
       
       // Handle specific database constraint violations
       if (dbError.code === '23505') {
         if (dbError.constraint === 'users_email_unique') {
-          return res.status(400).json({
-            success: false,
-            message: 'Email already registered'
-          });
+          return res.status(400).json(
+            formatError('DUPLICATE_RESOURCE', 'Email already registered')
+          );
         }
         if (dbError.constraint === 'users_username_unique') {
-          return res.status(400).json({
-            success: false,
-            message: 'Username already taken'
-          });
+          return res.status(400).json(
+            formatError('DUPLICATE_RESOURCE', 'Username already taken')
+          );
         }
       }
       
-      return res.status(500).json({
-        success: false,
-        message: 'Registration failed. Please try again.'
-      });
+      return res.status(500).json(
+        formatError('INTERNAL_ERROR', 'Registration failed. Please try again.')
+      );
     }
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: 'Validation error',
-        errors: error.errors
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Validation error', {
+          errors: error.errors
+        })
+      );
     }
     
-    console.error('Registration error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to register user'
-    });
+    log.error({ err: error }, 'Registration error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to register user')
+    );
   }
 });
 
@@ -589,23 +579,22 @@ router.post('/register', async (req: Request, res: Response) => {
 
 // User login
 router.post('/login', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const { username, password } = req.body;
     
     if (!username || !password) {
-      return res.status(400).json({
-        success: false,
-        message: 'Username and password are required'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Username and password are required')
+      );
     }
 
     // Find user by username
     const user = await storage.getUserByUsername(username);
     if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid username or password'
-      });
+      return res.status(401).json(
+        formatError('INVALID_CREDENTIALS', 'Invalid username or password')
+      );
     }
 
     // Verify password using bcrypt
@@ -613,99 +602,93 @@ router.post('/login', async (req: Request, res: Response) => {
     const isValidPassword = await bcrypt.compare(password, user.password);
     
     if (!isValidPassword) {
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid username or password'
-      });
+      return res.status(401).json(
+        formatError('INVALID_CREDENTIALS', 'Invalid username or password')
+      );
     }
 
     // Check if email is verified for accounts created with email verification
     if (user.emailVerified === false) {
-      return res.status(401).json({
-        success: false,
-        message: 'Please verify your email address before logging in. Check your email for the verification link.'
-      });
+      return res.status(401).json(
+        formatError('UNAUTHORIZED', 'Please verify your email address before logging in. Check your email for the verification link.')
+      );
     }
 
     // Set user in session
     (req.session as unknown).userId = user.id;
     
-    return res.status(200).json({
-      success: true,
-      message: 'Login successful',
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName
-      }
-    });
+    return res.status(200).json(
+      formatResponse({
+        message: 'Login successful',
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName
+        }
+      })
+    );
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to log in'
-    });
+    log.error({ err: error }, 'Login error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to log in')
+    );
   }
 });
 
 // Verify 2FA code (simplified - skipping 2FA for now)
 router.post('/verify-2fa', async (req: Request, res: Response) => {
-  return res.status(200).json({
-    success: true,
-    message: '2FA verification skipped in development'
-  });
+  return res.status(200).json(
+    formatResponse({ message: '2FA verification skipped in development' })
+  );
 });
 
 // User logout
 router.post('/logout', (req: Request, res: Response) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to log out'
-      });
+      return res.status(500).json(
+        formatError('INTERNAL_ERROR', 'Failed to log out')
+      );
     }
     
-    res.status(200).json({
-      success: true,
-      message: 'Logged out successfully'
-    });
+    res.status(200).json(
+      formatResponse({ message: 'Logged out successfully' })
+    );
   });
 });
 
 // Get current user
 router.get('/me', isAuthenticated, async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const userId = req.session.userId;
     const user = await storage.getUser(userId as number);
     
     if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'User not found'
-      });
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'User not found')
+      );
     }
     
     // Remove password from response
     const { password, ...userWithoutPassword } = user;
     
-    res.status(200).json({
-      success: true,
-      user: userWithoutPassword
-    });
+    res.status(200).json(
+      formatResponse({ user: userWithoutPassword })
+    );
   } catch (error) {
-    console.error('Get user error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to get user data'
-    });
+    log.error({ err: error }, 'Get user error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to get user data')
+    );
   }
 });
 
 // Update user profile
 router.patch('/me', isAuthenticated, async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const userId = req.session.userId;
     
@@ -726,10 +709,9 @@ router.patch('/me', isAuthenticated, async (req: Request, res: Response) => {
     if (validatedData.phoneNumber) {
       const existingPhone = await storage.getUserByPhoneNumber(validatedData.phoneNumber);
       if (existingPhone && existingPhone.id !== userId) {
-        return res.status(400).json({
-          success: false,
-          message: 'Phone number already registered to another account'
-        });
+        return res.status(400).json(
+          formatError('DUPLICATE_RESOURCE', 'Phone number already registered to another account')
+        );
       }
     }
     
@@ -752,7 +734,7 @@ router.patch('/me', isAuthenticated, async (req: Request, res: Response) => {
           }
         });
       } catch (prefError) {
-        console.warn('Failed to update user_preferences:', prefError);
+        log.warn({ err: prefError }, 'Failed to update user_preferences');
         // Non-blocking: continue even if prefs update fails
       }
     }
@@ -774,33 +756,34 @@ router.patch('/me', isAuthenticated, async (req: Request, res: Response) => {
     // Remove password from response
     const { password, ...userWithoutPassword } = updatedUser;
     
-    res.status(200).json({
-      success: true,
-      message: validatedData.phoneNumber 
-        ? 'Profile updated successfully. Please verify your phone number with the code sent via SMS.' 
-        : 'Profile updated successfully',
-      requiresPhoneVerification: !!validatedData.phoneNumber,
-      user: userWithoutPassword
-    });
+    res.status(200).json(
+      formatResponse({
+        message: validatedData.phoneNumber 
+          ? 'Profile updated successfully. Please verify your phone number with the code sent via SMS.' 
+          : 'Profile updated successfully',
+        requiresPhoneVerification: !!validatedData.phoneNumber,
+        user: userWithoutPassword
+      })
+    );
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: 'Validation error',
-        errors: error.errors
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Validation error', {
+          errors: error.errors
+        })
+      );
     }
     
-    console.error('Update profile error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to update profile'
-    });
+    log.error({ err: error }, 'Update profile error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to update profile')
+    );
   }
 });
 
 // Verify phone number with SMS code
 router.post('/verify-phone', isAuthenticated, async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const userId = req.session.userId;
     
@@ -814,63 +797,58 @@ router.post('/verify-phone', isAuthenticated, async (req: Request, res: Response
     // Get user
     const user = await storage.getUser(userId as number);
     if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'User not found'
-      });
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'User not found')
+      );
     }
     
     // Verify the code
     const isVerified = await storage.verifyUserPhone(userId as number, code);
     
     if (isVerified) {
-      return res.status(200).json({
-        success: true,
-        message: 'Phone number verified successfully'
-      });
+      return res.status(200).json(
+        formatResponse({ message: 'Phone number verified successfully' })
+      );
     } else {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid or expired verification code'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Invalid or expired verification code')
+      );
     }
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: 'Validation error',
-        errors: error.errors
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Validation error', {
+          errors: error.errors
+        })
+      );
     }
     
-    console.error('Phone verification error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to verify phone number'
-    });
+    log.error({ err: error }, 'Phone verification error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to verify phone number')
+    );
   }
 });
 
 // Resend verification code
 router.post('/resend-verification', isAuthenticated, async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const userId = req.session.userId;
     
     // Get user
     const user = await storage.getUser(userId as number);
     if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'User not found'
-      });
+      return res.status(404).json(
+        formatError('NOT_FOUND', 'User not found')
+      );
     }
     
     // Check if user has a phone number
     if (!user.phoneNumber) {
-      return res.status(400).json({
-        success: false,
-        message: 'No phone number associated with this account'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'No phone number associated with this account')
+      );
     }
     
     // Generate new verification code
@@ -884,42 +862,39 @@ router.post('/resend-verification', isAuthenticated, async (req: Request, res: R
     const sendResult = await sendVerificationCode(user.phoneNumber, verificationCode);
     
     if (sendResult.success) {
-      return res.status(200).json({
-        success: true,
-        message: 'Verification code sent successfully'
-      });
+      return res.status(200).json(
+        formatResponse({ message: 'Verification code sent successfully' })
+      );
     } else {
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to send verification code',
-        error: sendResult.message
-      });
+      return res.status(500).json(
+        formatError('OPERATION_FAILED', 'Failed to send verification code', {
+          sendResultMessage: sendResult.message
+        })
+      );
     }
   } catch (error) {
-    console.error('Resend verification error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to resend verification code'
-    });
+    log.error({ err: error }, 'Resend verification error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to resend verification code')
+    );
   }
 });
 
 // Profile image upload endpoint
 router.post('/upload-profile-image', isAuthenticated, upload.single('profileImage'), async (req: AuthenticatedRequest, res: Response) => {
+  const log = requestLogger(req);
   try {
     if (!req.file) {
-      return res.status(400).json({
-        success: false,
-        message: 'No image file provided'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'No image file provided')
+      );
     }
 
     const userId = req.session?.userId;
     if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: 'User not authenticated'
-      });
+      return res.status(401).json(
+        formatError('UNAUTHORIZED', 'User not authenticated')
+      );
     }
 
     // Generate the URL for the uploaded image
@@ -928,41 +903,40 @@ router.post('/upload-profile-image', isAuthenticated, upload.single('profileImag
     // Update user's profile image URL in database
     await storage.updateUser(userId, { profileImageUrl: imageUrl });
 
-    res.status(200).json({
-      success: true,
-      message: 'Profile image uploaded successfully',
-      imageUrl: imageUrl
-    });
+    res.status(200).json(
+      formatResponse({
+        message: 'Profile image uploaded successfully',
+        imageUrl
+      })
+    );
 
   } catch (error) {
-    console.error('Profile image upload error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to upload profile image'
-    });
+    log.error({ err: error }, 'Profile image upload error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to upload profile image')
+    );
   }
 });
 
 // Email verification endpoint
 router.get('/verify-email', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const { token } = req.query;
 
     if (!token || typeof token !== 'string') {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid verification token'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Invalid verification token')
+      );
     }
 
     // Find the verification token in the database
     const verificationRecord = await storage.getEmailVerificationToken(token);
     
     if (!verificationRecord) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid or expired verification token'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Invalid or expired verification token')
+      );
     }
 
     // Check if token is expired (24 hours)
@@ -972,10 +946,9 @@ router.get('/verify-email', async (req: Request, res: Response) => {
 
     if (tokenAge > maxAge) {
       await storage.deleteEmailVerificationToken(token);
-      return res.status(400).json({
-        success: false,
-        message: 'Verification token has expired. Please request a new one.'
-      });
+      return res.status(400).json(
+        formatError('VALIDATION_ERROR', 'Verification token has expired. Please request a new one.')
+      );
     }
 
     // Update user's email verification status
@@ -1004,11 +977,10 @@ router.get('/verify-email', async (req: Request, res: Response) => {
     `);
 
   } catch (error) {
-    console.error('Email verification error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to verify email'
-    });
+    log.error({ err: error }, 'Email verification error');
+    res.status(500).json(
+      formatError('INTERNAL_ERROR', 'Failed to verify email')
+    );
   }
 });
 
