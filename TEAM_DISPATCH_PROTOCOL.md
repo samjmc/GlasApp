@@ -113,6 +113,42 @@ Instead of me implementing the 6 storage methods + imports + JSDoc, it should ha
 
 ---
 
+## Report Artifacts: Namespaced Paths (no more root-level REPORT.md)
+
+Every dispatched agent writes its delivery artifacts — `REPORT.md`, `SELF_REVIEW.md`,
+`RESEARCH_REPORT.md`, or any other agent-generated report — under a per-task
+subdirectory, **never at the worktree root**:
+
+```
+docs/agent-reports/<task-slug>/
+```
+
+where `<task-slug>` is the branch name's task identifier in kebab-case (e.g. for
+branch `feature/phase-3a-ai-service`, slug = `phase-3a-ai-service`). Example paths:
+
+```
+docs/agent-reports/phase-3a-ai-service/REPORT.md
+docs/agent-reports/phase-3a-ai-service/SELF_REVIEW.md
+docs/agent-reports/phase-3b-frontend-auth/RESEARCH_REPORT.md
+```
+
+**Why this is mandatory, not cosmetic:** parallel task branches are all cut from the
+same base, and each adds its own `REPORT.md` / `SELF_REVIEW.md`. When those branches
+are merged together later, every one of those files is an *add/add* conflict — the
+file exists on both sides but in no common-ancestor version. Empirically confirmed:
+`.gitattributes merge=ours` does **not** resolve add/add conflicts (the low-level
+merge driver requires a base version, and add/add has none, so the merge still lands
+in `UU`), and `git merge -X ours` "resolves" it only by discarding one side wholesale
+— wrong when both reports are worth keeping. Namespacing each task's reports under
+`docs/agent-reports/<task-slug>/` makes collisions structurally impossible as long as
+slug == branch/task name. See `docs/agent-reports/README.md` for the full rationale.
+
+**Enforcement:** every dispatch brief (including the template below) must explicitly
+instruct the agent where to write its reports. Slug is required and derived from the
+branch/task name — do not leave it to the agent to pick a path.
+
+---
+
 ## Dispatch Template for Each Phase
 
 When dispatching work to DeepSeek teams:
@@ -138,6 +174,10 @@ CONTEXT:
   directory (see DISPATCH_ISOLATION_AND_BRANCH_STRATEGY.md §2 for the exact
   commands). Base: [pinned exact commit SHA, not a branch name]
 - Branch: feature/phase-N-task-M (created from the pinned SHA above)
+- Report slug: <task-slug> (kebab-case task identifier from the branch name, e.g.
+  phase-3a-ai-service) — ALL delivery reports go under
+  docs/agent-reports/<task-slug>/, never the worktree root (see TEAM_DISPATCH_PROTOCOL.md
+  "Report Artifacts" section)
 - Tech stack: React 18, Express, TypeScript, Drizzle ORM, Supabase
 
 STEP 0 — RESEARCH CURRENT BEST PRACTICES (mandatory, before writing any code):
@@ -202,6 +242,18 @@ reviewer seeing it cold:
 - Note any assumption you weren't 100% sure of as a flagged risk in your
   report rather than silently shipping it.
 
+REPORTS (deliverables — write ALL of these under docs/agent-reports/<task-slug>/,
+using the slug from CONTEXT above; do NOT drop REPORT.md / SELF_REVIEW.md /
+RESEARCH_REPORT.md at the worktree root — that is what causes add/add merge
+conflicts when parallel task branches are merged together):
+- docs/agent-reports/<task-slug>/REPORT.md — delivery report: what changed, how
+  each acceptance criterion was verified (actual commands run, not assertions),
+  research findings with URLs, flagged risks. Follow TEAM_DELIVERY_REPORT.md.
+- docs/agent-reports/<task-slug>/SELF_REVIEW.md — the self-vetting pass above,
+  documented as findings + fixes.
+- docs/agent-reports/<task-slug>/RESEARCH_REPORT.md — only if the STEP 0 research
+  produced a standalone write-up worth keeping.
+
 COMMIT MESSAGE:
 [Provide exact commit message to use; ensure it references the task]
 
@@ -210,15 +262,96 @@ DO NOT:
 - Add adjacent refactoring
 - Modify git history (create new commits only)
 - Work in the canonical repo directory instead of your worktree
+- Write REPORT.md, SELF_REVIEW.md, or any report file at the worktree root —
+  everything goes under docs/agent-reports/<task-slug>/
 
 DONE WHEN:
 - Research step completed and documented
 - All files modified as specified
 - TypeScript check passes (npm run check)
 - Self-vetting pass completed and documented
+- Reports written to docs/agent-reports/<task-slug>/ (REPORT.md + SELF_REVIEW.md)
 - Commit message matches template
 - Ready for review by Claude before merging
 ```
+
+---
+
+## Task Lifecycle Step: Push Branch + Open Draft PR (immediately after COMPLETE)
+
+As soon as a task's dispatch brief is marked COMPLETE **and** its commit exists —
+before Claude's review, before merge — the coordinator must, in that same session:
+
+1. **Push the task branch to origin:**
+
+   ```bash
+   git push -u origin <branch-N>
+   ```
+
+2. **Open a draft PR against `main`** (draft, not ready-for-review) with the
+   acceptance criteria from the dispatch brief in the body:
+
+   ```bash
+   gh pr create --draft \
+     --title "[<task-id>] <short title>" \
+     --body "$(cat <<'BODY'
+   Draft PR for task branch `<branch-N>`.
+
+   **Acceptance criteria (from DISPATCH_BRIEF.md):**
+   1. <criterion 1>
+   2. <criterion 2>
+   3. <criterion 3>
+
+   **Reports:** docs/agent-reports/<task-slug>/REPORT.md · SELF_REVIEW.md
+   BODY
+   )"
+   ```
+
+   The title must be `[<task-id>] <short title>` (e.g. `[3A] Centralize AI
+   integration into aiService wrapper`). Copy the acceptance criteria verbatim from
+   the task's DISPATCH_BRIEF.md into the PR body so the PR is the review contract,
+   not a re-derivation. Flag syntax above is current for `gh` ≥ 2.92
+   (`-d/--draft`, `-t/--title`, `-b/--body` all verified against installed CLI).
+
+**Why immediately, as a draft:** GitHub becomes the audit trail and diff-review
+surface from the moment the chunk exists, instead of history being reconstructed
+after the fact. Draft (not "ready for review") means the branch can keep absorbing
+fix-it commits from review feedback without noise — and it gives a stable URL, a
+diff view, and `gh pr view --json mergeable,mergeStateStatus,reviewDecision` to gate
+on, before anything is merged. If a chunk is superseded, close the draft PR rather
+than leaving a zombie.
+
+**Lifecycle at a glance:** dispatch → agent works in isolated worktree → COMPLETE +
+commit → **push branch + open draft PR** → Claude reviews (via the draft PR) →
+merge into main → delete branch (`git branch -d` / `gh pr merge --delete-branch`)
+→ push main immediately (next section).
+
+---
+
+## Push Discipline: Never Batch Pushes of Merged Work
+
+After **any** local merge of a task branch into an integration/main branch, push that
+integration branch to origin **immediately**. Do not batch multiple task merges and
+push once — batching is exactly what produced the "is this diverged?" ambiguity
+(local `main` sitting N commits ahead of `origin/main`, requiring manual
+bidirectional ancestry checks that were nearly misread). With push-after-every-merge,
+`origin/main` always reflects the trunk and a plain `git push` is a fast-forward by
+construction.
+
+Before that push, run the pre-push gate:
+
+```bash
+scripts/git-safety-checks.sh pre-push-gate
+```
+
+(being added by a parallel task on branch `feature/git-workflow-infra-a`; it fetches
+origin and asserts `git merge-base --is-ancestor origin/main main` — local
+ahead-or-equal is safe to push, divergence or error fails loudly. Until that script
+exists, run `git fetch origin && git merge-base --is-ancestor origin/main main`
+directly.)
+
+Make "merge + `git push`" a single atomic step in the session checklist — never a
+bare `git merge <branch>` followed by "I'll push later."
 
 ---
 
@@ -233,6 +366,9 @@ After each DeepSeek team completes a task:
 - [ ] Commit messages reference the task number + gate issue fixed
 - [ ] No adjacent files modified
 - [ ] JSDoc on new public methods (if applicable)
+- [ ] Reports live under `docs/agent-reports/<task-slug>/` — no root-level
+      `REPORT.md` / `SELF_REVIEW.md` / `RESEARCH_REPORT.md`
+- [ ] Task branch pushed to origin and draft PR opened (or already open)
 
 ---
 
@@ -258,9 +394,13 @@ Time: T₁ (after teams submit) — Claude reviews all 3 branches
 
 Time: T₂ — Merge all 3 teams' work into integration branch
 
+- Each team already pushed its branch and opened a draft PR at T₁ (per "Task
+  Lifecycle Step" above) — review happens on those PRs, not on ad-hoc local diffs.
 - Resolve any conflicts (unlikely given isolated changes)
 - Run full TypeScript check
-- Prepare PR with all 3 teams' commits
+- Push the integration branch to origin immediately after the merge (do NOT batch —
+  see "Push Discipline" above), gated by scripts/git-safety-checks.sh pre-push-gate
+- Mark the per-task draft PRs ready / merge or close them; delete merged branches
 
 Time: T₃ — Run gate on merged code
 
