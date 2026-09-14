@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@/lib/queryKeys';
 import { Card } from '@/components/ui/card';
 import { Info } from 'lucide-react';
 import { Link } from 'wouter';
@@ -99,7 +100,7 @@ export function TDScoresWidget() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
-    queryKey: ['td-scores-widget-v2'],
+    queryKey: queryKeys.td.scoresWidget(),
     queryFn: async () => {
       const res = await fetch('/api/parliamentary/scores/widget');
       if (!res.ok) throw new Error('Failed to fetch');

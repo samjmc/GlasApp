@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { useQueryClient } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -75,18 +76,14 @@ const AddEvolutionPoint: React.FC<AddEvolutionPointProps> = ({ onSuccess, onCanc
       // Determine ideology based on scores
       const ideology = determineIdeology(formData.economicScore, formData.socialScore);
       
-      const response = await fetch('/api/political-evolution', {
+      const data = await apiRequest<{ success: boolean; message?: string }>({
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+        path: '/api/political-evolution',
+        body: {
           ...formData,
           ideology
-        }),
+        },
       });
-
-      const data = await response.json();
 
       if (data.success) {
         // Refresh political evolution data
