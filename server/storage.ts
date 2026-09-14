@@ -6,7 +6,6 @@ import {
   emailVerificationTokens,
   twoFactorTokens,
   phoneVerificationTokens,
-  emailVerificationTokens,
   userActivity,
   type User,
   type InsertUser,
