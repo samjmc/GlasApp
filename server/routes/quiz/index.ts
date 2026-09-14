@@ -13,28 +13,14 @@
 
 import express, { Request, Response } from "express";
 import { z } from "zod";
-import OpenAI from "openai";
+import type OpenAI from "openai";
 import { quizHistoryService } from "../../services/quizHistoryService";
 import { generatePoliticalProfileExplanation } from "../../services/openaiService";
+import { callChatCompletion } from "../../services/aiService";
 import { IdeologicalDimensions } from "@shared/quizTypes";
 import { isAuthenticated } from "../../replitAuth";
 
 const router = express.Router();
-
-// Initialize the OpenAI client lazily
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. Quiz AI assistant features are disabled.');
-    }
-    openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
-    });
-  }
-  return openai;
-}
 
 // The newest OpenAI model is "gpt-4o" which was released May 13, 2024
 const MODEL = "gpt-4o";
@@ -259,12 +245,12 @@ router.post("/assistant", async (req: Request, res: Response, next) => {
       }
     ];
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: MODEL,
-      messages: messages as unknown, // Type assertion needed due to OpenAI types
+      messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[], // Type assertion needed due to OpenAI types
       max_tokens: 500, // Limit response length
       temperature: 0.7 // Some creativity but not too random
-    });
+    }, { operation: 'quizChat' });
     
     const answer = response.choices[0].message.content || 
       "I'm sorry, I couldn't generate a helpful response.";

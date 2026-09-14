@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import { callChatCompletion, isOpenAIConfigured } from './aiService.js';
 import { supabaseDb } from '../db';
 import {
   POLICY_DOMAINS,
@@ -42,19 +42,6 @@ export interface PolicyOpportunityRecord {
   confidence?: number;
   rationale?: string;
   source_hint?: string;
-}
-
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI | null {
-  if (!process.env.OPENAI_API_KEY) {
-    console.warn('⚠️  OPENAI_API_KEY not set. Skipping policy opportunity generation.');
-    return null;
-  }
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
 }
 
 const CLASSIFICATION_PROMPT = ({
@@ -356,11 +343,13 @@ async function callLLMForOpportunity(
   article: ArticleForOpportunity,
   targetDimension?: string,
 ): Promise<PolicyOpportunityLLMResult | null> {
-  const client = getOpenAIClient();
-  if (!client) return null;
+  if (!isOpenAIConfigured()) {
+    console.warn('⚠️  OPENAI_API_KEY not set. Skipping policy opportunity generation.');
+    return null;
+  }
 
   try {
-    const response = await client.chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',
       temperature: 0.2,
       response_format: { type: 'json_object' },
@@ -379,7 +368,7 @@ async function callLLMForOpportunity(
           }),
         },
       ],
-    });
+    }, { operation: 'policyOpportunity' });
 
     const content = response.choices[0].message.content;
     if (!content) return null;
@@ -409,11 +398,13 @@ async function callLLMForOptionVectors(params: {
   policyTopic: string;
   primaryDimension?: string;
 }): Promise<PolicyOptionVectorLLMResult | null> {
-  const client = getOpenAIClient();
-  if (!client) return null;
+  if (!isOpenAIConfigured()) {
+    console.warn('⚠️  OPENAI_API_KEY not set. Skipping policy opportunity generation.');
+    return null;
+  }
 
   try {
-    const response = await client.chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',
       temperature: 0.1,
       response_format: { type: 'json_object' },
@@ -427,7 +418,7 @@ async function callLLMForOptionVectors(params: {
           content: OPTION_VECTOR_PROMPT(params),
         },
       ],
-    });
+    }, { operation: 'optionVectors' });
 
     const content = response.choices[0].message.content;
     if (!content) return null;

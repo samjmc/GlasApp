@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import OpenAI from 'openai';
+import { callChatCompletion, isOpenAIConfigured } from '../services/aiService.js';
 
 const DEFAULT_BATCH_SIZE = 5;
 const DEFAULT_CONCURRENCY = 3;
@@ -83,11 +83,7 @@ const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROL
   }
 });
 
-const openaiApiKey = process.env.OPENAI_API_KEY;
-
-const openai = openaiApiKey ? new OpenAI({ apiKey: openaiApiKey }) : null;
-
-if (!openai) {
+if (!isOpenAIConfigured()) {
   console.warn('⚠️  OPENAI_API_KEY not set. No summaries will be generated.');
 }
 
@@ -119,7 +115,7 @@ async function run(): Promise<void> {
         try {
           const { section, day, speeches } = await loadSectionContext(task.section_id);
 
-          if (!openai) {
+          if (!isOpenAIConfigured()) {
             throw new Error('OPENAI_API_KEY not configured.');
           }
 
@@ -308,9 +304,9 @@ ${speechSnippets}`;
 }
 
 async function runOpenAISummary(prompt: string, variant: 'direct' | 'reflective' = 'direct') {
-  if (!openai) return null;
+  if (!isOpenAIConfigured()) return null;
 
-  const response = await openai.chat.completions.create({
+  const response = await callChatCompletion({
     model: 'gpt-4o-mini',
     temperature: 0.3,
     messages: [
@@ -327,7 +323,7 @@ async function runOpenAISummary(prompt: string, variant: 'direct' | 'reflective'
       }
     ],
     max_tokens: 420
-  });
+  }, { operation: 'debateSummary' });
 
   const summary = response.choices?.[0]?.message?.content?.trim();
 
@@ -422,7 +418,7 @@ async function generateAndSaveStances(
   speeches: SpeechDetails[],
   summary: SummaryResult
 ) {
-  if (!openai) return;
+  if (!isOpenAIConfigured()) return;
 
   const candidates = speeches
     .filter((speech) => (speech.word_count || 0) >= MIN_WORDS_FOR_STANCE && speech.id)
@@ -490,11 +486,11 @@ async function generateSpeechStance(
   speech: SpeechDetails,
   summary: SummaryResult
 ): Promise<StanceResult | null> {
-  if (!openai) return null;
+  if (!isOpenAIConfigured()) return null;
 
   const prompt = buildStancePrompt(section, day, speech, summary);
 
-  const response = await openai.chat.completions.create({
+  const response = await callChatCompletion({
     model: 'gpt-4o-mini',
     temperature: 0.25,
     response_format: { type: 'json_object' },
@@ -510,7 +506,7 @@ async function generateSpeechStance(
       }
     ],
     max_tokens: 400
-  });
+  }, { operation: 'debateStance' });
 
   const raw = response.choices?.[0]?.message?.content;
   if (!raw) return null;

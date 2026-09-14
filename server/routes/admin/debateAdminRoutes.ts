@@ -6,7 +6,7 @@
 import { Router } from 'express';
 import { spawn } from 'child_process';
 import { supabaseDb } from '../../db';
-import { getOpenAIClient } from '../../services/openaiService';
+import { callChatCompletion } from '../../services/aiService';
 
 const router = Router();
 
@@ -216,7 +216,7 @@ async function processPoliticianStances(politician: { id: number; politician_nam
   `;
 
   try {
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [
         { role: "system", content: "Extract policy positions. Output valid JSON only." },
@@ -224,7 +224,7 @@ async function processPoliticianStances(politician: { id: number; politician_nam
       ],
       temperature: 0.0,
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'extractPolicyPositions' });
 
     const result = JSON.parse(response.choices[0].message.content || '{}');
     const positions = result.positions || [];

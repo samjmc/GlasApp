@@ -3,22 +3,8 @@
  * Uses Claude and GPT-4 to analyze news articles about TDs
  */
 
-import OpenAI from 'openai';
+import { callChatCompletion } from './aiService.js';
 import { HistoricalContextChecker, type HistoricalContext } from './historicalContextChecker.js';
-
-let openai: OpenAI | null = null;
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. AI news analysis features are disabled.');
-    }
-    openai = new OpenAI({ 
-      apiKey: process.env.OPENAI_API_KEY 
-    });
-  }
-  return openai;
-}
 
 export interface ArticleAnalysis {
   story_type: 'scandal' | 'achievement' | 'policy_work' | 'controversy' | 'constituency_service' | 'neutral';
@@ -552,7 +538,7 @@ export async function analyzeArticleWithOpenAI(
   }
   
   try {
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',  // Fast and cheap
       temperature: 0.3,
       response_format: { type: 'json_object' },
@@ -571,7 +557,7 @@ Respond ONLY with valid JSON.`
         role: 'user',
         content: ANALYSIS_PROMPT(article, politician, partyPositions)
       }]
-    });
+    }, { operation: 'newsAnalysis' });
 
     const analysisText = response.choices[0].message.content || '{}';
     const analysis: ArticleAnalysis = JSON.parse(analysisText);
@@ -888,7 +874,7 @@ Respond with ONLY JSON:
 }
 `;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',
       temperature: 0.5, // Slightly higher for more critical thinking
       response_format: { type: 'json_object' },
@@ -899,7 +885,7 @@ Respond with ONLY JSON:
         role: 'user',
         content: criticalPrompt
       }]
-    });
+    }, { operation: 'criticalAnalysis' });
     
     const analysisText = response.choices[0].message.content || '{}';
     const critical = JSON.parse(analysisText);
@@ -1039,7 +1025,7 @@ Respond with ONLY JSON:
 If NO specific TDs are relevant, return: {"tds": []}
 `;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: 'gpt-4o-mini',
       temperature: 0.2, // Low temperature for factual extraction
       response_format: { type: 'json_object' },
@@ -1050,7 +1036,7 @@ If NO specific TDs are relevant, return: {"tds": []}
         role: 'user',
         content: prompt
       }]
-    });
+    }, { operation: 'tdExtraction' });
     
     const resultText = response.choices[0].message.content || '{"tds":[]}';
     const result = JSON.parse(resultText);

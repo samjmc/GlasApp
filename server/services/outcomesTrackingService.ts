@@ -14,21 +14,7 @@
  */
 
 import { supabaseDb } from '../db';
-import Anthropic from '@anthropic-ai/sdk';
-
-let anthropic: Anthropic | null = null;
-
-function getAnthropicClient(): Anthropic {
-  if (!anthropic) {
-    if (!process.env.ANTHROPIC_API_KEY) {
-      throw new Error('ANTHROPIC_API_KEY is required but not set. Outcomes tracking features are disabled.');
-    }
-    anthropic = new Anthropic({ 
-      apiKey: process.env.ANTHROPIC_API_KEY 
-    });
-  }
-  return anthropic;
-}
+import { callAnthropicMessage } from './aiService.js';
 
 // ============================================
 // TYPES
@@ -259,11 +245,11 @@ Respond with JSON:
 }
 `;
 
-  const message = await getAnthropicClient().messages.create({
+  const message = await callAnthropicMessage({
     model: 'claude-sonnet-4-20250514',
     max_tokens: 1000,
     messages: [{ role: 'user', content: prompt }]
-  });
+  }, { operation: 'trackOutcome' });
   
   const text = message.content[0].type === 'text' ? message.content[0].text : '';
   const jsonMatch = text.match(/\{[\s\S]*\}/);
@@ -385,11 +371,11 @@ Respond with JSON:
 }
 `;
 
-  const message = await getAnthropicClient().messages.create({
+  const message = await callAnthropicMessage({
     model: 'claude-sonnet-4-20250514',
     max_tokens: 2000,
     messages: [{ role: 'user', content: prompt }]
-  });
+  }, { operation: 'verifyDelivery', timeoutMs: 120_000 });
   
   const text = message.content[0].type === 'text' ? message.content[0].text : '';
   const jsonMatch = text.match(/\{[\s\S]*\}/);
