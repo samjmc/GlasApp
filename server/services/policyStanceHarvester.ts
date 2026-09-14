@@ -148,7 +148,10 @@ async function callLLMForStances(
   content: string,
   policyTopic: string,
 ): Promise<ExtractedStance[]> {
-  if (!isOpenAIConfigured()) return [];
+  if (!isOpenAIConfigured()) {
+    console.warn('⚠️  OPENAI_API_KEY not set. Skipping stance harvesting.');
+    return [];
+  }
 
   try {
     const response = await callResponses({
@@ -186,7 +189,10 @@ async function callLLMForDebateStances(
   policyTopic: string,
 ): Promise<ExtractedStance[]> {
   if (!snippets.length) return [];
-  if (!isOpenAIConfigured()) return [];
+  if (!isOpenAIConfigured()) {
+    console.warn('⚠️  OPENAI_API_KEY not set. Skipping stance harvesting.');
+    return [];
+  }
 
   try {
     const response = await callResponses({

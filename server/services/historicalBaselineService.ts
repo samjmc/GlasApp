@@ -318,7 +318,7 @@ async function researchWithClaude(
       role: 'user',
       content: BASELINE_SCORING_PROMPT(tdName, constituency, party)
     }]
-  }, { operation: 'claudeBaseline' });
+  }, { operation: 'claudeBaseline', timeoutMs: 300_000 });
   
   const responseText = message.content[0].type === 'text' 
     ? message.content[0].text 
@@ -354,7 +354,7 @@ async function researchWithGPT4(
     }],
     temperature: 0.3,
     max_tokens: 4000
-  }, { operation: 'gpt4Baseline' });
+  }, { operation: 'gpt4Baseline', timeoutMs: 300_000 });
   
   const responseText = completion.choices[0]?.message?.content || '';
   

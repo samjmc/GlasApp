@@ -343,7 +343,10 @@ async function callLLMForOpportunity(
   article: ArticleForOpportunity,
   targetDimension?: string,
 ): Promise<PolicyOpportunityLLMResult | null> {
-  if (!isOpenAIConfigured()) return null;
+  if (!isOpenAIConfigured()) {
+    console.warn('⚠️  OPENAI_API_KEY not set. Skipping policy opportunity generation.');
+    return null;
+  }
 
   try {
     const response = await callChatCompletion({
@@ -395,7 +398,10 @@ async function callLLMForOptionVectors(params: {
   policyTopic: string;
   primaryDimension?: string;
 }): Promise<PolicyOptionVectorLLMResult | null> {
-  if (!isOpenAIConfigured()) return null;
+  if (!isOpenAIConfigured()) {
+    console.warn('⚠️  OPENAI_API_KEY not set. Skipping policy opportunity generation.');
+    return null;
+  }
 
   try {
     const response = await callChatCompletion({
