@@ -140,6 +140,10 @@ These bypass the bearer token and should be migrated in a follow-up pass (kept o
 
 Net **−2** (both genuine pre-existing errors fixed by the `apiRequest` arity corrections). Zero **new** errors was proven by comparing the normalized `(file, message)` key sets: the only apparent differences are pre-existing errors at shifted line numbers (added imports) and two files (`EducationPage`, `Results`) whose error *message text* renders differently due to TS union-member pretty-printing, at identical error counts (75 and 31 respectively). `ErrorBoundary.tsx`, `lib/queryKeys.ts`, and `lib/queryClient.ts` report **zero** tsc errors.
 
+### Re-verification (resume pass, `npm run check` re-run fresh)
+
+Re-ran `npx tsc` (tsbuildinfo cleared) against the committed tree and against a scratch worktree at the pinned parent `9961db2` (`git worktree add --detach`, `node_modules` symlinked). Numbers confirmed exactly: baseline **2699** → current **2697**. A normalized diff that strips line/column numbers and compares the `(file, error TSxxxx, message)` multiset shows the **only** differences between baseline and current are two `TS2554` errors (PledgeVotingInterface.tsx, useActivityTracker.tsx) present in baseline and fixed by this delivery — **zero** errors exist only in the current tree. The two `TDScoresWidget.tsx` `TS18046: 'td' is of type 'unknown'` errors and the `PoliticalEvolutionChart.tsx` `TS2724` missing-export error flagged during review were each confirmed **pre-existing** (identical occurrences in the baseline log; the `TDScoresWidget` instances differ only by a one-line shift from the added import).
+
 ### Query-key correctness (main risk)
 Each migrated key was diffed against its original literal — `["td-stats"]`, `["td-scores-widget-v2"]`, `["party-rankings-v3"]`, `["news-feed-v5", sortBy, page]`, `["biggest-impact-today-v4", regionCode]` — byte-identical. No cache invalidation on ship.
 
