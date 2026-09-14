@@ -262,7 +262,7 @@ router.post('/analysis', isAuthenticated, async (req: Request, res: Response) =>
       temperature: 0.7
     }, { operation: 'politicalEvolution' });
 
-    const analysis = JSON.parse(completion.choices[0].message.content);
+    const analysis = JSON.parse(completion.choices[0].message.content as string);
 
     res.json({ success: true, data: analysis });
   } catch (error) {
