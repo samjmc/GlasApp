@@ -22,6 +22,23 @@
 
 ---
 
+## Research — Current Best Practices Checked
+
+[Mandatory. What version of the relevant library/framework is actually
+installed (check package.json, don't assume), what its current docs/
+changelog say, whether any current security advisories apply, and whether
+existing codebase patterns were followed instead of introducing a newer
+idiom the rest of the repo doesn't use. Cite what you checked — "npm view
+X versions", a specific docs URL, a specific advisory ID — not just "I
+know this."]
+
+- Library/framework + installed version: [name @ version]
+- What was checked: [docs/changelog/advisory checked, with source]
+- Finding: [current best practice for this task, and whether the existing
+  codebase pattern already matches it or needed updating]
+
+---
+
 ## What We Implemented
 
 [Technical details: what code was written, what patterns were followed, what changed]
@@ -47,6 +64,21 @@
 
 **Details:**
 [Any errors, warnings, or issues found and resolved]
+
+---
+
+## Self-Vetting Pass
+
+[Mandatory. Confirm you reviewed your own diff as a skeptical reviewer before
+declaring COMPLETE — not just that checks were run, but that you re-read the
+changes against the acceptance criteria looking for problems.]
+
+- Re-read diff against acceptance criteria: ✓ DONE
+- Verified usage/callers by grep rather than assuming from names: ✓ DONE | N/A
+- Confirmed no invented schema/abstractions beyond what was asked: ✓ DONE
+- Confirmed changes stayed inside declared file scope: ✓ DONE
+- Assumptions not 100% verified (flag honestly, even if none block the work):
+  [List any, or "None — everything was verified directly."]
 
 ---
 

@@ -107,8 +107,31 @@ You are implementing [specific task] for GlasApp refactoring Phase N.
 
 CONTEXT:
 - Repository: /Users/sammcdonnell/Documents/GlasApp
-- Branch: feature/phase-N-task-M (create this branch from main)
+- Worktree: create your own isolated worktree — do NOT work in the canonical
+  directory (see DISPATCH_ISOLATION_AND_BRANCH_STRATEGY.md §2 for the exact
+  commands). Base: [pinned exact commit SHA, not a branch name]
+- Branch: feature/phase-N-task-M (created from the pinned SHA above)
 - Tech stack: React 18, Express, TypeScript, Drizzle ORM, Supabase
+
+STEP 0 — RESEARCH CURRENT BEST PRACTICES (mandatory, before writing any code):
+Before implementing, research the current (not training-data-stale) best
+practice for whatever this task touches — the specific library/framework
+version actually pinned in this repo's package.json, current security
+guidance, and current idiomatic patterns for this kind of change. Concretely:
+- Check the installed version of the relevant library/framework in
+  package.json and look up that version's own docs/changelog — do not assume
+  an older or newer API than what's actually installed.
+- If the task involves auth, data handling, SQL, or anything security-
+  sensitive, check for current (this year's) known vulnerabilities/advisories
+  for the libraries involved.
+- If the task involves a pattern this codebase already uses elsewhere
+  (Drizzle queries, React component structure, etc.), current best practice
+  is usually "match the existing pattern" — don't introduce a newer library
+  idiom that the rest of the codebase doesn't use, unless the task explicitly
+  asks you to modernize that pattern.
+- Report what you checked and what you found in your delivery report's
+  "Research" section (see TEAM_DELIVERY_REPORT.md) — cite the version/doc/
+  advisory you checked, not just "I know this."
 
 TASK OVERVIEW:
 [2-3 sentences describing what needs to be done]
@@ -131,6 +154,20 @@ CODE SPECIFICATIONS:
 TESTING:
 [How to verify work is correct]
 
+SELF-VETTING (mandatory, before writing your delivery report):
+Before declaring COMPLETE, review your own diff as if you were a skeptical
+reviewer seeing it cold:
+- Re-read every changed line against the acceptance criteria — does it
+  actually satisfy them, or does it just look plausible?
+- Check for the failure modes that caused problems in past dispatches:
+  did you verify usage/callers by grep rather than assuming from a name?
+  did you avoid inventing schema/abstractions not asked for? did you keep
+  changes inside the declared file scope?
+- Run every check listed in TESTING above and in ACCEPTANCE CRITERIA
+  yourself — do not report PASS on a check you didn't actually run.
+- Note any assumption you weren't 100% sure of as a flagged risk in your
+  report rather than silently shipping it.
+
 COMMIT MESSAGE:
 [Provide exact commit message to use; ensure it references the task]
 
@@ -138,10 +175,13 @@ DO NOT:
 - Make changes outside the listed files
 - Add adjacent refactoring
 - Modify git history (create new commits only)
+- Work in the canonical repo directory instead of your worktree
 
 DONE WHEN:
+- Research step completed and documented
 - All files modified as specified
 - TypeScript check passes (npm run check)
+- Self-vetting pass completed and documented
 - Commit message matches template
 - Ready for review by Claude before merging
 ```
