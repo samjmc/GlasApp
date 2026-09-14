@@ -44,7 +44,7 @@ installed package types before writing. `dotenv` is already a dependency
 
 ## Files migrated to route through aiService.ts
 
-From `git status` (all under `server/`), 22 files modified + 1 new:
+From `git status` (all under `server/`), 23 files modified + 1 new:
 
 ```
 server/services/aiService.ts                      (NEW — the wrapper)
@@ -55,6 +55,7 @@ server/routes/admin/debateAdminRoutes.ts
 server/routes/ai/analysis.ts
 server/routes/chatRoutes.ts
 server/routes/politicianChatRoutes.ts
+server/routes/politicalEvolutionRoutes.ts
 server/routes/quiz/index.ts
 server/routes/storytellingRoutes.ts
 server/scripts/analyze_narrative.ts
@@ -80,25 +81,40 @@ was checked and does NOT call the AI SDK directly (only imports
 `generateVoteQuestion` from openaiService), so it was left unmodified.
 
 `chatRoutes.ts`, `politicianChatRoutes.ts`, `quiz/index.ts`,
-`storytellingRoutes.ts`, `admin/debateAdminRoutes.ts`, `ai/analysis.ts` and
-`scripts/analyze_narrative.ts` were migrated during this task run — note this
-because an earlier session's status snapshot listed some of them as not-yet
-migrated; the worktree on disk is the ground truth and they are done.
+`storytellingRoutes.ts`, `admin/debateAdminRoutes.ts`, `ai/analysis.ts`,
+`politicalEvolutionRoutes.ts` and `scripts/analyze_narrative.ts` were migrated
+during this task run — note this because an earlier session's status snapshot
+listed some of them as not-yet migrated; the worktree on disk is the ground
+truth and they are done.
 
 ## `npm run check` comparison
 
-- Verified baseline (main @ 9961db2, fresh scratch worktree): **2699** errors
-  (provided externally; not re-derived).
-- This worktree, clean tsc run (`rm tsbuildinfo && npm run check`): **2691**
-  errors — **8 fewer** than baseline.
+- Verified baseline (main @ 9961db2, freshly checked out in a scratch worktree,
+  `npm run check`): **2699** errors — re-derived and confirmed in this run, not
+  just inherited from an earlier number.
+- This worktree, clean tsc run (`npm run check`): **2690** errors — **9 fewer**
+  than baseline, after the follow-up one-line type fix below.
 
-The migration net-reduced TypeScript errors. The typed `callChatCompletion`
-boundary is stricter than the raw SDK calls it replaced; the handful of
-`TS2322` ("unknown not assignable to ChatCompletionMessageParam[]") errors it
-surfaced at migrated call sites were fixed with explicit casts to the OpenAI
-types at those boundaries (same escape-hatch intent as the pre-existing
-`as unknown`). `server/services/aiService.ts` itself compiles with zero errors.
-All remaining errors in the edited files are pre-existing and unchanged.
+The migration net-reduced TypeScript errors. Compared as `(file, error-code)`
+pairs (not raw line numbers, since edits shift lines), the current tree has
+**zero new pairs** versus baseline: every error in the edited files is a subset
+of the pre-existing errors, and 9 pre-existing `TS2769` ("No overload matches
+this call") errors from the old `as unknown` SDK calls were eliminated by
+routing through the wrapper. The typed `callChatCompletion` boundary is
+stricter than the raw SDK calls it replaced; the handful of `TS2322` ("unknown
+not assignable to ChatCompletionMessageParam[]") errors it surfaced at migrated
+call sites were fixed with explicit casts to the OpenAI types at those
+boundaries (same escape-hatch intent as the pre-existing `as unknown`).
+`server/services/aiService.ts` itself compiles with zero errors. All remaining
+errors in the edited files are pre-existing and unchanged.
+
+One genuinely-new error surfaced during this run —
+`server/routes/politicalEvolutionRoutes.ts:265` `TS2345` (`string | null` into
+`JSON.parse`), because the raw-`fetch` call it replaced had an `any` body while
+the wrapper returns a typed `ChatCompletion` whose `message.content` is
+`string | null`. Fixed by casting to `string` (runtime behaviour identical to
+the original, which passed the same value into `JSON.parse`). This fix is the
+follow-up commit.
 
 ## Remaining work for follow-up
 
@@ -132,8 +148,9 @@ they were added to cover the SDK surface for follow-up migrations.
 - [x] Changes kept inside the files-to-modify list plus extra direct-AI-SDK
       callers found by grep (documented above). No `client/`, no `schema.ts`,
       no `*Scoring*.ts`, no adjacent refactoring.
-- [x] Ran `npm run check` myself in this worktree: **2691** errors (clean run,
-      cache cleared), below the 2699 baseline. Not assumed.
+- [x] Ran `npm run check` myself in this worktree: **2690** errors (clean run),
+      below the 2699 baseline, with **zero new (file, error-code) pairs** vs a
+      fresh scratch-worktree baseline I re-derived. Not assumed.
 - [x] Risks flagged: (1) the fallback cache is an in-memory stopgap pending
       Phase 3C — not persisted; (2) boundary casts at migrated call sites
       preserve the prior `as unknown`/`@ts-ignore` escape-hatch behaviour rather
@@ -143,5 +160,9 @@ they were added to cover the SDK surface for follow-up migrations.
 
 ## Commit
 
-Created with the message:
+Main commit created with the exact required message:
 `refactor: centralize AI integration into aiService wrapper (Phase 3A)`
+
+Follow-up commit (this report's accuracy fixes + the one-line
+`politicalEvolutionRoutes.ts` TS2345 fix, which was added after the main commit
+was created): see `git log` for the second commit on this branch.
