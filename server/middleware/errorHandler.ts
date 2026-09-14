@@ -7,6 +7,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { AppError } from '../utils/errors';
 import { formatError, ErrorCodes } from '../utils/responseFormatters';
+import { requestLogger } from '../utils/logger';
 
 // Type for async route handler functions
 export type AsyncRouteHandler = (
@@ -26,23 +27,32 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  // Log error details (but don't expose to client)
-  const errorLog = {
-    timestamp: new Date().toISOString(),
-    error: err.message,
-    stack: err.stack,
-    path: req.path,
-    method: req.method,
-    ip: req.ip,
-    user: (req as any).user?.id || 'anonymous',
-  };
+  const log = requestLogger(req);
+  const userId =
+    (req as any).user?.id ?? (req as any).session?.userId ?? 'anonymous';
 
-  console.error('🚨 Error occurred:', errorLog);
+  // Log full error details server-side (never exposed to the client)
+  log.error(
+    {
+      err,
+      path: req.path,
+      method: req.method,
+      userId,
+    },
+    'Request failed'
+  );
 
   // Handle known AppError instances
   if (err instanceof AppError) {
+    const details = (err as AppError & { details?: unknown }).details;
     return res.status(err.statusCode).json(
-      formatError(err.code, err.message)
+      formatError(
+        err.code,
+        err.message,
+        details !== undefined
+          ? (details as Record<string, unknown>)
+          : undefined
+      )
     );
   }
 
@@ -77,13 +87,13 @@ export const errorHandler = (
   }
 
   // Unknown error - don't leak details in production
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  const isProduction = process.env.NODE_ENV === 'production';
 
   return res.status(500).json(
     formatError(
       'INTERNAL_ERROR',
-      isDevelopment ? err.message : ErrorCodes.INTERNAL_ERROR,
-      isDevelopment ? { stack: err.stack } : undefined
+      isProduction ? ErrorCodes.INTERNAL_ERROR : err.message,
+      isProduction ? undefined : { stack: err.stack }
     )
   );
 };

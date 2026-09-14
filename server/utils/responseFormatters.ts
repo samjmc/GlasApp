@@ -14,9 +14,17 @@ export interface SuccessResponse<T> {
   meta?: SuccessResponseMeta;
 }
 
-export interface ErrorDetails {
-  [key: string]: unknown;
+/**
+ * Success response where the `data` payload is optional (e.g. operations with
+ * no meaningful payload such as logout).
+ */
+export interface ApiSuccessResponse<T = unknown> {
+  success: true;
+  data?: T;
+  meta?: SuccessResponseMeta;
 }
+
+export type ErrorDetails = string | Record<string, unknown>;
 
 export interface ErrorResponse {
   success: false;
@@ -68,12 +76,55 @@ export function formatSuccess<T>(data: T, meta?: SuccessResponseMeta): SuccessRe
 }
 
 /**
+ * Format a success response where `data` is optional
+ * Enforces the canonical { success, data?, meta? } shape for operations that
+ * have no meaningful payload.
+ *
+ * @param data - Optional response data payload
+ * @param meta - Optional metadata (pagination, timestamps, etc.)
+ * @returns Formatted success response
+ *
+ * @example
+ * // Success without a payload
+ * return formatResponse();
+ * // Returns: { success: true }
+ *
+ * @example
+ * // Success with a payload
+ * return formatResponse({ message: 'Logged out successfully' });
+ * // Returns: { success: true, data: { message: 'Logged out successfully' } }
+ */
+export function formatResponse<T = unknown>(
+  data?: T,
+  meta?: SuccessResponseMeta
+): ApiSuccessResponse<T> {
+  const response: ApiSuccessResponse<T> = {
+    success: true,
+  };
+
+  if (data !== undefined) {
+    response.data = data;
+  }
+
+  if (meta && Object.keys(meta).length > 0) {
+    response.meta = meta;
+  }
+
+  return response;
+}
+
+/**
  * Format an error response with standardized structure
  * Replaces inconsistent error response patterns
  *
+ * `details` (diagnostic detail such as stacks, DB errors, field-level
+ * validation output) is only attached when NOT running in production, to
+ * avoid leaking implementation internals to API consumers (see CWE-209 /
+ * OWASP Error Handling Cheat Sheet).
+ *
  * @param code - Error code (e.g., 'VALIDATION_ERROR', 'NOT_FOUND', 'DATABASE_ERROR')
  * @param message - User-facing error message
- * @param details - Optional additional error details for debugging
+ * @param details - Optional additional error details for debugging (suppressed in production)
  * @returns Formatted error response
  *
  * @example
@@ -82,7 +133,7 @@ export function formatSuccess<T>(data: T, meta?: SuccessResponseMeta): SuccessRe
  * // Returns: { success: false, error: { message: 'Article not found', code: 'NOT_FOUND' } }
  *
  * @example
- * // Error with details
+ * // Error with details (only present outside production)
  * return formatError('VALIDATION_ERROR', 'Invalid input', {
  *   field: 'email',
  *   reason: 'Invalid email format'
@@ -102,7 +153,14 @@ export function formatError(
     },
   };
 
-  if (details && Object.keys(details).length > 0) {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const hasDetails =
+    details !== undefined &&
+    (typeof details === 'string'
+      ? details.length > 0
+      : Object.keys(details).length > 0);
+
+  if (!isProduction && hasDetails) {
     response.error.details = details;
   }
 
