@@ -134,7 +134,14 @@ export const quizResults = pgTable("quiz_results", {
 });
 
 // Historical quiz results to track changes over time
-export const quizResultsHistory = pgTable("quiz_results_history", {
+// ARCHIVED 2026-09-14 (Phase 2B schema cleanup): the only code path that reads/writes this
+// table (server/services/quizResultsService.ts, via server/routes/profileHistoryRoutes.ts)
+// is never mounted in server/routes.ts and has zero live callers in client/src or server.
+// The live quiz-history feature (/api/quiz-history, server/routes/quiz/index.ts) uses a
+// separate raw-SQL "quiz_history" table via quizHistoryService.ts, not this Drizzle table.
+// Physical table renamed to archived_quiz_results_history (see migrations/); the exported
+// TS symbol name is kept unchanged so any existing (dead) code referencing it still compiles.
+export const quizResultsHistory = pgTable("archived_quiz_results_history", {
   id: serial("id").primaryKey(),
   originalResultId: integer("original_result_id").references(() => quizResults.id),
   userId: varchar("user_id", { length: 100 }).references(() => users.id),
