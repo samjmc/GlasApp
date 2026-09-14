@@ -9,7 +9,7 @@
  * - Dev-user-123 is ONLY available in NODE_ENV=development
  */
 
-import { describe, it, expect, beforeAll, afterAll } from '@jest/globals';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import type { Express } from 'express';
 
 // Test constants
