@@ -28,6 +28,7 @@ import path from 'path';
 import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector } from '../../constants/ideology.js';
 import { asyncHandler } from '../../middleware/errorHandler';
 import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
+import { requireAdminAccess } from '../../middleware/adminAccess';
 
 const router = Router();
 
@@ -831,7 +832,7 @@ router.get('/constituency/:constituency', asyncHandler(async (req, res) => {
 /**
  * POST /api/parliamentary/scores/recalculate - Trigger comprehensive score recalculation (admin)
  */
-router.post('/recalculate', asyncHandler(async (req, res) => {
+router.post('/recalculate', requireAdminAccess, asyncHandler(async (req, res) => {
   console.log('🔄 Manual comprehensive score recalculation triggered...');
 
   // Import the job
