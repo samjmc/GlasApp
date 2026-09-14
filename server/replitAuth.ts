@@ -44,6 +44,13 @@ const getOidcConfig = memoize(
   { maxAge: 3600 * 1000 }
 );
 
+/**
+ * Configure and return Express session middleware.
+ * Uses PostgreSQL session store if DATABASE_URL is available, otherwise falls back to memory store.
+ * Session TTL is 7 days.
+ *
+ * @returns Configured session middleware
+ */
 export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   
@@ -97,6 +104,13 @@ async function upsertUser(
   });
 }
 
+/**
+ * Initialize authentication system with Replit OpenID Connect.
+ * Sets up session middleware, Passport.js, login/logout/callback routes.
+ * Only activates if REPLIT_DOMAINS env var is set; otherwise skips for local development.
+ *
+ * @param app Express application instance
+ */
 export async function setupAuth(app: Express) {
   app.set("trust proxy", 1);
   app.use(getSession());
