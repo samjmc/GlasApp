@@ -3,6 +3,8 @@ import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
 import { requireAdminAccess } from '../middleware/adminAccess';
 import { getCachedOrFetch, CACHE_TTL } from '../utils/serverCache';
+import { formatSuccess, formatError } from '../utils/responseFormatters';
+import { requestLogger } from '../utils/logger';
 import {
   DEFAULT_REGION_CODE,
   REGION_NEWS_MOCK,
@@ -111,30 +113,33 @@ function buildOptimizedArticleQuery() {
 // - Moved sorting to post-fetch (not DB-side) for impact scoring
 // - Expected improvement: 3-5x faster on queries, 600x fewer DB ops for large result sets
 router.get('/', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
-    console.log('📰 News feed request received');
+    log.info({ operation: 'newsFeed.list' }, 'News feed request received');
     const { limit = 20, cursor, sort = 'recent' } = req.query;
     const pageSize = Math.min(Number(limit) || 20, 100); // Cap at 100 per page
     const regionCode: RegionCode = req.regionCode || DEFAULT_REGION_CODE;
 
     const mockResponse = REGION_NEWS_MOCK[regionCode];
     if (mockResponse) {
-      console.log(`📡 Serving mock news feed for region ${regionCode}`);
-      return res.json({
-        ...mockResponse,
-        last_updated: new Date().toISOString(),
-        regionCode,
-        pagination: {
-          cursor: null,
-          hasMore: false,
-        },
-      });
+      log.info({ operation: 'newsFeed.list', regionCode }, `Serving mock news feed for region ${regionCode}`);
+      return res.json(
+        formatSuccess({
+          ...mockResponse,
+          last_updated: new Date().toISOString(),
+          regionCode,
+          pagination: {
+            cursor: null,
+            hasMore: false,
+          },
+        })
+      );
     }
 
     // Fetch from Supabase database
     if (supabaseDb) {
       try {
-        console.log('🔍 Fetching from Supabase with cursor-based pagination...');
+        log.info({ operation: 'newsFeed.list' }, 'Fetching from Supabase with cursor-based pagination...');
 
         let articles: NewsArticleWithScores[] = [];
         let totalCount = 0;
@@ -147,7 +152,7 @@ router.get('/', async (req: Request, res: Response) => {
         // Key insight: All paths need the same relations. Fetch them once.
 
         if (sort === 'score' || sort === 'highest') {
-          console.log('🎯 Fetching highest-impact articles (N+1 FIXED: now 1 query)...');
+          log.info({ operation: 'newsFeed.list' }, 'Fetching highest-impact articles (N+1 FIXED: now 1 query)...');
 
           // OPTIMIZATION: Fetch with all relations in ONE query
           let query = buildOptimizedArticleQuery()
@@ -158,7 +163,7 @@ router.get('/', async (req: Request, res: Response) => {
           const { data: rawArticles, count, error: err } = await query;
 
           if (err) {
-            console.error('Error fetching articles:', err);
+            log.error({ operation: 'newsFeed.list', err }, 'Error fetching articles');
             articles = [];
             queryError = err;
           } else {
@@ -214,12 +219,13 @@ router.get('/', async (req: Request, res: Response) => {
               (a: NewsArticleWithScores) =>
                 (a.totalTDImpact ?? 0) === 0 && a.hasPolicyOpportunity
             ).length;
-            console.log(
-              `✨ Found ${articles.length} high-impact articles. TD-scored: ${tdScoredCount}, Policy-only: ${policyOnlyCount}`
+            log.info(
+              { operation: 'newsFeed.list', count: articles.length, tdScoredCount, policyOnlyCount },
+              `Found ${articles.length} high-impact articles. TD-scored: ${tdScoredCount}, Policy-only: ${policyOnlyCount}`
             );
           }
         } else if (sort === 'today') {
-          console.log('🎯 Finding today\'s biggest impact article (N+1 FIXED: now 1 query)...');
+          log.info({ operation: 'newsFeed.list' }, `Finding today's biggest impact article (N+1 FIXED: now 1 query)...`);
 
           const today = new Date();
           today.setHours(0, 0, 0, 0);
@@ -240,11 +246,11 @@ router.get('/', async (req: Request, res: Response) => {
           const { data: todayArticles, count: todayCount, error: err1 } = await query;
 
           if (err1) {
-            console.error('Error fetching today\'s articles:', err1);
+            log.error({ operation: 'newsFeed.list', err: err1 }, `Error fetching today's articles`);
             queryError = err1;
             articles = [];
           } else if (!todayArticles || todayArticles.length === 0) {
-            console.log('📅 No articles from today, checking last 30 days...');
+            log.info({ operation: 'newsFeed.list' }, 'No articles from today, checking last 30 days...');
 
             const thirtyDaysAgo = new Date();
             thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -259,7 +265,7 @@ router.get('/', async (req: Request, res: Response) => {
             const { data: recentArticles, count: recentCount, error: err2 } = await query2;
 
             if (err2) {
-              console.error('Error fetching recent articles:', err2);
+              log.error({ operation: 'newsFeed.list', err: err2 }, 'Error fetching recent articles');
               queryError = err2;
               articles = [];
             } else {
@@ -272,7 +278,7 @@ router.get('/', async (req: Request, res: Response) => {
                 policyVotes: a.policy_vote_opportunities || [],
               }));
               totalCount = recentCount || 0;
-              console.log(`✨ Found ${articles.length} articles from recent period`);
+              log.info({ operation: 'newsFeed.list', count: articles.length }, `Found ${articles.length} articles from recent period`);
             }
           } else {
             articles = (todayArticles || []).map((a: NewsArticleWithScores) => ({
@@ -287,7 +293,7 @@ router.get('/', async (req: Request, res: Response) => {
           }
         } else {
           // Regular date-based sorting with cursor pagination
-          console.log('📅 Fetching recent articles with cursor pagination (N+1 FIXED: now 1 query)...');
+          log.info({ operation: 'newsFeed.list' }, 'Fetching recent articles with cursor pagination (N+1 FIXED: now 1 query)...');
 
           let query = buildOptimizedArticleQuery()
             .eq('visible', true)
@@ -308,7 +314,7 @@ router.get('/', async (req: Request, res: Response) => {
           const { data: result, count: resultCount, error: err } = await query.limit(pageSize + 1);
 
           if (err) {
-            console.error('Error fetching articles:', err);
+            log.error({ operation: 'newsFeed.list', err }, 'Error fetching articles');
             queryError = err;
             articles = [];
           } else {
@@ -321,8 +327,9 @@ router.get('/', async (req: Request, res: Response) => {
               nextCursor = encodeCursor(lastArticle.id, lastArticle.published_date);
             }
 
-            console.log(
-              `✅ Fetched ${articles.length} articles (cursor=${cursor ? 'provided' : 'none'})`
+            log.info(
+              { operation: 'newsFeed.list', count: articles.length, cursorProvided: !!cursor },
+              `Fetched ${articles.length} articles (cursor=${cursor ? 'provided' : 'none'})`
             );
           }
         }
@@ -468,76 +475,71 @@ router.get('/', async (req: Request, res: Response) => {
           };
         });
 
-        return res.json({
-          success: true,
-          articles: transformedArticles,
-          total: totalCount || 0,
-          last_updated: new Date().toISOString(),
-          source: 'Supabase Database',
-          sort: sort,
-          regionCode,
-          pagination: {
-            cursor: nextCursor,
-            hasMore: !!nextCursor,
-          },
-          // PERFORMANCE METRICS (for benchmarking)
-          _perf: {
-            queryMethod: 'unified_single_query',
-            cursorPagination: !!cursor,
-            queriesExecuted: 1,
-            notesN1Fixed:
-              'Eliminated N+1 pattern: was 3 queries per request (fetch articles, fetch td_scores again, fetch stances), now 1 unified query'
-          }
-        });
+        return res.json(
+          formatSuccess({
+            articles: transformedArticles,
+            total: totalCount || 0,
+            last_updated: new Date().toISOString(),
+            source: 'Supabase Database',
+            sort: sort,
+            regionCode,
+            pagination: {
+              cursor: nextCursor,
+              hasMore: !!nextCursor,
+            },
+            // PERFORMANCE METRICS (for benchmarking)
+            _perf: {
+              queryMethod: 'unified_single_query',
+              cursorPagination: !!cursor,
+              queriesExecuted: 1,
+              notesN1Fixed:
+                'Eliminated N+1 pattern: was 3 queries per request (fetch articles, fetch td_scores again, fetch stances), now 1 unified query'
+            }
+          })
+        );
       } catch (dbError: any) {
-        console.error('Supabase fetch failed:', dbError.message);
+        log.error({ operation: 'newsFeed.list', err: dbError }, 'Supabase fetch failed');
         throw dbError;
       }
     }
 
     // Fallback if no database
-    res.json({
-      success: true,
-      articles: [],
-      total: 0,
-      last_updated: new Date().toISOString(),
-      source: 'No Database',
-      message: 'Database not connected',
-      regionCode,
-      pagination: {
-        cursor: null,
-        hasMore: false,
-      },
-    });
+    res.json(
+      formatSuccess({
+        articles: [],
+        total: 0,
+        last_updated: new Date().toISOString(),
+        source: 'No Database',
+        message: 'Database not connected',
+        regionCode,
+        pagination: {
+          cursor: null,
+          hasMore: false,
+        },
+      })
+    );
   } catch (error: any) {
-    console.error('❌ Error fetching news feed:', error);
-    res.status(500).json({
-      success: false,
-      articles: [],
-      total: 0,
-      message: 'Failed to fetch news feed',
-      error: error.message,
-      regionCode: req.regionCode || DEFAULT_REGION_CODE,
-      pagination: {
-        cursor: null,
-        hasMore: false,
-      },
-    });
+    log.error({ operation: 'newsFeed.list', err: error }, 'Error fetching news feed');
+    res.status(500).json(
+      formatError('OPERATION_FAILED', 'Failed to fetch news feed', {
+        error: error.message,
+      })
+    );
   }
 });
 
 // POST /api/news-feed/save - Save article from trusted aggregator jobs
 router.post('/save', requireAdminAccess, async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const article = req.body;
-    console.log(`📰 Saving article: ${article.title?.substring(0, 60)}...`);
+    log.info({ operation: 'newsFeed.save' }, `Saving article: ${article.title?.substring(0, 60)}...`);
 
     if (!supabaseDb) {
-      console.warn('⚠️  Supabase not connected - article not saved');
-      return res.status(503).json({
-        success: false,
-        message: 'Database not connected'
-      });
+      log.warn({ operation: 'newsFeed.save' }, 'Supabase not connected - article not saved');
+      return res.status(503).json(
+        formatError('OPERATION_FAILED', 'Database not connected')
+      );
     }
 
     // Map Python aggregator fields to database schema
@@ -567,40 +569,43 @@ router.post('/save', requireAdminAccess, async (req: Request, res: Response) => 
       .single();
 
     if (error) {
-      console.error('Error saving to Supabase:', error);
+      log.error({ operation: 'newsFeed.save', err: error }, 'Error saving to Supabase');
       throw error;
     }
 
-    console.log(`✅ Article saved to Supabase: ID ${saved.id}`);
+    log.info({ operation: 'newsFeed.save', articleId: saved.id }, 'Article saved to Supabase');
 
-    res.status(201).json({
-      success: true,
-      message: 'Article saved to database',
-      article_id: saved.id
-    });
+    res.status(201).json(
+      formatSuccess({
+        message: 'Article saved to database',
+        article_id: saved.id
+      })
+    );
 
   } catch (error: any) {
-    console.error('Error saving article:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to save article',
-      error: error.message
-    });
+    log.error({ operation: 'newsFeed.save', err: error }, 'Error saving article');
+    res.status(500).json(
+      formatError('OPERATION_FAILED', 'Failed to save article', {
+        error: error.message
+      })
+    );
   }
 });
 
 // GET /api/news-feed/td/:name - Get recent news articles for a specific TD
 router.get('/td/:name', async (req: Request, res: Response) => {
+  const log = requestLogger(req);
   try {
     const { name } = req.params;
     const { limit = 3 } = req.query;
 
     if (!supabaseDb) {
-      return res.json({
-        success: true,
-        articles: [],
-        message: 'Database not connected'
-      });
+      return res.json(
+        formatSuccess({
+          articles: [],
+          message: 'Database not connected'
+        })
+      );
     }
 
     // Fetch articles mentioning this TD
@@ -612,11 +617,12 @@ router.get('/td/:name', async (req: Request, res: Response) => {
       .limit(Number(limit));
 
     if (error) {
-      console.error('Error fetching TD news:', error);
-      return res.json({
-        success: true,
-        articles: []
-      });
+      log.error({ operation: 'newsFeed.tdNews', err: error }, 'Error fetching TD news');
+      return res.json(
+        formatSuccess({
+          articles: []
+        })
+      );
     }
 
     // Transform articles for frontend
@@ -632,18 +638,20 @@ router.get('/td/:name', async (req: Request, res: Response) => {
       impact_score: article.impact_score
     }));
 
-    res.json({
-      success: true,
-      articles: transformedArticles,
-      count: transformedArticles.length
-    });
+    res.json(
+      formatSuccess({
+        articles: transformedArticles,
+        count: transformedArticles.length
+      })
+    );
 
   } catch (error: any) {
-    console.error('Error in TD news endpoint:', error);
-    res.json({
-      success: true,
-      articles: []
-    });
+    log.error({ operation: 'newsFeed.tdNews', err: error }, 'Error in TD news endpoint');
+    res.json(
+      formatSuccess({
+        articles: []
+      })
+    );
   }
 });
 
