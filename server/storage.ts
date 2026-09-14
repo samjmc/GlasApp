@@ -4,6 +4,9 @@ import {
   politicalEvolution,
   quizResults,
   emailVerificationTokens,
+  twoFactorTokens,
+  phoneVerificationTokens,
+  userActivity,
   type User,
   type InsertUser,
   type UpsertUser,
@@ -17,7 +20,7 @@ import {
   type ApiResponse,
 } from "@shared/types";
 import { db } from "./db";
-import { eq, sql, and, desc } from "drizzle-orm";
+import { eq, sql, and, desc, lte, gte } from "drizzle-orm";
 
 // Interface for storage operations
 export interface IStorage {
@@ -318,6 +321,155 @@ export class DatabaseStorage implements IStorage {
         eq(partySentimentVotes.partyId, partyId)
       ));
     return vote || undefined;
+  }
+
+  /**
+   * Create a 2FA token for a user.
+   * Used for email verification, login, or password reset flows.
+   *
+   * @param userId - User ID (from auth system)
+   * @param token - 6-digit token code
+   * @param type - Token type: 'email_verification', 'login', 'password_reset'
+   * @param expiresAt - When token expires
+   * @returns Created token record with id, userId, token, type, expiresAt, used, createdAt
+   */
+  // 2FA Token operations
+  async create2FAToken(userId: string, token: string, type: string, expiresAt: Date): Promise<any> {
+    if (!db) throw new Error('Database not initialized');
+    const [result] = await db
+      .insert(twoFactorTokens)
+      .values({
+        userId,
+        token,
+        type,
+        expiresAt,
+      })
+      .returning();
+    return result;
+  }
+
+  /**
+   * Retrieve a valid (non-expired, unused) 2FA token.
+   * Returns null if token not found, expired, already used, or code mismatch.
+   *
+   * @param userId - User ID
+   * @param code - Token code to verify
+   * @param type - Token type to match
+   * @returns Token record if valid and non-expired; null otherwise
+   */
+  async get2FAToken(userId: string, code: string, type: string): Promise<any> {
+    if (!db) throw new Error('Database not initialized');
+    const now = new Date();
+    const [result] = await db
+      .select()
+      .from(twoFactorTokens)
+      .where(
+        and(
+          eq(twoFactorTokens.userId, userId),
+          eq(twoFactorTokens.token, code),
+          eq(twoFactorTokens.type, type),
+          gte(twoFactorTokens.expiresAt, now),
+          eq(twoFactorTokens.used, false)
+        )
+      );
+    return result || null;
+  }
+
+  /**
+   * Mark a 2FA token as used (consumed).
+   * Prevents replay attacks by invalidating token after successful verification.
+   *
+   * @param tokenId - Token record ID
+   */
+  async mark2FATokenAsUsed(tokenId: number): Promise<void> {
+    if (!db) throw new Error('Database not initialized');
+    await db
+      .update(twoFactorTokens)
+      .set({ used: true })
+      .where(eq(twoFactorTokens.id, tokenId));
+  }
+
+  /**
+   * Verify phone number via token code.
+   * Marks token as used and updates user.phoneVerified flag if code is valid.
+   *
+   * @param userId - User ID
+   * @param code - Verification code (6 digits)
+   * @returns true if verification succeeded; false if code invalid, expired, or already used
+   */
+  // Phone verification operations
+  async verifyUserPhone(userId: string, code: string): Promise<boolean> {
+    if (!db) throw new Error('Database not initialized');
+    const now = new Date();
+    const [token] = await db
+      .select()
+      .from(phoneVerificationTokens)
+      .where(
+        and(
+          eq(phoneVerificationTokens.userId, userId),
+          eq(phoneVerificationTokens.token, code),
+          gte(phoneVerificationTokens.expiresAt, now),
+          eq(phoneVerificationTokens.used, false)
+        )
+      );
+
+    if (token) {
+      // Mark token as used
+      await db
+        .update(phoneVerificationTokens)
+        .set({ used: true })
+        .where(eq(phoneVerificationTokens.id, token.id));
+
+      // Update user's phone_verified status
+      await db
+        .update(users)
+        .set({ phoneVerified: true, updatedAt: new Date() })
+        .where(eq(users.id, userId));
+
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Retrieve user activity history starting from a given date.
+   * Returns activity records sorted by creation date (newest first).
+   * Used for tracking quiz completions, votes, quiz saves, etc.
+   *
+   * @param userId - User ID
+   * @param startDate - Earliest date to retrieve activities from
+   * @returns Array of activity records; empty array if none found
+   */
+  // Activity tracking operations
+  async getUserActivityHistory(userId: string, startDate: Date): Promise<any[]> {
+    if (!db) throw new Error('Database not initialized');
+    const activities = await db
+      .select()
+      .from(userActivity)
+      .where(
+        and(
+          eq(userActivity.userId, userId),
+          lte(userActivity.createdAt, startDate)
+        )
+      )
+      .orderBy(desc(userActivity.createdAt));
+    return activities;
+  }
+
+  /**
+   * Retrieve all users with role='bot'.
+   * Used for bot behavior tracking and multi-agent scoring systems.
+   *
+   * @returns Array of bot user records
+   */
+  // Bot operations
+  async getBotUsers(): Promise<User[]> {
+    if (!db) throw new Error('Database not initialized');
+    const bots = await db
+      .select()
+      .from(users)
+      .where(eq(users.role, 'bot'));
+    return bots;
   }
 }
 
