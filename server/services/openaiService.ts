@@ -1,25 +1,11 @@
-import OpenAI from "openai";
 import dotenv from "dotenv";
+import { callChatCompletion, callEmbedding } from "./aiService.js";
 import { IdeologicalDimensions } from "../../shared/quizTypes";
 
 // Make sure environment variables are loaded
 dotenv.config();
 
-// Initialize OpenAI client lazily (only when needed)
-// the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
-let openai: OpenAI | null = null;
-
-export function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. AI analysis features are disabled.');
-    }
-    openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-  }
-  return openai;
-}
+// All outbound AI calls route through aiService (retry/timeout/logging).
 
 // Original analyzer functions
 /**
@@ -60,12 +46,12 @@ export async function analyzePoliticalSentiment(text: string, questionContext: s
     }
     `;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.3,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'analyzePoliticalSentiment' });
 
     const content = response.choices[0].message.content;
     return content ? JSON.parse(content) : null;
@@ -123,12 +109,12 @@ export async function analyzeBulkResponses(responses: { text: string; question: 
     }
     `;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.5,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'analyzeBulkResponses' });
 
     const content = response.choices[0].message.content;
     return content ? JSON.parse(content) : null;
@@ -176,12 +162,12 @@ export async function generatePoliticalProfileExplanation(dimensions: Ideologica
     - approach_to_issues: object with approaches to housing, healthcare, environment, and EU
     `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o", 
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generatePoliticalProfileExplanation' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -227,12 +213,12 @@ export async function generatePoliticalMatches(dimensions: IdeologicalDimensions
     - international_figures: array of objects with name, country, era, and explanation
     `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generatePoliticalMatches' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -430,7 +416,7 @@ Based on the headline and summary above, generate a neutral quick explainer that
 
 Make sure the pros and cons are SPECIFIC to this issue, not generic policy statements like "shows momentum" or "knock-on costs".`;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       temperature: 0.2,
       messages: [
@@ -438,7 +424,7 @@ Make sure the pros and cons are SPECIFIC to this issue, not generic policy state
         { role: "user", content: userPrompt },
       ],
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generateQuickExplainer' });
 
     const content = response.choices[0].message.content;
     if (!content) {
@@ -507,12 +493,12 @@ export async function generatePolicyPredictions(dimensions: IdeologicalDimension
     Format the response as a JSON object with policy areas as keys, each containing stance, reasoning, and comparison fields.
     `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generatePolicyPredictions' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -554,12 +540,12 @@ export async function generateHistoricalContext(dimensions: IdeologicalDimension
     Format the response as a JSON object with historical_evolution, key_events, relation_to_tradition, and future_projection fields.
     `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generateHistoricalContext' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -653,12 +639,12 @@ export async function generateAnswerExplanation(
         - learning_resources: array of objects with title, description, and optional URL
       `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generateAnswerExplanation' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -791,12 +777,12 @@ export async function generateCompleteProfileAnalysis(responses: Array<{
     - issue_positions: object with housing, healthcare, and environment positions
     `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generateCompleteProfileAnalysis' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -853,12 +839,12 @@ export async function generateContextAwareAnalysis(
     Make sure key_similarities and key_differences are always returned as arrays of strings, with each similarity and difference as a separate item in the array.
     `;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generateContextAwareAnalysis' });
     
     // Parse and return the JSON response
     const content = response.choices[0].message.content;
@@ -897,12 +883,12 @@ export async function generateVoteQuestion(
     - answer_options: An object with keys "option_a", "option_b", "option_c"${numOptions === 4 ? ', "option_d"' : ''} and values as the option text.
     `;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       response_format: { type: "json_object" },
-    });
+    }, { operation: 'generateVoteQuestion' });
 
     const content = response.choices[0].message.content;
     return content ? JSON.parse(content) : null;
@@ -919,13 +905,7 @@ export async function generateVoteQuestion(
  */
 export async function generateEmbedding(text: string): Promise<number[]> {
   try {
-    const response = await getOpenAIClient().embeddings.create({
-      model: "text-embedding-3-small",
-      input: text.replace(/\n/g, " "),
-      encoding_format: "float",
-    });
-
-    return response.data[0].embedding;
+    return await callEmbedding(text, { operation: 'generateEmbedding' });
   } catch (error) {
     console.error("Error generating embedding:", error);
     throw error;
@@ -979,12 +959,12 @@ export async function verifyFactCheck(
     }
     `;
 
-    const verification = await getOpenAIClient().chat.completions.create({
+    const verification = await callChatCompletion({
       model: "gpt-4o-mini", // Fast & cheap
       messages: [{ role: "user", content: prompt }],
       temperature: 0.0, // Deterministic
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'verifyFactCheck' });
 
     const content = verification.choices[0].message.content;
     return content ? JSON.parse(content) : { score: 0, is_supported: false, reasoning: "Failed to parse verification" };

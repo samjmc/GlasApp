@@ -1,8 +1,9 @@
-import OpenAI from "openai";
 import * as cheerio from "cheerio";
 import * as dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from 'url';
+import type OpenAI from "openai";
+import { callChatCompletion } from "../services/aiService.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,11 +11,6 @@ const __dirname = path.dirname(__filename);
 // Try to load .env from project root
 const rootPath = path.resolve(__dirname, '../../');
 dotenv.config({ path: path.join(rootPath, '.env') });
-
-// Initialize OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 const TAVILY_API_KEY = process.env.TAVILY_API_KEY;
 
@@ -331,14 +327,14 @@ async function runVisionAgent(imageUrls: string[], articleContext: string) {
         });
     }
 
-    const completion = await openai.chat.completions.create({
+    const completion = await callChatCompletion({
         model: "gpt-4o",
         messages: [
             { role: "system", content: VISION_ANALYST_PROMPT },
-            { role: "user", content: content }
+            { role: "user", content: content as OpenAI.Chat.Completions.ChatCompletionContentPart[] }
         ],
         max_tokens: 500
-    });
+    }, { operation: 'narrativeVision' });
     
     return completion.choices[0].message.content;
 }
@@ -359,12 +355,12 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
     }];
 
     const messages = [{ role: "system", content: systemPrompt }, { role: "user", content: input }];
-    const completion = await openai.chat.completions.create({
+    const completion = await callChatCompletion({
         model: "gpt-4o",
-        messages: messages as unknown,
-        tools: tools as unknown,
+        messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
+        tools: tools as OpenAI.Chat.Completions.ChatCompletionTool[],
         tool_choice: "auto"
-    });
+    }, { operation: 'narrativeLevel3' });
 
     const responseMsg = completion.choices[0].message;
     if (responseMsg.tool_calls) {
@@ -376,7 +372,7 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
                 messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult } as unknown);
             }
         }
-        const second = await openai.chat.completions.create({ model: "gpt-4o", messages: messages as unknown });
+        const second = await callChatCompletion({ model: "gpt-4o", messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[] }, { operation: 'narrativeLevel3Second' });
         return second.choices[0].message.content;
     }
     return responseMsg.content;
@@ -384,10 +380,10 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
 
 async function runStandardAgent(agentName: string, systemPrompt: string, input: string) {
     console.log(`🤖 Agent '${agentName}' is thinking...`);
-    const completion = await openai.chat.completions.create({
+    const completion = await callChatCompletion({
         model: "gpt-4o",
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content: input }]
-    });
+    }, { operation: 'narrativeStandard' });
     return completion.choices[0].message.content;
 }
 
@@ -415,11 +411,11 @@ async function runManager(articleTitle: string, articleText: string, imageUrls: 
     Image URLs: ${imageUrls.join(', ')}
     `;
     
-    const completion = await openai.chat.completions.create({
+    const completion = await callChatCompletion({
         model: "gpt-4o",
         messages: [{ role: "system", content: MANAGER_PROMPT }, { role: "user", content: input }],
         response_format: { type: "json_object" }
-    });
+    }, { operation: 'narrativeManager' });
     
     return JSON.parse(completion.choices[0].message.content || "{}");
 }

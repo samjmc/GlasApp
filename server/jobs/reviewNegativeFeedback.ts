@@ -1,7 +1,7 @@
 
 import 'dotenv/config';
 import { supabaseDb } from '../db';
-import { getOpenAIClient } from '../services/openaiService';
+import { callChatCompletion } from '../services/aiService.js';
 
 /**
  * Review Negative Feedback Job (Self-Correction System)
@@ -70,12 +70,12 @@ async function analyzeFeedbackItem(item: unknown) {
       }
     `;
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o",
       messages: [{ role: "user", content: diagnosisPrompt }],
       temperature: 0.0,
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'feedbackDiagnosis' });
 
     const diagnosis = JSON.parse(response.choices[0].message.content || '{}');
     console.log(`   diagnosis: ${diagnosis.error_type} - ${diagnosis.reasoning}`);

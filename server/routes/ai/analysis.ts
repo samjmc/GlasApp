@@ -29,23 +29,11 @@ import {
 import { z } from "zod";
 import { IdeologicalDimensions } from "@shared/quizTypes";
 import { db } from "../../db";
-import OpenAI from "openai";
+import { callChatCompletion } from "../../services/aiService";
 
 const router = Router();
 
-// Initialize OpenAI client lazily
-let openai: OpenAI | null = null;
 const MODEL = "gpt-4o";
-
-function getOpenAIClient(): OpenAI {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is required but not set. AI analysis features are disabled.');
-    }
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
-}
 
 // ============================================
 // Validation Schemas
@@ -97,7 +85,7 @@ router.post("/complete-analysis", async (req, res, next) => {
       console.log("Applying custom weights to analysis:", weights);
     }
 
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: MODEL,
       messages: [
         {
@@ -138,7 +126,7 @@ router.post("/complete-analysis", async (req, res, next) => {
         }
       ],
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'completeAnalysis' });
 
     const analysisContent = JSON.parse(response.choices[0].message.content || '{}');
     
@@ -161,7 +149,7 @@ router.post("/context-analysis", async (req, res, next) => {
       weights?: Record<string, number>
     } = req.body;
     
-    const response = await getOpenAIClient().chat.completions.create({
+    const response = await callChatCompletion({
       model: MODEL,
       messages: [
         {
@@ -183,7 +171,7 @@ router.post("/context-analysis", async (req, res, next) => {
         }
       ],
       response_format: { type: "json_object" }
-    });
+    }, { operation: 'contextAnalysis' });
 
     const contextAnalysis = JSON.parse(response.choices[0].message.content || '{}');
     
