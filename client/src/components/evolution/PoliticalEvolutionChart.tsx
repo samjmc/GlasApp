@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
+import { apiRequest } from '@/lib/queryClient';
 
 interface PoliticalEvolutionPoint {
   id: number;
@@ -31,8 +32,11 @@ const PoliticalEvolutionChart: React.FC = () => {
     const fetchEvolutionData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('/api/political-evolution');
-        const result = await response.json();
+        const result = await apiRequest<{
+          success: boolean;
+          data: PoliticalEvolutionPoint[];
+          message?: string;
+        }>({ method: 'GET', path: '/api/political-evolution' });
         
         if (result.success) {
           // Sort data by createdAt date

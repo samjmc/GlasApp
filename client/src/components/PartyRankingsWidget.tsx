@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@/lib/queryKeys';
 import { Link } from 'wouter';
 import { Card } from '@/components/ui/card';
 import { Info } from 'lucide-react';
@@ -100,7 +101,7 @@ export function PartyRankingsWidget() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
-    queryKey: ['party-rankings-v3'],  // v3 for new design
+    queryKey: queryKeys.party.rankings(),
     queryFn: async () => {
       const res = await fetch('/api/parliamentary/scores/parties');
       if (!res.ok) throw new Error('Failed to fetch');

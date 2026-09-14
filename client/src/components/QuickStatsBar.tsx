@@ -3,11 +3,12 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@/lib/queryKeys';
 import { Badge } from '@/components/ui/badge';
 
 export function QuickStatsBar() {
   const { data } = useQuery({
-    queryKey: ['td-stats'],
+    queryKey: queryKeys.td.stats(),
     queryFn: async () => {
       const res = await fetch('/api/parliamentary/scores/widget');
       if (!res.ok) throw new Error('Failed to fetch stats');

@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@/lib/queryKeys';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -39,7 +40,7 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
 
   // News Feed Query
   const { data: articles, isLoading, error, refetch } = useQuery({
-    queryKey: ['news-feed-v5', sortBy, page],  // v5 - added Irish Independent logo
+    queryKey: queryKeys.news.feed(sortBy, page),
     queryFn: async () => {
       const offset = (page - 1) * articlesPerPage;
       const res = await fetch(`/api/news-feed?sort=${sortBy}&limit=${articlesPerPage}&offset=${offset}`);
