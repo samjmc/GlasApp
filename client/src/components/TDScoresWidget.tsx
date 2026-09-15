@@ -11,8 +11,19 @@ import { Info } from 'lucide-react';
 import { Link } from 'wouter';
 import { TDQuickInfoModal } from './TDQuickInfoModal';
 
+interface TDRow {
+  id: number;
+  name: string;
+  image_url?: string | null;
+  party?: string | null;
+  overall_score?: number | null;
+  overall_elo?: number | null;
+  change_out_of_100?: number | null;
+  change?: number | null;
+}
+
 interface TDCompactRowProps {
-  td: unknown;
+  td: TDRow;
   variant: 'emerald' | 'blue' | 'red';
   showChange?: boolean;
   onInfoClick: (id: number, e: React.MouseEvent) => void;
@@ -82,8 +93,8 @@ function TDCompactRow({ td, variant, showChange, onInfoClick }: TDCompactRowProp
           </button>
           
           <div className="text-right min-w-[3rem]">
-            <div className={`text-sm font-bold ${showChange ? (score > 0 ? 'text-green-600' : 'text-red-600') : style.score}`}>
-              {showChange && score > 0 ? '+' : ''}{typeof score === 'number' ? score.toFixed(showChange ? 1 : 0) : 'N/A'}
+            <div className={`text-sm font-bold ${showChange ? ((score ?? 0) > 0 ? 'text-green-600' : 'text-red-600') : style.score}`}>
+              {showChange && (score ?? 0) > 0 ? '+' : ''}{typeof score === 'number' ? score.toFixed(showChange ? 1 : 0) : 'N/A'}
             </div>
             <div className="text-[9px] uppercase tracking-wider opacity-60">
               {showChange ? 'Change' : '/100'}
@@ -147,7 +158,7 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=top" className="text-xs text-emerald-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.top_performers || []).slice(0, 5).map((td: unknown) => (
+            {(data?.top_performers || []).slice(0, 5).map((td: TDRow) => (
               <TDCompactRow 
                 key={td.id} 
                 td={td} 
@@ -165,7 +176,7 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=movers" className="text-xs text-blue-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.biggest_movers || []).slice(0, 5).map((td: unknown) => (
+            {(data?.biggest_movers || []).slice(0, 5).map((td: TDRow) => (
               <TDCompactRow 
                 key={td.id} 
                 td={td} 
@@ -184,7 +195,7 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=bottom" className="text-xs text-red-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.bottom_performers || []).slice(0, 5).map((td: unknown) => (
+            {(data?.bottom_performers || []).slice(0, 5).map((td: TDRow) => (
               <TDCompactRow 
                 key={td.id} 
                 td={td} 

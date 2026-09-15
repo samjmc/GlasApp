@@ -5,6 +5,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import { Link } from 'wouter';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +21,20 @@ import {
 
 type ViewMode = 'all' | 'top' | 'bottom' | 'movers' | 'constituency' | 'party';
 type SortMode = 'score' | 'change' | 'name' | 'party';
+
+interface TDScoreRowData {
+  id: string;
+  politician_name: string;
+  party?: string;
+  constituency: string;
+  overall_elo: number;
+  weekly_elo_change: number;
+  transparency_elo: number;
+  effectiveness_elo: number;
+  integrity_elo: number;
+  consistency_elo: number;
+  constituency_service_elo: number;
+}
 
 export default function TDScoresPage() {
   const [viewMode, setViewMode] = useState<ViewMode>('all');
@@ -44,7 +59,7 @@ export default function TDScoresPage() {
   });
 
   // Filter by search
-  const filteredScores = scores?.scores?.filter((td: unknown) =>
+  const filteredScores = scores?.scores?.filter((td: TDScoreRowData) =>
     td.politician_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     td.constituency.toLowerCase().includes(searchQuery.toLowerCase())
   ) || [];
@@ -157,7 +172,7 @@ export default function TDScoresPage() {
             </p>
           </Card>
         ) : (
-          filteredScores.map((td: unknown, idx: number) => (
+          filteredScores.map((td: TDScoreRowData, idx: number) => (
             <TDScoreRow key={td.id} td={td} rank={idx + 1} />
           ))
         )}
@@ -180,7 +195,7 @@ export default function TDScoresPage() {
   );
 }
 
-function TDScoreRow({ td, rank }: { td: unknown; rank: number }) {
+function TDScoreRow({ td, rank }: { td: TDScoreRowData; rank: number }) {
   const [expanded, setExpanded] = useState(false);
 
   return (

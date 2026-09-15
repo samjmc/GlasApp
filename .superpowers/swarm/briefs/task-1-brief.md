@@ -1,46 +1,83 @@
-### Task 1 — Middleware hardening: reusable RBAC guard + admin logging + payload limit
+### Task 1
+**Owned files (10, 47 baseline errors):**
+- server/api/researched-tds.ts
+- server/auth/supabaseAuth.ts
+- server/db.ts
+- server/index.ts
+- server/middleware/regionMiddleware.ts
+- server/replitAuth.ts
+- server/storage.ts
+- server/vite.ts
+- shared/data-complete.ts
+- shared/data.ts
 
-**Files**: `server/middleware/adminAccess.ts`, `server/middleware/sessionMiddleware.ts`, `server/auth/supabaseAuth.ts`, `server/index.ts`
+**Goal:** 0 errors in your owned files after `npx tsc --noEmit --incremental false`; total project
+error count strictly decreases from the baseline recorded in the ledger; all 103 tests pass.
 
-**Background**: `requireAdminAccess` exists but has no logging, `isAdmin` only works for bearer JWTs (a session-authenticated caller can never pass), and `express.json()` has no payload size cap (DoS vector). There is no reusable role guard.
+**Steps:**
+1. Read the Global Constraints section of the plan file (this brief includes it) and the Fix
+   strategy per error code.
+2. For each of your owned files, fix every TypeScript error using the strategies above. Keep
+   runtime behavior identical.
+3. Run the verification gates (Verification section). Iterate until your owned files show 0
+   errors and `npm run test` passes.
 
-**Changes**:
+**Boundaries — do NOT touch:** any file not in your Owned Files list, `tsconfig.json`,
+`shared/**` (Task 1 owns it), and package.json.
 
-1. `server/auth/supabaseAuth.ts` — enhance `isAdmin(req, res, next)`:
-   - Identity: if `req.user` is already set (e.g. by `isAuthenticated`), use it; otherwise call `getUserFromRequest(req)`.
-   - Also accept a session-authenticated caller whose session user is known — keep this pragmatic: for session callers (no bearer), treat them as non-admin UNLESS their email is in the `ADMIN_EMAILS` allowlist (can't be determined from session, so non-admin). Document with a brief comment.
-   - Log every decision via `logger` from `server/utils/logger` (or `console`): actor (email or "anonymous"), route `req.path`/`req.method`, grant/deny, and reason. Use `logger.info` for grants, `logger.warn` for denials. Do not log headers/tokens.
-   - Keep the existing response contracts exactly: 401 `{ success:false, message:'Authentication required' }` when unauthenticated, 403 `{ success:false, message:'Admin access required' }` when authenticated-but-not-admin.
+**Verification gates:**
+- `npx tsc --noEmit --incremental false 2>&1 > /tmp/tsc-T1.txt; grep -cE "error TS" /tmp/tsc-T1.txt` then `grep -E "^(OWNED_FILE1|OWNED_FILE2|...)" /tmp/tsc-T1.txt | wc -l` must be 0.
+- `npm run test` — must pass.
+- Confirm `tsconfig.json` still has `"strict": true`.
 
-2. `server/middleware/adminAccess.ts`:
-   - Keep `requireAdminAccess` exported with the same signature and behavior (secret check via `safeSecretEquals`, then `isAdmin` fallback). Add logging on the secret path too (grant/deny with route + reason).
-   - Add new export `requireRole(...roles: string[]): RequestHandler` — Express middleware that:
-     - Resolves identity: `req.user` if set, else bearer via `getUserFromRequest`, else `req.session.userId`.
-     - No identity → 401 `{ success:false, message:'Authentication required' }`.
-     - Determines the caller's role from `req.user?.app_metadata?.role` ONLY (never `user_metadata`). For the `'admin'` role in the allowed list, additionally accept the `ADMIN_EMAILS` allowlist email match (import the same allowlist logic — expose a helper `getCallerRole(req): string | null` from supabaseAuth or compute inline).
-     - Role not in `roles` → 403 `{ success:false, message:'Access denied' }`.
-     - Passes → `next()`.
-   - Add export `logAdminAction(req, action: string, detail?: Record<string, unknown>): void` — logs `{ operation: 'admin.'+action, actor, route, ...detail }` via `logger.info`. Actor derived from `req.user?.email ?? req.session?.userId ?? 'secret'`.
+**Baseline errors in owned files (fix all of these):**
+server/api/researched-tds.ts(17,35): error TS18047: 'supabaseDb' is possibly 'null'.
+server/api/researched-tds.ts(83,14): error TS18046: 'error' is of type 'unknown'.
+server/api/researched-tds.ts(94,39): error TS18047: 'supabaseDb' is possibly 'null'.
+server/api/researched-tds.ts(125,14): error TS18046: 'error' is of type 'unknown'.
+server/auth/supabaseAuth.ts(234,7): error TS2322: Type 'unknown' is not assignable to type 'object | undefined'.
+server/auth/supabaseAuth.ts(296,7): error TS2322: Type 'unknown' is not assignable to type 'object | undefined'.
+server/db.ts(112,18): error TS2339: Property 'end' does not exist on type 'never'.
+server/db.ts(144,31): error TS2339: Property 'query' does not exist on type 'never'.
+server/db.ts(152,52): error TS18046: 'error' is of type 'unknown'.
+server/db.ts(153,9): error TS18046: 'error' is of type 'unknown'.
+server/db.ts(153,53): error TS18046: 'error' is of type 'unknown'.
+server/index.ts(128,11): error TS18046: 'error' is of type 'unknown'.
+server/middleware/regionMiddleware.ts(33,36): error TS2339: Property 'user_metadata' does not exist on type '{}'.
+server/middleware/regionMiddleware.ts(34,47): error TS2339: Property 'user_metadata' does not exist on type '{}'.
+server/middleware/regionMiddleware.ts(49,3): error TS2571: Object is of type 'unknown'.
+server/replitAuth.ts(72,5): error TS18046: 'sessionConfig' is of type 'unknown'.
+server/replitAuth.ts(82,18): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SessionOptions | undefined'.
+server/replitAuth.ts(89,3): error TS18046: 'user' is of type 'unknown'.
+server/replitAuth.ts(90,3): error TS18046: 'user' is of type 'unknown'.
+server/replitAuth.ts(91,3): error TS18046: 'user' is of type 'unknown'.
+server/replitAuth.ts(92,3): error TS18046: 'user' is of type 'unknown'.
+server/replitAuth.ts(92,21): error TS18046: 'user' is of type 'unknown'.
+server/replitAuth.ts(101,9): error TS18046: 'claims' is of type 'unknown'.
+server/replitAuth.ts(102,12): error TS18046: 'claims' is of type 'unknown'.
+server/replitAuth.ts(103,16): error TS18046: 'claims' is of type 'unknown'.
+server/replitAuth.ts(104,15): error TS18046: 'claims' is of type 'unknown'.
+server/replitAuth.ts(258,42): error TS2339: Property 'claims' does not exist on type '{}'.
+server/replitAuth.ts(263,14): error TS2339: Property 'expires_at' does not exist on type '{}'.
+server/replitAuth.ts(263,39): error TS2339: Property 'expires_at' does not exist on type '{}'.
+server/replitAuth.ts(264,33): error TS2339: Property 'refresh_token' does not exist on type '{}'.
+server/storage.ts(75,26): error TS18047: 'db' is possibly 'null'.
+server/storage.ts(100,35): error TS2352: Conversion of type 'QuizResultInput' to type '{ id: number; description: string | null; ideology: string | null; createdAt: Date | null; userId: string | null; economicScore: string | null; socialScore: string | null; ... 12 more ...; irishContextInsights: string | null; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+server/storage.ts(152,33): error TS18047: 'db' is possibly 'null'.
+server/storage.ts(165,32): error TS18047: 'db' is possibly 'null'.
+server/storage.ts(179,40): error TS18047: 'db' is possibly 'null'.
+server/storage.ts(181,14): error TS2345: Argument of type 'Partial<PoliticalEvolutionInput>' is not assignable to parameter of type '{ ideology?: string | SQL<unknown> | PgColumn<ColumnBaseConfig<ColumnDataType, string>, {}, {}> | undefined; userId?: string | SQL<...> | PgColumn<...> | undefined; ... 13 more ...; notes?: string | ... 3 more ... | undefined; }'.
+server/storage.ts(193,26): error TS18047: 'db' is possibly 'null'.
+server/storage.ts(213,25): error TS18047: 'db' is possibly 'null'.
+server/storage.ts(238,26): error TS18047: 'db' is possibly 'null'.
+server/vite.ts(52,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; port: number; clientPort: number; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+server/vite.ts(63,24): error TS2339: Property 'close' does not exist on type '{}'.
+shared/data-complete.ts(1,10): error TS2305: Module '"./schema"' has no exported member 'PoliticalFigure'.
+shared/data-complete.ts(1,27): error TS2305: Module '"./schema"' has no exported member 'PoliticalParty'.
+shared/data-complete.ts(1,43): error TS2305: Module '"./schema"' has no exported member 'QuizQuestion'.
+shared/data.ts(1,10): error TS2305: Module '"./schema"' has no exported member 'PoliticalFigure'.
+shared/data.ts(1,27): error TS2305: Module '"./schema"' has no exported member 'PoliticalParty'.
+shared/data.ts(1,43): error TS2305: Module '"./schema"' has no exported member 'QuizQuestion'.
 
-3. `server/middleware/sessionMiddleware.ts` — in `isAuthenticated`, when the session path succeeds (`req.session.userId` present), set `req.user = { id: req.session.userId, sub: String(req.session.userId) }` before `next()` so downstream role checks can read identity. Keep the existing 401 contract.
-
-4. `server/index.ts` — change `app.use(express.json())` to `app.use(express.json({ limit: '1mb' }))`. Keep `express.urlencoded({ extended: false })` unchanged (may add the same limit).
-
-**Do NOT**: change `safeSecretEquals` semantics, the `adminJobSecret` env resolution, or the session cookie config.
-
-**Gates**:
-- tsc total ≤ 2644 and per-file counts unchanged-or-lower for the 4 touched files (baselines above).
-- `node_modules/.bin/vitest run --root . server/middleware/adminAccess.test.ts` still passes (4 tests).
-- New file `server/middleware/requireRole.test.ts` (add it): direct fake req/res tests of `requireRole`:
-  - unauthenticated (no user, no session, no token) → 401
-  - authenticated caller with `app_metadata.role = 'user'` calling `requireRole('admin')` → 403
-  - authenticated caller with `app_metadata.role = 'admin'` calling `requireRole('admin')` → next()
-  - `requireRole('admin','moderator')` accepts either role
-  - environment allowlist: caller email in `ADMIN_EMAILS` passes `requireRole('admin')` even without app_metadata role
-  Mock `getUserFromRequest` from `../auth/supabaseAuth` with `vi.mock` where needed; set/restore `process.env.ADMIN_EMAILS`.
-- `node_modules/.bin/vitest run --root . server/middleware/requireRole.test.ts` passes.
-
-**Interfaces produced** (consumed by later tasks): `requireRole`, `logAdminAction`, `getCallerRole` (if added), enhanced `isAdmin`, session `req.user` population, JSON body limit.
-
----
+## Task 2
 

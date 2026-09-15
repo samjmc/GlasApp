@@ -112,7 +112,7 @@ router.get('/summary', async (_req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load debate monitoring summary:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load monitoring summary' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to load monitoring summary' });
   }
 });
 

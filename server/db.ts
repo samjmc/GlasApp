@@ -1,6 +1,7 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import pkg from 'pg';
 const { Pool } = pkg;
+import type { Pool as PoolType } from 'pg';
 import { createClient } from '@supabase/supabase-js';
 import * as schema from "@shared/schema";
 
@@ -17,7 +18,7 @@ if (!process.env.DATABASE_URL) {
 // Use Supabase REST client (supabaseDb) instead via MCP
 // Connection string format: postgresql://postgres:[PASSWORD]@aws-0-[region].pooler.supabase.com:5432/postgres
 /** Disabled Postgres connection pool (SCRAM auth issues). */
-export const pool = null; // Disabled due to SCRAM auth issues
+export const pool: PoolType | null = null as PoolType | null; // Disabled due to SCRAM auth issues
 /*
 process.env.DATABASE_URL ? new Pool({ 
   connectionString: process.env.DATABASE_URL,
@@ -149,8 +150,8 @@ export async function checkDatabaseConnection(): Promise<boolean> {
     console.log(`   📌 Version: ${version.split(' ').slice(0, 2).join(' ')}`);
     return true;
   } catch (error: unknown) {
-    console.error('❌ Database connection failed:', error.message);
-    if (error.code) console.error(`   Error code: ${error.code}`);
+    console.error('❌ Database connection failed:', error instanceof Error ? error.message : error);
+    if (error && typeof error === 'object' && 'code' in error) console.error(`   Error code: ${(error as { code: string }).code}`);
     return false;
   }
 }

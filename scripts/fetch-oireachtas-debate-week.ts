@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import axios from 'axios';
-import { load, CheerioAPI, Cheerio, Element } from 'cheerio';
+import { load, CheerioAPI, Cheerio } from 'cheerio';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
@@ -93,6 +93,29 @@ interface AggregatedStats {
   wordCount: number;
 }
 
+interface DebateSectionItem {
+  debateSection?: {
+    debateSectionId?: string;
+    debateType?: string | null;
+    counts?: Record<string, unknown> | null;
+    containsDebate?: boolean | null;
+    parentDebateSection?: { debateSectionId?: string } | null;
+  } | null;
+}
+
+interface DebateRecordItem {
+  contextDate?: string | null;
+  debateRecord?: {
+    date?: string | null;
+    chamber?: { showAs?: string | null } | null;
+    house?: { showAs?: string | null; houseCode?: string | null; houseNo?: string | null } | null;
+    debateType?: string | null;
+    counts?: Record<string, unknown> | null;
+    formats?: { xml?: { uri?: string | null } | null } | null;
+    debateSections?: DebateSectionItem[] | null;
+  } | null;
+}
+
 const API_BASE_URL = 'https://api.oireachtas.ie/v1';
 const SCRIPT_VERSION = '2025-11-07-preview';
 
@@ -128,7 +151,7 @@ export async function fetchDebatesForDateRange(params: {
   let totalWordCount = 0;
   let daysWithTranscripts = 0;
 
-  for (const [index, record] of debateRecords.entries()) {
+  for (const [index, record] of Array.from(debateRecords.entries())) {
     const debateRecord = record?.debateRecord;
     if (!debateRecord) continue;
 
@@ -238,7 +261,7 @@ async function main(): Promise<void> {
   let totalWordCount = 0;
   let daysWithTranscripts = 0;
 
-  for (const [index, record] of debateRecords.entries()) {
+  for (const [index, record] of Array.from(debateRecords.entries())) {
     const debateRecord = record?.debateRecord;
     if (!debateRecord) {
       continue;
@@ -352,9 +375,9 @@ interface DebateFetchParams {
   limit: number;
 }
 
-async function fetchDebateRecords(params: DebateFetchParams): Promise<unknown[]> {
+async function fetchDebateRecords(params: DebateFetchParams): Promise<DebateRecordItem[]> {
   const { startDate, endDate, chamber, limit } = params;
-  const records: unknown[] = [];
+  const records: DebateRecordItem[] = [];
   let skip = 0;
 
   while (true) {
@@ -374,7 +397,7 @@ async function fetchDebateRecords(params: DebateFetchParams): Promise<unknown[]>
     });
 
     const headCount = response.data?.head?.counts?.debateCount ?? 0;
-    const results: unknown[] = response.data?.results ?? [];
+    const results: DebateRecordItem[] = response.data?.results ?? [];
 
     records.push(...results);
     skip += results.length;
@@ -410,7 +433,7 @@ function parseDebateXml(xml: string, metaMap: Map<string, SectionMetadata>): {
   sections: SectionRecord[];
   stats: DebateStats;
 } {
-  const $ = load(xml, { xmlMode: true, decodeEntities: true });
+  const $ = load(xml, { xmlMode: true });
   const references = buildReferences($);
   const topSections: SectionRecord[] = [];
 
@@ -428,7 +451,7 @@ function parseDebateXml(xml: string, metaMap: Map<string, SectionMetadata>): {
 
 function parseSection(
   $: CheerioAPI,
-  section: Cheerio<Element>,
+  section: Cheerio<any>,
   refs: References,
   metaMap: Map<string, SectionMetadata>
 ): SectionRecord {
@@ -457,7 +480,7 @@ function parseSection(
   };
 }
 
-function extractHeading(section: Cheerio<Element>): { title: string | null; recordedTime: string | null } {
+function extractHeading(section: Cheerio<any>): { title: string | null; recordedTime: string | null } {
   const heading = section.children('heading').first();
   if (!heading || heading.length === 0) {
     return { title: null, recordedTime: null };
@@ -477,7 +500,7 @@ function extractHeading(section: Cheerio<Element>): { title: string | null; reco
 
 function extractQuestion(
   $: CheerioAPI,
-  section: Cheerio<Element>,
+  section: Cheerio<any>,
   refs: References
 ): QuestionRecord | null {
   const question = section.children('question').first();
@@ -505,7 +528,7 @@ function extractQuestion(
 
 function extractSpeeches(
   $: CheerioAPI,
-  section: Cheerio<Element>,
+  section: Cheerio<any>,
   refs: References
 ): SpeechRecord[] {
   const speeches: SpeechRecord[] = [];
@@ -537,7 +560,7 @@ function extractSpeeches(
   return speeches;
 }
 
-function stripRecordedTime(node: Cheerio<Element>): string {
+function stripRecordedTime(node: Cheerio<any>): string {
   const clone = node.clone();
   clone.find('recordedTime').remove();
   return clone.text();
@@ -609,9 +632,9 @@ function buildReferences($: CheerioAPI): References {
   return { persons, roles };
 }
 
-function buildSectionMetaMap(record: unknown): Map<string, SectionMetadata> {
+function buildSectionMetaMap(record: DebateRecordItem): Map<string, SectionMetadata> {
   const map = new Map<string, SectionMetadata>();
-  const sections: unknown[] = record?.debateRecord?.debateSections ?? [];
+  const sections: DebateSectionItem[] = record?.debateRecord?.debateSections ?? [];
 
   for (const item of sections) {
     const section = item?.debateSection;
@@ -732,7 +755,7 @@ function isValidDate(value: string): boolean {
   return Number.isFinite(timestamp);
 }
 
-function buildSlug(record: unknown, index: number): string {
+function buildSlug(record: DebateRecordItem, index: number): string {
   const date = record?.debateRecord?.date ?? record?.contextDate ?? 'unknown-date';
   const houseCode = record?.debateRecord?.house?.houseCode ?? 'unknown';
   const type = record?.debateRecord?.debateType ?? 'debate';

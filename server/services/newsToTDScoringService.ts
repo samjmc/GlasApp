@@ -49,6 +49,16 @@ interface ProcessingOptions {
   minImportanceScore?: number;  // Default 40
 }
 
+interface ScoredArticleRecord {
+  id: number;
+  title: string;
+  content: string;
+  source?: string | null;
+  published_date?: string | null;
+  url?: string;
+  credibility_score?: number;
+}
+
 /**
  * Process unprocessed news articles with importance filtering and multi-agent scoring
  */
@@ -72,6 +82,8 @@ export async function processUnprocessedArticles(
     errors: 0,
     articlesFailed: []
   };
+  
+  if (!supabase) return stats;
   
   const batchSize = options.batchSize || 50;
   const topPercentile = options.topPercentile || 25;
@@ -220,7 +232,7 @@ export async function processUnprocessedArticles(
           console.log(`   📖 Fetching full article content...`);
           try {
             const { scrapeArticleContent } = await import('./newsScraperService.js');
-            const fullContent = await scrapeArticleContent(article.url);
+            const fullContent = await scrapeArticleContent((article as { url?: string }).url ?? '');
             if (fullContent && fullContent.length > 200) {
               article.content = fullContent;
               console.log(`   ✅ Got ${fullContent.length} characters`);
@@ -312,7 +324,7 @@ export async function processUnprocessedArticles(
  * Process a single article using multi-agent scoring team
  */
 async function processArticleWithMultiAgent(
-  article: unknown,
+  article: ScoredArticleRecord,
   importance: { score: number; politiciansMentioned: string[]; topicCategory: string; isPrimarySubject: boolean; reasoning: string },
   stats: ProcessingStats
 ): Promise<void> {
@@ -363,11 +375,13 @@ async function processArticleWithMultiAgent(
  * Process a single TD mention using multi-agent scoring
  */
 async function processTDWithMultiAgent(
-  article: unknown,
+  article: ScoredArticleRecord,
   tdMention: { name: string; party: string; constituency: string; confidence: number },
   importance: { score: number; topicCategory: string },
   stats: ProcessingStats
 ): Promise<void> {
+  
+  if (!supabase) return;
   
   console.log(`\n   🎯 Multi-agent scoring for ${tdMention.name}...`);
   
@@ -497,7 +511,9 @@ async function markArticleProcessed(
   scoreApplied: boolean
 ): Promise<void> {
   
-  const updateData: unknown = {
+  if (!supabase) return;
+  
+  const updateData: Record<string, unknown> = {
     processed: true,
     score_applied: scoreApplied,
     importance_score: importance.score,
@@ -555,6 +571,8 @@ function mapPolicyToDimension(policyTopic: string): string {
  * Recalculate party aggregate scores
  */
 async function recalculatePartyScores(): Promise<void> {
+  if (!supabase) return;
+  
   try {
     // Get all active TDs grouped by party
     const { data: tds } = await supabase
@@ -568,7 +586,7 @@ async function recalculatePartyScores(): Promise<void> {
     }
     
     // Group by party
-    const partyGroups = new Map<string, any[]>();
+    const partyGroups = new Map<string, Array<{ party: string; overall_elo: number | null; transparency_elo: number | null; effectiveness_elo: number | null; integrity_elo: number | null; consistency_elo: number | null; constituency_service_elo: number | null }>>();
     for (const td of tds) {
       if (!partyGroups.has(td.party)) {
         partyGroups.set(td.party, []);
@@ -577,29 +595,29 @@ async function recalculatePartyScores(): Promise<void> {
     }
     
     // Calculate averages for each party
-    for (const [partyName, partyTDs] of partyGroups) {
+    for (const [partyName, partyTDs] of Array.from(partyGroups)) {
       const avgOverallElo = Math.round(
-        partyTDs.reduce((sum, td) => sum + (td.overall_elo || 1500), 0) / partyTDs.length
+        partyTDs.reduce((sum: number, td) => sum + (td.overall_elo || 1500), 0) / partyTDs.length
       );
       
       const avgTransparency = Math.round(
-        partyTDs.reduce((sum, td) => sum + (td.transparency_elo || 1500), 0) / partyTDs.length
+        partyTDs.reduce((sum: number, td) => sum + (td.transparency_elo || 1500), 0) / partyTDs.length
       );
       
       const avgEffectiveness = Math.round(
-        partyTDs.reduce((sum, td) => sum + (td.effectiveness_elo || 1500), 0) / partyTDs.length
+        partyTDs.reduce((sum: number, td) => sum + (td.effectiveness_elo || 1500), 0) / partyTDs.length
       );
       
       const avgIntegrity = Math.round(
-        partyTDs.reduce((sum, td) => sum + (td.integrity_elo || 1500), 0) / partyTDs.length
+        partyTDs.reduce((sum: number, td) => sum + (td.integrity_elo || 1500), 0) / partyTDs.length
       );
       
       const avgConsistency = Math.round(
-        partyTDs.reduce((sum, td) => sum + (td.consistency_elo || 1500), 0) / partyTDs.length
+        partyTDs.reduce((sum: number, td) => sum + (td.consistency_elo || 1500), 0) / partyTDs.length
       );
       
       const avgService = Math.round(
-        partyTDs.reduce((sum, td) => sum + (td.constituency_service_elo || 1500), 0) / partyTDs.length
+        partyTDs.reduce((sum: number, td) => sum + (td.constituency_service_elo || 1500), 0) / partyTDs.length
       );
       
       // Get party ID
@@ -657,6 +675,8 @@ export async function processArticleById(
   articleId: number
 ): Promise<void> {
   
+  if (!supabase) throw new Error('Supabase client not initialized');
+  
   const { data: article, error } = await supabase
     .from('news_articles')
     .select('*')
@@ -678,6 +698,9 @@ export async function processArticleById(
     importanceScored: 1,
     selectedForScoring: 1,
     skippedLowImportance: 0,
+    clustersFound: 0,
+    duplicatesRemoved: 0,
+    uniqueEventsToScore: 0,
     articlesProcessed: 0,
     tdsUpdated: 0,
     scoresChanged: 0,

@@ -1,52 +1,99 @@
-# Task 2 Report — Bot routes: real admin gating + protect bot behavior control
+# Task 2 Report — `server/routes/debatesRoutes.ts`
 
-**Status**: DONE
+## Status: DONE
 
-## Files changed
+## Summary
+Type-only strict-mode refactor of `server/routes/debatesRoutes.ts` (the only owned file).
+Baseline 168 errors → **0 errors**. No runtime behavior changes, no files outside ownership
+touched, no `@ts-ignore`/`any` escapes except deliberate casts at the untyped Supabase boundary.
 
-1. `server/routes/botRoutes.ts`
-2. `server/routes.ts`
+## Changes by error pattern
 
-## Changes implemented
+### 1. `TS2339 'message' does not exist on type '{}'` (13×, catch blocks)
+`error` is `unknown`; `error?.message` narrowed to `{}`. Replaced every occurrence
+`error?.message` with `(error as { message?: string } | null)?.message`. Runtime identical.
 
-### `server/routes/botRoutes.ts`
-- Deleted the local `const isAdmin = (req, res, next: unknown) => ...` stub (which carried the `next: unknown` TS error).
-- Imported `requireAdminAccess` from `../middleware/adminAccess` and `requestLogger` from `../utils/logger`; removed the now-unused `isAuthenticated` import from `../middleware/sessionMiddleware`.
-- Replaced `isAuthenticated, isAdmin` with the single `requireAdminAccess` guard on:
-  - `POST /create`
-  - `GET /list`
-  - `DELETE /:username`
-- Added `requestLogger(req).info({ operation: 'admin.bots.*', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Bot admin action')` to each handler (`admin.bots.create` / `admin.bots.list` / `admin.bots.delete`).
-- Handler bodies and validation logic left untouched.
+### 2. `TS18046 '<x>' is of type 'unknown'` — callback params annotated `: unknown`
+Added explicit row interfaces at module level (cast at the untyped Supabase boundary, since
+supabase-js 2.76 infers parsed `select()` shapes rather than `any`):
+`ContributionQueryRow`, `DebateDayRow`, `DebateSectionRow`, `DebateSpeechRow`,
+`SectionSummaryRow`, `TdScoreRow`, `TdDebateMetricsRow`, `TdIssueFocusRow`,
+`DebateOutcomeRow`, `ReviewSummaryRow`, `DebateAlertRow`, `DebateHighlightRow`,
+`HighlightContributionRow`, `HighlightOutcomeRow`.
+Then cast the query result arrays with `as unknown as <Row>[]` and removed the `: unknown`
+annotations on `.map/.filter/.sort/.forEach` callbacks so the row type flows through
+(`/summary`, `/td/:id/history`, `/td/:id/wins`, `/review`, `/alerts`, `/highlights`, etc.).
+For the two conditional queries in `/summary` (`debate_speeches`,
+`debate_section_summaries`), the `{ data: [], error: null } as unknown` fallback became a
+typed fallback (`as DebateSpeechRow[]` / `as SectionSummaryRow[]`) so destructuring
+`data`/`error` type-checks.
 
-Note on the `actor` expression: the brief's literal `req.user?.email` does not typecheck in this tree because `req.user` resolves to `{}` (passport's empty `Express.User` merge over the `unknown` declared in `supabaseAuth.ts`). I used the exact cast pattern already established repo-wide by parallel tasks (`(req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId` — see shadowRoutes, smsRoutes, geographic, debateWorkspace, parliamentary/scores). Same runtime value, same intent.
+### 3. `TS2339 property does not exist on type '{}'` on `metricsRow` / `info`
+- `/td/:identifier/metrics`: `let metricsRow: unknown | null` → `TdDebateMetricsRow | null`;
+  both assignments cast at the boundary (`data as unknown as TdDebateMetricsRow`).
+- `/leaderboard` `formatEntry` param `info: unknown | null` → `info: JsonObject | null`.
+- `/party/metrics`: `partyKey` / top-performer `name` cast to `string`/`string | null` at the
+  `JsonObject` boundary (values are text columns; runtime unchanged).
 
-### `server/routes.ts`
-- Added `requireAdminAccess` middleware to the three inline behavior-control routes:
-  - `POST /api/bots/:id/behavior/start`
-  - `POST /api/bots/:id/behavior/stop`
-  - `GET /api/bots/:id/activity`
-- Added input validation to each: `const botId = parseInt(req.params.id); if (!Number.isInteger(botId) || botId <= 0) return res.status(400).json({ success: false, message: 'Invalid bot id' });`
-- All other behavior (config shape, dynamic `botBehaviorService` import, response shapes, `days` parsing) unchanged.
+### 4. `TS2352` conversion to `DebateContributionRow` (line 157)
+`row` (parsed select shape) cast via `as unknown as ContributionQueryRow[]` in the loop,
+where `ContributionQueryRow extends DebateContributionRow` adds `td_id`. `row_typed` is now
+just `row`; `formatContributionRow` still receives a `DebateContributionRow`.
 
-`requireAdminAccess` was already imported in `routes.ts` (line 9, used by `/api/cache` and admin mounts) — no import change needed.
+### 5. `TS2769` Map overload (line 199)
+Annotated the `.map` callback return as the tuple `[number, JsonObject]` so the subsequent
+`.filter(...)` result satisfies the `Map` constructor.
 
-## Out of scope respected
-- No BotService / botBehaviorService internals touched.
-- `/api/bots` mount path (`app.use("/api/bots", botRoutes)`) untouched.
-- No tsconfig/compiler config, no DB schema, no middleware files touched.
-- No new dependencies; no commits.
+### 6. `TS2339 'group' does not exist` (`/tasks/status`)
+The `count:count(*)` select string fails supabase-js's parser (`ParserError`), which strips
+`.group`. Cast the builder to `{ group(column: string): Promise<...> }` before `.group('status')`.
+Runtime call unchanged.
 
-## Gate results
+### 7. `TS2345` `string | number | true | JsonObject | JsonArray` not assignable to `string`
+`/party/metrics`: `partyKey` and `name` (see #3). `JsonObject` index access yields `JsonValue`.
 
-| Gate | Result |
-| --- | --- |
-| tsc total ≤ 2644 | **2643** PASS |
-| botRoutes.ts ≤ 3 | **2** PASS (both are pre-existing `error is unknown` in catch blocks) |
-| routes.ts ≤ 16 | **16** PASS (all pre-existing; none introduced by this change) |
-| `vitest run --root . server/middleware/adminAccess.test.ts` | **4/4 pass** |
-| Behavior unchanged for authorized callers | PASS (code review): for an authorized caller the guard passes and the original service calls / response shapes run identically; only additions are admin-gating and a 400 on non-positive/non-integer ids. |
+### 8. `TS2345` `any` not assignable to `never` (line 966, `/weekly`)
+`const group = groups.get(key) || { ... dayIds: [] ... }` produced a `string[] | never[]`
+union whose `.push` param collapsed to `never`. Changed the fallback literal to
+`dayIds: [] as string[]`. Runtime identical.
 
-## Environment notes
-- The measured pre-change total was 2646 (not 2644) because the parallel Task 1 edits to `server/auth/supabaseAuth.ts` added 2 errors in that file (out of this task's scope). With Task 2's changes the total is 2643.
-- tsc runs were slow (several minutes) due to concurrent swarm-agent activity on this machine; results verified on a clean single run.
+### 9. `TS18047`-adjacent / `metadata` narrowing (`/td/:identifier/metrics`)
+`Array.isArray(metricsRow.metadata?.chamberActivity) ? metricsRow.metadata?.chamberActivity : []`
+— used optional chaining in the true branch too, avoiding a possibly-null access while
+returning the identical value.
+
+## Error counts
+| | before | after |
+|---|---|---|
+| `server/routes/debatesRoutes.ts` | 168 | **0** |
+| whole project (`npx tsc --noEmit --incremental false`) | 2589 | 1575* |
+
+\* Project total moves as other concurrent tasks land changes; it strictly decreased from the
+2589 baseline. Owned-file gate is the authoritative check and is 0.
+
+## Commands run
+```
+npx tsc --noEmit --incremental false 2>&1 > /tmp/tsc-T2.txt
+grep -cE "error TS" /tmp/tsc-T2.txt              # 1575
+grep -E "^server/routes/debatesRoutes.ts" /tmp/tsc-T2.txt | wc -l   # 0
+
+npm run test
+#  Test Files  5 passed (5)
+#       Tests  103 passed (103)
+
+grep -n '"strict"' tsconfig.json                 # 9: "strict": true,
+```
+
+## Deviations
+None. Only `server/routes/debatesRoutes.ts` was edited. `tsconfig.json` untouched (`strict: true`).
+
+## Concerns
+- The row interfaces are hand-written to match the PostgREST response shapes. They are
+  intentionally permissive (`| null` on nullable columns) and cast via `as unknown as` at the
+  Supabase boundary, so they do not provide compile-time validation of actual DB columns. This
+  is the same trust level as before but now centralized.
+- `/tasks/status` `.group('status')` is not part of the PostgREST JS API; the cast only silences
+  the type error and preserves the existing runtime call. This pre-existing oddity was left
+  untouched per the no-behavior-change boundary.
+- Project-wide tsc count varies between runs due to concurrent tasks editing other files in the
+  worktree; not attributable to this task.

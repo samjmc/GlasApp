@@ -11,6 +11,22 @@ import { formatSuccess, formatError, ErrorCodes } from '../../../utils/responseF
 
 const router = Router();
 
+interface PersonalRankingRow {
+  politician_name?: string;
+  overall_compatibility: number;
+  ideology_match: number;
+  policy_agreement: number;
+  policies_compared?: number;
+  personal_rank: number;
+  public_rank?: number | null;
+  td_scores?: {
+    party?: string | null;
+    constituency?: string | null;
+    overall_score?: number | null;
+    image_url?: string | null;
+  };
+}
+
 /**
  * Format user profile with ideology labels and engagement metrics
  */
@@ -18,8 +34,10 @@ const router = Router();
 export function formatUserProfilePayload(profile: unknown) {
   if (!profile) return null;
 
+  const p = profile as Record<string, number>;
+
   const ideology = IDEOLOGY_DIMENSIONS.reduce<Record<string, number>>((acc, dimension) => {
-    acc[dimension] = profile[dimension] ?? 0;
+    acc[dimension] = p[dimension] ?? 0;
     return acc;
   }, {});
 
@@ -183,11 +201,11 @@ export function formatUserProfilePayload(profile: unknown) {
   const ideologyLabel = getNuancedIdeologyLabel(ideology);
 
   const engagementLabel =
-    profile.total_weight >= 25
+    p.total_weight >= 25
       ? 'Highly engaged'
-      : profile.total_weight >= 10
+      : p.total_weight >= 10
       ? 'Engaged'
-      : profile.total_weight > 0
+      : p.total_weight > 0
       ? 'Getting started'
       : 'No votes yet';
 
@@ -195,7 +213,7 @@ export function formatUserProfilePayload(profile: unknown) {
 
   return {
     ideology,
-    totalWeight: profile.total_weight || 0,
+    totalWeight: p.total_weight || 0,
     avgScore,
     ideologyLabel,
     intensity: intensityScore,
@@ -208,20 +226,23 @@ export function formatUserProfilePayload(profile: unknown) {
  */
 /** Format personal rankings into a standardized response shape. */
 export function formatRankingsResponse(rankings: unknown[]) {
-  return rankings.map((r) => ({
-    name: r.politician_name,
-    party: r.td_scores?.party,
-    constituency: r.td_scores?.constituency,
-    compatibility: Math.round(r.overall_compatibility),
-    ideologyMatch: Math.round(r.ideology_match),
-    policyAgreement: Math.round(r.policy_agreement),
-    policiesCompared: r.policies_compared,
-    rank: r.personal_rank,
-    publicRank: r.public_rank,
-    overallScore: r.td_scores?.overall_score,
-    image_url: r.td_scores?.image_url,
-    rankDifference: r.public_rank ? (r.public_rank || 0) - (r.personal_rank || 0) : null,
-  }));
+  return rankings.map((r) => {
+    const row = r as PersonalRankingRow;
+    return {
+      name: row.politician_name,
+      party: row.td_scores?.party,
+      constituency: row.td_scores?.constituency,
+      compatibility: Math.round(row.overall_compatibility),
+      ideologyMatch: Math.round(row.ideology_match),
+      policyAgreement: Math.round(row.policy_agreement),
+      policiesCompared: row.policies_compared,
+      rank: row.personal_rank,
+      publicRank: row.public_rank,
+      overallScore: row.td_scores?.overall_score,
+      image_url: row.td_scores?.image_url,
+      rankDifference: row.public_rank ? (row.public_rank || 0) - (row.personal_rank || 0) : null,
+    };
+  });
 }
 
 /**

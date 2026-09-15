@@ -542,8 +542,8 @@ export default function IdeasPage() {
                 ) : problems && problems.length > 0 ? (
                   <div className="space-y-6">
                     {problems
-                      .sort((a: unknown, b: unknown) => b.voteScore - a.voteScore)
-                      .map((problem: unknown, index: number) => (
+                      .sort((a: Problem, b: Problem) => b.voteScore - a.voteScore)
+                      .map((problem: Problem, index: number) => (
                         <ProblemCard key={problem.id} problem={problem} rank={index + 1} />
                       ))}
                   </div>

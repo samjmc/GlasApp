@@ -11,6 +11,11 @@ async function main() {
   console.log('🔄 Updating personal rankings from existing votes...\n');
   
   try {
+    if (!supabaseDb) {
+      console.log('❌ Database not connected');
+      return;
+    }
+
     // Get all policy votes
     const { data: votes } = await supabaseDb
       .from('user_policy_votes')

@@ -23,6 +23,18 @@ interface CachedTDScores {
   constituency_service_elo: number;
 }
 
+interface ScoreChangeDetail {
+  oldScore: number;
+  newScore: number;
+  change: number;
+  reasoning?: string;
+  impactScore?: number;
+  storyType?: string;
+  sentiment?: string;
+}
+
+type ScoreChanges = Record<string, ScoreChangeDetail>;
+
 interface DailyScraperOptions {
   lookbackHours?: number;
 }
@@ -98,7 +110,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           stats.articlesSkippedExisting = allArticles.length - articlesForProcessing.length;
         }
       } catch (error: unknown) {
-        console.warn(`⚠️ Unable to pre-check existing articles before filtering: ${error.message}`);
+        console.warn(`⚠️ Unable to pre-check existing articles before filtering: ${error instanceof Error ? error.message : String(error)}`);
       }
     }
 
@@ -144,7 +156,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           // Rate limit between requests
           await sleep(2000);
         } catch (error: unknown) {
-          console.log(`   ❌ Failed: ${error.message}`);
+          console.log(`   ❌ Failed: ${error instanceof Error ? error.message : String(error)}`);
         }
       }
       
@@ -200,8 +212,8 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
         // Rate limiting to avoid API throttling
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-      } catch (error) {
-        console.error(`   ❌ Error analyzing article: ${error.message}`);
+      } catch (error: unknown) {
+        console.error(`   ❌ Error analyzing article: ${error instanceof Error ? error.message : String(error)}`);
         stats.errors.push(`Failed to analyze: ${article.title}`);
         
         // Fallback to keyword extraction if AI fails
@@ -326,7 +338,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
               const { effectiveWeight, adjustments } = await calculateEnhancedArticleWeight(
                 politician.name,
                 politician.party,
-                politician.role,
+                (politician as { role?: string }).role ?? null,
                 {
                   stance: analysis.td_policy_stance.stance,
                   strength: analysis.td_policy_stance.strength,
@@ -353,9 +365,9 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
                 politician.name,
                 analysis.td_policy_stance.policy_topic,
                 salienceAdjustedDeltas,
-                article.published_at || new Date(),
+article.published_date || new Date(),
               );
-              
+
               let finalWeight = effectiveWeight;
               if (consistencyCheck.hasContradiction) {
                 finalWeight *= consistencyCheck.penalty;
@@ -372,7 +384,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
                   policyTopic: analysis.td_policy_stance.policy_topic,
                   weight: finalWeight,
                   confidence: analysis.confidence || 0.8,
-                  sourceDate: article.published_at || new Date(),
+                  sourceDate: article.published_date || new Date(),
                   sourceReliability,
                 }
               );
@@ -395,8 +407,8 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
           stats.tdsMentioned++;
           
         } catch (error: unknown) {
-          console.error(`   ❌ Analysis failed: ${error.message}`);
-          stats.errors.push(`${politician.name}: ${error.message}`);
+          console.error(`   ❌ Analysis failed: ${error instanceof Error ? error.message : String(error)}`);
+          stats.errors.push(`${politician.name}: ${error instanceof Error ? error.message : String(error)}`);
         }
         
         // Rate limiting - 2 seconds between requests
@@ -409,9 +421,9 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
     
     try {
       const { NewsToTDScoringService } = await import('../services/newsToTDScoringService');
-      const scoringStats = await NewsToTDScoringService.processUnprocessedArticles({
-        batchSize: 50,
-        crossCheck: false  // Set to true for high-accuracy mode (slower)
+const scoringStats = await NewsToTDScoringService.processUnprocessedArticles({
+        batchSize: 50
+        // Set crossCheck: true for high-accuracy mode (slower)
       });
       
       console.log(`✅ TD Scoring complete:`);
@@ -422,8 +434,8 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
         console.log(`   ⚠️  Errors: ${scoringStats.errors}`);
       }
     } catch (scoringError: unknown) {
-      console.error('⚠️  TD Scoring failed:', scoringError.message);
-      stats.errors.push(`TD Scoring: ${scoringError.message}`);
+      console.error('⚠️  TD Scoring failed:', scoringError instanceof Error ? scoringError.message : String(scoringError));
+      stats.errors.push(`TD Scoring: ${scoringError instanceof Error ? scoringError.message : String(scoringError)}`);
     }
     
     await topUpPolicyOpportunities(stats);
@@ -466,7 +478,7 @@ export async function runDailyNewsScraper(options: DailyScraperOptions = {}): Pr
 
   } catch (error: unknown) {
     console.error('❌ Daily news scraper failed:', error);
-    stats.errors.push(`Fatal error: ${error.message}`);
+    stats.errors.push(`Fatal error: ${error instanceof Error ? error.message : String(error)}`);
     stats.endTime = new Date();
   }
 
@@ -514,7 +526,7 @@ async function generatePolicyOpportunity(
       published_date: article.published_date
     }, options);
   } catch (error: unknown) {
-    console.error(`   ❌ Failed to create policy opportunity: ${error.message}`);
+    console.error(`   ❌ Failed to create policy opportunity: ${error instanceof Error ? error.message : String(error)}`);
     return false;
   }
 }
@@ -523,7 +535,7 @@ async function upsertArticleTDScore(
   articleId: number,
   politicianName: string,
   analysis: ArticleAnalysis,
-  changes: unknown
+  changes: ScoreChanges
 ): Promise<void> {
   if (!supabaseDb) return;
 
@@ -558,8 +570,8 @@ async function upsertArticleTDScore(
         },
         { onConflict: 'article_id,politician_name' },
       );
-  } catch (error: unknown) {
-    console.error(`   ⚠️  Warning: Failed to record article_td_scores: ${error.message}`);
+} catch (error: unknown) {
+    console.error(`   ⚠️  Warning: Failed to record article_td_scores: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
@@ -575,7 +587,7 @@ async function markArticleAsScored(articleId: number): Promise<void> {
       })
       .eq('id', articleId);
   } catch (error: unknown) {
-    console.error(`   ⚠️  Warning: Failed to mark article as scored: ${error.message}`);
+    console.error(`   ⚠️  Warning: Failed to mark article as scored: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
@@ -658,7 +670,7 @@ async function saveArticleToDatabase(
     // Prepare base article data
     // visible: false - Will be set true after importance triage
     // processed: false - Will be set true after multi-agent scoring
-    const articleData: unknown = {
+    const articleData: Record<string, any> = {
       url: article.url,
       title: article.title,
       content: article.content,
@@ -722,7 +734,7 @@ async function saveArticleToDatabase(
     return inserted.id;
     
   } catch (error: unknown) {
-    console.error(`   ❌ Error saving article: ${error.message}`);
+    console.error(`   ❌ Error saving article: ${error instanceof Error ? error.message : String(error)}`);
     return null;
   }
 }
@@ -818,7 +830,7 @@ async function saveArticleAnalysis(
     return inserted.id;
     
   } catch (error: unknown) {
-    console.error(`   ❌ Error saving article: ${error.message}`);
+    console.error(`   ❌ Error saving article: ${error instanceof Error ? error.message : String(error)}`);
     return null;
   }
 }
@@ -830,8 +842,8 @@ async function updateTDScoreInDB(
   tdName: string,
   constituency: string,
   party: string,
-  updatedScores: unknown,
-  changes: unknown,
+  updatedScores: CachedTDScores,
+  changes: ScoreChanges,
   articleId: number | null
 ): Promise<boolean> {
   if (!supabaseDb) {
@@ -922,7 +934,7 @@ async function updateTDScoreInDB(
 /**
  * Get the primary dimension that changed most
  */
-function getPrimaryDimension(changes: unknown): string {
+function getPrimaryDimension(changes: ScoreChanges): string {
   const dimensions = {
     transparency: Math.abs(changes.transparency?.change || 0),
     effectiveness: Math.abs(changes.effectiveness?.change || 0),
@@ -982,12 +994,12 @@ async function trackPromiseForVerification(
       }
     }
     
-  } catch (error: unknown) {
-    if (!promisePermissionWarningLogged && error.message?.includes('permission denied')) {
+} catch (error: unknown) {
+    if (!promisePermissionWarningLogged && error instanceof Error && error.message.includes('permission denied')) {
       promisePermissionWarningLogged = true;
       console.warn(`   ⚠️ Skipping promise tracking due to permissions: ${error.message}`);
     } else {
-      console.error(`   ⚠️ Error tracking promise: ${error.message}`);
+      console.error(`   ⚠️ Error tracking promise: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 }

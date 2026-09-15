@@ -21,8 +21,8 @@ async function runDailySnapshot() {
 
     process.exit(stats.errors > 0 ? 1 : 0);
   } catch (error: unknown) {
-    console.error('❌ Daily snapshot job failed:', error.message);
-    console.error(error.stack);
+    console.error('❌ Daily snapshot job failed:', error instanceof Error ? error.message : String(error));
+    console.error(error instanceof Error ? error.stack : undefined);
     process.exit(1);
   }
 }

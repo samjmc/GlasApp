@@ -14,6 +14,17 @@ interface CategoryRankingInterfaceProps {
   onWeightedScoreChange?: (score: number) => void;
 }
 
+interface WeightedPerformanceData {
+  weightedScore?: number;
+  totalVotes?: number;
+  categoryBreakdown?: Record<string, { score?: number; weight?: number }>;
+  categoryWeights?: Record<string, number>;
+}
+
+interface WeightedPerformanceResponse {
+  data?: WeightedPerformanceData;
+}
+
 const CategoryRankingInterface: React.FC<CategoryRankingInterfaceProps> = ({ 
   partyId, 
   onWeightedScoreChange 
@@ -31,7 +42,7 @@ const CategoryRankingInterface: React.FC<CategoryRankingInterfaceProps> = ({
   const [isDragging, setIsDragging] = useState<string | null>(null);
 
   // Fetch current ranking weights based on all users' votes
-  const { data: weightedPerformance, refetch: refetchWeightedPerformance } = useQuery({
+  const { data: weightedPerformance, refetch: refetchWeightedPerformance } = useQuery<WeightedPerformanceResponse>({
     queryKey: ['/api/category-ranking/weighted-performance', partyId],
     enabled: !!partyId,
   });

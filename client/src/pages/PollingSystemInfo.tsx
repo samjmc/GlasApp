@@ -652,7 +652,7 @@ function FileEntry({ path, lines }: { path: string; lines: string }) {
   );
 }
 
-function TableCard({ name, description, columns, status }: unknown) {
+function TableCard({ name, description, columns, status }: { name: string; description: string; columns: string[]; status: string }) {
   return (
     <div className="border rounded-lg p-4 hover:shadow-md transition-shadow">
       <div className="flex justify-between items-start mb-2">
@@ -678,7 +678,7 @@ function QueryExample({ title, query }: { title: string; query: string }) {
   );
 }
 
-function IntegrationOption({ title, recommended, description, pros, cons, example }: unknown) {
+function IntegrationOption({ title, recommended, description, pros, cons, example }: { title: string; recommended: boolean; description: string; pros: string[]; cons: string[]; example: string }) {
   return (
     <div className={`border rounded-lg p-5 ${recommended ? 'border-green-500 bg-green-50' : 'border-gray-200'}`}>
       <div className="flex items-start justify-between mb-3">
@@ -717,7 +717,7 @@ function IntegrationOption({ title, recommended, description, pros, cons, exampl
   );
 }
 
-function LocationCard({ page, component, priority, description }: unknown) {
+function LocationCard({ page, component, priority, description }: { page: string; component: string; priority: string; description: string }) {
   const priorityColors = {
     High: 'bg-red-100 text-red-800',
     Medium: 'bg-yellow-100 text-yellow-800',
@@ -738,7 +738,7 @@ function LocationCard({ page, component, priority, description }: unknown) {
   );
 }
 
-function PhaseCard({ phase, title, status, items, estimatedTime }: unknown) {
+function PhaseCard({ phase, title, status, items, estimatedTime }: { phase: number; title: string; status: string; items: { task: string; done: boolean }[]; estimatedTime?: string }) {
   const statusColors = {
     complete: 'bg-green-100 text-green-800',
     planned: 'bg-yellow-100 text-yellow-800',
@@ -753,7 +753,7 @@ function PhaseCard({ phase, title, status, items, estimatedTime }: unknown) {
         </span>
       </div>
       <ul className="space-y-2">
-        {items.map((item: unknown, i: number) => (
+        {items.map((item, i: number) => (
           <li key={i} className="flex items-center gap-2 text-sm">
             <span className={item.done ? 'text-green-600' : 'text-gray-400'}>
               {item.done ? '✓' : '○'}
@@ -771,7 +771,7 @@ function PhaseCard({ phase, title, status, items, estimatedTime }: unknown) {
   );
 }
 
-function NextStepCard({ number, title, description, command }: unknown) {
+function NextStepCard({ number, title, description, command }: { number: number; title: string; description: string; command: string }) {
   return (
     <div className="border-l-4 border-blue-500 pl-4 py-2">
       <div className="flex items-center gap-2 mb-1">
@@ -786,7 +786,7 @@ function NextStepCard({ number, title, description, command }: unknown) {
   );
 }
 
-function EnhancementCard({ icon, title, description, priority }: unknown) {
+function EnhancementCard({ icon, title, description, priority }: { icon: string; title: string; description: string; priority: string }) {
   const priorityColors = {
     High: 'border-red-300 bg-red-50',
     Medium: 'border-yellow-300 bg-yellow-50',

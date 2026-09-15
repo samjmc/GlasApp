@@ -11,7 +11,7 @@ import {
     AlertTriangle, CheckCircle, Activity, 
     Brain, Gavel, Scale, Briefcase, 
     Microscope, Megaphone, Vote, FileText,
-    DollarSign, History, Eye, Radar, Lock
+    DollarSign, History, Eye, Radar, Lock, type LucideIcon
 } from "lucide-react";
 
 interface Analysis {
@@ -35,7 +35,7 @@ interface QaAudit {
 interface Agent {
     name: string;
     role: string;
-    icon: unknown;
+    icon: LucideIcon;
     status: "active" | "idle" | "deploying";
 }
 

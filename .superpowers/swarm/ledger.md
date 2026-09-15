@@ -1,28 +1,26 @@
 # Swarm ledger
 
 Plan: DISPATCH_BRIEF.md
-Worktree: /private/tmp/glasapp-worktrees/phase-4a-route-security
+Worktree: /private/tmp/glasapp-worktrees/phase-4c-typescript-strict
 Base: 9799651
 
 (Status lines appended per task: Task N: complete (commits <base>..<head>, verify+review clean))
 
-## Wave 1 (tasks 1-8) — server hardening
-- Task 1: complete (middleware: requireRole/logAdminAction/isAdmin req.user + logging; sessionMiddleware req.user; index.ts json 1mb; requireRole.test.ts 6/6). verify PASS, review APPROVED (5 Minor).
-- Task 2: complete (botRoutes requireAdminAccess; routes.ts bot-behavior guards + parseInt 400). verify PASS, review APPROVED (3 Minor).
-- Task 3: complete (ideas/submit requireAdminAccess, client isAdminSubmission trust removed). verify PASS, review APPROVED (2 Minor).
-- Task 4: complete (scores trigger-scrape requireAdminAccess). verify PASS, review APPROVED (2 Minor).
-- Task 5: complete (voting+policy DELETE auth from token, user-data GET ownership/admin). verify PASS, review APPROVED (4 Minor).
-- Task 6: complete (shadow+debate-workspace all requireAdminAccess + requestLogger). verify PASS, review APPROVED (3 Minor).
-- Task 7: complete (sms /test admin-gated; AI analysis zod bounds). verify PASS, review APPROVED (2 Minor).
-- Task 8: complete (geographic users/location auth+ownership, by-constituency admin; ideology-timeline auth+ownership). verify PASS, review APPROVED (1 Important client-coordination, 2 Minor).
-- Adversary wave1: 3 Critical (client token regressions) + 1 Important + 4 Minor. Criticals addressed by Task 10.
+## Baseline (recorded by coordinator, 2026-09-15)
+- Base commit: 9799651
+- Baseline error count (strict already on): 2644
+- Error code breakdown: TS18046=1481, TS2339=496, TS18047=198, TS2322=113, TS2345=76, TS2304=60, TS2571=57, TS7006=32, TS2802=26, TS2769=13, TS2305=13, others <13 each.
+- Baseline tests: 103 passed (npm run test)
+- tsconfig: strict:true already present on main; NO config change needed (brief premise was stale).
+- Gate command (all verifiers): `npx tsc --noEmit --incremental false` (baseline 2644 errors).
+- Target: <1000 total errors (documented), ultimate <500.
 
-## Wave 2 (tasks 9-10)
-- Task 9: complete (security.test.ts 29 tests: 401/403/400/success matrix). verify PASS, review APPROVED (5 Minor).
-- Task 10: complete (client bearer-token attachment for shadow/workspace/ideology-timeline pages). verify PASS, review APPROVED (4 Minor).
-- Adversary final: 0 Critical, 3 Important (client UX residuals: /api/users/location dead path pre-existing; /debates/workspace + /admin/shadow client route-gating not role-gated), 5 Minor. Server security posture sound.
-
-## Final gates
-- tsc total 2642 (baseline 2644, no new errors)
-- vitest: 7 files / 138 tests pass
-- No commits made (per repo convention); changes uncommitted in worktree
+## Task graph
+- Task 1 (WAVE 0): shared types + server core — foundational, must land first (re-exports of
+  PoliticalFigure/PoliticalParty/QuizQuestion/UserResponse from @shared/schema fix TS2305 + TS2339
+  cascades in ~13 client files).
+- Tasks 2-21 (WAVE 1, parallel): server routes (2-8), services (9-11), jobs+scripts (12-13),
+  client pages (14-17), client components (18-20), client core (21). All disjoint file ownership.
+## Task 1: complete (9799651..ace5a64, verify PASS + review APPROVED)
+- Before: 47 errors in owned files; after: 0. Project: 2644 -> 2589.
+- Minor findings (6): see reports/task-1-review.md. All accepted, no rework.

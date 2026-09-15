@@ -46,7 +46,13 @@ async function reviewNegativeFeedback() {
   console.log('\n✅ Feedback review complete.');
 }
 
-async function analyzeFeedbackItem(item: unknown) {
+async function analyzeFeedbackItem(item: {
+  id: number | string;
+  politician_name: string;
+  user_question: string;
+  ai_response: string;
+  feedback_text?: string | null;
+}) {
   try {
     // 2. Ask GPT-4 to diagnose the error
     const diagnosisPrompt = `

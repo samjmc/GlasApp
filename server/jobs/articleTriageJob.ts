@@ -58,6 +58,11 @@ export async function runArticleTriage(
   const batchSize = options.batchSize || 30;
   const topPercentile = options.topPercentile || 25;
   const minImportanceForScoring = options.minImportanceForScoring || 40;
+
+  if (!supabase) {
+    console.error('❌ Database not connected');
+    return stats;
+  }
   
   console.log('\n' + '═'.repeat(60));
   console.log('📋 ARTICLE TRIAGE JOB');
@@ -241,6 +246,10 @@ export const ArticleTriageJob = {
     pendingTriage: number;
     pendingScoring: number;
   }> {
+    if (!supabase) {
+      return { pendingTriage: 0, pendingScoring: 0 };
+    }
+
     const { count: pendingTriage } = await supabase
       .from('news_articles')
       .select('*', { count: 'exact', head: true })

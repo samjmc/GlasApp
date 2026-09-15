@@ -32,6 +32,8 @@ export interface PartyPerformanceMetrics {
  * Calculate pledge score based on party status (government vs opposition)
  */
 export async function calculatePledgeScore(pledgeId: number): Promise<number> {
+  if (!db) throw new Error('Database not initialized');
+
   // Get pledge with party information
   const [pledgeWithParty] = await db
     .select({
@@ -85,7 +87,7 @@ export async function calculatePledgeScore(pledgeId: number): Promise<number> {
 /**
  * Calculate fulfillment score for government parties
  */
-async function calculateFulfillmentScore(pledge: unknown, actions: unknown[]): Promise<number> {
+async function calculateFulfillmentScore(pledge: typeof pledges.$inferSelect, actions: typeof pledgeActions.$inferSelect[]): Promise<number> {
   let baseScore = 0;
   
   // Weight actions by their impact and type
@@ -101,7 +103,7 @@ async function calculateFulfillmentScore(pledge: unknown, actions: unknown[]): P
 
   for (const action of actions) {
     const weight = fulfillmentActions[action.actionType as keyof typeof fulfillmentActions] || 5;
-    const impactMultiplier = parseFloat(action.impactScore) / 10; // Normalize to 0-1
+    const impactMultiplier = parseFloat(action.impactScore ?? '') / 10; // Normalize to 0-1
     baseScore += weight * impactMultiplier;
   }
 
@@ -122,7 +124,7 @@ async function calculateFulfillmentScore(pledge: unknown, actions: unknown[]): P
 /**
  * Calculate advocacy score for opposition parties
  */
-async function calculateAdvocacyScore(pledge: unknown, actions: unknown[]): Promise<number> {
+async function calculateAdvocacyScore(pledge: typeof pledges.$inferSelect, actions: typeof pledgeActions.$inferSelect[]): Promise<number> {
   let baseScore = 0;
   
   // Weight actions by their advocacy impact
@@ -140,7 +142,7 @@ async function calculateAdvocacyScore(pledge: unknown, actions: unknown[]): Prom
 
   for (const action of actions) {
     const weight = advocacyActions[action.actionType as keyof typeof advocacyActions] || 5;
-    const impactMultiplier = parseFloat(action.impactScore) / 10;
+    const impactMultiplier = parseFloat(action.impactScore ?? '') / 10;
     baseScore += weight * impactMultiplier;
   }
 
@@ -163,6 +165,8 @@ async function calculateAdvocacyScore(pledge: unknown, actions: unknown[]): Prom
  * Calculate comprehensive party performance scores
  */
 export async function calculatePartyPerformanceScores(partyId: number): Promise<PartyPerformanceMetrics> {
+  if (!db) throw new Error('Database not initialized');
+
   // Get party information
   const [party] = await db
     .select()
@@ -265,7 +269,7 @@ export async function calculatePartyPerformanceScores(partyId: number): Promise<
 }
 
 // Individual scoring functions (simplified for now, would be enhanced with real data)
-function calculatePolicyConsistencyScore(party: unknown, status: string): number {
+function calculatePolicyConsistencyScore(party: typeof parties.$inferSelect, status: string): number {
   // Base scores based on research of Irish political parties
   const baseScores: Record<string, number> = {
     'Fine Gael': 72,
@@ -283,7 +287,7 @@ function calculatePolicyConsistencyScore(party: unknown, status: string): number
   return baseScores[party.name] || 65;
 }
 
-function calculateParliamentaryActivityScore(party: unknown, status: string): number {
+function calculateParliamentaryActivityScore(party: typeof parties.$inferSelect, status: string): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 76,
     'Fianna Fáil': 74,
@@ -300,7 +304,7 @@ function calculateParliamentaryActivityScore(party: unknown, status: string): nu
   return baseScores[party.name] || 70;
 }
 
-function calculateIntegrityScore(party: unknown): number {
+function calculateIntegrityScore(party: typeof parties.$inferSelect): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 55,
     'Fianna Fáil': 48,
@@ -317,7 +321,7 @@ function calculateIntegrityScore(party: unknown): number {
   return baseScores[party.name] || 60;
 }
 
-function calculateTransparencyScore(party: unknown, status: string): number {
+function calculateTransparencyScore(party: typeof parties.$inferSelect, status: string): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 59,
     'Fianna Fáil': 52,
@@ -334,7 +338,7 @@ function calculateTransparencyScore(party: unknown, status: string): number {
   return baseScores[party.name] || 65;
 }
 
-function calculateFactualAccuracyScore(party: unknown): number {
+function calculateFactualAccuracyScore(party: typeof parties.$inferSelect): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 62,
     'Fianna Fáil': 58,
@@ -351,7 +355,7 @@ function calculateFactualAccuracyScore(party: unknown): number {
   return baseScores[party.name] || 65;
 }
 
-function calculatePublicAccountabilityScore(party: unknown, status: string): number {
+function calculatePublicAccountabilityScore(party: typeof parties.$inferSelect, status: string): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 57,
     'Fianna Fáil': 50,
@@ -368,7 +372,7 @@ function calculatePublicAccountabilityScore(party: unknown, status: string): num
   return baseScores[party.name] || 65;
 }
 
-function calculateConflictAvoidanceScore(party: unknown): number {
+function calculateConflictAvoidanceScore(party: typeof parties.$inferSelect): number {
   const baseScores: Record<string, number> = {
     'Fine Gael': 64,
     'Fianna Fáil': 56,

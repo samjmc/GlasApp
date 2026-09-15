@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
-import type { DebateContributionRow, ContributionData, JsonObject } from '@shared/types';
+import type { DebateContributionRow, ContributionData, JsonObject, JsonValue } from '@shared/types';
 
 const router = Router();
 
@@ -20,6 +20,187 @@ const PERIOD_PRESETS: Record<
 
 const DEFAULT_PERIOD_KEY = '1w';
 const SCORE_BASELINE = 50;
+
+interface ContributionQueryRow extends DebateContributionRow {
+  td_id?: number;
+}
+
+interface DebateDayRow {
+  id: string;
+  date: string | null;
+  chamber: string | null;
+  title: string | null;
+  word_count: number | null;
+  speech_count: number | null;
+  section_count: number | null;
+  storage_path: string | null;
+  updated_at: string | null;
+  ingested_at: string | null;
+}
+
+interface DebateSectionRow {
+  id: string;
+  debate_day_id: string;
+  section_code: string | null;
+  title: string | null;
+  debate_type: string | null;
+  recorded_time: string | null;
+  contains_debate: boolean | null;
+  speech_count: number | null;
+  word_count: number | null;
+  order_index: number | null;
+  metadata: JsonObject | null;
+}
+
+interface DebateSpeechRow {
+  section_id: string;
+  speaker_name: string | null;
+  speaker_oireachtas_id: string | null;
+  word_count: number | null;
+}
+
+interface SectionSummaryRow {
+  section_id: string;
+  consensus_summary: string | null;
+  status: string | null;
+  confidence: number | null;
+}
+
+interface TdScoreRow {
+  id: number;
+  politician_name: string | null;
+  party: string | null;
+  constituency: string | null;
+  image_url: string | null;
+  member_code?: string | null;
+}
+
+interface TdDebateMetricsRow {
+  period_start: string;
+  period_end: string;
+  speeches: number | null;
+  words_spoken: number | null;
+  unique_topics: number | null;
+  engagement_score: number | null;
+  leadership_score: number | null;
+  sentiment_score: number | null;
+  effectiveness_score: number | null;
+  influence_score: number | null;
+  metadata: JsonObject | null;
+}
+
+interface TdIssueFocusRow {
+  topic: string | null;
+  minutes_spoken: number | null;
+  percentage: number | null;
+  td_id: number | null;
+  period_start: string | null;
+  period_end: string | null;
+  metadata: JsonObject | null;
+}
+
+interface DebateOutcomeRow {
+  id: string;
+  section_id: string;
+  debate_day_id: string;
+  outcome: string | null;
+  confidence: number | null;
+  concessions: JsonValue;
+  narrative: string | null;
+  debate_days?: {
+    date: string | null;
+    chamber: string | null;
+    title: string | null;
+  };
+  debate_sections?: { title: string | null };
+}
+
+interface ReviewSummaryRow {
+  section_id: string;
+  confidence: number | null;
+  status: string | null;
+  consensus_summary: string | null;
+  updated_at: string | null;
+  debate_sections?: {
+    id: string;
+    section_code: string | null;
+    title: string | null;
+    debate_type: string | null;
+    recorded_time: string | null;
+    metadata: JsonObject | null;
+    word_count: number | null;
+    speech_count: number | null;
+    debate_days?: {
+      id: string;
+      date: string | null;
+      chamber: string | null;
+      title: string | null;
+    };
+  };
+}
+
+interface DebateAlertRow {
+  id: string;
+  td_id: number | null;
+  alert_type: string | null;
+  topic: string | null;
+  current_position: JsonValue;
+  previous_position: JsonValue;
+  confidence: number | null;
+  severity: string | null;
+  summary: string | null;
+  payload: JsonObject | null;
+  status: string | null;
+  triggered_at: string | null;
+  current_period_start: string | null;
+  current_period_end: string | null;
+}
+
+interface DebateHighlightRow {
+  id: string;
+  headline: string | null;
+  narrative: string | null;
+  metadata: JsonObject | null;
+  created_at: string;
+  debate_days?: {
+    id: string;
+    date: string | null;
+    chamber: string | null;
+    title: string | null;
+  };
+  debate_sections?: {
+    id: string;
+    title: string | null;
+  };
+}
+
+interface HighlightContributionRow {
+  section_id: string;
+  td_id: number;
+  performance_score_after: number | null;
+  performance_delta: number | null;
+  effectiveness_score_after: number | null;
+  effectiveness_delta: number | null;
+  influence_score_after: number | null;
+  influence_delta: number | null;
+  performance_rating: string | null;
+  overall_evaluation_score: number | null;
+  metadata: JsonObject | null;
+  td_scores?: {
+    id: number;
+    politician_name: string | null;
+    party: string | null;
+    constituency: string | null;
+  };
+}
+
+interface HighlightOutcomeRow {
+  section_id: string;
+  outcome: string | null;
+  confidence: number | null;
+  concessions: JsonValue;
+  participant_evaluations: JsonValue;
+}
 
 const clampScore = (value: number): number => {
   if (!Number.isFinite(value)) return 10;
@@ -153,9 +334,9 @@ const loadContributionSummaries = async (
 
   const aggregates = new Map<number, AggregateData>();
 
-  for (const row of contributionRows || []) {
-    const row_typed = row as DebateContributionRow;
-    const tdId = row_typed?.td_id ?? (typeof row === 'object' && row !== null ? (row as JsonObject)['td_id'] : undefined);
+  for (const row of (contributionRows || []) as unknown as ContributionQueryRow[]) {
+    const row_typed = row;
+    const tdId = row_typed?.td_id ?? (typeof row === 'object' && row !== null ? (row as unknown as JsonObject)['td_id'] : undefined);
     if (typeof tdId !== 'number') {
       continue;
     }
@@ -196,7 +377,7 @@ const loadContributionSummaries = async (
     throw new Error(tdError.message);
   }
 
-  const tdInfoMap = new Map<number, JsonObject>((tdRows || []).map((row: unknown) => {
+  const tdInfoMap = new Map<number, JsonObject>((tdRows || []).map((row: unknown): [number, JsonObject] => {
     if (typeof row === 'object' && row !== null && 'id' in row) {
       return [(row as JsonObject & { id: number }).id, row as JsonObject];
     }
@@ -249,12 +430,12 @@ router.get('/summary', async (req: Request, res: Response) => {
       throw new Error(dayError.message);
     }
 
-    const debateDays = dayRows || [];
+    const debateDays = (dayRows || []) as unknown as DebateDayRow[];
     if (debateDays.length === 0) {
       return res.json({ success: true, debates: [] });
     }
 
-    const dayIds = debateDays.map((day: unknown) => day.id);
+    const dayIds = debateDays.map((day) => day.id);
 
     const { data: sectionRows, error: sectionError } = await supabaseDb
       .from('debate_sections')
@@ -264,8 +445,8 @@ router.get('/summary', async (req: Request, res: Response) => {
 
     if (sectionError) throw new Error(sectionError.message);
 
-    const sections = sectionRows || [];
-    const sectionIds = sections.map((section: unknown) => section.id);
+    const sections = (sectionRows || []) as unknown as DebateSectionRow[];
+    const sectionIds = sections.map((section) => section.id);
 
     const { data: speechRows, error: speechError } = sectionIds.length
       ? await supabaseDb
@@ -273,7 +454,7 @@ router.get('/summary', async (req: Request, res: Response) => {
           .select('section_id, speaker_name, speaker_oireachtas_id, word_count')
           .in('section_id', sectionIds)
           .limit(5000)
-      : { data: [], error: null } as unknown;
+      : { data: [] as DebateSpeechRow[], error: null };
 
     if (speechError) throw new Error(speechError.message);
 
@@ -282,17 +463,17 @@ router.get('/summary', async (req: Request, res: Response) => {
           .from('debate_section_summaries')
           .select('section_id, consensus_summary, status, confidence')
           .in('section_id', sectionIds)
-      : { data: [], error: null } as unknown;
+      : { data: [] as SectionSummaryRow[], error: null };
 
     if (summaryError) throw new Error(summaryError.message);
 
-    const speakersData = speechRows || [];
-    const summaries = summaryRows || [];
-    const summaryMap = new Map<string, any>();
-    summaries.forEach((summary: unknown) => summaryMap.set(summary.section_id, summary));
+    const speakersData = (speechRows || []) as unknown as DebateSpeechRow[];
+    const summaries = (summaryRows || []) as unknown as SectionSummaryRow[];
+    const summaryMap = new Map<string, SectionSummaryRow>();
+    summaries.forEach((summary) => summaryMap.set(summary.section_id, summary));
 
     const sectionToDayMap = new Map<string, string>();
-    sections.forEach((section: unknown) => {
+    sections.forEach((section) => {
       sectionToDayMap.set(section.id, section.debate_day_id);
     });
 
@@ -319,21 +500,21 @@ router.get('/summary', async (req: Request, res: Response) => {
       stat.contributions += 1;
     }
 
-    const sectionsByDay = new Map<string, any[]>();
-    sections.forEach((section: unknown) => {
+    const sectionsByDay = new Map<string, DebateSectionRow[]>();
+    sections.forEach((section) => {
       if (!sectionsByDay.has(section.debate_day_id)) {
         sectionsByDay.set(section.debate_day_id, []);
       }
       sectionsByDay.get(section.debate_day_id)!.push(section);
     });
 
-    const debates = debateDays.map((day: unknown) => {
+    const debates = debateDays.map((day) => {
       const daySections = sectionsByDay.get(day.id) || [];
       const topSections = daySections
-        .filter((section: unknown) => section.contains_debate && (section.word_count || 0) > 0)
-        .sort((a: unknown, b: unknown) => (b.word_count || 0) - (a.word_count || 0))
+        .filter((section) => section.contains_debate && (section.word_count || 0) > 0)
+        .sort((a, b) => (b.word_count || 0) - (a.word_count || 0))
         .slice(0, 5)
-        .map((section: unknown) => {
+        .map((section) => {
           const summary = summaryMap.get(section.id);
           return {
             id: section.id,
@@ -381,7 +562,7 @@ router.get('/summary', async (req: Request, res: Response) => {
     res.json({ success: true, debates });
   } catch (error: unknown) {
     console.error('Failed to fetch debate summaries:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load debates' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load debates' });
   }
 });
 
@@ -402,7 +583,7 @@ router.get('/leaderboard', async (req: Request, res: Response) => {
 
     const formatEntry = (summary: {
       tdId: number;
-      info: unknown | null;
+      info: JsonObject | null;
       performanceScore: number;
       effectivenessScore: number;
       influenceScore: number;
@@ -444,7 +625,7 @@ router.get('/leaderboard', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load debate leaderboard:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load leaderboard' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load leaderboard' });
   }
 });
 
@@ -469,7 +650,7 @@ router.get('/td/:identifier/metrics', async (req: Request, res: Response) => {
       });
     }
 
-    let metricsRow: unknown | null = null;
+    let metricsRow: TdDebateMetricsRow | null = null;
 
     if (start && end) {
       const { data, error } = await supabaseDb
@@ -484,7 +665,7 @@ router.get('/td/:identifier/metrics', async (req: Request, res: Response) => {
         throw new Error(error.message);
       }
 
-      metricsRow = data || null;
+      metricsRow = (data as unknown as TdDebateMetricsRow) || null;
     } else {
       const { data, error } = await supabaseDb
         .from('td_debate_metrics')
@@ -498,7 +679,7 @@ router.get('/td/:identifier/metrics', async (req: Request, res: Response) => {
         throw new Error(error.message);
       }
 
-      metricsRow = data && data.length > 0 ? data[0] : null;
+      metricsRow = data && data.length > 0 ? (data[0] as unknown as TdDebateMetricsRow) : null;
     }
 
     if (!metricsRow) {
@@ -530,8 +711,8 @@ router.get('/td/:identifier/metrics', async (req: Request, res: Response) => {
       throw new Error(focusError.message);
     }
 
-    const sortedFocus = (focusRows || [])
-      .sort((a: unknown, b: unknown) => (b.percentage || 0) - (a.percentage || 0));
+    const sortedFocus = ((focusRows || []) as unknown as TdIssueFocusRow[])
+      .sort((a, b) => (b.percentage || 0) - (a.percentage || 0));
 
     res.json({
       success: true,
@@ -559,12 +740,12 @@ router.get('/td/:identifier/metrics', async (req: Request, res: Response) => {
       },
       issueFocus: sortedFocus,
       chamberActivity: Array.isArray(metricsRow.metadata?.chamberActivity)
-        ? metricsRow.metadata.chamberActivity
+        ? metricsRow.metadata?.chamberActivity
         : []
     });
   } catch (error: unknown) {
     console.error('Failed to fetch TD debate metrics:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load TD metrics' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load TD metrics' });
   }
 });
 
@@ -603,7 +784,7 @@ router.get('/td/:identifier/history', async (req: Request, res: Response) => {
       throw new Error(error.message);
     }
 
-    const history = (metrics || []).map((row: unknown) => ({
+    const history = ((metrics || []) as unknown as TdDebateMetricsRow[]).map((row) => ({
       periodStart: row.period_start,
       periodEnd: row.period_end,
       speeches: row.speeches,
@@ -636,7 +817,7 @@ router.get('/td/:identifier/history', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to fetch TD debate history:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load TD history' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load TD history' });
   }
 });
 
@@ -682,7 +863,7 @@ router.get('/td/:identifier/wins', async (req: Request, res: Response) => {
       throw new Error(error.message);
     }
 
-    const wins = (outcomes || []).map((row: unknown) => ({
+    const wins = ((outcomes || []) as unknown as DebateOutcomeRow[]).map((row) => ({
       id: row.id,
       sectionId: row.section_id,
       debateDayId: row.debate_day_id,
@@ -708,7 +889,7 @@ router.get('/td/:identifier/wins', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to fetch TD debate wins:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load TD wins' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load TD wins' });
   }
 });
 
@@ -804,7 +985,7 @@ router.get('/review', async (req: Request, res: Response) => {
       throw new Error(error.message);
     }
 
-    const items = (data || []).map((row: unknown) => ({
+    const items = ((data || []) as unknown as ReviewSummaryRow[]).map((row) => ({
       sectionId: row.section_id,
       confidence: row.confidence,
       status: row.status,
@@ -835,7 +1016,7 @@ router.get('/review', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to fetch summaries for review:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load summaries for review' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load summaries for review' });
   }
 });
 
@@ -848,10 +1029,13 @@ router.get('/tasks/status', async (_req: Request, res: Response) => {
       });
     }
 
-    const { data, error } = await supabaseDb
-      .from('debate_section_tasks')
-      .select('status, count:count(*)')
-      .group('status');
+    const { data, error } = await (
+      supabaseDb
+        .from('debate_section_tasks')
+        .select('status, count:count(*)') as unknown as {
+          group: (column: string) => Promise<{ data: unknown[] | null; error: { message: string } | null }>;
+        }
+    ).group('status');
 
     if (error) {
       throw new Error(error.message);
@@ -863,7 +1047,7 @@ router.get('/tasks/status', async (_req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to fetch task status:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load task status' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load task status' });
   }
 });
 
@@ -957,7 +1141,7 @@ router.get('/weekly', async (req: Request, res: Response) => {
         groups.get(key) || {
           date: day.date ?? null,
           chamber: day.chamber ?? null,
-          dayIds: [],
+          dayIds: [] as string[],
           titles: new Set<string>(),
           speeches: 0,
           words: 0
@@ -1016,7 +1200,7 @@ router.get('/weekly', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load weekly debate metrics:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load weekly metrics' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load weekly metrics' });
   }
 });
 
@@ -1054,7 +1238,7 @@ router.get('/party/metrics', async (req: Request, res: Response) => {
 
     for (const summary of summaries) {
       const tdInfo = summary.info || {};
-      const partyKey = tdInfo.party || 'Unknown';
+      const partyKey = (tdInfo.party || 'Unknown') as string;
 
       if (!partiesMap.has(partyKey)) {
         partiesMap.set(partyKey, {
@@ -1077,7 +1261,7 @@ router.get('/party/metrics', async (req: Request, res: Response) => {
       if (!bucket.topPerformer || summary.performanceScore > bucket.topPerformer.performanceScore) {
         bucket.topPerformer = {
           tdId: summary.tdId,
-          name: tdInfo.politician_name || null,
+          name: (tdInfo.politician_name as string | null) || null,
           performanceScore: Number(summary.performanceScore.toFixed(2)),
           lastPerformanceDelta: summary.lastContribution
             ? Number((summary.lastContribution.performanceDelta ?? 0).toFixed(2))
@@ -1110,7 +1294,9 @@ router.get('/party/metrics', async (req: Request, res: Response) => {
         };
       })
       .filter(Boolean)
-      .sort((a: unknown, b: unknown) => b.avgPerformance - a.avgPerformance);
+      .sort((a: { avgPerformance: number } | null, b: { avgPerformance: number } | null) =>
+        (b?.avgPerformance ?? 0) - (a?.avgPerformance ?? 0)
+      );
 
     const parties = parsedLimit ? (partiesList as unknown[]).slice(0, parsedLimit) : (partiesList as unknown[]);
 
@@ -1127,7 +1313,7 @@ router.get('/party/metrics', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load party metrics:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load party metrics' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load party metrics' });
   }
 });
 
@@ -1195,7 +1381,7 @@ router.get('/topics/top', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load top topics:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load topics' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load topics' });
   }
 });
 
@@ -1238,7 +1424,7 @@ router.get('/alerts', async (req: Request, res: Response) => {
     const { data, error } = await query;
     if (error) throw error;
 
-    const tdIds = Array.from(new Set((data || []).map((row: unknown) => row.td_id))).filter(Boolean);
+    const tdIds = Array.from(new Set(((data || []) as unknown as DebateAlertRow[]).map((row) => row.td_id))).filter(Boolean);
     let tdMap = new Map<number, any>();
     if (tdIds.length > 0) {
       const { data: tdRows, error: tdError } = await supabaseDb
@@ -1246,13 +1432,13 @@ router.get('/alerts', async (req: Request, res: Response) => {
         .select('id, politician_name, party, constituency, image_url')
         .in('id', tdIds);
       if (tdError) throw tdError;
-      tdMap = new Map((tdRows || []).map((row: unknown) => [row.id, row]));
+      tdMap = new Map(((tdRows || []) as unknown as TdScoreRow[]).map((row): [number, TdScoreRow] => [row.id, row]));
     }
 
-    const alerts = (data || []).map((row: unknown) => ({
+    const alerts = ((data || []) as unknown as DebateAlertRow[]).map((row) => ({
       id: row.id,
       tdId: row.td_id,
-      td: tdMap.get(row.td_id) || null,
+      td: tdMap.get(row.td_id as number) || null,
       type: row.alert_type,
       topic: row.topic,
       currentPosition: row.current_position,
@@ -1279,7 +1465,7 @@ router.get('/alerts', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load debate alerts:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load alerts' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load alerts' });
   }
 });
 
@@ -1312,7 +1498,7 @@ router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
     res.json({ success: true });
   } catch (error: unknown) {
     console.error('Failed to update alert status:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to update alert' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to update alert' });
   }
 });
 
@@ -1355,7 +1541,7 @@ router.get('/highlights', async (req: Request, res: Response) => {
       throw new Error(highlightsError.message);
     }
 
-    const highlightRows = highlightsData || [];
+    const highlightRows = (highlightsData || []) as unknown as DebateHighlightRow[];
     if (highlightRows.length === 0) {
       return res.json({
         success: true,
@@ -1369,7 +1555,7 @@ router.get('/highlights', async (req: Request, res: Response) => {
       });
     }
 
-    const sectionIds = highlightRows.map((row: unknown) => row.debate_sections?.id).filter(Boolean) as string[];
+    const sectionIds = highlightRows.map((row) => row.debate_sections?.id).filter(Boolean) as string[];
 
     const { data: outcomeRows, error: outcomeError } = await supabaseDb
       .from('debate_section_outcomes')
@@ -1441,7 +1627,7 @@ router.get('/highlights', async (req: Request, res: Response) => {
       return 0;
     };
 
-    const computeImportanceScore = (contribs: unknown[], outcome: unknown): number => {
+    const computeImportanceScore = (contribs: HighlightContributionRow[], outcome: HighlightOutcomeRow | null): number => {
       let maxDelta = 0;
       for (const contrib of contribs) {
         const deltas = [
@@ -1465,13 +1651,13 @@ router.get('/highlights', async (req: Request, res: Response) => {
       return Number((maxDelta + confidenceBoost + participantBoost).toFixed(4));
     };
 
-    const highlights = highlightRows.map((row: unknown) => {
+    const highlights = highlightRows.map((row) => {
       const sectionId = row.debate_sections?.id;
       const contributions = sectionId ? contributionsBySection.get(sectionId) || [] : [];
       const outcome = sectionId ? outcomesBySection.get(sectionId) ?? null : null;
 
       const participants = contributions
-        .map((contribution: unknown) => {
+        .map((contribution) => {
           const tdDetails = contribution.td_scores || {};
           const metadata = contribution.metadata || {};
           return {
@@ -1492,7 +1678,7 @@ router.get('/highlights', async (req: Request, res: Response) => {
             sentimentTotals: metadata.sentiment_totals || null
           };
         })
-        .sort((a: unknown, b: unknown) => (Number(b.performanceDelta ?? 0) || 0) - (Number(a.performanceDelta ?? 0) || 0));
+        .sort((a, b) => (Number(b.performanceDelta ?? 0) || 0) - (Number(a.performanceDelta ?? 0) || 0));
 
       const importanceScore = computeImportanceScore(contributions, outcome);
       const debateDate = row.debate_days?.date ?? null;
@@ -1555,7 +1741,7 @@ router.get('/highlights', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to load debate highlights:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load highlights' });
+    res.status(500).json({ success: false, message: (error as { message?: string } | null)?.message || 'Failed to load highlights' });
   }
 });
 

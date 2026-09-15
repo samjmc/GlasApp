@@ -13,6 +13,17 @@ interface PledgeVotingInterfaceProps {
   onWeightedScoreChange?: (score: number) => void;
 }
 
+interface WeightedPerformanceData {
+  weightedScore?: number;
+  totalVotes?: number;
+  categoryBreakdown?: Record<string, { score?: number; weight?: number }>;
+  categoryWeights?: Record<string, number>;
+}
+
+interface WeightedPerformanceResponse {
+  data?: WeightedPerformanceData;
+}
+
 const PledgeVotingInterface: React.FC<PledgeVotingInterfaceProps> = ({ 
   partyId, 
   onWeightedScoreChange 
@@ -30,7 +41,7 @@ const PledgeVotingInterface: React.FC<PledgeVotingInterfaceProps> = ({
   const [isDragging, setIsDragging] = useState<string | null>(null);
 
   // Fetch current ranking weights based on all users' votes
-  const { data: weightedPerformance, refetch: refetchWeightedPerformance } = useQuery({
+  const { data: weightedPerformance, refetch: refetchWeightedPerformance } = useQuery<WeightedPerformanceResponse>({
     queryKey: ['/api/category-ranking/weighted-performance', partyId],
     enabled: !!partyId,
   });

@@ -35,6 +35,11 @@ interface GeographicHeatMapProps {
   height?: number;
 }
 
+interface UsStateFeature {
+  rsmKey: string;
+  properties: { postal?: string };
+}
+
 const GeographicHeatMap = ({
   viewOnly = false,
   height = 400
@@ -187,12 +192,13 @@ const GeographicHeatMap = ({
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
                     geographies.map((geo: unknown) => {
-                      const stateCode = geo.properties.postal;
+                      const feature = geo as UsStateFeature;
+                      const stateCode = feature.properties.postal;
                       const value = getValueForState(stateCode);
                       
                       return (
                         <Geography
-                          key={geo.rsmKey}
+                          key={feature.rsmKey}
                           geography={geo}
                           fill={value !== null ? getColor(value) : "#EEE"}
                           stroke="#FFF"
@@ -202,7 +208,7 @@ const GeographicHeatMap = ({
                             hover: { outline: "none", fill: value !== null ? getColor(value) : "#EEE", opacity: 0.8 },
                             pressed: { outline: "none" }
                           }}
-                          onMouseEnter={(evt: unknown) => {
+                          onMouseEnter={(evt: React.MouseEvent) => {
                             const stateData = mapData.find((d: MapDataPoint) => d.stateCode === stateCode);
                             if (stateData) {
                               const { state, economicAvg, socialAvg, count } = stateData;

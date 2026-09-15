@@ -29,6 +29,7 @@ async function buildRealtimeUpdate(userId: string) {
  */
 router.get('/article/:articleId', async (req, res) => {
   try {
+    if (!supabase) throw new Error('Database not configured');
     const { articleId } = req.params;
     
     // Get vote statistics from view
@@ -48,7 +49,7 @@ router.get('/article/:articleId', async (req, res) => {
     console.error('Error fetching article vote stats:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -59,6 +60,7 @@ router.get('/article/:articleId', async (req, res) => {
  */
 router.get('/opportunity/:policyVoteId', async (req, res) => {
   try {
+    if (!supabase) throw new Error('Database not configured');
     const policyVoteId = parseInt(req.params.policyVoteId, 10);
     if (Number.isNaN(policyVoteId)) {
       return res.status(400).json({
@@ -97,7 +99,7 @@ router.get('/opportunity/:policyVoteId', async (req, res) => {
     console.error('Error fetching policy vote opportunity:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -108,8 +110,9 @@ router.get('/opportunity/:policyVoteId', async (req, res) => {
  */
 router.get('/opportunity/:policyVoteId/user', isAuthenticated, async (req, res) => {
   try {
+    if (!supabase) throw new Error('Database not configured');
     const policyVoteId = parseInt(req.params.policyVoteId, 10);
-    const userId = req.user?.id;
+    const userId = (req.user as { id?: string } | undefined)?.id;
 
     if (!userId) {
       return res.status(401).json({
@@ -142,7 +145,7 @@ router.get('/opportunity/:policyVoteId/user', isAuthenticated, async (req, res) 
     console.error('Error fetching user policy vote response:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -153,7 +156,8 @@ router.get('/opportunity/:policyVoteId/user', isAuthenticated, async (req, res) 
  */
 router.get('/user/me/article/:articleId', isAuthenticated, async (req, res) => {
   try {
-    const userId = req.user?.id;
+    if (!supabase) throw new Error('Database not configured');
+    const userId = (req.user as { id?: string } | undefined)?.id;
     const { articleId } = req.params;
     
     if (!userId) {
@@ -180,7 +184,7 @@ router.get('/user/me/article/:articleId', isAuthenticated, async (req, res) => {
     console.error('Error fetching user vote:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -191,6 +195,7 @@ router.get('/user/me/article/:articleId', isAuthenticated, async (req, res) => {
  */
 router.get('/user/:userId/article/:articleId', async (req, res) => {
   try {
+    if (!supabase) throw new Error('Database not configured');
     const { userId, articleId } = req.params;
     
     const { data: votes, error } = await supabase
@@ -210,7 +215,7 @@ router.get('/user/:userId/article/:articleId', async (req, res) => {
     console.error('Error fetching user vote:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -221,8 +226,9 @@ router.get('/user/:userId/article/:articleId', async (req, res) => {
  */
 router.post('/opportunity/:policyVoteId/respond', isAuthenticated, async (req, res) => {
   try {
+    if (!supabase) throw new Error('Database not configured');
     const policyVoteId = parseInt(req.params.policyVoteId, 10);
-    const userId = req.user?.id;
+    const userId = (req.user as { id?: string } | undefined)?.id;
     const { selectedOption } = req.body ?? {};
 
     if (!userId) {
@@ -300,7 +306,7 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, async (req, r
     console.error('Error saving policy vote response:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -311,7 +317,8 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, async (req, r
  */
 router.post('/', isAuthenticated, async (req, res) => {
   try {
-    const userId = req.user?.id;
+    if (!supabase) throw new Error('Database not configured');
+    const userId = (req.user as { id?: string } | undefined)?.id;
     const { articleId, politicianName, supportRating, comment } = req.body;
     
     // Validate user
@@ -391,7 +398,7 @@ router.post('/', isAuthenticated, async (req, res) => {
     console.error('Error saving policy vote:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -420,7 +427,7 @@ router.get('/user/:userId/personalized-scores', async (req, res) => {
     console.error('Error calculating personalized scores:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -454,7 +461,7 @@ router.get('/user/:userId/td/:politicianName', async (req, res) => {
     console.error('Error fetching personalized TD score:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -478,7 +485,7 @@ router.get('/user/:userId/value-alignment', async (req, res) => {
     console.error('Error calculating value alignment:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -489,6 +496,7 @@ router.get('/user/:userId/value-alignment', async (req, res) => {
  */
 router.delete('/:voteId', async (req, res) => {
   try {
+    if (!supabase) throw new Error('Database not configured');
     const { voteId } = req.params;
     const { userId } = req.body;
     
@@ -525,7 +533,7 @@ router.delete('/:voteId', async (req, res) => {
     console.error('Error deleting vote:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });

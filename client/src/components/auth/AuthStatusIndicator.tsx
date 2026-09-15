@@ -3,8 +3,14 @@ import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle, AlertCircle, User } from 'lucide-react';
 
+interface AuthStatusIndicatorUser {
+  isGuest?: boolean;
+  displayName?: string;
+  email?: string;
+}
+
 interface AuthStatusIndicatorProps {
-  user: unknown;
+  user: AuthStatusIndicatorUser | null;
   loading: boolean;
 }
 

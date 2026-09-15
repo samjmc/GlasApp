@@ -9,6 +9,20 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, TrendingUp, TrendingDown, Award } from 'lucide-react';
 
+interface LeaderboardTD {
+  id: string;
+  politician_name: string;
+  party?: string;
+  constituency?: string;
+  image_url?: string;
+  overall_elo: number;
+  news_elo?: number;
+  parliamentary_elo?: number;
+  total_stories?: number;
+  weekly_elo_change: number;
+  last_updated?: string;
+}
+
 export default function TDLeaderboardPage() {
   const { data: leaderboardData, isLoading } = useQuery({
     queryKey: ['td-leaderboard-v2'],  // v2 to bust cache after adding image_url
@@ -78,7 +92,7 @@ export default function TDLeaderboardPage() {
         <Card className="p-4">
           <p className="text-sm text-gray-600 mb-1">Average Score</p>
           <p className="text-3xl font-bold">
-            {tds.length > 0 ? Math.round(tds.reduce((sum: number, td: unknown) => sum + td.overall_elo, 0) / tds.length) : '—'}
+            {tds.length > 0 ? Math.round(tds.reduce((sum: number, td: LeaderboardTD) => sum + td.overall_elo, 0) / tds.length) : '—'}
           </p>
         </Card>
         <Card className="p-4">
@@ -105,7 +119,7 @@ export default function TDLeaderboardPage() {
               <p className="text-sm">Scores will appear as news articles mention TDs</p>
             </div>
           ) : (
-            tds.map((td: unknown, index: number) => {
+            tds.map((td: LeaderboardTD, index: number) => {
               const rank = index + 1;
               const rating = getELORating(td.overall_elo);
               const showMedal = rank <= 3;

@@ -28,6 +28,30 @@ import {
 } from 'lucide-react';
 import { PartyPollingWidget } from '@/components/PartyPollingWidget';
 
+interface PartyScore {
+  id: string | number;
+  name: string;
+  abbreviation?: string;
+  color?: string;
+  logo?: string;
+  government_status?: string;
+  active_members?: number;
+  rank?: number;
+  overall_score?: number;
+  transparency_score?: number;
+  policy_consistency_score?: number;
+  parliamentary_activity_score?: number;
+  ideology?: Record<string, number>;
+}
+
+interface PartyTDScore {
+  politician_name: string;
+  party?: string;
+  constituency?: string;
+  overall_score?: number;
+  overall_elo?: number;
+}
+
 export default function PartyProfilePage() {
   const { name } = useParams<{ name: string }>();
   
@@ -40,7 +64,7 @@ export default function PartyProfilePage() {
         throw new Error('Failed to load party data');
       }
       const data = await res.json();
-      const party = data.parties?.find((p: unknown) => 
+      const party = data.parties?.find((p: PartyScore) => 
         p.name.toLowerCase() === (name || '').toLowerCase()
       );
       if (!party) throw new Error('PARTY_NOT_FOUND');
@@ -501,7 +525,7 @@ function PartyTDsList({ partyName }: { partyName: string }) {
       console.log(`[PartyTDsList] Filtering for party: "${partyName}"`);
       console.log(`[PartyTDsList] Total TDs fetched: ${allData.scores?.length || 0}`);
       
-      const partyTDs = (allData.scores || []).filter((td: unknown) => {
+      const partyTDs = (allData.scores || []).filter((td: PartyTDScore) => {
         const matches = td.party?.toLowerCase().trim() === partyName.toLowerCase().trim();
         if (matches) {
           console.log(`[PartyTDsList] ✓ Match: ${td.politician_name} (${td.party})`);
@@ -526,7 +550,7 @@ function PartyTDsList({ partyName }: { partyName: string }) {
 
   return (
     <div className="space-y-2">
-      {tds.map((td: unknown) => (
+      {tds.map((td: PartyTDScore) => (
         <Link key={td.politician_name} href={`/td/${encodeURIComponent(td.politician_name)}`}>
           <div className="group p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all cursor-pointer">
             <div className="flex items-center justify-between">

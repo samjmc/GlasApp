@@ -12,9 +12,11 @@ interface ArticleRecord {
   content: string | null;
   source: string;
   published_date: string;
-  policy_vote_opportunities?: {
-    question_text: string;
-  } | null;
+  policy_vote_opportunities?: { question_text: string }[] | { question_text: string } | null;
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 /**
@@ -125,7 +127,7 @@ export async function regeneratePolicyQuestions(
         await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (error: unknown) {
         errorCount++;
-        console.error(`   ❌ Error: ${error.message}`);
+        console.error(`   ❌ Error: ${errorMessage(error)}`);
       }
     }
 
@@ -138,7 +140,7 @@ export async function regeneratePolicyQuestions(
     console.log('==========================================\n');
 
   } catch (error: unknown) {
-    console.error('❌ Regeneration failed:', error.message);
+    console.error('❌ Regeneration failed:', errorMessage(error));
   }
 }
 
@@ -212,7 +214,7 @@ export async function validateExistingQuestions(
     }
 
   } catch (error: unknown) {
-    console.error('❌ Validation failed:', error.message);
+    console.error('❌ Validation failed:', errorMessage(error));
   }
 }
 

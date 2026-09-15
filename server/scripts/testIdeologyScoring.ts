@@ -5,7 +5,7 @@
  */
 
 import 'dotenv/config';
-import { NewsArticleScoringTeam } from '../services/multiAgentTDScoring.js';
+import { NewsArticleScoringTeam, type IdeologyAnalysis, type IdeologyDelta } from '../services/multiAgentTDScoring.js';
 
 // IPAS rent policy article - multiple politicians with clear stances
 const testArticle = {
@@ -84,6 +84,13 @@ const politicians = [
   }
 ];
 
+interface ScoringResult {
+  politician: string;
+  party: string;
+  impact: number;
+  ideology: IdeologyAnalysis | null;
+}
+
 async function runTest() {
   console.log('\n' + '█'.repeat(70));
   console.log('█  IDEOLOGY SCORING TEST - IPAS POLICY ARTICLE');
@@ -92,7 +99,7 @@ async function runTest() {
   console.log(`\nThis article should show CLEAR ideology signals as politicians take`);
   console.log(`different positions on immigration/welfare policy.\n`);
   
-  const results: unknown[] = [];
+  const results: ScoringResult[] = [];
   
   for (const politician of politicians) {
     console.log('─'.repeat(70));
@@ -136,7 +143,7 @@ async function runTest() {
     console.log(`│`);
     console.log(`│  IDEOLOGY SHIFTS:`);
     
-    const dims = ['economic', 'social', 'cultural', 'authority', 'welfare', 'globalism'];
+    const dims: (keyof IdeologyDelta)[] = ['economic', 'social', 'cultural', 'authority', 'welfare', 'globalism'];
     for (const dim of dims) {
       const val = r.ideology?.ideologyDelta?.[dim] || 0;
       if (Math.abs(val) >= 0.05) {

@@ -101,7 +101,18 @@ export interface ArticleAnalysis {
   confidence: number; // 0-1
 }
 
-const ANALYSIS_PROMPT = (article: unknown, politician: unknown, partyPositions: unknown = {}) => `
+interface AnalysisArticleFields {
+  title: string;
+  content: string;
+  source: string;
+  published_date: string;
+}
+
+const ANALYSIS_PROMPT = (
+  article: AnalysisArticleFields,
+  politician: { name: string; constituency: string; party?: string },
+  partyPositions: Record<string, number> = {}
+) => `
 You are a MAXIMALLY TRUTH-SEEKING political analyst evaluating Irish TD ${politician.name} from ${politician.constituency}.
 
 **CORE PRINCIPLE - TRUTH ABOVE ALL:**
@@ -526,14 +537,16 @@ export async function analyzeArticleWithOpenAI(
   let partyPositions = {};
   if (politician.party) {
     const { supabaseDb } = await import('../db.js');
-    const { data } = await supabaseDb
-      .from('parties')
-      .select('economic_score, social_score, cultural_score, globalism_score, environmental_score, authority_score, welfare_score, technocratic_score')
-      .eq('name', politician.party)
-      .single();
-    
-    if (data) {
-      partyPositions = data;
+    if (supabaseDb) {
+      const { data } = await supabaseDb
+        .from('parties')
+        .select('economic_score, social_score, cultural_score, globalism_score, environmental_score, authority_score, welfare_score, technocratic_score')
+        .eq('name', politician.party)
+        .single();
+      
+      if (data) {
+        partyPositions = data;
+      }
     }
   }
   
@@ -555,7 +568,7 @@ Score PROCESS not POLICY. Detect flip-flops. Hold politicians accountable.
 Respond ONLY with valid JSON.`
       }, {
         role: 'user',
-        content: ANALYSIS_PROMPT(article, politician, partyPositions)
+        content: ANALYSIS_PROMPT(article as AnalysisArticleFields, politician, partyPositions)
       }]
     }, { operation: 'newsAnalysis' });
 
@@ -569,9 +582,9 @@ Respond ONLY with valid JSON.`
     analysis.consistency_score = normalizeProcessScore(analysis.consistency_score, analysis.consistency_reasoning);
     
     // FLIP-FLOP PENALTY: Apply consistency adjustment based on LLM detection
-    const flipFlopDetected = (analysis as unknown).flip_flop_detected || 'none';
-    const flipFlopExplanation = (analysis as unknown).flip_flop_explanation || '';
-    const suspiciousTiming = (analysis as unknown).suspicious_timing || false;
+    const flipFlopDetected = (analysis as { flip_flop_detected?: string }).flip_flop_detected || 'none';
+    const flipFlopExplanation = (analysis as { flip_flop_explanation?: string }).flip_flop_explanation || '';
+    const suspiciousTiming = (analysis as { suspicious_timing?: boolean }).suspicious_timing || false;
     
     let consistencyPenalty = 0;
     let needsReview = false;
@@ -608,7 +621,7 @@ Respond ONLY with valid JSON.`
     // Store flip-flop context for display
     analysis.historical_context = {
       hasFlipFlop: flipFlopDetected !== 'none',
-      flipFlopSeverity: flipFlopDetected as unknown,
+      flipFlopSeverity: flipFlopDetected as 'none' | 'minor' | 'moderate' | 'major',
       flipFlopDetails: flipFlopExplanation,
       needsHumanReview: needsReview,
       suspiciousTiming: suspiciousTiming,
@@ -659,7 +672,7 @@ export async function analyzeArticle(
 ): Promise<ArticleAnalysis> {
   
   console.log(`🤖 Analyzing article about ${politician.name}...`);
-  console.log(`   Title: ${article.title}`);
+  console.log(`   Title: ${(article as AnalysisArticleFields).title}`);
   
   // Primary analysis with OpenAI
   const primaryAnalysis = await analyzeArticleWithOpenAI(article, politician);
@@ -775,7 +788,7 @@ async function applyBiasProtection(
     }
     
     // Adjust for source bias
-    const sourceBias = getSourceBias(article.source);
+    const sourceBias = getSourceBias((article as { source?: string }).source || '');
     if (sourceBias !== 0 && adjustedImpact > 0) {
       const biasAdjustment = Math.round(adjustedImpact * Math.abs(sourceBias));
       adjustedImpact = adjustedImpact - biasAdjustment;
@@ -788,7 +801,7 @@ async function applyBiasProtection(
     return {
       ...initialAnalysis,
       is_announcement: isAnnouncement,
-      critical_analysis: criticalAnalysis,
+      critical_analysis: criticalAnalysis ?? undefined,
       bias_adjustments: adjustments,
       impact_score: adjustedImpact  // Use adjusted impact!
     };
@@ -803,7 +816,8 @@ async function applyBiasProtection(
  * Detect if article is announcement vs achievement
  */
 function detectAnnouncement(article: unknown): boolean {
-  const text = (article.title + ' ' + article.content).toLowerCase();
+  const articleData = article as { title: string; content: string };
+  const text = (articleData.title + ' ' + articleData.content).toLowerCase();
   
   const announcementIndicators = [
     'announces', 'will', 'plans to', 'pledges', 'promises',
@@ -840,10 +854,10 @@ async function generateCriticalAnalysis(
   
   try {
     const criticalPrompt = `
-You are a CRITICAL analyst reviewing this article about ${politician.name}.
+You are a CRITICAL analyst reviewing this article about ${(politician as { name: string }).name}.
 
 The article presents this positively:
-Title: ${article.title}
+Title: ${(article as AnalysisArticleFields).title}
 Initial AI Assessment: ${initialAnalysis.sentiment}, impact +${initialAnalysis.impact_score}
 
 NOW PLAY DEVIL'S ADVOCATE:
@@ -942,12 +956,14 @@ export async function batchAnalyzeArticles(
     
     console.log(`\n[${i + 1}/${articlesWithPoliticians.length}] Processing...`);
     
+    const politicianData = politician as { name: string; constituency: string; party?: string };
+    
     try {
-      const analysis = await analyzeArticle(article, politician, options);
+      const analysis = await analyzeArticle(article, politicianData, options);
       results.push({ article, politician, analysis });
       
     } catch (error) {
-      console.error(`❌ Analysis failed for ${politician.name}:`, error);
+      console.error(`❌ Analysis failed for ${politicianData.name}:`, error);
       // Continue with next article
     }
     
@@ -981,13 +997,14 @@ export async function extractRelevantTDsFromArticle(
   options: { useKeywordFallback?: boolean } = {}
 ): Promise<Array<{ name: string; constituency: string; party: string; confidence: number }>> {
   
-  try {
+try {
+    const a = article as { title?: string; content?: string; description?: string };
     const prompt = `
-You are analyzing an Irish political news article to identify which TDs (Teachtaí Dála - members of parliament) are SUBSTANTIALLY relevant.
+You are analyzing an Irish political news article to identify which TDs (Teachtaí Dáil - members of parliament) are SUBSTANTIALLY relevant.
 
 Article:
-Title: ${article.title}
-Content: ${article.content?.substring(0, 2000) || article.description || ''}
+Title: ${a.title}
+Content: ${a.content?.substring(0, 2000) || a.description || ''}
 
 Your task: Identify ALL TDs who are:
 1. Directly mentioned by name (e.g., "Simon Harris said...")
@@ -1075,7 +1092,7 @@ If NO specific TDs are relevant, return: {"tds": []}
       console.log('   🔄 Falling back to keyword extraction');
       const { TDExtractionService } = await import('./tdExtractionService.js');
       const mentions = await TDExtractionService.extractTDMentions(
-        article.title + ' ' + (article.content || article.description || '')
+        a.title + ' ' + (a.content || a.description || '')
       );
       return mentions.map(m => ({
         name: m.name,

@@ -7,8 +7,29 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const router = Router();
 
 // Load parliamentary activity data
-let parliamentaryActivityData: Record<string, any> = {};
-let partyActivityData: Record<string, any> = {};
+interface ParliamentaryActivityMember {
+  fullName?: string;
+  party?: string;
+  questionsAsked?: number;
+  dailAttendance?: number;
+  otherAttendance?: number;
+  attendancePercentage?: number;
+}
+
+interface PartyParliamentaryActivity {
+  activityScore?: number;
+  combinedActivityScore?: number;
+  questionsAsked?: number;
+  tdCount?: number;
+  questionsPerTD?: number;
+  averageAttendance?: number | null;
+  attendanceScore?: number | null;
+  questionsScore?: number | null;
+  weighting?: string;
+}
+
+let parliamentaryActivityData: Record<string, ParliamentaryActivityMember> = {};
+let partyActivityData: Record<string, PartyParliamentaryActivity> = {};
 
 try {
   const dataPath = path.join(__dirname, '..', '..', 'data', 'parliamentary-activity.json');
@@ -147,7 +168,7 @@ router.get('/party/:partyId/stats', (req, res) => {
     
     const partyNames = partyNameMapping[partyId] || [];
     
-    const partyMembers = Object.values(parliamentaryActivityData).filter((member: unknown) => 
+    const partyMembers = Object.values(parliamentaryActivityData).filter((member) => 
       partyNames.some(name => member.party && member.party.includes(name))
     );
     
@@ -160,20 +181,20 @@ router.get('/party/:partyId/stats', (req, res) => {
     
     // Calculate party statistics
     const totalMembers = partyMembers.length;
-    const totalQuestions = partyMembers.reduce((sum: number, member: unknown) => sum + (member.questionsAsked || 0), 0);
-    const totalAttendance = partyMembers.reduce((sum: number, member: unknown) => sum + (member.dailAttendance || 0), 0);
-    const totalOtherAttendance = partyMembers.reduce((sum: number, member: unknown) => sum + (member.otherAttendance || 0), 0);
+    const totalQuestions = partyMembers.reduce((sum: number, member) => sum + (member.questionsAsked || 0), 0);
+    const totalAttendance = partyMembers.reduce((sum: number, member) => sum + (member.dailAttendance || 0), 0);
+    const totalOtherAttendance = partyMembers.reduce((sum: number, member) => sum + (member.otherAttendance || 0), 0);
     
     const avgQuestions = Math.round(totalQuestions / totalMembers);
     const avgAttendance = Math.round((totalAttendance / totalMembers / 29) * 100);
     const avgOtherAttendance = Math.round(totalOtherAttendance / totalMembers);
     
     // Find top performers
-    const topQuestionAsker = partyMembers.reduce((top: unknown, member: unknown) => 
+    const topQuestionAsker = partyMembers.reduce((top, member) => 
       (member.questionsAsked || 0) > (top.questionsAsked || 0) ? member : top
     );
     
-    const topAttendee = partyMembers.reduce((top: unknown, member: unknown) => 
+    const topAttendee = partyMembers.reduce((top, member) => 
       (member.attendancePercentage || 0) > (top.attendancePercentage || 0) ? member : top
     );
     
@@ -193,7 +214,7 @@ router.get('/party/:partyId/stats', (req, res) => {
           name: topAttendee.fullName,
           attendance: topAttendee.attendancePercentage
         },
-        members: partyMembers.map((member: unknown) => ({
+        members: partyMembers.map((member) => ({
           name: member.fullName,
           questionsAsked: member.questionsAsked,
           attendancePercentage: member.attendancePercentage,
@@ -225,21 +246,21 @@ router.get('/stats', (req, res) => {
     
     // Calculate overall statistics
     const totalMembers = allMembers.length;
-    const totalQuestions = allMembers.reduce((sum: number, member: unknown) => sum + (member.questionsAsked || 0), 0);
+    const totalQuestions = allMembers.reduce((sum: number, member) => sum + (member.questionsAsked || 0), 0);
     const avgQuestions = Math.round(totalQuestions / totalMembers);
     
-    const attendanceRates = allMembers.map((member: unknown) => member.attendancePercentage || 0);
+    const attendanceRates = allMembers.map((member) => member.attendancePercentage || 0);
     const avgAttendance = Math.round(attendanceRates.reduce((sum, rate) => sum + rate, 0) / totalMembers);
     
-    const otherAttendance = allMembers.map((member: unknown) => member.otherAttendance || 0);
+    const otherAttendance = allMembers.map((member) => member.otherAttendance || 0);
     const avgOtherAttendance = Math.round(otherAttendance.reduce((sum, days) => sum + days, 0) / totalMembers);
     
     // Top performers
-    const topQuestionAsker = allMembers.reduce((top: unknown, member: unknown) => 
+    const topQuestionAsker = allMembers.reduce((top, member) => 
       (member.questionsAsked || 0) > (top.questionsAsked || 0) ? member : top
     );
     
-    const topAttendee = allMembers.reduce((top: unknown, member: unknown) => 
+    const topAttendee = allMembers.reduce((top, member) => 
       (member.attendancePercentage || 0) > (top.attendancePercentage || 0) ? member : top
     );
     
@@ -350,10 +371,10 @@ router.get('/top-performers', (req, res) => {
     
     // Sort by questions asked and get top 10
     const topPerformers = allMembers
-      .filter((member: unknown) => member.questionsAsked && member.questionsAsked > 0)
-      .sort((a: unknown, b: unknown) => (b.questionsAsked || 0) - (a.questionsAsked || 0))
+      .filter((member) => member.questionsAsked && member.questionsAsked > 0)
+      .sort((a, b) => (b.questionsAsked || 0) - (a.questionsAsked || 0))
       .slice(0, 10)
-      .map((member: unknown) => ({
+      .map((member) => ({
         name: member.fullName,
         questions: member.questionsAsked,
         party: member.party,

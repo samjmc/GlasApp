@@ -132,6 +132,11 @@ interface PartyMatch {
   confidence: number;
 }
 
+interface PersonalRankingsUpdateDetail {
+  updatedProfile?: IdeologyProfileResponse;
+  topMatches?: PersonalRanking[];
+}
+
 const formatConfidence = (weight: number): string => {
   if (!weight || weight <= 0) return 'No signals yet';
   if (weight >= 40) return 'High confidence';
@@ -147,7 +152,7 @@ export default function MyPoliticsPage() {
   const [rankings, setRankings] = useState<PersonalRanking[]>([]);
   const [visibleRankingsCount, setVisibleRankingsCount] = useState(5);
   const [isLoading, setIsLoading] = useState(true);
-  const [topMatches, setTopMatches] = useState<unknown[]>([]);
+  const [topMatches, setTopMatches] = useState<PersonalRanking[]>([]);
   const [partyMatches, setPartyMatches] = useState<PartyMatch[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'rankings' | 'network'>('overview');
   const [friendSummary, setFriendSummary] = useState<FriendSummary | null>(null);
@@ -205,7 +210,7 @@ export default function MyPoliticsPage() {
       setPendingInvites(data.pendingInvites ?? []);
     } catch (error: unknown) {
       console.error('Error loading friend insights:', error);
-      setFriendsError(error?.message || 'Unable to load friend insights right now.');
+      setFriendsError((error as Error)?.message || 'Unable to load friend insights right now.');
       resetFriendsState();
     } finally {
       setIsFriendsLoading(false);
@@ -345,7 +350,7 @@ export default function MyPoliticsPage() {
 
   useEffect(() => {
     const listener = async (event: Event) => {
-      const custom = event as CustomEvent<unknown>;
+      const custom = event as CustomEvent<PersonalRankingsUpdateDetail>;
       const detail = custom.detail;
       if (!detail) return;
 
@@ -464,12 +469,12 @@ export default function MyPoliticsPage() {
 
   const getDominantAxisDescription = (ideology: Record<string, number>) => {
     let dominant: { axis: string; value: number } | null = null;
-    Object.entries(ideology).forEach(([axis, value]) => {
+    for (const [axis, value] of Object.entries(ideology)) {
       const magnitude = Math.abs(Number(value));
       if (!dominant || magnitude > Math.abs(dominant.value)) {
         dominant = { axis, value: Number(value) };
       }
-    });
+    }
 
     if (!dominant) return 'Balanced stance';
     const label = IDEOLOGY_AXIS_LABELS[dominant.axis] || dominant.axis;

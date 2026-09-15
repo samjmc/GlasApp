@@ -105,7 +105,7 @@ async function processDebateEmbeddings() {
           continue;
       }
 
-      const processedIds = new Set(existingChunks?.map((c: unknown) => c.speech_id) || []);
+      const processedIds = new Set(existingChunks?.map(c => c.speech_id) || []);
       const speechesToProcess = candidates.filter(s => !processedIds.has(s.id));
 
       if (speechesToProcess.length > 0) {
@@ -144,13 +144,20 @@ async function processDebateEmbeddings() {
       await new Promise(resolve => setTimeout(resolve, 10));
 
     } catch (err: unknown) {
-        console.error('\n❌ Unexpected loop error:', err.message || err);
+        console.error('\n❌ Unexpected loop error:', err instanceof Error ? err.message : err);
         await new Promise(r => setTimeout(r, 3000));
     }
   }
 }
 
-async function processSpeech(speech: unknown): Promise<number> {
+async function processSpeech(speech: {
+  id: string;
+  paragraphs: string | string[] | null;
+  speaker_name?: string | null;
+  speaker_party?: string | null;
+  recorded_time?: string | null;
+  metadata?: Record<string, any> | null;
+}): Promise<number> {
   // Handle JSONB paragraphs - might be string or array
   let paragraphs: string[];
   if (typeof speech.paragraphs === 'string') {
@@ -209,11 +216,11 @@ async function processSpeech(speech: unknown): Promise<number> {
 
     } catch (err: unknown) {
       // Log specific OpenAI errors
-      if (err.message?.includes('rate')) {
+      if (err instanceof Error && err.message.includes('rate')) {
         console.error(`\n⚠️ Rate limit hit - waiting 5s...`);
         await new Promise(r => setTimeout(r, 5000)); // Faster recovery
       } else {
-        console.error(`\nEmbedding error: ${err.message || err}`);
+        console.error(`\nEmbedding error: ${err instanceof Error ? err.message : err}`);
       }
       continue;
     }
@@ -231,7 +238,7 @@ async function processSpeech(speech: unknown): Promise<number> {
         return chunksToInsert.length;
       }
     } catch (err: unknown) {
-      console.error(`\nBulk insert exception: ${err.message || err}`);
+      console.error(`\nBulk insert exception: ${err instanceof Error ? err.message : err}`);
       return 0;
     }
   } else {

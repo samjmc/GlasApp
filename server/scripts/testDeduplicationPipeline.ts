@@ -58,7 +58,7 @@ async function testPipeline() {
   for (const { title, source } of testTitles.slice(0, 3)) {
     const words = TitleDeduplicationService.extractSignificantWords(title);
     console.log(`\n${source}: "${title}"`);
-    console.log(`   Keywords: ${[...words].join(', ')}`);
+    console.log(`   Keywords: ${Array.from(words).join(', ')}`);
   }
   
   // Test 3: Event Clustering (Layer 3)

@@ -1,107 +1,112 @@
-# Phase 4B — Row-Level Security (RLS) Policies
+# Phase 4C — TypeScript Strict Mode Hardening
 
-**Worktree:** `/private/tmp/glasapp-worktrees/phase-4b-rls`  
-**Branch:** `feature/phase-4b-rls` (cut from `main`)  
-**Task Slug:** `phase-4b-rls`  
+**Worktree:** `/private/tmp/glasapp-worktrees/phase-4c-typescript-strict`  
+**Branch:** `feature/phase-4c-typescript-strict` (cut from `main`)  
+**Task Slug:** `phase-4c-typescript-strict`  
 **Status:** Research + Implementation required
 
 ## Context
 
-GlasApp uses Supabase for authentication and data storage. RLS (Row-Level Security) is a database-level access control mechanism that ensures users can only access rows they're authorized to see, enforced at the query layer — not just the application layer.
+GlasApp's TypeScript compiler is currently in a permissive mode (no `strict` flag, many `any` types allowed). This causes 2,644 baseline errors, many of which hide potential runtime bugs.
 
-Current state: Some tables have RLS enabled, others don't. This phase reviews which tables should have RLS, designs policies for them, and implements the policies in Supabase.
+This phase enables TypeScript strict mode progressively, fixes the errors it reveals, and ships with stricter type safety as the new baseline. This is a large refactoring.
 
-## Task: Design & Deploy RLS Policies
+## Task: Progressive TypeScript Strict Mode Enablement
 
-### 1. Audit: Which Tables Need RLS?
-- **High-risk tables** (contain user-sensitive data):
-  - `users` / `user_profiles` — personal data, should be user-readable only by themselves + admins
-  - `quiz_results` — user's quiz history, should be private to that user + admins
-  - `political_evolution` — user's voting/stance data, should be private + admins
-  - `user_activity` — user's activity log, private + admins
-  - `rankings` — user's rankings/scores, user-readable but write-restricted
-- **Lower-risk tables** (public data):
-  - `politicians`, `political_parties`, `constituencies` — public, may not need RLS
-  - `debates`, `debate_topics` — public, may not need RLS
-- **Check current state:**
-  - Which tables already have RLS enabled? (query `information_schema`)
-  - Which policies exist? (read Supabase dashboard)
-  - Which are missing or incomplete?
+### 1. Audit: Current Compiler Config
+- **Read `tsconfig.json`:**
+  - Current flags enabled? (strict, strictNullChecks, strictFunctionTypes, noImplicitAny, etc.)
+  - Target version? (ES2020? ES2023?)
+  - Excluded paths? (node_modules, dist, etc.)
+- **Baseline error count:**
+  - Run `npm run check` today → record error count (expected: 2644)
+  - Identify which error codes are most common (TS2339, TS2345, TS18046, etc.)
 
-### 2. Design RLS Policies
-For each high-risk table, define policies:
-- **SELECT:** who can read rows?
-  - User can read their own row (e.g., `auth.uid() = user_id`)
-  - Admins can read all (e.g., `is_admin()` custom claim)
-  - Specific roles can read certain rows (moderators read flagged content, etc.)
-- **INSERT:** who can create rows?
-  - User can insert with `user_id = auth.uid()` (set by trigger, not user input)
-  - Admin can insert anything
-- **UPDATE:** who can modify rows?
-  - User can update their own row only
-  - Admin can update any row
-- **DELETE:** who can delete rows?
-  - User cannot delete (soft delete only via admin)
-  - Admin can delete
+### 2. Enable Strict Mode Progressively
+**Strategy:** Don't enable all flags at once (would create 5000+ errors immediately). Instead, enable gradually:
 
-### 3. Implementation: Apply Policies via Supabase
-- **Enable RLS on each high-risk table:**
-  ```sql
-  ALTER TABLE table_name ENABLE ROW LEVEL SECURITY;
-  ```
-- **Create policies** (via Supabase dashboard or direct SQL):
-  - Per-table, per-operation (SELECT/INSERT/UPDATE/DELETE)
-  - Use `auth.uid()`, `auth.jwt()` claims, custom functions
-- **Test policies:**
-  - Logged-in user can read/write their own data ✅
-  - Logged-in user **cannot** read/write other users' data ✅
-  - Admin (with admin claim) can read all ✅
-  - Unauthenticated request is rejected ✅
+- **Step 1:** Enable `strict: true` in `tsconfig.json` → observe error count spike
+- **Step 2:** Fix high-frequency error codes first:
+  - `TS2339` (Property does not exist) — usually missing interface definitions
+  - `TS2345` (Argument type mismatch) — usually `unknown`/`any` parameters
+  - `TS18046` (Value is of type 'unknown') — replace `unknown` with proper types
+  - `TS7006` (Parameter has an implicit 'any' type) — add parameter types
+- **Step 3:** Work down by frequency until error count reaches a manageable target:
+  - Commit after every 100-200 error fixes (keeps history clean)
+  - Use `// @ts-ignore` sparingly only for genuinely incompatible legacy code
+  - Prefer real type fixes over ignore comments
 
-### 4. Application-Layer Integration
-- **Verify PostgREST queries respect RLS:**
-  - GlasApp makes API calls to Supabase PostgREST (`/rest/v1/...`)
-  - PostgREST enforces RLS per request based on `Authorization: Bearer <jwt>`
-  - Queries should NOT need filtering logic — RLS filters at DB level
-- **Remove redundant app-layer checks** (if any):
-  - If code was manually checking `user_id == auth.uid()` before querying, it can now rely on RLS
-  - Keep security-paranoia checks (defense in depth), but note RLS is the enforcement layer
+### 3. Implementation: Fix Errors
+For each error, choose the right fix strategy:
+
+- **Missing type definitions:**
+  - Error: `TS2339: Property 'x' does not exist on type 'Y'`
+  - Fix: Add the property to the interface/type definition
+- **Function parameter types:**
+  - Error: `TS7006: Parameter 'x' has an implicit 'any' type`
+  - Fix: Add `: <type>` annotation to the parameter
+- **Generic constraints:**
+  - Error: `TS2345: Argument of type 'X' is not assignable to parameter of type 'Y'`
+  - Fix: Use generics properly or cast to the expected type (with `as` only when safe)
+- **Null/undefined handling:**
+  - Error: `TS18046: 'x' is of type 'unknown'` or `TS2531: Object is possibly 'null'`
+  - Fix: Add proper null/undefined checks or use optional chaining (`?.`)
+- **Union type narrowing:**
+  - Error: Type mismatches with union types
+  - Fix: Use type guards (`if (typeof x === '...')` or `x instanceof Y`)
+
+### 4. Priority Areas (tackle in this order)
+- **High impact (affects many files):**
+  - `server/services/*.ts` — service layer has lots of `any` types
+  - `server/routes/*.ts` — route handlers accept `req.body` (often untyped)
+  - `client/src/contexts/*.ts` — React context often loses types
+- **Medium impact:**
+  - `client/src/pages/*.ts` — page components
+  - `shared/*.ts` — shared types (fixing these helps everything else)
+- **Lower priority:**
+  - Test files (can use looser types)
+  - Generated code (don't waste time on it)
 
 ### 5. Verification
-- **No new TypeScript errors:** `npm run check` must pass (baseline 2644 errors)
-- **RLS status check:**
-  - Verify tables have RLS enabled (Supabase dashboard or `information_schema` query)
-  - Verify policies exist for each sensitive operation
-- **Manual test (if possible):**
-  - Connect as user A, query should only return A's data
-  - Connect as user B, query should only return B's data
-  - Connect as admin, query should return all data
-- **Coverage:** Document all tables audited, which have RLS, policy design rationale
+- **Progressive error count reduction:**
+  - Record error count after each major fix batch
+  - Target: reduce to <1000 errors by end of phase
+  - Ultimate goal: reduce to <500 errors (or full 0, but that's ambitious)
+- **Test suite must pass:**
+  - `npm run test` (if tests exist and run)
+- **No regressions:**
+  - Ensure existing functionality still works
+  - TypeScript strict mode should only **catch** bugs, not introduce them
+- **Coverage:**
+  - Document which error codes were most common
+  - Document fix strategy per error type
+  - Show before/after error counts
 
 ## Files in Scope
-- `server/routes/*.ts` — read auth/query patterns (identify what's calling which tables)
-- `server/db.ts` — understand Supabase client setup
-- `server/middleware/supabaseAuth.ts` — understand how JWT is passed
-- Supabase dashboard — apply RLS policies directly (not code changes)
-- `docs/agent-reports/phase-4b-rls/` — REPORT.md, policy design, implementation log
+- `tsconfig.json` — enable `strict: true`
+- `client/src/**/*.ts` — client-side type fixes
+- `server/**/*.ts` — server-side type fixes
+- `shared/**/*.ts` — shared type definitions
+- `docs/agent-reports/phase-4c-typescript-strict/` — REPORT.md, error fix log
 
 ## Do Not
-- Modify Route handlers (that's Phase 4A)
-- Change TypeScript compiler settings (that's Phase 4C)
-- Drop or rename tables (RLS is additive only)
+- Refactor application logic (stay focused on types)
+- Change runtime behavior (strict mode is a compile-time check)
+- Add new dependencies just to fix types (be pragmatic)
+- Break existing functionality while fixing types
 
 ## Acceptance Criteria
-- ✅ All high-risk tables identified (list in report)
-- ✅ RLS policies designed (SELECT/INSERT/UPDATE/DELETE per table)
-- ✅ Policies deployed to Supabase
-- ✅ Policies tested (user isolation, admin access, unauthenticated rejection verified)
-- ✅ `npm run check` passes (no new TS errors)
-- ✅ REPORT.md written: tables audited, policy design, deployment steps, test results
+- ✅ `strict: true` enabled in tsconfig.json
+- ✅ Error count reduced from 2644 → target (document target in report)
+- ✅ All high-frequency error codes addressed (document strategy per type)
+- ✅ No new runtime errors introduced (existing tests still pass)
+- ✅ `npm run check` runs with fewer errors (document before/after counts)
+- ✅ REPORT.md written: errors fixed, strategy per error type, before/after metrics
 
 ## Report Location
-- **Path:** `docs/agent-reports/phase-4b-rls/REPORT.md`
-- **Contents:** Tables audited, RLS policies designed/deployed, testing methodology, verification results
+- **Path:** `docs/agent-reports/phase-4c-typescript-strict/REPORT.md`
+- **Contents:** Config changes, error fixes by category, before/after error counts, test results, lessons learned
 
 ---
 
-**Do this now. Audit tables, design policies, deploy to Supabase, test, report. No approval needed.**
+**Do this now. Enable strict mode, fix errors, reduce baseline, test, report. Ambitious but important. No approval needed.**

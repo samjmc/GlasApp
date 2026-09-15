@@ -22,8 +22,15 @@ L.Marker.prototype.options.icon = DefaultIcon;
 // Define types for constituencies
 interface ConstituencyMapProps {
   selectedConstituencies: string[];
-  onConstituencySelect: (constituency: string) => void;
+  onConstituencySelect?: (constituency: string) => void;
   constituencyData?: Record<string, any>; // Optional constituency data with party information
+}
+
+interface ConstituencyPartyData {
+  name: string;
+  percent: number;
+  color: string;
+  seats?: number;
 }
 
 // Define constituency boundary data (simplified for this example)
@@ -175,7 +182,7 @@ const ConstituencyMap: React.FC<ConstituencyMapProps> = ({
                 const partyData = constituencyData[name]?.parties || [];
                 
                 // Filter out parties with no data (0% or undefined percent)
-                const filteredPartyData = partyData.filter((party: unknown) => 
+                const filteredPartyData = partyData.filter((party: ConstituencyPartyData) => 
                   party.percent !== undefined && party.percent > 0
                 );
                 

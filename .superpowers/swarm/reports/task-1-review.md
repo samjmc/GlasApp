@@ -1,47 +1,59 @@
-# Task 1 Review — Middleware hardening: reusable RBAC guard + admin logging + payload limit
+# Task 1 — Spec + Quality Review
 
-**Reviewer**: task reviewer
-**Date**: 2026-09-15
-**Verdict**: SPEC PASS, QUALITY APPROVED (5 Minor findings)
+**Reviewer:** task reviewer (independent of implementer and verifier)
+**Artifacts read:** `briefs/task-1-brief.md`, `diffs/task-1.diff`, `reports/task-1-report.md`, `evidence/task-1-evidence.md`, `plan.md` (Task 1 section + Global Constraints), and the live files.
+**Verifier result (not re-run):** all gates PASS — owned-file errors 0, project 2644→2589, 103/103 tests, `strict` on.
 
-Reviewed against: `briefs/task-1-brief.md`, `diffs/task-1.diff`, `reports/task-1-report.md`, and the current working-tree files (`server/auth/supabaseAuth.ts`, `server/middleware/adminAccess.ts`, `server/middleware/sessionMiddleware.ts`, `server/index.ts`, `server/middleware/requireRole.test.ts`). Gates were confirmed by the verifier; this review focuses on spec compliance and code quality.
+## Verdict
 
----
-
-## SPEC COMPLIANCE
-
-Every brief requirement is present and correct; nothing security-relevant is missing.
-
-| Brief req | Status | Evidence |
-|---|---|---|
-| `isAdmin` uses `req.user` if set, else `getUserFromRequest` (line 10) | ✓ | supabaseAuth.ts:208-211 |
-| Session callers treated non-admin unless ADMIN_EMAILS allowlist, with brief comment (line 11) | ✓ | supabaseAuth.ts:225-227 comment; allowlist check line 231 |
-| Log every decision: `logger.info` grants / `logger.warn` denials, actor+route+grant+reason, no headers/tokens (line 12) | ✓ | supabaseAuth.ts:214-217, 232-235, 243-246 |
-| Exact 401/403 contracts (line 13) | ✓ | `{success:false,message:'Authentication required'}` 401; `'Admin access required'` 403 |
-| `requireAdminAccess` signature/behavior preserved, secret-path logging added (line 16) | ✓ | adminAccess.ts:46-59; `safeSecretEquals` + `isAdmin` fallback unchanged |
-| `requireRole(...roles)` exported (lines 17-22): identity resolution, 401 no identity, role from `app_metadata.role` ONLY, admin allowlist via `getCallerRole`, 403 `'Access denied'`, `next()` | ✓ | adminAccess.ts:70-123; getCallerRole supabaseAuth.ts:174-197 |
-| `logAdminAction(req, action, detail?)` with actor `req.user?.email ?? req.session?.userId ?? 'secret'` (line 23) | ✓ | adminAccess.ts:126-142 |
-| `sessionMiddleware.isAuthenticated` sets `req.user = {id, sub}` on session path, bearer path untouched, 401 kept (line 25) | ✓ | sessionMiddleware.ts:47-49 |
-| `express.json({ limit: '1mb' })` (line 27) | ✓ | index.ts:50 |
-| Do-NOTs: safeSecretEquals, env resolution, cookie config unchanged (line 29) | ✓ | no changes to those |
-| Interfaces produced: `requireRole`, `logAdminAction`, `getCallerRole`, enhanced `isAdmin`, session `req.user`, JSON limit (line 43) | ✓ | all exported |
-| 5 required test cases in `requireRole.test.ts` (lines 34-39) | ✓ | 401 / 403 user / next admin / multi-role / ADMIN_EMAILS allowlist |
-
-**Acceptable deviations (all within brief's permitted scope, all security-aligned):**
-- `express.urlencoded` also got `limit: '1mb'` — explicitly permitted by brief line 27 ("may add the same limit").
-- `adminEmails` module constant → `getAdminEmailAllowlist()` call-time function (supabaseAuth.ts:18-24). Semantics identical; required so tests can set/restore `process.env.ADMIN_EMAILS` per brief line 40.
-- 6th test: `user_metadata.role` not trusted (requireRole.test.ts:130-143) — reinforces the app_metadata-only rule.
-- `requireRole` logs grants/denies (adminAccess.ts:94-104, 116-119) — brief only mandated logging for `requireAdminAccess`/`isAdmin`, but this is audit-consistent and adds no behavior change.
-
-**Security review of grant paths (no false grants found):**
-- `getCallerRole` returns `'admin'` only when `app_metadata.role === 'admin'` (server-managed, not self-editable) OR email ∈ ADMIN_EMAILS; any other value comes from `app_metadata.role` only, never `user_metadata` (supabaseAuth.ts:184-196). Test at requireRole.test.ts:130 verifies the user_metadata rejection.
-- Session-derived `req.user = {id, sub}` carries no email/app_metadata → session callers always fail closed (403) for admin routes. Documented pragmatic decision per brief line 11; later tasks gated on session admin must rely on bearer + allowlist (Phase 4B concern, not a Task-1 defect).
-- Deny-then-fallback ordering in `requireAdminAccess` preserves exact prior 401/403 contracts; invalid secret cannot grant.
-- Logging never emits headers/tokens; `actor` is email/sessionId or the literal string `'secret'`, never the secret value. Logger redact config already covers `authorization`/`secret` paths.
+- **SPEC: PASS** — `PoliticalFigure`, `PoliticalParty`, `QuizQuestion`, `UserResponse` are exported from `@shared/schema` and match the shapes consumers use; all data conforms; `distance` is genuinely used and additive.
+- **QUALITY: APPROVED** — type-only changes, no `@ts-ignore` in `shared/`, no out-of-scope files, no tsconfig change. The implementer-flagged deviations are acceptable per plan/convention (details below).
 
 ---
 
-## FINDINGS
+## Scope / ownership (review item 4)
+
+PASS. The diff touches exactly:
+`server/api/researched-tds.ts`, `server/auth/supabaseAuth.ts`, `server/db.ts`, `server/index.ts`, `server/middleware/regionMiddleware.ts`, `server/replitAuth.ts`, `server/storage.ts`, `server/vite.ts`, `shared/schema.ts`.
+
+- `server/routes/**`, `server/services/**`, `server/jobs/**`, `server/scripts/**`, `client/**`: **not touched** (diff header + evidence §Gate 5).
+- `shared/schema.ts` is outside the brief's 10-file list but inside Task 1 ownership per `plan.md:3494` ("you own `shared/**`") and the review charter. The brief's "do NOT touch `shared/**`" line is superseded by its own parenthetical "(Task 1 owns it)".
+- `shared/data.ts` / `shared/data-complete.ts` were listed as owned but needed no edit — the TS2305s were resolved by exporting from `shared/schema.ts` (`diffs/task-1.diff:317-341`). Correct.
+- No `ts-ignore`/`ts-expect-error`/`ts-nocheck` anywhere in `shared/` or the changed server files (verified by sweep). `tsconfig.json` unchanged (`strict` stays on).
+
+## Spec compliance (review item 1)
+
+### Exports
+`shared/schema.ts:6-30` adds `export type { QuizQuestion, UserResponse } from "./quizTypes"` plus `PoliticalFigure` and `PoliticalParty`. Both source types exist in `shared/quizTypes.ts:40,49`. Consumers now resolve: `shared/data.ts:1`, `shared/data-complete.ts:1`, `client/src/components/SimilarFigures.tsx:2`, `client/src/contexts/QuizContext.tsx:2`. PASS.
+
+### Data conformance
+- `PoliticalFigure.imageUrl` (required): all 45 figure literals in `shared/data.ts` carry `imageUrl` (45/45); all 45 in `shared/data-complete.ts` (45/45). PASS.
+- `PoliticalParty.color` (required): all 48 party literals in `shared/data.ts` carry `color` (48/48); all 46 in `shared/data-complete.ts` (46/46). PASS.
+- `CompassChart.tsx:3-10` keeps a **local** interface with `imageUrl?: string`; it does not import the shared type, so required `imageUrl` cannot break it (required→optional is assignable anyway).
+- `SimilarFigures.tsx:35` uses `figure.imageUrl` as an `<img src>`; required is fine.
+
+### `distance`
+Used, not dead:
+- `client/src/components/SimilarFigures.tsx:50-52` reads `figure.distance`.
+- `client/src/contexts/QuizContext.tsx:34` adds `distance` when spreading, and reads it at `:38, :72, :85`.
+
+Adding optional `distance?: number` is purely additive (Global Constraint 5), compiles, and changes no runtime behavior. It does not break anything (structural/optional). PASS.
+
+### Nothing extra
+Two deviations from the plan's literal type spec (`plan.md:3477-3478`), both non-breaking — see Minor findings M1–M3.
+
+## Code quality (review item 2)
+
+- Casts are confined to untyped boundaries / dead paths; all are type-only (erased at runtime). No `as any`.
+- `server/db.ts:21` `null as PoolType | null`: `as` is erased, so `pool` is still `null`; `db = pool ? … : null` (`db.ts:34`) is unchanged. Evidence §Concern 2 independently confirms.
+- `server/replitAuth.ts` signature changes are on **non-exported** helpers (`updateUserSession:87`, `upsertUser:97`); exported `getSession`/`isAuthenticated` signatures unchanged. No cross-module break.
+- `server/vite.ts:28` `viteServer` is module-local; widening `unknown`→`ViteDevServer | null` is additive.
+- `server/db.ts` `pool` widening to `PoolType | null` is consumed by `server/middleware/sessionMiddleware.ts:8` (`pool ? …`); widening is additive and that file compiles (owned-file gate 0).
+- `server/index.ts:128` `(error as { code?: string } | null)?.code` preserves the original runtime check (error-event args are never null).
+- `server/api/researched-tds.ts:89,137` narrowing is safe at runtime: this supabase-js version's `PostgrestError extends Error` (`node_modules/@supabase/postgrest-js/dist/cjs/PostgrestError.js`), so `error instanceof Error` is true for query errors and `.message` is preserved.
+- No dead code introduced: `regionConfig` is written where it already was (`regionMiddleware.ts:52`); the augmentation merely types the pre-existing assignment.
+
+## Findings
 
 ### Critical
 None.
@@ -51,22 +63,32 @@ None.
 
 ### Minor
 
-1. **`getCallerRole` docstring overstates its scope** — supabaseAuth.ts:169-172 ("...or the bearer token") but the function only reads `req.user` (supabaseAuth.ts:175); bearer resolution happens only in `requireRole` (adminAccess.ts:72-77). Misleading for a public interface consumed by later tasks (brief line 43); a caller invoking `getCallerRole` directly on a bare request would get `null` regardless of a valid bearer. Fix is a one-line doc correction.
+**M1 — `imageUrl` made required, plan specified optional.** `shared/schema.ts:17` declares `imageUrl: string`; `plan.md:3477` specified `imageUrl?: string`. Non-breaking: every figure literal provides it (45/45 in both data files) and no consumer constructs a `PoliticalFigure` without it. Stricter than spec, arguably safer. (review item 1)
 
-2. **Double-denial logging on wrong secret** — adminAccess.ts:55-58 logs `warn invalid_admin_job_secret`, then falls through to `isAdmin` which logs a second `warn` (supabaseAuth.ts:214-217) for the same request. Two entries per rejected attempt; not incorrect, but noisy. Consider a single combined entry or documenting the intentional two-stage audit trail.
+**M2 — `color` made required, plan specified optional.** `shared/schema.ts:29` declares `color: string`; `plan.md:3478` specified `color?: string`. Non-breaking: all 48/46 party literals provide it and no consumer constructs a `PoliticalParty` without it. (review item 1)
 
-3. **Test coverage gaps in the new file** (brief lines 34-39 all covered, so spec-compliant): no test exercises (a) the session-only identity path (`req.session.userId` present, no `req.user`, no role → expected 403 `'Access denied'`) and (b) the bearer-resolution branch (mocked `getUserFromRequest` returning a user when `req.user` absent, expecting `next()` for an admin). These are the two paths most likely to regress.
+**M3 — `distance?: number` added beyond the plan's shape.** `shared/schema.ts:18`; `plan.md:3477` lists no `distance`. Justified: `SimilarFigures.tsx:50` and `QuizContext.tsx:34,72,85` read it, and it fixes those cascades. Additive/optional per Global Constraint 5, but it conflates the static data entity with a computed similarity result — a design choice the plan deliberately kept out. Acceptable as-is. (review item 1, "nothing extra")
 
-4. **Case-sensitive role comparison** — supabaseAuth.ts:187 (`role === 'admin'`) and adminAccess.ts:89 (`roles.includes(callerRole)`) would reject e.g. `'ADMIN'`. Acceptable since `app_metadata.role` is server-managed lowercase, and it matches pre-existing `isAdmin` behavior; flagging because `getCallerRole` is a shared interface.
+**M4 — `researched-tds.ts` 503 guards change an edge-case response (500→503).** `diffs/task-1.diff:9-14,31-36` → `researched-tds.ts:17-22,100-105`. Judgement: **acceptable, not a Critical violation.** In the unconfigured-env path (`supabaseDb === null`) the previous behavior was a thrown `TypeError` caught by the same handler → 500; now it returns 503 with the file's own `{success:false,error}` shape. This exact 503 + "Database connection not available" pattern is the established repo convention (`server/routes/political/parties.ts:251-255` and many others), the path is unreachable in any configured deployment, and it is a plan-endorsed null-check fix. Documented in `reports/task-1-report.md:61`. (review item 3)
 
-5. **A few comments are explanatory rather than security-intent** — e.g. supabaseAuth.ts:18 ("...read at call time so tests can set/restore it") and sessionMiddleware.ts:47 ("Expose a minimal identity..."). Slightly outside the repo's "no comments unless security intent" convention (constraint 6). Non-blocking; the security-relevant comments (user_metadata self-editable, session non-admin) are appropriate and required by the brief.
+**M5 — `storage.ts` null guards alter the dead-path error type.** `diffs/task-1.diff:218,235,243,251,263,271,279` → `server/storage.ts:68,153,167,182,197,218,244`. Since `db` is permanently `null` (pool disabled, `db.ts:21,34`), every `DatabaseStorage` method already threw; the guard changes the thrown value from a `TypeError` to `Error('Database not initialized')`. This matches the class's own pre-existing convention (`storage.ts:62` `getUser` already had the guard; many later methods too) and the plan's "adjust the type flow" instruction (`plan.md:3486-3487`). Type-only in effect. (review item 3)
 
----
+**M6 — double casts / redundant cast (type-only).** `server/storage.ts:101` `result as unknown as QuizResult` and `:182` `data as unknown as Partial<typeof politicalEvolution.$inferInsert>`; `server/db.ts:21` `null as PoolType | null`. All are compile-time-only, sit in stub/permanently-dead paths, and comply with Global Constraint 3 (no `as any`, no `@ts-ignore`). The `db.ts:21` cast is required to defeat const-initializer narrowing of `pool` to `null`; `db` still evaluates to `null` at runtime. Acceptable, stylistically noisy. (review items 2–3)
 
-## Informational (not a Task-1 finding)
+## Global Constraints check
 
-Total tsc gate currently reads 2647→2653 vs. baseline 2644 (report lines 58-67), attributed by the implementer to concurrent Wave-1 task edits in this shared worktree (botRoutes/shadowRoutes/smsRoutes/scores). Task 1's four files are each at their per-file baselines (supabaseAuth 2, sessionMiddleware 0, adminAccess 0, index 1) and contribute no new `error TS`. Coordinator should re-verify the total after all Wave-1 tasks land. The verifier has confirmed gates pass.
+| # | Constraint | Result |
+|---|------------|--------|
+| 1 | Type-only, no logic/flow/export/message changes | PASS with the two documented exceptions (M4 503 edge, M5 dead-path throw) — judged acceptable, not Critical |
+| 2 | No new dependencies | PASS — only `import type` additions from existing packages (`pg`, `express-session`, `vite`) |
+| 3 | Prefer real fixes; `as` only at boundaries; `@ts-ignore` last resort | PASS — all casts at boundaries/stub paths; no `@ts-ignore` |
+| 4 | Edit only owned files | PASS — 9 files, all within `shared/**` + owned server files |
+| 5 | Keep exports compatible | PASS — only additive widening (`pool`, `Express.Request.regionConfig`) and non-exported helper signatures |
+| 6 | `strict` stays on | PASS — `tsconfig.json` unchanged |
+| 7 | No `ts-ignore` in shared types | PASS — sweep clean |
 
----
+## Non-issues explicitly checked
 
-**Verdict**: SPEC **PASS** — all brief requirements implemented, deviations within permitted scope, grant paths fail closed, no secret leakage. QUALITY **APPROVED** — 0 Critical, 0 Important, 5 Minor; Minor items are doc/cosmetic/coverage nits, none blocking merge.
+- `regionConfig` is written but never read anywhere (grep: no consumers) — **pre-existing**, not introduced.
+- Report inconsistency (`reports/task-1-report.md:67` says 2 TS2353 in QuizContext, `:44` says 3) is documentation-only; those are Task 21's errors and correctly left untouched.
+- `PoliticalEvolutionRecord` (Task 20) and `QuizResult` shape errors (Task 21) correctly **not** touched — no cross-task scope creep.

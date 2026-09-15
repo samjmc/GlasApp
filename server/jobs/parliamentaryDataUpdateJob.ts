@@ -126,7 +126,7 @@ export class ParliamentaryDataUpdateJob {
       console.log(`✅ Saved to ${dataPath}`);
       
     } catch (error: unknown) {
-      console.error('❌ Failed to save JSON file:', error.message);
+      console.error('❌ Failed to save JSON file:', error instanceof Error ? error.message : String(error));
     }
   }
   
@@ -144,7 +144,7 @@ export class ParliamentaryDataUpdateJob {
       
       let updated = 0;
       
-      for (const [key, data] of activityData) {
+      for (const [, data] of Array.from(activityData)) {
         try {
           // Update or insert parliamentary activity
           const { error } = await supabaseDb
@@ -174,14 +174,14 @@ export class ParliamentaryDataUpdateJob {
           }
           
         } catch (error: unknown) {
-          console.error(`   ❌ Error processing ${data.fullName}:`, error.message);
+          console.error(`   ❌ Error processing ${data.fullName}:`, error instanceof Error ? error.message : String(error));
         }
       }
       
       console.log(`✅ Updated ${updated} TDs in database`);
       
     } catch (error: unknown) {
-      console.error('❌ Database update failed:', error.message);
+      console.error('❌ Database update failed:', error instanceof Error ? error.message : String(error));
     }
   }
   

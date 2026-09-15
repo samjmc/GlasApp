@@ -1,277 +1,345 @@
+diff --git a/server/api/researched-tds.ts b/server/api/researched-tds.ts
+index f291026..1a3ec79 100644
+--- a/server/api/researched-tds.ts
++++ b/server/api/researched-tds.ts
+@@ -14,6 +14,12 @@ const router = Router();
+  */
+ router.get('/', async (req, res) => {
+   try {
++    if (!supabaseDb) {
++      return res.status(503).json({
++        success: false,
++        error: 'Database connection not available',
++      });
++    }
+     const { data, error } = await supabaseDb
+       .from('td_scores')
+       .select(`
+@@ -80,7 +86,7 @@ router.get('/', async (req, res) => {
+     console.error('Error fetching researched TDs:', error);
+     res.status(500).json({
+       success: false,
+-      error: error.message
++      error: error instanceof Error ? error.message : String(error)
+     });
+   }
+ });
+@@ -91,6 +97,12 @@ router.get('/', async (req, res) => {
+  */
+ router.get('/stats', async (req, res) => {
+   try {
++    if (!supabaseDb) {
++      return res.status(503).json({
++        success: false,
++        error: 'Database connection not available',
++      });
++    }
+     const { data: activeTDs } = await supabaseDb
+       .from('td_scores')
+       .select('politician_name, historical_summary', { count: 'exact' })
+@@ -122,7 +134,7 @@ router.get('/stats', async (req, res) => {
+     console.error('Error fetching research stats:', error);
+     res.status(500).json({
+       success: false,
+-      error: error.message
++      error: error instanceof Error ? error.message : String(error)
+     });
+   }
+ });
 diff --git a/server/auth/supabaseAuth.ts b/server/auth/supabaseAuth.ts
-index 412bdfa..ecc2a37 100644
+index 412bdfa..eb7aff6 100644
 --- a/server/auth/supabaseAuth.ts
 +++ b/server/auth/supabaseAuth.ts
-@@ -7,6 +7,7 @@
- 
- import type { Request, Response, NextFunction } from 'express';
- import { createClient, SupabaseClient } from '@supabase/supabase-js';
-+import { logger } from '../utils/logger';
- 
- // Validate required environment variables
- const requiredEnvVars = {
-@@ -14,10 +15,13 @@ const requiredEnvVars = {
-   SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
- };
- 
--const adminEmails = (process.env.ADMIN_EMAILS || '')
--  .split(',')
--  .map((email) => email.trim().toLowerCase())
--  .filter(Boolean);
-+/** ADMIN_EMAILS allowlist, read at call time so tests can set/restore it. */
-+function getAdminEmailAllowlist(): string[] {
-+  return (process.env.ADMIN_EMAILS || '')
-+    .split(',')
-+    .map((email) => email.trim().toLowerCase())
-+    .filter(Boolean);
-+}
- 
- for (const [key, value] of Object.entries(requiredEnvVars)) {
-   if (!value) {
-@@ -161,6 +165,37 @@ export async function isAuthenticated(
-   }
- }
- 
-+/**
-+ * Resolve the caller's role from req.user (set by isAuthenticated / optionalAuth)
-+ * or the bearer token. Only app_metadata.role is trusted (user_metadata is
-+ * self-editable); the 'admin' role is additionally granted by the ADMIN_EMAILS
-+ * allowlist. Returns null when the caller's role cannot be determined.
-+ */
-+export function getCallerRole(req: Request): string | null {
-+  const user = req.user as
-+    | { email?: string; app_metadata?: { role?: string } }
-+    | null
-+    | undefined;
-+
-+  if (!user) {
-+    return null;
-+  }
-+
-+  const role = user.app_metadata?.role;
-+  const email = typeof user.email === 'string' ? user.email.toLowerCase() : null;
-+
-+  if (role === 'admin') {
-+    return 'admin';
-+  }
-+
-+  // Admin role is also granted to allowlisted emails, even without app_metadata.
-+  if (email && getAdminEmailAllowlist().includes(email)) {
-+    return 'admin';
-+  }
-+
-+  return role || null;
-+}
-+
- /**
-  * Middleware to check if user has admin role
-  */
-@@ -170,35 +205,53 @@ export async function isAdmin(
-   next: NextFunction
- ): Promise<void> {
-   try {
--    const user = await getUserFromRequest(req);
--    
-+    const existingUser = req.user;
-+    const user = (existingUser ?? (await getUserFromRequest(req))) as
-+      | { id?: unknown; email?: string; app_metadata?: { role?: string } }
-+      | null;
-+
-     if (!user) {
--      res.status(401).json({ 
-+      logger.warn(
-+        { actor: 'anonymous', route: `${req.method} ${req.path}`, grant: 'deny', reason: 'unauthenticated' },
-+        'Admin access denied'
-+      );
-+      res.status(401).json({
-         success: false,
--        message: 'Authentication required' 
-+        message: 'Authentication required',
-       });
-       return;
+@@ -231,7 +231,7 @@ export async function signUp(email: string, password: string, metadata?: unknown
+     email,
+     password,
+     options: {
+-      data: metadata,
++      data: metadata as object | undefined,
+       emailRedirectTo: process.env.FRONTEND_URL || 'http://localhost:5000'
      }
+   });
+@@ -293,7 +293,7 @@ export async function sendPasswordReset(email: string) {
+ export async function updateUserMetadata(userId: string, metadata: unknown) {
+   const { data, error } = await supabaseAdmin.auth.admin.updateUserById(
+     userId,
+-    { user_metadata: metadata }
++    { user_metadata: metadata as object | undefined }
+   );
  
--    // Supabase user metadata is self-editable; only app metadata/env allowlists are trusted.
-+    // Session-authenticated callers (no bearer token) carry no server-verifiable
-+    // identity beyond req.session; treat them as non-admin unless their email is
-+    // in the ADMIN_EMAILS allowlist.
-     const role = user.app_metadata?.role;
-     const email = typeof user.email === 'string' ? user.email.toLowerCase() : null;
--    
--    if (role !== 'admin' && (!email || !adminEmails.includes(email))) {
--      res.status(403).json({ 
-+
-+    if (role !== 'admin' && (!email || !getAdminEmailAllowlist().includes(email))) {
-+      logger.warn(
-+        { actor: email ?? 'anonymous', route: `${req.method} ${req.path}`, grant: 'deny', reason: 'not_admin' },
-+        'Admin access denied'
-+      );
-+      res.status(403).json({
-         success: false,
--        message: 'Admin access required' 
-+        message: 'Admin access required',
-       });
-       return;
-     }
+   if (error) {
+diff --git a/server/db.ts b/server/db.ts
+index 1a30a1b..61b5297 100644
+--- a/server/db.ts
++++ b/server/db.ts
+@@ -1,6 +1,7 @@
+ import { drizzle } from 'drizzle-orm/node-postgres';
+ import pkg from 'pg';
+ const { Pool } = pkg;
++import type { Pool as PoolType } from 'pg';
+ import { createClient } from '@supabase/supabase-js';
+ import * as schema from "@shared/schema";
  
-+    logger.info(
-+      { actor: email ?? 'unknown', route: `${req.method} ${req.path}`, grant: 'allow', reason: 'admin' },
-+      'Admin access granted'
-+    );
-+
-     req.user = user;
-     next();
-   } catch (error) {
-     console.error('Admin check error:', error);
--    res.status(403).json({ 
-+    res.status(403).json({
-       success: false,
--      message: 'Access denied' 
-+      message: 'Access denied',
-     });
+@@ -17,7 +18,7 @@ if (!process.env.DATABASE_URL) {
+ // Use Supabase REST client (supabaseDb) instead via MCP
+ // Connection string format: postgresql://postgres:[PASSWORD]@aws-0-[region].pooler.supabase.com:5432/postgres
+ /** Disabled Postgres connection pool (SCRAM auth issues). */
+-export const pool = null; // Disabled due to SCRAM auth issues
++export const pool: PoolType | null = null as PoolType | null; // Disabled due to SCRAM auth issues
+ /*
+ process.env.DATABASE_URL ? new Pool({ 
+   connectionString: process.env.DATABASE_URL,
+@@ -149,8 +150,8 @@ export async function checkDatabaseConnection(): Promise<boolean> {
+     console.log(`   📌 Version: ${version.split(' ').slice(0, 2).join(' ')}`);
+     return true;
+   } catch (error: unknown) {
+-    console.error('❌ Database connection failed:', error.message);
+-    if (error.code) console.error(`   Error code: ${error.code}`);
++    console.error('❌ Database connection failed:', error instanceof Error ? error.message : error);
++    if (error && typeof error === 'object' && 'code' in error) console.error(`   Error code: ${(error as { code: string }).code}`);
+     return false;
    }
  }
 diff --git a/server/index.ts b/server/index.ts
-index 49a84d1..1769e61 100644
+index 49a84d1..02e6b9c 100644
 --- a/server/index.ts
 +++ b/server/index.ts
-@@ -47,8 +47,8 @@ app.use(
-     crossOriginEmbedderPolicy: false,
-   })
- );
--app.use(express.json());
--app.use(express.urlencoded({ extended: false }));
-+app.use(express.json({ limit: '1mb' }));
-+app.use(express.urlencoded({ extended: false, limit: '1mb' }));
+@@ -125,7 +125,7 @@ app.use('/assets', express.static('public/assets'));
+     // Handle server errors
+     serverInstance.on('error', (error: unknown) => {
+       logger.error({ err: error }, "Server error:");
+-      if (error.code === 'EADDRINUSE') {
++      if ((error as { code?: string } | null)?.code === 'EADDRINUSE') {
+         logger.error(`Port ${port} is already in use`);
+         logger.error(`Wait for previous process to exit or run: taskkill /F /IM node.exe`);
+         process.exit(1);
+diff --git a/server/middleware/regionMiddleware.ts b/server/middleware/regionMiddleware.ts
+index 39a763d..88ade99 100644
+--- a/server/middleware/regionMiddleware.ts
++++ b/server/middleware/regionMiddleware.ts
+@@ -10,6 +10,7 @@ declare global {
+   namespace Express {
+     interface Request {
+       regionCode?: RegionCode;
++      regionConfig?: unknown;
+     }
+   }
+ }
+@@ -30,8 +31,9 @@ export function regionMiddleware(req: Request, _res: Response, next: NextFunctio
  
- app.use((req, res, next) => {
-   if (process.env.NODE_ENV === 'production') {
-diff --git a/server/middleware/adminAccess.ts b/server/middleware/adminAccess.ts
-index 1a89dca..f3e1b9a 100644
---- a/server/middleware/adminAccess.ts
-+++ b/server/middleware/adminAccess.ts
-@@ -1,6 +1,7 @@
- import { timingSafeEqual } from 'crypto';
- import type { NextFunction, Request, RequestHandler, Response } from 'express';
--import { isAdmin } from '../auth/supabaseAuth';
-+import { getCallerRole, getUserFromRequest, isAdmin } from '../auth/supabaseAuth';
-+import { logger } from '../utils/logger';
+   let resolvedRegion = headerRegion || queryRegion || sessionRegion;
  
- const adminJobSecret =
-   process.env.ADMIN_API_SECRET ||
-@@ -42,9 +43,100 @@ export const requireAdminAccess: RequestHandler = async (
- ) => {
-   const requestSecret = getAdminSecretFromRequest(req);
- 
--  if (adminJobSecret && requestSecret && safeSecretEquals(requestSecret, adminJobSecret)) {
--    return next();
-+  if (adminJobSecret && requestSecret) {
-+    if (safeSecretEquals(requestSecret, adminJobSecret)) {
-+      logger.info(
-+        { actor: 'secret', route: `${req.method} ${req.path}`, grant: 'allow', reason: 'admin_job_secret' },
-+        'Admin access granted'
-+      );
-+      return next();
-+    }
-+
-+    logger.warn(
-+      { actor: 'secret', route: `${req.method} ${req.path}`, grant: 'deny', reason: 'invalid_admin_job_secret' },
-+      'Admin access denied'
-+    );
+-  if (!resolvedRegion && req.user?.user_metadata?.region_code) {
+-    resolvedRegion = normalizeRegion(req.user.user_metadata.region_code);
++  const userMetadata = (req.user as { user_metadata?: { region_code?: string } } | undefined)?.user_metadata;
++  if (!resolvedRegion && userMetadata?.region_code) {
++    resolvedRegion = normalizeRegion(userMetadata.region_code);
    }
  
-   return isAdmin(req, res, next);
- };
-+
-+/**
-+ * Express middleware enforcing that the caller's role is one of `roles`.
-+ * Identity is resolved from req.user (if set), else the bearer token, else the
-+ * session. Role comes from app_metadata.role only (never user_metadata); the
-+ * 'admin' role is additionally granted by the ADMIN_EMAILS allowlist.
-+ */
-+export function requireRole(...roles: string[]): RequestHandler {
-+  return async (req: Request, res: Response, next: NextFunction) => {
-+    if (!req.user) {
-+      const bearerUser = await getUserFromRequest(req);
-+      if (bearerUser) {
-+        req.user = bearerUser;
-+      }
-+    }
-+
-+    const hasIdentity = Boolean(req.user || req.session?.userId);
-+    if (!hasIdentity) {
-+      res.status(401).json({
-+        success: false,
-+        message: 'Authentication required',
-+      });
-+      return;
-+    }
-+
-+    const callerRole = getCallerRole(req);
-+    if (!callerRole || !roles.includes(callerRole)) {
-+      const actor =
-+        (req.user as { email?: string } | null | undefined)?.email ??
-+        req.session?.userId ??
-+        'anonymous';
-+      logger.warn(
-+        {
-+          actor,
-+          route: `${req.method} ${req.path}`,
-+          grant: 'deny',
-+          reason: 'insufficient_role',
-+          required: roles,
-+          actual: callerRole,
-+        },
-+        'Role access denied'
-+      );
-+      res.status(403).json({
-+        success: false,
-+        message: 'Access denied',
-+      });
-+      return;
-+    }
-+
-+    const actor =
-+      (req.user as { email?: string } | null | undefined)?.email ??
-+      req.session?.userId ??
-+      'unknown';
-+    logger.info(
-+      { actor, route: `${req.method} ${req.path}`, grant: 'allow', role: callerRole },
-+      'Role access granted'
-+    );
-+
-+    next();
-+  };
-+}
-+
-+/** Log an admin action with actor identity, route, and optional detail. */
-+export function logAdminAction(
-+  req: Request,
-+  action: string,
-+  detail?: Record<string, unknown>
-+): void {
-+  const actor =
-+    (req.user as { email?: string } | null | undefined)?.email ??
-+    req.session?.userId ??
-+    'secret';
-+
-+  logger.info({
-+    operation: `admin.${action}`,
-+    actor,
-+    route: `${req.method} ${req.path}`,
-+    ...detail,
-+  });
-+}
-diff --git a/server/middleware/sessionMiddleware.ts b/server/middleware/sessionMiddleware.ts
-index b673cb0..e7e8a23 100644
---- a/server/middleware/sessionMiddleware.ts
-+++ b/server/middleware/sessionMiddleware.ts
-@@ -44,6 +44,8 @@ export const sessionMiddleware = session({
- export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
-   // Check 1: Session-based auth (Replit)
-   if (req.session && req.session.userId) {
-+    // Expose a minimal identity so downstream role checks can read req.user.
-+    req.user = { id: req.session.userId, sub: String(req.session.userId) };
-     return next();
+   if (!resolvedRegion) {
+@@ -46,7 +48,7 @@ export function regionMiddleware(req: Request, _res: Response, next: NextFunctio
+   req.regionCode = resolvedRegion;
+ 
+   // Expose region metadata for downstream handlers if needed
+-  (req as unknown).regionConfig = REGION_CONFIGS[resolvedRegion];
++  req.regionConfig = REGION_CONFIGS[resolvedRegion];
+ 
+   next();
+ }
+diff --git a/server/replitAuth.ts b/server/replitAuth.ts
+index d01e4f2..a435671 100644
+--- a/server/replitAuth.ts
++++ b/server/replitAuth.ts
+@@ -3,6 +3,7 @@ import { Strategy, type VerifyFunction } from "openid-client/passport";
+ 
+ import passport from "passport";
+ import session from "express-session";
++import type { SessionOptions } from "express-session";
+ import type { Express, RequestHandler } from "express";
+ import memoize from "memoizee";
+ import connectPg from "connect-pg-simple";
+@@ -56,7 +57,7 @@ export function getSession() {
+   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
+   
+   // Only use database session store if DATABASE_URL is available
+-  const sessionConfig: unknown = {
++  const sessionConfig: SessionOptions = {
+     secret: process.env.SESSION_SECRET || 'dev-secret-please-change-in-production',
+     resave: false,
+     saveUninitialized: false,
+@@ -83,7 +84,7 @@ export function getSession() {
+ }
+ 
+ function updateUserSession(
+-  user: unknown,
++  user: Express.User,
+   tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers
+ ) {
+   user.claims = tokens.claims();
+@@ -93,15 +94,16 @@ function updateUserSession(
+ }
+ 
+ async function upsertUser(
+-  claims: unknown,
++  claims: object | undefined,
+ ) {
++  const c = (claims ?? {}) as Record<string, unknown>;
+   // For now, we'll skip database upsert and just use session data
+   // This can be enhanced later once the schema is properly migrated
+   console.log('User authenticated:', {
+-    id: claims["sub"],
+-    email: claims["email"],
+-    firstName: claims["first_name"],
+-    lastName: claims["last_name"]
++    id: c["sub"],
++    email: c["email"],
++    firstName: c["first_name"],
++    lastName: c["last_name"]
+   });
+ }
+ 
+@@ -253,7 +255,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
+ 
+   // GATE 3: Replit environment uses session-based auth
+   if (isReplitEnvironment) {
+-    const user = req.user as unknown;
++    const user = req.user as Express.User;
+ 
+     if (!req.isAuthenticated() || !user?.claims) {
+       return res.status(401).json({ message: "Unauthorized" });
+diff --git a/server/storage.ts b/server/storage.ts
+index 17e3ca0..a83394c 100644
+--- a/server/storage.ts
++++ b/server/storage.ts
+@@ -65,6 +65,7 @@ export class DatabaseStorage implements IStorage {
    }
  
+   async upsertUser(userData: UpsertUser): Promise<User> {
++    if (!db) throw new Error('Database not initialized');
+     // Assign admin role to samjmc3@hotmail.com
+     const userDataWithRole = {
+       ...userData,
+@@ -97,7 +98,7 @@ export class DatabaseStorage implements IStorage {
+   async saveQuizResult(result: QuizResultInput): Promise<ApiResponse<QuizResult>> {
+     // TODO: Implement when quiz_results table is available
+     console.log('saveQuizResult called with:', result);
+-    return { success: true, data: result as QuizResult };
++    return { success: true, data: result as unknown as QuizResult };
+   }
+ 
+   async getQuizResultByShareCode(shareCode: string): Promise<QuizResult | null> {
+@@ -149,6 +150,7 @@ export class DatabaseStorage implements IStorage {
+ 
+   async getPoliticalEvolutionById(id: string): Promise<PoliticalEvolution | null> {
+     try {
++      if (!db) throw new Error('Database not initialized');
+       const [evolution] = await db
+         .select()
+         .from(politicalEvolution)
+@@ -162,6 +164,7 @@ export class DatabaseStorage implements IStorage {
+ 
+   async getPoliticalEvolutionByUserId(userId: string): Promise<PoliticalEvolution[]> {
+     try {
++      if (!db) throw new Error('Database not initialized');
+       const evolutions = await db
+         .select()
+         .from(politicalEvolution)
+@@ -176,9 +179,10 @@ export class DatabaseStorage implements IStorage {
+ 
+   async updatePoliticalEvolution(id: string, data: Partial<PoliticalEvolutionInput>): Promise<PoliticalEvolution> {
+     try {
++      if (!db) throw new Error('Database not initialized');
+       const [updatedEvolution] = await db
+         .update(politicalEvolution)
+-        .set(data)
++        .set(data as unknown as Partial<typeof politicalEvolution.$inferInsert>)
+         .where(eq(politicalEvolution.id, parseInt(id)))
+         .returning();
+       return updatedEvolution;
+@@ -190,6 +194,7 @@ export class DatabaseStorage implements IStorage {
+ 
+   // Party sentiment operations
+   async upsertPartySentimentVote(userId: string, partyId: string, sentimentScore: number): Promise<PartySentimentVote> {
++    if (!db) throw new Error('Database not initialized');
+     const [vote] = await db
+       .insert(partySentimentVotes)
+       .values({
+@@ -210,6 +215,7 @@ export class DatabaseStorage implements IStorage {
+   }
+ 
+   async getPartySentimentData(partyId: string): Promise<{ trustVotes: number; distrustVotes: number; totalVotes: number; score: number }> {
++    if (!db) throw new Error('Database not initialized');
+     const votes = await db
+       .select({
+         sentimentScore: partySentimentVotes.sentimentScore,
+@@ -235,6 +241,7 @@ export class DatabaseStorage implements IStorage {
+   }
+ 
+   async getUserPartySentimentVote(userId: string, partyId: string): Promise<PartySentimentVote | undefined> {
++    if (!db) throw new Error('Database not initialized');
+     const [vote] = await db
+       .select()
+       .from(partySentimentVotes)
+diff --git a/server/vite.ts b/server/vite.ts
+index fc457c2..3c53a6e 100644
+--- a/server/vite.ts
++++ b/server/vite.ts
+@@ -2,7 +2,7 @@ import express, { type Express } from "express";
+ import fs from "fs";
+ import path from "path";
+ import { fileURLToPath } from "url";
+-import { createServer as createViteServer, createLogger } from "vite";
++import { createServer as createViteServer, createLogger, type ServerOptions, type ViteDevServer } from "vite";
+ import { type Server } from "http";
+ import viteConfig from "../vite.config";
+ import { nanoid } from "nanoid";
+@@ -25,10 +25,10 @@ export function log(message: string, source = "express") {
+   console.log(`${formattedTime} [${source}] ${message}`);
+ }
+ 
+-let viteServer: unknown = null;
++let viteServer: ViteDevServer | null = null;
+ 
+ export async function setupVite(app: Express, server: Server) {
+-  const serverOptions = {
++  const serverOptions: ServerOptions = {
+     middlewareMode: true,
+     hmr: { 
+       server,
+diff --git a/shared/schema.ts b/shared/schema.ts
+index 0f664e7..b15b162 100644
+--- a/shared/schema.ts
++++ b/shared/schema.ts
+@@ -3,6 +3,32 @@ import { pgTable, serial, text, integer, timestamp, date, varchar, decimal, bool
+ import { createInsertSchema } from "drizzle-zod";
+ import { z } from "zod";
+ 
++// Re-export quiz types so consumers can import them from "@shared/schema".
++export type { QuizQuestion, UserResponse } from "./quizTypes";
++
++// Political compass entity types
++/** A political figure with ideological positions on the political compass. */
++export interface PoliticalFigure {
++  id: string;
++  name: string;
++  economic: number;
++  social: number;
++  description: string;
++  imageUrl: string;
++  distance?: number;
++}
++
++/** A political party with ideological positions on the political compass. */
++export interface PoliticalParty {
++  id: string;
++  name: string;
++  country: string;
++  economic: number;
++  social: number;
++  description: string;
++  color: string;
++}
++
+ // Users table - updated for Replit Auth compatibility
+ /** Drizzle ORM table definition for user accounts. */
+ export const users = pgTable("users", {

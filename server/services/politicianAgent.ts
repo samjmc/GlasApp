@@ -26,8 +26,8 @@ export interface VoteRecord {
   vote: 'ta' | 'nil' | 'staon';
   outcome: string;
   votedWithParty: boolean | null;
-  category?: string;
-  isRebelVote?: boolean;
+  category?: string | null;
+  isRebelVote?: boolean | null;
   description?: string | null;
 }
 
@@ -39,20 +39,35 @@ export interface VotingFilters {
 }
 
 // Helper to enrich votes with plain English descriptions
-async function enrichVotesWithDescriptions(votes: unknown[]): Promise<VoteRecord[]> {
+interface RawTdVote {
+  vote_subject: string;
+  vote_date: string;
+  td_vote: 'ta' | 'nil' | 'staon';
+  vote_outcome: string;
+  voted_with_party: boolean | null;
+  vote_category: string | null;
+  is_rebel_vote: boolean | null;
+}
+
+interface RawSubjectDescription {
+  vote_subject: string;
+  description: string | null;
+}
+
+async function enrichVotesWithDescriptions(votes: RawTdVote[]): Promise<VoteRecord[]> {
   if (!votes || votes.length === 0) return [];
   
-  const uniqueSubjects = [...new Set(votes.map(v => v.vote_subject))];
+  const uniqueSubjects = Array.from(new Set(votes.map(v => v.vote_subject)));
   let descriptionsMap: Record<string, string> = {};
   
   if (uniqueSubjects.length > 0) {
-    const { data: descriptions } = await supabaseDb
+    const { data: descriptions } = await supabaseDb!
       .from('vote_subject_embeddings')
       .select('vote_subject, description')
       .in('vote_subject', uniqueSubjects);
       
     if (descriptions) {
-      descriptions.forEach((d: unknown) => {
+      descriptions.forEach((d: RawSubjectDescription) => {
         if (d.description) descriptionsMap[d.vote_subject] = d.description;
       });
     }
@@ -126,7 +141,7 @@ export async function getVotingRecord(
         });
 
         if (!matchError && matches && matches.length > 0) {
-          const subjects = matches.map((m: unknown) => m.vote_subject);
+          const subjects = matches.map((m: { vote_subject: string }) => m.vote_subject);
           console.log(`✅ Semantic search found ${subjects.length} matches for '${topicOrKeyword}'`);
           query = query.in('vote_subject', subjects);
           semanticMatchesFound = true;

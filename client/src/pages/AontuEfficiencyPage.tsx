@@ -5,8 +5,35 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Loader2, TrendingUp, Users } from 'lucide-react';
 
+interface EfficiencyPledge {
+  pledge: {
+    id: number;
+    title: string;
+    score: number;
+    defaultWeight: number;
+    contribution: number;
+    efficiencyScore: number;
+    category: string;
+  };
+  partyName: string;
+}
+
+interface PledgeMetadata {
+  partyName: string;
+  numberOfTDs: number;
+  totalContribution: number;
+  overallEfficiency: number;
+  pledgeCount: number;
+}
+
+interface PartyPledgesResponse {
+  success: boolean;
+  data: EfficiencyPledge[];
+  metadata: PledgeMetadata;
+}
+
 export default function AontuEfficiencyPage() {
-  const { data: aontuData, isLoading } = useQuery({
+  const { data: aontuData, isLoading } = useQuery<PartyPledgesResponse>({
     queryKey: ['/api/pledges/party/8'], // Aontú party ID
   });
 

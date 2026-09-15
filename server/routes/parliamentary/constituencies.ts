@@ -23,7 +23,7 @@ router.get('/constituencies/summary', asyncHandler(async (req, res) => {
     CACHE_KEYS.CONSTITUENCIES_SUMMARY,
     async () => {
       // Get all TDs with their constituency info (exclude Unknown constituency - likely Senators)
-      const { data: tds, error: tdError } = await supabaseDb
+      const { data: tds, error: tdError } = await supabaseDb!
         .from('td_scores')
         .select('id, politician_name, party, constituency, overall_score, gender')
         .eq('is_active', true)
@@ -150,7 +150,7 @@ router.get('/constituencies', asyncHandler(async (req, res) => {
   const constituencyData = await getCachedOrFetch(
     CACHE_KEYS.CONSTITUENCIES,
     async () => {
-      const { data: tds, error } = await supabaseDb
+      const { data: tds, error } = await supabaseDb!
         .from('td_scores')
         .select('constituency')
         .neq('constituency', 'Unknown')
@@ -160,7 +160,7 @@ router.get('/constituencies', asyncHandler(async (req, res) => {
       if (error) throw error;
 
       // Get unique constituencies
-      const constituencies = [...new Set(tds?.map(td => td.constituency).filter(Boolean))];
+      const constituencies = Array.from(new Set(tds?.map(td => td.constituency).filter(Boolean)));
 
       return {
         constituencies: constituencies.map(name => ({ name })),

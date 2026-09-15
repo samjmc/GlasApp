@@ -9,6 +9,10 @@ const router = Router();
 // Submit user's category ranking
 router.post('/submit-ranking', async (req, res) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     if (!req.session?.userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
     }
@@ -60,6 +64,10 @@ router.post('/submit-ranking', async (req, res) => {
 // Get current weighted performance based on all user rankings
 router.get('/weighted-performance/:partyId?', async (req, res) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     const partyId = req.params.partyId ? parseInt(req.params.partyId) : null;
 
     // Calculate average rank for each category across all users
@@ -100,7 +108,15 @@ router.get('/weighted-performance/:partyId?', async (req, res) => {
       });
     }
 
-    let result: unknown = {
+    interface WeightedPerformanceResult {
+      categoryWeights: Record<string, number>;
+      totalVotes: number;
+      weightedScore?: number;
+      categoryBreakdown?: Record<string, any>;
+      partyId?: number;
+    }
+
+    const result: WeightedPerformanceResult = {
       categoryWeights,
       totalVotes: avgRanks.reduce((sum, cat) => sum + cat.voteCount, 0)
     };
@@ -166,6 +182,10 @@ router.get('/weighted-performance/:partyId?', async (req, res) => {
 // Get user's current rankings
 router.get('/user-rankings', async (req, res) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     if (!req.session?.userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
     }

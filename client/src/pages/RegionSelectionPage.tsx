@@ -96,7 +96,6 @@ export default function RegionSelectionPage() {
                   <Button
                     variant={isSelected ? "secondary" : "default"}
                     onClick={() => selectRegion(region.code)}
-                    disabled={status === "loading"}
                   >
                     {isSelected ? "Selected" : `Use ${region.shortName}`}
                   </Button>

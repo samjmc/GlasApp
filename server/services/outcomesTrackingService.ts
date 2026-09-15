@@ -46,6 +46,22 @@ export interface PolicyPromise {
   last_checked: Date;
 }
 
+interface OutcomeArticle {
+  id?: number;
+  title?: string;
+  content?: string;
+  published_date?: string;
+}
+
+interface OutcomeAnalysis {
+  impact_score: number;
+  transparency_impact: number;
+  effectiveness_impact: number;
+  integrity_impact: number;
+  consistency_impact: number;
+  constituency_service_impact: number;
+}
+
 // ============================================
 // ANNOUNCEMENT DETECTION
 // ============================================
@@ -59,7 +75,8 @@ export function detectAnnouncementVsAchievement(article: unknown, analysis: unkn
   isAchievement: boolean;
   confidence: number;
 } {
-  const text = (article.title + ' ' + article.content).toLowerCase();
+  const articleData = article as { title: string; content: string };
+  const text = (articleData.title + ' ' + articleData.content).toLowerCase();
   
   // Announcement indicators
   const announcementWords = [
@@ -107,18 +124,20 @@ export function adjustScoreForAnnouncementBias(
   track_promise: boolean;
 } {
   
+  const an = analysis as OutcomeAnalysis;
+  
   const detection = detectAnnouncementVsAchievement(article, analysis);
   
   // CASE 1: Clear Achievement (already delivered)
   if (detection.isAchievement && !detection.isAnnouncement) {
     return {
-      adjustedImpact: analysis.impact_score,  // Full credit
+      adjustedImpact: an.impact_score,  // Full credit
       adjustedDimensionalImpacts: {
-        transparency: analysis.transparency_impact,
-        effectiveness: analysis.effectiveness_impact,
-        integrity: analysis.integrity_impact,
-        consistency: analysis.consistency_impact,
-        constituency_service: analysis.constituency_service_impact
+        transparency: an.transparency_impact,
+        effectiveness: an.effectiveness_impact,
+        integrity: an.integrity_impact,
+        consistency: an.consistency_impact,
+        constituency_service: an.constituency_service_impact
       },
       adjustment_reason: 'Verified achievement - full credit given',
       track_promise: false
@@ -131,18 +150,18 @@ export function adjustScoreForAnnouncementBias(
     // Reduce positive impact by 70% for announcements
     const reductionFactor = 0.30;  // Only give 30% credit
     
-    const adjustedImpact = analysis.impact_score > 0
-      ? Math.round(analysis.impact_score * reductionFactor)
-      : analysis.impact_score;  // Don't reduce negative scores
+    const adjustedImpact = an.impact_score > 0
+      ? Math.round(an.impact_score * reductionFactor)
+      : an.impact_score;  // Don't reduce negative scores
     
     return {
       adjustedImpact,
       adjustedDimensionalImpacts: {
-        transparency: analysis.transparency_impact,  // Keep transparency as-is
-        effectiveness: Math.round(analysis.effectiveness_impact * reductionFactor),  // Reduce 70%
-        integrity: analysis.integrity_impact,
-        consistency: Math.round(analysis.consistency_impact * reductionFactor),  // Reduce 70%
-        constituency_service: Math.round(analysis.constituency_service_impact * reductionFactor)
+        transparency: an.transparency_impact,  // Keep transparency as-is
+        effectiveness: Math.round(an.effectiveness_impact * reductionFactor),  // Reduce 70%
+        integrity: an.integrity_impact,
+        consistency: Math.round(an.consistency_impact * reductionFactor),  // Reduce 70%
+        constituency_service: Math.round(an.constituency_service_impact * reductionFactor)
       },
       adjustment_reason: 'Announcement only (not delivered) - reduced to 30% credit. Will verify outcome in 6 months.',
       track_promise: true  // Track this promise!
@@ -151,13 +170,13 @@ export function adjustScoreForAnnouncementBias(
   
   // CASE 3: Mixed or unclear
   return {
-    adjustedImpact: Math.round(analysis.impact_score * 0.6),  // 40% reduction
+    adjustedImpact: Math.round(an.impact_score * 0.6),  // 40% reduction
     adjustedDimensionalImpacts: {
-      transparency: analysis.transparency_impact,
-      effectiveness: Math.round(analysis.effectiveness_impact * 0.6),
-      integrity: analysis.integrity_impact,
-      consistency: Math.round(analysis.consistency_impact * 0.6),
-      constituency_service: Math.round(analysis.constituency_service_impact * 0.6)
+      transparency: an.transparency_impact,
+      effectiveness: Math.round(an.effectiveness_impact * 0.6),
+      integrity: an.integrity_impact,
+      consistency: Math.round(an.consistency_impact * 0.6),
+      constituency_service: Math.round(an.constituency_service_impact * 0.6)
     },
     adjustment_reason: 'Mixed announcement/achievement - moderate reduction',
     track_promise: true
@@ -180,6 +199,9 @@ export async function trackPromiseFromAnnouncement(
   if (!supabaseDb) return null;
   
   try {
+    const a = article as OutcomeArticle;
+    const an = analysis as OutcomeAnalysis;
+    
     // Use AI to extract the specific promise
     const promiseExtraction = await extractPromiseDetails(article, td, analysis);
     
@@ -194,9 +216,9 @@ export async function trackPromiseFromAnnouncement(
         politician_name: td.name,
         promise_text: promiseExtraction.promise,
         promise_type: promiseExtraction.type,
-        announced_date: article.published_date,
-        source_article_id: article.id,
-        initial_score_given: analysis.impact_score * 0.3,  // Reduced score
+        announced_date: a.published_date,
+        source_article_id: a.id,
+        initial_score_given: an.impact_score * 0.3,  // Reduced score
         target_date: targetDate,
         target_metrics: promiseExtraction.metrics,
         status: 'pending',
@@ -214,7 +236,7 @@ export async function trackPromiseFromAnnouncement(
     return data.id;
     
   } catch (error: unknown) {
-    console.error('Error tracking promise:', error.message);
+    console.error('Error tracking promise:', (error as Error).message);
     return null;
   }
 }
@@ -223,11 +245,13 @@ export async function trackPromiseFromAnnouncement(
  * Extract promise details using AI
  */
 async function extractPromiseDetails(article: unknown, td: unknown, analysis: unknown) {
+  const a = article as OutcomeArticle;
+  const tdData = td as { name: string };
   const prompt = `
-Extract the specific promise from this article about ${td.name}:
+Extract the specific promise from this article about ${tdData.name}:
 
-Title: ${article.title}
-Content: ${article.content}
+Title: ${a.title}
+Content: ${a.content}
 
 What exactly did they promise? Be specific.
 What are the measurable outcomes? (e.g., "€10M funding", "1000 homes built", "Bill passed by Q2")
@@ -261,7 +285,7 @@ Respond with JSON:
   }
   
   return {
-    promise: article.title,
+    promise: a.title,
     type: 'policy',
     metrics: {},
     verifiable: false
@@ -346,14 +370,20 @@ export async function verifyPromiseOutcome(promiseId: number): Promise<{
 }
 
 async function aiVerifyPromiseDelivery(promise: unknown) {
+  const p = promise as {
+    promise_text: string;
+    politician_name: string;
+    announced_date?: string;
+    target_date?: string;
+  };
   // Use AI to search for evidence of delivery
   const prompt = `
 Research if this promise was delivered:
 
-Promise: ${promise.promise_text}
-By: ${promise.politician_name}
-Announced: ${promise.announced_date}
-Target: ${promise.target_date}
+Promise: ${p.promise_text}
+By: ${p.politician_name}
+Announced: ${p.announced_date}
+Target: ${p.target_date}
 
 Search for evidence that this was actually implemented.
 Look for:

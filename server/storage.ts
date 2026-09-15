@@ -65,6 +65,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async upsertUser(userData: UpsertUser): Promise<User> {
+    if (!db) throw new Error('Database not initialized');
     // Assign admin role to samjmc3@hotmail.com
     const userDataWithRole = {
       ...userData,
@@ -97,7 +98,7 @@ export class DatabaseStorage implements IStorage {
   async saveQuizResult(result: QuizResultInput): Promise<ApiResponse<QuizResult>> {
     // TODO: Implement when quiz_results table is available
     console.log('saveQuizResult called with:', result);
-    return { success: true, data: result as QuizResult };
+    return { success: true, data: result as unknown as QuizResult };
   }
 
   async getQuizResultByShareCode(shareCode: string): Promise<QuizResult | null> {
@@ -149,6 +150,7 @@ export class DatabaseStorage implements IStorage {
 
   async getPoliticalEvolutionById(id: string): Promise<PoliticalEvolution | null> {
     try {
+      if (!db) throw new Error('Database not initialized');
       const [evolution] = await db
         .select()
         .from(politicalEvolution)
@@ -162,6 +164,7 @@ export class DatabaseStorage implements IStorage {
 
   async getPoliticalEvolutionByUserId(userId: string): Promise<PoliticalEvolution[]> {
     try {
+      if (!db) throw new Error('Database not initialized');
       const evolutions = await db
         .select()
         .from(politicalEvolution)
@@ -176,9 +179,10 @@ export class DatabaseStorage implements IStorage {
 
   async updatePoliticalEvolution(id: string, data: Partial<PoliticalEvolutionInput>): Promise<PoliticalEvolution> {
     try {
+      if (!db) throw new Error('Database not initialized');
       const [updatedEvolution] = await db
         .update(politicalEvolution)
-        .set(data)
+        .set(data as unknown as Partial<typeof politicalEvolution.$inferInsert>)
         .where(eq(politicalEvolution.id, parseInt(id)))
         .returning();
       return updatedEvolution;
@@ -190,6 +194,7 @@ export class DatabaseStorage implements IStorage {
 
   // Party sentiment operations
   async upsertPartySentimentVote(userId: string, partyId: string, sentimentScore: number): Promise<PartySentimentVote> {
+    if (!db) throw new Error('Database not initialized');
     const [vote] = await db
       .insert(partySentimentVotes)
       .values({
@@ -210,6 +215,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getPartySentimentData(partyId: string): Promise<{ trustVotes: number; distrustVotes: number; totalVotes: number; score: number }> {
+    if (!db) throw new Error('Database not initialized');
     const votes = await db
       .select({
         sentimentScore: partySentimentVotes.sentimentScore,
@@ -235,6 +241,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUserPartySentimentVote(userId: string, partyId: string): Promise<PartySentimentVote | undefined> {
+    if (!db) throw new Error('Database not initialized');
     const [vote] = await db
       .select()
       .from(partySentimentVotes)

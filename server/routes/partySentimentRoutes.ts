@@ -1,9 +1,14 @@
-import { Router } from 'express';
+import { Router, type Request } from 'express';
 import { storage } from '../storage';
 import { z } from 'zod';
 import { isAuthenticated } from '../replitAuth';
 
 const router = Router();
+
+// Shape of the Replit-auth user attached to the request by `isAuthenticated`.
+interface ReplitUser {
+  claims?: { sub?: string };
+}
 
 // Schema for party sentiment vote
 const sentimentVoteSchema = z.object({
@@ -12,9 +17,9 @@ const sentimentVoteSchema = z.object({
 });
 
 // POST /api/party-sentiment/vote - Submit a sentiment vote
-router.post('/vote', isAuthenticated, async (req: unknown, res) => {
+router.post('/vote', isAuthenticated, async (req: Request, res) => {
   try {
-    const userId = req.user?.claims?.sub;
+    const userId = (req.user as ReplitUser | undefined)?.claims?.sub;
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
     }
@@ -45,9 +50,9 @@ router.get('/:partyId', async (req, res) => {
 });
 
 // GET /api/party-sentiment/user/:partyId - Get user's vote for a party
-router.get('/user/:partyId', isAuthenticated, async (req: unknown, res) => {
+router.get('/user/:partyId', isAuthenticated, async (req: Request, res) => {
   try {
-    const userId = req.user?.claims?.sub;
+    const userId = (req.user as ReplitUser | undefined)?.claims?.sub;
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
     }

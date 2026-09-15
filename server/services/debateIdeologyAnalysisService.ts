@@ -159,6 +159,12 @@ interface PartyDisciplineContext {
   isCrossParty: boolean;
 }
 
+interface TdScoresMeta {
+  politician_name: string;
+  party: string | null;
+  constituency: string | null;
+}
+
 /**
  * Analyze a debate speech to extract ideological positions
  */
@@ -363,7 +369,7 @@ export async function analyzeVoteRecord(voteId: number): Promise<void> {
     return;
   }
 
-  const tdMeta = vote.td_scores as unknown;
+  const tdMeta = vote.td_scores as TdScoresMeta | null;
   if (!tdMeta) {
     // Votes should only be from TDs, but check anyway
     console.log(`⏭️  Skipping vote ${voteId} - TD not found in database`);
@@ -521,7 +527,7 @@ async function extractIdeologyFromSpeech(
 
     return result;
   } catch (error: unknown) {
-    console.error('Error extracting ideology from speech:', error.message);
+    console.error('Error extracting ideology from speech:', error instanceof Error ? error.message : error);
     return null;
   }
 }
@@ -561,7 +567,7 @@ async function extractIdeologyFromVote(
 
     return result;
   } catch (error: unknown) {
-    console.error('Error extracting ideology from vote:', error.message);
+    console.error('Error extracting ideology from vote:', error instanceof Error ? error.message : error);
     return null;
   }
 }
@@ -947,7 +953,7 @@ async function saveToHistory(
   policyTopic: string,
   delta: Record<string, number>,
   statementDate: string,
-  profile: unknown,
+  profile: Record<string, number>,
   sourceType: 'speech' | 'vote',
   sourceId: string,
 ): Promise<void> {
@@ -1056,7 +1062,7 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
     });
 
   // Fallback: if RPC doesn't exist, use direct query with NOT IN subquery
-  let speechesToProcess: unknown[] = [];
+  let speechesToProcess: Array<{ id: string }> = [];
   if (speechesError || !unprocessedSpeeches) {
     // Direct query approach - get speeches not in analyzed list
     const { data: allSpeeches } = await supabase
@@ -1073,12 +1079,12 @@ export async function processUnprocessedDebates(batchSize: number = 50, lookback
         .not('speech_id', 'is', null);
 
       const analyzedSpeechIds = new Set(
-        analyzedSpeeches?.map((s: unknown) => s.speech_id).filter(Boolean) || []
+        analyzedSpeeches?.map((s: { speech_id: string | null }) => s.speech_id).filter(Boolean) || []
       );
 
       // Filter out already analyzed
       speechesToProcess = allSpeeches
-        .filter((s: unknown) => !analyzedSpeechIds.has(s.id))
+        .filter((s: { id: string }) => !analyzedSpeechIds.has(s.id))
         .slice(0, batchSize);
     }
   } else {

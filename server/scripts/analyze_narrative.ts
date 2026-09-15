@@ -354,7 +354,7 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
         }
     }];
 
-    const messages = [{ role: "system", content: systemPrompt }, { role: "user", content: input }];
+    const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [{ role: "system", content: systemPrompt }, { role: "user", content: input }];
     const completion = await callChatCompletion({
         model: "gpt-4o",
         messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
@@ -364,12 +364,12 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
 
     const responseMsg = completion.choices[0].message;
     if (responseMsg.tool_calls) {
-        messages.push(responseMsg as unknown);
+        messages.push(responseMsg);
         for (const toolCall of responseMsg.tool_calls) {
             if (toolCall.function.name === "search_web") {
                 const args = JSON.parse(toolCall.function.arguments);
                 const searchResult = await searchTavily(args.query);
-                messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult } as unknown);
+                messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult });
             }
         }
         const second = await callChatCompletion({ model: "gpt-4o", messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[] }, { operation: 'narrativeLevel3Second' });

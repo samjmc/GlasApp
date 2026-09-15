@@ -84,7 +84,7 @@ router.post('/', async (req: Request, res: Response) => {
     const { message, history = [], userContext } = body;
     
     // Format conversation history for OpenAI API
-    let formattedHistory: unknown[] = history.map((msg: unknown) => {
+    let formattedHistory: unknown[] = history.map((msg) => {
         // Handle basic messages
         if (msg.role === 'user' || msg.role === 'system') {
             return { role: msg.role, content: msg.content };

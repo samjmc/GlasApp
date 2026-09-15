@@ -165,22 +165,23 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
   
   // Listen for regenerate events
   useEffect(() => {
-    const handleRegenerate = (event: unknown) => {
-      console.log("EnhancedProfileExplanation: Received regenerate event", event.detail);
+    const handleRegenerate = (event: Event) => {
+      const detail = (event as CustomEvent<{ weights?: Record<string, number> }>).detail;
+      console.log("EnhancedProfileExplanation: Received regenerate event", detail);
       
       // For debugging - show exactly what weights we received
-      console.log("EVENT DETAIL:", JSON.stringify(event.detail));
+      console.log("EVENT DETAIL:", JSON.stringify(detail));
       
       // Always force a refresh with the weights from the event
       // This ensures the component updates when the Save and Regenerate button is clicked
-      if (event.detail?.weights) {
+      if (detail?.weights) {
         // Show loading state immediately
         setIsLoading(true);
-        console.log("FORCE REGENERATING Enhanced Profile with weights:", event.detail.weights);
+        console.log("FORCE REGENERATING Enhanced Profile with weights:", detail.weights);
         
         // Wait a brief moment to ensure UI shows loading state
         setTimeout(() => {
-          fetchAnalysisData(dimensions, event.detail.weights);
+          fetchAnalysisData(dimensions, detail.weights);
         }, 100);
       }
     };

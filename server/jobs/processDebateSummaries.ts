@@ -127,7 +127,7 @@ async function run(): Promise<void> {
 
           console.log(`   ✅ Summary saved (confidence ${summary.confidence ?? 'n/a'})`);
         } catch (error: unknown) {
-          console.error(`   ❌ Task failed: ${error?.message || error}`);
+          console.error(`   ❌ Task failed: ${error instanceof Error ? error.message : error}`);
           await handleTaskFailure(task);
         }
       })
@@ -454,7 +454,7 @@ async function generateAndSaveStances(
         model: 'openai-gpt-4o-mini'
       });
     } catch (error: unknown) {
-      console.error(`   ⚠️  Failed to analyse stance for speech ${speech.id}:`, error?.message || error);
+      console.error(`   ⚠️  Failed to analyse stance for speech ${speech.id}:`, error instanceof Error ? error.message : error);
     }
   }
 

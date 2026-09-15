@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import LeafletIrelandMap from '../components/LeafletIrelandMap';
-import { ElectoralDistrictsPage } from '../pages/ElectoralDistrictsPage';
 import { constituencyData } from '../assets/constituency-simplified';
 import { ElectoralDistrictDetailView } from '../components/ElectoralDistrictDetailView';
 

@@ -14,6 +14,12 @@ const router = Router();
  */
 router.get('/', async (req, res) => {
   try {
+    if (!supabaseDb) {
+      return res.status(503).json({
+        success: false,
+        error: 'Database connection not available',
+      });
+    }
     const { data, error } = await supabaseDb
       .from('td_scores')
       .select(`
@@ -80,7 +86,7 @@ router.get('/', async (req, res) => {
     console.error('Error fetching researched TDs:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });
@@ -91,6 +97,12 @@ router.get('/', async (req, res) => {
  */
 router.get('/stats', async (req, res) => {
   try {
+    if (!supabaseDb) {
+      return res.status(503).json({
+        success: false,
+        error: 'Database connection not available',
+      });
+    }
     const { data: activeTDs } = await supabaseDb
       .from('td_scores')
       .select('politician_name, historical_summary', { count: 'exact' })
@@ -122,7 +134,7 @@ router.get('/stats', async (req, res) => {
     console.error('Error fetching research stats:', error);
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 });

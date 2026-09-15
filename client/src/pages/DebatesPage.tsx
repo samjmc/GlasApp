@@ -260,7 +260,7 @@ const fetchAlerts = async (periodKey: string): Promise<DebateAlert[]> => {
   }
   const payload = await response.json();
   const alerts = payload?.alerts ?? [];
-  return alerts.map((item: unknown) => ({
+  return alerts.map((item: DebateAlert) => ({
     ...item,
     status: item.status ?? "new",
   }));
@@ -316,10 +316,10 @@ const fetchHighlights = async (periodKey: string): Promise<DebateHighlight[]> =>
   }
   const payload = await response.json();
   const highlights = payload?.highlights ?? [];
-  return highlights.map((item: unknown) => {
+  return highlights.map((item: DebateHighlight) => {
     const metadata = item.metadata ?? {};
     const participantsSource = Array.isArray(item.participants) ? item.participants : [];
-    const participants: HighlightParticipantImpact[] = participantsSource.map((participant: unknown) => ({
+    const participants: HighlightParticipantImpact[] = participantsSource.map((participant: HighlightParticipantImpact) => ({
       tdId: participant.tdId,
       name: participant.name,
       party: participant.party ?? null,
