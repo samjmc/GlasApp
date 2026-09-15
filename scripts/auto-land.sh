@@ -4,7 +4,7 @@ set -euo pipefail
 REPO="$( cd "$(dirname "$0")/.." && pwd )"
 cd "$REPO"
 BRANCH_PREFIX="${BRANCH_PREFIX:-feature}"
-DRY_RUN="${DRY_RUN:-0}"
+DRY_RUN="${DRY_RUN:-1}"
 
 die() { echo "auto-land: FATAL: $*" >&2; exit 1; }
 log() { echo "auto-land: $*"; }
