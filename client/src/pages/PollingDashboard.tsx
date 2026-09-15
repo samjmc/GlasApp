@@ -38,6 +38,22 @@ interface PollData {
   support_30d_change: number;
 }
 
+interface CacheRow {
+  entity_name: string;
+  latest_support: string | null;
+  latest_poll_date: string;
+  latest_poll_source: string | null;
+  support_30d_change: string | null;
+}
+
+interface TimeSeriesRow {
+  entity_name: string;
+  period_end: string;
+  mean_support: string;
+}
+
+type HistoricalChartData = NonNullable<React.ComponentProps<typeof Line>['data']>;
+
 // Official Irish party colors
 const PARTY_COLORS: { [key: string]: string } = {
   'Sinn Féin': '#326937',
@@ -52,7 +68,7 @@ const PARTY_COLORS: { [key: string]: string } = {
 
 export default function PollingDashboard() {
   const [pollData, setPollData] = useState<PollData[]>([]);
-  const [historicalData, setHistoricalData] = useState<unknown>(null);
+  const [historicalData, setHistoricalData] = useState<HistoricalChartData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -86,7 +102,7 @@ export default function PollingDashboard() {
       }
 
       // Format the data
-      const formattedData: PollData[] = cacheData.map((item: unknown) => ({
+      const formattedData: PollData[] = cacheData.map((item: CacheRow) => ({
         party_name: item.entity_name,
         first_preference: parseFloat(item.latest_support || '0'),
         poll_date: item.latest_poll_date,
@@ -101,7 +117,7 @@ export default function PollingDashboard() {
       await loadHistoricalChart();
 
     } catch (err: unknown) {
-      const errorMsg = err.message || 'Unknown error occurred';
+      const errorMsg = (err as Error).message || 'Unknown error occurred';
       console.error('❌ Dashboard error:', err);
       setError(errorMsg);
     } finally {
@@ -126,7 +142,7 @@ export default function PollingDashboard() {
       }
 
       // Group by party
-      const parties: { [key: string]: unknown[] } = {};
+      const parties: { [key: string]: TimeSeriesRow[] } = {};
       timeSeries.forEach(record => {
         if (!parties[record.entity_name]) {
           parties[record.entity_name] = [];
@@ -135,7 +151,7 @@ export default function PollingDashboard() {
       });
 
       // Get unique dates
-      const dates = [...new Set(timeSeries.map(r => r.period_end))].sort();
+      const dates = Array.from(new Set(timeSeries.map(r => r.period_end))).sort();
 
       // Create chart datasets
       const datasets = Object.entries(parties).map(([partyName, data]) => {
@@ -364,8 +380,8 @@ export default function PollingDashboard() {
                         size: 13
                       },
                       callbacks: {
-                        label: function(context: unknown) {
-                          return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}%`;
+                        label: function(context) {
+                          return `${context.dataset.label}: ${context.parsed.y?.toFixed(1)}%`;
                         }
                       }
                     }

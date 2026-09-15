@@ -10,6 +10,13 @@ interface ContextAnalysisProps {
   userLocation?: string;
 }
 
+interface IssueAnalysisItem {
+  issue?: string;
+  stance?: string;
+  percentile?: number;
+  description?: string;
+}
+
 // Response type for the context analysis API
 interface ContextAnalysisResponse {
   historical_alignments?: Array<{
@@ -27,12 +34,7 @@ interface ContextAnalysisResponse {
     alignment: string;
     description: string;
   }>;
-  issue_analysis?: Array<{
-    issue: string;
-    stance: string;
-    percentile?: number;
-    description: string;
-  }>;
+  issue_analysis?: Array<string | IssueAnalysisItem>;
   trending_issues?: Array<string | {
     issue: string;
     likely_stance?: string;
@@ -97,9 +99,10 @@ const ContextAnalysis: React.FC<ContextAnalysisProps> = ({ dimensions, userLocat
   
   // Listen for regenerate events
   useEffect(() => {
-    const handleRegenerate = (event: unknown) => {
-      console.log("Context Analysis: Received regenerate event", event.detail);
-      console.log("EVENT DETAIL for context analysis:", JSON.stringify(event.detail));
+    const handleRegenerate = (event: Event) => {
+      const detail = (event as CustomEvent).detail;
+      console.log("Context Analysis: Received regenerate event", detail);
+      console.log("EVENT DETAIL for context analysis:", JSON.stringify(detail));
       
       // Force immediate refresh on regenerate event
       setIsLoading(true);
@@ -170,7 +173,7 @@ const ContextAnalysis: React.FC<ContextAnalysisProps> = ({ dimensions, userLocat
     // Sort issues by extremity (highest percentile deviation from 50)
     const sortedIssues = Array.isArray(issue_analysis)
       ? [...issue_analysis]
-          .map((issue) => (typeof issue === "string" ? { description: issue } : { ...issue }))
+          .map((issue): IssueAnalysisItem => (typeof issue === "string" ? { description: issue } : { ...issue }))
           .sort((a, b) => {
             const aPercentile = ('percentile' in a && typeof a.percentile === 'number') ? a.percentile : 50;
             const bPercentile = ('percentile' in b && typeof b.percentile === 'number') ? b.percentile : 50;

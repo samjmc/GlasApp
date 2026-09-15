@@ -102,7 +102,7 @@ async function fetchNewDebates(lookbackDays: number = 14): Promise<{
       skip += limit;
       await new Promise(resolve => setTimeout(resolve, 500));
     } catch (error: unknown) {
-      console.error(`   ❌ Error fetching debates: ${error.message}`);
+      console.error(`   ❌ Error fetching debates: ${error instanceof Error ? error.message : String(error)}`);
       break;
     }
   }
@@ -188,7 +188,7 @@ async function runDailyDebateUpdate() {
     console.log('═'.repeat(70));
 
   } catch (error: unknown) {
-    console.error('❌ Error in daily debate update:', error.message);
+    console.error('❌ Error in daily debate update:', error instanceof Error ? error.message : String(error));
     throw error;
   }
 }

@@ -18,6 +18,23 @@ import {
   Building2
 } from 'lucide-react';
 
+type PartyBreakdownEntry = {
+  party: string;
+  count: number;
+  avgScore: number;
+};
+
+type ConstituencyTD = {
+  id: number;
+  name: string;
+  party: string;
+  score: number;
+  offices?: string[];
+  gender?: string;
+  committees?: string[];
+  yearsInDail?: number;
+};
+
 export default function ConstituencyProfilePage() {
   const { name } = useParams<{ name: string }>();
 
@@ -147,7 +164,7 @@ export default function ConstituencyProfilePage() {
         </h2>
 
         <div className="space-y-3">
-          {(data.partyBreakdown || []).map((party: unknown) => (
+          {(data.partyBreakdown || []).map((party: PartyBreakdownEntry) => (
             <div key={party.party} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <div className="flex items-center gap-3">
                 <div className="font-semibold text-gray-900 dark:text-white">
@@ -174,7 +191,7 @@ export default function ConstituencyProfilePage() {
         </h2>
 
         <div className="space-y-3">
-          {(data.tds || []).map((td: unknown) => (
+          {(data.tds || []).map((td: ConstituencyTD) => (
             <Link key={td.id} href={`/td/${td.name}`}>
               <div className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border border-gray-200 dark:border-gray-700 hover:border-blue-300 group">
                 <div className="flex-1">

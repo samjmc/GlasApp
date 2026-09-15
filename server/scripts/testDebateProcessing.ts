@@ -6,6 +6,10 @@
 import 'dotenv/config';
 import { analyzeDebateSpeech, analyzeVoteRecord } from '../services/debateIdeologyAnalysisService.js';
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 async function testProcessing() {
   console.log('🧪 Testing Debate Ideology Processing\n');
   
@@ -37,8 +41,8 @@ async function testProcessing() {
     await analyzeDebateSpeech(speech.id);
     console.log('\n✅ Speech analysis complete!');
   } catch (error: unknown) {
-    console.error('\n❌ Error:', error.message);
-    console.error(error.stack);
+    console.error('\n❌ Error:', errorMessage(error));
+    console.error(error instanceof Error ? error.stack : undefined);
   }
   
   // Test with a single vote
@@ -49,7 +53,7 @@ async function testProcessing() {
     .maybeSingle();
   
   if (vote) {
-    const tdMeta = vote.td_scores as unknown;
+    const tdMeta = vote.td_scores as { politician_name?: string; party?: string } | null;
     console.log(`\n🗳️  Testing with vote by ${tdMeta?.politician_name || 'Unknown'}`);
     console.log(`   Vote ID: ${vote.id}\n`);
     
@@ -57,8 +61,8 @@ async function testProcessing() {
       await analyzeVoteRecord(vote.id);
       console.log('\n✅ Vote analysis complete!');
     } catch (error: unknown) {
-      console.error('\n❌ Error:', error.message);
-      console.error(error.stack);
+      console.error('\n❌ Error:', errorMessage(error));
+      console.error(error instanceof Error ? error.stack : undefined);
     }
   }
   

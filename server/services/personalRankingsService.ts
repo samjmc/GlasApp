@@ -52,6 +52,36 @@ interface CachedTDEntry {
   };
 }
 
+interface TdScoreRow {
+  politician_name: string;
+  party: string | null;
+  constituency: string | null;
+  national_rank: number | null;
+  overall_score: number | null;
+  overall_elo: number | null;
+  image_url: string | null;
+  is_active: boolean | null;
+}
+
+interface TdIdeologyRow extends IdeologyVector {
+  politician_name: string;
+  party: string | null;
+  constituency: string | null;
+  total_weight: number | null;
+}
+
+interface PersonalRankingRow {
+  user_id: string;
+  politician_name: string;
+  ideology_match: number;
+  policy_agreement: number;
+  overall_compatibility: number;
+  public_rank: number | null;
+  policies_compared: number;
+  last_calculated: string;
+  personal_rank?: number;
+}
+
 const MAX_IDEOLOGY_DISTANCE = 20; // Range between -10 and +10 on each axis
 
 function convertQuizAnswerToIdeology(value?: number): number {
@@ -216,7 +246,7 @@ export class PersonalRankingsService {
           return;
         }
 
-        const activeScores = (tdScoreRows || []).filter((row: unknown) => {
+        const activeScores = (tdScoreRows || []).filter((row: TdScoreRow) => {
           if (!row?.politician_name) return false;
           if (row.is_active === false) return false;
           return true;
@@ -231,8 +261,8 @@ export class PersonalRankingsService {
           return;
         }
 
-        const ideologyMap = new Map<string, any>();
-        ideologyRows?.forEach((row: unknown) => {
+        const ideologyMap = new Map<string, TdIdeologyRow>();
+        ideologyRows?.forEach((row: TdIdeologyRow) => {
           if (row?.politician_name) {
             ideologyMap.set(row.politician_name.toLowerCase(), row);
           }
@@ -597,7 +627,7 @@ export class PersonalRankingsService {
       }
     });
     
-    const rankings = [];
+    const rankings: PersonalRankingRow[] = [];
     
     // Calculate compatibility with each TD
     for (const entry of tdEntries) {
@@ -673,7 +703,7 @@ export class PersonalRankingsService {
       return { usersUpdated: 0, errors: 1 };
     }
 
-    quizUsers?.forEach((row: unknown) => {
+    quizUsers?.forEach((row: { user_id: string }) => {
       if (row?.user_id) userIds.add(row.user_id);
     });
 
@@ -682,7 +712,7 @@ export class PersonalRankingsService {
       .select('user_id');
 
     if (!rankingError) {
-      rankingUsers?.forEach((row: unknown) => {
+      rankingUsers?.forEach((row: { user_id: string }) => {
         if (row?.user_id) userIds.add(row.user_id);
       });
     } else {
@@ -705,7 +735,7 @@ export class PersonalRankingsService {
         }
       } catch (error: unknown) {
         errors += 1;
-        console.error(`Error recalculating rankings for user ${userId}:`, error.message ?? error);
+        console.error(`Error recalculating rankings for user ${userId}:`, (error as { message?: unknown } | null)?.message ?? error);
       }
     }
 
@@ -789,14 +819,14 @@ export class PersonalRankingsService {
     }
 
     const dimensionFields: Partial<Record<IdeologyDimension, number>> = {
-      economic: Number((data as unknown).economic_dimension),
-      social: Number((data as unknown).social_dimension),
-      cultural: Number((data as unknown).cultural_dimension),
-      globalism: Number((data as unknown).globalism_dimension),
-      environmental: Number((data as unknown).environmental_dimension),
-      authority: Number((data as unknown).authority_dimension),
-      welfare: Number((data as unknown).welfare_dimension),
-      technocratic: Number((data as unknown).technocratic_dimension),
+      economic: Number(data.economic_dimension),
+      social: Number(data.social_dimension),
+      cultural: Number(data.cultural_dimension),
+      globalism: Number(data.globalism_dimension),
+      environmental: Number(data.environmental_dimension),
+      authority: Number(data.authority_dimension),
+      welfare: Number(data.welfare_dimension),
+      technocratic: Number(data.technocratic_dimension),
     };
 
     const hasEnhancedDimensions = IDEOLOGY_DIMENSIONS.some((dimension) => {

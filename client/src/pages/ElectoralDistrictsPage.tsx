@@ -5,29 +5,26 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { electoralConstituencies } from '../assets/electoral-data';
 import { constituencyData } from '../assets/constituency-simplified';
 import { ElectoralDistrictDetailView } from '../components/ElectoralDistrictDetailView';
+import type { Feature, GeoJsonObject } from 'geojson';
+import type { Layer, LayerGroup, LeafletEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
-// We need to use dynamic import for Leaflet since it requires window object
-// which doesn't exist during server-side rendering
-let L: unknown;
 
 const ElectoralDistrictsPage: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<unknown>(null);
+  const mapInstanceRef = useRef<LeafletMap | null>(null);
   const [selectedConstituency, setSelectedConstituency] = useState<string | null>(null);
   const [isMapInitialized, setIsMapInitialized] = useState(false);
-  const electoralGroup = useRef<unknown>(null);
+  const electoralGroup = useRef<LayerGroup | null>(null);
 
   useEffect(() => {
     const initializeLeaflet = async () => {
       try {
         // Import Leaflet dynamically
         const leaflet = await import('leaflet');
-        L = leaflet;
 
         if (!isMapInitialized && mapRef.current) {
           // Initialize the map
-          const map = L.map(mapRef.current, {
+          const map = leaflet.map(mapRef.current, {
             center: [53.4, -8.3], // Center of Ireland
             zoom: 7,
             minZoom: 6,
@@ -37,7 +34,7 @@ const ElectoralDistrictsPage: React.FC = () => {
           });
 
           // Add OpenStreetMap tiles
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
 
@@ -45,7 +42,7 @@ const ElectoralDistrictsPage: React.FC = () => {
           mapInstanceRef.current = map;
           
           // Create a layer group for electoral constituencies
-          electoralGroup.current = L.layerGroup().addTo(map);
+          electoralGroup.current = leaflet.layerGroup().addTo(map);
           
           // Style for electoral constituencies
           const electoralStyle = {
@@ -58,18 +55,18 @@ const ElectoralDistrictsPage: React.FC = () => {
           };
           
           // Add electoral constituency boundaries
-          L.geoJSON(electoralConstituencies as unknown, {
+          leaflet.geoJSON(electoralConstituencies as unknown as GeoJsonObject, {
             style: () => electoralStyle,
-            onEachFeature: (feature: unknown, layer: unknown) => {
-              const constituencyName = feature?.properties?.CONSTITUENCY || '';
-              const seats = feature?.properties?.SEATS || '?';
+            onEachFeature: (feature: Feature, layer: Layer) => {
+              const constituencyName = feature.properties?.CONSTITUENCY || '';
+              const seats = feature.properties?.SEATS || '?';
               
               // Add popup with constituency name and seats
               layer.bindPopup(`<strong>${constituencyName}</strong><br>Seats: ${seats}`);
               
               // Add hover effect
               layer.on({
-                mouseover: (e: unknown) => {
+                mouseover: (e: LeafletEvent) => {
                   const targetLayer = e.target;
                   targetLayer.setStyle({
                     weight: 3,
@@ -77,17 +74,17 @@ const ElectoralDistrictsPage: React.FC = () => {
                   });
                   targetLayer.bringToFront();
                 },
-                mouseout: (e: unknown) => {
+                mouseout: (e: LeafletEvent) => {
                   const targetLayer = e.target;
                   targetLayer.setStyle(electoralStyle);
                 },
-                click: (e: unknown) => {
+                click: (e: LeafletEvent) => {
                   map.fitBounds(e.target.getBounds());
                   setSelectedConstituency(constituencyName);
                 }
               });
             }
-          }).addTo(electoralGroup.current);
+          }).addTo(electoralGroup.current!);
           
           setIsMapInitialized(true);
         }

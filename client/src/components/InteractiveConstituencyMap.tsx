@@ -22,10 +22,18 @@ import {
   ChevronRight,
   TrendingDown,
   Award,
-  AlertCircle
+  AlertCircle,
+  type LucideIcon
 } from 'lucide-react';
 
 type MapLayer = 'party' | 'performance' | 'gender' | 'government';
+
+interface ConstituencyTD {
+  id: number;
+  name: string;
+  party?: string | null;
+  score?: number | null;
+}
 
 /** Interactive map of Irish constituencies with selectable layers. */
 export function InteractiveConstituencyMap() {
@@ -64,7 +72,7 @@ export function InteractiveConstituencyMap() {
   const constituencies = constituenciesData?.constituencies || [];
   const selectedInfo = selectedData;
 
-  const LayerButton = ({ id, label, icon: Icon }: { id: MapLayer; label: string; icon: unknown }) => (
+  const LayerButton = ({ id, label, icon: Icon }: { id: MapLayer; label: string; icon: LucideIcon }) => (
     <button
       onClick={() => setActiveLayer(id)}
       className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all shadow-sm border ${
@@ -193,7 +201,7 @@ export function InteractiveConstituencyMap() {
                       Representatives
                     </h4>
                     <div className="grid sm:grid-cols-2 gap-3">
-                      {selectedInfo.tds?.map((td: unknown) => (
+                      {selectedInfo.tds?.map((td: ConstituencyTD) => (
                         <Link key={td.id} href={`/td/${encodeURIComponent(td.name)}`}>
                           <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-purple-300 dark:hover:border-purple-700 hover:shadow-sm transition-all cursor-pointer group bg-white dark:bg-slate-900">
                             <div>
@@ -249,7 +257,7 @@ function LegendItem({ color, label }: { color: string; label: string }) {
   );
 }
 
-function ArrowRightIcon(props: unknown) {
+function ArrowRightIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

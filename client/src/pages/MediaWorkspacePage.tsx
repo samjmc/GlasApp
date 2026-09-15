@@ -2,11 +2,23 @@ import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 
+type ViewFilters = {
+  period?: "latest" | "7d" | "30d" | { start?: string; end?: string } | null;
+  party?: string | null;
+  topic?: string | null;
+  chamber?: string | null;
+};
+
+type ExportMetadata = {
+  period?: { start?: string; end?: string } | null;
+  rowCount?: number;
+};
+
 type SavedView = {
   id: string;
   name: string;
   description: string | null;
-  filters: unknown;
+  filters: ViewFilters | null;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -19,9 +31,17 @@ type ExportRecord = {
   format: string;
   status: string;
   download_url: string | null;
-  metadata: unknown;
+  metadata: ExportMetadata | null;
   created_at: string;
   completed_at: string | null;
+};
+
+const formatPeriod = (period?: ViewFilters["period"]) => {
+  if (period === "latest") return "Latest";
+  if (typeof period === "object" && period !== null) {
+    return `${period.start ?? "?"} → ${period.end ?? "?"}`;
+  }
+  return "? → ?";
 };
 
 const fetchViews = async (): Promise<SavedView[]> => {
@@ -123,7 +143,7 @@ const MediaWorkspacePage = () => {
   });
 
   const exportMutation = useMutation({
-    mutationFn: async (payload: { viewId?: string; filters?: unknown; requestedBy?: string }) => {
+    mutationFn: async (payload: { viewId?: string; filters?: unknown; requestedBy?: string | null }) => {
       const response = await fetch("/api/debate-workspace/exports", {
         method: "POST",
         headers: {
@@ -349,18 +369,18 @@ const MediaWorkspacePage = () => {
           <div className="lg:col-span-2 flex flex-wrap items-center gap-3 pt-2">
             <button
               type="submit"
-              disabled={createViewMutation.isLoading}
+              disabled={createViewMutation.isPending}
               className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {createViewMutation.isLoading ? "Saving…" : "Save view"}
+              {createViewMutation.isPending ? "Saving…" : "Save view"}
             </button>
             <button
               type="button"
               onClick={runAdhocExport}
-              disabled={exportMutation.isLoading}
+              disabled={exportMutation.isPending}
               className="rounded-md border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {exportMutation.isLoading ? "Exporting…" : "Run one-off export"}
+              {exportMutation.isPending ? "Exporting…" : "Run one-off export"}
             </button>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Exports return CSV snapshots based on the filters above and log automatically in export history.
@@ -400,9 +420,7 @@ const MediaWorkspacePage = () => {
                     <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
                       <span className="rounded-full bg-gray-100 px-2 py-1 dark:bg-gray-800">
                         Period:{" "}
-                        {view.filters?.period === "latest"
-                          ? "Latest"
-                          : `${view.filters?.period?.start ?? "?"} → ${view.filters?.period?.end ?? "?"}`}
+                        {formatPeriod(view.filters?.period)}
                       </span>
                       {view.filters?.party && (
                         <span className="rounded-full bg-gray-100 px-2 py-1 dark:bg-gray-800">

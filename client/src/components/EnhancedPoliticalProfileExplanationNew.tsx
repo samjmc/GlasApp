@@ -196,10 +196,10 @@ const EnhancedPoliticalProfileExplanationNew: React.FC<EnhancedPoliticalProfileE
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                       {Object.entries(weights).map(([dimension, weight]) => (
                         <div key={dimension} className="text-sm flex items-center gap-1">
-                          <span className={`font-medium ${parseFloat(weight as unknown) > 1.5 ? 'text-green-600 dark:text-green-400' : parseFloat(weight as unknown) < 0.5 ? 'text-gray-400' : ''}`}>
+                          <span className={`font-medium ${parseFloat(String(weight)) > 1.5 ? 'text-green-600 dark:text-green-400' : parseFloat(String(weight)) < 0.5 ? 'text-gray-400' : ''}`}>
                             {dimension.charAt(0).toUpperCase() + dimension.slice(1)}:
                           </span>
-                          <span className={`${parseFloat(weight as unknown) > 1.5 ? 'text-green-600 dark:text-green-400 font-bold' : parseFloat(weight as unknown) < 0.5 ? 'text-gray-400' : ''}`}>
+                          <span className={`${parseFloat(String(weight)) > 1.5 ? 'text-green-600 dark:text-green-400 font-bold' : parseFloat(String(weight)) < 0.5 ? 'text-gray-400' : ''}`}>
                             {weight}×
                           </span>
                         </div>

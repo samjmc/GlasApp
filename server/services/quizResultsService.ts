@@ -32,6 +32,7 @@ export class QuizResultsService {
     },
     shareCode?: string
   ): Promise<QuizResult> {
+    if (!db) throw new Error('Database not initialized');
     // Check if the user already has an active quiz result
     const existingResult = await this.getUserActiveResult(userId);
     
@@ -46,7 +47,7 @@ export class QuizResultsService {
     }
     
     // Create a new quiz result
-    const newResult: InsertQuizResult = {
+    const newResult = {
       userId,
       economicDimension: Number(dimensions.economic),
       socialDimension: Number(dimensions.social),
@@ -66,7 +67,7 @@ export class QuizResultsService {
     };
     
     // Insert the new result
-    const [result] = await db.insert(quizResults).values(newResult).returning();
+    const [result] = await db.insert(quizResults).values(newResult as unknown as InsertQuizResult).returning();
     return result;
   }
   
@@ -74,6 +75,7 @@ export class QuizResultsService {
    * Archives a quiz result to the history table
    */
   private async archiveQuizResult(result: QuizResult): Promise<QuizResultHistory> {
+    if (!db) throw new Error('Database not initialized');
     const historyEntry: InsertQuizResultHistory = {
       originalResultId: result.id,
       userId: result.userId,
@@ -102,11 +104,12 @@ export class QuizResultsService {
    * Gets a user's active quiz result
    */
   async getUserActiveResult(userId: number): Promise<QuizResult | undefined> {
+    if (!db) throw new Error('Database not initialized');
     const results = await db
       .select()
       .from(quizResults)
       .where(and(
-        eq(quizResults.userId, userId),
+        eq(quizResults.userId, userId as unknown as string),
         eq(quizResults.isActive, 1)
       ));
     
@@ -117,10 +120,11 @@ export class QuizResultsService {
    * Gets a user's quiz result history
    */
   async getUserResultHistory(userId: number): Promise<QuizResultHistory[]> {
+    if (!db) throw new Error('Database not initialized');
     return db
       .select()
       .from(quizResultsHistory)
-      .where(eq(quizResultsHistory.userId, userId))
+      .where(eq(quizResultsHistory.userId, userId as unknown as string))
       .orderBy(desc(quizResultsHistory.archivedAt));
   }
   
@@ -128,6 +132,7 @@ export class QuizResultsService {
    * Gets a quiz result by share code
    */
   async getResultByShareCode(shareCode: string): Promise<QuizResult | undefined> {
+    if (!db) throw new Error('Database not initialized');
     const results = await db
       .select()
       .from(quizResults)
@@ -174,7 +179,7 @@ export class QuizResultsService {
       authority: this.calculateChange(currentResult.authorityDimension, previousResult.authorityDimension),
       welfare: this.calculateChange(currentResult.welfareDimension, previousResult.welfareDimension),
       technocratic: this.calculateChange(currentResult.technocraticDimension, previousResult.technocraticDimension),
-      timeSinceLastQuiz: this.calculateTimeDifference(currentResult.createdAt, previousResult.archivedAt),
+      timeSinceLastQuiz: this.calculateTimeDifference(currentResult.createdAt!, previousResult.archivedAt!),
     };
     
     return {
@@ -188,7 +193,7 @@ export class QuizResultsService {
   /**
    * Calculate the difference between two scores
    */
-  private calculateChange(current: number | null, previous: number | null): number | null {
+  private calculateChange(current: string | number | null, previous: string | number | null): number | null {
     if (current === null || previous === null) return null;
     return Number(current) - Number(previous);
   }

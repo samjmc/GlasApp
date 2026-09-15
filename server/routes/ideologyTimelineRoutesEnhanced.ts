@@ -6,6 +6,53 @@ import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
 
 const router = express.Router();
 
+interface IdeologyDimensionScores {
+  economic: number;
+  social: number;
+  cultural: number;
+  authority: number;
+  environmental: number;
+  welfare: number;
+  globalism: number;
+  technocratic: number;
+}
+
+interface IdeologySnapshotRow {
+  snapshot_date: string;
+  economic?: string | number | null;
+  social?: string | number | null;
+  cultural?: string | number | null;
+  authority?: string | number | null;
+  environmental?: string | number | null;
+  welfare?: string | number | null;
+  globalism?: string | number | null;
+  technocratic?: string | number | null;
+  session_count?: number | null;
+}
+
+interface IdeologyEventRow {
+  event_date: string;
+  event_type?: string | null;
+  label?: string | null;
+  icon?: string | null;
+  dimension?: string | null;
+  magnitude?: number | null;
+}
+
+interface TimelinePoint {
+  date: string;
+  dateLabel: string;
+  economic: number;
+  social: number;
+  cultural: number;
+  authority: number;
+  environmental: number;
+  welfare: number;
+  globalism: number;
+  technocratic: number;
+  sessionCount?: number | null;
+}
+
 /**
  * GET /api/ideology-timeline/:userId - Enhanced ideology timeline with all features
  * Query params:
@@ -68,23 +115,26 @@ router.get('/:userId', async (req: Request, res: Response) => {
     // Try to use snapshots first (accurate), fallback to interpolation
     const snapshots = await IdeologySnapshotService.getSnapshots(userId, from, to);
     
-    let timeline: unknown[] = [];
+    let timeline: TimelinePoint[] = [];
 
     if (snapshots.length > 0) {
       // Use snapshots for accurate data
-      timeline = snapshots.map(snapshot => ({
-        date: snapshot.snapshot_date,
-        dateLabel: formatDateLabel(new Date(snapshot.snapshot_date)),
-        economic: Number(snapshot.economic),
-        social: Number(snapshot.social),
-        cultural: Number(snapshot.cultural),
-        authority: Number(snapshot.authority),
-        environmental: Number(snapshot.environmental),
-        welfare: Number(snapshot.welfare),
-        globalism: Number(snapshot.globalism),
-        technocratic: Number(snapshot.technocratic),
-        sessionCount: snapshot.session_count,
-      }));
+      timeline = snapshots.map(snapshot => {
+        const row = snapshot as IdeologySnapshotRow;
+        return {
+          date: row.snapshot_date,
+          dateLabel: formatDateLabel(new Date(row.snapshot_date)),
+          economic: Number(row.economic),
+          social: Number(row.social),
+          cultural: Number(row.cultural),
+          authority: Number(row.authority),
+          environmental: Number(row.environmental),
+          welfare: Number(row.welfare),
+          globalism: Number(row.globalism),
+          technocratic: Number(row.technocratic),
+          sessionCount: row.session_count,
+        };
+      });
     } else {
       // Fallback to interpolation (legacy behavior)
       const { data: currentProfile } = await supabaseDb
@@ -144,14 +194,17 @@ router.get('/:userId', async (req: Request, res: Response) => {
 
     // Get events for annotations
     const events = await IdeologySnapshotService.getEvents(userId, from, to);
-    const formattedEvents = events.map(event => ({
-      date: new Date(event.event_date).toISOString().split('T')[0],
-      type: event.event_type,
-      label: event.label,
-      icon: event.icon,
-      dimension: event.dimension,
-      magnitude: event.magnitude,
-    }));
+    const formattedEvents = events.map(event => {
+      const row = event as IdeologyEventRow;
+      return {
+        date: new Date(row.event_date).toISOString().split('T')[0],
+        type: row.event_type,
+        label: row.label,
+        icon: row.icon,
+        dimension: row.dimension,
+        magnitude: row.magnitude,
+      };
+    });
 
     // Get comparison data if requested
     let comparisonData = null;
@@ -178,7 +231,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
         .gt('total_weight', 0);
 
       if (allProfiles && allProfiles.length > 0) {
-        const averages: unknown = {};
+        const averages: Record<string, number> = {};
         IDEOLOGY_DIMENSIONS.forEach(dim => {
           const values = allProfiles.map(p => Number(p[dim]) || 0);
           averages[dim] = values.reduce((sum, val) => sum + val, 0) / values.length;
@@ -224,7 +277,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
 });
 
 // Helper functions
-function extractDimensions(data: unknown, type: 'quiz' | 'profile'): unknown {
+function extractDimensions(data: Record<string, unknown>, type: 'quiz' | 'profile'): IdeologyDimensionScores {
   if (type === 'quiz') {
     return {
       economic: Number(data.economic_score) || 0,
@@ -250,18 +303,18 @@ function extractDimensions(data: unknown, type: 'quiz' | 'profile'): unknown {
   }
 }
 
-function interpolateDimensions(baseline: unknown, current: unknown, progress: number): unknown {
-  const result: unknown = {};
+function interpolateDimensions(baseline: IdeologyDimensionScores, current: IdeologyDimensionScores, progress: number): IdeologyDimensionScores {
+  const result = {} as IdeologyDimensionScores;
   IDEOLOGY_DIMENSIONS.forEach(dim => {
     result[dim] = baseline[dim] + (current[dim] - baseline[dim]) * progress;
   });
   return result;
 }
 
-function groupByWeek(sessions: unknown[]): Map<string, Date> {
+function groupByWeek(sessions: Array<{ completed_at: string }>): Map<string, Date> {
   const weekMap = new Map<string, Date>();
   
-  sessions.forEach((session: unknown) => {
+  sessions.forEach((session) => {
     const sessionDate = new Date(session.completed_at);
     const weekKey = getWeekKey(sessionDate);
     
@@ -288,7 +341,7 @@ function daysSince(date: Date): number {
   return (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
 }
 
-function exportToCSV(timeline: unknown[]): string {
+function exportToCSV(timeline: TimelinePoint[]): string {
   if (timeline.length === 0) return '';
 
   // Header

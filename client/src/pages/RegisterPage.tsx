@@ -58,7 +58,7 @@ const RegisterPage = () => {
     try {
       await signInWithGoogle?.();
     } catch (err: unknown) {
-      setError(err.message || 'Failed to sign up with Google');
+      setError((err as Error).message || 'Failed to sign up with Google');
       setIsLoading(false);
     }
   };
@@ -87,7 +87,7 @@ const RegisterPage = () => {
         setError(result?.message || 'Failed to send magic link');
       }
     } catch (err: unknown) {
-      setError(err.message || 'Failed to send magic link');
+      setError((err as Error).message || 'Failed to send magic link');
     } finally {
       setIsLoading(false);
     }
@@ -116,7 +116,7 @@ const RegisterPage = () => {
         navigate('/login');
       }, 2000);
     } catch (err: unknown) {
-      setError(err.message || 'Registration failed. Please try again.');
+      setError((err as Error).message || 'Registration failed. Please try again.');
     } finally {
       setIsLoading(false);
     }

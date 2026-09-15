@@ -5,6 +5,27 @@
  * This helps work with the Electoral Commission data format
  */
 
+interface BoundaryProperties {
+  NAME_EN?: string;
+  CONSTITUENCY_EN?: string;
+  CONSTITUENCY?: string;
+  CODE?: string;
+  REGION_CONSTITUENCY_CODE?: string;
+  SEATS?: number;
+  TOTAL?: number;
+}
+
+interface BoundaryFeature {
+  type?: string;
+  properties?: BoundaryProperties | null;
+  geometry?: unknown;
+}
+
+interface BoundaryCollection {
+  type?: string;
+  features?: BoundaryFeature[];
+}
+
 /**
  * Default fallback boundaries with simple coordinates for display
  */
@@ -57,13 +78,14 @@ const DEFAULT_BOUNDARIES = {
  */
 /** Extracts usable boundary data from GeoJSON even when geometry is null. */
 export function processElectoralBoundaryData(geojsonData: unknown): unknown {
-  if (!geojsonData || !geojsonData.features || !Array.isArray(geojsonData.features)) {
+  const data = geojsonData as BoundaryCollection | null | undefined;
+  if (!data || !data.features || !Array.isArray(data.features)) {
     console.error('Invalid GeoJSON data provided');
     return DEFAULT_BOUNDARIES;
   }
   
   // Check if the input data has null geometry
-  const hasNullGeometry = geojsonData.features.some((feature: unknown) => !feature.geometry || feature.geometry === null);
+  const hasNullGeometry = data.features.some((feature) => !feature.geometry || feature.geometry === null);
   
   // If geometry is not null, return the original data
   if (!hasNullGeometry) {
@@ -79,7 +101,7 @@ export function processElectoralBoundaryData(geojsonData: unknown): unknown {
   };
 
   // Populate each constituency with usable information from both files
-  geojsonData.features.forEach((feature: unknown) => {
+  data.features.forEach((feature) => {
     if (feature?.properties) {
       // Get constituency details
       const name = feature.properties.NAME_EN || 
@@ -96,7 +118,7 @@ export function processElectoralBoundaryData(geojsonData: unknown): unknown {
       
       // Find a matching predefined boundary if possible
       const matchingConstituency = DEFAULT_BOUNDARIES.features.find(
-        (f: unknown) => f.properties.CONSTITUENCY === name || f.properties.NAME_EN === name
+        (f) => f.properties.CONSTITUENCY === name || f.properties.NAME_EN === name
       );
       
       // Create a feature for the constituency

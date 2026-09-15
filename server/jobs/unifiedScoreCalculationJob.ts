@@ -8,7 +8,8 @@
 import cron from 'node-cron';
 import { recalculateAllScores } from '../services/comprehensiveTDScoringService';
 import { db } from '../db';
-import { scoreCalculationLog } from '@shared/schema';
+import { scoreCalculationLog, unifiedTDScores } from '@shared/schema';
+import { eq, desc } from 'drizzle-orm';
 
 export class UnifiedScoreCalculationJob {
   private isRunning: boolean = false;
@@ -149,7 +150,7 @@ export class UnifiedScoreCalculationJob {
       }
       
       // Update constituency ranks (group by constituency)
-      const constituencies = [...new Set(allScores.map(td => td.constituency))];
+      const constituencies = Array.from(new Set(allScores.map(td => td.constituency)));
       
       for (const constituency of constituencies) {
         const constituencyTDs = allScores
@@ -165,7 +166,7 @@ export class UnifiedScoreCalculationJob {
       }
       
       // Update party ranks (group by party)
-      const parties = [...new Set(allScores.filter(td => td.party).map(td => td.party!))];
+      const parties = Array.from(new Set(allScores.filter(td => td.party).map(td => td.party!)));
       
       for (const party of parties) {
         const partyTDs = allScores

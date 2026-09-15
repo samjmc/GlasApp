@@ -9,11 +9,13 @@ import glasLogo from '@assets/Gemini_Generated_Image_v9oiqwv9oiqwv9oi.png';
 import { RegionSwitcher } from "./RegionSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { useDailySession } from "@/hooks/useDailySession";
+import type { DailySessionState } from "@/services/dailySessionService";
 
 const Header = () => {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const { isAuthenticated } = useAuth();
-  const { data: dailySession, isLoading: streakLoading } = useDailySession(isAuthenticated);
+  const { data: dailySessionRaw, isLoading: streakLoading } = useDailySession(isAuthenticated);
+  const dailySession = dailySessionRaw as DailySessionState | undefined;
 
   const streakCount = useMemo(() => {
     if (!dailySession) return null;

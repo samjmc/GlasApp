@@ -30,7 +30,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
     setError(null);
     
     try {
-      const result = await login(username, password);
+      const result = await login!(username, password);
       
       if (result.success) {
         if (onSuccess) {
@@ -39,7 +39,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
           navigate('/profile');
         }
       } else {
-        setError(result.message);
+        setError(result.message ?? null);
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');

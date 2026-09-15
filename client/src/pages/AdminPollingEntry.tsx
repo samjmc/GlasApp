@@ -185,7 +185,7 @@ export default function AdminPollingEntry() {
 
     } catch (error: unknown) {
       console.error('Error submitting poll:', error);
-      alert(`❌ Error: ${error.message}`);
+      alert(`❌ Error: ${(error as Error).message}`);
     } finally {
       setLoading(false);
     }

@@ -458,7 +458,7 @@ const EnhancedQuizPage: React.FC = () => {
               {answeredQuestionCount} / {totalQuestions}
             </Badge>
           </div>
-          <Progress value={overallProgress} className="h-1.5" indicatorClassName="bg-emerald-500" />
+          <Progress value={overallProgress} className="h-1.5" />
         </div>
 
         {/* Question Area */}

@@ -41,6 +41,11 @@ interface ConflictMapProps {
   height?: number;
 }
 
+interface WorldGeoFeature {
+  rsmKey: string;
+  properties: { name: string };
+}
+
 // World map topology JSON
 const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
@@ -80,7 +85,7 @@ const ConflictTrackingMap = ({
         });
 
         if (response?.success) {
-          setConflicts(response.data);
+          setConflicts(response.data ?? []);
         } else {
           console.error("Failed to fetch conflict data:", response?.message);
           // Use some sample data for development
@@ -326,14 +331,15 @@ const ConflictTrackingMap = ({
                         <Geographies geography={geoUrl}>
                           {({ geographies }) =>
                             geographies.map(geo => {
+                              const feature = geo as WorldGeoFeature;
                               // Check if this country has active conflicts
                               const hasConflict = filteredConflicts.some(
-                                c => c.countries.includes(geo.properties.name)
+                                c => c.countries.includes(feature.properties.name)
                               );
                               
                               return (
                                 <Geography
-                                  key={geo.rsmKey}
+                                  key={feature.rsmKey}
                                   geography={geo}
                                   fill={hasConflict ? "#FFCCCC" : "#F5F4F6"}
                                   stroke="#D6D6DA"

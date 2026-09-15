@@ -21,6 +21,8 @@ import { ErrorDisplay, NetworkError } from '@/components/ErrorDisplay';
 import { EmptyNewsFeedState, LoadingState } from '@/components/onboarding/EmptyStates';
 import { PageHeader } from "@/components/PageHeader";
 
+type NewsArticle = Parameters<typeof NewsArticleCard>[0]['article'];
+
 type TabType = 'feed' | 'tds' | 'my-rankings' | 'map';
 
 interface HomePageTabsProps {
@@ -163,7 +165,7 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
             <>
               <div className="space-y-6">
                 {articles.articles.map((article: unknown) => (
-                  <NewsArticleCard key={article.id} article={article} />
+                  <NewsArticleCard key={(article as NewsArticle).id} article={article as NewsArticle} />
                 ))}
               </div>
 

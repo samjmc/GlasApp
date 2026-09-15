@@ -159,7 +159,7 @@ export default function DailySessionPage() {
   const completeMutation = useCompleteDailySession();
   const { toast } = useToast();
 
-  const session = sessionQuery.data;
+  const session = sessionQuery.data as unknown as DailySessionState | undefined;
   const isLoading = sessionQuery.isLoading || sessionQuery.isFetching;
 
   const ensureAudioContext = useCallback((): AudioContext | null => {
@@ -516,12 +516,12 @@ export default function DailySessionPage() {
           } else {
             updatedSession = await voteMutation.mutateAsync({
               sessionItemId: currentItem.sessionItemId,
-              rating: pendingRating,
+              rating: pendingRating ?? undefined,
             });
           }
           break;
         } catch (mutationError: unknown) {
-          const message = mutationError?.message || "";
+          const message = (mutationError as { message?: string } | null)?.message || "";
           const shouldRetry =
             attempt === 0 && message.toLowerCase().includes("failed to fetch");
 
@@ -546,7 +546,7 @@ export default function DailySessionPage() {
       toast({
         variant: "destructive",
         title: "Vote not recorded",
-        description: error?.message || "Please try that stance again.",
+        description: (error as { message?: string } | null)?.message || "Please try that stance again.",
       });
       return;
     }
@@ -592,7 +592,8 @@ export default function DailySessionPage() {
           variant: "destructive",
           title: "Something broke",
           description:
-            error?.message || "We couldn’t finish the session. Please retry.",
+            (error as { message?: string } | null)?.message ||
+            "We couldn’t finish the session. Please retry.",
         });
         setIsCompletionPending(false);
       } finally {
@@ -702,7 +703,7 @@ export default function DailySessionPage() {
       toast({
         variant: "destructive",
         title: "Skip failed",
-        description: error?.message || "Could not skip the session.",
+        description: (error as { message?: string } | null)?.message || "Could not skip the session.",
       });
     } finally {
       setIsAdvancing(false);

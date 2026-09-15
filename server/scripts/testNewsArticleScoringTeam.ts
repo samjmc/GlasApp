@@ -5,7 +5,7 @@
  */
 
 import 'dotenv/config';
-import { NewsArticleScoringTeam } from '../services/multiAgentTDScoring.js';
+import { NewsArticleScoringTeam, type IdeologyAnalysis } from '../services/multiAgentTDScoring.js';
 
 // Test article: Martin and Harris under pressure after presidential election
 const testArticle = {
@@ -119,6 +119,24 @@ const politicians = [
   }
 ];
 
+type ScoringResult =
+  | { politician: string; party: string; error: true }
+  | {
+      politician: string;
+      party: string;
+      error?: false;
+      overallImpact: number;
+      transparencyScore: number | null;
+      effectivenessScore: number | null;
+      integrityScore: number | null;
+      consistencyScore: number | null;
+      confidence: number;
+      agreementLevel: string;
+      agentsDeployed: number;
+      processingTime: string;
+      ideologyAnalysis: IdeologyAnalysis | null;
+    };
+
 async function runTest() {
   console.log('\n' + '█'.repeat(70));
   console.log('█  NEWS ARTICLE SCORING TEAM - MULTI-POLITICIAN TEST');
@@ -127,7 +145,7 @@ async function runTest() {
   console.log(`📅 Source: ${testArticle.source}`);
   console.log(`👥 Politicians: ${politicians.map(p => p.name).join(', ')}`);
   
-  const results: unknown[] = [];
+  const results: ScoringResult[] = [];
   
   for (const politician of politicians) {
     console.log('\n' + '═'.repeat(70));
@@ -243,21 +261,23 @@ async function runTest() {
   }
   
   // Analysis
-  if (results.length === 2 && !results[0].error && !results[1].error) {
+  if (results.length === 2) {
     const [martin, harris] = results;
-    console.log('\n📈 OVERALL ANALYSIS:');
-    
-    const impactDiff = martin.overallImpact - harris.overallImpact;
-    if (impactDiff < 0) {
-      console.log(`   • Martin scored ${Math.abs(impactDiff)} points WORSE than Harris`);
-    } else if (impactDiff > 0) {
-      console.log(`   • Martin scored ${impactDiff} points BETTER than Harris`);
-    } else {
-      console.log(`   • Both scored the same impact`);
+    if (!martin.error && !harris.error) {
+      console.log('\n📈 OVERALL ANALYSIS:');
+
+      const impactDiff = martin.overallImpact - harris.overallImpact;
+      if (impactDiff < 0) {
+        console.log(`   • Martin scored ${Math.abs(impactDiff)} points WORSE than Harris`);
+      } else if (impactDiff > 0) {
+        console.log(`   • Martin scored ${impactDiff} points BETTER than Harris`);
+      } else {
+        console.log(`   • Both scored the same impact`);
+      }
+
+      console.log(`   • Article describes Martin's situation as more dire (FF at 17%, leadership challenge)`);
+      console.log(`   • Harris has criticism but less existential threat`);
     }
-    
-    console.log(`   • Article describes Martin's situation as more dire (FF at 17%, leadership challenge)`);
-    console.log(`   • Harris has criticism but less existential threat`);
   }
   
   console.log('\n' + '█'.repeat(70));

@@ -2,6 +2,13 @@ import { Router } from 'express';
 import { isAuthenticated, supabaseAdmin } from '../auth/supabaseAuth';
 import { supabaseDb } from '../db';
 
+type SessionUser = {
+  id?: string;
+  user?: { id?: string };
+  sub?: string;
+  claims?: { sub?: string };
+};
+
 const router = Router();
 
 const deletionPlan: Array<{ table: string; column: string; value?: string }> = [
@@ -36,8 +43,9 @@ router.delete('/', isAuthenticated, async (req, res) => {
       });
     }
 
+    const sessionUser = req.user as SessionUser | undefined;
     const userId: string | undefined =
-      req.user?.id || req.user?.user?.id || req.user?.sub || req.user?.claims?.sub;
+      sessionUser?.id || sessionUser?.user?.id || sessionUser?.sub || sessionUser?.claims?.sub;
 
     if (!userId) {
       return res.status(400).json({
@@ -65,7 +73,9 @@ router.delete('/', isAuthenticated, async (req, res) => {
     try {
       await supabaseAdmin.auth.admin.deleteUser(userId);
     } catch (error: unknown) {
-      authDeletionError = error?.message || 'Unknown Supabase Auth deletion error';
+      authDeletionError =
+        (error as { message?: string } | null | undefined)?.message ||
+        'Unknown Supabase Auth deletion error';
     }
 
     if (authDeletionError) {
@@ -94,7 +104,7 @@ router.delete('/', isAuthenticated, async (req, res) => {
     return res.status(500).json({
       success: false,
       message: 'Failed to delete account. Please try again or contact support.',
-      error: error?.message,
+      error: (error as { message?: string } | null | undefined)?.message,
     });
   }
 });

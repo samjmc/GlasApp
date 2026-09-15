@@ -51,7 +51,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess }) => {
     setError(null);
     
     try {
-      const result = await register({
+      const result = await register!({
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -67,7 +67,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess }) => {
           navigate('/profile');
         }
       } else {
-        setError(result.message);
+        setError(result.message ?? null);
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');

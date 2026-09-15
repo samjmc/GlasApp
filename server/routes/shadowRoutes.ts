@@ -29,7 +29,7 @@ router.post("/analyze", async (req, res) => {
 
 router.get("/history", async (req, res) => {
     try {
-        const history = await db.select().from(shadowCabinetAnalyses).orderBy(desc(shadowCabinetAnalyses.createdAt)).limit(50);
+        const history = await db!.select().from(shadowCabinetAnalyses).orderBy(desc(shadowCabinetAnalyses.createdAt)).limit(50);
         res.json(history);
     } catch (error) {
         console.error("Error fetching history:", error);
@@ -39,7 +39,7 @@ router.get("/history", async (req, res) => {
 
 router.get("/qa-history", async (req, res) => {
     try {
-        const history = await db.select().from(qaAudits).orderBy(desc(qaAudits.createdAt)).limit(20);
+        const history = await db!.select().from(qaAudits).orderBy(desc(qaAudits.createdAt)).limit(20);
         res.json(history);
     } catch (error) {
         console.error("Error fetching QA history:", error);

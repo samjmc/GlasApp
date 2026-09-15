@@ -8,6 +8,31 @@
 import { supabaseDb as supabase } from '../db';
 import { IDEOLOGY_DIMENSIONS, clampIdeologyValue } from '../constants/ideology';
 
+interface PartyBaseline {
+  economic: number;
+  social: number;
+  cultural: number;
+  globalism: number;
+  environmental: number;
+  authority: number;
+  welfare: number;
+  technocratic: number;
+}
+
+interface CorrectedProfile {
+  politician_name: string;
+  updated_at: string;
+  economic: number;
+  social: number;
+  cultural: number;
+  globalism: number;
+  environmental: number;
+  authority: number;
+  welfare: number;
+  technocratic: number;
+  [dimension: string]: string | number;
+}
+
 async function correctPartyBaselines() {
   if (!supabase) {
     console.error('❌ Supabase not initialized');
@@ -45,8 +70,8 @@ async function correctPartyBaselines() {
     return;
   }
 
-  const partyMap = new Map();
-  parties?.forEach((party: unknown) => {
+  const partyMap = new Map<string, PartyBaseline>();
+  parties?.forEach((party) => {
     if (party.economic_score !== null) {
       partyMap.set(party.name, {
         economic: Number(party.economic_score),
@@ -92,10 +117,10 @@ async function correctPartyBaselines() {
       console.log(`   Party baseline: economic=${partyBaseline.economic}, social=${partyBaseline.social}, welfare=${partyBaseline.welfare}`);
       
       // Add party baseline to current profile (preserving any adjustments that were made)
-      const correctedProfile: unknown = {
+      const correctedProfile = {
         politician_name: profile.politician_name,
         updated_at: new Date().toISOString(),
-      };
+      } as CorrectedProfile;
 
       for (const dimension of IDEOLOGY_DIMENSIONS) {
         const current = Number(profile[dimension]) || 0;

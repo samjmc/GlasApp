@@ -250,7 +250,7 @@ const HistoricalContext: React.FC<HistoricalContextProps> = ({ selectedIdeology 
       </CardHeader>
       
       <CardContent>
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as unknown)} className="w-full">
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "economic" | "social" | "issues")} className="w-full">
           <TabsList className="mb-4 grid grid-cols-3">
             <TabsTrigger value="economic">Economic Perspectives</TabsTrigger>
             <TabsTrigger value="social">Social Perspectives</TabsTrigger>

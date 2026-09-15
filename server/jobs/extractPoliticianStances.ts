@@ -39,6 +39,19 @@ const processAll = args.includes('--all');
 const POLITICIAN_LIMIT = processAll ? 999 : (limitArg !== -1 ? parseInt(args[limitArg + 1]) || 10 : 10);
 const SPECIFIC_POLITICIAN = politicianArg !== -1 ? args[politicianArg + 1] : null;
 
+interface PoliticianRow {
+  id: string;
+  politician_name: string;
+  party: string | null;
+}
+
+interface DebateChunk {
+  id: string;
+  chunk_content: string;
+  date: string;
+  topic?: string | null;
+}
+
 async function extractPoliticianStances() {
   if (!supabaseDb) {
     console.error('❌ Supabase client not available');
@@ -75,7 +88,7 @@ async function extractPoliticianStances() {
 
   console.log(`Processing ${politicians.length} politicians...`);
 
-  for (const [index, politician] of politicians.entries()) {
+  for (const [index, politician] of Array.from(politicians.entries())) {
     console.log(`\n[${index + 1}/${politicians.length}] Processing ${politician.politician_name}...`);
     await processPolitician(politician);
     // Add a small delay to avoid hitting rate limits too hard
@@ -87,7 +100,7 @@ async function extractPoliticianStances() {
   console.log('✅ Extraction complete.');
 }
 
-async function processPolitician(politician: unknown) {
+async function processPolitician(politician: PoliticianRow) {
   // 2. Fetch recent debate chunks using a stratified sampling approach
   // Instead of just the last 60, we want to cover the last 12 months to detect evolution
   
@@ -135,7 +148,7 @@ async function processPolitician(politician: unknown) {
   const oneMonth = 1000 * 60 * 60 * 24 * 30;
   
   // If history is short (< 3 months), just take all/most recent
-  let chunks: unknown[] = [];
+  let chunks: DebateChunk[] = [];
   
   if ((maxDate - minDate) < (3 * oneMonth)) {
     const { data } = await supabaseDb!

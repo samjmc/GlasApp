@@ -79,6 +79,10 @@ function inferGenderFromName(fullName: string): 'Male' | 'Female' | null {
   return null;
 }
 
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
   console.log('📡 Fetching current Dáil members...');
   
@@ -98,7 +102,7 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
         const member = result.member;
         
         // Find current Dáil membership
-        const currentMembership = member.memberships?.find((m: unknown) => 
+        const currentMembership = member.memberships?.find((m) => 
           m.membership.house?.houseCode === 'dail' &&
           m.membership.house?.houseNo === '34' &&
           m.membership.dateRange?.end === null
@@ -142,7 +146,7 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
     return tds;
     
   } catch (error: unknown) {
-    console.error('❌ Failed to fetch TDs:', error.message);
+    console.error('❌ Failed to fetch TDs:', errorMessage(error));
     return [];
   }
 }
@@ -207,7 +211,7 @@ async function updateDatabaseWithGender(tds: TDGenderInfo[]): Promise<void> {
       }
       
     } catch (error: unknown) {
-      console.error(`   ❌ Error processing ${td.name}:`, error.message);
+      console.error(`   ❌ Error processing ${td.name}:`, errorMessage(error));
     }
   }
   
@@ -262,8 +266,8 @@ async function main() {
     process.exit(0);
     
   } catch (error: unknown) {
-    console.error('❌ Script failed:', error.message);
-    console.error(error.stack);
+    console.error('❌ Script failed:', errorMessage(error));
+    console.error(error instanceof Error ? error.stack : undefined);
     process.exit(1);
   }
 }

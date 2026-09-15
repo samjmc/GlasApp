@@ -84,8 +84,8 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log(`   TDs mentioned: ${scraperStats.tdsMentioned}\n`);
       
     } catch (error: unknown) {
-      console.error('❌ Step 1 FAILED:', error.message);
-      stats.errors.push(`News scraping: ${error.message}`);
+      console.error('❌ Step 1 FAILED:', error instanceof Error ? error.message : String(error));
+      stats.errors.push(`News scraping: ${error instanceof Error ? error.message : String(error)}`);
       // Continue with other steps even if scraping fails
     }
 
@@ -98,8 +98,8 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     try {
       const { NewsToTDScoringService } = await import('../services/newsToTDScoringService.js');
       const scoringStats = await NewsToTDScoringService.processUnprocessedArticles({
-        batchSize: 100, // Process up to 100 articles at once
-        crossCheck: false // Set to true for high-accuracy mode (slower, uses GPT-4)
+        batchSize: 100 // Process up to 100 articles at once
+        // Set crossCheck: true for high-accuracy mode (slower, uses GPT-4)
       });
       
       stats.tdsScored = scoringStats.tdsUpdated;
@@ -114,8 +114,8 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log('');
       
     } catch (error: unknown) {
-      console.error('❌ Step 2 FAILED:', error.message);
-      stats.errors.push(`TD scoring: ${error.message}`);
+      console.error('❌ Step 2 FAILED:', error instanceof Error ? error.message : String(error));
+      stats.errors.push(`TD scoring: ${error instanceof Error ? error.message : String(error)}`);
     }
 
     // ========================================================================
@@ -142,8 +142,8 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
         console.log('');
         
       } catch (error: unknown) {
-        console.error('❌ Step 3 FAILED:', error.message);
-        stats.errors.push(`Score recalculation: ${error.message}`);
+        console.error('❌ Step 3 FAILED:', error instanceof Error ? error.message : String(error));
+        stats.errors.push(`Score recalculation: ${error instanceof Error ? error.message : String(error)}`);
       }
     }
 
@@ -164,7 +164,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log('');
       
     } catch (error: unknown) {
-      console.error('⚠️  Step 4 failed (non-critical):', error.message);
+      console.error('⚠️  Step 4 failed (non-critical):', error instanceof Error ? error.message : String(error));
       // Party scores are nice-to-have, not critical
     }
 
@@ -185,7 +185,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log('');
       
     } catch (error: unknown) {
-      console.error('⚠️  Step 5 failed (non-critical):', error.message);
+      console.error('⚠️  Step 5 failed (non-critical):', error instanceof Error ? error.message : String(error));
       // Personal rankings are nice-to-have
     }
 
@@ -202,7 +202,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       console.log(`✅ Step 6 Complete: All caches cleared\n`);
       
     } catch (error: unknown) {
-      console.error('⚠️  Step 6 failed (non-critical):', error.message);
+      console.error('⚠️  Step 6 failed (non-critical):', error instanceof Error ? error.message : String(error));
     }
 
     // ========================================================================
@@ -246,7 +246,7 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     console.error('❌ FATAL ERROR - JOB ABORTED');
     console.error('='.repeat(80));
     console.error(fatalError);
-    stats.errors.push(`Fatal: ${fatalError.message}`);
+    stats.errors.push(`Fatal: ${fatalError instanceof Error ? fatalError.message : String(fatalError)}`);
     stats.duration = Date.now() - startTime;
   }
 

@@ -17,12 +17,47 @@ const globalGeoJsonCache: {
 
 type MapLayer = 'party' | 'performance' | 'gender' | 'government';
 
+interface ConstituencyPartyData {
+  party: string;
+  count: number;
+  percentage?: number;
+}
+
+interface ConstituencyTD {
+  party?: string;
+  name?: string;
+}
+
+interface ConstituencyData {
+  name?: string;
+  tdCount?: number;
+  parties?: ConstituencyPartyData[];
+  tds?: ConstituencyTD[];
+  averageScore?: number;
+  genderBreakdown?: { male?: number; female?: number; femalePercentage?: number };
+}
+
+interface ConstituencyGeoJsonLayer {
+  feature?: {
+    properties?: {
+      CONSTITUENCY?: string;
+      CONSTITUENCY_EN?: string;
+      NAME_EN?: string;
+      name?: string;
+      SEATS?: number;
+    };
+  };
+  setStyle?: (style: L.PathOptions) => void;
+  getTooltip?: () => unknown;
+  setTooltipContent?: (content: string) => void;
+}
+
 interface OfficialElectoralMapProps {
   onConstituencySelect: (name: string) => void;
   width?: string;
   height?: string;
   activeLayer?: MapLayer;
-  constituenciesData?: unknown[];
+  constituenciesData?: ConstituencyData[];
 }
 
 const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
@@ -72,13 +107,13 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
       
       if (constituency.tds && constituency.tds.length > 0) {
         // Calculate from actual TDs list - most accurate
-        constituency.tds.forEach((td: unknown) => {
+        constituency.tds.forEach((td) => {
           const party = td.party || 'Unknown';
           partyCounts.set(party, (partyCounts.get(party) || 0) + 1);
         });
       } else if (constituency.parties && constituency.parties.length > 0) {
         // Fallback to parties array if TDs list not available
-        constituency.parties.forEach((p: unknown) => {
+        constituency.parties.forEach((p) => {
           partyCounts.set(p.party, p.count);
         });
       }
@@ -162,7 +197,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
     // Find constituency data from the API with flexible matching
     let constituency = constituenciesData.find(c => 
       c.name === constituencyName || 
-      normalizeName(c.name) === normalizeName(constituencyName)
+      normalizeName(c.name || '') === normalizeName(constituencyName)
     );
     
     // Temporary fix for Wicklow-Wexford until server restarts with normalization fix
@@ -229,12 +264,12 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         const partyCounts = new Map<string, number>();
         
         if (constituency.tds && constituency.tds.length > 0) {
-          constituency.tds.forEach((td: unknown) => {
+          constituency.tds.forEach((td) => {
             const party = td.party || 'Unknown';
             partyCounts.set(party, (partyCounts.get(party) || 0) + 1);
           });
         } else if (constituency.parties && constituency.parties.length > 0) {
-          constituency.parties.forEach((p: unknown) => {
+          constituency.parties.forEach((p) => {
             partyCounts.set(p.party, p.count);
           });
         }
@@ -314,7 +349,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         
         // Count TDs by government vs opposition
         if (constituency.tds && constituency.tds.length > 0) {
-          constituency.tds.forEach((td: unknown) => {
+          constituency.tds.forEach((td) => {
             const party = td.party || 'Unknown';
             const name = td.name || '';
             
@@ -327,7 +362,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             }
           });
         } else if (constituency.parties && constituency.parties.length > 0) {
-          constituency.parties.forEach((p: unknown) => {
+          constituency.parties.forEach((p) => {
             if (governmentParties.includes(p.party)) {
               governmentTDs += p.count;
             } else {
@@ -575,26 +610,30 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
   useEffect(() => {
     if (geoJsonLayer && constituenciesData.length > 0) {
       geoJsonLayer.eachLayer((layer: unknown) => {
-        if (layer.feature && layer.feature.properties) {
-          const constituencyName = layer.feature.properties.CONSTITUENCY || 
-                                  layer.feature.properties.CONSTITUENCY_EN || 
-                                  layer.feature.properties.NAME_EN || 
-                                  layer.feature.properties.name ||
+        const mapLayer = layer as ConstituencyGeoJsonLayer;
+        const props = mapLayer.feature?.properties;
+        if (props) {
+          const constituencyName = props.CONSTITUENCY || 
+                                  props.CONSTITUENCY_EN || 
+                                  props.NAME_EN || 
+                                  props.name ||
                                   "Unknown";
           
           const newColor = getConstituencyColor(constituencyName);
           
-          if (layer.setStyle) {
-            layer.setStyle({
+          if (mapLayer.setStyle) {
+            mapLayer.setStyle({
               fillColor: newColor,
               fillOpacity: 0.75
             });
           }
 
-          const seats = layer.feature.properties.SEATS || 3;
-          const nameIrish = layer.feature.properties.CONSTITUENCY || '';
-          if (layer.getTooltip()) {
-            layer.setTooltipContent(createTooltipContent(constituencyName, seats, nameIrish));
+          const seats = props.SEATS || 3;
+          const nameIrish = props.CONSTITUENCY || '';
+          if (mapLayer.getTooltip && mapLayer.getTooltip()) {
+            if (mapLayer.setTooltipContent) {
+              mapLayer.setTooltipContent(createTooltipContent(constituencyName, seats, nameIrish));
+            }
           }
         }
       });

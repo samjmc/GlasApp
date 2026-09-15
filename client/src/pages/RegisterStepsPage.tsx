@@ -52,13 +52,24 @@ type LocationPhoneFormValues = z.infer<typeof locationPhoneSchema>;
 type EmailVerificationFormValues = z.infer<typeof emailVerificationSchema>;
 type PhoneVerificationFormValues = z.infer<typeof phoneVerificationSchema>;
 
+interface RegistrationData {
+  username?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  county?: string;
+  phoneNumber?: string;
+  latitude?: number;
+  longitude?: number;
+}
+
 const RegisterStepsPageContent = () => {
   const [, navigate] = useLocation();
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [registrationData, setRegistrationData] = useState<unknown>({});
+  const [registrationData, setRegistrationData] = useState<RegistrationData>({});
   const [tempUserId, setTempUserId] = useState<string | null>(null);
   const { executeRecaptcha } = useGoogleReCaptcha();
 

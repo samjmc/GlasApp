@@ -50,6 +50,7 @@ router.post("/", async (req: Request, res: Response) => {
     };
 
     if (userId && (!userEconomicScore || !userSocialScore)) {
+      if (!db) throw new Error('Database not configured');
       const userQuizResult = await db.query.quizResults.findFirst({
         where: eq(quizResults.userId, userId),
         orderBy: [desc(quizResults.createdAt)]
@@ -57,9 +58,9 @@ router.post("/", async (req: Request, res: Response) => {
 
       if (userQuizResult) {
         userScores = {
-          economic: parseFloat(userQuizResult.economicScore),
-          social: parseFloat(userQuizResult.socialScore),
-          ideology: userQuizResult.ideology
+          economic: parseFloat(userQuizResult.economicScore as string),
+          social: parseFloat(userQuizResult.socialScore as string),
+          ideology: userQuizResult.ideology as string
         };
       }
     }
@@ -88,6 +89,7 @@ router.post("/", async (req: Request, res: Response) => {
     }
 
     // Fetch constituency data
+    if (!db) throw new Error('Database not configured');
     const constituencyData = await db.query.constituencies.findFirst({
       where: eq(constituencies.name, constituencyName)
     });

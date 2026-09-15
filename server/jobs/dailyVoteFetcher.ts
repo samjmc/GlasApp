@@ -151,7 +151,7 @@ async function fetchNewVotes(): Promise<{
         break;
       }
     } catch (error: unknown) {
-      console.error(`   ❌ Error fetching batch: ${error.message}`);
+      console.error(`   ❌ Error fetching batch: ${error instanceof Error ? error.message : String(error)}`);
       break;
     }
   }
@@ -260,7 +260,7 @@ async function fetchNewVotes(): Promise<{
           console.log(`   ✅ Batch ${Math.floor(i / batchSize) + 1}: ${voteRecordsInserted.toLocaleString()}/${votesToInsert.length.toLocaleString()}`);
         }
       } catch (error: unknown) {
-        console.error(`   ❌ Batch ${Math.floor(i / batchSize) + 1} failed: ${error.message}`);
+        console.error(`   ❌ Batch ${Math.floor(i / batchSize) + 1} failed: ${error instanceof Error ? error.message : String(error)}`);
         errors += batch.length;
       }
     }
@@ -301,21 +301,21 @@ function calculatePartyLoyalty(
 
   // Count ta votes from party
   if (division.tallies.taVotes?.members) {
-    partyTaCount = division.tallies.taVotes.members.filter((m: unknown) => 
+    partyTaCount = division.tallies.taVotes.members.filter((m) => 
       m.member?.party === tdParty
     ).length;
   }
 
   // Count nil votes from party
   if (division.tallies.nilVotes?.members) {
-    partyNilCount = division.tallies.nilVotes.members.filter((m: unknown) => 
+    partyNilCount = division.tallies.nilVotes.members.filter((m) => 
       m.member?.party === tdParty
     ).length;
   }
 
   // Count staon votes from party
   if (division.tallies.staonVotes?.members) {
-    partyStaonCount = division.tallies.staonVotes.members.filter((m: unknown) => 
+    partyStaonCount = division.tallies.staonVotes.members.filter((m) => 
       m.member?.party === tdParty
     ).length;
   }

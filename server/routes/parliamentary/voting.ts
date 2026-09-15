@@ -32,7 +32,7 @@ async function buildRealtimeUpdate(userId: string) {
 router.get('/article/:articleId', asyncHandler(async (req, res) => {
   const { articleId } = req.params;
 
-  const { data: stats, error } = await supabase
+  const { data: stats, error } = await supabase!
     .from('article_vote_stats')
     .select('*')
     .eq('article_id', parseInt(articleId));
@@ -53,7 +53,7 @@ router.get('/opportunity/:policyVoteId', asyncHandler(async (req, res) => {
     );
   }
 
-  const { data: opportunity, error: opportunityError } = await supabase
+  const { data: opportunity, error: opportunityError } = await supabase!
     .from('policy_vote_opportunities')
     .select('id, article_id, policy_domain, policy_topic, question_text, answer_options, confidence, rationale, source_hint')
     .eq('id', policyVoteId)
@@ -66,7 +66,7 @@ router.get('/opportunity/:policyVoteId', asyncHandler(async (req, res) => {
     );
   }
 
-  const { data: stats, error: statsError } = await supabase
+  const { data: stats, error: statsError } = await supabase!
     .from('policy_vote_option_stats')
     .select('*')
     .eq('policy_vote_id', policyVoteId);
@@ -81,7 +81,7 @@ router.get('/opportunity/:policyVoteId', asyncHandler(async (req, res) => {
  */
 router.get('/opportunity/:policyVoteId/user', isAuthenticated, asyncHandler(async (req, res) => {
   const policyVoteId = parseInt(req.params.policyVoteId, 10);
-  const userId = req.user?.id;
+  const userId = (req.user as { id?: string } | undefined)?.id;
 
   if (!userId) {
     return res.status(401).json(
@@ -95,7 +95,7 @@ router.get('/opportunity/:policyVoteId/user', isAuthenticated, asyncHandler(asyn
     );
   }
 
-  const { data: response, error } = await supabase
+  const { data: response, error } = await supabase!
     .from('user_policy_vote_responses')
     .select('*')
     .eq('policy_vote_id', policyVoteId)
@@ -111,7 +111,7 @@ router.get('/opportunity/:policyVoteId/user', isAuthenticated, asyncHandler(asyn
  * GET /api/parliamentary/voting/user/me/article/:articleId - Get current user's vote on a specific article
  */
 router.get('/user/me/article/:articleId', isAuthenticated, asyncHandler(async (req, res) => {
-  const userId = req.user?.id;
+  const userId = (req.user as { id?: string } | undefined)?.id;
   const { articleId } = req.params;
 
   if (!userId) {
@@ -120,7 +120,7 @@ router.get('/user/me/article/:articleId', isAuthenticated, asyncHandler(async (r
     );
   }
 
-  const { data: votes, error } = await supabase
+  const { data: votes, error } = await supabase!
     .from('user_policy_votes')
     .select('*')
     .eq('user_id', userId)
@@ -137,7 +137,7 @@ router.get('/user/me/article/:articleId', isAuthenticated, asyncHandler(async (r
 router.get('/user/:userId/article/:articleId', asyncHandler(async (req, res) => {
   const { userId, articleId } = req.params;
 
-  const { data: votes, error } = await supabase
+  const { data: votes, error } = await supabase!
     .from('user_policy_votes')
     .select('*')
     .eq('user_id', userId)
@@ -153,7 +153,7 @@ router.get('/user/:userId/article/:articleId', asyncHandler(async (req, res) => 
  */
 router.post('/opportunity/:policyVoteId/respond', isAuthenticated, asyncHandler(async (req, res) => {
   const policyVoteId = parseInt(req.params.policyVoteId, 10);
-  const userId = req.user?.id;
+  const userId = (req.user as { id?: string } | undefined)?.id;
   const { selectedOption } = req.body ?? {};
 
   if (!userId) {
@@ -174,7 +174,7 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, asyncHandler(
     );
   }
 
-  const { data: opportunity, error: opportunityError } = await supabase
+  const { data: opportunity, error: opportunityError } = await supabase!
     .from('policy_vote_opportunities')
     .select('id, article_id, answer_options')
     .eq('id', policyVoteId)
@@ -196,7 +196,7 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, asyncHandler(
 
   const nowIso = new Date().toISOString();
 
-  const { data: saved, error } = await supabase
+  const { data: saved, error } = await supabase!
     .from('user_policy_vote_responses')
     .upsert(
       {
@@ -227,7 +227,7 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, asyncHandler(
  * POST /api/parliamentary/voting - Submit or update a policy vote
  */
 router.post('/', isAuthenticated, asyncHandler(async (req, res) => {
-  const userId = req.user?.id;
+  const userId = (req.user as { id?: string } | undefined)?.id;
   const { articleId, politicianName, supportRating, comment } = req.body;
 
   if (!userId) {
@@ -248,7 +248,7 @@ router.post('/', isAuthenticated, asyncHandler(async (req, res) => {
     );
   }
 
-  const { data: existing, error: checkError } = await supabase
+  const { data: existing, error: checkError } = await supabase!
     .from('user_policy_votes')
     .select('id')
     .eq('user_id', userId)
@@ -259,7 +259,7 @@ router.post('/', isAuthenticated, asyncHandler(async (req, res) => {
   let result;
 
   if (existing) {
-    result = await supabase
+    result = await supabase!
       .from('user_policy_votes')
       .update({
         support_rating: supportRating,
@@ -270,7 +270,7 @@ router.post('/', isAuthenticated, asyncHandler(async (req, res) => {
       .select()
       .single();
   } else {
-    result = await supabase
+    result = await supabase!
       .from('user_policy_votes')
       .insert({
         user_id: userId,
@@ -349,7 +349,7 @@ router.delete('/:voteId', asyncHandler(async (req, res) => {
   const { voteId } = req.params;
   const { userId } = req.body;
 
-  const { data: vote, error: checkError } = await supabase
+  const { data: vote, error: checkError } = await supabase!
     .from('user_policy_votes')
     .select('user_id')
     .eq('id', parseInt(voteId))
@@ -363,7 +363,7 @@ router.delete('/:voteId', asyncHandler(async (req, res) => {
     );
   }
 
-  const { error: deleteError } = await supabase
+  const { error: deleteError } = await supabase!
     .from('user_policy_votes')
     .delete()
     .eq('id', parseInt(voteId));

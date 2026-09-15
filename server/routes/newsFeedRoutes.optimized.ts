@@ -7,9 +7,95 @@ import {
   REGION_NEWS_MOCK,
   type RegionCode,
 } from '@shared/region-config';
-import type { NewsArticleWithScores, PolicyVoteOpportunity } from '@shared/types';
 
 const router = Router();
+
+// ============================================================================
+// RAW SUPABASE ROW TYPES
+// ============================================================================
+// The supabase-js client is untyped, so the news_articles rows below carry the
+// raw snake_case columns. The shared `NewsArticleWithScores` type describes the
+// *transformed* article, so the raw rows are modeled locally instead.
+
+interface RawArticleTdScore {
+  politician_name?: string | null;
+  impact_score?: string | number | null;
+  transparency_score?: number | null;
+  integrity_score?: number | null;
+  effectiveness_score?: number | null;
+  consistency_score?: number | null;
+  transparency_reasoning?: string | null;
+  integrity_reasoning?: string | null;
+  effectiveness_reasoning?: string | null;
+  consistency_reasoning?: string | null;
+  ai_reasoning?: string | null;
+  is_opposition_advocacy?: boolean | null;
+  flip_flop_detected?: boolean | null;
+  flip_flop_explanation?: string | null;
+  suspicious_timing?: boolean | null;
+  needs_review?: boolean | null;
+  elo_change?: number | null;
+  story_type?: string | null;
+  sentiment?: string | null;
+}
+
+interface RawPolicyVoteOpportunity {
+  id: string;
+  question_text: string;
+  answer_options: string[] | string;
+  policy_domain: string;
+  policy_topic: string;
+  confidence: number;
+  rationale: string;
+  source_hint?: string;
+}
+
+interface RawPolicyStance {
+  politician_name?: string | null;
+  stance?: string | null;
+  stance_strength?: number | null;
+  evidence?: string | null;
+}
+
+interface RawNewsArticle {
+  id: string;
+  title: string;
+  content?: string | null;
+  published_date: string;
+  url?: string | null;
+  source?: string | null;
+  image_url?: string | null;
+  ai_summary?: string | null;
+  politician_name?: string | null;
+  constituency?: string | null;
+  party?: string | null;
+  impact_score?: string | number | null;
+  story_type?: string | null;
+  sentiment?: string | null;
+  ai_reasoning?: string | null;
+  transparency_score?: number | null;
+  integrity_score?: number | null;
+  effectiveness_score?: number | null;
+  consistency_score?: number | null;
+  transparency_reasoning?: string | null;
+  integrity_reasoning?: string | null;
+  effectiveness_reasoning?: string | null;
+  consistency_reasoning?: string | null;
+  is_ideological_policy?: boolean | null;
+  policy_direction?: string | null;
+  policy_facts?: string | object | null;
+  perspectives?: string | object | null;
+  is_opposition_advocacy?: boolean | null;
+  article_td_scores?: RawArticleTdScore[] | null;
+  td_policy_stances?: RawPolicyStance[] | null;
+  policy_vote_opportunities?: RawPolicyVoteOpportunity[] | null;
+  news_sources?: { logo_url: string } | null;
+  totalTDImpact?: number;
+  policyVotes?: RawPolicyVoteOpportunity[];
+  policyVoteOpportunity?: RawPolicyVoteOpportunity | null;
+  hasPolicyOpportunity?: boolean;
+  hasAnyImpact?: boolean;
+}
 
 // ============================================================================
 // PERFORMANCE OPTIMIZATION: Cursor-based pagination helpers
@@ -22,7 +108,7 @@ const router = Router();
  * RATIONALE: Cursor-based pagination is more efficient than offset-based
  * for large datasets because it avoids scanning all previous rows.
  */
-function encodeCursor(articleId: number, publishedDate: string): string {
+function encodeCursor(articleId: number | string, publishedDate: string): string {
   return Buffer.from(`${articleId}:${publishedDate}`).toString('base64');
 }
 
@@ -54,8 +140,8 @@ function decodeCursor(cursor: string): { id: number; date: string } | null {
  * AFTER: 1 optimized query with all relations included
  * This eliminates the N+1 pattern and reduces DB roundtrips from 3 to 1
  */
-function buildOptimizedArticleQuery() {
-  return supabaseDb.from('news_articles').select(`
+function buildOptimizedArticleQuery(client: NonNullable<typeof supabaseDb>) {
+  return client.from('news_articles').select(`
     *,
     article_td_scores(
       id,
@@ -135,7 +221,7 @@ router.get('/', async (req: Request, res: Response) => {
       try {
         console.log('🔍 Fetching from Supabase with cursor-based pagination...');
 
-        let articles: NewsArticleWithScores[] = [];
+        let articles: RawNewsArticle[] = [];
         let totalCount = 0;
         let nextCursor: string | null = null;
         let queryError: unknown = null;
@@ -149,7 +235,7 @@ router.get('/', async (req: Request, res: Response) => {
           console.log('🎯 Fetching highest-impact articles (N+1 FIXED: now 1 query)...');
 
           // OPTIMIZATION: Fetch with all relations in ONE query
-          let query = buildOptimizedArticleQuery()
+          let query = buildOptimizedArticleQuery(supabaseDb)
             .eq('visible', true)
             .order('published_date', { ascending: false })
             .limit(pageSize * 3); // Get 3x for filtering/sorting
@@ -165,7 +251,7 @@ router.get('/', async (req: Request, res: Response) => {
 
             // OPTIMIZATION PHASE 2: In-memory sorting using already-fetched relations
             // NO ADDITIONAL QUERIES - all data is already in memory from the single SELECT above
-            const articlesWithImpact = (rawArticles || []).map((article: NewsArticleWithScores) => {
+            const articlesWithImpact = (rawArticles || []).map((article: RawNewsArticle) => {
               const tdScores = Array.isArray(article.article_td_scores)
                 ? article.article_td_scores
                 : [];
@@ -191,8 +277,8 @@ router.get('/', async (req: Request, res: Response) => {
 
             // Sort by impact type, then recency
             articles = articlesWithImpact
-              .filter((a: NewsArticleWithScores) => a.hasAnyImpact)
-              .sort((a: NewsArticleWithScores, b: NewsArticleWithScores) => {
+              .filter((a: RawNewsArticle) => a.hasAnyImpact)
+              .sort((a: RawNewsArticle, b: RawNewsArticle) => {
                 const aHasTD = (a.totalTDImpact ?? 0) > 0;
                 const bHasTD = (b.totalTDImpact ?? 0) > 0;
 
@@ -207,10 +293,10 @@ router.get('/', async (req: Request, res: Response) => {
               .slice(0, pageSize);
 
             const tdScoredCount = articles.filter(
-              (a: NewsArticleWithScores) => (a.totalTDImpact ?? 0) > 0
+              (a: RawNewsArticle) => (a.totalTDImpact ?? 0) > 0
             ).length;
             const policyOnlyCount = articles.filter(
-              (a: NewsArticleWithScores) =>
+              (a: RawNewsArticle) =>
                 (a.totalTDImpact ?? 0) === 0 && a.hasPolicyOpportunity
             ).length;
             console.log(
@@ -229,7 +315,7 @@ router.get('/', async (req: Request, res: Response) => {
           const endOfDayISO = endOfDay.toISOString();
 
           // OPTIMIZATION: Single query with all relations
-          let query = buildOptimizedArticleQuery()
+          let query = buildOptimizedArticleQuery(supabaseDb)
             .eq('visible', true)
             .gte('published_date', startOfDay)
             .lte('published_date', endOfDayISO)
@@ -249,7 +335,7 @@ router.get('/', async (req: Request, res: Response) => {
             thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
             // OPTIMIZATION: Second query with same optimizations
-            let query2 = buildOptimizedArticleQuery()
+            let query2 = buildOptimizedArticleQuery(supabaseDb)
               .eq('visible', true)
               .gte('published_date', thirtyDaysAgo.toISOString())
               .order('published_date', { ascending: false })
@@ -262,7 +348,7 @@ router.get('/', async (req: Request, res: Response) => {
               queryError = err2;
               articles = [];
             } else {
-              articles = (recentArticles || []).map((a: NewsArticleWithScores) => ({
+              articles = (recentArticles || []).map((a: RawNewsArticle) => ({
                 ...a,
                 totalTDImpact: (a.article_td_scores || []).reduce(
                   (sum: number, td: any) => sum + Math.abs(Number(td.impact_score) || 0),
@@ -274,7 +360,7 @@ router.get('/', async (req: Request, res: Response) => {
               console.log(`✨ Found ${articles.length} articles from recent period`);
             }
           } else {
-            articles = (todayArticles || []).map((a: NewsArticleWithScores) => ({
+            articles = (todayArticles || []).map((a: RawNewsArticle) => ({
               ...a,
               totalTDImpact: (a.article_td_scores || []).reduce(
                 (sum: number, td: any) => sum + Math.abs(Number(td.impact_score) || 0),
@@ -288,7 +374,7 @@ router.get('/', async (req: Request, res: Response) => {
           // Regular date-based sorting with cursor pagination
           console.log('📅 Fetching recent articles with cursor pagination (N+1 FIXED: now 1 query)...');
 
-          let query = buildOptimizedArticleQuery()
+          let query = buildOptimizedArticleQuery(supabaseDb)
             .eq('visible', true)
             .order('published_date', { ascending: false });
 
@@ -333,7 +419,7 @@ router.get('/', async (req: Request, res: Response) => {
         // NO ADDITIONAL QUERIES - All data is already in memory
         // ============================================================================
 
-        const transformedArticles = (articles || []).map((article: NewsArticleWithScores) => {
+        const transformedArticles = (articles || []).map((article: RawNewsArticle) => {
           const publishDate = article.published_date
             ? new Date(article.published_date).toISOString()
             : new Date().toISOString();
@@ -348,7 +434,7 @@ router.get('/', async (req: Request, res: Response) => {
             ? article.policy_vote_opportunities[0]
             : article.policy_vote_opportunities || (article as any).policyVoteOpportunity;
 
-          const policyVote: PolicyVoteOpportunity | null = policyVoteRaw
+          const policyVote = policyVoteRaw
             ? {
                 id: policyVoteRaw.id,
                 question: policyVoteRaw.question_text,

@@ -112,7 +112,7 @@ export class PromiseVerificationJob {
           await sleep(3000);  // 3 seconds between verifications
           
         } catch (error: unknown) {
-          console.error(`   ❌ Error verifying promise ${promise.id}: ${error.message}`);
+          console.error(`   ❌ Error verifying promise ${promise.id}: ${error instanceof Error ? error.message : String(error)}`);
         }
       }
       

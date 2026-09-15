@@ -20,6 +20,30 @@ import {
   List
 } from 'lucide-react';
 
+interface ConstituencyParty {
+  party: string;
+  count: number;
+}
+
+interface ConstituencyTD {
+  name: string;
+  party?: string;
+  score?: number;
+}
+
+interface ConstituencyListItem {
+  name: string;
+  tdCount: number;
+  averageScore: number;
+  parties: ConstituencyParty[];
+}
+
+interface ConstituencyDetail {
+  tdCount: number;
+  parties?: ConstituencyParty[];
+  tds?: ConstituencyTD[];
+}
+
 export default function ConstituenciesPage() {
   const [selectedConstituency, setSelectedConstituency] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
@@ -96,7 +120,7 @@ export default function ConstituenciesPage() {
           <div className="text-center">
             <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-purple-900">
-              {data ? Math.round(data.reduce((sum: number, c: unknown) => sum + c.averageScore, 0) / data.length) : 0}
+              {data ? Math.round(data.reduce((sum: number, c: ConstituencyListItem) => sum + c.averageScore, 0) / data.length) : 0}
             </div>
             <div className="text-sm text-purple-700">Avg Score</div>
           </div>
@@ -106,7 +130,7 @@ export default function ConstituenciesPage() {
           <div className="text-center">
             <MapPin className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-yellow-900">
-              {data ? (data.reduce((sum: number, c: unknown) => sum + c.tdCount, 0) / data.length).toFixed(1) : 0}
+              {data ? (data.reduce((sum: number, c: ConstituencyListItem) => sum + c.tdCount, 0) / data.length).toFixed(1) : 0}
             </div>
             <div className="text-sm text-yellow-700">Avg TDs/Area</div>
           </div>
@@ -157,7 +181,7 @@ export default function ConstituenciesPage() {
                   <div className="mb-6">
                     <h3 className="font-semibold mb-3">Party Representation</h3>
                     <div className="space-y-2">
-                      {selectedData.parties?.map((p: unknown, idx: number) => (
+                      {selectedData.parties?.map((p: ConstituencyParty, idx: number) => (
                         <div key={idx} className="flex items-center justify-between">
                           <span className="text-sm">{p.party}</span>
                           <Badge variant="secondary">
@@ -172,7 +196,7 @@ export default function ConstituenciesPage() {
                   <div className="mb-6">
                     <h3 className="font-semibold mb-3">TDs</h3>
                     <div className="space-y-2">
-                      {selectedData.tds?.map((td: unknown, idx: number) => (
+                      {selectedData.tds?.map((td: ConstituencyTD, idx: number) => (
                         <Link key={idx} href={`/td/${encodeURIComponent(td.name)}`}>
                           <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors cursor-pointer group">
                             <div className="flex items-center justify-between">
@@ -216,7 +240,7 @@ export default function ConstituenciesPage() {
         {/* List View */}
         <TabsContent value="list">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {(data || []).map((constituency: unknown) => (
+            {(data || []).map((constituency: ConstituencyListItem) => (
               <Link key={constituency.name} href={`/constituency/${encodeURIComponent(constituency.name)}`}>
                 <Card className="p-6 hover:shadow-lg transition-all cursor-pointer border-2 hover:border-blue-300 group">
                   <div className="flex items-start justify-between mb-4">
@@ -234,7 +258,7 @@ export default function ConstituenciesPage() {
 
                   {/* Party Breakdown */}
                   <div className="space-y-2 mb-4">
-                    {constituency.parties.slice(0, 3).map((p: unknown, idx: number) => (
+                    {constituency.parties.slice(0, 3).map((p: ConstituencyParty, idx: number) => (
                       <div key={idx} className="flex items-center justify-between text-sm">
                         <span className="text-gray-700 dark:text-gray-300">{p.party}</span>
                         <Badge variant="secondary" className="text-xs">

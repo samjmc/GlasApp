@@ -28,6 +28,18 @@ import {
 // Re-defining TDQuickInfoModal import properly below
 import { TDQuickInfoModal } from '@/components/TDQuickInfoModal';
 
+type ResearchedTD = {
+  id: number;
+  politician_name: string;
+  party?: string | null;
+  constituency?: string | null;
+  rank?: number;
+  overall_score?: number;
+  overall_elo?: number;
+  image_url?: string | null;
+  has_historical_research?: boolean;
+};
+
 
 export default function ResearchedTDsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -52,7 +64,7 @@ export default function ResearchedTDsPage() {
     const p = new Set<string>();
     const c = new Set<string>();
     
-    data.tds.forEach((td: unknown) => {
+    data.tds.forEach((td: ResearchedTD) => {
       if (td.party) p.add(td.party);
       if (td.constituency) c.add(td.constituency);
     });
@@ -64,7 +76,7 @@ export default function ResearchedTDsPage() {
   }, [data?.tds]);
 
   // Helper function to convert ELO to percentage
-  const getScore = (td: unknown) => {
+  const getScore = (td: ResearchedTD) => {
     if (td.overall_score) return td.overall_score;
     // Fallback: convert ELO to percentage (ELO - 1000) / 10
     return Math.round(((td.overall_elo || 1500) - 1000) / 10);
@@ -87,7 +99,7 @@ export default function ResearchedTDsPage() {
 
   // Filter and sort TDs
   const filteredTDs = (data?.tds || [])
-    .filter((td: unknown) => {
+    .filter((td: ResearchedTD) => {
       const matchesSearch = searchTerm === '' || 
         td.politician_name.toLowerCase().includes(searchTerm.toLowerCase());
       
@@ -97,7 +109,7 @@ export default function ResearchedTDsPage() {
 
       return matchesSearch && matchesParty && matchesConstituency;
     })
-    .sort((a: unknown, b: unknown) => {
+    .sort((a: ResearchedTD, b: ResearchedTD) => {
         // Sort by rank/score
         return (a.rank || 999) - (b.rank || 999);
     });
@@ -179,7 +191,7 @@ export default function ResearchedTDsPage() {
           </div>
         ) : filteredTDs.length > 0 ? (
           <div className="divide-y divide-gray-100 dark:divide-gray-800">
-            {filteredTDs.map((td: unknown, index: number) => {
+            {filteredTDs.map((td: ResearchedTD, index: number) => {
               const score = getScore(td);
               return (
                 <Link 

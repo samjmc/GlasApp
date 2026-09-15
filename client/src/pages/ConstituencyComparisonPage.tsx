@@ -7,8 +7,21 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 
+interface ConstituencyOption {
+  name: string;
+  seats: number;
+  parties: {
+    name: string;
+    votes: number;
+    seats: number;
+    color: string;
+    percent: number;
+  }[];
+  turnout: number;
+}
+
 const ConstituencyComparisonPage: React.FC = () => {
-  const { data: response, isLoading, error } = useQuery({
+  const { data: response, isLoading, error } = useQuery<{ data: ConstituencyOption[] }>({
     queryKey: ['/api/constituencies'],
     staleTime: 1000 * 60 * 5, // 5 minutes
   });

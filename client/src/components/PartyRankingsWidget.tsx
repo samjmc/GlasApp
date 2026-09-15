@@ -11,8 +11,18 @@ import { Card } from '@/components/ui/card';
 import { Info } from 'lucide-react';
 import { PartyQuickInfoModal } from './PartyQuickInfoModal';
 
+interface PartyRow {
+  name: string;
+  logo?: string | null;
+  color?: string | null;
+  abbreviation?: string | null;
+  government_status?: string | null;
+  active_members?: number | null;
+  overall_score?: number | null;
+}
+
 interface PartyCompactRowProps {
-  party: unknown;
+  party: PartyRow;
   variant: 'emerald' | 'blue' | 'purple';
   onInfoClick: (partyName: string, e: React.MouseEvent) => void;
 }
@@ -59,7 +69,7 @@ function PartyCompactRow({ party, variant, onInfoClick }: PartyCompactRowProps) 
         ) : (
           <div 
             className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 border-2 border-gray-200 dark:border-gray-700 mr-3"
-            style={{ backgroundColor: party.color }}
+            style={{ backgroundColor: party.color ?? undefined }}
           >
             {party.abbreviation || party.name.substring(0, 2)}
           </div>
@@ -139,9 +149,9 @@ export function PartyRankingsWidget() {
   }
 
   const parties = data?.parties || [];
-  const governmentParties = parties.filter((p: unknown) => p.government_status === 'coalition');
-  const oppositionParties = parties.filter((p: unknown) => p.government_status !== 'coalition');
-  const topParties = [...parties].sort((a: unknown, b: unknown) => (b.overall_score || 0) - (a.overall_score || 0)).slice(0, 5);
+  const governmentParties = parties.filter((p: PartyRow) => p.government_status === 'coalition');
+  const oppositionParties = parties.filter((p: PartyRow) => p.government_status !== 'coalition');
+  const topParties = [...parties].sort((a: PartyRow, b: PartyRow) => (b.overall_score || 0) - (a.overall_score || 0)).slice(0, 5);
 
   return (
     <Card className="p-6 border bg-white dark:bg-gray-900 shadow-sm">
@@ -153,7 +163,7 @@ export function PartyRankingsWidget() {
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Top Performers</h3>
           </div>
           <div className="space-y-0.5">
-            {topParties.map((party: unknown) => (
+            {topParties.map((party: PartyRow) => (
               <PartyCompactRow 
                 key={party.name} 
                 party={party} 
@@ -170,7 +180,7 @@ export function PartyRankingsWidget() {
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Government</h3>
           </div>
           <div className="space-y-0.5">
-            {governmentParties.map((party: unknown) => (
+            {governmentParties.map((party: PartyRow) => (
               <PartyCompactRow 
                 key={party.name} 
                 party={party} 
@@ -187,7 +197,7 @@ export function PartyRankingsWidget() {
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Opposition</h3>
           </div>
           <div className="space-y-0.5">
-            {oppositionParties.map((party: unknown) => (
+            {oppositionParties.map((party: PartyRow) => (
               <PartyCompactRow 
                 key={party.name} 
                 party={party} 

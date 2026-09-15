@@ -3,6 +3,7 @@
  * Comprehensive TD profile with modern design, polling data, and rich analytics
  */
 
+import type { ReactNode } from 'react';
 import { useParams, Link } from 'wouter';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Card } from '@/components/ui/card';
@@ -39,6 +40,69 @@ import {
   Tooltip,
   CartesianGrid,
 } from 'recharts';
+
+type PillarColor = 'emerald' | 'blue' | 'cyan' | 'indigo' | 'purple' | 'orange' | 'green';
+
+interface TDScoreComponent {
+  label?: string;
+  score?: number | null;
+  weight?: number;
+  available?: boolean;
+  description?: string;
+  breakdown?: Array<{ label: string; score: number; weight_percent?: number; detail?: string }>;
+}
+
+interface DebateAlert {
+  id: string;
+  summary?: string;
+  status: string;
+  type?: string;
+  topic?: string;
+  previousPosition?: string | null;
+  currentPosition?: string | null;
+  confidence?: number | null;
+}
+
+interface NewsArticle {
+  url?: string;
+  title?: string;
+  ai_summary?: string | null;
+  source?: string;
+  published_date?: string;
+  sentiment?: string;
+}
+
+interface VoteRecord {
+  subject?: string;
+  description?: string | null;
+  date?: string;
+  vote?: string;
+}
+
+interface DebateActivityData {
+  period?: { start: string; end: string } | null;
+  metrics?: {
+    speeches?: number;
+    wordsSpoken?: number;
+    uniqueTopics?: number;
+    metadata?: { totalMinutes?: number } | null;
+    influenceScore?: number;
+    effectivenessScore?: number;
+    sentimentScore?: number;
+  } | null;
+  issueFocus?: Array<{ topic: string; percentage: number; minutes_spoken: number }>;
+  chamberActivity?: Array<{ chamber: string; minutes: number }>;
+}
+
+interface DebateHistoryEntry {
+  periodStart: string;
+  periodEnd: string;
+  speeches: number;
+  wordsSpoken: number;
+  effectivenessScore: number;
+  influenceScore: number;
+  sentimentScore: number;
+}
 
 const IDEOLOGY_DIMENSION_LABELS: Record<string, string> = {
   economic: 'Economic Left - Right',

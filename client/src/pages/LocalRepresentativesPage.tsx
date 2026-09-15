@@ -5,7 +5,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Badge, type BadgeProps } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
   TrendingUp, 
@@ -18,6 +18,37 @@ import {
   Clock
 } from 'lucide-react';
 import { useState } from 'react';
+
+type RecentStory = {
+  id: number;
+  title: string;
+  summary: string;
+  source: string;
+  published_date: string;
+  story_type: string;
+  sentiment: string;
+  impact_score: number;
+  url: string;
+};
+
+type TDScore = {
+  name: string;
+  constituency: string;
+  party: string;
+  image_url: string | null;
+  overall_elo: number;
+  transparency_elo: number;
+  effectiveness_elo: number;
+  integrity_elo: number;
+  consistency_elo: number;
+  constituency_service_elo: number;
+  weekly_elo_change: number;
+  total_stories: number;
+  positive_stories: number;
+  negative_stories: number;
+  neutral_stories?: number;
+  recent_stories?: RecentStory[];
+};
 
 export default function LocalRepresentativesPage() {
   const [selectedConstituency, setSelectedConstituency] = useState('Dublin Central');
@@ -174,7 +205,7 @@ export default function LocalRepresentativesPage() {
   );
 }
 
-function TDScoreCard({ td }: { td: unknown }) {
+function TDScoreCard({ td }: { td: TDScore }) {
   return (
     <Card className="p-6 hover:shadow-lg transition-shadow">
       <div className="flex flex-col md:flex-row gap-6">
@@ -243,7 +274,7 @@ function TDScoreCard({ td }: { td: unknown }) {
               📰 Recent News ({td.recent_stories?.length || 0})
             </h3>
             
-            {td.recent_stories?.map((story: unknown) => (
+            {td.recent_stories?.map((story: RecentStory) => (
               <div key={story.id} className="mb-3 pb-3 last:mb-0 last:pb-0 border-b last:border-0">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">

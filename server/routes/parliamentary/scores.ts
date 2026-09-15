@@ -94,7 +94,7 @@ router.get('/widget', asyncHandler(async (req, res) => {
     CACHE_KEYS.TD_WIDGET,
     async () => {
       // Get all ACTIVE TDs from td_scores table, sorted by ELO
-      const { data: allTDs, error } = await supabaseDb
+      const { data: allTDs, error } = await supabaseDb!
         .from('td_scores')
         .select('*')
         .eq('is_active', true)
@@ -139,7 +139,7 @@ router.get('/widget', asyncHandler(async (req, res) => {
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-      const { data: recentChanges } = await supabaseDb
+      const { data: recentChanges } = await supabaseDb!
         .from('td_score_history')
         .select('politician_name, elo_change, article_title, created_at')
         .gte('created_at', thirtyDaysAgo.toISOString())
@@ -148,7 +148,7 @@ router.get('/widget', asyncHandler(async (req, res) => {
       // Aggregate changes by politician
       const changesByPolitician = new Map<string, { totalChange: number; articles: string[] }>();
 
-      (recentChanges || []).forEach((change: unknown) => {
+      (recentChanges || []).forEach((change) => {
         const existing = changesByPolitician.get(change.politician_name) || { totalChange: 0, articles: [] };
         existing.totalChange += change.elo_change || 0;
         if (change.article_title && !existing.articles.includes(change.article_title)) {
@@ -197,7 +197,7 @@ router.get('/widget', asyncHandler(async (req, res) => {
       // Get news count from database
       let newsCount = totalArticles;
       try {
-        const { count } = await supabaseDb
+        const { count } = await supabaseDb!
           .from('news_articles')
           .select('*', { count: 'exact', head: true });
         if (count) newsCount = count;
@@ -247,7 +247,7 @@ router.get('/all', asyncHandler(async (req, res) => {
     positive_stories: td.positive_stories || 0,
     negative_stories: td.negative_stories || 0,
     national_rank: td.national_rank,
-    weekly_change: td.weekly_elo_change || 0
+    weekly_change: (td as { weekly_elo_change?: number }).weekly_elo_change || 0
   }));
 
   res.json(formatSuccess(scores, { count: allTDs.length }));
@@ -268,7 +268,7 @@ router.get('/td-scores', asyncHandler(async (req, res) => {
   const tdData = await getCachedOrFetch(
     `${CACHE_KEYS.TD_SCORES}_${limit}`,
     async () => {
-      const { data: tds, error } = await supabaseDb
+      const { data: tds, error } = await supabaseDb!
         .from('td_scores')
         .select('id, politician_name, party, constituency, image_url')
         .eq('is_active', true)
@@ -314,7 +314,7 @@ router.get('/td/:name/elo', asyncHandler(async (req, res) => {
 router.post('/trigger-scrape', asyncHandler(async (req, res) => {
   console.log('🔄 Manual news scrape triggered...');
 
-  const job = new DailyNewsScraperJob();
+  const job = new (DailyNewsScraperJob as unknown as new () => { execute: () => Promise<unknown> })();
 
   // Run in background
   job.execute().catch(error => {
@@ -865,7 +865,7 @@ router.post('/recalculate', requireAdminAccess, asyncHandler(async (req, res) =>
 router.get('/performance/:name', asyncHandler(async (req, res) => {
   const { name } = req.params;
 
-  const performanceScore = await db
+  const performanceScore = await db!
     .select()
     .from(performanceScores)
     .where(eq(performanceScores.politicianName, name))
@@ -884,7 +884,7 @@ router.get('/performance/:name', asyncHandler(async (req, res) => {
  * GET /api/parliamentary/scores/top-performers - Get top performing TDs
  */
 router.get('/top-performers', asyncHandler(async (req, res) => {
-  const topPerformers = await db
+  const topPerformers = await db!
     .select()
     .from(performanceScores)
     .orderBy(desc(performanceScores.overallScore))
@@ -897,7 +897,7 @@ router.get('/top-performers', asyncHandler(async (req, res) => {
  * GET /api/parliamentary/scores/lowest-performers - Get lowest performing TDs
  */
 router.get('/lowest-performers', asyncHandler(async (req, res) => {
-  const lowestPerformers = await db
+  const lowestPerformers = await db!
     .select()
     .from(performanceScores)
     .orderBy(asc(performanceScores.overallScore))
@@ -917,7 +917,7 @@ router.get('/lowest-performers', asyncHandler(async (req, res) => {
 router.get('/trust/:name', asyncHandler(async (req, res) => {
   const { name } = req.params;
 
-  const trustData = await db.execute(
+  const trustData = await db!.execute(
     sql`SELECT * FROM politician_trust_scores WHERE politician_name = ${name}`
   );
 
@@ -936,7 +936,7 @@ router.get('/trust/:name', asyncHandler(async (req, res) => {
 router.get('/trust/constituency/:constituency', asyncHandler(async (req, res) => {
   const { constituency } = req.params;
 
-  const trustData = await db.execute(
+  const trustData = await db!.execute(
     sql`SELECT * FROM politician_trust_scores WHERE constituency = ${constituency} ORDER BY overall_trust_score DESC`
   );
 
@@ -949,7 +949,7 @@ router.get('/trust/constituency/:constituency', asyncHandler(async (req, res) =>
 router.get('/top-trustworthy', asyncHandler(async (req, res) => {
   const limit = parseInt(req.query.limit as string) || 10;
 
-  const trustData = await db.execute(
+  const trustData = await db!.execute(
     sql`SELECT * FROM politician_trust_scores ORDER BY overall_trust_score DESC LIMIT ${limit}`
   );
 
@@ -962,7 +962,7 @@ router.get('/top-trustworthy', asyncHandler(async (req, res) => {
 router.get('/least-trustworthy', asyncHandler(async (req, res) => {
   const limit = parseInt(req.query.limit as string) || 10;
 
-  const trustData = await db.execute(
+  const trustData = await db!.execute(
     sql`SELECT * FROM politician_trust_scores ORDER BY overall_trust_score ASC LIMIT ${limit}`
   );
 
@@ -1119,7 +1119,7 @@ router.get('/leaderboard/all', asyncHandler(async (req, res) => {
 
   if (error) throw error;
 
-  const leaderboard = (tds || []).map((td: unknown, index: number) => ({
+  const leaderboard = (tds || []).map((td, index: number) => ({
     id: td.id,
     rank: index + 1,
     politician_name: td.politician_name,
@@ -1191,13 +1191,13 @@ router.get('/parties', asyncHandler(async (req, res) => {
     .select('party')
     .eq('is_active', true);
 
-  (activeTDs || []).forEach((td: unknown) => {
+  (activeTDs || []).forEach((td) => {
     const partyName = td.party || 'Unknown';
     partyCounts[partyName] = (partyCounts[partyName] || 0) + 1;
   });
 
   // Format the response
-  const rankings = (partyScores || []).map((score: unknown, idx: number) => ({
+  const rankings = (partyScores || []).map((score, idx: number) => ({
     rank: idx + 1,
     name: score.parties?.name || 'Unknown',
     abbreviation: score.parties?.abbreviation,

@@ -302,7 +302,7 @@ router.get('/party/:name', async (req, res) => {
     const totalMembers = members.length;
     const maleCount = members.filter(m => m.gender === 'male').length;
     const femaleCount = members.filter(m => m.gender === 'female').length;
-    const femalePercentage = totalMembers > 0 ? ((femaleCount / totalMembers) * 100).toFixed(1) : 0;
+    const femalePercentage = totalMembers > 0 ? ((femaleCount / totalMembers) * 100).toFixed(1) : '0';
 
     // Count offices
     const ministers = members.filter(m => 
@@ -320,7 +320,7 @@ router.get('/party/:name', async (req, res) => {
     const allCommittees = new Set<string>();
     members.forEach(m => {
       if (m.committee_memberships && Array.isArray(m.committee_memberships)) {
-        m.committee_memberships.forEach((c: unknown) => {
+        m.committee_memberships.forEach((c: any) => {
           allCommittees.add(c.name || c);
         });
       }

@@ -57,6 +57,42 @@ export interface ParliamentaryAttendance {
   attendancePercentage: number;
 }
 
+interface OireachtasCommittee {
+  mainStatus?: string;
+  committeeName?: Array<{ nameEn?: string; nameGa?: string }>;
+  role?: { title?: string };
+  committeeType?: string[];
+  memberDateRange?: { start?: string; end?: string | null };
+}
+
+interface OireachtasMembership {
+  house?: { houseCode?: string; houseNo?: string };
+  dateRange?: { start?: string; end?: string | null };
+  parties?: Array<{ party?: { showAs?: string } }>;
+  represents?: Array<{ represent?: { showAs?: string } }>;
+  committees?: OireachtasCommittee[];
+}
+
+interface OireachtasTally {
+  members?: Array<{ member?: { uri?: string; party?: string } }>;
+}
+
+interface OireachtasDivision {
+  divisionId?: string;
+  uri?: string;
+  date?: string;
+  subject?: string;
+  showAs?: string;
+  outcome?: string;
+  debate?: { uri?: string };
+  bill?: { uri?: string };
+  tallies?: {
+    taVotes?: OireachtasTally;
+    nilVotes?: OireachtasTally;
+    staonVotes?: OireachtasTally;
+  };
+}
+
 // ============================================
 // Members API
 // ============================================
@@ -64,15 +100,16 @@ export interface ParliamentaryAttendance {
 /**
  * Helper: Extract current Dáil membership from memberships array
  */
-function getCurrentDailMembership(member: unknown): unknown {
-  if (!member.memberships) return null;
+function getCurrentDailMembership(member: unknown): OireachtasMembership | null {
+  const m = member as { memberships?: Array<{ membership: OireachtasMembership }> };
+  if (!m.memberships) return null;
   
   // Find 34th Dáil membership with no end date (currently active)
-  return member.memberships.find((m: unknown) => 
-    m.membership.house?.houseCode === 'dail' &&
-    m.membership.house?.houseNo === '34' &&  // Specifically 34th Dáil
-    m.membership.dateRange?.end === null
-  )?.membership;
+  return m.memberships.find((ms) => 
+    ms.membership.house?.houseCode === 'dail' &&
+    ms.membership.house?.houseNo === '34' &&  // Specifically 34th Dáil
+    ms.membership.dateRange?.end === null
+  )?.membership ?? null;
 }
 
 /**
@@ -130,7 +167,7 @@ export async function getCurrentDailMembers(): Promise<OireachtasMember[]> {
     return members;
     
   } catch (error: unknown) {
-    console.error('❌ Failed to fetch Dáil members:', error.message);
+    console.error('❌ Failed to fetch Dáil members:', (error as Error).message);
     return [];
   }
 }
@@ -182,7 +219,7 @@ export async function getMemberQuestions(
   try {
     const today = new Date().toISOString().split('T')[0];
     
-    const params: unknown = {
+    const params: Record<string, string | number> = {
       member: memberCode,
       date_start: dateFrom,
       date_end: dateTo || today,  // Use today's date as end
@@ -211,7 +248,7 @@ export async function getMemberQuestions(
     return questions;
     
   } catch (error: unknown) {
-    console.error(`Failed to fetch questions for ${memberCode}:`, error.message);
+    console.error(`Failed to fetch questions for ${memberCode}:`, (error as Error).message);
     return [];
   }
 }
@@ -253,8 +290,8 @@ export async function getMemberQuestionCount(
       const results = response.data.results || [];
       
       // Manual count from actual results
-      const oral = results.filter((r: unknown) => r.question.questionType === 'oral').length;
-      const written = results.filter((r: unknown) => r.question.questionType === 'written').length;
+      const oral = results.filter((r) => r.question.questionType === 'oral').length;
+      const written = results.filter((r) => r.question.questionType === 'written').length;
       
       totalQuestions += results.length;
       totalOral += oral;
@@ -273,7 +310,7 @@ export async function getMemberQuestionCount(
     };
     
   } catch (error: unknown) {
-    console.error(`Failed to count questions for ${memberCode}:`, error.message);
+    console.error(`Failed to count questions for ${memberCode}:`, (error as Error).message);
     return { total: 0, oral: 0, written: 0 };
   }
 }
@@ -311,7 +348,7 @@ export async function countQuestionsForAllMembers(
     return questionCounts;
     
   } catch (error: unknown) {
-    console.error('Failed to count questions:', error.message);
+    console.error('Failed to count questions:', (error as Error).message);
     return {};
   }
 }
@@ -331,7 +368,7 @@ export async function getMemberAttendance(
   dateTo?: string
 ): Promise<{ debates: number; estimatedAttendance: number }> {
   try {
-    const params: unknown = {
+    const params: Record<string, string | number> = {
       member: memberCode,  // FIXED: was member_id
       limit: 500
     };
@@ -354,7 +391,7 @@ export async function getMemberAttendance(
     };
     
   } catch (error: unknown) {
-    console.error(`Failed to fetch attendance for ${memberCode}:`, error.message);
+    console.error(`Failed to fetch attendance for ${memberCode}:`, (error as Error).message);
     return { debates: 0, estimatedAttendance: 0 };
   }
 }
@@ -372,7 +409,7 @@ export async function getMemberVotes(
   dateTo?: string
 ): Promise<{ totalVotes: number; votingRecord: unknown[] }> {
   try {
-    const params: unknown = {
+    const params: Record<string, string | number> = {
       member: memberCode,  // FIXED: was member_id
       limit: 500
     };
@@ -390,7 +427,7 @@ export async function getMemberVotes(
     };
     
   } catch (error: unknown) {
-    console.error(`Failed to fetch votes for ${memberCode}:`, error.message);
+    console.error(`Failed to fetch votes for ${memberCode}:`, (error as Error).message);
     return { totalVotes: 0, votingRecord: [] };
   }
 }
@@ -453,7 +490,7 @@ export async function getCompleteMemberActivity(member: OireachtasMember): Promi
     };
     
   } catch (error: unknown) {
-    console.error(`Failed to fetch activity for ${member.fullName}:`, error.message);
+    console.error(`Failed to fetch activity for ${member.fullName}:`, (error as Error).message);
     return {
       questionsAsked: 0,
       oralQuestions: 0,
@@ -498,7 +535,7 @@ export async function fetchAllMemberActivity(): Promise<Map<string, any>> {
       await sleep(500); // 500ms between requests
       
     } catch (error: unknown) {
-      console.error(`❌ Error processing ${member.fullName}:`, error.message);
+      console.error(`❌ Error processing ${member.fullName}:`, (error as Error).message);
     }
   }
   
@@ -530,16 +567,16 @@ export function extractCommitteeMemberships(member: unknown): Array<{
   if (!dailMembership?.committees) return [];
   
   return dailMembership.committees
-    .filter((c: unknown) => c.mainStatus === 'Live')  // Only active committees
-    .map((c: unknown) => ({
+    .filter((c) => c.mainStatus === 'Live')  // Only active committees
+    .map((c) => ({
       name: c.committeeName?.[0]?.nameEn || 'Unknown Committee',
       nameIrish: c.committeeName?.[0]?.nameGa || '',
       role: c.role?.title || 'Member',
       type: c.committeeType?.[0] || 'Unknown',
       status: c.mainStatus,
       dateRange: {
-        start: c.memberDateRange?.start,
-        end: c.memberDateRange?.end
+        start: c.memberDateRange?.start as string,
+        end: c.memberDateRange?.end as string | null
       }
     }));
 }
@@ -569,14 +606,14 @@ export async function getMemberBills(
       }
     });
     
-    const bills: unknown[] = [];
+    const bills: Array<{ billNo: string; title: string; type: string; status: string; year: string }> = [];
     
     if (response.data?.results) {
       for (const result of response.data.results) {
         const bill = result.bill;
         
         // Check if member is a sponsor
-        const isAuthor = bill.sponsors?.some((s: unknown) => 
+        const isAuthor = bill.sponsors?.some((s) => 
           s.sponsor?.by?.showAs?.toLowerCase() === memberName.toLowerCase()
         );
         
@@ -595,7 +632,7 @@ export async function getMemberBills(
     return bills;
     
   } catch (error: unknown) {
-    console.error(`Failed to fetch bills for ${memberName}:`, error.message);
+    console.error(`Failed to fetch bills for ${memberName}:`, (error as Error).message);
     return [];
   }
 }
@@ -646,7 +683,7 @@ export async function calculateVotingAttendance(
     };
     
   } catch (error: unknown) {
-    console.error(`Failed to calculate voting attendance:`, error.message);
+    console.error(`Failed to calculate voting attendance:`, (error as Error).message);
     return { votingAttendance: 0, votesCast: 0, totalVotes: 0 };
   }
 }
@@ -752,7 +789,7 @@ export async function extractMemberQuestions(
     return allQuestions;
 
   } catch (error: unknown) {
-    console.error(`❌ Failed to extract questions for ${memberUri}:`, error.message);
+    console.error(`❌ Failed to extract questions for ${memberUri}:`, (error as Error).message);
     return [];
   }
 }
@@ -810,7 +847,7 @@ export async function classifyQuestionTopic(
     return 'Other';
 
   } catch (error: unknown) {
-    console.error('Topic classification error:', error.message);
+    console.error('Topic classification error:', (error as Error).message);
     return 'Other';
   }
 }
@@ -946,7 +983,7 @@ export async function extractMemberVotes(
     return allVotes;
 
   } catch (error: unknown) {
-    console.error(`❌ Failed to extract votes for ${memberUri}:`, error.message);
+    console.error(`❌ Failed to extract votes for ${memberUri}:`, (error as Error).message);
     return [];
   }
 }
@@ -954,10 +991,10 @@ export async function extractMemberVotes(
 /**
  * Find how a specific member voted in a division
  */
-function findMemberVote(division: unknown, memberUri: string): 'ta' | 'nil' | 'staon' | null {
+function findMemberVote(division: OireachtasDivision, memberUri: string): 'ta' | 'nil' | 'staon' | null {
   // Check ta votes (yes)
   if (division.tallies?.taVotes?.members) {
-    const taVoter = division.tallies.taVotes.members.find((m: unknown) => 
+    const taVoter = division.tallies.taVotes.members.find((m) => 
       m.member?.uri === memberUri
     );
     if (taVoter) return 'ta';
@@ -965,7 +1002,7 @@ function findMemberVote(division: unknown, memberUri: string): 'ta' | 'nil' | 's
 
   // Check nil votes (no)
   if (division.tallies?.nilVotes?.members) {
-    const nilVoter = division.tallies.nilVotes.members.find((m: unknown) => 
+    const nilVoter = division.tallies.nilVotes.members.find((m) => 
       m.member?.uri === memberUri
     );
     if (nilVoter) return 'nil';
@@ -973,7 +1010,7 @@ function findMemberVote(division: unknown, memberUri: string): 'ta' | 'nil' | 's
 
   // Check staon votes (abstain)
   if (division.tallies?.staonVotes?.members) {
-    const staonVoter = division.tallies.staonVotes.members.find((m: unknown) => 
+    const staonVoter = division.tallies.staonVotes.members.find((m) => 
       m.member?.uri === memberUri
     );
     if (staonVoter) return 'staon';
@@ -986,7 +1023,7 @@ function findMemberVote(division: unknown, memberUri: string): 'ta' | 'nil' | 's
  * Determine if TD voted with their party's majority
  */
 function determinePartyLoyalty(
-  division: unknown, 
+  division: OireachtasDivision, 
   tdParty: string, 
   tdVote: 'ta' | 'nil' | 'staon'
 ): boolean {
@@ -997,21 +1034,21 @@ function determinePartyLoyalty(
 
   // Count ta votes from party
   if (division.tallies?.taVotes?.members) {
-    partyTaCount = division.tallies.taVotes.members.filter((m: unknown) => 
+    partyTaCount = division.tallies.taVotes.members.filter((m) => 
       m.member?.party === tdParty
     ).length;
   }
 
   // Count nil votes from party
   if (division.tallies?.nilVotes?.members) {
-    partyNilCount = division.tallies.nilVotes.members.filter((m: unknown) => 
+    partyNilCount = division.tallies.nilVotes.members.filter((m) => 
       m.member?.party === tdParty
     ).length;
   }
 
   // Count staon votes from party
   if (division.tallies?.staonVotes?.members) {
-    partyStaonCount = division.tallies.staonVotes.members.filter((m: unknown) => 
+    partyStaonCount = division.tallies.staonVotes.members.filter((m) => 
       m.member?.party === tdParty
     ).length;
   }

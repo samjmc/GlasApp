@@ -94,7 +94,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       // Group sessions by week
       const weekMap = new Map<string, Date>();
       
-      sessions.forEach((session: unknown) => {
+      sessions.forEach((session: { completed_at: string }) => {
         const sessionDate = new Date(session.completed_at);
         const weekKey = getWeekKey(sessionDate);
         
@@ -133,7 +133,7 @@ router.get('/:userId', async (req: Request, res: Response) => {
       weeks.forEach(([weekKey, lastDate], index) => {
         const progress = (index + 1) / weeks.length;
         
-        const interpolated: unknown = {};
+        const interpolated: Record<string, number> = {};
         Object.keys(baseline).forEach(dim => {
           interpolated[dim] = baseline[dim as keyof typeof baseline] + 
             (current[dim as keyof typeof current] - baseline[dim as keyof typeof baseline]) * progress;

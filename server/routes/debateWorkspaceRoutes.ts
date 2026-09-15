@@ -11,22 +11,65 @@ type SavedViewFilters = {
   chamber?: string | null;
 };
 
+type RawSavedViewFilters = {
+  period?: unknown;
+  party?: unknown;
+  topic?: unknown;
+  chamber?: unknown;
+};
+
+type TdFocusEntry = {
+  td_id?: number;
+  topic?: string;
+  minutes_spoken?: number;
+  percentage?: number;
+};
+
+type ExportMetricRow = {
+  td_id: number;
+  period_start?: string;
+  period_end?: string;
+  speeches?: number;
+  words_spoken?: number;
+  unique_topics?: number;
+  td_scores?: {
+    politician_name?: string;
+    party?: string;
+    constituency?: string;
+  };
+  td_issue_focus?: TdFocusEntry[];
+  metadata?: {
+    chamberActivity?: Array<{
+      chamber?: string;
+      minutes?: number;
+    }>;
+  };
+};
+
 function normalizeFilters(raw: unknown): SavedViewFilters {
   const filters: SavedViewFilters = {};
 
   if (raw && typeof raw === 'object') {
-    if (raw.period === 'latest') {
+    const rawFilters = raw as RawSavedViewFilters;
+
+    if (rawFilters.period === 'latest') {
       filters.period = 'latest';
-    } else if (raw.period && typeof raw.period === 'object' && raw.period.start && raw.period.end) {
+    } else if (
+      rawFilters.period &&
+      typeof rawFilters.period === 'object' &&
+      (rawFilters.period as { start?: unknown }).start &&
+      (rawFilters.period as { end?: unknown }).end
+    ) {
+      const period = rawFilters.period as { start: unknown; end: unknown };
       filters.period = {
-        start: String(raw.period.start),
-        end: String(raw.period.end)
+        start: String(period.start),
+        end: String(period.end)
       };
     }
 
-    if (raw.party) filters.party = String(raw.party);
-    if (raw.topic) filters.topic = String(raw.topic);
-    if (raw.chamber) filters.chamber = String(raw.chamber);
+    if (rawFilters.party) filters.party = String(rawFilters.party);
+    if (rawFilters.topic) filters.topic = String(rawFilters.topic);
+    if (rawFilters.chamber) filters.chamber = String(rawFilters.chamber);
   }
 
   if (!filters.period) {
@@ -43,7 +86,7 @@ function csvEscape(value: string | number | null | undefined): string {
   return `"${escaped}"`;
 }
 
-function buildCsv(rows: unknown[]): string {
+function buildCsv(rows: ExportMetricRow[]): string {
   const headers = [
     'TD',
     'Party',
@@ -59,13 +102,17 @@ function buildCsv(rows: unknown[]): string {
   const lines = [headers.map(csvEscape).join(',')];
 
   for (const row of rows) {
-    const td = row.td_scores || {};
+    const td = (row.td_scores || {}) as {
+      politician_name?: string;
+      party?: string;
+      constituency?: string;
+    };
     const focus = Array.isArray(row.td_issue_focus) ? row.td_issue_focus : [];
     const topTopics = focus
       .slice()
-      .sort((a, b) => (b.minutes_spoken || 0) - (a.minutes_spoken || 0))
+      .sort((a: TdFocusEntry, b: TdFocusEntry) => (b.minutes_spoken || 0) - (a.minutes_spoken || 0))
       .slice(0, 3)
-      .map((entry) => `${entry.topic} (${((entry.percentage || 0) * 100).toFixed(1)}%)`)
+      .map((entry: TdFocusEntry) => `${entry.topic} (${((entry.percentage || 0) * 100).toFixed(1)}%)`)
       .join('; ');
 
     lines.push(
@@ -151,9 +198,9 @@ async function fetchMetricsForExport(filters: SavedViewFilters) {
     throw new Error(error.message);
   }
 
-  let rows = data || [];
+  let rows = (data || []) as ExportMetricRow[];
 
-  const tdIds = rows.map((row: unknown) => row.td_id);
+  const tdIds = rows.map((row) => row.td_id);
   let focusMap = new Map<number, any[]>();
 
   if (tdIds.length > 0) {
@@ -175,22 +222,22 @@ async function fetchMetricsForExport(filters: SavedViewFilters) {
     }
   }
 
-  rows = rows.map((row: unknown) => ({
+  rows = rows.map((row) => ({
     ...row,
     td_issue_focus: focusMap.get(row.td_id) || []
   }));
 
   if (filters.topic) {
-    rows = rows.filter((row: unknown) =>
+    rows = rows.filter((row) =>
       Array.isArray(row.td_issue_focus) &&
-      row.td_issue_focus.some((entry: unknown) => (entry.topic || '').toLowerCase() === filters.topic!.toLowerCase())
+      row.td_issue_focus.some((entry) => (entry.topic || '').toLowerCase() === filters.topic!.toLowerCase())
     );
   }
 
   if (filters.chamber) {
-    rows = rows.filter((row: unknown) => {
+    rows = rows.filter((row) => {
       const activities = Array.isArray(row.metadata?.chamberActivity) ? row.metadata.chamberActivity : [];
-      return activities.some((activity: unknown) => {
+      return activities.some((activity) => {
         const chamber = (activity.chamber || '').toLowerCase();
         return chamber === filters.chamber!.toLowerCase() && (activity.minutes || 0) > 0;
       });
@@ -216,7 +263,7 @@ router.get('/views', async (_req: Request, res: Response) => {
     res.json({ success: true, views: data || [] });
   } catch (error: unknown) {
     console.error('Failed to fetch debate saved views:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load saved views' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to load saved views' });
   }
 });
 
@@ -250,7 +297,7 @@ router.post('/views', async (req: Request, res: Response) => {
     res.status(201).json({ success: true, view: data });
   } catch (error: unknown) {
     console.error('Failed to create debate saved view:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to create saved view' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to create saved view' });
   }
 });
 
@@ -284,7 +331,7 @@ router.patch('/views/:id', async (req: Request, res: Response) => {
     res.json({ success: true, view: data });
   } catch (error: unknown) {
     console.error('Failed to update debate saved view:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to update saved view' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to update saved view' });
   }
 });
 
@@ -306,7 +353,7 @@ router.delete('/views/:id', async (req: Request, res: Response) => {
     res.json({ success: true });
   } catch (error: unknown) {
     console.error('Failed to delete debate saved view:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to delete saved view' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to delete saved view' });
   }
 });
 
@@ -329,7 +376,7 @@ router.get('/exports', async (req: Request, res: Response) => {
     res.json({ success: true, exports: data || [] });
   } catch (error: unknown) {
     console.error('Failed to fetch debate exports:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to load exports' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to load exports' });
   }
 });
 
@@ -419,7 +466,7 @@ router.post('/exports', async (req: Request, res: Response) => {
     });
   } catch (error: unknown) {
     console.error('Failed to generate debate export:', error);
-    res.status(500).json({ success: false, message: error?.message || 'Failed to generate export' });
+    res.status(500).json({ success: false, message: (error as { message?: string })?.message || 'Failed to generate export' });
   }
 });
 

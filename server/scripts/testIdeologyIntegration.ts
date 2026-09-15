@@ -12,8 +12,31 @@ import { AINewsAnalysisService } from '../services/aiNewsAnalysisService';
 import { TDIdeologyProfileService } from '../services/tdIdeologyProfileService';
 import { PersonalRankingsService } from '../services/personalRankingsService';
 
+interface IdeologyProfile {
+  politician_name: string;
+  total_weight: number;
+  economic: number;
+  social: number;
+  cultural: number;
+  authority: number;
+  environmental: number;
+  welfare: number;
+  globalism: number;
+  technocratic: number;
+  [dimension: string]: number | string;
+}
+
 async function testIdeologyIntegration() {
   console.log('🧪 Starting TD Ideology Integration Test\n');
+
+  if (!supabaseDb) {
+    console.error('❌ Database not initialized');
+    return;
+  }
+
+  const profileService = TDIdeologyProfileService as unknown as {
+    ensureTDProfile: (politicianName: string) => Promise<IdeologyProfile | null>;
+  };
 
   // Test article about welfare increase
   const testArticle = {
@@ -36,7 +59,7 @@ async function testIdeologyIntegration() {
 
   // Step 1: Get TD's current ideology profile
   console.log('🔍 Step 1: Checking TD ideology profile before analysis...');
-  const profileBefore = await TDIdeologyProfileService.ensureTDProfile(testPolitician.name);
+  const profileBefore = await profileService.ensureTDProfile(testPolitician.name);
   
   if (!profileBefore) {
     console.error('❌ Failed to get TD profile');
@@ -94,7 +117,7 @@ async function testIdeologyIntegration() {
 
   // Step 4: Get TD's updated ideology profile
   console.log('🔍 Step 4: Checking TD ideology profile after analysis...');
-  const profileAfter = await TDIdeologyProfileService.ensureTDProfile(testPolitician.name);
+  const profileAfter = await profileService.ensureTDProfile(testPolitician.name);
   
   if (!profileAfter) {
     console.error('❌ Failed to get updated TD profile');

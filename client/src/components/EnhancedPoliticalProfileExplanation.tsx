@@ -59,7 +59,7 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
   
   // Add event listener for regenerate-analysis event
   useEffect(() => {
-    const handleRegenerate = (event: unknown) => {
+    const handleRegenerate = (event: CustomEvent<{ weights?: Record<string, number> | undefined }>) => {
       console.log("EnhancedPoliticalProfileExplanation: Received regenerate event", event.detail);
       
       // Directly call the API with fresh values from the event
@@ -76,18 +76,18 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
       })
       .then(response => {
         // Manually update the data state
-        setData(response.data);
-        setIsLoading(false);
+        setManualData(response.data);
+        setManualIsLoading(false);
       })
       .catch(err => {
         console.error("Error in direct API call for enhanced profile:", err);
-        setIsError(true);
-        setError(err);
-        setIsLoading(false);
+        setManualIsError(true);
+        setManualError(err);
+        setManualIsLoading(false);
       });
       
       // Set loading state
-      setIsLoading(true);
+      setManualIsLoading(true);
     };
     
     // Add the event listener
@@ -158,7 +158,7 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
   };
 
   // Show loading state
-  if (isLoading) {
+  if (queryIsLoading) {
     return (
       <Card className="w-full">
         <CardHeader>
@@ -178,7 +178,7 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
   }
 
   // Show error state
-  if (isError) {
+  if (queryIsError) {
     return (
       <Card className="w-full">
         <CardHeader>
@@ -189,7 +189,7 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
         </CardHeader>
         <CardContent>
           <p className="text-red-500 mb-4">
-            {error instanceof Error ? error.message : "Something went wrong. Please try again."}
+            {queryError instanceof Error ? queryError.message : "Something went wrong. Please try again."}
           </p>
           <Button onClick={() => window.location.reload()}>
             Try Again
@@ -200,30 +200,30 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
   }
 
   // Show results if we have data
-  if (data) {
+  if (queryData) {
     // Log the data to see what we're actually receiving
-    console.log("Complete analysis data:", data);
+    console.log("Complete analysis data:", queryData);
     
     // Extract the data fields we need, handling different possible data formats
-    const ideology = data.ideology || (typeof data.description === 'string' ? data.description?.split('.')[0] : "Progressive Left");
-    const profileAnalysis = data.profile_analysis || (typeof data.description === 'string' ? data.description : "Your political orientation leans towards progressive values with an emphasis on social equality.");
+    const ideology = queryData.ideology || (typeof queryData.description === 'string' ? queryData.description?.split('.')[0] : "Progressive Left");
+    const profileAnalysis = queryData.profile_analysis || (typeof queryData.description === 'string' ? queryData.description : "Your political orientation leans towards progressive values with an emphasis on social equality.");
     
     // Handle different formats for beliefs data
     let beliefs: string[] = [];
-    if (Array.isArray(data.beliefs)) {
-      beliefs = data.beliefs;
-    } else if (data.beliefs && typeof data.beliefs === 'object') {
-      beliefs = Object.values(data.beliefs).map(v => typeof v === 'string' ? v : JSON.stringify(v));
-    } else if (typeof data.description === 'string') {
+    if (Array.isArray(queryData.beliefs)) {
+      beliefs = queryData.beliefs;
+    } else if (queryData.beliefs && typeof queryData.beliefs === 'object') {
+      beliefs = Object.values(queryData.beliefs).map(v => typeof v === 'string' ? v : JSON.stringify(v));
+    } else if (typeof queryData.description === 'string') {
       // Extract key points from description if no beliefs provided
-      const sentences = data.description.split('.');
+      const sentences = queryData.description.split('.');
       beliefs = sentences.slice(1, 4).map(s => s.trim()).filter(s => s.length > 20);
     }
     
-    const tensions = Array.isArray(data.tensions) ? data.tensions : [];
-    const issuePositions = data.issue_positions || {};
-    const irishParties = Array.isArray(data.irish_parties) ? data.irish_parties : [];
-    const internationalMatches = Array.isArray(data.international_matches) ? data.international_matches : [];
+    const tensions = Array.isArray(queryData.tensions) ? queryData.tensions : [];
+    const issuePositions = queryData.issue_positions || {};
+    const irishParties = Array.isArray(queryData.irish_parties) ? queryData.irish_parties : [];
+    const internationalMatches = Array.isArray(queryData.international_matches) ? queryData.international_matches : [];
     
     return (
       <Card className="w-full" data-enhanced-profile-container="true">
@@ -253,10 +253,10 @@ const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExpl
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                       {Object.entries(weights).map(([dimension, weight]) => (
                         <div key={dimension} className="text-sm flex items-center gap-1">
-                          <span className={`font-medium ${parseFloat(weight as unknown) > 1.5 ? 'text-green-600 dark:text-green-400' : parseFloat(weight as unknown) < 0.5 ? 'text-gray-400' : ''}`}>
+                          <span className={`font-medium ${parseFloat(weight as unknown as string) > 1.5 ? 'text-green-600 dark:text-green-400' : parseFloat(weight as unknown as string) < 0.5 ? 'text-gray-400' : ''}`}>
                             {dimension.charAt(0).toUpperCase() + dimension.slice(1)}:
                           </span>
-                          <span className={`${parseFloat(weight as unknown) > 1.5 ? 'text-green-600 dark:text-green-400 font-bold' : parseFloat(weight as unknown) < 0.5 ? 'text-gray-400' : ''}`}>
+                          <span className={`${parseFloat(weight as unknown as string) > 1.5 ? 'text-green-600 dark:text-green-400 font-bold' : parseFloat(weight as unknown as string) < 0.5 ? 'text-gray-400' : ''}`}>
                             {weight}×
                           </span>
                         </div>

@@ -46,7 +46,7 @@ const LoginPage = () => {
     try {
       await signInWithGoogle?.();
     } catch (err: unknown) {
-      setError(err.message || 'Failed to sign in with Google');
+      setError((err as Error).message || 'Failed to sign in with Google');
       setIsLoading(false);
     }
   };
@@ -71,7 +71,7 @@ const LoginPage = () => {
         setError(result?.message || 'Failed to send magic link');
       }
     } catch (err: unknown) {
-      setError(err.message || 'Failed to send magic link');
+      setError((err as Error).message || 'Failed to send magic link');
     } finally {
       setIsLoading(false);
     }
@@ -89,7 +89,7 @@ const LoginPage = () => {
       });
       navigate('/');
     } catch (err: unknown) {
-      setError(err.message || 'Login failed. Please check your credentials.');
+      setError((err as Error).message || 'Login failed. Please check your credentials.');
     } finally {
       setIsLoading(false);
     }

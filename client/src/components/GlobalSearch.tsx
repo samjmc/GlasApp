@@ -23,9 +23,30 @@ import { useRegion } from "@/hooks/useRegion";
 
 type ResultType = "td" | "party" | "constituency";
 
+interface TdSearchResult {
+  id?: number | string;
+  name: string;
+  party?: string;
+  constituency?: string;
+  overall_elo?: number;
+  score?: number;
+}
+
+interface PartySearchResult {
+  name: string;
+  size?: number;
+}
+
+interface ConstituencySearchResult {
+  name: string;
+  county?: string;
+  tdCount?: number;
+  seats?: number;
+}
+
 interface FlattenedResult {
   type: ResultType;
-  entity: unknown;
+  entity: TdSearchResult | PartySearchResult | ConstituencySearchResult;
 }
 
 /** Global search input with dropdown results for TDs, parties, and constituencies. */
@@ -110,7 +131,7 @@ export function GlobalSearch() {
         .sort((a, b) => b.score - a.score)
         .map(({ item }) => item);
 
-    const tds = sortByScore(searchData.tds, (td: unknown) => {
+    const tds = sortByScore(searchData.tds, (td: TdSearchResult) => {
       return (
         scoreText(td.name) * 4 +
         scoreText(td.party) * 2 +
@@ -120,12 +141,12 @@ export function GlobalSearch() {
 
     const parties = sortByScore(
       searchData.parties,
-      (party: unknown) => scoreText(party.name) * 3
+      (party: PartySearchResult) => scoreText(party.name) * 3
     ).slice(0, 5);
 
     const constituencies = sortByScore(
       searchData.constituencies,
-      (constituency: unknown) =>
+      (constituency: ConstituencySearchResult) =>
         scoreText(constituency.name) * 3 + scoreText(constituency.county)
     ).slice(0, 5);
 
@@ -357,7 +378,7 @@ export function GlobalSearch() {
                   <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     TDs ({filteredResults.tds.length})
                   </div>
-                  {filteredResults.tds.map((td: unknown, index) => (
+                  {filteredResults.tds.map((td: TdSearchResult, index) => (
                     <button
                       key={td.id ?? `${td.name}-${index}`}
                       onClick={() =>
@@ -393,7 +414,7 @@ export function GlobalSearch() {
                   <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     Parties ({filteredResults.parties.length})
                   </div>
-                  {filteredResults.parties.map((party: unknown, index) => (
+                  {filteredResults.parties.map((party: PartySearchResult, index) => (
                     <button
                       key={party.name ?? index}
                       onClick={() =>
@@ -429,7 +450,7 @@ export function GlobalSearch() {
                     Constituencies ({filteredResults.constituencies.length})
                   </div>
                   {filteredResults.constituencies.map(
-                    (constituency: unknown, index) => (
+                    (constituency: ConstituencySearchResult, index) => (
                       <button
                         key={constituency.name ?? index}
                         onClick={() =>

@@ -20,6 +20,8 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { SMSNotificationForm } from '@/components/SMSNotificationForm';
 
+type PoliticalEvolutionResponse = PoliticalEvolution[] | { data: PoliticalEvolution[] };
+
 const ProfilePage = () => {
   const { user, isLoading: authLoading, isAuthenticated, updateProfile, logout, deleteAccount } = useAuth();
   const [, navigate] = useLocation();
@@ -35,17 +37,17 @@ const ProfilePage = () => {
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
 
   // Fetch political evolution data
-  const { data: evolutionResponse, isLoading: evolutionLoading } = useQuery({
+  const { data: evolutionResponse, isLoading: evolutionLoading } = useQuery<PoliticalEvolutionResponse>({
     queryKey: ['/api/political-evolution'],
     enabled: isAuthenticated,
   });
   
-  const evolutionData = React.useMemo(() => {
-    if (evolutionResponse?.data && Array.isArray(evolutionResponse.data)) {
-      return evolutionResponse.data;
-    }
-    if (evolutionResponse && Array.isArray(evolutionResponse)) {
+  const evolutionData = React.useMemo<PoliticalEvolution[]>(() => {
+    if (Array.isArray(evolutionResponse)) {
       return evolutionResponse;
+    }
+    if (evolutionResponse && Array.isArray(evolutionResponse.data)) {
+      return evolutionResponse.data;
     }
     return [];
   }, [evolutionResponse]);

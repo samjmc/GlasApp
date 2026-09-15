@@ -1,11 +1,11 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { BotService } from '../services/botService';
 import { isAuthenticated } from '../middleware/sessionMiddleware';
 
 const router = Router();
 
 // Admin-only middleware (you can expand this based on your needs)
-const isAdmin = (req: Request, res: Response, next: unknown) => {
+const isAdmin = (req: Request, res: Response, next: NextFunction) => {
   // For now, just check if user is authenticated
   // You can add proper admin role checking here
   if (!req.user) {
@@ -50,7 +50,7 @@ router.post('/create', isAuthenticated, isAdmin, async (req: Request, res: Respo
     console.error('Error creating bot account:', error);
     res.status(400).json({
       success: false,
-      message: error.message || 'Failed to create bot account'
+      message: (error as { message?: string }).message || 'Failed to create bot account'
     });
   }
 });
@@ -86,7 +86,7 @@ router.delete('/:username', isAuthenticated, isAdmin, async (req: Request, res: 
     console.error('Error deleting bot:', error);
     res.status(400).json({
       success: false,
-      message: error.message || 'Failed to delete bot account'
+      message: (error as { message?: string }).message || 'Failed to delete bot account'
     });
   }
 });

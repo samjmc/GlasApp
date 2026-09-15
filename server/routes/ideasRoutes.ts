@@ -5,11 +5,18 @@ import { eq, desc, sql, and } from 'drizzle-orm';
 
 const router = Router();
 
+// Legacy shape: session may carry a resolved user object (Replit-style auth)
+type SessionUser = { user?: { id?: string } };
+
 // Get ideas by category
 router.get('/:category', async (req: Request, res: Response) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     const { category } = req.params;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = (req.session as unknown as SessionUser)?.user?.id;
 
     // Get ideas with vote counts and user's vote status
     const ideasWithVotes = await db
@@ -56,8 +63,12 @@ router.get('/:category', async (req: Request, res: Response) => {
 // Vote on an idea
 router.post('/vote', async (req: Request, res: Response) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     const { ideaId, voteType } = req.body;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = (req.session as unknown as SessionUser)?.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -141,8 +152,12 @@ router.post('/vote', async (req: Request, res: Response) => {
 // Submit a new idea (Admin only)
 router.post('/submit', async (req: Request, res: Response) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     const { title, description, fullDescription, category, tags, isAdminSubmission } = req.body;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = (req.session as unknown as SessionUser)?.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -202,6 +217,10 @@ router.post('/submit', async (req: Request, res: Response) => {
 // Get idea categories with counts
 router.get('/categories/stats', async (req: Request, res: Response) => {
   try {
+    if (!db) {
+      return res.status(503).json({ success: false, message: 'Database not connected' });
+    }
+
     const categoryStats = await db
       .select({
         category: ideas.category,
