@@ -2,7 +2,7 @@ import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { createServer as createViteServer, createLogger } from "vite";
+import { createServer as createViteServer, createLogger, type ServerOptions, type ViteDevServer } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
@@ -25,10 +25,10 @@ export function log(message: string, source = "express") {
   console.log(`${formattedTime} [${source}] ${message}`);
 }
 
-let viteServer: unknown = null;
+let viteServer: ViteDevServer | null = null;
 
 export async function setupVite(app: Express, server: Server) {
-  const serverOptions = {
+  const serverOptions: ServerOptions = {
     middlewareMode: true,
     hmr: { 
       server,

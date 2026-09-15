@@ -3,6 +3,7 @@ import { Strategy, type VerifyFunction } from "openid-client/passport";
 
 import passport from "passport";
 import session from "express-session";
+import type { SessionOptions } from "express-session";
 import type { Express, RequestHandler } from "express";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
@@ -56,7 +57,7 @@ export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   
   // Only use database session store if DATABASE_URL is available
-  const sessionConfig: unknown = {
+  const sessionConfig: SessionOptions = {
     secret: process.env.SESSION_SECRET || 'dev-secret-please-change-in-production',
     resave: false,
     saveUninitialized: false,
@@ -83,7 +84,7 @@ export function getSession() {
 }
 
 function updateUserSession(
-  user: unknown,
+  user: Express.User,
   tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers
 ) {
   user.claims = tokens.claims();
@@ -93,15 +94,16 @@ function updateUserSession(
 }
 
 async function upsertUser(
-  claims: unknown,
+  claims: object | undefined,
 ) {
+  const c = (claims ?? {}) as Record<string, unknown>;
   // For now, we'll skip database upsert and just use session data
   // This can be enhanced later once the schema is properly migrated
   console.log('User authenticated:', {
-    id: claims["sub"],
-    email: claims["email"],
-    firstName: claims["first_name"],
-    lastName: claims["last_name"]
+    id: c["sub"],
+    email: c["email"],
+    firstName: c["first_name"],
+    lastName: c["last_name"]
   });
 }
 
@@ -253,7 +255,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
 
   // GATE 3: Replit environment uses session-based auth
   if (isReplitEnvironment) {
-    const user = req.user as unknown;
+    const user = req.user as Express.User;
 
     if (!req.isAuthenticated() || !user?.claims) {
       return res.status(401).json({ message: "Unauthorized" });

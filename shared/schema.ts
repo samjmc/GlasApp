@@ -3,6 +3,32 @@ import { pgTable, serial, text, integer, timestamp, date, varchar, decimal, bool
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+// Re-export quiz types so consumers can import them from "@shared/schema".
+export type { QuizQuestion, UserResponse } from "./quizTypes";
+
+// Political compass entity types
+/** A political figure with ideological positions on the political compass. */
+export interface PoliticalFigure {
+  id: string;
+  name: string;
+  economic: number;
+  social: number;
+  description: string;
+  imageUrl: string;
+  distance?: number;
+}
+
+/** A political party with ideological positions on the political compass. */
+export interface PoliticalParty {
+  id: string;
+  name: string;
+  country: string;
+  economic: number;
+  social: number;
+  description: string;
+  color: string;
+}
+
 // Users table - updated for Replit Auth compatibility
 /** Drizzle ORM table definition for user accounts. */
 export const users = pgTable("users", {

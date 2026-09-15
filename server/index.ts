@@ -125,7 +125,7 @@ app.use('/assets', express.static('public/assets'));
     // Handle server errors
     serverInstance.on('error', (error: unknown) => {
       logger.error({ err: error }, "Server error:");
-      if (error.code === 'EADDRINUSE') {
+      if ((error as { code?: string } | null)?.code === 'EADDRINUSE') {
         logger.error(`Port ${port} is already in use`);
         logger.error(`Wait for previous process to exit or run: taskkill /F /IM node.exe`);
         process.exit(1);

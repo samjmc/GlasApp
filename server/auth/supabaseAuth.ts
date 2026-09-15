@@ -231,7 +231,7 @@ export async function signUp(email: string, password: string, metadata?: unknown
     email,
     password,
     options: {
-      data: metadata,
+      data: metadata as object | undefined,
       emailRedirectTo: process.env.FRONTEND_URL || 'http://localhost:5000'
     }
   });
@@ -293,7 +293,7 @@ export async function sendPasswordReset(email: string) {
 export async function updateUserMetadata(userId: string, metadata: unknown) {
   const { data, error } = await supabaseAdmin.auth.admin.updateUserById(
     userId,
-    { user_metadata: metadata }
+    { user_metadata: metadata as object | undefined }
   );
 
   if (error) {

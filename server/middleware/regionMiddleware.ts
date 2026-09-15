@@ -10,6 +10,7 @@ declare global {
   namespace Express {
     interface Request {
       regionCode?: RegionCode;
+      regionConfig?: unknown;
     }
   }
 }
@@ -30,8 +31,9 @@ export function regionMiddleware(req: Request, _res: Response, next: NextFunctio
 
   let resolvedRegion = headerRegion || queryRegion || sessionRegion;
 
-  if (!resolvedRegion && req.user?.user_metadata?.region_code) {
-    resolvedRegion = normalizeRegion(req.user.user_metadata.region_code);
+  const userMetadata = (req.user as { user_metadata?: { region_code?: string } } | undefined)?.user_metadata;
+  if (!resolvedRegion && userMetadata?.region_code) {
+    resolvedRegion = normalizeRegion(userMetadata.region_code);
   }
 
   if (!resolvedRegion) {
@@ -46,7 +48,7 @@ export function regionMiddleware(req: Request, _res: Response, next: NextFunctio
   req.regionCode = resolvedRegion;
 
   // Expose region metadata for downstream handlers if needed
-  (req as unknown).regionConfig = REGION_CONFIGS[resolvedRegion];
+  req.regionConfig = REGION_CONFIGS[resolvedRegion];
 
   next();
 }
