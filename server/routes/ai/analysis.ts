@@ -51,17 +51,24 @@ const dimensionsSchema = z.object({
 });
 
 const singleAnalysisSchema = z.object({
-  text: z.string().min(1),
-  questionContext: z.string()
+  text: z.string().min(1).max(4000),
+  questionContext: z.string().max(2000)
 });
 
 const bulkAnalysisSchema = z.object({
   responses: z.array(
     z.object({
-      text: z.string(),
-      question: z.string()
+      text: z.string().max(4000),
+      question: z.string().max(4000)
     })
-  ).min(1)
+  ).min(1).max(50)
+});
+
+const weightsSchema = z.record(z.string(), z.number().min(0).max(3)).optional();
+
+const analysisInputSchema = z.object({
+  dimensions: dimensionsSchema,
+  weights: weightsSchema
 });
 
 // ============================================
@@ -73,10 +80,7 @@ const bulkAnalysisSchema = z.object({
  */
 router.post("/complete-analysis", async (req, res, next) => {
   try {
-    const { dimensions, weights }: { 
-      dimensions: IdeologicalDimensions, 
-      weights?: Record<string, number> 
-    } = req.body;
+    const { dimensions, weights } = analysisInputSchema.parse(req.body);
     
     console.log("Complete analysis request body:", req.body);
     console.log("Using dimensions for analysis:", dimensions);
@@ -135,6 +139,13 @@ router.post("/complete-analysis", async (req, res, next) => {
       data: analysisContent
     });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request data",
+        details: error.errors
+      });
+    }
     next(error);
   }
 });
@@ -144,10 +155,7 @@ router.post("/complete-analysis", async (req, res, next) => {
  */
 router.post("/context-analysis", async (req, res, next) => {
   try {
-    const { dimensions, weights }: { 
-      dimensions: IdeologicalDimensions,
-      weights?: Record<string, number>
-    } = req.body;
+    const { dimensions, weights } = analysisInputSchema.parse(req.body);
     
     const response = await callChatCompletion({
       model: MODEL,
@@ -180,6 +188,13 @@ router.post("/context-analysis", async (req, res, next) => {
       data: contextAnalysis
     });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request data",
+        details: error.errors
+      });
+    }
     next(error);
   }
 });

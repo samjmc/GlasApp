@@ -83,6 +83,27 @@ export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T
   return await res.json();
 }
 
+/**
+ * Fetch with automatic bearer-token attachment, returning the raw Response.
+ * Used for non-JSON payloads (e.g. CSV downloads).
+ */
+export async function apiFetch(path: string): Promise<Response> {
+  const token = await getAccessToken();
+
+  const headers: Record<string, string> = {};
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(path, {
+    headers,
+    credentials: "include",
+  });
+
+  await throwIfResNotOk(res);
+  return res;
+}
+
 // API Client with axios-like interface
 /** API client with axios-like methods for authorized requests. */
 export const apiClient = {

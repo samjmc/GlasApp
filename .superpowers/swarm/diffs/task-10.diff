@@ -1,0 +1,251 @@
+diff --git a/client/src/components/IdeologyTimeSeriesChart.tsx b/client/src/components/IdeologyTimeSeriesChart.tsx
+index f94aaec..0cbeb42 100644
+--- a/client/src/components/IdeologyTimeSeriesChart.tsx
++++ b/client/src/components/IdeologyTimeSeriesChart.tsx
+@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
+ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+ import { Card } from '@/components/ui/card';
+ import { Loader2, TrendingUp } from 'lucide-react';
++import { apiClient } from '@/lib/queryClient';
+ 
+ interface TimelineDataPoint {
+   weekStart: string;
+@@ -57,10 +58,9 @@ export default function IdeologyTimeSeriesChart({ userId, weeks = 12 }: Ideology
+         setIsLoading(true);
+         setError(null);
+ 
+-        const response = await fetch(`/api/ideology-timeline/${userId}?weeks=${weeks}`);
+-        const data = await response.json();
++        const data = await apiClient.get(`/api/ideology-timeline/${userId}?weeks=${weeks}`);
+ 
+-        if (!response.ok || !data.success) {
++        if (!data.success) {
+           throw new Error(data.message || 'Failed to load ideology timeline');
+         }
+ 
+diff --git a/client/src/components/IdeologyTimeSeriesChartEnhanced.tsx b/client/src/components/IdeologyTimeSeriesChartEnhanced.tsx
+index 1fa50a8..9515254 100644
+--- a/client/src/components/IdeologyTimeSeriesChartEnhanced.tsx
++++ b/client/src/components/IdeologyTimeSeriesChartEnhanced.tsx
+@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
+ import { Badge } from '@/components/ui/badge';
+ import { Loader2, TrendingUp, Download, Calendar, Users, BarChart3, Filter, X } from 'lucide-react';
+ import html2canvas from 'html2canvas';
++import { apiClient, apiFetch } from '@/lib/queryClient';
+ 
+ interface TimelineDataPoint {
+   date: string;
+@@ -110,10 +111,9 @@ export default function IdeologyTimeSeriesChartEnhanced({
+       if (compareParty) params.append('compareParty', compareParty);
+       if (compareAverage) params.append('compareAverage', 'true');
+ 
+-      const response = await fetch(`/api/ideology-timeline/${userId}?${params}`);
+-      const data = await response.json();
++      const data = await apiClient.get(`/api/ideology-timeline/${userId}?${params}`);
+ 
+-      if (!response.ok || !data.success) {
++      if (!data.success) {
+         throw new Error(data.message || 'Failed to load ideology timeline');
+       }
+ 
+@@ -141,8 +141,29 @@ export default function IdeologyTimeSeriesChartEnhanced({
+     });
+   };
+ 
+-  const exportCSV = () => {
+-    window.location.href = `/api/ideology-timeline/${userId}?format=csv&weeks=${weeks}`;
++  const exportCSV = async () => {
++    const params = new URLSearchParams({
++      weeks: weeks.toString(),
++    });
++    if (fromDate) params.append('fromDate', fromDate);
++    if (toDate) params.append('toDate', toDate);
++    if (compareParty) params.append('compareParty', compareParty);
++    if (compareAverage) params.append('compareAverage', 'true');
++    params.append('format', 'csv');
++
++    try {
++      const response = await apiFetch(`/api/ideology-timeline/${userId}?${params}`);
++      const csv = await response.text();
++      const dataBlob = new Blob([csv], { type: 'text/csv' });
++      const url = URL.createObjectURL(dataBlob);
++      const link = document.createElement('a');
++      link.href = url;
++      link.download = `ideology-timeline-${userId}.csv`;
++      link.click();
++      URL.revokeObjectURL(url);
++    } catch (err) {
++      console.error('Error exporting CSV:', err);
++    }
+   };
+ 
+   const exportJSON = () => {
+diff --git a/client/src/lib/queryClient.ts b/client/src/lib/queryClient.ts
+index 41e9918..3d0ab30 100644
+--- a/client/src/lib/queryClient.ts
++++ b/client/src/lib/queryClient.ts
+@@ -83,6 +83,27 @@ export async function apiRequest<T = any>(options: ApiRequestOptions): Promise<T
+   return await res.json();
+ }
+ 
++/**
++ * Fetch with automatic bearer-token attachment, returning the raw Response.
++ * Used for non-JSON payloads (e.g. CSV downloads).
++ */
++export async function apiFetch(path: string): Promise<Response> {
++  const token = await getAccessToken();
++
++  const headers: Record<string, string> = {};
++  if (token) {
++    headers["Authorization"] = `Bearer ${token}`;
++  }
++
++  const res = await fetch(path, {
++    headers,
++    credentials: "include",
++  });
++
++  await throwIfResNotOk(res);
++  return res;
++}
++
+ // API Client with axios-like interface
+ /** API client with axios-like methods for authorized requests. */
+ export const apiClient = {
+diff --git a/client/src/pages/MediaWorkspacePage.tsx b/client/src/pages/MediaWorkspacePage.tsx
+index 5246309..6862b19 100644
+--- a/client/src/pages/MediaWorkspacePage.tsx
++++ b/client/src/pages/MediaWorkspacePage.tsx
+@@ -1,6 +1,7 @@
+ import { useMemo, useState } from "react";
+ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+ import { useLocation } from "wouter";
++import { apiClient } from "@/lib/queryClient";
+ 
+ type SavedView = {
+   id: string;
+@@ -25,20 +26,12 @@ type ExportRecord = {
+ };
+ 
+ const fetchViews = async (): Promise<SavedView[]> => {
+-  const response = await fetch("/api/debate-workspace/views");
+-  if (!response.ok) {
+-    throw new Error("Failed to load saved views");
+-  }
+-  const payload = await response.json();
++  const payload = await apiClient.get("/api/debate-workspace/views");
+   return payload?.views ?? [];
+ };
+ 
+ const fetchExports = async (): Promise<ExportRecord[]> => {
+-  const response = await fetch("/api/debate-workspace/exports?limit=20");
+-  if (!response.ok) {
+-    throw new Error("Failed to load export history");
+-  }
+-  const payload = await response.json();
++  const payload = await apiClient.get("/api/debate-workspace/exports?limit=20");
+   return payload?.exports ?? [];
+ };
+ 
+@@ -81,18 +74,7 @@ const MediaWorkspacePage = () => {
+ 
+   const createViewMutation = useMutation({
+     mutationFn: async (payload: unknown) => {
+-      const response = await fetch("/api/debate-workspace/views", {
+-        method: "POST",
+-        headers: {
+-          "Content-Type": "application/json",
+-        },
+-        body: JSON.stringify(payload),
+-      });
+-      if (!response.ok) {
+-        const text = await response.text();
+-        throw new Error(text || "Failed to create saved view");
+-      }
+-      return response.json();
++      return apiClient.post("/api/debate-workspace/views", payload);
+     },
+     onSuccess: () => {
+       queryClient.invalidateQueries({ queryKey: ["debate-workspace", "views"] });
+@@ -109,13 +91,7 @@ const MediaWorkspacePage = () => {
+ 
+   const deleteViewMutation = useMutation({
+     mutationFn: async (viewId: string) => {
+-      const response = await fetch(`/api/debate-workspace/views/${viewId}`, {
+-        method: "DELETE",
+-      });
+-      if (!response.ok) {
+-        throw new Error("Failed to delete saved view");
+-      }
+-      return response.json();
++      return apiClient.delete(`/api/debate-workspace/views/${viewId}`);
+     },
+     onSuccess: () => {
+       queryClient.invalidateQueries({ queryKey: ["debate-workspace", "views"] });
+@@ -124,18 +100,7 @@ const MediaWorkspacePage = () => {
+ 
+   const exportMutation = useMutation({
+     mutationFn: async (payload: { viewId?: string; filters?: unknown; requestedBy?: string }) => {
+-      const response = await fetch("/api/debate-workspace/exports", {
+-        method: "POST",
+-        headers: {
+-          "Content-Type": "application/json",
+-        },
+-        body: JSON.stringify(payload),
+-      });
+-      if (!response.ok) {
+-        const text = await response.text();
+-        throw new Error(text || "Failed to generate export");
+-      }
+-      return response.json();
++      return apiClient.post("/api/debate-workspace/exports", payload);
+     },
+     onSuccess: (data) => {
+       queryClient.invalidateQueries({ queryKey: ["debate-workspace", "exports"] });
+diff --git a/client/src/pages/admin/ShadowCabinetDashboard.tsx b/client/src/pages/admin/ShadowCabinetDashboard.tsx
+index ad1d4a0..4ca7cd0 100644
+--- a/client/src/pages/admin/ShadowCabinetDashboard.tsx
++++ b/client/src/pages/admin/ShadowCabinetDashboard.tsx
+@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
+ import { Badge } from "@/components/ui/badge";
+ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+ import { useToast } from "@/hooks/use-toast";
++import { apiClient } from "@/lib/queryClient";
+ import { 
+     Loader2, Search, ShieldAlert, TrendingUp, Users, 
+     AlertTriangle, CheckCircle, Activity, 
+@@ -117,8 +118,7 @@ export default function ShadowCabinetDashboard() {
+ 
+   const fetchHistory = async () => {
+     try {
+-        const res = await fetch("/api/shadow/history");
+-        const data = await res.json();
++        const data = await apiClient.get("/api/shadow/history");
+         if (Array.isArray(data)) {
+             setHistory(data);
+         } else {
+@@ -133,8 +133,7 @@ export default function ShadowCabinetDashboard() {
+ 
+   const fetchQaHistory = async () => {
+     try {
+-        const res = await fetch("/api/shadow/qa-history");
+-        const data = await res.json();
++        const data = await apiClient.get("/api/shadow/qa-history");
+         if (Array.isArray(data)) {
+             setQaHistory(data);
+         } else {
+@@ -153,13 +152,7 @@ export default function ShadowCabinetDashboard() {
+     toast({ title: "Deploying Shadow Cabinet...", description: "This may take up to 60 seconds." });
+     
+     try {
+-        const res = await fetch("/api/shadow/analyze", {
+-            method: "POST",
+-            headers: { "Content-Type": "application/json" },
+-            body: JSON.stringify({ url })
+-        });
+-        
+-        if (!res.ok) throw new Error("Failed");
++        await apiClient.post("/api/shadow/analyze", { url });
+         
+         toast({ title: "Analysis Complete", description: "The Cabinet has spoken." });
+         setUrl("");

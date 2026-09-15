@@ -7,6 +7,7 @@
 
 import type { Request, Response, NextFunction } from 'express';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { logger } from '../utils/logger';
 
 // Validate required environment variables
 const requiredEnvVars = {
@@ -14,10 +15,13 @@ const requiredEnvVars = {
   SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
 };
 
-const adminEmails = (process.env.ADMIN_EMAILS || '')
-  .split(',')
-  .map((email) => email.trim().toLowerCase())
-  .filter(Boolean);
+/** ADMIN_EMAILS allowlist, read at call time so tests can set/restore it. */
+function getAdminEmailAllowlist(): string[] {
+  return (process.env.ADMIN_EMAILS || '')
+    .split(',')
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+}
 
 for (const [key, value] of Object.entries(requiredEnvVars)) {
   if (!value) {
@@ -162,6 +166,37 @@ export async function isAuthenticated(
 }
 
 /**
+ * Resolve the caller's role from req.user (set by isAuthenticated / optionalAuth)
+ * or the bearer token. Only app_metadata.role is trusted (user_metadata is
+ * self-editable); the 'admin' role is additionally granted by the ADMIN_EMAILS
+ * allowlist. Returns null when the caller's role cannot be determined.
+ */
+export function getCallerRole(req: Request): string | null {
+  const user = req.user as
+    | { email?: string; app_metadata?: { role?: string } }
+    | null
+    | undefined;
+
+  if (!user) {
+    return null;
+  }
+
+  const role = user.app_metadata?.role;
+  const email = typeof user.email === 'string' ? user.email.toLowerCase() : null;
+
+  if (role === 'admin') {
+    return 'admin';
+  }
+
+  // Admin role is also granted to allowlisted emails, even without app_metadata.
+  if (email && getAdminEmailAllowlist().includes(email)) {
+    return 'admin';
+  }
+
+  return role || null;
+}
+
+/**
  * Middleware to check if user has admin role
  */
 export async function isAdmin(
@@ -170,35 +205,53 @@ export async function isAdmin(
   next: NextFunction
 ): Promise<void> {
   try {
-    const user = await getUserFromRequest(req);
-    
+    const existingUser = req.user;
+    const user = (existingUser ?? (await getUserFromRequest(req))) as
+      | { id?: unknown; email?: string; app_metadata?: { role?: string } }
+      | null;
+
     if (!user) {
-      res.status(401).json({ 
+      logger.warn(
+        { actor: 'anonymous', route: `${req.method} ${req.path}`, grant: 'deny', reason: 'unauthenticated' },
+        'Admin access denied'
+      );
+      res.status(401).json({
         success: false,
-        message: 'Authentication required' 
+        message: 'Authentication required',
       });
       return;
     }
 
-    // Supabase user metadata is self-editable; only app metadata/env allowlists are trusted.
+    // Session-authenticated callers (no bearer token) carry no server-verifiable
+    // identity beyond req.session; treat them as non-admin unless their email is
+    // in the ADMIN_EMAILS allowlist.
     const role = user.app_metadata?.role;
     const email = typeof user.email === 'string' ? user.email.toLowerCase() : null;
-    
-    if (role !== 'admin' && (!email || !adminEmails.includes(email))) {
-      res.status(403).json({ 
+
+    if (role !== 'admin' && (!email || !getAdminEmailAllowlist().includes(email))) {
+      logger.warn(
+        { actor: email ?? 'anonymous', route: `${req.method} ${req.path}`, grant: 'deny', reason: 'not_admin' },
+        'Admin access denied'
+      );
+      res.status(403).json({
         success: false,
-        message: 'Admin access required' 
+        message: 'Admin access required',
       });
       return;
     }
+
+    logger.info(
+      { actor: email ?? 'unknown', route: `${req.method} ${req.path}`, grant: 'allow', reason: 'admin' },
+      'Admin access granted'
+    );
 
     req.user = user;
     next();
   } catch (error) {
     console.error('Admin check error:', error);
-    res.status(403).json({ 
+    res.status(403).json({
       success: false,
-      message: 'Access denied' 
+      message: 'Access denied',
     });
   }
 }

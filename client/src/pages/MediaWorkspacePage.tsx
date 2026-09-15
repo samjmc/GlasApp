@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "wouter";
+import { apiClient } from "@/lib/queryClient";
 
 type SavedView = {
   id: string;
@@ -25,20 +26,12 @@ type ExportRecord = {
 };
 
 const fetchViews = async (): Promise<SavedView[]> => {
-  const response = await fetch("/api/debate-workspace/views");
-  if (!response.ok) {
-    throw new Error("Failed to load saved views");
-  }
-  const payload = await response.json();
+  const payload = await apiClient.get("/api/debate-workspace/views");
   return payload?.views ?? [];
 };
 
 const fetchExports = async (): Promise<ExportRecord[]> => {
-  const response = await fetch("/api/debate-workspace/exports?limit=20");
-  if (!response.ok) {
-    throw new Error("Failed to load export history");
-  }
-  const payload = await response.json();
+  const payload = await apiClient.get("/api/debate-workspace/exports?limit=20");
   return payload?.exports ?? [];
 };
 
@@ -81,18 +74,7 @@ const MediaWorkspacePage = () => {
 
   const createViewMutation = useMutation({
     mutationFn: async (payload: unknown) => {
-      const response = await fetch("/api/debate-workspace/views", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) {
-        const text = await response.text();
-        throw new Error(text || "Failed to create saved view");
-      }
-      return response.json();
+      return apiClient.post("/api/debate-workspace/views", payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["debate-workspace", "views"] });
@@ -109,13 +91,7 @@ const MediaWorkspacePage = () => {
 
   const deleteViewMutation = useMutation({
     mutationFn: async (viewId: string) => {
-      const response = await fetch(`/api/debate-workspace/views/${viewId}`, {
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error("Failed to delete saved view");
-      }
-      return response.json();
+      return apiClient.delete(`/api/debate-workspace/views/${viewId}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["debate-workspace", "views"] });
@@ -124,18 +100,7 @@ const MediaWorkspacePage = () => {
 
   const exportMutation = useMutation({
     mutationFn: async (payload: { viewId?: string; filters?: unknown; requestedBy?: string }) => {
-      const response = await fetch("/api/debate-workspace/exports", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) {
-        const text = await response.text();
-        throw new Error(text || "Failed to generate export");
-      }
-      return response.json();
+      return apiClient.post("/api/debate-workspace/exports", payload);
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["debate-workspace", "exports"] });

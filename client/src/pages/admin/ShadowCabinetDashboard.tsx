@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import { apiClient } from "@/lib/queryClient";
 import { 
     Loader2, Search, ShieldAlert, TrendingUp, Users, 
     AlertTriangle, CheckCircle, Activity, 
@@ -117,8 +118,7 @@ export default function ShadowCabinetDashboard() {
 
   const fetchHistory = async () => {
     try {
-        const res = await fetch("/api/shadow/history");
-        const data = await res.json();
+        const data = await apiClient.get("/api/shadow/history");
         if (Array.isArray(data)) {
             setHistory(data);
         } else {
@@ -133,8 +133,7 @@ export default function ShadowCabinetDashboard() {
 
   const fetchQaHistory = async () => {
     try {
-        const res = await fetch("/api/shadow/qa-history");
-        const data = await res.json();
+        const data = await apiClient.get("/api/shadow/qa-history");
         if (Array.isArray(data)) {
             setQaHistory(data);
         } else {
@@ -153,13 +152,7 @@ export default function ShadowCabinetDashboard() {
     toast({ title: "Deploying Shadow Cabinet...", description: "This may take up to 60 seconds." });
     
     try {
-        const res = await fetch("/api/shadow/analyze", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url })
-        });
-        
-        if (!res.ok) throw new Error("Failed");
+        await apiClient.post("/api/shadow/analyze", { url });
         
         toast({ title: "Analysis Complete", description: "The Cabinet has spoken." });
         setUrl("");

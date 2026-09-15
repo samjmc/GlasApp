@@ -1,21 +1,12 @@
 import { Router, Request, Response } from 'express';
 import { BotService } from '../services/botService';
-import { isAuthenticated } from '../middleware/sessionMiddleware';
+import { requireAdminAccess } from '../middleware/adminAccess';
+import { requestLogger } from '../utils/logger';
 
 const router = Router();
 
-// Admin-only middleware (you can expand this based on your needs)
-const isAdmin = (req: Request, res: Response, next: unknown) => {
-  // For now, just check if user is authenticated
-  // You can add proper admin role checking here
-  if (!req.user) {
-    return res.status(401).json({ success: false, message: 'Authentication required' });
-  }
-  next();
-};
-
 // Create a bot account
-router.post('/create', isAuthenticated, isAdmin, async (req: Request, res: Response) => {
+router.post('/create', requireAdminAccess, async (req: Request, res: Response) => {
   try {
     const { username, email, firstName, lastName, county, bio, profileImageUrl } = req.body;
 
@@ -25,6 +16,11 @@ router.post('/create', isAuthenticated, isAdmin, async (req: Request, res: Respo
         message: 'Username and email are required'
       });
     }
+
+    requestLogger(req).info(
+      { operation: 'admin.bots.create', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId },
+      'Bot admin action'
+    );
 
     const bot = await BotService.createBotAccount({
       username,
@@ -56,9 +52,13 @@ router.post('/create', isAuthenticated, isAdmin, async (req: Request, res: Respo
 });
 
 // List all bot accounts
-router.get('/list', isAuthenticated, isAdmin, async (req: Request, res: Response) => {
+router.get('/list', requireAdminAccess, async (req: Request, res: Response) => {
   try {
     const bots = await BotService.getAllBots();
+    requestLogger(req).info(
+      { operation: 'admin.bots.list', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId },
+      'Bot admin action'
+    );
     res.json({
       success: true,
       bots
@@ -73,11 +73,15 @@ router.get('/list', isAuthenticated, isAdmin, async (req: Request, res: Response
 });
 
 // Delete a bot account
-router.delete('/:username', isAuthenticated, isAdmin, async (req: Request, res: Response) => {
+router.delete('/:username', requireAdminAccess, async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
     await BotService.deleteBotAccount(username);
-    
+
+    requestLogger(req).info(
+      { operation: 'admin.bots.delete', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId, username },
+      'Bot admin action'
+    );
     res.json({
       success: true,
       message: `Bot account ${username} deleted successfully`

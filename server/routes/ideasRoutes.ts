@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express';
 import { db } from '../db';
 import { ideas, ideaVotes, users } from '../../shared/schema';
 import { eq, desc, sql, and } from 'drizzle-orm';
+import { requireAdminAccess } from '../middleware/adminAccess';
+import { requestLogger } from '../utils/logger';
 
 const router = Router();
 
@@ -139,18 +141,13 @@ router.post('/vote', async (req: Request, res: Response) => {
 });
 
 // Submit a new idea (Admin only)
-router.post('/submit', async (req: Request, res: Response) => {
+router.post('/submit', requireAdminAccess, async (req: Request, res: Response) => {
   try {
-    const { title, description, fullDescription, category, tags, isAdminSubmission } = req.body;
-    const userId = (req.session as unknown)?.user?.id;
+    const { title, description, fullDescription, category, tags } = req.body;
+    const userId = ((req.user as { id?: string } | null | undefined)?.id ?? req.session?.userId ?? null) as string | null;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
-    }
-
-    // Restrict to admin-only submissions
-    if (!isAdminSubmission) {
-      return res.status(403).json({ success: false, message: 'Ideas can only be submitted by administrators. Please contact support to suggest new ideas.' });
     }
 
     if (!title || !description || !category) {
@@ -191,6 +188,11 @@ router.post('/submit', async (req: Request, res: Response) => {
         voteScore: 0
       })
       .returning();
+
+    requestLogger(req).info(
+      { operation: 'admin.ideas.submit', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId, title },
+      'Idea submitted'
+    );
 
     res.json({ success: true, data: newIdea[0] });
   } catch (error) {

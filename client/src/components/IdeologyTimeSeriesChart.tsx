@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card } from '@/components/ui/card';
 import { Loader2, TrendingUp } from 'lucide-react';
+import { apiClient } from '@/lib/queryClient';
 
 interface TimelineDataPoint {
   weekStart: string;
@@ -57,10 +58,9 @@ export default function IdeologyTimeSeriesChart({ userId, weeks = 12 }: Ideology
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch(`/api/ideology-timeline/${userId}?weeks=${weeks}`);
-        const data = await response.json();
+        const data = await apiClient.get(`/api/ideology-timeline/${userId}?weeks=${weeks}`);
 
-        if (!response.ok || !data.success) {
+        if (!data.success) {
           throw new Error(data.message || 'Failed to load ideology timeline');
         }
 

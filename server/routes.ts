@@ -388,9 +388,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Bot behavior management routes
-  app.post('/api/bots/:id/behavior/start', async (req, res) => {
+  app.post('/api/bots/:id/behavior/start', requireAdminAccess, async (req, res) => {
     try {
       const botId = parseInt(req.params.id);
+      if (!Number.isInteger(botId) || botId <= 0) {
+        return res.status(400).json({ success: false, message: 'Invalid bot id' });
+      }
       const { botBehaviorService } = await import('./services/botBehaviorService');
       
       const config = {
@@ -407,9 +410,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/bots/:id/behavior/stop', async (req, res) => {
+  app.post('/api/bots/:id/behavior/stop', requireAdminAccess, async (req, res) => {
     try {
       const botId = parseInt(req.params.id);
+      if (!Number.isInteger(botId) || botId <= 0) {
+        return res.status(400).json({ success: false, message: 'Invalid bot id' });
+      }
       const { botBehaviorService } = await import('./services/botBehaviorService');
       
       botBehaviorService.stopBotBehavior(botId);
@@ -419,9 +425,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/bots/:id/activity', async (req, res) => {
+  app.get('/api/bots/:id/activity', requireAdminAccess, async (req, res) => {
     try {
       const botId = parseInt(req.params.id);
+      if (!Number.isInteger(botId) || botId <= 0) {
+        return res.status(400).json({ success: false, message: 'Invalid bot id' });
+      }
       const days = parseInt(req.query.days as string) || 7;
       const { botBehaviorService } = await import('./services/botBehaviorService');
       

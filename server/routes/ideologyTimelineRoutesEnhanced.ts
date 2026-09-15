@@ -3,11 +3,13 @@ import { supabaseDb } from '../db.js';
 import { PersonalRankingsService } from '../services/personalRankingsService.js';
 import { IdeologySnapshotService } from '../services/ideologySnapshotService.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
+import { isAuthenticated } from '../auth/supabaseAuth.js';
 
 const router = express.Router();
 
 /**
  * GET /api/ideology-timeline/:userId - Enhanced ideology timeline with all features
+ * Authenticated + ownership (or admin). Sensitive personal data.
  * Query params:
  *   - weeks: number of weeks (default: 12)
  *   - format: 'json' | 'csv' (default: json)
@@ -16,9 +18,15 @@ const router = express.Router();
  *   - compareParty: party name for comparison
  *   - compareAverage: 'true' to show average user
  */
-router.get('/:userId', async (req: Request, res: Response) => {
+router.get('/:userId', isAuthenticated, async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
+    const caller = req.user as { id?: string | number; app_metadata?: { role?: string } } | null | undefined;
+
+    // Ownership or admin: users may only read their own timeline unless admin.
+    if (String(caller?.id) !== userId && caller?.app_metadata?.role !== 'admin') {
+      return res.status(403).json({ success: false, message: 'Access denied' });
+    }
     const {
       weeks = 12,
       format = 'json',

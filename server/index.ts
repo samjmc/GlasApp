@@ -47,8 +47,8 @@ app.use(
     crossOriginEmbedderPolicy: false,
   })
 );
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {

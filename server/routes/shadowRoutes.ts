@@ -3,11 +3,16 @@ import { runShadowCabinet } from "../services/shadowCabinet";
 import { db } from "../db";
 import { shadowCabinetAnalyses, qaAudits } from "@shared/schema";
 import { desc } from "drizzle-orm";
+import { requireAdminAccess } from "../middleware/adminAccess";
+import { requestLogger } from "../utils/logger";
 
 const router = Router();
 
-router.post("/analyze", async (req, res) => {
+router.post("/analyze", requireAdminAccess, async (req, res) => {
     try {
+        const log = requestLogger(req);
+        log.info({ operation: 'admin.bots', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Bot admin action');
+
         const { url } = req.body;
         if (!url) {
             return res.status(400).json({ error: "URL is required" });
@@ -27,8 +32,11 @@ router.post("/analyze", async (req, res) => {
     }
 });
 
-router.get("/history", async (req, res) => {
+router.get("/history", requireAdminAccess, async (req, res) => {
     try {
+        const log = requestLogger(req);
+        log.info({ operation: 'admin.bots', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Bot admin action');
+
         const history = await db.select().from(shadowCabinetAnalyses).orderBy(desc(shadowCabinetAnalyses.createdAt)).limit(50);
         res.json(history);
     } catch (error) {
@@ -37,8 +45,11 @@ router.get("/history", async (req, res) => {
     }
 });
 
-router.get("/qa-history", async (req, res) => {
+router.get("/qa-history", requireAdminAccess, async (req, res) => {
     try {
+        const log = requestLogger(req);
+        log.info({ operation: 'admin.bots', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Bot admin action');
+
         const history = await db.select().from(qaAudits).orderBy(desc(qaAudits.createdAt)).limit(20);
         res.json(history);
     } catch (error) {

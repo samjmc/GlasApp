@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, TrendingUp, Download, Calendar, Users, BarChart3, Filter, X } from 'lucide-react';
 import html2canvas from 'html2canvas';
+import { apiClient, apiFetch } from '@/lib/queryClient';
 
 interface TimelineDataPoint {
   date: string;
@@ -110,10 +111,9 @@ export default function IdeologyTimeSeriesChartEnhanced({
       if (compareParty) params.append('compareParty', compareParty);
       if (compareAverage) params.append('compareAverage', 'true');
 
-      const response = await fetch(`/api/ideology-timeline/${userId}?${params}`);
-      const data = await response.json();
+      const data = await apiClient.get(`/api/ideology-timeline/${userId}?${params}`);
 
-      if (!response.ok || !data.success) {
+      if (!data.success) {
         throw new Error(data.message || 'Failed to load ideology timeline');
       }
 
@@ -141,8 +141,29 @@ export default function IdeologyTimeSeriesChartEnhanced({
     });
   };
 
-  const exportCSV = () => {
-    window.location.href = `/api/ideology-timeline/${userId}?format=csv&weeks=${weeks}`;
+  const exportCSV = async () => {
+    const params = new URLSearchParams({
+      weeks: weeks.toString(),
+    });
+    if (fromDate) params.append('fromDate', fromDate);
+    if (toDate) params.append('toDate', toDate);
+    if (compareParty) params.append('compareParty', compareParty);
+    if (compareAverage) params.append('compareAverage', 'true');
+    params.append('format', 'csv');
+
+    try {
+      const response = await apiFetch(`/api/ideology-timeline/${userId}?${params}`);
+      const csv = await response.text();
+      const dataBlob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `ideology-timeline-${userId}.csv`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Error exporting CSV:', err);
+    }
   };
 
   const exportJSON = () => {

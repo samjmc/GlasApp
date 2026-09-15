@@ -21,6 +21,9 @@ import { eq, and, count, sql } from 'drizzle-orm';
 import fs from 'fs';
 import path from 'path';
 import { cached, TTL } from '../../services/cacheService';
+import { isAuthenticated } from '../../middleware/sessionMiddleware';
+import { requireAdminAccess } from '../../middleware/adminAccess';
+import { requestLogger } from '../../utils/logger';
 
 const router = express.Router();
 
@@ -136,22 +139,40 @@ router.get("/constituency", async (req, res, next) => {
 
 /**
  * POST /api/location/users/location - Save user location
+ * Authenticated: the authenticated id is the record key. A body userId, when
+ * present, must match the authenticated identity (IDOR write protection).
  */
-router.post("/users/location", async (req, res, next) => {
+router.post("/users/location", isAuthenticated, async (req, res, next) => {
   try {
     const { userId, latitude, longitude, constituency, county, accuracy } = req.body;
-    
-    if (!userId || !latitude || !longitude) {
-      return res.status(400).json({ error: "User ID, latitude, and longitude are required" });
+
+    if (!latitude || !longitude) {
+      return res.status(400).json({ error: "Latitude and longitude are required" });
     }
-    
+
+    const authenticatedId =
+      (req.user as { id?: string | number } | null | undefined)?.id ??
+      req.session?.userId;
+
+    if (!authenticatedId) {
+      return res.status(401).json({ success: false, message: 'Authentication required' });
+    }
+
+    // A body userId may be present (client convenience); it must match the
+    // authenticated identity or the request is denied.
+    if (userId && String(userId) !== String(authenticatedId)) {
+      return res.status(403).json({ success: false, message: 'Access denied' });
+    }
+
+    const recordId = String(authenticatedId);
+
     // Check if user location already exists
     const existing = await db
       .select()
       .from(userLocations)
-      .where(eq(userLocations.firebaseUid, userId))
+      .where(eq(userLocations.firebaseUid, recordId))
       .limit(1);
-    
+
     if (existing.length > 0) {
       // Update existing location
       await db
@@ -164,11 +185,11 @@ router.post("/users/location", async (req, res, next) => {
           accuracy,
           updatedAt: new Date()
         })
-        .where(eq(userLocations.firebaseUid, userId));
+        .where(eq(userLocations.firebaseUid, recordId));
     } else {
       // Insert new location
       await db.insert(userLocations).values({
-        firebaseUid: userId,
+        firebaseUid: recordId,
         latitude: latitude.toString(),
         longitude: longitude.toString(),
         constituency,
@@ -185,11 +206,21 @@ router.post("/users/location", async (req, res, next) => {
 
 /**
  * GET /api/location/users/by-constituency/:constituency - Get users by constituency
+ * Admin-only: returns user identifiers (privileged data exposure).
  */
-router.get("/users/by-constituency/:constituency", async (req, res, next) => {
+router.get("/users/by-constituency/:constituency", requireAdminAccess, async (req, res, next) => {
   try {
     const { constituency } = req.params;
-    
+
+    requestLogger(req).info(
+      {
+        operation: 'admin.geographic.byConstituency',
+        actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId,
+        constituency
+      },
+      'Constituency user lookup'
+    );
+
     const users = await db
       .select({
         firebaseUid: userLocations.firebaseUid,

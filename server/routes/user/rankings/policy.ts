@@ -146,8 +146,13 @@ router.get('/user/me/article/:articleId', isAuthenticated, asyncHandler(async (r
  * GET /api/user/rankings/policy/user/:userId/article/:articleId
  * Get user's vote on a specific article (legacy - backward compatibility)
  */
-router.get('/user/:userId/article/:articleId', asyncHandler(async (req: Request, res: Response) => {
+router.get('/user/:userId/article/:articleId', isAuthenticated, asyncHandler(async (req: Request, res: Response) => {
   const { userId, articleId } = req.params;
+  const callerId = (req as any).user?.id;
+
+  if (String(callerId) !== userId && (req as any).user?.app_metadata?.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Access denied' });
+  }
 
   const { data: votes, error } = await supabase
     .from('user_policy_votes')
@@ -313,8 +318,14 @@ router.post('/', isAuthenticated, asyncHandler(async (req: Request, res: Respons
  * GET /api/user/rankings/policy/user/:userId/personalized-scores
  * Get personalized TD scores for a user based on their votes
  */
-router.get('/user/:userId/personalized-scores', asyncHandler(async (req: Request, res: Response) => {
+router.get('/user/:userId/personalized-scores', isAuthenticated, asyncHandler(async (req: Request, res: Response) => {
   const { userId } = req.params;
+  const callerId = (req as any).user?.id;
+
+  if (String(callerId) !== userId && (req as any).user?.app_metadata?.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Access denied' });
+  }
+
   const { constituency, party, limit } = req.query;
 
   const scores = await PersonalizedScoringService.getPersonalizedRankings(userId, {
@@ -330,8 +341,13 @@ router.get('/user/:userId/personalized-scores', asyncHandler(async (req: Request
  * GET /api/user/rankings/policy/user/:userId/td/:politicianName
  * Get single TD's personalized score for a user
  */
-router.get('/user/:userId/td/:politicianName', asyncHandler(async (req: Request, res: Response) => {
+router.get('/user/:userId/td/:politicianName', isAuthenticated, asyncHandler(async (req: Request, res: Response) => {
   const { userId, politicianName } = req.params;
+  const callerId = (req as any).user?.id;
+
+  if (String(callerId) !== userId && (req as any).user?.app_metadata?.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Access denied' });
+  }
 
   const score = await PersonalizedScoringService.getTDPersonalizedScore(
     userId,
@@ -351,8 +367,13 @@ router.get('/user/:userId/td/:politicianName', asyncHandler(async (req: Request,
  * GET /api/user/rankings/policy/user/:userId/value-alignment
  * Get user's overall value alignment (left vs right)
  */
-router.get('/user/:userId/value-alignment', asyncHandler(async (req: Request, res: Response) => {
+router.get('/user/:userId/value-alignment', isAuthenticated, asyncHandler(async (req: Request, res: Response) => {
   const { userId } = req.params;
+  const callerId = (req as any).user?.id;
+
+  if (String(callerId) !== userId && (req as any).user?.app_metadata?.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Access denied' });
+  }
 
   const alignment = await PersonalizedScoringService.getUserValueAlignment(userId);
 
@@ -363,9 +384,9 @@ router.get('/user/:userId/value-alignment', asyncHandler(async (req: Request, re
  * DELETE /api/user/rankings/policy/:voteId
  * Delete a policy vote
  */
-router.delete('/:voteId', asyncHandler(async (req: Request, res: Response) => {
+router.delete('/:voteId', isAuthenticated, asyncHandler(async (req: Request, res: Response) => {
   const { voteId } = req.params;
-  const { userId } = req.body;
+  const callerId = (req as any).user?.id;
 
   const { data: vote, error: checkError } = await supabase
     .from('user_policy_votes')
@@ -375,7 +396,7 @@ router.delete('/:voteId', asyncHandler(async (req: Request, res: Response) => {
 
   if (checkError) throw checkError;
 
-  if (vote.user_id !== userId) {
+  if (vote.user_id !== callerId) {
     return res.status(403).json(
       formatError('FORBIDDEN', 'Not authorized to delete this vote')
     );

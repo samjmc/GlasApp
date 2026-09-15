@@ -29,6 +29,7 @@ import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector } from '../../constants/ideolo
 import { asyncHandler } from '../../middleware/errorHandler';
 import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 import { requireAdminAccess } from '../../middleware/adminAccess';
+import { requestLogger } from '../../utils/logger';
 
 const router = Router();
 
@@ -311,8 +312,12 @@ router.get('/td/:name/elo', asyncHandler(async (req, res) => {
 /**
  * POST /api/parliamentary/scores/trigger-scrape - Trigger manual news scrape
  */
-router.post('/trigger-scrape', asyncHandler(async (req, res) => {
-  console.log('🔄 Manual news scrape triggered...');
+router.post('/trigger-scrape', requireAdminAccess, asyncHandler(async (req, res) => {
+  const log = requestLogger(req);
+  log.info(
+    { operation: 'admin.scores.triggerScrape', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId },
+    'Manual news scrape triggered'
+  );
 
   const job = new DailyNewsScraperJob();
 

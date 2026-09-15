@@ -44,6 +44,8 @@ export const sessionMiddleware = session({
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
   // Check 1: Session-based auth (Replit)
   if (req.session && req.session.userId) {
+    // Expose a minimal identity so downstream role checks can read req.user.
+    req.user = { id: req.session.userId, sub: String(req.session.userId) };
     return next();
   }
 
