@@ -8,6 +8,7 @@ import { PersonalRankingsService } from '../../../services/personalRankingsServi
 import { IDEOLOGY_DIMENSIONS } from '../../../constants/ideology.js';
 import { asyncHandler } from '../../../middleware/errorHandler.js';
 import { formatSuccess, formatError, ErrorCodes } from '../../../utils/responseFormatters.js';
+import { isAuthenticated } from '../../../auth/supabaseAuth.js';
 
 const router = Router();
 
@@ -248,13 +249,25 @@ export function formatRankingsResponse(rankings: unknown[]) {
 /**
  * POST /api/user/rankings/personal/quiz - Submit quiz results
  * Legacy: POST /api/personal/quiz
+ *
+ * Auth added 2026-09-21: this endpoint took userId from the request body with no
+ * verification, so any caller could write quiz results to any other user's account
+ * by supplying their id. userId is now taken from the authenticated session only;
+ * a body-supplied userId is ignored rather than trusted.
  */
-router.post('/quiz', asyncHandler(async (req: Request, res: Response) => {
-  const { userId, answers } = req.body;
+router.post('/quiz', isAuthenticated, asyncHandler(async (req: Request, res: Response) => {
+  const userId = (req as any).user?.id;
+  const { answers } = req.body;
 
-  if (!userId || !answers) {
+  if (!userId) {
+    return res.status(401).json(
+      formatError('UNAUTHORIZED', 'Authentication required')
+    );
+  }
+
+  if (!answers) {
     return res.status(400).json(
-      formatError('MISSING_REQUIRED_FIELD', 'userId and answers are required')
+      formatError('MISSING_REQUIRED_FIELD', 'answers is required')
     );
   }
 
