@@ -36,6 +36,53 @@ Facts that drive the design:
 
 ---
 
+## 2a. The scoring model (v1 of the one method)
+
+Decisions taken 2026-09-21: **A = build clean, no dump. B = user ratings deleted.** Target project
+is GlasCore (`ihecemdupqnxltdyebsh`), shared with GlasIntelligence. GlasIntelligence owns eleven
+tables in `public` (`profiles`, `projects`, `reports`, `simulations`, …) and references
+`auth.users`. So the two apps share the project and its Auth, not data. **GlasApp's tables live in
+their own Postgres schema, `politics`**, so nothing can ever collide and grants/RLS are per-app.
+
+What the code does today, and what the model keeps or replaces:
+
+| Layer | Today | v1 |
+|---|---|---|
+| Per-article signal | Multi-agent LLM panel → consensus 0–100 per dimension → banded map to −10..+10 → ELO delta `impact/10 × K(32) × credibility × confidence`, time-decayed past 90 days | **Keep.** It is sound, additive, decayed and credibility-weighted. Moved to `panel.ts` + `elo.ts`, unchanged. |
+| Dimensions | 5 ELOs: transparency, effectiveness, integrity, consistency, constituency_service. The panel hard-wires constituency_service impact to 0, so it never moves. | **4 dimensions.** constituency_service is dropped until a real signal exists. Baseline 1500 for all. |
+| ELO → 0–100 | `(elo−1000)/10` in `scoreConverter.ts`; `(elo−1200)/6` in `personalizedScoringService.ts` | **One function** in `weights.ts`: `clamp((elo − 1000) / 10)`. |
+| News pillar | `50 + Σ(impact)/5` over 90 days, unbounded, saturates for any TD with >25 articles | **`pct(overall_elo)`.** The ELO already is the decayed, credibility-weighted aggregate of every article. The sum is deleted. |
+| Parliamentary pillar | `calculateParliamentaryScore`: questions vs a 200 benchmark (60%), attendance vs 95% (40%) | **Keep**, moved to `rollup.ts`. Inputs are columns on `tds`. |
+| Debate pillar | `td_debate_running_scores.performance/effectiveness/influence` (separate subsystem) | **Keep as a read-only input.** Debate scoring is its own pass. |
+| Overall 0–100 | Computed inside `GET /td/:name`; weights 0.50/0.25/0.15/0.10 there, 0.30/0.25/0.20/0.15/0.10 in `tdScoreCalculator`, 0.50/0.30/0.15/0.05 in `comprehensive…`, 0.40/0.30/0.10/0.15/0.05 in `unified…` | **One weight table in `weights.ts`:** news 0.45, parliamentary 0.30, debate 0.25. Missing pillars renormalise (the route already does this correctly; it is the one thing worth keeping from it). Computed in `rollup.ts`, **stored** on `td_scores`, recomputed after every pipeline run. |
+| Ranks and trends | `national_rank` written by a dead service; weekly/monthly deltas from fields that do not exist | **`rollup.ts`** computes national, party and constituency rank over active TDs, and 7/30-day ELO deltas from `td_score_history`. |
+| Baseline modifier | `td_historical_baselines.baseline_modifier` returned by one dead route; unclear if ever applied | **Out of the formula.** Table kept: it is paid-for research content that the researched-TDs page shows. |
+| Party score | Two identical copies averaging member ELO | **One**, `party.ts`. |
+| User ratings | `user_td_ratings` + `/api/ratings` + unmounted `TDRatingCard` | **Deleted** (decision B). |
+
+**Tables in `politics`:**
+
+```
+tds                 id, name, party, constituency, image_url, is_active, offices, committees,
+                    question_count_oral, question_count_written, attendance_pct, member_code, …
+                    (the profile half of today's misnamed td_scores)
+td_scores           td_id PK/FK, overall_elo, transparency_elo, effectiveness_elo, integrity_elo,
+                    consistency_elo, overall_score, news_score, parliamentary_score, debate_score,
+                    national_rank, party_rank, constituency_rank, elo_change_7d, elo_change_30d,
+                    total_stories, last_scored_at
+td_score_history    id, td_id, article_id, dimension, old_elo, new_elo, delta, impact, credibility,
+                    confidence, created_at
+article_td_scores   article_id, td_id, impact, dimension_impacts jsonb, reasoning, created_at
+td_policy_stances   (as today, keyed by td_id)
+party_scores        party, overall_score, avg_elo, member_count, computed_at
+td_historical_baselines  (as today, keyed by td_id)
+```
+
+Everything is keyed by `td_id`, not by `politician_name` string matching with `ilike`, which is how
+today's code joins.
+
+**Data access** — see decision D below; the SQL above is the same either way.
+
 ## 2. Target: one module, one router, one schema
 
 ```
@@ -125,6 +172,21 @@ the old columns alive.
 The card is not mounted anywhere, the schema and the code disagree on the columns, and the only
 engine that blended ratings into a score was the dead `comprehensiveTDScoringService`.
 **Recommendation:** delete. It can be rebuilt on purpose later if wanted.
+
+**D. The data layer, for the whole rebuild, not just scoring.** Today 95% of server code uses
+`supabase-js` (PostgREST) with the service-role key; Drizzle is wired but its pool is hard-coded
+`null`, so `shared/schema.ts` is documentation, not truth. Every rebuilt module will hit this, so
+it is decided once:
+
+- **Option 1 — Drizzle + node-postgres to GlasCore (recommended).** Typed queries, real joins
+  (`tds ⋈ td_scores`), transactions, `pgSchema('politics')` support, and `drizzle-kit generate`
+  produces the migration SQL from the schema file so schema and code cannot drift. `supabase-js`
+  stays for Auth only. The 14 browser-direct table reads go through the API instead, which also
+  makes RLS a non-issue. The old "SCRAM auth issues on Windows" comment is a connection-string
+  problem, not a driver one.
+- **Option 2 — supabase-js everywhere.** Keeps the current style. Weak typing, no joins across
+  tables in a non-`public` schema without views, PostgREST needs the `politics` schema exposed,
+  and the schema file stays hand-maintained.
 
 **C (not blocking, noted):** the multi-agent LLM panel is kept as-is in v1. It is the most
 capable scorer and the only one that runs, but it is also expensive (several OpenAI calls per
