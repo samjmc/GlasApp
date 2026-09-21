@@ -7,6 +7,7 @@ import { ActivityTracker } from "./services/activityTracker";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { requireAdminAccess } from "./middleware/adminAccess";
+import { aiRateLimit, publicWriteRateLimit } from "./middleware/rateLimit";
 import { registerAuthRoutes } from "./routes/auth";
 import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
@@ -62,10 +63,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   await registerAuthRoutes(app);
   
   // Register API routes
-  app.use("/api/ai", aiAnalysisRoutes);
-  app.use("/api/ai", quizRoutes); // Quiz assistant
-  app.use("/api/chat", chatRoutes);
-  app.use("/api/chat", politicianChatRoutes); // Digital Twin politician chat
+  // LLM-backed endpoints are public by design; the limiter caps per-IP cost.
+  app.use("/api/ai", aiRateLimit, aiAnalysisRoutes);
+  app.use("/api/ai", aiRateLimit, quizRoutes); // Quiz assistant
+  app.use("/api/chat", aiRateLimit, chatRoutes);
+  app.use("/api/chat", aiRateLimit, politicianChatRoutes); // Digital Twin politician chat
   app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
   // Register geographic routes (consolidated - includes constituencies, location, heatmap)
@@ -82,15 +84,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/sms", smsRoutes);
   
   // Register storytelling routes with server-side caching
-  app.use("/api/constituency/story", storytellingRoutes);
+  app.use("/api/constituency/story", aiRateLimit, storytellingRoutes);
   
   // Register the 2024 Irish Election Results routes
   app.use("/api/elections", electionRoutes);
   
   // Register the Personalized Constituency Insights routes
-  app.use("/api/personalized-insights", personalizedInsightsRoutes);
+  app.use("/api/personalized-insights", aiRateLimit, personalizedInsightsRoutes);
   // Enhanced profile now in AI analysis module
-  app.use("/api/enhanced-profile", aiAnalysisRoutes);
+  app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
   // Register consolidated political routes (includes parties, pledges, sentiment)
   app.use("/api/political", politicalRoutes);
@@ -155,7 +157,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
 
   // Register user rating routes for TDs
-  app.use("/api/ratings", tdRatingsRoutes);
+  // Anonymous submissions are allowed by design; the limiter caps vote stuffing.
+  app.use("/api/ratings", publicWriteRateLimit, tdRatingsRoutes);
   
   // Register ideology timeline routes (weekly ideology evolution data)
   app.use("/api/ideology-timeline", ideologyTimelineRoutes);
@@ -194,12 +197,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           description: z.string(),
         })),
         shareCode: z.string(),
-        userId: z.number().optional(),
         keyInsights: z.array(z.string()).optional(),
       });
 
       const validatedData = resultsSchema.parse(req.body);
-      
+      // Identity comes from the session, never from the request body: a
+      // body-supplied userId let any caller attribute results to any account.
+      const sessionUserId = req.session?.userId ?? null;
+
       // Save the results
       const result = await storage.saveQuizResult({
         economicScore: validatedData.economicScore.toString(),
@@ -210,15 +215,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         similarFigures: validatedData.similarFigures,
         uniqueCombinations: validatedData.uniqueCombinations,
         shareCode: validatedData.shareCode,
-        userId: validatedData.userId || null,
+        userId: sessionUserId,
         keyInsights: validatedData.keyInsights || [],
       });
 
       // Track quiz completion activity
-      if (validatedData.userId) {
+      if (sessionUserId) {
         try {
           await ActivityTracker.logQuizCompletion(
-            validatedData.userId,
+            sessionUserId,
             {
               economicScore: validatedData.economicScore,
               socialScore: validatedData.socialScore,
