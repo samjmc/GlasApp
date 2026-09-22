@@ -1,28 +1,13 @@
 import cron from "node-cron";
 import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
 import { runPipeline } from "../scoring";
-
-// Lazy imports for news services (avoids circular dependency issues)
-let ArticleTriageJob: unknown = null;
-let NewsScraperService: unknown = null;
-
-async function loadScoringServices() {
-  if (!ArticleTriageJob) {
-    const triageModule = await import("../jobs/articleTriageJob.js");
-    ArticleTriageJob = triageModule.ArticleTriageJob;
-  }
-  if (!NewsScraperService) {
-    const scraperModule = await import("./newsScraperService.js");
-    NewsScraperService = scraperModule.NewsScraperService;
-  }
-}
+import { ingest } from "../news/ingest";
 
 /** Initialize and start the scheduled jobs. */
 export function initScheduler() {
   console.log("⏰ Scheduler initialized.");
-  console.log("   📋 Article Triage: Every 30 minutes");
+  console.log("   📰 News ingest: every 2 hours, at :30 on odd hours");
   console.log("   🎯 TD Scoring: Every 2 hours");
-  console.log("   📰 News Scraper: Every 4 hours");
   console.log("   🗞️ Daily Briefing: 7:00 AM Dublin");
   console.log("   🕵️ QA Audit: Sundays at midnight");
 
@@ -30,21 +15,13 @@ export function initScheduler() {
   // NEWS SCORING PIPELINE (Multi-Agent Team)
   // ═══════════════════════════════════════════════════════════════════
 
-  // Article Triage - Every 30 minutes
-  // Quick importance scoring, sets visibility, marks top 25% for full scoring
-  // Cost: ~$0.0005 per article
-  cron.schedule('*/30 * * * *', async () => {
-    console.log("\n📋 [Scheduler] Running Article Triage...");
+  // News ingest - 30 minutes before each scoring run, so scoring sees fresh articles.
+  cron.schedule('30 1-23/2 * * *', async () => {
     try {
-      await loadScoringServices();
-      const stats = await ArticleTriageJob.run({
-        batchSize: 30,
-        topPercentile: 25,
-        minImportanceForScoring: 40
-      });
-      console.log(`✅ [Scheduler] Triage complete: ${stats.articlesProcessed} articles processed, ${stats.articlesMarkedForScoring} marked for scoring`);
+      const stats = await ingest();
+      console.log(`📰 [Scheduler] Ingest: ${stats.inserted} new of ${stats.fetched} fetched (${stats.feedErrors.length} feed errors)`);
     } catch (error: unknown) {
-      console.error("❌ [Scheduler] Article triage failed:", error.message);
+      console.error("❌ [Scheduler] News ingest failed:", error instanceof Error ? error.message : error);
     }
   }, {
     scheduled: true,
@@ -71,22 +48,6 @@ export function initScheduler() {
       }
     } catch (error: unknown) {
       console.error("❌ [Scheduler] TD Scoring failed:", error.message);
-    }
-  }, {
-    scheduled: true,
-    timezone: "Europe/Dublin"
-  });
-
-  // News Scraper - Every 4 hours
-  // Fetches new articles from Irish news sources
-  cron.schedule('0 */4 * * *', async () => {
-    console.log("\n📰 [Scheduler] Running News Scraper...");
-    try {
-      await loadScoringServices();
-      const articles = await NewsScraperService.fetchAllIrishNews({ lookbackHours: 6 });
-      console.log(`✅ [Scheduler] News Scraper found ${articles.length} articles`);
-    } catch (error: unknown) {
-      console.error("❌ [Scheduler] News Scraper failed:", error.message);
     }
   }, {
     scheduled: true,

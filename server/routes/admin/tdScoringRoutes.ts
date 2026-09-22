@@ -1,52 +1,19 @@
 /**
  * TD Scoring Admin Routes
- * 
+ *
  * Endpoints for cronjob.org to trigger:
- * - Article triage (Layer 2) - runs every 15 mins
  * - TD scoring (Layers 3-4) - runs hourly
- * 
+ * - Ingest + scoring in one call (full-pipeline)
+ *
  * These are designed to be called by cronjob.org via HTTP POST.
  */
 
 import { Router } from 'express';
-import { ArticleTriageJob } from '../../jobs/articleTriageJob.js';
+import { ingest } from '../../news/ingest.js';
+import { statusCounts } from '../../news/repository.js';
 import { runPipeline } from '../../scoring/index.js';
 
 const router = Router();
-
-/**
- * POST /api/admin/td-scoring/triage
- * 
- * Layer 2: Quick importance triage (runs every 15 minutes)
- * - Scores article importance
- * - Sets visible: true for all
- * - Marks top 25% for full scoring
- * 
- * Cost: ~$0.0005 per article
- */
-router.post('/triage', async (req, res, next) => {
-  try {
-    console.log('📋 Article triage job triggered via API...');
-    
-    const options = {
-      batchSize: req.body.batchSize || 30,
-      topPercentile: req.body.topPercentile || 25,
-      minImportanceForScoring: req.body.minImportance || 40
-    };
-    
-    const stats = await ArticleTriageJob.run(options);
-    
-    res.json({
-      success: true,
-      message: 'Article triage completed',
-      stats
-    });
-    
-  } catch (error: unknown) {
-    console.error('❌ Triage job failed:', error);
-    next(error);
-  }
-});
 
 /**
  * POST /api/admin/td-scoring/run
@@ -86,20 +53,19 @@ router.post('/run', async (req, res, next) => {
 /**
  * GET /api/admin/td-scoring/status
  * 
- * Health check endpoint - shows pending articles
+ * Health check endpoint - article counts by pipeline status
  */
 router.get('/status', async (req, res, next) => {
   try {
-    const status = await ArticleTriageJob.getStatus();
-    
+    const counts = await statusCounts();
+
     res.json({
       success: true,
       status: {
-        pendingTriage: status.pendingTriage,
-        pendingScoring: status.pendingScoring,
-        message: status.pendingTriage === 0 && status.pendingScoring === 0
+        ...counts,
+        message: counts.pending === 0 && counts.claimed === 0
           ? 'All caught up!'
-          : `${status.pendingTriage} articles awaiting triage, ${status.pendingScoring} awaiting scoring`
+          : `${counts.pending} articles awaiting scoring, ${counts.claimed} being scored`
       }
     });
     
@@ -113,23 +79,19 @@ router.get('/status', async (req, res, next) => {
  * POST /api/admin/td-scoring/full-pipeline
  * 
  * Run the full pipeline in sequence:
- * 1. Triage (set visibility)
+ * 1. Ingest (fetch and store new articles)
  * 2. Event deduplication + scoring
- * 
+ *
  * Useful for manual testing or catch-up processing.
  */
 router.post('/full-pipeline', async (req, res, next) => {
   try {
     console.log('🚀 Full TD scoring pipeline triggered via API...');
-    
-    // Step 1: Triage
-    console.log('\n📋 Step 1: Running article triage...');
-    const triageStats = await ArticleTriageJob.run({
-      batchSize: req.body.batchSize || 50,
-      topPercentile: req.body.topPercentile || 25,
-      minImportanceForScoring: req.body.minImportance || 40
-    });
-    
+
+    // Step 1: Ingest
+    console.log('\n📰 Step 1: Running news ingest...');
+    const ingestStats = await ingest();
+
     // Step 2: Scoring
     console.log('\n🎯 Step 2: Running TD scoring...');
     const scoringStats = await runPipeline({
@@ -141,7 +103,7 @@ router.post('/full-pipeline', async (req, res, next) => {
     res.json({
       success: true,
       message: 'Full pipeline completed',
-      triage: triageStats,
+      ingest: ingestStats,
       scoring: scoringStats
     });
     

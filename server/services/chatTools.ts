@@ -2,12 +2,12 @@ import { db } from "../db";
 import { supabaseDb } from "../db";
 import { sql, desc, eq, ilike, or, and } from "drizzle-orm";
 import {
-  newsArticles,
   parties,
   parliamentaryActivity,
   policyPromises
 } from "@shared/schema";
 import { eloToPercent, repository as scores } from "../scoring";
+import * as newsRepo from "../news/repository";
 import { getVotingRecord, getRecentVotes, getVotingStats, getRebelVotes, getVotesByCategory, getPolicyPositions } from "./politicianAgent";
 
 // Define the tools for OpenAI
@@ -197,16 +197,12 @@ export const chatToolsImplementation = {
     const score = found.score;
 
     // 2. Get Recent News mentions
-    const news = await db.select({
-      title: newsArticles.title,
-      summary: newsArticles.aiSummary,
-      date: newsArticles.publishedDate,
-      sentiment: newsArticles.sentiment
-    })
-    .from(newsArticles)
-    .where(ilike(newsArticles.politicianName, name))
-    .orderBy(desc(newsArticles.publishedDate))
-    .limit(3);
+    const news = (await newsRepo.feedForTd(td.name, 3)).map((a) => ({
+      title: a.title,
+      summary: a.summary,
+      date: a.publishedAt,
+      sentiment: a.sentiment
+    }));
 
     // 3. Get Activity Stats
     const activity = await db.select()
@@ -340,28 +336,12 @@ export const chatToolsImplementation = {
       return JSON.stringify({ error: "Database not available" });
     }
 
-    let query = db.select({
-      title: newsArticles.title,
-      summary: newsArticles.aiSummary,
-      date: newsArticles.publishedDate,
-      source: newsArticles.source
-    })
-    .from(newsArticles)
-    .orderBy(desc(newsArticles.publishedDate))
-    .limit(limit);
-
-    if (topic) {
-      // @ts-ignore - ilike dynamic where clause
-      query = query.where(
-        or(
-          ilike(newsArticles.title, `%${topic}%`),
-          ilike(newsArticles.content, `%${topic}%`),
-          ilike(newsArticles.aiSummary, `%${topic}%`)
-        )
-      );
-    }
-
-    const results = await query;
+    const results = (await newsRepo.searchRecent(topic, Math.min(Math.max(limit, 1), 20))).map((a) => ({
+      title: a.title,
+      summary: a.summary,
+      date: a.publishedAt,
+      source: a.source
+    }));
     return JSON.stringify(results);
   },
 

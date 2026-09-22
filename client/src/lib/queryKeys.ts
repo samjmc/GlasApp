@@ -21,7 +21,7 @@ export const queryKeys = {
       ["td-consistency", politicianName] as const,
     forChat: () => ["tds-for-chat"] as const,
     rankings: () => ["td-rankings"] as const,
-    news: (name: string) => ["td-news-v2", name] as const,
+    news: (name: string) => ["td-news-v3", name] as const,
     debateMetrics: (politicianName: string) =>
       ["td-debate-metrics", politicianName] as const,
     debateHistory: (politicianName: string) =>
@@ -41,9 +41,9 @@ export const queryKeys = {
     polling: (party: string | undefined) => ["party-polling", party] as const,
   },
   news: {
-    feed: (sortBy: string, page: number) => ["news-feed-v5", sortBy, page] as const,
+    feed: (sortBy: string, page: number) => ["news-feed-v6", sortBy, page] as const,
     biggestImpact: (regionCode: string | null) =>
-      ["biggest-impact-today-v4", regionCode] as const,
+      ["biggest-impact-today-v5", regionCode] as const,
   },
   debates: {
     leaderboard: (periodKey: string) => ["debates", "leaderboard", periodKey] as const,
