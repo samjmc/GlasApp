@@ -1470,6 +1470,8 @@ router.get('/alerts', async (req: Request, res: Response) => {
   }
 });
 
+// debate_alerts rows are global (no owner column), so changing one's status is a
+// moderation action, not a per-user preference.
 router.post('/alerts/:alertId/status', requireJob, async (req: Request, res: Response) => {
   try {
     if (!supabaseDb) {

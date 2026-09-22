@@ -249,6 +249,11 @@ export function formatRankingsResponse(rankings: unknown[]) {
 /**
  * POST /api/user/rankings/personal/quiz - Submit quiz results
  * Legacy: POST /api/personal/quiz
+ *
+ * Auth added 2026-09-21: this endpoint took userId from the request body with no
+ * verification, so any caller could write quiz results to any other user's account
+ * by supplying their id. userId is now taken from the authenticated session only;
+ * a body-supplied userId is ignored rather than trusted.
  */
 router.post('/quiz', requireAuth, asyncHandler(async (req: Request, res: Response) => {
   // Identity comes from the verified token. A body-supplied userId used to let any

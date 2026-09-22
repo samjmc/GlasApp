@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Plus, 
@@ -124,15 +125,7 @@ const AdminPage = () => {
 
   // Create pledge mutation
   const createPledgeMutation = useMutation({
-    mutationFn: async (pledgeData: unknown) => {
-      const response = await fetch('/api/pledges', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(pledgeData)
-      });
-      if (!response.ok) throw new Error('Failed to create pledge');
-      return response.json();
-    },
+    mutationFn: (pledgeData: unknown) => apiClient.post('/api/pledges', pledgeData),
     onSuccess: () => {
       toast({ title: "Success", description: "Pledge created successfully" });
       setPledgeForm({
@@ -157,15 +150,8 @@ const AdminPage = () => {
 
   // Update pledge mutation
   const updatePledgeMutation = useMutation({
-    mutationFn: async ({ id, data }: { id: number; data: unknown }) => {
-      const response = await fetch(`/api/pledges/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (!response.ok) throw new Error('Failed to update pledge');
-      return response.json();
-    },
+    mutationFn: ({ id, data }: { id: number; data: unknown }) =>
+      apiClient.put(`/api/pledges/${id}`, data),
     onSuccess: () => {
       toast({ title: "Success", description: "Pledge updated successfully" });
       setEditingPledge(null);
@@ -182,13 +168,7 @@ const AdminPage = () => {
 
   // Delete pledge mutation
   const deletePledgeMutation = useMutation({
-    mutationFn: async (id: number) => {
-      const response = await fetch(`/api/pledges/${id}`, {
-        method: 'DELETE'
-      });
-      if (!response.ok) throw new Error('Failed to delete pledge');
-      return response.json();
-    },
+    mutationFn: (id: number) => apiClient.delete(`/api/pledges/${id}`),
     onSuccess: () => {
       toast({ title: "Success", description: "Pledge deleted successfully" });
       queryClient.invalidateQueries({ queryKey: ['/api/pledges/party'] });
@@ -204,15 +184,8 @@ const AdminPage = () => {
 
   // Create action mutation
   const createActionMutation = useMutation({
-    mutationFn: async (actionData: PledgeActionInput) => {
-      const response = await fetch(`/api/pledges/${actionData.pledgeId}/actions`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(actionData)
-      });
-      if (!response.ok) throw new Error('Failed to create action');
-      return response.json();
-    },
+    mutationFn: (actionData: PledgeActionInput) =>
+      apiClient.post(`/api/pledges/${actionData.pledgeId}/actions`, actionData),
     onSuccess: () => {
       toast({ title: "Success", description: "Action recorded successfully" });
       setActionForm({
@@ -237,13 +210,8 @@ const AdminPage = () => {
 
   // Recalculate scores mutation
   const recalculateScoresMutation = useMutation({
-    mutationFn: async (partyId: string) => {
-      const response = await fetch(`/api/pledges/performance/${partyId}/recalculate`, {
-        method: 'POST'
-      });
-      if (!response.ok) throw new Error('Failed to recalculate scores');
-      return response.json();
-    },
+    mutationFn: (partyId: string) =>
+      apiClient.post(`/api/pledges/performance/${partyId}/recalculate`),
     onSuccess: () => {
       toast({ title: "Success", description: "Performance scores recalculated" });
       queryClient.invalidateQueries({ queryKey: ['/api/pledges'] });

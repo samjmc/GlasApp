@@ -1,4 +1,5 @@
 import { optionalAuth, requireAuth, requireJob } from './auth';
+import { aiRateLimit } from "./middleware/rateLimit";
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
@@ -58,10 +59,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   await registerAuthRoutes(app);
   
   // Register API routes
-  app.use("/api/ai", aiAnalysisRoutes);
-  app.use("/api/ai", quizRoutes); // Quiz assistant
-  app.use("/api/chat", chatRoutes);
-  app.use("/api/chat", politicianChatRoutes); // Digital Twin politician chat
+  // LLM-backed endpoints are public by design; the limiter caps per-IP cost.
+  app.use("/api/ai", aiRateLimit, aiAnalysisRoutes);
+  app.use("/api/ai", aiRateLimit, quizRoutes); // Quiz assistant
+  app.use("/api/chat", aiRateLimit, chatRoutes);
+  app.use("/api/chat", aiRateLimit, politicianChatRoutes); // Digital Twin politician chat
   app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
   // Register geographic routes (consolidated - includes constituencies, location, heatmap)
@@ -79,13 +81,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/sms", smsRoutes);
   
   // Register storytelling routes with server-side caching
-  app.use("/api/constituency/story", storytellingRoutes);
+  app.use("/api/constituency/story", aiRateLimit, storytellingRoutes);
   
   // Register the 2024 Irish Election Results routes
   app.use("/api/elections", electionRoutes);
   
   // Enhanced profile now in AI analysis module
-  app.use("/api/enhanced-profile", aiAnalysisRoutes);
+  app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
   // Register consolidated political routes (includes parties, pledges, sentiment)
   app.use("/api/political", politicalRoutes);

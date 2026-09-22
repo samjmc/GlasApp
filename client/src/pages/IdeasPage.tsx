@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ChevronUp, ChevronDown, Plus, Flame, Star, Users, Lightbulb } from "lucide-react";
 
-import _1f1e8_1f1ed from "@assets/1f1e8-1f1ed.png";
+import _1f1e8_1f1ed from "@assets/flag-ie.png";
 
 interface Solution {
   id: number;

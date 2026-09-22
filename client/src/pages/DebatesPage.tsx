@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "wouter";
+import { apiClient } from "@/lib/queryClient";
 import { PageHeader } from "@/components/PageHeader";
 import {
   ResponsiveContainer,
@@ -622,19 +623,8 @@ const DebatesPage = () => {
   });
 
   const updateAlertStatus = useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: string }) => {
-      const response = await fetch(`/api/debates/alerts/${encodeURIComponent(id)}/status`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status }),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to update alert status");
-      }
-      return response.json();
-    },
+    mutationFn: ({ id, status }: { id: string; status: string }) =>
+      apiClient.post(`/api/debates/alerts/${encodeURIComponent(id)}/status`, { status }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["debates", "alerts"] });
     },
