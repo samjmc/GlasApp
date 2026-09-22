@@ -28,7 +28,6 @@ import newsFeedRoutes from "./routes/newsFeedRoutes";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
 import newsScraperRoutes from "./routes/admin/newsScraperRoutes";
-import parliamentaryAdminRoutes from "./routes/admin/parliamentaryRoutes";
 import baselineAdminRoutes from "./routes/admin/baselineRoutes";
 import manualArticleRoutes from "./routes/admin/manualArticleRoutes";
 import { PersonalRankingsService } from "./services/personalRankingsService.js";
@@ -36,13 +35,9 @@ import scoresRoutes from "./routes/scores";
 import userRankingsRoutes from "./routes/user/rankings/index.js";
 import ideologyTimelineRoutes from "./routes/ideologyTimelineRoutesEnhanced";
 import dailySessionRoutes from "./routes/dailySessionRoutes";
-import debateWorkspaceRoutes from "./routes/debateWorkspaceRoutes";
-import debatesRoutes from "./routes/debatesRoutes";
-import debateMonitoringRoutes from "./routes/debateMonitoringRoutes";
+import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
-import politicianChatRoutes from "./routes/politicianChatRoutes";
 
-import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
 
@@ -63,7 +58,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/ai", aiRateLimit, aiAnalysisRoutes);
   app.use("/api/ai", aiRateLimit, quizRoutes); // Quiz assistant
   app.use("/api/chat", aiRateLimit, chatRoutes);
-  app.use("/api/chat", aiRateLimit, politicianChatRoutes); // Digital Twin politician chat
   app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
   // Register geographic routes (consolidated - includes constituencies, location, heatmap)
@@ -102,7 +96,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // TD, party and constituency scores
   app.use("/api/scores", scoresRoutes);
 
-  // Parliamentary activity (static Oireachtas data) and policy voting analysis
+  // Dáil divisions, debates and each TD's parliament record
+  app.use("/api/parliament", parliamentRoutes);
+
+  // Policy voting analysis
   app.use("/api/parliamentary", parliamentaryRoutes);
   app.use("/api/policy-votes", parliamentaryRoutes);
   
@@ -114,9 +111,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Register news feed routes for homepage articles
   app.use("/api/news-feed", newsFeedRoutes);
-  app.use("/api/debate-monitoring", debateMonitoringRoutes);
-  app.use("/api/debate-workspace", debateWorkspaceRoutes);
-  app.use("/api/debates", debatesRoutes);
   
   // Register user rankings routes (consolidated - personal rankings, policy voting, category rankings)
   app.use("/api/user/rankings", userRankingsRoutes);
@@ -136,8 +130,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news-scraper", requireJob, newsScraperRoutes);
-  app.use("/api/admin/parliamentary", requireJob, parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", requireJob, debateAdminRoutes);
   app.use("/api/admin/baselines", requireJob, baselineAdminRoutes);
   app.use("/api/admin/articles", requireJob, manualArticleRoutes);
   app.use("/api/admin/td-scoring", requireJob, tdScoringAdminRoutes);

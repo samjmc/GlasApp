@@ -21,7 +21,7 @@ import { partyDimensionsData, type PartyDimensions as ImportedPartyDimensions } 
 import { ChevronDown, ChevronUp, TrendingUp, Shield, CheckCircle, AlertTriangle, Clock, Target, Info, Users, Eye, FileText, ExternalLink, DollarSign, Building, Settings, Vote, BarChart3, Grid3X3, List } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import PledgeVotingInterface from '@/components/PledgeVotingInterface';
-import { ParliamentaryActivity } from '@/components/ParliamentaryActivity';
+import type { TdParliamentSummary, PartyParliamentSummary } from '@shared/parliamentApi';
 
 interface PledgeAction {
   id: string | number;
@@ -931,15 +931,17 @@ const TrustworthinessTabContent = ({ selectedPartyId }: { selectedPartyId: strin
 // Parliamentary Activity Section Component
 const ParliamentaryActivitySection = ({ politicianName }: { politicianName: string }) => {
   const { data: activityData, isLoading } = useQuery({
-    queryKey: ['/api/parliamentary-activity/politician', politicianName],
-    queryFn: async () => {
-      const response = await fetch(`/api/parliamentary-activity/politician/${encodeURIComponent(politicianName)}`);
-      if (!response.ok) {
-        if (response.status === 404) return null;
-        throw new Error('Failed to fetch parliamentary activity');
-      }
-      const result = await response.json();
-      return result.data;
+    queryKey: ['parliament-activity-section', politicianName],
+    queryFn: async (): Promise<TdParliamentSummary | null> => {
+      const scoreRes = await fetch(`/api/scores/td/${encodeURIComponent(politicianName)}`);
+      if (!scoreRes.ok) return null;
+      const scoreJson = await scoreRes.json();
+      const tdId = scoreJson?.data?.id;
+      if (!tdId) return null;
+      const summaryRes = await fetch(`/api/parliament/tds/${tdId}`);
+      if (!summaryRes.ok) return null;
+      const summaryJson = await summaryRes.json();
+      return summaryJson.data ?? null;
     },
   });
 
@@ -961,26 +963,37 @@ const ParliamentaryActivitySection = ({ politicianName }: { politicianName: stri
     );
   }
 
+  const questionsTotal =
+    activityData.questionsOral === null && activityData.questionsWritten === null
+      ? null
+      : (activityData.questionsOral ?? 0) + (activityData.questionsWritten ?? 0);
+
   return (
     <div>
       <h4 className="text-sm font-semibold mb-3">Parliamentary Activity</h4>
       <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 space-y-3">
         <div className="grid grid-cols-2 gap-3 text-xs">
           <div className="text-center">
-            <div className="text-lg font-bold text-blue-600">{activityData.attendancePercentage}%</div>
-            <div className="text-gray-600">Attendance</div>
-            <div className="text-gray-500">{activityData.dailAttendance}/29 days</div>
+            <div className="text-lg font-bold text-blue-600">
+              {activityData.isPresiding ? 'Chair' : activityData.attendancePct !== null ? `${activityData.attendancePct}%` : '—'}
+            </div>
+            <div className="text-gray-600">{activityData.isPresiding ? 'Does not vote' : 'Attendance'}</div>
+            {!activityData.isPresiding && (
+              <div className="text-gray-500">
+                {activityData.votesCast ?? '—'}/{activityData.divisionsEligible ?? '—'} divisions
+              </div>
+            )}
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-green-600">{activityData.questionsAsked}</div>
+            <div className="text-lg font-bold text-green-600">{questionsTotal ?? '—'}</div>
             <div className="text-gray-600">Questions</div>
-            <div className="text-gray-500">Asked in Dáil</div>
+            <div className="text-gray-500">Oral + written</div>
           </div>
         </div>
-        {activityData.otherAttendance > 0 && (
+        {activityData.sectionsSpoken !== null && (
           <div className="text-center text-xs border-t pt-2">
-            <div className="text-sm font-medium">{activityData.otherAttendance} community days</div>
-            <div className="text-gray-500">Additional engagement</div>
+            <div className="text-sm font-medium">{activityData.sectionsSpoken} debate sections spoken</div>
+            <div className="text-gray-500">Sitting days: {activityData.sittingDays ?? '—'}</div>
           </div>
         )}
       </div>
@@ -1079,17 +1092,20 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
     enabled: !!partyDbId,
   });
 
-  // Fetch party parliamentary activity score
-  const { data: partyActivityData } = useQuery({
-    queryKey: ['/api/parliamentary-activity/party', selectedPartyId, 'score'],
-    queryFn: async () => {
-      const response = await fetch(`/api/parliamentary-activity/party/${selectedPartyId}/score`);
-      if (!response.ok) throw new Error('Failed to fetch party activity score');
+  // Fetch live parliament party summaries and resolve this party by name (the only
+  // clean join available: the Oireachtas has no notion of our synthetic `selectedPartyId`).
+  const { data: parliamentPartiesData, isLoading: parliamentPartiesLoading } = useQuery({
+    queryKey: ['parliament-parties'],
+    queryFn: async (): Promise<PartyParliamentSummary[]> => {
+      const response = await fetch('/api/parliament/parties');
+      if (!response.ok) throw new Error('Failed to fetch parliament parties');
       const result = await response.json();
-      return result.data;
+      return result.data ?? [];
     },
-    enabled: !!selectedPartyId,
   });
+
+  const selectedPartyName = politicalParties.find((p) => p.id === selectedPartyId)?.name;
+  const partyActivityData = parliamentPartiesData?.find((p) => p.party === selectedPartyName) ?? null;
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-600';
@@ -1124,7 +1140,7 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
   // Calculate pledge fulfillment average - both main display and drill-down use same calculation
   const calculateAverageScore = () => {
     if (!pledgesData || pledgesData.length === 0) return 0;
-    return pledgesData.reduce((sum: number, item) => sum + parseFloat(item.pledge.score), 0) / pledgesData.length;
+    return pledgesData.reduce((sum: number, item: any) => sum + parseFloat(item.pledge.score), 0) / pledgesData.length;
   };
 
   // Only show pledge fulfillment score for government parties
@@ -1222,36 +1238,36 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
 
   // Calculate overall performance score - only return when real data is available
   const calculateOverallPerformance = () => {
-    // Don't calculate if parliamentary activity data hasn't loaded yet
-    if (!partyActivityData?.activityScore) {
+    // Don't calculate while the live parliament data hasn't loaded yet
+    if (parliamentPartiesLoading) {
       return null;
     }
 
     const pillars = [];
     let pillarCount = 0;
-    
+
     // Pillar 1: Pledge Fulfillment (only for government parties)
     if (isGovernmentParty(selectedPartyId) && pledgeFulfillmentScore !== null) {
       pillars.push(pledgeFulfillmentScore);
       pillarCount++;
     }
-    
+
     // Pillar 2: Policy Consistency (not for newer parties)
     if (policyData !== null) {
       pillars.push(policyData.score);
       pillarCount++;
     }
-    
-    // Pillar 3: Parliamentary Activity (only when real data is available)
-    if (partyActivityData?.activityScore) {
-      pillars.push(partyActivityData.activityScore);
+
+    // Pillar 3: Parliamentary Activity (only when this party matched a live Oireachtas party)
+    if (partyActivityData?.avgAttendancePct !== null && partyActivityData?.avgAttendancePct !== undefined) {
+      pillars.push(partyActivityData.avgAttendancePct);
       pillarCount++;
     }
-    
+
     // Pillar 4: Polling Score (always available)
     pillars.push(pollingScore);
     pillarCount++;
-    
+
     // Calculate average based on available pillars
     const sum = pillars.reduce((acc, score) => acc + score, 0);
     const overallScore = Math.round(sum / pillarCount);
@@ -1328,23 +1344,25 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
           onClick={() => setShowParliamentaryDetails(!showParliamentaryDetails)}
         >
           <CardContent className="p-4 text-center">
-            {partyActivityData?.activityScore ? (
-              <div className={`text-2xl font-bold ${getScoreColor(partyActivityData.activityScore)}`}>
-                {partyActivityData.activityScore}
-              </div>
-            ) : (
+            {parliamentPartiesLoading ? (
               <div className="text-2xl font-bold text-gray-400">
                 <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-purple-600 mx-auto"></div>
               </div>
+            ) : partyActivityData?.avgAttendancePct !== null && partyActivityData?.avgAttendancePct !== undefined ? (
+              <div className={`text-2xl font-bold ${getScoreColor(partyActivityData.avgAttendancePct)}`}>
+                {partyActivityData.avgAttendancePct.toFixed(1)}%
+              </div>
+            ) : (
+              <div className="text-2xl font-bold text-gray-400">N/A</div>
             )}
             <div className="text-sm font-medium text-gray-700 dark:text-gray-300">Parliamentary Activity</div>
             <div className="text-xs text-gray-500 mt-1 flex items-center justify-center gap-1">
-              Attendance & Questions Asked
+              Average TD attendance
               {showParliamentaryDetails ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
             </div>
           </CardContent>
         </Card>
-        
+
         {/* Expandable Polling Data Card */}
         <Card 
           className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${showPollingDetails ? 'ring-2 ring-blue-500' : ''}`}
@@ -1463,60 +1481,52 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
-                  <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Attendance Score</h4>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-purple-600">
-                      {partyActivityData?.attendanceScore || 50}
-                    </span>
-                    <span className="text-sm text-gray-600">
-                      {partyActivityData?.averageAttendance || 50}% attendance rate
-                    </span>
+              {partyActivityData ? (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
+                      <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Attendance</h4>
+                      <div className="text-2xl font-bold text-purple-600">
+                        {partyActivityData.avgAttendancePct !== null ? `${partyActivityData.avgAttendancePct.toFixed(1)}%` : 'N/A'}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">Average across {partyActivityData.members} TDs</div>
+                    </div>
+
+                    <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                      <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Party line</h4>
+                      <div className="text-2xl font-bold text-blue-600">
+                        {partyActivityData.partyLinePct !== null ? `${partyActivityData.partyLinePct.toFixed(1)}%` : 'N/A'}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">Share of votes matching the party majority</div>
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Weight: 60% of overall score
+
+                  <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-2">Additional Metrics</h4>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <span className="text-gray-600">Avg debate sections spoken:</span>
+                        <span className="font-medium ml-2">
+                          {partyActivityData.avgSectionsSpoken !== null ? partyActivityData.avgSectionsSpoken.toFixed(1) : 'N/A'}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Number of TDs:</span>
+                        <span className="font-medium ml-2">{partyActivityData.members}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Questions Score</h4>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-blue-600">
-                      {partyActivityData?.questionsScore || 50}
-                    </span>
-                    <span className="text-sm text-gray-600">
-                      {partyActivityData?.questionsPerTD || 0} per TD
-                    </span>
+
+                  <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
+                    <strong>Methodology:</strong> Figures are live averages across this party's current TDs, sourced
+                    directly from Oireachtas divisions and debate records.
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Weight: 40% of overall score
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Additional Metrics</h4>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="text-gray-600">Total Questions Asked:</span>
-                    <span className="font-medium ml-2">{partyActivityData?.questionsAsked || 'N/A'}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-600">Number of TDs:</span>
-                    <span className="font-medium ml-2">{partyActivityData?.tdCount || 'N/A'}</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded text-xs text-gray-600 dark:text-gray-400">
-                <strong>Methodology:</strong> Parliamentary activity combines attendance rates (60%) with 
-                questions per TD (40%). Attendance reflects commitment to parliamentary duties, while 
-                questions per TD measures active engagement in holding government accountable. 
-                {partyActivityData?.weighting && ` Current weighting: ${partyActivityData.weighting}`}
-                <br /><br />
-                <strong>Data Period:</strong> 1st January 2025 to 30th April 2025
-              </div>
+                </>
+              ) : (
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  No live parliament data found for this party yet.
+                </p>
+              )}
             </CardContent>
           </Card>
         </div>
@@ -1830,7 +1840,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
   }
 
   const totalPledges = pledgesData.length;
-  const averageScore = pledgesData.reduce((sum: number, item) => sum + parseFloat(item.pledge.score), 0) / totalPledges;
+  const averageScore = pledgesData.reduce((sum: number, item: any) => sum + parseFloat(item.pledge.score), 0) / totalPledges;
 
   return (
     <div className="space-y-6">
@@ -1849,7 +1859,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600">
-              {pledgesData.filter((item) => parseFloat(item.pledge.score) >= 80).length}
+              {pledgesData.filter((item: any) => parseFloat(item.pledge.score) >= 80).length}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">High Performance</div>
           </div>
@@ -1858,7 +1868,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
 
       {/* Pledges List */}
       <div className="space-y-4">
-        {pledgesData.map((item, index: number) => {
+        {pledgesData.map((item: any, index: number) => {
           const pledge = item.pledge;
           const actions = item.actions || [];
           
@@ -1920,7 +1930,7 @@ const PledgeFulfillmentTab = ({ selectedPartyId }: { selectedPartyId: string }) 
                   <div>
                     <h4 className="font-medium text-sm mb-2">Recent Actions</h4>
                     <div className="space-y-2">
-                      {actions.slice(0, 3).map((action) => (
+                      {actions.slice(0, 3).map((action: any) => (
                         <div key={action.id} className="text-sm bg-blue-50 dark:bg-blue-900/20 p-3 rounded">
                           <div className="font-medium capitalize">{action.actionType.replace('_', ' ')}</div>
                           <div className="text-gray-600 dark:text-gray-400 text-xs">
@@ -2174,7 +2184,7 @@ const PartyPerformanceSection = () => {
                             </div>
                           </div>
                           <div className="space-y-2">
-                            {data.pledges?.map((pledge, index: number) => (
+                            {data.pledges?.map((pledge: any, index: number) => (
                               <div key={index} className="flex items-center justify-between text-sm bg-gray-50 p-2 rounded">
                                 <span className="flex-1">{pledge.title}</span>
                                 <div className="flex items-center gap-2">

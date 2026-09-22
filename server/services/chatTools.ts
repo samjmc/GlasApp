@@ -1,14 +1,26 @@
 import { db } from "../db";
-import { supabaseDb } from "../db";
-import { sql, desc, eq, ilike, or, and } from "drizzle-orm";
+import { desc, ilike, or } from "drizzle-orm";
 import {
   newsArticles,
   parties,
-  parliamentaryActivity,
   policyPromises
 } from "@shared/schema";
+import type { DivisionVote, TdVote } from "@shared/parliamentApi";
 import { eloToPercent, repository as scores } from "../scoring";
-import { getVotingRecord, getRecentVotes, getVotingStats, getRebelVotes, getVotesByCategory, getPolicyPositions } from "./politicianAgent";
+import { repository as parliament } from "../parliament";
+
+const VOTE_LABEL: Record<DivisionVote, string> = { ta: 'Tá (Yes)', nil: 'Níl (No)', staon: 'Staon (Abstain)' };
+
+function describeVote(v: TdVote) {
+  return {
+    date: v.date,
+    subject: v.subject,
+    debate: v.debateTitle,
+    vote: VOTE_LABEL[v.vote],
+    outcome: v.outcome,
+    voted_with_party: v.withParty,
+  };
+}
 
 // Define the tools for OpenAI
 /** OpenAI function tool definitions for chat tools. */
@@ -51,7 +63,7 @@ export const chatToolsDefinition = [
     type: "function",
     function: {
       name: "get_voting_record",
-      description: "Check how a politician actually voted on specific bills or topics. Use this when asked 'Did you vote for X?', 'How did you vote on Y?', or any voting-related questions. Supports filtering by category (housing, health, economy, foreign_affairs, justice, education, environment, social_welfare, defence, procedural) or by date range.",
+      description: "Check how a politician actually voted in Dáil divisions on a bill or topic. Use this when asked 'Did they vote for X?', 'How did they vote on Y?', or any voting-related question. Matches the topic against the division subject and the debate title; supports a date range.",
       parameters: {
         type: "object",
         properties: {
@@ -61,7 +73,7 @@ export const chatToolsDefinition = [
           },
           topic: {
             type: "string",
-            description: "The bill name, topic, category, or keyword to search for. Categories: housing, health, economy, foreign_affairs, justice, education, environment, social_welfare, defence, procedural."
+            description: "The bill name or a word from it to search for (e.g. 'Finance', 'Planning and Development')."
           },
           startDate: {
             type: "string",
@@ -80,7 +92,7 @@ export const chatToolsDefinition = [
     type: "function",
     function: {
       name: "get_voting_stats",
-      description: "Get overall voting statistics for a politician including total votes cast, party loyalty rate, rebel votes count, and breakdown by category (housing, health, economy, etc.).",
+      description: "Get a politician's Dáil record: attendance at votes, votes cast, how often they voted with their party, votes against their party, questions asked and debate participation.",
       parameters: {
         type: "object",
         properties: {
@@ -127,27 +139,6 @@ export const chatToolsDefinition = [
             description: "Number of articles to return (default 5)."
           }
           }
-        }
-      }
-    },
-    {
-      type: "function",
-      function: {
-        name: "compare_positions",
-        description: "Compare your position with another politician on a specific topic. Use this when asked 'How do you differ from X?' or 'Do you agree with Y?'.",
-        parameters: {
-          type: "object",
-          properties: {
-            other_politician_name: {
-              type: "string",
-              description: "The full name of the other politician to compare with."
-            },
-            topic: {
-              type: "string",
-              description: "The specific topic to compare (e.g. Housing, Health, Budget)."
-            }
-          },
-          required: ["other_politician_name", "topic"]
         }
       }
     },
@@ -208,11 +199,8 @@ export const chatToolsImplementation = {
     .orderBy(desc(newsArticles.publishedDate))
     .limit(3);
 
-    // 3. Get Activity Stats
-    const activity = await db.select()
-      .from(parliamentaryActivity)
-      .where(ilike(parliamentaryActivity.politicianName, name))
-      .limit(1);
+    // 3. Dáil record
+    const record = await parliament.tdSummary(td.id);
 
     // 4. Get Promises (if any)
     const promises = await db.select({
@@ -222,9 +210,6 @@ export const chatToolsImplementation = {
     .from(policyPromises)
     .where(ilike(policyPromises.politicianName, name))
     .limit(3);
-
-    // 5. Get Voting Stats
-    const votingStats = await getVotingStats(name);
 
     return JSON.stringify({
       profile: {
@@ -241,8 +226,7 @@ export const chatToolsImplementation = {
         consistency: eloToPercent(score?.consistencyElo)
       },
       recent_news: news,
-      parliamentary_activity: activity[0] || "No recent activity data",
-      voting_stats: votingStats,
+      parliament: record ?? "No Dáil record yet",
       promises: promises
     });
   },
@@ -250,86 +234,79 @@ export const chatToolsImplementation = {
   async get_voting_record({ name, topic, startDate, endDate }: { name: string; topic: string; startDate?: string; endDate?: string }) {
     console.log(`Tool: Getting voting record for '${name}' on topic '${topic}'${startDate ? ` from ${startDate}` : ''}${endDate ? ` to ${endDate}` : ''}`);
     
-    const filters = {
-      ...(startDate && { startDate }),
-      ...(endDate && { endDate })
-    };
-    
-    const votes = await getVotingRecord(name, topic, 10, Object.keys(filters).length > 0 ? filters : undefined);
-    
+    const found = await scores.findByName(name);
+    if (!found) return JSON.stringify({ error: "Politician not found." });
+
+    const needle = topic.trim().toLowerCase();
+    const votes = (await parliament.votesOf(found.td.id))
+      .filter((v) => (!startDate || v.date >= startDate) && (!endDate || v.date <= endDate))
+      .filter((v) => `${v.subject ?? ''} ${v.debateTitle ?? ''}`.toLowerCase().includes(needle))
+      .slice(0, 10);
+
     if (votes.length === 0) {
-      return JSON.stringify({ 
-        message: `No votes found for ${name} matching '${topic}'${startDate || endDate ? ' in the specified date range' : ''}. They may not have voted on this specific topic, or try a different keyword or category (housing, health, economy, etc.).`,
-        votes: [],
-        available_categories: ['housing', 'health', 'economy', 'foreign_affairs', 'justice', 'education', 'environment', 'social_welfare', 'defence', 'procedural']
+      return JSON.stringify({
+        message: `No Dáil votes found for ${found.td.name} matching '${topic}'${startDate || endDate ? ' in the specified date range' : ''}. Try a word from the bill's title.`,
+        votes: []
       });
     }
 
     return JSON.stringify({
-      politician: name,
+      politician: found.td.name,
       topic: topic,
       date_range: startDate || endDate ? { start: startDate || 'any', end: endDate || 'any' } : 'all time',
       votes_found: votes.length,
-      votes: votes.map(v => ({
-        date: v.date,
-        subject: v.subject,
-        description: v.description,
-        vote: v.vote === 'ta' ? 'Tá (Yes)' : v.vote === 'nil' ? 'Níl (No)' : 'Staon (Abstain)',
-        outcome: v.outcome,
-        category: v.category,
-        voted_with_party: v.votedWithParty,
-        rebel_vote: v.isRebelVote
-      }))
+      votes: votes.map(describeVote)
     });
   },
 
   async get_voting_stats({ name }: { name: string }) {
     console.log(`Tool: Getting voting stats for '${name}'`);
     
-    const stats = await getVotingStats(name);
-    
-    if (!stats) {
-      return JSON.stringify({ error: "Politician not found or no voting data available." });
+    const found = await scores.findByName(name);
+    if (!found) return JSON.stringify({ error: "Politician not found." });
+    const record = await parliament.tdSummary(found.td.id);
+    if (!record || record.votesCast === null) {
+      return JSON.stringify({ error: "No Dáil voting record available yet." });
     }
+    const votes = await parliament.votesOf(found.td.id);
 
     return JSON.stringify({
-      politician: name,
-      total_votes_cast: stats.totalVotes,
+      politician: found.td.name,
+      is_chair: record.isPresiding,
+      attendance_pct: record.attendancePct,
+      votes_cast: record.votesCast,
+      divisions_held_while_member: record.divisionsEligible,
       breakdown: {
-        ta_yes: stats.taVotes,
-        nil_no: stats.nilVotes,
-        staon_abstain: stats.staonVotes
+        ta_yes: votes.filter((v) => v.vote === 'ta').length,
+        nil_no: votes.filter((v) => v.vote === 'nil').length,
+        staon_abstain: votes.filter((v) => v.vote === 'staon').length
       },
-      party_loyalty_rate: `${stats.partyLoyaltyRate}%`,
-      rebel_votes: stats.rebelVotes,
-      votes_by_category: stats.votesByCategory
+      party_line_pct: record.partyLinePct,
+      votes_against_party: record.votesAgainstParty,
+      questions: { oral: record.questionsOral, written: record.questionsWritten },
+      debate_sections_spoken: record.sectionsSpoken
     });
   },
 
   async get_rebel_votes({ name }: { name: string }) {
     console.log(`Tool: Getting rebel votes for '${name}'`);
     
-    const votes = await getRebelVotes(name, 10);
-    
+    const found = await scores.findByName(name);
+    if (!found) return JSON.stringify({ error: "Politician not found." });
+    const votes = await parliament.votesOf(found.td.id, { againstParty: true, limit: 10 });
+
     if (votes.length === 0) {
-      return JSON.stringify({ 
-        message: `${name} has no recorded votes against their party line. They have consistently voted with their party.`,
+      return JSON.stringify({
+        message: `${found.td.name} has no recorded Dáil votes against their party's majority (independents have no party line).`,
         votes: []
       });
     }
 
     return JSON.stringify({
-      politician: name,
+      politician: found.td.name,
       rebel_votes_found: votes.length,
-      note: "These are votes where the politician voted differently from their party's majority position.",
-      votes: votes.map(v => ({
-        date: v.date,
-        subject: v.subject,
-        description: v.description,
-        vote: v.vote === 'ta' ? 'Tá (Yes)' : v.vote === 'nil' ? 'Níl (No)' : 'Staon (Abstain)',
-        outcome: v.outcome,
-        category: v.category
-      }))
+      note: "Votes where the politician voted differently from their party's majority position.",
+      votes: votes.map(describeVote)
     });
   },
 
@@ -380,34 +357,6 @@ export const chatToolsImplementation = {
     if (party.length === 0) return JSON.stringify({ error: "Party not found" });
 
     return JSON.stringify(party[0]);
-  },
-
-  async compare_positions({ other_politician_name, topic }: { other_politician_name: string; topic: string }) {
-    console.log(`Tool: Comparing with '${other_politician_name}' on '${topic}'`);
-    
-    const { data: otherTd } = await supabaseDb
-        .from('td_scores')
-        .select('id, party, politician_name')
-        .ilike('politician_name', other_politician_name)
-        .single();
-        
-    if (!otherTd) return JSON.stringify({ error: `Politician '${other_politician_name}' not found.` });
-
-    const positions = await getPolicyPositions(otherTd.politician_name, topic);
-    const votes = await getVotingRecord(otherTd.politician_name, topic, 5);
-    
-    return JSON.stringify({
-        other_politician: otherTd.politician_name,
-        party: otherTd.party,
-        topic: topic,
-        policy_summary: positions.length > 0 ? positions[0].position_summary : "No structured policy summary available.",
-        recent_relevant_votes: votes.map(v => ({
-            date: v.date,
-            subject: v.subject,
-            vote: v.vote === 'ta' ? 'Tá (Yes)' : v.vote === 'nil' ? 'Níl (No)' : 'Staon (Abstain)',
-            description: v.description
-        }))
-    });
   }
 };
 

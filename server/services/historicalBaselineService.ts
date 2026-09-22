@@ -387,8 +387,8 @@ export async function researchAllTDBaselines(options: {
   console.log('🔍 Researching historical baselines for all TDs...\n');
   
   // Get all TDs from database or Oireachtas API
-  const { OireachtasAPIService } = await import('./oireachtasAPIService');
-  const members = await OireachtasAPIService.getCurrentDailMembers();
+  const { OireachtasClient } = await import('../parliament/client');
+  const members = await new OireachtasClient().roster();
   
   const tdsToResearch = options.limit 
     ? members.slice(0, options.limit)

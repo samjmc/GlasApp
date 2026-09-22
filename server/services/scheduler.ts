@@ -1,6 +1,7 @@
 import cron from "node-cron";
 import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
 import { runPipeline } from "../scoring";
+import { runSync as runParliamentSync } from "../parliament";
 
 // Lazy imports for news services (avoids circular dependency issues)
 let ArticleTriageJob: unknown = null;
@@ -96,6 +97,16 @@ export function initScheduler() {
   // ═══════════════════════════════════════════════════════════════════
   // EXISTING JOBS
   // ═══════════════════════════════════════════════════════════════════
+
+  // Parliament sync - daily at 04:00: divisions, debates, questions, then TD scores.
+  cron.schedule('0 4 * * *', async () => {
+    try {
+      const s = await runParliamentSync();
+      console.log(`[Scheduler] Parliament sync: ${s.divisions.ingested} divisions, ${s.debates.days} sitting days${s.debates.failedDay ? `, stopped at ${s.debates.failedDay}` : ''}.`);
+    } catch (error) {
+      console.error("[Scheduler] Parliament sync failed:", error instanceof Error ? error.message : error);
+    }
+  }, { timezone: "Europe/Dublin" });
 
   // Run Daily Briefing at 7:00 AM Dublin time
   // Format: Minute Hour Day Month DayOfWeek

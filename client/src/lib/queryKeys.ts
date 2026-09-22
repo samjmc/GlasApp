@@ -22,16 +22,6 @@ export const queryKeys = {
     forChat: () => ["tds-for-chat"] as const,
     rankings: () => ["td-rankings"] as const,
     news: (name: string) => ["td-news-v2", name] as const,
-    debateMetrics: (politicianName: string) =>
-      ["td-debate-metrics", politicianName] as const,
-    debateHistory: (politicianName: string) =>
-      ["td-debate-history", politicianName] as const,
-    debateAlerts: (politicianName: string) =>
-      ["td-debate-alerts", politicianName] as const,
-    votingStats: (politicianName: string) =>
-      ["td-voting-stats", politicianName] as const,
-    rebelVotes: (politicianName: string) => ["td-rebel-votes", politicianName] as const,
-    recentVotes: (politicianName: string) => ["td-recent-votes", politicianName] as const,
   },
   party: {
     rankings: () => ["party-rankings-v4"] as const,
@@ -45,15 +35,19 @@ export const queryKeys = {
     biggestImpact: (regionCode: string | null) =>
       ["biggest-impact-today-v4", regionCode] as const,
   },
-  debates: {
-    leaderboard: (periodKey: string) => ["debates", "leaderboard", periodKey] as const,
-    partyMetrics: (periodKey: string) => ["debates", "party-metrics", periodKey] as const,
-    topicLeaders: (periodKey: string) => ["debates", "topic-leaders", periodKey] as const,
-    alerts: (periodKey: string) => ["debates", "alerts", periodKey] as const,
-    weekly: (periodKey: string) => ["debates", "weekly", periodKey] as const,
-    history: (tdName: string, periodKey: string) =>
-      ["debates", "history", tdName, periodKey] as const,
-    highlights: (periodKey: string) => ["debate-highlights", periodKey] as const,
+  parliament: {
+    status: () => ["parliament-status"] as const,
+    divisions: (limit: number, offset: number) => ["parliament-divisions", limit, offset] as const,
+    division: (id: string) => ["parliament-division", id] as const,
+    debates: (limit: number, offset: number) => ["parliament-debates", limit, offset] as const,
+    debate: (id: string) => ["parliament-debate", id] as const,
+    leaderboard: (metric: string, order: string, limit: number) =>
+      ["parliament-leaderboard", metric, order, limit] as const,
+    parties: () => ["parliament-parties"] as const,
+    tdSummary: (tdId: number) => ["parliament-td-summary", tdId] as const,
+    tdVotes: (tdId: number, limit: number, againstParty: boolean) =>
+      ["parliament-td-votes", tdId, limit, againstParty] as const,
+    tdDebates: (tdId: number, limit: number) => ["parliament-td-debates", tdId, limit] as const,
   },
   constituencies: {
     list: () => ["constituencies-list"] as const,

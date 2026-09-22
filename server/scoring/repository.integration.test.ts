@@ -11,9 +11,8 @@
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
  *   npx vitest run server/scoring/repository.integration.test.ts
  */
-import fs from 'node:fs';
-import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { isolatedDatabaseUrl, resetPoliticsSchema } from '../testing/migrations';
 
 const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL;
 const run = describe.skipIf(!TEST_DATABASE_URL);
@@ -31,17 +30,9 @@ run('repository against Postgres', () => {
   let dbmod: typeof import('../db');
 
   beforeAll(async () => {
+    process.env.DATABASE_URL = await isolatedDatabaseUrl(TEST_DATABASE_URL!, 'scoring');
     dbmod = await import('../db');
-    const migration = fs.readFileSync(
-      path.resolve(__dirname, '..', '..', 'drizzle', '0000_politics_scoring.sql'),
-      'utf8',
-    );
-    await dbmod.pool.query('drop schema if exists politics cascade');
-    // drizzle-kit separates statements with a marker; Postgres wants them one at a time.
-    for (const statement of migration.split('--> statement-breakpoint')) {
-      const sql = statement.trim();
-      if (sql) await dbmod.pool.query(sql);
-    }
+    await resetPoliticsSchema(dbmod.pool);
     repo = await import('./repository');
   }, 60_000);
 
