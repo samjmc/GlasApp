@@ -18,6 +18,7 @@ import {
 import { type EloChange, type EloRatings, baselineRatings } from './elo';
 import type { RollupInput, RollupResult } from './rollup';
 import type { PartyScore } from './party';
+import { planTdSync, type ExistingTd, type TdSeed, type TdSyncPlan } from './tdSync';
 
 export interface TdWithScore {
   td: Td;
@@ -93,6 +94,71 @@ export async function listConstituencies(database: Db = db): Promise<string[]> {
     .where(and(eq(tds.isActive, true), isNotNull(tds.constituency)))
     .orderBy(asc(tds.constituency));
   return rows.map((r) => r.constituency as string);
+}
+
+export interface SyncTdsResult {
+  inserted: number;
+  updated: number;
+  deactivated: number;
+}
+
+/**
+ * Bring `tds` in line with a roster of current Dáil members. One transaction, so a
+ * half-applied roster is never visible. Nothing is deleted: see tdSync.ts.
+ */
+export async function syncTds(seeds: TdSeed[], database: Db = db): Promise<SyncTdsResult> {
+  const current = await database
+    .select({
+      id: tds.id,
+      name: tds.name,
+      party: tds.party,
+      constituency: tds.constituency,
+      memberCode: tds.memberCode,
+      imageUrl: tds.imageUrl,
+      isActive: tds.isActive,
+    })
+    .from(tds);
+
+  const plan: TdSyncPlan = planTdSync(current as ExistingTd[], seeds);
+  const now = new Date();
+
+  await database.transaction(async (tx) => {
+    if (plan.insert.length > 0) {
+      await tx.insert(tds).values(plan.insert.map((s) => ({ ...s, isActive: true, updatedAt: now })));
+    }
+    for (const { id, seed } of plan.update) {
+      await tx.update(tds).set({ ...seed, isActive: true, updatedAt: now }).where(eq(tds.id, id));
+    }
+    if (plan.deactivate.length > 0) {
+      await tx.update(tds).set({ isActive: false, updatedAt: now }).where(inArray(tds.id, plan.deactivate));
+    }
+  });
+
+  return { inserted: plan.insert.length, updated: plan.update.length, deactivated: plan.deactivate.length };
+}
+
+/** Update the parliamentary inputs the rollup reads. Identified by member code. */
+export async function updateParliamentaryActivity(
+  rows: Array<{ memberCode: string; questionsOral: number | null; questionsWritten: number | null; attendancePct: number | null }>,
+  database: Db = db,
+): Promise<number> {
+  if (rows.length === 0) return 0;
+  let updated = 0;
+  await database.transaction(async (tx) => {
+    for (const r of rows) {
+      const res = await tx
+        .update(tds)
+        .set({
+          questionCountOral: r.questionsOral,
+          questionCountWritten: r.questionsWritten,
+          attendancePct: r.attendancePct,
+          updatedAt: new Date(),
+        })
+        .where(eq(tds.memberCode, r.memberCode));
+      updated += (res as { rowCount?: number }).rowCount ?? 0;
+    }
+  });
+  return updated;
 }
 
 export function ratingsOf(score: TdScoreRow | null): EloRatings {

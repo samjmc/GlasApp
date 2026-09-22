@@ -122,6 +122,9 @@ cp .env.example .env
 # Apply the database migrations (creates the `politics` schema)
 npm run db:migrate
 
+# Populate TDs from the Oireachtas roster (scoring needs this)
+npm run sync-tds
+
 # Start development server
 npm run dev
 ```

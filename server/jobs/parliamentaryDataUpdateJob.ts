@@ -64,13 +64,16 @@ export class ParliamentaryDataUpdateJob {
       
       // Save to JSON file (for backward compatibility)
       await this.saveToJSONFile(activityData);
-      
+
       // Update database (if available)
       await this.updateDatabase(activityData);
-      
-      // Parliamentary inputs changed, so derived scores and ranks must follow.
-      console.log('\n🔄 Recalculating TD scores...');
-      const { recalculateAll } = await import('../scoring/index.js');
+
+      // Feed the scoring module's parliamentary pillar, then recalculate.
+      const scoringRows = await this.buildScoringRows(activityData);
+      const { repository, recalculateAll } = await import('../scoring/index.js');
+      const written = await repository.updateParliamentaryActivity(scoringRows);
+      console.log(`\n📊 Parliamentary inputs written for ${written} TD(s)`);
+      console.log('🔄 Recalculating TD scores...');
       await recalculateAll();
       
       const duration = Date.now() - startTime;
@@ -185,6 +188,39 @@ export class ParliamentaryDataUpdateJob {
     }
   }
   
+  /**
+   * Build the rows the scoring module's parliamentary pillar reads.
+   *
+   * Question counts come from the API's own totals and are used as-is. Attendance is
+   * recomputed from divisions (votes cast / divisions held). The activity feed's
+   * `estimatedAttendance` is NOT used: it is debate count over an assumed 100 sitting
+   * days, which is a proxy, not attendance, and the pillar is 30% of a TD's score.
+   * When it cannot be measured the value stays null and the pillar falls back to
+   * questions alone rather than scoring a guess.
+   */
+  private async buildScoringRows(
+    activityData: Map<string, any>
+  ): Promise<Array<{ memberCode: string; questionsOral: number | null; questionsWritten: number | null; attendancePct: number | null }>> {
+    const rows = [];
+    for (const [, data] of Array.from(activityData)) {
+      if (!data?.memberCode) continue;
+      let attendancePct: number | null = null;
+      try {
+        const voting = await OireachtasAPIService.calculateVotingAttendance(data.memberCode);
+        if (voting.totalVotes > 0) attendancePct = voting.votingAttendance;
+      } catch {
+        // Leave null: unknown attendance must not read as zero attendance.
+      }
+      rows.push({
+        memberCode: data.memberCode,
+        questionsOral: typeof data.oralQuestions === 'number' ? data.oralQuestions : null,
+        questionsWritten: typeof data.writtenQuestions === 'number' ? data.writtenQuestions : null,
+        attendancePct,
+      });
+    }
+    return rows;
+  }
+
   /**
    * Trigger manual update (for admin use)
    */

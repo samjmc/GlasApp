@@ -20,6 +20,7 @@
     "db:studio": "drizzle-kit studio",
     "db:push:supabase": "drizzle-kit push --config=drizzle.config.supabase.ts",
     "update-news": "tsx server/jobs/masterNewsUpdate.ts",
+    "sync-tds": "tsx server/jobs/sync-tds.ts",
     "td-scoring": "tsx server/jobs/td-scoring.ts",
     "generate-summaries": "tsx scripts/generate-td-historical-summaries.ts",
     "generate-summaries:template": "tsx scripts/generate-td-summaries-template.ts",

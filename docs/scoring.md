@@ -28,6 +28,26 @@ A pillar with no data is left out and the others renormalise; a TD with no debat
 scored on the other two, not dragged toward 50. National, party and constituency ranks and
 7/30-day ELO trends are computed at the same time.
 
+## Getting a TD table
+
+The pipeline resolves TDs by name, so an empty `politics.tds` means every article scores
+nobody. Populate it from the Oireachtas roster of the current Dáil:
+
+```bash
+npm run sync-tds
+```
+
+It upserts by member code (falling back to name), and **deactivates rather than deletes** —
+scores, history and article verdicts cascade from `tds.id`, so removing a row when someone
+leaves the Dáil would erase their record. An empty roster from the API changes nothing, so a
+failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and unit-tested.
+
+Parliamentary inputs (question counts, attendance) are filled by
+`server/jobs/parliamentaryDataUpdateJob.ts`, which runs weekly. It uses real division
+attendance (votes cast / divisions held); the activity feed's `estimatedAttendance` is a
+proxy — debate count over an assumed 100 sitting days — and is deliberately not used. When
+attendance cannot be measured it stays NULL and the pillar falls back to questions alone.
+
 ## The pipeline
 
 ```
