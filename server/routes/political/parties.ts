@@ -11,6 +11,7 @@ import { Router } from 'express';
 import { supabaseDb } from '../../db';
 import { cached, TTL, CacheKeys } from '../../services/cacheService';
 import { asyncHandler } from '../../middleware/errorHandler';
+import { requireAdminAccess } from '../../middleware/adminAccess';
 import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
 const router = Router();
@@ -501,7 +502,7 @@ router.get("/explanations/:partyId", asyncHandler(async (req, res) => {
  * POST /api/parties/explanations/:partyId - Update dimension explanations for a party
  * Supports both integer ID and party code
  */
-router.post("/explanations/:partyId", asyncHandler(async (req, res) => {
+router.post("/explanations/:partyId", requireAdminAccess, asyncHandler(async (req, res) => {
   if (!supabaseDb) {
     return res.status(503).json(
       formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')

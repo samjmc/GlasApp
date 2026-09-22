@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
+import { requireAdminAccess } from '../middleware/adminAccess';
 import type { DebateContributionRow, ContributionData, JsonObject, JsonValue } from '@shared/types';
 
 const router = Router();
@@ -1469,7 +1470,9 @@ router.get('/alerts', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
+// debate_alerts rows are global (no owner column), so changing one's status is a
+// moderation action, not a per-user preference.
+router.post('/alerts/:alertId/status', requireAdminAccess, async (req: Request, res: Response) => {
   try {
     if (!supabaseDb) {
       return res.status(503).json({

@@ -13,6 +13,11 @@ const sessionStore = pool
     })
   : new session.MemoryStore();
 
+// A predictable secret lets anyone mint a valid session cookie signature.
+if (process.env.NODE_ENV === 'production' && !process.env.SESSION_SECRET) {
+  throw new Error('SESSION_SECRET must be set in production');
+}
+
 // Create session middleware
 /** Express session middleware backed by Postgres or a memory store. */
 export const sessionMiddleware = session({
