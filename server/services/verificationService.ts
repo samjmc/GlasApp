@@ -1,21 +1,20 @@
+import { randomInt } from 'node:crypto';
 import { sendSMS } from './twilioService';
 
 /**
- * Generates a random verification code of specified length
- * 
- * @param length Length of the verification code (default: 6)
- * @returns A numeric verification code as string
+ * Generate a numeric verification code.
+ *
+ * Uses the CSPRNG, not Math.random. Math.random is a seeded PRNG whose output is
+ * predictable from earlier values, so a code drawn from it can be guessed rather than
+ * brute-forced — and this code is the sole proof of phone ownership.
+ *
+ * @param length digits in the code (default: 6)
  */
-/** Generate a random numeric verification code. */
 export function generateVerificationCode(length = 6): string {
-  const characters = '0123456789';
   let code = '';
-  
   for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    code += characters[randomIndex];
+    code += String(randomInt(0, 10));
   }
-  
   return code;
 }
 
