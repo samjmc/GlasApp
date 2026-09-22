@@ -100,6 +100,23 @@ Everything is keyed by `td_id`. `npm run db:generate` turns schema changes into 
 
 Every response is `{ success, data, meta? }`.
 
+## Tests
+
+`elo`, `weights`, `rollup`, `party` and `tdSync` are pure and unit-tested from array
+literals. `routes/scores.test.ts` covers the router against a mocked repository.
+
+Everything else in the module talks to Postgres, and no unit test executes a query — a
+broken `ON CONFLICT` target or a wrong transaction shape would ship silently. So
+`repository.integration.test.ts` runs the real SQL. It skips unless you point it at a
+throwaway database, and it drops and recreates the `politics` schema in whatever you give
+it:
+
+```bash
+docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
+$env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
+npx vitest run server/scoring/repository.integration.test.ts
+```
+
 ## What this replaced (2026-09-21)
 
 Five engines (`comprehensiveTDScoringService`, `unifiedTDScoringService`, `tdScoreCalculator`,
