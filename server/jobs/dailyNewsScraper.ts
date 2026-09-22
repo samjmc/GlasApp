@@ -10,7 +10,6 @@ import { AINewsAnalysisService } from '../services/aiNewsAnalysisService';
 import { supabaseDb } from '../db';
 import { ArticleAnalysis } from '../services/aiNewsAnalysisService';
 import { ScrapedArticle } from '../services/newsScraperService';
-import { PolicyOpportunityService } from '../services/policyOpportunityService';
 
 
 interface DailyScraperOptions {
@@ -236,26 +235,6 @@ export async function runManualScrape(options: {
   console.log('🚀 Running manual news scrape...');
   return runDailyNewsScraper();
 }
-
-async function generatePolicyOpportunity(
-  articleId: number,
-  article: ScrapedArticle,
-  options: { force?: boolean } = {}
-): Promise<boolean> {
-  try {
-    return await PolicyOpportunityService.generateAndSave(articleId, {
-      id: articleId,
-      title: article.title,
-      content: article.content,
-      source: article.source,
-      published_date: article.published_date
-    }, options);
-  } catch (error: unknown) {
-    console.error(`   ❌ Failed to create policy opportunity: ${error instanceof Error ? error.message : String(error)}`);
-    return false;
-  }
-}
-
 
 /**
  * DEPRECATED: Policy vote opportunities are now generated during multi-agent scoring

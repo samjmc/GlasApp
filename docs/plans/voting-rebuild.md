@@ -1,6 +1,8 @@
 # Voting rebuild: daily session, policy votes, pledges
 
-Status: plan, awaiting Sam's nod on the deletion list (2026-09-22). Branch `rebuild/voting`.
+Status (2026-09-22): Sam approved the plan. **Part 1, voting, is built** (branch
+`rebuild/voting`). Part 2, pledges, is next. The "As built" section at the end records
+where the build departs from the plan below; read it first.
 
 ## Why this is next
 
@@ -59,9 +61,10 @@ Decisions inside the design:
   `source` enum (`daily_session`, `article`) rather than living in two tables.
 - **Stats are queries, not tables.** `article_vote_stats` and `policy_vote_option_stats` become
   SQL aggregates (or a view) over `policy_votes`.
-- **The ideology effect of a vote belongs to the quiz session.** `votes.ts` calls their
-  `applyVoteToProfile(userId, optionVector, weight?)` once it exists. Until then a thin
-  adapter stands in, as `server/scoring/articleSource.ts` did for news.
+- **The ideology effect of a vote belongs to the quiz session, and it PULLS votes.** Its
+  profile is computed from `listUserVoteVectors(userId)`; voting only asks it to
+  `recomputeProfile(userId)` after a vote. (Superseded an earlier push design,
+  `applyVoteToProfile`, before either side built it.)
 - **Identity is always `req.user.id`.** Any `/:userId/` route uses `ownsOrAdmin`.
 
 ## Delete (about 10,800 lines)
@@ -83,11 +86,13 @@ Decisions inside the design:
 
 ## Boundaries (agreed with the other sessions, 2026-09-22)
 
-- **News** keeps `pipeline.ts` as the one place that creates questions, calling
-  `generateAndSave(articleId, opts)` until `questions.ts` replaces it. They message before
-  renaming any `news_articles` column that question generation reads.
-- **Quiz/ideology** reads the vote tables in their agreed shape, owns user-to-TD matching,
-  and will send the exact `applyVoteToProfile` signature.
+- **News** keeps `pipeline.ts` as the one place that creates questions; it now calls
+  `generateQuestionForArticle(article)`. The feed shows questions through
+  `getQuestionsForArticles(ids)`, never a join on the vote tables. The question row keeps
+  a copy of the headline, summary, link and image, so voting never reads news tables.
+- **Quiz/ideology** reads votes only through `listUserVoteVectors`, never the tables; owns
+  user-to-TD matching; and exports `recomputeProfile` and `getIdeologyProfile` from
+  `server/ideology/index.ts`.
 - **Parliament** does not edit `parliamentary/voting.ts` (it is user voting, despite the
   folder). It will expose a "TD voted X on division Y" query that pledge evidence may use.
 
@@ -104,3 +109,47 @@ No live database here. Unit tests for `selection.ts`, `questions.ts` validation,
 and `pledges/score.ts`; a real-Postgres integration test for the repository, skipped
 without `TEST_DATABASE_URL`, as in the scoring rebuild; `route-coverage.test.ts` must stay
 green. The first real proof is Sam signing in on GlasCore and completing one daily session.
+
+## As built: part 1, voting
+
+**Where it departs from the plan above:**
+
+- **No `votes.ts`.** The one write path is `castVote()` in `server/voting/service.ts`.
+  Every surface calls it: daily session, article card.
+- **The ideology link is a pull, not a push.** The quiz/ideology session reads votes with
+  `listUserVoteVectors(userId, since?)` from `server/voting/index.ts`, and never reads the
+  vote tables. Voting calls that domain's `recomputeProfile(userId)` after each vote, and
+  `getIdeologyProfile(userId)` when a session opens and when it finishes. Both calls go
+  through `server/voting/ideology.ts`. Until `server/ideology` merges, that seam is a stub:
+  votes are still recorded, and the summary says which way the answers leaned, with no
+  before/after.
+- **The slider is gone.** Every question is multiple choice, and every option carries a
+  position on the 8 axes. A 1–5 rating only ever got an ideology meaning through keyword
+  guessing (a 450-line keyword table, deleted).
+- **No backfill command.** The scoring pipeline makes questions as it scores articles.
+  `policy-votes:backfill` and `regeneratePolicyQuestions.ts` are deleted without a replacement.
+- **The stance harvester is deleted, not folded in.** The scoring pipeline already writes
+  `politics.td_policy_stances`, so the harvester wrote the same data a second time.
+- **Sign rule:** + is the right-coded pole on all 8 axes. It is agreed with the quiz
+  session and pending Sam's confirmation.
+
+**Found while building, and fixed:**
+
+- The streak was always 1. It was computed before today was marked complete, so the loop
+  stopped at once.
+- **The article vote widget never worked.** `/api/policy-votes` mounted routers whose
+  paths were one folder deeper, so every address the widget called returned a 404. The
+  same mistake breaks `/api/personal/*`, `/api/category-ranking/*` and `/api/pledges/*`.
+  The quiz session owns personal. Pledges are part 2.
+- The session date was a UTC date, so an Irish user just after midnight got yesterday's
+  session. It is now the Europe/Dublin date.
+- In development, every page load **deleted and rebuilt** today's session
+  (`DAILY_SESSION_ALWAYS_RESET` defaulted to on outside production). That is removed.
+
+**Verified:** 51 voting tests pass, 15 of them against a real Postgres 16 (Docker).
+Planted defects turn them red: the old streak bug, and an unweighted regional sum.
+`route-coverage.test.ts` now also scans `server/<domain>/routes.ts`. It proves all 7
+voting routes are guarded, and it catches one that is not.
+
+**Not verified:** nothing has run against GlasCore, and no model call has run. The
+question generator is tested with scripted model output only.

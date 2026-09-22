@@ -7,7 +7,8 @@ const url = process.env.DIRECT_URL || process.env.DATABASE_URL || 'postgres://pl
 
 export default defineConfig({
   out: './drizzle',
-  schema: './shared/schema/politics.ts',
+  // One file per domain, all in the `politics` schema declared in politics.ts.
+  schema: './shared/schema/*.ts',
   dialect: 'postgresql',
   dbCredentials: { url },
   // GlasCore is shared with GlasIntelligence (whose tables are in `public`).
