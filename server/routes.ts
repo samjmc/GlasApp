@@ -7,7 +7,7 @@ import { ActivityTracker } from "./services/activityTracker";
 import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { requireAdminAccess } from "./middleware/adminAccess";
-import { aiRateLimit, publicWriteRateLimit } from "./middleware/rateLimit";
+import { aiRateLimit } from "./middleware/rateLimit";
 import { registerAuthRoutes } from "./routes/auth";
 import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
@@ -22,10 +22,8 @@ import smsRoutes from "./routes/smsRoutes";
 import storytellingRoutes from "./routes/storytellingRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import electionRoutes from "./routes/electionRoutes";
-import personalizedInsightsRoutes from "./routes/personalizedInsightsRoutes";
 import politicalRoutes from "./routes/political";
 import categoryRankingRoutes from "./routes/categoryRankingRoutes";
-import dashboardRoutes from "./routes/dashboardRoutes";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
 import parliamentaryRoutes from "./routes/parliamentary";
@@ -37,8 +35,7 @@ import parliamentaryAdminRoutes from "./routes/admin/parliamentaryRoutes";
 import baselineAdminRoutes from "./routes/admin/baselineRoutes";
 import manualArticleRoutes from "./routes/admin/manualArticleRoutes";
 import { PersonalRankingsService } from "./services/personalRankingsService.js";
-import tdRatingsRoutes from "./routes/ratings/tdRatings";
-import researchedTDsRoutes from "./api/researched-tds";
+import scoresRoutes from "./routes/scores";
 import userRankingsRoutes from "./routes/user/rankings/index.js";
 import ideologyTimelineRoutes from "./routes/ideologyTimelineRoutesEnhanced";
 import dailySessionRoutes from "./routes/dailySessionRoutes";
@@ -89,8 +86,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register the 2024 Irish Election Results routes
   app.use("/api/elections", electionRoutes);
   
-  // Register the Personalized Constituency Insights routes
-  app.use("/api/personalized-insights", aiRateLimit, personalizedInsightsRoutes);
   // Enhanced profile now in AI analysis module
   app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
@@ -104,21 +99,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/pledges", politicalRoutes);
   app.use("/api/party-sentiment", politicalRoutes);
   
-  // Register dashboard routes for consistent metrics across environments
-  app.use("/api", dashboardRoutes);
-  
-  // Register consolidated parliamentary routes
-  // Includes: TD scoring (trust, performance, questions, unified, ELO),
-  // profiles (enhanced TD & party info), activity (questions, attendance),
-  // voting analysis, and constituencies
-  app.use("/api/parliamentary", parliamentaryRoutes);
+  // TD, party and constituency scores
+  app.use("/api/scores", scoresRoutes);
 
-  // Legacy routes for backward compatibility
-  app.use("/api/td-scores", parliamentaryRoutes);
-  app.use("/api/unified-td-scores", parliamentaryRoutes);
-  app.use("/api/trust-scores", parliamentaryRoutes);
-  app.use("/api/performance-scores", parliamentaryRoutes);
-  app.use("/api/parliamentary-activity", parliamentaryRoutes);
+  // Parliamentary activity (static Oireachtas data) and policy voting analysis
+  app.use("/api/parliamentary", parliamentaryRoutes);
   app.use("/api/policy-votes", parliamentaryRoutes);
   
   // Register ideas routes for community solutions
@@ -156,16 +141,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/admin/td-scoring", requireAdminAccess, tdScoringAdminRoutes);
 
 
-  // Register user rating routes for TDs
-  // Anonymous submissions are allowed by design; the limiter caps vote stuffing.
-  app.use("/api/ratings", publicWriteRateLimit, tdRatingsRoutes);
-  
   // Register ideology timeline routes (weekly ideology evolution data)
   app.use("/api/ideology-timeline", ideologyTimelineRoutes);
-  
-  // Register researched TDs routes (TDs with historical baseline research completed)
-  app.use("/api/researched-tds", researchedTDsRoutes);
-  
+
   // Register quiz routes (consolidated - includes history and AI assistant)
   app.use("/api/quiz-history", quizRoutes);
 

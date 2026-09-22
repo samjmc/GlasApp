@@ -10,7 +10,7 @@
 
 import { Router } from 'express';
 import { ArticleTriageJob } from '../../jobs/articleTriageJob.js';
-import { NewsToTDScoringService } from '../../services/newsToTDScoringService.js';
+import { runPipeline } from '../../scoring/index.js';
 
 const router = Router();
 
@@ -69,8 +69,8 @@ router.post('/run', async (req, res, next) => {
       minImportanceScore: req.body.minImportance || 40
     };
     
-    const stats = await NewsToTDScoringService.processUnprocessedArticles(options);
-    
+    const stats = await runPipeline(options);
+
     res.json({
       success: true,
       message: 'TD scoring completed',
@@ -132,7 +132,7 @@ router.post('/full-pipeline', async (req, res, next) => {
     
     // Step 2: Scoring
     console.log('\n🎯 Step 2: Running TD scoring...');
-    const scoringStats = await NewsToTDScoringService.processUnprocessedArticles({
+    const scoringStats = await runPipeline({
       batchSize: req.body.batchSize || 50,
       topPercentile: req.body.topPercentile || 25,
       minImportanceScore: req.body.minImportance || 40

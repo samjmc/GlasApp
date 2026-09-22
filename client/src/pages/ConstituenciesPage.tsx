@@ -26,16 +26,23 @@ interface ConstituencyParty {
 }
 
 interface ConstituencyTD {
+  id: number;
   name: string;
-  party?: string;
-  score?: number;
+  party: string | null;
+  overallScore: number | null;
 }
 
 interface ConstituencyListItem {
   name: string;
   tdCount: number;
-  averageScore: number;
+  averageScore: number | null;
   parties: ConstituencyParty[];
+}
+
+interface ConstituencySummaryData {
+  constituencies: ConstituencyListItem[];
+  totalConstituencies: number;
+  totalTds: number;
 }
 
 interface ConstituencyDetail {
@@ -48,24 +55,26 @@ export default function ConstituenciesPage() {
   const [selectedConstituency, setSelectedConstituency] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['constituencies-list'],
+  const { data: summary, isLoading } = useQuery<ConstituencySummaryData>({
+    queryKey: ['constituencies-summary'],
     queryFn: async () => {
-      const res = await fetch('/api/parliamentary/constituencies');
+      const res = await fetch('/api/scores/constituencies/summary');
       if (!res.ok) throw new Error('Failed to fetch constituencies');
-      const data = await res.json();
-      return data.constituencies;
+      const json = await res.json();
+      return json.data as ConstituencySummaryData;
     }
   });
+  const data = summary?.constituencies;
+  const scoredConstituencies = (data ?? []).filter((c) => c.averageScore !== null);
 
   // Fetch details for selected constituency
-  const { data: selectedData } = useQuery({
+  const { data: selectedData } = useQuery<ConstituencyDetail>({
     queryKey: ['constituency-detail', selectedConstituency],
     queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/constituency/${encodeURIComponent(selectedConstituency!)}`);
+      const res = await fetch(`/api/scores/constituency/${encodeURIComponent(selectedConstituency!)}`);
       if (!res.ok) throw new Error('Failed to fetch constituency');
-      const data = await res.json();
-      return data.constituency;
+      const json = await res.json();
+      return json.data as ConstituencyDetail;
     },
     enabled: !!selectedConstituency
   });
@@ -111,7 +120,7 @@ export default function ConstituenciesPage() {
         <Card className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
           <div className="text-center">
             <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <div className="text-3xl font-bold text-green-900">173</div>
+            <div className="text-3xl font-bold text-green-900">{summary?.totalTds ?? 0}</div>
             <div className="text-sm text-green-700">Total TDs</div>
           </div>
         </Card>
@@ -120,7 +129,9 @@ export default function ConstituenciesPage() {
           <div className="text-center">
             <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-purple-900">
-              {data ? Math.round(data.reduce((sum: number, c: ConstituencyListItem) => sum + c.averageScore, 0) / data.length) : 0}
+              {scoredConstituencies.length > 0
+                ? Math.round(scoredConstituencies.reduce((sum, c) => sum + (c.averageScore ?? 0), 0) / scoredConstituencies.length)
+                : 'N/A'}
             </div>
             <div className="text-sm text-purple-700">Avg Score</div>
           </div>
@@ -130,7 +141,7 @@ export default function ConstituenciesPage() {
           <div className="text-center">
             <MapPin className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
             <div className="text-3xl font-bold text-yellow-900">
-              {data ? (data.reduce((sum: number, c: ConstituencyListItem) => sum + c.tdCount, 0) / data.length).toFixed(1) : 0}
+              {data && data.length > 0 ? (data.reduce((sum, c) => sum + c.tdCount, 0) / data.length).toFixed(1) : 0}
             </div>
             <div className="text-sm text-yellow-700">Avg TDs/Area</div>
           </div>
@@ -196,8 +207,8 @@ export default function ConstituenciesPage() {
                   <div className="mb-6">
                     <h3 className="font-semibold mb-3">TDs</h3>
                     <div className="space-y-2">
-                      {selectedData.tds?.map((td: ConstituencyTD, idx: number) => (
-                        <Link key={idx} href={`/td/${encodeURIComponent(td.name)}`}>
+                      {selectedData.tds?.map((td: ConstituencyTD) => (
+                        <Link key={td.id} href={`/td/${encodeURIComponent(td.name)}`}>
                           <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors cursor-pointer group">
                             <div className="flex items-center justify-between">
                               <div>
@@ -207,7 +218,7 @@ export default function ConstituenciesPage() {
                                 <div className="text-xs text-gray-500">{td.party}</div>
                               </div>
                               <div className="text-sm font-bold text-blue-600">
-                                {td.score || 50}
+                                {td.overallScore ?? 'N/A'}
                               </div>
                             </div>
                           </div>
@@ -273,7 +284,7 @@ export default function ConstituenciesPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600 dark:text-gray-400">Avg Performance</span>
                       <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">
-                        {constituency.averageScore}
+                        {constituency.averageScore ?? 'N/A'}
                       </span>
                     </div>
                   </div>

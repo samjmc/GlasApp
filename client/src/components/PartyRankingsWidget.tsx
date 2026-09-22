@@ -9,21 +9,29 @@ import { queryKeys } from '@/lib/queryKeys';
 import { Link } from 'wouter';
 import { Card } from '@/components/ui/card';
 import { Info } from 'lucide-react';
+import { politicalParties } from '@shared/data';
 import { PartyQuickInfoModal } from './PartyQuickInfoModal';
 
 interface PartyRow {
-  name: string;
-  logo?: string | null;
-  color?: string | null;
-  abbreviation?: string | null;
-  government_status?: string | null;
-  active_members?: number | null;
-  overall_score?: number | null;
+  rank: number;
+  party: string;
+  memberCount: number;
+  avgElo: number;
+  overallScore: number;
+  label: string;
+  computedAt: string | null;
+}
+
+/** Brand colour from the static party list; the scores API carries none. */
+function partyColor(name: string): string | undefined {
+  return politicalParties.find(
+    (p) => p.country === 'ireland' && p.name.toLowerCase() === name.toLowerCase()
+  )?.color;
 }
 
 interface PartyCompactRowProps {
   party: PartyRow;
-  variant: 'emerald' | 'blue' | 'purple';
+  variant: 'emerald' | 'blue';
   onInfoClick: (partyName: string, e: React.MouseEvent) => void;
 }
 
@@ -42,59 +50,41 @@ function PartyCompactRow({ party, variant, onInfoClick }: PartyCompactRowProps) 
       score: 'text-blue-600 dark:text-blue-400',
       hover: 'hover:bg-blue-50/50 dark:hover:bg-blue-900/10',
       icon: 'text-blue-600 dark:text-blue-400'
-    },
-    purple: {
-      text: 'text-purple-900 dark:text-purple-50',
-      subtext: 'text-purple-700 dark:text-purple-300',
-      score: 'text-purple-600 dark:text-purple-400',
-      hover: 'hover:bg-purple-50/50 dark:hover:bg-purple-900/10',
-      icon: 'text-purple-600 dark:text-purple-400'
     }
   };
 
   const style = colors[variant];
 
   return (
-    <Link href={`/party/${encodeURIComponent(party.name)}`}>
+    <Link href={`/party/${encodeURIComponent(party.party)}`}>
       <div className={`group flex items-center justify-between py-2 px-3 -mx-3 rounded-lg transition-colors cursor-pointer ${style.hover}`}>
-        {/* Party Logo */}
-        {party.logo ? (
-          <div className="w-9 h-9 rounded-lg bg-white p-1.5 flex items-center justify-center flex-shrink-0 border border-gray-200 dark:border-gray-700 mr-3">
-            <img 
-              src={party.logo} 
-              alt={`${party.name} logo`}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        ) : (
-          <div 
-            className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 border-2 border-gray-200 dark:border-gray-700 mr-3"
-            style={{ backgroundColor: party.color ?? undefined }}
-          >
-            {party.abbreviation || party.name.substring(0, 2)}
-          </div>
-        )}
-        
+        <div
+          className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 border-2 border-gray-200 dark:border-gray-700 mr-3"
+          style={{ backgroundColor: partyColor(party.party) ?? '#6b7280' }}
+        >
+          {party.party.substring(0, 2)}
+        </div>
+
         <div className="flex-1 min-w-0 pr-3">
           <div className={`font-medium text-sm truncate ${style.text}`}>
-            {party.name}
+            #{party.rank} {party.party}
           </div>
           <div className={`text-xs truncate opacity-80 ${style.subtext}`}>
-            {party.government_status === 'coalition' ? 'Government' : 'Opposition'} • {party.active_members || 0} TDs
+            {party.memberCount} TDs • {party.label}
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3 shrink-0">
           <button
-            onClick={(e) => onInfoClick(party.name, e)}
+            onClick={(e) => onInfoClick(party.party, e)}
             className={`opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded ${style.icon}`}
           >
             <Info className="w-3.5 h-3.5" />
           </button>
-          
+
           <div className="text-right min-w-[3rem]">
             <div className={`text-sm font-bold ${style.score}`}>
-              {party.overall_score || 50}
+              {party.overallScore}
             </div>
             <div className="text-[9px] uppercase tracking-wider opacity-60">
               /100
@@ -111,12 +101,13 @@ export function PartyRankingsWidget() {
   const [selectedParty, setSelectedParty] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<PartyRow[]>({
     queryKey: queryKeys.party.rankings(),
     queryFn: async () => {
-      const res = await fetch('/api/parliamentary/scores/parties');
+      const res = await fetch('/api/scores/parties');
       if (!res.ok) throw new Error('Failed to fetch');
-      return res.json();
+      const json = await res.json();
+      return json.data as PartyRow[];
     },
     staleTime: 60000  // 1 minute
   });
@@ -133,8 +124,8 @@ export function PartyRankingsWidget() {
       <Card className="p-6">
         <div className="animate-pulse space-y-4">
           <div className="h-6 bg-gray-200 rounded w-1/3"></div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map(i => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {[1, 2].map(i => (
               <div key={i} className="space-y-2">
                 <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
                 {[1, 2, 3, 4, 5].map(j => (
@@ -148,63 +139,50 @@ export function PartyRankingsWidget() {
     );
   }
 
-  const parties = data?.parties || [];
-  const governmentParties = parties.filter((p: PartyRow) => p.government_status === 'coalition');
-  const oppositionParties = parties.filter((p: PartyRow) => p.government_status !== 'coalition');
-  const topParties = [...parties].sort((a: PartyRow, b: PartyRow) => (b.overall_score || 0) - (a.overall_score || 0)).slice(0, 5);
+  // The API returns parties already ranked best-first.
+  const parties = data ?? [];
+  const topParties = parties.slice(0, 5);
+  const restParties = parties.slice(5);
 
   return (
     <Card className="p-6 border bg-white dark:bg-gray-900 shadow-sm">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 lg:divide-x dark:divide-gray-800">
-        
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:divide-x dark:divide-gray-800">
+
         {/* Top Performers */}
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Top Performers</h3>
           </div>
           <div className="space-y-0.5">
-            {topParties.map((party: PartyRow) => (
-              <PartyCompactRow 
-                key={party.name} 
-                party={party} 
-                variant="emerald" 
+            {topParties.map((party) => (
+              <PartyCompactRow
+                key={party.party}
+                party={party}
+                variant="emerald"
                 onInfoClick={handleInfoClick}
               />
             ))}
           </div>
         </div>
 
-        {/* Government Parties */}
+        {/* Remaining parties */}
         <div className="space-y-3 lg:pl-12">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Government</h3>
+            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Other Parties</h3>
           </div>
           <div className="space-y-0.5">
-            {governmentParties.map((party: PartyRow) => (
-              <PartyCompactRow 
-                key={party.name} 
-                party={party} 
-                variant="blue" 
-                onInfoClick={handleInfoClick}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Opposition Parties */}
-        <div className="space-y-3 lg:pl-12">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Opposition</h3>
-          </div>
-          <div className="space-y-0.5">
-            {oppositionParties.map((party: PartyRow) => (
-              <PartyCompactRow 
-                key={party.name} 
-                party={party} 
-                variant="purple" 
-                onInfoClick={handleInfoClick}
-              />
-            ))}
+            {restParties.length === 0 ? (
+              <p className="text-xs text-gray-500 dark:text-gray-400 py-2">All ranked parties are shown on the left.</p>
+            ) : (
+              restParties.map((party) => (
+                <PartyCompactRow
+                  key={party.party}
+                  party={party}
+                  variant="blue"
+                  onInfoClick={handleInfoClick}
+                />
+              ))
+            )}
           </div>
         </div>
 

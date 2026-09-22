@@ -427,37 +427,11 @@ export const partySentimentVotes = pgTable("party_sentiment_votes", {
   userPartyUnique: unique("user_party_sentiment_unique").on(table.userId, table.partyId),
 }));
 
-// Performance scores table
-/** Drizzle ORM table definition for performance scores. */
-export const performanceScores = pgTable("performance_scores", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).notNull().unique(),
-  overallScore: integer("overall_score").notNull(), // 0-100 scale
-  legislativeProductivity: integer("legislative_productivity").notNull(),
-  parliamentaryEngagement: integer("parliamentary_engagement").notNull(),
-  constituencyService: integer("constituency_service").notNull(),
-  publicMediaImpact: integer("public_media_impact").notNull(),
-  billsSponsored: integer("bills_sponsored").default(0),
-  questionsAsked: integer("questions_asked").default(0),
-  voteAttendance: integer("vote_attendance").default(0),
-  committeeContributions: varchar("committee_contributions", { length: 255 }),
-  debatesSpoken: integer("debates_spoken").default(0),
-  clinicsHeld: integer("clinics_held").default(0),
-  caseworkResolutionRate: integer("casework_resolution_rate").default(0),
-  localProjectsSecured: integer("local_projects_secured").default(0),
-  pressMentions: integer("press_mentions").default(0),
-  socialMediaEngagement: integer("social_media_engagement").default(0),
-  notes: text("notes"),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
-
 export type PledgeCategoryWeight = typeof pledgeCategoryWeights.$inferSelect;
 export type UserCategoryVote = typeof userCategoryVotes.$inferSelect;
 export type UserPledgeVote = typeof userPledgeVotes.$inferSelect;
 export type UserCategoryRanking = typeof userCategoryRankings.$inferSelect;
 export type PartySentimentVote = typeof partySentimentVotes.$inferSelect;
-export type PerformanceScore = typeof performanceScores.$inferSelect;
 
 // Relations
 /** Drizzle relations for the users table. */
@@ -855,76 +829,6 @@ export const newsArticles = pgTable("news_articles", {
   index("idx_news_processed").on(table.processed),
 ]);
 
-// TD Scores table (ELO-style ratings)
-/** Drizzle ORM table definition for TD scores. */
-export const tdScores = pgTable("td_scores", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).notNull().unique(),
-  constituency: varchar("constituency", { length: 100 }).notNull(),
-  party: varchar("party", { length: 100 }),
-  
-  // Overall ELO score
-  overallElo: integer("overall_elo").default(1500).notNull(),
-  
-  // Dimensional ELO scores
-  transparencyElo: integer("transparency_elo").default(1500).notNull(),
-  effectivenessElo: integer("effectiveness_elo").default(1500).notNull(),
-  integrityElo: integer("integrity_elo").default(1500).notNull(),
-  consistencyElo: integer("consistency_elo").default(1500).notNull(),
-  constituencyServiceElo: integer("constituency_service_elo").default(1500).notNull(),
-  
-  // Statistics
-  totalStories: integer("total_stories").default(0).notNull(),
-  positiveStories: integer("positive_stories").default(0).notNull(),
-  negativeStories: integer("negative_stories").default(0).notNull(),
-  neutralStories: integer("neutral_stories").default(0).notNull(),
-  
-  // Rankings
-  nationalRank: integer("national_rank"),
-  constituencyRank: integer("constituency_rank"),
-  partyRank: integer("party_rank"),
-  
-  // Week-over-week change
-  weeklyEloChange: integer("weekly_elo_change").default(0),
-  monthlyEloChange: integer("monthly_elo_change").default(0),
-  
-  // Metadata
-  imageUrl: text("image_url"),
-  bio: text("bio"),
-  lastUpdated: timestamp("last_updated").defaultNow(),
-  createdAt: timestamp("created_at").defaultNow(),
-}, (table) => [
-  index("idx_td_constituency").on(table.constituency),
-  index("idx_td_overall_elo").on(table.overallElo),
-]);
-
-// Score history for tracking changes over time
-/** Drizzle ORM table definition for TD score history. */
-export const tdScoreHistory = pgTable("td_score_history", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).notNull(),
-  articleId: integer("article_id"), // References news_articles.id
-  
-  // Score changes
-  oldOverallElo: integer("old_overall_elo").notNull(),
-  newOverallElo: integer("new_overall_elo").notNull(),
-  eloChange: integer("elo_change").notNull(),
-  
-  // What caused the change
-  dimensionAffected: varchar("dimension_affected", { length: 50 }),
-  impactScore: decimal("impact_score", { precision: 4, scale: 2 }),
-  storyType: varchar("story_type", { length: 50 }),
-  
-  // Metadata
-  articleUrl: text("article_url"),
-  articleTitle: text("article_title"),
-  createdAt: timestamp("created_at").defaultNow(),
-}, (table) => [
-  index("idx_history_politician").on(table.politicianName),
-  index("idx_history_date").on(table.createdAt),
-  index("idx_td_score_history_politician_created_at").on(table.politicianName, table.createdAt),
-]);
-
 // News sources configuration
 /** Drizzle ORM table definition for news sources. */
 export const newsSources = pgTable("news_sources", {
@@ -967,10 +871,6 @@ export const scrapingJobs = pgTable("scraping_jobs", {
 // Zod schemas for validation
 /** Zod insert-schema for creating a news article record. */
 export const insertNewsArticleSchema = createInsertSchema(newsArticles).omit({ id: true, createdAt: true, fetchedAt: true });
-/** Zod insert-schema for creating a TD score record. */
-export const insertTDScoreSchema = createInsertSchema(tdScores).omit({ id: true, createdAt: true, lastUpdated: true });
-/** Zod insert-schema for creating a TD score history record. */
-export const insertTDScoreHistorySchema = createInsertSchema(tdScoreHistory).omit({ id: true, createdAt: true });
 /** Zod insert-schema for creating a news source record. */
 export const insertNewsSourceSchema = createInsertSchema(newsSources).omit({ id: true, createdAt: true });
 /** Zod insert-schema for creating a scraping job record. */
@@ -980,11 +880,6 @@ export const insertScrapingJobSchema = createInsertSchema(scrapingJobs).omit({ i
 export type NewsArticle = typeof newsArticles.$inferSelect;
 export type InsertNewsArticle = z.infer<typeof insertNewsArticleSchema>;
 
-export type TDScore = typeof tdScores.$inferSelect;
-export type InsertTDScore = z.infer<typeof insertTDScoreSchema>;
-
-export type TDScoreHistory = typeof tdScoreHistory.$inferSelect;
-export type InsertTDScoreHistory = z.infer<typeof insertTDScoreHistorySchema>;
 
 export type NewsSource = typeof newsSources.$inferSelect;
 export type InsertNewsSource = z.infer<typeof insertNewsSourceSchema>;
@@ -992,187 +887,6 @@ export type InsertNewsSource = z.infer<typeof insertNewsSourceSchema>;
 export type ScrapingJob = typeof scrapingJobs.$inferSelect;
 export type InsertScrapingJob = z.infer<typeof insertScrapingJobSchema>;
 
-// ============================================
-// UNIFIED TD SCORING SYSTEM
-// Comprehensive 0-100 scale scoring
-// ============================================
-
-// Unified TD Scores table (main authoritative scores)
-/** Drizzle ORM table definition for unified TD scores. */
-export const unifiedTDScores = pgTable("unified_td_scores", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).unique().notNull(),
-  constituency: varchar("constituency", { length: 100 }).notNull(),
-  party: varchar("party", { length: 100 }),
-  
-  // PRIMARY SCORES (0-100 scale) - What users see
-  overallScore: decimal("overall_score", { precision: 5, scale: 2 }).default("50.00").notNull(),
-  newsScore: decimal("news_score", { precision: 5, scale: 2 }).default("50.00"),
-  parliamentaryScore: decimal("parliamentary_score", { precision: 5, scale: 2 }).default("50.00"),
-  constituencyScore: decimal("constituency_score", { precision: 5, scale: 2 }).default("50.00"),
-  publicTrustScore: decimal("public_trust_score", { precision: 5, scale: 2 }).default("50.00"),
-  
-  // Dimensional scores (0-100 each)
-  transparencyScore: decimal("transparency_score", { precision: 5, scale: 2 }).default("50.00"),
-  effectivenessScore: decimal("effectiveness_score", { precision: 5, scale: 2 }).default("50.00"),
-  integrityScore: decimal("integrity_score", { precision: 5, scale: 2 }).default("50.00"),
-  consistencyScore: decimal("consistency_score", { precision: 5, scale: 2 }).default("50.00"),
-  constituencyServiceScore: decimal("constituency_service_score", { precision: 5, scale: 2 }).default("50.00"),
-  
-  // Legacy ELO scores (backward compatibility)
-  overallElo: integer("overall_elo").default(1500),
-  transparencyElo: integer("transparency_elo").default(1500),
-  effectivenessElo: integer("effectiveness_elo").default(1500),
-  integrityElo: integer("integrity_elo").default(1500),
-  consistencyElo: integer("consistency_elo").default(1500),
-  constituencyServiceElo: integer("constituency_service_elo").default(1500),
-  
-  // Rankings
-  nationalRank: integer("national_rank"),
-  constituencyRank: integer("constituency_rank"),
-  partyRank: integer("party_rank"),
-  
-  // Trends
-  weeklyChange: decimal("weekly_change", { precision: 5, scale: 2 }).default("0.00"),
-  monthlyChange: decimal("monthly_change", { precision: 5, scale: 2 }).default("0.00"),
-  trend: varchar("trend", { length: 20 }).default("stable"),
-  
-  // Statistics
-  totalStories: integer("total_stories").default(0),
-  positiveStories: integer("positive_stories").default(0),
-  negativeStories: integer("negative_stories").default(0),
-  neutralStories: integer("neutral_stories").default(0),
-  questionsAsked: integer("questions_asked").default(0),
-  attendancePercentage: decimal("attendance_percentage", { precision: 5, scale: 2 }),
-  committeeParticipations: integer("committee_participations").default(0),
-  billsProposed: integer("bills_proposed").default(0),
-  billsPassed: integer("bills_passed").default(0),
-  clinicsHeld: integer("clinics_held").default(0),
-  casesResolved: integer("cases_resolved").default(0),
-  
-  // Quality indicators
-  confidenceScore: decimal("confidence_score", { precision: 3, scale: 2 }).default("0.50"),
-  dataSourcesCount: integer("data_sources_count").default(0),
-  lastNewsUpdate: timestamp("last_news_update"),
-  lastParliamentaryUpdate: timestamp("last_parliamentary_update"),
-  lastUserRatingUpdate: timestamp("last_user_rating_update"),
-  
-  // Metadata
-  lastCalculated: timestamp("last_calculated").defaultNow(),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => [
-  index("idx_unified_scores_overall").on(table.overallScore),
-  index("idx_unified_scores_constituency").on(table.constituency),
-  index("idx_unified_scores_party").on(table.party),
-  index("idx_unified_scores_rank").on(table.nationalRank),
-]);
-
-// Unified Score History table
-/** Drizzle ORM table definition for unified score history. */
-export const unifiedScoreHistory = pgTable("unified_score_history", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).notNull(),
-  
-  // Changes
-  oldOverallScore: decimal("old_overall_score", { precision: 5, scale: 2 }).notNull(),
-  newOverallScore: decimal("new_overall_score", { precision: 5, scale: 2 }).notNull(),
-  scoreChange: decimal("score_change", { precision: 5, scale: 2 }).notNull(),
-  
-  // Trigger
-  triggerType: varchar("trigger_type", { length: 50 }).notNull(),
-  triggerId: integer("trigger_id"),
-  primaryComponent: varchar("primary_component", { length: 50 }),
-  componentChange: decimal("component_change", { precision: 5, scale: 2 }),
-  
-  // Snapshot
-  newsScore: decimal("news_score", { precision: 5, scale: 2 }),
-  parliamentaryScore: decimal("parliamentary_score", { precision: 5, scale: 2 }),
-  constituencyScore: decimal("constituency_score", { precision: 5, scale: 2 }),
-  publicTrustScore: decimal("public_trust_score", { precision: 5, scale: 2 }),
-  
-  createdAt: timestamp("created_at").defaultNow(),
-}, (table) => [
-  index("idx_score_history_politician").on(table.politicianName, table.createdAt),
-  index("idx_score_history_date").on(table.createdAt),
-]);
-
-// User TD Ratings table
-/** Drizzle ORM table definition for user TD ratings. */
-export const userTDRatings = pgTable("user_td_ratings", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).notNull(),
-  politicianName: varchar("politician_name", { length: 255 }).notNull(),
-  rating: integer("rating").notNull(), // 1-5 stars
-  comment: text("comment"),
-  category: varchar("category", { length: 50 }),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => [
-  unique("unique_user_politician_rating").on(table.userId, table.politicianName, table.category),
-  index("idx_user_ratings_politician").on(table.politicianName),
-  index("idx_user_ratings_user").on(table.userId),
-]);
-
-// Score calculation log
-/** Drizzle ORM table definition for score calculation log. */
-export const scoreCalculationLog = pgTable("score_calculation_log", {
-  id: serial("id").primaryKey(),
-  calculationType: varchar("calculation_type", { length: 50 }).notNull(),
-  tdsAffected: integer("tds_affected").default(0),
-  status: varchar("status", { length: 20 }).notNull(),
-  errorMessage: text("error_message"),
-  durationMs: integer("duration_ms"),
-  dbQueries: integer("db_queries"),
-  apiCalls: integer("api_calls"),
-  startedAt: timestamp("started_at").defaultNow(),
-  completedAt: timestamp("completed_at"),
-});
-
-// Component weights configuration
-/** Drizzle ORM table definition for score component weights. */
-export const scoreComponentWeights = pgTable("score_component_weights", {
-  id: serial("id").primaryKey(),
-  componentName: varchar("component_name", { length: 50 }).unique().notNull(),
-  weight: decimal("weight", { precision: 3, scale: 2 }).notNull(),
-  description: text("description"),
-  active: boolean("active").default(true),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
-
-// Zod schemas for unified scoring
-/** Zod insert-schema for creating a unified TD score record. */
-export const insertUnifiedTDScoreSchema = createInsertSchema(unifiedTDScores).omit({ 
-  id: true, 
-  createdAt: true, 
-  updatedAt: true, 
-  lastCalculated: true 
-});
-
-/** Zod insert-schema for creating a unified score history record. */
-export const insertUnifiedScoreHistorySchema = createInsertSchema(unifiedScoreHistory).omit({ 
-  id: true, 
-  createdAt: true 
-});
-
-/** Zod insert-schema for creating a user TD rating record. */
-export const insertUserTDRatingSchema = createInsertSchema(userTDRatings).omit({ 
-  id: true, 
-  createdAt: true, 
-  updatedAt: true 
-});
-
-// TypeScript types
-export type UnifiedTDScore = typeof unifiedTDScores.$inferSelect;
-export type InsertUnifiedTDScore = z.infer<typeof insertUnifiedTDScoreSchema>;
-
-export type UnifiedScoreHistory = typeof unifiedScoreHistory.$inferSelect;
-export type InsertUnifiedScoreHistory = z.infer<typeof insertUnifiedScoreHistorySchema>;
-
-export type UserTDRating = typeof userTDRatings.$inferSelect;
-export type InsertUserTDRating = z.infer<typeof insertUserTDRatingSchema>;
-
-// ============================================
 // PARLIAMENTARY ACTIVITY (From Oireachtas API)
 // Real-time parliamentary data
 // ============================================
@@ -1214,57 +928,6 @@ export const insertParliamentaryActivitySchema = createInsertSchema(parliamentar
 export type ParliamentaryActivity = typeof parliamentaryActivity.$inferSelect;
 export type InsertParliamentaryActivity = z.infer<typeof insertParliamentaryActivitySchema>;
 
-// ============================================
-// TD HISTORICAL BASELINES (AI-Generated Starting Points)
-// AI researches each TD and assigns fair baseline
-// ============================================
-
-/** Drizzle ORM table definition for TD historical baselines. */
-export const tdHistoricalBaselines = pgTable("td_historical_baselines", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).unique().notNull(),
-  
-  // Baseline scoring
-  baselineModifier: decimal("baseline_modifier", { precision: 4, scale: 2 }).notNull().default("1.00"),
-  baselineScore0_100: integer("baseline_score_0_100"),
-  confidence: decimal("confidence", { precision: 3, scale: 2 }),
-  
-  // Categorization
-  category: varchar("category", { length: 50 }), // severe_issues, moderate_issues, etc.
-  
-  // AI Analysis
-  historicalSummary: text("historical_summary"),
-  keyFindings: text("key_findings"), // JSON string
-  reasoning: text("reasoning"),
-  controversiesNoted: text("controversies_noted"), // JSON string
-  dataQuality: text("data_quality"), // JSON string
-  
-  // Metadata
-  researchDate: date("research_date"),
-  analyzedBy: varchar("analyzed_by", { length: 50 }).default("claude"),
-  reviewedBy: varchar("reviewed_by", { length: 255 }),
-  reviewNotes: text("review_notes"),
-  
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => [
-  index("idx_historical_baselines_politician").on(table.politicianName),
-  index("idx_historical_baselines_category").on(table.category),
-  index("idx_historical_baselines_modifier").on(table.baselineModifier),
-  index("idx_historical_baselines_research_date").on(table.researchDate),
-]);
-
-/** Zod insert-schema for creating a TD historical baseline record. */
-export const insertTdHistoricalBaselineSchema = createInsertSchema(tdHistoricalBaselines).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true
-});
-
-export type TdHistoricalBaseline = typeof tdHistoricalBaselines.$inferSelect;
-export type InsertTdHistoricalBaseline = z.infer<typeof insertTdHistoricalBaselineSchema>;
-
-// ============================================
 // POLICY PROMISES (Bias Protection - Promise Tracking)
 // Tracks announcements and verifies delivery
 // ============================================

@@ -22,7 +22,6 @@ import { ChevronDown, ChevronUp, TrendingUp, Shield, CheckCircle, AlertTriangle,
 import { useQuery } from "@tanstack/react-query";
 import PledgeVotingInterface from '@/components/PledgeVotingInterface';
 import { ParliamentaryActivity } from '@/components/ParliamentaryActivity';
-import { PerformanceScoreBreakdown } from '@/components/PerformanceScoreBreakdown';
 
 interface PledgeAction {
   id: string | number;
@@ -64,31 +63,6 @@ interface TopActiveTD {
   attendancePercentage: number;
 }
 
-interface TrustScoreBreakdownData {
-  flip_flops_score?: number;
-  consistency_score?: number;
-  reliability_score?: number;
-  corruption_cleanliness_score?: number;
-  overall_trust_score?: number;
-  flip_flops_notes?: string;
-  consistency_notes?: string;
-  reliability_notes?: string;
-  corruption_notes?: string;
-}
-
-interface DashboardPerformanceParty {
-  partyId: string;
-  name: string;
-  color: string;
-  overallScore: number;
-}
-
-interface DashboardTrustParty {
-  partyId: string;
-  name: string;
-  color: string;
-  overallTrustworthiness: number;
-}
 
 // Transparency data for parties - Based on Data Openness, Timeliness, and Granularity metrics
 const transparencyData = {
@@ -537,7 +511,6 @@ const TrustworthinessTabContent = ({ selectedPartyId }: { selectedPartyId: strin
   };
 
 
-  
   return (
     <div className="space-y-6">
       <div className="text-center mb-6">
@@ -2362,474 +2335,14 @@ const PartyPerformanceSection = () => {
 };
 
 // Trust Score Breakdown Component
-const TrustScoreBreakdown = ({ politicianName }: { politicianName: string }) => {
-  const { data: trustData, isLoading } = useQuery({
-    queryKey: [`/api/trust-scores/politician/${politicianName}`],
-    enabled: !!politicianName,
-  });
-
-  if (isLoading) {
-    return (
-      <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-        <div className="text-sm text-gray-500">Loading trust breakdown...</div>
-      </div>
-    );
-  }
-
-  if (!trustData || typeof trustData !== 'object' || trustData === null) {
-    return (
-      <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-        <div className="text-sm text-gray-500">No detailed trust data available</div>
-      </div>
-    );
-  }
-
-  const trustResponse = trustData as { success?: unknown; data?: unknown };
-  if (!trustResponse.success || !trustResponse.data) {
-    return (
-      <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-        <div className="text-sm text-gray-500">No detailed trust data available</div>
-      </div>
-    );
-  }
-
-  const trust = trustResponse.data as TrustScoreBreakdownData;
-
-  // Use actual scores from the database for each TD
-  const flipFlopScore = trust.flip_flops_score || 0;
-  const consistencyScore = trust.consistency_score || 0;
-  const reliabilityScore = trust.reliability_score || 0;
-  const corruptionScore = trust.corruption_cleanliness_score || 0;
-  const overallScore = trust.overall_trust_score || 0;
-
-  return (
-    <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-      <h4 className="text-sm font-semibold mb-3 text-green-800 dark:text-green-200">Trust Score Breakdown</h4>
-      
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <div className="text-center">
-          <div className="text-lg font-bold text-green-600 dark:text-green-400">{flipFlopScore}/100</div>
-          <div className="text-xs text-green-700 dark:text-green-300">Flip-Flops</div>
-        </div>
-        <div className="text-center">
-          <div className="text-lg font-bold text-green-600 dark:text-green-400">{consistencyScore}/100</div>
-          <div className="text-xs text-green-700 dark:text-green-300">Consistency</div>
-        </div>
-        <div className="text-center">
-          <div className="text-lg font-bold text-green-600 dark:text-green-400">{reliabilityScore}/100</div>
-          <div className="text-xs text-green-700 dark:text-green-300">Reliability</div>
-        </div>
-        <div className="text-center">
-          <div className="text-lg font-bold text-green-600 dark:text-green-400">{corruptionScore}/100</div>
-          <div className="text-xs text-green-700 dark:text-green-300">Corruption Clean</div>
-        </div>
-      </div>
-
-      <div className="space-y-3 text-xs">
-        <div>
-          <div className="font-medium text-gray-700 dark:text-gray-300 mb-1">🔄 Flip-Flops ({flipFlopScore}/100)</div>
-          <div className="text-gray-600 dark:text-gray-400">{trust.flip_flops_notes || 'No notes available'}</div>
-        </div>
-        
-        <div>
-          <div className="font-medium text-gray-700 dark:text-gray-300 mb-1">🧭 Consistency ({consistencyScore}/100)</div>
-          <div className="text-gray-600 dark:text-gray-400">{trust.consistency_notes || 'No notes available'}</div>
-        </div>
-        
-        <div>
-          <div className="font-medium text-gray-700 dark:text-gray-300 mb-1">⚡ Reliability ({reliabilityScore}/100)</div>
-          <div className="text-gray-600 dark:text-gray-400">{trust.reliability_notes || 'No notes available'}</div>
-        </div>
-        
-        <div>
-          <div className="font-medium text-gray-700 dark:text-gray-300 mb-1">🛡️ Corruption & Integrity ({corruptionScore}/100)</div>
-          <div className="text-gray-600 dark:text-gray-400">{trust.corruption_notes || 'No notes available'}</div>
-        </div>
-      </div>
-
-      <div className="mt-3 pt-3 border-t border-green-200 dark:border-green-800">
-        <div className="text-center">
-          <div className="text-lg font-bold text-green-600 dark:text-green-400">{overallScore}/100</div>
-          <div className="text-xs text-green-700 dark:text-green-300">Overall Trust Score</div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // Component for displaying most trustworthy politicians
-const TopTrustworthyPoliticians = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [topPoliticians, setTopPoliticians] = useState<TrustRankedPolitician[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchTopTrustworthy = async () => {
-      try {
-        const response = await fetch('/api/trust-scores/top-trustworthy?limit=10');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setTopPoliticians(data.data);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching top trustworthy politicians:', error);
-      }
-      setLoading(false);
-    };
-
-    fetchTopTrustworthy();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="space-y-3">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <div key={index} className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/20 rounded-lg animate-pulse">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gray-300"></div>
-              <div className="space-y-2">
-                <div className="h-4 w-32 bg-gray-300 rounded"></div>
-                <div className="h-3 w-24 bg-gray-300 rounded"></div>
-              </div>
-            </div>
-            <div className="h-8 w-16 bg-gray-300 rounded"></div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-500">{topPoliticians.length} TDs assessed</span>
-      </div>
-      
-      <div className="space-y-3">
-        {topPoliticians.map((politician, index) => {
-          const party = politicalParties.find(p => p.id === politician.party_id);
-          return (
-            <div 
-              key={politician.politician_name}
-              className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors cursor-pointer"
-              onClick={() => {
-                if (onPoliticianClick) {
-                  onPoliticianClick(politician.politician_name);
-                }
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-bold text-green-600 w-8">#{index + 1}</span>
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: party?.color || "#888" }}></div>
-                  <div>
-                    <div className="font-semibold text-gray-800 dark:text-gray-200 hover:text-green-600 transition-colors">{politician.politician_name}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {party?.name || "Independent"} • {politician.constituency}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-green-600">{politician.overall_trust_score}%</div>
-                <div className="text-xs text-green-700 dark:text-green-300">Trust Score</div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      
-      {topPoliticians.length === 0 && !loading && (
-        <div className="text-center py-8 text-gray-500">
-          No trust score data available
-        </div>
-      )}
-    </div>
-  );
-};
 
 // Component for displaying least trustworthy politicians
-const LeastTrustworthyPoliticians = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [bottomPoliticians, setBottomPoliticians] = useState<TrustRankedPolitician[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLeastTrustworthy = async () => {
-      try {
-        const response = await fetch('/api/trust-scores/least-trustworthy?limit=10');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setBottomPoliticians(data.data);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching least trustworthy politicians:', error);
-      }
-      setLoading(false);
-    };
-
-    fetchLeastTrustworthy();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="space-y-3">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <div key={index} className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/20 rounded-lg animate-pulse">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gray-300"></div>
-              <div className="space-y-2">
-                <div className="h-4 w-32 bg-gray-300 rounded"></div>
-                <div className="h-3 w-24 bg-gray-300 rounded"></div>
-              </div>
-            </div>
-            <div className="h-8 w-16 bg-gray-300 rounded"></div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-500">{bottomPoliticians.length} TDs assessed</span>
-      </div>
-      
-      <div className="space-y-3">
-        {bottomPoliticians.map((politician, index) => {
-          const party = politicalParties.find(p => p.id === politician.party_id);
-          return (
-            <div 
-              key={politician.politician_name}
-              className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/20 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors cursor-pointer"
-              onClick={() => {
-                if (onPoliticianClick) {
-                  onPoliticianClick(politician.politician_name);
-                }
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-bold text-red-600 w-8">#{index + 1}</span>
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: party?.color || "#888" }}></div>
-                  <div>
-                    <div className="font-semibold text-gray-800 dark:text-gray-200 hover:text-red-600 transition-colors">{politician.politician_name}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {party?.name || "Independent"} • {politician.constituency}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-red-600">{politician.overall_trust_score}%</div>
-                <div className="text-xs text-red-700 dark:text-red-300">Trust Score</div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      
-      {bottomPoliticians.length === 0 && !loading && (
-        <div className="text-center py-8 text-gray-500">
-          No trust score data available
-        </div>
-      )}
-    </div>
-  );
-};
 
 // Component for displaying top performing politicians
-const TopPerformersList = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [topPerformers, setTopPerformers] = useState<PerformanceRankedPolitician[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchTopPerformers = async () => {
-      try {
-        const response = await fetch('/api/performance-scores/top-performers');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setTopPerformers(data.data);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching top performers:', error);
-      }
-      setLoading(false);
-    };
-
-    fetchTopPerformers();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="space-y-3">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <div key={index} className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg animate-pulse">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gray-300"></div>
-              <div className="space-y-2">
-                <div className="h-4 w-32 bg-gray-300 rounded"></div>
-                <div className="h-3 w-24 bg-gray-300 rounded"></div>
-              </div>
-            </div>
-            <div className="h-8 w-16 bg-gray-300 rounded"></div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-
-        <span className="text-sm text-gray-500">{topPerformers.length} TDs assessed</span>
-      </div>
-      
-      <div className="space-y-3">
-        {topPerformers.map((politician, index) => {
-          // Find politician data to get party and constituency info
-          const politicianData = politicians.find(p => p.name === politician.politicianName);
-          const party = politicalParties.find(p => p.id === politicianData?.partyId);
-          return (
-            <div 
-              key={politician.politicianName}
-              className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors cursor-pointer"
-              onClick={() => {
-                if (onPoliticianClick) {
-                  onPoliticianClick(politician.politicianName);
-                }
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-bold text-blue-600 w-8">#{index + 1}</span>
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: party?.color || "#888" }}></div>
-                  <div>
-                    <div className="font-semibold text-gray-800 dark:text-gray-200 hover:text-blue-600 transition-colors">{politician.politicianName}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {party?.name || "Independent"} • {politicianData?.constituency || "Unknown"}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-blue-600">{politician.overallScore}%</div>
-                <div className="text-xs text-blue-700 dark:text-blue-300">Performance</div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      
-      {topPerformers.length === 0 && !loading && (
-        <div className="text-center py-8 text-gray-500">
-          No performance score data available
-        </div>
-      )}
-    </div>
-  );
-};
 
 // Component for displaying lowest performing politicians
-const LowPerformersList = ({ onPoliticianClick }: { onPoliticianClick?: (name: string) => void }) => {
-  const [lowPerformers, setLowPerformers] = useState<PerformanceRankedPolitician[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLowPerformers = async () => {
-      try {
-        const response = await fetch('/api/performance-scores/lowest-performers');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setLowPerformers(data.data);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching low performers:', error);
-      }
-      setLoading(false);
-    };
-
-    fetchLowPerformers();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="space-y-3">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <div key={index} className="flex items-center justify-between p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg animate-pulse">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gray-300"></div>
-              <div className="space-y-2">
-                <div className="h-4 w-32 bg-gray-300 rounded"></div>
-                <div className="h-3 w-24 bg-gray-300 rounded"></div>
-              </div>
-            </div>
-            <div className="h-8 w-16 bg-gray-300 rounded"></div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-
-        <span className="text-sm text-gray-500">{lowPerformers.length} TDs assessed</span>
-      </div>
-      
-      <div className="space-y-3">
-        {lowPerformers.map((politician, index) => {
-          // Find politician data to get party and constituency info
-          const politicianData = politicians.find(p => p.name === politician.politicianName);
-          const party = politicalParties.find(p => p.id === politicianData?.partyId);
-          return (
-            <div 
-              key={politician.politicianName}
-              className="flex items-center justify-between p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors cursor-pointer"
-              onClick={() => {
-                if (onPoliticianClick) {
-                  onPoliticianClick(politician.politicianName);
-                }
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-bold text-orange-600 w-8">#{index + 1}</span>
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: party?.color || "#888" }}></div>
-                  <div>
-                    <div className="font-semibold text-gray-800 dark:text-gray-200 hover:text-orange-600 transition-colors">{politician.politicianName}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {party?.name || "Independent"} • {politicianData?.constituency || "Unknown"}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-orange-600">{politician.overallScore}%</div>
-                <div className="text-xs text-orange-700 dark:text-orange-300">Performance</div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      
-      {lowPerformers.length === 0 && !loading && (
-        <div className="text-center py-8 text-gray-500">
-          No performance score data available
-        </div>
-      )}
-    </div>
-  );
-};
 
 const EducationPage = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>("ireland");
@@ -2838,10 +2351,6 @@ const EducationPage = () => {
   const [activeTab, setActiveTab] = useState<string>("parties");
   
   // State for collapsible sections
-  const [showMostTrusted, setShowMostTrusted] = useState<boolean>(true);
-  const [showLeastTrusted, setShowLeastTrusted] = useState<boolean>(true);
-  const [showTopPerformers, setShowTopPerformers] = useState<boolean>(true);
-  const [showLowPerformers, setShowLowPerformers] = useState<boolean>(true);
 
   // Function to handle party click from dashboard
   const handlePartyClick = (partyId: string) => {
@@ -2884,151 +2393,21 @@ const EducationPage = () => {
     }, 100);
   };
 
-  // Dashboard data queries - now using server-side API for consistency
-  const { data: dashboardData, isLoading: dashboardLoading } = useQuery({
-    queryKey: ['/api/dashboard-metrics'],
-    staleTime: 1 * 60 * 1000, // 1 minute to ensure fresh data
-    gcTime: 5 * 60 * 1000, // 5 minutes
-    refetchOnWindowFocus: false, // Prevent unnecessary refetches
-    refetchOnMount: true // Always fetch fresh data on mount
-  });
   const [selectedPartyId, setSelectedPartyId] = useState<string | null>(null);
   const [selectedPoliticianId, setSelectedPoliticianId] = useState<string | null>(null);
-  const [selectedTrustPolitician, setSelectedTrustPolitician] = useState<string | null>(null);
-  const [selectedPerformancePolitician, setSelectedPerformancePolitician] = useState<string | null>(null);
   const [selectedPartyFilter, setSelectedPartyFilter] = useState<string | null>(null);
   const [selectedConstituencyFilter, setSelectedConstituencyFilter] = useState<string | null>(null);
   const [electionStatusFilter, setElectionStatusFilter] = useState<string>("elected");
   const [nameSearchFilter, setNameSearchFilter] = useState<string>("");
   const [showAllPoliticians, setShowAllPoliticians] = useState<boolean>(false);
   const [politiciansViewMode, setPoliticiansViewMode] = useState<'boxes' | 'bars'>('boxes');
-  const [trustScores, setTrustScores] = useState<Record<string, number>>({});
-  const [trustScoresLoading, setTrustScoresLoading] = useState<Record<string, boolean>>({});
-  const [performanceScores, setPerformanceScores] = useState<Record<string, number>>({});
-  const [performanceScoresLoading, setPerformanceScoresLoading] = useState<Record<string, boolean>>({});
   
-  // Dashboard collapsible sections state
-  const [showTopPerformance, setShowTopPerformance] = useState<boolean>(true);
-  const [showTopTrust, setShowTopTrust] = useState<boolean>(true);
 
   // Reset "Show All" state when filters change
   useEffect(() => {
     setShowAllPoliticians(false);
   }, [selectedPartyFilter, selectedConstituencyFilter, electionStatusFilter, nameSearchFilter]);
 
-  // Fetch trust scores for politicians in parallel batches
-  useEffect(() => {
-    const fetchTrustScores = async () => {
-      // Filter to only Irish politicians to reduce unnecessary requests
-      const irishPoliticians = politicians.filter(p => p.partyId?.startsWith("ie-"));
-      
-      const loadingStates: Record<string, boolean> = {};
-      
-      // Set only Irish politicians as loading
-      for (const politician of irishPoliticians) {
-        loadingStates[politician.name] = true;
-      }
-      setTrustScoresLoading(loadingStates);
-      
-      // Process in parallel batches of 10 to avoid overwhelming the server
-      const batchSize = 10;
-      const batches = [];
-      
-      for (let i = 0; i < irishPoliticians.length; i += batchSize) {
-        batches.push(irishPoliticians.slice(i, i + batchSize));
-      }
-      
-      const scores: Record<string, number> = {};
-      
-      for (const batch of batches) {
-        // Process each batch in parallel
-        const batchPromises = batch.map(async (politician) => {
-          try {
-            const response = await fetch(`/api/trust-scores/politician/${encodeURIComponent(politician.name)}`);
-            if (response.ok) {
-              const data = await response.json();
-              if (data.success && data.data) {
-                scores[politician.name] = data.data.overall_trust_score;
-              }
-            }
-          } catch (error) {
-            // Silently handle errors - will use default score
-          }
-          
-          // Mark this politician as no longer loading
-          setTrustScoresLoading(prev => ({
-            ...prev,
-            [politician.name]: false
-          }));
-        });
-        
-        // Wait for this batch to complete before starting the next
-        await Promise.all(batchPromises);
-        
-        // Update scores incrementally as batches complete
-        setTrustScores(prev => ({ ...prev, ...scores }));
-      }
-    };
-    
-    fetchTrustScores();
-  }, []);
-
-  // Fetch performance scores for politicians in parallel batches
-  useEffect(() => {
-    const fetchPerformanceScores = async () => {
-      // Filter to only Irish politicians to reduce unnecessary requests
-      const irishPoliticians = politicians.filter(p => p.partyId?.startsWith("ie-"));
-      
-      const loadingStates: Record<string, boolean> = {};
-      
-      // Set only Irish politicians as loading
-      for (const politician of irishPoliticians) {
-        loadingStates[politician.name] = true;
-      }
-      setPerformanceScoresLoading(loadingStates);
-      
-      // Process in parallel batches of 10 to avoid overwhelming the server
-      const batchSize = 10;
-      const batches = [];
-      
-      for (let i = 0; i < irishPoliticians.length; i += batchSize) {
-        batches.push(irishPoliticians.slice(i, i + batchSize));
-      }
-      
-      const scores: Record<string, number> = {};
-      
-      for (const batch of batches) {
-        // Process each batch in parallel
-        const batchPromises = batch.map(async (politician) => {
-          try {
-            const response = await fetch(`/api/performance-scores/politician/${encodeURIComponent(politician.name)}`);
-            if (response.ok) {
-              const data = await response.json();
-              if (data.success && data.data) {
-                scores[politician.name] = data.data.overallScore;
-              }
-            }
-          } catch (error) {
-            // Silently handle errors - will use default score
-          }
-          
-          // Mark this politician as no longer loading
-          setPerformanceScoresLoading(prev => ({
-            ...prev,
-            [politician.name]: false
-          }));
-        });
-        
-        // Wait for this batch to complete before starting the next
-        await Promise.all(batchPromises);
-        
-        // Update scores incrementally as batches complete
-        setPerformanceScores(prev => ({ ...prev, ...scores }));
-      }
-    };
-    
-    fetchPerformanceScores();
-  }, []);
   const [primaryDimension, setPrimaryDimension] = useState<string>("economic");
   const [secondaryDimension, setSecondaryDimension] = useState<string>("social");
   const [showAllDimensions, setShowAllDimensions] = useState<boolean>(false);
@@ -3364,230 +2743,6 @@ const EducationPage = () => {
           Expand your knowledge of politics, learn about parties and their policies, and track how well they've kept their promises.
         </p>
       </div>
-      {/* Summary Dashboard */}
-      <Card className="mb-8">
-        <CardHeader>
-        </CardHeader>
-        <CardContent>
-          <Tabs defaultValue="parties" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 gap-2 h-auto p-2">
-              <TabsTrigger value="parties" className="text-xs sm:text-sm font-medium px-3 py-2 whitespace-nowrap">🏛️ Party Rankings</TabsTrigger>
-              <TabsTrigger value="politician-trust" className="text-xs sm:text-sm font-medium px-3 py-2 whitespace-nowrap">🛡️ Politician Trust</TabsTrigger>
-              <TabsTrigger value="politician-performance" className="text-xs sm:text-sm font-medium px-3 py-2 whitespace-nowrap">🏆 Politician Performance</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="parties" className="space-y-8 mt-8">
-              <div className="text-center mb-6">
-                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">🏛️ Political Party Rankings</h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Comprehensive assessment of Irish political parties based on performance metrics and trustworthiness</p>
-              </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Top Performance Parties */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 text-blue-700 dark:text-blue-300 flex items-center">
-                    🏆 Highest Performing Parties
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="ml-2 h-6 w-6 p-0"
-                      onClick={() => setShowTopPerformance(!showTopPerformance)}
-                    >
-                      {showTopPerformance ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                    </Button>
-                  </h3>
-                  {showTopPerformance && (
-                    <div className="space-y-3">
-                      {dashboardLoading ? (
-                        Array.from({ length: 3 }).map((_, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg animate-pulse">
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-                              <div className="h-4 w-24 bg-gray-300 rounded"></div>
-                            </div>
-                            <div className="h-6 w-12 bg-gray-300 rounded"></div>
-                          </div>
-                        ))
-                      ) : (
-                        dashboardData && typeof dashboardData === 'object' && 'data' in dashboardData && 
-                        dashboardData.data && typeof dashboardData.data === 'object' && 'performance' in dashboardData.data && 
-                        Array.isArray(dashboardData.data.performance) && dashboardData.data.performance.length > 0 ? (
-                          (dashboardData.data.performance as DashboardPerformanceParty[])
-                            .sort((a, b) => b.overallScore - a.overallScore)
-                            .slice(0, 5)
-                            .map((party, index: number) => (
-                              <div 
-                                key={party.partyId} 
-                                className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
-                                onClick={() => handlePartyClick(party.partyId)}
-                              >
-                                <div className="flex items-center gap-3">
-                                  <span className="text-sm font-bold text-blue-600 w-6">#{index + 1}</span>
-                                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: party.color }}></div>
-                                  <span className="text-sm font-medium">{party.name}</span>
-                                </div>
-                                <span className="text-lg font-bold text-blue-600">{party.overallScore}%</span>
-                              </div>
-                            ))
-                        ) : (
-                          <div className="text-center py-4 text-gray-500">Loading authentic performance data...</div>
-                        )
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                {/* Top Trustworthiness Parties */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 text-green-700 dark:text-green-300 flex items-center">
-                    🛡️ Most Trustworthy Parties
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="ml-2 h-6 w-6 p-0"
-                      onClick={() => setShowTopTrust(!showTopTrust)}
-                    >
-                      {showTopTrust ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                    </Button>
-                  </h3>
-                  {showTopTrust && (
-                    <div className="space-y-3">
-                      {dashboardLoading ? (
-                        Array.from({ length: 3 }).map((_, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg animate-pulse">
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-                              <div className="h-4 w-24 bg-gray-300 rounded"></div>
-                            </div>
-                            <div className="h-6 w-12 bg-gray-300 rounded"></div>
-                          </div>
-                        ))
-                      ) : dashboardData && typeof dashboardData === 'object' && 'data' in dashboardData &&
-                        dashboardData.data && typeof dashboardData.data === 'object' && 'trustworthiness' in dashboardData.data &&
-                        Array.isArray(dashboardData.data.trustworthiness) && dashboardData.data.trustworthiness.length > 0 ? (
-                        (dashboardData.data.trustworthiness as DashboardTrustParty[])
-                          .sort((a, b) => (b.overallTrustworthiness || 0) - (a.overallTrustworthiness || 0))
-                          .slice(0, 5)
-                          .map((party, index: number) => (
-                            <div 
-                              key={party.partyId} 
-                              className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg cursor-pointer hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
-                              onClick={() => handlePartyClick(party.partyId)}
-                            >
-                              <div className="flex items-center gap-3">
-                                <span className="text-sm font-bold text-green-600 w-6">#{index + 1}</span>
-                                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: party.color }}></div>
-                                <span className="text-sm font-medium">{party.name}</span>
-                              </div>
-                              <span className="text-lg font-bold text-green-600">{party.overallTrustworthiness}%</span>
-                            </div>
-                          ))
-                      ) : (
-                        <div className="text-center py-4 text-gray-500">No trustworthiness data available</div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="politician-trust" className="space-y-8 mt-8">
-              <div className="text-center mb-6">
-                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">🛡️ Politician Trust Rankings</h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Individual TDs ranked based on reliability, consistency, integrity and U-turns on policy or ideology (data as of June 2025).</p>
-              </div>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Most Trusted TDs */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-green-700 dark:text-green-300">🛡️ Most Trusted TDs</h3>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="h-6 w-6 p-0"
-                      onClick={() => setShowMostTrusted(!showMostTrusted)}
-                    >
-                      <ChevronDown className={`h-4 w-4 transition-transform ${showMostTrusted ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </div>
-                  {showMostTrusted && (
-                    <TopTrustworthyPoliticians onPoliticianClick={handlePoliticianClick} />
-                  )}
-                </div>
-
-                {/* Least Trusted TDs */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-red-700 dark:text-red-300">🚨 Least Trusted TDs</h3>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="h-6 w-6 p-0"
-                      onClick={() => setShowLeastTrusted(!showLeastTrusted)}
-                    >
-                      <ChevronDown className={`h-4 w-4 transition-transform ${showLeastTrusted ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </div>
-                  {showLeastTrusted && (
-                    <LeastTrustworthyPoliticians onPoliticianClick={handlePoliticianClick} />
-                  )}
-                </div>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="politician-performance" className="space-y-8 mt-8">
-              <div className="text-center mb-6">
-                <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">🏆 Politician Performance Rankings</h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Individual TDs ranked by legislative productivity, parliamentary engagement, constituency service and public & media impact (data as of June 2025).</p>
-              </div>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Top Performers */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-blue-700 dark:text-blue-300">🏆 Top Performing TDs</h3>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="h-6 w-6 p-0"
-                      onClick={() => setShowTopPerformers(!showTopPerformers)}
-                    >
-                      <ChevronDown className={`h-4 w-4 transition-transform ${showTopPerformers ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </div>
-                  {showTopPerformers && (
-                    <TopPerformersList onPoliticianClick={handlePoliticianClick} />
-                  )}
-                </div>
-
-                {/* Low Performers */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-orange-700 dark:text-orange-300">📉 Low Performing TDs</h3>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="h-6 w-6 p-0"
-                      onClick={() => setShowLowPerformers(!showLowPerformers)}
-                    >
-                      <ChevronDown className={`h-4 w-4 transition-transform ${showLowPerformers ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </div>
-                  {showLowPerformers && (
-                    <LowPerformersList onPoliticianClick={handlePoliticianClick} />
-                  )}
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-          
-          <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-xs text-gray-500 text-center">
-              Data updated weekly • Performance based on pledge fulfillment, parliamentary activity, and authentic trust assessments
-            </p>
-          </div>
-        </CardContent>
-      </Card>
       <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
         <TabsList className="grid w-full md:w-auto md:inline-grid grid-cols-3">
           <TabsTrigger value="parties">Parties</TabsTrigger>
@@ -3696,7 +2851,6 @@ const EducationPage = () => {
             </Card>
 
 
-
             {/* Politicians Display */}
             <div className="space-y-6">
               {(() => {
@@ -3779,11 +2933,6 @@ const EducationPage = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
                         {displayedPoliticians.map((politician) => {
                   const party = politicalParties.find(p => p.id === politician.partyId);
-                  // Use actual scores from database, fallback only if not available
-                  const performanceScore = performanceScores[politician.name];
-                  const isPerformanceScoreLoading = performanceScoresLoading[politician.name];
-                  const trustScore = trustScores[politician.name];
-                  const isTrustScoreLoading = trustScoresLoading[politician.name];
                   
                   return (
                     <Card key={politician.id} className={`relative overflow-hidden hover:shadow-lg transition-all duration-200 ${politician.currentlyElected ? 'ring-2 ring-green-400 bg-green-50/30 dark:bg-green-900/10' : ''}`}>
@@ -3828,82 +2977,6 @@ const EducationPage = () => {
                             <p className="text-[10px] sm:text-xs text-gray-500">{politician.constituency}</p>
                           </div>
                         </div>
-                        
-                        {/* Scores */}
-                        <div className="grid grid-cols-2 gap-4 mb-4">
-                          <div 
-                            className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-md text-center cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors min-h-[80px] flex flex-col justify-center"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              // Close trust breakdown if open
-                              if (selectedTrustPolitician === politician.name) {
-                                setSelectedTrustPolitician(null);
-                              }
-                              setSelectedPerformancePolitician(
-                                selectedPerformancePolitician === politician.name ? null : politician.name
-                              );
-                            }}
-                          >
-                            {isPerformanceScoreLoading ? (
-                              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center mb-1">
-                                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
-                              </div>
-                            ) : (
-                              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
-                                {performanceScore ? `${performanceScore}%` : 'N/A'}
-                              </div>
-                            )}
-                            <div className="text-xs text-blue-700 dark:text-blue-300 mb-1">Performance</div>
-                            <div className="text-xs text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                              {selectedPerformancePolitician === politician.name ? (
-                                <ChevronUp className="w-3 h-3" />
-                              ) : (
-                                <ChevronDown className="w-3 h-3" />
-                              )}
-                            </div>
-                          </div>
-                          <div 
-                            className="bg-green-50 dark:bg-green-900/20 p-4 rounded-md text-center cursor-pointer hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors min-h-[80px] flex flex-col justify-center"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              // Close performance breakdown if open
-                              if (selectedPerformancePolitician === politician.name) {
-                                setSelectedPerformancePolitician(null);
-                              }
-                              setSelectedTrustPolitician(
-                                selectedTrustPolitician === politician.name ? null : politician.name
-                              );
-                            }}
-                          >
-                            {isTrustScoreLoading ? (
-                              <div className="text-2xl font-bold text-green-600 dark:text-green-400 flex items-center justify-center mb-1">
-                                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600"></div>
-                              </div>
-                            ) : (
-                              <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">
-                                {trustScore ? `${trustScore}%` : 'N/A'}
-                              </div>
-                            )}
-                            <div className="text-xs text-green-700 dark:text-green-300 mb-1">Trust</div>
-                            <div className="text-xs text-green-600 dark:text-green-400 flex items-center justify-center">
-                              {selectedTrustPolitician === politician.name ? (
-                                <ChevronUp className="w-3 h-3" />
-                              ) : (
-                                <ChevronDown className="w-3 h-3" />
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                        
-                        {/* Performance Score Breakdown */}
-                        {selectedPerformancePolitician === politician.name && (
-                          <PerformanceScoreBreakdown politicianName={politician.name} />
-                        )}
-                        
-                        {/* Trust Score Breakdown */}
-                        {selectedTrustPolitician === politician.name && (
-                          <TrustScoreBreakdown politicianName={politician.name} />
-                        )}
                         
                         {/* Top Policy Preview */}
                         <div>
@@ -3990,10 +3063,6 @@ const EducationPage = () => {
                       (<div className="space-y-4">
                         {displayedPoliticians.map((politician) => {
                           const party = politicalParties.find(p => p.id === politician.partyId);
-                          const performanceScore = performanceScores[politician.name];
-                          const isPerformanceScoreLoading = performanceScoresLoading[politician.name];
-                          const trustScore = trustScores[politician.name];
-                          const isTrustScoreLoading = trustScoresLoading[politician.name];
                           
                           return (
                             <Card key={politician.id} className={`hover:shadow-md transition-all duration-200 relative ${politician.currentlyElected ? 'ring-2 ring-green-400 bg-green-50/30 dark:bg-green-900/10' : ''}`}>
@@ -4034,77 +3103,6 @@ const EducationPage = () => {
                                     </div>
                                   </div>
                                   
-                                  {/* Middle section - Performance and Trust - Responsive */}
-                                  <div className="flex items-center gap-3 sm:gap-6 lg:gap-8 shrink-0">
-                                    {/* Performance Score Column */}
-                                    <div className="flex flex-col items-center gap-1 w-16 sm:w-20 lg:w-24">
-                                      <span className="text-[10px] sm:text-xs font-medium text-center">Perf</span>
-                                      <div className="flex items-center gap-1 sm:gap-2 w-full">
-                                        <div className="w-10 sm:w-12 lg:w-16 bg-gray-200 rounded-full h-1.5 sm:h-2 relative">
-                                          {isPerformanceScoreLoading ? (
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                              <div className="animate-spin rounded-full h-1 w-1 border-b border-blue-600"></div>
-                                            </div>
-                                          ) : (
-                                            <div 
-                                              className="bg-blue-600 h-1.5 sm:h-2 rounded-full transition-all duration-300"
-                                              style={{ width: `${performanceScore || 0}%` }}
-                                            ></div>
-                                          )}
-                                        </div>
-                                        <span 
-                                          className="text-[10px] sm:text-xs font-bold text-blue-600 w-6 sm:w-8 text-center cursor-pointer hover:underline shrink-0"
-                                          onClick={(e) => {
-                                            e.stopPropagation();
-                                            // Close trust breakdown if open
-                                            if (selectedTrustPolitician === politician.name) {
-                                              setSelectedTrustPolitician(null);
-                                            }
-                                            setSelectedPerformancePolitician(
-                                              selectedPerformancePolitician === politician.name ? null : politician.name
-                                            );
-                                          }}
-                                        >
-                                          {performanceScore ? `${performanceScore}%` : 'N/A'}
-                                        </span>
-                                      </div>
-                                    </div>
-                                    
-                                    {/* Trust Score Column */}
-                                    <div className="flex flex-col items-center gap-1 w-16 sm:w-20 lg:w-24">
-                                      <span className="text-[10px] sm:text-xs font-medium text-center">Trust</span>
-                                      <div className="flex items-center gap-1 sm:gap-2 w-full">
-                                        <div className="w-10 sm:w-12 lg:w-16 bg-gray-200 rounded-full h-1.5 sm:h-2 relative">
-                                          {isTrustScoreLoading ? (
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                              <div className="animate-spin rounded-full h-1 w-1 border-b border-green-600"></div>
-                                            </div>
-                                          ) : (
-                                            <div 
-                                              className="bg-green-600 h-1.5 sm:h-2 rounded-full transition-all duration-300"
-                                              style={{ width: `${trustScore || 0}%` }}
-                                            ></div>
-                                          )}
-                                        </div>
-                                        <span 
-                                          className="text-[10px] sm:text-xs font-bold text-green-600 w-6 sm:w-8 text-center cursor-pointer hover:underline shrink-0"
-                                          onClick={(e) => {
-                                            e.stopPropagation();
-                                            // Close performance breakdown if open
-                                            if (selectedPerformancePolitician === politician.name) {
-                                              setSelectedPerformancePolitician(null);
-                                            }
-                                            setSelectedTrustPolitician(
-                                              selectedTrustPolitician === politician.name ? null : politician.name
-                                            );
-                                          }}
-                                        >
-                                          {trustScore ? `${trustScore}%` : 'N/A'}
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  
                                   {/* Party and Constituency on far right */}
                                   <div className="text-right shrink-0 min-w-0">
                                     <div className="flex items-center justify-end gap-1 text-xs text-gray-600 dark:text-gray-400">
@@ -4119,20 +3117,7 @@ const EducationPage = () => {
                                     </div>
                                   </div>
                                 </div>
-                                
-                                {/* Expanded details for horizontal view */}
-                                {selectedPerformancePolitician === politician.name && (
-                                  <div className="mt-4 pt-4 border-t">
-                                    <PerformanceScoreBreakdown politicianName={politician.name} />
-                                  </div>
-                                )}
-                                
-                                {selectedTrustPolitician === politician.name && (
-                                  <div className="mt-4 pt-4 border-t">
-                                    <TrustScoreBreakdown politicianName={politician.name} />
-                                  </div>
-                                )}
-                                
+
                                 {/* Expanded Details - triggered by clicking on politician name */}
                                 {selectedPoliticianId === politician.id && (
                                   <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 animate-in slide-in-from-top-5 duration-200">

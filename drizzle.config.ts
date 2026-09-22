@@ -1,31 +1,18 @@
-import { defineConfig } from "drizzle-kit";
-import * as dotenv from 'dotenv';
+import { defineConfig } from 'drizzle-kit';
+import 'dotenv/config';
 
-// Load environment variables
-dotenv.config();
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is not set. Please add your Supabase connection string to .env");
-}
+// `generate` never connects, so it works with a placeholder. `push`, `migrate` and
+// `studio` need the real GlasCore connection string.
+const url = process.env.DIRECT_URL || process.env.DATABASE_URL || 'postgres://placeholder';
 
 export default defineConfig({
-  out: "./migrations",
-  schema: "./shared/schema.ts",
-  dialect: "postgresql",
-  dbCredentials: {
-    // Use DATABASE_URL for connection pooling
-    // For migrations, Supabase recommends using the direct connection
-    // You can set DIRECT_URL in .env for better migration performance
-    url: process.env.DIRECT_URL || process.env.DATABASE_URL,
-  },
+  out: './drizzle',
+  schema: './shared/schema/politics.ts',
+  dialect: 'postgresql',
+  dbCredentials: { url },
+  // GlasCore is shared with GlasIntelligence (whose tables are in `public`).
+  // Only ever diff or push the schema this app owns.
+  schemaFilter: ['politics'],
   verbose: true,
   strict: true,
-  // Supabase-specific configuration
-  migrations: {
-    table: "drizzle_migrations",
-    schema: "public",
-  }
 });
-
-
-

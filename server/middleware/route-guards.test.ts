@@ -235,13 +235,14 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     assert.match(read('server/routes/debatesRoutes.ts'), /router\.post\('\/alerts\/:alertId\/status',\s*requireAdminAccess,/);
   });
 
-  it('LLM and anonymous-write mounts are rate limited', () => {
+  it('LLM mounts are rate limited', () => {
+    // /api/personalized-insights and /api/ratings were also limited here. The scoring
+    // rebuild deleted both routers, so the limiter has nothing left to protect on them.
     const src = read('server/routes.ts');
-    for (const mount of ['/api/ai', '/api/chat', '/api/constituency/story', '/api/personalized-insights', '/api/enhanced-profile']) {
+    for (const mount of ['/api/ai', '/api/chat', '/api/constituency/story', '/api/enhanced-profile']) {
       const re = new RegExp(`app\\.use\\("${mount.replace(/\//g, '\\/')}",\\s*aiRateLimit,`);
       assert.match(src, re, `${mount} is not behind aiRateLimit`);
     }
-    assert.match(src, /app\.use\("\/api\/ratings",\s*publicWriteRateLimit,/);
   });
 
   it('the unmounted fake-login router is gone', () => {

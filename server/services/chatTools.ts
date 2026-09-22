@@ -1,13 +1,13 @@
 import { db } from "../db";
 import { supabaseDb } from "../db";
 import { sql, desc, eq, ilike, or, and } from "drizzle-orm";
-import { 
-  unifiedTDScores, 
-  newsArticles, 
-  parties, 
+import {
+  newsArticles,
+  parties,
   parliamentaryActivity,
   policyPromises
 } from "@shared/schema";
+import { eloToPercent, repository as scores } from "../scoring";
 import { getVotingRecord, getRecentVotes, getVotingStats, getRebelVotes, getVotesByCategory, getPolicyPositions } from "./politicianAgent";
 
 // Define the tools for OpenAI
@@ -175,24 +175,12 @@ export const chatToolsDefinition = [
 export const chatToolsImplementation = {
   async search_politicians({ query }: { query: string }) {
     console.log(`Tool: Searching politicians for '${query}'`);
-    if (!db) {
-      return JSON.stringify({ error: "Database not available" });
-    }
-    const results = await db.select({
-      name: unifiedTDScores.politicianName,
-      party: unifiedTDScores.party,
-      constituency: unifiedTDScores.constituency,
-      overallScore: unifiedTDScores.overallScore
-    })
-    .from(unifiedTDScores)
-    .where(
-      or(
-        ilike(unifiedTDScores.politicianName, `%${query}%`),
-        ilike(unifiedTDScores.party, `%${query}%`),
-        ilike(unifiedTDScores.constituency, `%${query}%`)
-      )
-    )
-    .limit(5);
+    const results = (await scores.search(query, 5)).map(({ td, score }) => ({
+      name: td.name,
+      party: td.party,
+      constituency: td.constituency,
+      overallScore: score?.overallScore ?? null
+    }));
 
     return JSON.stringify(results);
   },
@@ -200,21 +188,13 @@ export const chatToolsImplementation = {
   async get_politician_details({ name }: { name: string }) {
     console.log(`Tool: Getting details for '${name}'`);
     
-    if (!db) {
-      return JSON.stringify({ error: "Database not available" });
-    }
-
     // 1. Get Scores
-    const scores = await db.select()
-      .from(unifiedTDScores)
-      .where(ilike(unifiedTDScores.politicianName, name))
-      .limit(1);
-
-    if (scores.length === 0) {
+    const found = await scores.findByName(name);
+    if (!found) {
       return JSON.stringify({ error: "Politician not found." });
     }
-
-    const td = scores[0];
+    const td = found.td;
+    const score = found.score;
 
     // 2. Get Recent News mentions
     const news = await db.select({
@@ -248,16 +228,17 @@ export const chatToolsImplementation = {
 
     return JSON.stringify({
       profile: {
-        name: td.politicianName,
+        name: td.name,
         party: td.party,
         constituency: td.constituency,
-        overall_score: td.overallScore,
-        rank: td.nationalRank
+        overall_score: score?.overallScore ?? null,
+        rank: score?.nationalRank ?? null
       },
       scores: {
-        transparency: td.transparencyScore,
-        effectiveness: td.effectivenessScore,
-        integrity: td.integrityScore
+        transparency: eloToPercent(score?.transparencyElo),
+        effectiveness: eloToPercent(score?.effectivenessElo),
+        integrity: eloToPercent(score?.integrityElo),
+        consistency: eloToPercent(score?.consistencyElo)
       },
       recent_news: news,
       parliamentary_activity: activity[0] || "No recent activity data",

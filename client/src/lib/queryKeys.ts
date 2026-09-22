@@ -11,23 +11,16 @@
 /** Central query-key factory for all React Query cache keys. */
 export const queryKeys = {
   td: {
-    stats: () => ["td-stats"] as const,
-    scoresWidget: () => ["td-scores-widget-v2"] as const,
+    scoresWidget: () => ["td-scores-widget-v3"] as const,
     quickInfo: (tdId: number) => ["td-quick-info", tdId] as const,
-    scores: (constituency: string) => ["td-scores", constituency] as const,
-    scoresFull: (
-      viewMode: string,
-      sortMode: string,
-      constituency: string,
-      party: string
-    ) => ["td-scores-full", viewMode, sortMode, constituency, party] as const,
-    leaderboard: () => ["td-leaderboard-v2"] as const,
+    constituencyScores: (constituency: string) =>
+      ["constituency-scores", constituency] as const,
     profile: (name: string) => ["td-profile", name] as const,
-    profileV2: (name: string) => ["td-profile-v2", name] as const,
+    profileV3: (name: string) => ["td-profile-v3", name] as const,
     consistency: (politicianName: string | undefined) =>
       ["td-consistency", politicianName] as const,
     forChat: () => ["tds-for-chat"] as const,
-    researched: () => ["researched-tds"] as const,
+    rankings: () => ["td-rankings"] as const,
     news: (name: string) => ["td-news-v2", name] as const,
     debateMetrics: (politicianName: string) =>
       ["td-debate-metrics", politicianName] as const,
@@ -41,7 +34,7 @@ export const queryKeys = {
     recentVotes: (politicianName: string) => ["td-recent-votes", politicianName] as const,
   },
   party: {
-    rankings: () => ["party-rankings-v3"] as const,
+    rankings: () => ["party-rankings-v4"] as const,
     quickInfo: (partyName: string) => ["party-quick-info", partyName] as const,
     profile: (name: string) => ["party-profile", name] as const,
     tds: (partyName: string) => ["party-tds", partyName] as const,
@@ -71,21 +64,6 @@ export const queryKeys = {
   quiz: {
     history: () => ["/api/quiz-history/all"] as const,
     results: (userId: string | undefined) => ["/api/quiz-results/user", userId] as const,
-  },
-  personalized: {
-    insights: (
-      userId: string | undefined,
-      constituencyName: string | undefined,
-      economicScore: number | undefined,
-      socialScore: number | undefined
-    ) =>
-      [
-        "/api/personalized-insights",
-        userId,
-        constituencyName,
-        economicScore,
-        socialScore,
-      ] as const,
   },
   politicalEvolution: {
     all: () => ["/api/political-evolution"] as const,

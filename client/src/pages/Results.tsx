@@ -13,7 +13,6 @@ import EnhancedPoliticalAnalysis from "@/components/EnhancedPoliticalAnalysis";
 import GeographicHeatMap from "@/components/GeographicHeatMap";
 import LoadingScreen from "@/components/LoadingScreen";
 import PoliticalEmojiAvatar from "@/components/PoliticalEmojiAvatar";
-import PersonalizedInsights from "@/components/PersonalizedInsights";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -287,14 +286,6 @@ const Results = () => {
             </Select>
           </CardHeader>
         </Card>
-        
-        {selectedConstituency && results && (
-          <PersonalizedInsights 
-            constituencyName={selectedConstituency}
-            userEconomicScore={results.economic}
-            userSocialScore={results.social}
-          />
-        )}
       </div>
       
       {/* Take Quiz Again Button */}
