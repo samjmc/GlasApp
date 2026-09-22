@@ -27,15 +27,8 @@ export function useDailySessionVote() {
   const { regionCode } = useRegion();
 
   return useMutation({
-    mutationFn: ({
-      sessionItemId,
-      rating,
-      optionKey,
-    }: {
-      sessionItemId: number;
-      rating?: number;
-      optionKey?: string;
-    }) => submitDailyVote(sessionItemId, rating, optionKey),
+    mutationFn: ({ sessionItemId, optionKey }: { sessionItemId: number; optionKey: string }) =>
+      submitDailyVote(sessionItemId, optionKey),
     onSuccess: (session) => {
       queryClient.setQueryData<DailySessionState>(
         [...DAILY_SESSION_QUERY_KEY, regionCode],

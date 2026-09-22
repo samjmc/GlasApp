@@ -34,7 +34,7 @@ import { PersonalRankingsService } from "./services/personalRankingsService.js";
 import scoresRoutes from "./routes/scores";
 import userRankingsRoutes from "./routes/user/rankings/index.js";
 import ideologyTimelineRoutes from "./routes/ideologyTimelineRoutesEnhanced";
-import dailySessionRoutes from "./routes/dailySessionRoutes";
+import { dailySessionRouter, votesRouter } from "./voting/routes";
 import debateWorkspaceRoutes from "./routes/debateWorkspaceRoutes";
 import debatesRoutes from "./routes/debatesRoutes";
 import debateMonitoringRoutes from "./routes/debateMonitoringRoutes";
@@ -101,9 +101,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // TD, party and constituency scores
   app.use("/api/scores", scoresRoutes);
 
-  // Parliamentary activity (static Oireachtas data) and policy voting analysis
+  // Parliamentary activity (static Oireachtas data)
   app.use("/api/parliamentary", parliamentaryRoutes);
-  app.use("/api/policy-votes", parliamentaryRoutes);
   
   // Register ideas routes for community solutions
   app.use("/api/ideas", ideasRoutes);
@@ -120,11 +119,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register user rankings routes (consolidated - personal rankings, policy voting, category rankings)
   app.use("/api/user/rankings", userRankingsRoutes);
   // Legacy routes for backward compatibility
-  app.use("/api/policy-votes", userRankingsRoutes);
   app.use("/api/personal", userRankingsRoutes);
   app.use("/api/category-ranking", userRankingsRoutes);
 
-  app.use("/api/daily-session", dailySessionRoutes);
+  // Voting: the daily session and the policy question on each article
+  app.use("/api/daily-session", dailySessionRouter);
+  app.use("/api/votes", votesRouter);
 
   // Register cache management routes for monitoring and clearing cache
   app.use("/api/cache", requireJob, cacheRoutes);

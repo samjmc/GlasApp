@@ -84,7 +84,8 @@ function routesIn(file: string): Route[] {
   // Guards applied to a whole router at mount time, e.g. router.use(requireJob).
   const mountGuard = GUARDS.some((g) => new RegExp(`\\.use\\(\\s*${g}\\b`).test(src));
 
-  const re = /\b(?:router|app)\.(get|post|put|patch|delete)\(\s*(['"`])([^'"`]*)\2\s*,([\s\S]{0,200}?)(?:async|\(\s*req|function|\breq\b\s*[,)=])/g;
+  // `router.`, `app.`, and any named router such as `votesRouter.`.
+  const re = /\b(?:\w*[rR]outer|app)\.(get|post|put|patch|delete)\(\s*(['"`])([^'"`]*)\2\s*,([\s\S]{0,200}?)(?:async|\(\s*req|function|\breq\b\s*[,)=])/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(src))) {
     const [, method, , routePath, between] = m;
@@ -98,8 +99,18 @@ function routesIn(file: string): Route[] {
   return found;
 }
 
+/**
+ * Rebuilt domains keep their HTTP surface in `server/<domain>/routes.ts` (e.g.
+ * server/voting/routes.ts) rather than under server/routes/. Scan those too.
+ */
+const DOMAIN_ROUTE_FILES = fs
+  .readdirSync(SERVER, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() && entry.name !== 'routes')
+  .map((entry) => path.join(SERVER, entry.name, 'routes.ts'))
+  .filter((file) => fs.existsSync(file));
+
 const MOUNT_GUARDED = mountGuardedRouters();
-const allRoutes = walk(ROUTES_DIR)
+const allRoutes = [...walk(ROUTES_DIR), ...DOMAIN_ROUTE_FILES]
   .flatMap(routesIn)
   .map((r) => {
     // `admin/foo.ts` is guarded when routes.ts mounts it behind a guard; so is
@@ -115,6 +126,21 @@ describe('route guard coverage', () => {
   it('finds routes to check (a scan that matched nothing would pass vacuously)', () => {
     expect(allRoutes.length).toBeGreaterThan(80);
     expect(allRoutes.filter((r) => r.method !== 'GET').length).toBeGreaterThan(20);
+  });
+
+  it('scans the domain route files, not just server/routes', () => {
+    expect(DOMAIN_ROUTE_FILES.map((f) => path.relative(SERVER, f).replace(/\\/g, '/'))).toContain('voting/routes.ts');
+    const voting = allRoutes.filter((r) => r.file === '../voting/routes.ts');
+    // 4 daily-session routes + 3 vote routes; fewer means the pattern missed some.
+    expect(voting.map((r) => `${r.method} ${r.path}`).sort()).toEqual([
+      'DELETE /questions/:questionId',
+      'GET /',
+      'GET /articles/:articleId',
+      'POST /complete',
+      'POST /explainer',
+      'POST /items/:itemId/vote',
+      'POST /questions/:questionId',
+    ]);
   });
 
   it('every mutating route is guarded or on the public allowlist, with a reason', () => {

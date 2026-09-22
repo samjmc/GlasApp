@@ -11,7 +11,7 @@
  */
 import { ArticleImportanceService } from '../services/articleImportanceService';
 import { EventDeduplicationService } from '../services/eventDeduplicationService';
-import { PolicyOpportunityService } from '../services/policyOpportunityService';
+import { generateQuestionForArticle } from '../voting';
 import { TDExtractionService } from '../services/tdExtractionService';
 import { type Article, type ArticleSource, articleSource } from './articleSource';
 import { applyIdeologyToProfile, applyPanelResult, convertToArticleAnalysis, runPanel } from './panel';
@@ -272,16 +272,22 @@ async function scoreTd(article: Article, { td, score }: repo.TdWithScore, import
 
   stats.tdsUpdated++;
 
+  // The one place questions are made. Called per (article, TD), but an article with a
+  // question already is skipped before any model call.
   if (verdict.is_ideological_policy && verdict.td_policy_stance) {
     try {
-      await PolicyOpportunityService.generateAndSave(article.id, {
+      await generateQuestionForArticle({
+        id: article.id,
         title: article.title,
         content: article.content,
         source: article.source ?? 'Unknown',
-        published_date: article.publishedDate ?? new Date(),
+        publishedAt: article.publishedDate,
+        url: article.url,
+        imageUrl: null,
+        summary: null,
       });
     } catch (error) {
-      console.warn(`Policy vote opportunity for article ${article.id} failed:`, error instanceof Error ? error.message : error);
+      console.warn(`Policy question for article ${article.id} failed:`, error instanceof Error ? error.message : error);
     }
   }
 }
