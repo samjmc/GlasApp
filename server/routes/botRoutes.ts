@@ -1,12 +1,12 @@
+import { requireJob } from '../auth';
 import { Router, Request, Response } from 'express';
 import { BotService } from '../services/botService';
-import { requireAdminAccess } from '../middleware/adminAccess';
 import { requestLogger } from '../utils/logger';
 
 const router = Router();
 
 // Create a bot account
-router.post('/create', requireAdminAccess, async (req: Request, res: Response) => {
+router.post('/create', requireJob, async (req: Request, res: Response) => {
   try {
     const { username, email, firstName, lastName, county, bio, profileImageUrl } = req.body;
 
@@ -18,7 +18,7 @@ router.post('/create', requireAdminAccess, async (req: Request, res: Response) =
     }
 
     requestLogger(req).info(
-      { operation: 'admin.bots.create', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId },
+      { operation: 'admin.bots.create', actor: req.user?.email ?? req.user?.id },
       'Bot admin action'
     );
 
@@ -52,11 +52,11 @@ router.post('/create', requireAdminAccess, async (req: Request, res: Response) =
 });
 
 // List all bot accounts
-router.get('/list', requireAdminAccess, async (req: Request, res: Response) => {
+router.get('/list', requireJob, async (req: Request, res: Response) => {
   try {
     const bots = await BotService.getAllBots();
     requestLogger(req).info(
-      { operation: 'admin.bots.list', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId },
+      { operation: 'admin.bots.list', actor: req.user?.email ?? req.user?.id },
       'Bot admin action'
     );
     res.json({
@@ -73,13 +73,13 @@ router.get('/list', requireAdminAccess, async (req: Request, res: Response) => {
 });
 
 // Delete a bot account
-router.delete('/:username', requireAdminAccess, async (req: Request, res: Response) => {
+router.delete('/:username', requireJob, async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
     await BotService.deleteBotAccount(username);
 
     requestLogger(req).info(
-      { operation: 'admin.bots.delete', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId, username },
+      { operation: 'admin.bots.delete', actor: req.user?.email ?? req.user?.id, username },
       'Bot admin action'
     );
     res.json({

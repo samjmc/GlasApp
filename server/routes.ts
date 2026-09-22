@@ -1,17 +1,15 @@
+import { optionalAuth, requireAuth, requireJob } from './auth';
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { insertQuizResultSchema } from "@shared/schema";
 import { ActivityTracker } from "./services/activityTracker";
-import { sessionMiddleware } from "./middleware/sessionMiddleware";
 import { regionMiddleware } from "./middleware/regionMiddleware";
-import { requireAdminAccess } from "./middleware/adminAccess";
 import { registerAuthRoutes } from "./routes/auth";
-import { isAuthenticated, optionalAuth } from "./auth/supabaseAuth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
 import geographicRoutes from "./routes/geographic";
-import authRoutes from "./routes/authRoutes";
+import profileRoutes from "./routes/profileRoutes";
 import botRoutes from "./routes/botRoutes";
 import activityRoutes from "./routes/activityRoutes";
 import politicalEvolutionRoutes from "./routes/politicalEvolutionRoutes";
@@ -22,7 +20,6 @@ import storytellingRoutes from "./routes/storytellingRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import electionRoutes from "./routes/electionRoutes";
 import politicalRoutes from "./routes/political";
-import categoryRankingRoutes from "./routes/categoryRankingRoutes";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
 import parliamentaryRoutes from "./routes/parliamentary";
@@ -49,8 +46,10 @@ import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Set up session middleware
-  app.use(sessionMiddleware);
+  // Identity comes from the Supabase bearer token on each request; there is no
+  // server-side session. optionalAuth runs first so regionMiddleware can read the
+  // user's saved region, and so handlers can offer a signed-in view without a guard.
+  app.use(optionalAuth);
   app.use(regionMiddleware);
   app.use("/api/region", regionRoutes);
 
@@ -72,7 +71,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/heatmap", geographicRoutes);
   app.use("/api/constituencies", geographicRoutes);
   app.use("/api/location", geographicRoutes);
-  app.use("/api/auth", authRoutes);
+  // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
+  app.use("/api/profile", profileRoutes);
   app.use("/api/bots", botRoutes);
   app.use("/api/activity", activityRoutes);
   app.use("/api/political-evolution", politicalEvolutionRoutes);
@@ -126,17 +126,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/daily-session", dailySessionRoutes);
 
   // Register cache management routes for monitoring and clearing cache
-  app.use("/api/cache", requireAdminAccess, cacheRoutes);
+  app.use("/api/cache", requireJob, cacheRoutes);
   // Account deletion endpoint is now consolidated into auth routes
-  app.use("/api/account", authRoutes);
+  // Account deletion (GDPR erasure). Was imported but never mounted, so DELETE
+  // /api/account — which the client calls — returned 404.
+  app.use("/api/account", accountRoutes);
 
   // Register admin routes for news scraping and system management
-  app.use("/api/admin/news-scraper", requireAdminAccess, newsScraperRoutes);
-  app.use("/api/admin/parliamentary", requireAdminAccess, parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", requireAdminAccess, debateAdminRoutes);
-  app.use("/api/admin/baselines", requireAdminAccess, baselineAdminRoutes);
-  app.use("/api/admin/articles", requireAdminAccess, manualArticleRoutes);
-  app.use("/api/admin/td-scoring", requireAdminAccess, tdScoringAdminRoutes);
+  app.use("/api/admin/news-scraper", requireJob, newsScraperRoutes);
+  app.use("/api/admin/parliamentary", requireJob, parliamentaryAdminRoutes);
+  app.use("/api/admin/debates", requireJob, debateAdminRoutes);
+  app.use("/api/admin/baselines", requireJob, baselineAdminRoutes);
+  app.use("/api/admin/articles", requireJob, manualArticleRoutes);
+  app.use("/api/admin/td-scoring", requireJob, tdScoringAdminRoutes);
 
 
   // Register ideology timeline routes (weekly ideology evolution data)
@@ -173,12 +175,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           description: z.string(),
         })),
         shareCode: z.string(),
-        userId: z.number().optional(),
         keyInsights: z.array(z.string()).optional(),
       });
 
       const validatedData = resultsSchema.parse(req.body);
-      
+      // Anonymous visitors may take the quiz, so the result is saved either way — but a
+      // result is attributed to whoever's token presented it, never to a body field.
+      const userId = req.user?.id ?? null;
+
       // Save the results
       const result = await storage.saveQuizResult({
         economicScore: validatedData.economicScore.toString(),
@@ -189,15 +193,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         similarFigures: validatedData.similarFigures,
         uniqueCombinations: validatedData.uniqueCombinations,
         shareCode: validatedData.shareCode,
-        userId: validatedData.userId || null,
+        userId,
         keyInsights: validatedData.keyInsights || [],
       });
 
       // Track quiz completion activity
-      if (validatedData.userId) {
+      if (userId) {
         try {
           await ActivityTracker.logQuizCompletion(
-            validatedData.userId,
+            userId,
             {
               economicScore: validatedData.economicScore,
               socialScore: validatedData.socialScore,
@@ -284,7 +288,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // If user is authenticated, save to political evolution tracking (primary storage)
       let evolutionResult = null;
-      const userId = req.user?.claims?.sub || req.session?.userId;
+      const userId = req.user?.id ?? null;
       if (userId) {
         try {
           evolutionResult = await storage.savePoliticalEvolution({
@@ -367,7 +371,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Bot behavior management routes
-  app.post('/api/bots/:id/behavior/start', requireAdminAccess, async (req, res) => {
+  app.post('/api/bots/:id/behavior/start', requireJob, async (req, res) => {
     try {
       const botId = parseInt(req.params.id);
       if (!Number.isInteger(botId) || botId <= 0) {
@@ -389,7 +393,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/bots/:id/behavior/stop', requireAdminAccess, async (req, res) => {
+  app.post('/api/bots/:id/behavior/stop', requireJob, async (req, res) => {
     try {
       const botId = parseInt(req.params.id);
       if (!Number.isInteger(botId) || botId <= 0) {
@@ -404,7 +408,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/bots/:id/activity', requireAdminAccess, async (req, res) => {
+  app.get('/api/bots/:id/activity', requireJob, async (req, res) => {
     try {
       const botId = parseInt(req.params.id);
       if (!Number.isInteger(botId) || botId <= 0) {

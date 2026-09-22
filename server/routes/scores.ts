@@ -3,9 +3,9 @@
  * Reads only, except the admin recalculate trigger. Every response is
  * `{ success, data, meta? }` via formatSuccess.
  */
+import { requireJob } from '../auth';
 import { Router } from 'express';
 import { z } from 'zod';
-import { requireAdminAccess } from '../middleware/adminAccess';
 import { asyncHandler } from '../middleware/errorHandler';
 import { DIMENSIONS, eloToPercent, recalculateAll, repository as repo, scoreLabel } from '../scoring';
 import type { TdWithScore } from '../scoring/repository';
@@ -302,7 +302,7 @@ router.get(
 /** POST /api/scores/recalculate — rebuild derived scores, ranks, trends, party aggregates. */
 router.post(
   '/recalculate',
-  requireAdminAccess,
+  requireJob,
   asyncHandler(async (_req, res) => {
     const summary = await recalculateAll();
     res.json(formatSuccess(summary));

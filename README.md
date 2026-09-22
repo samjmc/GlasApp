@@ -158,6 +158,7 @@ OPENAI_API_KEY=                      # TD scoring panel
 | Document | Description |
 |----------|-------------|
 | [ARCHITECTURE.md](ARCHITECTURE.md) | System architecture |
+| [docs/auth.md](docs/auth.md) | Authentication: the one mechanism, the guards, the profile |
 | [docs/scoring.md](docs/scoring.md) | How TDs are scored: model, pipeline, tables, API |
 | [docs/security/](docs/security/) | Security audits |
 

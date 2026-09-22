@@ -23,7 +23,6 @@ import HomePage from "@/pages/HomePage";
 import ProfilePage from "@/pages/ProfilePage";
 import LoginPage from "@/pages/LoginPage";
 import RegisterPage from "@/pages/RegisterPage";
-import RegisterStepsPage from "@/pages/RegisterStepsPage";
 import AuthCallbackPage from "@/pages/AuthCallbackPage";
 import EducationPage from "@/pages/EducationPage";
 import IdeasPage from "@/pages/IdeasPage";
@@ -120,7 +119,6 @@ function Router() {
           <Route path="/contact" component={ContactPage} />
           <Route path="/select-region" component={RegionSelectionPage} />
           <Route path="/register" component={RegisterPage} />
-          <Route path="/register-steps" component={RegisterStepsPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/" component={HomePage} />
           <Route>

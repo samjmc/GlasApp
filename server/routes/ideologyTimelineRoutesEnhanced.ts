@@ -1,9 +1,9 @@
+import { requireAuth } from '../auth';
 import express, { type Request, type Response } from 'express';
 import { supabaseDb } from '../db.js';
 import { PersonalRankingsService } from '../services/personalRankingsService.js';
 import { IdeologySnapshotService } from '../services/ideologySnapshotService.js';
 import { IDEOLOGY_DIMENSIONS } from '../constants/ideology.js';
-import { isAuthenticated } from '../auth/supabaseAuth.js';
 
 const router = express.Router();
 
@@ -65,7 +65,7 @@ interface TimelinePoint {
  *   - compareParty: party name for comparison
  *   - compareAverage: 'true' to show average user
  */
-router.get('/:userId', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/:userId', requireAuth, async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
     const caller = req.user as { id?: string | number; app_metadata?: { role?: string } } | null | undefined;

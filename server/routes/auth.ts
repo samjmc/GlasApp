@@ -1,5 +1,5 @@
+import { optionalAuth, requireAuth } from '../auth';
 import type { Express } from "express";
-import { optionalAuth, isAuthenticated } from "../auth/supabaseAuth";
 
 /**
  * Register Supabase authentication routes
@@ -18,8 +18,8 @@ export async function registerAuthRoutes(app: Express): Promise<void> {
   });
 
   // Optional: Protected route example
-  // Use isAuthenticated middleware for routes that require authentication
-  app.get("/api/auth/protected", isAuthenticated, async (req, res) => {
+  // Use requireAuth middleware for routes that require authentication
+  app.get("/api/auth/protected", requireAuth, async (req, res) => {
     const user = req.user;
     res.json({ 
       message: "This is a protected route", 

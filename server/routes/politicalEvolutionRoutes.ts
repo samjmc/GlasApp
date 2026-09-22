@@ -1,16 +1,16 @@
+import { requireAuth } from '../auth';
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import { storage } from '../storage';
-import { isAuthenticated } from '../replitAuth';
 import { insertPoliticalEvolutionSchema } from '@shared/schema';
 import { callChatCompletion } from '../services/aiService';
 
 const router = Router();
 
 // Get all political evolution entries for the current user
-router.get('/', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/', requireAuth, async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.claims?.sub;
+    const userId = req.user?.id;
     if (!userId) {
       return res.status(401).json({
         success: false,
@@ -34,10 +34,10 @@ router.get('/', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Get a specific political evolution entry by ID
-router.get('/:id', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/:id', requireAuth, async (req: Request, res: Response) => {
   try {
     const evolutionId = parseInt(req.params.id);
-    const userId = req.session.userId;
+    const userId = req.user!.id;
     
     if (isNaN(evolutionId)) {
       return res.status(400).json({
@@ -74,9 +74,9 @@ router.get('/:id', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Create a new political evolution entry
-router.post('/', isAuthenticated, async (req: Request, res: Response) => {
+router.post('/', requireAuth, async (req: Request, res: Response) => {
   try {
-    const userId = req.session.userId;
+    const userId = req.user!.id;
     
     // Validate request body
     const validatedData = insertPoliticalEvolutionSchema.parse({
@@ -109,10 +109,10 @@ router.post('/', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Update a political evolution entry
-router.patch('/:id', isAuthenticated, async (req: Request, res: Response) => {
+router.patch('/:id', requireAuth, async (req: Request, res: Response) => {
   try {
     const evolutionId = parseInt(req.params.id);
-    const userId = req.session.userId;
+    const userId = req.user!.id;
     
     if (isNaN(evolutionId)) {
       return res.status(400).json({
@@ -211,7 +211,7 @@ Address the person directly using "you" and "your". Keep it concise, insightful,
 }
 
 // Generate AI analysis of political evolution
-router.post('/analysis', isAuthenticated, async (req: Request, res: Response) => {
+router.post('/analysis', requireAuth, async (req: Request, res: Response) => {
   try {
     const { evolutionData } = req.body;
     

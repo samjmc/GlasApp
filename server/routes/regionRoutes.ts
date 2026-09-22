@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { optionalAuth, updateUserMetadata } from "../auth/supabaseAuth";
+import { updateUserMetadata } from '../auth/supabase';
+import { REGION_COOKIE } from "../middleware/regionMiddleware";
 import {
   DEFAULT_REGION_CODE,
   REGION_CONFIGS,
@@ -30,7 +31,8 @@ router.get("/current", (req, res) => {
   });
 });
 
-router.post("/select", optionalAuth, async (req, res) => {
+// optionalAuth already ran app-wide, so req.user is set when a token was supplied.
+router.post("/select", async (req, res) => {
   const { regionCode } = req.body || {};
 
   if (!isRegionCode(regionCode)) {
@@ -40,23 +42,22 @@ router.post("/select", optionalAuth, async (req, res) => {
     });
   }
 
-  // Persist region in session for subsequent requests
-  if (req.session) {
-    req.session.regionCode = regionCode;
-  }
+  // Anonymous visitors keep their choice in a cookie.
+  res.cookie(REGION_COOKIE, regionCode, {
+    maxAge: 365 * 24 * 60 * 60 * 1000,
+    httpOnly: false,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
   req.regionCode = regionCode;
 
-  // If user is authenticated, update their metadata asynchronously
-  if (req.user?.id) {
+  // A signed-in user's choice follows them to any device.
+  if (req.user) {
     try {
-      const existingMetadata = req.user.user_metadata || {};
-      await updateUserMetadata(req.user.id, {
-        ...existingMetadata,
-        region_code: regionCode,
-      });
+      await updateUserMetadata(req.user.id, { ...req.user.userMetadata, region_code: regionCode });
     } catch (error) {
       console.error("Failed to persist user region metadata", error);
-      // Do not fail the request – continue with session-level persistence
+      // The cookie already holds the choice; do not fail the request.
     }
   }
 

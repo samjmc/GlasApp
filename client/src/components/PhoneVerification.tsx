@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
+import { apiClient } from '@/lib/queryClient';
 import { Badge } from '@/components/ui/badge';
 import { Check, CheckCircle, Clock } from 'lucide-react';
 
@@ -27,7 +28,6 @@ type VerificationFormValues = z.infer<typeof verificationSchema>;
 type PhoneFormValues = z.infer<typeof phoneSchema>;
 
 interface PhoneVerificationProps {
-  userId?: number;
   phoneNumber?: string;
   isVerified?: boolean;
   onVerified?: () => void;
@@ -35,10 +35,9 @@ interface PhoneVerificationProps {
   className?: string;
 }
 
-/** Form for verifying a user's phone number via code. */
-export function PhoneVerification({ 
-  userId, 
-  phoneNumber, 
+/** Form for verifying the signed-in user's phone number via an SMS code. */
+export function PhoneVerification({
+  phoneNumber,
   isVerified = false, 
   onVerified, 
   onPhoneUpdated,
@@ -70,16 +69,7 @@ export function PhoneVerification({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/auth/verify-phone', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-        credentials: 'include',
-      });
-
-      const data = await response.json();
+      const data = await apiClient.post('/api/profile/phone/verify', values);
 
       if (data.success) {
         toast({
@@ -117,16 +107,7 @@ export function PhoneVerification({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/auth/me', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-        credentials: 'include',
-      });
-
-      const data = await response.json();
+      const data = await apiClient.patch('/api/profile/me', values);
 
       if (data.success) {
         toast({
@@ -164,15 +145,7 @@ export function PhoneVerification({
     setIsResending(true);
 
     try {
-      const response = await fetch('/api/auth/resend-verification', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
-
-      const data = await response.json();
+      const data = await apiClient.post('/api/profile/phone/resend');
 
       if (data.success) {
         toast({
@@ -205,7 +178,7 @@ export function PhoneVerification({
         <CardHeader>
           <CardTitle className="flex items-center">
             Phone Verification
-            <Badge variant="success" className="ml-2 bg-green-500">
+            <Badge variant="secondary" className="ml-2 bg-green-500 text-white">
               <Check className="h-3 w-3 mr-1" />
               Verified
             </Badge>

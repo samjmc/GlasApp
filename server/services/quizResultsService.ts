@@ -21,7 +21,7 @@ export class QuizResultsService {
    * and the new results become the active ones.
    */
   async saveQuizResults(
-    userId: number, 
+    userId: string, 
     dimensions: IdeologicalDimensions, 
     analysis: {
       ideology?: string;
@@ -103,7 +103,7 @@ export class QuizResultsService {
   /**
    * Gets a user's active quiz result
    */
-  async getUserActiveResult(userId: number): Promise<QuizResult | undefined> {
+  async getUserActiveResult(userId: string): Promise<QuizResult | undefined> {
     if (!db) throw new Error('Database not initialized');
     const results = await db
       .select()
@@ -119,7 +119,7 @@ export class QuizResultsService {
   /**
    * Gets a user's quiz result history
    */
-  async getUserResultHistory(userId: number): Promise<QuizResultHistory[]> {
+  async getUserResultHistory(userId: string): Promise<QuizResultHistory[]> {
     if (!db) throw new Error('Database not initialized');
     return db
       .select()
@@ -160,7 +160,7 @@ export class QuizResultsService {
   /**
    * Calculate changes between current and previous quiz results
    */
-  async calculateProfileChanges(userId: number): Promise<any | null> {
+  async calculateProfileChanges(userId: string): Promise<any | null> {
     const currentResult = await this.getUserActiveResult(userId);
     if (!currentResult) return null;
     

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
-import { apiRequest } from '@/lib/queryClient';
+import { apiRequest, apiUpload } from '@/lib/queryClient';
 import { PoliticalEvolution } from '@shared/schema';
 import PoliticalEvolutionAnalysis from '@/components/PoliticalEvolutionAnalysis';
 
@@ -104,17 +104,8 @@ const ProfilePage = () => {
       const formData = new FormData();
       formData.append('profileImage', file);
 
-      const response = await fetch('/api/auth/upload-profile-image', {
-        method: 'POST',
-        body: formData,
-      });
+      const result = await apiUpload('/api/profile/image', formData);
 
-      if (!response.ok) {
-        throw new Error('Failed to upload image');
-      }
-
-      const result = await response.json();
-      
       if (result.success) {
         toast({
           title: "Profile picture updated",

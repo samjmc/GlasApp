@@ -1,3 +1,4 @@
+import { requireJob } from '../../auth';
 /**
  * Party Routes
  * Handles all party-related operations:
@@ -501,7 +502,7 @@ router.get("/explanations/:partyId", asyncHandler(async (req, res) => {
  * POST /api/parties/explanations/:partyId - Update dimension explanations for a party
  * Supports both integer ID and party code
  */
-router.post("/explanations/:partyId", asyncHandler(async (req, res) => {
+router.post("/explanations/:partyId", requireJob, asyncHandler(async (req, res) => {
   if (!supabaseDb) {
     return res.status(503).json(
       formatError('EXTERNAL_SERVICE_ERROR', 'Database connection not available')

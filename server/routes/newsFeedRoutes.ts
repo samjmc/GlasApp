@@ -1,7 +1,7 @@
+import { requireJob } from '../auth';
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
-import { requireAdminAccess } from '../middleware/adminAccess';
 import { getCachedOrFetch, CACHE_TTL } from '../utils/serverCache';
 import { formatSuccess, formatError } from '../utils/responseFormatters';
 import { requestLogger } from '../utils/logger';
@@ -615,7 +615,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 // POST /api/news-feed/save - Save article from trusted aggregator jobs
-router.post('/save', requireAdminAccess, async (req: Request, res: Response) => {
+router.post('/save', requireJob, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
     const article = req.body;

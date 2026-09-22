@@ -3,10 +3,10 @@
  * Handles party sentiment analysis and public trust voting
  */
 
+import { requireAuth } from '../../auth';
 import { Router } from 'express';
 import { storage } from '../../storage';
 import { z } from 'zod';
-import { isAuthenticated } from '../../replitAuth';
 import { asyncHandler } from '../../middleware/errorHandler';
 import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
@@ -21,8 +21,8 @@ const sentimentVoteSchema = z.object({
 /**
  * POST /api/party-sentiment/vote - Submit a sentiment vote
  */
-router.post('/vote', isAuthenticated, asyncHandler(async (req: any, res) => {
-  const userId = req.user?.claims?.sub;
+router.post('/vote', requireAuth, asyncHandler(async (req: any, res) => {
+  const userId = req.user?.id;
   if (!userId) {
     return res.status(401).json(
       formatError('UNAUTHORIZED', 'Authentication required')
@@ -50,8 +50,8 @@ router.get('/:partyId', asyncHandler(async (req, res) => {
 /**
  * GET /api/party-sentiment/user/:partyId - Get user's vote for a party
  */
-router.get('/user/:partyId', isAuthenticated, asyncHandler(async (req: any, res) => {
-  const userId = req.user?.claims?.sub;
+router.get('/user/:partyId', requireAuth, asyncHandler(async (req: any, res) => {
+  const userId = req.user?.id;
   if (!userId) {
     return res.status(401).json(
       formatError('UNAUTHORIZED', 'Authentication required')

@@ -1,3 +1,4 @@
+import { requireJob } from '../auth';
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
@@ -1469,7 +1470,7 @@ router.get('/alerts', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/alerts/:alertId/status', async (req: Request, res: Response) => {
+router.post('/alerts/:alertId/status', requireJob, async (req: Request, res: Response) => {
   try {
     if (!supabaseDb) {
       return res.status(503).json({

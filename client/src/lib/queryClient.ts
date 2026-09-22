@@ -104,6 +104,29 @@ export async function apiFetch(path: string): Promise<Response> {
   return res;
 }
 
+/**
+ * POST multipart form data with the bearer token attached.
+ * Content-Type is left to the browser so it can set the multipart boundary.
+ */
+export async function apiUpload<T = any>(path: string, formData: FormData): Promise<T> {
+  const token = await getAccessToken();
+
+  const headers: Record<string, string> = {};
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(path, {
+    method: "POST",
+    headers,
+    body: formData,
+    credentials: "include",
+  });
+
+  await throwIfResNotOk(res);
+  return await res.json();
+}
+
 // API Client with axios-like interface
 /** API client with axios-like methods for authorized requests. */
 export const apiClient = {

@@ -1,3 +1,4 @@
+import { requireAuth } from '../../../auth';
 /**
  * Category Ranking Routes
  * Handles user category preference rankings and weighted performance calculations
@@ -17,8 +18,8 @@ const router = Router();
  * POST /api/user/rankings/category/submit-ranking
  * Submit user's category ranking
  */
-router.post('/submit-ranking', asyncHandler(async (req, res) => {
-  if (!req.session?.userId) {
+router.post('/submit-ranking', requireAuth, asyncHandler(async (req, res) => {
+  if (!req.user) {
     return res.status(401).json(
       formatError('UNAUTHORIZED', 'Authentication required')
     );
@@ -32,7 +33,7 @@ router.post('/submit-ranking', asyncHandler(async (req, res) => {
   });
 
   const { rankings } = rankingSchema.parse(req.body);
-  const userId = req.session.userId;
+  const userId = req.user.id;
 
   const categories = ['taxation', 'housing', 'health', 'infrastructure'];
   const submittedCategories = rankings.map(r => r.category).sort();
@@ -46,10 +47,10 @@ router.post('/submit-ranking', asyncHandler(async (req, res) => {
   }
 
   await db.delete(userCategoryRankings)
-    .where(eq(userCategoryRankings.userId, userId.toString()));
+    .where(eq(userCategoryRankings.userId, userId));
 
   const rankingData = rankings.map(ranking => ({
-    userId: userId.toString(),
+    userId: userId,
     category: ranking.category,
     rank: ranking.rank
   }));
@@ -157,17 +158,17 @@ router.get('/weighted-performance/:partyId?', asyncHandler(async (req, res) => {
  * Get user's current rankings
  */
 router.get('/user-rankings', asyncHandler(async (req, res) => {
-  if (!req.session?.userId) {
+  if (!req.user) {
     return res.status(401).json(
       formatError('UNAUTHORIZED', 'Authentication required')
     );
   }
 
-  const userId = req.session.userId;
+  const userId = req.user.id;
   const rankings = await db
     .select()
     .from(userCategoryRankings)
-    .where(eq(userCategoryRankings.userId, userId.toString()));
+    .where(eq(userCategoryRankings.userId, userId));
 
   res.json(formatSuccess({ data: rankings }));
 }));

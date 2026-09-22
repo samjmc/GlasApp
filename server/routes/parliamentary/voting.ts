@@ -4,13 +4,13 @@
  * Consolidated from policyVotingRoutes.ts
  */
 
+import { requireAuth } from '../../auth';
 import express from 'express';
 import { supabaseDb as supabase } from '../../db.js';
 import { PersonalizedScoringService } from '../../services/personalizedScoringService.js';
 import { UserIdeologyProfileService } from '../../services/userIdeologyProfileService.js';
 import { PersonalRankingsService } from '../../services/personalRankingsService.js';
-import { formatRankingsResponse, formatUserProfilePayload } from '../personalRankingsRoutes.js';
-import { isAuthenticated } from '../../auth/supabaseAuth.js';
+import { formatRankingsResponse, formatUserProfilePayload } from '../user/rankings/formatters.js';
 import { asyncHandler } from '../../middleware/errorHandler';
 import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
@@ -79,9 +79,9 @@ router.get('/opportunity/:policyVoteId', asyncHandler(async (req, res) => {
 /**
  * GET /api/parliamentary/voting/opportunity/:policyVoteId/user - Get the authenticated user's response for a policy vote opportunity
  */
-router.get('/opportunity/:policyVoteId/user', isAuthenticated, asyncHandler(async (req, res) => {
+router.get('/opportunity/:policyVoteId/user', requireAuth, asyncHandler(async (req, res) => {
   const policyVoteId = parseInt(req.params.policyVoteId, 10);
-  const userId = (req.user as { id?: string } | undefined)?.id;
+  const userId = req.user?.id;
 
   if (!userId) {
     return res.status(401).json(
@@ -110,8 +110,8 @@ router.get('/opportunity/:policyVoteId/user', isAuthenticated, asyncHandler(asyn
 /**
  * GET /api/parliamentary/voting/user/me/article/:articleId - Get current user's vote on a specific article
  */
-router.get('/user/me/article/:articleId', isAuthenticated, asyncHandler(async (req, res) => {
-  const userId = (req.user as { id?: string } | undefined)?.id;
+router.get('/user/me/article/:articleId', requireAuth, asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
   const { articleId } = req.params;
 
   if (!userId) {
@@ -134,7 +134,7 @@ router.get('/user/me/article/:articleId', isAuthenticated, asyncHandler(async (r
 /**
  * GET /api/parliamentary/voting/user/:userId/article/:articleId - Get user's vote on a specific article (legacy)
  */
-router.get('/user/:userId/article/:articleId', isAuthenticated, asyncHandler(async (req, res) => {
+router.get('/user/:userId/article/:articleId', requireAuth, asyncHandler(async (req, res) => {
   const { userId, articleId } = req.params;
   const callerId = (req as any).user?.id;
 
@@ -156,9 +156,9 @@ router.get('/user/:userId/article/:articleId', isAuthenticated, asyncHandler(asy
 /**
  * POST /api/parliamentary/voting/opportunity/:policyVoteId/respond - Submit or update the authenticated user's answer for a policy vote opportunity
  */
-router.post('/opportunity/:policyVoteId/respond', isAuthenticated, asyncHandler(async (req, res) => {
+router.post('/opportunity/:policyVoteId/respond', requireAuth, asyncHandler(async (req, res) => {
   const policyVoteId = parseInt(req.params.policyVoteId, 10);
-  const userId = (req.user as { id?: string } | undefined)?.id;
+  const userId = req.user?.id;
   const { selectedOption } = req.body ?? {};
 
   if (!userId) {
@@ -231,8 +231,8 @@ router.post('/opportunity/:policyVoteId/respond', isAuthenticated, asyncHandler(
 /**
  * POST /api/parliamentary/voting - Submit or update a policy vote
  */
-router.post('/', isAuthenticated, asyncHandler(async (req, res) => {
-  const userId = (req.user as { id?: string } | undefined)?.id;
+router.post('/', requireAuth, asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
   const { articleId, politicianName, supportRating, comment } = req.body;
 
   if (!userId) {
@@ -303,7 +303,7 @@ router.post('/', isAuthenticated, asyncHandler(async (req, res) => {
 /**
  * GET /api/parliamentary/voting/user/:userId/personalized-scores - Get personalized TD scores for a user
  */
-router.get('/user/:userId/personalized-scores', isAuthenticated, asyncHandler(async (req, res) => {
+router.get('/user/:userId/personalized-scores', requireAuth, asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const callerId = (req as any).user?.id;
 
@@ -325,7 +325,7 @@ router.get('/user/:userId/personalized-scores', isAuthenticated, asyncHandler(as
 /**
  * GET /api/parliamentary/voting/user/:userId/td/:politicianName - Get single TD's personalized score for a user
  */
-router.get('/user/:userId/td/:politicianName', isAuthenticated, asyncHandler(async (req, res) => {
+router.get('/user/:userId/td/:politicianName', requireAuth, asyncHandler(async (req, res) => {
   const { userId, politicianName } = req.params;
   const callerId = (req as any).user?.id;
 
@@ -350,7 +350,7 @@ router.get('/user/:userId/td/:politicianName', isAuthenticated, asyncHandler(asy
 /**
  * GET /api/parliamentary/voting/user/:userId/value-alignment - Get user's overall value alignment
  */
-router.get('/user/:userId/value-alignment', isAuthenticated, asyncHandler(async (req, res) => {
+router.get('/user/:userId/value-alignment', requireAuth, asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const callerId = (req as any).user?.id;
 
@@ -366,7 +366,7 @@ router.get('/user/:userId/value-alignment', isAuthenticated, asyncHandler(async 
 /**
  * DELETE /api/parliamentary/voting/:voteId - Delete a policy vote
  */
-router.delete('/:voteId', isAuthenticated, asyncHandler(async (req, res) => {
+router.delete('/:voteId', requireAuth, asyncHandler(async (req, res) => {
   const { voteId } = req.params;
   const callerId = (req as any).user?.id;
 

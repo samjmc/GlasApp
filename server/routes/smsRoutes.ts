@@ -1,8 +1,7 @@
+import { requireAuth, requireJob } from '../auth';
 import { Router, Request, Response } from 'express';
 import { sendSMS, isTwilioConfigured, SendSMSOptions } from '../services/twilioService';
 import { z } from 'zod';
-import { isAuthenticated } from '../middleware/sessionMiddleware';
-import { requireAdminAccess } from '../middleware/adminAccess';
 import { requestLogger } from '../utils/logger';
 
 const router = Router();
@@ -18,7 +17,7 @@ const sendSMSSchema = z.object({
 });
 
 // Send SMS endpoint (authenticated)
-router.post('/send', isAuthenticated, async (req: Request, res: Response) => {
+router.post('/send', requireAuth, async (req: Request, res: Response) => {
   try {
     // Check if Twilio is configured
     if (!isTwilioConfigured()) {
@@ -81,10 +80,10 @@ router.get('/status', async (_req: Request, res: Response) => {
 });
 
 // Test endpoint (admin-only - FOR DEVELOPMENT ONLY, remove in production)
-router.get('/test', requireAdminAccess, async (req: Request, res: Response) => {
+router.get('/test', requireJob, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   log.info(
-    { operation: 'admin.sms.test', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId },
+    { operation: 'admin.sms.test', actor: req.user?.email ?? req.user?.id },
     'SMS test endpoint called'
   );
   try {

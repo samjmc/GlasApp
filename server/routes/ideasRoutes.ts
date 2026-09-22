@@ -1,8 +1,8 @@
+import { requireAuth, requireJob } from '../auth';
 import { Router, Request, Response } from 'express';
 import { db } from '../db';
 import { ideas, ideaVotes, users } from '../../shared/schema';
 import { eq, desc, sql, and } from 'drizzle-orm';
-import { requireAdminAccess } from '../middleware/adminAccess';
 import { requestLogger } from '../utils/logger';
 
 const router = Router();
@@ -11,7 +11,7 @@ const router = Router();
 router.get('/:category', async (req: Request, res: Response) => {
   try {
     const { category } = req.params;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = req.user?.id;
 
     // Get ideas with vote counts and user's vote status
     const ideasWithVotes = await db
@@ -56,10 +56,10 @@ router.get('/:category', async (req: Request, res: Response) => {
 });
 
 // Vote on an idea
-router.post('/vote', async (req: Request, res: Response) => {
+router.post('/vote', requireAuth, async (req: Request, res: Response) => {
   try {
     const { ideaId, voteType } = req.body;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = req.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -141,10 +141,10 @@ router.post('/vote', async (req: Request, res: Response) => {
 });
 
 // Submit a new idea (Admin only)
-router.post('/submit', requireAdminAccess, async (req: Request, res: Response) => {
+router.post('/submit', requireJob, async (req: Request, res: Response) => {
   try {
     const { title, description, fullDescription, category, tags } = req.body;
-    const userId = ((req.user as { id?: string } | null | undefined)?.id ?? req.session?.userId ?? null) as string | null;
+    const userId = ((req.user as { id?: string } | null | undefined)?.id ?? req.user?.id ?? null) as string | null;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -190,7 +190,7 @@ router.post('/submit', requireAdminAccess, async (req: Request, res: Response) =
       .returning();
 
     requestLogger(req).info(
-      { operation: 'admin.ideas.submit', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId, title },
+      { operation: 'admin.ideas.submit', actor: req.user?.email ?? req.user?.id, title },
       'Idea submitted'
     );
 
