@@ -1,3 +1,4 @@
+import { optionalAuth, requireAuth } from '../auth';
 import { Router, Request, Response } from 'express';
 import { db } from '../db';
 import { problems, solutions, problemVotes, solutionVotes, users } from '../../shared/schema';
@@ -9,7 +10,7 @@ const router = Router();
 router.get('/:category', async (req: Request, res: Response) => {
   try {
     const { category } = req.params;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = req.user?.id;
 
     // Get problems with vote counts and user's vote status
     const problemsWithVotes = await db
@@ -85,10 +86,10 @@ router.get('/:category', async (req: Request, res: Response) => {
 });
 
 // Vote on a problem
-router.post('/vote/problem', async (req: Request, res: Response) => {
+router.post('/vote/problem', requireAuth, async (req: Request, res: Response) => {
   try {
     const { problemId, voteType } = req.body;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = req.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -167,10 +168,10 @@ router.post('/vote/problem', async (req: Request, res: Response) => {
 });
 
 // Vote on a solution
-router.post('/vote/solution', async (req: Request, res: Response) => {
+router.post('/vote/solution', requireAuth, async (req: Request, res: Response) => {
   try {
     const { solutionId, voteType } = req.body;
-    const userId = (req.session as unknown)?.user?.id;
+    const userId = req.user?.id;
 
     if (!userId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });

@@ -1,5 +1,5 @@
+import { requireAuth, supabaseAdmin } from '../auth';
 import { Router } from 'express';
-import { isAuthenticated, supabaseAdmin } from '../auth/supabaseAuth';
 import { supabaseDb } from '../db';
 
 type SessionUser = {
@@ -34,7 +34,7 @@ const deletionPlan: Array<{ table: string; column: string; value?: string }> = [
   { table: 'problems', column: 'user_id' },
 ];
 
-router.delete('/', isAuthenticated, async (req, res) => {
+router.delete('/', requireAuth, async (req, res) => {
   try {
     if (!supabaseDb) {
       return res.status(500).json({
@@ -43,9 +43,7 @@ router.delete('/', isAuthenticated, async (req, res) => {
       });
     }
 
-    const sessionUser = req.user as SessionUser | undefined;
-    const userId: string | undefined =
-      sessionUser?.id || sessionUser?.user?.id || sessionUser?.sub || sessionUser?.claims?.sub;
+    const userId = req.user?.id;
 
     if (!userId) {
       return res.status(400).json({

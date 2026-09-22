@@ -1,5 +1,5 @@
+import { supabaseAdmin } from '../auth';
 import { supabaseDb as supabase } from "../db.js";
-import { supabaseAdmin } from "../auth/supabaseAuth.js";
 import { PersonalRankingsService } from "./personalRankingsService.js";
 import { UserIdeologyProfileService } from "./userIdeologyProfileService.js";
 import {

@@ -14,6 +14,7 @@
  * - geographicData.ts
  */
 
+import { requireAuth, requireJob } from '../../auth';
 import express, { Request, Response } from 'express';
 import { db } from '../../db';
 import { userLocations, users, constituencies, parties, electionResults, elections, quizResults, userPreferences } from '@shared/schema';
@@ -21,8 +22,6 @@ import { eq, and, count, sql } from 'drizzle-orm';
 import fs from 'fs';
 import path from 'path';
 import { cached, TTL } from '../../services/cacheService';
-import { isAuthenticated } from '../../middleware/sessionMiddleware';
-import { requireAdminAccess } from '../../middleware/adminAccess';
 import { requestLogger } from '../../utils/logger';
 
 const router = express.Router();
@@ -142,7 +141,7 @@ router.get("/constituency", async (req, res, next) => {
  * Authenticated: the authenticated id is the record key. A body userId, when
  * present, must match the authenticated identity (IDOR write protection).
  */
-router.post("/users/location", isAuthenticated, async (req, res, next) => {
+router.post("/users/location", requireAuth, async (req, res, next) => {
   try {
     const { userId, latitude, longitude, constituency, county, accuracy } = req.body;
 
@@ -152,7 +151,7 @@ router.post("/users/location", isAuthenticated, async (req, res, next) => {
 
     const authenticatedId =
       (req.user as { id?: string | number } | null | undefined)?.id ??
-      req.session?.userId;
+      req.user?.id;
 
     if (!authenticatedId) {
       return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -208,14 +207,14 @@ router.post("/users/location", isAuthenticated, async (req, res, next) => {
  * GET /api/location/users/by-constituency/:constituency - Get users by constituency
  * Admin-only: returns user identifiers (privileged data exposure).
  */
-router.get("/users/by-constituency/:constituency", requireAdminAccess, async (req, res, next) => {
+router.get("/users/by-constituency/:constituency", requireJob, async (req, res, next) => {
   try {
     const { constituency } = req.params;
 
     requestLogger(req).info(
       {
         operation: 'admin.geographic.byConstituency',
-        actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId,
+        actor: req.user?.email ?? req.user?.id,
         constituency
       },
       'Constituency user lookup'

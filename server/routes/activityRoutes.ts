@@ -1,12 +1,12 @@
+import { requireAuth } from '../auth';
 import { Router, Request, Response } from 'express';
 import { ActivityTracker } from '../services/activityTracker';
-import { isAuthenticated } from '../middleware/sessionMiddleware';
 import { z } from 'zod';
 
 const router = Router();
 
 // Log a custom activity
-router.post('/log', isAuthenticated, async (req: Request, res: Response) => {
+router.post('/log', requireAuth, async (req: Request, res: Response) => {
   try {
     const { action, metadata } = req.body;
     
@@ -17,7 +17,7 @@ router.post('/log', isAuthenticated, async (req: Request, res: Response) => {
       });
     }
 
-    const userId = (req as unknown).user.id;
+    const userId = req.user!.id;
     const ipAddress = req.ip || req.connection.remoteAddress;
     const userAgent = req.get('User-Agent');
 
@@ -47,9 +47,9 @@ router.post('/log', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Get user's activity history
-router.get('/history', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/history', requireAuth, async (req: Request, res: Response) => {
   try {
-    const userId = (req as unknown).user.id;
+    const userId = req.user!.id;
     const limit = parseInt(req.query.limit as string) || 50;
 
     const activities = await ActivityTracker.getUserActivity(userId, limit);
@@ -68,9 +68,9 @@ router.get('/history', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Get user's activity statistics
-router.get('/stats', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/stats', requireAuth, async (req: Request, res: Response) => {
   try {
-    const userId = (req as unknown).user.id;
+    const userId = req.user!.id;
     const days = parseInt(req.query.days as string) || 30;
 
     const stats = await ActivityTracker.getActivityStats(userId, days);
@@ -90,7 +90,7 @@ router.get('/stats', isAuthenticated, async (req: Request, res: Response) => {
 });
 
 // Get global platform statistics (admin only)
-router.get('/global-stats', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/global-stats', requireAuth, async (req: Request, res: Response) => {
   try {
     const days = parseInt(req.query.days as string) || 7;
     const stats = await ActivityTracker.getGlobalActivityStats(days);

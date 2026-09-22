@@ -31,13 +31,13 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   upsertUser(userData: UpsertUser): Promise<User>;
   createUser(userData: InsertUser): Promise<User>;
-  updateUser(id: string | number, updates: Record<string, any>): Promise<User>;
+  updateUser(id: string, updates: Record<string, any>): Promise<User>;
   getUserByUsername(username: string | null | undefined): Promise<User | undefined>;
   getUserByEmail(email: string | null | undefined): Promise<User | undefined>;
   getUserByPhoneNumber(phoneNumber: string | null | undefined): Promise<User | undefined>;
 
   // Verification operations
-  setVerificationCode(userId: string | number, code: string, expiresAt: Date): Promise<void>;
+  setVerificationCode(userId: string, code: string, expiresAt: Date): Promise<void>;
   createEmailVerificationToken(data: InsertEmailVerificationToken): Promise<EmailVerificationToken>;
   getEmailVerificationToken(token: string): Promise<EmailVerificationToken | undefined>;
   deleteEmailVerificationToken(token: string): Promise<void>;
@@ -66,10 +66,11 @@ export class DatabaseStorage implements IStorage {
 
   async upsertUser(userData: UpsertUser): Promise<User> {
     if (!db) throw new Error('Database not initialized');
-    // Assign admin role to samjmc3@hotmail.com
+    // Role here is the application default. Admin is granted by the Supabase
+    // app_metadata claim or the ADMIN_EMAILS allowlist, never by a hardcoded address.
     const userDataWithRole = {
       ...userData,
-      role: userData.email === 'samjmc3@hotmail.com' ? 'admin' : 'user',
+      role: 'user',
       updatedAt: new Date(),
     };
 
@@ -436,7 +437,7 @@ export class DatabaseStorage implements IStorage {
   /**
    * Update arbitrary fields on an existing user record (e.g. profile edits, verification flags).
    */
-  async updateUser(id: string | number, updates: Record<string, any>): Promise<User> {
+  async updateUser(id: string, updates: Record<string, any>): Promise<User> {
     if (!db) throw new Error('Database not initialized');
     const [user] = await db
       .update(users)
@@ -459,7 +460,7 @@ export class DatabaseStorage implements IStorage {
   /**
    * Store a phone/SMS verification code and its expiration time on the user record.
    */
-  async setVerificationCode(userId: string | number, code: string, expiresAt: Date): Promise<void> {
+  async setVerificationCode(userId: string, code: string, expiresAt: Date): Promise<void> {
     if (!db) throw new Error('Database not initialized');
     await db
       .update(users)

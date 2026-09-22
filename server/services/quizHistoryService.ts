@@ -29,7 +29,7 @@ export class QuizHistoryService {
    * This will set any existing results to not current
    */
   async saveQuizResult(
-    userId: number, 
+    userId: string, 
     dimensions: IdeologicalDimensions, 
     ideology?: string,
     description?: string
@@ -84,7 +84,7 @@ export class QuizHistoryService {
   /**
    * Get all quiz history for a user
    */
-  async getUserQuizHistory(userId: number): Promise<QuizHistoryResult[]> {
+  async getUserQuizHistory(userId: string): Promise<QuizHistoryResult[]> {
     try {
       const result = await db.execute(sql`
         SELECT * FROM quiz_history 
@@ -102,7 +102,7 @@ export class QuizHistoryService {
   /**
    * Get the current quiz result for a user
    */
-  async getCurrentQuizResult(userId: number): Promise<QuizHistoryResult | null> {
+  async getCurrentQuizResult(userId: string): Promise<QuizHistoryResult | null> {
     try {
       const result = await db.execute(sql`
         SELECT * FROM quiz_history 
@@ -124,7 +124,7 @@ export class QuizHistoryService {
   /**
    * Calculate the changes between the current and previous quiz results
    */
-  async calculateChanges(userId: number): Promise<any | null> {
+  async calculateChanges(userId: string): Promise<any | null> {
     try {
       const history = await this.getUserQuizHistory(userId);
       

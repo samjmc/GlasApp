@@ -21,7 +21,7 @@ export interface ActivityMetadata {
 export class ActivityTracker {
   
   static async logActivity(
-    userId: number,
+    userId: string,
     action: string,
     metadata?: ActivityMetadata,
     ipAddress?: string,
@@ -44,7 +44,7 @@ export class ActivityTracker {
     }
   }
 
-  static async getUserActivity(userId: number, limit: number = 50) {
+  static async getUserActivity(userId: string, limit: number = 50) {
     try {
       const activities = await db
         .select()
@@ -63,7 +63,7 @@ export class ActivityTracker {
     }
   }
 
-  static async getActivityStats(userId: number, days: number = 30) {
+  static async getActivityStats(userId: string, days: number = 30) {
     try {
       const dateThreshold = new Date();
       dateThreshold.setDate(dateThreshold.getDate() - days);
@@ -113,7 +113,7 @@ export class ActivityTracker {
 
   // Helper methods for common activity types
   static async logQuizCompletion(
-    userId: number,
+    userId: string,
     quizData: {
       economicScore: number;
       socialScore: number;
@@ -139,7 +139,7 @@ export class ActivityTracker {
   }
 
   static async logPollVote(
-    userId: number,
+    userId: string,
     pollId: number,
     choice: string,
     ipAddress?: string,
@@ -159,7 +159,7 @@ export class ActivityTracker {
   }
 
   static async logConstituencyView(
-    userId: number,
+    userId: string,
     constituency: string,
     ipAddress?: string,
     userAgent?: string
@@ -177,7 +177,7 @@ export class ActivityTracker {
   }
 
   static async logPartyInteraction(
-    userId: number,
+    userId: string,
     partyName: string,
     interactionType: 'view' | 'compare' | 'match',
     ipAddress?: string,
@@ -197,7 +197,7 @@ export class ActivityTracker {
   }
 
   static async logLocationCapture(
-    userId: number,
+    userId: string,
     location: { latitude: number; longitude: number; county?: string },
     ipAddress?: string,
     userAgent?: string

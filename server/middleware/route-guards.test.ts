@@ -2,8 +2,15 @@
  * Route-guard regression tests for the 2026-09-21 route-security truth audit.
  *
  * Covers the surfaces that audit found writable without any guard, the new
- * rate limiter, the production SESSION_SECRET check, and structural markers
- * that catch a silent revert of the guard insertions.
+ * rate limiter, and structural markers that catch a silent revert of the guard
+ * insertions.
+ *
+ * The audit shipped these guards as `requireAdminAccess` from server/middleware/
+ * adminAccess.ts. The auth rebuild replaced that module with `requireJob` from
+ * server/auth, which accepts the same `x-admin-secret` and otherwise falls back to
+ * `requireAdmin`, so the invariant each test asserts is unchanged. The production
+ * SESSION_SECRET test went with server/middleware/sessionMiddleware.ts, which the
+ * auth rebuild deletes outright — there is no session to protect any more.
  */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -30,10 +37,6 @@ vi.mock('../db', () => ({
   },
   shutdown: vi.fn(),
   checkDatabaseConnection: vi.fn(async () => true),
-}));
-
-vi.mock('../replitAuth', () => ({
-  isAuthenticated: (_req: unknown, _res: unknown, next: () => void) => next(),
 }));
 
 vi.mock('../services/pledgeScoring', () => ({
@@ -195,44 +198,29 @@ describe('createRateLimit', () => {
   });
 });
 
-describe('sessionMiddleware', () => {
-  it('refuses to start in production without SESSION_SECRET', async () => {
-    const prevEnv = process.env.NODE_ENV;
-    const prevSecret = process.env.SESSION_SECRET;
-    process.env.NODE_ENV = 'production';
-    delete process.env.SESSION_SECRET;
-    vi.resetModules();
-    try {
-      await assert.rejects(import('./sessionMiddleware'), /SESSION_SECRET must be set in production/);
-    } finally {
-      process.env.NODE_ENV = prevEnv;
-      if (prevSecret !== undefined) process.env.SESSION_SECRET = prevSecret;
-      vi.resetModules();
-    }
-  });
-});
-
 describe('structural markers (catch a silent revert of the audit fixes)', () => {
   const read = (rel: string) => fs.readFileSync(path.join(REPO_ROOT, rel), 'utf8');
 
   it('POST /api/quiz-results no longer reads userId from the request body', () => {
     const src = read('server/routes.ts');
     assert.equal(src.includes('validatedData.userId'), false);
-    assert.ok(src.includes('const sessionUserId = req.session?.userId ?? null'));
+    // The auth rebuild replaced the session read with the verified token's subject.
+    assert.ok(src.includes('const userId = req.user?.id ?? null'));
+    assert.equal(src.includes('req.session'), false);
   });
 
-  it('every pledge write route carries requireAdminAccess', () => {
+  it('every pledge write route carries requireJob', () => {
     const src = read('server/routes/political/pledges.ts');
     const writes = src.match(/router\.(post|put|delete)\(/g) ?? [];
-    const guarded = src.match(/router\.(post|put|delete)\([^,]+,\s*requireAdminAccess,/g) ?? [];
+    const guarded = src.match(/router\.(post|put|delete)\([^,]+,\s*requireJob,/g) ?? [];
     // 6 CRUD/recalculate writes are admin-only; /category-votes keeps its own guard.
     assert.equal(guarded.length, 6);
     assert.equal(writes.length, 7);
   });
 
   it('party explanations and debate alert status writes are admin-only', () => {
-    assert.match(read('server/routes/political/parties.ts'), /router\.post\("\/explanations\/:partyId",\s*requireAdminAccess,/);
-    assert.match(read('server/routes/debatesRoutes.ts'), /router\.post\('\/alerts\/:alertId\/status',\s*requireAdminAccess,/);
+    assert.match(read('server/routes/political/parties.ts'), /router\.post\("\/explanations\/:partyId",\s*requireJob,/);
+    assert.match(read('server/routes/debatesRoutes.ts'), /router\.post\('\/alerts\/:alertId\/status',\s*requireJob,/);
   });
 
   it('LLM mounts are rate limited', () => {

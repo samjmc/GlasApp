@@ -1,5 +1,5 @@
+import { requireAuth } from '../auth';
 import { Router } from "express";
-import { isAuthenticated } from "../auth/supabaseAuth.js";
 import DailySessionService from "../services/dailySessionService.js";
 import {
   DEFAULT_REGION_CODE,
@@ -20,7 +20,7 @@ type QuickExplainerCacheEntry = {
 const QUICK_EXPLAINER_TTL_MS = 24 * 60 * 60 * 1000;
 const quickExplainerCache = new Map<string, QuickExplainerCacheEntry>();
 
-router.get("/", isAuthenticated, async (req, res) => {
+router.get("/", requireAuth, async (req, res) => {
   try {
     const user = req.user!;
     const accessToken =
@@ -32,12 +32,10 @@ router.get("/", isAuthenticated, async (req, res) => {
       console.debug("[DailySessionRoute] GET access token present:", Boolean(accessToken));
     }
 
-    const county =
-      user.user_metadata?.county || user.app_metadata?.county || null;
+    // Location is a user-supplied preference, so it lives in user_metadata.
+    const county = typeof user.userMetadata.county === "string" ? user.userMetadata.county : null;
     const constituency =
-      user.user_metadata?.constituency ||
-      user.app_metadata?.constituency ||
-      null;
+      typeof user.userMetadata.constituency === "string" ? user.userMetadata.constituency : null;
     const forceParam = req.query.force;
     const forceRefresh =
       typeof forceParam === "string"
@@ -74,7 +72,7 @@ router.get("/", isAuthenticated, async (req, res) => {
 
 router.post(
   "/items/:itemId/vote",
-  isAuthenticated,
+  requireAuth,
   async (req, res) => {
     try {
       const user = req.user!;
@@ -119,7 +117,7 @@ router.post(
   }
 );
 
-router.post("/complete", isAuthenticated, async (req, res) => {
+router.post("/complete", requireAuth, async (req, res) => {
   try {
     const user = req.user!;
     const accessToken =
@@ -146,7 +144,7 @@ router.post("/complete", isAuthenticated, async (req, res) => {
   }
 });
 
-router.post("/explainer", isAuthenticated, async (req, res) => {
+router.post("/explainer", requireAuth, async (req, res) => {
   try {
     const regionCode: RegionCode = req.regionCode || DEFAULT_REGION_CODE;
     const { headline, summary = "", issueCategory, todayIso, maxChars } =

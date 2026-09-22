@@ -1,7 +1,7 @@
+import { requireJob } from '../auth';
 import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { supabaseDb } from '../db';
-import { requireAdminAccess } from '../middleware/adminAccess';
 import { requestLogger } from '../utils/logger';
 
 const router = Router();
@@ -249,7 +249,7 @@ async function fetchMetricsForExport(filters: SavedViewFilters) {
   return { rows, period };
 }
 
-router.get('/views', requireAdminAccess, async (_req: Request, res: Response) => {
+router.get('/views', requireJob, async (_req: Request, res: Response) => {
   try {
     if (!supabaseDb) {
       return res.status(503).json({ success: false, message: 'Database unavailable' });
@@ -269,10 +269,10 @@ router.get('/views', requireAdminAccess, async (_req: Request, res: Response) =>
   }
 });
 
-router.post('/views', requireAdminAccess, async (req: Request, res: Response) => {
+router.post('/views', requireJob, async (req: Request, res: Response) => {
   try {
     const log = requestLogger(req);
-    log.info({ operation: 'admin.views.create', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Debate workspace admin action');
+    log.info({ operation: 'admin.views.create', actor: req.user?.email ?? req.user?.id }, 'Debate workspace admin action');
 
     if (!supabaseDb) {
       return res.status(503).json({ success: false, message: 'Database unavailable' });
@@ -306,10 +306,10 @@ router.post('/views', requireAdminAccess, async (req: Request, res: Response) =>
   }
 });
 
-router.patch('/views/:id', requireAdminAccess, async (req: Request, res: Response) => {
+router.patch('/views/:id', requireJob, async (req: Request, res: Response) => {
   try {
     const log = requestLogger(req);
-    log.info({ operation: 'admin.views.update', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Debate workspace admin action');
+    log.info({ operation: 'admin.views.update', actor: req.user?.email ?? req.user?.id }, 'Debate workspace admin action');
 
     if (!supabaseDb) {
       return res.status(503).json({ success: false, message: 'Database unavailable' });
@@ -343,10 +343,10 @@ router.patch('/views/:id', requireAdminAccess, async (req: Request, res: Respons
   }
 });
 
-router.delete('/views/:id', requireAdminAccess, async (req: Request, res: Response) => {
+router.delete('/views/:id', requireJob, async (req: Request, res: Response) => {
   try {
     const log = requestLogger(req);
-    log.info({ operation: 'admin.views.delete', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Debate workspace admin action');
+    log.info({ operation: 'admin.views.delete', actor: req.user?.email ?? req.user?.id }, 'Debate workspace admin action');
 
     if (!supabaseDb) {
       return res.status(503).json({ success: false, message: 'Database unavailable' });
@@ -368,7 +368,7 @@ router.delete('/views/:id', requireAdminAccess, async (req: Request, res: Respon
   }
 });
 
-router.get('/exports', requireAdminAccess, async (req: Request, res: Response) => {
+router.get('/exports', requireJob, async (req: Request, res: Response) => {
   try {
     if (!supabaseDb) {
       return res.status(503).json({ success: false, message: 'Database unavailable' });
@@ -423,10 +423,10 @@ async function createExportEntry(payload: {
   return data?.id || null;
 }
 
-router.post('/exports', requireAdminAccess, async (req: Request, res: Response) => {
+router.post('/exports', requireJob, async (req: Request, res: Response) => {
   try {
     const log = requestLogger(req);
-    log.info({ operation: 'admin.exports.create', actor: (req.user as { email?: string } | null | undefined)?.email ?? req.session?.userId }, 'Debate workspace admin action');
+    log.info({ operation: 'admin.exports.create', actor: req.user?.email ?? req.user?.id }, 'Debate workspace admin action');
 
     if (!supabaseDb) {
       return res.status(503).json({ success: false, message: 'Database unavailable' });

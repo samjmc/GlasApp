@@ -1,16 +1,10 @@
 /**
- * Personal Rankings Routes
- * Handles personal TD rankings, quiz results, user profiles
+ * Shared response shapes for personal rankings.
+ *
+ * Lifted out of the unmounted personalRankingsRoutes router when the auth rebuild
+ * deleted it; parliamentary/voting.ts is the live consumer.
  */
-
-import { Router, Request, Response } from 'express';
-import { requireAuth } from '../../../auth';
-import { PersonalRankingsService } from '../../../services/personalRankingsService.js';
 import { IDEOLOGY_DIMENSIONS } from '../../../constants/ideology.js';
-import { asyncHandler } from '../../../middleware/errorHandler.js';
-import { formatSuccess, formatError, ErrorCodes } from '../../../utils/responseFormatters.js';
-
-const router = Router();
 
 interface PersonalRankingRow {
   politician_name?: string;
@@ -28,10 +22,6 @@ interface PersonalRankingRow {
   };
 }
 
-/**
- * Format user profile with ideology labels and engagement metrics
- */
-/** Format a user profile with ideology and engagement metrics. */
 export function formatUserProfilePayload(profile: unknown) {
   if (!profile) return null;
 
@@ -48,6 +38,8 @@ export function formatUserProfilePayload(profile: unknown) {
 
   const avgScore = Math.round((averageMagnitude / 10) * 100);
 
+  // Nuanced multi-dimensional ideology labeling
+  // Consider all 8 dimensions to create more accurate and varied labels
   const getNuancedIdeologyLabel = (ideology: Record<string, number>): string => {
     const {
       economic = 0,
@@ -60,112 +52,149 @@ export function formatUserProfilePayload(profile: unknown) {
       technocratic = 0
     } = ideology;
 
+    // Identify primary characteristics (strongest positions)
     const characteristics: string[] = [];
-
+    
+    // Economic dimension
     if (economic <= -6) characteristics.push('Left-Wing');
     else if (economic >= 6) characteristics.push('Right-Wing');
     else if (economic <= -3) characteristics.push('Center-Left');
     else if (economic >= 3) characteristics.push('Center-Right');
-
+    
+    // Social dimension
     if (social <= -6) characteristics.push('Progressive');
     else if (social >= 6) characteristics.push('Social Conservative');
-
+    
+    // Cultural dimension
     if (cultural <= -6) characteristics.push('Multicultural');
     else if (cultural >= 6) characteristics.push('Traditional');
-
+    
+    // Globalism dimension (scale: +10 = Ultranationalist, -10 = Internationalist)
     if (globalism >= 6) characteristics.push('Nationalist');
     else if (globalism <= -6) characteristics.push('Internationalist');
-
+    
+    // Environmental dimension (scale: +10 = Ecological, -10 = Industrial)
     if (environmental >= 6) characteristics.push('Ecological');
     else if (environmental <= -6) characteristics.push('Industrial');
-
+    
+    // Authority dimension
     if (authority <= -6) characteristics.push('Libertarian');
     else if (authority >= 6) characteristics.push('Authoritarian');
-
+    
+    // Welfare dimension (scale: +10 = Communitarian, -10 = Individual)
     if (welfare >= 6) characteristics.push('Communitarian');
     else if (welfare <= -6) characteristics.push('Individualist');
-
+    
+    // Governance dimension (scale: +10 = Technocratic, -10 = Populist)
     if (technocratic >= 6) characteristics.push('Technocratic');
     else if (technocratic <= -6) characteristics.push('Populist');
-
-    // Special combinations
+    
+    // Build nuanced label based on combinations
+    // Priority: Most extreme positions first, then combinations
+    
+    // Special combinations that create distinct ideologies
+    // Check most specific combinations first
+    // Note: globalism scale: +10 = Ultranationalist, -10 = Internationalist
+    // Note: environmental scale: +10 = Ecological, -10 = Industrial
+    
+    // Traditional + Nationalist + Ecological = Traditional nationalist who prioritizes environment
     if (globalism >= 6 && cultural >= 6 && environmental >= 6) {
       return 'Traditional Nationalist';
     }
-
+    
+    // Ecological + Internationalist + Left = Environmental globalist
     if (globalism <= -6 && environmental >= 6 && economic <= -3) {
       return 'Green Internationalist';
     }
-
+    
+    // Nationalist + Traditional + Right = National conservative
     if (globalism >= 6 && cultural >= 6 && economic >= 3) {
       return 'National Conservative';
     }
-
+    
+    // Nationalist + Industrial + Right = Economic nationalist
     if (globalism >= 6 && environmental <= -6 && economic >= 3) {
       return 'Industrial Nationalist';
     }
-
+    
+    // Traditional + Social Conservative + Authoritarian = Social conservative
     if (cultural >= 6 && social >= 6 && authority >= 3) {
       return 'Traditional Conservative';
     }
-
+    
+    // Progressive + Multicultural + Left = Progressive multiculturalist
     if (cultural <= -6 && social <= -6 && economic <= -3) {
       return 'Progressive Multiculturalist';
     }
-
+    
+    // Ecological + Left + Communitarian = Eco-socialist
     if (environmental >= 6 && economic <= -3 && welfare >= 3) {
       return 'Eco-Socialist';
     }
-
+    
+    // Industrial + Right + Authoritarian = Industrial authoritarian
     if (environmental <= -6 && economic >= 6 && authority >= 3) {
       return 'Industrial Authoritarian';
     }
-
+    
+    // Technocratic + Authoritarian + Right = Technocratic conservative
     if (technocratic >= 6 && authority >= 3 && economic >= 3) {
       return 'Technocratic Conservative';
     }
-
+    
+    // Populist + Libertarian + Progressive = Libertarian progressive
     if (technocratic <= -6 && authority <= -3 && social <= -3) {
       return 'Libertarian Progressive';
     }
-
+    
+    // Communitarian + Left + Progressive = Social democrat
     if (welfare >= 6 && economic <= -3 && social <= -3) {
       return 'Social Democrat';
     }
-
+    
+    // Individualist + Right + Libertarian = Libertarian right
     if (welfare <= -6 && economic >= 6 && authority <= -3) {
       return 'Libertarian Right';
     }
-
+    
+    // Traditional + Nationalist (without strong environmental) = Cultural traditionalist who prioritizes nation
     if (globalism >= 6 && cultural >= 6 && Math.abs(environmental) < 6) {
       return 'Traditional Nationalist';
     }
-
+    
+    // Ecological + Nationalist = Green nationalist
     if (globalism >= 6 && environmental >= 6 && economic >= 0) {
       return 'Green Nationalist';
     }
-
+    
+    // Industrial + Internationalist = Business globalist (supports global trade)
     if (globalism <= -6 && environmental <= -6 && economic >= 0) {
       return 'Industrial Internationalist';
     }
-
+    
+    // Internationalist + Traditional = Cultural traditionalist who supports global cooperation
     if (globalism <= -6 && cultural >= 6) {
       return 'Traditional Internationalist';
     }
-
+    
+    // Ecological + Right = Green conservative
     if (environmental >= 6 && economic >= 3 && social >= 0) {
       return 'Green Conservative';
     }
-
+    
+    // Populist + Traditional = Traditional populist
     if (technocratic <= -6 && cultural >= 6) {
       return 'Traditional Populist';
     }
-
+    
+    // Technocratic + Progressive = Technocratic progressive
     if (technocratic >= 6 && social <= -3 && economic <= 0) {
       return 'Technocratic Progressive';
     }
-
+    
+    // If we have characteristics, combine the top 2-3 most relevant
     if (characteristics.length > 0) {
+      // Sort by absolute value of corresponding dimension
       const sortedChars = characteristics
         .map(char => {
           let value = 0;
@@ -173,6 +202,7 @@ export function formatUserProfilePayload(profile: unknown) {
           else if (char.includes('Progressive') || char.includes('Conservative')) value = Math.abs(social);
           else if (char.includes('Multicultural') || char.includes('Traditional')) value = Math.abs(cultural);
           else if (char.includes('Nationalist') || char.includes('Internationalist')) value = Math.abs(globalism);
+          // Note: For globalism, higher positive = more nationalist, higher negative = more internationalist
           else if (char.includes('Industrial') || char.includes('Ecological')) value = Math.abs(environmental);
           else if (char.includes('Libertarian') || char.includes('Authoritarian')) value = Math.abs(authority);
           else if (char.includes('Individualist') || char.includes('Communitarian')) value = Math.abs(welfare);
@@ -182,20 +212,21 @@ export function formatUserProfilePayload(profile: unknown) {
         .sort((a, b) => b.value - a.value)
         .slice(0, 2)
         .map(item => item.char);
-
+      
       if (sortedChars.length === 2) {
         return `${sortedChars[0]} ${sortedChars[1]}`;
       } else if (sortedChars.length === 1) {
         return sortedChars[0];
       }
     }
-
+    
+    // Fallback: use traditional left-right spectrum if nothing else fits
     const leanScore = (economic + social + welfare) / 3;
     if (leanScore <= -5) return 'Strongly Progressive';
     if (leanScore <= -2) return 'Progressive';
     if (leanScore >= 5) return 'Strongly Conservative';
     if (leanScore >= 2) return 'Conservative';
-
+    
     return 'Centrist';
   };
 
@@ -222,10 +253,6 @@ export function formatUserProfilePayload(profile: unknown) {
   };
 }
 
-/**
- * Format rankings response - standardized ranking output
- */
-/** Format personal rankings into a standardized response shape. */
 export function formatRankingsResponse(rankings: unknown[]) {
   return rankings.map((r) => {
     const row = r as PersonalRankingRow;
@@ -245,154 +272,3 @@ export function formatRankingsResponse(rankings: unknown[]) {
     };
   });
 }
-
-/**
- * POST /api/user/rankings/personal/quiz - Submit quiz results
- * Legacy: POST /api/personal/quiz
- *
- * Auth added 2026-09-21: this endpoint took userId from the request body with no
- * verification, so any caller could write quiz results to any other user's account
- * by supplying their id. userId is now taken from the authenticated session only;
- * a body-supplied userId is ignored rather than trusted.
- */
-router.post('/quiz', requireAuth, asyncHandler(async (req: Request, res: Response) => {
-  // Identity comes from the verified token. A body-supplied userId used to let any
-  // caller overwrite another person's quiz results and personal rankings.
-  const userId = req.user!.id;
-  const { answers } = req.body;
-
-  if (!answers) {
-    return res.status(400).json(
-      formatError('MISSING_REQUIRED_FIELD', 'answers are required')
-    );
-  }
-
-  const dimensions = ['immigration', 'healthcare', 'housing', 'economy', 'environment', 'social_issues', 'justice', 'education'];
-  for (const dim of dimensions) {
-    if (!answers[dim] || answers[dim] < 1 || answers[dim] > 5) {
-      return res.status(400).json(
-        formatError('VALIDATION_ERROR', `Invalid answer for ${dim}. Must be 1-5.`)
-      );
-    }
-  }
-
-  await PersonalRankingsService.saveQuizResults(userId, answers, {
-    asyncRecalculation: true
-  });
-
-  const existingMatches = await PersonalRankingsService.getPersonalRankings(userId, 5);
-
-  res.json(formatSuccess({
-    processing: true,
-    estimatedWaitSeconds: 30,
-    topMatches: formatRankingsResponse(existingMatches)
-  }, { message: 'Quiz results saved' }));
-}));
-
-/**
- * GET /api/user/rankings/personal/:userId - Get personal rankings
- */
-router.get('/:userId', asyncHandler(async (req: Request, res: Response) => {
-  const { userId } = req.params;
-  const { limit = 20 } = req.query;
-
-  const hasEnhancedQuiz = await PersonalRankingsService.hasCompletedEnhancedQuiz(userId);
-  if (!hasEnhancedQuiz) {
-    return res.status(403).json(
-      formatError('FORBIDDEN', 'Complete the enhanced quiz to unlock personalized rankings.')
-    );
-  }
-
-  const rankings = await PersonalRankingsService.getPersonalRankings(userId, Number(limit));
-
-  res.json(formatSuccess(formatRankingsResponse(rankings)));
-}));
-
-/**
- * GET /api/user/rankings/personal/profile/:userId - Get user's ideological profile
- */
-router.get('/profile/:userId', asyncHandler(async (req: Request, res: Response) => {
-  const { userId } = req.params;
-
-  const hasEnhancedQuiz = await PersonalRankingsService.hasCompletedEnhancedQuiz(userId);
-
-  if (!hasEnhancedQuiz) {
-    return res.json(formatSuccess({
-      hasCompletedQuiz: false,
-      requiresEnhancedQuiz: true,
-      profile: null,
-    }));
-  }
-
-  const profile = await PersonalRankingsService.getUserProfile(userId);
-
-  if (!profile) {
-    return res.json(formatSuccess({
-      hasCompletedQuiz: false,
-      requiresEnhancedQuiz: true,
-      profile: null,
-    }));
-  }
-
-  res.json(formatSuccess({
-    hasCompletedQuiz: true,
-    requiresEnhancedQuiz: false,
-    profile: formatUserProfilePayload(profile),
-  }));
-}));
-
-/**
- * GET /api/user/rankings/personal/top-matches/:userId - Get top 5 personal matches
- */
-router.get('/top-matches/:userId', asyncHandler(async (req: Request, res: Response) => {
-  const { userId } = req.params;
-
-  const hasEnhancedQuiz = await PersonalRankingsService.hasCompletedEnhancedQuiz(userId);
-  if (!hasEnhancedQuiz) {
-    return res.status(403).json(
-      formatError('FORBIDDEN', 'Complete the enhanced quiz to unlock personalized rankings.')
-    );
-  }
-
-  const topMatches = await PersonalRankingsService.getPersonalRankings(userId, 5);
-
-  res.json(formatSuccess(formatRankingsResponse(topMatches)));
-}));
-
-/**
- * GET /api/user/rankings/personal/party-matches/:userId - Get party alignment matches
- */
-router.get('/party-matches/:userId', asyncHandler(async (req: Request, res: Response) => {
-  const { userId } = req.params;
-  const { limit = 8 } = req.query;
-
-  const hasEnhancedQuiz = await PersonalRankingsService.hasCompletedEnhancedQuiz(userId);
-  if (!hasEnhancedQuiz) {
-    return res.status(403).json(
-      formatError('FORBIDDEN', 'Complete the enhanced quiz to unlock personalized rankings.')
-    );
-  }
-
-  const matches = await PersonalRankingsService.getPartyMatches(userId, Number(limit));
-
-  res.json(formatSuccess(
-    matches.map((match) => ({
-      party: match.party,
-      match: Math.round(match.match),
-      ideology: match.ideology,
-      confidence: match.total_weight,
-    }))
-  ));
-}));
-
-/**
- * GET /api/user/rankings/personal/friends/:userId - Get friend leaderboard + streak insights
- */
-router.get('/friends/:userId', asyncHandler(async (req: Request, res: Response) => {
-  const { userId } = req.params;
-  const insights = await PersonalRankingsService.getFriendInsights(userId);
-
-  res.json(formatSuccess(insights));
-}));
-
-export default router;

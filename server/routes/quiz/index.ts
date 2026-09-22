@@ -11,6 +11,7 @@
  * - quizAssistant.ts
  */
 
+import { requireAuth } from '../../auth';
 import express, { Request, Response } from "express";
 import { z } from "zod";
 import type OpenAI from "openai";
@@ -18,7 +19,6 @@ import { quizHistoryService } from "../../services/quizHistoryService";
 import { generatePoliticalProfileExplanation } from "../../services/openaiService";
 import { callChatCompletion } from "../../services/aiService";
 import { IdeologicalDimensions } from "@shared/quizTypes";
-import { isAuthenticated } from "../../replitAuth";
 
 const router = express.Router();
 
@@ -61,10 +61,10 @@ const assistantRequestSchema = z.object({
  * Save quiz results and make previous ones historical
  * POST /api/quiz-history/save
  */
-router.post("/save", async (req: Request, res: Response, next) => {
+router.post("/save", requireAuth, async (req: Request, res: Response, next) => {
   try {
     // Check if user is authenticated
-    if (!req.session.userId) {
+    if (!req.user!.id) {
       return res.status(401).json({
         success: false,
         message: "You must be logged in to save quiz results"
@@ -92,7 +92,7 @@ router.post("/save", async (req: Request, res: Response, next) => {
     
     // Save the quiz result
     const result = await quizHistoryService.saveQuizResult(
-      req.session.userId,
+      req.user!.id,
       validatedDimensions as IdeologicalDimensions,
       ideology,
       description
@@ -111,9 +111,9 @@ router.post("/save", async (req: Request, res: Response, next) => {
  * Get all quiz history for the authenticated user
  * GET /api/quiz-history/all
  */
-router.get("/all", isAuthenticated, async (req: Request, res: Response, next) => {
+router.get("/all", requireAuth, async (req: Request, res: Response, next) => {
   try {
-    const userId = req.user?.claims?.sub;
+    const userId = req.user?.id;
     if (!userId) {
       return res.status(401).json({
         success: false,
@@ -138,7 +138,7 @@ router.get("/all", isAuthenticated, async (req: Request, res: Response, next) =>
 router.get("/current", async (req: Request, res: Response, next) => {
   try {
     // Check if user is authenticated
-    if (!req.session.userId) {
+    if (!req.user!.id) {
       return res.status(401).json({
         success: false,
         message: "You must be logged in to view your current quiz result"
@@ -146,7 +146,7 @@ router.get("/current", async (req: Request, res: Response, next) => {
     }
     
     // Get the user's current quiz result
-    const result = await quizHistoryService.getCurrentQuizResult(req.session.userId);
+    const result = await quizHistoryService.getCurrentQuizResult(req.user!.id);
     
     if (!result) {
       return res.status(404).json({
@@ -171,7 +171,7 @@ router.get("/current", async (req: Request, res: Response, next) => {
 router.get("/changes", async (req: Request, res: Response, next) => {
   try {
     // Check if user is authenticated
-    if (!req.session.userId) {
+    if (!req.user!.id) {
       return res.status(401).json({
         success: false,
         message: "You must be logged in to view your quiz result changes"
@@ -179,7 +179,7 @@ router.get("/changes", async (req: Request, res: Response, next) => {
     }
     
     // Calculate the changes
-    const changes = await quizHistoryService.calculateChanges(req.session.userId);
+    const changes = await quizHistoryService.calculateChanges(req.user!.id);
     
     if (!changes) {
       return res.status(404).json({

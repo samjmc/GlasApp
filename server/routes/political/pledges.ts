@@ -8,6 +8,7 @@
  * - Individual pledge weighting
  */
 
+import { requireAuth, requireJob } from '../../auth';
 import { Router } from 'express';
 import { db } from '../../db';
 import { pledges, pledgeActions, partyPerformanceScores, parties } from '@shared/schema';
@@ -18,8 +19,6 @@ import {
   type PartyPerformanceMetrics
 } from '../../services/pledgeScoring';
 import { insertPledgeSchema } from '@shared/schema';
-import { isAuthenticated } from '../../replitAuth';
-import { requireAdminAccess } from '../../middleware/adminAccess';
 import { asyncHandler } from '../../middleware/errorHandler';
 import { formatSuccess, formatError, ErrorCodes } from '../../utils/responseFormatters';
 
@@ -32,7 +31,7 @@ const router = Router();
 /**
  * POST /api/pledges - Create a new pledge
  */
-router.post('/', requireAdminAccess, asyncHandler(async (req, res) => {
+router.post('/', requireJob, asyncHandler(async (req, res) => {
   const validatedData = insertPledgeSchema.parse(req.body);
 
   const [party] = await db
@@ -97,7 +96,7 @@ router.get('/:pledgeId', asyncHandler(async (req, res) => {
 /**
  * PUT /api/pledges/:pledgeId - Update pledge
  */
-router.put('/:pledgeId', requireAdminAccess, asyncHandler(async (req, res) => {
+router.put('/:pledgeId', requireJob, asyncHandler(async (req, res) => {
   const pledgeId = parseInt(req.params.pledgeId);
   const updateData = req.body;
 
@@ -123,7 +122,7 @@ router.put('/:pledgeId', requireAdminAccess, asyncHandler(async (req, res) => {
 /**
  * DELETE /api/pledges/:pledgeId - Delete pledge
  */
-router.delete('/:pledgeId', requireAdminAccess, asyncHandler(async (req, res) => {
+router.delete('/:pledgeId', requireJob, asyncHandler(async (req, res) => {
   const pledgeId = parseInt(req.params.pledgeId);
 
   await db
@@ -213,7 +212,7 @@ router.get('/party/:partyId', asyncHandler(async (req, res) => {
 /**
  * POST /api/pledges/:pledgeId/actions - Add a new pledge action
  */
-router.post('/:pledgeId/actions', requireAdminAccess, asyncHandler(async (req, res) => {
+router.post('/:pledgeId/actions', requireJob, asyncHandler(async (req, res) => {
   const pledgeId = parseInt(req.params.pledgeId);
   const { actionType, description, actionDate, impactScore, sourceUrl, evidenceDetails } = req.body;
 
@@ -238,7 +237,7 @@ router.post('/:pledgeId/actions', requireAdminAccess, asyncHandler(async (req, r
 /**
  * POST /api/pledges/:pledgeId/recalculate - Recalculate pledge score
  */
-router.post('/:pledgeId/recalculate', requireAdminAccess, asyncHandler(async (req, res) => {
+router.post('/:pledgeId/recalculate', requireJob, asyncHandler(async (req, res) => {
   const pledgeId = parseInt(req.params.pledgeId);
 
   const newScore = await calculatePledgeScore(pledgeId);
@@ -301,7 +300,7 @@ router.get('/performance/:partyId', asyncHandler(async (req, res) => {
 /**
  * POST /api/pledges/performance/:partyId/recalculate - Recalculate all performance scores for a party
  */
-router.post('/performance/:partyId/recalculate', requireAdminAccess, asyncHandler(async (req, res) => {
+router.post('/performance/:partyId/recalculate', requireJob, asyncHandler(async (req, res) => {
   const partyId = parseInt(req.params.partyId);
 
   const metrics = await calculatePartyPerformanceScores(partyId);
@@ -397,7 +396,7 @@ router.get('/user-category-votes', asyncHandler(async (req, res) => {
 /**
  * POST /api/pledges/category-votes - Submit category votes
  */
-router.post('/category-votes', isAuthenticated, asyncHandler(async (req, res) => {
+router.post('/category-votes', requireAuth, asyncHandler(async (req, res) => {
   const { votes } = req.body;
 
   const totalWeight = votes.reduce((sum: number, vote: any) => sum + parseFloat(vote.weight), 0);
