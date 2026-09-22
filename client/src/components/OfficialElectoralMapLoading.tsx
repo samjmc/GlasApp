@@ -1,5 +1,5 @@
 import React from 'react';
-import glasLogo from '@assets/Gemini_Generated_Image_v9oiqwv9oiqwv9oi.png';
+import glasLogo from '@assets/glas-logo.png';
 
 /**
  * A loading component that shows the Glas logo and a progress indicator

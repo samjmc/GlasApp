@@ -1,6 +1,11 @@
 import session from 'express-session';
 import { Request, Response, NextFunction } from 'express';
 
+// A predictable secret lets anyone mint a valid session cookie signature.
+if (process.env.NODE_ENV === 'production' && !process.env.SESSION_SECRET) {
+  throw new Error('SESSION_SECRET must be set in production');
+}
+
 // Session auth is legacy: the frontend only uses Supabase bearer tokens, so no real user
 // ever has req.session.userId. Memory store only — never create a `sessions` table in
 // the shared GlasCore database for a code path nothing uses. The auth rebuild removes this.

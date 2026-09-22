@@ -6,6 +6,7 @@
 import type { ReactNode } from 'react';
 import { useParams, Link } from 'wouter';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { apiClient } from '@/lib/queryClient';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -235,17 +236,8 @@ export default function TDProfilePageEnhanced() {
   });
 
   const updateAlertStatus = useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: string }) => {
-      const response = await fetch(`/api/debates/alerts/${encodeURIComponent(id)}/status`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status })
-      });
-      if (!response.ok) {
-        throw new Error('Failed to update alert status');
-      }
-      return response.json();
-    },
+    mutationFn: ({ id, status }: { id: string; status: string }) =>
+      apiClient.post(`/api/debates/alerts/${encodeURIComponent(id)}/status`, { status }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['td-debate-alerts', politicianName] });
       queryClient.invalidateQueries({ queryKey: ['debates', 'alerts'] });

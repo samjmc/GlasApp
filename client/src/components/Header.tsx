@@ -5,7 +5,7 @@ import { ManualPWAInstall } from "./ManualPWAInstall";
 import { Search, X } from "lucide-react";
 import { AuthButton } from "@/components/auth/AuthButton";
 import { GlobalSearch } from "./GlobalSearch";
-import glasLogo from '@assets/Gemini_Generated_Image_v9oiqwv9oiqwv9oi.png';
+import glasLogo from '@assets/glas-logo.png';
 import { RegionSwitcher } from "./RegionSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
 import { useDailySession } from "@/hooks/useDailySession";
