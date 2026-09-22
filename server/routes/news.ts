@@ -8,12 +8,15 @@ import { asyncHandler } from '../middleware/errorHandler';
 import { TODAY_FALLBACK_DAYS, hasMore, parseFeedQuery, startOfLocalDay } from '../news/feed';
 import * as repo from '../news/repository';
 import { formatSuccess } from '../utils/responseFormatters';
+import { getQuestionsForArticles } from '../voting';
 
 const router = Router();
 const TD_FEED_LIMIT = 20;
 
+type PolicyQuestion = Awaited<ReturnType<typeof getQuestionsForArticles>> extends Map<number, infer Q> ? Q : never;
+
 /** The shape every news card in the client renders (client/src/lib/news.ts). */
-export function feedArticle(row: repo.FeedRow) {
+export function feedArticle(row: repo.FeedRow, policyVote: PolicyQuestion | null) {
   return {
     id: row.id,
     title: row.title,
@@ -27,8 +30,13 @@ export function feedArticle(row: repo.FeedRow) {
     sentiment: row.sentiment,
     impactScore: row.impact,
     affectedTDs: row.affectedTds,
-    policyVote: null,
+    policyVote,
   };
+}
+
+async function withQuestions(rows: repo.FeedRow[]) {
+  const questions = await getQuestionsForArticles(rows.map((r) => r.id));
+  return rows.map((r) => feedArticle(r, questions.get(r.id) ?? null));
 }
 
 router.get(
@@ -40,7 +48,7 @@ router.get(
       return res.json(formatSuccess({ articles: [], total: 0, hasMore: false }));
     }
     const { rows, total } = await repo.feedPage(query, { since: startOfLocalDay(new Date()), fallbackDays: TODAY_FALLBACK_DAYS });
-    res.json(formatSuccess({ articles: rows.map(feedArticle), total, hasMore: hasMore(query, total) }));
+    res.json(formatSuccess({ articles: await withQuestions(rows), total, hasMore: hasMore(query, total) }));
   }),
 );
 
@@ -48,7 +56,7 @@ router.get(
   '/td/:name',
   asyncHandler(async (req, res) => {
     const rows = await repo.feedForTd(req.params.name, TD_FEED_LIMIT);
-    res.json(formatSuccess({ articles: rows.map(feedArticle) }));
+    res.json(formatSuccess({ articles: await withQuestions(rows) }));
   }),
 );
 

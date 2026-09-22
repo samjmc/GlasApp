@@ -93,11 +93,12 @@ ingested (no 30-minute lag).
 - `today`: today in Europe/Dublin, highest |impact| first, falling back to the last 30 days.
 - Offset pagination in SQL; `total` is the filtered count.
 - Affected TDs come from `politics.article_td_scores` ⨝ `politics.tds`.
-- `policyVote` comes from the GApp session's `getQuestionsForArticles(ids)` in
-  `server/voting/index.ts` (`politics.policy_questions`). `public.policy_vote_opportunities`
-  exists in no schema on the new DB, so the old join goes. If GApp's PR has not landed when this
-  one is ready, `policyVote` is `null` and the call is added once it lands.
-- Region: IE is live; any region with a `REGION_NEWS_MOCK` entry gets that mock, wrapped once.
+- `policyVote` comes from `getQuestionsForArticles(ids)` in `server/voting/index.ts`
+  (`politics.policy_questions`, PR #63). The old `public.policy_vote_opportunities` join is
+  gone.
+- Region: only IE news is ingested, so any other region gets an empty page.
+  `USHomePreviewPage` reads its own mock directly; the old route's US mock was double-wrapped
+  and never rendered anyway.
 
 **Response fields** are exactly what the three client callers render: id, title, summary, url,
 source, sourceLogoUrl, publishedAt, imageUrl, storyType, sentiment, impactScore,
@@ -156,8 +157,10 @@ card already falls back to a gradient.
 - `server/db.ts`: not edited. The news repository uses the query builder, not `db.query.*`.
 - `shared/schema/news.ts` imports `politics` from `./politics`. There is no second `pgSchema`.
 - `chatTools.ts`: repoint 2 queries to the new table.
-- `pipeline.ts`: 2 import lines (the adapter export and `content.ts`), no logic. The GApp
-  session is also editing this file, so the two edits are agreed with it first.
+- `pipeline.ts`, no logic changes, agreed with the GApp session:
+  - the adapter export name (3 lines);
+  - `content.ts` in place of `newsScraperService`;
+  - `article.summary` and `article.imageUrl` into `generateQuestionForArticle`.
 
 ## Tests
 
@@ -168,14 +171,31 @@ card already falls back to a gradient.
   keeps state.
 - Mutation-check the claim test: drop `SKIP LOCKED` and watch it go red.
 
-## Needs a real DB (none here)
+## Verified here (2026-09-22)
 
-1. `npm run db:migrate`, then `POST /api/admin/news/ingest` against live feeds.
-2. `npm run td-scoring`.
-3. Open `/` and check that page 2 differs from page 1. Open `/td/:name`.
-4. Fire `/api/admin/td-scoring/run` twice at once and check that each article gets exactly one
+- `repository.integration.test.ts` passes against Postgres 16 in Docker.
+- The concurrency test was mutation-checked: without `SKIP LOCKED` the second claim blocks
+  and the test fails.
+- One-off end-to-end run: live feeds into Docker Postgres, with the classifier stubbed.
+  - First ingest stored 144 articles (164 fetched, 18 too old or bad, 2 duplicates) with 0 feed
+    errors.
+  - Second ingest stored 0 and made 0 classifier calls.
+  - `GET /api/news-feed` pages 1 and 2 share no ids, and `total` is 144.
+- Ingest-time title dedup only catches near-copies. A real re-headline ("faces pressure" vs
+  "under pressure") scores 0.55, below 0.6, and is left to the scoring pipeline's event
+  clustering. This is unchanged from the old threshold.
+
+## Needs the real GlasCore DB (not reachable here)
+
+1. `npm run db:migrate` (applies `0002_news_ingestion`).
+2. With `OPENAI_API_KEY` set, run `POST /api/admin/news/ingest`. This is the real
+   classifier's first run: check that `notPolitical` is non-zero and that the stored rows are
+   political.
+3. `npm run td-scoring`.
+4. Open `/` and check that page 2 differs from page 1. Open `/td/:name` and check that
+   policy-vote buttons appear on scored ideological articles.
+5. Fire `/api/admin/td-scoring/run` twice at once and check that each article gets exactly one
    `article_td_scores` row per TD.
-5. The integration test above runs only with `TEST_DATABASE_URL`.
 
 ## Vet deltas (what changed from the first draft)
 

@@ -24,7 +24,6 @@ export function initScheduler() {
       console.error("❌ [Scheduler] News ingest failed:", error instanceof Error ? error.message : error);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 

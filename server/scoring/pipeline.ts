@@ -283,8 +283,8 @@ async function scoreTd(article: Article, { td, score }: repo.TdWithScore, import
         source: article.source ?? 'Unknown',
         publishedAt: article.publishedDate,
         url: article.url,
-        imageUrl: null,
-        summary: null,
+        imageUrl: article.imageUrl,
+        summary: article.summary,
       });
     } catch (error) {
       console.warn(`Policy question for article ${article.id} failed:`, error instanceof Error ? error.message : error);
