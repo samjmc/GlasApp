@@ -1,6 +1,6 @@
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
-import glasLogo from '@assets/Gemini_Generated_Image_v9oiqwv9oiqwv9oi.png';
+import glasLogo from '@assets/glas-logo.png';
 
 interface LoadingScreenProps {
   message?: string;
