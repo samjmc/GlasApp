@@ -116,11 +116,11 @@ cd glas-politics
 npm install
 
 # Set up environment variables
-cp .env.template .env
-# Edit .env with your credentials (see ENV_SETUP_QUICKSTART.md)
+cp .env.example .env
+# Edit .env with the GlasCore connection string and keys
 
-# Push database schema to Supabase
-npm run db:push:supabase
+# Apply the database migrations (creates the `politics` schema)
+npm run db:migrate
 
 # Start development server
 npm run dev
@@ -132,35 +132,21 @@ Visit http://localhost:5000 to see the app!
 
 ## 🔐 Environment Setup
 
-### Quick Setup (5 minutes)
+The database is the **GlasCore** Supabase project, shared with GlasIntelligence. GlasApp's
+tables live in their own Postgres schema, `politics`, defined in `shared/schema/politics.ts`
+and applied with Drizzle migrations from `drizzle/`. Server code talks to Postgres directly
+through Drizzle (`server/db.ts`); Supabase is used for Auth.
 
-See **[ENV_SETUP_QUICKSTART.md](ENV_SETUP_QUICKSTART.md)** for the fastest setup guide.
-
-### Detailed Setup
-
-See **[SUPABASE_SETUP.md](SUPABASE_SETUP.md)** for complete step-by-step instructions.
-
-### Required Environment Variables
+Every variable, with comments, is in [`.env.example`](.env.example). The essentials:
 
 ```env
-# Supabase
-DATABASE_URL=postgresql://...
-SUPABASE_URL=https://...
-SUPABASE_ANON_KEY=eyJ...
-SUPABASE_SERVICE_ROLE_KEY=eyJ...
-
-# Session
-SESSION_SECRET=your-random-secret
-
-# AI (optional)
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...
-
-# Email (optional)
-SENDGRID_API_KEY=SG....
+DATABASE_URL=postgresql://...        # GlasCore Postgres
+SUPABASE_URL=https://...             # Auth
+SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+SESSION_SECRET=                      # required in production
+OPENAI_API_KEY=                      # TD scoring panel
 ```
-
-Full list in `.env.template`
 
 ---
 
@@ -168,10 +154,9 @@ Full list in `.env.template`
 
 | Document | Description |
 |----------|-------------|
-| [ENV_SETUP_QUICKSTART.md](ENV_SETUP_QUICKSTART.md) | 5-minute setup guide |
-| [SUPABASE_SETUP.md](SUPABASE_SETUP.md) | Complete Supabase migration guide |
-| [REFACTORING_PLAN.md](REFACTORING_PLAN.md) | Detailed refactoring roadmap |
-| [MIGRATION_SUMMARY.md](MIGRATION_SUMMARY.md) | Migration overview & next steps |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | System architecture |
+| [docs/scoring.md](docs/scoring.md) | How TDs are scored: model, pipeline, tables, API |
+| [docs/security/](docs/security/) | Security audits |
 
 ---
 

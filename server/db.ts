@@ -1,157 +1,68 @@
+/**
+ * Database access.
+ *
+ * `db` (Drizzle over node-postgres) is THE data layer for everything the rebuild has
+ * reached; it talks to the GlasCore Postgres directly and is not subject to RLS.
+ *
+ * `supabaseDb` (service-role PostgREST client) remains only for modules the rebuild has
+ * not reached yet. New code must not use it. It goes when the last caller does.
+ */
 import { drizzle } from 'drizzle-orm/node-postgres';
 import pkg from 'pg';
-const { Pool } = pkg;
-import type { Pool as PoolType } from 'pg';
 import { createClient } from '@supabase/supabase-js';
-import * as schema from "@shared/schema";
+import * as politics from '@shared/schema/politics';
 
-console.log('🔌 Initializing database connection...');
+const { Pool } = pkg;
 
-if (!process.env.DATABASE_URL) {
-  console.warn(
-    "⚠️  DATABASE_URL not set - database features will be disabled",
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) {
+  throw new Error(
+    'DATABASE_URL is not set. Point it at the GlasCore Postgres (Supabase → Project Settings → Database → connection string).',
   );
 }
 
-// PostgreSQL connection pool for Supabase (Drizzle ORM)
-// DISABLED: SCRAM authentication issues with Node.js driver on Windows
-// Use Supabase REST client (supabaseDb) instead via MCP
-// Connection string format: postgresql://postgres:[PASSWORD]@aws-0-[region].pooler.supabase.com:5432/postgres
-/** Disabled Postgres connection pool (SCRAM auth issues). */
-export const pool: PoolType | null = null as PoolType | null; // Disabled due to SCRAM auth issues
-/*
-process.env.DATABASE_URL ? new Pool({ 
-  connectionString: process.env.DATABASE_URL,
-  max: 10, // Connection pool size
-  idleTimeoutMillis: 30000, // 30 seconds
-  connectionTimeoutMillis: 10000, // 10 seconds
-  // Supabase requires SSL in all environments
-  ssl: { rejectUnauthorized: false },
-}) : null;
-*/
+const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
 
-/** Drizzle ORM instance over the pool, or null when the pool is disabled. */
-export const db = pool ? drizzle(pool, { schema }) : null;
+export const pool = new Pool({
+  connectionString,
+  max: 10,
+  idleTimeoutMillis: 30_000,
+  connectionTimeoutMillis: 10_000,
+  // Supabase requires TLS; the pooler presents a certificate node-postgres will not chain.
+  ssl: isLocal ? undefined : { rejectUnauthorized: false },
+});
+
+export const db = drizzle(pool, { schema: politics });
+export type Db = typeof db;
 
 /**
- * Supabase REST Client with SERVICE_ROLE_KEY
- *
- * WARNING: This client BYPASSES Row-Level Security (RLS)
- *
- * RLS is the permission system that controls:
- * - Which rows a user can read/write
- * - Typically enforces: user_id = auth.uid()
- *
- * By using SERVICE_ROLE_KEY, this client ignores RLS policies.
- * It has full access to all data in all tables.
- *
- * SAFE USES (service-role client):
- * 1. Admin operations (batch deletes, data fixes)
- * 2. System jobs (news scraping, background tasks)
- * 3. Analytics (cross-user aggregations)
- *
- * UNSAFE USES (would expose data):
- * - User requests with service-role client
- * - Public API endpoints using service-role
- * - Anything user-input-influenced
- *
- * CORRECT USER REQUEST FLOW:
- * 1. Client attaches bearer token from localStorage
- * 2. Server receives Authorization header
- * 3. Server calls getUserFromRequest() → extracts user from token
- * 4. Server uses user.id with Supabase client (normal role, respects RLS)
- * 5. Supabase RLS policies enforce row-level permissions
- *
- * DO NOT use supabaseDb for user requests.
- * DO use supabaseDb for admin/system operations only.
+ * Legacy service-role client. Bypasses RLS. Only for not-yet-rebuilt modules.
+ * @deprecated use `db`
  */
-/** Supabase service-role REST client that bypasses RLS; null if env vars are missing. */
-export const supabaseDb = process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
-  ? createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY,
-      {
-        auth: {
-          autoRefreshToken: false,
-          persistSession: false
-        },
-        db: {
-          schema: 'public'
-        },
-        global: {
-          headers: {
-            'apikey': process.env.SUPABASE_SERVICE_ROLE_KEY
-          }
-        }
-      }
-    )
-  : null;
+export const supabaseDb =
+  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
+    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
+        auth: { autoRefreshToken: false, persistSession: false },
+        db: { schema: 'public' },
+      })
+    : null;
 
-if (supabaseDb) {
-  console.log('✅ Supabase REST client initialized with SERVICE ROLE KEY');
-  console.log('   Using service role for RLS bypass');
-} else {
-  console.error('❌ Supabase REST client NOT initialized!');
-  console.error('   Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
-  console.error('   SUPABASE_URL:', process.env.SUPABASE_URL ? 'SET' : 'MISSING');
-  console.error('   SUPABASE_SERVICE_ROLE_KEY:', process.env.SUPABASE_SERVICE_ROLE_KEY ? 'SET' : 'MISSING');
+let shuttingDown = false;
+
+/** Close the pool once; safe to call from more than one signal handler. */
+export async function shutdown(): Promise<void> {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  await pool.end();
 }
 
-// Graceful shutdown handling (only for long-running processes like the main server)
-// Jobs and scripts should handle their own cleanup explicitly
-let isShuttingDown = false;
-
-/** Gracefully shut down DB connections and resources. */
-export const shutdown = async () => {
-  if (isShuttingDown) return;
-  isShuttingDown = true;
-  
-  console.log('Closing database pool...');
-  if (pool) {
-    try {
-      // End the pool and wait for all connections to close
-      await pool.end();
-      console.log('✅ Database pool closed successfully');
-      
-      // Small delay to ensure cleanup completes on Windows
-      await new Promise(resolve => setTimeout(resolve, 100));
-    } catch (error) {
-      console.error('Error closing database pool:', error);
-    }
-  }
-};
-
-// Only register shutdown handlers if this is the main server process
-// (Not for one-off jobs/scripts)
-const isMainServer = process.argv[1]?.includes('server/index');
-if (isMainServer) {
-  process.on('SIGINT', shutdown);
-  process.on('SIGTERM', shutdown);
-}
-
-// Health check function
+/** True when a trivial query round-trips. Used by the startup health log. */
 export async function checkDatabaseConnection(): Promise<boolean> {
-  if (!pool) {
-    console.warn('⚠️  PostgreSQL pool disabled (using Supabase REST client instead)');
-    // Check if Supabase REST client is available
-    if (supabaseDb) {
-      console.log('✅ Supabase REST client is available and working');
-      return true;
-    }
-    return false;
-  }
-
   try {
-    const result = await pool.query('SELECT NOW() as now, current_database() as db, version() as version');
-    const { now, db: dbName, version } = result.rows[0];
-    console.log('✅ Database connection healthy');
-    console.log(`   📅 Server time: ${now}`);
-    console.log(`   🗄️  Database: ${dbName}`);
-    console.log(`   📌 Version: ${version.split(' ').slice(0, 2).join(' ')}`);
+    await pool.query('select 1');
     return true;
-  } catch (error: unknown) {
-    console.error('❌ Database connection failed:', error instanceof Error ? error.message : error);
-    if (error && typeof error === 'object' && 'code' in error) console.error(`   Error code: ${(error as { code: string }).code}`);
+  } catch (error) {
+    console.error('Database connection failed:', error instanceof Error ? error.message : error);
     return false;
   }
 }

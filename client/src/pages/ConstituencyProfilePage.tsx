@@ -14,37 +14,45 @@ import {
   Crown,
   Award,
   ChevronRight,
-  Calendar,
   Building2
 } from 'lucide-react';
 
 type PartyBreakdownEntry = {
   party: string;
   count: number;
-  avgScore: number;
+  percentage: number;
 };
 
 type ConstituencyTD = {
   id: number;
   name: string;
-  party: string;
-  score: number;
-  offices?: string[];
-  gender?: string;
-  committees?: string[];
-  yearsInDail?: number;
+  party: string | null;
+  gender: string | null;
+  overallScore: number | null;
+  offices: { title: string; since?: string }[];
+  committees: string[];
+};
+
+type ConstituencyDetail = {
+  name: string;
+  tdCount: number;
+  averageScore: number | null;
+  parties: PartyBreakdownEntry[];
+  genderBreakdown: { male: number; female: number; unknown: number; femalePercentage: number };
+  tds: ConstituencyTD[];
 };
 
 export default function ConstituencyProfilePage() {
   const { name } = useParams<{ name: string }>();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<ConstituencyDetail | null>({
     queryKey: ['constituency-profile', name],
     queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/constituency/${encodeURIComponent(name || '')}`);
+      const res = await fetch(`/api/scores/constituency/${encodeURIComponent(name || '')}`);
+      if (res.status === 404) return null;
       if (!res.ok) throw new Error('Failed to fetch constituency data');
-      const data = await res.json();
-      return data.constituency;
+      const json = await res.json();
+      return json.data as ConstituencyDetail;
     },
     enabled: !!name
   });
@@ -74,6 +82,8 @@ export default function ConstituencyProfilePage() {
     );
   }
 
+  const leadingParty = data.parties[0];
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Header */}
@@ -101,7 +111,7 @@ export default function ConstituencyProfilePage() {
         <Card className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
           <div className="text-center">
             <Award className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-            <div className="text-3xl font-bold text-purple-900">{data.averageScore}</div>
+            <div className="text-3xl font-bold text-purple-900">{data.averageScore ?? 'N/A'}</div>
             <div className="text-sm text-purple-700">Avg Score</div>
           </div>
         </Card>
@@ -109,16 +119,16 @@ export default function ConstituencyProfilePage() {
         <Card className="p-4 bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-200">
           <div className="text-center">
             <Crown className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
-            <div className="text-3xl font-bold text-yellow-900">{data.ministers || 0}</div>
-            <div className="text-sm text-yellow-700">Ministers</div>
+            <div className="text-xl font-bold text-yellow-900 truncate">{leadingParty?.party ?? 'N/A'}</div>
+            <div className="text-sm text-yellow-700">Leading Party</div>
           </div>
         </Card>
 
         <Card className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
           <div className="text-center">
             <Building2 className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <div className="text-3xl font-bold text-green-900">{data.committeesActive}</div>
-            <div className="text-sm text-green-700">Committees</div>
+            <div className="text-3xl font-bold text-green-900">{data.parties.length}</div>
+            <div className="text-sm text-green-700">Parties</div>
           </div>
         </Card>
       </div>
@@ -143,7 +153,7 @@ export default function ConstituencyProfilePage() {
             />
             <div
               className="absolute top-0 h-full bg-pink-500"
-              style={{ 
+              style={{
                 width: `${data.genderBreakdown?.femalePercentage || 0}%`,
                 left: `${100 - (data.genderBreakdown?.femalePercentage || 0)}%`
               }}
@@ -164,7 +174,7 @@ export default function ConstituencyProfilePage() {
         </h2>
 
         <div className="space-y-3">
-          {(data.partyBreakdown || []).map((party: PartyBreakdownEntry) => (
+          {data.parties.map((party) => (
             <div key={party.party} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <div className="flex items-center gap-3">
                 <div className="font-semibold text-gray-900 dark:text-white">
@@ -175,8 +185,8 @@ export default function ConstituencyProfilePage() {
                 </Badge>
               </div>
               <div className="text-right">
-                <div className="font-bold text-blue-600">{party.avgScore}</div>
-                <div className="text-xs text-gray-500">Avg Score</div>
+                <div className="font-bold text-blue-600">{party.percentage}%</div>
+                <div className="text-xs text-gray-500">of seats</div>
               </div>
             </div>
           ))}
@@ -187,22 +197,22 @@ export default function ConstituencyProfilePage() {
       <Card className="p-6 mb-8">
         <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
           <Users className="w-6 h-6" />
-          Your TDs ({data.tds?.length || 0})
+          Your TDs ({data.tds.length})
         </h2>
 
         <div className="space-y-3">
-          {(data.tds || []).map((td: ConstituencyTD) => (
-            <Link key={td.id} href={`/td/${td.name}`}>
+          {data.tds.map((td) => (
+            <Link key={td.id} href={`/td/${encodeURIComponent(td.name)}`}>
               <div className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border border-gray-200 dark:border-gray-700 hover:border-blue-300 group">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-1">
                     <div className="font-semibold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
                       {td.name}
                     </div>
-                    {td.offices && td.offices.length > 0 && (
+                    {td.offices.length > 0 && (
                       <Badge variant="secondary" className="gap-1">
                         <Crown className="w-3 h-3" />
-                        {td.offices[0]}
+                        {td.offices[0].title}
                       </Badge>
                     )}
                     {td.gender && (
@@ -211,17 +221,11 @@ export default function ConstituencyProfilePage() {
                   </div>
 
                   <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-                    <Badge variant="outline">{td.party}</Badge>
-                    {td.committees && td.committees.length > 0 && (
+                    <Badge variant="outline">{td.party || 'Independent'}</Badge>
+                    {td.committees.length > 0 && (
                       <>
                         <span>•</span>
                         <span>{td.committees.length} {td.committees.length === 1 ? 'committee' : 'committees'}</span>
-                      </>
-                    )}
-                    {td.yearsInDail && (
-                      <>
-                        <span>•</span>
-                        <span>{td.yearsInDail}y experience</span>
                       </>
                     )}
                   </div>
@@ -229,7 +233,7 @@ export default function ConstituencyProfilePage() {
 
                 <div className="flex items-center gap-3">
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-blue-600">{td.score}</div>
+                    <div className="text-2xl font-bold text-blue-600">{td.overallScore ?? 'N/A'}</div>
                     <div className="text-xs text-gray-500">Score</div>
                   </div>
                   <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
@@ -242,4 +246,3 @@ export default function ConstituencyProfilePage() {
     </div>
   );
 }
-

@@ -5,20 +5,13 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import {
-  User,
-  MapPin,
   Users as UsersIcon,
-  Calendar,
-  ExternalLink,
-  Crown,
-  Briefcase,
-  ChevronRight,
-  Sparkles
+  Award,
+  Briefcase
 } from 'lucide-react';
 
 interface TDQuickInfoModalProps {
@@ -27,15 +20,29 @@ interface TDQuickInfoModalProps {
   onClose: () => void;
 }
 
+interface TDSummary {
+  id: number;
+  name: string;
+  party: string | null;
+  constituency: string | null;
+  overallScore: number | null;
+  label: string | null;
+  nationalRank: number | null;
+  officeCount: number;
+  committeeCount: number;
+  topOffice: string | null;
+  topCommittee: string | null;
+}
+
 /** Modal with quick summary info for a TD. */
 export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProps) {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<TDSummary>({
     queryKey: ['td-quick-info', tdId],
     queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/td/${tdId}/summary`);
+      const res = await fetch(`/api/scores/td/${tdId}/summary`);
       if (!res.ok) throw new Error('Failed to fetch TD info');
-      const data = await res.json();
-      return data.summary;
+      const json = await res.json();
+      return json.data as TDSummary;
     },
     enabled: isOpen && !!tdId
   });
@@ -55,36 +62,39 @@ export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProp
                <DialogClose className="absolute right-4 top-4 rounded-full p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                 <span className="sr-only">Close</span>
               </DialogClose>
-              
+
               <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-white dark:bg-gray-800 shadow-sm ring-1 ring-emerald-100 dark:ring-emerald-900">
                  <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
-                    {data.score || 'N/A'}
+                    {data.overallScore ?? 'N/A'}
                  </div>
               </div>
-              
+
               <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                 {data.name}
               </DialogTitle>
-              
+
               <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                <span className="font-medium text-emerald-700 dark:text-emerald-300">{data.party}</span>
+                <span className="font-medium text-emerald-700 dark:text-emerald-300">{data.party || 'Independent'}</span>
                 <span>•</span>
                 <span>{data.constituency}</span>
               </div>
+              {data.label && (
+                <div className="mt-2 text-xs uppercase tracking-wide text-emerald-700 dark:text-emerald-300">{data.label}</div>
+              )}
             </div>
 
             {/* Content Scroll Area */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
-              
+
               {/* Key Stats Grid */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
                   <div className="flex items-center gap-2 mb-1 text-xs text-gray-500 uppercase tracking-wider font-semibold">
-                    <Calendar className="w-3.5 h-3.5" />
-                    Experience
+                    <Award className="w-3.5 h-3.5" />
+                    National Rank
                   </div>
                   <div className="font-semibold text-gray-900 dark:text-gray-100">
-                    {data.yearsInDail ? `${data.yearsInDail} years` : 'N/A'}
+                    {data.nationalRank ? `#${data.nationalRank}` : 'N/A'}
                   </div>
                 </div>
 
@@ -112,7 +122,7 @@ export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProp
                     </div>
                   </div>
                 )}
-                
+
                 {data.topCommittee && (
                   <div className="flex items-start gap-3">
                      <div className="mt-1 p-1.5 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
@@ -126,26 +136,11 @@ export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProp
                 )}
               </div>
 
-              {data.wikipediaTitle && (
-                 <a
-                  href={`https://en.wikipedia.org/wiki/${encodeURIComponent(data.wikipediaTitle)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                >
-                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 flex items-center gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    Wikipedia Profile
-                  </span>
-                  <ChevronRight className="w-4 h-4 text-gray-400" />
-                </a>
-              )}
-
             </div>
 
             {/* Footer Actions */}
             <div className="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
-              <Link href={`/td/${data.name}`}>
+              <Link href={`/td/${encodeURIComponent(data.name)}`}>
                 <Button className="w-full h-11 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-sm hover:shadow transition-all">
                   View Full Profile
                 </Button>

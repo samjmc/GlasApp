@@ -49,13 +49,12 @@ interface PartyPollingData {
 }
 
 interface PollingWidgetProps {
-  partyId: number;
   partyName: string;
   performanceScore?: number;
 }
 
 /** Widget showing a party's polling data and historical trends. */
-export function PartyPollingWidget({ partyId, partyName, performanceScore }: PollingWidgetProps) {
+export function PartyPollingWidget({ partyName, performanceScore }: PollingWidgetProps) {
   const [pollingData, setPollingData] = useState<PartyPollingData | null>(null);
   const [historicalData, setHistoricalData] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);

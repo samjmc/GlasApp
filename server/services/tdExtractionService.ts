@@ -3,7 +3,7 @@
  * Identifies mentions of Irish TDs in news articles
  */
 
-import { supabaseDb as supabase } from '../db.js';
+import { listActive } from '../scoring/repository';
 
 // Cache of current TDs loaded from database
 let CURRENT_TDS: Array<{ name: string; constituency: string; party: string }> = [];
@@ -29,16 +29,11 @@ async function ensureTDsLoaded(): Promise<void> {
   }
   
   try {
-    const { data: tds, error } = await supabase
-      .from('td_scores')
-      .select('politician_name, constituency, party')
-      .eq('is_active', true);
-    
-    if (error) throw error;
-    
-    if (tds && tds.length > 0) {
-      CURRENT_TDS = tds.map(td => ({
-        name: td.politician_name,
+    const tds = await listActive();
+
+    if (tds.length > 0) {
+      CURRENT_TDS = tds.map(({ td }) => ({
+        name: td.name,
         constituency: td.constituency || '',
         party: td.party || ''
       }));

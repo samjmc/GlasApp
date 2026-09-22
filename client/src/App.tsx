@@ -33,11 +33,9 @@ import OfficialElectoralMapPage from "./pages/OfficialElectoralMapPage";
 import UserHeatmapPage from "@/pages/UserHeatmapPage";
 import ConstituencyComparisonPage from "@/pages/ConstituencyComparisonPage";
 import PolicySimulatorPage from "@/pages/PolicySimulatorPage";
-import PersonalizedInsightsPage from "@/pages/PersonalizedInsightsPage";
 import ConstituencyStatsPage from "@/pages/ConstituencyStatsPage";
 import AontuEfficiencyPage from "@/pages/AontuEfficiencyPage";
 import LocalRepresentativesPage from "@/pages/LocalRepresentativesPage";
-import TDScoresPage from "@/pages/TDScoresPage";
 import DebatesPage from "@/pages/DebatesPage";
 import MediaWorkspacePage from "@/pages/MediaWorkspacePage";
 import TDProfilePage from "@/pages/TDProfilePage";
@@ -45,7 +43,6 @@ import PartyProfilePage from "@/pages/PartyProfilePage";
 import ConstituenciesPage from "@/pages/ConstituenciesPage";
 import ConstituencyProfilePage from "@/pages/ConstituencyProfilePage";
 import ResearchedTDsPage from "@/pages/ResearchedTDsPage";
-import TDLeaderboardPage from "@/pages/TDLeaderboardPage";
 import PollingSystemInfo from "@/pages/PollingSystemInfo";
 import PollingDashboard from "@/pages/PollingDashboard";
 import AdminPollingEntry from "@/pages/AdminPollingEntry";
@@ -234,12 +231,11 @@ function Router() {
           <Route path="/user-heatmap" component={UserHeatmapPage} />
           <Route path="/constituency-comparison" component={ConstituencyComparisonPage} />
           <Route path="/policy-simulator" component={PolicySimulatorPage} />
-          <Route path="/personalized-insights" component={PersonalizedInsightsPage} />
           <Route path="/constituency-stats" component={ConstituencyStatsPage} />
           <Route path="/aontu-efficiency" component={AontuEfficiencyPage} />
           <Route path="/local-representatives" component={LocalRepresentativesPage} />
           <Route path="/my-tds" component={LocalRepresentativesPage} />
-          <Route path="/td-scores" component={TDScoresPage} />
+          <Route path="/td-scores" component={ResearchedTDsPage} />
           <Route path="/td-leaderboard">
             {() => {
               window.location.href = "/?tab=tds";

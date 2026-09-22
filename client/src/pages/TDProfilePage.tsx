@@ -43,14 +43,60 @@ import {
 
 type PillarColor = 'emerald' | 'blue' | 'cyan' | 'indigo' | 'purple' | 'orange' | 'green';
 
-interface TDScoreComponent {
-  label?: string;
-  score?: number | null;
-  weight?: number;
-  available?: boolean;
-  description?: string;
-  breakdown?: Array<{ label: string; score: number; weight_percent?: number; detail?: string }>;
+type ScoreDimension = 'transparency' | 'effectiveness' | 'integrity' | 'consistency';
+
+/** `GET /api/scores/td/:name` payload (the `data` field). */
+interface TDProfile {
+  id: number;
+  name: string;
+  party: string | null;
+  constituency: string | null;
+  imageUrl: string | null;
+  gender: string | null;
+  overallScore: number | null;
+  label: string | null;
+  overallElo: number;
+  newsScore: number | null;
+  parliamentaryScore: number | null;
+  debateScore: number | null;
+  nationalRank: number | null;
+  partyRank: number | null;
+  constituencyRank: number | null;
+  eloChange7d: number;
+  eloChange30d: number;
+  totalStories: number;
+  lastScoredAt: string | null;
+  memberCode: string | null;
+  bio: string | null;
+  offices: { title: string; since?: string }[];
+  committees: string[];
+  questions: { oral: number | null; written: number | null };
+  attendancePct: number | null;
+  dimensions: Record<ScoreDimension, { elo: number; score: number }>;
+  baseline: {
+    summary: string | null;
+    category: string | null;
+    confidence: number | string | null;
+    keyFindings: string[];
+    researchDate: string | null;
+  } | null;
+  recentArticles: {
+    articleId: number;
+    impact: number;
+    storyType: string | null;
+    sentiment: string | null;
+    reasoning: string | null;
+    needsReview: boolean;
+    at: string;
+  }[];
 }
+
+const DIMENSION_LABELS: Record<ScoreDimension, string> = {
+  transparency: 'Transparency',
+  effectiveness: 'Effectiveness',
+  integrity: 'Integrity',
+  consistency: 'Consistency',
+};
 
 interface DebateAlert {
   id: string;
@@ -104,50 +150,21 @@ interface DebateHistoryEntry {
   sentimentScore: number;
 }
 
-const IDEOLOGY_DIMENSION_LABELS: Record<string, string> = {
-  economic: 'Economic Left - Right',
-  social: 'Social Progressive - Conservative',
-  cultural: 'Cultural Multicultural - Traditional',
-  authority: 'Authority Libertarian - Authoritarian',
-  environmental: 'Environmental Industrial - Ecological',
-  welfare: 'Welfare Individual - Communitarian',
-  globalism: 'Globalism Nationalist - Internationalist',
-  technocratic: 'Governance Populist - Technocratic',
-};
-
-const IDEOLOGY_SHORT_LABELS: Record<string, string> = {
-  economic: 'Economic',
-  social: 'Social',
-  cultural: 'Cultural',
-  authority: 'Authority',
-  environmental: 'Environment',
-  welfare: 'Welfare',
-  globalism: 'Globalism',
-  technocratic: 'Technocratic',
-};
-
-function formatConfidence(weight?: number): string {
-  if (!weight || weight <= 0) return 'No signals yet';
-  if (weight >= 40) return 'High confidence';
-  if (weight >= 15) return 'Moderate confidence';
-  return 'Low confidence';
-}
-
 export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
   const queryClient = useQueryClient();
-  
-  const { data: scoreData, isLoading, error } = useQuery({
-    queryKey: ['td-profile-v2', name],  // v2 to bust cache after adding image_url
+
+  const { data: scoreData, isLoading, error } = useQuery<TDProfile>({
+    queryKey: ['td-profile-v3', name],  // v3: payload shape changed with /api/scores
     queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/scores/td/${encodeURIComponent(name || '')}`);
+      const res = await fetch(`/api/scores/td/${encodeURIComponent(name || '')}`);
       if (!res.ok) {
         if (res.status === 404) throw new Error('TD_NOT_FOUND');
         if (res.status >= 500) throw new Error('Server error - please try again later');
         throw new Error('Failed to load TD profile');
       }
-      const data = await res.json();
-      return data.td ? { score: data.td } : data;
+      const json = await res.json();
+      return json.data as TDProfile;
     },
     enabled: !!name,
     retry: (failureCount, error) => {
@@ -159,7 +176,7 @@ export default function TDProfilePageEnhanced() {
     staleTime: 300000  // 5 minutes
   });
   
-  const politicianName = scoreData?.score?.politician_name;
+  const politicianName = scoreData?.name;
 
   const {
     data: debateActivity,
@@ -250,16 +267,16 @@ export default function TDProfilePageEnhanced() {
   
   // Fetch real polling data for the TD's party
   const { data: partyPolling } = useQuery({
-    queryKey: ['party-polling', scoreData?.score?.party],
+    queryKey: ['party-polling', scoreData?.party],
     queryFn: async () => {
-      if (!scoreData?.score?.party) return null;
-      
+      if (!scoreData?.party) return null;
+
       const { supabase } = await import('../lib/supabaseClient');
       const { data, error } = await supabase
         .from('polling_aggregates_cache')
         .select('*')
         .eq('entity_type', 'party')
-        .eq('entity_name', scoreData.score.party)
+        .eq('entity_name', scoreData.party)
         .maybeSingle();
       
       if (error) {
@@ -269,7 +286,7 @@ export default function TDProfilePageEnhanced() {
       
       return data;
     },
-    enabled: !!scoreData?.score?.party
+    enabled: !!scoreData?.party
   });
   
   // Fetch voting analysis data
@@ -303,8 +320,8 @@ export default function TDProfilePageEnhanced() {
     enabled: !!politicianName
   });
   
-  const score = scoreData?.score;
-  
+  const score = scoreData;
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -362,60 +379,36 @@ export default function TDProfilePageEnhanced() {
     return { label: 'Below Average', color: 'text-orange-600', bgColor: 'bg-orange-50', borderColor: 'border-orange-300' };
   };
   
-  const overallScore = typeof score.overall_score === 'number' ? score.overall_score : null;
+  const overallScore = score.overallScore;
   const rating = overallScore !== null ? getScoreRating(overallScore) : null;
 
-  const componentWeights = score.components || {};
-  const buildPillar = (
-    componentKey: keyof typeof componentWeights,
-    defaults: {
-      label: string;
-      color: keyof typeof colorClasses;
-      fallbackWeight: string;
-      description: string;
-    }
-  ) => {
-    const component = componentWeights[componentKey] as unknown;
-    const weightPercent = component?.weight != null ? Math.round(component.weight * 100) : null;
-    const rawScore = component?.score != null ? Number(component.score) : null;
-    const available = component?.available === false ? false : Number.isFinite(rawScore);
-    return {
-      label: component?.label || defaults.label,
-      color: defaults.color,
-      score: available ? Number(rawScore) : null,
-      weightLabel: weightPercent !== null ? `${weightPercent}%` : defaults.fallbackWeight,
-      description: component?.description || defaults.description,
-      breakdown: available && Array.isArray(component?.breakdown) ? component.breakdown : [],
-      available
-    };
-  };
-
-  const pillars = [
-    buildPillar('impact', {
-      label: 'Impact',
+  const pillars: { label: string; color: PillarColor; score: number | null; description: string }[] = [
+    {
+      label: 'News Impact',
       color: 'emerald',
-      fallbackWeight: '50%',
-      description: `Last 90 days • ${score.total_stories || 0} articles`
-    }),
-    buildPillar('effectiveness', {
-      label: 'Effectiveness',
+      score: score.newsScore,
+      description: `${score.totalStories} articles analysed`
+    },
+    {
+      label: 'Parliamentary Activity',
       color: 'blue',
-      fallbackWeight: '25%',
-      description: 'Parliamentary workload and debate effectiveness.'
-    }),
-    buildPillar('constituency_service', {
-      label: 'Constituency Service',
-      color: 'orange',
-      fallbackWeight: '15%',
-      description: 'Local engagement, clinics, and casework impact.'
-    }),
-    buildPillar('engagement_transparency', {
-      label: 'Engagement & Transparency',
+      score: score.parliamentaryScore,
+      description: 'Questions, attendance and committee work.'
+    },
+    {
+      label: 'Debate Performance',
       color: 'purple',
-      fallbackWeight: '10%',
-      description: 'Attendance, disclosure quality, and responsiveness.'
-    })
+      score: score.debateScore,
+      description: 'Oireachtas debate contributions.'
+    }
   ];
+
+  const dimensionBars = (Object.keys(DIMENSION_LABELS) as ScoreDimension[]).map((key) => ({
+    key,
+    label: DIMENSION_LABELS[key],
+    score: score.dimensions?.[key]?.score ?? null,
+    elo: score.dimensions?.[key]?.elo ?? null,
+  }));
   
   // Real polling data
   const pollingData = {
@@ -455,21 +448,21 @@ export default function TDProfilePageEnhanced() {
           <div className="flex-1">
             <div className="flex items-start gap-4 mb-4">
               {/* Profile Photo */}
-              {score.image_url ? (
-                <img 
-                  src={score.image_url} 
-                  alt={score.politician_name || score.name}
+              {score.imageUrl ? (
+                <img
+                  src={score.imageUrl}
+                  alt={score.name}
                   className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0"
                 />
               ) : (
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white text-3xl md:text-4xl font-bold border-4 border-white shadow-lg flex-shrink-0">
-                  {(score.politician_name || score.name || '?').charAt(0)}
+                  {(score.name || '?').charAt(0)}
                 </div>
               )}
-              
+
               <div className="flex-1 min-w-0">
                 <h1 className="text-3xl md:text-5xl font-bold mb-3 text-gray-900 dark:text-white">
-                  {score.politician_name || score.name}
+                  {score.name}
                 </h1>
                 
                 <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -492,10 +485,10 @@ export default function TDProfilePageEnhanced() {
             {/* Offices */}
             {score.offices && score.offices.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
-                {score.offices.map((office: string, idx: number) => (
+                {score.offices.map((office, idx) => (
                   <Badge key={idx} className="gap-1 bg-yellow-500 hover:bg-yellow-600 text-white border-0">
                     <Crown className="w-3 h-3" />
-                    {office}
+                    {office.title}
                   </Badge>
                 ))}
               </div>
@@ -503,10 +496,16 @@ export default function TDProfilePageEnhanced() {
 
             {/* Quick Stats */}
             <div className="flex flex-wrap gap-4 text-sm">
-              {score.yearsInDail && (
+              {score.attendancePct !== null && (
                 <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                   <Calendar className="w-4 h-4" />
-                  <span>{score.yearsInDail} years in Dáil</span>
+                  <span>{score.attendancePct}% attendance</span>
+                </div>
+              )}
+              {(score.questions?.oral !== null || score.questions?.written !== null) && (
+                <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
+                  <MessageSquare className="w-4 h-4" />
+                  <span>{(score.questions.oral ?? 0) + (score.questions.written ?? 0)} questions asked</span>
                 </div>
               )}
               {score.committees && score.committees.length > 0 && (
@@ -563,78 +562,39 @@ export default function TDProfilePageEnhanced() {
               Rankings
             </h2>
             <div className="space-y-4">
-              <RankCard label="National Rank" rank={score.national_rank || score.ranks?.national} total="169" />
-              <RankCard label="Constituency Rank" rank={score.constituency_rank || score.ranks?.constituency} total={`${getConstituencyTDCount(score.constituency)}`} />
-              <RankCard label="Party Rank" rank={score.party_rank || score.ranks?.party} total={`${getPartyTDCount(score.party)}`} />
+              <RankCard label="National Rank" rank={score.nationalRank} total="174" />
+              <RankCard label="Constituency Rank" rank={score.constituencyRank} total={`${getConstituencyTDCount(score.constituency ?? '')}`} />
+              <RankCard label="Party Rank" rank={score.partyRank} total={`${getPartyTDCount(score.party ?? 'Independent')}`} />
             </div>
           </Card>
 
-          {/* Ideology Profile */}
+          {/* Score Trend */}
           <Card className="p-6">
-            <h2 className="font-bold text-xl mb-4">Ideology Profile</h2>
-            {score.ideology ? (
-              <>
-                <div className="text-xs text-gray-600 dark:text-gray-400 mb-4 space-y-2">
-                  <p>
-                    Alignment scores are on a -10 to +10 scale. Higher positive values indicate a more traditional or establishment stance for that axis; negative values indicate progressive or reformist leanings.
-                  </p>
-                  <div>
-                    Confidence: {formatConfidence(score.ideology.tdTotalWeight)} ({(score.ideology.tdTotalWeight ?? 0).toFixed(1)} signal weight)
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  {IDEOLOGY_DIMENSION_LABELS &&
-                    Object.entries(IDEOLOGY_DIMENSION_LABELS).map(([dimension, label]) => {
-                      const rawValue = (score.ideology?.td?.[dimension] ?? 0);
-                      const normalized = Math.max(0, Math.min(100, ((Number(rawValue) + 10) / 20) * 100));
-                      return (
-                        <div key={dimension} className="flex flex-col gap-1">
-                          <div className="flex items-center justify-between text-xs text-gray-700 dark:text-gray-300">
-                            <span>{label}</span>
-                            <span className="font-semibold text-gray-900 dark:text-white">{Number(rawValue).toFixed(1)}</span>
-                          </div>
-                          <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
-                              style={{ width: `${normalized}%` }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                </div>
-
-                {score.ideology.party && (
-                  <div className="mt-6">
-                    <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1">
-                      Party average ({score.party || 'Independent'})
-                    </h3>
-                    <div className="text-[11px] text-gray-500 dark:text-gray-400 mb-3">
-                      Signals: {formatConfidence(score.ideology.partyTotalWeight)} ({(score.ideology.partyTotalWeight ?? 0).toFixed(1)} weight)
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 dark:text-gray-400">
-                      {Object.entries(IDEOLOGY_SHORT_LABELS).map(([dimension, shortLabel]) => (
-                        <div key={dimension} className="flex justify-between">
-                          <span>{shortLabel}</span>
-                          <span className="font-semibold text-gray-900 dark:text-white">
-                            {Number(score.ideology.party?.[dimension] ?? 0).toFixed(1)}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {(!score.ideology.tdTotalWeight || score.ideology.tdTotalWeight <= 0) && (
-                  <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                    No recorded statements or news signals yet. As we collect more policy stances, this profile will update automatically.
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="text-xs text-gray-500 dark:text-gray-400">
-                Ideology data is being loaded...
-              </div>
+            <h2 className="font-bold text-xl mb-4 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-blue-600" />
+              Score Trend
+            </h2>
+            <div className="space-y-3">
+              <StatRow
+                icon={score.eloChange7d >= 0 ? <TrendingUp className="w-4 h-4 text-green-600" /> : <TrendingDown className="w-4 h-4 text-red-600" />}
+                label="Last 7 days"
+                value={`${score.eloChange7d >= 0 ? '+' : ''}${score.eloChange7d} Elo`}
+              />
+              <StatRow
+                icon={score.eloChange30d >= 0 ? <TrendingUp className="w-4 h-4 text-green-600" /> : <TrendingDown className="w-4 h-4 text-red-600" />}
+                label="Last 30 days"
+                value={`${score.eloChange30d >= 0 ? '+' : ''}${score.eloChange30d} Elo`}
+              />
+              <StatRow
+                icon={<BarChart3 className="w-4 h-4 text-gray-500" />}
+                label="Current Elo"
+                value={score.overallElo}
+              />
+            </div>
+            {score.lastScoredAt && (
+              <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                Last scored {new Date(score.lastScoredAt).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </p>
             )}
           </Card>
 
@@ -823,12 +783,24 @@ export default function TDProfilePageEnhanced() {
                   key={pillar.label}
                   label={pillar.label}
                   score={pillar.score}
-                  weight={pillar.weightLabel}
                   color={pillar.color}
                   description={pillar.description}
-                  breakdown={pillar.breakdown}
-                  available={pillar.available}
                 />
+              ))}
+            </div>
+
+            <h3 className="text-lg font-semibold mt-8 mb-4">Dimensions</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {dimensionBars.map((dimension) => (
+                <div key={dimension.key} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                    {dimension.score ?? 'N/A'}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">{dimension.label}</div>
+                  {dimension.elo !== null && (
+                    <div className="text-[10px] text-gray-400 mt-1">Elo {dimension.elo}</div>
+                  )}
+                </div>
               ))}
             </div>
           </Card>
@@ -1199,48 +1171,68 @@ export default function TDProfilePageEnhanced() {
             )}
           </Card>
 
-          {/* News Sentiment */}
-          {score.total_stories > 0 && (
+          {/* Recent scored articles */}
+          {score.recentArticles.length > 0 && (
             <Card className="p-6">
-              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
                 <FileText className="w-5 h-5" />
                 News Coverage Analysis
               </h2>
-              
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-2 border-green-200">
-                  <div className="text-3xl font-bold text-green-600">
-                    {score.positive_stories || 0}
-                  </div>
-                  <div className="text-sm text-green-700 dark:text-green-300">Positive</div>
-                </div>
-                <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-gray-200">
-                  <div className="text-3xl font-bold text-gray-600">
-                    {(score.total_stories || 0) - (score.positive_stories || 0) - (score.negative_stories || 0)}
-                  </div>
-                  <div className="text-sm text-gray-600">Neutral</div>
-                </div>
-                <div className="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border-2 border-red-200">
-                  <div className="text-3xl font-bold text-red-600">
-                    {score.negative_stories || 0}
-                  </div>
-                  <div className="text-sm text-red-700 dark:text-red-300">Negative</div>
-                </div>
-              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                {score.totalStories} articles have moved this TD's score. The most recent are below.
+              </p>
 
-              {/* Sentiment bar */}
-              <div className="relative w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div
-                  className="absolute left-0 top-0 h-full bg-green-500"
-                  style={{ width: `${((score.positive_stories || 0) / (score.total_stories || 1)) * 100}%` }}
-                />
-                <div
-                  className="absolute top-0 h-full bg-red-500"
-                  style={{ 
-                    width: `${((score.negative_stories || 0) / (score.total_stories || 1)) * 100}%`,
-                    right: 0
-                  }}
-                />
+              <div className="space-y-3">
+                {score.recentArticles.map((article) => {
+                  const positive = article.impact > 0;
+                  const negative = article.impact < 0;
+                  return (
+                    <div
+                      key={article.articleId}
+                      className="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2 mb-1">
+                            {article.storyType && (
+                              <Badge variant="outline" className="text-xs capitalize">
+                                {article.storyType.replace(/_/g, ' ')}
+                              </Badge>
+                            )}
+                            {article.sentiment && (
+                              <Badge
+                                variant="outline"
+                                className={`text-xs ${
+                                  positive ? 'border-green-400 text-green-700' :
+                                  negative ? 'border-red-400 text-red-700' :
+                                  'border-gray-400 text-gray-700'
+                                }`}
+                              >
+                                {article.sentiment.replace(/_/g, ' ')}
+                              </Badge>
+                            )}
+                            {article.needsReview && (
+                              <Badge variant="outline" className="text-xs border-amber-400 text-amber-700">
+                                Needs review
+                              </Badge>
+                            )}
+                          </div>
+                          {article.reasoning && (
+                            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {article.reasoning}
+                            </p>
+                          )}
+                          <div className="text-[10px] text-gray-400 mt-2">
+                            {new Date(article.at).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
+                          </div>
+                        </div>
+                        <div className={`text-sm font-bold flex-shrink-0 ${positive ? 'text-green-600' : negative ? 'text-red-600' : 'text-gray-500'}`}>
+                          {positive ? '+' : ''}{article.impact}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </Card>
           )}
@@ -1286,54 +1278,64 @@ export default function TDProfilePageEnhanced() {
           <Card className="p-6">
             <h2 className="text-xl font-bold mb-4">Background & Experience</h2>
             
-            {/* Historical Summary */}
-            {score.historical_summary && (
+            {/* Bio */}
+            {score.bio && (
+              <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                {score.bio}
+              </p>
+            )}
+
+            {/* Historical research baseline */}
+            {score.baseline?.summary && (
               <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {score.historical_summary}
+                  {score.baseline.summary}
                 </p>
+                {score.baseline.keyFindings.length > 0 && (
+                  <ul className="mt-3 space-y-1 text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
+                    {score.baseline.keyFindings.map((finding, idx) => (
+                      <li key={idx}>{finding}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
-            
+
             <div className="grid md:grid-cols-2 gap-4">
-              {score.seniority && (
+              {score.baseline?.category && (
                 <InfoCard
                   icon={<Award className="w-5 h-5 text-purple-600" />}
-                  label="Seniority Level"
-                  value={score.seniority}
+                  label="Research Category"
+                  value={score.baseline.category}
                 />
               )}
-              
-              {score.firstElectedDate && (
+
+              {score.baseline?.researchDate && (
                 <InfoCard
                   icon={<Calendar className="w-5 h-5 text-green-600" />}
-                  label="First Elected"
-                  value={new Date(score.firstElectedDate).toLocaleDateString('en-IE', { year: 'numeric', month: 'long' })}
+                  label="Researched"
+                  value={new Date(score.baseline.researchDate).toLocaleDateString('en-IE', { year: 'numeric', month: 'long' })}
                 />
               )}
 
-              {score.currentTermStart && (
-                <InfoCard
-                  icon={<Calendar className="w-5 h-5 text-blue-600" />}
-                  label="Current Term"
-                  value={`Since ${new Date(score.currentTermStart).toLocaleDateString('en-IE', { year: 'numeric', month: 'short' })}`}
-                />
-              )}
-
-              {score.wikipediaTitle && (
+              {score.committees.length > 0 && (
                 <div className="md:col-span-2">
-                  <a
-                    href={`https://en.wikipedia.org/wiki/${encodeURIComponent(score.wikipediaTitle)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors group"
-                  >
-                    <ExternalLink className="w-5 h-5 text-blue-600" />
-                    <span className="font-medium text-blue-700 dark:text-blue-300 group-hover:text-blue-800">
-                      View Full Biography on Wikipedia
-                    </span>
-                  </a>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-center gap-2">
+                    <Users className="w-4 h-4" />
+                    Committees
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {score.committees.map((committee) => (
+                      <Badge key={committee} variant="secondary">{committee}</Badge>
+                    ))}
+                  </div>
                 </div>
+              )}
+
+              {!score.bio && !score.baseline && score.committees.length === 0 && (
+                <p className="md:col-span-2 text-sm text-gray-500 dark:text-gray-400">
+                  No background information available yet.
+                </p>
               )}
             </div>
           </Card>
@@ -1344,8 +1346,13 @@ export default function TDProfilePageEnhanced() {
 }
 
 // Helper Components
-function PerformanceBar({ label, score, weight, color, description, breakdown, available = true }: unknown) {
-  const colorClasses = {
+function PerformanceBar({ label, score, color, description }: {
+  label: string;
+  score: number | null;
+  color: PillarColor;
+  description?: string;
+}) {
+  const colorClasses: Record<PillarColor, string> = {
     emerald: 'bg-emerald-500',
     blue: 'bg-blue-500',
     cyan: 'bg-cyan-500',
@@ -1355,16 +1362,13 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
     green: 'bg-green-500'
   };
 
-  const isAvailable = available && typeof score === 'number' && !Number.isNaN(score);
+  const isAvailable = typeof score === 'number' && !Number.isNaN(score);
   const percentage = isAvailable ? Math.min(100, Math.max(0, score)) : 0;
 
   return (
     <div>
       <div className="flex justify-between items-center mb-2">
-        <div>
-          <span className="font-semibold text-gray-900 dark:text-white">{label}</span>
-          <Badge variant="outline" className="ml-2 text-xs">{weight}</Badge>
-        </div>
+        <span className="font-semibold text-gray-900 dark:text-white">{label}</span>
         <span className="font-bold text-lg">
           {isAvailable ? (
             <>
@@ -1378,7 +1382,7 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
       <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-1">
         {isAvailable ? (
           <div
-            className={`h-full ${colorClasses[color as keyof typeof colorClasses]} transition-all`}
+            className={`h-full ${colorClasses[color]} transition-all`}
             style={{ width: `${percentage}%` }}
           />
         ) : (
@@ -1386,33 +1390,8 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
         )}
       </div>
       {isAvailable ? (
-        Array.isArray(breakdown) && breakdown.length > 0 ? (
-          <ul className="mt-2 space-y-1 text-xs text-gray-600 dark:text-gray-400">
-            {breakdown.map((item: unknown) => (
-              <li key={`${label}-${item.label}`} className="rounded border border-gray-200/70 dark:border-gray-700/70 p-2">
-                <div className="flex items-center justify-between text-gray-700 dark:text-gray-200">
-                  <span className="font-medium">{item.label}</span>
-                  <span className="text-right">
-                    {item.score}/100
-                    {typeof item.weight_percent === 'number' && (
-                      <span className="ml-2 text-[10px] text-gray-500 dark:text-gray-400">
-                        {item.weight_percent}% weight
-                      </span>
-                    )}
-                  </span>
-                </div>
-                {item.detail && (
-                  <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400">
-                    {item.detail}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          description && (
-            <p className="text-xs text-gray-600 dark:text-gray-400">{description}</p>
-          )
+        description && (
+          <p className="text-xs text-gray-600 dark:text-gray-400">{description}</p>
         )
       ) : (
         <p className="text-xs text-gray-500 dark:text-gray-400">Not enough data yet.</p>
@@ -1421,7 +1400,7 @@ function PerformanceBar({ label, score, weight, color, description, breakdown, a
   );
 }
 
-function RankCard({ label, rank, total }: unknown) {
+function RankCard({ label, rank, total }: { label: string; rank: number | null; total: string }) {
   return (
     <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
       <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
@@ -1435,7 +1414,7 @@ function RankCard({ label, rank, total }: unknown) {
   );
 }
 
-function StatRow({ icon, label, value }: unknown) {
+function StatRow({ icon, label, value }: { icon: ReactNode; label: string; value: string | number }) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
@@ -1447,7 +1426,7 @@ function StatRow({ icon, label, value }: unknown) {
   );
 }
 
-function InfoCard({ icon, label, value }: unknown) {
+function InfoCard({ icon, label, value }: { icon: ReactNode; label: string; value: string | number }) {
   return (
     <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
       {icon}

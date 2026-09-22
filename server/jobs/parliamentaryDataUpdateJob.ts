@@ -68,10 +68,10 @@ export class ParliamentaryDataUpdateJob {
       // Update database (if available)
       await this.updateDatabase(activityData);
       
-      // Trigger score recalculation
-      console.log('\n🔄 Triggering unified score recalculation...');
-      const { unifiedScoreJob } = await import('./unifiedScoreCalculationJob');
-      setTimeout(() => unifiedScoreJob.triggerManual(), 2000);
+      // Parliamentary inputs changed, so derived scores and ranks must follow.
+      console.log('\n🔄 Recalculating TD scores...');
+      const { recalculateAll } = await import('../scoring/index.js');
+      await recalculateAll();
       
       const duration = Date.now() - startTime;
       

@@ -1,22 +1,12 @@
 import session from 'express-session';
 import { Request, Response, NextFunction } from 'express';
-import { pool } from '../db';
-import connectPgSimple from 'connect-pg-simple';
 
-// Set up PostgreSQL session store (if a pool is available)
-const PgSession = connectPgSimple(session);
-const sessionStore = pool
-  ? new PgSession({
-      pool,
-      tableName: 'sessions',
-      createTableIfMissing: true,
-    })
-  : new session.MemoryStore();
-
-// Create session middleware
-/** Express session middleware backed by Postgres or a memory store. */
+// Session auth is legacy: the frontend only uses Supabase bearer tokens, so no real user
+// ever has req.session.userId. Memory store only — never create a `sessions` table in
+// the shared GlasCore database for a code path nothing uses. The auth rebuild removes this.
+/** Express session middleware backed by a memory store. */
 export const sessionMiddleware = session({
-  store: sessionStore,
+  store: new session.MemoryStore(),
   secret: process.env.SESSION_SECRET || 'glas-politics-dev-secret',
   resave: false,
   saveUninitialized: false,

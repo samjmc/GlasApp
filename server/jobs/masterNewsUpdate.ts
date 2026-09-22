@@ -42,7 +42,6 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
       lookbackHoursOverride = envLookbackDays * 24;
     }
   }
-  const skipUnifiedScoreSave = cliOptions.skipUnifiedScore ?? process.env.SKIP_UNIFIED_SCORE_SAVE === 'true';
   const stats: MasterJobStats = {
     articlesFound: 0,
     articlesProcessed: 0,
@@ -90,82 +89,33 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     }
 
     // ========================================================================
-    // STEP 2: PROCESS ARTICLES & SCORE TD IMPACTS
+    // STEP 2: SCORE TD IMPACTS (the pipeline recalculates TD and party scores itself)
     // ========================================================================
     console.log('\n' + '='.repeat(80));
-    console.log('🎯 STEP 2: Processing articles and scoring TD impacts...\n');
-    
+    console.log('🎯 STEP 2: Scoring articles and recalculating TD and party scores...\n');
+
     try {
-      const { NewsToTDScoringService } = await import('../services/newsToTDScoringService.js');
-      const scoringStats = await NewsToTDScoringService.processUnprocessedArticles({
-        batchSize: 100 // Process up to 100 articles at once
-        // Set crossCheck: true for high-accuracy mode (slower, uses GPT-4)
-      });
-      
+      const { runPipeline, recalculateAll } = await import('../scoring/index.js');
+      const scoringStats = await runPipeline({ batchSize: 100 });
       stats.tdsScored = scoringStats.tdsUpdated;
-      
+      // Pull in parliamentary/debate inputs that changed since the last run even when no
+      // article moved an ELO.
+      const recalc = await recalculateAll();
+      stats.tdScoresUpdated = recalc.tds;
+      stats.partyScoresUpdated = recalc.parties;
+
       console.log(`✅ Step 2 Complete:`);
       console.log(`   Articles processed: ${scoringStats.articlesProcessed}`);
       console.log(`   TDs scored: ${scoringStats.tdsUpdated}`);
-      console.log(`   Score changes: ${scoringStats.scoresChanged}`);
+      console.log(`   TDs recalculated: ${recalc.tds}, parties: ${recalc.parties}`);
       if (scoringStats.errors > 0) {
         console.log(`   ⚠️  Errors: ${scoringStats.errors}`);
       }
       console.log('');
-      
+
     } catch (error: unknown) {
       console.error('❌ Step 2 FAILED:', error instanceof Error ? error.message : String(error));
       stats.errors.push(`TD scoring: ${error instanceof Error ? error.message : String(error)}`);
-    }
-
-    // ========================================================================
-    // STEP 3: RECALCULATE ALL TD & PARTY SCORES
-    // ========================================================================
-    console.log('\n' + '='.repeat(80));
-    console.log('📊 STEP 3: Recalculating all TD and party scores...\n');
-    
-    if (skipUnifiedScoreSave) {
-      console.log('⚠️  Step 3 skipped (SKIP_UNIFIED_SCORE_SAVE enabled)');
-    } else {
-      try {
-        const { recalculateAllScores } = await import('../services/comprehensiveTDScoringService.js');
-        const recalcStats = await recalculateAllScores();
-        
-        stats.tdScoresUpdated = recalcStats.processed;
-        
-        console.log(`✅ Step 3 Complete:`);
-        console.log(`   TDs updated: ${recalcStats.processed}`);
-        console.log(`   Duration: ${(recalcStats.duration / 1000).toFixed(1)}s`);
-        if (recalcStats.errors > 0) {
-          console.log(`   ⚠️  Errors: ${recalcStats.errors}`);
-        }
-        console.log('');
-        
-      } catch (error: unknown) {
-        console.error('❌ Step 3 FAILED:', error instanceof Error ? error.message : String(error));
-        stats.errors.push(`Score recalculation: ${error instanceof Error ? error.message : String(error)}`);
-      }
-    }
-
-    // ========================================================================
-    // STEP 4: UPDATE PARTY SCORES
-    // ========================================================================
-    console.log('\n' + '='.repeat(80));
-    console.log('🎭 STEP 4: Updating party aggregate scores...\n');
-    
-    try {
-      const { PartyPerformanceService } = await import('../services/partyPerformanceService.js');
-      const partyStats = await PartyPerformanceService.updateAllPartyScores();
-      
-      stats.partyScoresUpdated = partyStats.partiesUpdated || 0;
-      
-      console.log(`✅ Step 4 Complete:`);
-      console.log(`   Parties updated: ${partyStats.partiesUpdated}`);
-      console.log('');
-      
-    } catch (error: unknown) {
-      console.error('⚠️  Step 4 failed (non-critical):', error instanceof Error ? error.message : String(error));
-      // Party scores are nice-to-have, not critical
     }
 
     // ========================================================================
@@ -277,8 +227,8 @@ runMasterNewsUpdate()
 export { runMasterNewsUpdate };
 export type { MasterJobStats };
 
-function parseCliOptions(args: string[]): { lookbackHours?: number; skipUnifiedScore?: boolean } {
-  const options: { lookbackHours?: number; skipUnifiedScore?: boolean } = {};
+function parseCliOptions(args: string[]): { lookbackHours?: number } {
+  const options: { lookbackHours?: number } = {};
   for (const arg of args) {
     if (arg.startsWith('--lookback-hours=')) {
       const value = Number(arg.split('=')[1]);
@@ -290,8 +240,6 @@ function parseCliOptions(args: string[]): { lookbackHours?: number; skipUnifiedS
       if (!Number.isNaN(value) && value > 0) {
         options.lookbackHours = value * 24;
       }
-    } else if (arg === '--skip-unified-save') {
-      options.skipUnifiedScore = true;
     }
   }
   return options;

@@ -227,10 +227,23 @@ export default function AskTDPage() {
   const { data: tdsData, isLoading: tdsLoading } = useQuery({
     queryKey: ["tds-for-chat"],
     queryFn: async () => {
-      const res = await fetch("/api/parliamentary/scores/td-scores?limit=200");
+      const res = await fetch("/api/scores/tds");
       if (!res.ok) throw new Error("Failed to fetch TDs");
-      const data = await res.json();
-      return (data.scores || []) as TDOption[];
+      const json = await res.json();
+      const cards = (json.data ?? []) as Array<{
+        id: number;
+        name: string;
+        party: string | null;
+        constituency: string | null;
+        imageUrl: string | null;
+      }>;
+      return cards.map((td): TDOption => ({
+        id: td.id,
+        politician_name: td.name,
+        party: td.party ?? "Independent",
+        constituency: td.constituency ?? "",
+        image_url: td.imageUrl,
+      }));
     },
   });
 

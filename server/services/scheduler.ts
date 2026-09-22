@@ -1,20 +1,15 @@
 import cron from "node-cron";
 import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
-import { runInternalAudit } from "./qaAgent";
+import { runPipeline } from "../scoring";
 
-// Lazy imports for scoring services (avoids circular dependency issues)
+// Lazy imports for news services (avoids circular dependency issues)
 let ArticleTriageJob: unknown = null;
-let NewsToTDScoringService: unknown = null;
 let NewsScraperService: unknown = null;
 
 async function loadScoringServices() {
   if (!ArticleTriageJob) {
     const triageModule = await import("../jobs/articleTriageJob.js");
     ArticleTriageJob = triageModule.ArticleTriageJob;
-  }
-  if (!NewsToTDScoringService) {
-    const scoringModule = await import("./newsToTDScoringService.js");
-    NewsToTDScoringService = scoringModule.NewsToTDScoringService;
   }
   if (!NewsScraperService) {
     const scraperModule = await import("./newsScraperService.js");
@@ -63,8 +58,7 @@ export function initScheduler() {
   cron.schedule('0 */2 * * *', async () => {
     console.log("\n🎯 [Scheduler] Running TD Scoring (Multi-Agent Team)...");
     try {
-      await loadScoringServices();
-      const stats = await NewsToTDScoringService.processUnprocessedArticles({
+      const stats = await runPipeline({
         batchSize: 50,
         topPercentile: 25,
         minImportanceScore: 40
@@ -72,7 +66,6 @@ export function initScheduler() {
       console.log(`✅ [Scheduler] TD Scoring complete:`);
       console.log(`   • Articles processed: ${stats.articlesProcessed}`);
       console.log(`   • TDs updated: ${stats.tdsUpdated}`);
-      console.log(`   • Scores changed: ${stats.scoresChanged}`);
       if (stats.errors > 0) {
         console.warn(`   ⚠️ Errors: ${stats.errors}`);
       }
@@ -120,18 +113,6 @@ export function initScheduler() {
         console.log("✅ [Scheduler] Daily Briefing Complete.");
     } catch (error) {
         console.error("❌ [Scheduler] Failed to run Daily Briefing:", error);
-    }
-  }, {
-    scheduled: true,
-    timezone: "Europe/Dublin"
-  });
-
-  // Run Internal Audit every Sunday at 00:00
-  cron.schedule('0 0 * * 0', async () => {
-    console.log("🕵️ [Scheduler] Starting Weekly QA Audit...");
-    const anomalies = await runInternalAudit();
-    if (anomalies.length > 0) {
-        console.warn("⚠️ QA Anomalies Found:", anomalies);
     }
   }, {
     scheduled: true,

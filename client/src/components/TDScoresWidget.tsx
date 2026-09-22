@@ -14,12 +14,24 @@ import { TDQuickInfoModal } from './TDQuickInfoModal';
 interface TDRow {
   id: number;
   name: string;
-  image_url?: string | null;
+  imageUrl?: string | null;
   party?: string | null;
-  overall_score?: number | null;
-  overall_elo?: number | null;
-  change_out_of_100?: number | null;
-  change?: number | null;
+  overallScore?: number | null;
+  overallElo?: number;
+  /** Movers only: change in the 0-100 score over the window. */
+  scoreDelta?: number;
+}
+
+interface WidgetData {
+  top: TDRow[];
+  bottom: TDRow[];
+  movers: TDRow[];
+  stats: {
+    totalTds: number;
+    scoredTds: number;
+    storiesAnalysed: number;
+    lastScoredAt: string | null;
+  };
 }
 
 interface TDCompactRowProps {
@@ -55,17 +67,15 @@ function TDCompactRow({ td, variant, showChange, onInfoClick }: TDCompactRowProp
   };
 
   const style = colors[variant];
-  const score = showChange 
-    ? (td.change_out_of_100 || td.change) 
-    : (td.overall_score || Math.round(((td.overall_elo || 1500) - 1000) / 10));
+  const score = showChange ? td.scoreDelta : td.overallScore;
 
   return (
     <Link href={`/td/${encodeURIComponent(td.name)}`}>
       <div className={`group flex items-center justify-between py-2 px-3 -mx-3 rounded-lg transition-colors cursor-pointer ${style.hover}`}>
         {/* Profile Photo */}
-        {td.image_url ? (
-          <img 
-            src={td.image_url} 
+        {td.imageUrl ? (
+          <img
+            src={td.imageUrl}
             alt={td.name}
             className="w-9 h-9 rounded-full object-cover border-2 border-gray-200 dark:border-gray-700 flex-shrink-0 mr-3"
           />
@@ -74,16 +84,16 @@ function TDCompactRow({ td, variant, showChange, onInfoClick }: TDCompactRowProp
             {td.name.charAt(0)}
           </div>
         )}
-        
+
         <div className="flex-1 min-w-0 pr-3">
           <div className={`font-medium text-sm truncate ${style.text}`}>
             {td.name}
           </div>
           <div className={`text-xs truncate opacity-80 ${style.subtext}`}>
-            {td.party || 'Unknown'}
+            {td.party || 'Independent'}
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={(e) => onInfoClick(td.id, e)}
@@ -91,10 +101,10 @@ function TDCompactRow({ td, variant, showChange, onInfoClick }: TDCompactRowProp
           >
             <Info className="w-3.5 h-3.5" />
           </button>
-          
+
           <div className="text-right min-w-[3rem]">
             <div className={`text-sm font-bold ${showChange ? ((score ?? 0) > 0 ? 'text-green-600' : 'text-red-600') : style.score}`}>
-              {showChange && (score ?? 0) > 0 ? '+' : ''}{typeof score === 'number' ? score.toFixed(showChange ? 1 : 0) : 'N/A'}
+              {showChange && (score ?? 0) > 0 ? '+' : ''}{typeof score === 'number' ? score.toFixed(0) : 'N/A'}
             </div>
             <div className="text-[9px] uppercase tracking-wider opacity-60">
               {showChange ? 'Change' : '/100'}
@@ -111,12 +121,13 @@ export function TDScoresWidget() {
   const [selectedTDId, setSelectedTDId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<WidgetData>({
     queryKey: queryKeys.td.scoresWidget(),
     queryFn: async () => {
-      const res = await fetch('/api/parliamentary/scores/widget');
+      const res = await fetch('/api/scores/widget');
       if (!res.ok) throw new Error('Failed to fetch');
-      return res.json();
+      const json = await res.json();
+      return json.data as WidgetData;
     },
     staleTime: 60000
   });
@@ -150,7 +161,7 @@ export function TDScoresWidget() {
   return (
     <Card className="p-6 border bg-white dark:bg-gray-900 shadow-sm">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 lg:divide-x dark:divide-gray-800">
-        
+
         {/* Top Performers */}
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
@@ -158,11 +169,11 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=top" className="text-xs text-emerald-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.top_performers || []).slice(0, 5).map((td: TDRow) => (
-              <TDCompactRow 
-                key={td.id} 
-                td={td} 
-                variant="emerald" 
+            {(data?.top || []).slice(0, 5).map((td) => (
+              <TDCompactRow
+                key={td.id}
+                td={td}
+                variant="emerald"
                 onInfoClick={handleInfoClick}
               />
             ))}
@@ -176,11 +187,11 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=movers" className="text-xs text-blue-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.biggest_movers || []).slice(0, 5).map((td: TDRow) => (
-              <TDCompactRow 
-                key={td.id} 
-                td={td} 
-                variant="blue" 
+            {(data?.movers || []).slice(0, 5).map((td) => (
+              <TDCompactRow
+                key={td.id}
+                td={td}
+                variant="blue"
                 showChange={true}
                 onInfoClick={handleInfoClick}
               />
@@ -195,11 +206,11 @@ export function TDScoresWidget() {
             <Link href="/researched-tds?filter=bottom" className="text-xs text-red-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
-            {(data?.bottom_performers || []).slice(0, 5).map((td: TDRow) => (
-              <TDCompactRow 
-                key={td.id} 
-                td={td} 
-                variant="red" 
+            {(data?.bottom || []).slice(0, 5).map((td) => (
+              <TDCompactRow
+                key={td.id}
+                td={td}
+                variant="red"
                 onInfoClick={handleInfoClick}
               />
             ))}

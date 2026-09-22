@@ -32,7 +32,25 @@ interface ConstituencyTD {
   id: number;
   name: string;
   party?: string | null;
-  score?: number | null;
+  overallScore?: number | null;
+}
+
+interface ConstituencySummary {
+  name: string;
+  tdCount: number;
+  leadingParty: string | null;
+  leadingPartyCount: number;
+  averageScore: number | null;
+  parties: { party: string; count: number; percentage: number }[];
+  genderBreakdown: { male: number; female: number; unknown: number; femalePercentage: number };
+  tds: ConstituencyTD[];
+}
+
+interface ConstituencyDetail {
+  name: string;
+  tdCount: number;
+  averageScore: number | null;
+  tds: ConstituencyTD[];
 }
 
 /** Interactive map of Irish constituencies with selectable layers. */
@@ -41,35 +59,35 @@ export function InteractiveConstituencyMap() {
   const [activeLayer, setActiveLayer] = useState<MapLayer>('party');
 
   // Fetch constituency data
-  const { data: constituenciesData, isLoading } = useQuery({
+  const { data: constituenciesData, isLoading } = useQuery<{ constituencies: ConstituencySummary[] }>({
     queryKey: ['constituency-map-data'],
     queryFn: async () => {
-      const res = await fetch('/api/parliamentary/constituencies/summary');
+      const res = await fetch('/api/scores/constituencies/summary');
       if (!res.ok) throw new Error('Failed to fetch constituencies summary');
-      return res.json();
+      const json = await res.json();
+      return json.data;
     },
     staleTime: 1000 * 60 * 60, // 1 hour
   });
 
   // Fetch selected constituency details
-  const { data: selectedData } = useQuery({
+  const { data: selectedData } = useQuery<ConstituencyDetail>({
     queryKey: ['constituency-detail', selectedConstituency],
     queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/constituency/${encodeURIComponent(selectedConstituency!)}`);
+      const res = await fetch(`/api/scores/constituency/${encodeURIComponent(selectedConstituency!)}`);
       if (!res.ok) throw new Error('Failed to fetch constituency');
-      const data = await res.json();
-      return data.constituency;
+      const json = await res.json();
+      return json.data as ConstituencyDetail;
     },
     enabled: !!selectedConstituency
   });
 
-  const getConstituencyColor = (constituency: unknown): string => {
-    // Note: logic is inside the map component usually, but we keep this helper if needed
-    // The visual map component likely handles coloring internally based on passed data
-    return '#94a3b8';
-  };
-
-  const constituencies = constituenciesData?.constituencies || [];
+  const constituencies = (constituenciesData?.constituencies || []).map((c) => ({
+    ...c,
+    // The map treats a missing average as "no data"; the API sends null for unscored areas.
+    averageScore: c.averageScore ?? undefined,
+    tds: c.tds.map((td) => ({ name: td.name, party: td.party ?? undefined })),
+  }));
   const selectedInfo = selectedData;
 
   const LayerButton = ({ id, label, icon: Icon }: { id: MapLayer; label: string; icon: LucideIcon }) => (
@@ -189,7 +207,7 @@ export function InteractiveConstituencyMap() {
                       <div className="text-xs font-semibold uppercase tracking-wide text-blue-700/70 dark:text-blue-300/70">TDs</div>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-2xl border border-purple-100 dark:border-purple-800/50 text-center">
-                      <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">{selectedInfo.averageScore}</div>
+                      <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">{selectedInfo.averageScore ?? 'N/A'}</div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-purple-700/70 dark:text-purple-300/70">Avg Score</div>
                     </div>
                   </div>
@@ -214,7 +232,7 @@ export function InteractiveConstituencyMap() {
                             </div>
                             <div className="flex items-center gap-2">
                               <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-800">
-                                {td.score}
+                                {td.overallScore ?? 'N/A'}
                               </Badge>
                               <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-purple-500" />
                             </div>

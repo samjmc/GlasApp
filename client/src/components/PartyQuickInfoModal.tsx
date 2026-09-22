@@ -6,12 +6,10 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import {
   Users,
-  Crown,
   TrendingUp,
   MapPin,
   X,
@@ -24,20 +22,40 @@ interface PartyQuickInfoModalProps {
   onClose: () => void;
 }
 
+interface PartyMember {
+  id: number;
+  name: string;
+  constituency: string | null;
+  overallScore: number | null;
+}
+
+interface PartyDetail {
+  party: string;
+  size: number;
+  averageScore: number | null;
+  genderBreakdown: { male: number; female: number; unknown: number; femalePercentage: number };
+  constituencyCount: number;
+  members: PartyMember[];
+}
+
 /** Modal with quick summary info for a political party. */
 export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickInfoModalProps) {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<PartyDetail>({
     queryKey: ['party-quick-info', partyName],
     queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/party/${encodeURIComponent(partyName)}`);
+      const res = await fetch(`/api/scores/party/${encodeURIComponent(partyName)}`);
       if (!res.ok) throw new Error('Failed to fetch party info');
-      const data = await res.json();
-      return data.party;
+      const json = await res.json();
+      return json.data as PartyDetail;
     },
     enabled: isOpen && !!partyName
   });
 
   if (!isOpen) return null;
+
+  const topMembers = data
+    ? [...data.members].sort((a, b) => (b.overallScore ?? 0) - (a.overallScore ?? 0)).slice(0, 5)
+    : [];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -51,7 +69,7 @@ export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickIn
           <>
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                {data.name}
+                {data.party}
               </DialogTitle>
             </DialogHeader>
 
@@ -75,7 +93,7 @@ export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickIn
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div className="text-3xl font-bold text-purple-900 dark:text-purple-100">
-                    {data.averageScore}
+                    {data.averageScore ?? 'N/A'}
                   </div>
                   <div className="text-sm text-purple-700 dark:text-purple-300 mt-1">
                     Avg Score
@@ -84,13 +102,13 @@ export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickIn
 
                 <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg p-4 border-2 border-yellow-200 text-center">
                   <div className="flex items-center justify-center gap-2 text-yellow-600 mb-2">
-                    <Crown className="w-5 h-5" />
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div className="text-3xl font-bold text-yellow-900 dark:text-yellow-100">
-                    {data.positions?.ministers || 0}
+                    {data.constituencyCount}
                   </div>
                   <div className="text-sm text-yellow-700 dark:text-yellow-300 mt-1">
-                    Ministers
+                    Constituencies
                   </div>
                 </div>
               </div>
@@ -122,74 +140,48 @@ export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickIn
                       />
                     </div>
                     <div className="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">
-                      {data.genderBreakdown?.femalePercentage?.toFixed(1) || 0}% Female
+                      {data.genderBreakdown?.femalePercentage ?? 0}% Female
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Representation */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="border-l-4 border-blue-500 pl-4 py-2">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-1">
-                    <MapPin className="w-4 h-4" />
-                    Constituencies
-                  </div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {data.constituenciesRepresented}
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-purple-500 pl-4 py-2">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-1">
-                    <Users className="w-4 h-4" />
-                    Committees
-                  </div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {data.committeesActive}
-                  </p>
-                </div>
-              </div>
-
               {/* Top Members */}
-              {data.members && data.members.length > 0 && (
+              {topMembers.length > 0 && (
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
                     Top Members (by score)
                   </h3>
                   <div className="space-y-2 max-h-48 overflow-y-auto">
-                    {data.members
-                      .sort((a: unknown, b: unknown) => (b.score || 0) - (a.score || 0))
-                      .slice(0, 5)
-                      .map((member: unknown) => (
-                        <Link
-                          key={member.id}
-                          href={`/td/${member.name}`}
-                          className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
-                        >
-                          <div className="flex-1 min-w-0">
-                            <div className="font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate">
-                              {member.name}
-                            </div>
-                            <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                              {member.constituency}
-                            </div>
+                    {topMembers.map((member) => (
+                      <Link
+                        key={member.id}
+                        href={`/td/${encodeURIComponent(member.name)}`}
+                        className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate">
+                            {member.name}
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-blue-600 dark:text-blue-400">
-                              {member.score}
-                            </span>
-                            <ChevronRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                            {member.constituency}
                           </div>
-                        </Link>
-                      ))}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-blue-600 dark:text-blue-400">
+                            {member.overallScore ?? 'N/A'}
+                          </span>
+                          <ChevronRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               )}
 
               {/* Actions */}
               <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-                <Link href={`/party/${data.name}`} className="flex-1">
+                <Link href={`/party/${encodeURIComponent(data.party)}`} className="flex-1">
                   <Button variant="default" className="w-full gap-2">
                     <Users className="w-4 h-4" />
                     View Full Party Profile
@@ -214,4 +206,3 @@ export function PartyQuickInfoModal({ partyName, isOpen, onClose }: PartyQuickIn
     </Dialog>
   );
 }
-

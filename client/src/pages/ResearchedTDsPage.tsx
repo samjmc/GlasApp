@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/PageHeader';
+import { queryKeys } from '@/lib/queryKeys';
 import {
   Select,
   SelectContent,
@@ -25,21 +26,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Re-defining TDQuickInfoModal import properly below
 import { TDQuickInfoModal } from '@/components/TDQuickInfoModal';
 
 type ResearchedTD = {
   id: number;
-  politician_name: string;
-  party?: string | null;
-  constituency?: string | null;
-  rank?: number;
-  overall_score?: number;
-  overall_elo?: number;
-  image_url?: string | null;
-  has_historical_research?: boolean;
+  name: string;
+  party: string | null;
+  constituency: string | null;
+  nationalRank: number | null;
+  overallScore: number | null;
+  overallElo: number;
+  imageUrl: string | null;
+  hasResearch: boolean;
 };
 
+type RankingsData = {
+  tds: ResearchedTD[];
+  count: number;
+};
 
 export default function ResearchedTDsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -48,39 +52,34 @@ export default function ResearchedTDsPage() {
   const [selectedTDId, setSelectedTDId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['researched-tds'],
+  const { data, isLoading } = useQuery<RankingsData>({
+    queryKey: queryKeys.td.rankings(),
     queryFn: async () => {
-      const res = await fetch('/api/researched-tds');
+      const res = await fetch('/api/scores/tds');
       if (!res.ok) throw new Error('Failed to fetch');
-      return res.json();
+      const json = await res.json();
+      const tds = (json.data ?? []) as ResearchedTD[];
+      return { tds, count: json.meta?.count ?? tds.length };
     }
   });
 
   // Extract unique lists for filters
   const { parties, constituencies } = useMemo(() => {
     if (!data?.tds) return { parties: [], constituencies: [] };
-    
+
     const p = new Set<string>();
     const c = new Set<string>();
-    
-    data.tds.forEach((td: ResearchedTD) => {
+
+    data.tds.forEach((td) => {
       if (td.party) p.add(td.party);
       if (td.constituency) c.add(td.constituency);
     });
-    
+
     return {
       parties: Array.from(p).sort(),
       constituencies: Array.from(c).sort()
     };
   }, [data?.tds]);
-
-  // Helper function to convert ELO to percentage
-  const getScore = (td: ResearchedTD) => {
-    if (td.overall_score) return td.overall_score;
-    // Fallback: convert ELO to percentage (ELO - 1000) / 10
-    return Math.round(((td.overall_elo || 1500) - 1000) / 10);
-  };
 
   const handleInfoClick = (tdId: number, e: React.MouseEvent) => {
     e.preventDefault();
@@ -99,20 +98,17 @@ export default function ResearchedTDsPage() {
 
   // Filter and sort TDs
   const filteredTDs = (data?.tds || [])
-    .filter((td: ResearchedTD) => {
-      const matchesSearch = searchTerm === '' || 
-        td.politician_name.toLowerCase().includes(searchTerm.toLowerCase());
-      
+    .filter((td) => {
+      const matchesSearch = searchTerm === '' ||
+        td.name.toLowerCase().includes(searchTerm.toLowerCase());
+
       const matchesParty = selectedParty === 'all' || td.party === selectedParty;
-      
+
       const matchesConstituency = selectedConstituency === 'all' || td.constituency === selectedConstituency;
 
       return matchesSearch && matchesParty && matchesConstituency;
     })
-    .sort((a: ResearchedTD, b: ResearchedTD) => {
-        // Sort by rank/score
-        return (a.rank || 999) - (b.rank || 999);
-    });
+    .sort((a, b) => (a.nationalRank ?? 999) - (b.nationalRank ?? 999));
 
   return (
     <div className="max-w-4xl mx-auto pb-20">
@@ -161,11 +157,11 @@ export default function ResearchedTDsPage() {
               ))}
             </SelectContent>
           </Select>
-          
+
           {hasActiveFilters && (
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={clearFilters}
               className="h-10 px-3 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
             >
@@ -191,41 +187,42 @@ export default function ResearchedTDsPage() {
           </div>
         ) : filteredTDs.length > 0 ? (
           <div className="divide-y divide-gray-100 dark:divide-gray-800">
-            {filteredTDs.map((td: ResearchedTD, index: number) => {
-              const score = getScore(td);
+            {filteredTDs.map((td, index: number) => {
+              const score = td.overallScore;
+              const colorScore = score ?? 0;
               return (
-                <Link 
-                  key={td.politician_name} 
-                  href={`/td/${encodeURIComponent(td.politician_name)}`}
+                <Link
+                  key={td.id}
+                  href={`/td/${encodeURIComponent(td.name)}`}
                 >
                   <div className="group flex items-center justify-between p-3 sm:px-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer">
-                    
+
                     {/* Rank & Info */}
                     <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                       <div className="w-6 text-sm font-medium text-gray-400 text-center shrink-0">
-                        {td.rank || index + 1}
+                        {td.nationalRank ?? index + 1}
                       </div>
 
                       <div className="flex items-center gap-3 min-w-0">
                         {/* Avatar */}
-                         {td.image_url ? (
-                            <img 
-                              src={td.image_url} 
-                              alt={td.politician_name}
+                         {td.imageUrl ? (
+                            <img
+                              src={td.imageUrl}
+                              alt={td.name}
                               className="w-8 h-8 rounded-full object-cover border border-gray-100 dark:border-gray-800 shrink-0"
                             />
                           ) : (
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-xs font-bold text-gray-500 shrink-0">
-                              {td.politician_name.charAt(0)}
+                              {td.name.charAt(0)}
                             </div>
                           )}
-                        
+
                         <div className="min-w-0">
                            <div className="flex items-center gap-2">
                             <h3 className="font-medium text-sm text-gray-900 dark:text-gray-100 truncate">
-                              {td.politician_name}
+                              {td.name}
                             </h3>
-                            {td.has_historical_research && (
+                            {td.hasResearch && (
                                 <Sparkles className="w-3 h-3 text-amber-500 shrink-0" />
                             )}
                            </div>
@@ -247,12 +244,13 @@ export default function ResearchedTDsPage() {
 
                        <div className="text-right w-12">
                           <div className={`text-sm font-bold ${
-                            score >= 70 ? 'text-emerald-600' :
-                            score >= 50 ? 'text-blue-600' :
-                            score >= 40 ? 'text-yellow-600' :
+                            score === null ? 'text-gray-400' :
+                            colorScore >= 70 ? 'text-emerald-600' :
+                            colorScore >= 50 ? 'text-blue-600' :
+                            colorScore >= 40 ? 'text-yellow-600' :
                             'text-red-600'
                           }`}>
-                            {score}
+                            {score ?? '—'}
                           </div>
                        </div>
                     </div>

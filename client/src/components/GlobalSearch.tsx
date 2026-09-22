@@ -26,10 +26,9 @@ type ResultType = "td" | "party" | "constituency";
 interface TdSearchResult {
   id?: number | string;
   name: string;
-  party?: string;
-  constituency?: string;
-  overall_elo?: number;
-  score?: number;
+  party?: string | null;
+  constituency?: string | null;
+  overallScore?: number | null;
 }
 
 interface PartySearchResult {
@@ -39,9 +38,19 @@ interface PartySearchResult {
 
 interface ConstituencySearchResult {
   name: string;
-  county?: string;
   tdCount?: number;
-  seats?: number;
+}
+
+/** Fetch one scores endpoint and return its unwrapped `data`, or `[]` if it fails. */
+async function fetchScoresList<T>(path: string): Promise<T[]> {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) return [];
+    const json = await res.json();
+    return Array.isArray(json?.data) ? (json.data as T[]) : [];
+  } catch {
+    return [];
+  }
 }
 
 interface FlattenedResult {
@@ -69,30 +78,32 @@ export function GlobalSearch() {
   } = useQuery({
     queryKey: ["global-search-data", regionCode],
     queryFn: async () => {
-      const [tdsRes, partiesRes, constituenciesRes] = await Promise.all([
-        fetch("/api/parliamentary/scores/widget"),
-        fetch("/api/parliamentary/parties/analytics"),
-        fetch("/api/parliamentary/constituencies"),
+      // Each list degrades to [] on its own, so one failing fetch does not
+      // take the whole search down.
+      const [tds, parties, constituencyNames] = await Promise.all([
+        fetchScoresList<TdSearchResult>("/api/scores/tds"),
+        fetchScoresList<{ party: string; memberCount: number }>("/api/scores/parties"),
+        fetchScoresList<{ name: string }>("/api/scores/constituencies"),
       ]);
 
-      if (!tdsRes.ok || !partiesRes.ok || !constituenciesRes.ok) {
+      if (tds.length === 0 && parties.length === 0 && constituencyNames.length === 0) {
         throw new Error("Failed to load global search data");
       }
 
-      const [tdsData, partiesData, constituenciesData] = await Promise.all([
-        tdsRes.json(),
-        partiesRes.json(),
-        constituenciesRes.json(),
-      ]);
+      const tdCountByConstituency = new Map<string, number>();
+      for (const td of tds) {
+        if (td.constituency) {
+          tdCountByConstituency.set(td.constituency, (tdCountByConstituency.get(td.constituency) ?? 0) + 1);
+        }
+      }
 
       return {
-        tds: [
-          ...(tdsData.top_performers || []),
-          ...(tdsData.biggest_movers || []),
-          ...(tdsData.bottom_performers || []),
-        ],
-        parties: partiesData.parties || [],
-        constituencies: constituenciesData.constituencies || [],
+        tds,
+        parties: parties.map((p): PartySearchResult => ({ name: p.party, size: p.memberCount })),
+        constituencies: constituencyNames.map((c): ConstituencySearchResult => ({
+          name: c.name,
+          tdCount: tdCountByConstituency.get(c.name),
+        })),
       };
     },
     staleTime: 5 * 60 * 1000,
@@ -146,8 +157,7 @@ export function GlobalSearch() {
 
     const constituencies = sortByScore(
       searchData.constituencies,
-      (constituency: ConstituencySearchResult) =>
-        scoreText(constituency.name) * 3 + scoreText(constituency.county)
+      (constituency: ConstituencySearchResult) => scoreText(constituency.name) * 3
     ).slice(0, 5);
 
     return { tds, parties, constituencies };
@@ -351,7 +361,7 @@ export function GlobalSearch() {
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
                 <button
-                  onClick={() => handleSelectResult("/td-scores")}
+                  onClick={() => handleSelectResult("/researched-tds")}
                   className="rounded-lg border border-gray-200 bg-white/70 px-4 py-3 text-left text-sm font-semibold text-gray-700 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:border-blue-500/40 dark:hover:bg-blue-900/20"
                 >
                   View TD leaderboard
@@ -402,7 +412,7 @@ export function GlobalSearch() {
                         </div>
                       </div>
                       <Badge variant="outline" className="text-xs">
-                        {td.overall_elo ?? td.score ?? "—"}
+                        {td.overallScore ?? "—"}
                       </Badge>
                     </button>
                   ))}
@@ -473,7 +483,7 @@ export function GlobalSearch() {
                               {highlightText(constituency.name)}
                             </div>
                             <div className="text-xs text-gray-600 dark:text-gray-400">
-                              {(constituency.tdCount ?? constituency.seats ?? "—")} TDs
+                              {constituency.tdCount ?? "—"} TDs
                             </div>
                           </div>
                         </div>
