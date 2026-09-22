@@ -5,8 +5,10 @@
  * `public`. Keeping GlasApp's tables in their own schema means the two apps can never
  * collide on a table name and grants can be managed per app.
  *
- * Every domain that the rebuild reaches adds its tables here. This file is the single
- * source of truth for the database: `npm run db:generate` turns it into a migration.
+ * This file declares the schema and holds the scoring tables. Each other domain has its
+ * own file beside it (voting.ts, ...) that imports `politics` from here and never
+ * declares a second pgSchema('politics'). `npm run db:generate` reads every file in
+ * shared/schema/ (see drizzle.config.ts) and turns them into one migration.
  */
 import { sql } from 'drizzle-orm';
 import {

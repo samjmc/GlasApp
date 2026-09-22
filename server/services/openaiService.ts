@@ -856,49 +856,6 @@ export async function generateContextAwareAnalysis(
 }
 
 /**
- * Generate a vote question with options for a policy article
- * @param headline The article headline
- * @param summary The article summary
- * @param numOptions Number of options (3 or 4)
- * @returns Question and options
- */
-export async function generateVoteQuestion(
-  headline: string,
-  summary: string,
-  numOptions: 3 | 4 = 3
-) {
-  try {
-    const prompt = `
-    Based on the following news article:
-    Headline: "${headline}"
-    Summary: "${summary}"
-
-    Create a multiple-choice poll question that captures the core policy debate.
-    The question should be neutral and engaging.
-
-    Generate ${numOptions} distinct answer options ranging from support to opposition, including a neutral/nuanced option.
-    
-    Format the response as a JSON object with:
-    - question_text: The question string
-    - answer_options: An object with keys "option_a", "option_b", "option_c"${numOptions === 4 ? ', "option_d"' : ''} and values as the option text.
-    `;
-
-    const response = await callChatCompletion({
-      model: "gpt-4o",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
-      response_format: { type: "json_object" },
-    }, { operation: 'generateVoteQuestion' });
-
-    const content = response.choices[0].message.content;
-    return content ? JSON.parse(content) : null;
-  } catch (error) {
-    console.error("Error generating vote question:", error);
-    return null;
-  }
-}
-
-/**
  * Generate vector embedding for text using OpenAI's text-embedding-3-small model
  * @param text The text to embed
  * @returns Array of numbers representing the embedding vector (1536 dimensions)
