@@ -151,4 +151,35 @@ run('news repository against Postgres', () => {
     const page = await repo.feedPage({ sort: 'today', limit: 5, offset: 0 }, future);
     expect(page.rows.map((r) => r.url)).toEqual(['https://rte.ie/yesterday']);
   });
+
+  it('rows below the relevance floor are stored but never shown; unranked rows are shown', async () => {
+    const { RELEVANCE_FLOOR } = await import('./relevance');
+    await repo.insertArticles([
+      { ...row('https://rte.ie/politics', 1), relevanceScore: 90, category: 'oireachtas', aiSummary: 'The Dáil passed it.' },
+      { ...row('https://rte.ie/sport', 2), relevanceScore: RELEVANCE_FLOOR - 1, category: 'other', status: 'skipped', skipReason: 'below floor' },
+      { ...row('https://rte.ie/unranked', 3), relevanceScore: null },
+    ]);
+    const window = { since: new Date(0), fallbackDays: 30 };
+    const feed = await repo.feedPage({ sort: 'recent', limit: 10, offset: 0 }, window);
+    expect(feed.rows.map((r) => r.url)).toEqual(['https://rte.ie/politics', 'https://rte.ie/unranked']);
+    expect(feed.total).toBe(2);
+    expect(feed.rows[0]).toMatchObject({ category: 'oireachtas', aiSummary: 'The Dáil passed it.' });
+    expect((await repo.searchRecent('sport', 10)).map((r) => r.url)).toEqual([]);
+    // The hidden row still blocks a re-insert, so its URL is never ranked (paid for) twice.
+    expect(await repo.existingUrls(['https://rte.ie/sport'])).toEqual(new Set(['https://rte.ie/sport']));
+  });
+
+  it('missingImages lists visible picture-less rows; setImageIfMissing never overwrites', async () => {
+    const [bare, pictured, hidden] = await repo.insertArticles([
+      row('https://rte.ie/bare', 1),
+      { ...row('https://rte.ie/pictured', 1), imageUrl: 'https://img/1.jpg' },
+      { ...row('https://rte.ie/hidden', 1), relevanceScore: 10 },
+    ]);
+    expect((await repo.missingImages(48, 10)).map((r) => r.id)).toEqual([bare]);
+    await repo.setImageIfMissing(bare, 'https://img/new.jpg');
+    await repo.setImageIfMissing(pictured, 'https://img/other.jpg');
+    const { rows } = await dbmod.pool.query('select id, image_url from politics.news_articles where id = any($1) order by id', [[bare, pictured, hidden]]);
+    expect(rows.map((r: { image_url: string | null }) => r.image_url)).toEqual(['https://img/new.jpg', 'https://img/1.jpg', null]);
+    expect(await repo.missingImages(48, 10)).toEqual([]);
+  });
 });

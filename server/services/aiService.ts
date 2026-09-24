@@ -50,8 +50,52 @@ export class AIError extends Error {
   }
 }
 
-/** Whether OpenAI API credentials are configured. */
-export function isOpenAIConfigured(): boolean {
+/**
+ * The chat-completions provider. DeepSeek when LLM_API_KEY is set (the same variables the
+ * GlasIntelligence apps use), otherwise OpenAI. DeepSeek speaks the OpenAI Chat Completions
+ * protocol, so every chat caller works unchanged.
+ */
+export interface ChatProvider {
+  name: "deepseek" | "openai" | "openai-compatible";
+  apiKey: string;
+  baseURL?: string;
+  /** When set, every chat call uses this model whatever the caller asked for. */
+  model: string | null;
+  /** Provider-specific request fields merged into every chat call. */
+  extraBody: Record<string, unknown>;
+}
+
+export const DEFAULT_DEEPSEEK_BASE_URL = "https://api.deepseek.com";
+export const DEFAULT_DEEPSEEK_MODEL = "deepseek-flash";
+
+type Env = Record<string, string | undefined>;
+
+export function chatProviderFrom(env: Env): ChatProvider | null {
+  if (env.LLM_API_KEY) {
+    const baseURL = env.LLM_BASE_URL || DEFAULT_DEEPSEEK_BASE_URL;
+    const isDeepSeek = /deepseek/i.test(baseURL);
+    return {
+      name: isDeepSeek ? "deepseek" : "openai-compatible",
+      apiKey: env.LLM_API_KEY,
+      baseURL,
+      model: env.LLM_MODEL_NAME || (isDeepSeek ? DEFAULT_DEEPSEEK_MODEL : null),
+      // DeepSeek V4.x reasons by default; in that mode every follow-up turn must echo
+      // `reasoning_content` back or the API returns 400 (tool loops here do not), and hidden
+      // reasoning only adds latency to JSON extraction. Measured on deepseek-flash 2026-09-22.
+      extraBody: isDeepSeek ? { thinking: { type: "disabled" } } : {},
+    };
+  }
+  if (env.OPENAI_API_KEY) return { name: "openai", apiKey: env.OPENAI_API_KEY, model: null, extraBody: {} };
+  return null;
+}
+
+/** Whether a chat-completions provider (DeepSeek or OpenAI) is configured. */
+export function isLLMConfigured(): boolean {
+  return chatProviderFrom(process.env) !== null;
+}
+
+/** Whether embeddings are available. DeepSeek has no embeddings API; they need OPENAI_API_KEY. */
+export function isEmbeddingConfigured(): boolean {
   return Boolean(process.env.OPENAI_API_KEY);
 }
 
@@ -62,17 +106,37 @@ export function isAnthropicConfigured(): boolean {
 
 // Lazy shared clients. maxRetries: 0 so the SDK's internal retry never stacks
 // on top of our own retry loop (which would multiply attempts).
-let openaiClient: OpenAI | null = null;
+let chatClient: { client: OpenAI; provider: ChatProvider } | null = null;
+let embeddingClient: OpenAI | null = null;
 let anthropicClient: Anthropic | null = null;
 
-function getOpenAIClient(): OpenAI {
-  if (!openaiClient) {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error("OPENAI_API_KEY is required but not set. AI analysis features are disabled.");
+function getChatClient(): { client: OpenAI; provider: ChatProvider } {
+  if (!chatClient) {
+    const provider = chatProviderFrom(process.env);
+    if (!provider) {
+      throw new Error("No LLM configured: set LLM_API_KEY (DeepSeek) or OPENAI_API_KEY. AI features are disabled.");
     }
-    openaiClient = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, maxRetries: 0 });
+    chatClient = { client: new OpenAI({ apiKey: provider.apiKey, baseURL: provider.baseURL, maxRetries: 0 }), provider };
   }
-  return openaiClient;
+  return chatClient;
+}
+
+function getEmbeddingClient(): OpenAI {
+  if (!embeddingClient) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("Embeddings need OPENAI_API_KEY: DeepSeek has no embeddings API, and the stored vectors are OpenAI's.");
+    }
+    embeddingClient = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, maxRetries: 0 });
+  }
+  return embeddingClient;
+}
+
+/** The request actually sent: the provider's model and extra fields applied. Pure. */
+export function applyProvider(
+  params: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming,
+  provider: ChatProvider,
+): OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming {
+  return { ...params, ...provider.extraBody, model: provider.model ?? params.model };
 }
 
 function getAnthropicClient(): Anthropic {
@@ -209,70 +273,31 @@ async function executeWithRetry<T>(
 }
 
 /**
- * Low-level string prompt -> string completion. Convenience wrapper over
- * callChatCompletion; most call sites should use the typed wrappers below.
+ * Chat Completions with retry/timeout/logging, on the configured provider. Callers name an
+ * OpenAI model; with DeepSeek configured every call runs on LLM_MODEL_NAME instead.
  */
-export async function callAI(
-  prompt: string,
-  options: AIOptions & {
-    model?: string;
-    temperature?: number;
-    maxTokens?: number;
-    system?: string;
-  } = {},
-): Promise<string> {
-  const completion = await callChatCompletion(
-    {
-      model: options.model ?? "gpt-4o",
-      messages: [
-        ...(options.system ? [{ role: "system" as const, content: options.system }] : []),
-        { role: "user" as const, content: prompt },
-      ],
-      ...(options.temperature !== undefined ? { temperature: options.temperature } : {}),
-      ...(options.maxTokens !== undefined ? { max_tokens: options.maxTokens } : {}),
-    },
-    options,
-  );
-  return completion.choices[0]?.message?.content ?? "";
-}
-
-/** OpenAI Chat Completions with retry/timeout/logging. */
 export async function callChatCompletion(
   params: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming,
   options?: AIOptions,
 ): Promise<OpenAI.Chat.Completions.ChatCompletion> {
   const operation = options?.operation ?? "callChatCompletion";
-  const client = getOpenAIClient();
+  const { client, provider } = getChatClient();
+  const request = applyProvider(params, provider);
   return executeWithRetry(
     operation,
     options,
-    (signal) => client.chat.completions.create(params, { signal }),
-    params,
+    (signal) => client.chat.completions.create(request, { signal }),
+    request,
   );
 }
 
-/** OpenAI Responses API with retry/timeout/logging. */
-export async function callResponses(
-  params: OpenAI.Responses.ResponseCreateParamsNonStreaming,
-  options?: AIOptions,
-): Promise<OpenAI.Responses.Response> {
-  const operation = options?.operation ?? "callResponses";
-  const client = getOpenAIClient();
-  return executeWithRetry(
-    operation,
-    options,
-    (signal) => client.responses.create(params, { signal }),
-    params,
-  );
-}
-
-/** OpenAI text embeddings with retry/timeout/logging. */
+/** OpenAI text embeddings with retry/timeout/logging. Always OpenAI (see isEmbeddingConfigured). */
 export async function callEmbedding(
   text: string,
   options?: AIOptions & { model?: string },
 ): Promise<number[]> {
   const operation = options?.operation ?? "callEmbedding";
-  const client = getOpenAIClient();
+  const client = getEmbeddingClient();
   const response = await executeWithRetry(
     operation,
     options,
@@ -288,21 +313,6 @@ export async function callEmbedding(
     { model: options?.model ?? "text-embedding-3-small", input: text },
   );
   return response.data[0]?.embedding ?? [];
-}
-
-/** OpenAI image generation (DALL-E) with retry/timeout/logging. */
-export async function callImageGeneration(
-  params: OpenAI.Images.ImageGenerateParams,
-  options?: AIOptions,
-): Promise<OpenAI.Images.ImagesResponse> {
-  const operation = options?.operation ?? "callImageGeneration";
-  const client = getOpenAIClient();
-  return executeWithRetry(
-    operation,
-    options,
-    (signal) => client.images.generate(params, { signal }),
-    params,
-  );
 }
 
 /** Anthropic Messages API with retry/timeout/logging. */

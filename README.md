@@ -148,7 +148,10 @@ SUPABASE_URL=https://...             # Auth
 SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 SESSION_SECRET=                      # required in production
-OPENAI_API_KEY=                      # TD scoring panel
+LLM_API_KEY=                         # DeepSeek: all chat AI (news ranking, TD scoring panel)
+LLM_BASE_URL=https://api.deepseek.com
+LLM_MODEL_NAME=deepseek-flash
+OPENAI_API_KEY=                      # embeddings only (debate search)
 ```
 
 ---

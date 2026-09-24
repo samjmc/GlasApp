@@ -1,6 +1,6 @@
 {
-  "id": "a08e795e-58e2-4544-b93d-b6216eacb0ac",
-  "prevId": "79f0008b-7e25-4de1-a264-704acf3e9f36",
+  "id": "a9418123-5769-4554-b144-3cb391b8e1a8",
+  "prevId": "a08e795e-58e2-4544-b93d-b6216eacb0ac",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -1057,6 +1057,20 @@
             "id"
           ],
           "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "pledge_evidence_division_id_divisions_id_fk": {
+          "name": "pledge_evidence_division_id_divisions_id_fk",
+          "tableFrom": "pledge_evidence",
+          "tableTo": "divisions",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "division_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
           "onUpdate": "no action"
         }
       },

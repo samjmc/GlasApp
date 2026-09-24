@@ -1,6 +1,7 @@
 /**
  * Feed item -> article row. Pure.
  */
+import { rankFeedImages, type ImageCandidate } from './images';
 
 /** What a fetcher returns for one feed entry, before any cleaning. */
 export interface RawItem {
@@ -13,7 +14,7 @@ export interface RawItem {
   snippet: string | undefined;
   /** Full HTML body when the feed carries one (content:encoded). */
   bodyHtml: string | undefined;
-  imageUrl: string | undefined;
+  images: ImageCandidate[];
 }
 
 export interface NewArticle {
@@ -22,7 +23,10 @@ export interface NewArticle {
   title: string;
   summary: string | null;
   content: string;
+  /** Chosen at ingest from `images` (plus the page's og:image when those are not enough). */
   imageUrl: string | null;
+  /** Feed image candidates, upgraded and widest first. */
+  images: ImageCandidate[];
   publishedAt: Date;
 }
 
@@ -89,6 +93,7 @@ export function normalizeItem(item: RawItem, now: Date): NormalizeResult {
 
   const snippet = item.snippet ? dropBoilerplate(stripHtml(item.snippet)) : '';
   const body = item.bodyHtml ? stripHtml(item.bodyHtml) : '';
+  const images = rankFeedImages(item.images);
 
   return {
     ok: true,
@@ -98,19 +103,11 @@ export function normalizeItem(item: RawItem, now: Date): NormalizeResult {
       title,
       summary: snippet ? cutSummary(snippet) : null,
       content: body || snippet,
-      imageUrl: item.imageUrl ? canonicalImage(item.imageUrl) : null,
+      images,
+      // The best feed image, until ingest checks it and maybe finds a better one on the page.
+      imageUrl: images[0]?.url ?? null,
       // A future date is a publisher clock error; clamp so it cannot pin the top of "recent".
       publishedAt: published > now ? now : published,
     },
   };
-}
-
-/** Image URLs keep their query string: resizers and signed CDNs depend on it. */
-function canonicalImage(url: string): string | null {
-  try {
-    const u = new URL(url.trim().replace(/&amp;/g, '&'));
-    return u.protocol === 'https:' || u.protocol === 'http:' ? u.toString() : null;
-  } catch {
-    return null;
-  }
 }

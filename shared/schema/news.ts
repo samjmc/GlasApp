@@ -6,6 +6,7 @@
  */
 import { sql } from 'drizzle-orm';
 import { boolean, index, integer, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
+import type { NewsCategory } from '../news';
 import { politics } from './politics';
 
 /** Article lifecycle. `claimed` rows belong to one scoring run until their lease expires. */
@@ -52,6 +53,14 @@ export const newsArticles = politics.table(
     claimedAt: timestamp('claimed_at', { withTimezone: true }),
     /** Claims so far. A row claimed MAX_ATTEMPTS times without finishing goes to `failed`. */
     attempts: smallint('attempts').notNull().default(0),
+    /**
+     * 0–100 from the ingest relevance pass. Below RELEVANCE_FLOOR the row is stored (so its URL
+     * is never scored again) but never shown or scored. NULL = the pass failed; shown anyway.
+     */
+    relevanceScore: smallint('relevance_score'),
+    category: varchar('category', { length: 32 }).$type<NewsCategory>(),
+    /** Neutral two-sentence summary from the relevance pass. The publisher's own is `summary`. */
+    aiSummary: text('ai_summary'),
     /** 0–100 from scoring triage. NULL until triaged. */
     importanceScore: smallint('importance_score'),
     importanceReasoning: text('importance_reasoning'),
