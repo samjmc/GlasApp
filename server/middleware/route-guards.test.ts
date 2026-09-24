@@ -181,12 +181,13 @@ describe('createRateLimit', () => {
 describe('structural markers (catch a silent revert of the audit fixes)', () => {
   const read = (rel: string) => fs.readFileSync(path.join(REPO_ROOT, rel), 'utf8');
 
-  it('POST /api/quiz-results no longer reads userId from the request body', () => {
-    const src = read('server/routes.ts');
-    assert.equal(src.includes('validatedData.userId'), false);
-    // The auth rebuild replaced the session read with the verified token's subject.
-    assert.ok(src.includes('const userId = req.user?.id ?? null'));
+  it('POST /api/quiz takes the user from the token, never from the request body', () => {
+    // The quiz rebuild moved the old inline /api/quiz-results handler to server/routes/quiz.ts.
+    const src = read('server/routes/quiz.ts');
+    assert.ok(src.includes('submitQuiz(req.user?.id ?? null'));
+    assert.equal(/body\.data\.userId|req\.body\.userId/.test(src), false);
     assert.equal(src.includes('req.session'), false);
+    assert.equal(read('server/routes.ts').includes('req.session'), false);
   });
 
   it('party explanations and debate alert status writes are admin-only', () => {

@@ -167,6 +167,24 @@ latest quiz and votes count at full weight until they retake the quiz. Party pri
 `PoliticalOpinionChangeTracker`, `PartyMatchResults`, `MultidimensionalIdeologyProfile`, `ContextAnalysis`
 import `quizTypes` — repointed to `shared/ideology.ts`.
 
+## Built (2026-09-24) — where it differs from the plan above
+
+- **Sign rule decided: + = right-coded pole.** Quiz answers flipped on globalism, environmental,
+  welfare. Technocratic was mixed inside its own three questions and was re-read answer by answer
+  (Q23 negated, Q25 answers 2 and 4 negated, Q24 already right). No per-source sign table: every
+  source already uses the rule, and a test pins it.
+- **Debate ideology deleted, not ported.** It read tables with no schema; debates belong to the
+  parliament rebuild, which calls `recordTdEvidence({ source: 'debate' })` when it wants to.
+- **Voting merged first (#63), pledges second (#65).** So no adapters were needed for policy.ts,
+  voting.ts or dailySessionService (all deleted by GApp), and `user/rankings/` went entirely.
+  `server/voting/ideology.ts` now re-exports from `server/ideology`.
+- **A quiz only speaks to the dimensions it asked.** Found by the Postgres integration test: a
+  partial quiz counted as 0 on the other dimensions at weight 10.
+- **Also deleted:** `/api/ai/explanation`, `/analyze-text`, `/analyze-bulk` (no client caller) and
+  eight dead quiz functions in `openaiService.ts` (one was a fourth scoring formula).
+- **Client fixes found in the browser:** a double-click on Next skipped past the end of a
+  dimension ("No questions found"); an AI-analysis failure hid the party matches.
+
 ## Deleted
 
 Server: `quizHistoryService.ts`, `personalRankingsService.ts` (1,109), `userIdeologyProfileService.ts`,

@@ -2,6 +2,7 @@
  * Ideology operations: record evidence, recompute and read profiles, match positions.
  */
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
+import { QUIZ_QUESTIONS } from '@shared/quiz';
 import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
 import { listUserVoteVectors, type UserVoteVector } from '../voting';
 import { alignment, closestAndFurthest, type DimensionWeights } from './alignment';
@@ -27,11 +28,21 @@ function voteObservation(vote: UserVoteVector): Observation {
   };
 }
 
+const questionDimension = new Map(QUIZ_QUESTIONS.map((q) => [q.id, q.dimension]));
+
+/** A quiz speaks only to the dimensions its answered questions measure; a 0 elsewhere is "not asked". */
+function quizObservation(quiz: QuizResultRow): Observation {
+  const measured = new Set(quiz.answers.map((a) => questionDimension.get(a.questionId)).filter(Boolean));
+  const full = repo.vectorOf(quiz);
+  const vector = Object.fromEntries(IDEOLOGY_DIMENSIONS.filter((d) => measured.has(d)).map((d) => [d, full[d]]));
+  return { vector, weight: QUIZ_WEIGHT, observedAt: quiz.createdAt };
+}
+
 /** The latest quiz as of `until` (quizzes are newest first) plus every vote up to it. */
 function userObservations(quizzes: QuizResultRow[], votes: UserVoteVector[], until: Date): Observation[] {
   const quiz = quizzes.find((q) => q.createdAt <= until);
   const observations = votes.filter((v) => v.votedAt <= until).map(voteObservation);
-  if (quiz) observations.push({ vector: repo.vectorOf(quiz), weight: QUIZ_WEIGHT, observedAt: quiz.createdAt });
+  if (quiz) observations.push(quizObservation(quiz));
   return observations;
 }
 

@@ -178,13 +178,15 @@ const QuizPage: React.FC = () => {
       answerType: 'option'
     });
 
+    // Absolute targets, not `index + 1`: a double-click must land on the same question,
+    // not skip past the end of the dimension.
     if (currentQuestionIndex < currentDimensionQuestions.length - 1) {
-      setCurrentQuestionIndex((index) => index + 1);
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
       return;
     }
 
     if (dimensionIndex < dimensionOrder.length - 1) {
-      setDimensionIndex((index) => index + 1);
+      setDimensionIndex(dimensionIndex + 1);
       setCurrentQuestionIndex(0);
       return;
     }
@@ -194,12 +196,12 @@ const QuizPage: React.FC = () => {
 
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex((index) => index - 1);
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
       return;
     }
     if (dimensionIndex > 0) {
       const previousQuestions = questionsByDimension[dimensionOrder[dimensionIndex - 1]];
-      setDimensionIndex((index) => index - 1);
+      setDimensionIndex(dimensionIndex - 1);
       setCurrentQuestionIndex(Math.max(0, previousQuestions.length - 1));
     }
   };

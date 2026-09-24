@@ -196,6 +196,10 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
           <Button onClick={() => fetchAnalysisData(dimensions, weights || {})}>
             Try Again
           </Button>
+          {/* Matches need no AI, so an analysis failure must not hide them. */}
+          <div className="mt-6">
+            <PartyMatchResults dimensions={dimensions} weights={weights} />
+          </div>
         </CardContent>
       </Card>
     );
