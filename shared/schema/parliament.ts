@@ -122,14 +122,181 @@ export const tdParliamentStats = politics.table('td_parliament_stats', {
   /** Distinct debate sections spoken in, chair speeches excluded. */
   sectionsSpoken: integer('sections_spoken').notNull(),
   speeches: integer('speeches').notNull(),
+  /**
+   * Sittings of the TD's own committees held while they were a member, and how many of those
+   * the roll call lists them at. Nullable: rows from before committees were ingested have none.
+   */
+  committeeSittingsEligible: integer('committee_sittings_eligible'),
+  committeeSittingsAttended: integer('committee_sittings_attended'),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
+
+// ---------------------------------------------------------------------------
+// Committees: membership (from the roster) and sittings with their roll call
+// (from committee transcripts). Joined on the committee's Oireachtas URI.
+// ---------------------------------------------------------------------------
+export const committees = politics.table('committees', {
+  /** Last segment of the committee URI, e.g. "committee_of_public_accounts". */
+  id: varchar('id', { length: 160 }).primaryKey(),
+  uri: text('uri').notNull().unique(),
+  name: text('name').notNull(),
+  /** "Statutory", "Standing", "Select", "Joint", … as the Oireachtas types it. */
+  committeeType: varchar('committee_type', { length: 60 }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const committeeMemberships = politics.table(
+  'committee_memberships',
+  {
+    committeeId: varchar('committee_id', { length: 160 })
+      .notNull()
+      .references(() => committees.id, { onDelete: 'cascade' }),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    /** "Cathaoirleach", "Leas-Chathaoirleach", or NULL for an ordinary member. */
+    role: varchar('role', { length: 60 }),
+    startDate: date('start_date').notNull(),
+    endDate: date('end_date'),
+  },
+  (t) => [
+    primaryKey({ columns: [t.committeeId, t.memberCode, t.startDate] }),
+    index('committee_memberships_td_idx').on(t.tdId),
+  ],
+);
+
+export const committeeSittings = politics.table(
+  'committee_sittings',
+  {
+    /** The transcript's debate-record URI; one per sitting. */
+    uri: text('uri').primaryKey(),
+    committeeId: varchar('committee_id', { length: 160 })
+      .notNull()
+      .references(() => committees.id, { onDelete: 'cascade' }),
+    date: date('date').notNull(),
+    /** Members on the roll call. 0 means the transcript had none, not that nobody came. */
+    presentCount: integer('present_count').notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('committee_sittings_committee_date_idx').on(t.committeeId, t.date)],
+);
+
+export const committeeAttendance = politics.table(
+  'committee_attendance',
+  {
+    sittingUri: text('sitting_uri')
+      .notNull()
+      .references(() => committeeSittings.uri, { onDelete: 'cascade' }),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+  },
+  (t) => [primaryKey({ columns: [t.sittingUri, t.memberCode] }), index('committee_attendance_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Bills (/legislation): the bill, who sponsored it, its stages, and the debates it was
+// taken in. `bill_debates.debate_section_id` uses the same id as
+// `divisions.debate_section_id`, which is how a bill joins to how everyone voted on it.
+// ---------------------------------------------------------------------------
+export const bills = politics.table(
+  'bills',
+  {
+    /** `<year>-<no>`, e.g. "2026-90". */
+    id: varchar('id', { length: 20 }).primaryKey(),
+    uri: text('uri').notNull().unique(),
+    billNo: integer('bill_no').notNull(),
+    billYear: smallint('bill_year').notNull(),
+    shortTitle: text('short_title').notNull(),
+    longTitle: text('long_title'),
+    /** "Government" | "Private Member". */
+    source: varchar('source', { length: 40 }).notNull(),
+    /** "Current" | "Enacted" | "Lapsed" | "Defeated" | "Withdrawn" … as reported. */
+    status: varchar('status', { length: 40 }).notNull(),
+    originHouse: varchar('origin_house', { length: 40 }),
+    mostRecentStage: text('most_recent_stage'),
+    /** "27/2026" once enacted. */
+    act: varchar('act', { length: 20 }),
+    latestVersionPdf: text('latest_version_pdf'),
+    memoPdf: text('memo_pdf'),
+    lastUpdated: date('last_updated'),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('bills_status_idx').on(t.status), index('bills_last_updated_idx').on(t.lastUpdated)],
+);
+
+export const billSponsors = politics.table(
+  'bill_sponsors',
+  {
+    billId: varchar('bill_id', { length: 20 })
+      .notNull()
+      .references(() => bills.id, { onDelete: 'cascade' }),
+    position: integer('position').notNull(),
+    /** NULL for a sponsor who is an office (a Minister), not a named member. */
+    memberCode: varchar('member_code', { length: 120 }),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    /** The member's name, or the office (e.g. "Minister for Finance"). */
+    label: text('label').notNull(),
+    isPrimary: boolean('is_primary').notNull().default(false),
+  },
+  (t) => [primaryKey({ columns: [t.billId, t.position] }), index('bill_sponsors_td_idx').on(t.tdId), index('bill_sponsors_member_idx').on(t.memberCode)],
+);
+
+export const billStages = politics.table(
+  'bill_stages',
+  {
+    billId: varchar('bill_id', { length: 20 })
+      .notNull()
+      .references(() => bills.id, { onDelete: 'cascade' }),
+    position: integer('position').notNull(),
+    stage: text('stage').notNull(),
+    chamber: varchar('chamber', { length: 60 }),
+    date: date('date'),
+  },
+  (t) => [primaryKey({ columns: [t.billId, t.position] })],
+);
+
+export const billDebates = politics.table(
+  'bill_debates',
+  {
+    billId: varchar('bill_id', { length: 20 })
+      .notNull()
+      .references(() => bills.id, { onDelete: 'cascade' }),
+    /** `dail-<date>-<eId>` or `seanad-<date>-<eId>`; the Dáil form matches `divisions`. */
+    debateSectionId: varchar('debate_section_id', { length: 80 }).notNull(),
+    date: date('date').notNull(),
+    chamber: varchar('chamber', { length: 60 }),
+    title: text('title'),
+  },
+  (t) => [primaryKey({ columns: [t.billId, t.debateSectionId] }), index('bill_debates_section_idx').on(t.debateSectionId)],
+);
+
+// ---------------------------------------------------------------------------
+// Parliamentary questions, counted per TD, month, department and type. The text is not
+// stored: a TD's focus areas need only the counts, and the text of ~150k questions a term
+// would be most of the database.
+// ---------------------------------------------------------------------------
+export const questionType = politics.enum('question_type', ['oral', 'written']);
+export type QuestionType = (typeof questionType.enumValues)[number];
+
+export const questionCounts = politics.table(
+  'question_counts',
+  {
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    /** First day of the month. */
+    month: date('month').notNull(),
+    /** Who the question was put to, as the Oireachtas labels it, e.g. "Health". */
+    department: varchar('department', { length: 120 }).notNull(),
+    questionType: questionType('question_type').notNull(),
+    n: integer('n').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.memberCode, t.month, t.department, t.questionType] }), index('question_counts_td_idx').on(t.tdId)],
+);
 
 // ---------------------------------------------------------------------------
 // How far each feed has been ingested; the next sync starts from here.
 // ---------------------------------------------------------------------------
 export const parliamentSyncState = politics.table('parliament_sync_state', {
-  /** 'divisions' | 'debates' | 'roster' */
+  /** 'roster' | 'divisions' | 'debates' | 'committees' | 'bills' | 'questions' */
   feed: varchar('feed', { length: 20 }).primaryKey(),
   /** Last date fully ingested. NULL = never. */
   throughDate: date('through_date'),
@@ -150,3 +317,9 @@ export type DebateSectionRow = typeof debateSections.$inferSelect;
 export type NewDebateSection = typeof debateSections.$inferInsert;
 export type NewDebateSpeech = typeof debateSpeeches.$inferInsert;
 export type TdParliamentStatsRow = typeof tdParliamentStats.$inferSelect;
+export type NewCommittee = typeof committees.$inferInsert;
+export type NewCommitteeMembership = typeof committeeMemberships.$inferInsert;
+export type NewBill = typeof bills.$inferInsert;
+export type NewBillSponsor = typeof billSponsors.$inferInsert;
+export type NewBillStage = typeof billStages.$inferInsert;
+export type NewBillDebate = typeof billDebates.$inferInsert;

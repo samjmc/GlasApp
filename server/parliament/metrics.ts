@@ -26,6 +26,18 @@ export function attendancePct(votesCast: number, divisionsEligible: number, isPr
   return Math.round((Math.min(votesCast, divisionsEligible) / divisionsEligible) * 1000) / 10;
 }
 
+/** Below this, committee attendance is noise (a TD who joined a committee last month). */
+export const MIN_COMMITTEE_SITTINGS = 10;
+
+/**
+ * Sittings of the TD's own committees they are on the roll call for, 0–100 to one decimal.
+ * NULL below MIN_COMMITTEE_SITTINGS: a minister sits on no committee, which is not 0%.
+ */
+export function committeeAttendancePct(attended: number, eligible: number): number | null {
+  if (eligible < MIN_COMMITTEE_SITTINGS) return null;
+  return Math.round((Math.min(attended, eligible) / eligible) * 1000) / 10;
+}
+
 /** Distinct debate sections spoken in per sitting day. NULL when not measurable. */
 export function participationRate(p: ParticipationInput): number | null {
   if (p.isPresiding || p.sittingDays < MIN_SITTING_DAYS) return null;

@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   attendancePct,
+  committeeAttendancePct,
+  MIN_COMMITTEE_SITTINGS,
   debateScores,
   majority,
   majorityFor,
@@ -26,6 +28,18 @@ describe('attendancePct', () => {
   it('measures a by-election TD against their own window, not the whole term', () => {
     // Joined 2026-05-25 and voted in 56 of the 60 divisions since: that is 93%, not 14%.
     expect(attendancePct(56, 60, false)).toBe(93.3);
+  });
+});
+
+describe('committeeAttendancePct', () => {
+  it("is sittings attended over sittings of the TD's own committees, one decimal", () => {
+    expect(committeeAttendancePct(18, 24)).toBe(75);
+    expect(committeeAttendancePct(24, 24)).toBe(100);
+  });
+
+  it('is NULL below the minimum, so a minister with no committee is not 0%', () => {
+    expect(committeeAttendancePct(0, 0)).toBeNull();
+    expect(committeeAttendancePct(3, MIN_COMMITTEE_SITTINGS - 1)).toBeNull();
   });
 });
 

@@ -13,7 +13,7 @@ import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
 import { PageHeader } from "@/components/PageHeader";
 import { queryKeys } from '@/lib/queryKeys';
 import { formatIsoDate } from '@/lib/isoDate';
-import type { TdParliamentSummary, TdVote, TdDebateContribution, DivisionVote } from '@shared/parliamentApi';
+import type { TdParliamentSummary, TdVote, TdDebateContribution, DivisionVote, TdCommittee, TdBill, TdQuestionTopic } from '@shared/parliamentApi';
 import type { FeedArticle } from '@/lib/news';
 import {
   TrendingUp,
@@ -181,6 +181,30 @@ export default function TDProfilePageEnhanced() {
   });
   const tdDebateContributions = tdDebatesResp?.data ?? [];
 
+  const { data: tdCommitteesResp, isLoading: tdCommitteesLoading, isError: tdCommitteesError } = useQuery({
+    queryKey: queryKeys.parliament.tdCommittees(tdId ?? 0),
+    queryFn: () => getParliament<TdCommittee[]>(`/api/parliament/tds/${tdId}/committees`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdCommittees = tdCommitteesResp?.data ?? [];
+
+  const { data: tdBillsResp, isLoading: tdBillsLoading, isError: tdBillsError } = useQuery({
+    queryKey: queryKeys.parliament.tdBills(tdId ?? 0, 20),
+    queryFn: () => getParliament<TdBill[]>(`/api/parliament/tds/${tdId}/bills?limit=20`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdBills = tdBillsResp?.data ?? [];
+
+  const { data: tdQuestionTopicsResp, isLoading: tdQuestionTopicsLoading, isError: tdQuestionTopicsError } = useQuery({
+    queryKey: queryKeys.parliament.tdQuestionTopics(tdId ?? 0),
+    queryFn: () => getParliament<TdQuestionTopic[]>(`/api/parliament/tds/${tdId}/question-topics`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdQuestionTopics = tdQuestionTopicsResp?.data ?? [];
+
   // Fetch recent news articles for this TD
   const { data: newsArticles } = useQuery({
     queryKey: queryKeys.td.news(name || ''),
@@ -307,7 +331,11 @@ export default function TDProfilePageEnhanced() {
     score: score.dimensions?.[key]?.score ?? null,
     elo: score.dimensions?.[key]?.elo ?? null,
   }));
-  
+
+  // question-topics is sorted by total (oral + written) desc, so the first entry's total is the max.
+  const topQuestionTopics = tdQuestionTopics.slice(0, 8);
+  const maxQuestionTopicTotal = topQuestionTopics.reduce((max, t) => Math.max(max, t.oral + t.written), 0);
+
   // Real polling data
   const pollingData = {
     partyNationalPolling: partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null,
@@ -388,6 +416,21 @@ export default function TDProfilePageEnhanced() {
                     <Crown className="w-3 h-3" />
                     {office.title}
                   </Badge>
+                ))}
+              </div>
+            )}
+
+            {/* Current offices (Oireachtas record) */}
+            {parliamentSummary && parliamentSummary.offices.length > 0 && (
+              <div className="flex flex-wrap gap-3 mb-4 text-sm text-gray-700 dark:text-gray-300">
+                {parliamentSummary.offices.map((office, idx) => (
+                  <span key={idx} className="inline-flex items-center gap-1.5">
+                    <Briefcase className="w-3.5 h-3.5 text-gray-500" />
+                    {office.title}
+                    {office.since && (
+                      <span className="text-gray-500 dark:text-gray-400">· since {formatIsoDate(office.since)}</span>
+                    )}
+                  </span>
                 ))}
               </div>
             )}
@@ -762,6 +805,143 @@ export default function TDProfilePageEnhanced() {
                     </div>
                   )}
                 </div>
+                <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-100 dark:border-indigo-800/30">
+                  <div className="text-sm text-indigo-700 dark:text-indigo-300 mb-1">Committee attendance</div>
+                  <div className="text-2xl font-bold text-indigo-800 dark:text-indigo-100">
+                    {parliamentSummary.committeeAttendancePct !== null ? `${parliamentSummary.committeeAttendancePct}%` : '—'}
+                  </div>
+                  <div className="text-xs text-indigo-600 dark:text-indigo-300 mt-1">
+                    {parliamentSummary.committeeSittingsAttended ?? '—'} of {parliamentSummary.committeeSittingsEligible ?? '—'} sittings
+                  </div>
+                </div>
+                <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-100 dark:border-orange-800/30">
+                  <div className="text-sm text-orange-700 dark:text-orange-300 mb-1">Bills sponsored</div>
+                  <div className="text-2xl font-bold text-orange-800 dark:text-orange-100">
+                    {parliamentSummary.billsSponsored}
+                  </div>
+                </div>
+              </div>
+            )}
+          </Card>
+
+          {/* Committees */}
+          <Card className="p-6">
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <Users className="w-5 h-5 text-blue-600" />
+              Committees
+            </h2>
+
+            {tdCommitteesLoading ? (
+              <div className="text-center py-6 text-gray-500 text-sm">Loading committees...</div>
+            ) : tdCommitteesError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load committees. Try again later.</p>
+            ) : tdCommittees.length === 0 ? (
+              <p className="text-sm text-gray-600 dark:text-gray-400">Not a member of any committee.</p>
+            ) : (
+              <div className="space-y-2">
+                {tdCommittees.map((committee) => (
+                  <div
+                    key={committee.committeeId}
+                    className="rounded-lg border border-gray-200 dark:border-gray-700 p-3"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{committee.name}</h4>
+                          {committee.role === 'Cathaoirleach' && (
+                            <Badge className="bg-yellow-500 hover:bg-yellow-600 text-white border-0">Chair</Badge>
+                          )}
+                          {committee.role === 'Leas-Chathaoirleach' && (
+                            <Badge variant="secondary">Vice-chair</Badge>
+                          )}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          {formatIsoDate(committee.start)} – {committee.end ? formatIsoDate(committee.end) : 'present'}
+                        </div>
+                      </div>
+                      <div className="text-right text-xs text-gray-600 dark:text-gray-400 flex-shrink-0">
+                        {committee.sittingsAttended} of {committee.sittingsEligible} sittings
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card>
+
+          {/* Bills sponsored */}
+          <Card className="p-6">
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-blue-600" />
+              Bills sponsored
+            </h2>
+
+            {tdBillsLoading ? (
+              <div className="text-center py-6 text-gray-500 text-sm">Loading bills...</div>
+            ) : tdBillsError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load bills. Try again later.</p>
+            ) : tdBills.length === 0 ? (
+              <p className="text-sm text-gray-600 dark:text-gray-400">No bills sponsored this term.</p>
+            ) : (
+              <div className="space-y-2">
+                {tdBills.map((bill) => (
+                  <Link
+                    key={bill.id}
+                    href={`/debates?tab=bills&bill=${encodeURIComponent(bill.id)}`}
+                    className="block rounded-lg border border-gray-200 dark:border-gray-700 p-3 hover:border-blue-400 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 line-clamp-2">
+                          {bill.shortTitle}
+                          {bill.isPrimary && (
+                            <span className="ml-2 text-xs font-medium text-blue-600 dark:text-blue-400">Primary sponsor</span>
+                          )}
+                        </h4>
+                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          {bill.source}{bill.mostRecentStage ? ` · ${bill.mostRecentStage}` : ''}
+                        </div>
+                      </div>
+                      <Badge variant="outline" className="flex-shrink-0">{bill.status}</Badge>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </Card>
+
+          {/* Question focus */}
+          <Card className="p-6">
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-blue-600" />
+              Question focus
+            </h2>
+
+            {tdQuestionTopicsLoading ? (
+              <div className="text-center py-6 text-gray-500 text-sm">Loading question topics...</div>
+            ) : tdQuestionTopicsError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load question topics. Try again later.</p>
+            ) : topQuestionTopics.length === 0 ? (
+              <p className="text-sm text-gray-600 dark:text-gray-400">No parliamentary questions recorded yet.</p>
+            ) : (
+              <div className="space-y-3">
+                {topQuestionTopics.map((topic) => {
+                  const total = topic.oral + topic.written;
+                  const percentage = maxQuestionTopicTotal > 0 ? (total / maxQuestionTopicTotal) * 100 : 0;
+                  return (
+                    <div key={topic.department}>
+                      <div className="flex justify-between items-center mb-1 text-sm gap-2">
+                        <span className="font-medium text-gray-900 dark:text-gray-100 truncate">{topic.department}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
+                          {topic.oral} oral · {topic.written} written
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-500" style={{ width: `${percentage}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </Card>

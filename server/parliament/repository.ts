@@ -1,5 +1,7 @@
 /**
  * Every read and write of the parliament tables. Nothing else in the app queries them.
+ * Divisions, debates and the per-TD record live here; committees, bills and question
+ * counts live in ./repo/ and are re-exported, so callers see one `repository`.
  */
 import { and, asc, count, desc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
 import {
@@ -26,8 +28,11 @@ import type {
   TdVote,
 } from '@shared/parliamentApi';
 import { db, type Db } from '../db';
+import { countBillsSponsored } from './repo/bills';
 import {
+  committeeAttendancePct,
   INDEPENDENT,
+  MIN_COMMITTEE_SITTINGS,
   MIN_SITTING_DAYS,
   majorityFor,
   partyLinePct,
@@ -36,17 +41,14 @@ import {
 } from './metrics';
 import type { ParsedDivision, ParsedSpeech } from './parse';
 
+import { chunks } from './repo/util';
+
+export * from './repo/committees';
+export * from './repo/bills';
+export * from './repo/questions';
+
 /** The byParty group for voters who are not in `tds`. */
 export const NOT_IN_ROSTER = 'Not in current roster';
-
-/** Postgres caps a statement at 65,535 parameters; rows × columns stays well under it. */
-const INSERT_CHUNK = 500;
-
-function chunks<T>(rows: T[], size = INSERT_CHUNK): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < rows.length; i += size) out.push(rows.slice(i, i + size));
-  return out;
-}
 
 // ---------------------------------------------------------------------------
 // Writes (sync only)
@@ -117,6 +119,27 @@ export async function relinkTds(database: Db = db): Promise<void> {
     update politics.debate_speeches s set td_id = t.id
     from politics.tds t
     where t.member_code = s.member_code and s.td_id is distinct from t.id`);
+  for (const table of ['committee_memberships', 'committee_attendance', 'bill_sponsors', 'question_counts']) {
+    await database.execute(sql.raw(`
+      update politics.${table} r set td_id = t.id
+      from politics.tds t
+      where t.member_code = r.member_code and r.td_id is distinct from t.id`));
+  }
+}
+
+/** The roster's profile details that live on `tds`: current offices and committee names. */
+export async function updateRosterDetails(
+  rows: Array<{ memberCode: string; offices: Array<{ title: string; since: string | null }>; committees: string[] }>,
+  database: Db = db,
+): Promise<void> {
+  await database.transaction(async (tx) => {
+    for (const r of rows) {
+      await tx
+        .update(tds)
+        .set({ offices: r.offices.map((o) => (o.since ? { title: o.title, since: o.since } : { title: o.title })), committees: r.committees })
+        .where(eq(tds.memberCode, r.memberCode));
+    }
+  });
 }
 
 /**
@@ -202,7 +225,7 @@ export async function syncStatus(database: Db = db) {
   }));
 }
 
-/** member code → stored question counts, so a failed fetch can keep the last good values. */
+/** member code → question totals currently on `tds`, kept when this run's counts are incomplete. */
 export async function storedQuestionCounts(database: Db = db): Promise<Map<string, { oral: number | null; written: number | null }>> {
   const rows = await database
     .select({ code: tds.memberCode, oral: tds.questionCountOral, written: tds.questionCountWritten })
@@ -266,8 +289,10 @@ export async function tdSummary(tdId: number, database: Db = db) {
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.id, tdId));
   if (!row) return null;
-  const votes = await votesOf(tdId, {}, database);
+  const [votes, billsSponsored] = await Promise.all([votesOf(tdId, {}, database), countBillsSponsored(tdId, database)]);
   const { td, stats } = row;
+  const eligible = stats?.committeeSittingsEligible ?? null;
+  const attended = stats?.committeeSittingsAttended ?? null;
   return {
     tdId,
     memberSince: stats?.memberSince ?? null,
@@ -282,6 +307,11 @@ export async function tdSummary(tdId: number, database: Db = db) {
     speeches: stats?.speeches ?? null,
     partyLinePct: partyLinePct(votes),
     votesAgainstParty: votes.some((v) => v.partyMajority !== null) ? votes.filter((v) => v.withParty === false).length : null,
+    offices: (td.offices ?? []).map((o) => ({ title: o.title, since: o.since ?? null })),
+    committeeSittingsEligible: eligible,
+    committeeSittingsAttended: attended,
+    committeeAttendancePct: eligible === null || attended === null ? null : committeeAttendancePct(attended, eligible),
+    billsSponsored,
   };
 }
 
@@ -408,11 +438,13 @@ export async function leaderboard(
     attendance: sql<number>`${tds.attendancePct}`,
     participation: sql<number>`round(${tdParliamentStats.sectionsSpoken} * 10.0 / nullif(${tdParliamentStats.sittingDays}, 0), 1)`,
     questions: sql<number>`(${tds.questionCountOral} + ${tds.questionCountWritten})`,
+    committees: sql<number>`round(${tdParliamentStats.committeeSittingsAttended} * 100.0 / nullif(${tdParliamentStats.committeeSittingsEligible}, 0), 1)`,
   }[metric];
   const measurable = {
     attendance: sql`${tds.attendancePct} is not null`,
     participation: sql`not ${tdParliamentStats.isPresiding} and ${tdParliamentStats.sittingDays} >= ${MIN_SITTING_DAYS}`,
     questions: sql`${tds.questionCountOral} is not null and ${tds.questionCountWritten} is not null`,
+    committees: sql`${tdParliamentStats.committeeSittingsEligible} >= ${MIN_COMMITTEE_SITTINGS}`,
   }[metric];
   const rows = await database
     .select({ tdId: tds.id, name: tds.name, party: tds.party, constituency: tds.constituency, imageUrl: tds.imageUrl, value })
@@ -426,7 +458,14 @@ export async function leaderboard(
 
 export async function parties(database: Db = db): Promise<PartyParliamentSummary[]> {
   const members = await database
-    .select({ party: tds.party, attendancePct: tds.attendancePct, sectionsSpoken: tdParliamentStats.sectionsSpoken, isPresiding: tdParliamentStats.isPresiding })
+    .select({
+      party: tds.party,
+      attendancePct: tds.attendancePct,
+      sectionsSpoken: tdParliamentStats.sectionsSpoken,
+      isPresiding: tdParliamentStats.isPresiding,
+      committeeEligible: tdParliamentStats.committeeSittingsEligible,
+      committeeAttended: tdParliamentStats.committeeSittingsAttended,
+    })
     .from(tds)
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.isActive, true));
@@ -462,6 +501,9 @@ export async function parties(database: Db = db): Promise<PartyParliamentSummary
         avgAttendancePct: avg(ms.map((m) => m.attendancePct)),
         partyLinePct: c && c.total ? Math.round((c.with / c.total) * 1000) / 10 : null,
         avgSectionsSpoken: avg(ms.filter((m) => !m.isPresiding).map((m) => m.sectionsSpoken ?? null)),
+        avgCommitteeAttendancePct: avg(
+          ms.map((m) => (m.committeeEligible === null || m.committeeAttended === null ? null : committeeAttendancePct(m.committeeAttended, m.committeeEligible))),
+        ),
       };
     })
     .sort((a, b) => b.members - a.members || a.party.localeCompare(b.party));

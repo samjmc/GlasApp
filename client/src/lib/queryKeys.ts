@@ -48,6 +48,12 @@ export const queryKeys = {
     tdVotes: (tdId: number, limit: number, againstParty: boolean) =>
       ["parliament-td-votes", tdId, limit, againstParty] as const,
     tdDebates: (tdId: number, limit: number) => ["parliament-td-debates", tdId, limit] as const,
+    tdCommittees: (tdId: number) => ["parliament-td-committees", tdId] as const,
+    tdBills: (tdId: number, limit: number) => ["parliament-td-bills", tdId, limit] as const,
+    tdQuestionTopics: (tdId: number) => ["parliament-td-question-topics", tdId] as const,
+    bills: (status: string, source: string, limit: number, offset: number) =>
+      ["parliament-bills", status, source, limit, offset] as const,
+    bill: (id: string) => ["parliament-bill", id] as const,
   },
   constituencies: {
     list: () => ["constituencies-list"] as const,

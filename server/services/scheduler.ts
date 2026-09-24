@@ -58,8 +58,10 @@ export function initScheduler() {
   // EXISTING JOBS
   // ═══════════════════════════════════════════════════════════════════
 
-  // Parliament sync - daily at 04:00: divisions, debates, questions, then TD scores.
-  cron.schedule('0 4 * * *', async () => {
+  // Parliament sync - daily at 04:45: roster, divisions, debates, committees, bills,
+  // questions, then TD scores. Not on the hour: TD scoring runs at every even hour and the
+  // two writing the same score rows at once deadlocked on 2026-09-24.
+  cron.schedule('45 4 * * *', async () => {
     try {
       const s = await runParliamentSync();
       console.log(`[Scheduler] Parliament sync: ${s.divisions.ingested} divisions, ${s.debates.days} sitting days${s.debates.failedDays.length ? `, ${s.debates.failedDays.length} day(s) failed` : ''}.`);

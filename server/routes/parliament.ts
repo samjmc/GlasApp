@@ -16,6 +16,8 @@ const router = Router();
 const idParam = z.coerce.number().int().positive();
 /** Our own ids: `dail-34-2025-06-25-vote_91`, `dail-2025-06-25-dbsect_19`. */
 const recordId = z.string().regex(/^dail-[a-z0-9_-]{1,70}$/);
+/** `<year>-<no>`, e.g. "2026-90". */
+const billId = z.string().regex(/^\d{4}-\d{1,5}$/);
 const page = z.object({
   limit: z.coerce.number().int().min(1).max(100).default(20),
   offset: z.coerce.number().int().min(0).max(100_000).default(0),
@@ -62,6 +64,57 @@ router.get(
     const q = z.object({ limit: z.coerce.number().int().min(1).max(100).default(10) }).safeParse(req.query);
     if (!id.success || !q.success) return badRequest(res, 'Invalid TD id or query');
     res.json(formatSuccess(await repo.tdDebates(id.data, q.data.limit)));
+  }),
+);
+
+router.get(
+  '/tds/:id/committees',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'TD id must be a positive integer');
+    res.json(formatSuccess(await repo.tdCommittees(id.data)));
+  }),
+);
+
+router.get(
+  '/tds/:id/bills',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    const q = z.object({ limit: z.coerce.number().int().min(1).max(200).default(20) }).safeParse(req.query);
+    if (!id.success || !q.success) return badRequest(res, 'Invalid TD id or query');
+    res.json(formatSuccess(await repo.tdBills(id.data, q.data.limit)));
+  }),
+);
+
+router.get(
+  '/tds/:id/question-topics',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'TD id must be a positive integer');
+    res.json(formatSuccess(await repo.tdQuestionTopics(id.data)));
+  }),
+);
+
+router.get(
+  '/bills',
+  asyncHandler(async (req, res) => {
+    const q = page
+      .extend({ status: z.string().trim().min(1).max(40).optional(), source: z.string().trim().min(1).max(40).optional() })
+      .safeParse(req.query);
+    if (!q.success) return badRequest(res, 'Invalid paging or filter');
+    const { rows, total } = await repo.listBills({ status: q.data.status, source: q.data.source }, q.data.limit, q.data.offset);
+    res.json(formatSuccess(rows, { total }));
+  }),
+);
+
+router.get(
+  '/bills/:id',
+  asyncHandler(async (req, res) => {
+    const id = billId.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'Invalid bill id');
+    const detail = await repo.billDetail(id.data);
+    if (!detail) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'Bill not found'));
+    res.json(formatSuccess(detail));
   }),
 );
 
