@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
+import { ArticleImage } from "@/components/news/ArticleImage";
 import type { FeedArticle } from "@/lib/news";
 
 interface TodaysBiggestImpactProps {
@@ -78,15 +79,15 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
       <Card className={`${cardBase} relative overflow-hidden shadow-lg transition hover:shadow-xl cursor-pointer group min-h-[256px]`}>
         {/* Background Image Layer */}
         <div className="absolute inset-0 z-0">
-          {article.imageUrl ? (
-            <img 
-              src={article.imageUrl} 
-              alt="" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800" />
-          )}
+          <ArticleImage
+            src={article.imageUrl}
+            alt=""
+            source={article.source}
+            sourceLogoUrl={article.sourceLogoUrl}
+            category={article.category}
+            priority
+            className="absolute inset-0 aspect-auto h-full w-full rounded-none transition-transform duration-700 group-hover:scale-105"
+          />
           {/* Overlay - Dark enough for white text (75% black opacity) */}
           <div className="absolute inset-0 bg-black/75" />
         </div>
@@ -151,9 +152,9 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
           </div>
 
         {/* AI Summary - Full Text */}
-        {article.summary && (
+        {(article.aiSummary ?? article.summary) && (
           <p className="text-sm text-gray-200 drop-shadow-sm">
-            {article.summary}
+            {article.aiSummary ?? article.summary}
           </p>
         )}
         </div>

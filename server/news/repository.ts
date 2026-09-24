@@ -1,11 +1,13 @@
 /**
  * Every read and write of the news tables. Nothing else touches them.
  */
-import { and, desc, eq, gte, inArray, notInArray, sql, type SQL } from 'drizzle-orm';
+import { and, desc, eq, gte, inArray, isNull, notInArray, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { newsArticles, newsSources, type ArticleStatus, type NewNewsArticle } from '@shared/schema/news';
 import type { SourceConfig } from './sources';
 import type { FeedQuery } from './feed';
+import { RELEVANCE_FLOOR } from './relevance';
+import { isNewsCategory, type NewsCategory } from '@shared/news';
 
 /** A claim older than this is presumed dead (crash, deploy) and may be taken again. */
 export const CLAIM_LEASE_HOURS = 6;
@@ -202,6 +204,8 @@ export interface FeedRow {
   id: number;
   title: string;
   summary: string | null;
+  aiSummary: string | null;
+  category: NewsCategory | null;
   url: string;
   imageUrl: string | null;
   publishedAt: Date;
@@ -218,6 +222,8 @@ type RawFeedRow = {
   id: number;
   title: string;
   summary: string | null;
+  ai_summary: string | null;
+  category: string | null;
   url: string;
   image_url: string | null;
   published_at: Date | string;
@@ -234,6 +240,8 @@ function toFeedRow(r: RawFeedRow): FeedRow {
     id: Number(r.id),
     title: r.title,
     summary: r.summary,
+    aiSummary: r.ai_summary,
+    category: isNewsCategory(r.category) ? r.category : null,
     url: r.url,
     imageUrl: r.image_url,
     publishedAt: new Date(r.published_at),
@@ -249,7 +257,7 @@ function toFeedRow(r: RawFeedRow): FeedRow {
 /** The feed's SELECT, with the strongest verdict and every affected TD per article. */
 function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQL {
   return sql`
-    select a.id, a.title, a.summary, a.url, a.image_url, a.published_at,
+    select a.id, a.title, a.summary, a.ai_summary, a.category, a.url, a.image_url, a.published_at,
            s.name as source, s.logo_url as source_logo_url,
            top.impact, top.story_type, top.sentiment, aff.affected
       from politics.news_articles a
@@ -273,7 +281,11 @@ function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQ
 const BY_IMPACT = sql`(top.impact is null), abs(top.impact) desc, a.published_at desc, a.id desc`;
 const BY_DATE = sql`a.published_at desc, a.id desc`;
 
-async function page(where: SQL, orderBy: SQL, limit: number, offset: number, database: Db) {
+/** Rows below the relevance floor are stored only so their URL is never scored again. */
+const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR}`;
+
+async function page(filter: SQL, orderBy: SQL, limit: number, offset: number, database: Db) {
+  const where = sql`${VISIBLE} and ${filter}`;
   const [rows, count] = await Promise.all([
     database.execute<RawFeedRow>(feedSelect(where, orderBy, limit, offset)),
     database.execute<{ n: number }>(sql`select count(*)::int as n from politics.news_articles a where ${where}`),
@@ -318,4 +330,28 @@ export async function feedForTd(name: string, limit: number, database: Db = db):
     select 1 from politics.article_td_scores v join politics.tds t on t.id = v.td_id
      where v.article_id = a.id and lower(t.name) = lower(${name.trim()}))`;
   return (await page(where, BY_DATE, limit, 0, database)).rows;
+}
+
+/** Visible articles stored in the last `hours` that still have no picture, newest first. */
+export async function missingImages(hours: number, limit: number, database: Db = db): Promise<Array<{ id: number; url: string }>> {
+  return database
+    .select({ id: newsArticles.id, url: newsArticles.url })
+    .from(newsArticles)
+    .where(
+      and(
+        isNull(newsArticles.imageUrl),
+        gte(newsArticles.createdAt, sql`now() - make_interval(hours => ${hours})`),
+        sql`coalesce(${newsArticles.relevanceScore}, 100) >= ${RELEVANCE_FLOOR}`,
+      ),
+    )
+    .orderBy(desc(newsArticles.publishedAt))
+    .limit(limit);
+}
+
+/** Fill a missing picture. Never overwrites one already stored. */
+export async function setImageIfMissing(id: number, imageUrl: string, database: Db = db): Promise<void> {
+  await database
+    .update(newsArticles)
+    .set({ imageUrl, updatedAt: sql`now()` })
+    .where(and(eq(newsArticles.id, id), isNull(newsArticles.imageUrl)));
 }

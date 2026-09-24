@@ -15,7 +15,7 @@
  * Use via tiered escalation (see shouldEscalateToMultiAgent)
  */
 
-import OpenAI from "openai";
+import { callChatCompletion } from "../services/aiService";
 import { z } from "zod";
 import { applyArticle, articleAgeDays, type ArticleImpacts, type EloChange, type EloRatings } from './elo';
 import * as repo from './repository';
@@ -106,14 +106,6 @@ export interface MultiAgentAnalysis {
 
 // --- CONFIG ---
 
-let openai: OpenAI;
-
-function getOpenAI() {
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  }
-  return openai;
-}
 
 // --- AGENT PROMPTS ---
 
@@ -570,7 +562,7 @@ ESCALATION REASON: ${escalationReason}
 Decide which agents to deploy.
 `;
 
-  const response = await getOpenAI().chat.completions.create({
+  const response = await callChatCompletion({
     model: "gpt-4o-mini",
     messages: [
       { role: "system", content: MANAGER_PROMPT },
@@ -615,7 +607,7 @@ Provide your scoring with evidence from the article.
 `;
 
   try {
-    const response = await getOpenAI().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: systemPrompt },
@@ -694,7 +686,7 @@ Reasoning: ${score.reasoning}
 Synthesize these into consensus scores.
 `;
 
-  const response = await getOpenAI().chat.completions.create({
+  const response = await callChatCompletion({
     model: "gpt-4o",  // Use stronger model for arbitration
     messages: [
       { role: "system", content: ARBITRATOR_PROMPT },
@@ -748,7 +740,7 @@ Map their policy stance to ideology dimensions. If no clear policy stance, retur
 `;
 
   try {
-    const response = await getOpenAI().chat.completions.create({
+    const response = await callChatCompletion({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: IDEOLOGY_ANALYST_PROMPT },

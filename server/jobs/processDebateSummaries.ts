@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { callChatCompletion, isOpenAIConfigured } from '../services/aiService.js';
+import { callChatCompletion, isLLMConfigured } from '../services/aiService.js';
 
 const DEFAULT_BATCH_SIZE = 5;
 const DEFAULT_CONCURRENCY = 3;
@@ -83,8 +83,8 @@ const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROL
   }
 });
 
-if (!isOpenAIConfigured()) {
-  console.warn('⚠️  OPENAI_API_KEY not set. No summaries will be generated.');
+if (!isLLMConfigured()) {
+  console.warn('⚠️  No LLM configured (LLM_API_KEY or OPENAI_API_KEY). No summaries will be generated.');
 }
 
 async function run(): Promise<void> {
@@ -115,8 +115,8 @@ async function run(): Promise<void> {
         try {
           const { section, day, speeches } = await loadSectionContext(task.section_id);
 
-          if (!isOpenAIConfigured()) {
-            throw new Error('OPENAI_API_KEY not configured.');
+          if (!isLLMConfigured()) {
+            throw new Error('No LLM configured (LLM_API_KEY or OPENAI_API_KEY).');
           }
 
           const summary = await generateSummaries(section, day, speeches);
@@ -304,7 +304,7 @@ ${speechSnippets}`;
 }
 
 async function runOpenAISummary(prompt: string, variant: 'direct' | 'reflective' = 'direct') {
-  if (!isOpenAIConfigured()) return null;
+  if (!isLLMConfigured()) return null;
 
   const response = await callChatCompletion({
     model: 'gpt-4o-mini',
@@ -418,7 +418,7 @@ async function generateAndSaveStances(
   speeches: SpeechDetails[],
   summary: SummaryResult
 ) {
-  if (!isOpenAIConfigured()) return;
+  if (!isLLMConfigured()) return;
 
   const candidates = speeches
     .filter((speech) => (speech.word_count || 0) >= MIN_WORDS_FOR_STANCE && speech.id)
@@ -486,7 +486,7 @@ async function generateSpeechStance(
   speech: SpeechDetails,
   summary: SummaryResult
 ): Promise<StanceResult | null> {
-  if (!isOpenAIConfigured()) return null;
+  if (!isLLMConfigured()) return null;
 
   const prompt = buildStancePrompt(section, day, speech, summary);
 
