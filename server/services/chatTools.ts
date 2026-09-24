@@ -4,8 +4,7 @@ import { sql, desc, eq, ilike, or, and } from "drizzle-orm";
 import {
   newsArticles,
   parties,
-  parliamentaryActivity,
-  policyPromises
+  parliamentaryActivity
 } from "@shared/schema";
 import { eloToPercent, repository as scores } from "../scoring";
 import { getVotingRecord, getRecentVotes, getVotingStats, getRebelVotes, getVotesByCategory, getPolicyPositions } from "./politicianAgent";
@@ -214,16 +213,7 @@ export const chatToolsImplementation = {
       .where(ilike(parliamentaryActivity.politicianName, name))
       .limit(1);
 
-    // 4. Get Promises (if any)
-    const promises = await db.select({
-      text: policyPromises.promiseText,
-      status: policyPromises.status
-    })
-    .from(policyPromises)
-    .where(ilike(policyPromises.politicianName, name))
-    .limit(3);
-
-    // 5. Get Voting Stats
+    // 4. Get Voting Stats
     const votingStats = await getVotingStats(name);
 
     return JSON.stringify({
@@ -242,8 +232,7 @@ export const chatToolsImplementation = {
       },
       recent_news: news,
       parliamentary_activity: activity[0] || "No recent activity data",
-      voting_stats: votingStats,
-      promises: promises
+      voting_stats: votingStats
     });
   },
 

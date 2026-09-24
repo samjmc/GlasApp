@@ -39,11 +39,6 @@ vi.mock('../db', () => ({
   checkDatabaseConnection: vi.fn(async () => true),
 }));
 
-vi.mock('../services/pledgeScoring', () => ({
-  calculatePledgeScore: vi.fn(async () => 0),
-  calculatePartyPerformanceScores: vi.fn(async () => ({})),
-}));
-
 vi.mock('../services/cacheService', () => ({
   cached: vi.fn(async (_key: string, _ttl: number, fn: () => Promise<unknown>) => fn()),
   TTL: { ONE_DAY: 86400000, ONE_HOUR: 3600000 },
@@ -51,19 +46,8 @@ vi.mock('../services/cacheService', () => ({
   cache: { get: vi.fn(async () => null), set: vi.fn(), del: vi.fn(), delete: vi.fn() },
 }));
 
-vi.mock('@shared/schema', async () => {
-  const { z } = await import('zod');
-  const table = (name: string) => ({ name, id: `${name}.id` });
-  return {
-    pledges: table('pledges'),
-    pledgeActions: table('pledge_actions'),
-    partyPerformanceScores: table('party_performance_scores'),
-    parties: table('parties'),
-    insertPledgeSchema: z.object({ partyId: z.number(), title: z.string() }),
-  };
-});
+vi.mock('@shared/schema', () => ({ parties: { name: 'parties', id: 'parties.id' } }));
 
-const pledgesRoutes = (await import('../routes/political/pledges')).default;
 const partiesRoutes = (await import('../routes/political/parties')).default;
 const debatesRoutes = (await import('../routes/debatesRoutes')).default;
 const { createRateLimit } = await import('./rateLimit');
@@ -107,12 +91,8 @@ afterEach(() => {
 
 describe('unguarded write surfaces found by the audit now require admin access', () => {
   const cases: Array<{ name: string; mount: string; router: express.Router; method: string; path: string; body?: unknown }> = [
-    { name: 'POST /pledges', mount: '/api/pledges', router: pledgesRoutes, method: 'POST', path: '/api/pledges', body: { partyId: 1, title: 'x' } },
-    { name: 'PUT /pledges/:id', mount: '/api/pledges', router: pledgesRoutes, method: 'PUT', path: '/api/pledges/1', body: { title: 'x' } },
-    { name: 'DELETE /pledges/:id', mount: '/api/pledges', router: pledgesRoutes, method: 'DELETE', path: '/api/pledges/1' },
-    { name: 'POST /pledges/:id/actions', mount: '/api/pledges', router: pledgesRoutes, method: 'POST', path: '/api/pledges/1/actions', body: { actionType: 'a', description: 'd', actionDate: '2026-01-01' } },
-    { name: 'POST /pledges/:id/recalculate', mount: '/api/pledges', router: pledgesRoutes, method: 'POST', path: '/api/pledges/1/recalculate' },
-    { name: 'POST /pledges/performance/:partyId/recalculate', mount: '/api/pledges', router: pledgesRoutes, method: 'POST', path: '/api/pledges/performance/1/recalculate' },
+    // The audit's six pledge write routes were deleted with the old pledge router; their
+    // replacements in server/pledges/routes.ts are covered by server/pledges/routes.test.ts.
     { name: 'POST /parties/explanations/:partyId', mount: '/api/parties', router: partiesRoutes, method: 'POST', path: '/api/parties/explanations/1', body: { economic: 'x' } },
     { name: 'POST /debates/alerts/:id/status', mount: '/api/debates', router: debatesRoutes, method: 'POST', path: '/api/debates/alerts/abc/status', body: { status: 'resolved' } },
   ];
@@ -207,15 +187,6 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     // The auth rebuild replaced the session read with the verified token's subject.
     assert.ok(src.includes('const userId = req.user?.id ?? null'));
     assert.equal(src.includes('req.session'), false);
-  });
-
-  it('every pledge write route carries requireJob', () => {
-    const src = read('server/routes/political/pledges.ts');
-    const writes = src.match(/router\.(post|put|delete)\(/g) ?? [];
-    const guarded = src.match(/router\.(post|put|delete)\([^,]+,\s*requireJob,/g) ?? [];
-    // 6 CRUD/recalculate writes are admin-only; /category-votes keeps its own guard.
-    assert.equal(guarded.length, 6);
-    assert.equal(writes.length, 7);
   });
 
   it('party explanations and debate alert status writes are admin-only', () => {

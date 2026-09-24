@@ -36,6 +36,7 @@ import scoresRoutes from "./routes/scores";
 import userRankingsRoutes from "./routes/user/rankings/index.js";
 import ideologyTimelineRoutes from "./routes/ideologyTimelineRoutesEnhanced";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
+import { pledgesRouter } from "./pledges/routes";
 import debateWorkspaceRoutes from "./routes/debateWorkspaceRoutes";
 import debatesRoutes from "./routes/debatesRoutes";
 import debateMonitoringRoutes from "./routes/debateMonitoringRoutes";
@@ -89,15 +90,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Enhanced profile now in AI analysis module
   app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
-  // Register consolidated political routes (includes parties, pledges, sentiment)
+  // Register consolidated political routes (parties and sentiment)
   app.use("/api/political", politicalRoutes);
   // Legacy routes for backward compatibility
   app.use("/api/parties", politicalRoutes);
   app.use("/api/party-match", politicalRoutes);
   app.use("/api/party-dimensions", politicalRoutes);
   app.use("/api/dimension-explanations", politicalRoutes);
-  app.use("/api/pledges", politicalRoutes);
   app.use("/api/party-sentiment", politicalRoutes);
+
+  // Party pledges and the evidence that decides their status
+  app.use("/api/pledges", pledgesRouter);
   
   // TD, party and constituency scores
   app.use("/api/scores", scoresRoutes);
@@ -121,7 +124,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/user/rankings", userRankingsRoutes);
   // Legacy routes for backward compatibility
   app.use("/api/personal", userRankingsRoutes);
-  app.use("/api/category-ranking", userRankingsRoutes);
 
   // Voting: the daily session and the policy question on each article
   app.use("/api/daily-session", dailySessionRouter);
