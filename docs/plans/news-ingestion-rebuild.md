@@ -5,6 +5,39 @@ pure logic with unit tests, a thin repository, everything before it deleted in t
 Vetted 2026-09-22 (three parallel readers + live feed probes); deltas from that are folded in
 and listed at the end.
 
+## v2 (2026-09-24, branch `feat/news-v2`, migration `0005`)
+
+Ideas taken from the RWA portal's sector-news pipeline:
+- parallel fetch with isolated failures;
+- a 0–100 relevance rubric with a floor of 60, where below-floor rows are stored but hidden;
+- a batched LLM pass returning a category and a neutral summary;
+- keeping an existing image, never overwriting one.
+
+The RWA portal has no image pipeline, so this part is new:
+
+| Step | What it does |
+|---|---|
+| Feed images | Every feed image with its width (`media:content`, `enclosure`, `media:thumbnail`, Atom enclosure, first `<img>`). |
+| CDN upgrades | RTÉ `-800` → `-1600`. |
+| Page image | The page's `og:image` / `twitter:image` when no feed image is at least 800 px. Measured 2026-09-24: the only image for Gript and Newstalk, and a bigger one for the Irish Times, Examiner and The Currency. |
+| Live check | A 1-byte fetch confirms the chosen URL loads as an image. |
+| Backfill | Recent picture-less articles are retried on the next run. |
+| Client | `ArticleImage` has a designed placeholder, so a card never shows a broken image. |
+
+Sources: 14 feeds. The politics desks of RTÉ, the Irish Times, the Independent and the Belfast
+Telegraph are added, plus Newstalk, The Currency and Village. Business Post (malformed),
+Breaking News (stale), Noteworthy, gov.ie and the Oireachtas feeds were probed and rejected:
+404, 403 or stale.
+
+Live run against Docker Postgres with the real DeepSeek model (2026-09-24):
+- 453 items fetched in 14 s from 14 of 14 feeds.
+- 233 new: 105 shown, 128 below the floor.
+- 105 of the 105 shown have a checked image.
+- A second run stored 2, only genuinely new items.
+
+AI: every chat call now runs on DeepSeek V4.1 Flash (`deepseek-flash`) when `LLM_API_KEY` is set,
+with thinking disabled. A live two-turn tool loop was checked. Embeddings stay on OpenAI.
+
 ## What exists today (mapped 2026-09-22)
 
 - **Four writers into `public.news_articles`**, each setting a different mix of
