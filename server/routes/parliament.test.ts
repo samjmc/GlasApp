@@ -33,6 +33,11 @@ vi.mock('../parliament', () => ({
     debateDetail: vi.fn(async () => null),
     leaderboard: vi.fn(async (metric: string, order: string, limit: number) => [{ metric, order, limit }]),
     parties: vi.fn(async () => []),
+    tdCommittees: vi.fn(async (id: number) => [{ committeeId: 'committee_of_public_accounts', id }]),
+    tdBills: vi.fn(async (id: number, limit: number) => [{ id: '2026-90', limit }]),
+    tdQuestionTopics: vi.fn(async () => [{ department: 'Health', oral: 1, written: 2 }]),
+    listBills: vi.fn(async (filters: object, limit: number, offset: number) => ({ rows: [{ filters, limit, offset }], total: 414 })),
+    billDetail: vi.fn(async (id: string) => (id === '2026-90' ? { id } : null)),
   },
 }));
 
@@ -89,9 +94,27 @@ describe('/api/parliament reads', () => {
     expect((await get('/divisions?limit=1000')).status).toBe(400);
   });
 
+  it('serves a TD committees, bills and question topics, and 400s a bad id', async () => {
+    expect((await get('/tds/1/committees')).body.data).toEqual([{ committeeId: 'committee_of_public_accounts', id: 1 }]);
+    expect((await get('/tds/1/bills?limit=5')).body.data).toEqual([{ id: '2026-90', limit: 5 }]);
+    expect((await get('/tds/1/question-topics')).body.data).toEqual([{ department: 'Health', oral: 1, written: 2 }]);
+    expect((await get('/tds/x/committees')).status).toBe(400);
+    expect((await get('/tds/1/bills?limit=0')).status).toBe(400);
+  });
+
+  it('lists bills with filters and paging, and serves one bill', async () => {
+    const { body } = await get('/bills?status=Enacted&source=Private%20Member&limit=5&offset=10');
+    expect(body).toMatchObject({ data: [{ filters: { status: 'Enacted', source: 'Private Member' }, limit: 5, offset: 10 }], meta: { total: 414 } });
+    expect((await get('/bills/2026-90')).status).toBe(200);
+    expect((await get('/bills/2026-91')).status).toBe(404);
+    expect((await get('/bills/..%2Fetc')).status).toBe(400);
+    expect((await get(`/bills?status=${'x'.repeat(41)}`)).status).toBe(400);
+  });
+
   it('validates the leaderboard metric', async () => {
     expect((await get('/leaderboard?metric=questions&order=asc&limit=5')).body.data).toEqual([{ metric: 'questions', order: 'asc', limit: 5 }]);
     expect((await get('/leaderboard?metric=vibes')).status).toBe(400);
+    expect((await get('/leaderboard?metric=committees')).body.data).toEqual([{ metric: 'committees', order: 'desc', limit: 20 }]);
   });
 });
 
