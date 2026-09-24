@@ -1,0 +1,1 @@
+ALTER TABLE "politics"."pledge_evidence" ADD CONSTRAINT "pledge_evidence_division_id_divisions_id_fk" FOREIGN KEY ("division_id") REFERENCES "politics"."divisions"("id") ON DELETE set null ON UPDATE no action;

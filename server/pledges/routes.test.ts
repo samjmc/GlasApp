@@ -39,13 +39,19 @@ vi.mock('./repository', () => {
       return result(...args);
     };
   const pledge = { id: 1, party: 'Party X', title: 't', status: 'unassessed', evidenceCount: 0 };
+  class UnknownDivisionError extends Error {}
   return {
+    UnknownDivisionError,
     listPledges: record('listPledges', () => [pledge]),
     pledgeWithEvidence: record('pledgeWithEvidence', (id) => (id === 1 ? { ...pledge, evidence: [] } : null)),
     createPledge: record('createPledge', (input) => ((input as { title: string }).title === 'duplicate' ? null : pledge)),
     updatePledge: record('updatePledge', (id) => (id === 1 ? pledge : null)),
     deletePledge: record('deletePledge', (id) => id === 1),
-    addEvidence: record('addEvidence', (input) => ((input as { pledgeId: number }).pledgeId === 1 ? { id: 9 } : null)),
+    addEvidence: record('addEvidence', (input) => {
+      const { pledgeId, divisionId } = input as { pledgeId: number; divisionId: string | null };
+      if (divisionId === 'no-such-vote') throw new UnknownDivisionError('No recorded Dáil vote has id no-such-vote');
+      return pledgeId === 1 ? { id: 9 } : null;
+    }),
     deleteEvidence: record('deleteEvidence', () => true),
     allPriorityRows: record('allPriorityRows', () => [
       { userId: 'someone', category: 'housing', rank: 1 },
@@ -139,6 +145,16 @@ describe('pledge validation and errors', () => {
     expect((await send('/api/pledges/2')).status).toBe(404);
     expect((await send('/api/pledges/2', { method: 'PATCH', token: 'admin-token', body: { status: 'broken' } })).status).toBe(404);
     expect((await send('/api/pledges/2/evidence', { method: 'POST', token: 'admin-token', body: { kind: 'other', summary: 'xyz', occurredOn: '2025-01-01', sourceUrl: 'https://x.ie' } })).status).toBe(404);
+  });
+
+  it('answers 400 when evidence names a Dáil vote that is not recorded', async () => {
+    const evidence = { kind: 'other', summary: 'xyz', occurredOn: '2025-01-01', sourceUrl: 'https://x.ie' };
+    const res = await send('/api/pledges/1/evidence', { method: 'POST', token: 'admin-token', body: { ...evidence, divisionId: 'no-such-vote' } });
+    expect(res.status).toBe(400);
+    expect(await res.json()).toMatchObject({ success: false });
+    // An empty string means "no vote", not an unknown vote id.
+    expect((await send('/api/pledges/1/evidence', { method: 'POST', token: 'admin-token', body: { ...evidence, divisionId: '' } })).status).toBe(201);
+    expect(state.calls.at(-1)).toMatchObject({ fn: 'addEvidence', args: [expect.objectContaining({ divisionId: null })] });
   });
 
   it('lets anyone read, in the success envelope', async () => {
