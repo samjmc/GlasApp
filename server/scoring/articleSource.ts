@@ -1,19 +1,19 @@
 /**
- * The pipeline's view of the news domain. News ingestion has not been rebuilt yet and
- * still lives in `public.news_articles` behind the legacy service-role client; this
- * adapter is the only place the scoring module touches it. The news rebuild replaces
- * the implementation, not the interface.
+ * The pipeline's view of the news domain: `politics.news_articles`, through the news
+ * repository. This adapter is the only place the scoring module touches news.
  */
-import { supabaseDb } from '../db';
+import * as news from '../news/repository';
 
 export interface Article {
   id: number;
   title: string;
   content: string;
+  summary: string | null;
   source: string | null;
   url: string | null;
+  imageUrl: string | null;
   publishedDate: Date | null;
-  /** Source credibility 0–1; defaults to 0.8 when the row has none. */
+  /** Source credibility 0–1. */
   credibility: number;
 }
 
@@ -24,10 +24,12 @@ export interface ArticleOutcome {
   scoreApplied: boolean;
   skippedReason?: string;
   errorMessage?: string;
+  /** Kept for the pipeline's call shape; the per-TD verdicts live in article_td_scores. */
   primaryTd?: { name: string; party: string | null; constituency: string | null };
 }
 
 export interface ArticleSource {
+  /** Claims the rows it returns: a concurrent call never receives the same article. */
   fetchUnprocessed(limit: number): Promise<Article[]>;
   fetchById(id: number): Promise<Article | null>;
   /** Persist a fuller body fetched from the publisher. */
@@ -35,75 +37,40 @@ export interface ArticleSource {
   markProcessed(id: number, outcome: ArticleOutcome): Promise<void>;
 }
 
-interface NewsArticleRow {
-  id: number;
-  title: string;
-  content: string | null;
-  source: string | null;
-  url: string | null;
-  published_date: string | null;
-  credibility_score: number | string | null;
-}
-
-function toArticle(row: NewsArticleRow): Article {
-  const credibility = Number(row.credibility_score);
+function toArticle(row: news.ClaimedArticle): Article {
   return {
     id: row.id,
     title: row.title,
-    content: row.content ?? '',
-    source: row.source,
+    content: row.content,
+    summary: row.summary,
+    source: row.sourceName,
     url: row.url,
-    publishedDate: row.published_date ? new Date(row.published_date) : null,
-    credibility: Number.isFinite(credibility) && credibility > 0 ? credibility : 0.8,
+    imageUrl: row.imageUrl,
+    publishedDate: row.publishedAt,
+    credibility: row.credibility,
   };
 }
 
-function client() {
-  if (!supabaseDb) throw new Error('News articles are not reachable: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY unset');
-  return supabaseDb;
+/** An error wins over a skip; a finished run with neither is `scored`, even if no TD matched. */
+export function toOutcome(outcome: ArticleOutcome): news.Outcome {
+  const status = outcome.errorMessage ? 'failed' : outcome.skippedReason ? 'skipped' : 'scored';
+  return {
+    status,
+    importanceScore: outcome.importanceScore,
+    importanceReasoning: outcome.importanceReasoning,
+    skipReason: outcome.skippedReason ?? null,
+    errorMessage: outcome.errorMessage ?? null,
+  };
 }
 
-const COLUMNS = 'id, title, content, source, url, published_date, credibility_score';
-
-export const supabaseArticleSource: ArticleSource = {
+export const articleSource: ArticleSource = {
   async fetchUnprocessed(limit) {
-    const { data, error } = await client()
-      .from('news_articles')
-      .select(COLUMNS)
-      .eq('processed', false)
-      .order('created_at', { ascending: false })
-      .limit(limit);
-    if (error) throw error;
-    return ((data ?? []) as NewsArticleRow[]).map(toArticle);
+    return (await news.claimForScoring(limit)).map(toArticle);
   },
-
   async fetchById(id) {
-    const { data, error } = await client().from('news_articles').select(COLUMNS).eq('id', id).maybeSingle();
-    if (error) throw error;
-    return data ? toArticle(data as NewsArticleRow) : null;
+    const row = await news.findForScoring(id);
+    return row ? toArticle(row) : null;
   },
-
-  async saveContent(id, content) {
-    const { error } = await client().from('news_articles').update({ content }).eq('id', id);
-    if (error) throw error;
-  },
-
-  async markProcessed(id, outcome) {
-    const update: Record<string, unknown> = {
-      processed: true,
-      score_applied: outcome.scoreApplied,
-      importance_score: outcome.importanceScore,
-      importance_reasoning: outcome.importanceReasoning,
-      analyzed_by: outcome.scoreApplied ? 'multi-agent' : null,
-    };
-    if (outcome.skippedReason) update.skipped_reason = outcome.skippedReason;
-    if (outcome.errorMessage) update.error_message = outcome.errorMessage;
-    if (outcome.primaryTd) {
-      update.politician_name = outcome.primaryTd.name;
-      update.party = outcome.primaryTd.party;
-      update.constituency = outcome.primaryTd.constituency;
-    }
-    const { error } = await client().from('news_articles').update(update).eq('id', id);
-    if (error) throw error;
-  },
+  saveContent: (id, content) => news.saveContent(id, content),
+  markProcessed: (id, outcome) => news.markOutcome(id, toOutcome(outcome)),
 };
