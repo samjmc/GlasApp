@@ -105,9 +105,15 @@ app.use('/assets', express.static('public/assets'));
     // Centralized error handler (must be AFTER Vite middleware)
     app.use(errorHandler);
 
-    // Initialize Scheduler (Daily Briefing, etc.)
-    const { initScheduler } = await import('./services/scheduler');
-    initScheduler();
+    // Initialize Scheduler (news ingest, TD scoring, parliament sync, daily briefing).
+    // SCHEDULER=off for a local run against the shared GlasCore database, so looking at the
+    // site never triggers a scoring run that changes real TD scores.
+    if (process.env.SCHEDULER === 'off') {
+      logger.warn('SCHEDULER=off: no scheduled jobs will run');
+    } else {
+      const { initScheduler } = await import('./services/scheduler');
+      initScheduler();
+    }
 
     // serve the app on port 5000 in development, or use the environment variable in production
     // this serves both the API and the client.
