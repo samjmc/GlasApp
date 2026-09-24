@@ -381,10 +381,4 @@ export const CacheKeys = {
     top: (limit: number) => `td-scores:top:${limit}`,
     byName: (name: string) => `td-scores:${name}`,
   },
-
-  // Pledges (update when modified)
-  pledges: {
-    byParty: (partyId: number) => `pledges:party:${partyId}`,
-    performance: (partyId: number) => `pledges:performance:${partyId}`,
-  },
 };
