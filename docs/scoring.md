@@ -43,9 +43,11 @@ leaves the Dáil would erase their record. An empty roster from the API changes 
 failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and unit-tested.
 
 Parliamentary and debate inputs are filled by `npm run parliament:sync` (`server/parliament/`,
-daily at 04:00 from the scheduler), which also runs the roster sync first. Attendance is Dáil
-divisions voted in / divisions held **inside the TD's own membership window**; questions are
-the ones the TD asked; debate participation excludes speeches made from the chair. The Ceann
+daily at 04:45 from the scheduler, off the even hours TD scoring runs at), which also runs
+the roster sync first. Attendance is Dáil divisions voted in / divisions held **inside the
+TD's own membership window**; questions are the ones the TD asked, summed from
+`politics.question_counts`; debate participation excludes speeches made from the chair. The
+sync also measures committee attendance, but the pillar does not use it yet. The Ceann
 Comhairle does not vote and gets NULL, not 0. Anything that cannot be measured stays NULL and
 its pillar drops out. See `docs/plans/parliament-rebuild.md` for the API facts behind this.
 

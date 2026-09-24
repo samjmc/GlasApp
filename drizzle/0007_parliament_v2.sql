@@ -3,7 +3,7 @@ CREATE TABLE "politics"."bill_debates" (
 	"bill_id" varchar(20) NOT NULL,
 	"debate_section_id" varchar(80) NOT NULL,
 	"date" date NOT NULL,
-	"chamber" varchar(60),
+	"chamber" text,
 	"title" text,
 	CONSTRAINT "bill_debates_bill_id_debate_section_id_pk" PRIMARY KEY("bill_id","debate_section_id")
 );
@@ -22,7 +22,7 @@ CREATE TABLE "politics"."bill_stages" (
 	"bill_id" varchar(20) NOT NULL,
 	"position" integer NOT NULL,
 	"stage" text NOT NULL,
-	"chamber" varchar(60),
+	"chamber" text,
 	"date" date,
 	CONSTRAINT "bill_stages_bill_id_position_pk" PRIMARY KEY("bill_id","position")
 );
@@ -57,7 +57,7 @@ CREATE TABLE "politics"."committee_memberships" (
 	"committee_id" varchar(160) NOT NULL,
 	"member_code" varchar(120) NOT NULL,
 	"td_id" integer,
-	"role" varchar(60),
+	"role" text,
 	"start_date" date NOT NULL,
 	"end_date" date,
 	CONSTRAINT "committee_memberships_committee_id_member_code_start_date_pk" PRIMARY KEY("committee_id","member_code","start_date")
@@ -75,7 +75,7 @@ CREATE TABLE "politics"."committees" (
 	"id" varchar(160) PRIMARY KEY NOT NULL,
 	"uri" text NOT NULL,
 	"name" text NOT NULL,
-	"committee_type" varchar(60),
+	"committee_type" text,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "committees_uri_unique" UNIQUE("uri")
 );

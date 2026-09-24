@@ -1,5 +1,5 @@
 {
-  "id": "24473ad6-7e63-4331-814f-e6d58ff03a75",
+  "id": "11cf71a1-4dfe-466a-8d1e-5ff2a1742e00",
   "prevId": "a9418123-5769-4554-b144-3cb391b8e1a8",
   "version": "7",
   "dialect": "postgresql",
@@ -310,7 +310,7 @@
         },
         "chamber": {
           "name": "chamber",
-          "type": "varchar(60)",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -510,7 +510,7 @@
         },
         "chamber": {
           "name": "chamber",
-          "type": "varchar(60)",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -803,7 +803,7 @@
         },
         "role": {
           "name": "role",
-          "type": "varchar(60)",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -987,7 +987,7 @@
         },
         "committee_type": {
           "name": "committee_type",
-          "type": "varchar(60)",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },

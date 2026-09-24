@@ -81,6 +81,35 @@ the next 10 runs; it never blocks the days after it. `--since` never moves the r
 past days it did not fetch. A failed question fetch keeps the last good counts. Named query for the pledges session:
 `parliament.votesOf(tdId, { divisionId? })` → "TD voted X on division Y".
 
+## v2 (2026-09-24): offices, committees, bills, question topics
+
+The pieces of the API worth adding, from a deep dive of all 8 endpoints:
+
+| Piece | Source | Stored | Shown |
+|---|---|---|---|
+| Offices (Taoiseach, Ministers, Ministers of State) | roster `offices` (already downloaded) | `tds.offices`, `tds.committees` | TD profile header |
+| Committee attendance | roster `committees` + committee transcripts' `<rollCall>` | `committees`, `committee_memberships`, `committee_sittings`, `committee_attendance`; two columns on `td_parliament_stats` | TD profile, leaderboard, parties |
+| Bills | `/legislation` (whole term, ~414 bills) | `bills`, `bill_sponsors`, `bill_stages`, `bill_debates` | Debates page Bills tab, TD profile |
+| Question topics | `/questions`, whole house, month by month | `question_counts` (counts only) | TD profile "Question focus" |
+
+Facts measured while building it:
+- A committee membership and a committee sitting share the committee URI; that is the join.
+  1,021 committee sittings in the term so far; every transcript has a `<rollCall>` with
+  member references.
+- `bill.debates[].debateSectionId` + date + chamber is the same key as
+  `divisions.debate_section_id`, so a bill shows every Dáil vote held on it. There is no
+  direct bill field on a division (`isBill` is false on all 413).
+- The API **refuses `skip` beyond 10,000** and caps its counts at 10,000, so questions are
+  read a month at a time (~7,500), and a window that still hits 10,000 is split.
+- Question text is not stored: ~150k questions a term would add ~150 MB to a database that
+  is 123 MB in total (85 MB of it debate speeches).
+- Question totals for scoring now come from `question_counts`; this replaced 348 per-TD API
+  calls a run. While any month is failing, the last written totals are kept.
+- The first live sync on GlasCore died with "deadlock detected": the scoring cron also runs
+  at 04:00. The parliament sync moved to 04:45 and its set-based writes retry on 40P01.
+
+Not in the API: gender (empty for all 176), members' interests and expenses (PDFs only).
+
 ## Deleted
 
 Server: `services/{oireachtasAPIService,politicianAgent}`, `jobs/{dailyDebateUpdate,dailyVoteFetcher,

@@ -92,6 +92,9 @@ const billByA: RawBill = {
   billYear: '2025',
   shortTitleEn: 'Test Bill 2025',
   sponsors: [{ sponsor: { isPrimary: true, by: { showAs: 'A', uri: `https://data.oireachtas.ie/ie/oireachtas/member/id/${A}` } } }],
+  // A committee stage names the committee: the live API has chamber labels up to 104
+  // characters, which broke a varchar(60) on the first real run.
+  stages: [{ event: { showAs: 'Committee Stage', dates: [{ date: '2025-06-20' }], chamber: { showAs: 'Select Committee on Justice, Home Affairs and Migration, and the Implementation of the Good Friday Agreement' } } }],
   debates: [{ chamber: { showAs: 'Dáil Éireann', uri: 'https://data.oireachtas.ie/ie/oireachtas/def/house/dail' }, date: '2025-06-25', debateSectionId: 'dbsect_19', showAs: 'Test Bill 2025: Second Stage' }],
 };
 

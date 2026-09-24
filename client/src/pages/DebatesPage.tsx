@@ -347,9 +347,12 @@ function BillsSection({ initialExpandedId }: { initialExpandedId: string | null 
     enabled: !!expandedId,
   });
 
-  const bills = data?.data ?? [];
   const total = data?.meta?.total ?? 0;
   const detail = detailResp?.data;
+  // A bill opened from a link (?bill=<id>) may not be on this page of the list: show it first.
+  const pageBills = data?.data ?? [];
+  const bills: BillSummary[] =
+    expandedId && detail?.id === expandedId && !pageBills.some((b) => b.id === expandedId) ? [detail, ...pageBills] : pageBills;
 
   return (
     <section className={cardClass}>

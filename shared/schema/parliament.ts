@@ -141,7 +141,7 @@ export const committees = politics.table('committees', {
   uri: text('uri').notNull().unique(),
   name: text('name').notNull(),
   /** "Statutory", "Standing", "Select", "Joint", … as the Oireachtas types it. */
-  committeeType: varchar('committee_type', { length: 60 }),
+  committeeType: text('committee_type'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -154,7 +154,7 @@ export const committeeMemberships = politics.table(
     memberCode: varchar('member_code', { length: 120 }).notNull(),
     tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
     /** "Cathaoirleach", "Leas-Chathaoirleach", or NULL for an ordinary member. */
-    role: varchar('role', { length: 60 }),
+    role: text('role'),
     startDate: date('start_date').notNull(),
     endDate: date('end_date'),
   },
@@ -248,7 +248,8 @@ export const billStages = politics.table(
       .references(() => bills.id, { onDelete: 'cascade' }),
     position: integer('position').notNull(),
     stage: text('stage').notNull(),
-    chamber: varchar('chamber', { length: 60 }),
+    /** Free text from the API; a committee stage names the committee (up to ~100 chars). */
+    chamber: text('chamber'),
     date: date('date'),
   },
   (t) => [primaryKey({ columns: [t.billId, t.position] })],
@@ -263,7 +264,7 @@ export const billDebates = politics.table(
     /** `dail-<date>-<eId>` or `seanad-<date>-<eId>`; the Dáil form matches `divisions`. */
     debateSectionId: varchar('debate_section_id', { length: 80 }).notNull(),
     date: date('date').notNull(),
-    chamber: varchar('chamber', { length: 60 }),
+    chamber: text('chamber'),
     title: text('title'),
   },
   (t) => [primaryKey({ columns: [t.billId, t.debateSectionId] }), index('bill_debates_section_idx').on(t.debateSectionId)],
