@@ -32,7 +32,6 @@ import UserHeatmapPage from "@/pages/UserHeatmapPage";
 import ConstituencyComparisonPage from "@/pages/ConstituencyComparisonPage";
 import PolicySimulatorPage from "@/pages/PolicySimulatorPage";
 import ConstituencyStatsPage from "@/pages/ConstituencyStatsPage";
-import AontuEfficiencyPage from "@/pages/AontuEfficiencyPage";
 import LocalRepresentativesPage from "@/pages/LocalRepresentativesPage";
 import DebatesPage from "@/pages/DebatesPage";
 import MediaWorkspacePage from "@/pages/MediaWorkspacePage";
@@ -222,7 +221,6 @@ function Router() {
           <Route path="/constituency-comparison" component={ConstituencyComparisonPage} />
           <Route path="/policy-simulator" component={PolicySimulatorPage} />
           <Route path="/constituency-stats" component={ConstituencyStatsPage} />
-          <Route path="/aontu-efficiency" component={AontuEfficiencyPage} />
           <Route path="/local-representatives" component={LocalRepresentativesPage} />
           <Route path="/my-tds" component={LocalRepresentativesPage} />
           <Route path="/td-scores" component={ResearchedTDsPage} />
