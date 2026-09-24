@@ -622,46 +622,6 @@ export type InsertIdeaVote = z.infer<typeof insertIdeaVoteSchema>;
 export type SelectIdea = typeof ideas.$inferSelect;
 export type SelectIdeaVote = typeof ideaVotes.$inferSelect;
 
-// PARLIAMENTARY ACTIVITY (From Oireachtas API)
-// Real-time parliamentary data
-// ============================================
-
-/** Drizzle ORM table definition for parliamentary activity. */
-export const parliamentaryActivity = pgTable("parliamentary_activity", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).unique().notNull(),
-  memberId: varchar("member_id", { length: 100 }),
-  memberCode: varchar("member_code", { length: 100 }),
-  party: varchar("party", { length: 100 }),
-  constituency: varchar("constituency", { length: 100 }),
-  
-  // Activity metrics
-  questionsAsked: integer("questions_asked").default(0),
-  oralQuestions: integer("oral_questions").default(0),
-  writtenQuestions: integer("written_questions").default(0),
-  debates: integer("debates").default(0),
-  votes: integer("votes").default(0),
-  estimatedAttendance: integer("estimated_attendance").default(0),
-  
-  // Metadata
-  lastActive: timestamp("last_active"),
-  dataSource: varchar("data_source", { length: 50 }).default("oireachtas_api"),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => [
-  index("idx_parliamentary_politician").on(table.politicianName),
-  index("idx_parliamentary_updated").on(table.updatedAt),
-]);
-
-/** Zod insert-schema for creating a parliamentary activity record. */
-export const insertParliamentaryActivitySchema = createInsertSchema(parliamentaryActivity).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true
-});
-
-export type ParliamentaryActivity = typeof parliamentaryActivity.$inferSelect;
-export type InsertParliamentaryActivity = z.infer<typeof insertParliamentaryActivitySchema>;
 
 // ============================================
 // SHADOW CABINET (Level 10 Agent System)

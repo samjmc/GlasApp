@@ -91,10 +91,12 @@ describe('planTdSync', () => {
 });
 
 describe('memberImageUrl', () => {
-  it('builds the portrait path and escapes the code', () => {
+  it('builds the portrait path on the data host and escapes the code', () => {
     expect(memberImageUrl('Mary-Lou-McDonald.D.2011-03-09')).toBe(
-      'https://www.oireachtas.ie/en/members/member/Mary-Lou-McDonald.D.2011-03-09/image/',
+      'https://data.oireachtas.ie/ie/oireachtas/member/id/Mary-Lou-McDonald.D.2011-03-09/image/large',
     );
     expect(memberImageUrl('a b')).toContain('a%20b');
+    // Irish names: the server matches the percent-encoded UTF-8 form (checked live).
+    expect(memberImageUrl('Seán-Canney.D.2016-10-03')).toContain('Se%C3%A1n-Canney');
   });
 });

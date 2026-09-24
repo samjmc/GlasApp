@@ -3,16 +3,17 @@
  * Comprehensive TD profile with modern design, polling data, and rich analytics
  */
 
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { useParams, Link } from 'wouter';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { apiClient } from '@/lib/queryClient';
+import { useQuery } from '@tanstack/react-query';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
 import { PageHeader } from "@/components/PageHeader";
 import { queryKeys } from '@/lib/queryKeys';
+import { formatIsoDate } from '@/lib/isoDate';
+import type { TdParliamentSummary, TdVote, TdDebateContribution, DivisionVote } from '@shared/parliamentApi';
 import type { FeedArticle } from '@/lib/news';
 import {
   TrendingUp,
@@ -101,17 +102,6 @@ const DIMENSION_LABELS: Record<ScoreDimension, string> = {
   consistency: 'Consistency',
 };
 
-interface DebateAlert {
-  id: string;
-  summary?: string;
-  status: string;
-  type?: string;
-  topic?: string;
-  previousPosition?: string | null;
-  currentPosition?: string | null;
-  confidence?: number | null;
-}
-
 interface NewsArticle {
   url?: string;
   title?: string;
@@ -121,41 +111,18 @@ interface NewsArticle {
   sentiment?: string;
 }
 
-interface VoteRecord {
-  subject?: string;
-  description?: string | null;
-  date?: string;
-  vote?: string;
+type ApiEnvelope<T> = { success: true; data: T; meta?: { total: number } };
+
+async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
+  return res.json();
 }
 
-interface DebateActivityData {
-  period?: { start: string; end: string } | null;
-  metrics?: {
-    speeches?: number;
-    wordsSpoken?: number;
-    uniqueTopics?: number;
-    metadata?: { totalMinutes?: number } | null;
-    influenceScore?: number;
-    effectivenessScore?: number;
-    sentimentScore?: number;
-  } | null;
-  issueFocus?: Array<{ topic: string; percentage: number; minutes_spoken: number }>;
-  chamberActivity?: Array<{ chamber: string; minutes: number }>;
-}
-
-interface DebateHistoryEntry {
-  periodStart: string;
-  periodEnd: string;
-  speeches: number;
-  wordsSpoken: number;
-  effectivenessScore: number;
-  influenceScore: number;
-  sentimentScore: number;
-}
+const VOTE_LABEL: Record<DivisionVote, string> = { ta: 'Tá', nil: 'Níl', staon: 'Staon' };
 
 export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
-  const queryClient = useQueryClient();
 
   const { data: scoreData, isLoading, error } = useQuery<TDProfile>({
     queryKey: ['td-profile-v3', name],  // v3: payload shape changed with /api/scores
@@ -179,72 +146,40 @@ export default function TDProfilePageEnhanced() {
     staleTime: 300000  // 5 minutes
   });
   
-  const politicianName = scoreData?.name;
+  const tdId = scoreData?.id;
+
+  const [votesAgainstPartyOnly, setVotesAgainstPartyOnly] = useState(false);
 
   const {
-    data: debateActivity,
-    isLoading: debateMetricsLoading,
-    error: debateMetricsError
+    data: parliamentSummaryResp,
+    isLoading: parliamentSummaryLoading,
+    error: parliamentSummaryError
   } = useQuery({
-    queryKey: ['td-debate-metrics', politicianName],
-    queryFn: async () => {
-      const response = await fetch(`/api/debates/td/${encodeURIComponent(politicianName || '')}/metrics`);
-      if (!response.ok) {
-        throw new Error('Failed to load debate activity');
-      }
-      return response.json();
-    },
-    enabled: !!politicianName,
+    queryKey: queryKeys.parliament.tdSummary(tdId ?? 0),
+    queryFn: () => getParliament<TdParliamentSummary>(`/api/parliament/tds/${tdId}`),
+    enabled: !!tdId,
     staleTime: 5 * 60 * 1000
   });
+  const parliamentSummary = parliamentSummaryResp?.data;
 
-  const {
-    data: debateHistory,
-    isLoading: debateHistoryLoading,
-    error: debateHistoryError
-  } = useQuery({
-    queryKey: ['td-debate-history', politicianName],
-    queryFn: async () => {
-      const response = await fetch(`/api/debates/td/${encodeURIComponent(politicianName || '')}/history?periods=12`);
-      if (!response.ok) {
-        throw new Error('Failed to load debate history');
-      }
-      return response.json();
-    },
-    enabled: !!politicianName,
+  const { data: tdVotesResp, isLoading: tdVotesLoading, isError: tdVotesError } = useQuery({
+    queryKey: queryKeys.parliament.tdVotes(tdId ?? 0, 20, votesAgainstPartyOnly),
+    queryFn: () =>
+      getParliament<TdVote[]>(
+        `/api/parliament/tds/${tdId}/votes?limit=20${votesAgainstPartyOnly ? '&againstParty=true' : ''}`
+      ),
+    enabled: !!tdId,
     staleTime: 5 * 60 * 1000
   });
+  const tdVotes = tdVotesResp?.data ?? [];
 
-  const {
-    data: debateAlerts = [],
-    isLoading: debateAlertsLoading,
-    error: debateAlertsError
-  } = useQuery({
-    queryKey: ['td-debate-alerts', politicianName],
-    queryFn: async () => {
-      const response = await fetch(`/api/debates/alerts?td=${encodeURIComponent(politicianName || '')}&limit=6`);
-      if (!response.ok) {
-        throw new Error('Failed to load debate alerts');
-      }
-      const payload = await response.json();
-      const alerts = payload?.alerts ?? [];
-      return alerts.map((item: unknown) => ({
-        ...item,
-        status: item.status ?? 'new'
-      }));
-    },
-    enabled: !!politicianName,
-    staleTime: 2 * 60 * 1000
+  const { data: tdDebatesResp, isLoading: tdDebatesLoading, isError: tdDebatesError } = useQuery({
+    queryKey: queryKeys.parliament.tdDebates(tdId ?? 0, 10),
+    queryFn: () => getParliament<TdDebateContribution[]>(`/api/parliament/tds/${tdId}/debates?limit=10`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
   });
-
-  const updateAlertStatus = useMutation({
-    mutationFn: ({ id, status }: { id: string; status: string }) =>
-      apiClient.post(`/api/debates/alerts/${encodeURIComponent(id)}/status`, { status }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['td-debate-alerts', politicianName] });
-      queryClient.invalidateQueries({ queryKey: ['debates', 'alerts'] });
-    }
-  });
+  const tdDebateContributions = tdDebatesResp?.data ?? [];
 
   // Fetch recent news articles for this TD
   const { data: newsArticles } = useQuery({
@@ -281,37 +216,6 @@ export default function TDProfilePageEnhanced() {
       return data;
     },
     enabled: !!scoreData?.party
-  });
-  
-  // Fetch voting analysis data
-  const { data: votingStats } = useQuery({
-    queryKey: ['td-voting-stats', politicianName],
-    queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/voting/stats/${encodeURIComponent(politicianName || '')}`);
-      if (!res.ok) return null;
-      return res.json();
-    },
-    enabled: !!politicianName
-  });
-
-  const { data: rebelVotesData } = useQuery({
-    queryKey: ['td-rebel-votes', politicianName],
-    queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/voting/rebel/${encodeURIComponent(politicianName || '')}`);
-      if (!res.ok) return { votes: [] };
-      return res.json();
-    },
-    enabled: !!politicianName
-  });
-
-  const { data: recentVotesData } = useQuery({
-    queryKey: ['td-recent-votes', politicianName],
-    queryFn: async () => {
-      const res = await fetch(`/api/parliamentary/voting/recent/${encodeURIComponent(politicianName || '')}?limit=3`);
-      if (!res.ok) return { votes: [] };
-      return res.json();
-    },
-    enabled: !!politicianName
   });
   
   const score = scoreData;
@@ -799,370 +703,173 @@ export default function TDProfilePageEnhanced() {
             </div>
           </Card>
 
-          {/* Voting Analysis */}
+          {/* Parliament Summary */}
           <Card className="p-6">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <Vote className="w-6 h-6 text-blue-600" />
-              Voting Record
+              Parliament Record
             </h2>
 
-            {votingStats ? (
-              <div className="space-y-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800/30">
-                    <div className="text-sm text-blue-700 dark:text-blue-300 mb-1">Party Loyalty</div>
-                    <div className="text-2xl font-bold text-blue-800 dark:text-blue-100">
-                      {votingStats.partyLoyaltyRate}%
-                    </div>
+            {parliamentSummaryLoading ? (
+              <div className="text-center py-8 text-gray-500">Loading parliament record...</div>
+            ) : parliamentSummaryError || !parliamentSummary ? (
+              <p className="text-sm text-gray-600 dark:text-gray-400">No parliament data available yet.</p>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800/30">
+                  <div className="text-sm text-blue-700 dark:text-blue-300 mb-1">Attendance</div>
+                  <div className="text-2xl font-bold text-blue-800 dark:text-blue-100">
+                    {parliamentSummary.isPresiding
+                      ? 'Chair — does not vote'
+                      : parliamentSummary.attendancePct !== null
+                      ? `${parliamentSummary.attendancePct}%`
+                      : '—'}
                   </div>
-                  <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Votes</div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {votingStats.totalVotes}
+                  {!parliamentSummary.isPresiding && (
+                    <div className="text-xs text-blue-600 dark:text-blue-300 mt-1">
+                      {parliamentSummary.votesCast ?? '—'} of {parliamentSummary.divisionsEligible ?? '—'} divisions
                     </div>
+                  )}
+                </div>
+                <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Questions</div>
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                    {parliamentSummary.questionsOral === null && parliamentSummary.questionsWritten === null
+                      ? '—'
+                      : (parliamentSummary.questionsOral ?? 0) + (parliamentSummary.questionsWritten ?? 0)}
                   </div>
-                  <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-800/30">
-                    <div className="text-sm text-green-700 dark:text-green-300 mb-1">Voted Tá (Yes)</div>
-                    <div className="text-2xl font-bold text-green-800 dark:text-green-100">
-                      {votingStats.taVotes}
-                    </div>
-                  </div>
-                  <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-100 dark:border-red-800/30">
-                    <div className="text-sm text-red-700 dark:text-red-300 mb-1">Voted Níl (No)</div>
-                    <div className="text-2xl font-bold text-red-800 dark:text-red-100">
-                      {votingStats.nilVotes}
-                    </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {parliamentSummary.questionsOral ?? '—'} oral · {parliamentSummary.questionsWritten ?? '—'} written
                   </div>
                 </div>
-
-                {/* Recent Votes Section */}
-                {recentVotesData?.votes && recentVotesData.votes.length > 0 && (
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                      <Vote className="w-4 h-4" />
-                      Recent Activity
-                    </h3>
-                    <div className="space-y-2">
-                      {recentVotesData.votes.map((vote: unknown, idx: number) => (
-                        <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:border-blue-300 transition-colors">
-                          <div className="flex justify-between items-start gap-3">
-                            <div className="flex-1 min-w-0">
-                              <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
-                                {vote.subject}
-                              </h4>
-                              {vote.description && (
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
-                                  {vote.description}
-                                </p>
-                              )}
-                              <div className="text-[10px] text-gray-400 mt-2 flex items-center gap-2">
-                                <Calendar className="w-3 h-3" />
-                                {new Date(vote.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
-                              </div>
-                            </div>
-                            <Badge 
-                              className={`whitespace-nowrap ${
-                                vote.vote === 'ta' ? 'bg-green-100 text-green-800 hover:bg-green-200 border-green-200' : 
-                                vote.vote === 'nil' ? 'bg-red-100 text-red-800 hover:bg-red-200 border-red-200' : 
-                                'bg-gray-100 text-gray-800 hover:bg-gray-200 border-gray-200'
-                              }`}
-                              variant="outline"
-                            >
-                              {vote.vote === 'ta' ? 'Tá' : vote.vote === 'nil' ? 'Níl' : 'Staon'}
-                            </Badge>
-                          </div>
-                        </div>
-                      ))}
+                <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-800/30">
+                  <div className="text-sm text-green-700 dark:text-green-300 mb-1">Debate sections spoken</div>
+                  <div className="text-2xl font-bold text-green-800 dark:text-green-100">
+                    {parliamentSummary.sectionsSpoken ?? '—'}
+                  </div>
+                  <div className="text-xs text-green-600 dark:text-green-300 mt-1">
+                    {parliamentSummary.speeches ?? '—'} speeches
+                  </div>
+                </div>
+                <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-100 dark:border-purple-800/30">
+                  <div className="text-sm text-purple-700 dark:text-purple-300 mb-1">Party line</div>
+                  <div className="text-2xl font-bold text-purple-800 dark:text-purple-100">
+                    {parliamentSummary.partyLinePct !== null ? `${parliamentSummary.partyLinePct}%` : '—'}
+                  </div>
+                  {parliamentSummary.votesAgainstParty !== null && (
+                    <div className="text-xs text-purple-600 dark:text-purple-300 mt-1">
+                      {parliamentSummary.votesAgainstParty} votes against party
                     </div>
-                  </div>
-                )}
-
-                {/* Rebel Votes Section */}
-                {rebelVotesData?.votes && rebelVotesData.votes.length > 0 ? (
-                  <div className="border rounded-lg p-4 border-orange-200 bg-orange-50/50 dark:border-orange-800 dark:bg-orange-900/10">
-                    <h3 className="font-semibold text-orange-800 dark:text-orange-200 mb-3 flex items-center gap-2">
-                      <TrendingDown className="w-4 h-4" />
-                      Rebel Votes ({rebelVotesData.votes.length})
-                    </h3>
-                    <p className="text-sm text-orange-700 dark:text-orange-300 mb-3">
-                      Votes where {politicianName} voted against their party position.
-                    </p>
-                    <div className="space-y-3">
-                      {rebelVotesData.votes.slice(0, 3).map((vote: unknown, idx: number) => (
-                        <div key={idx} className="bg-white dark:bg-gray-900 p-3 rounded border border-orange-100 dark:border-orange-800/30 shadow-sm">
-                          <div className="flex justify-between items-start gap-2">
-                            <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
-                              {vote.subject}
-                            </h4>
-                            <Badge variant="outline" className="whitespace-nowrap border-orange-200 text-orange-700">
-                              {new Date(vote.date).toLocaleDateString()}
-                            </Badge>
-                          </div>
-                          {vote.description && (
-                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 italic">
-                              "{vote.description}"
-                            </p>
-                          )}
-                          <div className="mt-2 flex gap-2 text-xs">
-                            <span className="font-medium">Vote: {vote.vote === 'ta' ? 'Tá' : vote.vote === 'nil' ? 'Níl' : 'Abstain'}</span>
-                            <span className="text-gray-400">|</span>
-                            <span className="text-orange-600 dark:text-orange-400">Differs from party</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-700">
-                    <Award className="w-4 h-4 text-blue-500" />
-                    No rebel votes recorded. Consistently votes with party line.
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
-                Loading voting records...
+                  )}
+                </div>
               </div>
             )}
           </Card>
 
-          {/* Debate Activity */}
+          {/* Recent Votes */}
           <Card className="p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-primary" />
-                Debate Activity
+                <Vote className="w-5 h-5 text-blue-600" />
+                Recent Votes
               </h2>
-              {debateActivity?.period && (
-                <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                  Week {formatDateRange(debateActivity.period.start, debateActivity.period.end)}
-                </span>
-              )}
+              <button
+                type="button"
+                onClick={() => setVotesAgainstPartyOnly((prev) => !prev)}
+                className={`rounded-md border px-2 py-1 text-xs font-medium transition ${
+                  votesAgainstPartyOnly
+                    ? 'border-orange-300 bg-orange-100 text-orange-800'
+                    : 'border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300'
+                }`}
+              >
+                Against party only
+              </button>
             </div>
 
-            {debateMetricsLoading ? (
+            {tdVotesLoading ? (
+              <div className="text-center py-6 text-gray-500 text-sm">Loading votes...</div>
+            ) : tdVotesError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load votes. Try again later.</p>
+            ) : tdVotes.length === 0 ? (
+              <p className="text-sm text-gray-600 dark:text-gray-400">No votes recorded yet.</p>
+            ) : (
+              <div className="space-y-2">
+                {tdVotes.map((vote: TdVote) => (
+                  <div
+                    key={vote.divisionId}
+                    className="bg-white dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
+                  >
+                    <div className="flex justify-between items-start gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
+                          {vote.subject || vote.debateTitle || 'Division'}
+                        </h4>
+                        <div className="text-[10px] text-gray-400 mt-2 flex items-center gap-2">
+                          <Calendar className="w-3 h-3" />
+                          {formatIsoDate(vote.date)}
+                          {vote.withParty === false && (
+                            <span className="text-orange-600 dark:text-orange-400">Against party</span>
+                          )}
+                        </div>
+                      </div>
+                      <Badge
+                        className={`whitespace-nowrap ${
+                          vote.vote === 'ta'
+                            ? 'bg-green-100 text-green-800 hover:bg-green-200 border-green-200'
+                            : vote.vote === 'nil'
+                            ? 'bg-red-100 text-red-800 hover:bg-red-200 border-red-200'
+                            : 'bg-gray-100 text-gray-800 hover:bg-gray-200 border-gray-200'
+                        }`}
+                        variant="outline"
+                      >
+                        {VOTE_LABEL[vote.vote]}
+                      </Badge>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card>
+
+          {/* Recent Debate Contributions */}
+          <Card className="p-6">
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-primary" />
+              Recent Debate Contributions
+            </h2>
+
+            {tdDebatesLoading ? (
               <div className="animate-pulse space-y-3">
                 <div className="h-4 w-1/3 rounded bg-gray-200 dark:bg-gray-700" />
                 <div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-700" />
-                <div className="h-3 w-2/3 rounded bg-gray-200 dark:bg-gray-700" />
               </div>
-            ) : debateMetricsError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">
-                Unable to load debate activity.
-              </p>
-            ) : debateActivity?.metrics ? (
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 p-3">
-                    <div className="text-xs uppercase text-blue-600 dark:text-blue-300">Words</div>
-                    <div className="text-lg font-semibold text-blue-700 dark:text-blue-200">
-                      {debateActivity.metrics.wordsSpoken.toLocaleString()}
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-indigo-50 dark:bg-indigo-900/20 p-3">
-                    <div className="text-xs uppercase text-indigo-600 dark:text-indigo-300">Speeches</div>
-                    <div className="text-lg font-semibold text-indigo-700 dark:text-indigo-200">
-                      {debateActivity.metrics.speeches}
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-emerald-50 dark:bg-emerald-900/20 p-3">
-                    <div className="text-xs uppercase text-emerald-600 dark:text-emerald-300">Unique Topics</div>
-                    <div className="text-lg font-semibold text-emerald-700 dark:text-emerald-200">
-                      {debateActivity.metrics.uniqueTopics}
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-orange-50 dark:bg-orange-900/20 p-3">
-                    <div className="text-xs uppercase text-orange-600 dark:text-orange-300">Minutes</div>
-                    <div className="text-lg font-semibold text-orange-700 dark:text-orange-200">
-                      {Number(debateActivity.metrics.metadata?.totalMinutes || 0).toFixed(1)}
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-purple-50 dark:bg-purple-900/20 p-3">
-                    <div className="text-xs uppercase text-purple-600 dark:text-purple-300">Influence</div>
-                    <div className="text-lg font-semibold text-purple-700 dark:text-purple-200">
-                      {formatInfluenceScore(debateActivity.metrics.influenceScore)} / 100
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3">
-                    <div className="text-xs uppercase text-amber-600 dark:text-amber-300">Effectiveness</div>
-                    <div className="text-lg font-semibold text-amber-700 dark:text-amber-200">
-                      {formatEffectivenessScore(debateActivity.metrics.effectivenessScore)} / 100
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-emerald-50 dark:bg-emerald-900/20 p-3">
-                    <div className="text-xs uppercase text-emerald-600 dark:text-emerald-300">Sentiment</div>
-                    <div className="text-lg font-semibold text-emerald-700 dark:text-emerald-200">
-                      {formatSentimentScore(debateActivity.metrics.sentimentScore)}
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Focus Areas</h3>
-                  {debateActivity.issueFocus.length === 0 ? (
-                    <p className="text-xs text-gray-500 dark:text-gray-400">No topic breakdown available for this period.</p>
-                  ) : (
-                    <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-200">
-                      {debateActivity.issueFocus.slice(0, 4).map((topic: unknown) => (
-                        <li key={topic.topic} className="flex justify-between">
-                          <span>{topic.topic}</span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">
-                            {formatPercentage(topic.percentage)} ({topic.minutes_spoken.toFixed(1)} mins)
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                {debateActivity.chamberActivity && debateActivity.chamberActivity.length > 0 && (
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Chamber Split</h3>
-                    <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-200">
-                      {debateActivity.chamberActivity.map((item: unknown) => (
-                        <li key={item.chamber} className="flex justify-between">
-                          <span>{item.chamber}</span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">{Number(item.minutes).toFixed(1)} mins</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+            ) : tdDebatesError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load debate contributions. Try again later.</p>
+            ) : tdDebateContributions.length === 0 ? (
+              <p className="text-sm text-gray-600 dark:text-gray-400">No debate contributions recorded for this period.</p>
             ) : (
-              <p className="text-sm text-gray-600 dark:text-gray-400">No debate activity recorded for this period.</p>
+              <div className="space-y-3">
+                {tdDebateContributions.map((contribution: TdDebateContribution) => (
+                  <div
+                    key={contribution.sectionId}
+                    className="rounded-lg border border-gray-200 dark:border-gray-700 p-3"
+                  >
+                    <div className="flex items-center justify-between gap-3 text-xs text-gray-500 dark:text-gray-400">
+                      <span>{formatIsoDate(contribution.date)}</span>
+                      <span>{contribution.speeches} speech{contribution.speeches === 1 ? '' : 'es'} · {contribution.words.toLocaleString()} words</span>
+                    </div>
+                    <h4 className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">{contribution.title}</h4>
+                    {contribution.excerpt && (
+                      <p className="mt-1 text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{contribution.excerpt}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
             )}
 
             <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-              Powered by Oireachtas transcripts and AI summaries.
+              Powered by Oireachtas debate transcripts.
             </p>
-
-            <div className="mt-6">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Recent weekly trend</h3>
-              {debateHistoryLoading ? (
-                <p className="text-xs text-gray-500 dark:text-gray-400">Loading debate history…</p>
-              ) : debateHistoryError ? (
-                <p className="text-xs text-red-500 dark:text-red-400">
-                  {debateHistoryError instanceof Error ? debateHistoryError.message : 'Unable to load history'}
-                </p>
-              ) : debateHistory?.history?.length ? (
-                <>
-                  <div className="h-32">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart
-                        data={[...debateHistory.history].reverse().map((entry: unknown) => ({
-                          label: new Date(entry.periodEnd).toLocaleDateString('en-IE', {
-                            month: 'short',
-                            day: 'numeric',
-                          }),
-                          words: entry.wordsSpoken,
-                        }))}
-                        margin={{ top: 10, right: 10, bottom: 0, left: 0 }}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                        <XAxis dataKey="label" tick={{ fontSize: 10 }} />
-                        <YAxis tick={{ fontSize: 10 }} />
-                        <Tooltip />
-                        <Line
-                          type="monotone"
-                          dataKey="words"
-                          stroke="#1d4ed8"
-                          strokeWidth={2}
-                          dot={{ r: 2 }}
-                          activeDot={{ r: 4 }}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <ul className="mt-3 space-y-1 text-xs text-gray-600 dark:text-gray-300">
-                    {debateHistory.history.slice(0, 6).map((entry: unknown) => (
-                      <li key={`${entry.periodStart}-${entry.periodEnd}`} className="flex justify-between">
-                        <span>
-                          {new Date(entry.periodStart).toLocaleDateString('en-IE', { month: 'short', day: 'numeric' })} –{' '}
-                          {new Date(entry.periodEnd).toLocaleDateString('en-IE', { month: 'short', day: 'numeric' })}
-                        </span>
-                        <span className="text-gray-500 dark:text-gray-400">
-                      {entry.wordsSpoken.toLocaleString()} words · {entry.speeches} speeches · Eff {formatEffectivenessScore(entry.effectivenessScore)} · Infl {formatInfluenceScore(entry.influenceScore)} · Sentiment {formatSentimentScore(entry.sentimentScore)}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  History will appear once multiple weeks of debate metrics are available.
-                </p>
-              )}
-            </div>
-          </Card>
-
-          {/* Consistency Alerts */}
-          <Card className="p-6 border border-amber-200 bg-amber-50/40 dark:border-amber-500/40 dark:bg-amber-950/10">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold flex items-center gap-2 text-amber-800 dark:text-amber-200">
-                <MessageSquare className="w-5 h-5 text-amber-600" />
-                Consistency Alerts
-              </h2>
-              <span className="text-xs font-medium text-amber-700 dark:text-amber-300">Premium</span>
-            </div>
-            {debateAlertsLoading ? (
-              <div className="space-y-2">
-                <div className="h-3 rounded bg-amber-200/60 dark:bg-amber-500/20 animate-pulse" />
-                <div className="h-3 rounded bg-amber-200/60 dark:bg-amber-500/20 animate-pulse" />
-              </div>
-            ) : debateAlertsError ? (
-              <p className="text-sm text-amber-800 dark:text-amber-200">
-                Unable to load alerts right now.
-              </p>
-            ) : debateAlerts.length === 0 ? (
-              <p className="text-sm text-amber-800 dark:text-amber-200">
-                No consistency or issue-focus alerts for this period.
-              </p>
-            ) : (
-              <ul className="space-y-3">
-                {debateAlerts.map((alert: unknown) => (
-                  <li
-                    key={alert.id}
-                    className="rounded-lg border border-amber-200 bg-white/90 px-3 py-2 text-sm text-gray-800 shadow-sm dark:border-amber-500/20 dark:bg-amber-950/30 dark:text-amber-100"
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold">{alert.summary}</span>
-                          <span
-                            className={`rounded px-1.5 py-0.5 text-[0.65rem] font-semibold ${
-                              alert.status === 'resolved'
-                                ? 'bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-200'
-                                : 'bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-100'
-                            }`}
-                          >
-                            {alert.status === 'resolved' ? 'Reviewed' : 'New'}
-                          </span>
-                        </div>
-                        <div className="mt-1 text-xs text-amber-700/90 dark:text-amber-200">
-                          {alert.type === 'flip_flop'
-                            ? `${alert.previousPosition} → ${alert.currentPosition} on ${alert.topic}`
-                            : `Focus on ${alert.topic} increased markedly`}
-                        </div>
-                      </div>
-                      <div className="text-right text-xs text-amber-700 dark:text-amber-200">
-                        {alert.confidence !== null && (
-                          <div>{(alert.confidence * 100).toFixed(0)}% sure</div>
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => updateAlertStatus.mutate({ id: alert.id, status: 'resolved' })}
-                          disabled={alert.status === 'resolved' || updateAlertStatus.isLoading}
-                          className="mt-2 rounded-md border border-amber-300 px-2 py-1 text-xs font-medium text-amber-700 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-amber-500/40 dark:text-amber-200 dark:hover:bg-amber-500/10"
-                        >
-                          {alert.status === 'resolved' ? 'Marked reviewed' : 'Mark reviewed'}
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
           </Card>
 
           {/* Recent scored articles */}
@@ -1434,7 +1141,7 @@ function InfoCard({ icon, label, value }: { icon: ReactNode; label: string; valu
 
 // Helper function to calculate re-election chance
 function calculateReelectionChance(performanceScore: number | null, partyPolling: number | null): number | null {
-  if (!Number.isFinite(performanceScore)) {
+  if (performanceScore === null || !Number.isFinite(performanceScore)) {
     return null;
   }
 
@@ -1464,36 +1171,5 @@ function getPartyTDCount(party: string): number {
     'Independent': 15
   };
   return counts[party] || 10;
-}
-
-function formatDateRange(start: string, end: string) {
-  try {
-    const formatter = new Intl.DateTimeFormat('en-IE', { month: 'short', day: 'numeric' });
-    return `${formatter.format(new Date(start))} – ${formatter.format(new Date(end))}`;
-  } catch {
-    return `${start} – ${end}`;
-  }
-}
-
-function formatSentimentScore(value: number | null | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '–';
-  const percentage = (value * 100).toFixed(0);
-  const sign = value > 0 ? '+' : '';
-  return `${sign}${percentage}`;
-}
-
-function formatInfluenceScore(value: number | null | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '–';
-  return value.toFixed(1);
-}
-
-function formatEffectivenessScore(value: number | null | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '–';
-  return value.toFixed(1);
-}
-
-function formatPercentage(value: number | null | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '–';
-  return `${(value * 100).toFixed(1)}%`;
 }
 
