@@ -11,7 +11,8 @@ describe('NEWS_SOURCES', () => {
 
 describe('sourceForUrl', () => {
   it('matches a configured publisher with or without www', () => {
-    expect(sourceForUrl('https://www.rte.ie/news/x').slug).toBe('rte');
+    // Two RTÉ feeds share the host; the first listed labels a pasted URL.
+    expect(sourceForUrl('https://www.rte.ie/news/x').name).toBe('RTÉ News');
     expect(sourceForUrl('https://ontheditch.com/x').slug).toBe('the-ditch');
   });
   it('falls back to manual for any other site or a bad URL', () => {

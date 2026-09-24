@@ -20,7 +20,8 @@ export function initScheduler() {
   cron.schedule('30 1-23/2 * * *', async () => {
     try {
       const stats = await ingest();
-      console.log(`📰 [Scheduler] Ingest: ${stats.inserted} new of ${stats.fetched} fetched (${stats.feedErrors.length} feed errors)`);
+      const failed = stats.feeds.filter((f) => f.error).map((f) => f.source);
+      console.log(`📰 [Scheduler] Ingest: ${stats.inserted} new of ${stats.fetched} fetched, ${stats.withImage} with a picture${failed.length ? `; feeds failed: ${failed.join(', ')}` : ''}`);
     } catch (error: unknown) {
       console.error("❌ [Scheduler] News ingest failed:", error instanceof Error ? error.message : error);
     }

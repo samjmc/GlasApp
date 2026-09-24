@@ -194,7 +194,11 @@ pledgesRouter.post(
   handle(async (req, res) => {
     const pledgeId = idParam.parse(req.params.id);
     const body = evidenceBody.parse(req.body);
-    const evidence = found(await repo.addEvidence({ ...body, pledgeId, divisionId: body.divisionId ?? null }), 'Pledge');
+    const added = await repo.addEvidence({ ...body, pledgeId, divisionId: body.divisionId || null }).catch((error) => {
+      if (error instanceof repo.UnknownDivisionError) throw new HttpError(400, error.message);
+      throw error;
+    });
+    const evidence = found(added, 'Pledge');
     logAdminAction(req, 'pledge.evidence.add', { pledgeId, evidenceId: evidence.id });
     res.status(201);
     return evidence;

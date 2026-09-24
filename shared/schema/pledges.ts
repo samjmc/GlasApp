@@ -20,6 +20,7 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 import { politics } from './politics';
+import { divisions } from './parliament';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES } from '../pledges';
 
 const inList = (values: readonly string[]) => sql.raw(values.map((v) => `'${v}'`).join(', '));
@@ -63,8 +64,11 @@ export const pledgeEvidence = politics.table(
     occurredOn: date('occurred_on', { mode: 'string' }).notNull(),
     /** Required, like the pledge's own source. */
     sourceUrl: text('source_url').notNull(),
-    /** politics.divisions id when the evidence is a recorded Dáil vote. */
-    divisionId: varchar('division_id', { length: 80 }),
+    /**
+     * The recorded Dáil vote, when the evidence is one. The sync upserts divisions and
+     * never deletes them, so SET NULL only fires on a manual delete.
+     */
+    divisionId: varchar('division_id', { length: 80 }).references(() => divisions.id, { onDelete: 'set null' }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [

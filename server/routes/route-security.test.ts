@@ -76,11 +76,11 @@ vi.mock('../services/twilioService', () => ({
 
 vi.mock('../services/aiService', () => ({
   callChatCompletion: vi.fn(async () => ({ choices: [{ message: { content: '{}' } }] })),
-  callAI: vi.fn(),
-  callResponses: vi.fn(),
   callEmbedding: vi.fn(),
-  callImageGeneration: vi.fn(),
   callAnthropicMessage: vi.fn(),
+  isLLMConfigured: vi.fn(() => true),
+  isEmbeddingConfigured: vi.fn(() => false),
+  isAnthropicConfigured: vi.fn(() => false),
 }));
 
 vi.mock('../services/openaiService', () => ({

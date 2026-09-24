@@ -9,7 +9,7 @@
  * - Public service record
  */
 
-import { callAnthropicMessage, callChatCompletion, isAnthropicConfigured, isOpenAIConfigured } from './aiService.js';
+import { callAnthropicMessage, callChatCompletion, isAnthropicConfigured, isLLMConfigured } from './aiService.js';
 import { supabaseDb } from '../db';
 
 // ============================================
@@ -222,7 +222,7 @@ export async function researchTDBaseline(
   
   // Auto-detect which provider to use based on available API keys
   const hasAnthropic = isAnthropicConfigured();
-  const hasOpenAI = isOpenAIConfigured();
+  const hasOpenAI = isLLMConfigured();
   
   let useProvider = options.useProvider;
   if (!useProvider) {
@@ -232,7 +232,7 @@ export async function researchTDBaseline(
       useProvider = 'gpt4';
       console.log('   Using GPT-4 (Anthropic key not found)');
     } else {
-      throw new Error('No AI API keys configured. Set ANTHROPIC_API_KEY or OPENAI_API_KEY in .env');
+      throw new Error('No AI API keys configured. Set ANTHROPIC_API_KEY, LLM_API_KEY or OPENAI_API_KEY');
     }
   }
   

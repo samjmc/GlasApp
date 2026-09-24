@@ -70,6 +70,10 @@ run('pledges against Postgres', () => {
   });
 
   it('evidence counts, orders newest first, and goes with its pledge', async () => {
+    await dbmod.pool.query(
+      `insert into politics.divisions (id, uri, house_no, date, ta_count, nil_count, staon_count)
+       values ('dail-34-2025-09-01-vote_1', 'https://data.oireachtas.ie/vote_1', 34, '2025-09-01', 80, 60, 0)`,
+    );
     const created = (await repo.createPledge(pledge()))!;
     await repo.addEvidence({ pledgeId: created.id, kind: 'bill_introduced', summary: 'Bill published.', occurredOn: '2025-02-01', sourceUrl: 'https://oireachtas.ie/b' });
     await repo.addEvidence({ pledgeId: created.id, kind: 'legislation_passed', summary: 'Act signed.', occurredOn: '2025-09-01', sourceUrl: 'https://oireachtas.ie/a', divisionId: 'dail-34-2025-09-01-vote_1' });
@@ -82,6 +86,21 @@ run('pledges against Postgres', () => {
     expect(full!.evidence[0]!.divisionId).toBe('dail-34-2025-09-01-vote_1');
 
     await expect(repo.addEvidence({ pledgeId: created.id, kind: 'rumour', summary: 'x', occurredOn: '2025-01-01', sourceUrl: 'https://x.ie' })).rejects.toThrow();
+    await expect(
+      repo.addEvidence({ pledgeId: created.id, kind: 'other', summary: 'x', occurredOn: '2025-01-01', sourceUrl: 'https://x.ie', divisionId: 'no-such-vote' }),
+    ).rejects.toBeInstanceOf(repo.UnknownDivisionError);
+    // The foreign key itself, past the repository's check.
+    await expect(
+      dbmod.pool.query(
+        `insert into politics.pledge_evidence (pledge_id, kind, summary, occurred_on, source_url, division_id)
+         values ($1, 'other', 'x', '2025-01-01', 'https://x.ie', 'no-such-vote')`,
+        [created.id],
+      ),
+    ).rejects.toMatchObject({ code: '23503' });
+
+    // Deleting the division keeps the evidence and drops only the link.
+    await dbmod.pool.query(`delete from politics.divisions where id = 'dail-34-2025-09-01-vote_1'`);
+    expect((await repo.pledgeWithEvidence(created.id))!.evidence[0]!.divisionId).toBeNull();
 
     expect(await repo.deletePledge(created.id)).toBe(true);
     const { rows } = await dbmod.pool.query('select count(*)::int as n from politics.pledge_evidence');
