@@ -3,6 +3,10 @@
  * Single source of truth — import this instead of redeclaring the shape.
  */
 
+import type { NewsCategory } from '@shared/news';
+
+export { NEWS_CATEGORIES, type NewsCategory } from '@shared/news';
+
 export interface FeedArticleTD {
   name: string;
   impactScore: number;
@@ -20,6 +24,7 @@ export interface FeedArticle {
   id: number;
   title: string;
   summary: string | null;
+  aiSummary: string | null;
   url: string;
   source: string;
   sourceLogoUrl: string | null;
@@ -30,4 +35,14 @@ export interface FeedArticle {
   impactScore: number | null;
   affectedTDs: FeedArticleTD[];
   policyVote: FeedArticlePolicyVote | null;
+  category: NewsCategory | null;
+}
+
+/** Humanises a snake_case category/story-type value, e.g. 'foreign_affairs' -> 'Foreign affairs', 'eu' -> 'EU'. */
+export function humanizeCategory(value: string): string {
+  if (value.toLowerCase() === 'eu') return 'EU';
+  const words = value.split('_');
+  return words
+    .map((word, idx) => (idx === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word))
+    .join(' ');
 }

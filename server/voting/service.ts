@@ -3,7 +3,7 @@
  * and cast a vote from any surface. The pure decisions live in questions.ts,
  * selection.ts and summary.ts; this file sequences them around the repository.
  */
-import { callChatCompletion, isOpenAIConfigured } from '../services/aiService';
+import { callChatCompletion, isLLMConfigured } from '../services/aiService';
 import { generateQuickExplainer } from '../services/openaiService';
 import type { IdeologyDimension } from '../constants/ideology';
 import {
@@ -72,7 +72,7 @@ const previousDate = (isoDate: string) =>
 
 /** Ask the model for a JSON object. Null when unconfigured or when it fails to parse. */
 async function completeJson(system: string, user: string, temperature: number, operation: string): Promise<unknown> {
-  if (!isOpenAIConfigured()) return null;
+  if (!isLLMConfigured()) return null;
   try {
     const response = await callChatCompletion(
       {
