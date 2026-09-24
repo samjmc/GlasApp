@@ -2,8 +2,9 @@
  * Ideology operations: record evidence, recompute and read profiles, match positions.
  */
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
-import { QUIZ_QUESTIONS } from '@shared/quiz';
 import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
+import { ideologyLabel } from '../quiz/label';
+import { coverageOf, scoreQuiz } from '../quiz/score';
 import { listUserVoteVectors, type UserVoteVector } from '../voting';
 import { alignment, closestAndFurthest, type DimensionWeights } from './alignment';
 import { computeProfile, meanProfile, type Observation, type Profile } from './model';
@@ -28,14 +29,20 @@ function voteObservation(vote: UserVoteVector): Observation {
   };
 }
 
-const questionDimension = new Map(QUIZ_QUESTIONS.map((q) => [q.id, q.dimension]));
-
-/** A quiz speaks only to the dimensions its answered questions measure; a 0 elsewhere is "not asked". */
+/**
+ * A quiz speaks only to the dimensions it asked (a 0 elsewhere is "not asked"), and on each
+ * one in proportion to how many of that dimension's questions were answered.
+ */
 function quizObservation(quiz: QuizResultRow): Observation {
-  const measured = new Set(quiz.answers.map((a) => questionDimension.get(a.questionId)).filter(Boolean));
+  const coverage = coverageOf(quiz.answers);
   const full = repo.vectorOf(quiz);
-  const vector = Object.fromEntries(IDEOLOGY_DIMENSIONS.filter((d) => measured.has(d)).map((d) => [d, full[d]]));
-  return { vector, weight: QUIZ_WEIGHT, observedAt: quiz.createdAt };
+  const asked = IDEOLOGY_DIMENSIONS.filter((d) => coverage[d] > 0);
+  return {
+    vector: Object.fromEntries(asked.map((d) => [d, full[d]])),
+    dimensionWeight: Object.fromEntries(asked.map((d) => [d, coverage[d]])),
+    weight: QUIZ_WEIGHT,
+    observedAt: quiz.createdAt,
+  };
 }
 
 /** The latest quiz as of `until` (quizzes are newest first) plus every vote up to it. */
@@ -216,6 +223,19 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
   return { tds: tdMatches.sort(byAlignment), parties: parties.sort(byAlignment) };
 }
 
+/**
+ * The signed-in user's matches. Computed from their evidence on read, so a dimension they have
+ * no evidence on (weight 0) does not count: its 0 means "unknown", not "centrist".
+ */
+export async function userMatches(userId: string, weights: DimensionWeights = {}) {
+  const profile = await computeUserProfile(userId);
+  if (!profile) return null;
+  const measured: DimensionWeights = { ...weights };
+  for (const d of IDEOLOGY_DIMENSIONS) if (!(profile.support[d] > 0)) measured[d] = 0;
+  const matches = await matchesFor(profile.vector, measured);
+  return { ...matches, measured: IDEOLOGY_DIMENSIONS.filter((d) => profile.support[d] > 0) };
+}
+
 export async function tdProfile(tdId: number) {
   const [td, row] = await Promise.all([repo.findTd(tdId), repo.getProfile('td', String(tdId))]);
   if (!td) return null;
@@ -230,13 +250,42 @@ export async function partyProfile(party: string) {
 // --- rebuild ---------------------------------------------------------------
 
 export interface RecalculateSummary {
+  quizzesRescored: number;
   users: number;
   tds: number;
   parties: number;
 }
 
-/** Rebuild every profile from evidence. No model calls. */
+/**
+ * Re-score every stored quiz from its answers. The answers are the record; the stored vector
+ * is a copy, so a change to the scoring or the bank reaches old results here.
+ */
+async function rescoreQuizzes(): Promise<number> {
+  let changed = 0;
+  for (const row of await repo.listAllQuizResults()) {
+    let score;
+    try {
+      score = scoreQuiz(row.answers);
+    } catch (error) {
+      console.warn(`[ideology] quiz result ${row.id} no longer scores (${error instanceof Error ? error.message : error}); left as is`);
+      continue;
+    }
+    const stored = repo.vectorOf(row);
+    if (IDEOLOGY_DIMENSIONS.every((d) => stored[d] === score.vector[d])) continue;
+    await repo.updateQuizScore(row.id, { vector: score.vector, ...labelOf(score.vector) });
+    changed++;
+  }
+  return changed;
+}
+
+const labelOf = (v: IdeologyVector) => {
+  const { name, description } = ideologyLabel(v);
+  return { ideology: name, description };
+};
+
+/** Re-score stored quizzes, then rebuild every profile from evidence. No model calls. */
 export async function recalculateAll(): Promise<RecalculateSummary> {
+  const quizzesRescored = await rescoreQuizzes();
   const now = new Date();
   const tds = await repo.listActiveTds();
   for (const td of tds) await recomputeTdProfile(td.id, now);
@@ -245,5 +294,5 @@ export async function recalculateAll(): Promise<RecalculateSummary> {
   for (const party of Array.from(parties.values())) await recomputePartyProfile(party);
   const userIds = Array.from(new Set([...(await repo.listQuizUserIds()), ...(await repo.listUserProfileIds())]));
   for (const userId of userIds) await recomputeProfile(userId);
-  return { users: userIds.length, tds: tds.length, parties: parties.size };
+  return { quizzesRescored, users: userIds.length, tds: tds.length, parties: parties.size };
 }

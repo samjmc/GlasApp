@@ -16,6 +16,7 @@ export {
   recordTdEvidence,
   tdProfile,
   unknownTdCount,
+  userMatches,
   userTimeline,
   type PartyMatch,
   type RecalculateSummary,

@@ -23,6 +23,8 @@ export interface Observation {
   vector: PartialVector;
   /** > 0. */
   weight: number;
+  /** Optional per-dimension multiplier on `weight`, 0..1 (a quiz that asked part of a dimension). Missing = 1. */
+  dimensionWeight?: PartialVector;
   observedAt: Date;
 }
 
@@ -39,6 +41,8 @@ export interface ModelOptions {
 
 export interface Profile {
   vector: IdeologyVector;
+  /** Per dimension, the decayed evidence weight behind it (the prior not included). 0 = unknown. */
+  support: IdeologyVector;
   /** Sum of the decayed observation weights (the prior not included). */
   totalWeight: number;
   evidenceCount: number;
@@ -62,6 +66,7 @@ export function computeProfile(prior: Prior | null, observations: Observation[],
     }
   }
 
+  const support = emptyIdeologyVector();
   let totalWeight = 0;
   let evidenceCount = 0;
   for (const obs of observations) {
@@ -71,8 +76,12 @@ export function computeProfile(prior: Prior | null, observations: Observation[],
     for (const d of IDEOLOGY_DIMENSIONS) {
       const value = obs.vector[d];
       if (value === undefined || !Number.isFinite(value)) continue;
-      sums[d] += w * clampIdeologyValue(value);
-      weights[d] += w;
+      const share = obs.dimensionWeight?.[d] ?? 1;
+      if (!(share > 0)) continue;
+      const wd = w * Math.min(1, share);
+      sums[d] += wd * clampIdeologyValue(value);
+      weights[d] += wd;
+      support[d] += wd;
       used = true;
     }
     if (used) {
@@ -84,8 +93,9 @@ export function computeProfile(prior: Prior | null, observations: Observation[],
   const vector = emptyIdeologyVector();
   for (const d of IDEOLOGY_DIMENSIONS) {
     vector[d] = weights[d] > 0 ? round(clampIdeologyValue(sums[d] / weights[d])) : 0;
+    support[d] = round(support[d]);
   }
-  return { vector, totalWeight: round(totalWeight), evidenceCount };
+  return { vector, support, totalWeight: round(totalWeight), evidenceCount };
 }
 
 /** Weighted mean of several full positions, e.g. a party from its TDs. */

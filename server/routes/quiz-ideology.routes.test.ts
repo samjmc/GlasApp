@@ -52,6 +52,10 @@ vi.mock('../ideology', () => ({
     calls.list.push({ fn: 'matchesFor', args: [v, weights] });
     return { tds: [], parties: [] };
   }),
+  userMatches: vi.fn(async (userId: string, weights: unknown) => {
+    calls.list.push({ fn: 'userMatches', args: [userId, weights] });
+    return userId === 'new-user' ? null : { tds: [], parties: [], measured: ['economic', 'welfare'] };
+  }),
   userTimeline: vi.fn(async () => [{ date: '2026-09-24', vector }]),
   partyProfile: vi.fn(async (name: string) => (name === 'Fine Gael' ? { party: 'Fine Gael', vector, tdCount: 1, computedAt: null } : null)),
   tdProfile: vi.fn(async (id: number) => (id === 1 ? { td: { id: 1, name: 'A' }, profile: null } : null)),
@@ -152,9 +156,11 @@ describe('/api/ideology', () => {
 
   it('returns no matches for a user with no profile, and parses weights', async () => {
     const empty = await (await get('/api/ideology/me/matches', 'new-user')).json();
-    expect(empty).toMatchObject({ data: { tds: [], parties: [] }, meta: { hasProfile: false } });
-    await get('/api/ideology/me/matches?weights=economic:2,welfare:0.5,bogus:9', 'user-1');
-    expect(calls.list.at(-1)).toEqual({ fn: 'matchesFor', args: [vector, { economic: 2, welfare: 0.5 }] });
+    expect(empty).toMatchObject({ data: { tds: [], parties: [] }, meta: { hasProfile: false, measured: [] } });
+    const full = await (await get('/api/ideology/me/matches?weights=economic:2,welfare:0.5,bogus:9', 'user-1')).json();
+    expect(calls.list.at(-1)).toEqual({ fn: 'userMatches', args: ['user-1', { economic: 2, welfare: 0.5 }] });
+    expect(full).toMatchObject({ meta: { hasProfile: true, measured: ['economic', 'welfare'] } });
+    expect(full.data).not.toHaveProperty('measured');
   });
 
   it('includes a party to compare on the timeline', async () => {

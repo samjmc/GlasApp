@@ -30,7 +30,11 @@ export async function submitQuiz(userId: string | null, answers: QuizResponse[])
   const { name, description } = ideologyLabel(vector);
   if (!userId) return { id: null, vector, ideology: name, description, answeredCount, createdAt: null };
   const row = await repo.insertQuizResult({ userId, answers, vector, ideology: name, description });
-  await recomputeProfile(userId);
+  // The result is saved; a failed recompute must not turn that into an error the client
+  // retries (a duplicate row). The next vote, quiz or `npm run ideology -- --recalculate` heals it.
+  await recomputeProfile(userId).catch((error) => {
+    console.error(`[quiz] saved result ${row.id} but profile recompute failed:`, error instanceof Error ? error.message : error);
+  });
   return toResult(row);
 }
 

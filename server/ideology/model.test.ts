@@ -80,6 +80,34 @@ describe('computeProfile', () => {
   });
 });
 
+describe('per-dimension weight and support', () => {
+  it('weighs each dimension of an observation by its share, and reports the support behind each', () => {
+    const p = computeProfile(
+      null,
+      [
+        // a quiz that asked all economic questions but a third of the authority ones
+        { vector: { economic: 10, authority: 10 }, weight: 9, dimensionWeight: { economic: 1, authority: 1 / 3 }, observedAt: now },
+        { vector: { economic: -10, authority: -10 }, weight: 3, observedAt: now },
+      ],
+      noDecay,
+    );
+    expect(p.vector.economic).toBe(5); // (90 − 30) / 12
+    expect(p.vector.authority).toBe(0); // (30 − 30) / 6
+    expect(p.support.economic).toBe(12);
+    expect(p.support.authority).toBe(6);
+    expect(p.support.welfare).toBe(0); // unknown, not centrist
+    expect(p.evidenceCount).toBe(2);
+  });
+
+  it('skips a dimension whose share is 0, and does not count the prior as support', () => {
+    const prior = { vector: at({ economic: -6 }), weight: 3 };
+    const p = computeProfile(prior, [{ vector: { economic: 6 }, weight: 1, dimensionWeight: { economic: 0 }, observedAt: now }], noDecay);
+    expect(p.vector.economic).toBe(-6);
+    expect(p.support.economic).toBe(0);
+    expect(p.evidenceCount).toBe(0);
+  });
+});
+
 describe('decayFactor', () => {
   it('halves every half-life and never exceeds 1 for future dates', () => {
     expect(decayFactor(daysAgo(0), { now, halfLifeDays: 180 })).toBe(1);

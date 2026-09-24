@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
 import { asyncHandler } from '../middleware/errorHandler';
 import { MAX_DIMENSION_WEIGHT } from '../ideology/alignment';
-import { getIdeologyProfile, matchesFor, partyProfile, tdProfile, userTimeline } from '../ideology';
+import { getIdeologyProfile, matchesFor, partyProfile, tdProfile, userMatches, userTimeline } from '../ideology';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
@@ -46,14 +46,18 @@ router.get(
   }),
 );
 
-/** GET /api/ideology/me/matches?weights=… — TDs and parties closest to the signed-in user. */
+/**
+ * GET /api/ideology/me/matches?weights=… — TDs and parties closest to the signed-in user,
+ * on the dimensions the user has evidence on (`meta.measured`).
+ */
 router.get(
   '/me/matches',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const vector = await getIdeologyProfile(req.user!.id);
-    if (!vector) return res.json(formatSuccess({ tds: [], parties: [] }, { hasProfile: false }));
-    res.json(formatSuccess(await matchesFor(vector, parseWeights(req.query.weights)), { hasProfile: true }));
+    const result = await userMatches(req.user!.id, parseWeights(req.query.weights));
+    if (!result) return res.json(formatSuccess({ tds: [], parties: [] }, { hasProfile: false, measured: [] }));
+    const { measured, ...matches } = result;
+    res.json(formatSuccess(matches, { hasProfile: true, measured }));
   }),
 );
 

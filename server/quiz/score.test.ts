@@ -1,17 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
-import { QUIZ_QUESTIONS } from '@shared/quiz';
-import { QuizInputError, scoreQuiz } from './score';
+import { QUIZ_QUESTIONS, type QuizQuestion } from '@shared/quiz';
+import { QuizInputError, coverageOf, scoreQuiz } from './score';
 
-const answerAll = (index: number) => QUIZ_QUESTIONS.map((q) => ({ questionId: q.id, answerIndex: index }));
+const strongest = (q: QuizQuestion, side: 1 | -1) =>
+  q.answers.reduce((best, a, i) => (side * a.value > side * q.answers[best]!.value ? i : best), 0);
+const onDimension = (d: string) => QUIZ_QUESTIONS.filter((q) => q.dimension === d);
 
 describe('the question bank', () => {
-  it('has 25 questions of four answers, each with a full eight-axis vector', () => {
+  it('has 25 questions of four answers, one value each', () => {
     expect(QUIZ_QUESTIONS).toHaveLength(25);
     for (const q of QUIZ_QUESTIONS) {
       expect(IDEOLOGY_DIMENSIONS).toContain(q.dimension);
       expect(q.answers).toHaveLength(4);
-      for (const a of q.answers) expect(Object.keys(a.vector).sort()).toEqual([...IDEOLOGY_DIMENSIONS].sort());
+      for (const a of q.answers) expect(Number.isFinite(a.value)).toBe(true);
     }
   });
 
@@ -20,13 +22,11 @@ describe('the question bank', () => {
     expect(new Set(QUIZ_QUESTIONS.map((q) => q.id)).size).toBe(QUIZ_QUESTIONS.length);
   });
 
-  it('can reach at most ±10 on each dimension (the clamp is a guard, not a crutch)', () => {
+  it('offers both sides on every dimension', () => {
     for (const d of IDEOLOGY_DIMENSIONS) {
-      const own = QUIZ_QUESTIONS.filter((q) => q.dimension === d);
-      const max = own.reduce((s, q) => s + Math.max(...q.answers.map((a) => a.vector[d])), 0);
-      const min = own.reduce((s, q) => s + Math.min(...q.answers.map((a) => a.vector[d])), 0);
-      expect(max).toBeLessThanOrEqual(10.01);
-      expect(min).toBeGreaterThanOrEqual(-10.01);
+      const values = onDimension(d).flatMap((q) => q.answers.map((a) => a.value));
+      expect(Math.max(...values), d).toBeGreaterThan(0);
+      expect(Math.min(...values), d).toBeLessThan(0);
     }
   });
 
@@ -35,34 +35,66 @@ describe('the question bank', () => {
     const answer = (fragment: string) => {
       const found = QUIZ_QUESTIONS.flatMap((q) => q.answers).find((a) => a.text.includes(fragment));
       if (!found) throw new Error(`no answer containing "${fragment}"`);
-      return found.vector;
+      return found.value;
     };
-    expect(answer('broad-based tax relief').welfare).toBeGreaterThan(0); // self-reliance
-    expect(answer('targeted social supports').welfare).toBeLessThan(0); // expand welfare
-    expect(answer('offshore wind').environmental).toBeLessThan(0); // ecological
-    expect(answer('Relax timelines').environmental).toBeGreaterThan(0); // pro-growth
-    expect(answer('Join fully; collective security').globalism).toBeLessThan(0); // internationalist
-    expect(answer('national resources are already stretched').globalism).toBeGreaterThan(0); // nationalist
-    expect(answer('let expert teams steer').technocratic).toBeLessThan(0); // expert-led
-    expect(answer('opaque algorithms').technocratic).toBeGreaterThan(0); // populist
-    expect(answer('binding power').technocratic).toBeGreaterThan(0); // people power
+    expect(answer('broad-based tax relief')).toBeGreaterThan(0); // economic: market
+    expect(answer('Adopt UBI nationwide')).toBeLessThan(0); // welfare: expand
+    expect(answer('Deregulate rent entirely')).toBeGreaterThan(0); // welfare: self-reliance
+    expect(answer('offshore wind')).toBeLessThan(0); // environmental: ecological
+    expect(answer('Relax timelines')).toBeGreaterThan(0); // environmental: pro-growth
+    expect(answer('Join fully; collective security')).toBeLessThan(0); // globalism: internationalist
+    expect(answer('national resources are already stretched')).toBeGreaterThan(0); // globalism: nationalist
+    expect(answer('let expert teams steer')).toBeLessThan(0); // technocratic: expert-led
+    expect(answer('opaque algorithms')).toBeGreaterThan(0); // technocratic: populist
+    expect(answer('binding power')).toBeGreaterThan(0); // technocratic: people power
   });
 });
 
 describe('scoreQuiz', () => {
-  it('adds only each question\'s own dimension', () => {
-    const q = QUIZ_QUESTIONS[0]!;
-    const { vector, answeredCount } = scoreQuiz([{ questionId: q.id, answerIndex: 2 }]);
-    expect(answeredCount).toBe(1);
-    expect(vector[q.dimension]).toBe(Math.round(q.answers[2]!.vector[q.dimension] * 10) / 10);
-    for (const d of IDEOLOGY_DIMENSIONS.filter((x) => x !== q.dimension)) expect(vector[d]).toBe(0);
+  it('reaches ±10 on every dimension with the strongest answers on that side, even where the bank is lopsided', () => {
+    for (const d of IDEOLOGY_DIMENSIONS) {
+      for (const side of [1, -1] as const) {
+        const answers = onDimension(d).map((q) => ({ questionId: q.id, answerIndex: strongest(q, side) }));
+        expect(scoreQuiz(answers).vector[d], `${d} ${side}`).toBe(10 * side);
+      }
+    }
   });
 
-  it('scores a full quiz inside ±10 on every dimension', () => {
+  it('scores a partial quiz for what it says, and reports the coverage', () => {
+    const q = onDimension('economic')[0]!;
+    const { vector, coverage, answeredCount } = scoreQuiz([{ questionId: q.id, answerIndex: strongest(q, 1) }]);
+    expect(answeredCount).toBe(1);
+    expect(vector.economic).toBe(10); // the strongest market answer available, not "2.5 = centrist"
+    expect(coverage.economic).toBe(0.25);
+    for (const d of IDEOLOGY_DIMENSIONS.filter((x) => x !== 'economic')) {
+      expect(vector[d]).toBe(0);
+      expect(coverage[d]).toBe(0);
+    }
+  });
+
+  it('keeps answer strength: a milder answer scores below the strongest', () => {
+    const q = QUIZ_QUESTIONS.find((x) => x.id === 1)!; // values −2.5, −2.5, +2.5, +1.25
+    expect(scoreQuiz([{ questionId: 1, answerIndex: 3 }]).vector.economic).toBe(5);
+    expect(q.answers[3]!.value).toBe(1.25);
+  });
+
+  it('balances mixed answers toward the centre', () => {
+    const [a, b] = onDimension('welfare');
+    const v = scoreQuiz([
+      { questionId: a!.id, answerIndex: strongest(a!, 1) },
+      { questionId: b!.id, answerIndex: strongest(b!, -1) },
+    ]).vector.welfare;
+    expect(Math.abs(v)).toBeLessThan(10);
+  });
+
+  it('scores a full quiz inside ±10 with full coverage', () => {
     for (const index of [0, 1, 2, 3]) {
-      const { vector, answeredCount } = scoreQuiz(answerAll(index));
+      const { vector, coverage, answeredCount } = scoreQuiz(QUIZ_QUESTIONS.map((q) => ({ questionId: q.id, answerIndex: index })));
       expect(answeredCount).toBe(25);
-      for (const d of IDEOLOGY_DIMENSIONS) expect(Math.abs(vector[d])).toBeLessThanOrEqual(10);
+      for (const d of IDEOLOGY_DIMENSIONS) {
+        expect(Math.abs(vector[d])).toBeLessThanOrEqual(10);
+        expect(coverage[d]).toBe(1);
+      }
     }
   });
 
@@ -77,5 +109,12 @@ describe('scoreQuiz', () => {
         { questionId: 1, answerIndex: 1 },
       ]),
     ).toThrow(/answered twice/);
+  });
+});
+
+describe('coverageOf', () => {
+  it('matches scoreQuiz coverage for stored answers', () => {
+    const answers = [{ questionId: 1, answerIndex: 0 }, { questionId: 2, answerIndex: 0 }, { questionId: 17, answerIndex: 1 }];
+    expect(coverageOf(answers)).toEqual(scoreQuiz(answers).coverage);
   });
 });
