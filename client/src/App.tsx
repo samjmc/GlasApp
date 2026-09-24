@@ -1,62 +1,124 @@
-import { Switch, Route, useLocation } from "wouter";
-import { useEffect } from "react";
+import { Redirect, Route, Switch, useLocation } from "wouter";
+import { useEffect, type ComponentType } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ToastContextProvider } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineAlert } from "@/components/OfflineAlert";
+import { OfflineIndicator } from "@/components/OfflineIndicator";
+import { PWAInstallButton } from "@/components/PWAInstallButton";
+import CookieConsent from "@/components/CookieConsent";
 import { RegionProvider } from "@/contexts/RegionContext";
 import { useRegion } from "@/hooks/useRegion";
+import { useDailySession } from "@/hooks/useDailySession";
+import { AppShell } from "@/components/layout/AppShell";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { RegionComingSoon } from "@/components/RegionComingSoon";
+import { GlasMark } from "@/components/pulse/GlasMark";
 
 import NotFound from "@/pages/not-found";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import { PWAInstallButton } from "./components/PWAInstallButton";
-import { OfflineIndicator } from "./components/OfflineIndicator";
-import NewHome from "./pages/NewHome";
-import Home from "./pages/Home";
 import HomePage from "@/pages/HomePage";
-
+import TDProfilePage from "@/pages/TDProfilePage";
+import PartyProfilePage from "@/pages/PartyProfilePage";
+import ResearchedTDsPage from "@/pages/ResearchedTDsPage";
+import DebatesPage from "@/pages/DebatesPage";
+import ConstituenciesPage from "@/pages/ConstituenciesPage";
+import ConstituencyProfilePage from "@/pages/ConstituencyProfilePage";
+import QuizPage from "@/pages/QuizPage";
+import QuizResultsPage from "@/pages/QuizResultsPage";
+import MyPoliticsPage from "@/pages/MyPoliticsPage";
+import IdeasPage from "@/pages/IdeasPage";
+import DailySessionPage from "@/pages/DailySessionPage";
 import ProfilePage from "@/pages/ProfilePage";
+import AdminPage from "@/pages/AdminPage";
+import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
 import LoginPage from "@/pages/LoginPage";
 import RegisterPage from "@/pages/RegisterPage";
 import AuthCallbackPage from "@/pages/AuthCallbackPage";
-import EducationPage from "@/pages/EducationPage";
-import IdeasPage from "@/pages/IdeasPage";
-import ConflictMapPage from "@/pages/ConflictMapPage";
-import NotificationsPage from "@/pages/NotificationsPage";
-import OfficialElectoralMapPage from "./pages/OfficialElectoralMapPage";
-import UserHeatmapPage from "@/pages/UserHeatmapPage";
-import ConstituencyComparisonPage from "@/pages/ConstituencyComparisonPage";
-import PolicySimulatorPage from "@/pages/PolicySimulatorPage";
-import ConstituencyStatsPage from "@/pages/ConstituencyStatsPage";
-import LocalRepresentativesPage from "@/pages/LocalRepresentativesPage";
-import DebatesPage from "@/pages/DebatesPage";
-import TDProfilePage from "@/pages/TDProfilePage";
-import PartyProfilePage from "@/pages/PartyProfilePage";
-import ConstituenciesPage from "@/pages/ConstituenciesPage";
-import ConstituencyProfilePage from "@/pages/ConstituencyProfilePage";
-import ResearchedTDsPage from "@/pages/ResearchedTDsPage";
-import PollingSystemInfo from "@/pages/PollingSystemInfo";
-import PollingDashboard from "@/pages/PollingDashboard";
-import AdminPollingEntry from "@/pages/AdminPollingEntry";
-import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
-import MyPoliticsPage from "@/pages/MyPoliticsPage";
-
-import QuizPage from "@/pages/QuizPage";
-import QuizResultsPage from "@/pages/QuizResultsPage";
-import AdminPage from "@/pages/AdminPage";
+import RegionSelectionPage from "@/pages/RegionSelectionPage";
 import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 import TermsOfServicePage from "@/pages/TermsOfServicePage";
 import ContactPage from "@/pages/ContactPage";
-import BottomNavigation from "@/components/BottomNavigation";
-import CookieConsent from "@/components/CookieConsent";
-import DailySessionPage from "@/pages/DailySessionPage";
-import { useDailySession } from "@/hooks/useDailySession";
-import RegionSelectionPage from "@/pages/RegionSelectionPage";
-import { RegionComingSoon } from "@/components/RegionComingSoon";
+
+/** Wraps a page so only a signed-in user (or an admin) sees it. */
+function guarded(Page: ComponentType, requireAdmin = false) {
+  return function GuardedPage() {
+    return (
+      <ProtectedRoute requireAdmin={requireAdmin}>
+        <Page />
+      </ProtectedRoute>
+    );
+  };
+}
+
+const DailySession = guarded(DailySessionPage);
+const Profile = guarded(ProfilePage);
+const Admin = guarded(AdminPage, true);
+const AgentMonitor = guarded(ShadowCabinetDashboard, true);
+
+/** Pages a signed-in user has no reason to see send them home. */
+function SignedOutOnly({ page: Page }: { page: ComponentType }) {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Redirect to="/" /> : <Page />;
+}
+
+function FullScreenLoader() {
+  return (
+    <div className="flex min-h-[100dvh] items-center justify-center bg-background" role="status" aria-label="Loading">
+      <GlasMark className="h-12 w-12 animate-pulse" />
+    </div>
+  );
+}
+
+/** Routes that work in every region. */
+const COMMON_ROUTES = (
+  <>
+    <Route path="/auth/callback" component={AuthCallbackPage} />
+    <Route path="/privacy-policy" component={PrivacyPolicyPage} />
+    <Route path="/terms-of-service" component={TermsOfServicePage} />
+    <Route path="/contact" component={ContactPage} />
+    <Route path="/select-region" component={RegionSelectionPage} />
+    <Route path="/login">{() => <SignedOutOnly page={LoginPage} />}</Route>
+    <Route path="/register">{() => <SignedOutOnly page={RegisterPage} />}</Route>
+    <Route path="/daily-session" component={DailySession} />
+  </>
+);
+
+function IrishRoutes() {
+  return (
+    <Switch>
+      {COMMON_ROUTES}
+      <Route path="/" component={HomePage} />
+      <Route path="/rankings" component={ResearchedTDsPage} />
+      <Route path="/td/:name" component={TDProfilePage} />
+      <Route path="/party/:name" component={PartyProfilePage} />
+      <Route path="/debates" component={DebatesPage} />
+      <Route path="/constituencies" component={ConstituenciesPage} />
+      <Route path="/constituency/:name" component={ConstituencyProfilePage} />
+      <Route path="/quiz" component={QuizPage} />
+      <Route path="/quiz/results" component={QuizResultsPage} />
+      <Route path="/my-politics" component={MyPoliticsPage} />
+      <Route path="/ideas" component={IdeasPage} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/admin" component={Admin} />
+      <Route path="/admin/shadow" component={AgentMonitor} />
+      <Route component={NotFound} />
+    </Switch>
+  );
+}
+
+function USRoutes() {
+  return (
+    <Switch>
+      {COMMON_ROUTES}
+      <Route path="/" component={HomePage} />
+      <Route>{() => <RegionComingSoon feature="home" headline="US build in progress" />}</Route>
+    </Switch>
+  );
+}
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -71,242 +133,44 @@ function Router() {
     (dailySession?.items?.length ?? 0) > 0;
 
   useEffect(() => {
-    if (shouldForceDaily && location !== "/daily-session") {
-      navigate("/daily-session");
-    }
+    if (shouldForceDaily && location !== "/daily-session") navigate("/daily-session");
   }, [shouldForceDaily, location, navigate]);
 
   useEffect(() => {
-    if (regionStatus === "needs-selection" && location !== "/select-region") {
-      navigate("/select-region");
-    }
+    if (regionStatus === "needs-selection" && location !== "/select-region") navigate("/select-region");
   }, [regionStatus, location, navigate]);
 
-  if (isLoading || regionStatus === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg">Loading...</div>
-      </div>
-    );
-  }
+  if (isLoading || regionStatus === "loading") return <FullScreenLoader />;
 
-  if (shouldForceDaily) {
-    return (
-      <Switch>
-        <Route path="/daily-session" component={DailySessionPage} />
-        <Route>
-          {() => <DailySessionPage />}
-        </Route>
-      </Switch>
-    );
-  }
+  // The daily session and region picker own the whole screen.
+  const bare = shouldForceDaily || location === "/daily-session" || location === "/select-region";
 
-  const renderUSRoutes = () => {
-    if (!isAuthenticated) {
-      return (
-        <Switch>
-          <Route path="/auth/callback" component={AuthCallbackPage} />
-          <Route path="/privacy-policy" component={PrivacyPolicyPage} />
-          <Route path="/terms-of-service" component={TermsOfServicePage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/select-region" component={RegionSelectionPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/" component={HomePage} />
-          <Route>
-            {() => (
-              <RegionComingSoon
-                feature="home"
-                headline="US build in progress"
-              />
-            )}
-          </Route>
-        </Switch>
-      );
-    }
-
-    return (
-      <Switch>
-        <Route path="/auth/callback" component={AuthCallbackPage} />
-        <Route path="/privacy-policy" component={PrivacyPolicyPage} />
-        <Route path="/terms-of-service" component={TermsOfServicePage} />
-        <Route path="/contact" component={ContactPage} />
-        <Route path="/select-region" component={RegionSelectionPage} />
-        <Route path="/daily-session" component={DailySessionPage} />
-        <Route path="/" component={HomePage} />
-        <Route>
-          {() => (
-            <RegionComingSoon
-              feature="home"
-              headline="US build in progress"
-            />
-          )}
-        </Route>
-      </Switch>
-    );
-  };
-
-  const renderIrishRoutes = () => (
-    <Switch>
-      {/* Auth callback route - always accessible */}
-      <Route path="/auth/callback" component={AuthCallbackPage} />
-      
-      {/* Legal & region selection pages - always accessible (no auth required) */}
-      <Route path="/privacy-policy" component={PrivacyPolicyPage} />
-      <Route path="/terms-of-service" component={TermsOfServicePage} />
-      <Route path="/contact" component={ContactPage} />
-      <Route path="/select-region" component={RegionSelectionPage} />
-      
-      {!isAuthenticated ? (
-        <>
-          {/* Public routes - no authentication required */}
-          <Route path="/" component={HomePage} />
-          <Route path="/td/:name" component={TDProfilePage} />
-          <Route path="/party/:name" component={PartyProfilePage} />
-          <Route path="/debates" component={DebatesPage} />
-          <Route path="/td-leaderboard">
-            {() => {
-              window.location.href = "/?tab=tds";
-              return <div>Redirecting to Rankings...</div>;
-            }}
-          </Route>
-          <Route path="/polling">
-            {() => {
-              window.location.href = "/?tab=tds";
-              return <div>Redirecting to Rankings...</div>;
-            }}
-          </Route>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          
-          {/* Quiz routes available for all users */}
-          <Route path="/quiz" component={QuizPage} />
-          <Route path="/quiz/results" component={QuizResultsPage} />
-
-          {/* Pages linked in header/navigation - available for all */}
-          <Route path="/my-politics" component={MyPoliticsPage} />
-          <Route path="/ideas" component={IdeasPage} />
-        </>
-      ) : (
-        <>
-          {/* Protected routes - authentication required */}
-          <Route path="/" component={HomePage} />
-          <Route path="/daily-session" component={DailySessionPage} />
-          <Route path="/conflicts" component={ConflictMapPage} />
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/ideas" component={IdeasPage} />
-          
-          {/* Redirects for legacy pages */}
-          <Route path="/education">
-            {() => {
-              window.location.href = "/";
-              return <div>Redirecting to Home...</div>;
-            }}
-          </Route>
-          <Route path="/admin" component={AdminPage} />
-          <Route path="/admin/shadow" component={ShadowCabinetDashboard} />
-          <Route path="/notifications" component={NotificationsPage} />
-          
-          {/* Quiz Routes */}
-          <Route path="/quiz" component={QuizPage} />
-          <Route path="/quiz/results" component={QuizResultsPage} />
-
-          {/* Map views */}
-          <Route path="/electoral-map" component={OfficialElectoralMapPage} />
-          <Route path="/user-heatmap" component={UserHeatmapPage} />
-          <Route path="/constituency-comparison" component={ConstituencyComparisonPage} />
-          <Route path="/policy-simulator" component={PolicySimulatorPage} />
-          <Route path="/constituency-stats" component={ConstituencyStatsPage} />
-          <Route path="/local-representatives" component={LocalRepresentativesPage} />
-          <Route path="/my-tds" component={LocalRepresentativesPage} />
-          <Route path="/td-scores" component={ResearchedTDsPage} />
-          <Route path="/td-leaderboard">
-            {() => {
-              window.location.href = "/?tab=tds";
-              return <div>Redirecting to Rankings...</div>;
-            }}
-          </Route>
-          <Route path="/debates" component={DebatesPage} />
-          <Route path="/researched-tds" component={ResearchedTDsPage} />
-          <Route path="/my-politics" component={MyPoliticsPage} />
-          <Route path="/td/:name" component={TDProfilePage} />
-          <Route path="/party/:name" component={PartyProfilePage} />
-          <Route path="/constituencies" component={ConstituenciesPage} />
-          <Route path="/constituency/:name" component={ConstituencyProfilePage} />
-          
-          {/* Polling System Routes - now accessible via homepage Rankings tab */}
-          <Route path="/polling">
-            {() => {
-              window.location.href = "/?tab=tds";
-              return <div>Redirecting to Rankings...</div>;
-            }}
-          </Route>
-          <Route path="/polling/info" component={PollingSystemInfo} />
-          <Route path="/admin/polling/entry" component={AdminPollingEntry} />
-          
-          {/* Auth routes redirect to home when logged in */}
-          <Route path="/login" component={HomePage} />
-          <Route path="/register" component={HomePage} />
-          
-          {/* Legacy pages */}
-          <Route path="/classic-home" component={NewHome} />
-          <Route path="/old-home" component={Home} />
-        </>
-      )}
-      <Route component={NotFound} />
-    </Switch>
+  return (
+    <AppShell bare={bare}>
+      {shouldForceDaily ? <DailySessionPage /> : region?.code === "US" ? <USRoutes /> : <IrishRoutes />}
+    </AppShell>
   );
-
-  if (region?.code === "US") {
-    return renderUSRoutes();
-  }
-
-  return renderIrishRoutes();
 }
 
 function App() {
-  const [location] = useLocation();
-  const isDailySessionRoute = location === "/daily-session";
-  const isQuizRoute = location === "/quiz";
-
-  const mainClass = isDailySessionRoute ? "flex-grow overflow-x-hidden" : "mobile-shell flex-grow overflow-x-hidden";
-
-  // Don't apply background on the quiz page - it has its own black background
-  const containerClasses = isQuizRoute
-    ? "flex min-h-screen flex-col text-gray-900 transition-colors duration-200 dark:text-white overflow-x-hidden"
-    : "flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors duration-200 dark:bg-gray-900 dark:text-white overflow-x-hidden";
-
   return (
     <QueryClientProvider client={queryClient}>
-      <ErrorBoundary>
-        <AuthProvider>
-          <RegionProvider>
-            <ToastContextProvider>
-                <div className={containerClasses}>
-                  {!isDailySessionRoute && (
-                    <>
-                      <OfflineIndicator />
-                      <OfflineAlert />
-                      <Header />
-                    </>
-                  )}
-                  <main className={mainClass}>
-                    <Router />
-                  </main>
-                  {!isDailySessionRoute && (
-                    <>
-                      <Footer className="hidden md:block" />
-                      <BottomNavigation />
-                      <PWAInstallButton />
-                      <CookieConsent />
-                    </>
-                  )}
-                  <Toaster />
-                </div>
-            </ToastContextProvider>
-          </RegionProvider>
-        </AuthProvider>
-      </ErrorBoundary>
+      <ThemeProvider>
+        <ErrorBoundary>
+          <AuthProvider>
+            <RegionProvider>
+              <ToastContextProvider>
+                <OfflineIndicator />
+                <OfflineAlert />
+                <Router />
+                <PWAInstallButton />
+                <CookieConsent />
+                <Toaster />
+              </ToastContextProvider>
+            </RegionProvider>
+          </AuthProvider>
+        </ErrorBoundary>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

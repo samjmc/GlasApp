@@ -20,6 +20,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { PartyPollingWidget } from '@/components/PartyPollingWidget';
+import { PartyPledgesPanel } from '@/components/pledges/PartyPledgesPanel';
 import { politicalParties } from '@shared/data';
 import { partyDimensionsData } from '@/data/partyDimensionsData';
 
@@ -416,6 +417,8 @@ export default function PartyProfilePage() {
               </p>
             </div>
           </Card>
+
+          <PartyPledgesPanel party={party.party} />
 
           {/* Public Opinion Polling Widget */}
           <PartyPollingWidget
