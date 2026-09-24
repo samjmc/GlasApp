@@ -5,6 +5,7 @@ const td = (over: Partial<RollupInput> & { tdId: number }): RollupInput => ({
   party: 'Fine Gael',
   constituency: 'Dublin Bay North',
   overallElo: 1500,
+  newsStories: 1,
   questions: null,
   attendancePct: null,
   debateScore: null,
@@ -55,6 +56,22 @@ describe('computeRollup', () => {
     expect(ranks).toEqual([1, 2, 3]);
     expect(rows.find((r) => r.tdId === 5)!.nationalRank).toBe(1);
     expect(rows.find((r) => r.tdId === 3)!.nationalRank).toBe(2);
+  });
+
+  // Regression: every TD used to score 50 with no evidence at all, because an unscored
+  // TD's ELO is the 1500 baseline and 1500 converts to 50.
+  it('a TD with no scored article and no other data has no score and no rank', () => {
+    const rows = computeRollup([td({ tdId: 1, newsStories: 0 }), td({ tdId: 2, overallElo: 1600 })]);
+    const unscored = rows.find((r) => r.tdId === 1)!;
+    expect(unscored).toMatchObject({ newsScore: null, overallScore: null, nationalRank: null, partyRank: null, constituencyRank: null });
+    expect(rows.find((r) => r.tdId === 2)!.nationalRank).toBe(1);
+  });
+
+  it('a TD with no scored article is scored on the pillars that do have data', () => {
+    const [r] = computeRollup([td({ tdId: 1, newsStories: 0, questions: 200, attendancePct: 95 })]);
+    expect(r.newsScore).toBeNull();
+    expect(r.parliamentaryScore).toBe(100);
+    expect(r.overallScore).toBe(100);
   });
 
   it('returns one result per input, in input order', () => {

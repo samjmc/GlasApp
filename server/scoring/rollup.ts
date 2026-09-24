@@ -9,6 +9,11 @@ export interface RollupInput {
   party: string | null;
   constituency: string | null;
   overallElo: number;
+  /**
+   * Articles scored for this TD. Zero means the ELO is still the untouched 1500 baseline,
+   * which says nothing about the TD, so the news pillar is absent rather than 50.
+   */
+  newsStories: number;
   /** Oral + written questions this term. NULL = no data. */
   questions: number | null;
   attendancePct: number | null;
@@ -18,7 +23,7 @@ export interface RollupInput {
 
 export interface RollupResult {
   tdId: number;
-  newsScore: number;
+  newsScore: number | null;
   parliamentaryScore: number | null;
   debateScore: number | null;
   overallScore: number | null;
@@ -34,7 +39,7 @@ function byRank(a: { overallScore: number | null; overallElo: number; tdId: numb
 
 export function computeRollup(rows: RollupInput[]): RollupResult[] {
   const scored = rows.map((r) => {
-    const news = eloToPercent(r.overallElo);
+    const news = r.newsStories > 0 ? eloToPercent(r.overallElo) : null;
     const parliamentary = parliamentaryScore(r.questions, r.attendancePct);
     const debate = normalizePercent(r.debateScore);
     return {
