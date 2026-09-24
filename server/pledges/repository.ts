@@ -12,6 +12,7 @@ import {
   type PledgeEvidenceRow,
   type PledgeRow,
 } from '@shared/schema/pledges';
+import { divisions } from '@shared/schema/parliament';
 import type { Pledge, PledgeCategory, PledgeEvidence, PledgeStatus, EvidenceKind } from '@shared/pledges';
 
 const toPledge = (row: PledgeRow, evidenceCount: number): Pledge => ({
@@ -98,9 +99,20 @@ export async function deletePledge(id: number, database: Db = db): Promise<boole
 }
 
 /** Null when the pledge does not exist. */
+/** The evidence names a division that politics.divisions does not hold. */
+export class UnknownDivisionError extends Error {
+  constructor(readonly divisionId: string) {
+    super(`No recorded Dáil vote has id ${divisionId}`);
+  }
+}
+
 export async function addEvidence(input: NewPledgeEvidence, database: Db = db): Promise<PledgeEvidence | null> {
   const [exists] = await database.select({ id: pledges.id }).from(pledges).where(eq(pledges.id, input.pledgeId));
   if (!exists) return null;
+  if (input.divisionId) {
+    const [division] = await database.select({ id: divisions.id }).from(divisions).where(eq(divisions.id, input.divisionId));
+    if (!division) throw new UnknownDivisionError(input.divisionId);
+  }
   const [row] = await database.insert(pledgeEvidence).values(input).returning();
   await database.update(pledges).set({ updatedAt: new Date() }).where(eq(pledges.id, input.pledgeId));
   return toEvidence(row!);
