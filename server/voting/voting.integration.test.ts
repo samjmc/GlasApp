@@ -11,20 +11,11 @@
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
  *   npx vitest run server/voting/voting.integration.test.ts
  */
-import fs from 'node:fs';
-import path from 'node:path';
-import pkg from 'pg';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
-const BASE_URL = process.env.TEST_DATABASE_URL;
-const run = describe.skipIf(!BASE_URL);
-
-const votingUrl = (() => {
-  if (!BASE_URL) return undefined;
-  const url = new URL(BASE_URL);
-  url.pathname = `/${url.pathname.replace(/^\//, '') || 'postgres'}_voting`;
-  return url.toString();
-})();
+const votingUrl = testDatabaseUrl('voting');
+const run = describe.skipIf(!votingUrl);
 
 if (votingUrl) {
   process.env.DATABASE_URL = votingUrl;
@@ -44,8 +35,6 @@ vi.mock('./ideology', () => ({
     ideologyState.recomputed.push(userId);
   }),
 }));
-
-const MIGRATIONS = ['0000_politics_scoring.sql', '0001_voting.sql'];
 
 /** Noon UTC on a September day: the same calendar date in Dublin. */
 const day = (n: number) => new Date(Date.UTC(2026, 8, n, 12));
@@ -85,22 +74,9 @@ run('voting against Postgres', () => {
   }
 
   beforeAll(async () => {
-    const admin = new pkg.Client({ connectionString: BASE_URL });
-    await admin.connect();
-    const name = new URL(votingUrl!).pathname.slice(1);
-    const exists = await admin.query('select 1 from pg_database where datname = $1', [name]);
-    if (exists.rowCount === 0) await admin.query(`create database "${name}"`);
-    await admin.end();
-
+    await ensureDatabase(votingUrl!);
     dbmod = await import('../db');
-    await dbmod.pool.query('drop schema if exists politics cascade');
-    for (const file of MIGRATIONS) {
-      const migration = fs.readFileSync(path.resolve(__dirname, '..', '..', 'drizzle', file), 'utf8');
-      for (const statement of migration.split('--> statement-breakpoint')) {
-        const sql = statement.trim();
-        if (sql) await dbmod.pool.query(sql);
-      }
-    }
+    await applyAllMigrations(dbmod.pool);
     repo = await import('./repository');
     service = await import('./service');
     index = await import('./index');

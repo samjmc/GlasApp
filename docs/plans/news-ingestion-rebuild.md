@@ -187,7 +187,7 @@ card already falls back to a gradient.
 
 ## Needs the real GlasCore DB (not reachable here)
 
-1. `npm run db:migrate` (applies `0002_news_ingestion`).
+1. `npm run db:migrate` (applies `0003_news_ingestion`).
 2. With `OPENAI_API_KEY` set, run `POST /api/admin/news/ingest`. This is the real
    classifier's first run: check that `notPolitical` is non-zero and that the stored rows are
    political.
