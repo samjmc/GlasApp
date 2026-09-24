@@ -39,6 +39,12 @@ describe('parseDivision', () => {
     expect(votes).toHaveLength(146);
   });
 
+  it('stores a placeholder outcome as NULL, never as a result', () => {
+    expect(parseDivision({ ...rawDivision, outcome: '_' })!.division.outcome).toBeNull();
+    expect(parseDivision({ ...rawDivision, outcome: '  ' })!.division.outcome).toBeNull();
+    expect(parseDivision({ ...rawDivision, outcome: 'Carried' })!.division.outcome).toBe('Carried');
+  });
+
   it('rejects records it cannot identify, and Seanad divisions', () => {
     expect(parseDivision({ ...rawDivision, voteId: undefined })).toBeNull();
     expect(parseDivision({ ...rawDivision, house: { houseCode: 'seanad', houseNo: '27' } })).toBeNull();

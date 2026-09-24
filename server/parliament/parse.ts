@@ -77,7 +77,7 @@ export function parseDivision(raw: RawDivision): ParsedDivision | null {
       date: raw.date,
       heldAt: raw.datetime ? new Date(raw.datetime) : null,
       subject: cleanSubject(raw.subject?.showAs),
-      outcome: raw.outcome || null,
+      outcome: cleanOutcome(raw.outcome),
       debateTitle: raw.debate?.showAs || null,
       debateSectionId: raw.debate?.debateSection ? sectionId(debateDate, raw.debate.debateSection) : null,
       isBill: raw.isBill === true,
@@ -87,6 +87,15 @@ export function parseDivision(raw: RawDivision): ParsedDivision | null {
     },
     votes,
   };
+}
+
+/**
+ * "Carried" / "Lost" as reported. A few records carry a placeholder such as "_" (6 of the
+ * 34th Dáil's first 413); that is "not recorded", so NULL rather than a made-up result.
+ */
+function cleanOutcome(outcome: string | null | undefined): string | null {
+  const o = outcome?.trim();
+  return o && /[a-z]/i.test(o) ? o : null;
 }
 
 /** "Amendment put: " → "Amendment put". Empty → NULL. */
