@@ -4,22 +4,22 @@
  * Unit tests cover the maths; nothing else executes a query, so a broken `onConflict`
  * target, a bad `nulls last` clause or a wrong transaction shape would ship silently.
  *
- * Skipped unless TEST_DATABASE_URL points at a database this test may DROP AND RECREATE
- * the `politics` schema in:
+ * Skipped unless TEST_DATABASE_URL is set. It uses its OWN database, `<db>_scoring`
+ * (created if missing), and rebuilds the `politics` schema there from every migration:
  *
  *   docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
  *   npx vitest run server/scoring/repository.integration.test.ts
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { isolatedDatabaseUrl, resetPoliticsSchema } from '../testing/migrations';
+import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
-const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL;
-const run = describe.skipIf(!TEST_DATABASE_URL);
+const scoringUrl = testDatabaseUrl('scoring');
+const run = describe.skipIf(!scoringUrl);
 
 // server/db.ts throws at import without this; point it at the test database.
-if (TEST_DATABASE_URL) {
-  process.env.DATABASE_URL = TEST_DATABASE_URL;
+if (scoringUrl) {
+  process.env.DATABASE_URL = scoringUrl;
   process.env.SUPABASE_URL ??= 'http://localhost:54321';
   process.env.SUPABASE_ANON_KEY ??= 'anon';
   process.env.SUPABASE_SERVICE_ROLE_KEY ??= 'service';
@@ -30,9 +30,9 @@ run('repository against Postgres', () => {
   let dbmod: typeof import('../db');
 
   beforeAll(async () => {
-    process.env.DATABASE_URL = await isolatedDatabaseUrl(TEST_DATABASE_URL!, 'scoring');
+    await ensureDatabase(scoringUrl!);
     dbmod = await import('../db');
-    await resetPoliticsSchema(dbmod.pool);
+    await applyAllMigrations(dbmod.pool);
     repo = await import('./repository');
   }, 60_000);
 

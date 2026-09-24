@@ -311,109 +311,6 @@ export const candidates = pgTable("candidates", {
   position: integer("position"), // final position after count
 });
 
-// Pledge tracking table
-/** Drizzle ORM table definition for pledge tracking. */
-export const pledges = pgTable("pledges", {
-  id: serial("id").primaryKey(),
-  partyId: integer("party_id").notNull().references(() => parties.id),
-  title: varchar("title", { length: 255 }).notNull(),
-  description: text("description").notNull(),
-  category: varchar("category", { length: 100 }).notNull(),
-  electionYear: integer("election_year").notNull(),
-  targetDate: timestamp("target_date"),
-  status: varchar("status", { length: 50 }).default("active"), // active, completed, failed, ongoing
-  scoreType: varchar("score_type", { length: 20 }).notNull(), // fulfillment, advocacy
-  score: decimal("score", { precision: 5, scale: 2 }).default("0"), // 0-100 score
-  evidence: text("evidence"),
-  sourceUrl: text("source_url"),
-  defaultWeight: decimal("default_weight", { precision: 5, scale: 2 }).default("0"),
-  lastUpdated: timestamp("last_updated").defaultNow(),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-// Pledge actions table (tracks specific actions taken on pledges)
-/** Drizzle ORM table definition for pledge actions. */
-export const pledgeActions = pgTable("pledge_actions", {
-  id: serial("id").primaryKey(),
-  pledgeId: integer("pledge_id").notNull().references(() => pledges.id),
-  actionType: varchar("action_type", { length: 100 }).notNull(), // bill_introduced, vote_cast, speech_made, etc.
-  description: text("description").notNull(),
-  actionDate: timestamp("action_date").notNull(),
-  impactScore: decimal("impact_score", { precision: 4, scale: 2 }).default("0"), // 0-10 impact rating
-  sourceUrl: text("source_url"),
-  evidenceDetails: text("evidence_details"), // JSON string for flexible data
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-// Party performance scores table
-/** Drizzle ORM table definition for party performance scores. */
-export const partyPerformanceScores = pgTable("party_performance_scores", {
-  id: serial("id").primaryKey(),
-  partyId: integer("party_id").notNull().references(() => parties.id),
-  scoreType: varchar("score_type", { length: 50 }).notNull(), // performance, trustworthiness
-  overallScore: decimal("overall_score", { precision: 5, scale: 2 }).notNull(),
-  pledgeFulfillmentScore: decimal("pledge_fulfillment_score", { precision: 5, scale: 2 }),
-  policyConsistencyScore: decimal("policy_consistency_score", { precision: 5, scale: 2 }),
-  parliamentaryActivityScore: decimal("parliamentary_activity_score", { precision: 5, scale: 2 }),
-  integrityScore: decimal("integrity_score", { precision: 5, scale: 2 }),
-  transparencyScore: decimal("transparency_score", { precision: 5, scale: 2 }),
-  factualAccuracyScore: decimal("factual_accuracy_score", { precision: 5, scale: 2 }),
-  publicAccountabilityScore: decimal("public_accountability_score", { precision: 5, scale: 2 }),
-  conflictAvoidanceScore: decimal("conflict_avoidance_score", { precision: 5, scale: 2 }),
-  governmentStatus: varchar("government_status", { length: 20 }).notNull(), // government, opposition, coalition
-  calculatedAt: timestamp("calculated_at").defaultNow(),
-  validFrom: timestamp("valid_from").defaultNow(),
-  validTo: timestamp("valid_to"),
-});
-
-// Pledge voting tables
-/** Drizzle ORM table definition for pledge category weights. */
-export const pledgeCategoryWeights = pgTable("pledge_category_weights", {
-  id: serial("id").primaryKey(),
-  category: varchar("category", { length: 255 }).notNull().unique(),
-  defaultWeight: decimal("default_weight", { precision: 5, scale: 2 }).notNull().default("0"),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
-
-/** Drizzle ORM table definition for user category votes. */
-export const userCategoryVotes = pgTable("user_category_votes", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 255 }).notNull(),
-  category: varchar("category", { length: 255 }).notNull(),
-  weight: decimal("weight", { precision: 5, scale: 2 }).notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => ({
-  userCategoryUnique: unique("user_category_unique").on(table.userId, table.category),
-}));
-
-/** Drizzle ORM table definition for user pledge votes. */
-export const userPledgeVotes = pgTable("user_pledge_votes", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 255 }).notNull(),
-  pledgeId: integer("pledge_id").notNull().references(() => pledges.id),
-  category: varchar("category", { length: 255 }).notNull(),
-  importanceScore: integer("importance_score").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => ({
-  userPledgeUnique: unique("user_pledge_unique").on(table.userId, table.pledgeId),
-}));
-
-// New simplified category ranking table
-/** Drizzle ORM table definition for user category rankings. */
-export const userCategoryRankings = pgTable("user_category_rankings", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 255 }).notNull(),
-  category: varchar("category", { length: 255 }).notNull(),
-  rank: integer("rank").notNull(), // 1 = highest importance, 4 = lowest importance
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => ({
-  userCategoryRankUnique: unique("user_category_rank_unique").on(table.userId, table.category),
-}));
-
 // Party sentiment votes table
 /** Drizzle ORM table definition for party sentiment votes. */
 export const partySentimentVotes = pgTable("party_sentiment_votes", {
@@ -427,10 +324,6 @@ export const partySentimentVotes = pgTable("party_sentiment_votes", {
   userPartyUnique: unique("user_party_sentiment_unique").on(table.userId, table.partyId),
 }));
 
-export type PledgeCategoryWeight = typeof pledgeCategoryWeights.$inferSelect;
-export type UserCategoryVote = typeof userCategoryVotes.$inferSelect;
-export type UserPledgeVote = typeof userPledgeVotes.$inferSelect;
-export type UserCategoryRanking = typeof userCategoryRankings.$inferSelect;
 export type PartySentimentVote = typeof partySentimentVotes.$inferSelect;
 
 // Relations
@@ -483,8 +376,6 @@ export const quizResultsHistoryRelations = relations(quizResultsHistory, ({ one 
 export const partiesRelations = relations(parties, ({ many }) => ({
   electionResults: many(electionResults),
   candidates: many(candidates),
-  pledges: many(pledges),
-  performanceScores: many(partyPerformanceScores),
 }));
 
 /** Drizzle relations for the constituencies table. */
@@ -511,31 +402,6 @@ export const electionResultsRelations = relations(electionResults, ({ one }) => 
   }),
   party: one(parties, {
     fields: [electionResults.partyId],
-    references: [parties.id],
-  }),
-}));
-
-/** Drizzle relations for the pledges table. */
-export const pledgesRelations = relations(pledges, ({ one, many }) => ({
-  party: one(parties, {
-    fields: [pledges.partyId],
-    references: [parties.id],
-  }),
-  actions: many(pledgeActions),
-}));
-
-/** Drizzle relations for the pledgeActions table. */
-export const pledgeActionsRelations = relations(pledgeActions, ({ one }) => ({
-  pledge: one(pledges, {
-    fields: [pledgeActions.pledgeId],
-    references: [pledges.id],
-  }),
-}));
-
-/** Drizzle relations for the partyPerformanceScores table. */
-export const partyPerformanceScoresRelations = relations(partyPerformanceScores, ({ one }) => ({
-  party: one(parties, {
-    fields: [partyPerformanceScores.partyId],
     references: [parties.id],
   }),
 }));
@@ -584,12 +450,6 @@ export const insertElectionSchema = createInsertSchema(elections).omit({ id: tru
 export const insertElectionResultSchema = createInsertSchema(electionResults).omit({ id: true });
 /** Zod insert-schema for creating a candidate record. */
 export const insertCandidateSchema = createInsertSchema(candidates);
-/** Zod insert-schema for creating a pledge record. */
-export const insertPledgeSchema = createInsertSchema(pledges).omit({ id: true, createdAt: true, lastUpdated: true });
-/** Zod insert-schema for creating a pledge action record. */
-export const insertPledgeActionSchema = createInsertSchema(pledgeActions).omit({ id: true, createdAt: true });
-/** Zod insert-schema for creating a party performance score record. */
-export const insertPartyPerformanceScoreSchema = createInsertSchema(partyPerformanceScores).omit({ id: true, calculatedAt: true, validFrom: true });
 
 // TypeScript types
 export type User = typeof users.$inferSelect;
@@ -627,15 +487,6 @@ export type InsertElectionResult = z.infer<typeof insertElectionResultSchema>;
 
 export type Candidate = typeof candidates.$inferSelect;
 export type InsertCandidate = z.infer<typeof insertCandidateSchema>;
-
-export type Pledge = typeof pledges.$inferSelect;
-export type InsertPledge = z.infer<typeof insertPledgeSchema>;
-
-export type PledgeAction = typeof pledgeActions.$inferSelect;
-export type InsertPledgeAction = z.infer<typeof insertPledgeActionSchema>;
-
-export type PartyPerformanceScore = typeof partyPerformanceScores.$inferSelect;
-export type InsertPartyPerformanceScore = z.infer<typeof insertPartyPerformanceScoreSchema>;
 
 // User location schema
 /** Zod insert-schema for creating a user location record. */
@@ -887,71 +738,6 @@ export type InsertNewsSource = z.infer<typeof insertNewsSourceSchema>;
 export type ScrapingJob = typeof scrapingJobs.$inferSelect;
 export type InsertScrapingJob = z.infer<typeof insertScrapingJobSchema>;
 
-
-// POLICY PROMISES (Bias Protection - Promise Tracking)
-// Tracks announcements and verifies delivery
-// ============================================
-
-/** Drizzle ORM table definition for policy promises. */
-export const policyPromises = pgTable("policy_promises", {
-  id: serial("id").primaryKey(),
-  politicianName: varchar("politician_name", { length: 255 }).notNull(),
-  promiseText: text("promise_text").notNull(),
-  promiseType: varchar("promise_type", { length: 50 }),
-  
-  // Announcement
-  announcedDate: date("announced_date").notNull(),
-  sourceArticleId: integer("source_article_id"),
-  initialScoreGiven: integer("initial_score_given"),
-  
-  // Promise details
-  promisedAmount: varchar("promised_amount", { length: 100 }),
-  promisedQuantity: varchar("promised_quantity", { length: 100 }),
-  promisedOutcome: text("promised_outcome"),
-  promisedTimeline: varchar("promised_timeline", { length: 100 }),
-  
-  // Target
-  targetDate: date("target_date"),
-  targetMetrics: text("target_metrics"),
-  
-  // Actual delivery
-  actualAmount: varchar("actual_amount", { length: 100 }),
-  actualQuantity: varchar("actual_quantity", { length: 100 }),
-  actualOutcome: text("actual_outcome"),
-  deliveryDate: date("delivery_date"),
-  
-  // Outcome
-  status: varchar("status", { length: 20 }).default("pending"),
-  outcomeVerifiedDate: date("outcome_verified_date"),
-  outcomeScore: integer("outcome_score"),
-  
-  // Verification
-  verificationSources: text("verification_sources"),
-  verificationEvidence: text("verification_evidence"),
-  verifiedBy: varchar("verified_by", { length: 50 }),
-  
-  // Follow-up
-  lastChecked: date("last_checked"),
-  nextCheckDate: date("next_check_date"),
-  
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => [
-  index("idx_policy_promises_politician").on(table.politicianName),
-  index("idx_policy_promises_status").on(table.status),
-  index("idx_policy_promises_target_date").on(table.targetDate),
-  index("idx_policy_promises_next_check").on(table.nextCheckDate),
-]);
-
-/** Zod insert-schema for creating a policy promise record. */
-export const insertPolicyPromiseSchema = createInsertSchema(policyPromises).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true
-});
-
-export type PolicyPromise = typeof policyPromises.$inferSelect;
-export type InsertPolicyPromise = z.infer<typeof insertPolicyPromiseSchema>;
 
 // ============================================
 // SHADOW CABINET (Level 10 Agent System)

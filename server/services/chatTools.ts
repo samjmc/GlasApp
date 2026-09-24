@@ -2,8 +2,7 @@ import { db } from "../db";
 import { desc, ilike, or } from "drizzle-orm";
 import {
   newsArticles,
-  parties,
-  policyPromises
+  parties
 } from "@shared/schema";
 import type { DivisionVote, TdVote } from "@shared/parliamentApi";
 import { eloToPercent, repository as scores } from "../scoring";
@@ -202,15 +201,6 @@ export const chatToolsImplementation = {
     // 3. Dáil record
     const record = await parliament.tdSummary(td.id);
 
-    // 4. Get Promises (if any)
-    const promises = await db.select({
-      text: policyPromises.promiseText,
-      status: policyPromises.status
-    })
-    .from(policyPromises)
-    .where(ilike(policyPromises.politicianName, name))
-    .limit(3);
-
     return JSON.stringify({
       profile: {
         name: td.name,
@@ -226,8 +216,7 @@ export const chatToolsImplementation = {
         consistency: eloToPercent(score?.consistencyElo)
       },
       recent_news: news,
-      parliament: record ?? "No Dáil record yet",
-      promises: promises
+      parliament: record ?? "No Dáil record yet"
     });
   },
 

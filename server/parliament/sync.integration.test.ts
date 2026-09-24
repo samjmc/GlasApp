@@ -3,8 +3,8 @@
  * 2025-06-25 samples. Proves the SQL (upserts, relinking, windowed counts, party lines),
  * idempotence, and that the scoring inputs land on `tds`.
  *
- * Skipped unless TEST_DATABASE_URL points at a database this test may DROP AND RECREATE
- * the `politics` schema in:
+ * Skipped unless TEST_DATABASE_URL is set. It uses its OWN database, `<db>_parliament`
+ * (created if missing), and rebuilds the `politics` schema there from every migration:
  *
  *   docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
@@ -13,15 +13,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { isolatedDatabaseUrl, resetPoliticsSchema } from '../testing/migrations';
+import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 import type { OireachtasClient, RosterMember } from './client';
 import type { RawDivision } from './parse';
 
-const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL;
-const run = describe.skipIf(!TEST_DATABASE_URL);
+const parliamentUrl = testDatabaseUrl('parliament');
+const run = describe.skipIf(!parliamentUrl);
 
-if (TEST_DATABASE_URL) {
-  process.env.DATABASE_URL = TEST_DATABASE_URL;
+if (parliamentUrl) {
+  process.env.DATABASE_URL = parliamentUrl;
   process.env.SUPABASE_URL ??= 'http://localhost:54321';
   process.env.SUPABASE_ANON_KEY ??= 'anon';
   process.env.SUPABASE_SERVICE_ROLE_KEY ??= 'service';
@@ -78,7 +78,9 @@ function fakeClient(roster: RosterMember[], opts: FakeOptions = {}): OireachtasC
   } as unknown as OireachtasClient;
 }
 
-run('parliament sync against Postgres', () => {
+// Each test runs one or two whole syncs against Postgres: ~2–5 s alone, more when vitest
+// runs every file at once. The 5 s default failed under exactly that load.
+run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   let dbmod: typeof import('../db');
   let parliament: typeof import('./index');
   let scoring: typeof import('../scoring');
@@ -86,9 +88,9 @@ run('parliament sync against Postgres', () => {
   const tdId = async (code: string) => (await dbmod.pool.query('select id from politics.tds where member_code = $1', [code])).rows[0]?.id as number;
 
   beforeAll(async () => {
-    process.env.DATABASE_URL = await isolatedDatabaseUrl(TEST_DATABASE_URL!, 'parliament');
+    await ensureDatabase(parliamentUrl!);
     dbmod = await import('../db');
-    await resetPoliticsSchema(dbmod.pool);
+    await applyAllMigrations(dbmod.pool);
     parliament = await import('./index');
     scoring = await import('../scoring');
   }, 60_000);

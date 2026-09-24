@@ -1,8 +1,8 @@
 # Voting rebuild: daily session, policy votes, pledges
 
-Status (2026-09-22): Sam approved the plan. **Part 1, voting, is built** (branch
-`rebuild/voting`). Part 2, pledges, is next. The "As built" section at the end records
-where the build departs from the plan below; read it first.
+Status (2026-09-24): Sam approved the plan. **Part 1, voting, is merged** (PR #63).
+**Part 2, pledges, is built** (branch `rebuild/pledges`). The two "As built" sections at the
+end record where the build departs from the plan below; read them first.
 
 ## Why this is next
 
@@ -153,3 +153,51 @@ voting routes are guarded, and it catches one that is not.
 
 **Not verified:** nothing has run against GlasCore, and no model call has run. The
 question generator is tested with scripted model output only.
+## As built: part 2, pledges
+
+**Shape:** `shared/schema/pledges.ts` (politics.pledges, pledge_evidence,
+pledge_category_priorities), `shared/pledges.ts` (the enums and API types),
+`server/pledges/` (pure `score.ts`, `repository.ts`, `routes.ts` on `/api/pledges`, mounted
+once), migration `drizzle/0002_pledges.sql`. Client: `services/pledgesApi.ts`,
+`components/pledges/PartyPledgesPanel.tsx` and `PledgePriorities.tsx`, and a rewritten
+`pages/AdminPage.tsx`.
+
+**Where it departs from the plan above:**
+
+- **No pledge score.** A pledge has a status (`unassessed`, `not_started`, `in_progress`,
+  `delivered`, `broken`, `superseded`) set by a person from sourced evidence. A party's
+  record is its status counts, plus a delivery rate over resolved pledges. That rate can be
+  weighted by the viewer's ranking of policy areas, or by everyone's combined ranking.
+- **Writes need a signed-in human admin** (`requireAdmin`), not the cron job secret. Every
+  write is logged with `logAdminAction`. A test proves the job secret is refused.
+- **Seed data: none.** See `docs/pledges/README.md`. This replaced the plan's first idea,
+  "keep only pledges with a source URL". The sources did not hold up: the Fine Gael links
+  do not load, and the Fianna Fáil ones cite the joint programme. Seeding the rest would
+  have covered only two parties. The 36 candidates are kept for manual review.
+- **The party page's "Performance" tab is now "Pledges".** The old tab rated parties 0 to 100
+  from hand-typed "policy consistency" scores with editorial commentary, a polling snapshot
+  typed in for two dates, and pledge scores from the same hand-typed data. All of it is
+  deleted, and the tab shows the sourced record.
+
+**Found while building:**
+
+- `/api/pledges/*` and `/api/category-ranking/*` had always 404'd: mounted one folder too
+  deep, like the vote routes.
+- `POST /pledges/category-votes` logged the request and saved nothing.
+- The priorities widget defined drag-and-drop ranking and never rendered it.
+- Three of the four pledge components in EducationPage were never rendered, and so was a
+  whole "policies" tab (it had no button).
+- `policy_promises` had no writer; its one reader, a chat tool, always got nothing.
+- **A silent wrong-count bug, caught only by the real-Postgres test:** Drizzle drops table
+  names from expressions in a single-table SELECT list. So a correlated count subquery
+  compared `pledge_evidence.pledge_id` with the evidence row's OWN id. It is fixed with a
+  join. The same pattern in a WHERE clause is safe: there Drizzle qualifies every column,
+  which is why the voting query was correct.
+
+**Verified:** 25 pledge tests, 5 of them against a real Postgres 16. Planted defect: the
+job secret accepted on PATCH, and the test turns red. Both integration tests now apply every
+migration in journal order (`server/testing/migrations.ts`), so a new migration cannot be
+silently missing from them.
+
+**Not verified:** no browser run of the admin or pledge pages. They need Supabase sign-in,
+which this machine cannot do.

@@ -1,9 +1,594 @@
 {
-  "id": "28634516-b43e-4eb6-89e2-1ac540c02d98",
-  "prevId": "b85aaedb-e9d4-459c-b467-b073dd444420",
+  "id": "5899a674-7aca-48e2-8d93-98558592eeca",
+  "prevId": "28634516-b43e-4eb6-89e2-1ac540c02d98",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "politics.debate_sections": {
+      "name": "debate_sections",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(80)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "speech_count": {
+          "name": "speech_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "debate_sections_date_idx": {
+          "name": "debate_sections_date_idx",
+          "columns": [
+            {
+              "expression": "date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.debate_speeches": {
+      "name": "debate_speeches",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(120)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "section_id": {
+          "name": "section_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member_code": {
+          "name": "member_code",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "td_id": {
+          "name": "td_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_presiding": {
+          "name": "is_presiding",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "word_count": {
+          "name": "word_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "debate_speeches_section_idx": {
+          "name": "debate_speeches_section_idx",
+          "columns": [
+            {
+              "expression": "section_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "position",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "debate_speeches_td_idx": {
+          "name": "debate_speeches_td_idx",
+          "columns": [
+            {
+              "expression": "td_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "debate_speeches_member_idx": {
+          "name": "debate_speeches_member_idx",
+          "columns": [
+            {
+              "expression": "member_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "debate_speeches_section_id_debate_sections_id_fk": {
+          "name": "debate_speeches_section_id_debate_sections_id_fk",
+          "tableFrom": "debate_speeches",
+          "tableTo": "debate_sections",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "section_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "debate_speeches_td_id_tds_id_fk": {
+          "name": "debate_speeches_td_id_tds_id_fk",
+          "tableFrom": "debate_speeches",
+          "tableTo": "tds",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "td_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.division_votes": {
+      "name": "division_votes",
+      "schema": "politics",
+      "columns": {
+        "division_id": {
+          "name": "division_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member_code": {
+          "name": "member_code",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "td_id": {
+          "name": "td_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vote": {
+          "name": "vote",
+          "type": "division_vote",
+          "typeSchema": "politics",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "division_votes_td_idx": {
+          "name": "division_votes_td_idx",
+          "columns": [
+            {
+              "expression": "td_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "division_votes_member_idx": {
+          "name": "division_votes_member_idx",
+          "columns": [
+            {
+              "expression": "member_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "division_votes_division_id_divisions_id_fk": {
+          "name": "division_votes_division_id_divisions_id_fk",
+          "tableFrom": "division_votes",
+          "tableTo": "divisions",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "division_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "division_votes_td_id_tds_id_fk": {
+          "name": "division_votes_td_id_tds_id_fk",
+          "tableFrom": "division_votes",
+          "tableTo": "tds",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "td_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "division_votes_division_id_member_code_pk": {
+          "name": "division_votes_division_id_member_code_pk",
+          "columns": [
+            "division_id",
+            "member_code"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.divisions": {
+      "name": "divisions",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(80)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "uri": {
+          "name": "uri",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "house_no": {
+          "name": "house_no",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "held_at": {
+          "name": "held_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "subject": {
+          "name": "subject",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "outcome": {
+          "name": "outcome",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "debate_title": {
+          "name": "debate_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "debate_section_id": {
+          "name": "debate_section_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_bill": {
+          "name": "is_bill",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "ta_count": {
+          "name": "ta_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nil_count": {
+          "name": "nil_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "staon_count": {
+          "name": "staon_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "divisions_date_idx": {
+          "name": "divisions_date_idx",
+          "columns": [
+            {
+              "expression": "date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "divisions_uri_unique": {
+          "name": "divisions_uri_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "uri"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.parliament_sync_state": {
+      "name": "parliament_sync_state",
+      "schema": "politics",
+      "columns": {
+        "feed": {
+          "name": "feed",
+          "type": "varchar(20)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "through_date": {
+          "name": "through_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_run_at": {
+          "name": "last_run_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "last_result": {
+          "name": "last_result",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "failures": {
+          "name": "failures",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::jsonb"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.td_parliament_stats": {
+      "name": "td_parliament_stats",
+      "schema": "politics",
+      "columns": {
+        "td_id": {
+          "name": "td_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "member_since": {
+          "name": "member_since",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_presiding": {
+          "name": "is_presiding",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "divisions_eligible": {
+          "name": "divisions_eligible",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "votes_cast": {
+          "name": "votes_cast",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sitting_days": {
+          "name": "sitting_days",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sections_spoken": {
+          "name": "sections_spoken",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "speeches": {
+          "name": "speeches",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "td_parliament_stats_td_id_tds_id_fk": {
+          "name": "td_parliament_stats_td_id_tds_id_fk",
+          "tableFrom": "td_parliament_stats",
+          "tableTo": "tds",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "td_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "politics.pledge_category_priorities": {
       "name": "pledge_category_priorities",
       "schema": "politics",
@@ -1964,7 +2549,17 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "politics.division_vote": {
+      "name": "division_vote",
+      "schema": "politics",
+      "values": [
+        "ta",
+        "nil",
+        "staon"
+      ]
+    }
+  },
   "schemas": {
     "politics": "politics"
   },
