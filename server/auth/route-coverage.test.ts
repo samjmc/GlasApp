@@ -21,18 +21,14 @@ const GUARDS = ['requireAuth', 'requireAdmin', 'requireJob', 'optionalAuth'];
  * inconvenient to fix.
  */
 const PUBLIC_WRITES: Array<{ file: string; path: string; why: string }> = [
-  { file: '../routes.ts', path: '/api/quiz-results', why: 'anonymous visitors can take the quiz' },
-  { file: '../routes.ts', path: '/api/multidimensional-quiz-results', why: 'anonymous visitors can take the quiz' },
+  { file: 'quiz.ts', path: '/', why: 'anonymous visitors can take the quiz; saved only for a signed-in user' },
+  { file: 'quiz.ts', path: '/assistant', why: 'public quiz assistant; rate limited' },
+  { file: 'ideology.ts', path: '/matches', why: 'POST only because the position is a body; it computes and writes nothing' },
   { file: 'chatRoutes.ts', path: '/', why: 'public assistant; rate limited' },
   { file: 'ai/analysis.ts', path: '/complete-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'ai/analysis.ts', path: '/context-analysis', why: 'public quiz analysis; rate limited' },
-  { file: 'ai/analysis.ts', path: '/explanation', why: 'public quiz analysis; rate limited' },
-  { file: 'ai/analysis.ts', path: '/analyze-text', why: 'public quiz analysis; rate limited' },
-  { file: 'ai/analysis.ts', path: '/analyze-bulk', why: 'public quiz analysis; rate limited' },
-  { file: 'quiz/index.ts', path: '/assistant', why: 'public quiz assistant; rate limited' },
   { file: 'storytellingRoutes.ts', path: '/:constituencyName', why: 'public constituency story cache' },
   { file: 'regionRoutes.ts', path: '/select', why: 'anonymous visitors choose a region' },
-  { file: 'political/parties.ts', path: '/matches', why: 'POST only because the quiz dimensions are a body; it computes and writes nothing' },
 ];
 
 /**

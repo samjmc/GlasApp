@@ -3,10 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { IdeologicalDimensions } from "@shared/quizTypes";
+import type { IdeologyVector } from "@shared/ideology";
 
 interface ContextAnalysisProps {
-  dimensions: IdeologicalDimensions;
+  dimensions: IdeologyVector;
   userLocation?: string;
 }
 
@@ -51,7 +51,7 @@ const ContextAnalysis: React.FC<ContextAnalysisProps> = ({ dimensions, userLocat
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   
   // Function to fetch data directly
-  const fetchContextAnalysis = async (dims: IdeologicalDimensions) => {
+  const fetchContextAnalysis = async (dims: IdeologyVector) => {
     setIsLoading(true);
     setIsError(false);
     

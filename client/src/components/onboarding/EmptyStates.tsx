@@ -15,67 +15,6 @@ import {
   Users
 } from 'lucide-react';
 
-/** Empty-state card prompting the user to take the political quiz. */
-export function EmptyQuizState() {
-  return (
-    <Card className="p-12 text-center bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-blue-900/20 border-2 border-dashed border-purple-300 dark:border-purple-700">
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-6 flex justify-center">
-          <div className="p-4 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-800 dark:to-blue-800 rounded-full">
-            <Heart className="w-16 h-16 text-purple-600 dark:text-purple-300" />
-          </div>
-        </div>
-        
-        <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-          Discover Your Political Match!
-        </h3>
-        
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-          Take our comprehensive political quiz to see which TDs and parties align with your values. 
-          We'll compare your views on 8 key policy areas with every TD's voting record and positions.
-        </p>
-        
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-lg p-6 mb-6 text-left space-y-3">
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
-            <div>
-              <span className="font-semibold">8 Policy Categories</span>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Immigration, Healthcare, Housing, Economy, Environment, Social Issues, Justice, Education</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-            <div>
-              <span className="font-semibold">Personalized Rankings</span>
-              <p className="text-sm text-gray-600 dark:text-gray-400">See all 174 TDs ranked by how well they match YOUR political values</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-pink-500 rounded-full mt-2"></div>
-            <div>
-              <span className="font-semibold">Policy-by-Policy Breakdown</span>
-              <p className="text-sm text-gray-600 dark:text-gray-400">See where you agree and disagree with each politician on real issues</p>
-            </div>
-          </div>
-        </div>
-        
-        <Button
-          onClick={() => window.location.href = '/enhanced-quiz'}
-          size="lg"
-          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
-        >
-          <Heart className="w-5 h-5 mr-2" />
-          Take the Quiz (2 minutes)
-        </Button>
-        
-        <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          Your results are private and can be updated anytime
-        </p>
-      </div>
-    </Card>
-  );
-}
-
 /** Empty-state card shown when the news feed has no articles yet. */
 export function EmptyNewsFeedState() {
   return (
@@ -189,7 +128,7 @@ export function EmptyRankingsState({ type }: { type: 'td' | 'party' | 'personal'
       gradient: 'from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20',
       cta: {
         text: 'Take Quiz Now',
-        action: () => window.location.href = '/enhanced-quiz',
+        action: () => window.location.href = '/quiz',
       }
     },
   };

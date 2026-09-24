@@ -187,7 +187,7 @@ const NewHome = () => {
                   </p>
                   <Button 
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
-                    onClick={() => navigate('/enhanced-quiz')}
+                    onClick={() => navigate('/quiz')}
                   >
                     Take the Political Quiz
                   </Button>
@@ -196,7 +196,7 @@ const NewHome = () => {
             </div>
           </div>
         </TabsContent>
-        
+
         {/* Historical Context Tab */}
         <TabsContent value="history" className="mt-2">
           <div className="mb-6">
@@ -417,7 +417,7 @@ const NewHome = () => {
                   </p>
                   <Button 
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
-                    onClick={() => navigate('/enhanced-quiz')}
+                    onClick={() => navigate('/quiz')}
                   >
                     Take the Political Quiz
                   </Button>

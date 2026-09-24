@@ -59,7 +59,7 @@ const Header = () => {
             <Link href="/debates" className="text-xs lg:text-sm font-medium text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-2 lg:px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors whitespace-nowrap">
               Debates
             </Link>
-            <Link href="/enhanced-quiz" className="text-xs lg:text-sm font-medium text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-2 lg:px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors whitespace-nowrap">
+            <Link href="/quiz" className="text-xs lg:text-sm font-medium text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-2 lg:px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors whitespace-nowrap">
               Quiz
             </Link>
             <Link href="/ideas" className="text-xs lg:text-sm font-medium text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-2 lg:px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors whitespace-nowrap">

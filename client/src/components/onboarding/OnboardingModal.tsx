@@ -74,7 +74,7 @@ export function OnboardingModal() {
       cta: {
         text: 'Take Quiz Now',
         action: () => {
-          window.location.href = '/enhanced-quiz';
+          window.location.href = '/quiz';
         }
       }
     },

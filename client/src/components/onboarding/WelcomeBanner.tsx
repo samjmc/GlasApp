@@ -4,43 +4,43 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { X, Sparkles, Heart, TrendingUp, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/lib/supabase';
+import { fetchMyQuizResults } from '@/lib/ideologyApi';
+import { queryKeys } from '@/lib/queryKeys';
 
 /** Dismissible welcome banner shown to authenticated users. */
 export function WelcomeBanner() {
   const { user, isAuthenticated } = useAuth();
   const [isVisible, setIsVisible] = useState(false);
-  const [hasCompletedQuiz, setHasCompletedQuiz] = useState(false);
+
+  const { data: quizResults, isSuccess: quizResultsLoaded } = useQuery({
+    queryKey: queryKeys.quiz.mine(user?.id),
+    queryFn: () => fetchMyQuizResults(),
+    enabled: isAuthenticated && !!user,
+  });
+  const hasCompletedQuiz = (quizResults?.length ?? 0) > 0;
 
   useEffect(() => {
     const checkWelcomeBanner = async () => {
-      if (!isAuthenticated || !user) return;
+      if (!isAuthenticated || !user || !quizResultsLoaded) return;
 
       const { data: { user: supabaseUser } } = await supabase.auth.getUser();
       const hasSeenOnboarding = supabaseUser?.user_metadata?.has_seen_onboarding;
       const hasDismissedBanner = localStorage.getItem('welcomeBannerDismissed');
 
-      // Check if user has completed quiz
-      const { data: quizResults } = await supabase
-        .from('user_quiz_results')
-        .select('id')
-        .eq('user_id', user.id)
-        .limit(1);
-
-      setHasCompletedQuiz(quizResults && quizResults.length > 0);
-
       // Show banner if onboarding seen but quiz not completed
-      if (hasSeenOnboarding && !hasDismissedBanner && !(quizResults && quizResults.length > 0)) {
+      if (hasSeenOnboarding && !hasDismissedBanner && !hasCompletedQuiz) {
         setIsVisible(true);
       }
     };
 
     checkWelcomeBanner();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user, quizResultsLoaded, hasCompletedQuiz]);
 
   const handleDismiss = () => {
     localStorage.setItem('welcomeBannerDismissed', 'true');
@@ -48,7 +48,7 @@ export function WelcomeBanner() {
   };
 
   const handleTakeQuiz = () => {
-    window.location.href = '/enhanced-quiz';
+    window.location.href = '/quiz';
   };
 
   if (!isVisible || hasCompletedQuiz) return null;
