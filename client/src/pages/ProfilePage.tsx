@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
-import { apiRequest, apiUpload } from '@/lib/queryClient';
-import { PoliticalEvolution } from '@shared/schema';
-import PoliticalEvolutionAnalysis from '@/components/PoliticalEvolutionAnalysis';
+import { apiUpload } from '@/lib/queryClient';
+import { fetchMyQuizResults } from '@/lib/ideologyApi';
+import { queryKeys } from '@/lib/queryKeys';
+import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -17,10 +18,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { SMSNotificationForm } from '@/components/SMSNotificationForm';
-
-type PoliticalEvolutionResponse = PoliticalEvolution[] | { data: PoliticalEvolution[] };
 
 const ProfilePage = () => {
   const { user, isLoading: authLoading, isAuthenticated, updateProfile, logout, deleteAccount } = useAuth();
@@ -36,21 +34,12 @@ const ProfilePage = () => {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
 
-  // Fetch political evolution data
-  const { data: evolutionResponse, isLoading: evolutionLoading } = useQuery<PoliticalEvolutionResponse>({
-    queryKey: ['/api/political-evolution'],
-    enabled: isAuthenticated,
+  // Fetch the signed-in user's saved quiz results (newest first)
+  const { data: quizResults, isLoading: quizResultsLoading } = useQuery({
+    queryKey: queryKeys.quiz.mine(user?.id),
+    queryFn: () => fetchMyQuizResults(),
+    enabled: isAuthenticated && !!user,
   });
-  
-  const evolutionData = React.useMemo<PoliticalEvolution[]>(() => {
-    if (Array.isArray(evolutionResponse)) {
-      return evolutionResponse;
-    }
-    if (evolutionResponse && Array.isArray(evolutionResponse.data)) {
-      return evolutionResponse.data;
-    }
-    return [];
-  }, [evolutionResponse]);
 
   useEffect(() => {
     if (user) {
@@ -209,36 +198,6 @@ const ProfilePage = () => {
     'Mayo', 'Meath', 'Monaghan', 'Offaly', 'Roscommon', 'Sligo',
     'Tipperary', 'Tyrone', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow'
   ];
-
-  // Format evolution data for chart
-  const chartData = (evolutionData && Array.isArray(evolutionData)) ? evolutionData.map((record: PoliticalEvolution) => ({
-    date: new Date(record.createdAt).toLocaleDateString(),
-    economic: typeof record.economicScore === 'string' 
-      ? parseFloat(record.economicScore) 
-      : Number(record.economicScore),
-    social: typeof record.socialScore === 'string' 
-      ? parseFloat(record.socialScore) 
-      : Number(record.socialScore),
-    cultural: record.culturalScore 
-      ? (typeof record.culturalScore === 'string' ? parseFloat(record.culturalScore) : Number(record.culturalScore))
-      : null,
-    globalism: record.globalismScore 
-      ? (typeof record.globalismScore === 'string' ? parseFloat(record.globalismScore) : Number(record.globalismScore))
-      : null,
-    environmental: record.environmentalScore 
-      ? (typeof record.environmentalScore === 'string' ? parseFloat(record.environmentalScore) : Number(record.environmentalScore))
-      : null,
-    authority: record.authorityScore 
-      ? (typeof record.authorityScore === 'string' ? parseFloat(record.authorityScore) : Number(record.authorityScore))
-      : null,
-    welfare: record.welfareScore 
-      ? (typeof record.welfareScore === 'string' ? parseFloat(record.welfareScore) : Number(record.welfareScore))
-      : null,
-    technocratic: record.technocraticScore 
-      ? (typeof record.technocraticScore === 'string' ? parseFloat(record.technocraticScore) : Number(record.technocraticScore))
-      : null,
-    label: record.label || undefined
-  })) : [];
 
   if (authLoading) {
     return (
@@ -467,223 +426,50 @@ const ProfilePage = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {evolutionLoading ? (
+              {quizResultsLoading ? (
                 <div className="h-60 flex items-center justify-center">
                   <p>Loading your political evolution data...</p>
                 </div>
-              ) : chartData && chartData.length > 0 ? (
+              ) : quizResults && quizResults.length > 0 ? (
                 <div className="space-y-6">
-                  {/* Main Evolution Chart */}
-                  <div className="h-[600px]">
-                    <h4 className="text-sm font-medium mb-4">Your Political Journey Over Time</h4>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={chartData} margin={{ top: 20, right: 50, left: 20, bottom: 100 }}>
-                        <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
-                        <XAxis 
-                          dataKey="date" 
-                          angle={-45}
-                          textAnchor="end"
-                          height={80}
-                          interval={0}
-                          fontSize={11}
-                        />
-                        <YAxis 
-                          domain={[-10, 10]} 
-                          fontSize={11}
-                          tickCount={11}
-                        />
-                        <Tooltip 
-                          content={({ active, payload, label }) => {
-                            if (!active || !payload || !payload.length) return null;
-                            
-                            const dimensionNames: Record<string, string> = {
-                              economic: 'Economic',
-                              social: 'Social',
-                              cultural: 'Cultural',
-                              globalism: 'Globalism',
-                              environmental: 'Environmental',
-                              authority: 'Authority',
-                              welfare: 'Welfare',
-                              technocratic: 'Technocratic'
-                            };
-
-                            // Sort payload by value (highest to lowest)
-                            const sortedPayload = [...payload]
-                              .filter(item => item.value !== null && item.value !== undefined)
-                              .sort((a, b) => Number(b.value) - Number(a.value));
-
-                            return (
-                              <div className="bg-card border border-border rounded-md p-3 shadow-lg">
-                                <p className="font-medium mb-2">{`Date: ${label}`}</p>
-                                {sortedPayload.map((item, index) => (
-                                  <div key={index} className="flex items-center gap-2 text-sm">
-                                    <div 
-                                      className="w-3 h-0.5" 
-                                      style={{ backgroundColor: item.color }}
-                                    />
-                                    <span className="font-medium">
-                                      {dimensionNames[item.dataKey as string] || item.dataKey}:
-                                    </span>
-                                    <span>{Number(item.value).toFixed(1)}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            );
-                          }}
-                        />
-                        <Legend 
-                          wrapperStyle={{ 
-                            paddingTop: '30px',
-                            fontSize: '12px'
-                          }}
-                          iconType="line"
-                          layout="horizontal"
-                          align="center"
-                          verticalAlign="bottom"
-                        />
-                        
-                        {/* Core Dimensions */}
-                        <Line 
-                          type="monotone" 
-                          dataKey="economic" 
-                          name="Economic"
-                          stroke="#3b82f6" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="social" 
-                          name="Social"
-                          stroke="#10b981" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        
-                        {/* Extended Dimensions */}
-                        <Line 
-                          type="monotone" 
-                          dataKey="cultural" 
-                          name="Cultural"
-                          stroke="#f59e0b" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="globalism" 
-                          name="Globalism"
-                          stroke="#8b5cf6" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="environmental" 
-                          name="Environmental"
-                          stroke="#22c55e" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="authority" 
-                          name="Authority"
-                          stroke="#ef4444" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="welfare" 
-                          name="Welfare"
-                          stroke="#06b6d4" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="technocratic" 
-                          name="Technocratic"
-                          stroke="#ec4899" 
-                          strokeWidth={2}
-                          activeDot={{ r: 6 }}
-                          connectNulls={false}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-
-                  {/* Latest Scores Summary */}
-                  <div className="border rounded-lg p-4">
-                    <h4 className="text-sm font-medium mb-3">Latest Political Profile</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                      {chartData[chartData.length - 1] && Object.entries(chartData[chartData.length - 1])
-                        .filter(([key]) => !['date', 'label'].includes(key))
-                        .map(([dimension, score]) => {
-                          const dimensionNames: Record<string, string> = {
-                            economic: 'Economic',
-                            social: 'Social', 
-                            cultural: 'Cultural',
-                            globalism: 'Globalism',
-                            environmental: 'Environmental',
-                            authority: 'Authority',
-                            welfare: 'Welfare',
-                            technocratic: 'Technocratic'
-                          };
-                          const numScore = Number(score);
-                          const isPositive = numScore > 0;
-                          
+                  {quizResults.map((result, index) => (
+                    <div key={result.id ?? index} className="border rounded-lg p-4 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-semibold">{result.ideology}</h4>
+                          <p className="text-xs text-muted-foreground">
+                            {result.createdAt ? new Date(result.createdAt).toLocaleDateString() : 'Unknown date'}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                        {IDEOLOGY_DIMENSIONS.map((dimension) => {
+                          const score = result.vector[dimension];
+                          const isPositive = score > 0;
                           return (
                             <div key={dimension} className="flex flex-col items-center p-2 bg-muted rounded">
-                              <span className="font-medium">{dimensionNames[dimension]}</span>
+                              <span className="font-medium">{DIMENSION_POLES[dimension].label}</span>
                               <span className={`text-lg font-bold ${isPositive ? 'text-blue-600' : 'text-yellow-600'}`}>
-                                {numScore > 0 ? '+' : ''}{numScore.toFixed(1)}
+                                {score > 0 ? '+' : ''}{score.toFixed(1)}
                               </span>
                             </div>
                           );
                         })}
+                      </div>
                     </div>
-                  </div>
+                  ))}
 
-                  {/* AI Analysis */}
-                  <PoliticalEvolutionAnalysis evolutionData={evolutionData} />
-
-                  {/* Scale Reference */}
-                  <div className="text-xs text-muted-foreground space-y-1">
-                    <p className="font-medium">Scale Reference (-10 to +10):</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-                      <p>Economic: Left (-) to Right (+)</p>
-                      <p>Social: Progressive (-) to Conservative (+)</p>
-                      <p>Cultural: Multicultural (-) to Traditional (+)</p>
-                      <p>Globalism: Nationalist (-) to Internationalist (+)</p>
-                      <p>Environmental: Industrial (-) to Ecological (+)</p>
-                      <p>Authority: Libertarian (-) to Authoritarian (+)</p>
-                      <p>Welfare: Individual (-) to Communitarian (+)</p>
-                      <p>Governance: Populist (-) to Technocratic (+)</p>
-                    </div>
-                  </div>
+                  <Button variant="outline" onClick={() => navigate('/quiz/results')}>
+                    View My Quiz Results
+                  </Button>
                 </div>
               ) : (
                 <div className="h-40 flex flex-col items-center justify-center gap-4">
                   <p>No political evolution data available yet.</p>
                   <div className="flex gap-2">
-                    <Button onClick={() => navigate('/enhanced-quiz')}>
+                    <Button onClick={() => navigate('/quiz')}>
                       Take the quiz to track your political position
                     </Button>
-                    {/* Check if quiz results exist and show link to results */}
-                    {typeof window !== 'undefined' && localStorage.getItem('multidimensionalQuizResults') && (
-                      <Button variant="outline" onClick={() => navigate('/enhanced-results')}>
-                        View My Quiz Results
-                      </Button>
-                    )}
                   </div>
                 </div>
               )}

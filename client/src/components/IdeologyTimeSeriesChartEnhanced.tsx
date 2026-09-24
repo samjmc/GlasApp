@@ -1,47 +1,23 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Loader2, TrendingUp, Download, Calendar, Users, BarChart3, Filter, X } from 'lucide-react';
+import { Loader2, TrendingUp, Download, Filter, X } from 'lucide-react';
 import html2canvas from 'html2canvas';
-import { apiClient, apiFetch } from '@/lib/queryClient';
+import { fetchMyTimeline } from '@/lib/ideologyApi';
+import { queryKeys } from '@/lib/queryKeys';
+import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
+import type { IdeologyDimension } from '@shared/ideology';
 
-interface TimelineDataPoint {
-  date: string;
-  dateLabel: string;
-  economic: number;
-  social: number;
-  cultural: number;
-  authority: number;
-  environmental: number;
-  welfare: number;
-  globalism: number;
-  technocratic: number;
-  sessionCount?: number;
-}
-
-interface Event {
-  date: string;
-  type: string;
-  label: string;
-  icon: string;
-  dimension?: string;
-  magnitude?: number;
-}
-
-interface Comparison {
-  type: 'party' | 'average';
-  name: string;
-  data: Record<string, number>;
-}
+type ChartRow = { date: string; dateLabel: string } & Record<string, number | string>;
 
 interface IdeologyTimeSeriesChartEnhancedProps {
+  /** Only used to scope the query cache to the signed-in user. */
   userId: string;
-  initialWeeks?: number;
 }
 
-const DIMENSION_COLORS = {
+const DIMENSION_COLORS: Record<IdeologyDimension, string> = {
   economic: '#3B82F6',
   social: '#8B5CF6',
   cultural: '#EC4899',
@@ -52,16 +28,7 @@ const DIMENSION_COLORS = {
   technocratic: '#6366F1',
 };
 
-const DIMENSION_LABELS = {
-  economic: 'Economic',
-  social: 'Social',
-  cultural: 'Cultural',
-  authority: 'Authority',
-  environmental: 'Environmental',
-  welfare: 'Welfare',
-  globalism: 'Globalism',
-  technocratic: 'Governance',
-};
+const COMPARISON_SUFFIX = '_comparison';
 
 const PARTIES = [
   'Fianna Fáil', 'Fine Gael', 'Sinn Féin', 'Green Party',
@@ -69,67 +36,62 @@ const PARTIES = [
   'Aontú', 'Independent'
 ];
 
+const formatDateLabel = (isoDate: string): string => {
+  const date = new Date(`${isoDate}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return isoDate;
+  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+};
+
+const csvField = (value: string | number): string => {
+  const text = String(value);
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+};
+
+const downloadBlob = (blob: Blob, filename: string) => {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+};
+
 export default function IdeologyTimeSeriesChartEnhanced({
   userId,
-  initialWeeks = 12
 }: IdeologyTimeSeriesChartEnhancedProps) {
   const chartRef = useRef<HTMLDivElement>(null);
-  
-  const [timeline, setTimeline] = useState<TimelineDataPoint[]>([]);
-  const [events, setEvents] = useState<Event[]>([]);
-  const [comparison, setComparison] = useState<Comparison | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [usingSnapshots, setUsingSnapshots] = useState(false);
-  
+
   // UI state
-  const [selectedDimensions, setSelectedDimensions] = useState<Set<string>>(
-    new Set(['economic', 'social', 'authority'])
+  const [selectedDimensions, setSelectedDimensions] = useState<Set<IdeologyDimension>>(
+    new Set<IdeologyDimension>(['economic', 'social', 'authority'])
   );
-  const [weeks, setWeeks] = useState(initialWeeks);
   const [compareParty, setCompareParty] = useState<string>('');
-  const [compareAverage, setCompareAverage] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
 
-  useEffect(() => {
-    fetchTimeline();
-  }, [userId, weeks, compareParty, compareAverage, fromDate, toDate]);
+  const timelineQuery = useQuery({
+    queryKey: queryKeys.ideology.timeline(userId, compareParty || null),
+    queryFn: () => fetchMyTimeline(compareParty || undefined),
+  });
 
-  async function fetchTimeline() {
-    try {
-      setIsLoading(true);
-      setError(null);
+  const partyProfile = timelineQuery.data?.party ?? null;
 
-      const params = new URLSearchParams({
-        weeks: weeks.toString(),
-      });
+  // The endpoint returns the full history; the date range is applied here.
+  const points = (timelineQuery.data?.points ?? []).filter(
+    (point) => (!fromDate || point.date >= fromDate) && (!toDate || point.date <= toDate)
+  );
 
-      if (fromDate) params.append('fromDate', fromDate);
-      if (toDate) params.append('toDate', toDate);
-      if (compareParty) params.append('compareParty', compareParty);
-      if (compareAverage) params.append('compareAverage', 'true');
-
-      const data = await apiClient.get(`/api/ideology-timeline/${userId}?${params}`);
-
-      if (!data.success) {
-        throw new Error(data.message || 'Failed to load ideology timeline');
-      }
-
-      setTimeline(data.timeline || []);
-      setEvents(data.events || []);
-      setComparison(data.comparison || null);
-      setUsingSnapshots(data.usingSnapshots || false);
-    } catch (err: unknown) {
-      console.error('Error loading ideology timeline:', err);
-      setError(err.message || 'Failed to load chart data');
-    } finally {
-      setIsLoading(false);
+  const chartData: ChartRow[] = points.map((point) => {
+    const row: ChartRow = { date: point.date, dateLabel: formatDateLabel(point.date) };
+    for (const dim of IDEOLOGY_DIMENSIONS) {
+      row[dim] = point.vector[dim];
+      if (partyProfile) row[`${dim}${COMPARISON_SUFFIX}`] = partyProfile.vector[dim];
     }
-  }
+    return row;
+  });
 
-  const toggleDimension = (dimension: string) => {
+  const toggleDimension = (dimension: IdeologyDimension) => {
     setSelectedDimensions((prev) => {
       const next = new Set(prev);
       if (next.has(dimension)) {
@@ -141,40 +103,25 @@ export default function IdeologyTimeSeriesChartEnhanced({
     });
   };
 
-  const exportCSV = async () => {
-    const params = new URLSearchParams({
-      weeks: weeks.toString(),
-    });
-    if (fromDate) params.append('fromDate', fromDate);
-    if (toDate) params.append('toDate', toDate);
-    if (compareParty) params.append('compareParty', compareParty);
-    if (compareAverage) params.append('compareAverage', 'true');
-    params.append('format', 'csv');
-
-    try {
-      const response = await apiFetch(`/api/ideology-timeline/${userId}?${params}`);
-      const csv = await response.text();
-      const dataBlob = new Blob([csv], { type: 'text/csv' });
-      const url = URL.createObjectURL(dataBlob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `ideology-timeline-${userId}.csv`;
-      link.click();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error('Error exporting CSV:', err);
+  const exportCSV = () => {
+    const header = ['date', ...IDEOLOGY_DIMENSIONS];
+    if (partyProfile) {
+      header.push(...IDEOLOGY_DIMENSIONS.map((dim) => `${partyProfile.party} ${dim}`));
     }
+    const lines = chartData.map((row) => {
+      const values: (string | number)[] = [row.date, ...IDEOLOGY_DIMENSIONS.map((dim) => row[dim])];
+      if (partyProfile) {
+        values.push(...IDEOLOGY_DIMENSIONS.map((dim) => row[`${dim}${COMPARISON_SUFFIX}`]));
+      }
+      return values.map(csvField).join(',');
+    });
+    const csv = [header.map(csvField).join(','), ...lines].join('\n');
+    downloadBlob(new Blob([csv], { type: 'text/csv' }), `ideology-timeline-${userId}.csv`);
   };
 
   const exportJSON = () => {
-    const dataStr = JSON.stringify({ timeline, events, comparison }, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `ideology-timeline-${userId}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
+    const dataStr = JSON.stringify({ timeline: points, party: partyProfile }, null, 2);
+    downloadBlob(new Blob([dataStr], { type: 'application/json' }), `ideology-timeline-${userId}.json`);
   };
 
   const exportPNG = async () => {
@@ -198,32 +145,32 @@ export default function IdeologyTimeSeriesChartEnhanced({
     setFromDate('');
     setToDate('');
     setCompareParty('');
-    setCompareAverage(false);
-    setWeeks(initialWeeks);
   };
 
   const setQuickFilter = (filter: 'month' | 'quarter' | 'all') => {
     const now = new Date();
     setToDate('');
-    
+
     switch (filter) {
-      case 'month':
+      case 'month': {
         const monthAgo = new Date(now);
         monthAgo.setMonth(monthAgo.getMonth() - 1);
         setFromDate(monthAgo.toISOString().split('T')[0]);
         break;
-      case 'quarter':
+      }
+      case 'quarter': {
         const quarterAgo = new Date(now);
         quarterAgo.setMonth(quarterAgo.getMonth() - 3);
         setFromDate(quarterAgo.toISOString().split('T')[0]);
         break;
+      }
       case 'all':
         setFromDate('');
         break;
     }
   };
 
-  if (isLoading) {
+  if (timelineQuery.isLoading) {
     return (
       <Card className="p-6">
         <div className="flex items-center justify-center h-64">
@@ -233,42 +180,27 @@ export default function IdeologyTimeSeriesChartEnhanced({
     );
   }
 
-  if (error) {
+  if (timelineQuery.error) {
     return (
       <Card className="p-6">
         <div className="text-center text-gray-500">
-          <p>{error}</p>
+          <p>{timelineQuery.error.message || 'Failed to load chart data'}</p>
         </div>
       </Card>
     );
   }
 
-  if (timeline.length === 0) {
+  if ((timelineQuery.data?.points.length ?? 0) === 0) {
     return (
       <Card className="p-6">
         <div className="text-center text-gray-500">
-          <p>Complete the enhanced quiz and some daily sessions to see your ideology evolution over time.</p>
+          <p>Complete the quiz and some daily sessions to see your ideology evolution over time.</p>
         </div>
       </Card>
     );
   }
 
-  // Add comparison data to timeline for rendering
-  const chartData = timeline.map(point => {
-    const data: unknown = { ...point };
-    if (comparison) {
-      Object.keys(comparison.data).forEach(dim => {
-        data[`${dim}_comparison`] = comparison.data[dim];
-      });
-    }
-    return data;
-  });
-
-  // Find events that fall within visible timeline
-  const eventMarkers = events.filter(event => {
-    const eventDate = event.date;
-    return timeline.some(point => point.date === eventDate);
-  });
+  const selectedList = IDEOLOGY_DIMENSIONS.filter((dim) => selectedDimensions.has(dim));
 
   return (
     <Card className="p-6" ref={chartRef}>
@@ -278,13 +210,8 @@ export default function IdeologyTimeSeriesChartEnhanced({
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             Ideology Evolution Over Time
           </h3>
-          {usingSnapshots && (
-            <Badge className="text-xs bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
-              📸 Daily Snapshots
-            </Badge>
-          )}
         </div>
-        
+
         <div className="flex gap-2">
           <Button
             size="sm"
@@ -359,22 +286,6 @@ export default function IdeologyTimeSeriesChartEnhanced({
             </div>
           </div>
 
-          {/* Weeks Slider */}
-          <div>
-            <label className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 block">
-              Weeks to Show: {weeks}
-            </label>
-            <input
-              type="range"
-              min="4"
-              max="52"
-              step="4"
-              value={weeks}
-              onChange={(e) => setWeeks(Number(e.target.value))}
-              className="w-full"
-            />
-          </div>
-
           {/* Comparison */}
           <div className="space-y-2">
             <label className="text-xs font-medium text-gray-700 dark:text-gray-300 block">
@@ -382,10 +293,7 @@ export default function IdeologyTimeSeriesChartEnhanced({
             </label>
             <select
               value={compareParty}
-              onChange={(e) => {
-                setCompareParty(e.target.value);
-                if (e.target.value) setCompareAverage(false);
-              }}
+              onChange={(e) => setCompareParty(e.target.value)}
               className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="">None</option>
@@ -393,28 +301,13 @@ export default function IdeologyTimeSeriesChartEnhanced({
                 <option key={party} value={party}>{party}</option>
               ))}
             </select>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="compareAverage"
-                checked={compareAverage}
-                onChange={(e) => {
-                  setCompareAverage(e.target.checked);
-                  if (e.target.checked) setCompareParty('');
-                }}
-                className="rounded"
-              />
-              <label htmlFor="compareAverage" className="text-sm text-gray-700 dark:text-gray-300">
-                Compare with Average User
-              </label>
-            </div>
           </div>
         </div>
       )}
 
       {/* Dimension toggles */}
       <div className="flex flex-wrap gap-2 mb-4">
-        {(Object.keys(DIMENSION_LABELS) as Array<keyof typeof DIMENSION_LABELS>).map((dimension) => (
+        {IDEOLOGY_DIMENSIONS.map((dimension) => (
           <button
             key={dimension}
             onClick={() => toggleDimension(dimension)}
@@ -429,278 +322,121 @@ export default function IdeologyTimeSeriesChartEnhanced({
                 : undefined,
             }}
           >
-            {DIMENSION_LABELS[dimension]}
+            {DIMENSION_POLES[dimension].label}
           </button>
         ))}
       </div>
 
-      {/* Event Badges */}
-      {eventMarkers.length > 0 && (
-        <div className="mb-4 flex flex-wrap gap-2">
-          {eventMarkers.map((event, idx) => (
-            <span
-              key={idx}
-              className="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full"
-              title={event.label}
-            >
-              {event.icon} {event.label}
-            </span>
-          ))}
+      {chartData.length === 0 ? (
+        <div className="h-64 flex items-center justify-center text-sm text-gray-500">
+          No data in the selected date range.
         </div>
-      )}
-
-      {/* Chart */}
-      <ResponsiveContainer width="100%" height={450}>
-        <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
-          <XAxis
-            dataKey="dateLabel"
-            tick={{ fontSize: 12 }}
-            stroke="#888"
-          />
-          <YAxis
-            domain={[-10, 10]}
-            ticks={[-10, -5, 0, 5, 10]}
-            tick={{ fontSize: 12 }}
-            stroke="#888"
-            label={{ value: 'Position', angle: -90, position: 'insideLeft', fontSize: 12 }}
-          />
-          <Tooltip
-            content={({ active, payload }) => {
-              if (active && payload && payload.length > 0) {
-                const data = payload[0].payload;
-                return (
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3">
-                    <p className="font-semibold text-sm mb-2 text-gray-900 dark:text-white">
-                      {data.dateLabel}
-                    </p>
-                    {payload.map((entry: unknown) => {
-                      if (entry.dataKey.includes('_comparison')) return null;
-                      return (
-                        <p key={entry.dataKey} className="text-xs" style={{ color: entry.color }}>
-                          {DIMENSION_LABELS[entry.dataKey as keyof typeof DIMENSION_LABELS]}:{' '}
-                          <span className="font-semibold">{entry.value.toFixed(1)}</span>
-                        </p>
-                      );
-                    })}
-                    {comparison && (
-                      <p className="text-xs text-gray-500 mt-1 border-t pt-1">
-                        {comparison.name} comparison
+      ) : (
+        <ResponsiveContainer width="100%" height={450}>
+          <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
+            <XAxis
+              dataKey="dateLabel"
+              tick={{ fontSize: 12 }}
+              stroke="#888"
+            />
+            <YAxis
+              domain={[-IDEOLOGY_LIMIT, IDEOLOGY_LIMIT]}
+              ticks={[-10, -5, 0, 5, 10]}
+              tick={{ fontSize: 12 }}
+              stroke="#888"
+              label={{ value: 'Position', angle: -90, position: 'insideLeft', fontSize: 12 }}
+            />
+            <Tooltip
+              content={({ active, payload }) => {
+                if (active && payload && payload.length > 0) {
+                  const row = payload[0].payload as ChartRow;
+                  return (
+                    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3">
+                      <p className="font-semibold text-sm mb-2 text-gray-900 dark:text-white">
+                        {row.dateLabel}
                       </p>
-                    )}
-                  </div>
+                      {payload.map((entry) => {
+                        const key = String(entry.dataKey);
+                        if (key.endsWith(COMPARISON_SUFFIX)) return null;
+                        return (
+                          <p key={key} className="text-xs" style={{ color: entry.color }}>
+                            {DIMENSION_POLES[key as IdeologyDimension]?.label ?? key}:{' '}
+                            <span className="font-semibold">{Number(entry.value).toFixed(1)}</span>
+                          </p>
+                        );
+                      })}
+                      {partyProfile && (
+                        <p className="text-xs text-gray-500 mt-1 border-t pt-1">
+                          {partyProfile.party} comparison
+                        </p>
+                      )}
+                    </div>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Legend
+              wrapperStyle={{ fontSize: '12px' }}
+              formatter={(value: string) => {
+                if (value.endsWith(COMPARISON_SUFFIX)) {
+                  const dim = value.slice(0, -COMPARISON_SUFFIX.length) as IdeologyDimension;
+                  return `${partyProfile?.party} - ${DIMENSION_POLES[dim]?.label ?? dim}`;
+                }
+                return DIMENSION_POLES[value as IdeologyDimension]?.label ?? value;
+              }}
+            />
+
+            {/* Zero line */}
+            <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
+
+            {/* Render selected dimensions, each with its party comparison line */}
+            {selectedList.flatMap((dim) => {
+              const lines = [
+                <Line
+                  key={dim}
+                  type="monotone"
+                  dataKey={dim}
+                  stroke={DIMENSION_COLORS[dim]}
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 6 }}
+                />,
+              ];
+              if (partyProfile) {
+                lines.push(
+                  <Line
+                    key={`${dim}${COMPARISON_SUFFIX}`}
+                    type="monotone"
+                    dataKey={`${dim}${COMPARISON_SUFFIX}`}
+                    stroke={DIMENSION_COLORS[dim]}
+                    strokeWidth={2}
+                    strokeDasharray="5 5"
+                    dot={false}
+                  />
                 );
               }
-              return null;
-            }}
-          />
-          <Legend
-            wrapperStyle={{ fontSize: '12px' }}
-            formatter={(value: string) => {
-              if (value.includes('_comparison')) {
-                return `${comparison?.name} - ${DIMENSION_LABELS[value.replace('_comparison', '') as keyof typeof DIMENSION_LABELS]}`;
-              }
-              return DIMENSION_LABELS[value as keyof typeof DIMENSION_LABELS];
-            }}
-          />
-          
-          {/* Zero line */}
-          <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
-          
-          {/* Render selected dimensions */}
-          {selectedDimensions.has('economic') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="economic"
-                stroke={DIMENSION_COLORS.economic}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="economic_comparison"
-                  stroke={DIMENSION_COLORS.economic}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('social') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="social"
-                stroke={DIMENSION_COLORS.social}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="social_comparison"
-                  stroke={DIMENSION_COLORS.social}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('cultural') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="cultural"
-                stroke={DIMENSION_COLORS.cultural}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="cultural_comparison"
-                  stroke={DIMENSION_COLORS.cultural}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('authority') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="authority"
-                stroke={DIMENSION_COLORS.authority}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="authority_comparison"
-                  stroke={DIMENSION_COLORS.authority}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('environmental') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="environmental"
-                stroke={DIMENSION_COLORS.environmental}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="environmental_comparison"
-                  stroke={DIMENSION_COLORS.environmental}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('welfare') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="welfare"
-                stroke={DIMENSION_COLORS.welfare}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="welfare_comparison"
-                  stroke={DIMENSION_COLORS.welfare}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('globalism') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="globalism"
-                stroke={DIMENSION_COLORS.globalism}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="globalism_comparison"
-                  stroke={DIMENSION_COLORS.globalism}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-          {selectedDimensions.has('technocratic') && (
-            <>
-              <Line
-                type="monotone"
-                dataKey="technocratic"
-                stroke={DIMENSION_COLORS.technocratic}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 6 }}
-              />
-              {comparison && (
-                <Line
-                  type="monotone"
-                  dataKey="technocratic_comparison"
-                  stroke={DIMENSION_COLORS.technocratic}
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  dot={false}
-                />
-              )}
-            </>
-          )}
-        </LineChart>
-      </ResponsiveContainer>
+              return lines;
+            })}
+          </LineChart>
+        </ResponsiveContainer>
+      )}
 
       {/* Help text */}
       <div className="mt-4 text-xs text-gray-500 dark:text-gray-400 space-y-1">
         <p>
-          <strong>How to read:</strong> Values range from -10 (progressive/left) to +10 (conservative/right).
-          {comparison && <span> Dashed lines show {comparison.name} for comparison.</span>}
+          <strong>How to read:</strong> Values range from -{IDEOLOGY_LIMIT} to +{IDEOLOGY_LIMIT} on every dimension.
+          {partyProfile && (
+            <span> Dashed lines show {partyProfile.party} (based on {partyProfile.tdCount} TD{partyProfile.tdCount === 1 ? '' : 's'}) for comparison.</span>
+          )}
         </p>
-        {usingSnapshots && (
-          <p className="text-green-600 dark:text-green-400">
-            ✨ Using daily snapshots for accurate historical data
+        {selectedList.map((dim) => (
+          <p key={dim}>
+            {DIMENSION_POLES[dim].label}: -{IDEOLOGY_LIMIT} {DIMENSION_POLES[dim].negative}, +{IDEOLOGY_LIMIT} {DIMENSION_POLES[dim].positive}
           </p>
-        )}
+        ))}
       </div>
     </Card>
   );
 }
-
-

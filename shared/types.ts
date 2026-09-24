@@ -4,40 +4,6 @@
  */
 
 // ============================================================================
-// Ideological & Political Types
-// ============================================================================
-
-export interface IdeologicalDimensions {
-  economic: number;
-  social: number;
-  cultural: number;
-  globalism: number;
-  environmental: number;
-  authority: number;
-  welfare: number;
-  technocratic: number;
-}
-
-export interface PartyMatch {
-  party: string;
-  abbreviation: string;
-  matchPercentage: number;
-  matchReason: string;
-  color: string;
-}
-
-export interface PartyDimensionRationales {
-  economic: string;
-  social: string;
-  cultural: string;
-  globalism: string;
-  environmental: string;
-  authority: string;
-  welfare: string;
-  technocratic: string;
-}
-
-// ============================================================================
 // Generic utility types
 // ============================================================================
 
@@ -67,42 +33,6 @@ export type EventHandler<E extends Event = Event> = (event: E) => void;
  * Generic comparison function for sorting.
  */
 export type Comparator<T> = (a: T, b: T) => number;
-
-// ============================================================================
-// Quiz & Political Evolution Types
-// ============================================================================
-
-/**
- * Political evolution scoring payload.
- */
-export interface PoliticalEvolutionInput {
-  userId: string;
-  economicScore?: number;
-  socialScore?: number;
-  culturalScore?: number;
-  globalismScore?: number;
-  environmentalScore?: number;
-  authorityScore?: number;
-  welfareScore?: number;
-  technocraticScore?: number;
-  ideology?: string;
-  quizVersion?: string;
-  quizResultId?: string | null;
-  notes?: string | null;
-  label?: string | null;
-}
-
-/**
- * Quiz result payload.
- */
-export interface QuizResultInput {
-  userId?: string;
-  answers: Record<string, string | number | boolean>;
-  scores: Record<string, number>;
-  ideology?: string;
-  shareCode?: string;
-  createdAt?: Date;
-}
 
 // ============================================================================
 // Debate & Parliamentary Types

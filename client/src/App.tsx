@@ -17,7 +17,6 @@ import { PWAInstallButton } from "./components/PWAInstallButton";
 import { OfflineIndicator } from "./components/OfflineIndicator";
 import NewHome from "./pages/NewHome";
 import Home from "./pages/Home";
-import Results from "./pages/Results";
 import HomePage from "@/pages/HomePage";
 
 import ProfilePage from "@/pages/ProfilePage";
@@ -49,18 +48,14 @@ import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
 import MyPoliticsPage from "@/pages/MyPoliticsPage";
 import AskTDPage from "@/pages/AskTDPage";
 
-import EnhancedQuizPage from "@/pages/EnhancedQuizPage";
-import EnhancedResultsPage from "@/pages/EnhancedResultsPage";
-import DimensionWeightsPage from "@/pages/DimensionWeightsPage";
-import TestAnswerExplainerPage from "@/pages/TestAnswerExplainerPage";
+import QuizPage from "@/pages/QuizPage";
+import QuizResultsPage from "@/pages/QuizResultsPage";
 import AdminPage from "@/pages/AdminPage";
 import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 import TermsOfServicePage from "@/pages/TermsOfServicePage";
 import ContactPage from "@/pages/ContactPage";
 import BottomNavigation from "@/components/BottomNavigation";
 import CookieConsent from "@/components/CookieConsent";
-import { QuizProvider } from "@/contexts/QuizContext";
-import { MultidimensionalQuizProvider } from "@/contexts/MultidimensionalQuizContext";
 import DailySessionPage from "@/pages/DailySessionPage";
 import { useDailySession } from "@/hooks/useDailySession";
 import RegionSelectionPage from "@/pages/RegionSelectionPage";
@@ -190,10 +185,9 @@ function Router() {
           <Route path="/register" component={RegisterPage} />
           
           {/* Quiz routes available for all users */}
-          <Route path="/enhanced-quiz" component={EnhancedQuizPage} />
-          <Route path="/enhanced-results" component={EnhancedResultsPage} />
-          <Route path="/dimension-weights" component={DimensionWeightsPage} />
-          
+          <Route path="/quiz" component={QuizPage} />
+          <Route path="/quiz/results" component={QuizResultsPage} />
+
           {/* Pages linked in header/navigation - available for all */}
           <Route path="/my-politics" component={MyPoliticsPage} />
           <Route path="/ideas" component={IdeasPage} />
@@ -218,12 +212,10 @@ function Router() {
           <Route path="/admin/shadow" component={ShadowCabinetDashboard} />
           <Route path="/notifications" component={NotificationsPage} />
           
-          {/* Enhanced Quiz Routes */}
-          <Route path="/enhanced-quiz" component={EnhancedQuizPage} />
-          <Route path="/dimension-weights" component={DimensionWeightsPage} />
-          <Route path="/enhanced-results" component={EnhancedResultsPage} />
-          <Route path="/test-answer-explainer" component={TestAnswerExplainerPage} />
-          
+          {/* Quiz Routes */}
+          <Route path="/quiz" component={QuizPage} />
+          <Route path="/quiz/results" component={QuizResultsPage} />
+
           {/* Map views */}
           <Route path="/electoral-map" component={OfficialElectoralMapPage} />
           <Route path="/user-heatmap" component={UserHeatmapPage} />
@@ -264,22 +256,6 @@ function Router() {
           <Route path="/login" component={HomePage} />
           <Route path="/register" component={HomePage} />
           
-          {/* Results routes */}
-          <Route path="/results">
-            {() => (
-              <QuizProvider>
-                <Results />
-              </QuizProvider>
-            )}
-          </Route>
-          <Route path="/results/:shareCode">
-            {() => (
-              <QuizProvider>
-                <Results />
-              </QuizProvider>
-            )}
-          </Route>
-          
           {/* Legacy pages */}
           <Route path="/classic-home" component={NewHome} />
           <Route path="/old-home" component={Home} />
@@ -299,12 +275,12 @@ function Router() {
 function App() {
   const [location] = useLocation();
   const isDailySessionRoute = location === "/daily-session";
-  const isEnhancedQuizRoute = location === "/enhanced-quiz";
+  const isQuizRoute = location === "/quiz";
 
   const mainClass = isDailySessionRoute ? "flex-grow overflow-x-hidden" : "mobile-shell flex-grow overflow-x-hidden";
-  
-  // Don't apply background on Enhanced Quiz page - it has its own black background
-  const containerClasses = isEnhancedQuizRoute
+
+  // Don't apply background on the quiz page - it has its own black background
+  const containerClasses = isQuizRoute
     ? "flex min-h-screen flex-col text-gray-900 transition-colors duration-200 dark:text-white overflow-x-hidden"
     : "flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors duration-200 dark:bg-gray-900 dark:text-white overflow-x-hidden";
 
@@ -314,7 +290,6 @@ function App() {
         <AuthProvider>
           <RegionProvider>
             <ToastContextProvider>
-              <MultidimensionalQuizProvider>
                 <div className={containerClasses}>
                   {!isDailySessionRoute && (
                     <>
@@ -336,7 +311,6 @@ function App() {
                   )}
                   <Toaster />
                 </div>
-              </MultidimensionalQuizProvider>
             </ToastContextProvider>
           </RegionProvider>
         </AuthProvider>

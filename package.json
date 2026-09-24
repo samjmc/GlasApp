@@ -21,6 +21,7 @@
     "update-news": "tsx server/jobs/masterNewsUpdate.ts",
     "sync-tds": "tsx server/jobs/sync-tds.ts",
     "td-scoring": "tsx server/jobs/td-scoring.ts",
+    "ideology": "tsx server/jobs/ideology.ts",
     "generate-summaries": "tsx scripts/generate-td-historical-summaries.ts",
     "generate-summaries:template": "tsx scripts/generate-td-summaries-template.ts",
     "debates:metrics": "tsx scripts/run-weekly-debate-metrics.ts",
@@ -33,11 +34,9 @@
     "debates:summaries": "tsx server/jobs/processDebateSummaries.ts --limit 50 --concurrency 3",
     "debates:section-contributions": "tsx scripts/calc-debate-section-contributions.ts",
     "debates:pipeline": "tsx scripts/run-debate-scoring-pipeline.ts",
-    "debate-ideology": "tsx server/jobs/debateIdeologyProcessor.ts",
     "debates:embeddings": "tsx server/jobs/processDebateEmbeddings.ts",
     "debates:extract-stances": "tsx server/jobs/extractPoliticianStances.ts",
-    "fetch-votes": "tsx server/jobs/dailyVoteFetcher.ts",
-    "update-debates-and-ideology": "npm run debate-ideology"
+    "fetch-votes": "tsx server/jobs/dailyVoteFetcher.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",

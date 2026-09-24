@@ -14,13 +14,12 @@ const BottomNavigation = () => {
     if (path === "/") {
       return normalizedLocation === "/";
     }
-    // Special case: quiz tab should be active for both /enhanced-quiz and /enhanced-results
-    if (path === "/enhanced-quiz") {
+    // Special case: quiz tab should be active for /quiz, /quiz/results and anything under /quiz/
+    if (path === "/quiz") {
       return (
-        normalizedLocation === "/enhanced-quiz" || 
-        normalizedLocation === "/enhanced-results" || 
-        normalizedLocation.startsWith("/enhanced-quiz/") || 
-        normalizedLocation.startsWith("/enhanced-results/")
+        normalizedLocation === "/quiz" ||
+        normalizedLocation === "/quiz/results" ||
+        normalizedLocation.startsWith("/quiz/")
       );
     }
     return (
@@ -32,7 +31,7 @@ const BottomNavigation = () => {
     { path: "/", label: "Home", icon: "🏠" },
     { path: "/debates", label: "Debates", icon: "🗣️" },
     { path: "/ask-td", label: "Ask TD", icon: "🤖" },
-    { path: "/enhanced-quiz", label: "Quiz", icon: "🧠" },
+    { path: "/quiz", label: "Quiz", icon: "🧠" },
     { path: "/my-politics", label: "Profile", icon: "🎯" },
   ];
   

@@ -4,15 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Slider } from "@/components/ui/slider";
-import { IdeologicalDimensions } from "@shared/quizTypes";
+import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, type IdeologyVector } from "@shared/ideology";
 import PartyMatchResults from "./PartyMatchResults";
 import { RotateCcw, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useMultidimensionalQuiz } from "@/contexts/MultidimensionalQuizContext";
+import { defaultWeights, type DimensionWeights } from "@/lib/ideologyApi";
+import { DIMENSION_STYLE } from "@/lib/ideologyDisplay";
+import { storeWeights } from "@/lib/quizStorage";
 
 interface EnhancedProfileExplanationProps {
-  dimensions: IdeologicalDimensions;
-  weights?: Record<string, number>;
+  dimensions: IdeologyVector;
+  /** Match weights, 0..3 per dimension. Owned by the page so they survive tab switches. */
+  weights: DimensionWeights;
+  onWeightsChange: (weights: DimensionWeights) => void;
 }
 
 // Type for API response
@@ -39,72 +43,33 @@ interface CompleteAnalysis {
   };
 }
 
-// Define dimension icons and configuration
-const dimensionIcons = [
-  { id: 'economic', name: 'Economic', icon: '💰' },
-  { id: 'social', name: 'Social', icon: '👥' },
-  { id: 'cultural', name: 'Cultural', icon: '🏛️' },
-  { id: 'globalism', name: 'Globalism', icon: '🌍' },
-  { id: 'environmental', name: 'Environmental', icon: '🌱' },
-  { id: 'authority', name: 'Authority', icon: '⚖️' },
-  { id: 'welfare', name: 'Welfare', icon: '🤲' },
-  { id: 'technocratic', name: 'Governance', icon: '🏢' }
-];
-
-const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({ 
-  dimensions, 
-  weights 
+const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
+  dimensions,
+  weights,
+  onWeightsChange
 }) => {
   // State for managing data
   const [analysisData, setAnalysisData] = useState<CompleteAnalysis | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [selectedIssue, setSelectedIssue] = useState<string>("all");
-  const [localWeights, setLocalWeights] = useState<Record<string, number>>(
-    weights ? Object.fromEntries(
-      Object.entries(weights).map(([key, value]) => [key, typeof value === 'string' ? parseFloat(value) : value])
-    ) : dimensionIcons.reduce((acc, dim) => {
-      acc[dim.id] = 1.0;
-      return acc;
-    }, {} as Record<string, number>)
-  );
-  
-  // Access the MultidimensionalQuiz context
-  const { updateDimensionWeights, saveUserWeights } = useMultidimensionalQuiz();
-  
+
   // Access toast for notifications
   const { toast } = useToast();
-  
-  // Handle weight changes for dimensions with real-time updates for party matches
-  const handleWeightChange = (dimensionId: string, value: number[]) => {
-    const newWeights = { ...localWeights, [dimensionId]: value[0] };
-    setLocalWeights(newWeights);
-    
-    // Apply weight change immediately to party matches component
-    // This will only update the party matches, not the OpenAI-based analysis
-    updateDimensionWeights(newWeights);
+
+  // Weight changes update the party matches immediately, not the OpenAI-based analysis
+  const handleWeightChange = (dimensionId: keyof DimensionWeights, value: number[]) => {
+    onWeightsChange({ ...weights, [dimensionId]: value[0] });
   };
-  
-  // Reset weights to default (all 1.0) with instant match update
+
   const resetWeights = () => {
-    const defaultWeights = dimensionIcons.reduce((acc, dim) => {
-      acc[dim.id] = 1.0;
-      return acc;
-    }, {} as Record<string, number>);
-    
-    // Update local state
-    setLocalWeights(defaultWeights);
-    
-    // Instantly apply to party matches
-    updateDimensionWeights(defaultWeights);
+    onWeightsChange(defaultWeights());
   };
-  
+
   // Save weights to localStorage only (no regeneration needed)
   const saveWeights = () => {
-    // Save to local storage for persistence between sessions
-    saveUserWeights(localWeights);
-    
+    storeWeights(weights);
+
     // Show toast notification to confirm weights were saved
     toast({
       title: "Weights Saved",
@@ -116,7 +81,7 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
   };
   
   // Function to fetch data directly
-  const fetchAnalysisData = async (dims: IdeologicalDimensions, wts: Record<string, number> = {}) => {
+  const fetchAnalysisData = async (dims: IdeologyVector, wts: Partial<DimensionWeights> = {}) => {
     setIsLoading(true);
     setIsError(false);
     
@@ -387,7 +352,7 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
                         <div className="text-sm bg-gray-50 dark:bg-gray-800 rounded-lg py-1 px-3 flex items-center gap-1">
                           <span className="text-xs">⚖️</span>
                           <span>
-                            {Object.keys(localWeights).some(key => localWeights[key] !== 1) 
+                            {IDEOLOGY_DIMENSIONS.some(d => weights[d] !== 1)
                               ? "Custom weights applied" 
                               : "Default weights"}
                           </span>
@@ -395,7 +360,7 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
                       </div>
                       
                       {/* Party matches from database and OpenAI - now with weights */}
-                      <PartyMatchResults dimensions={dimensions} weights={localWeights} />
+                      <PartyMatchResults dimensions={dimensions} weights={weights} />
                     </div>
                   </TabsContent>
                   
@@ -411,47 +376,40 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
                       </p>
                       
                       <div className="space-y-3">
-                        {dimensionIcons.map((dim) => (
-                          <div key={dim.id} className="space-y-1">
+                        {IDEOLOGY_DIMENSIONS.map((dim) => (
+                          <div key={dim} className="space-y-1">
                             <div className="flex justify-between items-center">
                               <div className="flex flex-col">
                                 <div className="flex items-center">
-                                  <span className="mr-2 text-xl">{dim.icon}</span>
-                                  <span className="font-medium">{dim.name}</span>
+                                  <span className="mr-2 text-xl">{DIMENSION_STYLE[dim].icon}</span>
+                                  <span className="font-medium">{DIMENSION_POLES[dim].label}</span>
                                 </div>
                                 <span className="text-xs text-gray-500 dark:text-gray-400 ml-7">
-                                  {dim.id === 'economic' ? 'Taxation, markets, regulation' : 
-                                   dim.id === 'social' ? 'Family, traditions, personal freedoms' : 
-                                   dim.id === 'cultural' ? 'Change vs. preservation' : 
-                                   dim.id === 'globalism' ? 'International vs. national focus' : 
-                                   dim.id === 'environmental' ? 'Conservation vs. development' : 
-                                   dim.id === 'authority' ? 'Individual liberty vs. order' : 
-                                   dim.id === 'welfare' ? 'Collective vs. individual responsibility' : 
-                                   'Expert vs. popular governance'}
+                                  {DIMENSION_POLES[dim].negative} vs. {DIMENSION_POLES[dim].positive}
                                 </span>
                               </div>
                               <span className="text-sm font-mono bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">
-                                {localWeights[dim.id]?.toFixed(1) || '1.0'}×
+                                {weights[dim].toFixed(1)}×
                               </span>
                             </div>
-                            
+
                             <div className="flex items-center gap-3">
-                              <span className="text-xs">0.1×</span>
+                              <span className="text-xs">0×</span>
                               <Slider
-                                value={[localWeights[dim.id] || 1]}
-                                min={0.1}
+                                value={[weights[dim]]}
+                                min={0}
                                 max={3}
                                 step={0.1}
-                                onValueChange={(value) => handleWeightChange(dim.id, value)}
+                                onValueChange={(value) => handleWeightChange(dim, value)}
                                 className="flex-grow"
                               />
                               <span className="text-xs">3.0×</span>
                             </div>
-                            
+
                             <p className="text-xs text-muted-foreground">
-                              {localWeights[dim.id] < 0.5 ? (
+                              {weights[dim] < 0.5 ? (
                                 "This dimension will have minimal impact on your match results."
-                              ) : localWeights[dim.id] > 2 ? (
+                              ) : weights[dim] > 2 ? (
                                 "This dimension will have a major impact on your match results."
                               ) : (
                                 "This dimension has standard weighting in your match results."

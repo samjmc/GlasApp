@@ -5,7 +5,7 @@ const Home = () => {
   const [, navigate] = useLocation();
 
   const handleStartQuiz = () => {
-    navigate("/enhanced-quiz");
+    navigate("/quiz");
   };
 
   return (

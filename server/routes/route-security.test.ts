@@ -83,18 +83,6 @@ vi.mock('../services/aiService', () => ({
   callAnthropicMessage: vi.fn(),
 }));
 
-vi.mock('../services/openaiService', () => ({
-  generatePoliticalProfileExplanation: vi.fn(),
-  generatePoliticalMatches: vi.fn(),
-  generatePolicyPredictions: vi.fn(),
-  generateHistoricalContext: vi.fn(),
-  generateAnswerExplanation: vi.fn(),
-  generateCompleteProfileAnalysis: vi.fn(),
-  generateContextAwareAnalysis: vi.fn(),
-  analyzePoliticalSentiment: vi.fn(),
-  analyzeBulkResponses: vi.fn(async () => ({ summary: 'mocked bulk analysis' })),
-}));
-
 vi.mock('../services/cacheService', () => ({
   cached: vi.fn(async (_key: string, _ttl: number, fn: () => Promise<unknown>) => fn()),
   TTL: { ONE_DAY: 86400000, ONE_HOUR: 3600000 },
@@ -122,12 +110,9 @@ vi.mock('@shared/schema', () => {
     parties: table('parties'),
     electionResults: table('election_results'),
     elections: table('elections'),
-    quizResults: table('quiz_results'),
     userPreferences: table('user_preferences'),
   };
 });
-
-vi.mock('@shared/quizTypes', () => ({ IdeologicalDimensions: {} }));
 
 const { supabase } = await import('../auth/supabase');
 const botRoutes = (await import('./botRoutes')).default;
@@ -318,25 +303,26 @@ describe('smsRoutes /test', () => {
   });
 });
 
-describe('ai/analysis /analyze-bulk', () => {
-  it('returns 400 when more than 50 responses are supplied', async () => {
-    const responses = Array.from({ length: 51 }, () => ({ text: 'agree', question: 'q' }));
+describe('ai/analysis /complete-analysis', () => {
+  const dimensions = { economic: 1, social: -2, cultural: 0, authority: 3, environmental: -4, welfare: 5, globalism: -6, technocratic: 7 };
+
+  it('returns 400 when a dimension is outside -10..10', async () => {
     await withServer(appWith('/api/ai', analysisRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ai/analyze-bulk`, {
+      const res = await fetch(`${base}/api/ai/complete-analysis`, {
         method: 'POST',
         headers: jsonHeaders(),
-        body: JSON.stringify({ responses }),
+        body: JSON.stringify({ dimensions: { ...dimensions, welfare: 11 } }),
       });
       assert.equal(res.status, 400);
     });
   });
 
-  it('returns 200 for a single response', async () => {
+  it('returns 200 for a valid position', async () => {
     await withServer(appWith('/api/ai', analysisRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ai/analyze-bulk`, {
+      const res = await fetch(`${base}/api/ai/complete-analysis`, {
         method: 'POST',
         headers: jsonHeaders(),
-        body: JSON.stringify({ responses: [{ text: 'agree', question: 'q' }] }),
+        body: JSON.stringify({ dimensions }),
       });
       assert.equal(res.status, 200);
       assert.equal(((await res.json()) as { success: boolean }).success, true);

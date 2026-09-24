@@ -62,11 +62,18 @@ export const queryKeys = {
     apiList: () => ["/api/constituencies"] as const,
   },
   quiz: {
-    history: () => ["/api/quiz-history/all"] as const,
-    results: (userId: string | undefined) => ["/api/quiz-results/user", userId] as const,
+    /** GET /api/quiz/me — scoped by user so a sign-out/sign-in never shows the last user's rows. */
+    mine: (userId: string | undefined) => ["/api/quiz/me", userId] as const,
   },
-  politicalEvolution: {
-    all: () => ["/api/political-evolution"] as const,
+  ideology: {
+    all: () => ["/api/ideology"] as const,
+    mine: (userId: string | undefined) => ["/api/ideology", "me", userId] as const,
+    timeline: (userId: string | undefined, party: string | null) =>
+      ["/api/ideology", "me", userId, "timeline", party] as const,
+    myMatches: (userId: string | undefined, weights: unknown) =>
+      ["/api/ideology", "me", userId, "matches", weights] as const,
+    vectorMatches: (vector: unknown, weights: unknown) =>
+      ["/api/ideology", "matches", vector, weights] as const,
   },
   globalSearch: {
     data: (regionCode: string) => ["global-search-data", regionCode] as const,

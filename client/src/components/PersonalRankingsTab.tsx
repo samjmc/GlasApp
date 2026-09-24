@@ -3,77 +3,37 @@
  * Shows personalized TD rankings with compatibility breakdown
  */
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/contexts/AuthContext';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Link, useLocation } from 'wouter';
+import { Link } from 'wouter';
 import {
-  Sparkles,
-  TrendingUp,
-  TrendingDown,
   Lock,
   AlertCircle,
-  CheckCircle2,
-  Heart,
-  ChevronDown,
-  Info
+  ChevronDown
 } from 'lucide-react';
 import { PageHeader } from "@/components/PageHeader";
-
-interface PersonalRanking {
-  name: string;
-  party: string;
-  constituency: string;
-  image_url?: string;
-  personalRank: number;
-  publicRank: number;
-  compatibility: number;
-  ideologyMatch: number;
-  policyAgreement: number;
-  policiesCompared: number;
-  overallScore: number;
-}
+import { fetchMyMatches } from '@/lib/ideologyApi';
+import type { TdMatch } from '@/lib/ideologyApi';
+import { queryKeys } from '@/lib/queryKeys';
 
 /** Tab showing the user's personalized rankings. */
 export function PersonalRankingsTab() {
   const { user, isAuthenticated } = useAuth();
-  const [, navigate] = useLocation();
-  const [hasCompletedQuiz, setHasCompletedQuiz] = useState(false);
-  const [rankings, setRankings] = useState<PersonalRanking[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(5);
 
-  useEffect(() => {
-    if (isAuthenticated && user) {
-      loadData();
-    } else {
-      setIsLoading(false);
-    }
-  }, [isAuthenticated, user]);
+  const matchesQuery = useQuery({
+    queryKey: queryKeys.ideology.myMatches(user?.id, null),
+    queryFn: () => fetchMyMatches(),
+    enabled: isAuthenticated && !!user,
+  });
 
-  const loadData = async () => {
-    try {
-      // Check if quiz completed
-      const profileRes = await fetch(`/api/personal/profile/${user!.id}`);
-      const profileData = await profileRes.json();
-      
-      setHasCompletedQuiz(profileData.hasCompletedQuiz);
-      
-      if (profileData.hasCompletedQuiz) {
-        // Load rankings - get enough to show top and bottom
-        const rankingsRes = await fetch(`/api/personal/rankings/${user!.id}?limit=200`);
-        const rankingsData = await rankingsRes.json();
-        setRankings(rankingsData.rankings || []);
-      }
-    } catch (error) {
-      console.error('Error loading personal rankings:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const isLoading = matchesQuery.isLoading;
+  const hasProfile = matchesQuery.data?.hasProfile ?? false;
+  const rankings = matchesQuery.data?.tds ?? [];
 
   // Not logged in
   if (!isAuthenticated) {
@@ -104,15 +64,28 @@ export function PersonalRankingsTab() {
     );
   }
 
-  const renderRankingCard = (ranking: PersonalRanking, index: number, isBottom: boolean = false) => {
-    // For bottom rankings, personalRank might be large, index is local
+  if (matchesQuery.error) {
     return (
-      <Link key={ranking.name} href={`/td/${encodeURIComponent(ranking.name)}`}>
+      <Card className="p-8 text-center bg-gray-50 dark:bg-gray-800/50 border-dashed">
+        <AlertCircle className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          We couldn't load your rankings right now.
+        </p>
+        <Button variant="outline" onClick={() => matchesQuery.refetch()}>
+          Try again
+        </Button>
+      </Card>
+    );
+  }
+
+  const renderRankingCard = (ranking: TdMatch, isBottom: boolean = false) => {
+    return (
+      <Link key={ranking.tdId} href={`/td/${encodeURIComponent(ranking.name)}`}>
         <div className="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 hover:border-purple-500/30 dark:hover:border-purple-500/30 transition-all cursor-pointer shadow-sm">
           <div className="flex items-center gap-3 min-w-0">
-            {ranking.image_url ? (
-              <img 
-                src={ranking.image_url} 
+            {ranking.imageUrl ? (
+              <img
+                src={ranking.imageUrl}
                 alt={ranking.name}
                 className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 dark:border-gray-700 flex-shrink-0"
               />
@@ -134,7 +107,7 @@ export function PersonalRankingsTab() {
 
           <div className="text-right pl-2 flex-shrink-0">
             <div className={`text-xl font-bold ${isBottom ? 'text-red-500 dark:text-red-400' : 'text-emerald-600 dark:text-emerald-400'} leading-none`}>
-              {ranking.compatibility}%
+              {Math.round(ranking.alignment)}%
             </div>
             <div className="text-[10px] text-gray-400 uppercase tracking-wide mt-1">Match</div>
           </div>
@@ -158,15 +131,20 @@ export function PersonalRankingsTab() {
         ]}
       />
 
-      {!hasCompletedQuiz ? (
+      {!hasProfile ? (
         <Card className="p-8 text-center bg-gray-50 dark:bg-gray-800/50 border-dashed">
           <AlertCircle className="w-12 h-12 mx-auto mb-3 text-gray-400" />
           <p className="text-gray-700 dark:text-gray-300 font-medium mb-2">
             Personalized rankings aren’t available yet.
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Vote on policy opportunities in the news feed to build your profile and unlock rankings.
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Take the quiz to build your profile and unlock rankings.
           </p>
+          <Link href="/quiz">
+            <Button className="bg-gradient-to-r from-purple-600 to-blue-600">
+              Take the Quiz
+            </Button>
+          </Link>
         </Card>
       ) : rankings.length === 0 ? (
         <Card className="p-8 text-center bg-gray-50 dark:bg-gray-800/50 border-dashed">
@@ -189,7 +167,7 @@ export function PersonalRankingsTab() {
             </div>
             
             <div className="space-y-3">
-              {topRankings.map((ranking, i) => renderRankingCard(ranking, i, false))}
+              {topRankings.map((ranking) => renderRankingCard(ranking, false))}
             </div>
 
             {visibleCount < (rankings.length - 5) && (
@@ -217,7 +195,7 @@ export function PersonalRankingsTab() {
               </div>
               
               <div className="space-y-3">
-                {bottomRankings.map((ranking, i) => renderRankingCard(ranking, i, true))}
+                {bottomRankings.map((ranking) => renderRankingCard(ranking, true))}
               </div>
             </section>
           )}

@@ -6,7 +6,6 @@
  * 2. Analyzes articles and extracts TD mentions
  * 3. Scores articles with TD impact analysis
  * 4. Updates all TD/party scores
- * 5. Recalculates personal rankings
  * 6. Updates all feeds (recent, highest impact, today's story)
  * 
  * Usage:
@@ -24,7 +23,6 @@ interface MasterJobStats {
   tdsScored: number;
   tdScoresUpdated: number;
   partyScoresUpdated: number;
-  personalRankingsUpdated: number;
   errors: string[];
   duration: number;
 }
@@ -49,7 +47,6 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     tdsScored: 0,
     tdScoresUpdated: 0,
     partyScoresUpdated: 0,
-    personalRankingsUpdated: 0,
     errors: [],
     duration: 0
   };
@@ -119,27 +116,6 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     }
 
     // ========================================================================
-    // STEP 5: UPDATE PERSONAL RANKINGS
-    // ========================================================================
-    console.log('\n' + '='.repeat(80));
-    console.log('👤 STEP 5: Updating personalized TD rankings...\n');
-    
-    try {
-      const { PersonalRankingsService } = await import('../services/personalRankingsService.js');
-      const rankingStats = await PersonalRankingsService.recalculateAllUserRankings();
-      
-      stats.personalRankingsUpdated = rankingStats.usersUpdated || 0;
-      
-      console.log(`✅ Step 5 Complete:`);
-      console.log(`   User rankings updated: ${rankingStats.usersUpdated}`);
-      console.log('');
-      
-    } catch (error: unknown) {
-      console.error('⚠️  Step 5 failed (non-critical):', error instanceof Error ? error.message : String(error));
-      // Personal rankings are nice-to-have
-    }
-
-    // ========================================================================
     // STEP 6: CLEAR CACHES TO ENSURE FRESH DATA
     // ========================================================================
     console.log('\n' + '='.repeat(80));
@@ -170,7 +146,6 @@ async function runMasterNewsUpdate(): Promise<MasterJobStats> {
     console.log(`   ✓ TDs scored:                  ${stats.tdsScored}`);
     console.log(`   ✓ TD scores updated:           ${stats.tdScoresUpdated}`);
     console.log(`   ✓ Party scores updated:        ${stats.partyScoresUpdated}`);
-    console.log(`   ✓ Personal rankings updated:   ${stats.personalRankingsUpdated}`);
     console.log(`   ⚠️  Errors:                     ${stats.errors.length}`);
     console.log(`   ⏱️  Total duration:             ${(stats.duration / 1000 / 60).toFixed(1)} minutes`);
     console.log('\n' + '='.repeat(80));
