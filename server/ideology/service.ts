@@ -192,7 +192,8 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
   const tdMatches: TdMatch[] = [];
   for (const td of tds) {
     const profile = byId.get(String(td.id));
-    if (!profile) continue;
+    // No baseline and no evidence: the 0s mean "unknown", not "centrist". Leave them out.
+    if (!profile || (profile.evidenceCount === 0 && !partyBaseline(td.party))) continue;
     const other = repo.vectorOf(profile);
     tdMatches.push({
       tdId: td.id,
@@ -205,7 +206,9 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
       ...closestAndFurthest(vector, other),
     });
   }
-  const parties: PartyMatch[] = partyProfiles.map((p) => {
+  const parties: PartyMatch[] = partyProfiles
+    .filter((p) => p.totalWeight > 0 || partyBaseline(p.subjectId))
+    .map((p) => {
     const other = repo.vectorOf(p);
     return { party: p.subjectId, alignment: alignment(vector, other, weights), tdCount: p.evidenceCount, ...closestAndFurthest(vector, other) };
   });

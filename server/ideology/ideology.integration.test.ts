@@ -190,10 +190,14 @@ run('quiz and ideology against Postgres', () => {
     it('matches a position to TDs and parties, best first', async () => {
       await addTd('Left Deputy', 'Sinn Féin');
       await addTd('Right Deputy', 'Fine Gael');
+      await addTd('Unknown Deputy', 'Independent');
+      await addTd('New Party Deputy', '100% RDR');
       await ideology.recalculateAll();
       const left = { ...zero, economic: -6, welfare: -7 };
       const { tds, parties } = await ideology.matchesFor(left);
+      // No baseline and no evidence = unknown, not centrist: left out rather than matched at 0.
       expect(tds.map((t) => t.name)).toEqual(['Left Deputy', 'Right Deputy']);
+      expect(parties.map((p) => p.party)).not.toContain('100% RDR');
       expect(parties[0]!.party).toBe('Sinn Féin');
       expect(tds[0]!.alignment).toBeGreaterThan(tds[1]!.alignment);
     });
