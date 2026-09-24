@@ -1,22 +1,22 @@
 /**
  * The news repository's SQL, against a real Postgres. Applies EVERY migration in order.
  *
- * Skipped unless TEST_DATABASE_URL points at a database this test may DROP AND RECREATE
- * the `politics` schema in:
+ * Skipped unless TEST_DATABASE_URL is set. Uses its OWN database, `<db>_news`, because
+ * every integration test drops and recreates `politics` and vitest runs files in
+ * parallel (see server/testing/migrations.ts):
  *
  *   docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
  *   npx vitest run server/news/repository.integration.test.ts
  */
-import fs from 'node:fs';
-import path from 'node:path';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
-const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL;
-const run = describe.skipIf(!TEST_DATABASE_URL);
+const url = testDatabaseUrl('news');
+const run = describe.skipIf(!url);
 
-if (TEST_DATABASE_URL) {
-  process.env.DATABASE_URL = TEST_DATABASE_URL;
+if (url) {
+  process.env.DATABASE_URL = url;
   process.env.SUPABASE_URL ??= 'http://localhost:54321';
   process.env.SUPABASE_ANON_KEY ??= 'anon';
   process.env.SUPABASE_SERVICE_ROLE_KEY ??= 'service';
@@ -31,17 +31,10 @@ run('news repository against Postgres', () => {
   let sourceIds: Map<string, number>;
 
   beforeAll(async () => {
+    await ensureDatabase(url!);
     dbmod = await import('../db');
-    await dbmod.pool.query('drop schema if exists politics cascade');
-    const dir = path.resolve(__dirname, '..', '..', 'drizzle');
-    const files = fs.readdirSync(dir).filter((f) => /^\d{4}_.*\.sql$/.test(f)).sort();
-    expect(files.length).toBeGreaterThanOrEqual(3);
-    for (const file of files) {
-      for (const statement of fs.readFileSync(path.join(dir, file), 'utf8').split('--> statement-breakpoint')) {
-        const sql = statement.trim();
-        if (sql) await dbmod.pool.query(sql);
-      }
-    }
+    const applied = await applyAllMigrations(dbmod.pool);
+    expect(applied.length).toBeGreaterThanOrEqual(3);
     repo = await import('./repository');
     sources = await import('./sources');
   }, 60_000);

@@ -4,8 +4,9 @@
  * Unit tests cover the maths; nothing else executes a query, so a broken `onConflict`
  * target, a bad `nulls last` clause or a wrong transaction shape would ship silently.
  *
- * Skipped unless TEST_DATABASE_URL is set. It uses its OWN database, `<db>_scoring`
- * (created if missing), and rebuilds the `politics` schema there from every migration:
+ * Skipped unless TEST_DATABASE_URL is set. Uses its OWN database, `<db>_scoring`, because
+ * every integration test drops and recreates `politics` and vitest runs files in
+ * parallel (see server/testing/migrations.ts):
  *
  *   docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
@@ -14,12 +15,12 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
-const scoringUrl = testDatabaseUrl('scoring');
-const run = describe.skipIf(!scoringUrl);
+const url = testDatabaseUrl('scoring');
+const run = describe.skipIf(!url);
 
 // server/db.ts throws at import without this; point it at the test database.
-if (scoringUrl) {
-  process.env.DATABASE_URL = scoringUrl;
+if (url) {
+  process.env.DATABASE_URL = url;
   process.env.SUPABASE_URL ??= 'http://localhost:54321';
   process.env.SUPABASE_ANON_KEY ??= 'anon';
   process.env.SUPABASE_SERVICE_ROLE_KEY ??= 'service';
@@ -30,7 +31,7 @@ run('repository against Postgres', () => {
   let dbmod: typeof import('../db');
 
   beforeAll(async () => {
-    await ensureDatabase(scoringUrl!);
+    await ensureDatabase(url!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
     repo = await import('./repository');
@@ -178,13 +179,19 @@ run('repository against Postgres', () => {
     expect(movers[0].td.name).toBe('Mary Lou McDonald');
   });
 
-  it('party scores are replaced wholesale', async () => {
+  it('party scores come only from scored members, and are replaced wholesale', async () => {
     const { computePartyScores } = await import('./party');
     const inputs = await repo.rollupInputs(new Map());
-    await repo.replacePartyScores(computePartyScores(inputs));
-    expect((await repo.listPartyScores()).map((p) => p.party)).toEqual(['Sinn Féin', 'Fine Gael']);
+    // rollupInputs carries each TD's story count from td_scores.
+    expect(inputs.find((i) => i.party === 'Sinn Féin')!.newsStories).toBeGreaterThan(0);
+    expect(inputs.find((i) => i.party === 'Fine Gael')!.newsStories).toBe(0);
 
-    await repo.replacePartyScores(computePartyScores(inputs.filter((i) => i.party === 'Fine Gael')));
+    // Simon Harris (Fine Gael) has never been scored, so his party gets no aggregate
+    // rather than a baseline 50.
+    await repo.replacePartyScores(computePartyScores(inputs));
+    expect((await repo.listPartyScores()).map((p) => p.party)).toEqual(['Sinn Féin']);
+
+    await repo.replacePartyScores([{ party: 'Fine Gael', memberCount: 1, avgElo: 1550, overallScore: 55 }]);
     const only = await repo.listPartyScores();
     expect(only).toHaveLength(1);
     expect(only[0].party).toBe('Fine Gael');
