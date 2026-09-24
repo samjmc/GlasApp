@@ -23,12 +23,11 @@ import electionRoutes from "./routes/electionRoutes";
 import politicalRoutes from "./routes/political";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
-import newsFeedRoutes from "./routes/newsFeedRoutes";
+import newsRoutes from "./routes/news";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
-import newsScraperRoutes from "./routes/admin/newsScraperRoutes";
+import newsAdminRoutes from "./routes/admin/news";
 import baselineAdminRoutes from "./routes/admin/baselineRoutes";
-import manualArticleRoutes from "./routes/admin/manualArticleRoutes";
 import { PersonalRankingsService } from "./services/personalRankingsService.js";
 import scoresRoutes from "./routes/scores";
 import userRankingsRoutes from "./routes/user/rankings/index.js";
@@ -108,7 +107,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/problems", problemsRoutes);
   
   // Register news feed routes for homepage articles
-  app.use("/api/news-feed", newsFeedRoutes);
+  app.use("/api/news-feed", newsRoutes);
   
   // Register user rankings routes (consolidated - personal rankings, policy voting, category rankings)
   app.use("/api/user/rankings", userRankingsRoutes);
@@ -127,9 +126,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/account", accountRoutes);
 
   // Register admin routes for news scraping and system management
-  app.use("/api/admin/news-scraper", requireJob, newsScraperRoutes);
+  app.use("/api/admin/news", requireJob, newsAdminRoutes);
   app.use("/api/admin/baselines", requireJob, baselineAdminRoutes);
-  app.use("/api/admin/articles", requireJob, manualArticleRoutes);
   app.use("/api/admin/td-scoring", requireJob, tdScoringAdminRoutes);
 
 

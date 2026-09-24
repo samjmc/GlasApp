@@ -7,127 +7,17 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Textarea } from '@/components/ui/textarea';
-import { PolicyVotePrompt, type PolicyVoteData } from './PolicyVotePrompt';
+import { PolicyVotePrompt } from './PolicyVotePrompt';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ThumbsUp, 
-  MessageCircle, 
-  Share2, 
+import {
+  ThumbsUp,
+  Share2,
   ExternalLink,
-  TrendingUp,
-  TrendingDown,
   Sparkles,
   ChevronDown,
-  Info,
-  ChevronUp,
   ArrowLeft,
-  AlertTriangle
 } from 'lucide-react';
-
-interface Comment {
-  id: number;
-  author: string;
-  avatar: string;
-  content: string;
-  likes: number;
-  timestamp: string;
-}
-
-interface PolicyFacts {
-  action: string;
-  who_affected?: string;
-  amount?: string;
-  timeline?: string;
-  estimated_people?: number;
-  stated_reason?: string;
-}
-
-interface Perspectives {
-  supporters_say: string;
-  critics_say: string;
-  expert_view?: string;
-}
-
-interface AffectedTD {
-  name: string;
-  impactScore: number;
-  transparencyScore?: number;
-  integrityScore?: number;
-  effectivenessScore?: number;
-  consistencyScore?: number;
-  transparencyReasoning?: string;
-  integrityReasoning?: string;
-  effectivenessReasoning?: string;
-  consistencyReasoning?: string;
-  aiReasoning?: string;
-  isOppositionAdvocacy?: boolean;
-  flipFlopDetected?: string;
-  flipFlopExplanation?: string;
-  suspiciousTiming?: boolean;
-  needsReview?: boolean;
-  eloChange?: number;
-  storyType?: string;
-  sentiment?: string;
-  // Policy stance (for personal rankings)
-  tdStance?: string; // 'support' | 'oppose' | 'neutral'
-  tdStanceStrength?: number; // 1-5
-  tdStanceEvidence?: string; // Quote showing their position
-}
-
-interface NewsArticle {
-  id: number;
-  title: string;
-  source: string;
-  sourceLogoUrl?: string;
-  publishedDate: string;
-  imageUrl?: string;
-  aiSummary: string;
-  url: string;
-  
-  // TD Impact (backward compatibility - primary TD)
-  politicianName?: string;
-  impactScore?: number;
-  storyType?: string;
-  sentiment?: string;
-  aiReasoning?: string;
-  
-  // Process Scores (0-100) - for primary TD
-  transparencyScore?: number;
-  integrityScore?: number;
-  effectivenessScore?: number;
-  consistencyScore?: number;
-  
-  // NEW: Multiple TDs affected by this article
-  affectedTDs?: AffectedTD[];
-  
-  // Policy Voting
-  isIdeologicalPolicy?: boolean;
-  policyDirection?: 'progressive' | 'conservative' | 'centrist' | 'technical';
-  policyFacts?: PolicyFacts;
-  perspectives?: Perspectives;
-  isOppositionAdvocacy?: boolean;
-  hasPolicyOpportunity?: boolean;
-  policyVote?: PolicyVoteData | null;
-  
-  // Engagement
-  likes: number;
-  commentCount: number;
-  comments: Comment[];
-}
-
-const PROCESS_SCORE_UNAVAILABLE_TEXT = 'Not enough information to assess from this article.';
-
-const isProcessScoreAvailable = (score: number | null | undefined): score is number =>
-  typeof score === 'number' && Number.isFinite(score);
-
-const getConsistencyColorClass = (score: number | null | undefined): string => {
-  if (!isProcessScoreAvailable(score)) return 'text-gray-400';
-  if (score === 0) return 'text-red-500';
-  if (score < 30) return 'text-red-400';
-  if (score < 60) return 'text-orange-400';
-  return 'text-amber-400';
-};
+import type { FeedArticle } from '@/lib/news';
 
 // Format date to relative time (e.g., "2 hours ago")
 function formatTimeAgo(dateString: string): string {
@@ -152,9 +42,8 @@ function formatTimeAgo(dateString: string): string {
 }
 
 /** Card displaying a news article with like and comment actions. */
-export function NewsArticleCard({ article }: { article: NewsArticle }) {
+export function NewsArticleCard({ article }: { article: FeedArticle }) {
   const [liked, setLiked] = useState(false);
-  const [localComments] = useState(article.comments || []);
   const [logoLoadError, setLogoLoadError] = useState(false);
   const [showPolicyVote, setShowPolicyVote] = useState(false);
 
@@ -167,12 +56,12 @@ export function NewsArticleCard({ article }: { article: NewsArticle }) {
     if (navigator.share) {
       navigator.share({
         title: article.title,
-        text: article.aiSummary,
-        url: window.location.origin + `/news/${article.id}`
+        text: article.summary ?? undefined,
+        url: article.url
       });
     } else {
       // Fallback: Copy link
-      navigator.clipboard.writeText(window.location.origin + `/news/${article.id}`);
+      navigator.clipboard.writeText(article.url);
       alert('Link copied to clipboard!');
     }
   };
@@ -224,7 +113,7 @@ export function NewsArticleCard({ article }: { article: NewsArticle }) {
                     </div>
                   )}
                   <span className="text-[10px] sm:text-xs font-semibold text-white shadow-black/50 drop-shadow-sm truncate">{article.source}</span>
-                  <span className="text-[10px] sm:text-xs text-gray-300 flex-shrink-0">• {formatTimeAgo(article.publishedDate)}</span>
+                  <span className="text-[10px] sm:text-xs text-gray-300 flex-shrink-0">• {formatTimeAgo(article.publishedAt)}</span>
                   
                   {article.storyType && (
                     <Badge variant="outline" className="ml-auto text-[9px] sm:text-[10px] h-4 sm:h-5 font-normal capitalize text-gray-200 border-white/20 bg-white/5 flex-shrink-0">
@@ -245,35 +134,26 @@ export function NewsArticleCard({ article }: { article: NewsArticle }) {
                     <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-purple-300">AI Summary</span>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-100 leading-relaxed">
-                    {article.aiSummary}
+                    {article.summary}
                   </p>
                 </div>
 
                 {/* Scores Section - Only show if we have REAL TD data */}
-                {((article.affectedTDs && article.affectedTDs.length > 0) || article.politicianName) && (
+                {article.affectedTDs && article.affectedTDs.length > 0 && (
                   <div className="mb-3 flex-shrink-0">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-gray-400">Impact Analysis</span>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {article.affectedTDs && article.affectedTDs.length > 0 ? (
-                        article.affectedTDs.slice(0, 2).map((td, idx) => (
-                          <div key={idx} className="flex items-center gap-1.5 sm:gap-2 bg-white/10 rounded-full px-2 py-1 sm:px-3 sm:py-1.5 border border-white/10 backdrop-blur-sm">
-                            <span className="text-[10px] sm:text-xs font-medium text-white truncate max-w-[100px] sm:max-w-none">{td.name}</span>
-                            <span className={`text-[10px] sm:text-xs font-bold flex-shrink-0 ${td.impactScore >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                              {td.impactScore >= 0 ? '+' : ''}{td.impactScore}
-                            </span>
-                          </div>
-                        ))
-                      ) : article.politicianName ? (
-                        <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 rounded-full px-2 py-1 sm:px-3 sm:py-1.5 border border-white/10 backdrop-blur-sm">
-                          <span className="text-[10px] sm:text-xs font-medium text-white truncate max-w-[100px] sm:max-w-none">{article.politicianName}</span>
-                          <span className={`text-[10px] sm:text-xs font-bold flex-shrink-0 ${article.impactScore && article.impactScore >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                            {article.impactScore && article.impactScore >= 0 ? '+' : ''}{article.impactScore}
+                      {article.affectedTDs.slice(0, 2).map((td, idx) => (
+                        <div key={idx} className="flex items-center gap-1.5 sm:gap-2 bg-white/10 rounded-full px-2 py-1 sm:px-3 sm:py-1.5 border border-white/10 backdrop-blur-sm">
+                          <span className="text-[10px] sm:text-xs font-medium text-white truncate max-w-[100px] sm:max-w-none">{td.name}</span>
+                          <span className={`text-[10px] sm:text-xs font-bold flex-shrink-0 ${td.impactScore >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                            {td.impactScore >= 0 ? '+' : ''}{td.impactScore}
                           </span>
                         </div>
-                      ) : null}
+                      ))}
                     </div>
                   </div>
                 )}
@@ -296,7 +176,7 @@ export function NewsArticleCard({ article }: { article: NewsArticle }) {
               <div className="border-t border-white/10 p-2 sm:p-3 flex items-center justify-around bg-black/40 backdrop-blur-md flex-shrink-0">
                 <Button variant="ghost" size="sm" onClick={handleLike} className={`${liked ? "text-rose-500 hover:text-rose-400" : "text-gray-300 hover:text-white hover:bg-white/10"} h-8 sm:h-9 px-2 sm:px-3`}>
                   <ThumbsUp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${liked ? "fill-current" : ""} mr-1 sm:mr-1.5`} />
-                  <span className="text-[10px] sm:text-xs">{article.likes + (liked ? 1 : 0)}</span>
+                  <span className="text-[10px] sm:text-xs">{liked ? 1 : 0}</span>
                 </Button>
                 <Button 
                   variant="ghost" 

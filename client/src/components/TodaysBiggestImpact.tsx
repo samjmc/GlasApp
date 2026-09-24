@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
+import type { FeedArticle } from "@/lib/news";
 
 interface TodaysBiggestImpactProps {
   variant?: "compact" | "full";
@@ -26,7 +27,8 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
     queryFn: async () => {
       const res = await fetch('/api/news-feed?sort=today&limit=1');
       if (!res.ok) throw new Error('Failed to fetch');
-      return res.json();
+      const json = await res.json();
+      return json.data as { articles: FeedArticle[]; total: number; hasMore: boolean };
     },
     staleTime: 1000 // Very short cache to force refresh
   });
@@ -98,7 +100,7 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
             </h2>
             <div className="flex flex-wrap items-center gap-2 text-xs">
               <Badge variant="outline" className="text-[10px] uppercase tracking-wide text-gray-200 border-white/20 bg-white/10">
-                {new Date(article.publishedDate).toLocaleDateString("en-IE")}
+                {new Date(article.publishedAt).toLocaleDateString("en-IE")}
               </Badge>
               <Badge variant="outline" className="text-[10px] text-gray-200 border-white/20 bg-white/10">
                 📰 {article.source}
@@ -146,23 +148,12 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
                 )}
               </div>
             )}
-            {!article.affectedTDs && article.politicianName && (
-              <div className="flex items-center gap-1">
-                <span className="font-semibold text-white">{article.politicianName}</span>
-                {article.scoreChange && (
-                  <span className={`font-semibold ${article.scoreChange > 0 ? "text-emerald-400" : "text-rose-400"}`}>
-                    {article.scoreChange > 0 ? "+" : ""}
-                    {article.scoreChange}
-                  </span>
-                )}
-              </div>
-            )}
           </div>
 
         {/* AI Summary - Full Text */}
-        {article.aiSummary && (
+        {article.summary && (
           <p className="text-sm text-gray-200 drop-shadow-sm">
-            {article.aiSummary}
+            {article.summary}
           </p>
         )}
         </div>

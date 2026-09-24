@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
+import type { FeedArticle } from '@/lib/news';
 import { TDScoresWidget } from '@/components/TDScoresWidget';
 import { PartyRankingsWidget } from '@/components/PartyRankingsWidget';
 import { ScoringMethodology } from '@/components/ScoringMethodology';
@@ -20,8 +21,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import { ErrorDisplay, NetworkError } from '@/components/ErrorDisplay';
 import { EmptyNewsFeedState, LoadingState } from '@/components/onboarding/EmptyStates';
 import { PageHeader } from "@/components/PageHeader";
-
-type NewsArticle = Parameters<typeof NewsArticleCard>[0]['article'];
 
 type TabType = 'feed' | 'tds' | 'my-rankings' | 'map';
 
@@ -52,7 +51,8 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
         if (res.status >= 500) throw new Error('Server error - please try again later');
         throw new Error('Failed to load news feed');
       }
-      return res.json();
+      const json = await res.json();
+      return json.data as { articles: FeedArticle[]; total: number; hasMore: boolean };
     },
     staleTime: 1000, // Very short cache to force refresh
     enabled: activeTab === 'feed',
@@ -161,11 +161,11 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
                 </Card>
               ))}
             </div>
-          ) : articles?.articles?.length > 0 ? (
+          ) : articles && articles.articles.length > 0 ? (
             <>
               <div className="space-y-6">
-                {articles.articles.map((article: unknown) => (
-                  <NewsArticleCard key={(article as NewsArticle).id} article={article as NewsArticle} />
+                {articles.articles.map((article: FeedArticle) => (
+                  <NewsArticleCard key={article.id} article={article} />
                 ))}
               </div>
 
@@ -270,7 +270,7 @@ export function HomePageTabs({ showScrollTop = false, onScrollTop }: HomePageTab
                         setPage(p => Math.min(totalPages, p + 1));
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      disabled={!articles.has_more && page >= Math.ceil(articles.total / articlesPerPage)}
+                      disabled={!articles.hasMore && page >= Math.ceil(articles.total / articlesPerPage)}
                       className="w-full sm:w-auto"
                     >
                       Next →

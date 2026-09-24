@@ -66,9 +66,6 @@ app.use((req, res, next) => {
 // Serve uploaded files statically
 app.use('/uploads', express.static('public/uploads'));
 
-// Serve AI-generated news images
-app.use('/news-images', express.static('public/news-images'));
-
 // Serve static assets (GeoJSON files, etc.)
 app.use('/assets', express.static('public/assets'));
 

@@ -13,7 +13,7 @@ import { ArticleImportanceService } from '../services/articleImportanceService';
 import { EventDeduplicationService } from '../services/eventDeduplicationService';
 import { generateQuestionForArticle } from '../voting';
 import { TDExtractionService } from '../services/tdExtractionService';
-import { type Article, type ArticleSource, supabaseArticleSource } from './articleSource';
+import { type Article, type ArticleSource, articleSource } from './articleSource';
 import { applyIdeologyToProfile, applyPanelResult, convertToArticleAnalysis, runPanel } from './panel';
 import { recalculateAll } from './recalculate';
 import * as repo from './repository';
@@ -63,7 +63,7 @@ function emptyStats(): PipelineStats {
 type Importance = Awaited<ReturnType<typeof ArticleImportanceService.scoreArticleImportance>>;
 
 export async function runPipeline(options: PipelineOptions = {}): Promise<PipelineStats> {
-  const source = options.source ?? supabaseArticleSource;
+  const source = options.source ?? articleSource;
   const batchSize = options.batchSize ?? 50;
   const topPercentile = options.topPercentile ?? 25;
   const minImportanceScore = options.minImportanceScore ?? 40;
@@ -149,7 +149,7 @@ export async function runPipeline(options: PipelineOptions = {}): Promise<Pipeli
 }
 
 /** Score a single article by id, bypassing triage and dedup. For manual runs. */
-export async function scoreArticleById(articleId: number, source: ArticleSource = supabaseArticleSource): Promise<PipelineStats> {
+export async function scoreArticleById(articleId: number, source: ArticleSource = articleSource): Promise<PipelineStats> {
   const article = await source.fetchById(articleId);
   if (!article) throw new Error(`Article not found: ${articleId}`);
   const importance = await ArticleImportanceService.scoreArticleImportance({
@@ -169,7 +169,7 @@ export async function scoreArticleById(articleId: number, source: ArticleSource 
 async function ensureFullContent(article: Article, source: ArticleSource): Promise<void> {
   if (article.content.length >= MIN_CONTENT_CHARS || !article.url) return;
   try {
-    const { scrapeArticleContent } = await import('../services/newsScraperService');
+    const { scrapeArticleContent } = await import('../news/content');
     const full = await scrapeArticleContent(article.url);
     if (full && full.length > 200) {
       article.content = full;
@@ -283,8 +283,8 @@ async function scoreTd(article: Article, { td, score }: repo.TdWithScore, import
         source: article.source ?? 'Unknown',
         publishedAt: article.publishedDate,
         url: article.url,
-        imageUrl: null,
-        summary: null,
+        imageUrl: article.imageUrl,
+        summary: article.summary,
       });
     } catch (error) {
       console.warn(`Policy question for article ${article.id} failed:`, error instanceof Error ? error.message : error);
