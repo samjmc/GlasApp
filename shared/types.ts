@@ -72,25 +72,6 @@ export interface ContributionData {
 }
 
 /**
- * News article with scoring data.
- */
-export interface NewsArticleWithScores {
-  id: string;
-  title: string;
-  content: string;
-  published_date: string;
-  visible: boolean;
-  article_td_scores?: Array<{ impact_score: string | number }>;
-  policy_vote_opportunities?: PolicyVoteOpportunity[];
-  news_sources?: { logo_url: string };
-  totalTDImpact?: number;
-  policyVotes?: PolicyVoteOpportunity[];
-  policyVoteOpportunity?: PolicyVoteOpportunity | null;
-  hasPolicyOpportunity?: boolean;
-  hasAnyImpact?: boolean;
-}
-
-/**
  * Policy voting opportunity.
  */
 export interface PolicyVoteOpportunity {

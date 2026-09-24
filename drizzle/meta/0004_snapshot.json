@@ -1,6 +1,6 @@
 {
-  "id": "13beb031-aab0-4c22-9d13-6c94fe9b632a",
-  "prevId": "28634516-b43e-4eb6-89e2-1ac540c02d98",
+  "id": "c1d277d3-d099-4e1a-8382-0c4cbbb9a381",
+  "prevId": "13beb031-aab0-4c22-9d13-6c94fe9b632a",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -1539,6 +1539,414 @@
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.ideology_profiles": {
+      "name": "ideology_profiles",
+      "schema": "politics",
+      "columns": {
+        "subject_kind": {
+          "name": "subject_kind",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "economic": {
+          "name": "economic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "social": {
+          "name": "social",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cultural": {
+          "name": "cultural",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "authority": {
+          "name": "authority",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environmental": {
+          "name": "environmental",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "welfare": {
+          "name": "welfare",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "globalism": {
+          "name": "globalism",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "technocratic": {
+          "name": "technocratic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_weight": {
+          "name": "total_weight",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "evidence_count": {
+          "name": "evidence_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "computed_at": {
+          "name": "computed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "ideology_profiles_subject_kind_subject_id_pk": {
+          "name": "ideology_profiles_subject_kind_subject_id_pk",
+          "columns": [
+            "subject_kind",
+            "subject_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ideology_profiles_subject_chk": {
+          "name": "ideology_profiles_subject_chk",
+          "value": "\"politics\".\"ideology_profiles\".\"subject_kind\" in ('user', 'td', 'party')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "politics.quiz_results": {
+      "name": "quiz_results",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "answers": {
+          "name": "answers",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "economic": {
+          "name": "economic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "social": {
+          "name": "social",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cultural": {
+          "name": "cultural",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "authority": {
+          "name": "authority",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environmental": {
+          "name": "environmental",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "welfare": {
+          "name": "welfare",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "globalism": {
+          "name": "globalism",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "technocratic": {
+          "name": "technocratic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ideology": {
+          "name": "ideology",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "quiz_results_user_created_idx": {
+          "name": "quiz_results_user_created_idx",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.td_ideology_evidence": {
+      "name": "td_ideology_evidence",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "td_id": {
+          "name": "td_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_ref": {
+          "name": "source_ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "policy_topic": {
+          "name": "policy_topic",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "economic": {
+          "name": "economic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "social": {
+          "name": "social",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cultural": {
+          "name": "cultural",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "authority": {
+          "name": "authority",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "environmental": {
+          "name": "environmental",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "welfare": {
+          "name": "welfare",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "globalism": {
+          "name": "globalism",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "technocratic": {
+          "name": "technocratic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "weight": {
+          "name": "weight",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "observed_at": {
+          "name": "observed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "td_ideology_evidence_source_idx": {
+          "name": "td_ideology_evidence_source_idx",
+          "columns": [
+            {
+              "expression": "td_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "source",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "source_ref",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "td_ideology_evidence_td_idx": {
+          "name": "td_ideology_evidence_td_idx",
+          "columns": [
+            {
+              "expression": "td_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "observed_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "td_ideology_evidence_td_id_tds_id_fk": {
+          "name": "td_ideology_evidence_td_id_tds_id_fk",
+          "tableFrom": "td_ideology_evidence",
+          "tableTo": "tds",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "td_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "td_ideology_evidence_source_chk": {
+          "name": "td_ideology_evidence_source_chk",
+          "value": "\"politics\".\"td_ideology_evidence\".\"source\" in ('article', 'debate')"
+        },
+        "td_ideology_evidence_weight_chk": {
+          "name": "td_ideology_evidence_weight_chk",
+          "value": "\"politics\".\"td_ideology_evidence\".\"weight\" > 0"
+        }
+      },
       "isRLSEnabled": false
     },
     "politics.daily_session_items": {

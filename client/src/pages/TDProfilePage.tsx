@@ -12,6 +12,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
 import { PageHeader } from "@/components/PageHeader";
+import { queryKeys } from '@/lib/queryKeys';
+import type { FeedArticle } from '@/lib/news';
 import {
   TrendingUp,
   TrendingDown,
@@ -246,12 +248,12 @@ export default function TDProfilePageEnhanced() {
 
   // Fetch recent news articles for this TD
   const { data: newsArticles } = useQuery({
-    queryKey: ['td-news-v2', name],  // v2 to bust cache after adding sourceLogoUrl
+    queryKey: queryKeys.td.news(name || ''),
     queryFn: async () => {
       const res = await fetch(`/api/news-feed/td/${encodeURIComponent(name || '')}`);
-      if (!res.ok) return [];
-      const data = await res.json();
-      return data.articles || [];
+      if (!res.ok) return [] as FeedArticle[];
+      const json = await res.json();
+      return (json.data?.articles ?? []) as FeedArticle[];
     },
     enabled: !!name,
     staleTime: 300000  // 5 minutes
@@ -599,7 +601,7 @@ export default function TDProfilePageEnhanced() {
             
             {newsArticles && newsArticles.length > 0 ? (
               <div className="space-y-3">
-                {newsArticles.slice(0, 3).map((article: unknown, idx: number) => (
+                {newsArticles.slice(0, 3).map((article: FeedArticle, idx: number) => (
                   <a
                     key={idx}
                     href={article.url}
@@ -613,23 +615,23 @@ export default function TDProfilePageEnhanced() {
                         <h3 className="font-semibold text-sm text-gray-900 dark:text-white mb-1 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 line-clamp-2">
                           {article.title}
                         </h3>
-                        {article.ai_summary && (
+                        {article.summary && (
                           <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-relaxed">
-                            {article.ai_summary}
+                            {article.summary}
                           </p>
                         )}
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                           <span className="font-medium">{article.source}</span>
                           <span>•</span>
-                          <span>{new Date(article.published_date).toLocaleDateString('en-IE', { month: 'short', day: 'numeric' })}</span>
+                          <span>{new Date(article.publishedAt).toLocaleDateString('en-IE', { month: 'short', day: 'numeric' })}</span>
                           {article.sentiment && (
                             <>
                               <span>•</span>
-                              <Badge 
-                                variant="outline" 
+                              <Badge
+                                variant="outline"
                                 className={`text-xs px-1 py-0 ${
-                                  article.sentiment === 'positive' || article.sentiment === 'very_positive' 
-                                    ? 'border-green-400 text-green-700' 
+                                  article.sentiment === 'positive' || article.sentiment === 'very_positive'
+                                    ? 'border-green-400 text-green-700'
                                     : article.sentiment === 'negative' || article.sentiment === 'very_negative'
                                     ? 'border-red-400 text-red-700'
                                     : 'border-gray-400 text-gray-700'
