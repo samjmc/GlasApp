@@ -3,7 +3,7 @@ import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import { storage } from '../storage';
 import { insertPoliticalEvolutionSchema } from '@shared/schema';
-import { callChatCompletion } from '../services/aiService';
+import { callChatCompletion, isLLMConfigured } from '../services/aiService';
 
 const router = Router();
 
@@ -234,8 +234,7 @@ router.post('/analysis', requireAuth, async (req: Request, res: Response) => {
       });
     }
 
-    // Check if OpenAI API key is available
-    if (!process.env.OPENAI_API_KEY) {
+    if (!isLLMConfigured()) {
       return res.status(503).json({
         success: false,
         message: "AI analysis service is currently unavailable"

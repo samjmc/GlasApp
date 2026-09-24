@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PolicyVotePrompt } from './PolicyVotePrompt';
+import { ArticleImage } from './news/ArticleImage';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ThumbsUp,
@@ -17,7 +18,7 @@ import {
   ChevronDown,
   ArrowLeft,
 } from 'lucide-react';
-import type { FeedArticle } from '@/lib/news';
+import { humanizeCategory, type FeedArticle } from '@/lib/news';
 
 // Format date to relative time (e.g., "2 hours ago")
 function formatTimeAgo(dateString: string): string {
@@ -70,15 +71,14 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
     <Card className="mx-auto w-full max-w-[380px] overflow-hidden transition-shadow hover:shadow-lg sm:max-w-none relative min-h-[400px] h-auto flex flex-col border-0 group">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
-        {article.imageUrl ? (
-          <img 
-            src={article.imageUrl} 
-            alt="" 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800" />
-        )}
+        <ArticleImage
+          src={article.imageUrl}
+          alt=""
+          source={article.source}
+          sourceLogoUrl={article.sourceLogoUrl}
+          category={article.category}
+          className="absolute inset-0 aspect-auto h-full w-full rounded-none transition-transform duration-700 group-hover:scale-105"
+        />
         {/* Overlay - Dark enough for white text (75% black opacity) */}
         <div className="absolute inset-0 bg-black/75" />
       </div>
@@ -114,7 +114,12 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
                   )}
                   <span className="text-[10px] sm:text-xs font-semibold text-white shadow-black/50 drop-shadow-sm truncate">{article.source}</span>
                   <span className="text-[10px] sm:text-xs text-gray-300 flex-shrink-0">• {formatTimeAgo(article.publishedAt)}</span>
-                  
+                  {article.category && (
+                    <Badge variant="outline" className="text-[9px] sm:text-[10px] h-4 sm:h-5 font-normal text-gray-200 border-white/20 bg-white/5 flex-shrink-0">
+                      {humanizeCategory(article.category)}
+                    </Badge>
+                  )}
+
                   {article.storyType && (
                     <Badge variant="outline" className="ml-auto text-[9px] sm:text-[10px] h-4 sm:h-5 font-normal capitalize text-gray-200 border-white/20 bg-white/5 flex-shrink-0">
                       {article.storyType.replace('_', ' ')}
@@ -134,7 +139,7 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
                     <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-purple-300">AI Summary</span>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-100 leading-relaxed">
-                    {article.summary}
+                    {article.aiSummary ?? article.summary}
                   </p>
                 </div>
 

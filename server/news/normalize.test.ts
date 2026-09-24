@@ -9,7 +9,10 @@ const item = (over: Partial<RawItem> = {}): RawItem => ({
   published: '2026-09-22T09:00:00Z',
   snippet: 'The plan covers 50,000 homes.',
   bodyHtml: undefined,
-  imageUrl: 'https://img.rte.ie/a.jpg?w=800&amp;h=450',
+  images: [
+    { url: 'https://www.rte.ie/images/0024dfb0-800.jpg', width: 800, origin: 'feed' },
+    { url: 'https://img.rte.ie/thumb.jpg', width: 200, origin: 'feed' },
+  ],
   ...over,
 });
 
@@ -57,10 +60,21 @@ describe('normalizeItem', () => {
         title: 'Minister announces housing plan',
         summary: 'The plan covers 50,000 homes.',
         content: 'The plan covers 50,000 homes.',
-        imageUrl: 'https://img.rte.ie/a.jpg?w=800&h=450',
+        // RTÉ's -800 is upgraded to the -1600 its own page uses; the original stays as a fallback.
+        imageUrl: 'https://www.rte.ie/images/0024dfb0-1600.jpg',
+        images: [
+          { url: 'https://www.rte.ie/images/0024dfb0-1600.jpg', width: 1600, origin: 'feed' },
+          { url: 'https://www.rte.ie/images/0024dfb0-800.jpg', width: 800, origin: 'feed' },
+          { url: 'https://img.rte.ie/thumb.jpg', width: 200, origin: 'feed' },
+        ],
         publishedAt: new Date('2026-09-22T09:00:00Z'),
       },
     });
+  });
+
+  it('has no picture when the feed offers none', () => {
+    const r = normalizeItem(item({ images: [] }), NOW);
+    expect(r.ok && [r.article.imageUrl, r.article.images]).toEqual([null, []]);
   });
 
   it('prefers the full body for content when the feed has one', () => {

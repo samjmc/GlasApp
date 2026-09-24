@@ -21,6 +21,8 @@ export function feedArticle(row: repo.FeedRow, policyVote: PolicyQuestion | null
     id: row.id,
     title: row.title,
     summary: row.summary,
+    aiSummary: row.aiSummary,
+    category: row.category,
     url: row.url,
     source: row.source,
     sourceLogoUrl: row.sourceLogoUrl,
