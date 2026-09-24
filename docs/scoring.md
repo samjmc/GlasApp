@@ -22,7 +22,7 @@ The **overall 0–100** is a weighted mean of three pillars, computed by the rol
 |---|---|---|
 | news | 0.45 | `eloToPercent(overall_elo)` |
 | parliamentary | 0.30 | questions vs 200 benchmark (60%) + attendance vs 95% (40%) |
-| debate | 0.25 | debate subsystem's running performance score |
+| debate | 0.25 | Dáil debate sections spoken in per sitting day, vs the 75th percentile of TDs |
 
 A pillar with no data is left out and the others renormalise; a TD with no debate record is
 scored on the other two, not dragged toward 50. National, party and constituency ranks and
@@ -42,11 +42,12 @@ scores, history and article verdicts cascade from `tds.id`, so removing a row wh
 leaves the Dáil would erase their record. An empty roster from the API changes nothing, so a
 failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and unit-tested.
 
-Parliamentary inputs (question counts, attendance) are filled by
-`server/jobs/parliamentaryDataUpdateJob.ts`, which runs weekly. It uses real division
-attendance (votes cast / divisions held); the activity feed's `estimatedAttendance` is a
-proxy — debate count over an assumed 100 sitting days — and is deliberately not used. When
-attendance cannot be measured it stays NULL and the pillar falls back to questions alone.
+Parliamentary and debate inputs are filled by `npm run parliament:sync` (`server/parliament/`,
+daily at 04:00 from the scheduler), which also runs the roster sync first. Attendance is Dáil
+divisions voted in / divisions held **inside the TD's own membership window**; questions are
+the ones the TD asked; debate participation excludes speeches made from the chair. The Ceann
+Comhairle does not vote and gets NULL, not 0. Anything that cannot be measured stays NULL and
+its pillar drops out. See `docs/plans/parliament-rebuild.md` for the API facts behind this.
 
 ## The pipeline
 
@@ -127,8 +128,8 @@ deprecated.
 
 ## Not in this module
 
-- **Debate scoring** (`td_debate_metrics`, `td_debate_running_scores`, `/api/debates`) is its own
-  subsystem; the rollup reads its running score through `debateInputs.ts`.
+- **Parliament data** (divisions, debates, questions, attendance) is `server/parliament/`; the
+  rollup reads its participation scores through `debateInputs.ts`.
 - **News ingestion** (`news_articles`, the scraper, triage) is its own subsystem; the pipeline
-  reads it through `articleSource.ts`. Both adapters still use the legacy REST client and are the
-  seams those rebuilds replace.
+  reads it through `articleSource.ts`, which still uses the legacy REST client and is the seam
+  that rebuild replaces.

@@ -92,7 +92,11 @@ export function planTdSync(existing: ExistingTd[], seeds: TdSeed[]): TdSyncPlan 
   return plan;
 }
 
-/** The Oireachtas serves a portrait per member code at a fixed path. */
+/**
+ * The Oireachtas serves a portrait per member code on its data host. Measured 2026-09-24:
+ * `/image/large` (~20 kB) and `/image/thumb` work; `/image/small` is 403, and the older
+ * `www.oireachtas.ie/en/members/member/<code>/image/` path is 404 for every member.
+ */
 export function memberImageUrl(memberCode: string): string {
-  return `https://www.oireachtas.ie/en/members/member/${encodeURIComponent(memberCode)}/image/`;
+  return `https://data.oireachtas.ie/ie/oireachtas/member/id/${encodeURIComponent(memberCode)}/image/large`;
 }

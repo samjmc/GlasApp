@@ -4,23 +4,23 @@
  * Unit tests cover the maths; nothing else executes a query, so a broken `onConflict`
  * target, a bad `nulls last` clause or a wrong transaction shape would ship silently.
  *
- * Skipped unless TEST_DATABASE_URL points at a database this test may DROP AND RECREATE
- * the `politics` schema in:
+ * Skipped unless TEST_DATABASE_URL is set. Uses its OWN database, `<db>_scoring`, because
+ * every integration test drops and recreates `politics` and vitest runs files in
+ * parallel (see server/testing/migrations.ts):
  *
  *   docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
  *   npx vitest run server/scoring/repository.integration.test.ts
  */
-import fs from 'node:fs';
-import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
-const TEST_DATABASE_URL = process.env.TEST_DATABASE_URL;
-const run = describe.skipIf(!TEST_DATABASE_URL);
+const url = testDatabaseUrl('scoring');
+const run = describe.skipIf(!url);
 
 // server/db.ts throws at import without this; point it at the test database.
-if (TEST_DATABASE_URL) {
-  process.env.DATABASE_URL = TEST_DATABASE_URL;
+if (url) {
+  process.env.DATABASE_URL = url;
   process.env.SUPABASE_URL ??= 'http://localhost:54321';
   process.env.SUPABASE_ANON_KEY ??= 'anon';
   process.env.SUPABASE_SERVICE_ROLE_KEY ??= 'service';
@@ -31,17 +31,9 @@ run('repository against Postgres', () => {
   let dbmod: typeof import('../db');
 
   beforeAll(async () => {
+    await ensureDatabase(url!);
     dbmod = await import('../db');
-    const migration = fs.readFileSync(
-      path.resolve(__dirname, '..', '..', 'drizzle', '0000_politics_scoring.sql'),
-      'utf8',
-    );
-    await dbmod.pool.query('drop schema if exists politics cascade');
-    // drizzle-kit separates statements with a marker; Postgres wants them one at a time.
-    for (const statement of migration.split('--> statement-breakpoint')) {
-      const sql = statement.trim();
-      if (sql) await dbmod.pool.query(sql);
-    }
+    await applyAllMigrations(dbmod.pool);
     repo = await import('./repository');
   }, 60_000);
 
@@ -187,13 +179,19 @@ run('repository against Postgres', () => {
     expect(movers[0].td.name).toBe('Mary Lou McDonald');
   });
 
-  it('party scores are replaced wholesale', async () => {
+  it('party scores come only from scored members, and are replaced wholesale', async () => {
     const { computePartyScores } = await import('./party');
     const inputs = await repo.rollupInputs(new Map());
-    await repo.replacePartyScores(computePartyScores(inputs));
-    expect((await repo.listPartyScores()).map((p) => p.party)).toEqual(['Sinn Féin', 'Fine Gael']);
+    // rollupInputs carries each TD's story count from td_scores.
+    expect(inputs.find((i) => i.party === 'Sinn Féin')!.newsStories).toBeGreaterThan(0);
+    expect(inputs.find((i) => i.party === 'Fine Gael')!.newsStories).toBe(0);
 
-    await repo.replacePartyScores(computePartyScores(inputs.filter((i) => i.party === 'Fine Gael')));
+    // Simon Harris (Fine Gael) has never been scored, so his party gets no aggregate
+    // rather than a baseline 50.
+    await repo.replacePartyScores(computePartyScores(inputs));
+    expect((await repo.listPartyScores()).map((p) => p.party)).toEqual(['Sinn Féin']);
+
+    await repo.replacePartyScores([{ party: 'Fine Gael', memberCount: 1, avgElo: 1550, overallScore: 55 }]);
     const only = await repo.listPartyScores();
     expect(only).toHaveLength(1);
     expect(only[0].party).toBe('Fine Gael');

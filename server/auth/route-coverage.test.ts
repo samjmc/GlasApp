@@ -24,8 +24,6 @@ const PUBLIC_WRITES: Array<{ file: string; path: string; why: string }> = [
   { file: '../routes.ts', path: '/api/quiz-results', why: 'anonymous visitors can take the quiz' },
   { file: '../routes.ts', path: '/api/multidimensional-quiz-results', why: 'anonymous visitors can take the quiz' },
   { file: 'chatRoutes.ts', path: '/', why: 'public assistant; rate limited' },
-  { file: 'politicianChatRoutes.ts', path: '/politician', why: 'public assistant; rate limited' },
-  { file: 'politicianChatRoutes.ts', path: '/feedback', why: 'feedback on a public answer' },
   { file: 'ai/analysis.ts', path: '/complete-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'ai/analysis.ts', path: '/context-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'ai/analysis.ts', path: '/explanation', why: 'public quiz analysis; rate limited' },

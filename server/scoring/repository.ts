@@ -265,6 +265,7 @@ export async function rollupInputs(
     party: td.party,
     constituency: td.constituency,
     overallElo: score?.overallElo ?? baselineRatings().overall,
+    newsStories: score?.totalStories ?? 0,
     questions:
       td.questionCountOral === null && td.questionCountWritten === null
         ? null

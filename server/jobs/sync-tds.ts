@@ -6,26 +6,19 @@
  * Run this before the first scoring pass: the pipeline resolves TDs by name, so an
  * empty table means every article scores nobody. Safe to re-run — it upserts, and it
  * deactivates rather than deletes, so a TD who loses a seat keeps their record.
+ * `npm run parliament:sync` does this too, as its first step.
  */
-import { getCurrentDailMembers } from '../services/oireachtasAPIService';
+import { OireachtasClient, rosterToSeeds } from '../parliament';
 import { repository as repo } from '../scoring';
-import { memberImageUrl, type TdSeed } from '../scoring/tdSync';
 import { shutdown } from '../db';
 
 async function main(): Promise<void> {
-  const members = await getCurrentDailMembers();
+  const members = await new OireachtasClient().roster();
   if (members.length === 0) {
     throw new Error('The Oireachtas API returned no members; refusing to change the roster.');
   }
 
-  const seeds: TdSeed[] = members.map((m) => ({
-    name: m.fullName.trim(),
-    party: m.party,
-    constituency: m.constituency,
-    memberCode: m.memberCode,
-    imageUrl: memberImageUrl(m.memberCode),
-  }));
-
+  const seeds = rosterToSeeds(members);
   const result = await repo.syncTds(seeds);
   console.log(
     `Roster: ${members.length} members. Inserted ${result.inserted}, updated ${result.updated}, deactivated ${result.deactivated}.`,
