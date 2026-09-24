@@ -14,20 +14,11 @@ import type {
   DailySessionCompletion,
   DailySessionState,
 } from "@/services/dailySessionService";
-import { SliderVoteControl } from "@/components/votes/SliderVoteControl";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
 import { Loader2, Send, SkipForward } from "lucide-react";
 
 type Step = "prompt" | "vote" | "payoff" | "streakShare";
 type VoteSubStep = "preview" | "question";
-
-const ratingLabels: Record<number, string> = {
-  1: "Strongly oppose",
-  2: "Oppose",
-  3: "Neutral",
-  4: "Support",
-  5: "Strongly support",
-};
 
 const voteCardVariants = {
   hidden: { opacity: 0, y: 24, scale: 0.98 },
@@ -87,51 +78,14 @@ function buildPromptCopy(item: DailySessionItem): string {
 }
 
 function buildContextNote(item: DailySessionItem): string | null {
-  if (item.contextNote) return item.contextNote;
-  const dimension = mapDimensionLabel(item.policyDimension);
-  const direction = item.policyDirection
-    ? item.policyDirection === "progressive"
-      ? "pushes the policy forward"
-      : item.policyDirection === "conservative"
-      ? "rolls the policy back"
-      : "keeps the policy balanced"
-    : "adjusts this policy";
-  return `${dimension} update: this proposal ${direction}.`;
+  return item.contextNote || null;
 }
 
-function getCelebrationPayload(rating: number, item: DailySessionItem): CelebrationPayload {
-  if (rating >= 5) {
-    return {
-      emoji: "🔥",
-      headline: "Big energy!",
-      subline: `You went all-in on ${mapDimensionLabel(item.policyDimension).toLowerCase()}.`,
-    };
-  }
-  if (rating === 4) {
-    return {
-      emoji: "✨",
-      headline: "Strong support logged",
-      subline: `We’ll factor this into your personal rankings instantly.`,
-    };
-  }
-  if (rating === 3) {
-    return {
-      emoji: "🧭",
-      headline: "Neutral check-in saved",
-      subline: "Keeping your stance steady still boosts your streak.",
-    };
-  }
-  if (rating === 2) {
-    return {
-      emoji: "⚠️",
-      headline: "Not convinced",
-      subline: "We’ll flag this for your TD comparisons.",
-    };
-  }
+function celebrationFor(item: DailySessionItem): CelebrationPayload {
   return {
-    emoji: "🚫",
-    headline: "Hard pass recorded",
-    subline: "Your opposition informs your ideological shift for tomorrow.",
+    emoji: "🧭",
+    headline: "Answer saved",
+    subline: `This shapes your ${mapDimensionLabel(item.policyDimension).toLowerCase()} profile.`,
   };
 }
 
@@ -141,7 +95,6 @@ export default function DailySessionPage() {
   const [step, setStep] = useState<Step>("prompt");
   const [voteSubStep, setVoteSubStep] = useState<VoteSubStep>("preview");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [pendingRating, setPendingRating] = useState<number | null>(null);
   const [pendingOption, setPendingOption] = useState<string | null>(null);
   const [localSummary, setLocalSummary] =
     useState<DailySessionCompletion | null>(null);
@@ -151,7 +104,6 @@ export default function DailySessionPage() {
   const [isDevSkipping, setIsDevSkipping] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioUnlockedRef = useRef(false);
-  const lastSliderBeepValueRef = useRef<number | null>(null);
   const [localVotesCompleted, setLocalVotesCompleted] = useState(0);
 
   const sessionQuery = useDailySession(isAuthenticated);
@@ -407,7 +359,6 @@ export default function DailySessionPage() {
   }, [session]);
 
   useEffect(() => {
-    lastSliderBeepValueRef.current = null;
     setVoteSubStep("preview"); // Reset to preview when moving to a new item
   }, [currentIndex, step]);
 
@@ -416,8 +367,6 @@ export default function DailySessionPage() {
     return session.items[currentIndex];
   }, [session, currentIndex]);
 
-  const currentValue = pendingRating ?? currentItem?.rating ?? 3;
-  const currentSelectedOption = pendingOption ?? currentItem?.selectedOption ?? null;
   const totalItems = session?.items.length ?? 0;
   const votesCompleted = session?.status === "completed"
     ? totalItems
@@ -468,36 +417,18 @@ export default function DailySessionPage() {
     completionSummary?.streakCount ?? session?.streakCount ?? 0;
   const previousStreakCount = Math.max(0, currentStreakCount - 1);
 
-  const handleSliderValueChange = useCallback(
-    (newValue: number) => {
-      setPendingRating(newValue);
-      if (lastSliderBeepValueRef.current !== newValue) {
-        playSliderBeep();
-        lastSliderBeepValueRef.current = newValue;
-      }
-    },
-    [playSliderBeep, setPendingRating]
-  );
-
   const handleStart = () => {
     playStartSound();
     setStep("vote");
     setCurrentIndex(0);
     setCelebration(null);
-    const first = session?.items[0];
-    setPendingRating(first?.rating ?? null);
-    setPendingOption(first?.selectedOption ?? null);
+    setPendingOption(session?.items[0]?.selectedOption ?? null);
     playCardTransitionSound();
   };
 
   const handleVoteNext = async () => {
-    // For multiple choice: require option selection
-    // For slider: require rating
-    const hasAnswer = currentItem?.answerOptions 
-      ? pendingOption !== null 
-      : pendingRating !== null;
-    
-    if (!currentItem || !hasAnswer || isAdvancing) return;
+    if (!currentItem || pendingOption === null || isAdvancing) return;
+    const optionKey = pendingOption;
     setIsAdvancing(true);
     playAdvanceSound();
 
@@ -507,18 +438,10 @@ export default function DailySessionPage() {
       let attempt = 0;
       while (attempt < 2) {
         try {
-          // For multiple choice: send optionKey, for slider: send rating
-          if (currentItem.answerOptions && pendingOption) {
-            updatedSession = await voteMutation.mutateAsync({
-              sessionItemId: currentItem.sessionItemId,
-              optionKey: pendingOption,
-            });
-          } else {
-            updatedSession = await voteMutation.mutateAsync({
-              sessionItemId: currentItem.sessionItemId,
-              rating: pendingRating ?? undefined,
-            });
-          }
+          updatedSession = await voteMutation.mutateAsync({
+            sessionItemId: currentItem.sessionItemId,
+            optionKey,
+          });
           break;
         } catch (mutationError: unknown) {
           const message = (mutationError as { message?: string } | null)?.message || "";
@@ -538,9 +461,7 @@ export default function DailySessionPage() {
         throw new Error("Vote request failed");
       }
 
-      // For multiple choice, use a neutral celebration (or map option to rating)
-      const celebrationRating = currentItem.answerOptions ? 3 : pendingRating;
-      setCelebration(getCelebrationPayload(celebrationRating ?? 3, currentItem));
+      setCelebration(celebrationFor(currentItem));
     } catch (error: unknown) {
       setIsAdvancing(false);
       toast({
@@ -567,7 +488,6 @@ export default function DailySessionPage() {
     }
 
     setTimeout(async () => {
-      setPendingRating(null);
       setPendingOption(null);
       setCelebration(null);
       setIsAdvancing(false);
@@ -666,9 +586,7 @@ export default function DailySessionPage() {
 
   const isVotePending =
     step === "vote" &&
-    (!currentItem || 
-     (currentItem?.answerOptions ? pendingOption === null : pendingRating === null) || 
-     isProcessing);
+    (!currentItem || pendingOption === null || isProcessing);
 
   const handleDevSkipSession = useCallback(async () => {
     if (!isDevMode || !session || session.items.length === 0) {
@@ -679,15 +597,16 @@ export default function DailySessionPage() {
       setIsDevSkipping(true);
       setIsCompletionPending(true);
       setIsAdvancing(true);
-      setPendingRating(null);
       setCelebration(null);
 
+      // Dev only: answer each remaining question with its first option.
       let latestSession = session;
       for (const item of session.items) {
-        if (item.hasVoted) continue;
+        const firstOption = Object.keys(item.answerOptions)[0];
+        if (item.hasVoted || !firstOption) continue;
         latestSession = await voteMutation.mutateAsync({
           sessionItemId: item.sessionItemId,
-          rating: 3,
+          optionKey: firstOption,
         });
       }
 
@@ -781,8 +700,6 @@ export default function DailySessionPage() {
                       item={currentItem}
                       totalItems={totalItems}
                       currentIndex={currentIndex}
-                      value={currentValue}
-                      setValue={handleSliderValueChange}
                       onNext={handleVoteNext}
                       isNextDisabled={isVotePending}
                       isProcessing={isProcessing}
@@ -791,8 +708,7 @@ export default function DailySessionPage() {
                       isDevMode={isDevMode}
                       pendingOption={pendingOption}
                       setPendingOption={setPendingOption}
-                      pendingRating={pendingRating}
-                      playSliderBeep={playSliderBeep}
+                      playSelectSound={playSliderBeep}
                       onBack={() => setVoteSubStep("preview")}
                     />
                   )
@@ -964,7 +880,7 @@ function ArticlePreviewScreen({
         variants={voteItemVariants}
         custom={animationIndex++}
       >
-        <span>{item.emoji ?? "📰"}</span>
+        <span>📰</span>
         <span>Issue {currentIndex + 1} of {totalItems}</span>
       </motion.div>
 
@@ -1048,8 +964,6 @@ interface VoteScreenProps {
   item: DailySessionItem;
   totalItems: number;
   currentIndex: number;
-  value: number;
-  setValue: (value: number) => void;
   onNext: () => void;
   isNextDisabled: boolean;
   isProcessing: boolean;
@@ -1058,8 +972,7 @@ interface VoteScreenProps {
   isDevMode?: boolean;
   pendingOption: string | null;
   setPendingOption: (option: string | null) => void;
-  pendingRating: number | null;
-  playSliderBeep: () => void;
+  playSelectSound: () => void;
   onBack?: () => void;
 }
 
@@ -1067,8 +980,6 @@ function VoteScreen({
   item,
   totalItems,
   currentIndex,
-  value,
-  setValue,
   onNext,
   isNextDisabled,
   isProcessing,
@@ -1077,8 +988,7 @@ function VoteScreen({
   isDevMode,
   pendingOption,
   setPendingOption,
-  pendingRating,
-  playSliderBeep,
+  playSelectSound,
   onBack,
 }: VoteScreenProps) {
   const promptCopy = buildPromptCopy(item);
@@ -1132,7 +1042,7 @@ function VoteScreen({
           variants={voteItemVariants}
           custom={animationIndex++}
         >
-          <span>{item.emoji ?? "🗳️"}</span>
+          <span>🗳️</span>
           <span>Issue {currentIndex + 1} of {totalItems}</span>
         </motion.div>
       </div>
@@ -1143,7 +1053,7 @@ function VoteScreen({
         custom={animationIndex++}
       >
         <div className="flex items-start gap-2">
-          <span className="text-xl flex-shrink-0">{item.emoji ?? "💡"}</span>
+          <span className="text-xl flex-shrink-0">💡</span>
           <div className="space-y-1 min-w-0 flex-1">
             <p className="text-[10px] font-semibold text-emerald-200 uppercase tracking-wide">
               {mapDimensionLabel(item.policyDimension)} stance check
@@ -1155,47 +1065,21 @@ function VoteScreen({
         </div>
       </motion.div>
 
-      {/* Show multiple choice if answerOptions exist, otherwise show slider */}
-      {item.answerOptions && Object.keys(item.answerOptions).length > 0 ? (
-        <motion.div
-          className="flex flex-col gap-2 border border-slate-800 bg-black/40 p-3 rounded-lg w-full min-w-0 flex-1 overflow-y-auto"
-          variants={voteItemVariants}
-          custom={animationIndex++}
-        >
-          <MultipleChoiceVoteControl
-            options={item.answerOptions}
-            selectedOption={pendingOption ?? item.selectedOption ?? null}
-            onSelect={(optionKey) => {
-              setPendingOption(optionKey);
-              playSliderBeep();
-            }}
-            disabled={isProcessing}
-          />
-        </motion.div>
-      ) : (
-        <motion.div
-          className="flex flex-col gap-2 border border-slate-800 bg-black/40 p-3 rounded-lg"
-          variants={voteItemVariants}
-          custom={animationIndex++}
-        >
-          <motion.div
-            key={value}
-            initial={{ scale: 0.97, opacity: 0.8 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 220, damping: 20 }}
-          >
-            <SliderVoteControl
-              value={value}
-              onValueChange={(newValue) => setValue(newValue)}
-              disabled={isProcessing}
-            />
-          </motion.div>
-          <div className="text-center text-xs font-semibold text-emerald-200">
-            {ratingLabels[value as keyof typeof ratingLabels] ||
-              "Select your stance"}
-          </div>
-        </motion.div>
-      )}
+      <motion.div
+        className="flex flex-col gap-2 border border-slate-800 bg-black/40 p-3 rounded-lg w-full min-w-0 flex-1 overflow-y-auto"
+        variants={voteItemVariants}
+        custom={animationIndex++}
+      >
+        <MultipleChoiceVoteControl
+          options={item.answerOptions}
+          selectedOption={pendingOption ?? item.selectedOption ?? null}
+          onSelect={(optionKey) => {
+            setPendingOption(optionKey);
+            playSelectSound();
+          }}
+          disabled={isProcessing}
+        />
+      </motion.div>
 
       <motion.div
         className="mt-auto pt-2"
@@ -1204,7 +1088,7 @@ function VoteScreen({
       >
         <Button
           onClick={onNext}
-          disabled={isNextDisabled || (item.answerOptions ? pendingOption === null : pendingRating === null)}
+          disabled={isNextDisabled || pendingOption === null}
           className="w-full bg-emerald-500 text-emerald-950 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 py-5 text-base font-semibold"
         >
           {currentIndex + 1 === totalItems ? "Reveal my insights" : "Next issue"}
@@ -1301,9 +1185,7 @@ function PayoffScreen({ summary, onNext, isCompleting }: PayoffScreenProps) {
     }
     return axisLabel;
   };
-  const regionalLine =
-    summary.regionComparison ??
-    "Regional shift unavailable — add your county or constituency to unlock this insight.";
+  const regionalLine = summary.regionSummary;
 
   return (
     <motion.div

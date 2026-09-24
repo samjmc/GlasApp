@@ -93,22 +93,29 @@ export class OireachtasClient {
     }
   }
 
-  /** The Dáil sitting days in a range, each with its Akoma Ntoso transcript URL. */
-  async debateDays(from: string, to: string): Promise<Array<{ date: string; xmlUri: string }>> {
-    const body = await this.get<{ results?: Array<{ debateRecord?: RawDebateRecord }> }>('/debates', {
-      chamber_type: 'house',
-      chamber: 'dail',
-      date_start: from,
-      date_end: to,
-      limit: 1000,
-    });
-    const days: Array<{ date: string; xmlUri: string }> = [];
-    for (const r of body.results ?? []) {
-      const date = r.debateRecord?.date;
-      const xmlUri = r.debateRecord?.formats?.xml?.uri;
-      if (date && xmlUri) days.push({ date, xmlUri });
+  /**
+   * The Dáil sitting days in a range, each with its Akoma Ntoso transcript URL. A day can
+   * be listed before its transcript is published; its `xmlUri` is then NULL.
+   */
+  async debateDays(from: string, to: string): Promise<Array<{ date: string; xmlUri: string | null }>> {
+    const days: Array<{ date: string; xmlUri: string | null }> = [];
+    const limit = 1000;
+    for (let skip = 0; ; skip += limit) {
+      const body = await this.get<{ results?: Array<{ debateRecord?: RawDebateRecord }> }>('/debates', {
+        chamber_type: 'house',
+        chamber: 'dail',
+        date_start: from,
+        date_end: to,
+        limit,
+        skip,
+      });
+      const page = body.results ?? [];
+      for (const r of page) {
+        const date = r.debateRecord?.date;
+        if (date) days.push({ date, xmlUri: r.debateRecord?.formats?.xml?.uri ?? null });
+      }
+      if (page.length < limit) return days;
     }
-    return days;
   }
 
   /** The transcript for one sitting day, as XML text. */

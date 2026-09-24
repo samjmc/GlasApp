@@ -8,7 +8,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
-import { PolicyVoting } from './PolicyVoting';
 import { PolicyVotePrompt, type PolicyVoteData } from './PolicyVotePrompt';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 

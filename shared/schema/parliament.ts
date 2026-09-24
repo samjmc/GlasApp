@@ -7,7 +7,7 @@
  * are kept on every row, so votes and speeches by someone not (yet) in `tds` are stored
  * and linked by `td_id` on the next roster sync instead of being dropped.
  */
-import { boolean, date, index, integer, primaryKey, smallint, text, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { boolean, date, index, integer, jsonb, primaryKey, smallint, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
 
 /** How a member voted in a division. Absence is the lack of a row, not a value. */
@@ -135,6 +135,12 @@ export const parliamentSyncState = politics.table('parliament_sync_state', {
   throughDate: date('through_date'),
   lastRunAt: timestamp('last_run_at', { withTimezone: true }).notNull().defaultNow(),
   lastResult: text('last_result'),
+  /**
+   * Days that could not be ingested → failed attempts so far. Retried each run until
+   * MAX_DAY_ATTEMPTS, then left here for a person to look at. A bad day never blocks the
+   * days after it.
+   */
+  failures: jsonb('failures').$type<Record<string, number>>().notNull().default({}),
 });
 
 export type DivisionRow = typeof divisions.$inferSelect;

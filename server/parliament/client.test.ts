@@ -45,7 +45,11 @@ describe('OireachtasClient', () => {
       { status: 200, body: { results: [{ debateRecord: { date: '2025-06-25', formats: { xml: { uri: 'x.xml' } } } }, { debateRecord: { date: '2025-06-26', formats: { xml: null } } }] } },
     ]);
     expect(await client.divisions('2024-11-29', '2025-06-30')).toHaveLength(1001);
-    expect(await client.debateDays('2025-06-25', '2025-06-26')).toEqual([{ date: '2025-06-25', xmlUri: 'x.xml' }]);
+    // A day listed before its transcript exists is kept, with no URL, so the sync can retry it.
+    expect(await client.debateDays('2025-06-25', '2025-06-26')).toEqual([
+      { date: '2025-06-25', xmlUri: 'x.xml' },
+      { date: '2025-06-26', xmlUri: null },
+    ]);
     for (const url of urls) {
       expect(params(url).get('chamber_type')).toBe('house');
       expect(params(url).get('chamber')).toBe('dail');

@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
 import { PageHeader } from "@/components/PageHeader";
 import { queryKeys } from '@/lib/queryKeys';
+import { formatIsoDate } from '@/lib/isoDate';
 import type { TdParliamentSummary, TdVote, TdDebateContribution, DivisionVote } from '@shared/parliamentApi';
 import {
   TrendingUp,
@@ -160,7 +161,7 @@ export default function TDProfilePageEnhanced() {
   });
   const parliamentSummary = parliamentSummaryResp?.data;
 
-  const { data: tdVotesResp, isLoading: tdVotesLoading } = useQuery({
+  const { data: tdVotesResp, isLoading: tdVotesLoading, isError: tdVotesError } = useQuery({
     queryKey: queryKeys.parliament.tdVotes(tdId ?? 0, 20, votesAgainstPartyOnly),
     queryFn: () =>
       getParliament<TdVote[]>(
@@ -171,7 +172,7 @@ export default function TDProfilePageEnhanced() {
   });
   const tdVotes = tdVotesResp?.data ?? [];
 
-  const { data: tdDebatesResp, isLoading: tdDebatesLoading } = useQuery({
+  const { data: tdDebatesResp, isLoading: tdDebatesLoading, isError: tdDebatesError } = useQuery({
     queryKey: queryKeys.parliament.tdDebates(tdId ?? 0, 10),
     queryFn: () => getParliament<TdDebateContribution[]>(`/api/parliament/tds/${tdId}/debates?limit=10`),
     enabled: !!tdId,
@@ -786,6 +787,8 @@ export default function TDProfilePageEnhanced() {
 
             {tdVotesLoading ? (
               <div className="text-center py-6 text-gray-500 text-sm">Loading votes...</div>
+            ) : tdVotesError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load votes. Try again later.</p>
             ) : tdVotes.length === 0 ? (
               <p className="text-sm text-gray-600 dark:text-gray-400">No votes recorded yet.</p>
             ) : (
@@ -802,7 +805,7 @@ export default function TDProfilePageEnhanced() {
                         </h4>
                         <div className="text-[10px] text-gray-400 mt-2 flex items-center gap-2">
                           <Calendar className="w-3 h-3" />
-                          {new Date(vote.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
+                          {formatIsoDate(vote.date)}
                           {vote.withParty === false && (
                             <span className="text-orange-600 dark:text-orange-400">Against party</span>
                           )}
@@ -839,6 +842,8 @@ export default function TDProfilePageEnhanced() {
                 <div className="h-4 w-1/3 rounded bg-gray-200 dark:bg-gray-700" />
                 <div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-700" />
               </div>
+            ) : tdDebatesError ? (
+              <p className="text-sm text-red-600 dark:text-red-400">Could not load debate contributions. Try again later.</p>
             ) : tdDebateContributions.length === 0 ? (
               <p className="text-sm text-gray-600 dark:text-gray-400">No debate contributions recorded for this period.</p>
             ) : (
@@ -849,7 +854,7 @@ export default function TDProfilePageEnhanced() {
                     className="rounded-lg border border-gray-200 dark:border-gray-700 p-3"
                   >
                     <div className="flex items-center justify-between gap-3 text-xs text-gray-500 dark:text-gray-400">
-                      <span>{new Date(contribution.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                      <span>{formatIsoDate(contribution.date)}</span>
                       <span>{contribution.speeches} speech{contribution.speeches === 1 ? '' : 'es'} · {contribution.words.toLocaleString()} words</span>
                     </div>
                     <h4 className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">{contribution.title}</h4>

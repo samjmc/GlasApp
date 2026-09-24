@@ -49,6 +49,11 @@ API facts the client must respect (all measured):
   through `TLCPerson@href` to the member code; `speech@as` carries the role.
 - Member codes contain non-ASCII (`Seán-Canney.D.2016-10-03`): URL-encode, and test it.
 - `/questions?member_id=` counts questions ASKED by the member (Simon Harris: 0).
+- **Chair speeches:** acting chairs carry `speech@as` ("An Cathaoirleach Gníomhach"), but the
+  Ceann Comhairle and Leas-Cheann Comhairle carry NO `as` at all; the only mark is the
+  `<from>` label ("An Ceann Comhairle"). Found on the first live run, where it let the
+  Leas-Cheann Comhairle top the participation table (9,335 chair speeches, not 2,392).
+- A sitting day can be listed before its transcript is published (`formats.xml` null).
 
 Scoring inputs, all measured, NULL when unknown (never 0):
 - **attendance** = Dáil divisions the TD voted in / Dáil divisions held inside their own
@@ -70,18 +75,23 @@ Speech text: stored (`debate_speeches.text`), since the ideology rebuild and any
 Ask TD both need it and re-downloading ~110 MB of XML to get it back is the worse trade.
 
 Scheduling: one entry in `server/services/scheduler.ts`, daily 04:00 Europe/Dublin,
-incremental from `parliament_sync_state`. Named query for the pledges session:
+incremental from `parliament_sync_state` (re-reads a 14-day overlap). A day that fails, or
+is listed without a transcript, goes in `parliament_sync_state.failures` and is retried on
+the next 10 runs; it never blocks the days after it. `--since` never moves the resume point
+past days it did not fetch. A failed question fetch keeps the last good counts. Named query for the pledges session:
 `parliament.votesOf(tdId, { divisionId? })` → "TD voted X on division Y".
 
 ## Deleted
 
-Server: `services/oireachtasAPIService`, `jobs/{dailyDebateUpdate,dailyVoteFetcher,
-parliamentaryDataUpdateJob,processDebateSummaries,processDebateEmbeddings,extractPoliticianStances}`,
-`routes/{debatesRoutes,debateWorkspaceRoutes,debateMonitoringRoutes}`,
-`routes/admin/{debateAdminRoutes,parliamentaryRoutes}`, `routes/parliamentary/activity.ts`
-(its one `router.use('/activity')` line in `parliamentary/index.ts`; `voting` stays),
-`data/parliamentary-activity.json`, `data/party-parliamentary-activity.json`,
-the `parliamentaryActivity` table in `shared/schema.ts`.
+Server: `services/{oireachtasAPIService,politicianAgent}`, `jobs/{dailyDebateUpdate,dailyVoteFetcher,
+parliamentaryDataUpdateJob,processDebateSummaries,processDebateEmbeddings,extractPoliticianStances,
+reviewNegativeFeedback}`, `routes/{debatesRoutes,debateWorkspaceRoutes,debateMonitoringRoutes,
+politicianChatRoutes}`, `routes/admin/{debateAdminRoutes,parliamentaryRoutes}`, and the whole
+`routes/parliamentary/` folder (the voting rebuild removed `voting.ts`, this one `activity.ts`,
+so `/api/parliamentary` had nothing left), `data/parliamentary-activity.json`,
+`data/party-parliamentary-activity.json`, the `parliamentaryActivity` table in `shared/schema.ts`.
+Ask TD (decision 3A): the page, its chat routes and `politicianAgent`; the general `/api/chat`
+assistant's `compare_positions` tool went with it (it read `policy_positions`).
 
 Scripts: every parliament ingestion, derivation, repair and debug script under `scripts/`
 (about 70). npm: the 12 `debates:*` scripts and `fetch-votes` → one `parliament:sync`.
@@ -120,13 +130,19 @@ on `/api/parliament`. TD profile parliament panel repointed (it has `id` from
 - `policyStanceHarvester`, `policyOpportunityService`: news / policy-vote pipeline.
 - `server/scoring/weights.ts`: see the ministers decision below; not changed here.
 
-## Open decisions
+## Decisions (Sam, 2026-09-22)
 
-1. Debate pillar: measured participation (above) vs rebuilding the LLM "debate win" score.
-2. Ask TD (bottom nav): delete now with `politicianChatRoutes`, `politicianAgent`,
-   embeddings and stances, vs port it onto the new tables in this PR.
-3. Ministers ask 0 questions, and questions are 60% of the parliamentary pillar, so every
-   minister scores low there. That is a `weights.ts` change, so it is written down for you,
-   not made here.
+1. Delete at the scale above: yes.
+2. Debate pillar: measured participation, not the LLM "debate win" score.
+3. Ask TD: deleted now; rebuild later on `politics.debate_speeches` / `division_votes`.
+
+## Still open
+
+- Ministers ask 0 questions, and questions are 60% of the parliamentary pillar, so every
+  minister scores low there. That is a `server/scoring/weights.ts` change; not made here.
+- Measured attendance is low for party leaders (live: Taoiseach 44%, Tánaiste 32.5%,
+  Mary Lou McDonald 39.5%; median TD 90.6%). This is what the Official Report records, but
+  whether "attendance at divisions" is fair to leaders is a scoring decision. (Tellers are
+  in the lobby lists — checked on vote_91, all four — so they are not the cause.)
 </content>
 </invoke>

@@ -17,9 +17,10 @@ import { OireachtasClient, type RosterMember } from './client';
 import { attendancePct } from './metrics';
 import { parseDivision, parseTranscript, type ParsedDivision } from './parse';
 import * as repo from './repository';
+import { isoDate, resumePoint, startDate } from './window';
 
-/** Days re-read before the resume point. Transcripts can appear a week or more late. */
-export const OVERLAP_DAYS = 14;
+/** Runs a failing sitting day is retried for before it is left for a person to look at. */
+export const MAX_DAY_ATTEMPTS = 10;
 /** Politeness gap between per-TD and per-day requests. */
 const REQUEST_GAP_MS = 250;
 
@@ -34,7 +35,8 @@ export interface SyncOptions {
 export interface SyncSummary {
   roster: { members: number; inserted: number; updated: number; deactivated: number };
   divisions: { from: string; to: string; ingested: number };
-  debates: { from: string; to: string; days: number; failedDay: string | null; sections: number; speeches: number };
+  /** `failedDays`: days that failed in THIS run (the stored map has every open failure). */
+  debates: { from: string; to: string; days: number; failedDays: string[]; sections: number; speeches: number };
   statsRows: number;
   questionsFetched: number;
   scoringRowsWritten: number;
@@ -50,21 +52,6 @@ export function rosterToSeeds(members: RosterMember[]): TdSeed[] {
   }));
 }
 
-const isoDate = (d: Date) => d.toISOString().slice(0, 10);
-
-export function addDays(date: string, days: number): string {
-  const d = new Date(`${date}T00:00:00Z`);
-  d.setUTCDate(d.getUTCDate() + days);
-  return isoDate(d);
-}
-
-/** Where a feed starts: an explicit `since`, else the resume point minus the overlap, else the Dáil's first day. */
-export function startDate(since: string | undefined, throughDate: string | null, dailStart: string): string {
-  if (since) return since;
-  if (!throughDate) return dailStart;
-  const resume = addDays(throughDate, -OVERLAP_DAYS);
-  return resume < dailStart ? dailStart : resume;
-}
 
 const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -102,36 +89,48 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   const tdIds = await repo.tdIdsByMemberCode();
 
   // 2. Divisions: few enough (≈400 a term) to fetch the window in one go.
-  const divFrom = startDate(options.since, await repo.getSyncState('divisions'), dailStart);
+  const divState = await repo.getSyncState('divisions');
+  const divFrom = startDate(options.since, divState.throughDate, dailStart);
   const parsed = (await client.divisions(divFrom, today)).map(parseDivision).filter((d): d is ParsedDivision => d !== null);
   await repo.upsertDivisions(parsed, tdIds);
-  await repo.setSyncState('divisions', today, `${parsed.length} divisions ${divFrom}..${today}`);
+  await repo.setSyncState('divisions', resumePoint(options.since, divState.throughDate, dailStart, today), `${parsed.length} divisions ${divFrom}..${today}`);
   log(`Divisions: ${parsed.length} (${divFrom}..${today}).`);
 
-  // 3. Debates, oldest day first; stop at the first failure so the resume point never skips a day.
-  const debFrom = startDate(options.since, await repo.getSyncState('debates'), dailStart);
-  const days = (await client.debateDays(debFrom, today)).sort((a, b) => a.date.localeCompare(b.date));
-  let throughDate: string | null = null;
-  let failedDay: string | null = null;
+  // 3. Debates, one transcript per sitting day. A day that fails (or is listed before its
+  //    transcript exists) is recorded and retried on later runs; it never blocks the others.
+  const debState = await repo.getSyncState('debates');
+  const debFrom = startDate(options.since, debState.throughDate, dailStart);
+  const failures = { ...debState.failures };
+  const days = await client.debateDays(debFrom, today);
+  for (const [date, attempts] of Object.entries(failures)) {
+    if (date < debFrom && attempts < MAX_DAY_ATTEMPTS) days.push(...(await client.debateDays(date, date)));
+  }
+  days.sort((a, b) => a.date.localeCompare(b.date));
+
+  const failedDays: string[] = [];
   let sections = 0;
   let speeches = 0;
   for (const day of days) {
     try {
+      if (!day.xmlUri) throw new Error('listed, but no transcript published yet');
       const transcript = parseTranscript(await client.transcript(day.xmlUri), day.date);
       await repo.replaceDebateDay(day.date, transcript.sections, transcript.speeches, tdIds);
       sections += transcript.sections.length;
       speeches += transcript.speeches.length;
-      throughDate = day.date;
+      delete failures[day.date];
     } catch (error) {
-      failedDay = day.date;
-      log(`Debates: ${day.date} failed (${error instanceof Error ? error.message : String(error)}); resuming there next run.`);
-      break;
+      failures[day.date] = (failures[day.date] ?? 0) + 1;
+      failedDays.push(day.date);
+      log(`Debates: ${day.date} failed, attempt ${failures[day.date]} of ${MAX_DAY_ATTEMPTS} (${error instanceof Error ? error.message : String(error)}).`);
     }
     await pause(REQUEST_GAP_MS);
   }
-  // No failure: everything up to today is in, including days with no sitting.
-  const debatesThrough = failedDay ? (throughDate ?? null) : today;
-  await repo.setSyncState('debates', debatesThrough, failedDay ? `failed on ${failedDay}` : `${days.length} days ${debFrom}..${today}`);
+  await repo.setSyncState(
+    'debates',
+    resumePoint(options.since, debState.throughDate, dailStart, today),
+    `${days.length} days ${debFrom}..${today}${failedDays.length ? `, ${failedDays.length} failed` : ''}`,
+    failures,
+  );
   log(`Debates: ${days.length} sitting days, ${sections} sections, ${speeches} speeches.`);
 
   // 4–5. Link and count.
@@ -139,13 +138,19 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   const windows = new Map(roster.map((m) => [m.memberCode, { memberSince: m.memberSince, isPresiding: m.isPresiding }]));
   const statsRows = await repo.recomputeStats(windows);
 
-  // 6. Questions, then the scoring inputs. A failed count stays NULL; it never reads as 0.
-  const questions = new Map<string, { oral: number; written: number }>();
+  // 6. Questions, then the scoring inputs. A failed fetch keeps the last good counts
+  //    (NULL if there never were any); it never reads as 0.
+  const stored = await repo.storedQuestionCounts();
+  const questions = new Map<string, { oral: number | null; written: number | null }>();
+  let questionsFetched = 0;
   for (const m of roster) {
     try {
       questions.set(m.memberCode, await client.questionCounts(m.memberCode, m.memberSince, today));
+      questionsFetched++;
     } catch (error) {
-      log(`Questions: ${m.memberCode} failed (${error instanceof Error ? error.message : String(error)}).`);
+      const last = stored.get(m.memberCode);
+      if (last) questions.set(m.memberCode, last);
+      log(`Questions: ${m.memberCode} failed (${error instanceof Error ? error.message : String(error)}); keeping the last counts.`);
     }
     await pause(REQUEST_GAP_MS);
   }
@@ -169,9 +174,9 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   return {
     roster: { members: roster.length, ...rosterResult },
     divisions: { from: divFrom, to: today, ingested: parsed.length },
-    debates: { from: debFrom, to: today, days: days.length, failedDay, sections, speeches },
+    debates: { from: debFrom, to: today, days: days.length, failedDays, sections, speeches },
     statsRows,
-    questionsFetched: questions.size,
+    questionsFetched,
     scoringRowsWritten: written,
   };
 }

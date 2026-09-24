@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { apiClient } from "@/lib/queryClient";
 import { queryKeys } from "@/lib/queryKeys";
+import { formatIsoDate } from "@/lib/isoDate";
 import { PageHeader } from "@/components/PageHeader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -27,16 +28,7 @@ async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
 
 const PAGE_SIZE = 20;
 
-const formatDate = (value: string | null) => {
-  if (!value) return "—";
-  try {
-    return new Intl.DateTimeFormat("en-IE", { year: "numeric", month: "short", day: "numeric" }).format(
-      new Date(value)
-    );
-  } catch {
-    return value;
-  }
-};
+const formatDate = (value: string | null) => formatIsoDate(value);
 
 const formatPct = (value: number | null) => (value === null ? "—" : `${value.toFixed(1)}%`);
 const formatNum = (value: number | null) => (value === null ? "—" : value.toLocaleString());
@@ -116,7 +108,7 @@ function DivisionsSection() {
     queryFn: () => getParliament<DivisionSummary[]>(`/api/parliament/divisions?limit=${PAGE_SIZE}&offset=${offset}`),
   });
 
-  const { data: detailResp, isLoading: detailLoading } = useQuery({
+  const { data: detailResp, isLoading: detailLoading, isError: detailError } = useQuery({
     queryKey: queryKeys.parliament.division(expandedId ?? ""),
     queryFn: () => getParliament<DivisionDetail>(`/api/parliament/divisions/${encodeURIComponent(expandedId!)}`),
     enabled: !!expandedId,
@@ -197,6 +189,8 @@ function DivisionsSection() {
                             </tbody>
                           </table>
                         </div>
+                      ) : detailError ? (
+                        <ErrorDisplay variant="inline" title="Failed to load this division" />
                       ) : (
                         <p className="text-sm text-gray-500 dark:text-gray-400">No detail available.</p>
                       )}
@@ -228,7 +222,7 @@ function DebatesSection() {
     queryFn: () => getParliament<DebateSectionSummary[]>(`/api/parliament/debates?limit=${PAGE_SIZE}&offset=${offset}`),
   });
 
-  const { data: detailResp, isLoading: detailLoading } = useQuery({
+  const { data: detailResp, isLoading: detailLoading, isError: detailError } = useQuery({
     queryKey: queryKeys.parliament.debate(expandedId ?? ""),
     queryFn: () => getParliament<DebateSectionDetail>(`/api/parliament/debates/${encodeURIComponent(expandedId!)}`),
     enabled: !!expandedId,
@@ -296,6 +290,8 @@ function DebatesSection() {
                             </li>
                           ))}
                         </ul>
+                      ) : detailError ? (
+                        <ErrorDisplay variant="inline" title="Failed to load this debate" />
                       ) : (
                         <p className="text-sm text-gray-500 dark:text-gray-400">No speaker detail available.</p>
                       )}
@@ -335,24 +331,12 @@ function LeaderboardSection() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Leaderboards</h2>
         <div className="flex gap-2">
-          {order === "desc" ? (
-            <Button variant="default" size="sm" onClick={() => setOrder("asc")}>
-              Top
-            </Button>
-          ) : (
-            <Button variant="outline" size="sm" onClick={() => setOrder("asc")}>
-              Top
-            </Button>
-          )}
-          {order === "asc" ? (
-            <Button variant="default" size="sm" onClick={() => setOrder("desc")}>
-              Bottom
-            </Button>
-          ) : (
-            <Button variant="outline" size="sm" onClick={() => setOrder("desc")}>
-              Bottom
-            </Button>
-          )}
+          <Button variant={order === "desc" ? "default" : "outline"} size="sm" onClick={() => setOrder("desc")}>
+            Top
+          </Button>
+          <Button variant={order === "asc" ? "default" : "outline"} size="sm" onClick={() => setOrder("asc")}>
+            Bottom
+          </Button>
         </div>
       </div>
       <div className="mt-3 flex gap-2">
@@ -460,12 +444,14 @@ const DebatesPage = () => {
     queryFn: () => getParliament<ParliamentStatus>("/api/parliament/status"),
   });
 
-  const throughDate = useMemo(() => {
-    const dates = (statusResp?.data.feeds ?? [])
-      .map((feed) => feed.throughDate)
-      .filter((d): d is string => !!d)
-      .sort();
-    return dates.length ? dates[dates.length - 1] : null;
+  // Complete only as far as the LEAST advanced data feed; the roster feed is always today.
+  const { throughDate, pendingDays } = useMemo(() => {
+    const feeds = (statusResp?.data.feeds ?? []).filter((f) => f.feed === "divisions" || f.feed === "debates");
+    const dates = feeds.map((f) => f.throughDate);
+    return {
+      throughDate: dates.length === 2 && dates.every(Boolean) ? (dates as string[]).sort()[0] : null,
+      pendingDays: feeds.reduce((n, f) => n + Object.keys(f.failures ?? {}).length, 0),
+    };
   }, [statusResp]);
 
   return (
@@ -482,6 +468,7 @@ const DebatesPage = () => {
         right={
           <span className="text-xs text-gray-500 dark:text-gray-400">
             {throughDate ? `Data through ${formatDate(throughDate)}` : ""}
+            {pendingDays > 0 ? ` · ${pendingDays} sitting day${pendingDays === 1 ? "" : "s"} not yet loaded` : ""}
           </span>
         }
       />

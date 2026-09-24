@@ -36,6 +36,9 @@ import {
 } from './metrics';
 import type { ParsedDivision, ParsedSpeech } from './parse';
 
+/** The byParty group for voters who are not in `tds`. */
+export const NOT_IN_ROSTER = 'Not in current roster';
+
 /** Postgres caps a statement at 65,535 parameters; rows × columns stays well under it. */
 const INSERT_CHUNK = 500;
 
@@ -155,24 +158,57 @@ export async function allStats(database: Db = db): Promise<TdParliamentStatsRow[
   return database.select().from(tdParliamentStats);
 }
 
-export async function getSyncState(feed: string, database: Db = db): Promise<string | null> {
-  const [row] = await database.select().from(parliamentSyncState).where(eq(parliamentSyncState.feed, feed));
-  return row?.throughDate ?? null;
+export interface FeedState {
+  throughDate: string | null;
+  failures: Record<string, number>;
 }
 
-export async function setSyncState(feed: string, throughDate: string | null, lastResult: string, database: Db = db): Promise<void> {
+export async function getSyncState(feed: string, database: Db = db): Promise<FeedState> {
+  const [row] = await database.select().from(parliamentSyncState).where(eq(parliamentSyncState.feed, feed));
+  return { throughDate: row?.throughDate ?? null, failures: row?.failures ?? {} };
+}
+
+/** Record a run. A NULL `throughDate` keeps the stored one; `failures` replaces the stored map when given. */
+export async function setSyncState(
+  feed: string,
+  throughDate: string | null,
+  lastResult: string,
+  failures?: Record<string, number>,
+  database: Db = db,
+): Promise<void> {
+  const now = new Date();
   await database
     .insert(parliamentSyncState)
-    .values({ feed, throughDate, lastResult, lastRunAt: new Date() })
+    .values({ feed, throughDate, lastResult, lastRunAt: now, failures: failures ?? {} })
     .onConflictDoUpdate({
       target: parliamentSyncState.feed,
-      set: { throughDate: sql`coalesce(excluded.through_date, ${parliamentSyncState.throughDate})`, lastResult, lastRunAt: new Date() },
+      set: {
+        throughDate: sql`coalesce(excluded.through_date, ${parliamentSyncState.throughDate})`,
+        lastResult,
+        lastRunAt: now,
+        ...(failures ? { failures } : {}),
+      },
     });
 }
 
 export async function syncStatus(database: Db = db) {
   const rows = await database.select().from(parliamentSyncState).orderBy(asc(parliamentSyncState.feed));
-  return rows.map((r) => ({ feed: r.feed, throughDate: r.throughDate, lastRunAt: r.lastRunAt.toISOString(), lastResult: r.lastResult }));
+  return rows.map((r) => ({
+    feed: r.feed,
+    throughDate: r.throughDate,
+    lastRunAt: r.lastRunAt.toISOString(),
+    lastResult: r.lastResult,
+    failures: r.failures,
+  }));
+}
+
+/** member code → stored question counts, so a failed fetch can keep the last good values. */
+export async function storedQuestionCounts(database: Db = db): Promise<Map<string, { oral: number | null; written: number | null }>> {
+  const rows = await database
+    .select({ code: tds.memberCode, oral: tds.questionCountOral, written: tds.questionCountWritten })
+    .from(tds)
+    .where(isNotNull(tds.memberCode));
+  return new Map(rows.map((r) => [r.code as string, { oral: r.oral, written: r.written }]));
 }
 
 // ---------------------------------------------------------------------------
@@ -300,7 +336,8 @@ export async function divisionDetail(id: string, database: Db = db): Promise<Div
 
   const byParty = new Map<string, { party: string; ta: number; nil: number; staon: number }>();
   for (const v of votes) {
-    const party = v.party ?? INDEPENDENT;
+    // A voter not in `tds` (e.g. a TD who has since left) is not an Independent.
+    const party = v.tdId === null ? NOT_IN_ROSTER : (v.party ?? INDEPENDENT);
     const row = byParty.get(party) ?? { party, ta: 0, nil: 0, staon: 0 };
     row[v.vote]++;
     byParty.set(party, row);
@@ -320,8 +357,10 @@ export async function listDebates(limit: number, offset: number, database: Db = 
         date: debateSections.date,
         title: debateSections.title,
         speechCount: debateSections.speechCount,
+        // Qualified by hand: Drizzle renders a column inside select-list SQL unqualified, and a
+        // bare "id" here resolves to the subquery's own table and always counts 0.
         speakerCount: sql<number>`(select count(distinct p.member_code)::int from politics.debate_speeches p
-                                   where p.section_id = ${debateSections.id} and not p.is_presiding)`,
+                                   where p.section_id = "debate_sections"."id" and not p.is_presiding)`,
       })
       .from(debateSections)
       .orderBy(desc(debateSections.date), desc(debateSections.speechCount), asc(debateSections.id))

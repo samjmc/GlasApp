@@ -23,7 +23,6 @@ import electionRoutes from "./routes/electionRoutes";
 import politicalRoutes from "./routes/political";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
-import parliamentaryRoutes from "./routes/parliamentary";
 import newsFeedRoutes from "./routes/newsFeedRoutes";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
@@ -34,7 +33,7 @@ import { PersonalRankingsService } from "./services/personalRankingsService.js";
 import scoresRoutes from "./routes/scores";
 import userRankingsRoutes from "./routes/user/rankings/index.js";
 import ideologyTimelineRoutes from "./routes/ideologyTimelineRoutesEnhanced";
-import dailySessionRoutes from "./routes/dailySessionRoutes";
+import { dailySessionRouter, votesRouter } from "./voting/routes";
 import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
 
@@ -98,10 +97,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Dáil divisions, debates and each TD's parliament record
   app.use("/api/parliament", parliamentRoutes);
-
-  // Policy voting analysis
-  app.use("/api/parliamentary", parliamentaryRoutes);
-  app.use("/api/policy-votes", parliamentaryRoutes);
   
   // Register ideas routes for community solutions
   app.use("/api/ideas", ideasRoutes);
@@ -115,11 +110,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register user rankings routes (consolidated - personal rankings, policy voting, category rankings)
   app.use("/api/user/rankings", userRankingsRoutes);
   // Legacy routes for backward compatibility
-  app.use("/api/policy-votes", userRankingsRoutes);
   app.use("/api/personal", userRankingsRoutes);
   app.use("/api/category-ranking", userRankingsRoutes);
 
-  app.use("/api/daily-session", dailySessionRoutes);
+  // Voting: the daily session and the policy question on each article
+  app.use("/api/daily-session", dailySessionRouter);
+  app.use("/api/votes", votesRouter);
 
   // Register cache management routes for monitoring and clearing cache
   app.use("/api/cache", requireJob, cacheRoutes);

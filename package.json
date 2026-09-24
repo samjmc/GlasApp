@@ -24,7 +24,6 @@
     "generate-summaries": "tsx scripts/generate-td-historical-summaries.ts",
     "generate-summaries:template": "tsx scripts/generate-td-summaries-template.ts",
     "parliament:sync": "tsx server/jobs/parliament-sync.ts",
-    "policy-votes:backfill": "tsx server/scripts/backfillPolicyOpportunities.ts",
     "debate-ideology": "tsx server/jobs/debateIdeologyProcessor.ts",
     "update-debates-and-ideology": "npm run debate-ideology"
   },

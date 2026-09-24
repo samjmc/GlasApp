@@ -51,7 +51,8 @@ CREATE TABLE "politics"."parliament_sync_state" (
 	"feed" varchar(20) PRIMARY KEY NOT NULL,
 	"through_date" date,
 	"last_run_at" timestamp with time zone DEFAULT now() NOT NULL,
-	"last_result" text
+	"last_result" text,
+	"failures" jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "politics"."td_parliament_stats" (

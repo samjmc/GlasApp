@@ -22,6 +22,25 @@ import { ChevronDown, ChevronUp, TrendingUp, Shield, CheckCircle, AlertTriangle,
 import { useQuery } from "@tanstack/react-query";
 import PledgeVotingInterface from '@/components/PledgeVotingInterface';
 import type { TdParliamentSummary, PartyParliamentSummary } from '@shared/parliamentApi';
+import { apiClient } from '@/lib/queryClient';
+import { queryKeys } from '@/lib/queryKeys';
+
+/**
+ * Our Irish party ids → the Oireachtas API's party names. Joined by id, never by name:
+ * the UK list here also has a "Labour Party" and a "Green Party". Parties without a Dáil
+ * record are absent and show no parliament data.
+ */
+const OIREACHTAS_PARTY_NAME: Record<string, string> = {
+  'ie-green': 'Green Party',
+  'ie-sd': 'Social Democrats',
+  'ie-labour': 'Labour Party',
+  'ie-ff': 'Fianna Fáil',
+  'ie-fg': 'Fine Gael',
+  'ie-aontu': 'Aontú',
+  'ie-pbp': 'People Before Profit-Solidarity',
+  'ie-independent-ireland': 'Independent Ireland',
+  'ie-sf': 'Sinn Féin',
+};
 
 interface PledgeAction {
   id: string | number;
@@ -1092,20 +1111,17 @@ const PerformanceTabContent = ({ selectedPartyId }: { selectedPartyId: string })
     enabled: !!partyDbId,
   });
 
-  // Fetch live parliament party summaries and resolve this party by name (the only
-  // clean join available: the Oireachtas has no notion of our synthetic `selectedPartyId`).
-  const { data: parliamentPartiesData, isLoading: parliamentPartiesLoading } = useQuery({
-    queryKey: ['parliament-parties'],
-    queryFn: async (): Promise<PartyParliamentSummary[]> => {
-      const response = await fetch('/api/parliament/parties');
-      if (!response.ok) throw new Error('Failed to fetch parliament parties');
-      const result = await response.json();
-      return result.data ?? [];
-    },
+  // Live Dáil record for this party. Same key and response shape as the Debates page, so
+  // the two share one cache entry.
+  const { data: parliamentPartiesResp, isLoading: parliamentPartiesLoading } = useQuery({
+    queryKey: queryKeys.parliament.parties(),
+    queryFn: () => apiClient.get<{ success: true; data: PartyParliamentSummary[] }>('/api/parliament/parties'),
   });
 
-  const selectedPartyName = politicalParties.find((p) => p.id === selectedPartyId)?.name;
-  const partyActivityData = parliamentPartiesData?.find((p) => p.party === selectedPartyName) ?? null;
+  const oireachtasName = Object.prototype.hasOwnProperty.call(OIREACHTAS_PARTY_NAME, selectedPartyId)
+    ? OIREACHTAS_PARTY_NAME[selectedPartyId]
+    : null;
+  const partyActivityData = oireachtasName ? (parliamentPartiesResp?.data.find((p) => p.party === oireachtasName) ?? null) : null;
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-600';

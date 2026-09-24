@@ -11,7 +11,11 @@ export type { DivisionVote };
 
 /** GET /api/parliament/status */
 export interface ParliamentStatus {
-  feeds: Array<{ feed: string; throughDate: string | null; lastRunAt: string; lastResult: string | null }>;
+  /**
+   * `failures`: days not yet ingested → failed attempts. Data is only complete "through"
+   * the earliest of the divisions and debates feeds' dates, and not for these days.
+   */
+  feeds: Array<{ feed: string; throughDate: string | null; lastRunAt: string; lastResult: string | null; failures: Record<string, number> }>;
 }
 
 /** GET /api/parliament/tds/:id */

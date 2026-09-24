@@ -102,7 +102,7 @@ export function initScheduler() {
   cron.schedule('0 4 * * *', async () => {
     try {
       const s = await runParliamentSync();
-      console.log(`[Scheduler] Parliament sync: ${s.divisions.ingested} divisions, ${s.debates.days} sitting days${s.debates.failedDay ? `, stopped at ${s.debates.failedDay}` : ''}.`);
+      console.log(`[Scheduler] Parliament sync: ${s.divisions.ingested} divisions, ${s.debates.days} sitting days${s.debates.failedDays.length ? `, ${s.debates.failedDays.length} day(s) failed` : ''}.`);
     } catch (error) {
       console.error("[Scheduler] Parliament sync failed:", error instanceof Error ? error.message : error);
     }

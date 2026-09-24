@@ -7,6 +7,7 @@ const url = process.env.DIRECT_URL || process.env.DATABASE_URL || 'postgres://pl
 
 export default defineConfig({
   out: './drizzle',
+  // One file per domain, all in the `politics` schema declared in politics.ts.
   schema: './shared/schema/*.ts',
   dialect: 'postgresql',
   dbCredentials: { url },

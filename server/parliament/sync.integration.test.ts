@@ -58,14 +58,21 @@ function member(memberCode: string, party: string | null, extra: Partial<RosterM
   return { memberCode, fullName: memberCode.split('.')[0].replace(/-/g, ' '), party, constituency: 'Wexford', memberSince: '2024-11-29', isPresiding: false, ...extra };
 }
 
-function fakeClient(roster: RosterMember[]): OireachtasClient {
+interface FakeOptions {
+  days?: Array<{ date: string; xmlUri: string | null }>;
+  failQuestionsFor?: string[];
+}
+
+function fakeClient(roster: RosterMember[], opts: FakeOptions = {}): OireachtasClient {
+  const days = opts.days ?? [{ date: '2025-06-25', xmlUri: 'fixture.xml' }];
+  const failing = new Set([NO_QUESTIONS, ...(opts.failQuestionsFor ?? [])]);
   return {
     roster: async () => roster,
     divisions: async () => divisions(),
-    debateDays: async () => [{ date: '2025-06-25', xmlUri: 'fixture.xml' }],
+    debateDays: async (from: string, to: string) => days.filter((d) => d.date >= from && d.date <= to).map((d) => ({ ...d })),
     transcript: async () => transcript,
     questionCounts: async (code: string) => {
-      if (code === NO_QUESTIONS) throw new Error('API down for this member');
+      if (failing.has(code)) throw new Error('API down for this member');
       return { oral: 15, written: 77 };
     },
   } as unknown as OireachtasClient;
@@ -94,7 +101,7 @@ run('parliament sync against Postgres', () => {
     const s = await parliament.runSync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
     expect(s.roster).toMatchObject({ members: 5, inserted: 5 });
     expect(s.divisions.ingested).toBe(12);
-    expect(s.debates).toMatchObject({ days: 1, sections: 2, speeches: 33, failedDay: null });
+    expect(s.debates).toMatchObject({ days: 1, sections: 2, speeches: 33, failedDays: [] });
     expect(s.statsRows).toBe(5);
     expect(s.questionsFetched).toBe(4);
     const { rows } = await dbmod.pool.query('select count(*)::int n from politics.division_votes');
@@ -138,9 +145,14 @@ run('parliament sync against Postgres', () => {
 
     const debates = await parliament.repository.listDebates(10, 0);
     expect(debates.total).toBe(2);
+    // The list's speaker count must agree with the detail view (it once read 0 for every row).
+    const listed19 = debates.rows.find((r) => r.id === 'dail-2025-06-25-dbsect_19');
+    expect(listed19?.speakerCount).toBeGreaterThan(0);
     const sect19 = await parliament.repository.debateDetail('dail-2025-06-25-dbsect_19');
     expect(sect19?.speechCount).toBe(32);
-    expect(sect19?.speakers.reduce((n, s) => n + s.speeches, 0)).toBe(32);
+    // The Ceann Comhairle's three speeches in this section are from the chair, not debate.
+    expect(sect19?.speakers.reduce((n, s) => n + s.speeches, 0)).toBe(29);
+    expect(sect19?.speakers.some((s) => s.memberCode === 'Verona-Murphy.D.2020-02-08')).toBe(false);
   });
 
   it('ranks the leaderboard over measurable TDs only', async () => {
@@ -175,11 +187,40 @@ run('parliament sync against Postgres', () => {
   });
 
   it('records where each feed got to', async () => {
-    const feeds = (await parliament.repository.syncStatus()).map((f) => [f.feed, f.throughDate]);
+    const feeds = (await parliament.repository.syncStatus()).map((f) => [f.feed, f.throughDate, f.failures]);
     expect(feeds).toEqual([
-      ['debates', '2025-06-30'],
-      ['divisions', '2025-06-30'],
-      ['roster', '2025-06-30'],
+      ['debates', '2025-06-30', {}],
+      ['divisions', '2025-06-30', {}],
+      ['roster', '2025-06-30', {}],
     ]);
+  });
+
+  it('a failed question fetch keeps the last good counts', async () => {
+    await parliament.runSync({ client: fakeClient(roster, { failQuestionsFor: [A] }), today: '2025-06-30', log: () => {} });
+    expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
+  });
+
+  it('records a failed day, keeps going, and retries it on a later run', async () => {
+    const pending = { date: '2025-06-26', xmlUri: null };
+    const first = await parliament.runSync({
+      client: fakeClient(roster, { days: [pending, { date: '2025-06-25', xmlUri: 'fixture.xml' }] }),
+      today: '2025-06-30',
+      log: () => {},
+    });
+    expect(first.debates.failedDays).toEqual(['2025-06-26']);
+    expect(first.debates.speeches).toBe(33);
+    const debates = async () => (await parliament.repository.syncStatus()).find((f) => f.feed === 'debates');
+    expect(await debates()).toMatchObject({ throughDate: '2025-06-30', failures: { '2025-06-26': 1 } });
+
+    // A month on, the day is outside the overlap window; it is retried from the failure map.
+    const later = await parliament.runSync({
+      client: fakeClient(roster, { days: [{ date: '2025-06-26', xmlUri: 'published.xml' }] }),
+      today: '2025-07-30',
+      log: () => {},
+    });
+    expect(later.debates).toMatchObject({ days: 1, failedDays: [] });
+    expect(await debates()).toMatchObject({ throughDate: '2025-07-30', failures: {} });
+    const { rows } = await dbmod.pool.query(`select count(*)::int n from politics.debate_sections where date = '2025-06-26'`);
+    expect(rows[0].n).toBe(2);
   });
 });
