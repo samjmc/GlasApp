@@ -19,23 +19,17 @@ import electionRoutes from "./routes/electionRoutes";
 import politicalRoutes from "./routes/political";
 import ideasRoutes from "./routes/ideasRoutes";
 import problemsRoutes from "./routes/problemsRoutes";
-import parliamentaryRoutes from "./routes/parliamentary";
 import newsRoutes from "./routes/news";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
 import newsAdminRoutes from "./routes/admin/news";
-import parliamentaryAdminRoutes from "./routes/admin/parliamentaryRoutes";
 import baselineAdminRoutes from "./routes/admin/baselineRoutes";
 import scoresRoutes from "./routes/scores";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
 import { pledgesRouter } from "./pledges/routes";
-import debateWorkspaceRoutes from "./routes/debateWorkspaceRoutes";
-import debatesRoutes from "./routes/debatesRoutes";
-import debateMonitoringRoutes from "./routes/debateMonitoringRoutes";
+import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
-import politicianChatRoutes from "./routes/politicianChatRoutes";
 
-import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 import shadowRoutes from "./routes/shadowRoutes";
 
@@ -55,7 +49,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // LLM-backed endpoints are public by design; the limiter caps per-IP cost.
   app.use("/api/ai", aiRateLimit, aiAnalysisRoutes);
   app.use("/api/chat", aiRateLimit, chatRoutes);
-  app.use("/api/chat", aiRateLimit, politicianChatRoutes); // Digital Twin politician chat
   app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
   // Register geographic routes (consolidated - includes constituencies, location, heatmap)
@@ -95,8 +88,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // TD, party and constituency scores
   app.use("/api/scores", scoresRoutes);
 
-  // Parliamentary activity (static Oireachtas data)
-  app.use("/api/parliamentary", parliamentaryRoutes);
+  // Dáil divisions, debates and each TD's parliament record
+  app.use("/api/parliament", parliamentRoutes);
   
   // Register ideas routes for community solutions
   app.use("/api/ideas", ideasRoutes);
@@ -106,9 +99,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Register news feed routes for homepage articles
   app.use("/api/news-feed", newsRoutes);
-  app.use("/api/debate-monitoring", debateMonitoringRoutes);
-  app.use("/api/debate-workspace", debateWorkspaceRoutes);
-  app.use("/api/debates", debatesRoutes);
   
 
   // Voting: the daily session and the policy question on each article
@@ -124,8 +114,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news", requireJob, newsAdminRoutes);
-  app.use("/api/admin/parliamentary", requireJob, parliamentaryAdminRoutes);
-  app.use("/api/admin/debates", requireJob, debateAdminRoutes);
   app.use("/api/admin/baselines", requireJob, baselineAdminRoutes);
   app.use("/api/admin/td-scoring", requireJob, tdScoringAdminRoutes);
 

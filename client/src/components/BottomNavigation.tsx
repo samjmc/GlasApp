@@ -30,7 +30,6 @@ const BottomNavigation = () => {
   const navItems: NavItem[] = [
     { path: "/", label: "Home", icon: "🏠" },
     { path: "/debates", label: "Debates", icon: "🗣️" },
-    { path: "/ask-td", label: "Ask TD", icon: "🤖" },
     { path: "/quiz", label: "Quiz", icon: "🧠" },
     { path: "/my-politics", label: "Profile", icon: "🎯" },
   ];
@@ -54,7 +53,7 @@ const BottomNavigation = () => {
       }}
     >
       <div className="mx-auto w-full max-w-full px-0">
-        <nav className="grid h-14 grid-cols-5 items-center gap-0.5 sm:h-16">
+        <nav className="grid h-14 grid-cols-4 items-center gap-0.5 sm:h-16">
         {navItems.map((item) => (
           <Link
             key={item.path}

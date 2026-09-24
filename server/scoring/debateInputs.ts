@@ -1,22 +1,13 @@
 /**
- * The debate pillar's input. Debate scoring is its own subsystem, not yet rebuilt, and
- * writes `public.td_debate_running_scores` keyed by the TD id. This adapter reads that
- * one column; the debate rebuild replaces the implementation.
+ * The debate pillar's input: how often each TD spoke in Dáil debates, measured from the
+ * Official Report and relative to the 75th percentile of active TDs (see
+ * server/parliament/metrics.ts). TDs who are not measurable — the chair, or a member for
+ * too few sitting days — are absent, so the pillar drops out for them instead of scoring 0.
  */
-import { supabaseDb } from '../db';
+import { allStats } from '../parliament/repository';
+import { debateScores } from '../parliament/metrics';
 
-/** td id → performance score (0–1 or 0–100; the rollup normalises). */
+/** td id → participation as a 0–1 fraction (the rollup normalises). */
 export async function loadDebateScores(): Promise<Map<number, number>> {
-  const scores = new Map<number, number>();
-  if (!supabaseDb) return scores;
-  const { data, error } = await supabaseDb.from('td_debate_running_scores').select('td_id, performance_score');
-  if (error) {
-    console.warn('Debate scores unavailable; scoring without the debate pillar:', error.message);
-    return scores;
-  }
-  for (const row of (data ?? []) as Array<{ td_id: number; performance_score: number | string | null }>) {
-    const v = Number(row.performance_score);
-    if (Number.isFinite(v)) scores.set(row.td_id, v);
-  }
-  return scores;
+  return debateScores(await allStats());
 }

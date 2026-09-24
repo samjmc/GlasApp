@@ -46,10 +46,18 @@ vi.mock('../services/cacheService', () => ({
   cache: { get: vi.fn(async () => null), set: vi.fn(), del: vi.fn(), delete: vi.fn() },
 }));
 
+// The sync trigger must never reach the Oireachtas from a test.
+vi.mock('../parliament/sync', () => ({
+  runSync: vi.fn(async () => ({})),
+  isSyncRunning: vi.fn(() => false),
+  rosterToSeeds: vi.fn(() => []),
+  SyncAlreadyRunning: class extends Error {},
+}));
+
 vi.mock('@shared/schema', () => ({ parties: { name: 'parties', id: 'parties.id' } }));
 
 const partiesRoutes = (await import('../routes/political/parties')).default;
-const debatesRoutes = (await import('../routes/debatesRoutes')).default;
+const parliamentRoutes = (await import('../routes/parliament')).default;
 const { createRateLimit } = await import('./rateLimit');
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -94,7 +102,7 @@ describe('unguarded write surfaces found by the audit now require admin access',
     // The audit's six pledge write routes were deleted with the old pledge router; their
     // replacements in server/pledges/routes.ts are covered by server/pledges/routes.test.ts.
     { name: 'POST /parties/explanations/:partyId', mount: '/api/parties', router: partiesRoutes, method: 'POST', path: '/api/parties/explanations/1', body: { economic: 'x' } },
-    { name: 'POST /debates/alerts/:id/status', mount: '/api/debates', router: debatesRoutes, method: 'POST', path: '/api/debates/alerts/abc/status', body: { status: 'resolved' } },
+    { name: 'POST /parliament/sync', mount: '/api/parliament', router: parliamentRoutes, method: 'POST', path: '/api/parliament/sync' },
   ];
 
   for (const c of cases) {
@@ -190,9 +198,11 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     assert.equal(read('server/routes.ts').includes('req.session'), false);
   });
 
-  it('party explanations and debate alert status writes are admin-only', () => {
+  it('party explanations and the parliament sync trigger are admin-only', () => {
     assert.match(read('server/routes/political/parties.ts'), /router\.post\("\/explanations\/:partyId",\s*requireJob,/);
-    assert.match(read('server/routes/debatesRoutes.ts'), /router\.post\('\/alerts\/:alertId\/status',\s*requireJob,/);
+    assert.match(read('server/routes/parliament.ts'), /router\.post\('\/sync',\s*requireJob,/);
+    // The parliament router's only write is the sync trigger.
+    assert.equal((read('server/routes/parliament.ts').match(/router\.(post|put|patch|delete)\(/g) ?? []).length, 1);
   });
 
   it('LLM mounts are rate limited', () => {

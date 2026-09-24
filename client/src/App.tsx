@@ -34,7 +34,6 @@ import PolicySimulatorPage from "@/pages/PolicySimulatorPage";
 import ConstituencyStatsPage from "@/pages/ConstituencyStatsPage";
 import LocalRepresentativesPage from "@/pages/LocalRepresentativesPage";
 import DebatesPage from "@/pages/DebatesPage";
-import MediaWorkspacePage from "@/pages/MediaWorkspacePage";
 import TDProfilePage from "@/pages/TDProfilePage";
 import PartyProfilePage from "@/pages/PartyProfilePage";
 import ConstituenciesPage from "@/pages/ConstituenciesPage";
@@ -45,7 +44,6 @@ import PollingDashboard from "@/pages/PollingDashboard";
 import AdminPollingEntry from "@/pages/AdminPollingEntry";
 import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
 import MyPoliticsPage from "@/pages/MyPoliticsPage";
-import AskTDPage from "@/pages/AskTDPage";
 
 import QuizPage from "@/pages/QuizPage";
 import QuizResultsPage from "@/pages/QuizResultsPage";
@@ -166,8 +164,6 @@ function Router() {
           <Route path="/td/:name" component={TDProfilePage} />
           <Route path="/party/:name" component={PartyProfilePage} />
           <Route path="/debates" component={DebatesPage} />
-          <Route path="/debates/workspace" component={MediaWorkspacePage} />
-          <Route path="/ask-td" component={AskTDPage} />
           <Route path="/td-leaderboard">
             {() => {
               window.location.href = "/?tab=tds";
@@ -231,8 +227,6 @@ function Router() {
             }}
           </Route>
           <Route path="/debates" component={DebatesPage} />
-          <Route path="/debates/workspace" component={MediaWorkspacePage} />
-          <Route path="/ask-td" component={AskTDPage} />
           <Route path="/researched-tds" component={ResearchedTDsPage} />
           <Route path="/my-politics" component={MyPoliticsPage} />
           <Route path="/td/:name" component={TDProfilePage} />

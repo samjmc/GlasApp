@@ -25,8 +25,6 @@ const PUBLIC_WRITES: Array<{ file: string; path: string; why: string }> = [
   { file: 'quiz.ts', path: '/assistant', why: 'public quiz assistant; rate limited' },
   { file: 'ideology.ts', path: '/matches', why: 'POST only because the position is a body; it computes and writes nothing' },
   { file: 'chatRoutes.ts', path: '/', why: 'public assistant; rate limited' },
-  { file: 'politicianChatRoutes.ts', path: '/politician', why: 'public assistant; rate limited' },
-  { file: 'politicianChatRoutes.ts', path: '/feedback', why: 'feedback on a public answer' },
   { file: 'ai/analysis.ts', path: '/complete-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'ai/analysis.ts', path: '/context-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'storytellingRoutes.ts', path: '/:constituencyName', why: 'public constituency story cache' },

@@ -20,7 +20,7 @@ import { partyDimensionsData, type PartyDimensions as ImportedPartyDimensions } 
 import { ChevronDown, ChevronUp, TrendingUp, Shield, CheckCircle, AlertTriangle, Clock, Target, Info, Users, Eye, FileText, ExternalLink, DollarSign, Building, Settings, Vote, BarChart3, Grid3X3, List } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { PartyPledgesPanel } from '@/components/pledges/PartyPledgesPanel';
-import { ParliamentaryActivity } from '@/components/ParliamentaryActivity';
+import type { TdParliamentSummary } from '@shared/parliamentApi';
 
 interface TrustRankedPolitician {
   politician_name: string;
@@ -32,14 +32,6 @@ interface TrustRankedPolitician {
 interface PerformanceRankedPolitician {
   politicianName: string;
   overallScore: number;
-}
-
-interface TopActiveTD {
-  name: string;
-  party: string;
-  constituency: string;
-  questionsAsked: number;
-  attendancePercentage: number;
 }
 
 
@@ -910,15 +902,15 @@ const TrustworthinessTabContent = ({ selectedPartyId }: { selectedPartyId: strin
 // Parliamentary Activity Section Component
 const ParliamentaryActivitySection = ({ politicianName }: { politicianName: string }) => {
   const { data: activityData, isLoading } = useQuery({
-    queryKey: ['/api/parliamentary-activity/politician', politicianName],
-    queryFn: async () => {
-      const response = await fetch(`/api/parliamentary-activity/politician/${encodeURIComponent(politicianName)}`);
-      if (!response.ok) {
-        if (response.status === 404) return null;
-        throw new Error('Failed to fetch parliamentary activity');
-      }
-      const result = await response.json();
-      return result.data;
+    queryKey: ['parliament-activity-section', politicianName],
+    queryFn: async (): Promise<TdParliamentSummary | null> => {
+      const scoreRes = await fetch(`/api/scores/td/${encodeURIComponent(politicianName)}`);
+      if (!scoreRes.ok) return null;
+      const tdId = (await scoreRes.json())?.data?.id;
+      if (!tdId) return null;
+      const summaryRes = await fetch(`/api/parliament/tds/${tdId}`);
+      if (!summaryRes.ok) return null;
+      return (await summaryRes.json()).data ?? null;
     },
   });
 
@@ -940,26 +932,37 @@ const ParliamentaryActivitySection = ({ politicianName }: { politicianName: stri
     );
   }
 
+  const questionsTotal =
+    activityData.questionsOral === null && activityData.questionsWritten === null
+      ? null
+      : (activityData.questionsOral ?? 0) + (activityData.questionsWritten ?? 0);
+
   return (
     <div>
       <h4 className="text-sm font-semibold mb-3">Parliamentary Activity</h4>
       <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 space-y-3">
         <div className="grid grid-cols-2 gap-3 text-xs">
           <div className="text-center">
-            <div className="text-lg font-bold text-blue-600">{activityData.attendancePercentage}%</div>
-            <div className="text-gray-600">Attendance</div>
-            <div className="text-gray-500">{activityData.dailAttendance}/29 days</div>
+            <div className="text-lg font-bold text-blue-600">
+              {activityData.isPresiding ? 'Chair' : activityData.attendancePct !== null ? `${activityData.attendancePct}%` : '—'}
+            </div>
+            <div className="text-gray-600">{activityData.isPresiding ? 'Does not vote' : 'Attendance'}</div>
+            {!activityData.isPresiding && (
+              <div className="text-gray-500">
+                {activityData.votesCast ?? '—'}/{activityData.divisionsEligible ?? '—'} divisions
+              </div>
+            )}
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-green-600">{activityData.questionsAsked}</div>
+            <div className="text-lg font-bold text-green-600">{questionsTotal ?? '—'}</div>
             <div className="text-gray-600">Questions</div>
-            <div className="text-gray-500">Asked in Dáil</div>
+            <div className="text-gray-500">Oral + written</div>
           </div>
         </div>
-        {activityData.otherAttendance > 0 && (
+        {activityData.sectionsSpoken !== null && (
           <div className="text-center text-xs border-t pt-2">
-            <div className="text-sm font-medium">{activityData.otherAttendance} community days</div>
-            <div className="text-gray-500">Additional engagement</div>
+            <div className="text-sm font-medium">{activityData.sectionsSpoken} debate sections spoken</div>
+            <div className="text-gray-500">Sitting days: {activityData.sittingDays ?? '—'}</div>
           </div>
         )}
       </div>
@@ -1326,56 +1329,6 @@ const EducationPage = () => {
       console.error('Error saving explanations:', error);
       alert('There was a problem saving your changes. Please try again.');
     }
-  };
-
-  // Component for displaying top active TDs by question count  
-  const TopActiveTDsList = () => {
-    const { data: topTDsResponse, isLoading, error } = useQuery<{ success: boolean; data: TopActiveTD[] }>({
-      queryKey: ['/api/top-tds-by-questions'],
-      enabled: true,
-      refetchOnWindowFocus: false,
-      staleTime: 5 * 60 * 1000, // 5 minutes
-    });
-
-    if (isLoading) {
-      return (
-        <div className="text-center py-4 text-gray-500">Loading TD activity data...</div>
-      );
-    }
-
-    if (error || !topTDsResponse?.success || !topTDsResponse?.data) {
-      return (
-        <div className="text-center py-4 text-gray-500">No TD activity data available</div>
-      );
-    }
-
-    return (
-      <>
-        {topTDsResponse.data.map((td, index: number) => (
-          <div key={index} className="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg mt-[6px] mb-[6px]">
-            <div className="flex items-center gap-2">
-              <Avatar className="h-8 w-8">
-                <AvatarFallback className="text-xs">
-                  {td.name?.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col">
-                <span className="text-sm font-medium">{td.name}</span>
-                <span className="text-xs text-gray-500">{td.party} • {td.constituency}</span>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="text-sm text-orange-600 font-semibold">
-                {td.questionsAsked} questions
-              </span>
-              <div className="text-xs text-gray-500">
-                {td.attendancePercentage}% attendance
-              </div>
-            </div>
-          </div>
-        ))}
-      </>
-    );
   };
 
   return (
