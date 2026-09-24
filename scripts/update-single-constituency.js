@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import { chat } from './lib/llm.mjs';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -7,10 +7,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // Get the constituency name from command line arguments
 const constituencyName = process.argv[2];
@@ -24,7 +20,7 @@ async function getConstituencyData(constituencyName) {
   try {
     console.log(`Fetching data for ${constituencyName}...`);
     
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-3.5-turbo", // Using cheaper model
       messages: [
         {
