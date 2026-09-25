@@ -8,7 +8,6 @@ import { registerAuthRoutes } from "./routes/auth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
 import geographicRoutes from "./routes/geographic";
 import profileRoutes from "./routes/profileRoutes";
-import botRoutes from "./routes/botRoutes";
 import activityRoutes from "./routes/activityRoutes";
 import quizRoutes from "./routes/quiz";
 import ideologyRoutes from "./routes/ideology";
@@ -50,16 +49,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/chat", aiRateLimit, chatRoutes);
   app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
-  // Register geographic routes (consolidated - includes constituencies, location, heatmap)
+  // Register geographic routes (constituencies and constituency detection)
   app.use("/api/geographic", geographicRoutes);
   app.use("/api/geographic", conflictDataRoutes);
   // Legacy routes for backward compatibility
-  app.use("/api/heatmap", geographicRoutes);
   app.use("/api/constituencies", geographicRoutes);
   app.use("/api/location", geographicRoutes);
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
   app.use("/api/profile", profileRoutes);
-  app.use("/api/bots", botRoutes);
   app.use("/api/activity", activityRoutes);
   app.use("/api/sms", smsRoutes);
   
@@ -72,14 +69,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Enhanced profile now in AI analysis module
   app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
-  // Register consolidated political routes (parties and sentiment)
+  // Register consolidated political routes (parties)
   app.use("/api/political", politicalRoutes);
   // Legacy routes for backward compatibility
   app.use("/api/parties", politicalRoutes);
   app.use("/api/party-match", politicalRoutes);
   app.use("/api/party-dimensions", politicalRoutes);
   app.use("/api/dimension-explanations", politicalRoutes);
-  app.use("/api/party-sentiment", politicalRoutes);
 
   // Party pledges and the evidence that decides their status
   app.use("/api/pledges", pledgesRouter);
@@ -114,60 +110,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // The quiz and ideology profiles (server/quiz, server/ideology)
   app.use("/api/quiz", quizRoutes);
   app.use("/api/ideology", ideologyRoutes);
-
-  // Bot behavior management routes
-  app.post('/api/bots/:id/behavior/start', requireJob, async (req, res) => {
-    try {
-      const botId = parseInt(req.params.id);
-      if (!Number.isInteger(botId) || botId <= 0) {
-        return res.status(400).json({ success: false, message: 'Invalid bot id' });
-      }
-      const { botBehaviorService } = await import('./services/botBehaviorService');
-      
-      const config = {
-        botId,
-        activityTypes: req.body.activityTypes || [],
-        frequency: req.body.frequency || 'medium',
-        interactionPatterns: req.body.interactionPatterns || {}
-      };
-
-      await botBehaviorService.startBotBehavior(config);
-      res.json({ success: true, message: 'Bot behavior started' });
-    } catch (error) {
-      res.status(500).json({ success: false, message: 'Failed to start bot behavior' });
-    }
-  });
-
-  app.post('/api/bots/:id/behavior/stop', requireJob, async (req, res) => {
-    try {
-      const botId = parseInt(req.params.id);
-      if (!Number.isInteger(botId) || botId <= 0) {
-        return res.status(400).json({ success: false, message: 'Invalid bot id' });
-      }
-      const { botBehaviorService } = await import('./services/botBehaviorService');
-      
-      botBehaviorService.stopBotBehavior(botId);
-      res.json({ success: true, message: 'Bot behavior stopped' });
-    } catch (error) {
-      res.status(500).json({ success: false, message: 'Failed to stop bot behavior' });
-    }
-  });
-
-  app.get('/api/bots/:id/activity', requireJob, async (req, res) => {
-    try {
-      const botId = parseInt(req.params.id);
-      if (!Number.isInteger(botId) || botId <= 0) {
-        return res.status(400).json({ success: false, message: 'Invalid bot id' });
-      }
-      const days = parseInt(req.query.days as string) || 7;
-      const { botBehaviorService } = await import('./services/botBehaviorService');
-      
-      const activity = await botBehaviorService.getBotActivity(botId, days);
-      res.json({ success: true, activity });
-    } catch (error) {
-      res.status(500).json({ success: false, message: 'Failed to get bot activity' });
-    }
-  });
 
   // Last: an unknown /api path is a JSON 404, never the SPA's index.html.
   app.use("/api", apiNotFound);

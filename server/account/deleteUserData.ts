@@ -8,9 +8,10 @@ import { db, type Db } from '../db';
 import { dailySessions, policyVotes } from '@shared/schema/voting';
 import { pledgeCategoryPriorities } from '@shared/schema/pledges';
 import { ideologyProfiles, quizResults } from '@shared/schema/quiz';
+import { users } from '@shared/schema/accounts';
 
 export type DeletedCounts = Record<
-  'policyVotes' | 'dailySessions' | 'pledgeCategoryPriorities' | 'quizResults' | 'ideologyProfile',
+  'policyVotes' | 'dailySessions' | 'pledgeCategoryPriorities' | 'quizResults' | 'ideologyProfile' | 'profile',
   number
 >;
 
@@ -36,6 +37,8 @@ export async function deleteUserData(userId: string, database: Db = db): Promise
           .where(and(eq(ideologyProfiles.subjectKind, 'user'), eq(ideologyProfiles.subjectId, userId)))
           .returning({ id: ideologyProfiles.subjectId }),
       ),
+      // Name, county, bio and phone number: personal data, keyed by `id` rather than user_id.
+      profile: await count(tx.delete(users).where(eq(users.id, userId)).returning({ id: users.id })),
     };
   });
 }
