@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, serial, text, integer, timestamp, date, varchar, decimal, boolean, index, unique } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, date, varchar, decimal, index, unique } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -14,75 +14,11 @@ export interface PoliticalParty {
   color: string;
 }
 
-// Users table - updated for Replit Auth compatibility
-/** Drizzle ORM table definition for user accounts. */
-export const users = pgTable("users", {
-  id: varchar("id").primaryKey().notNull(), // Replit user ID
-  username: varchar("username", { length: 100 }).unique(),
-  password: varchar("password", { length: 100 }),
-  email: varchar("email", { length: 100 }).unique(),
-  firstName: varchar("first_name", { length: 100 }),
-  lastName: varchar("last_name", { length: 100 }),
-  profileImageUrl: text("profile_image_url"),
-  county: varchar("county", { length: 50 }),
-  bio: text("bio"),
-  phoneNumber: varchar("phone_number", { length: 20 }),
-  phoneVerified: boolean("phone_verified").default(false),
-  role: varchar("role", { length: 20 }).default("user"), // 'user', 'bot', 'admin'
-  emailVerified: boolean("email_verified").default(false),
-  verificationCode: varchar("verification_code", { length: 255 }),
-  verificationExpires: timestamp("verification_expires"),
-  twoFactorEnabled: boolean("two_factor_enabled").default(false),
-  latitude: varchar("latitude", { length: 50 }),
-  longitude: varchar("longitude", { length: 50 }),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
-
-// User preferences table for profile/geo data split
-/** Drizzle ORM table definition for user preferences. */
-export const userPreferences = pgTable("user_preferences", {
-  userId: varchar("user_id", { length: 100 }).primaryKey().references(() => users.id, { onDelete: "cascade" }),
-  county: varchar("county", { length: 50 }),
-  bio: text("bio"),
-  latitude: varchar("latitude", { length: 50 }),
-  longitude: varchar("longitude", { length: 50 }),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
-
-// Session storage table for Replit Auth
-/** Drizzle ORM table definition for user sessions. */
-export const sessions = pgTable(
-  "sessions",
-  {
-    sid: varchar("sid").primaryKey(),
-    sess: text("sess").notNull(),
-    expire: timestamp("expire").notNull(),
-  },
-  (table) => [index("IDX_session_expire").on(table.expire)],
-);
-
-export type UpsertUser = typeof users.$inferInsert;
-
-// User locations table for constituency tracking
-/** Drizzle ORM table definition for user locations. */
-export const userLocations = pgTable("user_locations", {
-  id: serial("id").primaryKey(),
-  latitude: decimal("latitude", { precision: 10, scale: 8 }).notNull(),
-  longitude: decimal("longitude", { precision: 11, scale: 8 }).notNull(),
-  constituency: varchar("constituency", { length: 100 }),
-  county: varchar("county", { length: 50 }),
-  accuracy: integer("accuracy"),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
-
 // User activity tracking table
 /** Drizzle ORM table definition for user activity tracking. */
 export const userActivity = pgTable("user_activity", {
   id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
+  userId: varchar("user_id", { length: 100 }).notNull(),
   action: varchar("action", { length: 100 }).notNull(), // voted_poll, created_post, completed_quiz, etc.
   metadata: text("metadata"), // JSON string for flexible data storage
   ipAddress: varchar("ip_address", { length: 45 }), // For geolocation tracking
@@ -91,40 +27,6 @@ export const userActivity = pgTable("user_activity", {
 }, (table) => [
   index("idx_user_activity_user_id").on(table.userId),
 ]);
-
-// Email verification tokens table
-/** Drizzle ORM table definition for email verification tokens. */
-export const emailVerificationTokens = pgTable("email_verification_tokens", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
-  token: varchar("token", { length: 255 }).notNull().unique(),
-  expiresAt: timestamp("expires_at").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-// Phone verification tokens table
-/** Drizzle ORM table definition for phone verification tokens. */
-export const phoneVerificationTokens = pgTable("phone_verification_tokens", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
-  phoneNumber: varchar("phone_number", { length: 20 }).notNull(),
-  token: varchar("token", { length: 6 }).notNull(),
-  expiresAt: timestamp("expires_at").notNull(),
-  used: boolean("used").default(false),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-// Two-factor authentication tokens table
-/** Drizzle ORM table definition for two-factor authentication tokens. */
-export const twoFactorTokens = pgTable("two_factor_tokens", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
-  token: varchar("token", { length: 6 }).notNull(),
-  type: varchar("type", { length: 20 }).notNull(), // 'email_verification', 'login', 'password_reset'
-  expiresAt: timestamp("expires_at").notNull(),
-  used: boolean("used").default(false),
-  createdAt: timestamp("created_at").defaultNow(),
-});
 
 // Political parties table with 8-dimensional scoring
 /** Drizzle ORM table definition for political parties. */
@@ -209,44 +111,6 @@ export const candidates = pgTable("candidates", {
   position: integer("position"), // final position after count
 });
 
-// Party sentiment votes table
-/** Drizzle ORM table definition for party sentiment votes. */
-export const partySentimentVotes = pgTable("party_sentiment_votes", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 255 }).notNull(),
-  partyId: varchar("party_id", { length: 50 }).notNull(),
-  sentimentScore: integer("sentiment_score").notNull(), // 0-100 scale
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-}, (table) => ({
-  userPartyUnique: unique("user_party_sentiment_unique").on(table.userId, table.partyId),
-}));
-
-export type PartySentimentVote = typeof partySentimentVotes.$inferSelect;
-
-// Relations
-/** Drizzle relations for the users table. */
-export const usersRelations = relations(users, ({ many }) => ({
-  emailVerificationTokens: many(emailVerificationTokens),
-  twoFactorTokens: many(twoFactorTokens),
-}));
-
-/** Drizzle relations for the emailVerificationTokens table. */
-export const emailVerificationTokensRelations = relations(emailVerificationTokens, ({ one }) => ({
-  user: one(users, {
-    fields: [emailVerificationTokens.userId],
-    references: [users.id],
-  }),
-}));
-
-/** Drizzle relations for the twoFactorTokens table. */
-export const twoFactorTokensRelations = relations(twoFactorTokens, ({ one }) => ({
-  user: one(users, {
-    fields: [twoFactorTokens.userId],
-    references: [users.id],
-  }),
-}));
-
 /** Drizzle relations for the parties table. */
 export const partiesRelations = relations(parties, ({ many }) => ({
   electionResults: many(electionResults),
@@ -298,17 +162,8 @@ export const candidatesRelations = relations(candidates, ({ one }) => ({
 }));
 
 // Zod schemas for validation
-/** Zod insert-schema for creating a user record. */
-export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true }).extend({
-  latitude: z.number().optional().transform(val => val?.toString()),
-  longitude: z.number().optional().transform(val => val?.toString())
-});
 /** Zod insert-schema for creating a user activity record. */
 export const insertUserActivitySchema = createInsertSchema(userActivity).omit({ id: true, createdAt: true });
-/** Zod insert-schema for creating an email verification token record. */
-export const insertEmailVerificationTokenSchema = createInsertSchema(emailVerificationTokens).omit({ id: true, createdAt: true });
-/** Zod insert-schema for creating a two-factor token record. */
-export const insertTwoFactorTokenSchema = createInsertSchema(twoFactorTokens).omit({ id: true, createdAt: true });
 /** Zod insert-schema for creating a party record. */
 export const insertPartySchema = createInsertSchema(parties).omit({ id: true });
 /** Zod insert-schema for creating a constituency record. */
@@ -321,17 +176,8 @@ export const insertElectionResultSchema = createInsertSchema(electionResults).om
 export const insertCandidateSchema = createInsertSchema(candidates);
 
 // TypeScript types
-export type User = typeof users.$inferSelect;
-export type InsertUser = z.infer<typeof insertUserSchema>;
-
 export type UserActivity = typeof userActivity.$inferSelect;
 export type InsertUserActivity = z.infer<typeof insertUserActivitySchema>;
-
-export type EmailVerificationToken = typeof emailVerificationTokens.$inferSelect;
-export type InsertEmailVerificationToken = z.infer<typeof insertEmailVerificationTokenSchema>;
-
-export type TwoFactorToken = typeof twoFactorTokens.$inferSelect;
-export type InsertTwoFactorToken = z.infer<typeof insertTwoFactorTokenSchema>;
 
 export type Party = typeof parties.$inferSelect;
 export type InsertParty = z.infer<typeof insertPartySchema>;
@@ -347,12 +193,6 @@ export type InsertElectionResult = z.infer<typeof insertElectionResultSchema>;
 
 export type Candidate = typeof candidates.$inferSelect;
 export type InsertCandidate = z.infer<typeof insertCandidateSchema>;
-
-// User location schema
-/** Zod insert-schema for creating a user location record. */
-export const insertUserLocationSchema = createInsertSchema(userLocations);
-export type UserLocation = typeof userLocations.$inferSelect;
-export type InsertUserLocation = z.infer<typeof insertUserLocationSchema>;
 
 // ============================================
 // SHADOW CABINET (Level 10 Agent System)

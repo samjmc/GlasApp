@@ -1,14 +1,8 @@
 /**
  * /api/profile — the signed-in user's own profile.
  *
- * Accounts live in Supabase Auth. This router owns the application-side profile row in
- * `users`, keyed by the Supabase user id, and is the only place it is written.
- *
- * It replaced `authRoutes.ts`, which carried a second, parallel account system:
- * email+password registration writing rows with a freshly generated UUID that could
- * never match a Supabase identity, a session login the client never called, and a
- * `verify-phone-code` endpoint that took the user id from the request body and so let
- * anyone mark any account's phone verified. All of that is gone.
+ * Supabase Auth owns the account (email, sign-in, role). The app's side is one row in
+ * politics.users, read and written only through server/account/profile.ts.
  */
 import { Router, type Request, type Response } from 'express';
 import { z } from 'zod';
@@ -16,9 +10,9 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { isAdminUser, requireAuth } from '../auth';
-import { storage } from '../storage';
+import { PHONE_CODE_MINUTES, PHONE_E164, issueCode } from '../account/phone';
+import * as profiles from '../account/profile';
 import { sendSMS } from '../services/twilioService';
-import { generateVerificationCode, getVerificationExpiration } from '../services/verificationService';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import { requestLogger } from '../utils/logger';
 
@@ -45,88 +39,60 @@ const upload = multer({
   },
 });
 
-const PHONE_E164 = /^\+[1-9]\d{1,14}$/;
-const VERIFICATION_CODE_MINUTES = 10;
-
 const profileUpdateSchema = z.object({
   firstName: z.string().max(100).optional(),
   lastName: z.string().max(100).optional(),
-  county: z.string().max(100).optional(),
+  county: z.string().max(50).optional(),
   bio: z.string().max(2000).optional(),
   phoneNumber: z.string().regex(PHONE_E164, 'Phone number must be in E.164 format, e.g. +353871234567').optional(),
 });
 
-/** Strip anything the caller should not see back. */
-function publicProfile(user: Record<string, unknown>) {
-  const { password: _password, verificationCode: _code, verificationCodeExpiresAt: _expiry, ...rest } = user;
-  return rest;
+function view(req: Request, row: Parameters<typeof profiles.publicProfile>[0]) {
+  return { ...profiles.publicProfile(row), email: req.user!.email ?? null };
 }
 
-/**
- * The profile row for the signed-in user, created on first sight.
- *
- * Supabase owns the account, so the first authenticated request is the first time this
- * side of the app hears about them. Creating the row here means there is no separate
- * registration step that can leave the two out of step.
- */
-async function ensureProfile(req: Request) {
-  const { id, email } = req.user!;
-  const existing = await storage.getUser(id);
-  if (existing) return existing;
-  return storage.upsertUser({ id, email: email ?? null });
+async function sendCode(userId: string, phoneNumber: string) {
+  const issued = issueCode(userId);
+  await profiles.startPhoneVerification(userId, phoneNumber, issued);
+  return sendSMS({
+    to: phoneNumber,
+    body: `Your Glas Politics verification code is ${issued.code}. It expires in ${PHONE_CODE_MINUTES} minutes.`,
+  });
 }
 
 /** GET /api/profile/me */
 router.get('/me', requireAuth, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
-    res.json(formatSuccess({
-      user: publicProfile(await ensureProfile(req) as Record<string, unknown>),
-      isAdmin: isAdminUser(req.user!),
-    }));
+    const row = await profiles.ensureProfile(req.user!.id);
+    res.json(formatSuccess({ user: view(req, row), isAdmin: isAdminUser(req.user!) }));
   } catch (error) {
     log.error({ err: error }, 'Failed to load profile');
     res.status(500).json(formatError('INTERNAL_ERROR', 'Failed to load profile'));
   }
 });
 
-/** PATCH /api/profile/me */
+/** PATCH /api/profile/me — a new phone number is stored unverified and a code is texted to it. */
 router.patch('/me', requireAuth, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
-    const updates = profileUpdateSchema.parse(req.body);
+    const { phoneNumber, ...edits } = profileUpdateSchema.parse(req.body);
     const userId = req.user!.id;
-    await ensureProfile(req);
 
-    if (updates.phoneNumber) {
-      const owner = await storage.getUserByPhoneNumber(updates.phoneNumber);
-      if (owner && owner.id !== userId) {
-        return res.status(400).json(formatError('DUPLICATE_RESOURCE', 'That phone number is already in use'));
-      }
+    if (phoneNumber && (await profiles.phoneTakenByOther(userId, phoneNumber))) {
+      return res.status(400).json(formatError('DUPLICATE_RESOURCE', 'That phone number is already in use'));
     }
 
-    let updated = await storage.updateUser(userId, updates);
+    let row = await profiles.updateProfile(userId, edits);
     let requiresPhoneVerification = false;
-
-    // A new number is unverified until the code comes back.
-    if (updates.phoneNumber) {
-      const code = generateVerificationCode(6);
-      updated = await storage.updateUser(userId, { phoneVerified: 0 });
-      await storage.setVerificationCode(userId, code, getVerificationExpiration(VERIFICATION_CODE_MINUTES));
-      const sent = await sendSMS({
-        to: updates.phoneNumber,
-        body: `Your Glas Politics verification code is ${code}. It expires in ${VERIFICATION_CODE_MINUTES} minutes.`,
-      });
-      requiresPhoneVerification = true;
+    if (phoneNumber && (phoneNumber !== row.phoneNumber || !row.phoneVerified)) {
+      const sent = await sendCode(userId, phoneNumber);
       if (!sent.success) log.warn({ reason: sent.message }, 'Verification SMS not sent');
+      requiresPhoneVerification = true;
+      row = (await profiles.getProfile(userId))!;
     }
 
-    res.json(
-      formatSuccess({
-        user: publicProfile(updated as unknown as Record<string, unknown>),
-        requiresPhoneVerification,
-      }),
-    );
+    res.json(formatSuccess({ user: view(req, row), requiresPhoneVerification }));
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(400).json(formatError('VALIDATION_ERROR', 'Validation error', { errors: error.errors }));
@@ -136,15 +102,20 @@ router.patch('/me', requireAuth, async (req: Request, res: Response) => {
   }
 });
 
+const VERIFY_MESSAGES = {
+  wrong: 'That code is not right',
+  expired: 'That code has expired; ask for a new one',
+  no_code: 'No code is waiting; ask for a new one',
+  too_many_attempts: 'Too many wrong codes; ask for a new one',
+} as const;
+
 /** POST /api/profile/phone/verify — confirm the SMS code for the caller's own number. */
 router.post('/phone/verify', requireAuth, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
-    const { code } = z.object({ code: z.string().length(6, 'Verification code must be 6 digits') }).parse(req.body);
-    const verified = await storage.verifyUserPhone(req.user!.id, code);
-    if (!verified) {
-      return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid or expired verification code'));
-    }
+    const { code } = z.object({ code: z.string().regex(/^\d{6}$/, 'Verification code must be 6 digits') }).parse(req.body);
+    const result = await profiles.verifyPhone(req.user!.id, code);
+    if (result !== 'verified') return res.status(400).json(formatError('VALIDATION_ERROR', VERIFY_MESSAGES[result]));
     res.json(formatSuccess({ message: 'Phone number verified' }));
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -155,24 +126,16 @@ router.post('/phone/verify', requireAuth, async (req: Request, res: Response) =>
   }
 });
 
-/** POST /api/profile/phone/resend */
+/** POST /api/profile/phone/resend — a fresh code for the number already on the account. */
 router.post('/phone/resend', requireAuth, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
     const userId = req.user!.id;
-    const user = await storage.getUser(userId);
-    if (!user?.phoneNumber) {
-      return res.status(400).json(formatError('VALIDATION_ERROR', 'No phone number on this account'));
-    }
-    const code = generateVerificationCode(6);
-    await storage.setVerificationCode(userId, code, getVerificationExpiration(VERIFICATION_CODE_MINUTES));
-    const sent = await sendSMS({
-      to: user.phoneNumber,
-      body: `Your Glas Politics verification code is ${code}. It expires in ${VERIFICATION_CODE_MINUTES} minutes.`,
-    });
-    if (!sent.success) {
-      return res.status(502).json(formatError('OPERATION_FAILED', 'Could not send the verification code'));
-    }
+    const row = await profiles.getProfile(userId);
+    if (!row?.phoneNumber) return res.status(400).json(formatError('VALIDATION_ERROR', 'No phone number on this account'));
+    if (row.phoneVerified) return res.status(400).json(formatError('VALIDATION_ERROR', 'That number is already verified'));
+    const sent = await sendCode(userId, row.phoneNumber);
+    if (!sent.success) return res.status(502).json(formatError('OPERATION_FAILED', 'Could not send the verification code'));
     res.json(formatSuccess({ message: 'Verification code sent' }));
   } catch (error) {
     log.error({ err: error }, 'Failed to resend verification code');
@@ -184,11 +147,9 @@ router.post('/phone/resend', requireAuth, async (req: Request, res: Response) =>
 router.post('/image', requireAuth, upload.single('profileImage'), async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
-    if (!req.file) {
-      return res.status(400).json(formatError('VALIDATION_ERROR', 'No image file provided'));
-    }
+    if (!req.file) return res.status(400).json(formatError('VALIDATION_ERROR', 'No image file provided'));
     const imageUrl = `/uploads/${req.file.filename}`;
-    await storage.updateUser(req.user!.id, { profileImageUrl: imageUrl });
+    await profiles.setProfileImage(req.user!.id, imageUrl);
     res.json(formatSuccess({ imageUrl }));
   } catch (error) {
     log.error({ err: error }, 'Profile image upload failed');
