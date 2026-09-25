@@ -29,10 +29,10 @@ export function OfflineIndicator() {
   // Offline banner
   if (!isOnline) {
     return (
-      <div className="fixed top-0 left-0 right-0 bg-amber-500 text-white px-4 py-2 z-50 shadow-lg">
-        <div className="container mx-auto flex items-center justify-center gap-2 text-sm font-medium">
-          <WifiOff className="w-4 h-4" />
-          <span>You're offline - Some features may be limited</span>
+      <div className="fixed left-0 right-0 top-0 z-50 bg-warn px-4 py-2 text-background shadow-lg">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-center gap-2 text-sm font-medium">
+          <WifiOff className="h-4 w-4" />
+          <span>You're offline - some features may be limited</span>
         </div>
       </div>
     );
@@ -41,9 +41,9 @@ export function OfflineIndicator() {
   // Reconnected banner (temporary)
   if (showReconnected) {
     return (
-      <div className="fixed top-0 left-0 right-0 bg-emerald-500 text-white px-4 py-2 z-50 shadow-lg animate-in slide-in-from-top-2">
-        <div className="container mx-auto flex items-center justify-center gap-2 text-sm font-medium">
-          <Wifi className="w-4 h-4" />
+      <div className="fixed left-0 right-0 top-0 z-50 bg-success px-4 py-2 text-success-foreground shadow-lg animate-in slide-in-from-top-2">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-center gap-2 text-sm font-medium">
+          <Wifi className="h-4 w-4" />
           <span>Back online!</span>
         </div>
       </div>
@@ -52,6 +52,3 @@ export function OfflineIndicator() {
 
   return null;
 }
-
-
-

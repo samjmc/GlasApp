@@ -1,157 +1,66 @@
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
-import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface MultipleChoiceVoteControlProps {
   options: Record<string, string>; // { option_a: "Text", option_b: "Text", ... }
   selectedOption: string | null;
   onSelect: (optionKey: string) => void;
   disabled?: boolean;
+  /** "lg" for the full-screen daily vote, "sm" for compact rows inside cards. */
+  size?: "lg" | "sm";
+  label?: string;
 }
 
-// Emoji mapping for different option positions and content types
-const getOptionEmoji = (index: number, optionText: string): string => {
-  const text = optionText.toLowerCase();
-  
-  // Content-based emojis
-  if (text.includes('privacy') || text.includes('protect') || text.includes('rights')) return '🔒';
-  if (text.includes('transparency') || text.includes('open') || text.includes('public')) return '👁️';
-  if (text.includes('community') || text.includes('families') || text.includes('people')) return '👥';
-  if (text.includes('strict') || text.includes('guidelines') || text.includes('oversight')) return '📋';
-  if (text.includes('health') || text.includes('medical') || text.includes('hospital')) return '🏥';
-  if (text.includes('education') || text.includes('school') || text.includes('learn')) return '📚';
-  if (text.includes('housing') || text.includes('home') || text.includes('accommodation')) return '🏠';
-  if (text.includes('economy') || text.includes('economic') || text.includes('financial')) return '💰';
-  if (text.includes('environment') || text.includes('climate') || text.includes('green')) return '🌱';
-  if (text.includes('security') || text.includes('safety') || text.includes('protect')) return '🛡️';
-  if (text.includes('freedom') || text.includes('liberty') || text.includes('choice')) return '🕊️';
-  if (text.includes('support') || text.includes('help') || text.includes('assist')) return '🤝';
-  if (text.includes('reform') || text.includes('change') || text.includes('improve')) return '⚡';
-  if (text.includes('maintain') || text.includes('keep') || text.includes('current')) return '⚖️';
-  
-  // Position-based fallback emojis
-  const positionEmojis = ['✨', '💡', '🎯', '🚀'];
-  return positionEmojis[index % positionEmojis.length];
-};
+const LETTERS = "ABCDEFGH";
 
-/** Multiple-choice voting control with selectable options. */
+/** A radio group of lettered answer options. */
 export function MultipleChoiceVoteControl({
   options,
   selectedOption,
   onSelect,
   disabled = false,
+  size = "lg",
+  label = "Your answer",
 }: MultipleChoiceVoteControlProps) {
-  const [hoveredOption, setHoveredOption] = useState<string | null>(null);
-  const optionEntries = Object.entries(options).sort(([a], [b]) => {
-    // Sort by option key (option_a, option_b, option_c, option_d)
-    return a.localeCompare(b);
-  });
+  const optionEntries = Object.entries(options).sort(([a], [b]) => a.localeCompare(b));
+  const lg = size === "lg";
 
   return (
-    <div className="space-y-2 w-full">
+    <div role="radiogroup" aria-label={label} className={cn("flex w-full flex-col", lg ? "gap-2.5" : "gap-2")}>
       {optionEntries.map(([optionKey, optionText], index) => {
         const isSelected = selectedOption === optionKey;
-        const isHovered = hoveredOption === optionKey;
-        const emoji = getOptionEmoji(index, optionText);
-        
         return (
-          <motion.div
+          <button
             key={optionKey}
-            initial={{ opacity: 0, y: 10, scale: 0.98 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0, 
-              scale: 1,
+            type="button"
+            role="radio"
+            aria-checked={isSelected}
+            disabled={disabled}
+            onClick={() => {
+              navigator.vibrate?.(30);
+              onSelect(optionKey);
             }}
-            transition={{ 
-              delay: index * 0.05,
-              type: "spring",
-              stiffness: 300,
-              damping: 25
-            }}
-            className="w-full"
-            onHoverStart={() => !disabled && setHoveredOption(optionKey)}
-            onHoverEnd={() => setHoveredOption(null)}
+            className={cn(
+              "flex w-full items-center border-2 text-left transition-colors duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60",
+              lg ? "min-h-[72px] gap-3.5 rounded-xl px-4 py-3.5" : "min-h-[48px] gap-3 rounded-lg px-3 py-2",
+              isSelected ? "border-primary bg-primary/15" : "border-border bg-card hover:bg-accent"
+            )}
           >
-            <motion.div
-              animate={{
-                scale: isSelected ? 1.01 : 1,
-                y: isSelected ? -1 : 0,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 25
-              }}
+            <span
+              className={cn(
+                "flex shrink-0 items-center justify-center rounded-full font-extrabold",
+                lg ? "h-9 w-9 text-sm" : "h-7 w-7 text-xs",
+                isSelected ? "bg-primary text-primary-foreground" : "bg-elevated text-foreground"
+              )}
             >
-              <Button
-                type="button"
-                variant={isSelected ? "default" : "outline"}
-                className={`
-                  w-full justify-start text-left h-auto py-2.5 px-3
-                  min-w-0 relative overflow-hidden
-                  ${isSelected 
-                    ? "bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 border-emerald-400 text-white shadow-lg shadow-emerald-500/30" 
-                    : "bg-black/40 hover:bg-black/60 border-slate-700 text-slate-200 hover:text-white hover:border-slate-600"
-                  }
-                  transition-all duration-200
-                  ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
-                `}
-                onClick={() => {
-                  if (!disabled) {
-                    // Haptic feedback for mobile devices
-                    if (navigator.vibrate) {
-                      navigator.vibrate(50);
-                    }
-                    onSelect(optionKey);
-                  }
-                }}
-                disabled={disabled}
-              >
-
-                <div className="flex items-start gap-2 w-full min-w-0 relative z-10">
-                  {/* Emoji */}
-                  <motion.span
-                    animate={{
-                      scale: isSelected ? 1.1 : 1,
-                    }}
-                    transition={{ duration: 0.2 }}
-                    className="text-lg flex-shrink-0"
-                  >
-                    {emoji}
-                  </motion.span>
-
-                  {/* Check mark */}
-                  <AnimatePresence>
-                    {isSelected && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        exit={{ scale: 0 }}
-                        transition={{ type: "spring", stiffness: 500, damping: 20 }}
-                        className="flex-shrink-0"
-                      >
-                        <Check className="w-4 h-4 text-white" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {!isSelected && (
-                    <div className="w-4 h-4 rounded-full border-2 border-slate-600 flex-shrink-0" />
-                  )}
-
-                  {/* Text */}
-                  <span className="flex-1 text-xs sm:text-sm font-medium leading-snug break-words whitespace-normal min-w-0">
-                    {optionText}
-                  </span>
-                </div>
-              </Button>
-            </motion.div>
-          </motion.div>
+              {isSelected ? <Check className={lg ? "h-[18px] w-[18px]" : "h-4 w-4"} strokeWidth={3} aria-hidden="true" /> : LETTERS[index] ?? index + 1}
+            </span>
+            <span className={cn("min-w-0 flex-1 break-words font-semibold leading-snug", lg ? "text-base" : "text-sm")}>
+              {optionText}
+            </span>
+          </button>
         );
       })}
     </div>
   );
 }
-

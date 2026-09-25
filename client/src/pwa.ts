@@ -51,94 +51,15 @@ function showUpdateNotification() {
   }
 }
 
-// Install Prompt Management
-let deferredPrompt: unknown = null;
-
-/** Sets up the browser install prompt and install-tracking listeners. */
+/**
+ * Tracks installs. The install prompt itself is the PWAInstallButton component, which listens
+ * for `beforeinstallprompt`; a second prompt here used to stack on top of it.
+ */
 export function setupInstallPrompt() {
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later
-    deferredPrompt = e;
-    
-    // Show custom install UI
-    showInstallPromotion();
-    
-    console.log('📱 Install prompt ready');
-  });
-
-  // Track if user installed the app
   window.addEventListener('appinstalled', () => {
     console.log('✅ PWA was installed');
-    deferredPrompt = null;
-    hideInstallPromotion();
-    
-    // Track installation (analytics)
     trackInstallation();
   });
-}
-
-// Show custom install promotion
-function showInstallPromotion() {
-  // Check if already installed
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    return; // Already running as installed PWA
-  }
-  
-  // Create install button (you can customize this)
-  const installContainer = document.createElement('div');
-  installContainer.id = 'pwa-install-prompt';
-  installContainer.className = 'fixed bottom-20 left-4 right-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-4 rounded-lg shadow-2xl z-50 md:left-auto md:right-4 md:max-w-md';
-  installContainer.innerHTML = `
-    <div class="flex items-center justify-between gap-3">
-      <div class="flex-1">
-        <p class="font-semibold text-sm">Install Glas Politics</p>
-        <p class="text-xs opacity-90">Add to your home screen for quick access!</p>
-      </div>
-      <div class="flex gap-2">
-        <button id="pwa-install-btn" class="bg-white text-emerald-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-emerald-50 transition-colors">
-          Install
-        </button>
-        <button id="pwa-dismiss-btn" class="text-white opacity-75 hover:opacity-100 px-2">
-          ✕
-        </button>
-      </div>
-    </div>
-  `;
-  
-  document.body.appendChild(installContainer);
-  
-  // Install button click
-  document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to install prompt: ${outcome}`);
-      deferredPrompt = null;
-    }
-    hideInstallPromotion();
-  });
-  
-  // Dismiss button click
-  document.getElementById('pwa-dismiss-btn')?.addEventListener('click', () => {
-    hideInstallPromotion();
-    // Remember user dismissed (localStorage)
-    localStorage.setItem('pwa-install-dismissed', Date.now().toString());
-  });
-  
-  // Don't show if user dismissed recently (within 7 days)
-  const dismissed = localStorage.getItem('pwa-install-dismissed');
-  if (dismissed && Date.now() - parseInt(dismissed) < 7 * 24 * 60 * 60 * 1000) {
-    hideInstallPromotion();
-  }
-}
-
-function hideInstallPromotion() {
-  const prompt = document.getElementById('pwa-install-prompt');
-  if (prompt) {
-    prompt.remove();
-  }
 }
 
 // Track installation
@@ -163,7 +84,7 @@ function trackInstallation() {
 /** Returns whether the app is running as an installed PWA. */
 export function isInstalledPWA(): boolean {
   return window.matchMedia('(display-mode: standalone)').matches ||
-         (window.navigator as unknown).standalone === true || // iOS
+         (window.navigator as Navigator & { standalone?: boolean }).standalone === true || // iOS
          document.referrer.includes('android-app://');
 }
 

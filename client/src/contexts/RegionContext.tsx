@@ -1,23 +1,12 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import {
-  DEFAULT_REGION_CODE,
   REGION_CONFIGS,
   REGION_LIST,
-  REGION_NEWS_MOCK,
-  REGION_DAILY_SESSION_MOCK,
+  isRegionCode,
   type RegionCode,
   type RegionConfig,
 } from "@shared/region-config";
-import { isRegionCode } from "@shared/region-config";
 
 type RegionStatus = "loading" | "ready" | "needs-selection";
 
@@ -25,227 +14,110 @@ interface RegionContextValue {
   regionCode: RegionCode | null;
   region: RegionConfig | null;
   status: RegionStatus;
-  availableRegions: typeof REGION_LIST;
+  availableRegions: RegionConfig[];
   selectRegion: (code: RegionCode) => Promise<void>;
-  refreshRegion: () => Promise<void>;
-  isMockRegion: boolean;
 }
 
-const defaultRegion = REGION_CONFIGS[DEFAULT_REGION_CODE];
+const RegionContext = createContext<RegionContextValue | null>(null);
 
-const RegionContext = createContext<RegionContextValue>({
-  regionCode: DEFAULT_REGION_CODE,
-  region: defaultRegion,
-  status: "loading",
-  availableRegions: REGION_LIST,
-  selectRegion: async () => {},
-  refreshRegion: async () => {},
-  isMockRegion: false,
-});
-
+/** Set only when the visitor has picked a region themselves; until then we ask. */
 const LOCAL_STORAGE_KEY = "glas.region";
 
 function getStoredRegion(): RegionCode | null {
-  if (typeof window === "undefined") return null;
-  const stored = window.localStorage.getItem(LOCAL_STORAGE_KEY);
-  return isRegionCode(stored) ? stored : null;
+  try {
+    const stored = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+    return isRegionCode(stored) ? stored : null;
+  } catch {
+    return null;
+  }
 }
 
 function setStoredRegion(code: RegionCode) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(LOCAL_STORAGE_KEY, code);
+  try {
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, code);
+  } catch {
+    // Not remembered on this device; the server cookie still holds it.
+  }
 }
 
-function computeMockRegion(code: RegionCode | null): boolean {
-  if (!code) return false;
-  return Boolean(REGION_NEWS_MOCK[code] || REGION_DAILY_SESSION_MOCK[code]);
+/** `region-ie` / `region-uk` / `region-us` on <html> switches the accent colours (index.css). */
+function applyRegionClass(code: RegionCode | null) {
+  const root = document.documentElement;
+  for (const c of Object.keys(REGION_CONFIGS)) root.classList.remove(`region-${c.toLowerCase()}`);
+  if (code) root.classList.add(`region-${code.toLowerCase()}`);
 }
 
 /** React context provider for region state. */
 export function RegionProvider({ children }: { children: React.ReactNode }) {
-  const [regionCode, setRegionCode] = useState<RegionCode | null>(null);
-  const [status, setStatus] = useState<RegionStatus>("loading");
-  const [availableRegions, setAvailableRegions] = useState(REGION_LIST);
-  const [isMockRegion, setIsMockRegion] = useState(false);
+  const [regionCode, setRegionCode] = useState<RegionCode | null>(getStoredRegion);
+  const [status, setStatus] = useState<RegionStatus>(() => (getStoredRegion() ? "ready" : "needs-selection"));
   const queryClient = useQueryClient();
-
-  const regionRef = useRef<RegionCode | null>(null);
-  const fetchPatchedRef = useRef(false);
+  const regionRef = useRef<RegionCode | null>(regionCode);
 
   useEffect(() => {
     regionRef.current = regionCode;
-    setIsMockRegion(computeMockRegion(regionCode));
+    applyRegionClass(regionCode);
   }, [regionCode]);
 
-  const patchFetch = useCallback(() => {
-    if (typeof window === "undefined" || fetchPatchedRef.current) {
-      return;
-    }
-
+  // Every same-origin request carries the region, so the server answers for the right one.
+  useEffect(() => {
     const originalFetch = window.fetch.bind(window);
-    fetchPatchedRef.current = true;
-
     window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
-      const currentRegion = regionRef.current || getStoredRegion();
-
-      if (!currentRegion) {
-        return originalFetch(input as unknown, init);
-      }
-
-      try {
-        let url: URL | null = null;
-        if (typeof input === "string" || input instanceof URL) {
-          url = new URL(input.toString(), window.location.origin);
-        } else if (input instanceof Request) {
-          url = new URL(input.url, window.location.origin);
-        }
-
-        if (!url || url.origin !== window.location.origin) {
-          return originalFetch(input as unknown, init);
-        }
-
-        const baseHeaders =
-          (init && init.headers)
-            ? new Headers(init.headers as HeadersInit)
-            : input instanceof Request
-            ? new Headers(input.headers)
-            : new Headers();
-
-        if (!baseHeaders.has("x-region-code")) {
-          baseHeaders.set("x-region-code", currentRegion);
-        }
-
-        if (input instanceof Request) {
-          const request = new Request(input, {
-            ...init,
-            headers: baseHeaders,
-          });
-          return originalFetch(request);
-        }
-
-        const finalInit: RequestInit = {
-          ...init,
-          headers: baseHeaders,
-        };
-
-        return originalFetch(input as unknown, finalInit);
-      } catch (error) {
-        console.error("Region fetch patch failed", error);
-        return originalFetch(input as unknown, init);
-      }
+      const current = regionRef.current;
+      if (!current) return originalFetch(input, init);
+      const url = new URL(input instanceof Request ? input.url : input.toString(), window.location.origin);
+      if (url.origin !== window.location.origin) return originalFetch(input, init);
+      const headers = new Headers(init?.headers ?? (input instanceof Request ? input.headers : undefined));
+      if (!headers.has("x-region-code")) headers.set("x-region-code", current);
+      return input instanceof Request
+        ? originalFetch(new Request(input, { ...init, headers }))
+        : originalFetch(input, { ...init, headers });
     };
-
     return () => {
       window.fetch = originalFetch;
-      fetchPatchedRef.current = false;
     };
   }, []);
 
-  useEffect(() => {
-    const undoPatch = patchFetch();
-    return undoPatch;
-  }, [patchFetch]);
-
-  const loadAvailableRegions = useCallback(async () => {
-    try {
-      const res = await fetch("/api/region/available", { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to load regions");
-      const data = await res.json();
-      if (Array.isArray(data.regions) && data.regions.length > 0) {
-        setAvailableRegions(data.regions);
-      }
-    } catch (error) {
-      if (import.meta.env.DEV) {
-        console.warn("Falling back to static region list", error);
-      }
-      setAvailableRegions(REGION_LIST);
-    }
-  }, []);
-
-  const loadRegion = useCallback(async () => {
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/region/current", { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to resolve region");
-      const data = await res.json();
-      if (isRegionCode(data.regionCode)) {
-        setRegionCode(data.regionCode);
-        setStoredRegion(data.regionCode);
-        setIsMockRegion(Boolean(data.hasMockNews || data.hasMockDailySession));
-        setStatus("ready");
-        return;
-      }
-      throw new Error("Invalid region payload");
-    } catch (error) {
-      const storedRegion = getStoredRegion();
-      if (storedRegion) {
-        setRegionCode(storedRegion);
-        setStatus("ready");
-        return;
-      }
-      setRegionCode(null);
-      setStatus("needs-selection");
-    }
-  }, []);
-
-  useEffect(() => {
-    loadAvailableRegions();
-    loadRegion();
-  }, [loadAvailableRegions, loadRegion]);
-
-  const selectRegion = useCallback(async (code: RegionCode) => {
-    setRegionCode(code);
-    setStoredRegion(code);
-    setStatus("loading");
-
-    try {
-      const res = await fetch("/api/region/select", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ regionCode: code }),
-      });
-
-      if (!res.ok) {
-        throw new Error(`Failed to persist region ${code}`);
-      }
-
-      const data = await res.json();
-      if (isRegionCode(data.regionCode)) {
-        setRegionCode(data.regionCode);
-        setIsMockRegion(Boolean(data.hasMockNews || data.hasMockDailySession || computeMockRegion(data.regionCode)));
-      } else {
-        setIsMockRegion(computeMockRegion(code));
-      }
-    } catch (error) {
-      console.error("Region selection failed", error);
-      setIsMockRegion(computeMockRegion(code));
-    } finally {
-      queryClient.invalidateQueries();
+  const selectRegion = useCallback(
+    async (code: RegionCode) => {
+      setRegionCode(code);
+      setStoredRegion(code);
       setStatus("ready");
-    }
-  }, [queryClient]);
+      try {
+        const res = await fetch("/api/region/select", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ regionCode: code }),
+        });
+        if (!res.ok) throw new Error(`Failed to save region ${code}`);
+      } catch (error) {
+        // Still switched on this device; the next visit re-sends the header.
+        console.error("Region selection failed", error);
+      } finally {
+        queryClient.invalidateQueries();
+      }
+    },
+    [queryClient]
+  );
 
-  const region = useMemo(() => (regionCode ? REGION_CONFIGS[regionCode] : null), [regionCode]);
+  const value = useMemo<RegionContextValue>(
+    () => ({
+      regionCode,
+      region: regionCode ? REGION_CONFIGS[regionCode] : null,
+      status,
+      availableRegions: REGION_LIST,
+      selectRegion,
+    }),
+    [regionCode, status, selectRegion]
+  );
 
-  const contextValue = useMemo<RegionContextValue>(() => ({
-    regionCode,
-    region,
-    status,
-    availableRegions,
-    selectRegion,
-    refreshRegion: loadRegion,
-    isMockRegion,
-  }), [regionCode, region, status, availableRegions, selectRegion, loadRegion, isMockRegion]);
-
-  return <RegionContext.Provider value={contextValue}>{children}</RegionContext.Provider>;
+  return <RegionContext.Provider value={value}>{children}</RegionContext.Provider>;
 }
 
 /** React hook exposing the region context value. */
 export function useRegionContext(): RegionContextValue {
-  return useContext(RegionContext);
+  const value = useContext(RegionContext);
+  if (!value) throw new Error("useRegion must be used inside RegionProvider");
+  return value;
 }
-
-

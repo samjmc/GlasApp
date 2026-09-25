@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
+import { Loader2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
 const AuthCallbackPage = () => {
@@ -11,7 +12,7 @@ const AuthCallbackPage = () => {
       try {
         // Supabase automatically handles the callback and stores the session
         const { data: { session }, error } = await supabase.auth.getSession();
-        
+
         if (error) {
           console.error('Auth callback error:', error);
           navigate('/login');
@@ -35,9 +36,9 @@ const AuthCallbackPage = () => {
   }, [navigate]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+    <div className="flex min-h-[70vh] items-center justify-center">
+      <div className="flex flex-col items-center gap-4 text-center">
+        <Loader2 className="h-10 w-10 animate-spin text-primary" aria-hidden="true" />
         <p className="text-lg text-muted-foreground">Completing sign in...</p>
       </div>
     </div>
@@ -45,26 +46,3 @@ const AuthCallbackPage = () => {
 };
 
 export default AuthCallbackPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -165,18 +165,18 @@ export default function ShadowCabinetDashboard() {
   };
 
   return (
-    <div className="p-8 space-y-8">
-      <div className="flex justify-between items-center">
+    <div className="space-y-8 p-8">
+      <div className="flex items-center justify-between gap-4">
         <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
+            <h1 className="flex items-center gap-2 font-display text-3xl font-bold tracking-tight">
                 <ShieldAlert className="h-8 w-8 text-primary" />
                 Shadow Cabinet War Room
             </h1>
             <p className="text-muted-foreground">Level 10 Agentic Surveillance System</p>
         </div>
         <div className="flex gap-4">
-            <Badge variant="outline" className="px-4 py-1 flex gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <Badge variant="outline" className="flex gap-2 px-4 py-1">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-success"></span>
                 System Online
             </Badge>
             <Badge variant="secondary" className="px-4 py-1">Admin Access Only</Badge>
@@ -201,18 +201,18 @@ export default function ShadowCabinetDashboard() {
                 </div>
 
                 {/* Agent Roster */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                     {team.agents.map((agent) => (
-                        <Card key={agent.name} className="relative overflow-hidden border-muted/60">
-                            <div className={`absolute top-0 left-0 w-1 h-full ${agent.status === 'active' ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-700'}`}></div>
+                        <Card key={agent.name} className="relative overflow-hidden">
+                            <div className={`absolute left-0 top-0 h-full w-1 ${agent.status === 'active' ? 'bg-success' : 'bg-elevated'}`}></div>
                             <CardHeader className="p-4 pb-2">
-                                <div className="flex justify-between items-start">
+                                <div className="flex items-start justify-between">
                                     <agent.icon className={`h-6 w-6 ${agent.status === 'active' ? 'text-primary' : 'text-muted-foreground'}`} />
-                                    <Badge variant={agent.status === 'active' ? 'default' : 'outline'} className="text-[10px] px-1 h-5">
+                                    <Badge variant={agent.status === 'active' ? 'default' : 'outline'} className="h-5 px-1 text-[10px]">
                                         {agent.status}
                                     </Badge>
                                 </div>
-                                <CardTitle className="text-sm font-bold mt-2">{agent.name}</CardTitle>
+                                <CardTitle className="mt-2 text-sm font-bold">{agent.name}</CardTitle>
                                 <CardDescription className="text-xs">{agent.role}</CardDescription>
                             </CardHeader>
                         </Card>
@@ -283,13 +283,13 @@ export default function ShadowCabinetDashboard() {
                 {team.id !== "shadow-cabinet" && (
                     <Card className="border-dashed">
                         <CardContent className="py-12 text-center text-muted-foreground">
-                            <div className="flex justify-center mb-4">
-                                {team.agents.length > 0 
+                            <div className="mb-4 flex justify-center">
+                                {team.agents.length > 0
                                     ? <Users className="h-12 w-12 opacity-20" />
                                     : <Lock className="h-12 w-12 opacity-20" />
                                 }
                             </div>
-                            <h3 className="text-lg font-semibold mb-2">Team Offline</h3>
+                            <h3 className="mb-2 text-lg font-semibold text-foreground">Team Offline</h3>
                             <p>This agent team is currently in development or standby mode.</p>
                             <Button variant="outline" className="mt-4" disabled>Initialize Team</Button>
                         </CardContent>
@@ -304,10 +304,10 @@ export default function ShadowCabinetDashboard() {
                 <div className="text-center text-muted-foreground py-8">No audits found. Run the scheduler to generate reports.</div>
             )}
             {qaHistory.map(audit => (
-                <Card key={audit.id} className={audit.anomaliesFound > 0 ? "border-yellow-500/50" : "border-green-500/50"}>
+                <Card key={audit.id} className={audit.anomaliesFound > 0 ? "border-warn/50" : "border-success/50"}>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-lg">
-                            {audit.anomaliesFound > 0 ? <AlertTriangle className="text-yellow-500 h-5 w-5"/> : <CheckCircle className="text-green-500 h-5 w-5"/>}
+                            {audit.anomaliesFound > 0 ? <AlertTriangle className="h-5 w-5 text-warn"/> : <CheckCircle className="h-5 w-5 text-success"/>}
                             Internal Audit Report
                             <Badge variant={audit.anomaliesFound > 0 ? "destructive" : "default"} className="ml-auto">
                                 {audit.anomaliesFound} Anomalies
@@ -318,13 +318,13 @@ export default function ShadowCabinetDashboard() {
                     <CardContent>
                         <div className="space-y-2">
                             {JSON.parse(audit.report || "[]").map((anomaly: string, i: number) => (
-                                <div key={i} className="flex items-start gap-2 text-sm p-2 bg-red-50 dark:bg-red-900/20 rounded text-red-600 dark:text-red-300">
+                                <div key={i} className="flex items-start gap-2 rounded bg-destructive/10 p-2 text-sm text-destructive">
                                     <span>•</span>
                                     <span>{anomaly}</span>
                                 </div>
                             ))}
                             {JSON.parse(audit.report || "[]").length === 0 && (
-                                <div className="flex items-center gap-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-3 rounded">
+                                <div className="flex items-center gap-2 rounded bg-success/10 p-3 text-success">
                                     <CheckCircle className="h-4 w-4" />
                                     All systems nominal. Data integrity verified.
                                 </div>
