@@ -248,16 +248,76 @@ function memberRefs($: ReturnType<typeof load>): Map<string, string> {
 // ---------------------------------------------------------------------------
 // Committee transcripts: only the roll call ("MEMBERS PRESENT") is read.
 // ---------------------------------------------------------------------------
-/** Member codes on a committee sitting's roll call, deduplicated, in transcript order. */
-export function parseRollCall(xml: string): string[] {
+export interface RollCall {
+  /** Member codes resolved through the transcript's own `TLCPerson` references. */
+  codes: string[];
+  /**
+   * Names of people on the roll call with no `TLCPerson` entry (measured: 103 in June 2026,
+   * 55 of them TDs). The caller resolves them against the roster by name.
+   */
+  unlinkedNames: string[];
+}
+
+/** A committee sitting's roll call, deduplicated, in transcript order. */
+export function parseRollCall(xml: string): RollCall {
   const $ = load(xml, { xml: true });
   const members = memberRefs($);
-  const present: string[] = [];
+  const codes: string[] = [];
+  const unlinkedNames: string[] = [];
   $('rollCall person').each((_, el) => {
     const code = members.get(($(el).attr('refersTo') ?? '').replace(/^#/, ''));
-    if (code && !present.includes(code)) present.push(code);
+    if (code) {
+      if (!codes.includes(code)) codes.push(code);
+      return;
+    }
+    const name = $(el).text().replace(/\s+/g, ' ').trim();
+    if (name && !unlinkedNames.includes(name)) unlinkedNames.push(name);
   });
-  return present;
+  return { codes, unlinkedNames };
+}
+
+// "minister of state" before "minister": the first alternative that matches wins.
+const HONORIFIC = /^(deputy|teachta|td|senator|seanadoir|an|dr|minister of state|minister)\s+/;
+
+/** "Deputy Seán Ó Fearghaíl" and "Seán Ó Fearghaíl" → "sean o fearghail". */
+export function normaliseName(name: string): string {
+  let n = name
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  while (HONORIFIC.test(n)) n = n.replace(HONORIFIC, '');
+  return n;
+}
+
+/**
+ * Resolve roll-call names that had no member reference against the roster, by name. A name
+ * shared by two members stays unresolved rather than being given to either. Returns the
+ * resolved codes and how many unresolved names could belong to a TD (anyone not titled
+ * "Senator"): a sitting with any of those cannot say who was absent.
+ */
+export function resolveRollCallNames(
+  names: string[],
+  roster: Array<{ fullName: string; memberCode: string }>,
+): { codes: string[]; unresolvedTds: number } {
+  const byName = new Map<string, string | null>();
+  for (const m of roster) {
+    const key = normaliseName(m.fullName);
+    byName.set(key, byName.has(key) && byName.get(key) !== m.memberCode ? null : m.memberCode);
+  }
+  const codes: string[] = [];
+  let unresolvedTds = 0;
+  for (const name of names) {
+    const code = byName.get(normaliseName(name));
+    if (code) {
+      if (!codes.includes(code)) codes.push(code);
+    } else if (!/^\s*senator\b/i.test(name)) {
+      unresolvedTds++;
+    }
+  }
+  return { codes, unresolvedTds };
 }
 
 /** Last path segment of an Oireachtas URI: ".../committee/dail/34/committee_of_public_accounts" → "committee_of_public_accounts". */
@@ -314,9 +374,19 @@ function plainText(html: string | null | undefined): string | null {
   return t ? t : null;
 }
 
-/** "Seanad Éireann" / ".../def/house/seanad" → "seanad"; anything else → "dail". */
-function houseCode(chamber: { showAs?: string | null; uri?: string | null } | null | undefined): 'dail' | 'seanad' {
-  return /seanad/i.test(`${chamber?.uri ?? ''} ${chamber?.showAs ?? ''}`) ? 'seanad' : 'dail';
+/**
+ * Where a bill's debate took place, for its section id: "dail", "seanad", or
+ * "committee-<code>". Read from the debate record URI (".../debateRecord/<house>/<date>/…"),
+ * because a committee stage's chamber is ".../def/committee" and treating it as the Dáil
+ * joined it to unrelated plenary votes on the same day.
+ */
+function debateHouse(debate: { uri?: string | null; chamber?: { showAs?: string | null; uri?: string | null } | null }): string {
+  const seg = debate.uri?.match(/\/debateRecord\/([^/]+)\//)?.[1];
+  if (seg) return seg === 'dail' || seg === 'seanad' ? seg : `committee-${seg}`;
+  const chamber = `${debate.chamber?.uri ?? ''} ${debate.chamber?.showAs ?? ''}`;
+  if (/\/def\/house\/dail|^\s*Dáil/i.test(chamber)) return 'dail';
+  if (/seanad/i.test(chamber)) return 'seanad';
+  return 'committee';
 }
 
 /** NULL when the record lacks its number or year; a bill is never guessed at. */
@@ -351,7 +421,7 @@ export function parseBill(raw: RawBill): ParsedBill | null {
   const debates = (raw.debates ?? []).flatMap((d) => {
     const date = isoDay(d.date);
     if (!date || !d.debateSectionId) return [];
-    const debateSectionId = `${houseCode(d.chamber ?? { uri: d.uri })}-${date}-${d.debateSectionId}`;
+    const debateSectionId = `${debateHouse(d)}-${date}-${d.debateSectionId}`;
     if (seen.has(debateSectionId)) return [];
     seen.add(debateSectionId);
     return [{ billId: id, debateSectionId, date, chamber: d.chamber?.showAs ?? null, title: d.showAs ?? null }];

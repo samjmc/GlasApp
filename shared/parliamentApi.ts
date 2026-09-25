@@ -44,7 +44,8 @@ export interface TdParliamentSummary {
   /** 0–100, one decimal. NULL below a minimum number of sittings. */
   committeeAttendancePct: number | null;
   /** Bills this TD is named as a sponsor of, this term. */
-  billsSponsored: number;
+  /** NULL until the bills feed has run once. */
+  billsSponsored: number | null;
 }
 
 export interface TdOffice {

@@ -289,7 +289,13 @@ export async function tdSummary(tdId: number, database: Db = db) {
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.id, tdId));
   if (!row) return null;
-  const [votes, billsSponsored] = await Promise.all([votesOf(tdId, {}, database), countBillsSponsored(tdId, database)]);
+  const [votes, billsFeed, billCount] = await Promise.all([
+    votesOf(tdId, {}, database),
+    getSyncState('bills', database),
+    countBillsSponsored(tdId, database),
+  ]);
+  // Before the bills feed has run once, zero bills would read as "sponsored none".
+  const billsSponsored = billsFeed.throughDate ? billCount : null;
   const { td, stats } = row;
   const eligible = stats?.committeeSittingsEligible ?? null;
   const attended = stats?.committeeSittingsAttended ?? null;

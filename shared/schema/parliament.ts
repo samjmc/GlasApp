@@ -175,6 +175,11 @@ export const committeeSittings = politics.table(
     date: date('date').notNull(),
     /** Members on the roll call. 0 means the transcript had none, not that nobody came. */
     presentCount: integer('present_count').notNull(),
+    /**
+     * Roll-call names that could be a TD but matched no member. Such a sitting cannot say
+     * who was absent, so it is left out of committee attendance.
+     */
+    unresolvedCount: integer('unresolved_count').notNull().default(0),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('committee_sittings_committee_date_idx').on(t.committeeId, t.date)],
@@ -261,8 +266,11 @@ export const billDebates = politics.table(
     billId: varchar('bill_id', { length: 20 })
       .notNull()
       .references(() => bills.id, { onDelete: 'cascade' }),
-    /** `dail-<date>-<eId>` or `seanad-<date>-<eId>`; the Dáil form matches `divisions`. */
-    debateSectionId: varchar('debate_section_id', { length: 80 }).notNull(),
+    /**
+     * `dail-<date>-<eId>`, `seanad-<date>-<eId>` or `committee-<code>-<date>-<eId>` (up to
+     * ~130 chars). Only the Dáil form matches `divisions`.
+     */
+    debateSectionId: text('debate_section_id').notNull(),
     date: date('date').notNull(),
     chamber: text('chamber'),
     title: text('title'),
@@ -318,8 +326,6 @@ export type DebateSectionRow = typeof debateSections.$inferSelect;
 export type NewDebateSection = typeof debateSections.$inferInsert;
 export type NewDebateSpeech = typeof debateSpeeches.$inferInsert;
 export type TdParliamentStatsRow = typeof tdParliamentStats.$inferSelect;
-export type NewCommittee = typeof committees.$inferInsert;
-export type NewCommitteeMembership = typeof committeeMemberships.$inferInsert;
 export type NewBill = typeof bills.$inferInsert;
 export type NewBillSponsor = typeof billSponsors.$inferInsert;
 export type NewBillStage = typeof billStages.$inferInsert;

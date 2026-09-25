@@ -11,7 +11,6 @@ import { isoDay, type RawBill, type RawDivision, type RawQuestion } from './pars
 import { addDays } from './window';
 
 const BASE_URL = 'https://api.oireachtas.ie/v1';
-const MEMBER_URI_PREFIX = 'https://data.oireachtas.ie/ie/oireachtas/member/id/';
 const TIMEOUT_MS = 60_000;
 const RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
@@ -20,6 +19,8 @@ const RETRY_DELAY_MS = 1000;
 class ClientError extends Error {}
 /** The current Dáil. Bump at the next general election. */
 export const CURRENT_DAIL = 34;
+/** Path segment of this Dáil's committee URIs (joint committees included). */
+const DAIL_COMMITTEE_PATH = `/committee/dail/${CURRENT_DAIL}/`;
 /** Offices whose holder chairs the house and does not vote. */
 export const PRESIDING_OFFICES = ['Ceann Comhairle'] as const;
 
@@ -177,8 +178,11 @@ export class OireachtasClient {
       });
       const page = (body.results ?? []).map((r) => r.question);
       out.push(...page);
-      if (page.length < limit) return out;
+      if (page.length < limit) break;
     }
+    // A short read would store a month with too few questions and call it complete.
+    if (out.length < total) throw new Error(`Read ${out.length} of ${total} questions for ${from}..${to}`);
+    return out;
   }
 
   /** Every bill with activity since `from`: the whole current term in one or two pages. */
@@ -230,10 +234,6 @@ function midpoint(from: string, to: string): string {
   return new Date(a + Math.floor((b - a) / 86_400_000 / 2) * 86_400_000).toISOString().slice(0, 10);
 }
 
-export function memberUri(memberCode: string): string {
-  return MEMBER_URI_PREFIX + memberCode;
-}
-
 // ---------------------------------------------------------------------------
 // Raw shapes (only the fields read here)
 // ---------------------------------------------------------------------------
@@ -256,7 +256,7 @@ export interface RawMember {
         uri?: string;
         committeeName?: Array<{ nameEn?: string }>;
         committeeType?: string[];
-        role?: { title?: string } | null;
+        role?: { title?: string; dateRange?: DateRange } | null;
         memberDateRange?: DateRange;
       }>;
     };
@@ -293,17 +293,24 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     .filter((o) => o.office?.officeName?.showAs && !o.office.dateRange?.end)
     .map((o) => ({ title: o.office!.officeName!.showAs!, since: isoDay(o.office!.dateRange?.start) }));
 
+  // The seat lists committees of earlier terms and of the Seanad too (measured: 12 of 696),
+  // and memberships that ended before this seat began (14). Only this Dáil's committees,
+  // held during this seat, say anything about this TD's attendance.
+  const seatStart = isoDay(seat.dateRange.start) ?? seat.dateRange.start;
   const committees = (seat.committees ?? []).flatMap((c) => {
     const start = isoDay(c.memberDateRange?.start);
+    const end = isoDay(c.memberDateRange?.end);
     const name = c.committeeName?.[0]?.nameEn;
-    if (!c.uri || !start || !name) return [];
+    if (!c.uri || !start || !name || !c.uri.includes(DAIL_COMMITTEE_PATH)) return [];
+    if (end !== null && end <= seatStart) return [];
     return [{
       uri: c.uri,
       name,
       committeeType: c.committeeType?.[0] ?? null,
-      role: c.role?.title || null,
+      // A role (chair, vice-chair) can end while the membership goes on.
+      role: (!c.role?.dateRange?.end && c.role?.title) || null,
       start,
-      end: isoDay(c.memberDateRange?.end),
+      end,
     }];
   });
 
