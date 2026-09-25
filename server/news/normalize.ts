@@ -78,6 +78,15 @@ function dropBoilerplate(text: string): string {
   return text.replace(/\s*The post .+ appeared first on .+\.?$/i, '').trim();
 }
 
+/**
+ * A standfirst worth showing: at least MIN_SUMMARY_WORDS words. Feeds sometimes send junk here
+ * (the Irish Times sent the single letter "v" on 2026-09-23), which then reached the vote card.
+ */
+export const MIN_SUMMARY_WORDS = 3;
+export function isUsableSummary(text: string): boolean {
+  return text.trim().split(/\s+/).filter((w) => /[a-z0-9À-ɏ]/i.test(w)).length >= MIN_SUMMARY_WORDS;
+}
+
 export type NormalizeResult = { ok: true; article: NewArticle } | { ok: false; reason: string };
 
 export function normalizeItem(item: RawItem, now: Date): NormalizeResult {
@@ -101,7 +110,7 @@ export function normalizeItem(item: RawItem, now: Date): NormalizeResult {
       sourceSlug: item.sourceSlug,
       url,
       title,
-      summary: snippet ? cutSummary(snippet) : null,
+      summary: isUsableSummary(snippet) ? cutSummary(snippet) : null,
       content: body || snippet,
       images,
       // The best feed image, until ingest checks it and maybe finds a better one on the page.

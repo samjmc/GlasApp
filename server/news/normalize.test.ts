@@ -82,6 +82,11 @@ describe('normalizeItem', () => {
     expect(r.ok && r.article.content).toBe('Full body text.');
   });
 
+  it.each(['v', 'Read more', '— …', '   '])('drops a junk standfirst %j (the Irish Times sent "v")', (snippet) => {
+    const r = normalizeItem(item({ snippet }), NOW);
+    expect(r.ok && r.article.summary).toBeNull();
+  });
+
   it('strips the WordPress "appeared first on" footer from summaries', () => {
     const r = normalizeItem(item({ snippet: 'Cheaper migrant labour The post Are we on the same trajectory appeared first on Gript.' }), NOW);
     expect(r.ok && r.article.summary).toBe('Cheaper migrant labour');

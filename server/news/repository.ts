@@ -87,6 +87,7 @@ export async function insertArticles(rows: NewNewsArticle[], database: Db = db):
 export interface ClaimedArticle {
   id: number;
   title: string;
+  /** The neutral AI summary when there is one, else the publisher's standfirst. */
   summary: string | null;
   content: string;
   url: string;
@@ -99,7 +100,7 @@ export interface ClaimedArticle {
 const claimedColumns = {
   id: newsArticles.id,
   title: newsArticles.title,
-  summary: newsArticles.summary,
+  summary: sql<string | null>`coalesce(${newsArticles.aiSummary}, ${newsArticles.summary})`,
   content: newsArticles.content,
   url: newsArticles.url,
   imageUrl: newsArticles.imageUrl,
