@@ -104,11 +104,6 @@ import { FirstTimeUserTour } from '@/components/onboarding';
 - Explains the news scraping system
 - Lists all features
 
-##### EmptyIdeasState
-- Shown when no policy ideas submitted
-- Encourages first submission
-- Prominent submit button
-
 ##### EmptyLocalRepresentativesState
 - Shown when location not enabled
 - Requests location permission
@@ -171,7 +166,6 @@ import {
 Throughout the experience, users see beautiful empty states instead of blank pages:
 - **Feed tab**: EmptyNewsFeedState (until articles are scraped)
 - **My Rankings**: quiz interface (until `GET /api/quiz/me` returns at least one result)
-- **Ideas page**: EmptyIdeasState (until first submission)
 
 ---
 

@@ -80,7 +80,7 @@ router.get('/status', async (req, res, next) => {
  * 
  * Run the full pipeline in sequence:
  * 1. Ingest (fetch and store new articles)
- * 2. Event deduplication + scoring
+ * 2. Scoring
  *
  * Useful for manual testing or catch-up processing.
  */

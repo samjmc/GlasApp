@@ -2,8 +2,6 @@
  * Consolidated Geographic Routes
  * Handles all geography and location-related operations:
  * - Constituency detection from coordinates
- * - User location tracking
- * - Heatmap data generation
  * - Constituency information and election results
  * - Geographic statistics
  * 
@@ -14,16 +12,14 @@
  * - geographicData.ts
  */
 
-import { requireAuth, requireJob } from '../../auth';
 import express, { Request, Response } from 'express';
 import { db } from '../../db';
-import { userLocations, users, constituencies, parties, electionResults, elections, userPreferences } from '@shared/schema';
+import { constituencies, parties, electionResults, elections } from '@shared/schema';
 import { quizResults } from '@shared/schema/quiz';
 import { eq, and, count, sql } from 'drizzle-orm';
 import fs from 'fs';
 import path from 'path';
 import { cached, TTL } from '../../services/cacheService';
-import { requestLogger } from '../../utils/logger';
 
 const router = express.Router();
 
@@ -132,166 +128,6 @@ router.get("/constituency", async (req, res, next) => {
     const result = findConstituencyFromCoords(latitude, longitude);
     
     res.json(result);
-  } catch (error) {
-    next(error);
-  }
-});
-
-/**
- * POST /api/location/users/location - Save user location
- * Authenticated: the authenticated id is the record key. A body userId, when
- * present, must match the authenticated identity (IDOR write protection).
- */
-router.post("/users/location", requireAuth, async (req, res, next) => {
-  try {
-    const { userId, latitude, longitude, constituency, county, accuracy } = req.body;
-
-    if (!latitude || !longitude) {
-      return res.status(400).json({ error: "Latitude and longitude are required" });
-    }
-
-    const authenticatedId =
-      (req.user as { id?: string | number } | null | undefined)?.id ??
-      req.user?.id;
-
-    if (!authenticatedId) {
-      return res.status(401).json({ success: false, message: 'Authentication required' });
-    }
-
-    // A body userId may be present (client convenience); it must match the
-    // authenticated identity or the request is denied.
-    if (userId && String(userId) !== String(authenticatedId)) {
-      return res.status(403).json({ success: false, message: 'Access denied' });
-    }
-
-    const recordId = String(authenticatedId);
-
-    // Check if user location already exists
-    const existing = await db
-      .select()
-      .from(userLocations)
-      .where(eq(userLocations.firebaseUid, recordId))
-      .limit(1);
-
-    if (existing.length > 0) {
-      // Update existing location
-      await db
-        .update(userLocations)
-        .set({
-          latitude: latitude.toString(),
-          longitude: longitude.toString(),
-          constituency,
-          county,
-          accuracy,
-          updatedAt: new Date()
-        })
-        .where(eq(userLocations.firebaseUid, recordId));
-    } else {
-      // Insert new location
-      await db.insert(userLocations).values({
-        firebaseUid: recordId,
-        latitude: latitude.toString(),
-        longitude: longitude.toString(),
-        constituency,
-        county,
-        accuracy
-      });
-    }
-    
-    res.json({ success: true });
-  } catch (error) {
-    next(error);
-  }
-});
-
-/**
- * GET /api/location/users/by-constituency/:constituency - Get users by constituency
- * Admin-only: returns user identifiers (privileged data exposure).
- */
-router.get("/users/by-constituency/:constituency", requireJob, async (req, res, next) => {
-  try {
-    const { constituency } = req.params;
-
-    requestLogger(req).info(
-      {
-        operation: 'admin.geographic.byConstituency',
-        actor: req.user?.email ?? req.user?.id,
-        constituency
-      },
-      'Constituency user lookup'
-    );
-
-    const users = await db
-      .select({
-        firebaseUid: userLocations.firebaseUid,
-        constituency: userLocations.constituency,
-        county: userLocations.county,
-        createdAt: userLocations.createdAt
-      })
-      .from(userLocations)
-      .where(eq(userLocations.constituency, constituency));
-    
-    res.json(users);
-  } catch (error) {
-    next(error);
-  }
-});
-
-/**
- * GET /api/location/stats/constituencies - Get constituency statistics
- */
-router.get("/stats/constituencies", async (req, res, next) => {
-  try {
-    const stats = await db
-      .select({
-        constituency: userLocations.constituency,
-        userCount: count(userLocations.id)
-      })
-      .from(userLocations)
-      .groupBy(userLocations.constituency);
-    
-    res.json(stats);
-  } catch (error) {
-    next(error);
-  }
-});
-
-// ============================================
-// Heatmap Data
-// From heatmapData.ts
-// ============================================
-
-/**
- * GET /api/heatmap - Get heatmap data based on user locations
- */
-router.get("/heatmap", async (req: Request, res: Response, next) => {
-  try {
-    // Get all users with location data (Phase 1: use user_preferences with fallback to users via LEFT JOIN)
-    const usersWithLocation = await db
-      .select({
-        latitude: sql`COALESCE(${userPreferences.latitude}, ${users.latitude})`,
-        longitude: sql`COALESCE(${userPreferences.longitude}, ${users.longitude})`,
-        county: sql`COALESCE(${userPreferences.county}, ${users.county})`,
-      })
-      .from(users)
-      .leftJoin(userPreferences, eq(users.id, userPreferences.userId))
-      .where(
-        // Only include users who have location data
-        sql`COALESCE(${userPreferences.latitude}, ${users.latitude}) IS NOT NULL AND COALESCE(${userPreferences.longitude}, ${users.longitude}) IS NOT NULL`
-      );
-
-    // Transform data for heatmap
-    const heatmapPoints = usersWithLocation.map(user => ({
-      lat: Number(user.latitude),
-      lng: Number(user.longitude),
-      value: 1 // Default value for each user point
-    }));
-
-    res.json({
-      success: true,
-      data: heatmapPoints,
-      message: "Heatmap data retrieved successfully"
-    });
   } catch (error) {
     next(error);
   }

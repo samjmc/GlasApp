@@ -106,27 +106,12 @@
 │ ELECTION │ │ CANDIDATES│ │ USER       │
 │ RESULTS  │ │           │ │ LOCATIONS  │
 └──────────┘ └───────────┘ └────────────┘
-
-┌──────────────────────────────────────────────────────────────┐
-│                  COMMUNITY FEATURES                           │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │              PROBLEMS                                  │ │
-│  │  ┌──────────────────────────────────────────────────┐ │ │
-│  │  │ id, title, description, category, votes, etc.   │ │ │
-│  │  └──────────────────────────────────────────────────┘ │ │
-│  │              SOLUTIONS                                 │ │
-│  │  ┌──────────────────────────────────────────────────┐ │ │
-│  │  │ id, problem_id, title, description, votes, etc. │ │ │
-│  │  └──────────────────────────────────────────────────┘ │ │
-│  └────────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────────┘
 ```
 
 ### Table Statistics
 - **Total Tables:** 25+
 - **User-related:** 8 tables
 - **Political Data:** 10 tables
-- **Community Features:** 5 tables
 - **Voting & Tracking:** 7 tables
 
 ---
@@ -244,20 +229,6 @@ electoral-mapping/
 ### Community Module
 ```
 community/
-├── Problems Platform
-│   ├── Problem submission
-│   ├── Voting system
-│   └── Status tracking
-│
-├── Solutions Platform
-│   ├── Nested under problems
-│   ├── Detailed descriptions
-│   └── Voting/ranking
-│
-├── Ideas Board (Legacy)
-│   ├── Legacy system
-│   └── Migration to Problems/Solutions
-│
 └── Engagement Tracking
     ├── User activity
     ├── Contribution history

@@ -32,6 +32,7 @@ export function feedArticle(row: repo.FeedRow, policyVote: PolicyQuestion | null
     sentiment: row.sentiment,
     impactScore: row.impact,
     affectedTDs: row.affectedTds,
+    alsoReportedBy: row.alsoReportedBy,
     policyVote,
   };
 }
