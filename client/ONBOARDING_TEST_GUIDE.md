@@ -51,8 +51,8 @@ console.log('✅ Onboarding reset! Refresh page to see flow.');
 
 #### Database Reset (For Quiz)
 ```sql
--- In Supabase SQL Editor
-DELETE FROM user_quiz_results 
+-- Against the Postgres database, NOT Supabase (results are stored server-side)
+DELETE FROM politics.quiz_results 
 WHERE user_id = 'YOUR_USER_ID_HERE';
 ```
 
@@ -183,7 +183,7 @@ WHERE user_id = 'YOUR_USER_ID_HERE';
 ```
 1. User sees onboarding step 4
 2. Clicks "Take Quiz Now" CTA
-3. Redirects to /enhanced-quiz
+3. Redirects to /quiz
 4. User completes quiz
 5. Returns to homepage
 6. Welcome banner doesn't appear
@@ -224,14 +224,14 @@ setTimeout(() => {
 
 ### Issue: Welcome banner won't hide
 **Check**:
-- Quiz completion creates `user_quiz_results` record
+- `GET /api/quiz/me` returns at least one result
 - user_id matches authenticated user
 - Console for errors in WelcomeBanner
 
 **Fix**:
 ```sql
 -- Verify quiz record exists
-SELECT * FROM user_quiz_results 
+SELECT * FROM politics.quiz_results 
 WHERE user_id = 'YOUR_USER_ID';
 ```
 
@@ -397,13 +397,13 @@ console.log({
 
 ### Database
 ```sql
--- Check quiz completion
+-- Check quiz completion (server-side; the client reads it via GET /api/quiz/me)
 SELECT 
   user_id,
-  immigration,
-  healthcare,
-  completed_at
-FROM user_quiz_results
+  vector,
+  ideology,
+  created_at
+FROM politics.quiz_results
 WHERE user_id = 'YOUR_USER_ID';
 ```
 

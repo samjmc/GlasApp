@@ -1,51 +1,45 @@
 /**
- * Enhanced TD Profile Page
- * Comprehensive TD profile with modern design, polling data, and rich analytics
+ * TD profile (/td/:name): hero band with the overall score and ranks, the three score
+ * pillars, the Dáil record, and tabs for votes, debates, news and background.
  */
 
 import { useState, type ReactNode } from 'react';
 import { useParams, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
+import {
+  Briefcase,
+  ChevronLeft,
+  ExternalLink,
+  MessageSquare,
+  Minus,
+  Newspaper,
+  SearchX,
+  Share2,
+  TrendingDown,
+  TrendingUp,
+  UserRound,
+  Users,
+  Vote,
+} from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ErrorDisplay, NotFoundError } from '@/components/ErrorDisplay';
-import { PageHeader } from "@/components/PageHeader";
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ScoreRing } from '@/components/pulse/ScoreRing';
+import { ScoreBar, StatTile } from '@/components/pulse/Stat';
+import { PartyLabel, TDAvatar } from '@/components/pulse/Party';
+import { VoteChip } from '@/components/pulse/VoteChip';
+import { EmptyState } from '@/components/pulse/EmptyState';
+import { NewsArticleCard } from '@/components/NewsArticleCard';
+import { RetryButton } from '@/components/data/RetryButton';
+import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
 import { formatIsoDate } from '@/lib/isoDate';
-import type { TdParliamentSummary, TdVote, TdDebateContribution, DivisionVote, TdCommittee, TdBill, TdQuestionTopic } from '@shared/parliamentApi';
+import { partyStyle } from '@/lib/parties';
+import { cn } from '@/lib/utils';
+import type { TdParliamentSummary, TdVote, TdDebateContribution } from '@shared/parliamentApi';
 import type { FeedArticle } from '@/lib/news';
-import {
-  TrendingUp,
-  TrendingDown,
-  Award,
-  Users,
-  FileText,
-  BarChart3,
-  Crown,
-  Briefcase,
-  Calendar,
-  ExternalLink,
-  MapPin,
-  MessageSquare,
-  Vote,
-  LineChart as LineChartIcon,
-  ChevronLeft,
-  Share2,
-  Building2,
-  Newspaper
-} from 'lucide-react';
-import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-} from 'recharts';
-
-type PillarColor = 'emerald' | 'blue' | 'cyan' | 'indigo' | 'purple' | 'orange' | 'green';
 
 type ScoreDimension = 'transparency' | 'effectiveness' | 'integrity' | 'consistency';
 
@@ -95,22 +89,6 @@ interface TDProfile {
   }[];
 }
 
-const DIMENSION_LABELS: Record<ScoreDimension, string> = {
-  transparency: 'Transparency',
-  effectiveness: 'Effectiveness',
-  integrity: 'Integrity',
-  consistency: 'Consistency',
-};
-
-interface NewsArticle {
-  url?: string;
-  title?: string;
-  ai_summary?: string | null;
-  source?: string;
-  published_date?: string;
-  sentiment?: string;
-}
-
 type ApiEnvelope<T> = { success: true; data: T; meta?: { total: number } };
 
 async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
@@ -119,12 +97,39 @@ async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
   return res.json();
 }
 
-const VOTE_LABEL: Record<DivisionVote, string> = { ta: 'Tá', nil: 'Níl', staon: 'Staon' };
+/** Seats in the 34th Dáil. */
+const DAIL_SEATS = 174;
+
+/** A count, or "—" when unknown. */
+function num(value: number | null | undefined): string {
+  return value === null || value === undefined ? '—' : value.toLocaleString('en-IE');
+}
+
+/** A percentage, or "—" when unknown. */
+function pct(value: number | null | undefined): string {
+  return value === null || value === undefined ? '—' : `${value}%`;
+}
+
+/** A timestamp (or date-only string) as "23 Sep 2026". */
+function formatDay(value: string | null | undefined): string {
+  if (!value) return '—';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return formatIsoDate(value);
+  const d = new Date(value);
+  return Number.isNaN(d.getTime())
+    ? '—'
+    : d.toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function humanise(value: string): string {
+  const text = value.replace(/_/g, ' ');
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
 
 export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
+  const { toast } = useToast();
 
-  const { data: scoreData, isLoading, error } = useQuery<TDProfile>({
+  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TDProfile>({
     queryKey: ['td-profile-v3', name],  // v3: payload shape changed with /api/scores
     queryFn: async () => {
       const res = await fetch(`/api/scores/td/${encodeURIComponent(name || '')}`);
@@ -145,7 +150,7 @@ export default function TDProfilePageEnhanced() {
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     staleTime: 300000  // 5 minutes
   });
-  
+
   const tdId = scoreData?.id;
 
   const [votesAgainstPartyOnly, setVotesAgainstPartyOnly] = useState(false);
@@ -153,7 +158,9 @@ export default function TDProfilePageEnhanced() {
   const {
     data: parliamentSummaryResp,
     isLoading: parliamentSummaryLoading,
-    error: parliamentSummaryError
+    error: parliamentSummaryError,
+    refetch: refetchParliamentSummary,
+    isFetching: parliamentSummaryFetching,
   } = useQuery({
     queryKey: queryKeys.parliament.tdSummary(tdId ?? 0),
     queryFn: () => getParliament<TdParliamentSummary>(`/api/parliament/tds/${tdId}`),
@@ -162,7 +169,13 @@ export default function TDProfilePageEnhanced() {
   });
   const parliamentSummary = parliamentSummaryResp?.data;
 
-  const { data: tdVotesResp, isLoading: tdVotesLoading, isError: tdVotesError } = useQuery({
+  const {
+    data: tdVotesResp,
+    isLoading: tdVotesLoading,
+    isError: tdVotesError,
+    refetch: refetchVotes,
+    isFetching: tdVotesFetching,
+  } = useQuery({
     queryKey: queryKeys.parliament.tdVotes(tdId ?? 0, 20, votesAgainstPartyOnly),
     queryFn: () =>
       getParliament<TdVote[]>(
@@ -173,7 +186,13 @@ export default function TDProfilePageEnhanced() {
   });
   const tdVotes = tdVotesResp?.data ?? [];
 
-  const { data: tdDebatesResp, isLoading: tdDebatesLoading, isError: tdDebatesError } = useQuery({
+  const {
+    data: tdDebatesResp,
+    isLoading: tdDebatesLoading,
+    isError: tdDebatesError,
+    refetch: refetchDebates,
+    isFetching: tdDebatesFetching,
+  } = useQuery({
     queryKey: queryKeys.parliament.tdDebates(tdId ?? 0, 10),
     queryFn: () => getParliament<TdDebateContribution[]>(`/api/parliament/tds/${tdId}/debates?limit=10`),
     enabled: !!tdId,
@@ -181,32 +200,8 @@ export default function TDProfilePageEnhanced() {
   });
   const tdDebateContributions = tdDebatesResp?.data ?? [];
 
-  const { data: tdCommitteesResp, isLoading: tdCommitteesLoading, isError: tdCommitteesError } = useQuery({
-    queryKey: queryKeys.parliament.tdCommittees(tdId ?? 0),
-    queryFn: () => getParliament<TdCommittee[]>(`/api/parliament/tds/${tdId}/committees`),
-    enabled: !!tdId,
-    staleTime: 5 * 60 * 1000
-  });
-  const tdCommittees = tdCommitteesResp?.data ?? [];
-
-  const { data: tdBillsResp, isLoading: tdBillsLoading, isError: tdBillsError } = useQuery({
-    queryKey: queryKeys.parliament.tdBills(tdId ?? 0, 20),
-    queryFn: () => getParliament<TdBill[]>(`/api/parliament/tds/${tdId}/bills?limit=20`),
-    enabled: !!tdId,
-    staleTime: 5 * 60 * 1000
-  });
-  const tdBills = tdBillsResp?.data ?? [];
-
-  const { data: tdQuestionTopicsResp, isLoading: tdQuestionTopicsLoading, isError: tdQuestionTopicsError } = useQuery({
-    queryKey: queryKeys.parliament.tdQuestionTopics(tdId ?? 0),
-    queryFn: () => getParliament<TdQuestionTopic[]>(`/api/parliament/tds/${tdId}/question-topics`),
-    enabled: !!tdId,
-    staleTime: 5 * 60 * 1000
-  });
-  const tdQuestionTopics = tdQuestionTopicsResp?.data ?? [];
-
-  // Fetch recent news articles for this TD
-  const { data: newsArticles } = useQuery({
+  // Recent news articles for this TD
+  const { data: newsArticles = [], isLoading: newsLoading } = useQuery({
     queryKey: queryKeys.td.news(name || ''),
     queryFn: async () => {
       const res = await fetch(`/api/news-feed/td/${encodeURIComponent(name || '')}`);
@@ -217,8 +212,8 @@ export default function TDProfilePageEnhanced() {
     enabled: !!name,
     staleTime: 300000  // 5 minutes
   });
-  
-  // Fetch real polling data for the TD's party
+
+  // Latest polling for the TD's party
   const { data: partyPolling } = useQuery({
     queryKey: ['party-polling', scoreData?.party],
     queryFn: async () => {
@@ -231,1125 +226,701 @@ export default function TDProfilePageEnhanced() {
         .eq('entity_type', 'party')
         .eq('entity_name', scoreData.party)
         .maybeSingle();
-      
+
       if (error) {
         console.error('Polling fetch error:', error);
         return null;
       }
-      
+
       return data;
     },
     enabled: !!scoreData?.party
   });
-  
-  const score = scoreData;
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">Loading TD profile...</p>
+      <div className="flex flex-col gap-6" aria-busy="true">
+        <Skeleton className="h-11 w-32 rounded-lg" />
+        <Skeleton className="h-72 rounded-2xl sm:h-56" />
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+          <Skeleton className="h-52 rounded-2xl" />
+          <Skeleton className="h-52 rounded-2xl" />
+        </div>
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <Skeleton className="h-96 rounded-2xl" />
+          <Skeleton className="h-64 rounded-2xl" />
         </div>
       </div>
     );
   }
-  
-  // Error handling
-  if (error) {
-    const isNotFound = error instanceof Error && error.message === 'TD_NOT_FOUND';
-    return (
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        {isNotFound ? (
-          <NotFoundError resourceName="TD" />
-        ) : (
-          <ErrorDisplay
-            title="Failed to load TD profile"
-            message={error instanceof Error ? error.message : 'Unable to fetch TD data'}
-            error={error}
-            onRetry={() => window.location.reload()}
-            type="error"
-          />
-        )}
-        <div className="mt-6 text-center">
-          <Link href="/">
-            <Button variant="outline">Return to Homepage</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-  
-  if (!score) {
-    return (
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <NotFoundError resourceName="TD" />
-        <div className="mt-6 text-center">
-          <Link href="/">
-            <Button variant="outline">Return to Homepage</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-  
-  const getScoreRating = (score: number) => {
-    if (score >= 80) return { label: 'Excellent', color: 'text-emerald-600', bgColor: 'bg-emerald-50', borderColor: 'border-emerald-300' };
-    if (score >= 70) return { label: 'Very Good', color: 'text-green-600', bgColor: 'bg-green-50', borderColor: 'border-green-300' };
-    if (score >= 60) return { label: 'Good', color: 'text-blue-600', bgColor: 'bg-blue-50', borderColor: 'border-blue-300' };
-    if (score >= 50) return { label: 'Average', color: 'text-yellow-600', bgColor: 'bg-yellow-50', borderColor: 'border-yellow-300' };
-    return { label: 'Below Average', color: 'text-orange-600', bgColor: 'bg-orange-50', borderColor: 'border-orange-300' };
-  };
-  
-  const overallScore = score.overallScore;
-  const rating = overallScore !== null ? getScoreRating(overallScore) : null;
 
-  const pillars: { label: string; color: PillarColor; score: number | null; description: string }[] = [
-    {
-      label: 'News Impact',
-      color: 'emerald',
-      score: score.newsScore,
-      description: `${score.totalStories} articles analysed`
-    },
-    {
-      label: 'Parliamentary Activity',
-      color: 'blue',
-      score: score.parliamentaryScore,
-      description: 'Questions, attendance and committee work.'
-    },
-    {
-      label: 'Debate Performance',
-      color: 'purple',
-      score: score.debateScore,
-      description: 'Oireachtas debate contributions.'
+  if (error || !scoreData) {
+    const isNotFound = !error || (error instanceof Error && error.message === 'TD_NOT_FOUND');
+    return (
+      <EmptyState
+        icon={SearchX}
+        title={isNotFound ? 'TD not found' : 'Could not load this TD'}
+        action={
+          isNotFound ? (
+            <Button asChild variant="secondary">
+              <Link href="/rankings">See all TDs</Link>
+            </Button>
+          ) : (
+            <RetryButton onRetry={() => refetch()} pending={isFetching} />
+          )
+        }
+        className="mt-6"
+      >
+        {isNotFound
+          ? 'No TD in the current Dáil has that name. Pick one from the rankings.'
+          : error instanceof Error
+            ? error.message
+            : 'Unable to fetch TD data.'}
+      </EmptyState>
+    );
+  }
+
+  const score = scoreData;
+  const partyName = partyStyle(score.party).name;
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: `${score.name} on Glas`, url });
+      } catch {
+        // The user closed the share sheet.
+      }
+      return;
     }
+    try {
+      await navigator.clipboard.writeText(url);
+      toast({ title: 'Link copied' });
+    } catch {
+      toast({ title: 'Could not copy the link', variant: 'destructive' });
+    }
+  };
+
+  const rankChips = [
+    score.nationalRank !== null && `#${score.nationalRank} of ${DAIL_SEATS} TDs`,
+    score.partyRank !== null && `#${score.partyRank} in ${partyName}`,
+    score.constituencyRank !== null && score.constituency && `#${score.constituencyRank} in ${score.constituency}`,
+  ].filter((chip): chip is string => Boolean(chip));
+
+  const pillars = [
+    { label: 'Dáil record', value: score.parliamentaryScore, sub: 'Questions and votes' },
+    { label: 'Debate', value: score.debateScore, sub: 'Dáil debates' },
+    {
+      label: 'News',
+      value: score.newsScore,
+      sub: `${score.totalStories} ${score.totalStories === 1 ? 'story' : 'stories'}`,
+    },
+  ];
+  const unscored = pillars.filter((p) => p.value === null).map((p) => p.label);
+
+  // The parliament feed is the source of truth; the score payload fills gaps while it loads or fails.
+  const summary = parliamentSummary;
+  const questionsOral = summary?.questionsOral ?? score.questions?.oral ?? null;
+  const questionsWritten = summary?.questionsWritten ?? score.questions?.written ?? null;
+  const questionsTotal =
+    questionsOral === null && questionsWritten === null ? null : (questionsOral ?? 0) + (questionsWritten ?? 0);
+  const attendance = summary?.attendancePct ?? score.attendancePct;
+  const isPresiding = summary?.isPresiding ?? false;
+
+  const stats: { label: string; value: ReactNode; sub?: string; bar?: number | null }[] = [
+    {
+      label: 'Votes cast',
+      value: isPresiding ? '—' : (
+        <>
+          {num(summary?.votesCast)}
+          <span className="text-base text-muted-foreground"> / {num(summary?.divisionsEligible)}</span>
+        </>
+      ),
+      sub: isPresiding ? 'Chair, does not vote' : 'of divisions eligible',
+      bar: isPresiding ? undefined : attendance,
+    },
+    { label: 'Attendance', value: isPresiding ? '—' : pct(attendance), sub: 'of Dáil divisions' },
+    { label: 'Sitting days', value: num(summary?.sittingDays) },
+    {
+      label: 'Speeches',
+      value: num(summary?.speeches),
+      sub: summary?.sectionsSpoken != null ? `in ${num(summary.sectionsSpoken)} debate sections` : undefined,
+    },
+    { label: 'Questions', value: num(questionsTotal), sub: `${num(questionsOral)} oral · ${num(questionsWritten)} written` },
+    {
+      label: 'Party line',
+      value: pct(summary?.partyLinePct),
+      sub: summary?.votesAgainstParty != null ? `${summary.votesAgainstParty} votes against party` : undefined,
+    },
   ];
 
-  const dimensionBars = (Object.keys(DIMENSION_LABELS) as ScoreDimension[]).map((key) => ({
-    key,
-    label: DIMENSION_LABELS[key],
-    score: score.dimensions?.[key]?.score ?? null,
-    elo: score.dimensions?.[key]?.elo ?? null,
-  }));
+  const articleById = new Map(newsArticles.map((a) => [a.id, a]));
+  const pollSupport = partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null;
+  const pollChange = partyPolling?.support_30d_change ? parseFloat(partyPolling.support_30d_change) : null;
 
-  // question-topics is sorted by total (oral + written) desc, so the first entry's total is the max.
-  const topQuestionTopics = tdQuestionTopics.slice(0, 8);
-  const maxQuestionTopicTotal = topQuestionTopics.reduce((max, t) => Math.max(max, t.oral + t.written), 0);
-
-  // Real polling data
-  const pollingData = {
-    partyNationalPolling: partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null,
-    partyChange30d: partyPolling?.support_30d_change ? parseFloat(partyPolling.support_30d_change) : 0,
-    trend: partyPolling?.support_30d_trend || 'stable',
-    lastPollDate: partyPolling?.latest_poll_date || null,
-    pollSource: partyPolling?.latest_poll_source || null,
-    constituencyPolling: null, // Constituency-level polling not available yet
-    reelectionChance: calculateReelectionChance(overallScore, partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null)
-  };
-  
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
-      <PageHeader
-        className="mb-3"
-        title="TD profile"
-        tooltipTitle="What you can do here"
-        bullets={[
-          "Understand a TD’s public performance and recent impact.",
-          "See ideology signals, voting patterns, and debate activity.",
-          "Compare stances and track changes over time."
-        ]}
-      />
-
-      {/* Back Button */}
-      <Link href="/">
-        <Button variant="ghost" className="mb-4 gap-2">
-          <ChevronLeft className="w-4 h-4" />
-          Back to Home
-        </Button>
+    <div className="flex flex-col gap-6">
+      <Link
+        href="/rankings"
+        className="inline-flex min-h-11 items-center gap-1 self-start rounded-md text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+        Rankings
       </Link>
 
-      {/* Hero Header */}
-      <Card className="p-6 md:p-8 mb-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-200">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-          <div className="flex-1">
-            <div className="flex items-start gap-4 mb-4">
-              {/* Profile Photo */}
-              {score.imageUrl ? (
-                <img
-                  src={score.imageUrl}
-                  alt={score.name}
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0"
-                />
+      {/* Hero */}
+      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex min-w-0 flex-1 items-start gap-4 sm:gap-5">
+          <TDAvatar
+            name={score.name}
+            party={score.party}
+            imageUrl={score.imageUrl}
+            size="lg"
+            className="ring-2 ring-hero-muted sm:h-24 sm:w-24 sm:text-2xl"
+          />
+          <div className="flex min-w-0 flex-1 flex-col gap-2">
+            <h1 className="font-display text-3xl font-bold leading-none tracking-tight sm:text-5xl">{score.name}</h1>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px]">
+              {score.party ? (
+                <Link
+                  href={`/party/${encodeURIComponent(score.party)}`}
+                  className="inline-flex min-h-[44px] items-center hover:text-hero-soft sm:min-h-0"
+                >
+                  <PartyLabel party={score.party} className="text-[15px] font-semibold text-inherit" />
+                </Link>
               ) : (
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white text-3xl md:text-4xl font-bold border-4 border-white shadow-lg flex-shrink-0">
-                  {(score.name || '?').charAt(0)}
-                </div>
+                <PartyLabel party={score.party} className="text-[15px] font-semibold text-hero-foreground" />
               )}
-
-              <div className="flex-1 min-w-0">
-                <h1 className="text-3xl md:text-5xl font-bold mb-3 text-gray-900 dark:text-white">
-                  {score.name}
-                </h1>
-                
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <Badge variant="secondary" className="text-base px-3 py-1">
-                    {score.party || 'Independent'}
-                  </Badge>
-                  <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                    <MapPin className="w-4 h-4" />
-                    <span className="font-medium">{score.constituency}</span>
-                  </div>
-                  {score.gender && (
-                    <Badge variant="outline">
-                      {score.gender?.toLowerCase() === 'male' ? '👨' : '👩'} {score.gender}
-                    </Badge>
-                  )}
-                </div>
-              </div>
+              {score.constituency && (
+                <>
+                  <span className="text-hero-soft" aria-hidden="true">·</span>
+                  <Link
+                    href={`/constituency/${encodeURIComponent(score.constituency)}`}
+                    className="inline-flex min-h-[44px] items-center font-semibold underline underline-offset-4 hover:text-hero-soft sm:min-h-0"
+                  >
+                    {score.constituency}
+                  </Link>
+                </>
+              )}
             </div>
-
-            {/* Offices */}
-            {score.offices && score.offices.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {score.offices.map((office, idx) => (
-                  <Badge key={idx} className="gap-1 bg-yellow-500 hover:bg-yellow-600 text-white border-0">
-                    <Crown className="w-3 h-3" />
+            {score.offices.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {score.offices.map((office) => (
+                  <span
+                    key={office.title}
+                    className="inline-flex h-8 items-center gap-1.5 rounded-full bg-hero-muted px-3 text-[13px] font-semibold"
+                  >
+                    <Briefcase className="h-3.5 w-3.5" aria-hidden="true" />
                     {office.title}
-                  </Badge>
-                ))}
-              </div>
-            )}
-
-            {/* Current offices (Oireachtas record) */}
-            {parliamentSummary && parliamentSummary.offices.length > 0 && (
-              <div className="flex flex-wrap gap-3 mb-4 text-sm text-gray-700 dark:text-gray-300">
-                {parliamentSummary.offices.map((office, idx) => (
-                  <span key={idx} className="inline-flex items-center gap-1.5">
-                    <Briefcase className="w-3.5 h-3.5 text-gray-500" />
-                    {office.title}
-                    {office.since && (
-                      <span className="text-gray-500 dark:text-gray-400">· since {formatIsoDate(office.since)}</span>
-                    )}
                   </span>
                 ))}
               </div>
             )}
-
-            {/* Quick Stats */}
-            <div className="flex flex-wrap gap-4 text-sm">
-              {score.attendancePct !== null && (
-                <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                  <Calendar className="w-4 h-4" />
-                  <span>{score.attendancePct}% attendance</span>
-                </div>
-              )}
-              {(score.questions?.oral !== null || score.questions?.written !== null) && (
-                <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                  <MessageSquare className="w-4 h-4" />
-                  <span>{(score.questions.oral ?? 0) + (score.questions.written ?? 0)} questions asked</span>
-                </div>
-              )}
-              {score.committees && score.committees.length > 0 && (
-                <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                  <Users className="w-4 h-4" />
-                  <span>{score.committees.length} {score.committees.length === 1 ? 'committee' : 'committees'}</span>
-                </div>
-              )}
-            </div>
           </div>
-
-          {/* Performance Score */}
-          <div className="text-center md:text-right">
-            <div className="text-6xl md:text-7xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-              {overallScore !== null ? (
-                <>
-                  {overallScore}
-                  <span className="text-3xl text-gray-400">/100</span>
-                </>
-              ) : (
-                'N/A'
-              )}
-            </div>
-            {rating ? (
-              <Badge className={`${rating.bgColor} ${rating.color} border-2 ${rating.borderColor} text-base px-4 py-1 mb-2`}>
-                {rating.label}
-              </Badge>
-            ) : (
-              <Badge variant="outline" className="text-base px-4 py-1 mb-2">
-                No Score
-              </Badge>
-            )}
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Performance Score
-            </div>
-
-            {/* Share Button */}
-            <Button variant="outline" size="sm" className="mt-3 gap-2">
-              <Share2 className="w-4 h-4" />
-              Share Profile
-            </Button>
-          </div>
-        </div>
-      </Card>
-
-      {/* Main Content Grid */}
-      <div className="grid lg:grid-cols-3 gap-6 mb-6">
-        {/* Left Column - Rankings & Quick Stats */}
-        <div className="lg:col-span-1 space-y-6">
-          {/* Rankings */}
-          <Card className="p-6">
-            <h2 className="font-bold text-xl mb-4 flex items-center gap-2">
-              <Award className="w-5 h-5 text-blue-600" />
-              Rankings
-            </h2>
-            <div className="space-y-4">
-              <RankCard label="National Rank" rank={score.nationalRank} total="174" />
-              <RankCard label="Constituency Rank" rank={score.constituencyRank} total={`${getConstituencyTDCount(score.constituency ?? '')}`} />
-              <RankCard label="Party Rank" rank={score.partyRank} total={`${getPartyTDCount(score.party ?? 'Independent')}`} />
-            </div>
-          </Card>
-
-          {/* Score Trend */}
-          <Card className="p-6">
-            <h2 className="font-bold text-xl mb-4 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-blue-600" />
-              Score Trend
-            </h2>
-            <div className="space-y-3">
-              <StatRow
-                icon={score.eloChange7d >= 0 ? <TrendingUp className="w-4 h-4 text-green-600" /> : <TrendingDown className="w-4 h-4 text-red-600" />}
-                label="Last 7 days"
-                value={`${score.eloChange7d >= 0 ? '+' : ''}${score.eloChange7d} Elo`}
-              />
-              <StatRow
-                icon={score.eloChange30d >= 0 ? <TrendingUp className="w-4 h-4 text-green-600" /> : <TrendingDown className="w-4 h-4 text-red-600" />}
-                label="Last 30 days"
-                value={`${score.eloChange30d >= 0 ? '+' : ''}${score.eloChange30d} Elo`}
-              />
-              <StatRow
-                icon={<BarChart3 className="w-4 h-4 text-gray-500" />}
-                label="Current Elo"
-                value={score.overallElo}
-              />
-            </div>
-            {score.lastScoredAt && (
-              <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                Last scored {new Date(score.lastScoredAt).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
-              </p>
-            )}
-          </Card>
-
-          {/* Recent News Stories */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Newspaper className="w-5 h-5 text-emerald-600" />
-              Recent News Coverage
-            </h2>
-            
-            {newsArticles && newsArticles.length > 0 ? (
-              <div className="space-y-3">
-                {newsArticles.slice(0, 3).map((article: FeedArticle, idx: number) => (
-                  <a
-                    key={idx}
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block p-3 bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 rounded-lg border border-emerald-200 hover:border-emerald-400 transition-all hover:shadow-md group"
-                  >
-                    <div className="flex items-start gap-2">
-                      <Newspaper className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-sm text-gray-900 dark:text-white mb-1 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 line-clamp-2">
-                          {article.title}
-                        </h3>
-                        {article.summary && (
-                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-relaxed">
-                            {article.summary}
-                          </p>
-                        )}
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                          <span className="font-medium">{article.source}</span>
-                          <span>•</span>
-                          <span>{new Date(article.publishedAt).toLocaleDateString('en-IE', { month: 'short', day: 'numeric' })}</span>
-                          {article.sentiment && (
-                            <>
-                              <span>•</span>
-                              <Badge
-                                variant="outline"
-                                className={`text-xs px-1 py-0 ${
-                                  article.sentiment === 'positive' || article.sentiment === 'very_positive'
-                                    ? 'border-green-400 text-green-700'
-                                    : article.sentiment === 'negative' || article.sentiment === 'very_negative'
-                                    ? 'border-red-400 text-red-700'
-                                    : 'border-gray-400 text-gray-700'
-                                }`}
-                              >
-                                {article.sentiment.replace('_', ' ')}
-                              </Badge>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                      <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-emerald-600 flex-shrink-0 mt-1" />
-                    </div>
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-6">
-                <Newspaper className="w-10 h-10 text-gray-300 mx-auto mb-2" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  No recent news articles
-                </p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                  Coverage will appear when available
-                </p>
-              </div>
-            )}
-            
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                📰 AI-analyzed news from Irish sources
-              </p>
-            </div>
-          </Card>
-
-          {/* Polling Section */}
-          <Card className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-2 border-purple-200">
-            <h2 className="font-bold text-xl mb-4 flex items-center gap-2">
-              <LineChartIcon className="w-5 h-5 text-purple-600" />
-              Polling & Outlook
-            </h2>
-            
-            {/* Party National Polling */}
-            <div className="mb-4">
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                {score.party} National Support
-              </div>
-              {pollingData.partyNationalPolling !== null ? (
-                <>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-3xl font-bold text-purple-600">
-                      {pollingData.partyNationalPolling.toFixed(1)}%
-                    </div>
-                    <Badge variant={pollingData.trend === 'rising' ? 'default' : pollingData.trend === 'falling' ? 'destructive' : 'outline'} className="gap-1">
-                      {pollingData.trend === 'rising' ? <TrendingUp className="w-3 h-3" /> : 
-                       pollingData.trend === 'falling' ? <TrendingDown className="w-3 h-3" /> : '→'}
-                      {pollingData.trend}
-                    </Badge>
-                  </div>
-                  {pollingData.partyChange30d !== 0 && (
-                    <div className={`text-sm ${pollingData.partyChange30d > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                      {pollingData.partyChange30d > 0 ? '+' : ''}{pollingData.partyChange30d.toFixed(1)}% (30 days)
-                    </div>
-                  )}
-                  {pollingData.pollSource && (
-                    <div className="text-xs text-gray-500 mt-1">
-                      Source: {pollingData.pollSource}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div className="text-2xl font-bold text-gray-400">
-                  N/A
-                </div>
-              )}
-            </div>
-
-            {/* Constituency Support */}
-            <div className="mb-4 pb-4 border-b border-purple-200 dark:border-purple-700">
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                Party Support in {score.constituency}
-              </div>
-              <div className="text-2xl font-bold text-gray-400">
-                N/A
-              </div>
-              <div className="text-xs text-gray-500 mt-1">
-                Constituency-level polling not yet available
-              </div>
-            </div>
-
-            {/* Re-election Outlook */}
-            <div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                Re-election Outlook
-              </div>
-              {pollingData.reelectionChance !== null ? (
-                <>
-                  <div className={`text-lg font-bold ${
-                    pollingData.reelectionChance >= 70 ? 'text-green-600' :
-                    pollingData.reelectionChance >= 50 ? 'text-yellow-600' :
-                    'text-orange-600'
-                  }`}>
-                    {pollingData.reelectionChance >= 70 ? '✅ Very Likely' :
-                     pollingData.reelectionChance >= 50 ? '⚠️ Competitive' :
-                     '⚠️ At Risk'}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    Based on performance {pollingData.partyNationalPolling !== null ? '& party polling' : 'score'}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="text-lg font-bold text-gray-400">
-                    Unable to calculate
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    No polling data available
-                  </div>
-                </>
-              )}
-            </div>
-
-            <div className="mt-4 pt-4 border-t border-purple-200 dark:border-purple-700">
-              <p className="text-xs text-gray-600 dark:text-gray-400">
-                📊 Polling data from recent surveys. Updated monthly.
-              </p>
-            </div>
-          </Card>
+          <Button
+            variant="ghost"
+            onClick={handleShare}
+            aria-label="Share this profile"
+            className="h-11 w-11 shrink-0 bg-hero-muted px-0 text-hero-foreground hover:bg-hero-muted/80 hover:text-hero-foreground sm:w-auto sm:px-4"
+          >
+            <Share2 aria-hidden="true" />
+            <span className="hidden sm:inline">Share</span>
+          </Button>
         </div>
 
-        {/* Middle Column - Performance Details */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Score Breakdown */}
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <BarChart3 className="w-6 h-6 text-blue-600" />
-              Performance Breakdown
-            </h2>
-            
-            <div className="space-y-4">
-              {pillars.map((pillar) => (
-                <PerformanceBar
-                  key={pillar.label}
-                  label={pillar.label}
-                  score={pillar.score}
-                  color={pillar.color}
-                  description={pillar.description}
-                />
+        <div className="flex items-center gap-5 lg:border-l lg:border-hero-muted lg:pl-8">
+          <ScoreRing
+            value={score.overallScore}
+            size={120}
+            label="Overall score"
+            caption="of 100"
+            trackClassName="stroke-hero-muted"
+          />
+          <div className="flex min-w-0 flex-col gap-2">
+            <span className="text-[13px] font-semibold text-hero-soft">
+              Overall score{score.label ? ` · ${score.label}` : ''}
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {rankChips.length > 0 ? (
+                rankChips.map((chip) => (
+                  <span
+                    key={chip}
+                    className="inline-flex min-h-8 items-center rounded-full bg-hero-muted px-3 py-1 text-[13px] font-semibold"
+                  >
+                    {chip}
+                  </span>
+                ))
+              ) : (
+                <span className="text-[13px] text-hero-soft">Not ranked yet</span>
+              )}
+            </div>
+            <span className="text-[13px] text-hero-soft">
+              {score.lastScoredAt ? `Scored ${formatDay(score.lastScoredAt)}` : 'Not scored yet'}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Pillars and Dáil record */}
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <Card className="flex flex-col gap-4 p-5 sm:p-6">
+          <div className="flex items-baseline justify-between gap-3">
+            <h2 className="font-display text-xl font-bold tracking-tight">Score breakdown</h2>
+            <span className="text-[13px] text-muted-foreground">3 pillars</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            {pillars.map((p) =>
+              p.value === null ? (
+                <div
+                  key={p.label}
+                  className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-input px-1 py-4 text-center"
+                >
+                  <ScoreRing value={null} size={72} label={p.label} />
+                  <span className="text-[13px] font-bold text-muted-foreground">{p.label}</span>
+                  <span className="text-xs text-muted-foreground">Not scored yet</span>
+                </div>
+              ) : (
+                <div key={p.label} className="flex flex-col items-center gap-2 rounded-xl bg-elevated px-1 py-4 text-center">
+                  <ScoreRing value={p.value} size={72} label={p.label} />
+                  <span className="text-[13px] font-bold">{p.label}</span>
+                  <span className="text-xs text-muted-foreground">{p.sub}</span>
+                </div>
+              )
+            )}
+          </div>
+          {unscored.length > 0 && unscored.length < pillars.length && (
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
+              {unscored.join(' and ')} {unscored.length === 1 ? 'is' : 'are'} not scored yet, so the overall score
+              is the weighted mean of the other pillars.
+            </p>
+          )}
+        </Card>
+
+        <Card className="flex flex-col gap-4 p-5 sm:p-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <h2 className="font-display text-xl font-bold tracking-tight">Dáil record</h2>
+            {summary?.memberSince && (
+              <span className="text-[13px] text-muted-foreground">TD since {formatIsoDate(summary.memberSince)}</span>
+            )}
+          </div>
+          {parliamentSummaryLoading ? (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {stats.map((s) => (
+                <Skeleton key={s.label} className="h-28 rounded-xl" />
               ))}
             </div>
-
-            <h3 className="text-lg font-semibold mt-8 mb-4">Dimensions</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {dimensionBars.map((dimension) => (
-                <div key={dimension.key} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {dimension.score ?? 'N/A'}
-                  </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">{dimension.label}</div>
-                  {dimension.elo !== null && (
-                    <div className="text-[10px] text-gray-400 mt-1">Elo {dimension.elo}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </Card>
-
-          {/* Parliament Summary */}
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Vote className="w-6 h-6 text-blue-600" />
-              Parliament Record
-            </h2>
-
-            {parliamentSummaryLoading ? (
-              <div className="text-center py-8 text-gray-500">Loading parliament record...</div>
-            ) : parliamentSummaryError || !parliamentSummary ? (
-              <p className="text-sm text-gray-600 dark:text-gray-400">No parliament data available yet.</p>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800/30">
-                  <div className="text-sm text-blue-700 dark:text-blue-300 mb-1">Attendance</div>
-                  <div className="text-2xl font-bold text-blue-800 dark:text-blue-100">
-                    {parliamentSummary.isPresiding
-                      ? 'Chair — does not vote'
-                      : parliamentSummary.attendancePct !== null
-                      ? `${parliamentSummary.attendancePct}%`
-                      : '—'}
-                  </div>
-                  {!parliamentSummary.isPresiding && (
-                    <div className="text-xs text-blue-600 dark:text-blue-300 mt-1">
-                      {parliamentSummary.votesCast ?? '—'} of {parliamentSummary.divisionsEligible ?? '—'} divisions
-                    </div>
-                  )}
-                </div>
-                <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Questions</div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {parliamentSummary.questionsOral === null && parliamentSummary.questionsWritten === null
-                      ? '—'
-                      : (parliamentSummary.questionsOral ?? 0) + (parliamentSummary.questionsWritten ?? 0)}
-                  </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    {parliamentSummary.questionsOral ?? '—'} oral · {parliamentSummary.questionsWritten ?? '—'} written
-                  </div>
-                </div>
-                <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-800/30">
-                  <div className="text-sm text-green-700 dark:text-green-300 mb-1">Debate sections spoken</div>
-                  <div className="text-2xl font-bold text-green-800 dark:text-green-100">
-                    {parliamentSummary.sectionsSpoken ?? '—'}
-                  </div>
-                  <div className="text-xs text-green-600 dark:text-green-300 mt-1">
-                    {parliamentSummary.speeches ?? '—'} speeches
-                  </div>
-                </div>
-                <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-100 dark:border-purple-800/30">
-                  <div className="text-sm text-purple-700 dark:text-purple-300 mb-1">Party line</div>
-                  <div className="text-2xl font-bold text-purple-800 dark:text-purple-100">
-                    {parliamentSummary.partyLinePct !== null ? `${parliamentSummary.partyLinePct}%` : '—'}
-                  </div>
-                  {parliamentSummary.votesAgainstParty !== null && (
-                    <div className="text-xs text-purple-600 dark:text-purple-300 mt-1">
-                      {parliamentSummary.votesAgainstParty} votes against party
-                    </div>
-                  )}
-                </div>
-                <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-100 dark:border-indigo-800/30">
-                  <div className="text-sm text-indigo-700 dark:text-indigo-300 mb-1">Committee attendance</div>
-                  <div className="text-2xl font-bold text-indigo-800 dark:text-indigo-100">
-                    {parliamentSummary.committeeAttendancePct !== null ? `${parliamentSummary.committeeAttendancePct}%` : '—'}
-                  </div>
-                  <div className="text-xs text-indigo-600 dark:text-indigo-300 mt-1">
-                    {parliamentSummary.committeeSittingsAttended ?? '—'} of {parliamentSummary.committeeSittingsEligible ?? '—'} sittings
-                  </div>
-                </div>
-                <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-100 dark:border-orange-800/30">
-                  <div className="text-sm text-orange-700 dark:text-orange-300 mb-1">Bills sponsored</div>
-                  <div className="text-2xl font-bold text-orange-800 dark:text-orange-100">
-                    {parliamentSummary.billsSponsored}
-                  </div>
-                </div>
-              </div>
-            )}
-          </Card>
-
-          {/* Committees */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-600" />
-              Committees
-            </h2>
-
-            {tdCommitteesLoading ? (
-              <div className="text-center py-6 text-gray-500 text-sm">Loading committees...</div>
-            ) : tdCommitteesError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">Could not load committees. Try again later.</p>
-            ) : tdCommittees.length === 0 ? (
-              <p className="text-sm text-gray-600 dark:text-gray-400">Not a member of any committee.</p>
-            ) : (
-              <div className="space-y-2">
-                {tdCommittees.map((committee) => (
-                  <div
-                    key={committee.committeeId}
-                    className="rounded-lg border border-gray-200 dark:border-gray-700 p-3"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">{committee.name}</h4>
-                          {committee.role === 'Cathaoirleach' && (
-                            <Badge className="bg-yellow-500 hover:bg-yellow-600 text-white border-0">Chair</Badge>
-                          )}
-                          {committee.role === 'Leas-Chathaoirleach' && (
-                            <Badge variant="secondary">Vice-chair</Badge>
-                          )}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          {formatIsoDate(committee.start)} – {committee.end ? formatIsoDate(committee.end) : 'present'}
-                        </div>
-                      </div>
-                      <div className="text-right text-xs text-gray-600 dark:text-gray-400 flex-shrink-0">
-                        {committee.sittingsAttended} of {committee.sittingsEligible} sittings
-                      </div>
-                    </div>
-                  </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {stats.map((s) => (
+                  <StatTile key={s.label} label={s.label} value={s.value} sub={s.sub} className="border-0 bg-elevated">
+                    {s.bar !== undefined && <ScoreBar value={s.bar} />}
+                  </StatTile>
                 ))}
               </div>
-            )}
-          </Card>
+              {parliamentSummaryError && (
+                <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+                  <span>Could not load the full Dáil record.</span>
+                  <RetryButton
+                    variant="outline"
+                    size="sm"
+                    className="h-11 md:h-9"
+                    onRetry={() => refetchParliamentSummary()}
+                    pending={parliamentSummaryFetching}
+                  />
+                </div>
+              )}
+            </>
+          )}
+        </Card>
+      </div>
 
-          {/* Bills sponsored */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-blue-600" />
-              Bills sponsored
-            </h2>
-
-            {tdBillsLoading ? (
-              <div className="text-center py-6 text-gray-500 text-sm">Loading bills...</div>
-            ) : tdBillsError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">Could not load bills. Try again later.</p>
-            ) : tdBills.length === 0 ? (
-              <p className="text-sm text-gray-600 dark:text-gray-400">No bills sponsored this term.</p>
-            ) : (
-              <div className="space-y-2">
-                {tdBills.map((bill) => (
-                  <Link
-                    key={bill.id}
-                    href={`/debates?tab=bills&bill=${encodeURIComponent(bill.id)}`}
-                    className="block rounded-lg border border-gray-200 dark:border-gray-700 p-3 hover:border-blue-400 transition-colors"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 line-clamp-2">
-                          {bill.shortTitle}
-                          {bill.isPrimary && (
-                            <span className="ml-2 text-xs font-medium text-blue-600 dark:text-blue-400">Primary sponsor</span>
-                          )}
-                        </h4>
-                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          {bill.source}{bill.mostRecentStage ? ` · ${bill.mostRecentStage}` : ''}
-                        </div>
-                      </div>
-                      <Badge variant="outline" className="flex-shrink-0">{bill.status}</Badge>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </Card>
-
-          {/* Question focus */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-blue-600" />
-              Question focus
-            </h2>
-
-            {tdQuestionTopicsLoading ? (
-              <div className="text-center py-6 text-gray-500 text-sm">Loading question topics...</div>
-            ) : tdQuestionTopicsError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">Could not load question topics. Try again later.</p>
-            ) : topQuestionTopics.length === 0 ? (
-              <p className="text-sm text-gray-600 dark:text-gray-400">No parliamentary questions recorded yet.</p>
-            ) : (
-              <div className="space-y-3">
-                {topQuestionTopics.map((topic) => {
-                  const total = topic.oral + topic.written;
-                  const percentage = maxQuestionTopicTotal > 0 ? (total / maxQuestionTopicTotal) * 100 : 0;
-                  return (
-                    <div key={topic.department}>
-                      <div className="flex justify-between items-center mb-1 text-sm gap-2">
-                        <span className="font-medium text-gray-900 dark:text-gray-100 truncate">{topic.department}</span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
-                          {topic.oral} oral · {topic.written} written
-                        </span>
-                      </div>
-                      <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-500" style={{ width: `${percentage}%` }} />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </Card>
-
-          {/* Recent Votes */}
-          <Card className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold flex items-center gap-2">
-                <Vote className="w-5 h-5 text-blue-600" />
-                Recent Votes
-              </h2>
-              <button
-                type="button"
-                onClick={() => setVotesAgainstPartyOnly((prev) => !prev)}
-                className={`rounded-md border px-2 py-1 text-xs font-medium transition ${
-                  votesAgainstPartyOnly
-                    ? 'border-orange-300 bg-orange-100 text-orange-800'
-                    : 'border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300'
-                }`}
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+        {/* Tabs */}
+        <Tabs defaultValue="votes" className="flex min-w-0 flex-col gap-4">
+          <TabsList aria-label="Profile sections" className="grid h-auto w-full grid-cols-4 sm:max-w-[520px]">
+            {['Votes', 'Debates', 'News', 'Background'].map((label) => (
+              <TabsTrigger
+                key={label}
+                value={label.toLowerCase()}
+                className="h-11 px-1 text-[13px] sm:px-4 sm:text-sm"
               >
-                Against party only
-              </button>
-            </div>
+                {label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-            {tdVotesLoading ? (
-              <div className="text-center py-6 text-gray-500 text-sm">Loading votes...</div>
-            ) : tdVotesError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">Could not load votes. Try again later.</p>
-            ) : tdVotes.length === 0 ? (
-              <p className="text-sm text-gray-600 dark:text-gray-400">No votes recorded yet.</p>
-            ) : (
-              <div className="space-y-2">
-                {tdVotes.map((vote: TdVote) => (
-                  <div
-                    key={vote.divisionId}
-                    className="bg-white dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
-                  >
-                    <div className="flex justify-between items-start gap-3">
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
-                          {vote.subject || vote.debateTitle || 'Division'}
-                        </h4>
-                        <div className="text-[10px] text-gray-400 mt-2 flex items-center gap-2">
-                          <Calendar className="w-3 h-3" />
-                          {formatIsoDate(vote.date)}
-                          {vote.withParty === false && (
-                            <span className="text-orange-600 dark:text-orange-400">Against party</span>
-                          )}
-                        </div>
-                      </div>
-                      <Badge
-                        className={`whitespace-nowrap ${
-                          vote.vote === 'ta'
-                            ? 'bg-green-100 text-green-800 hover:bg-green-200 border-green-200'
-                            : vote.vote === 'nil'
-                            ? 'bg-red-100 text-red-800 hover:bg-red-200 border-red-200'
-                            : 'bg-gray-100 text-gray-800 hover:bg-gray-200 border-gray-200'
-                        }`}
-                        variant="outline"
-                      >
-                        {VOTE_LABEL[vote.vote]}
-                      </Badge>
-                    </div>
-                  </div>
-                ))}
+          <TabsContent value="votes" className="mt-0">
+            <Card className="flex flex-col gap-4 p-5 sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-col gap-1">
+                  <h2 className="font-display text-xl font-bold tracking-tight">Recent votes</h2>
+                  <span className="text-[13px] text-muted-foreground">
+                    {votesAgainstPartyOnly ? 'Divisions where they broke from their party' : 'Last 20 divisions'}
+                  </span>
+                </div>
+                <Button
+                  variant="outline"
+                  aria-pressed={votesAgainstPartyOnly}
+                  onClick={() => setVotesAgainstPartyOnly((prev) => !prev)}
+                  className={cn(
+                    'h-11 rounded-full sm:h-10',
+                    votesAgainstPartyOnly && 'border-warn bg-warn/15 text-warn hover:bg-warn/20'
+                  )}
+                >
+                  Against party only
+                </Button>
               </div>
+
+              {tdVotesLoading ? (
+                <div className="flex flex-col gap-2">
+                  {[0, 1, 2, 3].map((i) => (
+                    <Skeleton key={i} className="h-16 rounded-xl" />
+                  ))}
+                </div>
+              ) : tdVotesError ? (
+                <EmptyState
+                  icon={Vote}
+                  title="Could not load votes"
+                  action={<RetryButton variant="secondary" onRetry={() => refetchVotes()} pending={tdVotesFetching} />}
+                >
+                  The Dáil record did not load. Try again in a moment.
+                </EmptyState>
+              ) : tdVotes.length === 0 ? (
+                <EmptyState icon={Vote} title={votesAgainstPartyOnly ? `No votes against ${partyName}` : 'No votes recorded yet'}>
+                  {votesAgainstPartyOnly
+                    ? 'In the divisions we have, they voted with their party every time.'
+                    : 'Votes show here once the Dáil divisions they took part in are synced.'}
+                </EmptyState>
+              ) : (
+                <ul className="flex flex-col gap-2">
+                  {tdVotes.map((vote) => {
+                    const title = vote.debateTitle || vote.subject || 'Division';
+                    return (
+                      <li key={vote.divisionId} className="flex items-center gap-3 rounded-xl bg-elevated p-3 sm:gap-4 sm:px-4">
+                        <VoteChip vote={vote.vote} />
+                        <div className="flex min-w-0 flex-1 flex-col gap-1">
+                          <span className="line-clamp-2 text-[15px] font-bold leading-snug">{title}</span>
+                          {vote.subject && vote.subject !== title && (
+                            <span className="line-clamp-2 text-[13px] text-muted-foreground">{vote.subject}</span>
+                          )}
+                          <span className="flex flex-wrap items-center gap-x-2 text-[13px] text-muted-foreground">
+                            <span>{formatIsoDate(vote.date)}</span>
+                            {vote.outcome && <span>· {vote.outcome}</span>}
+                            {vote.withParty === false && <span className="font-semibold text-warn sm:hidden">· Against party</span>}
+                          </span>
+                        </div>
+                        {vote.withParty !== null && (
+                          <Badge
+                            variant={vote.withParty ? 'outline' : 'warn'}
+                            className={cn('hidden shrink-0 sm:inline-flex', vote.withParty && 'border-transparent bg-card text-muted-foreground')}
+                          >
+                            {vote.withParty ? 'With party' : 'Against party'}
+                          </Badge>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="debates" className="mt-0">
+            <Card className="flex flex-col gap-4 p-5 sm:p-6">
+              <div className="flex flex-col gap-1">
+                <h2 className="font-display text-xl font-bold tracking-tight">Recent debates</h2>
+                <span className="text-[13px] text-muted-foreground">From Oireachtas debate transcripts</span>
+              </div>
+              {tdDebatesLoading ? (
+                <div className="flex flex-col gap-2">
+                  {[0, 1, 2].map((i) => (
+                    <Skeleton key={i} className="h-24 rounded-xl" />
+                  ))}
+                </div>
+              ) : tdDebatesError ? (
+                <EmptyState
+                  icon={MessageSquare}
+                  title="Could not load debates"
+                  action={<RetryButton variant="secondary" onRetry={() => refetchDebates()} pending={tdDebatesFetching} />}
+                >
+                  The debate record did not load. Try again in a moment.
+                </EmptyState>
+              ) : tdDebateContributions.length === 0 ? (
+                <EmptyState icon={MessageSquare} title="No debate contributions yet">
+                  Speeches show here once the debates they spoke in are synced.
+                </EmptyState>
+              ) : (
+                <ul className="flex flex-col gap-2">
+                  {tdDebateContributions.map((c) => (
+                    <li key={c.sectionId} className="flex flex-col gap-1.5 rounded-xl bg-elevated p-4">
+                      <span className="flex flex-wrap justify-between gap-x-3 text-[13px] text-muted-foreground">
+                        <span>{formatIsoDate(c.date)}</span>
+                        <span>
+                          {c.speeches} {c.speeches === 1 ? 'speech' : 'speeches'} · {c.words.toLocaleString('en-IE')} words
+                        </span>
+                      </span>
+                      <h3 className="text-[15px] font-bold leading-snug">{c.title}</h3>
+                      {c.excerpt && <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{c.excerpt}</p>}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="news" className="mt-0 flex flex-col gap-4">
+            {score.recentArticles.length > 0 && (
+              <Card className="flex flex-col gap-4 p-5 sm:p-6">
+                <div className="flex flex-col gap-1">
+                  <h2 className="font-display text-xl font-bold tracking-tight">Effect on score</h2>
+                  <span className="text-[13px] text-muted-foreground">
+                    {score.totalStories} {score.totalStories === 1 ? 'story has' : 'stories have'} been scored. The most recent:
+                  </span>
+                </div>
+                <ul className="flex flex-col gap-2">
+                  {score.recentArticles.map((a) => {
+                    const article = articleById.get(a.articleId);
+                    return (
+                      <li key={a.articleId} className="flex items-start gap-3 rounded-xl bg-elevated p-4">
+                        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                          {article && (
+                            <a
+                              href={article.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-start gap-1.5 rounded-sm text-[15px] font-bold leading-snug transition-colors hover:text-primary"
+                            >
+                              {article.title}
+                              <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                            </a>
+                          )}
+                          <div className="flex flex-wrap gap-1.5">
+                            {a.storyType && <Badge variant="secondary">{humanise(a.storyType)}</Badge>}
+                            {a.sentiment && <Badge variant="outline">{humanise(a.sentiment)}</Badge>}
+                            {a.needsReview && <Badge variant="warn">Needs review</Badge>}
+                          </div>
+                          {a.reasoning && <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{a.reasoning}</p>}
+                          <span className="text-xs text-muted-foreground">{formatDay(a.at)}</span>
+                        </div>
+                        <span
+                          className={cn(
+                            'shrink-0 font-display text-lg font-bold',
+                            a.impact > 0 ? 'text-score-high' : a.impact < 0 ? 'text-warn' : 'text-muted-foreground'
+                          )}
+                          aria-label={`Score effect ${a.impact}`}
+                        >
+                          {a.impact > 0 ? '+' : ''}
+                          {a.impact}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Card>
             )}
+
+            <section className="flex flex-col gap-3" aria-labelledby="td-news-heading">
+              <h2 id="td-news-heading" className="font-display text-xl font-bold tracking-tight">
+                In the news
+              </h2>
+              {newsLoading ? (
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
+                  <Skeleton className="h-80 rounded-2xl" />
+                  <Skeleton className="h-80 rounded-2xl" />
+                </div>
+              ) : newsArticles.length === 0 ? (
+                <EmptyState icon={Newspaper} title="No recent stories">
+                  Stories from Irish news sources that name {score.name} will show here.
+                </EmptyState>
+              ) : (
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
+                  {newsArticles.map((article) => (
+                    <NewsArticleCard key={article.id} article={article} />
+                  ))}
+                </div>
+              )}
+            </section>
+          </TabsContent>
+
+          <TabsContent value="background" className="mt-0">
+            <Card className="flex flex-col gap-5 p-5 sm:p-6">
+              <h2 className="font-display text-xl font-bold tracking-tight">Background</h2>
+              {!score.bio && !score.baseline?.summary && !score.baseline?.category && !score.baseline?.researchDate ? (
+                <EmptyState icon={UserRound} title="No background yet">
+                  A short biography and research summary will show here once they are added.
+                </EmptyState>
+              ) : (
+                <>
+                  {score.bio && <p className="leading-relaxed">{score.bio}</p>}
+                  {score.baseline?.summary && (
+                    <div className="flex flex-col gap-3 rounded-xl bg-elevated p-4">
+                      <p className="leading-relaxed">{score.baseline.summary}</p>
+                      {score.baseline.keyFindings.length > 0 && (
+                        <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
+                          {score.baseline.keyFindings.map((finding) => (
+                            <li key={finding}>{finding}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
+                  {(score.baseline?.category || score.baseline?.researchDate) && (
+                    <dl className="grid grid-cols-2 gap-3">
+                      {score.baseline?.category && (
+                        <div className="flex flex-col gap-1 rounded-xl bg-elevated p-4">
+                          <dt className="text-[13px] font-semibold text-muted-foreground">Research category</dt>
+                          <dd className="font-semibold">{humanise(score.baseline.category)}</dd>
+                        </div>
+                      )}
+                      {score.baseline?.researchDate && (
+                        <div className="flex flex-col gap-1 rounded-xl bg-elevated p-4">
+                          <dt className="text-[13px] font-semibold text-muted-foreground">Researched</dt>
+                          <dd className="font-semibold">{formatDay(score.baseline.researchDate)}</dd>
+                        </div>
+                      )}
+                    </dl>
+                  )}
+                </>
+              )}
+              <div className="border-t pt-5 lg:hidden">
+                <CommitteeList committees={score.committees} />
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* Side column */}
+        <aside className="flex flex-col gap-4">
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="font-display text-lg font-bold tracking-tight">Rankings</h2>
+            <ul className="flex flex-col gap-1">
+              {[
+                { label: 'National', rank: score.nationalRank, of: `of ${DAIL_SEATS}`, href: '/rankings' },
+                { label: partyName, rank: score.partyRank, of: 'in party', href: score.party ? `/party/${encodeURIComponent(score.party)}` : null },
+                {
+                  label: score.constituency ?? 'Constituency',
+                  rank: score.constituencyRank,
+                  of: 'in constituency',
+                  href: score.constituency ? `/constituency/${encodeURIComponent(score.constituency)}` : null,
+                },
+              ].map((row) => {
+                const body = (
+                  <>
+                    <span className="min-w-0 truncate text-sm font-semibold">{row.label}</span>
+                    <span className="shrink-0 text-sm text-muted-foreground">
+                      <span className="font-display text-lg font-bold text-foreground">
+                        {row.rank !== null ? `#${row.rank}` : '—'}
+                      </span>{' '}
+                      {row.of}
+                    </span>
+                  </>
+                );
+                const classes = 'flex min-h-[44px] items-center justify-between gap-3 rounded-lg px-3';
+                return (
+                  <li key={row.of}>
+                    {row.href ? (
+                      <Link href={row.href} className={cn(classes, 'transition-colors hover:bg-accent')}>
+                        {body}
+                      </Link>
+                    ) : (
+                      <div className={classes}>{body}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
           </Card>
 
-          {/* Recent Debate Contributions */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-primary" />
-              Recent Debate Contributions
-            </h2>
-
-            {tdDebatesLoading ? (
-              <div className="animate-pulse space-y-3">
-                <div className="h-4 w-1/3 rounded bg-gray-200 dark:bg-gray-700" />
-                <div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-700" />
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="font-display text-lg font-bold tracking-tight">Score trend</h2>
+            <dl className="flex flex-col gap-2">
+              <TrendRow label="Last 7 days" change={score.eloChange7d} />
+              <TrendRow label="Last 30 days" change={score.eloChange30d} />
+              <div className="flex items-center justify-between gap-3 text-sm">
+                <dt className="text-muted-foreground">Current Elo</dt>
+                <dd className="font-display text-lg font-bold">{num(score.overallElo)}</dd>
               </div>
-            ) : tdDebatesError ? (
-              <p className="text-sm text-red-600 dark:text-red-400">Could not load debate contributions. Try again later.</p>
-            ) : tdDebateContributions.length === 0 ? (
-              <p className="text-sm text-gray-600 dark:text-gray-400">No debate contributions recorded for this period.</p>
-            ) : (
-              <div className="space-y-3">
-                {tdDebateContributions.map((contribution: TdDebateContribution) => (
-                  <div
-                    key={contribution.sectionId}
-                    className="rounded-lg border border-gray-200 dark:border-gray-700 p-3"
-                  >
-                    <div className="flex items-center justify-between gap-3 text-xs text-gray-500 dark:text-gray-400">
-                      <span>{formatIsoDate(contribution.date)}</span>
-                      <span>{contribution.speeches} speech{contribution.speeches === 1 ? '' : 'es'} · {contribution.words.toLocaleString()} words</span>
-                    </div>
-                    <h4 className="mt-1 text-sm font-semibold text-gray-900 dark:text-gray-100">{contribution.title}</h4>
-                    {contribution.excerpt && (
-                      <p className="mt-1 text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{contribution.excerpt}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-              Powered by Oireachtas debate transcripts.
+            </dl>
+            <p className="text-[13px] text-muted-foreground">
+              {score.lastScoredAt ? `Last scored ${formatDay(score.lastScoredAt)}` : 'No stories scored yet.'}
             </p>
           </Card>
 
-          {/* Recent scored articles */}
-          {score.recentArticles.length > 0 && (
-            <Card className="p-6">
-              <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
-                <FileText className="w-5 h-5" />
-                News Coverage Analysis
-              </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                {score.totalStories} articles have moved this TD's score. The most recent are below.
-              </p>
+          <Card className="hidden flex-col gap-3 p-5 lg:flex">
+            <CommitteeList committees={score.committees} />
+          </Card>
 
-              <div className="space-y-3">
-                {score.recentArticles.map((article) => {
-                  const positive = article.impact > 0;
-                  const negative = article.impact < 0;
-                  return (
-                    <div
-                      key={article.articleId}
-                      className="p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex flex-wrap items-center gap-2 mb-1">
-                            {article.storyType && (
-                              <Badge variant="outline" className="text-xs capitalize">
-                                {article.storyType.replace(/_/g, ' ')}
-                              </Badge>
-                            )}
-                            {article.sentiment && (
-                              <Badge
-                                variant="outline"
-                                className={`text-xs ${
-                                  positive ? 'border-green-400 text-green-700' :
-                                  negative ? 'border-red-400 text-red-700' :
-                                  'border-gray-400 text-gray-700'
-                                }`}
-                              >
-                                {article.sentiment.replace(/_/g, ' ')}
-                              </Badge>
-                            )}
-                            {article.needsReview && (
-                              <Badge variant="outline" className="text-xs border-amber-400 text-amber-700">
-                                Needs review
-                              </Badge>
-                            )}
-                          </div>
-                          {article.reasoning && (
-                            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                              {article.reasoning}
-                            </p>
-                          )}
-                          <div className="text-[10px] text-gray-400 mt-2">
-                            {new Date(article.at).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' })}
-                          </div>
-                        </div>
-                        <div className={`text-sm font-bold flex-shrink-0 ${positive ? 'text-green-600' : negative ? 'text-red-600' : 'text-gray-500'}`}>
-                          {positive ? '+' : ''}{article.impact}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+          {score.party && (
+            <Card className="flex flex-col gap-3 p-5">
+              <h2 className="font-display text-lg font-bold tracking-tight">Party polling</h2>
+              {pollSupport !== null ? (
+                <>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-display text-3xl font-bold tracking-tight">{pollSupport.toFixed(1)}%</span>
+                    {pollChange !== null && pollChange !== 0 && (
+                      <span className={cn('text-sm font-semibold', pollChange > 0 ? 'text-score-high' : 'text-warn')}>
+                        {pollChange > 0 ? '+' : ''}
+                        {pollChange.toFixed(1)} in 30 days
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-[13px] text-muted-foreground">
+                    National support for {partyName}
+                    {partyPolling?.latest_poll_source ? ` · ${partyPolling.latest_poll_source}` : ''}
+                    {partyPolling?.latest_poll_date ? `, ${formatDay(partyPolling.latest_poll_date)}` : ''}
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-muted-foreground">No recent national poll for {partyName}.</p>
+              )}
             </Card>
           )}
-
-          {/* Available Data Notice */}
-          <Card className="p-6 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200">
-            <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
-              <BarChart3 className="w-5 h-5" />
-              📊 Data Coverage
-            </h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex items-start gap-2">
-                <span className="text-green-600 font-bold mt-0.5">✓</span>
-                <div>
-                  <span className="font-medium text-gray-900 dark:text-white">Questions:</span>
-                  <span className="text-gray-700 dark:text-gray-300 ml-1">
-                    Complete data from Nov 2024 - Oct 2025
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-green-600 font-bold mt-0.5">✓</span>
-                <div>
-                  <span className="font-medium text-gray-900 dark:text-white">Votes:</span>
-                  <span className="text-gray-700 dark:text-gray-300 ml-1">
-                    Complete Dáil voting records (Dec 2024 - Oct 2025)
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-yellow-600 font-bold mt-0.5">○</span>
-                <div>
-                  <span className="font-medium text-gray-900 dark:text-white">Debates & Legislation:</span>
-                  <span className="text-gray-700 dark:text-gray-300 ml-1">
-                    Coming soon (API limitations)
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Background Info */}
-          <Card className="p-6">
-            <h2 className="text-xl font-bold mb-4">Background & Experience</h2>
-            
-            {/* Bio */}
-            {score.bio && (
-              <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                {score.bio}
-              </p>
-            )}
-
-            {/* Historical research baseline */}
-            {score.baseline?.summary && (
-              <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {score.baseline.summary}
-                </p>
-                {score.baseline.keyFindings.length > 0 && (
-                  <ul className="mt-3 space-y-1 text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
-                    {score.baseline.keyFindings.map((finding, idx) => (
-                      <li key={idx}>{finding}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            )}
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {score.baseline?.category && (
-                <InfoCard
-                  icon={<Award className="w-5 h-5 text-purple-600" />}
-                  label="Research Category"
-                  value={score.baseline.category}
-                />
-              )}
-
-              {score.baseline?.researchDate && (
-                <InfoCard
-                  icon={<Calendar className="w-5 h-5 text-green-600" />}
-                  label="Researched"
-                  value={new Date(score.baseline.researchDate).toLocaleDateString('en-IE', { year: 'numeric', month: 'long' })}
-                />
-              )}
-
-              {score.committees.length > 0 && (
-                <div className="md:col-span-2">
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-center gap-2">
-                    <Users className="w-4 h-4" />
-                    Committees
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {score.committees.map((committee) => (
-                      <Badge key={committee} variant="secondary">{committee}</Badge>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {!score.bio && !score.baseline && score.committees.length === 0 && (
-                <p className="md:col-span-2 text-sm text-gray-500 dark:text-gray-400">
-                  No background information available yet.
-                </p>
-              )}
-            </div>
-          </Card>
-        </div>
+        </aside>
       </div>
     </div>
   );
 }
 
-// Helper Components
-function PerformanceBar({ label, score, color, description }: {
-  label: string;
-  score: number | null;
-  color: PillarColor;
-  description?: string;
-}) {
-  const colorClasses: Record<PillarColor, string> = {
-    emerald: 'bg-emerald-500',
-    blue: 'bg-blue-500',
-    cyan: 'bg-cyan-500',
-    indigo: 'bg-indigo-500',
-    purple: 'bg-purple-500',
-    orange: 'bg-orange-500',
-    green: 'bg-green-500'
-  };
-
-  const isAvailable = typeof score === 'number' && !Number.isNaN(score);
-  const percentage = isAvailable ? Math.min(100, Math.max(0, score)) : 0;
-
+function TrendRow({ label, change }: { label: string; change: number }) {
+  const Icon = change > 0 ? TrendingUp : change < 0 ? TrendingDown : Minus;
   return (
-    <div>
-      <div className="flex justify-between items-center mb-2">
-        <span className="font-semibold text-gray-900 dark:text-white">{label}</span>
-        <span className="font-bold text-lg">
-          {isAvailable ? (
-            <>
-              {Math.round(score)}<span className="text-sm text-gray-500">/100</span>
-            </>
-          ) : (
-            'N/A'
-          )}
-        </span>
-      </div>
-      <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-1">
-        {isAvailable ? (
-          <div
-            className={`h-full ${colorClasses[color]} transition-all`}
-            style={{ width: `${percentage}%` }}
-          />
-        ) : (
-          <div className="h-full w-full bg-gray-300 dark:bg-gray-600 opacity-60" />
+    <div className="flex items-center justify-between gap-3 text-sm">
+      <dt className="text-muted-foreground">{label}</dt>
+      <dd
+        className={cn(
+          'inline-flex items-center gap-1.5 font-display text-lg font-bold',
+          change > 0 ? 'text-score-high' : change < 0 ? 'text-warn' : 'text-muted-foreground'
         )}
-      </div>
-      {isAvailable ? (
-        description && (
-          <p className="text-xs text-gray-600 dark:text-gray-400">{description}</p>
-        )
+      >
+        <Icon className="h-4 w-4" aria-hidden="true" />
+        {change > 0 ? '+' : ''}
+        {change} Elo
+      </dd>
+    </div>
+  );
+}
+
+function CommitteeList({ committees }: { committees: string[] }) {
+  return (
+    <div className="flex flex-col gap-3">
+      <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+        <Users className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+        Committees
+      </h2>
+      {committees.length > 0 ? (
+        <div className="flex flex-wrap gap-2">
+          {committees.map((committee) => (
+            <Badge key={committee} variant="secondary" className="h-8 px-3 text-[13px]">
+              {committee}
+            </Badge>
+          ))}
+        </div>
       ) : (
-        <p className="text-xs text-gray-500 dark:text-gray-400">Not enough data yet.</p>
+        <p className="text-[13px] leading-relaxed text-muted-foreground">
+          No committee places recorded. They are not synced from the Oireachtas yet.
+        </p>
       )}
     </div>
   );
 }
-
-function RankCard({ label, rank, total }: { label: string; rank: number | null; total: string }) {
-  return (
-    <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-      <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
-      <div className="text-right">
-        <span className="text-xl font-bold text-gray-900 dark:text-white">
-          #{rank || '—'}
-        </span>
-        <span className="text-sm text-gray-500 dark:text-gray-500"> / {total}</span>
-      </div>
-    </div>
-  );
-}
-
-function StatRow({ icon, label, value }: { icon: ReactNode; label: string; value: string | number }) {
-  return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-        {icon}
-        <span>{label}</span>
-      </div>
-      <span className="font-bold text-lg">{value}</span>
-    </div>
-  );
-}
-
-function InfoCard({ icon, label, value }: { icon: ReactNode; label: string; value: string | number }) {
-  return (
-    <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-      {icon}
-      <div>
-        <div className="text-sm text-gray-600 dark:text-gray-400">{label}</div>
-        <div className="font-semibold text-gray-900 dark:text-white">{value}</div>
-      </div>
-    </div>
-  );
-}
-
-// Helper function to calculate re-election chance
-function calculateReelectionChance(performanceScore: number | null, partyPolling: number | null): number | null {
-  if (performanceScore === null || !Number.isFinite(performanceScore)) {
-    return null;
-  }
-
-  if (partyPolling === null) {
-    // If no polling data, base only on performance
-    return Math.min(95, Math.max(20, Math.round(performanceScore * 0.85)));
-  }
-  
-  // Performance is 60% of re-election chance, party polling is 40%
-  const baseChance = performanceScore * 0.6;
-  const partyBonus = partyPolling * 2 * 0.4; // Scale polling % to similar range
-  return Math.min(95, Math.max(20, Math.round(baseChance + partyBonus)));
-}
-
-function getConstituencyTDCount(constituency: string): number {
-  // Most constituencies have 3-5 TDs
-  return 5;
-}
-
-function getPartyTDCount(party: string): number {
-  const counts: Record<string, number> = {
-    'Fianna Fáil': 48,
-    'Sinn Féin': 39,
-    'Fine Gael': 38,
-    'Social Democrats': 11,
-    'Labour Party': 11,
-    'Independent': 15
-  };
-  return counts[party] || 10;
-}
-

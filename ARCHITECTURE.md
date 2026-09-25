@@ -173,123 +173,38 @@
 
 ---
 
-## 🔄 Data Flow - Quiz System
+## 🔄 Data Flow - Quiz and Ideology
 
-```
-┌─────────┐
-│  User   │
-│ Takes   │
-│  Quiz   │
-└────┬────┘
-     │
-     │ 1. Answer questions
-     │
-┌────▼──────────────────────────────────────────┐
-│         Frontend (React)                      │
-│  ┌─────────────────────────────────────────┐ │
-│  │  Calculate 8-dimensional scores         │ │
-│  │  - Economic                             │ │
-│  │  - Social                               │ │
-│  │  - Cultural, Globalism, etc.            │ │
-│  └─────────────────────────────────────────┘ │
-└────┬──────────────────────────────────────────┘
-     │
-     │ 2. POST /api/multidimensional-quiz-results
-     │
-┌────▼──────────────────────────────────────────┐
-│         Backend (Express)                     │
-│  ┌─────────────────────────────────────────┐ │
-│  │  Validate scores (Zod)                  │ │
-│  │  Save to political_evolution table      │ │
-│  │  Save to quiz_results table             │ │
-│  │  Generate share code                    │ │
-│  └─────────────────────────────────────────┘ │
-└────┬──────────────────────────────────────────┘
-     │
-     │ 3. Store in database
-     │
-┌────▼──────────────────────────────────────────┐
-│      Supabase PostgreSQL                      │
-│  ┌─────────────────────────────────────────┐ │
-│  │  political_evolution                    │ │
-│  │  quiz_results                           │ │
-│  └─────────────────────────────────────────┘ │
-└────┬──────────────────────────────────────────┘
-     │
-     │ 4. Return result with share code
-     │
-┌────▼──────────────────────────────────────────┐
-│         Party Matching Service                │
-│  ┌─────────────────────────────────────────┐ │
-│  │  Calculate distances to parties         │ │
-│  │  Rank parties by similarity             │ │
-│  │  Generate personalized insights         │ │
-│  └─────────────────────────────────────────┘ │
-└────┬──────────────────────────────────────────┘
-     │
-     │ 5. Optional: AI Analysis
-     │
-┌────▼──────────────────────────────────────────┐
-│         AI Services                           │
-│  ┌─────────────────────────────────────────┐ │
-│  │  OpenAI GPT-4                           │ │
-│  │  Anthropic Claude                       │ │
-│  │  - Generate detailed analysis           │ │
-│  │  - Provide Irish political context      │ │
-│  │  - Suggest policy areas of interest     │ │
-│  └─────────────────────────────────────────┘ │
-└────┬──────────────────────────────────────────┘
-     │
-     │ 6. Display results to user
-     │
-┌────▼────┐
-│  User   │
-│  Views  │
-│ Results │
-└─────────┘
-```
+One model for users, TDs and parties. Full design: `docs/architecture/ideology-matching.md`.
 
----
+1. The client shows the one question bank (`shared/quiz.ts`) and sends answer choices only:
+   `POST /api/quiz`. Anyone can take it.
+2. The server scores it (`server/quiz`). A signed-in result is saved to `politics.quiz_results`
+   and the user's profile is recomputed; an anonymous result is returned and not saved.
+3. A user's profile = their latest quiz plus every policy vote (`server/voting`).
+   A TD's profile = party baseline plus stance evidence from articles (and later debates) in
+   `politics.td_ideology_evidence`. A party = the mean of its TDs. All live in
+   `politics.ideology_profiles` and rebuild with `npm run ideology -- --recalculate`.
+4. Matches (`/api/ideology/me/matches`, public `POST /api/ideology/matches`) use one alignment formula.
 
 ## 🗺️ Feature Modules
 
-### Quiz Module
+### Quiz and Ideology Modules
 ```
-quiz/
-├── Questions Management
-│   ├── 8 dimensions
-│   ├── 50+ questions
-│   └── Answer validation
-│
-├── Scoring Engine
-│   ├── Multidimensional calculation
-│   ├── Weighted scoring
-│   └── Normalization
-│
-├── Results Generation
-│   ├── Score visualization
-│   ├── Party matching
-│   ├── Share functionality
-│   └── Historical tracking
-│
-└── AI Analysis
-    ├── OpenAI integration
-    ├── Claude integration
-    └── Personalized insights
+shared/ideology.ts   the 8 dimensions, −10..+10, + = right-coded pole on every one
+shared/quiz.ts       the question bank (25 questions, one dimension each)
+server/quiz/         scoring (server-side only) and the ideology label
+server/ideology/     model (weighted mean + prior), sources, alignment, party baselines
+server/routes/quiz.ts, server/routes/ideology.ts
 ```
 
 ### Party Matching Module
 ```
 party-matching/
-├── Party Database
-│   ├── 8-dimensional positions
-│   ├── Rationales
-│   └── Historical data
-│
-├── Matching Algorithm
-│   ├── Euclidean distance
-│   ├── Weighted dimensions
-│   └── Similarity ranking
+├── Matching (server/ideology/alignment.ts)
+│   ├── Party = mean of its TDs' profiles
+│   ├── Weighted linear distance, 0..100
+│   └── Optional per-dimension weights (0..3)
 │
 ├── Pledge Tracking
 │   ├── Promise database

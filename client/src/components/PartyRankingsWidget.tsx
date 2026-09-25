@@ -1,201 +1,117 @@
 /**
- * Party Rankings Widget
- * Shows parliamentary performance rankings for political parties
+ * "Party averages": the mean TD score for each party with 10 or more TDs,
+ * as bars in party colours (columns on desktop, rows on phone).
+ *
+ * Built from the full TD list: /api/scores/parties only counts TDs with a stored
+ * party score, so its member counts cannot answer "parties with 10+ TDs".
  */
 
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { queryKeys } from '@/lib/queryKeys';
+import { useMemo } from 'react';
 import { Link } from 'wouter';
-import { Card } from '@/components/ui/card';
-import { Info } from 'lucide-react';
-import { politicalParties } from '@shared/data';
-import { PartyQuickInfoModal } from './PartyQuickInfoModal';
+import { BarChart3 } from 'lucide-react';
+import { partyStyle } from '@/lib/parties';
+import { formatScore } from '@/lib/score';
+import { EmptyState } from '@/components/pulse/EmptyState';
+import { RetryButton } from '@/components/data/RetryButton';
+import { Skeleton } from '@/components/ui/skeleton';
+import { HomeCard, HomeCardHeader } from '@/components/home/HomeCard';
+import { useAllTDs } from '@/components/home/useAllTDs';
 
-interface PartyRow {
-  rank: number;
+const MIN_TDS = 10;
+
+interface PartyAverage {
   party: string;
-  memberCount: number;
-  avgElo: number;
-  overallScore: number;
-  label: string;
-  computedAt: string | null;
+  count: number;
+  avg: number | null;
 }
 
-/** Brand colour from the static party list; the scores API carries none. */
-function partyColor(name: string): string | undefined {
-  return politicalParties.find(
-    (p) => p.country === 'ireland' && p.name.toLowerCase() === name.toLowerCase()
-  )?.color;
-}
+/** Widget comparing average TD scores across the larger parties. */
+export function PartyRankingsWidget({ className }: { className?: string }) {
+  const { data, isLoading, isError, refetch, isFetching } = useAllTDs();
 
-interface PartyCompactRowProps {
-  party: PartyRow;
-  variant: 'emerald' | 'blue';
-  onInfoClick: (partyName: string, e: React.MouseEvent) => void;
-}
-
-function PartyCompactRow({ party, variant, onInfoClick }: PartyCompactRowProps) {
-  const colors = {
-    emerald: {
-      text: 'text-emerald-900 dark:text-emerald-50',
-      subtext: 'text-emerald-700 dark:text-emerald-300',
-      score: 'text-emerald-600 dark:text-emerald-400',
-      hover: 'hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10',
-      icon: 'text-emerald-600 dark:text-emerald-400'
-    },
-    blue: {
-      text: 'text-blue-900 dark:text-blue-50',
-      subtext: 'text-blue-700 dark:text-blue-300',
-      score: 'text-blue-600 dark:text-blue-400',
-      hover: 'hover:bg-blue-50/50 dark:hover:bg-blue-900/10',
-      icon: 'text-blue-600 dark:text-blue-400'
+  const parties = useMemo<PartyAverage[]>(() => {
+    const groups = new Map<string, { count: number; sum: number; scored: number }>();
+    for (const td of data?.tds ?? []) {
+      if (!td.party || td.party === 'Independent') continue;
+      const g = groups.get(td.party) ?? { count: 0, sum: 0, scored: 0 };
+      g.count += 1;
+      if (td.overallScore !== null && td.overallScore !== undefined) {
+        g.sum += td.overallScore;
+        g.scored += 1;
+      }
+      groups.set(td.party, g);
     }
-  };
-
-  const style = colors[variant];
+    return Array.from(groups, ([party, g]) => ({ party, count: g.count, avg: g.scored ? g.sum / g.scored : null }))
+      .filter((p) => p.count >= MIN_TDS)
+      .sort((a, b) => (b.avg ?? -1) - (a.avg ?? -1));
+  }, [data]);
 
   return (
-    <Link href={`/party/${encodeURIComponent(party.party)}`}>
-      <div className={`group flex items-center justify-between py-2 px-3 -mx-3 rounded-lg transition-colors cursor-pointer ${style.hover}`}>
-        <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 border-2 border-gray-200 dark:border-gray-700 mr-3"
-          style={{ backgroundColor: partyColor(party.party) ?? '#6b7280' }}
+    <HomeCard className={className}>
+      <HomeCardHeader title="Party averages" href="/rankings" linkLabel="Rankings" />
+      <span className="-mt-2 text-[13px] text-muted-foreground">Parties with {MIN_TDS}+ TDs</span>
+
+      {isLoading ? (
+        <div className="flex flex-col gap-3">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Skeleton key={i} className="h-9 rounded-lg" />
+          ))}
+        </div>
+      ) : isError ? (
+        <EmptyState
+          icon={BarChart3}
+          title="Party scores did not load"
+          action={
+            <RetryButton variant="outline" onRetry={() => refetch()} pending={isFetching} />
+          }
         >
-          {party.party.substring(0, 2)}
-        </div>
+          Check your connection, then try again.
+        </EmptyState>
+      ) : parties.length === 0 ? (
+        <EmptyState icon={BarChart3} title="No party averages yet">
+          Averages show once TDs are scored.
+        </EmptyState>
+      ) : (
+        <ul
+          className="flex flex-col gap-3 md:grid md:h-56 md:items-end md:gap-4"
+          style={{ gridTemplateColumns: `repeat(${parties.length}, minmax(0, 1fr))` }}
+        >
+          {parties.map((p) => {
+            const style = partyStyle(p.party);
+            const pct = p.avg === null ? 0 : Math.max(2, Math.min(100, p.avg));
+            return (
+              <li key={p.party} className="md:h-full">
+                <Link
+                  href={`/party/${encodeURIComponent(p.party)}`}
+                  aria-label={`${style.name}: average ${formatScore(p.avg)} across ${p.count} TDs`}
+                  className="group -mx-2 flex min-h-11 flex-col justify-center gap-1.5 rounded-lg px-2 py-1.5 transition-colors hover:bg-elevated md:mx-0 md:h-full md:justify-end md:px-0 md:py-0 md:transition-opacity md:hover:bg-transparent md:hover:opacity-90"
+                >
+                  {/* Phone: label row, then a horizontal bar. */}
+                  <span className="flex items-baseline justify-between gap-2 md:hidden">
+                    <span className="truncate text-sm font-semibold">
+                      {style.name} <span className="font-normal text-muted-foreground">· {p.count} TDs</span>
+                    </span>
+                    <span className="font-display text-lg font-bold">{formatScore(p.avg)}</span>
+                  </span>
+                  <span className="h-2.5 overflow-hidden rounded-full bg-elevated md:hidden" aria-hidden="true">
+                    <span className="block h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: style.dot }} />
+                  </span>
 
-        <div className="flex-1 min-w-0 pr-3">
-          <div className={`font-medium text-sm truncate ${style.text}`}>
-            #{party.rank} {party.party}
-          </div>
-          <div className={`text-xs truncate opacity-80 ${style.subtext}`}>
-            {party.memberCount} TDs • {party.label}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={(e) => onInfoClick(party.party, e)}
-            className={`opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded ${style.icon}`}
-          >
-            <Info className="w-3.5 h-3.5" />
-          </button>
-
-          <div className="text-right min-w-[3rem]">
-            <div className={`text-sm font-bold ${style.score}`}>
-              {party.overallScore}
-            </div>
-            <div className="text-[9px] uppercase tracking-wider opacity-60">
-              /100
-            </div>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-/** Widget ranking parties by performance score. */
-export function PartyRankingsWidget() {
-  const [selectedParty, setSelectedParty] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const { data, isLoading } = useQuery<PartyRow[]>({
-    queryKey: queryKeys.party.rankings(),
-    queryFn: async () => {
-      const res = await fetch('/api/scores/parties');
-      if (!res.ok) throw new Error('Failed to fetch');
-      const json = await res.json();
-      return json.data as PartyRow[];
-    },
-    staleTime: 60000  // 1 minute
-  });
-
-  const handleInfoClick = (partyName: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setSelectedParty(partyName);
-    setIsModalOpen(true);
-  };
-
-  if (isLoading) {
-    return (
-      <Card className="p-6">
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-gray-200 rounded w-1/3"></div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {[1, 2].map(i => (
-              <div key={i} className="space-y-2">
-                <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
-                {[1, 2, 3, 4, 5].map(j => (
-                  <div key={j} className="h-8 bg-gray-100 rounded"></div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </Card>
-    );
-  }
-
-  // The API returns parties already ranked best-first.
-  const parties = data ?? [];
-  const topParties = parties.slice(0, 5);
-  const restParties = parties.slice(5);
-
-  return (
-    <Card className="p-6 border bg-white dark:bg-gray-900 shadow-sm">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:divide-x dark:divide-gray-800">
-
-        {/* Top Performers */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Top Performers</h3>
-          </div>
-          <div className="space-y-0.5">
-            {topParties.map((party) => (
-              <PartyCompactRow
-                key={party.party}
-                party={party}
-                variant="emerald"
-                onInfoClick={handleInfoClick}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Remaining parties */}
-        <div className="space-y-3 lg:pl-12">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Other Parties</h3>
-          </div>
-          <div className="space-y-0.5">
-            {restParties.length === 0 ? (
-              <p className="text-xs text-gray-500 dark:text-gray-400 py-2">All ranked parties are shown on the left.</p>
-            ) : (
-              restParties.map((party) => (
-                <PartyCompactRow
-                  key={party.party}
-                  party={party}
-                  variant="blue"
-                  onInfoClick={handleInfoClick}
-                />
-              ))
-            )}
-          </div>
-        </div>
-
-      </div>
-
-      {/* Party Quick Info Modal */}
-      {selectedParty && (
-        <PartyQuickInfoModal
-          partyName={selectedParty}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
+                  {/* Desktop: a column. */}
+                  <span className="hidden font-display text-2xl font-bold md:block">{formatScore(p.avg)}</span>
+                  <span
+                    className="hidden rounded-b-sm rounded-t-xl md:block"
+                    style={{ height: `${pct * 0.7}%`, backgroundColor: style.dot }}
+                    aria-hidden="true"
+                  />
+                  <span className="hidden truncate text-sm font-semibold md:block">{style.name}</span>
+                  <span className="hidden text-xs text-muted-foreground md:block">{p.count} TDs</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       )}
-    </Card>
+    </HomeCard>
   );
 }

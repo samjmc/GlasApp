@@ -1,5 +1,5 @@
 {
-  "id": "11cf71a1-4dfe-466a-8d1e-5ff2a1742e00",
+  "id": "d470be9f-9ca2-49c8-975c-5d6db2e6e65d",
   "prevId": "a9418123-5769-4554-b144-3cb391b8e1a8",
   "version": "7",
   "dialect": "postgresql",
@@ -279,735 +279,6 @@
           "nullsNotDistinct": false,
           "columns": [
             "slug"
-          ]
-        }
-      },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.bill_debates": {
-      "name": "bill_debates",
-      "schema": "politics",
-      "columns": {
-        "bill_id": {
-          "name": "bill_id",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "debate_section_id": {
-          "name": "debate_section_id",
-          "type": "varchar(80)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "date": {
-          "name": "date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "chamber": {
-          "name": "chamber",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "title": {
-          "name": "title",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "bill_debates_section_idx": {
-          "name": "bill_debates_section_idx",
-          "columns": [
-            {
-              "expression": "debate_section_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "bill_debates_bill_id_bills_id_fk": {
-          "name": "bill_debates_bill_id_bills_id_fk",
-          "tableFrom": "bill_debates",
-          "tableTo": "bills",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "bill_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "bill_debates_bill_id_debate_section_id_pk": {
-          "name": "bill_debates_bill_id_debate_section_id_pk",
-          "columns": [
-            "bill_id",
-            "debate_section_id"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.bill_sponsors": {
-      "name": "bill_sponsors",
-      "schema": "politics",
-      "columns": {
-        "bill_id": {
-          "name": "bill_id",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "position": {
-          "name": "position",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "member_code": {
-          "name": "member_code",
-          "type": "varchar(120)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "td_id": {
-          "name": "td_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "label": {
-          "name": "label",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "is_primary": {
-          "name": "is_primary",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-        }
-      },
-      "indexes": {
-        "bill_sponsors_td_idx": {
-          "name": "bill_sponsors_td_idx",
-          "columns": [
-            {
-              "expression": "td_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "bill_sponsors_member_idx": {
-          "name": "bill_sponsors_member_idx",
-          "columns": [
-            {
-              "expression": "member_code",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "bill_sponsors_bill_id_bills_id_fk": {
-          "name": "bill_sponsors_bill_id_bills_id_fk",
-          "tableFrom": "bill_sponsors",
-          "tableTo": "bills",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "bill_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "bill_sponsors_td_id_tds_id_fk": {
-          "name": "bill_sponsors_td_id_tds_id_fk",
-          "tableFrom": "bill_sponsors",
-          "tableTo": "tds",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "td_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "bill_sponsors_bill_id_position_pk": {
-          "name": "bill_sponsors_bill_id_position_pk",
-          "columns": [
-            "bill_id",
-            "position"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.bill_stages": {
-      "name": "bill_stages",
-      "schema": "politics",
-      "columns": {
-        "bill_id": {
-          "name": "bill_id",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "position": {
-          "name": "position",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "stage": {
-          "name": "stage",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "chamber": {
-          "name": "chamber",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "date": {
-          "name": "date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "bill_stages_bill_id_bills_id_fk": {
-          "name": "bill_stages_bill_id_bills_id_fk",
-          "tableFrom": "bill_stages",
-          "tableTo": "bills",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "bill_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "bill_stages_bill_id_position_pk": {
-          "name": "bill_stages_bill_id_position_pk",
-          "columns": [
-            "bill_id",
-            "position"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.bills": {
-      "name": "bills",
-      "schema": "politics",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "varchar(20)",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "uri": {
-          "name": "uri",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "bill_no": {
-          "name": "bill_no",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "bill_year": {
-          "name": "bill_year",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "short_title": {
-          "name": "short_title",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "long_title": {
-          "name": "long_title",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "source": {
-          "name": "source",
-          "type": "varchar(40)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "status": {
-          "name": "status",
-          "type": "varchar(40)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "origin_house": {
-          "name": "origin_house",
-          "type": "varchar(40)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "most_recent_stage": {
-          "name": "most_recent_stage",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "act": {
-          "name": "act",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "latest_version_pdf": {
-          "name": "latest_version_pdf",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "memo_pdf": {
-          "name": "memo_pdf",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "last_updated": {
-          "name": "last_updated",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "bills_status_idx": {
-          "name": "bills_status_idx",
-          "columns": [
-            {
-              "expression": "status",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "bills_last_updated_idx": {
-          "name": "bills_last_updated_idx",
-          "columns": [
-            {
-              "expression": "last_updated",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "bills_uri_unique": {
-          "name": "bills_uri_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "uri"
-          ]
-        }
-      },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.committee_attendance": {
-      "name": "committee_attendance",
-      "schema": "politics",
-      "columns": {
-        "sitting_uri": {
-          "name": "sitting_uri",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "member_code": {
-          "name": "member_code",
-          "type": "varchar(120)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "td_id": {
-          "name": "td_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "committee_attendance_td_idx": {
-          "name": "committee_attendance_td_idx",
-          "columns": [
-            {
-              "expression": "td_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "committee_attendance_sitting_uri_committee_sittings_uri_fk": {
-          "name": "committee_attendance_sitting_uri_committee_sittings_uri_fk",
-          "tableFrom": "committee_attendance",
-          "tableTo": "committee_sittings",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "sitting_uri"
-          ],
-          "columnsTo": [
-            "uri"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "committee_attendance_td_id_tds_id_fk": {
-          "name": "committee_attendance_td_id_tds_id_fk",
-          "tableFrom": "committee_attendance",
-          "tableTo": "tds",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "td_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "committee_attendance_sitting_uri_member_code_pk": {
-          "name": "committee_attendance_sitting_uri_member_code_pk",
-          "columns": [
-            "sitting_uri",
-            "member_code"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.committee_memberships": {
-      "name": "committee_memberships",
-      "schema": "politics",
-      "columns": {
-        "committee_id": {
-          "name": "committee_id",
-          "type": "varchar(160)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "member_code": {
-          "name": "member_code",
-          "type": "varchar(120)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "td_id": {
-          "name": "td_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "role": {
-          "name": "role",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "start_date": {
-          "name": "start_date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "end_date": {
-          "name": "end_date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "committee_memberships_td_idx": {
-          "name": "committee_memberships_td_idx",
-          "columns": [
-            {
-              "expression": "td_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "committee_memberships_committee_id_committees_id_fk": {
-          "name": "committee_memberships_committee_id_committees_id_fk",
-          "tableFrom": "committee_memberships",
-          "tableTo": "committees",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "committee_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "committee_memberships_td_id_tds_id_fk": {
-          "name": "committee_memberships_td_id_tds_id_fk",
-          "tableFrom": "committee_memberships",
-          "tableTo": "tds",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "td_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "committee_memberships_committee_id_member_code_start_date_pk": {
-          "name": "committee_memberships_committee_id_member_code_start_date_pk",
-          "columns": [
-            "committee_id",
-            "member_code",
-            "start_date"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.committee_sittings": {
-      "name": "committee_sittings",
-      "schema": "politics",
-      "columns": {
-        "uri": {
-          "name": "uri",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "committee_id": {
-          "name": "committee_id",
-          "type": "varchar(160)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "date": {
-          "name": "date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "present_count": {
-          "name": "present_count",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "committee_sittings_committee_date_idx": {
-          "name": "committee_sittings_committee_date_idx",
-          "columns": [
-            {
-              "expression": "committee_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "date",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "committee_sittings_committee_id_committees_id_fk": {
-          "name": "committee_sittings_committee_id_committees_id_fk",
-          "tableFrom": "committee_sittings",
-          "tableTo": "committees",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "committee_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "politics.committees": {
-      "name": "committees",
-      "schema": "politics",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "varchar(160)",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "uri": {
-          "name": "uri",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "committee_type": {
-          "name": "committee_type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "committees_uri_unique": {
-          "name": "committees_uri_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "uri"
           ]
         }
       },
@@ -1516,97 +787,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "politics.question_counts": {
-      "name": "question_counts",
-      "schema": "politics",
-      "columns": {
-        "member_code": {
-          "name": "member_code",
-          "type": "varchar(120)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "td_id": {
-          "name": "td_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "month": {
-          "name": "month",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "department": {
-          "name": "department",
-          "type": "varchar(120)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "question_type": {
-          "name": "question_type",
-          "type": "question_type",
-          "typeSchema": "politics",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "n": {
-          "name": "n",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "question_counts_td_idx": {
-          "name": "question_counts_td_idx",
-          "columns": [
-            {
-              "expression": "td_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "question_counts_td_id_tds_id_fk": {
-          "name": "question_counts_td_id_tds_id_fk",
-          "tableFrom": "question_counts",
-          "tableTo": "tds",
-          "schemaTo": "politics",
-          "columnsFrom": [
-            "td_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "question_counts_member_code_month_department_question_type_pk": {
-          "name": "question_counts_member_code_month_department_question_type_pk",
-          "columns": [
-            "member_code",
-            "month",
-            "department",
-            "question_type"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "politics.td_parliament_stats": {
       "name": "td_parliament_stats",
       "schema": "politics",
@@ -1659,18 +839,6 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true
-        },
-        "committee_sittings_eligible": {
-          "name": "committee_sittings_eligible",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "committee_sittings_attended": {
-          "name": "committee_sittings_attended",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -2990,6 +2158,414 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "politics.ideology_profiles": {
+      "name": "ideology_profiles",
+      "schema": "politics",
+      "columns": {
+        "subject_kind": {
+          "name": "subject_kind",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "economic": {
+          "name": "economic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "social": {
+          "name": "social",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cultural": {
+          "name": "cultural",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "authority": {
+          "name": "authority",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environmental": {
+          "name": "environmental",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "welfare": {
+          "name": "welfare",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "globalism": {
+          "name": "globalism",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "technocratic": {
+          "name": "technocratic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total_weight": {
+          "name": "total_weight",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "evidence_count": {
+          "name": "evidence_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "computed_at": {
+          "name": "computed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "ideology_profiles_subject_kind_subject_id_pk": {
+          "name": "ideology_profiles_subject_kind_subject_id_pk",
+          "columns": [
+            "subject_kind",
+            "subject_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ideology_profiles_subject_chk": {
+          "name": "ideology_profiles_subject_chk",
+          "value": "\"politics\".\"ideology_profiles\".\"subject_kind\" in ('user', 'td', 'party')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "politics.quiz_results": {
+      "name": "quiz_results",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "answers": {
+          "name": "answers",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "economic": {
+          "name": "economic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "social": {
+          "name": "social",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cultural": {
+          "name": "cultural",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "authority": {
+          "name": "authority",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environmental": {
+          "name": "environmental",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "welfare": {
+          "name": "welfare",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "globalism": {
+          "name": "globalism",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "technocratic": {
+          "name": "technocratic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ideology": {
+          "name": "ideology",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "quiz_results_user_created_idx": {
+          "name": "quiz_results_user_created_idx",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.td_ideology_evidence": {
+      "name": "td_ideology_evidence",
+      "schema": "politics",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "td_id": {
+          "name": "td_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_ref": {
+          "name": "source_ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "policy_topic": {
+          "name": "policy_topic",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "economic": {
+          "name": "economic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "social": {
+          "name": "social",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cultural": {
+          "name": "cultural",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "authority": {
+          "name": "authority",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "environmental": {
+          "name": "environmental",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "welfare": {
+          "name": "welfare",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "globalism": {
+          "name": "globalism",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "technocratic": {
+          "name": "technocratic",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "weight": {
+          "name": "weight",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "observed_at": {
+          "name": "observed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "td_ideology_evidence_source_idx": {
+          "name": "td_ideology_evidence_source_idx",
+          "columns": [
+            {
+              "expression": "td_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "source",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "source_ref",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "td_ideology_evidence_td_idx": {
+          "name": "td_ideology_evidence_td_idx",
+          "columns": [
+            {
+              "expression": "td_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "observed_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "td_ideology_evidence_td_id_tds_id_fk": {
+          "name": "td_ideology_evidence_td_id_tds_id_fk",
+          "tableFrom": "td_ideology_evidence",
+          "tableTo": "tds",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "td_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "td_ideology_evidence_source_chk": {
+          "name": "td_ideology_evidence_source_chk",
+          "value": "\"politics\".\"td_ideology_evidence\".\"source\" in ('article', 'debate')"
+        },
+        "td_ideology_evidence_weight_chk": {
+          "name": "td_ideology_evidence_weight_chk",
+          "value": "\"politics\".\"td_ideology_evidence\".\"weight\" > 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
     "politics.daily_session_items": {
       "name": "daily_session_items",
       "schema": "politics",
@@ -3685,14 +3261,6 @@
         "ta",
         "nil",
         "staon"
-      ]
-    },
-    "politics.question_type": {
-      "name": "question_type",
-      "schema": "politics",
-      "values": [
-        "oral",
-        "written"
       ]
     }
   },

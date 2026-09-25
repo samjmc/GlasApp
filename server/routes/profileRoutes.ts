@@ -15,7 +15,7 @@ import { z } from 'zod';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
-import { requireAuth } from '../auth';
+import { isAdminUser, requireAuth } from '../auth';
 import { storage } from '../storage';
 import { sendSMS } from '../services/twilioService';
 import { generateVerificationCode, getVerificationExpiration } from '../services/verificationService';
@@ -80,7 +80,10 @@ async function ensureProfile(req: Request) {
 router.get('/me', requireAuth, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
-    res.json(formatSuccess({ user: publicProfile(await ensureProfile(req) as Record<string, unknown>) }));
+    res.json(formatSuccess({
+      user: publicProfile(await ensureProfile(req) as Record<string, unknown>),
+      isAdmin: isAdminUser(req.user!),
+    }));
   } catch (error) {
     log.error({ err: error }, 'Failed to load profile');
     res.status(500).json(formatError('INTERNAL_ERROR', 'Failed to load profile'));

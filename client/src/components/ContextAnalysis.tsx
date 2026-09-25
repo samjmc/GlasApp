@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
-import { IdeologicalDimensions } from "@shared/quizTypes";
+import type { IdeologyVector } from "@shared/ideology";
 
 interface ContextAnalysisProps {
-  dimensions: IdeologicalDimensions;
+  dimensions: IdeologyVector;
   userLocation?: string;
 }
 
@@ -35,450 +35,202 @@ interface ContextAnalysisResponse {
     description: string;
   }>;
   issue_analysis?: Array<string | IssueAnalysisItem>;
-  trending_issues?: Array<string | {
-    issue: string;
-    likely_stance?: string;
-    mainstream_stance?: string;
-    [key: string]: unknown;
-  }>;
+  trending_issues?: Array<string | { issue: string; [key: string]: unknown }>;
 }
 
+const tileClass = "flex flex-col gap-2 rounded-xl bg-elevated p-3.5";
+
+function Empty({ children }: { children: React.ReactNode }) {
+  return <p className="rounded-xl border border-dashed border-input p-4 text-sm text-muted-foreground">{children}</p>;
+}
+
+/** Where the profile sits in history, in other places, and on current issues (AI-written). */
 const ContextAnalysis: React.FC<ContextAnalysisProps> = ({ dimensions, userLocation }) => {
-  // State for managing data
   const [analysisData, setAnalysisData] = useState<ContextAnalysisResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  
-  // Function to fetch data directly
-  const fetchContextAnalysis = async (dims: IdeologicalDimensions) => {
+
+  const fetchContextAnalysis = async (dims: IdeologyVector) => {
     setIsLoading(true);
-    setIsError(false);
-    
-    console.log("Context Analysis - Direct fetch with dimensions:", dims);
-    
+    setErrorMessage(null);
     try {
-      const response = await fetch('/api/enhanced-profile/context-analysis', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          dimensions: dims,
-          userLocation
-        })
+      const response = await fetch("/api/enhanced-profile/context-analysis", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dimensions: dims, userLocation }),
       });
-      
-      if (!response.ok) {
-        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
-      }
-      
+      if (!response.ok) throw new Error(`Server returned ${response.status}: ${response.statusText}`);
       const data = await response.json();
-      console.log("Context analysis data received:", data);
-      
-      if (data.success && data.data) {
-        setAnalysisData(data.data);
-      } else {
-        throw new Error("Invalid API response format");
-      }
-      
-      setIsLoading(false);
+      if (!data.success || !data.data) throw new Error("Invalid API response format");
+      setAnalysisData(data.data);
     } catch (err) {
-      console.error("Error loading context analysis:", err);
-      setIsError(true);
       setErrorMessage(err instanceof Error ? err.message : "Unknown error occurred");
+    } finally {
       setIsLoading(false);
     }
   };
-  
-  // Initial data load and update when dimensions change
+
   useEffect(() => {
-    console.log("Initial load - fetching context analysis data", dimensions);
-    fetchContextAnalysis(dimensions);
+    void fetchContextAnalysis(dimensions);
+    const handleRegenerate = () => void fetchContextAnalysis(dimensions);
+    window.addEventListener("regenerate-analysis", handleRegenerate);
+    return () => window.removeEventListener("regenerate-analysis", handleRegenerate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dimensions]);
-  
-  // Listen for regenerate events
-  useEffect(() => {
-    const handleRegenerate = (event: Event) => {
-      const detail = (event as CustomEvent).detail;
-      console.log("Context Analysis: Received regenerate event", detail);
-      console.log("EVENT DETAIL for context analysis:", JSON.stringify(detail));
-      
-      // Force immediate refresh on regenerate event
-      setIsLoading(true);
-      console.log("FORCE REGENERATING context analysis with current dimensions");
-      
-      // Small timeout to ensure loading state is shown
-      setTimeout(() => {
-        // Always regenerate with the current dimensions when weights change
-        fetchContextAnalysis(dimensions);
-      }, 100);
-    };
-    
-    window.addEventListener('regenerate-analysis', handleRegenerate);
-    
-    return () => {
-      window.removeEventListener('regenerate-analysis', handleRegenerate);
-    };
-  }, [dimensions]);
-  
-  // Show loading state
+
+  const header = (
+    <div className="flex flex-col gap-0.5">
+      <h2 className="font-display text-[22px] font-bold">Your views in context</h2>
+      <p className="text-[13px] text-muted-foreground">Where your profile sits in history, in other places, and on current issues.</p>
+    </div>
+  );
+
   if (isLoading) {
     return (
-      <Card className="w-full" data-context-analysis-container="true">
-        <CardHeader>
-          <CardTitle>Context-Aware Analysis</CardTitle>
-          <CardDescription>
-            Your political profile in historical, regional, and issue-based contexts
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-[90%]" />
-          <Skeleton className="h-4 w-[85%]" />
-          <Skeleton className="h-32 w-full" />
-        </CardContent>
-      </Card>
+      <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5" data-context-analysis-container="true" aria-busy="true">
+        {header}
+        <Skeleton className="h-11 w-full rounded-xl" />
+        <Skeleton className="h-28 w-full rounded-xl" />
+        <Skeleton className="h-28 w-full rounded-xl" />
+      </section>
     );
   }
-  
-  // Show error state
-  if (isError) {
+
+  if (errorMessage || !analysisData) {
     return (
-      <Card className="w-full" data-context-analysis-container="true">
-        <CardHeader>
-          <CardTitle>Context-Aware Analysis</CardTitle>
-          <CardDescription>
-            There was an error generating your context-aware analysis
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-red-500 mb-4">
-            {errorMessage || "Something went wrong. Please try again."}
-          </p>
-          <Button onClick={() => fetchContextAnalysis(dimensions)}>
-            Try Again
-          </Button>
-        </CardContent>
-      </Card>
+      <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5" data-context-analysis-container="true">
+        {header}
+        <p role="alert" className="text-sm text-destructive">
+          We could not load this analysis. {errorMessage}
+        </p>
+        <Button variant="outline" className="w-fit" onClick={() => void fetchContextAnalysis(dimensions)}>
+          Try again
+        </Button>
+      </section>
     );
   }
-  
-  // Proceed with rendering results if we have data
-  if (analysisData) {
-    console.log("Context analysis data:", analysisData);
-    
-    const { historical_alignments = [], regional_analysis = [], issue_analysis = [], trending_issues = [] } = analysisData;
-    
-    // Sort issues by extremity (highest percentile deviation from 50)
-    const sortedIssues = Array.isArray(issue_analysis)
-      ? [...issue_analysis]
-          .map((issue): IssueAnalysisItem => (typeof issue === "string" ? { description: issue } : { ...issue }))
-          .sort((a, b) => {
-            const aPercentile = ('percentile' in a && typeof a.percentile === 'number') ? a.percentile : 50;
-            const bPercentile = ('percentile' in b && typeof b.percentile === 'number') ? b.percentile : 50;
-            return Math.abs(aPercentile - 50) > Math.abs(bPercentile - 50) ? -1 : 1;
-          })
-          .map((issue, index) => {
-            // Ensure each issue has a name - use dimensions if no issue name is provided
-            if (!issue.issue) {
-              const dimensionMap: Record<number, string> = {
-                0: "Economic Policy",
-                1: "Social Issues",
-                2: "Cultural Identity",
-                3: "International Relations",
-                4: "Environmental Policy",
-                5: "Government Authority",
-                6: "Welfare Systems",
-                7: "Political Decision-Making"
-              };
-              issue.issue = dimensionMap[index % 8] || `Political Issue ${index + 1}`;
-            }
-            return issue;
-          })
-      : [];
-    
-    return (
-      <Card className="w-full max-w-full" data-context-analysis-container="true">
-        <CardHeader>
-          <CardTitle className="text-base">Context-Aware Analysis</CardTitle>
-          <CardDescription className="text-xs">
-            Your political profile in historical, regional, and issue-based contexts
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="w-full max-w-full">
-          <Tabs defaultValue="historical" className="w-full max-w-full">
-            <TabsList className="grid w-full grid-cols-3 mt-2 mb-4 text-xs">
-              <TabsTrigger value="historical" className="text-xs">Historical</TabsTrigger>
-              <TabsTrigger value="regional" className="text-xs">Regional</TabsTrigger>
-              <TabsTrigger value="issues" className="text-xs">Issues</TabsTrigger>
-            </TabsList>
-            
-            {/* Historical Context Tab */}
-            <TabsContent value="historical" className="space-y-4 w-full">
-              <div>
-                <h3 className="text-base font-semibold mb-3 flex items-center gap-2">
-                  <span className="text-lg">📚</span> Historical Alignments
-                </h3>
-                {historical_alignments.length > 0 ? (
-                  <div className="space-y-4">
-                    {historical_alignments.map((alignment, index) => (
-                      <div key={index} className="border rounded-lg p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-950 dark:to-yellow-950 border-amber-200 dark:border-amber-800 shadow-sm hover:shadow-md transition-all">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-sm font-medium">
-                            {alignment.era || alignment.movement}
-                          </h4>
-                          <span className="text-xs text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 py-0.5 rounded shadow-sm">
-                            {alignment.period}
-                          </span>
-                        </div>
-                        
-                        {/* Alignment Score */}
-                        {alignment.alignment_score !== undefined && (
-                          <div className="mt-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs font-medium">Alignment:</span>
-                              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                <div 
-                                  className="bg-gradient-to-r from-yellow-500 to-amber-500 h-2.5 rounded-full" 
-                                  style={{ width: `${alignment.alignment_score}%` }}
-                                ></div>
-                              </div>
-                              <span className="text-xs font-medium">{alignment.alignment_score}%</span>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Traditional Alignment Badge if exists */}
-                        {alignment.alignment && (
-                          <div className="mt-2">
-                            <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium 
-                              ${alignment.alignment === 'Strong' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 
-                                alignment.alignment === 'Moderate' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 
-                                  alignment.alignment === 'Weak' ? 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200' : 
-                                    'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'}`
-                            }>
-                              {alignment.alignment} alignment
-                            </span>
-                          </div>
-                        )}
-                        
-                        <p className="mt-3 text-xs text-gray-700 dark:text-gray-300">
-                          {alignment.description}
-                        </p>
-                        
-                        {/* Key similarities and differences */}
-                        {alignment.key_similarities && alignment.key_similarities.length > 0 && (
-                          <div className="mt-3">
-                            <h5 className="text-xs font-medium flex items-center gap-1">
-                              <span className="text-green-600 dark:text-green-400">✓</span> Key Similarities
-                            </h5>
-                            <ul className="mt-1 space-y-1">
-                              {alignment.key_similarities.map((item, idx) => (
-                                <li key={idx} className="text-xs text-gray-700 dark:text-gray-300 pl-4 relative">
-                                  <span className="absolute left-0 top-1.5 w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                  {item}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                        
-                        {alignment.key_differences && alignment.key_differences.length > 0 && (
-                          <div className="mt-2">
-                            <h5 className="text-xs font-medium flex items-center gap-1">
-                              <span className="text-orange-600 dark:text-orange-400">≠</span> Key Differences
-                            </h5>
-                            <ul className="mt-1 space-y-1">
-                              {alignment.key_differences.map((item, idx) => (
-                                <li key={idx} className="text-xs text-gray-700 dark:text-gray-300 pl-4 relative">
-                                  <span className="absolute left-0 top-1.5 w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                                  {item}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-gray-500 italic">
-                    Historical alignment data not available
-                  </p>
-                )}
-              </div>
-            </TabsContent>
-            
-            {/* Regional Context Tab */}
-            <TabsContent value="regional" className="space-y-4">
-              <div>
-                <h3 className="text-base font-semibold mb-3 flex items-center gap-2">
-                  <span className="text-lg text-blue-600 dark:text-blue-400">🗺️</span> Regional Analysis
-                </h3>
-                
-                {regional_analysis.length > 0 ? (
-                  <div className="space-y-4">
-                    {regional_analysis.map((region, index) => (
-                      <div key={index} className="border rounded-lg p-4 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-950 dark:to-teal-950 border-blue-200 dark:border-blue-800 shadow-sm hover:shadow-md transition-all">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-sm font-medium">{region.region}</h4>
-                          <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium shadow-sm
-                            ${region.alignment === 'Strong' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 
-                              region.alignment === 'Moderate' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 
-                                'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'}`
-                          }>
-                            {region.alignment} alignment
-                          </span>
-                        </div>
-                        <p className="mt-2 text-xs text-gray-700 dark:text-gray-300">
-                          {region.description}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="bg-blue-50 dark:bg-blue-950 rounded-lg p-6 text-center border border-blue-200 dark:border-blue-900">
-                    <span className="text-4xl block mb-3">🌍</span>
-                    <h4 className="text-base font-medium text-blue-700 dark:text-blue-300 mb-2">Regional Context</h4>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
-                      Your profile suggests these regional alignments:
-                    </p>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      <div className="border border-blue-200 dark:border-blue-800 rounded-md p-3 bg-white dark:bg-gray-800">
-                        <h5 className="font-medium text-xs mb-1">Ireland</h5>
-                        <p className="text-xs">{dimensions.economic > 0 ? 
-                          "Your views align with center-right voters in Dublin suburbs and rural towns" : 
-                          "Your views align with urban center-left voters in major cities"}
-                        </p>
-                      </div>
-                      <div className="border border-blue-200 dark:border-blue-800 rounded-md p-3 bg-white dark:bg-gray-800">
-                        <h5 className="font-medium text-xs mb-1">Europe</h5>
-                        <p className="text-xs">{dimensions.cultural > 0 ? 
-                          "Your values match conservative and moderate voters in Central Europe" : 
-                          "Your values align with progressives in Northern European countries"}
-                        </p>
-                      </div>
+
+  const { historical_alignments = [], regional_analysis = [], issue_analysis = [], trending_issues = [] } = analysisData;
+
+  // Strongest views first (furthest percentile from 50).
+  const sortedIssues = (Array.isArray(issue_analysis) ? issue_analysis : [])
+    .map((issue): IssueAnalysisItem => (typeof issue === "string" ? { description: issue } : { ...issue }))
+    .sort((a, b) => Math.abs((b.percentile ?? 50) - 50) - Math.abs((a.percentile ?? 50) - 50));
+
+  return (
+    <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5" data-context-analysis-container="true">
+      {header}
+      <Tabs defaultValue="historical" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="historical">History</TabsTrigger>
+          <TabsTrigger value="regional">Places</TabsTrigger>
+          <TabsTrigger value="issues">Issues</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="historical" className="flex flex-col gap-2.5 pt-3">
+          {historical_alignments.length === 0 ? (
+            <Empty>No historical comparison came back for this result.</Empty>
+          ) : (
+            historical_alignments.map((a, index) => (
+              <article key={index} className={tileClass}>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-[15px] font-bold">{a.era || a.movement}</h3>
+                  <Badge variant="outline" className="shrink-0">
+                    {a.period}
+                  </Badge>
+                </div>
+                {typeof a.alignment_score === "number" && (
+                  <div className="flex items-center gap-2 text-[13px]">
+                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-input" aria-hidden="true">
+                      <div className="h-full rounded-full bg-primary" style={{ width: `${a.alignment_score}%` }} />
                     </div>
+                    <span className="font-bold tabular-nums">{a.alignment_score}% alike</span>
                   </div>
                 )}
-                
-                {userLocation && (
-                  <div className="mt-4 bg-blue-50 dark:bg-blue-900 p-3 rounded-lg">
-                    <h4 className="font-medium text-sm text-blue-800 dark:text-blue-300 flex items-center gap-2">
-                      <span>📍</span> Your Location Context
-                    </h4>
-                    <p className="text-xs text-blue-700 dark:text-blue-400 mt-1">
-                      {`Based on your location (${userLocation}), your political profile would likely align with local ${
-                        dimensions.economic < -2 ? "left-leaning" : 
-                        dimensions.economic > 2 ? "right-leaning" : 
-                        "centrist"
-                      } political groups.`}
-                    </p>
-                  </div>
+                {a.alignment && <span className="text-[13px] font-semibold text-muted-foreground">{a.alignment} alignment</span>}
+                <p className="text-sm leading-relaxed text-muted-foreground">{a.description}</p>
+                {!!a.key_similarities?.length && (
+                  <BulletList title="Alike" items={a.key_similarities} dot="bg-primary" />
                 )}
+                {!!a.key_differences?.length && <BulletList title="Different" items={a.key_differences} dot="bg-warn" />}
+              </article>
+            ))
+          )}
+        </TabsContent>
+
+        <TabsContent value="regional" className="flex flex-col gap-2.5 pt-3">
+          {regional_analysis.length === 0 ? (
+            <Empty>No regional comparison came back for this result.</Empty>
+          ) : (
+            regional_analysis.map((region, index) => (
+              <article key={index} className={tileClass}>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-[15px] font-bold">{region.region}</h3>
+                  <Badge variant={region.alignment === "Strong" ? "success" : "secondary"} className="shrink-0">
+                    {region.alignment}
+                  </Badge>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{region.description}</p>
+              </article>
+            ))
+          )}
+        </TabsContent>
+
+        <TabsContent value="issues" className="flex flex-col gap-2.5 pt-3">
+          {sortedIssues.length === 0 ? (
+            <Empty>No issue analysis came back for this result.</Empty>
+          ) : (
+            sortedIssues.map((issue, index) => (
+              <article key={index} className={tileClass}>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-[15px] font-bold">{issue.issue || `Issue ${index + 1}`}</h3>
+                  {issue.stance && (
+                    <Badge variant="secondary" className="shrink-0">
+                      {issue.stance}
+                    </Badge>
+                  )}
+                </div>
+                {typeof issue.percentile === "number" && (
+                  <span className="text-[13px] font-semibold text-primary">
+                    Stronger views than about {issue.percentile}% of people
+                  </span>
+                )}
+                {issue.description && <p className="text-sm leading-relaxed text-muted-foreground">{issue.description}</p>}
+              </article>
+            ))
+          )}
+          {trending_issues.length > 0 && (
+            <div className="flex flex-col gap-2 pt-2">
+              <h3 className="text-[13px] font-semibold text-muted-foreground">Issues to follow</h3>
+              <div className="flex flex-wrap gap-2">
+                {trending_issues.map((issue, index) => (
+                  <Badge key={index} variant="outline">
+                    {typeof issue === "string" ? issue : String(issue.issue)}
+                  </Badge>
+                ))}
               </div>
-            </TabsContent>
-            
-            {/* Issues Tab */}
-            <TabsContent value="issues" className="space-y-4">
-              <div>
-                <h3 className="text-base font-semibold mb-3 flex items-center gap-2">
-                  <span className="text-lg text-purple-600 dark:text-purple-400">📊</span> Issue Analysis
-                </h3>
-                
-                {sortedIssues.length > 0 ? (
-                  <div className="space-y-4">
-                    {sortedIssues.map((issue, index) => (
-                      <div key={index} className="border rounded-lg p-4 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950 border-purple-200 dark:border-purple-800 shadow-sm hover:shadow-md transition-all">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-sm font-medium">{issue.issue || `Issue ${index + 1}`}</h4>
-                          <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium shadow-sm
-                            ${issue.stance === 'Progressive' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 
-                              issue.stance === 'Conservative' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' : 
-                                issue.stance === 'Centrist' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' : 
-                                  'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'}`
-                          }>
-                            {issue.stance || 'Moderate'}
-                          </span>
-                        </div>
-                        
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-sm inline-block">
-                          {'percentile' in issue && typeof issue.percentile === 'number'
-                            ? `You hold stronger views on this issue than ~${issue.percentile}% of people`
-                            : `Your stance on this issue is ${'stance' in issue ? issue.stance : 'moderate'}`}
-                        </div>
-                        
-                        <p className="mt-3 text-xs text-gray-700 dark:text-gray-300">
-                          {issue.description}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="bg-purple-50 dark:bg-purple-950 rounded-lg p-6 text-center border border-purple-200 dark:border-purple-900">
-                    <span className="text-4xl block mb-3">📋</span>
-                    <h4 className="text-base font-medium text-purple-700 dark:text-purple-300 mb-2">Issue Positions</h4>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
-                      Based on your profile, we can predict your stance on these key issues:
-                    </p>
-                    <div className="space-y-3">
-                      <div className="border border-purple-200 dark:border-purple-800 rounded-md p-3 bg-white dark:bg-gray-800">
-                        <h5 className="font-medium text-xs mb-1 flex items-center gap-1">
-                          <span className="text-purple-500">•</span> Climate Change
-                        </h5>
-                        <p className="text-xs">{dimensions.environmental > 0 ? 
-                          "Supportive of balanced approaches that protect business interests while addressing environmental concerns" : 
-                          "Strongly favor aggressive climate action and strict environmental regulations"}
-                        </p>
-                      </div>
-                      <div className="border border-purple-200 dark:border-purple-800 rounded-md p-3 bg-white dark:bg-gray-800">
-                        <h5 className="font-medium text-xs mb-1 flex items-center gap-1">
-                          <span className="text-purple-500">•</span> Immigration
-                        </h5>
-                        <p className="text-xs">{dimensions.globalism > 0 ? 
-                          "Prefer controlled immigration with emphasis on national interests and integration" : 
-                          "Support more open immigration policies with humanitarian considerations"}
-                        </p>
-                      </div>
-                      <div className="border border-purple-200 dark:border-purple-800 rounded-md p-3 bg-white dark:bg-gray-800">
-                        <h5 className="font-medium text-xs mb-1 flex items-center gap-1">
-                          <span className="text-purple-500">•</span> Economic Policy
-                        </h5>
-                        <p className="text-xs">{dimensions.economic > 0 ? 
-                          "Favor lower taxes and reduced business regulations to stimulate growth" : 
-                          "Support progressive taxation and stronger oversight of markets"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {trending_issues.length > 0 && (
-                  <div className="mt-6">
-                    <h4 className="text-sm font-medium mb-2">Trending Issues You Should Follow</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {trending_issues.map((issue, index) => (
-                        <span key={index} className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">
-                          {typeof issue === 'string' ? issue : 
-                           (issue && typeof issue === 'object' && issue !== null && 'issue' in issue) ? 
-                             String(issue.issue) : 
-                             'Issue #' + (index + 1)}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-      </Card>
-    );
-  }
-  
-  // Fallback (should not happen with the states above)
-  return null;
+            </div>
+          )}
+        </TabsContent>
+      </Tabs>
+    </section>
+  );
 };
+
+function BulletList({ title, items, dot }: { title: string; items: string[]; dot: string }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <h4 className="text-[13px] font-bold">{title}</h4>
+      <ul className="flex flex-col gap-1">
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-2 text-[13px] text-muted-foreground">
+            <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} aria-hidden="true" />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default ContextAnalysis;
