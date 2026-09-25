@@ -109,6 +109,23 @@ export interface MultiAgentAnalysis {
 
 // --- AGENT PROMPTS ---
 
+/** Appended to every perspective and dimension agent's prompt. runAgent parses exactly these keys. */
+export const AGENT_OUTPUT_FORMAT = `
+OUTPUT - reply with ONE JSON object and nothing else, using exactly these keys:
+{
+  "transparency_score": <0-100 or null>,
+  "effectiveness_score": <0-100 or null>,
+  "integrity_score": <0-100 or null>,
+  "consistency_score": <0-100 or null>,
+  "overall_impact": <number from -10 to +10>,
+  "reasoning": "<evidence from the article for each score you gave>",
+  "confidence": <0-1>,
+  "bias_declaration": "<one sentence on the lens you scored through>"
+}
+A dimension the article gives no evidence for is null, never 50. overall_impact 0 means neutral:
+"no evidence of wrongdoing" is 0, and a positive number needs a demonstrable good action.
+Extra keys asked for above (for example spin_detected) may be added alongside these.`;
+
 const MANAGER_PROMPT = `
 You are the 'Team Manager' for the News Article Scoring Team.
 Your job is to assemble the best team of perspective agents to fairly score a politician.
@@ -589,10 +606,14 @@ async function runAgent(
   
   console.log(`   🤖 ${agentName} analyzing...`);
   
-  const systemPrompt = AGENT_PROMPTS[agentName];
-  if (!systemPrompt) {
+  const rolePrompt = AGENT_PROMPTS[agentName];
+  if (!rolePrompt) {
     throw new Error(`Unknown agent: ${agentName}`);
   }
+  // Each agent is a separate call and never sees another agent's prompt, so "same JSON format
+  // as other agents" told it nothing. GPT-4o guessed the keys; DeepSeek invents its own, and
+  // every score then parsed as null (measured 2026-09-24: all verdicts impact 0).
+  const systemPrompt = `${rolePrompt}\n\n${AGENT_OUTPUT_FORMAT}`;
   
   const input = `
 Analyze this article about TD ${politician.name} (${politician.party || 'Unknown party'}, ${politician.constituency || 'Unknown constituency'}).

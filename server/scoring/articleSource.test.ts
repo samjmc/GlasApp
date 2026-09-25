@@ -20,6 +20,15 @@ describe('toOutcome', () => {
       errorMessage: null,
     });
   });
+  it('a same-event duplicate is `duplicate`, keeping its reason', () => {
+    expect(toOutcome({ ...base, skippedReason: 'Duplicate of article 4 (same event: budget)', duplicateOf: 4 })).toMatchObject({
+      status: 'duplicate',
+      skipReason: 'Duplicate of article 4 (same event: budget)',
+    });
+  });
+  it('an error wins over a duplicate', () => {
+    expect(toOutcome({ ...base, duplicateOf: 4, errorMessage: 'db down' }).status).toBe('failed');
+  });
   it('an error wins over a skip', () => {
     expect(toOutcome({ ...base, skippedReason: 'x', errorMessage: 'panel timeout' }).status).toBe('failed');
   });

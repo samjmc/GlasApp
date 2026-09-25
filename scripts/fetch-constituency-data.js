@@ -1,20 +1,15 @@
-import OpenAI from "openai";
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { chat } from './lib/llm.mjs';
 
 // Get the directory name properly in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 async function getConstituencyData() {
   try {
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
       messages: [
         {

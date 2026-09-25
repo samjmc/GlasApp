@@ -1,14 +1,9 @@
 import { Pool } from '@neondatabase/serverless';
-import { OpenAI } from 'openai';
 import fs from 'fs';
 import path from 'path';
+import { chat } from './lib/llm.mjs';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // Define party colors
 const partyColors: Record<string, string> = {
@@ -209,7 +204,7 @@ async function getElectionResults(constituencyName: string): Promise<Array<{
 }>> {
   try {
     // Use OpenAI to extract election results from Wikipedia
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024
       messages: [
         {
