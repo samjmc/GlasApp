@@ -1,139 +1,142 @@
 # TD scoring
 
-One engine, one weight table, one router. Everything about how a TD gets a number lives in
-`server/scoring/`.
+A TD's score is built **only from facts anyone can check in the Oireachtas record**. News carries
+no weight: judging whether a statement was good or bad has no neutral answer, so it is not part
+of the number (decision 2026-09-25, `docs/plans/facts-only-scoring.md`). Everything about how a
+TD gets a number lives in `server/scoring/`; the facts themselves come from `server/parliament/`.
 
 ## The model
 
-A TD has five ELO ratings, all starting at 1500: **overall** and four dimensions,
-**transparency, effectiveness, integrity, consistency**. Every scored news article moves them.
+Four components, each measured inside the TD's own membership of the current Dáil:
 
-```
-delta = impact/10 × K(32) × credibility            impact −10..+10
-credibility = source credibility × panel confidence
-weight halves every 30 days once the article is older than 90 days
-```
-
-Display scores are 0–100 and come from one conversion: `(elo − 1000) / 10`, clamped.
-
-The **overall 0–100** is a weighted mean of three pillars, computed by the rollup and stored:
-
-| Pillar | Weight | Source |
+| Component | Fact | Full marks at |
 |---|---|---|
-| news | 0.45 | `eloToPercent(overall_elo)` |
-| parliamentary | 0.30 | questions vs 200 benchmark (50%) + Dáil vote attendance vs 95% (30%) + committee attendance vs 85% (20%), renormalised over the ones a TD has |
-| debate | 0.25 | Dáil debate sections spoken in per sitting day, vs the 75th percentile of TDs |
+| questions | oral + written parliamentary questions this term | 200 (`QUESTIONS_BENCHMARK`) |
+| attendance | Dáil votes cast ÷ divisions held while a member | 95% (`ATTENDANCE_BENCHMARK`) |
+| committees | sittings of the TD's own committees attended ÷ held | 85% (`COMMITTEE_ATTENDANCE_BENCHMARK`) |
+| debate | debate sections spoken in per sitting day, against the 75th percentile of TDs | the 75th percentile |
 
-A pillar with no data is left out and the others renormalise; a TD with no debate record is
-scored on the other two, not dragged toward 50. National, party and constituency ranks and
-7/30-day ELO trends are computed at the same time.
+Each is capped at its benchmark. They form two pillars, and the pillars form the overall 0–100:
+
+| Pillar | Weight | Made of |
+|---|---|---|
+| parliamentary | 0.55 | questions 0.5 · attendance 0.3 · committees 0.2 (`PARLIAMENTARY_WEIGHTS`) |
+| debate | 0.45 | debate |
+
+The weights live in `server/scoring/weights.ts` and nowhere else. They were news 0.45 /
+parliamentary 0.30 / debate 0.25 until 2026-09-25; with news removed the other two are
+renormalised. The parliamentary weights and benchmarks are Sam's choice from PR #77.
+
+### NULL means "not expected / not measurable", never 0
+
+A component is NULL when the TD was not expected to produce it, or when there is too little to
+measure. It is then left out, and the weights renormalise over what is there: a TD on no committee
+is scored 62.5 / 37.5 on questions and votes, not given 0 for committees.
+
+**Fair inputs are the parliament module's job, not scoring's** (split agreed 2026-09-25).
+`server/parliament/` is responsible for deciding when a TD was not expected to produce an input —
+questions for periods in government office, documented absences out of attendance denominators,
+every input for the Ceann Comhairle, too little eligible time for a by-election TD — and handing
+scoring a NULL. Today it already NULLs attendance and debate for the chair and anything below its
+minimums (`metrics.ts`). Scoring adds no office-holder rule of its own. Its contract is `repository.rollupInputs`: questions,
+attendancePct, committeeAttendancePct, debateScore and isPresiding. As a backstop, `rollup.ts`
+treats a TD who holds the chair (`isPresiding`) as having every component NULL, because the
+question count defaults to 0 and committee attendance is measured for anyone.
+
+Two things are stated rather than adjusted:
+
+- **Vote attendance** is scored as the Official Report records it. Pairing is not published, so
+  a paired absence counts as a missed vote; the profile page says so next to the count. There is
+  no special case for Cabinet: an exemption for ministers would lift government leaders and not
+  the opposition leader, whose attendance is also low.
+- **Ministers' debate participation is not adjusted.** Ministers move bills and answer in the
+  chamber, which raises it. Only speeches from the chair are excluded (`parse.ts isPresidingRole`).
+
+### Minimum evidence
+
+A TD with fewer than `MIN_COMPONENTS_FOR_RANK` (2) non-NULL components gets an overall score of
+NULL and no rank. One number — say, vote attendance alone — is not enough to rank against TDs
+measured on four. Their pillars are still stored and shown.
+
+### Ranks
+
+National, party and constituency ranks are over TDs with an overall score. Equal scores share a
+rank and the next rank skips (1, 2, 2, 4); lists show ties in name order.
+
+### Party score
+
+The mean overall score of the party's ranked members, computed on read (`party.ts`); unranked
+members are left out, not counted as 0. A party with no ranked member has no score. Nothing is
+stored. Pledge delivery stays on the party page as its own counts and is never blended in.
+
+## Where the facts come from
+
+`npm run parliament:sync` (`server/parliament/`, daily at 04:45 from the scheduler) ingests
+divisions, debates, questions and committee sittings from `api.oireachtas.ie`, recomputes
+`politics.td_parliament_stats`, writes the scoring inputs onto `tds`, then calls
+`recalculateAll()`. The roster sync runs first. See `docs/plans/parliament-rebuild.md` for the
+API facts behind each count.
+
+```
+recalculateAll()                         recalculate.ts
+  rollupInputs()                         repository.ts   tds + td_parliament_stats (via parliament repo)
+  debate participation                   debateInputs.ts → parliament/metrics.debateScores
+  components, pillars, overall, ranks    rollup.ts
+  writeRollup()                          td_scores
+```
+
+Also run by `npm run td-scoring -- --recalculate` and `POST /api/scores/recalculate` (admin).
 
 ## Getting a TD table
 
-The pipeline resolves TDs by name, so an empty `politics.tds` means every article scores
-nobody. Populate it from the Oireachtas roster of the current Dáil:
-
-```bash
-npm run sync-tds
-```
-
-It upserts by member code (falling back to name), and **deactivates rather than deletes** —
-scores, history and article verdicts cascade from `tds.id`, so removing a row when someone
+`npm run sync-tds` upserts the current Dáil roster by member code (falling back to name), and
+**deactivates rather than deletes**: scores cascade from `tds.id`, so removing a row when someone
 leaves the Dáil would erase their record. An empty roster from the API changes nothing, so a
 failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and unit-tested.
 
-Parliamentary and debate inputs are filled by `npm run parliament:sync` (`server/parliament/`,
-daily at 04:45 from the scheduler, off the even hours TD scoring runs at), which also runs
-the roster sync first. Attendance is Dáil divisions voted in / divisions held **inside the
-TD's own membership window**; questions are the ones the TD asked, summed from
-`politics.question_counts`; debate participation excludes speeches made from the chair.
-Committee attendance is the share of the TD's own committees' sittings they are on the roll
-call for, inside each membership; it is NULL below 10 sittings, so a TD on no committee (most
-ministers) is scored on questions and votes alone. The Ceann Comhairle does not vote and gets
-NULL, not 0. Anything that cannot be measured stays NULL and
-its pillar drops out. See `docs/plans/parliament-rebuild.md` for the API facts behind this.
-
-## The pipeline
-
-```
-runPipeline()
-  fetch unprocessed articles            articleSource.ts   (news domain adapter)
-  importance triage, keep the top 25%   services/articleImportanceService
-  cluster same-event articles           services/eventDeduplicationService
-  find the TDs each article is about    services/tdExtractionService → repository.findByName
-  per (article, TD):
-    run the multi-agent panel           panel.ts           (LLM, ~6–8 calls)
-    apply consensus to the ELOs         panel.applyPanelResult → elo.ts → repository.applyElo
-    record the verdict + policy stance  repository.upsertArticleScore / upsertPolicyStance
-    feed the ideology profile           services/tdIdeologyProfileService
-  recalculateAll()                      recalculate.ts
-    pillars, overall, ranks             rollup.ts
-    7/30-day trends                     repository.writeTrends
-    party aggregates                    party.ts
-```
-
-Runs every 2 hours from `server/services/scheduler.ts`, on demand with `npm run td-scoring`
-(`-- --recalculate` skips the LLM and only rebuilds derived scores; `-- --article <id>` scores
-one article), and from `POST /api/admin/td-scoring/run`.
-
-## Tables (`politics` schema, `shared/schema/politics.ts`)
+## Tables (`politics` schema)
 
 | Table | Holds |
 |---|---|
-| `tds` | who a TD is: name, party, constituency, image, member code, offices, committees, question counts, attendance |
-| `td_scores` | one row per TD: the five ELOs, the stored pillars and overall, ranks, trends, story count |
-| `td_score_history` | one row per ELO change per dimension; feeds trends and the homepage movers |
-| `article_td_scores` | the panel's verdict on one TD in one article |
-| `td_policy_stances` | policy stances the panel extracted |
-| `party_scores` | party aggregate, replaced on every recalculation |
-| `td_historical_baselines` | AI-researched history per TD; shown, not scored |
+| `tds` | who a TD is, plus the scoring inputs: question counts, vote and committee attendance |
+| `td_parliament_stats` | per-TD raw counts from `server/parliament/`, and `is_presiding` |
+| `td_scores` | one row per TD: the stored pillars, overall and ranks. `updated_at` is when the rollup last wrote it |
+| `td_historical_baselines` | researched history per TD; shown, not scored |
 
-Everything is keyed by `td_id`. `npm run db:generate` turns schema changes into a migration in
-`drizzle/`; `npm run db:migrate` applies it.
+Still in the schema and not part of the score, until the facts-only migration drops them: the ELO,
+`news_score`, trend and story-count columns on `td_scores`, `td_score_history`, `party_scores`,
+and the news pipeline's `article_td_scores` / `td_policy_stances` (`server/scoring/pipeline.ts`,
+`panel.ts`). The news pipeline still writes the ELO columns; nothing that builds or shows the
+score reads them.
 
 ## API — `/api/scores`
+
+Response types are in `shared/scoresApi.ts`, imported by the router and the client, so a field
+dropped on one side fails `tsc` on the other.
 
 | Route | Serves |
 |---|---|
 | `GET /tds` | every active TD, best first (+ `hasResearch`) |
-| `GET /widget` | homepage: top 5, bottom 5, 30-day movers, totals |
-| `GET /td/:name` | full profile and score breakdown |
+| `GET /widget` | homepage: top 5, bottom 5, totals |
+| `GET /td/:name` | profile, components, pillars, and the raw facts (votes cast / divisions eligible, questions oral / written, committee sittings, debate sections) with a link to the TD's oireachtas.ie page |
 | `GET /td/:id/summary` | quick-info modal |
-| `GET /parties` · `GET /party/:name` | party rankings and one party's members |
+| `GET /parties` · `GET /party/:name` | party means (computed on read) and one party's members |
 | `GET /constituencies` · `GET /constituencies/summary` · `GET /constituency/:name` | constituency pages and the map |
-| `POST /recalculate` (admin) | rebuild derived scores without the LLM |
+| `POST /recalculate` (admin) | rebuild derived scores and ranks |
 
 Every response is `{ success, data, meta? }`.
 
 ## Tests
 
-`elo`, `weights`, `rollup`, `party` and `tdSync` are pure and unit-tested from array
-literals. `routes/scores.test.ts` covers the router against a mocked repository.
+`weights`, `rollup`, `party` and `tdSync` are pure and unit-tested from array literals.
+`routes/scores.test.ts` covers the router against a mocked repository and asserts the card has
+exactly the fields `shared/scoresApi.ts` declares.
 
-Everything else in the module talks to Postgres, and no unit test executes a query — a
-broken `ON CONFLICT` target or a wrong transaction shape would ship silently. So
-`repository.integration.test.ts` runs the real SQL. It skips unless you point it at a
-throwaway database, and it drops and recreates the `politics` schema in whatever you give
-it:
+`repository.integration.test.ts` runs the real SQL. It skips unless you point it at a throwaway
+database, and it drops and recreates the `politics` schema in whatever you give it:
 
 ```bash
 docker run -d --name glas-test-pg -e POSTGRES_PASSWORD=postgres -p 55432:5432 postgres:16
 $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
 npx vitest run server/scoring/repository.integration.test.ts
 ```
-
-## What this replaced (2026-09-21)
-
-Five engines (`comprehensiveTDScoringService`, `unifiedTDScoringService`, `tdScoreCalculator`,
-`partyPerformanceService`, and the scraper's own single-model path), four weight tables that
-disagreed, two ELO→percent conversions, a news score that was an unbounded sum, seven mount
-prefixes for one router, six score tables no page read, and user star ratings. All deleted, not
-deprecated.
-
-## Not in this module
-
-- **Parliament data** (divisions, debates, questions, attendance) is `server/parliament/`; the
-  rollup reads its participation scores through `debateInputs.ts`.
-- **News ingestion** (`news_articles`, the scraper, triage) is its own subsystem; the pipeline
-  reads it through `articleSource.ts`, which still uses the legacy REST client and is the seam
-  that rebuild replaces.
