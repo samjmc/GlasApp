@@ -1,0 +1,24 @@
+{
+  "name": "Glas Politics",
+  "short_name": "Glas",
+  "description": "Every TD scored on votes, questions and debate from the official Oireachtas record.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0D1310",
+  "theme_color": "#0D1310",
+  "lang": "en-IE",
+  "dir": "ltr",
+  "categories": ["politics", "news", "education"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Rankings", "url": "/rankings", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Dáil record", "url": "/debates", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Ideology quiz", "url": "/quiz", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
