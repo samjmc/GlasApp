@@ -5,8 +5,6 @@ import {
   DEFAULT_REGION_CODE,
   REGION_CONFIGS,
   REGION_LIST,
-  REGION_NEWS_MOCK,
-  REGION_DAILY_SESSION_MOCK,
   isRegionCode,
   type RegionCode,
 } from "@shared/region-config";
@@ -26,8 +24,6 @@ router.get("/current", (req, res) => {
     success: true,
     regionCode,
     region: REGION_CONFIGS[regionCode],
-    hasMockNews: !!REGION_NEWS_MOCK[regionCode],
-    hasMockDailySession: !!REGION_DAILY_SESSION_MOCK[regionCode],
   });
 });
 
@@ -65,11 +61,7 @@ router.post("/select", async (req, res) => {
     success: true,
     regionCode,
     region: REGION_CONFIGS[regionCode],
-    hasMockNews: !!REGION_NEWS_MOCK[regionCode],
-    hasMockDailySession: !!REGION_DAILY_SESSION_MOCK[regionCode],
   });
 });
 
 export default router;
-
-

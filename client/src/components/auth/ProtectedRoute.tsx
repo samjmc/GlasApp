@@ -1,73 +1,51 @@
-import React from 'react';
-import { useAuth } from '@/contexts/AuthContext';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Shield, LogIn } from 'lucide-react';
+import type { ReactNode } from "react";
+import { Link } from "wouter";
+import { LogIn, ShieldAlert } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/pulse/EmptyState";
 
 interface ProtectedRouteProps {
-  children: React.ReactNode;
-  fallback?: React.ReactNode;
+  children: ReactNode;
+  fallback?: ReactNode;
   requireAdmin?: boolean;
 }
 
-/** Route guard that redirects unauthenticated or non-admin users. */
+/** Shows its children only to a signed-in user (and, with requireAdmin, only to an admin). */
 export function ProtectedRoute({ children, fallback, requireAdmin = false }: ProtectedRouteProps) {
   const { user, isLoading } = useAuth();
-  
-  // Admin check - only samjmc3@hotmail.com has admin access
-  const isAdmin = user?.email === 'samjmc3@hotmail.com';
+  const { isAdmin, isLoading: adminLoading } = useIsAdmin();
 
-  if (isLoading) {
+  if (isLoading || (requireAdmin && adminLoading)) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-8 h-8 border-4 border-t-transparent border-blue-500 rounded-full animate-spin" />
+      <div className="flex min-h-[50vh] items-center justify-center" role="status" aria-label="Loading">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-input border-t-primary" />
       </div>
     );
   }
 
   if (!user) {
-    if (fallback) {
-      return <>{fallback}</>;
-    }
-
+    if (fallback) return <>{fallback}</>;
     return (
-      <div className="flex items-center justify-center min-h-screen p-4">
-        <Card className="w-full max-w-md mx-auto">
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4 p-3 bg-blue-100 rounded-full w-fit">
-              <Shield className="w-8 h-8 text-blue-600" />
-            </div>
-            <CardTitle>Authentication Required</CardTitle>
-            <CardDescription>
-              You need to sign in to access this page
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <Button onClick={() => window.location.href = '/api/login'} className="w-full" size="lg">
-              <LogIn className="w-4 h-4 mr-2" />
-              Sign In with Replit
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+      <EmptyState
+        icon={LogIn}
+        title="Sign in to see this page"
+        action={
+          <Button asChild>
+            <Link href="/login">Sign in</Link>
+          </Button>
+        }
+        className="mx-auto mt-10 max-w-md"
+      />
     );
   }
 
   if (requireAdmin && !isAdmin) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-4">
-        <Card className="w-full max-w-md mx-auto">
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4 p-3 bg-red-100 rounded-full w-fit">
-              <Shield className="w-8 h-8 text-red-600" />
-            </div>
-            <CardTitle>Admin Access Required</CardTitle>
-            <CardDescription>
-              You don't have admin privileges to access this page
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
+      <EmptyState icon={ShieldAlert} title="Admins only" className="mx-auto mt-10 max-w-md">
+        Your account does not have admin access.
+      </EmptyState>
     );
   }
 

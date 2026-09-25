@@ -6,10 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
-import { AlertCircle, CheckCircle2, MessageSquare, Send } from 'lucide-react';
+import { AlertCircle, CheckCircle2, Loader2, MessageSquare, Send } from 'lucide-react';
 
 // Form validation schema for SMS notifications
 const smsFormSchema = z.object({
@@ -47,7 +46,7 @@ export function SMSNotificationForm() {
   const [statusMessage, setStatusMessage] = useState('');
   const [serviceAvailable, setServiceAvailable] = useState<boolean | null>(null);
   const { toast } = useToast();
-  
+
   // Form definition
   const form = useForm<SMSFormValues>({
     resolver: zodResolver(smsFormSchema),
@@ -57,7 +56,7 @@ export function SMSNotificationForm() {
       mediaUrl: '',
     },
   });
-  
+
   // Check SMS service availability on component mount
   React.useEffect(() => {
     async function checkSmsService() {
@@ -70,16 +69,16 @@ export function SMSNotificationForm() {
         setServiceAvailable(false);
       }
     }
-    
+
     checkSmsService();
   }, []);
-  
+
   // Handle form submission
   async function onSubmit(values: SMSFormValues) {
     setIsSending(true);
     setStatus('idle');
     setStatusMessage('');
-    
+
     try {
       const response = await fetch('/api/sms/send', {
         method: 'POST',
@@ -88,9 +87,9 @@ export function SMSNotificationForm() {
         },
         body: JSON.stringify(values),
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
         setStatus('success');
         setStatusMessage('SMS sent successfully!');
@@ -122,149 +121,133 @@ export function SMSNotificationForm() {
       setIsSending(false);
     }
   }
-  
+
   // Apply a template message
   const applyTemplate = (templateText: string) => {
     form.setValue('message', templateText, { shouldValidate: true });
   };
-  
+
   if (serviceAvailable === false) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>SMS Notifications</CardTitle>
-          <CardDescription>Send SMS notifications about political updates</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>Service Unavailable</AlertTitle>
-            <AlertDescription>
-              The SMS service is currently unavailable. Please contact the administrator.
-            </AlertDescription>
-          </Alert>
-        </CardContent>
-      </Card>
+      <Alert variant="destructive">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Service unavailable</AlertTitle>
+        <AlertDescription>
+          The SMS service is currently unavailable. Please contact the administrator.
+        </AlertDescription>
+      </Alert>
     );
   }
-  
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>SMS Notifications</CardTitle>
-        <CardDescription>Send SMS notifications about political updates</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="phoneNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Recipient Phone Number</FormLabel>
-                  <FormControl>
-                    <Input placeholder="+15551234567" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Enter the phone number in E.164 format (e.g., +15551234567)
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Message</FormLabel>
-                  <FormControl>
-                    <Textarea 
-                      placeholder="Enter your message here..." 
-                      className="min-h-[100px]" 
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Enter the message you want to send (1600 characters max)
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="mediaUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Media URL (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://example.com/image.jpg" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Add an optional image URL to include in your message
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <div className="space-y-2">
-              <h4 className="text-sm font-medium">Message Templates</h4>
-              <div className="flex flex-wrap gap-2">
-                {messageTemplates.map((template, idx) => (
-                  <Button
-                    key={idx}
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => applyTemplate(template.text)}
-                  >
-                    <MessageSquare className="h-4 w-4 mr-1" />
-                    {template.name}
-                  </Button>
-                ))}
-              </div>
-            </div>
-            
-            {status === 'success' && (
-              <Alert className="bg-green-50 border-green-500 dark:bg-green-900/20 dark:border-green-700">
-                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-500" />
-                <AlertTitle className="text-green-600 dark:text-green-500">Success</AlertTitle>
-                <AlertDescription className="text-green-600 dark:text-green-500">
-                  {statusMessage}
-                </AlertDescription>
-              </Alert>
-            )}
-            
-            {status === 'error' && (
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
-                <AlertDescription>{statusMessage}</AlertDescription>
-              </Alert>
-            )}
-            
-            <Button type="submit" disabled={isSending} className="w-full">
-              {isSending ? (
-                <>
-                  <span className="animate-spin mr-2">⏳</span>
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="h-4 w-4 mr-1" />
-                  Send SMS
-                </>
-              )}
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="phoneNumber"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Recipient phone number</FormLabel>
+              <FormControl>
+                <Input placeholder="+15551234567" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter the phone number in E.164 format (e.g., +15551234567)
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Enter your message here..."
+                  className="min-h-[100px]"
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>
+                Enter the message you want to send (1600 characters max)
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="mediaUrl"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Media URL (optional)</FormLabel>
+              <FormControl>
+                <Input placeholder="https://example.com/image.jpg" {...field} />
+              </FormControl>
+              <FormDescription>
+                Add an optional image URL to include in your message
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="space-y-2">
+          <h4 className="text-sm font-medium">Message templates</h4>
+          <div className="flex flex-wrap gap-2">
+            {messageTemplates.map((template, idx) => (
+              <Button
+                key={idx}
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => applyTemplate(template.text)}
+              >
+                <MessageSquare className="mr-1 h-4 w-4" />
+                {template.name}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {status === 'success' && (
+          <Alert className="border-success bg-success/15">
+            <CheckCircle2 className="h-4 w-4 text-success" />
+            <AlertTitle className="text-success">Success</AlertTitle>
+            <AlertDescription className="text-success">
+              {statusMessage}
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {status === 'error' && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>{statusMessage}</AlertDescription>
+          </Alert>
+        )}
+
+        <Button type="submit" disabled={isSending} className="w-full">
+          {isSending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              <Send className="mr-1 h-4 w-4" />
+              Send SMS
+            </>
+          )}
+        </Button>
+      </form>
+    </Form>
   );
 }
 

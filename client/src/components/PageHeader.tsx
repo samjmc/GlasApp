@@ -1,95 +1,70 @@
 import type { ReactNode } from "react";
-import { Info, Sparkles, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogTrigger,
+import {
+  Dialog,
   DialogClose,
-  DialogFooter
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 type PageHeaderProps = {
+  /** The page's name, shown as the main heading. */
   title: string;
+  /** One line under the title. */
+  description?: ReactNode;
+  /** A small label above the title, e.g. "Dáil Éireann". */
+  eyebrow?: ReactNode;
+  /** When set, an info button opens a "How it works" dialog with these bullets. */
   tooltipTitle?: string;
   bullets?: string[];
-  description?: string;
   right?: ReactNode;
   className?: string;
 };
 
-/** Page header with title, optional description, bullets, and right-side content. */
-export function PageHeader({ title, tooltipTitle, bullets = [], description, right, className }: PageHeaderProps) {
+/** The top of a page: heading, one-line description, optional "how it works" and actions. */
+export function PageHeader({ title, description, eyebrow, tooltipTitle, bullets = [], right, className }: PageHeaderProps) {
   return (
-    <div className={className ?? ""}>
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex flex-col gap-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400 truncate">
-              {title}
-            </div>
-            {tooltipTitle && (
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="h-auto w-auto p-1 text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-transparent"
-                    aria-label={`About ${title}`}
-                  >
-                    <Info className="h-4 w-4" />
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="w-[90%] max-w-md rounded-2xl border border-white/10 bg-slate-900 p-6 text-white shadow-2xl z-[1050]">
-                  <DialogHeader className="mb-2 flex flex-row items-center justify-between space-y-0 text-left">
-                    <DialogTitle className="flex items-center gap-2 text-xl font-bold text-white">
-                      <Sparkles className="h-5 w-5 text-emerald-400" />
-                      {tooltipTitle}
-                    </DialogTitle>
-                  </DialogHeader>
-                  
-                  <div className="space-y-4">
-                    <div className="rounded-xl bg-white/5 p-4">
-                      <h4 className="mb-3 font-medium text-white flex items-center gap-2 text-sm">
-                        <Info className="h-4 w-4 text-emerald-400" />
-                        How it works
-                      </h4>
-                      <ul className="space-y-3 text-sm text-gray-300">
-                        {bullets.map((text) => (
-                          <li key={text} className="flex items-start gap-2.5">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500/70" />
-                            <span className="leading-snug">{text}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <DialogFooter className="mt-2 sm:justify-end">
-                    <DialogClose asChild>
-                      <Button 
-                        className="w-full rounded-xl bg-white text-slate-900 font-semibold hover:bg-gray-200 sm:w-auto"
-                      >
-                        Got it
-                      </Button>
-                    </DialogClose>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            )}
-          </div>
-          {description && (
-            <p className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
-              {description}
-            </p>
+    <header className={cn("flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between", className)}>
+      <div className="flex min-w-0 flex-col gap-2">
+        {eyebrow && <div className="text-[13px] font-semibold text-muted-foreground">{eyebrow}</div>}
+        <div className="flex items-center gap-2">
+          <h1 className="font-display text-3xl font-bold leading-none tracking-tight sm:text-5xl">{title}</h1>
+          {tooltipTitle && (
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button type="button" variant="ghost" size="icon-sm" aria-label={`How ${title} works`}>
+                  <Info />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-md">
+                <DialogHeader>
+                  <DialogTitle>{tooltipTitle}</DialogTitle>
+                </DialogHeader>
+                <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+                  {bullets.map((text) => (
+                    <li key={text} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                      <span className="leading-snug">{text}</span>
+                    </li>
+                  ))}
+                </ul>
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button className="w-full sm:w-auto">Got it</Button>
+                  </DialogClose>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           )}
         </div>
-
-        {right ? <div className="shrink-0">{right}</div> : null}
+        {description && <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">{description}</p>}
       </div>
-    </div>
+      {right ? <div className="shrink-0">{right}</div> : null}
+    </header>
   );
 }

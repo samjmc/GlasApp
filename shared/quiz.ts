@@ -11,8 +11,14 @@
  * and welfare negated into the shared sign rule, the unscored "Strategic Compass" question
  * dropped, and technocratic re-read answer by answer (Q23 negated, Q25 answers 2 and 4
  * negated), and six answers re-weighted where a milder stance scored the same as the
- * strongest (Q14, Q16, Q17 ×2, Q20) or the strongest scored as mild (Q19). The old answers also carried an eight-axis vector; 456 of its 520 off-axis values
- * were the same stock ±1.67/±3.33, nothing scored them, and they were removed.
+ * strongest (Q14, Q16, Q17 ×2, Q20) or the strongest scored as mild (Q19).
+ * 2026-09-25: Q6 (healthcare, public vs private) moved from social to economic with four
+ * levels; Q27 (assisted dying) added so social keeps three questions; Q5 "devolve to local
+ * boards" and Q9 "citizens' vote" cut from strong to mild (they are procedures, not values);
+ * Q15 small modular reactors cut to mild; Q22 "relocate with tax reliefs" raised to the
+ * strongest self-reliance answer.
+ * The old answers also carried an eight-axis vector; 456 of its 520 off-axis values were the
+ * same stock ±1.67/±3.33, nothing scored them, and they were removed.
  */
 import type { IdeologyDimension, IdeologyVector } from './ideology';
 
@@ -92,6 +98,17 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
   },
   {
+    id: 6,
+    dimension: 'economic',
+    text: "Sláintecare is behind schedule. Which system reset do you back?",
+    answers: [
+      { value: -2.5, text: "Move rapidly to a fully public system with state-run hospitals and clinics", description: "Make healthcare a universal public service, even if it means major structural upheaval." },
+      { value: -1.25, text: "Keep a mixed system but cap private profits and embed regulated waiting-time guarantees", description: "Hold on to choice while tightening the rules to ensure universal access in practice." },
+      { value: 1.25, text: "Lean into mandatory basic insurance with private providers competing on top-up care", description: "Mandate coverage for all, but keep insurers and hospitals market-driven within rules." },
+      { value: 2.5, text: "Shift to vouchers that citizens can spend in public or private facilities as they see fit", description: "Fund people instead of systems so patient choice forces quality improvements." },
+    ],
+  },
+  {
     id: 5,
     dimension: 'social',
     text: "Citizenship education is being rewritten. What emphasis should the curriculum carry?",
@@ -99,18 +116,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       { value: -3.33, text: "Champion rights, diversity, and inclusive histories in every classroom", description: "Double down on equality, minority experiences, and the social movements that shaped Ireland." },
       { value: 1.67, text: "Blend modern citizenship with space for heritage, faith schools, and ethical debates", description: "Balance pluralism with continuity so schools mirror the country’s layered identity." },
       { value: -1.67, text: "Keep the focus practical: media literacy, civic participation, and digital citizenship", description: "Equip students with critical thinking tools more than ideology-laden content." },
-      { value: 3.33, text: "Devolve content to local school boards within light national guardrails", description: "Let communities steer the tone while the state only defines core competencies." },
-    ],
-  },
-  {
-    id: 6,
-    dimension: 'social',
-    text: "Sláintecare is behind schedule. Which system reset do you back?",
-    answers: [
-      { value: -1.67, text: "Move rapidly to a fully public system with state-run hospitals and clinics", description: "Make healthcare a universal public service, even if it means major structural upheaval." },
-      { value: -1.67, text: "Keep a mixed system but cap private profits and embed regulated waiting-time guarantees", description: "Hold on to choice while tightening the rules to ensure universal access in practice." },
-      { value: 1.67, text: "Lean into mandatory basic insurance with private providers competing on top-up care", description: "Mandate coverage for all, but keep insurers and hospitals market-driven within rules." },
-      { value: 1.67, text: "Shift to vouchers that citizens can spend in public or private facilities as they see fit", description: "Fund people instead of systems so patient choice forces quality improvements." },
+      { value: 1.67, text: "Devolve content to local school boards within light national guardrails", description: "Let communities steer the tone while the state only defines core competencies." },
     ],
   },
   {
@@ -122,6 +128,17 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       { value: 1.67, text: "Pass it with tailored conscience clauses for faith-based organisations", description: "Safeguard liberties while giving sincere objectors a legal path to opt out." },
       { value: 1.67, text: "Pause for a national consultation and redraft once the public has weighed in", description: "Seek a broader mandate and slow down rather than risk polarising the debate." },
       { value: 3.33, text: "Reject it; existing legal protections already strike the right balance", description: "Avoid what feels like social engineering and stick with the current settlement." },
+    ],
+  },
+  {
+    id: 27,
+    dimension: 'social',
+    text: "Assisted dying for terminally ill adults is back before the Oireachtas. What should happen?",
+    answers: [
+      { value: -3.33, text: "Legislate now for terminally ill adults, with strict medical safeguards", description: "Treat the choice over how a terminal illness ends as a personal right the law should respect." },
+      { value: -1.67, text: "Legislate, but only after a citizens' assembly sets narrow limits", description: "Move towards a legal option carefully, with tight eligibility and a broad public mandate." },
+      { value: 1.67, text: "Invest in palliative care first and revisit the question in a few years", description: "Make sure no one feels pushed towards assisted death because good end-of-life care is missing." },
+      { value: 3.33, text: "Keep the current ban; the state should never help end a life", description: "Hold to the principle that the law protects life in every circumstance." },
     ],
   },
   {
@@ -143,7 +160,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       { value: -3.33, text: "Rezone aggressively; densify even if beloved buildings disappear", description: "Housing shortage trumps preservation—move fast and accept cultural trade-offs." },
       { value: 1.67, text: "Preserve exteriors but allow adaptive reuse inside once heritage is documented", description: "Protect the streetscape while modernising interiors for homes and services." },
       { value: 3.33, text: "Redirect development to another area and keep the historic fabric intact", description: "Respect the quarter as a national asset and find housing capacity elsewhere." },
-      { value: 3.33, text: "Stage a citizens’ vote; proceed only with a clear democratic mandate", description: "Let local residents and the wider public decide before anything irreversible happens." },
+      { value: 1.67, text: "Stage a citizens’ vote; proceed only with a clear democratic mandate", description: "Let local residents and the wider public decide before anything irreversible happens." },
     ],
   },
   {
@@ -207,7 +224,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     text: "Ireland’s 2050 energy mix can pursue one anchor strategy. Which one earns your backing?",
     answers: [
       { value: -3.33, text: "Go all-in on offshore wind with new interconnectors exporting surplus", description: "Bet on massive renewables, grid upgrades, and the island as a green power hub." },
-      { value: -3.33, text: "Balance renewables with small modular reactors by the 2040s", description: "Keep emissions down using nuclear as a firm power source alongside wind and solar." },
+      { value: -1.67, text: "Balance renewables with small modular reactors by the 2040s", description: "Keep emissions down using nuclear as a firm power source alongside wind and solar." },
       { value: -1.67, text: "Back green gas and carbon capture to extend existing infrastructure", description: "Blend low-carbon fuels with CCS so current pipelines and industry stay relevant." },
       { value: 3.33, text: "Authorise transitional LNG terminals until new tech fully matures", description: "Secure supply now with gas, then pivot gradually as alternatives scale up." },
     ],
@@ -286,7 +303,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       { value: -3.33, text: "Increase central redistribution through larger block grants and national programmes", description: "Use the exchequer to lift regional services and infrastructure directly." },
       { value: -1.67, text: "Tie funding to performance metrics, citizen panels, and accountability dashboards", description: "Keep investments evidence-based and co-designed with residents before money flows." },
       { value: 1.67, text: "Expand enterprise zones, tax incentives, and local investment funds", description: "Stimulate private sector momentum and let local leaders attract employers." },
-      { value: 1.67, text: "Encourage relocation with personal tax reliefs and mobility supports", description: "Nudge households to move and rebalance population flows through incentives." },
+      { value: 3.33, text: "Encourage relocation with personal tax reliefs and mobility supports", description: "Nudge households to move and rebalance population flows through incentives." },
     ],
   },
   {

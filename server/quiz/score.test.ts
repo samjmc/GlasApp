@@ -8,8 +8,9 @@ const strongest = (q: QuizQuestion, side: 1 | -1) =>
 const onDimension = (d: string) => QUIZ_QUESTIONS.filter((q) => q.dimension === d);
 
 describe('the question bank', () => {
-  it('has 25 questions of four answers, one value each', () => {
-    expect(QUIZ_QUESTIONS).toHaveLength(25);
+  it('has 26 questions of four answers, one value each, and at least 3 per dimension', () => {
+    expect(QUIZ_QUESTIONS).toHaveLength(26);
+    for (const d of IDEOLOGY_DIMENSIONS) expect(onDimension(d).length, d).toBeGreaterThanOrEqual(3);
     for (const q of QUIZ_QUESTIONS) {
       expect(IDEOLOGY_DIMENSIONS).toContain(q.dimension);
       expect(q.answers).toHaveLength(4);
@@ -22,11 +23,12 @@ describe('the question bank', () => {
     expect(new Set(QUIZ_QUESTIONS.map((q) => q.id)).size).toBe(QUIZ_QUESTIONS.length);
   });
 
-  it('offers both sides on every dimension', () => {
-    for (const d of IDEOLOGY_DIMENSIONS) {
-      const values = onDimension(d).flatMap((q) => q.answers.map((a) => a.value));
-      expect(Math.max(...values), d).toBeGreaterThan(0);
-      expect(Math.min(...values), d).toBeLessThan(0);
+  it('offers both sides and at least 3 distinct stances on every question', () => {
+    for (const q of QUIZ_QUESTIONS) {
+      const values = q.answers.map((a) => a.value);
+      expect(Math.max(...values), `Q${q.id}`).toBeGreaterThan(0);
+      expect(Math.min(...values), `Q${q.id}`).toBeLessThan(0);
+      expect(new Set(values).size, `Q${q.id}`).toBeGreaterThanOrEqual(3);
     }
   });
 
@@ -47,6 +49,10 @@ describe('the question bank', () => {
     expect(answer('let expert teams steer')).toBeLessThan(0); // technocratic: expert-led
     expect(answer('opaque algorithms')).toBeGreaterThan(0); // technocratic: populist
     expect(answer('binding power')).toBeGreaterThan(0); // technocratic: people power
+    expect(answer('Legislate now for terminally ill adults')).toBeLessThan(0); // social: progressive
+    expect(answer('Keep the current ban')).toBeGreaterThan(0); // social: conservative
+    expect(answer('fully public system')).toBeLessThan(0); // Q6 is economic: collective
+    expect(QUIZ_QUESTIONS.find((q) => q.id === 6)!.dimension).toBe('economic');
   });
 });
 
@@ -65,7 +71,7 @@ describe('scoreQuiz', () => {
     const { vector, coverage, answeredCount } = scoreQuiz([{ questionId: q.id, answerIndex: strongest(q, 1) }]);
     expect(answeredCount).toBe(1);
     expect(vector.economic).toBe(10); // the strongest market answer available, not "2.5 = centrist"
-    expect(coverage.economic).toBe(0.25);
+    expect(coverage.economic).toBe(1 / onDimension('economic').length);
     for (const d of IDEOLOGY_DIMENSIONS.filter((x) => x !== 'economic')) {
       expect(vector[d]).toBe(0);
       expect(coverage[d]).toBe(0);
@@ -90,7 +96,7 @@ describe('scoreQuiz', () => {
   it('scores a full quiz inside ±10 with full coverage', () => {
     for (const index of [0, 1, 2, 3]) {
       const { vector, coverage, answeredCount } = scoreQuiz(QUIZ_QUESTIONS.map((q) => ({ questionId: q.id, answerIndex: index })));
-      expect(answeredCount).toBe(25);
+      expect(answeredCount).toBe(QUIZ_QUESTIONS.length);
       for (const d of IDEOLOGY_DIMENSIONS) {
         expect(Math.abs(vector[d])).toBeLessThanOrEqual(10);
         expect(coverage[d]).toBe(1);

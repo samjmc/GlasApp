@@ -12,8 +12,7 @@
     <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
     
     <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=3" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     
     <!-- iOS-specific Meta Tags -->
@@ -22,9 +21,8 @@
     <meta name="apple-mobile-web-app-title" content="Glas Politics" />
     
     <!-- Theme Colors -->
-    <meta name="theme-color" content="#10b981" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#059669" media="(prefers-color-scheme: dark)" />
-    <meta name="msapplication-TileColor" content="#10b981" />
+    <meta name="theme-color" content="#0D1310" />
+    <meta name="msapplication-TileColor" content="#0D1310" />
     
     <!-- SEO & Social -->
     <meta name="description" content="Discover your political alignment, match with Irish parties, track pledges, and engage with Irish democracy." />
@@ -42,11 +40,25 @@
     <meta name="twitter:title" content="Glas Politics - Irish Political Compass" />
     <meta name="twitter:description" content="Find your place in Irish politics. Take the quiz, discover your party matches." />
     
-    <title>Glas Politics - Irish Political Compass & Data Platform</title>
-    
-    <!-- Preconnect to improve performance -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <title>Glas Politics - Your Dáil, scored</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&display=swap" />
+
+    <!-- Set the theme class before first paint so there is no flash of the wrong theme. -->
+    <script>
+      (function () {
+        var theme = 'dark';
+        try { theme = localStorage.getItem('glas-theme') || 'dark'; } catch (e) {}
+        var dark = theme === 'dark' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: light)').matches);
+        document.documentElement.classList.add(dark ? 'dark' : 'light');
+        try {
+          var region = localStorage.getItem('glas.region');
+          if (region === 'IE' || region === 'UK' || region === 'US') document.documentElement.classList.add('region-' + region.toLowerCase());
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
