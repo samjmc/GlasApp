@@ -231,8 +231,17 @@ const LoginPage = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" {...register('password')} />
+                <div className="flex items-center justify-between gap-3">
+                  <Label htmlFor="password">Password</Label>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/forgot-password')}
+                    className="-my-2 flex h-11 items-center rounded-lg px-2 text-sm font-semibold text-primary underline-offset-2 transition-colors hover:underline"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
+                <Input id="password" type="password" autoComplete="current-password" {...register('password')} />
                 {errors.password && <p className="text-sm font-semibold text-warn">{errors.password.message}</p>}
               </div>
 
