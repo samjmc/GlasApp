@@ -1,25 +1,17 @@
 import glasMark from "@assets/glas-mark-192.png";
-import glasLogo from "@assets/glas-logo-640.png";
 import { cn } from "@/lib/utils";
 
-/** The Glas hexagon mark on its own, for small spaces (icon rail, loaders). */
+/** The Glas hexagon mark (from the real logo). */
 export function GlasMark({ className }: { className?: string }) {
   return <img src={glasMark} alt="" aria-hidden="true" className={cn("h-8 w-8 shrink-0 select-none", className)} draggable={false} />;
 }
 
-/** The full Glas logo (mark + wordmark), or just the mark when space is tight. */
-export function GlasLogo({ className, hideWordmark }: { className?: string; hideWordmark?: boolean }) {
-  if (hideWordmark) {
-    return (
-      <span className={cn("inline-flex items-center", className)}>
-        <GlasMark className="h-9 w-9" />
-        <span className="sr-only">Glas Politics</span>
-      </span>
-    );
-  }
+/** The logo as shown in the app frame: the mark alone, named for screen readers. */
+export function GlasLogo({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center", className)}>
-      <img src={glasLogo} alt="Glas Politics" className="h-9 w-auto select-none" draggable={false} />
+      <GlasMark className="h-10 w-10" />
+      <span className="sr-only">Glas Politics</span>
     </span>
   );
 }

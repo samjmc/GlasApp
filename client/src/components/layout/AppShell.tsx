@@ -72,8 +72,7 @@ function Sidebar({ location }: { location: string }) {
   return (
     <aside className="sticky top-0 hidden h-screen w-[76px] shrink-0 flex-col gap-7 border-r px-3 py-6 md:flex lg:w-64 lg:px-4">
       <Link href="/" className="flex items-center justify-center px-1 lg:justify-start lg:px-3" aria-label="Glas Politics home">
-        <GlasLogo className="hidden lg:inline-flex" />
-        <GlasLogo hideWordmark className="lg:hidden" />
+        <GlasLogo />
       </Link>
       <nav aria-label="Main" className="flex flex-col gap-0.5">
         {MAIN_NAV.map((item) => (
