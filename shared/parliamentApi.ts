@@ -36,6 +36,75 @@ export interface TdParliamentSummary {
   /** Share of this TD's votes that matched their party's majority, 0–100. NULL for independents. */
   partyLinePct: number | null;
   votesAgainstParty: number | null;
+  /** Offices held now: Taoiseach, Minister for …, Minister of State …. Empty for most TDs. */
+  offices: TdOffice[];
+  /** Sittings of the TD's own committees while a member, and how many the roll call lists them at. */
+  committeeSittingsEligible: number | null;
+  committeeSittingsAttended: number | null;
+  /** 0–100, one decimal. NULL below a minimum number of sittings. */
+  committeeAttendancePct: number | null;
+  /** Bills this TD is named as a sponsor of, this term. */
+  /** NULL until the bills feed has run once. */
+  billsSponsored: number | null;
+}
+
+export interface TdOffice {
+  title: string;
+  since: string | null;
+}
+
+/** GET /api/parliament/tds/:id/committees */
+export interface TdCommittee {
+  committeeId: string;
+  name: string;
+  committeeType: string | null;
+  /** "Cathaoirleach" (chair), "Leas-Chathaoirleach" (vice-chair) or NULL. */
+  role: string | null;
+  start: string;
+  end: string | null;
+  sittingsEligible: number;
+  sittingsAttended: number;
+}
+
+/** GET /api/parliament/tds/:id/question-topics — who the TD's questions went to, this term. */
+export interface TdQuestionTopic {
+  department: string;
+  oral: number;
+  written: number;
+}
+
+/** GET /api/parliament/bills?status=&source=&limit=&offset=  (meta: { total }) */
+export interface BillSummary {
+  id: string;
+  shortTitle: string;
+  /** "Government" | "Private Member". */
+  source: string;
+  status: string;
+  mostRecentStage: string | null;
+  /** "27/2026" once enacted. */
+  act: string | null;
+  lastUpdated: string | null;
+  /** Sponsor names or offices, primary sponsor first. */
+  sponsors: string[];
+}
+
+/** GET /api/parliament/tds/:id/bills */
+export interface TdBill extends BillSummary {
+  isPrimary: boolean;
+}
+
+/** GET /api/parliament/bills/:id */
+export interface BillDetail extends BillSummary {
+  uri: string;
+  longTitle: string | null;
+  originHouse: string | null;
+  latestVersionPdf: string | null;
+  memoPdf: string | null;
+  sponsorList: Array<{ label: string; memberCode: string | null; tdId: number | null; name: string | null; party: string | null; isPrimary: boolean }>;
+  stages: Array<{ stage: string; chamber: string | null; date: string | null }>;
+  debates: Array<{ debateSectionId: string; date: string; chamber: string | null; title: string | null }>;
+  /** Dáil divisions held in this bill's debates; open one for how every TD voted. */
+  divisions: DivisionSummary[];
 }
 
 /** GET /api/parliament/tds/:id/votes?limit=&againstParty=true */
@@ -96,7 +165,7 @@ export interface DebateSectionDetail extends DebateSectionSummary {
   speakers: Array<{ tdId: number | null; memberCode: string | null; name: string | null; party: string | null; speeches: number; words: number }>;
 }
 
-export const LEADERBOARD_METRICS = ['attendance', 'participation', 'questions'] as const;
+export const LEADERBOARD_METRICS = ['attendance', 'participation', 'questions', 'committees'] as const;
 export type LeaderboardMetric = (typeof LEADERBOARD_METRICS)[number];
 
 /** GET /api/parliament/leaderboard?metric=&order=desc|asc&limit= */
@@ -106,7 +175,7 @@ export interface LeaderboardEntry {
   party: string | null;
   constituency: string | null;
   imageUrl: string | null;
-  /** attendance: %; participation: sections spoken per 10 sitting days; questions: oral + written. */
+  /** attendance: %; participation: sections spoken per 10 sitting days; questions: oral + written; committees: committee attendance %. */
   value: number;
 }
 
@@ -117,4 +186,5 @@ export interface PartyParliamentSummary {
   avgAttendancePct: number | null;
   partyLinePct: number | null;
   avgSectionsSpoken: number | null;
+  avgCommitteeAttendancePct: number | null;
 }

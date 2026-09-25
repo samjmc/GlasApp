@@ -1,7 +1,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
-import { AlertCircle, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Landmark, MessagesSquare, Trophy, Users } from "lucide-react";
+import { Link, useSearch } from "wouter";
+import { AlertCircle, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Landmark, MessagesSquare, ScrollText, Trophy, Users } from "lucide-react";
 import { apiClient } from "@/lib/queryClient";
 import { queryKeys } from "@/lib/queryKeys";
 import { formatIsoDate } from "@/lib/isoDate";
@@ -28,6 +28,8 @@ import type {
   LeaderboardEntry,
   LeaderboardMetric,
   PartyParliamentSummary,
+  BillSummary,
+  BillDetail,
 } from "@shared/parliamentApi";
 import { LEADERBOARD_METRICS } from "@shared/parliamentApi";
 
@@ -60,6 +62,11 @@ const METRICS: Record<LeaderboardMetric, { label: string; desc: string; format: 
     desc: "Parliamentary questions put to ministers, oral and written.",
     format: formatCount,
   },
+  committees: {
+    label: "Committees",
+    desc: "Share of their own committees' sittings a TD attended. Needs 10 or more sittings.",
+    format: (v) => `${v.toFixed(1)}%`,
+  },
 };
 
 const ORDER_OPTIONS: Array<{ value: "desc" | "asc"; label: string }> = [
@@ -67,13 +74,17 @@ const ORDER_OPTIONS: Array<{ value: "desc" | "asc"; label: string }> = [
   { value: "asc", label: "Bottom" },
 ];
 
-type Tab = "divisions" | "debates" | "leaderboard" | "parties";
+type Tab = "divisions" | "debates" | "bills" | "leaderboard" | "parties";
 const TABS: Array<{ key: Tab; label: string }> = [
   { key: "divisions", label: "Divisions" },
   { key: "debates", label: "Debates" },
+  { key: "bills", label: "Bills" },
   { key: "leaderboard", label: "Leaderboards" },
   { key: "parties", label: "Parties" },
 ];
+
+const BILL_STATUS_OPTIONS = ["All", "Current", "Enacted", "Lapsed", "Defeated", "Withdrawn"] as const;
+const BILL_SOURCE_OPTIONS = ["All", "Government", "Private Member"] as const;
 
 /** Tá / Níl / Staon colours, shared by counts, bars and legends. */
 const VOTE_TONES = [
@@ -272,14 +283,9 @@ function DivisionBreakdown({ detail }: { detail: DivisionDetail }) {
   );
 }
 
-function DivisionsSection() {
-  const [offset, setOffset] = useState(0);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  const { data, isLoading, isError, refetch, isFetching } = useQuery({
-    queryKey: queryKeys.parliament.divisions(PAGE_SIZE, offset),
-    queryFn: () => getParliament<DivisionSummary[]>(`/api/parliament/divisions?limit=${PAGE_SIZE}&offset=${offset}`),
-  });
+/** A division that expands in place to how each party voted. Used by the divisions list and by a bill's votes. */
+function DivisionRow({ division }: { division: DivisionSummary }) {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const {
     data: detailResp,
@@ -288,14 +294,74 @@ function DivisionsSection() {
     refetch: refetchDetail,
     isFetching: detailFetching,
   } = useQuery({
-    queryKey: queryKeys.parliament.division(expandedId ?? ""),
-    queryFn: () => getParliament<DivisionDetail>(`/api/parliament/divisions/${encodeURIComponent(expandedId!)}`),
-    enabled: !!expandedId,
+    queryKey: queryKeys.parliament.division(division.id),
+    queryFn: () => getParliament<DivisionDetail>(`/api/parliament/divisions/${encodeURIComponent(division.id)}`),
+    enabled: isExpanded,
+  });
+
+  const detail = detailResp?.data;
+  const panelId = panelIdFor('division', division.id);
+  const title = division.debateTitle || division.subject || "Division";
+  const subject = division.debateTitle ? division.subject : null;
+
+  return (
+    <article className="rounded-xl border bg-card">
+      <button
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls={panelId}
+        onClick={() => setIsExpanded((open) => !open)}
+        className={expandButtonClass}
+      >
+        <span className="grid grid-cols-[minmax(0,1fr)] min-w-0 flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_12rem] md:items-center md:gap-6">
+          <span className="flex min-w-0 flex-col gap-1.5">
+            <span className="flex items-center justify-between gap-2">
+              <span className="flex items-center gap-2 text-[13px] font-semibold text-muted-foreground">
+                {formatIsoDate(division.date)}
+                {division.isBill && <span className={badgeVariants({ variant: "secondary" })}>Bill</span>}
+              </span>
+              <OutcomePill outcome={division.outcome} className="md:hidden" />
+            </span>
+            <span className="text-base font-bold leading-snug">{title}</span>
+            {subject && <span className="line-clamp-2 text-[13px] text-muted-foreground">{subject}</span>}
+          </span>
+          <span className="flex flex-col gap-2">
+            <OutcomePill outcome={division.outcome} className="hidden self-start md:inline-flex" />
+            <DivisionBar ta={division.taCount} nil={division.nilCount} />
+            {division.staonCount > 0 && (
+              <span className="text-xs font-semibold text-score-mid">Staon {division.staonCount}</span>
+            )}
+          </span>
+        </span>
+        <Chevron open={isExpanded} />
+      </button>
+      {isExpanded && (
+        <div id={panelId} className="flex flex-col gap-4 border-t p-4" aria-live="polite">
+          {detailLoading ? (
+            <ListSkeleton rows={4} className="h-9" />
+          ) : detail ? (
+            <DivisionBreakdown detail={detail} />
+          ) : detailError ? (
+            <LoadError title="Could not load this division" onRetry={() => refetchDetail()} pending={detailFetching} />
+          ) : (
+            <p className="text-sm text-muted-foreground">No detail available for this vote.</p>
+          )}
+        </div>
+      )}
+    </article>
+  );
+}
+
+function DivisionsSection() {
+  const [offset, setOffset] = useState(0);
+
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+    queryKey: queryKeys.parliament.divisions(PAGE_SIZE, offset),
+    queryFn: () => getParliament<DivisionSummary[]>(`/api/parliament/divisions?limit=${PAGE_SIZE}&offset=${offset}`),
   });
 
   const divisions = data?.data ?? [];
   const total = data?.meta?.total ?? 0;
-  const detail = detailResp?.data;
 
   return (
     <Panel
@@ -313,58 +379,9 @@ function DivisionsSection() {
       ) : (
         <>
           <div className="flex flex-col gap-2">
-            {divisions.map((division) => {
-              const isExpanded = expandedId === division.id;
-              const panelId = panelIdFor('division', division.id);
-              const title = division.debateTitle || division.subject || "Division";
-              const subject = division.debateTitle ? division.subject : null;
-              return (
-                <article key={division.id} className="rounded-xl border bg-card">
-                  <button
-                    type="button"
-                    aria-expanded={isExpanded}
-                    aria-controls={panelId}
-                    onClick={() => setExpandedId(isExpanded ? null : division.id)}
-                    className={expandButtonClass}
-                  >
-                    <span className="grid grid-cols-[minmax(0,1fr)] min-w-0 flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_12rem] md:items-center md:gap-6">
-                      <span className="flex min-w-0 flex-col gap-1.5">
-                        <span className="flex items-center justify-between gap-2">
-                          <span className="flex items-center gap-2 text-[13px] font-semibold text-muted-foreground">
-                            {formatIsoDate(division.date)}
-                            {division.isBill && <span className={badgeVariants({ variant: "secondary" })}>Bill</span>}
-                          </span>
-                          <OutcomePill outcome={division.outcome} className="md:hidden" />
-                        </span>
-                        <span className="text-base font-bold leading-snug">{title}</span>
-                        {subject && <span className="line-clamp-2 text-[13px] text-muted-foreground">{subject}</span>}
-                      </span>
-                      <span className="flex flex-col gap-2">
-                        <OutcomePill outcome={division.outcome} className="hidden self-start md:inline-flex" />
-                        <DivisionBar ta={division.taCount} nil={division.nilCount} />
-                        {division.staonCount > 0 && (
-                          <span className="text-xs font-semibold text-score-mid">Staon {division.staonCount}</span>
-                        )}
-                      </span>
-                    </span>
-                    <Chevron open={isExpanded} />
-                  </button>
-                  {isExpanded && (
-                    <div id={panelId} className="flex flex-col gap-4 border-t p-4" aria-live="polite">
-                      {detailLoading ? (
-                        <ListSkeleton rows={4} className="h-9" />
-                      ) : detail ? (
-                        <DivisionBreakdown detail={detail} />
-                      ) : detailError ? (
-                        <LoadError title="Could not load this division" onRetry={() => refetchDetail()} pending={detailFetching} />
-                      ) : (
-                        <p className="text-sm text-muted-foreground">No detail available for this vote.</p>
-                      )}
-                    </div>
-                  )}
-                </article>
-              );
-            })}
+            {divisions.map((division) => (
+              <DivisionRow key={division.id} division={division} />
+            ))}
           </div>
           <PagerControls
             offset={offset}
@@ -518,6 +535,217 @@ function DebatesSection() {
   );
 }
 
+function BillBreakdown({ detail }: { detail: BillDetail }) {
+  const links = [
+    { href: detail.latestVersionPdf, label: "Latest text (PDF)" },
+    { href: detail.memoPdf, label: "Explanatory memo (PDF)" },
+  ];
+  return (
+    <>
+      {detail.longTitle && <p className="text-sm text-muted-foreground">{detail.longTitle}</p>}
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-bold">Stages</h3>
+        {detail.stages.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No stages recorded yet.</p>
+        ) : (
+          <ol className="flex flex-col gap-1">
+            {detail.stages.map((stage, index) => (
+              <li key={`${index}`} className="flex min-h-9 items-center justify-between gap-3 text-[13px]">
+                <span className="min-w-0 font-semibold">
+                  {stage.stage}
+                  {stage.chamber && <span className="font-medium text-muted-foreground"> · {stage.chamber}</span>}
+                </span>
+                <span className="shrink-0 text-muted-foreground">{formatIsoDate(stage.date)}</span>
+              </li>
+            ))}
+          </ol>
+        )}
+      </div>
+      {detail.sponsorList.length > 0 && (
+        <div className="flex flex-col gap-2">
+          <h3 className="text-sm font-bold">Sponsors</h3>
+          <ul className="flex flex-col gap-1">
+            {detail.sponsorList.map((sponsor, index) => (
+              <li
+                key={`${sponsor.memberCode ?? sponsor.label}-${index}`}
+                className="flex min-h-9 flex-wrap items-center gap-x-2 gap-y-1 text-[15px]"
+              >
+                {sponsor.tdId !== null && sponsor.name ? (
+                  <TdLink name={sponsor.name} />
+                ) : (
+                  <span className="font-bold">{sponsor.name ?? sponsor.label}</span>
+                )}
+                {sponsor.party && <PartyLabel party={sponsor.party} short className="shrink-0 text-xs" />}
+                {sponsor.isPrimary && <span className={badgeVariants({ variant: "secondary" })}>Primary</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {(detail.latestVersionPdf || detail.memoPdf) && (
+        <div className="flex flex-wrap gap-x-6">
+          {links.map((link) =>
+            link.href ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-sm text-sm font-bold text-primary transition-colors hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {link.label}
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ) : null,
+          )}
+        </div>
+      )}
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-bold">Dáil votes</h3>
+        {detail.divisions.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No Dáil votes recorded for this bill.</p>
+        ) : (
+          <div className="flex flex-col gap-2">
+            {detail.divisions.map((division) => (
+              <DivisionRow key={division.id} division={division} />
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
+function BillsSection({ initialExpandedId }: { initialExpandedId: string | null }) {
+  const [offset, setOffset] = useState(0);
+  const [status, setStatus] = useState<(typeof BILL_STATUS_OPTIONS)[number]>("All");
+  const [source, setSource] = useState<(typeof BILL_SOURCE_OPTIONS)[number]>("All");
+  const [expandedId, setExpandedId] = useState<string | null>(initialExpandedId);
+
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+    queryKey: queryKeys.parliament.bills(status, source, PAGE_SIZE, offset),
+    queryFn: () => {
+      const params = new URLSearchParams({ limit: String(PAGE_SIZE), offset: String(offset) });
+      if (status !== "All") params.set("status", status);
+      if (source !== "All") params.set("source", source);
+      return getParliament<BillSummary[]>(`/api/parliament/bills?${params.toString()}`);
+    },
+  });
+
+  const {
+    data: detailResp,
+    isLoading: detailLoading,
+    isError: detailError,
+    refetch: refetchDetail,
+    isFetching: detailFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.bill(expandedId ?? ""),
+    queryFn: () => getParliament<BillDetail>(`/api/parliament/bills/${encodeURIComponent(expandedId!)}`),
+    enabled: !!expandedId,
+  });
+
+  const total = data?.meta?.total ?? 0;
+  const detail = detailResp?.data;
+  // A bill opened from a link (?bill=<id>) may not be on this page of the list: show it first.
+  const pageBills = data?.data ?? [];
+  const bills: BillSummary[] =
+    expandedId && detail?.id === expandedId && !pageBills.some((b) => b.id === expandedId) ? [detail, ...pageBills] : pageBills;
+  const filtered = status !== "All" || source !== "All";
+
+  return (
+    <Panel
+      title="Bills"
+      meta={total > 0 ? `${plural(total, "bill", "bills")}. Pick one to see its stages and votes.` : undefined}
+    >
+      <div className="flex flex-wrap gap-2">
+        <Segmented
+          label="Status"
+          size="sm"
+          options={BILL_STATUS_OPTIONS.map((s) => ({ value: s, label: s }))}
+          value={status}
+          onChange={(value) => {
+            setStatus(value);
+            setOffset(0);
+          }}
+        />
+        <Segmented
+          label="Source"
+          size="sm"
+          options={BILL_SOURCE_OPTIONS.map((s) => ({ value: s, label: s }))}
+          value={source}
+          onChange={(value) => {
+            setSource(value);
+            setOffset(0);
+          }}
+        />
+      </div>
+      {isLoading ? (
+        <ListSkeleton className="h-24" />
+      ) : isError ? (
+        <LoadError title="Could not load bills" onRetry={() => refetch()} pending={isFetching} />
+      ) : bills.length === 0 ? (
+        <EmptyState icon={ScrollText} title={filtered ? "No bills match" : "No bills yet"}>
+          {filtered ? "Try another status or source." : EMPTY_RECORD}
+        </EmptyState>
+      ) : (
+        <>
+          <div className="flex flex-col gap-2">
+            {bills.map((bill) => {
+              const isExpanded = expandedId === bill.id;
+              const panelId = panelIdFor('bill', bill.id);
+              return (
+                <article key={bill.id} className="rounded-xl border bg-card">
+                  <button
+                    type="button"
+                    aria-expanded={isExpanded}
+                    aria-controls={panelId}
+                    onClick={() => setExpandedId(isExpanded ? null : bill.id)}
+                    className={expandButtonClass}
+                  >
+                    <span className="flex min-w-0 flex-1 flex-col gap-1.5">
+                      <span className="flex items-center justify-between gap-2">
+                        <span className="text-[13px] font-semibold text-muted-foreground">
+                          {[bill.source, bill.mostRecentStage, bill.act && `Act ${bill.act}`].filter(Boolean).join(" · ")}
+                        </span>
+                        <span className={cn(badgeVariants({ variant: "secondary" }), "shrink-0 px-2.5 py-1")}>{bill.status}</span>
+                      </span>
+                      <span className="text-base font-bold leading-snug">{bill.shortTitle}</span>
+                      {bill.sponsors.length > 0 && (
+                        <span className="line-clamp-2 text-[13px] text-muted-foreground">{bill.sponsors.join(", ")}</span>
+                      )}
+                    </span>
+                    <Chevron open={isExpanded} />
+                  </button>
+                  {isExpanded && (
+                    <div id={panelId} className="flex flex-col gap-4 border-t p-4" aria-live="polite">
+                      {detailLoading ? (
+                        <ListSkeleton rows={4} className="h-9" />
+                      ) : detailError ? (
+                        <LoadError title="Could not load this bill" onRetry={() => refetchDetail()} pending={detailFetching} />
+                      ) : detail ? (
+                        <BillBreakdown detail={detail} />
+                      ) : (
+                        <p className="text-sm text-muted-foreground">No detail available for this bill.</p>
+                      )}
+                    </div>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+          <PagerControls
+            offset={offset}
+            limit={PAGE_SIZE}
+            total={total}
+            onPrev={() => setOffset((o) => Math.max(0, o - PAGE_SIZE))}
+            onNext={() => setOffset((o) => o + PAGE_SIZE)}
+          />
+        </>
+      )}
+    </Panel>
+  );
+}
+
 function LeaderboardSection() {
   const [metric, setMetric] = useState<LeaderboardMetric>("attendance");
   const [order, setOrder] = useState<"desc" | "asc">("desc");
@@ -529,7 +757,7 @@ function LeaderboardSection() {
   });
 
   const entries = data?.data ?? [];
-  const isPct = metric === "attendance";
+  const isPct = metric === "attendance" || metric === "committees";
   const maxValue = Math.max(1, ...entries.map((e) => e.value));
 
   return (
@@ -631,11 +859,16 @@ function PartiesSection() {
                     <strong className="font-display text-lg text-foreground">{party.members}</strong> TDs
                   </span>
                 </div>
-                <dl className="grid grid-cols-3 gap-2">
+                <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {[
                     { label: "Attendance", value: formatPct(party.avgAttendancePct), className: attendanceClass(party.avgAttendancePct) },
                     { label: "Party line", value: formatPct(party.partyLinePct), className: "" },
                     { label: "Sections", value: formatOne(party.avgSectionsSpoken), className: "" },
+                    {
+                      label: "Committees",
+                      value: formatPct(party.avgCommitteeAttendancePct),
+                      className: attendanceClass(party.avgCommitteeAttendancePct),
+                    },
                   ].map((stat) => (
                     <div key={stat.label} className="flex min-w-0 flex-col gap-0.5 rounded-xl bg-elevated p-2.5">
                       <dt className="text-xs font-semibold text-muted-foreground">{stat.label}</dt>
@@ -654,6 +887,7 @@ function PartiesSection() {
                 <TableHead className="text-right">Avg attendance</TableHead>
                 <TableHead className="text-right">Party line</TableHead>
                 <TableHead className="text-right">Avg sections spoken</TableHead>
+                <TableHead className="text-right">Avg committee attendance</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -682,6 +916,9 @@ function PartiesSection() {
                     </TableCell>
                     <TableCell className="py-3 text-right font-semibold">{formatPct(party.partyLinePct)}</TableCell>
                     <TableCell className="py-3 text-right font-semibold">{formatOne(party.avgSectionsSpoken)}</TableCell>
+                    <TableCell className={cn("py-3 text-right font-semibold", attendanceClass(party.avgCommitteeAttendancePct))}>
+                      {formatPct(party.avgCommitteeAttendancePct)}
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -692,7 +929,8 @@ function PartiesSection() {
       <div className="flex flex-col gap-1 text-xs leading-relaxed text-muted-foreground sm:text-[13px]">
         <p>
           Averages per member. Attendance: share of Dáil votes cast while a TD. Party line: share of votes that matched the
-          party majority. Sections: debate sections spoken in.
+          party majority. Sections: debate sections spoken in. Committees: share of their committee sittings attended,
+          for TDs with 10 or more.
         </p>
         <p>Independents have no party line, so it shows —. A one-member party always matches itself.</p>
       </div>
@@ -701,7 +939,14 @@ function PartiesSection() {
 }
 
 const DebatesPage = () => {
-  const [activeTab, setActiveTab] = useState<Tab>("divisions");
+  const search = useSearch();
+  // Read once on load: ?tab=bills&bill=<id> opens the Bills tab with that bill expanded.
+  const [deepLink] = useState(() => {
+    const params = new URLSearchParams(search);
+    const tab = params.get("tab");
+    return { tab: TABS.some((t) => t.key === tab) ? (tab as Tab) : null, billId: params.get("bill") };
+  });
+  const [activeTab, setActiveTab] = useState<Tab>(deepLink.tab ?? "divisions");
 
   const { data: statusResp } = useQuery({
     queryKey: queryKeys.parliament.status(),
@@ -743,7 +988,8 @@ const DebatesPage = () => {
         bullets={[
           "See recent Dáil divisions and how each party voted.",
           "Browse recent debate sections and who spoke.",
-          "Compare TDs and parties on attendance, participation and questions.",
+          "Follow bills through each stage and see the Dáil votes on them.",
+          "Compare TDs and parties on attendance, participation, questions and committees.",
         ]}
         right={status}
       />
@@ -761,6 +1007,9 @@ const DebatesPage = () => {
         </TabsContent>
         <TabsContent value="debates" className="mt-0">
           <DebatesSection />
+        </TabsContent>
+        <TabsContent value="bills" className="mt-0">
+          <BillsSection initialExpandedId={deepLink.billId} />
         </TabsContent>
         <TabsContent value="leaderboard" className="mt-0">
           <LeaderboardSection />

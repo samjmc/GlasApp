@@ -8,6 +8,7 @@ const td = (over: Partial<RollupInput> & { tdId: number }): RollupInput => ({
   newsStories: 1,
   questions: null,
   attendancePct: null,
+  committeeAttendancePct: null,
   debateScore: null,
   ...over,
 });
@@ -19,6 +20,17 @@ describe('computeRollup', () => {
     expect(r.parliamentaryScore).toBe(100);
     expect(r.debateScore).toBe(50);
     expect(r.overallScore).toBe(Math.round(70 * 0.45 + 100 * 0.3 + 50 * 0.25));
+  });
+
+  it('committee attendance counts in the parliamentary pillar when it is measured', () => {
+    const [low, none] = computeRollup([
+      td({ tdId: 1, questions: 200, attendancePct: 95, committeeAttendancePct: 42.5 }),
+      td({ tdId: 2, questions: 200, attendancePct: 95, committeeAttendancePct: null }),
+    ]);
+    // 100 × 0.5 + 100 × 0.3 + 50 × 0.2
+    expect(low.parliamentaryScore).toBe(90);
+    // No committee measure: scored on questions and votes alone, not as 0.
+    expect(none.parliamentaryScore).toBe(100);
   });
 
   it('a TD with no parliamentary or debate data is still scored on news alone', () => {

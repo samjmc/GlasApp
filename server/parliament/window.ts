@@ -15,6 +15,30 @@ export function addDays(date: string, days: number): string {
   return isoDate(d);
 }
 
+/** First days of every month from the one containing `from` to the one containing `to`. */
+export function monthsBetween(from: string, to: string): string[] {
+  const out: string[] = [];
+  let y = Number(from.slice(0, 4));
+  let m = Number(from.slice(5, 7));
+  const endKey = to.slice(0, 7);
+  for (;;) {
+    const key = `${y}-${String(m).padStart(2, '0')}`;
+    out.push(`${key}-01`);
+    if (key >= endKey) return out;
+    m++;
+    if (m === 13) {
+      m = 1;
+      y++;
+    }
+  }
+}
+
+/** Last day of a month, given its first day. */
+export function monthEnd(first: string): string {
+  const [y, m] = [Number(first.slice(0, 4)), Number(first.slice(5, 7))];
+  return isoDate(new Date(Date.UTC(y, m, 0)));
+}
+
 /** Where a feed starts: an explicit `since`, else the resume point minus the overlap, else the Dáil's first day. */
 export function startDate(since: string | undefined, throughDate: string | null, dailStart: string): string {
   if (since) return since;

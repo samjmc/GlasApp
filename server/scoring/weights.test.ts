@@ -44,17 +44,28 @@ describe('overallFromPillars', () => {
 });
 
 describe('parliamentaryScore', () => {
-  it('is 60% questions, 40% attendance, each capped at its benchmark', () => {
+  it('is 50% questions, 30% votes, 20% committees, each capped at its benchmark', () => {
+    expect(parliamentaryScore(200, 95, 85)).toBe(100);
+    expect(parliamentaryScore(900, 99, 100)).toBe(100);
+    expect(parliamentaryScore(100, 47.5, 42.5)).toBe(50);
+    expect(parliamentaryScore(0, 0, 0)).toBe(0);
+    expect(parliamentaryScore(200, 0, 0)).toBe(50);
+    expect(parliamentaryScore(0, 95, 0)).toBe(30);
+    expect(parliamentaryScore(0, 0, 85)).toBe(20);
+  });
+
+  it('with no committee measure, scores questions and votes 62.5 / 37.5', () => {
+    expect(parliamentaryScore(200, 0, null)).toBe(63);
+    expect(parliamentaryScore(0, 95, null)).toBe(38);
+    expect(parliamentaryScore(0, 95)).toBe(38);
     expect(parliamentaryScore(200, 95)).toBe(100);
-    expect(parliamentaryScore(900, 99)).toBe(100);
-    expect(parliamentaryScore(100, 47.5)).toBe(50);
-    expect(parliamentaryScore(0, 0)).toBe(0);
   });
 
   it('lets a single present input carry the pillar, and is NULL with none', () => {
-    expect(parliamentaryScore(100, null)).toBe(50);
-    expect(parliamentaryScore(null, 95)).toBe(100);
-    expect(parliamentaryScore(null, null)).toBeNull();
+    expect(parliamentaryScore(100, null, null)).toBe(50);
+    expect(parliamentaryScore(null, 95, null)).toBe(100);
+    expect(parliamentaryScore(null, null, 42.5)).toBe(50);
+    expect(parliamentaryScore(null, null, null)).toBeNull();
   });
 });
 

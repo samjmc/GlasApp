@@ -1,9 +1,19 @@
 /**
- * Pure parsers: Oireachtas division JSON and Akoma Ntoso debate XML → table rows.
- * No I/O. Tested against real API samples in __fixtures__.
+ * Pure parsers: Oireachtas JSON (divisions, bills, questions) and Akoma Ntoso XML (debate
+ * and committee transcripts) → table rows. No I/O. Tested against real API samples in
+ * __fixtures__.
  */
 import { load } from 'cheerio';
-import type { DivisionVote, NewDebateSection, NewDivision } from '@shared/schema/parliament';
+import type {
+  DivisionVote,
+  NewBill,
+  NewBillDebate,
+  NewBillSponsor,
+  NewBillStage,
+  NewDebateSection,
+  NewDivision,
+  QuestionType,
+} from '@shared/schema/parliament';
 
 // ---------------------------------------------------------------------------
 // Divisions
@@ -164,12 +174,7 @@ export function countWords(text: string): number {
 export function parseTranscript(xml: string, date: string): ParsedTranscript {
   const $ = load(xml, { xml: true });
 
-  const members = new Map<string, string>();
-  $('TLCPerson').each((_, el) => {
-    const eId = $(el).attr('eId');
-    const code = $(el).attr('href')?.match(MEMBER_HREF)?.[1];
-    if (eId && code) members.set(eId, safeDecode(code).normalize('NFC'));
-  });
+  const members = memberRefs($);
   const roles = new Map<string, string>();
   $('TLCRole').each((_, el) => {
     const eId = $(el).attr('eId');
@@ -227,4 +232,271 @@ export function parseTranscript(xml: string, date: string): ParsedTranscript {
   });
 
   return { sections, speeches };
+}
+
+/** A transcript's `TLCPerson` references: eId → member code. */
+function memberRefs($: ReturnType<typeof load>): Map<string, string> {
+  const members = new Map<string, string>();
+  $('TLCPerson').each((_, el) => {
+    const eId = $(el).attr('eId');
+    const code = $(el).attr('href')?.match(MEMBER_HREF)?.[1];
+    if (eId && code) members.set(eId, safeDecode(code).normalize('NFC'));
+  });
+  return members;
+}
+
+// ---------------------------------------------------------------------------
+// Committee transcripts: only the roll call ("MEMBERS PRESENT") is read.
+// ---------------------------------------------------------------------------
+export interface RollCall {
+  /** Member codes resolved through the transcript's own `TLCPerson` references. */
+  codes: string[];
+  /**
+   * Names of people on the roll call with no `TLCPerson` entry, except those in a joint
+   * committee's "Seanadóirí / Senators" column, who cannot be TDs. The caller resolves them
+   * against the roster by name.
+   */
+  unlinkedNames: string[];
+}
+
+/** A committee sitting's roll call, deduplicated, in transcript order. */
+export function parseRollCall(xml: string): RollCall {
+  const $ = load(xml, { xml: true });
+  const members = memberRefs($);
+  const codes: string[] = [];
+  const unlinkedNames: string[] = [];
+  $('rollCall person').each((_, el) => {
+    const code = members.get(($(el).attr('refersTo') ?? '').replace(/^#/, ''));
+    if (code) {
+      if (!codes.includes(code)) codes.push(code);
+      return;
+    }
+    // A joint committee's roll call is a table headed "Teachtaí Dála / Deputies" and
+    // "Seanadóirí / Senators" (measured: nearly every unlinked name in June 2025 and
+    // February 2026 sat under Senators, with no "Senator" before it).
+    const cell = $(el).closest('td');
+    if (cell.length) {
+      const header = cell.closest('table').find('th').eq(cell.index()).text();
+      if (/senator|seanad/i.test(header)) return;
+    }
+    const name = $(el).text().replace(/\s+/g, ' ').trim();
+    if (name && !unlinkedNames.includes(name)) unlinkedNames.push(name);
+  });
+  return { codes, unlinkedNames };
+}
+
+// "minister of state" before "minister": the first alternative that matches wins.
+const HONORIFIC = /^(deputy|teachta|td|senator|seanadoir|an|dr|minister of state|minister)\s+/;
+
+/**
+ * "Deputy Seán Ó Fearghaíl", "Seán Ó Fearghaíl" and the chair lines "DEPUTY SEÁN Ó
+ * FEARGHAÍL IN THE CHAIR." and "Teachta / Deputy Seán Ó Fearghaíl sa Chathaoir / in the
+ * Chair." → "sean o fearghail".
+ */
+export function normaliseName(name: string): string {
+  let n = name
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/[^a-z\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/( sa chathaoir)?( in the chair)?$/, '');
+  while (HONORIFIC.test(n)) n = n.replace(HONORIFIC, '');
+  return n;
+}
+
+/**
+ * Resolve roll-call names that had no member reference against the roster, by name. A name
+ * shared by two members stays unresolved rather than being given to either. Returns the
+ * resolved codes and how many unresolved names could belong to a TD (anyone not titled
+ * "Senator"): a sitting with any of those cannot say who was absent.
+ */
+export function resolveRollCallNames(
+  names: string[],
+  roster: Array<{ fullName: string; memberCode: string }>,
+): { codes: string[]; unresolvedTds: number } {
+  const byName = new Map<string, string | null>();
+  for (const m of roster) {
+    const key = normaliseName(m.fullName);
+    byName.set(key, byName.has(key) && byName.get(key) !== m.memberCode ? null : m.memberCode);
+  }
+  const codes: string[] = [];
+  let unresolvedTds = 0;
+  for (const name of names) {
+    const code = byName.get(normaliseName(name));
+    if (code) {
+      if (!codes.includes(code)) codes.push(code);
+    } else if (!/^\s*senator\b/i.test(name)) {
+      unresolvedTds++;
+    }
+  }
+  return { codes, unresolvedTds };
+}
+
+/** Last path segment of an Oireachtas URI: ".../committee/dail/34/committee_of_public_accounts" → "committee_of_public_accounts". */
+export function uriTail(uri: string): string {
+  return uri.replace(/\/+$/, '').split('/').pop() ?? uri;
+}
+
+/** "2025-05-07 00:00:00+00:00" or "2025-05-07" → "2025-05-07". NULL for anything else. */
+export function isoDay(value: string | null | undefined): string | null {
+  const m = value?.match(/^(\d{4}-\d{2}-\d{2})/);
+  return m ? m[1] : null;
+}
+
+// ---------------------------------------------------------------------------
+// Bills (/legislation)
+// ---------------------------------------------------------------------------
+interface RawEvent {
+  showAs?: string | null;
+  dates?: Array<{ date?: string | null }> | null;
+  chamber?: { showAs?: string | null } | null;
+}
+
+/** The fields of `/legislation` results that are read. */
+export interface RawBill {
+  uri?: string;
+  billNo?: string | number;
+  billYear?: string | number;
+  shortTitleEn?: string | null;
+  longTitleEn?: string | null;
+  source?: string | null;
+  status?: string | null;
+  originHouse?: { showAs?: string | null } | null;
+  mostRecentStage?: { event?: RawEvent | null } | null;
+  lastUpdated?: string | null;
+  act?: { actNo?: string | null; actYear?: string | null } | null;
+  sponsors?: Array<{ sponsor?: { isPrimary?: boolean; as?: { showAs?: string | null } | null; by?: { showAs?: string | null; uri?: string | null } | null } }> | null;
+  stages?: Array<{ event?: RawEvent | null }> | null;
+  debates?: Array<{ date?: string | null; debateSectionId?: string | null; showAs?: string | null; chamber?: { showAs?: string | null; uri?: string | null } | null; uri?: string | null }> | null;
+  versions?: Array<{ version?: { date?: string | null; formats?: { pdf?: { uri?: string | null } | null } | null } | null }> | null;
+  relatedDocs?: Array<{ relatedDoc?: { docType?: string | null; formats?: { pdf?: { uri?: string | null } | null } | null } | null }> | null;
+}
+
+export interface ParsedBill {
+  bill: NewBill;
+  sponsors: Array<Omit<NewBillSponsor, 'tdId'>>;
+  stages: NewBillStage[];
+  debates: NewBillDebate[];
+}
+
+/** A long title's HTML ("<p>An Act to …&nbsp;</p>") as plain text, entities decoded. */
+function plainText(html: string | null | undefined): string | null {
+  if (!html) return null;
+  const t = load(html).root().text().replace(/\s+/g, ' ').trim();
+  return t ? t : null;
+}
+
+/**
+ * Where a bill's debate took place, for its section id: "dail", "seanad", or
+ * "committee-<code>". Read from the debate record URI (".../debateRecord/<house>/<date>/…"),
+ * because a committee stage's chamber is ".../def/committee" and treating it as the Dáil
+ * joined it to unrelated plenary votes on the same day.
+ */
+function debateHouse(debate: { uri?: string | null; chamber?: { showAs?: string | null; uri?: string | null } | null }): string {
+  const seg = debate.uri?.match(/\/debateRecord\/([^/]+)\//)?.[1];
+  if (seg) return seg === 'dail' || seg === 'seanad' ? seg : `committee-${seg}`;
+  const chamber = `${debate.chamber?.uri ?? ''} ${debate.chamber?.showAs ?? ''}`;
+  if (/\/def\/house\/dail|^\s*Dáil/i.test(chamber)) return 'dail';
+  if (/seanad/i.test(chamber)) return 'seanad';
+  return 'committee';
+}
+
+/** NULL when the record lacks its number or year; a bill is never guessed at. */
+export function parseBill(raw: RawBill): ParsedBill | null {
+  const billNo = Number(raw.billNo);
+  const billYear = Number(raw.billYear);
+  if (!raw.uri || !Number.isInteger(billNo) || !Number.isInteger(billYear) || !raw.shortTitleEn) return null;
+  const id = `${billYear}-${billNo}`;
+
+  // Versions and documents arrive newest first; take the newest with a PDF.
+  const latestVersionPdf =
+    [...(raw.versions ?? [])].sort((a, b) => (b.version?.date ?? '').localeCompare(a.version?.date ?? ''))
+      .map((v) => v.version?.formats?.pdf?.uri)
+      .find(Boolean) ?? null;
+  const memoPdf = (raw.relatedDocs ?? []).find((d) => d.relatedDoc?.docType === 'memo')?.relatedDoc?.formats?.pdf?.uri ?? null;
+
+  const sponsors = (raw.sponsors ?? []).flatMap((s, position) => {
+    const by = s.sponsor?.by;
+    const code = by?.uri?.match(MEMBER_HREF)?.[1];
+    const label = by?.showAs || s.sponsor?.as?.showAs;
+    if (!label) return [];
+    return [{ billId: id, position, memberCode: code ? safeDecode(code).normalize('NFC') : null, label, isPrimary: s.sponsor?.isPrimary === true }];
+  });
+
+  const stages = (raw.stages ?? []).flatMap((s, position) => {
+    const e = s.event;
+    if (!e?.showAs) return [];
+    return [{ billId: id, position, stage: e.showAs, chamber: e.chamber?.showAs ?? null, date: isoDay(e.dates?.[0]?.date) }];
+  });
+
+  const seen = new Set<string>();
+  const debates = (raw.debates ?? []).flatMap((d) => {
+    const date = isoDay(d.date);
+    if (!date || !d.debateSectionId) return [];
+    const debateSectionId = `${debateHouse(d)}-${date}-${d.debateSectionId}`;
+    if (seen.has(debateSectionId)) return [];
+    seen.add(debateSectionId);
+    return [{ billId: id, debateSectionId, date, chamber: d.chamber?.showAs ?? null, title: d.showAs ?? null }];
+  });
+
+  return {
+    bill: {
+      id,
+      uri: raw.uri,
+      billNo,
+      billYear,
+      shortTitle: raw.shortTitleEn.trim(),
+      longTitle: plainText(raw.longTitleEn),
+      source: raw.source || 'Unknown',
+      status: raw.status || 'Unknown',
+      originHouse: raw.originHouse?.showAs ?? null,
+      mostRecentStage: raw.mostRecentStage?.event?.showAs ?? null,
+      act: raw.act?.actNo && raw.act?.actYear ? `${raw.act.actNo}/${raw.act.actYear}` : null,
+      latestVersionPdf,
+      memoPdf,
+      lastUpdated: isoDay(raw.lastUpdated),
+    },
+    sponsors,
+    stages,
+    debates,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Questions (/questions): counted, not stored.
+// ---------------------------------------------------------------------------
+export interface RawQuestion {
+  date?: string | null;
+  questionType?: string | null;
+  by?: { memberCode?: string | null } | null;
+  to?: { showAs?: string | null } | null;
+}
+
+export interface QuestionCountRow {
+  memberCode: string;
+  month: string;
+  department: string;
+  questionType: QuestionType;
+  n: number;
+}
+
+/** Group questions by asker, month, department and type. Questions missing any of those are skipped. */
+export function countQuestions(raws: RawQuestion[]): QuestionCountRow[] {
+  const counts = new Map<string, QuestionCountRow>();
+  for (const q of raws) {
+    const day = isoDay(q.date);
+    const code = q.by?.memberCode?.normalize('NFC');
+    const department = q.to?.showAs?.trim();
+    const type = q.questionType === 'oral' || q.questionType === 'written' ? q.questionType : null;
+    if (!day || !code || !department || !type) continue;
+    const month = `${day.slice(0, 7)}-01`;
+    const key = `${code}\u0000${month}\u0000${department}\u0000${type}`;
+    const row = counts.get(key) ?? { memberCode: code, month, department, questionType: type, n: 0 };
+    row.n++;
+    counts.set(key, row);
+  }
+  return Array.from(counts.values());
 }

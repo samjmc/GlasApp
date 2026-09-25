@@ -143,6 +143,7 @@ router.get(
           written: td.questionCountWritten,
         },
         attendancePct: td.attendancePct,
+        committeeAttendancePct: td.committeeAttendancePct,
         dimensions,
         baseline: baseline
           ? {

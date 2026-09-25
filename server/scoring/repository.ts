@@ -139,7 +139,13 @@ export async function syncTds(seeds: TdSeed[], database: Db = db): Promise<SyncT
 
 /** Update the parliamentary inputs the rollup reads. Identified by member code. */
 export async function updateParliamentaryActivity(
-  rows: Array<{ memberCode: string; questionsOral: number | null; questionsWritten: number | null; attendancePct: number | null }>,
+  rows: Array<{
+    memberCode: string;
+    questionsOral: number | null;
+    questionsWritten: number | null;
+    attendancePct: number | null;
+    committeeAttendancePct: number | null;
+  }>,
   database: Db = db,
 ): Promise<number> {
   if (rows.length === 0) return 0;
@@ -152,6 +158,7 @@ export async function updateParliamentaryActivity(
           questionCountOral: r.questionsOral,
           questionCountWritten: r.questionsWritten,
           attendancePct: r.attendancePct,
+          committeeAttendancePct: r.committeeAttendancePct,
           updatedAt: new Date(),
         })
         .where(eq(tds.memberCode, r.memberCode));
@@ -271,6 +278,7 @@ export async function rollupInputs(
         ? null
         : (td.questionCountOral ?? 0) + (td.questionCountWritten ?? 0),
     attendancePct: td.attendancePct,
+    committeeAttendancePct: td.committeeAttendancePct,
     debateScore: debateScores.get(td.id) ?? null,
   }));
 }

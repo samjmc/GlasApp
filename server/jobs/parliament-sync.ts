@@ -6,7 +6,7 @@
  *
  * Safe to re-run: every write replaces what it covers. The scheduler runs it daily.
  */
-import { runSync } from '../parliament';
+import { runSync, syncHadFailures } from '../parliament';
 import { shutdown } from '../db';
 
 function argSince(argv: string[]): string | undefined {
@@ -21,7 +21,7 @@ runSync({ since: argSince(process.argv.slice(2)) })
   .then(async (summary) => {
     console.log(JSON.stringify(summary, null, 2));
     await shutdown();
-    process.exit(summary.debates.failedDays.length > 0 ? 1 : 0);
+    process.exit(syncHadFailures(summary) ? 1 : 0);
   })
   .catch(async (error) => {
     console.error(error instanceof Error ? error.message : error);
