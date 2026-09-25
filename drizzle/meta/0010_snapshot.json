@@ -1,6 +1,6 @@
 {
-  "id": "6ba29ccb-ca63-481d-9ee2-96ba667b7b2a",
-  "prevId": "ff833d99-29f3-4130-a49e-38cdf4f3cae0",
+  "id": "3606f25b-fc4e-4a20-b79a-969695f0d524",
+  "prevId": "6ba29ccb-ca63-481d-9ee2-96ba667b7b2a",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -231,6 +231,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "duplicate_of": {
+          "name": "duplicate_of",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp with time zone",
@@ -297,6 +303,22 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
+        },
+        "news_articles_duplicate_of_idx": {
+          "name": "news_articles_duplicate_of_idx",
+          "columns": [
+            {
+              "expression": "duplicate_of",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "where": "\"politics\".\"news_articles\".\"duplicate_of\" is not null",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
         }
       },
       "foreignKeys": {
@@ -313,12 +335,31 @@
           ],
           "onDelete": "no action",
           "onUpdate": "no action"
+        },
+        "news_articles_duplicate_of_news_articles_id_fk": {
+          "name": "news_articles_duplicate_of_news_articles_id_fk",
+          "tableFrom": "news_articles",
+          "tableTo": "news_articles",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "duplicate_of"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {},
+      "checkConstraints": {
+        "news_articles_duplicate_link_chk": {
+          "name": "news_articles_duplicate_link_chk",
+          "value": "(\"politics\".\"news_articles\".\"status\" = 'duplicate') = (\"politics\".\"news_articles\".\"duplicate_of\" is not null)"
+        }
+      },
       "isRLSEnabled": false
     },
     "politics.news_sources": {

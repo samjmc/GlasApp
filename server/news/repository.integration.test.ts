@@ -276,8 +276,8 @@ run('news repository against Postgres', () => {
     expect(await repo.missingImages(48, 10)).toEqual([]);
   });
 
-  // Last: it takes the schema back to 0008 for this table, then re-applies 0009.
-  it('migration 0009 links each legacy duplicate it can, and makes the rest `skipped`', async () => {
+  // Last: it takes this table back to before 0010, then re-applies 0010.
+  it('migration 0010 links each legacy duplicate it can, and makes the rest `skipped`', async () => {
     const ids = (await repo.insertArticles(['c', 'linked', 'unknown', 'chained', 'missing'].map((k, i) => row(`https://rte.ie/${k}`, i)))).map((r) => r.id);
     const [canonical, linked, unknown, chained, missing] = ids;
     await dbmod.pool.query('alter table politics.news_articles drop column duplicate_of');
@@ -292,7 +292,7 @@ run('news repository against Postgres', () => {
       await dbmod.pool.query('update politics.news_articles set status = $2, skip_reason = $3 where id = $1', [id, status, reason || null]);
     }
 
-    const migration = fs.readFileSync(path.resolve(__dirname, '../../drizzle/0009_news_event_duplicate_of.sql'), 'utf8');
+    const migration = fs.readFileSync(path.resolve(__dirname, '../../drizzle/0010_news_event_duplicate_of.sql'), 'utf8');
     for (const statement of migration.split('--> statement-breakpoint')) if (statement.trim()) await dbmod.pool.query(statement);
 
     const { rows: after } = await dbmod.pool.query('select id, status, duplicate_of from politics.news_articles order by id');

@@ -204,8 +204,8 @@ export default function PrivacyPolicyPage() {
               <td>Until account deletion + 30 days</td>
             </tr>
             <tr>
-              <td>User-generated content (ideas, comments)</td>
-              <td>Until deletion request or 5 years of inactivity</td>
+              <td>Daily policy votes</td>
+              <td>Until account deletion + 30 days</td>
             </tr>
             <tr>
               <td>Analytics data (anonymized)</td>

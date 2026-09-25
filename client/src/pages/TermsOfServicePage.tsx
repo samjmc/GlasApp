@@ -46,9 +46,10 @@ export default function TermsOfServicePage() {
         <ul className="space-y-2">
           <li>Discover their political alignment through multidimensional quizzes</li>
           <li>Explore party and TD (Teachta Dála) profiles, voting records, and performance data</li>
-          <li>Access news articles with AI-powered political impact scoring</li>
+          <li>See TD and party scores built from the public Oireachtas record</li>
+          <li>Read summarised Irish political news</li>
           <li>View polling data and electoral analytics</li>
-          <li>Submit policy ideas and engage with the community</li>
+          <li>Vote on daily policy questions</li>
           <li>Track political trends and constituency information</li>
         </ul>
       </section>
@@ -65,7 +66,7 @@ export default function TermsOfServicePage() {
           <div>
             <h3 className="text-foreground">AI-Generated Content</h3>
             <p>
-              Some content (news summaries, TD scores, policy impact analysis) is generated using artificial intelligence. While we strive for accuracy, AI may occasionally produce errors, biases, or incomplete information. <strong className="text-foreground">Always verify critical information from original sources.</strong>
+              News summaries are generated using artificial intelligence. TD and party scores are not: they are built from the public Oireachtas record (votes, questions, debates and committees). While we strive for accuracy, AI may occasionally produce errors, biases, or incomplete information. <strong className="text-foreground">Always verify critical information from original sources.</strong>
             </p>
           </div>
           <div>
@@ -144,7 +145,7 @@ export default function TermsOfServicePage() {
           <div>
             <h3 className="text-foreground">Content You Submit</h3>
             <p>
-              When you submit ideas, comments, or other content ("User Content"), you:
+              When you submit content to us ("User Content"), you:
             </p>
             <ul>
               <li>Retain ownership of your content</li>
@@ -286,7 +287,6 @@ export default function TermsOfServicePage() {
             <ul>
               <li>Your personal data will be permanently deleted within 30 days</li>
               <li>Anonymized analytics data may be retained</li>
-              <li>Public content (ideas, comments) may remain visible but anonymized</li>
             </ul>
           </div>
           <div>

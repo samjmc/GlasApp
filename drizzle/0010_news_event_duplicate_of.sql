@@ -1,5 +1,5 @@
 ALTER TABLE "politics"."news_articles" ADD COLUMN "duplicate_of" integer;--> statement-breakpoint
-ALTER TABLE "politics"."news_articles" ADD CONSTRAINT "news_articles_duplicate_of_news_articles_id_fk" FOREIGN KEY ("duplicate_of") REFERENCES "politics"."news_articles"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "politics"."news_articles" ADD CONSTRAINT "news_articles_duplicate_of_news_articles_id_fk" FOREIGN KEY ("duplicate_of") REFERENCES "politics"."news_articles"("id") ON DELETE restrict ON UPDATE no action;--> statement-breakpoint
 CREATE INDEX "news_articles_duplicate_of_idx" ON "politics"."news_articles" USING btree ("duplicate_of") WHERE "politics"."news_articles"."duplicate_of" is not null;--> statement-breakpoint
 -- Hand-written data step: link the rows the old scoring-time clustering marked `duplicate`
 -- (it only wrote "Duplicate of article <id> ..." into skip_reason), when that id exists and is

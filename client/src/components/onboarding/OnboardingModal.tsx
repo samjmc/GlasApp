@@ -7,7 +7,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Compass, Landmark, Lightbulb, MapPin, Newspaper, Trophy, type LucideIcon } from 'lucide-react';
+import { Compass, Landmark, MapPin, Newspaper, Trophy, Vote, type LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/lib/supabase';
@@ -29,7 +29,7 @@ const STEPS: OnboardingStep[] = [
   },
   {
     title: 'News, summarised',
-    description: 'We read Irish news through the day and show how each story affects the TDs in it.',
+    description: 'We read Irish news through the day and show which TDs each story is about.',
     icon: Newspaper,
   },
   {
@@ -52,9 +52,9 @@ const STEPS: OnboardingStep[] = [
   },
   {
     title: 'Have your say',
-    description: 'Post policy ideas and vote on the ones that matter to you.',
-    icon: Lightbulb,
-    cta: { text: 'See ideas', href: '/ideas' },
+    description: 'Vote on a few policy questions each day and see where you stand.',
+    icon: Vote,
+    cta: { text: "Today's questions", href: '/daily-session' },
   },
 ];
 

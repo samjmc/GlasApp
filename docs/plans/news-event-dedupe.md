@@ -25,8 +25,9 @@ against main 668cee7, revised with every vet finding.
 
 ## Design
 
-### Data model (migration 0009, generated after pulling main)
-- `news_articles.duplicate_of integer REFERENCES news_articles(id) ON DELETE SET NULL`, partial
+### Data model (migration 0010 — #82 took 0009 first)
+- `news_articles.duplicate_of integer REFERENCES news_articles(id) ON DELETE RESTRICT` (SET NULL
+  would break the check below, so deleting a canonical must re-point its duplicates first), partial
   index `WHERE duplicate_of IS NOT NULL`.
 - Check constraint `(status = 'duplicate') = (duplicate_of IS NOT NULL)`, declared with `check()`.
 - A link always points at the ROOT canonical (never at another duplicate).

@@ -70,8 +70,12 @@ export const newsArticles = politics.table(
     importanceReasoning: text('importance_reasoning'),
     skipReason: text('skip_reason'),
     errorMessage: text('error_message'),
-    /** The root canonical article for the same event. Set exactly when status is `duplicate`. */
-    duplicateOf: integer('duplicate_of').references((): AnyPgColumn => newsArticles.id, { onDelete: 'set null' }),
+    /**
+     * The root canonical article for the same event. Set exactly when status is `duplicate`.
+     * RESTRICT: a canonical with duplicates cannot be deleted until they are re-pointed, since
+     * SET NULL would break the check below.
+     */
+    duplicateOf: integer('duplicate_of').references((): AnyPgColumn => newsArticles.id, { onDelete: 'restrict' }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
