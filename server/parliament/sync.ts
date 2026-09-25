@@ -20,7 +20,7 @@
 import { recalculateAll, repository as scoring } from '../scoring';
 import { memberImageUrl, type TdSeed } from '../scoring/tdSync';
 import { OireachtasClient, type RosterMember } from './client';
-import { attendancePct } from './metrics';
+import { attendancePct, committeeAttendancePct } from './metrics';
 import {
   countQuestions,
   parseBill,
@@ -342,6 +342,10 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
           questionsOral: q?.oral ?? null,
           questionsWritten: q?.written ?? null,
           attendancePct: s ? attendancePct(s.votesCast, s.divisionsEligible, s.isPresiding) : null,
+          committeeAttendancePct:
+            s && s.committeeSittingsEligible !== null && s.committeeSittingsAttended !== null
+              ? committeeAttendancePct(s.committeeSittingsAttended, s.committeeSittingsEligible)
+              : null,
         };
       }),
     ),

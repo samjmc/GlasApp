@@ -51,6 +51,8 @@ export const tds = politics.table(
     questionCountWritten: integer('question_count_written'),
     /** Vote attendance, 0–100. NULL means no data, never 0. */
     attendancePct: real('attendance_pct'),
+    /** Committee attendance, 0–100. NULL below 10 eligible sittings or with no committee. */
+    committeeAttendancePct: real('committee_attendance_pct'),
     bio: text('bio'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),

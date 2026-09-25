@@ -178,14 +178,16 @@ on `/api/parliament`. TD profile parliament panel repointed (it has `id` from
 1. Delete at the scale above: yes.
 2. Debate pillar: measured participation, not the LLM "debate win" score.
 3. Ask TD: deleted now; rebuild later on `politics.debate_speeches` / `division_votes`.
+4. (2026-09-25) Committee attendance feeds the parliamentary pillar now (option B), at 20%:
+   questions 50%, Dáil votes 30%, committees 20%, renormalised over what a TD has. The
+   benchmark is 85%, by the same rule as votes (75th percentile, 87.7%, rounded down to 5).
 
 ## Still open
 
-- Ministers ask 0 questions, and questions are 60% of the parliamentary pillar, so every
-  minister scores low there. That is a `server/scoring/weights.ts` change; not made here.
+- Ministers ask 0 questions. Questions are now 50% of the parliamentary pillar (62.5% for a
+  TD with no committee measure, which is most ministers), so every minister still scores low
+  there. That is a `server/scoring/weights.ts` change; not made here.
 - Measured attendance is low for party leaders (live: Taoiseach 44%, Tánaiste 32.5%,
   Mary Lou McDonald 39.5%; median TD 90.6%). This is what the Official Report records, but
   whether "attendance at divisions" is fair to leaders is a scoring decision. (Tellers are
   in the lobby lists — checked on vote_91, all four — so they are not the cause.)
-</content>
-</invoke>

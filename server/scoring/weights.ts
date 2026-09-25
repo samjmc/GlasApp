@@ -56,22 +56,53 @@ export function overallFromPillars(scores: PillarScores): number | null {
 export const QUESTIONS_BENCHMARK = 200;
 /** The 75th percentile of attendance is ~96%; 95% scores full marks. */
 export const ATTENDANCE_BENCHMARK = 95;
+/**
+ * Committee attendance by the same rule: the 75th percentile was 87.7% on 2026-09-25
+ * (127 measurable TDs, median 78.4%), so 85% scores full marks.
+ */
+export const COMMITTEE_ATTENDANCE_BENCHMARK = 85;
 
 /**
- * Parliamentary pillar, 0–100: 60% questions, 40% attendance, each capped at the benchmark.
- * NULL when neither input exists. If only one exists it carries the whole pillar.
+ * Weights inside the parliamentary pillar. They renormalise over the components that have
+ * data: a TD with no committee measure (most ministers sit on none) is scored 62.5 / 37.5
+ * on questions and votes, close to the 60 / 40 used before committees were measured.
+ */
+export const PARLIAMENTARY_WEIGHTS = {
+  questions: 0.5,
+  attendance: 0.3,
+  committees: 0.2,
+} as const;
+
+{
+  const sum = Object.values(PARLIAMENTARY_WEIGHTS).reduce((a, b) => a + b, 0);
+  if (Math.abs(sum - 1) > 1e-9) throw new Error(`PARLIAMENTARY_WEIGHTS must sum to 1, got ${sum}`);
+}
+
+/**
+ * Parliamentary pillar, 0–100: questions, Dáil vote attendance and committee attendance,
+ * each capped at its benchmark, weighted by PARLIAMENTARY_WEIGHTS over the ones present.
+ * NULL when none exists.
  */
 export function parliamentaryScore(
   questions: number | null | undefined,
   attendancePct: number | null | undefined,
+  committeeAttendancePct: number | null | undefined = null,
 ): number | null {
-  const q = questions === null || questions === undefined ? null : clamp(questions / QUESTIONS_BENCHMARK, 0, 1) * 100;
-  const a =
-    attendancePct === null || attendancePct === undefined ? null : clamp(attendancePct / ATTENDANCE_BENCHMARK, 0, 1) * 100;
-  if (q === null && a === null) return null;
-  if (q === null) return Math.round(a as number);
-  if (a === null) return Math.round(q);
-  return Math.round(q * 0.6 + a * 0.4);
+  const part = (v: number | null | undefined, benchmark: number) =>
+    v === null || v === undefined || Number.isNaN(v) ? null : clamp(v / benchmark, 0, 1) * 100;
+  const parts: Array<[number | null, number]> = [
+    [part(questions, QUESTIONS_BENCHMARK), PARLIAMENTARY_WEIGHTS.questions],
+    [part(attendancePct, ATTENDANCE_BENCHMARK), PARLIAMENTARY_WEIGHTS.attendance],
+    [part(committeeAttendancePct, COMMITTEE_ATTENDANCE_BENCHMARK), PARLIAMENTARY_WEIGHTS.committees],
+  ];
+  let weighted = 0;
+  let weightSum = 0;
+  for (const [score, weight] of parts) {
+    if (score === null) continue;
+    weighted += score * weight;
+    weightSum += weight;
+  }
+  return weightSum === 0 ? null : Math.round(weighted / weightSum);
 }
 
 /**

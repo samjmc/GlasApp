@@ -1,5 +1,5 @@
 {
-  "id": "879cf409-bd3f-4ec9-a7b1-17cc7443d390",
+  "id": "ff833d99-29f3-4130-a49e-38cdf4f3cae0",
   "prevId": "d470be9f-9ca2-49c8-975c-5d6db2e6e65d",
   "version": "7",
   "dialect": "postgresql",
@@ -2903,6 +2903,12 @@
         },
         "attendance_pct": {
           "name": "attendance_pct",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "committee_attendance_pct": {
+          "name": "committee_attendance_pct",
           "type": "real",
           "primaryKey": false,
           "notNull": false

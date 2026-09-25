@@ -358,7 +358,7 @@ export default function TDProfilePageEnhanced() {
   ].filter((chip): chip is string => Boolean(chip));
 
   const pillars = [
-    { label: 'Dáil record', value: score.parliamentaryScore, sub: 'Questions and votes' },
+    { label: 'Dáil record', value: score.parliamentaryScore, sub: 'Questions, votes, committees' },
     { label: 'Debate', value: score.debateScore, sub: 'Dáil debates' },
     {
       label: 'News',

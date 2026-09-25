@@ -93,6 +93,7 @@ CREATE TABLE "politics"."question_counts" (
 --> statement-breakpoint
 ALTER TABLE "politics"."td_parliament_stats" ADD COLUMN "committee_sittings_eligible" integer;--> statement-breakpoint
 ALTER TABLE "politics"."td_parliament_stats" ADD COLUMN "committee_sittings_attended" integer;--> statement-breakpoint
+ALTER TABLE "politics"."tds" ADD COLUMN "committee_attendance_pct" real;--> statement-breakpoint
 ALTER TABLE "politics"."bill_debates" ADD CONSTRAINT "bill_debates_bill_id_bills_id_fk" FOREIGN KEY ("bill_id") REFERENCES "politics"."bills"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "politics"."bill_sponsors" ADD CONSTRAINT "bill_sponsors_bill_id_bills_id_fk" FOREIGN KEY ("bill_id") REFERENCES "politics"."bills"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "politics"."bill_sponsors" ADD CONSTRAINT "bill_sponsors_td_id_tds_id_fk" FOREIGN KEY ("td_id") REFERENCES "politics"."tds"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint

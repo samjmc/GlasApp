@@ -336,7 +336,11 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   it('feeds the scoring pillar from the same numbers', async () => {
     const found = await scoring.repository.findById(await tdId(A));
     expect(found?.td.attendancePct).toBe(100);
+    expect(found?.td.committeeAttendancePct).toBe(100);
     expect(found?.score?.parliamentaryScore).not.toBeNull();
+    // B: 6 of 12 sittings = 50%. C: 6 sittings, below the minimum, so NULL and not 0.
+    expect((await scoring.repository.findById(await tdId(B)))?.td.committeeAttendancePct).toBe(50);
+    expect((await scoring.repository.findById(await tdId(C)))?.td.committeeAttendancePct).toBeNull();
   });
 
   it('is idempotent, and links a member once they join the roster', async () => {
