@@ -61,30 +61,30 @@
   --muted-foreground: 146 8% 33%;
   --border: 144 14% 86%;
   --input: 144 13% 81%;
-  --primary: 150 74% 29%;
+  --primary: 150 74% 25%;
   --primary-foreground: 0 0% 100%;
-  --primary-hover: 150 74% 23%;
+  --primary-hover: 150 74% 20%;
   --secondary: 140 17% 93%;
   --secondary-foreground: 150 19% 6%;
   --accent: 140 17% 90%;
   --accent-foreground: 150 19% 6%;
   --destructive: 4 72% 45%;
   --destructive-foreground: 0 0% 100%;
-  --warn: 25 90% 38%;
+  --warn: 25 90% 32%;
   --success: 146 50% 90%;
   --success-foreground: 150 74% 24%;
-  --score-high: 150 74% 29%;
-  --score-mid: 45 90% 32%;
-  --score-low: 25 90% 40%;
+  --score-high: 150 74% 25%;
+  --score-mid: 45 90% 27%;
+  --score-low: 25 90% 34%;
   --hero: 158 51% 15%;
   --hero-muted: 156 48% 20%;
   --hero-foreground: 132 17% 94%;
   --hero-soft: 147 26% 78%;
-  --ring: 150 74% 29%;
-  --chart-1: 150 74% 29%;
+  --ring: 150 74% 25%;
+  --chart-1: 150 74% 25%;
   --chart-2: 214 70% 45%;
-  --chart-3: 45 90% 32%;
-  --chart-4: 25 90% 40%;
+  --chart-3: 45 90% 27%;
+  --chart-4: 25 90% 34%;
   --chart-5: 280 42% 45%;
   color-scheme: light;
 }
@@ -105,10 +105,10 @@
 }
 .light.region-ie,
 .light .region-ie {
-  --primary: 150 74% 29%;
-  --primary-hover: 150 74% 23%;
-  --ring: 150 74% 29%;
-  --chart-1: 150 74% 29%;
+  --primary: 150 74% 25%;
+  --primary-hover: 150 74% 20%;
+  --ring: 150 74% 25%;
+  --chart-1: 150 74% 25%;
 }
 .region-uk {
   --primary: 42 86% 63%;
@@ -121,10 +121,10 @@
 }
 .light.region-uk,
 .light .region-uk {
-  --primary: 36 90% 32%;
-  --primary-hover: 36 90% 26%;
-  --ring: 36 90% 32%;
-  --chart-1: 36 90% 32%;
+  --primary: 36 90% 27%;
+  --primary-hover: 36 90% 22%;
+  --ring: 36 90% 27%;
+  --chart-1: 36 90% 27%;
 }
 .region-us {
   --primary: 255 92% 76%;
@@ -137,10 +137,36 @@
 }
 .light.region-us,
 .light .region-us {
-  --primary: 262 55% 48%;
-  --primary-hover: 262 55% 40%;
-  --ring: 262 55% 48%;
-  --chart-1: 262 55% 48%;
+  --primary: 262 55% 43%;
+  --primary-hover: 262 55% 36%;
+  --ring: 262 55% 43%;
+  --chart-1: 262 55% 43%;
+}
+
+/* The hero band is dark in both themes, so everything on it keeps the dark-theme values. */
+.light .bg-hero {
+  --foreground: 132 17% 94%;
+  --muted-foreground: 147 26% 78%;
+  --border: 156 48% 20%;
+  --input: 156 40% 28%;
+  --accent: 156 48% 20%;
+  --elevated: 156 48% 20%;
+  --primary: 143 68% 62%;
+  --primary-hover: 142 77% 75%;
+  --primary-foreground: 146 54% 5%;
+  --ring: 143 68% 62%;
+}
+.light.region-uk .bg-hero,
+.light .region-uk .bg-hero {
+  --primary: 42 86% 63%;
+  --primary-hover: 44 92% 74%;
+  --ring: 42 86% 63%;
+}
+.light.region-us .bg-hero,
+.light .region-us .bg-hero {
+  --primary: 255 92% 76%;
+  --primary-hover: 255 95% 84%;
+  --ring: 255 92% 76%;
 }
 
 @layer base {
