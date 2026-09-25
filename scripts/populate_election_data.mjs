@@ -1,11 +1,6 @@
 import pg from 'pg';
-import { OpenAI } from 'openai';
 import ws from 'ws';
-
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { chat } from './lib/llm.mjs';
 
 // Define party colors
 const partyColors = {
@@ -212,7 +207,7 @@ async function populateElection() {
 async function getElectionResults(constituencyName) {
   try {
     // Use OpenAI to extract election results from Wikipedia
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024
       messages: [
         {

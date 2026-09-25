@@ -8,11 +8,9 @@ const { Pool } = require('pg');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-const OpenAI = require('openai');
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+// llm.mjs is ESM-only; this CommonJS script loads it via dynamic import (see bottom of file).
+let chat;
 
 // Database connection
 const pool = new Pool({
@@ -127,7 +125,7 @@ Format the response as a valid JSON object with this structure:
 }
 `;
 
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-4o",
       messages: [
         { role: "system", content: "You are an expert on Irish politics and election data. Provide accurate, factual information about the 2024 Irish General Election results based on official sources. If exact vote counts are not available, provide the most precise estimates based on official percentage data." },
@@ -272,5 +270,8 @@ async function importElectionData() {
   }
 }
 
-// Run the import function
-importElectionData().catch(console.error);
+// Run the import function (loads the ESM llm helper first, since this file is CommonJS)
+(async () => {
+  ({ chat } = await import('./lib/llm.mjs'));
+  await importElectionData().catch(console.error);
+})();

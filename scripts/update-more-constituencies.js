@@ -1,16 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import OpenAI from 'openai';
+import { chat } from './lib/llm.mjs';
 
 // Get directory name in ES module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Initialize OpenAI with the latest SDK
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
 
 // List of constituencies to update
 const constituenciesToUpdate = [
@@ -31,7 +26,7 @@ async function getWikipediaResults(constituencyName) {
   console.log(`Fetching Wikipedia data for ${constituencyName}...`);
   
   try {
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024
       messages: [
         {

@@ -165,7 +165,7 @@ export async function saveContent(id: number, content: string, database: Db = db
 }
 
 export interface Outcome {
-  status: Extract<ArticleStatus, 'scored' | 'skipped' | 'failed'>;
+  status: Extract<ArticleStatus, 'scored' | 'skipped' | 'duplicate' | 'failed'>;
   importanceScore: number | null;
   importanceReasoning: string | null;
   skipReason: string | null;
@@ -191,7 +191,7 @@ export async function statusCounts(database: Db = db): Promise<Record<ArticleSta
     .select({ status: newsArticles.status, n: sql<number>`count(*)::int` })
     .from(newsArticles)
     .groupBy(newsArticles.status);
-  const out: Record<ArticleStatus, number> = { pending: 0, claimed: 0, scored: 0, skipped: 0, failed: 0 };
+  const out: Record<ArticleStatus, number> = { pending: 0, claimed: 0, scored: 0, skipped: 0, duplicate: 0, failed: 0 };
   for (const r of rows) out[r.status] = r.n;
   return out;
 }
@@ -281,8 +281,11 @@ function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQ
 const BY_IMPACT = sql`(top.impact is null), abs(top.impact) desc, a.published_at desc, a.id desc`;
 const BY_DATE = sql`a.published_at desc, a.id desc`;
 
-/** Rows below the relevance floor are stored only so their URL is never scored again. */
-const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR}`;
+/**
+ * Rows below the relevance floor are stored only so their URL is never scored again.
+ * Same-event duplicates are hidden so one story shows once, as its canonical article.
+ */
+const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR} and a.status <> 'duplicate'`;
 
 async function page(filter: SQL, orderBy: SQL, limit: number, offset: number, database: Db) {
   const where = sql`${VISIBLE} and ${filter}`;

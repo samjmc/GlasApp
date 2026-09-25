@@ -9,8 +9,12 @@ import { boolean, index, integer, real, serial, smallint, text, timestamp, uniqu
 import type { NewsCategory } from '../news';
 import { politics } from './politics';
 
-/** Article lifecycle. `claimed` rows belong to one scoring run until their lease expires. */
-export const ARTICLE_STATUSES = ['pending', 'claimed', 'scored', 'skipped', 'failed'] as const;
+/**
+ * Article lifecycle. `claimed` rows belong to one scoring run until their lease expires.
+ * `duplicate`: scoring's event clustering picked another article for the same story; hidden
+ * from the feed so one event shows once.
+ */
+export const ARTICLE_STATUSES = ['pending', 'claimed', 'scored', 'skipped', 'duplicate', 'failed'] as const;
 export type ArticleStatus = (typeof ARTICLE_STATUSES)[number];
 
 // ---------------------------------------------------------------------------
