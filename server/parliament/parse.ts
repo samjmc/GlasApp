@@ -252,8 +252,9 @@ export interface RollCall {
   /** Member codes resolved through the transcript's own `TLCPerson` references. */
   codes: string[];
   /**
-   * Names of people on the roll call with no `TLCPerson` entry (measured: 103 in June 2026,
-   * 55 of them TDs). The caller resolves them against the roster by name.
+   * Names of people on the roll call with no `TLCPerson` entry, except those in a joint
+   * committee's "Seanadóirí / Senators" column, who cannot be TDs. The caller resolves them
+   * against the roster by name.
    */
   unlinkedNames: string[];
 }
@@ -270,6 +271,14 @@ export function parseRollCall(xml: string): RollCall {
       if (!codes.includes(code)) codes.push(code);
       return;
     }
+    // A joint committee's roll call is a table headed "Teachtaí Dála / Deputies" and
+    // "Seanadóirí / Senators" (measured: nearly every unlinked name in June 2025 and
+    // February 2026 sat under Senators, with no "Senator" before it).
+    const cell = $(el).closest('td');
+    if (cell.length) {
+      const header = cell.closest('table').find('th').eq(cell.index()).text();
+      if (/senator|seanad/i.test(header)) return;
+    }
     const name = $(el).text().replace(/\s+/g, ' ').trim();
     if (name && !unlinkedNames.includes(name)) unlinkedNames.push(name);
   });
@@ -280,8 +289,9 @@ export function parseRollCall(xml: string): RollCall {
 const HONORIFIC = /^(deputy|teachta|td|senator|seanadoir|an|dr|minister of state|minister)\s+/;
 
 /**
- * "Deputy Seán Ó Fearghaíl", "Seán Ó Fearghaíl" and the chair line "DEPUTY SEÁN Ó
- * FEARGHAÍL IN THE CHAIR." → "sean o fearghail".
+ * "Deputy Seán Ó Fearghaíl", "Seán Ó Fearghaíl" and the chair lines "DEPUTY SEÁN Ó
+ * FEARGHAÍL IN THE CHAIR." and "Teachta / Deputy Seán Ó Fearghaíl sa Chathaoir / in the
+ * Chair." → "sean o fearghail".
  */
 export function normaliseName(name: string): string {
   let n = name
@@ -292,7 +302,7 @@ export function normaliseName(name: string): string {
     .replace(/[^a-z\s]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
-    .replace(/ in the chair$/, '');
+    .replace(/( sa chathaoir)?( in the chair)?$/, '');
   while (HONORIFIC.test(n)) n = n.replace(HONORIFIC, '');
   return n;
 }

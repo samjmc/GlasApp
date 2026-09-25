@@ -226,6 +226,25 @@ describe('parseRollCall', () => {
     expect(roll.unlinkedNames).toEqual(['Deputy Aidan Farrelly']);
   });
 
+  it("skips names in a joint committee's Senators column: they cannot be TDs", () => {
+    // Shape of the Joint Committee on European Union Affairs, 2025-06-25.
+    const xml = `<akomaNtoso><debate><meta><references>
+      <TLCPerson eId="SeanCroweSF" href="/ie/oireachtas/member/id/Seán-Crowe.D.2002-06-06" showAs="Seán Crowe"/>
+      </references></meta><debateBody><debateSection eId="dbsect_1"><rollCall>
+      <summary>Comhaltaí a bhí i láthair / Members present:</summary>
+      <table>
+        <tr><th><p>Teachtaí Dála / Deputies</p></th><th><p>Seanadóirí / Senators</p></th></tr>
+        <tr><td><p><person refersTo="#SeanCroweSF">Seán Crowe</person></p></td><td><p><person refersTo="#AidanDavitt">Aidan Davitt</person></p></td></tr>
+        <tr><td><p><person refersTo="#EamonScanlon">Eamon Scanlon.</person></p></td><td/></tr>
+      </table>
+      <summary><person as="#Chair" refersTo="#BarryWard">Teachta / Deputy Barry Ward sa Chathaoir / in the Chair.</person></summary>
+      </rollCall></debateSection></debateBody></debate></akomaNtoso>`;
+    expect(parseRollCall(xml)).toEqual({
+      codes: ['Seán-Crowe.D.2002-06-06'],
+      unlinkedNames: ['Eamon Scanlon.', 'Teachta / Deputy Barry Ward sa Chathaoir / in the Chair.'],
+    });
+  });
+
   it('is empty, not an error, for a transcript with no roll call', () => {
     expect(parseRollCall('<akomaNtoso><debate><debateBody/></debate></akomaNtoso>')).toEqual({ codes: [], unlinkedNames: [] });
   });
@@ -266,6 +285,10 @@ describe('normaliseName', () => {
   it('strips honorifics, including "Minister of State", and anything in brackets', () => {
     expect(normaliseName('Minister of State Deputy Kieran O’Donnell')).toBe('kieran o donnell');
     expect(normaliseName('Deputy Mary Butler (Minister of State at the Department of Health)')).toBe('mary butler');
+  });
+
+  it('reads the bilingual chair line', () => {
+    expect(normaliseName('Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.')).toBe('maurice quinlivan');
   });
 });
 

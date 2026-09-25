@@ -94,17 +94,31 @@ The pieces of the API worth adding, from a deep dive of all 8 endpoints:
 
 Facts measured while building it:
 - A committee membership and a committee sitting share the committee URI; that is the join.
-  1,021 committee sittings in the term so far; every transcript has a `<rollCall>` with
-  member references.
-- `bill.debates[].debateSectionId` + date + chamber is the same key as
-  `divisions.debate_section_id`, so a bill shows every Dáil vote held on it. There is no
-  direct bill field on a division (`isBill` is false on all 413).
+  1,024 committee sittings in the term so far, every one with a `<rollCall>`.
+- A roll call does NOT link everyone. Some present members have no `TLCPerson`, so they
+  are matched to the roster by name (129 TD presences in a two-month sample of 163
+  sittings). A joint committee's roll call is a table with "Deputies" and "Senators"
+  columns; the Senators column carries no "Senator" title, and skipping it by its header
+  took unmatched sittings from 451 of 1,024 to 1. A sitting with a name that could still
+  be a TD is stored but counts for nobody.
+- The roster lists committees of earlier terms and of the Seanad too (12 of 696), and
+  memberships that ended before the seat began (14). Only this Dáil's are kept.
+- `bill.debates[].debateSectionId` + date + house is the same key as
+  `divisions.debate_section_id`, so a bill shows every Dáil vote held on it. The house
+  comes from the debate URI (`/debateRecord/<dail|seanad|committee-id>/`): a committee-stage
+  debate can share a Dáil debate's date and section id, and keying it as Dáil joined 2
+  bills to unrelated votes. There is no direct bill field on a division (`isBill` is false
+  on all 413).
 - The API **refuses `skip` beyond 10,000** and caps its counts at 10,000, so questions are
   read a month at a time (~7,500), and a window that still hits 10,000 is split.
 - Question text is not stored: ~150k questions a term would add ~150 MB to a database that
   is 123 MB in total (85 MB of it debate speeches).
 - Question totals for scoring now come from `question_counts`; this replaced 348 per-TD API
-  calls a run. While any month is failing, the last written totals are kept.
+  calls a run. They are used only when every month since the Dáil's first day is stored (no
+  failed month, and a resume point exists, which a fresh `--since` run does not leave).
+  Otherwise the last written totals are kept. A failed month is retried every run.
+- Each feed runs on its own: a feed that fails outright is listed in `failedFeeds` and the
+  others still run. A resumed run (plus a full re-read of committee sittings) took 95 s.
 - The first live sync on GlasCore died with "deadlock detected": the scoring cron also runs
   at 04:00. The parliament sync moved to 04:45 and its set-based writes retry on 40P01.
 
