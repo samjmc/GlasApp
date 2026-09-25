@@ -99,11 +99,6 @@ import { FirstTimeUserTour } from '@/components/onboarding';
 
 #### Available Empty States:
 
-##### EmptyQuizState
-- Shown when user hasn't completed political quiz
-- Large, engaging design with benefits list
-- Direct CTA to quiz page
-
 ##### EmptyNewsFeedState
 - Shown when no news articles exist yet
 - Explains the news scraping system
@@ -131,7 +126,6 @@ import { FirstTimeUserTour } from '@/components/onboarding';
 #### Usage:
 ```tsx
 import { 
-  EmptyQuizState, 
   EmptyNewsFeedState,
   LoadingState 
 } from '@/components/onboarding';
@@ -176,7 +170,7 @@ import {
 ### Empty States
 Throughout the experience, users see beautiful empty states instead of blank pages:
 - **Feed tab**: EmptyNewsFeedState (until articles are scraped)
-- **My Rankings**: EmptyQuizState or quiz interface (until completed)
+- **My Rankings**: quiz interface (until `GET /api/quiz/me` returns at least one result)
 - **Ideas page**: EmptyIdeasState (until first submission)
 
 ---
@@ -218,10 +212,8 @@ Throughout the experience, users see beautiful empty states instead of blank pag
   welcomeBannerDismissed: "true"
   ```
 
-- **Quiz Completion**: Database query
-  ```sql
-  SELECT id FROM user_quiz_results WHERE user_id = ?
-  ```
+- **Quiz Completion**: `GET /api/quiz/me` returns at least one result. Results are stored
+  server-side in the `politics.quiz_results` table.
 
 ### Integration Points
 
@@ -323,8 +315,8 @@ if (!hasCompletedQuiz) {
 4. Ensure modal isn't being blocked by z-index issues
 
 ### Welcome Banner Not Hiding After Quiz
-1. Verify quiz completion creates `user_quiz_results` record
-2. Check user_id matches auth user
+1. Verify `GET /api/quiz/me` returns at least one result for the signed-in user
+2. Check the `politics.quiz_results` row's user_id matches the auth user
 3. Clear localStorage and test again
 
 ### Tour Tooltips Misaligned

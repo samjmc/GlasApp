@@ -85,7 +85,7 @@ export async function authenticate(req: Request): Promise<AuthUser | null> {
   }
 }
 
-function isAdminUser(user: AuthUser): boolean {
+export function isAdminUser(user: AuthUser): boolean {
   if (user.role === ADMIN_ROLE) return true;
   return user.email !== null && adminEmails().includes(user.email.toLowerCase());
 }

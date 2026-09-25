@@ -17,7 +17,8 @@
 import { requireAuth, requireJob } from '../../auth';
 import express, { Request, Response } from 'express';
 import { db } from '../../db';
-import { userLocations, users, constituencies, parties, electionResults, elections, quizResults, userPreferences } from '@shared/schema';
+import { userLocations, users, constituencies, parties, electionResults, elections, userPreferences } from '@shared/schema';
+import { quizResults } from '@shared/schema/quiz';
 import { eq, and, count, sql } from 'drizzle-orm';
 import fs from 'fs';
 import path from 'path';

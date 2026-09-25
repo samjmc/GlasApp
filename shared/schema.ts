@@ -3,21 +3,6 @@ import { pgTable, serial, text, integer, timestamp, date, varchar, decimal, bool
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-// Re-export quiz types so consumers can import them from "@shared/schema".
-export type { QuizQuestion, UserResponse } from "./quizTypes";
-
-// Political compass entity types
-/** A political figure with ideological positions on the political compass. */
-export interface PoliticalFigure {
-  id: string;
-  name: string;
-  economic: number;
-  social: number;
-  description: string;
-  imageUrl: string;
-  distance?: number;
-}
-
 /** A political party with ideological positions on the political compass. */
 export interface PoliticalParty {
   id: string;
@@ -141,72 +126,6 @@ export const twoFactorTokens = pgTable("two_factor_tokens", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// Enhanced quiz results table to store multidimensional analysis
-/** Drizzle ORM table definition for enhanced quiz results. */
-export const quizResults = pgTable("quiz_results", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).references(() => users.id),
-  // Original political compass scores
-  economicScore: varchar("economic_score", { length: 10 }),
-  socialScore: varchar("social_score", { length: 10 }),
-  // Enhanced 8-dimensional scores
-  economicDimension: decimal("economic_dimension", { precision: 4, scale: 1 }),
-  socialDimension: decimal("social_dimension", { precision: 4, scale: 1 }),
-  culturalDimension: decimal("cultural_dimension", { precision: 4, scale: 1 }),
-  globalismDimension: decimal("globalism_dimension", { precision: 4, scale: 1 }),
-  environmentalDimension: decimal("environmental_dimension", { precision: 4, scale: 1 }),
-  authorityDimension: decimal("authority_dimension", { precision: 4, scale: 1 }),
-  welfareDimension: decimal("welfare_dimension", { precision: 4, scale: 1 }),
-  technocraticDimension: decimal("technocratic_dimension", { precision: 4, scale: 1 }),
-  // General information
-  ideology: varchar("ideology", { length: 100 }),
-  description: text("description"),
-  shareCode: varchar("share_code", { length: 20 }).unique(),
-  isActive: integer("is_active").default(1), // 1 for true, 0 for false
-  createdAt: timestamp("created_at").defaultNow(),
-  // Additional fields for enhanced political analysis
-  detailedAnalysis: text("detailed_analysis"),
-  politicalValues: text("political_values"), // Stored as JSON string
-  irishContextInsights: text("irish_context_insights"), // Stored as JSON string
-}, (table) => [
-  index("idx_quiz_results_user_id").on(table.userId),
-]);
-
-// Historical quiz results to track changes over time
-// ARCHIVED 2026-09-14 (Phase 2B schema cleanup): the only code path that reads/writes this
-// table (server/services/quizResultsService.ts, via server/routes/profileHistoryRoutes.ts)
-// is never mounted in server/routes.ts and has zero live callers in client/src or server.
-// The live quiz-history feature (/api/quiz-history, server/routes/quiz/index.ts) uses a
-// separate raw-SQL "quiz_history" table via quizHistoryService.ts, not this Drizzle table.
-// Physical table renamed to archived_quiz_results_history (see migrations/); the exported
-// TS symbol name is kept unchanged so any existing (dead) code referencing it still compiles.
-/** Drizzle ORM table definition for archived quiz result history. */
-export const quizResultsHistory = pgTable("archived_quiz_results_history", {
-  id: serial("id").primaryKey(),
-  originalResultId: integer("original_result_id").references(() => quizResults.id),
-  userId: varchar("user_id", { length: 100 }).references(() => users.id),
-  // Original political compass scores
-  economicScore: varchar("economic_score", { length: 10 }),
-  socialScore: varchar("social_score", { length: 10 }),
-  // Enhanced 8-dimensional scores
-  economicDimension: decimal("economic_dimension", { precision: 4, scale: 1 }),
-  socialDimension: decimal("social_dimension", { precision: 4, scale: 1 }),
-  culturalDimension: decimal("cultural_dimension", { precision: 4, scale: 1 }),
-  globalismDimension: decimal("globalism_dimension", { precision: 4, scale: 1 }),
-  environmentalDimension: decimal("environmental_dimension", { precision: 4, scale: 1 }),
-  authorityDimension: decimal("authority_dimension", { precision: 4, scale: 1 }),
-  welfareDimension: decimal("welfare_dimension", { precision: 4, scale: 1 }),
-  technocraticDimension: decimal("technocratic_dimension", { precision: 4, scale: 1 }),
-  // General information
-  ideology: varchar("ideology", { length: 100 }),
-  description: text("description"),
-  archivedAt: timestamp("archived_at").defaultNow(),
-  // AI analysis data
-  detailedAnalysis: text("detailed_analysis"),
-  politicalValues: text("political_values"), // Stored as JSON string
-  irishContextInsights: text("irish_context_insights"), // Stored as JSON string
-});
-
 // Political parties table with 8-dimensional scoring
 /** Drizzle ORM table definition for political parties. */
 export const parties = pgTable("parties", {
@@ -251,27 +170,6 @@ export const constituencies = pgTable("constituencies", {
   geoData: text("geo_data"),
   economicScore: decimal("economic_score", { precision: 3, scale: 1 }),
   socialScore: decimal("social_score", { precision: 3, scale: 1 }),
-});
-
-// Political Evolution table
-/** Drizzle ORM table definition for political evolution tracking. */
-export const politicalEvolution = pgTable("political_evolution", {
-  id: serial("id").primaryKey(),
-  userId: varchar("user_id", { length: 100 }).notNull().references(() => users.id),
-  economicScore: decimal("economic_score", { precision: 5, scale: 2 }).notNull(),
-  socialScore: decimal("social_score", { precision: 5, scale: 2 }).notNull(),
-  culturalScore: decimal("cultural_score", { precision: 5, scale: 2 }),
-  globalismScore: decimal("globalism_score", { precision: 5, scale: 2 }),
-  environmentalScore: decimal("environmental_score", { precision: 5, scale: 2 }),
-  authorityScore: decimal("authority_score", { precision: 5, scale: 2 }),
-  welfareScore: decimal("welfare_score", { precision: 5, scale: 2 }),
-  technocraticScore: decimal("technocratic_score", { precision: 5, scale: 2 }),
-  ideology: text("ideology").notNull(),
-  quizVersion: text("quiz_version").default("basic"),
-  quizResultId: integer("quiz_result_id").references(() => quizResults.id),
-  notes: text("notes"),
-  label: text("label"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
 // Elections table
@@ -329,8 +227,6 @@ export type PartySentimentVote = typeof partySentimentVotes.$inferSelect;
 // Relations
 /** Drizzle relations for the users table. */
 export const usersRelations = relations(users, ({ many }) => ({
-  quizResults: many(quizResults),
-  quizResultsHistory: many(quizResultsHistory),
   emailVerificationTokens: many(emailVerificationTokens),
   twoFactorTokens: many(twoFactorTokens),
 }));
@@ -348,27 +244,6 @@ export const twoFactorTokensRelations = relations(twoFactorTokens, ({ one }) => 
   user: one(users, {
     fields: [twoFactorTokens.userId],
     references: [users.id],
-  }),
-}));
-
-/** Drizzle relations for the quizResults table. */
-export const quizResultsRelations = relations(quizResults, ({ one, many }) => ({
-  user: one(users, {
-    fields: [quizResults.userId],
-    references: [users.id],
-  }),
-  history: many(quizResultsHistory),
-}));
-
-/** Drizzle relations for the quizResultsHistory table. */
-export const quizResultsHistoryRelations = relations(quizResultsHistory, ({ one }) => ({
-  user: one(users, {
-    fields: [quizResultsHistory.userId],
-    references: [users.id],
-  }),
-  originalResult: one(quizResults, {
-    fields: [quizResultsHistory.originalResultId],
-    references: [quizResults.id],
   }),
 }));
 
@@ -434,12 +309,6 @@ export const insertUserActivitySchema = createInsertSchema(userActivity).omit({ 
 export const insertEmailVerificationTokenSchema = createInsertSchema(emailVerificationTokens).omit({ id: true, createdAt: true });
 /** Zod insert-schema for creating a two-factor token record. */
 export const insertTwoFactorTokenSchema = createInsertSchema(twoFactorTokens).omit({ id: true, createdAt: true });
-/** Zod insert-schema for creating a quiz result record. */
-export const insertQuizResultSchema = createInsertSchema(quizResults).omit({ id: true, createdAt: true });
-/** Zod insert-schema for creating a quiz result history record. */
-export const insertQuizResultHistorySchema = createInsertSchema(quizResultsHistory).omit({ id: true, archivedAt: true });
-/** Zod insert-schema for creating a political evolution record. */
-export const insertPoliticalEvolutionSchema = createInsertSchema(politicalEvolution).omit({ id: true, createdAt: true });
 /** Zod insert-schema for creating a party record. */
 export const insertPartySchema = createInsertSchema(parties).omit({ id: true });
 /** Zod insert-schema for creating a constituency record. */
@@ -463,15 +332,6 @@ export type InsertEmailVerificationToken = z.infer<typeof insertEmailVerificatio
 
 export type TwoFactorToken = typeof twoFactorTokens.$inferSelect;
 export type InsertTwoFactorToken = z.infer<typeof insertTwoFactorTokenSchema>;
-
-export type QuizResult = typeof quizResults.$inferSelect;
-export type InsertQuizResult = z.infer<typeof insertQuizResultSchema>;
-
-export type QuizResultHistory = typeof quizResultsHistory.$inferSelect;
-export type InsertQuizResultHistory = z.infer<typeof insertQuizResultHistorySchema>;
-
-export type PoliticalEvolution = typeof politicalEvolution.$inferSelect;
-export type InsertPoliticalEvolution = z.infer<typeof insertPoliticalEvolutionSchema>;
 
 export type Party = typeof parties.$inferSelect;
 export type InsertParty = z.infer<typeof insertPartySchema>;

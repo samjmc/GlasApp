@@ -1,137 +1,115 @@
-import { useEffect } from "react";
-import { useLocation } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { useState } from "react";
+import { useLocation, useSearch } from "wouter";
+import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
-import { REGION_CONFIGS } from "@shared/region-config";
-import { Loader2 } from "lucide-react";
+import { GlasLogo } from "@/components/pulse/GlasMark";
+import { Button } from "@/components/ui/button";
+import { REGION_LIST, type RegionCode } from "@shared/region-config";
+import { cn } from "@/lib/utils";
 
+/** Only same-app paths are followed after picking, never another site. */
+function safeNext(search: string): string {
+  const next = new URLSearchParams(search).get("next");
+  return next && next.startsWith("/") && !next.startsWith("//") && !next.startsWith("/select-region") ? next : "/";
+}
+
+/** Where are you following politics? Shown once on a first visit, and any time from the menu. */
 export default function RegionSelectionPage() {
-  const { regionCode, status, availableRegions, selectRegion, isMockRegion } = useRegion();
-  const [location, navigate] = useLocation();
+  const { regionCode, selectRegion } = useRegion();
+  const [, navigate] = useLocation();
+  const search = useSearch();
+  const [choice, setChoice] = useState<RegionCode>(regionCode ?? "IE");
+  const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    if (status === "ready" && regionCode && location === "/select-region") {
-      navigate("/", { replace: true });
-    }
-  }, [status, regionCode, location, navigate]);
-
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
-        <p className="text-sm text-gray-500">Preparing regions…</p>
-      </div>
-    );
-  }
+  const confirm = async () => {
+    setSaving(true);
+    await selectRegion(choice);
+    navigate(safeNext(search));
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-wide text-emerald-500 font-semibold">
-            Multi-region preview
-          </p>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Choose your political landscape
+    // The chosen card's accent tints the whole page while you decide.
+    <div className={cn("flex min-h-[100dvh] flex-col items-center px-4 py-8 sm:justify-center sm:py-12", `region-${choice.toLowerCase()}`)}>
+      <div className="flex w-full max-w-3xl flex-col gap-8">
+        <GlasLogo className="self-center" />
+
+        <header className="flex flex-col gap-3 text-center">
+          <h1 className="font-display text-4xl font-bold leading-none tracking-tight sm:text-5xl">
+            Where are you following <span className="text-primary">politics?</span>
           </h1>
-          <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Glas keeps the accountability loop identical everywhere. Pick your region to load
-            local politicians, sentiment feeds, and retention streaks. You can switch anytime
-            from the header.
+          <p className="text-base text-muted-foreground sm:text-lg">
+            Pick your parliament. You can change this any time from the menu.
           </p>
-        </div>
+        </header>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {availableRegions.map((region) => {
-            const config = REGION_CONFIGS[region.code];
-            const isSelected = regionCode === region.code;
-            const isPreview = Boolean(region.code === "US");
-
+        <div role="radiogroup" aria-label="Region" className="grid gap-3 sm:grid-cols-3">
+          {REGION_LIST.map((region) => {
+            const selected = region.code === choice;
+            const { legislature } = region;
             return (
-              <Card
+              <button
                 key={region.code}
-                className={`p-6 border-2 transition-shadow ${
-                  isSelected
-                    ? "border-emerald-400 shadow-lg"
-                    : "border-transparent hover:shadow-lg"
-                }`}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="text-3xl mb-2" aria-hidden>
-                      {config.assets.flagEmoji}
-                    </div>
-                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {config.name}
-                    </h2>
-                  </div>
-                  {isSelected && (
-                    <span className="px-3 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 rounded-full">
-                      Active
-                    </span>
-                  )}
-                  {!isSelected && isPreview && (
-                    <span className="px-3 py-1 text-xs font-semibold bg-sky-100 text-sky-700 rounded-full">
-                      Preview
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                  {config.home.tagline}
-                </p>
-                {config.home.description && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-                    {config.home.description}
-                  </p>
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setChoice(region.code)}
+                className={cn(
+                  `region-${region.code.toLowerCase()}`,
+                  "group relative flex flex-col gap-4 overflow-hidden rounded-2xl border-2 bg-card p-5 text-left transition-[border-color,transform] active:scale-[0.98]",
+                  selected ? "border-primary" : "border-transparent hover:border-input"
                 )}
-
-                <div className="flex items-center justify-between">
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {isPreview
-                      ? "Mock data enabled – final integrations coming soon."
-                      : "Live Irish dataset with TD tracking."}
-                  </div>
-                  <Button
-                    variant={isSelected ? "secondary" : "default"}
-                    onClick={() => selectRegion(region.code)}
+              >
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-primary" />
+                <span className="flex items-center justify-between gap-2 pt-1">
+                  <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-bold text-primary">
+                    {region.status === "live" ? "Live" : "Preview"}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "flex h-6 w-6 items-center justify-center rounded-full border-2",
+                      selected ? "border-primary bg-primary text-primary-foreground" : "border-input"
+                    )}
                   >
-                    {isSelected ? "Selected" : `Use ${region.shortName}`}
-                  </Button>
-                </div>
-              </Card>
+                    {selected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                  </span>
+                </span>
+                <span className="flex flex-col gap-1">
+                  <span className="font-display text-2xl font-bold tracking-tight">{region.name}</span>
+                  <span className="text-sm font-semibold text-muted-foreground">{legislature.chamber}</span>
+                </span>
+                <span className="grid grid-cols-2 gap-2">
+                  <span className="flex flex-col rounded-xl bg-elevated p-3">
+                    <span className="font-display text-xl font-bold leading-none">{legislature.members}</span>
+                    <span className="mt-1 text-xs text-muted-foreground">{legislature.memberTitlePlural}</span>
+                  </span>
+                  <span className="flex flex-col rounded-xl bg-elevated p-3">
+                    <span className="font-display text-xl font-bold leading-none">{legislature.seats}</span>
+                    <span className="mt-1 text-xs text-muted-foreground">{legislature.seatNamePlural}</span>
+                  </span>
+                </span>
+                <span className="text-sm text-muted-foreground">{region.tagline}</span>
+              </button>
             );
           })}
         </div>
 
-        {isMockRegion && (
-          <div className="mt-10 p-4 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-sm text-blue-800 dark:text-blue-200">
-            Mock data is active for this region. Core loops, streaks, and routing work exactly as
-            production; real datasets will plug in next.
-          </div>
-        )}
+        <div className="flex flex-col items-center gap-3">
+          <Button size="lg" onClick={confirm} disabled={saving} className="w-full gap-2 sm:w-72">
+            {saving ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                Saving…
+              </>
+            ) : (
+              <>
+                Continue with {REGION_LIST.find((r) => r.code === choice)?.shortName} <ArrowRight />
+              </>
+            )}
+          </Button>
+          <p className="text-xs text-muted-foreground">Previews show what is coming. They contain no real scores yet.</p>
+        </div>
       </div>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

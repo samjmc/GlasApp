@@ -22,7 +22,7 @@ export function PWAInstallButton() {
     // Check if already installed
     const checkInstalled = () => {
       const installed = window.matchMedia('(display-mode: standalone)').matches ||
-                       (window.navigator as unknown).standalone === true;
+                       (window.navigator as { standalone?: boolean }).standalone === true;
       setIsInstalled(installed);
     };
 
@@ -32,11 +32,11 @@ export function PWAInstallButton() {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      
+
       // Check if user dismissed recently
       const dismissed = localStorage.getItem('pwa-install-dismissed');
       const shouldShow = !dismissed || Date.now() - parseInt(dismissed) > 7 * 24 * 60 * 60 * 1000;
-      
+
       if (shouldShow) {
         setTimeout(() => setShowPrompt(true), 3000); // Show after 3 seconds
       }
@@ -44,7 +44,6 @@ export function PWAInstallButton() {
 
     // Listen for app installed
     const handleAppInstalled = () => {
-      console.log('PWA installed successfully!');
       setIsInstalled(true);
       setShowPrompt(false);
       setDeferredPrompt(null);
@@ -66,8 +65,7 @@ export function PWAInstallButton() {
     deferredPrompt.prompt();
 
     // Wait for user response
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User ${outcome} the install prompt`);
+    await deferredPrompt.userChoice;
 
     // Clear the prompt
     setDeferredPrompt(null);
@@ -85,71 +83,32 @@ export function PWAInstallButton() {
   }
 
   return (
-    <>
-      {/* Mobile Bottom Banner */}
-      <div className="fixed bottom-20 left-4 right-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-4 rounded-xl shadow-2xl z-50 md:hidden animate-in slide-in-from-bottom-5">
+    <div className="fixed right-4 z-50 bottom-[calc(92px_+_env(safe-area-inset-bottom,0px))] left-4 md:bottom-6 md:left-auto md:right-6">
+      <div className="relative flex max-w-sm items-start gap-3 rounded-2xl border border-border bg-card p-4 pr-8 shadow-lg animate-in slide-in-from-bottom-5">
         <button
+          type="button"
           onClick={handleDismiss}
-          className="absolute top-2 right-2 text-white/75 hover:text-white"
+          className="absolute right-0.5 top-0.5 flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
           aria-label="Dismiss"
         >
-          <X className="w-4 h-4" />
+          <X className="h-4 w-4" aria-hidden="true" />
         </button>
-        
-        <div className="flex items-start gap-3 pr-6">
-          <div className="bg-white/20 p-2 rounded-lg">
-            <Smartphone className="w-6 h-6" />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-bold text-sm mb-1">Install Glas Politics</h3>
-            <p className="text-xs opacity-90 mb-3">
-              Add to your home screen for quick access and offline features!
-            </p>
-            <Button
-              onClick={handleInstallClick}
-              size="sm"
-              className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Install App
-            </Button>
-          </div>
-        </div>
-      </div>
 
-      {/* Desktop Floating Button */}
-      <div className="hidden md:block fixed bottom-8 right-8 z-50">
-        <div className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-4 rounded-xl shadow-2xl max-w-sm animate-in slide-in-from-right-5">
-          <button
-            onClick={handleDismiss}
-            className="absolute top-2 right-2 text-white/75 hover:text-white"
-            aria-label="Dismiss"
-          >
-            <X className="w-4 h-4" />
-          </button>
-          
-          <div className="flex items-start gap-3 pr-6">
-            <div className="bg-white/20 p-2 rounded-lg">
-              <Smartphone className="w-6 h-6" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-bold mb-1">Install Glas Politics</h3>
-              <p className="text-sm opacity-90 mb-3">
-                Get quick access and work offline
-              </p>
-              <Button
-                onClick={handleInstallClick}
-                size="sm"
-                className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold w-full"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Install
-              </Button>
-            </div>
-          </div>
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+          <Smartphone className="h-5 w-5" />
+        </div>
+        <div className="flex-1">
+          <h3 className="mb-1 text-sm font-bold">Install Glas Politics</h3>
+          <p className="mb-3 text-xs text-muted-foreground">
+            Add to your home screen for quick access and offline features!
+          </p>
+          <Button onClick={handleInstallClick} size="sm" className="gap-2">
+            <Download className="h-4 w-4" />
+            Install app
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -162,7 +121,7 @@ export function PWAInstallButtonCompact() {
   useEffect(() => {
     const checkInstalled = () => {
       const installed = window.matchMedia('(display-mode: standalone)').matches ||
-                       (window.navigator as unknown).standalone === true;
+                       (window.navigator as { standalone?: boolean }).standalone === true;
       setIsInstalled(installed);
     };
 
@@ -191,8 +150,7 @@ export function PWAInstallButtonCompact() {
     if (!deferredPrompt) return;
 
     deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`Install ${outcome}`);
+    await deferredPrompt.userChoice;
 
     setDeferredPrompt(null);
   };
@@ -208,11 +166,8 @@ export function PWAInstallButtonCompact() {
       variant="outline"
       className="gap-2"
     >
-      <Download className="w-4 h-4" />
-      <span className="hidden sm:inline">Install App</span>
+      <Download className="h-4 w-4" />
+      <span className="hidden sm:inline">Install app</span>
     </Button>
   );
 }
-
-
-

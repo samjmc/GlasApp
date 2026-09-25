@@ -1,25 +1,18 @@
 /**
- * Global Search Component
- * Searches across TDs, parties, and constituencies
+ * Global search: TDs, parties and constituencies, grouped in a keyboard-navigable dropdown.
+ * Rendered by the app shell (top bar on tablet/desktop, top sheet on phone).
  */
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, useId } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Search,
-  Users,
-  MapPin,
-  Building2,
-  Loader2,
-  Sparkles,
-  Compass,
-  X,
-} from "lucide-react";
+import { Building2, Loader2, MapPin, Search, X } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
+import { queryKeys } from "@/lib/queryKeys";
+import { formatScore, scoreTone, TONE_TEXT } from "@/lib/score";
+import { PartyDot, TDAvatar } from "@/components/pulse/Party";
+import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 
 type ResultType = "td" | "party" | "constituency";
 
@@ -28,6 +21,7 @@ interface TdSearchResult {
   name: string;
   party?: string | null;
   constituency?: string | null;
+  imageUrl?: string | null;
   overallScore?: number | null;
 }
 
@@ -41,6 +35,19 @@ interface ConstituencySearchResult {
   tdCount?: number;
 }
 
+interface FlatResult {
+  type: ResultType;
+  name: string;
+  href: string;
+  entity: TdSearchResult | PartySearchResult | ConstituencySearchResult;
+}
+
+const GROUPS: { type: ResultType; label: string; base: string }[] = [
+  { type: "td", label: "TDs", base: "/td/" },
+  { type: "party", label: "Parties", base: "/party/" },
+  { type: "constituency", label: "Constituencies", base: "/constituency/" },
+];
+
 /** Fetch one scores endpoint and return its unwrapped `data`, or `[]` if it fails. */
 async function fetchScoresList<T>(path: string): Promise<T[]> {
   try {
@@ -53,9 +60,12 @@ async function fetchScoresList<T>(path: string): Promise<T[]> {
   }
 }
 
-interface FlattenedResult {
-  type: ResultType;
-  entity: TdSearchResult | PartySearchResult | ConstituencySearchResult;
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** True when the key press came from somewhere the user is typing. */
+function isTypingTarget(target: EventTarget | null) {
+  const el = target as HTMLElement | null;
+  return !!el && (el.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
 }
 
 /** Global search input with dropdown results for TDs, parties, and constituencies. */
@@ -63,20 +73,16 @@ export function GlobalSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [, setLocation] = useLocation();
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { regionCode } = useRegion();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const listId = useId();
+  const isIreland = regionCode === "IE";
 
-  const upperQuery = debouncedQuery.toLowerCase();
-
-  const {
-    data: searchData,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["global-search-data", regionCode],
+  const { data: searchData, isLoading, isError, isFetching, refetch } = useQuery({
+    queryKey: queryKeys.globalSearch.data(regionCode ?? ""), // disabled unless IE, so "" is never fetched
     queryFn: async () => {
       // Each list degrades to [] on its own, so one failing fetch does not
       // take the whole search down.
@@ -107,404 +113,275 @@ export function GlobalSearch() {
       };
     },
     staleTime: 5 * 60 * 1000,
-    enabled: regionCode === "IE",
+    enabled: isIreland,
   });
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setDebouncedQuery(searchQuery.trim());
-    }, 200);
+    const timeout = setTimeout(() => setDebouncedQuery(searchQuery.trim()), 200);
     return () => clearTimeout(timeout);
   }, [searchQuery]);
 
-  const filteredResults = useMemo(() => {
-    if (!searchData || debouncedQuery.length < 2) {
-      return { tds: [], parties: [], constituencies: [] };
-    }
+  const results: FlatResult[] = useMemo(() => {
+    if (!searchData || debouncedQuery.length < 2) return [];
+    const q = debouncedQuery.toLowerCase();
 
     const scoreText = (text?: string | null) => {
       if (!text) return 0;
       const lower = text.toLowerCase();
-      if (lower === upperQuery) return 4;
-      if (lower.startsWith(upperQuery)) return 3;
-      if (lower.includes(upperQuery)) return 2;
-      const tokens = upperQuery.split(" ").filter(Boolean);
-      if (tokens.length > 1 && tokens.every((token) => lower.includes(token))) {
-        return 1;
-      }
-      return 0;
+      if (lower === q) return 4;
+      if (lower.startsWith(q)) return 3;
+      if (lower.includes(q)) return 2;
+      const tokens = q.split(" ").filter(Boolean);
+      return tokens.length > 1 && tokens.every((token) => lower.includes(token)) ? 1 : 0;
     };
 
-    const sortByScore = <T,>(items: T[], scoreFn: (item: T) => number) =>
+    const rank = <T extends { name: string }>(items: T[], scoreFn: (item: T) => number, max: number) =>
       items
         .map((item) => ({ item, score: scoreFn(item) }))
         .filter(({ score }) => score > 0)
         .sort((a, b) => b.score - a.score)
+        .slice(0, max)
         .map(({ item }) => item);
 
-    const tds = sortByScore(searchData.tds, (td: TdSearchResult) => {
-      return (
-        scoreText(td.name) * 4 +
-        scoreText(td.party) * 2 +
-        scoreText(td.constituency)
-      );
-    }).slice(0, 8);
+    const byType: Record<ResultType, { name: string }[]> = {
+      td: rank(searchData.tds, (td) => scoreText(td.name) * 4 + scoreText(td.party) * 2 + scoreText(td.constituency), 8),
+      party: rank(searchData.parties, (p) => scoreText(p.name) * 3, 5),
+      constituency: rank(searchData.constituencies, (c) => scoreText(c.name) * 3, 5),
+    };
 
-    const parties = sortByScore(
-      searchData.parties,
-      (party: PartySearchResult) => scoreText(party.name) * 3
-    ).slice(0, 5);
-
-    const constituencies = sortByScore(
-      searchData.constituencies,
-      (constituency: ConstituencySearchResult) => scoreText(constituency.name) * 3
-    ).slice(0, 5);
-
-    return { tds, parties, constituencies };
-  }, [debouncedQuery, searchData, upperQuery]);
-
-  const flattenedResults: FlattenedResult[] = useMemo(() => {
-    const list: FlattenedResult[] = [];
-    filteredResults.tds.forEach((td) => list.push({ type: "td", entity: td }));
-    filteredResults.parties.forEach((party) =>
-      list.push({ type: "party", entity: party })
+    return GROUPS.flatMap(({ type, base }) =>
+      byType[type].map((entity) => ({
+        type,
+        name: entity.name,
+        href: `${base}${encodeURIComponent(entity.name)}`,
+        entity: entity as FlatResult["entity"],
+      }))
     );
-    filteredResults.constituencies.forEach((constituency) =>
-      list.push({ type: "constituency", entity: constituency })
-    );
-    return list;
-  }, [filteredResults]);
+  }, [debouncedQuery, searchData]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        searchRef.current &&
-        !searchRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) setIsOpen(false);
     }
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // "/" or Ctrl/Cmd+K focuses search from anywhere.
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        inputRef.current?.focus();
-        if (debouncedQuery.length >= 2) {
-          setIsOpen(true);
-        }
-      }
+      const slash = event.key === "/" && !isTypingTarget(event.target);
+      const cmdK = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k";
+      if (!slash && !cmdK) return;
+      // Two instances can be mounted (top bar + phone sheet); only the visible one takes focus.
+      if (!inputRef.current || inputRef.current.offsetParent === null) return;
+      event.preventDefault();
+      inputRef.current.focus();
+      if (debouncedQuery.length >= 2) setIsOpen(true);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [debouncedQuery.length]);
 
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [debouncedQuery, flattenedResults.length]);
+  useEffect(() => setActiveIndex(0), [debouncedQuery, results.length]);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Escape") {
-      setIsOpen(false);
-      setSearchQuery("");
-      setActiveIndex(0);
-      return;
-    }
-
-    if (!flattenedResults.length) return;
-
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setIsOpen(true);
-      setActiveIndex((prev) => (prev + 1) % flattenedResults.length);
-    }
-
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setIsOpen(true);
-      setActiveIndex((prev) =>
-        prev <= 0 ? flattenedResults.length - 1 : prev - 1
-      );
-    }
-
-    if (e.key === "Enter" && isOpen) {
-      const active = flattenedResults[activeIndex];
-      if (!active) return;
-      selectResult(active);
-    }
-  };
-
-  const selectResult = (result: FlattenedResult) => {
-    switch (result.type) {
-      case "td":
-        handleSelectResult(`/td/${encodeURIComponent(result.entity.name)}`);
-        break;
-      case "party":
-        handleSelectResult(`/party/${encodeURIComponent(result.entity.name)}`);
-        break;
-      case "constituency":
-        handleSelectResult(
-          `/constituency/${encodeURIComponent(result.entity.name)}`
-        );
-        break;
-    }
-  };
-
-  const handleSelectResult = (path: string) => {
-    setLocation(path);
+  const close = () => {
     setIsOpen(false);
     setSearchQuery("");
     setActiveIndex(0);
   };
 
-  const highlightText = (text?: string | null) => {
-    if (!text || !debouncedQuery) return text ?? "";
-    const regex = new RegExp(`(${debouncedQuery})`, "ig");
-    const parts = text.split(regex);
+  const go = (path: string) => {
+    setLocation(path);
+    close();
+  };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      close();
+      inputRef.current?.blur();
+      return;
+    }
+    if (!results.length) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      setIsOpen(true);
+      const step = e.key === "ArrowDown" ? 1 : -1;
+      setActiveIndex((prev) => (prev + step + results.length) % results.length);
+    }
+    if (e.key === "Enter" && isOpen) {
+      e.preventDefault();
+      const active = results[activeIndex];
+      if (active) go(active.href);
+    }
+  };
+
+  const highlight = (text?: string | null) => {
+    if (!text || !debouncedQuery) return text ?? "";
+    const parts = text.split(new RegExp(`(${escapeRegExp(debouncedQuery)})`, "ig"));
     return parts.map((part, idx) =>
       part.toLowerCase() === debouncedQuery.toLowerCase() ? (
-        <span
-          key={`${part}-${idx}`}
-          className="text-blue-600 dark:text-blue-300 font-semibold"
-        >
+        <mark key={idx} className="bg-transparent font-bold text-primary">
           {part}
-        </span>
+        </mark>
       ) : (
-        <span key={`${part}-${idx}`}>{part}</span>
+        <span key={idx}>{part}</span>
       )
     );
   };
 
-  const hasResults =
-    filteredResults.tds.length > 0 ||
-    filteredResults.parties.length > 0 ||
-    filteredResults.constituencies.length > 0;
+  const optionId = (i: number) => `${listId}-opt-${i}`;
+  const showPanel = isOpen && (!isIreland || searchQuery.trim().length > 0);
+
+  const renderRow = (r: FlatResult) => {
+    if (r.type === "td") {
+      const td = r.entity as TdSearchResult;
+      const tone = scoreTone(td.overallScore);
+      return (
+        <>
+          <TDAvatar name={td.name} party={td.party} imageUrl={td.imageUrl} size="sm" />
+          <span className="min-w-0 flex-1">
+            <span className="block truncate font-semibold">{highlight(td.name)}</span>
+            <span className="flex min-w-0 items-center gap-1.5 truncate text-[13px] text-muted-foreground">
+              <PartyDot party={td.party} />
+              <span className="truncate">
+                {td.party ?? "Independent"}
+                {td.constituency ? ` · ${td.constituency}` : ""}
+              </span>
+            </span>
+          </span>
+          <span className={cn("font-display text-lg font-bold", tone ? TONE_TEXT[tone] : "text-muted-foreground")}>
+            {formatScore(td.overallScore)}
+          </span>
+        </>
+      );
+    }
+    const isParty = r.type === "party";
+    const Icon = isParty ? Building2 : MapPin;
+    const count = isParty ? (r.entity as PartySearchResult).size : (r.entity as ConstituencySearchResult).tdCount;
+    return (
+      <>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-elevated text-muted-foreground">
+          {isParty ? <PartyDot party={r.name} className="h-3 w-3" /> : <Icon className="h-4 w-4" aria-hidden="true" />}
+        </span>
+        <span className="min-w-0 flex-1 truncate font-semibold">{highlight(r.name)}</span>
+        <span className="text-[13px] text-muted-foreground">{count ?? "—"} TDs</span>
+      </>
+    );
+  };
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-md">
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-        <Input
+    <div ref={searchRef} className="relative w-full">
+      <label className="flex h-12 w-full items-center gap-3 rounded-lg border border-input bg-card px-4 text-muted-foreground transition-colors focus-within:border-primary focus-within:ring-2 focus-within:ring-ring">
+        <Search className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+        <span className="sr-only">Search</span>
+        <input
           ref={inputRef}
-          type="text"
-          placeholder={
-            regionCode === "US"
-              ? "Search coming soon for US preview…"
-              : "Search TDs, parties, constituencies…"
-          }
+          type="search"
+          role="combobox"
+          aria-expanded={showPanel}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          aria-activedescendant={showPanel && results.length ? optionId(activeIndex) : undefined}
+          placeholder={isIreland ? "Search a TD, party or constituency" : "Search is coming for this region"}
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
-            if (!isOpen) setIsOpen(true);
+            setIsOpen(true);
           }}
-          onFocus={() => {
-            if (debouncedQuery.length >= 2) setIsOpen(true);
-          }}
+          onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          className="pl-10 pr-10 bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500"
-          disabled={regionCode === "US"}
+          disabled={!isIreland}
+          className="min-w-0 flex-1 bg-transparent text-[15px] text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:hidden"
         />
-        {searchQuery && (
+        {searchQuery ? (
           <button
+            type="button"
             onClick={() => {
-              setSearchQuery("");
-              setIsOpen(false);
+              close();
+              inputRef.current?.focus();
             }}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+            aria-label="Clear search"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-elevated hover:text-foreground"
           >
-            <X className="w-4 h-4" />
+            <X className="h-4 w-4" />
           </button>
+        ) : (
+          <kbd className="hidden rounded-md border border-input px-2 py-0.5 text-xs font-semibold md:inline-block" aria-hidden="true">
+            /
+          </kbd>
         )}
-      </div>
+      </label>
 
-      {regionCode === "US" && isOpen && (
-        <Card className="absolute top-full left-0 right-0 mt-2 z-50 border-2 shadow-xl bg-white/95 dark:bg-gray-900/95">
-          <div className="p-6 text-center space-y-3 text-gray-600 dark:text-gray-300">
-            <Sparkles className="mx-auto h-8 w-8 text-amber-500" />
-            <p className="text-sm font-semibold">
-              US search preview on the way
+      {showPanel && (
+        <div
+          id={listId}
+          role="listbox"
+          aria-label="Search results"
+          className="absolute left-0 right-0 top-full z-50 mt-2 max-h-[min(70vh,28rem)] overflow-y-auto rounded-xl border bg-card p-2 shadow-xl"
+        >
+          {!isIreland ? (
+            <p className="p-4 text-sm text-muted-foreground">
+              Search covers Irish TDs, parties and constituencies. Switch region to Ireland to use it.
             </p>
-            <p className="text-xs">
-              We’re mapping congressional representatives and districts. Switch
-              to the Ireland region to browse the live search experience.
-            </p>
-          </div>
-        </Card>
-      )}
-
-      {isOpen && regionCode === "IE" && (
-        <Card className="absolute top-full left-0 right-0 mt-2 max-h-96 overflow-y-auto z-50 shadow-xl border-2">
-          {isLoading ? (
-            <div className="flex flex-col items-center justify-center gap-2 p-6 text-gray-500 dark:text-gray-400">
-              <Loader2 className="h-6 w-6 animate-spin" />
-              <p className="text-sm">Grabbing the latest datasets…</p>
+          ) : isLoading ? (
+            <div className="flex flex-col gap-2 p-2" aria-label="Loading">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <Skeleton className="h-8 w-8 rounded-full" />
+                  <Skeleton className="h-4 flex-1" />
+                </div>
+              ))}
             </div>
           ) : isError ? (
-            <div className="p-6 text-center text-red-500">
-              <p className="text-sm font-semibold">
-                We couldn’t load search data.
-              </p>
-              <p className="text-xs mt-1">
-                Please refresh or try again in a little while.
-              </p>
+            <div className="flex flex-col items-start gap-2 p-4 text-sm">
+              <p className="font-semibold">Search data did not load.</p>
+              <button
+                type="button"
+                onClick={() => refetch()}
+                disabled={isFetching}
+                className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline disabled:opacity-60"
+              >
+                {isFetching && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                {isFetching ? "Loading…" : "Try again"}
+              </button>
             </div>
           ) : debouncedQuery.length < 2 ? (
-            <div className="p-4 space-y-3">
-              <div className="flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                <Compass className="h-3.5 w-3.5" />
-                <span>Quick shortcuts</span>
-              </div>
-              <div className="grid gap-2 sm:grid-cols-2">
-                <button
-                  onClick={() => handleSelectResult("/researched-tds")}
-                  className="rounded-lg border border-gray-200 bg-white/70 px-4 py-3 text-left text-sm font-semibold text-gray-700 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:border-blue-500/40 dark:hover:bg-blue-900/20"
-                >
-                  View TD leaderboard
-                </button>
-                <button
-                  onClick={() => handleSelectResult("/party/Fine%20Gael")}
-                  className="rounded-lg border border-gray-200 bg-white/70 px-4 py-3 text-left text-sm font-semibold text-gray-700 transition hover:border-purple-300 hover:bg-purple-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:border-purple-500/40 dark:hover:bg-purple-900/20"
-                >
-                  Find Fine Gael details
-                </button>
-              </div>
-              <p className="px-3 pb-2 text-xs text-gray-400 dark:text-gray-500">
-                Tip: Press
-                <kbd className="mx-1 rounded border border-gray-300 bg-gray-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-gray-600 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
-                  {navigator.platform.includes("Mac") ? "⌘" : "Ctrl"} + K
-                </kbd>
-                to toggle global search anywhere.
-              </p>
-            </div>
-          ) : hasResults ? (
-            <div className="p-2">
-              {filteredResults.tds.length > 0 && (
-                <div className="mb-3">
-                  <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    TDs ({filteredResults.tds.length})
-                  </div>
-                  {filteredResults.tds.map((td: TdSearchResult, index) => (
-                    <button
-                      key={td.id ?? `${td.name}-${index}`}
-                      onClick={() =>
-                        handleSelectResult(`/td/${encodeURIComponent(td.name)}`)
-                      }
-                      className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors group ${
-                        flattenedResults[activeIndex]?.entity === td
-                          ? "bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
-                          : "hover:bg-gray-100 dark:hover:bg-gray-800"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3 flex-1 min-w-0">
-                        <Users className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                        <div className="text-left flex-1 min-w-0">
-                          <div className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 truncate">
-                            {highlightText(td.name)}
-                          </div>
-                          <div className="text-xs text-gray-600 dark:text-gray-400 truncate">
-                            {highlightText(td.party)} • {highlightText(td.constituency)}
-                          </div>
-                        </div>
-                      </div>
-                      <Badge variant="outline" className="text-xs">
-                        {td.overallScore ?? "—"}
-                      </Badge>
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {filteredResults.parties.length > 0 && (
-                <div className="mb-3">
-                  <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Parties ({filteredResults.parties.length})
-                  </div>
-                  {filteredResults.parties.map((party: PartySearchResult, index) => (
-                    <button
-                      key={party.name ?? index}
-                      onClick={() =>
-                        handleSelectResult(
-                          `/party/${encodeURIComponent(party.name)}`
-                        )
-                      }
-                      className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors group ${
-                        flattenedResults[activeIndex]?.entity === party
-                          ? "bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700"
-                          : "hover:bg-gray-100 dark:hover:bg-gray-800"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Building2 className="w-4 h-4 text-purple-600" />
-                        <div className="text-left">
-                          <div className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600">
-                            {highlightText(party.name)}
-                          </div>
-                          <div className="text-xs text-gray-600 dark:text-gray-400">
-                            {party.size ?? "—"} TDs
-                          </div>
-                        </div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {filteredResults.constituencies.length > 0 && (
-                <div>
-                  <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Constituencies ({filteredResults.constituencies.length})
-                  </div>
-                  {filteredResults.constituencies.map(
-                    (constituency: ConstituencySearchResult, index) => (
-                      <button
-                        key={constituency.name ?? index}
-                        onClick={() =>
-                          handleSelectResult(
-                            `/constituency/${encodeURIComponent(
-                              constituency.name
-                            )}`
-                          )
-                        }
-                        className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors group ${
-                          flattenedResults[activeIndex]?.entity === constituency
-                            ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700"
-                            : "hover:bg-gray-100 dark:hover:bg-gray-800"
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <MapPin className="w-4 h-4 text-green-600" />
-                          <div className="text-left">
-                            <div className="font-semibold text-gray-900 dark:text-white group-hover:text-green-600">
-                              {highlightText(constituency.name)}
-                            </div>
-                            <div className="text-xs text-gray-600 dark:text-gray-400">
-                              {constituency.tdCount ?? "—"} TDs
-                            </div>
-                          </div>
-                        </div>
-                      </button>
-                    )
-                  )}
-                </div>
-              )}
-            </div>
+            <p className="p-4 text-sm text-muted-foreground">Type 2 or more letters.</p>
+          ) : results.length === 0 ? (
+            <p className="p-4 text-sm text-muted-foreground">
+              No match for “{debouncedQuery}”. Try a surname, a party or a county.
+            </p>
           ) : (
-            <div className="p-6 text-center text-gray-500 dark:text-gray-400">
-              <Search className="w-8 h-8 mx-auto mb-2 opacity-50" />
-              <p className="text-sm">No matches for “{debouncedQuery}”</p>
-              <p className="text-xs mt-1">
-                Try a name, party, or constituency. Results refresh every few minutes.
-              </p>
-            </div>
+            GROUPS.map(({ type, label }) => {
+              const group = results.map((r, i) => ({ r, i })).filter(({ r }) => r.type === type);
+              if (!group.length) return null;
+              return (
+                <div key={type} role="group" aria-label={label} className="py-1">
+                  <div className="px-3 pb-1 pt-2 text-xs font-semibold text-muted-foreground">{label}</div>
+                  {group.map(({ r, i }) => (
+                    <div
+                      key={r.href}
+                      id={optionId(i)}
+                      role="option"
+                      aria-selected={i === activeIndex}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onMouseEnter={() => setActiveIndex(i)}
+                      onClick={() => go(r.href)}
+                      className={cn(
+                        "flex min-h-[44px] cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
+                        i === activeIndex ? "bg-elevated" : "hover:bg-accent"
+                      )}
+                    >
+                      {renderRow(r)}
+                    </div>
+                  ))}
+                </div>
+              );
+            })
           )}
-        </Card>
+        </div>
       )}
     </div>
   );
 }
-

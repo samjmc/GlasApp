@@ -112,32 +112,6 @@ export class ActivityTracker {
   }
 
   // Helper methods for common activity types
-  static async logQuizCompletion(
-    userId: string,
-    quizData: {
-      economicScore: number;
-      socialScore: number;
-      ideology: string;
-      duration?: number;
-    },
-    ipAddress?: string,
-    userAgent?: string
-  ) {
-    return this.logActivity(
-      userId,
-      'completed_quiz',
-      {
-        category: 'political_engagement',
-        quizScore: quizData.economicScore,
-        socialScore: quizData.socialScore,
-        ideology: quizData.ideology,
-        duration: quizData.duration
-      },
-      ipAddress,
-      userAgent
-    );
-  }
-
   static async logPollVote(
     userId: string,
     pollId: number,

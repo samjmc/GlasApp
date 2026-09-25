@@ -1,7 +1,7 @@
 /**
  * ArticleImage
  * Fixed aspect-ratio image box with a designed placeholder (never a broken-image icon):
- * publisher logo or initials on a category-tinted gradient, with the category label.
+ * publisher logo or initials on a category-tinted tile, with the category label.
  */
 
 import { useState } from 'react';
@@ -18,26 +18,24 @@ interface ArticleImageProps {
   priority?: boolean;
 }
 
-// Deterministic per-category gradient (two Tailwind colour stops), light + dark.
-const CATEGORY_GRADIENTS: Record<NewsCategory, string> = {
-  government: 'from-slate-700 to-slate-900',
-  oireachtas: 'from-emerald-700 to-slate-900',
-  elections: 'from-purple-700 to-indigo-900',
-  economy: 'from-amber-600 to-slate-900',
-  housing: 'from-orange-700 to-slate-900',
-  health: 'from-rose-700 to-slate-900',
-  justice: 'from-blue-800 to-slate-900',
-  immigration: 'from-teal-700 to-slate-900',
-  environment: 'from-green-700 to-emerald-950',
-  education: 'from-sky-700 to-slate-900',
-  foreign_affairs: 'from-indigo-700 to-slate-900',
-  northern_ireland: 'from-cyan-700 to-slate-900',
-  eu: 'from-blue-700 to-indigo-950',
-  local: 'from-lime-700 to-slate-900',
-  other: 'from-gray-700 to-gray-900',
+// Per-category tint from the theme tokens, so the fallback works in dark and light.
+const CATEGORY_TINTS: Record<NewsCategory, string> = {
+  government: 'bg-primary/15',
+  oireachtas: 'bg-primary/25',
+  elections: 'bg-score-mid/20',
+  economy: 'bg-score-mid/15',
+  housing: 'bg-warn/20',
+  health: 'bg-destructive/15',
+  justice: 'bg-elevated',
+  immigration: 'bg-warn/15',
+  environment: 'bg-score-high/20',
+  education: 'bg-primary/10',
+  foreign_affairs: 'bg-elevated',
+  northern_ireland: 'bg-score-high/10',
+  eu: 'bg-primary/20',
+  local: 'bg-score-mid/10',
+  other: 'bg-elevated',
 };
-
-const DEFAULT_GRADIENT = 'from-gray-700 to-gray-900';
 
 /** First letters of the first two words of a name, uppercased (e.g. "Irish Times" -> "IT"). */
 function initialsOf(name: string): string {
@@ -54,50 +52,39 @@ export function ArticleImage({ src, alt, source, sourceLogoUrl, category, classN
   const [loaded, setLoaded] = useState(false);
 
   const showImage = !!src && !imageFailed;
-  const gradient = category ? CATEGORY_GRADIENTS[category] : DEFAULT_GRADIENT;
 
   return (
-    <div className={cn('relative aspect-video w-full overflow-hidden rounded-lg bg-muted', className)}>
-      {showImage && (
+    <div className={cn('relative aspect-video w-full overflow-hidden rounded-xl bg-elevated', className)}>
+      {showImage ? (
         <img
           src={src}
           alt={alt}
-          className={cn(
-            'h-full w-full object-cover transition-opacity duration-300',
-            loaded ? 'opacity-100' : 'opacity-0'
-          )}
+          className={cn('h-full w-full object-cover transition-opacity duration-200', loaded ? 'opacity-100' : 'opacity-0')}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           referrerPolicy="no-referrer"
           onLoad={() => setLoaded(true)}
           onError={() => setImageFailed(true)}
         />
-      )}
-
-      {!showImage && (
-        <div className={cn('flex h-full w-full flex-col items-center justify-center bg-gradient-to-br', gradient)}>
-          <div className="flex flex-1 items-center justify-center">
-            {sourceLogoUrl && !logoFailed ? (
-              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white">
-                <img
-                  src={sourceLogoUrl}
-                  alt={source}
-                  className="h-full w-full object-contain p-1.5"
-                  referrerPolicy="no-referrer"
-                  onError={() => setLogoFailed(true)}
-                />
-              </div>
-            ) : (
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-bold text-white">
-                {initialsOf(source)}
-              </div>
-            )}
-          </div>
-          {category && (
-            <span className="pb-2 text-[10px] font-medium uppercase tracking-wide text-white/70">
-              {humanizeCategory(category)}
+      ) : (
+        <div className={cn('flex h-full w-full flex-col items-center justify-center gap-2', category ? CATEGORY_TINTS[category] : 'bg-elevated')}>
+          {sourceLogoUrl && !logoFailed ? (
+            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border bg-card">
+              <img
+                src={sourceLogoUrl}
+                alt={source}
+                className="h-full w-full object-contain p-1.5"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                onError={() => setLogoFailed(true)}
+              />
+            </span>
+          ) : (
+            <span className="flex h-12 w-12 items-center justify-center rounded-full border bg-card font-display text-sm font-bold text-foreground">
+              {initialsOf(source)}
             </span>
           )}
+          {category && <span className="text-xs font-semibold text-muted-foreground">{humanizeCategory(category)}</span>}
         </div>
       )}
     </div>

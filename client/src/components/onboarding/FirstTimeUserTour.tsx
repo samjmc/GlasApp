@@ -1,220 +1,78 @@
 /**
- * First-Time User Tour - Contextual tooltips
- * Shows helpful hints as users navigate the app for the first time
+ * First-time tour: a one-time floating card for visitors who are not signed in,
+ * pointing to the main parts of the app. Signed-in users get OnboardingModal instead.
  */
 
-import { useState, useEffect } from 'react';
-import { X, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'wouter';
+import { ChevronRight, Compass, Landmark, MapPin, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
+import { FloatingPanel } from '@/components/home/FloatingPanel';
 
-interface TourStep {
-  id: string;
-  target: string; // CSS selector
-  title: string;
-  description: string;
-  position: 'top' | 'bottom' | 'left' | 'right';
-}
+const STORAGE_KEY = 'hasSeenInterfaceTour';
 
-const tourSteps: TourStep[] = [
-  {
-    id: 'feed-tab',
-    target: '[data-tour="feed-tab"]',
-    title: 'News Feed',
-    description: 'AI-analyzed political news updated daily. See what TDs are doing and how it impacts their scores.',
-    position: 'bottom',
-  },
-  {
-    id: 'rankings-tab',
-    target: '[data-tour="rankings-tab"]',
-    title: 'TD Rankings',
-    description: 'All 174 TDs ranked by performance. Based on news impact, parliamentary activity, and consistency.',
-    position: 'bottom',
-  },
-  {
-    id: 'my-rankings-tab',
-    target: '[data-tour="my-rankings-tab"]',
-    title: 'Your Personal Rankings',
-    description: 'Take our quiz to see which TDs match YOUR political values. This tab shows your personalized matches.',
-    position: 'bottom',
-  },
-  {
-    id: 'map-tab',
-    target: '[data-tour="map-tab"]',
-    title: 'Constituency Map',
-    description: 'Explore all 43 Irish constituencies. Click any area to see local TDs and performance data.',
-    position: 'bottom',
-  },
+const STOPS = [
+  { href: '/rankings', icon: Trophy, title: 'Rankings', text: 'All 174 TDs, scored' },
+  { href: '/debates', icon: Landmark, title: 'Dáil record', text: 'Every vote and debate' },
+  { href: '/constituencies', icon: MapPin, title: 'Constituencies', text: 'Find your local TDs' },
+  { href: '/quiz', icon: Compass, title: 'Ideology quiz', text: 'See who shares your views' },
 ];
 
-/** Guided tour highlighting key UI features for first-time users. */
+function hasSeen(): boolean {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === 'true';
+  } catch {
+    return true; // Storage blocked: do not nag on every visit.
+  }
+}
+
+/** One-time guide to the main areas, for first-time visitors. */
 export function FirstTimeUserTour() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const { isAuthenticated } = useAuth();
   const [isVisible, setIsVisible] = useState(false);
-  const [position, setPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
-    // Check if user has seen the tour
-    const hasSeenTour = localStorage.getItem('hasSeenInterfaceTour');
-    if (!hasSeenTour) {
-      // Wait for page to load, then start tour
-      setTimeout(() => {
-        setIsVisible(true);
-        updatePosition();
-      }, 1000);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isVisible) {
-      updatePosition();
-    }
-  }, [currentStep, isVisible]);
-
-  const updatePosition = () => {
-    const step = tourSteps[currentStep];
-    const target = document.querySelector(step.target);
-    if (target) {
-      const rect = target.getBoundingClientRect();
-      const tooltipWidth = 320;
-      const tooltipHeight = 150;
-
-      let top = 0;
-      let left = 0;
-
-      switch (step.position) {
-        case 'bottom':
-          top = rect.bottom + 10;
-          left = rect.left + rect.width / 2 - tooltipWidth / 2;
-          break;
-        case 'top':
-          top = rect.top - tooltipHeight - 10;
-          left = rect.left + rect.width / 2 - tooltipWidth / 2;
-          break;
-        case 'left':
-          top = rect.top + rect.height / 2 - tooltipHeight / 2;
-          left = rect.left - tooltipWidth - 10;
-          break;
-        case 'right':
-          top = rect.top + rect.height / 2 - tooltipHeight / 2;
-          left = rect.right + 10;
-          break;
-      }
-
-      // Keep within viewport
-      top = Math.max(10, Math.min(top, window.innerHeight - tooltipHeight - 10));
-      left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
-
-      setPosition({ top, left });
-
-      // Highlight the target element
-      target.classList.add('tour-highlight');
-      setTimeout(() => target.classList.remove('tour-highlight'), 2000);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentStep < tourSteps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      handleClose();
-    }
-  };
+    if (isAuthenticated || hasSeen()) return;
+    const timer = setTimeout(() => setIsVisible(true), 1000);
+    return () => clearTimeout(timer);
+  }, [isAuthenticated]);
 
   const handleClose = () => {
-    localStorage.setItem('hasSeenInterfaceTour', 'true');
+    try {
+      window.localStorage.setItem(STORAGE_KEY, 'true');
+    } catch {
+      // Storage blocked: the card closes for this visit only.
+    }
     setIsVisible(false);
   };
 
-  if (!isVisible) return null;
-
-  const step = tourSteps[currentStep];
+  if (!isVisible || isAuthenticated) return null;
 
   return (
-    <>
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/20 z-40 pointer-events-none" />
-
-      {/* Tooltip */}
-      <div
-        className="fixed z-50 w-80 bg-white dark:bg-gray-900 rounded-lg shadow-2xl p-4 border-2 border-emerald-500 transition-all duration-300"
-        style={{
-          top: `${position.top}px`,
-          left: `${position.left}px`,
-        }}
-      >
-        {/* Close button */}
-        <button
-          onClick={handleClose}
-          className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-          aria-label="Close tour"
-        >
-          <X className="w-4 h-4 text-gray-500" />
-        </button>
-
-        {/* Content */}
-        <div className="mb-4">
-          <h4 className="font-bold text-lg mb-2 text-emerald-600 dark:text-emerald-400">
-            {step.title}
-          </h4>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            {step.description}
-          </p>
-        </div>
-
-        {/* Progress and navigation */}
-        <div className="flex items-center justify-between">
-          <div className="text-xs text-gray-500 dark:text-gray-400">
-            {currentStep + 1} of {tourSteps.length}
-          </div>
-          <Button
-            onClick={handleNext}
-            size="sm"
-            className="bg-emerald-600 hover:bg-emerald-700 gap-2"
-          >
-            {currentStep === tourSteps.length - 1 ? 'Got it!' : 'Next'}
-            {currentStep < tourSteps.length - 1 && <ArrowRight className="w-4 h-4" />}
-          </Button>
-        </div>
-      </div>
-
-      {/* CSS for tour highlight effect */}
-      <style>{`
-        .tour-highlight {
-          animation: tour-pulse 2s ease-in-out;
-          position: relative;
-          z-index: 45;
-        }
-        @keyframes tour-pulse {
-          0%, 100% {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-          }
-          50% {
-            box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-          }
-        }
-      `}</style>
-    </>
+    <FloatingPanel label="New here?" onClose={handleClose}>
+      <h2 className="pr-8 font-display text-lg font-bold">New here? Start with these</h2>
+      <ul className="mt-3 flex flex-col gap-1">
+        {STOPS.map(({ href, icon: Icon, title, text }) => (
+          <li key={href}>
+            <Link
+              href={href}
+              onClick={handleClose}
+              className="flex min-h-[44px] items-center gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-elevated"
+            >
+              <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-semibold">{title}</span>
+                <span className="block text-[13px] text-muted-foreground">{text}</span>
+              </span>
+              <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Button variant="secondary" onClick={handleClose} className="mt-3 w-full">
+        Got it
+      </Button>
+    </FloatingPanel>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
