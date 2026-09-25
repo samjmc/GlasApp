@@ -31,7 +31,6 @@ import ConstituencyProfilePage from "@/pages/ConstituencyProfilePage";
 import QuizPage from "@/pages/QuizPage";
 import QuizResultsPage from "@/pages/QuizResultsPage";
 import MyPoliticsPage from "@/pages/MyPoliticsPage";
-import IdeasPage from "@/pages/IdeasPage";
 import DailySessionPage from "@/pages/DailySessionPage";
 import ProfilePage from "@/pages/ProfilePage";
 import AdminPage from "@/pages/AdminPage";
@@ -102,7 +101,6 @@ function IrishRoutes() {
       <Route path="/quiz" component={QuizPage} />
       <Route path="/quiz/results" component={QuizResultsPage} />
       <Route path="/my-politics" component={MyPoliticsPage} />
-      <Route path="/ideas" component={IdeasPage} />
       <Route path="/profile" component={Profile} />
       <Route path="/admin" component={Admin} />
       <Route path="/admin/shadow" component={AgentMonitor} />

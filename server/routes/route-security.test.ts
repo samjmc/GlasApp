@@ -104,8 +104,6 @@ vi.mock('@shared/schema', () => {
   return {
     users: table('users'),
     userLocations: table('user_locations'),
-    ideas: table('ideas'),
-    ideaVotes: table('idea_votes'),
     constituencies: table('constituencies'),
     parties: table('parties'),
     electionResults: table('election_results'),
@@ -116,7 +114,6 @@ vi.mock('@shared/schema', () => {
 
 const { supabase } = await import('../auth/supabase');
 const botRoutes = (await import('./botRoutes')).default;
-const ideasRoutes = (await import('./ideasRoutes')).default;
 const smsRoutes = (await import('./smsRoutes')).default;
 const analysisRoutes = (await import('./ai/analysis')).default;
 const geoRoutes = (await import('./geographic/index')).default;
@@ -222,62 +219,6 @@ describe('botRoutes /create', () => {
         method: 'POST',
         headers: jsonHeaders({ 'x-admin-secret': 'cron-secret' }),
         body: JSON.stringify({ email: 'bot@example.com' }),
-      });
-      assert.equal(res.status, 400);
-    });
-  });
-});
-
-describe('ideasRoutes /submit', () => {
-  const validIdea = { title: 'My idea', description: 'Desc', category: 'Economy', isAdminSubmission: true };
-
-  it('submits an idea for an admin caller and attributes it to the token, not the body', async () => {
-    setAuthUser(ADMIN_USER);
-    dbState.selectResult = [{ id: 'admin-id', firstName: 'Admin', lastName: 'User', username: 'admin' }];
-    dbState.insertResult = [{ id: 1, title: 'My idea', category: 'Economy' }];
-
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer admin-token' }),
-        body: JSON.stringify({ ...validIdea, userId: 'somebody-else' }),
-      });
-      assert.equal(res.status, 200);
-      assert.equal(((await res.json()) as { success: boolean }).success, true);
-      assert.equal((dbState.insertValues as Record<string, unknown>).userId, 'admin-id');
-    });
-  });
-
-  it('returns 401 with no auth', async () => {
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders(),
-        body: JSON.stringify(validIdea),
-      });
-      assert.equal(res.status, 401);
-    });
-  });
-
-  it('returns 403 for a non-admin token even with isAdminSubmission true', async () => {
-    setAuthUser(REGULAR_USER);
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer user-token' }),
-        body: JSON.stringify(validIdea),
-      });
-      assert.equal(res.status, 403);
-    });
-  });
-
-  it('returns 400 when title is missing', async () => {
-    setAuthUser(ADMIN_USER);
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer admin-token' }),
-        body: JSON.stringify({ description: 'Desc', category: 'Economy' }),
       });
       assert.equal(res.status, 400);
     });
