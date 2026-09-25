@@ -63,14 +63,14 @@ run('quiz and ideology against Postgres', () => {
 
   describe('the quiz', () => {
     const answers = [
-      { questionId: 1, answerIndex: 2 }, // economic +2.5
-      { questionId: 20, answerIndex: 0 }, // welfare −3.33
+      { questionId: 1, answerIndex: 2 }, // economic: the strongest market answer → +10
+      { questionId: 20, answerIndex: 0 }, // welfare: the strongest expand-welfare answer → −10
     ];
 
     it('scores an anonymous quiz without saving anything', async () => {
       const result = await quiz.submitQuiz(null, answers);
       expect(result.id).toBeNull();
-      expect(result.vector.economic).toBe(2.5);
+      expect(result.vector.economic).toBe(10);
       const { rows } = await dbmod.pool.query('select count(*)::int as n from politics.quiz_results');
       expect(rows[0].n).toBe(0);
     });
@@ -79,27 +79,28 @@ run('quiz and ideology against Postgres', () => {
       const saved = await quiz.submitQuiz('user-a', answers);
       expect(saved.id).toBeGreaterThan(0);
       expect(saved.createdAt).not.toBeNull();
-      expect(await ideology.getIdeologyProfile('user-a')).toEqual({ ...zero, economic: 2.5, welfare: -3.3 });
+      expect(await ideology.getIdeologyProfile('user-a')).toEqual({ ...zero, economic: 10, welfare: -10 });
     });
 
     it('keeps history newest first and uses only the latest quiz', async () => {
       await quiz.submitQuiz('user-a', answers);
-      await quiz.submitQuiz('user-a', [{ questionId: 1, answerIndex: 0 }]); // economic −2.5
+      await quiz.submitQuiz('user-a', [{ questionId: 1, answerIndex: 0 }]); // economic −10
       const history = await quiz.quizHistory('user-a');
-      expect(history.map((h) => h.vector.economic)).toEqual([-2.5, 2.5]);
-      expect((await ideology.getIdeologyProfile('user-a'))!.economic).toBe(-2.5);
+      expect(history.map((h) => h.vector.economic)).toEqual([-10, 10]);
+      expect((await ideology.getIdeologyProfile('user-a'))!.economic).toBe(-10);
     });
   });
 
   describe('user profiles', () => {
     it('folds votes into the quiz position', async () => {
-      await quiz.submitQuiz('user-b', [{ questionId: 1, answerIndex: 2 }]); // economic 2.5, weight 10
+      // economic +10 from one of five economic questions: weight 10 × 1/5 = 2
+      await quiz.submitQuiz('user-b', [{ questionId: 1, answerIndex: 2 }]);
       votes.byUser.set('user-b', [
         { questionId: 1, optionKey: 'option_a', vector: { ...zero, economic: -2, globalism: 1 }, weight: 1, confidence: null, votedAt: new Date() },
       ]);
       await ideology.recomputeProfile('user-b');
       const p = (await ideology.getIdeologyProfile('user-b'))!;
-      expect(p.economic).toBeCloseTo((2.5 * 10 - 10 * 1) / 11, 2); // vote −2 → −10 on the profile scale
+      expect(p.economic).toBeCloseTo((10 * 2 - 10 * 1) / 3, 1); // vote −2 → −10 on the profile scale
       expect(p.globalism).toBe(5); // only the vote speaks to globalism
     });
 
@@ -115,7 +116,7 @@ run('quiz and ideology against Postgres', () => {
       await quiz.submitQuiz('user-c', [{ questionId: 1, answerIndex: 2 }]);
       const points = await ideology.userTimeline('user-c');
       expect(points).toHaveLength(1);
-      expect(points[0]!.vector.economic).toBe(2.5);
+      expect(points[0]!.vector.economic).toBe(10);
     });
   });
 
@@ -180,11 +181,23 @@ run('quiz and ideology against Postgres', () => {
       expect(before).toHaveLength(2);
       await dbmod.pool.query("update politics.ideology_profiles set economic = 9 where subject_kind in ('td', 'user')");
       const summary = await ideology.recalculateAll();
-      expect(summary).toEqual({ users: 1, tds: 2, parties: 2 });
+      expect(summary).toEqual({ quizzesRescored: 0, users: 1, tds: 2, parties: 2 });
       const after = await repo.listProfiles('td');
       const key = (p: { subjectId: string; economic: number }) => `${p.subjectId}:${p.economic}`;
       expect(after.map(key).sort()).toEqual(before.map(key).sort());
-      expect((await ideology.getIdeologyProfile('user-r'))!.economic).toBe(-2.5);
+      expect((await ideology.getIdeologyProfile('user-r'))!.economic).toBe(-10);
+    });
+
+    it('re-scores a stored quiz from its answers when its stored score is stale', async () => {
+      const saved = await quiz.submitQuiz('user-s', [{ questionId: 1, answerIndex: 2 }]);
+      // As if it had been scored by an older formula.
+      await dbmod.pool.query("update politics.quiz_results set economic = 2.5, ideology = 'Old label' where id = $1", [saved.id]);
+      const summary = await ideology.recalculateAll();
+      expect(summary.quizzesRescored).toBe(1);
+      const [row] = await quiz.quizHistory('user-s');
+      expect(row!.vector.economic).toBe(10);
+      expect(row!.ideology).not.toBe('Old label');
+      expect((await ideology.recalculateAll()).quizzesRescored).toBe(0); // idempotent
     });
 
     it('matches a position to TDs and parties, best first', async () => {
@@ -200,6 +213,21 @@ run('quiz and ideology against Postgres', () => {
       expect(parties.map((p) => p.party)).not.toContain('100% RDR');
       expect(parties[0]!.party).toBe('Sinn Féin');
       expect(tds[0]!.alignment).toBeGreaterThan(tds[1]!.alignment);
+    });
+
+    it("matches a user only on the dimensions they have evidence on", async () => {
+      await addTd('Market Deputy', 'Fine Gael');
+      await addTd('Left Deputy', 'Sinn Féin');
+      await ideology.recalculateAll();
+      // One strongly market answer, nothing else: economic +10, every other dimension unknown.
+      await quiz.submitQuiz('user-m', [{ questionId: 1, answerIndex: 2 }]);
+      const result = (await ideology.userMatches('user-m'))!;
+      expect(result.measured).toEqual(['economic']);
+      expect(result.tds[0]!.name).toBe('Market Deputy');
+      // On economic alone: 1 − |10 − FG economic| / 20.
+      const fg = (await ideology.partyProfile('Fine Gael'))!.vector.economic;
+      expect(result.tds[0]!.alignment).toBe(Math.round(100 * (1 - Math.abs(10 - fg) / 20)));
+      expect(await ideology.userMatches('nobody')).toBeNull();
     });
   });
 });

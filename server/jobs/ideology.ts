@@ -10,7 +10,10 @@ async function main(): Promise<void> {
     throw new Error('Usage: npm run ideology -- --recalculate');
   }
   const summary = await recalculateAll();
-  console.log(`Recalculated ${summary.users} users, ${summary.tds} TDs and ${summary.parties} parties.`);
+  console.log(
+    `Re-scored ${summary.quizzesRescored} stored quiz result(s). ` +
+      `Recalculated ${summary.users} users, ${summary.tds} TDs and ${summary.parties} parties.`,
+  );
   if (unknownTdCount()) console.log(`${unknownTdCount()} evidence item(s) named an unknown TD.`);
 }
 

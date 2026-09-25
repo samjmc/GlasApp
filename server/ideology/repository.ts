@@ -50,6 +50,22 @@ export async function latestQuizResult(userId: string, database: Db = db): Promi
   return rows[0] ?? null;
 }
 
+export async function listAllQuizResults(database: Db = db): Promise<QuizResultRow[]> {
+  return database.select().from(quizResults);
+}
+
+/** Overwrite a stored result's score, e.g. after the scoring formula or the bank changes. */
+export async function updateQuizScore(
+  id: number,
+  score: { vector: IdeologyVector; ideology: string; description: string },
+  database: Db = db,
+): Promise<void> {
+  await database
+    .update(quizResults)
+    .set({ ...score.vector, ideology: score.ideology, description: score.description })
+    .where(eq(quizResults.id, id));
+}
+
 export async function listQuizUserIds(database: Db = db): Promise<string[]> {
   const rows = await database.selectDistinct({ userId: quizResults.userId }).from(quizResults);
   return rows.map((r) => r.userId);
@@ -95,7 +111,12 @@ export async function listTdEvidence(tdId: number, database: Db = db): Promise<T
 
 // --- profiles --------------------------------------------------------------
 
-export async function upsertProfile(kind: ProfileSubject, subjectId: string, profile: Profile, database: Db = db): Promise<void> {
+export async function upsertProfile(
+  kind: ProfileSubject,
+  subjectId: string,
+  profile: Omit<Profile, 'support'>,
+  database: Db = db,
+): Promise<void> {
   const values = {
     subjectKind: kind,
     subjectId,

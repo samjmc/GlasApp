@@ -303,6 +303,22 @@ const QuizPage: React.FC = () => {
     setCurrentQuestionIndex(firstOpen >= 0 ? firstOpen : 0);
   };
 
+  // Answers are authored with the strongest stance first; showing them in that order biases
+  // the choice. Shuffle once per visit and per question. Answers stay keyed by their original
+  // index, so scoring and a saved draft are unaffected.
+  const visitSeed = useRef(Math.floor(Math.random() * 2 ** 31));
+  const answerOrder = useMemo(() => {
+    if (!currentQuestion) return [];
+    const order = currentQuestion.answers.map((_, i) => i);
+    let s = (visitSeed.current ^ (currentQuestion.id * 2654435761)) >>> 0;
+    for (let i = order.length - 1; i > 0; i--) {
+      s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+      const j = s % (i + 1);
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    return order;
+  }, [currentQuestion]);
+
   const startAgain = () => {
     setAnswers({});
     storeDraft(null);
@@ -394,7 +410,8 @@ const QuizPage: React.FC = () => {
                 </h2>
 
                 <div role="radiogroup" aria-label="Answers" className="flex flex-col gap-3">
-                  {currentQuestion.answers.map((answer, index) => {
+                  {answerOrder.map((index) => {
+                    const answer = currentQuestion.answers[index];
                     const isSelected = selectedAnswerIndex === index;
                     return (
                       <button
