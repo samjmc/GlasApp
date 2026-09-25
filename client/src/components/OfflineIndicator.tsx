@@ -3,7 +3,7 @@
  * Shows a banner when user loses connection
  */
 
-import { useOnlineStatus } from '@/hooks/usePWA';
+import { useOnlineStatus } from '@/hooks/useOnlineStatus';
 import { WifiOff, Wifi } from 'lucide-react';
 import { useEffect, useState } from 'react';
 

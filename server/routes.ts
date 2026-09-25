@@ -1,5 +1,6 @@
 import { optionalAuth, requireAuth, requireJob } from './auth';
 import { aiRateLimit } from "./middleware/rateLimit";
+import { apiNotFound } from "./middleware/apiNotFound";
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { regionMiddleware } from "./middleware/regionMiddleware";
@@ -175,6 +176,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ success: false, message: 'Failed to get bot activity' });
     }
   });
+
+  // Last: an unknown /api path is a JSON 404, never the SPA's index.html.
+  app.use("/api", apiNotFound);
 
   const httpServer = createServer(app);
   return httpServer;
