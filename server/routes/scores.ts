@@ -6,8 +6,17 @@
 import { requireJob } from '../auth';
 import { Router } from 'express';
 import { z } from 'zod';
+import type {
+  PartyDetail,
+  PartyScoreRow,
+  ScoresWidget,
+  TdCard,
+  TdListItem,
+  TdProfile,
+  TdSummary,
+} from '@shared/scoresApi';
 import { asyncHandler } from '../middleware/errorHandler';
-import { DIMENSIONS, eloToPercent, recalculateAll, repository as repo, scoreLabel } from '../scoring';
+import { computePartyScores, questionsAsked, recalculateAll, repository as repo, scoreLabel, scoredComponents } from '../scoring';
 import type { TdWithScore } from '../scoring/repository';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
@@ -16,8 +25,9 @@ const router = Router();
 const idParam = z.coerce.number().int().positive();
 
 /** The shape every list and card in the client works from. */
-export function tdCard({ td, score }: TdWithScore) {
+export function tdCard({ td, score, stats }: TdWithScore): TdCard {
   const overallScore = score?.overallScore ?? null;
+  const isPresiding = stats?.isPresiding ?? false;
   return {
     id: td.id,
     name: td.name,
@@ -25,23 +35,23 @@ export function tdCard({ td, score }: TdWithScore) {
     constituency: td.constituency,
     imageUrl: td.imageUrl,
     gender: td.gender,
+    isPresiding,
+    components: scoredComponents({
+      questions: questionsAsked(td.questionCountOral, td.questionCountWritten),
+      attendancePct: td.attendancePct,
+      committeeAttendancePct: td.committeeAttendancePct,
+      debate: score?.debateScore ?? null,
+      isPresiding,
+    }),
+    pillars: { parliamentary: score?.parliamentaryScore ?? null, debate: score?.debateScore ?? null },
     overallScore,
     label: overallScore === null ? null : scoreLabel(overallScore),
-    overallElo: score?.overallElo ?? 1500,
-    newsScore: score?.newsScore ?? null,
-    parliamentaryScore: score?.parliamentaryScore ?? null,
-    debateScore: score?.debateScore ?? null,
     nationalRank: score?.nationalRank ?? null,
     partyRank: score?.partyRank ?? null,
     constituencyRank: score?.constituencyRank ?? null,
-    eloChange7d: score?.eloChange7d ?? 0,
-    eloChange30d: score?.eloChange30d ?? 0,
-    totalStories: score?.totalStories ?? 0,
-    lastScoredAt: score?.lastScoredAt ?? null,
+    computedAt: score?.updatedAt.toISOString() ?? null,
   };
 }
-
-export type TdCard = ReturnType<typeof tdCard>;
 
 function average(values: Array<number | null>): number | null {
   const present = values.filter((v): v is number => v !== null);
@@ -81,90 +91,66 @@ router.get(
   asyncHandler(async (_req, res) => {
     const [rows, baselines] = await Promise.all([repo.listActive(), repo.listBaselines()]);
     const researched = new Set(baselines.filter((b) => b.historicalSummary).map((b) => b.tdId));
-    const data = rows.map((r) => ({ ...tdCard(r), hasResearch: researched.has(r.td.id) }));
+    const data: TdListItem[] = rows.map((r) => ({ ...tdCard(r), hasResearch: researched.has(r.td.id) }));
     res.json(formatSuccess(data, { count: data.length, researchedCount: researched.size }));
   }),
 );
 
-/** GET /api/scores/widget — homepage: top, bottom, movers, totals. */
+/** GET /api/scores/widget — homepage: top, bottom, totals. */
 router.get(
   '/widget',
   asyncHandler(async (_req, res) => {
-    const [rows, movers] = await Promise.all([repo.listActive(), repo.movers(30, 6)]);
-    const scored = rows.filter((r) => r.score?.overallScore != null).map(tdCard);
-    const lastScored = rows.reduce<Date | null>((latest, r) => {
-      const at = r.score?.lastScoredAt ?? null;
+    const rows = await repo.listActive();
+    const ranked = rows.filter((r) => r.score?.overallScore != null).map(tdCard);
+    const computedAt = rows.reduce<string | null>((latest, r) => {
+      const at = r.score?.updatedAt.toISOString() ?? null;
       return at && (!latest || at > latest) ? at : latest;
     }, null);
-    res.json(
-      formatSuccess({
-        top: scored.slice(0, 5),
-        bottom: scored.slice(-5).reverse(),
-        movers: movers.map((m) => ({
-          ...tdCard(m),
-          eloDelta: m.delta,
-          scoreDelta: Math.round(m.delta / 10),
-          articles: m.articles,
-        })),
-        stats: {
-          totalTds: rows.length,
-          scoredTds: scored.length,
-          storiesAnalysed: rows.reduce((sum, r) => sum + (r.score?.totalStories ?? 0), 0),
-          lastScoredAt: lastScored,
-        },
-      }),
-    );
+    const data: ScoresWidget = {
+      top: ranked.slice(0, 5),
+      bottom: ranked.slice(-5).reverse(),
+      stats: { totalTds: rows.length, rankedTds: ranked.length, computedAt },
+    };
+    res.json(formatSuccess(data));
   }),
 );
 
-/** GET /api/scores/td/:name — full profile + score breakdown. */
+/** GET /api/scores/td/:name — full profile, score breakdown and the facts behind it. */
 router.get(
   '/td/:name',
   asyncHandler(async (req, res) => {
     const row = await repo.findByName(req.params.name);
     if (!row) return res.status(404).json(formatError('ENTITY_NOT_FOUND', `TD "${req.params.name}" not found`));
-    const [baseline, recent] = await Promise.all([repo.baselineFor(row.td.id), repo.recentArticleScores(row.td.id, 10)]);
-    const { td, score } = row;
-    const dimensions = Object.fromEntries(
-      DIMENSIONS.map((d) => {
-        const elo = score?.[`${d}Elo` as const] ?? 1500;
-        return [d, { elo, score: eloToPercent(elo) }];
-      }),
-    );
-    res.json(
-      formatSuccess({
-        ...tdCard(row),
-        memberCode: td.memberCode,
-        bio: td.bio,
-        offices: td.offices ?? [],
-        committees: td.committees ?? [],
-        questions: {
-          oral: td.questionCountOral,
-          written: td.questionCountWritten,
+    const baseline = await repo.baselineFor(row.td.id);
+    const { td, stats } = row;
+    const data: TdProfile = {
+      ...tdCard(row),
+      memberCode: td.memberCode,
+      bio: td.bio,
+      offices: td.offices ?? [],
+      committees: td.committees ?? [],
+      facts: {
+        memberSince: stats?.memberSince ?? null,
+        votes: { cast: stats?.votesCast ?? null, divisionsEligible: stats?.divisionsEligible ?? null },
+        questions: { oral: td.questionCountOral, written: td.questionCountWritten },
+        committees: {
+          sittingsAttended: stats?.committeeSittingsAttended ?? null,
+          sittingsEligible: stats?.committeeSittingsEligible ?? null,
         },
-        attendancePct: td.attendancePct,
-        committeeAttendancePct: td.committeeAttendancePct,
-        dimensions,
-        baseline: baseline
-          ? {
-              summary: baseline.historicalSummary,
-              category: baseline.category,
-              confidence: baseline.confidence,
-              keyFindings: baseline.keyFindings ?? [],
-              researchDate: baseline.researchDate,
-            }
-          : null,
-        recentArticles: recent.map((a) => ({
-          articleId: a.articleId,
-          impact: a.impact,
-          storyType: a.storyType,
-          sentiment: a.sentiment,
-          reasoning: a.reasoning,
-          needsReview: a.needsReview,
-          at: a.createdAt,
-        })),
-      }),
-    );
+        debate: { sectionsSpoken: stats?.sectionsSpoken ?? null, sittingDays: stats?.sittingDays ?? null },
+        recordUrl: td.memberCode ? `https://www.oireachtas.ie/en/members/member/${encodeURIComponent(td.memberCode)}/` : null,
+      },
+      baseline: baseline
+        ? {
+            summary: baseline.historicalSummary,
+            category: baseline.category,
+            confidence: baseline.confidence,
+            keyFindings: baseline.keyFindings ?? [],
+            researchDate: baseline.researchDate?.toISOString() ?? null,
+          }
+        : null,
+    };
+    res.json(formatSuccess(data));
   }),
 );
 
@@ -177,15 +163,14 @@ router.get(
     const row = await repo.findById(id.data);
     if (!row) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'TD not found'));
     const { td } = row;
-    res.json(
-      formatSuccess({
-        ...tdCard(row),
-        officeCount: td.offices?.length ?? 0,
-        committeeCount: td.committees?.length ?? 0,
-        topOffice: td.offices?.[0]?.title ?? null,
-        topCommittee: td.committees?.[0] ?? null,
-      }),
-    );
+    const data: TdSummary = {
+      ...tdCard(row),
+      officeCount: td.offices?.length ?? 0,
+      committeeCount: td.committees?.length ?? 0,
+      topOffice: td.offices?.[0]?.title ?? null,
+      topCommittee: td.committees?.[0] ?? null,
+    };
+    res.json(formatSuccess(data));
   }),
 );
 
@@ -193,20 +178,14 @@ router.get(
 // Parties
 // ---------------------------------------------------------------------------
 
-/** GET /api/scores/parties — ranked party aggregates. */
+/** GET /api/scores/parties — every party, ranked by the mean of its ranked members' scores. */
 router.get(
   '/parties',
   asyncHandler(async (_req, res) => {
-    const rows = await repo.listPartyScores();
-    const data = rows.map((p, i) => ({
-      rank: i + 1,
-      party: p.party,
-      memberCount: p.memberCount,
-      avgElo: p.avgElo,
-      overallScore: p.overallScore,
-      label: scoreLabel(p.overallScore),
-      computedAt: p.computedAt,
-    }));
+    const rows = await repo.listActive();
+    const data: PartyScoreRow[] = computePartyScores(
+      rows.map((r) => ({ party: r.td.party, overallScore: r.score?.overallScore ?? null })),
+    ).map((p) => ({ ...p, label: p.overallScore === null ? null : scoreLabel(p.overallScore) }));
     res.json(formatSuccess(data, { count: data.length }));
   }),
 );
@@ -218,16 +197,15 @@ router.get(
     const members = await repo.listByParty(req.params.name);
     if (members.length === 0) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'Party not found'));
     const cards = members.map(tdCard);
-    res.json(
-      formatSuccess({
-        party: members[0].td.party,
-        size: members.length,
-        averageScore: average(cards.map((c) => c.overallScore)),
-        genderBreakdown: genderBreakdown(members),
-        constituencyCount: new Set(members.map((m) => m.td.constituency).filter(Boolean)).size,
-        members: cards,
-      }),
-    );
+    const data: PartyDetail = {
+      party: members[0].td.party ?? req.params.name,
+      size: members.length,
+      averageScore: average(cards.map((c) => c.overallScore)),
+      genderBreakdown: genderBreakdown(members),
+      constituencyCount: new Set(members.map((m) => m.td.constituency).filter(Boolean)).size,
+      members: cards,
+    };
+    res.json(formatSuccess(data));
   }),
 );
 
@@ -300,7 +278,7 @@ router.get(
 // Admin
 // ---------------------------------------------------------------------------
 
-/** POST /api/scores/recalculate — rebuild derived scores, ranks, trends, party aggregates. */
+/** POST /api/scores/recalculate — rebuild derived scores and ranks. */
 router.post(
   '/recalculate',
   requireJob,

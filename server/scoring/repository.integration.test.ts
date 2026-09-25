@@ -122,11 +122,14 @@ run('repository against Postgres', () => {
     };
     await repo.upsertArticleScore(row);
     await repo.upsertArticleScore({ ...row, reasoning: 'second', impact: 6 });
-    const recent = await repo.recentArticleScores(mary.td.id, 10);
+    const { rows: recent } = await dbmod.pool.query(
+      'select reasoning, impact, dimension_scores from politics.article_td_scores where td_id = $1',
+      [mary.td.id],
+    );
     expect(recent).toHaveLength(1);
     expect(recent[0].reasoning).toBe('second');
     expect(Number(recent[0].impact)).toBe(6);
-    expect(recent[0].dimensionScores).toEqual({ transparency: 80, effectiveness: null, integrity: 20, consistency: null });
+    expect(recent[0].dimension_scores).toEqual({ transparency: 80, effectiveness: null, integrity: 20, consistency: null });
   });
 
   it('updateParliamentaryActivity fills the pillar inputs by member code', async () => {
@@ -159,45 +162,38 @@ run('repository against Postgres', () => {
     expect(top.score?.nationalRank).toBe(1);
     // Questions and votes at their benchmarks (100); committees 68 of 85 = 80: 50 + 30 + 16.
     expect(top.score?.parliamentaryScore).toBe(96);
-    expect(top.score?.overallScore).not.toBeNull();
-    // Simon: news pillar only, so his overall equals his news score.
+    // No debate record: the parliamentary pillar is the whole score.
+    expect(top.score?.overallScore).toBe(96);
+    // The news score an older rollup stored is cleared.
+    expect(top.score?.newsScore).toBeNull();
+    // Simon has no facts at all: no score, no rank.
     const simon = rows.find((r) => r.td.name === 'Simon Harris')!;
-    expect(simon.score?.parliamentaryScore).toBeNull();
-    expect(simon.score?.overallScore).toBe(simon.score?.newsScore);
+    expect(simon.score).toMatchObject({ parliamentaryScore: null, overallScore: null, nationalRank: null });
   });
 
-  it('writeTrends sums recent history and movers reports it', async () => {
-    await repo.writeTrends();
-    const mary = (await repo.findByName('Mary Lou McDonald'))!;
-    // impact 10 -> +32, then impact 2 -> +6 (2/10 x K(32) x credibility 1). Overall only:
-    // the integrity change from the first article is not counted in the trend.
-    expect(mary.score?.eloChange7d).toBe(38);
-    expect(mary.score?.eloChange30d).toBe(38);
+  it('the chair is read from the parliament record and left unranked', async () => {
     const simon = (await repo.findByName('Simon Harris'))!;
-    expect(simon.score?.eloChange7d ?? 0).toBe(0);
+    expect(simon.stats).toBeNull();
+    await dbmod.pool.query(
+      `insert into politics.td_parliament_stats
+         (td_id, member_since, is_presiding, divisions_eligible, votes_cast, sitting_days, sections_spoken, speeches)
+       values ($1, '2024-11-29', true, 40, 0, 20, 0, 0)`,
+      [simon.td.id],
+    );
+    // Question counts default to 0 and committee attendance is measured for anyone.
+    await repo.updateParliamentaryActivity([
+      { memberCode: 'SH.D.2011', questionsOral: 0, questionsWritten: 0, attendancePct: null, committeeAttendancePct: 90 },
+    ]);
 
-    const movers = await repo.movers(30, 5);
-    expect(movers).toHaveLength(1);
-    expect(movers[0]).toMatchObject({ delta: 38, articles: 2 });
-    expect(movers[0].td.name).toBe('Mary Lou McDonald');
-  });
-
-  it('party scores come only from scored members, and are replaced wholesale', async () => {
-    const { computePartyScores } = await import('./party');
+    const { computeRollup } = await import('./rollup');
     const inputs = await repo.rollupInputs(new Map());
-    // rollupInputs carries each TD's story count from td_scores.
-    expect(inputs.find((i) => i.party === 'Sinn Féin')!.newsStories).toBeGreaterThan(0);
-    expect(inputs.find((i) => i.party === 'Fine Gael')!.newsStories).toBe(0);
+    expect(inputs.find((i) => i.tdId === simon.td.id)).toMatchObject({ isPresiding: true, questions: 0, committeeAttendancePct: 90 });
+    await repo.writeRollup(computeRollup(inputs));
 
-    // Simon Harris (Fine Gael) has never been scored, so his party gets no aggregate
-    // rather than a baseline 50.
-    await repo.replacePartyScores(computePartyScores(inputs));
-    expect((await repo.listPartyScores()).map((p) => p.party)).toEqual(['Sinn Féin']);
-
-    await repo.replacePartyScores([{ party: 'Fine Gael', memberCount: 1, avgElo: 1550, overallScore: 55 }]);
-    const only = await repo.listPartyScores();
-    expect(only).toHaveLength(1);
-    expect(only[0].party).toBe('Fine Gael');
+    const after = (await repo.findByName('Simon Harris'))!;
+    expect(after.stats?.isPresiding).toBe(true);
+    expect(after.score).toMatchObject({ parliamentaryScore: null, overallScore: null, nationalRank: null, partyRank: null });
+    expect((await repo.listActive()).map((r) => r.td.name)).toEqual(['Mary Lou McDonald', 'Simon Harris']);
   });
 
   it('lists by party and constituency, and enumerates constituencies', async () => {

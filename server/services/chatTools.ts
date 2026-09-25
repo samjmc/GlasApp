@@ -4,7 +4,7 @@ import {
   parties
 } from "@shared/schema";
 import type { DivisionVote, TdVote } from "@shared/parliamentApi";
-import { eloToPercent, repository as scores } from "../scoring";
+import { questionsAsked, repository as scores, scoredComponents } from "../scoring";
 import * as newsRepo from "../news/repository";
 import { repository as parliament } from "../parliament";
 
@@ -185,13 +185,13 @@ export const chatToolsImplementation = {
     }
     const td = found.td;
     const score = found.score;
+    const isPresiding = found.stats?.isPresiding ?? false;
 
     // 2. Get Recent News mentions
     const news = (await newsRepo.feedForTd(td.name, 3)).map((a) => ({
       title: a.title,
       summary: a.summary,
-      date: a.publishedAt,
-      sentiment: a.sentiment
+      date: a.publishedAt
     }));
 
     // 3. Dáil record
@@ -205,11 +205,20 @@ export const chatToolsImplementation = {
         overall_score: score?.overallScore ?? null,
         rank: score?.nationalRank ?? null
       },
+      // Built only from the Oireachtas record. null = not expected or not measurable, never 0.
       scores: {
-        transparency: eloToPercent(score?.transparencyElo),
-        effectiveness: eloToPercent(score?.effectivenessElo),
-        integrity: eloToPercent(score?.integrityElo),
-        consistency: eloToPercent(score?.consistencyElo)
+        holds_the_chair: isPresiding,
+        components: scoredComponents({
+          questions: questionsAsked(td.questionCountOral, td.questionCountWritten),
+          attendancePct: td.attendancePct,
+          committeeAttendancePct: td.committeeAttendancePct,
+          debate: score?.debateScore ?? null,
+          isPresiding
+        }),
+        pillars: {
+          parliamentary: score?.parliamentaryScore ?? null,
+          debate: score?.debateScore ?? null
+        }
       },
       recent_news: news,
       parliament: record ?? "No Dáil record yet"
