@@ -1,4 +1,4 @@
-import { BarChart3, Compass, Home, Landmark, Lightbulb, MapPin, UserRound, type LucideIcon } from "lucide-react";
+import { BarChart3, Compass, Home, Landmark, MapPin, UserRound, type LucideIcon } from "lucide-react";
 import type { RegionConfig } from "@shared/region-config";
 
 export interface NavItem {
@@ -18,7 +18,6 @@ export const MAIN_NAV: NavItem[] = [
   { href: "/debates", label: "Dáil record", shortLabel: "Dáil", icon: Landmark },
   { href: "/constituencies", label: "Constituencies", icon: MapPin, also: ["/constituency/"] },
   { href: "/quiz", label: "Ideology quiz", shortLabel: "Quiz", icon: Compass },
-  { href: "/ideas", label: "Ideas", icon: Lightbulb },
   { href: "/my-politics", label: "My politics", shortLabel: "Me", icon: UserRound },
 ];
 

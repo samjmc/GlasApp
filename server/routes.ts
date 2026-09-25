@@ -18,8 +18,6 @@ import storytellingRoutes from "./routes/storytellingRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import electionRoutes from "./routes/electionRoutes";
 import politicalRoutes from "./routes/political";
-import ideasRoutes from "./routes/ideasRoutes";
-import problemsRoutes from "./routes/problemsRoutes";
 import newsRoutes from "./routes/news";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
@@ -91,12 +89,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Dáil divisions, debates and each TD's parliament record
   app.use("/api/parliament", parliamentRoutes);
-  
-  // Register ideas routes for community solutions
-  app.use("/api/ideas", ideasRoutes);
-  
-  // Register problems routes for two-tier voting system
-  app.use("/api/problems", problemsRoutes);
   
   // Register news feed routes for homepage articles
   app.use("/api/news-feed", newsRoutes);

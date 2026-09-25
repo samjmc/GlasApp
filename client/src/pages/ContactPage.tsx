@@ -38,7 +38,7 @@ const FAQS = [
   },
   {
     q: "How can I support Glas Politics?",
-    a: "Share the platform with friends, submit ideas, and provide feedback! We're currently free and ad-free. Future support options may include donations or premium features.",
+    a: "Share the platform with friends and send us your feedback! We're currently free and ad-free. Future support options may include donations or premium features.",
   },
   {
     q: "Can I use Glas Politics data for research or journalism?",

@@ -244,20 +244,6 @@ electoral-mapping/
 ### Community Module
 ```
 community/
-├── Problems Platform
-│   ├── Problem submission
-│   ├── Voting system
-│   └── Status tracking
-│
-├── Solutions Platform
-│   ├── Nested under problems
-│   ├── Detailed descriptions
-│   └── Voting/ranking
-│
-├── Ideas Board (Legacy)
-│   ├── Legacy system
-│   └── Migration to Problems/Solutions
-│
 └── Engagement Tracking
     ├── User activity
     ├── Contribution history
