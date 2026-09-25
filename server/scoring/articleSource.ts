@@ -23,8 +23,6 @@ export interface ArticleOutcome {
   /** True when at least one TD was scored from it. */
   scoreApplied: boolean;
   skippedReason?: string;
-  /** Set when event clustering chose another article to stand for the same story. */
-  duplicateOf?: number;
   errorMessage?: string;
   /** Kept for the pipeline's call shape; the per-TD verdicts live in article_td_scores. */
   primaryTd?: { name: string; party: string | null; constituency: string | null };
@@ -54,17 +52,11 @@ function toArticle(row: news.ClaimedArticle): Article {
 }
 
 /**
- * An error wins over everything; a same-event duplicate is `duplicate` (hidden from the feed);
- * any other skip is `skipped`; a finished run with none of these is `scored`, even if no TD matched.
+ * An error wins over everything; any skip is `skipped`; a finished run with neither is `scored`,
+ * even if no TD matched. Same-event duplicates are linked at ingest and never reach scoring.
  */
 export function toOutcome(outcome: ArticleOutcome): news.Outcome {
-  const status = outcome.errorMessage
-    ? 'failed'
-    : outcome.duplicateOf !== undefined
-      ? 'duplicate'
-      : outcome.skippedReason
-        ? 'skipped'
-        : 'scored';
+  const status = outcome.errorMessage ? 'failed' : outcome.skippedReason ? 'skipped' : 'scored';
   return {
     status,
     importanceScore: outcome.importanceScore,

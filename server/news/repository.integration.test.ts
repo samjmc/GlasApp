@@ -9,6 +9,8 @@
  *   $env:TEST_DATABASE_URL="postgres://postgres:postgres@localhost:55432/postgres"
  *   npx vitest run server/news/repository.integration.test.ts
  */
+import fs from 'node:fs';
+import path from 'node:path';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
@@ -70,7 +72,7 @@ run('news repository against Postgres', () => {
   });
 
   it('re-inserting a URL leaves the stored row exactly as it was (#23: /save reset scoring state)', async () => {
-    const [id] = await repo.insertArticles([row('https://rte.ie/a', 1)]);
+    const [{ id }] = await repo.insertArticles([row('https://rte.ie/a', 1)]);
     await repo.markOutcome(id, { status: 'scored', importanceScore: 70, importanceReasoning: 'r', skipReason: null, errorMessage: null });
     expect(await repo.insertArticles([{ ...row('https://rte.ie/a', 1), title: 'changed' }])).toEqual([]);
     const { rows } = await dbmod.pool.query('select status, title, importance_score from politics.news_articles');
@@ -113,7 +115,7 @@ run('news repository against Postgres', () => {
   });
 
   it('re-claims an expired lease, and fails a row whose lease expired MAX_ATTEMPTS times', async () => {
-    const [id] = await repo.insertArticles([row('https://rte.ie/poison', 1)]);
+    const [{ id }] = await repo.insertArticles([row('https://rte.ie/poison', 1)]);
     for (let attempt = 1; attempt <= repo.MAX_ATTEMPTS; attempt++) {
       expect((await repo.claimForScoring(1)).map((c) => c.id)).toEqual([id]);
       // A live lease is never taken twice.
@@ -126,7 +128,7 @@ run('news repository against Postgres', () => {
   });
 
   it('feed pages by offset, reports the real total, and ranks scored articles first', async () => {
-    const ids = await repo.insertArticles(Array.from({ length: 12 }, (_, i) => row(`https://rte.ie/${i}`, i)));
+    const ids = (await repo.insertArticles(Array.from({ length: 12 }, (_, i) => row(`https://rte.ie/${i}`, i)))).map((r) => r.id);
     const { rows: [td] } = await dbmod.pool.query(`insert into politics.tds (name, party) values ('Mary Lou McDonald', 'Sinn Féin') returning id`);
     // The OLDEST article carries the strongest verdict.
     await dbmod.pool.query('insert into politics.article_td_scores (article_id, td_id, impact, story_type, sentiment) values ($1, $2, -7, $3, $4)', [ids[11], td.id, 'scandal', 'negative']);
@@ -169,26 +171,137 @@ run('news repository against Postgres', () => {
     expect(await repo.existingUrls(['https://rte.ie/sport'])).toEqual(new Set(['https://rte.ie/sport']));
   });
 
-  it('a same-event duplicate is hidden from the feed; its canonical article stays', async () => {
-    const [canonical, duplicate] = await repo.insertArticles([row('https://rte.ie/budget', 1), row('https://irishtimes.com/budget', 2)]);
-    await repo.markOutcome(duplicate, { status: 'duplicate', importanceScore: 80, importanceReasoning: 'r', skipReason: `Duplicate of article ${canonical}`, errorMessage: null });
+  const from = (slug: string) => ({ sourceId: sourceIds.get(slug)! });
+  const dup = (of: number) => ({ status: 'duplicate' as const, duplicateOf: of });
+
+  it('a same-event duplicate is hidden; its canonical lists the first copy from each OTHER outlet', async () => {
+    const [{ id: canonical }] = await repo.insertArticles([row('https://rte.ie/budget', 5)]);
+    await repo.insertArticles([
+      { ...row('https://thejournal.ie/budget-2', 2), ...from('the-journal'), ...dup(canonical) },
+      { ...row('https://thejournal.ie/budget-1', 3), ...from('the-journal'), ...dup(canonical) },
+      // Another RTÉ feed: the same outlet, so not "also reported by".
+      { ...row('https://rte.ie/politics/budget', 4), ...from('rte-politics'), ...dup(canonical) },
+      { ...row('https://irishtimes.com/budget', 1), ...from('irish-times'), ...dup(canonical) },
+    ]);
     const feed = await repo.feedPage({ sort: 'recent', limit: 10, offset: 0 }, { since: new Date(0), fallbackDays: 30 });
     expect(feed.rows.map((r) => r.id)).toEqual([canonical]);
     expect(feed.total).toBe(1);
-    expect((await repo.statusCounts()).duplicate).toBe(1);
+    expect(feed.rows[0].alsoReportedBy).toEqual([
+      { source: 'The Journal', url: 'https://thejournal.ie/budget-1' },
+      { source: 'The Irish Times', url: 'https://irishtimes.com/budget' },
+    ]);
+    expect((await repo.statusCounts()).duplicate).toBe(4);
+    expect(await repo.claimForScoring(10)).toMatchObject([{ id: canonical }]);
   });
 
-  it('missingImages lists visible picture-less rows; setImageIfMissing never overwrites', async () => {
-    const [bare, pictured, hidden] = await repo.insertArticles([
-      row('https://rte.ie/bare', 1),
-      { ...row('https://rte.ie/pictured', 1), imageUrl: 'https://img/1.jpg' },
-      { ...row('https://rte.ie/hidden', 1), relevanceScore: 10 },
+  it('an article with no duplicates has an empty alsoReportedBy', async () => {
+    await repo.insertArticles([row('https://rte.ie/alone', 1)]);
+    const feed = await repo.feedPage({ sort: 'recent', limit: 10, offset: 0 }, { since: new Date(0), fallbackDays: 30 });
+    expect(feed.rows[0].alsoReportedBy).toEqual([]);
+  });
+
+  it('the check constraint ties status `duplicate` to a link, both ways', async () => {
+    const [{ id }] = await repo.insertArticles([row('https://rte.ie/c', 1)]);
+    await expect(repo.insertArticles([{ ...row('https://rte.ie/unlinked', 1), status: 'duplicate' }])).rejects.toThrow();
+    await expect(repo.insertArticles([{ ...row('https://rte.ie/linked-pending', 1), duplicateOf: id }])).rejects.toThrow();
+    await expect(
+      dbmod.pool.query(`update politics.news_articles set status = 'duplicate' where id = $1`, [id]),
+    ).rejects.toThrow(/news_articles_duplicate_link_chk/);
+  });
+
+  it('recentTitles gives each row its root canonical; findForScoring resolves a duplicate to it', async () => {
+    const [{ id: canonical }] = await repo.insertArticles([row('https://rte.ie/root', 2, 'Root story')]);
+    const [{ id: copy }] = await repo.insertArticles([{ ...row('https://thejournal.ie/copy', 1, 'Copy story'), ...from('the-journal'), ...dup(canonical) }]);
+    expect(await repo.recentTitles(48)).toEqual(
+      expect.arrayContaining([
+        { id: canonical, url: 'https://rte.ie/root', title: 'Root story' },
+        { id: canonical, url: 'https://thejournal.ie/copy', title: 'Copy story' },
+      ]),
+    );
+    expect((await repo.findForScoring(copy))?.id).toBe(canonical);
+    expect((await repo.findForScoring(canonical))?.id).toBe(canonical);
+    expect(await repo.findForScoring(999_999)).toBeNull();
+  });
+
+  it('eventCandidates: visible canonicals inside the window before `now`, newest first, capped', async () => {
+    const { RELEVANCE_FLOOR } = await import('./relevance');
+    const [{ id: inside }, { id: newest }] = await repo.insertArticles([
+      { ...row('https://rte.ie/47h', 47), aiSummary: 'The Dáil passed it.' },
+      row('https://rte.ie/1h', 1),
+      row('https://rte.ie/73h', 73),
+      { ...row('https://rte.ie/below', 2), relevanceScore: RELEVANCE_FLOOR - 1, status: 'skipped' },
     ]);
+    await repo.insertArticles([{ ...row('https://thejournal.ie/dup', 3), ...from('the-journal'), ...dup(inside) }]);
+    const now = new Date();
+    expect(await repo.eventCandidates(now, 72, 10)).toEqual([
+      { id: newest, title: 'https://rte.ie/1h', summary: null },
+      { id: inside, title: 'https://rte.ie/47h', summary: 'The Dáil passed it.' },
+    ]);
+    expect((await repo.eventCandidates(now, 72, 1)).map((c) => c.id)).toEqual([newest]);
+  });
+
+  it('linkableRows and linkDuplicate never touch a scored row or a row that is already a root', async () => {
+    const rows = await repo.insertArticles([row('https://rte.ie/p', 3), row('https://rte.ie/scored', 2), row('https://rte.ie/root', 1), row('https://rte.ie/target', 4)]);
+    const [p, scored, root, target] = rows.map((r) => r.id);
+    const { rows: [td] } = await dbmod.pool.query(`insert into politics.tds (name) values ('Simon Harris') returning id`);
+    await dbmod.pool.query('insert into politics.article_td_scores (article_id, td_id, impact) values ($1, $2, 3)', [scored, td.id]);
+    await repo.insertArticles([{ ...row('https://thejournal.ie/child', 1), ...from('the-journal'), ...dup(root) }]);
+
+    expect((await repo.linkableRows(new Date(Date.now() - 24 * HOUR))).map((r) => r.id)).toEqual([target, p]);
+    expect(await repo.linkDuplicate(scored, target)).toBe(false);
+    expect(await repo.linkDuplicate(root, target)).toBe(false);
+    expect(await repo.linkDuplicate(p, target)).toBe(true);
+    const { rows: after } = await dbmod.pool.query('select id, status, duplicate_of from politics.news_articles where id = any($1) order by id', [[p, scored, root]]);
+    expect(after).toEqual([
+      { id: p, status: 'duplicate', duplicate_of: target },
+      { id: scored, status: 'pending', duplicate_of: null },
+      { id: root, status: 'pending', duplicate_of: null },
+    ]);
+  });
+
+  it('missingImages lists visible picture-less canonicals; setImageIfMissing never overwrites', async () => {
+    const [bare, pictured, hidden] = (
+      await repo.insertArticles([
+        row('https://rte.ie/bare', 1),
+        { ...row('https://rte.ie/pictured', 1), imageUrl: 'https://img/1.jpg' },
+        { ...row('https://rte.ie/hidden', 1), relevanceScore: 10 },
+      ])
+    ).map((r) => r.id);
+    await repo.insertArticles([{ ...row('https://thejournal.ie/copy', 1), ...from('the-journal'), ...dup(bare) }]);
     expect((await repo.missingImages(48, 10)).map((r) => r.id)).toEqual([bare]);
     await repo.setImageIfMissing(bare, 'https://img/new.jpg');
     await repo.setImageIfMissing(pictured, 'https://img/other.jpg');
     const { rows } = await dbmod.pool.query('select id, image_url from politics.news_articles where id = any($1) order by id', [[bare, pictured, hidden]]);
     expect(rows.map((r: { image_url: string | null }) => r.image_url)).toEqual(['https://img/new.jpg', 'https://img/1.jpg', null]);
     expect(await repo.missingImages(48, 10)).toEqual([]);
+  });
+
+  // Last: it takes the schema back to 0008 for this table, then re-applies 0009.
+  it('migration 0009 links each legacy duplicate it can, and makes the rest `skipped`', async () => {
+    const ids = (await repo.insertArticles(['c', 'linked', 'unknown', 'chained', 'missing'].map((k, i) => row(`https://rte.ie/${k}`, i)))).map((r) => r.id);
+    const [canonical, linked, unknown, chained, missing] = ids;
+    await dbmod.pool.query('alter table politics.news_articles drop column duplicate_of');
+    const legacy: Array<[number, string, string]> = [
+      [canonical, 'scored', ''],
+      [linked, 'duplicate', `Duplicate of article ${canonical} (same event: budget)`],
+      [unknown, 'duplicate', 'Duplicate of article undefined (same event: unknown)'],
+      [chained, 'duplicate', `Duplicate of article ${linked} (same event: budget)`],
+      [missing, 'duplicate', 'Duplicate of article 999999 (same event: budget)'],
+    ];
+    for (const [id, status, reason] of legacy) {
+      await dbmod.pool.query('update politics.news_articles set status = $2, skip_reason = $3 where id = $1', [id, status, reason || null]);
+    }
+
+    const migration = fs.readFileSync(path.resolve(__dirname, '../../drizzle/0009_news_event_duplicate_of.sql'), 'utf8');
+    for (const statement of migration.split('--> statement-breakpoint')) if (statement.trim()) await dbmod.pool.query(statement);
+
+    const { rows: after } = await dbmod.pool.query('select id, status, duplicate_of from politics.news_articles order by id');
+    expect(after).toEqual([
+      { id: canonical, status: 'scored', duplicate_of: null },
+      { id: linked, status: 'duplicate', duplicate_of: canonical },
+      { id: unknown, status: 'skipped', duplicate_of: null },
+      { id: chained, status: 'skipped', duplicate_of: null },
+      { id: missing, status: 'skipped', duplicate_of: null },
+    ]);
   });
 });

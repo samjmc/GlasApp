@@ -25,7 +25,7 @@ async function main(): Promise<void> {
   const stats = await runPipeline({ batchSize: 50, topPercentile: 25, minImportanceScore: 40 });
   console.log(
     `Articles: ${stats.totalArticles} fetched, ${stats.selectedForScoring} selected, ` +
-      `${stats.uniqueEventsToScore} unique events, ${stats.articlesProcessed} processed. ` +
+      `${stats.articlesProcessed} processed. ` +
       `TDs updated: ${stats.tdsUpdated}. Errors: ${stats.errors}.`,
   );
   if (stats.articlesFailed.length) console.log('Failed:', stats.articlesFailed.join(' | '));

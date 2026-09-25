@@ -5,14 +5,14 @@
  * marks them through `server/scoring/articleSource.ts`. Nothing else writes these tables.
  */
 import { sql } from 'drizzle-orm';
-import { boolean, index, integer, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
+import { type AnyPgColumn, boolean, check, index, integer, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import type { NewsCategory } from '../news';
 import { politics } from './politics';
 
 /**
  * Article lifecycle. `claimed` rows belong to one scoring run until their lease expires.
- * `duplicate`: scoring's event clustering picked another article for the same story; hidden
- * from the feed so one event shows once.
+ * `duplicate`: ingest found an earlier article about the same event (`duplicate_of`); hidden
+ * from the feed and never scored, so one event shows once.
  */
 export const ARTICLE_STATUSES = ['pending', 'claimed', 'scored', 'skipped', 'duplicate', 'failed'] as const;
 export type ArticleStatus = (typeof ARTICLE_STATUSES)[number];
@@ -70,6 +70,8 @@ export const newsArticles = politics.table(
     importanceReasoning: text('importance_reasoning'),
     skipReason: text('skip_reason'),
     errorMessage: text('error_message'),
+    /** The root canonical article for the same event. Set exactly when status is `duplicate`. */
+    duplicateOf: integer('duplicate_of').references((): AnyPgColumn => newsArticles.id, { onDelete: 'set null' }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
@@ -77,6 +79,8 @@ export const newsArticles = politics.table(
     uniqueIndex('news_articles_url_idx').on(t.url),
     index('news_articles_status_published_idx').on(t.status, t.publishedAt),
     index('news_articles_published_idx').on(sql`${t.publishedAt} desc`),
+    index('news_articles_duplicate_of_idx').on(t.duplicateOf).where(sql`${t.duplicateOf} is not null`),
+    check('news_articles_duplicate_link_chk', sql`(${t.status} = 'duplicate') = (${t.duplicateOf} is not null)`),
   ],
 );
 

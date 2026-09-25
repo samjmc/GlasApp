@@ -1,19 +1,23 @@
 /**
  * The one way articles enter the database.
  *
- *   fetch every feed at once -> normalize -> dedupe against the DB and each other
+ *   fetch every feed at once -> normalize -> drop known URLs, link title copies
  *   -> rank what is new (relevance, category, neutral summary)
- *   -> pick a picture that loads, for the articles worth showing -> insert
- *   -> fill in pictures still missing from recent articles
+ *   -> link same-event items to the earliest report (events.ts)
+ *   -> pick a picture that loads, for the canonicals worth showing
+ *   -> insert canonicals, then their duplicates -> fill in pictures still missing
  *
  * Scoring picks visible `pending` rows up later through server/scoring/articleSource.ts.
+ * Duplicates are stored as `duplicate` with `duplicate_of`, so they are never shown or scored.
  */
 import { fetchPage, type PageMeta } from './content';
 import { dedupe } from './dedupe';
+import { EVENT_CANDIDATE_LIMIT, EVENT_WINDOW_HOURS, assignCanonicals, matchEvents, type Link } from './events';
 import { candidateOrder, firstLoading, needsPageImage, type ImageCandidate } from './images';
 import { MAX_ITEM_AGE_HOURS, canonicalUrl, cutSummary, normalizeItem, type NewArticle } from './normalize';
 import { RELEVANCE_FLOOR, scoreRelevance, type Relevance } from './relevance';
 import * as repo from './repository';
+import type { NewNewsArticle } from '@shared/schema/news';
 import { fetchFeed } from './rss';
 import { NEWS_SOURCES, sourceForUrl, type SourceConfig } from './sources';
 
@@ -25,7 +29,12 @@ export const IMAGE_BACKFILL_LIMIT = 30;
 export interface IngestStats {
   fetched: number;
   rejected: number;
+  /** Not stored: the URL was stored already, or repeated in this run. */
+  knownUrls: number;
+  /** Stored as a duplicate of an earlier article about the same event. */
   duplicates: number;
+  /** Event-match calls that failed; their items were stored as their own canonicals. */
+  eventMatchFailed: number;
   ranked: number;
   unranked: number;
   belowFloor: number;
@@ -113,27 +122,52 @@ async function fetchAll(sources: readonly SourceConfig[], now: Date, stats: Inge
   return candidates;
 }
 
-/** Fetch all feeds and store every new article, ranked, with a picture where one exists. */
-export async function ingest(now = new Date()): Promise<IngestStats> {
+let running: Promise<IngestStats> | null = null;
+
+/**
+ * Fetch all feeds and store every new article, ranked, with a picture where one exists.
+ * One run at a time: a call made while a run is in flight gets that run's result, so two
+ * runs can never both store the same event as a canonical. Every caller is in this process.
+ */
+export function ingest(now = new Date()): Promise<IngestStats> {
+  if (!running) running = runIngest(now).finally(() => (running = null));
+  return running;
+}
+
+async function runIngest(now: Date): Promise<IngestStats> {
   const sourceIds = await repo.syncSources(NEWS_SOURCES);
   const stats: IngestStats = {
-    fetched: 0, rejected: 0, duplicates: 0, ranked: 0, unranked: 0, belowFloor: 0, inserted: 0, withImage: 0, imagesBackfilled: 0, feeds: [],
+    fetched: 0, rejected: 0, knownUrls: 0, duplicates: 0, eventMatchFailed: 0, ranked: 0, unranked: 0, belowFloor: 0, inserted: 0, withImage: 0, imagesBackfilled: 0, feeds: [],
   };
 
   const candidates = await fetchAll(NEWS_SOURCES, now, stats);
   const known = await repo.existingUrls(candidates.map((c) => c.url));
   const recent = await repo.recentTitles(MAX_ITEM_AGE_HOURS);
-  const { fresh, duplicates } = dedupe(candidates, [...recent, ...Array.from(known, (url) => ({ url, title: '' }))]);
-  stats.duplicates = duplicates.length;
+  const { fresh, links: titleLinks, knownUrls } = dedupe(candidates, recent, known);
+  stats.knownUrls = knownUrls;
 
   const byName = new Map(NEWS_SOURCES.map((s) => [s.slug, s.name]));
   const { results } = await scoreRelevance(fresh.map((a) => ({ title: a.title, summary: a.summary, source: byName.get(a.sourceSlug) ?? a.sourceSlug })));
   stats.ranked = results.filter((r) => r !== null).length;
   stats.unranked = results.length - stats.ranked;
   stats.belowFloor = results.filter((r) => r !== null && r.score < RELEVANCE_FLOOR).length;
+  const below = (i: number) => results[i] !== null && results[i]!.score < RELEVANCE_FLOOR;
+
+  // Title copies are linked already; every other item someone would see goes to the event match.
+  const titleLinked = new Set(titleLinks.map((l) => l.index));
+  const eventItems = fresh
+    .map((a, index) => ({ index, title: a.title, summary: results[index]?.summary ?? null }))
+    .filter(({ index }) => !titleLinked.has(index) && !below(index));
+  let eventLinks: Array<{ index: number; of: Link }> = [];
+  if (eventItems.length > 0) {
+    const match = await matchEvents(eventItems, await repo.eventCandidates(now, EVENT_WINDOW_HOURS, EVENT_CANDIDATE_LIMIT));
+    eventLinks = match.links;
+    stats.eventMatchFailed = match.failedCalls;
+  }
+  const canonicalOf = assignCanonicals(fresh, titleLinks.concat(eventLinks));
 
   // Pictures only for articles someone will see.
-  const visible = fresh.filter((_, i) => !(results[i] && results[i]!.score < RELEVANCE_FLOOR));
+  const visible = fresh.filter((_, i) => canonicalOf[i] === null && !below(i));
   const resolved = await mapLimit(visible, PAGE_CONCURRENCY, resolveImage);
   visible.forEach((a, i) => {
     a.imageUrl = resolved[i].imageUrl;
@@ -142,8 +176,18 @@ export async function ingest(now = new Date()): Promise<IngestStats> {
   });
   stats.withImage = visible.filter((a) => a.imageUrl).length;
 
-  const ids = await repo.insertArticles(fresh.map((a, i) => toRow(a, sourceIds, results[i])));
-  stats.inserted = ids.length;
+  const rows = fresh.map((a, i) => toRow(a, sourceIds, results[i]));
+  const inserted = await repo.insertArticles(rows.filter((_, i) => canonicalOf[i] === null));
+  const idByUrl = new Map(inserted.map((r) => [r.url, r.id]));
+  const copies: NewNewsArticle[] = rows.flatMap((row, i) => {
+    const of = canonicalOf[i];
+    if (of === null) return [];
+    const duplicateOf = 'stored' in of ? of.stored : idByUrl.get(fresh[of.run].url);
+    // Undefined only when the canonical lost a URL race to another writer: this copy stands alone.
+    return [duplicateOf === undefined ? row : { ...row, status: 'duplicate' as const, duplicateOf }];
+  });
+  stats.inserted = inserted.length + (await repo.insertArticles(copies)).length;
+  stats.duplicates = copies.filter((c) => c.duplicateOf != null).length;
 
   stats.imagesBackfilled = await backfillImages();
   return stats;
@@ -163,14 +207,18 @@ export async function backfillImages(): Promise<number> {
   return found.filter(Boolean).length;
 }
 
-export type AddUrlResult = { ok: true; id: number } | { ok: false; reason: 'invalid url' | 'already stored' | 'no title' };
+export type AddUrlResult =
+  | { ok: true; id: number }
+  | { ok: false; reason: 'invalid url' | 'already stored' | 'no title' }
+  | { ok: false; reason: 'same event'; of: number };
 
 /**
  * Store one article an admin pasted in. It is ranked for its category and summary, but never
  * hidden by the floor: a human decided it matters. The source is the configured publisher for
- * that host, or `manual`.
+ * that host, or `manual`. An article about an event already shown is refused unless `force`,
+ * and a forced add is its own canonical.
  */
-export async function addUrl(rawUrl: string, now = new Date()): Promise<AddUrlResult> {
+export async function addUrl(rawUrl: string, { force = false }: { force?: boolean } = {}, now = new Date()): Promise<AddUrlResult> {
   const url = canonicalUrl(rawUrl);
   if (!url) return { ok: false, reason: 'invalid url' };
   if ((await repo.existingUrls([url])).size > 0) return { ok: false, reason: 'already stored' };
@@ -193,6 +241,12 @@ export async function addUrl(rawUrl: string, now = new Date()): Promise<AddUrlRe
   };
   const { results } = await scoreRelevance([{ title: article.title, summary: article.summary, source: source.name }]).catch(() => ({ results: [null] }));
   const relevance = results[0] ? { ...results[0], score: Math.max(results[0].score, RELEVANCE_FLOOR) } : null;
-  const [id] = await repo.insertArticles([toRow(article, sourceIds, relevance)]);
-  return id === undefined ? { ok: false, reason: 'already stored' } : { ok: true, id };
+  if (!force) {
+    const candidates = await repo.eventCandidates(now, EVENT_WINDOW_HOURS, EVENT_CANDIDATE_LIMIT);
+    const { links } = await matchEvents([{ index: 0, title: article.title, summary: relevance?.summary ?? null }], candidates);
+    const of = links[0]?.of;
+    if (of && 'stored' in of) return { ok: false, reason: 'same event', of: of.stored };
+  }
+  const [row] = await repo.insertArticles([toRow(article, sourceIds, relevance)]);
+  return row === undefined ? { ok: false, reason: 'already stored' } : { ok: true, id: row.id };
 }

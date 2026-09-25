@@ -12,22 +12,13 @@ describe('toOutcome', () => {
     expect(toOutcome(base).status).toBe('scored');
   });
   it('a skip reason makes it skipped and is kept', () => {
-    expect(toOutcome({ ...base, skippedReason: 'Duplicate of article 4' })).toEqual({
+    expect(toOutcome({ ...base, skippedReason: 'Below 25th percentile (score: 30)' })).toEqual({
       status: 'skipped',
       importanceScore: 62,
       importanceReasoning: 'Cabinet decision',
-      skipReason: 'Duplicate of article 4',
+      skipReason: 'Below 25th percentile (score: 30)',
       errorMessage: null,
     });
-  });
-  it('a same-event duplicate is `duplicate`, keeping its reason', () => {
-    expect(toOutcome({ ...base, skippedReason: 'Duplicate of article 4 (same event: budget)', duplicateOf: 4 })).toMatchObject({
-      status: 'duplicate',
-      skipReason: 'Duplicate of article 4 (same event: budget)',
-    });
-  });
-  it('an error wins over a duplicate', () => {
-    expect(toOutcome({ ...base, duplicateOf: 4, errorMessage: 'db down' }).status).toBe('failed');
   });
   it('an error wins over a skip', () => {
     expect(toOutcome({ ...base, skippedReason: 'x', errorMessage: 'panel timeout' }).status).toBe('failed');
