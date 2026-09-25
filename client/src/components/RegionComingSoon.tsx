@@ -1,3 +1,4 @@
+import { Globe2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRegion } from "@/hooks/useRegion";
 import type { RegionFeatureKey } from "@shared/region-config";
@@ -66,27 +67,26 @@ type RegionComingSoonProps = {
 export function RegionComingSoon({ feature, headline }: RegionComingSoonProps) {
   const { region, selectRegion, regionCode } = useRegion();
   const copy = FEATURE_COPY[feature] ?? DEFAULT_COPY;
-  const flag = region?.assets.flagEmoji ?? "🌍";
   const regionName = region?.shortName ?? "this region";
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 text-center">
-      <div className="text-5xl mb-4" aria-hidden>
-        {flag}
-      </div>
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
+      <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-elevated text-muted-foreground" aria-hidden="true">
+        <Globe2 className="h-8 w-8" />
+      </span>
+      <h1 className="mb-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">
         {headline ?? `${copy.title} – coming soon to ${regionName}`}
       </h1>
-      <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6">
+      <p className="mb-6 text-base text-muted-foreground sm:text-lg">
         {copy.body}
       </p>
       <div className="space-y-3">
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-muted-foreground">
           Want the full production experience right now? Switch back to Ireland and explore every
           feature while we finish the US build.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Button asChild variant="default">
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button asChild>
             <Link href="/select-region">Change region</Link>
           </Button>
           {regionCode !== "IE" && (
@@ -102,22 +102,3 @@ export function RegionComingSoon({ feature, headline }: RegionComingSoonProps) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

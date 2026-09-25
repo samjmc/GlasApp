@@ -50,11 +50,11 @@ export default function AdminPage() {
 
   return (
     <ProtectedRoute requireAdmin={true}>
-      <div className="container mx-auto space-y-6 p-6">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-6xl space-y-4 p-4">
+        <div className="flex items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold">Pledge tracking</h1>
-            <p className="text-muted-foreground">
+            <h1 className="font-display text-2xl font-bold tracking-tight">Pledge tracking</h1>
+            <p className="text-sm text-muted-foreground">
               Record promises with their source, add evidence, and set each status from that evidence.
             </p>
           </div>
@@ -82,12 +82,12 @@ export default function AdminPage() {
         <NewPledgeForm party={party} />
 
         <Card>
-          <CardHeader>
-            <CardTitle>{party} pledges</CardTitle>
+          <CardHeader className="py-4">
+            <CardTitle className="text-lg">{party} pledges</CardTitle>
             <CardDescription>{pledges.data ? `${pledges.data.length} recorded` : "Loading…"}</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3">
-            {pledges.isError && <p className="text-sm text-red-600">Could not load pledges.</p>}
+          <CardContent className="space-y-2">
+            {pledges.isError && <p className="text-sm text-destructive">Could not load pledges.</p>}
             {pledges.data?.length === 0 && <p className="text-sm text-muted-foreground">No pledges recorded for this party.</p>}
             {pledges.data?.map((pledge) => (
               <PledgeEditor key={pledge.id} pledge={pledge} />
@@ -127,15 +127,15 @@ function NewPledgeForm({ party }: { party: string }) {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
+      <CardHeader className="py-4">
+        <CardTitle className="flex items-center gap-2 text-lg">
           <Plus className="h-5 w-5" /> New pledge for {party}
         </CardTitle>
         <CardDescription>A source link is required: a pledge nobody can check is not recorded.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
-          className="grid gap-4 md:grid-cols-2"
+          className="grid gap-3 md:grid-cols-2"
           onSubmit={(e) => {
             e.preventDefault();
             if (ready) create.mutate();
@@ -211,13 +211,13 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
   const changed = status !== pledge.status || (note.trim() || null) !== (pledge.statusNote ?? null);
 
   return (
-    <div className="rounded-lg border p-4">
+    <div className="rounded-lg border border-border p-3">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h4 className="font-medium">{pledge.title}</h4>
           <p className="text-xs text-muted-foreground">
             {CATEGORY_LABELS[pledge.category]} · {pledge.electionYear} ·{" "}
-            <a href={pledge.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 underline">
+            <a href={pledge.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary underline">
               source <ExternalLink className="h-3 w-3" />
             </a>
           </p>
@@ -234,7 +234,7 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
         </Button>
       </div>
 
-      <div className="mt-3 grid gap-3 md:grid-cols-[200px_1fr_auto] md:items-end">
+      <div className="mt-2 grid gap-2 md:grid-cols-[200px_1fr_auto] md:items-end">
         <div>
           <Label>Status</Label>
           <Select value={status} onValueChange={(v) => setStatus(v as PledgeStatus)}>
@@ -294,7 +294,7 @@ function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
   const ready = summary.trim().length >= 3 && /^https?:\/\//i.test(sourceUrl.trim());
 
   return (
-    <div className="mt-2 space-y-3 border-l-2 pl-3">
+    <div className="mt-2 space-y-2 border-l-2 border-border pl-3">
       {detail.data?.evidence.map((item) => (
         <div key={item.id} className="flex items-start justify-between gap-2 text-sm">
           <div>
@@ -302,7 +302,7 @@ function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
             <span className="text-muted-foreground"> · {item.occurredOn}</span>
             {item.divisionId && <span className="text-muted-foreground"> · {item.divisionId}</span>}
             <p>{item.summary}</p>
-            <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs underline">
+            <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-primary underline">
               {item.sourceUrl}
             </a>
           </div>

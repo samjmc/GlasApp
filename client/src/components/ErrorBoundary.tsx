@@ -99,30 +99,30 @@ class ErrorBoundaryCore extends Component<ErrorBoundaryCoreProps, ErrorBoundaryC
 
       // Default error UI
       return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
-          <Card className="max-w-2xl w-full p-8">
+        <div className="flex min-h-screen items-center justify-center bg-background p-4">
+          <Card className="w-full max-w-2xl p-8">
             <div className="text-center">
-              <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+              <AlertTriangle className="mx-auto mb-4 h-16 w-16 text-destructive" />
 
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              <h1 className="mb-2 font-display text-2xl font-bold tracking-tight">
                 Oops! Something went wrong
               </h1>
 
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
+              <p className="mb-6 text-muted-foreground">
                 We encountered an unexpected error. Don't worry, your data is safe.
               </p>
 
               {import.meta.env.DEV && this.state.error && (
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6 text-left">
-                  <p className="font-mono text-sm text-red-800 dark:text-red-200 mb-2">
+                <div className="mb-6 rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-left">
+                  <p className="mb-2 font-mono text-sm text-destructive">
                     <strong>Error:</strong> {this.state.error.message}
                   </p>
                   {this.state.errorInfo && (
                     <details className="mt-2">
-                      <summary className="cursor-pointer text-sm text-red-700 dark:text-red-300 mb-2">
+                      <summary className="mb-2 cursor-pointer text-sm text-destructive">
                         Stack trace
                       </summary>
-                      <pre className="text-xs text-red-600 dark:text-red-400 overflow-auto max-h-48">
+                      <pre className="max-h-48 overflow-auto text-xs text-destructive">
                         {this.state.errorInfo.componentStack}
                       </pre>
                     </details>
@@ -130,14 +130,14 @@ class ErrorBoundaryCore extends Component<ErrorBoundaryCoreProps, ErrorBoundaryC
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Button
                   onClick={this.handleReset}
                   className="gap-2"
                   size="lg"
                 >
-                  <RefreshCw className="w-4 h-4" />
-                  Try Again
+                  <RefreshCw className="h-4 w-4" />
+                  Try again
                 </Button>
 
                 <Button
@@ -146,14 +146,14 @@ class ErrorBoundaryCore extends Component<ErrorBoundaryCoreProps, ErrorBoundaryC
                   className="gap-2"
                   size="lg"
                 >
-                  <Home className="w-4 h-4" />
-                  Go to Homepage
+                  <Home className="h-4 w-4" />
+                  Go to homepage
                 </Button>
               </div>
 
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-6">
+              <p className="mt-6 text-sm text-muted-foreground">
                 If this problem persists, please contact support at{' '}
-                <a href="mailto:support@glaspolitics.ie" className="text-blue-600 hover:underline">
+                <a href="mailto:support@glaspolitics.ie" className="font-semibold text-primary underline underline-offset-2">
                   support@glaspolitics.ie
                 </a>
               </p>

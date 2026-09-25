@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Download, RotateCcw, Share2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import type { QuizResult } from '@shared/quiz';
 import MultidimensionalIdeologyProfile from '@/components/MultidimensionalIdeologyProfile';
 import EnhancedProfileExplanation from '@/components/EnhancedProfileExplanation';
@@ -13,12 +12,14 @@ import PoliticalOpinionChangeTracker from '@/components/PoliticalOpinionChangeTr
 import LoadingScreen from '@/components/LoadingScreen';
 import { useAuth } from '@/contexts/AuthContext';
 import { fetchMyQuizResults, submitQuiz, type DimensionWeights } from '@/lib/ideologyApi';
-import { DIMENSION_STYLE } from '@/lib/ideologyDisplay';
 import { queryKeys } from '@/lib/queryKeys';
 import { clearStoredQuiz, loadStoredQuiz, loadWeights, storeQuiz } from '@/lib/quizStorage';
 
 // One save per page load, even under StrictMode's double effects.
 let savingAnswers: Promise<QuizResult> | null = null;
+
+const heroButton =
+  "flex h-11 w-11 items-center justify-center rounded-full bg-hero-muted text-hero-foreground transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 /**
  * Quiz results. The result comes from sessionStorage (the quiz page stores what
@@ -54,11 +55,11 @@ const QuizResultsPage: React.FC = () => {
         setStored({ result: saved, answers: stored.answers });
         await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
         await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
-        toast({ title: "Results Saved", description: "Your quiz result has been saved to your profile." });
+        toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
       })
       .catch((error) => {
         console.error("Error saving quiz result:", error);
-        toast({ title: "Save Failed", description: "We couldn't save your result to your profile.", variant: "destructive" });
+        toast({ title: "Save failed", description: "We couldn't save your result to your profile.", variant: "destructive" });
       })
       .finally(() => {
         savingAnswers = null;
@@ -74,7 +75,6 @@ const QuizResultsPage: React.FC = () => {
     }
   }, [result, isAuthenticated, historyLoading, setLocation]);
 
-  // Handle download as image
   const handleDownloadImage = async () => {
     try {
       const profileElement = document.querySelector('[data-profile-card="true"]');
@@ -83,15 +83,13 @@ const QuizResultsPage: React.FC = () => {
         return;
       }
 
-      const html2canvasModule = await import('html2canvas');
-      const html2canvas = html2canvasModule.default;
-
-      toast({ title: "Capturing...", description: "Creating your image." });
+      const html2canvas = (await import('html2canvas')).default;
+      toast({ title: "Capturing…", description: "Creating your image." });
 
       const canvas = await html2canvas(profileElement as HTMLElement, {
         scale: 2,
         useCORS: true,
-        backgroundColor: '#ffffff',
+        backgroundColor: getComputedStyle(document.body).backgroundColor,
         logging: false,
       });
 
@@ -100,10 +98,27 @@ const QuizResultsPage: React.FC = () => {
       link.href = canvas.toDataURL('image/png');
       link.click();
 
-      toast({ title: "Downloaded!", description: "Profile saved as image." });
+      toast({ title: "Downloaded", description: "Profile saved as an image." });
     } catch (error) {
       console.error('Error generating image:', error);
-      toast({ title: "Download Failed", description: "Unable to create image.", variant: "destructive" });
+      toast({ title: "Download failed", description: "Unable to create image.", variant: "destructive" });
+    }
+  };
+
+  const handleShare = async () => {
+    if (!result) return;
+    const url = `${window.location.origin}/quiz`;
+    const text = `My Glas Politics profile: ${result.ideology}. Where do you stand?`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "Glas Politics", text, url });
+        return;
+      }
+      await navigator.clipboard.writeText(`${text} ${url}`);
+      toast({ title: "Link copied", description: "Paste it anywhere." });
+    } catch (error) {
+      if ((error as { name?: string } | null)?.name === "AbortError") return;
+      toast({ title: "Could not share", description: "Please try again.", variant: "destructive" });
     }
   };
 
@@ -113,102 +128,77 @@ const QuizResultsPage: React.FC = () => {
   };
 
   if (!result) {
-    return <LoadingScreen message="Loading your political profile..." />;
+    return <LoadingScreen message="Loading your political profile…" />;
   }
 
   return (
-    <div className="container mx-auto py-6 px-4 sm:px-6">
-      <div className="space-y-6">
-        {/* Main Profile Card */}
+    <div className="grid items-start gap-3 py-2 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6">
+      <div className="flex min-w-0 flex-col gap-3">
         <div data-profile-card="true">
           <MultidimensionalIdeologyProfile
             dimensions={result.vector}
             ideology={result.ideology}
             description={result.description}
+            actions={
+              <>
+                <button type="button" onClick={handleDownloadImage} aria-label="Download as image" className={heroButton}>
+                  <Download className="h-5 w-5" />
+                </button>
+                <button type="button" onClick={handleShare} aria-label="Share" className={heroButton}>
+                  <Share2 className="h-5 w-5" />
+                </button>
+              </>
+            }
           />
         </div>
 
-        {/* Enhanced Analysis */}
-        <EnhancedProfileExplanation
-          dimensions={result.vector}
-          weights={weights}
-          onWeightsChange={setWeights}
-        />
+        <EnhancedProfileExplanation dimensions={result.vector} weights={weights} onWeightsChange={setWeights} />
 
-        {/* Context Analysis */}
-        <div className="w-full">
-          <ContextAnalysis dimensions={result.vector} />
-        </div>
+        <ContextAnalysis dimensions={result.vector} />
 
-        {/* Save / export card */}
-        <Card className="border-blue-200 dark:border-blue-800 shadow-md">
-          <CardHeader className="pb-3 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 rounded-t-lg">
-            <CardTitle className="text-base flex items-center gap-2">
-              <span>💾</span> Your Profile
-            </CardTitle>
-            <CardDescription className="text-xs">
-              {result.id !== null
-                ? "This result is saved to your profile."
-                : isAuthenticated
-                  ? "Saving this result to your profile..."
-                  : "Sign in to save this result and track how your views change."}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4 pt-5">
-            {!isAuthenticated && (
-              <Button
-                onClick={() => setLocation('/login')}
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-sm"
-                size="sm"
-              >
-                💾 Sign in to save
-              </Button>
-            )}
-
-            <div className="flex flex-col gap-2">
-              <Button
-                variant="outline"
-                className="w-full text-sm"
-                size="sm"
-                onClick={handleDownloadImage}
-              >
-                📥 Download
-              </Button>
-
-              <Button
-                onClick={handleRestartQuiz}
-                variant="outline"
-                className="w-full border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm"
-                size="sm"
-              >
-                🔄 Start Over (Retake Quiz)
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Opinion Tracker (signed in, two or more saved results) */}
+        {/* Signed in, two or more saved results */}
         <PoliticalOpinionChangeTracker />
-
-        {/* Dimensions Explained Card */}
-        <Card className="border-purple-200 dark:border-purple-800 shadow-md">
-          <CardHeader className="pb-3 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 rounded-t-lg">
-            <CardTitle className="text-base flex items-center gap-2">
-              <span>📊</span> Dimensions Explained
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-xs text-gray-700 dark:text-gray-300 pt-5">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-              {IDEOLOGY_DIMENSIONS.map((d) => (
-                <li key={d}>
-                  <strong>{DIMENSION_STYLE[d].icon} {DIMENSION_POLES[d].label}:</strong>{' '}
-                  {DIMENSION_POLES[d].negative} (-10) to {DIMENSION_POLES[d].positive} (+10)
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
       </div>
+
+      <aside className="flex flex-col gap-3 lg:sticky lg:top-6">
+        <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5">
+          <h2 className="font-display text-[22px] font-bold">Keep this result</h2>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {result.id !== null
+              ? "This result is saved to your profile."
+              : isAuthenticated
+                ? "Saving this result to your profile…"
+                : "Sign in to save this result and track how your views change over time."}
+          </p>
+          {!isAuthenticated && (
+            <Button size="lg" className="h-[52px] w-full text-base font-extrabold" onClick={() => setLocation('/login')}>
+              Sign in to save
+            </Button>
+          )}
+          {result.id !== null && (
+            <Button asChild size="lg" className="h-[52px] w-full text-base font-extrabold">
+              <Link href="/my-politics">Go to My politics</Link>
+            </Button>
+          )}
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { label: "Share", icon: Share2, onClick: handleShare },
+              { label: "Download", icon: Download, onClick: handleDownloadImage },
+              { label: "Retake", icon: RotateCcw, onClick: handleRestartQuiz },
+            ].map(({ label, icon: Icon, onClick }) => (
+              <button
+                key={label}
+                type="button"
+                onClick={onClick}
+                className="flex h-16 flex-col items-center justify-center gap-1 rounded-lg border text-[13px] font-bold transition-colors hover:bg-accent active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Icon className="h-5 w-5" aria-hidden="true" />
+                {label}
+              </button>
+            ))}
+          </div>
+        </section>
+      </aside>
     </div>
   );
 };

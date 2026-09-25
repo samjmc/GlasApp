@@ -3,52 +3,39 @@
  * Personalized TD rankings based on user's quiz + policy votes
  */
 
-import { useState } from 'react';
-import { useLocation } from 'wouter';
-import { useQuery } from '@tanstack/react-query';
-import { useAuth } from '@/contexts/AuthContext';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import {
-  Sparkles,
-  Target,
-  Users,
-  Building2,
-  ArrowRight,
-  Lock,
-  CheckCircle2,
-  AlertCircle,
-  Info
-} from 'lucide-react';
+import { useState, type ReactNode } from 'react';
 import { Link } from 'wouter';
+import { useQuery } from '@tanstack/react-query';
+import { ArrowRight, Compass, Lock, Users } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { EmptyState } from '@/components/pulse/EmptyState';
+import { PartyDot, TDAvatar } from '@/components/pulse/Party';
+import { PageHeader } from '@/components/PageHeader';
 import IdeologyTimeSeriesChartEnhanced from '@/components/IdeologyTimeSeriesChartEnhanced';
-import { PageHeader } from "@/components/PageHeader";
+import { PersonalRankingsTab } from '@/components/PersonalRankingsTab';
 import { fetchMyIdeology, fetchMyMatches } from '@/lib/ideologyApi';
+import { describePosition } from '@/lib/ideologyDisplay';
+import { partyStyle } from '@/lib/parties';
 import { queryKeys } from '@/lib/queryKeys';
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
 import type { IdeologyDimension, IdeologyVector } from '@shared/ideology';
 
-const describeDominantAxis = (vector: IdeologyVector): string => {
-  let dominant: IdeologyDimension = IDEOLOGY_DIMENSIONS[0];
-  for (const dim of IDEOLOGY_DIMENSIONS) {
-    if (Math.abs(vector[dim]) > Math.abs(vector[dominant])) dominant = dim;
-  }
-  const value = vector[dominant];
-  if (value === 0) return 'Balanced stance';
-  const poles = DIMENSION_POLES[dominant];
-  return `${poles.label}: leans ${value > 0 ? poles.positive : poles.negative}`;
-};
+type Tab = 'overview' | 'rankings' | 'network';
 
-const dimensionLabels = (dims: IdeologyDimension[]): string =>
-  dims.map((d) => DIMENSION_POLES[d].label).join(', ');
+const dominantDimension = (vector: IdeologyVector): IdeologyDimension =>
+  IDEOLOGY_DIMENSIONS.reduce((a, b) => (Math.abs(vector[b]) > Math.abs(vector[a]) ? b : a));
+
+const toPercent = (v: number) => Math.max(0, Math.min(100, ((v + IDEOLOGY_LIMIT) / (2 * IDEOLOGY_LIMIT)) * 100));
+const formatValue = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).toFixed(1)}`;
+
+const cardClass = 'flex flex-col gap-4 rounded-2xl border bg-card p-4 sm:p-5';
 
 export default function MyPoliticsPage() {
   const { user, isAuthenticated } = useAuth();
-  const [, navigate] = useLocation();
-  const [visibleRankingsCount, setVisibleRankingsCount] = useState(5);
-  const [activeTab, setActiveTab] = useState<'overview' | 'rankings'>('overview');
+  const [activeTab, setActiveTab] = useState<Tab>('overview');
 
   const signedIn = isAuthenticated && !!user;
 
@@ -71,48 +58,33 @@ export default function MyPoliticsPage() {
   const isLoading = vectorQuery.isLoading || matchesQuery.isLoading;
   const loadError = vectorQuery.error ?? matchesQuery.error;
 
-  const shellClass = "mobile-shell mobile-stack";
-  const defaultCardClass = "mobile-card";
-
-  // ---------------- RENDERING ----------------
-
   if (!isAuthenticated) {
     return (
-      <div className={shellClass}>
-        <Card className={`${defaultCardClass} text-center bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-2 border-purple-200`}>
-          <Lock className="w-16 h-16 mx-auto mb-4 text-purple-600" />
-          <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-            Find TDs Who Match Your Values
-          </h1>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-            Take a quick quiz to discover which TDs align with your political beliefs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/login">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 w-full sm:w-auto">
-                Sign In to Get Started
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button size="lg" variant="outline" className="border-purple-300 w-full sm:w-auto">
-                Create Account
-              </Button>
-            </Link>
+      <LockedState
+        title="Find TDs who match your views"
+        body="Sign in, then take the quiz. We rank every TD and party by how closely they match you."
+        action={
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="/login">Sign in</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/register">Create account</Link>
+            </Button>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-            <Link href="/" className="hover:text-purple-600">← Continue browsing as guest</Link>
-          </p>
-        </Card>
-      </div>
+        }
+      />
     );
   }
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Loading your political profile...</p>
+      <div className="flex flex-col gap-4 py-2" aria-busy="true" aria-label="Loading your political profile">
+        <Skeleton className="h-12 w-56" />
+        <Skeleton className="h-11 w-full max-w-md rounded-xl" />
+        <div className="grid gap-4 md:grid-cols-2">
+          <Skeleton className="h-72 rounded-2xl" />
+          <Skeleton className="h-72 rounded-2xl" />
         </div>
       </div>
     );
@@ -120,332 +92,221 @@ export default function MyPoliticsPage() {
 
   if (loadError) {
     return (
-      <div className={shellClass}>
-        <Card className={`${defaultCardClass} text-center`}>
-          <AlertCircle className="w-12 h-12 mx-auto mb-3 text-gray-400" />
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
-            We couldn't load your political profile right now.
-          </p>
-          <Button
-            variant="outline"
-            onClick={() => {
-              vectorQuery.refetch();
-              matchesQuery.refetch();
-            }}
-          >
-            Try again
-          </Button>
-        </Card>
+      <div className="py-2">
+        <EmptyState
+          title="We could not load your profile"
+          action={
+            <Button
+              variant="outline"
+              onClick={() => {
+                void vectorQuery.refetch();
+                void matchesQuery.refetch();
+              }}
+            >
+              Try again
+            </Button>
+          }
+        >
+          Check your connection and try again.
+        </EmptyState>
       </div>
     );
   }
 
-  if (!hasProfile) {
+  if (!hasProfile || !vector) {
     return (
-      <div className={shellClass}>
-        <Card className={`${defaultCardClass} bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-2 border-purple-200`}>
-          <div className="text-center space-y-4">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Unlock Your Personal TD Rankings
-            </h1>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              Complete the 8-dimension quiz to place yourself on the ideology map and see the TDs closest to your position.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3 mt-6">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg"
-                onClick={() => navigate('/quiz')}
-              >
-                Take the Quiz
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </div>
+      <LockedState
+        title="Unlock your TD matches"
+        body="Take the 8-dimension quiz. It places you on the ideology map and ranks the TDs and parties closest to you."
+        action={
+          <Button asChild size="lg">
+            <Link href="/quiz">
+              Take the quiz
+              <ArrowRight />
+            </Link>
+          </Button>
+        }
+      />
     );
   }
+
+  const dominant = dominantDimension(vector);
 
   return (
-    <div className={shellClass}>
-      <div className="mb-6">
-        <PageHeader
-          className="mb-2"
-          title="My politics"
-          tooltipTitle="What this page does for you"
-          bullets={[
-            "Shows the TDs closest to your views (quiz + daily votes).",
-            "Shows where you agree and differ with each TD and party.",
-            "Tracks how your position changes over time."
-          ]}
-        />
+    <div className="flex flex-col gap-5 py-2">
+      <PageHeader
+        title="My politics"
+        description="Your views, the TDs closest to them, and how they change."
+        tooltipTitle="What this page does for you"
+        bullets={[
+          'Shows the TDs closest to your views (quiz + daily votes).',
+          'Shows where you agree and differ with each TD and party.',
+          'Tracks how your position changes over time.',
+        ]}
+      />
 
-        <nav
-          className="grid grid-cols-2 gap-2 rounded-2xl border border-gray-200 bg-white/80 p-2 shadow-sm dark:border-gray-800 dark:bg-gray-900/60"
-          aria-label="Tabs"
-        >
-          {(['overview', 'rankings'] as const).map((tab) => {
-            const isActive = activeTab === tab;
-            const labels = {
-              overview: 'Overview',
-              rankings: 'My Rankings'
-            };
+      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as Tab)} className="flex flex-col gap-4">
+        <TabsList className="grid w-full max-w-md grid-cols-3">
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="rankings">My rankings</TabsTrigger>
+          <TabsTrigger value="network">Network</TabsTrigger>
+        </TabsList>
 
-            return (
-              <button
-                key={tab}
-                type="button"
-                onClick={() => setActiveTab(tab)}
-                className={[
-                  "h-11 w-full rounded-xl px-2 text-xs font-semibold tracking-wide transition",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900",
-                  isActive
-                    ? "bg-purple-600 text-white shadow"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
-                ].join(" ")}
-                aria-current={isActive ? "page" : undefined}
-              >
-                <span className="block truncate">{labels[tab]}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
-
-      {activeTab === 'overview' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-300">
-          {/* Ideology Snapshot */}
-          {vector && (
-            <Card className={`${defaultCardClass} bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-2 border-purple-200`}>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold flex items-center gap-2">
-                  <Target className="w-5 h-5 text-purple-600" />
-                  Your Ideology
+        <TabsContent value="overview" className="mt-0 flex flex-col gap-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <section className="flex flex-col gap-4 rounded-2xl bg-hero p-5 text-hero-foreground">
+              <div className="flex flex-col gap-1.5">
+                <span className="text-[13px] font-semibold text-hero-soft">Your strongest view</span>
+                <h2 className="font-display text-[28px] font-extrabold leading-tight tracking-tight">
+                  {vector[dominant] === 0 ? 'Balanced across the board' : describePosition(dominant, vector[dominant])}
                 </h2>
+                <span className="text-sm text-hero-soft">on {DIMENSION_POLES[dominant].label}</span>
               </div>
-
-              <div className="mb-4">
-                <div className="text-2xl font-bold mb-1 text-purple-700 dark:text-purple-300">
-                  {describeDominantAxis(vector)}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 mt-4">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
                 {IDEOLOGY_DIMENSIONS.map((dim) => {
                   const poles = DIMENSION_POLES[dim];
-                  const normalized = Math.max(0, Math.min(100, ((vector[dim] + IDEOLOGY_LIMIT) / (2 * IDEOLOGY_LIMIT)) * 100));
                   return (
-                    <div key={dim} className="text-xs">
-                      <div className="mb-1 font-medium text-gray-700 dark:text-gray-300">
+                    <li key={dim} className="flex flex-col gap-1">
+                      <span className="flex items-baseline justify-between text-[13px] font-semibold">
                         {poles.label}
-                      </div>
-                      <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-purple-500"
-                          style={{ width: `${normalized}%` }}
+                        <span className="font-display tabular-nums">{formatValue(vector[dim])}</span>
+                      </span>
+                      <span className="relative block h-1.5 rounded-full bg-hero-muted" aria-hidden="true">
+                        <span className="absolute -top-0.5 left-1/2 h-2.5 w-px bg-hero-soft" />
+                        <span
+                          className="absolute -top-[3px] h-3 w-3 -translate-x-1/2 rounded-full bg-primary"
+                          style={{ left: `${toPercent(vector[dim])}%` }}
                         />
-                      </div>
-                      <div className="flex justify-between mt-0.5 text-[10px] text-gray-500 dark:text-gray-400">
+                      </span>
+                      <span className="flex justify-between text-[11px] text-hero-soft">
                         <span>{poles.negative}</span>
                         <span>{poles.positive}</span>
-                      </div>
-                    </div>
+                      </span>
+                    </li>
                   );
                 })}
-              </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full mt-4 border-purple-200 hover:bg-purple-100 text-purple-700 dark:border-purple-800 dark:hover:bg-purple-900/30 dark:text-purple-300"
-                onClick={() => setActiveTab('rankings')}
-              >
-                View Full Analysis
+              </ul>
+              <Button asChild variant="inverse" className="mt-auto">
+                <Link href="/quiz/results">See full results</Link>
               </Button>
-            </Card>
-          )}
+            </section>
 
-          {/* Top Matches Snapshot */}
-          <Card className={defaultCardClass}>
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
-              Top Matches
-            </h2>
+            <section className={cardClass}>
+              <h2 className="font-display text-[22px] font-bold">Top matches</h2>
+              {rankings.length === 0 ? (
+                <EmptyState icon={Users} title="No TD matches yet">
+                  We have no TD positions to compare with yet.
+                </EmptyState>
+              ) : (
+                <ol className="flex flex-col gap-1">
+                  {rankings.slice(0, 5).map((match) => (
+                    <li key={match.tdId}>
+                      <Link
+                        href={`/td/${encodeURIComponent(match.name)}`}
+                        className="flex min-h-[60px] items-center gap-3 rounded-lg px-1 py-2 transition-colors hover:bg-accent"
+                      >
+                        <TDAvatar name={match.name} party={match.party} imageUrl={match.imageUrl} />
+                        <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                          <span className="truncate text-[15px] font-bold">{match.name}</span>
+                          <span className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
+                            <PartyDot party={match.party} />
+                            <span className="truncate">{partyStyle(match.party).name}</span>
+                          </span>
+                        </span>
+                        <span className="font-display text-[22px] font-bold tabular-nums text-primary">
+                          {Math.round(match.alignment)}%
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              )}
+              <Button variant="outline" className="mt-auto w-full" onClick={() => setActiveTab('rankings')}>
+                See all rankings
+                <ArrowRight />
+              </Button>
+            </section>
+          </div>
 
-            <div className="space-y-3">
-              {rankings.slice(0, 3).map((match) => (
-                <Link key={match.tdId} href={`/td/${encodeURIComponent(match.name)}`}>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer border border-gray-200 dark:border-gray-700">
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-gray-900 dark:text-white truncate">
-                        {match.name}
-                      </div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400">
-                        {match.party}
-                      </div>
-                    </div>
-                    <div className="text-right ml-3">
-                      <div className="text-lg font-bold text-green-600 dark:text-green-400">
-                        {Math.round(match.alignment)}%
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+          {user && <IdeologyTimeSeriesChartEnhanced userId={user.id} />}
+        </TabsContent>
+
+        <TabsContent value="rankings" className="mt-0">
+          <PersonalRankingsTab />
+        </TabsContent>
+
+        <TabsContent value="network" className="mt-0">
+          <section className={cardClass}>
+            <div className="flex flex-col gap-0.5">
+              <h2 className="font-display text-[22px] font-bold">Party alignment</h2>
+              <p className="text-[13px] text-muted-foreground">How close each party&apos;s TDs sit to your views, on average.</p>
             </div>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              className="w-full mt-2 text-gray-500"
-              onClick={() => setActiveTab('rankings')}
-            >
-              See all rankings <ArrowRight className="ml-1 w-4 h-4" />
-            </Button>
-          </Card>
-        </div>
-      )}
-
-      {activeTab === 'rankings' && (
-        <div className="space-y-6 animate-in fade-in duration-300">
-          {/* Ideology Time Series Chart */}
-          {user && (
-            <IdeologyTimeSeriesChartEnhanced userId={user.id} />
-          )}
-
-          {/* Full Personal Rankings */}
-          <Card className={defaultCardClass}>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-900 dark:text-white">
-                  <Users className="w-6 h-6 text-purple-600" />
-                  Complete Rankings
-                </h2>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0 rounded-full">
-                      <Info className="h-4 w-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="max-w-xs p-4 bg-slate-900 border-slate-800 text-white">
-                    <div className="flex flex-col gap-2">
-                      <p className="font-semibold text-emerald-400">Improve Your Match Accuracy</p>
-                      <p className="text-xs text-gray-300">
-                        Your rankings are currently based on the quiz. Vote on policy articles in the news feed to refine your matches!
-                      </p>
-                      <p className="text-xs text-gray-400 flex items-center gap-1.5 bg-white/10 p-2 rounded-lg mt-1">
-                        <Sparkles className="w-3 h-3 text-yellow-400" />
-                        Each vote updates your compatibility with all TDs who took a stance.
-                      </p>
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-              <Badge variant="outline" className="text-xs">
-                {rankings.length} TDs
-              </Badge>
-            </div>
-
-            {rankings.length === 0 ? (
-              <div className="text-center py-12">
-                <AlertCircle className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  No rankings yet.
-                </p>
-              </div>
+            {partyMatches.length === 0 ? (
+              <EmptyState icon={Users} title="No party matches yet">
+                We have no party positions to compare with yet.
+              </EmptyState>
             ) : (
-              <div className="space-y-3">
-                {rankings.slice(0, visibleRankingsCount).map((ranking, index) => (
-                  <Link key={ranking.tdId} href={`/td/${encodeURIComponent(ranking.name)}`}>
-                    <div className="p-4 border rounded-xl bg-white dark:bg-gray-800/50 hover:border-purple-500/30 transition-colors cursor-pointer dark:border-gray-700">
-                      <div className="flex justify-between items-start mb-3">
-                        <div className="flex gap-3">
-                          <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold text-sm">
-                            #{index + 1}
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-gray-900 dark:text-white leading-tight">
-                              {ranking.name}
-                            </h3>
-                            <p className="text-xs text-gray-500 mt-0.5">
-                              {ranking.party} • {ranking.constituency}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 leading-none">
-                            {Math.round(ranking.alignment)}%
-                          </div>
-                          <div className="text-[10px] text-gray-400 uppercase tracking-wide mt-1">Match</div>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-gray-100 dark:border-gray-700/50">
-                        <div className="text-center">
-                          <div className="text-xs text-gray-500 mb-0.5">Closest on</div>
-                          <div className="text-xs font-medium text-gray-900 dark:text-gray-200">
-                            {ranking.closest.length > 0 ? dimensionLabels(ranking.closest) : '—'}
-                          </div>
-                        </div>
-                        <div className="text-center border-l border-gray-100 dark:border-gray-700/50">
-                          <div className="text-xs text-gray-500 mb-0.5">Furthest on</div>
-                          <div className="text-xs font-medium text-gray-900 dark:text-gray-200">
-                            {ranking.furthest.length > 0 ? dimensionLabels(ranking.furthest) : '—'}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-
-                {visibleRankingsCount < rankings.length && (
-                  <Button
-                    variant="ghost"
-                    className="w-full mt-4"
-                    onClick={() => setVisibleRankingsCount((prev) => prev + 10)}
-                  >
-                    Load more
-                  </Button>
-                )}
-              </div>
+              <ul className="grid gap-2 md:grid-cols-2">
+                {partyMatches.map((match) => {
+                  const pct = Math.round(match.alignment);
+                  const style = partyStyle(match.party);
+                  return (
+                    <li key={match.party}>
+                      <Link
+                        href={`/party/${encodeURIComponent(match.party)}`}
+                        className="flex flex-col gap-2.5 rounded-xl bg-elevated p-3.5 transition-colors hover:bg-accent active:scale-[0.98]"
+                      >
+                        <span className="flex items-center gap-3">
+                          <TDAvatar name={style.name} party={match.party} />
+                          <span className="flex min-w-0 flex-1 flex-col">
+                            <span className="truncate text-base font-bold">{style.name}</span>
+                            <span className="text-xs text-muted-foreground">
+                              From {match.tdCount} TD{match.tdCount === 1 ? '' : 's'}
+                            </span>
+                          </span>
+                          <span className="font-display text-[26px] font-extrabold tabular-nums">{pct}%</span>
+                        </span>
+                        <span className="block h-2 overflow-hidden rounded-full bg-input" aria-hidden="true">
+                          <span className="block h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: style.dot }} />
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
             )}
-          </Card>
+          </section>
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
 
-          {/* Party Alignment */}
-          <Card className={defaultCardClass}>
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-blue-600" />
-              Party Alignment
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {partyMatches.map((match) => (
-                <div
-                  key={match.party}
-                  className="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-700"
-                >
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <div className="font-bold text-gray-900 dark:text-white">{match.party}</div>
-                      <div className="text-xs text-gray-500">
-                        Based on {match.tdCount} TD{match.tdCount === 1 ? '' : 's'}
-                      </div>
-                    </div>
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                      {Math.round(match.alignment)}%
-                    </div>
-                  </div>
-                  <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-blue-600"
-                      style={{ width: `${match.alignment}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      )}
+function LockedState({ title, body, action }: { title: string; body: string; action: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-5 py-2">
+      <section className="flex flex-col items-start gap-4 rounded-2xl bg-hero p-6 text-hero-foreground sm:p-10">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-hero-muted">
+          <Lock className="h-6 w-6" aria-hidden="true" />
+        </span>
+        <span className="text-[13px] font-semibold text-hero-soft">My politics</span>
+        <h1 className="max-w-xl font-display text-[34px] font-extrabold leading-[1.05] tracking-tight sm:text-5xl">{title}</h1>
+        <p className="max-w-xl text-base leading-relaxed text-hero-soft">{body}</p>
+        {action}
+      </section>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {[
+          { icon: Compass, title: 'Your position', text: 'See where you sit on 8 dimensions, from economy to environment.' },
+          { icon: Users, title: 'Your TD matches', text: 'Every TD ranked by how closely their record matches your views.' },
+          { icon: ArrowRight, title: 'How you change', text: 'Daily votes update your profile. Track how it moves over time.' },
+        ].map(({ icon: Icon, title: t, text }) => (
+          <div key={t} className="flex flex-col gap-2 rounded-xl border bg-card p-4">
+            <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+            <h2 className="text-[15px] font-bold">{t}</h2>
+            <p className="text-[13px] text-muted-foreground">{text}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

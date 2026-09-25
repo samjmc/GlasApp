@@ -1,4 +1,4 @@
-import { AlertCircle, RefreshCw, Wifi, WifiOff } from 'lucide-react';
+import { AlertCircle, RefreshCw, WifiOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
@@ -13,9 +13,9 @@ interface ErrorDisplayProps {
 
 /**
  * ErrorDisplay - Reusable component for showing user-friendly errors
- * 
+ *
  * Usage:
- * <ErrorDisplay 
+ * <ErrorDisplay
  *   title="Failed to load news"
  *   message="We couldn't fetch the latest articles"
  *   onRetry={() => refetch()}
@@ -33,22 +33,22 @@ export function ErrorDisplay({
 }: ErrorDisplayProps) {
   const errorMessages = {
     error: {
-      icon: <AlertCircle className="w-12 h-12 text-red-500" />,
+      icon: <AlertCircle className="h-12 w-12 text-destructive" />,
       defaultTitle: 'Something went wrong',
       defaultMessage: 'An unexpected error occurred. Please try again.',
     },
     network: {
-      icon: <WifiOff className="w-12 h-12 text-orange-500" />,
+      icon: <WifiOff className="h-12 w-12 text-warn" />,
       defaultTitle: 'Connection problem',
       defaultMessage: 'Unable to connect to the server. Check your internet connection.',
     },
     notfound: {
-      icon: <AlertCircle className="w-12 h-12 text-gray-500" />,
+      icon: <AlertCircle className="h-12 w-12 text-muted-foreground" />,
       defaultTitle: 'Not found',
       defaultMessage: 'The content you\'re looking for doesn\'t exist.',
     },
     unauthorized: {
-      icon: <AlertCircle className="w-12 h-12 text-yellow-500" />,
+      icon: <AlertCircle className="h-12 w-12 text-warn" />,
       defaultTitle: 'Access denied',
       defaultMessage: 'You need to sign in to access this content.',
     },
@@ -61,8 +61,8 @@ export function ErrorDisplay({
   // Minimal variant - just text
   if (variant === 'minimal') {
     return (
-      <div className="text-center py-4">
-        <p className="text-sm text-red-600 dark:text-red-400">
+      <div className="py-4 text-center">
+        <p className="text-sm text-destructive">
           {displayMessage}
         </p>
         {onRetry && (
@@ -82,22 +82,22 @@ export function ErrorDisplay({
   // Inline variant - compact error
   if (variant === 'inline') {
     return (
-      <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+      <div className="rounded-lg border border-destructive/40 bg-destructive/10 p-4">
         <div className="flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
           <div className="flex-1">
-            <p className="text-sm font-medium text-red-800 dark:text-red-200">
+            <p className="text-sm font-medium text-destructive">
               {displayTitle}
             </p>
-            <p className="text-sm text-red-600 dark:text-red-300 mt-1">
+            <p className="mt-1 text-sm text-destructive">
               {displayMessage}
             </p>
             {import.meta.env.DEV && error && (
               <details className="mt-2">
-                <summary className="text-xs text-red-500 cursor-pointer">
+                <summary className="cursor-pointer text-xs text-destructive">
                   Technical details
                 </summary>
-                <pre className="text-xs text-red-500 mt-1 overflow-auto">
+                <pre className="mt-1 overflow-auto text-xs text-destructive">
                   {typeof error === 'string' ? error : error.message}
                 </pre>
               </details>
@@ -108,9 +108,9 @@ export function ErrorDisplay({
               onClick={onRetry}
               variant="ghost"
               size="sm"
-              className="flex-shrink-0"
+              className="shrink-0"
             >
-              <RefreshCw className="w-4 h-4" />
+              <RefreshCw className="h-4 w-4" />
             </Button>
           )}
         </div>
@@ -122,21 +122,21 @@ export function ErrorDisplay({
   return (
     <Card className="p-8">
       <div className="text-center">
-        <div className="flex justify-center mb-4">
+        <div className="mb-4 flex justify-center">
           {config.icon}
         </div>
-        
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+
+        <h3 className="mb-2 text-lg font-semibold">
           {displayTitle}
         </h3>
-        
-        <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+
+        <p className="mx-auto mb-6 max-w-md text-muted-foreground">
           {displayMessage}
         </p>
 
         {import.meta.env.DEV && error && (
-          <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 mb-4 text-left">
-            <p className="text-xs font-mono text-gray-700 dark:text-gray-300">
+          <div className="mb-4 rounded-lg bg-elevated p-3 text-left">
+            <p className="font-mono text-xs text-muted-foreground">
               {typeof error === 'string' ? error : error.message}
             </p>
           </div>
@@ -144,8 +144,8 @@ export function ErrorDisplay({
 
         {onRetry && (
           <Button onClick={onRetry} className="gap-2">
-            <RefreshCw className="w-4 h-4" />
-            Try Again
+            <RefreshCw className="h-4 w-4" />
+            Try again
           </Button>
         )}
       </div>
@@ -161,7 +161,7 @@ export function NetworkError({ onRetry }: { onRetry?: () => void }) {
   return (
     <ErrorDisplay
       type="network"
-      title="Connection Lost"
+      title="Connection lost"
       message="We're having trouble connecting to our servers. Please check your internet connection and try again."
       onRetry={onRetry}
     />
@@ -176,7 +176,7 @@ export function NotFoundError({ resourceName }: { resourceName?: string }) {
   return (
     <ErrorDisplay
       type="notfound"
-      title={`${resourceName || 'Page'} Not Found`}
+      title={`${resourceName || 'Page'} not found`}
       message={`The ${resourceName?.toLowerCase() || 'page'} you're looking for doesn't exist or has been removed.`}
     />
   );
@@ -190,30 +190,8 @@ export function UnauthorizedError() {
   return (
     <ErrorDisplay
       type="unauthorized"
-      title="Sign In Required"
+      title="Sign in required"
       message="You need to be signed in to access this content. Please sign in and try again."
     />
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import { PLEDGE_CATEGORIES } from "@shared/pledges";
@@ -53,22 +54,21 @@ export function PledgePriorities() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>What matters most to you?</CardTitle>
+        <CardTitle className="font-display text-xl font-bold tracking-tight">What matters most to you?</CardTitle>
         <CardDescription>
           Order these policy areas, most important first.{" "}
           {rankers > 0 ? `${rankers} ${rankers === 1 ? "person has" : "people have"} ranked them so far.` : "Nobody has ranked them yet."}
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-2">
-        <ol className="space-y-1">
+      <CardContent className="flex flex-col gap-3">
+        <ol className="flex flex-col gap-1.5">
           {order.map((category, index) => (
-            <li key={category} className="flex items-center gap-2 rounded border px-3 py-2">
-              <span className="w-6 text-sm text-muted-foreground">{index + 1}.</span>
-              <span className="flex-1 text-sm">{CATEGORY_LABELS[category]}</span>
+            <li key={category} className="flex items-center gap-2 rounded-xl bg-elevated py-1 pl-3 pr-1">
+              <span className="w-6 font-display text-sm font-bold text-muted-foreground">{index + 1}</span>
+              <span className="flex-1 text-sm font-semibold">{CATEGORY_LABELS[category]}</span>
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-7 w-7"
                 aria-label={`Move ${CATEGORY_LABELS[category]} up`}
                 disabled={index === 0}
                 onClick={() => move(index, -1)}
@@ -78,7 +78,6 @@ export function PledgePriorities() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-7 w-7"
                 aria-label={`Move ${CATEGORY_LABELS[category]} down`}
                 disabled={index === order.length - 1}
                 onClick={() => move(index, 1)}
@@ -93,7 +92,9 @@ export function PledgePriorities() {
             {save.isPending ? "Saving…" : "Save my ranking"}
           </Button>
         ) : (
-          <p className="text-xs text-muted-foreground">Sign in to save your ranking.</p>
+          <Button asChild variant="secondary">
+            <Link href="/login">Sign in to save my ranking</Link>
+          </Button>
         )}
       </CardContent>
     </Card>

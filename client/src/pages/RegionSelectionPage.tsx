@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { Loader2, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useRegion } from "@/hooks/useRegion";
 import { REGION_CONFIGS } from "@shared/region-config";
-import { Loader2 } from "lucide-react";
 
 export default function RegionSelectionPage() {
   const { regionCode, status, availableRegions, selectRegion, isMockRegion } = useRegion();
@@ -18,120 +18,94 @@ export default function RegionSelectionPage() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
-        <p className="text-sm text-gray-500">Preparing regions…</p>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" aria-hidden="true" />
+        <p className="text-sm text-muted-foreground">Preparing regions…</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-wide text-emerald-500 font-semibold">
+    <div className="min-h-screen bg-background">
+      <div className="mx-auto flex max-w-2xl flex-col gap-8 px-4 py-10 sm:py-16">
+        <div className="flex flex-col gap-3 text-center sm:text-left">
+          <span className="text-[13px] font-bold uppercase tracking-wide text-primary">
             Multi-region preview
-          </p>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          </span>
+          <h1 className="font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
             Choose your political landscape
           </h1>
-          <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground">
             Glas keeps the accountability loop identical everywhere. Pick your region to load
             local politicians, sentiment feeds, and retention streaks. You can switch anytime
             from the header.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div role="radiogroup" aria-label="Region" className="flex flex-col gap-3">
           {availableRegions.map((region) => {
             const config = REGION_CONFIGS[region.code];
             const isSelected = regionCode === region.code;
             const isPreview = Boolean(region.code === "US");
 
             return (
-              <Card
+              <button
                 key={region.code}
-                className={`p-6 border-2 transition-shadow ${
-                  isSelected
-                    ? "border-emerald-400 shadow-lg"
-                    : "border-transparent hover:shadow-lg"
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                onClick={() => selectRegion(region.code)}
+                className={`flex w-full flex-col gap-3 rounded-2xl border-2 bg-card p-4 text-left transition-colors sm:p-5 ${
+                  isSelected ? "border-primary" : "border-border hover:border-input"
                 }`}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="text-3xl mb-2" aria-hidden>
-                      {config.assets.flagEmoji}
-                    </div>
-                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {config.name}
-                    </h2>
-                  </div>
-                  {isSelected && (
-                    <span className="px-3 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 rounded-full">
-                      Active
-                    </span>
-                  )}
-                  {!isSelected && isPreview && (
-                    <span className="px-3 py-1 text-xs font-semibold bg-sky-100 text-sky-700 rounded-full">
-                      Preview
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                  {config.home.tagline}
-                </p>
-                {config.home.description && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-                    {config.home.description}
-                  </p>
-                )}
-
-                <div className="flex items-center justify-between">
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {isPreview
-                      ? "Mock data enabled – final integrations coming soon."
-                      : "Live Irish dataset with TD tracking."}
-                  </div>
-                  <Button
-                    variant={isSelected ? "secondary" : "default"}
-                    onClick={() => selectRegion(region.code)}
+                <span className="flex w-full items-center gap-3">
+                  <span
+                    aria-hidden="true"
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-display text-base font-extrabold tracking-wide ${
+                      isSelected ? "bg-primary text-primary-foreground" : "bg-elevated text-foreground"
+                    }`}
                   >
-                    {isSelected ? "Selected" : `Use ${region.shortName}`}
-                  </Button>
-                </div>
-              </Card>
+                    {region.code}
+                  </span>
+                  <span className="flex min-w-0 flex-grow flex-col gap-1">
+                    <span className="flex flex-wrap items-center gap-2">
+                      <span className="font-display text-xl font-bold tracking-tight">{config.name}</span>
+                      {isSelected && <Badge variant="success">Active</Badge>}
+                      {!isSelected && isPreview && <Badge variant="outline">Preview</Badge>}
+                    </span>
+                    <span className="text-[13px] text-muted-foreground">
+                      {isPreview
+                        ? "Mock data enabled – final integrations coming soon."
+                        : "Live Irish dataset with TD tracking."}
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full border-2 ${
+                      isSelected ? "border-primary bg-primary" : "border-input"
+                    }`}
+                  >
+                    {isSelected && <Check className="h-3.5 w-3.5 text-primary-foreground" strokeWidth={3} />}
+                  </span>
+                </span>
+                <span className="text-sm leading-relaxed">{config.home.tagline}</span>
+              </button>
             );
           })}
         </div>
 
         {isMockRegion && (
-          <div className="mt-10 p-4 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-sm text-blue-800 dark:text-blue-200">
+          <div role="status" className="flex items-start gap-3 rounded-2xl border border-input bg-elevated p-4 text-sm leading-relaxed">
             Mock data is active for this region. Core loops, streaks, and routing work exactly as
             production; real datasets will plug in next.
           </div>
         )}
+
+        <Button size="lg" className="w-full gap-2" onClick={() => navigate("/", { replace: true })}>
+          {regionCode === "US" ? "Use United States" : "Use Ireland"}
+        </Button>
       </div>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

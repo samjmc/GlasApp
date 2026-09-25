@@ -1,46 +1,19 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { QUIZ_QUESTIONS, type QuizQuestion, type QuizResponse } from '@shared/quiz';
 import { DIMENSION_POLES, type IdeologyDimension } from '@shared/ideology';
 import { useToast } from "@/hooks/use-toast";
 import LoadingScreen from '@/components/LoadingScreen';
+import { EmptyState } from '@/components/pulse/EmptyState';
 import { useActivityTracker } from '@/hooks/useActivityTracker';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, ChevronLeft, HelpCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { loadDraft, storeDraft, storeQuiz } from '@/lib/quizStorage';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-const ICON_POOL = [
-  '🏗️', '💚', '💰', '🛡️', '🌱', '⚖️', '🎯', '🚀',
-  '📊', '🏛️', '🌍', '👥', '💡', '🔧', '📈', '🎓',
-  '🏥', '🏠', '🚂', '🌐', '🔒', '📜', '⚡', '🌟',
-  '🎨', '🔬', '💼', '🤝', '🌳', '🔔', '📱', '🎪'
-];
-
-// Consistent per-question emojis
-const getIconsForQuestion = (questionId: number, answerCount: number) => {
-  const seed = questionId * 17 + 31;
-  const shuffled = [...ICON_POOL];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor((seed + i * 7) % (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled.slice(0, answerCount);
-};
 
 /** The political quiz. Answers are page state; the server scores them (POST /api/quiz). */
 const QuizPage: React.FC = () => {
@@ -104,6 +77,7 @@ const QuizPage: React.FC = () => {
   const totalQuestions = QUIZ_QUESTIONS.length;
   const answeredQuestionCount = QUIZ_QUESTIONS.filter((q) => answers[q.id] !== undefined).length;
   const overallProgress = totalQuestions ? (answeredQuestionCount / totalQuestions) * 100 : 0;
+  const questionNumber = currentQuestion ? QUIZ_QUESTIONS.findIndex((q) => q.id === currentQuestion.id) + 1 : 0;
 
   const isLastQuestion =
     currentQuestionIndex === currentDimensionQuestions.length - 1 &&
@@ -206,164 +180,184 @@ const QuizPage: React.FC = () => {
     }
   };
 
-  const questionIcons = useMemo(() => {
-    if (!currentQuestion) return [];
-    return getIconsForQuestion(currentQuestion.id, currentQuestion.answers.length);
-  }, [currentQuestion]);
+  /** Jump to a dimension's first unanswered question (or its first question when all are done). */
+  const goToDimension = (index: number) => {
+    const questions = questionsByDimension[dimensionOrder[index]];
+    const firstOpen = questions.findIndex((q) => answers[q.id] === undefined);
+    setDimensionIndex(index);
+    setCurrentQuestionIndex(firstOpen >= 0 ? firstOpen : 0);
+  };
 
   if (isSubmitting) {
-    return <LoadingScreen message="Analyzing profile..." />;
+    return <LoadingScreen message="Working out where you stand" />;
   }
 
-  const dimensionAnswered = currentDimensionQuestions.filter((q) => answers[q.id] !== undefined).length;
+  const poles = activeDimension ? DIMENSION_POLES[activeDimension] : null;
+  const dimensionsDone = dimensionOrder.filter((d) => questionsByDimension[d].every((q) => answers[q.id] !== undefined)).length;
 
   return (
-    <div className="min-h-screen pb-20">
-      <div className="max-w-3xl mx-auto px-4 py-6">
-
-        {/* Header */}
-        <div className="mb-8 space-y-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
-              <span className="text-emerald-500">Quiz</span>
-              <span className="text-gray-400">/</span>
-              {activeDimension ? DIMENSION_POLES[activeDimension].label : ''}
-              <span className="text-xs font-normal text-gray-400">
-                {dimensionAnswered}/{currentDimensionQuestions.length}
-              </span>
-            </h1>
-            <Badge variant="outline" className="text-xs border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400">
-              {answeredQuestionCount} / {totalQuestions}
-            </Badge>
-          </div>
-          <Progress value={overallProgress} className="h-1.5" />
+    <div className="flex flex-col gap-6">
+      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-2">
+          <h1 className="font-display text-3xl font-bold leading-none tracking-tight sm:text-5xl">
+            Where do <span className="text-primary">you</span> stand?
+          </h1>
+          <p className="text-base text-muted-foreground sm:text-lg">
+            {totalQuestions} questions across {dimensionOrder.length} dimensions. Answers save on this device as you go.
+          </p>
         </div>
+        <Button asChild variant="outline" className="self-start sm:self-auto">
+          <Link href="/">Save and leave</Link>
+        </Button>
+      </header>
 
-        {/* Question Area */}
-        <AnimatePresence mode="wait">
-          {currentQuestion ? (
-            <motion.div
-              key={currentQuestion.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.2 }}
-              className="space-y-6"
-            >
-              <h2 className="text-xl md:text-2xl font-semibold leading-snug text-gray-900 dark:text-white">
-                {currentQuestion.text}
-              </h2>
-
-              <RadioGroup
-                value={selectedAnswerIndex !== null ? selectedAnswerIndex.toString() : ""}
-                onValueChange={(value) => {
-                  const numericValue = Number.parseInt(value, 10);
-                  if (!Number.isNaN(numericValue)) handleAnswerSelect(numericValue);
-                }}
-                className="space-y-3"
-              >
-                {currentQuestion.answers.map((answer, index) => {
-                  const isSelected = selectedAnswerIndex === index;
-                  const icon = questionIcons[index] || '📋';
-
-                  return (
-                    <div
-                      key={index}
-                      className={cn(
-                        "relative flex items-center justify-between rounded-xl border p-4 transition-all cursor-pointer",
-                        isSelected
-                          ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 shadow-sm"
-                          : "border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
-                      )}
-                      onClick={() => handleAnswerSelect(index)}
-                    >
-                      <div className="flex items-center gap-4 flex-1">
-                        <RadioGroupItem
-                          value={index.toString()}
-                          id={`answer-${index}`}
-                          className={cn(
-                            "border-gray-400 text-emerald-500 mt-0.5",
-                            isSelected && "border-emerald-500"
-                          )}
-                        />
-                        <div className="flex items-start gap-3 flex-1">
-                          <span className="text-2xl shrink-0 leading-none">{icon}</span>
-                          <Label
-                            htmlFor={`answer-${index}`}
-                            className="cursor-pointer text-sm md:text-base font-medium text-gray-900 dark:text-gray-100 leading-normal"
-                          >
-                            {answer.text}
-                          </Label>
-                        </div>
-                      </div>
-
-                      {/* Info Tooltip */}
-                      {answer.description && (
-                        <TooltipProvider delayDuration={0}>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-full shrink-0 ml-2"
-                                onClick={(e) => e.stopPropagation()} // Prevent selection when clicking info
-                              >
-                                <HelpCircle className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent
-                              side="left"
-                              className="max-w-[280px] bg-gray-900 dark:bg-gray-800 border-gray-800 text-white p-3 text-xs leading-relaxed z-[1050]"
-                            >
-                              {answer.description}
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      )}
-                    </div>
-                  );
-                })}
-              </RadioGroup>
-
-              {/* Navigation */}
-              <div className="flex items-center justify-between pt-6">
-                <Button
-                  variant="ghost"
-                  onClick={handlePrevious}
-                  disabled={isPreviousDisabled}
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <ChevronLeft className="mr-2 h-4 w-4" />
-                  Back
-                </Button>
-
-                <div className="flex items-center gap-4">
-                  <span className={cn(
-                    "text-xs font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 transition-opacity",
-                    saveIndicatorVisible ? "opacity-100" : "opacity-0"
-                  )}>
-                    <CheckCircle2 className="h-3 w-3" /> Saved
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <section className="flex flex-col gap-6 rounded-2xl border bg-card p-5 sm:p-8">
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              {poles && (
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <span className="inline-flex h-8 items-center gap-2 rounded-full bg-elevated px-3.5 text-sm font-bold">
+                    <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+                    {poles.label}
                   </span>
-
-                  <Button
-                    onClick={handleNext}
-                    disabled={isNextDisabled}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white min-w-[120px]"
-                  >
-                    {isLastQuestion ? 'Complete Quiz' : 'Next'}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <span className="truncate text-sm font-semibold text-muted-foreground">
+                    {poles.negative} ↔ {poles.positive}
+                  </span>
                 </div>
-              </div>
-
-            </motion.div>
-          ) : (
-            <div className="text-center py-12 text-gray-500">
-              No questions found.
+              )}
+              <span className="text-sm font-bold">
+                Question {questionNumber} <span className="text-muted-foreground">of {totalQuestions}</span>
+              </span>
             </div>
-          )}
-        </AnimatePresence>
+            <div
+              role="progressbar"
+              aria-label="Quiz progress"
+              aria-valuemin={0}
+              aria-valuemax={totalQuestions}
+              aria-valuenow={answeredQuestionCount}
+              className="h-2 overflow-hidden rounded-full bg-input"
+            >
+              <div className="h-full rounded-full bg-primary transition-[width] duration-500" style={{ width: `${overallProgress}%` }} />
+            </div>
+          </div>
 
+          <AnimatePresence mode="wait">
+            {currentQuestion ? (
+              <motion.div
+                key={currentQuestion.id}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.18 }}
+                className="flex flex-col gap-6"
+              >
+                <h2 className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-[34px]">
+                  {currentQuestion.text}
+                </h2>
+
+                <div role="radiogroup" aria-label="Answers" className="flex flex-col gap-3">
+                  {currentQuestion.answers.map((answer, index) => {
+                    const isSelected = selectedAnswerIndex === index;
+                    return (
+                      <button
+                        key={index}
+                        type="button"
+                        role="radio"
+                        aria-checked={isSelected}
+                        onClick={() => handleAnswerSelect(index)}
+                        className={cn(
+                          "flex items-start gap-4 rounded-xl border-2 p-4 text-left transition-colors active:scale-[0.99] sm:p-5",
+                          isSelected ? "border-primary bg-primary/10" : "border-transparent bg-elevated hover:border-input"
+                        )}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={cn(
+                            "mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2",
+                            isSelected ? "border-primary bg-primary text-primary-foreground" : "border-input"
+                          )}
+                        >
+                          {isSelected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                        </span>
+                        <span className="flex flex-col gap-1">
+                          <span className="text-base font-bold leading-snug sm:text-[17px]">{answer.text}</span>
+                          {answer.description && (
+                            <span className="text-sm leading-relaxed text-muted-foreground">{answer.description}</span>
+                          )}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            ) : (
+              <EmptyState title="No questions found" />
+            )}
+          </AnimatePresence>
+
+          <div className="flex items-center gap-3">
+            <Button variant="outline" size="lg" onClick={handlePrevious} disabled={isPreviousDisabled}>
+              <ArrowLeft /> Back
+            </Button>
+            <span
+              aria-live="polite"
+              className={cn(
+                "ml-auto flex items-center gap-1.5 text-sm font-semibold text-primary transition-opacity",
+                saveIndicatorVisible ? "opacity-100" : "opacity-0"
+              )}
+            >
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Saved
+            </span>
+            <Button size="lg" onClick={handleNext} disabled={isNextDisabled} className="min-w-[140px]">
+              {isLastQuestion ? 'See my results' : 'Next'} <ArrowRight />
+            </Button>
+          </div>
+        </section>
+
+        <aside className="flex flex-col gap-4 rounded-2xl border bg-card p-5 sm:p-6">
+          <div className="flex flex-col gap-1">
+            <h2 className="font-display text-xl font-bold">Your progress</h2>
+            <p className="text-sm text-muted-foreground">
+              {answeredQuestionCount} of {totalQuestions} answered · {dimensionsDone} of {dimensionOrder.length} dimensions done
+            </p>
+          </div>
+          <ol className="grid grid-cols-2 gap-1.5 lg:grid-cols-1">
+            {dimensionOrder.map((dimension, index) => {
+              const questions = questionsByDimension[dimension];
+              const done = questions.filter((q) => answers[q.id] !== undefined).length;
+              const complete = done === questions.length;
+              const current = index === dimensionIndex;
+              return (
+                <li key={dimension}>
+                  <button
+                    type="button"
+                    onClick={() => goToDimension(index)}
+                    aria-current={current ? "step" : undefined}
+                    className={cn(
+                      "flex h-12 w-full items-center gap-3 rounded-lg px-3 text-left text-sm font-semibold transition-colors",
+                      current ? "bg-elevated text-foreground" : "text-muted-foreground hover:bg-elevated/60 hover:text-foreground"
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 text-[11px] font-bold",
+                        complete ? "border-primary bg-primary text-primary-foreground" : current ? "border-primary" : "border-input"
+                      )}
+                    >
+                      {complete ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : index + 1}
+                    </span>
+                    <span className="flex-1 truncate">{DIMENSION_POLES[dimension].label}</span>
+                    <span className="text-xs tabular-nums text-muted-foreground">
+                      {done}/{questions.length}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </aside>
       </div>
     </div>
   );

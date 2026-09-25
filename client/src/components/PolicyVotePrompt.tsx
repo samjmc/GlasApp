@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
+import { ChevronDown, Vote } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { Progress } from "@/components/ui/progress";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
-import { Info, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
+import { cn } from "@/lib/utils";
 import {
   castArticleVote,
   fetchArticleVote,
@@ -34,7 +30,7 @@ const EMPTY_TALLY: QuestionTally = { total: 0, byOption: {} };
 
 const messageOf = (error: unknown) => (error instanceof Error ? error.message : "Please try again in a moment.");
 
-/** The policy question under a news article: answer it, then see how others answered. */
+/** The policy question under a news article: answer it in one tap, then see how others answered. */
 export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProps) {
   const { isAuthenticated } = useAuth();
   const { toast } = useToast();
@@ -85,86 +81,78 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
   };
 
   const options = Object.entries(policyVote.options ?? {});
+  const resultsId = `policy-vote-results-${policyVote.id}`;
 
   return (
-    <Card className="mx-auto w-full max-w-[400px] space-y-4 border-emerald-500/40 bg-gradient-to-br from-emerald-900/20 via-gray-900/30 to-gray-900/10 p-4 sm:max-w-none sm:p-5">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-emerald-100/80 sm:text-sm">Policy Vote</h4>
-          <p className="mt-1 text-sm font-medium text-white sm:text-base">{policyVote.question}</p>
-          {policyVote.topic && (
-            <Badge variant="outline" className="mt-2 border-emerald-500/40 text-[11px] text-emerald-200">
-              {policyVote.topic.replace(/_/g, " ")}
-            </Badge>
-          )}
+    <section className="flex flex-col gap-3 rounded-xl bg-elevated p-3 sm:p-4" aria-label="Policy vote">
+      <div className="flex items-start gap-2.5">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
+          <Vote className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <div className="min-w-0">
+          <p className="text-xs font-bold text-primary">
+            Your stance{policyVote.topic ? ` · ${policyVote.topic.replace(/_/g, " ")}` : ""}
+          </p>
+          <p className="text-[15px] font-bold leading-snug">{policyVote.question}</p>
         </div>
-        {typeof policyVote.confidence === "number" && (
-          <div className="text-right">
-            <div className="text-[10px] uppercase tracking-wide text-emerald-300/70">Confidence</div>
-            <div className="text-sm font-bold text-emerald-200">{(policyVote.confidence * 100).toFixed(0)}%</div>
-          </div>
-        )}
       </div>
 
-      {policyVote.rationale && (
-        <div className="flex gap-2 text-sm text-emerald-100/80">
-          <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-300" />
-          <p>{policyVote.rationale}</p>
-        </div>
-      )}
+      <MultipleChoiceVoteControl
+        size="sm"
+        label={policyVote.question}
+        options={policyVote.options}
+        selectedOption={myVote}
+        onSelect={(optionKey) => void handleVote(optionKey)}
+        disabled={isSubmitting}
+      />
 
-      <div className="rounded-xl border border-gray-700/50 bg-gray-900/40 p-4 backdrop-blur-sm sm:p-5">
-        <MultipleChoiceVoteControl
-          options={policyVote.options}
-          selectedOption={myVote}
-          onSelect={(optionKey) => void handleVote(optionKey)}
-          disabled={isSubmitting}
-        />
-      </div>
+      <button
+        type="button"
+        onClick={() => setShowResults(!showResults)}
+        aria-expanded={showResults}
+        aria-controls={resultsId}
+        className="flex min-h-11 items-center justify-between rounded-lg px-1 text-[13px] font-semibold text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <span>
+          How others answered · {tally.total} vote{tally.total === 1 ? "" : "s"}
+        </span>
+        <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", showResults && "rotate-180")} aria-hidden="true" />
+      </button>
 
-      <div className="pt-2">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setShowResults(!showResults)}
-          className="flex h-8 w-full items-center justify-between px-2 text-xs text-gray-400 hover:bg-white/5 hover:text-gray-300"
-        >
-          <span>View Community Votes ({tally.total})</span>
-          {showResults ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
-        </Button>
-      </div>
-
-      <AnimatePresence>
-        {showResults && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="space-y-2 overflow-hidden pt-2 pb-1"
-          >
-            {options.map(([key, label]) => {
+      {showResults && (
+        <div id={resultsId} className="flex flex-col gap-2.5">
+          {tally.total === 0 ? (
+            <p className="text-[13px] text-muted-foreground">No votes yet. Be the first to answer.</p>
+          ) : (
+            options.map(([key, label]) => {
               const count = tally.byOption[key] ?? 0;
-              const percentage = tally.total === 0 ? 0 : Math.round((count / tally.total) * 100);
+              const percentage = Math.round((count / tally.total) * 100);
               return (
-                <div key={key} className="mb-2 space-y-1 last:mb-0">
-                  <div className="flex justify-between gap-3 text-xs text-gray-400">
-                    <span>{label}</span>
-                    <span className="whitespace-nowrap">
+                <div key={key} className="flex flex-col gap-1">
+                  <div className="flex justify-between gap-3 text-[13px]">
+                    <span className={cn(key === myVote ? "font-bold text-foreground" : "text-muted-foreground")}>{label}</span>
+                    <span className="whitespace-nowrap font-semibold tabular-nums">
                       {percentage}% · {count}
                     </span>
                   </div>
-                  <Progress value={percentage} className="h-1.5 bg-gray-800" />
+                  <div className="h-1.5 overflow-hidden rounded-full bg-card">
+                    <div
+                      className={cn("h-full rounded-full", key === myVote ? "bg-primary" : "bg-muted-foreground")}
+                      style={{ width: `${percentage}%` }}
+                    />
+                  </div>
                 </div>
               );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            })
+          )}
+        </div>
+      )}
 
       {error && (
-        <div className="rounded-md border border-red-800/60 bg-red-900/40 p-2 text-xs text-red-300">{error}</div>
+        <p role="alert" className="text-[13px] text-destructive">
+          {error}
+        </p>
       )}
-    </Card>
+    </section>
   );
 }

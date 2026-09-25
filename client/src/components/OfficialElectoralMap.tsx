@@ -2,9 +2,20 @@ import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './OfficialElectoralMap.css';
-import { ELECTION_RESULTS, PARTY_COLORS } from '../assets/election-results';
+import { ELECTION_RESULTS } from '../assets/election-results';
 import { fetchConstituencyBoundaries } from '../helpers/fetchConstituencyGeoJSON';
 import OfficialElectoralMapLoading from './OfficialElectoralMapLoading';
+import { AlertTriangle } from 'lucide-react';
+import { partyStyle } from '@/lib/parties';
+
+/**
+ * Leaflet writes colours into SVG attributes, where CSS variables do not resolve,
+ * so theme tokens (stored as "H S% L%") are read and turned into hsl() strings.
+ */
+function token(name: string, alpha = 1): string {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  return value ? `hsl(${value} / ${alpha})` : 'currentColor';
+}
 
 // Create a global cache for GeoJSON data to persist between component mounts
 const globalGeoJsonCache: {
@@ -24,7 +35,7 @@ interface ConstituencyPartyData {
 }
 
 interface ConstituencyTD {
-  party?: string;
+  party?: string | null;
   name?: string;
 }
 
@@ -33,7 +44,7 @@ interface ConstituencyData {
   tdCount?: number;
   parties?: ConstituencyPartyData[];
   tds?: ConstituencyTD[];
-  averageScore?: number;
+  averageScore?: number | null;
   genderBreakdown?: { male?: number; female?: number; femalePercentage?: number };
 }
 
@@ -74,21 +85,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [geoJsonLayer, setGeoJsonLayer] = useState<L.GeoJSON | null>(null);
 
-  // Helper to get party color
-  const getPartyColorHex = (party: string): string => {
-    const colors: Record<string, string> = {
-      'Sinn Féin': '#326B3F',
-      'Fianna Fáil': '#66BB6A',
-      'Fine Gael': '#1e3a8a',
-      'Labour Party': '#DC143C',
-      'Social Democrats': '#752F8A',
-      'Green Party': '#99CC33',
-      'Solidarity-PBP': '#B8312F',
-      'Aontú': '#14B53A',
-      'Independent': '#808080'
-    };
-    return colors[party] || '#6b7280';
-  };
+  const getPartyColorHex = (party: string): string => partyStyle(party).dot;
 
   // Create professional tooltip content
   const createTooltipContent = (constituencyName: string, seats: number, nameIrish: string): string => {
@@ -136,7 +133,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
           // It's a tie
           leadingPartyHTML = `
             <div class="tooltip-party-badge">
-              <span class="tooltip-party-dot" style="background: #6b7280;"></span>
+              <span class="tooltip-party-dot" style="background: ${partyStyle(null).dot};"></span>
               <span>Mixed representation</span>
             </div>
           `;
@@ -173,20 +170,10 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
     `;
   };
 
-  // Helper function to interpolate between colors (Red=low to Purple=high)
-  const interpolateColor = (value: number, min: number, max: number): string => {
-    // Normalize value between 0 and 1
-    const normalized = max > min ? (value - min) / (max - min) : 0.5;
-    
-    // Simple linear interpolation from Red (low) to Purple (high)
-    // Red: rgb(239, 68, 68)
-    // Purple: rgb(168, 85, 247)
-    const r = Math.round(239 - (71 * normalized));  // 239 -> 168
-    const g = Math.round(68 + (17 * normalized));   // 68 -> 85
-    const b = Math.round(68 + (179 * normalized));  // 68 -> 247
-    
-    return `rgb(${r}, ${g}, ${b})`;
-  };
+  // Score colour follows the app-wide rule (lib/score): >=80 high, 50-79 mid, <50 low.
+  const scoreColor = (value: number): string =>
+    token(value >= 80 ? '--score-high' : value >= 50 ? '--score-mid' : '--score-low');
+  const noData = () => token('--muted-foreground', 0.35);
 
   // Function to get the color for a constituency based on active layer
   const getConstituencyColor = (constituencyName: string): string => {
@@ -195,38 +182,14 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
       name.toLowerCase().replace(/[- ]/g, '').trim();
     
     // Find constituency data from the API with flexible matching
-    let constituency = constituenciesData.find(c => 
-      c.name === constituencyName || 
+    const constituency = constituenciesData.find(c =>
+      c.name === constituencyName ||
       normalizeName(c.name || '') === normalizeName(constituencyName)
     );
-    
-    // Temporary fix for Wicklow-Wexford until server restarts with normalization fix
-    if (!constituency && constituencyName === 'Wicklow-Wexford') {
-      // Hardcode Wicklow-Wexford data (3-way tie: 1 FG, 1 FF, 1 SF)
-      constituency = {
-        name: 'Wicklow-Wexford',
-        tdCount: 3,
-        parties: [
-          { party: 'Fine Gael', count: 1, percentage: 33 },
-          { party: 'Fianna Fáil', count: 1, percentage: 33 },
-          { party: 'Sinn Féin', count: 1, percentage: 33 }
-        ],
-        tds: [
-          { party: 'Fine Gael', name: 'Brian Brennan' },
-          { party: 'Fianna Fáil', name: 'Malcolm Byrne' },
-          { party: 'Sinn Féin', name: 'Fionntán Ó Súilleabháin' }
-        ],
-        averageScore: 50,
-        genderBreakdown: { male: 3, female: 0, femalePercentage: 0 }
-      };
-    }
-    
+
     if (!constituency) {
-      // Log missing constituency for debugging
-      console.warn(`⚠️  Constituency not found in API data: "${constituencyName}"`);
-      // For gender layer, return a distinct error color so we can identify unmatched constituencies
-      if (activeLayer === 'gender') {
-        return '#9ca3af'; // Medium gray to indicate missing data
+      if (activeLayer === 'gender' || activeLayer === 'performance') {
+        return noData();
       }
       
       // Fallback to party colors from election results if no API data (for party/government layers)
@@ -253,7 +216,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         }
       }
 
-      return PARTY_COLORS[dominantParty] || PARTY_COLORS['Other'];
+      return maxCount > 0 ? partyStyle(dominantParty).dot : noData();
     }
 
     // Color based on active layer
@@ -275,7 +238,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         }
         
         if (partyCounts.size === 0) {
-          return '#e5e7eb'; // Light gray for no data
+          return noData();
         }
         
         // Find the party with the most TDs
@@ -288,42 +251,24 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         
         // Return color based on dominant party (only if no tie)
         if (tiedParties.length > 1 || maxCount === 0) {
-          return '#e5e7eb'; // Light gray for mixed/tie
+          return noData(); // mixed representation / tie
         }
-        
-        const partyColors: Record<string, string> = {
-          'Sinn Féin': '#ef4444',      // Red
-          'Fianna Fáil': '#66BB6A',    // Green
-          'Fine Gael': '#1e3a8a',      // Dark blue
-        };
-        
-        return partyColors[sortedParties[0].party] || '#e5e7eb'; // Light gray for other parties
+
+        return partyStyle(sortedParties[0].party).dot;
       }
-      
+
       case 'performance':
-        // Color by average score with dynamic range
-        const scores = constituenciesData.map(c => c.averageScore || 50).filter(s => s > 0);
-        const minScore = Math.min(...scores);
-        const maxScore = Math.max(...scores);
-        const score = constituency.averageScore || 50;
-        return interpolateColor(score, minScore, maxScore);
-      
-      case 'gender':
-        // Simple stepped color scheme based on female TD count (0-5)
-        // Blue to purple gradient with 6 distinct steps
-        const femaleCount = constituency.genderBreakdown?.female || 0;
-        
-        // 6-step color scheme from blue (0 female) to purple (5 female)
-        switch (femaleCount) {
-          case 0: return '#1e3a8a';  // Deep blue - 0 female TDs
-          case 1: return '#3b82f6';  // Blue - 1 female TD
-          case 2: return '#60a5fa';  // Light blue - 2 female TDs
-          case 3: return '#c084fc';  // Light purple - 3 female TDs
-          case 4: return '#9333ea';  // Purple - 4 female TDs
-          case 5: return '#6b21a8';  // Deep purple - 5 female TDs
-          default: 
-            return '#9ca3af'; // Gray fallback
-        }
+        // A missing score is "no data", never a made-up 50.
+        return constituency.averageScore === null || constituency.averageScore === undefined
+          ? noData()
+          : scoreColor(constituency.averageScore);
+
+      case 'gender': {
+        // Stepped: more women TDs = a stronger brand tint (0-5). Unrecorded gender = no data.
+        const g = constituency.genderBreakdown;
+        if (!g || ((g.male ?? 0) + (g.female ?? 0)) === 0) return noData();
+        return token('--primary', 0.15 + Math.min(5, g.female ?? 0) * 0.17);
+      }
       
       case 'government': {
         // Color by government vs opposition dominance
@@ -375,24 +320,18 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
         
         const totalTDs = governmentTDs + oppositionTDs;
         if (totalTDs === 0) {
-          return '#e5e7eb'; // Light gray for no data
+          return noData();
         }
-        
-        // Check for tie
+
+        // Even split = mid, government majority = primary, opposition majority = warn
         if (governmentTDs === oppositionTDs) {
-          return '#fbbf24'; // Amber - Even split between government and opposition
+          return token('--score-mid');
         }
-        
-        // Government majority = Green, Opposition majority = Red
-        if (governmentTDs > oppositionTDs) {
-          return '#10b981'; // Emerald green - Government dominated
-        } else {
-          return '#ef4444'; // Red - Opposition dominated
-        }
+        return governmentTDs > oppositionTDs ? token('--primary') : token('--warn');
       }
-      
+
       default:
-        return '#94a3b8';
+        return noData();
     }
   };
 
@@ -493,7 +432,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                   fillColor: getConstituencyColor(constituencyName),
                   weight: 2,
                   opacity: 1,
-                  color: '#333',
+                  color: token('--background'),
                   fillOpacity: 0.75,
                   dashArray: '',
                 };
@@ -555,7 +494,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                     if (layer instanceof L.Path) {
                       layer.setStyle({
                         weight: 4,
-                        color: '#222',
+                        color: token('--foreground'),
                         dashArray: '',
                         fillOpacity: 0.95
                       });
@@ -643,38 +582,35 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
   return (
     <div className="official-electoral-map" style={{ width, height, position: 'relative' }}>
       {showPlaceholder && (
-        <div className="absolute inset-0 z-10 bg-white dark:bg-gray-800">
+        <div className="absolute inset-0 z-[500]">
           <OfficialElectoralMapLoading />
         </div>
       )}
       
       <div 
         ref={mapContainerRef} 
-        className="map-container rounded-lg overflow-hidden shadow-lg"
+        className="map-container overflow-hidden"
         style={{ width: '100%', height: '100%' }}
       ></div>
       
       {isLoading && !showPlaceholder && (
-        <div className="absolute top-4 right-4 bg-white bg-opacity-90 p-2 rounded-full shadow-md z-10 flex items-center space-x-2">
-          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-green-600"></div>
-          <span className="text-xs text-gray-700">Loading map...</span>
+        <div className="absolute right-4 top-4 z-[500] rounded-full border bg-card px-3 py-1.5 text-xs font-semibold text-muted-foreground" role="status">
+          Loading map…
         </div>
       )}
-      
+
       {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
-          <div className="text-center text-red-600 p-4 bg-white rounded shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto text-red-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-            <div className="font-bold">Error Loading Map</div>
-            <div className="text-sm mt-1">{error}</div>
+        <div className="absolute inset-0 z-[600] flex items-center justify-center bg-background/80 p-4">
+          <div className="flex max-w-sm flex-col items-center gap-2 rounded-2xl border bg-card p-6 text-center" role="alert">
+            <AlertTriangle className="h-8 w-8 text-warn" aria-hidden="true" />
+            <div className="font-display text-lg font-bold">Could not load the map</div>
+            <div className="text-sm text-muted-foreground">{error}</div>
           </div>
         </div>
       )}
-      
+
       {/* Discreet custom attribution at bottom right */}
-      <div className="absolute bottom-1 right-1 z-[400] px-1 py-0.5 bg-white/70 dark:bg-black/70 text-[9px] text-gray-600 dark:text-gray-400 rounded pointer-events-none">
+      <div className="pointer-events-none absolute bottom-1 right-1 z-[400] rounded bg-card/80 px-1.5 py-0.5 text-[10px] text-muted-foreground">
         © OpenStreetMap | © Electoral Commission
       </div>
     </div>

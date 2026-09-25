@@ -1,38 +1,19 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
-import { useAuth } from '@/contexts/AuthContext';
-import { fetchMyQuizResults } from '@/lib/ideologyApi';
-import { queryKeys } from '@/lib/queryKeys';
+import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from "@shared/ideology";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAuth } from "@/contexts/AuthContext";
+import { fetchMyQuizResults } from "@/lib/ideologyApi";
+import { queryKeys } from "@/lib/queryKeys";
+import { cn } from "@/lib/utils";
 
-type Significance = 'significant' | 'moderate' | 'minor' | 'none';
+/** A move of this size (in −10..+10 units) counts as a real change. */
+const NOTABLE_CHANGE = 1.5;
 
-interface DimensionChange {
-  dimension: IdeologyDimension;
-  current: number;
-  previous: number;
-  diff: number;
-  significance: Significance;
-}
-
-const formatDimensionName = (d: IdeologyDimension): string => {
-  const { label, negative, positive } = DIMENSION_POLES[d];
-  return `${label} ${negative} - ${positive}`;
-};
-
-const getChangeSignificance = (change: number): Significance => {
-  const absChange = Math.abs(change);
-  if (absChange >= 2.5) return 'significant';
-  if (absChange >= 1.5) return 'moderate';
-  if (absChange >= 0.5) return 'minor';
-  return 'none';
-};
-
-const formatDate = (iso: string | null, pattern: string) => (iso ? format(new Date(iso), pattern) : 'Unknown date');
+const formatDate = (iso: string | null, pattern: string) => (iso ? format(new Date(iso), pattern) : "Unknown date");
+const pos = (v: number) => `${((Math.min(Math.max(v, -10), 10) + 10) / 20) * 100}%`;
 
 /**
  * Compares the signed-in user's latest saved quiz result with an earlier one
@@ -48,126 +29,90 @@ const PoliticalOpinionChangeTracker: React.FC = () => {
     enabled: isAuthenticated,
   });
 
-  if (!isAuthenticated || !history || history.length < 2) {
-    return null;
-  }
+  if (!isAuthenticated || !history || history.length < 2) return null;
 
   const [latest, ...earlier] = history;
   const previous = earlier.find((h) => h.id === selectedHistoryId) ?? earlier[0];
 
-  const dimensionChanges: DimensionChange[] = IDEOLOGY_DIMENSIONS.map((dimension) => {
+  const changes = IDEOLOGY_DIMENSIONS.map((dimension) => {
     const current = latest.vector[dimension];
     const prior = previous.vector[dimension];
-    return {
-      dimension,
-      current,
-      previous: prior,
-      diff: current - prior,
-      significance: getChangeSignificance(current - prior),
-    };
+    return { dimension, current, prior, diff: current - prior };
   });
-  const significantChanges = dimensionChanges.filter(c => c.significance === 'significant' || c.significance === 'moderate');
+  const notable = changes.filter((c) => Math.abs(c.diff) >= NOTABLE_CHANGE).length;
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Political Opinion Evolution</CardTitle>
-        <CardDescription>
-          See how your political views have changed over time
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        {earlier.length > 1 && (
-          <div className="mb-4">
-            <label htmlFor="history-select" className="block text-sm font-medium mb-2">
-              Compare with:
-            </label>
-            <select
-              id="history-select"
-              className="w-full p-2 border rounded-md bg-background"
-              value={previous.id ?? ''}
-              onChange={(e) => setSelectedHistoryId(Number(e.target.value))}
-            >
+    <section className="flex flex-col gap-3.5 rounded-2xl border bg-card p-4 sm:p-5">
+      <div className="flex flex-col gap-0.5">
+        <h2 className="font-display text-[22px] font-bold">How your views changed</h2>
+        <p className="text-[13px] text-muted-foreground">
+          {notable > 0
+            ? `${notable} dimension${notable === 1 ? "" : "s"} moved by ${NOTABLE_CHANGE} or more since ${formatDate(previous.createdAt, "d MMM yyyy")}.`
+            : `Your views have stayed steady since ${formatDate(previous.createdAt, "d MMM yyyy")}.`}
+        </p>
+      </div>
+
+      {earlier.length > 1 && (
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="history-select">Compare with</Label>
+          <Select value={String(previous.id ?? "")} onValueChange={(v) => setSelectedHistoryId(Number(v))}>
+            <SelectTrigger id="history-select">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
               {earlier.map((result) => (
-                <option key={result.id} value={result.id ?? ''}>
-                  {formatDate(result.createdAt, 'PPP')} - {result.ideology || 'Quiz Result'}
-                </option>
+                <SelectItem key={result.id} value={String(result.id ?? "")}>
+                  {formatDate(result.createdAt, "d MMM yyyy")} · {result.ideology || "Quiz result"}
+                </SelectItem>
               ))}
-            </select>
-          </div>
-        )}
+            </SelectContent>
+          </Select>
+        </div>
+      )}
 
-        <Tabs defaultValue="changes">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="changes">Changes</TabsTrigger>
-            <TabsTrigger value="analysis">Analysis</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="changes" className="space-y-4 pt-4">
-            {dimensionChanges.map((item) => (
-              <div key={item.dimension} className="p-3 border rounded-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium">{formatDimensionName(item.dimension)}</span>
-                  <Badge
-                    variant={
-                      item.significance === 'significant' ? 'default' :
-                      item.significance === 'moderate' ? 'secondary' :
-                      'outline'
-                    }
-                  >
-                    {item.diff > 0 ? '→' : item.diff < 0 ? '←' : '–'} {Math.abs(item.diff).toFixed(1)}
-                  </Badge>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Latest ({formatDate(latest.createdAt, 'MMM d, yyyy')})</p>
-                    <p className="text-sm font-medium">{item.current.toFixed(1)}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">
-                      Previous ({formatDate(previous.createdAt, 'MMM d, yyyy')})
-                    </p>
-                    <p className="text-sm font-medium">{item.previous.toFixed(1)}</p>
-                  </div>
-                </div>
+      <ul className="grid gap-3.5 md:grid-cols-2 md:gap-x-6">
+        {changes.map(({ dimension, current, prior, diff }) => {
+          const poles = DIMENSION_POLES[dimension];
+          const moved = Math.abs(diff) >= 0.5;
+          return (
+            <li key={dimension} className="flex flex-col gap-1.5">
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-[15px] font-bold">{poles.label}</span>
+                <span className={cn("text-[13px] font-bold", Math.abs(diff) >= NOTABLE_CHANGE ? "text-primary" : "text-muted-foreground")}>
+                  {moved ? `${Math.abs(diff).toFixed(1)} toward ${diff > 0 ? poles.positive : poles.negative}` : "No change"}
+                </span>
               </div>
-            ))}
-          </TabsContent>
-
-          <TabsContent value="analysis" className="space-y-4 pt-4">
-            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
-              {significantChanges.length > 0
-                ? 'Your political views have changed most significantly in the following areas:'
-                : 'Your political views have remained relatively stable since your last quiz.'}
-            </p>
-
-            {significantChanges.length > 0 && (
-              <ul className="space-y-3">
-                {significantChanges.map((change) => {
-                  const poles = DIMENSION_POLES[change.dimension];
-                  return (
-                    <li key={change.dimension} className="p-3 border rounded-lg">
-                      <p className="font-medium">{formatDimensionName(change.dimension)}</p>
-                      <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                        You've moved <strong>{Math.abs(change.diff).toFixed(1)} points</strong> toward{' '}
-                        {change.diff > 0 ? poles.positive : poles.negative}.
-                      </p>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-
-            <div className="mt-4">
-              <p className="text-sm text-gray-500">
-                Previous results from {formatDate(previous.createdAt, 'PPP')}
-              </p>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </CardContent>
-    </Card>
+              <div
+                className="relative h-2 rounded-full bg-elevated"
+                role="img"
+                aria-label={`${poles.label}: ${prior.toFixed(1)} then, ${current.toFixed(1)} now`}
+              >
+                <span className="absolute -top-[3px] left-1/2 h-3.5 w-0.5 bg-input" />
+                <span
+                  className="absolute -top-[3px] h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-muted-foreground bg-card"
+                  style={{ left: pos(prior) }}
+                />
+                <span className="absolute -top-[3px] h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-primary" style={{ left: pos(current) }} />
+              </div>
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>{poles.negative}</span>
+                <span>{poles.positive}</span>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full border-2 border-muted-foreground" aria-hidden="true" />
+          {formatDate(previous.createdAt, "d MMM yyyy")}
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full bg-primary" aria-hidden="true" />
+          Latest · {formatDate(latest.createdAt, "d MMM yyyy")}
+        </span>
+      </p>
+    </section>
   );
 };
 
