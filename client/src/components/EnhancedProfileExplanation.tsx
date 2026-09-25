@@ -4,7 +4,7 @@ import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, type IdeologyDimension, type Ideo
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Segmented } from "@/components/pulse/Segmented";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { defaultWeights, type DimensionWeights } from "@/lib/ideologyApi";
 import { storeWeights } from "@/lib/quizStorage";
 import PartyMatchResults from "./PartyMatchResults";
@@ -117,13 +117,13 @@ const EnhancedProfileExplanation: React.FC<EnhancedProfileExplanationProps> = ({
             {weightsChanged ? "Matches updated for your weights" : "All dimensions count the same"}
           </span>
           <span className="flex gap-2">
-            <Button size="sm" variant="ghost" onClick={() => onWeightsChange(defaultWeights())} disabled={!weightsChanged}>
-              <RotateCcw />
-              Reset
+            <Button variant="ghost" onClick={() => onWeightsChange(defaultWeights())} disabled={!weightsChanged}>
+              <RotateCcw aria-hidden="true" />
+              Reset weights
             </Button>
-            <Button size="sm" variant="secondary" onClick={saveWeights}>
-              <Save />
-              Save
+            <Button variant="secondary" onClick={saveWeights}>
+              <Save aria-hidden="true" />
+              Save weights
             </Button>
           </span>
         </div>

@@ -48,7 +48,7 @@ const STEPS: OnboardingStep[] = [
     title: 'Your constituency',
     description: 'Find your local TDs and how they vote.',
     icon: MapPin,
-    cta: { text: 'Constituencies', href: '/constituencies' },
+    cta: { text: 'Find your constituency', href: '/constituencies' },
   },
   {
     title: 'Have your say',
@@ -118,7 +118,7 @@ export function OnboardingModal() {
               <h2 className="font-display text-lg font-bold leading-tight">{step.title}</h2>
               <p className="text-sm text-muted-foreground">{step.description}</p>
               {step.cta && (
-                <Link href={step.cta.href} onClick={() => handleClose(false)} className="mt-1 text-sm font-bold text-primary hover:underline">
+                <Link href={step.cta.href} onClick={() => handleClose(false)} className="inline-flex min-h-11 items-center self-start text-sm font-bold text-primary hover:underline">
                   {step.cta.text}
                 </Link>
               )}
@@ -136,7 +136,7 @@ export function OnboardingModal() {
               onClick={() => setCurrentStep(index)}
               aria-label={`Go to step ${index + 1}`}
               aria-current={index === currentStep ? 'step' : undefined}
-              className="flex h-6 items-center"
+              className="flex h-11 items-center px-0.5"
             >
               <span
                 className={cn(
@@ -149,15 +149,15 @@ export function OnboardingModal() {
         </div>
         <div className="flex gap-2">
           {currentStep === 0 ? (
-            <Button variant="ghost" size="sm" onClick={() => handleClose(false)}>
+            <Button variant="ghost" onClick={() => handleClose(false)}>
               Skip
             </Button>
           ) : (
-            <Button variant="ghost" size="sm" onClick={() => setCurrentStep((s) => s - 1)}>
+            <Button variant="ghost" onClick={() => setCurrentStep((s) => s - 1)}>
               Back
             </Button>
           )}
-          <Button size="sm" onClick={() => (isLast ? handleClose(true) : setCurrentStep((s) => s + 1))}>
+          <Button onClick={() => (isLast ? handleClose(true) : setCurrentStep((s) => s + 1))}>
             {isLast ? 'Done' : 'Next'}
           </Button>
         </div>

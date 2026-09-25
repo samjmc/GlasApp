@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
 import { useRegion } from '@/hooks/useRegion';
@@ -9,7 +9,7 @@ import { apiUpload } from '@/lib/queryClient';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
-import { Camera, Loader2, Bookmark, TrendingUp } from 'lucide-react';
+import { Camera, Loader2, TrendingUp } from 'lucide-react';
 
 import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,7 +21,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { SMSNotificationForm } from '@/components/SMSNotificationForm';
 import { Segmented } from '@/components/pulse/Segmented';
@@ -59,6 +58,7 @@ const ProfilePage = () => {
   });
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
 
   // Fetch the signed-in user's saved quiz results (newest first)
   const { data: quizResults, isLoading: quizResultsLoading } = useQuery({
@@ -146,6 +146,7 @@ const ProfilePage = () => {
       return;
     }
 
+    setIsSavingProfile(true);
     try {
       await updateProfile(formData);
       toast({
@@ -159,15 +160,13 @@ const ProfilePage = () => {
         description: 'Failed to update profile. Please try again.',
         variant: 'destructive',
       });
+    } finally {
+      setIsSavingProfile(false);
     }
   };
 
   const handleLogout = async () => {
-    if (logout) {
-      logout();
-    } else {
-      window.location.href = '/api/logout';
-    }
+    await logout?.();
     navigate('/');
   };
 
@@ -233,11 +232,8 @@ const ProfilePage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center gap-4">
-            <Button
-              onClick={() => window.location.href = '/api/login'}
-              className="w-full"
-            >
-              Log in
+            <Button asChild className="w-full">
+              <Link href="/login">Log in</Link>
             </Button>
           </CardContent>
         </Card>
@@ -257,7 +253,6 @@ const ProfilePage = () => {
         <TabsList className="mb-2 flex w-full overflow-x-auto no-scrollbar sm:w-auto">
           <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="political-evolution">Political evolution</TabsTrigger>
-          <TabsTrigger value="saved-content">Saved</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
 
@@ -298,9 +293,12 @@ const ProfilePage = () => {
                 <h3 className="text-lg font-semibold">User information</h3>
                 <Button
                   variant="outline"
+                  className="gap-2"
                   onClick={() => isEditing ? handleSaveProfile() : setIsEditing(true)}
+                  disabled={isSavingProfile}
                 >
-                  {isEditing ? 'Save' : 'Edit profile'}
+                  {isSavingProfile && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  {isSavingProfile ? 'Saving…' : isEditing ? 'Save' : 'Edit profile'}
                 </Button>
               </div>
 
@@ -422,8 +420,9 @@ const ProfilePage = () => {
               </div>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button variant="destructive" disabled={isDeletingAccount}>
-                    {isDeletingAccount ? 'Deleting account...' : 'Delete my account'}
+                  <Button variant="destructive" className="gap-2" disabled={isDeletingAccount}>
+                    {isDeletingAccount && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                    {isDeletingAccount ? 'Deleting account…' : 'Delete my account'}
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
@@ -537,81 +536,16 @@ const ProfilePage = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="saved-content">
+        <TabsContent value="notifications">
           <Card>
             <CardHeader>
-              <CardTitle>Saved content</CardTitle>
-              <CardDescription>
-                Articles, parties, and politicians you've saved
-              </CardDescription>
+              <CardTitle>SMS notifications</CardTitle>
+              <CardDescription>Get political updates and alerts by text message.</CardDescription>
             </CardHeader>
             <CardContent>
-              <EmptyState icon={Bookmark} title="Nothing saved yet">
-                Save an article, party or TD profile to find it here.
-              </EmptyState>
+              <SMSNotificationForm />
             </CardContent>
           </Card>
-        </TabsContent>
-
-        <TabsContent value="notifications">
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>SMS notifications</CardTitle>
-                <CardDescription>
-                  Send political updates and alerts via SMS
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <SMSNotificationForm />
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Notification settings</CardTitle>
-                <CardDescription>
-                  Manage your notification preferences
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <h4 className="font-medium">Election reminders</h4>
-                      <p className="text-sm text-muted-foreground">Receive notifications about upcoming elections</p>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Label htmlFor="election-reminders" className="sr-only">Election reminders</Label>
-                      <Switch id="election-reminders" />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <h4 className="font-medium">Policy vote alerts</h4>
-                      <p className="text-sm text-muted-foreground">Get updates when major policy votes happen</p>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Label htmlFor="policy-votes" className="sr-only">Policy vote alerts</Label>
-                      <Switch id="policy-votes" />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <h4 className="font-medium">Local political events</h4>
-                      <p className="text-sm text-muted-foreground">Be notified of political events in your area</p>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Label htmlFor="local-events" className="sr-only">Local political events</Label>
-                      <Switch id="local-events" />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </TabsContent>
       </Tabs>
     </div>

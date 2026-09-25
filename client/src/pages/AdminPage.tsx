@@ -8,8 +8,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
-import { ChevronDown, ChevronUp, ExternalLink, Plus, Shield, Trash2 } from "lucide-react";
+import { ChevronDown, ChevronUp, ExternalLink, Loader2, Plus, Shield, Trash2 } from "lucide-react";
 import { politicalParties } from "@shared/data";
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES } from "@shared/pledges";
 import {
@@ -222,16 +233,30 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
             </a>
           </p>
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Delete pledge"
-          onClick={() => {
-            if (confirm(`Delete "${pledge.title}" and all its evidence? This cannot be undone.`)) remove.mutate();
-          }}
-        >
-          <Trash2 className="h-4 w-4" />
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="ghost" size="icon" aria-label="Delete pledge" disabled={remove.isPending}>
+              {remove.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete this pledge?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Delete "{pledge.title}" and all its evidence? This cannot be undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={() => remove.mutate()}
+                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              >
+                Delete permanently
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
 
       <div className="mt-2 grid gap-2 md:grid-cols-[200px_1fr_auto] md:items-end">
@@ -289,7 +314,11 @@ function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
     },
     onError: (error) => toast({ title: "Could not add evidence", description: messageOf(error), variant: "destructive" }),
   });
-  const remove = useMutation({ mutationFn: (id: number) => pledgesApi.removeEvidence(id), onSuccess: invalidate });
+  const remove = useMutation({
+    mutationFn: (id: number) => pledgesApi.removeEvidence(id),
+    onSuccess: invalidate,
+    onError: (error) => toast({ title: "Could not delete evidence", description: messageOf(error), variant: "destructive" }),
+  });
 
   const ready = summary.trim().length >= 3 && /^https?:\/\//i.test(sourceUrl.trim());
 
@@ -306,9 +335,37 @@ function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
               {item.sourceUrl}
             </a>
           </div>
-          <Button variant="ghost" size="icon" aria-label="Delete evidence" onClick={() => remove.mutate(item.id)}>
-            <Trash2 className="h-4 w-4" />
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Delete evidence"
+                disabled={remove.isPending && remove.variables === item.id}
+              >
+                {remove.isPending && remove.variables === item.id ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Trash2 className="h-4 w-4" />
+                )}
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete this evidence?</AlertDialogTitle>
+                <AlertDialogDescription>This cannot be undone.</AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => remove.mutate(item.id)}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  Delete permanently
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       ))}
 

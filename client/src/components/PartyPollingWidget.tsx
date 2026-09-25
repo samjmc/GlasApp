@@ -66,13 +66,11 @@ export function PartyPollingWidget({ partyName }: PollingWidgetProps) {
   const [historicalData, setHistoricalData] = useState<ChartData<'line'> | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const decodedPartyName = decodeURIComponent(partyName);
-
   useEffect(() => {
-    if (decodedPartyName) {
+    if (partyName) {
       loadPollingData();
     }
-  }, [decodedPartyName]);
+  }, [partyName]);
 
   async function loadPollingData() {
     setLoading(true);
@@ -81,7 +79,7 @@ export function PartyPollingWidget({ partyName }: PollingWidgetProps) {
         .from('polling_aggregates_cache')
         .select('*')
         .eq('entity_type', 'party')
-        .eq('entity_name', decodedPartyName)
+        .eq('entity_name', partyName)
         .maybeSingle();
 
       if (cache) {
@@ -92,7 +90,7 @@ export function PartyPollingWidget({ partyName }: PollingWidgetProps) {
         .from('polling_time_series')
         .select('*')
         .eq('entity_type', 'party')
-        .eq('entity_name', decodedPartyName)
+        .eq('entity_name', partyName)
         .eq('granularity', 'month')
         .order('period_end', { ascending: true })
         .limit(12);
@@ -153,7 +151,7 @@ export function PartyPollingWidget({ partyName }: PollingWidgetProps) {
         <CardTitle className="font-display text-xl font-bold tracking-tight">Polling</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1">
             <span className="text-[13px] font-semibold text-muted-foreground">Latest poll support</span>
             <span className="font-display text-5xl font-extrabold leading-none tracking-tight">
@@ -232,7 +230,7 @@ export function PartyPollingWidget({ partyName }: PollingWidgetProps) {
 
         <Link
           href="/rankings"
-          className="inline-flex items-center gap-1.5 self-start text-sm font-semibold text-primary hover:underline"
+          className="inline-flex min-h-11 items-center gap-1.5 self-start rounded-md text-sm font-semibold text-primary transition-colors hover:text-primary-hover hover:underline"
         >
           See all rankings <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>

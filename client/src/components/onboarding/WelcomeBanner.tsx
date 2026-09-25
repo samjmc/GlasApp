@@ -75,8 +75,8 @@ export function WelcomeBanner() {
       <button
         type="button"
         onClick={handleDismiss}
-        aria-label="Dismiss"
-        className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-primary-foreground/10"
+        aria-label="Dismiss quiz banner"
+        className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-primary-foreground/10"
       >
         <X className="h-4 w-4" />
       </button>

@@ -10,6 +10,7 @@ import { queryKeys } from '@/lib/queryKeys';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { TDAvatar } from '@/components/pulse/Party';
 import { EmptyState } from '@/components/pulse/EmptyState';
+import { RetryButton } from '@/components/data/RetryButton';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { HomeCard, HomeCardHeader } from '@/components/home/HomeCard';
@@ -54,7 +55,7 @@ export function useScoresWidget() {
 /** Widget listing the top five TDs by score. */
 export function TDScoresWidget({ className }: { className?: string }) {
   const [selectedTDId, setSelectedTDId] = useState<number | null>(null);
-  const { data, isLoading, isError, refetch } = useScoresWidget();
+  const { data, isLoading, isError, refetch, isFetching } = useScoresWidget();
   const top = (data?.top ?? []).slice(0, 5);
   const total = data?.stats.totalTds;
 
@@ -73,9 +74,7 @@ export function TDScoresWidget({ className }: { className?: string }) {
           icon={Trophy}
           title="Rankings did not load"
           action={
-            <Button variant="outline" onClick={() => refetch()}>
-              Try again
-            </Button>
+            <RetryButton variant="outline" onRetry={() => refetch()} pending={isFetching} />
           }
         >
           Check your connection, then try again.
@@ -109,9 +108,9 @@ export function TDScoresWidget({ className }: { className?: string }) {
                   size="icon-sm"
                   aria-label={`Quick info for ${td.name}`}
                   onClick={() => setSelectedTDId(td.id)}
-                  className="text-muted-foreground"
+                  className="h-11 w-11 shrink-0 text-muted-foreground md:h-9 md:w-9"
                 >
-                  <Info className="h-4 w-4" />
+                  <Info aria-hidden="true" />
                 </Button>
               </li>
             );

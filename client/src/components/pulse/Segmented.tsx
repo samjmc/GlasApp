@@ -42,8 +42,9 @@ export function Segmented<T extends string>({
             onClick={() => onChange(option.value)}
             className={cn(
               "shrink-0 rounded-lg px-4 font-semibold transition-colors",
-              size === "sm" ? "h-8 text-[13px]" : "h-10 text-sm",
-              selected ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
+              // 44px on touch screens; the compact size only from sm up.
+              size === "sm" ? "h-11 text-[13px] sm:h-8" : "h-11 text-sm sm:h-10",
+              selected ? "bg-foreground text-background" : "text-muted-foreground hover:bg-accent hover:text-foreground"
             )}
           >
             {option.label}

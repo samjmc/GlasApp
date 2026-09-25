@@ -6,7 +6,7 @@
 import { useState, useEffect, useRef, useMemo, useId } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { Building2, MapPin, Search, X } from "lucide-react";
+import { Building2, Loader2, MapPin, Search, X } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
 import { queryKeys } from "@/lib/queryKeys";
 import { formatScore, scoreTone, TONE_TEXT } from "@/lib/score";
@@ -81,7 +81,7 @@ export function GlobalSearch() {
   const listId = useId();
   const isIreland = regionCode === "IE";
 
-  const { data: searchData, isLoading, isError, refetch } = useQuery({
+  const { data: searchData, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: queryKeys.globalSearch.data(regionCode ?? ""), // disabled unless IE, so "" is never fetched
     queryFn: async () => {
       // Each list degrades to [] on its own, so one failing fetch does not
@@ -272,7 +272,7 @@ export function GlobalSearch() {
 
   return (
     <div ref={searchRef} className="relative w-full">
-      <label className="flex h-12 w-full items-center gap-3 rounded-lg border border-input bg-card px-4 text-muted-foreground transition-colors focus-within:border-primary">
+      <label className="flex h-12 w-full items-center gap-3 rounded-lg border border-input bg-card px-4 text-muted-foreground transition-colors focus-within:border-primary focus-within:ring-2 focus-within:ring-ring">
         <Search className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
         <span className="sr-only">Search</span>
         <input
@@ -302,7 +302,7 @@ export function GlobalSearch() {
               inputRef.current?.focus();
             }}
             aria-label="Clear search"
-            className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-elevated hover:text-foreground"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-elevated hover:text-foreground"
           >
             <X className="h-4 w-4" />
           </button>
@@ -336,8 +336,14 @@ export function GlobalSearch() {
           ) : isError ? (
             <div className="flex flex-col items-start gap-2 p-4 text-sm">
               <p className="font-semibold">Search data did not load.</p>
-              <button type="button" onClick={() => refetch()} className="font-semibold text-primary hover:underline">
-                Try again
+              <button
+                type="button"
+                onClick={() => refetch()}
+                disabled={isFetching}
+                className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline disabled:opacity-60"
+              >
+                {isFetching && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                {isFetching ? "Loading…" : "Try again"}
               </button>
             </div>
           ) : debouncedQuery.length < 2 ? (

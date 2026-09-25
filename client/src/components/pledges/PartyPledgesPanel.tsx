@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge, type BadgeProps } from "@/components/ui/badge";
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, ClipboardList, ExternalLink } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/pulse/EmptyState";
+import { RetryButton } from "@/components/data/RetryButton";
 import {
   CATEGORY_LABELS,
   EVIDENCE_LABELS,
@@ -32,6 +33,7 @@ const formatDate = (iso: string) =>
 /** One pledge, with its evidence loaded only when opened. */
 function PledgeRow({ pledge }: { pledge: Pledge }) {
   const [open, setOpen] = useState(false);
+  const evidenceId = useId();
   const detail = useQuery({
     queryKey: ["/api/pledges", pledge.id],
     queryFn: () => pledgesApi.get(pledge.id),
@@ -52,8 +54,9 @@ function PledgeRow({ pledge }: { pledge: Pledge }) {
         <span>{CATEGORY_LABELS[pledge.category]}</span>
         <span>{pledge.electionYear} election</span>
         {pledge.targetDate && <span>Target {formatDate(pledge.targetDate)}</span>}
-        <a href={pledge.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 underline hover:text-foreground">
-          Where it was promised <ExternalLink className="h-3 w-3" />
+        <a href={pledge.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-sm underline transition-colors hover:text-foreground">
+          Where it was promised <ExternalLink className="h-3 w-3" aria-hidden="true" />
+          <span className="sr-only">(opens in a new tab)</span>
         </a>
         {pledge.reviewedAt && <span>Reviewed {formatDate(pledge.reviewedAt)}</span>}
       </div>
@@ -61,22 +64,35 @@ function PledgeRow({ pledge }: { pledge: Pledge }) {
       {pledge.statusNote && <p className="mt-2 text-sm">{pledge.statusNote}</p>}
 
       {pledge.evidenceCount > 0 && (
-        <Button variant="ghost" size="sm" className="mt-2" onClick={() => setOpen(!open)}>
-          {open ? <ChevronUp className="mr-1 h-3 w-3" /> : <ChevronDown className="mr-1 h-3 w-3" />}
-          Evidence ({pledge.evidenceCount})
+        <Button
+          variant="ghost"
+          size="sm"
+          className="mt-2 h-11 md:h-9"
+          aria-expanded={open}
+          aria-controls={evidenceId}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <ChevronUp aria-hidden="true" /> : <ChevronDown aria-hidden="true" />}
+          {open ? "Hide evidence" : `Show evidence (${pledge.evidenceCount})`}
         </Button>
       )}
 
       {open && (
-        <ul className="mt-3 flex flex-col gap-3 border-l-2 border-input pl-3">
+        <ul id={evidenceId} className="mt-3 flex flex-col gap-3 border-l-2 border-input pl-3" aria-live="polite">
           {detail.isLoading && <li className="text-xs text-muted-foreground">Loading evidence…</li>}
+          {detail.isError && (
+            <li className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              Could not load the evidence.
+              <RetryButton variant="outline" size="sm" onRetry={() => detail.refetch()} pending={detail.isFetching} />
+            </li>
+          )}
           {detail.data?.evidence.map((item) => (
             <li key={item.id} className="text-sm">
               <span className="font-medium">{EVIDENCE_LABELS[item.kind]}</span>
               <span className="text-muted-foreground"> · {formatDate(item.occurredOn)}</span>
               <p>{item.summary}</p>
-              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground underline hover:text-foreground">
-                Source
+              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="rounded-sm text-xs text-muted-foreground underline transition-colors hover:text-foreground">
+                Source<span className="sr-only"> (opens in a new tab)</span>
               </a>
             </li>
           ))}
@@ -108,7 +124,7 @@ export function PartyPledgesPanel({ party }: { party: string }) {
       <EmptyState
         icon={ClipboardList}
         title="Could not load pledges"
-        action={<Button variant="secondary" onClick={() => pledges.refetch()}>Try again</Button>}
+        action={<RetryButton variant="secondary" onRetry={() => pledges.refetch()} pending={pledges.isFetching} />}
       >
         The pledge tracker did not answer.
       </EmptyState>
@@ -118,7 +134,7 @@ export function PartyPledgesPanel({ party }: { party: string }) {
   const list = pledges.data ?? [];
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-start">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-start">
       <Card>
         <CardHeader>
           <CardTitle className="font-display text-xl font-bold tracking-tight">{party}: pledge record</CardTitle>
@@ -168,9 +184,10 @@ export function PartyPledgesPanel({ party }: { party: string }) {
 
 function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
-    <div title={hint} className="flex flex-col gap-1 rounded-xl bg-elevated p-3">
+    <div className="flex flex-col gap-1 rounded-xl bg-elevated p-3">
       <div className="font-display text-2xl font-bold tracking-tight">{value}</div>
       <div className="text-[13px] text-muted-foreground">{label}</div>
+      {hint && <div className="text-xs text-muted-foreground">{hint}</div>}
     </div>
   );
 }

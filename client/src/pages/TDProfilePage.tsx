@@ -32,6 +32,7 @@ import { PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { VoteChip } from '@/components/pulse/VoteChip';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
+import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
 import { formatIsoDate } from '@/lib/isoDate';
@@ -128,7 +129,7 @@ export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
   const { toast } = useToast();
 
-  const { data: scoreData, isLoading, error, refetch } = useQuery<TDProfile>({
+  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TDProfile>({
     queryKey: ['td-profile-v3', name],  // v3: payload shape changed with /api/scores
     queryFn: async () => {
       const res = await fetch(`/api/scores/td/${encodeURIComponent(name || '')}`);
@@ -159,6 +160,7 @@ export default function TDProfilePageEnhanced() {
     isLoading: parliamentSummaryLoading,
     error: parliamentSummaryError,
     refetch: refetchParliamentSummary,
+    isFetching: parliamentSummaryFetching,
   } = useQuery({
     queryKey: queryKeys.parliament.tdSummary(tdId ?? 0),
     queryFn: () => getParliament<TdParliamentSummary>(`/api/parliament/tds/${tdId}`),
@@ -172,6 +174,7 @@ export default function TDProfilePageEnhanced() {
     isLoading: tdVotesLoading,
     isError: tdVotesError,
     refetch: refetchVotes,
+    isFetching: tdVotesFetching,
   } = useQuery({
     queryKey: queryKeys.parliament.tdVotes(tdId ?? 0, 20, votesAgainstPartyOnly),
     queryFn: () =>
@@ -188,6 +191,7 @@ export default function TDProfilePageEnhanced() {
     isLoading: tdDebatesLoading,
     isError: tdDebatesError,
     refetch: refetchDebates,
+    isFetching: tdDebatesFetching,
   } = useQuery({
     queryKey: queryKeys.parliament.tdDebates(tdId ?? 0, 10),
     queryFn: () => getParliament<TdDebateContribution[]>(`/api/parliament/tds/${tdId}/debates?limit=10`),
@@ -238,11 +242,11 @@ export default function TDProfilePageEnhanced() {
       <div className="flex flex-col gap-6" aria-busy="true">
         <Skeleton className="h-11 w-32 rounded-lg" />
         <Skeleton className="h-72 rounded-2xl sm:h-56" />
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           <Skeleton className="h-52 rounded-2xl" />
           <Skeleton className="h-52 rounded-2xl" />
         </div>
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_360px]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px]">
           <Skeleton className="h-96 rounded-2xl" />
           <Skeleton className="h-64 rounded-2xl" />
         </div>
@@ -262,7 +266,7 @@ export default function TDProfilePageEnhanced() {
               <Link href="/rankings">See all TDs</Link>
             </Button>
           ) : (
-            <Button onClick={() => refetch()}>Try again</Button>
+            <RetryButton onRetry={() => refetch()} pending={isFetching} />
           )
         }
         className="mt-6"
@@ -358,7 +362,7 @@ export default function TDProfilePageEnhanced() {
     <div className="flex flex-col gap-6">
       <Link
         href="/rankings"
-        className="inline-flex min-h-[44px] items-center gap-1 self-start text-sm font-semibold text-muted-foreground hover:text-foreground"
+        className="inline-flex min-h-11 items-center gap-1 self-start rounded-md text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
       >
         <ChevronLeft className="h-4 w-4" aria-hidden="true" />
         Rankings
@@ -458,7 +462,7 @@ export default function TDProfilePageEnhanced() {
       </section>
 
       {/* Pillars and Dáil record */}
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <Card className="flex flex-col gap-4 p-5 sm:p-6">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-display text-xl font-bold tracking-tight">Score breakdown</h2>
@@ -517,9 +521,13 @@ export default function TDProfilePageEnhanced() {
               {parliamentSummaryError && (
                 <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
                   <span>Could not load the full Dáil record.</span>
-                  <Button variant="outline" size="sm" onClick={() => refetchParliamentSummary()}>
-                    Try again
-                  </Button>
+                  <RetryButton
+                    variant="outline"
+                    size="sm"
+                    className="h-11 md:h-9"
+                    onRetry={() => refetchParliamentSummary()}
+                    pending={parliamentSummaryFetching}
+                  />
                 </div>
               )}
             </>
@@ -527,7 +535,7 @@ export default function TDProfilePageEnhanced() {
         </Card>
       </div>
 
-      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         {/* Tabs */}
         <Tabs defaultValue="votes" className="flex min-w-0 flex-col gap-4">
           <TabsList aria-label="Profile sections" className="grid h-auto w-full grid-cols-4 sm:max-w-[520px]">
@@ -574,7 +582,7 @@ export default function TDProfilePageEnhanced() {
                 <EmptyState
                   icon={Vote}
                   title="Could not load votes"
-                  action={<Button variant="secondary" onClick={() => refetchVotes()}>Try again</Button>}
+                  action={<RetryButton variant="secondary" onRetry={() => refetchVotes()} pending={tdVotesFetching} />}
                 >
                   The Dáil record did not load. Try again in a moment.
                 </EmptyState>
@@ -634,7 +642,7 @@ export default function TDProfilePageEnhanced() {
                 <EmptyState
                   icon={MessageSquare}
                   title="Could not load debates"
-                  action={<Button variant="secondary" onClick={() => refetchDebates()}>Try again</Button>}
+                  action={<RetryButton variant="secondary" onRetry={() => refetchDebates()} pending={tdDebatesFetching} />}
                 >
                   The debate record did not load. Try again in a moment.
                 </EmptyState>
@@ -681,7 +689,7 @@ export default function TDProfilePageEnhanced() {
                               href={article.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-start gap-1.5 text-[15px] font-bold leading-snug hover:text-primary"
+                              className="inline-flex items-start gap-1.5 rounded-sm text-[15px] font-bold leading-snug transition-colors hover:text-primary"
                             >
                               {article.title}
                               <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
@@ -717,7 +725,7 @@ export default function TDProfilePageEnhanced() {
                 In the news
               </h2>
               {newsLoading ? (
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
                   <Skeleton className="h-80 rounded-2xl" />
                   <Skeleton className="h-80 rounded-2xl" />
                 </div>
@@ -726,7 +734,7 @@ export default function TDProfilePageEnhanced() {
                   Stories from Irish news sources that name {score.name} will show here.
                 </EmptyState>
               ) : (
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
                   {newsArticles.map((article) => (
                     <NewsArticleCard key={article.id} article={article} />
                   ))}

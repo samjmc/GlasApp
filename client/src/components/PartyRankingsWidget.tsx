@@ -12,7 +12,7 @@ import { BarChart3 } from 'lucide-react';
 import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
 import { EmptyState } from '@/components/pulse/EmptyState';
-import { Button } from '@/components/ui/button';
+import { RetryButton } from '@/components/data/RetryButton';
 import { Skeleton } from '@/components/ui/skeleton';
 import { HomeCard, HomeCardHeader } from '@/components/home/HomeCard';
 import { useAllTDs } from '@/components/home/useAllTDs';
@@ -27,7 +27,7 @@ interface PartyAverage {
 
 /** Widget comparing average TD scores across the larger parties. */
 export function PartyRankingsWidget({ className }: { className?: string }) {
-  const { data, isLoading, isError, refetch } = useAllTDs();
+  const { data, isLoading, isError, refetch, isFetching } = useAllTDs();
 
   const parties = useMemo<PartyAverage[]>(() => {
     const groups = new Map<string, { count: number; sum: number; scored: number }>();
@@ -62,9 +62,7 @@ export function PartyRankingsWidget({ className }: { className?: string }) {
           icon={BarChart3}
           title="Party scores did not load"
           action={
-            <Button variant="outline" onClick={() => refetch()}>
-              Try again
-            </Button>
+            <RetryButton variant="outline" onRetry={() => refetch()} pending={isFetching} />
           }
         >
           Check your connection, then try again.
@@ -86,7 +84,7 @@ export function PartyRankingsWidget({ className }: { className?: string }) {
                 <Link
                   href={`/party/${encodeURIComponent(p.party)}`}
                   aria-label={`${style.name}: average ${formatScore(p.avg)} across ${p.count} TDs`}
-                  className="group flex flex-col gap-1.5 rounded-lg transition-opacity hover:opacity-90 md:h-full md:justify-end"
+                  className="group -mx-2 flex min-h-11 flex-col justify-center gap-1.5 rounded-lg px-2 py-1.5 transition-colors hover:bg-elevated md:mx-0 md:h-full md:justify-end md:px-0 md:py-0 md:transition-opacity md:hover:bg-transparent md:hover:opacity-90"
                 >
                   {/* Phone: label row, then a horizontal bar. */}
                   <span className="flex items-baseline justify-between gap-2 md:hidden">

@@ -86,11 +86,12 @@ export function PWAInstallButton() {
     <div className="fixed right-4 z-50 bottom-[calc(92px_+_env(safe-area-inset-bottom,0px))] left-4 md:bottom-6 md:left-auto md:right-6">
       <div className="relative flex max-w-sm items-start gap-3 rounded-2xl border border-border bg-card p-4 pr-8 shadow-lg animate-in slide-in-from-bottom-5">
         <button
+          type="button"
           onClick={handleDismiss}
-          className="absolute right-2 top-2 text-muted-foreground transition-colors hover:text-foreground"
+          className="absolute right-0.5 top-0.5 flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
           aria-label="Dismiss"
         >
-          <X className="h-4 w-4" />
+          <X className="h-4 w-4" aria-hidden="true" />
         </button>
 
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">

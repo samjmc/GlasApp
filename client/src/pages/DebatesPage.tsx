@@ -1,7 +1,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Landmark, MessagesSquare, Trophy, Users } from "lucide-react";
+import { AlertCircle, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Landmark, MessagesSquare, Trophy, Users } from "lucide-react";
 import { apiClient } from "@/lib/queryClient";
 import { queryKeys } from "@/lib/queryKeys";
 import { formatIsoDate } from "@/lib/isoDate";
@@ -9,7 +9,7 @@ import { partyStyle } from "@/lib/parties";
 import { scoreTone, TONE_BG, TONE_TEXT } from "@/lib/score";
 import { cn } from "@/lib/utils";
 import { PageHeader } from "@/components/PageHeader";
-import { ErrorDisplay } from "@/components/ErrorDisplay";
+import { RetryButton } from "@/components/data/RetryButton";
 import { badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -106,6 +106,14 @@ function Panel({ title, meta, action, children }: { title: string; meta?: ReactN
   );
 }
 
+function LoadError({ title, onRetry, pending }: { title: string; onRetry: () => void; pending: boolean }) {
+  return (
+    <EmptyState icon={AlertCircle} title={title} action={<RetryButton variant="secondary" onRetry={onRetry} pending={pending} />}>
+      The Dáil record did not load. Try again in a moment.
+    </EmptyState>
+  );
+}
+
 function ListSkeleton({ rows = 5, className = "h-28" }: { rows?: number; className?: string }) {
   return (
     <div className="flex flex-col gap-2" aria-hidden="true">
@@ -115,6 +123,9 @@ function ListSkeleton({ rows = 5, className = "h-28" }: { rows?: number; classNa
     </div>
   );
 }
+
+/** A DOM-safe id for an expander's panel (record ids can hold any character). */
+const panelIdFor = (kind: string, id: string) => `${kind}-panel-${id.replace(/[^\w-]/g, "-")}`;
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -265,7 +276,7 @@ function DivisionsSection() {
   const [offset, setOffset] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: queryKeys.parliament.divisions(PAGE_SIZE, offset),
     queryFn: () => getParliament<DivisionSummary[]>(`/api/parliament/divisions?limit=${PAGE_SIZE}&offset=${offset}`),
   });
@@ -275,6 +286,7 @@ function DivisionsSection() {
     isLoading: detailLoading,
     isError: detailError,
     refetch: refetchDetail,
+    isFetching: detailFetching,
   } = useQuery({
     queryKey: queryKeys.parliament.division(expandedId ?? ""),
     queryFn: () => getParliament<DivisionDetail>(`/api/parliament/divisions/${encodeURIComponent(expandedId!)}`),
@@ -293,7 +305,7 @@ function DivisionsSection() {
       {isLoading ? (
         <ListSkeleton />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Could not load divisions" onRetry={() => refetch()} />
+        <LoadError title="Could not load divisions" onRetry={() => refetch()} pending={isFetching} />
       ) : divisions.length === 0 ? (
         <EmptyState icon={Landmark} title="No divisions yet">
           {EMPTY_RECORD}
@@ -303,6 +315,7 @@ function DivisionsSection() {
           <div className="flex flex-col gap-2">
             {divisions.map((division) => {
               const isExpanded = expandedId === division.id;
+              const panelId = panelIdFor('division', division.id);
               const title = division.debateTitle || division.subject || "Division";
               const subject = division.debateTitle ? division.subject : null;
               return (
@@ -310,10 +323,11 @@ function DivisionsSection() {
                   <button
                     type="button"
                     aria-expanded={isExpanded}
+                    aria-controls={panelId}
                     onClick={() => setExpandedId(isExpanded ? null : division.id)}
                     className={expandButtonClass}
                   >
-                    <span className="grid min-w-0 flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_12rem] md:items-center md:gap-6">
+                    <span className="grid grid-cols-[minmax(0,1fr)] min-w-0 flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_12rem] md:items-center md:gap-6">
                       <span className="flex min-w-0 flex-col gap-1.5">
                         <span className="flex items-center justify-between gap-2">
                           <span className="flex items-center gap-2 text-[13px] font-semibold text-muted-foreground">
@@ -336,13 +350,13 @@ function DivisionsSection() {
                     <Chevron open={isExpanded} />
                   </button>
                   {isExpanded && (
-                    <div className="flex flex-col gap-4 border-t p-4" aria-live="polite">
+                    <div id={panelId} className="flex flex-col gap-4 border-t p-4" aria-live="polite">
                       {detailLoading ? (
                         <ListSkeleton rows={4} className="h-9" />
                       ) : detail ? (
                         <DivisionBreakdown detail={detail} />
                       ) : detailError ? (
-                        <ErrorDisplay variant="inline" title="Could not load this division" onRetry={() => refetchDetail()} />
+                        <LoadError title="Could not load this division" onRetry={() => refetchDetail()} pending={detailFetching} />
                       ) : (
                         <p className="text-sm text-muted-foreground">No detail available for this vote.</p>
                       )}
@@ -411,7 +425,7 @@ function DebatesSection() {
   const [offset, setOffset] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: queryKeys.parliament.debates(PAGE_SIZE, offset),
     queryFn: () => getParliament<DebateSectionSummary[]>(`/api/parliament/debates?limit=${PAGE_SIZE}&offset=${offset}`),
   });
@@ -421,6 +435,7 @@ function DebatesSection() {
     isLoading: detailLoading,
     isError: detailError,
     refetch: refetchDetail,
+    isFetching: detailFetching,
   } = useQuery({
     queryKey: queryKeys.parliament.debate(expandedId ?? ""),
     queryFn: () => getParliament<DebateSectionDetail>(`/api/parliament/debates/${encodeURIComponent(expandedId!)}`),
@@ -439,7 +454,7 @@ function DebatesSection() {
       {isLoading ? (
         <ListSkeleton className="h-24" />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Could not load debates" onRetry={() => refetch()} />
+        <LoadError title="Could not load debates" onRetry={() => refetch()} pending={isFetching} />
       ) : sections.length === 0 ? (
         <EmptyState icon={MessagesSquare} title="No debates yet">
           {EMPTY_RECORD}
@@ -449,15 +464,17 @@ function DebatesSection() {
           <div className="flex flex-col gap-2">
             {sections.map((section) => {
               const isExpanded = expandedId === section.id;
+              const panelId = panelIdFor('debate', section.id);
               return (
                 <article key={section.id} className="rounded-xl border bg-card">
                   <button
                     type="button"
                     aria-expanded={isExpanded}
+                    aria-controls={panelId}
                     onClick={() => setExpandedId(isExpanded ? null : section.id)}
                     className={expandButtonClass}
                   >
-                    <span className="grid min-w-0 flex-1 gap-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6">
+                    <span className="grid grid-cols-[minmax(0,1fr)] min-w-0 flex-1 gap-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6">
                       <span className="flex min-w-0 flex-col gap-1">
                         <span className="text-[13px] font-semibold text-muted-foreground">{formatIsoDate(section.date)}</span>
                         <span className="text-base font-bold leading-snug">{section.title}</span>
@@ -472,13 +489,13 @@ function DebatesSection() {
                     <Chevron open={isExpanded} />
                   </button>
                   {isExpanded && (
-                    <div className="flex flex-col gap-3 border-t p-4" aria-live="polite">
+                    <div id={panelId} className="flex flex-col gap-3 border-t p-4" aria-live="polite">
                       {detailLoading ? (
                         <ListSkeleton rows={4} className="h-12" />
                       ) : detail && detail.speakers.length > 0 ? (
                         <DebateSpeakers detail={detail} />
                       ) : detailError ? (
-                        <ErrorDisplay variant="inline" title="Could not load this debate" onRetry={() => refetchDetail()} />
+                        <LoadError title="Could not load this debate" onRetry={() => refetchDetail()} pending={detailFetching} />
                       ) : (
                         <p className="text-sm text-muted-foreground">No TD speeches are recorded for this section.</p>
                       )}
@@ -505,7 +522,7 @@ function LeaderboardSection() {
   const [metric, setMetric] = useState<LeaderboardMetric>("attendance");
   const [order, setOrder] = useState<"desc" | "asc">("desc");
 
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: queryKeys.parliament.leaderboard(metric, order, PAGE_SIZE),
     queryFn: () =>
       getParliament<LeaderboardEntry[]>(`/api/parliament/leaderboard?metric=${metric}&order=${order}&limit=${PAGE_SIZE}`),
@@ -531,7 +548,7 @@ function LeaderboardSection() {
       {isLoading ? (
         <ListSkeleton rows={8} className="h-16" />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Could not load the leaderboard" onRetry={() => refetch()} />
+        <LoadError title="Could not load the leaderboard" onRetry={() => refetch()} pending={isFetching} />
       ) : entries.length === 0 ? (
         <EmptyState icon={Trophy} title="Nobody ranked yet">
           {EMPTY_RECORD}
@@ -582,7 +599,7 @@ function attendanceClass(value: number | null) {
 }
 
 function PartiesSection() {
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: queryKeys.parliament.parties(),
     queryFn: () => getParliament<PartyParliamentSummary[]>("/api/parliament/parties"),
   });
@@ -598,7 +615,7 @@ function PartiesSection() {
       {isLoading ? (
         <ListSkeleton rows={6} className="h-24 md:h-12" />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Could not load parties" onRetry={() => refetch()} />
+        <LoadError title="Could not load parties" onRetry={() => refetch()} pending={isFetching} />
       ) : parties.length === 0 ? (
         <EmptyState icon={Users} title="No party figures yet">
           {EMPTY_RECORD}
@@ -734,7 +751,7 @@ const DebatesPage = () => {
       <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as Tab)} className="flex min-w-0 flex-col gap-5">
         <TabsList aria-label="Dáil record sections" className="h-auto w-full justify-start self-start sm:w-auto">
           {TABS.map((tab) => (
-            <TabsTrigger key={tab.key} value={tab.key} className="h-10 flex-1 px-3 sm:flex-none sm:px-4">
+            <TabsTrigger key={tab.key} value={tab.key} className="h-11 flex-1 px-3 sm:h-10 sm:flex-none sm:px-4">
               {tab.label}
             </TabsTrigger>
           ))}

@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react';
+import { useId, useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { Button } from '@/components/ui/button';
-import { Download, SlidersHorizontal, TrendingUp } from 'lucide-react';
+import { Download, Loader2, SlidersHorizontal, TrendingUp } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -35,6 +36,13 @@ const DIMENSION_COLORS: Record<IdeologyDimension, string> = {
 };
 
 const NO_PARTY = 'none';
+
+type QuickFilter = 'month' | 'quarter' | 'all';
+const QUICK_FILTERS: { value: QuickFilter; label: string }[] = [
+  { value: 'month', label: 'Last month' },
+  { value: 'quarter', label: 'Last 3 months' },
+  { value: 'all', label: 'All time' },
+];
 
 const COMPARISON_SUFFIX = '_comparison';
 
@@ -77,6 +85,10 @@ export default function IdeologyTimeSeriesChartEnhanced({
   const [showFilters, setShowFilters] = useState(false);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
+  const [quickFilter, setQuickFilterState] = useState<QuickFilter | null>(null);
+  const [isExportingPng, setIsExportingPng] = useState(false);
+  const filtersId = useId();
+  const { toast } = useToast();
 
   const timelineQuery = useQuery({
     queryKey: queryKeys.ideology.timeline(userId, compareParty || null),
@@ -133,7 +145,8 @@ export default function IdeologyTimeSeriesChartEnhanced({
   };
 
   const exportPNG = async () => {
-    if (!chartRef.current) return;
+    if (!chartRef.current || isExportingPng) return;
+    setIsExportingPng(true);
     try {
       const canvas = await html2canvas(chartRef.current, {
         backgroundColor: getComputedStyle(document.body).backgroundColor,
@@ -146,6 +159,9 @@ export default function IdeologyTimeSeriesChartEnhanced({
       link.click();
     } catch (err) {
       console.error('Error exporting PNG:', err);
+      toast({ title: 'Could not save the image', description: 'Please try again.', variant: 'destructive' });
+    } finally {
+      setIsExportingPng(false);
     }
   };
 
@@ -153,9 +169,11 @@ export default function IdeologyTimeSeriesChartEnhanced({
     setFromDate('');
     setToDate('');
     setCompareParty('');
+    setQuickFilterState(null);
   };
 
-  const setQuickFilter = (filter: 'month' | 'quarter' | 'all') => {
+  const setQuickFilter = (filter: QuickFilter) => {
+    setQuickFilterState(filter);
     const now = new Date();
     setToDate('');
 
@@ -186,18 +204,31 @@ export default function IdeologyTimeSeriesChartEnhanced({
       </div>
       {!!chartData.length && (
         <div className="flex flex-wrap gap-2">
-          <Button size="sm" variant={showFilters ? 'secondary' : 'outline'} onClick={() => setShowFilters(!showFilters)} aria-expanded={showFilters}>
-            <SlidersHorizontal />
+          <Button
+            size="sm"
+            variant={showFilters ? 'secondary' : 'outline'}
+            onClick={() => setShowFilters(!showFilters)}
+            aria-expanded={showFilters}
+            aria-controls={filtersId}
+          >
+            <SlidersHorizontal aria-hidden="true" />
             Filters
           </Button>
-          <Button size="sm" variant="outline" onClick={exportCSV}>
-            <Download />
+          <Button size="sm" variant="outline" onClick={exportCSV} aria-label="Download as CSV">
+            <Download aria-hidden="true" />
             CSV
           </Button>
-          <Button size="sm" variant="outline" onClick={exportJSON}>
+          <Button size="sm" variant="outline" onClick={exportJSON} aria-label="Download as JSON">
             JSON
           </Button>
-          <Button size="sm" variant="outline" onClick={exportPNG}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={exportPNG}
+            disabled={isExportingPng}
+            aria-label={isExportingPng ? 'Saving image' : 'Download as image'}
+          >
+            {isExportingPng && <Loader2 className="animate-spin" aria-hidden="true" />}
             PNG
           </Button>
         </div>
@@ -248,21 +279,29 @@ export default function IdeologyTimeSeriesChartEnhanced({
       {header}
 
       {showFilters && (
-        <div className="flex flex-col gap-4 rounded-xl bg-elevated p-4">
-          <div className="no-scrollbar flex gap-2 overflow-x-auto">
-            <Button size="sm" variant="outline" onClick={() => setQuickFilter('month')}>Last month</Button>
-            <Button size="sm" variant="outline" onClick={() => setQuickFilter('quarter')}>Last 3 months</Button>
-            <Button size="sm" variant="outline" onClick={() => setQuickFilter('all')}>All time</Button>
-            <Button size="sm" variant="ghost" onClick={resetFilters}>Reset all</Button>
+        <div id={filtersId} className="flex flex-col gap-4 rounded-xl bg-elevated p-4">
+          <div className="no-scrollbar flex gap-2 overflow-x-auto" role="group" aria-label="Date range">
+            {QUICK_FILTERS.map(({ value, label }) => (
+              <Button
+                key={value}
+                size="sm"
+                variant={quickFilter === value ? 'inverse' : 'outline'}
+                aria-pressed={quickFilter === value}
+                onClick={() => setQuickFilter(value)}
+              >
+                {label}
+              </Button>
+            ))}
+            <Button size="sm" variant="ghost" onClick={resetFilters}>Reset filters</Button>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="timeline-from">From</Label>
-              <Input id="timeline-from" type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+              <Input id="timeline-from" type="date" value={fromDate} onChange={(e) => { setFromDate(e.target.value); setQuickFilterState(null); }} />
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="timeline-to">To</Label>
-              <Input id="timeline-to" type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
+              <Input id="timeline-to" type="date" value={toDate} onChange={(e) => { setToDate(e.target.value); setQuickFilterState(null); }} />
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="timeline-party">Compare with</Label>
@@ -285,14 +324,17 @@ export default function IdeologyTimeSeriesChartEnhanced({
       <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1" role="group" aria-label="Dimensions shown">
         {IDEOLOGY_DIMENSIONS.map((dimension) => {
           const on = selectedDimensions.has(dimension);
+          // At least one line stays on, so the last one cannot be turned off.
+          const locked = on && selectedDimensions.size === 1;
           return (
             <button
               key={dimension}
               type="button"
               aria-pressed={on}
+              disabled={locked}
               onClick={() => toggleDimension(dimension)}
               className={cn(
-                'inline-flex h-9 shrink-0 items-center gap-2 rounded-full border px-3 text-[13px] font-semibold transition-colors',
+                'inline-flex h-11 shrink-0 items-center gap-2 rounded-full border px-3 text-[13px] font-semibold transition-colors disabled:cursor-not-allowed sm:h-9',
                 on ? 'border-foreground bg-elevated text-foreground' : 'border-border text-muted-foreground hover:text-foreground'
               )}
             >

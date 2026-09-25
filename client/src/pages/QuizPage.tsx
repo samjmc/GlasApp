@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Check, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CheckCircle2, Compass, RotateCcw } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { QUIZ_QUESTIONS, type QuizQuestion, type QuizResponse } from '@shared/quiz';
 import { DIMENSION_POLES, type IdeologyDimension } from '@shared/ideology';
@@ -13,7 +13,120 @@ import { useActivityTracker } from '@/hooks/useActivityTracker';
 import { cn } from '@/lib/utils';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
-import { loadDraft, storeDraft, storeQuiz } from '@/lib/quizStorage';
+import { loadDraft, loadStoredQuiz, storeDraft, storeQuiz } from '@/lib/quizStorage';
+
+const QUIZ_STEPS = [
+  { title: 'Answer', body: 'Pick the option closest to your view. Skip nothing; you can go back.' },
+  { title: 'See your profile', body: 'Where you sit on each of the 8 dimensions, explained.' },
+  { title: 'Find your matches', body: 'The parties and TDs whose positions are closest to yours.' },
+];
+
+/** The quiz's first screen: what it is, how long it takes, and start or continue. */
+function QuizStart({
+  dimensions,
+  questionsByDimension,
+  totalQuestions,
+  answered,
+  hasResult,
+  onStart,
+  onStartAgain,
+}: {
+  dimensions: IdeologyDimension[];
+  questionsByDimension: Record<IdeologyDimension, QuizQuestion[]>;
+  totalQuestions: number;
+  answered: number;
+  hasResult: boolean;
+  onStart: () => void;
+  onStartAgain: () => void;
+}) {
+  const inProgress = answered > 0;
+  const minutes = Math.max(1, Math.round((totalQuestions * 12) / 60));
+  return (
+    <div className="flex flex-col gap-6">
+      <section className="grid gap-8 overflow-hidden rounded-2xl bg-hero p-6 text-hero-foreground sm:p-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
+        <div className="flex flex-col gap-5">
+          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-hero-muted px-3 py-1 text-[13px] font-bold">
+            <Compass className="h-4 w-4 text-primary" aria-hidden="true" /> Ideology quiz
+          </span>
+          <div className="flex flex-col gap-3">
+            <h1 className="font-display text-4xl font-bold leading-[0.95] tracking-tight sm:text-6xl">
+              Where do <span className="text-primary">you</span> stand?
+            </h1>
+            <p className="max-w-xl text-base text-hero-soft sm:text-lg">
+              {totalQuestions} questions on today's Irish issues. About {minutes} minutes. No sign-in needed, and your
+              answers stay on this device until you choose to save them.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button size="lg" onClick={onStart} className="min-w-[200px]">
+              {inProgress ? `Continue · ${answered} of ${totalQuestions} done` : 'Start the quiz'} <ArrowRight />
+            </Button>
+            {inProgress && (
+              <Button size="lg" variant="outline" onClick={onStartAgain} className="border-hero-muted text-hero-foreground hover:bg-hero-muted">
+                <RotateCcw /> Start again
+              </Button>
+            )}
+            {hasResult && !inProgress && (
+              <Button asChild size="lg" variant="outline" className="border-hero-muted text-hero-foreground hover:bg-hero-muted">
+                <Link href="/quiz/results">See my last result</Link>
+              </Button>
+            )}
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2 lg:grid-cols-1">
+          {[
+            { value: totalQuestions, label: 'questions' },
+            { value: dimensions.length, label: 'dimensions' },
+            { value: `~${minutes}`, label: 'minutes' },
+          ].map((s) => (
+            <div key={s.label} className="flex flex-col rounded-xl bg-hero-muted p-4">
+              <span className="font-display text-3xl font-bold leading-none">{s.value}</span>
+              <span className="mt-1 text-sm text-hero-soft">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-4">
+        <h2 className="font-display text-2xl font-bold tracking-tight">What it measures</h2>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {dimensions.map((d) => {
+            const poles = DIMENSION_POLES[d];
+            return (
+              <li key={d} className="flex flex-col gap-3 rounded-xl border bg-card p-4">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-display text-lg font-bold">{poles.label}</span>
+                  <span className="text-xs font-semibold text-muted-foreground">{questionsByDimension[d].length} Qs</span>
+                </div>
+                <div className="flex items-center gap-2 text-[13px] text-muted-foreground" aria-label={`From ${poles.negative} to ${poles.positive}`}>
+                  <span className="truncate">{poles.negative}</span>
+                  <span className="relative h-1.5 flex-1 rounded-full bg-input" aria-hidden="true">
+                    <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
+                  </span>
+                  <span className="truncate text-right">{poles.positive}</span>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section className="grid gap-3 sm:grid-cols-3">
+        {QUIZ_STEPS.map((step, i) => (
+          <div key={step.title} className="flex gap-4 rounded-xl border bg-card p-5">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/15 font-display font-bold text-primary">
+              {i + 1}
+            </span>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-display text-lg font-bold">{step.title}</h3>
+              <p className="text-sm text-muted-foreground">{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+}
 
 /** The political quiz. Answers are page state; the server scores them (POST /api/quiz). */
 const QuizPage: React.FC = () => {
@@ -42,6 +155,8 @@ const QuizPage: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [saveIndicatorVisible, setSaveIndicatorVisible] = useState(false);
+  const [started, setStarted] = useState(false);
+  const [hasStoredResult] = useState(() => loadStoredQuiz() !== null);
 
   const saveIndicatorTimeoutRef = useRef<number | null>(null);
   const hasTrackedStartRef = useRef(false);
@@ -188,6 +303,28 @@ const QuizPage: React.FC = () => {
     setCurrentQuestionIndex(firstOpen >= 0 ? firstOpen : 0);
   };
 
+  const startAgain = () => {
+    setAnswers({});
+    storeDraft(null);
+    setDimensionIndex(0);
+    setCurrentQuestionIndex(0);
+    setStarted(true);
+  };
+
+  if (!started) {
+    return (
+      <QuizStart
+        dimensions={dimensionOrder}
+        questionsByDimension={questionsByDimension}
+        totalQuestions={totalQuestions}
+        answered={answeredQuestionCount}
+        hasResult={hasStoredResult}
+        onStart={() => (answeredQuestionCount > 0 ? setStarted(true) : startAgain())}
+        onStartAgain={startAgain}
+      />
+    );
+  }
+
   if (isSubmitting) {
     return <LoadingScreen message="Working out where you stand" />;
   }
@@ -211,7 +348,7 @@ const QuizPage: React.FC = () => {
         </Button>
       </header>
 
-      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
         <section className="flex flex-col gap-6 rounded-2xl border bg-card p-5 sm:p-8">
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-2">

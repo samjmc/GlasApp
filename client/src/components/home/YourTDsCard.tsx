@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "wouter";
-import { MapPin } from "lucide-react";
+import { Loader2, MapPin } from "lucide-react";
 import { ScoreRing } from "@/components/pulse/ScoreRing";
 import { PartyLabel, TDAvatar } from "@/components/pulse/Party";
 import { EmptyState } from "@/components/pulse/EmptyState";
@@ -34,7 +34,7 @@ function writeStored(value: string) {
  * so the default is the first constituency alphabetically.
  */
 export function YourTDsCard({ className }: { className?: string }) {
-  const { data, isLoading, isError, refetch } = useAllTDs();
+  const { data, isLoading, isError, isFetching, refetch } = useAllTDs();
   const [chosen, setChosen] = useState<string | null>(readStored);
   const total = data?.count ?? 0;
 
@@ -67,7 +67,7 @@ export function YourTDsCard({ className }: { className?: string }) {
           <span className="text-[13px] font-semibold text-muted-foreground">Your TDs</span>
           {current ? (
             <h2 className="truncate font-display text-2xl font-bold tracking-tight md:text-[28px]">
-              <Link href={`/constituency/${encodeURIComponent(current)}`} className="hover:text-primary">
+              <Link href={`/constituency/${encodeURIComponent(current)}`} className="rounded-md transition-colors hover:text-primary">
                 {current}
               </Link>
             </h2>
@@ -77,7 +77,7 @@ export function YourTDsCard({ className }: { className?: string }) {
         </div>
         {constituencies.length > 0 && (
           <Select value={current ?? undefined} onValueChange={change}>
-            <SelectTrigger aria-label="Change constituency" className="h-10 w-auto shrink-0 gap-2 rounded-lg">
+            <SelectTrigger aria-label="Change constituency" className="h-11 w-auto shrink-0 gap-2 rounded-lg transition-colors hover:bg-accent">
               <span className="text-sm font-semibold">Change</span>
               <span className="sr-only">
                 <SelectValue />
@@ -105,8 +105,9 @@ export function YourTDsCard({ className }: { className?: string }) {
           icon={MapPin}
           title="TDs did not load"
           action={
-            <Button variant="outline" onClick={() => refetch()}>
-              Try again
+            <Button variant="outline" onClick={() => refetch()} disabled={isFetching}>
+              {isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+              {isFetching ? "Loading…" : "Try again"}
             </Button>
           }
         >
@@ -122,7 +123,7 @@ export function YourTDsCard({ className }: { className?: string }) {
             <li key={td.id} className="w-36 shrink-0 snap-start md:w-auto">
               <Link
                 href={`/td/${encodeURIComponent(td.name)}`}
-                className="flex h-full flex-col items-center gap-2.5 rounded-xl bg-elevated px-3 py-4 text-center transition-colors hover:bg-accent active:scale-[0.98]"
+                className="flex h-full flex-col items-center gap-2.5 rounded-xl bg-elevated px-3 py-4 text-center transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98]"
               >
                 <div className="relative">
                   <ScoreRing value={td.overallScore} size={80} label={`${td.name} overall score`} />

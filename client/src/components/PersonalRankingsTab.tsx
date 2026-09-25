@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'wouter';
-import { ChevronDown, ListOrdered, Lock } from 'lucide-react';
+import { ChevronDown, ListOrdered, Loader2, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
@@ -69,8 +69,9 @@ export function PersonalRankingsTab() {
       <EmptyState
         title="We could not load your rankings"
         action={
-          <Button variant="outline" onClick={() => void matchesQuery.refetch()}>
-            Try again
+          <Button variant="outline" onClick={() => void matchesQuery.refetch()} disabled={matchesQuery.isFetching}>
+            {matchesQuery.isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+            {matchesQuery.isFetching ? 'Loading…' : 'Try again'}
           </Button>
         }
       >
@@ -122,7 +123,7 @@ export function PersonalRankingsTab() {
         </ol>
         {hasBottom && visibleCount < topCount && (
           <Button variant="outline" className="h-11 w-full" onClick={() => setVisibleCount((n) => n + PAGE)}>
-            <ChevronDown />
+            <ChevronDown aria-hidden="true" />
             Show more
           </Button>
         )}
@@ -151,7 +152,7 @@ function RankingRow({ ranking, rank, low }: { ranking: TdMatch; rank: number; lo
     <li>
       <Link
         href={`/td/${encodeURIComponent(ranking.name)}`}
-        className="flex min-h-[72px] items-center gap-3 rounded-xl border bg-card px-3 py-2.5 transition-colors hover:bg-accent active:scale-[0.98]"
+        className="flex min-h-[72px] items-center gap-3 rounded-xl border bg-card px-3 py-2.5 transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98]"
       >
         <span className="w-7 shrink-0 text-center font-display text-sm font-bold text-muted-foreground tabular-nums">{rank}</span>
         <TDAvatar name={ranking.name} party={ranking.party} imageUrl={ranking.imageUrl} />

@@ -70,7 +70,7 @@ export function FirstTimeUserTour() {
           </li>
         ))}
       </ul>
-      <Button variant="secondary" size="sm" onClick={handleClose} className="mt-3 w-full">
+      <Button variant="secondary" onClick={handleClose} className="mt-3 w-full">
         Got it
       </Button>
     </FloatingPanel>

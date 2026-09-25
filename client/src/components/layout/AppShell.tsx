@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { Check, Compass, Flame, Globe, Search } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -24,7 +24,7 @@ function StreakChip({ streak }: { streak: number }) {
   return (
     <Link
       href="/daily-session"
-      className="inline-flex h-9 items-center gap-1.5 rounded-full bg-warn/15 px-3 text-sm font-bold text-warn"
+      className="inline-flex h-9 items-center gap-1.5 rounded-full bg-warn/15 px-3 text-sm font-bold text-warn transition-colors hover:bg-warn/25"
       aria-label={`${streak}-day voting streak`}
     >
       <Flame className="h-4 w-4" aria-hidden="true" />
@@ -84,7 +84,7 @@ function Sidebar({ location }: { location: string }) {
         <p className="text-sm leading-snug opacity-90">{action.body}</p>
         <Link
           href={action.href}
-          className="mt-1 flex h-11 items-center justify-center rounded-lg bg-primary-foreground text-[15px] font-bold text-primary"
+          className="mt-1 flex h-11 items-center justify-center rounded-lg bg-primary-foreground text-[15px] font-bold text-primary transition-opacity hover:opacity-90 active:scale-[0.98]"
         >
           {action.cta}
         </Link>
@@ -120,7 +120,11 @@ function RegionChip() {
 
 function TopBar() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [location] = useLocation();
   const streak = useStreak();
+
+  // Picking a search result navigates; the phone search sheet must not stay over the new page.
+  useEffect(() => setSearchOpen(false), [location]);
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur-lg md:border-b-0">
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center gap-3 px-4 sm:px-6 lg:px-10">
@@ -158,8 +162,8 @@ function BottomTab({ item, location }: { item: NavItem; location: string }) {
       href={item.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex h-14 flex-col items-center justify-center gap-1 text-[11px] font-bold transition-colors",
-        active ? "text-primary" : "text-muted-foreground"
+        "flex h-14 flex-col items-center justify-center gap-1 rounded-lg text-[11px] font-bold transition-colors active:scale-95",
+        active ? "text-primary" : "text-muted-foreground hover:text-foreground"
       )}
     >
       <Icon className="h-[22px] w-[22px]" aria-hidden="true" />
@@ -183,7 +187,11 @@ function BottomNav({ location }: { location: string }) {
       <Link
         href={action.href}
         aria-label={action.label}
-        className="flex h-14 w-14 items-center justify-center justify-self-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/25 transition-transform active:scale-95"
+        aria-current={location.split("?")[0] === action.href ? "page" : undefined}
+        className={cn(
+          "flex h-14 w-14 items-center justify-center justify-self-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:bg-primary-hover active:scale-95",
+          location.split("?")[0] === action.href && "ring-2 ring-primary ring-offset-2 ring-offset-elevated"
+        )}
       >
         <ActionIcon className="h-6 w-6" strokeWidth={2.6} aria-hidden="true" />
       </Link>

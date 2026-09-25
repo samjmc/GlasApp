@@ -1,4 +1,4 @@
-import React, { useState, type ReactNode } from "react";
+import React, { useId, useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from "@shared/ideology";
 import { describePosition } from "@/lib/ideologyDisplay";
@@ -38,6 +38,7 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
   actions,
 }) => {
   const [expandedDimension, setExpandedDimension] = useState<IdeologyDimension | null>(null);
+  const idPrefix = useId();
   const strongest = IDEOLOGY_DIMENSIONS.reduce((a, b) => (Math.abs(dimensions[b]) > Math.abs(dimensions[a]) ? b : a));
 
   return (
@@ -70,11 +71,13 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
             const poles = DIMENSION_POLES[dim];
             const at = toPercent(value);
             const isOpen = expandedDimension === dim;
+            const panelId = `${idPrefix}-${dim}`;
             return (
               <li key={dim}>
                 <button
                   type="button"
                   aria-expanded={isOpen}
+                  aria-controls={panelId}
                   onClick={() => setExpandedDimension(isOpen ? null : dim)}
                   className={cn(
                     "flex w-full flex-col gap-1.5 rounded-lg px-2 py-2.5 text-left transition-colors hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -109,16 +112,16 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
                     <span>{poles.negative}</span>
                     <span>{poles.positive}</span>
                   </span>
-                  {isOpen && (
-                    <span className="rounded-lg bg-background p-3 text-sm leading-relaxed">
-                      Your score of {formatDimensionValue(value)}
-                      {value === 0
-                        ? " sits at the centre. "
-                        : ` means you lean toward the ${value > 0 ? poles.positive : poles.negative} side. `}
-                      {DIMENSION_MEASURES[dim]} −10 is {poles.negative}; +10 is {poles.positive}.
-                    </span>
-                  )}
                 </button>
+                {isOpen && (
+                  <p id={panelId} className="mx-2 mb-2 mt-1 rounded-lg bg-elevated p-3 text-sm leading-relaxed">
+                    Your score of {formatDimensionValue(value)}
+                    {value === 0
+                      ? " sits at the centre. "
+                      : ` means you lean toward the ${value > 0 ? poles.positive : poles.negative} side. `}
+                    {DIMENSION_MEASURES[dim]} −10 is {poles.negative}; +10 is {poles.positive}.
+                  </p>
+                )}
               </li>
             );
           })}

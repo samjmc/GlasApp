@@ -15,6 +15,7 @@ import { ScoreRow, StatTile } from '@/components/pulse/Stat';
 import { TDAvatar } from '@/components/pulse/Party';
 import { Segmented } from '@/components/pulse/Segmented';
 import { EmptyState } from '@/components/pulse/EmptyState';
+import { RetryButton } from '@/components/data/RetryButton';
 import { PartyPollingWidget } from '@/components/PartyPollingWidget';
 import { PartyPledgesPanel } from '@/components/pledges/PartyPledgesPanel';
 import { politicalParties } from '@shared/data';
@@ -110,12 +111,25 @@ function MemberRow({ td, party, value, pos }: { td: PartyMember; party: string; 
   );
 }
 
+/**
+ * wouter runs decodeURI on the path, which leaves reserved escapes (%26, %2F, %23) encoded.
+ * Finish the job, but keep the raw value when it holds a bare "%" (e.g. "100% RDR").
+ */
+function decodeParam(value: string | undefined): string | undefined {
+  if (!value) return value;
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
 export default function PartyProfilePage() {
-  const { name } = useParams<{ name: string }>();
+  const name = decodeParam(useParams<{ name: string }>().name);
   const [tab, setTab] = useState('overview');
   const [memberSort, setMemberSort] = useState<MemberSort>('overall');
 
-  const { data: party, isLoading, error, refetch } = useQuery<PartyProfile>({
+  const { data: party, isLoading, error, refetch, isFetching } = useQuery<PartyProfile>({
     queryKey: ['party-profile-v2', name],
     queryFn: async () => {
       const [detailRes, rankingsRes] = await Promise.all([
@@ -152,7 +166,7 @@ export default function PartyProfilePage() {
       <div className="flex flex-col gap-6" aria-busy="true">
         <Skeleton className="h-56 rounded-2xl" />
         <Skeleton className="h-10 w-80 rounded-xl" />
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
           <Skeleton className="h-72 rounded-2xl" />
           <Skeleton className="h-72 rounded-2xl" />
         </div>
@@ -172,7 +186,7 @@ export default function PartyProfilePage() {
               <Link href="/rankings">See all parties</Link>
             </Button>
           ) : (
-            <Button onClick={() => refetch()}>Try again</Button>
+            <RetryButton onRetry={() => refetch()} pending={isFetching} />
           )
         }
         className="mt-6"
@@ -207,7 +221,7 @@ export default function PartyProfilePage() {
     <div className="flex flex-col gap-6">
       <Link
         href="/rankings"
-        className="inline-flex min-h-[44px] items-center gap-1 self-start text-sm font-semibold text-muted-foreground hover:text-foreground"
+        className="inline-flex min-h-11 items-center gap-1 self-start rounded-md text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
       >
         <ChevronLeft className="h-4 w-4" aria-hidden="true" />
         Rankings
@@ -260,7 +274,7 @@ export default function PartyProfilePage() {
         </TabsList>
 
         <TabsContent value="overview" className="mt-0">
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-start">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-start">
             <div className="flex flex-col gap-4">
               <Card>
                 <CardHeader className="flex-row items-baseline justify-between gap-3 space-y-0">
@@ -280,8 +294,8 @@ export default function PartyProfilePage() {
                 <CardHeader className="flex-row items-center justify-between gap-3 space-y-0">
                   <CardTitle className="font-display text-xl font-bold tracking-tight">Top TDs</CardTitle>
                   {party.members.length > 5 && (
-                    <Button variant="ghost" size="sm" onClick={() => setTab('tds')}>
-                      All {party.size} {tdWord}
+                    <Button variant="ghost" size="sm" className="h-11 md:h-9" onClick={() => setTab('tds')}>
+                      See all {party.size} {tdWord}
                     </Button>
                   )}
                 </CardHeader>
@@ -341,7 +355,7 @@ export default function PartyProfilePage() {
                   This party has no TDs in the current Dáil.
                 </EmptyState>
               ) : (
-                <div className="grid gap-1 md:grid-cols-2">
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-1 md:grid-cols-2">
                   {sortedMembers.map((td, i) => (
                     <MemberRow
                       key={td.id}
@@ -374,13 +388,13 @@ export default function PartyProfilePage() {
                 <CardTitle className="font-display text-xl font-bold tracking-tight">Where {party.party} sits</CardTitle>
                 <span className="text-[13px] text-muted-foreground">8 dimensions, −10 to +10. 0 is the centre.</span>
               </div>
-              <Button asChild variant="secondary" size="sm">
+              <Button asChild variant="secondary" size="sm" className="h-11 md:h-9">
                 <Link href="/quiz">Take the quiz to compare</Link>
               </Button>
             </CardHeader>
             <CardContent>
               {ideology ? (
-                <div className="grid gap-x-8 gap-y-6 md:grid-cols-2">
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-6 md:grid-cols-2">
                   {DIMENSIONS.map((d) => {
                     const value = ideology[d.key];
                     const position = ((Math.max(-10, Math.min(10, value)) + 10) / 20) * 100;

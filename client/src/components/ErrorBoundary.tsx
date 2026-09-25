@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from 'react';
+import { useLocation } from 'wouter';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -232,13 +233,17 @@ interface ErrorBoundaryProps {
  *     (QueryErrorNotifier).
  *  3. Reset query errors on "Try Again" so failed queries re-fetch instead of
  *     re-throwing (QueryErrorResetBoundary).
+ *  4. Reset itself when the route changes, so navigating to a different page
+ *     after a crash shows that page instead of repeating the fallback UI.
  */
 /** Error boundary that catches render and query errors with a fallback UI. */
 export function ErrorBoundary({ children, fallback }: ErrorBoundaryProps) {
+  const [location] = useLocation();
+
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
-        <ErrorBoundaryCore onReset={reset} fallback={fallback}>
+        <ErrorBoundaryCore key={location} onReset={reset} fallback={fallback}>
           <QueryErrorNotifier />
           {children}
         </ErrorBoundaryCore>

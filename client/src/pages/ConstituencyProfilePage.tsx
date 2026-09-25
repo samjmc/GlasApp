@@ -14,6 +14,7 @@ import { ScoreRing } from '@/components/pulse/ScoreRing';
 import { StatTile } from '@/components/pulse/Stat';
 import { PartyDot, PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { EmptyState } from '@/components/pulse/EmptyState';
+import { RetryButton } from '@/components/data/RetryButton';
 import { PartyMixBar } from '@/components/data/PartyMixBar';
 import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
@@ -48,7 +49,7 @@ function BackLink() {
   return (
     <Link
       href="/constituencies"
-      className="inline-flex min-h-[44px] items-center gap-1 self-start text-sm font-semibold text-muted-foreground hover:text-foreground"
+      className="inline-flex min-h-11 items-center gap-1 self-start rounded-md text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
     >
       <ChevronLeft className="h-4 w-4" aria-hidden="true" />
       Constituencies
@@ -59,7 +60,7 @@ function BackLink() {
 export default function ConstituencyProfilePage() {
   const { name } = useParams<{ name: string }>();
 
-  const { data, isLoading, isError, refetch } = useQuery<ConstituencyDetail | null>({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery<ConstituencyDetail | null>({
     queryKey: ['constituency-profile', name],
     queryFn: async () => {
       const res = await fetch(`/api/scores/constituency/${encodeURIComponent(name || '')}`);
@@ -80,7 +81,7 @@ export default function ConstituencyProfilePage() {
             <Skeleton key={i} className="h-[104px] rounded-xl" />
           ))}
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 5 }, (_, i) => (
             <Skeleton key={i} className="h-36 rounded-2xl" />
           ))}
@@ -98,7 +99,7 @@ export default function ConstituencyProfilePage() {
           title={isError ? 'Could not load this constituency' : 'Constituency not found'}
           action={
             isError ? (
-              <Button onClick={() => refetch()}>Try again</Button>
+              <RetryButton onRetry={() => refetch()} pending={isFetching} />
             ) : (
               <Button asChild variant="secondary">
                 <Link href="/constituencies">See all constituencies</Link>
@@ -153,7 +154,7 @@ export default function ConstituencyProfilePage() {
             We have no sitting TDs recorded for this constituency yet.
           </EmptyState>
         ) : (
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {data.tds.map((td) => (
               <li key={td.id}>
                 <Link
@@ -181,7 +182,7 @@ export default function ConstituencyProfilePage() {
         )}
       </section>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle className="font-display text-xl font-bold tracking-tight">Party representation</CardTitle>

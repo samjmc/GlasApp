@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation, useSearch } from "wouter";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
 import { GlasLogo } from "@/components/pulse/GlasMark";
 import { Button } from "@/components/ui/button";
@@ -95,8 +95,17 @@ export default function RegionSelectionPage() {
         </div>
 
         <div className="flex flex-col items-center gap-3">
-          <Button size="lg" onClick={confirm} disabled={saving} className="w-full sm:w-72">
-            Continue with {REGION_LIST.find((r) => r.code === choice)?.shortName} <ArrowRight />
+          <Button size="lg" onClick={confirm} disabled={saving} className="w-full gap-2 sm:w-72">
+            {saving ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                Saving…
+              </>
+            ) : (
+              <>
+                Continue with {REGION_LIST.find((r) => r.code === choice)?.shortName} <ArrowRight />
+              </>
+            )}
           </Button>
           <p className="text-xs text-muted-foreground">Previews show what is coming. They contain no real scores yet.</p>
         </div>

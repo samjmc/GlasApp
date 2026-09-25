@@ -3,7 +3,8 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import { TrendingDown, TrendingUp } from "lucide-react";
+import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { queryKeys } from "@/lib/queryKeys";
 import { useRegion } from "@/hooks/useRegion";
 import { ArticleImage } from "@/components/news/ArticleImage";
@@ -26,7 +27,7 @@ const Eyebrow = () => (
 /** Highlights today's biggest-impact story (full or compact variant). */
 export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactProps) {
   const { regionCode } = useRegion();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: queryKeys.news.biggestImpact(regionCode),
     queryFn: async () => {
       const res = await fetch("/api/news-feed?sort=today&limit=1");
@@ -43,6 +44,20 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
         <Skeleton className="h-4 w-40" />
         <Skeleton className="h-6 w-3/4" />
         <Skeleton className="h-4 w-1/2" />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex flex-col items-start gap-2 rounded-2xl border border-dashed border-input bg-card p-5">
+        <Eyebrow />
+        <span className="font-display text-lg font-bold">Today&apos;s top story did not load</span>
+        <span className="text-sm text-muted-foreground">Check your connection, then try again.</span>
+        <Button variant="outline" size="sm" onClick={() => refetch()} disabled={isFetching} className="mt-1 h-11">
+          {isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+          {isFetching ? "Loading…" : "Try again"}
+        </Button>
       </div>
     );
   }
@@ -72,7 +87,7 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
       href={article.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-colors hover:bg-accent active:scale-[0.98] sm:flex-row"
+      className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98] sm:flex-row"
     >
       {variant === "full" && (
         <ArticleImage
@@ -89,6 +104,7 @@ export function TodaysBiggestImpact({ variant = "full" }: TodaysBiggestImpactPro
         <Eyebrow />
         <h3 className="font-display text-xl font-bold leading-tight tracking-tight group-hover:text-primary">
           {article.title}
+          <span className="sr-only"> (opens in a new tab)</span>
         </h3>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-muted-foreground">
           <span className="font-semibold text-foreground">{article.source}</span>

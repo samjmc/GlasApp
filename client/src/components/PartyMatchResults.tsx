@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Users } from "lucide-react";
+import { Loader2, Users } from "lucide-react";
 import { DIMENSION_POLES, type IdeologyDimension, type IdeologyVector } from "@shared/ideology";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -47,7 +47,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
     return () => window.clearTimeout(timer);
   }, [weights]);
 
-  const { data, isLoading, isError, error, refetch } = useQuery<Matches>({
+  const { data, isLoading, isError, error, refetch, isPlaceholderData } = useQuery<Matches>({
     queryKey: isAuthenticated
       ? queryKeys.ideology.myMatches(user?.id, activeWeights)
       : queryKeys.ideology.vectorMatches(dimensions, activeWeights),
@@ -94,8 +94,16 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
 
   return (
     <>
-      <section className={cardClass}>
-        <h2 className="font-display text-[22px] font-bold">Closest parties</h2>
+      <section className={cardClass} aria-busy={isPlaceholderData}>
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="font-display text-[22px] font-bold">Closest parties</h2>
+          {isPlaceholderData && (
+            <span role="status" className="flex items-center gap-1.5 text-[13px] font-semibold text-muted-foreground">
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              Updating…
+            </span>
+          )}
+        </div>
         {topParties.length === 0 ? (
           <EmptyState icon={Users} title="No party matches yet">
             We could not match your answers to any party. Try again later.
@@ -120,7 +128,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
                   </span>
                   <Link
                     href={`/party/${encodeURIComponent(match.party)}`}
-                    className="shrink-0 text-[13px] font-bold text-primary hover:underline"
+                    className="inline-flex min-h-11 shrink-0 items-center text-[13px] font-bold text-primary hover:underline"
                   >
                     View party
                   </Link>
@@ -137,7 +145,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
               <Link
                 key={match.party}
                 href={`/party/${encodeURIComponent(match.party)}`}
-                className="flex min-h-14 items-center gap-3 rounded-lg border px-3 py-2 transition-colors hover:bg-accent"
+                className="flex min-h-14 items-center gap-3 rounded-lg border px-3 py-2 transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98]"
               >
                 <PartyBadge party={match.party} small />
                 <span className="flex min-w-0 flex-1 flex-col">
@@ -171,7 +179,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
               <li key={td.tdId}>
                 <Link
                   href={`/td/${encodeURIComponent(td.name)}`}
-                  className="flex min-h-[60px] items-center gap-3 rounded-lg px-1 py-2 transition-colors hover:bg-accent"
+                  className="flex min-h-[60px] items-center gap-3 rounded-lg px-1 py-2 transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98]"
                 >
                   <TDAvatar name={td.name} party={td.party} imageUrl={td.imageUrl} />
                   <span className="flex min-w-0 flex-1 flex-col gap-0.5">

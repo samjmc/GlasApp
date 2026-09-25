@@ -5,7 +5,8 @@ import './OfficialElectoralMap.css';
 import { ELECTION_RESULTS } from '../assets/election-results';
 import { fetchConstituencyBoundaries } from '../helpers/fetchConstituencyGeoJSON';
 import OfficialElectoralMapLoading from './OfficialElectoralMapLoading';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, RotateCw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { partyStyle } from '@/lib/parties';
 
 /**
@@ -80,7 +81,11 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
-  const [activeConstituency, setActiveConstituency] = useState<string | null>(null);
+  // Refs, not state: the Leaflet handlers read them, and a change must not rebuild the map.
+  const activeConstituencyRef = useRef<string | null>(null);
+  const onSelectRef = useRef(onConstituencySelect);
+  onSelectRef.current = onConstituencySelect;
+  const [attempt, setAttempt] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [geoJsonLayer, setGeoJsonLayer] = useState<L.GeoJSON | null>(null);
@@ -158,14 +163,14 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             <svg class="tooltip-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
-            Dáil Seats
+            Dáil seats
           </span>
           <span class="tooltip-value">${seats}</span>
         </div>
         
         ${leadingPartyHTML}
         
-        <div class="tooltip-action">Click to view details</div>
+        <div class="tooltip-action">Select to see its TDs</div>
       </div>
     `;
   };
@@ -475,7 +480,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                 
                 // Reset style on mouseout
                 layer.on('mouseout', function() {
-                  if (layer instanceof L.Path && constituencyName !== activeConstituency) {
+                  if (layer instanceof L.Path && constituencyName !== activeConstituencyRef.current) {
                     layer.setStyle({
                       weight: 2,
                       dashArray: '',
@@ -505,8 +510,8 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                       layer.bringToFront();
                     }
                     
-                    setActiveConstituency(constituencyName);
-                    onConstituencySelect(constituencyName);
+                    activeConstituencyRef.current = constituencyName;
+                    onSelectRef.current(constituencyName);
                     
                     if (mapRef.current && 'getBounds' in layer && typeof layer.getBounds === 'function') {
                       // @ts-ignore - getBounds exists on these layers
@@ -543,7 +548,13 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
     initializeMap();
 
     return cleanup;
-  }, [onConstituencySelect, activeConstituency]);
+  }, [attempt]);
+
+  const retry = () => {
+    setError(null);
+    setShowPlaceholder(true);
+    setAttempt((a) => a + 1);
+  };
 
   // Update colors and tooltips when layer or data changes
   useEffect(() => {
@@ -605,6 +616,10 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             <AlertTriangle className="h-8 w-8 text-warn" aria-hidden="true" />
             <div className="font-display text-lg font-bold">Could not load the map</div>
             <div className="text-sm text-muted-foreground">{error}</div>
+            <Button type="button" variant="secondary" className="mt-2" onClick={retry}>
+              <RotateCw aria-hidden="true" />
+              Try again
+            </Button>
           </div>
         </div>
       )}

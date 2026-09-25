@@ -16,6 +16,7 @@ import { PageHeader } from '@/components/PageHeader';
 import { StatTile } from '@/components/pulse/Stat';
 import { PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { EmptyState } from '@/components/pulse/EmptyState';
+import { RetryButton } from '@/components/data/RetryButton';
 import { PartyMixBar } from '@/components/data/PartyMixBar';
 import OfficialElectoralMap from '@/components/OfficialElectoralMap';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
@@ -122,7 +123,7 @@ export default function ConstituenciesPage() {
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
   const [query, setQuery] = useState('');
 
-  const { data: summary, isLoading, isError, refetch } = useQuery<ConstituencySummaryData>({
+  const { data: summary, isLoading, isError, refetch, isFetching } = useQuery<ConstituencySummaryData>({
     queryKey: ['constituencies-summary'],
     queryFn: async () => {
       const res = await fetch('/api/scores/constituencies/summary');
@@ -177,7 +178,7 @@ export default function ConstituenciesPage() {
       </div>
 
       {isError ? (
-        <EmptyState icon={SearchX} title="Could not load constituencies" action={<Button onClick={() => refetch()}>Try again</Button>}>
+        <EmptyState icon={SearchX} title="Could not load constituencies" action={<RetryButton onRetry={() => refetch()} pending={isFetching} />}>
           The scores service did not answer. Check your connection and try again.
         </EmptyState>
       ) : (
@@ -187,7 +188,7 @@ export default function ConstituenciesPage() {
             <TabsTrigger value="list">List</TabsTrigger>
           </TabsList>
 
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
             <div className="min-w-0">
               <TabsContent value="map" className="mt-0">
                 <Card className="overflow-hidden">
@@ -209,7 +210,7 @@ export default function ConstituenciesPage() {
                 </label>
 
                 {isLoading ? (
-                  <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  <div className="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2 xl:grid-cols-3">
                     {Array.from({ length: 6 }, (_, i) => (
                       <Skeleton key={i} className="h-32 rounded-2xl" />
                     ))}
@@ -223,7 +224,7 @@ export default function ConstituenciesPage() {
                     Check the spelling, or search part of the name, like “Dublin”.
                   </EmptyState>
                 ) : (
-                  <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  <ul className="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2 xl:grid-cols-3">
                     {filtered.map((c) => (
                       <li key={c.name}>
                         <Link

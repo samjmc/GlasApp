@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, ChevronLeft, ExternalLink, Flame, Landmark, Loader2, Share2, SkipForward, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -87,7 +87,6 @@ const SOUNDS: Record<"start" | "advance" | "card" | "complete" | "share" | "sele
 };
 
 export default function DailySessionPage() {
-  const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
   const [step, setStep] = useState<Step>("prompt");
   const [voteSubStep, setVoteSubStep] = useState<VoteSubStep>("preview");
@@ -269,7 +268,7 @@ export default function DailySessionPage() {
       } catch (error: unknown) {
         toast({
           variant: "destructive",
-          title: "Something broke",
+          title: "Could not finish the session",
           description: (error as { message?: string } | null)?.message || "We couldn’t finish the session. Please retry.",
         });
       } finally {
@@ -351,7 +350,25 @@ export default function DailySessionPage() {
         <div className="flex flex-1 flex-col justify-center gap-4 text-center">
           <h1 className="font-display text-3xl font-extrabold tracking-tight">Sign in for your daily vote</h1>
           <p className="text-muted-foreground">Three quick stances a day keep your profile and TD matches up to date.</p>
-          <Button size="lg" onClick={() => navigate("/login")}>Sign in</Button>
+          <Button asChild size="lg">
+            <Link href="/login">Sign in</Link>
+          </Button>
+        </div>
+      </Shell>
+    );
+  }
+
+  if (sessionQuery.isError && !session) {
+    return (
+      <Shell>
+        <TopBar left={<CloseLink />} title="Daily vote" />
+        <div className="flex flex-1 flex-col justify-center gap-4 text-center">
+          <h1 className="font-display text-3xl font-extrabold tracking-tight">Your daily vote did not load</h1>
+          <p className="text-muted-foreground">Check your connection, then try again.</p>
+          <Button size="lg" onClick={() => sessionQuery.refetch()} disabled={sessionQuery.isFetching}>
+            {sessionQuery.isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+            {sessionQuery.isFetching ? "Loading…" : "Try again"}
+          </Button>
         </div>
       </Shell>
     );
@@ -379,7 +396,9 @@ export default function DailySessionPage() {
         <div className="flex flex-1 flex-col justify-center gap-4 text-center">
           <h1 className="font-display text-3xl font-extrabold tracking-tight">No questions today</h1>
           <p className="text-muted-foreground">There is nothing to vote on yet. Check back later today.</p>
-          <Button size="lg" onClick={() => navigate("/")}>Back home</Button>
+          <Button asChild size="lg">
+            <Link href="/">Back home</Link>
+          </Button>
         </div>
       </Shell>
     );
@@ -724,7 +743,7 @@ function VoteScreen({
       <div className="mt-auto flex flex-col gap-2.5 pt-2">
         <PrimaryAction onClick={onNext} disabled={isNextDisabled}>
           {isProcessing && <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />}
-          {isLast ? "Save and finish" : "Save answer"}
+          {isProcessing ? "Saving…" : isLast ? "Save and finish" : "Save answer"}
         </PrimaryAction>
         <span className="text-center text-[13px] text-muted-foreground">
           {pendingOption === null ? "Pick one answer to continue." : "You can change this later in My politics."}
@@ -829,7 +848,7 @@ function PayoffScreen({
 
         <div className="mt-auto flex flex-col gap-1.5 pt-2">
           <PrimaryAction onClick={onNext} disabled={isCompleting}>
-            Share my streak
+            See my streak
           </PrimaryAction>
           <Button asChild variant="ghost" className="h-11 w-full">
             <Link href="/my-politics">See my politics</Link>

@@ -11,6 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { ScoreRing } from '@/components/pulse/ScoreRing';
 import { PartyLabel } from '@/components/pulse/Party';
 import { StatTile } from '@/components/pulse/Stat';
+import { RetryButton } from '@/components/data/RetryButton';
 import { queryKeys } from '@/lib/queryKeys';
 
 interface TDQuickInfoModalProps {
@@ -35,7 +36,7 @@ interface TDSummary {
 
 /** Modal with quick summary info for a TD. */
 export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProps) {
-  const { data, isLoading, isError, refetch } = useQuery<TDSummary>({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery<TDSummary>({
     queryKey: queryKeys.td.quickInfo(tdId),
     queryFn: async () => {
       const res = await fetch(`/api/scores/td/${tdId}/summary`);
@@ -110,7 +111,7 @@ export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProp
               <Button variant="outline" onClick={onClose}>
                 Close
               </Button>
-              {isError && <Button onClick={() => refetch()}>Try again</Button>}
+              {isError && <RetryButton onRetry={() => refetch()} pending={isFetching} />}
             </div>
           </div>
         )}

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ChevronDown, ChevronUp, Flame, Lightbulb, MessageSquarePlus, Sparkles } from "lucide-react";
+import { ChevronDown, ChevronUp, Flame, Lightbulb, Loader2, MessageSquarePlus, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 import { PageHeader } from "@/components/PageHeader";
 import { EmptyState } from "@/components/pulse/EmptyState";
 import { Segmented } from "@/components/pulse/Segmented";
@@ -71,10 +72,11 @@ export default function IdeasPage() {
   const queryClient = useQueryClient();
   const { isAuthenticated } = useAuth();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
 
   const category = ISSUE_CATEGORIES.find((c) => c.id === selectedCategory) ?? ISSUE_CATEGORIES[0];
 
-  const { data: problems, isLoading, isError, refetch } = useQuery<Problem[]>({
+  const { data: problems, isLoading, isError, isFetching, refetch } = useQuery<Problem[]>({
     queryKey: ["/api/problems", selectedCategory],
     queryFn: () => apiRequest<Problem[]>({ method: "GET", path: `/api/problems/${selectedCategory}` }),
     enabled: !!selectedCategory,
@@ -103,7 +105,15 @@ export default function IdeasPage() {
 
   const requireSignIn = () => {
     if (isAuthenticated) return true;
-    toast({ title: "Sign in to vote", description: "Your votes help rank Ireland's biggest problems." });
+    toast({
+      title: "Sign in to vote",
+      description: "Your votes help rank Ireland's biggest problems.",
+      action: (
+        <ToastAction altText="Log in" onClick={() => navigate("/login")}>
+          Log in
+        </ToastAction>
+      ),
+    });
     return false;
   };
 
@@ -138,7 +148,7 @@ export default function IdeasPage() {
                 onClick={() => setSelectedCategory(c.id)}
                 className={cn(
                   "h-11 shrink-0 rounded-full px-4 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  on ? "bg-foreground text-background" : "bg-elevated text-muted-foreground hover:text-foreground"
+                  on ? "bg-foreground text-background" : "bg-elevated text-muted-foreground hover:bg-accent hover:text-foreground"
                 )}
               >
                 {c.name}
@@ -170,8 +180,9 @@ export default function IdeasPage() {
         <EmptyState
           title="We could not load these problems"
           action={
-            <Button variant="outline" onClick={() => void refetch()}>
-              Try again
+            <Button variant="outline" onClick={() => void refetch()} disabled={isFetching}>
+              {isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+              {isFetching ? "Loading…" : "Try again"}
             </Button>
           }
         >
@@ -197,8 +208,8 @@ export default function IdeasPage() {
                 problem={problem}
                 categoryName={category.name}
                 rank={sort === "top" ? index + 1 : null}
-                votePending={problemVoteMutation.isPending}
-                solutionVotePending={solutionVoteMutation.isPending}
+                votePending={problemVoteMutation.isPending && problemVoteMutation.variables?.problemId === problem.id}
+                pendingSolutionId={solutionVoteMutation.isPending ? solutionVoteMutation.variables?.solutionId ?? null : null}
                 onVote={(voteType) => requireSignIn() && problemVoteMutation.mutate({ problemId: problem.id, voteType })}
                 onSolutionVote={(solutionId, voteType) =>
                   requireSignIn() && solutionVoteMutation.mutate({ solutionId, voteType })
@@ -217,6 +228,7 @@ function VoteControl({
   userVote,
   onVote,
   disabled,
+  pending = false,
   label,
   size = "md",
 }: {
@@ -224,12 +236,14 @@ function VoteControl({
   userVote: string | null;
   onVote: (v: VoteType) => void;
   disabled: boolean;
+  /** This vote is being saved: show a spinner in place of the score. */
+  pending?: boolean;
   label: string;
   size?: "sm" | "md";
 }) {
   const btn = cn(
-    "flex items-center justify-center rounded-lg transition-colors hover:bg-accent disabled:opacity-50",
-    size === "md" ? "h-11 w-11" : "h-9 w-9"
+    "flex items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50",
+    size === "md" ? "h-11 w-11" : "h-11 w-11 sm:h-9 sm:w-9"
   );
   return (
     <div className="flex shrink-0 flex-col items-center rounded-xl bg-elevated p-0.5">
@@ -243,7 +257,19 @@ function VoteControl({
       >
         <ChevronUp className="h-5 w-5" />
       </button>
-      <span className={cn("font-display font-bold tabular-nums", size === "md" ? "text-lg" : "text-sm")}>{score}</span>
+      <span
+        className={cn("flex items-center justify-center font-display font-bold tabular-nums", size === "md" ? "h-7 text-lg" : "h-5 text-sm")}
+        aria-live="polite"
+      >
+        {pending ? (
+          <>
+            <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" aria-hidden="true" />
+            <span className="sr-only">Saving vote</span>
+          </>
+        ) : (
+          score
+        )}
+      </span>
       <button
         type="button"
         aria-label={`Downvote ${label}`}
@@ -263,7 +289,7 @@ function ProblemCard({
   categoryName,
   rank,
   votePending,
-  solutionVotePending,
+  pendingSolutionId,
   onVote,
   onSolutionVote,
 }: {
@@ -271,7 +297,7 @@ function ProblemCard({
   categoryName: string;
   rank: number | null;
   votePending: boolean;
-  solutionVotePending: boolean;
+  pendingSolutionId: number | null;
   onVote: (v: VoteType) => void;
   onSolutionVote: (solutionId: number, v: VoteType) => void;
 }) {
@@ -305,6 +331,7 @@ function ProblemCard({
           userVote={problem.userVoteType}
           onVote={onVote}
           disabled={votePending}
+          pending={votePending}
           label={problem.title}
         />
       </div>
@@ -352,7 +379,8 @@ function ProblemCard({
                   score={solution.voteScore}
                   userVote={solution.userVoteType}
                   onVote={(v) => onSolutionVote(solution.id, v)}
-                  disabled={solutionVotePending}
+                  disabled={pendingSolutionId === solution.id}
+                  pending={pendingSolutionId === solution.id}
                   label={solution.title}
                 />
               </li>

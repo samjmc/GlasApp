@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { AlertCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { AlertCircle, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { queryKeys } from '@/lib/queryKeys';
 import type { FeedArticle } from '@/lib/news';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
@@ -42,7 +42,7 @@ export function HomePageTabs() {
   const [sortBy, setSortBy] = useState<SortBy>('score');
   const [page, setPage] = useState(1);
 
-  const { data: articles, isLoading, error, refetch } = useQuery({
+  const { data: articles, isLoading, isFetching, error, refetch } = useQuery({
     queryKey: queryKeys.news.feed(sortBy, page),
     queryFn: async () => {
       const offset = (page - 1) * ARTICLES_PER_PAGE;
@@ -88,8 +88,9 @@ export function HomePageTabs() {
           icon={AlertCircle}
           title="The news feed did not load"
           action={
-            <Button variant="outline" onClick={() => refetch()}>
-              Try again
+            <Button variant="outline" onClick={() => refetch()} disabled={isFetching}>
+              {isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+              {isFetching ? 'Loading…' : 'Try again'}
             </Button>
           }
         >
@@ -167,7 +168,7 @@ export function HomePageTabs() {
           )}
         </>
       ) : (
-        <EmptyNewsFeedState onRefresh={() => refetch()} />
+        <EmptyNewsFeedState onRefresh={() => refetch()} refreshing={isFetching} />
       )}
     </section>
   );

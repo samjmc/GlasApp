@@ -25,7 +25,7 @@ function HeroContext() {
 }
 
 const pill =
-  "inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-semibold text-foreground transition-colors hover:bg-elevated";
+  "inline-flex h-11 shrink-0 items-center gap-2 rounded-full border px-4 text-sm font-semibold text-foreground transition-[background-color,transform] duration-150 hover:bg-elevated active:scale-[0.98]";
 
 export default function HomePage() {
   const { isAuthenticated } = useAuth();

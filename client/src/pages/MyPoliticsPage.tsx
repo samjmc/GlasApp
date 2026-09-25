@@ -6,7 +6,7 @@
 import { useState, type ReactNode } from 'react';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { ArrowRight, Compass, Lock, Users } from 'lucide-react';
+import { ArrowRight, Compass, Loader2, Lock, Users } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -57,6 +57,7 @@ export default function MyPoliticsPage() {
   const hasProfile = vector !== null && matchesQuery.data?.hasProfile !== false;
   const isLoading = vectorQuery.isLoading || matchesQuery.isLoading;
   const loadError = vectorQuery.error ?? matchesQuery.error;
+  const isRetrying = vectorQuery.isFetching || matchesQuery.isFetching;
 
   if (!isAuthenticated) {
     return (
@@ -98,12 +99,14 @@ export default function MyPoliticsPage() {
           action={
             <Button
               variant="outline"
+              disabled={isRetrying}
               onClick={() => {
                 void vectorQuery.refetch();
                 void matchesQuery.refetch();
               }}
             >
-              Try again
+              {isRetrying && <Loader2 className="animate-spin" aria-hidden="true" />}
+              {isRetrying ? 'Loading…' : 'Try again'}
             </Button>
           }
         >
@@ -122,7 +125,7 @@ export default function MyPoliticsPage() {
           <Button asChild size="lg">
             <Link href="/quiz">
               Take the quiz
-              <ArrowRight />
+              <ArrowRight aria-hidden="true" />
             </Link>
           </Button>
         }
@@ -203,7 +206,7 @@ export default function MyPoliticsPage() {
                     <li key={match.tdId}>
                       <Link
                         href={`/td/${encodeURIComponent(match.name)}`}
-                        className="flex min-h-[60px] items-center gap-3 rounded-lg px-1 py-2 transition-colors hover:bg-accent"
+                        className="flex min-h-[60px] items-center gap-3 rounded-lg px-1 py-2 transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98]"
                       >
                         <TDAvatar name={match.name} party={match.party} imageUrl={match.imageUrl} />
                         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
@@ -223,7 +226,7 @@ export default function MyPoliticsPage() {
               )}
               <Button variant="outline" className="mt-auto w-full" onClick={() => setActiveTab('rankings')}>
                 See all rankings
-                <ArrowRight />
+                <ArrowRight aria-hidden="true" />
               </Button>
             </section>
           </div>
@@ -254,7 +257,7 @@ export default function MyPoliticsPage() {
                     <li key={match.party}>
                       <Link
                         href={`/party/${encodeURIComponent(match.party)}`}
-                        className="flex flex-col gap-2.5 rounded-xl bg-elevated p-3.5 transition-colors hover:bg-accent active:scale-[0.98]"
+                        className="flex flex-col gap-2.5 rounded-xl bg-elevated p-3.5 transition-[background-color,transform] duration-150 hover:bg-accent active:scale-[0.98]"
                       >
                         <span className="flex items-center gap-3">
                           <TDAvatar name={style.name} party={match.party} />

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { ChevronDown, Vote } from "lucide-react";
+import { useLocation } from "wouter";
+import { ChevronDown, Loader2, Vote } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
 import { cn } from "@/lib/utils";
 import {
@@ -34,6 +36,7 @@ const messageOf = (error: unknown) => (error instanceof Error ? error.message : 
 export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProps) {
   const { isAuthenticated } = useAuth();
   const { toast } = useToast();
+  const [, navigate] = useLocation();
 
   const [tally, setTally] = useState<QuestionTally>(EMPTY_TALLY);
   const [myVote, setMyVote] = useState<string | null>(null);
@@ -60,6 +63,11 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
       toast({
         title: "Log in to vote",
         description: "Your answers shape your TD and party matches. Please sign in first.",
+        action: (
+          <ToastAction altText="Log in" onClick={() => navigate("/login")}>
+            Log in
+          </ToastAction>
+        ),
       });
       return;
     }
@@ -105,6 +113,13 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
         onSelect={(optionKey) => void handleVote(optionKey)}
         disabled={isSubmitting}
       />
+
+      {isSubmitting && (
+        <p role="status" className="flex items-center gap-2 text-[13px] font-semibold text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+          Saving your answer…
+        </p>
+      )}
 
       <button
         type="button"

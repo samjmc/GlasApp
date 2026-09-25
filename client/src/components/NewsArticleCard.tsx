@@ -3,11 +3,10 @@
  * the policy vote for the story, and like / read / share actions.
  */
 
-import { useState } from 'react';
-import { ExternalLink, Share2, Sparkles, ThumbsUp } from 'lucide-react';
+import { ExternalLink, Share2, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 import { PolicyVotePrompt } from './PolicyVotePrompt';
 import { ArticleImage } from './news/ArticleImage';
 import { humanizeCategory, type FeedArticle } from '@/lib/news';
@@ -29,7 +28,6 @@ function formatTimeAgo(dateString: string): string {
 
 /** Card displaying a news article with like, read and share actions. */
 export function NewsArticleCard({ article }: { article: FeedArticle }) {
-  const [liked, setLiked] = useState(false);
   const { toast } = useToast();
   const body = article.aiSummary ?? article.summary;
 
@@ -108,21 +106,11 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
       </div>
 
       <div className="mt-auto flex items-center gap-1 border-t px-2 py-2">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setLiked((v) => !v)}
-          aria-pressed={liked}
-          className={cn('h-11 flex-1', liked && 'text-primary')}
-        >
-          <ThumbsUp className={cn('h-4 w-4', liked && 'fill-current')} aria-hidden="true" />
-          {liked ? 1 : 0}
-          <span className="sr-only">likes</span>
-        </Button>
         <Button variant="ghost" size="sm" asChild className="h-11 flex-1">
           <a href={article.url} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            Read
+            Read story
+            <span className="sr-only">(opens in a new tab)</span>
           </a>
         </Button>
         <Button variant="ghost" size="sm" onClick={handleShare} className="h-11 flex-1">

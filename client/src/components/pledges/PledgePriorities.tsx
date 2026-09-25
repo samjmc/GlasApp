@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown, ArrowUp, Loader2 } from "lucide-react";
 import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
@@ -38,7 +38,7 @@ export function PledgePriorities() {
       queryClient.invalidateQueries({ queryKey: ["/api/pledges/priorities"] });
       queryClient.invalidateQueries({ queryKey: ["/api/pledges/parties"] });
     },
-    onError: () => toast({ title: "Could not save", description: "Please try again.", variant: "destructive" }),
+    onError: () => toast({ title: "Could not save your ranking", description: "Please try again.", variant: "destructive" }),
   });
 
   const move = (index: number, delta: -1 | 1) => {
@@ -73,7 +73,7 @@ export function PledgePriorities() {
                 disabled={index === 0}
                 onClick={() => move(index, -1)}
               >
-                <ArrowUp className="h-4 w-4" />
+                <ArrowUp aria-hidden="true" />
               </Button>
               <Button
                 variant="ghost"
@@ -82,13 +82,14 @@ export function PledgePriorities() {
                 disabled={index === order.length - 1}
                 onClick={() => move(index, 1)}
               >
-                <ArrowDown className="h-4 w-4" />
+                <ArrowDown aria-hidden="true" />
               </Button>
             </li>
           ))}
         </ol>
         {isAuthenticated ? (
-          <Button onClick={() => save.mutate()} disabled={save.isPending}>
+          <Button onClick={() => save.mutate()} disabled={save.isPending} aria-busy={save.isPending}>
+            {save.isPending && <Loader2 className="animate-spin" aria-hidden="true" />}
             {save.isPending ? "Saving…" : "Save my ranking"}
           </Button>
         ) : (

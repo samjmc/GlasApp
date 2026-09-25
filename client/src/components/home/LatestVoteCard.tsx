@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Landmark } from "lucide-react";
+import { Landmark, Loader2 } from "lucide-react";
 import type { DivisionSummary } from "@shared/parliamentApi";
 import { apiClient } from "@/lib/queryClient";
 import { queryKeys } from "@/lib/queryKeys";
@@ -16,7 +16,7 @@ type Envelope = { success: true; data: DivisionSummary[]; meta?: { total: number
 
 /** The most recent Dáil division: title, outcome, Tá/Níl split, link to the record. */
 export function LatestVoteCard({ className }: { className?: string }) {
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: queryKeys.parliament.divisions(1, 0),
     queryFn: () => apiClient.get<Envelope>("/api/parliament/divisions?limit=1&offset=0"),
   });
@@ -41,8 +41,9 @@ export function LatestVoteCard({ className }: { className?: string }) {
           title={isError ? "Dáil votes did not load" : "No Dáil votes yet"}
           action={
             isError ? (
-              <Button variant="outline" onClick={() => refetch()}>
-                Try again
+              <Button variant="outline" onClick={() => refetch()} disabled={isFetching}>
+                {isFetching && <Loader2 className="animate-spin" aria-hidden="true" />}
+                {isFetching ? "Loading…" : "Try again"}
               </Button>
             ) : undefined
           }

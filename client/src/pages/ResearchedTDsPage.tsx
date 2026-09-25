@@ -17,6 +17,7 @@ import { Segmented } from '@/components/pulse/Segmented';
 import { ScoreBar } from '@/components/pulse/Stat';
 import { PartyDot, PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { EmptyState } from '@/components/pulse/EmptyState';
+import { RetryButton } from '@/components/data/RetryButton';
 import { TDQuickInfoModal } from '@/components/TDQuickInfoModal';
 import { queryKeys } from '@/lib/queryKeys';
 import { partyStyle } from '@/lib/parties';
@@ -101,7 +102,7 @@ export default function ResearchedTDsPage() {
   const [selectedTDId, setSelectedTDId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading, isError, refetch } = useQuery<RankingsData>({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery<RankingsData>({
     queryKey: queryKeys.td.rankings(),
     queryFn: async () => {
       const res = await fetch('/api/scores/tds');
@@ -253,8 +254,8 @@ export default function ResearchedTDsPage() {
                     setVisible(PAGE_SIZE);
                   }}
                   className={cn(
-                    'inline-flex h-10 shrink-0 items-center gap-2 rounded-full border px-3.5 text-sm font-semibold transition-colors',
-                    on ? 'border-foreground bg-foreground text-background' : 'bg-elevated text-muted-foreground hover:text-foreground'
+                    'inline-flex h-11 shrink-0 items-center gap-2 rounded-full border px-3.5 text-sm font-semibold transition-colors md:h-10',
+                    on ? 'border-foreground bg-foreground text-background' : 'bg-elevated text-muted-foreground hover:bg-accent hover:text-foreground'
                   )}
                 >
                   {party !== 'all' && <PartyDot party={party} />}
@@ -275,7 +276,7 @@ export default function ResearchedTDsPage() {
               {heading && ` · ${heading}`}
             </span>
             {hasActiveFilters && (
-              <Button variant="ghost" size="sm" onClick={clearFilters}>
+              <Button variant="ghost" size="sm" className="h-11 md:h-9" onClick={clearFilters}>
                 Clear filters
               </Button>
             )}
@@ -310,7 +311,7 @@ export default function ResearchedTDsPage() {
               <EmptyState
                 icon={SearchX}
                 title="Could not load rankings"
-                action={<Button onClick={() => refetch()}>Try again</Button>}
+                action={<RetryButton onRetry={() => refetch()} pending={isFetching} />}
                 className="m-4 border-0"
               >
                 The scores service did not answer. Check your connection and try again.
@@ -356,7 +357,7 @@ export default function ResearchedTDsPage() {
                       size="icon-sm"
                       aria-label={`Quick info for ${td.name}`}
                       onClick={() => openInfo(td.id)}
-                      className="mx-2 shrink-0 text-muted-foreground md:mr-4"
+                      className="mx-1 h-11 w-11 shrink-0 text-muted-foreground md:mr-4 md:h-9 md:w-9"
                     >
                       <Info />
                     </Button>
