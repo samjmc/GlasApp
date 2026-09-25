@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Mail, Shield, Bug, HelpCircle, Send, AlertTriangle, ArrowUpRight } from "lucide-react";
+import { Mail, Shield, Bug, HelpCircle, Send, ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { CONTACT_TOPICS, buildMailto } from "@/lib/contact";
 
 const QUICK_CONTACTS = [
   { icon: Mail, label: "General", email: "contact@glaspolitics.ie" },
@@ -53,43 +53,19 @@ const FAQS = [
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     subject: "general",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [openedFor, setOpenedFor] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", subject: "general", message: "" });
-    } catch (err) {
-      setError('Something went wrong on our side. Your message is still here, so you can try again or email us directly at contact@glaspolitics.ie.');
-      console.error('Contact form error:', err);
-    } finally {
-      setIsSubmitting(false);
-    }
+    const mail = buildMailto(formData);
+    window.location.href = mail.href;
+    setOpenedFor(mail.to);
   };
 
-  const valid = formData.name.trim() !== "" && formData.email.includes("@") && formData.message.trim() !== "";
+  const valid = formData.name.trim() !== "" && formData.message.trim() !== "";
 
   return (
     <div className="flex flex-col gap-6">
@@ -118,16 +94,34 @@ export default function ContactPage() {
           Send us a message
         </h2>
 
-        {isSubmitted ? (
+        {openedFor ? (
           <div role="status" className="flex flex-col items-center gap-3 py-8 text-center">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-success/20 text-success" aria-hidden="true">
-              <Send className="h-7 w-7" />
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 text-primary" aria-hidden="true">
+              <Mail className="h-7 w-7" />
             </span>
-            <h3 className="font-display text-xl font-bold tracking-tight">Message sent</h3>
-            <p className="text-sm text-muted-foreground">We'll reply within 1–2 working days.</p>
-            <Button variant="outline" onClick={() => setIsSubmitted(false)}>
-              Send another
-            </Button>
+            <h3 className="font-display text-xl font-bold tracking-tight">Finish in your email app</h3>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Your message is ready to send to <span className="font-semibold text-foreground">{openedFor}</span>.
+              Press send there. We reply within 1–2 working days.
+            </p>
+            <p className="max-w-sm text-[13px] text-muted-foreground">
+              Did no email app open? Copy your message and email{" "}
+              <a href={`mailto:${openedFor}`} className="font-semibold text-primary underline underline-offset-2">{openedFor}</a>.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Button variant="outline" onClick={() => setOpenedFor(null)}>
+                Back to my message
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  setFormData({ name: "", subject: "general", message: "" });
+                  setOpenedFor(null);
+                }}
+              >
+                Start a new one
+              </Button>
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -144,19 +138,6 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Your email</Label>
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                placeholder="you@example.com"
-              />
-            </div>
-
-            <div className="space-y-2">
               <Label htmlFor="subject">Topic</Label>
               <Select
                 value={formData.subject}
@@ -166,14 +147,9 @@ export default function ContactPage() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="general">General inquiry</SelectItem>
-                  <SelectItem value="bug">Bug report</SelectItem>
-                  <SelectItem value="feature">Feature request</SelectItem>
-                  <SelectItem value="data">Data correction (TD/party info)</SelectItem>
-                  <SelectItem value="privacy">Privacy/GDPR request</SelectItem>
-                  <SelectItem value="abuse">Report abuse/content issue</SelectItem>
-                  <SelectItem value="partnership">Partnership/media inquiry</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                  {CONTACT_TOPICS.map((t) => (
+                    <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -192,26 +168,15 @@ export default function ContactPage() {
               />
             </div>
 
-            {error && (
-              <Alert variant="destructive">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>Message not sent</AlertTitle>
-                <AlertDescription>
-                  {error}
-                  <a href="mailto:contact@glaspolitics.ie" className="mt-2 block font-semibold underline underline-offset-2">
-                    Email contact@glaspolitics.ie instead
-                  </a>
-                </AlertDescription>
-              </Alert>
-            )}
-
-            <Button type="submit" disabled={isSubmitting || !valid} className="h-12 w-full gap-2">
+            <Button type="submit" disabled={!valid} className="h-12 w-full gap-2">
               <Send className="h-4 w-4" aria-hidden="true" />
-              {isSubmitting ? 'Sending...' : 'Send message'}
+              Write it in my email app
             </Button>
-            {!valid && (
-              <p className="text-center text-[13px] text-muted-foreground">Add your name, email and message to send.</p>
-            )}
+            <p className="text-center text-[13px] text-muted-foreground">
+              {valid
+                ? "Your email app opens with this message filled in. You press send."
+                : "Add your name and a message first."}
+            </p>
           </form>
         )}
       </section>
