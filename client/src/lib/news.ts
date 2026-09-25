@@ -34,6 +34,8 @@ export interface FeedArticle {
   sentiment: string | null;
   impactScore: number | null;
   affectedTDs: FeedArticleTD[];
+  /** Other outlets that reported the same event later; this card is the first report. */
+  alsoReportedBy: Array<{ source: string; url: string }>;
   policyVote: FeedArticlePolicyVote | null;
   category: NewsCategory | null;
 }

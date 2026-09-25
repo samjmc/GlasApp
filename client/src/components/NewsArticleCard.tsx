@@ -1,6 +1,6 @@
 /**
- * News article card: image, publisher, headline, AI summary, affected TDs,
- * the policy vote for the story, and like / read / share actions.
+ * News article card: image, publisher, headline, AI summary, the other outlets that reported
+ * the same event, affected TDs, the policy vote for the story, and like / read / share actions.
  */
 
 import { ExternalLink, Share2, Sparkles } from 'lucide-react';
@@ -82,6 +82,20 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
             </span>
             <p className="text-sm leading-relaxed">{body}</p>
           </div>
+        )}
+
+        {article.alsoReportedBy && article.alsoReportedBy.length > 0 && (
+          <p className="text-[13px] text-muted-foreground">
+            Also reported by:{' '}
+            {article.alsoReportedBy.map((other, i) => (
+              <span key={other.url}>
+                {i > 0 && ', '}
+                <a href={other.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground underline-offset-2 hover:underline">
+                  {other.source}
+                </a>
+              </span>
+            ))}
+          </p>
         )}
 
         {article.affectedTDs && article.affectedTDs.length > 0 && (
