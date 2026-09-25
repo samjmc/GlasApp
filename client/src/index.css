@@ -89,6 +89,60 @@
   color-scheme: light;
 }
 
+/*
+ * Region accents. Ireland is the default green. The UK and US avoid red and blue, which are
+ * party colours there: gold for the UK, violet (the "purple" between the two parties) for the US.
+ * Score colours stay the same everywhere so a score reads the same in every region.
+ */
+.region-ie {
+  --primary: 143 68% 62%;
+  --primary-hover: 142 77% 75%;
+  --ring: 143 68% 62%;
+  --chart-1: 143 68% 62%;
+  --hero: 158 51% 15%;
+  --hero-muted: 156 48% 20%;
+  --hero-soft: 147 26% 78%;
+}
+.light.region-ie,
+.light .region-ie {
+  --primary: 150 74% 29%;
+  --primary-hover: 150 74% 23%;
+  --ring: 150 74% 29%;
+  --chart-1: 150 74% 29%;
+}
+.region-uk {
+  --primary: 42 86% 63%;
+  --primary-hover: 44 92% 74%;
+  --ring: 42 86% 63%;
+  --chart-1: 42 86% 63%;
+  --hero: 36 45% 13%;
+  --hero-muted: 36 40% 19%;
+  --hero-soft: 40 45% 80%;
+}
+.light.region-uk,
+.light .region-uk {
+  --primary: 36 90% 32%;
+  --primary-hover: 36 90% 26%;
+  --ring: 36 90% 32%;
+  --chart-1: 36 90% 32%;
+}
+.region-us {
+  --primary: 255 92% 76%;
+  --primary-hover: 255 95% 84%;
+  --ring: 255 92% 76%;
+  --chart-1: 255 92% 76%;
+  --hero: 258 40% 15%;
+  --hero-muted: 258 34% 22%;
+  --hero-soft: 256 45% 84%;
+}
+.light.region-us,
+.light .region-us {
+  --primary: 262 55% 48%;
+  --primary-hover: 262 55% 40%;
+  --ring: 262 55% 48%;
+  --chart-1: 262 55% 48%;
+}
+
 @layer base {
   * {
     @apply border-border;

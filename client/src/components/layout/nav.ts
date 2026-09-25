@@ -1,4 +1,5 @@
 import { BarChart3, Compass, Home, Landmark, Lightbulb, MapPin, UserRound, type LucideIcon } from "lucide-react";
+import type { RegionConfig } from "@shared/region-config";
 
 export interface NavItem {
   href: string;
@@ -28,6 +29,14 @@ export const BOTTOM_NAV: { left: NavItem[]; right: NavItem[] } = {
   left: [byHref("/"), byHref("/rankings")],
   right: [byHref("/debates"), byHref("/my-politics")],
 };
+
+/** Labels that depend on the region's parliament: "Dáil record" / "Commons record", "Districts". */
+export function labelFor(item: NavItem, region: RegionConfig | null, short = false): string {
+  const l = region?.legislature;
+  if (l && item.href === "/debates") return short ? l.chamberShort : `${l.chamberShort} record`;
+  if (l && item.href === "/constituencies") return l.seatNamePlural.charAt(0).toUpperCase() + l.seatNamePlural.slice(1);
+  return short ? item.shortLabel ?? item.label : item.label;
+}
 
 export function isActive(item: NavItem, location: string): boolean {
   const path = location.split("?")[0];

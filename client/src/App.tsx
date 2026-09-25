@@ -17,6 +17,7 @@ import { useDailySession } from "@/hooks/useDailySession";
 import { AppShell } from "@/components/layout/AppShell";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { RegionComingSoon } from "@/components/RegionComingSoon";
+import { RegionPreviewHome } from "@/components/region/RegionPreviewHome";
 import { GlasMark } from "@/components/pulse/GlasMark";
 
 import NotFound from "@/pages/not-found";
@@ -110,15 +111,19 @@ function IrishRoutes() {
   );
 }
 
-function USRoutes() {
+/** UK and US previews: their own home, and a "coming soon" page for every other section. */
+function PreviewRoutes() {
   return (
     <Switch>
       {COMMON_ROUTES}
-      <Route path="/" component={HomePage} />
-      <Route>{() => <RegionComingSoon feature="home" headline="US build in progress" />}</Route>
+      <Route path="/" component={RegionPreviewHome} />
+      <Route component={RegionComingSoon} />
     </Switch>
   );
 }
+
+/** Pages that must open without choosing a region first. */
+const REGION_EXEMPT = ["/select-region", "/auth/callback", "/privacy-policy", "/terms-of-service", "/contact"];
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -127,6 +132,7 @@ function Router() {
   const { status: regionStatus, region } = useRegion();
 
   const shouldForceDaily =
+    region?.status === "live" &&
     isAuthenticated &&
     !dailyLoading &&
     dailySession?.status === "pending" &&
@@ -137,7 +143,9 @@ function Router() {
   }, [shouldForceDaily, location, navigate]);
 
   useEffect(() => {
-    if (regionStatus === "needs-selection" && location !== "/select-region") navigate("/select-region");
+    if (regionStatus === "needs-selection" && !REGION_EXEMPT.includes(location)) {
+      navigate(`/select-region?next=${encodeURIComponent(location + window.location.search)}`);
+    }
   }, [regionStatus, location, navigate]);
 
   if (isLoading || regionStatus === "loading") return <FullScreenLoader />;
@@ -147,7 +155,7 @@ function Router() {
 
   return (
     <AppShell bare={bare}>
-      {shouldForceDaily ? <DailySessionPage /> : region?.code === "US" ? <USRoutes /> : <IrishRoutes />}
+      {shouldForceDaily ? <DailySessionPage /> : region?.status === "preview" ? <PreviewRoutes /> : <IrishRoutes />}
     </AppShell>
   );
 }

@@ -9,8 +9,6 @@ import { OnboardingModal } from "@/components/onboarding/OnboardingModal";
 import { WelcomeBanner } from "@/components/onboarding/WelcomeBanner";
 import { FirstTimeUserTour } from "@/components/onboarding/FirstTimeUserTour";
 import { useAuth } from "@/contexts/AuthContext";
-import { useRegion } from "@/hooks/useRegion";
-import USHomePreviewPage from "./USHomePreviewPage";
 
 function HeroContext() {
   const { data } = useScoresWidget();
@@ -30,12 +28,7 @@ const pill =
   "inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-semibold text-foreground transition-colors hover:bg-elevated";
 
 export default function HomePage() {
-  const { region } = useRegion();
   const { isAuthenticated } = useAuth();
-
-  if (region?.code === "US") {
-    return <USHomePreviewPage />;
-  }
 
   return (
     <>

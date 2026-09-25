@@ -1,13 +1,24 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
+import { ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Landmark, MessagesSquare, Trophy, Users } from "lucide-react";
 import { apiClient } from "@/lib/queryClient";
 import { queryKeys } from "@/lib/queryKeys";
 import { formatIsoDate } from "@/lib/isoDate";
+import { partyStyle } from "@/lib/parties";
+import { scoreTone, TONE_BG, TONE_TEXT } from "@/lib/score";
+import { cn } from "@/lib/utils";
 import { PageHeader } from "@/components/PageHeader";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ErrorDisplay } from "@/components/ErrorDisplay";
+import { badgeVariants } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { PartyLabel, TDAvatar } from "@/components/pulse/Party";
+import { DivisionBar } from "@/components/pulse/VoteChip";
+import { Segmented } from "@/components/pulse/Segmented";
+import { EmptyState } from "@/components/pulse/EmptyState";
 import type {
   ParliamentStatus,
   DivisionSummary,
@@ -28,24 +39,33 @@ async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
 
 const PAGE_SIZE = 20;
 
-const formatDate = (value: string | null) => formatIsoDate(value);
-
 const formatPct = (value: number | null) => (value === null ? "—" : `${value.toFixed(1)}%`);
-const formatNum = (value: number | null) => (value === null ? "—" : value.toLocaleString());
+const formatOne = (value: number | null) => (value === null ? "—" : value.toFixed(1));
+const formatCount = (value: number) => value.toLocaleString("en-IE");
+const plural = (n: number, one: string, many: string) => `${formatCount(n)} ${n === 1 ? one : many}`;
 
-const VOTE_LABEL: Record<string, string> = { ta: "Tá", nil: "Níl", staon: "Staon" };
-
-const METRIC_LABEL: Record<LeaderboardMetric, string> = {
-  attendance: "Attendance",
-  participation: "Participation",
-  questions: "Questions",
+const METRICS: Record<LeaderboardMetric, { label: string; desc: string; format: (v: number) => string }> = {
+  attendance: {
+    label: "Attendance",
+    desc: "Share of Dáil votes a TD cast while a member.",
+    format: (v) => `${v.toFixed(1)}%`,
+  },
+  participation: {
+    label: "Participation",
+    desc: "Debate sections a TD spoke in, per 10 sitting days.",
+    format: (v) => v.toFixed(1),
+  },
+  questions: {
+    label: "Questions",
+    desc: "Parliamentary questions put to ministers, oral and written.",
+    format: formatCount,
+  },
 };
 
-const formatMetricValue = (metric: LeaderboardMetric, value: number) => {
-  if (metric === "attendance") return `${value.toFixed(1)}%`;
-  if (metric === "participation") return value.toFixed(1);
-  return formatNum(value);
-};
+const ORDER_OPTIONS: Array<{ value: "desc" | "asc"; label: string }> = [
+  { value: "desc", label: "Top" },
+  { value: "asc", label: "Bottom" },
+];
 
 type Tab = "divisions" | "debates" | "leaderboard" | "parties";
 const TABS: Array<{ key: Tab; label: string }> = [
@@ -55,10 +75,54 @@ const TABS: Array<{ key: Tab; label: string }> = [
   { key: "parties", label: "Parties" },
 ];
 
-const cardClass = "mobile-card border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900";
+/** Tá / Níl / Staon colours, shared by counts, bars and legends. */
+const VOTE_TONES = [
+  { key: "ta", label: "Tá", text: "text-score-high", bg: "bg-score-high" },
+  { key: "nil", label: "Níl", text: "text-warn", bg: "bg-warn" },
+  { key: "staon", label: "Staon", text: "text-score-mid", bg: "bg-score-mid" },
+] as const;
 
-function EmptyState({ message = "No parliament data yet — run npm run parliament:sync" }: { message?: string }) {
-  return <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{message}</p>;
+const tdLinkClass =
+  "truncate rounded-sm font-bold text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+const expandButtonClass =
+  "flex w-full items-start gap-3 rounded-xl p-4 text-left transition-colors hover:bg-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring";
+
+const EMPTY_RECORD = "The Dáil record has not been loaded yet. It fills in after the next parliament sync.";
+
+/** A tab's panel: plain on phone, a card on md+ (the boards' phone and desktop layouts). */
+function Panel({ title, meta, action, children }: { title: string; meta?: ReactNode; action?: ReactNode; children: ReactNode }) {
+  return (
+    <section className="flex flex-col gap-4 md:rounded-2xl md:border md:bg-card md:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-col gap-1">
+          <h2 className="font-display text-[22px] font-bold leading-tight tracking-tight">{title}</h2>
+          {meta && <p className="text-[13px] text-muted-foreground">{meta}</p>}
+        </div>
+        {action}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function ListSkeleton({ rows = 5, className = "h-28" }: { rows?: number; className?: string }) {
+  return (
+    <div className="flex flex-col gap-2" aria-hidden="true">
+      {Array.from({ length: rows }, (_, i) => (
+        <Skeleton key={i} className={cn("rounded-xl", className)} />
+      ))}
+    </div>
+  );
+}
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <ChevronDown
+      aria-hidden="true"
+      className={cn("mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200", open && "rotate-180")}
+    />
+  );
 }
 
 function PagerControls({
@@ -76,26 +140,124 @@ function PagerControls({
 }) {
   if (total <= limit && offset === 0) return null;
   return (
-    <div className="mt-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-      <Button variant="outline" size="sm" onClick={onPrev} disabled={offset === 0}>
-        Previous
+    <nav aria-label="Pages" className="grid grid-cols-2 items-center gap-2 sm:flex sm:justify-between">
+      <Button variant="outline" className="h-12 sm:h-10" onClick={onPrev} disabled={offset === 0}>
+        <ChevronLeft aria-hidden="true" />
+        Newer
       </Button>
-      <span>
-        {offset + 1}–{Math.min(offset + limit, total)} of {total}
+      <span className="col-span-2 row-start-2 text-center text-[13px] text-muted-foreground sm:text-sm">
+        {formatCount(offset + 1)}–{formatCount(Math.min(offset + limit, total))} of {formatCount(total)}
       </span>
-      <Button variant="outline" size="sm" onClick={onNext} disabled={offset + limit >= total}>
-        Next
+      <Button variant="outline" className="h-12 sm:h-10" onClick={onNext} disabled={offset + limit >= total}>
+        Older
+        <ChevronRight aria-hidden="true" />
       </Button>
-    </div>
+    </nav>
   );
 }
 
 function TdLink({ name }: { name: string | null }) {
-  if (!name) return <span>Unknown TD</span>;
+  if (!name) return <span className="font-bold text-muted-foreground">Unknown TD</span>;
   return (
-    <Link href={`/td/${encodeURIComponent(name)}`} className="font-medium hover:text-primary">
+    <Link href={`/td/${encodeURIComponent(name)}`} className={tdLinkClass}>
       {name}
     </Link>
+  );
+}
+
+function OutcomePill({ outcome, className }: { outcome: string | null; className?: string }) {
+  if (!outcome) return null;
+  const variant = outcome.toLowerCase() === "carried" ? "success" : outcome.toLowerCase() === "lost" ? "warn" : "secondary";
+  return <span className={cn(badgeVariants({ variant }), "shrink-0 px-2.5 py-1", className)}>{outcome}</span>;
+}
+
+/** "40 Tá · 2 Níl": only the non-zero counts, each in its vote colour. */
+function VoteCounts({ counts }: { counts: Record<"ta" | "nil" | "staon", number> }) {
+  const parts = VOTE_TONES.filter((t) => counts[t.key] > 0);
+  if (parts.length === 0) return <span className="text-muted-foreground">—</span>;
+  return (
+    <span className="whitespace-nowrap font-bold">
+      {parts.map((t, i) => (
+        <span key={t.key}>
+          {i > 0 && <span className="text-muted-foreground"> · </span>}
+          <span className={t.text}>
+            {counts[t.key]} {t.label}
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function DivisionBreakdown({ detail }: { detail: DivisionDetail }) {
+  const voted = detail.taCount + detail.nilCount + detail.staonCount;
+  const maxParty = Math.max(1, ...detail.byParty.map((r) => r.ta + r.nil + r.staon));
+  const totals = { ta: detail.taCount, nil: detail.nilCount, staon: detail.staonCount };
+  return (
+    <>
+      <div className="grid grid-cols-3 gap-2">
+        {VOTE_TONES.map((t) => (
+          <div key={t.key} className="flex flex-col gap-0.5 rounded-xl bg-elevated px-3 py-2.5 sm:px-4 sm:py-3">
+            <span className="text-xs font-semibold text-muted-foreground">{t.label}</span>
+            <span className={cn("font-display text-2xl font-bold leading-tight sm:text-3xl", t.text)}>{totals[t.key]}</span>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-sm font-bold">
+          How each party voted <span className="font-medium text-muted-foreground">· {plural(voted, "TD", "TDs")} voted</span>
+        </h3>
+        <span className="flex gap-3 text-xs font-semibold text-muted-foreground" aria-hidden="true">
+          {VOTE_TONES.map((t) => (
+            <span key={t.key} className="flex items-center gap-1.5">
+              <span className={cn("h-2 w-2 rounded-sm", t.bg)} />
+              {t.label}
+            </span>
+          ))}
+        </span>
+      </div>
+      {detail.byParty.length === 0 ? (
+        <p className="text-sm text-muted-foreground">No party breakdown for this vote.</p>
+      ) : (
+        <ul className="flex flex-col gap-1">
+          {detail.byParty.map((row) => {
+            const total = row.ta + row.nil + row.staon;
+            return (
+              <li
+                key={row.party}
+                className="grid min-h-9 grid-cols-[minmax(0,5.5rem)_minmax(0,1fr)_auto] items-center gap-3 text-[13px] sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)_auto]"
+              >
+                <PartyLabel party={row.party} short className="text-[13px] font-semibold text-foreground sm:hidden" />
+                <PartyLabel party={row.party} className="hidden text-[13px] font-semibold text-foreground sm:inline-flex" />
+                <span
+                  className="flex h-2 overflow-hidden rounded-full bg-elevated"
+                  style={{ width: `${Math.max(4, Math.round((total / maxParty) * 100))}%` }}
+                  aria-hidden="true"
+                >
+                  {VOTE_TONES.map((t) => (
+                    <span key={t.key} className={cn("basis-0", t.bg)} style={{ flexGrow: row[t.key] }} />
+                  ))}
+                </span>
+                <span className="text-right">
+                  <VoteCounts counts={row} />
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {detail.uri && (
+        <a
+          href={detail.uri}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center gap-1.5 self-start rounded-sm text-sm font-bold text-primary transition-colors hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Official record on oireachtas.ie
+          <ExternalLink className="h-4 w-4" aria-hidden="true" />
+        </a>
+      )}
+    </>
   );
 }
 
@@ -103,12 +265,17 @@ function DivisionsSection() {
   const [offset, setOffset] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: queryKeys.parliament.divisions(PAGE_SIZE, offset),
     queryFn: () => getParliament<DivisionSummary[]>(`/api/parliament/divisions?limit=${PAGE_SIZE}&offset=${offset}`),
   });
 
-  const { data: detailResp, isLoading: detailLoading, isError: detailError } = useQuery({
+  const {
+    data: detailResp,
+    isLoading: detailLoading,
+    isError: detailError,
+    refetch: refetchDetail,
+  } = useQuery({
     queryKey: queryKeys.parliament.division(expandedId ?? ""),
     queryFn: () => getParliament<DivisionDetail>(`/api/parliament/divisions/${encodeURIComponent(expandedId!)}`),
     enabled: !!expandedId,
@@ -119,80 +286,65 @@ function DivisionsSection() {
   const detail = detailResp?.data;
 
   return (
-    <section className={cardClass}>
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Recent divisions</h2>
+    <Panel
+      title="Divisions"
+      meta={total > 0 ? `${plural(total, "recorded Dáil vote", "recorded Dáil votes")}. Pick one to see how each party voted.` : undefined}
+    >
       {isLoading ? (
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading divisions…</p>
+        <ListSkeleton />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Failed to load divisions" />
+        <ErrorDisplay variant="inline" title="Could not load divisions" onRetry={() => refetch()} />
       ) : divisions.length === 0 ? (
-        <EmptyState />
+        <EmptyState icon={Landmark} title="No divisions yet">
+          {EMPTY_RECORD}
+        </EmptyState>
       ) : (
         <>
-          <div className="mt-4 space-y-2">
+          <div className="flex flex-col gap-2">
             {divisions.map((division) => {
               const isExpanded = expandedId === division.id;
+              const title = division.debateTitle || division.subject || "Division";
+              const subject = division.debateTitle ? division.subject : null;
               return (
-                <article
-                  key={division.id}
-                  className="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950"
-                >
+                <article key={division.id} className="rounded-xl border bg-card">
                   <button
                     type="button"
+                    aria-expanded={isExpanded}
                     onClick={() => setExpandedId(isExpanded ? null : division.id)}
-                    className="flex w-full flex-col gap-1 p-4 text-left"
+                    className={expandButtonClass}
                   >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                        {formatDate(division.date)}
+                    <span className="grid min-w-0 flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_12rem] md:items-center md:gap-6">
+                      <span className="flex min-w-0 flex-col gap-1.5">
+                        <span className="flex items-center justify-between gap-2">
+                          <span className="flex items-center gap-2 text-[13px] font-semibold text-muted-foreground">
+                            {formatIsoDate(division.date)}
+                            {division.isBill && <span className={badgeVariants({ variant: "secondary" })}>Bill</span>}
+                          </span>
+                          <OutcomePill outcome={division.outcome} className="md:hidden" />
+                        </span>
+                        <span className="text-base font-bold leading-snug">{title}</span>
+                        {subject && <span className="line-clamp-2 text-[13px] text-muted-foreground">{subject}</span>}
                       </span>
-                      {division.outcome && (
-                        <Badge variant={division.outcome.toLowerCase() === "carried" ? "default" : "outline"}>
-                          {division.outcome}
-                        </Badge>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                      {division.subject || division.debateTitle || "Division"}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Tá {division.taCount} · Níl {division.nilCount} · Staon {division.staonCount}
-                      {division.isBill ? " · Bill" : ""}
-                    </p>
+                      <span className="flex flex-col gap-2">
+                        <OutcomePill outcome={division.outcome} className="hidden self-start md:inline-flex" />
+                        <DivisionBar ta={division.taCount} nil={division.nilCount} />
+                        {division.staonCount > 0 && (
+                          <span className="text-xs font-semibold text-score-mid">Staon {division.staonCount}</span>
+                        )}
+                      </span>
+                    </span>
+                    <Chevron open={isExpanded} />
                   </button>
                   {isExpanded && (
-                    <div className="border-t border-gray-100 p-4 dark:border-gray-800">
+                    <div className="flex flex-col gap-4 border-t p-4" aria-live="polite">
                       {detailLoading ? (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Loading detail…</p>
+                        <ListSkeleton rows={4} className="h-9" />
                       ) : detail ? (
-                        <div className="overflow-x-auto">
-                          <table className="min-w-full text-sm">
-                            <thead>
-                              <tr className="text-left text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                                <th className="py-1 pr-4">Party</th>
-                                <th className="py-1 pr-4">Tá</th>
-                                <th className="py-1 pr-4">Níl</th>
-                                <th className="py-1 pr-4">Staon</th>
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                              {detail.byParty.map((row) => (
-                                <tr key={row.party}>
-                                  <td className="py-1 pr-4 font-medium text-gray-800 dark:text-gray-200">
-                                    {row.party}
-                                  </td>
-                                  <td className="py-1 pr-4">{row.ta}</td>
-                                  <td className="py-1 pr-4">{row.nil}</td>
-                                  <td className="py-1 pr-4">{row.staon}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
+                        <DivisionBreakdown detail={detail} />
                       ) : detailError ? (
-                        <ErrorDisplay variant="inline" title="Failed to load this division" />
+                        <ErrorDisplay variant="inline" title="Could not load this division" onRetry={() => refetchDetail()} />
                       ) : (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">No detail available.</p>
+                        <p className="text-sm text-muted-foreground">No detail available for this vote.</p>
                       )}
                     </div>
                   )}
@@ -209,7 +361,49 @@ function DivisionsSection() {
           />
         </>
       )}
-    </section>
+    </Panel>
+  );
+}
+
+function DebateSpeakers({ detail }: { detail: DebateSectionDetail }) {
+  const maxWords = Math.max(1, ...detail.speakers.map((s) => s.words));
+  return (
+    <>
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="text-sm font-bold">Who spoke most</h3>
+        <span className="text-xs font-semibold text-muted-foreground">By words spoken</span>
+      </div>
+      <ol className="flex flex-col gap-1.5">
+        {detail.speakers.map((speaker, index) => (
+          <li
+            key={speaker.memberCode ?? `${speaker.name}-${index}`}
+            className="grid min-h-12 grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3"
+          >
+            <TDAvatar name={speaker.name ?? "?"} party={speaker.party} size="sm" />
+            <span className="flex min-w-0 flex-col gap-1.5">
+              <span className="flex min-w-0 items-baseline gap-2 text-[15px]">
+                <TdLink name={speaker.name} />
+                {speaker.party && <PartyLabel party={speaker.party} short className="shrink-0 text-xs" />}
+              </span>
+              <span className="h-1 rounded-full bg-elevated" aria-hidden="true">
+                <span
+                  className="block h-1 rounded-full"
+                  style={{
+                    width: `${Math.max(2, Math.round((speaker.words / maxWords) * 100))}%`,
+                    backgroundColor: partyStyle(speaker.party).dot,
+                  }}
+                />
+              </span>
+            </span>
+            <span className="flex flex-col items-end text-xs text-muted-foreground">
+              <strong className="text-sm text-foreground">{plural(speaker.words, "word", "words")}</strong>
+              {plural(speaker.speeches, "speech", "speeches")}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p className="text-xs text-muted-foreground">Speeches from the chair are not counted.</p>
+    </>
   );
 }
 
@@ -217,12 +411,17 @@ function DebatesSection() {
   const [offset, setOffset] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: queryKeys.parliament.debates(PAGE_SIZE, offset),
     queryFn: () => getParliament<DebateSectionSummary[]>(`/api/parliament/debates?limit=${PAGE_SIZE}&offset=${offset}`),
   });
 
-  const { data: detailResp, isLoading: detailLoading, isError: detailError } = useQuery({
+  const {
+    data: detailResp,
+    isLoading: detailLoading,
+    isError: detailError,
+    refetch: refetchDetail,
+  } = useQuery({
     queryKey: queryKeys.parliament.debate(expandedId ?? ""),
     queryFn: () => getParliament<DebateSectionDetail>(`/api/parliament/debates/${encodeURIComponent(expandedId!)}`),
     enabled: !!expandedId,
@@ -233,67 +432,55 @@ function DebatesSection() {
   const detail = detailResp?.data;
 
   return (
-    <section className={cardClass}>
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Recent debates</h2>
+    <Panel
+      title="Debates"
+      meta={total > 0 ? `${plural(total, "debate section", "debate sections")}. Pick one to see who spoke.` : undefined}
+    >
       {isLoading ? (
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading debates…</p>
+        <ListSkeleton className="h-24" />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Failed to load debates" />
+        <ErrorDisplay variant="inline" title="Could not load debates" onRetry={() => refetch()} />
       ) : sections.length === 0 ? (
-        <EmptyState />
+        <EmptyState icon={MessagesSquare} title="No debates yet">
+          {EMPTY_RECORD}
+        </EmptyState>
       ) : (
         <>
-          <div className="mt-4 space-y-2">
+          <div className="flex flex-col gap-2">
             {sections.map((section) => {
               const isExpanded = expandedId === section.id;
               return (
-                <article
-                  key={section.id}
-                  className="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950"
-                >
+                <article key={section.id} className="rounded-xl border bg-card">
                   <button
                     type="button"
+                    aria-expanded={isExpanded}
                     onClick={() => setExpandedId(isExpanded ? null : section.id)}
-                    className="flex w-full flex-col gap-1 p-4 text-left"
+                    className={expandButtonClass}
                   >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                        {formatDate(section.date)}
+                    <span className="grid min-w-0 flex-1 gap-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6">
+                      <span className="flex min-w-0 flex-col gap-1">
+                        <span className="text-[13px] font-semibold text-muted-foreground">{formatIsoDate(section.date)}</span>
+                        <span className="text-base font-bold leading-snug">{section.title}</span>
                       </span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
-                        {section.speakerCount} speaker{section.speakerCount === 1 ? "" : "s"}
+                      <span className="text-sm text-muted-foreground md:text-right">
+                        <strong className="text-foreground">{formatCount(section.speakerCount)}</strong>{" "}
+                        {section.speakerCount === 1 ? "TD spoke" : "TDs spoke"} ·{" "}
+                        <strong className="text-foreground">{formatCount(section.speechCount)}</strong>{" "}
+                        {section.speechCount === 1 ? "speech" : "speeches"}
                       </span>
-                    </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">{section.title}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{section.speechCount} speeches</p>
+                    </span>
+                    <Chevron open={isExpanded} />
                   </button>
                   {isExpanded && (
-                    <div className="border-t border-gray-100 p-4 dark:border-gray-800">
+                    <div className="flex flex-col gap-3 border-t p-4" aria-live="polite">
                       {detailLoading ? (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Loading speakers…</p>
+                        <ListSkeleton rows={4} className="h-12" />
                       ) : detail && detail.speakers.length > 0 ? (
-                        <ul className="space-y-2 text-sm">
-                          {detail.speakers.map((speaker, index) => (
-                            <li
-                              key={speaker.memberCode ?? `${speaker.name}-${index}`}
-                              className="flex items-center justify-between gap-3"
-                            >
-                              <span>
-                                <TdLink name={speaker.name} />
-                                {speaker.party && (
-                                  <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">{speaker.party}</span>
-                                )}
-                              </span>
-                              <span className="text-xs text-gray-500 dark:text-gray-400">
-                                {speaker.speeches} speech{speaker.speeches === 1 ? "" : "es"} · {speaker.words.toLocaleString()} words
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
+                        <DebateSpeakers detail={detail} />
                       ) : detailError ? (
-                        <ErrorDisplay variant="inline" title="Failed to load this debate" />
+                        <ErrorDisplay variant="inline" title="Could not load this debate" onRetry={() => refetchDetail()} />
                       ) : (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">No speaker detail available.</p>
+                        <p className="text-sm text-muted-foreground">No TD speeches are recorded for this section.</p>
                       )}
                     </div>
                   )}
@@ -310,7 +497,7 @@ function DebatesSection() {
           />
         </>
       )}
-    </section>
+    </Panel>
   );
 }
 
@@ -318,121 +505,181 @@ function LeaderboardSection() {
   const [metric, setMetric] = useState<LeaderboardMetric>("attendance");
   const [order, setOrder] = useState<"desc" | "asc">("desc");
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: queryKeys.parliament.leaderboard(metric, order, PAGE_SIZE),
     queryFn: () =>
       getParliament<LeaderboardEntry[]>(`/api/parliament/leaderboard?metric=${metric}&order=${order}&limit=${PAGE_SIZE}`),
   });
 
   const entries = data?.data ?? [];
+  const isPct = metric === "attendance";
+  const maxValue = Math.max(1, ...entries.map((e) => e.value));
 
   return (
-    <section className={cardClass}>
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Leaderboards</h2>
-        <div className="flex gap-2">
-          <Button variant={order === "desc" ? "default" : "outline"} size="sm" onClick={() => setOrder("desc")}>
-            Top
-          </Button>
-          <Button variant={order === "asc" ? "default" : "outline"} size="sm" onClick={() => setOrder("asc")}>
-            Bottom
-          </Button>
-        </div>
-      </div>
-      <div className="mt-3 flex gap-2">
-        {LEADERBOARD_METRICS.map((m) => (
-          <button
-            key={m}
-            type="button"
-            onClick={() => setMetric(m)}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-              metric === m
-                ? "bg-indigo-600 text-white dark:bg-indigo-500"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-            }`}
-          >
-            {METRIC_LABEL[m]}
-          </button>
-        ))}
-      </div>
+    <Panel
+      title="Leaderboards"
+      action={<Segmented label="Order" size="sm" options={ORDER_OPTIONS} value={order} onChange={setOrder} />}
+    >
+      <Segmented
+        label="Measure"
+        options={LEADERBOARD_METRICS.map((m) => ({ value: m, label: METRICS[m].label }))}
+        value={metric}
+        onChange={setMetric}
+        className="self-start"
+      />
+      <p className="text-sm text-muted-foreground">{METRICS[metric].desc}</p>
       {isLoading ? (
-        <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">Loading leaderboard…</p>
+        <ListSkeleton rows={8} className="h-16" />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Failed to load leaderboard" />
+        <ErrorDisplay variant="inline" title="Could not load the leaderboard" onRetry={() => refetch()} />
       ) : entries.length === 0 ? (
-        <EmptyState />
+        <EmptyState icon={Trophy} title="Nobody ranked yet">
+          {EMPTY_RECORD}
+        </EmptyState>
       ) : (
-        <ol className="mt-4 space-y-2">
-          {entries.map((entry, index) => (
-            <li
-              key={entry.tdId}
-              className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950"
-            >
-              <div className="flex min-w-0 items-center gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-gray-700 dark:bg-gray-800 dark:text-gray-300">
-                  #{index + 1}
-                </span>
-                <div className="min-w-0">
+        <ol className="flex flex-col gap-1.5">
+          {entries.map((entry, index) => {
+            const tone = isPct ? scoreTone(entry.value) : null;
+            const width = isPct ? entry.value : (entry.value / maxValue) * 100;
+            return (
+              <li
+                key={entry.tdId}
+                className="grid grid-cols-[1.5rem_2.75rem_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border bg-card px-3 py-2.5 md:grid-cols-[2rem_2.75rem_minmax(0,1fr)_9rem_5.5rem] md:gap-4 md:px-4"
+              >
+                <span className="text-sm font-bold text-muted-foreground">{index + 1}</span>
+                <TDAvatar name={entry.name} party={entry.party} imageUrl={entry.imageUrl} />
+                <span className="flex min-w-0 flex-col gap-0.5">
                   <TdLink name={entry.name} />
-                  <p className="truncate text-xs text-gray-500 dark:text-gray-400">
-                    {entry.party || "Ind"}
-                    {entry.constituency ? ` • ${entry.constituency}` : ""}
-                  </p>
-                </div>
-              </div>
-              <span className="shrink-0 text-lg font-bold text-primary">{formatMetricValue(metric, entry.value)}</span>
-            </li>
-          ))}
+                  <span className="flex min-w-0 items-center gap-1.5 text-[13px] text-muted-foreground">
+                    <PartyLabel party={entry.party ?? "Independent"} short className="shrink-0 text-[13px]" />
+                    {entry.constituency && <span className="truncate">· {entry.constituency}</span>}
+                  </span>
+                </span>
+                <span className="hidden h-1.5 rounded-full bg-elevated md:block" aria-hidden="true">
+                  <span
+                    className={cn("block h-1.5 rounded-full", tone ? TONE_BG[tone] : "bg-primary")}
+                    style={{ width: `${Math.max(2, Math.min(100, width))}%` }}
+                  />
+                </span>
+                <span className={cn("text-right font-display text-xl font-bold tracking-tight", tone ? TONE_TEXT[tone] : "text-foreground")}>
+                  {METRICS[metric].format(entry.value)}
+                </span>
+              </li>
+            );
+          })}
         </ol>
       )}
-    </section>
+      <p className="text-xs text-muted-foreground">
+        A TD with no record for this measure, such as one who chairs the Dáil, is left out. Not ranked is not zero.
+      </p>
+    </Panel>
   );
 }
 
+function attendanceClass(value: number | null) {
+  const tone = scoreTone(value);
+  return tone ? TONE_TEXT[tone] : "text-muted-foreground";
+}
+
 function PartiesSection() {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: queryKeys.parliament.parties(),
     queryFn: () => getParliament<PartyParliamentSummary[]>("/api/parliament/parties"),
   });
 
   const parties = data?.data ?? [];
+  const members = parties.reduce((n, p) => n + p.members, 0);
 
   return (
-    <section className={cardClass}>
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Parties</h2>
+    <Panel
+      title="Parties in the Dáil"
+      meta={parties.length > 0 ? `${plural(members, "TD", "TDs")} in ${plural(parties.length, "group", "groups")}.` : undefined}
+    >
       {isLoading ? (
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Loading parties…</p>
+        <ListSkeleton rows={6} className="h-24 md:h-12" />
       ) : isError ? (
-        <ErrorDisplay variant="inline" title="Failed to load parties" />
+        <ErrorDisplay variant="inline" title="Could not load parties" onRetry={() => refetch()} />
       ) : parties.length === 0 ? (
-        <EmptyState />
+        <EmptyState icon={Users} title="No party figures yet">
+          {EMPTY_RECORD}
+        </EmptyState>
       ) : (
-        <div className="mt-4 overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 text-sm dark:divide-gray-700">
-            <thead>
-              <tr className="text-left text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                <th className="py-2 pr-4">Party</th>
-                <th className="py-2 pr-4">Members</th>
-                <th className="py-2 pr-4">Avg attendance</th>
-                <th className="py-2 pr-4">Party-line %</th>
-                <th className="py-2 pr-4">Avg sections spoken</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-              {parties.map((party) => (
-                <tr key={party.party} className="text-gray-700 dark:text-gray-200">
-                  <td className="py-2 pr-4 font-medium">{party.party}</td>
-                  <td className="py-2 pr-4">{party.members}</td>
-                  <td className="py-2 pr-4">{formatPct(party.avgAttendancePct)}</td>
-                  <td className="py-2 pr-4">{formatPct(party.partyLinePct)}</td>
-                  <td className="py-2 pr-4">{party.avgSectionsSpoken === null ? "—" : party.avgSectionsSpoken.toFixed(1)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <>
+          <div className="flex flex-col gap-2 md:hidden">
+            {parties.map((party) => (
+              <article key={party.party} className="flex flex-col gap-3 rounded-xl border bg-card p-4">
+                <div className="flex items-center justify-between gap-2">
+                  <PartyLabel party={party.party} link className="min-h-11 text-base font-bold text-foreground" />
+                  <span className="shrink-0 text-[13px] text-muted-foreground">
+                    <strong className="font-display text-lg text-foreground">{party.members}</strong> TDs
+                  </span>
+                </div>
+                <dl className="grid grid-cols-3 gap-2">
+                  {[
+                    { label: "Attendance", value: formatPct(party.avgAttendancePct), className: attendanceClass(party.avgAttendancePct) },
+                    { label: "Party line", value: formatPct(party.partyLinePct), className: "" },
+                    { label: "Sections", value: formatOne(party.avgSectionsSpoken), className: "" },
+                  ].map((stat) => (
+                    <div key={stat.label} className="flex min-w-0 flex-col gap-0.5 rounded-xl bg-elevated p-2.5">
+                      <dt className="text-xs font-semibold text-muted-foreground">{stat.label}</dt>
+                      <dd className={cn("font-display text-lg font-bold tracking-tight", stat.className)}>{stat.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            ))}
+          </div>
+          <Table className="hidden md:table">
+            <TableHeader>
+              <TableRow className="hover:bg-transparent">
+                <TableHead>Party</TableHead>
+                <TableHead className="text-right">Members</TableHead>
+                <TableHead className="text-right">Avg attendance</TableHead>
+                <TableHead className="text-right">Party line</TableHead>
+                <TableHead className="text-right">Avg sections spoken</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {parties.map((party) => {
+                const tone = scoreTone(party.avgAttendancePct);
+                return (
+                  <TableRow key={party.party}>
+                    <TableCell className="py-3">
+                      <PartyLabel party={party.party} link className="text-[15px] font-bold text-foreground" />
+                    </TableCell>
+                    <TableCell className="py-3 text-right font-bold">{party.members}</TableCell>
+                    <TableCell className="py-3 text-right">
+                      <span className="inline-flex items-center gap-3">
+                        <span className="h-1.5 w-20 rounded-full bg-elevated" aria-hidden="true">
+                          {tone && (
+                            <span
+                              className={cn("block h-1.5 rounded-full", TONE_BG[tone])}
+                              style={{ width: `${party.avgAttendancePct}%` }}
+                            />
+                          )}
+                        </span>
+                        <span className={cn("min-w-14 font-bold", attendanceClass(party.avgAttendancePct))}>
+                          {formatPct(party.avgAttendancePct)}
+                        </span>
+                      </span>
+                    </TableCell>
+                    <TableCell className="py-3 text-right font-semibold">{formatPct(party.partyLinePct)}</TableCell>
+                    <TableCell className="py-3 text-right font-semibold">{formatOne(party.avgSectionsSpoken)}</TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </>
       )}
-    </section>
+      <div className="flex flex-col gap-1 text-xs leading-relaxed text-muted-foreground sm:text-[13px]">
+        <p>
+          Averages per member. Attendance: share of Dáil votes cast while a TD. Party line: share of votes that matched the
+          party majority. Sections: debate sections spoken in.
+        </p>
+        <p>Independents have no party line, so it shows —. A one-member party always matches itself.</p>
+      </div>
+    </Panel>
   );
 }
 
@@ -454,59 +701,57 @@ const DebatesPage = () => {
     };
   }, [statusResp]);
 
+  const status =
+    throughDate || pendingDays > 0 ? (
+      <p
+        role="status"
+        className="inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 rounded-xl border bg-card px-3 py-1.5 text-[13px] font-semibold sm:rounded-full sm:text-sm"
+      >
+        <span aria-hidden="true" className={cn("h-2 w-2 shrink-0 rounded-full", pendingDays > 0 ? "bg-warn" : "bg-primary")} />
+        {throughDate && <span>Data through {formatIsoDate(throughDate)}</span>}
+        <span className="font-medium text-muted-foreground">
+          {pendingDays > 0
+            ? `· ${pendingDays} sitting day${pendingDays === 1 ? "" : "s"} not yet loaded`
+            : "· all sitting days loaded"}
+        </span>
+      </p>
+    ) : null;
+
   return (
-    <div className="mobile-stack pb-20 w-full max-w-full overflow-x-hidden">
+    <div className="flex w-full min-w-0 flex-col gap-6">
       <PageHeader
-        className="mb-4"
-        title="Debates"
+        title="Dáil record"
+        description="Every vote, debate and question from the official Oireachtas record."
         tooltipTitle="What you can do here"
         bullets={[
           "See recent Dáil divisions and how each party voted.",
           "Browse recent debate sections and who spoke.",
           "Compare TDs and parties on attendance, participation and questions.",
         ]}
-        right={
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            {throughDate ? `Data through ${formatDate(throughDate)}` : ""}
-            {pendingDays > 0 ? ` · ${pendingDays} sitting day${pendingDays === 1 ? "" : "s"} not yet loaded` : ""}
-          </span>
-        }
+        right={status}
       />
 
-      <div className="mb-6">
-        <nav
-          className="grid grid-cols-2 gap-2 rounded-2xl border border-gray-200 bg-white/80 p-2 shadow-sm dark:border-gray-800 dark:bg-gray-900/60 sm:grid-cols-4"
-          aria-label="Tabs"
-        >
-          {TABS.map((tab) => {
-            const isActive = activeTab === tab.key;
-            return (
-              <button
-                key={tab.key}
-                type="button"
-                onClick={() => setActiveTab(tab.key)}
-                className={[
-                  "h-11 w-full rounded-xl px-2 text-xs font-semibold tracking-wide transition",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900",
-                  isActive
-                    ? "bg-primary text-white shadow"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
-                ].join(" ")}
-                aria-current={isActive ? "page" : undefined}
-              >
-                <span className="block truncate">{tab.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
-
-      <div className="space-y-6">
-        {activeTab === "divisions" && <DivisionsSection />}
-        {activeTab === "debates" && <DebatesSection />}
-        {activeTab === "leaderboard" && <LeaderboardSection />}
-        {activeTab === "parties" && <PartiesSection />}
-      </div>
+      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as Tab)} className="flex min-w-0 flex-col gap-5">
+        <TabsList aria-label="Dáil record sections" className="h-auto w-full justify-start self-start sm:w-auto">
+          {TABS.map((tab) => (
+            <TabsTrigger key={tab.key} value={tab.key} className="h-10 flex-1 px-3 sm:flex-none sm:px-4">
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        <TabsContent value="divisions" className="mt-0">
+          <DivisionsSection />
+        </TabsContent>
+        <TabsContent value="debates" className="mt-0">
+          <DebatesSection />
+        </TabsContent>
+        <TabsContent value="leaderboard" className="mt-0">
+          <LeaderboardSection />
+        </TabsContent>
+        <TabsContent value="parties" className="mt-0">
+          <PartiesSection />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

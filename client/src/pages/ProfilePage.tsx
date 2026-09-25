@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
+import { useRegion } from '@/hooks/useRegion';
+import { REGION_LIST } from '@shared/region-config';
 import { useQuery } from '@tanstack/react-query';
 import { apiUpload } from '@/lib/queryClient';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
@@ -45,6 +47,7 @@ const THEME_OPTIONS: { value: ThemeChoice; label: string }[] = [
 const ProfilePage = () => {
   const { user, isLoading: authLoading, isAuthenticated, updateProfile, logout, deleteAccount } = useAuth();
   const { theme, setTheme } = useTheme();
+  const { regionCode, selectRegion } = useRegion();
   const [, navigate] = useLocation();
   const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
@@ -453,6 +456,22 @@ const ProfilePage = () => {
                 options={THEME_OPTIONS}
                 value={theme}
                 onChange={setTheme}
+                className="shrink-0"
+              />
+            </CardHeader>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="space-y-1">
+                <CardTitle className="text-xl sm:text-2xl">Region</CardTitle>
+                <CardDescription>Which parliament you follow. Saved to your account.</CardDescription>
+              </div>
+              <Segmented
+                label="Region"
+                options={REGION_LIST.map((r) => ({ value: r.code, label: r.status === "live" ? r.shortName : `${r.shortName} · preview` }))}
+                value={regionCode ?? "IE"}
+                onChange={(code) => void selectRegion(code)}
                 className="shrink-0"
               />
             </CardHeader>

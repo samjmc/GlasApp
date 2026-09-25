@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
-import { Check, Compass, Flame, Search } from "lucide-react";
+import { Check, Compass, Flame, Globe, Search } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useDailySession } from "@/hooks/useDailySession";
 import { GlobalSearch } from "@/components/GlobalSearch";
@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { AccountMenu } from "./AccountMenu";
-import { BOTTOM_NAV, FOOTER_LINKS, MAIN_NAV, isActive, type NavItem } from "./nav";
+import { BOTTOM_NAV, FOOTER_LINKS, MAIN_NAV, isActive, labelFor, type NavItem } from "./nav";
+import { useRegion } from "@/hooks/useRegion";
 
 /** The day's streak, or null when unknown. */
 function useStreak(): number | null {
@@ -32,22 +33,28 @@ function StreakChip({ streak }: { streak: number }) {
   );
 }
 
-/** Signed in: the daily vote. Signed out: the quiz. */
+/** Signed in: the daily vote. Signed out: the quiz. Preview regions: pick a region. */
 function usePrimaryAction() {
   const { isAuthenticated } = useAuth();
+  const { region } = useRegion();
+  if (region?.status === "preview") {
+    return { href: "/select-region", label: "Change region", icon: Globe, title: `The ${region.shortName} edition is in preview`, body: "Scores are live for Ireland today. Switch region any time.", cta: "Change region" };
+  }
   return isAuthenticated
     ? { href: "/daily-session", label: "Daily vote", icon: Check, title: "Have your say today", body: "Vote on today's questions and see where you stand next to your TDs.", cta: "Start daily vote" }
     : { href: "/quiz", label: "Quiz", icon: Compass, title: "Where do you stand?", body: "Take the ideology quiz and see which parties and TDs match you.", cta: "Take the quiz" };
 }
 
 function SidebarLink({ item, location }: { item: NavItem; location: string }) {
+  const { region } = useRegion();
+  const label = labelFor(item, region);
   const active = isActive(item, location);
   const Icon = item.icon;
   return (
     <Link
       href={item.href}
       aria-current={active ? "page" : undefined}
-      title={item.label}
+      title={label}
       className={cn(
         "flex h-11 items-center gap-3 rounded-lg px-3 text-[15px] font-semibold transition-colors",
         "justify-center lg:justify-start",
@@ -55,7 +62,7 @@ function SidebarLink({ item, location }: { item: NavItem; location: string }) {
       )}
     >
       <Icon className={cn("h-5 w-5 shrink-0", active && "text-primary")} aria-hidden="true" />
-      <span className="sr-only lg:not-sr-only">{item.label}</span>
+      <span className="sr-only lg:not-sr-only">{label}</span>
     </Link>
   );
 }
@@ -94,6 +101,24 @@ function Sidebar({ location }: { location: string }) {
   );
 }
 
+/** Which edition you are in; opens the region picker. */
+function RegionChip() {
+  const { region } = useRegion();
+  const [location] = useLocation();
+  if (!region) return null;
+  return (
+    <Link
+      href={`/select-region?next=${encodeURIComponent(location)}`}
+      aria-label={`Region: ${region.name}. Change region`}
+      className="inline-flex h-9 items-center gap-2 rounded-full border px-3 text-sm font-bold transition-colors hover:bg-elevated"
+    >
+      <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+      {region.code}
+      {region.status === "preview" && <span className="hidden text-xs font-semibold text-muted-foreground sm:inline">Preview</span>}
+    </Link>
+  );
+}
+
 function TopBar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const streak = useStreak();
@@ -110,6 +135,7 @@ function TopBar() {
           <Button variant="ghost" size="icon" className="md:hidden" aria-label="Search" onClick={() => setSearchOpen(true)}>
             <Search className="!size-5" />
           </Button>
+          <RegionChip />
           {streak !== null && streak > 0 && <StreakChip streak={streak} />}
           <AccountMenu />
         </div>
@@ -125,6 +151,7 @@ function TopBar() {
 }
 
 function BottomTab({ item, location }: { item: NavItem; location: string }) {
+  const { region } = useRegion();
   const active = isActive(item, location);
   const Icon = item.icon;
   return (
@@ -137,7 +164,7 @@ function BottomTab({ item, location }: { item: NavItem; location: string }) {
       )}
     >
       <Icon className="h-[22px] w-[22px]" aria-hidden="true" />
-      {item.shortLabel ?? item.label}
+      {labelFor(item, region, true)}
     </Link>
   );
 }

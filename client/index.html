@@ -54,6 +54,10 @@
         try { theme = localStorage.getItem('glas-theme') || 'dark'; } catch (e) {}
         var dark = theme === 'dark' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: light)').matches);
         document.documentElement.classList.add(dark ? 'dark' : 'light');
+        try {
+          var region = localStorage.getItem('glas.region');
+          if (region === 'IE' || region === 'UK' || region === 'US') document.documentElement.classList.add('region-' + region.toLowerCase());
+        } catch (e) {}
       })();
     </script>
   </head>

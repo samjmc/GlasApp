@@ -1,29 +1,25 @@
+import glasMark from "@assets/glas-mark-192.png";
+import glasLogo from "@assets/glas-logo-640.png";
 import { cn } from "@/lib/utils";
 
-/** The Glas mark: a hexagon holding three linked rings. */
+/** The Glas hexagon mark on its own, for small spaces (icon rail, loaders). */
 export function GlasMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" className={cn("h-8 w-8 shrink-0", className)}>
-      <path d="M16 1.5l12.5 7.25v14.5L16 30.5 3.5 23.25V8.75z" className="fill-primary" />
-      <g fill="none" strokeWidth="2.4" className="stroke-primary-foreground">
-        <circle cx="16" cy="11.6" r="4.2" />
-        <circle cx="11.6" cy="19.2" r="4.2" />
-        <circle cx="20.4" cy="19.2" r="4.2" />
-      </g>
-    </svg>
-  );
+  return <img src={glasMark} alt="" aria-hidden="true" className={cn("h-8 w-8 shrink-0 select-none", className)} draggable={false} />;
 }
 
-/** Mark plus the lower-case wordmark. */
+/** The full Glas logo (mark + wordmark), or just the mark when space is tight. */
 export function GlasLogo({ className, hideWordmark }: { className?: string; hideWordmark?: boolean }) {
-  return (
-    <span className={cn("inline-flex items-center gap-2.5 text-foreground", className)}>
-      <GlasMark />
-      {hideWordmark ? (
+  if (hideWordmark) {
+    return (
+      <span className={cn("inline-flex items-center", className)}>
+        <GlasMark className="h-9 w-9" />
         <span className="sr-only">Glas Politics</span>
-      ) : (
-        <span className="font-display text-2xl font-bold tracking-tight">glas</span>
-      )}
+      </span>
+    );
+  }
+  return (
+    <span className={cn("inline-flex items-center", className)}>
+      <img src={glasLogo} alt="Glas Politics" className="h-9 w-auto select-none" draggable={false} />
     </span>
   );
 }
