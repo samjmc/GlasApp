@@ -361,7 +361,7 @@ export function GlobalSearch() {
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
                 <button
-                  onClick={() => handleSelectResult("/researched-tds")}
+                  onClick={() => handleSelectResult("/rankings")}
                   className="rounded-lg border border-gray-200 bg-white/70 px-4 py-3 text-left text-sm font-semibold text-gray-700 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:border-blue-500/40 dark:hover:bg-blue-900/20"
                 >
                   View TD leaderboard

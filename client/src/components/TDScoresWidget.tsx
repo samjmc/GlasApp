@@ -166,7 +166,7 @@ export function TDScoresWidget() {
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Top Performers</h3>
-            <Link href="/researched-tds?filter=top" className="text-xs text-emerald-600 hover:underline">View all</Link>
+            <Link href="/rankings?filter=top" className="text-xs text-emerald-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
             {(data?.top || []).slice(0, 5).map((td) => (
@@ -184,7 +184,7 @@ export function TDScoresWidget() {
         <div className="space-y-3 lg:pl-12">
           <div className="flex items-center justify-between mb-2">
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Biggest Movers</h3>
-            <Link href="/researched-tds?filter=movers" className="text-xs text-blue-600 hover:underline">View all</Link>
+            <Link href="/rankings?filter=movers" className="text-xs text-blue-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
             {(data?.movers || []).slice(0, 5).map((td) => (
@@ -203,7 +203,7 @@ export function TDScoresWidget() {
         <div className="space-y-3 lg:pl-12">
           <div className="flex items-center justify-between mb-2">
             <h3 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Needs Improvement</h3>
-            <Link href="/researched-tds?filter=bottom" className="text-xs text-red-600 hover:underline">View all</Link>
+            <Link href="/rankings?filter=bottom" className="text-xs text-red-600 hover:underline">View all</Link>
           </div>
           <div className="space-y-0.5">
             {(data?.bottom || []).slice(0, 5).map((td) => (
