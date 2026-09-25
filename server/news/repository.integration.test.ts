@@ -169,6 +169,15 @@ run('news repository against Postgres', () => {
     expect(await repo.existingUrls(['https://rte.ie/sport'])).toEqual(new Set(['https://rte.ie/sport']));
   });
 
+  it('a same-event duplicate is hidden from the feed; its canonical article stays', async () => {
+    const [canonical, duplicate] = await repo.insertArticles([row('https://rte.ie/budget', 1), row('https://irishtimes.com/budget', 2)]);
+    await repo.markOutcome(duplicate, { status: 'duplicate', importanceScore: 80, importanceReasoning: 'r', skipReason: `Duplicate of article ${canonical}`, errorMessage: null });
+    const feed = await repo.feedPage({ sort: 'recent', limit: 10, offset: 0 }, { since: new Date(0), fallbackDays: 30 });
+    expect(feed.rows.map((r) => r.id)).toEqual([canonical]);
+    expect(feed.total).toBe(1);
+    expect((await repo.statusCounts()).duplicate).toBe(1);
+  });
+
   it('missingImages lists visible picture-less rows; setImageIfMissing never overwrites', async () => {
     const [bare, pictured, hidden] = await repo.insertArticles([
       row('https://rte.ie/bare', 1),

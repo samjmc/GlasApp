@@ -1,28 +1,30 @@
 /**
- * Supabase Client Configuration
- * 
- * This file creates and exports the Supabase client for frontend use.
- * Make sure to set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file
+ * Supabase client for the browser. Auth only; application data comes from the API.
+ *
+ * VITE_SUPABASE_URL defaults to the GlasCore project. VITE_SUPABASE_ANON_KEY has no default:
+ * the old fallback pointed at a Supabase project that no longer exists, so sign-in failed
+ * silently. Without the key, sign-in is off and the console says so; public pages still work.
  */
 
 import { createClient } from '@supabase/supabase-js';
 
-// Get environment variables
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://ospxqnxlotakujloltqy.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcHhxbnhsb3Rha3VqbG9sdHF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIwNjk1ODAsImV4cCI6MjA2NzY0NTU4MH0.-Udyszn2tSHbJW57R9OHdAtwmgULGP--9QQLWtOFetA';
+export const GLASCORE_SUPABASE_URL = 'https://ihecemdupqnxltdyebsh.supabase.co';
 
-// Validate that required environment variables are set
-if (!supabaseUrl) {
-  console.warn('⚠️  VITE_SUPABASE_URL is not set. Using default value.');
-}
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || GLASCORE_SUPABASE_URL;
+const supabaseAnonKey: string | undefined = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseAnonKey) {
-  console.warn('⚠️  VITE_SUPABASE_ANON_KEY is not set. Using default value.');
+/** False when no anon key is configured; sign-in calls will fail. */
+export const isAuthConfigured = Boolean(supabaseAnonKey);
+
+if (!isAuthConfigured) {
+  console.error('VITE_SUPABASE_ANON_KEY is not set: sign-in is disabled. Set it to the GlasCore anon key.');
 }
 
 // Create Supabase client
 /** Supabase client configured with env vars, PKCE auth, and app metadata. */
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+// createClient rejects an empty key; a placeholder keeps public pages working, and every
+// auth call then fails with Supabase's own 401 rather than a crash at import.
+export const supabase = createClient(supabaseUrl, supabaseAnonKey ?? 'missing-anon-key', {
   auth: {
     // Auto-refresh the session before it expires
     autoRefreshToken: true,

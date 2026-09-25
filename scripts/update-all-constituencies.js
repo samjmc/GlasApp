@@ -1,16 +1,11 @@
-import OpenAI from "openai";
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { chat } from './lib/llm.mjs';
 
 // Get the directory name properly in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // List of all Irish constituencies
 const allConstituencies = [
@@ -37,7 +32,7 @@ async function getConstituencyData(constituencyName) {
   try {
     console.log(`Fetching data for ${constituencyName}...`);
     
-    const response = await openai.chat.completions.create({
+    const response = await chat({
       model: "gpt-3.5-turbo", // Using cheaper model as requested
       messages: [
         {

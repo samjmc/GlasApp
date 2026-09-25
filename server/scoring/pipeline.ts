@@ -121,6 +121,7 @@ export async function runPipeline(options: PipelineOptions = {}): Promise<Pipeli
       importanceReasoning: importance.reasoning,
       scoreApplied: false,
       skippedReason: `Duplicate of article ${cluster?.selectedArticleId} (same event: ${cluster?.eventName ?? 'unknown'})`,
+      duplicateOf: cluster?.selectedArticleId,
     });
   }
 
