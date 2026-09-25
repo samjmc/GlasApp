@@ -9,10 +9,12 @@ import {
   countWords,
   isoDay,
   isPresidingRole,
+  normaliseName,
   parseBill,
   parseDivision,
   parseRollCall,
   parseTranscript,
+  resolveRollCallNames,
   uriTail,
   type RawBill,
   type RawDivision,
@@ -168,6 +170,28 @@ describe('parseBill', () => {
     expect(parseDivision(rawDivision)!.division.debateSectionId).toBe('dail-2025-06-25-dbsect_19');
   });
 
+  it('keys a committee-stage debate by its committee, so it never joins to a Dáil vote', () => {
+    const [rawGov] = JSON.parse(fixture('bills-sample.json')) as RawBill[];
+    const committee = 'select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach';
+    const withCommittee = {
+      ...rawGov,
+      debates: [
+        ...(rawGov.debates ?? []),
+        {
+          chamber: { showAs: 'Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach', uri: `https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/${committee}` },
+          date: '2025-06-25',
+          // Same section id and date as the Dáil debate holding vote_91: only the house tells them apart.
+          debateSectionId: 'dbsect_19',
+          showAs: 'Committee Stage',
+          uri: `https://data.oireachtas.ie/akn/ie/debateRecord/${committee}/2025-06-25/debate/main`,
+        },
+      ],
+    } as RawBill;
+    const keys = parseBill(withCommittee)!.debates.map((d) => d.debateSectionId);
+    expect(keys).toContain(`committee-${committee}-2025-06-25-dbsect_19`);
+    expect(keys.filter((k) => k === 'dail-2025-06-25-dbsect_19')).toHaveLength(1);
+  });
+
   it('reads a Private Member bill with many sponsors, one primary', () => {
     expect(pmb.bill).toMatchObject({ id: '2026-86', source: 'Private Member', status: 'Current', act: null });
     expect(pmb.sponsors).toHaveLength(74);
@@ -187,17 +211,61 @@ describe('parseBill', () => {
   });
 });
 
+const roll = parseRollCall(fixture('committee-transcript.xml'));
+
 describe('parseRollCall', () => {
-  it('lists each member on the roll call once, by member code', () => {
-    const present = parseRollCall(fixture('committee-transcript.xml'));
-    expect(present).toHaveLength(10);
-    expect(present.slice(0, 3)).toEqual(['Grace-Boland.D.2024-11-29', 'Eoghan-Kenny.D.2024-11-29', 'Joanna-Byrne.D.2024-11-29']);
-    expect(present).toContain('Séamus-McGrath.D.2024-11-29');
-    expect(new Set(present).size).toBe(present.length);
+  it('lists each linked member on the roll call once, by member code', () => {
+    expect(roll.codes).toHaveLength(10);
+    expect(roll.codes.slice(0, 3)).toEqual(['Grace-Boland.D.2024-11-29', 'Eoghan-Kenny.D.2024-11-29', 'Joanna-Byrne.D.2024-11-29']);
+    expect(roll.codes).toContain('Séamus-McGrath.D.2024-11-29');
+    expect(new Set(roll.codes).size).toBe(roll.codes.length);
+  });
+
+  it('returns the names it could not link', () => {
+    // The real transcript has no TLCPerson for this member: 1 of the 11 on its roll call.
+    expect(roll.unlinkedNames).toEqual(['Deputy Aidan Farrelly']);
   });
 
   it('is empty, not an error, for a transcript with no roll call', () => {
-    expect(parseRollCall('<akomaNtoso><debate><debateBody/></debate></akomaNtoso>')).toEqual([]);
+    expect(parseRollCall('<akomaNtoso><debate><debateBody/></debate></akomaNtoso>')).toEqual({ codes: [], unlinkedNames: [] });
+  });
+});
+
+describe('resolveRollCallNames', () => {
+  const roster = [
+    { fullName: 'John Brady', memberCode: 'John-Brady.D.2016-10-03' },
+    { fullName: 'Seán Ó Fearghaíl', memberCode: 'Seán-Ó-Fearghaíl.D.1997-06-26' },
+    { fullName: 'Michael Healy-Rae', memberCode: 'Michael-Healy-Rae.D.2011-03-09' },
+    { fullName: 'Aidan Farrelly', memberCode: 'Aidan-Farrelly.D.2024-11-29' },
+    { fullName: 'Pat Murphy', memberCode: 'Pat-Murphy.D.a' },
+    { fullName: 'Pat Murphy', memberCode: 'Pat-Murphy.D.b' },
+  ];
+
+  it('matches a name by its letters: honorifics, accents, case, the chair line and punctuation ignored', () => {
+    const r = resolveRollCallNames(
+      ['DEPUTY JOHN BRADY IN THE CHAIR.', 'Deputy Sean O Fearghail', 'Deputy Michael Healy-Rae.'],
+      roster,
+    );
+    expect(r).toEqual({ codes: ['John-Brady.D.2016-10-03', 'Seán-Ó-Fearghaíl.D.1997-06-26', 'Michael-Healy-Rae.D.2011-03-09'], unresolvedTds: 0 });
+    // 10 linked + 1 matched by name = the 11 people on the fixture's roll call.
+    const byName = resolveRollCallNames(roll.unlinkedNames, roster);
+    expect(byName).toEqual({ codes: ['Aidan-Farrelly.D.2024-11-29'], unresolvedTds: 0 });
+    expect(new Set([...roll.codes, ...byName.codes]).size).toBe(11);
+  });
+
+  it('leaves a name shared by two members unresolved, and counts it as a possible TD', () => {
+    expect(resolveRollCallNames(['Deputy Pat Murphy'], roster)).toEqual({ codes: [], unresolvedTds: 1 });
+  });
+
+  it('does not count an unmatched Senator: they cannot be one of the TDs', () => {
+    expect(resolveRollCallNames(['Senator Mary Seery Kearney', 'Deputy Nobody Here'], roster)).toEqual({ codes: [], unresolvedTds: 1 });
+  });
+});
+
+describe('normaliseName', () => {
+  it('strips honorifics, including "Minister of State", and anything in brackets', () => {
+    expect(normaliseName('Minister of State Deputy Kieran O’Donnell')).toBe('kieran o donnell');
+    expect(normaliseName('Deputy Mary Butler (Minister of State at the Department of Health)')).toBe('mary butler');
   });
 });
 

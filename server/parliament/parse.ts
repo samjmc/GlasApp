@@ -279,15 +279,20 @@ export function parseRollCall(xml: string): RollCall {
 // "minister of state" before "minister": the first alternative that matches wins.
 const HONORIFIC = /^(deputy|teachta|td|senator|seanadoir|an|dr|minister of state|minister)\s+/;
 
-/** "Deputy Seán Ó Fearghaíl" and "Seán Ó Fearghaíl" → "sean o fearghail". */
+/**
+ * "Deputy Seán Ó Fearghaíl", "Seán Ó Fearghaíl" and the chair line "DEPUTY SEÁN Ó
+ * FEARGHAÍL IN THE CHAIR." → "sean o fearghail".
+ */
 export function normaliseName(name: string): string {
   let n = name
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
+    .replace(/\([^)]*\)/g, ' ')
     .replace(/[^a-z\s]/g, ' ')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .replace(/ in the chair$/, '');
   while (HONORIFIC.test(n)) n = n.replace(HONORIFIC, '');
   return n;
 }

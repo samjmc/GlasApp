@@ -10,6 +10,7 @@ import {
   Briefcase,
   ChevronLeft,
   ExternalLink,
+  FileText,
   MessageSquare,
   Minus,
   Newspaper,
@@ -38,7 +39,14 @@ import { queryKeys } from '@/lib/queryKeys';
 import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
 import { cn } from '@/lib/utils';
-import type { TdParliamentSummary, TdVote, TdDebateContribution } from '@shared/parliamentApi';
+import type {
+  TdParliamentSummary,
+  TdVote,
+  TdDebateContribution,
+  TdCommittee,
+  TdBill,
+  TdQuestionTopic,
+} from '@shared/parliamentApi';
 import type { FeedArticle } from '@/lib/news';
 
 type ScoreDimension = 'transparency' | 'effectiveness' | 'integrity' | 'consistency';
@@ -200,6 +208,48 @@ export default function TDProfilePageEnhanced() {
   });
   const tdDebateContributions = tdDebatesResp?.data ?? [];
 
+  const {
+    data: tdCommitteesResp,
+    isLoading: tdCommitteesLoading,
+    isError: tdCommitteesError,
+    refetch: refetchCommittees,
+    isFetching: tdCommitteesFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdCommittees(tdId ?? 0),
+    queryFn: () => getParliament<TdCommittee[]>(`/api/parliament/tds/${tdId}/committees`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdCommittees = tdCommitteesResp?.data ?? [];
+
+  const {
+    data: tdBillsResp,
+    isLoading: tdBillsLoading,
+    isError: tdBillsError,
+    refetch: refetchBills,
+    isFetching: tdBillsFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdBills(tdId ?? 0, 20),
+    queryFn: () => getParliament<TdBill[]>(`/api/parliament/tds/${tdId}/bills?limit=20`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdBills = tdBillsResp?.data ?? [];
+
+  const {
+    data: tdQuestionTopicsResp,
+    isLoading: tdQuestionTopicsLoading,
+    isError: tdQuestionTopicsError,
+    refetch: refetchQuestionTopics,
+    isFetching: tdQuestionTopicsFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdQuestionTopics(tdId ?? 0),
+    queryFn: () => getParliament<TdQuestionTopic[]>(`/api/parliament/tds/${tdId}/question-topics`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdQuestionTopics = tdQuestionTopicsResp?.data ?? [];
+
   // Recent news articles for this TD
   const { data: newsArticles = [], isLoading: newsLoading } = useQuery({
     queryKey: queryKeys.td.news(name || ''),
@@ -326,6 +376,7 @@ export default function TDProfilePageEnhanced() {
     questionsOral === null && questionsWritten === null ? null : (questionsOral ?? 0) + (questionsWritten ?? 0);
   const attendance = summary?.attendancePct ?? score.attendancePct;
   const isPresiding = summary?.isPresiding ?? false;
+  const offices: { title: string; since?: string | null }[] = summary?.offices ?? score.offices;
 
   const stats: { label: string; value: ReactNode; sub?: string; bar?: number | null }[] = [
     {
@@ -352,7 +403,28 @@ export default function TDProfilePageEnhanced() {
       value: pct(summary?.partyLinePct),
       sub: summary?.votesAgainstParty != null ? `${summary.votesAgainstParty} votes against party` : undefined,
     },
+    {
+      label: 'Committee attendance',
+      value: pct(summary?.committeeAttendancePct),
+      sub: `${num(summary?.committeeSittingsAttended)} of ${num(summary?.committeeSittingsEligible)} sittings`,
+    },
+    // NULL until the bills feed has run once: "—", never 0.
+    { label: 'Bills sponsored', value: num(summary?.billsSponsored) },
   ];
+
+  // question-topics is sorted by total (oral + written) desc, so the first entry's total is the max.
+  const topQuestionTopics = tdQuestionTopics.slice(0, 8);
+  const maxQuestionTopicTotal = topQuestionTopics.reduce((max, t) => Math.max(max, t.oral + t.written), 0);
+
+  const committeeList = (
+    <CommitteeList
+      committees={tdCommittees}
+      loading={tdCommitteesLoading}
+      error={tdCommitteesError}
+      onRetry={() => refetchCommittees()}
+      retrying={tdCommitteesFetching}
+    />
+  );
 
   const articleById = new Map(newsArticles.map((a) => [a.id, a]));
   const pollSupport = partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null;
@@ -403,15 +475,18 @@ export default function TDProfilePageEnhanced() {
                 </>
               )}
             </div>
-            {score.offices.length > 0 && (
+            {offices.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {score.offices.map((office) => (
+                {offices.map((office) => (
                   <span
                     key={office.title}
-                    className="inline-flex h-8 items-center gap-1.5 rounded-full bg-hero-muted px-3 text-[13px] font-semibold"
+                    className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-hero-muted px-3 py-1 text-[13px] font-semibold"
                   >
-                    <Briefcase className="h-3.5 w-3.5" aria-hidden="true" />
-                    {office.title}
+                    <Briefcase className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                    <span>
+                      {office.title}
+                      {office.since && <span className="font-normal text-hero-soft"> since {formatDay(office.since)}</span>}
+                    </span>
                   </span>
                 ))}
               </div>
@@ -784,7 +859,7 @@ export default function TDProfilePageEnhanced() {
                 </>
               )}
               <div className="border-t pt-5 lg:hidden">
-                <CommitteeList committees={score.committees} />
+                {committeeList}
               </div>
             </Card>
           </TabsContent>
@@ -848,7 +923,92 @@ export default function TDProfilePageEnhanced() {
           </Card>
 
           <Card className="hidden flex-col gap-3 p-5 lg:flex">
-            <CommitteeList committees={score.committees} />
+            {committeeList}
+          </Card>
+
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+              <FileText className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              Bills sponsored
+            </h2>
+            {tdBillsLoading ? (
+              <div className="flex flex-col gap-2">
+                {[0, 1].map((i) => (
+                  <Skeleton key={i} className="h-20 rounded-xl" />
+                ))}
+              </div>
+            ) : tdBillsError ? (
+              <SideCardError message="Could not load bills." onRetry={() => refetchBills()} retrying={tdBillsFetching} />
+            ) : tdBills.length === 0 ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">
+                {summary?.billsSponsored === null
+                  ? 'Bills show here once they are synced from the Oireachtas.'
+                  : 'No bills sponsored this term.'}
+              </p>
+            ) : (
+              <ul className="flex flex-col gap-2">
+                {tdBills.map((bill) => (
+                  <li key={bill.id}>
+                    <Link
+                      href={`/debates?tab=bills&bill=${encodeURIComponent(bill.id)}`}
+                      className="flex flex-col gap-1.5 rounded-xl bg-elevated p-3 transition-colors hover:bg-accent"
+                    >
+                      <span className="line-clamp-2 text-sm font-bold leading-snug">{bill.shortTitle}</span>
+                      <span className="flex flex-wrap items-center gap-1.5">
+                        <Badge variant="outline">{bill.status}</Badge>
+                        {bill.isPrimary && <Badge>Primary sponsor</Badge>}
+                      </span>
+                      <span className="text-[13px] text-muted-foreground">
+                        {bill.source}
+                        {bill.mostRecentStage ? ` · ${bill.mostRecentStage}` : ''}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Card>
+
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+              <MessageSquare className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              Question focus
+            </h2>
+            {tdQuestionTopicsLoading ? (
+              <div className="flex flex-col gap-3">
+                {[0, 1, 2].map((i) => (
+                  <Skeleton key={i} className="h-9 rounded-lg" />
+                ))}
+              </div>
+            ) : tdQuestionTopicsError ? (
+              <SideCardError
+                message="Could not load question topics."
+                onRetry={() => refetchQuestionTopics()}
+                retrying={tdQuestionTopicsFetching}
+              />
+            ) : topQuestionTopics.length === 0 ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">No parliamentary questions recorded yet.</p>
+            ) : (
+              <ul className="flex flex-col gap-3">
+                {topQuestionTopics.map((topic) => {
+                  const total = topic.oral + topic.written;
+                  return (
+                    <li key={topic.department} className="flex flex-col gap-1.5">
+                      <div className="flex items-baseline justify-between gap-3 text-sm">
+                        <span className="min-w-0 font-semibold leading-snug">{topic.department}</span>
+                        <span className="shrink-0 text-[13px] text-muted-foreground">
+                          {topic.oral} oral · {topic.written} written
+                        </span>
+                      </div>
+                      <ScoreBar
+                        value={maxQuestionTopicTotal > 0 ? (total / maxQuestionTopicTotal) * 100 : 0}
+                        tone="bg-primary"
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </Card>
 
           {score.party && (
@@ -901,25 +1061,66 @@ function TrendRow({ label, change }: { label: string; change: number }) {
   );
 }
 
-function CommitteeList({ committees }: { committees: string[] }) {
+/** A side card's load failure: one line and a retry, as the Dáil record card does it. */
+function SideCardError({ message, onRetry, retrying }: { message: string; onRetry: () => void; retrying: boolean }) {
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+      <span>{message}</span>
+      <RetryButton variant="outline" size="sm" className="h-11 md:h-9" onRetry={onRetry} pending={retrying} />
+    </div>
+  );
+}
+
+function CommitteeList({
+  committees,
+  loading,
+  error,
+  onRetry,
+  retrying,
+}: {
+  committees: TdCommittee[];
+  loading: boolean;
+  error: boolean;
+  onRetry: () => void;
+  retrying: boolean;
+}) {
   return (
     <div className="flex flex-col gap-3">
       <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
         <Users className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
         Committees
       </h2>
-      {committees.length > 0 ? (
-        <div className="flex flex-wrap gap-2">
-          {committees.map((committee) => (
-            <Badge key={committee} variant="secondary" className="h-8 px-3 text-[13px]">
-              {committee}
-            </Badge>
+      {loading ? (
+        <div className="flex flex-col gap-2">
+          {[0, 1].map((i) => (
+            <Skeleton key={i} className="h-16 rounded-xl" />
           ))}
         </div>
+      ) : error ? (
+        <SideCardError message="Could not load committees." onRetry={onRetry} retrying={retrying} />
+      ) : committees.length === 0 ? (
+        <p className="text-[13px] leading-relaxed text-muted-foreground">Not a member of any committee.</p>
       ) : (
-        <p className="text-[13px] leading-relaxed text-muted-foreground">
-          No committee places recorded. They are not synced from the Oireachtas yet.
-        </p>
+        <ul className="flex flex-col gap-2">
+          {committees.map((committee) => (
+            // A TD can hold two memberships of one committee, so the start date is part of the key.
+            <li key={`${committee.committeeId}-${committee.start}`} className="flex flex-col gap-1 rounded-xl bg-elevated p-3">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <span className="text-sm font-bold leading-snug">{committee.name}</span>
+                {committee.role === 'Cathaoirleach' && <Badge>Chair</Badge>}
+                {committee.role === 'Leas-Chathaoirleach' && <Badge variant="outline">Vice-chair</Badge>}
+              </div>
+              <span className="flex flex-wrap justify-between gap-x-3 text-[13px] text-muted-foreground">
+                <span>
+                  {formatIsoDate(committee.start)} – {committee.end ? formatIsoDate(committee.end) : 'present'}
+                </span>
+                <span>
+                  {committee.sittingsAttended} of {committee.sittingsEligible} sittings
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

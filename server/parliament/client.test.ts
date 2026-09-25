@@ -46,6 +46,14 @@ describe('OireachtasClient', () => {
     await expect(broken.questions('2026-01-01', '2026-01-31')).rejects.toThrow(/No question count/);
   });
 
+  it('throws when the pages hold fewer questions than the count, rather than store a short month', async () => {
+    const { client } = fakeFetch([
+      { status: 200, body: { head: { counts: { questionCount: 3 } } } },
+      { status: 200, body: { results: [{ question: {} }, { question: {} }] } },
+    ]);
+    await expect(client.questions('2026-01-01', '2026-01-31')).rejects.toThrow(/Read 2 of 3/);
+  });
+
   it('keeps only Dáil and joint committee sittings, with their transcript', async () => {
     const { urls, client } = fakeFetch([
       {
@@ -168,6 +176,27 @@ describe('toRosterMember', () => {
   it('detects the chair from a current office only', () => {
     const former = member({ offices: [{ office: { officeName: { showAs: 'Ceann Comhairle' }, dateRange: { start: '2024-12-18', end: '2025-01-01' } } }] });
     expect(toRosterMember(former)?.isPresiding).toBe(false);
+  });
+
+  it("keeps only this Dáil's committees held during this seat, and drops a role that has ended", () => {
+    const committee = (uri: string, start: string, end: string | null, role: { title: string; dateRange?: { start: string; end: string | null } } | null = null) => ({
+      uri,
+      committeeName: [{ nameEn: uri.split('/').pop()! }],
+      committeeType: ['Standing'],
+      role,
+      memberDateRange: { start, end },
+    });
+    const m = member({
+      committees: [
+        committee('https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/kept', '2024-12-18', null, { title: 'Cathaoirleach', dateRange: { start: '2024-12-18', end: '2025-05-01' } }),
+        committee('https://data.oireachtas.ie/ie/oireachtas/committee/seanad/27/seanad_only', '2024-12-18', null),
+        committee('https://data.oireachtas.ie/ie/oireachtas/committee/dail/33/last_term', '2020-06-01', null),
+        committee('https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/ended_before_seat', '2024-11-01', '2024-11-29'),
+      ],
+    });
+    expect(toRosterMember(m)?.committees).toEqual([
+      { uri: 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/kept', name: 'kept', committeeType: 'Standing', role: null, start: '2024-12-18', end: null },
+    ]);
   });
 
   it('is NULL for a member whose seat in the current Dáil has ended', () => {

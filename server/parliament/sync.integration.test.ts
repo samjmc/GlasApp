@@ -69,16 +69,25 @@ function member(memberCode: string, party: string | null, extra: Partial<RosterM
 
 // --- Committees: 12 sittings of the PAC. A chairs it and attends all; B attends every
 // other one; C joins on 16 June (6 eligible sittings, below the minimum); Y is no member.
+// On the first day A is on the roll call only as the unlinked chair line, as in real
+// transcripts. A 13th sitting has a name nobody can match, so it counts for no one.
 const PAC_URI = 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/committee_of_public_accounts';
 const PAC_DAYS = Array.from({ length: 12 }, (_, k) => `2025-06-${String(10 + k).padStart(2, '0')}`);
+const UNMATCHED_DAY = '2025-06-22';
+const nameOf = (code: string) => code.split('.')[0].replace(/-/g, ' ');
 const pac = (role: string | null, start: string) => [{ uri: PAC_URI, name: 'Committee of Public Accounts', committeeType: 'Standing', role, start, end: null }];
-function presentOn(date: string): string[] {
+function rollCallFor(date: string): { linked: string[]; names: string[] } {
+  if (date === UNMATCHED_DAY) return { linked: [A, B, C], names: ['Deputy Nobody Known'] };
   const k = PAC_DAYS.indexOf(date);
-  return [A, ...(k % 2 === 0 ? [B] : []), C];
+  if (k === 0) return { linked: [B, C], names: [`DEPUTY ${nameOf(A).toUpperCase()} IN THE CHAIR.`] };
+  return { linked: [A, ...(k % 2 === 0 ? [B] : []), C], names: [] };
 }
-function rollCallXml(present: string[]): string {
-  const refs = present.map((c, i) => `<TLCPerson eId="p${i}" href="/ie/oireachtas/member/id/${c}" showAs="${c}"/>`).join('');
-  const roll = present.map((_, i) => `<person refersTo="#p${i}">Deputy ${i}</person>`).join('');
+function rollCallXml({ linked, names }: { linked: string[]; names: string[] }): string {
+  const refs = linked.map((c, i) => `<TLCPerson eId="p${i}" href="/ie/oireachtas/member/id/${c}" showAs="${c}"/>`).join('');
+  const roll = [
+    ...linked.map((_, i) => `<person refersTo="#p${i}">Deputy ${i}</person>`),
+    ...names.map((n, i) => `<person refersTo="#unlinked${i}">${n}</person>`),
+  ].join('');
   return `<akomaNtoso><debate><meta><references>${refs}</references></meta><debateBody><debateSection eId="dbsect_1"><rollCall><summary>MEMBERS PRESENT:</summary>${roll}</rollCall></debateSection></debateBody></debate></akomaNtoso>`;
 }
 
@@ -92,10 +101,20 @@ const billByA: RawBill = {
   billYear: '2025',
   shortTitleEn: 'Test Bill 2025',
   sponsors: [{ sponsor: { isPrimary: true, by: { showAs: 'A', uri: `https://data.oireachtas.ie/ie/oireachtas/member/id/${A}` } } }],
-  // A committee stage names the committee: the live API has chamber labels up to 104
-  // characters, which broke a varchar(60) on the first real run.
   stages: [{ event: { showAs: 'Committee Stage', dates: [{ date: '2025-06-20' }], chamber: { showAs: 'Select Committee on Justice, Home Affairs and Migration, and the Implementation of the Good Friday Agreement' } } }],
-  debates: [{ chamber: { showAs: 'Dáil Éireann', uri: 'https://data.oireachtas.ie/ie/oireachtas/def/house/dail' }, date: '2025-06-25', debateSectionId: 'dbsect_19', showAs: 'Test Bill 2025: Second Stage' }],
+  debates: [
+    { chamber: { showAs: 'Dáil Éireann', uri: 'https://data.oireachtas.ie/ie/oireachtas/def/house/dail' }, date: '2025-06-25', debateSectionId: 'dbsect_19', showAs: 'Test Bill 2025: Second Stage', uri: 'https://data.oireachtas.ie/akn/ie/debateRecord/dail/2025-06-25/debate/main' },
+    // A committee-stage debate: the live API has chamber labels up to 104 characters (they
+    // broke a varchar(60) on the first real run), and its key must not collide with the
+    // Dáil debate above, which has the same date and section id.
+    {
+      chamber: { showAs: 'Select Committee on Justice, Home Affairs and Migration, and the Implementation of the Good Friday Agreement', uri: 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/select_committee_on_justice_home_affairs_and_migration' },
+      date: '2025-06-25',
+      debateSectionId: 'dbsect_19',
+      showAs: 'Test Bill 2025: Committee Stage',
+      uri: 'https://data.oireachtas.ie/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration_and_the_implementation_of_the_good_friday_agreement/2025-06-25/debate/main',
+    },
+  ],
 };
 
 // --- Questions: A asks 15 oral (Taoiseach) and 77 written (50 Health, 27 Finance) in June;
@@ -114,7 +133,13 @@ interface FakeOptions {
   days?: Array<{ date: string; xmlUri: string | null }>;
   /** Months (first days) whose question fetch throws. */
   failQuestionMonths?: string[];
+  /** The bills endpoint throws. */
+  failBills?: boolean;
+  /** Extra committee sittings listed before the PAC's on the same day. */
+  extraSittings?: Array<{ uri: string; date: string; committeeUri: string; committeeName: string; xmlUri: string | null }>;
 }
+
+const HEALTH_URI = 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/joint_committee_on_health';
 
 function fakeClient(roster: RosterMember[], opts: FakeOptions = {}): OireachtasClient {
   const days = opts.days ?? [{ date: '2025-06-25', xmlUri: 'fixture.xml' }];
@@ -123,16 +148,25 @@ function fakeClient(roster: RosterMember[], opts: FakeOptions = {}): OireachtasC
     roster: async () => roster,
     divisions: async () => divisions(),
     debateDays: async (from: string, to: string) => days.filter((d) => d.date >= from && d.date <= to).map((d) => ({ ...d })),
-    committeeSittings: async (from: string, to: string) =>
-      PAC_DAYS.filter((d) => d >= from && d <= to).map((date) => ({
+    committeeSittings: async (from: string, to: string) => [
+      ...(opts.extraSittings ?? []).filter((s) => s.date >= from && s.date <= to),
+      ...[...PAC_DAYS, UNMATCHED_DAY].filter((d) => d >= from && d <= to).map((date) => ({
         uri: `https://data.oireachtas.ie/akn/ie/debateRecord/committee_of_public_accounts/${date}/debate/main`,
         date,
         committeeUri: PAC_URI,
         committeeName: 'COMMITTEE OF PUBLIC ACCOUNTS',
         xmlUri: `pac-${date}.xml`,
       })),
-    transcript: async (xmlUri: string) => (xmlUri.startsWith('pac-') ? rollCallXml(presentOn(xmlUri.slice(4, 14))) : transcript),
-    bills: async () => [...structuredClone(realBills), structuredClone(billByA)],
+    ],
+    transcript: async (xmlUri: string) => {
+      if (xmlUri.startsWith('pac-')) return rollCallXml(rollCallFor(xmlUri.slice(4, 14)));
+      if (xmlUri.startsWith('health-')) return rollCallXml({ linked: [Y], names: [] });
+      return transcript;
+    },
+    bills: async () => {
+      if (opts.failBills) throw new Error('legislation endpoint down');
+      return [...structuredClone(realBills), structuredClone(billByA)];
+    },
     questions: async (from: string, to: string) => {
       if (failing.has(`${from.slice(0, 7)}-01`)) throw new Error('API down for this month');
       return QUESTIONS.filter((x) => x.date! >= from && x.date! <= to);
@@ -172,7 +206,9 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(s.roster).toMatchObject({ members: 5, inserted: 5 });
     expect(s.divisions.ingested).toBe(12);
     expect(s.debates).toMatchObject({ days: 1, sections: 2, speeches: 33, failedDays: [] });
-    expect(s.committees).toMatchObject({ days: 12, sittings: 12, failedDays: [] });
+    expect(s.committees).toMatchObject({ days: 13, sittings: 13, unresolvedSittings: 1, failedDays: [] });
+    expect(s.failedFeeds).toEqual([]);
+    expect(parliament.syncHadFailures(s)).toBe(false);
     expect(s.bills.ingested).toBe(4);
     // Nov 2024 .. Jun 2025.
     expect(s.questions).toMatchObject({ months: 8, questions: 97, failedMonths: [] });
@@ -205,6 +241,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   });
 
   it('measures committee attendance inside each membership, NULL below the minimum', async () => {
+    // 12, not 11: on the first day A is on the roll call only by the chair line's name.
+    // And not 13: the sitting with an unmatched name counts for nobody.
     expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ committeeSittingsEligible: 12, committeeSittingsAttended: 12, committeeAttendancePct: 100 });
     expect(await parliament.repository.tdSummary(await tdId(B))).toMatchObject({ committeeSittingsEligible: 12, committeeSittingsAttended: 6, committeeAttendancePct: 50 });
     // C joined on 16 June: only 6 sittings count, all attended, and 6 is below the minimum.
@@ -233,6 +271,16 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     // All 12 fixture divisions sit in dail-2025-06-25-dbsect_19, one of this bill's debates.
     expect(gov?.divisions).toHaveLength(12);
     expect(await parliament.repository.billDetail('1999-1')).toBeNull();
+
+    // The test bill's committee-stage debate has the Dáil debate's date and section id; it
+    // is stored under its own key and joins to no division.
+    const { rows } = await dbmod.pool.query(`select debate_section_id id, chamber from politics.bill_debates where bill_id = '2025-999' order by 1`);
+    expect(rows.map((r) => r.id)).toEqual([
+      'committee-select_committee_on_justice_home_affairs_and_migration_and_the_implementation_of_the_good_friday_agreement-2025-06-25-dbsect_19',
+      'dail-2025-06-25-dbsect_19',
+    ]);
+    expect(rows[0].chamber.length).toBeGreaterThan(100);
+    expect((await parliament.repository.billDetail('2025-999'))?.divisions).toHaveLength(12);
   });
 
   it('lists the bills a TD sponsored', async () => {
@@ -306,7 +354,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       (select count(*)::int from politics.committee_memberships) memberships,
       (select count(*)::int from politics.bill_sponsors) sponsors,
       (select sum(n)::int from politics.question_counts) questions`);
-    expect(again[0]).toEqual({ attendance: 12 + 6 + 12, memberships: 3, sponsors: 1 + 74 + 1 + 1, questions: 97 });
+    // A, B and C are each also present at the unmatched sitting: stored, just not counted.
+    expect(again[0]).toEqual({ attendance: 13 + 7 + 13, memberships: 3, sponsors: 1 + 74 + 1 + 1, questions: 97 });
 
     const after = await parliament.repository.divisionDetail('dail-34-2025-06-21-vote_12');
     expect(after?.votes.find((v) => v.memberCode === Z)?.tdId).toBe(await tdId(Z));
@@ -360,5 +409,62 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(await debates()).toMatchObject({ throughDate: '2025-07-30', failures: {} });
     const { rows } = await dbmod.pool.query(`select count(*)::int n from politics.debate_sections where date = '2025-06-26'`);
     expect(rows[0].n).toBe(2);
+  });
+
+  it('a feed that fails outright is recorded, and the other feeds still run', async () => {
+    const s = await parliament.runSync({ client: fakeClient(roster, { failBills: true }), today: '2025-07-30', log: () => {} });
+    expect(s.failedFeeds).toEqual(['bills']);
+    expect(parliament.syncHadFailures(s)).toBe(true);
+    expect(s.questions).toMatchObject({ failedMonths: [], totalsComplete: true });
+    expect(s.scoringRowsWritten).toBeGreaterThan(0);
+    // The bills already stored are kept.
+    expect((await parliament.repository.listBills({}, 10, 0)).total).toBe(4);
+  });
+
+  it('bills sponsored is NULL until the bills feed has run once', async () => {
+    const a = await tdId(A);
+    await dbmod.pool.query(`delete from politics.parliament_sync_state where feed = 'bills'`);
+    expect((await parliament.repository.tdSummary(a))?.billsSponsored).toBeNull();
+    await parliament.runSync({ client: fakeClient(roster), today: '2025-07-30', log: () => {} });
+    expect((await parliament.repository.tdSummary(a))?.billsSponsored).toBe(1);
+  });
+
+  it('tries every committee sitting of a day before marking the day failed', async () => {
+    const health = (suffix: string, xmlUri: string | null) => ({
+      uri: `https://data.oireachtas.ie/akn/ie/debateRecord/joint_committee_on_health/2025-07-20/debate/${suffix}`,
+      date: '2025-07-20',
+      committeeUri: HEALTH_URI,
+      committeeName: 'JOINT COMMITTEE ON HEALTH',
+      xmlUri,
+    });
+    const good = health('main', 'health-2025-07-20.xml');
+    // The unpublished sitting is listed first; the good one is listed twice.
+    const s = await parliament.runSync({
+      client: fakeClient(roster, { extraSittings: [health('unpublished', null), good, good] }),
+      today: '2025-07-30',
+      log: () => {},
+    });
+    expect(s.committees).toMatchObject({ failedDays: ['2025-07-20'], sittings: 1 });
+    const { rows } = await dbmod.pool.query(
+      `select s.present_count, a.member_code from politics.committee_sittings s join politics.committee_attendance a on a.sitting_uri = s.uri where s.uri = $1`,
+      [good.uri],
+    );
+    expect(rows).toEqual([{ present_count: 1, member_code: Y }]);
+  });
+
+  it('a --since run with no question resume point keeps the last totals, not a partial count', async () => {
+    // A store whose question counts start in June and have no resume point: a fresh
+    // `--since` run looks exactly like this.
+    await dbmod.pool.query(`delete from politics.parliament_sync_state where feed = 'questions'`);
+    await dbmod.pool.query(`delete from politics.question_counts where month < '2025-06-01'`);
+    const partial = await parliament.runSync({ client: fakeClient(roster), since: '2025-06-01', today: '2025-07-30', log: () => {} });
+    expect(partial.questions.totalsComplete).toBe(false);
+    // C's 3 January questions are not in the counts; the total must not drop to 0.
+    expect(await parliament.repository.tdSummary(await tdId(C))).toMatchObject({ questionsWritten: 3 });
+
+    const full = await parliament.runSync({ client: fakeClient(roster), today: '2025-07-30', log: () => {} });
+    expect(full.questions.totalsComplete).toBe(true);
+    expect(await parliament.repository.tdSummary(await tdId(C))).toMatchObject({ questionsWritten: 3 });
+    expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
   });
 });
