@@ -131,13 +131,14 @@ run('repository against Postgres', () => {
 
   it('updateParliamentaryActivity fills the pillar inputs by member code', async () => {
     const written = await repo.updateParliamentaryActivity([
-      { memberCode: 'MLM.D.2011', questionsOral: 40, questionsWritten: 160, attendancePct: 95 },
-      { memberCode: 'DOES.NOT.EXIST', questionsOral: 1, questionsWritten: 1, attendancePct: 1 },
+      { memberCode: 'MLM.D.2011', questionsOral: 40, questionsWritten: 160, attendancePct: 95, committeeAttendancePct: 68 },
+      { memberCode: 'DOES.NOT.EXIST', questionsOral: 1, questionsWritten: 1, attendancePct: 1, committeeAttendancePct: 1 },
     ]);
     expect(written).toBe(1);
     const mary = (await repo.findByName('Mary Lou McDonald'))!;
     expect(mary.td.questionCountOral).toBe(40);
     expect(mary.td.attendancePct).toBe(95);
+    expect(mary.td.committeeAttendancePct).toBe(68);
   });
 
   it('rollup writes derived scores and ranks that the reads then serve', async () => {
@@ -147,6 +148,7 @@ run('repository against Postgres', () => {
     const mary = inputs.find((i) => i.party === 'Sinn Féin')!;
     expect(mary.questions).toBe(200);
     expect(mary.attendancePct).toBe(95);
+    expect(mary.committeeAttendancePct).toBe(68);
     // Simon has no parliamentary data at all.
     expect(inputs.find((i) => i.party === 'Fine Gael')!.questions).toBeNull();
 
@@ -155,7 +157,8 @@ run('repository against Postgres', () => {
     const top = rows[0];
     expect(top.td.name).toBe('Mary Lou McDonald');
     expect(top.score?.nationalRank).toBe(1);
-    expect(top.score?.parliamentaryScore).toBe(100);
+    // Questions and votes at their benchmarks (100); committees 68 of 85 = 80: 50 + 30 + 16.
+    expect(top.score?.parliamentaryScore).toBe(96);
     expect(top.score?.overallScore).not.toBeNull();
     // Simon: news pillar only, so his overall equals his news score.
     const simon = rows.find((r) => r.td.name === 'Simon Harris')!;

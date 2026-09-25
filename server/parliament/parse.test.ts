@@ -4,7 +4,22 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { countWords, isPresidingRole, parseDivision, parseTranscript, type RawDivision } from './parse';
+import {
+  countQuestions,
+  countWords,
+  isoDay,
+  isPresidingRole,
+  normaliseName,
+  parseBill,
+  parseDivision,
+  parseRollCall,
+  parseTranscript,
+  resolveRollCallNames,
+  uriTail,
+  type RawBill,
+  type RawDivision,
+  type RawQuestion,
+} from './parse';
 
 const fixture = (name: string) => fs.readFileSync(path.join(__dirname, '__fixtures__', name), 'utf8');
 const [rawDivision] = JSON.parse(fixture('divisions-2025-06-25.json')) as RawDivision[];
@@ -121,6 +136,198 @@ describe('chair speeches without an `as` role', () => {
       ['Acting Chairman', true],
       [null, false],
     ]);
+  });
+});
+
+describe('parseBill', () => {
+  const [gov, pmb, lapsed] = (JSON.parse(fixture('bills-sample.json')) as RawBill[]).map((b) => parseBill(b)!);
+
+  it('reads an enacted Government bill: office as sponsor, act number, newest PDF and the memo', () => {
+    expect(gov.bill).toMatchObject({
+      id: '2025-32',
+      source: 'Government',
+      status: 'Enacted',
+      act: '6/2025',
+      mostRecentStage: 'Enacted',
+      originHouse: 'Dáil Éireann',
+      lastUpdated: '2025-07-09',
+      latestVersionPdf: 'https://data.oireachtas.ie/ie/oireachtas/act/2025/6/eng/enacted/a0625.pdf',
+      memoPdf: 'https://data.oireachtas.ie/ie/oireachtas/bill/2025/32/eng/memo/b3225d-memo.pdf',
+    });
+    expect(gov.sponsors).toEqual([{ billId: '2025-32', position: 0, memberCode: null, label: 'Minister for Finance', isPrimary: true }]);
+    expect(gov.stages).toHaveLength(10);
+    expect(gov.stages[0]).toEqual({ billId: '2025-32', position: 0, stage: 'First Stage', chamber: 'Dáil Éireann', date: '2025-06-12' });
+  });
+
+  it("keys each debate like the divisions table, so a bill joins to its Dáil votes", () => {
+    expect(gov.debates.map((d) => d.debateSectionId)).toEqual([
+      'seanad-2025-07-01-dbsect_14',
+      'seanad-2025-06-26-dbsect_11',
+      'dail-2025-06-25-dbsect_19', // the section holding division vote_91 in divisions-2025-06-25.json
+      'dail-2025-06-18-dbsect_13',
+      'dail-2025-06-17-dbsect_17',
+    ]);
+    expect(parseDivision(rawDivision)!.division.debateSectionId).toBe('dail-2025-06-25-dbsect_19');
+  });
+
+  it('keys a committee-stage debate by its committee, so it never joins to a Dáil vote', () => {
+    const [rawGov] = JSON.parse(fixture('bills-sample.json')) as RawBill[];
+    const committee = 'select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach';
+    const withCommittee = {
+      ...rawGov,
+      debates: [
+        ...(rawGov.debates ?? []),
+        {
+          chamber: { showAs: 'Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach', uri: `https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/${committee}` },
+          date: '2025-06-25',
+          // Same section id and date as the Dáil debate holding vote_91: only the house tells them apart.
+          debateSectionId: 'dbsect_19',
+          showAs: 'Committee Stage',
+          uri: `https://data.oireachtas.ie/akn/ie/debateRecord/${committee}/2025-06-25/debate/main`,
+        },
+      ],
+    } as RawBill;
+    const keys = parseBill(withCommittee)!.debates.map((d) => d.debateSectionId);
+    expect(keys).toContain(`committee-${committee}-2025-06-25-dbsect_19`);
+    expect(keys.filter((k) => k === 'dail-2025-06-25-dbsect_19')).toHaveLength(1);
+  });
+
+  it('reads a Private Member bill with many sponsors, one primary', () => {
+    expect(pmb.bill).toMatchObject({ id: '2026-86', source: 'Private Member', status: 'Current', act: null });
+    expect(pmb.sponsors).toHaveLength(74);
+    expect(pmb.sponsors.filter((s) => s.isPrimary).map((s) => s.label)).toEqual(['Barry Ward']);
+    expect(pmb.sponsors[0].memberCode).toBe('Barry-Ward.S.2020-03-30');
+  });
+
+  it('decodes HTML in long titles and tolerates a bill with no memo or debates', () => {
+    expect(lapsed.bill.longTitle).not.toMatch(/&nbsp;|<p>/);
+    expect(lapsed.bill.longTitle?.endsWith('related matters.')).toBe(true);
+    expect(lapsed.bill.memoPdf).toBeNull();
+    expect(lapsed.debates).toEqual([]);
+  });
+
+  it('rejects a bill it cannot identify', () => {
+    expect(parseBill({ uri: 'x', billYear: '2025', shortTitleEn: 'X' })).toBeNull();
+  });
+});
+
+const roll = parseRollCall(fixture('committee-transcript.xml'));
+
+describe('parseRollCall', () => {
+  it('lists each linked member on the roll call once, by member code', () => {
+    expect(roll.codes).toHaveLength(10);
+    expect(roll.codes.slice(0, 3)).toEqual(['Grace-Boland.D.2024-11-29', 'Eoghan-Kenny.D.2024-11-29', 'Joanna-Byrne.D.2024-11-29']);
+    expect(roll.codes).toContain('Séamus-McGrath.D.2024-11-29');
+    expect(new Set(roll.codes).size).toBe(roll.codes.length);
+  });
+
+  it('returns the names it could not link', () => {
+    // The real transcript has no TLCPerson for this member: 1 of the 11 on its roll call.
+    expect(roll.unlinkedNames).toEqual(['Deputy Aidan Farrelly']);
+  });
+
+  it("skips names in a joint committee's Senators column: they cannot be TDs", () => {
+    // Shape of the Joint Committee on European Union Affairs, 2025-06-25.
+    const xml = `<akomaNtoso><debate><meta><references>
+      <TLCPerson eId="SeanCroweSF" href="/ie/oireachtas/member/id/Seán-Crowe.D.2002-06-06" showAs="Seán Crowe"/>
+      </references></meta><debateBody><debateSection eId="dbsect_1"><rollCall>
+      <summary>Comhaltaí a bhí i láthair / Members present:</summary>
+      <table>
+        <tr><th><p>Teachtaí Dála / Deputies</p></th><th><p>Seanadóirí / Senators</p></th></tr>
+        <tr><td><p><person refersTo="#SeanCroweSF">Seán Crowe</person></p></td><td><p><person refersTo="#AidanDavitt">Aidan Davitt</person></p></td></tr>
+        <tr><td><p><person refersTo="#EamonScanlon">Eamon Scanlon.</person></p></td><td/></tr>
+      </table>
+      <summary><person as="#Chair" refersTo="#BarryWard">Teachta / Deputy Barry Ward sa Chathaoir / in the Chair.</person></summary>
+      </rollCall></debateSection></debateBody></debate></akomaNtoso>`;
+    expect(parseRollCall(xml)).toEqual({
+      codes: ['Seán-Crowe.D.2002-06-06'],
+      unlinkedNames: ['Eamon Scanlon.', 'Teachta / Deputy Barry Ward sa Chathaoir / in the Chair.'],
+    });
+  });
+
+  it('is empty, not an error, for a transcript with no roll call', () => {
+    expect(parseRollCall('<akomaNtoso><debate><debateBody/></debate></akomaNtoso>')).toEqual({ codes: [], unlinkedNames: [] });
+  });
+});
+
+describe('resolveRollCallNames', () => {
+  const roster = [
+    { fullName: 'John Brady', memberCode: 'John-Brady.D.2016-10-03' },
+    { fullName: 'Seán Ó Fearghaíl', memberCode: 'Seán-Ó-Fearghaíl.D.1997-06-26' },
+    { fullName: 'Michael Healy-Rae', memberCode: 'Michael-Healy-Rae.D.2011-03-09' },
+    { fullName: 'Aidan Farrelly', memberCode: 'Aidan-Farrelly.D.2024-11-29' },
+    { fullName: 'Pat Murphy', memberCode: 'Pat-Murphy.D.a' },
+    { fullName: 'Pat Murphy', memberCode: 'Pat-Murphy.D.b' },
+  ];
+
+  it('matches a name by its letters: honorifics, accents, case, the chair line and punctuation ignored', () => {
+    const r = resolveRollCallNames(
+      ['DEPUTY JOHN BRADY IN THE CHAIR.', 'Deputy Sean O Fearghail', 'Deputy Michael Healy-Rae.'],
+      roster,
+    );
+    expect(r).toEqual({ codes: ['John-Brady.D.2016-10-03', 'Seán-Ó-Fearghaíl.D.1997-06-26', 'Michael-Healy-Rae.D.2011-03-09'], unresolvedTds: 0 });
+    // 10 linked + 1 matched by name = the 11 people on the fixture's roll call.
+    const byName = resolveRollCallNames(roll.unlinkedNames, roster);
+    expect(byName).toEqual({ codes: ['Aidan-Farrelly.D.2024-11-29'], unresolvedTds: 0 });
+    expect(new Set([...roll.codes, ...byName.codes]).size).toBe(11);
+  });
+
+  it('leaves a name shared by two members unresolved, and counts it as a possible TD', () => {
+    expect(resolveRollCallNames(['Deputy Pat Murphy'], roster)).toEqual({ codes: [], unresolvedTds: 1 });
+  });
+
+  it('does not count an unmatched Senator: they cannot be one of the TDs', () => {
+    expect(resolveRollCallNames(['Senator Mary Seery Kearney', 'Deputy Nobody Here'], roster)).toEqual({ codes: [], unresolvedTds: 1 });
+  });
+});
+
+describe('normaliseName', () => {
+  it('strips honorifics, including "Minister of State", and anything in brackets', () => {
+    expect(normaliseName('Minister of State Deputy Kieran O’Donnell')).toBe('kieran o donnell');
+    expect(normaliseName('Deputy Mary Butler (Minister of State at the Department of Health)')).toBe('mary butler');
+  });
+
+  it('reads the bilingual chair line', () => {
+    expect(normaliseName('Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.')).toBe('maurice quinlivan');
+  });
+});
+
+describe('countQuestions', () => {
+  const { results } = JSON.parse(fixture('questions-page.json')) as { results: Array<{ question: RawQuestion }> };
+
+  it('groups real questions by asker, month, department and type, losing none', () => {
+    const rows = countQuestions(results.map((r) => r.question));
+    expect(rows.reduce((n, r) => n + r.n, 0)).toBe(25);
+    expect(rows).toContainEqual({ memberCode: 'Ivana-Bacik.S.2007-07-23', month: '2025-06-01', department: 'Taoiseach', questionType: 'oral', n: 2 });
+  });
+
+  it('keeps oral and written apart and skips questions missing a field', () => {
+    const rows = countQuestions([
+      { date: '2026-01-31', questionType: 'written', by: { memberCode: 'A' }, to: { showAs: 'Health' } },
+      { date: '2026-01-02', questionType: 'written', by: { memberCode: 'A' }, to: { showAs: 'Health' } },
+      { date: '2026-01-02', questionType: 'oral', by: { memberCode: 'A' }, to: { showAs: 'Health' } },
+      { date: '2026-02-01', questionType: 'written', by: { memberCode: 'A' }, to: { showAs: 'Health' } },
+      { date: '2026-01-02', questionType: 'priority', by: { memberCode: 'A' }, to: { showAs: 'Health' } },
+      { date: '2026-01-02', questionType: 'oral', by: {}, to: { showAs: 'Health' } },
+    ]);
+    expect(rows).toEqual(
+      expect.arrayContaining([
+        { memberCode: 'A', month: '2026-01-01', department: 'Health', questionType: 'written', n: 2 },
+        { memberCode: 'A', month: '2026-01-01', department: 'Health', questionType: 'oral', n: 1 },
+        { memberCode: 'A', month: '2026-02-01', department: 'Health', questionType: 'written', n: 1 },
+      ]),
+    );
+    expect(rows).toHaveLength(3);
+  });
+});
+
+describe('isoDay and uriTail', () => {
+  it('take the date part and the last path segment', () => {
+    expect(isoDay('2025-05-07 00:00:00+00:00')).toBe('2025-05-07');
+    expect(isoDay('2025-07-09T09:23:49.950000+00:00')).toBe('2025-07-09');
+    expect(isoDay('not a date')).toBeNull();
+    expect(isoDay(null)).toBeNull();
+    expect(uriTail('https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/committee_of_public_accounts/')).toBe('committee_of_public_accounts');
   });
 });
 

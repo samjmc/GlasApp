@@ -21,7 +21,7 @@ The **overall 0–100** is a weighted mean of three pillars, computed by the rol
 | Pillar | Weight | Source |
 |---|---|---|
 | news | 0.45 | `eloToPercent(overall_elo)` |
-| parliamentary | 0.30 | questions vs 200 benchmark (60%) + attendance vs 95% (40%) |
+| parliamentary | 0.30 | questions vs 200 benchmark (50%) + Dáil vote attendance vs 95% (30%) + committee attendance vs 85% (20%), renormalised over the ones a TD has |
 | debate | 0.25 | Dáil debate sections spoken in per sitting day, vs the 75th percentile of TDs |
 
 A pillar with no data is left out and the others renormalise; a TD with no debate record is
@@ -43,10 +43,14 @@ leaves the Dáil would erase their record. An empty roster from the API changes 
 failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and unit-tested.
 
 Parliamentary and debate inputs are filled by `npm run parliament:sync` (`server/parliament/`,
-daily at 04:00 from the scheduler), which also runs the roster sync first. Attendance is Dáil
-divisions voted in / divisions held **inside the TD's own membership window**; questions are
-the ones the TD asked; debate participation excludes speeches made from the chair. The Ceann
-Comhairle does not vote and gets NULL, not 0. Anything that cannot be measured stays NULL and
+daily at 04:45 from the scheduler, off the even hours TD scoring runs at), which also runs
+the roster sync first. Attendance is Dáil divisions voted in / divisions held **inside the
+TD's own membership window**; questions are the ones the TD asked, summed from
+`politics.question_counts`; debate participation excludes speeches made from the chair.
+Committee attendance is the share of the TD's own committees' sittings they are on the roll
+call for, inside each membership; it is NULL below 10 sittings, so a TD on no committee (most
+ministers) is scored on questions and votes alone. The Ceann Comhairle does not vote and gets
+NULL, not 0. Anything that cannot be measured stays NULL and
 its pillar drops out. See `docs/plans/parliament-rebuild.md` for the API facts behind this.
 
 ## The pipeline

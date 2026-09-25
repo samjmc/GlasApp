@@ -81,6 +81,49 @@ the next 10 runs; it never blocks the days after it. `--since` never moves the r
 past days it did not fetch. A failed question fetch keeps the last good counts. Named query for the pledges session:
 `parliament.votesOf(tdId, { divisionId? })` → "TD voted X on division Y".
 
+## v2 (2026-09-24): offices, committees, bills, question topics
+
+The pieces of the API worth adding, from a deep dive of all 8 endpoints:
+
+| Piece | Source | Stored | Shown |
+|---|---|---|---|
+| Offices (Taoiseach, Ministers, Ministers of State) | roster `offices` (already downloaded) | `tds.offices`, `tds.committees` | TD profile header |
+| Committee attendance | roster `committees` + committee transcripts' `<rollCall>` | `committees`, `committee_memberships`, `committee_sittings`, `committee_attendance`; two columns on `td_parliament_stats` | TD profile, leaderboard, parties |
+| Bills | `/legislation` (whole term, ~414 bills) | `bills`, `bill_sponsors`, `bill_stages`, `bill_debates` | Debates page Bills tab, TD profile |
+| Question topics | `/questions`, whole house, month by month | `question_counts` (counts only) | TD profile "Question focus" |
+
+Facts measured while building it:
+- A committee membership and a committee sitting share the committee URI; that is the join.
+  1,024 committee sittings in the term so far, every one with a `<rollCall>`.
+- A roll call does NOT link everyone. Some present members have no `TLCPerson`, so they
+  are matched to the roster by name (129 TD presences in a two-month sample of 163
+  sittings). A joint committee's roll call is a table with "Deputies" and "Senators"
+  columns; the Senators column carries no "Senator" title, and skipping it by its header
+  took unmatched sittings from 451 of 1,024 to 1. A sitting with a name that could still
+  be a TD is stored but counts for nobody.
+- The roster lists committees of earlier terms and of the Seanad too (12 of 696), and
+  memberships that ended before the seat began (14). Only this Dáil's are kept.
+- `bill.debates[].debateSectionId` + date + house is the same key as
+  `divisions.debate_section_id`, so a bill shows every Dáil vote held on it. The house
+  comes from the debate URI (`/debateRecord/<dail|seanad|committee-id>/`): a committee-stage
+  debate can share a Dáil debate's date and section id, and keying it as Dáil joined 2
+  bills to unrelated votes. There is no direct bill field on a division (`isBill` is false
+  on all 413).
+- The API **refuses `skip` beyond 10,000** and caps its counts at 10,000, so questions are
+  read a month at a time (~7,500), and a window that still hits 10,000 is split.
+- Question text is not stored: ~150k questions a term would add ~150 MB to a database that
+  is 123 MB in total (85 MB of it debate speeches).
+- Question totals for scoring now come from `question_counts`; this replaced 348 per-TD API
+  calls a run. They are used only when every month since the Dáil's first day is stored (no
+  failed month, and a resume point exists, which a fresh `--since` run does not leave).
+  Otherwise the last written totals are kept. A failed month is retried every run.
+- Each feed runs on its own: a feed that fails outright is listed in `failedFeeds` and the
+  others still run. A resumed run (plus a full re-read of committee sittings) took 95 s.
+- The first live sync on GlasCore died with "deadlock detected": the scoring cron also runs
+  at 04:00. The parliament sync moved to 04:45 and its set-based writes retry on 40P01.
+
+Not in the API: gender (empty for all 176), members' interests and expenses (PDFs only).
+
 ## Deleted
 
 Server: `services/{oireachtasAPIService,politicianAgent}`, `jobs/{dailyDebateUpdate,dailyVoteFetcher,
@@ -135,14 +178,16 @@ on `/api/parliament`. TD profile parliament panel repointed (it has `id` from
 1. Delete at the scale above: yes.
 2. Debate pillar: measured participation, not the LLM "debate win" score.
 3. Ask TD: deleted now; rebuild later on `politics.debate_speeches` / `division_votes`.
+4. (2026-09-25) Committee attendance feeds the parliamentary pillar now (option B), at 20%:
+   questions 50%, Dáil votes 30%, committees 20%, renormalised over what a TD has. The
+   benchmark is 85%, by the same rule as votes (75th percentile, 87.7%, rounded down to 5).
 
 ## Still open
 
-- Ministers ask 0 questions, and questions are 60% of the parliamentary pillar, so every
-  minister scores low there. That is a `server/scoring/weights.ts` change; not made here.
+- Ministers ask 0 questions. Questions are now 50% of the parliamentary pillar (62.5% for a
+  TD with no committee measure, which is most ministers), so every minister still scores low
+  there. That is a `server/scoring/weights.ts` change; not made here.
 - Measured attendance is low for party leaders (live: Taoiseach 44%, Tánaiste 32.5%,
   Mary Lou McDonald 39.5%; median TD 90.6%). This is what the Official Report records, but
   whether "attendance at divisions" is fair to leaders is a scoring decision. (Tellers are
   in the lobby lists — checked on vote_91, all four — so they are not the cause.)
-</content>
-</invoke>

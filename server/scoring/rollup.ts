@@ -17,6 +17,8 @@ export interface RollupInput {
   /** Oral + written questions this term. NULL = no data. */
   questions: number | null;
   attendancePct: number | null;
+  /** Committee attendance, 0–100. NULL = not measurable (under 10 sittings, or no committee). */
+  committeeAttendancePct: number | null;
   /** Debate subsystem performance score, 0–1 or 0–100. NULL = no debate record. */
   debateScore: number | null;
 }
@@ -40,7 +42,7 @@ function byRank(a: { overallScore: number | null; overallElo: number; tdId: numb
 export function computeRollup(rows: RollupInput[]): RollupResult[] {
   const scored = rows.map((r) => {
     const news = r.newsStories > 0 ? eloToPercent(r.overallElo) : null;
-    const parliamentary = parliamentaryScore(r.questions, r.attendancePct);
+    const parliamentary = parliamentaryScore(r.questions, r.attendancePct, r.committeeAttendancePct);
     const debate = normalizePercent(r.debateScore);
     return {
       ...r,
