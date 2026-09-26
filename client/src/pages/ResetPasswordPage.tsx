@@ -4,19 +4,39 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle2, KeyRound, Loader2, TriangleAlert } from 'lucide-react';
 import { supabase, updatePassword } from '@/lib/supabase';
-import { newPasswordSchema, readAuthLinkError, type NewPasswordValues } from '@/lib/passwordReset';
+import { newPasswordSchema, readAuthLinkError, readRecoveryTokenHash, type NewPasswordValues } from '@/lib/passwordReset';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 type Stage = 'checking' | 'bad-link' | 'form' | 'done';
+type LinkCheck = { hasSession: boolean; error: string | null };
+
+// The token works once, and the page can mount twice; every mount waits on the one verify.
+let verifyingLink: Promise<LinkCheck> | null = null;
+
+function checkLink(): Promise<LinkCheck> {
+  const tokenHash = readRecoveryTokenHash(window.location.search);
+  if (tokenHash) {
+    // Drop the spent token from the URL so a refresh does not try it again.
+    window.history.replaceState(null, '', window.location.pathname);
+    verifyingLink = supabase.auth
+      .verifyOtp({ token_hash: tokenHash, type: 'recovery' })
+      .then(({ data, error }) => ({ hasSession: !!data.session, error: error?.message ?? null }));
+  }
+  if (verifyingLink) return verifyingLink;
+  return supabase.auth
+    .getSession()
+    .then(({ data, error }) => ({ hasSession: !!data.session, error: error?.message ?? null }));
+}
 
 /**
- * Step 2 of a password reset. The email link lands here with a one-time code, which the
- * Supabase client swaps for a session on load (PKCE, so only in the browser that asked).
- * With a session, the user picks a new password; without one, the link is bad or was
- * opened in another browser, and we say so.
+ * Step 2 of a password reset. The email links here with `?token_hash=…&type=recovery`,
+ * which we swap for a session, so the link works in any browser. (Supabase's default
+ * email instead sends `?code=`, which the Supabase client swaps on load, but only in the
+ * browser that asked.) With a session, the user picks a new password; without one, the
+ * link is bad, and we say so.
  */
 export default function ResetPasswordPage() {
   const [, navigate] = useLocation();
@@ -32,13 +52,13 @@ export default function ResetPasswordPage() {
   useEffect(() => {
     let cancelled = false;
     const fromUrl = readAuthLinkError(window.location.search, window.location.hash);
-    supabase.auth.getSession().then(({ data: { session }, error }) => {
+    checkLink().then(({ hasSession, error }) => {
       if (cancelled) return;
-      if (session && !fromUrl) {
+      if (hasSession && !fromUrl) {
         setStage('form');
         return;
       }
-      setLinkError(fromUrl ?? error?.message ?? null);
+      setLinkError(fromUrl ?? error);
       setStage('bad-link');
     });
     return () => {
@@ -81,7 +101,7 @@ export default function ResetPasswordPage() {
             <div className="flex flex-col gap-2">
               <h2 className="font-display text-xl font-bold tracking-tight">This link does not work</h2>
               <p className="text-sm text-muted-foreground">
-                It may have expired or been used already. It also works only in the browser where you asked for it.
+                It may have expired or been used already. Each link works once.
               </p>
               {linkError && <p className="text-[13px] text-muted-foreground">Reason: {linkError}</p>}
             </div>

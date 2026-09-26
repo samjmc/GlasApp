@@ -14,6 +14,16 @@ export const newPasswordSchema = z
 export type NewPasswordValues = z.infer<typeof newPasswordSchema>;
 
 /**
+ * The reset email links straight here with `?token_hash=…&type=recovery` (the Supabase
+ * recovery template), so any browser can use it. Null for any other URL.
+ */
+export function readRecoveryTokenHash(search: string): string | null {
+  const params = new URLSearchParams(search.replace(/^\?/, ''));
+  if (params.get('type') !== 'recovery') return null;
+  return params.get('token_hash') || null;
+}
+
+/**
  * Supabase puts a failed or expired email link's reason in the query or the hash
  * (`error_description=Email+link+is+invalid+or+has+expired`). Null when the link is fine.
  */

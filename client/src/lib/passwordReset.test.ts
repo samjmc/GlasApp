@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { newPasswordSchema, readAuthLinkError } from './passwordReset';
+import { newPasswordSchema, readAuthLinkError, readRecoveryTokenHash } from './passwordReset';
 
 describe('newPasswordSchema', () => {
   it('accepts 8+ characters typed twice', () => {
@@ -14,6 +14,20 @@ describe('newPasswordSchema', () => {
     const mismatch = newPasswordSchema.safeParse({ password: 'abcd1234', confirmPassword: 'abcd12345' });
     expect(mismatch.success).toBe(false);
     expect(mismatch.error!.issues[0]).toMatchObject({ path: ['confirmPassword'], message: 'The two passwords do not match' });
+  });
+});
+
+describe('readRecoveryTokenHash', () => {
+  it('reads the token from a recovery link', () => {
+    expect(readRecoveryTokenHash('?token_hash=pkce_abc123&type=recovery')).toBe('pkce_abc123');
+    expect(readRecoveryTokenHash('type=recovery&token_hash=abc')).toBe('abc');
+  });
+
+  it('is null for other links', () => {
+    expect(readRecoveryTokenHash('?token_hash=abc&type=signup')).toBeNull();
+    expect(readRecoveryTokenHash('?token_hash=&type=recovery')).toBeNull();
+    expect(readRecoveryTokenHash('?code=abc123')).toBeNull();
+    expect(readRecoveryTokenHash('')).toBeNull();
   });
 });
 
