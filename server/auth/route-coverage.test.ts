@@ -116,7 +116,8 @@ const allRoutes = [...walk(ROUTES_DIR), ...DOMAIN_ROUTE_FILES]
 
 describe('route guard coverage', () => {
   it('finds routes to check (a scan that matched nothing would pass vacuously)', () => {
-    expect(allRoutes.length).toBeGreaterThan(80);
+    // About 73 after the dead-endpoint deletions of 2026-09-26; far fewer means the scan broke.
+    expect(allRoutes.length).toBeGreaterThan(60);
     expect(allRoutes.filter((r) => r.method !== 'GET').length).toBeGreaterThan(20);
   });
 
