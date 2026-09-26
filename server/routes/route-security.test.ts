@@ -60,11 +60,6 @@ vi.mock('../db', () => ({
   checkDatabaseConnection: vi.fn(async () => true),
 }));
 
-vi.mock('../services/twilioService', () => ({
-  sendSMS: vi.fn(async () => ({ success: true, sid: 'SM123', message: 'SMS sent successfully' })),
-  isTwilioConfigured: vi.fn(() => true),
-}));
-
 vi.mock('../services/aiService', () => ({
   callChatCompletion: vi.fn(async () => ({ choices: [{ message: { content: '{}' } }] })),
   callEmbedding: vi.fn(),
@@ -101,7 +96,6 @@ vi.mock('@shared/schema', () => {
 });
 
 const { supabase } = await import('../auth/supabase');
-const smsRoutes = (await import('./smsRoutes')).default;
 const analysisRoutes = (await import('./ai/analysis')).default;
 
 const ADMIN_USER = { id: 'admin-id', email: 'admin@example.com', app_metadata: { role: 'admin' }, user_metadata: {} };
@@ -159,25 +153,6 @@ afterEach(() => {
   setAuthUser(null);
   process.env.ADMIN_EMAILS = '';
   vi.clearAllMocks();
-});
-
-describe('smsRoutes /test', () => {
-  it('returns 401 with no auth', async () => {
-    await withServer(appWith('/api/sms', smsRoutes), async (base) => {
-      const res = await fetch(`${base}/api/sms/test`, { headers: { connection: 'close' } });
-      assert.equal(res.status, 401);
-    });
-  });
-
-  it('returns 200 with the machine secret', async () => {
-    await withServer(appWith('/api/sms', smsRoutes), async (base) => {
-      const res = await fetch(`${base}/api/sms/test`, {
-        headers: { connection: 'close', 'x-admin-secret': 'cron-secret' },
-      });
-      assert.equal(res.status, 200);
-      assert.equal(((await res.json()) as { success: boolean }).success, true);
-    });
-  });
 });
 
 describe('ai/analysis /complete-analysis', () => {

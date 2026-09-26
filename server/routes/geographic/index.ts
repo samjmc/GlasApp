@@ -28,9 +28,15 @@ const router = express.Router();
 // ============================================
 
 // Load constituency boundary data (cached in memory)
-let constituencyBoundaries: unknown = null;
+interface ConstituencyBoundaries {
+  features: {
+    geometry: { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
+    properties?: { PC_NAME?: string; name?: string; COUNTY?: string; county?: string };
+  }[];
+}
+let constituencyBoundaries: ConstituencyBoundaries | null = null;
 
-function loadConstituencyBoundaries() {
+function loadConstituencyBoundaries(): ConstituencyBoundaries | null {
   if (!constituencyBoundaries) {
     try {
       const boundariesPath = path.join(process.cwd(), 'attached_assets', 'ConstituencyBoundariesUngeneralised_National_Electoral_Boundaries_2023_-9076466087770389770.geojson');

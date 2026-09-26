@@ -12,7 +12,6 @@ import activityRoutes from "./routes/activityRoutes";
 import quizRoutes from "./routes/quiz";
 import ideologyRoutes from "./routes/ideology";
 import conflictDataRoutes from "./routes/conflictData";
-import smsRoutes from "./routes/smsRoutes";
 import storytellingRoutes from "./routes/storytellingRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import electionRoutes from "./routes/electionRoutes";
@@ -58,7 +57,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
   app.use("/api/profile", profileRoutes);
   app.use("/api/activity", activityRoutes);
-  app.use("/api/sms", smsRoutes);
   
   // Register storytelling routes with server-side caching
   app.use("/api/constituency/story", aiRateLimit, storytellingRoutes);

@@ -130,7 +130,7 @@ export async function signInWithEmail(email: string, password: string) {
 }
 
 // Sign up with email/password
-export async function signUpWithEmail(email: string, password: string, metadata?: unknown) {
+export async function signUpWithEmail(email: string, password: string, metadata?: object) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -158,8 +158,14 @@ export async function resetPassword(email: string) {
     console.error('Error sending password reset:', error);
     throw error;
   }
-  
+
   return data;
+}
+
+// Set a new password for the signed-in user (the reset link signs them in first)
+export async function updatePassword(password: string) {
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) throw error;
 }
 
 // Export types

@@ -13,6 +13,7 @@
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "test": "vitest run --root .",
+    "guard:migrations": "tsx scripts/ci/check-migrations.ts",
     "git:safety-check": "bash scripts/git-safety-checks.sh",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
