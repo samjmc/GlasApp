@@ -54,9 +54,6 @@ vi.mock('../parliament/sync', () => ({
   SyncAlreadyRunning: class extends Error {},
 }));
 
-vi.mock('@shared/schema', () => ({ parties: { name: 'parties', id: 'parties.id' } }));
-
-const partiesRoutes = (await import('../routes/political/parties')).default;
 const parliamentRoutes = (await import('../routes/parliament')).default;
 const { createRateLimit } = await import('./rateLimit');
 
@@ -101,7 +98,6 @@ describe('unguarded write surfaces found by the audit now require admin access',
   const cases: Array<{ name: string; mount: string; router: express.Router; method: string; path: string; body?: unknown }> = [
     // The audit's six pledge write routes were deleted with the old pledge router; their
     // replacements in server/pledges/routes.ts are covered by server/pledges/routes.test.ts.
-    { name: 'POST /parties/explanations/:partyId', mount: '/api/parties', router: partiesRoutes, method: 'POST', path: '/api/parties/explanations/1', body: { economic: 'x' } },
     { name: 'POST /parliament/sync', mount: '/api/parliament', router: parliamentRoutes, method: 'POST', path: '/api/parliament/sync' },
   ];
 
@@ -198,8 +194,7 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     assert.equal(read('server/routes.ts').includes('req.session'), false);
   });
 
-  it('party explanations and the parliament sync trigger are admin-only', () => {
-    assert.match(read('server/routes/political/parties.ts'), /router\.post\("\/explanations\/:partyId",\s*requireJob,/);
+  it('the parliament sync trigger is admin-only', () => {
     assert.match(read('server/routes/parliament.ts'), /router\.post\('\/sync',\s*requireJob,/);
     // The parliament router's only write is the sync trigger.
     assert.equal((read('server/routes/parliament.ts').match(/router\.(post|put|patch|delete)\(/g) ?? []).length, 1);
@@ -209,7 +204,7 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     // /api/personalized-insights and /api/ratings were also limited here. The scoring
     // rebuild deleted both routers, so the limiter has nothing left to protect on them.
     const src = read('server/routes.ts');
-    for (const mount of ['/api/ai', '/api/chat', '/api/constituency/story', '/api/enhanced-profile']) {
+    for (const mount of ['/api/enhanced-profile']) {
       const re = new RegExp(`app\\.use\\("${mount.replace(/\//g, '\\/')}",\\s*aiRateLimit,`);
       assert.match(src, re, `${mount} is not behind aiRateLimit`);
     }

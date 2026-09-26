@@ -32,7 +32,9 @@ function readCookie(req: Request, name: string): string | undefined {
   if (!header) return undefined;
   for (const part of header.split(";")) {
     const [key, ...rest] = part.trim().split("=");
-    if (key === name) return decodeURIComponent(rest.join("="));
+    // Not decoded: region codes are plain ASCII, and decodeURIComponent throws on a stray "%",
+    // which would turn every page into a 500 for as long as the cookie lives.
+    if (key === name) return rest.join("=");
   }
   return undefined;
 }

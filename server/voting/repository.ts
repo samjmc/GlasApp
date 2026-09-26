@@ -318,7 +318,8 @@ export async function sessionVoteVectors(
   const rows = await database
     .select({ option: policyQuestionOptions })
     .from(policyVotes)
-    .innerJoin(dailySessionItems, eq(dailySessionItems.id, policyVotes.sessionItemId))
+    // By question, as sessionItems() does: a vote cast on the article page has no session item.
+    .innerJoin(dailySessionItems, eq(dailySessionItems.questionId, policyVotes.questionId))
     .innerJoin(
       policyQuestionOptions,
       and(eq(policyQuestionOptions.questionId, policyVotes.questionId), eq(policyQuestionOptions.optionKey, policyVotes.optionKey)),
@@ -352,8 +353,8 @@ export async function regionTotals(
   const [row] = await database
     .select(sums)
     .from(policyVotes)
-    .innerJoin(dailySessionItems, eq(dailySessionItems.id, policyVotes.sessionItemId))
-    .innerJoin(dailySessions, eq(dailySessions.id, dailySessionItems.sessionId))
+    .innerJoin(dailySessionItems, eq(dailySessionItems.questionId, policyVotes.questionId))
+    .innerJoin(dailySessions, and(eq(dailySessions.id, dailySessionItems.sessionId), eq(dailySessions.userId, policyVotes.userId)))
     .innerJoin(
       policyQuestionOptions,
       and(eq(policyQuestionOptions.questionId, policyVotes.questionId), eq(policyQuestionOptions.optionKey, policyVotes.optionKey)),
@@ -384,14 +385,6 @@ export async function upsertVote(
         updatedAt: new Date(),
       },
     });
-}
-
-export async function deleteVote(userId: string, questionId: number, database: Db = db): Promise<boolean> {
-  const deleted = await database
-    .delete(policyVotes)
-    .where(and(eq(policyVotes.userId, userId), eq(policyVotes.questionId, questionId)))
-    .returning({ id: policyVotes.id });
-  return deleted.length > 0;
 }
 
 export async function tallies(questionIds: number[], database: Db = db): Promise<Map<number, QuestionTally>> {

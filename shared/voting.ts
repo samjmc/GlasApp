@@ -94,8 +94,3 @@ export interface DailySessionState {
   completion?: DailySessionCompletion;
 }
 
-export interface QuickExplainer {
-  one_sentence: string;
-  pros: [string, string];
-  cons: [string, string];
-}

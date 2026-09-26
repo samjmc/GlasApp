@@ -8,7 +8,6 @@ import type {
   DailySessionCompletion,
   DailySessionState,
   QuestionTally,
-  QuickExplainer,
 } from "@shared/voting";
 
 export type {
@@ -18,7 +17,6 @@ export type {
   DailySessionItem,
   DailySessionState,
   QuestionTally,
-  QuickExplainer,
 } from "@shared/voting";
 
 type Envelope<T> =
@@ -55,13 +53,6 @@ export const submitDailyVote = (sessionItemId: number, optionKey: string) =>
 
 export const completeDailySession = () =>
   request<DailySessionCompletion>("/api/daily-session/complete", "POST");
-
-export const getQuickExplainer = (params: {
-  headline: string;
-  summary?: string;
-  issueCategory: string;
-  todayIso?: string;
-}) => request<QuickExplainer>("/api/daily-session/explainer", "POST", params);
 
 export interface ArticleVoteView {
   question: ArticleQuestion | null;
