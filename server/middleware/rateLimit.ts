@@ -90,6 +90,9 @@ const FIFTEEN_MINUTES = 15 * 60 * 1000;
 /** Endpoints that call an LLM per request: 30 calls per IP per 15 minutes. */
 export const aiRateLimit = createRateLimit({ windowMs: FIFTEEN_MINUTES, max: 30, name: 'ai' });
 
+/** Requests that can send a paid text message: 10 per IP per hour, on top of the per-user resend wait. */
+export const smsRateLimit = createRateLimit({ windowMs: 60 * 60 * 1000, max: 10, name: 'sms' });
+
 /** Anonymous public writes (e.g. TD ratings): 60 per IP per 15 minutes. */
 export const publicWriteRateLimit = createRateLimit({
   windowMs: FIFTEEN_MINUTES,

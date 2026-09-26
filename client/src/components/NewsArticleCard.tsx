@@ -1,6 +1,6 @@
 /**
  * News article card: image, publisher, headline, AI summary, the other outlets that reported
- * the same event, affected TDs, the policy vote for the story, and like / read / share actions.
+ * the same event, the TDs it names, the policy vote for the story, and like / read / share actions.
  */
 
 import { ExternalLink, Share2, Sparkles } from 'lucide-react';
@@ -10,7 +10,6 @@ import { useToast } from '@/components/ui/use-toast';
 import { PolicyVotePrompt } from './PolicyVotePrompt';
 import { ArticleImage } from './news/ArticleImage';
 import { humanizeCategory, type FeedArticle } from '@/lib/news';
-import { cn } from '@/lib/utils';
 
 /** Relative time for recent stories ("2 hours ago"), a date for older ones. */
 function formatTimeAgo(dateString: string): string {
@@ -65,11 +64,6 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
           <span aria-hidden="true">·</span>
           <time dateTime={article.publishedAt}>{formatTimeAgo(article.publishedAt)}</time>
           {article.category && <Badge variant="secondary">{humanizeCategory(article.category)}</Badge>}
-          {article.storyType && (
-            <Badge variant="outline" className="capitalize">
-              {article.storyType.replace('_', ' ')}
-            </Badge>
-          )}
         </div>
 
         <h3 className="line-clamp-3 font-display text-xl font-bold leading-tight tracking-tight">{article.title}</h3>
@@ -101,12 +95,8 @@ export function NewsArticleCard({ article }: { article: FeedArticle }) {
         {article.affectedTDs && article.affectedTDs.length > 0 && (
           <div className="flex flex-wrap gap-2" aria-label="TDs in this story">
             {article.affectedTDs.slice(0, 2).map((td) => (
-              <span key={td.name} className="inline-flex items-center gap-2 rounded-full bg-elevated px-3 py-1 text-[13px]">
+              <span key={td.name} className="inline-flex items-center rounded-full bg-elevated px-3 py-1 text-[13px]">
                 <span className="max-w-[10rem] truncate font-semibold">{td.name}</span>
-                <span className={cn('font-bold', td.impactScore >= 0 ? 'text-score-high' : 'text-warn')}>
-                  {td.impactScore >= 0 ? '+' : ''}
-                  {td.impactScore}
-                </span>
               </span>
             ))}
           </div>

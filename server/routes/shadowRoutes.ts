@@ -13,9 +13,10 @@ router.post("/analyze", requireJob, async (req, res) => {
         const log = requestLogger(req);
         log.info({ operation: 'admin.bots', actor: req.user?.email ?? req.user?.id }, 'Bot admin action');
 
-        const { url } = req.body;
-        if (!url) {
-            return res.status(400).json({ error: "URL is required" });
+        const { url } = req.body ?? {};
+        // The server fetches this URL, so only public https pages: never http://169.254… or localhost.
+        if (typeof url !== "string" || !URL.canParse(url) || new URL(url).protocol !== "https:") {
+            return res.status(400).json({ error: "An https URL is required" });
         }
 
         console.log(`Received request to analyze: ${url}`);

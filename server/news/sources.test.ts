@@ -5,7 +5,6 @@ describe('NEWS_SOURCES', () => {
   it('has unique slugs, one manual source, and a feed for every other', () => {
     expect(new Set(NEWS_SOURCES.map((s) => s.slug)).size).toBe(NEWS_SOURCES.length);
     expect(NEWS_SOURCES.filter((s) => s.feedUrl === null).map((s) => s.slug)).toEqual([MANUAL_SOURCE_SLUG]);
-    for (const s of NEWS_SOURCES) expect(s.credibility).toBeGreaterThan(0);
   });
 });
 

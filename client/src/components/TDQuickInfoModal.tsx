@@ -13,6 +13,7 @@ import { PartyLabel } from '@/components/pulse/Party';
 import { StatTile } from '@/components/pulse/Stat';
 import { RetryButton } from '@/components/data/RetryButton';
 import { queryKeys } from '@/lib/queryKeys';
+import type { TdSummary } from '@shared/scoresApi';
 
 interface TDQuickInfoModalProps {
   tdId: number;
@@ -20,29 +21,15 @@ interface TDQuickInfoModalProps {
   onClose: () => void;
 }
 
-interface TDSummary {
-  id: number;
-  name: string;
-  party: string | null;
-  constituency: string | null;
-  overallScore: number | null;
-  label: string | null;
-  nationalRank: number | null;
-  officeCount: number;
-  committeeCount: number;
-  topOffice: string | null;
-  topCommittee: string | null;
-}
-
 /** Modal with quick summary info for a TD. */
 export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProps) {
-  const { data, isLoading, isError, refetch, isFetching } = useQuery<TDSummary>({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery<TdSummary>({
     queryKey: queryKeys.td.quickInfo(tdId),
     queryFn: async () => {
       const res = await fetch(`/api/scores/td/${tdId}/summary`);
       if (!res.ok) throw new Error('Failed to fetch TD info');
       const json = await res.json();
-      return json.data as TDSummary;
+      return json.data as TdSummary;
     },
     enabled: isOpen && !!tdId,
   });

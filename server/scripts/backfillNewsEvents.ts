@@ -4,8 +4,8 @@
  *   npx tsx server/scripts/backfillNewsEvents.ts --dry-run    print the pairs, change nothing
  *   npx tsx server/scripts/backfillNewsEvents.ts              link them
  *
- * Only rows still `pending` or `skipped` and never scored for any TD are linked, oldest first,
- * over the scoring window: a scored row moved a TD's score, so it stays visible. Every other
+ * Only rows still `pending` or `skipped` and never linked to any TD are linked, oldest first,
+ * over the pipeline window: a row linked to a TD stays visible. Every other
  * visible article in that window (plus the event window before it) is a candidate canonical.
  */
 import { shutdown } from '../db';

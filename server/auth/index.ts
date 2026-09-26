@@ -67,12 +67,9 @@ export async function authenticate(req: Request): Promise<AuthUser | null> {
     const user = data.user;
     const email = typeof user.email === 'string' ? user.email : null;
     const claimed = (user.app_metadata as { role?: unknown } | undefined)?.role;
-    const role =
-      typeof claimed === 'string' && claimed
-        ? claimed
-        : email && adminEmails().includes(email.toLowerCase())
-          ? ADMIN_ROLE
-          : null;
+    // Only a confirmed email counts: otherwise signing up with an allowlisted address grants admin.
+    const allowlisted = Boolean(email && user.email_confirmed_at && adminEmails().includes(email.toLowerCase()));
+    const role = claimed === ADMIN_ROLE || allowlisted ? ADMIN_ROLE : typeof claimed === 'string' && claimed ? claimed : null;
     return {
       id: user.id,
       email,
@@ -86,8 +83,7 @@ export async function authenticate(req: Request): Promise<AuthUser | null> {
 }
 
 export function isAdminUser(user: AuthUser): boolean {
-  if (user.role === ADMIN_ROLE) return true;
-  return user.email !== null && adminEmails().includes(user.email.toLowerCase());
+  return user.role === ADMIN_ROLE;
 }
 
 function deny(res: Response, status: 401 | 403, message: string): void {

@@ -24,9 +24,10 @@ Helpers: `ownsOrAdmin(req, res, targetUserId)` for any `/:userId/…` route, `cu
 without its own guard and `regionMiddleware` can read the user's saved region.
 
 **Admin comes from the server only.** `app_metadata.role === 'admin'` or the `ADMIN_EMAILS`
-allowlist. `user_metadata` is editable by the user and is never consulted for authorisation —
-the client does read it for UI, so client-side admin chrome is forgeable and the server does
-not honour it.
+allowlist, which counts only a **confirmed** email (otherwise signing up with a listed address
+would grant admin). `user_metadata` is editable by the user and is never consulted for
+authorisation; admin UI comes from `/api/profile/me`'s `isAdmin`, and the server guards every
+admin route regardless.
 
 **Machine callers do not use `Authorization`.** The job secret goes in `x-admin-secret` or
 `x-cron-secret`. It used to be accepted in the bearer header too, which meant every admin

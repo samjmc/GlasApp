@@ -32,6 +32,12 @@ vi.mock('../account/deleteUserData', () => ({
   }),
 }));
 
+vi.mock('../account/profileImages', () => ({
+  removeProfileImages: vi.fn(async (id: string) => {
+    calls.order.push(`images:${id}`);
+  }),
+}));
+
 const router = (await import('./accountRoutes')).default;
 
 async function del(auth?: string) {
@@ -54,14 +60,13 @@ afterEach(() => {
   calls.order = [];
   calls.dataFails = false;
   calls.authFails = false;
-  vi.spyOn(console, 'error').mockImplementation(() => {});
 });
 
 describe('DELETE /api/account', () => {
-  it('deletes the data, then the sign-in, and reports the counts', async () => {
+  it('deletes the data and pictures, then the sign-in, and reports the counts', async () => {
     const { status, body } = await del('Bearer ok');
     expect(status).toBe(200);
-    expect(calls.order).toEqual(['data:user-1', 'auth:user-1']);
+    expect(calls.order).toEqual(['data:user-1', 'images:user-1', 'auth:user-1']);
     expect(body).toEqual({
       success: true,
       data: { deleted: { policyVotes: 2, dailySessions: 1, pledgeCategoryPriorities: 0, quizResults: 1, ideologyProfile: 1 } },
@@ -73,7 +78,7 @@ describe('DELETE /api/account', () => {
     const { status, body } = await del('Bearer ok');
     expect(status).toBe(500);
     expect(calls.order).toEqual(['data:user-1']);
-    expect(body.error.message).toMatch(/Nothing was deleted/);
+    expect(body.error.message).toMatch(/Failed to delete your data/);
   });
 
   it('reports a failed sign-in removal instead of claiming success', async () => {
