@@ -134,8 +134,11 @@ export const tdParliamentStats = politics.table('td_parliament_stats', {
    */
   divisionsChaired: integer('divisions_chaired'),
   divisionsExcused: integer('divisions_excused'),
-  /** Eligible divisions held while the TD was in government office (cabinet or Minister of State). */
-  divisionsInOffice: integer('divisions_in_office'),
+  /**
+   * Eligible divisions held while the TD was in a leadership role: government office (cabinet
+   * or Minister of State) or leader of a party. Those divisions have their own benchmark.
+   */
+  divisionsInLeadership: integer('divisions_in_leadership'),
   /** Sitting days left out of `sitting_days` because of documented leave. */
   sittingDaysExcused: integer('sitting_days_excused'),
   /**
@@ -172,6 +175,25 @@ export const tdOffices = politics.table(
     endDate: date('end_date'),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.title, t.startDate] }), index('td_offices_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Party leaders: the Oireachtas records no party leadership, so it is kept in
+// server/parliament/partyLeaders.ts, each period dated and sourced, and loaded by every sync.
+// Leaders of every party are treated alike, government or opposition.
+// ---------------------------------------------------------------------------
+export const tdPartyLeaders = politics.table(
+  'td_party_leaders',
+  {
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    party: text('party').notNull(),
+    startDate: date('start_date').notNull(),
+    /** NULL while still leader. */
+    endDate: date('end_date'),
+    sourceUrl: text('source_url').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_party_leaders_td_idx').on(t.tdId)],
 );
 
 // ---------------------------------------------------------------------------

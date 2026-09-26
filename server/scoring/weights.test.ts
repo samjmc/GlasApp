@@ -56,6 +56,13 @@ describe('parliamentaryScore', () => {
     expect(parliamentaryScore(100, 95, 85, { questionsExpected: null })).toBe(parliamentaryScore(100, 95, 85));
   });
 
+  it("measures attendance against the TD's own benchmark when one is given (leadership roles)", () => {
+    // A minister or party leader at 90% with a 90% benchmark has full attendance marks.
+    expect(parliamentaryScore(200, 90, 85, { attendanceBenchmark: 90 })).toBe(100);
+    expect(parliamentaryScore(200, 90, 85)).toBe(Math.round(100 * 0.5 + (90 / 95) * 100 * 0.3 + 100 * 0.2));
+    expect(parliamentaryScore(200, 90, 85, { attendanceBenchmark: null })).toBe(parliamentaryScore(200, 90, 85));
+  });
+
   it('with no committee measure, scores questions and votes 62.5 / 37.5', () => {
     expect(parliamentaryScore(200, 0, null)).toBe(63);
     expect(parliamentaryScore(0, 95, null)).toBe(38);

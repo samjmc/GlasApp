@@ -91,7 +91,8 @@ function humanise(value: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-/** A full-term backbencher's question benchmark, as in server/scoring/weights.ts. */
+/** A full-term backbencher's full-marks benchmarks, as in server/scoring/weights.ts. */
+const FULL_ATTENDANCE_BENCHMARK = 95;
 const FULL_QUESTIONS_BENCHMARK = 200;
 
 /** Offices whose holders are not expected to ask parliamentary questions. */
@@ -129,6 +130,11 @@ function fairnessNotes(s: TdParliamentSummary): string[] {
   }
   if (s.divisionsExcused !== null && s.divisionsExcused > 0) {
     notes.push(`${divisions(s.divisionsExcused)} during documented leave ${isAre(s.divisionsExcused)} not counted.`);
+  }
+  if (s.attendanceBenchmark !== null && s.attendanceBenchmark < FULL_ATTENDANCE_BENCHMARK) {
+    notes.push(
+      `Full marks for votes at ${s.attendanceBenchmark}%: time in a leadership role (government office or party leader, on either side) has its own benchmark.`,
+    );
   }
   const exempt = s.officeHistory.filter((o) => QUESTION_EXEMPT_OFFICES.includes(o.type));
   const wasChair = s.isPresiding || exempt.some((o) => o.type === 'ceann_comhairle');

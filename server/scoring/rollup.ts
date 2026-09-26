@@ -29,6 +29,11 @@ export interface RollupInput {
    * computed yet: the whole-term benchmark applies.
    */
   questionsExpected?: number | null;
+  /**
+   * The attendance that scores full marks for this TD (lower for time in a leadership role).
+   * Absent or NULL: ATTENDANCE_BENCHMARK.
+   */
+  attendanceBenchmark?: number | null;
 }
 
 export interface RollupResult {
@@ -78,7 +83,10 @@ export function computeRollup(rows: RollupInput[]): RollupResult[] {
   const scored = rows.map((r) => {
     const notExpected = r.questionsExpected === null;
     const c = scoredComponents({ ...r, questions: notExpected ? null : r.questions, debate: normalizePercent(r.debateScore) });
-    const parliamentary = parliamentaryScore(c.questions, c.attendance, c.committees, { questionsExpected: r.questionsExpected });
+    const parliamentary = parliamentaryScore(c.questions, c.attendance, c.committees, {
+      questionsExpected: r.questionsExpected,
+      attendanceBenchmark: r.attendanceBenchmark,
+    });
     const measured = [c.questions, c.attendance, c.committees, c.debate].filter((v) => v !== null).length;
     return {
       tdId: r.tdId,

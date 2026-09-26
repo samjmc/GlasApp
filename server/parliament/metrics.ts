@@ -58,18 +58,21 @@ export interface DayRange {
 
 /** Offices whose holders answer parliamentary questions rather than ask them. */
 export const QUESTION_EXEMPT_OFFICES: readonly OfficeType[] = ['cabinet', 'minister_of_state', 'ceann_comhairle'];
-/** Government office: its duties take a member away from Dáil votes. */
+/**
+ * Government office. With party leadership (server/parliament/partyLeaders.ts) it makes a
+ * leadership role, whose duties take a member away from Dáil votes on both sides of the house.
+ */
 export const GOVERNMENT_OFFICES: readonly OfficeType[] = ['cabinet', 'minister_of_state'];
 /** Below this much time expected to ask questions, the question count says nothing. */
 export const MIN_QUESTION_DAYS = 90;
 /**
- * Vote-attendance benchmark for divisions held while in government office, by the same rule
- * as ATTENDANCE_BENCHMARK (the 75th percentile, rounded down to 5), measured on office
- * holders' in-office attendance after chaired divisions and documented leave are left out.
- * Measured 2026-09-25: 39 office holders, median 84.1%, 75th percentile 91.2%. (The same
- * query gave backbench time 95.7%, which is ATTENDANCE_BENCHMARK's 95.)
+ * Vote-attendance benchmark for divisions held in a leadership role (government office or
+ * party leader), by the same rule as ATTENDANCE_BENCHMARK (the 75th percentile, rounded down
+ * to 5), measured on role holders' in-role attendance after chaired divisions and documented
+ * leave are left out. Measured 2026-09-25 on government office alone: 39 holders, median 84.1%,
+ * 75th percentile 91.2%. (The same query gave backbench time 95.7%, ATTENDANCE_BENCHMARK's 95.)
  */
-export const GOVERNMENT_ATTENDANCE_BENCHMARK = 90;
+export const LEADERSHIP_ATTENDANCE_BENCHMARK = 90;
 
 const dayNumber = (d: string) => Math.round(Date.parse(`${d}T00:00:00Z`) / 86_400_000);
 
@@ -106,11 +109,11 @@ export function questionsExpected(p: { memberSince: string; termStart: string; t
   return Math.round((QUESTIONS_BENCHMARK * eligible * 10) / termDays) / 10;
 }
 
-/** The vote-attendance benchmark for a TD's mix of backbench and government divisions. */
-export function attendanceBenchmark(divisionsEligible: number, divisionsInOffice: number): number | null {
+/** The vote-attendance benchmark for a TD's mix of ordinary and leadership-role divisions. */
+export function attendanceBenchmark(divisionsEligible: number, divisionsInLeadership: number): number | null {
   if (divisionsEligible <= 0) return null;
-  const inOffice = Math.min(divisionsInOffice, divisionsEligible);
-  const value = (ATTENDANCE_BENCHMARK * (divisionsEligible - inOffice) + GOVERNMENT_ATTENDANCE_BENCHMARK * inOffice) / divisionsEligible;
+  const inRole = Math.min(divisionsInLeadership, divisionsEligible);
+  const value = (ATTENDANCE_BENCHMARK * (divisionsEligible - inRole) + LEADERSHIP_ATTENDANCE_BENCHMARK * inRole) / divisionsEligible;
   return Math.round(value * 10) / 10;
 }
 

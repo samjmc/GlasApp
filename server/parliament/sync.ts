@@ -21,6 +21,7 @@ import { recalculateAll, repository as scoring } from '../scoring';
 import { memberImageUrl, type TdSeed } from '../scoring/tdSync';
 import { OireachtasClient, type RosterMember } from './client';
 import { DOCUMENTED_ABSENCES, validateAbsences } from './absences';
+import { PARTY_LEADERS, validatePartyLeaders } from './partyLeaders';
 import { syncAllowances, syncInterests, type DisclosureResult, type DisclosureSource } from './disclosures';
 import { fetchGenders } from './sources/wikidata';
 import { attendancePct, committeeAttendancePct } from './metrics';
@@ -193,6 +194,7 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   // Offices and documented leave: why a TD was not expected to vote or ask questions.
   const offices = await repo.replaceOffices(roster, tdIds);
   await repo.replaceAbsences(validateAbsences(DOCUMENTED_ABSENCES), tdIds);
+  await repo.replacePartyLeaders(validatePartyLeaders(PARTY_LEADERS), tdIds);
   await repo.setSyncState('roster', today, `${roster.length} members, ${committeeMemberships} committee memberships, ${offices} offices`);
   log(`Roster: ${roster.length} members (+${rosterResult.inserted} ~${rosterResult.updated} -${rosterResult.deactivated}), ${committeeMemberships} committee memberships, ${offices} offices, ${DOCUMENTED_ABSENCES.length} documented absences.`);
 

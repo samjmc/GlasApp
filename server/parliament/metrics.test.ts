@@ -5,7 +5,7 @@ import {
   attendancePct,
   committeeAttendancePct,
   daysCovered,
-  GOVERNMENT_ATTENDANCE_BENCHMARK,
+  LEADERSHIP_ATTENDANCE_BENCHMARK,
   MIN_COMMITTEE_SITTINGS,
   MIN_QUESTION_DAYS,
   debateScores,
@@ -66,16 +66,16 @@ describe('questionsExpected', () => {
 describe('attendanceBenchmark', () => {
   it('is the backbench benchmark with no government time, the government one with all of it', () => {
     expect(attendanceBenchmark(100, 0)).toBe(ATTENDANCE_BENCHMARK);
-    expect(attendanceBenchmark(100, 100)).toBe(GOVERNMENT_ATTENDANCE_BENCHMARK);
+    expect(attendanceBenchmark(100, 100)).toBe(LEADERSHIP_ATTENDANCE_BENCHMARK);
   });
 
   it('weights by the divisions held in each role', () => {
-    expect(attendanceBenchmark(200, 50)).toBe(Math.round(((ATTENDANCE_BENCHMARK * 150 + GOVERNMENT_ATTENDANCE_BENCHMARK * 50) / 200) * 10) / 10);
+    expect(attendanceBenchmark(200, 50)).toBe(Math.round(((ATTENDANCE_BENCHMARK * 150 + LEADERSHIP_ATTENDANCE_BENCHMARK * 50) / 200) * 10) / 10);
   });
 
   it('is NULL with no eligible divisions, and never lets office time exceed the total', () => {
     expect(attendanceBenchmark(0, 0)).toBeNull();
-    expect(attendanceBenchmark(10, 25)).toBe(GOVERNMENT_ATTENDANCE_BENCHMARK);
+    expect(attendanceBenchmark(10, 25)).toBe(LEADERSHIP_ATTENDANCE_BENCHMARK);
   });
 });
 

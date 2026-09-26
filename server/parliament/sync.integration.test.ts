@@ -15,7 +15,7 @@ import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { ATTENDANCE_BENCHMARK } from '../scoring/weights';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
-import { GOVERNMENT_ATTENDANCE_BENCHMARK } from './metrics';
+import { LEADERSHIP_ATTENDANCE_BENCHMARK } from './metrics';
 import type { OireachtasClient, RosterMember } from './client';
 import type { RawBill, RawDivision, RawQuestion } from './parse';
 
@@ -552,6 +552,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     let byId = await inputs();
     expect(byId.get(await tdId(CHAIR))?.questionsExpected).toBeNull();
     expect(byId.get(await tdId(A))?.questionsExpected).toBe(200);
+    expect(byId.get(await tdId(B))?.attendanceBenchmark).toBe(LEADERSHIP_ATTENDANCE_BENCHMARK);
+    expect(byId.get(await tdId(A))?.attendanceBenchmark).toBe(ATTENDANCE_BENCHMARK);
     // A stats row written by the code before the fairness columns: no expectation yet.
     await dbmod.pool.query('update politics.td_parliament_stats set divisions_chaired = null, questions_expected = null where td_id = $1', [await tdId(A)]);
     byId = await inputs();
@@ -565,12 +567,29 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
 
   it('gives government time its own vote benchmark', async () => {
     // Every division (June) is after B took office; A never held one.
-    expect(await statsOf(B)).toMatchObject({ divisionsInOffice: 12, attendanceBenchmark: GOVERNMENT_ATTENDANCE_BENCHMARK });
-    expect(await statsOf(A)).toMatchObject({ divisionsInOffice: 0, attendanceBenchmark: ATTENDANCE_BENCHMARK });
+    expect(await statsOf(B)).toMatchObject({ divisionsInLeadership: 12, attendanceBenchmark: LEADERSHIP_ATTENDANCE_BENCHMARK });
+    expect(await statsOf(A)).toMatchObject({ divisionsInLeadership: 0, attendanceBenchmark: ATTENDANCE_BENCHMARK });
     expect((await statsOf(CHAIR))?.attendanceBenchmark).toBeNull();
     const summary = await parliament.repository.tdSummary(await tdId(B));
     expect(summary?.officeHistory).toEqual([{ title: MOS_TITLE, type: 'minister_of_state', start: '2025-03-01', end: null }]);
-    expect(summary?.attendanceBenchmark).toBe(GOVERNMENT_ATTENDANCE_BENCHMARK);
+    expect(summary?.attendanceBenchmark).toBe(LEADERSHIP_ATTENDANCE_BENCHMARK);
+  });
+
+  it('gives a party leader the leadership benchmark for their time as leader, like a minister', async () => {
+    const tdIds = await parliament.repository.tdIdsByMemberCode();
+    // Y leads Party A from 15 June: 7 of the 12 June divisions fall in that time.
+    await parliament.repository.replacePartyLeaders([{ memberCode: Y, party: 'Party A', from: '2025-06-15', to: null, source: 'https://example.ie/leader' }], tdIds);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    const expected = Math.round(((ATTENDANCE_BENCHMARK * 5 + LEADERSHIP_ATTENDANCE_BENCHMARK * 7) / 12) * 10) / 10;
+    expect(await statsOf(Y)).toMatchObject({ divisionsInLeadership: 7, attendanceBenchmark: expected });
+    // Still expected to ask questions: leading a party is not government office.
+    expect((await statsOf(Y))?.questionsExpected).toBe(200);
+    expect((await parliament.repository.tdSummary(await tdId(Y)))?.officeHistory).toEqual([
+      { title: 'Leader of Party A', type: 'party_leader', start: '2025-06-15', end: null, sourceUrl: 'https://example.ie/leader' },
+    ]);
+    await parliament.repository.replacePartyLeaders([], tdIds);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    expect(await statsOf(Y)).toMatchObject({ divisionsInLeadership: 0, attendanceBenchmark: ATTENDANCE_BENCHMARK });
   });
 
   it('leaves out divisions a TD chaired, unless they voted in them', async () => {

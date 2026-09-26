@@ -3,11 +3,12 @@
  * questions. Both are replaced whole on every sync; td_parliament_stats reads them.
  */
 import { eq, sql } from 'drizzle-orm';
-import { tdAbsences, tdOffices } from '@shared/schema/parliament';
+import { tdAbsences, tdOffices, tdPartyLeaders } from '@shared/schema/parliament';
 import { tds } from '@shared/schema/politics';
 import type { TdAbsence, TdOfficePeriod } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
 import type { DocumentedAbsence } from '../absences';
+import type { PartyLeader } from '../partyLeaders';
 import type { RosterMember } from '../client';
 import type { DayRange } from '../metrics';
 import { chunks } from './util';
@@ -49,6 +50,16 @@ export async function replaceAbsences(entries: DocumentedAbsence[], tdIds: Map<s
   });
 }
 
+export async function replacePartyLeaders(entries: PartyLeader[], tdIds: Map<string, number>, database: Db = db): Promise<void> {
+  await database.transaction(async (tx) => {
+    await tx.delete(tdPartyLeaders);
+    if (entries.length === 0) return;
+    await tx.insert(tdPartyLeaders).values(
+      entries.map((e) => ({ memberCode: e.memberCode, tdId: tdIds.get(e.memberCode) ?? null, party: e.party, startDate: e.from, endDate: e.to, sourceUrl: e.source })),
+    );
+  });
+}
+
 /** Per member code: the office periods of the given types and the documented absences. */
 export async function fairnessPeriods(
   officeTypes: readonly string[],
@@ -76,14 +87,25 @@ export async function tdAbsencesOf(tdId: number, database: Db = db): Promise<TdA
   return rows.sort((a, b) => (a.from < b.from ? 1 : -1));
 }
 
-/** Every office a TD held in the current Dáil, newest first. */
+/** Every office a TD held in the current Dáil, and any party leadership, newest first. */
 export async function tdOfficeHistory(tdId: number, database: Db = db): Promise<TdOfficePeriod[]> {
-  const rows = await database
-    .select({ title: tdOffices.title, type: tdOffices.officeType, start: tdOffices.startDate, end: tdOffices.endDate })
-    .from(tdOffices)
-    .innerJoin(tds, eq(tds.memberCode, tdOffices.memberCode))
-    .where(eq(tds.id, tdId));
-  return rows.sort((a, b) => (a.start < b.start ? 1 : -1));
+  const [offices, leaders] = await Promise.all([
+    database
+      .select({ title: tdOffices.title, type: tdOffices.officeType, start: tdOffices.startDate, end: tdOffices.endDate })
+      .from(tdOffices)
+      .innerJoin(tds, eq(tds.memberCode, tdOffices.memberCode))
+      .where(eq(tds.id, tdId)),
+    database
+      .select({ party: tdPartyLeaders.party, start: tdPartyLeaders.startDate, end: tdPartyLeaders.endDate, sourceUrl: tdPartyLeaders.sourceUrl })
+      .from(tdPartyLeaders)
+      .innerJoin(tds, eq(tds.memberCode, tdPartyLeaders.memberCode))
+      .where(eq(tds.id, tdId)),
+  ]);
+  const periods: TdOfficePeriod[] = [
+    ...offices,
+    ...leaders.map((l) => ({ title: `Leader of ${l.party}`, type: 'party_leader' as const, start: l.start, end: l.end, sourceUrl: l.sourceUrl })),
+  ];
+  return periods.sort((a, b) => (a.start < b.start ? 1 : -1));
 }
 
 export interface Silence {

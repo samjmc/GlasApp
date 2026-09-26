@@ -53,7 +53,8 @@ source, and never guesses one (`server/parliament/`, stored per TD on `td_parlia
 |---|---|---|
 | In the chair for a division | The division's debate section: the last presiding speech is theirs and they are not on the vote lists (the chair cannot vote) | That division is left out of their votes (`divisions_chaired`) |
 | Documented leave (parental, medical, bereavement, other) | `server/parliament/absences.ts`: each entry has dates and a public source | Those days are left out of votes, sitting days, speeches and committee sittings |
-| Government office (cabinet, Minister of State) | The roster's office history (`politics.td_offices`) | Not expected to ask questions for that time |
+| Government office (cabinet, Minister of State) | The roster's office history (`politics.td_offices`) | Not expected to ask questions for that time; votes measured against the leadership benchmark |
+| Party leader, government or opposition | `server/parliament/partyLeaders.ts`: dated, with a public source (the Oireachtas records none) | Votes measured against the leadership benchmark; still expected to ask questions |
 | The chair (Ceann Comhairle) | The roster | Not expected to ask questions or vote |
 
 `questions_expected` = `QUESTIONS_BENCHMARK` × (days the TD was expected to ask) / (days in the
@@ -70,13 +71,15 @@ Two things are stated rather than adjusted:
 
 - **Vote attendance** is scored as the Official Report records it, less the chaired divisions and
   documented leave above. Pairing is not published, so a paired absence counts as a missed vote;
-  the profile page says so next to the count. There is no special case for Cabinet yet: an
-  exemption for ministers would lift government leaders and not the opposition leaders, whose
-  attendance is also low. A per-TD benchmark for government time is computed
-  (`td_parliament_stats.attendance_benchmark`: 90% for divisions held in government office, the
-  75th percentile of office holders rounded down to 5) but is **not applied** until Sam decides
-  how leaders on both sides are treated. Ministerial foreign travel is published as data by one
-  department only (3 of 38 office holders), so it cannot excuse absences fairly.
+  the profile page says so next to the count. There is no special case for Cabinet alone, which
+  would lift government leaders and not opposition leaders. Instead, every **leadership role** —
+  government office, or leader of any party — has one benchmark on both sides of the house
+  (Sam's decision, 2026-09-26): divisions held in that role score full marks at
+  `LEADERSHIP_ATTENDANCE_BENCHMARK` (the 75th percentile of role holders' in-role attendance,
+  rounded down to 5, the same rule as the 95% for everyone else). Each TD's mix is stored as
+  `td_parliament_stats.attendance_benchmark`, and the attendance component is attendance ÷ that.
+  Ministerial foreign travel is published as data by one department only (3 of 38 office
+  holders), so it cannot excuse absences fairly.
 - **Ministers' debate participation is not adjusted.** Ministers move bills and answer in the
   chamber, which raises it. Only speeches from the chair are excluded (`parse.ts isPresidingRole`).
 

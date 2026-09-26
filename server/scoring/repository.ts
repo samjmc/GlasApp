@@ -186,6 +186,7 @@ export async function rollupInputs(
     // No expectation computed yet (no stats row, or a row from before the fairness columns:
     // recomputeStats always sets divisions_chaired) is undefined, not "not expected" (NULL).
     questionsExpected: stats && stats.divisionsChaired !== null ? stats.questionsExpected : undefined,
+    attendanceBenchmark: stats && stats.divisionsChaired !== null ? stats.attendanceBenchmark : undefined,
   }));
 }
 

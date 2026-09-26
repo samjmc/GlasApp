@@ -133,6 +133,7 @@ export async function relinkTds(database: Db = db): Promise<void> {
     'question_counts',
     'td_offices',
     'td_absences',
+    'td_party_leaders',
     'td_interests',
     'td_allowance_payments',
   ]) {
@@ -214,7 +215,7 @@ export async function recomputeStats(
         speeches: 0,
         divisionsChaired: 0,
         divisionsExcused: 0,
-        divisionsInOffice: 0,
+        divisionsInLeadership: 0,
         sittingDaysExcused: 0,
       })),
     );
@@ -232,9 +233,13 @@ export async function recomputeStats(
           ${onDocumentedLeave(sql`m.member_code`, sql`d.date`)} excused,
           (c.member_code is not null and c.member_code = m.member_code) last_chair,
           exists (select 1 from politics.division_votes v where v.division_id = d.id and v.member_code = m.member_code) voted,
-          exists (select 1 from politics.td_offices o
-                  where o.member_code = m.member_code and o.office_type in ('cabinet', 'minister_of_state')
-                    and d.date >= o.start_date and (o.end_date is null or d.date <= o.end_date)) in_office
+          -- A leadership role: government office, or leader of a party (either side of the house).
+          (exists (select 1 from politics.td_offices o
+                   where o.member_code = m.member_code and o.office_type in ('cabinet', 'minister_of_state')
+                     and d.date >= o.start_date and (o.end_date is null or d.date <= o.end_date))
+           or exists (select 1 from politics.td_party_leaders l
+                      where l.member_code = m.member_code
+                        and d.date >= l.start_date and (l.end_date is null or d.date <= l.end_date))) in_role
         from m
         join politics.divisions d on d.date >= m.member_since
         left join chair c on c.division_id = d.id),
@@ -244,11 +249,11 @@ export async function recomputeStats(
           count(*) filter (where voted and not excused) votes,
           count(*) filter (where last_chair and not voted and not excused) chaired,
           count(*) filter (where excused) excused_n,
-          count(*) filter (where in_office and not excused and not (last_chair and not voted)) in_office_n
+          count(*) filter (where in_role and not excused and not (last_chair and not voted)) in_role_n
         from per_division group by td_id)
       update politics.td_parliament_stats s set
         divisions_eligible = t.eligible, votes_cast = t.votes, divisions_chaired = t.chaired,
-        divisions_excused = t.excused_n, divisions_in_office = t.in_office_n
+        divisions_excused = t.excused_n, divisions_in_leadership = t.in_role_n
       from totals t where t.td_id = s.td_id`);
     await tx.execute(sql`
       with m as (
@@ -280,7 +285,7 @@ export async function recomputeStats(
         .update(tdParliamentStats)
         .set({
           questionsExpected: s.isPresiding ? null : questionsExpected({ memberSince: s.memberSince, termStart: term.start, today: term.today, excluded }),
-          attendanceBenchmark: s.isPresiding ? null : attendanceBenchmark(s.divisionsEligible, s.divisionsInOffice ?? 0),
+          attendanceBenchmark: s.isPresiding ? null : attendanceBenchmark(s.divisionsEligible, s.divisionsInLeadership ?? 0),
         })
         .where(eq(tdParliamentStats.tdId, s.tdId));
     }

@@ -74,13 +74,16 @@ export interface TdOffice {
   since: string | null;
 }
 
-export type OfficeKind = 'cabinet' | 'minister_of_state' | 'ceann_comhairle' | 'leas_cheann_comhairle' | 'other';
+/** 'party_leader' is not an Oireachtas office: it comes from server/parliament/partyLeaders.ts. */
+export type OfficeKind = 'cabinet' | 'minister_of_state' | 'ceann_comhairle' | 'leas_cheann_comhairle' | 'party_leader' | 'other';
 
 export interface TdOfficePeriod {
   title: string;
   type: OfficeKind;
   start: string;
   end: string | null;
+  /** The public source, for a party leadership. */
+  sourceUrl?: string;
 }
 
 /** The Register of Members' Interests' nine statutory categories, by number. */
