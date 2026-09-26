@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector, type IdeologyVector } from '@shared/ideology';
-import { alignment, closestAndFurthest } from './alignment';
+import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
+import { MIN_MEASURED_DIMS, alignment, closestAndFurthest, subjectWeights } from './alignment';
 
 const all = (x: number) => Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, x])) as IdeologyVector;
 const at = (v: Partial<IdeologyVector>): IdeologyVector => ({ ...emptyIdeologyVector(), ...v });
@@ -39,5 +39,40 @@ describe('closestAndFurthest', () => {
     expect(furthest[0]).toBe('economic');
     expect(furthest[1]).toBe('social');
     expect(closest).not.toContain('economic');
+  });
+
+  it('uses only the weighted dimensions, and never names one as both closest and furthest', () => {
+    const weights = { ...Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, 0])), economic: 1, welfare: 2, cultural: 0.5 };
+    // Unweighted social and globalism are the widest gaps; they must not be named.
+    const a = at({ economic: 4, welfare: 1, cultural: 0, social: 10, globalism: -10 });
+    const b = at({ economic: 0, welfare: 0, cultural: 9, social: -10, globalism: 10 });
+    const { closest, furthest } = closestAndFurthest(a, b, weights);
+    expect(closest).toEqual(['welfare', 'economic']);
+    expect(furthest).toEqual(['cultural']);
+  });
+});
+
+describe('subjectWeights', () => {
+  const user = { economic: 2, welfare: 0.5 };
+  const dims = (n: number): IdeologyDimension[] => IDEOLOGY_DIMENSIONS.slice(0, n);
+
+  it('leaves the user weights as they are for a subject with a party baseline', () => {
+    expect(subjectWeights(user, { hasPartyBaseline: true, measured: [] })).toBe(user);
+  });
+
+  it(`does not match a subject with no baseline on fewer than ${MIN_MEASURED_DIMS} measured dimensions`, () => {
+    expect(subjectWeights({}, { hasPartyBaseline: false, measured: dims(3) })).toBeNull();
+  });
+
+  it(`matches one measured on ${MIN_MEASURED_DIMS} only on those, keeping the user weight on each`, () => {
+    const weights = subjectWeights(user, { hasPartyBaseline: false, measured: dims(4) })!;
+    expect(weights).toEqual({ economic: 2, social: undefined, cultural: undefined, authority: undefined, environmental: 0, welfare: 0, globalism: 0, technocratic: 0 });
+    // The four it has no evidence on do not count, however far apart.
+    expect(alignment(at({ environmental: -10, welfare: 10, globalism: -10, technocratic: 10 }), all(0), weights)).toBe(100);
+  });
+
+  it('does not match when the user is measured only on dimensions the subject is not', () => {
+    const onlyUnmeasured = { economic: 0, social: 0, cultural: 0, authority: 0 };
+    expect(subjectWeights(onlyUnmeasured, { hasPartyBaseline: false, measured: dims(4) })).toBeNull();
   });
 });
