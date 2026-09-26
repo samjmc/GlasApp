@@ -6,29 +6,74 @@ import { QuizInputError, coverageOf, scoreQuiz } from './score';
 const strongest = (q: QuizQuestion, side: 1 | -1) =>
   q.answers.reduce((best, a, i) => (side * a.value > side * q.answers[best]!.value ? i : best), 0);
 const onDimension = (d: string) => QUIZ_QUESTIONS.filter((q) => q.dimension === d);
+const question = (id: number) => QUIZ_QUESTIONS.find((q) => q.id === id)!;
+/** The strong and mild magnitudes a new question uses. */
+const levels = (q: QuizQuestion) => (q.dimension === 'economic' ? { strong: 2.5, mild: 1.25 } : { strong: 3.33, mild: 1.67 });
+const NEW_IDS = Array.from({ length: 22 }, (_, i) => 28 + i);
+
+/**
+ * One pin per new question (ids 28–49): a fragment of its strongest answer on one side, and that
+ * side. Read against DIMENSION_POLES: + is market, conservative, traditional, authoritarian,
+ * pro-growth, self-reliance, nationalist, populist.
+ */
+const NEW_PINS: Array<[id: number, fragment: string, side: 1 | -1]> = [
+  [28, 'A new state construction company', -1],
+  [29, 'drop any mandatory wait', -1],
+  [30, 'protect each school\'s religious ethos', 1],
+  [31, 'including paid arrangements', -1],
+  [32, 'should not air a Catholic call to prayer', -1],
+  [33, 'teach more subjects through Irish', 1],
+  [34, 'including people from newer communities', -1],
+  [35, 'ban under-16s outright', 1],
+  [36, 'every serious criminal trial should be heard by a jury', -1],
+  [37, 'in designated high-crime areas', 1],
+  [38, 'Pause new connections', -1],
+  [39, 'Freeze it, then cut it', 1],
+  [40, 'no bans and no push to switch', 1],
+  [41, 'Lower it to 65', -1],
+  [42, 'free for every child', -1],
+  [43, 'one flat rate for everyone', 1],
+  [44, 'More and deeper free-trade deals', -1],
+  [45, 'Cut overseas aid', 1],
+  [46, 'move to majority voting on both', -1],
+  [47, 'appoint proven experts from outside politics', -1],
+  [48, 'enough citizens\' signatures', 1],
+  [49, 'The Central Bank alone', -1],
+];
 
 describe('the question bank', () => {
-  it('has 26 questions of four answers, one value each, and at least 3 per dimension', () => {
-    expect(QUIZ_QUESTIONS).toHaveLength(26);
-    for (const d of IDEOLOGY_DIMENSIONS) expect(onDimension(d).length, d).toBeGreaterThanOrEqual(3);
-    for (const q of QUIZ_QUESTIONS) {
-      expect(IDEOLOGY_DIMENSIONS).toContain(q.dimension);
-      expect(q.answers).toHaveLength(4);
-      for (const a of q.answers) expect(Number.isFinite(a.value)).toBe(true);
-    }
-  });
-
-  it('covers every dimension, with unique question ids', () => {
-    expect(new Set(QUIZ_QUESTIONS.map((q) => q.dimension)).size).toBe(8);
+  it('has 48 questions, exactly 6 per dimension, unique ids, and never reuses id 26', () => {
+    expect(QUIZ_QUESTIONS).toHaveLength(48);
+    for (const d of IDEOLOGY_DIMENSIONS) expect(onDimension(d), d).toHaveLength(6);
     expect(new Set(QUIZ_QUESTIONS.map((q) => q.id)).size).toBe(QUIZ_QUESTIONS.length);
+    expect(QUIZ_QUESTIONS.map((q) => q.id)).not.toContain(26);
+    for (const q of QUIZ_QUESTIONS) expect(IDEOLOGY_DIMENSIONS).toContain(q.dimension);
   });
 
-  it('offers both sides and at least 3 distinct stances on every question', () => {
+  it('gives every question 4 finite answers, both sides, at least 3 distinct values, and no 0 except legacy Q25', () => {
     for (const q of QUIZ_QUESTIONS) {
       const values = q.answers.map((a) => a.value);
+      expect(values, `Q${q.id}`).toHaveLength(4);
+      for (const v of values) expect(Number.isFinite(v), `Q${q.id}`).toBe(true);
       expect(Math.max(...values), `Q${q.id}`).toBeGreaterThan(0);
       expect(Math.min(...values), `Q${q.id}`).toBeLessThan(0);
       expect(new Set(values).size, `Q${q.id}`).toBeGreaterThanOrEqual(3);
+      if (q.id !== 25) expect(values, `Q${q.id}`).not.toContain(0);
+    }
+  });
+
+  it('gives each new question (ids 28–49) exactly −S, −M, +M, +S', () => {
+    const newQuestions = QUIZ_QUESTIONS.filter((q) => q.id >= 28);
+    expect(newQuestions.map((q) => q.id).sort((a, b) => a - b)).toEqual(NEW_IDS);
+    for (const q of newQuestions) {
+      const { strong, mild } = levels(q);
+      expect(q.answers.map((a) => a.value).sort((a, b) => a - b), `Q${q.id}`).toEqual([-strong, -mild, mild, strong]);
+    }
+  });
+
+  it('gives Q14, Q15 and Q16 a mild and a strong answer on each side', () => {
+    for (const id of [14, 15, 16]) {
+      expect(question(id).answers.map((a) => a.value).sort((a, b) => a - b), `Q${id}`).toEqual([-3.33, -1.67, 1.67, 3.33]);
     }
   });
 
@@ -53,6 +98,16 @@ describe('the question bank', () => {
     expect(answer('Keep the current ban')).toBeGreaterThan(0); // social: conservative
     expect(answer('fully public system')).toBeLessThan(0); // Q6 is economic: collective
     expect(QUIZ_QUESTIONS.find((q) => q.id === 6)!.dimension).toBe('economic');
+  });
+
+  it('pins the sign of each new question’s strongest answer on one side', () => {
+    expect(NEW_PINS.map(([id]) => id)).toEqual(NEW_IDS);
+    for (const [id, fragment, side] of NEW_PINS) {
+      const q = question(id);
+      const found = q.answers.filter((a) => a.text.includes(fragment));
+      expect(found, `Q${id} "${fragment}"`).toHaveLength(1);
+      expect(found[0]!.value, `Q${id} "${fragment}"`).toBe(side * levels(q).strong);
+    }
   });
 });
 

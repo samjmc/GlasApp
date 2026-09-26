@@ -13,7 +13,7 @@ import {
   verifyPlan,
   type QuizPlan,
 } from '@shared/quizPlan';
-import { BANK_48, mulberry32, symmetricQuestion } from './testing/respondents';
+import { LEGACY_BANK, mulberry32, symmetricQuestion } from './testing/respondents';
 
 type Answers = Record<number, number>;
 
@@ -29,7 +29,7 @@ const MIXED = [3, 0, 3]; //    +10 −10 +10: 3.33
 const LOPSIDED = [3, 3, 1]; // +10 +10 −5:  5, the least balanced
 
 const dimensions = new WeakMap<readonly QuizQuestion[], Map<number, IdeologyDimension>>();
-const idsOn = (ids: number[], d: IdeologyDimension, bank: readonly QuizQuestion[] = BANK_48) => {
+const idsOn = (ids: number[], d: IdeologyDimension, bank: readonly QuizQuestion[] = QUIZ_QUESTIONS) => {
   let byId = dimensions.get(bank);
   if (!byId) dimensions.set(bank, (byId = new Map(bank.map((q) => [q.id, q.dimension]))));
   return ids.filter((id) => byId!.get(id) === d);
@@ -70,7 +70,7 @@ describe('rankOf', () => {
 
 describe('planQuiz: the base', () => {
   it('asks exactly 3 distinct questions per dimension, all on that dimension, the same on every call', () => {
-    for (const bank of [QUIZ_QUESTIONS, BANK_48]) {
+    for (const bank of [LEGACY_BANK, QUIZ_QUESTIONS]) {
       for (const seed of SEEDS) {
         const { base } = planQuiz(seed, {}, bank);
         expect(base).toHaveLength(24);
@@ -84,13 +84,13 @@ describe('planQuiz: the base', () => {
   });
 
   it('shows each question to 50% ± 3% of seeds on the 48-question pool', () => {
-    expect(new Set(BANK_48.map((q) => q.id)).size).toBe(48);
-    for (const d of IDEOLOGY_DIMENSIONS) expect(BANK_48.filter((q) => q.dimension === d), d).toHaveLength(6);
+    expect(new Set(QUIZ_QUESTIONS.map((q) => q.id)).size).toBe(48);
+    for (const d of IDEOLOGY_DIMENSIONS) expect(QUIZ_QUESTIONS.filter((q) => q.dimension === d), d).toHaveLength(6);
     const shown = new Map<number, number>();
     for (let seed = 0; seed < 5000; seed++) {
-      for (const id of planQuiz(seed, {}, BANK_48).base) shown.set(id, (shown.get(id) ?? 0) + 1);
+      for (const id of planQuiz(seed, {}).base) shown.set(id, (shown.get(id) ?? 0) + 1);
     }
-    for (const q of BANK_48) {
+    for (const q of QUIZ_QUESTIONS) {
       const share = (shown.get(q.id) ?? 0) / 5000;
       expect(share, `Q${q.id}`).toBeGreaterThanOrEqual(0.47);
       expect(share, `Q${q.id}`).toBeLessThanOrEqual(0.53);
@@ -99,9 +99,9 @@ describe('planQuiz: the base', () => {
 
   it('leaves every other dimension alone when one dimension gains a question', () => {
     for (const d of IDEOLOGY_DIMENSIONS) {
-      const grown = [...BANK_48, symmetricQuestion(50, d)];
+      const grown = [...QUIZ_QUESTIONS, symmetricQuestion(50, d)];
       for (const seed of SEEDS) {
-        const before = planQuiz(seed, {}, BANK_48).base;
+        const before = planQuiz(seed, {}).base;
         const after = planQuiz(seed, {}, grown).base;
         for (const other of IDEOLOGY_DIMENSIONS.filter((x) => x !== d)) {
           expect(idsOn(after, other, grown), `${d} added, ${other} seed ${seed}`).toEqual(idsOn(before, other));
@@ -139,12 +139,12 @@ describe('planQuiz: follow-ups', () => {
     expect(QUIZ_QUESTIONS.find((q) => q.id === 25)!.answers[2]!.value).toBe(0);
     let withQ25 = 0;
     for (const seed of SEEDS) {
-      const { base } = planQuiz(seed, {}, BANK_48);
+      const { base } = planQuiz(seed, {});
       if (!base.includes(25)) continue;
       withQ25 += 1;
-      const answers: Answers = Object.fromEntries(BANK_48.map((q) => [q.id, strongest(q, 1)]));
+      const answers: Answers = Object.fromEntries(QUIZ_QUESTIONS.map((q) => [q.id, strongest(q, 1)]));
       answers[25] = 2;
-      expect(planQuiz(seed, answers, BANK_48).followUpDimensions, `seed ${seed}`).toEqual(['technocratic']);
+      expect(planQuiz(seed, answers).followUpDimensions, `seed ${seed}`).toEqual(['technocratic']);
     }
     expect(withQ25).toBeGreaterThan(50);
   });
@@ -188,14 +188,14 @@ describe('planQuiz: follow-ups', () => {
     const rng = mulberry32(26);
     const lengths = new Set<number>();
     for (let seed = 0; seed < 500; seed++) {
-      const answers: Answers = Object.fromEntries(QUIZ_QUESTIONS.map((q) => [q.id, Math.floor(rng() * 4)]));
-      const length = planIds(planQuiz(seed, answers)).length;
+      const answers: Answers = Object.fromEntries(LEGACY_BANK.map((q) => [q.id, Math.floor(rng() * 4)]));
+      const length = planIds(planQuiz(seed, answers, LEGACY_BANK)).length;
       expect([24, 26], `seed ${seed}`).toContain(length);
       lengths.add(length);
     }
     expect(lengths.size).toBe(2);
     for (const seed of SEEDS) {
-      const plan = planQuiz(seed, firstPositiveRestNegative(seed, QUIZ_QUESTIONS));
+      const plan = planQuiz(seed, firstPositiveRestNegative(seed, LEGACY_BANK), LEGACY_BANK);
       expect(plan.followUpDimensions).toEqual(['economic']);
       expect(planIds(plan)).toHaveLength(26);
     }
@@ -204,20 +204,20 @@ describe('planQuiz: follow-ups', () => {
   it('ignores follow-up answers: changing or adding them never moves the plan', () => {
     const rng = mulberry32(7);
     for (const seed of SEEDS) {
-      const { base } = planQuiz(seed, {}, BANK_48);
+      const { base } = planQuiz(seed, {});
       const answers: Answers = Object.fromEntries(base.map((id) => [id, Math.floor(rng() * 4)]));
-      const plan = planQuiz(seed, answers, BANK_48);
+      const plan = planQuiz(seed, answers);
       for (let k = 0; k < 3; k++) {
         const more: Answers = { ...answers };
-        for (const q of BANK_48) if (!base.includes(q.id)) more[q.id] = Math.floor(rng() * 4);
-        expect(planQuiz(seed, more, BANK_48), `seed ${seed}`).toEqual(plan);
+        for (const q of QUIZ_QUESTIONS) if (!base.includes(q.id)) more[q.id] = Math.floor(rng() * 4);
+        expect(planQuiz(seed, more), `seed ${seed}`).toEqual(plan);
       }
     }
   });
 
   it('under FALLBACK_PLAN_CONFIG asks 4 per dimension (32) and no follow-ups', () => {
     for (const seed of SEEDS) {
-      const plan = planQuiz(seed, firstPositiveRestNegative(seed, BANK_48), BANK_48, FALLBACK_PLAN_CONFIG);
+      const plan = planQuiz(seed, firstPositiveRestNegative(seed, QUIZ_QUESTIONS), QUIZ_QUESTIONS, FALLBACK_PLAN_CONFIG);
       expect(plan.base).toHaveLength(32);
       for (const d of IDEOLOGY_DIMENSIONS) expect(idsOn(plan.base, d), d).toHaveLength(4);
       expect(plan.followUps).toEqual([]);
@@ -227,12 +227,12 @@ describe('planQuiz: follow-ups', () => {
   // The seams plan 07's e2e relies on.
   it('predicts the flow: all strongest − gives 24; first-ranked + and the rest − flags all 8 and gives 30', () => {
     for (const seed of SEEDS) {
-      const negative: Answers = Object.fromEntries(BANK_48.map((q) => [q.id, strongest(q, -1)]));
-      expect(planIds(planQuiz(seed, negative, BANK_48))).toHaveLength(24);
-      const mixed = firstPositiveRestNegative(seed, BANK_48);
-      expect(planIds(planQuiz(seed, mixed, BANK_48))).toHaveLength(30);
+      const negative: Answers = Object.fromEntries(QUIZ_QUESTIONS.map((q) => [q.id, strongest(q, -1)]));
+      expect(planIds(planQuiz(seed, negative))).toHaveLength(24);
+      const mixed = firstPositiveRestNegative(seed, QUIZ_QUESTIONS);
+      expect(planIds(planQuiz(seed, mixed))).toHaveLength(30);
       const unlimited = { ...DEFAULT_PLAN_CONFIG, followUpBudget: 16 };
-      expect(planQuiz(seed, mixed, BANK_48, unlimited).followUpDimensions).toHaveLength(8);
+      expect(planQuiz(seed, mixed, QUIZ_QUESTIONS, unlimited).followUpDimensions).toHaveLength(8);
     }
   });
 });
