@@ -23,39 +23,9 @@ import { partyDimensionsData } from '@/data/partyDimensionsData';
 import { partyStyle } from '@/lib/parties';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { cn } from '@/lib/utils';
+import type { PartyDetail, PartyScoreRow, TdCard } from '@shared/scoresApi';
 
-interface PartyRanking {
-  rank: number;
-  party: string;
-  memberCount: number;
-  avgElo: number;
-  overallScore: number;
-  label: string;
-  computedAt: string | null;
-}
-
-interface PartyMember {
-  id: number;
-  name: string;
-  constituency: string | null;
-  imageUrl?: string | null;
-  nationalRank?: number | null;
-  overallScore: number | null;
-  newsScore: number | null;
-  parliamentaryScore: number | null;
-  debateScore: number | null;
-}
-
-interface PartyDetail {
-  party: string;
-  size: number;
-  averageScore: number | null;
-  genderBreakdown: { male: number; female: number; unknown: number; femalePercentage: number };
-  constituencyCount: number;
-  members: PartyMember[];
-}
-
-type PartyProfile = PartyDetail & { ranking: PartyRanking | null };
+type PartyProfile = PartyDetail & { ranking: PartyScoreRow | null };
 type MemberSort = 'overall' | 'parliamentary' | 'debate';
 
 const MEMBER_SORTS: { value: MemberSort; label: string }[] = [
@@ -88,7 +58,7 @@ function describe(value: number, neg: string, pos: string) {
   return `${intensity} ${(value < 0 ? neg : pos).toLowerCase()}`;
 }
 
-function MemberRow({ td, party, value, pos }: { td: PartyMember; party: string; value: number | null; pos: number }) {
+function MemberRow({ td, party, value, pos }: { td: TdCard; party: string; value: number | null; pos: number }) {
   const tone = scoreTone(value);
   return (
     <Link
@@ -142,7 +112,7 @@ export default function PartyProfilePage() {
         throw new Error('Failed to load party data');
       }
       const detail = (await detailRes.json()).data as PartyDetail;
-      const rankings: PartyRanking[] = rankingsRes.ok ? ((await rankingsRes.json()).data ?? []) : [];
+      const rankings: PartyScoreRow[] = rankingsRes.ok ? ((await rankingsRes.json()).data ?? []) : [];
       const ranking = rankings.find((p) => p.party.toLowerCase() === detail.party.toLowerCase()) ?? null;
       return { ...detail, ranking };
     },
@@ -157,8 +127,7 @@ export default function PartyProfilePage() {
   const sortedMembers = useMemo(() => {
     const members = party?.members ?? [];
     if (memberSort === 'overall') return members; // the endpoint returns best-first already
-    const key = memberSort === 'parliamentary' ? 'parliamentaryScore' : 'debateScore';
-    return [...members].sort((a, b) => (b[key] ?? -1) - (a[key] ?? -1));
+    return [...members].sort((a, b) => (b.pillars[memberSort] ?? -1) - (a.pillars[memberSort] ?? -1));
   }, [party?.members, memberSort]);
 
   if (isLoading) {
@@ -207,12 +176,11 @@ export default function PartyProfilePage() {
   const ideology = staticParty ? partyDimensionsData[staticParty.id] : undefined;
   const style = partyStyle(party.party);
 
-  // Members' average: party_scores stays at the ELO baseline until news is scored.
-  const overallScore = party.averageScore ?? party.ranking?.overallScore ?? null;
+  // The mean of ranked members' scores; unranked members are left out, not counted as 0.
+  const overallScore = party.averageScore;
   const pillars = [
-    { label: 'Dáil record', value: average(party.members.map((m) => m.parliamentaryScore)) },
-    { label: 'Debate', value: average(party.members.map((m) => m.debateScore)) },
-    { label: 'News', value: average(party.members.map((m) => m.newsScore)) },
+    { label: 'Dáil record', value: average(party.members.map((m) => m.pillars.parliamentary)) },
+    { label: 'Debate', value: average(party.members.map((m) => m.pillars.debate)) },
   ];
   const tdWord = party.size === 1 ? 'TD' : 'TDs';
   const knownGender = party.genderBreakdown.male + party.genderBreakdown.female;
@@ -248,7 +216,7 @@ export default function PartyProfilePage() {
                 <span className="rounded-full bg-hero-muted px-3 py-1">
                   {party.constituencyCount} of 43 constituencies
                 </span>
-                {party.ranking && (
+                {party.ranking?.rank != null && (
                   <span className="rounded-full bg-hero-muted px-3 py-1">#{party.ranking.rank} of parties</span>
                 )}
               </div>
@@ -362,13 +330,7 @@ export default function PartyProfilePage() {
                       td={td}
                       party={party.party}
                       pos={i + 1}
-                      value={
-                        memberSort === 'overall'
-                          ? td.overallScore
-                          : memberSort === 'parliamentary'
-                            ? td.parliamentaryScore
-                            : td.debateScore
-                      }
+                      value={memberSort === 'overall' ? td.overallScore : td.pillars[memberSort]}
                     />
                   ))}
                 </div>

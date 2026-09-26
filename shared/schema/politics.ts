@@ -17,6 +17,7 @@ import {
   integer,
   jsonb,
   pgSchema,
+  primaryKey,
   real,
   serial,
   smallint,
@@ -66,8 +67,8 @@ export const tds = politics.table(
 );
 
 // ---------------------------------------------------------------------------
-// Scores: one row per TD. ELOs are the source of truth; the 0–100 columns and
-// ranks are derived by server/scoring/rollup.ts and stored for fast reads.
+// Scores: one row per TD, derived from the Oireachtas facts by server/scoring/rollup.ts
+// and stored for fast reads.
 // ---------------------------------------------------------------------------
 export const tdScores = politics.table(
   'td_scores',
@@ -76,15 +77,8 @@ export const tdScores = politics.table(
       .primaryKey()
       .references(() => tds.id, { onDelete: 'cascade' }),
 
-    overallElo: integer('overall_elo').notNull().default(1500),
-    transparencyElo: integer('transparency_elo').notNull().default(1500),
-    effectivenessElo: integer('effectiveness_elo').notNull().default(1500),
-    integrityElo: integer('integrity_elo').notNull().default(1500),
-    consistencyElo: integer('consistency_elo').notNull().default(1500),
-
     /** Derived 0–100. NULL until the rollup has run or when no pillar has data. */
     overallScore: smallint('overall_score'),
-    newsScore: smallint('news_score'),
     parliamentaryScore: smallint('parliamentary_score'),
     debateScore: smallint('debate_score'),
 
@@ -92,85 +86,35 @@ export const tdScores = politics.table(
     partyRank: integer('party_rank'),
     constituencyRank: integer('constituency_rank'),
 
-    eloChange7d: integer('elo_change_7d').notNull().default(0),
-    eloChange30d: integer('elo_change_30d').notNull().default(0),
-
-    totalStories: integer('total_stories').notNull().default(0),
-    lastScoredAt: timestamp('last_scored_at', { withTimezone: true }),
+    /** When the rollup last wrote this row. NULL until it has. */
+    computedAt: timestamp('computed_at', { withTimezone: true }),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [
-    index('td_scores_overall_elo_idx').on(t.overallElo),
-    index('td_scores_overall_score_idx').on(t.overallScore),
-  ],
+  (t) => [index('td_scores_overall_score_idx').on(t.overallScore)],
 );
 
 // ---------------------------------------------------------------------------
-// History: one row per ELO change, per dimension. Feeds the 7/30-day trends.
+// Article ↔ TD: this TD is named in this article. A fact, not a verdict.
 // ---------------------------------------------------------------------------
-export const tdScoreHistory = politics.table(
-  'td_score_history',
+export const articleTds = politics.table(
+  'article_tds',
   {
-    id: serial('id').primaryKey(),
-    tdId: integer('td_id')
-      .notNull()
-      .references(() => tds.id, { onDelete: 'cascade' }),
     /** news_articles.id; not a foreign key because news lives in another domain. */
-    articleId: integer('article_id'),
-    /** 'overall' | 'transparency' | 'effectiveness' | 'integrity' | 'consistency' */
-    dimension: varchar('dimension', { length: 32 }).notNull(),
-    oldElo: integer('old_elo').notNull(),
-    newElo: integer('new_elo').notNull(),
-    delta: integer('delta').notNull(),
-    /** −10..+10 impact the panel assigned for this dimension. */
-    impact: real('impact'),
-    credibility: real('credibility'),
-    confidence: real('confidence'),
-    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-  },
-  (t) => [
-    index('td_score_history_td_created_idx').on(t.tdId, t.createdAt),
-    index('td_score_history_article_idx').on(t.articleId),
-  ],
-);
-
-// ---------------------------------------------------------------------------
-// Article ↔ TD: what the panel concluded about one TD in one article.
-// ---------------------------------------------------------------------------
-export const articleTdScores = politics.table(
-  'article_td_scores',
-  {
-    id: serial('id').primaryKey(),
     articleId: integer('article_id').notNull(),
     tdId: integer('td_id')
       .notNull()
       .references(() => tds.id, { onDelete: 'cascade' }),
-    /** Overall −10..+10. */
-    impact: real('impact').notNull(),
-    /** Per-dimension 0–100 consensus scores, NULL where the panel abstained. */
-    dimensionScores: jsonb('dimension_scores').$type<{
-      transparency: number | null;
-      effectiveness: number | null;
-      integrity: number | null;
-      consistency: number | null;
-    }>(),
-    storyType: varchar('story_type', { length: 50 }),
-    sentiment: varchar('sentiment', { length: 20 }),
-    needsReview: boolean('needs_review').notNull().default(false),
-    reasoning: text('reasoning'),
-    analyzedBy: varchar('analyzed_by', { length: 50 }),
-    isIdeologicalPolicy: boolean('is_ideological_policy').notNull().default(false),
-    policyDirection: varchar('policy_direction', { length: 30 }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [
-    uniqueIndex('article_td_scores_article_td_idx').on(t.articleId, t.tdId),
-    index('article_td_scores_td_created_idx').on(t.tdId, t.createdAt),
+    primaryKey({ columns: [t.articleId, t.tdId] }),
+    index('article_tds_td_created_idx').on(t.tdId, t.createdAt),
   ],
 );
 
 // ---------------------------------------------------------------------------
-// Policy stances the panel extracted alongside the score.
+// Policy stances the old scoring panel extracted. Nothing writes it; part 3
+// (docs/plans/td-stances.md) replaces it.
 // ---------------------------------------------------------------------------
 export const tdPolicyStances = politics.table(
   'td_policy_stances',
@@ -192,18 +136,6 @@ export const tdPolicyStances = politics.table(
     index('td_policy_stances_td_idx').on(t.tdId),
   ],
 );
-
-// ---------------------------------------------------------------------------
-// Party aggregate, one row per party, recomputed after every pipeline run.
-// ---------------------------------------------------------------------------
-export const partyScores = politics.table('party_scores', {
-  party: varchar('party', { length: 100 }).primaryKey(),
-  memberCount: integer('member_count').notNull(),
-  avgElo: integer('avg_elo').notNull(),
-  /** eloToPercent(avgElo) */
-  overallScore: smallint('overall_score').notNull(),
-  computedAt: timestamp('computed_at', { withTimezone: true }).notNull().defaultNow(),
-});
 
 // ---------------------------------------------------------------------------
 // AI-researched historical baselines. Research content; not part of the formula.
@@ -233,7 +165,4 @@ export const tdHistoricalBaselines = politics.table(
 export type Td = typeof tds.$inferSelect;
 export type NewTd = typeof tds.$inferInsert;
 export type TdScoreRow = typeof tdScores.$inferSelect;
-export type TdScoreHistoryRow = typeof tdScoreHistory.$inferSelect;
-export type ArticleTdScoreRow = typeof articleTdScores.$inferSelect;
-export type PartyScoreRow = typeof partyScores.$inferSelect;
 export type TdHistoricalBaselineRow = typeof tdHistoricalBaselines.$inferSelect;

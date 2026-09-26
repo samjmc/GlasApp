@@ -31,9 +31,9 @@ export const queryKeys = {
     polling: (party: string | undefined) => ["party-polling", party] as const,
   },
   news: {
-    feed: (sortBy: string, page: number) => ["news-feed-v6", sortBy, page] as const,
-    biggestImpact: (regionCode: string | null) =>
-      ["biggest-impact-today-v5", regionCode] as const,
+    feed: (sortBy: string, page: number) => ["news-feed-v7", sortBy, page] as const,
+    topStoryToday: (regionCode: string | null) =>
+      ["top-story-today-v1", regionCode] as const,
   },
   parliament: {
     status: () => ["parliament-status"] as const,

@@ -375,6 +375,10 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     // B: 6 of 12 sittings = 50%. C: 6 sittings, below the minimum, so NULL and not 0.
     expect((await scoring.repository.findById(await tdId(B)))?.td.committeeAttendancePct).toBe(50);
     expect((await scoring.repository.findById(await tdId(C)))?.td.committeeAttendancePct).toBeNull();
+    // The chair's question count reads 0, but they are not expected to ask any: unranked, not scored 0.
+    const chair = await scoring.repository.findById(await tdId(CHAIR));
+    expect(chair?.stats?.isPresiding).toBe(true);
+    expect(chair?.score).toMatchObject({ overallScore: null, nationalRank: null });
   });
 
   it('is idempotent, and links a member once they join the roster', async () => {

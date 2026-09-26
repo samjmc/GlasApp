@@ -2,21 +2,23 @@ import { describe, expect, it } from 'vitest';
 import { DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, hasMore, parseFeedQuery, startOfLocalDay } from './feed';
 
 describe('parseFeedQuery', () => {
-  it('defaults to the score tab, first page', () => {
-    expect(parseFeedQuery({})).toEqual({ sort: 'score', limit: DEFAULT_PAGE_SIZE, offset: 0 });
+  it('defaults to the top tab, first page', () => {
+    expect(parseFeedQuery({})).toEqual({ sort: 'top', limit: DEFAULT_PAGE_SIZE, offset: 0 });
   });
   it('reads offset (the old route ignored it, so every page was page 1)', () => {
     expect(parseFeedQuery({ sort: 'recent', limit: '10', offset: '20' })).toEqual({ sort: 'recent', limit: 10, offset: 20 });
   });
-  it('maps the legacy "highest" sort and rejects unknown ones', () => {
-    expect(parseFeedQuery({ sort: 'highest' }).sort).toBe('score');
-    expect(parseFeedQuery({ sort: 'drop table' }).sort).toBe('score');
+  it('maps the old names "score" and "highest" to top, and rejects unknown sorts', () => {
+    expect(parseFeedQuery({ sort: 'top' }).sort).toBe('top');
+    expect(parseFeedQuery({ sort: 'score' }).sort).toBe('top');
+    expect(parseFeedQuery({ sort: 'highest' }).sort).toBe('top');
+    expect(parseFeedQuery({ sort: 'drop table' }).sort).toBe('top');
     expect(parseFeedQuery({ sort: 'today' }).sort).toBe('today');
   });
   it('clamps and ignores non-integers', () => {
-    expect(parseFeedQuery({ limit: '9999', offset: '-5' })).toEqual({ sort: 'score', limit: MAX_PAGE_SIZE, offset: 0 });
+    expect(parseFeedQuery({ limit: '9999', offset: '-5' })).toEqual({ sort: 'top', limit: MAX_PAGE_SIZE, offset: 0 });
     expect(parseFeedQuery({ limit: '0' }).limit).toBe(1);
-    expect(parseFeedQuery({ limit: ['5'], offset: '1e3' })).toEqual({ sort: 'score', limit: DEFAULT_PAGE_SIZE, offset: 0 });
+    expect(parseFeedQuery({ limit: ['5'], offset: '1e3' })).toEqual({ sort: 'top', limit: DEFAULT_PAGE_SIZE, offset: 0 });
   });
 });
 
@@ -40,8 +42,8 @@ describe('startOfLocalDay (Europe/Dublin)', () => {
 
 describe('hasMore', () => {
   it('is true only while rows remain past this page', () => {
-    expect(hasMore({ sort: 'score', limit: 10, offset: 0 }, 25)).toBe(true);
-    expect(hasMore({ sort: 'score', limit: 10, offset: 20 }, 25)).toBe(false);
-    expect(hasMore({ sort: 'score', limit: 10, offset: 10 }, 20)).toBe(false);
+    expect(hasMore({ sort: 'top', limit: 10, offset: 0 }, 25)).toBe(true);
+    expect(hasMore({ sort: 'top', limit: 10, offset: 20 }, 25)).toBe(false);
+    expect(hasMore({ sort: 'top', limit: 10, offset: 10 }, 20)).toBe(false);
   });
 });
