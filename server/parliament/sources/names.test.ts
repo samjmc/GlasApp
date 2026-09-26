@@ -27,9 +27,14 @@ describe('makeNameMatcher', () => {
   });
 
   it('does not take a same-name entry from another constituency as exact', () => {
-    // A register entry "MURPHY, Paul (Cork)" is not the Dublin South-West Paul Murphy.
-    expect(match({ surname: 'MURPHY', forenames: 'Paul', constituency: 'Cork South-West' })).toBeNull();
+    // A register entry "MURPHY, Paul (Wexford)" is not the Dublin South-West Paul Murphy.
+    expect(match({ surname: 'MURPHY', forenames: 'Paul', constituency: 'Wexford' })).toBeNull();
     expect(match({ surname: 'MURPHY', forenames: 'Paul', constituency: 'Dublin South-West' })?.exact).toBe(true);
+  });
+
+  it('ignores a constituency the roster does not use (an entry filed in Irish)', () => {
+    expect(match({ surname: 'MURPHY', forenames: 'Paul', constituency: 'Baile Átha Cliath Theas-Thiar' })).toEqual({ memberCode: 'Paul-Murphy.D.2014-10-10', exact: true });
+    expect(match({ surname: 'NASH', forenames: 'Gerald', constituency: 'Lú' })?.memberCode).toBe('Ged-Nash.D.2011-03-09');
   });
 
   it('uses the constituency to separate two members with one surname', () => {

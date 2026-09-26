@@ -56,8 +56,14 @@ export function makeNameMatcher(roster: RosterName[]) {
     return { memberCode: m.memberCode, tails, first: words[0] ?? '', where: place(m.constituency) };
   });
 
+  // Constituency names the roster uses. A file's constituency counts only if it is one of them:
+  // members who file in Irish give it in Irish ("Baile Átha Cliath …"), which says nothing
+  // against a match (measured 2026-09-26: three TDs in the 2024 and 2025 registers).
+  const knownPlaces = new Set(Array.from(whereOf.values()).filter((p): p is string => p !== null));
+
   return (name: { surname: string; forenames: string; constituency?: string | null }): NameMatch | null => {
-    const where = place(name.constituency ?? null);
+    const given = place(name.constituency ?? null);
+    const where = given !== null && knownPlaces.has(given) ? given : null;
     // Same name, different constituency (a register entry for another Michael Murphy) is not exact.
     const full = byFull.get(compact(`${name.forenames} ${name.surname}`));
     if (full && (where === null || whereOf.get(full) === where)) return { memberCode: full, exact: true };

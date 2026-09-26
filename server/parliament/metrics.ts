@@ -69,8 +69,9 @@ export const MIN_QUESTION_DAYS = 90;
  * Vote-attendance benchmark for divisions held in a leadership role (government office or
  * party leader), by the same rule as ATTENDANCE_BENCHMARK (the 75th percentile, rounded down
  * to 5), measured on role holders' in-role attendance after chaired divisions and documented
- * leave are left out. Measured 2026-09-25 on government office alone: 39 holders, median 84.1%,
- * 75th percentile 91.2%. (The same query gave backbench time 95.7%, ATTENDANCE_BENCHMARK's 95.)
+ * leave are left out. Measured 2026-09-26 with the party leaders: 47 role holders, median
+ * 82.3%, 75th percentile 91.2%. (The same query gave ordinary time 95.9%, which is
+ * ATTENDANCE_BENCHMARK's 95.)
  */
 export const LEADERSHIP_ATTENDANCE_BENCHMARK = 90;
 
