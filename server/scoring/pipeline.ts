@@ -1,16 +1,15 @@
 /**
  * News → TD scoring pipeline.
  *
- * 1. Fetch unprocessed articles.
+ * 1. Fetch unprocessed articles. Same-event duplicates were linked at ingest and are never
+ *    claimed, so every article here is the one canonical report of its event.
  * 2. Cheap LLM importance triage; keep the top slice.
- * 3. Cluster same-event articles; score one canonical article per event.
- * 4. Find the TDs each canonical article is substantially about.
- * 5. Run the multi-agent panel per (article, TD); apply the result to that TD's ELOs,
+ * 3. Find the TDs each article is substantially about.
+ * 4. Run the multi-agent panel per (article, TD); apply the result to that TD's ELOs,
  *    record the article↔TD verdict and any policy stance, feed the ideology profile.
- * 6. Recompute derived scores, ranks, trends and party aggregates.
+ * 5. Recompute derived scores, ranks, trends and party aggregates.
  */
 import { ArticleImportanceService } from '../services/articleImportanceService';
-import { EventDeduplicationService } from '../services/eventDeduplicationService';
 import { generateQuestionForArticle } from '../voting';
 import { TDExtractionService } from '../services/tdExtractionService';
 import { type Article, type ArticleSource, articleSource } from './articleSource';
@@ -23,9 +22,6 @@ export interface PipelineStats {
   importanceScored: number;
   selectedForScoring: number;
   skippedLowImportance: number;
-  clustersFound: number;
-  duplicatesRemoved: number;
-  uniqueEventsToScore: number;
   articlesProcessed: number;
   tdsUpdated: number;
   errors: number;
@@ -50,9 +46,6 @@ function emptyStats(): PipelineStats {
     importanceScored: 0,
     selectedForScoring: 0,
     skippedLowImportance: 0,
-    clustersFound: 0,
-    duplicatesRemoved: 0,
-    uniqueEventsToScore: 0,
     articlesProcessed: 0,
     tdsUpdated: 0,
     errors: 0,
@@ -98,36 +91,8 @@ export async function runPipeline(options: PipelineOptions = {}): Promise<Pipeli
   }
   if (topArticles.length === 0) return stats;
 
-  const dedup = await EventDeduplicationService.clusterAndDeduplicate(
-    topArticles.map(({ article, importance }) => ({
-      id: article.id,
-      title: article.title,
-      content: article.content ?? '',
-      source: article.source,
-      published_date: article.published_date,
-      importance_score: importance.score,
-    })),
-  );
-  stats.clustersFound = dedup.stats.clustersFound;
-  stats.duplicatesRemoved = dedup.stats.duplicatesRemoved;
-  stats.uniqueEventsToScore = dedup.stats.outputCount;
-
-  const selectedIds = new Set(dedup.selectedArticles.map((a) => a.id));
-  for (const { article, importance } of topArticles) {
-    if (selectedIds.has(article.id)) continue;
-    const cluster = dedup.clusters.find((c) => c.articles.includes(article.id));
-    await source.markProcessed(article.id, {
-      importanceScore: importance.score,
-      importanceReasoning: importance.reasoning,
-      scoreApplied: false,
-      skippedReason: `Duplicate of article ${cluster?.selectedArticleId} (same event: ${cluster?.eventName ?? 'unknown'})`,
-      duplicateOf: cluster?.selectedArticleId,
-    });
-  }
-
   const byId = new Map(articles.map((a) => [a.id, a]));
   for (const { article: scored, importance } of topArticles) {
-    if (!selectedIds.has(scored.id)) continue;
     const article = byId.get(scored.id)!;
     try {
       await ensureFullContent(article, source);
@@ -149,10 +114,11 @@ export async function runPipeline(options: PipelineOptions = {}): Promise<Pipeli
   return stats;
 }
 
-/** Score a single article by id, bypassing triage and dedup. For manual runs. */
+/** Score a single article by id, bypassing triage. A duplicate's id scores its canonical. For manual runs. */
 export async function scoreArticleById(articleId: number, source: ArticleSource = articleSource): Promise<PipelineStats> {
   const article = await source.fetchById(articleId);
   if (!article) throw new Error(`Article not found: ${articleId}`);
+  if (article.id !== articleId) console.log(`Article ${articleId} is a duplicate; scoring its canonical, article ${article.id}.`);
   const importance = await ArticleImportanceService.scoreArticleImportance({
     title: article.title,
     content: article.content,

@@ -31,7 +31,6 @@ import ConstituencyProfilePage from "@/pages/ConstituencyProfilePage";
 import QuizPage from "@/pages/QuizPage";
 import QuizResultsPage from "@/pages/QuizResultsPage";
 import MyPoliticsPage from "@/pages/MyPoliticsPage";
-import IdeasPage from "@/pages/IdeasPage";
 import DailySessionPage from "@/pages/DailySessionPage";
 import ProfilePage from "@/pages/ProfilePage";
 import AdminPage from "@/pages/AdminPage";
@@ -39,6 +38,8 @@ import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
 import LoginPage from "@/pages/LoginPage";
 import RegisterPage from "@/pages/RegisterPage";
 import AuthCallbackPage from "@/pages/AuthCallbackPage";
+import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
+import ResetPasswordPage from "@/pages/ResetPasswordPage";
 import RegionSelectionPage from "@/pages/RegionSelectionPage";
 import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 import TermsOfServicePage from "@/pages/TermsOfServicePage";
@@ -78,6 +79,8 @@ function FullScreenLoader() {
 const COMMON_ROUTES = (
   <>
     <Route path="/auth/callback" component={AuthCallbackPage} />
+    <Route path="/auth/reset-password" component={ResetPasswordPage} />
+    <Route path="/forgot-password">{() => <SignedOutOnly page={ForgotPasswordPage} />}</Route>
     <Route path="/privacy-policy" component={PrivacyPolicyPage} />
     <Route path="/terms-of-service" component={TermsOfServicePage} />
     <Route path="/contact" component={ContactPage} />
@@ -102,7 +105,6 @@ function IrishRoutes() {
       <Route path="/quiz" component={QuizPage} />
       <Route path="/quiz/results" component={QuizResultsPage} />
       <Route path="/my-politics" component={MyPoliticsPage} />
-      <Route path="/ideas" component={IdeasPage} />
       <Route path="/profile" component={Profile} />
       <Route path="/admin" component={Admin} />
       <Route path="/admin/shadow" component={AgentMonitor} />
@@ -123,7 +125,15 @@ function PreviewRoutes() {
 }
 
 /** Pages that must open without choosing a region first. */
-const REGION_EXEMPT = ["/select-region", "/auth/callback", "/privacy-policy", "/terms-of-service", "/contact"];
+const REGION_EXEMPT = [
+  "/select-region",
+  "/auth/callback",
+  "/auth/reset-password",
+  "/forgot-password",
+  "/privacy-policy",
+  "/terms-of-service",
+  "/contact",
+];
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -131,7 +141,10 @@ function Router() {
   const { data: dailySession, isLoading: dailyLoading } = useDailySession(isAuthenticated);
   const { status: regionStatus, region } = useRegion();
 
+  // The reset link signs the user in; the daily session must not pull them off the
+  // page where they set the new password.
   const shouldForceDaily =
+    location !== "/auth/reset-password" &&
     region?.status === "live" &&
     isAuthenticated &&
     !dailyLoading &&

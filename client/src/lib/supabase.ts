@@ -158,8 +158,14 @@ export async function resetPassword(email: string) {
     console.error('Error sending password reset:', error);
     throw error;
   }
-  
+
   return data;
+}
+
+// Set a new password for the signed-in user (the reset link signs them in first)
+export async function updatePassword(password: string) {
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) throw error;
 }
 
 // Export types

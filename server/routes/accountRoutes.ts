@@ -1,111 +1,37 @@
-import { requireAuth, supabaseAdmin } from '../auth';
+import { requireAuth } from '../auth';
+import { deleteAuthUser } from '../auth/supabase';
 import { Router } from 'express';
-import { supabaseDb } from '../db';
-
-type SessionUser = {
-  id?: string;
-  user?: { id?: string };
-  sub?: string;
-  claims?: { sub?: string };
-};
+import { deleteUserData } from '../account/deleteUserData';
+import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
 
-const deletionPlan: Array<{ table: string; column: string; value?: string }> = [
-  { table: 'idea_votes', column: 'user_id' },
-  { table: 'problem_votes', column: 'user_id' },
-  { table: 'solution_votes', column: 'user_id' },
-  { table: 'user_td_ratings', column: 'user_id' },
-  { table: 'party_sentiment_votes', column: 'user_id' },
-  { table: 'user_category_rankings', column: 'user_id' },
-  { table: 'user_category_votes', column: 'user_id' },
-  { table: 'user_pledge_votes', column: 'user_id' },
-  { table: 'user_td_policy_agreements', column: 'user_id' },
-  { table: 'user_personal_rankings', column: 'user_id' },
-  { table: 'user_quiz_results', column: 'user_id' },
-  { table: 'quiz_results_history', column: 'user_id' },
-  { table: 'quiz_results', column: 'user_id' },
-  { table: 'political_evolution', column: 'user_id' },
-  { table: 'engagement_points', column: 'user_id' },
-  { table: 'activity_logs', column: 'user_id' },
-  { table: 'user_locations', column: 'firebase_uid' },
-  { table: 'ideas', column: 'user_id' },
-  { table: 'solutions', column: 'user_id' },
-  { table: 'problems', column: 'user_id' },
-];
-
+/**
+ * DELETE /api/account — erase the caller's GlasApp data, then their sign-in.
+ * Data goes first, in one transaction: if it fails, the sign-in is kept so the user can
+ * sign back in and try again, rather than being left with data they can no longer reach.
+ */
 router.delete('/', requireAuth, async (req, res) => {
+  const userId = req.user!.id;
+
+  let deleted;
   try {
-    if (!supabaseDb) {
-      return res.status(500).json({
-        success: false,
-        message: 'Supabase client not configured on server. Cannot delete account.',
-      });
-    }
-
-    const userId = req.user?.id;
-
-    if (!userId) {
-      return res.status(400).json({
-        success: false,
-        message: 'Unable to determine user ID from session.',
-      });
-    }
-
-    const deletionErrors: Array<{ table: string; error: string }> = [];
-
-    for (const step of deletionPlan) {
-      const columnValue = step.value ?? userId;
-      const { error } = await supabaseDb.from(step.table).delete().eq(step.column, columnValue);
-      if (error) {
-        deletionErrors.push({ table: step.table, error: error.message });
-      }
-    }
-
-    const { error: userTableError } = await supabaseDb.from('users').delete().eq('id', userId);
-    if (userTableError) {
-      deletionErrors.push({ table: 'users', error: userTableError.message });
-    }
-
-    let authDeletionError: string | null = null;
-    try {
-      await supabaseAdmin.auth.admin.deleteUser(userId);
-    } catch (error: unknown) {
-      authDeletionError =
-        (error as { message?: string } | null | undefined)?.message ||
-        'Unknown Supabase Auth deletion error';
-    }
-
-    if (authDeletionError) {
-      return res.status(500).json({
-        success: false,
-        message: 'Partial deletion completed, but failed to remove Supabase Auth account.',
-        errors: [...deletionErrors, { table: 'supabase_auth.users', error: authDeletionError }],
-      });
-    }
-
-    if (deletionErrors.length > 0) {
-      return res.status(207).json({
-        success: true,
-        message:
-          'Account deletion completed with warnings. Some ancillary data may require manual review.',
-        errors: deletionErrors,
-      });
-    }
-
-    return res.status(200).json({
-      success: true,
-      message: 'Account and associated data deleted successfully.',
-    });
-  } catch (error: unknown) {
-    console.error('Account deletion failed:', error);
-    return res.status(500).json({
-      success: false,
-      message: 'Failed to delete account. Please try again or contact support.',
-      error: (error as { message?: string } | null | undefined)?.message,
-    });
+    deleted = await deleteUserData(userId);
+  } catch (error) {
+    console.error('Account data deletion failed:', error);
+    return res.status(500).json(formatError('INTERNAL_ERROR', 'Failed to delete your data. Nothing was deleted; please try again.'));
   }
+
+  try {
+    await deleteAuthUser(userId);
+  } catch (error) {
+    console.error('Auth user deletion failed:', error);
+    return res
+      .status(500)
+      .json(formatError('INTERNAL_ERROR', 'Your data was deleted, but your sign-in could not be removed. Please try again or contact privacy@glaspolitics.ie.'));
+  }
+
+  return res.json(formatSuccess({ deleted }));
 });
 
 export default router;
-

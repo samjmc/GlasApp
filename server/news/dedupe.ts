@@ -1,10 +1,10 @@
 /**
- * Ingest-time duplicate detection. Pure.
+ * Ingest-time duplicate detection, the cheap pass. Pure.
  *
  * Catches the same story syndicated or re-headlined within a feed run and against recent
- * rows. Same-EVENT clustering (different stories about one event) is the scoring pipeline's
- * job, not this one.
+ * rows. Same-EVENT matching (different stories about one event) is events.ts.
  */
+import type { Link } from './events';
 import type { NewArticle } from './normalize';
 
 export const TITLE_SIMILARITY_THRESHOLD = 0.6;
@@ -55,38 +55,46 @@ export function titleSimilarity(a: string, b: string): number {
 }
 
 export interface Existing {
+  /** The stored row's root canonical: its own id, or the id it is a duplicate of. */
+  id: number;
   url: string;
   title: string;
 }
 
 export interface DedupeResult {
+  /** Every candidate not stored yet, earliest published first (tie: URL). */
   fresh: NewArticle[];
-  duplicates: Array<{ article: NewArticle; reason: 'url' | 'title'; of: string }>;
+  /** Title copies: `fresh[index]` is the same story as `of`. */
+  links: Array<{ index: number; of: Link }>;
+  /** Dropped: the URL is stored already, or repeated in this run. */
+  knownUrls: number;
 }
 
 /**
- * Keep the first occurrence of each story. Candidates are compared against `existing`
- * (recent rows from the database) and against the candidates already kept.
+ * Sort the candidates by publication time, drop URLs already seen, and link each title copy
+ * to the first matching story: a recent stored row, or an earlier candidate of this run.
  */
-export function dedupe(candidates: NewArticle[], existing: Existing[]): DedupeResult {
-  const seenUrls = new Set(existing.map((e) => e.url));
-  const kept: Existing[] = [...existing];
+export function dedupe(candidates: NewArticle[], existing: Existing[], storedUrls: Set<string>): DedupeResult {
+  const seenUrls = new Set(Array.from(storedUrls).concat(existing.map((e) => e.url)));
+  const targets: Array<{ title: string; of: Link }> = existing.map((e) => ({ title: e.title, of: { stored: e.id } }));
   const fresh: NewArticle[] = [];
-  const duplicates: DedupeResult['duplicates'] = [];
+  const links: DedupeResult['links'] = [];
+  let knownUrls = 0;
 
-  for (const article of candidates) {
+  const ordered = [...candidates].sort(
+    (a, b) => a.publishedAt.getTime() - b.publishedAt.getTime() || (a.url < b.url ? -1 : a.url > b.url ? 1 : 0),
+  );
+  for (const article of ordered) {
     if (seenUrls.has(article.url)) {
-      duplicates.push({ article, reason: 'url', of: article.url });
-      continue;
-    }
-    const match = kept.find((k) => titleSimilarity(k.title, article.title) >= TITLE_SIMILARITY_THRESHOLD);
-    if (match) {
-      duplicates.push({ article, reason: 'title', of: match.url });
+      knownUrls++;
       continue;
     }
     seenUrls.add(article.url);
-    kept.push({ url: article.url, title: article.title });
+    const index = fresh.length;
+    const match = targets.find((t) => titleSimilarity(t.title, article.title) >= TITLE_SIMILARITY_THRESHOLD);
+    if (match) links.push({ index, of: match.of });
+    targets.push({ title: article.title, of: { run: index } });
     fresh.push(article);
   }
-  return { fresh, duplicates };
+  return { fresh, links, knownUrls };
 }

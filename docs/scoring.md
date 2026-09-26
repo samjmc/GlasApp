@@ -83,7 +83,6 @@ holders), so it is not used: excusing those 3 alone would be unfair to the other
 runPipeline()
   fetch unprocessed articles            articleSource.ts   (news domain adapter)
   importance triage, keep the top 25%   services/articleImportanceService
-  cluster same-event articles           services/eventDeduplicationService
   find the TDs each article is about    services/tdExtractionService → repository.findByName
   per (article, TD):
     run the multi-agent panel           panel.ts           (LLM, ~6–8 calls)
@@ -95,6 +94,11 @@ runPipeline()
     7/30-day trends                     repository.writeTrends
     party aggregates                    party.ts
 ```
+
+Each real-world event is scored once. Same-event matching happens at ingest, not here:
+`server/news/events.ts` links every later report of an event, from any outlet, to the one
+published first (`news_articles.duplicate_of`, status `duplicate`). Duplicates are never
+claimed, and `--article <duplicate id>` scores its canonical instead.
 
 Runs every 2 hours from `server/services/scheduler.ts`, on demand with `npm run td-scoring`
 (`-- --recalculate` skips the LLM and only rebuilds derived scores; `-- --article <id>` scores

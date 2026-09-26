@@ -60,15 +60,6 @@ vi.mock('../db', () => ({
   checkDatabaseConnection: vi.fn(async () => true),
 }));
 
-vi.mock('../services/botService', () => ({
-  BotService: {
-    createBotAccount: vi.fn(async () => ({ id: 1, username: 'bot1', email: 'bot@example.com', role: 'bot' })),
-    getAllBots: vi.fn(async () => []),
-    deleteBotAccount: vi.fn(async () => true),
-    isBotAccount: vi.fn(() => false),
-  },
-}));
-
 vi.mock('../services/twilioService', () => ({
   sendSMS: vi.fn(async () => ({ success: true, sid: 'SM123', message: 'SMS sent successfully' })),
   isTwilioConfigured: vi.fn(() => true),
@@ -102,24 +93,16 @@ vi.mock('../services/cacheService', () => ({
 vi.mock('@shared/schema', () => {
   const table = (name: string) => ({ name });
   return {
-    users: table('users'),
-    userLocations: table('user_locations'),
-    ideas: table('ideas'),
-    ideaVotes: table('idea_votes'),
     constituencies: table('constituencies'),
     parties: table('parties'),
     electionResults: table('election_results'),
     elections: table('elections'),
-    userPreferences: table('user_preferences'),
   };
 });
 
 const { supabase } = await import('../auth/supabase');
-const botRoutes = (await import('./botRoutes')).default;
-const ideasRoutes = (await import('./ideasRoutes')).default;
 const smsRoutes = (await import('./smsRoutes')).default;
 const analysisRoutes = (await import('./ai/analysis')).default;
-const geoRoutes = (await import('./geographic/index')).default;
 
 const ADMIN_USER = { id: 'admin-id', email: 'admin@example.com', app_metadata: { role: 'admin' }, user_metadata: {} };
 const REGULAR_USER = { id: 'user-42', email: 'user@example.com', app_metadata: { role: 'user' }, user_metadata: {} };
@@ -178,112 +161,6 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
-describe('botRoutes /create', () => {
-  const body = { username: 'bot1', email: 'bot@example.com' };
-
-  it('creates a bot with the machine secret (201)', async () => {
-    await withServer(appWith('/api/bots', botRoutes), async (base) => {
-      const res = await fetch(`${base}/api/bots/create`, {
-        method: 'POST',
-        headers: jsonHeaders({ 'x-admin-secret': 'cron-secret' }),
-        body: JSON.stringify(body),
-      });
-      assert.equal(res.status, 201);
-      assert.equal(((await res.json()) as { success: boolean }).success, true);
-    });
-  });
-
-  it('returns 401 with no auth', async () => {
-    await withServer(appWith('/api/bots', botRoutes), async (base) => {
-      const res = await fetch(`${base}/api/bots/create`, {
-        method: 'POST',
-        headers: jsonHeaders(),
-        body: JSON.stringify(body),
-      });
-      assert.equal(res.status, 401);
-    });
-  });
-
-  it('returns 403 for a non-admin bearer token', async () => {
-    setAuthUser(REGULAR_USER);
-    await withServer(appWith('/api/bots', botRoutes), async (base) => {
-      const res = await fetch(`${base}/api/bots/create`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer user-token' }),
-        body: JSON.stringify(body),
-      });
-      assert.equal(res.status, 403);
-    });
-  });
-
-  it('returns 400 when username is missing', async () => {
-    await withServer(appWith('/api/bots', botRoutes), async (base) => {
-      const res = await fetch(`${base}/api/bots/create`, {
-        method: 'POST',
-        headers: jsonHeaders({ 'x-admin-secret': 'cron-secret' }),
-        body: JSON.stringify({ email: 'bot@example.com' }),
-      });
-      assert.equal(res.status, 400);
-    });
-  });
-});
-
-describe('ideasRoutes /submit', () => {
-  const validIdea = { title: 'My idea', description: 'Desc', category: 'Economy', isAdminSubmission: true };
-
-  it('submits an idea for an admin caller and attributes it to the token, not the body', async () => {
-    setAuthUser(ADMIN_USER);
-    dbState.selectResult = [{ id: 'admin-id', firstName: 'Admin', lastName: 'User', username: 'admin' }];
-    dbState.insertResult = [{ id: 1, title: 'My idea', category: 'Economy' }];
-
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer admin-token' }),
-        body: JSON.stringify({ ...validIdea, userId: 'somebody-else' }),
-      });
-      assert.equal(res.status, 200);
-      assert.equal(((await res.json()) as { success: boolean }).success, true);
-      assert.equal((dbState.insertValues as Record<string, unknown>).userId, 'admin-id');
-    });
-  });
-
-  it('returns 401 with no auth', async () => {
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders(),
-        body: JSON.stringify(validIdea),
-      });
-      assert.equal(res.status, 401);
-    });
-  });
-
-  it('returns 403 for a non-admin token even with isAdminSubmission true', async () => {
-    setAuthUser(REGULAR_USER);
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer user-token' }),
-        body: JSON.stringify(validIdea),
-      });
-      assert.equal(res.status, 403);
-    });
-  });
-
-  it('returns 400 when title is missing', async () => {
-    setAuthUser(ADMIN_USER);
-    await withServer(appWith('/api/ideas', ideasRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ideas/submit`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer admin-token' }),
-        body: JSON.stringify({ description: 'Desc', category: 'Economy' }),
-      });
-      assert.equal(res.status, 400);
-    });
-  });
-});
-
 describe('smsRoutes /test', () => {
   it('returns 401 with no auth', async () => {
     await withServer(appWith('/api/sms', smsRoutes), async (base) => {
@@ -323,47 +200,6 @@ describe('ai/analysis /complete-analysis', () => {
         method: 'POST',
         headers: jsonHeaders(),
         body: JSON.stringify({ dimensions }),
-      });
-      assert.equal(res.status, 200);
-      assert.equal(((await res.json()) as { success: boolean }).success, true);
-    });
-  });
-});
-
-describe('geographic /users/location', () => {
-  const locationBody = { userId: 'user-42', latitude: 53.3, longitude: -6.2 };
-
-  it('returns 403 when the body userId differs from the token id', async () => {
-    setAuthUser(REGULAR_USER);
-    await withServer(appWith('/api/location', geoRoutes), async (base) => {
-      const res = await fetch(`${base}/api/location/users/location`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer user-token' }),
-        body: JSON.stringify({ ...locationBody, userId: 'user-99' }),
-      });
-      assert.equal(res.status, 403);
-    });
-  });
-
-  it('returns 401 when not authenticated', async () => {
-    await withServer(appWith('/api/location', geoRoutes), async (base) => {
-      const res = await fetch(`${base}/api/location/users/location`, {
-        method: 'POST',
-        headers: jsonHeaders(),
-        body: JSON.stringify(locationBody),
-      });
-      assert.equal(res.status, 401);
-    });
-  });
-
-  it('returns 200 when the body userId matches the token id', async () => {
-    setAuthUser(REGULAR_USER);
-    dbState.selectResult = [];
-    await withServer(appWith('/api/location', geoRoutes), async (base) => {
-      const res = await fetch(`${base}/api/location/users/location`, {
-        method: 'POST',
-        headers: jsonHeaders({ authorization: 'Bearer user-token' }),
-        body: JSON.stringify(locationBody),
       });
       assert.equal(res.status, 200);
       assert.equal(((await res.json()) as { success: boolean }).success, true);

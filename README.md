@@ -49,8 +49,7 @@ An advanced Irish political analysis platform providing multidimensional politic
 - **Question Activity:** See who's asking questions in parliament
 
 ### 💡 Community Features
-- **Problems & Solutions:** Two-tier voting system for policy issues
-- **Ideas Submission:** Share your policy ideas
+- **Daily Policy Votes:** Vote on a few policy questions each day
 - **User Engagement:** Track community activity
 
 ### 🤖 AI Integration
