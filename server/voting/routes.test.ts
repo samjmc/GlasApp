@@ -15,7 +15,7 @@ vi.mock('../auth', () => {
         id: req.header('x-test-user'),
         email: null,
         role: null,
-        userMetadata: { county: ' Cork ', constituency: 42 },
+        userMetadata: { county: req.header('x-test-county') ?? ' Cork ', constituency: 42 },
       };
       return next();
     }
@@ -25,7 +25,7 @@ vi.mock('../auth', () => {
 });
 
 vi.mock('../middleware/rateLimit', () => ({
-  aiRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
+  publicWriteRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
 }));
 
 vi.mock('./service', async () => {
@@ -52,10 +52,8 @@ vi.mock('./service', async () => {
       return { sessionId: 1 };
     }),
     completeSession: record('completeSession', () => ({ streakCount: 2 })),
-    quickExplainer: record('quickExplainer', () => ({ one_sentence: 'x', pros: ['a', 'b'], cons: ['c', 'd'] })),
     articleVoteView: record('articleVoteView', () => ({ question: null, tally: { total: 0, byOption: {} }, myVote: null })),
     castArticleVote: record('castArticleVote', () => ({ tally: { total: 1, byOption: { option_a: 1 } }, myVote: 'option_a' })),
-    retractVote: record('retractVote', () => undefined),
   };
 });
 
@@ -82,13 +80,14 @@ afterEach(async () => {
   await new Promise<void>((resolve) => server.close(() => resolve()));
 });
 
-const send = (path: string, init: { method?: string; body?: unknown; user?: string } = {}) =>
+const send = (path: string, init: { method?: string; body?: unknown; user?: string; county?: string } = {}) =>
   fetch(base + path, {
     method: init.method ?? 'GET',
     headers: {
       'content-type': 'application/json',
       connection: 'close',
       ...(init.user ? { 'x-test-user': init.user } : {}),
+      ...(init.county ? { 'x-test-county': init.county } : {}),
     },
     body: init.body === undefined ? undefined : JSON.stringify(init.body),
   });
@@ -139,13 +138,8 @@ describe('voting routes', () => {
     expect(calls.list.at(-1)).toEqual({ fn: 'articleVoteView', args: [9, null] });
   });
 
-  it('validates the explainer body', async () => {
-    expect((await send('/api/daily-session/explainer', { method: 'POST', user: 'u1', body: { headline: '' } })).status).toBe(400);
-    const ok = await send('/api/daily-session/explainer', {
-      method: 'POST',
-      user: 'u1',
-      body: { headline: 'Budget 2027', issueCategory: 'economy' },
-    });
-    expect(ok.status).toBe(200);
+  it('drops a county longer than its column instead of failing the insert', async () => {
+    expect((await send('/api/daily-session', { user: 'u1', county: 'x'.repeat(61) })).status).toBe(200);
+    expect(calls.list[0]!.args[0]).toEqual({ id: 'u1', county: null, constituency: null });
   });
 });
