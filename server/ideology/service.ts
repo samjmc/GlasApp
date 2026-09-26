@@ -1,16 +1,25 @@
 /**
  * Ideology operations: record evidence, recompute and read profiles, match positions.
  */
-import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
+import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
+import {
+  confidenceOf,
+  type DimensionConfidence,
+  type Matches,
+  type PartyMatch,
+  type TdIdeology,
+  type TdMatch,
+  type UserIdeologyDetail,
+} from '@shared/ideologyMatch';
 import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
-import type { SharedIssue, TdIssues } from '@shared/stancesApi';
+import type { SharedIssue } from '@shared/stancesApi';
 import { ideologyLabel } from '../quiz/label';
-import { coverageOf, scoreQuiz } from '../quiz/score';
+import { answeredCountsOf, coverageOf, scoreQuiz } from '../quiz/score';
 // Not '../stances': its record.ts imports this domain, and the two would form a cycle.
 import { AGREE_THRESHOLD, agreementFor, latestStances, type AgreementItem } from '../stances/agreement';
 import { mappedStancesOn } from '../stances/repository';
 import { listUserVoteVectors, questionsWithPositions, type UserVoteVector } from '../voting';
-import { alignment, closestAndFurthest, type DimensionWeights } from './alignment';
+import { alignment, closestAndFurthest, subjectWeights, type DimensionWeights } from './alignment';
 import { computeProfile, meanProfile, type Observation, type Profile } from './model';
 import { isIndependent, partyBaseline, partyKey } from './partyBaselines';
 import * as repo from './repository';
@@ -79,6 +88,33 @@ export async function recomputeProfile(userId: string): Promise<void> {
 export async function getIdeologyProfile(userId: string): Promise<Record<IdeologyDimension, number> | null> {
   const row = await repo.getProfile('user', userId);
   return row ? repo.vectorOf(row) : null;
+}
+
+/**
+ * The user's position and, per dimension, how much evidence is behind it: the support the model
+ * used (rounded, so a full quiz is exactly QUIZ_WEIGHT = high), the latest quiz's answers on it
+ * and the votes that speak to it. Computed on read, as userMatches is. null = no quiz, no votes.
+ */
+export async function userIdeologyDetail(userId: string): Promise<UserIdeologyDetail | null> {
+  const now = new Date();
+  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId), listUserVoteVectors(userId)]);
+  const profile = userProfileOf(quizzes, votes, now);
+  if (!profile) return null;
+  const quiz = quizzes.find((q) => q.createdAt <= now);
+  const quizAnswers = quiz ? answeredCountsOf(quiz.answers) : emptyIdeologyVector();
+  // The same observations the model counted, so the two cannot drift apart.
+  const voteVectors = votes
+    .filter((v) => v.votedAt <= now)
+    .map(voteObservation)
+    .filter((o) => o.weight > 0)
+    .map((o) => o.vector);
+  const confidence = Object.fromEntries(
+    IDEOLOGY_DIMENSIONS.map((d): [IdeologyDimension, DimensionConfidence] => [
+      d,
+      { level: confidenceOf(profile.support[d]), quizAnswers: quizAnswers[d], votes: voteVectors.filter((v) => v[d] !== undefined).length },
+    ]),
+  ) as Record<IdeologyDimension, DimensionConfidence>;
+  return { vector: profile.vector, confidence };
 }
 
 export interface TimelinePoint {
@@ -180,36 +216,34 @@ export async function recomputePartyProfile(party: string): Promise<void> {
 
 // --- reads for the API -----------------------------------------------------
 
-export interface TdMatch {
-  tdId: number;
-  name: string;
-  party: string | null;
-  constituency: string | null;
-  imageUrl: string | null;
-  alignment: number;
-  evidenceCount: number;
-  closest: IdeologyDimension[];
-  furthest: IdeologyDimension[];
-  /** Signed-in matches only: the daily-vote questions both the user and this TD answered. */
-  issues?: TdIssues;
-}
+const NO_EVIDENCE: repo.EvidenceSummary = { bySource: {}, measured: [] };
 
-export interface PartyMatch {
-  party: string;
-  alignment: number;
-  tdCount: number;
-  closest: IdeologyDimension[];
-  furthest: IdeologyDimension[];
-}
-
-export async function matchesFor(vector: IdeologyVector, weights: DimensionWeights = {}) {
-  const [tds, tdProfiles, partyProfiles] = await Promise.all([repo.listActiveTds(), repo.listProfiles('td'), repo.listProfiles('party')]);
+/**
+ * TDs and parties by how close they are to `vector`. A subject with no party baseline is matched
+ * only on the dimensions it has evidence on (its 0s elsewhere mean "unknown", not "centrist"),
+ * and not at all below MIN_MEASURED_DIMS; see `subjectWeights`.
+ */
+export async function matchesFor(vector: IdeologyVector, weights: DimensionWeights = {}): Promise<Matches> {
+  const [tds, tdProfiles, partyProfiles, evidence] = await Promise.all([
+    repo.listActiveTds(),
+    repo.listProfiles('td'),
+    repo.listProfiles('party'),
+    repo.evidenceSummary(),
+  ]);
   const byId = new Map(tdProfiles.map((p) => [p.subjectId, p]));
+  const measuredByParty = new Map<string, Set<IdeologyDimension>>();
   const tdMatches: TdMatch[] = [];
   for (const td of tds) {
+    const { bySource, measured } = evidence.get(td.id) ?? NO_EVIDENCE;
+    if (td.party) {
+      const partyDims = measuredByParty.get(partyKey(td.party)) ?? new Set<IdeologyDimension>();
+      for (const d of measured) partyDims.add(d);
+      measuredByParty.set(partyKey(td.party), partyDims);
+    }
     const profile = byId.get(String(td.id));
-    // No baseline and no evidence: the 0s mean "unknown", not "centrist". Leave them out.
-    if (!profile || (profile.evidenceCount === 0 && !partyBaseline(td.party))) continue;
+    const hasPartyBaseline = partyBaseline(td.party) !== null;
+    const tdWeights = profile && subjectWeights(weights, { hasPartyBaseline, measured });
+    if (!profile || !tdWeights) continue;
     const other = repo.vectorOf(profile);
     tdMatches.push({
       tdId: td.id,
@@ -217,17 +251,33 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
       party: td.party,
       constituency: td.constituency,
       imageUrl: td.imageUrl,
-      alignment: alignment(vector, other, weights),
+      alignment: alignment(vector, other, tdWeights),
       evidenceCount: profile.evidenceCount,
-      ...closestAndFurthest(vector, other),
+      ...closestAndFurthest(vector, other, tdWeights),
+      confidence: confidenceOf(profile.totalWeight),
+      evidenceBySource: bySource,
+      measured,
+      hasPartyBaseline,
     });
   }
-  const parties: PartyMatch[] = partyProfiles
-    .filter((p) => p.totalWeight > 0 || partyBaseline(p.subjectId))
-    .map((p) => {
+  const parties: PartyMatch[] = [];
+  for (const p of partyProfiles) {
+    const hasPartyBaseline = partyBaseline(p.subjectId) !== null;
+    const partyDims = measuredByParty.get(partyKey(p.subjectId));
+    const measured = IDEOLOGY_DIMENSIONS.filter((d) => partyDims?.has(d));
+    const partyWeights = subjectWeights(weights, { hasPartyBaseline, measured });
+    if (!partyWeights) continue;
     const other = repo.vectorOf(p);
-    return { party: p.subjectId, alignment: alignment(vector, other, weights), tdCount: p.evidenceCount, ...closestAndFurthest(vector, other) };
-  });
+    parties.push({
+      party: p.subjectId,
+      alignment: alignment(vector, other, partyWeights),
+      tdCount: p.evidenceCount,
+      ...closestAndFurthest(vector, other, partyWeights),
+      // A party's evidenceCount is its TD count; its totalWeight is its TDs' own evidence.
+      confidence: confidenceOf(p.totalWeight),
+      hasPartyBaseline,
+    });
+  }
   const byAlignment = <T extends { alignment: number }>(a: T, b: T) => b.alignment - a.alignment;
   return { tds: tdMatches.sort(byAlignment), parties: parties.sort(byAlignment) };
 }
@@ -315,10 +365,23 @@ export async function userMatches(userId: string, weights: DimensionWeights = {}
   return { tds, parties: matches.parties, measured: IDEOLOGY_DIMENSIONS.filter((d) => profile.support[d] > 0) };
 }
 
-export async function tdProfile(tdId: number) {
-  const [td, row] = await Promise.all([repo.findTd(tdId), repo.getProfile('td', String(tdId))]);
+export async function tdProfile(tdId: number): Promise<TdIdeology | null> {
+  const [td, row, evidence] = await Promise.all([repo.findTd(tdId), repo.getProfile('td', String(tdId)), repo.evidenceSummary(tdId)]);
   if (!td) return null;
-  return { td, profile: row && { vector: repo.vectorOf(row), totalWeight: row.totalWeight, evidenceCount: row.evidenceCount, computedAt: row.computedAt } };
+  const { bySource, measured } = evidence.get(tdId) ?? NO_EVIDENCE;
+  return {
+    td,
+    hasPartyBaseline: partyBaseline(td.party) !== null,
+    profile: row && {
+      vector: repo.vectorOf(row),
+      totalWeight: row.totalWeight,
+      evidenceCount: row.evidenceCount,
+      computedAt: row.computedAt.toISOString(),
+      confidence: confidenceOf(row.totalWeight),
+      evidenceBySource: bySource,
+      measured,
+    },
+  };
 }
 
 export async function partyProfile(party: string) {
