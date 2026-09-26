@@ -1099,6 +1099,7 @@ export function convertToArticleAnalysis(
       strength: multiAgentResult.ideologyAnalysis.policyStance.strength,
       evidence: multiAgentResult.ideologyAnalysis.policyStance.evidence,
       policy_topic: multiAgentResult.ideologyAnalysis.policyStance.policyTopic,
+      // @ts-expect-error IdeologyDelta is not a Record; file deleted by G2
       ideology_delta: multiAgentResult.ideologyAnalysis.ideologyDelta
     };
   }
