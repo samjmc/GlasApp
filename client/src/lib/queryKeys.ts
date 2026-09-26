@@ -22,6 +22,8 @@ export const queryKeys = {
     forChat: () => ["tds-for-chat"] as const,
     rankings: () => ["td-rankings"] as const,
     news: (name: string) => ["td-news-v3", name] as const,
+    /** GET /api/stances/td/:id */
+    stances: (tdId: number) => ["/api/stances/td", tdId] as const,
   },
   party: {
     rankings: () => ["party-rankings-v4"] as const,
@@ -55,12 +57,6 @@ export const queryKeys = {
       ["parliament-bills", status, source, limit, offset] as const,
     bill: (id: string) => ["parliament-bill", id] as const,
   },
-  constituencies: {
-    list: () => ["constituencies-list"] as const,
-    detail: (name: string) => ["constituency-detail", name] as const,
-    profile: (name: string) => ["constituency-profile", name] as const,
-    apiList: () => ["/api/constituencies"] as const,
-  },
   quiz: {
     /** GET /api/quiz/me — scoped by user so a sign-out/sign-in never shows the last user's rows. */
     mine: (userId: string | undefined) => ["/api/quiz/me", userId] as const,
@@ -72,6 +68,9 @@ export const queryKeys = {
       ["/api/ideology", "me", userId, "timeline", party] as const,
     myMatches: (userId: string | undefined, weights: unknown) =>
       ["/api/ideology", "me", userId, "matches", weights] as const,
+    /** Same endpoint with `?td=`, so that TD's shared-issue items are filled. */
+    myMatchesForTd: (userId: string | undefined, tdId: number) =>
+      ["/api/ideology", "me", userId, "matches", null, "td", tdId] as const,
     vectorMatches: (vector: unknown, weights: unknown) =>
       ["/api/ideology", "matches", vector, weights] as const,
   },
