@@ -49,6 +49,11 @@ dist-ssr
 # CI test report (.github/workflows/ci.yml)
 vitest-report.json
 
+# Playwright output (npm run test:e2e)
+playwright-report/
+test-results/
+blob-report/
+
 # Large GeoJSON files (keep detailed-0.001 as it is the active one, ignore others to stay under 100MB)
 public/assets/ireland-constituencies-simplified-*.geojson
 attached_assets/*.geojson
