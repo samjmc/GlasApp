@@ -8,6 +8,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { IDEOLOGY_DIMENSIONS } from "@shared/ideology";
 import type { IdeologyDimension, IdeologyVector } from "@shared/ideology";
 import type { QuizResponse, QuizResult } from "@shared/quiz";
+import type { TdIssues } from "@shared/stancesApi";
 
 type Envelope<T, M = undefined> =
   | { success: true; data: T; meta?: M }
@@ -26,6 +27,8 @@ export interface TdMatch {
   evidenceCount: number;
   closest: IdeologyDimension[];
   furthest: IdeologyDimension[];
+  /** Daily-vote questions the signed-in user and this TD both answered. Absent on the anonymous path. */
+  issues?: TdIssues;
 }
 
 export interface PartyMatch {
@@ -96,13 +99,18 @@ export async function fetchMyTimeline(party?: string): Promise<IdeologyTimeline>
   return (await call<IdeologyTimeline>("GET", `/api/ideology/me/timeline${qs}`)).data;
 }
 
+/** `tdId` asks the server to fill that TD's shared-issue items as well as the top 5. */
 export async function fetchMyMatches(
   weights?: Partial<DimensionWeights>,
+  tdId?: number,
 ): Promise<Matches & { hasProfile: boolean }> {
   const w = weightsParam(weights);
+  const params: string[] = [];
+  if (w) params.push(`weights=${encodeURIComponent(w)}`);
+  if (tdId !== undefined) params.push(`td=${tdId}`);
   const { data, meta } = await call<Matches, { hasProfile: boolean }>(
     "GET",
-    `/api/ideology/me/matches${w ? `?weights=${encodeURIComponent(w)}` : ""}`,
+    `/api/ideology/me/matches${params.length > 0 ? `?${params.join("&")}` : ""}`,
   );
   return { ...data, hasProfile: meta?.hasProfile ?? true };
 }

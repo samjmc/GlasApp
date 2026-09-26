@@ -97,9 +97,10 @@ only records facts and makes questions:
 1. importance triage (newsworthiness, also the feed's "Top stories" order);
 2. find the TDs each article is substantially about and link them in `article_tds`
    (`linkArticleTd`, idempotent), which feeds "In the news" on a TD's page;
-3. an article that passed triage and names at least one TD gets a daily-vote question
-   (`generateQuestionForArticle`). Until verified stances exist (`docs/plans/td-stances.md`),
-   that is the whole gate.
+3. what those TDs say becomes stance records, never a score (`server/stances`,
+   `docs/plans/td-stances.md`): a quote checked against the article text, in `td_stances`. Only an
+   article with at least one verified stance gets a daily-vote question
+   (`generateQuestionForArticle`), and each stance is matched to one of its answers.
 
 Each event is processed once: ingest links same-event copies to the first report
 (`server/news/events.ts`, `news_articles.duplicate_of`), and only that canonical is claimed. A
@@ -124,8 +125,8 @@ failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and un
 
 The facts-only migration (`drizzle/*_facts_only_scoring.sql`) dropped the ELO, news, trend and
 story-count columns, `td_score_history` and `party_scores`, and renamed `article_td_scores` to
-`article_tds` without its verdict columns. `td_policy_stances` is still in the schema with no
-writer; part 3 (`docs/plans/td-stances.md`) replaces it.
+`article_tds` without its verdict columns. `td_policy_stances` was dropped by
+`drizzle/0012_td_stances.sql`; `td_stances` replaces it.
 
 ## API — `/api/scores`
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Loader2, Users } from "lucide-react";
+import { ChevronDown, Loader2, Users } from "lucide-react";
 import { DIMENSION_POLES, type IdeologyDimension, type IdeologyVector } from "@shared/ideology";
+import type { TdIssues } from "@shared/stancesApi";
+import { IssueBreakdown } from "@/components/IssueBreakdown";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/pulse/EmptyState";
@@ -195,6 +197,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
                     {Math.round(td.alignment)}%
                   </span>
                 </Link>
+                {isAuthenticated && td.issues && <SharedIssuesLine issues={td.issues} />}
               </li>
             ))}
           </ol>
@@ -208,6 +211,24 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
     </>
   );
 };
+
+/** Under a TD row: how many daily-vote questions the user and the TD both answered, expandable to the breakdown. */
+function SharedIssuesLine({ issues }: { issues: TdIssues }) {
+  const shared = issues.agree + issues.disagree;
+  // Lines up with the TD's name: the row's px-1, the 44px avatar and gap-3.
+  if (shared === 0) {
+    return <p className="pb-2 pl-[60px] text-xs text-muted-foreground">No shared issues yet</p>;
+  }
+  return (
+    <details className="group pb-2 pl-[60px]">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-1 text-[13px] font-semibold text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
+        <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
+        based on {shared} shared {shared === 1 ? "issue" : "issues"}
+      </summary>
+      <IssueBreakdown issues={issues} className="pt-1" />
+    </details>
+  );
+}
 
 function PartyBadge({ party, small }: { party: string; small?: boolean }) {
   return <TDAvatar name={partyStyle(party).name} party={party} size={small ? "sm" : "md"} />;
