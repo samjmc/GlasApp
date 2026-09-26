@@ -1,11 +1,11 @@
 /**
  * News ingestion tables, in the `politics` schema.
  *
- * One writer (`server/news/ingest.ts`) inserts articles; the scoring pipeline claims and
- * marks them through `server/scoring/articleSource.ts`. Nothing else writes these tables.
+ * One writer (`server/news/ingest.ts`) inserts articles; the TD pipeline claims and marks
+ * them through `server/news/articleSource.ts`. Nothing else writes these tables.
  */
 import { sql } from 'drizzle-orm';
-import { type AnyPgColumn, boolean, check, index, integer, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
+import { type AnyPgColumn, boolean, check, index, integer, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import type { NewsCategory } from '../news';
 import { politics } from './politics';
 
@@ -28,8 +28,6 @@ export const newsSources = politics.table('news_sources', {
   /** NULL for the `manual` source, which has no feed. */
   feedUrl: text('feed_url'),
   logoUrl: text('logo_url'),
-  /** 0–1. */
-  credibility: real('credibility').notNull(),
   enabled: boolean('enabled').notNull().default(true),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });

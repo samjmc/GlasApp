@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  eloToPercent,
+  MIN_COMPONENTS_FOR_RANK,
   normalizePercent,
   overallFromPillars,
   parliamentaryScore,
@@ -8,38 +8,32 @@ import {
   scoreLabel,
 } from './weights';
 
-describe('eloToPercent', () => {
-  it('maps 1000..2000 onto 0..100 and clamps outside', () => {
-    expect(eloToPercent(1000)).toBe(0);
-    expect(eloToPercent(1500)).toBe(50);
-    expect(eloToPercent(2000)).toBe(100);
-    expect(eloToPercent(1234)).toBe(23);
-    expect(eloToPercent(900)).toBe(0);
-    expect(eloToPercent(2500)).toBe(100);
+describe('PILLAR_WEIGHTS', () => {
+  // News carries no weight: the score is built only from checkable Oireachtas facts.
+  it('has exactly the parliamentary and debate pillars, at 0.55 / 0.45', () => {
+    expect(Object.keys(PILLAR_WEIGHTS).sort()).toEqual(['debate', 'parliamentary']);
+    expect(PILLAR_WEIGHTS).toEqual({ parliamentary: 0.55, debate: 0.45 });
   });
 
-  it('treats missing as baseline', () => {
-    expect(eloToPercent(null)).toBe(50);
-    expect(eloToPercent(undefined)).toBe(50);
-    expect(eloToPercent(Number.NaN)).toBe(50);
+  it('ranks a TD only with at least two measurable components', () => {
+    expect(MIN_COMPONENTS_FOR_RANK).toBe(2);
   });
 });
 
 describe('overallFromPillars', () => {
   it('uses the declared weights when every pillar is present', () => {
-    const expected = Math.round(80 * PILLAR_WEIGHTS.news + 60 * PILLAR_WEIGHTS.parliamentary + 40 * PILLAR_WEIGHTS.debate);
-    expect(overallFromPillars({ news: 80, parliamentary: 60, debate: 40 })).toBe(expected);
+    const expected = Math.round(60 * PILLAR_WEIGHTS.parliamentary + 40 * PILLAR_WEIGHTS.debate);
+    expect(overallFromPillars({ parliamentary: 60, debate: 40 })).toBe(expected);
   });
 
   it('renormalises over the pillars that have data', () => {
-    // news .45 and parliamentary .30 → 60/40 split
-    expect(overallFromPillars({ news: 100, parliamentary: 0, debate: null })).toBe(60);
-    expect(overallFromPillars({ news: 70 })).toBe(70);
+    expect(overallFromPillars({ parliamentary: 70, debate: null })).toBe(70);
+    expect(overallFromPillars({ debate: 30 })).toBe(30);
   });
 
   it('is NULL when nothing has data', () => {
     expect(overallFromPillars({})).toBeNull();
-    expect(overallFromPillars({ news: null, parliamentary: undefined })).toBeNull();
+    expect(overallFromPillars({ parliamentary: null, debate: undefined })).toBeNull();
   });
 });
 
