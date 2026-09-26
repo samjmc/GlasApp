@@ -85,7 +85,25 @@ recalculateAll()                         recalculate.ts
   writeRollup()                          td_scores
 ```
 
-Also run by `npm run td-scoring -- --recalculate` and `POST /api/scores/recalculate` (admin).
+Also run by `npm run scores:recalculate` and `POST /api/scores/recalculate` (admin).
+`npm run td-scoring -- --recalculate` is an alias kept for one release.
+
+## News
+
+News is **not part of the score**. The news → TD pipeline (`server/news/tdPipeline.ts`,
+`npm run news:tds`, every two hours from the scheduler, and `POST /api/admin/td-scoring/run`)
+only records facts and makes questions:
+
+1. importance triage (newsworthiness, also the feed's "Top stories" order);
+2. find the TDs each article is substantially about and link them in `article_tds`
+   (`linkArticleTd`, idempotent), which feeds "In the news" on a TD's page;
+3. an article that passed triage and names at least one TD gets a daily-vote question
+   (`generateQuestionForArticle`). Until verified stances exist (`docs/plans/td-stances.md`),
+   that is the whole gate.
+
+Each event is processed once: ingest links same-event copies to the first report
+(`server/news/events.ts`, `news_articles.duplicate_of`), and only that canonical is claimed. A
+manual run on a duplicate's id (`npm run news:tds -- --article <id>`) processes its canonical.
 
 ## Getting a TD table
 
@@ -100,14 +118,14 @@ failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and un
 |---|---|
 | `tds` | who a TD is, plus the scoring inputs: question counts, vote and committee attendance |
 | `td_parliament_stats` | per-TD raw counts from `server/parliament/`, and `is_presiding` |
-| `td_scores` | one row per TD: the stored pillars, overall and ranks. `updated_at` is when the rollup last wrote it |
+| `td_scores` | one row per TD: the stored pillars, overall and ranks. `computed_at` is when the rollup last wrote it |
+| `article_tds` | article ↔ TD: this TD is named in this article. A fact, not a verdict |
 | `td_historical_baselines` | researched history per TD; shown, not scored |
 
-Still in the schema and not part of the score, until the facts-only migration drops them: the ELO,
-`news_score`, trend and story-count columns on `td_scores`, `td_score_history`, `party_scores`,
-and the news pipeline's `article_td_scores` / `td_policy_stances` (`server/scoring/pipeline.ts`,
-`panel.ts`). The news pipeline still writes the ELO columns; nothing that builds or shows the
-score reads them.
+The facts-only migration (`drizzle/*_facts_only_scoring.sql`) dropped the ELO, news, trend and
+story-count columns, `td_score_history` and `party_scores`, and renamed `article_td_scores` to
+`article_tds` without its verdict columns. `td_policy_stances` is still in the schema with no
+writer; part 3 (`docs/plans/td-stances.md`) replaces it.
 
 ## API — `/api/scores`
 
