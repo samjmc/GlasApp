@@ -46,6 +46,7 @@ dimension. Weights default to 1 and are capped at 3. Used for user↔TD, user↔
 ## Seams
 
 - `server/voting` calls `recomputeProfile(userId)` after each vote and `getIdeologyProfile(userId)`.
-- `server/scoring/panel.ts` records article stances through the adapter
-  `server/services/tdIdeologyProfileService.ts` (delete it when panel calls `recordTdEvidence`).
+- Nothing records `article` evidence any more: the scoring panel's ideology analyst was deleted
+  with the facts-only score. Stored rows stay until verified stances replace them
+  (`docs/plans/td-stances.md`).
 - A debate pipeline calls `recordTdEvidence({ source: 'debate', sourceRef: <speech id>, … })`.

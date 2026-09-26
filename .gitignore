@@ -46,6 +46,9 @@ lerna-debug.log*
 dist-ssr
 *.local
 
+# CI test report (.github/workflows/ci.yml)
+vitest-report.json
+
 # Large GeoJSON files (keep detailed-0.001 as it is the active one, ignore others to stay under 100MB)
 public/assets/ireland-constituencies-simplified-*.geojson
 attached_assets/*.geojson

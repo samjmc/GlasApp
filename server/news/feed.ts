@@ -2,7 +2,7 @@
  * Feed query parameters and the "today" window. Pure.
  */
 
-export const FEED_SORTS = ['score', 'recent', 'today'] as const;
+export const FEED_SORTS = ['top', 'recent', 'today'] as const;
 export type FeedSort = (typeof FEED_SORTS)[number];
 
 export const DEFAULT_PAGE_SIZE = 10;
@@ -22,10 +22,10 @@ function intParam(value: unknown, fallback: number, min: number, max: number): n
   return Math.min(Math.max(n, min), max);
 }
 
-/** Unknown sorts fall back to `score`, the feed's default tab. `highest` was its old name. */
+/** Unknown sorts fall back to `top`, the feed's default tab, so its old names `score` and `highest` still work. */
 export function parseFeedQuery(query: Record<string, unknown>): FeedQuery {
   const raw = typeof query.sort === 'string' ? query.sort : '';
-  const sort: FeedSort = raw === 'highest' ? 'score' : (FEED_SORTS as readonly string[]).includes(raw) ? (raw as FeedSort) : 'score';
+  const sort: FeedSort = (FEED_SORTS as readonly string[]).includes(raw) ? (raw as FeedSort) : 'top';
   return {
     sort,
     limit: intParam(query.limit, DEFAULT_PAGE_SIZE, 1, MAX_PAGE_SIZE),

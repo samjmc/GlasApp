@@ -294,7 +294,7 @@ export function isSubstantialMention(text: string, tdName: string): boolean {
   //
   // Since we removed bare last name from variations, any match here means we found the full name
   // or a title + name combination, so we can be more lenient
-  return fullNameMentions >= 1 || fullTextHasTitleWithLastName || hasFirstNameWithTitle;
+  return Boolean(fullNameMentions >= 1 || fullTextHasTitleWithLastName || hasFirstNameWithTitle);
 }
 
 /**

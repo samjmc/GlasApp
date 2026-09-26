@@ -31,7 +31,6 @@ run('quiz and ideology against Postgres', () => {
   let ideology: typeof import('./index');
   let quiz: typeof import('../quiz');
   let repo: typeof import('./repository');
-  let adapter: typeof import('../services/tdIdeologyProfileService');
   let partyBaseline: typeof import('./partyBaselines').partyBaseline;
 
   async function addTd(name: string, party: string | null): Promise<number> {
@@ -46,7 +45,6 @@ run('quiz and ideology against Postgres', () => {
     ideology = await import('./index');
     quiz = await import('../quiz');
     repo = await import('./repository');
-    adapter = await import('../services/tdIdeologyProfileService');
     partyBaseline = (await import('./partyBaselines')).partyBaseline;
   }, 60_000);
 
@@ -143,19 +141,6 @@ run('quiz and ideology against Postgres', () => {
       expect(await ideology.recordTdEvidence({ ...input, td: 'Nobody At All' })).toBe('unknown_td');
       const { rows } = await dbmod.pool.query('select welfare, economic from politics.td_ideology_evidence');
       expect(rows).toEqual([{ welfare: -8, economic: null }]); // NULL, not 0, where the evidence is silent
-    });
-
-    it('the scoring-panel adapter records one article stance, weighted once', async () => {
-      const id = await addTd('Panel Deputy', null);
-      await adapter.TDIdeologyProfileService.applyAdjustments(
-        'Panel Deputy',
-        { ...zero, globalism: 0.5 },
-        { sourceType: 'article', sourceId: 42, weight: 0.6, confidence: 0.8, sourceReliability: 0.9, sourceDate: new Date() },
-      );
-      const { rows } = await dbmod.pool.query('select td_id, source_ref, weight, globalism, economic from politics.td_ideology_evidence');
-      expect(rows).toHaveLength(1);
-      expect(rows[0]).toMatchObject({ td_id: id, source_ref: '42', globalism: 10, economic: null });
-      expect(rows[0].weight).toBeCloseTo(0.6, 5);
     });
 
     it('rejects a non-positive weight and an unknown source at the database', async () => {

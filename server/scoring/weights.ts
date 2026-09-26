@@ -1,30 +1,30 @@
 /**
  * The one place a score is turned into a number a person sees.
  *
- * - `eloToPercent` is the only ELO → 0–100 conversion in the codebase.
  * - `PILLAR_WEIGHTS` is the only weight table.
  * - `overallFromPillars` is the only way an overall score is produced.
  */
-
-export const ELO_FLOOR = 1000;
-export const ELO_CEILING = 2000;
+import type { ScoreLabel } from '@shared/scoresApi';
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
-/** 1000 → 0, 1500 → 50, 2000 → 100. NULL/NaN → 50 (baseline). */
-export function eloToPercent(elo: number | null | undefined): number {
-  if (elo === null || elo === undefined || Number.isNaN(elo)) return 50;
-  return Math.round(clamp((elo - ELO_FLOOR) / ((ELO_CEILING - ELO_FLOOR) / 100), 0, 100));
-}
-
+/**
+ * Only facts from the Oireachtas record count. News carried 0.45 until 2026-09-25; the
+ * remaining 0.30 / 0.25 are renormalised to 0.55 / 0.45.
+ */
 export const PILLAR_WEIGHTS = {
-  /** eloToPercent(overall_elo): every scored article, credibility-weighted and decayed. */
-  news: 0.45,
-  /** Questions asked and vote attendance, benchmark-relative. */
-  parliamentary: 0.3,
-  /** Debate performance from the debate subsystem. */
-  debate: 0.25,
+  /** Questions, Dáil vote attendance and committee attendance, benchmark-relative. */
+  parliamentary: 0.55,
+  /** Debate participation from the Official Report. */
+  debate: 0.45,
 } as const;
+
+/**
+ * Fewer measurable components than this and a TD gets no overall score and no rank: one
+ * number (say, vote attendance alone) is not enough to rank against TDs measured on four.
+ * Counted over questions, attendance, committees and debate.
+ */
+export const MIN_COMPONENTS_FOR_RANK = 2;
 
 export type Pillar = keyof typeof PILLAR_WEIGHTS;
 export type PillarScores = Partial<Record<Pillar, number | null>>;
@@ -36,8 +36,8 @@ export type PillarScores = Partial<Record<Pillar, number | null>>;
 
 /**
  * Weighted overall from whichever pillars have data. Weights renormalise over the present
- * pillars, so a TD with no debate record is scored on news and parliament alone rather than
- * being dragged to 50 by a pillar that has nothing to say. NULL when no pillar has data.
+ * pillars, so a TD with no debate record is scored on the parliamentary pillar alone rather
+ * than being dragged to 50 by a pillar that has nothing to say. NULL when no pillar has data.
  */
 export function overallFromPillars(scores: PillarScores): number | null {
   let weighted = 0;
@@ -114,8 +114,6 @@ export function normalizePercent(value: number | null | undefined): number | nul
   const v = value <= 1 && value >= 0 ? value * 100 : value;
   return Math.round(clamp(v, 0, 100));
 }
-
-export type ScoreLabel = 'Excellent' | 'Good' | 'Average' | 'Below Average' | 'Poor';
 
 export function scoreLabel(score: number): ScoreLabel {
   if (score >= 90) return 'Excellent';

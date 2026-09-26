@@ -11,7 +11,10 @@ import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
 import type { PartialVector } from './model';
 
 export const SOURCES = {
-  /** The scoring panel's Ideology Analyst, per (article, TD). ±0.5, 0 = no signal. */
+  /**
+   * Per (article, TD), ±0.5, 0 = no signal. Written only by the old scoring panel's Ideology
+   * Analyst, deleted with the facts-only score; stored rows stay until part 3 (td-stances.md).
+   */
   article: { max: 0.5 },
   /** Debate speech analysis. ±0.5, 0 = no signal. */
   debate: { max: 0.5 },

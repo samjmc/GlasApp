@@ -1,4 +1,4 @@
-import { requireAuth } from '../auth';
+import { requireAdmin, requireAuth } from '../auth';
 import { Router, Request, Response } from 'express';
 import { ActivityTracker } from '../services/activityTracker';
 import { z } from 'zod';
@@ -50,7 +50,7 @@ router.post('/log', requireAuth, async (req: Request, res: Response) => {
 router.get('/history', requireAuth, async (req: Request, res: Response) => {
   try {
     const userId = req.user!.id;
-    const limit = parseInt(req.query.limit as string) || 50;
+    const limit = Math.min(parseInt(req.query.limit as string) || 50, 200);
 
     const activities = await ActivityTracker.getUserActivity(userId, limit);
 
@@ -71,7 +71,7 @@ router.get('/history', requireAuth, async (req: Request, res: Response) => {
 router.get('/stats', requireAuth, async (req: Request, res: Response) => {
   try {
     const userId = req.user!.id;
-    const days = parseInt(req.query.days as string) || 30;
+    const days = Math.min(parseInt(req.query.days as string) || 30, 365);
 
     const stats = await ActivityTracker.getActivityStats(userId, days);
 
@@ -90,9 +90,9 @@ router.get('/stats', requireAuth, async (req: Request, res: Response) => {
 });
 
 // Get global platform statistics (admin only)
-router.get('/global-stats', requireAuth, async (req: Request, res: Response) => {
+router.get('/global-stats', requireAdmin, async (req: Request, res: Response) => {
   try {
-    const days = parseInt(req.query.days as string) || 7;
+    const days = Math.min(parseInt(req.query.days as string) || 7, 365);
     const stats = await ActivityTracker.getGlobalActivityStats(days);
 
     res.json({

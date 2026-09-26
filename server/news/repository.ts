@@ -4,6 +4,7 @@
 import { and, asc, desc, eq, gte, inArray, isNull, ne, notInArray, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { newsArticles, newsSources, type ArticleStatus, type NewNewsArticle } from '@shared/schema/news';
+import { articleTds } from '@shared/schema/politics';
 import type { EventCandidate } from './events';
 import type { SourceConfig } from './sources';
 import type { FeedQuery } from './feed';
@@ -33,7 +34,6 @@ export async function syncSources(sources: readonly SourceConfig[], database: Db
         homepageUrl: sql`excluded.homepage_url`,
         feedUrl: sql`excluded.feed_url`,
         logoUrl: sql`excluded.logo_url`,
-        credibility: sql`excluded.credibility`,
         enabled: sql`true`,
         updatedAt: sql`now()`,
       },
@@ -99,9 +99,9 @@ export async function insertArticles(rows: NewNewsArticle[], database: Db = db):
     .returning({ id: newsArticles.id, url: newsArticles.url });
 }
 
-// A row that moved a TD's score stays visible; a row with duplicates of its own stays their root.
+// A row linked to a TD stays visible; a row with duplicates of its own stays their root.
 const LINKABLE = sql`${newsArticles.status} in ('pending', 'skipped')
-  and not exists (select 1 from politics.article_td_scores v where v.article_id = ${newsArticles.id})
+  and not exists (select 1 from politics.article_tds v where v.article_id = ${newsArticles.id})
   and not exists (select 1 from politics.news_articles d where d.duplicate_of = ${newsArticles.id})`;
 
 /** Visible rows published since `since` that the event backfill may still link, oldest first. */
@@ -127,7 +127,7 @@ export async function linkDuplicate(id: number, of: number, database: Db = db): 
 }
 
 // ---------------------------------------------------------------------------
-// Scoring handoff
+// TD pipeline handoff (server/news/tdPipeline.ts)
 // ---------------------------------------------------------------------------
 
 export interface ClaimedArticle {
@@ -140,7 +140,6 @@ export interface ClaimedArticle {
   imageUrl: string | null;
   publishedAt: Date;
   sourceName: string;
-  credibility: number;
 }
 
 const claimedColumns = {
@@ -152,17 +151,16 @@ const claimedColumns = {
   imageUrl: newsArticles.imageUrl,
   publishedAt: newsArticles.publishedAt,
   sourceName: newsSources.name,
-  credibility: newsSources.credibility,
 };
 
 /**
- * Atomically take up to `limit` articles for one scoring run, newest first.
+ * Atomically take up to `limit` articles for one pipeline run, newest first.
  *
  * `FOR UPDATE SKIP LOCKED` means two concurrent runs always get disjoint rows, so an article
- * can never be scored (and its ELO applied) twice. A claim older than the lease is taken
+ * is never processed (and its LLM calls paid for) twice. A claim older than the lease is taken
  * again; after MAX_ATTEMPTS it is marked failed instead, so a poison article cannot loop.
  */
-export async function claimForScoring(limit: number, database: Db = db): Promise<ClaimedArticle[]> {
+export async function claimForPipeline(limit: number, database: Db = db): Promise<ClaimedArticle[]> {
   const lease = sql`now() - make_interval(hours => ${CLAIM_LEASE_HOURS})`;
   const maxAge = sql`now() - make_interval(days => ${MAX_SCORING_AGE_DAYS})`;
 
@@ -197,8 +195,8 @@ export async function claimForScoring(limit: number, database: Db = db): Promise
     .orderBy(desc(newsArticles.publishedAt));
 }
 
-/** The article to score for `id`: a duplicate is never scored, so it resolves to its canonical. */
-export async function findForScoring(id: number, database: Db = db): Promise<ClaimedArticle | null> {
+/** The article to process for `id`: a duplicate is never processed, so it resolves to its canonical. */
+export async function findForPipeline(id: number, database: Db = db): Promise<ClaimedArticle | null> {
   const rows = await database
     .select(claimedColumns)
     .from(newsArticles)
@@ -206,6 +204,11 @@ export async function findForScoring(id: number, database: Db = db): Promise<Cla
     .where(eq(newsArticles.id, sql`coalesce((select duplicate_of from politics.news_articles where id = ${id}), ${id})`))
     .limit(1);
   return rows[0] ?? null;
+}
+
+/** Record that this article names this TD. Idempotent: a second call keeps the first link. */
+export async function linkArticleTd(articleId: number, tdId: number, database: Db = db): Promise<void> {
+  await database.insert(articleTds).values({ articleId, tdId }).onConflictDoNothing({ target: [articleTds.articleId, articleTds.tdId] });
 }
 
 export async function saveContent(id: number, content: string, database: Db = db): Promise<void> {
@@ -259,11 +262,8 @@ export interface FeedRow {
   publishedAt: Date;
   source: string;
   sourceLogoUrl: string | null;
-  /** The strongest verdict on any TD in this article, −10..+10. NULL when no TD was scored. */
-  impact: number | null;
-  storyType: string | null;
-  sentiment: string | null;
-  affectedTds: Array<{ name: string; impactScore: number }>;
+  /** The TDs this article names (article_tds), in the order they were linked. */
+  affectedTds: Array<{ name: string }>;
   /** The first later copy of this event from each OTHER outlet, earliest first. */
   alsoReportedBy: Array<{ source: string; url: string }>;
 }
@@ -279,10 +279,7 @@ type RawFeedRow = {
   published_at: Date | string;
   source: string;
   source_logo_url: string | null;
-  impact: number | string | null;
-  story_type: string | null;
-  sentiment: string | null;
-  affected: Array<{ name: string; impactScore: number }> | null;
+  affected: Array<{ name: string }> | null;
   also_reported_by: Array<{ source: string; url: string }> | null;
 };
 
@@ -298,34 +295,25 @@ function toFeedRow(r: RawFeedRow): FeedRow {
     publishedAt: new Date(r.published_at),
     source: r.source,
     sourceLogoUrl: r.source_logo_url,
-    impact: r.impact === null ? null : Number(r.impact),
-    storyType: r.story_type,
-    sentiment: r.sentiment,
     affectedTds: r.affected ?? [],
     alsoReportedBy: r.also_reported_by ?? [],
   };
 }
 
 /**
- * The feed's SELECT, with the strongest verdict, every affected TD, and the other outlets that
- * reported the same event. Outlets compare by NAME: one outlet can have two feeds (RTÉ).
+ * The feed's SELECT, with every TD the article names and the other outlets that reported the
+ * same event. Outlets compare by NAME: one outlet can have two feeds (RTÉ).
  */
 function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQL {
   return sql`
     select a.id, a.title, a.summary, a.ai_summary, a.category, a.url, a.image_url, a.published_at,
            s.name as source, s.logo_url as source_logo_url,
-           top.impact, top.story_type, top.sentiment, aff.affected, rep.also_reported_by
+           aff.affected, rep.also_reported_by
       from politics.news_articles a
       join politics.news_sources s on s.id = a.source_id
       left join lateral (
-        select v.impact, v.story_type, v.sentiment
-          from politics.article_td_scores v
-         where v.article_id = a.id
-         order by abs(v.impact) desc
-         limit 1) top on true
-      left join lateral (
-        select json_agg(json_build_object('name', t.name, 'impactScore', v.impact) order by abs(v.impact) desc) as affected
-          from politics.article_td_scores v
+        select json_agg(json_build_object('name', t.name) order by v.created_at, t.name) as affected
+          from politics.article_tds v
           join politics.tds t on t.id = v.td_id
          where v.article_id = a.id) aff on true
       left join lateral (
@@ -341,7 +329,8 @@ function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQ
      limit ${limit} offset ${offset}`;
 }
 
-const BY_IMPACT = sql`(top.impact is null), abs(top.impact) desc, a.published_at desc, a.id desc`;
+/** Most newsworthy first (the pipeline's importance triage): newsworthiness, not a verdict on anyone. */
+const BY_IMPORTANCE = sql`(a.importance_score is null), a.importance_score desc, a.published_at desc, a.id desc`;
 const BY_DATE = sql`a.published_at desc, a.id desc`;
 
 /**
@@ -360,7 +349,7 @@ async function page(filter: SQL, orderBy: SQL, limit: number, offset: number, da
 }
 
 /**
- * One feed page. `today` is the highest-impact articles since local midnight, falling back to
+ * One feed page. `today` is the most important articles since local midnight, falling back to
  * the last `fallbackDays` when nothing was published today.
  */
 export async function feedPage(
@@ -370,13 +359,13 @@ export async function feedPage(
 ): Promise<{ rows: FeedRow[]; total: number }> {
   const everything = sql`true`;
   if (query.sort === 'recent') return page(everything, BY_DATE, query.limit, query.offset, database);
-  if (query.sort === 'score') return page(everything, BY_IMPACT, query.limit, query.offset, database);
+  if (query.sort === 'top') return page(everything, BY_IMPORTANCE, query.limit, query.offset, database);
 
-  const today = await page(sql`a.published_at >= ${window.since}`, BY_IMPACT, query.limit, query.offset, database);
+  const today = await page(sql`a.published_at >= ${window.since}`, BY_IMPORTANCE, query.limit, query.offset, database);
   if (today.total > 0) return today;
   return page(
     sql`a.published_at >= now() - make_interval(days => ${window.fallbackDays})`,
-    BY_IMPACT,
+    BY_IMPORTANCE,
     query.limit,
     query.offset,
     database,
@@ -390,10 +379,10 @@ export async function searchRecent(topic: string | undefined, limit: number, dat
   return (await page(where, BY_DATE, limit, 0, database)).rows;
 }
 
-/** Newest articles in which the named TD was scored. */
+/** Newest articles that name the TD. */
 export async function feedForTd(name: string, limit: number, database: Db = db): Promise<FeedRow[]> {
   const where = sql`exists (
-    select 1 from politics.article_td_scores v join politics.tds t on t.id = v.td_id
+    select 1 from politics.article_tds v join politics.tds t on t.id = v.td_id
      where v.article_id = a.id and lower(t.name) = lower(${name.trim()}))`;
   return (await page(where, BY_DATE, limit, 0, database)).rows;
 }

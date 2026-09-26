@@ -6,7 +6,9 @@
  */
 
 import axios from 'axios';
-import { supabaseDb } from '../db';
+import { eq, sql } from 'drizzle-orm';
+import { db, shutdown } from '../db';
+import { tds as tdsTable } from '@shared/schema/politics';
 
 const BASE_URL = 'https://api.oireachtas.ie/v1';
 
@@ -102,7 +104,7 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
         const member = result.member;
         
         // Find current Dáil membership
-        const currentMembership = member.memberships?.find((m) => 
+        const currentMembership = member.memberships?.find((m: { membership: { house?: { houseCode?: string; houseNo?: string }; dateRange?: { end?: string | null } } }) =>
           m.membership.house?.houseCode === 'dail' &&
           m.membership.house?.houseNo === '34' &&
           m.membership.dateRange?.end === null
@@ -152,38 +154,21 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
 }
 
 async function updateDatabaseWithGender(tds: TDGenderInfo[]): Promise<void> {
-  if (!supabaseDb) {
-    console.error('❌ Database not connected');
-    return;
-  }
-  
   console.log('\n💾 Updating database with gender information...');
-  
+
   let updated = 0;
   let notFound = 0;
   let alreadySet = 0;
-  
+
   for (const td of tds) {
     try {
-      // Try exact match first
-      let { data: existingTD, error: fetchError } = await supabaseDb
-        .from('td_scores')
-        .select('id, politician_name, gender')
-        .eq('politician_name', td.name)
-        .maybeSingle();
-      
-      // If not found, try case-insensitive match
-      if (!existingTD) {
-        const { data: fuzzyMatch } = await supabaseDb
-          .from('td_scores')
-          .select('id, politician_name, gender')
-          .ilike('politician_name', td.name);
-        
-        if (fuzzyMatch && fuzzyMatch.length > 0) {
-          existingTD = fuzzyMatch[0];
-        }
-      }
-      
+      // Case-insensitive name match (tds_name_lower_idx makes names unique that way)
+      const [existingTD] = await db
+        .select({ id: tdsTable.id, gender: tdsTable.gender })
+        .from(tdsTable)
+        .where(sql`lower(${tdsTable.name}) = lower(${td.name})`)
+        .limit(1);
+
       if (!existingTD) {
         console.log(`   ⚠️  TD not found in database: ${td.name}`);
         notFound++;
@@ -198,17 +183,9 @@ async function updateDatabaseWithGender(tds: TDGenderInfo[]): Promise<void> {
       }
       
       // Update gender
-      const { error: updateError } = await supabaseDb
-        .from('td_scores')
-        .update({ gender: td.gender })
-        .eq('id', existingTD.id);
-      
-      if (updateError) {
-        console.error(`   ❌ Failed to update ${td.name}:`, updateError.message);
-      } else {
-        console.log(`   ✅ Updated ${td.name}: ${td.gender} (${td.source})`);
-        updated++;
-      }
+      await db.update(tdsTable).set({ gender: td.gender, updatedAt: new Date() }).where(eq(tdsTable.id, existingTD.id));
+      console.log(`   ✅ Updated ${td.name}: ${td.gender} (${td.source})`);
+      updated++;
       
     } catch (error: unknown) {
       console.error(`   ❌ Error processing ${td.name}:`, errorMessage(error));
@@ -241,13 +218,10 @@ async function main() {
     await updateDatabaseWithGender(tds);
     
     // Verify results
-    if (supabaseDb) {
-      const { data: stats } = await supabaseDb
-        .from('td_scores')
-        .select('gender')
-        .eq('is_active', true);
-      
-      if (stats) {
+    {
+      const stats = await db.select({ gender: tdsTable.gender }).from(tdsTable).where(eq(tdsTable.isActive, true));
+
+      if (stats.length > 0) {
         const total = stats.length;
         const withGender = stats.filter(t => t.gender && t.gender.trim() !== '').length;
         const male = stats.filter(t => t.gender?.toLowerCase() === 'male').length;
@@ -263,6 +237,7 @@ async function main() {
     }
     
     console.log('✅ Gender population complete!\n');
+    await shutdown();
     process.exit(0);
     
   } catch (error: unknown) {

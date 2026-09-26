@@ -3,7 +3,7 @@
  * surface; everything else in this folder is internal.
  *
  *   recomputeProfile / getIdeologyProfile   users (called by voting and the quiz)
- *   recordTdEvidence                        a stance by a TD (scoring panel, debates)
+ *   recordTdEvidence                        a stance by a TD (debates)
  *   matchesFor                              TDs and parties closest to a position
  *   recalculateAll                          rebuild every profile, no model calls
  */
