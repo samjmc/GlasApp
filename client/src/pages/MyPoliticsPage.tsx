@@ -16,7 +16,9 @@ import { PartyDot, TDAvatar } from '@/components/pulse/Party';
 import { PageHeader } from '@/components/PageHeader';
 import IdeologyTimeSeriesChartEnhanced from '@/components/IdeologyTimeSeriesChartEnhanced';
 import { PersonalRankingsTab } from '@/components/PersonalRankingsTab';
+import { MatchConfidence, MatchListNote, rowBadges } from '@/components/MatchConfidence';
 import { fetchMyIdeology, fetchMyMatches } from '@/lib/ideologyApi';
+import { evidenceSummary } from '@/lib/ideologyConfidence';
 import { describePosition } from '@/lib/ideologyDisplay';
 import { partyStyle } from '@/lib/parties';
 import { queryKeys } from '@/lib/queryKeys';
@@ -51,7 +53,8 @@ export default function MyPoliticsPage() {
     enabled: signedIn,
   });
 
-  const vector = vectorQuery.data ?? null;
+  const vector = vectorQuery.data?.vector ?? null;
+  const dimensionConfidence = vectorQuery.data?.confidence;
   const rankings = matchesQuery.data?.tds ?? [];
   const partyMatches = matchesQuery.data?.parties ?? [];
   const hasProfile = vector !== null && matchesQuery.data?.hasProfile !== false;
@@ -134,6 +137,9 @@ export default function MyPoliticsPage() {
   }
 
   const dominant = dominantDimension(vector);
+  const topMatches = rankings.slice(0, 5);
+  const topBadges = rowBadges(topMatches);
+  const partyBadges = rowBadges(partyMatches);
 
   return (
     <div className="flex flex-col gap-5 py-2">
@@ -168,19 +174,30 @@ export default function MyPoliticsPage() {
               <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
                 {IDEOLOGY_DIMENSIONS.map((dim) => {
                   const poles = DIMENSION_POLES[dim];
+                  const notMeasured = dimensionConfidence?.[dim].level === 'none';
                   return (
                     <li key={dim} className="flex flex-col gap-1">
                       <span className="flex items-baseline justify-between text-[13px] font-semibold">
                         {poles.label}
-                        <span className="font-display tabular-nums">{formatValue(vector[dim])}</span>
+                        {notMeasured ? (
+                          <span data-testid="dimension-not-measured" data-dimension={dim} className="text-[12px] font-normal text-hero-soft">
+                            Not measured yet
+                          </span>
+                        ) : (
+                          <span className="font-display tabular-nums">{formatValue(vector[dim])}</span>
+                        )}
                       </span>
-                      <span className="relative block h-1.5 rounded-full bg-hero-muted" aria-hidden="true">
-                        <span className="absolute -top-0.5 left-1/2 h-2.5 w-px bg-hero-soft" />
-                        <span
-                          className="absolute -top-[3px] h-3 w-3 -translate-x-1/2 rounded-full bg-primary"
-                          style={{ left: `${toPercent(vector[dim])}%` }}
-                        />
-                      </span>
+                      {notMeasured ? (
+                        <span className="block h-1.5 rounded-full border border-dashed border-hero-soft" aria-hidden="true" />
+                      ) : (
+                        <span className="relative block h-1.5 rounded-full bg-hero-muted" aria-hidden="true">
+                          <span className="absolute -top-0.5 left-1/2 h-2.5 w-px bg-hero-soft" />
+                          <span
+                            className="absolute -top-[3px] h-3 w-3 -translate-x-1/2 rounded-full bg-primary"
+                            style={{ left: `${toPercent(vector[dim])}%` }}
+                          />
+                        </span>
+                      )}
                       <span className="flex justify-between text-[11px] text-hero-soft">
                         <span>{poles.negative}</span>
                         <span>{poles.positive}</span>
@@ -196,13 +213,14 @@ export default function MyPoliticsPage() {
 
             <section className={cardClass}>
               <h2 className="font-display text-[22px] font-bold">Top matches</h2>
+              <MatchListNote kind="td" items={topMatches} measured={matchesQuery.data?.measured} />
               {rankings.length === 0 ? (
                 <EmptyState icon={Users} title="No TD matches yet">
                   We have no TD positions to compare with yet.
                 </EmptyState>
               ) : (
                 <ol className="flex flex-col gap-1">
-                  {rankings.slice(0, 5).map((match) => (
+                  {topMatches.map((match) => (
                     <li key={match.tdId}>
                       <Link
                         href={`/td/${encodeURIComponent(match.name)}`}
@@ -210,10 +228,15 @@ export default function MyPoliticsPage() {
                       >
                         <TDAvatar name={match.name} party={match.party} imageUrl={match.imageUrl} />
                         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                          <span className="truncate text-[15px] font-bold">{match.name}</span>
+                          <span className="flex min-w-0 items-center gap-2">
+                            <span className="truncate text-[15px] font-bold">{match.name}</span>
+                            {topBadges && <MatchConfidence kind="td" confidence={match.confidence} />}
+                          </span>
                           <span className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
                             <PartyDot party={match.party} />
-                            <span className="truncate">{partyStyle(match.party).name}</span>
+                            <span className="truncate">
+                              {[partyStyle(match.party).name, evidenceSummary(match.evidenceBySource)].filter(Boolean).join(' · ')}
+                            </span>
                           </span>
                         </span>
                         <span className="font-display text-[22px] font-bold tabular-nums text-primary">
@@ -244,6 +267,7 @@ export default function MyPoliticsPage() {
               <h2 className="font-display text-[22px] font-bold">Party alignment</h2>
               <p className="text-[13px] text-muted-foreground">How close each party&apos;s TDs sit to your views, on average.</p>
             </div>
+            <MatchListNote kind="party" items={partyMatches} measured={matchesQuery.data?.measured} />
             {partyMatches.length === 0 ? (
               <EmptyState icon={Users} title="No party matches yet">
                 We have no party positions to compare with yet.
@@ -262,7 +286,10 @@ export default function MyPoliticsPage() {
                         <span className="flex items-center gap-3">
                           <TDAvatar name={style.name} party={match.party} />
                           <span className="flex min-w-0 flex-1 flex-col">
-                            <span className="truncate text-base font-bold">{style.name}</span>
+                            <span className="flex min-w-0 items-center gap-2">
+                              <span className="truncate text-base font-bold">{style.name}</span>
+                              {partyBadges && <MatchConfidence kind="party" confidence={match.confidence} />}
+                            </span>
                             <span className="text-xs text-muted-foreground">
                               From {match.tdCount} TD{match.tdCount === 1 ? '' : 's'}
                             </span>

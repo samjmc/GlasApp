@@ -7,8 +7,10 @@
 import { apiRequest } from "@/lib/queryClient";
 import { IDEOLOGY_DIMENSIONS } from "@shared/ideology";
 import type { IdeologyDimension, IdeologyVector } from "@shared/ideology";
+import type { Matches, TdIdeology, UserIdeologyDetail } from "@shared/ideologyMatch";
 import type { QuizResponse, QuizResult } from "@shared/quiz";
-import type { TdIssues } from "@shared/stancesApi";
+
+export type { Matches, PartyMatch, TdMatch } from "@shared/ideologyMatch";
 
 type Envelope<T, M = undefined> =
   | { success: true; data: T; meta?: M }
@@ -16,33 +18,6 @@ type Envelope<T, M = undefined> =
 
 /** Per-dimension importance, 0..3 (1 = neutral). */
 export type DimensionWeights = Record<IdeologyDimension, number>;
-
-export interface TdMatch {
-  tdId: number;
-  name: string;
-  party: string;
-  constituency: string;
-  imageUrl: string | null;
-  alignment: number;
-  evidenceCount: number;
-  closest: IdeologyDimension[];
-  furthest: IdeologyDimension[];
-  /** Daily-vote questions the signed-in user and this TD both answered. Absent on the anonymous path. */
-  issues?: TdIssues;
-}
-
-export interface PartyMatch {
-  party: string;
-  alignment: number;
-  tdCount: number;
-  closest: IdeologyDimension[];
-  furthest: IdeologyDimension[];
-}
-
-export interface Matches {
-  tds: TdMatch[];
-  parties: PartyMatch[];
-}
 
 export interface PartyProfile {
   party: string;
@@ -89,9 +64,10 @@ export async function fetchMyQuizResults(): Promise<QuizResult[]> {
   return (await call<QuizResult[]>("GET", "/api/quiz/me")).data;
 }
 
-/** Signed-in user's current profile; null until they take the quiz or vote. */
-export async function fetchMyIdeology(): Promise<IdeologyVector | null> {
-  return (await call<{ vector: IdeologyVector | null }>("GET", "/api/ideology/me")).data.vector;
+/** Signed-in user's current position with its confidence per dimension; null until they take the quiz or vote. */
+export async function fetchMyIdeology(): Promise<UserIdeologyDetail | null> {
+  const { data } = await call<UserIdeologyDetail | { vector: null; confidence: null }>("GET", "/api/ideology/me");
+  return data.vector === null ? null : data;
 }
 
 export async function fetchMyTimeline(party?: string): Promise<IdeologyTimeline> {
@@ -99,20 +75,28 @@ export async function fetchMyTimeline(party?: string): Promise<IdeologyTimeline>
   return (await call<IdeologyTimeline>("GET", `/api/ideology/me/timeline${qs}`)).data;
 }
 
-/** `tdId` asks the server to fill that TD's shared-issue items as well as the top 5. */
+/**
+ * `tdId` asks the server to fill that TD's shared-issue items as well as the top 5. `measured` =
+ * the dimensions the user has evidence on; the matches use only those.
+ */
 export async function fetchMyMatches(
   weights?: Partial<DimensionWeights>,
   tdId?: number,
-): Promise<Matches & { hasProfile: boolean }> {
+): Promise<Matches & { hasProfile: boolean; measured: IdeologyDimension[] }> {
   const w = weightsParam(weights);
   const params: string[] = [];
   if (w) params.push(`weights=${encodeURIComponent(w)}`);
   if (tdId !== undefined) params.push(`td=${tdId}`);
-  const { data, meta } = await call<Matches, { hasProfile: boolean }>(
+  const { data, meta } = await call<Matches, { hasProfile: boolean; measured: IdeologyDimension[] }>(
     "GET",
     `/api/ideology/me/matches${params.length > 0 ? `?${params.join("&")}` : ""}`,
   );
-  return { ...data, hasProfile: meta?.hasProfile ?? true };
+  return { ...data, hasProfile: meta?.hasProfile ?? true, measured: meta?.measured ?? [] };
+}
+
+/** The TD profile's ideology card: position, baseline flag and the evidence behind it. */
+export async function fetchTdIdeology(tdId: number): Promise<TdIdeology> {
+  return (await call<TdIdeology>("GET", `/api/ideology/td/${tdId}`)).data;
 }
 
 /** Public: matches for a vector that is not saved (anonymous quiz takers). */
