@@ -93,14 +93,14 @@ run('quiz and ideology against Postgres', () => {
 
   describe('user profiles', () => {
     it('folds votes into the quiz position', async () => {
-      // economic +10 from one of five economic questions: weight 10 × 1/5 = 2
+      // economic +10 from one of six economic questions: weight 10 × 1/6 = 5/3
       await quiz.submitQuiz('user-b', [{ questionId: 1, answerIndex: 2 }]);
       votes.byUser.set('user-b', [
         { questionId: 1, optionKey: 'option_a', vector: { ...zero, economic: -2, globalism: 1 }, weight: 1, confidence: null, votedAt: new Date() },
       ]);
       await ideology.recomputeProfile('user-b');
       const p = (await ideology.getIdeologyProfile('user-b'))!;
-      expect(p.economic).toBeCloseTo((10 * 2 - 10 * 1) / 3, 1); // vote −2 → −10 on the profile scale
+      expect(p.economic).toBeCloseTo((10 * (5 / 3) - 10 * 1) / (5 / 3 + 1), 1); // vote −2 → −10 on the profile scale
       expect(p.globalism).toBe(5); // only the vote speaks to globalism
     });
 
