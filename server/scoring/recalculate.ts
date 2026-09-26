@@ -1,6 +1,6 @@
 /**
  * Derived scores: pillars, overall and ranks, recomputed from the Oireachtas facts. Runs
- * after every parliament sync and pipeline batch, and on the admin trigger. Party scores
+ * after every parliament sync, from `npm run scores:recalculate`, and on the admin trigger. Party scores
  * are not stored: the API computes them on read from the members' overall scores.
  */
 import { loadDebateScores } from './debateInputs';

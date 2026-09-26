@@ -1,6 +1,6 @@
 import cron from "node-cron";
 import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
-import { runPipeline } from "../scoring";
+import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
 import { runSync as runParliamentSync } from "../parliament";
 
@@ -8,15 +8,15 @@ import { runSync as runParliamentSync } from "../parliament";
 export function initScheduler() {
   console.log("⏰ Scheduler initialized.");
   console.log("   📰 News ingest: every 2 hours, at :30 on odd hours");
-  console.log("   🎯 TD Scoring: Every 2 hours");
+  console.log("   🔗 News → TD links and daily-vote questions: every 2 hours");
   console.log("   🗞️ Daily Briefing: 7:00 AM Dublin");
   console.log("   🕵️ QA Audit: Sundays at midnight");
 
   // ═══════════════════════════════════════════════════════════════════
-  // NEWS SCORING PIPELINE (Multi-Agent Team)
+  // NEWS PIPELINE (news is not part of any TD's score)
   // ═══════════════════════════════════════════════════════════════════
 
-  // News ingest - 30 minutes before each scoring run, so scoring sees fresh articles.
+  // News ingest - 30 minutes before each TD pipeline run, so it sees fresh articles.
   cron.schedule('30 1-23/2 * * *', async () => {
     try {
       const stats = await ingest();
@@ -29,29 +29,26 @@ export function initScheduler() {
     timezone: "Europe/Dublin"
   });
 
-  // TD Scoring - Every 2 hours
-  // Full multi-agent scoring (6-8 LLM calls per article)
-  // Updates TD ELO scores, ideology profiles, generates policy opportunities
-  // Cost: ~$0.05-0.10 per unique event
+  // News → TD pipeline - every 2 hours: importance triage, link each article to the TDs it
+  // names, and make daily-vote questions. It scores nobody.
   cron.schedule('0 */2 * * *', async () => {
-    console.log("\n🎯 [Scheduler] Running TD Scoring (Multi-Agent Team)...");
+    console.log("\n🔗 [Scheduler] Running the news → TD pipeline...");
     try {
-      const stats = await runPipeline({
+      const stats = await runTdPipeline({
         batchSize: 50,
         topPercentile: 25,
         minImportanceScore: 40
       });
-      console.log(`✅ [Scheduler] TD Scoring complete:`);
+      console.log(`✅ [Scheduler] News → TD pipeline complete:`);
       console.log(`   • Articles processed: ${stats.articlesProcessed}`);
-      console.log(`   • TDs updated: ${stats.tdsUpdated}`);
+      console.log(`   • TD links: ${stats.tdsLinked}`);
       if (stats.errors > 0) {
         console.warn(`   ⚠️ Errors: ${stats.errors}`);
       }
     } catch (error: unknown) {
-      console.error("❌ [Scheduler] TD Scoring failed:", error.message);
+      console.error("❌ [Scheduler] News → TD pipeline failed:", error instanceof Error ? error.message : error);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 
@@ -60,8 +57,8 @@ export function initScheduler() {
   // ═══════════════════════════════════════════════════════════════════
 
   // Parliament sync - daily at 04:45: roster, divisions, debates, committees, bills,
-  // questions, then TD scores. Not on the hour: TD scoring runs at every even hour and the
-  // two writing the same score rows at once deadlocked on 2026-09-24.
+  // questions, then TD scores. Not on the hour: the old news scoring ran at every even hour
+  // and the two writing the same score rows at once deadlocked on 2026-09-24.
   cron.schedule('45 4 * * *', async () => {
     try {
       const s = await runParliamentSync();
@@ -89,7 +86,6 @@ export function initScheduler() {
         console.error("❌ [Scheduler] Failed to run Daily Briefing:", error);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 }

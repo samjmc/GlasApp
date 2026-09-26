@@ -34,20 +34,35 @@ export async function ensureDatabase(url: string): Promise<void> {
   }
 }
 
-/** Drop the politics schema and apply every migration in journal order. */
-export async function applyAllMigrations(pool: { query: (sql: string) => Promise<unknown> }): Promise<string[]> {
+type Queryable = { query: (sql: string) => Promise<unknown> };
+
+/** Every migration tag, in journal order. */
+export function journalTags(): string[] {
   const journal = JSON.parse(fs.readFileSync(path.join(DRIZZLE_DIR, 'meta', '_journal.json'), 'utf8')) as {
     entries: Array<{ idx: number; tag: string }>;
   };
-  const tags = [...journal.entries].sort((a, b) => a.idx - b.idx).map((e) => e.tag);
-  await pool.query('drop schema if exists politics cascade');
-  for (const tag of tags) {
-    const migration = fs.readFileSync(path.join(DRIZZLE_DIR, `${tag}.sql`), 'utf8');
-    // drizzle-kit separates statements with a marker; Postgres wants them one at a time.
-    for (const statement of migration.split('--> statement-breakpoint')) {
-      const sql = statement.trim();
-      if (sql) await pool.query(sql);
-    }
+  return [...journal.entries].sort((a, b) => a.idx - b.idx).map((e) => e.tag);
+}
+
+/** Apply one migration file. */
+export async function applyMigration(pool: Queryable, tag: string): Promise<void> {
+  const migration = fs.readFileSync(path.join(DRIZZLE_DIR, `${tag}.sql`), 'utf8');
+  // drizzle-kit separates statements with a marker; Postgres wants them one at a time.
+  for (const statement of migration.split('--> statement-breakpoint')) {
+    const sql = statement.trim();
+    if (sql) await pool.query(sql);
   }
+}
+
+/**
+ * Drop the politics schema and apply every migration in journal order. With `stopBefore`,
+ * stop just before that tag, so a test can seed the old shape and then apply it.
+ */
+export async function applyAllMigrations(pool: Queryable, stopBefore?: string): Promise<string[]> {
+  const all = journalTags();
+  if (stopBefore && !all.includes(stopBefore)) throw new Error(`No migration ${stopBefore} in the journal`);
+  const tags = stopBefore ? all.slice(0, all.indexOf(stopBefore)) : all;
+  await pool.query('drop schema if exists politics cascade');
+  for (const tag of tags) await applyMigration(pool, tag);
   return tags;
 }

@@ -19,10 +19,10 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "sync-tds": "tsx server/jobs/sync-tds.ts",
+    "news:tds": "tsx server/jobs/news-tds.ts",
+    "scores:recalculate": "tsx server/jobs/scores-recalculate.ts",
     "td-scoring": "tsx server/jobs/td-scoring.ts",
     "ideology": "tsx server/jobs/ideology.ts",
-    "generate-summaries": "tsx scripts/generate-td-historical-summaries.ts",
-    "generate-summaries:template": "tsx scripts/generate-td-summaries-template.ts",
     "parliament:sync": "tsx server/jobs/parliament-sync.ts"
   },
   "dependencies": {

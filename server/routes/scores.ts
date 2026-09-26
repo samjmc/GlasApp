@@ -49,7 +49,7 @@ export function tdCard({ td, score, stats }: TdWithScore): TdCard {
     nationalRank: score?.nationalRank ?? null,
     partyRank: score?.partyRank ?? null,
     constituencyRank: score?.constituencyRank ?? null,
-    computedAt: score?.updatedAt.toISOString() ?? null,
+    computedAt: score?.computedAt?.toISOString() ?? null,
   };
 }
 
@@ -103,7 +103,7 @@ router.get(
     const rows = await repo.listActive();
     const ranked = rows.filter((r) => r.score?.overallScore != null).map(tdCard);
     const computedAt = rows.reduce<string | null>((latest, r) => {
-      const at = r.score?.updatedAt.toISOString() ?? null;
+      const at = r.score?.computedAt?.toISOString() ?? null;
       return at && (!latest || at > latest) ? at : latest;
     }, null);
     const data: ScoresWidget = {

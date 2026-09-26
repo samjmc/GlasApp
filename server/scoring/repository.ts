@@ -4,10 +4,7 @@
 import { and, asc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import {
-  articleTdScores,
   tdHistoricalBaselines,
-  tdPolicyStances,
-  tdScoreHistory,
   tdScores,
   tds,
   type Td,
@@ -16,7 +13,6 @@ import {
 } from '@shared/schema/politics';
 import type { TdParliamentStatsRow } from '@shared/schema/parliament';
 import { allStats } from '../parliament/repository';
-import { type EloChange, type EloRatings, baselineRatings } from './elo';
 import { questionsAsked, type RollupInput, type RollupResult } from './rollup';
 import { planTdSync, type ExistingTd, type TdSeed, type TdSyncPlan } from './tdSync';
 
@@ -172,99 +168,6 @@ export async function updateParliamentaryActivity(
   return updated;
 }
 
-export function ratingsOf(score: TdScoreRow | null): EloRatings {
-  if (!score) return baselineRatings();
-  return {
-    overall: score.overallElo,
-    transparency: score.transparencyElo,
-    effectiveness: score.effectivenessElo,
-    integrity: score.integrityElo,
-    consistency: score.consistencyElo,
-  };
-}
-
-export interface ArticleMeta {
-  articleId: number;
-  credibility: number;
-  confidence: number;
-}
-
-/**
- * Persist one article's effect on one TD: new ratings, story count, and one history
- * row per rating that moved. Atomic.
- */
-export async function applyElo(
-  tdId: number,
-  updated: EloRatings,
-  changes: EloChange[],
-  meta: ArticleMeta,
-  database: Db = db,
-): Promise<void> {
-  if (changes.length === 0) return;
-  const now = new Date();
-  await database.transaction(async (tx) => {
-    await tx
-      .insert(tdScores)
-      .values({
-        tdId,
-        overallElo: updated.overall,
-        transparencyElo: updated.transparency,
-        effectivenessElo: updated.effectiveness,
-        integrityElo: updated.integrity,
-        consistencyElo: updated.consistency,
-        totalStories: 1,
-        lastScoredAt: now,
-        updatedAt: now,
-      })
-      .onConflictDoUpdate({
-        target: tdScores.tdId,
-        set: {
-          overallElo: updated.overall,
-          transparencyElo: updated.transparency,
-          effectivenessElo: updated.effectiveness,
-          integrityElo: updated.integrity,
-          consistencyElo: updated.consistency,
-          totalStories: sql`${tdScores.totalStories} + 1`,
-          lastScoredAt: now,
-          updatedAt: now,
-        },
-      });
-    await tx.insert(tdScoreHistory).values(
-      changes.map((c) => ({
-        tdId,
-        articleId: meta.articleId,
-        dimension: c.key,
-        oldElo: c.oldElo,
-        newElo: c.newElo,
-        delta: c.delta,
-        impact: c.impact,
-        credibility: meta.credibility,
-        confidence: meta.confidence,
-      })),
-    );
-  });
-}
-
-export type ArticleScoreInput = typeof articleTdScores.$inferInsert;
-
-export async function upsertArticleScore(row: ArticleScoreInput, database: Db = db): Promise<void> {
-  const { id: _id, createdAt: _c, ...set } = row;
-  await database
-    .insert(articleTdScores)
-    .values(row)
-    .onConflictDoUpdate({ target: [articleTdScores.articleId, articleTdScores.tdId], set });
-}
-
-export type PolicyStanceInput = typeof tdPolicyStances.$inferInsert;
-
-export async function upsertPolicyStance(row: PolicyStanceInput, database: Db = db): Promise<void> {
-  const { id: _id, createdAt: _c, ...set } = row;
-  await database
-    .insert(tdPolicyStances)
-    .values(row)
-    .onConflictDoUpdate({ target: [tdPolicyStances.articleId, tdPolicyStances.tdId], set });
-}
-
 /** Everything the rollup needs, for active TDs. Debate scores are supplied by the caller. */
 export async function rollupInputs(
   debateScores: Map<number, number>,
@@ -288,14 +191,13 @@ export async function writeRollup(results: RollupResult[], database: Db = db): P
   await database.transaction(async (tx) => {
     for (const r of results) {
       const set = {
-        // News no longer counts; clear any value an older rollup stored.
-        newsScore: null,
         parliamentaryScore: r.parliamentaryScore,
         debateScore: r.debateScore,
         overallScore: r.overallScore,
         nationalRank: r.nationalRank,
         partyRank: r.partyRank,
         constituencyRank: r.constituencyRank,
+        computedAt: now,
         updatedAt: now,
       };
       await tx

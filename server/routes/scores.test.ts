@@ -69,7 +69,7 @@ function td(id: number, name: string, party: string, constituency: string, overa
     },
     score: overallScore === null ? null : {
       tdId: id, overallScore, parliamentaryScore: 70, debateScore: 40,
-      nationalRank: 1, partyRank: 1, constituencyRank: 1, updatedAt: COMPUTED_AT,
+      nationalRank: 1, partyRank: 1, constituencyRank: 1, computedAt: COMPUTED_AT, updatedAt: COMPUTED_AT,
     },
     stats: {
       tdId: id, memberSince: '2024-11-29', isPresiding, divisionsEligible: 500, votesCast: 440, sittingDays: 90,

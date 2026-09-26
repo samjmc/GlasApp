@@ -1,11 +1,9 @@
 /**
  * TD scoring. The only public surface; everything else in this folder is internal.
  *
- *   runPipeline()      score new articles, then recalculate
  *   recalculateAll()   derived scores and ranks from the Oireachtas facts
  *   repository         reads for the API
  */
-export { runPipeline, scoreArticleById, type PipelineOptions, type PipelineStats } from './pipeline';
 export { recalculateAll, type RecalculateSummary } from './recalculate';
 export * as repository from './repository';
 export { scoreLabel, PILLAR_WEIGHTS } from './weights';

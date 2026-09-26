@@ -12,7 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
+import { applyAllMigrations, applyMigration, ensureDatabase, journalTags, testDatabaseUrl } from '../testing/migrations';
 
 const url = testDatabaseUrl('news');
 const run = describe.skipIf(!url);
@@ -46,7 +46,7 @@ run('news repository against Postgres', () => {
   });
 
   beforeEach(async () => {
-    await dbmod.pool.query('truncate politics.news_articles, politics.article_td_scores restart identity cascade');
+    await dbmod.pool.query('truncate politics.news_articles, politics.article_tds restart identity cascade');
     sourceIds = await repo.syncSources(sources.NEWS_SOURCES);
   });
 
@@ -84,31 +84,43 @@ run('news repository against Postgres', () => {
     const timeout = <T>(p: Promise<T>) =>
       Promise.race([p, new Promise<never>((_, reject) => setTimeout(() => reject(new Error('second claim blocked on the first')), 3000))]);
 
-    let first: Awaited<ReturnType<typeof repo.claimForScoring>> = [];
+    let first: Awaited<ReturnType<typeof repo.claimForPipeline>> = [];
     let second: typeof first = [];
     // Run 1 claims inside an open transaction, so its row locks are still held while run 2 claims.
     await dbmod.db.transaction(async (tx) => {
-      first = await repo.claimForScoring(20, tx as unknown as typeof dbmod.db);
-      second = await timeout(repo.claimForScoring(20));
+      first = await repo.claimForPipeline(20, tx as unknown as typeof dbmod.db);
+      second = await timeout(repo.claimForPipeline(20));
     });
 
     expect(first).toHaveLength(20);
     expect(second).toHaveLength(10);
     const ids = [...first, ...second].map((x) => x.id);
     expect(new Set(ids).size).toBe(30);
-    expect(await repo.claimForScoring(20)).toEqual([]);
+    expect(await repo.claimForPipeline(20)).toEqual([]);
     expect((await repo.statusCounts()).claimed).toBe(30);
   });
 
-  it('claims newest first and carries source name and credibility', async () => {
+  it('claims newest first and carries the source name', async () => {
     await repo.insertArticles([row('https://rte.ie/old', 5), row('https://rte.ie/new', 1)]);
-    const [first] = await repo.claimForScoring(1);
-    expect(first).toMatchObject({ url: 'https://rte.ie/new', sourceName: 'RTÉ News', credibility: expect.closeTo(0.95, 5) });
+    const [first] = await repo.claimForPipeline(1);
+    expect(first).toMatchObject({ url: 'https://rte.ie/new', sourceName: 'RTÉ News' });
+    expect(first).not.toHaveProperty('credibility');
+  });
+
+  it('linkArticleTd is idempotent on (article, td), and feedForTd finds the article by it', async () => {
+    const [{ id }] = await repo.insertArticles([row('https://rte.ie/linked', 1)]);
+    const { rows: [td] } = await dbmod.pool.query(`insert into politics.tds (name) values ('Holly Cairns') returning id`);
+    await repo.linkArticleTd(id, td.id);
+    const { rows: [first] } = await dbmod.pool.query('select created_at from politics.article_tds');
+    await repo.linkArticleTd(id, td.id);
+    const { rows } = await dbmod.pool.query('select article_id, td_id, created_at from politics.article_tds');
+    expect(rows).toEqual([{ article_id: id, td_id: td.id, created_at: first.created_at }]);
+    expect((await repo.feedForTd('holly cairns', 10)).map((r) => r.id)).toEqual([id]);
   });
 
   it('skips articles older than the scoring window instead of claiming them', async () => {
     await repo.insertArticles([row('https://rte.ie/stale', 24 * 8), row('https://rte.ie/fresh', 1)]);
-    const claimed = await repo.claimForScoring(10);
+    const claimed = await repo.claimForPipeline(10);
     expect(claimed.map((c) => c.url)).toEqual(['https://rte.ie/fresh']);
     const { rows } = await dbmod.pool.query(`select status from politics.news_articles where url = 'https://rte.ie/stale'`);
     expect(rows[0].status).toBe('skipped');
@@ -117,27 +129,32 @@ run('news repository against Postgres', () => {
   it('re-claims an expired lease, and fails a row whose lease expired MAX_ATTEMPTS times', async () => {
     const [{ id }] = await repo.insertArticles([row('https://rte.ie/poison', 1)]);
     for (let attempt = 1; attempt <= repo.MAX_ATTEMPTS; attempt++) {
-      expect((await repo.claimForScoring(1)).map((c) => c.id)).toEqual([id]);
+      expect((await repo.claimForPipeline(1)).map((c) => c.id)).toEqual([id]);
       // A live lease is never taken twice.
-      expect(await repo.claimForScoring(1)).toEqual([]);
+      expect(await repo.claimForPipeline(1)).toEqual([]);
       await dbmod.pool.query(`update politics.news_articles set claimed_at = now() - interval '${repo.CLAIM_LEASE_HOURS + 1} hours'`);
     }
-    expect(await repo.claimForScoring(1)).toEqual([]);
+    expect(await repo.claimForPipeline(1)).toEqual([]);
     const { rows } = await dbmod.pool.query('select status, attempts from politics.news_articles');
     expect(rows).toEqual([{ status: 'failed', attempts: repo.MAX_ATTEMPTS }]);
   });
 
-  it('feed pages by offset, reports the real total, and ranks scored articles first', async () => {
+  it('feed pages by offset, reports the real total, and ranks the most important articles first', async () => {
     const ids = (await repo.insertArticles(Array.from({ length: 12 }, (_, i) => row(`https://rte.ie/${i}`, i)))).map((r) => r.id);
     const { rows: [td] } = await dbmod.pool.query(`insert into politics.tds (name, party) values ('Mary Lou McDonald', 'Sinn Féin') returning id`);
-    // The OLDEST article carries the strongest verdict.
-    await dbmod.pool.query('insert into politics.article_td_scores (article_id, td_id, impact, story_type, sentiment) values ($1, $2, -7, $3, $4)', [ids[11], td.id, 'scandal', 'negative']);
+    // The OLDEST article is the most important; the second oldest is next. Untriaged rows follow, newest first.
+    await dbmod.pool.query('update politics.news_articles set importance_score = 90 where id = $1', [ids[11]]);
+    await dbmod.pool.query('update politics.news_articles set importance_score = 60 where id = $1', [ids[10]]);
+    await repo.linkArticleTd(ids[11], td.id);
 
     const window = { since: new Date(0), fallbackDays: 30 };
-    const p1 = await repo.feedPage({ sort: 'score', limit: 5, offset: 0 }, window);
-    const p2 = await repo.feedPage({ sort: 'score', limit: 5, offset: 5 }, window);
+    const p1 = await repo.feedPage({ sort: 'top', limit: 5, offset: 0 }, window);
+    const p2 = await repo.feedPage({ sort: 'top', limit: 5, offset: 5 }, window);
     expect(p1.total).toBe(12);
-    expect(p1.rows[0]).toMatchObject({ id: ids[11], impact: -7, storyType: 'scandal', affectedTds: [{ name: 'Mary Lou McDonald', impactScore: -7 }] });
+    expect(p1.rows.map((r) => r.id)).toEqual([ids[11], ids[10], ids[0], ids[1], ids[2]]);
+    expect(p1.rows[0].affectedTds).toEqual([{ name: 'Mary Lou McDonald' }]);
+    expect(p1.rows[1].affectedTds).toEqual([]);
+    expect(p1.rows[0]).not.toHaveProperty('impact');
     expect(p1.rows.map((r) => r.id).filter((id) => p2.rows.some((r) => r.id === id))).toEqual([]);
 
     const recent = await repo.feedPage({ sort: 'recent', limit: 3, offset: 0 }, window);
@@ -191,7 +208,7 @@ run('news repository against Postgres', () => {
       { source: 'The Irish Times', url: 'https://irishtimes.com/budget' },
     ]);
     expect((await repo.statusCounts()).duplicate).toBe(4);
-    expect(await repo.claimForScoring(10)).toMatchObject([{ id: canonical }]);
+    expect(await repo.claimForPipeline(10)).toMatchObject([{ id: canonical }]);
   });
 
   it('an article with no duplicates has an empty alsoReportedBy', async () => {
@@ -209,7 +226,7 @@ run('news repository against Postgres', () => {
     ).rejects.toThrow(/news_articles_duplicate_link_chk/);
   });
 
-  it('recentTitles gives each row its root canonical; findForScoring resolves a duplicate to it', async () => {
+  it('recentTitles gives each row its root canonical; findForPipeline resolves a duplicate to it', async () => {
     const [{ id: canonical }] = await repo.insertArticles([row('https://rte.ie/root', 2, 'Root story')]);
     const [{ id: copy }] = await repo.insertArticles([{ ...row('https://thejournal.ie/copy', 1, 'Copy story'), ...from('the-journal'), ...dup(canonical) }]);
     expect(await repo.recentTitles(48)).toEqual(
@@ -218,9 +235,9 @@ run('news repository against Postgres', () => {
         { id: canonical, url: 'https://thejournal.ie/copy', title: 'Copy story' },
       ]),
     );
-    expect((await repo.findForScoring(copy))?.id).toBe(canonical);
-    expect((await repo.findForScoring(canonical))?.id).toBe(canonical);
-    expect(await repo.findForScoring(999_999)).toBeNull();
+    expect((await repo.findForPipeline(copy))?.id).toBe(canonical);
+    expect((await repo.findForPipeline(canonical))?.id).toBe(canonical);
+    expect(await repo.findForPipeline(999_999)).toBeNull();
   });
 
   it('eventCandidates: visible canonicals inside the window before `now`, newest first, capped', async () => {
@@ -244,7 +261,7 @@ run('news repository against Postgres', () => {
     const rows = await repo.insertArticles([row('https://rte.ie/p', 3), row('https://rte.ie/scored', 2), row('https://rte.ie/root', 1), row('https://rte.ie/target', 4)]);
     const [p, scored, root, target] = rows.map((r) => r.id);
     const { rows: [td] } = await dbmod.pool.query(`insert into politics.tds (name) values ('Simon Harris') returning id`);
-    await dbmod.pool.query('insert into politics.article_td_scores (article_id, td_id, impact) values ($1, $2, 3)', [scored, td.id]);
+    await repo.linkArticleTd(scored, td.id);
     await repo.insertArticles([{ ...row('https://thejournal.ie/child', 1), ...from('the-journal'), ...dup(root) }]);
 
     expect((await repo.linkableRows(new Date(Date.now() - 24 * HOUR))).map((r) => r.id)).toEqual([target, p]);
@@ -276,7 +293,7 @@ run('news repository against Postgres', () => {
     expect(await repo.missingImages(48, 10)).toEqual([]);
   });
 
-  // Last: it takes this table back to before 0010, then re-applies 0010.
+  // Near the end: it takes this table back to before 0010, then re-applies 0010.
   it('migration 0010 links each legacy duplicate it can, and makes the rest `skipped`', async () => {
     const ids = (await repo.insertArticles(['c', 'linked', 'unknown', 'chained', 'missing'].map((k, i) => row(`https://rte.ie/${k}`, i)))).map((r) => r.id);
     const [canonical, linked, unknown, chained, missing] = ids;
@@ -303,5 +320,61 @@ run('news repository against Postgres', () => {
       { id: chained, status: 'skipped', duplicate_of: null },
       { id: missing, status: 'skipped', duplicate_of: null },
     ]);
+  });
+
+  // Last: it rebuilds the schema up to just before the facts-only migration, seeds the old
+  // shape, then applies that migration and every one after it.
+  it('the facts-only migration RENAMES article_td_scores to article_tds and keeps every link', async () => {
+    const all = journalTags();
+    const factsOnly = all.find((t) => t.endsWith('_facts_only_scoring'))!;
+    expect(factsOnly).toBeDefined();
+    await applyAllMigrations(dbmod.pool, factsOnly);
+
+    const q = async (text: string, params: unknown[] = []) => (await dbmod.pool.query(text, params)).rows;
+    const [src] = await q(`insert into politics.news_sources (slug, name, homepage_url, credibility) values ('rte', 'RTÉ News', 'https://rte.ie', 0.95) returning id`);
+    const [a1, a2] = await q(
+      `insert into politics.news_articles (source_id, url, title, published_at) values ($1, 'https://rte.ie/1', 'one', now()), ($1, 'https://rte.ie/2', 'two', now()) returning id`,
+      [src.id],
+    );
+    const [mary, simon] = await q(`insert into politics.tds (name) values ('Mary Lou McDonald'), ('Simon Harris') returning id`);
+    await q(
+      `insert into politics.article_td_scores (article_id, td_id, impact, story_type, sentiment, reasoning, is_ideological_policy, created_at)
+       values ($1, $3, -7, 'scandal', 'negative', 'x', true, '2026-09-01T10:00:00Z'), ($1, $4, 2, null, null, null, false, '2026-09-01T11:00:00Z'),
+              ($2, $3, 5, 'policy', 'positive', 'y', false, '2026-09-02T10:00:00Z')`,
+      [a1.id, a2.id, mary.id, simon.id],
+    );
+    await q(`insert into politics.td_scores (td_id, overall_elo, total_stories, overall_score) values ($1, 1600, 3, 70)`, [mary.id]);
+
+    for (const tag of all.slice(all.indexOf(factsOnly))) await applyMigration(dbmod.pool, tag);
+
+    // Every link survives, with its original created_at; every verdict column is gone.
+    expect(await q('select * from politics.article_tds order by article_id, td_id')).toEqual([
+      { article_id: a1.id, td_id: mary.id, created_at: new Date('2026-09-01T10:00:00Z') },
+      { article_id: a1.id, td_id: simon.id, created_at: new Date('2026-09-01T11:00:00Z') },
+      { article_id: a2.id, td_id: mary.id, created_at: new Date('2026-09-02T10:00:00Z') },
+    ]);
+    expect(await q(`select to_regclass('politics.article_td_scores') as t, to_regclass('politics.article_td_scores_id_seq') as s`)).toEqual([{ t: null, s: null }]);
+    expect(await q(`select conname from pg_constraint where conrelid = 'politics.article_tds'::regclass order by conname`)).toEqual([
+      { conname: 'article_tds_article_id_td_id_pk' },
+      { conname: 'article_tds_td_id_tds_id_fk' },
+    ]);
+    expect(await q(`select indexname from pg_indexes where schemaname = 'politics' and tablename = 'article_tds' order by indexname`)).toEqual([
+      { indexname: 'article_tds_article_id_td_id_pk' },
+      { indexname: 'article_tds_td_created_idx' },
+    ]);
+    // The primary key is what linkArticleTd's ON CONFLICT targets.
+    await repo.linkArticleTd(a1.id, mary.id);
+    expect(await q('select count(*)::int as n from politics.article_tds')).toEqual([{ n: 3 }]);
+
+    // The ELO state and news verdicts are dropped; the score row itself stays.
+    expect(await q(`select to_regclass('politics.td_score_history') as h, to_regclass('politics.party_scores') as p`)).toEqual([{ h: null, p: null }]);
+    expect(await q(`select * from politics.td_scores`)).toEqual([
+      expect.objectContaining({ td_id: mary.id, overall_score: 70, computed_at: null }),
+    ]);
+    const [scoreRow] = await q('select * from politics.td_scores');
+    expect(Object.keys(scoreRow).sort()).toEqual(
+      ['computed_at', 'constituency_rank', 'debate_score', 'national_rank', 'overall_score', 'parliamentary_score', 'party_rank', 'td_id', 'updated_at'],
+    );
+    expect(await q(`select column_name from information_schema.columns where table_schema = 'politics' and table_name = 'news_sources' and column_name = 'credibility'`)).toEqual([]);
   });
 });
