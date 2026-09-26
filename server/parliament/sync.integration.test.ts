@@ -471,4 +471,122 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(await parliament.repository.tdSummary(await tdId(C))).toMatchObject({ questionsWritten: 3 });
     expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
   });
+
+  // --- Division reads for the ideology area. The government test adds two roster members,
+  // so these stay last: the tests above count Party A as four TDs.
+
+  /** A bare division row with no votes; the caller deletes it again. */
+  const addDivision = (id: string, date: string, sectionId: string, debateTitle: string | null = null) =>
+    dbmod.pool.query(
+      `insert into politics.divisions (id, uri, house_no, date, subject, debate_title, debate_section_id, ta_count, nil_count, staon_count)
+       values ($1, $2, 34, $3, 'Motion', $4, $5, 1, 1, 0)`,
+      [id, `test:${id}`, date, debateTitle, sectionId],
+    );
+
+  it('reads every linked vote with its party line, in one pass', async () => {
+    const records = await parliament.repository.divisionVoteRecords();
+    const { rows } = await dbmod.pool.query('select count(*)::int n from politics.division_votes where td_id is not null');
+    expect(rows[0].n).toBeGreaterThan(0);
+    expect(records).toHaveLength(rows[0].n);
+    expect(records.every((r) => typeof r.tdId === 'number')).toBe(true);
+
+    const c = await tdId(C);
+    const ofC = records.filter((r) => r.tdId === c);
+    expect(ofC).toHaveLength(12);
+    expect(ofC.every((r) => r.vote === 'nil' && r.partyMajority === 'ta' && r.party === 'Party A')).toBe(true);
+    expect(ofC.find((r) => r.divisionId === 'dail-34-2025-06-21-vote_12')).toMatchObject({
+      date: '2025-06-21',
+      heldAt: '2025-06-25T08:00:00.000Z',
+      partyTa: 3,
+      partyNil: 1,
+    });
+    // Y missed the first three: Party A was 2–1 in them.
+    expect(ofC.find((r) => r.divisionId === 'dail-34-2025-06-10-vote_1')).toMatchObject({ partyTa: 2, partyNil: 1 });
+  });
+
+  it("gathers a division's context: its section, its siblings in order, its bills and speeches", async () => {
+    const ctx = await parliament.repository.divisionContext('dail-34-2025-06-21-vote_12');
+    expect(ctx?.division).toMatchObject({
+      id: 'dail-34-2025-06-21-vote_12',
+      subject: 'Amendment put',
+      taCount: 64,
+      nilCount: 82,
+      debateSectionId: 'dail-2025-06-25-dbsect_19',
+      heldAt: '2025-06-25T08:00:00.000Z',
+      sectionPosition: null,
+    });
+    expect(ctx?.section).toEqual({
+      id: 'dail-2025-06-25-dbsect_19',
+      date: '2025-06-25',
+      title: 'Finance (Local Property Tax and Other Provisions) (Amendment) Bill 2025: Committee and Remaining Stages',
+    });
+    // vote_10 after vote_9. (Each clone has its own date, so the id's text agrees here; the
+    // next test puts two on one day, where only the vote number orders them.)
+    expect(ctx?.siblings.map((s) => s.id)).toEqual(Array.from({ length: 12 }, (_, k) => `dail-34-2025-06-${10 + k}-vote_${k + 1}`));
+    expect(ctx?.index).toBe(12);
+    expect((await parliament.repository.divisionContext('dail-34-2025-06-19-vote_10'))?.index).toBe(10);
+    // One section, two bills.
+    expect(ctx?.bills.map((b) => b.id)).toEqual(['2025-32', '2025-999']);
+    expect(ctx?.bills[0]).toMatchObject({ source: 'Government', primarySponsor: { label: 'Minister for Finance', party: null } });
+    expect(ctx?.bills[1]).toMatchObject({ shortTitle: 'Test Bill 2025', primarySponsor: { label: 'A', party: 'Party A' } });
+    expect(ctx?.speeches).toHaveLength(32);
+    expect(ctx?.speeches.map((s) => s.position)).toEqual(Array.from({ length: 32 }, (_, i) => i));
+    expect(ctx?.speeches.filter((s) => s.isPresiding)).toEqual(
+      Array(3).fill(expect.objectContaining({ name: 'Verona Murphy', party: 'Independent', role: 'An Ceann Comhairle' })),
+    );
+    expect(await parliament.repository.divisionContext('dail-34-1999-01-01-vote_1')).toBeNull();
+  });
+
+  it("orders siblings held on one day by vote number, not by the id's text", async () => {
+    await addDivision('dail-34-2025-06-27-vote_10', '2025-06-27', 'dail-2025-06-27-dbsect_7');
+    await addDivision('dail-34-2025-06-27-vote_9', '2025-06-27', 'dail-2025-06-27-dbsect_7');
+    try {
+      const ctx = await parliament.repository.divisionContext('dail-34-2025-06-27-vote_10');
+      expect(ctx?.siblings.map((s) => s.id)).toEqual(['dail-34-2025-06-27-vote_9', 'dail-34-2025-06-27-vote_10']);
+      expect(ctx?.index).toBe(2);
+    } finally {
+      await dbmod.pool.query(`delete from politics.divisions where id like 'dail-34-2025-06-27-%'`);
+    }
+  });
+
+  it('names the government: each party with a minister, and Independent ministers by name', async () => {
+    const donohoe = 'Paschal-Donohoe.S.2007-07-23';
+    await parliament.runSync({
+      client: fakeClient([
+        ...roster,
+        member(donohoe, 'Party A', { offices: [{ title: 'Minister for Finance', since: '2025-01-23' }] }),
+        member('Test-Minister.D.2024-11-29', 'Independent', { offices: [{ title: 'Minister of State at the Department of Health', since: '2025-01-29' }] }),
+      ]),
+      today: '2025-07-30',
+      log: () => {},
+    });
+    const ctx = await parliament.repository.divisionContext('dail-34-2025-06-21-vote_12');
+    // The Ceann Comhairle holds an office but is not in government.
+    expect(ctx?.government).toEqual({ parties: ['Party A'], independents: ['Test Minister'] });
+    // Once in the roster, the minister's speeches carry his party.
+    const his = ctx?.speeches.filter((s) => s.name === 'Paschal Donohoe') ?? [];
+    expect(his.length).toBeGreaterThan(0);
+    expect(his.every((s) => s.party === 'Party A')).toBe(true);
+    expect(his.some((s) => s.role === 'Minister for Finance')).toBe(true);
+  });
+
+  it('falls back to the latest section with the same title, dated on or before the linked one', async () => {
+    const title = 'Finance (Local Property Tax and Other Provisions) (Amendment) Bill 2025: Committee and Remaining Stages';
+    // Linked to sections that were never ingested. The date comes from the section id, which
+    // can be after the division's own date (all 12 fixture divisions sit in a 06-25 section).
+    await addDivision('dail-34-2025-06-12-vote_98', '2025-06-12', 'dail-2025-06-25-dbsect_99', title);
+    await addDivision('dail-34-2025-06-28-vote_99', '2025-06-28', 'dail-2025-06-28-dbsect_5', title);
+    try {
+      // 06-26 holds the same transcript (the failed-day test ingested it), but is after 06-25.
+      const early = await parliament.repository.divisionContext('dail-34-2025-06-12-vote_98');
+      expect(early?.section?.id).toBe('dail-2025-06-25-dbsect_19');
+      expect(early?.speeches).toHaveLength(32);
+      expect(early).toMatchObject({ index: 1, bills: [] });
+      expect(early?.siblings.map((s) => s.id)).toEqual(['dail-34-2025-06-12-vote_98']);
+      const late = await parliament.repository.divisionContext('dail-34-2025-06-28-vote_99');
+      expect(late?.section?.id).toBe('dail-2025-06-26-dbsect_19');
+    } finally {
+      await dbmod.pool.query(`delete from politics.divisions where id in ('dail-34-2025-06-12-vote_98', 'dail-34-2025-06-28-vote_99')`);
+    }
+  });
 });

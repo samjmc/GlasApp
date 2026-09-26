@@ -132,9 +132,26 @@ export interface ParsedSpeech {
   wordCount: number;
 }
 
+/**
+ * Where a division was taken in its debate. The transcript records each one as a child
+ * `<debateSection name="division">` with its counts, among its parent's speeches; the
+ * counts are what tie it to its `/divisions` record, which carries no position.
+ */
+export interface DivisionMarker {
+  /** The closest enclosing section. */
+  sectionId: string;
+  /** How many of that section's own speeches come before it: the `position` of the next one. */
+  afterPosition: number;
+  ta: number;
+  nil: number;
+  staon: number;
+}
+
 export interface ParsedTranscript {
   sections: NewDebateSection[];
   speeches: ParsedSpeech[];
+  /** Section by section, in document order within each. */
+  divisionMarkers: DivisionMarker[];
 }
 
 const MEMBER_HREF = /\/member\/id\/(.+)$/;
@@ -168,8 +185,9 @@ export function countWords(text: string): number {
 }
 
 /**
- * One sitting day's transcript → its sections and speeches. Sections with no speeches
- * (headings, containers) are dropped; a nested section keeps its parent's id.
+ * One sitting day's transcript → its sections, speeches and division markers. Sections
+ * with no speeches (headings, containers, the divisions themselves) are dropped; a nested
+ * section keeps its parent's id.
  */
 export function parseTranscript(xml: string, date: string): ParsedTranscript {
   const $ = load(xml, { xml: true });
@@ -184,6 +202,7 @@ export function parseTranscript(xml: string, date: string): ParsedTranscript {
 
   const sections: NewDebateSection[] = [];
   const speeches: ParsedSpeech[] = [];
+  const divisionMarkers: DivisionMarker[] = [];
 
   $('debateSection').each((_, el) => {
     const section = $(el);
@@ -191,10 +210,20 @@ export function parseTranscript(xml: string, date: string): ParsedTranscript {
     if (!eId) return;
     const id = sectionId(date, eId);
 
-    const own = section.find('speech').filter((_, s) => $(s).closest('debateSection').attr('eId') === eId);
+    // This section's own speeches and divisions, in document order; a nested section's
+    // are read on its own turn.
     const rows: ParsedSpeech[] = [];
-    own.each((_, s) => {
-      const speech = $(s);
+    section.find('speech, debateSection[name="division"]').each((_, el) => {
+      const item = $(el);
+      if (item.parents('debateSection').first().attr('eId') !== eId) return;
+      if (item.is('debateSection')) {
+        const summary = item.children('summary[title="division"]');
+        const [ta, nil, staon] = TALLIES.map(([vote]) => Number(summary.find(`quantity[refersTo="#${vote}"]`).attr('normalized')));
+        // Counts that cannot be read cannot tie the division to its record.
+        if ([ta, nil, staon].every(Number.isInteger)) divisionMarkers.push({ sectionId: id, afterPosition: rows.length, ta, nil, staon });
+        return;
+      }
+      const speech = item;
       const text = speech
         .children('p')
         .map((_, p) => $(p).text().trim())
@@ -231,7 +260,7 @@ export function parseTranscript(xml: string, date: string): ParsedTranscript {
     speeches.push(...rows);
   });
 
-  return { sections, speeches };
+  return { sections, speeches, divisionMarkers };
 }
 
 /** A transcript's `TLCPerson` references: eId → member code. */
