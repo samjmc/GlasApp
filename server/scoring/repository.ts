@@ -183,8 +183,9 @@ export async function rollupInputs(
     committeeAttendancePct: td.committeeAttendancePct,
     debateScore: debateScores.get(td.id) ?? null,
     isPresiding: stats?.isPresiding ?? false,
-    // With no stats row there is no expectation yet (undefined), which is not "not expected".
-    questionsExpected: stats ? stats.questionsExpected : undefined,
+    // No expectation computed yet (no stats row, or a row from before the fairness columns:
+    // recomputeStats always sets divisions_chaired) is undefined, not "not expected" (NULL).
+    questionsExpected: stats && stats.divisionsChaired !== null ? stats.questionsExpected : undefined,
   }));
 }
 

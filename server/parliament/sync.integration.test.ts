@@ -547,6 +547,18 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     await parliament.repository.recomputeStats(windows(), TERM);
   });
 
+  it('hands the rollup each expectation, and no expectation for a row from before the fairness columns', async () => {
+    const inputs = async () => new Map((await scoring.repository.rollupInputs(new Map())).map((i) => [i.tdId, i]));
+    let byId = await inputs();
+    expect(byId.get(await tdId(CHAIR))?.questionsExpected).toBeNull();
+    expect(byId.get(await tdId(A))?.questionsExpected).toBe(200);
+    // A stats row written by the code before the fairness columns: no expectation yet.
+    await dbmod.pool.query('update politics.td_parliament_stats set divisions_chaired = null, questions_expected = null where td_id = $1', [await tdId(A)]);
+    byId = await inputs();
+    expect(byId.get(await tdId(A))?.questionsExpected).toBeUndefined();
+    await parliament.repository.recomputeStats(windows(), TERM);
+  });
+
   it('says when the question counts are complete', async () => {
     expect((await parliament.repository.tdSummary(await tdId(A)))?.questionsComplete).toBe(true);
   });
