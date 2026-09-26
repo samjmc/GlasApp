@@ -8,19 +8,28 @@
  * stances keep leaning +0.25 on the ±0.5 scale ends up near +5.
  */
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
+import type { QuoteKind } from '@shared/stancesApi';
 import type { PartialVector } from './model';
 
 export const SOURCES = {
   /**
-   * Per (article, TD), ±0.5, 0 = no signal. Written only by the old scoring panel's Ideology
-   * Analyst, deleted with the facts-only score; stored rows stay until part 3 (td-stances.md).
+   * Per (article, TD), ±0.5, 0 = no signal. Written only by the deleted scoring panel's
+   * Ideology Analyst. Nothing writes it; `npm run stances -- --rebuild` purges the rows.
    */
   article: { max: 0.5 },
   /** Debate speech analysis. ±0.5, 0 = no signal. */
   debate: { max: 0.5 },
   /** A chosen policy-vote option (server/voting). ±2, 0 = says nothing about that axis. */
   vote: { max: 2 },
+  /**
+   * A TD's verified stance mapped to an option of the article's question (server/stances):
+   * the option's position, on the same ruler as a user's vote.
+   */
+  stance: { max: 2 },
 } as const;
+
+/** A direct quote counts fully; a reporter's paraphrase counts less. Evidence and agreement both use it. */
+export const QUOTE_KIND_WEIGHT: Record<QuoteKind, number> = { direct: 1, paraphrase: 0.6 };
 
 export type SourceKind = keyof typeof SOURCES;
 

@@ -3,11 +3,11 @@
  * with a quote copied from the text. The model call is injected; verify.ts checks the quote.
  */
 import { z } from 'zod';
+import { QUOTE_KINDS, type QuoteKind } from '@shared/stancesApi';
 import { POLICY_DOMAINS } from '../constants/policyTopics';
 import type { CompleteJson } from '../voting/service';
 
-export const QUOTE_KINDS = ['direct', 'paraphrase'] as const;
-export type QuoteKind = (typeof QUOTE_KINDS)[number];
+export { QUOTE_KINDS, type QuoteKind };
 
 /** A TD the article mentions: id and offices from the tds table, not from the model. */
 export interface CandidateTd {

@@ -8,11 +8,9 @@
  */
 import { IDEOLOGY_DIMENSIONS, type IdeologyVector } from '@shared/ideology';
 import { decayFactor } from '../ideology/model';
-import { TD_HALF_LIFE_DAYS } from '../ideology/sources';
+import { QUOTE_KIND_WEIGHT, TD_HALF_LIFE_DAYS } from '../ideology/sources';
 import type { QuoteKind } from './extract';
 
-/** A direct quote counts fully; a reporter's paraphrase counts less. */
-export const QUOTE_KIND_WEIGHT: Record<QuoteKind, number> = { direct: 1, paraphrase: 0.6 };
 /** The axis alignment counts as this many full-weight shared issues. */
 export const AXIS_PRIOR_WEIGHT = 2;
 /** An item at or above this agreement counts as "agrees" in the breakdown. */

@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { emptyIdeologyVector, type IdeologyVector } from '@shared/ideology';
-import { TD_HALF_LIFE_DAYS } from '../ideology/sources';
+import { QUOTE_KIND_WEIGHT, TD_HALF_LIFE_DAYS } from '../ideology/sources';
 import {
   AXIS_PRIOR_WEIGHT,
-  QUOTE_KIND_WEIGHT,
   agreementFor,
   itemAgreement,
   latestStances,

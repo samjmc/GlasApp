@@ -113,31 +113,6 @@ export const articleTds = politics.table(
 );
 
 // ---------------------------------------------------------------------------
-// Policy stances the old scoring panel extracted. Nothing writes it; part 3
-// (docs/plans/td-stances.md) replaces it.
-// ---------------------------------------------------------------------------
-export const tdPolicyStances = politics.table(
-  'td_policy_stances',
-  {
-    id: serial('id').primaryKey(),
-    articleId: integer('article_id').notNull(),
-    tdId: integer('td_id')
-      .notNull()
-      .references(() => tds.id, { onDelete: 'cascade' }),
-    stance: varchar('stance', { length: 20 }).notNull(),
-    stanceStrength: smallint('stance_strength'),
-    evidence: text('evidence'),
-    policyTopic: text('policy_topic'),
-    policyDimension: varchar('policy_dimension', { length: 40 }),
-    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-  },
-  (t) => [
-    uniqueIndex('td_policy_stances_article_td_idx').on(t.articleId, t.tdId),
-    index('td_policy_stances_td_idx').on(t.tdId),
-  ],
-);
-
-// ---------------------------------------------------------------------------
 // AI-researched historical baselines. Research content; not part of the formula.
 // ---------------------------------------------------------------------------
 export const tdHistoricalBaselines = politics.table(

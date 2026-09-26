@@ -6,11 +6,13 @@ describe('toObservationVector', () => {
     expect(toObservationVector('article', { economic: 0.5, welfare: -0.25 })).toEqual({ economic: 10, welfare: -5 });
     expect(toObservationVector('debate', { globalism: -0.5 })).toEqual({ globalism: -10 });
     expect(toObservationVector('vote', { technocratic: 2, social: -1 })).toEqual({ technocratic: 10, social: -5 });
+    // A stance is an option position, on the same ruler as a user's vote.
+    expect(toObservationVector('stance', { economic: -2, welfare: 1 })).toEqual({ economic: -10, welfare: 5 });
   });
 
   it('keeps the sign: no source is negated', () => {
-    for (const source of ['article', 'debate', 'vote'] as const) {
-      const v = toObservationVector(source, { environmental: source === 'vote' ? 1 : 0.25 });
+    for (const source of ['article', 'debate', 'vote', 'stance'] as const) {
+      const v = toObservationVector(source, { environmental: source === 'vote' || source === 'stance' ? 1 : 0.25 });
       expect(v.environmental).toBeGreaterThan(0);
     }
   });
