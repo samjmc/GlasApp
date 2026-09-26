@@ -48,10 +48,9 @@ export function initScheduler() {
         console.warn(`   ⚠️ Errors: ${stats.errors}`);
       }
     } catch (error: unknown) {
-      console.error("❌ [Scheduler] TD Scoring failed:", error.message);
+      console.error("❌ [Scheduler] TD Scoring failed:", error instanceof Error ? error.message : String(error));
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 
@@ -89,7 +88,6 @@ export function initScheduler() {
         console.error("❌ [Scheduler] Failed to run Daily Briefing:", error);
     }
   }, {
-    scheduled: true,
     timezone: "Europe/Dublin"
   });
 }

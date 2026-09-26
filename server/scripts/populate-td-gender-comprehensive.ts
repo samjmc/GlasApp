@@ -102,7 +102,9 @@ async function fetchCurrentTDs(): Promise<TDGenderInfo[]> {
         const member = result.member;
         
         // Find current Dáil membership
-        const currentMembership = member.memberships?.find((m) => 
+        const currentMembership = member.memberships?.find((m: {
+          membership: { house?: { houseCode?: string; houseNo?: string }; dateRange?: { end?: string | null } };
+        }) =>
           m.membership.house?.houseCode === 'dail' &&
           m.membership.house?.houseNo === '34' &&
           m.membership.dateRange?.end === null

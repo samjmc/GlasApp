@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { db } from '../db';
 import { elections, electionResults, constituencies, parties } from '@shared/schema';
-import { eq, desc, sql } from 'drizzle-orm';
+import { and, eq, desc, sql } from 'drizzle-orm';
 import { cached, TTL } from '../services/cacheService';
 
 const router = Router();
@@ -70,7 +70,12 @@ router.get('/:electionId/results', async (req: Request, res: Response, next) => 
           .orderBy(constituencies.name, desc(electionResults.seats), desc(electionResults.percentage));
         
         // Group results by constituency
-        const resultsByConstituency: unknown = {};
+        const resultsByConstituency: Record<string, {
+          constituencyId: number;
+          name: string;
+          totalSeats: number;
+          parties: { partyId: number; name: string; color: string; votes: number; percentage: string; seats: number }[];
+        }> = {};
         
         results.forEach(result => {
           if (!resultsByConstituency[result.constituencyName]) {
@@ -168,8 +173,7 @@ router.get('/:electionId/constituency/:constituencyId', async (req: Request, res
       })
       .from(electionResults)
       .innerJoin(parties, eq(electionResults.partyId, parties.id))
-      .where(eq(electionResults.electionId, electionId))
-      .where(eq(electionResults.constituencyId, constituencyId))
+      .where(and(eq(electionResults.electionId, electionId), eq(electionResults.constituencyId, constituencyId)))
       .orderBy(desc(electionResults.seats), desc(electionResults.percentage));
     
     const partyResults = results.map(result => ({
@@ -249,8 +253,7 @@ router.get('/:electionId/party/:partyId', async (req: Request, res: Response) =>
       })
       .from(electionResults)
       .innerJoin(constituencies, eq(electionResults.constituencyId, constituencies.id))
-      .where(eq(electionResults.electionId, electionId))
-      .where(eq(electionResults.partyId, partyId))
+      .where(and(eq(electionResults.electionId, electionId), eq(electionResults.partyId, partyId)))
       .orderBy(desc(electionResults.percentage));
     
     // Calculate summary statistics

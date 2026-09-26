@@ -29,11 +29,12 @@ router.get("/dimensions", asyncHandler(async (req, res) => {
     );
   }
 
+  const client = supabaseDb;
   const partyDimensions = await cached(
     CacheKeys.parties.positions(),
     TTL.ONE_DAY,
     async () => {
-      const { data, error } = await supabaseDb
+      const { data, error } = await client
         .from('parties')
         .select('id, name, economicScore, socialScore, culturalScore, globalismScore, environmentalScore, authorityScore, welfareScore, technocraticScore');
 
@@ -70,11 +71,12 @@ router.get("/", asyncHandler(async (req, res) => {
     );
   }
 
+  const client = supabaseDb;
   const allParties = await cached(
     CacheKeys.parties.all(),
     TTL.ONE_DAY,
     async () => {
-      const { data, error } = await supabaseDb
+      const { data, error } = await client
         .from('parties')
         .select('*');
 
