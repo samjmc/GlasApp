@@ -1,3 +1,4 @@
+-- ci red run
 CREATE SCHEMA "politics";
 --> statement-breakpoint
 CREATE TABLE "politics"."article_td_scores" (
