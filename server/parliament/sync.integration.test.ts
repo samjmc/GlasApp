@@ -475,6 +475,14 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   // --- Division reads for the ideology area. The government test adds two roster members,
   // so these stay last: the tests above count Party A as four TDs.
 
+  /** A bare division row with no votes; the caller deletes it again. */
+  const addDivision = (id: string, date: string, sectionId: string, debateTitle: string | null = null) =>
+    dbmod.pool.query(
+      `insert into politics.divisions (id, uri, house_no, date, subject, debate_title, debate_section_id, ta_count, nil_count, staon_count)
+       values ($1, $2, 34, $3, 'Motion', $4, $5, 1, 1, 0)`,
+      [id, `test:${id}`, date, debateTitle, sectionId],
+    );
+
   it('reads every linked vote with its party line, in one pass', async () => {
     const records = await parliament.repository.divisionVoteRecords();
     const { rows } = await dbmod.pool.query('select count(*)::int n from politics.division_votes where td_id is not null');
@@ -512,7 +520,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       date: '2025-06-25',
       title: 'Finance (Local Property Tax and Other Provisions) (Amendment) Bill 2025: Committee and Remaining Stages',
     });
-    // By the number in vote_N, not the id's text: vote_10 comes after vote_9, not vote_1.
+    // vote_10 after vote_9. (Each clone has its own date, so the id's text agrees here; the
+    // next test puts two on one day, where only the vote number orders them.)
     expect(ctx?.siblings.map((s) => s.id)).toEqual(Array.from({ length: 12 }, (_, k) => `dail-34-2025-06-${10 + k}-vote_${k + 1}`));
     expect(ctx?.index).toBe(12);
     expect((await parliament.repository.divisionContext('dail-34-2025-06-19-vote_10'))?.index).toBe(10);
@@ -526,6 +535,18 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       Array(3).fill(expect.objectContaining({ name: 'Verona Murphy', party: 'Independent', role: 'An Ceann Comhairle' })),
     );
     expect(await parliament.repository.divisionContext('dail-34-1999-01-01-vote_1')).toBeNull();
+  });
+
+  it("orders siblings held on one day by vote number, not by the id's text", async () => {
+    await addDivision('dail-34-2025-06-27-vote_10', '2025-06-27', 'dail-2025-06-27-dbsect_7');
+    await addDivision('dail-34-2025-06-27-vote_9', '2025-06-27', 'dail-2025-06-27-dbsect_7');
+    try {
+      const ctx = await parliament.repository.divisionContext('dail-34-2025-06-27-vote_10');
+      expect(ctx?.siblings.map((s) => s.id)).toEqual(['dail-34-2025-06-27-vote_9', 'dail-34-2025-06-27-vote_10']);
+      expect(ctx?.index).toBe(2);
+    } finally {
+      await dbmod.pool.query(`delete from politics.divisions where id like 'dail-34-2025-06-27-%'`);
+    }
   });
 
   it('names the government: each party with a minister, and Independent ministers by name', async () => {
@@ -553,14 +574,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     const title = 'Finance (Local Property Tax and Other Provisions) (Amendment) Bill 2025: Committee and Remaining Stages';
     // Linked to sections that were never ingested. The date comes from the section id, which
     // can be after the division's own date (all 12 fixture divisions sit in a 06-25 section).
-    const add = (id: string, date: string, sectionId: string) =>
-      dbmod.pool.query(
-        `insert into politics.divisions (id, uri, house_no, date, subject, debate_title, debate_section_id, ta_count, nil_count, staon_count)
-         values ($1, $2, 34, $3, 'Motion', $4, $5, 1, 1, 0)`,
-        [id, `test:${id}`, date, title, sectionId],
-      );
-    await add('dail-34-2025-06-12-vote_98', '2025-06-12', 'dail-2025-06-25-dbsect_99');
-    await add('dail-34-2025-06-28-vote_99', '2025-06-28', 'dail-2025-06-28-dbsect_5');
+    await addDivision('dail-34-2025-06-12-vote_98', '2025-06-12', 'dail-2025-06-25-dbsect_99', title);
+    await addDivision('dail-34-2025-06-28-vote_99', '2025-06-28', 'dail-2025-06-28-dbsect_5', title);
     try {
       // 06-26 holds the same transcript (the failed-day test ingested it), but is after 06-25.
       const early = await parliament.repository.divisionContext('dail-34-2025-06-12-vote_98');
