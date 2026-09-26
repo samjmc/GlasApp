@@ -7,14 +7,12 @@ import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
 import profileRoutes from "./routes/profileRoutes";
-import activityRoutes from "./routes/activityRoutes";
 import quizRoutes from "./routes/quiz";
 import ideologyRoutes from "./routes/ideology";
 import newsRoutes from "./routes/news";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
 import newsAdminRoutes from "./routes/admin/news";
-import baselineAdminRoutes from "./routes/admin/baselineRoutes";
 import scoresRoutes from "./routes/scores";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
 import { pledgesRouter } from "./pledges/routes";
@@ -41,7 +39,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
   app.use("/api/profile", profileRoutes);
-  app.use("/api/activity", activityRoutes);
   
   // Quiz analysis. LLM-backed and public by design; the limiter caps per-IP cost.
   app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
@@ -72,7 +69,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news", requireJob, newsAdminRoutes);
-  app.use("/api/admin/baselines", requireJob, baselineAdminRoutes);
   app.use("/api/admin/td-scoring", requireJob, tdScoringAdminRoutes);
 
 
