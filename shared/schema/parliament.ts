@@ -7,7 +7,7 @@
  * are kept on every row, so votes and speeches by someone not (yet) in `tds` are stored
  * and linked by `td_id` on the next roster sync instead of being dropped.
  */
-import { boolean, date, index, integer, jsonb, primaryKey, smallint, text, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { boolean, date, index, integer, jsonb, primaryKey, real, smallint, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
 
 /** How a member voted in a division. Absence is the lack of a row, not a value. */
@@ -128,8 +128,158 @@ export const tdParliamentStats = politics.table('td_parliament_stats', {
    */
   committeeSittingsEligible: integer('committee_sittings_eligible'),
   committeeSittingsAttended: integer('committee_sittings_attended'),
+  /**
+   * Divisions left out of `divisions_eligible` for a reason, so a TD is never counted absent
+   * when they could not vote: in the chair (the chair cannot vote), or on documented leave.
+   */
+  divisionsChaired: integer('divisions_chaired'),
+  divisionsExcused: integer('divisions_excused'),
+  /**
+   * Eligible divisions held while the TD was in a leadership role: government office (cabinet
+   * or Minister of State) or leader of a party. Those divisions have their own benchmark.
+   */
+  divisionsInLeadership: integer('divisions_in_leadership'),
+  /** Sitting days left out of `sitting_days` because of documented leave. */
+  sittingDaysExcused: integer('sitting_days_excused'),
+  /**
+   * The question benchmark pro-rated to the time the TD was expected to ask questions: not in
+   * government office or the chair, not on documented leave. NULL = not expected to ask.
+   */
+  questionsExpected: real('questions_expected'),
+  /** The vote-attendance benchmark for this TD's mix of backbench and government time. */
+  attendanceBenchmark: real('attendance_benchmark'),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
+
+// ---------------------------------------------------------------------------
+// Offices held in the current Dáil, past and present, from the roster. Government office
+// changes what a TD is expected to do: ministers answer questions, they do not ask them.
+// ---------------------------------------------------------------------------
+export const officeType = politics.enum('office_type', [
+  'cabinet',
+  'minister_of_state',
+  'ceann_comhairle',
+  'leas_cheann_comhairle',
+  'other',
+]);
+export type OfficeType = (typeof officeType.enumValues)[number];
+
+export const tdOffices = politics.table(
+  'td_offices',
+  {
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    title: text('title').notNull(),
+    officeType: officeType('office_type').notNull(),
+    startDate: date('start_date').notNull(),
+    endDate: date('end_date'),
+  },
+  (t) => [primaryKey({ columns: [t.memberCode, t.title, t.startDate] }), index('td_offices_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Party leaders: the Oireachtas records no party leadership, so it is kept in
+// server/parliament/partyLeaders.ts, each period dated and sourced, and loaded by every sync.
+// Leaders of every party are treated alike, government or opposition.
+// ---------------------------------------------------------------------------
+export const tdPartyLeaders = politics.table(
+  'td_party_leaders',
+  {
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    party: text('party').notNull(),
+    startDate: date('start_date').notNull(),
+    /** NULL while still leader. */
+    endDate: date('end_date'),
+    sourceUrl: text('source_url').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_party_leaders_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Documented absences: leave a TD or their party announced publicly, each with its source.
+// Kept in server/parliament/absences.json (reviewed in git) and loaded by every sync. The
+// Oireachtas records no reason for an absence, so nothing here is ever inferred.
+// ---------------------------------------------------------------------------
+export const absenceReason = politics.enum('absence_reason', ['parental_leave', 'medical_leave', 'bereavement', 'other_leave']);
+export type AbsenceReason = (typeof absenceReason.enumValues)[number];
+
+export const tdAbsences = politics.table(
+  'td_absences',
+  {
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    startDate: date('start_date').notNull(),
+    /** NULL while the leave is ongoing. */
+    endDate: date('end_date'),
+    reason: absenceReason('reason').notNull(),
+    sourceUrl: text('source_url').notNull(),
+    note: text('note'),
+  },
+  (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_absences_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Every Oireachtas PDF read, one row per file: which period it covers and which printed names
+// matched no current TD. A file is read once; a month whose file had an unmatched name is not
+// taken as "not paid" for a TD with no row in it.
+// ---------------------------------------------------------------------------
+export const disclosureFiles = politics.table(
+  'disclosure_files',
+  {
+    sourceUrl: text('source_url').primaryKey(),
+    /** "interests" | "allowances". */
+    kind: varchar('kind', { length: 20 }).notNull(),
+    /** First day of the year (interests) or month (allowances) the file covers. */
+    period: date('period').notNull(),
+    unmatched: jsonb('unmatched').$type<string[]>().notNull().default([]),
+    readAt: timestamp('read_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('disclosure_files_kind_period_idx').on(t.kind, t.period)],
+);
+
+// ---------------------------------------------------------------------------
+// Register of Members' Interests (annual PDF, Ethics in Public Office Acts): what each TD
+// declared in each of the nine statutory categories. NULL text = declared nothing.
+// ---------------------------------------------------------------------------
+export const tdInterests = politics.table(
+  'td_interests',
+  {
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    /** The year the register covers (the 2025 register is published in early 2026). */
+    registerYear: smallint('register_year').notNull(),
+    /** 1 Occupations … 9 Contracts, as numbered in the register. */
+    category: smallint('category').notNull(),
+    declared: text('declared'),
+    sourceUrl: text('source_url').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.memberCode, t.registerYear, t.category] }), index('td_interests_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Parliamentary Standard Allowance payments (monthly PDF): one row per payment as printed.
+// ---------------------------------------------------------------------------
+export const tdAllowancePayments = politics.table(
+  'td_allowance_payments',
+  {
+    sourceUrl: text('source_url').notNull(),
+    /** Row number in the file, from 0. */
+    position: integer('position').notNull(),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    /** The month the file covers (first day). */
+    month: date('month').notNull(),
+    /** As printed: "Deputy", "Minister", "Taoiseach", "Ceann Comhairle". NULL when the row has none. */
+    title: text('title'),
+    /** Travel and Accommodation Allowance band, e.g. "Dublin", "5", "MIN". */
+    taaBand: text('taa_band'),
+    narrative: text('narrative').notNull(),
+    datePaid: date('date_paid').notNull(),
+    amountCents: integer('amount_cents').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.sourceUrl, t.position] }), index('td_allowance_payments_td_idx').on(t.tdId, t.month)],
+);
 
 // ---------------------------------------------------------------------------
 // Committees: membership (from the roster) and sittings with their roll call

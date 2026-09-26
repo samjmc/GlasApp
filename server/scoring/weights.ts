@@ -87,12 +87,21 @@ export function parliamentaryScore(
   questions: number | null | undefined,
   attendancePct: number | null | undefined,
   committeeAttendancePct: number | null | undefined = null,
+  /**
+   * Per-TD expectations from server/parliament, each replacing its constant when given:
+   * `questionsExpected` for a TD expected to ask for only part of the term (a by-election TD,
+   * a Minister of State appointed mid-term); `attendanceBenchmark` for a TD with time in a
+   * leadership role (government office or party leader, on either side). Absent or NULL: the
+   * constant.
+   */
+  opts: { questionsExpected?: number | null; attendanceBenchmark?: number | null } = {},
 ): number | null {
   const part = (v: number | null | undefined, benchmark: number) =>
     v === null || v === undefined || Number.isNaN(v) ? null : clamp(v / benchmark, 0, 1) * 100;
+  const orConstant = (v: number | null | undefined, constant: number) => (v && v > 0 ? v : constant);
   const parts: Array<[number | null, number]> = [
-    [part(questions, QUESTIONS_BENCHMARK), PARLIAMENTARY_WEIGHTS.questions],
-    [part(attendancePct, ATTENDANCE_BENCHMARK), PARLIAMENTARY_WEIGHTS.attendance],
+    [part(questions, orConstant(opts.questionsExpected, QUESTIONS_BENCHMARK)), PARLIAMENTARY_WEIGHTS.questions],
+    [part(attendancePct, orConstant(opts.attendanceBenchmark, ATTENDANCE_BENCHMARK)), PARLIAMENTARY_WEIGHTS.attendance],
     [part(committeeAttendancePct, COMMITTEE_ATTENDANCE_BENCHMARK), PARLIAMENTARY_WEIGHTS.committees],
   ];
   let weighted = 0;

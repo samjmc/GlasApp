@@ -183,6 +183,10 @@ export async function rollupInputs(
     committeeAttendancePct: td.committeeAttendancePct,
     debateScore: debateScores.get(td.id) ?? null,
     isPresiding: stats?.isPresiding ?? false,
+    // No expectation computed yet (no stats row, or a row from before the fairness columns:
+    // recomputeStats always sets divisions_chaired) is undefined, not "not expected" (NULL).
+    questionsExpected: stats && stats.divisionsChaired !== null ? stats.questionsExpected : undefined,
+    attendanceBenchmark: stats && stats.divisionsChaired !== null ? stats.attendanceBenchmark : undefined,
   }));
 }
 

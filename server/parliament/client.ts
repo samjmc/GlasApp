@@ -7,6 +7,7 @@
  *   - Restrict to the Dáil with `chamber_type=house&chamber=dail`. `chamber=dail` alone
  *     still returns joint committees for debates.
  */
+import type { OfficeType } from '@shared/schema/parliament';
 import { isoDay, type RawBill, type RawDivision, type RawQuestion } from './parse';
 import { addDays } from './window';
 
@@ -37,8 +38,31 @@ export interface RosterMember {
   isPresiding: boolean;
   /** Offices held now (Taoiseach, Minister for …, Minister of State …), with start dates. */
   offices: Array<{ title: string; since: string | null }>;
+  /** Every office held in the current Dáil, past and present, typed. */
+  officeHistory: RosterOffice[];
   /** Committee memberships in the current Dáil, past and present, with their dates. */
   committees: RosterCommittee[];
+}
+
+export interface RosterOffice {
+  title: string;
+  type: OfficeType;
+  start: string;
+  end: string | null;
+}
+
+/**
+ * The kind of an office, from its official title (the API gives no office type or URI;
+ * measured on the 34th Dáil: "Taoiseach", "Minister for …", "Minister of State …",
+ * "Ceann Comhairle", "Leas-Cheann Comhairle" and nothing else).
+ */
+export function officeTypeOf(title: string): OfficeType {
+  const t = title.trim();
+  if (t === 'Ceann Comhairle') return 'ceann_comhairle';
+  if (t === 'Leas-Cheann Comhairle') return 'leas_cheann_comhairle';
+  if (/^Minister of State\b/.test(t)) return 'minister_of_state';
+  if (/^(Taoiseach|Tánaiste|Minister for)\b/.test(t)) return 'cabinet';
+  return 'other';
 }
 
 export interface RosterCommittee {
@@ -293,6 +317,13 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     .filter((o) => o.office?.officeName?.showAs && !o.office.dateRange?.end)
     .map((o) => ({ title: o.office!.officeName!.showAs!, since: isoDay(o.office!.dateRange?.start) }));
 
+  const officeHistory = (seat.offices ?? []).flatMap((o) => {
+    const title = o.office?.officeName?.showAs;
+    const start = isoDay(o.office?.dateRange?.start);
+    if (!title || !start) return [];
+    return [{ title, type: officeTypeOf(title), start, end: isoDay(o.office?.dateRange?.end) }];
+  });
+
   // The seat lists committees of earlier terms and of the Seanad too (measured: 12 of 696),
   // and memberships that ended before this seat began (14). Only this Dáil's committees,
   // held during this seat, say anything about this TD's attendance.
@@ -322,6 +353,7 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     memberSince: seat.dateRange.start,
     isPresiding,
     offices,
+    officeHistory,
     committees,
   };
 }
