@@ -58,12 +58,14 @@ function convertSupabaseUser(supabaseUser: User | null): AuthUser | null {
     email: supabaseUser.email,
     firstName: supabaseUser.user_metadata?.first_name || supabaseUser.user_metadata?.given_name,
     lastName: supabaseUser.user_metadata?.last_name || supabaseUser.user_metadata?.family_name,
-    profileImageUrl: supabaseUser.user_metadata?.avatar_url || supabaseUser.user_metadata?.picture,
+    // glas_avatar_url is our upload; Google rewrites avatar_url and picture at every sign-in.
+    profileImageUrl:
+      supabaseUser.user_metadata?.glas_avatar_url || supabaseUser.user_metadata?.avatar_url || supabaseUser.user_metadata?.picture,
     displayName: supabaseUser.user_metadata?.full_name || supabaseUser.user_metadata?.name,
     username: supabaseUser.user_metadata?.username,
     county: supabaseUser.user_metadata?.county,
     bio: supabaseUser.user_metadata?.bio,
-    role: supabaseUser.user_metadata?.role || supabaseUser.app_metadata?.role,
+    role: supabaseUser.app_metadata?.role,
   };
 }
 
