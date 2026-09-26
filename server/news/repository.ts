@@ -1,9 +1,10 @@
 /**
  * Every read and write of the news tables. Nothing else touches them.
  */
-import { and, desc, eq, gte, inArray, isNull, notInArray, sql, type SQL } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, inArray, isNull, ne, notInArray, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { newsArticles, newsSources, type ArticleStatus, type NewNewsArticle } from '@shared/schema/news';
+import type { EventCandidate } from './events';
 import type { SourceConfig } from './sources';
 import type { FeedQuery } from './feed';
 import { RELEVANCE_FLOOR } from './relevance';
@@ -59,25 +60,70 @@ export async function existingUrls(urls: string[], database: Db = db): Promise<S
   return new Set(rows.map((r) => r.url));
 }
 
-/** Titles stored in the last `hours`, for title-similarity dedup. */
-export async function recentTitles(hours: number, database: Db = db): Promise<Array<{ url: string; title: string }>> {
+/** Titles stored in the last `hours`, for title-similarity dedup. `id` is the row's root canonical. */
+export async function recentTitles(hours: number, database: Db = db): Promise<Array<{ id: number; url: string; title: string }>> {
   return database
-    .select({ url: newsArticles.url, title: newsArticles.title })
+    .select({ id: sql<number>`coalesce(${newsArticles.duplicateOf}, ${newsArticles.id})`.mapWith(Number), url: newsArticles.url, title: newsArticles.title })
     .from(newsArticles)
     .where(gte(newsArticles.createdAt, sql`now() - make_interval(hours => ${hours})`))
     .orderBy(desc(newsArticles.createdAt))
     .limit(1000);
 }
 
-/** Insert new articles. A URL already present is left exactly as it is. Returns ids inserted. */
-export async function insertArticles(rows: NewNewsArticle[], database: Db = db): Promise<number[]> {
+/** Visible canonicals published in the `hours` before `now`, newest first: what a new item may be the same event as. */
+export async function eventCandidates(now: Date, hours: number, limit: number, database: Db = db): Promise<EventCandidate[]> {
+  return database
+    .select({ id: newsArticles.id, title: newsArticles.title, summary: newsArticles.aiSummary })
+    .from(newsArticles)
+    .where(
+      and(
+        ne(newsArticles.status, 'duplicate'),
+        sql`coalesce(${newsArticles.relevanceScore}, 100) >= ${RELEVANCE_FLOOR}`,
+        gte(newsArticles.publishedAt, new Date(now.getTime() - hours * 3_600_000)),
+      ),
+    )
+    .orderBy(desc(newsArticles.publishedAt))
+    .limit(limit);
+}
+
+/**
+ * Insert new articles. A URL already present is left exactly as it is. Returns the rows
+ * inserted, which can be fewer than `rows`, so callers match them by URL.
+ */
+export async function insertArticles(rows: NewNewsArticle[], database: Db = db): Promise<Array<{ id: number; url: string }>> {
   if (rows.length === 0) return [];
-  const inserted = await database
+  return database
     .insert(newsArticles)
     .values(rows)
     .onConflictDoNothing({ target: newsArticles.url })
+    .returning({ id: newsArticles.id, url: newsArticles.url });
+}
+
+// A row that moved a TD's score stays visible; a row with duplicates of its own stays their root.
+const LINKABLE = sql`${newsArticles.status} in ('pending', 'skipped')
+  and not exists (select 1 from politics.article_td_scores v where v.article_id = ${newsArticles.id})
+  and not exists (select 1 from politics.news_articles d where d.duplicate_of = ${newsArticles.id})`;
+
+/** Visible rows published since `since` that the event backfill may still link, oldest first. */
+export async function linkableRows(
+  since: Date,
+  database: Db = db,
+): Promise<Array<{ id: number; url: string; title: string; summary: string | null; publishedAt: Date }>> {
+  return database
+    .select({ id: newsArticles.id, url: newsArticles.url, title: newsArticles.title, summary: newsArticles.aiSummary, publishedAt: newsArticles.publishedAt })
+    .from(newsArticles)
+    .where(and(LINKABLE, sql`coalesce(${newsArticles.relevanceScore}, 100) >= ${RELEVANCE_FLOOR}`, gte(newsArticles.publishedAt, since)))
+    .orderBy(asc(newsArticles.publishedAt), asc(newsArticles.url));
+}
+
+/** Mark `id` a duplicate of the canonical `of`, if it is still linkable. Returns whether it was. */
+export async function linkDuplicate(id: number, of: number, database: Db = db): Promise<boolean> {
+  const rows = await database
+    .update(newsArticles)
+    .set({ status: 'duplicate', duplicateOf: of, updatedAt: sql`now()` })
+    .where(and(eq(newsArticles.id, id), LINKABLE))
     .returning({ id: newsArticles.id });
-  return inserted.map((r) => r.id);
+  return rows.length > 0;
 }
 
 // ---------------------------------------------------------------------------
@@ -151,12 +197,13 @@ export async function claimForScoring(limit: number, database: Db = db): Promise
     .orderBy(desc(newsArticles.publishedAt));
 }
 
+/** The article to score for `id`: a duplicate is never scored, so it resolves to its canonical. */
 export async function findForScoring(id: number, database: Db = db): Promise<ClaimedArticle | null> {
   const rows = await database
     .select(claimedColumns)
     .from(newsArticles)
     .innerJoin(newsSources, eq(newsSources.id, newsArticles.sourceId))
-    .where(eq(newsArticles.id, id))
+    .where(eq(newsArticles.id, sql`coalesce((select duplicate_of from politics.news_articles where id = ${id}), ${id})`))
     .limit(1);
   return rows[0] ?? null;
 }
@@ -166,7 +213,7 @@ export async function saveContent(id: number, content: string, database: Db = db
 }
 
 export interface Outcome {
-  status: Extract<ArticleStatus, 'scored' | 'skipped' | 'duplicate' | 'failed'>;
+  status: Extract<ArticleStatus, 'scored' | 'skipped' | 'failed'>;
   importanceScore: number | null;
   importanceReasoning: string | null;
   skipReason: string | null;
@@ -217,6 +264,8 @@ export interface FeedRow {
   storyType: string | null;
   sentiment: string | null;
   affectedTds: Array<{ name: string; impactScore: number }>;
+  /** The first later copy of this event from each OTHER outlet, earliest first. */
+  alsoReportedBy: Array<{ source: string; url: string }>;
 }
 
 type RawFeedRow = {
@@ -234,6 +283,7 @@ type RawFeedRow = {
   story_type: string | null;
   sentiment: string | null;
   affected: Array<{ name: string; impactScore: number }> | null;
+  also_reported_by: Array<{ source: string; url: string }> | null;
 };
 
 function toFeedRow(r: RawFeedRow): FeedRow {
@@ -252,15 +302,19 @@ function toFeedRow(r: RawFeedRow): FeedRow {
     storyType: r.story_type,
     sentiment: r.sentiment,
     affectedTds: r.affected ?? [],
+    alsoReportedBy: r.also_reported_by ?? [],
   };
 }
 
-/** The feed's SELECT, with the strongest verdict and every affected TD per article. */
+/**
+ * The feed's SELECT, with the strongest verdict, every affected TD, and the other outlets that
+ * reported the same event. Outlets compare by NAME: one outlet can have two feeds (RTÉ).
+ */
 function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQL {
   return sql`
     select a.id, a.title, a.summary, a.ai_summary, a.category, a.url, a.image_url, a.published_at,
            s.name as source, s.logo_url as source_logo_url,
-           top.impact, top.story_type, top.sentiment, aff.affected
+           top.impact, top.story_type, top.sentiment, aff.affected, rep.also_reported_by
       from politics.news_articles a
       join politics.news_sources s on s.id = a.source_id
       left join lateral (
@@ -274,6 +328,14 @@ function feedSelect(where: SQL, orderBy: SQL, limit: number, offset: number): SQ
           from politics.article_td_scores v
           join politics.tds t on t.id = v.td_id
          where v.article_id = a.id) aff on true
+      left join lateral (
+        select json_agg(json_build_object('source', o.name, 'url', o.url) order by o.published_at, o.url) as also_reported_by
+          from (
+            select distinct on (ds.name) ds.name, d.url, d.published_at
+              from politics.news_articles d
+              join politics.news_sources ds on ds.id = d.source_id
+             where d.duplicate_of = a.id and ds.name <> s.name
+             order by ds.name, d.published_at, d.url) o) rep on true
      where ${where}
      order by ${orderBy}
      limit ${limit} offset ${offset}`;
@@ -284,7 +346,7 @@ const BY_DATE = sql`a.published_at desc, a.id desc`;
 
 /**
  * Rows below the relevance floor are stored only so their URL is never scored again.
- * Same-event duplicates are hidden so one story shows once, as its canonical article.
+ * Same-event duplicates are hidden so one event shows once, as its canonical article.
  */
 const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR} and a.status <> 'duplicate'`;
 
@@ -346,6 +408,7 @@ export async function missingImages(hours: number, limit: number, database: Db =
         isNull(newsArticles.imageUrl),
         gte(newsArticles.createdAt, sql`now() - make_interval(hours => ${hours})`),
         sql`coalesce(${newsArticles.relevanceScore}, 100) >= ${RELEVANCE_FLOOR}`,
+        ne(newsArticles.status, 'duplicate'),
       ),
     )
     .orderBy(desc(newsArticles.publishedAt))
