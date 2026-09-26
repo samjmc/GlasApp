@@ -4,7 +4,6 @@
  * selection.ts and summary.ts; this file sequences them around the repository.
  */
 import { callChatCompletion, isLLMConfigured } from '../services/aiService';
-import { generateQuickExplainer } from '../services/openaiService';
 import type { IdeologyDimension } from '../constants/ideology';
 import {
   DAILY_ITEM_COUNT,
@@ -13,7 +12,6 @@ import {
   type DailySessionState,
   type DailySessionCompletion,
   type QuestionTally,
-  type QuickExplainer,
   type VoteSource,
 } from '@shared/voting';
 import type { DailySessionRow } from '@shared/schema/voting';
@@ -48,8 +46,6 @@ const ANSWER_HISTORY_DAYS = 30;
 /** How far back question targets count when steering the next question's axis. */
 const QUESTION_BALANCE_DAYS = 30;
 const QUESTION_MODEL = 'gpt-4o-mini';
-const EXPLAINER_TTL_MS = 24 * 60 * 60 * 1000;
-const EXPLAINER_CACHE_MAX = 500;
 
 /** A failure the caller caused. The router maps `status` straight to the response. */
 export class VotingError extends Error {
@@ -355,40 +351,4 @@ export async function castArticleVote(
   await castVote({ userId, questionId, optionKey, source: 'article' });
   const tallies = await repo.tallies([questionId]);
   return { tally: tallies.get(questionId) ?? EMPTY_TALLY, myVote: optionKey };
-}
-
-export async function retractVote(userId: string, questionId: number): Promise<void> {
-  if (!(await repo.deleteVote(userId, questionId))) throw new VotingError(404, 'No vote to remove');
-  try {
-    await ideology.recomputeProfile(userId);
-  } catch (error) {
-    console.error('[voting] ideology recompute failed:', error instanceof Error ? error.message : error);
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Quick explainer: an LLM summary per headline, cached in process
-// ---------------------------------------------------------------------------
-
-const explainerCache = new Map<string, { value: QuickExplainer; expiresAt: number }>();
-
-export async function quickExplainer(input: {
-  headline: string;
-  summary: string;
-  issueCategory: string;
-  region: string;
-  todayIso?: string;
-}): Promise<QuickExplainer> {
-  const key = `${input.region}::${input.headline.trim().toLowerCase()}`;
-  const cached = explainerCache.get(key);
-  if (cached && cached.expiresAt > Date.now()) return cached.value;
-
-  const value = await generateQuickExplainer(input);
-  if (explainerCache.size >= EXPLAINER_CACHE_MAX) {
-    // Maps iterate in insertion order, so the first key is the oldest.
-    const oldest = explainerCache.keys().next().value;
-    if (oldest !== undefined) explainerCache.delete(oldest);
-  }
-  explainerCache.set(key, { value, expiresAt: Date.now() + EXPLAINER_TTL_MS });
-  return value;
 }

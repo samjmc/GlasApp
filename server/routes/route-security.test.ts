@@ -159,8 +159,8 @@ describe('ai/analysis /complete-analysis', () => {
   const dimensions = { economic: 1, social: -2, cultural: 0, authority: 3, environmental: -4, welfare: 5, globalism: -6, technocratic: 7 };
 
   it('returns 400 when a dimension is outside -10..10', async () => {
-    await withServer(appWith('/api/ai', analysisRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ai/complete-analysis`, {
+    await withServer(appWith('/api/enhanced-profile', analysisRoutes), async (base) => {
+      const res = await fetch(`${base}/api/enhanced-profile/complete-analysis`, {
         method: 'POST',
         headers: jsonHeaders(),
         body: JSON.stringify({ dimensions: { ...dimensions, welfare: 11 } }),
@@ -170,8 +170,8 @@ describe('ai/analysis /complete-analysis', () => {
   });
 
   it('returns 200 for a valid position', async () => {
-    await withServer(appWith('/api/ai', analysisRoutes), async (base) => {
-      const res = await fetch(`${base}/api/ai/complete-analysis`, {
+    await withServer(appWith('/api/enhanced-profile', analysisRoutes), async (base) => {
+      const res = await fetch(`${base}/api/enhanced-profile/complete-analysis`, {
         method: 'POST',
         headers: jsonHeaders(),
         body: JSON.stringify({ dimensions }),
