@@ -3,11 +3,12 @@
  * surface; everything else in this folder is internal.
  *
  *   recomputeProfile / getIdeologyProfile   users (called by voting and the quiz)
- *   recordTdEvidence                        a stance by a TD (debates)
- *   matchesFor                              TDs and parties closest to a position
+ *   recordTdEvidence                        a stance by a TD (verified news stances, debates)
+ *   matchesFor / userMatches                TDs and parties closest to a position / to a signed-in user
  *   recalculateAll                          rebuild every profile, no model calls
  */
 export {
+  deleteTdEvidence,
   getIdeologyProfile,
   matchesFor,
   partyProfile,

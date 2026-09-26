@@ -47,14 +47,16 @@ router.get(
 );
 
 /**
- * GET /api/ideology/me/matches?weights=… — TDs and parties closest to the signed-in user,
- * on the dimensions the user has evidence on (`meta.measured`).
+ * GET /api/ideology/me/matches?weights=…&td=<id> — TDs and parties closest to the signed-in user,
+ * on the dimensions the user has evidence on (`meta.measured`). Each TD carries `issues`, the
+ * daily-vote questions both answered; its items are listed for the top 5 and for `td`.
  */
 router.get(
   '/me/matches',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const result = await userMatches(req.user!.id, parseWeights(req.query.weights));
+    const td = z.coerce.number().int().positive().safeParse(req.query.td);
+    const result = await userMatches(req.user!.id, parseWeights(req.query.weights), td.success ? { tdId: td.data } : {});
     if (!result) return res.json(formatSuccess({ tds: [], parties: [] }, { hasProfile: false, measured: [] }));
     const { measured, ...matches } = result;
     res.json(formatSuccess(matches, { hasProfile: true, measured }));

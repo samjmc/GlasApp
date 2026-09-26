@@ -8,6 +8,7 @@ import {
   ideologyProfiles,
   quizResults,
   tdIdeologyEvidence,
+  type EvidenceSource,
   type IdeologyProfileRow,
   type NewTdIdeologyEvidence,
   type ProfileSubject,
@@ -99,10 +100,43 @@ export async function listActiveTds(database: Db = db): Promise<TdRef[]> {
 
 // --- TD evidence -----------------------------------------------------------
 
-/** Idempotent on (TD, source, sourceRef). Returns false when the evidence was already there. */
+/**
+ * Idempotent on (TD, source, sourceRef). Returns false when nothing was written.
+ *
+ * A `stance` is the TD's CURRENT answer to one question, so a later statement replaces it: every
+ * value column is overwritten (a dimension the new answer is silent on becomes NULL), but only
+ * when the new row is not older, so an older article never overwrites a newer position.
+ * Every other source keeps the first row.
+ */
 export async function insertTdEvidence(row: NewTdIdeologyEvidence, database: Db = db): Promise<boolean> {
-  const inserted = await database.insert(tdIdeologyEvidence).values(row).onConflictDoNothing().returning({ id: tdIdeologyEvidence.id });
-  return inserted.length > 0;
+  const insert = database.insert(tdIdeologyEvidence).values(row);
+  const written =
+    row.source === 'stance'
+      ? await insert
+          .onConflictDoUpdate({
+            target: [tdIdeologyEvidence.tdId, tdIdeologyEvidence.source, tdIdeologyEvidence.sourceRef],
+            set: {
+              ...Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, row[d] ?? null])),
+              policyTopic: row.policyTopic ?? null,
+              weight: row.weight,
+              observedAt: row.observedAt,
+            },
+            setWhere: sql`excluded.observed_at >= ${tdIdeologyEvidence.observedAt}`,
+          })
+          .returning({ id: tdIdeologyEvidence.id })
+      : await insert.onConflictDoNothing().returning({ id: tdIdeologyEvidence.id });
+  return written.length > 0;
+}
+
+/** Delete every evidence row of one source; with `dryRun`, only count them. */
+export async function deleteTdEvidenceBySource(source: EvidenceSource, dryRun: boolean, database: Db = db): Promise<number> {
+  const where = eq(tdIdeologyEvidence.source, source);
+  if (dryRun) {
+    const [row] = await database.select({ n: sql<number>`count(*)::int` }).from(tdIdeologyEvidence).where(where);
+    return Number(row?.n ?? 0);
+  }
+  const deleted = await database.delete(tdIdeologyEvidence).where(where).returning({ id: tdIdeologyEvidence.id });
+  return deleted.length;
 }
 
 export async function listTdEvidence(tdId: number, database: Db = db): Promise<TdIdeologyEvidenceRow[]> {
