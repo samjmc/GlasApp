@@ -70,7 +70,7 @@ export function TdIdeologyCard({ tdId }: { tdId: number | undefined }) {
             const value = profile.vector[dim];
             return (
               <li key={dim} className="flex flex-col gap-1.5">
-                <span className="flex items-baseline justify-between gap-2 text-sm">
+                <span className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 text-sm">
                   <span className="flex min-w-0 items-center gap-1.5">
                     <span className="font-semibold">{DIMENSION_POLES[dim].label}</span>
                     {state === 'party' && (
@@ -78,11 +78,11 @@ export function TdIdeologyCard({ tdId }: { tdId: number | undefined }) {
                     )}
                   </span>
                   {state === 'not-measured' ? (
-                    <span data-testid="dimension-not-measured" data-dimension={dim} className="shrink-0 text-[13px] text-muted-foreground">
+                    <span data-testid="dimension-not-measured" data-dimension={dim} className="text-[13px] text-muted-foreground">
                       Not measured yet
                     </span>
                   ) : (
-                    <span className="shrink-0 text-[13px] text-muted-foreground">{describePosition(dim, value)}</span>
+                    <span className="text-[13px] text-muted-foreground">{describePosition(dim, value)}</span>
                   )}
                 </span>
                 {state === 'not-measured' ? (
@@ -106,9 +106,11 @@ export function TdIdeologyCard({ tdId }: { tdId: number | undefined }) {
           <span>
             {!hasPartyBaseline
               ? 'No party baseline.'
-              : measuredCount === IDEOLOGY_DIMENSIONS.length
-                ? `Own evidence on all ${measuredCount} dimensions.`
-                : `Own evidence on ${measuredCount} of ${IDEOLOGY_DIMENSIONS.length} dimensions; the rest is ${party}'s position.`}
+              : measuredCount === 0
+                ? `Every dimension is ${party}'s position.`
+                : measuredCount === IDEOLOGY_DIMENSIONS.length
+                  ? `Own evidence on all ${measuredCount} dimensions.`
+                  : `Own evidence on ${measuredCount} of ${IDEOLOGY_DIMENSIONS.length} dimensions; the rest is ${party}'s position.`}
           </span>
         </div>
       </>
