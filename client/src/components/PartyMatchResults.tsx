@@ -118,7 +118,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
               <div key={match.party} className="flex flex-col gap-2.5 rounded-xl bg-elevated p-3.5">
                 <div className="flex items-center gap-3">
                   <PartyBadge party={match.party} />
-                  <span className="min-w-0 flex-1 truncate text-base font-bold">{style.name}</span>
+                  <span className="min-w-0 flex-1 truncate text-base font-bold" data-testid="party-match-name">{style.name}</span>
                   <span className="font-display text-[26px] font-extrabold tabular-nums">{pct}%</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-input" aria-hidden="true">
@@ -151,7 +151,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
               >
                 <PartyBadge party={match.party} small />
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="truncate text-[15px] font-bold">{partyStyle(match.party).name}</span>
+                  <span className="truncate text-[15px] font-bold" data-testid="party-match-least-name">{partyStyle(match.party).name}</span>
                   <span className="text-xs text-muted-foreground">
                     {match.furthest.length > 0 ? `Furthest on ${labels(match.furthest)}` : "Differs from you overall"}
                   </span>
