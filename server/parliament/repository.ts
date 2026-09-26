@@ -29,11 +29,14 @@ import type {
 } from '@shared/parliamentApi';
 import { db, type Db } from '../db';
 import { countBillsSponsored } from './repo/bills';
-import { tdAbsencesOf, tdOfficeHistory } from './repo/fairness';
+import { fairnessPeriods, tdAbsencesOf, tdOfficeHistory } from './repo/fairness';
 import { questionsAskedBy } from './repo/questions';
 import {
+  attendanceBenchmark,
   committeeAttendancePct,
   INDEPENDENT,
+  QUESTION_EXEMPT_OFFICES,
+  questionsExpected,
   MIN_COMMITTEE_SITTINGS,
   MIN_SITTING_DAYS,
   majorityFor,
@@ -187,6 +190,8 @@ export async function updateGenders(genders: Map<string, string>, database: Db =
  */
 export async function recomputeStats(
   windows: Map<string, { memberSince: string; isPresiding: boolean }>,
+  /** The Dáil's first day and today, for the per-TD expectations (see metrics.ts). */
+  term: { start: string; today: string },
   database: Db = db,
 ): Promise<number> {
   const active = await database.select({ id: tds.id, code: tds.memberCode }).from(tds).where(eq(tds.isActive, true));
@@ -194,6 +199,7 @@ export async function recomputeStats(
     .filter((t) => t.code && windows.has(t.code))
     .map((t) => ({ tdId: t.id, ...windows.get(t.code as string)! }));
   if (rows.length === 0) return 0;
+  const codeOf = new Map(active.map((t) => [t.id, t.code as string]));
 
   await database.transaction(async (tx) => {
     // TDs no longer active keep no stats row; their votes and speeches stay.
@@ -261,6 +267,23 @@ export async function recomputeStats(
                     where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since
                       and not exists (select 1 from days where days.td_id = s.td_id and days.date = p.date and days.excused)),
         updated_at = now()`);
+
+    // What each TD was expected to do, in the same transaction so no reader ever sees the
+    // counts without their expectations: questions pro-rated to the time outside exempt office
+    // and documented leave; a vote benchmark for their mix of backbench and government time.
+    // The chair is expected neither, whatever the office history says.
+    const periods = await fairnessPeriods(QUESTION_EXEMPT_OFFICES, tx);
+    for (const s of await tx.select().from(tdParliamentStats)) {
+      const code = codeOf.get(s.tdId)!;
+      const excluded = [...(periods.offices.get(code) ?? []), ...(periods.absences.get(code) ?? [])];
+      await tx
+        .update(tdParliamentStats)
+        .set({
+          questionsExpected: s.isPresiding ? null : questionsExpected({ memberSince: s.memberSince, termStart: term.start, today: term.today, excluded }),
+          attendanceBenchmark: s.isPresiding ? null : attendanceBenchmark(s.divisionsEligible, s.divisionsInOffice ?? 0),
+        })
+        .where(eq(tdParliamentStats.tdId, s.tdId));
+    }
   });
   return rows.length;
 }
@@ -377,14 +400,17 @@ export async function tdSummary(tdId: number, database: Db = db) {
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.id, tdId));
   if (!row) return null;
-  const [votes, billsFeed, billCount, asked, officeHistory, absences] = await Promise.all([
+  const [votes, billsFeed, questionsFeed, billCount, asked, officeHistory, absences] = await Promise.all([
     votesOf(tdId, {}, database),
     getSyncState('bills', database),
+    getSyncState('questions', database),
     countBillsSponsored(tdId, database),
     questionsAskedBy(tdId, database),
     tdOfficeHistory(tdId, database),
     tdAbsencesOf(tdId, database),
   ]);
+  // The monthly counts are complete once the feed has a resume point and no failed month.
+  const questionsComplete = questionsFeed.throughDate !== null && Object.keys(questionsFeed.failures).length === 0;
   // Before the bills feed has run once, zero bills would read as "sponsored none".
   const billsSponsored = billsFeed.throughDate ? billCount : null;
   const { td, stats } = row;
@@ -404,6 +430,7 @@ export async function tdSummary(tdId: number, database: Db = db) {
     // scoring input and is NULL for a TD who was not expected to ask.
     questionsOral: asked ? asked.oral : td.questionCountOral,
     questionsWritten: asked ? asked.written : td.questionCountWritten,
+    questionsComplete,
     questionsExpected: stats?.questionsExpected ?? null,
     officeHistory,
     absences,

@@ -3,7 +3,7 @@
  * questions. Both are replaced whole on every sync; td_parliament_stats reads them.
  */
 import { eq, sql } from 'drizzle-orm';
-import { tdAbsences, tdOffices, tdParliamentStats } from '@shared/schema/parliament';
+import { tdAbsences, tdOffices } from '@shared/schema/parliament';
 import { tds } from '@shared/schema/politics';
 import type { TdAbsence, TdOfficePeriod } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
@@ -52,7 +52,7 @@ export async function replaceAbsences(entries: DocumentedAbsence[], tdIds: Map<s
 /** Per member code: the office periods of the given types and the documented absences. */
 export async function fairnessPeriods(
   officeTypes: readonly string[],
-  database: Db = db,
+  database: Pick<Db, 'select'> = db,
 ): Promise<{ offices: Map<string, DayRange[]>; absences: Map<string, DayRange[]> }> {
   const [officeRows, absenceRows] = await Promise.all([
     database.select().from(tdOffices),
@@ -64,21 +64,6 @@ export async function fairnessPeriods(
   const absences = new Map<string, DayRange[]>();
   for (const a of absenceRows) push(absences, a.memberCode, { start: a.startDate, end: a.endDate });
   return { offices, absences };
-}
-
-/** Write the per-TD expectations computed in the sync. */
-export async function writeExpectations(
-  rows: Array<{ tdId: number; questionsExpected: number | null; attendanceBenchmark: number | null }>,
-  database: Db = db,
-): Promise<void> {
-  await database.transaction(async (tx) => {
-    for (const r of rows) {
-      await tx
-        .update(tdParliamentStats)
-        .set({ questionsExpected: r.questionsExpected, attendanceBenchmark: r.attendanceBenchmark })
-        .where(eq(tdParliamentStats.tdId, r.tdId));
-    }
-  });
 }
 
 /** A TD's documented absences, newest first, for the profile. */
@@ -120,18 +105,22 @@ export async function undocumentedSilences(minDays: number, database: Db = db): 
       select v.member_code, d.date from politics.division_votes v join politics.divisions d on d.id = v.division_id
       union select member_code, date from politics.debate_speeches where member_code is not null),
     grid as (
-      select t.member_code, t.name, x.date, (a.member_code is not null) is_active,
+      -- A documented leave day is not silent: it ends a run rather than being skipped, so the
+      -- days either side of a leave are two runs, not one.
+      select t.member_code, t.name, x.date,
+        (a.member_code is null and not exists (
+          select 1 from politics.td_absences ab
+          where ab.member_code = t.member_code and x.date >= ab.start_date and (ab.end_date is null or x.date <= ab.end_date))) is_silent,
         row_number() over (partition by t.member_code order by x.date) rn
       from politics.tds t
       join politics.td_parliament_stats s on s.td_id = t.id
       join days x on x.date >= s.member_since
       left join (select distinct member_code, date from active) a on a.member_code = t.member_code and a.date = x.date
-      where t.is_active and not exists (
-        select 1 from politics.td_absences ab
-        where ab.member_code = t.member_code and x.date >= ab.start_date and (ab.end_date is null or x.date <= ab.end_date))),
+      where t.is_active),
     runs as (
       select member_code, name, min(date) run_from, max(date) run_to, count(*)::int n
-      from (select *, rn - row_number() over (partition by member_code, is_active order by date) grp from grid where not is_active) q
+      from (select *, rn - row_number() over (partition by member_code, is_silent order by date) grp from grid) q
+      where is_silent
       group by member_code, name, grp)
     select member_code, name, run_from::text, run_to::text, n from runs where n >= ${minDays} order by n desc, name`);
   return (res.rows as Array<{ member_code: string; name: string; run_from: string; run_to: string; n: number }>).map((r) => ({

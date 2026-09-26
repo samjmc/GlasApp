@@ -198,6 +198,25 @@ export const tdAbsences = politics.table(
 );
 
 // ---------------------------------------------------------------------------
+// Every Oireachtas PDF read, one row per file: which period it covers and which printed names
+// matched no current TD. A file is read once; a month whose file had an unmatched name is not
+// taken as "not paid" for a TD with no row in it.
+// ---------------------------------------------------------------------------
+export const disclosureFiles = politics.table(
+  'disclosure_files',
+  {
+    sourceUrl: text('source_url').primaryKey(),
+    /** "interests" | "allowances". */
+    kind: varchar('kind', { length: 20 }).notNull(),
+    /** First day of the year (interests) or month (allowances) the file covers. */
+    period: date('period').notNull(),
+    unmatched: jsonb('unmatched').$type<string[]>().notNull().default([]),
+    readAt: timestamp('read_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('disclosure_files_kind_period_idx').on(t.kind, t.period)],
+);
+
+// ---------------------------------------------------------------------------
 // Register of Members' Interests (annual PDF, Ethics in Public Office Acts): what each TD
 // declared in each of the nine statutory categories. NULL text = declared nothing.
 // ---------------------------------------------------------------------------

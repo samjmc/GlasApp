@@ -124,6 +124,28 @@ Facts measured while building it:
 
 Not in the API: gender (empty for all 176), members' interests and expenses (PDFs only).
 
+## v3 (2026-09-26): fair measures, and the gaps filled
+
+Rules and effects are in `docs/scoring.md` ("Fair by construction"). Facts measured on the way:
+- The roster lists every office held this Dáil with dates (77, all typed by title: Taoiseach,
+  Minister for …, Minister of State …, Ceann Comhairle, Leas-Cheann Comhairle). There is no
+  office type or URI in the API.
+- Office holders vote less: 91.6% before taking office, 80.0% after (38 TDs). Cabinet members
+  asked 46 questions between them while in office; Ministers of State about a seventh of the
+  backbench rate.
+- The chair at a division is readable from the transcript: the last presiding speech in the
+  division's section. The Ceann Comhairle chaired 306 and voted in none; the Leas-Cheann
+  Comhairle chaired 61 he did not vote in.
+- There is no official record of why a TD missed a vote. Pairing is informal. Ministerial
+  foreign travel is published as data by one department only (Housing, 3 ministers).
+- Wikidata P4690 is the Oireachtas member code verbatim: 174 of 174 TDs, all with P21.
+- oireachtas.ie publication listings are readable with a browser User-Agent; the PDFs are on
+  data.oireachtas.ie. The Dáil PSA file for October 2025 was never published; March 2025 was
+  re-published in February 2026; November 2025 sits under `/caighdeanOifigiul/`.
+- Name matching the PDFs: every non-exact match was a short or alternative first name, or a
+  typo in the source ("Deouty", "Deputy, Crowe", "Newsome Drennen"). Only the two TDs who
+  left the Dáil (Connolly, Donohoe) match nobody.
+
 ## Deleted
 
 Server: `services/{oireachtasAPIService,politicianAgent}`, `jobs/{dailyDebateUpdate,dailyVoteFetcher,

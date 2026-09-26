@@ -27,8 +27,8 @@ export const DOCUMENTED_ABSENCES: DocumentedAbsence[] = [
     reason: 'parental_leave',
     source: 'https://www.irishexaminer.com/news/arid-41651087.html',
     note:
-      'Maternity leave from the birth of her child on polling day, 29 Nov 2024. The source (13 Jun 2025) says she ' +
-      'returns in September; the end date is the day before her first vote or speech that month (17 Sept 2025).',
+      'Maternity leave from the birth of her child on polling day, 29 Nov 2024. She returned to the Dáil on ' +
+      '17 Sept 2025: https://www.rte.ie/news/politics/2025/0917/1534006-holly-cairns-return/',
   },
   {
     memberCode: 'Richard-Boyd-Barrett.D.2011-03-09',

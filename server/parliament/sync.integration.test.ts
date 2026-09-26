@@ -208,6 +208,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   const sync = (o: Parameters<typeof parliament.runSync>[0]) =>
     parliament.runSync({ genders: async () => GENDERS, disclosures: NO_DISCLOSURES, ...o });
   const windows = () => new Map(roster.map((m) => [m.memberCode, { memberSince: m.memberSince, isPresiding: m.isPresiding }]));
+  // The term the later tests recompute over: the fixture Dáil's first day to the last sync's today.
+  const TERM = { start: '2024-11-29', today: '2025-07-30' };
   const statsOf = async (code: string) => {
     const id = await tdId(code);
     return (await parliament.repository.allStats()).find((s) => s.tdId === id);
@@ -423,6 +425,15 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
   });
 
+  it('retries a failed FIRST month of the Dáil too, whose key is before the Dáil began', async () => {
+    const questions = async () => (await parliament.repository.syncStatus()).find((f) => f.feed === 'questions');
+    const failed = await sync({ client: fakeClient(roster, { failQuestionMonths: ['2024-11-01'] }), since: '2024-11-29', today: '2025-06-30', log: () => {} });
+    expect(failed.questions.failedMonths).toEqual(['2024-11-01']);
+    // A normal run's window is only June; November 2024 must come from the failure map.
+    await sync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
+    expect((await questions())?.failures).toEqual({});
+  });
+
   it('records a failed day, keeps going, and retries it on a later run', async () => {
     const pending = { date: '2025-06-26', xmlUri: null };
     const first = await sync({
@@ -524,6 +535,18 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect((await statsOf(A))?.questionsExpected).toBe(200);
   });
 
+  it('never expects questions from the chair, even with no office on record', async () => {
+    await dbmod.pool.query('delete from politics.td_offices where member_code = $1', [CHAIR]);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    expect((await statsOf(CHAIR))?.questionsExpected).toBeNull();
+    await parliament.repository.replaceOffices(roster, await parliament.repository.tdIdsByMemberCode());
+    await parliament.repository.recomputeStats(windows(), TERM);
+  });
+
+  it('says when the question counts are complete', async () => {
+    expect((await parliament.repository.tdSummary(await tdId(A)))?.questionsComplete).toBe(true);
+  });
+
   it('gives government time its own vote benchmark', async () => {
     // Every division (June) is after B took office; A never held one.
     expect(await statsOf(B)).toMatchObject({ divisionsInOffice: 12, attendanceBenchmark: GOVERNMENT_ATTENDANCE_BENCHMARK });
@@ -551,7 +574,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     // Y did not vote in vote_1 and was in the chair for it; A chaired vote_2's section but voted.
     const y = await chairDivision('vote_1', Y);
     const a = await chairDivision('vote_2', A);
-    await parliament.repository.recomputeStats(windows());
+    await parliament.repository.recomputeStats(windows(), TERM);
     expect(await statsOf(Y)).toMatchObject({ divisionsEligible: before!.divisionsEligible - 1, votesCast: before!.votesCast, divisionsChaired: 1 });
     expect(await statsOf(A)).toMatchObject({ divisionsEligible: 12, votesCast: 12, divisionsChaired: 0 });
 
@@ -561,7 +584,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       await dbmod.pool.query('update politics.divisions set debate_section_id = $1 where id = $2', [rows[0].debate_section_id, t.divisionId]);
       await dbmod.pool.query('delete from politics.debate_sections where id = $1', [t.section]);
     }
-    await parliament.repository.recomputeStats(windows());
+    await parliament.repository.recomputeStats(windows(), TERM);
     expect(await statsOf(Y)).toMatchObject({ divisionsEligible: before!.divisionsEligible, divisionsChaired: 0 });
   });
 
@@ -574,7 +597,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
        values ('dail-2025-06-25-dbsect_19/spk_test_a', 'dail-2025-06-25-dbsect_19', '2025-06-25', 999, $1, $2, false, 'A test speech.', 3)`,
       [A, await tdId(A)],
     );
-    await parliament.repository.recomputeStats(windows());
+    await parliament.repository.recomputeStats(windows(), TERM);
     const speaker = { code: A, s: (await statsOf(A))! };
     // Sitting days are 25 June (fixture) and 26 June (the retried day above).
     expect(speaker.s).toMatchObject({ sittingDays: 2, sectionsSpoken: 1, speeches: 1 });
@@ -584,7 +607,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       [leave(Y, '2025-06-10', '2025-06-12'), leave(B, '2025-06-10', '2025-06-12'), leave(speaker.code, '2025-06-25', '2025-06-26')],
       tdIds,
     );
-    await parliament.repository.recomputeStats(windows());
+    await parliament.repository.recomputeStats(windows(), TERM);
     await parliament.repository.recomputeCommitteeStats();
     // Y: 9 of 9 once the 3 leave days are left out, not 9 of 12.
     expect(await statsOf(Y)).toMatchObject({ divisionsEligible: 9, votesCast: 9, divisionsExcused: 3 });
@@ -598,7 +621,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
 
     await parliament.repository.replaceAbsences([], tdIds);
     await dbmod.pool.query(`delete from politics.debate_speeches where id = 'dail-2025-06-25-dbsect_19/spk_test_a'`);
-    await parliament.repository.recomputeStats(windows());
+    await parliament.repository.recomputeStats(windows(), TERM);
     await parliament.repository.recomputeCommitteeStats();
     expect(await statsOf(Y)).toMatchObject({ divisionsEligible: 12, divisionsExcused: 0 });
     expect(await statsOf(A)).toMatchObject({ sittingDays: 2, sectionsSpoken: 0 });
@@ -655,6 +678,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       from: '2026-07-01',
       to: '2026-07-01',
       unpublishedMonths: [],
+      uncertainMonths: [],
       totalCents: 397208,
       months: [{ month: '2026-07-01', amountCents: 397208 }],
     });
@@ -663,6 +687,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
 
     await dbmod.pool.query('delete from politics.td_interests');
     await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
     const mine = added.rows.map((r) => r.member_code as string);
     if (mine.length) await dbmod.pool.query('delete from politics.tds where member_code = any($1)', [mine]);
   });
@@ -698,6 +723,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       { member_code: 'Ged-Nash.D.2011-03-09', amount_cents: 310000 },
     ]);
     await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
   });
 
   it('keeps only the newest file for a re-published month, and reports a month never published', async () => {
@@ -706,28 +732,32 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     const march = `${base}/2025/2025-05-02_parliamentary-standard-allowance-payments-to-deputies-for-march-2025_en.pdf`;
     const marchAgain = `${base}/2026/2026-02-03_parliamentary-standard-allowance-payments-to-deputies-for-march-2025_en.pdf`;
     const may = `${base}/2025/2025-07-01_parliamentary-standard-allowance-payments-to-deputies-for-may-2025_en.pdf`;
-    const page = (amount: string) => [
+    const june = `${base}/2025/2025-08-01_parliamentary-standard-allowance-payments-to-deputies-for-june-2025_en.pdf`;
+    const page = (amount: string, name = 'Nash, Ged') => [
       'Parliamentary Standard Allowance',
       'Name\tTAA Band\tNarrative\tDate Paid\tAmount',
-      `Deputy Nash, Ged\t4\tPSA\t28/03/2025\t${amount}`,
+      `Deputy ${name}\t4\tPSA\t28/03/2025\t${amount}`,
     ];
-    const pages = new Map([[march, page('€1,000.00')], [marchAgain, page('€1,100.00')], [may, page('€1,200.00')]]);
+    // June's file has no row for Nash, and a name that matches nobody: it could be him.
+    const pages = new Map([[march, page('€1,000.00')], [marchAgain, page('€1,100.00')], [may, page('€1,200.00')], [june, page('€1,300.00', 'Nobody, Here')]]);
     await dbmod.pool.query(`insert into politics.tds (name, member_code, constituency, is_active) values ('Ged Nash', 'Ged-Nash.D.2011-03-09', 'Louth', false) on conflict do nothing`);
     const ctx = {
       roster: [{ memberCode: 'Ged-Nash.D.2011-03-09', fullName: 'Ged Nash', constituency: 'Louth' }],
       tdIds: await parliament.repository.tdIdsByMemberCode(),
       dailStart: '2024-11-29',
       // Newest first, as the listing is: the re-published March comes before May's file.
-      source: { links: async (_t: string, p: number) => (p > 1 ? [] : [marchAgain, may, march]), pages: async (url: string) => [pages.get(url)!] },
+      source: { links: async (_t: string, p: number) => (p > 1 ? [] : [marchAgain, june, may, march]), pages: async (url: string) => [pages.get(url)!] },
       log: () => {},
     };
-    expect(await syncAllowances(ctx)).toMatchObject({ files: 2, rows: 2 });
+    expect(await syncAllowances(ctx)).toMatchObject({ files: 3, rows: 2, unmatched: ['Nobody, Here'] });
     const nash = await tdId('Ged-Nash.D.2011-03-09');
     expect(await parliament.repository.tdAllowancesOf(nash)).toEqual({
       from: '2025-03-01',
-      to: '2025-05-01',
+      to: '2025-06-01',
       // April has no file: not published, which is not the same as not paid.
       unpublishedMonths: ['2025-04-01'],
+      // June's file had an unmatched name and no row for Nash: unknown, not "not paid".
+      uncertainMonths: ['2025-06-01'],
       totalCents: 110000 + 120000,
       months: [
         { month: '2025-05-01', amountCents: 120000 },
@@ -735,6 +765,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       ],
     });
     await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
     await dbmod.pool.query(`delete from politics.tds where member_code = 'Ged-Nash.D.2011-03-09'`);
   });
 

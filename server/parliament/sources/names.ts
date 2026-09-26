@@ -42,9 +42,11 @@ function oneLetterApart(a: string, b: string): boolean {
 
 export function makeNameMatcher(roster: RosterName[]) {
   const byFull = new Map<string, string | null>();
+  const whereOf = new Map<string, string | null>();
   for (const m of roster) {
     const key = compact(m.fullName);
     byFull.set(key, byFull.has(key) && byFull.get(key) !== m.memberCode ? null : m.memberCode);
+    whereOf.set(m.memberCode, place(m.constituency));
   }
   // A surname matches whole trailing words of the roster name, so "MACLOCHLAINN" finds
   // "Mac Lochlainn" but "Ryan" never finds "O'Ryan". Apostrophes join words here.
@@ -55,12 +57,13 @@ export function makeNameMatcher(roster: RosterName[]) {
   });
 
   return (name: { surname: string; forenames: string; constituency?: string | null }): NameMatch | null => {
+    const where = place(name.constituency ?? null);
+    // Same name, different constituency (a register entry for another Michael Murphy) is not exact.
     const full = byFull.get(compact(`${name.forenames} ${name.surname}`));
-    if (full) return { memberCode: full, exact: true };
+    if (full && (where === null || whereOf.get(full) === where)) return { memberCode: full, exact: true };
     const surname = compact(name.surname.replace(/['’]/g, ''));
     const first = normaliseName(name.forenames).split(' ')[0] ?? '';
     if (!surname || !first) return null;
-    const where = place(name.constituency ?? null);
     const inPlace = keyed.filter((m) => where === null || m.where === where);
     const bySurname = inPlace.filter((m) => m.tails.includes(surname) && m.first.charAt(0) === first.charAt(0));
     if (bySurname.length === 1) return { memberCode: bySurname[0].memberCode, exact: false };

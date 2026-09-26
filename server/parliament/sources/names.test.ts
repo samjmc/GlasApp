@@ -26,6 +26,12 @@ describe('makeNameMatcher', () => {
     expect(match({ surname: 'Nash', forenames: 'Gerald' })).toEqual({ memberCode: 'Ged-Nash.D.2011-03-09', exact: false });
   });
 
+  it('does not take a same-name entry from another constituency as exact', () => {
+    // A register entry "MURPHY, Paul (Cork)" is not the Dublin South-West Paul Murphy.
+    expect(match({ surname: 'MURPHY', forenames: 'Paul', constituency: 'Cork South-West' })).toBeNull();
+    expect(match({ surname: 'MURPHY', forenames: 'Paul', constituency: 'Dublin South-West' })?.exact).toBe(true);
+  });
+
   it('uses the constituency to separate two members with one surname', () => {
     expect(code({ surname: 'DALY', forenames: 'Patrick', constituency: 'Kerry' })).toBe('Pa-Daly.D.2020-02-08');
   });

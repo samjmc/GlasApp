@@ -37,6 +37,8 @@ export interface TdParliamentSummary {
   /** Questions the TD asked this term. */
   questionsOral: number | null;
   questionsWritten: number | null;
+  /** False while some months of questions are not loaded: the counts are then a lower bound. */
+  questionsComplete: boolean;
   /**
    * How many questions score full marks, pro-rated to the time the TD was expected to ask.
    * NULL = not expected to ask (government office or the chair for nearly all the term).
@@ -110,6 +112,11 @@ export interface TdAllowances {
   to: string;
   /** Months in that range the Oireachtas has not published (not the same as "not paid"). */
   unpublishedMonths: string[];
+  /**
+   * Published months with no row for this TD whose file had a name that matched nobody: that
+   * name could be this TD, so these are not "not paid".
+   */
+  uncertainMonths: string[];
   totalCents: number;
   /** Newest first. A published month with no row was not paid to this TD. */
   months: Array<{ month: string; amountCents: number }>;

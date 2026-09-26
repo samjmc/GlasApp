@@ -23,7 +23,7 @@ import { OireachtasClient, type RosterMember } from './client';
 import { DOCUMENTED_ABSENCES, validateAbsences } from './absences';
 import { syncAllowances, syncInterests, type DisclosureResult, type DisclosureSource } from './disclosures';
 import { fetchGenders } from './sources/wikidata';
-import { attendanceBenchmark, attendancePct, committeeAttendancePct, QUESTION_EXEMPT_OFFICES, questionsExpected } from './metrics';
+import { attendancePct, committeeAttendancePct } from './metrics';
 import {
   countQuestions,
   parseBill,
@@ -331,7 +331,9 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     questionFailures = { ...state.failures };
     questions.from = startDate(options.since, state.throughDate, dailStart);
     const window = monthsBetween(questions.from, today);
-    const months = [...window, ...retryable(questionFailures, window[0], dailStart)];
+    // Month keys are first-of-month, so the oldest is the Dáil's first MONTH: comparing with
+    // dailStart itself ("2024-11-29") would never retry a failed November 2024.
+    const months = [...window, ...retryable(questionFailures, window[0], `${dailStart.slice(0, 7)}-01`)];
     questions.months = months.length;
     questions.failedMonths = await ingestUnits('Questions', months, questionFailures, async (month) => {
       const from = month < dailStart ? dailStart : month;
@@ -355,27 +357,17 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   //    set-based steps retry on a deadlock instead of failing the whole run.
   await withDeadlockRetry(() => repo.relinkTds());
   const windows = new Map(roster.map((m) => [m.memberCode, { memberSince: m.memberSince, isPresiding: m.isPresiding }]));
-  const statsRows = await withDeadlockRetry(() => repo.recomputeStats(windows));
+  // The counts and each TD's expectations (questions_expected, attendance_benchmark) are
+  // written in one transaction.
+  const statsRows = await withDeadlockRetry(() => repo.recomputeStats(windows, { start: dailStart, today }));
   await withDeadlockRetry(() => repo.recomputeCommitteeStats());
-
-  // What each TD was expected to do: questions pro-rated to the time outside exempt office
-  // and documented leave; a vote benchmark for their mix of backbench and government time.
-  const periods = await repo.fairnessPeriods(QUESTION_EXEMPT_OFFICES);
   const stats = new Map((await repo.allStats()).map((s) => [s.tdId, s]));
-  const expectations = roster.flatMap((m) => {
-    const tdId = tdIds.get(m.memberCode);
-    const s = tdId === undefined ? undefined : stats.get(tdId);
-    if (tdId === undefined || !s) return [];
-    const excluded = [...(periods.offices.get(m.memberCode) ?? []), ...(periods.absences.get(m.memberCode) ?? [])];
-    return [{
-      tdId,
-      memberCode: m.memberCode,
-      questionsExpected: questionsExpected({ memberSince: m.memberSince, termStart: dailStart, today, excluded }),
-      attendanceBenchmark: s.isPresiding ? null : attendanceBenchmark(s.divisionsEligible, s.divisionsInOffice ?? 0),
-    }];
-  });
-  await withDeadlockRetry(() => repo.writeExpectations(expectations));
-  const expectedQuestions = new Map(expectations.map((e) => [e.memberCode, e.questionsExpected]));
+  const expectedQuestions = new Map(
+    roster.map((m) => {
+      const tdId = tdIds.get(m.memberCode);
+      return [m.memberCode, (tdId === undefined ? undefined : stats.get(tdId))?.questionsExpected ?? null] as const;
+    }),
+  );
 
   // 8. Scoring inputs. Question totals come from the counts above, but only when every
   //    month since the Dáil's first day is stored: a feed that has never resumed from the

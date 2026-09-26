@@ -184,7 +184,8 @@ function fairnessNotes(s: TdParliamentSummary): string[] {
     notes.push(`Full marks at ${s.attendanceBenchmark}%: time in government office has its own benchmark.`);
   }
   const exempt = s.officeHistory.filter((o) => QUESTION_EXEMPT_OFFICES.includes(o.type));
-  const wasChair = exempt.some((o) => o.type === 'ceann_comhairle');
+  const wasChair = s.isPresiding || exempt.some((o) => o.type === 'ceann_comhairle');
+  if (!s.questionsComplete) notes.push('Some months of questions are not loaded yet, so the question count may be low.');
   if (s.questionsExpected === null) {
     if (wasChair) notes.push('Not scored on questions: the Ceann Comhairle chairs the Dáil.');
     else if (exempt.length > 0) notes.push('Not scored on questions: members of government answer questions, they do not ask them.');

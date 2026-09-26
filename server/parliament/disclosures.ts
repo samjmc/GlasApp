@@ -35,6 +35,9 @@ export const liveDisclosureSource: DisclosureSource = {
 /** Listing pages read at most, per topic (50 files a page). */
 const MAX_LISTING_PAGES = 6;
 
+/** The publication date that opens an Oireachtas file name ("…/2026-02-03_…pdf"). */
+const publishedOn = (url: string) => url.match(/\/(\d{4}-\d{2}-\d{2})_[^/]*$/)?.[1] ?? '';
+
 export interface DisclosureContext {
   roster: RosterName[];
   tdIds: Map<string, number>;
@@ -79,10 +82,16 @@ export async function syncInterests(ctx: DisclosureContext): Promise<DisclosureR
   const source = ctx.source ?? liveDisclosureSource;
   const fromYear = Number(ctx.dailStart.slice(0, 4));
   const stored = await repo.storedDisclosureSources();
-  // Registers are few; page 1 holds the newest years.
-  const registers = (await source.links('register-of-members-interests', 1))
-    .filter(isDailInterestsRegister)
-    .filter((u) => (interestsYearFromUrl(u) ?? 0) >= fromYear);
+  // Registers are few; page 1 holds the newest years. A year re-issued keeps only its newest
+  // file, chosen BEFORE the stored check, or the two files would replace each other forever.
+  const newestByYear = new Map<number, string>();
+  for (const url of (await source.links('register-of-members-interests', 1)).filter(isDailInterestsRegister)) {
+    const year = interestsYearFromUrl(url);
+    if (year === null || year < fromYear) continue;
+    const seen = newestByYear.get(year);
+    if (!seen || publishedOn(url) > publishedOn(seen)) newestByYear.set(year, url);
+  }
+  const registers = Array.from(newestByYear.values());
   const match = makeNameMatcher(ctx.roster);
   const result: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
   for (const url of registers) {
@@ -94,7 +103,7 @@ export async function syncInterests(ctx: DisclosureContext): Promise<DisclosureR
     for (const m of matched) perMember.set(m.memberCode, (perMember.get(m.memberCode) ?? 0) + 1);
     const kept = matched.filter((m) => perMember.get(m.memberCode) === 1);
     for (const m of matched) if (perMember.get(m.memberCode)! > 1) unmatched.push(`${m.item.surname}, ${m.item.forenames} (twice)`);
-    await repo.replaceInterestsYear(interestsYearFromUrl(url)!, url, kept.map((m) => ({ memberCode: m.memberCode, entry: m.item })), ctx.tdIds);
+    await repo.replaceInterestsYear(interestsYearFromUrl(url)!, url, kept.map((m) => ({ memberCode: m.memberCode, entry: m.item })), unmatched, ctx.tdIds);
     result.files++;
     result.rows += kept.length;
     result.unmatched.push(...unmatched);
@@ -115,16 +124,15 @@ export async function syncAllowances(ctx: DisclosureContext): Promise<Disclosure
   const firstMonth = firstFullMonth(ctx.dailStart);
   const stored = await repo.storedDisclosureSources();
   // A month can be published twice (March 2025 was re-published in February 2026): keep only
-  // the newest file for each month, by the publication date that opens the file name.
+  // the newest file for each month.
   const newest = new Map<string, string>();
-  const published = (url: string) => url.match(/\/(\d{4}-\d{2}-\d{2})_[^/]*$/)?.[1] ?? '';
   for (let page = 1; page <= MAX_LISTING_PAGES; page++) {
     const links = await source.links('parliamentary-allowances', page);
     const dail = links.filter(isDailPsa).map((url) => ({ url, month: psaMonthFromUrl(url) }));
     for (const f of dail) {
       if (!f.month || f.month < firstMonth) continue;
       const seen = newest.get(f.month);
-      if (!seen || published(f.url) > published(seen)) newest.set(f.month, f.url);
+      if (!seen || publishedOn(f.url) > publishedOn(seen)) newest.set(f.month, f.url);
     }
     // Newest first: stop once a page reaches back past the Dáil's first month.
     if (links.length === 0 || dail.some((f) => f.month !== null && f.month < firstMonth)) break;
@@ -137,7 +145,7 @@ export async function syncAllowances(ctx: DisclosureContext): Promise<Disclosure
     const payments = parsePsaPayments(await source.pages(url));
     // A member can have several rows in a month (arrears), all under one printed name.
     const { matched, unmatched } = matchFile(payments, (p) => p, match);
-    await repo.replaceAllowanceFile(url, month, matched.map((m) => ({ memberCode: m.memberCode, payment: m.item, position: m.index })), ctx.tdIds);
+    await repo.replaceAllowanceFile(url, month, matched.map((m) => ({ memberCode: m.memberCode, payment: m.item, position: m.index })), unmatched, ctx.tdIds);
     result.files++;
     result.rows += matched.length;
     for (const u of unmatched) if (!result.unmatched.includes(u)) result.unmatched.push(u);
