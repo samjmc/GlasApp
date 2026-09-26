@@ -151,7 +151,28 @@ run('quiz and ideology against Postgres', () => {
           [id, source, `${source}-${weight}`, weight],
         );
       await expect(insert('article', 0)).rejects.toThrow();
-      await expect(insert('tweet', 1)).rejects.toThrow();
+      await expect(insert('tweet', 1)).rejects.toThrow(/td_ideology_evidence_source_chk/);
+      await expect(insert('stance', 1)).resolves.toBeDefined();
+    });
+
+    it('a stance is the current answer: a newer one replaces it, an older one never does', async () => {
+      const id = await addTd('Stance Deputy', 'Fine Gael');
+      const stance = (economic: number | null, welfare: number | null, observedAt: string) =>
+        ideology.recordTdEvidence({ td: id, source: 'stance', sourceRef: 'question:9', raw: { economic, welfare }, weight: 1, observedAt: new Date(observedAt) });
+      const stored = async () => (await dbmod.pool.query('select economic, welfare, observed_at from politics.td_ideology_evidence')).rows;
+
+      expect(await stance(-2, -1, '2026-09-20T00:00:00Z')).toBe('recorded');
+      expect(await stance(2, null, '2026-09-22T00:00:00Z')).toBe('recorded'); // newer: replaces, welfare becomes NULL
+      expect(await stored()).toEqual([{ economic: 10, welfare: null, observed_at: new Date('2026-09-22T00:00:00Z') }]);
+      expect(await stance(-2, -2, '2026-09-21T00:00:00Z')).toBe('duplicate'); // older: kept out
+      expect(await stored()).toEqual([{ economic: 10, welfare: null, observed_at: new Date('2026-09-22T00:00:00Z') }]);
+      // The profile is rebuilt from the newer answer.
+      const baseline = partyBaseline('Fine Gael')!;
+      expect((await ideology.tdProfile(id))!.profile!.vector.economic).toBeCloseTo((baseline.economic * 3 + 10 * 1) / 4, 0);
+      // Other sources still keep the first row.
+      const debate = { td: id, source: 'debate' as const, sourceRef: 'x', raw: { economic: 0.5 }, weight: 1, observedAt: new Date('2026-09-23T00:00:00Z') };
+      expect(await ideology.recordTdEvidence(debate)).toBe('recorded');
+      expect(await ideology.recordTdEvidence({ ...debate, raw: { economic: -0.5 }, observedAt: new Date('2026-09-24T00:00:00Z') })).toBe('duplicate');
     });
   });
 

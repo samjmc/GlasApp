@@ -132,3 +132,36 @@ then `recalculateAll`. Needs an LLM key; prints counts; `--dry-run` writes nothi
 ## Follow-up for Sam (not blocking the build)
 Before trusting the section publicly: label 20 real stored stances; target ≥ 90% real,
 correctly attributed positions.
+
+## As built (2026-09-26, phase 3a + 3b)
+
+What differs from the spec above, and why:
+
+- **Migration 0012**, not 0011 (parts 1 and 2 took 0010 and 0011). drizzle-kit asks
+  interactively whether `td_stances` is a rename of `td_policy_stances`, so it was generated in
+  two passes (create, then drop) and folded into one file. Every line is generator-written.
+- **`question_id` and `option_key` are set together, or both NULL** (`td_stances_answer_chk`),
+  under ONE composite FK to `policy_question_options` that clears both when the option or its
+  question is deleted. The spec had `question_id` set whenever the article had a question, with
+  its own FK; the integration test showed that FK fires first and leaves an orphan `option_key`.
+  So a quote that states no clear answer is stored with no question link.
+- **"Said N times" and "changed position" cannot show yet.** One question per article and one
+  stance per (TD, article) means at most one stance per (TD, question). Both are computed as
+  specified and will work if questions are ever shared across articles (e.g. per event).
+- `stated_at` = `coalesce(published_at, created_at)` in the INSERT … SELECT that also copies the
+  url, outlet and headline. `published_at` is NOT NULL, so the fallback never happens today.
+- The save refuses a duplicate article (`status <> 'duplicate'` in the INSERT), so "never for a
+  duplicate" holds at the database, not only in the claim query. Re-running an article replaces
+  its rows.
+- The evidence upsert is guarded with `>=`, so re-running the same article refreshes its row. A
+  re-run whose stance no longer maps to an option leaves the older evidence row in place.
+- An option with no confidence counts as confidence 1, as it does for a user's vote.
+- `QUOTE_KINDS` lives in `shared/stancesApi.ts` (the schema needs it); `QUOTE_KIND_WEIGHT` in
+  `server/ideology/sources.ts`.
+- `userMatches(userId, weights, { tdId, now })`; the route takes `?td=`. Party matches are
+  unchanged: only TD matches carry `issues`.
+- The rebuild takes its candidate TDs from `article_tds` rather than re-running TD extraction,
+  and refuses to start without an LLM key, before the purge.
+- The "fails on current code" test: after part 2 the pipeline no longer writes article
+  evidence, so the defect on current code is the question made for a mere mention. The test
+  asserts no `td_stances` row, no evidence row and no question (red with part 2's gate put back).

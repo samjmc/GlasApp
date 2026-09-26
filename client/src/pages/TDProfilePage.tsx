@@ -32,6 +32,7 @@ import { PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { VoteChip } from '@/components/pulse/VoteChip';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
+import { TdPositionsOnRecord } from '@/components/TdPositionsOnRecord';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
@@ -727,6 +728,8 @@ export default function TDProfilePageEnhanced() {
           )}
         </Card>
       </div>
+
+      <TdPositionsOnRecord tdId={tdId} />
 
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         {/* Tabs */}

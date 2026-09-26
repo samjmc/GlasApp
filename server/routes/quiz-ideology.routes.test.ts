@@ -52,9 +52,11 @@ vi.mock('../ideology', () => ({
     calls.list.push({ fn: 'matchesFor', args: [v, weights] });
     return { tds: [], parties: [] };
   }),
-  userMatches: vi.fn(async (userId: string, weights: unknown) => {
-    calls.list.push({ fn: 'userMatches', args: [userId, weights] });
-    return userId === 'new-user' ? null : { tds: [], parties: [], measured: ['economic', 'welfare'] };
+  userMatches: vi.fn(async (userId: string, weights: unknown, options: unknown) => {
+    calls.list.push({ fn: 'userMatches', args: [userId, weights, options] });
+    if (userId === 'new-user') return null;
+    const issues = { agree: 1, disagree: 0, items: [{ questionId: 3, question: 'Q?', domain: 'housing', yours: 'Build', theirs: 'Build', agrees: true, quote: 'q', quoteKind: 'direct', outlet: 'RTÉ', url: 'https://x', statedAt: '2026-09-20T00:00:00.000Z' }] };
+    return { tds: [{ tdId: 7, name: 'A', alignment: 81, issues }], parties: [], measured: ['economic', 'welfare'] };
   }),
   userTimeline: vi.fn(async () => [{ date: '2026-09-24', vector }]),
   partyProfile: vi.fn(async (name: string) => (name === 'Fine Gael' ? { party: 'Fine Gael', vector, tdCount: 1, computedAt: null } : null)),
@@ -158,9 +160,19 @@ describe('/api/ideology', () => {
     const empty = await (await get('/api/ideology/me/matches', 'new-user')).json();
     expect(empty).toMatchObject({ data: { tds: [], parties: [] }, meta: { hasProfile: false, measured: [] } });
     const full = await (await get('/api/ideology/me/matches?weights=economic:2,welfare:0.5,bogus:9', 'user-1')).json();
-    expect(calls.list.at(-1)).toEqual({ fn: 'userMatches', args: ['user-1', { economic: 2, welfare: 0.5 }] });
+    expect(calls.list.at(-1)).toEqual({ fn: 'userMatches', args: ['user-1', { economic: 2, welfare: 0.5 }, {}] });
     expect(full).toMatchObject({ meta: { hasProfile: true, measured: ['economic', 'welfare'] } });
     expect(full.data).not.toHaveProperty('measured');
+  });
+
+  it('passes the TD asked about through, and returns each match with its shared issues', async () => {
+    const body = await (await get('/api/ideology/me/matches?td=7', 'user-1')).json();
+    expect(calls.list.at(-1)).toEqual({ fn: 'userMatches', args: ['user-1', {}, { tdId: 7 }] });
+    expect(body.data.tds[0]).toMatchObject({ tdId: 7, alignment: 81, issues: { agree: 1, disagree: 0 } });
+    expect(body.data.tds[0].issues.items[0]).toMatchObject({ questionId: 3, yours: 'Build', theirs: 'Build', agrees: true, outlet: 'RTÉ' });
+    // A malformed td is ignored rather than rejected: the matches are still the user's.
+    await get('/api/ideology/me/matches?td=abc', 'user-1');
+    expect(calls.list.at(-1)!.args[2]).toEqual({});
   });
 
   it('includes a party to compare on the timeline', async () => {

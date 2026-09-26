@@ -3,9 +3,13 @@
  */
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
 import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
+import type { SharedIssue, TdIssues } from '@shared/stancesApi';
 import { ideologyLabel } from '../quiz/label';
 import { coverageOf, scoreQuiz } from '../quiz/score';
-import { listUserVoteVectors, type UserVoteVector } from '../voting';
+// Not '../stances': its record.ts imports this domain, and the two would form a cycle.
+import { AGREE_THRESHOLD, agreementFor, latestStances, type AgreementItem } from '../stances/agreement';
+import { mappedStancesOn } from '../stances/repository';
+import { listUserVoteVectors, questionsWithPositions, type UserVoteVector } from '../voting';
 import { alignment, closestAndFurthest, type DimensionWeights } from './alignment';
 import { computeProfile, meanProfile, type Observation, type Profile } from './model';
 import { isIndependent, partyBaseline, partyKey } from './partyBaselines';
@@ -53,13 +57,16 @@ function userObservations(quizzes: QuizResultRow[], votes: UserVoteVector[], unt
   return observations;
 }
 
-/** A user's position from their latest quiz and every vote. null = no quiz and no votes yet. */
-export async function computeUserProfile(userId: string): Promise<Profile | null> {
-  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId), listUserVoteVectors(userId)]);
-  const now = new Date();
+function userProfileOf(quizzes: QuizResultRow[], votes: UserVoteVector[], now: Date): Profile | null {
   const observations = userObservations(quizzes, votes, now);
   if (observations.length === 0) return null;
   return computeProfile(null, observations, { now, halfLifeDays: null });
+}
+
+/** A user's position from their latest quiz and every vote. null = no quiz and no votes yet. */
+export async function computeUserProfile(userId: string): Promise<Profile | null> {
+  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId), listUserVoteVectors(userId)]);
+  return userProfileOf(quizzes, votes, new Date());
 }
 
 /** Called by voting after each vote and by the quiz after each save. */
@@ -183,6 +190,8 @@ export interface TdMatch {
   evidenceCount: number;
   closest: IdeologyDimension[];
   furthest: IdeologyDimension[];
+  /** Signed-in matches only: the daily-vote questions both the user and this TD answered. */
+  issues?: TdIssues;
 }
 
 export interface PartyMatch {
@@ -223,17 +232,87 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
   return { tds: tdMatches.sort(byAlignment), parties: parties.sort(byAlignment) };
 }
 
+/** How many of the best TD matches carry their issue breakdown, besides the TD asked about. */
+export const ISSUE_DETAIL_TOP = 5;
+
+type IssueItem = AgreementItem & { issue: Omit<SharedIssue, 'agrees'> };
+
+/**
+ * Per TD, the daily-vote questions this user answered on which the TD has a CURRENT stance
+ * with an answer (the latest `stated_at` wins).
+ */
+async function sharedIssueItems(votes: UserVoteVector[]): Promise<Map<number, IssueItem[]>> {
+  const byTd = new Map<number, IssueItem[]>();
+  if (votes.length === 0) return byTd;
+  const questionIds = votes.map((vote) => vote.questionId);
+  const [stances, questions] = await Promise.all([mappedStancesOn(questionIds), questionsWithPositions(questionIds)]);
+  const questionById = new Map(questions.map((q) => [q.id, q]));
+  const voteByQuestion = new Map(votes.map((vote) => [vote.questionId, vote]));
+  for (const stance of latestStances(stances)) {
+    const question = questionById.get(stance.questionId);
+    const vote = voteByQuestion.get(stance.questionId);
+    if (!question || !vote) continue;
+    const label = (key: string) => question.options.find((option) => option.key === key)?.label ?? key;
+    const items = byTd.get(stance.tdId) ?? [];
+    items.push({
+      questionId: question.id,
+      options: Object.fromEntries(question.options.map((option) => [option.key, option.vector])),
+      userOption: vote.optionKey,
+      tdOption: stance.optionKey,
+      quoteKind: stance.quoteKind as AgreementItem['quoteKind'],
+      statedAt: stance.statedAt,
+      issue: {
+        questionId: question.id,
+        question: question.question,
+        domain: stance.policyDomain,
+        yours: label(vote.optionKey),
+        theirs: stance.optionText ?? label(stance.optionKey),
+        quote: stance.quote,
+        quoteKind: stance.quoteKind as SharedIssue['quoteKind'],
+        outlet: stance.sourceName,
+        url: stance.articleUrl,
+        statedAt: stance.statedAt.toISOString(),
+      },
+    });
+    byTd.set(stance.tdId, items);
+  }
+  return byTd;
+}
+
 /**
  * The signed-in user's matches. Computed from their evidence on read, so a dimension they have
  * no evidence on (weight 0) does not count: its 0 means "unknown", not "centrist".
+ *
+ * Each TD's axis alignment is then blended with how often the TD answered the user's daily-vote
+ * questions the way the user did (`agreementFor`; no shared issue = the axis number exactly).
+ * The breakdown's items are filled only for `options.tdId` and the top ISSUE_DETAIL_TOP.
  */
-export async function userMatches(userId: string, weights: DimensionWeights = {}) {
-  const profile = await computeUserProfile(userId);
+export async function userMatches(userId: string, weights: DimensionWeights = {}, options: { tdId?: number; now?: Date } = {}) {
+  const now = options.now ?? new Date();
+  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId), listUserVoteVectors(userId)]);
+  const profile = userProfileOf(quizzes, votes, now);
   if (!profile) return null;
   const measured: DimensionWeights = { ...weights };
   for (const d of IDEOLOGY_DIMENSIONS) if (!(profile.support[d] > 0)) measured[d] = 0;
-  const matches = await matchesFor(profile.vector, measured);
-  return { ...matches, measured: IDEOLOGY_DIMENSIONS.filter((d) => profile.support[d] > 0) };
+  const [matches, itemsByTd] = await Promise.all([matchesFor(profile.vector, measured), sharedIssueItems(votes)]);
+
+  const scored = matches.tds.map((td) => {
+    const { alignment, issues } = agreementFor(td.alignment, itemsByTd.get(td.tdId) ?? [], now);
+    return { td: { ...td, alignment }, issues };
+  });
+  scored.sort((a, b) => b.td.alignment - a.td.alignment);
+  const tds: TdMatch[] = scored.map(({ td, issues }, rank) => ({
+    ...td,
+    issues: {
+      agree: issues.agree,
+      disagree: issues.disagree,
+      items:
+        rank < ISSUE_DETAIL_TOP || td.tdId === options.tdId
+          ? issues.items.map((item) => ({ ...item.issue, agrees: item.agreement >= AGREE_THRESHOLD }))
+          : [],
+    },
+  }));
+  return { tds, parties: matches.parties, measured: IDEOLOGY_DIMENSIONS.filter((d) => profile.support[d] > 0) };
 }
 
 export async function tdProfile(tdId: number) {
@@ -282,6 +361,14 @@ const labelOf = (v: IdeologyVector) => {
   const { name, description } = ideologyLabel(v);
   return { ideology: name, description };
 };
+
+/**
+ * Delete every TD evidence row of one source (with `dryRun`, only count them). Profiles are not
+ * recomputed here: call `recalculateAll` after.
+ */
+export function deleteTdEvidence(source: Exclude<SourceKind, 'vote'>, dryRun = false): Promise<number> {
+  return repo.deleteTdEvidenceBySource(source, dryRun);
+}
 
 /** Re-score stored quizzes, then rebuild every profile from evidence. No model calls. */
 export async function recalculateAll(): Promise<RecalculateSummary> {
