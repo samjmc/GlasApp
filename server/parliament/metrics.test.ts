@@ -1,8 +1,13 @@
 import { describe, expect, it } from 'vitest';
+import { ATTENDANCE_BENCHMARK, QUESTIONS_BENCHMARK } from '../scoring/weights';
 import {
+  attendanceBenchmark,
   attendancePct,
   committeeAttendancePct,
+  daysCovered,
+  GOVERNMENT_ATTENDANCE_BENCHMARK,
   MIN_COMMITTEE_SITTINGS,
+  MIN_QUESTION_DAYS,
   debateScores,
   majority,
   majorityFor,
@@ -11,7 +16,68 @@ import {
   partyLinePct,
   partyMajorities,
   percentile,
+  questionsExpected,
 } from './metrics';
+
+describe('daysCovered', () => {
+  it('counts each day once, however the ranges overlap, clipped to the window', () => {
+    expect(daysCovered('2025-01-01', '2025-01-31', [])).toBe(0);
+    expect(daysCovered('2025-01-01', '2025-01-31', [{ start: '2025-01-10', end: '2025-01-19' }])).toBe(10);
+    expect(
+      daysCovered('2025-01-01', '2025-01-31', [
+        { start: '2025-01-10', end: '2025-01-19' },
+        { start: '2025-01-15', end: '2025-01-24' },
+        { start: '2024-12-01', end: '2025-01-02' },
+      ]),
+    ).toBe(15 + 2);
+  });
+
+  it('treats an open range as running to the end of the window', () => {
+    expect(daysCovered('2025-01-01', '2025-01-31', [{ start: '2025-01-22', end: null }])).toBe(10);
+    expect(daysCovered('2025-01-01', '2025-01-31', [{ start: '2025-02-01', end: null }])).toBe(0);
+  });
+});
+
+describe('questionsExpected', () => {
+  const term = { termStart: '2024-11-29', today: '2025-11-28' }; // 365 days
+
+  it('expects a full-term backbencher to ask the full benchmark, exactly as before', () => {
+    expect(questionsExpected({ ...term, memberSince: '2024-11-29', excluded: [] })).toBe(QUESTIONS_BENCHMARK);
+  });
+
+  it('pro-rates for time in exempt office or on documented leave', () => {
+    // Minister of State for the second half of the term: half the benchmark.
+    const halfYear = { start: '2025-05-30', end: null };
+    expect(questionsExpected({ ...term, memberSince: '2024-11-29', excluded: [halfYear] })).toBe(Math.round((QUESTIONS_BENCHMARK * 182 * 10) / 365) / 10);
+    // A by-election TD is expected less, not the whole-term benchmark.
+    expect(questionsExpected({ ...term, memberSince: '2025-05-30', excluded: [] })).toBe(Math.round((QUESTIONS_BENCHMARK * 183 * 10) / 365) / 10);
+  });
+
+  it('is NULL when the TD was not expected to ask for long enough (cabinet all term, the chair)', () => {
+    expect(questionsExpected({ ...term, memberSince: '2024-11-29', excluded: [{ start: '2024-12-18', end: null }] })).toBeNull();
+    // Exactly the minimum is enough.
+    const since = '2025-08-31'; // 90 days to 2025-11-28
+    expect(questionsExpected({ ...term, memberSince: since, excluded: [] })).not.toBeNull();
+    expect(questionsExpected({ ...term, memberSince: '2025-09-01', excluded: [] })).toBeNull();
+    expect(MIN_QUESTION_DAYS).toBe(90);
+  });
+});
+
+describe('attendanceBenchmark', () => {
+  it('is the backbench benchmark with no government time, the government one with all of it', () => {
+    expect(attendanceBenchmark(100, 0)).toBe(ATTENDANCE_BENCHMARK);
+    expect(attendanceBenchmark(100, 100)).toBe(GOVERNMENT_ATTENDANCE_BENCHMARK);
+  });
+
+  it('weights by the divisions held in each role', () => {
+    expect(attendanceBenchmark(200, 50)).toBe(Math.round(((ATTENDANCE_BENCHMARK * 150 + GOVERNMENT_ATTENDANCE_BENCHMARK * 50) / 200) * 10) / 10);
+  });
+
+  it('is NULL with no eligible divisions, and never lets office time exceed the total', () => {
+    expect(attendanceBenchmark(0, 0)).toBeNull();
+    expect(attendanceBenchmark(10, 25)).toBe(GOVERNMENT_ATTENDANCE_BENCHMARK);
+  });
+});
 
 describe('attendancePct', () => {
   it('is votes cast over divisions held while a member, one decimal', () => {

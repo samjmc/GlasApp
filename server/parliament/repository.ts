@@ -29,6 +29,8 @@ import type {
 } from '@shared/parliamentApi';
 import { db, type Db } from '../db';
 import { countBillsSponsored } from './repo/bills';
+import { tdAbsencesOf, tdOfficeHistory } from './repo/fairness';
+import { questionsAskedBy } from './repo/questions';
 import {
   committeeAttendancePct,
   INDEPENDENT,
@@ -46,6 +48,8 @@ import { chunks } from './repo/util';
 export * from './repo/committees';
 export * from './repo/bills';
 export * from './repo/questions';
+export * from './repo/fairness';
+export * from './repo/disclosures';
 
 /** The byParty group for voters who are not in `tds`. */
 export const NOT_IN_ROSTER = 'Not in current roster';
@@ -119,7 +123,16 @@ export async function relinkTds(database: Db = db): Promise<void> {
     update politics.debate_speeches s set td_id = t.id
     from politics.tds t
     where t.member_code = s.member_code and s.td_id is distinct from t.id`);
-  for (const table of ['committee_memberships', 'committee_attendance', 'bill_sponsors', 'question_counts']) {
+  for (const table of [
+    'committee_memberships',
+    'committee_attendance',
+    'bill_sponsors',
+    'question_counts',
+    'td_offices',
+    'td_absences',
+    'td_interests',
+    'td_allowance_payments',
+  ]) {
     await database.execute(sql.raw(`
       update politics.${table} r set td_id = t.id
       from politics.tds t
@@ -142,9 +155,35 @@ export async function updateRosterDetails(
   });
 }
 
+/** SQL: the day `d` falls in a documented absence of member `code`. */
+const onDocumentedLeave = (code: ReturnType<typeof sql>, day: ReturnType<typeof sql>) => sql`exists (
+  select 1 from politics.td_absences a
+  where a.member_code = ${code} and ${day} >= a.start_date and (a.end_date is null or ${day} <= a.end_date))`;
+
+/** Set `tds.gender` from the given map. A member missing from the map keeps what it has. */
+export async function updateGenders(genders: Map<string, string>, database: Db = db): Promise<number> {
+  let changed = 0;
+  await database.transaction(async (tx) => {
+    for (const [memberCode, gender] of Array.from(genders)) {
+      const res = await tx
+        .update(tds)
+        .set({ gender })
+        .where(and(eq(tds.memberCode, memberCode), sql`${tds.gender} is distinct from ${gender}`));
+      changed += (res as { rowCount?: number }).rowCount ?? 0;
+    }
+  });
+  return changed;
+}
+
 /**
  * Recompute every active TD's counts inside their own membership window.
  * `windows` comes from the roster: member code → { since, presiding }.
+ *
+ * Fair by construction: a division counts for a TD only if they could vote in it. Left out:
+ * - divisions they were in the chair for (the chair cannot vote): the last presiding speech
+ *   in the division's debate section is theirs and they are not on the vote lists. A TD who
+ *   IS on the lists was not in the chair, whatever the transcript's speech order says;
+ * - days of documented leave (td_absences), for divisions, sitting days and speeches alike.
  */
 export async function recomputeStats(
   windows: Map<string, { memberSince: string; isPresiding: boolean }>,
@@ -160,18 +199,67 @@ export async function recomputeStats(
     // TDs no longer active keep no stats row; their votes and speeches stay.
     await tx.delete(tdParliamentStats);
     await tx.insert(tdParliamentStats).values(
-      rows.map((r) => ({ ...r, divisionsEligible: 0, votesCast: 0, sittingDays: 0, sectionsSpoken: 0, speeches: 0 })),
+      rows.map((r) => ({
+        ...r,
+        divisionsEligible: 0,
+        votesCast: 0,
+        sittingDays: 0,
+        sectionsSpoken: 0,
+        speeches: 0,
+        divisionsChaired: 0,
+        divisionsExcused: 0,
+        divisionsInOffice: 0,
+        sittingDaysExcused: 0,
+      })),
     );
     await tx.execute(sql`
+      with m as (
+        select s.td_id, t.member_code, s.member_since
+        from politics.td_parliament_stats s join politics.tds t on t.id = s.td_id),
+      chair as (
+        select distinct on (d.id) d.id division_id, p.member_code
+        from politics.divisions d
+        join politics.debate_speeches p on p.section_id = d.debate_section_id and p.is_presiding
+        order by d.id, p.position desc),
+      per_division as (
+        select m.td_id,
+          ${onDocumentedLeave(sql`m.member_code`, sql`d.date`)} excused,
+          (c.member_code is not null and c.member_code = m.member_code) last_chair,
+          exists (select 1 from politics.division_votes v where v.division_id = d.id and v.member_code = m.member_code) voted,
+          exists (select 1 from politics.td_offices o
+                  where o.member_code = m.member_code and o.office_type in ('cabinet', 'minister_of_state')
+                    and d.date >= o.start_date and (o.end_date is null or d.date <= o.end_date)) in_office
+        from m
+        join politics.divisions d on d.date >= m.member_since
+        left join chair c on c.division_id = d.id),
+      totals as (
+        select td_id,
+          count(*) filter (where not excused and not (last_chair and not voted)) eligible,
+          count(*) filter (where voted and not excused) votes,
+          count(*) filter (where last_chair and not voted and not excused) chaired,
+          count(*) filter (where excused) excused_n,
+          count(*) filter (where in_office and not excused and not (last_chair and not voted)) in_office_n
+        from per_division group by td_id)
       update politics.td_parliament_stats s set
-        divisions_eligible = (select count(*) from politics.divisions d where d.date >= s.member_since),
-        votes_cast = (select count(*) from politics.division_votes v join politics.divisions d on d.id = v.division_id
-                      where v.td_id = s.td_id and d.date >= s.member_since),
-        sitting_days = (select count(distinct x.date) from politics.debate_sections x where x.date >= s.member_since),
+        divisions_eligible = t.eligible, votes_cast = t.votes, divisions_chaired = t.chaired,
+        divisions_excused = t.excused_n, divisions_in_office = t.in_office_n
+      from totals t where t.td_id = s.td_id`);
+    await tx.execute(sql`
+      with m as (
+        select s.td_id, t.member_code, s.member_since
+        from politics.td_parliament_stats s join politics.tds t on t.id = s.td_id),
+      days as (
+        select m.td_id, x.date, ${onDocumentedLeave(sql`m.member_code`, sql`x.date`)} excused
+        from m join (select distinct date from politics.debate_sections) x on x.date >= m.member_since)
+      update politics.td_parliament_stats s set
+        sitting_days = (select count(*) from days where days.td_id = s.td_id and not days.excused),
+        sitting_days_excused = (select count(*) from days where days.td_id = s.td_id and days.excused),
         sections_spoken = (select count(distinct p.section_id) from politics.debate_speeches p
-                           where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since),
+                           where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since
+                             and not exists (select 1 from days where days.td_id = s.td_id and days.date = p.date and days.excused)),
         speeches = (select count(*) from politics.debate_speeches p
-                    where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since),
+                    where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since
+                      and not exists (select 1 from days where days.td_id = s.td_id and days.date = p.date and days.excused)),
         updated_at = now()`);
   });
   return rows.length;
@@ -289,10 +377,13 @@ export async function tdSummary(tdId: number, database: Db = db) {
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.id, tdId));
   if (!row) return null;
-  const [votes, billsFeed, billCount] = await Promise.all([
+  const [votes, billsFeed, billCount, asked, officeHistory, absences] = await Promise.all([
     votesOf(tdId, {}, database),
     getSyncState('bills', database),
     countBillsSponsored(tdId, database),
+    questionsAskedBy(tdId, database),
+    tdOfficeHistory(tdId, database),
+    tdAbsencesOf(tdId, database),
   ]);
   // Before the bills feed has run once, zero bills would read as "sponsored none".
   const billsSponsored = billsFeed.throughDate ? billCount : null;
@@ -306,10 +397,19 @@ export async function tdSummary(tdId: number, database: Db = db) {
     attendancePct: td.attendancePct,
     votesCast: stats?.votesCast ?? null,
     divisionsEligible: stats?.divisionsEligible ?? null,
-    questionsOral: td.questionCountOral,
-    questionsWritten: td.questionCountWritten,
+    divisionsChaired: stats?.divisionsChaired ?? null,
+    divisionsExcused: stats?.divisionsExcused ?? null,
+    attendanceBenchmark: stats?.attendanceBenchmark ?? null,
+    // The questions the TD asked, from the monthly counts. `tds.question_count_*` is the
+    // scoring input and is NULL for a TD who was not expected to ask.
+    questionsOral: asked ? asked.oral : td.questionCountOral,
+    questionsWritten: asked ? asked.written : td.questionCountWritten,
+    questionsExpected: stats?.questionsExpected ?? null,
+    officeHistory,
+    absences,
     sectionsSpoken: stats?.sectionsSpoken ?? null,
     sittingDays: stats?.sittingDays ?? null,
+    sittingDaysExcused: stats?.sittingDaysExcused ?? null,
     speeches: stats?.speeches ?? null,
     partyLinePct: partyLinePct(votes),
     votesAgainstParty: votes.some((v) => v.partyMajority !== null) ? votes.filter((v) => v.withParty === false).length : null,

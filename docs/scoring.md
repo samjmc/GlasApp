@@ -53,6 +53,30 @@ ministers) is scored on questions and votes alone. The Ceann Comhairle does not 
 NULL, not 0. Anything that cannot be measured stays NULL and
 its pillar drops out. See `docs/plans/parliament-rebuild.md` for the API facts behind this.
 
+### Fair by construction: a TD is measured only on what they were expected to do
+
+The same rules apply to every TD. Each one reads a reason from the record, or from a
+documented public source, and never guesses one:
+
+| Reason | Where it comes from | Effect |
+|---|---|---|
+| In the chair for a division | The division's debate section: the last presiding speech is theirs and they are not on the vote lists (the chair cannot vote) | That division is left out of their votes |
+| Documented leave (parental, medical, bereavement, other) | `server/parliament/absences.ts`: each entry has dates and a public source | Those days are left out of votes, sitting days, speeches and committee sittings |
+| Government office (cabinet, Minister of State) | The roster's office history (`politics.td_offices`) | Questions: not expected for that time. Votes: those divisions are measured against `GOVERNMENT_ATTENDANCE_BENCHMARK` instead of 95% |
+| The chair (Ceann Comhairle) | The roster | Not expected to ask questions or vote (NULL) |
+
+Questions expected = `QUESTIONS_BENCHMARK` × (days the TD was expected to ask) / (days in
+the term so far), so a full-term backbencher is expected exactly what they were before, and a
+by-election TD is not held to a whole-term number. Under 90 expected days it is NULL, and so
+is the question input the rollup reads. Both expectations are stored per TD on
+`td_parliament_stats` (`questions_expected`, `attendance_benchmark`).
+
+There is no official record of why a TD missed a vote. `npm run parliament:silences` lists
+long runs of sitting days with no vote and no speech that no documented absence covers. If the
+TD or their party announced leave publicly, add it with its source; if not, the silence stays
+counted. Ministerial foreign travel is published by only one department (3 of 38 office
+holders), so it is not used: excusing those 3 alone would be unfair to the other 35.
+
 ## The pipeline
 
 ```

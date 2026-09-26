@@ -42,6 +42,22 @@ export async function hasQuestionCounts(database: Db = db): Promise<boolean> {
   return Number(row?.n ?? 0) > 0;
 }
 
+/**
+ * The questions one TD asked, from the monthly counts. NULL before any month is ingested,
+ * so "not loaded yet" never reads as "asked none".
+ */
+export async function questionsAskedBy(tdId: number, database: Db = db): Promise<{ oral: number; written: number } | null> {
+  if (!(await hasQuestionCounts(database))) return null;
+  const [row] = await database
+    .select({
+      oral: sql<number>`coalesce(sum(${questionCounts.n}) filter (where ${questionCounts.questionType} = 'oral'), 0)::int`,
+      written: sql<number>`coalesce(sum(${questionCounts.n}) filter (where ${questionCounts.questionType} = 'written'), 0)::int`,
+    })
+    .from(questionCounts)
+    .where(eq(questionCounts.tdId, tdId));
+  return { oral: Number(row?.oral ?? 0), written: Number(row?.written ?? 0) };
+}
+
 export async function tdQuestionTopics(tdId: number, database: Db = db): Promise<TdQuestionTopic[]> {
   const rows = await database
     .select({
