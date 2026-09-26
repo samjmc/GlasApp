@@ -1,8 +1,7 @@
 /**
- * The pipeline's view of the news domain: `politics.news_articles`, through the news
- * repository. This adapter is the only place the scoring module touches news.
+ * The TD pipeline's view of `politics.news_articles`, through the news repository.
  */
-import * as news from '../news/repository';
+import * as news from './repository';
 
 export interface Article {
   id: number;
@@ -13,19 +12,13 @@ export interface Article {
   url: string | null;
   imageUrl: string | null;
   publishedDate: Date | null;
-  /** Source credibility 0–1. */
-  credibility: number;
 }
 
 export interface ArticleOutcome {
   importanceScore: number;
   importanceReasoning: string;
-  /** True when at least one TD was scored from it. */
-  scoreApplied: boolean;
   skippedReason?: string;
   errorMessage?: string;
-  /** Kept for the pipeline's call shape; the per-TD verdicts live in article_td_scores. */
-  primaryTd?: { name: string; party: string | null; constituency: string | null };
 }
 
 export interface ArticleSource {
@@ -47,13 +40,12 @@ function toArticle(row: news.ClaimedArticle): Article {
     url: row.url,
     imageUrl: row.imageUrl,
     publishedDate: row.publishedAt,
-    credibility: row.credibility,
   };
 }
 
 /**
  * An error wins over everything; any skip is `skipped`; a finished run with neither is `scored`,
- * even if no TD matched. Same-event duplicates are linked at ingest and never reach scoring.
+ * even if no TD matched. Same-event duplicates are linked at ingest and never reach the pipeline.
  */
 export function toOutcome(outcome: ArticleOutcome): news.Outcome {
   const status = outcome.errorMessage ? 'failed' : outcome.skippedReason ? 'skipped' : 'scored';
@@ -68,10 +60,10 @@ export function toOutcome(outcome: ArticleOutcome): news.Outcome {
 
 export const articleSource: ArticleSource = {
   async fetchUnprocessed(limit) {
-    return (await news.claimForScoring(limit)).map(toArticle);
+    return (await news.claimForPipeline(limit)).map(toArticle);
   },
   async fetchById(id) {
-    const row = await news.findForScoring(id);
+    const row = await news.findForPipeline(id);
     return row ? toArticle(row) : null;
   },
   saveContent: (id, content) => news.saveContent(id, content),

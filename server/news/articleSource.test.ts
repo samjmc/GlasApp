@@ -1,14 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
 
 // articleSource imports the news repository, which imports db (throws without DATABASE_URL).
-vi.mock('../news/repository', () => ({}));
+vi.mock('./repository', () => ({}));
 const { toOutcome } = await import('./articleSource');
 
-const base = { importanceScore: 62, importanceReasoning: 'Cabinet decision', scoreApplied: false };
+const base = { importanceScore: 62, importanceReasoning: 'Cabinet decision' };
 
 describe('toOutcome', () => {
   it('a finished article is scored, even when no TD matched', () => {
-    expect(toOutcome({ ...base, scoreApplied: true }).status).toBe('scored');
     expect(toOutcome(base).status).toBe('scored');
   });
   it('a skip reason makes it skipped and is kept', () => {
@@ -21,6 +20,6 @@ describe('toOutcome', () => {
     });
   });
   it('an error wins over a skip', () => {
-    expect(toOutcome({ ...base, skippedReason: 'x', errorMessage: 'panel timeout' }).status).toBe('failed');
+    expect(toOutcome({ ...base, skippedReason: 'x', errorMessage: 'extraction timeout' }).status).toBe('failed');
   });
 });

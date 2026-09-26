@@ -98,7 +98,6 @@ export async function deletePledge(id: number, database: Db = db): Promise<boole
   return deleted.length > 0;
 }
 
-/** Null when the pledge does not exist. */
 /** The evidence names a division that politics.divisions does not hold. */
 export class UnknownDivisionError extends Error {
   constructor(readonly divisionId: string) {
@@ -106,6 +105,7 @@ export class UnknownDivisionError extends Error {
   }
 }
 
+/** Null when the pledge does not exist. */
 export async function addEvidence(input: NewPledgeEvidence, database: Db = db): Promise<PledgeEvidence | null> {
   const [exists] = await database.select({ id: pledges.id }).from(pledges).where(eq(pledges.id, input.pledgeId));
   if (!exists) return null;
@@ -150,6 +150,8 @@ export async function userRanking(userId: string, database: Db = db): Promise<Pl
 /** Replace a user's whole ranking atomically; an empty ranking clears it. */
 export async function saveRanking(userId: string, ranking: readonly PledgeCategory[], database: Db = db): Promise<void> {
   await database.transaction(async (tx) => {
+    // Serialise one user's saves: two at once would both delete, then both insert and collide.
+    await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${userId}))`);
     await tx.delete(pledgeCategoryPriorities).where(eq(pledgeCategoryPriorities.userId, userId));
     if (ranking.length === 0) return;
     await tx

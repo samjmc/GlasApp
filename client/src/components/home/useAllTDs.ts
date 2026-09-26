@@ -1,15 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "@/lib/queryKeys";
-
-export interface ScoredTD {
-  id: number;
-  name: string;
-  party: string | null;
-  constituency: string | null;
-  imageUrl: string | null;
-  overallScore: number | null;
-  nationalRank: number | null;
-}
+import type { TdListItem } from "@shared/scoresApi";
 
 /**
  * Every TD with a score, from GET /api/scores/tds. Same key and result shape as the
@@ -22,7 +13,7 @@ export function useAllTDs() {
       const res = await fetch("/api/scores/tds");
       if (!res.ok) throw new Error("Failed to fetch");
       const json = await res.json();
-      const tds = (json.data ?? []) as ScoredTD[];
+      const tds = (json.data ?? []) as TdListItem[];
       return { tds, count: (json.meta?.count as number | undefined) ?? tds.length };
     },
   });

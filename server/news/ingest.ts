@@ -7,8 +7,8 @@
  *   -> pick a picture that loads, for the canonicals worth showing
  *   -> insert canonicals, then their duplicates -> fill in pictures still missing
  *
- * Scoring picks visible `pending` rows up later through server/scoring/articleSource.ts.
- * Duplicates are stored as `duplicate` with `duplicate_of`, so they are never shown or scored.
+ * The TD pipeline picks visible `pending` rows up later through server/news/articleSource.ts.
+ * Duplicates are stored as `duplicate` with `duplicate_of`, so they are never shown or processed.
  */
 import { fetchPage, type PageMeta } from './content';
 import { dedupe } from './dedupe';
