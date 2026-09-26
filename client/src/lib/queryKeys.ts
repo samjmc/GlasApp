@@ -73,6 +73,8 @@ export const queryKeys = {
       ["/api/ideology", "me", userId, "matches", null, "td", tdId] as const,
     vectorMatches: (vector: unknown, weights: unknown) =>
       ["/api/ideology", "matches", vector, weights] as const,
+    /** GET /api/ideology/td/:id */
+    td: (tdId: number) => ["/api/ideology", "td", tdId] as const,
   },
   globalSearch: {
     data: (regionCode: string) => ["global-search-data", regionCode] as const,

@@ -1,7 +1,7 @@
 /**
  * Every read and write of the quiz and ideology tables. Nothing else touches them.
  */
-import { and, asc, desc, eq, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { tds } from '@shared/schema/politics';
 import {
@@ -15,7 +15,8 @@ import {
   type QuizResultRow,
   type TdIdeologyEvidenceRow,
 } from '@shared/schema/quiz';
-import { IDEOLOGY_DIMENSIONS, type IdeologyVector } from '@shared/ideology';
+import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
+import type { EvidenceCounts } from '@shared/ideologyMatch';
 import type { QuizResponse } from '@shared/quiz';
 import type { Profile } from './model';
 
@@ -141,6 +142,34 @@ export async function deleteTdEvidenceBySource(source: EvidenceSource, dryRun: b
 
 export async function listTdEvidence(tdId: number, database: Db = db): Promise<TdIdeologyEvidenceRow[]> {
   return database.select().from(tdIdeologyEvidence).where(eq(tdIdeologyEvidence.tdId, tdId));
+}
+
+export interface EvidenceSummary {
+  bySource: EvidenceCounts;
+  /** Dimensions at least one row speaks to. Same as support > 0: weight > 0 by CHECK, decay > 0. */
+  measured: IdeologyDimension[];
+}
+
+/** Per TD (one TD with `tdId`): evidence rows per source and the dimensions they measure. One grouped query. */
+export async function evidenceSummary(tdId?: number, database: Db = db): Promise<Map<number, EvidenceSummary>> {
+  const perDimension = Object.fromEntries(
+    IDEOLOGY_DIMENSIONS.map((d) => [d, sql<number>`count(${tdIdeologyEvidence[d]})::int`]),
+  ) as Record<IdeologyDimension, SQL<number>>;
+  const rows = await database
+    .select({ tdId: tdIdeologyEvidence.tdId, source: tdIdeologyEvidence.source, n: sql<number>`count(*)::int`, ...perDimension })
+    .from(tdIdeologyEvidence)
+    .where(tdId === undefined ? undefined : eq(tdIdeologyEvidence.tdId, tdId))
+    .groupBy(tdIdeologyEvidence.tdId, tdIdeologyEvidence.source);
+  const byTd = new Map<number, { bySource: EvidenceCounts; dims: Set<IdeologyDimension> }>();
+  for (const row of rows) {
+    const entry = byTd.get(row.tdId) ?? { bySource: {}, dims: new Set<IdeologyDimension>() };
+    entry.bySource[row.source as EvidenceSource] = row.n;
+    for (const d of IDEOLOGY_DIMENSIONS) if (row[d] > 0) entry.dims.add(d);
+    byTd.set(row.tdId, entry);
+  }
+  return new Map(
+    Array.from(byTd, ([id, { bySource, dims }]) => [id, { bySource, measured: IDEOLOGY_DIMENSIONS.filter((d) => dims.has(d)) }]),
+  );
 }
 
 // --- profiles --------------------------------------------------------------

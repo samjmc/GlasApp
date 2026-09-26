@@ -49,6 +49,8 @@ export interface QuizResult {
   ideology: string;
   description: string;
   answeredCount: number;
+  /** Per dimension, how many answers were on it. Optional: results kept in sessionStorage before it existed lack it. */
+  answeredByDimension?: IdeologyVector;
   createdAt: string | null;
 }
 

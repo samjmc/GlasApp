@@ -31,6 +31,7 @@ import { VoteChip } from '@/components/pulse/VoteChip';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
 import { TdPositionsOnRecord } from '@/components/TdPositionsOnRecord';
+import { TdIdeologyCard } from '@/components/TdIdeologyCard';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
@@ -847,6 +848,8 @@ export default function TDProfilePageEnhanced() {
               })}
             </ul>
           </Card>
+
+          <TdIdeologyCard tdId={tdId} />
 
           <Card className="hidden flex-col gap-3 p-5 lg:flex">
             {committeeList}

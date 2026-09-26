@@ -46,8 +46,11 @@ vi.mock('../quiz', async () => {
   };
 });
 
+const confidence = { economic: { level: 'high', quizAnswers: 5, votes: 0 } };
+
 vi.mock('../ideology', () => ({
   getIdeologyProfile: vi.fn(async (userId: string) => (userId === 'new-user' ? null : vector)),
+  userIdeologyDetail: vi.fn(async (userId: string) => (userId === 'new-user' ? null : { vector, confidence })),
   matchesFor: vi.fn(async (v: unknown, weights: unknown) => {
     calls.list.push({ fn: 'matchesFor', args: [v, weights] });
     return { tds: [], parties: [] };
@@ -60,7 +63,7 @@ vi.mock('../ideology', () => ({
   }),
   userTimeline: vi.fn(async () => [{ date: '2026-09-24', vector }]),
   partyProfile: vi.fn(async (name: string) => (name === 'Fine Gael' ? { party: 'Fine Gael', vector, tdCount: 1, computedAt: null } : null)),
-  tdProfile: vi.fn(async (id: number) => (id === 1 ? { td: { id: 1, name: 'A' }, profile: null } : null)),
+  tdProfile: vi.fn(async (id: number) => (id === 1 ? { td: { id: 1, name: 'A' }, hasPartyBaseline: false, profile: null } : null)),
 }));
 
 const quizRoutes = (await import('./quiz')).default;
@@ -118,11 +121,13 @@ describe('POST /api/quiz', () => {
   });
 
   it('returns 400 for a malformed body and for answers the bank rejects', async () => {
-    expect((await post('/api/quiz', { answers: [] })).status).toBe(400);
+    const empty = await post('/api/quiz', { answers: [] });
+    expect(empty.status).toBe(400);
+    expect(((await empty.json()) as { error: object }).error).toMatchObject({ code: 'VALIDATION_ERROR', message: 'Invalid quiz answers' });
     expect((await post('/api/quiz', { answers: [{ questionId: 1, answerIndex: 'a' }] })).status).toBe(400);
     const res = await post('/api/quiz', { answers: [{ questionId: 999, answerIndex: 0 }] });
     expect(res.status).toBe(400);
-    expect(JSON.stringify(await res.json())).toContain('Unknown question 999');
+    expect(((await res.json()) as { error: object }).error).toEqual({ code: 'VALIDATION_ERROR', message: 'Unknown question 999' });
   });
 });
 
@@ -137,7 +142,9 @@ describe('GET /api/quiz/me', () => {
 
 describe('POST /api/quiz/assistant', () => {
   it('answers and validates', async () => {
-    expect((await post('/api/quiz/assistant', { questionText: 'q' })).status).toBe(400);
+    const bad = await post('/api/quiz/assistant', { questionText: 'q' });
+    expect(bad.status).toBe(400);
+    expect(((await bad.json()) as { error: object }).error).toMatchObject({ code: 'VALIDATION_ERROR', message: 'Invalid request' });
     const res = await post('/api/quiz/assistant', { questionText: 'q', userQuestion: 'what?' });
     expect(res.status).toBe(200);
     expect(await res.json()).toMatchObject({ success: true, data: { answer: 'It means X.' } });
@@ -151,9 +158,9 @@ describe('/api/ideology', () => {
     }
   });
 
-  it('returns the profile, and null before any quiz or vote', async () => {
-    expect(await (await get('/api/ideology/me', 'user-1')).json()).toMatchObject({ data: { vector } });
-    expect(await (await get('/api/ideology/me', 'new-user')).json()).toMatchObject({ data: { vector: null } });
+  it('returns the profile with its confidence per dimension, and nulls before any quiz or vote', async () => {
+    expect(await (await get('/api/ideology/me', 'user-1')).json()).toEqual({ success: true, data: { vector, confidence } });
+    expect(await (await get('/api/ideology/me', 'new-user')).json()).toEqual({ success: true, data: { vector: null, confidence: null } });
   });
 
   it('returns no matches for a user with no profile, and parses weights', async () => {
@@ -194,5 +201,23 @@ describe('/api/ideology', () => {
     expect((await get('/api/ideology/td/abc')).status).toBe(400);
     expect((await get('/api/ideology/party/Fine%20Gael')).status).toBe(200);
     expect((await get('/api/ideology/party/Nobody')).status).toBe(404);
+  });
+
+  it('passes the TD card data through, baseline flag included', async () => {
+    expect(await (await get('/api/ideology/td/1')).json()).toEqual({
+      success: true,
+      data: { td: { id: 1, name: 'A' }, hasPartyBaseline: false, profile: null },
+    });
+  });
+
+  it('puts the error code in `code` and the sentence in `message`', async () => {
+    const error = async (res: Response) => ((await res.json()) as { error: { code: string; message: string } }).error;
+    expect(await error(await get('/api/ideology/td/abc'))).toEqual({ code: 'VALIDATION_ERROR', message: 'Invalid TD id' });
+    expect(await error(await get('/api/ideology/td/2'))).toEqual({ code: 'NOT_FOUND', message: 'TD not found' });
+    expect(await error(await get('/api/ideology/party/Nobody'))).toEqual({ code: 'NOT_FOUND', message: 'Party not found' });
+    expect(await error(await post('/api/ideology/matches', { vector: { economic: 1 } }))).toMatchObject({
+      code: 'VALIDATION_ERROR',
+      message: 'Invalid position',
+    });
   });
 });

@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
 import { asyncHandler } from '../middleware/errorHandler';
 import { MAX_DIMENSION_WEIGHT } from '../ideology/alignment';
-import { getIdeologyProfile, matchesFor, partyProfile, tdProfile, userMatches, userTimeline } from '../ideology';
+import { matchesFor, partyProfile, tdProfile, userIdeologyDetail, userMatches, userTimeline } from '../ideology';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
@@ -27,12 +27,15 @@ function parseWeights(raw: unknown) {
   return weightsSchema.parse(Object.fromEntries(pairs.filter(([d]) => (IDEOLOGY_DIMENSIONS as readonly string[]).includes(d!)).map(([d, w]) => [d, Number(w)])));
 }
 
-/** GET /api/ideology/me — the signed-in user's position; null before any quiz or vote. */
+/**
+ * GET /api/ideology/me — the signed-in user's position and, per dimension, how much evidence is
+ * behind it. Both null before any quiz or vote.
+ */
 router.get(
   '/me',
   requireAuth,
   asyncHandler(async (req, res) => {
-    res.json(formatSuccess({ vector: await getIdeologyProfile(req.user!.id) }));
+    res.json(formatSuccess((await userIdeologyDetail(req.user!.id)) ?? { vector: null, confidence: null }));
   }),
 );
 
@@ -70,7 +73,7 @@ router.post(
   '/matches',
   asyncHandler(async (req, res) => {
     const body = matchesSchema.safeParse(req.body);
-    if (!body.success) return res.status(400).json(formatError('Invalid position', 'VALIDATION_ERROR', body.error.flatten()));
+    if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid position', body.error.flatten()));
     res.json(formatSuccess(await matchesFor(body.data.vector, body.data.weights)));
   }),
 );
@@ -80,9 +83,9 @@ router.get(
   '/td/:id',
   asyncHandler(async (req, res) => {
     const id = z.coerce.number().int().positive().safeParse(req.params.id);
-    if (!id.success) return res.status(400).json(formatError('Invalid TD id', 'VALIDATION_ERROR'));
+    if (!id.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid TD id'));
     const data = await tdProfile(id.data);
-    if (!data) return res.status(404).json(formatError('TD not found', 'NOT_FOUND'));
+    if (!data) return res.status(404).json(formatError('NOT_FOUND', 'TD not found'));
     res.json(formatSuccess(data));
   }),
 );
@@ -92,7 +95,7 @@ router.get(
   '/party/:name',
   asyncHandler(async (req, res) => {
     const data = await partyProfile(req.params.name!);
-    if (!data) return res.status(404).json(formatError('Party not found', 'NOT_FOUND'));
+    if (!data) return res.status(404).json(formatError('NOT_FOUND', 'Party not found'));
     res.json(formatSuccess(data));
   }),
 );

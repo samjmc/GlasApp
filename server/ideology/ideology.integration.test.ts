@@ -69,6 +69,7 @@ run('quiz and ideology against Postgres', () => {
       const result = await quiz.submitQuiz(null, answers);
       expect(result.id).toBeNull();
       expect(result.vector.economic).toBe(10);
+      expect(result.answeredByDimension).toEqual({ ...zero, economic: 1, welfare: 1 });
       const { rows } = await dbmod.pool.query('select count(*)::int as n from politics.quiz_results');
       expect(rows[0].n).toBe(0);
     });
@@ -77,6 +78,7 @@ run('quiz and ideology against Postgres', () => {
       const saved = await quiz.submitQuiz('user-a', answers);
       expect(saved.id).toBeGreaterThan(0);
       expect(saved.createdAt).not.toBeNull();
+      expect(saved.answeredByDimension).toEqual({ ...zero, economic: 1, welfare: 1 });
       expect(await ideology.getIdeologyProfile('user-a')).toEqual({ ...zero, economic: 10, welfare: -10 });
     });
 
@@ -234,6 +236,93 @@ run('quiz and ideology against Postgres', () => {
       const fg = (await ideology.partyProfile('Fine Gael'))!.vector.economic;
       expect(result.tds[0]!.alignment).toBe(Math.round(100 * (1 - Math.abs(10 - fg) / 20)));
       expect(await ideology.userMatches('nobody')).toBeNull();
+    });
+  });
+
+  describe('confidence and evidence transparency', () => {
+    const debate = (td: number, sourceRef: string, raw: Record<string, number>) =>
+      ideology.recordTdEvidence({ td, source: 'debate', sourceRef, raw, weight: 1, observedAt: new Date() });
+
+    it('summarises evidence per TD and source, as numbers, and the dimensions it measures', async () => {
+      const id = await addTd('Summary Deputy', 'Fine Gael');
+      const stance = (sourceRef: string, raw: Record<string, number>) =>
+        ideology.recordTdEvidence({ td: id, source: 'stance', sourceRef, raw, weight: 1, observedAt: new Date() });
+      expect(await stance('question:1', { economic: 2 })).toBe('recorded');
+      expect(await stance('question:2', { welfare: -2 })).toBe('recorded');
+      expect(await debate(id, 'dail-1/spk_1', { welfare: -0.4 })).toBe('recorded');
+
+      const summary = await repo.evidenceSummary();
+      expect(summary.get(id)).toEqual({ bySource: { stance: 2, debate: 1 }, measured: ['economic', 'welfare'] });
+      expect((await repo.evidenceSummary(id)).get(id)).toEqual(summary.get(id));
+      expect((await repo.evidenceSummary(id + 1)).size).toBe(0);
+    });
+
+    it('a party TD with no evidence matches as the party position: confidence none, for the TD and the party', async () => {
+      await addTd('Blue One', 'Fine Gael');
+      await addTd('Blue Two', 'Fine Gael');
+      await ideology.recalculateAll();
+      const { tds, parties } = await ideology.matchesFor(zero);
+      expect(tds).toHaveLength(2);
+      for (const td of tds) expect(td).toMatchObject({ confidence: 'none', hasPartyBaseline: true, measured: [], evidenceBySource: {} });
+      expect(parties).toEqual([expect.objectContaining({ party: 'Fine Gael', tdCount: 2, confidence: 'none', hasPartyBaseline: true })]);
+    });
+
+    it('an Independent is matched only once it is measured on four dimensions, and only on those', async () => {
+      const id = await addTd('Solo Voice', 'Independent');
+      await debate(id, 'a', { economic: 0.5, social: -0.4, cultural: 0.3 });
+      await ideology.recalculateAll();
+      const position = { ...zero, economic: -8, social: 6, authority: 4, welfare: 9, globalism: -9 };
+      expect((await ideology.matchesFor(position)).tds).toEqual([]);
+
+      await debate(id, 'b', { authority: -0.5 });
+      const { tds } = await ideology.matchesFor(position);
+      expect(tds).toHaveLength(1);
+      const [td] = tds;
+      const measured = ['economic', 'social', 'cultural', 'authority'];
+      expect(td!.measured).toEqual(measured);
+      expect(td!.hasPartyBaseline).toBe(false);
+      const own = (await ideology.tdProfile(id))!.profile!.vector;
+      const onlyMeasured = Object.fromEntries(Object.keys(zero).map((d) => [d, measured.includes(d) ? 1 : 0]));
+      expect(td!.alignment).toBe(ideology.alignment(position, own, onlyMeasured));
+      expect(td!.alignment).not.toBe(ideology.alignment(position, own));
+      for (const d of [...td!.closest, ...td!.furthest]) expect(measured).toContain(d);
+    });
+
+    it("gives a user's confidence per dimension, from the rounded support behind it", async () => {
+      await quiz.submitQuiz('user-d', [{ questionId: 1, answerIndex: 2 }]); // economic, 1 of 5: weight 2
+      votes.byUser.set('user-d', [
+        { questionId: 1, optionKey: 'option_a', vector: { ...zero, welfare: -2 }, weight: 1, confidence: null, votedAt: new Date() },
+      ]);
+      const detail = (await ideology.userIdeologyDetail('user-d'))!;
+      expect(detail.vector).toMatchObject({ economic: 10, welfare: -10, social: 0 });
+      expect(detail.confidence.economic).toEqual({ level: 'low', quizAnswers: 1, votes: 0 });
+      expect(detail.confidence.welfare).toEqual({ level: 'low', quizAnswers: 0, votes: 1 });
+      expect(detail.confidence.social).toEqual({ level: 'none', quizAnswers: 0, votes: 0 });
+
+      // Weights 0.3 + 2.3 + 0.4 add up to 2.9999999999999996 in floating point. The level reads the
+      // model's rounded support, 3 = medium, not the float just under it.
+      votes.byUser.set(
+        'user-v',
+        [0.3, 2.3, 0.4].map((weight, i) => ({ questionId: 10 + i, optionKey: 'option_a', vector: { ...zero, welfare: -2 }, weight, confidence: null, votedAt: new Date() })),
+      );
+      expect((await ideology.userIdeologyDetail('user-v'))!.confidence.welfare).toEqual({ level: 'medium', quizAnswers: 0, votes: 3 });
+
+      votes.byUser.clear();
+      const { QUIZ_QUESTIONS } = await import('@shared/quiz');
+      await quiz.submitQuiz('user-full', QUIZ_QUESTIONS.map((q) => ({ questionId: q.id, answerIndex: 0 })));
+      const full = (await ideology.userIdeologyDetail('user-full'))!;
+      for (const d of Object.keys(zero) as Array<keyof typeof zero>) expect(full.confidence[d].level, d).toBe('high');
+      expect(await ideology.userIdeologyDetail('nobody')).toBeNull();
+    });
+
+    it('the TD card data says when there is no baseline and nothing measured', async () => {
+      const id = await addTd('Quiet Independent', 'Independent');
+      const partyTd = await addTd('Green Deputy', 'Green Party');
+      await ideology.recalculateAll();
+      const quiet = (await ideology.tdProfile(id))!;
+      expect(quiet.hasPartyBaseline).toBe(false);
+      expect(quiet.profile).toMatchObject({ confidence: 'none', measured: [], evidenceBySource: {} });
+      expect((await ideology.tdProfile(partyTd))!.hasPartyBaseline).toBe(true);
     });
   });
 });
