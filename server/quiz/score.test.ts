@@ -1,7 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { QUIZ_QUESTIONS, type QuizQuestion } from '@shared/quiz';
-import { QuizInputError, answeredCountsOf, coverageOf, scoreQuiz } from './score';
+import { planQuiz } from '@shared/quizPlan';
+import { FULL_COVERAGE_ANSWERS, QuizInputError, answeredCountsOf, coverageOf, scoreQuiz } from './score';
+
+/** scoreQuiz on the 26 legacy ids with answer `id % 4`, recorded before the coverage change. */
+const LEGACY_GOLDEN_VECTOR = {
+  economic: -4,
+  social: 10,
+  cultural: 6.7,
+  authority: -3.3,
+  environmental: -1.7,
+  welfare: -5,
+  globalism: -3.3,
+  technocratic: 6,
+};
 
 const strongest = (q: QuizQuestion, side: 1 | -1) =>
   q.answers.reduce((best, a, i) => (side * a.value > side * q.answers[best]!.value ? i : best), 0);
@@ -71,11 +84,30 @@ describe('scoreQuiz', () => {
     const { vector, coverage, answeredCount } = scoreQuiz([{ questionId: q.id, answerIndex: strongest(q, 1) }]);
     expect(answeredCount).toBe(1);
     expect(vector.economic).toBe(10); // the strongest market answer available, not "2.5 = centrist"
-    expect(coverage.economic).toBe(1 / onDimension('economic').length);
+    expect(coverage.economic).toBe(1 / FULL_COVERAGE_ANSWERS);
     for (const d of IDEOLOGY_DIMENSIONS.filter((x) => x !== 'economic')) {
       expect(vector[d]).toBe(0);
       expect(coverage[d]).toBe(0);
     }
+  });
+
+  it('gives full coverage on every dimension for a complete base, whatever the bank size', () => {
+    for (const seed of [0, 42, 0xffffffff]) {
+      const { base } = planQuiz(seed, {});
+      const { coverage } = scoreQuiz(base.map((id) => ({ questionId: id, answerIndex: 0 })));
+      for (const d of IDEOLOGY_DIMENSIONS) expect(coverage[d], `${seed} ${d}`).toBe(1);
+    }
+  });
+
+  // A result saved before the adaptive quiz answered the 26 original ids. Its score and its full
+  // weight must not change: FULL_COVERAGE_ANSWERS is what a legacy quiz asked per dimension, not
+  // the plan's base size.
+  it('scores a legacy 26-answer result as before, with coverage 1 on every dimension', () => {
+    const legacyIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27];
+    const { vector, coverage, answeredCount } = scoreQuiz(legacyIds.map((id) => ({ questionId: id, answerIndex: id % 4 })));
+    expect(answeredCount).toBe(26);
+    expect(vector).toEqual(LEGACY_GOLDEN_VECTOR);
+    for (const d of IDEOLOGY_DIMENSIONS) expect(coverage[d], d).toBe(1);
   });
 
   it('keeps answer strength: a milder answer scores below the strongest', () => {

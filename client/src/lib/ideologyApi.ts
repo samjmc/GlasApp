@@ -55,8 +55,9 @@ function weightsParam(weights?: Partial<DimensionWeights>): string {
     .join(",");
 }
 
-export async function submitQuiz(answers: QuizResponse[]): Promise<QuizResult> {
-  return (await call<QuizResult>("POST", "/api/quiz", { answers })).data;
+/** `seed` = the one the quiz was planned from; the server stores the plan when the answers match it. */
+export async function submitQuiz(answers: QuizResponse[], seed?: number): Promise<QuizResult> {
+  return (await call<QuizResult>("POST", "/api/quiz", { answers, seed })).data;
 }
 
 /** Signed-in user's saved results, newest first. */

@@ -34,8 +34,8 @@ vi.mock('../quiz', async () => {
   const { QuizInputError } = await import('../quiz/score');
   return {
     QuizInputError,
-    submitQuiz: vi.fn(async (userId: string | null, answers: Array<{ questionId: number }>) => {
-      calls.list.push({ fn: 'submitQuiz', args: [userId, answers] });
+    submitQuiz: vi.fn(async (userId: string | null, answers: Array<{ questionId: number }>, seed?: number) => {
+      calls.list.push({ fn: 'submitQuiz', args: [userId, answers, seed] });
       if (answers[0]!.questionId === 999) throw new QuizInputError('Unknown question 999');
       return { id: userId ? 7 : null, vector, ideology: 'Centrist', description: 'd', answeredCount: answers.length, createdAt: null };
     }),
@@ -112,7 +112,22 @@ describe('POST /api/quiz', () => {
     expect(res.status).toBe(200);
     const body = (await res.json()) as { success: boolean; data: { id: number | null } };
     expect(body).toMatchObject({ success: true, data: { id: null } });
-    expect(calls.list[0]).toEqual({ fn: 'submitQuiz', args: [null, answers] });
+    expect(calls.list[0]).toEqual({ fn: 'submitQuiz', args: [null, answers, undefined] });
+  });
+
+  it('passes the quiz seed through', async () => {
+    expect((await post('/api/quiz', { answers, seed: 42 })).status).toBe(200);
+    expect(calls.list[0]!.args[2]).toBe(42);
+    expect((await post('/api/quiz', { answers, seed: 0xffffffff })).status).toBe(200);
+    expect(calls.list[1]!.args[2]).toBe(0xffffffff);
+  });
+
+  it('returns 400 for a seed that is not an integer 0..2^32-1', async () => {
+    for (const seed of [-1, 1.5, 2 ** 32, '42', null]) {
+      const res = await post('/api/quiz', { answers, seed });
+      expect(res.status, JSON.stringify(seed)).toBe(400);
+    }
+    expect(calls.list).toEqual([]);
   });
 
   it('attributes the result to the token user, never to a body field', async () => {
