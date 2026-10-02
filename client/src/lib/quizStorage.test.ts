@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
+import { parseDraft } from './quizStorage';
 
 // quizStorage imports ideologyApi only for defaultWeights; keep the Supabase client out of a node test.
+// vi.mock is hoisted above the imports.
 vi.mock('@/lib/ideologyApi', () => ({ defaultWeights: () => ({}) }));
-
-const { parseDraft } = await import('./quizStorage');
 
 describe('parseDraft', () => {
   it('keeps a draft with a seed and answers', () => {
