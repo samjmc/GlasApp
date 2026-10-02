@@ -62,7 +62,7 @@ What the code does today, and what the model keeps or replaces:
 | Debate pillar | `td_debate_running_scores.performance/effectiveness/influence` (separate subsystem) | **Keep as a read-only input.** Debate scoring is its own pass. |
 | Overall 0–100 | Computed inside `GET /td/:name`; weights 0.50/0.25/0.15/0.10 there, 0.30/0.25/0.20/0.15/0.10 in `tdScoreCalculator`, 0.50/0.30/0.15/0.05 in `comprehensive…`, 0.40/0.30/0.10/0.15/0.05 in `unified…` | **One weight table in `weights.ts`:** news 0.45, parliamentary 0.30, debate 0.25. Missing pillars renormalise (the route already does this correctly; it is the one thing worth keeping from it). Computed in `rollup.ts`, **stored** on `td_scores`, recomputed after every pipeline run. |
 | Ranks and trends | `national_rank` written by a dead service; weekly/monthly deltas from fields that do not exist | **`rollup.ts`** computes national, party and constituency rank over active TDs, and 7/30-day ELO deltas from `td_score_history`. |
-| Baseline modifier | `td_historical_baselines.baseline_modifier` returned by one dead route; unclear if ever applied | **Out of the formula.** Table kept: it is paid-for research content that the researched-TDs page shows. |
+| Baseline modifier | `td_historical_baselines.baseline_modifier` returned by one dead route; unclear if ever applied | **Out of the formula.** Table kept: it is paid-for research content that the researched-TDs page shows. (Superseded 2026-10-02: the table never held a row; it now holds sourced Wikipedia text, see `td-history.md`.) |
 | Party score | Two identical copies averaging member ELO | **One**, `party.ts`. |
 | User ratings | `user_td_ratings` + `/api/ratings` + unmounted `TDRatingCard` | **Deleted** (decision B). |
 

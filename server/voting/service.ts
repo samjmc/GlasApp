@@ -45,7 +45,8 @@ const CANDIDATE_LIMIT = 60;
 const ANSWER_HISTORY_DAYS = 30;
 /** How far back question targets count when steering the next question's axis. */
 const QUESTION_BALANCE_DAYS = 30;
-const QUESTION_MODEL = 'gpt-4o-mini';
+/** The model `completeJson` asks for; a configured provider (DeepSeek) overrides it. */
+export const QUESTION_MODEL = 'gpt-4o-mini';
 
 /** A failure the caller caused. The router maps `status` straight to the response. */
 export class VotingError extends Error {

@@ -12,6 +12,7 @@
  */
 import { sql } from 'drizzle-orm';
 import {
+  bigint,
   boolean,
   index,
   integer,
@@ -113,7 +114,9 @@ export const articleTds = politics.table(
 );
 
 // ---------------------------------------------------------------------------
-// AI-researched historical baselines. Research content; not part of the formula.
+// TD history: a background copied word for word from one Wikipedia revision (server/tdHistory).
+// Not part of the formula. No model-written text: the model only CHOOSES passages, and code
+// checks each one against `source_revision`.
 // ---------------------------------------------------------------------------
 export const tdHistoricalBaselines = politics.table(
   'td_historical_baselines',
@@ -122,15 +125,17 @@ export const tdHistoricalBaselines = politics.table(
     tdId: integer('td_id')
       .notNull()
       .references(() => tds.id, { onDelete: 'cascade' }),
-    baselineScore: smallint('baseline_score'),
-    confidence: real('confidence'),
-    category: varchar('category', { length: 50 }),
-    historicalSummary: text('historical_summary'),
-    keyFindings: jsonb('key_findings').$type<string[]>(),
-    reasoning: text('reasoning'),
-    controversiesNoted: jsonb('controversies_noted').$type<string[]>(),
-    researchDate: timestamp('research_date', { withTimezone: true }),
-    analyzedBy: varchar('analyzed_by', { length: 50 }),
+    /** The lead's first sentences, as written in the source. */
+    summary: text('summary').notNull(),
+    /** Verified passages, each copied from the source text. */
+    passages: jsonb('passages').$type<string[]>().notNull(),
+    sourceUrl: text('source_url').notNull(),
+    sourceTitle: text('source_title').notNull(),
+    /** The Wikipedia revision id every passage was checked against. */
+    sourceRevision: bigint('source_revision', { mode: 'number' }).notNull(),
+    retrievedAt: timestamp('retrieved_at', { withTimezone: true }).notNull(),
+    /** The model that chose the passages; null when none was chosen by a model. */
+    model: varchar('model', { length: 80 }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },

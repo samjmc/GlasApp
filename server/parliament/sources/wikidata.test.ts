@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fetchGenders, genderQuery, parseGenders } from './wikidata';
+import { fetchGenders, genderQuery, parseGenders, parseSitelinks, sitelinkQuery } from './wikidata';
 
 const entity = (q: string) => ({ value: `http://www.wikidata.org/entity/${q}` });
 
@@ -53,5 +53,43 @@ describe('fetchGenders', () => {
 
   it('throws on an HTTP error, so the sync records a failed feed', async () => {
     await expect(fetchGenders(['A.D.1'], async () => new Response('', { status: 503 }))).rejects.toThrow(/503/);
+  });
+});
+
+describe('parseSitelinks', () => {
+  const article = (path: string) => ({ value: `https://en.wikipedia.org/wiki/${path}` });
+
+  it('maps each member code to its English Wikipedia title, decoded', () => {
+    const map = parseSitelinks({
+      results: {
+        bindings: [
+          { id: { value: 'A.D.1' }, article: article('William_Aird_(Fine_Gael_politician)') },
+          { id: { value: 'B.D.1' }, article: article('Ciar%C3%A1n_Ahern') },
+        ],
+      },
+    });
+    expect(Object.fromEntries(map)).toEqual({ 'A.D.1': 'William Aird (Fine Gael politician)', 'B.D.1': 'Ciarán Ahern' });
+  });
+
+  it('leaves out a code with two different articles, and links that are not English Wikipedia', () => {
+    const map = parseSitelinks({
+      results: {
+        bindings: [
+          { id: { value: 'A.D.1' }, article: article('One') },
+          { id: { value: 'A.D.1' }, article: article('Two') },
+          { id: { value: 'B.D.1' }, article: { value: 'https://ga.wikipedia.org/wiki/Duine' } },
+          { id: { value: 'C.D.1' }, article: article('Same') },
+          { id: { value: 'C.D.1' }, article: article('Same') },
+        ],
+      },
+    });
+    expect(Object.fromEntries(map)).toEqual({ 'C.D.1': 'Same' });
+  });
+
+  it('joins on P4690 and asks only for English Wikipedia', () => {
+    const q = sitelinkQuery(['A.D.1']);
+    expect(q).toContain('wdt:P4690');
+    expect(q).toContain('<https://en.wikipedia.org/>');
+    expect(q).toContain('"A.D.1"');
   });
 });

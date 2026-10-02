@@ -161,7 +161,7 @@ failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and un
 | `td_parliament_stats` | per-TD raw counts from `server/parliament/`, and `is_presiding` |
 | `td_scores` | one row per TD: the stored pillars, overall and ranks. `computed_at` is when the rollup last wrote it |
 | `article_tds` | article ↔ TD: this TD is named in this article. A fact, not a verdict |
-| `td_historical_baselines` | researched history per TD; shown, not scored |
+| `td_historical_baselines` | TD background copied word for word from one Wikipedia revision (`npm run td-history`, docs/plans/td-history.md); shown, not scored |
 
 The facts-only migration (`drizzle/*_facts_only_scoring.sql`) dropped the ELO, news, trend and
 story-count columns, `td_score_history` and `party_scores`, and renamed `article_td_scores` to

@@ -60,6 +60,21 @@ const { default: scoresRouter, tdCard } = await import('./scores');
 
 const COMPUTED_AT = new Date('2026-09-20T00:00:00Z');
 
+/** A td_historical_baselines row as the scoring repository returns it. */
+const BACKGROUND_ROW = {
+  id: 1,
+  tdId: 1,
+  summary: 'Mary Lou McDonald is an Irish Sinn Féin politician.',
+  passages: ['She was elected to Dublin City Council in 2004 and to the European Parliament.'],
+  sourceUrl: 'https://en.wikipedia.org/w/index.php?oldid=42',
+  sourceTitle: 'Mary Lou McDonald',
+  sourceRevision: 42,
+  retrievedAt: new Date('2026-10-02T09:00:00Z'),
+  model: 'deepseek-flash',
+  createdAt: COMPUTED_AT,
+  updatedAt: COMPUTED_AT,
+};
+
 function td(id: number, name: string, party: string, constituency: string, overallScore: number | null, isPresiding = false) {
   return {
     td: {
@@ -106,7 +121,7 @@ beforeEach(() => {
     td(2, 'Simon Harris', 'Fine Gael', 'Wicklow', 65),
     td(3, 'New Deputy', 'Fine Gael', 'Wicklow', null),
   ];
-  state.baselines = [{ tdId: 1, historicalSummary: 'Long record', category: 'moderate_issues', confidence: 0.8, keyFindings: [], researchDate: null }];
+  state.baselines = [BACKGROUND_ROW];
   state.recalculated = 0;
 });
 
@@ -188,6 +203,19 @@ describe('GET /api/scores/td/:name', () => {
       expect(body.data.baseline).toBeNull();
       expect(body.data).not.toHaveProperty('dimensions');
       expect(body.data).not.toHaveProperty('recentArticles');
+    });
+  });
+
+  it('returns the background as source text with a link to the checked revision, never a score or label', async () => {
+    const scoring = await import('../scoring');
+    vi.mocked(scoring.repository.baselineFor).mockResolvedValueOnce(BACKGROUND_ROW as never);
+    await withServer(async (base) => {
+      const { body } = await get(base, '/api/scores/td/Mary%20Lou%20McDonald');
+      expect(body.data.baseline).toEqual({
+        summary: BACKGROUND_ROW.summary,
+        passages: BACKGROUND_ROW.passages,
+        source: { url: BACKGROUND_ROW.sourceUrl, title: 'Mary Lou McDonald', revision: 42, retrievedAt: '2026-10-02T09:00:00.000Z' },
+      });
     });
   });
 
