@@ -67,6 +67,15 @@ There is no official record of why a TD missed a vote. `npm run parliament:silen
 runs of sitting days with no vote and no speech that no documented absence covers: if the TD or
 their party announced leave publicly, add it with its source; if not, the silence stays counted.
 
+**The leave watch catches new leave.** Every Monday at 06:15 (`server/parliament/leaveWatch.ts`,
+`npm run parliament:leave-watch`) the same runs of 8+ silent sitting days are recorded in
+`td_leave_alerts`, each with news that may explain it (a pointer, never a reason). An admin
+reviews them at `/admin/leave-watch`: **confirm** with a reason, dates and a public `https`
+source, which writes a `td_absences` row (`origin = 'admin'`, so the sync that reloads
+`absences.ts` keeps it), or **dismiss** with no leave recorded. A dismissed run that doubles in
+length opens again. Nothing is excused until a person confirms it, and a confirmed leave counts
+from the next daily sync.
+
 Two things are stated rather than adjusted:
 
 - **Vote attendance** is scored as the Official Report records it, less the chaired divisions and

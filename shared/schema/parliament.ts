@@ -7,7 +7,7 @@
  * are kept on every row, so votes and speeches by someone not (yet) in `tds` are stored
  * and linked by `td_id` on the next roster sync instead of being dropped.
  */
-import { boolean, date, index, integer, jsonb, primaryKey, real, smallint, text, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { boolean, date, index, integer, jsonb, primaryKey, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
 
 /** How a member voted in a division. Absence is the lack of a row, not a value. */
@@ -204,6 +204,10 @@ export const tdPartyLeaders = politics.table(
 export const absenceReason = politics.enum('absence_reason', ['parental_leave', 'medical_leave', 'bereavement', 'other_leave']);
 export type AbsenceReason = (typeof absenceReason.enumValues)[number];
 
+/** `code`: the list in absences.ts, replaced by every sync. `admin`: confirmed from the leave watch, kept. */
+export const absenceOrigin = politics.enum('absence_origin', ['code', 'admin']);
+export type AbsenceOrigin = (typeof absenceOrigin.enumValues)[number];
+
 export const tdAbsences = politics.table(
   'td_absences',
   {
@@ -215,8 +219,50 @@ export const tdAbsences = politics.table(
     reason: absenceReason('reason').notNull(),
     sourceUrl: text('source_url').notNull(),
     note: text('note'),
+    origin: absenceOrigin('origin').notNull().default('code'),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_absences_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Leave watch: a weekly job lists runs of sitting days on which an active TD neither voted nor
+// spoke and no documented absence covers. It records the run and, as a pointer for the
+// reviewer, news articles that may explain it. It decides nothing: a person confirms a leave
+// with a public source (it becomes a td_absences row) or dismisses the run. A dismissed run that
+// doubles in length is opened again.
+// ---------------------------------------------------------------------------
+export const leaveAlertStatus = politics.enum('leave_alert_status', ['open', 'confirmed', 'dismissed', 'closed']);
+export type LeaveAlertStatus = (typeof leaveAlertStatus.enumValues)[number];
+
+export interface LeaveHint {
+  title: string;
+  url: string;
+  publishedAt: string;
+}
+
+export const tdLeaveAlerts = politics.table(
+  'td_leave_alerts',
+  {
+    id: serial('id').primaryKey(),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    /** First and latest silent sitting day of the run. The first never moves; the latest does. */
+    startDate: date('start_date').notNull(),
+    endDate: date('end_date').notNull(),
+    sittingDays: integer('sitting_days').notNull(),
+    status: leaveAlertStatus('status').notNull().default('open'),
+    /** News that may explain the run. A pointer for the reviewer, never a reason. */
+    hints: jsonb('hints').$type<LeaveHint[]>().notNull().default([]),
+    firstSeenAt: timestamp('first_seen_at', { withTimezone: true }).notNull().defaultNow(),
+    lastSeenAt: timestamp('last_seen_at', { withTimezone: true }).notNull().defaultNow(),
+    resolvedAt: timestamp('resolved_at', { withTimezone: true }),
+    /** An admin's email, or 'watch' when the job closed it itself. */
+    resolvedBy: text('resolved_by'),
+    resolutionNote: text('resolution_note'),
+    /** Length of the run when it was dismissed: the run opens again at twice this. */
+    daysWhenResolved: integer('days_when_resolved'),
+  },
+  (t) => [uniqueIndex('td_leave_alerts_run_idx').on(t.memberCode, t.startDate), index('td_leave_alerts_status_idx').on(t.status)],
 );
 
 // ---------------------------------------------------------------------------
