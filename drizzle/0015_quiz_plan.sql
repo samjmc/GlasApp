@@ -1,0 +1,1 @@
+ALTER TABLE "politics"."quiz_results" ADD COLUMN "plan" jsonb;
