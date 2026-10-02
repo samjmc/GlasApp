@@ -33,7 +33,18 @@ It is order-independent, so every profile can be rebuilt from its evidence at an
 |---|---|---|---|
 | user | none | latest quiz (weight 10, only the dimensions it asked) + every policy vote (`listUserVoteVectors`) | none |
 | TD | party baseline (`partyBaselines.ts`), weight 3; independents none | `politics.td_ideology_evidence`: verified news stances (`stance`, `server/stances`), debate stances (not wired yet) | 180-day half-life |
-| party | — | mean of its TDs' profiles, each weighted 3 + its evidence weight; baseline when it has none | — |
+| party | — | mean of its TDs' profiles, each weighted 3 + its evidence weight; baseline when it has none. This stored row is `tdMean`; see "Party manifestos" for what a party is matched on | — |
+
+### Party manifestos (`server/partyQuiz`, read time only)
+
+A party is matched on its stored row `t` blended with its approved manifesto answers (reviewed
+sheets in `server/partyQuiz/sheets`, scored by the same `scoreQuiz` as users): per dimension
+`v = c·m + (1 − c)·t`, where `m` is the manifesto position and `c` = approved answered items ÷ bank
+questions on that dimension (`position.ts`). `matchesFor` and `partyProfile` both use it; nothing is
+stored and TD profiles never see the manifesto. A party with no baseline takes `m` on a dimension
+its TDs have not measured, and that dimension counts as measured for `MIN_MEASURED_DIMS`. With no
+approved sheet, `v = t` exactly. `GET /api/ideology/party/:name/answers` and
+`/party-answers?questions=` serve the approved answers with their quotes (`serve.ts`).
 
 Source scales (`sources.ts`): debate stances (and the old `article` rows) are ±0.5 (×20); vote
 options and `stance` evidence are ±2 (×5), because a stance IS an option position. A value under
