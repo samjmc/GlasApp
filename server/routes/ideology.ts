@@ -9,6 +9,8 @@ import { IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
 import { asyncHandler } from '../middleware/errorHandler';
 import { MAX_DIMENSION_WEIGHT } from '../ideology/alignment';
 import { matchesFor, partyProfile, tdProfile, userIdeologyDetail, userMatches, userTimeline } from '../ideology';
+// Not through '../ideology': the party answers are compiled-in data, not the ideology model.
+import { MAX_ANSWER_QUESTIONS, answersForQuestions, noPartyAnswers, partyAnswers } from '../partyQuiz/serve';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
@@ -90,7 +92,7 @@ router.get(
   }),
 );
 
-/** GET /api/ideology/party/:name */
+/** GET /api/ideology/party/:name — the party's position: its TD mean blended with its manifesto. */
 router.get(
   '/party/:name',
   asyncHandler(async (req, res) => {
@@ -99,5 +101,26 @@ router.get(
     res.json(formatSuccess(data));
   }),
 );
+
+/** GET /api/ideology/party/:name/answers — the party's reviewed manifesto answers, each quote linked. */
+router.get(
+  '/party/:name/answers',
+  asyncHandler(async (req, res) => {
+    const answers = partyAnswers(req.params.name!);
+    if (answers) return res.json(formatSuccess(answers));
+    const profile = await partyProfile(req.params.name!);
+    if (!profile) return res.status(404).json(formatError('NOT_FOUND', 'Party not found'));
+    res.json(formatSuccess(noPartyAnswers(profile.party)));
+  }),
+);
+
+const questionIdsSchema = z.array(z.coerce.number().int().positive()).min(1).max(MAX_ANSWER_QUESTIONS);
+
+/** GET /api/ideology/party-answers?questions=1,5,27 — every party's reviewed answers, per question. */
+router.get('/party-answers', (req, res) => {
+  const ids = questionIdsSchema.safeParse(typeof req.query.questions === 'string' ? req.query.questions.split(',') : []);
+  if (!ids.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid question ids'));
+  res.json(formatSuccess(answersForQuestions(ids.data)));
+});
 
 export default router;
