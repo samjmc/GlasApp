@@ -90,7 +90,7 @@ router.get(
   '/tds',
   asyncHandler(async (_req, res) => {
     const [rows, baselines] = await Promise.all([repo.listActive(), repo.listBaselines()]);
-    const researched = new Set(baselines.filter((b) => b.historicalSummary).map((b) => b.tdId));
+    const researched = new Set(baselines.filter((b) => b.summary).map((b) => b.tdId));
     const data: TdListItem[] = rows.map((r) => ({ ...tdCard(r), hasResearch: researched.has(r.td.id) }));
     res.json(formatSuccess(data, { count: data.length, researchedCount: researched.size }));
   }),
@@ -142,11 +142,14 @@ router.get(
       },
       baseline: baseline
         ? {
-            summary: baseline.historicalSummary,
-            category: baseline.category,
-            confidence: baseline.confidence,
-            keyFindings: baseline.keyFindings ?? [],
-            researchDate: baseline.researchDate?.toISOString() ?? null,
+            summary: baseline.summary,
+            passages: baseline.passages,
+            source: {
+              url: baseline.sourceUrl,
+              title: baseline.sourceTitle,
+              revision: baseline.sourceRevision,
+              retrievedAt: baseline.retrievedAt.toISOString(),
+            },
           }
         : null,
     };

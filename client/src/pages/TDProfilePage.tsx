@@ -88,11 +88,6 @@ function formatDay(value: string | null | undefined): string {
     : d.toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-function humanise(value: string): string {
-  const text = value.replace(/_/g, ' ');
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-
 /** A full-term backbencher's full-marks benchmarks, as in server/scoring/weights.ts. */
 const FULL_ATTENDANCE_BENCHMARK = 95;
 const FULL_QUESTIONS_BENCHMARK = 200;
@@ -867,40 +862,50 @@ export default function TDProfilePageEnhanced() {
           <TabsContent value="background" className="mt-0">
             <Card className="flex flex-col gap-5 p-5 sm:p-6">
               <h2 className="font-display text-xl font-bold tracking-tight">Background</h2>
-              {!score.bio && !score.baseline?.summary && !score.baseline?.category && !score.baseline?.researchDate ? (
+              {!score.bio && !score.baseline ? (
                 <EmptyState icon={UserRound} title="No background yet">
-                  A short biography and research summary will show here once they are added.
+                  A short biography will show here once it is added.
                 </EmptyState>
               ) : (
                 <>
                   {score.bio && <p className="leading-relaxed">{score.bio}</p>}
-                  {score.baseline?.summary && (
-                    <div className="flex flex-col gap-3 rounded-xl bg-elevated p-4">
-                      <p className="leading-relaxed">{score.baseline.summary}</p>
-                      {score.baseline.keyFindings.length > 0 && (
-                        <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
-                          {score.baseline.keyFindings.map((finding) => (
-                            <li key={finding}>{finding}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  )}
-                  {(score.baseline?.category || score.baseline?.researchDate) && (
-                    <dl className="grid grid-cols-2 gap-3">
-                      {score.baseline?.category && (
-                        <div className="flex flex-col gap-1 rounded-xl bg-elevated p-4">
-                          <dt className="text-[13px] font-semibold text-muted-foreground">Research category</dt>
-                          <dd className="font-semibold">{humanise(score.baseline.category)}</dd>
-                        </div>
-                      )}
-                      {score.baseline?.researchDate && (
-                        <div className="flex flex-col gap-1 rounded-xl bg-elevated p-4">
-                          <dt className="text-[13px] font-semibold text-muted-foreground">Researched</dt>
-                          <dd className="font-semibold">{formatDay(score.baseline.researchDate)}</dd>
-                        </div>
-                      )}
-                    </dl>
+                  {score.baseline && (
+                    // Every sentence here is copied word for word from the linked Wikipedia revision.
+                    <figure className="flex flex-col gap-3 rounded-xl bg-elevated p-4">
+                      <blockquote className="flex flex-col gap-3">
+                        <p className="leading-relaxed">{score.baseline.summary}</p>
+                        {score.baseline.passages.length > 0 && (
+                          <ul className="flex flex-col gap-2 border-l-2 border-border pl-3 text-sm text-muted-foreground">
+                            {score.baseline.passages.map((passage) => (
+                              <li key={passage}>&ldquo;{passage}&rdquo;</li>
+                            ))}
+                          </ul>
+                        )}
+                      </blockquote>
+                      <figcaption className="text-[13px] text-muted-foreground">
+                        Text from{' '}
+                        <a
+                          href={score.baseline.source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 font-semibold underline underline-offset-4 hover:text-foreground"
+                        >
+                          Wikipedia: {score.baseline.source.title}
+                          <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                        </a>
+
+                        , the version we checked on {formatDay(score.baseline.source.retrievedAt)} (
+                        <a
+                          href="https://creativecommons.org/licenses/by-sa/4.0/"
+                          target="_blank"
+                          rel="noopener noreferrer license"
+                          className="underline underline-offset-4 hover:text-foreground"
+                        >
+                          CC BY-SA 4.0
+                        </a>
+                        ).
+                      </figcaption>
+                    </figure>
                   )}
                 </>
               )}

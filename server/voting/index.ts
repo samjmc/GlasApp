@@ -12,7 +12,7 @@
  * module, which needs Supabase settings a background job may not have. server/routes.ts
  * imports them from ./routes directly.
  */
-export { completeJson, generateQuestionForArticle, getQuestionsForArticles, type CompleteJson } from './service';
+export { completeJson, generateQuestionForArticle, getQuestionsForArticles, QUESTION_MODEL, type CompleteJson } from './service';
 export type { OptionVector, QuestionArticle } from './questions';
 
 import type { OptionVector } from './questions';
