@@ -27,6 +27,14 @@
  * rebates…" from −1.25 to +1.25 (it keeps market prices and helps with income, like the strong
  * market answer); Q7 "Pass it with tailored conscience clauses…" from +1.67 to −1.67 (it passes
  * the rights bill).
+ * 2026-10-02, before ids 28–49 first shipped (so no stored answer refers to the old wording):
+ * reworded after review so each option is one idea, neutral, and put as its supporters would.
+ * Q31 surrogacy (states that the 2024 Act is not yet in force; paid / regulated unpaid / last
+ * resort / not allowed), Q32 Angelus (no loaded wording), Q34 street names (four distinct
+ * options), Q38 data centres (options 2 and 3 no longer near-identical), Q46 EU veto and Q48
+ * citizens' referendums (one idea per option), Q40 boilers (premise: heat pumps are the norm in
+ * new homes, boilers are not banned), Q41 pension (deferral is for the contributory pension), Q43
+ * jobseeker's payment (needs enough PRSI). Values and signs unchanged.
  * The old answers also carried an eight-axis vector; 456 of its 520 off-axis values were the
  * same stock ±1.67/±3.33, nothing scored them, and they were removed.
  */
@@ -194,11 +202,11 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 31,
     dimension: 'social',
-    text: "How should Irish law treat surrogacy, where a woman carries a child for someone else?",
+    text: "The Oireachtas passed a surrogacy law in 2024, but it is not yet in force. How should Irish law treat surrogacy, where a woman carries a child for someone else?",
     answers: [
-      { value: -3.33, text: "Allow it, including paid arrangements, and recognise the parents of children born through surrogacy abroad", description: "Adults should be free to build families this way, and the law should protect the children born." },
-      { value: -1.67, text: "Allow unpaid surrogacy, and recognise unpaid arrangements made abroad under strict safeguards", description: "Support families formed this way while keeping money out of it." },
-      { value: 1.67, text: "Allow only unpaid surrogacy arranged in Ireland, under close court supervision", description: "Proceed with caution and keep every case under Irish oversight." },
+      { value: -3.33, text: "Allow paid surrogacy, so the woman who carries the child is paid for doing so", description: "Adults should be free to make this arrangement, and the woman deserves fair pay for it." },
+      { value: -1.67, text: "Allow unpaid surrogacy, approved in advance by a regulator, with a court order recognising the parents after the birth", description: "Help people build families this way, with checks before and after, and keep money out of it." },
+      { value: 1.67, text: "Allow it only as a last resort, for people who cannot have a child any other way", description: "Surrogacy raises hard ethical questions, so it should be rare." },
       { value: 3.33, text: "Do not allow it; carrying a child for someone else should not be permitted", description: "Surrogacy risks treating women and children as a means to an end." },
     ],
   },
@@ -240,10 +248,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     dimension: 'cultural',
     text: "RTÉ broadcasts the Angelus every day on radio and television. Should it continue?",
     answers: [
-      { value: -3.33, text: "No; a public broadcaster should not air a Catholic call to prayer", description: "RTÉ serves a diverse country and should not favour one faith." },
+      { value: -3.33, text: "No; take it off the air", description: "A public broadcaster serving people of every faith and none should not broadcast a religious devotion." },
       { value: -1.67, text: "Replace it with a short moment of reflection for people of all faiths and none", description: "Keep a daily pause, but make it one everyone can share." },
-      { value: 1.67, text: "Yes; it is a brief, familiar pause that bothers few people", description: "It is part of the rhythm of Irish life and does no harm." },
-      { value: 3.33, text: "Yes, and protect it as part of the national heritage", description: "Traditions like this should be safeguarded, not debated away." },
+      { value: 1.67, text: "Yes; keep it as it is", description: "It is a short, familiar pause in the day that many people value." },
+      { value: 3.33, text: "Yes, and protect it as part of the national heritage", description: "Traditions like this should be safeguarded for future generations." },
     ],
   },
   {
@@ -262,10 +270,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     dimension: 'cultural',
     text: "When councils name new streets, bridges and public spaces, whose stories should the names tell?",
     answers: [
-      { value: -3.33, text: "Today's diverse Ireland, including people from newer communities", description: "Public names should reflect everyone who lives here now." },
-      { value: -1.67, text: "A mix chosen by open public nomination, with newer voices alongside familiar Irish figures", description: "Let the public choose from a wider range of people." },
-      { value: 1.67, text: "Mainly people and places from Irish history", description: "Names should connect people to the country's own story." },
-      { value: 3.33, text: "Only Irish place names, saints and national figures rooted in local heritage", description: "Public names are part of the national inheritance and should stay rooted in it." },
+      { value: -3.33, text: "Give priority to people from newer communities, who are missing from public names today", description: "Public names should reflect everyone who lives here now." },
+      { value: -1.67, text: "Anyone the public nominates, with no preference for any background", description: "Honour whoever made a difference locally, wherever they came from." },
+      { value: 1.67, text: "Mainly figures from Irish history", description: "Names should connect people to the country's own story." },
+      { value: 3.33, text: "Only figures from Irish history and traditional place names", description: "Public names are part of the national inheritance and should stay rooted in it." },
     ],
   },
   {
@@ -328,10 +336,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     dimension: 'globalism',
     text: "On foreign policy and tax, EU decisions need every member to agree, so each country has a veto. Should that change?",
     answers: [
-      { value: -3.33, text: "Yes; move to majority voting on both so the EU can act faster", description: "One country should not be able to block the whole Union." },
-      { value: -1.67, text: "Allow majority voting on foreign policy, but keep the veto on tax", description: "Act together abroad while protecting a vital national interest." },
-      { value: 1.67, text: "Keep the veto on both, but use it sparingly", description: "The veto is a safeguard to hold in reserve." },
-      { value: 3.33, text: "Keep every veto, and bring more powers back from Brussels to Dublin", description: "Decisions that affect Ireland should be made in Ireland." },
+      { value: -3.33, text: "Yes; replace the veto with majority voting on both", description: "One country should not be able to block the whole Union, and the EU must be able to act fast." },
+      { value: -1.67, text: "Replace it with majority voting on foreign policy only", description: "Europe should act together abroad, but tax is different." },
+      { value: 1.67, text: "No; keep the veto on both", description: "The veto protects small countries like Ireland." },
+      { value: 3.33, text: "No, and extend the veto to more areas of EU decision-making", description: "Decisions that affect Ireland should never be imposed by other countries." },
     ],
   },
   {
@@ -373,8 +381,8 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     text: "Data centres use a large share of Ireland's electricity. How should new ones be connected to the grid?",
     answers: [
       { value: -3.33, text: "Pause new connections until renewable supply and the grid catch up", description: "Climate targets come first; the grid cannot keep absorbing this demand." },
-      { value: -1.67, text: "Connect them only if all their demand is matched by new renewable power from day one", description: "New demand should come with new clean supply." },
-      { value: 1.67, text: "Connect them if they bring on-site or nearby generation or storage that can support the grid", description: "Let them grow, as long as they help keep the lights on." },
+      { value: -1.67, text: "Connect them only if new renewable power is built to supply them", description: "New demand should come with new clean supply." },
+      { value: 1.67, text: "Connect them wherever the grid has room, like any other business", description: "Data centres should not face special conditions just because they are large users." },
       { value: 3.33, text: "Prioritise them, and expand the grid to meet their demand", description: "They bring investment and jobs, and Ireland should compete for them." },
     ],
   },
@@ -392,10 +400,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 40,
     dimension: 'environmental',
-    text: "Oil and gas boilers are already ruled out in most new homes. What about existing homes?",
+    text: "Building rules now make heat pumps the normal heating in new homes, although oil and gas boilers are not banned outright. What about existing homes?",
     answers: [
-      { value: -3.33, text: "Set a firm date to stop installing new oil and gas boilers in any home, with grants for heat pumps", description: "A clear deadline is the only way to clean up home heating in time." },
-      { value: -1.67, text: "Phase them out gradually as old boilers wear out, backed by generous grants", description: "Switch homes over at a pace people can manage." },
+      { value: -3.33, text: "Set a firm date after which no new oil or gas boiler can be installed in any home", description: "A clear deadline is the only way to clean up home heating in time." },
+      { value: -1.67, text: "Require a heat pump or other clean heating when an old boiler has to be replaced", description: "Switch homes over at a pace people can manage." },
       { value: 1.67, text: "Keep them allowed, with grants for people who choose to switch", description: "Encourage change, but let households decide." },
       { value: 3.33, text: "Leave heating entirely to households: no bans and no push to switch", description: "People should heat their homes in whatever way suits them and their budget." },
     ],
@@ -502,7 +510,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 41,
     dimension: 'welfare',
-    text: "The State Pension age is 66, and people can choose to defer claiming it up to 70. Should the age change?",
+    text: "The State Pension age is 66, and people can choose to defer claiming the contributory State Pension up to 70. Should the age change?",
     answers: [
       { value: -3.33, text: "Lower it to 65, so people can retire earlier on a full pension", description: "People who have worked all their lives deserve to retire in good health." },
       { value: -1.67, text: "Keep it at 66 for everyone", description: "People have planned around 66; it should not rise." },
@@ -524,7 +532,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 43,
     dimension: 'welfare',
-    text: "People who lose their job can get a jobseeker's payment linked to their previous pay for a limited time. How generous should it be?",
+    text: "People who lose their job after enough years of PRSI contributions can get a jobseeker's payment linked to their previous pay, for a limited time. How generous should it be?",
     answers: [
       { value: -3.33, text: "More generous and longer-lasting, so losing a job never means a sudden drop in income", description: "A strong safety net lets people find the right next job." },
       { value: -1.67, text: "Keep it as it is", description: "It cushions a job loss without discouraging work." },
@@ -582,9 +590,9 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     text: "In Ireland, only members of the Oireachtas can start the process for a referendum. Should citizens be able to trigger one?",
     answers: [
       { value: 3.33, text: "Yes; any proposal backed by enough citizens' signatures should go to a referendum", description: "The people should be able to set the agenda, not just vote on it." },
-      { value: 1.67, text: "Let a large enough petition force a Dáil debate and vote, but not a referendum", description: "Give citizens a way in, while leaving the decision with the Dáil." },
+      { value: 1.67, text: "Let a large enough petition force a Dáil vote on the proposal", description: "Give citizens a way to put an issue on the agenda, while the Dáil decides." },
       { value: -1.67, text: "No; keep referendums in the hands of the Oireachtas", description: "Constitutional change needs careful drafting by people accountable for it." },
-      { value: -3.33, text: "No, and put fewer questions to the people, leaving more to legislation and expert advice", description: "Complex questions are better settled by elected representatives and experts than by a yes/no vote." },
+      { value: -3.33, text: "No, and hold fewer referendums", description: "Complex questions are better settled by elected representatives and expert advice than by a yes/no vote." },
     ],
   },
   {
