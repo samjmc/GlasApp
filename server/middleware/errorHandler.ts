@@ -120,14 +120,3 @@ export const asyncHandler = (fn: AsyncRouteHandler) => {
   };
 };
 
-/**
- * 404 Not Found handler
- * Should be registered BEFORE errorHandler but AFTER all routes
- */
-/** Express 404 handler for unknown routes. */
-export const notFoundHandler = (req: Request, res: Response) => {
-  res.status(404).json(
-    formatError('ROUTE_NOT_FOUND', `Route ${req.method} ${req.path} not found`)
-  );
-};
-

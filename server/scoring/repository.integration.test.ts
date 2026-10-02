@@ -84,51 +84,6 @@ run('repository against Postgres', () => {
     expect(await repo.search('nobody at all', 10)).toEqual([]);
   });
 
-  it('applyElo upserts the score row, counts the story and writes one history row per change', async () => {
-    const mary = (await repo.findByName('Mary Lou McDonald'))!;
-    const { applyArticle, baselineRatings } = await import('./elo');
-    const { updated, changes } = applyArticle(repo.ratingsOf(mary.score), { overall: 10, integrity: -5 }, 1);
-    expect(changes).toHaveLength(2);
-
-    await repo.applyElo(mary.td.id, updated, changes, { articleId: 101, credibility: 0.9, confidence: 0.8 });
-
-    const after = (await repo.findByName('Mary Lou McDonald'))!;
-    expect(after.score?.overallElo).toBe(1532);
-    expect(after.score?.integrityElo).toBe(1484);
-    expect(after.score?.totalStories).toBe(1);
-    expect(after.score?.lastScoredAt).toBeInstanceOf(Date);
-
-    // A second article on the same TD increments rather than replacing.
-    const second = applyArticle(repo.ratingsOf(after.score), { overall: 2 }, 1);
-    await repo.applyElo(mary.td.id, second.updated, second.changes, { articleId: 102, credibility: 0.9, confidence: 0.8 });
-    expect((await repo.findByName('Mary Lou McDonald'))!.score?.totalStories).toBe(2);
-    expect(baselineRatings().overall).toBe(1500);
-  });
-
-  it('upsertArticleScore is idempotent on (article, td)', async () => {
-    const mary = (await repo.findByName('Mary Lou McDonald'))!;
-    const row = {
-      articleId: 101,
-      tdId: mary.td.id,
-      impact: 7.5,
-      dimensionScores: { transparency: 80, effectiveness: null, integrity: 20, consistency: null },
-      storyType: 'policy',
-      sentiment: 'positive',
-      needsReview: false,
-      reasoning: 'first',
-      analyzedBy: 'panel',
-      isIdeologicalPolicy: true,
-      policyDirection: 'progressive',
-    };
-    await repo.upsertArticleScore(row);
-    await repo.upsertArticleScore({ ...row, reasoning: 'second', impact: 6 });
-    const recent = await repo.recentArticleScores(mary.td.id, 10);
-    expect(recent).toHaveLength(1);
-    expect(recent[0].reasoning).toBe('second');
-    expect(Number(recent[0].impact)).toBe(6);
-    expect(recent[0].dimensionScores).toEqual({ transparency: 80, effectiveness: null, integrity: 20, consistency: null });
-  });
-
   it('updateParliamentaryActivity fills the pillar inputs by member code', async () => {
     const written = await repo.updateParliamentaryActivity([
       { memberCode: 'MLM.D.2011', questionsOral: 40, questionsWritten: 160, attendancePct: 95, committeeAttendancePct: 68 },
@@ -152,6 +107,7 @@ run('repository against Postgres', () => {
     // Simon has no parliamentary data at all.
     expect(inputs.find((i) => i.party === 'Fine Gael')!.questions).toBeNull();
 
+    const before = new Date();
     await repo.writeRollup(computeRollup(inputs));
     const rows = await repo.listActive();
     const top = rows[0];
@@ -159,45 +115,38 @@ run('repository against Postgres', () => {
     expect(top.score?.nationalRank).toBe(1);
     // Questions and votes at their benchmarks (100); committees 68 of 85 = 80: 50 + 30 + 16.
     expect(top.score?.parliamentaryScore).toBe(96);
-    expect(top.score?.overallScore).not.toBeNull();
-    // Simon: news pillar only, so his overall equals his news score.
+    // No debate record: the parliamentary pillar is the whole score.
+    expect(top.score?.overallScore).toBe(96);
+    // The rollup stamps when it computed the row; the API serves it as `computedAt`.
+    expect(top.score?.computedAt?.getTime()).toBeGreaterThanOrEqual(before.getTime() - 1000);
+    // Simon has no facts at all: no score, no rank.
     const simon = rows.find((r) => r.td.name === 'Simon Harris')!;
-    expect(simon.score?.parliamentaryScore).toBeNull();
-    expect(simon.score?.overallScore).toBe(simon.score?.newsScore);
+    expect(simon.score).toMatchObject({ parliamentaryScore: null, overallScore: null, nationalRank: null });
   });
 
-  it('writeTrends sums recent history and movers reports it', async () => {
-    await repo.writeTrends();
-    const mary = (await repo.findByName('Mary Lou McDonald'))!;
-    // impact 10 -> +32, then impact 2 -> +6 (2/10 x K(32) x credibility 1). Overall only:
-    // the integrity change from the first article is not counted in the trend.
-    expect(mary.score?.eloChange7d).toBe(38);
-    expect(mary.score?.eloChange30d).toBe(38);
+  it('the chair is read from the parliament record and left unranked', async () => {
     const simon = (await repo.findByName('Simon Harris'))!;
-    expect(simon.score?.eloChange7d ?? 0).toBe(0);
+    expect(simon.stats).toBeNull();
+    await dbmod.pool.query(
+      `insert into politics.td_parliament_stats
+         (td_id, member_since, is_presiding, divisions_eligible, votes_cast, sitting_days, sections_spoken, speeches)
+       values ($1, '2024-11-29', true, 40, 0, 20, 0, 0)`,
+      [simon.td.id],
+    );
+    // Question counts default to 0 and committee attendance is measured for anyone.
+    await repo.updateParliamentaryActivity([
+      { memberCode: 'SH.D.2011', questionsOral: 0, questionsWritten: 0, attendancePct: null, committeeAttendancePct: 90 },
+    ]);
 
-    const movers = await repo.movers(30, 5);
-    expect(movers).toHaveLength(1);
-    expect(movers[0]).toMatchObject({ delta: 38, articles: 2 });
-    expect(movers[0].td.name).toBe('Mary Lou McDonald');
-  });
-
-  it('party scores come only from scored members, and are replaced wholesale', async () => {
-    const { computePartyScores } = await import('./party');
+    const { computeRollup } = await import('./rollup');
     const inputs = await repo.rollupInputs(new Map());
-    // rollupInputs carries each TD's story count from td_scores.
-    expect(inputs.find((i) => i.party === 'Sinn Féin')!.newsStories).toBeGreaterThan(0);
-    expect(inputs.find((i) => i.party === 'Fine Gael')!.newsStories).toBe(0);
+    expect(inputs.find((i) => i.tdId === simon.td.id)).toMatchObject({ isPresiding: true, questions: 0, committeeAttendancePct: 90 });
+    await repo.writeRollup(computeRollup(inputs));
 
-    // Simon Harris (Fine Gael) has never been scored, so his party gets no aggregate
-    // rather than a baseline 50.
-    await repo.replacePartyScores(computePartyScores(inputs));
-    expect((await repo.listPartyScores()).map((p) => p.party)).toEqual(['Sinn Féin']);
-
-    await repo.replacePartyScores([{ party: 'Fine Gael', memberCount: 1, avgElo: 1550, overallScore: 55 }]);
-    const only = await repo.listPartyScores();
-    expect(only).toHaveLength(1);
-    expect(only[0].party).toBe('Fine Gael');
+    const after = (await repo.findByName('Simon Harris'))!;
+    expect(after.stats?.isPresiding).toBe(true);
+    expect(after.score).toMatchObject({ parliamentaryScore: null, overallScore: null, nationalRank: null, partyRank: null });
+    expect((await repo.listActive()).map((r) => r.td.name)).toEqual(['Mary Lou McDonald', 'Simon Harris']);
   });
 
   it('lists by party and constituency, and enumerates constituencies', async () => {
@@ -206,10 +155,15 @@ run('repository against Postgres', () => {
     expect(await repo.listConstituencies()).toEqual(['Dublin Central', 'Wicklow']);
   });
 
-  it('deleting a TD cascades their scores and history', async () => {
+  it('deleting a TD cascades their scores and article links', async () => {
     const simon = (await repo.findByName('Simon Harris'))!;
+    await dbmod.pool.query('insert into politics.article_tds (article_id, td_id) values (1, $1)', [simon.td.id]);
     await dbmod.pool.query('delete from politics.tds where id = $1', [simon.td.id]);
-    const { rows } = await dbmod.pool.query('select count(*)::int as n from politics.td_scores where td_id = $1', [simon.td.id]);
-    expect(rows[0].n).toBe(0);
+    const { rows } = await dbmod.pool.query(
+      `select (select count(*)::int from politics.td_scores where td_id = $1) as scores,
+              (select count(*)::int from politics.article_tds where td_id = $1) as links`,
+      [simon.td.id],
+    );
+    expect(rows[0]).toEqual({ scores: 0, links: 0 });
   });
 });

@@ -13,17 +13,22 @@
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "test": "vitest run --root .",
+    "test:e2e": "playwright test",
+    "guard:migrations": "tsx scripts/ci/check-migrations.ts",
     "git:safety-check": "bash scripts/git-safety-checks.sh",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "sync-tds": "tsx server/jobs/sync-tds.ts",
+    "news:tds": "tsx server/jobs/news-tds.ts",
+    "scores:recalculate": "tsx server/jobs/scores-recalculate.ts",
     "td-scoring": "tsx server/jobs/td-scoring.ts",
     "ideology": "tsx server/jobs/ideology.ts",
-    "generate-summaries": "tsx scripts/generate-td-historical-summaries.ts",
-    "generate-summaries:template": "tsx scripts/generate-td-summaries-template.ts",
-    "parliament:sync": "tsx server/jobs/parliament-sync.ts"
+    "stances": "tsx server/jobs/stances.ts",
+    "parliament:sync": "tsx server/jobs/parliament-sync.ts",
+    "parliament:silences": "tsx server/jobs/parliament-silences.ts",
+    "party-quiz": "tsx server/jobs/party-quiz.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",
@@ -142,6 +147,7 @@
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
     "@replit/vite-plugin-cartographer": "^0.2.7",
     "@replit/vite-plugin-runtime-error-modal": "^0.0.3",
     "@tailwindcss/typography": "^0.5.15",
@@ -164,6 +170,7 @@
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.1",
     "typescript": "5.6.3",
+    "unpdf": "1.7.0",
     "vite": "^5.4.14",
     "vitest": "^3.2.4"
   }

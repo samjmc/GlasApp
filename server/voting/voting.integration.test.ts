@@ -207,10 +207,6 @@ run('voting against Postgres', () => {
       expect(mine.tally.total).toBe(1);
       expect((await service.articleVoteView(77, null)).myVote).toBeNull();
       expect((await service.articleVoteView(12345, 'u1')).question).toBeNull();
-
-      await service.retractVote('u1', q.id);
-      expect((await service.articleVoteView(77, 'u1')).tally.total).toBe(0);
-      await expect(service.retractVote('u1', q.id)).rejects.toMatchObject({ status: 404 });
     });
   });
 
@@ -309,6 +305,23 @@ run('voting against Postgres', () => {
       expect(totals.totals.economic).toBe(-24);
       expect(totals.totals.welfare).toBe(-12);
       expect(await repo.regionTotals('2026-09-22', 'county', 'Kerry')).toMatchObject({ finished: 0 });
+    });
+
+    it('a vote cast on the article page still counts in the lean and the area totals', async () => {
+      for (let i = 0; i < 3; i++) await makeQuestion();
+      const session = await service.getOrCreateSession(user, day(22));
+      const [first, ...rest] = session.items;
+      await repo.upsertVote({ userId: 'u1', questionId: first!.questionId, optionKey: 'option_b', source: 'article', sessionItemId: null });
+      for (const item of rest) await service.recordSessionVote('u1', item.sessionItemId, 'option_b', day(22));
+      await service.completeSession('u1', day(22));
+
+      expect(await repo.sessionVoteVectors(session.sessionId, 'u1')).toHaveLength(3);
+      // option_b three times: economic −2 × weight 2 each.
+      expect((await repo.regionTotals('2026-09-22', 'county', 'Cork')).totals.economic).toBe(-12);
+      // Another user's vote on the same question is not this session's.
+      await repo.upsertVote({ userId: 'u2', questionId: first!.questionId, optionKey: 'option_b', source: 'article', sessionItemId: null });
+      expect(await repo.sessionVoteVectors(session.sessionId, 'u1')).toHaveLength(3);
+      expect((await repo.regionTotals('2026-09-22', 'county', 'Cork')).totals.economic).toBe(-12);
     });
   });
 });

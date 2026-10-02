@@ -279,7 +279,8 @@ export async function researchTDBaseline(
     throw new Error('Invalid provider specified');
     
   } catch (error: unknown) {
-    console.error(`❌ Error researching ${tdName}:`, error.message);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`❌ Error researching ${tdName}:`, message);
     
     // Return neutral baseline on error
     return {
@@ -290,7 +291,7 @@ export async function researchTDBaseline(
       category: 'neutral',
       historical_summary: 'Error during research - defaulting to neutral baseline',
       key_findings: [],
-      reasoning: `Research failed: ${error.message}. Defaulting to neutral baseline (1.00) to be safe.`,
+      reasoning: `Research failed: ${message}. Defaulting to neutral baseline (1.00) to be safe.`,
       controversies_noted: [],
       data_quality: {
         sources_found: 0,
@@ -425,14 +426,15 @@ export async function researchAllTDBaselines(options: {
       await sleep(3000); // 3 seconds between requests
       
     } catch (error: unknown) {
-      console.error(`❌ Error processing ${td.fullName}:`, error.message);
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`❌ Error processing ${td.fullName}:`, message);
       results.push({
         politician_name: td.fullName,
         baseline_modifier: 1.00,
         baseline_score_0_100: 50,
         confidence: 0.0,
         category: 'neutral',
-        historical_summary: `Error: ${error.message}`,
+        historical_summary: `Error: ${message}`,
         key_findings: [],
         reasoning: 'Research failed - defaulting to neutral',
         controversies_noted: [],
@@ -493,7 +495,7 @@ async function saveBaselineToDatabase(baseline: HistoricalBaseline): Promise<voi
       console.log(`   ✅ Baseline saved to database`);
     }
   } catch (error: unknown) {
-    console.error(`   ❌ Error saving to database: ${error.message}`);
+    console.error(`   ❌ Error saving to database: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 

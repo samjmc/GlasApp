@@ -55,11 +55,25 @@ run('profile store against Postgres', () => {
     expect(view).toMatchObject({ phoneNumber: '+353871234567', phoneVerified: false });
   });
 
-  it('a phone number belongs to one user', async () => {
-    await profiles.startPhoneVerification('user-a', '+353871234567', phone.issueCode('user-a', NOW));
-    expect(await profiles.phoneTakenByOther('user-b', '+353871234567')).toBe(true);
-    expect(await profiles.phoneTakenByOther('user-a', '+353871234567')).toBe(false);
-    await expect(profiles.startPhoneVerification('user-b', '+353871234567', phone.issueCode('user-b', NOW))).rejects.toThrow();
+  it('an unverified claim does not lock the number; a verified one does', async () => {
+    const num = '+353871234567';
+    expect(await profiles.startPhoneVerification('user-a', num, phone.issueCode('user-a', NOW), NOW)).toBe('started');
+    const b = phone.issueCode('user-b', NOW);
+    expect(await profiles.startPhoneVerification('user-b', num, b, NOW)).toBe('started');
+    expect(await profiles.getProfile('user-a')).toMatchObject({ phoneNumber: null, phoneCodeHash: null });
+    expect(await profiles.verifyPhone('user-b', b.code, NOW)).toBe('verified');
+    const later = new Date(NOW.getTime() + 5 * 60_000);
+    expect(await profiles.startPhoneVerification('user-a', num, phone.issueCode('user-a', later), later)).toBe('taken');
+    expect(await profiles.getProfile('user-b')).toMatchObject({ phoneNumber: num, phoneVerified: true });
+  });
+
+  it('refuses a second code inside the resend window', async () => {
+    const num = '+353871234567';
+    expect(await profiles.startPhoneVerification('user-a', num, phone.issueCode('user-a', NOW), NOW)).toBe('started');
+    const soon = new Date(NOW.getTime() + (phone.PHONE_RESEND_SECONDS - 1) * 1000);
+    expect(await profiles.startPhoneVerification('user-a', num, phone.issueCode('user-a', soon), soon)).toBe('too_soon');
+    const after = new Date(NOW.getTime() + phone.PHONE_RESEND_SECONDS * 1000);
+    expect(await profiles.startPhoneVerification('user-a', num, phone.issueCode('user-a', after), after)).toBe('started');
   });
 
   it('verifies the right code once, then the code is gone', async () => {

@@ -6,6 +6,7 @@ import { useRegion } from '@/hooks/useRegion';
 import { REGION_LIST } from '@shared/region-config';
 import { useQuery } from '@tanstack/react-query';
 import { apiUpload } from '@/lib/queryClient';
+import { supabase } from '@/lib/supabase';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
@@ -22,7 +23,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { SMSNotificationForm } from '@/components/SMSNotificationForm';
 import { Segmented } from '@/components/pulse/Segmented';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import {
@@ -118,6 +118,9 @@ const ProfilePage = () => {
       const result = await apiUpload('/api/profile/image', formData);
 
       if (result.success) {
+        // The avatar is read from the sign-in's metadata, so point it at the new file.
+        const { error } = await supabase.auth.updateUser({ data: { glas_avatar_url: result.data.imageUrl } });
+        if (error) throw error;
         toast({
           title: "Profile picture updated",
           description: "Your profile picture has been successfully updated"
@@ -247,13 +250,12 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader title="Account" description="Manage your profile, alerts and data." />
+      <PageHeader title="Account" description="Manage your profile and data." />
 
       <Tabs defaultValue="profile">
         <TabsList className="mb-2 flex w-full overflow-x-auto no-scrollbar sm:w-auto">
           <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="political-evolution">Political evolution</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
 
         <TabsContent value="profile" className="flex flex-col gap-5">
@@ -532,18 +534,6 @@ const ProfilePage = () => {
                   Take the ideology quiz to start tracking your political position over time.
                 </EmptyState>
               )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="notifications">
-          <Card>
-            <CardHeader>
-              <CardTitle>SMS notifications</CardTitle>
-              <CardDescription>Get political updates and alerts by text message.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <SMSNotificationForm />
             </CardContent>
           </Card>
         </TabsContent>

@@ -116,10 +116,15 @@ pledgesRouter.get(
     const weights = mine ? weightsFromRanking(mine) : communityWeights(Array.from(rankingsByUser(rows).values()));
     const hasWeights = Object.keys(weights).length > 0;
 
-    const byParty = new Map<string, typeof all>();
-    for (const pledge of all) byParty.set(pledge.party, [...(byParty.get(pledge.party) ?? []), pledge]);
-    return Array.from(byParty.entries())
-      .map(([party, list]) => summariseParty(party, list, hasWeights ? weights : null))
+    // Grouped case-insensitively, like the unique index and ?party=: "Sinn Féin" and "sinn féin" are one party.
+    const byParty = new Map<string, { party: string; list: typeof all }>();
+    for (const pledge of all) {
+      const key = pledge.party.toLowerCase();
+      if (!byParty.has(key)) byParty.set(key, { party: pledge.party, list: [] });
+      byParty.get(key)!.list.push(pledge);
+    }
+    return Array.from(byParty.values())
+      .map(({ party, list }) => summariseParty(party, list, hasWeights ? weights : null))
       .sort((a, b) => a.party.localeCompare(b.party));
   }),
 );
@@ -171,7 +176,15 @@ pledgesRouter.patch(
   handle(async (req) => {
     const id = idParam.parse(req.params.id);
     const changes = pledgeChanges.parse(req.body);
-    const updated = found(await repo.updatePledge(id, changes), 'Pledge');
+    const updated = found(
+      await repo.updatePledge(id, changes).catch((error) => {
+        if ((error as { code?: string }).code === '23505') {
+          throw new HttpError(409, 'This party already has a pledge with that title for that election');
+        }
+        throw error;
+      }),
+      'Pledge',
+    );
     logAdminAction(req, 'pledge.update', { id, fields: Object.keys(changes) });
     return updated;
   }),

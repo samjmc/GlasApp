@@ -7,9 +7,9 @@ import type { NewsCategory } from '@shared/news';
 
 export { NEWS_CATEGORIES, type NewsCategory } from '@shared/news';
 
+/** A TD the article names. */
 export interface FeedArticleTD {
   name: string;
-  impactScore: number;
 }
 
 export interface FeedArticlePolicyVote {
@@ -30,9 +30,6 @@ export interface FeedArticle {
   sourceLogoUrl: string | null;
   publishedAt: string;
   imageUrl: string | null;
-  storyType: string | null;
-  sentiment: string | null;
-  impactScore: number | null;
   affectedTDs: FeedArticleTD[];
   /** Other outlets that reported the same event later; this card is the first report. */
   alsoReportedBy: Array<{ source: string; url: string }>;
@@ -40,7 +37,7 @@ export interface FeedArticle {
   category: NewsCategory | null;
 }
 
-/** Humanises a snake_case category/story-type value, e.g. 'foreign_affairs' -> 'Foreign affairs', 'eu' -> 'EU'. */
+/** Humanises a snake_case category value, e.g. 'foreign_affairs' -> 'Foreign affairs', 'eu' -> 'EU'. */
 export function humanizeCategory(value: string): string {
   if (value.toLowerCase() === 'eu') return 'EU';
   const words = value.split('_');

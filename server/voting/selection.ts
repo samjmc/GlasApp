@@ -13,7 +13,7 @@ export interface QuestionCandidate {
 /**
  * Pick up to `count` questions. Each pick prefers, in order:
  *  1. an axis not already chosen for today,
- *  2. the axis this user has answered least recently (`recentAnswersByAxis`),
+ *  2. the axis this user has answered the fewest times lately (`recentAnswersByAxis`),
  *  3. a question with a named axis over one without,
  *  4. the newest question.
  * Candidates are expected to exclude questions the user has already answered.

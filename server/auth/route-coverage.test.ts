@@ -24,10 +24,8 @@ const PUBLIC_WRITES: Array<{ file: string; path: string; why: string }> = [
   { file: 'quiz.ts', path: '/', why: 'anonymous visitors can take the quiz; saved only for a signed-in user' },
   { file: 'quiz.ts', path: '/assistant', why: 'public quiz assistant; rate limited' },
   { file: 'ideology.ts', path: '/matches', why: 'POST only because the position is a body; it computes and writes nothing' },
-  { file: 'chatRoutes.ts', path: '/', why: 'public assistant; rate limited' },
   { file: 'ai/analysis.ts', path: '/complete-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'ai/analysis.ts', path: '/context-analysis', why: 'public quiz analysis; rate limited' },
-  { file: 'storytellingRoutes.ts', path: '/:constituencyName', why: 'public constituency story cache' },
   { file: 'regionRoutes.ts', path: '/select', why: 'anonymous visitors choose a region' },
 ];
 
@@ -125,13 +123,11 @@ describe('route guard coverage', () => {
   it('scans the domain route files, not just server/routes', () => {
     expect(DOMAIN_ROUTE_FILES.map((f) => path.relative(SERVER, f).replace(/\\/g, '/'))).toContain('voting/routes.ts');
     const voting = allRoutes.filter((r) => r.file === '../voting/routes.ts');
-    // 4 daily-session routes + 3 vote routes; fewer means the pattern missed some.
+    // 3 daily-session routes + 2 vote routes; fewer means the pattern missed some.
     expect(voting.map((r) => `${r.method} ${r.path}`).sort()).toEqual([
-      'DELETE /questions/:questionId',
       'GET /',
       'GET /articles/:articleId',
       'POST /complete',
-      'POST /explainer',
       'POST /items/:itemId/vote',
       'POST /questions/:questionId',
     ]);

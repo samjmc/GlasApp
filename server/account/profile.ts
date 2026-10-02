@@ -5,7 +5,7 @@
 import { and, eq, ne, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { users, type UserRow } from '@shared/schema/accounts';
-import { checkCode, type CheckResult, type IssuedCode } from './phone';
+import { checkCode, issuedRecently, type CheckResult, type IssuedCode } from './phone';
 
 /** Profile fields a user may edit on their own row. */
 export interface ProfileEdits {
@@ -39,33 +39,52 @@ export async function setProfileImage(userId: string, profileImageUrl: string, d
   await database.update(users).set({ profileImageUrl, updatedAt: sql`now()` }).where(eq(users.id, userId));
 }
 
-/** True when another user already holds this number. */
-export async function phoneTakenByOther(userId: string, phoneNumber: string, database: Db = db): Promise<boolean> {
-  const [row] = await database
-    .select({ id: users.id })
-    .from(users)
-    .where(and(eq(users.phoneNumber, phoneNumber), ne(users.id, userId)))
-    .limit(1);
-  return Boolean(row);
-}
+export type StartResult = 'started' | 'too_soon' | 'taken';
+
+const NO_CODE = { phoneCodeHash: null, phoneCodeExpiresAt: null, phoneCodeAttempts: 0 } as const;
 
 /**
  * Store a number (unverified) and a fresh code for it. A changed number is unverified until
  * its code comes back; re-sending for the same number just replaces the code.
+ *
+ * Only a VERIFIED holder owns a number. Another user's unverified claim is dropped, so nobody
+ * can lock a stranger out of their own number by typing it in first.
  */
-export async function startPhoneVerification(userId: string, phoneNumber: string, issued: IssuedCode, database: Db = db): Promise<void> {
+export async function startPhoneVerification(
+  userId: string,
+  phoneNumber: string,
+  issued: IssuedCode,
+  now = new Date(),
+  database: Db = db,
+): Promise<StartResult> {
   await ensureProfile(userId, database);
-  await database
-    .update(users)
-    .set({
-      phoneNumber,
-      phoneVerified: false,
-      phoneCodeHash: issued.hash,
-      phoneCodeExpiresAt: issued.expiresAt,
-      phoneCodeAttempts: 0,
-      updatedAt: sql`now()`,
-    })
-    .where(eq(users.id, userId));
+  return database.transaction(async (tx) => {
+    const [own] = await tx.select().from(users).where(eq(users.id, userId)).for('update');
+    if (issuedRecently(own!, now)) return 'too_soon';
+
+    const others = await tx
+      .select({ id: users.id, phoneVerified: users.phoneVerified })
+      .from(users)
+      .where(and(eq(users.phoneNumber, phoneNumber), ne(users.id, userId)))
+      .for('update');
+    if (others.some((o) => o.phoneVerified)) return 'taken';
+    if (others.length) {
+      await tx.update(users).set({ phoneNumber: null, ...NO_CODE }).where(and(eq(users.phoneNumber, phoneNumber), ne(users.id, userId)));
+    }
+
+    await tx
+      .update(users)
+      .set({
+        phoneNumber,
+        phoneVerified: false,
+        phoneCodeHash: issued.hash,
+        phoneCodeExpiresAt: issued.expiresAt,
+        phoneCodeAttempts: 0,
+        updatedAt: sql`now()`,
+      })
+      .where(eq(users.id, userId));
+    return 'started';
+  });
 }
 
 /**
@@ -82,7 +101,7 @@ export async function verifyPhone(userId: string, code: string, now = new Date()
     } else if (result === 'verified') {
       await tx
         .update(users)
-        .set({ phoneVerified: true, phoneCodeHash: null, phoneCodeExpiresAt: null, phoneCodeAttempts: 0, updatedAt: sql`now()` })
+        .set({ phoneVerified: true, ...NO_CODE, updatedAt: sql`now()` })
         .where(eq(users.id, userId));
     }
     return result;

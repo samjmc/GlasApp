@@ -205,6 +205,7 @@ const QuizResultsPage: React.FC = () => {
             dimensions={result.vector}
             ideology={result.ideology}
             description={result.description}
+            answeredByDimension={result.answeredByDimension}
             actions={
               <>
                 <button

@@ -13,6 +13,7 @@ import { formatScore, scoreTone, TONE_TEXT } from "@/lib/score";
 import { PartyDot, TDAvatar } from "@/components/pulse/Party";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import type { PartyScoreRow } from "@shared/scoresApi";
 
 type ResultType = "td" | "party" | "constituency";
 
@@ -88,7 +89,7 @@ export function GlobalSearch() {
       // take the whole search down.
       const [tds, parties, constituencyNames] = await Promise.all([
         fetchScoresList<TdSearchResult>("/api/scores/tds"),
-        fetchScoresList<{ party: string; memberCount: number }>("/api/scores/parties"),
+        fetchScoresList<PartyScoreRow>("/api/scores/parties"),
         fetchScoresList<{ name: string }>("/api/scores/constituencies"),
       ]);
 

@@ -1,20 +1,22 @@
 /**
  * Every read and write of the quiz and ideology tables. Nothing else touches them.
  */
-import { and, asc, desc, eq, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { tds } from '@shared/schema/politics';
 import {
   ideologyProfiles,
   quizResults,
   tdIdeologyEvidence,
+  type EvidenceSource,
   type IdeologyProfileRow,
   type NewTdIdeologyEvidence,
   type ProfileSubject,
   type QuizResultRow,
   type TdIdeologyEvidenceRow,
 } from '@shared/schema/quiz';
-import { IDEOLOGY_DIMENSIONS, type IdeologyVector } from '@shared/ideology';
+import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
+import type { EvidenceCounts } from '@shared/ideologyMatch';
 import type { QuizResponse } from '@shared/quiz';
 import type { Profile } from './model';
 
@@ -99,14 +101,75 @@ export async function listActiveTds(database: Db = db): Promise<TdRef[]> {
 
 // --- TD evidence -----------------------------------------------------------
 
-/** Idempotent on (TD, source, sourceRef). Returns false when the evidence was already there. */
+/**
+ * Idempotent on (TD, source, sourceRef). Returns false when nothing was written.
+ *
+ * A `stance` is the TD's CURRENT answer to one question, so a later statement replaces it: every
+ * value column is overwritten (a dimension the new answer is silent on becomes NULL), but only
+ * when the new row is not older, so an older article never overwrites a newer position.
+ * Every other source keeps the first row.
+ */
 export async function insertTdEvidence(row: NewTdIdeologyEvidence, database: Db = db): Promise<boolean> {
-  const inserted = await database.insert(tdIdeologyEvidence).values(row).onConflictDoNothing().returning({ id: tdIdeologyEvidence.id });
-  return inserted.length > 0;
+  const insert = database.insert(tdIdeologyEvidence).values(row);
+  const written =
+    row.source === 'stance'
+      ? await insert
+          .onConflictDoUpdate({
+            target: [tdIdeologyEvidence.tdId, tdIdeologyEvidence.source, tdIdeologyEvidence.sourceRef],
+            set: {
+              ...Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, row[d] ?? null])),
+              policyTopic: row.policyTopic ?? null,
+              weight: row.weight,
+              observedAt: row.observedAt,
+            },
+            setWhere: sql`excluded.observed_at >= ${tdIdeologyEvidence.observedAt}`,
+          })
+          .returning({ id: tdIdeologyEvidence.id })
+      : await insert.onConflictDoNothing().returning({ id: tdIdeologyEvidence.id });
+  return written.length > 0;
+}
+
+/** Delete every evidence row of one source; with `dryRun`, only count them. */
+export async function deleteTdEvidenceBySource(source: EvidenceSource, dryRun: boolean, database: Db = db): Promise<number> {
+  const where = eq(tdIdeologyEvidence.source, source);
+  if (dryRun) {
+    const [row] = await database.select({ n: sql<number>`count(*)::int` }).from(tdIdeologyEvidence).where(where);
+    return Number(row?.n ?? 0);
+  }
+  const deleted = await database.delete(tdIdeologyEvidence).where(where).returning({ id: tdIdeologyEvidence.id });
+  return deleted.length;
 }
 
 export async function listTdEvidence(tdId: number, database: Db = db): Promise<TdIdeologyEvidenceRow[]> {
   return database.select().from(tdIdeologyEvidence).where(eq(tdIdeologyEvidence.tdId, tdId));
+}
+
+export interface EvidenceSummary {
+  bySource: EvidenceCounts;
+  /** Dimensions at least one row speaks to. Same as support > 0: weight > 0 by CHECK, decay > 0. */
+  measured: IdeologyDimension[];
+}
+
+/** Per TD (one TD with `tdId`): evidence rows per source and the dimensions they measure. One grouped query. */
+export async function evidenceSummary(tdId?: number, database: Db = db): Promise<Map<number, EvidenceSummary>> {
+  const perDimension = Object.fromEntries(
+    IDEOLOGY_DIMENSIONS.map((d) => [d, sql<number>`count(${tdIdeologyEvidence[d]})::int`]),
+  ) as Record<IdeologyDimension, SQL<number>>;
+  const rows = await database
+    .select({ tdId: tdIdeologyEvidence.tdId, source: tdIdeologyEvidence.source, n: sql<number>`count(*)::int`, ...perDimension })
+    .from(tdIdeologyEvidence)
+    .where(tdId === undefined ? undefined : eq(tdIdeologyEvidence.tdId, tdId))
+    .groupBy(tdIdeologyEvidence.tdId, tdIdeologyEvidence.source);
+  const byTd = new Map<number, { bySource: EvidenceCounts; dims: Set<IdeologyDimension> }>();
+  for (const row of rows) {
+    const entry = byTd.get(row.tdId) ?? { bySource: {}, dims: new Set<IdeologyDimension>() };
+    entry.bySource[row.source as EvidenceSource] = row.n;
+    for (const d of IDEOLOGY_DIMENSIONS) if (row[d] > 0) entry.dims.add(d);
+    byTd.set(row.tdId, entry);
+  }
+  return new Map(
+    Array.from(byTd, ([id, { bySource, dims }]) => [id, { bySource, measured: IDEOLOGY_DIMENSIONS.filter((d) => dims.has(d)) }]),
+  );
 }
 
 // --- profiles --------------------------------------------------------------

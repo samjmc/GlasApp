@@ -24,7 +24,7 @@ import type { QuestionCandidate } from './selection';
 const asDimension = (value: string | null): IdeologyDimension | null =>
   value !== null && (IDEOLOGY_DIMENSIONS as readonly string[]).includes(value) ? (value as IdeologyDimension) : null;
 
-const vectorOf = (option: PolicyQuestionOptionRow): OptionVector => ({
+export const vectorOf = (option: PolicyQuestionOptionRow): OptionVector => ({
   economic: option.economic,
   social: option.social,
   cultural: option.cultural,
@@ -121,6 +121,12 @@ async function withOptions(questions: PolicyQuestionRow[], database: Db): Promis
 export async function questionsForArticles(articleIds: number[], database: Db = db): Promise<QuestionWithOptions[]> {
   if (articleIds.length === 0) return [];
   const questions = await database.select().from(policyQuestions).where(inArray(policyQuestions.articleId, articleIds));
+  return withOptions(questions, database);
+}
+
+export async function questionsByIds(questionIds: number[], database: Db = db): Promise<QuestionWithOptions[]> {
+  if (questionIds.length === 0) return [];
+  const questions = await database.select().from(policyQuestions).where(inArray(policyQuestions.id, questionIds));
   return withOptions(questions, database);
 }
 
@@ -318,7 +324,8 @@ export async function sessionVoteVectors(
   const rows = await database
     .select({ option: policyQuestionOptions })
     .from(policyVotes)
-    .innerJoin(dailySessionItems, eq(dailySessionItems.id, policyVotes.sessionItemId))
+    // By question, as sessionItems() does: a vote cast on the article page has no session item.
+    .innerJoin(dailySessionItems, eq(dailySessionItems.questionId, policyVotes.questionId))
     .innerJoin(
       policyQuestionOptions,
       and(eq(policyQuestionOptions.questionId, policyVotes.questionId), eq(policyQuestionOptions.optionKey, policyVotes.optionKey)),
@@ -352,8 +359,8 @@ export async function regionTotals(
   const [row] = await database
     .select(sums)
     .from(policyVotes)
-    .innerJoin(dailySessionItems, eq(dailySessionItems.id, policyVotes.sessionItemId))
-    .innerJoin(dailySessions, eq(dailySessions.id, dailySessionItems.sessionId))
+    .innerJoin(dailySessionItems, eq(dailySessionItems.questionId, policyVotes.questionId))
+    .innerJoin(dailySessions, and(eq(dailySessions.id, dailySessionItems.sessionId), eq(dailySessions.userId, policyVotes.userId)))
     .innerJoin(
       policyQuestionOptions,
       and(eq(policyQuestionOptions.questionId, policyVotes.questionId), eq(policyQuestionOptions.optionKey, policyVotes.optionKey)),
@@ -384,14 +391,6 @@ export async function upsertVote(
         updatedAt: new Date(),
       },
     });
-}
-
-export async function deleteVote(userId: string, questionId: number, database: Db = db): Promise<boolean> {
-  const deleted = await database
-    .delete(policyVotes)
-    .where(and(eq(policyVotes.userId, userId), eq(policyVotes.questionId, questionId)))
-    .returning({ id: policyVotes.id });
-  return deleted.length > 0;
 }
 
 export async function tallies(questionIds: number[], database: Db = db): Promise<Map<number, QuestionTally>> {

@@ -123,10 +123,20 @@ describe('requireAdmin', () => {
 
   it('grants admin by email allowlist without an app_metadata role', async () => {
     process.env.ADMIN_EMAILS = 'boss@example.com, other@example.com';
-    state.user = { ...SUPA_USER, email: 'BOSS@example.com' };
+    state.user = { ...SUPA_USER, email: 'BOSS@example.com', email_confirmed_at: '2026-01-01T00:00:00Z' };
     let called = false;
     await auth.requireAdmin(mockReq({ authorization: 'Bearer good' }), mockRes(), () => { called = true; });
     expect(called).toBe(true);
+  });
+
+  it('does not grant admin to an allowlisted email that is not confirmed', async () => {
+    process.env.ADMIN_EMAILS = 'boss@example.com';
+    state.user = { ...SUPA_USER, email: 'boss@example.com', email_confirmed_at: null };
+    const res = mockRes();
+    let called = false;
+    await auth.requireAdmin(mockReq({ authorization: 'Bearer good' }), res, () => { called = true; });
+    expect(called).toBe(false);
+    expect(res.statusCode).toBe(403);
   });
 });
 

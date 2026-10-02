@@ -404,6 +404,8 @@ const QuizPage: React.FC = () => {
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.18 }}
                 className="flex flex-col gap-6"
+                data-testid="quiz-question"
+                data-question-id={currentQuestion.id}
               >
                 <h2 className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-[34px]">
                   {currentQuestion.text}
@@ -419,6 +421,8 @@ const QuizPage: React.FC = () => {
                         type="button"
                         role="radio"
                         aria-checked={isSelected}
+                        data-testid="quiz-answer"
+                        data-answer-index={index}
                         onClick={() => handleAnswerSelect(index)}
                         className={cn(
                           "flex items-start gap-4 rounded-xl border-2 p-4 text-left transition-colors active:scale-[0.99] sm:p-5",

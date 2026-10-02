@@ -1,5 +1,5 @@
 /**
- * Home page news feed: today's biggest story, then the paged feed with its sort options.
+ * Home page news feed: today's top story, then the paged feed with its sort options.
  * (Rankings live on /rankings, personal rankings on /my-politics, the map on /constituencies.)
  */
 
@@ -9,7 +9,7 @@ import { AlertCircle, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { queryKeys } from '@/lib/queryKeys';
 import type { FeedArticle } from '@/lib/news';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
-import { TodaysBiggestImpact } from '@/components/TodaysBiggestImpact';
+import { TodaysTopStory } from '@/components/TodaysTopStory';
 import { EmptyNewsFeedState } from '@/components/onboarding/EmptyStates';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { Segmented } from '@/components/pulse/Segmented';
@@ -17,10 +17,10 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
-type SortBy = 'recent' | 'score';
+type SortBy = 'recent' | 'top';
 
 const SORTS: { value: SortBy; label: string }[] = [
-  { value: 'score', label: 'Top impact' },
+  { value: 'top', label: 'Top stories' },
   { value: 'recent', label: 'Latest' },
 ];
 
@@ -39,7 +39,7 @@ function pageList(page: number, totalPages: number): (number | '…')[] {
 
 /** The home page news section. */
 export function HomePageTabs() {
-  const [sortBy, setSortBy] = useState<SortBy>('score');
+  const [sortBy, setSortBy] = useState<SortBy>('top');
   const [page, setPage] = useState(1);
 
   const { data: articles, isLoading, isFetching, error, refetch } = useQuery({
@@ -81,7 +81,7 @@ export function HomePageTabs() {
         <Segmented label="Sort news" options={SORTS} value={sortBy} onChange={handleSortChange} size="sm" />
       </div>
 
-      <TodaysBiggestImpact />
+      <TodaysTopStory />
 
       {error ? (
         <EmptyState

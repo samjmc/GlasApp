@@ -1,5 +1,18 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { PHONE_CODE_DIGITS, PHONE_CODE_MAX_ATTEMPTS, PHONE_CODE_MINUTES, PHONE_E164, checkCode, hashCode, issueCode } from './phone';
+import {
+  PHONE_CODE_DIGITS,
+  PHONE_CODE_MAX_ATTEMPTS,
+  PHONE_CODE_MINUTES,
+  PHONE_E164,
+  PHONE_RESEND_SECONDS,
+  checkCode,
+  generateCode,
+  hashCode,
+  issueCode,
+  issuedRecently,
+} from './phone';
 
 const NOW = new Date('2026-09-25T12:00:00Z');
 
@@ -41,6 +54,37 @@ describe('checkCode', () => {
   it('says so when no code was ever issued', () => {
     expect(checkCode('user-a', stored({ hash: null }), '123456', NOW)).toBe('no_code');
     expect(checkCode('user-a', stored({ expires: null }), '123456', NOW)).toBe('no_code');
+  });
+});
+
+describe('generateCode', () => {
+  it('draws every digit and does not repeat itself', () => {
+    const codes = Array.from({ length: 500 }, () => generateCode());
+    expect(codes.every((c) => /^\d{6}$/.test(c))).toBe(true);
+    expect(new Set(codes.join('')).size).toBe(10);
+    expect(new Set(codes).size).toBeGreaterThan(490);
+  });
+
+  it('uses the CSPRNG, not Math.random', () => {
+    // Comments stripped: the source names Math.random to say why it is not used.
+    const src = fs.readFileSync(path.join(__dirname, 'phone.ts'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+    expect(src).toMatch(/\brandomInt\(/);
+    expect(src).not.toMatch(/\bMath\.random\b/);
+  });
+});
+
+describe('issuedRecently', () => {
+  const at = (issuedAt: Date) => ({
+    phoneCodeHash: 'h',
+    phoneCodeExpiresAt: new Date(issuedAt.getTime() + PHONE_CODE_MINUTES * 60_000),
+    phoneCodeAttempts: 0,
+  });
+  it('is true inside the resend window and false after it', () => {
+    expect(issuedRecently(at(NOW), new Date(NOW.getTime() + (PHONE_RESEND_SECONDS - 1) * 1000))).toBe(true);
+    expect(issuedRecently(at(NOW), new Date(NOW.getTime() + PHONE_RESEND_SECONDS * 1000))).toBe(false);
+  });
+  it('is false when no code is waiting', () => {
+    expect(issuedRecently({ phoneCodeHash: null, phoneCodeExpiresAt: null, phoneCodeAttempts: 0 }, NOW)).toBe(false);
   });
 });
 

@@ -1,6 +1,6 @@
 /**
  * AI narrative for a quiz result: the two analyses the results page shows.
- * Mounted at /api/ai and /api/enhanced-profile. Positions follow shared/ideology.ts.
+ * Mounted at /api/enhanced-profile. Positions follow shared/ideology.ts.
  */
 
 import { Router } from "express";

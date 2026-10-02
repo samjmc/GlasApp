@@ -1,6 +1,6 @@
 /**
- * TD profile (/td/:name): hero band with the overall score and ranks, the three score
- * pillars, the Dáil record, and tabs for votes, debates, news and background.
+ * TD profile (/td/:name): hero band with the overall score and ranks, the four facts the
+ * score is built from, the Dáil record, and tabs for votes, debates, news and background.
  */
 
 import { useState, type ReactNode } from 'react';
@@ -9,15 +9,14 @@ import { useQuery } from '@tanstack/react-query';
 import {
   Briefcase,
   ChevronLeft,
+  ClipboardList,
+  Euro,
   ExternalLink,
   FileText,
   MessageSquare,
-  Minus,
   Newspaper,
   SearchX,
   Share2,
-  TrendingDown,
-  TrendingUp,
   UserRound,
   Users,
   Vote,
@@ -33,69 +32,30 @@ import { PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { VoteChip } from '@/components/pulse/VoteChip';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
+import { TdPositionsOnRecord } from '@/components/TdPositionsOnRecord';
+import { TdIdeologyCard } from '@/components/TdIdeologyCard';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
 import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
+import { formatScore } from '@/lib/score';
 import { cn } from '@/lib/utils';
+import { INTEREST_CATEGORIES } from '@shared/parliamentApi';
 import type {
+  AbsenceKind,
+  OfficeKind,
   TdParliamentSummary,
   TdVote,
   TdDebateContribution,
   TdCommittee,
   TdBill,
   TdQuestionTopic,
+  TdInterests,
+  TdAllowances,
 } from '@shared/parliamentApi';
+import type { TdProfile } from '@shared/scoresApi';
 import type { FeedArticle } from '@/lib/news';
-
-type ScoreDimension = 'transparency' | 'effectiveness' | 'integrity' | 'consistency';
-
-/** `GET /api/scores/td/:name` payload (the `data` field). */
-interface TDProfile {
-  id: number;
-  name: string;
-  party: string | null;
-  constituency: string | null;
-  imageUrl: string | null;
-  gender: string | null;
-  overallScore: number | null;
-  label: string | null;
-  overallElo: number;
-  newsScore: number | null;
-  parliamentaryScore: number | null;
-  debateScore: number | null;
-  nationalRank: number | null;
-  partyRank: number | null;
-  constituencyRank: number | null;
-  eloChange7d: number;
-  eloChange30d: number;
-  totalStories: number;
-  lastScoredAt: string | null;
-  memberCode: string | null;
-  bio: string | null;
-  offices: { title: string; since?: string }[];
-  committees: string[];
-  questions: { oral: number | null; written: number | null };
-  attendancePct: number | null;
-  dimensions: Record<ScoreDimension, { elo: number; score: number }>;
-  baseline: {
-    summary: string | null;
-    category: string | null;
-    confidence: number | string | null;
-    keyFindings: string[];
-    researchDate: string | null;
-  } | null;
-  recentArticles: {
-    articleId: number;
-    impact: number;
-    storyType: string | null;
-    sentiment: string | null;
-    reasoning: string | null;
-    needsReview: boolean;
-    at: string;
-  }[];
-}
 
 type ApiEnvelope<T> = { success: true; data: T; meta?: { total: number } };
 
@@ -133,12 +93,76 @@ function humanise(value: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+/** A full-term backbencher's full-marks benchmarks, as in server/scoring/weights.ts. */
+const FULL_ATTENDANCE_BENCHMARK = 95;
+const FULL_QUESTIONS_BENCHMARK = 200;
+
+/** Offices whose holders are not expected to ask parliamentary questions. */
+const QUESTION_EXEMPT_OFFICES: readonly OfficeKind[] = ['cabinet', 'minister_of_state', 'ceann_comhairle'];
+
+const ABSENCE_LABELS: Record<AbsenceKind, string> = {
+  parental_leave: 'Parental leave',
+  medical_leave: 'Medical leave',
+  bereavement: 'Bereavement',
+  other_leave: 'Leave',
+};
+
+/** Cents as euro: "€1,234.56". */
+function euro(cents: number): string {
+  return (cents / 100).toLocaleString('en-IE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
+/** A first-of-month date as "Aug 2026". */
+function formatMonth(value: string): string {
+  return formatIsoDate(value, { month: 'short', year: 'numeric' });
+}
+
+/** Why some divisions or questions are not counted for this TD: only the notes that apply. */
+function fairnessNotes(s: TdParliamentSummary): string[] {
+  const notes: string[] = [];
+  const divisions = (n: number) => `${num(n)} ${n === 1 ? 'division' : 'divisions'}`;
+  const isAre = (n: number) => (n === 1 ? 'is' : 'are');
+  if (s.divisionsChaired !== null && s.divisionsChaired > 0) {
+    notes.push(`${divisions(s.divisionsChaired)} in the chair ${isAre(s.divisionsChaired)} not counted (the chair cannot vote).`);
+  }
+  if (s.divisionsExcused !== null && s.divisionsExcused > 0) {
+    notes.push(`${divisions(s.divisionsExcused)} during documented leave ${isAre(s.divisionsExcused)} not counted.`);
+  }
+  if (s.attendanceBenchmark !== null && s.attendanceBenchmark < FULL_ATTENDANCE_BENCHMARK) {
+    notes.push(
+      `Full marks for votes at ${s.attendanceBenchmark}%: time in a leadership role (government office or party leader, on either side) has its own benchmark.`,
+    );
+  }
+  const exempt = s.officeHistory.filter((o) => QUESTION_EXEMPT_OFFICES.includes(o.type));
+  const wasChair = s.isPresiding || exempt.some((o) => o.type === 'ceann_comhairle');
+  if (!s.questionsComplete) notes.push('Some months of questions are not loaded yet, so the question count may be low.');
+  if (s.questionsExpected === null) {
+    if (wasChair) notes.push('Not scored on questions: the Ceann Comhairle chairs the Dáil.');
+    else if (exempt.length > 0) notes.push('Not scored on questions: members of government answer questions, they do not ask them.');
+  } else if (s.questionsExpected < FULL_QUESTIONS_BENCHMARK) {
+    const expected = `Expected ${num(Math.round(s.questionsExpected))} questions`;
+    notes.push(
+      exempt.length === 0
+        ? `${expected}, pro-rated to the time they were expected to ask.`
+        : wasChair
+          ? `${expected}, for the time outside the chair.`
+          : `${expected}, for the time outside government office.`
+    );
+  }
+  return notes;
+}
+
 export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
   const { toast } = useToast();
 
-  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TDProfile>({
-    queryKey: ['td-profile-v3', name],  // v3: payload shape changed with /api/scores
+  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile>({
+    queryKey: ['td-profile-v4', name],  // v4: the score is built from Oireachtas facts only
     queryFn: async () => {
       const res = await fetch(`/api/scores/td/${encodeURIComponent(name || '')}`);
       if (!res.ok) {
@@ -147,7 +171,7 @@ export default function TDProfilePageEnhanced() {
         throw new Error('Failed to load TD profile');
       }
       const json = await res.json();
-      return json.data as TDProfile;
+      return json.data as TdProfile;
     },
     enabled: !!name,
     retry: (failureCount, error) => {
@@ -249,6 +273,35 @@ export default function TDProfilePageEnhanced() {
     staleTime: 5 * 60 * 1000
   });
   const tdQuestionTopics = tdQuestionTopicsResp?.data ?? [];
+
+  // Both return `data: null` (not 404) when nothing is stored for this TD yet.
+  const {
+    data: tdInterestsResp,
+    isLoading: tdInterestsLoading,
+    isError: tdInterestsError,
+    refetch: refetchInterests,
+    isFetching: tdInterestsFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdInterests(tdId ?? 0),
+    queryFn: () => getParliament<TdInterests | null>(`/api/parliament/tds/${tdId}/interests`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdInterests = tdInterestsResp?.data ?? null;
+
+  const {
+    data: tdAllowancesResp,
+    isLoading: tdAllowancesLoading,
+    isError: tdAllowancesError,
+    refetch: refetchAllowances,
+    isFetching: tdAllowancesFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdAllowances(tdId ?? 0),
+    queryFn: () => getParliament<TdAllowances | null>(`/api/parliament/tds/${tdId}/allowances`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdAllowances = tdAllowancesResp?.data ?? null;
 
   // Recent news articles for this TD
   const { data: newsArticles = [], isLoading: newsLoading } = useQuery({
@@ -357,25 +410,43 @@ export default function TDProfilePageEnhanced() {
     score.constituencyRank !== null && score.constituency && `#${score.constituencyRank} in ${score.constituency}`,
   ].filter((chip): chip is string => Boolean(chip));
 
-  const pillars = [
-    { label: 'Dáil record', value: score.parliamentaryScore, sub: 'Questions, votes, committees' },
-    { label: 'Debate', value: score.debateScore, sub: 'Dáil debates' },
+  const { components, facts } = score;
+  // A NULL component was not expected of this TD (or cannot be measured): it is left out of
+  // the score, never counted as 0.
+  const notApplicable = <span className="text-lg text-muted-foreground">Not applicable</span>;
+  const factTiles: { label: string; value: ReactNode; sub: string; note?: string }[] = [
     {
-      label: 'News',
-      value: score.newsScore,
-      sub: `${score.totalStories} ${score.totalStories === 1 ? 'story' : 'stories'}`,
+      label: 'Questions',
+      value: components.questions === null ? notApplicable : num(components.questions),
+      sub: `${num(facts.questions.oral)} oral · ${num(facts.questions.written)} written`,
+    },
+    {
+      label: 'Dáil votes',
+      value: components.attendance === null ? notApplicable : pct(components.attendance),
+      sub: `${num(facts.votes.cast)} of ${num(facts.votes.divisionsEligible)} divisions`,
+      note: 'Pairing is not published, so a paired absence counts as a missed vote.',
+    },
+    {
+      label: 'Committees',
+      value: components.committees === null ? notApplicable : pct(components.committees),
+      sub: `${num(facts.committees.sittingsAttended)} of ${num(facts.committees.sittingsEligible)} sittings`,
+    },
+    {
+      label: 'Debate',
+      value: components.debate === null ? notApplicable : `${components.debate} / 100`,
+      sub: `Spoke in ${num(facts.debate.sectionsSpoken)} debates over ${num(facts.debate.sittingDays)} sitting days`,
+      note: 'Per sitting day, against the TD at the 75th percentile, who scores 100.',
     },
   ];
-  const unscored = pillars.filter((p) => p.value === null).map((p) => p.label);
 
   // The parliament feed is the source of truth; the score payload fills gaps while it loads or fails.
   const summary = parliamentSummary;
-  const questionsOral = summary?.questionsOral ?? score.questions?.oral ?? null;
-  const questionsWritten = summary?.questionsWritten ?? score.questions?.written ?? null;
+  const questionsOral = summary?.questionsOral ?? facts.questions.oral;
+  const questionsWritten = summary?.questionsWritten ?? facts.questions.written;
   const questionsTotal =
     questionsOral === null && questionsWritten === null ? null : (questionsOral ?? 0) + (questionsWritten ?? 0);
-  const attendance = summary?.attendancePct ?? score.attendancePct;
-  const isPresiding = summary?.isPresiding ?? false;
+  const attendance = summary?.attendancePct ?? components.attendance;
+  const isPresiding = summary?.isPresiding ?? score.isPresiding;
   const offices: { title: string; since?: string | null }[] = summary?.offices ?? score.offices;
 
   const stats: { label: string; value: ReactNode; sub?: string; bar?: number | null }[] = [
@@ -416,6 +487,15 @@ export default function TDProfilePageEnhanced() {
   const topQuestionTopics = tdQuestionTopics.slice(0, 8);
   const maxQuestionTopicTotal = topQuestionTopics.reduce((max, t) => Math.max(max, t.oral + t.written), 0);
 
+  const recordNotes = summary ? fairnessNotes(summary) : [];
+  const absences = summary?.absences ?? [];
+
+  // Declared categories get a row each; the ones with nothing declared share one muted line.
+  const interestCategories = (tdInterests?.categories ?? []).slice().sort((a, b) => a.number - b.number);
+  const interestLabel = (n: number) => INTEREST_CATEGORIES[n] ?? `Category ${n}`;
+  const declaredInterests = interestCategories.filter((c) => c.declared !== null);
+  const undeclaredInterests = interestCategories.filter((c) => c.declared === null).map((c) => interestLabel(c.number));
+
   const committeeList = (
     <CommitteeList
       committees={tdCommittees}
@@ -426,7 +506,6 @@ export default function TDProfilePageEnhanced() {
     />
   );
 
-  const articleById = new Map(newsArticles.map((a) => [a.id, a]));
   const pollSupport = partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null;
   const pollChange = partyPolling?.support_30d_change ? parseFloat(partyPolling.support_30d_change) : null;
 
@@ -525,12 +604,18 @@ export default function TDProfilePageEnhanced() {
                     {chip}
                   </span>
                 ))
+              ) : score.isPresiding ? (
+                <span className="inline-flex min-h-8 items-center rounded-full bg-hero-muted px-3 py-1 text-[13px] font-semibold">
+                  Holds the chair, so not ranked
+                </span>
               ) : (
-                <span className="text-[13px] text-hero-soft">Not ranked yet</span>
+                <span className="text-[13px] text-hero-soft">
+                  {score.computedAt ? 'Not ranked: fewer than 2 of the 4 measures apply' : 'Not ranked yet'}
+                </span>
               )}
             </div>
             <span className="text-[13px] text-hero-soft">
-              {score.lastScoredAt ? `Scored ${formatDay(score.lastScoredAt)}` : 'Not scored yet'}
+              {score.computedAt ? `Scored ${formatDay(score.computedAt)}` : 'Not scored yet'}
             </span>
           </div>
         </div>
@@ -539,36 +624,50 @@ export default function TDProfilePageEnhanced() {
       {/* Pillars and Dáil record */}
       <div className="grid grid-cols-[minmax(0,1fr)] gap-4 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <Card className="flex flex-col gap-4 p-5 sm:p-6">
-          <div className="flex items-baseline justify-between gap-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
             <h2 className="font-display text-xl font-bold tracking-tight">Score breakdown</h2>
-            <span className="text-[13px] text-muted-foreground">3 pillars</span>
+            <span className="text-[13px] text-muted-foreground">From the Oireachtas record</span>
           </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-3">
-            {pillars.map((p) =>
-              p.value === null ? (
-                <div
-                  key={p.label}
-                  className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-input px-1 py-4 text-center"
-                >
-                  <ScoreRing value={null} size={72} label={p.label} />
-                  <span className="text-[13px] font-bold text-muted-foreground">{p.label}</span>
-                  <span className="text-xs text-muted-foreground">Not scored yet</span>
-                </div>
-              ) : (
-                <div key={p.label} className="flex flex-col items-center gap-2 rounded-xl bg-elevated px-1 py-4 text-center">
-                  <ScoreRing value={p.value} size={72} label={p.label} />
-                  <span className="text-[13px] font-bold">{p.label}</span>
-                  <span className="text-xs text-muted-foreground">{p.sub}</span>
-                </div>
-              )
-            )}
-          </div>
-          {unscored.length > 0 && unscored.length < pillars.length && (
+          {score.isPresiding && (
             <p className="text-[13px] leading-relaxed text-muted-foreground">
-              {unscored.join(' and ')} {unscored.length === 1 ? 'is' : 'are'} not scored yet, so the overall score
-              is the weighted mean of the other pillars.
+              Holds the chair. The Ceann Comhairle presides rather than votes, asks questions or debates, so this TD
+              is not scored or ranked.
             </p>
           )}
+          <div className="grid grid-cols-2 gap-3">
+            {factTiles.map((t) => (
+              <StatTile
+                key={t.label}
+                label={t.label}
+                value={t.value}
+                sub={
+                  <>
+                    {t.sub}
+                    {t.note && <span className="mt-1 block text-xs">{t.note}</span>}
+                  </>
+                }
+                className="border-0 bg-elevated"
+              />
+            ))}
+          </div>
+          <p className="text-[13px] leading-relaxed text-muted-foreground">
+            Dáil record {formatScore(score.pillars.parliamentary)} · Debate {formatScore(score.pillars.debate)}. A
+            measure that does not apply is left out, never counted as 0.
+            {facts.recordUrl && (
+              <>
+                {' '}
+                <a
+                  href={facts.recordUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-foreground underline underline-offset-4 hover:text-primary"
+                >
+                  Check the record on oireachtas.ie
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </>
+            )}
+          </p>
         </Card>
 
         <Card className="flex flex-col gap-4 p-5 sm:p-6">
@@ -593,6 +692,27 @@ export default function TDProfilePageEnhanced() {
                   </StatTile>
                 ))}
               </div>
+              {(recordNotes.length > 0 || absences.length > 0) && (
+                <ul className="flex flex-col gap-1.5 text-[13px] leading-relaxed text-muted-foreground">
+                  {recordNotes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                  {absences.map((a) => (
+                    <li key={`${a.from}-${a.reason}`}>
+                      On leave {formatIsoDate(a.from)} – {a.to ? formatIsoDate(a.to) : 'ongoing'} · {ABSENCE_LABELS[a.reason]} ·{' '}
+                      <a
+                        href={a.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[44px] items-center gap-1 font-semibold underline underline-offset-4 transition-colors hover:text-foreground sm:min-h-0"
+                      >
+                        Source
+                        <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {parliamentSummaryError && (
                 <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
                   <span>Could not load the full Dáil record.</span>
@@ -609,6 +729,8 @@ export default function TDProfilePageEnhanced() {
           )}
         </Card>
       </div>
+
+      <TdPositionsOnRecord tdId={tdId} />
 
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         {/* Tabs */}
@@ -745,56 +867,6 @@ export default function TDProfilePageEnhanced() {
           </TabsContent>
 
           <TabsContent value="news" className="mt-0 flex flex-col gap-4">
-            {score.recentArticles.length > 0 && (
-              <Card className="flex flex-col gap-4 p-5 sm:p-6">
-                <div className="flex flex-col gap-1">
-                  <h2 className="font-display text-xl font-bold tracking-tight">Effect on score</h2>
-                  <span className="text-[13px] text-muted-foreground">
-                    {score.totalStories} {score.totalStories === 1 ? 'story has' : 'stories have'} been scored. The most recent:
-                  </span>
-                </div>
-                <ul className="flex flex-col gap-2">
-                  {score.recentArticles.map((a) => {
-                    const article = articleById.get(a.articleId);
-                    return (
-                      <li key={a.articleId} className="flex items-start gap-3 rounded-xl bg-elevated p-4">
-                        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                          {article && (
-                            <a
-                              href={article.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-start gap-1.5 rounded-sm text-[15px] font-bold leading-snug transition-colors hover:text-primary"
-                            >
-                              {article.title}
-                              <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                            </a>
-                          )}
-                          <div className="flex flex-wrap gap-1.5">
-                            {a.storyType && <Badge variant="secondary">{humanise(a.storyType)}</Badge>}
-                            {a.sentiment && <Badge variant="outline">{humanise(a.sentiment)}</Badge>}
-                            {a.needsReview && <Badge variant="warn">Needs review</Badge>}
-                          </div>
-                          {a.reasoning && <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{a.reasoning}</p>}
-                          <span className="text-xs text-muted-foreground">{formatDay(a.at)}</span>
-                        </div>
-                        <span
-                          className={cn(
-                            'shrink-0 font-display text-lg font-bold',
-                            a.impact > 0 ? 'text-score-high' : a.impact < 0 ? 'text-warn' : 'text-muted-foreground'
-                          )}
-                          aria-label={`Score effect ${a.impact}`}
-                        >
-                          {a.impact > 0 ? '+' : ''}
-                          {a.impact}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Card>
-            )}
-
             <section className="flex flex-col gap-3" aria-labelledby="td-news-heading">
               <h2 id="td-news-heading" className="font-display text-xl font-bold tracking-tight">
                 In the news
@@ -907,20 +979,7 @@ export default function TDProfilePageEnhanced() {
             </ul>
           </Card>
 
-          <Card className="flex flex-col gap-3 p-5">
-            <h2 className="font-display text-lg font-bold tracking-tight">Score trend</h2>
-            <dl className="flex flex-col gap-2">
-              <TrendRow label="Last 7 days" change={score.eloChange7d} />
-              <TrendRow label="Last 30 days" change={score.eloChange30d} />
-              <div className="flex items-center justify-between gap-3 text-sm">
-                <dt className="text-muted-foreground">Current Elo</dt>
-                <dd className="font-display text-lg font-bold">{num(score.overallElo)}</dd>
-              </div>
-            </dl>
-            <p className="text-[13px] text-muted-foreground">
-              {score.lastScoredAt ? `Last scored ${formatDay(score.lastScoredAt)}` : 'No stories scored yet.'}
-            </p>
-          </Card>
+          <TdIdeologyCard tdId={tdId} />
 
           <Card className="hidden flex-col gap-3 p-5 lg:flex">
             {committeeList}
@@ -1011,6 +1070,102 @@ export default function TDProfilePageEnhanced() {
             )}
           </Card>
 
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+              <ClipboardList className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              Register of interests{tdInterests ? ` (${tdInterests.year})` : ''}
+            </h2>
+            {tdInterestsLoading ? (
+              <div className="flex flex-col gap-2">
+                {[0, 1].map((i) => (
+                  <Skeleton key={i} className="h-16 rounded-xl" />
+                ))}
+              </div>
+            ) : tdInterestsError ? (
+              <SideCardError
+                message="Could not load the register of interests."
+                onRetry={() => refetchInterests()}
+                retrying={tdInterestsFetching}
+              />
+            ) : !tdInterests ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">Not in the published register yet.</p>
+            ) : (
+              <>
+                {declaredInterests.length > 0 && (
+                  <dl className="flex flex-col gap-2">
+                    {declaredInterests.map((c) => (
+                      <div key={c.number} className="flex min-w-0 flex-col gap-1 rounded-xl bg-elevated p-3">
+                        <dt className="text-sm font-bold leading-snug">{interestLabel(c.number)}</dt>
+                        <dd className="whitespace-pre-line break-words text-sm leading-relaxed">{c.declared}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {undeclaredInterests.length > 0 && (
+                  <p className="text-[13px] leading-relaxed text-muted-foreground">
+                    Nothing declared: {undeclaredInterests.join(', ')}
+                  </p>
+                )}
+                <a
+                  href={tdInterests.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-sm text-[13px] font-semibold text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground sm:min-h-0"
+                >
+                  Source (PDF)
+                  <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                </a>
+              </>
+            )}
+          </Card>
+
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+              <Euro className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              Allowances (PSA)
+            </h2>
+            {tdAllowancesLoading ? (
+              <div className="flex flex-col gap-2">
+                {[0, 1].map((i) => (
+                  <Skeleton key={i} className="h-12 rounded-xl" />
+                ))}
+              </div>
+            ) : tdAllowancesError ? (
+              <SideCardError message="Could not load allowances." onRetry={() => refetchAllowances()} retrying={tdAllowancesFetching} />
+            ) : !tdAllowances ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">Not published yet.</p>
+            ) : (
+              <>
+                <div className="flex flex-col gap-1">
+                  <span className="font-display text-3xl font-bold tracking-tight">{euro(tdAllowances.totalCents)}</span>
+                  <span className="text-[13px] text-muted-foreground">
+                    {tdAllowances.months.length} {tdAllowances.months.length === 1 ? 'month' : 'months'} paid,{' '}
+                    {formatMonth(tdAllowances.from)} – {formatMonth(tdAllowances.to)}
+                  </span>
+                </div>
+                {tdAllowances.months.length > 0 && (
+                  <dl className="flex flex-col gap-1">
+                    {tdAllowances.months.slice(0, 3).map((m) => (
+                      <div key={m.month} className="flex items-center justify-between gap-3 rounded-lg bg-elevated px-3 py-2 text-sm">
+                        <dt className="text-muted-foreground">{formatMonth(m.month)}</dt>
+                        <dd className="font-semibold">{euro(m.amountCents)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {tdAllowances.unpublishedMonths.length > 0 && (
+                  <p className="text-[13px] leading-relaxed text-muted-foreground">
+                    Not published by the Oireachtas yet: {tdAllowances.unpublishedMonths.map(formatMonth).join(', ')}.
+                  </p>
+                )}
+                <p className="text-[13px] leading-relaxed text-muted-foreground">
+                  Parliamentary Standard Allowance: travel and accommodation, and public representation. Published monthly by
+                  the Oireachtas.
+                </p>
+              </>
+            )}
+          </Card>
+
           {score.party && (
             <Card className="flex flex-col gap-3 p-5">
               <h2 className="font-display text-lg font-bold tracking-tight">Party polling</h2>
@@ -1038,25 +1193,6 @@ export default function TDProfilePageEnhanced() {
           )}
         </aside>
       </div>
-    </div>
-  );
-}
-
-function TrendRow({ label, change }: { label: string; change: number }) {
-  const Icon = change > 0 ? TrendingUp : change < 0 ? TrendingDown : Minus;
-  return (
-    <div className="flex items-center justify-between gap-3 text-sm">
-      <dt className="text-muted-foreground">{label}</dt>
-      <dd
-        className={cn(
-          'inline-flex items-center gap-1.5 font-display text-lg font-bold',
-          change > 0 ? 'text-score-high' : change < 0 ? 'text-warn' : 'text-muted-foreground'
-        )}
-      >
-        <Icon className="h-4 w-4" aria-hidden="true" />
-        {change > 0 ? '+' : ''}
-        {change} Elo
-      </dd>
     </div>
   );
 }

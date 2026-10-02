@@ -315,8 +315,10 @@ async function runVisionAgent(imageUrls: string[], articleContext: string) {
         ],
         max_tokens: 500
     }, { operation: 'shadowVision' });
-    
-    return completion.choices[0].message.content;
+
+    const text = completion.choices[0].message.content;
+    if (!text) throw new Error('Vision Analyst returned no text');
+    return text;
 }
 
 async function runLevel3Agent(agentName: string, systemPrompt: string, input: string) {
@@ -334,25 +336,25 @@ async function runLevel3Agent(agentName: string, systemPrompt: string, input: st
         }
     }];
 
-    const messages = [{ role: "system", content: systemPrompt }, { role: "user", content: input }];
+    const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [{ role: "system", content: systemPrompt }, { role: "user", content: input }];
     const completion = await callChatCompletion({
         model: "gpt-4o",
-        messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
+        messages,
         tools: tools as OpenAI.Chat.Completions.ChatCompletionTool[],
         tool_choice: "auto"
     }, { operation: 'shadowLevel3' });
 
     const responseMsg = completion.choices[0].message;
     if (responseMsg.tool_calls) {
-        messages.push(responseMsg as unknown);
+        messages.push(responseMsg);
         for (const toolCall of responseMsg.tool_calls) {
             if (toolCall.function.name === "search_web") {
                 const args = JSON.parse(toolCall.function.arguments);
                 const searchResult = await searchTavily(args.query);
-                messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult } as unknown);
+                messages.push({ role: "tool", tool_call_id: toolCall.id, content: searchResult });
             }
         }
-        const second = await callChatCompletion({ model: "gpt-4o", messages: messages as OpenAI.Chat.Completions.ChatCompletionMessageParam[] }, { operation: 'shadowLevel3Second' });
+        const second = await callChatCompletion({ model: "gpt-4o", messages }, { operation: 'shadowLevel3Second' });
         return second.choices[0].message.content || "No response";
     }
     return responseMsg.content || "No response";
@@ -405,7 +407,8 @@ export async function fetchArticleContent(url: string): Promise<{ title: string,
         const response = await fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-            }
+            },
+            signal: AbortSignal.timeout(15_000),
         });
         const html = await response.text();
         const $ = cheerio.load(html);
@@ -533,34 +536,8 @@ export async function runShadowCabinet(url: string): Promise<CabinetAnalysis | n
     }
 
     // 3. Execution
-    const promises: Promise<unknown>[] = [];
     const reports: AgentReport[] = [];
-
-    const addReport = async (name: string, icon: string, task: Promise<string>) => {
-        try {
-            const content = await task;
-            reports.push({ agentName: name, content, status: "completed", icon });
-        } catch (e) {
-            reports.push({ agentName: name, content: "Failed to analyze.", status: "failed", icon });
-        }
-    };
-
-    if (activeAgents.has("Data Auditor")) addReport("Data Auditor", "📊", runLevel3Agent("Data Auditor", DATA_AUDITOR_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Media Critic")) addReport("Media Critic", "🧐", runStandardAgent("Media Critic", MEDIA_CRITIC_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Vision Analyst") && article.imageUrls.length > 0) addReport("Vision Analyst", "👁️", runVisionAgent(article.imageUrls, article.content));
-    if (activeAgents.has("Paradox Hunter")) addReport("Paradox Hunter", "🧩", runStandardAgent("Paradox Hunter", PARADOX_HUNTER_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Follow-the-Money")) addReport("Follow-the-Money", "💰", runLevel3Agent("Follow-the-Money", FOLLOW_MONEY_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("History Teacher")) addReport("History Teacher", "📜", runLevel3Agent("History Teacher", HISTORY_TEACHER_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Bill Reader")) addReport("Bill Reader", "⚖️", runLevel3Agent("Bill Reader", BILL_READER_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Economist")) addReport("Economist", "📉", runLevel3Agent("Economist", ECONOMIST_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Political Strategist")) addReport("Political Strategist", "♟️", runLevel3Agent("Political Strategist", STRATEGIST_PROMPT, `Analyze: ${article.content}`));
-    if (activeAgents.has("Systems Thinker")) addReport("Systems Thinker", "⚙️", runLevel3Agent("Systems Thinker", SYSTEMS_THINKER_PROMPT, `Analyze: ${article.content}`));
-
-    // Wait for reports to finish BEFORE running Futurist/Editor
-    // (Note: original script ran promises in parallel but waited for them before Futurist)
-    // Since addReport pushes to promises array? No, addReport awaits internally inside the function? 
-    // No, I need to push the promise returned by addReport to a list.
-    
+    // Every agent runs once, in parallel; Futurist and Editor wait for all of them.
     const agentTasks: Promise<void>[] = [];
     
     const taskRunner = async (name: string, icon: string, fn: () => Promise<string>) => {

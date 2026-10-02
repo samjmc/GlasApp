@@ -1,4 +1,5 @@
 import twilio from 'twilio';
+import type { MessageListInstanceCreateOptions } from 'twilio/lib/rest/api/v2010/account/message';
 
 // Initialize Twilio client with credentials from environment variables
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -45,7 +46,7 @@ export async function sendSMS(options: SendSMSOptions): Promise<SMSResponse> {
   }
   
   try {
-    const messageOptions: unknown = {
+    const messageOptions: MessageListInstanceCreateOptions = {
       to: options.to,
       from: fromNumber,
       body: options.body,

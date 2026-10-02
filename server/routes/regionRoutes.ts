@@ -1,31 +1,9 @@
 import { Router } from "express";
 import { updateUserMetadata } from '../auth/supabase';
 import { REGION_COOKIE } from "../middleware/regionMiddleware";
-import {
-  DEFAULT_REGION_CODE,
-  REGION_CONFIGS,
-  REGION_LIST,
-  isRegionCode,
-  type RegionCode,
-} from "@shared/region-config";
+import { REGION_CONFIGS, isRegionCode } from "@shared/region-config";
 
 const router = Router();
-
-router.get("/available", (_req, res) => {
-  res.json({
-    success: true,
-    regions: REGION_LIST,
-  });
-});
-
-router.get("/current", (req, res) => {
-  const regionCode: RegionCode = req.regionCode || DEFAULT_REGION_CODE;
-  res.json({
-    success: true,
-    regionCode,
-    region: REGION_CONFIGS[regionCode],
-  });
-});
 
 // optionalAuth already ran app-wide, so req.user is set when a token was supplied.
 router.post("/select", async (req, res) => {

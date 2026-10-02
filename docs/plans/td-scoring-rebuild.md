@@ -38,6 +38,12 @@ Facts that drive the design:
 
 ## 2a. The scoring model (v1 of the one method)
 
+> **Superseded 2026-09-25** by `docs/plans/facts-only-scoring.md` (Sam's decision): news carries
+> 0% of the score and the model below is no longer what the site shows. The score is built only
+> from Oireachtas facts, parliamentary 0.55 / debate 0.45, with no ELO, no news pillar, no trends
+> and no stored party score. Current model: `docs/scoring.md`. The ELO columns, `td_score_history`
+> and `party_scores` are still in the schema until that plan's migration drops them.
+
 Decisions taken 2026-09-21: **A = build clean, no dump. B = user ratings deleted.** Target project
 is GlasCore (`ihecemdupqnxltdyebsh`), shared with GlasIntelligence. GlasIntelligence owns eleven
 tables in `public` (`profiles`, `projects`, `reports`, `simulations`, …) and references

@@ -119,7 +119,7 @@ run('ingest against Postgres', () => {
   });
 
   beforeEach(async () => {
-    await dbmod.pool.query('truncate politics.news_articles, politics.article_td_scores restart identity cascade');
+    await dbmod.pool.query('truncate politics.news_articles, politics.article_tds restart identity cascade');
     state.feeds.clear();
     state.feedCalls = 0;
     state.page = EMPTY_PAGE;
@@ -152,7 +152,7 @@ run('ingest against Postgres', () => {
     expect(feed.rows.map((r) => ({ id: r.id, alsoReportedBy: r.alsoReportedBy }))).toEqual([
       { id: canonical.id, alsoReportedBy: [{ source: 'The Journal', url: 'https://www.thejournal.ie/budget-division' }] },
     ]);
-    expect((await repo.claimForScoring(10)).map((a) => a.id)).toEqual([canonical.id]);
+    expect((await repo.claimForPipeline(10)).map((a) => a.id)).toEqual([canonical.id]);
 
     // A near-copy of the DUPLICATE's headline links to the root, without an event call.
     state.feeds.set('irish-examiner', [item('irish-examiner', 'https://www.irishexaminer.com/budget', 'TDs back budget package in an overnight division', now)]);

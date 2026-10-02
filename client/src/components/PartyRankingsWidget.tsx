@@ -2,8 +2,8 @@
  * "Party averages": the mean TD score for each party with 10 or more TDs,
  * as bars in party colours (columns on desktop, rows on phone).
  *
- * Built from the full TD list: /api/scores/parties only counts TDs with a stored
- * party score, so its member counts cannot answer "parties with 10+ TDs".
+ * Built from the full TD list, which the home page loads anyway (useAllTDs). An unranked
+ * TD has no overall score and is left out of the mean, not counted as 0.
  */
 
 import { useMemo } from 'react';

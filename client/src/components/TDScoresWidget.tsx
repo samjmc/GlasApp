@@ -16,37 +16,18 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { HomeCard, HomeCardHeader } from '@/components/home/HomeCard';
 import { partyStyle } from '@/lib/parties';
 import { cn } from '@/lib/utils';
+import type { ScoresWidget } from '@shared/scoresApi';
 import { TDQuickInfoModal } from './TDQuickInfoModal';
-
-interface TDRow {
-  id: number;
-  name: string;
-  imageUrl?: string | null;
-  party?: string | null;
-  overallScore?: number | null;
-}
-
-export interface ScoresWidgetData {
-  top: TDRow[];
-  bottom: TDRow[];
-  movers: TDRow[];
-  stats: {
-    totalTds: number;
-    scoredTds: number;
-    storiesAnalysed: number;
-    lastScoredAt: string | null;
-  };
-}
 
 /** Shared query for GET /api/scores/widget (the home hero reads its stats too). */
 export function useScoresWidget() {
-  return useQuery<ScoresWidgetData>({
+  return useQuery<ScoresWidget>({
     queryKey: queryKeys.td.scoresWidget(),
     queryFn: async () => {
       const res = await fetch('/api/scores/widget');
       if (!res.ok) throw new Error('Failed to fetch');
       const json = await res.json();
-      return json.data as ScoresWidgetData;
+      return json.data as ScoresWidget;
     },
     staleTime: 60000,
   });

@@ -10,6 +10,8 @@ interface MultidimensionalIdeologyProfileProps {
   description: string;
   /** Icon buttons shown in the hero band (download, share). */
   actions?: ReactNode;
+  /** Answers per dimension. A 0 shows "Not measured yet"; missing (older results) shows every dimension. */
+  answeredByDimension?: IdeologyVector;
 }
 
 // What each dimension measures. Pole names come from DIMENSION_POLES.
@@ -36,6 +38,7 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
   ideology,
   description,
   actions,
+  answeredByDimension,
 }) => {
   const [expandedDimension, setExpandedDimension] = useState<IdeologyDimension | null>(null);
   const idPrefix = useId();
@@ -72,6 +75,7 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
             const at = toPercent(value);
             const isOpen = expandedDimension === dim;
             const panelId = `${idPrefix}-${dim}`;
+            const notMeasured = answeredByDimension?.[dim] === 0;
             return (
               <li key={dim}>
                 <button
@@ -87,27 +91,39 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
                   <span className="flex items-baseline justify-between gap-2">
                     <span className="flex min-w-0 flex-wrap items-baseline gap-x-2">
                       <span className="text-[15px] font-bold">{poles.label}</span>
-                      <span className="text-[13px] text-muted-foreground">{describePosition(dim, value)}</span>
+                      {notMeasured ? (
+                        <span data-testid="dimension-not-measured" data-dimension={dim} className="text-[13px] text-muted-foreground">
+                          Not measured yet
+                        </span>
+                      ) : (
+                        <span className="text-[13px] text-muted-foreground">{describePosition(dim, value)}</span>
+                      )}
                     </span>
                     <span className="flex items-center gap-1">
-                      <span className="font-display text-lg font-bold tabular-nums">{formatDimensionValue(value)}</span>
+                      {!notMeasured && (
+                        <span className="font-display text-lg font-bold tabular-nums">{formatDimensionValue(value)}</span>
+                      )}
                       <ChevronDown
                         className={cn("h-4 w-4 text-muted-foreground transition-transform duration-200", isOpen && "rotate-180")}
                         aria-hidden="true"
                       />
                     </span>
                   </span>
-                  <span className="relative block h-2.5 rounded-full bg-input" aria-hidden="true">
-                    <span
-                      className="absolute inset-y-0 bg-primary/30"
-                      style={{ left: `${Math.min(at, 50)}%`, width: `${Math.abs(at - 50)}%` }}
-                    />
-                    <span className="absolute -top-[3px] left-1/2 h-4 w-0.5 bg-muted-foreground" />
-                    <span
-                      className="absolute -top-1 h-[18px] w-[18px] -translate-x-1/2 rounded-full border-[3px] border-card bg-primary transition-[left] duration-500"
-                      style={{ left: `${at}%` }}
-                    />
-                  </span>
+                  {notMeasured ? (
+                    <span className="block h-2.5 rounded-full border border-dashed border-input" aria-hidden="true" />
+                  ) : (
+                    <span className="relative block h-2.5 rounded-full bg-input" aria-hidden="true">
+                      <span
+                        className="absolute inset-y-0 bg-primary/30"
+                        style={{ left: `${Math.min(at, 50)}%`, width: `${Math.abs(at - 50)}%` }}
+                      />
+                      <span className="absolute -top-[3px] left-1/2 h-4 w-0.5 bg-muted-foreground" />
+                      <span
+                        className="absolute -top-1 h-[18px] w-[18px] -translate-x-1/2 rounded-full border-[3px] border-card bg-primary transition-[left] duration-500"
+                        style={{ left: `${at}%` }}
+                      />
+                    </span>
+                  )}
                   <span className="flex justify-between text-xs text-muted-foreground">
                     <span>{poles.negative}</span>
                     <span>{poles.positive}</span>
@@ -115,10 +131,16 @@ const MultidimensionalIdeologyProfile: React.FC<MultidimensionalIdeologyProfileP
                 </button>
                 {isOpen && (
                   <p id={panelId} className="mx-2 mb-2 mt-1 rounded-lg bg-elevated p-3 text-sm leading-relaxed">
-                    Your score of {formatDimensionValue(value)}
-                    {value === 0
-                      ? " sits at the centre. "
-                      : ` means you lean toward the ${value > 0 ? poles.positive : poles.negative} side. `}
+                    {notMeasured ? (
+                      "No answers on this dimension yet. "
+                    ) : (
+                      <>
+                        Your score of {formatDimensionValue(value)}
+                        {value === 0
+                          ? " sits at the centre. "
+                          : ` means you lean toward the ${value > 0 ? poles.positive : poles.negative} side. `}
+                      </>
+                    )}
                     {DIMENSION_MEASURES[dim]} −10 is {poles.negative}; +10 is {poles.positive}.
                   </p>
                 )}

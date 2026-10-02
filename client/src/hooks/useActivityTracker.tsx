@@ -74,7 +74,7 @@ export function useActivityTracker() {
     });
   };
 
-  const trackMapInteraction = (interactionType: 'zoom' | 'pan' | 'click', location?: unknown) => {
+  const trackMapInteraction = (interactionType: 'zoom' | 'pan' | 'click', location?: ActivityMetadata['location']) => {
     trackActivity('map_interaction', {
       category: 'geographic_exploration',
       interactionType,

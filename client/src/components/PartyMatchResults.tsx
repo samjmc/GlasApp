@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Loader2, Users } from "lucide-react";
+import { ChevronDown, Loader2, Users } from "lucide-react";
 import { DIMENSION_POLES, type IdeologyDimension, type IdeologyVector } from "@shared/ideology";
+import type { TdIssues } from "@shared/stancesApi";
+import { IssueBreakdown } from "@/components/IssueBreakdown";
+import { MatchConfidence, MatchListNote, rowBadges } from "@/components/MatchConfidence";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/pulse/EmptyState";
@@ -10,11 +13,13 @@ import { PartyDot, TDAvatar } from "@/components/pulse/Party";
 import { useAuth } from "@/contexts/AuthContext";
 import { queryKeys } from "@/lib/queryKeys";
 import { partyStyle } from "@/lib/parties";
+import { evidenceSummary } from "@/lib/ideologyConfidence";
 import {
   fetchMatchesForVector,
   fetchMyMatches,
   type DimensionWeights,
   type Matches,
+  type TdMatch,
 } from "@/lib/ideologyApi";
 
 interface PartyMatchResultsProps {
@@ -29,6 +34,10 @@ const BOTTOM_PARTIES = 2;
 const TOP_TDS = 5;
 
 const labels = (dims: IdeologyDimension[]) => dims.map((d) => DIMENSION_POLES[d].label).join(", ");
+
+/** "Fine Gael · Dublin Bay South · 2 stances": the constituency and the evidence only when there are some. */
+const tdSubline = (td: TdMatch) =>
+  [partyStyle(td.party).name, td.constituency, evidenceSummary(td.evidenceBySource)].filter(Boolean).join(" · ");
 
 const cardClass = "flex flex-col gap-3.5 rounded-2xl border bg-card p-4 sm:p-5";
 
@@ -47,7 +56,8 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
     return () => window.clearTimeout(timer);
   }, [weights]);
 
-  const { data, isLoading, isError, error, refetch, isPlaceholderData } = useQuery<Matches>({
+  // `measured` only on the signed-in path: the dimensions the user's matches use.
+  const { data, isLoading, isError, error, refetch, isPlaceholderData } = useQuery<Matches & { measured?: IdeologyDimension[] }>({
     queryKey: isAuthenticated
       ? queryKeys.ideology.myMatches(user?.id, activeWeights)
       : queryKeys.ideology.vectorMatches(dimensions, activeWeights),
@@ -91,6 +101,9 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
   const bottomParties =
     data.parties.length > TOP_PARTIES + BOTTOM_PARTIES ? data.parties.slice(-BOTTOM_PARTIES).reverse() : [];
   const topTds = data.tds.slice(0, TOP_TDS);
+  const shownParties = [...topParties, ...bottomParties];
+  const partyBadges = rowBadges(shownParties);
+  const tdBadges = rowBadges(topTds);
 
   return (
     <>
@@ -104,6 +117,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
             </span>
           )}
         </div>
+        <MatchListNote kind="party" items={shownParties} measured={data.measured} />
         {topParties.length === 0 ? (
           <EmptyState icon={Users} title="No party matches yet">
             We could not match your answers to any party. Try again later.
@@ -116,7 +130,10 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
               <div key={match.party} className="flex flex-col gap-2.5 rounded-xl bg-elevated p-3.5">
                 <div className="flex items-center gap-3">
                   <PartyBadge party={match.party} />
-                  <span className="min-w-0 flex-1 truncate text-base font-bold">{style.name}</span>
+                  <span className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
+                    <span className="min-w-0 truncate text-base font-bold" data-testid="party-match-name">{style.name}</span>
+                    {partyBadges && <MatchConfidence kind="party" confidence={match.confidence} />}
+                  </span>
                   <span className="font-display text-[26px] font-extrabold tabular-nums">{pct}%</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-input" aria-hidden="true">
@@ -149,7 +166,10 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
               >
                 <PartyBadge party={match.party} small />
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="truncate text-[15px] font-bold">{partyStyle(match.party).name}</span>
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span className="truncate text-[15px] font-bold" data-testid="party-match-least-name">{partyStyle(match.party).name}</span>
+                    {partyBadges && <MatchConfidence kind="party" confidence={match.confidence} />}
+                  </span>
                   <span className="text-xs text-muted-foreground">
                     {match.furthest.length > 0 ? `Furthest on ${labels(match.furthest)}` : "Differs from you overall"}
                   </span>
@@ -174,6 +194,7 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
       {topTds.length > 0 && (
         <section className={cardClass}>
           <h2 className="font-display text-[22px] font-bold">Closest TDs</h2>
+          <MatchListNote kind="td" items={topTds} />
           <ol className="flex flex-col gap-1">
             {topTds.map((td) => (
               <li key={td.tdId}>
@@ -183,18 +204,20 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
                 >
                   <TDAvatar name={td.name} party={td.party} imageUrl={td.imageUrl} />
                   <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                    <span className="truncate text-[15px] font-bold">{td.name}</span>
+                    <span className="flex min-w-0 items-center gap-2">
+                      <span className="truncate text-[15px] font-bold">{td.name}</span>
+                      {tdBadges && <MatchConfidence kind="td" confidence={td.confidence} />}
+                    </span>
                     <span className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
                       <PartyDot party={td.party} />
-                      <span className="truncate">
-                        {partyStyle(td.party).name} · {td.constituency}
-                      </span>
+                      <span className="truncate">{tdSubline(td)}</span>
                     </span>
                   </span>
                   <span className="font-display text-[22px] font-bold tabular-nums text-primary">
                     {Math.round(td.alignment)}%
                   </span>
                 </Link>
+                {isAuthenticated && td.issues && <SharedIssuesLine issues={td.issues} />}
               </li>
             ))}
           </ol>
@@ -208,6 +231,24 @@ const PartyMatchResults: React.FC<PartyMatchResultsProps> = ({ dimensions, weigh
     </>
   );
 };
+
+/** Under a TD row: how many daily-vote questions the user and the TD both answered, expandable to the breakdown. */
+function SharedIssuesLine({ issues }: { issues: TdIssues }) {
+  const shared = issues.agree + issues.disagree;
+  // Lines up with the TD's name: the row's px-1, the 44px avatar and gap-3.
+  if (shared === 0) {
+    return <p className="pb-2 pl-[60px] text-xs text-muted-foreground">No shared issues yet</p>;
+  }
+  return (
+    <details className="group pb-2 pl-[60px]">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-1 text-[13px] font-semibold text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
+        <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
+        based on {shared} shared {shared === 1 ? "issue" : "issues"}
+      </summary>
+      <IssueBreakdown issues={issues} className="pt-1" />
+    </details>
+  );
+}
 
 function PartyBadge({ party, small }: { party: string; small?: boolean }) {
   return <TDAvatar name={partyStyle(party).name} party={party} size={small ? "sm" : "md"} />;

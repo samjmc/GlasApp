@@ -13,12 +13,12 @@ import { useAuth } from "@/contexts/AuthContext";
 function HeroContext() {
   const { data } = useScoresWidget();
   const total = data?.stats.totalTds;
-  const updated = data?.stats.lastScoredAt
-    ? new Date(data.stats.lastScoredAt).toLocaleDateString("en-IE", { day: "numeric", month: "long", year: "numeric" })
+  const updated = data?.stats.computedAt
+    ? new Date(data.stats.computedAt).toLocaleDateString("en-IE", { day: "numeric", month: "long", year: "numeric" })
     : null;
   return (
     <p className="text-base text-muted-foreground md:text-[17px]">
-      {total ? `${total} TDs` : "Every TD"} rated on votes, questions and debate from the official Oireachtas record.
+      {total ? `${total} TDs` : "Every TD"} rated on questions, votes, committees and debate from the official Oireachtas record.
       {updated && ` Updated ${updated}.`}
     </p>
   );

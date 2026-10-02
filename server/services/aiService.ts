@@ -26,8 +26,6 @@ export interface AIOptions {
   retries?: number;
   /** Per-attempt timeout in ms (default 30_000). */
   timeoutMs?: number;
-  /** On total failure, return the last successful result for this call signature if available. */
-  fallbackToCache?: boolean;
   /** Operation name used in structured logs (defaults to the wrapper name). */
   operation?: string;
 }
@@ -149,25 +147,6 @@ function getAnthropicClient(): Anthropic {
   return anthropicClient;
 }
 
-// Minimal in-memory fallback cache (stopgap until Phase 3C ships the cache
-// adapter). Only populated when `fallbackToCache` is requested by the caller.
-const fallbackCache = new Map<string, unknown>();
-const FALLBACK_CACHE_MAX_KEYS = 500;
-
-function cacheKeyFor(operation: string, payload: unknown): string {
-  const hash = fnv1a(JSON.stringify(payload ?? {}));
-  return `${operation}:${hash}`;
-}
-
-function fnv1a(input: string): string {
-  let hash = 0x811c9dc5;
-  for (let i = 0; i < input.length; i++) {
-    hash ^= input.charCodeAt(i);
-    hash = Math.imul(hash, 0x01000193);
-  }
-  return (hash >>> 0).toString(36);
-}
-
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -219,11 +198,9 @@ async function executeWithRetry<T>(
   operation: string,
   options: AIOptions | undefined,
   run: (signal: AbortSignal) => Promise<T>,
-  cachePayload: unknown,
 ): Promise<T> {
   const maxRetries = options?.retries ?? DEFAULT_MAX_RETRIES;
   const timeoutMs = options?.timeoutMs ?? DEFAULT_TIMEOUT_MS;
-  const fallbackToCache = options?.fallbackToCache ?? false;
   const startedAt = Date.now();
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
@@ -236,13 +213,6 @@ async function executeWithRetry<T>(
         `[aiService] ${operation}: success attempts=${attempt + 1} elapsedMs=${elapsedMs}`,
       );
       logUsage(operation, result);
-      if (fallbackToCache) {
-        const key = cacheKeyFor(operation, cachePayload);
-        if (fallbackCache.size >= FALLBACK_CACHE_MAX_KEYS) {
-          fallbackCache.clear();
-        }
-        fallbackCache.set(key, result);
-      }
       return result;
     } catch (error) {
       const attemptElapsedMs = Date.now() - attemptStartedAt;
@@ -258,14 +228,6 @@ async function executeWithRetry<T>(
       console.error(
         `[aiService] ${operation}: FAILED after ${attempt + 1} attempt(s) elapsedMs=${elapsedMs} error=${errorMessage(error)}`,
       );
-      if (fallbackToCache) {
-        const key = cacheKeyFor(operation, cachePayload);
-        if (fallbackCache.has(key)) {
-          const cached = fallbackCache.get(key) as T;
-          console.warn(`[aiService] ${operation}: returning cached fallback result`);
-          return cached;
-        }
-      }
       throw toAIError(error, operation, attempt + 1, elapsedMs);
     }
   }
@@ -287,7 +249,6 @@ export async function callChatCompletion(
     operation,
     options,
     (signal) => client.chat.completions.create(request, { signal }),
-    request,
   );
 }
 
@@ -310,7 +271,6 @@ export async function callEmbedding(
         },
         { signal },
       ),
-    { model: options?.model ?? "text-embedding-3-small", input: text },
   );
   return response.data[0]?.embedding ?? [];
 }
@@ -326,6 +286,5 @@ export async function callAnthropicMessage(
     operation,
     options,
     (signal) => client.messages.create(params, { signal }),
-    params,
   );
 }

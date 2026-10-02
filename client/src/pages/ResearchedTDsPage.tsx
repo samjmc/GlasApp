@@ -1,6 +1,6 @@
 /**
- * Rankings: every TD, or every party, ranked by score.
- * `?filter=top|movers|bottom` picks the starting order of the TD list.
+ * Rankings: every TD, or every party, ranked by score or by one of its four components.
+ * `?filter=top|bottom` picks the starting order of the TD list.
  */
 
 import { useMemo, useState } from 'react';
@@ -23,40 +23,36 @@ import { queryKeys } from '@/lib/queryKeys';
 import { partyStyle } from '@/lib/parties';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { cn } from '@/lib/utils';
-
-type ResearchedTD = {
-  id: number;
-  name: string;
-  party: string | null;
-  constituency: string | null;
-  nationalRank: number | null;
-  overallScore: number | null;
-  parliamentaryScore: number | null;
-  debateScore: number | null;
-  eloChange7d: number | null;
-  overallElo: number;
-  imageUrl: string | null;
-  hasResearch: boolean;
-};
+import type { ScoreComponents, TdListItem } from '@shared/scoresApi';
 
 type RankingsData = {
-  tds: ResearchedTD[];
+  tds: TdListItem[];
   count: number;
 };
 
-type SortKey = 'overall' | 'parliamentary' | 'debate';
-type StartFilter = 'top' | 'movers' | 'bottom';
+type Component = keyof ScoreComponents;
+type SortKey = 'overall' | Component;
+type StartFilter = 'top' | 'bottom';
 
 const SORTS: { value: SortKey; label: string }[] = [
   { value: 'overall', label: 'Score' },
-  { value: 'parliamentary', label: 'Dáil record' },
+  { value: 'questions', label: 'Questions' },
+  { value: 'attendance', label: 'Votes' },
+  { value: 'committees', label: 'Committees' },
   { value: 'debate', label: 'Debate' },
 ];
 
+const COMPONENTS: Component[] = ['questions', 'attendance', 'committees', 'debate'];
+
 const PAGE_SIZE = 50;
 
-const scoreOf = (td: ResearchedTD, key: SortKey) =>
-  key === 'overall' ? td.overallScore : key === 'parliamentary' ? td.parliamentaryScore : td.debateScore;
+const valueOf = (td: TdListItem, key: SortKey) => (key === 'overall' ? td.overallScore : td.components[key]);
+
+/** A value in its own unit: attendance and committees are percentages, the rest plain numbers. */
+function formatValue(key: SortKey, value: number | null): string {
+  if (value === null) return '—';
+  return key === 'attendance' || key === 'committees' ? `${Math.round(value)}%` : formatScore(value);
+}
 
 function mean(values: Array<number | null>): number | null {
   const present = values.filter((v): v is number => v !== null && v !== undefined);
@@ -71,20 +67,29 @@ function compareNullable(a: number | null, b: number | null, dir: 1 | -1) {
   return (b - a) * dir;
 }
 
-function BigScore({ value, className }: { value: number | null; className?: string }) {
-  const tone = scoreTone(value);
+/** The value the list is sorted by; only the overall score is coloured by the score rule. */
+function BigValue({ sortKey, value, className }: { sortKey: SortKey; value: number | null; className?: string }) {
+  const tone = sortKey === 'overall' ? scoreTone(value) : null;
   return (
-    <span className={cn('font-display text-xl font-extrabold tracking-tight', tone ? TONE_TEXT[tone] : 'text-muted-foreground', className)}>
-      {formatScore(value)}
+    <span
+      className={cn(
+        'font-display text-xl font-extrabold tracking-tight',
+        tone ? TONE_TEXT[tone] : value === null ? 'text-muted-foreground' : '',
+        className
+      )}
+    >
+      {formatValue(sortKey, value)}
     </span>
   );
 }
 
-function MiniBar({ value }: { value: number | null }) {
+function ComponentCell({ component, value }: { component: Component; value: number | null }) {
   return (
-    <span className="flex items-center gap-2">
-      <ScoreBar value={value} className="w-16 lg:w-20" />
-      <span className="w-7 text-right text-sm font-semibold tabular-nums">{formatScore(value)}</span>
+    <span
+      className={cn('hidden text-sm font-semibold tabular-nums md:block', value === null && 'text-muted-foreground')}
+      title={value === null ? 'Not applicable' : undefined}
+    >
+      {formatValue(component, value)}
     </span>
   );
 }
@@ -108,7 +113,7 @@ export default function ResearchedTDsPage() {
       const res = await fetch('/api/scores/tds');
       if (!res.ok) throw new Error('Failed to fetch');
       const json = await res.json();
-      const tds = (json.data ?? []) as ResearchedTD[];
+      const tds = (json.data ?? []) as TdListItem[];
       return { tds, count: json.meta?.count ?? tds.length };
     },
   });
@@ -139,18 +144,16 @@ export default function ResearchedTDsPage() {
         (selectedParty === 'all' || (td.party ?? 'Independent') === selectedParty) &&
         (selectedConstituency === 'all' || td.constituency === selectedConstituency)
     );
-    if (startFilter === 'movers') {
-      return list.sort((a, b) => compareNullable(Math.abs(a.eloChange7d ?? 0), Math.abs(b.eloChange7d ?? 0), 1));
-    }
     const dir = startFilter === 'bottom' ? -1 : 1;
     if (sortKey === 'overall') {
-      return list.sort((a, b) => ((a.nationalRank ?? 999) - (b.nationalRank ?? 999)) * dir);
+      // Ranks ascend; unranked TDs go last either way.
+      return list.sort((a, b) => compareNullable(a.nationalRank, b.nationalRank, dir === 1 ? -1 : 1));
     }
-    return list.sort((a, b) => compareNullable(scoreOf(a, sortKey), scoreOf(b, sortKey), dir));
+    return list.sort((a, b) => compareNullable(valueOf(a, sortKey), valueOf(b, sortKey), dir));
   }, [tds, term, selectedParty, selectedConstituency, sortKey, startFilter]);
 
   const parties = useMemo(() => {
-    const groups = new Map<string, ResearchedTD[]>();
+    const groups = new Map<string, TdListItem[]>();
     tds.forEach((td) => {
       const party = td.party ?? 'Independent';
       groups.set(party, [...(groups.get(party) ?? []), td]);
@@ -159,9 +162,12 @@ export default function ResearchedTDsPage() {
       .map(([name, members]) => ({
         name,
         count: members.length,
+        // Unranked members have no overall score and are left out of the mean, not counted as 0.
         overall: mean(members.map((m) => m.overallScore)),
-        parliamentary: mean(members.map((m) => m.parliamentaryScore)),
-        debate: mean(members.map((m) => m.debateScore)),
+        questions: mean(members.map((m) => m.components.questions)),
+        attendance: mean(members.map((m) => m.components.attendance)),
+        committees: mean(members.map((m) => m.components.committees)),
+        debate: mean(members.map((m) => m.components.debate)),
       }))
       .filter((p) => term === '' || p.name.toLowerCase().includes(term))
       .sort((a, b) => compareNullable(a[sortKey], b[sortKey], 1));
@@ -180,8 +186,8 @@ export default function ResearchedTDsPage() {
   };
 
   const count = data?.count ?? tds.length;
-  const heading =
-    startFilter === 'bottom' ? 'Lowest first' : startFilter === 'movers' ? 'Biggest movers this week' : null;
+  const heading = startFilter === 'bottom' ? 'Lowest first' : null;
+  const valueLabel = SORTS.find((s) => s.value === sortKey)!.label;
 
   return (
     <Tabs value={view} onValueChange={(v) => setView(v as 'tds' | 'parties')} className="flex flex-col gap-6">
@@ -189,8 +195,8 @@ export default function ResearchedTDsPage() {
         title="Rankings"
         description={
           isLoading
-            ? 'All TDs and parties, scored on Dáil record and debate.'
-            : `All ${count} TDs and ${partyCounts.length} parties, scored on Dáil record and debate.`
+            ? 'All TDs and parties, scored on questions, votes, committees and debate from the Oireachtas record.'
+            : `All ${count} TDs and ${partyCounts.length} parties, scored on questions, votes, committees and debate from the Oireachtas record.`
         }
         right={
           <TabsList aria-label="Rank">
@@ -283,13 +289,15 @@ export default function ResearchedTDsPage() {
           </div>
 
           <section aria-label="TD rankings" className="overflow-hidden rounded-2xl border bg-card">
-            <div className="hidden grid-cols-[2.5rem_minmax(0,1fr)_8rem_9rem_9rem_3.5rem_2.5rem] items-center gap-4 border-b px-5 py-3 text-[13px] font-semibold text-muted-foreground md:grid">
+            <div className="hidden grid-cols-[2.5rem_minmax(0,1fr)_7rem_4.5rem_4rem_5.5rem_4rem_5.5rem_2.5rem] items-center gap-4 border-b px-5 py-3 text-[13px] font-semibold text-muted-foreground md:grid">
               <span>#</span>
               <span>TD</span>
               <span>Party</span>
-              <span>Dáil record</span>
+              <span>Questions</span>
+              <span>Votes</span>
+              <span>Committees</span>
               <span>Debate</span>
-              <span className="text-right">Score</span>
+              <span className="text-right">{valueLabel}</span>
               <span className="sr-only">Details</span>
             </div>
 
@@ -331,10 +339,10 @@ export default function ResearchedTDsPage() {
                   <li key={td.id} className="group flex items-center transition-colors hover:bg-elevated">
                     <Link
                       href={`/td/${encodeURIComponent(td.name)}`}
-                      className="flex min-w-0 flex-1 items-center gap-3 py-3 pl-4 md:grid md:grid-cols-[2.5rem_minmax(0,1fr)_8rem_9rem_9rem_3.5rem] md:gap-4 md:pl-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                      className="flex min-w-0 flex-1 items-center gap-3 py-3 pl-4 md:grid md:grid-cols-[2.5rem_minmax(0,1fr)_7rem_4.5rem_4rem_5.5rem_4rem_5.5rem] md:gap-4 md:pl-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                     >
                       <span className="w-6 shrink-0 text-center text-sm font-semibold tabular-nums text-muted-foreground md:w-auto md:text-left">
-                        {startFilter === 'top' && sortKey === 'overall' ? td.nationalRank ?? index + 1 : index + 1}
+                        {startFilter === 'top' && sortKey === 'overall' ? td.nationalRank ?? '—' : index + 1}
                       </span>
                       <span className="flex min-w-0 flex-1 items-center gap-3">
                         <TDAvatar name={td.name} party={td.party} imageUrl={td.imageUrl} size="md" />
@@ -347,9 +355,10 @@ export default function ResearchedTDsPage() {
                         </span>
                       </span>
                       <PartyLabel party={td.party ?? 'Independent'} short className="hidden md:inline-flex" />
-                      <span className="hidden md:flex"><MiniBar value={td.parliamentaryScore} /></span>
-                      <span className="hidden md:flex"><MiniBar value={td.debateScore} /></span>
-                      <BigScore value={scoreOf(td, sortKey)} className="shrink-0 text-right" />
+                      {COMPONENTS.map((c) => (
+                        <ComponentCell key={c} component={c} value={td.components[c]} />
+                      ))}
+                      <BigValue sortKey={sortKey} value={valueOf(td, sortKey)} className="shrink-0 text-right" />
                     </Link>
                     <Button
                       type="button"
@@ -376,14 +385,16 @@ export default function ResearchedTDsPage() {
 
         <TabsContent value="parties" className="mt-0 flex flex-col gap-4">
           <section aria-label="Party rankings" className="overflow-hidden rounded-2xl border bg-card">
-            <div className="hidden grid-cols-[2.5rem_minmax(0,1fr)_4rem_10rem_4.5rem_4.5rem_3.5rem] items-center gap-4 border-b px-5 py-3 text-[13px] font-semibold text-muted-foreground md:grid">
+            <div className="hidden grid-cols-[2.5rem_minmax(0,1fr)_3rem_7rem_4.5rem_4rem_5.5rem_4rem_5.5rem] items-center gap-4 border-b px-5 py-3 text-[13px] font-semibold text-muted-foreground md:grid">
               <span>#</span>
               <span>Party</span>
               <span>TDs</span>
               <span>Average score</span>
-              <span>Dáil record</span>
+              <span>Questions</span>
+              <span>Votes</span>
+              <span>Committees</span>
               <span>Debate</span>
-              <span className="text-right">Score</span>
+              <span className="text-right">{valueLabel}</span>
             </div>
             {isLoading ? (
               <ul className="divide-y" aria-busy="true">
@@ -410,7 +421,7 @@ export default function ResearchedTDsPage() {
                     <li key={p.name}>
                       <Link
                         href={`/party/${encodeURIComponent(p.name)}`}
-                        className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-elevated active:scale-[0.99] md:grid md:grid-cols-[2.5rem_minmax(0,1fr)_4rem_10rem_4.5rem_4.5rem_3.5rem] md:gap-4 md:px-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                        className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-elevated active:scale-[0.99] md:grid md:grid-cols-[2.5rem_minmax(0,1fr)_3rem_7rem_4.5rem_4rem_5.5rem_4rem_5.5rem] md:gap-4 md:px-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                       >
                         <span className="w-6 shrink-0 text-center text-sm font-semibold tabular-nums text-muted-foreground md:w-auto md:text-left">
                           {index + 1}
@@ -433,9 +444,10 @@ export default function ResearchedTDsPage() {
                         </span>
                         <span className="hidden text-sm font-semibold tabular-nums md:block">{p.count}</span>
                         <ScoreBar value={p.overall} className="hidden md:block" />
-                        <span className="hidden text-sm font-semibold tabular-nums md:block">{formatScore(p.parliamentary)}</span>
-                        <span className="hidden text-sm font-semibold tabular-nums md:block">{formatScore(p.debate)}</span>
-                        <BigScore value={p[sortKey]} className="shrink-0 text-right" />
+                        {COMPONENTS.map((c) => (
+                          <ComponentCell key={c} component={c} value={p[c]} />
+                        ))}
+                        <BigValue sortKey={sortKey} value={p[sortKey]} className="shrink-0 text-right" />
                       </Link>
                     </li>
                   );
@@ -444,7 +456,7 @@ export default function ResearchedTDsPage() {
             )}
           </section>
           <p className="text-[13px] text-muted-foreground">
-            A party's score is the mean of its TDs' scores. Parties with 1 to 4 TDs move a lot on one member's record.
+            A party's score is the mean of its ranked TDs' scores. Parties with 1 to 4 TDs move a lot on one member's record.
           </p>
         </TabsContent>
       </div>

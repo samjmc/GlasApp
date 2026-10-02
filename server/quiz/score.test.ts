@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { QUIZ_QUESTIONS, type QuizQuestion } from '@shared/quiz';
-import { QuizInputError, coverageOf, scoreQuiz } from './score';
+import { QuizInputError, answeredCountsOf, coverageOf, scoreQuiz } from './score';
 
 const strongest = (q: QuizQuestion, side: 1 | -1) =>
   q.answers.reduce((best, a, i) => (side * a.value > side * q.answers[best]!.value ? i : best), 0);
@@ -122,5 +122,24 @@ describe('coverageOf', () => {
   it('matches scoreQuiz coverage for stored answers', () => {
     const answers = [{ questionId: 1, answerIndex: 0 }, { questionId: 2, answerIndex: 0 }, { questionId: 17, answerIndex: 1 }];
     expect(coverageOf(answers)).toEqual(scoreQuiz(answers).coverage);
+  });
+});
+
+describe('answeredCountsOf', () => {
+  const wholeBank = QUIZ_QUESTIONS.map((q) => ({ questionId: q.id, answerIndex: 0 }));
+  const bankCounts = { economic: 5, social: 3, cultural: 3, authority: 3, environmental: 3, welfare: 3, globalism: 3, technocratic: 3 };
+
+  it('counts the answers on each dimension', () => {
+    expect(answeredCountsOf(wholeBank)).toEqual(bankCounts);
+  });
+
+  it('skips an id the bank does not have instead of throwing, as coverageOf does', () => {
+    expect(answeredCountsOf([...wholeBank, { questionId: 999, answerIndex: 0 }])).toEqual(bankCounts);
+  });
+
+  it('is what scoreQuiz reports as answeredByDimension', () => {
+    const answers = [{ questionId: 1, answerIndex: 2 }, { questionId: 2, answerIndex: 3 }, { questionId: 20, answerIndex: 1 }];
+    expect(scoreQuiz(answers).answeredByDimension).toEqual(answeredCountsOf(answers));
+    expect(scoreQuiz(wholeBank).answeredByDimension).toEqual(bankCounts);
   });
 });

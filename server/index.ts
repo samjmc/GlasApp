@@ -51,8 +51,8 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
 app.use((req, res, next) => {
+  // HSTS comes from helmet above.
   if (process.env.NODE_ENV === 'production') {
-    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     const forwardedProto = req.get('X-Forwarded-Proto');
     if (forwardedProto && forwardedProto !== 'https') {
       const host = req.headers.host;

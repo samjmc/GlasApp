@@ -20,6 +20,10 @@
 import { recalculateAll, repository as scoring } from '../scoring';
 import { memberImageUrl, type TdSeed } from '../scoring/tdSync';
 import { OireachtasClient, type RosterMember } from './client';
+import { DOCUMENTED_ABSENCES, validateAbsences } from './absences';
+import { PARTY_LEADERS, validatePartyLeaders } from './partyLeaders';
+import { syncAllowances, syncInterests, type DisclosureResult, type DisclosureSource } from './disclosures';
+import { fetchGenders } from './sources/wikidata';
 import { attendancePct, committeeAttendancePct } from './metrics';
 import {
   countQuestions,
@@ -34,10 +38,14 @@ import {
 } from './parse';
 import * as repo from './repository';
 import { withDeadlockRetry } from './repo/util';
-import { isoDate, monthEnd, monthsBetween, resumePoint, startDate } from './window';
+import { addDays, isoDate, monthEnd, monthsBetween, resumePoint, startDate } from './window';
 
-/** Runs a failing day is retried for before it is left for a person to look at. */
-export const MAX_DAY_ATTEMPTS = 10;
+/**
+ * A failed sitting day is retried on every run until it is this old, then left in the
+ * failure map for a person to look at. By age, not attempts: committee transcripts were
+ * measured still unpublished 10 days after the sitting, and ten daily attempts gave up.
+ */
+export const RETRY_WINDOW_DAYS = 90;
 /** Politeness gap between per-day and per-month requests. */
 const REQUEST_GAP_MS = 250;
 
@@ -45,11 +53,15 @@ export interface SyncOptions {
   /** Re-ingest from this date (YYYY-MM-DD) instead of resuming. */
   since?: string;
   client?: OireachtasClient;
+  /** Gender by member code (Wikidata by default; the API has none). */
+  genders?: (memberCodes: string[]) => Promise<Map<string, string>>;
+  /** The interests register and allowance PDFs (oireachtas.ie by default). */
+  disclosures?: DisclosureSource;
   today?: string;
   log?: (line: string) => void;
 }
 
-export type SyncFeed = 'divisions' | 'debates' | 'committees' | 'bills' | 'questions';
+export type SyncFeed = 'gender' | 'divisions' | 'debates' | 'committees' | 'bills' | 'questions' | 'interests' | 'allowances';
 
 /** `failed*`: units that failed in THIS run (the stored map has every open failure). */
 export interface SyncSummary {
@@ -59,6 +71,9 @@ export interface SyncSummary {
   committees: { from: string; to: string; days: number; failedDays: string[]; sittings: number; unresolvedSittings: number };
   bills: { ingested: number };
   questions: { from: string; to: string; months: number; failedMonths: string[]; questions: number; totalsComplete: boolean };
+  /** New PDF files read this run; names that matched no current TD are listed, not stored. */
+  interests: DisclosureResult;
+  allowances: DisclosureResult;
   /** Feeds that failed as a whole in this run; their tables keep what they had. */
   failedFeeds: SyncFeed[];
   statsRows: number;
@@ -98,10 +113,8 @@ async function ingestUnits(
   failures: Record<string, number>,
   ingest: (key: string) => Promise<void>,
   log: (line: string) => void,
-  maxAttempts: number = MAX_DAY_ATTEMPTS,
 ): Promise<string[]> {
   const failed: string[] = [];
-  const cap = Number.isFinite(maxAttempts) ? ` of ${maxAttempts}` : '';
   for (const key of Array.from(new Set(keys)).sort()) {
     try {
       await ingest(key);
@@ -109,18 +122,16 @@ async function ingestUnits(
     } catch (error) {
       failures[key] = (failures[key] ?? 0) + 1;
       failed.push(key);
-      log(`${label}: ${key} failed, attempt ${failures[key]}${cap} (${message(error)}).`);
+      log(`${label}: ${key} failed, attempt ${failures[key]} (${message(error)}).`);
     }
     await pause(REQUEST_GAP_MS);
   }
   return failed;
 }
 
-/** Earlier failed units, outside the normal window, that still have attempts left. */
-function retryable(failures: Record<string, number>, before: string, maxAttempts: number = MAX_DAY_ATTEMPTS): string[] {
-  return Object.entries(failures)
-    .filter(([key, attempts]) => key < before && attempts < maxAttempts)
-    .map(([key]) => key);
+/** Earlier failed units, outside the normal window, no older than `oldest` (YYYY-MM-DD). */
+function retryable(failures: Record<string, number>, before: string, oldest: string): string[] {
+  return Object.keys(failures).filter((key) => key < before && key >= oldest);
 }
 
 /** Group listed items by day, dropping repeats of the same key within a day. */
@@ -180,10 +191,22 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     roster.map((m) => ({ memberCode: m.memberCode, offices: m.offices, committees: repo.currentCommitteeNames(m) })),
   );
   const committeeMemberships = await repo.replaceCommitteeMemberships(roster, tdIds);
-  await repo.setSyncState('roster', today, `${roster.length} members, ${committeeMemberships} committee memberships`);
-  log(`Roster: ${roster.length} members (+${rosterResult.inserted} ~${rosterResult.updated} -${rosterResult.deactivated}), ${committeeMemberships} committee memberships.`);
+  // Offices and documented leave: why a TD was not expected to vote or ask questions.
+  const offices = await repo.replaceOffices(roster, tdIds);
+  await repo.replaceAbsences(validateAbsences(DOCUMENTED_ABSENCES), tdIds);
+  await repo.replacePartyLeaders(validatePartyLeaders(PARTY_LEADERS), tdIds);
+  await repo.setSyncState('roster', today, `${roster.length} members, ${committeeMemberships} committee memberships, ${offices} offices`);
+  log(`Roster: ${roster.length} members (+${rosterResult.inserted} ~${rosterResult.updated} -${rosterResult.deactivated}), ${committeeMemberships} committee memberships, ${offices} offices, ${DOCUMENTED_ABSENCES.length} documented absences.`);
 
   const dailStart = roster.map((m) => m.memberSince).sort()[0];
+  const oldestRetry = addDays(today, -RETRY_WINDOW_DAYS);
+
+  // 1b. Gender, which the API leaves empty for every member.
+  await feed('gender', async () => {
+    const genders = await (options.genders ?? fetchGenders)(roster.map((m) => m.memberCode));
+    const changed = await repo.updateGenders(genders);
+    log(`Gender: ${genders.size} of ${roster.length} members known${changed ? `, ${changed} updated` : ''}.`);
+  });
 
   // 2. Divisions: few enough (≈400 a term) to fetch the window in one go.
   const divisions: SyncSummary['divisions'] = { from: '', to: today, ingested: 0 };
@@ -204,7 +227,7 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     debates.from = startDate(options.since, state.throughDate, dailStart);
     const failures = { ...state.failures };
     const listed = await client.debateDays(debates.from, today);
-    for (const date of retryable(failures, debates.from)) listed.push(...(await client.debateDays(date, date)));
+    for (const date of retryable(failures, debates.from, oldestRetry)) listed.push(...(await client.debateDays(date, date)));
     const byDay = groupByDay(listed, (d) => d.xmlUri ?? '');
     debates.days = byDay.size;
     debates.failedDays = await ingestUnits('Debates', Array.from(byDay.keys()), failures, async (date) => {
@@ -238,7 +261,7 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     committees.from = startDate(options.since, state.throughDate, dailStart);
     const failures = { ...state.failures };
     const listed = await client.committeeSittings(committees.from, today);
-    for (const date of retryable(failures, committees.from)) listed.push(...(await client.committeeSittings(date, date)));
+    for (const date of retryable(failures, committees.from, oldestRetry)) listed.push(...(await client.committeeSittings(date, date)));
     const byDay = groupByDay(listed, (s) => s.uri);
     committees.days = byDay.size;
     committees.failedDays = await ingestUnits('Committees', Array.from(byDay.keys()), failures, async (date) => {
@@ -278,6 +301,25 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     log(`Bills: ${parsed.length}.`);
   });
 
+  // 5b. The interests register and allowance payments, from the Oireachtas's PDFs.
+  const disclosureContext = {
+    roster: roster.map((m) => ({ memberCode: m.memberCode, fullName: m.fullName, constituency: m.constituency })),
+    tdIds,
+    dailStart,
+    source: options.disclosures,
+    log,
+  };
+  let interests: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
+  let allowances: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
+  await feed('interests', async () => {
+    interests = await syncInterests(disclosureContext);
+    if (interests.unmatched.length) log(`Interests: no current TD for ${interests.unmatched.join('; ')}.`);
+  });
+  await feed('allowances', async () => {
+    allowances = await syncAllowances(disclosureContext);
+    if (allowances.unmatched.length) log(`Allowances: no current TD for ${allowances.unmatched.join('; ')}.`);
+  });
+
   // 6. Questions, counted per month. A failed month keeps its previous counts and is
   //    retried on every run with no cap: until it succeeds the totals below are frozen,
   //    so giving up on it would freeze them for good.
@@ -291,7 +333,9 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     questionFailures = { ...state.failures };
     questions.from = startDate(options.since, state.throughDate, dailStart);
     const window = monthsBetween(questions.from, today);
-    const months = [...window, ...retryable(questionFailures, window[0], Infinity)];
+    // Month keys are first-of-month, so the oldest is the Dáil's first MONTH: comparing with
+    // dailStart itself ("2024-11-29") would never retry a failed November 2024.
+    const months = [...window, ...retryable(questionFailures, window[0], `${dailStart.slice(0, 7)}-01`)];
     questions.months = months.length;
     questions.failedMonths = await ingestUnits('Questions', months, questionFailures, async (month) => {
       const from = month < dailStart ? dailStart : month;
@@ -299,7 +343,7 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
       const raws = await client.questions(from, end > today ? today : end);
       await repo.replaceQuestionMonths([month], countQuestions(raws), tdIds);
       questions.questions += raws.length;
-    }, log, Infinity);
+    }, log);
     const through = resumePoint(options.since, state.throughDate, dailStart, today);
     await repo.setSyncState(
       'questions',
@@ -315,8 +359,17 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   //    set-based steps retry on a deadlock instead of failing the whole run.
   await withDeadlockRetry(() => repo.relinkTds());
   const windows = new Map(roster.map((m) => [m.memberCode, { memberSince: m.memberSince, isPresiding: m.isPresiding }]));
-  const statsRows = await withDeadlockRetry(() => repo.recomputeStats(windows));
+  // The counts and each TD's expectations (questions_expected, attendance_benchmark) are
+  // written in one transaction.
+  const statsRows = await withDeadlockRetry(() => repo.recomputeStats(windows, { start: dailStart, today }));
   await withDeadlockRetry(() => repo.recomputeCommitteeStats());
+  const stats = new Map((await repo.allStats()).map((s) => [s.tdId, s]));
+  const expectedQuestions = new Map(
+    roster.map((m) => {
+      const tdId = tdIds.get(m.memberCode);
+      return [m.memberCode, (tdId === undefined ? undefined : stats.get(tdId))?.questionsExpected ?? null] as const;
+    }),
+  );
 
   // 8. Scoring inputs. Question totals come from the counts above, but only when every
   //    month since the Dáil's first day is stored: a feed that has never resumed from the
@@ -330,13 +383,15 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   const totals = questions.totalsComplete ? await repo.questionTotals(dailStart) : null;
   const stored = totals ? null : await repo.storedQuestionCounts();
   if (!totals) log('Questions: not every month is stored, so question totals keep their last values.');
-  const stats = new Map((await repo.allStats()).map((s) => [s.tdId, s]));
   const written = await withDeadlockRetry(() =>
     scoring.updateParliamentaryActivity(
       roster.map((m) => {
         const tdId = tdIds.get(m.memberCode);
         const s = tdId === undefined ? undefined : stats.get(tdId);
-        const q = totals ? (totals.get(m.memberCode) ?? { oral: 0, written: 0 }) : stored?.get(m.memberCode);
+        // A TD not expected to ask questions (a minister, the chair) is not scored on them:
+        // NULL, never 0. The profile still shows what they asked, from question_counts.
+        const expected = expectedQuestions.get(m.memberCode) ?? null;
+        const q = expected === null ? null : totals ? (totals.get(m.memberCode) ?? { oral: 0, written: 0 }) : stored?.get(m.memberCode);
         return {
           memberCode: m.memberCode,
           questionsOral: q?.oral ?? null,
@@ -359,6 +414,8 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     committees,
     bills,
     questions,
+    interests,
+    allowances,
     failedFeeds,
     statsRows,
     scoringRowsWritten: written,

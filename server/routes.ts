@@ -6,17 +6,10 @@ import { createServer, type Server } from "http";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
 import aiAnalysisRoutes from "./routes/ai/analysis";
-import geographicRoutes from "./routes/geographic";
 import profileRoutes from "./routes/profileRoutes";
 import activityRoutes from "./routes/activityRoutes";
 import quizRoutes from "./routes/quiz";
 import ideologyRoutes from "./routes/ideology";
-import conflictDataRoutes from "./routes/conflictData";
-import smsRoutes from "./routes/smsRoutes";
-import storytellingRoutes from "./routes/storytellingRoutes";
-import chatRoutes from "./routes/chatRoutes";
-import electionRoutes from "./routes/electionRoutes";
-import politicalRoutes from "./routes/political";
 import newsRoutes from "./routes/news";
 import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
@@ -25,6 +18,7 @@ import baselineAdminRoutes from "./routes/admin/baselineRoutes";
 import scoresRoutes from "./routes/scores";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
 import { pledgesRouter } from "./pledges/routes";
+import { stancesRouter } from "./stances/routes";
 import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
 
@@ -44,39 +38,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   await registerAuthRoutes(app);
   
   // Register API routes
-  // LLM-backed endpoints are public by design; the limiter caps per-IP cost.
-  app.use("/api/ai", aiRateLimit, aiAnalysisRoutes);
-  app.use("/api/chat", aiRateLimit, chatRoutes);
   app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
-  // Register geographic routes (constituencies and constituency detection)
-  app.use("/api/geographic", geographicRoutes);
-  app.use("/api/geographic", conflictDataRoutes);
-  // Legacy routes for backward compatibility
-  app.use("/api/constituencies", geographicRoutes);
-  app.use("/api/location", geographicRoutes);
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
   app.use("/api/profile", profileRoutes);
   app.use("/api/activity", activityRoutes);
-  app.use("/api/sms", smsRoutes);
   
-  // Register storytelling routes with server-side caching
-  app.use("/api/constituency/story", aiRateLimit, storytellingRoutes);
-  
-  // Register the 2024 Irish Election Results routes
-  app.use("/api/elections", electionRoutes);
-  
-  // Enhanced profile now in AI analysis module
+  // Quiz analysis. LLM-backed and public by design; the limiter caps per-IP cost.
   app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
-  // Register consolidated political routes (parties)
-  app.use("/api/political", politicalRoutes);
-  // Legacy routes for backward compatibility
-  app.use("/api/parties", politicalRoutes);
-  app.use("/api/party-match", politicalRoutes);
-  app.use("/api/party-dimensions", politicalRoutes);
-  app.use("/api/dimension-explanations", politicalRoutes);
-
   // Party pledges and the evidence that decides their status
   app.use("/api/pledges", pledgesRouter);
   
@@ -110,6 +80,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // The quiz and ideology profiles (server/quiz, server/ideology)
   app.use("/api/quiz", quizRoutes);
   app.use("/api/ideology", ideologyRoutes);
+  app.use("/api/stances", stancesRouter); // What TDs said in the news (server/stances)
 
   // Last: an unknown /api path is a JSON 404, never the SPA's index.html.
   app.use("/api", apiNotFound);
