@@ -7,10 +7,10 @@
 import { apiRequest } from "@/lib/queryClient";
 import { IDEOLOGY_DIMENSIONS } from "@shared/ideology";
 import type { IdeologyDimension, IdeologyVector } from "@shared/ideology";
-import type { Matches, TdIdeology, UserIdeologyDetail } from "@shared/ideologyMatch";
+import type { Matches, PartyAnswers, PartyIdeology, PartyQuizAnswer, TdIdeology, UserIdeologyDetail } from "@shared/ideologyMatch";
 import type { QuizResponse, QuizResult } from "@shared/quiz";
 
-export type { Matches, PartyMatch, TdMatch } from "@shared/ideologyMatch";
+export type { Matches, PartyAnswers, PartyIdeology, PartyMatch, PartyQuizAnswer, TdMatch } from "@shared/ideologyMatch";
 
 type Envelope<T, M = undefined> =
   | { success: true; data: T; meta?: M }
@@ -19,16 +19,9 @@ type Envelope<T, M = undefined> =
 /** Per-dimension importance, 0..3 (1 = neutral). */
 export type DimensionWeights = Record<IdeologyDimension, number>;
 
-export interface PartyProfile {
-  party: string;
-  vector: IdeologyVector;
-  tdCount: number;
-  computedAt: string;
-}
-
 export interface IdeologyTimeline {
   points: { date: string; vector: IdeologyVector }[];
-  party: PartyProfile | null;
+  party: PartyIdeology | null;
 }
 
 async function call<T, M = undefined>(
@@ -98,6 +91,33 @@ export async function fetchMyMatches(
 /** The TD profile's ideology card: position, baseline flag and the evidence behind it. */
 export async function fetchTdIdeology(tdId: number): Promise<TdIdeology> {
   return (await call<TdIdeology>("GET", `/api/ideology/td/${tdId}`)).data;
+}
+
+/** The request's result, or null when the server answers 404 (apiRequest throws "404: …"). */
+async function orNullOn404<T>(request: Promise<T>): Promise<T | null> {
+  try {
+    return await request;
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("404:")) return null;
+    throw error;
+  }
+}
+
+const partyPath = (party: string) => `/api/ideology/party/${encodeURIComponent(party)}`;
+
+/** A party's position (its TD mean blended with its manifesto); null when it has none. */
+export async function fetchPartyIdeology(party: string): Promise<PartyIdeology | null> {
+  return orNullOn404(call<PartyIdeology>("GET", partyPath(party)).then((r) => r.data));
+}
+
+/** A party's reviewed manifesto answers with their quotes; null for an unknown party. */
+export async function fetchPartyAnswers(party: string): Promise<PartyAnswers | null> {
+  return orNullOn404(call<PartyAnswers>("GET", `${partyPath(party)}/answers`).then((r) => r.data));
+}
+
+/** Every party's reviewed answers to each question, at most 60 ids per call. */
+export async function fetchPartyAnswersFor(questionIds: number[]): Promise<Record<number, PartyQuizAnswer[]>> {
+  return (await call<Record<number, PartyQuizAnswer[]>>("GET", `/api/ideology/party-answers?questions=${questionIds.join(",")}`)).data;
 }
 
 /** Public: matches for a vector that is not saved (anonymous quiz takers). */
