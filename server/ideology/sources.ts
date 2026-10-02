@@ -8,7 +8,7 @@
  * stances keep leaning +0.25 on the ±0.5 scale ends up near +5.
  */
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
-import type { QuoteKind } from '@shared/stancesApi';
+import type { Discipline, QuoteKind } from '@shared/stancesApi';
 import type { PartialVector } from './model';
 
 export const SOURCES = {
@@ -28,8 +28,18 @@ export const SOURCES = {
   stance: { max: 2 },
 } as const;
 
-/** A direct quote counts fully; a reporter's paraphrase counts less. Evidence and agreement both use it. */
-export const QUOTE_KIND_WEIGHT: Record<QuoteKind, number> = { direct: 1, paraphrase: 0.6 };
+/**
+ * A direct quote counts fully; a reporter's paraphrase counts less. A recorded Dáil vote counts
+ * like a paraphrase: the vote is certain, but the link from a motion to a question made from a
+ * different article is a model's judgement. Evidence and agreement both use it.
+ */
+export const QUOTE_KIND_WEIGHT: Record<QuoteKind, number> = { direct: 1, paraphrase: 0.6, division: 0.6 };
+
+/**
+ * A Dáil vote that was the TD's own, on top of QUOTE_KIND_WEIGHT: a rebellion says more than a
+ * free vote. A vote with the whip is never axis evidence, so it has no weight here.
+ */
+export const DIVISION_DISCIPLINE_WEIGHT: Record<Exclude<Discipline, 'whip'>, number> = { free: 1, rebel: 1.5 };
 
 export type SourceKind = keyof typeof SOURCES;
 

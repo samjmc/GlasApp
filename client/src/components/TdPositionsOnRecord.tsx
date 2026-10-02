@@ -13,7 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { RetryButton } from '@/components/data/RetryButton';
-import { IssueBreakdown, QuoteKindBadge, StanceSource, humaniseDomain } from '@/components/IssueBreakdown';
+import { IssueBreakdown, QuoteKindBadge, StanceSource, humaniseDomain, votedLabel } from '@/components/IssueBreakdown';
 import { useAuth } from '@/contexts/AuthContext';
 import { fetchMyMatches } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
@@ -98,7 +98,7 @@ export function TdPositionsOnRecord({ tdId }: { tdId: number | undefined }) {
     <Card className="flex flex-col gap-4 p-5 sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <h2 className="font-display text-xl font-bold tracking-tight">Positions on record</h2>
-        <span className="text-[13px] text-muted-foreground">Quotes from news reports</span>
+        <span className="text-[13px] text-muted-foreground">Quotes from news reports and Dáil votes</span>
       </div>
 
       {agreement}
@@ -120,7 +120,7 @@ export function TdPositionsOnRecord({ tdId }: { tdId: number | undefined }) {
       ) : domains.length === 0 ? (
         <EmptyState icon={Quote} title="No positions on record yet">
           A position shows here when a news article quotes this TD stating a view, and the quote is checked against
-          the article text.
+          the article text, or when a Dáil vote matches a daily-vote question.
         </EmptyState>
       ) : (
         <div className="flex flex-col gap-5">
@@ -134,15 +134,25 @@ export function TdPositionsOnRecord({ tdId }: { tdId: number | undefined }) {
                       <QuoteKindBadge kind={stance.quoteKind} />
                       {stance.saidCount > 1 && (
                         <Badge variant="secondary" className="bg-card">
-                          Said {stance.saidCount} times
+                          {stance.divisionVote ? `${stance.saidCount} votes on this question` : `Said ${stance.saidCount} times`}
                         </Badge>
                       )}
                       {stance.changedPosition && <Badge variant="warn">Changed position</Badge>}
                     </div>
+                    {/* A vote's quote is the proposal's text, not the TD's words: the line above says so. */}
+                    {stance.divisionVote && (
+                      <p className="text-[13px] font-semibold text-muted-foreground">{votedLabel(stance.divisionVote, true)}</p>
+                    )}
                     <blockquote className="text-[15px] leading-relaxed">“{stance.quote}”</blockquote>
                     {stance.optionText !== null && (
                       <p className="text-[13px]">
                         <span className="font-semibold text-muted-foreground">Answer:</span> {stance.optionText}
+                      </p>
+                    )}
+                    {stance.saidOption !== null && stance.optionText !== null && (
+                      <p className="text-[13px]">
+                        <span className="font-semibold text-muted-foreground">Said:</span> {stance.saidOption} ·{' '}
+                        <span className="font-semibold text-muted-foreground">Voted:</span> {stance.optionText}
                       </p>
                     )}
                     <StanceSource outlet={stance.outlet} url={stance.url} statedAt={stance.statedAt} />
@@ -155,8 +165,9 @@ export function TdPositionsOnRecord({ tdId }: { tdId: number | undefined }) {
       )}
 
       <p className="text-[13px] leading-relaxed text-muted-foreground">
-        Each position is a quote from a news report, checked against the article text. Positions are a record of
-        what was said, never a score.
+        Each position is a quote from a news report, checked against the article text, or a recorded Dáil vote shown
+        with the text of the proposal. Only votes that match a daily-vote question are shown. Positions are a record of
+        what was said and how they voted, never a score.
       </p>
     </Card>
   );

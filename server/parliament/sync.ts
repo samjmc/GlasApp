@@ -4,7 +4,8 @@
  *   1. roster      → politics.tds (insert / update / deactivate; never delete), offices,
  *                    committee memberships
  *   2. divisions   → divisions, division_votes
- *   3. debates     → debate_sections, debate_speeches (one transcript per sitting day)
+ *   3. debates     → debate_sections, debate_speeches (one transcript per sitting day), and
+ *                    each division's place in its debate (divisions.section_position)
  *   4. committees  → committee_sittings, committee_attendance (the roll call of each sitting)
  *   5. bills       → bills, bill_sponsors, bill_stages, bill_debates (the whole term)
  *   6. questions   → question_counts (per TD, month, department, type)
@@ -32,6 +33,7 @@ import {
   parseRollCall,
   parseTranscript,
   resolveRollCallNames,
+  type DivisionMarker,
   type ParsedBill,
   type ParsedDivision,
   type ParsedSpeech,
@@ -233,13 +235,17 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     debates.failedDays = await ingestUnits('Debates', Array.from(byDay.keys()), failures, async (date) => {
       const daySections: Parameters<typeof repo.replaceDebateDay>[1] = [];
       const daySpeeches: ParsedSpeech[] = [];
+      const dayMarkers: DivisionMarker[] = [];
       for (const { xmlUri } of byDay.get(date) ?? []) {
         if (!xmlUri) throw new Error('listed, but no transcript published yet');
         const t = parseTranscript(await client.transcript(xmlUri), date);
         daySections.push(...t.sections);
         daySpeeches.push(...t.speeches);
+        dayMarkers.push(...t.divisionMarkers);
       }
       await repo.replaceDebateDay(date, daySections, daySpeeches, tdIds);
+      // Where each of the day's divisions sat in its debate (step 2 stored the divisions).
+      await repo.setDivisionPositions(date, dayMarkers);
       debates.sections += daySections.length;
       debates.speeches += daySpeeches.length;
     }, log);

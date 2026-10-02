@@ -6,14 +6,33 @@
  */
 
 /** Direct = the TD's own words in quotation marks; paraphrase = a reporter's attribution. */
-export const QUOTE_KINDS = ['direct', 'paraphrase'] as const;
+export const NEWS_QUOTE_KINDS = ['direct', 'paraphrase'] as const;
+export type NewsQuoteKind = (typeof NEWS_QUOTE_KINDS)[number];
+/**
+ * The news kinds, plus `division`: the TD's recorded Dáil vote. Its quote is the text of the
+ * proposal that was voted on, not the TD's words (docs/plans/quiz-improvements/01c).
+ */
+export const QUOTE_KINDS = [...NEWS_QUOTE_KINDS, 'division'] as const;
 export type QuoteKind = (typeof QUOTE_KINDS)[number];
+
+/** How a TD voted on a division stance. Staon (abstain) and absence never give one. */
+export const STANCE_VOTES = ['ta', 'nil'] as const;
+export type StanceVote = (typeof STANCE_VOTES)[number];
+
+/**
+ * Whether a vote was the TD's own: `free` (no party prior, a tied or split party), `rebel`
+ * (against the party majority), or `whip` (with it). Only free and rebel votes move a profile.
+ */
+export const DISCIPLINES = ['free', 'rebel', 'whip'] as const;
+export type Discipline = (typeof DISCIPLINES)[number];
 
 /** One stance on a TD's page. */
 export interface TdStanceRecord {
   id: number;
   quote: string;
   quoteKind: QuoteKind;
+  /** On a Dáil vote, how the TD voted; NULL for a news quote. */
+  divisionVote: StanceVote | null;
   /** The outlet that published the article. */
   outlet: string;
   url: string;
@@ -24,10 +43,18 @@ export interface TdStanceRecord {
   questionId: number | null;
   /** That answer, as worded when it was matched. NULL = no clear answer, or no question. */
   optionText: string | null;
-  /** Stances this TD has on record on the same question, this one included. */
+  /**
+   * Stances of the same group (news quotes, or Dáil votes) this TD has on record on the same
+   * question, this one included.
+   */
   saidCount: number;
-  /** The TD's latest answer on this question differs from an earlier one. */
+  /** News quotes only: the TD's latest quoted answer on this question differs from an earlier one. */
   changedPosition: boolean;
+  /**
+   * Dáil votes only: the TD's latest quoted answer on this question, when it differs from the
+   * answer this vote matched; else NULL.
+   */
+  saidOption: string | null;
 }
 
 export interface TdStanceDomain {
@@ -55,6 +82,8 @@ export interface SharedIssue {
   agrees: boolean;
   quote: string;
   quoteKind: QuoteKind;
+  /** On a Dáil vote, how the TD voted; NULL for a news quote. */
+  divisionVote: StanceVote | null;
   outlet: string;
   url: string;
   statedAt: string;

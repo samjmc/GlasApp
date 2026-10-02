@@ -17,7 +17,7 @@ import { ATTENDANCE_BENCHMARK } from '../scoring/weights';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 import { LEADERSHIP_ATTENDANCE_BENCHMARK } from './metrics';
 import type { OireachtasClient, RosterMember } from './client';
-import type { RawBill, RawDivision, RawQuestion } from './parse';
+import { parseTranscript, type RawBill, type RawDivision, type RawQuestion } from './parse';
 
 const parliamentUrl = testDatabaseUrl('parliament');
 const run = describe.skipIf(!parliamentUrl);
@@ -892,7 +892,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     }
   });
 
-  it('names the government: each party with a minister, and Independent ministers by name', async () => {
+  it("gives each speech its speaker's party and role, once the speaker is in the roster", async () => {
     const donohoe = 'Paschal-Donohoe.S.2007-07-23';
     await parliament.runSync({
       client: fakeClient([
@@ -910,9 +910,8 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       log: () => {},
     });
     const ctx = await parliament.repository.divisionContext('dail-34-2025-06-21-vote_12');
-    // B (a Minister of State) and the new minister are both Party A: one party, listed once.
-    // The Ceann Comhairle holds an office but is not in government.
-    expect(ctx?.government).toEqual({ parties: ['Party A'], independents: ['Test Minister'] });
+    // The context names no government: the division prompt must not see a party (divisionPrompt.ts).
+    expect(ctx).not.toHaveProperty('government');
     // Once in the roster, the minister's speeches carry his party.
     const his = ctx?.speeches.filter((s) => s.name === 'Paschal Donohoe') ?? [];
     expect(his.length).toBeGreaterThan(0);
@@ -937,6 +936,64 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       expect(late?.section?.id).toBe('dail-2025-06-26-dbsect_19');
     } finally {
       await dbmod.pool.query(`delete from politics.divisions where id in ('dail-34-2025-06-12-vote_98', 'dail-34-2025-06-28-vote_99')`);
+    }
+  });
+
+  it("places a division among its section's speeches from the transcript marker, only when the match is one to one", async () => {
+    const SECTION = 'dail-2025-06-25-dbsect_19';
+    const position = async (id: string) => (await dbmod.pool.query('select section_position p from politics.divisions where id = $1', [id])).rows[0]?.p;
+    const located = async () =>
+      (await dbmod.pool.query(`select count(*)::int n from politics.divisions where debate_section_id = $1 and section_position is not null`, [SECTION])).rows[0].n;
+    /** A division in the fixture's section with these counts; the caller deletes it again. */
+    const addClone = (vote: number, ta: number, nil: number) =>
+      dbmod.pool.query(
+        `insert into politics.divisions (id, uri, house_no, date, subject, debate_title, debate_section_id, ta_count, nil_count, staon_count)
+         values ($1, $2, 34, '2025-06-25', 'Amendment put', null, $3, $4, $5, 0)`,
+        [`dail-34-2025-06-25-vote_${vote}`, `test:position-${vote}`, SECTION, ta, nil],
+      );
+    const reReadDay = () => sync({ client: fakeClient(roster), since: '2025-06-25', today: '2025-07-30', log: () => {} });
+    const markers = parseTranscript(transcript, '2025-06-25').divisionMarkers.filter((m) => m.sectionId === SECTION);
+    const [first, second, third] = markers;
+    expect(markers.map((m) => [m.ta, m.nil])).toEqual([[64, 82], [47, 104], [67, 83], [104, 48]]);
+
+    // The nine clones with 64/82 all match the first marker: not one to one, so none is placed.
+    // The three with 63/82 (Y absent) match no marker. Nothing in the section is placed.
+    expect(first).toMatchObject({ ta: 64, nil: 82 });
+    expect(await located()).toBe(0);
+
+    await addClone(13, second.ta, second.nil);
+    await addClone(14, third.ta, third.nil);
+    try {
+      await reReadDay();
+      expect(await position('dail-34-2025-06-25-vote_13')).toBe(second.afterPosition);
+      expect(await position('dail-34-2025-06-25-vote_14')).toBe(third.afterPosition);
+      expect(await located()).toBe(2);
+
+      // Its speeches are those since the section's previous placed division (none: the start).
+      const range = (from: number, to: number) => Array.from({ length: to - from }, (_, k) => from + k);
+      const ctx13 = await parliament.repository.divisionContext('dail-34-2025-06-25-vote_13');
+      expect(ctx13?.division.sectionPosition).toBe(second.afterPosition);
+      expect(ctx13?.siblings.find((s) => s.id === 'dail-34-2025-06-25-vote_14')?.sectionPosition).toBe(third.afterPosition);
+      expect(ctx13?.speeches.map((s) => s.position)).toEqual(range(0, second.afterPosition));
+      const ctx14 = await parliament.repository.divisionContext('dail-34-2025-06-25-vote_14');
+      expect(ctx14?.speeches.map((s) => s.position)).toEqual(range(second.afterPosition, third.afterPosition));
+      // Late in this long debate (five amendments moved, three voted on), each placed division
+      // reads its own amendment: the third vote is on No. 5, and No. 1 and No. 2 are not in its text.
+      const text = (ctx: typeof ctx14) => ctx?.speeches.map((s) => s.text).join('\n') ?? '';
+      expect(text(ctx13)).toContain('I move amendment No. 2:');
+      expect(text(ctx14)).toContain('I move amendment No. 5:');
+      expect(text(ctx14)).not.toMatch(/I move amendment No\. [12]:/);
+      // A division that is not placed still reads the whole section.
+      expect((await parliament.repository.divisionContext('dail-34-2025-06-21-vote_12'))?.speeches).toHaveLength(32);
+
+      // A second division with 47/104 makes that marker ambiguous: the next read clears it.
+      await addClone(15, second.ta, second.nil);
+      await reReadDay();
+      expect(await position('dail-34-2025-06-25-vote_13')).toBeNull();
+      expect(await position('dail-34-2025-06-25-vote_15')).toBeNull();
+      expect(await position('dail-34-2025-06-25-vote_14')).toBe(third.afterPosition);
+    } finally {
+      await dbmod.pool.query(`delete from politics.divisions where id in ('dail-34-2025-06-25-vote_13', 'dail-34-2025-06-25-vote_14', 'dail-34-2025-06-25-vote_15')`);
     }
   });
 });

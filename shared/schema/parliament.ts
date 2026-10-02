@@ -32,6 +32,12 @@ export const divisions = politics.table(
     debateTitle: text('debate_title'),
     /** debate_sections.id when the section has been ingested; not a foreign key. */
     debateSectionId: varchar('debate_section_id', { length: 80 }),
+    /**
+     * How many of that section's own speeches came before this division, from the transcript's
+     * division marker (set by the debates feed). NULL = not located (no marker, or two
+     * divisions in the section with the same counts); never 0 for "unknown".
+     */
+    sectionPosition: integer('section_position'),
     isBill: boolean('is_bill').notNull().default(false),
     taCount: integer('ta_count').notNull(),
     nilCount: integer('nil_count').notNull(),

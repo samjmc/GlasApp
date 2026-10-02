@@ -7,6 +7,7 @@
  *   recordTdEvidence                        a stance by a TD (verified news stances, debates)
  *   matchesFor / userMatches                TDs and parties closest to a position / to a signed-in user
  *   recalculateAll                          rebuild every profile, no model calls
+ *   replaceStanceEvidence / recomputeTdsAndParties   the nightly stance rebuild (server/stances/divisions.ts)
  */
 export {
   deleteTdEvidence,
@@ -15,6 +16,7 @@ export {
   partyProfile,
   recalculateAll,
   recomputeProfile,
+  recomputeTdsAndParties,
   recordTdEvidence,
   tdProfile,
   unknownTdCount,
@@ -26,5 +28,6 @@ export {
   type TdEvidenceInput,
   type TimelinePoint,
 } from './service';
+export { replaceStanceEvidence } from './repository';
 export type { Matches, PartyMatch, TdIdeology, TdMatch, UserIdeologyDetail } from '@shared/ideologyMatch';
 export { alignment, type DimensionWeights } from './alignment';

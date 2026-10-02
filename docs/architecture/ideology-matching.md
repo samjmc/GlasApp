@@ -32,7 +32,7 @@ It is order-independent, so every profile can be rebuilt from its evidence at an
 | Subject | Prior | Evidence | Decay |
 |---|---|---|---|
 | user | none | latest quiz (weight 10 × its coverage, only the dimensions it asked) + every policy vote (`listUserVoteVectors`) | none |
-| TD | party baseline (`partyBaselines.ts`), weight 3; independents none | `politics.td_ideology_evidence`: verified news stances (`stance`, `server/stances`), debate stances (not wired yet) | 180-day half-life |
+| TD | party baseline (`partyBaselines.ts`), weight 3; independents none | `politics.td_ideology_evidence`: verified news stances and the TD's own Dáil votes (both `stance`, `server/stances`), debate stances (not wired yet) | 180-day half-life |
 | party | — | mean of its TDs' profiles, each weighted 3 + its evidence weight; baseline when it has none. This stored row is `tdMean`; see "Party manifestos" for what a party is matched on | — |
 
 ### Party manifestos (`server/partyQuiz`, read time only)
@@ -61,6 +61,26 @@ A `stance` row is the option of the article's own daily-vote question that a TD'
 states (`sourceRef = question:<id>`), weighted option weight × option confidence × quote kind
 (direct 1, paraphrase 0.6, `QUOTE_KIND_WEIGHT`). It is the TD's current answer to that question:
 a newer one replaces it, an older one never does (`insertTdEvidence`).
+
+### Dáil divisions as stances (`server/stances/divisions.ts`, behind `DIVISION_STANCES`)
+
+Plan: `docs/plans/quiz-improvements/01c-division-stances.md`. A matched division becomes rows in
+`td_stances` with quote kind `division` — no evidence source of its own. Two model calls per
+division, both checked by code: call 1 says what a Tá vote supported, with a quote copied from ONE
+labelled PROPOSAL block (the motion or amendment moved, a bill's long title, the question); call 2
+picks the option of an existing daily-vote question (same domain, dated within 60 days) that a Tá
+vote states, and optionally one for Níl, or none. The model writes no axis numbers: the vector is
+the option's own. The prompts name no party, sponsor or bill source. Readings are cached in
+`politics.division_readings`; "as amended" and unclear questions are skipped.
+
+Every TD who voted on a matched side gets a row with its discipline (`free`, `rebel`, `whip`;
+`server/stances/discipline.ts`). All of them count for shared issues (weight 0.6 × decay, like a
+paraphrase); only free and rebel votes are axis evidence, weighted option weight × confidence ×
+0.6 × 1 (free) or 1.5 (rebel) (`stanceEvidenceWeight`, `server/stances/evidence.ts`, the one
+formula `record.ts` uses too). Evidence is one slot per (TD, question), shared with news quotes:
+the latest ELIGIBLE row wins (a whipped vote never replaces a quote there); on a tie the higher id.
+The sync rebuilds all `stance` evidence from `td_stances` in one transaction under an advisory
+lock, with the same not-older guard as `insertTdEvidence`.
 
 ## Alignment (`server/ideology/alignment.ts`)
 
@@ -94,3 +114,6 @@ question, they chose the same answer". Removing it from either would lose one of
 - Nothing records `article` evidence any more. `npm run stances -- --rebuild` deletes those rows
   (`deleteTdEvidence('article')`) and backfills stances from articles that already have a question.
 - A debate pipeline calls `recordTdEvidence({ source: 'debate', sourceRef: <speech id>, … })`.
+- `npm run stances -- --divisions --sync` and the nightly `runDivisionStances` (only with
+  `DIVISION_STANCES=on`) write Dáil-vote stances, then `replaceStanceEvidence` and
+  `recomputeTdsAndParties`.

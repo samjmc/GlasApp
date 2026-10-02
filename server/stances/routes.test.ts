@@ -22,6 +22,9 @@ const stance = (over: Partial<TdStanceRow>): TdStanceRow => ({
   id: 1,
   tdId: 7,
   articleId: 100,
+  divisionId: null,
+  divisionVote: null,
+  discipline: null,
   questionId: 10,
   optionKey: 'option_a',
   quote: 'We will build fifty thousand homes a year and we will do it in public hands.',
@@ -88,6 +91,7 @@ describe('GET /api/stances/td/:id', () => {
       id: 3,
       quote: 'We will build fifty thousand homes a year and we will do it in public hands.',
       quoteKind: 'direct',
+      divisionVote: null,
       outlet: 'RTÉ News',
       url: 'https://www.rte.ie/news/1',
       headline: 'Housing plan',
@@ -96,12 +100,46 @@ describe('GET /api/stances/td/:id', () => {
       optionText: 'Leave it to the market',
       saidCount: 2,
       changedPosition: true,
+      saidOption: null,
     });
     expect(housing[1]).toMatchObject({ saidCount: 2, changedPosition: true });
     // No question: said once, never "changed".
     expect(housing[2]).toMatchObject({ questionId: null, saidCount: 1, changedPosition: false });
     // A quote with no clear answer is on record, but is not a position on any question.
     expect(body.data.domains[1]!.stances[0]).toMatchObject({ quoteKind: 'paraphrase', questionId: null, optionText: null, saidCount: 1, changedPosition: false });
+  });
+
+  it('a Dáil vote: its own group for "N votes", never "changed position", and what the TD said when it differs', async () => {
+    const vote = (over: Partial<TdStanceRow>) =>
+      stance({ articleId: null, divisionId: 'dail-34-2026-09-24-vote_3', divisionVote: 'nil', discipline: 'whip', quoteKind: 'division', sourceName: 'Dáil Éireann', ...over });
+    rows.byTd.set(7, [
+      // Newest first: two votes on the same question, then two news quotes that differ.
+      vote({ id: 5, optionKey: 'option_b', optionText: 'Leave it to the market', statedAt: new Date('2026-09-25T09:00:00Z') }),
+      vote({ id: 4, divisionId: 'dail-34-2026-09-24-vote_2', optionKey: 'option_a', statedAt: new Date('2026-09-24T09:00:00Z') }),
+      stance({ id: 3, optionKey: 'option_c', optionText: 'Mix of both', statedAt: new Date('2026-09-22T09:00:00Z') }),
+      stance({ id: 1, statedAt: new Date('2026-09-20T09:00:00Z') }),
+    ]);
+    const body = (await (await get('/api/stances/td/7')).json()) as { data: TdStances };
+    const [v5, v4, n3, n1] = body.data.domains[0]!.stances;
+    expect(v5).toMatchObject({ quoteKind: 'division', divisionVote: 'nil', outlet: 'Dáil Éireann', saidCount: 2, changedPosition: false, saidOption: 'Mix of both' });
+    // The latest quote says option_c; this vote says option_a: it differs, so the quote shows.
+    expect(v4).toMatchObject({ saidCount: 2, changedPosition: false, saidOption: 'Mix of both' });
+    // Two votes never count as "said"; the quotes changed among themselves.
+    expect(n3).toMatchObject({ divisionVote: null, saidCount: 2, changedPosition: true, saidOption: null });
+    expect(n1).toMatchObject({ saidCount: 2, changedPosition: true, saidOption: null });
+  });
+
+  it('a vote that agrees with the latest quote shows no "said" line; a vote with no quote neither', async () => {
+    const vote = stance({ id: 2, articleId: null, divisionId: 'dail-34-2026-09-24-vote_2', divisionVote: 'ta', discipline: 'free', quoteKind: 'division', statedAt: new Date('2026-09-24T09:00:00Z') });
+    rows.byTd.set(7, [vote, stance({ id: 1 })]);
+    let body = (await (await get('/api/stances/td/7')).json()) as { data: TdStances };
+    expect(body.data.domains[0]!.stances.map((s) => [s.saidCount, s.changedPosition, s.saidOption])).toEqual([
+      [1, false, null],
+      [1, false, null],
+    ]);
+    rows.byTd.set(7, [vote]);
+    body = (await (await get('/api/stances/td/7')).json()) as { data: TdStances };
+    expect(body.data.domains[0]!.stances[0]).toMatchObject({ saidOption: null, divisionVote: 'ta' });
   });
 
   it('the same answer twice is said twice, not a change', async () => {

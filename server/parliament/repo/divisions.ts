@@ -1,16 +1,15 @@
 /**
  * Division reads for the ideology area: one division with what is needed to say what it
- * meant, and every vote with its party line. Nothing here writes.
- *
- * A division's place among its section's speeches is not stored yet, so `sectionPosition`
- * is always NULL and `speeches` is the whole section.
+ * meant, and every vote with its party line. The one write is a division's place among its
+ * section's speeches (`sectionPosition`), which the debates feed sets from the transcript.
  */
-import { and, asc, desc, eq, inArray, lte, ne, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, inArray, like, lte, ne, sql } from 'drizzle-orm';
 import { billDebates, debateSections, debateSpeeches, divisions, divisionVotes, type DivisionVote } from '@shared/schema/parliament';
 import { tds } from '@shared/schema/politics';
 import type { DivisionSummary } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
 import { INDEPENDENT, majorityFor, partyMajorities, type PartyVoteRow } from '../metrics';
+import { sectionId, type DivisionMarker } from '../parse';
 import { billDetail } from './bills';
 
 export interface DivisionContext {
@@ -24,8 +23,6 @@ export interface DivisionContext {
   speeches: Array<{ position: number; name: string | null; party: string | null; role: string | null; isPresiding: boolean; text: string }>;
   /** Every bill debated in the linked section: one section can carry several. */
   bills: Array<{ id: string; shortTitle: string; longTitle: string | null; source: string; primarySponsor: { label: string; party: string | null } | null }>;
-  /** Now, not at the time of the vote: parties with a minister, and Independent ministers by name. */
-  government: { parties: string[]; independents: string[] };
 }
 
 export interface DivisionVoteRecord {
@@ -45,7 +42,6 @@ export interface DivisionVoteRecord {
 
 /** Fewer member speeches than this and the linked section says too little to read a division by. */
 const MIN_MEMBER_SPEECHES = 2;
-const GOVERNMENT_OFFICE = /\bminister\b|\btaoiseach\b|\bt[áa]naiste\b/i;
 
 const summaryCols = {
   id: divisions.id,
@@ -59,6 +55,12 @@ const summaryCols = {
   staonCount: divisions.staonCount,
 };
 
+/** A division as divisionContext and listDivisionRefs describe it. */
+export type DivisionRef = DivisionContext['division'];
+
+const refCols = { ...summaryCols, debateSectionId: divisions.debateSectionId, heldAt: divisions.heldAt, sectionPosition: divisions.sectionPosition };
+const toRef = ({ heldAt, ...row }: { heldAt: Date | null } & Omit<DivisionRef, 'heldAt'>): DivisionRef => ({ ...row, heldAt: heldAt?.toISOString() ?? null });
+
 /** The number after the last "_" in an id: `vote_10` → 10, `dbsect_19` → 19. Ids sort as text otherwise. */
 const trailingNumber = (column: typeof divisions.id | typeof debateSpeeches.sectionId) => sql`substring(${column} from '_(\\d+)$')::int`;
 
@@ -69,6 +71,7 @@ async function sectionSet(section: SectionRow, database: Db) {
   const children = await database.select({ id: debateSections.id }).from(debateSections).where(eq(debateSections.parentId, section.id));
   const speeches = await database
     .select({
+      sectionId: debateSpeeches.sectionId,
       position: debateSpeeches.position,
       name: tds.name,
       party: tds.party,
@@ -84,34 +87,46 @@ async function sectionSet(section: SectionRow, database: Db) {
 }
 
 /**
+ * A placed division reads only its own section's speeches since the previous placed
+ * division there (or the start): the debate on the question it put. Otherwise all of them.
+ */
+function speechesFor(
+  chosen: Awaited<ReturnType<typeof sectionSet>>,
+  division: Pick<DivisionRef, 'debateSectionId' | 'sectionPosition'>,
+  siblings: Array<{ sectionPosition: number | null }>,
+) {
+  const at = division.sectionPosition;
+  if (at === null || chosen.section.id !== division.debateSectionId) return chosen.speeches;
+  const from = Math.max(0, ...siblings.map((s) => s.sectionPosition ?? -1).filter((p) => p < at));
+  return chosen.speeches.filter((s) => s.sectionId === division.debateSectionId && s.position >= from && s.position < at);
+}
+
+/**
  * Everything the ideology area needs to read one division. NULL when there is no such division.
  *
  * Speeches come from the linked section and its children. When that section is not ingested
  * or has fewer than two member speeches, they come from the latest section with the
  * division's debate title dated on or before the linked section's date (read from its id,
- * which can be after the division's own date), if there is one.
+ * which can be after the division's own date), if there is one. A division placed in its
+ * linked section (`sectionPosition`) gets only the speeches that led up to it.
  */
 export async function divisionContext(id: string, database: Db = db): Promise<DivisionContext | null> {
-  const [row] = await database
-    .select({ ...summaryCols, debateSectionId: divisions.debateSectionId, heldAt: divisions.heldAt })
-    .from(divisions)
-    .where(eq(divisions.id, id));
+  const [row] = await database.select(refCols).from(divisions).where(eq(divisions.id, id));
   if (!row) return null;
-  const { heldAt, debateSectionId: linkedId, ...summary } = row;
-  const division = { ...summary, debateSectionId: linkedId, heldAt: heldAt?.toISOString() ?? null, sectionPosition: null };
+  const division = toRef(row);
+  const { debateSectionId: linkedId, sectionPosition, heldAt: _heldAt, ...summary } = division;
 
-  const [siblingRows, billRows, officeHolders, [linked]] = await Promise.all([
+  const [siblings, billRows, [linked]] = await Promise.all([
     linkedId
       ? database
-          .select(summaryCols)
+          .select({ ...summaryCols, sectionPosition: divisions.sectionPosition })
           .from(divisions)
           .where(eq(divisions.debateSectionId, linkedId))
           .orderBy(sql`${divisions.heldAt} asc nulls last`, trailingNumber(divisions.id), asc(divisions.id))
-      : Promise.resolve([summary]),
+      : Promise.resolve([{ ...summary, sectionPosition }]),
     linkedId
       ? database.selectDistinct({ id: billDebates.billId }).from(billDebates).where(eq(billDebates.debateSectionId, linkedId)).orderBy(asc(billDebates.billId))
       : Promise.resolve([]),
-    database.select({ name: tds.name, party: tds.party, offices: tds.offices }).from(tds).where(eq(tds.isActive, true)),
     linkedId
       ? database.select({ id: debateSections.id, date: debateSections.date, title: debateSections.title }).from(debateSections).where(eq(debateSections.id, linkedId))
       : Promise.resolve([] as SectionRow[]),
@@ -135,23 +150,55 @@ export async function divisionContext(id: string, database: Db = db): Promise<Di
     return [{ id: b.id, shortTitle: b.shortTitle, longTitle: b.longTitle, source: b.source, primarySponsor: primary ? { label: primary.label, party: primary.party } : null }];
   });
 
-  const ministers = officeHolders.filter((t) => (t.offices ?? []).some((o) => GOVERNMENT_OFFICE.test(o.title.normalize('NFC'))));
-  const isIndependent = (party: string | null) => !party || party === INDEPENDENT;
-  const government = {
-    parties: Array.from(new Set(ministers.filter((m) => !isIndependent(m.party)).map((m) => m.party as string))).sort(),
-    independents: ministers.filter((m) => isIndependent(m.party)).map((m) => m.name).sort(),
-  };
-
-  const siblings = siblingRows.map((s) => ({ ...s, sectionPosition: null }));
+  const speeches = chosen ? speechesFor(chosen, division, siblings) : [];
   return {
     division,
     section: chosen ? chosen.section : null,
     siblings,
     index: siblings.findIndex((s) => s.id === id) + 1,
-    speeches: chosen ? chosen.speeches : [],
+    speeches: speeches.map(({ sectionId: _sectionId, ...speech }) => speech),
     bills,
-    government,
   };
+}
+
+/** The division's page on oireachtas.ie, from its id; NULL for an id of another shape. */
+export function oireachtasVoteUrl(divisionId: string): string | null {
+  const m = divisionId.match(/^dail-(\d+)-(\d{4}-\d{2}-\d{2})-vote_(\d+)$/);
+  return m ? `https://www.oireachtas.ie/en/debates/vote/dail/${m[1]}/${m[2]}/${m[3]}/` : null;
+}
+
+/** Every division as divisionContext describes it, newest first. One read. */
+export async function listDivisionRefs(database: Db = db): Promise<DivisionRef[]> {
+  const rows = await database.select(refCols).from(divisions).orderBy(desc(divisions.date), desc(trailingNumber(divisions.id)), desc(divisions.id));
+  return rows.map(toRef);
+}
+
+/**
+ * Place one sitting day's divisions among their sections' speeches from the day's transcript
+ * markers, matched on section and Tá/Níl counts. Only a one-to-one match is placed: two
+ * markers, or two divisions, in a section with the same counts place neither. Every other
+ * division of the day goes back to NULL ("not located"). Returns how many were placed.
+ */
+export async function setDivisionPositions(date: string, markers: DivisionMarker[], database: Db = db): Promise<number> {
+  const key = (section: string | null, ta: number, nil: number) => `${section}\u0000${ta}\u0000${nil}`;
+  const ofDay = like(divisions.debateSectionId, sectionId(date, '%'));
+  return database.transaction(async (tx) => {
+    await tx.update(divisions).set({ sectionPosition: null }).where(ofDay);
+    const rows = await tx.select({ id: divisions.id, section: divisions.debateSectionId, ta: divisions.taCount, nil: divisions.nilCount }).from(divisions).where(ofDay);
+    const divisionsAt = new Map<string, string[]>();
+    for (const r of rows) divisionsAt.set(key(r.section, r.ta, r.nil), [...(divisionsAt.get(key(r.section, r.ta, r.nil)) ?? []), r.id]);
+    const markersAt = new Map<string, number>();
+    for (const m of markers) markersAt.set(key(m.sectionId, m.ta, m.nil), (markersAt.get(key(m.sectionId, m.ta, m.nil)) ?? 0) + 1);
+    let placed = 0;
+    for (const m of markers) {
+      const k = key(m.sectionId, m.ta, m.nil);
+      const ids = divisionsAt.get(k) ?? [];
+      if (markersAt.get(k) !== 1 || ids.length !== 1) continue;
+      await tx.update(divisions).set({ sectionPosition: m.afterPosition }).where(eq(divisions.id, ids[0]));
+      placed++;
+    }
+    return placed;
+  });
 }
 
 /**

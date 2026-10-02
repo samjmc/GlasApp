@@ -63,7 +63,7 @@ describe('stanceWeight', () => {
   });
 
   it('weights a paraphrase below a direct quote', () => {
-    expect(QUOTE_KIND_WEIGHT).toEqual({ direct: 1, paraphrase: 0.6 });
+    expect(QUOTE_KIND_WEIGHT).toEqual({ direct: 1, paraphrase: 0.6, division: 0.6 });
     expect(stanceWeight('paraphrase', NOW, NOW)).toBe(0.6);
   });
 });
@@ -89,6 +89,14 @@ describe('agreementFor', () => {
   it('gives a paraphrase less pull than a direct quote', () => {
     // (0.6·100 + 2·50) / (0.6 + 2) = 61.5
     expect(agreementFor(50, [item('option_a', 'option_a', { quoteKind: 'paraphrase' })], NOW).alignment).toBe(62);
+  });
+
+  it('counts a Dáil vote like a paraphrase, whatever its discipline: it is the TD’s record', () => {
+    // (0.6·100·1 + 2·50) / 2.6, and a vote with the whip is an item too.
+    const vote = item('option_a', 'option_a', { quoteKind: 'division' });
+    const result = agreementFor(50, [vote], NOW);
+    expect(result.alignment).toBe(62);
+    expect(result.issues.items[0]!.weight).toBe(0.6);
   });
 
   it('gives an old stance less pull than a new one', () => {
@@ -118,11 +126,12 @@ describe('latestStances', () => {
     expect(latestStances(stances).map((s) => s.id).sort()).toEqual([2, 4, 5]);
   });
 
-  it('keeps the first seen on a tie', () => {
+  it('on a tie, the higher id wins, whatever the order it was read in', () => {
     const stances = [
       { id: 1, tdId: 1, questionId: 10, statedAt: NOW },
       { id: 2, tdId: 1, questionId: 10, statedAt: NOW },
     ];
-    expect(latestStances(stances).map((s) => s.id)).toEqual([1]);
+    expect(latestStances(stances).map((s) => s.id)).toEqual([2]);
+    expect(latestStances([...stances].reverse()).map((s) => s.id)).toEqual([2]);
   });
 });

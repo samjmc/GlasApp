@@ -9,7 +9,7 @@
  * 4. An unknown td_id or domain, or a quote that breaks the prompt's rules, is `invalid`.
  */
 import { POLICY_DOMAINS, type PolicyDomain } from '../constants/policyTopics';
-import { QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type CandidateTd, type QuoteKind, type RawStance } from './extract';
+import { QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type CandidateTd, type NewsQuoteKind, type RawStance } from './extract';
 
 export const NEAR_CHARS = 300;
 /** How far before a direct quote its opening quote mark may sit (a space, say). */
@@ -23,7 +23,7 @@ export interface VerifiedStance {
   policyDomain: PolicyDomain;
   /** The passage as it appears in the article, not as the model typed it. */
   quote: string;
-  quoteKind: QuoteKind;
+  quoteKind: NewsQuoteKind;
   /** Where the quote sits in the verified text. */
   start: number;
   end: number;
@@ -187,7 +187,7 @@ export function verifyStances(text: string, candidates: CandidateTd[], stances: 
       continue;
     }
 
-    const kind: QuoteKind = stance.quoteKind === 'direct' && !match.direct ? 'paraphrase' : stance.quoteKind;
+    const kind: NewsQuoteKind = stance.quoteKind === 'direct' && !match.direct ? 'paraphrase' : stance.quoteKind;
     if (kind !== stance.quoteKind) downgraded++;
     const start = n.offsets[match.pos]!;
     const end = n.offsets[match.pos + quote.length - 1]! + 1;
