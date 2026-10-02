@@ -1,86 +1,98 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { DIVISION_KINDS } from '@shared/divisionMeaning';
 import type { DivisionContext } from '../parliament';
+import { parseTranscript } from '../parliament/parse';
 import {
-  DIVISION_SYSTEM_PROMPT,
+  MATCH_SYSTEM_PROMPT,
+  MEANING_SYSTEM_PROMPT,
+  MOVED_TEXT_CHARS,
   divisionUserPrompt,
-  parseDivisionClassification,
+  matchUserPrompt,
+  parseMatch,
+  parseMeaning,
+  proposalBlocks,
   selectSpeechContext,
   type ContextSpeech,
 } from './divisionPrompt';
 
 const json = (value: unknown) => JSON.stringify(value);
-const valid = { ta_lean: { economic: -1 }, confidence: 0.8, salience: 0.6 };
+const meaning = { procedural: false, division_kind: 'amendment', ta_means: ' For the report. ', quote_block: ' A1 ', quote: 'q', policy_domains: [' Housing '], confidence: 0.8 };
 
-describe('parseDivisionClassification', () => {
-  it('clamps leans to ±2 and drops unknown, non-numeric and non-finite dimensions', () => {
-    // 1e999 is valid JSON and parses to Infinity.
-    const parsed = parseDivisionClassification(
-      '{"ta_lean": {"economic": 3.5, "welfare": -9, "social": 1, "cultural": "high", "authority": 1e999, "vibes": 2}, "confidence": 0.8, "salience": 0.6}',
-    );
-    expect(parsed?.taLean).toEqual({ economic: 2, welfare: -2, social: 1 });
-  });
-
-  it('returns null for bad JSON, a missing ta_lean, or a ta_lean that is not an object', () => {
-    expect(parseDivisionClassification(null)).toBeNull();
-    expect(parseDivisionClassification('')).toBeNull();
-    expect(parseDivisionClassification('{"ta_lean": {"economic": 1}')).toBeNull();
-    expect(parseDivisionClassification(json({ nil_lean: { economic: 1 }, confidence: 1 }))).toBeNull();
-    expect(parseDivisionClassification(json({ ta_lean: [1, 2] }))).toBeNull();
-    expect(parseDivisionClassification(json([valid]))).toBeNull();
-  });
-
-  it('reads a missing nil_lean as the opposite of ta_lean', () => {
-    const parsed = parseDivisionClassification(json({ ta_lean: { economic: -1.5, welfare: 0, social: 2 } }));
-    expect(parsed?.nilLean).toEqual({ economic: 1.5, welfare: 0, social: -2 });
-    expect(parseDivisionClassification(json({ ...valid, nil_lean: { economic: 0.5 } }))?.nilLean).toEqual({ economic: 0.5 });
-  });
-
-  it('clamps nil_weight, salience and confidence to 0..1; nil_weight defaults to 1', () => {
-    expect(parseDivisionClassification(json(valid))?.nilWeight).toBe(1);
-    expect(parseDivisionClassification(json({ ...valid, nil_weight: 'low' }))?.nilWeight).toBe(1);
-    expect(parseDivisionClassification(json({ ...valid, nil_weight: 1.7, salience: -1, confidence: 4 }))).toMatchObject({
-      nilWeight: 1,
-      salience: 0,
-      confidence: 1,
+describe('parseMeaning', () => {
+  it('reads every field, trimming text and lower-casing domains', () => {
+    expect(parseMeaning(json(meaning))).toEqual({
+      procedural: false,
+      divisionKind: 'amendment',
+      taMeans: 'For the report.',
+      quoteBlock: 'A1',
+      quote: 'q',
+      policyDomains: ['housing'],
+      confidence: 0.8,
     });
-    expect(parseDivisionClassification(json({ ...valid, nil_weight: -0.2 }))?.nilWeight).toBe(0);
-    expect(parseDivisionClassification(json({ ...valid, nil_weight: 0.25 }))?.nilWeight).toBe(0.25);
-    // Unstated confidence and salience are not guessed up: they give no evidence.
-    expect(parseDivisionClassification(json({ ta_lean: { economic: 1 } }))).toMatchObject({ confidence: 0, salience: 0 });
   });
 
-  it('keeps a known division kind and reads anything else as other', () => {
-    for (const kind of DIVISION_KINDS) expect(parseDivisionClassification(json({ ...valid, division_kind: kind }))?.divisionKind).toBe(kind);
-    expect(parseDivisionClassification(json({ ...valid, division_kind: 'guillotine' }))?.divisionKind).toBe('other');
-    expect(parseDivisionClassification(json(valid))?.divisionKind).toBe('other');
+  it('is null for bad JSON, a missing or unknown kind, or a wrong type; it never guesses a kind', () => {
+    expect(parseMeaning(null)).toBeNull();
+    expect(parseMeaning('{"division_kind": "amendment"')).toBeNull();
+    expect(parseMeaning(json({ ...meaning, division_kind: undefined }))).toBeNull();
+    expect(parseMeaning(json({ ...meaning, division_kind: 'guillotine' }))).toBeNull();
+    expect(parseMeaning(json({ ...meaning, policy_domains: 'housing' }))).toBeNull();
+    expect(parseMeaning(json([meaning]))).toBeNull();
   });
 
-  it('reads the text and flag fields', () => {
-    const parsed = parseDivisionClassification(
-      json({ ...valid, ta_means: ' Defer the tax. ', procedural: true, free_vote: 'yes', policy_topic: ' housing ', reasoning: 'Because.' }),
-    );
-    expect(parsed).toMatchObject({ taMeans: 'Defer the tax.', procedural: true, freeVote: false, policyTopic: 'housing', reasoning: 'Because.' });
-    expect(parseDivisionClassification(json({ ...valid, policy_topic: '  ' }))?.policyTopic).toBeNull();
+  it('a procedural reply needs no quote; confidence is clamped to 0..1, unstated = 0', () => {
+    expect(parseMeaning(json({ division_kind: 'procedural', procedural: true }))).toMatchObject({ procedural: true, quote: '', policyDomains: [], confidence: 0 });
+    expect(parseMeaning(json({ ...meaning, confidence: 4 }))?.confidence).toBe(1);
   });
 });
 
-describe('DIVISION_SYSTEM_PROMPT', () => {
-  it('names all eight dimensions with their poles, + always the right-coded pole', () => {
-    for (const d of IDEOLOGY_DIMENSIONS) {
-      const { negative, positive } = DIMENSION_POLES[d];
-      expect(DIVISION_SYSTEM_PROMPT).toContain(`${d}: −2 = ${negative}, +2 = ${positive}`);
-    }
+describe('parseMatch', () => {
+  it('reads a match, a Níl answer and a null', () => {
+    expect(parseMatch(json({ question_id: 3, ta_option: 'option_a', nil_option: 'option_b', confidence: 0.9, reason: ' r ' }))).toEqual({
+      questionId: 3,
+      taOption: 'option_a',
+      nilOption: 'option_b',
+      confidence: 0.9,
+      reason: 'r',
+    });
+    expect(parseMatch(json({ question_id: null }))).toMatchObject({ questionId: null, taOption: null, nilOption: null, confidence: 0 });
   });
 
-  it('explains how Dáil questions are put, including the inverted "words … stand" question', () => {
-    expect(DIVISION_SYSTEM_PROMPT).toMatch(/"Amendment put": Tá = for the amendment/);
-    expect(DIVISION_SYSTEM_PROMPT).toMatch(/"That the words proposed to be deleted stand": Tá = keep the original motion and reject the countermotion/);
-    expect(DIVISION_SYSTEM_PROMPT).toMatch(/do now pass.*read a Second Time.*Tá = for the Bill/);
-    expect(DIVISION_SYSTEM_PROMPT).toContain('Code the policy content of the proposal; do not infer it from who proposed it.');
-    expect(DIVISION_SYSTEM_PROMPT).toMatch(/nil_weight low \(0–0\.3\)/);
-    for (const kind of DIVISION_KINDS) expect(DIVISION_SYSTEM_PROMPT).toContain(kind);
+  it('is null for bad JSON or a wrong shape', () => {
+    expect(parseMatch('nope')).toBeNull();
+    expect(parseMatch(json({ question_id: '3', ta_option: 'option_a' }))).toBeNull();
+    expect(parseMatch(json({ ta_option: 'option_a' }))).toBeNull();
+  });
+});
+
+describe('the system prompts', () => {
+  it('meaning: how Dáil questions are put, every kind, and no axis numbers', () => {
+    expect(MEANING_SYSTEM_PROMPT).toMatch(/"Amendment put".*Tá = for the amendment/);
+    expect(MEANING_SYSTEM_PROMPT).toMatch(/"That the words proposed to be deleted stand": division_kind "words_stand"; Tá = keep the original motion and reject the countermotion/);
+    expect(MEANING_SYSTEM_PROMPT).toMatch(/"That the motion, as amended, be agreed to": division_kind "as_amended"/);
+    expect(MEANING_SYSTEM_PROMPT).toContain('Code the policy content of the proposal; do not infer it from who proposed it.');
+    for (const kind of DIVISION_KINDS) expect(MEANING_SYSTEM_PROMPT).toContain(kind);
+    // No axis numbers of any kind: a vector only ever comes from the option chosen.
+    expect(MEANING_SYSTEM_PROMPT).not.toMatch(/_lean\b|−2|\+2|axis|axes/i);
+  });
+
+  it('match: an answer only when it is stated, never from who proposed it', () => {
+    expect(MATCH_SYSTEM_PROMPT).toMatch(/ONLY when what a Tá vote supported itself states that choice/);
+    expect(MATCH_SYSTEM_PROMPT).toMatch(/Never infer an answer from who proposed the motion/);
+    expect(MATCH_SYSTEM_PROMPT).toMatch(/Give a Níl answer only when voting against the proposal itself states/);
+  });
+
+  it('match prompt: the meaning, the quote and each candidate with its keyed answers; no tallies', () => {
+    const prompt = matchUserPrompt({ taMeans: 'Build homes.', quote: 'calls on the Government to build homes', divisionKind: 'words_stand' }, [
+      { id: 7, question: 'How should the State meet housing demand?', options: [{ key: 'option_a', label: 'Build public homes' }, { key: 'option_b', label: 'Leave it to the market' }] },
+    ]);
+    expect(prompt).toContain('Build homes.');
+    expect(prompt).toContain('"calls on the Government to build homes"');
+    expect(prompt).toContain('question_id 7: How should the State meet housing demand?');
+    expect(prompt).toContain('option_b: Leave it to the market');
+    expect(prompt).not.toMatch(/Tá \d|Níl \d/);
   });
 });
 
@@ -222,9 +234,11 @@ describe('divisionUserPrompt', () => {
     expect(prompt).toContain('Tá 47, Níl 104');
   });
 
-  it('names the bills, their source and primary sponsor', () => {
-    expect(prompt).toContain('An Act to amend the Finance (Local Property Tax) Act 2012.');
-    expect(prompt).toContain('Test Bill 2025 (Private Member bill; primary sponsor Cian O’Callaghan)');
+  it("gives each bill's long title as a PROPOSAL block, and neither its source nor its sponsor", () => {
+    expect(prompt).toContain('[B1] An Act to amend the Finance (Local Property Tax) Act 2012.');
+    expect(prompt).toContain('[B2] Test Bill 2025');
+    expect(prompt).toContain('[A1] I move amendment No. 5:');
+    expect(prompt).not.toMatch(/Government|Private Member|sponsor|Minister for Finance|O’Callaghan/);
     expect(prompt).toContain('I cannot accept the amendment.');
   });
 
@@ -267,5 +281,69 @@ describe('divisionUserPrompt', () => {
 
   it('says so when there is no debate record', () => {
     expect(divisionUserPrompt({ ...context, speeches: [] })).toContain('No debate record is available for this division.');
+  });
+});
+
+describe('proposalBlocks', () => {
+  // The real 2025-06-25 transcript: dbsect_19 is the Finance Bill's committee stage.
+  const transcript = fs.readFileSync(path.join(__dirname, '../parliament/__fixtures__/transcript-2025-06-25.xml'), 'utf8');
+  const parsed = parseTranscript(transcript, '2025-06-25');
+  const fixtureSpeeches: ContextSpeech[] = parsed.speeches
+    .filter((s) => s.sectionId === 'dail-2025-06-25-dbsect_19')
+    .map((s) => ({ position: s.position, name: s.role, party: null, role: s.role, isPresiding: s.isPresiding, text: s.text }));
+  const fixture = { ...context, speeches: fixtureSpeeches };
+
+  it('Q is the subject; B each long title, with no source or sponsor', () => {
+    const blocks = proposalBlocks(fixture);
+    expect(blocks.slice(0, 3)).toEqual([
+      { label: 'Q', kind: 'Q', text: 'Amendment put' },
+      { label: 'B1', kind: 'B', text: 'An Act to amend the Finance (Local Property Tax) Act 2012.' },
+      { label: 'B2', kind: 'B', text: 'Test Bill 2025' },
+    ]);
+    expect(blocks.map((b) => b.text).join(' ')).not.toMatch(/Government|Private Member|O’Callaghan/);
+  });
+
+  it('an "I move" block holds its own speech only: A1 is amendment No. 1 and its text, never the Minister’s reply', () => {
+    const a1 = proposalBlocks(fixture).find((b) => b.label === 'A1')!;
+    expect(a1.text.startsWith('I move amendment No. 1:')).toBe(true);
+    expect(a1.text).toContain('In page 3, between lines 23 and 24, to insert the following:');
+    expect(a1.text).toContain('defective concrete blocks');
+    expect(a1.text).not.toContain('I thank the Deputy for raising this matter');
+  });
+
+  it('"I move amendment" is an A block, any other "I move" an M block, numbered in document order', () => {
+    const blocks = proposalBlocks({
+      ...context,
+      speeches: [
+        speech({ text: 'I move:\n\nThat Dáil Éireann calls on the Government to build homes.' }),
+        minister('I move amendment No. 1:\n\nTo delete all words after "That Dáil Éireann" and substitute the following.\n\nI move amendment No. 2:\n\nIn page 4, line 2, to delete "may".'),
+      ],
+    });
+    expect(blocks.filter((b) => b.kind === 'M' || b.kind === 'A').map((b) => [b.label, b.text.split('\n')[0]])).toEqual([
+      ['M1', 'I move:'],
+      ['A1', 'I move amendment No. 1:'],
+      ['A2', 'I move amendment No. 2:'],
+    ]);
+    // A block stops at the next "I move", even in the same speech.
+    expect(blocks.find((b) => b.label === 'A1')!.text).not.toContain('No. 2');
+  });
+
+  it('a moved block takes whole paragraphs, up to MOVED_TEXT_CHARS', () => {
+    const long = `${'w '.repeat(1_500)}LONG-PARAGRAPH`;
+    const [block] = proposalBlocks({ ...context, bills: [], division: { ...context.division, subject: null }, speeches: [speech({ text: `I move amendment No. 9:\n\nShort text.\n\n${long}` })] });
+    expect(block!.text).toBe('I move amendment No. 9:\n\nShort text.');
+    expect(MOVED_TEXT_CHARS).toBe(3_000);
+  });
+
+  it('within the budget, keeps Q and B, then whole blocks: the earliest, or the nearest the vote when placed', () => {
+    const many = Array.from({ length: 10 }, (_, k) => speech({ text: `I move amendment No. ${k + 1}: ${'x'.repeat(90)}` }));
+    const small = { ...context, speeches: many };
+    const early = proposalBlocks(small, 400);
+    expect(early.map((b) => b.label)).toEqual(['Q', 'B1', 'B2', 'A1', 'A2']);
+    expect(early.at(-1)!.text).toContain('No. 2:');
+    const late = proposalBlocks({ ...small, division: { ...small.division, sectionPosition: 10 } }, 400);
+    expect(late.map((b) => b.text.slice(0, 22))).toEqual(['Amendment put', expect.any(String), 'Test Bill 2025', 'I move amendment No. 9', 'I move amendment No. 1']);
+    expect(late.at(-1)!.text).toContain('No. 10:');
+    expect(late.map((b) => b.label).slice(3)).toEqual(['A1', 'A2']);
   });
 });

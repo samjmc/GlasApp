@@ -12,13 +12,13 @@ vi.mock('../parliament', () => ({
   runSync: vi.fn(async () => ({ divisions: { ingested: 0 }, debates: { days: 0, failedDays: [] }, failedFeeds: [] })),
   leaveWatch: { runLeaveWatch: vi.fn() },
 }));
-vi.mock('../ideology', () => ({ runDivisionIdeology: vi.fn(async () => ({})) }));
+vi.mock('../stances', () => ({ runDivisionStances: vi.fn(async () => ({})) }));
 
 const { initScheduler } = await import('./scheduler');
-const { runDivisionIdeology } = await import('../ideology');
+const { runDivisionStances } = await import('../stances');
 const { runSync } = await import('../parliament');
 
-const FLAG = 'DIVISION_IDEOLOGY';
+const FLAG = 'DIVISION_STANCES';
 const before = process.env[FLAG];
 const setFlag = (value: string | undefined) => {
   if (value === undefined) delete process.env[FLAG];
@@ -34,25 +34,25 @@ describe('the 04:45 parliament run', () => {
   beforeEach(() => vi.clearAllMocks());
   afterAll(() => setFlag(before));
 
-  it('does no division work unless DIVISION_IDEOLOGY is exactly "on"', async () => {
+  it('does no division work unless DIVISION_STANCES is exactly "on"', async () => {
     expect(nightly).toBeDefined();
     for (const value of [undefined, '', 'off', 'true', '1', 'ON']) {
       setFlag(value);
       await nightly.run();
     }
     expect(runSync).toHaveBeenCalledTimes(6);
-    expect(runDivisionIdeology).not.toHaveBeenCalled();
+    expect(runDivisionStances).not.toHaveBeenCalled();
   });
 
-  it('with DIVISION_IDEOLOGY=on, runs the nightly division job after the sync, even when the sync failed', async () => {
+  it('with DIVISION_STANCES=on, runs the nightly division job after the sync, even when the sync failed', async () => {
     setFlag('on');
     await nightly.run();
-    expect(runDivisionIdeology).toHaveBeenCalledWith({ mode: 'nightly' });
-    expect(vi.mocked(runSync).mock.invocationCallOrder[0]).toBeLessThan(vi.mocked(runDivisionIdeology).mock.invocationCallOrder[0]);
+    expect(runDivisionStances).toHaveBeenCalledWith({ mode: 'nightly' });
+    expect(vi.mocked(runSync).mock.invocationCallOrder[0]).toBeLessThan(vi.mocked(runDivisionStances).mock.invocationCallOrder[0]);
 
     vi.mocked(runSync).mockRejectedValueOnce(new Error('Oireachtas down'));
-    vi.mocked(runDivisionIdeology).mockRejectedValueOnce(new Error('already running'));
+    vi.mocked(runDivisionStances).mockRejectedValueOnce(new Error('already running'));
     await expect(nightly.run()).resolves.toBeUndefined(); // its own try/catch: a failure is logged, not thrown
-    expect(runDivisionIdeology).toHaveBeenCalledTimes(2);
+    expect(runDivisionStances).toHaveBeenCalledTimes(2);
   });
 });

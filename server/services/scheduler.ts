@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
 import { leaveWatch, runSync as runParliamentSync } from "../parliament";
-import { runDivisionIdeology } from "../ideology";
+import { runDivisionStances } from "../stances";
 
 /** Initialize and start the scheduled jobs. */
 export function initScheduler() {
@@ -65,14 +65,14 @@ export function initScheduler() {
     } catch (error) {
       console.error("[Scheduler] Parliament sync failed:", error instanceof Error ? error.message : error);
     }
-    // Dáil divisions as TD evidence, once the sync has brought in the day's divisions. Off
-    // unless DIVISION_IDEOLOGY=on: it calls a model, and goes on only after the human checks in
-    // docs/plans/quiz-improvements/01-td-vote-evidence.md.
-    if (process.env.DIVISION_IDEOLOGY === "on") {
+    // Dáil divisions as TD stances, once the sync has brought in the day's divisions. Off
+    // unless DIVISION_STANCES=on: it calls a model, and goes on only after the human gates in
+    // docs/plans/quiz-improvements/01c-division-stances.md §9.
+    if (process.env.DIVISION_STANCES === "on") {
       try {
-        await runDivisionIdeology({ mode: "nightly" });
+        await runDivisionStances({ mode: "nightly" });
       } catch (error) {
-        console.error("[Scheduler] Division ideology failed:", error instanceof Error ? error.message : error);
+        console.error("[Scheduler] Division stances failed:", error instanceof Error ? error.message : error);
       }
     }
   }, { timezone: "Europe/Dublin" });

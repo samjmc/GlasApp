@@ -34,6 +34,11 @@ describe('parseExtraction', () => {
     });
     expect(parsed).toEqual([{ tdId: 7, policyDomain: 'housing', quote: GOOD.quote, quoteKind: 'paraphrase' }]);
   });
+
+  it("drops a 'division' kind: a news quote is never a Dáil vote", () => {
+    // Kept, it would fail td_stances' CHECK and with it the article's whole save.
+    expect(parseExtraction({ stances: [{ ...GOOD, quote_kind: 'division' }] })).toEqual([]);
+  });
 });
 
 describe('extractStances', () => {

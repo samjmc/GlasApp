@@ -114,20 +114,51 @@ export async function insertTdEvidence(row: NewTdIdeologyEvidence, database: Db 
   const insert = database.insert(tdIdeologyEvidence).values(row);
   const written =
     row.source === 'stance'
-      ? await insert
-          .onConflictDoUpdate({
-            target: [tdIdeologyEvidence.tdId, tdIdeologyEvidence.source, tdIdeologyEvidence.sourceRef],
-            set: {
-              ...Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, row[d] ?? null])),
-              policyTopic: row.policyTopic ?? null,
-              weight: row.weight,
-              observedAt: row.observedAt,
-            },
-            setWhere: sql`excluded.observed_at >= ${tdIdeologyEvidence.observedAt}`,
-          })
-          .returning({ id: tdIdeologyEvidence.id })
+      ? await insert.onConflictDoUpdate(STANCE_UPSERT).returning({ id: tdIdeologyEvidence.id })
       : await insert.onConflictDoNothing().returning({ id: tdIdeologyEvidence.id });
   return written.length > 0;
+}
+
+/** The `stance` upsert: every value column from the new row, only when it is not older. */
+const STANCE_UPSERT = {
+  target: [tdIdeologyEvidence.tdId, tdIdeologyEvidence.source, tdIdeologyEvidence.sourceRef],
+  set: {
+    ...Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, sql.raw(`excluded.${tdIdeologyEvidence[d].name}`)])),
+    policyTopic: sql`excluded.policy_topic`,
+    weight: sql`excluded.weight`,
+    observedAt: sql`excluded.observed_at`,
+  },
+  setWhere: sql`excluded.observed_at >= ${tdIdeologyEvidence.observedAt}`,
+};
+
+/**
+ * The advisory lock every whole-set stance write takes (server/stances/divisions.ts): the
+ * server's nightly run and the CLI are different processes, so an in-process flag cannot keep
+ * them apart.
+ */
+export const STANCE_SYNC_LOCK = 4_710_314_001;
+const EVIDENCE_INSERT_CHUNK = 500;
+
+/**
+ * Insert `stance` rows in chunks, with the same guard as `insertTdEvidence`: a row whose slot
+ * already exists (the news pipeline wrote it meanwhile) updates it only when it is not older.
+ */
+export async function insertStanceEvidenceRows(database: Pick<Db, 'insert'>, rows: NewTdIdeologyEvidence[]): Promise<void> {
+  for (let i = 0; i < rows.length; i += EVIDENCE_INSERT_CHUNK) {
+    await database.insert(tdIdeologyEvidence).values(rows.slice(i, i + EVIDENCE_INSERT_CHUNK)).onConflictDoUpdate(STANCE_UPSERT);
+  }
+}
+
+/**
+ * Replace every `stance` evidence row with `rows`, rebuilt from td_stances, in one transaction
+ * under STANCE_SYNC_LOCK. Profiles are not recomputed here.
+ */
+export async function replaceStanceEvidence(rows: NewTdIdeologyEvidence[], database: Db = db): Promise<void> {
+  await database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${STANCE_SYNC_LOCK}::bigint)`);
+    await tx.delete(tdIdeologyEvidence).where(eq(tdIdeologyEvidence.source, 'stance'));
+    await insertStanceEvidenceRows(tx, rows);
+  });
 }
 
 /** Delete every evidence row of one source; with `dryRun`, only count them. */

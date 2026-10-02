@@ -161,6 +161,12 @@ export async function divisionContext(id: string, database: Db = db): Promise<Di
   };
 }
 
+/** The division's page on oireachtas.ie, from its id; NULL for an id of another shape. */
+export function oireachtasVoteUrl(divisionId: string): string | null {
+  const m = divisionId.match(/^dail-(\d+)-(\d{4}-\d{2}-\d{2})-vote_(\d+)$/);
+  return m ? `https://www.oireachtas.ie/en/debates/vote/dail/${m[1]}/${m[2]}/${m[3]}/` : null;
+}
+
 /** Every division as divisionContext describes it, newest first. One read. */
 export async function listDivisionRefs(database: Db = db): Promise<DivisionRef[]> {
   const rows = await database.select(refCols).from(divisions).orderBy(desc(divisions.date), desc(trailingNumber(divisions.id)), desc(divisions.id));
