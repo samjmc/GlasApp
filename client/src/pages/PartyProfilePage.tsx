@@ -16,7 +16,6 @@ import { TDAvatar } from '@/components/pulse/Party';
 import { Segmented } from '@/components/pulse/Segmented';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { RetryButton } from '@/components/data/RetryButton';
-import { PartyPollingWidget } from '@/components/PartyPollingWidget';
 import { PartyPledgesPanel } from '@/components/pledges/PartyPledgesPanel';
 import { fetchPartyAnswers, fetchPartyIdeology } from '@/lib/ideologyApi';
 import { partyIdeologyView } from '@/lib/partyIdeology';
@@ -299,8 +298,6 @@ export default function PartyProfilePage() {
                   )}
                 </CardContent>
               </Card>
-
-              <PartyPollingWidget partyName={party.party} performanceScore={overallScore ?? undefined} />
             </div>
           </div>
         </TabsContent>
