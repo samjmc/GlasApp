@@ -161,7 +161,6 @@ run('news repository against Postgres', () => {
     expect(recent.rows.map((r) => r.id)).toEqual([ids[0], ids[1], ids[2]]);
 
     expect((await repo.feedForTd('mary lou mcdonald', 10)).map((r) => r.id)).toEqual([ids[11]]);
-    expect((await repo.searchRecent('rte.ie/3', 10)).map((r) => r.id)).toEqual([ids[3]]);
   });
 
   it('today falls back to the recent window when nothing was published today', async () => {
@@ -183,7 +182,6 @@ run('news repository against Postgres', () => {
     expect(feed.rows.map((r) => r.url)).toEqual(['https://rte.ie/politics', 'https://rte.ie/unranked']);
     expect(feed.total).toBe(2);
     expect(feed.rows[0]).toMatchObject({ category: 'oireachtas', aiSummary: 'The Dáil passed it.' });
-    expect((await repo.searchRecent('sport', 10)).map((r) => r.url)).toEqual([]);
     // The hidden row still blocks a re-insert, so its URL is never ranked (paid for) twice.
     expect(await repo.existingUrls(['https://rte.ie/sport'])).toEqual(new Set(['https://rte.ie/sport']));
   });

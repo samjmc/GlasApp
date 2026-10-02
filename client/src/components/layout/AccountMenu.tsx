@@ -135,7 +135,7 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
                 <Link href="/admin">Pledge tracker</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/admin/shadow">Agent monitor</Link>
+                <Link href="/admin/leave-watch">Leave watch</Link>
               </DropdownMenuItem>
             </>
           )}

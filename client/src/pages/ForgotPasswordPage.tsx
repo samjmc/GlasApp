@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
                 If <strong className="break-all text-foreground">{sentTo}</strong> has a Glas account, a reset link is on its way.
               </p>
               <p className="text-[13px] text-muted-foreground">
-                Open the link in this same browser. The link works once and expires after an hour.
+                The link works once and expires after an hour.
               </p>
             </div>
             <div className="flex w-full flex-col gap-2">

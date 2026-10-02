@@ -59,6 +59,13 @@ export interface QuizResult {
   ideology: string;
   description: string;
   answeredCount: number;
+  /** Per dimension, how many answers were on it. Optional: results kept in sessionStorage before it existed lack it. */
+  answeredByDimension?: IdeologyVector;
+  /**
+   * The dimensions that got follow-up questions (shared/quizPlan.ts), in bank order; [] when
+   * none did or the plan is unknown. Optional for the same reason as answeredByDimension.
+   */
+  followUpDimensions?: IdeologyDimension[];
   createdAt: string | null;
 }
 

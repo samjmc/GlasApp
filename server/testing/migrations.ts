@@ -8,9 +8,11 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import pkg from 'pg';
 
-const DRIZZLE_DIR = path.resolve(__dirname, '..', '..', 'drizzle');
+// import.meta.url, not __dirname: the repo is ESM, and the e2e harness imports this outside vitest.
+const DRIZZLE_DIR = fileURLToPath(new URL('../../drizzle', import.meta.url));
 
 /** `TEST_DATABASE_URL` with its database name suffixed, or undefined when unset. */
 export function testDatabaseUrl(suffix: string): string | undefined {

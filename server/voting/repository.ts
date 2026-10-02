@@ -24,7 +24,7 @@ import type { QuestionCandidate } from './selection';
 const asDimension = (value: string | null): IdeologyDimension | null =>
   value !== null && (IDEOLOGY_DIMENSIONS as readonly string[]).includes(value) ? (value as IdeologyDimension) : null;
 
-const vectorOf = (option: PolicyQuestionOptionRow): OptionVector => ({
+export const vectorOf = (option: PolicyQuestionOptionRow): OptionVector => ({
   economic: option.economic,
   social: option.social,
   cultural: option.cultural,
@@ -121,6 +121,12 @@ async function withOptions(questions: PolicyQuestionRow[], database: Db): Promis
 export async function questionsForArticles(articleIds: number[], database: Db = db): Promise<QuestionWithOptions[]> {
   if (articleIds.length === 0) return [];
   const questions = await database.select().from(policyQuestions).where(inArray(policyQuestions.articleId, articleIds));
+  return withOptions(questions, database);
+}
+
+export async function questionsByIds(questionIds: number[], database: Db = db): Promise<QuestionWithOptions[]> {
+  if (questionIds.length === 0) return [];
+  const questions = await database.select().from(policyQuestions).where(inArray(policyQuestions.id, questionIds));
   return withOptions(questions, database);
 }
 

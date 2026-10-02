@@ -14,6 +14,7 @@ import {
   type IdeologyDimension,
   type IdeologyVector,
 } from '@shared/ideology';
+import type { ManifestoPosition } from '@shared/ideologyMatch';
 import type { PartyQuizItem, PartyQuizSheet } from '@shared/partyQuiz';
 import { QUIZ_QUESTIONS, type QuizQuestion } from '@shared/quiz';
 import { partyKey } from '../ideology/partyBaselines';
@@ -21,14 +22,7 @@ import { questionFingerprint } from '../quiz/fingerprint';
 import { scoreQuiz } from '../quiz/score';
 import { SHEETS } from './sheets';
 
-export interface ManifestoPosition {
-  vector: IdeologyVector;
-  /** Per dimension, approved answered items ÷ bank questions on it, 0..1. */
-  coverage: IdeologyVector;
-  answeredCount: number;
-  /** Questions in the bank: the denominator of coverage. */
-  askedCount: number;
-}
+export type { ManifestoPosition };
 
 /** True when the item was answered for the question as the bank has it now. */
 export function isCurrent(item: PartyQuizItem, bank: Map<number, QuizQuestion>): boolean {
@@ -68,7 +62,7 @@ function compute(key: string, sheets: PartyQuizSheet[], bank: QuizQuestion[]): M
     .filter((item) => {
       const answers = byId.get(item.questionId)?.answers.length ?? 0;
       return item.review === 'approved' && item.status === 'answered' && Number.isInteger(item.answerIndex)
-        && item.answerIndex! >= 0 && item.answerIndex! < answers && isCurrent(item, byId);
+        && item.answerIndex! >= 0 && item.answerIndex! < answers && !item.stale && isCurrent(item, byId);
     });
   if (scored.length === 0) return null;
 

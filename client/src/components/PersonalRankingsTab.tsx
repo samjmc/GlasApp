@@ -11,7 +11,9 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { PartyDot, TDAvatar } from '@/components/pulse/Party';
+import { MatchConfidence, MatchListNote, rowBadges } from '@/components/MatchConfidence';
 import { useAuth } from '@/contexts/AuthContext';
+import { evidenceSummary } from '@/lib/ideologyConfidence';
 import { fetchMyMatches } from '@/lib/ideologyApi';
 import type { TdMatch } from '@/lib/ideologyApi';
 import { partyStyle } from '@/lib/parties';
@@ -108,6 +110,7 @@ export function PersonalRankingsTab() {
   const hasBottom = rankings.length > PAGE;
   const top = rankings.slice(0, hasBottom ? Math.min(visibleCount, topCount) : rankings.length);
   const bottom = hasBottom ? rankings.slice(-BOTTOM).reverse() : [];
+  const badges = rowBadges([...top, ...bottom]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -116,9 +119,10 @@ export function PersonalRankingsTab() {
           <h2 className="font-display text-[22px] font-bold">Closest to you</h2>
           <span className="text-[13px] text-muted-foreground">{rankings.length} TDs ranked</span>
         </div>
+        <MatchListNote kind="td" items={[...top, ...bottom]} measured={matchesQuery.data?.measured} />
         <ol className="flex flex-col gap-2">
           {top.map((r, i) => (
-            <RankingRow key={r.tdId} ranking={r} rank={i + 1} />
+            <RankingRow key={r.tdId} ranking={r} rank={i + 1} badge={badges} />
           ))}
         </ol>
         {hasBottom && visibleCount < topCount && (
@@ -134,7 +138,7 @@ export function PersonalRankingsTab() {
           <h2 className="font-display text-[22px] font-bold">Least like you</h2>
           <ol className="flex flex-col gap-2">
             {bottom.map((r, i) => (
-              <RankingRow key={r.tdId} ranking={r} rank={rankings.length - i} low />
+              <RankingRow key={r.tdId} ranking={r} rank={rankings.length - i} badge={badges} low />
             ))}
           </ol>
         </section>
@@ -147,7 +151,8 @@ export function PersonalRankingsTab() {
   );
 }
 
-function RankingRow({ ranking, rank, low }: { ranking: TdMatch; rank: number; low?: boolean }) {
+function RankingRow({ ranking, rank, badge, low }: { ranking: TdMatch; rank: number; badge: boolean; low?: boolean }) {
+  const evidence = evidenceSummary(ranking.evidenceBySource);
   return (
     <li>
       <Link
@@ -157,12 +162,16 @@ function RankingRow({ ranking, rank, low }: { ranking: TdMatch; rank: number; lo
         <span className="w-7 shrink-0 text-center font-display text-sm font-bold text-muted-foreground tabular-nums">{rank}</span>
         <TDAvatar name={ranking.name} party={ranking.party} imageUrl={ranking.imageUrl} />
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-          <span className="truncate text-[15px] font-bold">{ranking.name}</span>
+          <span className="flex min-w-0 items-center gap-2">
+            <span className="truncate text-[15px] font-bold">{ranking.name}</span>
+            {badge && <MatchConfidence kind="td" confidence={ranking.confidence} />}
+          </span>
           <span className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
             <PartyDot party={ranking.party} />
             <span className="truncate">
               {partyStyle(ranking.party).short}
               {ranking.constituency ? ` · ${ranking.constituency}` : ''}
+              {evidence ? ` · ${evidence}` : ''}
             </span>
           </span>
           {(low ? ranking.furthest : ranking.closest).length > 0 && (

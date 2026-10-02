@@ -34,7 +34,7 @@ import MyPoliticsPage from "@/pages/MyPoliticsPage";
 import DailySessionPage from "@/pages/DailySessionPage";
 import ProfilePage from "@/pages/ProfilePage";
 import AdminPage from "@/pages/AdminPage";
-import ShadowCabinetDashboard from "@/pages/admin/ShadowCabinetDashboard";
+import LeaveWatchPage from "@/pages/admin/LeaveWatchPage";
 import LoginPage from "@/pages/LoginPage";
 import RegisterPage from "@/pages/RegisterPage";
 import AuthCallbackPage from "@/pages/AuthCallbackPage";
@@ -59,7 +59,7 @@ function guarded(Page: ComponentType, requireAdmin = false) {
 const DailySession = guarded(DailySessionPage);
 const Profile = guarded(ProfilePage);
 const Admin = guarded(AdminPage, true);
-const AgentMonitor = guarded(ShadowCabinetDashboard, true);
+const LeaveWatch = guarded(LeaveWatchPage, true);
 
 /** Pages a signed-in user has no reason to see send them home. */
 function SignedOutOnly({ page: Page }: { page: ComponentType }) {
@@ -107,7 +107,7 @@ function IrishRoutes() {
       <Route path="/my-politics" component={MyPoliticsPage} />
       <Route path="/profile" component={Profile} />
       <Route path="/admin" component={Admin} />
-      <Route path="/admin/shadow" component={AgentMonitor} />
+      <Route path="/admin/leave-watch" component={LeaveWatch} />
       <Route component={NotFound} />
     </Switch>
   );

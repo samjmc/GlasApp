@@ -19,6 +19,8 @@ const submitSchema = z.object({
     .array(z.object({ questionId: z.number().int(), answerIndex: z.number().int() }))
     .min(1)
     .max(100),
+  /** The seed the client planned the quiz from (shared/quizPlan.ts). Absent = a legacy or scripted submission. */
+  seed: z.number().int().min(0).max(0xffffffff).optional(),
 });
 
 /** POST /api/quiz — score answers. Open to anonymous visitors; saved only when signed in. */
@@ -26,11 +28,11 @@ router.post(
   '/',
   asyncHandler(async (req, res) => {
     const body = submitSchema.safeParse(req.body);
-    if (!body.success) return res.status(400).json(formatError('Invalid quiz answers', 'VALIDATION_ERROR', body.error.flatten()));
+    if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid quiz answers', body.error.flatten()));
     try {
-      res.json(formatSuccess(await submitQuiz(req.user?.id ?? null, body.data.answers)));
+      res.json(formatSuccess(await submitQuiz(req.user?.id ?? null, body.data.answers, body.data.seed)));
     } catch (error) {
-      if (error instanceof QuizInputError) return res.status(400).json(formatError(error.message, 'VALIDATION_ERROR'));
+      if (error instanceof QuizInputError) return res.status(400).json(formatError('VALIDATION_ERROR', error.message));
       throw error;
     }
   }),
@@ -68,7 +70,7 @@ router.post(
   aiRateLimit,
   asyncHandler(async (req, res) => {
     const body = assistantSchema.safeParse(req.body);
-    if (!body.success) return res.status(400).json(formatError('Invalid request', 'VALIDATION_ERROR', body.error.flatten()));
+    if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid request', body.error.flatten()));
     const { questionText, userQuestion, conversationHistory } = body.data;
     const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
       { role: 'system', content: ASSISTANT_PROMPT(questionText) },

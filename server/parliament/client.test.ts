@@ -3,7 +3,7 @@
  * filtered with `member=`, which the API ignores. These tests pin the parameters.
  */
 import { describe, expect, it } from 'vitest';
-import { OireachtasClient, toRosterMember, type RawMember } from './client';
+import { OireachtasClient, officeTypeOf, toRosterMember, type RawMember } from './client';
 
 function fakeFetch(responses: Array<{ status: number; body?: unknown }>) {
   const urls: string[] = [];
@@ -155,6 +155,7 @@ describe('toRosterMember', () => {
       memberSince: '2024-11-29',
       isPresiding: true,
       offices: [{ title: 'Ceann Comhairle', since: '2024-12-18' }],
+      officeHistory: [{ title: 'Ceann Comhairle', type: 'ceann_comhairle', start: '2024-12-18', end: null }],
       committees: [
         { uri: 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/committee_on_procedure', name: 'Committee on Procedure', committeeType: 'Standing', role: 'Cathaoirleach', start: '2024-12-18', end: null },
         { uri: 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/business_committee', name: 'Business Committee', committeeType: 'Standing', role: null, start: '2024-12-18', end: '2025-06-01' },
@@ -162,7 +163,7 @@ describe('toRosterMember', () => {
     });
   });
 
-  it('lists only current offices', () => {
+  it('lists only current offices, and every office with its dates in the history', () => {
     const minister = member({
       offices: [
         { office: { officeName: { showAs: 'Minister for Health' }, dateRange: { start: '2025-01-23', end: null } } },
@@ -171,6 +172,21 @@ describe('toRosterMember', () => {
     });
     expect(toRosterMember(minister)?.offices).toEqual([{ title: 'Minister for Health', since: '2025-01-23' }]);
     expect(toRosterMember(minister)?.isPresiding).toBe(false);
+    expect(toRosterMember(minister)?.officeHistory).toEqual([
+      { title: 'Minister for Health', type: 'cabinet', start: '2025-01-23', end: null },
+      { title: 'Minister of State', type: 'minister_of_state', start: '2024-12-01', end: '2025-01-22' },
+    ]);
+  });
+
+  it('types every office title the 34th Dáil uses', () => {
+    expect(officeTypeOf('Taoiseach')).toBe('cabinet');
+    expect(officeTypeOf('Tánaiste')).toBe('cabinet');
+    expect(officeTypeOf('Minister for Finance')).toBe('cabinet');
+    expect(officeTypeOf('Minister of State at the Department of Justice, Home Affairs and Migration')).toBe('minister_of_state');
+    expect(officeTypeOf('Minister of State at the Department of the Taoiseach (Government Chief Whip)')).toBe('minister_of_state');
+    expect(officeTypeOf('Ceann Comhairle')).toBe('ceann_comhairle');
+    expect(officeTypeOf('Leas-Cheann Comhairle')).toBe('leas_cheann_comhairle');
+    expect(officeTypeOf('Attorney General')).toBe('other');
   });
 
   it('detects the chair from a current office only', () => {

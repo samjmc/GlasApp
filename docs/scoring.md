@@ -37,18 +37,58 @@ is scored 62.5 / 37.5 on questions and votes, not given 0 for committees.
 `server/parliament/` is responsible for deciding when a TD was not expected to produce an input —
 questions for periods in government office, documented absences out of attendance denominators,
 every input for the Ceann Comhairle, too little eligible time for a by-election TD — and handing
-scoring a NULL. Today it already NULLs attendance and debate for the chair and anything below its
-minimums (`metrics.ts`). Scoring adds no office-holder rule of its own. Its contract is `repository.rollupInputs`: questions,
-attendancePct, committeeAttendancePct, debateScore and isPresiding. As a backstop, `rollup.ts`
-treats a TD who holds the chair (`isPresiding`) as having every component NULL, because the
-question count defaults to 0 and committee attendance is measured for anyone.
+scoring a NULL. It NULLs attendance and debate for the chair and anything below its minimums
+(`metrics.ts`), and applies the fairness rules below. Scoring adds no office-holder rule of its
+own. Its contract is `repository.rollupInputs`: questions, attendancePct, committeeAttendancePct,
+debateScore, isPresiding and questionsExpected. As a backstop, `rollup.ts` treats a TD who holds
+the chair (`isPresiding`) as having every component NULL, because the question count defaults to 0
+and committee attendance is measured for anyone.
+
+#### Fair by construction: each TD is measured only on what they were expected to do
+
+The same rules apply to every TD. Each reads a reason from the record, or from a documented public
+source, and never guesses one (`server/parliament/`, stored per TD on `td_parliament_stats`):
+
+| Reason | Where it comes from | Effect |
+|---|---|---|
+| In the chair for a division | The division's debate section: the last presiding speech is theirs and they are not on the vote lists (the chair cannot vote) | That division is left out of their votes (`divisions_chaired`) |
+| Documented leave (parental, medical, bereavement, other) | `server/parliament/absences.ts`: each entry has dates and a public source | Those days are left out of votes, sitting days, speeches and committee sittings |
+| Government office (cabinet, Minister of State) | The roster's office history (`politics.td_offices`) | Not expected to ask questions for that time; votes measured against the leadership benchmark |
+| Party leader, government or opposition | `server/parliament/partyLeaders.ts`: dated, with a public source (the Oireachtas records none) | Votes measured against the leadership benchmark; still expected to ask questions |
+| The chair (Ceann Comhairle) | The roster | Not expected to ask questions or vote |
+
+`questions_expected` = `QUESTIONS_BENCHMARK` × (days the TD was expected to ask) / (days in the
+term so far). A full-term backbencher is expected exactly 200, as before; a by-election TD or a
+Minister of State appointed mid-term is expected their share. Under 90 expected days it is NULL,
+and so are `tds.question_count_*`, which the rollup reads. The questions component is questions ÷
+`questions_expected`.
+
+There is no official record of why a TD missed a vote. `npm run parliament:silences` lists long
+runs of sitting days with no vote and no speech that no documented absence covers: if the TD or
+their party announced leave publicly, add it with its source; if not, the silence stays counted.
+
+**The leave watch catches new leave.** Every Monday at 06:15 (`server/parliament/leaveWatch.ts`,
+`npm run parliament:leave-watch`) the same runs of 8+ silent sitting days are recorded in
+`td_leave_alerts`, each with news that may explain it (a pointer, never a reason). An admin
+reviews them at `/admin/leave-watch`: **confirm** with a reason, dates and a public `https`
+source, which writes a `td_absences` row (`origin = 'admin'`, so the sync that reloads
+`absences.ts` keeps it), or **dismiss** with no leave recorded. A dismissed run that doubles in
+length opens again. Nothing is excused until a person confirms it, and a confirmed leave counts
+from the next daily sync.
 
 Two things are stated rather than adjusted:
 
-- **Vote attendance** is scored as the Official Report records it. Pairing is not published, so
-  a paired absence counts as a missed vote; the profile page says so next to the count. There is
-  no special case for Cabinet: an exemption for ministers would lift government leaders and not
-  the opposition leader, whose attendance is also low.
+- **Vote attendance** is scored as the Official Report records it, less the chaired divisions and
+  documented leave above. Pairing is not published, so a paired absence counts as a missed vote;
+  the profile page says so next to the count. There is no special case for Cabinet alone, which
+  would lift government leaders and not opposition leaders. Instead, every **leadership role** —
+  government office, or leader of any party — has one benchmark on both sides of the house
+  (Sam's decision, 2026-09-26): divisions held in that role score full marks at
+  `LEADERSHIP_ATTENDANCE_BENCHMARK` (the 75th percentile of role holders' in-role attendance,
+  rounded down to 5, the same rule as the 95% for everyone else). Each TD's mix is stored as
+  `td_parliament_stats.attendance_benchmark`, and the attendance component is attendance ÷ that.
+  Ministerial foreign travel is published as data by one department only (3 of 38 office
+  holders), so it cannot excuse absences fairly.
 - **Ministers' debate participation is not adjusted.** Ministers move bills and answer in the
   chamber, which raises it. Only speeches from the chair are excluded (`parse.ts isPresidingRole`).
 
@@ -97,9 +137,10 @@ only records facts and makes questions:
 1. importance triage (newsworthiness, also the feed's "Top stories" order);
 2. find the TDs each article is substantially about and link them in `article_tds`
    (`linkArticleTd`, idempotent), which feeds "In the news" on a TD's page;
-3. an article that passed triage and names at least one TD gets a daily-vote question
-   (`generateQuestionForArticle`). Until verified stances exist (`docs/plans/td-stances.md`),
-   that is the whole gate.
+3. what those TDs say becomes stance records, never a score (`server/stances`,
+   `docs/plans/td-stances.md`): a quote checked against the article text, in `td_stances`. Only an
+   article with at least one verified stance gets a daily-vote question
+   (`generateQuestionForArticle`), and each stance is matched to one of its answers.
 
 Each event is processed once: ingest links same-event copies to the first report
 (`server/news/events.ts`, `news_articles.duplicate_of`), and only that canonical is claimed. A
@@ -124,8 +165,8 @@ failed fetch cannot wipe the table. The diff itself is pure (`tdSync.ts`) and un
 
 The facts-only migration (`drizzle/*_facts_only_scoring.sql`) dropped the ELO, news, trend and
 story-count columns, `td_score_history` and `party_scores`, and renamed `article_td_scores` to
-`article_tds` without its verdict columns. `td_policy_stances` is still in the schema with no
-writer; part 3 (`docs/plans/td-stances.md`) replaces it.
+`article_tds` without its verdict columns. `td_policy_stances` was dropped by
+`drizzle/0012_td_stances.sql`; `td_stances` replaces it.
 
 ## API — `/api/scores`
 

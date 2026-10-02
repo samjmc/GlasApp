@@ -95,6 +95,45 @@ describe('parseTranscript', () => {
     expect(t.speeches.some((s) => s.role === 'Minister for Finance' && !s.isPresiding)).toBe(true);
   });
 
+  it("marks each division: its section, and how many of that section's own speeches came before it", () => {
+    // All four sit in dbsect_19, after spk_205, spk_214, spk_231 and spk_234.
+    expect(t.divisionMarkers).toEqual([
+      { sectionId: 'dail-2025-06-25-dbsect_19', afterPosition: 3, ta: 64, nil: 82, staon: 0 },
+      { sectionId: 'dail-2025-06-25-dbsect_19', afterPosition: 12, ta: 47, nil: 104, staon: 0 },
+      { sectionId: 'dail-2025-06-25-dbsect_19', afterPosition: 29, ta: 67, nil: 83, staon: 0 },
+      { sectionId: 'dail-2025-06-25-dbsect_19', afterPosition: 32, ta: 104, nil: 48, staon: 0 },
+    ]);
+    // The speech right after a division has the division's afterPosition as its position.
+    const sect19 = t.speeches.filter((s) => s.sectionId === 'dail-2025-06-25-dbsect_19');
+    expect(sect19[3].id).toBe('dail-2025-06-25-dbsect_19/spk_206');
+  });
+
+  it("counts only the enclosing section's own speeches with text, not a nested section's", () => {
+    const xml = `<akomaNtoso><debate><meta><references>
+      <TLCPerson eId="X" href="/ie/oireachtas/member/id/X.D.2020-01-01" showAs="X"/>
+      </references></meta><debateBody><debateSection eId="dbsect_1"><heading>Parent</heading>
+      <speech by="#X" eId="spk_1"><p>One.</p></speech>
+      <debateSection eId="dbsect_2"><heading>Child</heading>
+        <speech by="#X" eId="spk_2"><p>Two.</p></speech>
+        <speech by="#X" eId="spk_3"><p>Three.</p></speech>
+      </debateSection>
+      <speech by="#X" eId="spk_4"><p>  </p></speech>
+      <debateSection name="division" eId="dbsect_3">
+        <summary title="division">The Dáil divided: Tá, <quantity refersTo="#ta" normalized="5">5</quantity>; Níl, <quantity refersTo="#nil" normalized="3">3</quantity>; Staon, <quantity refersTo="#staon" normalized="1">1</quantity>.</summary>
+      </debateSection>
+      <debateSection name="division" eId="dbsect_4"><summary title="division">No counts given.</summary></debateSection>
+      <speech by="#X" eId="spk_5"><p>Four.</p></speech>
+      </debateSection></debateBody></debate></akomaNtoso>`;
+    const out = parseTranscript(xml, '2025-01-01');
+    // A division whose counts cannot be read cannot be matched to its record, so it is left out.
+    expect(out.divisionMarkers).toEqual([{ sectionId: 'dail-2025-01-01-dbsect_1', afterPosition: 1, ta: 5, nil: 3, staon: 1 }]);
+    expect(out.speeches.find((s) => s.id.endsWith('/spk_5'))?.position).toBe(1);
+    expect(out.sections.map((s) => [s.id, s.speechCount])).toEqual([
+      ['dail-2025-01-01-dbsect_1', 2],
+      ['dail-2025-01-01-dbsect_2', 2],
+    ]);
+  });
+
   it('counts words and never stores an empty speech', () => {
     expect(t.speeches.every((s) => s.text.length > 0 && s.wordCount > 0)).toBe(true);
     expect(t.speeches[0].wordCount).toBe(countWords(t.speeches[0].text));

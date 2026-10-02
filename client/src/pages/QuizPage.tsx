@@ -4,16 +4,16 @@ import { useQueryClient } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Compass, RotateCcw } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { QUIZ_QUESTIONS, type QuizQuestion, type QuizResponse } from '@shared/quiz';
+import { QUIZ_QUESTIONS, type QuizQuestion } from '@shared/quiz';
 import { DIMENSION_POLES, type IdeologyDimension } from '@shared/ideology';
+import { DEFAULT_PLAN_CONFIG, answerOrder, isQuizSeed, newQuizSeed, planQuiz, responsesFor } from '@shared/quizPlan';
 import { useToast } from "@/hooks/use-toast";
 import LoadingScreen from '@/components/LoadingScreen';
 import { EmptyState } from '@/components/pulse/EmptyState';
-import { useActivityTracker } from '@/hooks/useActivityTracker';
 import { cn } from '@/lib/utils';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
-import { loadDraft, loadStoredQuiz, storeDraft, storeQuiz } from '@/lib/quizStorage';
+import { loadDeviceSeed, loadDraft, loadStoredQuiz, storeDeviceSeed, storeDraft, storeQuiz } from '@/lib/quizStorage';
 
 const QUIZ_STEPS = [
   { title: 'Answer', body: 'Pick the option closest to your view. Skip nothing; you can go back.' },
@@ -21,26 +21,69 @@ const QUIZ_STEPS = [
   { title: 'Find your matches', body: 'The parties and TDs whose positions are closest to yours.' },
 ];
 
+const BANK = new Map(QUIZ_QUESTIONS.map((q) => [q.id, q]));
+
+/**
+ * The quiz's size before any answer: per dimension (bank order) its base questions and how many
+ * follow-ups it can add, under DEFAULT_PLAN_CONFIG and this bank.
+ */
+const QUIZ_SHAPE = (() => {
+  const { basePerDimension, followUpsPerDimension, followUpBudget } = DEFAULT_PLAN_CONFIG;
+  const sizes = new Map<IdeologyDimension, number>();
+  for (const q of QUIZ_QUESTIONS) sizes.set(q.dimension, (sizes.get(q.dimension) ?? 0) + 1);
+  const dimensions = Array.from(sizes, ([dimension, n]) => ({
+    dimension,
+    base: Math.min(basePerDimension, n),
+    extra: Math.min(followUpsPerDimension, Math.max(0, n - basePerDimension)),
+  }));
+  return {
+    dimensions,
+    base: dimensions.reduce((sum, d) => sum + d.base, 0),
+    maxFollowUps: Math.min(followUpBudget, dimensions.reduce((sum, d) => sum + d.extra, 0)),
+  };
+})();
+
+/** `?seed=` when valid. It applies to this attempt only and never becomes the device seed. */
+function seedFromUrl(): number | null {
+  const raw = new URLSearchParams(window.location.search).get('seed');
+  const seed = raw !== null && /^\d+$/.test(raw) ? Number(raw) : null;
+  return isQuizSeed(seed) ? seed : null;
+}
+
+/** A new attempt's seed: `?seed=`, else this device's seed (the same questions on a retake), else a new one. */
+function attemptSeed(): number {
+  const seed = seedFromUrl() ?? loadDeviceSeed();
+  if (seed !== null) return seed;
+  const fresh = newQuizSeed();
+  storeDeviceSeed(fresh);
+  return fresh;
+}
+
+/** One screen of the quiz: a question, or the note before the follow-ups. */
+type Step = { kind: 'question'; question: QuizQuestion; followUp: boolean } | { kind: 'followUps' };
+
+/** "A", "A and B", "A, B and C". */
+const listOf = (items: string[]) =>
+  items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
+
 /** The quiz's first screen: what it is, how long it takes, and start or continue. */
 function QuizStart({
-  dimensions,
-  questionsByDimension,
   totalQuestions,
   answered,
   hasResult,
   onStart,
   onStartAgain,
 }: {
-  dimensions: IdeologyDimension[];
-  questionsByDimension: Record<IdeologyDimension, QuizQuestion[]>;
   totalQuestions: number;
   answered: number;
   hasResult: boolean;
   onStart: () => void;
   onStartAgain: () => void;
 }) {
+  const { dimensions, base, maxFollowUps } = QUIZ_SHAPE;
   const inProgress = answered > 0;
-  const minutes = Math.max(1, Math.round((totalQuestions * 12) / 60));
+  const [fewest, most] = [base, base + maxFollowUps].map((n) => Math.max(1, Math.round((n * 12) / 60)));
+  const minutes = fewest === most ? `${fewest}` : `${fewest}–${most}`;
   return (
     <div className="flex flex-col gap-6">
       <section className="grid gap-8 overflow-hidden rounded-2xl bg-hero p-6 text-hero-foreground sm:p-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
@@ -53,8 +96,9 @@ function QuizStart({
               Where do <span className="text-primary">you</span> stand?
             </h1>
             <p className="max-w-xl text-base text-hero-soft sm:text-lg">
-              {totalQuestions} questions on today's Irish issues. About {minutes} minutes. No sign-in needed, and your
-              answers stay on this device until you choose to save them.
+              {base} questions on today's Irish issues
+              {maxFollowUps > 0 && `, plus up to ${maxFollowUps} follow-ups where your answers aren't clear-cut`}. About{' '}
+              {minutes} minutes. No sign-in needed, and your answers stay on this device until you choose to save them.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -75,7 +119,7 @@ function QuizStart({
         </div>
         <div className="grid grid-cols-3 gap-2 lg:grid-cols-1">
           {[
-            { value: totalQuestions, label: 'questions' },
+            { value: maxFollowUps > 0 ? `${base}+` : base, label: 'questions' },
             { value: dimensions.length, label: 'dimensions' },
             { value: `~${minutes}`, label: 'minutes' },
           ].map((s) => (
@@ -90,13 +134,13 @@ function QuizStart({
       <section className="flex flex-col gap-4">
         <h2 className="font-display text-2xl font-bold tracking-tight">What it measures</h2>
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {dimensions.map((d) => {
+          {dimensions.map(({ dimension: d, base: n, extra }) => {
             const poles = DIMENSION_POLES[d];
             return (
               <li key={d} className="flex flex-col gap-3 rounded-xl border bg-card p-4">
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-display text-lg font-bold">{poles.label}</span>
-                  <span className="text-xs font-semibold text-muted-foreground">{questionsByDimension[d].length} Qs</span>
+                  <span className="text-xs font-semibold text-muted-foreground">{extra > 0 ? `${n}–${n + extra}` : n} Qs</span>
                 </div>
                 <div className="flex items-center gap-2 text-[13px] text-muted-foreground" aria-label={`From ${poles.negative} to ${poles.positive}`}>
                   <span className="truncate">{poles.negative}</span>
@@ -133,42 +177,38 @@ const QuizPage: React.FC = () => {
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const { trackQuizStart, trackActivity } = useActivityTracker();
 
-  // Questions grouped by the dimension they measure, in bank order.
-  const { questionsByDimension, dimensionOrder } = useMemo(() => {
-    const grouped = {} as Record<IdeologyDimension, QuizQuestion[]>;
-    const order: IdeologyDimension[] = [];
-    QUIZ_QUESTIONS.forEach((question) => {
-      if (!grouped[question.dimension]) {
-        grouped[question.dimension] = [];
-        order.push(question.dimension);
-      }
-      grouped[question.dimension].push(question);
-    });
-    return { questionsByDimension: grouped, dimensionOrder: order };
-  }, []);
-
+  // A draft keeps its seed, so a reload shows the same questions in the same answer order.
+  const [initial] = useState(() => loadDraft() ?? { seed: attemptSeed(), answers: {} });
+  const [seed, setSeed] = useState(initial.seed);
   // questionId -> chosen answer index
-  const [answers, setAnswers] = useState<Record<number, number>>(loadDraft);
-  const [dimensionIndex, setDimensionIndex] = useState(0);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, number>>(initial.answers);
+  // One absolute position in `steps`.
+  const [stepIndex, setStepIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [saveIndicatorVisible, setSaveIndicatorVisible] = useState(false);
   const [started, setStarted] = useState(false);
   const [hasStoredResult] = useState(() => loadStoredQuiz() !== null);
 
   const saveIndicatorTimeoutRef = useRef<number | null>(null);
-  const hasTrackedStartRef = useRef(false);
 
-  const activeDimension = dimensionOrder[dimensionIndex];
-  const currentDimensionQuestions = questionsByDimension[activeDimension] ?? [];
-  const currentQuestion = currentDimensionQuestions[currentQuestionIndex];
+  const plan = useMemo(() => planQuiz(seed, answers), [seed, answers]);
+  // The base, then (once it is answered and a dimension is not clear-cut) a note and the
+  // follow-ups. The base depends only on the seed, so this prefix never shifts.
+  const steps = useMemo<Step[]>(() => {
+    const toStep = (followUp: boolean) => (id: number): Step => ({ kind: 'question', question: BANK.get(id)!, followUp });
+    const base = plan.base.map(toStep(false));
+    return plan.followUps.length === 0 ? base : [...base, { kind: 'followUps' }, ...plan.followUps.map(toStep(true))];
+  }, [plan]);
+
+  const index = Math.min(stepIndex, steps.length - 1);
+  const step = steps[index];
+  const currentQuestion = step?.kind === 'question' ? step.question : null;
   const selectedAnswerIndex = currentQuestion ? answers[currentQuestion.id] ?? null : null;
 
   useEffect(() => {
-    storeDraft(answers);
-  }, [answers]);
+    storeDraft({ seed, answers });
+  }, [seed, answers]);
 
   useEffect(() => {
     return () => {
@@ -189,58 +229,45 @@ const QuizPage: React.FC = () => {
     }, 2000);
   }, []);
 
-  const totalQuestions = QUIZ_QUESTIONS.length;
-  const answeredQuestionCount = QUIZ_QUESTIONS.filter((q) => answers[q.id] !== undefined).length;
+  // N grows from the base to base + follow-ups once they are known.
+  const totalQuestions = plan.base.length + plan.followUps.length;
+  const answeredQuestionCount = plan.base.concat(plan.followUps).filter((id) => answers[id] !== undefined).length;
   const overallProgress = totalQuestions ? (answeredQuestionCount / totalQuestions) * 100 : 0;
-  const questionNumber = currentQuestion ? QUIZ_QUESTIONS.findIndex((q) => q.id === currentQuestion.id) + 1 : 0;
+  const questionNumber = steps.slice(0, index + 1).filter((s) => s.kind === 'question').length;
+  const firstOpenStep = steps.findIndex((s) => s.kind === 'question' && answers[s.question.id] === undefined);
 
-  const isLastQuestion =
-    currentQuestionIndex === currentDimensionQuestions.length - 1 &&
-    dimensionIndex === dimensionOrder.length - 1;
-  const isPreviousDisabled = currentQuestionIndex === 0 && dimensionIndex === 0;
-  const isNextDisabled = selectedAnswerIndex === null || isSubmitting;
+  const isLastStep = index === steps.length - 1;
+  const isPreviousDisabled = index === 0;
+  const isNextDisabled = (currentQuestion !== null && selectedAnswerIndex === null) || isSubmitting;
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (!currentQuestion) return;
     setAnswers((prev) => ({ ...prev, [currentQuestion.id]: answerIndex }));
-    if (!hasTrackedStartRef.current) {
-      trackQuizStart();
-      hasTrackedStartRef.current = true;
-    }
     showSavedIndicator();
   };
 
   const handleComplete = async () => {
-    // Every question needs an answer; jump to the first gap.
-    const firstGap = dimensionOrder.findIndex((d) =>
-      questionsByDimension[d].some((q) => answers[q.id] === undefined)
-    );
-    if (firstGap >= 0) {
-      const gapDimension = dimensionOrder[firstGap];
-      const gapQuestions = questionsByDimension[gapDimension];
-      const remaining = gapQuestions.filter((q) => answers[q.id] === undefined).length;
-      setDimensionIndex(firstGap);
-      setCurrentQuestionIndex(gapQuestions.findIndex((q) => answers[q.id] === undefined));
-      toast({
-        title: "Almost there",
-        description: `${remaining} question${remaining === 1 ? '' : 's'} left in ${DIMENSION_POLES[gapDimension].label}.`,
-      });
+    // Every question shown needs an answer; jump to the first gap.
+    if (firstOpenStep >= 0) {
+      const remaining = totalQuestions - answeredQuestionCount;
+      setStepIndex(firstOpenStep);
+      toast({ title: "Almost there", description: `${remaining} question${remaining === 1 ? '' : 's'} left.` });
       return;
     }
 
-    const responses: QuizResponse[] = QUIZ_QUESTIONS.map((q) => ({ questionId: q.id, answerIndex: answers[q.id] }));
+    // The plan's questions only: an answer to a follow-up that has left the plan is not sent.
+    const responses = responsesFor(plan, answers);
 
     setIsSubmitting(true);
     try {
-      const result = await submitQuiz(responses);
-      storeQuiz(result, responses);
+      const result = await submitQuiz(responses, seed);
+      storeQuiz(result, responses, seed);
       storeDraft(null);
       if (result.id !== null) {
         // Saved: the user's history and profile both moved.
         await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
         await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
       }
-      trackActivity('completed_quiz', { category: 'political_engagement', totalQuestions, answeredQuestions: answeredQuestionCount });
       setLocation('/quiz/results');
     } catch (error) {
       console.error("Error completing quiz:", error);
@@ -250,9 +277,9 @@ const QuizPage: React.FC = () => {
   };
 
   const handleNext = () => {
-    if (!currentQuestion) return;
+    if (!step) return;
 
-    if (selectedAnswerIndex === null) {
+    if (currentQuestion && selectedAnswerIndex === null) {
       toast({
         title: "Answer required",
         description: "Please choose an option before continuing.",
@@ -261,22 +288,10 @@ const QuizPage: React.FC = () => {
       return;
     }
 
-    trackActivity('quiz_answered', {
-      category: currentQuestion.dimension,
-      questionId: currentQuestion.id,
-      answerType: 'option'
-    });
-
-    // Absolute targets, not `index + 1`: a double-click must land on the same question,
-    // not skip past the end of the dimension.
-    if (currentQuestionIndex < currentDimensionQuestions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      return;
-    }
-
-    if (dimensionIndex < dimensionOrder.length - 1) {
-      setDimensionIndex(dimensionIndex + 1);
-      setCurrentQuestionIndex(0);
+    // An absolute target from this render, not `setStepIndex((i) => i + 1)`: a double-click
+    // must land on the next step, not skip one.
+    if (!isLastStep) {
+      setStepIndex(index + 1);
       return;
     }
 
@@ -284,58 +299,44 @@ const QuizPage: React.FC = () => {
   };
 
   const handlePrevious = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      return;
-    }
-    if (dimensionIndex > 0) {
-      const previousQuestions = questionsByDimension[dimensionOrder[dimensionIndex - 1]];
-      setDimensionIndex(dimensionIndex - 1);
-      setCurrentQuestionIndex(Math.max(0, previousQuestions.length - 1));
-    }
+    if (index > 0) setStepIndex(index - 1);
   };
 
-  /** Jump to a dimension's first unanswered question (or its first question when all are done). */
-  const goToDimension = (index: number) => {
-    const questions = questionsByDimension[dimensionOrder[index]];
-    const firstOpen = questions.findIndex((q) => answers[q.id] === undefined);
-    setDimensionIndex(index);
-    setCurrentQuestionIndex(firstOpen >= 0 ? firstOpen : 0);
+  /** Jump to the first unanswered question among the matching steps, or the first of them when all are done. */
+  const goToFirst = (matches: (s: Step) => boolean) => {
+    const open = steps.findIndex((s) => matches(s) && s.kind === 'question' && answers[s.question.id] === undefined);
+    const first = steps.findIndex(matches);
+    if (open >= 0 || first >= 0) setStepIndex(open >= 0 ? open : first);
   };
 
   // Answers are authored with the strongest stance first; showing them in that order biases
-  // the choice. Shuffle once per visit and per question. Answers stay keyed by their original
-  // index, so scoring and a saved draft are unaffected.
-  const visitSeed = useRef(Math.floor(Math.random() * 2 ** 31));
-  const answerOrder = useMemo(() => {
-    if (!currentQuestion) return [];
-    const order = currentQuestion.answers.map((_, i) => i);
-    let s = (visitSeed.current ^ (currentQuestion.id * 2654435761)) >>> 0;
-    for (let i = order.length - 1; i > 0; i--) {
-      s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
-      const j = s % (i + 1);
-      [order[i], order[j]] = [order[j], order[i]];
-    }
-    return order;
-  }, [currentQuestion]);
+  // the choice. The order comes from the quiz seed, so a reload shows the same order. Answers
+  // stay keyed by their original index, so scoring and a saved draft are unaffected.
+  const shownOrder = useMemo(
+    () => (currentQuestion ? answerOrder(seed, currentQuestion.id, currentQuestion.answers.length) : []),
+    [seed, currentQuestion],
+  );
 
   const startAgain = () => {
+    setSeed(attemptSeed());
     setAnswers({});
     storeDraft(null);
-    setDimensionIndex(0);
-    setCurrentQuestionIndex(0);
+    setStepIndex(0);
+    setStarted(true);
+  };
+
+  const continueQuiz = () => {
+    setStepIndex(firstOpenStep >= 0 ? firstOpenStep : steps.length - 1);
     setStarted(true);
   };
 
   if (!started) {
     return (
       <QuizStart
-        dimensions={dimensionOrder}
-        questionsByDimension={questionsByDimension}
         totalQuestions={totalQuestions}
         answered={answeredQuestionCount}
         hasResult={hasStoredResult}
-        onStart={() => (answeredQuestionCount > 0 ? setStarted(true) : startAgain())}
+        onStart={() => (answeredQuestionCount > 0 ? continueQuiz() : startAgain())}
         onStartAgain={startAgain}
       />
     );
@@ -345,8 +346,38 @@ const QuizPage: React.FC = () => {
     return <LoadingScreen message="Working out where you stand" />;
   }
 
-  const poles = activeDimension ? DIMENSION_POLES[activeDimension] : null;
-  const dimensionsDone = dimensionOrder.filter((d) => questionsByDimension[d].every((q) => answers[q.id] !== undefined)).length;
+  const poles = currentQuestion ? DIMENSION_POLES[currentQuestion.dimension] : null;
+  const baseByDimension = QUIZ_SHAPE.dimensions.map(({ dimension }) => ({
+    dimension,
+    ids: plan.base.filter((id) => BANK.get(id)!.dimension === dimension),
+  }));
+  const dimensionsDone = baseByDimension.filter(({ ids }) => ids.every((id) => answers[id] !== undefined)).length;
+  const isFollowUpStep = (s: Step) => s.kind === 'followUps' || s.followUp;
+  const onFollowUps = step !== undefined && isFollowUpStep(step);
+  // The sidebar: each dimension's base, then the follow-ups once there are any.
+  const progressRows = [
+    ...baseByDimension.map(({ dimension, ids }, i) => ({
+      key: dimension,
+      badge: i + 1,
+      label: DIMENSION_POLES[dimension].label,
+      done: ids.filter((id) => answers[id] !== undefined).length,
+      total: ids.length,
+      current: !onFollowUps && currentQuestion?.dimension === dimension,
+      go: () => goToFirst((s) => s.kind === 'question' && !s.followUp && s.question.dimension === dimension),
+    })),
+    ...(plan.followUps.length > 0
+      ? [{
+          key: 'follow-ups',
+          badge: '+',
+          label: 'Follow-ups',
+          done: plan.followUps.filter((id) => answers[id] !== undefined).length,
+          total: plan.followUps.length,
+          current: onFollowUps,
+          go: () => goToFirst(isFollowUpStep),
+        }]
+      : []),
+  ];
+  const followUpLabels = listOf(plan.followUpDimensions.map((d) => DIMENSION_POLES[d].label));
 
   return (
     <div className="flex flex-col gap-6">
@@ -356,7 +387,7 @@ const QuizPage: React.FC = () => {
             Where do <span className="text-primary">you</span> stand?
           </h1>
           <p className="text-base text-muted-foreground sm:text-lg">
-            {totalQuestions} questions across {dimensionOrder.length} dimensions. Answers save on this device as you go.
+            {totalQuestions} questions across {QUIZ_SHAPE.dimensions.length} dimensions. Answers save on this device as you go.
           </p>
         </div>
         <Button asChild variant="outline" className="self-start sm:self-auto">
@@ -368,20 +399,24 @@ const QuizPage: React.FC = () => {
         <section className="flex flex-col gap-6 rounded-2xl border bg-card p-5 sm:p-8">
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              {poles && (
+              {(poles || onFollowUps) && (
                 <div className="flex min-w-0 items-center gap-2.5">
                   <span className="inline-flex h-8 items-center gap-2 rounded-full bg-elevated px-3.5 text-sm font-bold">
                     <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                    {poles.label}
+                    {poles ? poles.label : 'Follow-ups'}
                   </span>
-                  <span className="truncate text-sm font-semibold text-muted-foreground">
-                    {poles.negative} ↔ {poles.positive}
-                  </span>
+                  {poles && (
+                    <span className="truncate text-sm font-semibold text-muted-foreground">
+                      {poles.negative} ↔ {poles.positive}
+                    </span>
+                  )}
                 </div>
               )}
-              <span className="text-sm font-bold">
-                Question {questionNumber} <span className="text-muted-foreground">of {totalQuestions}</span>
-              </span>
+              {currentQuestion && (
+                <span className="text-sm font-bold">
+                  Question {questionNumber} <span className="text-muted-foreground">of {totalQuestions}</span>
+                </span>
+              )}
             </div>
             <div
               role="progressbar"
@@ -404,22 +439,26 @@ const QuizPage: React.FC = () => {
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.18 }}
                 className="flex flex-col gap-6"
+                data-testid="quiz-question"
+                data-question-id={currentQuestion.id}
               >
                 <h2 className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-[34px]">
                   {currentQuestion.text}
                 </h2>
 
                 <div role="radiogroup" aria-label="Answers" className="flex flex-col gap-3">
-                  {answerOrder.map((index) => {
-                    const answer = currentQuestion.answers[index];
-                    const isSelected = selectedAnswerIndex === index;
+                  {shownOrder.map((answerIndex) => {
+                    const answer = currentQuestion.answers[answerIndex];
+                    const isSelected = selectedAnswerIndex === answerIndex;
                     return (
                       <button
-                        key={index}
+                        key={answerIndex}
                         type="button"
                         role="radio"
                         aria-checked={isSelected}
-                        onClick={() => handleAnswerSelect(index)}
+                        data-testid="quiz-answer"
+                        data-answer-index={answerIndex}
+                        onClick={() => handleAnswerSelect(answerIndex)}
                         className={cn(
                           "flex items-start gap-4 rounded-xl border-2 p-4 text-left transition-colors active:scale-[0.99] sm:p-5",
                           isSelected ? "border-primary bg-primary/10" : "border-transparent bg-elevated hover:border-input"
@@ -445,6 +484,21 @@ const QuizPage: React.FC = () => {
                   })}
                 </div>
               </motion.div>
+            ) : step?.kind === 'followUps' ? (
+              <motion.div
+                key="follow-ups"
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.18 }}
+                className="flex flex-col gap-3"
+                data-testid="quiz-follow-ups"
+              >
+                <h2 className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-[34px]">A few more questions</h2>
+                <p className="text-base text-muted-foreground sm:text-lg">
+                  Your first answers on {followUpLabels} weren't clear-cut, so we'll ask {plan.followUps.length} more.
+                </p>
+              </motion.div>
             ) : (
               <EmptyState title="No questions found" />
             )}
@@ -464,7 +518,7 @@ const QuizPage: React.FC = () => {
               <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Saved
             </span>
             <Button size="lg" onClick={handleNext} disabled={isNextDisabled} className="min-w-[140px]">
-              {isLastQuestion ? 'See my results' : 'Next'} <ArrowRight />
+              {isLastStep ? 'See my results' : currentQuestion ? 'Next' : 'Continue'} <ArrowRight />
             </Button>
           </div>
         </section>
@@ -473,20 +527,17 @@ const QuizPage: React.FC = () => {
           <div className="flex flex-col gap-1">
             <h2 className="font-display text-xl font-bold">Your progress</h2>
             <p className="text-sm text-muted-foreground">
-              {answeredQuestionCount} of {totalQuestions} answered · {dimensionsDone} of {dimensionOrder.length} dimensions done
+              {answeredQuestionCount} of {totalQuestions} answered · {dimensionsDone} of {baseByDimension.length} dimensions done
             </p>
           </div>
           <ol className="grid grid-cols-2 gap-1.5 lg:grid-cols-1">
-            {dimensionOrder.map((dimension, index) => {
-              const questions = questionsByDimension[dimension];
-              const done = questions.filter((q) => answers[q.id] !== undefined).length;
-              const complete = done === questions.length;
-              const current = index === dimensionIndex;
+            {progressRows.map(({ key, badge, label, done, total, current, go }) => {
+              const complete = done === total;
               return (
-                <li key={dimension}>
+                <li key={key}>
                   <button
                     type="button"
-                    onClick={() => goToDimension(index)}
+                    onClick={go}
                     aria-current={current ? "step" : undefined}
                     className={cn(
                       "flex h-12 w-full items-center gap-3 rounded-lg px-3 text-left text-sm font-semibold transition-colors",
@@ -500,11 +551,11 @@ const QuizPage: React.FC = () => {
                         complete ? "border-primary bg-primary text-primary-foreground" : current ? "border-primary" : "border-input"
                       )}
                     >
-                      {complete ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : index + 1}
+                      {complete ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : badge}
                     </span>
-                    <span className="flex-1 truncate">{DIMENSION_POLES[dimension].label}</span>
+                    <span className="flex-1 truncate">{label}</span>
                     <span className="text-xs tabular-nums text-muted-foreground">
-                      {done}/{questions.length}
+                      {done}/{total}
                     </span>
                   </button>
                 </li>

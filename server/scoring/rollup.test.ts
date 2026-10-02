@@ -32,6 +32,28 @@ describe('computeRollup', () => {
   });
 
   // NULL is "not expected" (e.g. questions while in government office), never 0.
+  it('a TD not expected to ask questions (questionsExpected NULL) is scored without them, even with a count', () => {
+    const [minister, byElection, noStats] = computeRollup([
+      td({ tdId: 1, questions: 0, attendancePct: 95, committeeAttendancePct: 85, questionsExpected: null }),
+      td({ tdId: 2, questions: 100, attendancePct: 95, committeeAttendancePct: 85, questionsExpected: 100 }),
+      td({ tdId: 3, questions: 100, attendancePct: 95, committeeAttendancePct: 85 }),
+    ]);
+    // Zero questions do not count against a minister: votes and committees only.
+    expect(minister.parliamentaryScore).toBe(100);
+    expect(byElection.parliamentaryScore).toBe(100);
+    // No expectation computed yet: the whole-term benchmark (200), so half marks on questions.
+    expect(noStats.parliamentaryScore).toBe(Math.round(50 * 0.5 + 100 * 0.3 + 100 * 0.2));
+  });
+
+  it('a TD in a leadership role is measured against their own attendance benchmark', () => {
+    const [leader, backbench] = computeRollup([
+      td({ tdId: 1, questions: 200, attendancePct: 90, committeeAttendancePct: 85, attendanceBenchmark: 90 }),
+      td({ tdId: 2, questions: 200, attendancePct: 90, committeeAttendancePct: 85 }),
+    ]);
+    expect(leader.parliamentaryScore).toBe(100);
+    expect(backbench.parliamentaryScore).toBeLessThan(100);
+  });
+
   it('a TD whose questions are NULL is scored on the rest, not given 0', () => {
     const [exempt, zero] = computeRollup([
       td({ tdId: 1, questions: null, attendancePct: 95, committeeAttendancePct: 85, debateScore: 0.5 }),
