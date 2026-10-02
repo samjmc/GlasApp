@@ -12,6 +12,7 @@ import { EmptyState } from '@/components/pulse/EmptyState';
 import { cn } from '@/lib/utils';
 import html2canvas from 'html2canvas';
 import { fetchMyTimeline } from '@/lib/ideologyApi';
+import { partySource } from '@/lib/partyIdeology';
 import { queryKeys } from '@/lib/queryKeys';
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
 import type { IdeologyDimension } from '@shared/ideology';
@@ -438,7 +439,7 @@ export default function IdeologyTimeSeriesChartEnhanced({
         <p>
           Every dimension runs from −{IDEOLOGY_LIMIT} to +{IDEOLOGY_LIMIT}.
           {partyProfile && (
-            <> Dashed lines show {partyProfile.party} (from {partyProfile.tdCount} TD{partyProfile.tdCount === 1 ? '' : 's'}).</>
+            <> Dashed lines show {partyProfile.party} (from {partySource(partyProfile.tdCount, partyProfile.manifesto !== null)}).</>
           )}
         </p>
         {selectedList.map((dim) => (
