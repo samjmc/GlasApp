@@ -1,6 +1,6 @@
 /**
  * /api/parliament router against a mocked parliament module: envelope, validation,
- * 404s, and the sync trigger's guard and lock.
+ * 404s, the sync trigger's guard and lock, and the admin leave-watch routes.
  */
 import type { Server } from 'node:http';
 import express from 'express';
@@ -12,9 +12,31 @@ process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role-key';
 process.env.ADMIN_API_SECRET = 'parliament-secret';
 process.env.LOG_LEVEL = 'silent';
 
-const { state } = vi.hoisted(() => ({ state: { running: false, syncs: 0 } }));
+const { state, LeaveAlertError } = vi.hoisted(() => ({
+  state: { running: false, syncs: 0 },
+  LeaveAlertError: class extends Error {
+    constructor(
+      readonly status: number,
+      message: string,
+    ) {
+      super(message);
+    }
+  },
+}));
 
 vi.mock('../db', () => ({ db: {}, pool: {}, supabaseDb: null, shutdown: vi.fn(), checkDatabaseConnection: vi.fn() }));
+
+// requireAdmin verifies a Supabase token, which auth.test.ts covers. Here it is a header check,
+// so these tests prove each leave-watch route sits behind a guard and what it does behind it.
+vi.mock('../auth', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../auth')>()),
+  requireAdmin: (req: { headers: Record<string, string>; user?: unknown }, res: import('express').Response, next: () => void) => {
+    if (req.headers['x-test-admin'] !== 'yes') return void res.status(403).json({ success: false });
+    req.user = { id: 'u1', email: 'admin@example.test' };
+    next();
+  },
+  logAdminAction: vi.fn(),
+}));
 
 vi.mock('../parliament', () => ({
   isSyncRunning: () => state.running,
@@ -39,9 +61,22 @@ vi.mock('../parliament', () => ({
     listBills: vi.fn(async (filters: object, limit: number, offset: number) => ({ rows: [{ filters, limit, offset }], total: 414 })),
     billDetail: vi.fn(async (id: string) => (id === '2026-90' ? { id } : null)),
   },
+  leaveWatch: {
+    LeaveAlertError,
+    listLeaveAlerts: vi.fn(async (scope: string) => [{ id: 1, scope }]),
+    confirmLeave: vi.fn(async (id: number) => {
+      if (id === 404) throw new LeaveAlertError(404, 'Alert 404 not found');
+      if (id === 409) throw new LeaveAlertError(409, 'Alert 409 is already confirmed');
+      if (id === 400) throw new LeaveAlertError(400, 'source must be an https URL');
+    }),
+    dismissLeave: vi.fn(async (id: number) => {
+      if (id === 409) throw new LeaveAlertError(409, 'Alert 409 is already dismissed');
+    }),
+  },
 }));
 
 const router = (await import('./parliament')).default;
+const { leaveWatch } = await import('../parliament');
 
 let server: Server;
 let base: string;
@@ -133,5 +168,66 @@ describe('POST /api/parliament/sync', () => {
     state.running = true;
     expect((await post({ 'x-admin-secret': 'parliament-secret' })).status).toBe(409);
     expect(state.syncs).toBe(1);
+  });
+});
+
+describe('/api/parliament/admin/leave-alerts', () => {
+  const ADMIN = { 'x-test-admin': 'yes' };
+  const send = async (method: string, path: string, body?: unknown, headers: Record<string, string> = ADMIN) => {
+    const res = await fetch(base + path, {
+      method,
+      headers: { connection: 'close', 'content-type': 'application/json', ...headers },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+    return { status: res.status, body: (await res.json()) as { success: boolean; data?: unknown; error?: { message: string } } };
+  };
+  const leave = {
+    reason: 'medical_leave',
+    from: '2026-03-03',
+    to: null,
+    sourceUrl: 'https://example.test/announcement',
+    note: 'Announced by the party.',
+  };
+
+  it('is closed to anyone who is not an admin, on every route', async () => {
+    for (const [method, path, body] of [
+      ['GET', '/admin/leave-alerts', undefined],
+      ['POST', '/admin/leave-alerts/1/confirm', leave],
+      ['POST', '/admin/leave-alerts/1/dismiss', { note: null }],
+    ] as const) {
+      expect((await send(method, path, body, {})).status, `${method} ${path}`).toBe(403);
+    }
+    expect(leaveWatch.confirmLeave).not.toHaveBeenCalled();
+    expect(leaveWatch.dismissLeave).not.toHaveBeenCalled();
+  });
+
+  it('lists open alerts by default and all of them on request', async () => {
+    expect((await send('GET', '/admin/leave-alerts')).body.data).toEqual([{ id: 1, scope: 'open' }]);
+    expect((await send('GET', '/admin/leave-alerts?status=all')).body.data).toEqual([{ id: 1, scope: 'all' }]);
+    expect((await send('GET', '/admin/leave-alerts?status=nope')).status).toBe(400);
+  });
+
+  it('confirms with the source and the admin who confirmed it', async () => {
+    const res = await send('POST', '/admin/leave-alerts/7/confirm', leave);
+    expect(res).toMatchObject({ status: 200, body: { success: true, data: { confirmed: true } } });
+    expect(leaveWatch.confirmLeave).toHaveBeenCalledWith(7, leave, 'admin@example.test');
+  });
+
+  it('answers the domain errors with their status, and bad input with 400', async () => {
+    expect((await send('POST', '/admin/leave-alerts/404/confirm', leave)).status).toBe(404);
+    expect((await send('POST', '/admin/leave-alerts/409/confirm', leave)).status).toBe(409);
+    expect((await send('POST', '/admin/leave-alerts/400/confirm', leave)).status).toBe(400);
+    expect((await send('POST', '/admin/leave-alerts/x/confirm', leave)).status).toBe(400);
+    expect((await send('POST', '/admin/leave-alerts/1/confirm', { ...leave, reason: 'holiday' })).status).toBe(400);
+    expect((await send('POST', '/admin/leave-alerts/1/confirm', { ...leave, from: '3 March' })).status).toBe(400);
+    expect((await send('POST', '/admin/leave-alerts/1/confirm', { ...leave, sourceUrl: undefined })).status).toBe(400);
+  });
+
+  it('dismisses with an optional note', async () => {
+    expect((await send('POST', '/admin/leave-alerts/3/dismiss', { note: 'No public reason found.' })).body.data).toEqual({ dismissed: true });
+    expect(leaveWatch.dismissLeave).toHaveBeenLastCalledWith(3, 'No public reason found.', 'admin@example.test');
+    expect((await send('POST', '/admin/leave-alerts/3/dismiss', {})).status).toBe(200);
+    expect(leaveWatch.dismissLeave).toHaveBeenLastCalledWith(3, null, 'admin@example.test');
+    expect((await send('POST', '/admin/leave-alerts/409/dismiss', {})).status).toBe(409);
   });
 });

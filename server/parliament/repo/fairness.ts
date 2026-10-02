@@ -32,21 +32,40 @@ export async function replaceOffices(roster: RosterMember[], tdIds: Map<string, 
   return rows.length;
 }
 
+/**
+ * Load the list in absences.ts. Only rows that came from that list are replaced: a leave an
+ * admin confirmed from the leave watch (origin 'admin') stays, and becomes a code row if the
+ * same leave is later added to the list.
+ */
 export async function replaceAbsences(entries: DocumentedAbsence[], tdIds: Map<string, number>, database: Db = db): Promise<void> {
   await database.transaction(async (tx) => {
-    await tx.delete(tdAbsences);
+    await tx.delete(tdAbsences).where(eq(tdAbsences.origin, 'code'));
     if (entries.length === 0) return;
-    await tx.insert(tdAbsences).values(
-      entries.map((e) => ({
-        memberCode: e.memberCode,
-        tdId: tdIds.get(e.memberCode) ?? null,
-        startDate: e.from,
-        endDate: e.to,
-        reason: e.reason,
-        sourceUrl: e.source,
-        note: e.note,
-      })),
-    );
+    await tx
+      .insert(tdAbsences)
+      .values(
+        entries.map((e) => ({
+          memberCode: e.memberCode,
+          tdId: tdIds.get(e.memberCode) ?? null,
+          startDate: e.from,
+          endDate: e.to,
+          reason: e.reason,
+          sourceUrl: e.source,
+          note: e.note,
+          origin: 'code' as const,
+        })),
+      )
+      .onConflictDoUpdate({
+        target: [tdAbsences.memberCode, tdAbsences.startDate],
+        set: {
+          tdId: sql`excluded.td_id`,
+          endDate: sql`excluded.end_date`,
+          reason: sql`excluded.reason`,
+          sourceUrl: sql`excluded.source_url`,
+          note: sql`excluded.note`,
+          origin: sql`excluded.origin`,
+        },
+      });
   });
 }
 

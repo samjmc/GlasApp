@@ -194,10 +194,13 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     assert.equal(read('server/routes.ts').includes('req.session'), false);
   });
 
-  it('the parliament sync trigger is admin-only', () => {
-    assert.match(read('server/routes/parliament.ts'), /router\.post\('\/sync',\s*requireJob,/);
-    // The parliament router's only write is the sync trigger.
-    assert.equal((read('server/routes/parliament.ts').match(/router\.(post|put|patch|delete)\(/g) ?? []).length, 1);
+  it('the parliament sync trigger is admin-only, and so are the leave-watch decisions', () => {
+    const src = read('server/routes/parliament.ts');
+    assert.match(src, /router\.post\('\/sync',\s*requireJob,/);
+    assert.match(src, /router\.post\(\s*'\/admin\/leave-alerts\/:id\/confirm',\s*requireAdmin,/);
+    assert.match(src, /router\.post\(\s*'\/admin\/leave-alerts\/:id\/dismiss',\s*requireAdmin,/);
+    // The parliament router's only writes: the sync trigger and those two decisions.
+    assert.equal((src.match(/router\.(post|put|patch|delete)\(/g) ?? []).length, 3);
   });
 
   it('LLM mounts are rate limited', () => {

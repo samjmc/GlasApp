@@ -137,6 +137,9 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
               <DropdownMenuItem asChild>
                 <Link href="/admin/shadow">Agent monitor</Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/admin/leave-watch">Leave watch</Link>
+              </DropdownMenuItem>
             </>
           )}
 

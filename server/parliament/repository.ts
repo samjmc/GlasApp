@@ -133,6 +133,7 @@ export async function relinkTds(database: Db = db): Promise<void> {
     'question_counts',
     'td_offices',
     'td_absences',
+    'td_leave_alerts',
     'td_party_leaders',
     'td_interests',
     'td_allowance_payments',
@@ -255,23 +256,37 @@ export async function recomputeStats(
         divisions_eligible = t.eligible, votes_cast = t.votes, divisions_chaired = t.chaired,
         divisions_excused = t.excused_n, divisions_in_leadership = t.in_role_n
       from totals t where t.td_id = s.td_id`);
+    // Set-based: one pass over the speeches, with the leave days joined in. The first version
+    // looked each speech up in `days` with a correlated NOT EXISTS, which scans that whole CTE
+    // per speech: 58,000 speeches x 29,000 rows took 250 s on GlasCore, past its 2-minute
+    // statement limit, and 4 s on the same data once set-based.
     await tx.execute(sql`
       with m as (
         select s.td_id, t.member_code, s.member_since
         from politics.td_parliament_stats s join politics.tds t on t.id = s.td_id),
-      days as (
+      days as materialized (
         select m.td_id, x.date, ${onDocumentedLeave(sql`m.member_code`, sql`x.date`)} excused
-        from m join (select distinct date from politics.debate_sections) x on x.date >= m.member_since)
+        from m join (select distinct date from politics.debate_sections) x on x.date >= m.member_since),
+      day_totals as (
+        select td_id, count(*) filter (where not excused) days_n, count(*) filter (where excused) excused_n
+        from days group by td_id),
+      spoken as (
+        select p.td_id, count(distinct p.section_id) sections, count(*) speeches
+        from politics.debate_speeches p
+        join politics.td_parliament_stats s on s.td_id = p.td_id
+        left join days l on l.td_id = p.td_id and l.date = p.date and l.excused
+        where not p.is_presiding and p.date >= s.member_since and l.td_id is null
+        group by p.td_id)
       update politics.td_parliament_stats s set
-        sitting_days = (select count(*) from days where days.td_id = s.td_id and not days.excused),
-        sitting_days_excused = (select count(*) from days where days.td_id = s.td_id and days.excused),
-        sections_spoken = (select count(distinct p.section_id) from politics.debate_speeches p
-                           where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since
-                             and not exists (select 1 from days where days.td_id = s.td_id and days.date = p.date and days.excused)),
-        speeches = (select count(*) from politics.debate_speeches p
-                    where p.td_id = s.td_id and not p.is_presiding and p.date >= s.member_since
-                      and not exists (select 1 from days where days.td_id = s.td_id and days.date = p.date and days.excused)),
-        updated_at = now()`);
+        sitting_days = coalesce(dt.days_n, 0),
+        sitting_days_excused = coalesce(dt.excused_n, 0),
+        sections_spoken = coalesce(sp.sections, 0),
+        speeches = coalesce(sp.speeches, 0),
+        updated_at = now()
+      from m
+      left join day_totals dt on dt.td_id = m.td_id
+      left join spoken sp on sp.td_id = m.td_id
+      where s.td_id = m.td_id`);
 
     // What each TD was expected to do, in the same transaction so no reader ever sees the
     // counts without their expectations: questions pro-rated to the time outside exempt office
