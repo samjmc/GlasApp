@@ -26,6 +26,11 @@ export const SOURCES = {
    * the option's position, on the same ruler as a user's vote.
    */
   stance: { max: 2 },
+  /**
+   * A Dáil vote that was the TD's own (free, or against the party), read as the lean of its
+   * lobby (server/ideology/divisions.ts). ±2, the same ruler as a vote option.
+   */
+  division: { max: 2 },
 } as const;
 
 /** A direct quote counts fully; a reporter's paraphrase counts less. Evidence and agreement both use it. */
@@ -40,6 +45,13 @@ export const SIGNAL_FLOOR = 0.1;
 export const QUIZ_WEIGHT = 10;
 /** A TD's party baseline counts as three pieces of full-strength evidence. */
 export const PARTY_PRIOR_WEIGHT = 3;
+/**
+ * At most this much `division` weight per TD per debate section: twenty votes on one bill's
+ * amendments are one debate's worth of evidence, not twenty.
+ */
+export const DIVISION_SECTION_CAP = 1;
+/** At most this much `division` weight per TD in all, so ~400 free votes a term cannot swamp everything else. */
+export const DIVISION_TOTAL_CAP = 2 * PARTY_PRIOR_WEIGHT;
 /** TD evidence halves in weight every six months. User evidence does not decay: a user moves by voting or retaking the quiz. */
 export const TD_HALF_LIFE_DAYS = 180;
 

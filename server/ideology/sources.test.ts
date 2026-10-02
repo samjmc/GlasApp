@@ -25,6 +25,11 @@ describe('toObservationVector', () => {
     expect(toObservationVector('vote', { economic: 0.2 })).toEqual({ economic: 1 });
   });
 
+  it('reads a Dáil division lobby on the ±2 ruler, with the same floor', () => {
+    expect(toObservationVector('division', { economic: 2, welfare: -1 })).toEqual({ economic: 10, welfare: -5 });
+    expect(toObservationVector('division', { economic: 0.19 })).toEqual({});
+  });
+
   it('bounds out-of-range values to the source max', () => {
     expect(toObservationVector('article', { economic: 3 })).toEqual({ economic: 10 });
     expect(toObservationVector('vote', { economic: -9 })).toEqual({ economic: -10 });

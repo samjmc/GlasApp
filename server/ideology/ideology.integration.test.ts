@@ -154,7 +154,10 @@ run('quiz and ideology against Postgres', () => {
         );
       await expect(insert('article', 0)).rejects.toThrow();
       await expect(insert('tweet', 1)).rejects.toThrow(/td_ideology_evidence_source_chk/);
-      await expect(insert('stance', 1)).resolves.toBeDefined();
+      // The CHECK is built from EVIDENCE_SOURCES, so every source in the list is accepted.
+      const { EVIDENCE_SOURCES } = await import('@shared/schema/quiz');
+      expect(EVIDENCE_SOURCES).toEqual(expect.arrayContaining(['article', 'debate', 'stance', 'division']));
+      for (const source of EVIDENCE_SOURCES) await expect(insert(source, 1)).resolves.toBeDefined();
     });
 
     it('a stance is the current answer: a newer one replaces it, an older one never does', async () => {

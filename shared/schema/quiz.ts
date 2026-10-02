@@ -4,10 +4,14 @@
  *
  * - `quiz_results`: every quiz a signed-in user completes. The newest is their quiz position;
  *   the rest is their history.
- * - `td_ideology_evidence`: one row per piece of evidence about a TD's position (an article
- *   stance, a debate speech). Append-only and idempotent on its source, so a TD's profile can
- *   always be rebuilt from it. Users have no evidence rows: their votes live in server/voting
- *   and are read through `listUserVoteVectors()`.
+ * - `td_ideology_evidence`: one row per piece of evidence about a TD's position (a news stance,
+ *   a debate speech, a Dáil vote that was the TD's own). Idempotent on its source, so a TD's
+ *   profile can always be rebuilt from it: stance rows are upserted (the current answer);
+ *   division rows are derived from `division_ideology` and replaced nightly; other rows are
+ *   append-only. Users have no evidence rows: their votes live in server/voting and are read
+ *   through `listUserVoteVectors()`.
+ * - `division_ideology`: what each Dáil division meant, as a model read it. A cache of model
+ *   output, keyed by the division; no user data.
  * - `ideology_profiles`: the computed position of every user, TD and party. Derived; never
  *   the source of truth. `npm run ideology -- --recalculate` rebuilds all of it.
  *
@@ -15,6 +19,7 @@
  */
 import { sql } from 'drizzle-orm';
 import {
+  boolean,
   check,
   index,
   integer,
@@ -22,12 +27,17 @@ import {
   primaryKey,
   real,
   serial,
+  smallint,
   text,
   timestamp,
   uniqueIndex,
   varchar,
 } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
+import { divisions } from './parliament';
+import { inList } from './pledges';
+import { DIVISION_KINDS, DIVISION_MEANING_STATUSES, type DivisionKind, type DivisionMeaningStatus } from '../divisionMeaning';
+import type { IdeologyDimension } from '../ideology';
 import type { QuizResponse } from '../quiz';
 
 const vectorColumns = () => ({
@@ -68,8 +78,11 @@ export const quizResults = politics.table(
   (t) => [index('quiz_results_user_created_idx').on(t.userId, t.createdAt)],
 );
 
-/** `article` = the deleted scoring panel's rows, kept only until `npm run stances -- --rebuild` purges them. */
-export const EVIDENCE_SOURCES = ['article', 'debate', 'stance'] as const;
+/**
+ * `article` = the deleted scoring panel's rows, kept only until `npm run stances -- --rebuild` purges them.
+ * `division` = a Dáil vote that was the TD's own, derived from `division_ideology` (never recorded one by one).
+ */
+export const EVIDENCE_SOURCES = ['article', 'debate', 'stance', 'division'] as const;
 export type EvidenceSource = (typeof EVIDENCE_SOURCES)[number];
 
 export const tdIdeologyEvidence = politics.table(
@@ -93,8 +106,55 @@ export const tdIdeologyEvidence = politics.table(
   (t) => [
     uniqueIndex('td_ideology_evidence_source_idx').on(t.tdId, t.source, t.sourceRef),
     index('td_ideology_evidence_td_idx').on(t.tdId, t.observedAt),
-    check('td_ideology_evidence_source_chk', sql`${t.source} in ('article', 'debate', 'stance')`),
+    check('td_ideology_evidence_source_chk', sql`${t.source} in (${inList(EVIDENCE_SOURCES)})`),
     check('td_ideology_evidence_weight_chk', sql`${t.weight} > 0`),
+  ],
+);
+
+/** A lean per dimension, −2..+2 (shared/ideology.ts's sign rule); a dimension left out says nothing. */
+export type DivisionLean = Partial<Record<IdeologyDimension, number>>;
+
+/**
+ * What one Dáil division meant: one model reading per division, reused until the prompt
+ * (`prompt_version`) or the division's own record (`input_hash`) changes. Every reading
+ * column is NULL unless `status` is 'classified' or 'no_signal'.
+ */
+export const divisionIdeology = politics.table(
+  'division_ideology',
+  {
+    divisionId: varchar('division_id', { length: 80 })
+      .primaryKey()
+      .references(() => divisions.id, { onDelete: 'cascade' }),
+    status: varchar('status', { length: 12 }).$type<DivisionMeaningStatus>().notNull(),
+    taLean: jsonb('ta_lean').$type<DivisionLean>(),
+    nilLean: jsonb('nil_lean').$type<DivisionLean>(),
+    /** 0..1: how much a Níl vote says about the voter. */
+    nilWeight: real('nil_weight'),
+    confidence: real('confidence'),
+    salience: real('salience'),
+    divisionKind: varchar('division_kind', { length: 20 }).$type<DivisionKind>(),
+    procedural: boolean('procedural'),
+    freeVote: boolean('free_vote'),
+    policyTopic: text('policy_topic'),
+    taMeans: text('ta_means'),
+    reasoning: text('reasoning'),
+    /** The model that answered (the provider can replace the one asked for). */
+    model: varchar('model', { length: 60 }),
+    promptVersion: smallint('prompt_version').notNull(),
+    /** Hash of the division's subject, debate, section, position and tallies when it was read. */
+    inputHash: varchar('input_hash', { length: 16 }).notNull(),
+    /** Model calls made for this prompt version and input; a failed reading is retried up to a cap. */
+    attempts: smallint('attempts').notNull().default(0),
+    promptTokens: integer('prompt_tokens'),
+    completionTokens: integer('completion_tokens'),
+    classifiedAt: timestamp('classified_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    check('division_ideology_status_chk', sql`${t.status} in (${inList(DIVISION_MEANING_STATUSES)})`),
+    check('division_ideology_kind_chk', sql`${t.divisionKind} in (${inList(DIVISION_KINDS)})`),
+    check('division_ideology_nil_weight_chk', sql`${t.nilWeight} between 0 and 1`),
+    check('division_ideology_confidence_chk', sql`${t.confidence} between 0 and 1`),
+    check('division_ideology_salience_chk', sql`${t.salience} between 0 and 1`),
   ],
 );
 
@@ -123,3 +183,5 @@ export type QuizResultRow = typeof quizResults.$inferSelect;
 export type TdIdeologyEvidenceRow = typeof tdIdeologyEvidence.$inferSelect;
 export type NewTdIdeologyEvidence = typeof tdIdeologyEvidence.$inferInsert;
 export type IdeologyProfileRow = typeof ideologyProfiles.$inferSelect;
+export type DivisionIdeologyRow = typeof divisionIdeology.$inferSelect;
+export type NewDivisionIdeology = typeof divisionIdeology.$inferInsert;

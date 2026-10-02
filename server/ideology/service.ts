@@ -11,7 +11,7 @@ import {
   type TdMatch,
   type UserIdeologyDetail,
 } from '@shared/ideologyMatch';
-import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
+import type { EvidenceSource, IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
 import type { SharedIssue } from '@shared/stancesApi';
 import { ideologyLabel } from '../quiz/label';
 import { answeredCountsOf, coverageOf, scoreQuiz } from '../quiz/score';
@@ -142,7 +142,8 @@ const day = (d: Date) => d.toISOString().slice(0, 10);
 export interface TdEvidenceInput {
   /** tds.id, or the TD's name when the caller only has that. */
   td: number | string;
-  source: Exclude<SourceKind, 'vote'>;
+  /** Not 'division': those rows are derived as a set and replaced whole (divisions.ts). */
+  source: Exclude<EvidenceSource, 'division'>;
   sourceRef: string;
   raw: Partial<Record<IdeologyDimension, number | null | undefined>>;
   weight: number;
@@ -433,16 +434,21 @@ export function deleteTdEvidence(source: Exclude<SourceKind, 'vote'>, dryRun = f
   return repo.deleteTdEvidenceBySource(source, dryRun);
 }
 
-/** Re-score stored quizzes, then rebuild every profile from evidence. No model calls. */
-export async function recalculateAll(): Promise<RecalculateSummary> {
-  const quizzesRescored = await rescoreQuizzes();
-  const now = new Date();
+/** Rebuild every active TD's profile from its evidence, then every party's. No model calls. */
+export async function recomputeTdsAndParties(now = new Date()): Promise<{ tds: number; parties: number }> {
   const tds = await repo.listActiveTds();
   for (const td of tds) await recomputeTdProfile(td.id, now);
   const parties = new Map<string, string>();
   for (const td of tds) if (!isIndependent(td.party)) parties.set(partyKey(td.party!), td.party!);
   for (const party of Array.from(parties.values())) await recomputePartyProfile(party);
+  return { tds: tds.length, parties: parties.size };
+}
+
+/** Re-score stored quizzes, then rebuild every profile from evidence. No model calls. */
+export async function recalculateAll(): Promise<RecalculateSummary> {
+  const quizzesRescored = await rescoreQuizzes();
+  const { tds, parties } = await recomputeTdsAndParties();
   const userIds = Array.from(new Set([...(await repo.listQuizUserIds()), ...(await repo.listUserProfileIds())]));
   for (const userId of userIds) await recomputeProfile(userId);
-  return { quizzesRescored, users: userIds.length, tds: tds.length, parties: parties.size };
+  return { quizzesRescored, users: userIds.length, tds, parties };
 }

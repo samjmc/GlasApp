@@ -2,9 +2,10 @@
  * What a Dáil division meant, asked of a model. Pure: the prompts, the choice of debate
  * excerpts, and the parse. The model call and the storage of readings live elsewhere.
  *
- * The prompt never gives how each party voted. With it, the model could code the
- * government-vs-opposition split instead of the proposal, and an audit that compares the
- * reading with the lobbies' party baselines would only be checking the model against itself.
+ * The prompt names no party at all: not how each party voted, not a speaker's or a sponsor's
+ * party, not the government. With them, the model could code the government-vs-opposition
+ * split (or who proposed it) instead of the proposal, and an audit that compares the reading
+ * with the lobbies' party baselines would only be checking the model against itself.
  */
 import { z } from 'zod';
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
@@ -89,17 +90,19 @@ type Tallied = { outcome: string | null; taCount: number; nilCount: number; stao
 const tally = (d: Tallied) => `${d.outcome ?? 'outcome not recorded'} (Tá ${d.taCount}, Níl ${d.nilCount}, Staon ${d.staonCount})`;
 
 function billLine(b: DivisionContext['bills'][number]): string {
-  const sponsor = b.primarySponsor ? `; primary sponsor ${b.primarySponsor.label}${b.primarySponsor.party ? `, ${b.primarySponsor.party}` : ''}` : '';
+  const sponsor = b.primarySponsor ? `; primary sponsor ${b.primarySponsor.label}` : '';
   return `- ${b.shortTitle} (${b.source} bill${sponsor})${b.longTitle ? `: ${b.longTitle}` : ''}`;
 }
 
-/** The division, where it sits, the bills and the government, then the debate excerpts. Only the whole-House tallies. */
+/** The division, where it sits and the bills, then the debate excerpts. Only the whole-House tallies; no party. */
 export function divisionUserPrompt(context: DivisionContext): string {
-  const { division: d, siblings, index, bills, government, speeches } = context;
+  const { division: d, siblings, index, bills, speeches } = context;
+  const placed = d.sectionPosition !== null;
   // With no located position, a division that is alone in its section is most likely the
   // question put at the end of the debate, so the closing speeches say most about it.
-  const alone = d.sectionPosition === null && siblings.length === 1;
-  const excerpts = selectSpeechContext(speeches, SPEECH_CONTEXT_CHARS, alone);
+  // A placed division's speeches end at the vote, so the motions nearest it come first.
+  const alone = !placed && siblings.length === 1;
+  const excerpts = selectSpeechContext(speeches, SPEECH_CONTEXT_CHARS, alone, placed);
   return [
     `Date: ${d.date}`,
     `Question: ${d.subject ?? 'not recorded'}`,
@@ -111,9 +114,6 @@ export function divisionUserPrompt(context: DivisionContext): string {
     '',
     'Bills in this debate:',
     ...(bills.length ? bills.map(billLine) : ['none recorded']),
-    '',
-    `Government parties: ${government.parties.join(', ') || 'none recorded'}`,
-    `Independent ministers: ${government.independents.join(', ') || 'none'}`,
     '',
     'Debate record (excerpts, in order):',
     excerpts || 'No debate record is available for this division.',
@@ -127,8 +127,9 @@ export function divisionUserPrompt(context: DivisionContext): string {
 const MOTION = /^I move\b/i;
 const PUTS_QUESTION = /\b(question|amendment)/i;
 
+/** The speaker's name only: a party or an office (a minister's) would say who proposed what. */
 function speakerLabel(s: ContextSpeech): string {
-  return `${s.name ?? 'Unnamed speaker'}${s.party ? ` (${s.party})` : ''}${s.role ? `, ${s.role}` : ''}`;
+  return s.name ?? 'Unnamed speaker';
 }
 
 /**
@@ -140,9 +141,11 @@ function speakerLabel(s: ContextSpeech): string {
  *   3. the opening 600 characters of the first two member speeches
  *   4. with `withClosing`, the last three member speeches
  *
+ * Within 1 and 2, the earliest come first; with `nearestEnd` (the speeches end at the vote),
+ * the latest do, so a long debate cannot crowd out the motion actually put.
  * A paragraph that does not fit is skipped whole; the rendered string never exceeds `budget`.
  */
-export function selectSpeechContext(speeches: ContextSpeech[], budget = SPEECH_CONTEXT_CHARS, withClosing = false): string {
+export function selectSpeechContext(speeches: ContextSpeech[], budget = SPEECH_CONTEXT_CHARS, withClosing = false, nearestEnd = false): string {
   const paragraphs = speeches.map((s) => s.text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean));
   const flat = paragraphs.flatMap((ps, i) => ps.map((text, j) => ({ i, j, text })));
 
@@ -155,12 +158,11 @@ export function selectSpeechContext(speeches: ContextSpeech[], budget = SPEECH_C
     else had.cap = Math.max(had.cap, cap);
   };
 
-  flat.forEach((p, k) => {
-    if (MOTION.test(p.text)) for (const q of flat.slice(k, k + 1 + AFTER_MOTION)) pick(q.i, q.j);
-  });
-  speeches.forEach((s, i) => {
-    if (s.isPresiding && PUTS_QUESTION.test(s.text)) paragraphs[i].forEach((_, j) => pick(i, j));
-  });
+  const inOrder = <T>(items: T[]) => (nearestEnd ? [...items].reverse() : items);
+  const motions = flat.flatMap((p, k) => (MOTION.test(p.text) ? [k] : []));
+  for (const k of inOrder(motions)) for (const q of flat.slice(k, k + 1 + AFTER_MOTION)) pick(q.i, q.j);
+  const putsQuestion = speeches.flatMap((s, i) => (s.isPresiding && PUTS_QUESTION.test(s.text) ? [i] : []));
+  for (const i of inOrder(putsQuestion)) paragraphs[i].forEach((_, j) => pick(i, j));
   const members = speeches.map((s, i) => ({ s, i })).filter(({ s }) => !s.isPresiding);
   for (const { i } of members.slice(0, OPENING_SPEECHES)) {
     let left = OPENING_CHARS;

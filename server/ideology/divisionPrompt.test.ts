@@ -119,9 +119,8 @@ describe('selectSpeechContext', () => {
   });
 
   it('keeps chair speeches that put a question or an amendment, and no other chair speech', () => {
-    expect(out).toContain('The question is that amendment No. 1 be made.');
+    expect(out).toContain('Verona Murphy: The question is that amendment No. 1 be made.');
     expect(out).not.toContain('Is that agreed?');
-    expect(out).toContain('An Ceann Comhairle');
   });
 
   it('keeps the opening 600 characters of the first two member speeches', () => {
@@ -138,18 +137,28 @@ describe('selectSpeechContext', () => {
     expect(selectSpeechContext(speeches, undefined, true)).toContain('A LATE member speech.');
   });
 
-  it('labels each excerpt with its speaker', () => {
-    expect(out).toContain('Paschal Donohoe (Fine Gael), Minister for Finance: I cannot accept the amendment.');
+  it('labels each excerpt with its speaker by name only: no party, no role', () => {
+    expect(out).toContain('Paschal Donohoe: I cannot accept the amendment.');
+    expect(out).not.toMatch(/Fine Gael|Sinn Féin|Independent|Minister for Finance|Ceann Comhairle/);
   });
 
+  const many = Array.from({ length: 60 }, (_, k) => speech({ text: `I move amendment No. ${k + 1}: ${'x'.repeat(300)}` }));
+
   it('stays within the budget, filling it from the "I move" paragraphs first, still in document order', () => {
-    const many = Array.from({ length: 60 }, (_, k) => speech({ text: `I move amendment No. ${k + 1}: ${'x'.repeat(300)}` }));
     const cut = selectSpeechContext(many);
     expect(cut.length).toBeLessThanOrEqual(12_000);
     expect(cut.length).toBeGreaterThan(12_000 - 400);
     expect(cut).toContain('I move amendment No. 1:');
     expect(cut).not.toContain('I move amendment No. 60:');
     expect(cut.indexOf('No. 1:')).toBeLessThan(cut.indexOf('No. 2:'));
+  });
+
+  it('for a division placed in a long debate, fills the budget from the motions nearest the vote, still in document order', () => {
+    const cut = selectSpeechContext(many, undefined, false, true);
+    expect(cut.length).toBeLessThanOrEqual(12_000);
+    expect(cut).toContain('I move amendment No. 60:');
+    expect(cut).not.toContain('I move amendment No. 1:');
+    expect(cut.indexOf('No. 59:')).toBeLessThan(cut.indexOf('No. 60:'));
   });
 
   it('uses every character of the budget it is given, and not one more', () => {
@@ -196,7 +205,6 @@ const context: DivisionContext = {
     },
     { id: '2025-999', shortTitle: 'Test Bill 2025', longTitle: null, source: 'Private Member', primarySponsor: { label: 'Cian O’Callaghan', party: 'Social Democrats' } },
   ],
-  government: { parties: ['Fianna Fáil', 'Fine Gael'], independents: ['Seán Canney'] },
 };
 
 describe('divisionUserPrompt', () => {
@@ -214,12 +222,36 @@ describe('divisionUserPrompt', () => {
     expect(prompt).toContain('Tá 47, Níl 104');
   });
 
-  it('names the bills, their source and primary sponsor, and the government', () => {
+  it('names the bills, their source and primary sponsor', () => {
     expect(prompt).toContain('An Act to amend the Finance (Local Property Tax) Act 2012.');
-    expect(prompt).toContain('Private Member bill; primary sponsor Cian O’Callaghan, Social Democrats');
-    expect(prompt).toContain('Fianna Fáil, Fine Gael');
-    expect(prompt).toContain('Seán Canney');
+    expect(prompt).toContain('Test Bill 2025 (Private Member bill; primary sponsor Cian O’Callaghan)');
     expect(prompt).toContain('I cannot accept the amendment.');
+  });
+
+  it('names no party anywhere: not for a speaker, a sponsor, or the government', () => {
+    // A party in the prompt lets the model read the proposal by who made it, and makes the
+    // audit (which compares readings with the lobbies' party baselines) check the model against itself.
+    const parties = [
+      ...context.speeches.map((s) => s.party),
+      ...context.bills.map((b) => b.primarySponsor?.party),
+      'Fianna Fáil',
+      'Fine Gael',
+      'Sinn Féin',
+      'Social Democrats',
+      'Independent',
+    ].filter((p): p is string => Boolean(p));
+    expect(parties).toEqual(expect.arrayContaining(['Sinn Féin', 'Fine Gael', 'Social Democrats']));
+    for (const party of parties) expect(prompt).not.toContain(party);
+    expect(prompt).not.toMatch(/government parties|independent ministers/i);
+  });
+
+  it('for a placed division in a long debate, reads the motions nearest the vote', () => {
+    const long = Array.from({ length: 60 }, (_, k) => speech({ position: k, text: `I move amendment No. ${k + 1}: ${'x'.repeat(300)}` }));
+    const placed = divisionUserPrompt({ ...context, division: { ...context.division, sectionPosition: 60 }, speeches: long });
+    expect(placed).toContain('I move amendment No. 60:');
+    expect(placed).not.toContain('I move amendment No. 1:');
+    // Not placed: the whole section, and no way to know which end matters.
+    expect(divisionUserPrompt({ ...context, speeches: long })).toContain('I move amendment No. 1:');
   });
 
   it('never gives how each party voted, even when the caller has it', () => {

@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { DivisionVote } from '@shared/schema/parliament';
 import { majority } from '../parliament/metrics';
-import { divisionEvidence, type DivisionMeaning, type EvidenceVote } from './divisionEvidence';
+import { capDivisionWeights, divisionEvidence, type DivisionMeaning, type EvidenceVote } from './divisionEvidence';
+import { DIVISION_SECTION_CAP, DIVISION_TOTAL_CAP } from './sources';
 
 const HELD = '2025-06-25T08:00:00.000Z';
 const DIVISION = 'dail-34-2025-06-25-vote_91';
@@ -14,7 +15,6 @@ const meaning = (over: Partial<DivisionMeaning> = {}): DivisionMeaning => ({
   nilWeight: 0.4,
   confidence: 0.8,
   salience: 0.5,
-  freeVote: false,
   policyTopic: 'property_tax',
   ...over,
 });
@@ -120,11 +120,30 @@ describe('divisionEvidence', () => {
     expect(weights(rows)).toEqual([0.6]);
   });
 
-  it('a free vote frees every member when the reading is at least 0.7 confident; below that the usual rules apply', () => {
-    const records = party('Fianna Fáil', 9, 1);
-    const sure = divisionEvidence(meaning({ freeVote: true, confidence: 0.7, nilWeight: 1 }), records);
-    expect(weights(sure)).toEqual(Array(10).fill(0.35)); // 1 × 0.7 × 0.5
-    const unsure = divisionEvidence(meaning({ freeVote: true, confidence: 0.6 }), records);
-    expect(votesOf(records, unsure)).toEqual(['nil']);
+  it("a model's free-vote flag frees no party by itself: only a party that really split votes freely", () => {
+    // The stored reading carries the flag; divisionEvidence must not act on it alone.
+    const flagged = { ...meaning({ confidence: 1, nilWeight: 1 }), freeVote: true } as DivisionMeaning;
+    expect(divisionEvidence(flagged, party('Fianna Fáil', 10, 0))).toEqual([]); // united: the whip
+    const nine = party('Fianna Fáil', 9, 1);
+    expect(votesOf(nine, divisionEvidence(flagged, nine))).toEqual(['nil']); // one rebel, not ten free votes
+    expect(divisionEvidence(flagged, party('Fianna Fáil', 7, 3))).toHaveLength(10); // a real split
+  });
+});
+
+describe('capDivisionWeights', () => {
+  const row = (tdId: number, section: string, weight: number) => ({ tdId, section, weight });
+
+  it("caps one TD's summed weight in one debate section, scaling that TD's rows there down evenly", () => {
+    const capped = capDivisionWeights([row(1, 's1', 0.6), row(1, 's1', 0.6), row(1, 's2', 0.6), row(2, 's1', 0.6), row(3, 's1', 1.5)]);
+    expect(DIVISION_SECTION_CAP).toBe(1);
+    expect(weights(capped)).toEqual([0.5, 0.5, 0.6, 0.6, 1]);
+  });
+
+  it("then caps a TD's total division weight at twice a party prior", () => {
+    expect(DIVISION_TOTAL_CAP).toBe(6);
+    const eight = Array.from({ length: 8 }, (_, k) => row(1, `s${k}`, 1));
+    // s0 holds two rows (section cap: 0.5 each), so TD 1 totals 8 → × 6/8. TD 2 is untouched.
+    const capped = capDivisionWeights([...eight, row(1, 's0', 1), row(2, 'x', 1)]);
+    expect(weights(capped)).toEqual([0.375, ...Array(7).fill(0.75), 0.375, 1]);
   });
 });
