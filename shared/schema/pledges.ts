@@ -23,8 +23,7 @@ import { politics } from './politics';
 import { divisions } from './parliament';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES } from '../pledges';
 
-/** A constant list as the body of a CHECK's `in (…)`, so the constraint can never drift from it. */
-export const inList = (values: readonly string[]) => sql.raw(values.map((v) => `'${v}'`).join(', '));
+const inList = (values: readonly string[]) => sql.raw(values.map((v) => `'${v}'`).join(', '));
 
 export const pledges = politics.table(
   'pledges',

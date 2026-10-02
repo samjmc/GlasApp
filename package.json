@@ -29,7 +29,8 @@
     "parliament:sync": "tsx server/jobs/parliament-sync.ts",
     "parliament:silences": "tsx server/jobs/parliament-silences.ts",
     "parliament:leave-watch": "tsx server/jobs/parliament-leave-watch.ts",
-    "party-quiz": "tsx server/jobs/party-quiz.ts"
+    "party-quiz": "tsx server/jobs/party-quiz.ts",
+    "quiz:analyse": "tsx server/jobs/quiz-analyse.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",

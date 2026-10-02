@@ -7,8 +7,6 @@
  *   recordTdEvidence                        a stance by a TD (verified news stances, debates)
  *   matchesFor / userMatches                TDs and parties closest to a position / to a signed-in user
  *   recalculateAll                          rebuild every profile, no model calls
- *   classifyDivisions / syncDivisionEvidence  Dáil divisions as TD evidence (divisions.ts)
- *   runDivisionIdeology                     the nightly division run (scheduler, behind DIVISION_IDEOLOGY)
  */
 export {
   deleteTdEvidence,
@@ -28,17 +26,5 @@ export {
   type TdEvidenceInput,
   type TimelinePoint,
 } from './service';
-export {
-  classifyDivisions,
-  DivisionIdeologyAlreadyRunning,
-  runDivisionAudit,
-  runDivisionIdeology,
-  syncDivisionEvidence,
-  type ClassifySummary,
-  type DivisionAudit,
-  type DivisionReading,
-  type EvidenceSyncSummary,
-  type ResampleSummary,
-} from './divisions';
 export type { Matches, PartyMatch, TdIdeology, TdMatch, UserIdeologyDetail } from '@shared/ideologyMatch';
 export { alignment, type DimensionWeights } from './alignment';

@@ -5,8 +5,6 @@ describe("evidenceSummary", () => {
   it("counts each source, singular or plural", () => {
     expect(evidenceSummary({ stance: 3, debate: 1 })).toBe("3 stances · 1 debate speech");
     expect(evidenceSummary({ stance: 1, debate: 2 })).toBe("1 stance · 2 debate speeches");
-    expect(evidenceSummary({ debate: 1, division: 4, stance: 2 })).toBe("2 stances · 4 own Dáil votes · 1 debate speech");
-    expect(evidenceSummary({ division: 1 })).toBe("1 own Dáil vote");
   });
 
   it("is null when there is no evidence, and never shows a zero", () => {

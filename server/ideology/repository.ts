@@ -5,14 +5,11 @@ import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { tds } from '@shared/schema/politics';
 import {
-  divisionIdeology,
   ideologyProfiles,
   quizResults,
   tdIdeologyEvidence,
-  type DivisionIdeologyRow,
   type EvidenceSource,
   type IdeologyProfileRow,
-  type NewDivisionIdeology,
   type NewTdIdeologyEvidence,
   type ProfileSubject,
   type QuizResultRow,
@@ -21,6 +18,7 @@ import {
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
 import type { EvidenceCounts } from '@shared/ideologyMatch';
 import type { QuizResponse } from '@shared/quiz';
+import type { QuizPlanRecord } from '@shared/quizPlan';
 import type { Profile } from './model';
 
 export function vectorOf(row: IdeologyVector): IdeologyVector {
@@ -30,12 +28,12 @@ export function vectorOf(row: IdeologyVector): IdeologyVector {
 // --- quiz ------------------------------------------------------------------
 
 export async function insertQuizResult(
-  input: { userId: string; answers: QuizResponse[]; vector: IdeologyVector; ideology: string; description: string },
+  input: { userId: string; answers: QuizResponse[]; plan: QuizPlanRecord | null; vector: IdeologyVector; ideology: string; description: string },
   database: Db = db,
 ): Promise<QuizResultRow> {
   const [row] = await database
     .insert(quizResults)
-    .values({ userId: input.userId, answers: input.answers, ...input.vector, ideology: input.ideology, description: input.description })
+    .values({ userId: input.userId, answers: input.answers, plan: input.plan, ...input.vector, ideology: input.ideology, description: input.description })
     .returning();
   return row!;
 }
@@ -143,27 +141,6 @@ export async function deleteTdEvidenceBySource(source: EvidenceSource, dryRun: b
   return deleted.length;
 }
 
-/**
- * The advisory lock every division-evidence replace takes. The server's nightly run and the
- * CLI are different processes, so an in-process flag cannot keep them apart.
- */
-export const DIVISION_EVIDENCE_LOCK = 4_710_314_001;
-const EVIDENCE_INSERT_CHUNK = 500;
-
-/**
- * Replace every `division` evidence row with `rows`, in one transaction: a reader sees the old
- * set or the new one, never half of each. Profiles are not recomputed here.
- */
-export async function replaceDivisionEvidence(rows: NewTdIdeologyEvidence[], database: Db = db): Promise<void> {
-  await database.transaction(async (tx) => {
-    await tx.execute(sql`select pg_advisory_xact_lock(${DIVISION_EVIDENCE_LOCK}::bigint)`);
-    await tx.delete(tdIdeologyEvidence).where(eq(tdIdeologyEvidence.source, 'division'));
-    for (let i = 0; i < rows.length; i += EVIDENCE_INSERT_CHUNK) {
-      await tx.insert(tdIdeologyEvidence).values(rows.slice(i, i + EVIDENCE_INSERT_CHUNK));
-    }
-  });
-}
-
 export async function listTdEvidence(tdId: number, database: Db = db): Promise<TdIdeologyEvidenceRow[]> {
   return database.select().from(tdIdeologyEvidence).where(eq(tdIdeologyEvidence.tdId, tdId));
 }
@@ -194,18 +171,6 @@ export async function evidenceSummary(tdId?: number, database: Db = db): Promise
   return new Map(
     Array.from(byTd, ([id, { bySource, dims }]) => [id, { bySource, measured: IDEOLOGY_DIMENSIONS.filter((d) => dims.has(d)) }]),
   );
-}
-
-// --- division readings -----------------------------------------------------
-
-export async function listDivisionMeanings(database: Db = db): Promise<DivisionIdeologyRow[]> {
-  return database.select().from(divisionIdeology);
-}
-
-/** One division's reading, replacing any earlier one. */
-export async function upsertDivisionMeaning(row: NewDivisionIdeology, database: Db = db): Promise<void> {
-  const { divisionId, ...rest } = row;
-  await database.insert(divisionIdeology).values(row).onConflictDoUpdate({ target: divisionIdeology.divisionId, set: rest });
 }
 
 // --- profiles --------------------------------------------------------------

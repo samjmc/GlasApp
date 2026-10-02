@@ -16,11 +16,11 @@ import { TDAvatar } from '@/components/pulse/Party';
 import { Segmented } from '@/components/pulse/Segmented';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { RetryButton } from '@/components/data/RetryButton';
-import { PartyPollingWidget } from '@/components/PartyPollingWidget';
 import { PartyPledgesPanel } from '@/components/pledges/PartyPledgesPanel';
-import { politicalParties } from '@shared/data';
-import { partyDimensionsData } from '@/data/partyDimensionsData';
+import { fetchPartyAnswers, fetchPartyIdeology } from '@/lib/ideologyApi';
+import { partyIdeologyView } from '@/lib/partyIdeology';
 import { partyStyle } from '@/lib/parties';
+import { queryKeys } from '@/lib/queryKeys';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { cn } from '@/lib/utils';
 import type { PartyDetail, PartyScoreRow, TdCard } from '@shared/scoresApi';
@@ -34,29 +34,16 @@ const MEMBER_SORTS: { value: MemberSort; label: string }[] = [
   { value: 'debate', label: 'Debate' },
 ];
 
-const DIMENSIONS = [
-  { key: 'economic', label: 'Economic', neg: 'Left', pos: 'Right' },
-  { key: 'social', label: 'Social', neg: 'Progressive', pos: 'Conservative' },
-  { key: 'cultural', label: 'Cultural', neg: 'Progressive', pos: 'Traditional' },
-  { key: 'globalism', label: 'Globalism', neg: 'Nationalist', pos: 'Globalist' },
-  { key: 'environmental', label: 'Environment', neg: 'Industry', pos: 'Green' },
-  { key: 'authority', label: 'Authority', neg: 'Libertarian', pos: 'Authoritarian' },
-  { key: 'welfare', label: 'Welfare', neg: 'Free market', pos: 'Welfare state' },
-  { key: 'technocratic', label: 'Governance', neg: 'Populist', pos: 'Expert-led' },
-] as const;
-
 function average(values: Array<number | null>): number | null {
   const present = values.filter((v): v is number => v !== null && v !== undefined);
   if (present.length === 0) return null;
   return Math.round(present.reduce((a, b) => a + b, 0) / present.length);
 }
 
-function describe(value: number, neg: string, pos: string) {
-  const abs = Math.abs(value);
-  if (abs < 2) return 'Centre';
-  const intensity = abs >= 8 ? 'Strongly' : abs >= 5 ? 'Moderately' : 'Slightly';
-  return `${intensity} ${(value < 0 ? neg : pos).toLowerCase()}`;
-}
+const signed = (value: number) => {
+  const rounded = Math.round(value * 10) / 10;
+  return rounded > 0 ? `+${rounded}` : String(rounded);
+};
 
 function MemberRow({ td, party, value, pos }: { td: TdCard; party: string; value: number | null; pos: number }) {
   const tone = scoreTone(value);
@@ -130,6 +117,18 @@ export default function PartyProfilePage() {
     return [...members].sort((a, b) => (b.pillars[memberSort] ?? -1) - (a.pillars[memberSort] ?? -1));
   }, [party?.members, memberSort]);
 
+  // Fetched when the tab is first opened, then cached.
+  const partyName = party?.party ?? '';
+  const ideology = useQuery({
+    queryKey: queryKeys.ideology.party(partyName),
+    queryFn: async () => {
+      const [profile, answers] = await Promise.all([fetchPartyIdeology(partyName), fetchPartyAnswers(partyName)]);
+      return partyIdeologyView(profile, answers);
+    },
+    enabled: !!partyName && tab === 'ideology',
+    staleTime: 5 * 60 * 1000,
+  });
+
   if (isLoading) {
     return (
       <div className="flex flex-col gap-6" aria-busy="true">
@@ -169,12 +168,8 @@ export default function PartyProfilePage() {
     );
   }
 
-  // Ideology comes from the static party data; the scores API has none.
-  const staticParty = politicalParties.find(
-    (p) => p.country === 'ireland' && p.name.toLowerCase() === party.party.toLowerCase()
-  );
-  const ideology = staticParty ? partyDimensionsData[staticParty.id] : undefined;
   const style = partyStyle(party.party);
+  const view = ideology.data;
 
   // The mean of ranked members' scores; unranked members are left out, not counted as 0.
   const overallScore = party.averageScore;
@@ -303,8 +298,6 @@ export default function PartyProfilePage() {
                   )}
                 </CardContent>
               </Card>
-
-              <PartyPollingWidget partyName={party.party} performanceScore={overallScore ?? undefined} />
             </div>
           </div>
         </TabsContent>
@@ -354,41 +347,96 @@ export default function PartyProfilePage() {
                 <Link href="/quiz">Take the quiz to compare</Link>
               </Button>
             </CardHeader>
-            <CardContent>
-              {ideology ? (
-                <div className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-6 md:grid-cols-2">
-                  {DIMENSIONS.map((d) => {
-                    const value = ideology[d.key];
-                    const position = ((Math.max(-10, Math.min(10, value)) + 10) / 20) * 100;
-                    return (
-                      <div key={d.key} className="flex flex-col gap-2">
-                        <div className="flex items-baseline justify-between gap-3">
-                          <span className="text-sm font-semibold">{d.label}</span>
-                          <span className="text-[13px] text-muted-foreground">
-                            {describe(value, d.neg, d.pos)} ·{' '}
-                            <span className="font-display font-bold text-foreground">{value > 0 ? `+${value}` : value}</span>
-                          </span>
-                        </div>
-                        <div
-                          className="relative h-2 rounded-full bg-elevated"
-                          role="img"
-                          aria-label={`${d.label}: ${value} on a scale from −10 (${d.neg}) to +10 (${d.pos})`}
-                        >
-                          <span className="absolute inset-y-[-3px] left-1/2 w-px bg-input" aria-hidden="true" />
-                          <span
-                            aria-hidden="true"
-                            className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-card bg-primary transition-[left] duration-200"
-                            style={{ left: `${position}%` }}
-                          />
-                        </div>
-                        <div className="flex justify-between text-xs text-muted-foreground">
-                          <span>{d.neg}</span>
-                          <span>{d.pos}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
+            <CardContent className="flex flex-col gap-6">
+              {ideology.isPending ? (
+                <div className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-6 md:grid-cols-2" aria-busy="true">
+                  {[0, 1, 2, 3].map((i) => (
+                    <Skeleton key={i} className="h-14 rounded-lg" />
+                  ))}
                 </div>
+              ) : ideology.isError ? (
+                <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+                  <span>Could not load where this party sits.</span>
+                  <RetryButton onRetry={() => ideology.refetch()} pending={ideology.isFetching} />
+                </div>
+              ) : view ? (
+                <>
+                  <div className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-6 md:grid-cols-2">
+                    {view.rows.map((row) => {
+                      const position = ((Math.max(-10, Math.min(10, row.value)) + 10) / 20) * 100;
+                      return (
+                        <div key={row.dimension} className="flex flex-col gap-2">
+                          <div className="flex items-baseline justify-between gap-3">
+                            <span className="text-sm font-semibold">{row.label}</span>
+                            {row.measured ? (
+                              <span className="text-[13px] text-muted-foreground">
+                                {row.description} ·{' '}
+                                <span className="font-display font-bold text-foreground">{signed(row.value)}</span>
+                              </span>
+                            ) : (
+                              <span data-testid="dimension-not-measured" data-dimension={row.dimension} className="text-[13px] text-muted-foreground">
+                                Not measured yet
+                              </span>
+                            )}
+                          </div>
+                          {row.measured ? (
+                            <div
+                              className="relative h-2 rounded-full bg-elevated"
+                              role="img"
+                              aria-label={`${row.label}: ${signed(row.value)} on a scale from −10 (${row.negative}) to +10 (${row.positive})`}
+                            >
+                              <span className="absolute inset-y-[-3px] left-1/2 w-px bg-input" aria-hidden="true" />
+                              <span
+                                aria-hidden="true"
+                                className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-card bg-primary transition-[left] duration-200"
+                                style={{ left: `${position}%` }}
+                              />
+                            </div>
+                          ) : (
+                            <span className="block h-2 rounded-full border border-dashed border-input" aria-hidden="true" />
+                          )}
+                          <div className="flex justify-between gap-3 text-xs text-muted-foreground">
+                            <span>{row.negative}</span>
+                            {row.manifestoShare > 0 && <span>{Math.round(row.manifestoShare * 100)}% manifesto</span>}
+                            <span>{row.positive}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <p className="text-[13px] text-muted-foreground">
+                    From {view.source}.
+                    {view.manifesto &&
+                      ` The manifesto answers ${view.manifesto.answeredCount} of ${view.manifesto.askedCount} quiz questions.`}
+                  </p>
+                  {view.answers.length > 0 && (
+                    <section className="flex flex-col gap-3 border-t pt-4">
+                      <h2 className="font-display text-lg font-bold tracking-tight">From the manifesto</h2>
+                      <ul className="flex flex-col gap-4">
+                        {view.answers.map((a) => (
+                          <li key={a.questionId} className="flex flex-col gap-1.5">
+                            <span className="text-sm font-semibold">{a.question}</span>
+                            <span className="text-sm">{a.answer}</span>
+                            {a.citations.map((c) => (
+                              <blockquote key={`${c.document}-${c.page}-${c.quote}`} className="border-l-2 pl-3 text-[13px] text-muted-foreground">
+                                “{c.quote}”{' '}
+                                {c.href ? (
+                                  <a href={c.href} target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground underline underline-offset-2">
+                                    {c.title}, {c.pdfPage === null ? 'section' : 'p.'} {c.page}
+                                  </a>
+                                ) : (
+                                  <span className="font-semibold text-foreground">
+                                    {c.title}, {c.pdfPage === null ? 'section' : 'p.'} {c.page}
+                                  </span>
+                                )}
+                              </blockquote>
+                            ))}
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+                </>
               ) : (
                 <EmptyState icon={Compass} title="No ideology profile yet">
                   We have not placed this party on the 8 dimensions yet.

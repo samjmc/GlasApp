@@ -316,30 +316,6 @@ export default function TDProfilePageEnhanced() {
     staleTime: 300000  // 5 minutes
   });
 
-  // Latest polling for the TD's party
-  const { data: partyPolling } = useQuery({
-    queryKey: ['party-polling', scoreData?.party],
-    queryFn: async () => {
-      if (!scoreData?.party) return null;
-
-      const { supabase } = await import('../lib/supabaseClient');
-      const { data, error } = await supabase
-        .from('polling_aggregates_cache')
-        .select('*')
-        .eq('entity_type', 'party')
-        .eq('entity_name', scoreData.party)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Polling fetch error:', error);
-        return null;
-      }
-
-      return data;
-    },
-    enabled: !!scoreData?.party
-  });
-
   if (isLoading) {
     return (
       <div className="flex flex-col gap-6" aria-busy="true">
@@ -506,8 +482,6 @@ export default function TDProfilePageEnhanced() {
     />
   );
 
-  const pollSupport = partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null;
-  const pollChange = partyPolling?.support_30d_change ? parseFloat(partyPolling.support_30d_change) : null;
 
   return (
     <div className="flex flex-col gap-6">
@@ -520,7 +494,7 @@ export default function TDProfilePageEnhanced() {
       </Link>
 
       {/* Hero */}
-      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 xl:flex-row xl:items-center xl:justify-between">
         <div className="flex min-w-0 flex-1 items-start gap-4 sm:gap-5">
           <TDAvatar
             name={score.name}
@@ -582,7 +556,7 @@ export default function TDProfilePageEnhanced() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-5 lg:border-l lg:border-hero-muted lg:pl-8">
+        <div className="flex items-center gap-5 xl:border-l xl:border-hero-muted xl:pl-8">
           <ScoreRing
             value={score.overallScore}
             size={120}
@@ -1165,32 +1139,6 @@ export default function TDProfilePageEnhanced() {
               </>
             )}
           </Card>
-
-          {score.party && (
-            <Card className="flex flex-col gap-3 p-5">
-              <h2 className="font-display text-lg font-bold tracking-tight">Party polling</h2>
-              {pollSupport !== null ? (
-                <>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-display text-3xl font-bold tracking-tight">{pollSupport.toFixed(1)}%</span>
-                    {pollChange !== null && pollChange !== 0 && (
-                      <span className={cn('text-sm font-semibold', pollChange > 0 ? 'text-score-high' : 'text-warn')}>
-                        {pollChange > 0 ? '+' : ''}
-                        {pollChange.toFixed(1)} in 30 days
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-[13px] text-muted-foreground">
-                    National support for {partyName}
-                    {partyPolling?.latest_poll_source ? ` · ${partyPolling.latest_poll_source}` : ''}
-                    {partyPolling?.latest_poll_date ? `, ${formatDay(partyPolling.latest_poll_date)}` : ''}
-                  </p>
-                </>
-              ) : (
-                <p className="text-sm text-muted-foreground">No recent national poll for {partyName}.</p>
-              )}
-            </Card>
-          )}
         </aside>
       </div>
     </div>

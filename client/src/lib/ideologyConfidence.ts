@@ -9,8 +9,6 @@ import type { EvidenceSource } from "@shared/schema/quiz";
 /** Every evidence source, in display order. A new source is a type error here until it has a label. */
 export const EVIDENCE_LABELS: Record<EvidenceSource, readonly [one: string, many: string]> = {
   stance: ["stance", "stances"],
-  // Only a free or rebel vote is evidence; a vote with the whip is the party's, not the TD's.
-  division: ["own Dáil vote", "own Dáil votes"],
   debate: ["debate speech", "debate speeches"],
   // Rows of the deleted news scoring panel, kept until `npm run stances -- --rebuild` purges them.
   article: ["news analysis", "news analyses"],
