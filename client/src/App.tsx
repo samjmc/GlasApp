@@ -14,6 +14,7 @@ import CookieConsent from "@/components/CookieConsent";
 import { RegionProvider } from "@/contexts/RegionContext";
 import { useRegion } from "@/hooks/useRegion";
 import { useDailySession } from "@/hooks/useDailySession";
+import { isDailyDismissedToday } from "@/lib/dailyDismissal";
 import { AppShell } from "@/components/layout/AppShell";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { RegionComingSoon } from "@/components/RegionComingSoon";
@@ -141,10 +142,12 @@ function Router() {
   const { data: dailySession, isLoading: dailyLoading } = useDailySession(isAuthenticated);
   const { status: regionStatus, region } = useRegion();
 
-  // The reset link signs the user in; the daily session must not pull them off the
-  // page where they set the new password.
+  // A signed-in user with an unfinished session lands in it once a day. Closing it (X) keeps it
+  // closed until tomorrow, or the close button would do nothing. The reset link signs the user in,
+  // and the daily session must not pull them off the page where they set the new password.
   const shouldForceDaily =
     location !== "/auth/reset-password" &&
+    !isDailyDismissedToday() &&
     region?.status === "live" &&
     isAuthenticated &&
     !dailyLoading &&
