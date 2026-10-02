@@ -9,7 +9,6 @@ import { DIMENSION_POLES, type IdeologyDimension } from '@shared/ideology';
 import { useToast } from "@/hooks/use-toast";
 import LoadingScreen from '@/components/LoadingScreen';
 import { EmptyState } from '@/components/pulse/EmptyState';
-import { useActivityTracker } from '@/hooks/useActivityTracker';
 import { cn } from '@/lib/utils';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
@@ -133,7 +132,6 @@ const QuizPage: React.FC = () => {
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const { trackQuizStart, trackActivity } = useActivityTracker();
 
   // Questions grouped by the dimension they measure, in bank order.
   const { questionsByDimension, dimensionOrder } = useMemo(() => {
@@ -159,7 +157,6 @@ const QuizPage: React.FC = () => {
   const [hasStoredResult] = useState(() => loadStoredQuiz() !== null);
 
   const saveIndicatorTimeoutRef = useRef<number | null>(null);
-  const hasTrackedStartRef = useRef(false);
 
   const activeDimension = dimensionOrder[dimensionIndex];
   const currentDimensionQuestions = questionsByDimension[activeDimension] ?? [];
@@ -203,10 +200,6 @@ const QuizPage: React.FC = () => {
   const handleAnswerSelect = (answerIndex: number) => {
     if (!currentQuestion) return;
     setAnswers((prev) => ({ ...prev, [currentQuestion.id]: answerIndex }));
-    if (!hasTrackedStartRef.current) {
-      trackQuizStart();
-      hasTrackedStartRef.current = true;
-    }
     showSavedIndicator();
   };
 
@@ -240,7 +233,6 @@ const QuizPage: React.FC = () => {
         await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
         await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
       }
-      trackActivity('completed_quiz', { category: 'political_engagement', totalQuestions, answeredQuestions: answeredQuestionCount });
       setLocation('/quiz/results');
     } catch (error) {
       console.error("Error completing quiz:", error);
@@ -260,12 +252,6 @@ const QuizPage: React.FC = () => {
       });
       return;
     }
-
-    trackActivity('quiz_answered', {
-      category: currentQuestion.dimension,
-      questionId: currentQuestion.id,
-      answerType: 'option'
-    });
 
     // Absolute targets, not `index + 1`: a double-click must land on the same question,
     // not skip past the end of the dimension.

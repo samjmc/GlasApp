@@ -1,5 +1,4 @@
 import cron from "node-cron";
-import { runShadowCabinet, fetchTopPoliticalNews } from "./shadowCabinet";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
 import { runSync as runParliamentSync } from "../parliament";
@@ -9,8 +8,6 @@ export function initScheduler() {
   console.log("⏰ Scheduler initialized.");
   console.log("   📰 News ingest: every 2 hours, at :30 on odd hours");
   console.log("   🔗 News → TD links and daily-vote questions: every 2 hours");
-  console.log("   🗞️ Daily Briefing: 7:00 AM Dublin");
-  console.log("   🕵️ QA Audit: Sundays at midnight");
 
   // ═══════════════════════════════════════════════════════════════════
   // NEWS PIPELINE (news is not part of any TD's score)
@@ -67,25 +64,4 @@ export function initScheduler() {
       console.error("[Scheduler] Parliament sync failed:", error instanceof Error ? error.message : error);
     }
   }, { timezone: "Europe/Dublin" });
-
-  // Run Daily Briefing at 7:00 AM Dublin time
-  // Format: Minute Hour Day Month DayOfWeek
-  cron.schedule('0 7 * * *', async () => {
-    console.log("🚀 [Scheduler] Starting Daily Briefing...");
-    
-    try {
-        const urls = await fetchTopPoliticalNews();
-        console.log(`[Scheduler] Found ${urls.length} stories.`);
-        
-        for (const url of urls) {
-            console.log(`[Scheduler] Analyzing: ${url}`);
-            await runShadowCabinet(url); // This saves to DB automatically
-        }
-        console.log("✅ [Scheduler] Daily Briefing Complete.");
-    } catch (error) {
-        console.error("❌ [Scheduler] Failed to run Daily Briefing:", error);
-    }
-  }, {
-    timezone: "Europe/Dublin"
-  });
 }
