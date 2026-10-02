@@ -23,15 +23,36 @@ export interface TdParliamentSummary {
   tdId: number;
   memberSince: string | null;
   isPresiding: boolean;
-  /** 0–100, one decimal. */
+  /** 0–100, one decimal: votes cast / divisions the TD could vote in. */
   attendancePct: number | null;
   votesCast: number | null;
+  /** Divisions the TD could vote in: held while a member, not in the chair, not on documented leave. */
   divisionsEligible: number | null;
+  /** Divisions left out because the TD was in the chair (the chair cannot vote). */
+  divisionsChaired: number | null;
+  /** Divisions left out because of documented leave. */
+  divisionsExcused: number | null;
+  /** The attendance that scores full marks for this TD: lower for time in government office. */
+  attendanceBenchmark: number | null;
+  /** Questions the TD asked this term. */
   questionsOral: number | null;
   questionsWritten: number | null;
+  /** False while some months of questions are not loaded: the counts are then a lower bound. */
+  questionsComplete: boolean;
+  /**
+   * How many questions score full marks, pro-rated to the time the TD was expected to ask.
+   * NULL = not expected to ask (government office or the chair for nearly all the term).
+   */
+  questionsExpected: number | null;
+  /** Every office held in the current Dáil, newest first. */
+  officeHistory: TdOfficePeriod[];
+  /** Publicly documented leave, newest first. Those days are left out of every count. */
+  absences: TdAbsence[];
   /** Distinct Dáil debate sections spoken in, chair speeches excluded. */
   sectionsSpoken: number | null;
   sittingDays: number | null;
+  /** Sitting days left out because of documented leave. */
+  sittingDaysExcused: number | null;
   speeches: number | null;
   /** Share of this TD's votes that matched their party's majority, 0–100. NULL for independents. */
   partyLinePct: number | null;
@@ -51,6 +72,67 @@ export interface TdParliamentSummary {
 export interface TdOffice {
   title: string;
   since: string | null;
+}
+
+/** 'party_leader' is not an Oireachtas office: it comes from server/parliament/partyLeaders.ts. */
+export type OfficeKind = 'cabinet' | 'minister_of_state' | 'ceann_comhairle' | 'leas_cheann_comhairle' | 'party_leader' | 'other';
+
+export interface TdOfficePeriod {
+  title: string;
+  type: OfficeKind;
+  start: string;
+  end: string | null;
+  /** The public source, for a party leadership. */
+  sourceUrl?: string;
+}
+
+/** The Register of Members' Interests' nine statutory categories, by number. */
+export const INTEREST_CATEGORIES: Record<number, string> = {
+  1: 'Occupations',
+  2: 'Shares',
+  3: 'Directorships',
+  4: 'Land and property',
+  5: 'Gifts',
+  6: 'Property or services supplied',
+  7: 'Travel facilities',
+  8: 'Remunerated positions',
+  9: 'Contracts',
+};
+
+/** GET /api/parliament/tds/:id/interests: the newest register that lists the TD. */
+export interface TdInterests {
+  /** The year the register covers. */
+  year: number;
+  sourceUrl: string;
+  /** All nine categories. NULL = declared nothing. */
+  categories: Array<{ number: number; declared: string | null }>;
+}
+
+/** GET /api/parliament/tds/:id/allowances: Parliamentary Standard Allowance payments. */
+export interface TdAllowances {
+  /** The first and last month published, first days. */
+  from: string;
+  to: string;
+  /** Months in that range the Oireachtas has not published (not the same as "not paid"). */
+  unpublishedMonths: string[];
+  /**
+   * Published months with no row for this TD whose file had a name that matched nobody: that
+   * name could be this TD, so these are not "not paid".
+   */
+  uncertainMonths: string[];
+  totalCents: number;
+  /** Newest first. A published month with no row was not paid to this TD. */
+  months: Array<{ month: string; amountCents: number }>;
+}
+
+export type AbsenceKind = 'parental_leave' | 'medical_leave' | 'bereavement' | 'other_leave';
+
+export interface TdAbsence {
+  from: string;
+  /** NULL while ongoing. */
+  to: string | null;
+  reason: AbsenceKind;
+  sourceUrl: string;
 }
 
 /** GET /api/parliament/tds/:id/committees */

@@ -34,13 +34,14 @@ export interface QuizScore {
   /** Per dimension, the share of the bank's questions on it that were answered, 0..1. */
   coverage: IdeologyVector;
   answeredCount: number;
+  /** Per dimension, how many of the answers were questions on it. */
+  answeredByDimension: IdeologyVector;
 }
 
 export function scoreQuiz(responses: QuizResponse[], bank: Map<number, QuizQuestion> = BANK): QuizScore {
   const sum = emptyIdeologyVector();
   const reachUp = emptyIdeologyVector();
   const reachDown = emptyIdeologyVector();
-  const answered = emptyIdeologyVector();
   const seen = new Set<number>();
 
   for (const { questionId, answerIndex } of responses) {
@@ -56,10 +57,10 @@ export function scoreQuiz(responses: QuizResponse[], bank: Map<number, QuizQuest
     sum[d] += answer.value;
     reachUp[d] += Math.max(0, ...values);
     reachDown[d] += Math.max(0, ...values.map((v) => -v));
-    answered[d] += 1;
   }
   if (seen.size === 0) throw new QuizInputError('No answers to score');
 
+  const answered = answeredCountsOf(responses, bank);
   const totals = questionsPerDimension(bank);
   const vector = emptyIdeologyVector();
   const coverage = emptyIdeologyVector();
@@ -68,7 +69,7 @@ export function scoreQuiz(responses: QuizResponse[], bank: Map<number, QuizQuest
     vector[d] = reach > 0 ? Math.round((IDEOLOGY_LIMIT * sum[d] / reach) * 10) / 10 : 0;
     coverage[d] = totals[d] ? answered[d] / totals[d] : 0;
   }
-  return { vector, coverage, answeredCount: seen.size };
+  return { vector, coverage, answeredCount: seen.size, answeredByDimension: answered };
 }
 
 function questionsPerDimension(bank: Map<number, QuizQuestion>): Record<IdeologyDimension, number> {
@@ -86,4 +87,14 @@ export function coverageOf(responses: QuizResponse[], bank: Map<number, QuizQues
     if (q) coverage[q.dimension] += 1 / totals[q.dimension];
   }
   return coverage;
+}
+
+/** Per dimension, how many of the given answers were questions on it. Skips unknown ids; never throws. */
+export function answeredCountsOf(responses: QuizResponse[], bank: Map<number, QuizQuestion> = BANK): IdeologyVector {
+  const counts = emptyIdeologyVector();
+  for (const { questionId } of responses) {
+    const q = bank.get(questionId);
+    if (q) counts[q.dimension] += 1;
+  }
+  return counts;
 }

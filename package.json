@@ -13,6 +13,7 @@
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "test": "vitest run --root .",
+    "test:e2e": "playwright test",
     "guard:migrations": "tsx scripts/ci/check-migrations.ts",
     "git:safety-check": "bash scripts/git-safety-checks.sh",
     "db:push": "drizzle-kit push",
@@ -24,7 +25,9 @@
     "scores:recalculate": "tsx server/jobs/scores-recalculate.ts",
     "td-scoring": "tsx server/jobs/td-scoring.ts",
     "ideology": "tsx server/jobs/ideology.ts",
+    "stances": "tsx server/jobs/stances.ts",
     "parliament:sync": "tsx server/jobs/parliament-sync.ts",
+    "parliament:silences": "tsx server/jobs/parliament-silences.ts",
     "party-quiz": "tsx server/jobs/party-quiz.ts"
   },
   "dependencies": {
@@ -144,6 +147,7 @@
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
     "@replit/vite-plugin-cartographer": "^0.2.7",
     "@replit/vite-plugin-runtime-error-modal": "^0.0.3",
     "@tailwindcss/typography": "^0.5.15",

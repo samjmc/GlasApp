@@ -13,7 +13,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { ATTENDANCE_BENCHMARK } from '../scoring/weights';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
+import { LEADERSHIP_ATTENDANCE_BENCHMARK } from './metrics';
 import type { OireachtasClient, RosterMember } from './client';
 import type { RawBill, RawDivision, RawQuestion } from './parse';
 
@@ -62,10 +64,13 @@ function member(memberCode: string, party: string | null, extra: Partial<RosterM
     memberSince: '2024-11-29',
     isPresiding: false,
     offices: [],
+    officeHistory: [],
     committees: [],
     ...extra,
   };
 }
+
+const MOS_TITLE = 'Minister of State at the Department of Health';
 
 // --- Committees: 12 sittings of the PAC. A chairs it and attends all; B attends every
 // other one; C joins on 16 June (6 eligible sittings, below the minimum); Y is no member.
@@ -182,11 +187,33 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   let scoring: typeof import('../scoring');
   const roster = [
     member(A, 'Party A', { committees: pac('Cathaoirleach', '2024-12-01') }),
-    member(B, 'Party A', { committees: pac(null, '2024-12-01') }),
+    // B becomes a Minister of State on 1 March: questions are expected only before that.
+    member(B, 'Party A', {
+      committees: pac(null, '2024-12-01'),
+      offices: [{ title: MOS_TITLE, since: '2025-03-01' }],
+      officeHistory: [{ title: MOS_TITLE, type: 'minister_of_state', start: '2025-03-01', end: null }],
+    }),
     member(Y, 'Party A'),
     member(C, 'Party A', { committees: pac(null, '2025-06-16') }),
-    member(CHAIR, 'Independent', { isPresiding: true, offices: [{ title: 'Ceann Comhairle', since: '2024-12-18' }] }),
+    member(CHAIR, 'Independent', {
+      isPresiding: true,
+      offices: [{ title: 'Ceann Comhairle', since: '2024-12-18' }],
+      officeHistory: [{ title: 'Ceann Comhairle', type: 'ceann_comhairle', start: '2024-12-18', end: null }],
+    }),
   ];
+  // Every sync here uses a fake gender source, never the real Wikidata. C has none.
+  const GENDERS = new Map([[A, 'female'], [B, 'male'], [Y, 'male'], [CHAIR, 'female']]);
+  // …and no interests register or allowance files (those have their own test below).
+  const NO_DISCLOSURES = { links: async () => [], pages: async () => [] };
+  const sync = (o: Parameters<typeof parliament.runSync>[0]) =>
+    parliament.runSync({ genders: async () => GENDERS, disclosures: NO_DISCLOSURES, ...o });
+  const windows = () => new Map(roster.map((m) => [m.memberCode, { memberSince: m.memberSince, isPresiding: m.isPresiding }]));
+  // The term the later tests recompute over: the fixture Dáil's first day to the last sync's today.
+  const TERM = { start: '2024-11-29', today: '2025-07-30' };
+  const statsOf = async (code: string) => {
+    const id = await tdId(code);
+    return (await parliament.repository.allStats()).find((s) => s.tdId === id);
+  };
   const tdId = async (code: string) => (await dbmod.pool.query('select id from politics.tds where member_code = $1', [code])).rows[0]?.id as number;
 
   beforeAll(async () => {
@@ -202,7 +229,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   });
 
   it('ingests the roster, divisions and a transcript', async () => {
-    const s = await parliament.runSync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
+    const s = await sync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
     expect(s.roster).toMatchObject({ members: 5, inserted: 5 });
     expect(s.divisions.ingested).toBe(12);
     expect(s.debates).toMatchObject({ days: 1, sections: 2, speeches: 33, failedDays: [] });
@@ -253,6 +280,13 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     ]);
     expect((await parliament.repository.leaderboard('committees', 'desc', 10)).map((r) => r.value)).toEqual([100, 50]);
     expect((await parliament.repository.parties()).find((p) => p.party === 'Party A')?.avgCommitteeAttendancePct).toBe(75);
+  });
+
+  it('fills gender from the gender source, and leaves an unknown one NULL', async () => {
+    const gender = async (code: string) => (await dbmod.pool.query('select gender from politics.tds where member_code = $1', [code])).rows[0]?.gender;
+    expect(await gender(A)).toBe('female');
+    expect(await gender(B)).toBe('male');
+    expect(await gender(C)).toBeNull();
   });
 
   it('stores offices on the TD and serves them', async () => {
@@ -351,7 +385,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     const before = await parliament.repository.divisionDetail('dail-34-2025-06-21-vote_12');
     expect(before?.votes.find((v) => v.memberCode === Z)?.tdId).toBeNull();
 
-    const s = await parliament.runSync({ client: fakeClient([...roster, member(Z, 'Party B')]), today: '2025-06-30', log: () => {} });
+    const s = await sync({ client: fakeClient([...roster, member(Z, 'Party B')]), today: '2025-06-30', log: () => {} });
     expect(s.roster).toMatchObject({ inserted: 1 });
     const { rows } = await dbmod.pool.query('select count(*)::int n from politics.division_votes');
     expect(rows[0].n).toBe(12 * 146 - 3);
@@ -383,21 +417,30 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   });
 
   it('a failed question month keeps the last good totals, and is retried', async () => {
-    const failed = await parliament.runSync({ client: fakeClient(roster, { failQuestionMonths: ['2025-06-01'] }), today: '2025-06-30', log: () => {} });
+    const failed = await sync({ client: fakeClient(roster, { failQuestionMonths: ['2025-06-01'] }), today: '2025-06-30', log: () => {} });
     expect(failed.questions.failedMonths).toEqual(['2025-06-01']);
     // June would have been missing: A's 92 June questions are not dropped to 0.
     expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
     const questions = async () => (await parliament.repository.syncStatus()).find((f) => f.feed === 'questions');
     expect((await questions())?.failures).toEqual({ '2025-06-01': 1 });
 
-    await parliament.runSync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
+    await sync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
     expect((await questions())?.failures).toEqual({});
     expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
   });
 
+  it('retries a failed FIRST month of the Dáil too, whose key is before the Dáil began', async () => {
+    const questions = async () => (await parliament.repository.syncStatus()).find((f) => f.feed === 'questions');
+    const failed = await sync({ client: fakeClient(roster, { failQuestionMonths: ['2024-11-01'] }), since: '2024-11-29', today: '2025-06-30', log: () => {} });
+    expect(failed.questions.failedMonths).toEqual(['2024-11-01']);
+    // A normal run's window is only June; November 2024 must come from the failure map.
+    await sync({ client: fakeClient(roster), today: '2025-06-30', log: () => {} });
+    expect((await questions())?.failures).toEqual({});
+  });
+
   it('records a failed day, keeps going, and retries it on a later run', async () => {
     const pending = { date: '2025-06-26', xmlUri: null };
-    const first = await parliament.runSync({
+    const first = await sync({
       client: fakeClient(roster, { days: [pending, { date: '2025-06-25', xmlUri: 'fixture.xml' }] }),
       today: '2025-06-30',
       log: () => {},
@@ -408,7 +451,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(await debates()).toMatchObject({ throughDate: '2025-06-30', failures: { '2025-06-26': 1 } });
 
     // A month on, the day is outside the overlap window; it is retried from the failure map.
-    const later = await parliament.runSync({
+    const later = await sync({
       client: fakeClient(roster, { days: [{ date: '2025-06-26', xmlUri: 'published.xml' }] }),
       today: '2025-07-30',
       log: () => {},
@@ -420,7 +463,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
   });
 
   it('a feed that fails outright is recorded, and the other feeds still run', async () => {
-    const s = await parliament.runSync({ client: fakeClient(roster, { failBills: true }), today: '2025-07-30', log: () => {} });
+    const s = await sync({ client: fakeClient(roster, { failBills: true }), today: '2025-07-30', log: () => {} });
     expect(s.failedFeeds).toEqual(['bills']);
     expect(parliament.syncHadFailures(s)).toBe(true);
     expect(s.questions).toMatchObject({ failedMonths: [], totalsComplete: true });
@@ -433,7 +476,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     const a = await tdId(A);
     await dbmod.pool.query(`delete from politics.parliament_sync_state where feed = 'bills'`);
     expect((await parliament.repository.tdSummary(a))?.billsSponsored).toBeNull();
-    await parliament.runSync({ client: fakeClient(roster), today: '2025-07-30', log: () => {} });
+    await sync({ client: fakeClient(roster), today: '2025-07-30', log: () => {} });
     expect((await parliament.repository.tdSummary(a))?.billsSponsored).toBe(1);
   });
 
@@ -447,7 +490,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     });
     const good = health('main', 'health-2025-07-20.xml');
     // The unpublished sitting is listed first; the good one is listed twice.
-    const s = await parliament.runSync({
+    const s = await sync({
       client: fakeClient(roster, { extraSittings: [health('unpublished', null), good, good] }),
       today: '2025-07-30',
       log: () => {},
@@ -465,14 +508,309 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     // `--since` run looks exactly like this.
     await dbmod.pool.query(`delete from politics.parliament_sync_state where feed = 'questions'`);
     await dbmod.pool.query(`delete from politics.question_counts where month < '2025-06-01'`);
-    const partial = await parliament.runSync({ client: fakeClient(roster), since: '2025-06-01', today: '2025-07-30', log: () => {} });
+    const partial = await sync({ client: fakeClient(roster), since: '2025-06-01', today: '2025-07-30', log: () => {} });
     expect(partial.questions.totalsComplete).toBe(false);
-    // C's 3 January questions are not in the counts; the total must not drop to 0.
-    expect(await parliament.repository.tdSummary(await tdId(C))).toMatchObject({ questionsWritten: 3 });
+    // C's 3 January questions are not in the counts; the scoring input must not drop to 0.
+    const scoredWritten = async (code: string) => (await scoring.repository.findById(await tdId(code)))?.td.questionCountWritten;
+    expect(await scoredWritten(C)).toBe(3);
 
-    const full = await parliament.runSync({ client: fakeClient(roster), today: '2025-07-30', log: () => {} });
+    const full = await sync({ client: fakeClient(roster), today: '2025-07-30', log: () => {} });
     expect(full.questions.totalsComplete).toBe(true);
-    expect(await parliament.repository.tdSummary(await tdId(C))).toMatchObject({ questionsWritten: 3 });
+    expect(await scoredWritten(C)).toBe(3);
     expect(await parliament.repository.tdSummary(await tdId(A))).toMatchObject({ questionsOral: 15, questionsWritten: 77 });
+  });
+
+  // ---- Fairness: a TD is only counted for what they were expected to do. ----
+
+  it('does not expect questions from the chair or a minister, and pro-rates part-time office', async () => {
+    // The last sync ran with today = 2025-07-30.
+    const termDays = (Date.parse('2025-07-30') - Date.parse('2024-11-29')) / 86_400_000 + 1;
+    const chair = await statsOf(CHAIR);
+    // Ceann Comhairle from 18 Dec: 19 days expected, under the minimum, so NULL.
+    expect(chair?.questionsExpected).toBeNull();
+    expect((await scoring.repository.findById(await tdId(CHAIR)))?.td.questionCountWritten).toBeNull();
+    // The profile still shows what the chair asked.
+    expect(await parliament.repository.tdSummary(await tdId(CHAIR))).toMatchObject({ questionsWritten: 2, questionsExpected: null });
+
+    // B: Minister of State from 1 March, so 92 days (29 Nov – 28 Feb) were expected.
+    expect((await statsOf(B))?.questionsExpected).toBe(Math.round((200 * 92 * 10) / termDays) / 10);
+    // B asked none in those days: a real 0, still scored.
+    expect((await scoring.repository.findById(await tdId(B)))?.td.questionCountWritten).toBe(0);
+    expect((await statsOf(A))?.questionsExpected).toBe(200);
+  });
+
+  it('never expects questions from the chair, even with no office on record', async () => {
+    await dbmod.pool.query('delete from politics.td_offices where member_code = $1', [CHAIR]);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    expect((await statsOf(CHAIR))?.questionsExpected).toBeNull();
+    await parliament.repository.replaceOffices(roster, await parliament.repository.tdIdsByMemberCode());
+    await parliament.repository.recomputeStats(windows(), TERM);
+  });
+
+  it('hands the rollup each expectation, and no expectation for a row from before the fairness columns', async () => {
+    const inputs = async () => new Map((await scoring.repository.rollupInputs(new Map())).map((i) => [i.tdId, i]));
+    let byId = await inputs();
+    expect(byId.get(await tdId(CHAIR))?.questionsExpected).toBeNull();
+    expect(byId.get(await tdId(A))?.questionsExpected).toBe(200);
+    expect(byId.get(await tdId(B))?.attendanceBenchmark).toBe(LEADERSHIP_ATTENDANCE_BENCHMARK);
+    expect(byId.get(await tdId(A))?.attendanceBenchmark).toBe(ATTENDANCE_BENCHMARK);
+    // A stats row written by the code before the fairness columns: no expectation yet.
+    await dbmod.pool.query('update politics.td_parliament_stats set divisions_chaired = null, questions_expected = null where td_id = $1', [await tdId(A)]);
+    byId = await inputs();
+    expect(byId.get(await tdId(A))?.questionsExpected).toBeUndefined();
+    await parliament.repository.recomputeStats(windows(), TERM);
+  });
+
+  it('says when the question counts are complete', async () => {
+    expect((await parliament.repository.tdSummary(await tdId(A)))?.questionsComplete).toBe(true);
+  });
+
+  it('gives government time its own vote benchmark', async () => {
+    // Every division (June) is after B took office; A never held one.
+    expect(await statsOf(B)).toMatchObject({ divisionsInLeadership: 12, attendanceBenchmark: LEADERSHIP_ATTENDANCE_BENCHMARK });
+    expect(await statsOf(A)).toMatchObject({ divisionsInLeadership: 0, attendanceBenchmark: ATTENDANCE_BENCHMARK });
+    expect((await statsOf(CHAIR))?.attendanceBenchmark).toBeNull();
+    const summary = await parliament.repository.tdSummary(await tdId(B));
+    expect(summary?.officeHistory).toEqual([{ title: MOS_TITLE, type: 'minister_of_state', start: '2025-03-01', end: null }]);
+    expect(summary?.attendanceBenchmark).toBe(LEADERSHIP_ATTENDANCE_BENCHMARK);
+  });
+
+  it('gives a party leader the leadership benchmark for their time as leader, like a minister', async () => {
+    const tdIds = await parliament.repository.tdIdsByMemberCode();
+    // Y leads Party A from 15 June: 7 of the 12 June divisions fall in that time.
+    await parliament.repository.replacePartyLeaders([{ memberCode: Y, party: 'Party A', from: '2025-06-15', to: null, source: 'https://example.ie/leader' }], tdIds);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    const expected = Math.round(((ATTENDANCE_BENCHMARK * 5 + LEADERSHIP_ATTENDANCE_BENCHMARK * 7) / 12) * 10) / 10;
+    expect(await statsOf(Y)).toMatchObject({ divisionsInLeadership: 7, attendanceBenchmark: expected });
+    // Still expected to ask questions: leading a party is not government office.
+    expect((await statsOf(Y))?.questionsExpected).toBe(200);
+    expect((await parliament.repository.tdSummary(await tdId(Y)))?.officeHistory).toEqual([
+      { title: 'Leader of Party A', type: 'party_leader', start: '2025-06-15', end: null, sourceUrl: 'https://example.ie/leader' },
+    ]);
+    await parliament.repository.replacePartyLeaders([], tdIds);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    expect(await statsOf(Y)).toMatchObject({ divisionsInLeadership: 0, attendanceBenchmark: ATTENDANCE_BENCHMARK });
+  });
+
+  it('leaves out divisions a TD chaired, unless they voted in them', async () => {
+    // Give one division its own debate section whose last chair speech is `code`'s.
+    const chairDivision = async (voteId: string, code: string) => {
+      const { rows } = await dbmod.pool.query('select id, date::text from politics.divisions where id like $1', [`%-${voteId}`]);
+      const section = `dail-${rows[0].date}-test_${voteId}`;
+      await dbmod.pool.query(`insert into politics.debate_sections (id, date, title, speech_count) values ($1, $2, 'Test', 1)`, [section, rows[0].date]);
+      await dbmod.pool.query(
+        `insert into politics.debate_speeches (id, section_id, date, position, member_code, is_presiding, text, word_count) values ($1, $2, $3, 0, $4, true, 'Question put.', 2)`,
+        [`${section}/spk_test`, section, rows[0].date, code],
+      );
+      await dbmod.pool.query('update politics.divisions set debate_section_id = $1 where id = $2', [section, rows[0].id]);
+      return { section, divisionId: rows[0].id as string };
+    };
+    const before = await statsOf(Y);
+    // Y did not vote in vote_1 and was in the chair for it; A chaired vote_2's section but voted.
+    const y = await chairDivision('vote_1', Y);
+    const a = await chairDivision('vote_2', A);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    expect(await statsOf(Y)).toMatchObject({ divisionsEligible: before!.divisionsEligible - 1, votesCast: before!.votesCast, divisionsChaired: 1 });
+    expect(await statsOf(A)).toMatchObject({ divisionsEligible: 12, votesCast: 12, divisionsChaired: 0 });
+
+    // Undo: the sections go (cascading to the speeches), the divisions get their section back.
+    const { rows } = await dbmod.pool.query(`select debate_section_id from politics.divisions where id like '%-vote_3'`);
+    for (const t of [y, a]) {
+      await dbmod.pool.query('update politics.divisions set debate_section_id = $1 where id = $2', [rows[0].debate_section_id, t.divisionId]);
+      await dbmod.pool.query('delete from politics.debate_sections where id = $1', [t.section]);
+    }
+    await parliament.repository.recomputeStats(windows(), TERM);
+    expect(await statsOf(Y)).toMatchObject({ divisionsEligible: before!.divisionsEligible, divisionsChaired: 0 });
+  });
+
+  it('leaves out documented leave from votes, sitting days and committee sittings', async () => {
+    const tdIds = await parliament.repository.tdIdsByMemberCode();
+    const leave = (memberCode: string, from: string, to: string) => ({ memberCode, from, to, reason: 'other_leave' as const, source: 'https://example.ie/leave', note: null });
+    // None of the roster TDs speaks in the fixture transcript, so give A one speech on 25 June.
+    await dbmod.pool.query(
+      `insert into politics.debate_speeches (id, section_id, date, position, member_code, td_id, is_presiding, text, word_count)
+       values ('dail-2025-06-25-dbsect_19/spk_test_a', 'dail-2025-06-25-dbsect_19', '2025-06-25', 999, $1, $2, false, 'A test speech.', 3)`,
+      [A, await tdId(A)],
+    );
+    await parliament.repository.recomputeStats(windows(), TERM);
+    const speaker = { code: A, s: (await statsOf(A))! };
+    // Sitting days are 25 June (fixture) and 26 June (the retried day above).
+    expect(speaker.s).toMatchObject({ sittingDays: 2, sectionsSpoken: 1, speeches: 1 });
+
+    // Y misses the first three divisions (10–12 June); B misses the PAC on 11 June.
+    await parliament.repository.replaceAbsences(
+      [leave(Y, '2025-06-10', '2025-06-12'), leave(B, '2025-06-10', '2025-06-12'), leave(speaker.code, '2025-06-25', '2025-06-26')],
+      tdIds,
+    );
+    await parliament.repository.recomputeStats(windows(), TERM);
+    await parliament.repository.recomputeCommitteeStats();
+    // Y: 9 of 9 once the 3 leave days are left out, not 9 of 12.
+    expect(await statsOf(Y)).toMatchObject({ divisionsEligible: 9, votesCast: 9, divisionsExcused: 3 });
+    // B's PAC: sittings on 10, 11, 12 June left out (B was at 10 and 12), so 4 of 9, not 6 of 12.
+    expect(await statsOf(B)).toMatchObject({ committeeSittingsEligible: 9, committeeSittingsAttended: 4 });
+    // The speaker: both sitting days are leave, so no sitting days and no speeches count.
+    expect(await statsOf(speaker.code)).toMatchObject({ sittingDays: 0, sittingDaysExcused: 2, sectionsSpoken: 0, speeches: 0 });
+    expect((await parliament.repository.tdSummary(await tdId(Y)))?.absences).toEqual([
+      { from: '2025-06-10', to: '2025-06-12', reason: 'other_leave', sourceUrl: 'https://example.ie/leave' },
+    ]);
+
+    await parliament.repository.replaceAbsences([], tdIds);
+    await dbmod.pool.query(`delete from politics.debate_speeches where id = 'dail-2025-06-25-dbsect_19/spk_test_a'`);
+    await parliament.repository.recomputeStats(windows(), TERM);
+    await parliament.repository.recomputeCommitteeStats();
+    expect(await statsOf(Y)).toMatchObject({ divisionsEligible: 12, divisionsExcused: 0 });
+    expect(await statsOf(A)).toMatchObject({ sittingDays: 2, sectionsSpoken: 0 });
+  });
+
+  it('reads the interests register and allowance payments once, matched by name', async () => {
+    const { syncAllowances, syncInterests } = await import('./disclosures');
+    const fixture = (name: string) => JSON.parse(fs.readFileSync(path.join(FIXTURES, 'sources', name), 'utf8')) as string[][];
+    const registerUrl = 'https://data.oireachtas.ie/ie/oireachtas/members/registerOfMembersInterests/dail/2026/2026-02-25_register-of-member-s-interests-dail-eireann-2025_en.pdf';
+    const psaUrl = 'https://data.oireachtas.ie/ie/oireachtas/members/parliamentaryAllowances/psa/2026/2026-09-03_parliamentary-standard-allowance-payments-to-deputies-for-july-2026_en.pdf';
+    let pdfReads = 0;
+    const source = {
+      links: async (topic: string, page: number) => (page > 1 ? [] : topic === 'register-of-members-interests' ? [registerUrl] : [psaUrl]),
+      pages: async (url: string) => {
+        pdfReads++;
+        return fixture(url === registerUrl ? 'interests-2025-trimmed.json' : 'psa-2026-07-pages-1-2.json');
+      },
+    };
+    // Two members of the fixtures, as TDs so they have ids (the vote fixture may already have
+    // made them TDs). Everyone else in the fixture files is a name with no current TD.
+    const added = await dbmod.pool.query(`insert into politics.tds (name, member_code, constituency, is_active) values
+      ('Ciarán Ahern', 'Ciarán-Ahern.D.2024-11-29', 'Dublin South-West', false),
+      ('William Aird', 'William-Aird.D.2024-11-29', 'Laois', false)
+      on conflict do nothing returning member_code`);
+    const ctx = {
+      roster: [
+        { memberCode: 'Ciarán-Ahern.D.2024-11-29', fullName: 'Ciarán Ahern', constituency: 'Dublin South-West' },
+        { memberCode: 'William-Aird.D.2024-11-29', fullName: 'William Aird', constituency: 'Laois' },
+      ],
+      tdIds: await parliament.repository.tdIdsByMemberCode(),
+      dailStart: '2024-11-29',
+      source,
+      log: () => {},
+    };
+    const interests = await syncInterests(ctx);
+    expect(interests).toMatchObject({ files: 1, rows: 2 });
+    expect(interests.unmatched).toContain('ARDAGH, Catherine');
+    const allowances = await syncAllowances(ctx);
+    expect(allowances).toMatchObject({ files: 1, rows: 2 });
+    expect(allowances.unmatched).toContain('Ardagh, Catherine');
+
+    // Stored files are not read again.
+    expect(pdfReads).toBe(2);
+    expect(await syncInterests(ctx)).toMatchObject({ files: 0 });
+    expect(await syncAllowances(ctx)).toMatchObject({ files: 0 });
+    expect(pdfReads).toBe(2);
+
+    const aird = await tdId('William-Aird.D.2024-11-29');
+    const register = await parliament.repository.tdInterestsOf(aird);
+    expect(register).toMatchObject({ year: 2025, sourceUrl: registerUrl });
+    expect(register?.categories.map((c) => c.number)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(register?.categories[0].declared).toMatch(/Farmer/);
+    expect(await parliament.repository.tdAllowancesOf(aird)).toEqual({
+      from: '2026-07-01',
+      to: '2026-07-01',
+      unpublishedMonths: [],
+      uncertainMonths: [],
+      totalCents: 397208,
+      months: [{ month: '2026-07-01', amountCents: 397208 }],
+    });
+    // A TD with nothing stored reads NULL, not an empty register.
+    expect(await parliament.repository.tdInterestsOf(await tdId(A))).toBeNull();
+
+    await dbmod.pool.query('delete from politics.td_interests');
+    await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
+    const mine = added.rows.map((r) => r.member_code as string);
+    if (mine.length) await dbmod.pool.query('delete from politics.tds where member_code = any($1)', [mine]);
+  });
+
+  it('drops a loose name match when another printed name in the file already claims that TD', async () => {
+    const { syncAllowances } = await import('./disclosures');
+    const url = 'https://data.oireachtas.ie/ie/oireachtas/members/parliamentaryAllowances/psa/2026/2026-08-01_parliamentary-standard-allowance-payments-to-deputies-for-june-2026_en.pdf';
+    const page = [
+      'Parliamentary Standard Allowance',
+      'Name\tTAA Band\tNarrative\tDate Paid\tAmount',
+      // "Pat" is only a loose match for Paul (same surname and initial): it must not become his.
+      'Deputy Murphy, Paul\tDublin\tPSA June 2026\t30/06/2026\t€2,445.83',
+      'Deputy Murphy, Pat\t5\tPSA June 2026\t30/06/2026\t€3,000.00',
+      // A loose match with no rival in the file is kept.
+      'Deputy Nash, Gerald\t4\tPSA June 2026\t30/06/2026\t€3,100.00',
+    ];
+    const ctx = {
+      roster: [
+        { memberCode: 'Paul-Murphy.D.2014-10-10', fullName: 'Paul Murphy', constituency: 'Dublin South-West' },
+        { memberCode: 'Ged-Nash.D.2011-03-09', fullName: 'Ged Nash', constituency: 'Louth' },
+      ],
+      tdIds: new Map<string, number>(),
+      dailStart: '2024-11-29',
+      source: { links: async (_t: string, p: number) => (p > 1 ? [] : [url]), pages: async () => [page] },
+      log: () => {},
+    };
+    const result = await syncAllowances(ctx);
+    expect(result.rows).toBe(2);
+    expect(result.unmatched).toEqual(['Murphy, Pat (ambiguous)']);
+    const { rows } = await dbmod.pool.query('select member_code, amount_cents from politics.td_allowance_payments where source_url = $1 order by position', [url]);
+    expect(rows).toEqual([
+      { member_code: 'Paul-Murphy.D.2014-10-10', amount_cents: 244583 },
+      { member_code: 'Ged-Nash.D.2011-03-09', amount_cents: 310000 },
+    ]);
+    await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
+  });
+
+  it('keeps only the newest file for a re-published month, and reports a month never published', async () => {
+    const { syncAllowances } = await import('./disclosures');
+    const base = 'https://data.oireachtas.ie/ie/oireachtas/members/parliamentaryAllowances/psa';
+    const march = `${base}/2025/2025-05-02_parliamentary-standard-allowance-payments-to-deputies-for-march-2025_en.pdf`;
+    const marchAgain = `${base}/2026/2026-02-03_parliamentary-standard-allowance-payments-to-deputies-for-march-2025_en.pdf`;
+    const may = `${base}/2025/2025-07-01_parliamentary-standard-allowance-payments-to-deputies-for-may-2025_en.pdf`;
+    const june = `${base}/2025/2025-08-01_parliamentary-standard-allowance-payments-to-deputies-for-june-2025_en.pdf`;
+    const page = (amount: string, name = 'Nash, Ged') => [
+      'Parliamentary Standard Allowance',
+      'Name\tTAA Band\tNarrative\tDate Paid\tAmount',
+      `Deputy ${name}\t4\tPSA\t28/03/2025\t${amount}`,
+    ];
+    // June's file has no row for Nash, and a name that matches nobody: it could be him.
+    const pages = new Map([[march, page('€1,000.00')], [marchAgain, page('€1,100.00')], [may, page('€1,200.00')], [june, page('€1,300.00', 'Nobody, Here')]]);
+    await dbmod.pool.query(`insert into politics.tds (name, member_code, constituency, is_active) values ('Ged Nash', 'Ged-Nash.D.2011-03-09', 'Louth', false) on conflict do nothing`);
+    const ctx = {
+      roster: [{ memberCode: 'Ged-Nash.D.2011-03-09', fullName: 'Ged Nash', constituency: 'Louth' }],
+      tdIds: await parliament.repository.tdIdsByMemberCode(),
+      dailStart: '2024-11-29',
+      // Newest first, as the listing is: the re-published March comes before May's file.
+      source: { links: async (_t: string, p: number) => (p > 1 ? [] : [marchAgain, june, may, march]), pages: async (url: string) => [pages.get(url)!] },
+      log: () => {},
+    };
+    expect(await syncAllowances(ctx)).toMatchObject({ files: 3, rows: 2, unmatched: ['Nobody, Here'] });
+    const nash = await tdId('Ged-Nash.D.2011-03-09');
+    expect(await parliament.repository.tdAllowancesOf(nash)).toEqual({
+      from: '2025-03-01',
+      to: '2025-06-01',
+      // April has no file: not published, which is not the same as not paid.
+      unpublishedMonths: ['2025-04-01'],
+      // June's file had an unmatched name and no row for Nash: unknown, not "not paid".
+      uncertainMonths: ['2025-06-01'],
+      totalCents: 110000 + 120000,
+      months: [
+        { month: '2025-05-01', amountCents: 120000 },
+        { month: '2025-03-01', amountCents: 110000 },
+      ],
+    });
+    await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
+    await dbmod.pool.query(`delete from politics.tds where member_code = 'Ged-Nash.D.2011-03-09'`);
+  });
+
+  it('lists long silences that no documented absence covers', async () => {
+    const tdIds = await parliament.repository.tdIdsByMemberCode();
+    const silent = await parliament.repository.undocumentedSilences(1);
+    expect(silent.length).toBeGreaterThan(0);
+    const first = silent[0];
+    await parliament.repository.replaceAbsences([{ memberCode: first.memberCode, from: first.from, to: first.to, reason: 'other_leave', source: 'https://example.ie/x', note: null }], tdIds);
+    expect((await parliament.repository.undocumentedSilences(1)).some((s) => s.memberCode === first.memberCode)).toBe(false);
+    await parliament.repository.replaceAbsences([], tdIds);
   });
 });

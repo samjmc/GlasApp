@@ -16,6 +16,7 @@ import newsAdminRoutes from "./routes/admin/news";
 import scoresRoutes from "./routes/scores";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
 import { pledgesRouter } from "./pledges/routes";
+import { stancesRouter } from "./stances/routes";
 import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
 
@@ -73,6 +74,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // The quiz and ideology profiles (server/quiz, server/ideology)
   app.use("/api/quiz", quizRoutes);
   app.use("/api/ideology", ideologyRoutes);
+  app.use("/api/stances", stancesRouter); // What TDs said in the news (server/stances)
 
   // Last: an unknown /api path is a JSON 404, never the SPA's index.html.
   app.use("/api", apiNotFound);

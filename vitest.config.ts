@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   resolve: {
@@ -11,5 +11,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    // Playwright specs (npm run test:e2e); vitest's default include would collect them.
+    exclude: [...configDefaults.exclude, 'test/e2e/**'],
   },
 });

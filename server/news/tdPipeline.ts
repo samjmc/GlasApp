@@ -6,12 +6,16 @@
  *    claimed, so every article here is the one canonical report of its event.
  * 2. Cheap LLM importance triage; keep the top slice.
  * 3. Find the TDs each article is substantially about and record each link in `article_tds`.
- * 4. An article that passed triage and names at least one TD gets a daily-vote question.
+ * 4. Record what those TDs said (server/stances): a quote checked against the article, never a
+ *    score. Only an article with at least one verified stance gets a daily-vote question, and
+ *    each stance is matched to one of its answers.
  */
 import { ArticleImportanceService } from '../services/articleImportanceService';
 import { TDExtractionService } from '../services/tdExtractionService';
 import { repository as tdRepo } from '../scoring';
-import { generateQuestionForArticle } from '../voting';
+import { emptyStanceStats, recordStances, toCandidate, type StanceStats } from '../stances';
+import type { CandidateTd } from '../stances/extract';
+import { completeJson, generateQuestionForArticle, questionForArticle, type QuestionPositions } from '../voting';
 import { type Article, type ArticleSource, articleSource } from './articleSource';
 import { linkArticleTd } from './repository';
 
@@ -23,6 +27,7 @@ export interface PipelineStats {
   articlesProcessed: number;
   /** Article ↔ TD links recorded. */
   tdsLinked: number;
+  stances: StanceStats;
   errors: number;
   articlesFailed: string[];
 }
@@ -46,6 +51,7 @@ function emptyStats(): PipelineStats {
     skippedLowImportance: 0,
     articlesProcessed: 0,
     tdsLinked: 0,
+    stances: emptyStanceStats(),
     errors: 0,
     articlesFailed: [],
   };
@@ -139,6 +145,26 @@ async function ensureFullContent(article: Article, source: ArticleSource): Promi
   }
 }
 
+/** The article's question, made first if it has none. Null when the model declines or fails. */
+async function ensureQuestion(article: Article): Promise<QuestionPositions | null> {
+  try {
+    // Returns null, without a model call, when the article already has a question.
+    await generateQuestionForArticle({
+      id: article.id,
+      title: article.title,
+      content: article.content,
+      source: article.source ?? 'Unknown',
+      publishedAt: article.publishedDate,
+      url: article.url,
+      imageUrl: article.imageUrl,
+      summary: article.summary,
+    });
+  } catch (error) {
+    console.warn(`Policy question for article ${article.id} failed:`, error instanceof Error ? error.message : error);
+  }
+  return questionForArticle(article.id);
+}
+
 async function processArticle(article: Article, importance: Importance, source: ArticleSource, stats: PipelineStats): Promise<void> {
   const text = `${article.title} ${article.content}`;
   const mentions = TDExtractionService.filterHighConfidenceMentions(
@@ -148,6 +174,7 @@ async function processArticle(article: Article, importance: Importance, source: 
   const substantial = mentions.filter((m) => TDExtractionService.isSubstantialMention(text, m.name));
 
   let linked = 0;
+  const candidates: CandidateTd[] = [];
   for (const mention of substantial) {
     const found = await tdRepo.findByName(mention.name);
     if (!found) {
@@ -156,28 +183,14 @@ async function processArticle(article: Article, importance: Importance, source: 
     }
     await linkArticleTd(article.id, found.td.id);
     linked++;
+    if (!candidates.some((c) => c.id === found.td.id)) candidates.push(toCandidate(found.td));
   }
   stats.tdsLinked += linked;
 
-  // Until verified stances exist (docs/plans/td-stances.md), an article gets a question when it
-  // passed triage and names at least one TD. An article with a question already is skipped
-  // before any model call.
-  if (linked > 0) {
-    try {
-      await generateQuestionForArticle({
-        id: article.id,
-        title: article.title,
-        content: article.content,
-        source: article.source ?? 'Unknown',
-        publishedAt: article.publishedDate,
-        url: article.url,
-        imageUrl: article.imageUrl,
-        summary: article.summary,
-      });
-    } catch (error) {
-      console.warn(`Policy question for article ${article.id} failed:`, error instanceof Error ? error.message : error);
-    }
-  }
+  await recordStances({ id: article.id, title: article.title, content: article.content }, candidates, stats.stances, {
+    complete: completeJson,
+    question: () => ensureQuestion(article),
+  });
 
   await source.markProcessed(article.id, {
     importanceScore: importance.score,

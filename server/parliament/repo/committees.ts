@@ -65,9 +65,14 @@ export async function replaceCommitteeSitting(
 /**
  * SQL for one TD's committee sittings: those of committees they belonged to, held inside
  * that membership, after they joined the current Dáil, with a roll call at all (a
- * transcript without one says nothing about who came), and with no unmatched name on it
- * (an unmatched TD could be this one, so the sitting cannot count them absent).
+ * transcript without one says nothing about who came), with no unmatched name on it
+ * (an unmatched TD could be this one, so the sitting cannot count them absent), and not on
+ * a day of the TD's documented leave.
  */
+const notOnLeave = (memberCode: ReturnType<typeof sql>) => sql`not exists (
+  select 1 from politics.td_absences a
+  where a.member_code = ${memberCode} and s.date >= a.start_date and (a.end_date is null or s.date <= a.end_date))`;
+
 const ELIGIBLE_SITTINGS = sql`
   select distinct s.uri, s.committee_id
   from politics.committee_sittings s
@@ -76,7 +81,8 @@ const ELIGIBLE_SITTINGS = sql`
     and s.date >= m.start_date and (m.end_date is null or s.date <= m.end_date)
     and s.date >= st.member_since
     and s.present_count > 0
-    and s.unresolved_count = 0`;
+    and s.unresolved_count = 0
+    and ${notOnLeave(sql`m.member_code`)}`;
 
 /** Fill the committee columns of `td_parliament_stats` (rows must exist; see recomputeStats). */
 export async function recomputeCommitteeStats(database: Db = db): Promise<void> {
@@ -106,7 +112,8 @@ export async function tdCommittees(tdId: number, database: Db = db): Promise<TdC
           and ("committee_memberships"."end_date" is null or s.date <= "committee_memberships"."end_date")
           and s.date >= (select p.member_since from politics.td_parliament_stats p where p.td_id = "committee_memberships"."td_id")
           and s.present_count > 0
-          and s.unresolved_count = 0)`,
+          and s.unresolved_count = 0
+          and ${notOnLeave(sql`"committee_memberships"."member_code"`)})`,
       sittingsAttended: sql<number>`(
         select count(*)::int from politics.committee_sittings s
         join politics.committee_attendance a on a.sitting_uri = s.uri and a.td_id = "committee_memberships"."td_id"
@@ -114,7 +121,8 @@ export async function tdCommittees(tdId: number, database: Db = db): Promise<TdC
           and s.date >= "committee_memberships"."start_date"
           and ("committee_memberships"."end_date" is null or s.date <= "committee_memberships"."end_date")
           and s.date >= (select p.member_since from politics.td_parliament_stats p where p.td_id = "committee_memberships"."td_id")
-          and s.unresolved_count = 0)`,
+          and s.unresolved_count = 0
+          and ${notOnLeave(sql`"committee_memberships"."member_code"`)})`,
     })
     .from(committeeMemberships)
     .innerJoin(committees, eq(committees.id, committeeMemberships.committeeId))

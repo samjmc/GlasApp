@@ -372,13 +372,6 @@ export async function feedPage(
   );
 }
 
-/** Newest articles, optionally only those whose title, summary or body mention `topic`. */
-export async function searchRecent(topic: string | undefined, limit: number, database: Db = db): Promise<FeedRow[]> {
-  const pattern = topic ? `%${topic.replace(/[\\%_]/g, (c) => `\\${c}`)}%` : null;
-  const where = pattern ? sql`(a.title ilike ${pattern} or a.summary ilike ${pattern} or a.content ilike ${pattern})` : sql`true`;
-  return (await page(where, BY_DATE, limit, 0, database)).rows;
-}
-
 /** Newest articles that name the TD. */
 export async function feedForTd(name: string, limit: number, database: Db = db): Promise<FeedRow[]> {
   const where = sql`exists (

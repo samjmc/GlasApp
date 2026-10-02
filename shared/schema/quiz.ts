@@ -68,7 +68,8 @@ export const quizResults = politics.table(
   (t) => [index('quiz_results_user_created_idx').on(t.userId, t.createdAt)],
 );
 
-export const EVIDENCE_SOURCES = ['article', 'debate'] as const;
+/** `article` = the deleted scoring panel's rows, kept only until `npm run stances -- --rebuild` purges them. */
+export const EVIDENCE_SOURCES = ['article', 'debate', 'stance'] as const;
 export type EvidenceSource = (typeof EVIDENCE_SOURCES)[number];
 
 export const tdIdeologyEvidence = politics.table(
@@ -79,7 +80,7 @@ export const tdIdeologyEvidence = politics.table(
       .notNull()
       .references(() => tds.id, { onDelete: 'cascade' }),
     source: varchar('source', { length: 20 }).notNull(),
-    /** Identifies the source item, e.g. "article:123" or a debate speech id. */
+    /** Identifies the source item, e.g. "question:123" for a stance or a debate speech id. */
     sourceRef: text('source_ref').notNull(),
     policyTopic: text('policy_topic'),
     ...partialVectorColumns(),
@@ -92,7 +93,7 @@ export const tdIdeologyEvidence = politics.table(
   (t) => [
     uniqueIndex('td_ideology_evidence_source_idx').on(t.tdId, t.source, t.sourceRef),
     index('td_ideology_evidence_td_idx').on(t.tdId, t.observedAt),
-    check('td_ideology_evidence_source_chk', sql`${t.source} in ('article', 'debate')`),
+    check('td_ideology_evidence_source_chk', sql`${t.source} in ('article', 'debate', 'stance')`),
     check('td_ideology_evidence_weight_chk', sql`${t.weight} > 0`),
   ],
 );

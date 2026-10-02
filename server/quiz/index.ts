@@ -9,7 +9,7 @@ import type { QuizResultRow } from '@shared/schema/quiz';
 import { recomputeProfile } from '../ideology';
 import * as repo from '../ideology/repository';
 import { ideologyLabel } from './label';
-import { scoreQuiz } from './score';
+import { answeredCountsOf, scoreQuiz } from './score';
 
 export { QuizInputError } from './score';
 
@@ -20,15 +20,16 @@ function toResult(row: QuizResultRow): QuizResult {
     ideology: row.ideology,
     description: row.description,
     answeredCount: row.answers.length,
+    answeredByDimension: answeredCountsOf(row.answers),
     createdAt: row.createdAt.toISOString(),
   };
 }
 
 /** Score the answers; save them when there is a user. Throws QuizInputError on bad input. */
 export async function submitQuiz(userId: string | null, answers: QuizResponse[]): Promise<QuizResult> {
-  const { vector, answeredCount } = scoreQuiz(answers);
+  const { vector, answeredCount, answeredByDimension } = scoreQuiz(answers);
   const { name, description } = ideologyLabel(vector);
-  if (!userId) return { id: null, vector, ideology: name, description, answeredCount, createdAt: null };
+  if (!userId) return { id: null, vector, ideology: name, description, answeredCount, answeredByDimension, createdAt: null };
   const row = await repo.insertQuizResult({ userId, answers, vector, ideology: name, description });
   // The result is saved; a failed recompute must not turn that into an error the client
   // retries (a duplicate row). The next vote, quiz or `npm run ideology -- --recalculate` heals it.
