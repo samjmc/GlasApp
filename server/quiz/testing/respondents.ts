@@ -1,6 +1,6 @@
 /**
- * A simulated quiz population, for tests: who answers, how, and the 48-question pool the
- * planner is built for. Nothing in the app imports this file; plan 05's item analysis reuses it.
+ * A simulated quiz population, for tests: who answers and how. Nothing in the app imports this
+ * file; plan 05's item analysis reuses it.
  */
 import {
   IDEOLOGY_DIMENSIONS,
@@ -77,12 +77,5 @@ export function symmetricQuestion(id: number, dimension: IdeologyDimension): Qui
   };
 }
 
-/**
- * The real bank plus 22 symmetric stand-ins, 6 per dimension, on the ids the new questions
- * will take: 28 economic, then 3 each for social through technocratic (29–49).
- */
-export const BANK_48: QuizQuestion[] = [
-  ...QUIZ_QUESTIONS,
-  symmetricQuestion(28, 'economic'),
-  ...IDEOLOGY_DIMENSIONS.slice(1).flatMap((d, k) => [0, 1, 2].map((j) => symmetricQuestion(29 + 3 * k + j, d))),
-];
+/** The 26 questions a legacy quiz asked, before the pool grew to 48 (ids 28–49). */
+export const LEGACY_BANK: QuizQuestion[] = QUIZ_QUESTIONS.filter((q) => q.id < 28);
