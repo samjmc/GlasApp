@@ -23,6 +23,17 @@ export interface RollupInput {
   debateScore: number | null;
   /** Holds the chair (Ceann Comhairle). */
   isPresiding: boolean;
+  /**
+   * Questions this TD was expected to ask (server/parliament, pro-rated to their eligible
+   * time). NULL = not expected, so the questions component is NULL. Absent = no expectation
+   * computed yet: the whole-term benchmark applies.
+   */
+  questionsExpected?: number | null;
+  /**
+   * The attendance that scores full marks for this TD (lower for time in a leadership role).
+   * Absent or NULL: ATTENDANCE_BENCHMARK.
+   */
+  attendanceBenchmark?: number | null;
 }
 
 export interface RollupResult {
@@ -70,8 +81,12 @@ export function sharedRanks<K>(entries: Array<[K, number]>): Map<K, number> {
 
 export function computeRollup(rows: RollupInput[]): RollupResult[] {
   const scored = rows.map((r) => {
-    const c = scoredComponents({ ...r, debate: normalizePercent(r.debateScore) });
-    const parliamentary = parliamentaryScore(c.questions, c.attendance, c.committees);
+    const notExpected = r.questionsExpected === null;
+    const c = scoredComponents({ ...r, questions: notExpected ? null : r.questions, debate: normalizePercent(r.debateScore) });
+    const parliamentary = parliamentaryScore(c.questions, c.attendance, c.committees, {
+      questionsExpected: r.questionsExpected,
+      attendanceBenchmark: r.attendanceBenchmark,
+    });
     const measured = [c.questions, c.attendance, c.committees, c.debate].filter((v) => v !== null).length;
     return {
       tdId: r.tdId,

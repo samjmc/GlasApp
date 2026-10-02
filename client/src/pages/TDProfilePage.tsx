@@ -9,6 +9,8 @@ import { useQuery } from '@tanstack/react-query';
 import {
   Briefcase,
   ChevronLeft,
+  ClipboardList,
+  Euro,
   ExternalLink,
   FileText,
   MessageSquare,
@@ -39,13 +41,18 @@ import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
 import { cn } from '@/lib/utils';
+import { INTEREST_CATEGORIES } from '@shared/parliamentApi';
 import type {
+  AbsenceKind,
+  OfficeKind,
   TdParliamentSummary,
   TdVote,
   TdDebateContribution,
   TdCommittee,
   TdBill,
   TdQuestionTopic,
+  TdInterests,
+  TdAllowances,
 } from '@shared/parliamentApi';
 import type { TdProfile } from '@shared/scoresApi';
 import type { FeedArticle } from '@/lib/news';
@@ -84,6 +91,70 @@ function formatDay(value: string | null | undefined): string {
 function humanise(value: string): string {
   const text = value.replace(/_/g, ' ');
   return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+/** A full-term backbencher's full-marks benchmarks, as in server/scoring/weights.ts. */
+const FULL_ATTENDANCE_BENCHMARK = 95;
+const FULL_QUESTIONS_BENCHMARK = 200;
+
+/** Offices whose holders are not expected to ask parliamentary questions. */
+const QUESTION_EXEMPT_OFFICES: readonly OfficeKind[] = ['cabinet', 'minister_of_state', 'ceann_comhairle'];
+
+const ABSENCE_LABELS: Record<AbsenceKind, string> = {
+  parental_leave: 'Parental leave',
+  medical_leave: 'Medical leave',
+  bereavement: 'Bereavement',
+  other_leave: 'Leave',
+};
+
+/** Cents as euro: "€1,234.56". */
+function euro(cents: number): string {
+  return (cents / 100).toLocaleString('en-IE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
+/** A first-of-month date as "Aug 2026". */
+function formatMonth(value: string): string {
+  return formatIsoDate(value, { month: 'short', year: 'numeric' });
+}
+
+/** Why some divisions or questions are not counted for this TD: only the notes that apply. */
+function fairnessNotes(s: TdParliamentSummary): string[] {
+  const notes: string[] = [];
+  const divisions = (n: number) => `${num(n)} ${n === 1 ? 'division' : 'divisions'}`;
+  const isAre = (n: number) => (n === 1 ? 'is' : 'are');
+  if (s.divisionsChaired !== null && s.divisionsChaired > 0) {
+    notes.push(`${divisions(s.divisionsChaired)} in the chair ${isAre(s.divisionsChaired)} not counted (the chair cannot vote).`);
+  }
+  if (s.divisionsExcused !== null && s.divisionsExcused > 0) {
+    notes.push(`${divisions(s.divisionsExcused)} during documented leave ${isAre(s.divisionsExcused)} not counted.`);
+  }
+  if (s.attendanceBenchmark !== null && s.attendanceBenchmark < FULL_ATTENDANCE_BENCHMARK) {
+    notes.push(
+      `Full marks for votes at ${s.attendanceBenchmark}%: time in a leadership role (government office or party leader, on either side) has its own benchmark.`,
+    );
+  }
+  const exempt = s.officeHistory.filter((o) => QUESTION_EXEMPT_OFFICES.includes(o.type));
+  const wasChair = s.isPresiding || exempt.some((o) => o.type === 'ceann_comhairle');
+  if (!s.questionsComplete) notes.push('Some months of questions are not loaded yet, so the question count may be low.');
+  if (s.questionsExpected === null) {
+    if (wasChair) notes.push('Not scored on questions: the Ceann Comhairle chairs the Dáil.');
+    else if (exempt.length > 0) notes.push('Not scored on questions: members of government answer questions, they do not ask them.');
+  } else if (s.questionsExpected < FULL_QUESTIONS_BENCHMARK) {
+    const expected = `Expected ${num(Math.round(s.questionsExpected))} questions`;
+    notes.push(
+      exempt.length === 0
+        ? `${expected}, pro-rated to the time they were expected to ask.`
+        : wasChair
+          ? `${expected}, for the time outside the chair.`
+          : `${expected}, for the time outside government office.`
+    );
+  }
+  return notes;
 }
 
 export default function TDProfilePageEnhanced() {
@@ -202,6 +273,35 @@ export default function TDProfilePageEnhanced() {
     staleTime: 5 * 60 * 1000
   });
   const tdQuestionTopics = tdQuestionTopicsResp?.data ?? [];
+
+  // Both return `data: null` (not 404) when nothing is stored for this TD yet.
+  const {
+    data: tdInterestsResp,
+    isLoading: tdInterestsLoading,
+    isError: tdInterestsError,
+    refetch: refetchInterests,
+    isFetching: tdInterestsFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdInterests(tdId ?? 0),
+    queryFn: () => getParliament<TdInterests | null>(`/api/parliament/tds/${tdId}/interests`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdInterests = tdInterestsResp?.data ?? null;
+
+  const {
+    data: tdAllowancesResp,
+    isLoading: tdAllowancesLoading,
+    isError: tdAllowancesError,
+    refetch: refetchAllowances,
+    isFetching: tdAllowancesFetching,
+  } = useQuery({
+    queryKey: queryKeys.parliament.tdAllowances(tdId ?? 0),
+    queryFn: () => getParliament<TdAllowances | null>(`/api/parliament/tds/${tdId}/allowances`),
+    enabled: !!tdId,
+    staleTime: 5 * 60 * 1000
+  });
+  const tdAllowances = tdAllowancesResp?.data ?? null;
 
   // Recent news articles for this TD
   const { data: newsArticles = [], isLoading: newsLoading } = useQuery({
@@ -386,6 +486,15 @@ export default function TDProfilePageEnhanced() {
   // question-topics is sorted by total (oral + written) desc, so the first entry's total is the max.
   const topQuestionTopics = tdQuestionTopics.slice(0, 8);
   const maxQuestionTopicTotal = topQuestionTopics.reduce((max, t) => Math.max(max, t.oral + t.written), 0);
+
+  const recordNotes = summary ? fairnessNotes(summary) : [];
+  const absences = summary?.absences ?? [];
+
+  // Declared categories get a row each; the ones with nothing declared share one muted line.
+  const interestCategories = (tdInterests?.categories ?? []).slice().sort((a, b) => a.number - b.number);
+  const interestLabel = (n: number) => INTEREST_CATEGORIES[n] ?? `Category ${n}`;
+  const declaredInterests = interestCategories.filter((c) => c.declared !== null);
+  const undeclaredInterests = interestCategories.filter((c) => c.declared === null).map((c) => interestLabel(c.number));
 
   const committeeList = (
     <CommitteeList
@@ -583,6 +692,27 @@ export default function TDProfilePageEnhanced() {
                   </StatTile>
                 ))}
               </div>
+              {(recordNotes.length > 0 || absences.length > 0) && (
+                <ul className="flex flex-col gap-1.5 text-[13px] leading-relaxed text-muted-foreground">
+                  {recordNotes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                  {absences.map((a) => (
+                    <li key={`${a.from}-${a.reason}`}>
+                      On leave {formatIsoDate(a.from)} – {a.to ? formatIsoDate(a.to) : 'ongoing'} · {ABSENCE_LABELS[a.reason]} ·{' '}
+                      <a
+                        href={a.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[44px] items-center gap-1 font-semibold underline underline-offset-4 transition-colors hover:text-foreground sm:min-h-0"
+                      >
+                        Source
+                        <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {parliamentSummaryError && (
                 <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
                   <span>Could not load the full Dáil record.</span>
@@ -937,6 +1067,102 @@ export default function TDProfilePageEnhanced() {
                   );
                 })}
               </ul>
+            )}
+          </Card>
+
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+              <ClipboardList className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              Register of interests{tdInterests ? ` (${tdInterests.year})` : ''}
+            </h2>
+            {tdInterestsLoading ? (
+              <div className="flex flex-col gap-2">
+                {[0, 1].map((i) => (
+                  <Skeleton key={i} className="h-16 rounded-xl" />
+                ))}
+              </div>
+            ) : tdInterestsError ? (
+              <SideCardError
+                message="Could not load the register of interests."
+                onRetry={() => refetchInterests()}
+                retrying={tdInterestsFetching}
+              />
+            ) : !tdInterests ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">Not in the published register yet.</p>
+            ) : (
+              <>
+                {declaredInterests.length > 0 && (
+                  <dl className="flex flex-col gap-2">
+                    {declaredInterests.map((c) => (
+                      <div key={c.number} className="flex min-w-0 flex-col gap-1 rounded-xl bg-elevated p-3">
+                        <dt className="text-sm font-bold leading-snug">{interestLabel(c.number)}</dt>
+                        <dd className="whitespace-pre-line break-words text-sm leading-relaxed">{c.declared}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {undeclaredInterests.length > 0 && (
+                  <p className="text-[13px] leading-relaxed text-muted-foreground">
+                    Nothing declared: {undeclaredInterests.join(', ')}
+                  </p>
+                )}
+                <a
+                  href={tdInterests.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center gap-1.5 self-start rounded-sm text-[13px] font-semibold text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground sm:min-h-0"
+                >
+                  Source (PDF)
+                  <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                </a>
+              </>
+            )}
+          </Card>
+
+          <Card className="flex flex-col gap-3 p-5">
+            <h2 className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+              <Euro className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              Allowances (PSA)
+            </h2>
+            {tdAllowancesLoading ? (
+              <div className="flex flex-col gap-2">
+                {[0, 1].map((i) => (
+                  <Skeleton key={i} className="h-12 rounded-xl" />
+                ))}
+              </div>
+            ) : tdAllowancesError ? (
+              <SideCardError message="Could not load allowances." onRetry={() => refetchAllowances()} retrying={tdAllowancesFetching} />
+            ) : !tdAllowances ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">Not published yet.</p>
+            ) : (
+              <>
+                <div className="flex flex-col gap-1">
+                  <span className="font-display text-3xl font-bold tracking-tight">{euro(tdAllowances.totalCents)}</span>
+                  <span className="text-[13px] text-muted-foreground">
+                    {tdAllowances.months.length} {tdAllowances.months.length === 1 ? 'month' : 'months'} paid,{' '}
+                    {formatMonth(tdAllowances.from)} – {formatMonth(tdAllowances.to)}
+                  </span>
+                </div>
+                {tdAllowances.months.length > 0 && (
+                  <dl className="flex flex-col gap-1">
+                    {tdAllowances.months.slice(0, 3).map((m) => (
+                      <div key={m.month} className="flex items-center justify-between gap-3 rounded-lg bg-elevated px-3 py-2 text-sm">
+                        <dt className="text-muted-foreground">{formatMonth(m.month)}</dt>
+                        <dd className="font-semibold">{euro(m.amountCents)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {tdAllowances.unpublishedMonths.length > 0 && (
+                  <p className="text-[13px] leading-relaxed text-muted-foreground">
+                    Not published by the Oireachtas yet: {tdAllowances.unpublishedMonths.map(formatMonth).join(', ')}.
+                  </p>
+                )}
+                <p className="text-[13px] leading-relaxed text-muted-foreground">
+                  Parliamentary Standard Allowance: travel and accommodation, and public representation. Published monthly by
+                  the Oireachtas.
+                </p>
+              </>
             )}
           </Card>
 

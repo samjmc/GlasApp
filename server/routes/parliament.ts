@@ -95,6 +95,25 @@ router.get(
   }),
 );
 
+// NULL data (not 404) when nothing is stored yet: the TD exists, the register or file does not.
+router.get(
+  '/tds/:id/interests',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'TD id must be a positive integer');
+    res.json(formatSuccess(await repo.tdInterestsOf(id.data)));
+  }),
+);
+
+router.get(
+  '/tds/:id/allowances',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'TD id must be a positive integer');
+    res.json(formatSuccess(await repo.tdAllowancesOf(id.data)));
+  }),
+);
+
 router.get(
   '/bills',
   asyncHandler(async (req, res) => {
