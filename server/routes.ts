@@ -20,7 +20,6 @@ import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
 
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
-import shadowRoutes from "./routes/shadowRoutes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Identity comes from the Supabase bearer token on each request; there is no
@@ -35,7 +34,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   await registerAuthRoutes(app);
   
   // Register API routes
-  app.use("/api/shadow", shadowRoutes); // The Shadow Cabinet
   
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
   app.use("/api/profile", profileRoutes);
