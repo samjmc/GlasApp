@@ -5,6 +5,7 @@
  * Type-only imports: nothing here may pull drizzle into the client bundle.
  */
 import type { IdeologyDimension, IdeologyVector } from './ideology';
+import type { AbstainReason, Election } from './partyQuiz';
 import type { EvidenceSource } from './schema/quiz';
 import type { TdIssues } from './stancesApi';
 
@@ -56,6 +57,78 @@ export interface PartyMatch {
   /** From the evidence weight of the party's TDs, never from its TD count. */
   confidence: Confidence;
   hasPartyBaseline: boolean;
+  /** The party's approved manifesto answers, blended into what it is matched on. null = none yet. */
+  manifesto: PartyManifesto | null;
+}
+
+/**
+ * A party's position from its approved manifesto answers (server/partyQuiz/position), scored by
+ * the same scoreQuiz as users.
+ */
+export interface ManifestoPosition {
+  vector: IdeologyVector;
+  /** Per dimension, approved answered items ÷ bank questions on it, 0..1: its weight in the blend. */
+  coverage: IdeologyVector;
+  answeredCount: number;
+  /** Questions in the bank: the denominator of coverage. */
+  askedCount: number;
+}
+
+export type PartyManifesto = Pick<ManifestoPosition, 'coverage' | 'answeredCount'>;
+
+/** GET /api/ideology/party/:name, and the party compared on the timeline. */
+export interface PartyIdeology {
+  party: string;
+  /** What the party is matched on: per dimension c·m + (1−c)·tdMean, c = the manifesto's coverage. */
+  vector: IdeologyVector;
+  /** The stored party row: the weighted mean of its TDs' profiles. */
+  tdMean: IdeologyVector;
+  tdCount: number;
+  computedAt: string;
+  hasPartyBaseline: boolean;
+  /** Dimensions with a position: all with a baseline, else its TDs' evidence plus the manifesto's. */
+  measured: IdeologyDimension[];
+  manifesto: PartyManifesto | null;
+}
+
+/** A quote from a manifesto, linked to its page. */
+export interface ManifestoCitation {
+  /** Registry slug. */
+  document: string;
+  title: string;
+  url: string | null;
+  /** The page ordinal in a PDF; null for an HTML document. */
+  pdfPage: number | null;
+  /** The page as printed on it, else its ordinal. */
+  page: string;
+  /** The document at the quote (`#page=` for a PDF, a text fragment for HTML); null with no url. */
+  href: string | null;
+  quote: string;
+}
+
+/** One party's reviewed answer to one quiz question. Only approved, current items are served. */
+export interface PartyQuizAnswer {
+  party: string;
+  questionId: number;
+  /** false = an approved abstention: the manifesto takes no position the answers can express. */
+  answered: boolean;
+  answerIndex: number | null;
+  value: number | null;
+  rationale: string;
+  abstainReason: AbstainReason | null;
+  modelConfidence: number;
+  citations: ManifestoCitation[];
+}
+
+/** GET /api/ideology/party/:name/answers */
+export interface PartyAnswers {
+  party: string;
+  election: Election;
+  documents: { slug: string; title: string; url: string | null }[];
+  position: ManifestoPosition | null;
+  /** Items still waiting for review; never served. */
+  pendingCount: number;
+  answers: PartyQuizAnswer[];
 }
 
 export interface Matches {

@@ -6,6 +6,8 @@ import {
   confidenceOf,
   type DimensionConfidence,
   type Matches,
+  type PartyIdeology,
+  type PartyManifesto,
   type PartyMatch,
   type TdIdeology,
   type TdMatch,
@@ -13,6 +15,7 @@ import {
 } from '@shared/ideologyMatch';
 import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
 import type { SharedIssue } from '@shared/stancesApi';
+import { blendPartyTarget, manifestoPosition } from '../partyQuiz/position';
 import { ideologyLabel } from '../quiz/label';
 import { answeredCountsOf, coverageOf, scoreQuiz } from '../quiz/score';
 // Not '../stances': its record.ts imports this domain, and the two would form a cycle.
@@ -218,10 +221,36 @@ export async function recomputePartyProfile(party: string): Promise<void> {
 
 const NO_EVIDENCE: repo.EvidenceSummary = { bySource: {}, measured: [] };
 
+/** Per party key, the dimensions any of its TDs has evidence on. */
+function measuredByParty(tds: repo.TdRef[], evidence: Map<number, repo.EvidenceSummary>): Map<string, Set<IdeologyDimension>> {
+  const byParty = new Map<string, Set<IdeologyDimension>>();
+  for (const td of tds) {
+    if (!td.party) continue;
+    const dims = byParty.get(partyKey(td.party)) ?? new Set<IdeologyDimension>();
+    for (const d of (evidence.get(td.id) ?? NO_EVIDENCE).measured) dims.add(d);
+    byParty.set(partyKey(td.party), dims);
+  }
+  return byParty;
+}
+
+/**
+ * What a party is matched on: its stored row (the TD mean) blended at read time with its approved
+ * manifesto answers (server/partyQuiz/position). TD profiles never see the manifesto. With no
+ * baseline, only its TDs' measured dimensions and the manifesto's are a position.
+ */
+function partyTarget(row: IdeologyProfileRow, tdMeasured: Iterable<IdeologyDimension>) {
+  const hasPartyBaseline = partyBaseline(row.subjectId) !== null;
+  const position = manifestoPosition(row.subjectId);
+  const { vector, measured } = blendPartyTarget(repo.vectorOf(row), position, hasPartyBaseline ? 'all' : new Set(tdMeasured));
+  const manifesto: PartyManifesto | null = position && { coverage: position.coverage, answeredCount: position.answeredCount };
+  return { vector, hasPartyBaseline, measured: IDEOLOGY_DIMENSIONS.filter((d) => measured.has(d)), manifesto };
+}
+
 /**
  * TDs and parties by how close they are to `vector`. A subject with no party baseline is matched
  * only on the dimensions it has evidence on (its 0s elsewhere mean "unknown", not "centrist"),
- * and not at all below MIN_MEASURED_DIMS; see `subjectWeights`.
+ * and not at all below MIN_MEASURED_DIMS; see `subjectWeights`. A party is matched on its
+ * `partyTarget`, where a manifesto dimension counts as measured.
  */
 export async function matchesFor(vector: IdeologyVector, weights: DimensionWeights = {}): Promise<Matches> {
   const [tds, tdProfiles, partyProfiles, evidence] = await Promise.all([
@@ -231,15 +260,9 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
     repo.evidenceSummary(),
   ]);
   const byId = new Map(tdProfiles.map((p) => [p.subjectId, p]));
-  const measuredByParty = new Map<string, Set<IdeologyDimension>>();
   const tdMatches: TdMatch[] = [];
   for (const td of tds) {
     const { bySource, measured } = evidence.get(td.id) ?? NO_EVIDENCE;
-    if (td.party) {
-      const partyDims = measuredByParty.get(partyKey(td.party)) ?? new Set<IdeologyDimension>();
-      for (const d of measured) partyDims.add(d);
-      measuredByParty.set(partyKey(td.party), partyDims);
-    }
     const profile = byId.get(String(td.id));
     const hasPartyBaseline = partyBaseline(td.party) !== null;
     const tdWeights = profile && subjectWeights(weights, { hasPartyBaseline, measured });
@@ -260,22 +283,21 @@ export async function matchesFor(vector: IdeologyVector, weights: DimensionWeigh
       hasPartyBaseline,
     });
   }
+  const partyDims = measuredByParty(tds, evidence);
   const parties: PartyMatch[] = [];
   for (const p of partyProfiles) {
-    const hasPartyBaseline = partyBaseline(p.subjectId) !== null;
-    const partyDims = measuredByParty.get(partyKey(p.subjectId));
-    const measured = IDEOLOGY_DIMENSIONS.filter((d) => partyDims?.has(d));
-    const partyWeights = subjectWeights(weights, { hasPartyBaseline, measured });
+    const target = partyTarget(p, partyDims.get(partyKey(p.subjectId)) ?? []);
+    const partyWeights = subjectWeights(weights, target);
     if (!partyWeights) continue;
-    const other = repo.vectorOf(p);
     parties.push({
       party: p.subjectId,
-      alignment: alignment(vector, other, partyWeights),
+      alignment: alignment(vector, target.vector, partyWeights),
       tdCount: p.evidenceCount,
-      ...closestAndFurthest(vector, other, partyWeights),
+      ...closestAndFurthest(vector, target.vector, partyWeights),
       // A party's evidenceCount is its TD count; its totalWeight is its TDs' own evidence.
       confidence: confidenceOf(p.totalWeight),
-      hasPartyBaseline,
+      hasPartyBaseline: target.hasPartyBaseline,
+      manifesto: target.manifesto,
     });
   }
   const byAlignment = <T extends { alignment: number }>(a: T, b: T) => b.alignment - a.alignment;
@@ -384,9 +406,23 @@ export async function tdProfile(tdId: number): Promise<TdIdeology | null> {
   };
 }
 
-export async function partyProfile(party: string) {
-  const row = (await repo.listProfiles('party')).find((p) => partyKey(p.subjectId) === partyKey(party));
-  return row ? { party: row.subjectId, vector: repo.vectorOf(row), tdCount: row.evidenceCount, computedAt: row.computedAt } : null;
+/** A party's position as matchesFor matches it, with the stored TD mean it was blended from. */
+export async function partyProfile(party: string): Promise<PartyIdeology | null> {
+  const key = partyKey(party);
+  const [rows, tds, evidence] = await Promise.all([repo.listProfiles('party'), repo.listActiveTds(), repo.evidenceSummary()]);
+  const row = rows.find((p) => partyKey(p.subjectId) === key);
+  if (!row) return null;
+  const { vector, hasPartyBaseline, measured, manifesto } = partyTarget(row, measuredByParty(tds, evidence).get(key) ?? []);
+  return {
+    party: row.subjectId,
+    vector,
+    tdMean: repo.vectorOf(row),
+    tdCount: row.evidenceCount,
+    computedAt: row.computedAt.toISOString(),
+    hasPartyBaseline,
+    measured,
+    manifesto,
+  };
 }
 
 // --- rebuild ---------------------------------------------------------------

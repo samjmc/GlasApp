@@ -66,6 +66,21 @@ vi.mock('../ideology', () => ({
   tdProfile: vi.fn(async (id: number) => (id === 1 ? { td: { id: 1, name: 'A' }, hasPartyBaseline: false, profile: null } : null)),
 }));
 
+const SF_ANSWERS = vi.hoisted(() => ({
+  party: 'Sinn Féin', election: 'ge2024', documents: [{ slug: 'sf-ge2024', title: 'The Choice for Change', url: 'https://x' }],
+  position: null, pendingCount: 2, answers: [],
+}));
+
+// Only the lookups are stubbed; the rest (noPartyAnswers, MAX_ANSWER_QUESTIONS) is the real module.
+vi.mock('../partyQuiz/serve', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../partyQuiz/serve')>()),
+  partyAnswers: vi.fn((name: string) => (name === 'Sinn Féin' ? SF_ANSWERS : null)),
+  answersForQuestions: vi.fn((ids: number[]) => {
+    calls.list.push({ fn: 'answersForQuestions', args: [ids] });
+    return Object.fromEntries(ids.map((id) => [id, []]));
+  }),
+}));
+
 const quizRoutes = (await import('./quiz')).default;
 const ideologyRoutes = (await import('./ideology')).default;
 
@@ -219,5 +234,39 @@ describe('/api/ideology', () => {
       code: 'VALIDATION_ERROR',
       message: 'Invalid position',
     });
+  });
+});
+
+describe('/api/ideology party manifesto answers', () => {
+  const error = async (res: Response) => ((await res.json()) as { error: { code: string; message: string } }).error;
+
+  it('GET /party/:name/answers sends the party\'s answers', async () => {
+    expect(await (await get('/api/ideology/party/Sinn%20F%C3%A9in/answers')).json()).toEqual({ success: true, data: SF_ANSWERS });
+  });
+
+  it('a party with a position but no registered manifesto has no answers; one with neither is 404', async () => {
+    expect(await (await get('/api/ideology/party/Fine%20Gael/answers')).json()).toEqual({
+      success: true,
+      data: { party: 'Fine Gael', election: 'ge2024', documents: [], position: null, pendingCount: 0, answers: [] },
+    });
+    const res = await get('/api/ideology/party/Nobody/answers');
+    expect(res.status).toBe(404);
+    expect(await error(res)).toEqual({ code: 'NOT_FOUND', message: 'Party not found' });
+  });
+
+  it('GET /party-answers?questions= sends every party\'s answers per question', async () => {
+    expect(await (await get('/api/ideology/party-answers?questions=1,5,27')).json()).toEqual({ success: true, data: { 1: [], 5: [], 27: [] } });
+    expect(calls.list.at(-1)).toEqual({ fn: 'answersForQuestions', args: [[1, 5, 27]] });
+  });
+
+  it('GET /party-answers is 400 without ids, for a non-numeric id and for more than 60', async () => {
+    const ids = (n: number) => Array.from({ length: n }, (_, i) => i + 1).join(',');
+    for (const query of ['', '?questions=', '?questions=1,a', '?questions=1.5', '?questions=0', `?questions=${ids(61)}`]) {
+      const res = await get(`/api/ideology/party-answers${query}`);
+      expect(res.status, query).toBe(400);
+      expect(await error(res)).toEqual({ code: 'VALIDATION_ERROR', message: 'Invalid question ids' });
+    }
+    expect(calls.list.some((c) => c.fn === 'answersForQuestions')).toBe(false);
+    expect((await get(`/api/ideology/party-answers?questions=${ids(60)}`)).status).toBe(200);
   });
 });
