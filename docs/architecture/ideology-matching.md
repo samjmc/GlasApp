@@ -31,9 +31,16 @@ It is order-independent, so every profile can be rebuilt from its evidence at an
 
 | Subject | Prior | Evidence | Decay |
 |---|---|---|---|
-| user | none | latest quiz (weight 10, only the dimensions it asked) + every policy vote (`listUserVoteVectors`) | none |
+| user | none | latest quiz (weight 10 × its coverage, only the dimensions it asked) + every policy vote (`listUserVoteVectors`) | none |
 | TD | party baseline (`partyBaselines.ts`), weight 3; independents none | `politics.td_ideology_evidence`: verified news stances (`stance`, `server/stances`), debate stances (not wired yet) | 180-day half-life |
 | party | — | mean of its TDs' profiles, each weighted 3 + its evidence weight; baseline when it has none | — |
+
+A quiz's coverage on a dimension is `min(1, answers on it / 3)` (`FULL_COVERAGE_ANSWERS`,
+`server/quiz/score.ts`). The adaptive quiz asks 3 per dimension plus follow-ups where the first
+answers were not clear-cut (`shared/quizPlan.ts`); a complete quiz and a legacy 26-answer one
+both weigh 10 on every dimension, and follow-ups sharpen the position but add no weight. Only a
+partial API submission weighs less (1 answer = 1/3). `quiz_results.plan` records which
+questions were shown when the answers match the client's seed; NULL = legacy or unverified.
 
 Source scales (`sources.ts`): debate stances (and the old `article` rows) are ±0.5 (×20); vote
 options and `stance` evidence are ±2 (×5), because a stance IS an option position. A value under
