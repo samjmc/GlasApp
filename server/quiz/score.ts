@@ -17,21 +17,22 @@
  *   weigh a partial quiz for what it is.
  */
 import { QUIZ_QUESTIONS, type QuizQuestion, type QuizResponse } from '@shared/quiz';
-import {
-  IDEOLOGY_DIMENSIONS,
-  IDEOLOGY_LIMIT,
-  emptyIdeologyVector,
-  type IdeologyDimension,
-  type IdeologyVector,
-} from '@shared/ideology';
+import { IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT, emptyIdeologyVector, type IdeologyVector } from '@shared/ideology';
 
 export class QuizInputError extends Error {}
 
 const BANK = new Map<number, QuizQuestion>(QUIZ_QUESTIONS.map((q) => [q.id, q]));
 
+/**
+ * Answers on a dimension that count as fully covering it. A complete legacy quiz asked 3 per
+ * dimension; never tie this to the plan's base size (shared/quizPlan.ts), or a change of plan
+ * config would re-weight every stored result.
+ */
+export const FULL_COVERAGE_ANSWERS = 3;
+
 export interface QuizScore {
   vector: IdeologyVector;
-  /** Per dimension, the share of the bank's questions on it that were answered, 0..1. */
+  /** Per dimension, min(1, answers on it / FULL_COVERAGE_ANSWERS). Follow-ups sharpen the score but add no weight. */
   coverage: IdeologyVector;
   answeredCount: number;
   /** Per dimension, how many of the answers were questions on it. */
@@ -61,32 +62,23 @@ export function scoreQuiz(responses: QuizResponse[], bank: Map<number, QuizQuest
   if (seen.size === 0) throw new QuizInputError('No answers to score');
 
   const answered = answeredCountsOf(responses, bank);
-  const totals = questionsPerDimension(bank);
   const vector = emptyIdeologyVector();
-  const coverage = emptyIdeologyVector();
   for (const d of IDEOLOGY_DIMENSIONS) {
     const reach = sum[d] >= 0 ? reachUp[d] : reachDown[d];
     vector[d] = reach > 0 ? Math.round((IDEOLOGY_LIMIT * sum[d] / reach) * 10) / 10 : 0;
-    coverage[d] = totals[d] ? answered[d] / totals[d] : 0;
   }
-  return { vector, coverage, answeredCount: seen.size, answeredByDimension: answered };
+  return { vector, coverage: coverageFrom(answered), answeredCount: seen.size, answeredByDimension: answered };
 }
 
-function questionsPerDimension(bank: Map<number, QuizQuestion>): Record<IdeologyDimension, number> {
-  const counts = emptyIdeologyVector();
-  for (const q of Array.from(bank.values())) counts[q.dimension] += 1;
-  return counts;
-}
-
-/** Per dimension, which of the given answers were questions on it. For stored results. */
-export function coverageOf(responses: QuizResponse[], bank: Map<number, QuizQuestion> = BANK): IdeologyVector {
-  const totals = questionsPerDimension(bank);
+function coverageFrom(answered: IdeologyVector): IdeologyVector {
   const coverage = emptyIdeologyVector();
-  for (const { questionId } of responses) {
-    const q = bank.get(questionId);
-    if (q) coverage[q.dimension] += 1 / totals[q.dimension];
-  }
+  for (const d of IDEOLOGY_DIMENSIONS) coverage[d] = Math.min(1, answered[d] / FULL_COVERAGE_ANSWERS);
   return coverage;
+}
+
+/** Per dimension, the coverage of the given answers. For stored results. */
+export function coverageOf(responses: QuizResponse[], bank: Map<number, QuizQuestion> = BANK): IdeologyVector {
+  return coverageFrom(answeredCountsOf(responses, bank));
 }
 
 /** Per dimension, how many of the given answers were questions on it. Skips unknown ids; never throws. */

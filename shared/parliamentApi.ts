@@ -135,6 +135,45 @@ export interface TdAbsence {
   sourceUrl: string;
 }
 
+/** A news article that may explain a silence. A pointer for the reviewer, never a reason. */
+export interface LeaveHintView {
+  title: string;
+  url: string;
+  publishedAt: string;
+}
+
+export type LeaveAlertState = 'open' | 'confirmed' | 'dismissed' | 'closed';
+
+/** GET /api/parliament/admin/leave-alerts: a run of sitting days with no vote and no speech. */
+export interface LeaveAlertView {
+  id: number;
+  memberCode: string;
+  tdId: number | null;
+  name: string;
+  party: string | null;
+  from: string;
+  to: string;
+  sittingDays: number;
+  status: LeaveAlertState;
+  hints: LeaveHintView[];
+  firstSeenAt: string;
+  resolvedAt: string | null;
+  /** An admin's email, or "watch" when the weekly job closed it itself. */
+  resolvedBy: string | null;
+  resolutionNote: string | null;
+}
+
+/** POST /api/parliament/admin/leave-alerts/:id/confirm. The source is required, never inferred. */
+export interface ConfirmLeaveInput {
+  reason: AbsenceKind;
+  from: string;
+  /** NULL while the leave is ongoing. */
+  to: string | null;
+  sourceUrl: string;
+  /** What the source says, with no medical detail. */
+  note: string | null;
+}
+
 /** GET /api/parliament/tds/:id/committees */
 export interface TdCommittee {
   committeeId: string;

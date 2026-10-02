@@ -29,6 +29,7 @@ import {
 } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
 import type { QuizResponse } from '../quiz';
+import type { QuizPlanRecord } from '../quizPlan';
 
 const vectorColumns = () => ({
   economic: real('economic').notNull(),
@@ -59,7 +60,14 @@ export const quizResults = politics.table(
     id: serial('id').primaryKey(),
     /** Supabase auth user id. */
     userId: varchar('user_id', { length: 255 }).notNull(),
+    /** The answered questions only. */
     answers: jsonb('answers').$type<QuizResponse[]>().notNull(),
+    /**
+     * Which questions were shown, when the answers are exactly the plan for the client's seed
+     * (verifyPlan in shared/quizPlan.ts). NULL = a legacy result (shown = answered) or a plan
+     * that did not verify. Written only by the server.
+     */
+    plan: jsonb('plan').$type<QuizPlanRecord | null>(),
     ...vectorColumns(),
     ideology: text('ideology').notNull(),
     description: text('description').notNull(),

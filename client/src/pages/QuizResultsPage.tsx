@@ -68,11 +68,11 @@ const QuizResultsPage: React.FC = () => {
     if (saveAttemptedRef.current) return;
     saveAttemptedRef.current = true;
 
-    savingAnswers ??= submitQuiz(stored.answers);
+    savingAnswers ??= submitQuiz(stored.answers, stored.seed);
     savingAnswers
       .then(async (saved) => {
-        storeQuiz(saved, stored.answers);
-        setStored({ result: saved, answers: stored.answers });
+        storeQuiz(saved, stored.answers, stored.seed);
+        setStored({ result: saved, answers: stored.answers, seed: stored.seed });
         await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
         await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
         toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });

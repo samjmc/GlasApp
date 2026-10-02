@@ -18,6 +18,7 @@ import {
 import { IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
 import type { EvidenceCounts } from '@shared/ideologyMatch';
 import type { QuizResponse } from '@shared/quiz';
+import type { QuizPlanRecord } from '@shared/quizPlan';
 import type { Profile } from './model';
 
 export function vectorOf(row: IdeologyVector): IdeologyVector {
@@ -27,12 +28,12 @@ export function vectorOf(row: IdeologyVector): IdeologyVector {
 // --- quiz ------------------------------------------------------------------
 
 export async function insertQuizResult(
-  input: { userId: string; answers: QuizResponse[]; vector: IdeologyVector; ideology: string; description: string },
+  input: { userId: string; answers: QuizResponse[]; plan: QuizPlanRecord | null; vector: IdeologyVector; ideology: string; description: string },
   database: Db = db,
 ): Promise<QuizResultRow> {
   const [row] = await database
     .insert(quizResults)
-    .values({ userId: input.userId, answers: input.answers, ...input.vector, ideology: input.ideology, description: input.description })
+    .values({ userId: input.userId, answers: input.answers, plan: input.plan, ...input.vector, ideology: input.ideology, description: input.description })
     .returning();
   return row!;
 }

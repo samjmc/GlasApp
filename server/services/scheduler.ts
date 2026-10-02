@@ -1,13 +1,14 @@
 import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
-import { runSync as runParliamentSync } from "../parliament";
+import { leaveWatch, runSync as runParliamentSync } from "../parliament";
 
 /** Initialize and start the scheduled jobs. */
 export function initScheduler() {
   console.log("⏰ Scheduler initialized.");
   console.log("   📰 News ingest: every 2 hours, at :30 on odd hours");
   console.log("   🔗 News → TD links and daily-vote questions: every 2 hours");
+  console.log("   🩺 Leave watch: Mondays 6:15 AM Dublin");
 
   // ═══════════════════════════════════════════════════════════════════
   // NEWS PIPELINE (news is not part of any TD's score)
@@ -62,6 +63,17 @@ export function initScheduler() {
       console.log(`[Scheduler] Parliament sync: ${s.divisions.ingested} divisions, ${s.debates.days} sitting days${s.debates.failedDays.length ? `, ${s.debates.failedDays.length} day(s) failed` : ''}${s.failedFeeds.length ? `, failed feeds: ${s.failedFeeds.join(', ')}` : ''}.`);
     } catch (error) {
       console.error("[Scheduler] Parliament sync failed:", error instanceof Error ? error.message : error);
+    }
+  }, { timezone: "Europe/Dublin" });
+
+  // Leave watch - Mondays at 06:15, after the Dáil's sitting days (Tue-Thu) and the 04:45 sync:
+  // list long silences no documented leave covers, for an admin to review at /admin/leave-watch.
+  cron.schedule('15 6 * * 1', async () => {
+    try {
+      const s = await leaveWatch.runLeaveWatch();
+      console.log(`[Scheduler] Leave watch: ${s.opened} opened, ${s.reopened} reopened, ${s.closed} closed; ${s.open} open.`);
+    } catch (error) {
+      console.error("[Scheduler] Leave watch failed:", error instanceof Error ? error.message : error);
     }
   }, { timezone: "Europe/Dublin" });
 }

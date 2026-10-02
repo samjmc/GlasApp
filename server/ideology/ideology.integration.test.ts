@@ -11,6 +11,8 @@
  *   npx vitest run server/ideology/ideology.integration.test.ts
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { QUIZ_QUESTIONS } from '@shared/quiz';
+import { planQuiz, responsesFor } from '@shared/quizPlan';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
 const quizUrl = testDatabaseUrl('quiz');
@@ -89,18 +91,73 @@ run('quiz and ideology against Postgres', () => {
       expect(history.map((h) => h.vector.economic)).toEqual([-10, 10]);
       expect((await ideology.getIdeologyProfile('user-a'))!.economic).toBe(-10);
     });
+
+    describe('the plan', () => {
+      const seed = 42;
+      /** First-ranked base question of each dimension at its strongest positive, the rest strongest negative: every dimension is flagged. */
+      function mixedAnswers(): Record<number, number> {
+        const answers: Record<number, number> = {};
+        const firsts = new Set<string>();
+        for (const id of planQuiz(seed, {}).base) {
+          const q = QUIZ_QUESTIONS.find((x) => x.id === id)!;
+          const values = q.answers.map((a) => a.value);
+          const positive = !firsts.has(q.dimension);
+          firsts.add(q.dimension);
+          answers[id] = values.indexOf(positive ? Math.max(...values) : Math.min(...values));
+        }
+        for (const id of planQuiz(seed, answers).followUps) answers[id] = 0;
+        return answers;
+      }
+      const storedPlan = async (id: number | null) =>
+        (await dbmod.pool.query('select plan from politics.quiz_results where id = $1', [id])).rows[0]!.plan;
+
+      it('stores the plan when the answers are exactly the seed plan, and reports its follow-ups', async () => {
+        const answers = mixedAnswers();
+        const plan = planQuiz(seed, answers);
+        expect(plan.followUps.length).toBeGreaterThan(0);
+        const responses = responsesFor(plan, answers);
+
+        const saved = await quiz.submitQuiz('user-p', responses, seed);
+        expect(await storedPlan(saved.id)).toEqual({ v: 1, seed, base: plan.base, followUps: plan.followUps });
+        expect(saved.followUpDimensions).toEqual(plan.followUpDimensions);
+        expect((await quiz.quizHistory('user-p'))[0]!.followUpDimensions).toEqual(plan.followUpDimensions);
+        // Anonymous results say which dimensions were followed up too.
+        expect((await quiz.submitQuiz(null, responses, seed)).followUpDimensions).toEqual(plan.followUpDimensions);
+      });
+
+      it('still scores and saves a result that does not match its plan, with plan null', async () => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        try {
+          const responses = responsesFor(planQuiz(seed, mixedAnswers()), mixedAnswers());
+          const missingBase = await quiz.submitQuiz('user-q', responses.slice(1), seed);
+          expect(missingBase.id).toBeGreaterThan(0);
+          expect(await storedPlan(missingBase.id)).toBeNull();
+          expect(missingBase.followUpDimensions).toEqual([]);
+          expect(warn).toHaveBeenCalledWith('[quiz] plan mismatch', expect.objectContaining({ seed }));
+
+          warn.mockClear();
+          const noSeed = await quiz.submitQuiz('user-q', responses);
+          expect(await storedPlan(noSeed.id)).toBeNull();
+          expect(noSeed.followUpDimensions).toEqual([]);
+          expect(warn).not.toHaveBeenCalled();
+          expect((await quiz.quizHistory('user-q')).map((r) => r.followUpDimensions)).toEqual([[], []]);
+        } finally {
+          warn.mockRestore();
+        }
+      });
+    });
   });
 
   describe('user profiles', () => {
     it('folds votes into the quiz position', async () => {
-      // economic +10 from one of five economic questions: weight 10 × 1/5 = 2
+      // economic +10 from one answer: coverage 1/3 (FULL_COVERAGE_ANSWERS), weight 10 × 1/3
       await quiz.submitQuiz('user-b', [{ questionId: 1, answerIndex: 2 }]);
       votes.byUser.set('user-b', [
         { questionId: 1, optionKey: 'option_a', vector: { ...zero, economic: -2, globalism: 1 }, weight: 1, confidence: null, votedAt: new Date() },
       ]);
       await ideology.recomputeProfile('user-b');
       const p = (await ideology.getIdeologyProfile('user-b'))!;
-      expect(p.economic).toBeCloseTo((10 * 2 - 10 * 1) / 3, 1); // vote −2 → −10 on the profile scale
+      expect(p.economic).toBeCloseTo((10 * (10 / 3) - 10 * 1) / (10 / 3 + 1), 1); // ≈ 5.38; vote −2 → −10 on the profile scale
       expect(p.globalism).toBe(5); // only the vote speaks to globalism
     });
 
@@ -289,13 +346,13 @@ run('quiz and ideology against Postgres', () => {
     });
 
     it("gives a user's confidence per dimension, from the rounded support behind it", async () => {
-      await quiz.submitQuiz('user-d', [{ questionId: 1, answerIndex: 2 }]); // economic, 1 of 5: weight 2
+      await quiz.submitQuiz('user-d', [{ questionId: 1, answerIndex: 2 }]); // economic, 1 of 3: weight 10/3
       votes.byUser.set('user-d', [
         { questionId: 1, optionKey: 'option_a', vector: { ...zero, welfare: -2 }, weight: 1, confidence: null, votedAt: new Date() },
       ]);
       const detail = (await ideology.userIdeologyDetail('user-d'))!;
       expect(detail.vector).toMatchObject({ economic: 10, welfare: -10, social: 0 });
-      expect(detail.confidence.economic).toEqual({ level: 'low', quizAnswers: 1, votes: 0 });
+      expect(detail.confidence.economic).toEqual({ level: 'medium', quizAnswers: 1, votes: 0 }); // 10/3 ≥ CONFIDENCE_MEDIUM_AT
       expect(detail.confidence.welfare).toEqual({ level: 'low', quizAnswers: 0, votes: 1 });
       expect(detail.confidence.social).toEqual({ level: 'none', quizAnswers: 0, votes: 0 });
 
