@@ -108,13 +108,21 @@ export interface TdProfile extends TdCard {
   offices: Array<{ title: string; since?: string }>;
   committees: string[];
   facts: TdFacts;
-  baseline: {
-    summary: string | null;
-    category: string | null;
-    confidence: number | null;
-    keyFindings: string[];
-    researchDate: string | null;
-  } | null;
+  /** Background copied word for word from one Wikipedia revision; null until researched. */
+  baseline: TdBackground | null;
+}
+
+/** Every string here is the source's own text (server/tdHistory). No model-written words. */
+export interface TdBackground {
+  summary: string;
+  passages: string[];
+  source: {
+    /** Links to the exact revision that was checked, not the live page. */
+    url: string;
+    title: string;
+    revision: number;
+    retrievedAt: string;
+  };
 }
 
 /** GET /api/scores/td/:id/summary */
