@@ -10,3 +10,4 @@ export { isSyncRunning, runSync, rosterToSeeds, SyncAlreadyRunning, syncHadFailu
 export { OireachtasClient, type RosterMember } from './client';
 export { debateScores } from './metrics';
 export * as repository from './repository';
+export type { DivisionContext, DivisionVoteRecord } from './repo/divisions';
