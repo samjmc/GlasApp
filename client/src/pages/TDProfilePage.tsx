@@ -520,7 +520,7 @@ export default function TDProfilePageEnhanced() {
       </Link>
 
       {/* Hero */}
-      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 xl:flex-row xl:items-center xl:justify-between">
         <div className="flex min-w-0 flex-1 items-start gap-4 sm:gap-5">
           <TDAvatar
             name={score.name}
@@ -582,7 +582,7 @@ export default function TDProfilePageEnhanced() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-5 lg:border-l lg:border-hero-muted lg:pl-8">
+        <div className="flex items-center gap-5 xl:border-l xl:border-hero-muted xl:pl-8">
           <ScoreRing
             value={score.overallScore}
             size={120}
