@@ -513,15 +513,14 @@ export const sheet: PartyQuizSheet = {
     },
     {
       "questionId": 31,
-      "fingerprint": "d25e0921",
-      "rationale": "The manifesto does not address surrogacy or how Irish law should treat it; no passage discusses paid, unpaid, restricted or prohibited surrogacy arrangements.",
+      "fingerprint": "095134aa",
+      "rationale": "The manifesto does not address surrogacy or what Irish law should allow regarding paid or unpaid surrogacy arrangements.",
       "modelConfidence": 1,
       "review": "pending",
       "status": "abstained",
       "answerIndex": null,
       "abstainReason": "silent",
-      "quotes": [],
-      "stale": true
+      "quotes": []
     },
     {
       "questionId": 32,

@@ -573,23 +573,14 @@ export const sheet: PartyQuizSheet = {
     },
     {
       "questionId": 31,
-      "fingerprint": "d25e0921",
-      "rationale": "The manifesto commits to commencing the 2024 AHR Act and introducing surrogacy parental leave, indicating regulated legal surrogacy rather than a ban or purely commercial model; it does not specify payment, so answer 1 fits best.",
-      "modelConfidence": 0.6,
+      "fingerprint": "095134aa",
+      "rationale": "The manifesto commits to introducing surrogacy leave, indicating support for allowing surrogacy, but it never states whether payment beyond expenses is permitted or restricts it to Ireland, so it does not choose among the answers.",
+      "modelConfidence": 0.3,
       "review": "pending",
-      "status": "answered",
-      "answerIndex": 1,
-      "abstainReason": null,
-      "quotes": [
-        {
-          "document": "fg-ge2024",
-          "page": 10,
-          "pageLabel": null,
-          "text": "We will drive the early establishment of the Assisted Human Reproduction Regulatory Authority, commit to commencing the Health (Assisted Human Reproduction) Act 2024 within the first 100 days, and enact without delay supplementary legislation. We will introduce leave for parents through surrogacy.",
-          "quoteSha": "acff8a65ac100308"
-        }
-      ],
-      "stale": true
+      "status": "abstained",
+      "answerIndex": null,
+      "abstainReason": "no_preference",
+      "quotes": []
     },
     {
       "questionId": 32,

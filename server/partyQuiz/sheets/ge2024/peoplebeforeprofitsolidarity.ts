@@ -517,15 +517,14 @@ export const sheet: PartyQuizSheet = {
     },
     {
       "questionId": 31,
-      "fingerprint": "d25e0921",
-      "rationale": "The documents do not mention surrogacy or any position on its legal treatment.",
+      "fingerprint": "095134aa",
+      "rationale": "The documents do not mention surrogacy or any related policy on assisted reproduction or family formation arrangements.",
       "modelConfidence": 1,
       "review": "pending",
       "status": "abstained",
       "answerIndex": null,
       "abstainReason": "silent",
-      "quotes": [],
-      "stale": true
+      "quotes": []
     },
     {
       "questionId": 32,

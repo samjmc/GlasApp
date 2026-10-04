@@ -579,16 +579,14 @@ export const sheet: PartyQuizSheet = {
     },
     {
       "questionId": 31,
-      "fingerprint": "d25e0921",
-      "rationale": "The answer changed when the options were shown in a different order, so it is not kept.",
-      "modelConfidence": 0.4,
+      "fingerprint": "095134aa",
+      "rationale": "The manifesto commits to establishing a regulatory authority supporting surrogacy, indicating it should be allowed and regulated, but it never states whether payment beyond expenses is permitted or restricts it to Ireland.",
+      "modelConfidence": 0.3,
       "review": "pending",
       "status": "abstained",
       "answerIndex": null,
-      "abstainReason": "low_confidence",
-      "quotes": [],
-      "tentativeAnswerIndex": 1,
-      "stale": true
+      "abstainReason": "no_preference",
+      "quotes": []
     },
     {
       "questionId": 32,

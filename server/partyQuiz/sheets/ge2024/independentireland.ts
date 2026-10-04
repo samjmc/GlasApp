@@ -481,15 +481,14 @@ export const sheet: PartyQuizSheet = {
     },
     {
       "questionId": 31,
-      "fingerprint": "d25e0921",
-      "rationale": "The documents do not mention surrogacy or any related policy on assisted reproduction or family law.",
-      "modelConfidence": 1,
+      "fingerprint": "095134aa",
+      "rationale": "The manifesto covers housing, health, immigration, neutrality and many other areas, but contains no passage addressing surrogacy or assisted reproduction at all.",
+      "modelConfidence": 0.95,
       "review": "pending",
       "status": "abstained",
       "answerIndex": null,
       "abstainReason": "silent",
-      "quotes": [],
-      "stale": true
+      "quotes": []
     },
     {
       "questionId": 32,

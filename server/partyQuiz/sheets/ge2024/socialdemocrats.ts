@@ -522,15 +522,14 @@ export const sheet: PartyQuizSheet = {
     },
     {
       "questionId": 31,
-      "fingerprint": "d25e0921",
-      "rationale": "The documents do not address surrogacy or how Irish law should treat it; the Assisted Human Reproduction Act is mentioned only in passing regarding LGBTQI+ parent recognition.",
-      "modelConfidence": 0.95,
+      "fingerprint": "095134aa",
+      "rationale": "The documents do not address surrogacy or any legal framework for it.",
+      "modelConfidence": 1,
       "review": "pending",
       "status": "abstained",
       "answerIndex": null,
       "abstainReason": "silent",
-      "quotes": [],
-      "stale": true
+      "quotes": []
     },
     {
       "questionId": 32,
