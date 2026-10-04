@@ -3,7 +3,7 @@
  *
  *   npm run party-quiz -- ingest  --doc <slug> --file <path> [--retrieved YYYY-MM-DD] [--replace]
  *   npm run party-quiz -- answer  --party <label> [--questions 1,5] [--missing] [--force]
- *                                 [--dry-run] [--yes] [--shuffle-check] [--control]
+ *                                 [--dry-run] [--yes] [--shuffle-check] [--control] [--consensus]
  *   npm run party-quiz -- review  --party <label>
  *   npm run party-quiz -- approve --party <label> (--questions 1,5 | --all-pending)
  *   npm run party-quiz -- edit    --party <label> --question N --answer K --quote-page P --quote "..." --note "..."
@@ -44,6 +44,7 @@ const { positionals, values } = parseArgs({
     yes: { type: 'boolean' },
     'shuffle-check': { type: 'boolean' },
     control: { type: 'boolean' },
+  consensus: { type: 'boolean' },
     'all-pending': { type: 'boolean' },
     question: { type: 'string' },
     answer: { type: 'string' },
@@ -169,7 +170,7 @@ async function main(): Promise<number> {
       const summary = await runAnswer(
         {
           party: required('party'), questions: ids(values.questions), missing: values.missing, force: values.force,
-          dryRun: values['dry-run'], yes: values.yes, shuffleCheck: values['shuffle-check'], control: values.control,
+          dryRun: values['dry-run'], yes: values.yes, shuffleCheck: values['shuffle-check'], control: values.control, consensus: values.consensus,
         },
         { store: new TextStore(values.store) },
       );

@@ -25,7 +25,7 @@ min(3,000 words, 5% of its word count); `validateSheet` enforces this).
 ```
 npm run party-quiz -- ingest  --doc <slug> --file <path> [--retrieved YYYY-MM-DD] [--replace]
 npm run party-quiz -- answer  --party <label> [--questions 1,5] [--missing] [--force]
-                              [--dry-run] [--yes] [--shuffle-check] [--control]
+                              [--dry-run] [--yes] [--shuffle-check] [--control] [--consensus]
 npm run party-quiz -- review  --party <label>
 npm run party-quiz -- approve --party <label> (--questions 1,5 | --all-pending)
 npm run party-quiz -- edit    --party <label> --question N --answer K --quote-page P --quote "..." --note "..."
@@ -43,6 +43,14 @@ npm run party-quiz -- report  [--compare ches.csv]
   answer and set of quote shas are unchanged. Questions that fail twice are listed and not written.
   - `--control` answers from `server/partyQuiz/fixtures/control.txt` (invented text with no
     position) instead of the manifesto. Every question must abstain. Writes no sheet.
+  - `--consensus` asks every question twice, in bank order and in the shuffled order, and keeps
+    an answer only when both readings agree (or both abstain). A question whose answer changes with
+    the order becomes a `low_confidence` abstention that keeps its leaning for review. It costs
+    twice a plain run. First runs on the 2026-10-04 manifestos gave only 75-94% identical answers
+    under `--shuffle-check`, so every committed sheet is made with `--consensus`.
+  - Quote cap: the prompt (v2) asks for one short quote. If a sheet is still over a document's
+    cap (min(3,000 words, 5%)), the second quote of the least confident items is dropped until it
+    fits (`fitToQuoteCap`); an item's only quote is never dropped.
   - `--shuffle-check` shows the answers in a fixed shuffled order and compares with the sheet.
     At least 90% must be identical. Writes no sheet.
 - **review** prints the Markdown table for the sheet PR body.

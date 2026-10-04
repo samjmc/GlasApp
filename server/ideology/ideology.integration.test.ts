@@ -290,7 +290,8 @@ run('quiz and ideology against Postgres', () => {
       expect(result.measured).toEqual(['economic']);
       expect(result.tds[0]!.name).toBe('Market Deputy');
       // On economic alone: 1 − |10 − FG economic| / 20.
-      const fg = (await ideology.partyProfile('Fine Gael'))!.vector.economic;
+      // The TD's own profile never includes a manifesto, so compare with the party's TD mean, not its blended target.
+      const fg = (await ideology.partyProfile('Fine Gael'))!.tdMean.economic;
       expect(result.tds[0]!.alignment).toBe(Math.round(100 * (1 - Math.abs(10 - fg) / 20)));
       expect(await ideology.userMatches('nobody')).toBeNull();
     });
