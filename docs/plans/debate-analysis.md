@@ -1,7 +1,7 @@
 # Debate analysis: a structured way to see who drives a debate
 
-Status: **Step 1 built and live (2026-10-04); Step 2 built and piloted (2026-10-04); Steps 3–5
-not built.** Sam chose "the most robust way forward" at every fork. See "As built" at the end.
+Status: **Step 1 built and live (2026-10-04); Step 2 built, piloted on 55 debates, Irish within the
+limit (2026-10-04); Steps 3–5 not built.** Sam chose "the most robust way forward" at every fork. See "As built" at the end.
 
 ## Why
 
@@ -234,12 +234,22 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   as an office. Extractor **v2** adds code checks (a question needs a question mark; the claim limit
   is enforced), the Irish office words, and a tighter commitment definition.
 - v2 on the 28 debates both versions finished: claims 1,217 → 1,122, responses 121 → 141, sampled
-  questions and commitments real. **The Irish rate under v2 is not measured yet**: the debate with
-  most Irish speech was one of the 22 the provider blocked (below).
-- **Blocked:** DeepSeek first returned 429 ("concurrency limit of 10 based on your remaining
-  balance"; the key is shared with other apps), then **402 Insufficient Balance**. The extractor now
-  waits and retries on 429, reads 2 debates at a time by default, and stops at the first 402
-  instead of failing every debate after it. The 22 debates left resume on the next run.
+  questions and commitments real.
+- **Blocked, then finished:** DeepSeek first returned 429 ("concurrency limit of 10 based on your
+  remaining balance"; the key is shared with other apps), then **402 Insufficient Balance**. The
+  extractor now waits and retries on 429, reads 2 debates at a time by default, and stops at the
+  first 402 instead of failing every debate after it. After Sam topped up, the 22 left were read
+  with no failure.
+- **v2 final (2026-10-04): the 50-debate pilot plus the 5 argued debates with the most Irish speech**
+  (both Údarás na Gaeltachta (Amendment) Bill 2024 stages, both Seachtain na Gaeilge: Ráitis, Tithíocht
+  Gaeltachta: Tairiscint), because the pilot held only 30 Irish speeches. 55 debates, 935,522 words,
+  294 Irish speeches; **v2 cost $0.43 off-peak / $0.86 peak in all**. Items: 2,870 specific claims,
+  315 responses, 247 questions, 88 commitments, 54 concessions.
+- **Rejected by code, by language (v2): English 8.1% (3,170 accepted, 281 rejected), Irish 9.6% (404
+  accepted, 43 rejected): a 1.5-point gap, inside the plan's 5-point limit** (v1: 6% against 19%).
+  Sampled Irish items read as well as English ones ("Fuair 320 dalta díolúine ón nGaeilge", a figure;
+  "Cá bhfuil siad?", a question to an tAire). The English rate rose from v1's 6% because v2 rejects
+  more: non-questions and claims over the limit.
 - For Step 4: 41 of 42 concessions are between different parties, but some are inside the
   government (Fine Gael to Fianna Fáil). A concession point should need the other side of the
   House, which needs a dated list of who supports the government (not built).
