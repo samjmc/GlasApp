@@ -24,6 +24,25 @@ async function fetchHtml(url: string): Promise<string> {
   return res.text();
 }
 
+const squash = (text: string) => text.replace(/\s+/g, ' ').trim();
+
+/**
+ * The article's paragraphs, separated by a blank line. `.text()` on the whole container glues
+ * paragraphs together with no space ("…as ID.Presenting new legislation…") and pulls in ad
+ * labels, "Read more" boxes and cookie banners that sit outside <p>. The container's whole text
+ * is used instead when its paragraphs hold less than half of it (a page that does not use <p>).
+ */
+function bodyText($: cheerio.CheerioAPI, el: ReturnType<cheerio.CheerioAPI>): string {
+  const all = squash(el.text());
+  const paragraphs = el
+    .find('p')
+    .map((_, p) => squash($(p).text()))
+    .get()
+    .filter((text) => text.length > 0);
+  const joined = paragraphs.join('\n\n');
+  return paragraphs.length >= 2 && joined.length >= all.length / 2 ? joined : all;
+}
+
 /** Pure: extract metadata and body text from a page. `pageUrl` resolves relative image URLs. */
 export function parsePage(html: string, pageUrl?: string): PageMeta {
   const $ = cheerio.load(html);
@@ -35,7 +54,7 @@ export function parsePage(html: string, pageUrl?: string): PageMeta {
   for (const selector of BODY_SELECTORS) {
     const el = $(selector).first();
     if (el.length) {
-      body = el.text();
+      body = bodyText($, el);
       break;
     }
   }
@@ -50,7 +69,7 @@ export function parsePage(html: string, pageUrl?: string): PageMeta {
     imageUrl: cleanImageUrl(image, pageUrl),
     imageWidth: Number.isInteger(imageWidth) && imageWidth > 0 ? imageWidth : null,
     publishedAt: publishedAt && !Number.isNaN(publishedAt.getTime()) ? publishedAt : null,
-    body: (body || $('body').text()).replace(/\s+/g, ' ').trim(),
+    body: body || squash($('body').text()),
   };
 }
 
