@@ -1,7 +1,7 @@
 # Debate analysis: a structured way to see who drives a debate
 
-Status: **Step 1 built (2026-10-04); Steps 2–5 not built.** Sam chose "the most robust way
-forward" at every fork. See "As built: Step 1" at the end.
+Status: **Step 1 built and live (2026-10-04); Step 2 built and piloted (2026-10-04); Steps 3–5
+not built.** Sam chose "the most robust way forward" at every fork. See "As built" at the end.
 
 ## Why
 
@@ -210,3 +210,36 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   were sponsored by an office whose holder at the time is not in the current roster (Paschal
   Donohoe as Minister for Finance) or whose department was renamed since. They get no mover
   rather than the wrong one.
+
+## As built: Step 2 (2026-10-04)
+
+- `server/parliament/debateItems/` (`windows.ts`, `prompt.ts`, `verify.ts` pure and tested;
+  `run.ts` with an injected model call) and `server/parliament/repo/debateItems.ts`; migration
+  `0020_debate_items`: `politics.debate_items` and `politics.debate_extraction_runs`. Job:
+  `npm run debates:items -- --pilot 50`. **Not scheduled**: daily reading waits for Step 3.
+- Speakers are named by name and role only, never party, so the model has no party to lean on.
+- **`debate_items.speech_id` is not a foreign key, on purpose.** Re-reading a sitting day deletes
+  and re-inserts its speeches under the same ids; a cascade would have silently emptied every
+  debate whose run still said `done` (the full re-read of 2026-10-04 would have wiped them all).
+  A run's input hash covers every speech's text, so a corrected speech is read again; an item whose
+  speech is gone for good is removed at the end of each run. Both are tested.
+- **Pilot, extractor v1, 50 debates** (20 bill stages, 20 motions, 10 statements; 810,361 words;
+  1,661 speeches, 30 in Irish): 110 calls, 1.17 M tokens in, 0.29 M out, **$0.35 off-peak / $0.70
+  peak**. All 445 argued debates at that rate: **about $3.23 off-peak / $6.47 peak**. Items: 2,674
+  specific claims, 244 responses, 221 questions, 54 commitments, 28 concessions; code rejected 6%.
+- Reading samples by hand (not the check set) found: claims and responses mostly right;
+  "questions" that were wishes ("I would welcome some clarity"); "commitments" that described an
+  existing plan; one speech with 13 claims against a limit of 5; and **items from Irish speeches
+  rejected 19% of the time against 6% for English**, partly because "an tAire" was not recognised
+  as an office. Extractor **v2** adds code checks (a question needs a question mark; the claim limit
+  is enforced), the Irish office words, and a tighter commitment definition.
+- v2 on the 28 debates both versions finished: claims 1,217 → 1,122, responses 121 → 141, sampled
+  questions and commitments real. **The Irish rate under v2 is not measured yet**: the debate with
+  most Irish speech was one of the 22 the provider blocked (below).
+- **Blocked:** DeepSeek first returned 429 ("concurrency limit of 10 based on your remaining
+  balance"; the key is shared with other apps), then **402 Insufficient Balance**. The extractor now
+  waits and retries on 429, reads 2 debates at a time by default, and stops at the first 402
+  instead of failing every debate after it. The 22 debates left resume on the next run.
+- For Step 4: 41 of 42 concessions are between different parties, but some are inside the
+  government (Fine Gael to Fianna Fáil). A concession point should need the other side of the
+  House, which needs a dated list of who supports the government (not built).
