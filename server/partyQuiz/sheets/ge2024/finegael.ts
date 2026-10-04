@@ -588,7 +588,8 @@ export const sheet: PartyQuizSheet = {
           "text": "We will drive the early establishment of the Assisted Human Reproduction Regulatory Authority, commit to commencing the Health (Assisted Human Reproduction) Act 2024 within the first 100 days, and enact without delay supplementary legislation. We will introduce leave for parents through surrogacy.",
           "quoteSha": "acff8a65ac100308"
         }
-      ]
+      ],
+      "stale": true
     },
     {
       "questionId": 32,

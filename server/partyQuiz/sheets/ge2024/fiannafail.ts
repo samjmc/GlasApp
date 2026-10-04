@@ -587,7 +587,8 @@ export const sheet: PartyQuizSheet = {
       "answerIndex": null,
       "abstainReason": "low_confidence",
       "quotes": [],
-      "tentativeAnswerIndex": 1
+      "tentativeAnswerIndex": 1,
+      "stale": true
     },
     {
       "questionId": 32,

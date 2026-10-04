@@ -594,7 +594,8 @@ export const sheet: PartyQuizSheet = {
       "status": "abstained",
       "answerIndex": null,
       "abstainReason": "silent",
-      "quotes": []
+      "quotes": [],
+      "stale": true
     },
     {
       "questionId": 32,
