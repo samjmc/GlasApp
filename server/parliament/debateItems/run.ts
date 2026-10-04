@@ -153,6 +153,8 @@ export interface ExtractSummary {
   orphansRemoved: number;
   /** Why the run stopped early, if it did: debates not started are not counted as failed. */
   stopped: string | null;
+  /** Rows of debate_participation after the rebuild (0 on a dry run). */
+  recordRows: number;
   results: DebateResult[];
 }
 
@@ -185,7 +187,9 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
   const [all, runs, offices] = await Promise.all([repo.arguedDebates(), repo.extractionRunsFor(EXTRACTOR_VERSION), repo.governmentOffices()]);
   let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? pilotSample(all, pilot) : all;
-  if (limit !== null) chosen = chosen.slice(0, limit);
+  // A limit takes debates this version has not finished, so a daily run reads what is new rather
+  // than re-hashing old debates. (A run without a limit also catches a corrected old debate.)
+  if (limit !== null) chosen = chosen.filter((d) => force || runs.get(d.id)?.status !== 'done').slice(0, limit);
 
   const summary: ExtractSummary = {
     debates: chosen.length,
@@ -204,6 +208,7 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     costUsd: { offPeak: 0, peak: 0 },
     orphansRemoved: 0,
     stopped: null,
+    recordRows: 0,
     results: [],
   };
 
@@ -311,6 +316,10 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     }),
   );
   summary.costUsd = costOf(summary.promptTokens, summary.completionTokens);
-  if (!dryRun) summary.orphansRemoved = await repo.deleteOrphanItems();
+  if (!dryRun) {
+    summary.orphansRemoved = await repo.deleteOrphanItems();
+    // Points come from the stored items by the published rules: rebuilt whenever items change.
+    summary.recordRows = (await repo.rebuildDebateRecord()).rows;
+  }
   return summary;
 }

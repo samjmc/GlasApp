@@ -177,6 +177,36 @@ export const debateItems = politics.table(
   (t) => [index('debate_items_speech_idx').on(t.speechId), index('debate_items_member_idx').on(t.memberCode, t.kind)],
 );
 
+/** Whether a TD held government office (cabinet or Minister of State) on the debate's first day. */
+export const debateRole = politics.enum('debate_role', ['office', 'backbench']);
+
+/**
+ * Each member's record in each argued debate that has been read: what they said, and the points
+ * the published rules give it (server/parliament/debateItems/rules.ts). Derived: rebuilt in full,
+ * with no model calls, after every extraction run and every sync. Not part of the TD score.
+ */
+export const debateParticipation = politics.table(
+  'debate_participation',
+  {
+    debateId: varchar('debate_id', { length: 80 }).notNull(),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    role: debateRole('role').notNull(),
+    speeches: integer('speeches').notNull(),
+    words: integer('words').notNull(),
+    claims: integer('claims').notNull(),
+    claimPoints: integer('claim_points').notNull(),
+    /** Concessions made TO this member; only those across the House score. */
+    concessionsReceived: integer('concessions_received').notNull(),
+    concessionPoints: integer('concession_points').notNull(),
+    questions: integer('questions').notNull(),
+    commitments: integer('commitments').notNull(),
+    points: integer('points').notNull(),
+    rulesVersion: varchar('rules_version', { length: 20 }).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.debateId, t.memberCode] }), index('debate_participation_member_idx').on(t.memberCode), index('debate_participation_td_idx').on(t.tdId)],
+);
+
 export const debateExtractionStatus = politics.enum('debate_extraction_status', ['done', 'failed']);
 
 /** One extraction of one debate by one extractor version: what it cost and what was rejected. */
@@ -652,6 +682,7 @@ export type NewDebateSection = typeof debateSections.$inferInsert;
 export type NewDebate = typeof debates.$inferInsert;
 export type NewDebateItem = typeof debateItems.$inferInsert;
 export type NewDebateExtractionRun = typeof debateExtractionRuns.$inferInsert;
+export type NewDebateParticipation = typeof debateParticipation.$inferInsert;
 export type NewDebateSpeech = typeof debateSpeeches.$inferInsert;
 export type TdParliamentStatsRow = typeof tdParliamentStats.$inferSelect;
 export type NewBill = typeof bills.$inferInsert;

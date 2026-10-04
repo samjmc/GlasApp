@@ -253,3 +253,49 @@ Points come only from kinds that passed the gate. Version 1 starts small:
 - For Step 4: 41 of 42 concessions are between different parties, but some are inside the
   government (Fine Gael to Fianna Fáil). A concession point should need the other side of the
   House, which needs a dated list of who supports the government (not built).
+
+## As built: Steps 3 to 5 (2026-10-04)
+
+- **Step 3 was a spot check, not the blind check set.** Sam answered 9 multiple-choice questions on
+  sampled v2 items (8 yes, 1 "somewhat rhetorical") and judged the AI was "calling these well". The
+  20-debate blind set with precision and recall targets was not run. Responses failed on reading
+  (about 5 of 8 linked to the right earlier point), so they are kept but **not shown and not
+  scored** until their linking is fixed.
+- **Rules r1** in `server/parliament/debateItems/rules.ts` (not `debateRules.ts`), pure and tested:
+
+  | Rule | Points | Limit |
+  |---|---|---|
+  | A specific claim | +1 | 3 per speech |
+  | A speaker conceded a point to you | +3 | only from the other side of the House |
+  | Questions, promises | shown, no points | |
+  | Responses ("took up your point") | not shown, no points | until the links are fixed |
+  | Speaking time, who moved it, the vote | no points | |
+
+  The plan's "+2 per distinct speaker who took up your point" is not in r1, because it rests on
+  responses.
+- **Sides of the House**: `server/parliament/governmentSide.ts`. Government side on a date =
+  Fianna Fáil and Fine Gael from 29 Nov 2024, the Green Party until 2025-01-22 (the outgoing 34th
+  government stayed in office until the 35th was appointed), plus anyone holding a cabinet or
+  Minister of State office that day (from the roster's office dates). **Known limits:**
+  independents who support the government without an office count as the other side, so a
+  concession from one of them to a minister scores; and a TD's party is today's party, so a TD who
+  changed party mid-term is placed by it.
+- **Role**: holds a government office on the debate's first day = `office`, else `backbench`. The
+  term figure is points per argued debate in the role the TD spoke in most (office wins a tie),
+  against the 75th percentile of TDs with at least 5 debates in the same role. The chair is left
+  out (`is_presiding`).
+- **Storage**: migration `0021_debate_participation`: `politics.debate_participation`, one row per
+  member per debate read, with `rules_version`. It is derived: `rebuildDebateRecord()` deletes and
+  re-inserts every row from stored items with **no model calls**. It runs at the end of every
+  `debates:items` run and in the sync's `debate-groups` step, so a regrouping or a re-read day is
+  reflected the same night.
+- **API**: `GET /api/parliament/tds/:id/debate-record` and `GET /api/parliament/debate-records/:id`;
+  both return `null` data when nothing has been read.
+- **UI**: a "Debate record" card on the TD profile's Debates tab (term figure, cohort line, four
+  counts, the 10 most recent debates with their quotes), and a panel under each argued debate on
+  the Dáil record page (participants by points, with quotes). Both say "Not part of the TD score"
+  and state the rules. The words "won" and "winner" are not used.
+- **Daily reading**: the scheduler reads up to 30 unread argued debates after the 04:45 parliament
+  sync, **only when `DEBATE_ITEMS=on`**. Off by default, so the cost stays a decision.
+- **Full backfill**: all 445 argued debates on GlasCore (18 Dec 2024 to 1 Oct 2026), started
+  2026-10-04 at 4 debates at a time.

@@ -1,8 +1,11 @@
 import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
-import { leaveWatch, runSync as runParliamentSync } from "../parliament";
+import { extractDebates, leaveWatch, runSync as runParliamentSync } from "../parliament";
 import { runDivisionStances } from "../stances";
+
+/** Debates read for items per night when DEBATE_ITEMS=on: about a sitting week's worth. */
+const NIGHTLY_DEBATES = 30;
 
 /** Initialize and start the scheduled jobs. */
 export function initScheduler() {
@@ -73,6 +76,16 @@ export function initScheduler() {
         await runDivisionStances({ mode: "nightly" });
       } catch (error) {
         console.error("[Scheduler] Division stances failed:", error instanceof Error ? error.message : error);
+      }
+    }
+    // Debate items for the debates the sync brought in (docs/plans/debate-analysis.md). Off
+    // unless DEBATE_ITEMS=on, because it calls a model; at most NIGHTLY_DEBATES a night (cents).
+    if (process.env.DEBATE_ITEMS === "on") {
+      try {
+        const s = await extractDebates({ limit: NIGHTLY_DEBATES });
+        console.log(`[Scheduler] Debate items: ${s.done} read, ${s.failed} failed${s.stopped ? `, stopped: ${s.stopped}` : ''}.`);
+      } catch (error) {
+        console.error("[Scheduler] Debate items failed:", error instanceof Error ? error.message : error);
       }
     }
   }, { timezone: "Europe/Dublin" });
