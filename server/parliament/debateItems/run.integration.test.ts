@@ -150,6 +150,32 @@ run('debate items (real Postgres)', () => {
     expect(await stored()).toHaveLength(3);
   });
 
+  it('reads a window again in two halves when the reply is cut off at the output limit', async () => {
+    await q("update politics.debate_speeches set text = text || ' Cut.' where id = $1", [SPEECHES[1].id]);
+    const cut = { content: '{"items": [{"speech": "s2", "kind": "spec', model: 'fake-model', promptTokens: 1000, completionTokens: 8192, truncated: true } satisfies ItemAnswer;
+
+    // Cut off every time: the window is halved once, and a single speech is never split.
+    let calls = 0;
+    const alwaysCut: ItemCompletion = async () => {
+      calls++;
+      return cut;
+    };
+    expect(await items.extractDebates({ complete: alwaysCut })).toMatchObject({ failed: 1, calls: 2 });
+    expect(calls).toBe(2);
+    expect((await q('select status, error from politics.debate_extraction_runs')).rows).toEqual([{ status: 'failed', error: 'model output cut off at the token limit' }]);
+    expect(await stored()).toHaveLength(3);
+
+    // Cut off once: both halves are read, and the items are the same as from one window.
+    calls = 0;
+    const firstCut: ItemCompletion = async () =>
+      calls++ === 0 ? cut : { content: JSON.stringify(REPLY), model: 'fake-model', promptTokens: 1000, completionTokens: 200 };
+    const s = await items.extractDebates({ complete: firstCut });
+    expect(calls).toBe(3);
+    expect(s).toMatchObject({ done: 1, failed: 0, calls: 3 });
+    expect(s.acceptedByKind).toMatchObject({ specific_claim: 1, concession: 1, commitment: 1 });
+    expect((await stored()).map((r) => r.kind)).toEqual(['specific_claim', 'concession', 'commitment']);
+  });
+
   it('writes nothing on a dry run', async () => {
     await q("update politics.debate_speeches set text = text || ' Once more.' where id = $1", [SPEECHES[1].id]);
     const before = (await q('select ran_at from politics.debate_extraction_runs')).rows[0].ran_at;

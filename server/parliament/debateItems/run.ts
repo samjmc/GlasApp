@@ -16,7 +16,7 @@ import * as repo from '../repository';
 import type { ArguedDebate } from '../repo/debateItems';
 import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, extractPrompt, parseItems } from './prompt';
 import { emptyRejections, REJECT_REASONS, verifyItems, type Rejections, type VerifiedItem } from './verify';
-import { buildWindows, isIrish, labelSpeeches } from './windows';
+import { buildWindows, isIrish, labelSpeeches, splitWindow } from './windows';
 
 /** The model asked for; a configured provider (DeepSeek) replaces it, so the answer's own model is stored. */
 const ITEM_MODEL = 'gpt-4o-mini';
@@ -35,6 +35,8 @@ export interface ItemAnswer {
   model: string;
   promptTokens: number | null;
   completionTokens: number | null;
+  /** The reply stopped at the output limit, so its JSON is cut off. */
+  truncated?: boolean;
 }
 
 /** One model call. Throws on failure, which records the debate's run as `failed`. */
@@ -77,6 +79,7 @@ async function completeOnce(system: string, user: string): Promise<ItemAnswer> {
     model: response.model,
     promptTokens: response.usage?.prompt_tokens ?? null,
     completionTokens: response.usage?.completion_tokens ?? null,
+    truncated: response.choices[0]?.finish_reason === 'length',
   };
 }
 
@@ -233,7 +236,9 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     const items: VerifiedItem[] = [];
     const rejected = emptyRejections();
     let model: string | null = null;
-    for (const window of buildWindows(speeches)) {
+    const windows = buildWindows(speeches);
+    while (windows.length > 0) {
+      const window = windows.shift()!;
       result.calls++;
       let answer: ItemAnswer;
       try {
@@ -248,7 +253,14 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
       result.completionTokens += answer.completionTokens ?? 0;
       const parsed = parseItems(parseJson(answer.content));
       if (!parsed) {
-        result.error = 'unusable model output';
+        // A reply cut off at the output limit is the same at temperature 0 every time it is
+        // asked, so read the window again in two halves (3 debates of 445 on 2026-10-04).
+        const halves = answer.truncated ? splitWindow(window) : null;
+        if (halves) {
+          windows.unshift(...halves);
+          continue;
+        }
+        result.error = answer.truncated ? 'model output cut off at the token limit' : 'unusable model output';
         break;
       }
       summary.malformed += parsed.malformed;
