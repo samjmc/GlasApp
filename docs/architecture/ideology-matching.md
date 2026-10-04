@@ -60,7 +60,9 @@ options and `stance` evidence are ±2 (×5), because a stance IS an option posit
 A `stance` row is the option of the article's own daily-vote question that a TD's verified quote
 states (`sourceRef = question:<id>`), weighted option weight × option confidence × quote kind
 (direct 1, paraphrase 0.6, `QUOTE_KIND_WEIGHT`). It is the TD's current answer to that question:
-a newer one replaces it, an older one never does (`insertTdEvidence`).
+a newer one replaces it, an older one never does (`insertTdEvidence`). A verified quote is kept
+only if Jev, through Cloudflare, gives P(policy position) ≥ 0.5 (`server/stances/position.ts`). With
+no answer (no `JEV_API_KEY`/`CLOUDFLARE_ACCOUNT_ID`, an error, no credit) the quote is held back.
 
 ### Dáil divisions as stances (`server/stances/divisions.ts`, behind `DIVISION_STANCES`)
 

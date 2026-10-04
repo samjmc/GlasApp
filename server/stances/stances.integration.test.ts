@@ -31,6 +31,12 @@ vi.mock('../services/aiService', () => ({
     return { choices: [{ message: { content: JSON.stringify(reply) } }] };
   }),
 }));
+// The Jev position check is the other outside call; every stance here is a position.
+vi.mock('./position', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('./position')>()),
+  isJevConfigured: () => true,
+  positionProbability: vi.fn(async () => 0.9),
+}));
 vi.mock('../services/articleImportanceService', () => ({
   ArticleImportanceService: {
     batchScoreAndRank: vi.fn(async (articles: Array<{ id: number }>) => ({
