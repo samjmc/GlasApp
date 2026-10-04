@@ -43,6 +43,8 @@ const { runTdPipeline } = await import('./tdPipeline');
 
 const QUOTE = 'We will build fifty thousand public homes every year until the housing crisis is over.';
 const STATED = 'Mary Lou McDonald told the Dáil: "' + QUOTE + '" She was speaking on Tuesday. ';
+/** What is stored: the quote widened to its whole sentence (server/stances/verify.ts). */
+const SENTENCE = 'Mary Lou McDonald told the Dáil: "' + QUOTE + '"';
 const MENTIONED = 'The Taoiseach met officials. Mary Lou McDonald was also in the chamber for the vote. ';
 
 const article = (id: number, body = STATED): Article => ({
@@ -114,7 +116,7 @@ describe('runTdPipeline', () => {
     expect(m.generateQuestionForArticle).toHaveBeenCalledTimes(1);
     expect(m.generateQuestionForArticle.mock.calls[0][0]).toMatchObject({ id: 1, title: 'Story 1' });
     expect(m.saveStances).toHaveBeenCalledWith(1, [
-      { tdId: 7, questionId: 55, optionKey: 'option_a', optionText: 'Build public homes', quote: QUOTE, quoteKind: 'direct', policyDomain: 'housing' },
+      { tdId: 7, questionId: 55, optionKey: 'option_a', optionText: 'Build public homes', quote: SENTENCE, quoteKind: 'direct', policyDomain: 'housing' },
     ]);
     expect(m.recordTdEvidence).toHaveBeenCalledWith({
       td: 7,

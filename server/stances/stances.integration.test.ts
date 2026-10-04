@@ -50,6 +50,8 @@ vi.mock('../services/tdExtractionService', () => ({
 
 const QUOTE = 'We will build fifty thousand public homes every year until the housing crisis is over.';
 const STATED = `Mary Lou McDonald told the Dáil: "${QUOTE}" She was speaking on Tuesday. `.repeat(6);
+/** What is stored: the quote widened to its whole sentence (server/stances/verify.ts). */
+const SENTENCE = `Mary Lou McDonald told the Dáil: "${QUOTE}"`;
 const MENTIONED = 'The Taoiseach met officials. Mary Lou McDonald was also in the chamber for the vote. '.repeat(6);
 const OPTIONS = ['Build public homes', 'Leave it to the market', 'Mix of both'];
 
@@ -173,7 +175,7 @@ run('TD stances against Postgres', () => {
         question_id: questionId,
         option_key: 'option_a',
         option_text: 'Build public homes',
-        quote: QUOTE,
+        quote: SENTENCE,
         quote_kind: 'direct',
         policy_domain: 'housing',
         stated_at: publishedAt,
@@ -257,7 +259,7 @@ run('TD stances against Postgres', () => {
           yours: 'Build public homes',
           theirs: 'Build public homes',
           agrees: true,
-          quote: QUOTE,
+          quote: SENTENCE,
           quoteKind: 'direct',
           divisionVote: null,
           outlet: 'RTÉ News',
