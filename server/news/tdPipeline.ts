@@ -6,14 +6,15 @@
  *    claimed, so every article here is the one canonical report of its event.
  * 2. Cheap LLM importance triage; keep the top slice.
  * 3. Find the TDs each article is substantially about and record each link in `article_tds`.
- * 4. Record what those TDs said (server/stances): a quote checked against the article, never a
- *    score. Only an article with at least one verified stance gets a daily-vote question, and
+ * 4. Record what those TDs said (server/stances): a quote checked against the article and by Jev
+ *    as a policy position, never a score. Only an article with at least one accepted stance gets
+ *    a daily-vote question, and
  *    each stance is matched to one of its answers.
  */
 import { ArticleImportanceService } from '../services/articleImportanceService';
 import { TDExtractionService } from '../services/tdExtractionService';
 import { repository as tdRepo } from '../scoring';
-import { emptyStanceStats, recordStances, toCandidate, type StanceStats } from '../stances';
+import { emptyStanceStats, isJevConfigured, positionProbability, recordStances, toCandidate, type StanceStats } from '../stances';
 import type { CandidateTd } from '../stances/extract';
 import { completeJson, generateQuestionForArticle, questionForArticle, type QuestionPositions } from '../voting';
 import { type Article, type ArticleSource, articleSource } from './articleSource';
@@ -65,6 +66,7 @@ export async function runTdPipeline(options: PipelineOptions = {}): Promise<Pipe
   const topPercentile = options.topPercentile ?? 25;
   const minImportanceScore = options.minImportanceScore ?? 40;
   const stats = emptyStats();
+  if (!isJevConfigured()) console.warn('[stances] JEV_API_KEY or CLOUDFLARE_ACCOUNT_ID is not set: every stance is held back as unchecked');
 
   const articles = await source.fetchUnprocessed(batchSize);
   stats.totalArticles = articles.length;
@@ -189,6 +191,7 @@ async function processArticle(article: Article, importance: Importance, source: 
 
   await recordStances({ id: article.id, title: article.title, content: article.content }, candidates, stats.stances, {
     complete: completeJson,
+    position: (passage) => positionProbability(passage),
     question: () => ensureQuestion(article),
   });
 
