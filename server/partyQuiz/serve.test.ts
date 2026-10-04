@@ -89,11 +89,11 @@ describe('partyAnswers', () => {
     expect(partyAnswers('100% RDR')!.documents.map((d) => d.slug)).toEqual(['rdr-ge2024']);
   });
 
-  it('serves nothing from a compiled-in sheet while all its items are pending review', () => {
+  it('serves approved answers from a compiled-in sheet, with a position, and no pending items left', () => {
     const fg = partyAnswers('Fine Gael')!;
-    expect(fg.position).toBeNull();
-    expect(fg.answers).toEqual([]);
-    expect(fg.pendingCount).toBeGreaterThan(0);
+    expect(fg.position).not.toBeNull();
+    expect(fg.answers.length).toBeGreaterThan(0);
+    expect(fg.pendingCount).toBe(0);
   });
 });
 
