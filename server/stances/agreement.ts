@@ -9,7 +9,7 @@
 import { IDEOLOGY_DIMENSIONS, type IdeologyVector } from '@shared/ideology';
 import { decayFactor } from '../ideology/model';
 import { QUOTE_KIND_WEIGHT, TD_HALF_LIFE_DAYS } from '../ideology/sources';
-import type { QuoteKind } from './extract';
+import type { QuoteKind } from '@shared/stancesApi';
 
 /** The axis alignment counts as this many full-weight shared issues. */
 export const AXIS_PRIOR_WEIGHT = 2;
@@ -64,13 +64,17 @@ export function stanceWeight(kind: QuoteKind, statedAt: Date, now: Date): number
   return QUOTE_KIND_WEIGHT[kind] * decayFactor(statedAt, { now, halfLifeDays: TD_HALF_LIFE_DAYS });
 }
 
-/** A TD's current stance per question: the latest `statedAt` wins; on a tie, the first seen. */
-export function latestStances<T extends { tdId: number; questionId: number; statedAt: Date }>(stances: T[]): T[] {
+/**
+ * A TD's current stance per question: the latest `statedAt` wins; on a tie, the higher id, so the
+ * answer does not depend on the order the rows were read in.
+ */
+export function latestStances<T extends { id: number; tdId: number; questionId: number; statedAt: Date }>(stances: T[]): T[] {
   const latest = new Map<string, T>();
   for (const stance of stances) {
     const key = `${stance.tdId}:${stance.questionId}`;
     const current = latest.get(key);
-    if (!current || stance.statedAt.getTime() > current.statedAt.getTime()) latest.set(key, stance);
+    const diff = current ? stance.statedAt.getTime() - current.statedAt.getTime() : 1;
+    if (diff > 0 || (diff === 0 && stance.id > current!.id)) latest.set(key, stance);
   }
   return Array.from(latest.values());
 }

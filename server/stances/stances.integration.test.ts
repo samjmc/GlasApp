@@ -259,6 +259,7 @@ run('TD stances against Postgres', () => {
           agrees: true,
           quote: QUOTE,
           quoteKind: 'direct',
+          divisionVote: null,
           outlet: 'RTÉ News',
           url: expect.any(String),
           statedAt: statedAt.toISOString(),

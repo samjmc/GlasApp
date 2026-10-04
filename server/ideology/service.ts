@@ -341,6 +341,7 @@ async function sharedIssueItems(votes: UserVoteVector[]): Promise<Map<number, Is
         theirs: stance.optionText ?? label(stance.optionKey),
         quote: stance.quote,
         quoteKind: stance.quoteKind as SharedIssue['quoteKind'],
+        divisionVote: stance.divisionVote as SharedIssue['divisionVote'],
         outlet: stance.sourceName,
         url: stance.articleUrl,
         statedAt: stance.statedAt.toISOString(),
@@ -469,16 +470,21 @@ export function deleteTdEvidence(source: Exclude<SourceKind, 'vote'>, dryRun = f
   return repo.deleteTdEvidenceBySource(source, dryRun);
 }
 
-/** Re-score stored quizzes, then rebuild every profile from evidence. No model calls. */
-export async function recalculateAll(): Promise<RecalculateSummary> {
-  const quizzesRescored = await rescoreQuizzes();
-  const now = new Date();
+/** Rebuild every active TD's profile from its evidence, then every party's. No model calls. */
+export async function recomputeTdsAndParties(now = new Date()): Promise<{ tds: number; parties: number }> {
   const tds = await repo.listActiveTds();
   for (const td of tds) await recomputeTdProfile(td.id, now);
   const parties = new Map<string, string>();
   for (const td of tds) if (!isIndependent(td.party)) parties.set(partyKey(td.party!), td.party!);
   for (const party of Array.from(parties.values())) await recomputePartyProfile(party);
+  return { tds: tds.length, parties: parties.size };
+}
+
+/** Re-score stored quizzes, then rebuild every profile from evidence. No model calls. */
+export async function recalculateAll(): Promise<RecalculateSummary> {
+  const quizzesRescored = await rescoreQuizzes();
+  const { tds, parties } = await recomputeTdsAndParties();
   const userIds = Array.from(new Set([...(await repo.listQuizUserIds()), ...(await repo.listUserProfileIds())]));
   for (const userId of userIds) await recomputeProfile(userId);
-  return { quizzesRescored, users: userIds.length, tds: tds.length, parties: parties.size };
+  return { quizzesRescored, users: userIds.length, tds, parties };
 }

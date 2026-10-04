@@ -6,7 +6,7 @@
 import { ExternalLink } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import type { QuoteKind, SharedIssue, TdIssues } from '@shared/stancesApi';
+import type { QuoteKind, SharedIssue, StanceVote, TdIssues } from '@shared/stancesApi';
 
 /** `foreign_policy` → `Foreign policy`. */
 export function humaniseDomain(domain: string): string {
@@ -22,12 +22,21 @@ export function formatStanceDate(value: string): string {
     : d.toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
+/** Every quote kind's badge: a new kind is a type error here until it has one. */
+const QUOTE_KIND_LABELS: Record<QuoteKind, string> = { direct: 'Direct', paraphrase: 'Paraphrase', division: 'Dáil vote' };
+
 export function QuoteKindBadge({ kind }: { kind: QuoteKind }) {
   return (
     <Badge variant="outline" className="shrink-0">
-      {kind === 'direct' ? 'Direct' : 'Paraphrase'}
+      {QUOTE_KIND_LABELS[kind]}
     </Badge>
   );
+}
+
+/** "Voted Tá" / "Voted Níl", optionally with what the words mean. */
+export function votedLabel(vote: StanceVote, explain = false): string {
+  if (vote === 'ta') return explain ? 'Voted Tá (yes) on:' : 'Voted Tá on:';
+  return explain ? 'Voted Níl (no) on:' : 'Voted Níl on:';
 }
 
 /** The outlet as an external link, then the date. */
@@ -79,7 +88,7 @@ export function IssueBreakdown({ issues, className }: { issues: TdIssues; classN
       <div className={cn('flex flex-col gap-1', className)}>
         <p className="text-sm font-semibold">No shared issues yet</p>
         <p className="text-[13px] leading-relaxed text-muted-foreground">
-          This fills in as you answer daily-vote questions that this TD has spoken about.
+          This fills in as you answer daily-vote questions that this TD has spoken about or voted on.
         </p>
       </div>
     );
@@ -110,7 +119,12 @@ export function IssueBreakdown({ issues, className }: { issues: TdIssues; classN
               </dl>
               <div className="flex items-start gap-2">
                 <QuoteKindBadge kind={item.quoteKind} />
-                <blockquote className="min-w-0 text-sm leading-relaxed">“{item.quote}”</blockquote>
+                <div className="flex min-w-0 flex-col gap-0.5">
+                  {item.divisionVote && (
+                    <span className="text-[13px] font-semibold text-muted-foreground">{votedLabel(item.divisionVote)}</span>
+                  )}
+                  <blockquote className="min-w-0 text-sm leading-relaxed">“{item.quote}”</blockquote>
+                </div>
               </div>
               <StanceSource outlet={item.outlet} url={item.url} statedAt={item.statedAt} />
             </li>

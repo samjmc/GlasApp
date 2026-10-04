@@ -3,11 +3,11 @@
  * with a quote copied from the text. The model call is injected; verify.ts checks the quote.
  */
 import { z } from 'zod';
-import { QUOTE_KINDS, type QuoteKind } from '@shared/stancesApi';
+import { NEWS_QUOTE_KINDS, QUOTE_KINDS, type NewsQuoteKind, type QuoteKind } from '@shared/stancesApi';
 import { POLICY_DOMAINS } from '../constants/policyTopics';
 import type { CompleteJson } from '../voting/service';
 
-export { QUOTE_KINDS, type QuoteKind };
+export { NEWS_QUOTE_KINDS, QUOTE_KINDS, type NewsQuoteKind, type QuoteKind };
 
 /** A TD the article mentions: id and offices from the tds table, not from the model. */
 export interface CandidateTd {
@@ -27,7 +27,7 @@ export interface RawStance {
   tdId: number;
   policyDomain: string;
   quote: string;
-  quoteKind: QuoteKind;
+  quoteKind: NewsQuoteKind;
 }
 
 export const ARTICLE_CONTENT_LIMIT = 12_000;
@@ -89,7 +89,8 @@ const stanceSchema = z.object({
   td_id: z.number().int(),
   policy_domain: z.string(),
   quote: z.string(),
-  quote_kind: z.enum(QUOTE_KINDS),
+  // News kinds only: a 'division' here would fail td_stances' CHECK, and the article's whole save with it.
+  quote_kind: z.enum(NEWS_QUOTE_KINDS),
 });
 
 /**
