@@ -151,6 +151,8 @@ LLM_API_KEY=                         # DeepSeek: all chat AI (news ranking, TD s
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL_NAME=deepseek-flash
 OPENAI_API_KEY=                      # embeddings only (debate search)
+JEV_API_KEY=                         # Jev via Cloudflare: is a TD quote a policy position?
+CLOUDFLARE_ACCOUNT_ID=               # without both, every news stance is held back
 ```
 
 ---
