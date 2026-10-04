@@ -132,6 +132,79 @@ export const debates = politics.table(
   (t) => [index('debates_kind_date_idx').on(t.kind, t.firstDate)],
 );
 
+// ---------------------------------------------------------------------------
+// Debate items (docs/plans/debate-analysis.md, Step 2): what a speech contains, as a model
+// listed it and code then checked. Every item quotes its speech word for word; nothing here
+// is a judgement of quality, truth or who won. Scored only after the check set (Step 3).
+// ---------------------------------------------------------------------------
+export const debateItemKind = politics.enum('debate_item_kind', ['specific_claim', 'response', 'concession', 'question', 'commitment']);
+export type DebateItemKind = (typeof debateItemKind.enumValues)[number];
+
+/** What makes a specific claim specific: a figure, a named source, a cost or a date. */
+export const debateClaimType = politics.enum('debate_claim_type', ['figure', 'named_source', 'cost', 'date']);
+export type DebateClaimType = (typeof debateClaimType.enumValues)[number];
+
+export const debateItems = politics.table(
+  'debate_items',
+  {
+    id: serial('id').primaryKey(),
+    /**
+     * debate_speeches.id; deliberately not a foreign key. Re-reading a sitting day deletes and
+     * re-inserts its speeches under the same ids, and a cascade would silently drop items whose
+     * run still says `done`. A changed speech changes its run's input hash and is read again; an
+     * item whose speech is gone for good is removed by the extractor (deleteOrphanItems).
+     */
+    speechId: varchar('speech_id', { length: 120 }).notNull(),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    kind: debateItemKind('kind').notNull(),
+    /** Set for a specific claim only. */
+    claimType: debateClaimType('claim_type'),
+    /** The words as they appear in the speech, not as the model typed them. */
+    quote: text('quote').notNull(),
+    quoteStart: integer('quote_start').notNull(),
+    quoteEnd: integer('quote_end').notNull(),
+    /** A response or concession: the earlier speech it takes up (not a foreign key, as above). */
+    targetSpeechId: varchar('target_speech_id', { length: 120 }),
+    /** A response: the earlier words it takes up, as they appear in that speech. */
+    targetQuote: text('target_quote'),
+    /** A question: who it was put to, as said ("the Minister", "Deputy Daly"). */
+    addressee: text('addressee'),
+    /** A commitment: the time it gives, as said. */
+    due: text('due'),
+    extractorVersion: varchar('extractor_version', { length: 20 }).notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('debate_items_speech_idx').on(t.speechId), index('debate_items_member_idx').on(t.memberCode, t.kind)],
+);
+
+export const debateExtractionStatus = politics.enum('debate_extraction_status', ['done', 'failed']);
+
+/** One extraction of one debate by one extractor version: what it cost and what was rejected. */
+export const debateExtractionRuns = politics.table(
+  'debate_extraction_runs',
+  {
+    debateId: varchar('debate_id', { length: 80 }).notNull(),
+    extractorVersion: varchar('extractor_version', { length: 20 }).notNull(),
+    /** The speeches read (ids and text). A different hash means the record changed. */
+    inputHash: varchar('input_hash', { length: 16 }).notNull(),
+    status: debateExtractionStatus('status').notNull(),
+    speeches: integer('speeches').notNull(),
+    words: integer('words').notNull(),
+    /** Speeches mostly in Irish, to compare rejection rates by language. */
+    irishSpeeches: integer('irish_speeches').notNull(),
+    calls: integer('calls').notNull(),
+    promptTokens: integer('prompt_tokens').notNull(),
+    completionTokens: integer('completion_tokens').notNull(),
+    accepted: integer('accepted').notNull(),
+    /** reason → { en, ga } counts of items code rejected. */
+    rejected: jsonb('rejected').$type<Record<string, { en: number; ga: number }>>().notNull().default({}),
+    model: varchar('model', { length: 60 }),
+    error: text('error'),
+    ranAt: timestamp('ran_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.debateId, t.extractorVersion] })],
+);
+
 export const debateSpeeches = politics.table(
   'debate_speeches',
   {
@@ -577,6 +650,8 @@ export type NewDivisionVote = typeof divisionVotes.$inferInsert;
 export type DebateSectionRow = typeof debateSections.$inferSelect;
 export type NewDebateSection = typeof debateSections.$inferInsert;
 export type NewDebate = typeof debates.$inferInsert;
+export type NewDebateItem = typeof debateItems.$inferInsert;
+export type NewDebateExtractionRun = typeof debateExtractionRuns.$inferInsert;
 export type NewDebateSpeech = typeof debateSpeeches.$inferInsert;
 export type TdParliamentStatsRow = typeof tdParliamentStats.$inferSelect;
 export type NewBill = typeof bills.$inferInsert;
