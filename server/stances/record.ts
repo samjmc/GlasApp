@@ -7,8 +7,8 @@
  * mapped to an option of the question becomes evidence, under source `stance`.
  */
 import { recordTdEvidence } from '../ideology';
-import { QUOTE_KIND_WEIGHT } from '../ideology/sources';
 import type { CompleteJson, QuestionPositions } from '../voting';
+import { stanceEvidenceWeight } from './evidence';
 import { extractStances, extractionText, type CandidateTd, type StanceArticle } from './extract';
 import { mapStances } from './map';
 import { saveStances } from './repository';
@@ -98,7 +98,7 @@ export async function recordStances(
       source: 'stance',
       sourceRef: `question:${question.id}`,
       raw: option.vector,
-      weight: option.weight * (option.confidence ?? 1) * QUOTE_KIND_WEIGHT[stance.quoteKind],
+      weight: stanceEvidenceWeight(option, stance.quoteKind, null),
       observedAt,
       policyTopic: question.policyTopic,
     });

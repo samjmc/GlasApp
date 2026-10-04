@@ -17,32 +17,29 @@ import type {
   DailySessionState,
 } from "@/services/dailySessionService";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
+import { dismissDailyForToday } from "@/lib/dailyDismissal";
+import { afterVote, dimensionLabel, firstUnansweredIndex } from "@/lib/dailySessionFlow";
 import { cn } from "@/lib/utils";
 
 type Step = "prompt" | "vote" | "payoff" | "streakShare";
 type VoteSubStep = "preview" | "question";
+
+/** A vote the server refused because the day moved on or the session is already finished. */
+const SESSION_MOVED_ON = /session has ended|already complete/i;
+
+/**
+ * Sessions finished during this page load. Only those are news ("Streak boosted"); coming back to
+ * a finished one is not. It lives outside the component because the app swaps this page between
+ * its forced and routed renders the moment a session completes, which remounts it and would
+ * lose any state held inside.
+ */
+const finishedThisLoad = new Set<number>();
 
 const stepVariants = {
   hidden: { opacity: 0, x: 32 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
   exit: { opacity: 0, x: -32, transition: { duration: 0.15, ease: "easeIn" } },
 };
-
-const dimensionLabels: Record<string, string> = {
-  housing: "Housing",
-  immigration: "Immigration",
-  environment: "Climate & Energy",
-  healthcare: "Healthcare",
-  economy: "Economy",
-  social_issues: "Social Policy",
-  justice: "Justice & Security",
-  education: "Education",
-};
-
-function mapDimensionLabel(dimension?: string | null): string {
-  if (!dimension) return "Policy";
-  return dimensionLabels[dimension] ?? dimension.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-}
 
 /** "Economic Left - Right" → { name: "Economic", left: "Left", right: "Right" }; also handles "Left/Right". */
 function parseAxisLabel(axisLabel: string) {
@@ -98,7 +95,10 @@ export default function DailySessionPage() {
   const [isCompletionPending, setIsCompletionPending] = useState(false);
   const [isDevSkipping, setIsDevSkipping] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
-  const [localVotesCompleted, setLocalVotesCompleted] = useState(0);
+  // Set in the same tick as the click, before React re-renders, so a double-click saves once.
+  const advancingRef = useRef(false);
+  // Which session state the screen was last matched to. See the sync effect below.
+  const syncedTo = useRef<string | null>(null);
 
   const sessionQuery = useDailySession(isAuthenticated);
   const voteMutation = useDailySessionVote();
@@ -106,7 +106,8 @@ export default function DailySessionPage() {
   const { toast } = useToast();
 
   const session = sessionQuery.data as unknown as DailySessionState | undefined;
-  const isLoading = sessionQuery.isLoading || sessionQuery.isFetching;
+  // Only the first load replaces the screen. A refetch (the network coming back) keeps it.
+  const isLoading = sessionQuery.isLoading;
 
   const play = useCallback((name: keyof typeof SOUNDS) => {
     if (typeof window === "undefined") return;
@@ -155,18 +156,26 @@ export default function DailySessionPage() {
     };
   }, []);
 
+  // Match the screen to the server's session once per session and status: where the user left
+  // off, or the results of a finished one. It must NOT run on every update. Each saved answer
+  // updates the session, and that would move the question on before the "saved" beat ends.
   useEffect(() => {
-    if (session?.status === "completed" && session.completion) {
+    if (!session || session.items.length === 0) return;
+    const key = `${session.sessionId}:${session.status}`;
+    if (syncedTo.current === key) return;
+    syncedTo.current = key;
+
+    if (session.status === "completed" && session.completion) {
       setLocalSummary(session.completion);
-      setLocalVotesCompleted(session.items.length);
       setStep("payoff");
-    } else if (session && session.status === "pending") {
+    } else if (session.status === "pending") {
+      const firstOpen = firstUnansweredIndex(session.items);
       if (session.voteCount > 0) {
-        setLocalVotesCompleted(session.voteCount);
         setStep("vote");
-        setCurrentIndex(Math.min(session.voteCount, session.items.length - 1));
+        setCurrentIndex(firstOpen === -1 ? session.items.length - 1 : firstOpen);
       } else {
-        setLocalVotesCompleted(0);
+        setStep("prompt");
+        setCurrentIndex(0);
       }
     }
   }, [session]);
@@ -178,8 +187,9 @@ export default function DailySessionPage() {
   const currentItem: DailySessionItem | undefined = useMemo(() => session?.items?.[currentIndex], [session, currentIndex]);
 
   const totalItems = session?.items.length ?? 0;
-  const votesCompleted =
-    session?.status === "completed" ? totalItems : Math.max(localVotesCompleted, session?.voteCount ?? 0);
+  // Counted from the answers themselves: one may have been given on its article page.
+  const answeredCount = session?.items.filter((item) => item.hasVoted).length ?? 0;
+  const allAnswered = totalItems > 0 && answeredCount === totalItems;
 
   const isProcessing =
     voteMutation.isPending || completeMutation.isPending || isAdvancing || isCompletionPending || isDevSkipping;
@@ -190,16 +200,41 @@ export default function DailySessionPage() {
   const previousStreakCount = Math.max(0, currentStreakCount - 1);
 
   const handleStart = () => {
+    if (!session) return;
+    const first = Math.max(0, firstUnansweredIndex(session.items));
     play("start");
     setStep("vote");
-    setCurrentIndex(0);
+    setCurrentIndex(first);
     setSavedDimension(null);
-    setPendingOption(session?.items[0]?.selectedOption ?? null);
+    setPendingOption(session.items[first]?.selectedOption ?? null);
     play("card");
   };
 
+  /** Add up the answers. Safe to call again after a failure: the server keeps the answers. */
+  const finishSession = useCallback(async () => {
+    setIsCompletionPending(true);
+    // Marked before the request: its success swaps the app's render and remounts this page.
+    if (session) finishedThisLoad.add(session.sessionId);
+    try {
+      const summary = await completeMutation.mutateAsync();
+      setLocalSummary(summary);
+      play("complete");
+      setStep("payoff");
+    } catch (error: unknown) {
+      if (session) finishedThisLoad.delete(session.sessionId);
+      toast({
+        variant: "destructive",
+        title: "Could not finish the session",
+        description: (error as { message?: string } | null)?.message || "We couldn’t finish the session. Please retry.",
+      });
+    } finally {
+      setIsCompletionPending(false);
+    }
+  }, [completeMutation, play, session, toast]);
+
   const handleVoteNext = async () => {
-    if (!currentItem || pendingOption === null || isAdvancing) return;
+    if (!currentItem || pendingOption === null || advancingRef.current) return;
+    advancingRef.current = true;
     const optionKey = pendingOption;
     setIsAdvancing(true);
     play("advance");
@@ -226,54 +261,45 @@ export default function DailySessionPage() {
 
       if (!updatedSession) throw new Error("Vote request failed");
 
-      setSavedDimension(mapDimensionLabel(currentItem.policyDimension));
+      setSavedDimension(dimensionLabel(currentItem.policyDimension));
     } catch (error: unknown) {
+      advancingRef.current = false;
       setIsAdvancing(false);
+      const message = (error as { message?: string } | null)?.message || "";
+      if (SESSION_MOVED_ON.test(message)) {
+        // Midnight passed (or another tab finished it): load whatever session is current.
+        toast({ title: "A new day has started", description: "Loading today's questions." });
+        setPendingOption(null);
+        void sessionQuery.refetch();
+        return;
+      }
       toast({
         variant: "destructive",
         title: "Vote not recorded",
-        description: (error as { message?: string } | null)?.message || "Please try that stance again.",
+        description: message || "Please try that stance again.",
       });
       return;
     }
 
-    const itemCount = updatedSession?.items.length ?? session?.items.length ?? 0;
-    const hasMorePending =
-      updatedSession?.items.some((item) => !item.hasVoted || item.sessionItemId === currentItem.sessionItemId) ?? false;
-    const isFinalVote = itemCount === 0 || currentIndex + 1 >= itemCount || !hasMorePending;
-    const nextIndex = itemCount > 0 ? Math.min(currentIndex + 1, itemCount - 1) : 0;
+    // The saved session says which questions are still open, so an answer given elsewhere is
+    // neither asked twice nor lets the session finish while another question is still open.
+    const { isFinal, nextIndex } = afterVote(updatedSession.items, currentIndex);
 
-    if (isFinalVote) setIsCompletionPending(true);
+    if (isFinal) setIsCompletionPending(true);
 
-    setTimeout(async () => {
+    setTimeout(() => {
       setPendingOption(null);
       setSavedDimension(null);
       setIsAdvancing(false);
+      advancingRef.current = false;
 
-      if (!isFinalVote) {
-        const nextCount = updatedSession?.voteCount ?? votesCompleted + 1;
-        setLocalVotesCompleted(Math.min(nextCount, itemCount));
+      if (!isFinal) {
         setCurrentIndex(nextIndex);
         play("card");
         return;
       }
 
-      try {
-        const summary = await completeMutation.mutateAsync();
-        setLocalSummary(summary);
-        const finalCount = updatedSession?.voteCount ?? itemCount;
-        setLocalVotesCompleted(Math.min(finalCount, itemCount));
-        play("complete");
-        setStep("payoff");
-      } catch (error: unknown) {
-        toast({
-          variant: "destructive",
-          title: "Could not finish the session",
-          description: (error as { message?: string } | null)?.message || "We couldn’t finish the session. Please retry.",
-        });
-      } finally {
-        setIsCompletionPending(false);
-      }
+      void finishSession();
     }, 720);
   };
 
@@ -308,22 +334,22 @@ export default function DailySessionPage() {
       setSavedDimension(null);
 
       // Dev only: answer each remaining question with its first option.
-      let latestSession = session;
       for (const item of session.items) {
         const firstOption = Object.keys(item.answerOptions)[0];
         if (item.hasVoted || !firstOption) continue;
-        latestSession = await voteMutation.mutateAsync({
+        await voteMutation.mutateAsync({
           sessionItemId: item.sessionItemId,
           optionKey: firstOption,
         });
       }
 
+      finishedThisLoad.add(session.sessionId);
       const summary = await completeMutation.mutateAsync();
       setLocalSummary(summary);
-      setLocalVotesCompleted(latestSession.items.length);
       setStep("payoff");
       toast({ title: "Session skipped", description: "Marked as completed (dev mode)." });
     } catch (error: unknown) {
+      finishedThisLoad.delete(session.sessionId);
       toast({
         variant: "destructive",
         title: "Skip failed",
@@ -404,7 +430,8 @@ export default function DailySessionPage() {
     );
   }
 
-  const progressDone = step === "vote" ? currentIndex + (savedDimension ? 1 : 0) : totalItems;
+  // Filled segments are the questions answered, so they are right in the "saved" beat too.
+  const progressDone = step === "vote" ? answeredCount : totalItems;
 
   return (
     <Shell>
@@ -445,6 +472,8 @@ export default function DailySessionPage() {
               <CompletionTransition key="completion-transition" />
             ) : savedDimension ? (
               <SavedScreen key="saved" dimension={savedDimension} />
+            ) : allAnswered ? (
+              <FinishScreen key="finish" onFinish={finishSession} />
             ) : (
               currentItem &&
               (voteSubStep === "preview" ? (
@@ -483,6 +512,7 @@ export default function DailySessionPage() {
 
       {step === "streakShare" && completionSummary && (
         <StreakBoostScreen
+          justCompleted={finishedThisLoad.has(session.sessionId)}
           previousStreak={previousStreakCount}
           currentStreak={currentStreakCount}
           onBack={() => setStep("payoff")}
@@ -518,9 +548,10 @@ function TopBar({ left, center, right, title }: { left: ReactNode; center?: Reac
 const roundClass =
   "flex h-11 w-11 items-center justify-center rounded-full bg-card text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
+/** Leaves for the home page. The app opens the session once a day, so closing it keeps it closed for today. */
 function CloseLink() {
   return (
-    <Link href="/" aria-label="Close daily vote" className={roundClass}>
+    <Link href="/" aria-label="Close daily vote" className={roundClass} onClick={() => dismissDailyForToday()}>
       <X className="h-5 w-5" />
     </Link>
   );
@@ -630,7 +661,7 @@ function IntroScreen({
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-elevated text-[13px] font-extrabold">
                   {item.hasVoted ? <Check className="h-4 w-4 text-primary" aria-label="Answered" /> : i + 1}
                 </span>
-                <span className="truncate text-[15px] font-bold">{mapDimensionLabel(item.policyDimension)}</span>
+                <span className="truncate text-[15px] font-bold">{dimensionLabel(item.policyDimension)}</span>
               </li>
             ))}
           </ol>
@@ -659,7 +690,7 @@ function ArticlePreviewScreen({ item, remaining, onNext }: { item: DailySessionI
         <article className="relative flex flex-1 flex-col gap-4 overflow-hidden rounded-2xl border bg-card p-5 sm:p-6">
           <span className="inline-flex h-[30px] w-fit items-center gap-1.5 rounded-full bg-elevated px-3 text-[13px] font-bold">
             <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-            {mapDimensionLabel(item.policyDimension)}
+            {dimensionLabel(item.policyDimension)}
           </span>
           {item.imageUrl && (
             <img
@@ -720,12 +751,12 @@ function VoteScreen({
   return (
     <StepPanel className="gap-4 pt-5">
       <div className="flex flex-col gap-2.5">
-        <span className="text-[13px] font-bold text-primary">{mapDimensionLabel(item.policyDimension)} stance check</span>
+        <span className="text-[13px] font-bold text-primary">{dimensionLabel(item.policyDimension)} stance check</span>
         <h1 className="font-display text-[28px] font-extrabold leading-[1.1] tracking-tight">{promptCopy}</h1>
         {contextNote && (
           <p className="flex gap-2.5 rounded-lg bg-elevated p-3 text-sm leading-snug text-muted-foreground">
             <Landmark className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-            {contextNote}
+            Topic: {contextNote.charAt(0).toUpperCase() + contextNote.slice(1)}
           </p>
         )}
       </div>
@@ -771,6 +802,24 @@ function SavedScreen({ dimension }: { dimension: string }) {
         This shapes your <strong className="text-foreground">{dimension.toLowerCase()}</strong> profile.
       </p>
     </motion.div>
+  );
+}
+
+/** Every question is answered but the session is not finished: it failed to finish, or the user came back. */
+function FinishScreen({ onFinish }: { onFinish: () => void }) {
+  return (
+    <StepPanel className="gap-4 pt-12">
+      <div className="flex flex-col items-center gap-3 text-center">
+        <span className="flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-primary bg-primary/15 text-primary">
+          <Check className="h-11 w-11" strokeWidth={2.6} aria-hidden="true" />
+        </span>
+        <h1 className="font-display text-[38px] font-extrabold leading-none tracking-tight">All answered</h1>
+        <p className="text-base text-muted-foreground">Your answers are saved. One step left to add them up.</p>
+      </div>
+      <div className="mt-auto pt-2">
+        <PrimaryAction onClick={onFinish}>See today&apos;s results</PrimaryAction>
+      </div>
+    </StepPanel>
   );
 }
 
@@ -900,17 +949,20 @@ function ShiftRow({ shift }: { shift: DailySessionCompletion["dimensionShifts"][
 }
 
 function StreakBoostScreen({
+  justCompleted,
   previousStreak,
   currentStreak,
   onBack,
   onShare,
 }: {
+  /** True when this visit finished the session. Coming back to a finished one boosted nothing. */
+  justCompleted: boolean;
   previousStreak: number;
   currentStreak: number;
   onBack: () => void;
   onShare: () => void;
 }) {
-  const streakDelta = Math.max(0, currentStreak - previousStreak);
+  const streakDelta = justCompleted ? Math.max(0, currentStreak - previousStreak) : 0;
 
   return (
     <>
@@ -924,12 +976,18 @@ function StreakBoostScreen({
       />
       <StepPanel className="gap-6 pt-2">
         <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="font-display text-[38px] font-extrabold leading-none tracking-tight">Streak boosted</h1>
+          <h1 className="font-display text-[38px] font-extrabold leading-none tracking-tight">
+            {justCompleted ? "Streak boosted" : "Your streak"}
+          </h1>
           <div className="flex items-center gap-3">
-            <span className="flex h-12 items-center rounded-full bg-elevated px-4 text-lg font-bold text-muted-foreground">
-              {previousStreak} day{previousStreak === 1 ? "" : "s"}
-            </span>
-            <ArrowRight className="h-7 w-7 text-primary" aria-hidden="true" />
+            {justCompleted && (
+              <>
+                <span className="flex h-12 items-center rounded-full bg-elevated px-4 text-lg font-bold text-muted-foreground">
+                  {previousStreak} day{previousStreak === 1 ? "" : "s"}
+                </span>
+                <ArrowRight className="h-7 w-7 text-primary" aria-hidden="true" />
+              </>
+            )}
             <motion.span
               className="flex h-16 items-center gap-2 rounded-full bg-primary px-6 text-primary-foreground"
               initial={{ scale: 0.7, opacity: 0 }}

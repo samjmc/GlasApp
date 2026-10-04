@@ -12,12 +12,13 @@
  * module, which needs Supabase settings a background job may not have. server/routes.ts
  * imports them from ./routes directly.
  */
-export { completeJson, generateQuestionForArticle, getQuestionsForArticles, type CompleteJson } from './service';
+export { completeJson, generateQuestionForArticle, getQuestionsForArticles, QUESTION_MODEL, type CompleteJson } from './service';
 export type { OptionVector, QuestionArticle } from './questions';
 
 import type { OptionVector } from './questions';
 import {
   questionsByIds,
+  questionsDatedNear,
   questionsForArticles,
   userVoteVectors,
   vectorOf,
@@ -36,6 +37,8 @@ export interface QuestionPositions {
   id: number;
   articleId: number;
   question: string;
+  /** A POLICY_DOMAINS key, or 'other'. */
+  policyDomain: string;
   policyTopic: string;
   options: Array<{ key: string; label: string; vector: OptionVector; weight: number; confidence: number | null }>;
 }
@@ -44,6 +47,7 @@ const toPositions = ({ question, options }: QuestionWithOptions): QuestionPositi
   id: question.id,
   articleId: question.articleId,
   question: question.question,
+  policyDomain: question.policyDomain,
   policyTopic: question.policyTopic,
   options: options.map((option) => ({
     key: option.optionKey,
@@ -62,4 +66,18 @@ export async function questionForArticle(articleId: number): Promise<QuestionPos
 
 export async function questionsWithPositions(questionIds: number[]): Promise<QuestionPositions[]> {
   return (await questionsByIds(questionIds)).map(toPositions);
+}
+
+/**
+ * The daily-vote questions a Dáil division could be matched to: dated in [from, to] (published,
+ * else made), in one of `domains` when given (a question in 'other' then never is), the `limit`
+ * nearest the middle of the range, ties by id.
+ */
+export async function candidateQuestions(input: {
+  domains?: readonly string[];
+  from: Date;
+  to: Date;
+  limit: number;
+}): Promise<Array<QuestionPositions & { datedAt: Date }>> {
+  return (await questionsDatedNear(input)).map((q) => ({ ...toPositions(q), datedAt: q.datedAt }));
 }

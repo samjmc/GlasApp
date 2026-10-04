@@ -88,11 +88,6 @@ function formatDay(value: string | null | undefined): string {
     : d.toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-function humanise(value: string): string {
-  const text = value.replace(/_/g, ' ');
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-
 /** A full-term backbencher's full-marks benchmarks, as in server/scoring/weights.ts. */
 const FULL_ATTENDANCE_BENCHMARK = 95;
 const FULL_QUESTIONS_BENCHMARK = 200;
@@ -316,30 +311,6 @@ export default function TDProfilePageEnhanced() {
     staleTime: 300000  // 5 minutes
   });
 
-  // Latest polling for the TD's party
-  const { data: partyPolling } = useQuery({
-    queryKey: ['party-polling', scoreData?.party],
-    queryFn: async () => {
-      if (!scoreData?.party) return null;
-
-      const { supabase } = await import('../lib/supabaseClient');
-      const { data, error } = await supabase
-        .from('polling_aggregates_cache')
-        .select('*')
-        .eq('entity_type', 'party')
-        .eq('entity_name', scoreData.party)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Polling fetch error:', error);
-        return null;
-      }
-
-      return data;
-    },
-    enabled: !!scoreData?.party
-  });
-
   if (isLoading) {
     return (
       <div className="flex flex-col gap-6" aria-busy="true">
@@ -506,8 +477,6 @@ export default function TDProfilePageEnhanced() {
     />
   );
 
-  const pollSupport = partyPolling?.latest_support ? parseFloat(partyPolling.latest_support) : null;
-  const pollChange = partyPolling?.support_30d_change ? parseFloat(partyPolling.support_30d_change) : null;
 
   return (
     <div className="flex flex-col gap-6">
@@ -520,7 +489,7 @@ export default function TDProfilePageEnhanced() {
       </Link>
 
       {/* Hero */}
-      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+      <section className="flex flex-col gap-6 rounded-2xl bg-hero p-5 text-hero-foreground sm:p-8 xl:flex-row xl:items-center xl:justify-between">
         <div className="flex min-w-0 flex-1 items-start gap-4 sm:gap-5">
           <TDAvatar
             name={score.name}
@@ -582,7 +551,7 @@ export default function TDProfilePageEnhanced() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-5 lg:border-l lg:border-hero-muted lg:pl-8">
+        <div className="flex items-center gap-5 xl:border-l xl:border-hero-muted xl:pl-8">
           <ScoreRing
             value={score.overallScore}
             size={120}
@@ -893,40 +862,50 @@ export default function TDProfilePageEnhanced() {
           <TabsContent value="background" className="mt-0">
             <Card className="flex flex-col gap-5 p-5 sm:p-6">
               <h2 className="font-display text-xl font-bold tracking-tight">Background</h2>
-              {!score.bio && !score.baseline?.summary && !score.baseline?.category && !score.baseline?.researchDate ? (
+              {!score.bio && !score.baseline ? (
                 <EmptyState icon={UserRound} title="No background yet">
-                  A short biography and research summary will show here once they are added.
+                  A short biography will show here once it is added.
                 </EmptyState>
               ) : (
                 <>
                   {score.bio && <p className="leading-relaxed">{score.bio}</p>}
-                  {score.baseline?.summary && (
-                    <div className="flex flex-col gap-3 rounded-xl bg-elevated p-4">
-                      <p className="leading-relaxed">{score.baseline.summary}</p>
-                      {score.baseline.keyFindings.length > 0 && (
-                        <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
-                          {score.baseline.keyFindings.map((finding) => (
-                            <li key={finding}>{finding}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  )}
-                  {(score.baseline?.category || score.baseline?.researchDate) && (
-                    <dl className="grid grid-cols-2 gap-3">
-                      {score.baseline?.category && (
-                        <div className="flex flex-col gap-1 rounded-xl bg-elevated p-4">
-                          <dt className="text-[13px] font-semibold text-muted-foreground">Research category</dt>
-                          <dd className="font-semibold">{humanise(score.baseline.category)}</dd>
-                        </div>
-                      )}
-                      {score.baseline?.researchDate && (
-                        <div className="flex flex-col gap-1 rounded-xl bg-elevated p-4">
-                          <dt className="text-[13px] font-semibold text-muted-foreground">Researched</dt>
-                          <dd className="font-semibold">{formatDay(score.baseline.researchDate)}</dd>
-                        </div>
-                      )}
-                    </dl>
+                  {score.baseline && (
+                    // Every sentence here is copied word for word from the linked Wikipedia revision.
+                    <figure className="flex flex-col gap-3 rounded-xl bg-elevated p-4">
+                      <blockquote className="flex flex-col gap-3">
+                        <p className="leading-relaxed">{score.baseline.summary}</p>
+                        {score.baseline.passages.length > 0 && (
+                          <ul className="flex flex-col gap-2 border-l-2 border-border pl-3 text-sm text-muted-foreground">
+                            {score.baseline.passages.map((passage) => (
+                              <li key={passage}>&ldquo;{passage}&rdquo;</li>
+                            ))}
+                          </ul>
+                        )}
+                      </blockquote>
+                      <figcaption className="text-[13px] text-muted-foreground">
+                        Text from{' '}
+                        <a
+                          href={score.baseline.source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 font-semibold underline underline-offset-4 hover:text-foreground"
+                        >
+                          Wikipedia: {score.baseline.source.title}
+                          <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                        </a>
+
+                        , the version we checked on {formatDay(score.baseline.source.retrievedAt)} (
+                        <a
+                          href="https://creativecommons.org/licenses/by-sa/4.0/"
+                          target="_blank"
+                          rel="noopener noreferrer license"
+                          className="underline underline-offset-4 hover:text-foreground"
+                        >
+                          CC BY-SA 4.0
+                        </a>
+                        ).
+                      </figcaption>
+                    </figure>
                   )}
                 </>
               )}
@@ -1165,32 +1144,6 @@ export default function TDProfilePageEnhanced() {
               </>
             )}
           </Card>
-
-          {score.party && (
-            <Card className="flex flex-col gap-3 p-5">
-              <h2 className="font-display text-lg font-bold tracking-tight">Party polling</h2>
-              {pollSupport !== null ? (
-                <>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-display text-3xl font-bold tracking-tight">{pollSupport.toFixed(1)}%</span>
-                    {pollChange !== null && pollChange !== 0 && (
-                      <span className={cn('text-sm font-semibold', pollChange > 0 ? 'text-score-high' : 'text-warn')}>
-                        {pollChange > 0 ? '+' : ''}
-                        {pollChange.toFixed(1)} in 30 days
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-[13px] text-muted-foreground">
-                    National support for {partyName}
-                    {partyPolling?.latest_poll_source ? ` · ${partyPolling.latest_poll_source}` : ''}
-                    {partyPolling?.latest_poll_date ? `, ${formatDay(partyPolling.latest_poll_date)}` : ''}
-                  </p>
-                </>
-              ) : (
-                <p className="text-sm text-muted-foreground">No recent national poll for {partyName}.</p>
-              )}
-            </Card>
-          )}
         </aside>
       </div>
     </div>

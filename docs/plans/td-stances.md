@@ -165,3 +165,21 @@ What differs from the spec above, and why:
 - The "fails on current code" test: after part 2 the pipeline no longer writes article
   evidence, so the defect on current code is the question made for a mere mention. The test
   asserts no `td_stances` row, no evidence row and no question (red with part 2's gate put back).
+
+## Division stances (2026-10-02, plan `quiz-improvements/01c-division-stances.md`)
+
+A recorded Dáil vote can be a stance too: `td_stances` rows with `division_id` set (and
+`article_id` NULL), quote kind `division`, `division_vote` Tá/Níl and a `discipline`. The quote is
+the text of the proposal voted on, checked against the transcript; the answer is an option of an
+existing daily-vote question that the vote states (`server/stances/divisions.ts`). What changed in
+this folder for it, and nothing else:
+
+- `QUOTE_KINDS` = news kinds + `division`; the news model is still held to `NEWS_QUOTE_KINDS`
+  (`extract.ts`), so a news reply can never claim to be a vote.
+- `latestStances`: on an equal `statedAt` the higher id wins (it was the first seen, which
+  depended on read order).
+- One weight formula, `stanceEvidenceWeight` (`evidence.ts`), used by `record.ts` and by the
+  nightly rebuild of all `stance` evidence from `td_stances`. News evidence is unchanged by it.
+- The TD page groups news quotes and votes apart: "Said N times" and "Changed position" are for
+  quotes only; a vote that differs from the TD's latest quoted answer shows "Said: … · Voted: …".
+- `npm run stances -- --rebuild` is unchanged; `--divisions` modes are separate.

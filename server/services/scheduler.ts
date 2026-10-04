@@ -2,6 +2,7 @@ import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
 import { leaveWatch, runSync as runParliamentSync } from "../parliament";
+import { runDivisionStances } from "../stances";
 
 /** Initialize and start the scheduled jobs. */
 export function initScheduler() {
@@ -63,6 +64,16 @@ export function initScheduler() {
       console.log(`[Scheduler] Parliament sync: ${s.divisions.ingested} divisions, ${s.debates.days} sitting days${s.debates.failedDays.length ? `, ${s.debates.failedDays.length} day(s) failed` : ''}${s.failedFeeds.length ? `, failed feeds: ${s.failedFeeds.join(', ')}` : ''}.`);
     } catch (error) {
       console.error("[Scheduler] Parliament sync failed:", error instanceof Error ? error.message : error);
+    }
+    // Dáil divisions as TD stances, once the sync has brought in the day's divisions. Off
+    // unless DIVISION_STANCES=on: it calls a model, and goes on only after the human gates in
+    // docs/plans/quiz-improvements/01c-division-stances.md §9.
+    if (process.env.DIVISION_STANCES === "on") {
+      try {
+        await runDivisionStances({ mode: "nightly" });
+      } catch (error) {
+        console.error("[Scheduler] Division stances failed:", error instanceof Error ? error.message : error);
+      }
     }
   }, { timezone: "Europe/Dublin" });
 

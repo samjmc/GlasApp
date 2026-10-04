@@ -1,12 +1,15 @@
 /**
- * Every read and write of `politics.td_stances`. Nothing else touches it.
+ * Every read and write of `politics.td_stances` and `politics.division_readings`. Nothing else
+ * touches them.
  */
 import { and, desc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { tds } from '@shared/schema/politics';
-import { tdStances, type TdStanceRow } from '@shared/schema/stances';
+import { divisionReadings, tdStances, type DivisionReadingRow, type NewDivisionReading, type NewTdStance, type TdStanceRow } from '@shared/schema/stances';
 import type { QuoteKind } from '@shared/stancesApi';
 import type { PolicyDomain } from '../constants/policyTopics';
+import { STANCE_SYNC_LOCK } from '../ideology/repository';
+import type { StanceForEvidence } from './evidence';
 
 export interface StanceInput {
   tdId: number;
@@ -83,6 +86,47 @@ export async function mappedStancesOn(questionIds: number[], database: Db = db):
     .from(tdStances)
     .where(and(inArray(tdStances.questionId, questionIds), isNotNull(tdStances.optionKey)));
   return rows as MappedStance[];
+}
+
+/** Every stance with an answer, news and Dáil votes, as the evidence rebuild reads them. */
+export async function stanceRowsForEvidence(database: Db = db): Promise<StanceForEvidence[]> {
+  const rows = await database
+    .select({
+      id: tdStances.id,
+      tdId: tdStances.tdId,
+      questionId: tdStances.questionId,
+      optionKey: tdStances.optionKey,
+      quoteKind: tdStances.quoteKind,
+      discipline: tdStances.discipline,
+      statedAt: tdStances.statedAt,
+    })
+    .from(tdStances)
+    .where(isNotNull(tdStances.optionKey));
+  return rows as StanceForEvidence[];
+}
+
+const STANCE_INSERT_CHUNK = 500;
+
+/**
+ * Replace every Dáil-vote stance (`division_id` set) with `rows`, in one transaction under the
+ * stance sync lock. News rows are never touched. Ids change on each sync; nothing keeps them.
+ */
+export async function replaceDivisionStances(rows: NewTdStance[], database: Db = db): Promise<void> {
+  await database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${STANCE_SYNC_LOCK}::bigint)`);
+    await tx.delete(tdStances).where(isNotNull(tdStances.divisionId));
+    for (let i = 0; i < rows.length; i += STANCE_INSERT_CHUNK) await tx.insert(tdStances).values(rows.slice(i, i + STANCE_INSERT_CHUNK));
+  });
+}
+
+export async function listDivisionReadings(database: Db = db): Promise<DivisionReadingRow[]> {
+  return database.select().from(divisionReadings);
+}
+
+/** One division's reading, replacing any earlier one whole. */
+export async function upsertDivisionReading(row: NewDivisionReading, database: Db = db): Promise<void> {
+  const { divisionId: _divisionId, ...rest } = row;
+  await database.insert(divisionReadings).values(row).onConflictDoUpdate({ target: divisionReadings.divisionId, set: rest });
 }
 
 export interface RebuildArticle {

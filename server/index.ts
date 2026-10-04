@@ -105,7 +105,7 @@ app.use('/assets', express.static('public/assets'));
     // Centralized error handler (must be AFTER Vite middleware)
     app.use(errorHandler);
 
-    // Initialize Scheduler (news ingest, TD scoring, parliament sync, daily briefing).
+    // Initialize Scheduler (news ingest, news → TD links, parliament sync, leave watch).
     // SCHEDULER=off for a local run against the shared GlasCore database, so looking at the
     // site never triggers a scoring run that changes real TD scores.
     if (process.env.SCHEDULER === 'off') {

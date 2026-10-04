@@ -45,7 +45,8 @@ const CANDIDATE_LIMIT = 60;
 const ANSWER_HISTORY_DAYS = 30;
 /** How far back question targets count when steering the next question's axis. */
 const QUESTION_BALANCE_DAYS = 30;
-const QUESTION_MODEL = 'gpt-4o-mini';
+/** The model `completeJson` asks for; a configured provider (DeepSeek) overrides it. */
+export const QUESTION_MODEL = 'gpt-4o-mini';
 
 /** A failure the caller caused. The router maps `status` straight to the response. */
 export class VotingError extends Error {
@@ -162,8 +163,19 @@ export async function castVote(input: {
 // The daily session
 // ---------------------------------------------------------------------------
 
+/**
+ * The streak to show for a session. A finished session keeps the count it was finished with.
+ * An open one has none stored yet, so show the run of finished days up to yesterday: the
+ * streak the user is protecting today.
+ */
+async function streakOf(session: DailySessionRow, userId: string): Promise<number> {
+  if (session.status === 'completed') return session.streakCount ?? 0;
+  const earlierDates = await repo.completedDatesBefore(userId, session.sessionDate);
+  return computeStreak(earlierDates, session.sessionDate) - 1; // computeStreak counts today
+}
+
 async function stateOf(session: DailySessionRow, userId: string): Promise<DailySessionState> {
-  const items = await repo.sessionItems(session.id, userId);
+  const [items, streakCount] = await Promise.all([repo.sessionItems(session.id, userId), streakOf(session, userId)]);
   const view: DailySessionItem[] = items.map((item) => ({
     sessionItemId: item.itemId,
     questionId: item.question.id,
@@ -186,7 +198,7 @@ async function stateOf(session: DailySessionRow, userId: string): Promise<DailyS
     sessionId: session.id,
     sessionDate: session.sessionDate,
     voteCount: view.filter((item) => item.hasVoted).length,
-    streakCount: session.streakCount ?? 0,
+    streakCount,
     items: view,
     completion: session.completion ?? undefined,
   };
@@ -215,7 +227,9 @@ export async function getOrCreateSession(user: SessionUser, now: Date = new Date
   const questionIds = selectDailyQuestions(candidates, answered, DAILY_ITEM_COUNT);
 
   if (questionIds.length === 0) {
-    return { status: 'pending', sessionId: 0, sessionDate, voteCount: 0, streakCount: 0, items: [] };
+    const earlierDates = await repo.completedDatesBefore(user.id, sessionDate);
+    const streakCount = computeStreak(earlierDates, sessionDate) - 1;
+    return { status: 'pending', sessionId: 0, sessionDate, voteCount: 0, streakCount, items: [] };
   }
 
   const session = await repo.createSession({

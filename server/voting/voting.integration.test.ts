@@ -292,6 +292,39 @@ run('voting against Postgres', () => {
       expect(completion!.streakCount).toBe(3);
     });
 
+    it('a session that is still open shows the streak the user is already on', async () => {
+      for (let i = 0; i < 12; i++) await makeQuestion(['economic', 'social', 'welfare'][i % 3]!);
+      const finish = async (d: number) => {
+        const session = await service.getOrCreateSession(user, day(d));
+        for (const item of session.items) await service.recordSessionVote('u1', item.sessionItemId, 'option_a', day(d));
+        return service.completeSession('u1', day(d));
+      };
+      // A new user starts at nothing.
+      expect((await service.getOrCreateSession(user, day(20))).streakCount).toBe(0);
+      await finish(20);
+      await finish(21);
+
+      // Day 22 is open and not yet finished: the two finished days still count.
+      const open = await service.getOrCreateSession(user, day(22));
+      expect(open).toMatchObject({ status: 'pending', streakCount: 2 });
+      expect((await finish(22)).streakCount).toBe(3);
+      expect((await service.getOrCreateSession(user, day(22))).streakCount).toBe(3);
+
+      // Day 23 is missed, so on day 24 the run is over.
+      expect((await service.getOrCreateSession(user, day(24))).streakCount).toBe(0);
+    });
+
+    it('a day with no questions still shows the streak, so the header does not read 0', async () => {
+      for (let i = 0; i < 3; i++) await makeQuestion();
+      const session = await service.getOrCreateSession(user, day(21));
+      for (const item of session.items) await service.recordSessionVote('u1', item.sessionItemId, 'option_a', day(21));
+      await service.completeSession('u1', day(21));
+
+      // Every question is answered, so day 22 has nothing to ask; yesterday's finish still counts.
+      const empty = await service.getOrCreateSession(user, day(22));
+      expect(empty).toMatchObject({ sessionId: 0, items: [], streakCount: 1 });
+    });
+
     it('the regional summary counts the other people in the area who finished today', async () => {
       for (let i = 0; i < 6; i++) await makeQuestion();
       for (const id of ['u2', 'u1']) {

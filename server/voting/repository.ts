@@ -130,6 +130,32 @@ export async function questionsByIds(questionIds: number[], database: Db = db): 
   return withOptions(questions, database);
 }
 
+/**
+ * Questions dated (`published_at`, else `created_at`) in [from, to], in `domains` when given,
+ * the `limit` nearest the middle of the range first (ties by id). With their options.
+ */
+export async function questionsDatedNear(
+  input: { domains?: readonly string[]; from: Date; to: Date; limit: number },
+  database: Db = db,
+): Promise<Array<QuestionWithOptions & { datedAt: Date }>> {
+  if (input.domains?.length === 0) return [];
+  const datedAt = sql<Date>`coalesce(${policyQuestions.publishedAt}, ${policyQuestions.createdAt})`;
+  const middle = new Date((input.from.getTime() + input.to.getTime()) / 2);
+  const rows = await database
+    .select({ question: policyQuestions, datedAt })
+    .from(policyQuestions)
+    .where(
+      and(
+        sql`${datedAt} between ${input.from} and ${input.to}`,
+        input.domains ? inArray(policyQuestions.policyDomain, [...input.domains]) : undefined,
+      ),
+    )
+    .orderBy(sql`abs(extract(epoch from ${datedAt} - ${middle}::timestamptz))`, asc(policyQuestions.id))
+    .limit(input.limit);
+  const withOpts = await withOptions(rows.map((r) => r.question), database);
+  return withOpts.map((q, i) => ({ ...q, datedAt: new Date(rows[i]!.datedAt) }));
+}
+
 export async function questionById(questionId: number, database: Db = db): Promise<QuestionWithOptions | null> {
   const questions = await database.select().from(policyQuestions).where(eq(policyQuestions.id, questionId));
   const [found] = await withOptions(questions, database);
