@@ -76,10 +76,60 @@ export const debateSections = politics.table(
     title: text('title').notNull(),
     /** Ancestor section's id for nested sections. */
     parentId: varchar('parent_id', { length: 80 }),
+    /**
+     * The parent's heading. The parent is usually a container with no speeches of its own
+     * ("Priority Questions"), so it is not stored and this is the only record of its kind.
+     * NULL for a top-level section, and for rows ingested before this column existed.
+     */
+    parentTitle: text('parent_title'),
+    /** debates.id, set by the grouping step of every sync; not a foreign key. */
+    debateId: varchar('debate_id', { length: 80 }),
     speechCount: integer('speech_count').notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index('debate_sections_date_idx').on(t.date)],
+  (t) => [index('debate_sections_date_idx').on(t.date), index('debate_sections_debate_idx').on(t.debateId)],
+);
+
+// ---------------------------------------------------------------------------
+// Debates: the sections that make up one debate, which can run over several days
+// ("… (Resumed)") or be a container of question exchanges. Rebuilt from debate_sections by
+// every sync (server/parliament/debateGroups.ts); nothing else writes it.
+// ---------------------------------------------------------------------------
+export const debateKind = politics.enum('debate_kind', [
+  'bill_stage',
+  'motion',
+  'statements',
+  'leaders_questions',
+  'questions',
+  'topical_issue',
+  /** Formal business with no argument: First Stage, referrals, messages, Order of Business. */
+  'procedural',
+  /** A heading not in the list yet. The sync logs the most common ones. */
+  'other',
+]);
+export type DebateKind = (typeof debateKind.enumValues)[number];
+
+export const debateMoverSource = politics.enum('debate_mover_source', ['bill_sponsor', 'office_holder', 'first_speaker']);
+export type DebateMoverSource = (typeof debateMoverSource.enumValues)[number];
+
+export const debates = politics.table(
+  'debates',
+  {
+    /** The id of its first unit: a section, or the container its question exchanges sit in. */
+    id: varchar('id', { length: 80 }).primaryKey(),
+    kind: debateKind('kind').notNull(),
+    /** The heading without "(Resumed)" / "(Atógáil)". */
+    title: text('title').notNull(),
+    /** bills.id when bill_debates links one of its sections; the lowest id for a joint debate. */
+    billId: varchar('bill_id', { length: 20 }),
+    firstDate: date('first_date').notNull(),
+    lastDate: date('last_date').notNull(),
+    sectionCount: integer('section_count').notNull(),
+    /** Who moved it, and how that was found. NULL when the record does not say. */
+    moverMemberCode: varchar('mover_member_code', { length: 120 }),
+    moverSource: debateMoverSource('mover_source'),
+  },
+  (t) => [index('debates_kind_date_idx').on(t.kind, t.firstDate)],
 );
 
 export const debateSpeeches = politics.table(
@@ -526,6 +576,7 @@ export type NewDivision = typeof divisions.$inferInsert;
 export type NewDivisionVote = typeof divisionVotes.$inferInsert;
 export type DebateSectionRow = typeof debateSections.$inferSelect;
 export type NewDebateSection = typeof debateSections.$inferInsert;
+export type NewDebate = typeof debates.$inferInsert;
 export type NewDebateSpeech = typeof debateSpeeches.$inferInsert;
 export type TdParliamentStatsRow = typeof tdParliamentStats.$inferSelect;
 export type NewBill = typeof bills.$inferInsert;

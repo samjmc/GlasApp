@@ -187,7 +187,8 @@ export function countWords(text: string): number {
 /**
  * One sitting day's transcript → its sections, speeches and division markers. Sections
  * with no speeches (headings, containers, the divisions themselves) are dropped; a nested
- * section keeps its parent's id.
+ * section keeps its parent's id and heading, because the parent is usually such a container
+ * ("Priority Questions") and its heading is the only record of what kind of business it was.
  */
 export function parseTranscript(xml: string, date: string): ParsedTranscript {
   const $ = load(xml, { xml: true });
@@ -249,12 +250,14 @@ export function parseTranscript(xml: string, date: string): ParsedTranscript {
     });
     if (rows.length === 0) return;
 
-    const parentEId = section.parents('debateSection').first().attr('eId');
+    const parent = section.parents('debateSection').first();
+    const parentEId = parent.attr('eId');
     sections.push({
       id,
       date,
       title: section.children('heading').first().text().trim() || section.attr('name') || 'Untitled',
       parentId: parentEId ? sectionId(date, parentEId) : null,
+      parentTitle: parentEId ? parent.children('heading').first().text().trim() || null : null,
       speechCount: rows.length,
     });
     speeches.push(...rows);
