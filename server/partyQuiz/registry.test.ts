@@ -35,7 +35,7 @@ describe('the manifesto registry', () => {
   it('finds a party\'s documents by partyKey, whatever the dash', () => {
     const pbp = documentsFor('People Before Profit–Solidarity').map((d) => d.slug);
     expect(pbp).toEqual(documentsFor('People Before Profit-Solidarity').map((d) => d.slug));
-    expect(pbp.length).toBe(2);
+    expect(pbp).toEqual(['pbp-ge2024']); // one joint document; there is no separate Solidarity manifesto
     expect(documentsFor('Some New Party')).toEqual([]);
   });
 });

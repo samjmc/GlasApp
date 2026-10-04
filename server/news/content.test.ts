@@ -16,8 +16,23 @@ describe('parsePage', () => {
       imageUrl: 'https://x.ie/i.jpg',
       imageWidth: 1200,
       publishedAt: new Date('2026-09-22T10:00:00Z'),
-      body: 'First para.Second para.',
+      // A blank line between paragraphs, not 'First para.Second para.' (the old, glued body).
+      body: 'First para.\n\nSecond para.',
     });
+  });
+
+  it('keeps only the paragraphs, so ad labels and teaser boxes between them drop out', () => {
+    const page = parsePage(`<html><body><article>
+      <p>The Minister said the   scheme would open in spring.</p>
+      <div class="ad-slot">Advertisement</div>
+      <div class="related">Read more: Latest Budget stories</div>
+      <p>The Opposition said it was too late.</p></article></body></html>`);
+    expect(page.body).toBe('The Minister said the scheme would open in spring.\n\nThe Opposition said it was too late.');
+  });
+
+  it('uses the whole container when its paragraphs hold too little of the text', () => {
+    const page = parsePage(`<html><body><article><div>The whole story is written in divs here, at length, with no paragraphs at all.</div><p>Tiny.</p><p>Bits.</p></article></body></html>`);
+    expect(page.body).toBe('The whole story is written in divs here, at length, with no paragraphs at all.Tiny.Bits.');
   });
 
   it('reads the image whatever the attribute order, and resolves a relative one', () => {

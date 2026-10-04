@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { QUIZ_QUESTIONS, type QuizQuestion } from '@shared/quiz';
-import { SYSTEM_PROMPT, bankIndex, buildMessages, documentsBlock, questionBlock, shuffledOrder, type PromptDocument } from './prompt';
+import { PROMPT_VERSION, SYSTEM_PROMPT, bankIndex, buildMessages, documentsBlock, questionBlock, shuffledOrder, type PromptDocument } from './prompt';
 
 // Invented documents: no manifesto is quoted in this repo.
 const DOCS: PromptDocument[] = [
@@ -10,6 +10,14 @@ const DOCS: PromptDocument[] = [
 ];
 
 const content = (m: { content?: unknown }) => m.content as string;
+
+describe('the quote rule', () => {
+  it('asks for one short quote, so a small manifesto stays inside the quote cap', () => {
+    expect(SYSTEM_PROMPT).toContain('ONE quote when one passage is enough');
+    expect(SYSTEM_PROMPT).toContain('SHORTEST passage');
+    expect(PROMPT_VERSION).toBe('v2');
+  });
+});
 
 describe('buildMessages', () => {
   it('keeps the system rules and the documents byte-identical for every question, so the prefix caches', () => {

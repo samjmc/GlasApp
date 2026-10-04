@@ -66,6 +66,34 @@ export function validateSheet(sheet: PartyQuizSheet, registry: ManifestoDocument
   return problems;
 }
 
+/**
+ * Bring a sheet inside its per-document quote cap. One quote supports an answer, so while a
+ * document is over its cap the second quote of an item is dropped, lowest model confidence first
+ * (then the higher question id). An item's only quote is never dropped. Returns the fitted sheet
+ * and how many quotes went; a sheet already inside its caps is returned unchanged.
+ */
+export function fitToQuoteCap(sheet: PartyQuizSheet, registry: ManifestoDocument[] = REGISTRY): { sheet: PartyQuizSheet; dropped: number } {
+  const docs = new Map(documentsFor(sheet.party, registry).filter((d) => d.election === sheet.election).map((d) => [d.slug, d] as const));
+  const items = sheet.items.map((item) => ({ ...item, quotes: [...item.quotes] }));
+  const quotedWords = (slug: string) =>
+    items.reduce((sum, i) => sum + i.quotes.filter((q) => q.document === slug).reduce((s, q) => s + wordCount(q.text), 0), 0);
+  let dropped = 0;
+  for (const slug of sheet.documents) {
+    const total = docs.get(slug)?.wordCount;
+    if (!total) continue;
+    const cap = Math.min(MAX_QUOTED_WORDS_PER_DOCUMENT, Math.floor(MAX_QUOTED_SHARE_OF_DOCUMENT * total));
+    const droppable = items
+      .filter((i) => i.quotes.length > 1 && i.quotes[i.quotes.length - 1]!.document === slug)
+      .sort((a, b) => a.modelConfidence - b.modelConfidence || b.questionId - a.questionId);
+    for (const item of droppable) {
+      if (quotedWords(slug) <= cap) break;
+      item.quotes.pop();
+      dropped += 1;
+    }
+  }
+  return { sheet: dropped === 0 ? sheet : { ...sheet, items }, dropped };
+}
+
 /** Where a sheet lives under server/partyQuiz/sheets, without the extension. */
 export function sheetFile(sheet: Pick<PartyQuizSheet, 'party' | 'election'>): string {
   return `${sheet.election}/${partyKey(sheet.party)}`;

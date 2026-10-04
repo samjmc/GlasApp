@@ -51,6 +51,17 @@ describe('extractStances', () => {
     expect(prompt).toContain(extractionText(ARTICLE));
   });
 
+  // Seen on real articles (2026-10-04): a refusal to comment, a bare figure and a "will be
+  // discussed" all came back as stances. Each rule must stay in the prompt.
+  it('tells the model not to record non-positions', async () => {
+    const complete = vi.fn(async () => ({ stances: [] }));
+    await extractStances(ARTICLE, CANDIDATES, complete);
+    const prompt = (complete.mock.calls[0] as unknown[])[1] as string;
+    expect(prompt).toContain('a refusal or deferral to comment');
+    expect(prompt).toContain('commits to nothing');
+    expect(prompt).toContain('a bare fact or figure');
+  });
+
   it('does not call the model when no TD is mentioned', async () => {
     const complete = vi.fn(async () => ({ stances: [GOOD] }));
     expect(await extractStances(ARTICLE, [], complete)).toEqual([]);

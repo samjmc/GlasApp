@@ -3,7 +3,8 @@
  * against the text, matched to an answer of the article's own daily-vote question; and how a TD
  * voted in the Dáil, when the division matches a daily-vote question (docs/plans/quiz-improvements/01c).
  *
- *   recordStances        the news pipeline and the rebuild job: extract → verify → map → save → evidence
+ *   recordStances        the news pipeline and the rebuild job: extract → verify → position check (Jev)
+ *                        → map → save → evidence
  *   classifyDivisions    Dáil divisions → readings (model calls; `npm run stances -- --divisions`)
  *   syncDivisionStances  readings × roll call → td_stances, then all stance evidence (no model)
  *   runDivisionStances   the nightly run (scheduler, only when DIVISION_STANCES=on)
@@ -14,6 +15,7 @@
  * The HTTP router is imported from ./routes by server/routes.ts.
  */
 export { emptyStanceStats, recordStances, toCandidate, type RecordDeps, type StanceStats } from './record';
+export { isJevConfigured, positionProbability } from './position';
 export { rebuildArticles, type RebuildArticle } from './repository';
 export type { ClassifySummary, DivisionAudit, DivisionReading, MatchedForReview, StanceSyncSummary } from './divisions';
 

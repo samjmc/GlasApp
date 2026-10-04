@@ -245,6 +245,32 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(rows[0].n).toBe(12 * 146 - 3);
   });
 
+  it('groups every stored section into a debate, with its kind, bill and parent heading', async () => {
+    const { rows: debates } = await dbmod.pool.query(
+      'select id, kind, title, bill_id, first_date::text, last_date::text, section_count, mover_source from politics.debates order by id',
+    );
+    expect(debates).toEqual([
+      {
+        id: 'dail-2025-06-25-dbsect_19',
+        kind: 'bill_stage',
+        title: 'Finance (Local Property Tax and Other Provisions) (Amendment) Bill 2025: Committee and Remaining Stages',
+        // Two bills link this section (the real one and the fixture's test bill): the lowest id.
+        bill_id: '2025-32',
+        first_date: '2025-06-25',
+        last_date: '2025-06-25',
+        section_count: 1,
+        // Sponsored by the office "Minister for Finance", which nobody in this roster holds.
+        mover_source: null,
+      },
+      expect.objectContaining({ id: 'dail-2025-06-25-dbsect_2', kind: 'procedural', title: 'Ábhair Shaincheisteanna Tráthúla - Topical Issue Matters', bill_id: null }),
+    ]);
+    const { rows: sections } = await dbmod.pool.query('select id, debate_id from politics.debate_sections order by id');
+    expect(sections).toEqual([
+      { id: 'dail-2025-06-25-dbsect_19', debate_id: 'dail-2025-06-25-dbsect_19' },
+      { id: 'dail-2025-06-25-dbsect_2', debate_id: 'dail-2025-06-25-dbsect_2' },
+    ]);
+  });
+
   it('measures attendance inside the window, and NULL for the chair', async () => {
     const a = await parliament.repository.tdSummary(await tdId(A));
     const y = await parliament.repository.tdSummary(await tdId(Y));
@@ -391,6 +417,9 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(rows[0].n).toBe(12 * 146 - 3);
     const { rows: speeches } = await dbmod.pool.query('select count(*)::int n from politics.debate_speeches');
     expect(speeches[0].n).toBe(33);
+    expect(s.debateGroups).toBe(2);
+    const { rows: grouped } = await dbmod.pool.query('select count(*)::int n from politics.debate_sections where debate_id is null');
+    expect(grouped[0].n).toBe(0);
     const { rows: again } = await dbmod.pool.query(`select
       (select count(*)::int from politics.committee_attendance) attendance,
       (select count(*)::int from politics.committee_memberships) memberships,
