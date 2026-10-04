@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { extractionText, type CandidateTd, type RawStance } from './extract';
-import { NEAR_CHARS, namesFor, normalise, verifyStances } from './verify';
+import { NEAR_CHARS, SENTENCE_MAX_WORDS, insideTeaser, namesFor, normalise, sentenceSpan, verifyStances } from './verify';
 
 const OBRIEN: CandidateTd = { id: 1, name: "Darragh O'Brien", party: 'Fianna Fáil', offices: ['Minister for Housing'] };
 const MURCHU: CandidateTd = { id: 2, name: 'Ruairí Ó Murchú', party: 'Sinn Féin', offices: [] };
@@ -48,7 +48,8 @@ describe('verifyStances', () => {
     expect(result.rejected).toEqual({ invalid: 0, quote_not_found: 0, td_not_near: 0, duplicate: 0 });
     expect(result.accepted).toHaveLength(1);
     expect(result.accepted[0]).toMatchObject({ tdId: 1, quoteKind: 'direct', policyDomain: 'housing' });
-    expect(result.accepted[0]!.quote).toBe('We will deliver fifty thousand new homes by the end of next year,');
+    // Widened to the whole sentence, so it says who spoke.
+    expect(result.accepted[0]!.quote).toBe('“We will deliver fifty thousand new homes by the end of next year,” he said.');
     expect(TEXT.slice(result.accepted[0]!.start, result.accepted[0]!.end)).toBe(result.accepted[0]!.quote);
   });
 
@@ -61,7 +62,8 @@ describe('verifyStances', () => {
   it('matches across collapsed whitespace and maps back to the original span', () => {
     const result = verify(stance(2, 'the State must build more social homes on public land without delay'));
     expect(result.accepted).toHaveLength(1);
-    expect(result.accepted[0]!.quote).toBe('the State must  build more\n  social homes on public land without delay');
+    // A single line break inside the sentence is not a boundary.
+    expect(result.accepted[0]!.quote).toBe('Separately, Ruairí Ó Murchú said the State must  build more\n  social homes on public land without delay.');
   });
 
   it('rejects a quote with an ellipsis, even when each part is in the text', () => {
@@ -147,5 +149,111 @@ describe('verifyStances', () => {
     );
     expect(result.accepted).toHaveLength(1);
     expect(result.rejected.duplicate).toBe(1);
+  });
+});
+
+describe('link teasers', () => {
+  const HARRIS: CandidateTd = { id: 5, name: 'Simon Harris', party: 'Fine Gael', offices: ['Tánaiste'] };
+  const text = extractionText({
+    title: 'Boiler scrappage scheme',
+    content:
+      'The scheme could be worth €2,000 to households.\n\n' +
+      '[ ‘Help is on the way’ with energy costs, Simon Harris says in advance of budgetOpens in new window ]\n\n' +
+      'Simon Harris said the Government would help households with energy costs this winter.',
+  });
+
+  it('rejects a quote that is a teaser for another article, and keeps a real one beside it', () => {
+    const result = verifyStances(text, [HARRIS], [
+      stance(5, '‘Help is on the way’ with energy costs, Simon Harris says in advance of budget', 'paraphrase', 'economy'),
+      stance(5, 'the Government would help households with energy costs this winter', 'paraphrase', 'economy'),
+    ]);
+    expect(result.rejected.invalid).toBe(1);
+    expect(result.accepted.map((a) => a.quote)).toEqual(['Simon Harris said the Government would help households with energy costs this winter.']);
+  });
+
+  it('knows what is inside a teaser and what is not', () => {
+    const at = (fragment: string) => [text.indexOf(fragment), text.indexOf(fragment) + fragment.length] as const;
+    expect(insideTeaser(text, ...at('Help is on the way'))).toBe(true);
+    expect(insideTeaser(text, ...at('would help households'))).toBe(false);
+    const editor = '"Prices rose [in their bills]," he said.';
+    expect(insideTeaser(editor, editor.indexOf('in their'), editor.indexOf('in their') + 8)).toBe(false);
+  });
+});
+
+describe('sentenceSpan', () => {
+  const widen = (text: string, fragment: string) => {
+    const at = text.indexOf(fragment);
+    expect(at).toBeGreaterThanOrEqual(0);
+    const [from, to] = sentenceSpan(text, at, at + fragment.length);
+    return text.slice(from, to);
+  };
+
+  it('widens a fragment in quotation marks to the sentence that says who said it', () => {
+    const text = 'Young people said they would leave. Johnny Guirke said many were going “from not being able to rent or to buy a home”. Others disagreed.';
+    expect(widen(text, 'from not being able to rent or to buy a home')).toBe(
+      'Johnny Guirke said many were going “from not being able to rent or to buy a home”.',
+    );
+  });
+
+  it('does not end a sentence at a decimal point, an abbreviation or an initial', () => {
+    expect(widen('Before. Mr. Doherty said the €1.5bn package was too small and Dr. Smith agreed. After.', 'the €1.5bn package was too small')).toBe(
+      'Mr. Doherty said the €1.5bn package was too small and Dr. Smith agreed.',
+    );
+    expect(widen('Before. Conor D. McGuinness said the plan must change now. After.', 'the plan must change now')).toBe(
+      'Conor D. McGuinness said the plan must change now.',
+    );
+  });
+
+  it('keeps the closing mark after a full stop, and a straight opening mark', () => {
+    expect(widen('He said: "We will build homes." Then he left.', 'We will build homes.')).toBe('He said: "We will build homes."');
+    expect(widen('First one. "We will act now," she said. Last.', 'We will act now')).toBe('"We will act now," she said.');
+  });
+
+  it('stops at a paragraph break, and ends a question at its question mark', () => {
+    expect(widen('Heading line\n\nThe Minister said the scheme would open in spring next year', 'the scheme would open in spring')).toBe(
+      'The Minister said the scheme would open in spring next year',
+    );
+    expect(widen('Will you commit to a €400 energy credit? He did not answer.', 'commit to a €400 energy credit')).toBe(
+      'Will you commit to a €400 energy credit?',
+    );
+  });
+
+  // Real stored articles (2026-10-04) glue paragraphs together with no space, and carry link
+  // teasers. Without these edges another speaker's sentence ended up inside a TD's quote.
+  it('ends a sentence glued to the next one with no space', () => {
+    const glued = 'it can be used as ID.Presenting the Bill, the Minister said it would allow use “on a voluntary basis”.The Opposition disagreed.';
+    expect(widen(glued, 'on a voluntary basis')).toBe('Presenting the Bill, the Minister said it would allow use “on a voluntary basis”.');
+    const quotes = '“Talks are open,” he said.“Balloting is only delaying a pay deal.“We will make provision,” he added.';
+    expect(widen(quotes, 'Balloting is only delaying a pay deal')).toBe('“Balloting is only delaying a pay deal.');
+    expect(widen('Whitmore called for a windfall tax, Whitmore said.She, too, called for a credit.', 'called for a windfall tax')).toBe(
+      'Whitmore called for a windfall tax, Whitmore said.',
+    );
+    // Glued at a comma: without this, Harris's words became part of Martin's quote.
+    const comma = 'Martin said the renters’ credit would be increased in the budget,Harris said it was a matter for budget day.';
+    expect(widen(comma, 'the renters’ credit would be increased')).toBe('Martin said the renters’ credit would be increased in the budget,');
+    // A normal comma is not an edge.
+    expect(widen('Before. Martin said the credit, which is €1,000, would rise. After.', 'the credit, which is')).toBe(
+      'Martin said the credit, which is €1,000, would rise.',
+    );
+  });
+
+  it('treats a "[ … ]" link teaser as an edge, but not an editor\'s bracket inside a quote', () => {
+    const teaser = '[ Irish Times poll reveals what voters want Opens in new window ] Labour spokesman Ged Nash called for a €400 credit. [ Rural heating oil Opens in new window ]';
+    expect(widen(teaser, 'called for a €400 credit')).toBe('Labour spokesman Ged Nash called for a €400 credit.');
+    const editor = 'Before. "A million households will see a double-digit increase [in their electricity bills]," Mr Doherty said. After.';
+    expect(widen(editor, 'will see a double-digit increase')).toBe(
+      '"A million households will see a double-digit increase [in their electricity bills]," Mr Doherty said.',
+    );
+  });
+
+  it('keeps a quote that spans two sentences whole', () => {
+    expect(widen('Intro. This shows the bonanza they enjoy. This is all happening now. End.', 'This shows the bonanza they enjoy. This is all happening')).toBe(
+      'This shows the bonanza they enjoy. This is all happening now.',
+    );
+  });
+
+  it(`leaves the quote alone when the sentence is over ${SENTENCE_MAX_WORDS} words`, () => {
+    const long = `She said ${'more and more words '.repeat(25)}the plan must change now and then went on.`;
+    expect(widen(long, 'the plan must change now')).toBe('the plan must change now');
   });
 });

@@ -68,7 +68,10 @@ Do NOT record:
 - claims other people make about the TD;
 - the TD describing or rebutting an opponent;
 - questions put to the TD;
-- procedural remarks, or anything with no policy content.
+- procedural remarks, or anything with no policy content;
+- a refusal or deferral to comment (for example "I can't comment on that yet");
+- a statement that commits to nothing, only that a matter will be discussed or considered;
+- a bare fact or figure (a price, a poll result, a cost) with no view on what should be done.
 
 Rules:
 - At most one stance per TD. An empty list is a normal answer.

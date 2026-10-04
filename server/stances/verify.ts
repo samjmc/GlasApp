@@ -6,12 +6,20 @@
  * 3. The TD's surname, one of their offices, or "Taoiseach"/"Tánaiste" when they hold it, is
  *    within NEAR_CHARS of the quote, else `td_not_near`. Two TDs with the same surname can
  *    pass for each other; that is accepted, because the quote is always shown.
- * 4. An unknown td_id or domain, or a quote that breaks the prompt's rules, is `invalid`.
+ * 4. An unknown td_id or domain, or a quote that breaks the prompt's rules, is `invalid`; so
+ *    is a quote inside a link teaser for another article ("[ … Opens in new window ]").
+ *
+ * An accepted quote is then widened to the whole sentence (or sentences) it sits in, when that is
+ * at most SENTENCE_MAX_WORDS words. A direct quote is whatever the article put in quotation
+ * marks, often half a sentence ("from not being able to rent or to buy a home"); the whole
+ * sentence says who said it and about what. It is still a verbatim passage of the article.
  */
 import { POLICY_DOMAINS, type PolicyDomain } from '../constants/policyTopics';
 import { QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type CandidateTd, type NewsQuoteKind, type RawStance } from './extract';
 
 export const NEAR_CHARS = 300;
+/** A quote is widened to its whole sentence only when the sentence is at most this long. */
+export const SENTENCE_MAX_WORDS = 80;
 /** How far before a direct quote its opening quote mark may sit (a space, say). */
 export const OPENING_MARK_CHARS = 2;
 
@@ -130,6 +138,110 @@ function nearRange(n: Normalised, origStart: number, origEnd: number): [number, 
   return [from, to];
 }
 
+const TERMINATORS = '.!?';
+// Closing quote marks and brackets that belong to the sentence they follow.
+const CLOSERS = [0x22, 0x27, 0x29, 0x5d, 0x2019, 0x201d, 0x00bb].map((code) => String.fromCharCode(code));
+// Words that end with a full stop without ending the sentence.
+const ABBREVIATIONS = ['mr', 'mrs', 'ms', 'dr', 'st', 'prof', 'rev', 'fr', 'sen', 'cllr', 'no', 'nos', 'vs', 'jr', 'sr', 'gen', 'lt', 'col', 'capt', 'etc'];
+const isSpace = (ch: string | undefined) => ch !== undefined && /\s/.test(ch);
+const isDigit = (ch: string | undefined) => ch !== undefined && ch >= '0' && ch <= '9';
+
+// What can start a sentence that was glued to the previous one with no space: stored articles
+// often join paragraphs that way ("…as ID.Presenting new legislation…", "…he said.“We will…").
+const SENTENCE_START = /[A-ZÁÉÍÓÚ“‘]/;
+
+/**
+ * A sentence ends at `i`: a terminator, then a space, the end of the text or a glued-on new
+ * sentence, and not a decimal point, an initial or a known abbreviation.
+ */
+function endsSentence(text: string, i: number): boolean {
+  // Prose always puts a space after , ; and : so one glued straight to a capital is a join
+  // between paragraphs ("…would be increased in the budget,Harris said…").
+  if (',;:'.indexOf(text[i]!) !== -1) return SENTENCE_START.test(text[i + 1] ?? '');
+  if (TERMINATORS.indexOf(text[i]!) === -1) return false;
+  let j = i + 1;
+  while (j < text.length && CLOSERS.indexOf(text[j]!) !== -1) j++;
+  if (j < text.length && !isSpace(text[j]) && !SENTENCE_START.test(text[j]!)) return false;
+  if (text[i] !== '.') return true;
+  if (isDigit(text[i - 1]) && isDigit(text[i + 1])) return false;
+  let k = i;
+  while (k > 0 && /[A-Za-z]/.test(text[k - 1]!)) k--;
+  const word = text.slice(k, i);
+  // One letter is an initial ("Conor D. McGuinness"); no letters at all (`”.`) is a real end.
+  return word.length !== 1 && ABBREVIATIONS.indexOf(word.toLowerCase()) === -1;
+}
+
+// A link teaser, "[ Irish Times poll reveals what voters want Opens in new window ]", is a hard
+// edge on both sides. An editor's insertion inside a quote, "[in their bills]", has no inner
+// spaces and is left alone.
+const opensTeaser = (text: string, i: number) => text[i] === '[' && text[i + 1] === ' ';
+const closesTeaser = (text: string, i: number) => text[i] === ']' && text[i - 1] === ' ';
+
+/** text[start, end) sits inside a link teaser: a "[ " before it and a " ]" after it, nothing between. */
+export function insideTeaser(text: string, start: number, end: number): boolean {
+  let open = false;
+  for (let i = start - 1; i >= 0 && text[i] !== '\n'; i--) {
+    if (closesTeaser(text, i) || text[i] === ']') return false;
+    if (opensTeaser(text, i)) {
+      open = true;
+      break;
+    }
+  }
+  if (!open) return false;
+  for (let i = end; i < text.length && text[i] !== '\n'; i++) {
+    if (text[i] === '[') return false;
+    if (closesTeaser(text, i)) return true;
+  }
+  return false;
+}
+
+/** A blank line ends a paragraph; a single line break inside a sentence does not. */
+function isParagraphBreak(text: string, i: number, direction: 1 | -1): boolean {
+  if (text[i] !== '\n') return false;
+  let j = i + direction;
+  while (j >= 0 && j < text.length && (text[j] === ' ' || text[j] === '\t' || text[j] === '\r')) j += direction;
+  return text[j] === '\n';
+}
+
+/**
+ * The span of the whole sentence(s) containing text[start, end): back to the previous sentence
+ * end or paragraph break, forward to the next. The original span when that is longer than
+ * SENTENCE_MAX_WORDS words.
+ */
+export function sentenceSpan(text: string, start: number, end: number): [number, number] {
+  let from = 0;
+  for (let i = start - 1; i >= 0; i--) {
+    if (closesTeaser(text, i)) {
+      from = i + 1;
+      while (from < start && isSpace(text[from])) from++;
+      break;
+    }
+    if (endsSentence(text, i) || isParagraphBreak(text, i, -1)) {
+      from = i + 1;
+      // Closing marks right after the previous sentence's full stop are its own; then the gap.
+      // A straight " after the gap opens THIS sentence, so it is kept.
+      if (text[i] !== '\n') while (from < start && CLOSERS.indexOf(text[from]!) !== -1) from++;
+      while (from < start && isSpace(text[from])) from++;
+      break;
+    }
+  }
+  let to = text.length;
+  for (let i = Math.max(start, end - 1); i < text.length; i++) {
+    if (i >= end && (isParagraphBreak(text, i, 1) || opensTeaser(text, i))) {
+      to = i;
+      break;
+    }
+    if (endsSentence(text, i)) {
+      to = i + 1;
+      while (to < text.length && CLOSERS.indexOf(text[to]!) !== -1) to++;
+      break;
+    }
+  }
+  while (to > end && isSpace(text[to - 1])) to--;
+  const words = text.slice(from, to).trim().split(/\s+/).length;
+  return words <= SENTENCE_MAX_WORDS ? [from, to] : [start, end];
+}
+
 function emptyCounts(): Record<RejectReason, number> {
   const counts = {} as Record<RejectReason, number>;
   for (const reason of REJECT_REASONS) counts[reason] = 0;
@@ -189,8 +301,14 @@ export function verifyStances(text: string, candidates: CandidateTd[], stances: 
 
     const kind: NewsQuoteKind = stance.quoteKind === 'direct' && !match.direct ? 'paraphrase' : stance.quoteKind;
     if (kind !== stance.quoteKind) downgraded++;
-    const start = n.offsets[match.pos]!;
-    const end = n.offsets[match.pos + quote.length - 1]! + 1;
+    const matchStart = n.offsets[match.pos]!;
+    const matchEnd = n.offsets[match.pos + quote.length - 1]! + 1;
+    // A teaser for another article ("[ … Opens in new window ]") is a link, not anything the TD said.
+    if (insideTeaser(text, matchStart, matchEnd)) {
+      rejected.invalid++;
+      continue;
+    }
+    const [start, end] = sentenceSpan(text, matchStart, matchEnd);
     accepted.push({
       tdId: td.id,
       policyDomain: stance.policyDomain as PolicyDomain,
