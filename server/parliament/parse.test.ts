@@ -134,6 +134,22 @@ describe('parseTranscript', () => {
     ]);
   });
 
+  it("keeps a nested section's parent id and heading, even when the parent has no speeches", () => {
+    const xml = `<akomaNtoso><debate><meta><references>
+      <TLCPerson eId="X" href="/ie/oireachtas/member/id/X.D.2020-01-01" showAs="X"/>
+      </references></meta><debateBody>
+      <debateSection eId="dbsect_1"><heading>Ceisteanna ar Sonraíodh Uain Dóibh - Priority Questions</heading>
+        <debateSection eId="dbsect_2"><heading>Housing Supply</heading><speech by="#X" eId="spk_1"><p>One.</p></speech></debateSection>
+      </debateSection>
+      <debateSection eId="dbsect_3"><heading>Top</heading><speech by="#X" eId="spk_2"><p>Two.</p></speech></debateSection>
+      </debateBody></debate></akomaNtoso>`;
+    const out = parseTranscript(xml, '2025-01-01');
+    expect(out.sections.map((s) => [s.id, s.parentId, s.parentTitle])).toEqual([
+      ['dail-2025-01-01-dbsect_2', 'dail-2025-01-01-dbsect_1', 'Ceisteanna ar Sonraíodh Uain Dóibh - Priority Questions'],
+      ['dail-2025-01-01-dbsect_3', null, null],
+    ]);
+  });
+
   it('counts words and never stores an empty speech', () => {
     expect(t.speeches.every((s) => s.text.length > 0 && s.wordCount > 0)).toBe(true);
     expect(t.speeches[0].wordCount).toBe(countWords(t.speeches[0].text));

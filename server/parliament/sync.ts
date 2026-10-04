@@ -63,7 +63,7 @@ export interface SyncOptions {
   log?: (line: string) => void;
 }
 
-export type SyncFeed = 'gender' | 'divisions' | 'debates' | 'committees' | 'bills' | 'questions' | 'interests' | 'allowances';
+export type SyncFeed = 'gender' | 'divisions' | 'debates' | 'committees' | 'bills' | 'debate-groups' | 'questions' | 'interests' | 'allowances';
 
 /** `failed*`: units that failed in THIS run (the stored map has every open failure). */
 export interface SyncSummary {
@@ -72,6 +72,8 @@ export interface SyncSummary {
   debates: { from: string; to: string; days: number; failedDays: string[]; sections: number; speeches: number };
   committees: { from: string; to: string; days: number; failedDays: string[]; sittings: number; unresolvedSittings: number };
   bills: { ingested: number };
+  /** Debates the stored sections were grouped into (all of them, not just this run's). */
+  debateGroups: number;
   questions: { from: string; to: string; months: number; failedMonths: string[]; questions: number; totalsComplete: boolean };
   /** New PDF files read this run; names that matched no current TD are listed, not stored. */
   interests: DisclosureResult;
@@ -307,6 +309,15 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     log(`Bills: ${parsed.length}.`);
   });
 
+  // 5a. Group the stored sections into debates; needs the debates and bills above. Derived,
+  //     so a failure keeps the previous grouping and the run carries on.
+  let debateGroups = 0;
+  await feed('debate-groups', async () => {
+    const g = await repo.regroupDebates();
+    debateGroups = g.debates;
+    log(`Debates: ${g.debates} from ${g.sections} sections${g.unknownHeadings.length ? `; headings not in any list: ${g.unknownHeadings.join('; ')}` : ''}.`);
+  });
+
   // 5b. The interests register and allowance payments, from the Oireachtas's PDFs.
   const disclosureContext = {
     roster: roster.map((m) => ({ memberCode: m.memberCode, fullName: m.fullName, constituency: m.constituency })),
@@ -419,6 +430,7 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     debates,
     committees,
     bills,
+    debateGroups,
     questions,
     interests,
     allowances,
