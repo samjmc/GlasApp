@@ -52,6 +52,9 @@ const INGESTED: Record<string, { sha256: string; wordCount: number }> = {
   'greens-ge2024': { sha256: '9504e3a19b90e591dc2f7f5dc8cda5373f748af44711805e862441d4c2375cba', wordCount: 29317 },
   // One joint People Before Profit-Solidarity document, hosted by PBP; there is no separate Solidarity manifesto.
   'pbp-ge2024': { sha256: '927d09aab4d2234028a4d2f879f993854ea5675ba4c96e86faf9539ff509c4de', wordCount: 12325 },
+  // Two parts of one manifesto, official files from the Wayback Machine; aontu.ie has no AI/TDM rules in its robots.txt or terms.
+  'aontu-ge2024-p1': { sha256: '2140e71b6214bfb7d3b24a834e41c931a72600243a188772e7f5839184f91fba', wordCount: 12134 },
+  'aontu-ge2024-p2': { sha256: '1c7e19b435396fffcb0e685e6354d8c6bd074eeb05636e01f6e5152f9bab7a68', wordCount: 16413 },
   // Its robots.txt names many AI crawlers but does not disallow this document; no tdm-reservation found.
   'ii-ge2024': { sha256: '0d471ffc20aa76e5821f903bfb29f4cec6af9b61e402d24287d0c291d44e6a04', wordCount: 7422 },
 };
@@ -66,7 +69,10 @@ const CANDIDATES: ManifestoDocument[] = [
   // One joint People Before Profit-Solidarity document, hosted by PBP; there is no separate Solidarity manifesto.
   candidate('pbp-ge2024', 'People Before Profit-Solidarity', 'A Vision for Real Change', 'https://www.pbp.ie/content/files/2024/11/PBP-Manifesto-GE2024-2.pdf', 'pdf'),
   candidate('ii-ge2024', 'Independent Ireland', 'General Election Manifesto 2024', 'https://www.independentireland.ie/s/Compressed-General-Election-Manifesto.pdf', 'pdf'),
-  candidate('aontu-ge2024', 'Aontú', 'Our Common Sense', null, 'pdf'),
+  // Aontú's site no longer hosts these two parts (404); the official files survive on the Wayback Machine.
+  // pidgeon.ie holds a merged copy of both: https://pidgeon.ie/manifestos/docs/aontu/Aontu%20GE%202024.pdf
+  candidate('aontu-ge2024-p1', 'Aontú', 'Our Common Sense, part 1 (pages 1-52)', 'https://web.archive.org/web/20241121180148id_/https://aontu.ie/styles/kcfinder/upload/images/Manifestop1.pdf', 'pdf'),
+  candidate('aontu-ge2024-p2', 'Aontú', 'Our Common Sense, part 2 (pages 53-105)', 'https://web.archive.org/web/20241203151115id_/https://aontu.ie/styles/kcfinder/upload/images/Manifestop2.pdf', 'pdf'),
   candidate('rdr-ge2024', '100% RDR', '100% Redress Party manifesto', 'https://www.100percentredressparty.ie/manifesto/', 'html'),
 ];
 

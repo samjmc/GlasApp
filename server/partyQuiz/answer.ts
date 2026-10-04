@@ -283,6 +283,25 @@ export async function runAnswer(opts: AnswerOptions, deps: AnswerDeps = {}): Pro
       return was.status === i.status && was.answerIndex === i.answerIndex;
     });
     log(`Shuffle check: ${same.length} of ${fresh.length} identical to the sheet (need at least 90%).`);
+    // The same comparison split by what the sheet says: a borderline question can flip between two
+    // runs of any model, so what matters for review is how many KEPT answers come back unchanged.
+    const split = { kept: 0, same: 0, changed: 0, nowAbstained: 0, abstained: 0, nowAnswered: 0 };
+    for (const i of fresh) {
+      const was = existing!.items.find((e) => e.questionId === i.questionId)!;
+      if (was.status === 'answered') {
+        split.kept += 1;
+        if (i.status === 'abstained') split.nowAbstained += 1;
+        else if (i.answerIndex === was.answerIndex) split.same += 1;
+        else split.changed += 1;
+      } else {
+        split.abstained += 1;
+        if (i.status === 'answered') split.nowAnswered += 1;
+      }
+    }
+    log(
+      `Of ${split.kept} answered item(s) on the sheet: ${split.same} the same, ${split.changed} a different answer, ${split.nowAbstained} now an abstention. ` +
+        `Of ${split.abstained} abstained: ${split.nowAnswered} now answered.`,
+    );
     return summary;
   }
 

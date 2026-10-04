@@ -231,6 +231,27 @@ describe('runAnswer', () => {
     expect(call).not.toHaveBeenCalled();
   });
 
+  it('--shuffle-check splits its result by what the sheet says: kept answers, and abstentions', async () => {
+    const answered = (questionId: number, answerIndex: number): PartyQuizItem => ({
+      questionId, fingerprint: questionFingerprint(BANK[questionId - 1]!), status: 'answered', answerIndex, abstainReason: null,
+      quotes: [{ document: 'x-ge2024', page: 1, pageLabel: '1', text: QUOTE_A, quoteSha: quoteSha(QUOTE_A) }],
+      rationale: 'Invented.', modelConfidence: 0.9, review: 'pending',
+    });
+    const silent: PartyQuizItem = { ...answered(3, 0), status: 'abstained', answerIndex: null, abstainReason: 'silent', quotes: [] };
+    writeSheet({
+      party: 'Green Party', election: 'ge2024', documents: ['x-ge2024'], model: 'm', promptVersion: 'v0',
+      items: [answered(1, 1), answered(2, 2), silent, answered(4, 1)],
+    }, sheetsDir);
+    // The model answers "Answer B" wherever it is shown, except Q4, where its quote is not in the document.
+    const { call } = fakeCall((id, prompt) => ({
+      index: Number(/^(\d+)\. Answer B$/m.exec(prompt)![1]),
+      quote: id === 4 ? 'A sentence that is nowhere in this document at all' : QUOTE_A,
+    }));
+    await runAnswer({ party: 'Green Party', yes: true, shuffleCheck: true, questions: [1, 2, 3, 4] }, deps(call));
+    expect(lines).toContain('Shuffle check: 1 of 4 identical to the sheet (need at least 90%).');
+    expect(lines).toContain('Of 3 answered item(s) on the sheet: 1 the same, 1 a different answer, 1 now an abstention. Of 1 abstained: 1 now answered.');
+  });
+
   it('reads the negative control from the fixture, without its comment lines', () => {
     const control = controlDocument();
     expect(control.slug).toBe('control');
