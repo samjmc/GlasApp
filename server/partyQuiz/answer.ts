@@ -26,7 +26,7 @@ import {
   type ChatMessage,
 } from './prompt';
 import { REGISTRY, documentsFor, type ManifestoDocument } from './registry';
-import { validateSheet } from './sheet';
+import { fitToQuoteCap, validateSheet } from './sheet';
 import { readSheet, writeSheet } from './sheetFiles';
 import { TextStore } from './store';
 
@@ -55,6 +55,8 @@ export interface AnswerOptions {
   dryRun?: boolean;
   yes?: boolean;
   shuffleCheck?: boolean;
+  /** Ask every question twice (bank order, then the shuffled order) and keep only answers that agree. */
+  consensus?: boolean;
   control?: boolean;
 }
 
@@ -110,6 +112,32 @@ export function keepApproval(previous: PartyQuizItem | undefined, fresh: PartyQu
   return same ? { ...fresh, review: 'approved' } : fresh;
 }
 
+/**
+ * Two readings of one question, in bank order and in a shuffled answer order, as one item. They
+ * agree when both answer with the same option, or both abstain: the first reading is kept (its
+ * quotes and reason), with the lower confidence. Otherwise the answer depends on the order the
+ * options were shown in, so it is a low_confidence abstention that keeps the leaning for review.
+ */
+export function consensusItem(first: PartyQuizItem, second: PartyQuizItem): PartyQuizItem {
+  const confidence = Math.min(first.modelConfidence, second.modelConfidence);
+  if (first.status === 'answered' && second.status === 'answered' && first.answerIndex === second.answerIndex) {
+    return { ...first, modelConfidence: confidence };
+  }
+  if (first.status === 'abstained' && second.status === 'abstained') return first;
+  const leaning = first.answerIndex ?? first.tentativeAnswerIndex ?? second.answerIndex ?? second.tentativeAnswerIndex;
+  const { tentativeAnswerIndex: _dropped, ...rest } = first;
+  return {
+    ...rest,
+    status: 'abstained',
+    answerIndex: null,
+    abstainReason: 'low_confidence',
+    quotes: [],
+    rationale: 'The answer changed when the options were shown in a different order, so it is not kept.',
+    modelConfidence: confidence,
+    ...(leaning === null || leaning === undefined ? {} : { tentativeAnswerIndex: leaning }),
+  };
+}
+
 async function inPool<T>(items: T[], size: number, run: (item: T) => Promise<void>): Promise<void> {
   let next = 0;
   const worker = async () => {
@@ -143,6 +171,7 @@ export async function runAnswer(opts: AnswerOptions, deps: AnswerDeps = {}): Pro
     });
   }
 
+  if (opts.consensus && (opts.shuffleCheck || opts.control)) throw new Error('--consensus writes a sheet; it does not go with --shuffle-check or --control');
   const existing = readSheet(party, 'ge2024', deps.sheetsDir);
   const unknown = (opts.questions ?? []).filter((id) => !byId.has(id));
   if (unknown.length) throw new Error(`Not in the bank: ${unknown.join(', ')}`);
@@ -161,8 +190,9 @@ export async function runAnswer(opts: AnswerOptions, deps: AnswerDeps = {}): Pro
     throw new Error(`${party}'s documents are about ${prefixTokens} tokens, over the ${MAX_PARTY_TOKENS} guard`);
   }
   const tokensFor = (q: QuizQuestion) => Math.ceil((prefixChars + questionBlock(q).length + 2) / CHARS_PER_TOKEN);
-  const promptTokens = selected.reduce((n, q) => n + tokensFor(q), 0);
-  const estimate = costOf({ prompt: promptTokens, completion: selected.length * ESTIMATED_OUTPUT_TOKENS, cacheHit: 0, cacheMiss: promptTokens });
+  const passes = opts.consensus ? 2 : 1; // consensus asks every question twice
+  const promptTokens = passes * selected.reduce((n, q) => n + tokensFor(q), 0);
+  const estimate = costOf({ prompt: promptTokens, completion: passes * selected.length * ESTIMATED_OUTPUT_TOKENS, cacheHit: 0, cacheMiss: promptTokens });
   log(
     `${party}${opts.control ? ' (negative control)' : ''}: ${selected.length} question(s), about ${prefixTokens} document tokens per call, ` +
       `${promptTokens} prompt tokens in all; estimated cost without cache $${estimate.toFixed(4)} ` +
@@ -208,6 +238,18 @@ export async function runAnswer(opts: AnswerOptions, deps: AnswerDeps = {}): Pro
   const pages = new Map(promptDocs.map((d) => [d.slug, d.pages] as const));
   const results = new Map<number, PartyQuizItem>();
   const runOne = async (question: QuizQuestion) => {
+    if (opts.consensus) {
+      try {
+        const first = await answerQuestion(ask, buildMessages(promptDocs, question), { question, docs: pages });
+        const shuffled = shuffledOrder(question);
+        const second = await answerQuestion(ask, buildMessages(promptDocs, question, shuffled), { question, docs: pages, order: shuffled });
+        if ('item' in first && 'item' in second) results.set(question.id, consensusItem(first.item, second.item));
+        else summary.failures.push(`Q${question.id}: ${'failure' in first ? first.failure : 'failure' in second ? second.failure : 'no reading'}`);
+      } catch (error) {
+        summary.failures.push(`Q${question.id}: ${error instanceof Error ? error.message : String(error)}`);
+      }
+      return;
+    }
     const order = opts.shuffleCheck ? shuffledOrder(question) : undefined;
     const ctx: AnswerContext = { question, docs: pages, order };
     try {
@@ -246,7 +288,7 @@ export async function runAnswer(opts: AnswerOptions, deps: AnswerDeps = {}): Pro
 
   const items = new Map((existing?.items ?? []).map((i) => [i.questionId, i] as const));
   for (const item of fresh) items.set(item.questionId, keepApproval(items.get(item.questionId), item));
-  const sheet: PartyQuizSheet = {
+  const built: PartyQuizSheet = {
     party,
     election: 'ge2024',
     documents: docs.map((d) => d.slug),
@@ -254,6 +296,8 @@ export async function runAnswer(opts: AnswerOptions, deps: AnswerDeps = {}): Pro
     promptVersion: PROMPT_VERSION,
     items: Array.from(items.values()).sort((a, b) => a.questionId - b.questionId),
   };
+  const { sheet, dropped } = fitToQuoteCap(built, registry);
+  if (dropped > 0) log(`Dropped ${dropped} second quote(s) to stay inside the quote cap.`);
   const file = writeSheet(sheet, deps.sheetsDir);
   summary.problems = validateSheet(sheet, registry);
   log(`Wrote ${file}: ${fresh.length} item(s) answered this run, ${sheet.items.length} in the sheet.`);

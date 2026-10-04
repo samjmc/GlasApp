@@ -83,9 +83,17 @@ describe('partyAnswers', () => {
     });
   });
 
-  it('with the compiled-in sheets (none yet), a registered party has documents and no answers', () => {
-    expect(partyAnswers('Fine Gael')).toMatchObject({ party: 'Fine Gael', position: null, pendingCount: 0, answers: [] });
-    expect(partyAnswers('Fine Gael')!.documents.map((d) => d.slug)).toEqual(['fg-ge2024']);
+  it('a registered party with no sheet has its documents and no answers', () => {
+    // 100% RDR has a registry entry (a web page the party must still supply) and no sheet.
+    expect(partyAnswers('100% RDR')).toMatchObject({ party: '100% RDR', position: null, pendingCount: 0, answers: [] });
+    expect(partyAnswers('100% RDR')!.documents.map((d) => d.slug)).toEqual(['rdr-ge2024']);
+  });
+
+  it('serves nothing from a compiled-in sheet while all its items are pending review', () => {
+    const fg = partyAnswers('Fine Gael')!;
+    expect(fg.position).toBeNull();
+    expect(fg.answers).toEqual([]);
+    expect(fg.pendingCount).toBeGreaterThan(0);
   });
 });
 
