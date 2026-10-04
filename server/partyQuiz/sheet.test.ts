@@ -3,7 +3,7 @@ import { transformSync } from 'esbuild';
 import type { PartyQuizItem, PartyQuizQuote, PartyQuizSheet } from '@shared/partyQuiz';
 import { quoteSha } from './normalise';
 import type { ManifestoDocument } from './registry';
-import { renderIndexSource, renderSheetSource, sheetFile, validateSheet } from './sheet';
+import { fitToQuoteCap, renderIndexSource, renderSheetSource, sheetFile, validateSheet } from './sheet';
 
 // Invented text and documents: no manifesto is quoted in this repo.
 const words = (n: number, seed = 0) => Array.from({ length: n }, (_, i) => `word${seed}n${i}`).join(' ');
@@ -24,6 +24,45 @@ const sheet = (items: PartyQuizItem[], over: Partial<PartyQuizSheet> = {}): Part
   party: 'Fine Gael', election: 'ge2024', documents: ['small-ge2024', 'big-ge2024'], model: 'deepseek-flash', promptVersion: 'v1', items, ...over,
 });
 const problems = (s: PartyQuizSheet, registry = REGISTRY) => validateSheet(s, registry);
+
+describe('fitToQuoteCap', () => {
+  // small-ge2024: cap 100 words. Each item below quotes 20 + 20 words.
+  const two = (id: number, confidence: number) => item(id, { modelConfidence: confidence, quotes: [quote(words(20, id)), quote(words(20, id + 10))] });
+
+  it('leaves a sheet inside its cap exactly as it is', () => {
+    const inside = sheet([two(1, 0.9), item(2)]);
+    const fitted = fitToQuoteCap(inside, REGISTRY);
+    expect(fitted.dropped).toBe(0);
+    expect(fitted.sheet).toBe(inside);
+  });
+
+  it('drops the second quote of the least confident items first, and stops as soon as it fits', () => {
+    // 3 items x 40 words = 120 > 100: dropping one second quote (20 words) gives 100, which fits.
+    const fitted = fitToQuoteCap(sheet([two(1, 0.9), two(2, 0.4), two(3, 0.7)]), REGISTRY);
+    expect(fitted.dropped).toBe(1);
+    expect(fitted.sheet.items.map((i) => i.quotes.length)).toEqual([2, 1, 2]);
+    expect(problems(fitted.sheet)).toEqual([]);
+  });
+
+  it('keeps the first quote and the verified hash of what stays', () => {
+    const fitted = fitToQuoteCap(sheet([two(1, 0.9), two(2, 0.4), two(3, 0.7)]), REGISTRY).sheet;
+    const kept = fitted.items[1]!.quotes;
+    expect(kept).toEqual([quote(words(20, 2))]);
+  });
+
+  it('never drops the only quote of an item, even if the sheet stays over its cap', () => {
+    const heavy = [1, 2, 3, 4, 5, 6].map((id) => item(id, { quotes: [quote(words(30, id))] }));
+    const fitted = fitToQuoteCap(sheet(heavy), REGISTRY);
+    expect(fitted.dropped).toBe(0);
+    expect(fitted.sheet.items.every((i) => i.quotes.length === 1)).toBe(true);
+    expect(problems(fitted.sheet)).toEqual(['small-ge2024: 180 words quoted, at most 100']);
+  });
+
+  it('breaks a confidence tie by dropping from the higher question id', () => {
+    const fitted = fitToQuoteCap(sheet([two(1, 0.5), two(2, 0.5), two(3, 0.5)]), REGISTRY);
+    expect(fitted.sheet.items.map((i) => i.quotes.length)).toEqual([2, 2, 1]);
+  });
+});
 
 describe('validateSheet', () => {
   it('passes a sheet inside every cap', () => {

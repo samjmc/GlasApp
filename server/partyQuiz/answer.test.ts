@@ -6,9 +6,9 @@ import type { PartyQuizItem } from '@shared/partyQuiz';
 import type { QuizQuestion } from '@shared/quiz';
 import type { ChatProvider } from '../services/aiService';
 import { questionFingerprint } from '../quiz/fingerprint';
-import { controlDocument, runAnswer, type AnswerDeps, type ChatCall } from './answer';
+import { consensusItem, controlDocument, runAnswer, type AnswerDeps, type ChatCall } from './answer';
 import { quoteSha } from './normalise';
-import { PROMPT_VERSION } from './prompt';
+import { PROMPT_VERSION, shuffledOrder } from './prompt';
 import type { ManifestoDocument } from './registry';
 import { readSheet, writeSheet } from './sheetFiles';
 import { TextStore, sha256Of } from './store';
@@ -47,7 +47,7 @@ afterEach(() => fs.rmSync(root, { recursive: true, force: true }));
 
 /** A reply per question id, read back from the question block at the end of the prompt. */
 type Answer = { index: number; quote: string };
-function fakeCall(answerFor: (id: number) => Answer, opts: { hit?: (n: number) => number; delayMs?: number } = {}) {
+function fakeCall(answerFor: (id: number, prompt: string) => Answer, opts: { hit?: (n: number) => number; delayMs?: number } = {}) {
   const events: string[] = [];
   let n = 0;
   let inFlight = 0;
@@ -60,7 +60,7 @@ function fakeCall(answerFor: (id: number) => Answer, opts: { hit?: (n: number) =
     await new Promise((r) => setTimeout(r, opts.delayMs ?? 0));
     const user = params.messages[1]!.content as string;
     const id = Number(/Invented question (\d+)\?/.exec(user)![1]);
-    const { index, quote } = answerFor(id);
+    const { index, quote } = answerFor(id, user);
     events.push(`end ${seq}`);
     inFlight--;
     return {
@@ -78,6 +78,42 @@ const deps = (call: ChatCall, over: Partial<AnswerDeps> = {}): AnswerDeps => ({
   call, provider: DEEPSEEK, registry, store, bank: BANK, sheetsDir, log: (l) => lines.push(l), ...over,
 });
 const always = (index = 0, quote = QUOTE_A) => () => ({ index, quote });
+
+describe('consensusItem', () => {
+  const reading = (over: Partial<PartyQuizItem> = {}): PartyQuizItem => ({
+    questionId: 1, fingerprint: '0000abcd', status: 'answered', answerIndex: 1, abstainReason: null,
+    quotes: [{ document: 'x-ge2024', page: 1, pageLabel: '1', text: QUOTE_A, quoteSha: quoteSha(QUOTE_A) }],
+    rationale: 'Invented.', modelConfidence: 0.8, review: 'pending', ...over,
+  });
+  const abstained = (over: Partial<PartyQuizItem> = {}) =>
+    reading({ status: 'abstained', answerIndex: null, abstainReason: 'silent', quotes: [], ...over });
+
+  it('keeps the first reading, with the lower confidence, when both give the same answer', () => {
+    const merged = consensusItem(reading({ modelConfidence: 0.9 }), reading({ modelConfidence: 0.6, rationale: 'Other.' }));
+    expect(merged).toEqual(reading({ modelConfidence: 0.6 }));
+  });
+
+  it('abstains as low_confidence, keeping the first leaning, when the two answers differ', () => {
+    const merged = consensusItem(reading({ answerIndex: 1 }), reading({ answerIndex: 2, modelConfidence: 0.7 }));
+    expect(merged).toMatchObject({ status: 'abstained', answerIndex: null, abstainReason: 'low_confidence', tentativeAnswerIndex: 1, quotes: [], modelConfidence: 0.7 });
+  });
+
+  it('abstains when only one reading answers, keeping that answer as the leaning', () => {
+    expect(consensusItem(reading({ answerIndex: 3 }), abstained())).toMatchObject({ status: 'abstained', abstainReason: 'low_confidence', tentativeAnswerIndex: 3 });
+    expect(consensusItem(abstained(), reading({ answerIndex: 2 }))).toMatchObject({ status: 'abstained', abstainReason: 'low_confidence', tentativeAnswerIndex: 2 });
+  });
+
+  it('treats a low_confidence abstention as an abstention', () => {
+    const lowConfidence = abstained({ abstainReason: 'low_confidence', tentativeAnswerIndex: 1 });
+    expect(consensusItem(reading({ answerIndex: 1 }), lowConfidence)).toMatchObject({ status: 'abstained', abstainReason: 'low_confidence', tentativeAnswerIndex: 1 });
+    expect(consensusItem(lowConfidence, lowConfidence)).toBe(lowConfidence);
+  });
+
+  it('keeps a shared abstention as the first reading gave it', () => {
+    const first = abstained({ abstainReason: 'silent' });
+    expect(consensusItem(first, abstained({ abstainReason: 'no_preference' }))).toBe(first);
+  });
+});
 
 describe('runAnswer', () => {
   it('prints the estimate and makes no call without --yes, or with --dry-run', async () => {
@@ -157,6 +193,63 @@ describe('runAnswer', () => {
     await runAnswer({ party: 'Green Party', yes: true, missing: true }, deps(call));
     expect(call).toHaveBeenCalledTimes(7);
     expect(readSheet('Green Party', 'ge2024', sheetsDir)!.items).toHaveLength(9);
+  });
+
+  it('with --consensus asks every question twice and keeps answers that do not depend on the answer order', () => {
+    // A model that answers by meaning: it finds "Answer B" wherever the prompt shows it.
+    const byMeaning = (_id: number, prompt: string) => ({ index: Number(/^(\d+)\. Answer B$/m.exec(prompt)![1]), quote: QUOTE_A });
+    const { call } = fakeCall(byMeaning);
+    return runAnswer({ party: 'Green Party', yes: true, consensus: true }, deps(call)).then(() => {
+      expect(call).toHaveBeenCalledTimes(18);
+      const items = readSheet('Green Party', 'ge2024', sheetsDir)!.items;
+      expect(items.map((i) => [i.status, i.answerIndex])).toEqual(BANK.map(() => ['answered', 1]));
+    });
+  });
+
+  it('with --consensus drops an answer the model gives by position, not by meaning', async () => {
+    // A model that always picks whatever is shown first: it agrees with itself only if the shuffle keeps that option first.
+    const { call } = fakeCall(always(0));
+    await runAnswer({ party: 'Green Party', yes: true, consensus: true }, deps(call));
+    const items = readSheet('Green Party', 'ge2024', sheetsDir)!.items;
+    const stable = BANK.filter((q) => shuffledOrder(q)[0] === 0).map((q) => q.id);
+    expect(stable.length).toBeLessThan(BANK.length); // the shuffle moves the first option for some question
+    for (const item of items) {
+      if (stable.includes(item.questionId)) expect(item).toMatchObject({ status: 'answered', answerIndex: 0 });
+      else expect(item).toMatchObject({ status: 'abstained', answerIndex: null, abstainReason: 'low_confidence', tentativeAnswerIndex: 0 });
+    }
+  });
+
+  it('with --consensus prints an estimate for two passes, and refuses to go with --shuffle-check or --control', async () => {
+    const { call } = fakeCall(always());
+    await runAnswer({ party: 'Green Party', dryRun: true }, deps(call));
+    await runAnswer({ party: 'Green Party', dryRun: true, consensus: true }, deps(call));
+    const tokens = lines.map((l) => /(\d+) prompt tokens in all/.exec(l)?.[1]).filter(Boolean).map(Number);
+    expect(tokens).toHaveLength(2);
+    expect(tokens[1]).toBe(2 * tokens[0]!);
+    await expect(runAnswer({ party: 'Green Party', yes: true, consensus: true, shuffleCheck: true }, deps(call))).rejects.toThrow(/--consensus/);
+    await expect(runAnswer({ party: 'Green Party', yes: true, consensus: true, control: true }, deps(call))).rejects.toThrow(/--consensus/);
+    expect(call).not.toHaveBeenCalled();
+  });
+
+  it('--shuffle-check splits its result by what the sheet says: kept answers, and abstentions', async () => {
+    const answered = (questionId: number, answerIndex: number): PartyQuizItem => ({
+      questionId, fingerprint: questionFingerprint(BANK[questionId - 1]!), status: 'answered', answerIndex, abstainReason: null,
+      quotes: [{ document: 'x-ge2024', page: 1, pageLabel: '1', text: QUOTE_A, quoteSha: quoteSha(QUOTE_A) }],
+      rationale: 'Invented.', modelConfidence: 0.9, review: 'pending',
+    });
+    const silent: PartyQuizItem = { ...answered(3, 0), status: 'abstained', answerIndex: null, abstainReason: 'silent', quotes: [] };
+    writeSheet({
+      party: 'Green Party', election: 'ge2024', documents: ['x-ge2024'], model: 'm', promptVersion: 'v0',
+      items: [answered(1, 1), answered(2, 2), silent, answered(4, 1)],
+    }, sheetsDir);
+    // The model answers "Answer B" wherever it is shown, except Q4, where its quote is not in the document.
+    const { call } = fakeCall((id, prompt) => ({
+      index: Number(/^(\d+)\. Answer B$/m.exec(prompt)![1]),
+      quote: id === 4 ? 'A sentence that is nowhere in this document at all' : QUOTE_A,
+    }));
+    await runAnswer({ party: 'Green Party', yes: true, shuffleCheck: true, questions: [1, 2, 3, 4] }, deps(call));
+    expect(lines).toContain('Shuffle check: 1 of 4 identical to the sheet (need at least 90%).');
+    expect(lines).toContain('Of 3 answered item(s) on the sheet: 1 the same, 1 a different answer, 1 now an abstention. Of 1 abstained: 1 now answered.');
   });
 
   it('reads the negative control from the fixture, without its comment lines', () => {

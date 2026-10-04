@@ -12,7 +12,7 @@ import { answerOrder } from '@shared/quizPlan';
 import { MAX_QUOTE_WORDS, MIN_QUOTE_WORDS } from './normalise';
 
 /** Bump when the rules change; every sheet records the version it was answered with. */
-export const PROMPT_VERSION = 'v1';
+export const PROMPT_VERSION = 'v2'; // v2: one short quote, so a small manifesto stays inside the quote cap
 export const MAX_RATIONALE_WORDS = 40;
 /** The fixed seed for the --shuffle-check answer order. */
 export const SHUFFLE_SEED = 1;
@@ -35,7 +35,7 @@ RULES
     "silent": the documents do not address the question;
     "no_preference": they address the topic but do not choose between the answers;
     "contradictory": they state positions that match different answers.
-- Back an answer with 1 or 2 quotes. Copy each quote exactly from one page, ${MIN_QUOTE_WORDS} to ${MAX_QUOTE_WORDS} words, one
+- Back an answer with ONE quote when one passage is enough, and 2 only when a single passage does not settle it. Quote the SHORTEST passage that supports the answer (one sentence or clause of 8 to 20 words, never a whole paragraph and never a list). Copy each quote exactly from one page, ${MIN_QUOTE_WORDS} to ${MAX_QUOTE_WORDS} words, one
   continuous passage with no ellipses, and name its document slug and the page number from the
   nearest marker before it.
 - A "contradictory" abstention gives up to 2 quotes that show the conflict. "silent" and
