@@ -438,6 +438,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       const candidates = [mary, ruairi].map((id, i) => ({ id, name: ['Mary Lou McDonald', 'Ruairí Ó Murchú'][i]!, party: 'Sinn Féin', offices: [] }));
       await recordStances({ id: article, title: 'Housing', content }, candidates, emptyStanceStats(), {
         complete: async (_s, _u, _t, operation) => replies[operation],
+        position: async () => 0.9,
         question: () => questionForArticle(article),
       });
       const written = await evidence();

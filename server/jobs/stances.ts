@@ -2,10 +2,11 @@
  * Rebuild TD stance evidence from the news, in one run:
  *   1. delete the deleted scoring panel's `article` evidence (an LLM's guess, never checked);
  *   2. re-read canonical articles of the last N days that ALREADY have a daily-vote question,
- *      and record their verified stances (extract → verify → map → save → evidence);
+ *      and record their accepted stances (extract → verify → Jev position check → map → save → evidence);
  *   3. recalculate every ideology profile.
  * It never makes a question: a new one would carry today's date and flood the daily sessions.
- * Needs an LLM key (extract and map are model calls). `--dry-run` makes the calls and counts,
+ * Needs an LLM key (extract and map are model calls) and JEV_API_KEY + CLOUDFLARE_ACCOUNT_ID
+ * (the position check). `--dry-run` makes the calls and counts,
  * but writes nothing.
  *
  *   npm run stances -- --rebuild [--days 180] [--dry-run]
@@ -28,6 +29,8 @@ import { isLLMConfigured } from '../services/aiService';
 import {
   classifyDivisions,
   emptyStanceStats,
+  isJevConfigured,
+  positionProbability,
   rebuildArticles,
   recordStances,
   runDivisionAudit,
@@ -160,6 +163,7 @@ async function main(): Promise<void> {
   const { days, dryRun } = parseArgs(process.argv.slice(2));
   // Checked before the purge: without a model, step 2 records nothing and step 1 has already run.
   if (!isLLMConfigured()) throw new Error('No LLM key is configured, so no stance can be extracted. Nothing was changed.');
+  if (!isJevConfigured()) throw new Error('JEV_API_KEY or CLOUDFLARE_ACCOUNT_ID is not set, so no stance can pass the position check. Nothing was changed.');
 
   const articles = await rebuildArticles(new Date(Date.now() - days * 86_400_000));
   const purged = await deleteTdEvidence('article', dryRun);
@@ -169,6 +173,7 @@ async function main(): Promise<void> {
     try {
       await recordStances({ id: article.id, title: article.title, content: article.content }, article.tds.map(toCandidate), stats, {
         complete: completeJson,
+        position: (passage) => positionProbability(passage),
         question: () => questionForArticle(article.id),
         dryRun,
       });

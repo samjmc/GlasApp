@@ -35,6 +35,15 @@
  * citizens' referendums (one idea per option), Q40 boilers (premise: heat pumps are the norm in
  * new homes, boilers are not banned), Q41 pension (deferral is for the contributory pension), Q43
  * jobseeker's payment (needs enough PRSI). Values and signs unchanged.
+ * 2026-10-04: Q31 surrogacy re-researched. The stem no longer says the 2024 Act is "not yet in
+ * force": its preliminary provisions and Part 9 (the regulator, AHRRA) began on 13 October 2025,
+ * its surrogacy Parts have not, and the claim would go stale when they do. The stem now makes no
+ * claim about the law, so nothing needs editing when the Act's surrogacy Parts commence. Options
+ * are one step apart: a fee allowed / expenses only, in Ireland or approved countries abroad (the
+ * Act's model) / expenses only, in Ireland only (the 2022 Bill as first published) / not at all.
+ * "Last resort" went: s.56(3)(c) of the Act already allows it only where no intending parent can
+ * conceive or safely carry a child, so it was not a separate position. Values and answer order
+ * unchanged, so stored answers score the same.
  * The old answers also carried an eight-axis vector; 456 of its 520 off-axis values were the
  * same stock ±1.67/±3.33, nothing scored them, and they were removed.
  */
@@ -202,12 +211,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 31,
     dimension: 'social',
-    text: "The Oireachtas passed a surrogacy law in 2024, but it is not yet in force. How should Irish law treat surrogacy, where a woman carries a child for someone else?",
+    text: "Surrogacy is when a woman carries and gives birth to a child for someone else to raise. What should Irish law allow?",
     answers: [
-      { value: -3.33, text: "Allow paid surrogacy, so the woman who carries the child is paid for doing so", description: "Adults should be free to make this arrangement, and the woman deserves fair pay for it." },
-      { value: -1.67, text: "Allow unpaid surrogacy, approved in advance by a regulator, with a court order recognising the parents after the birth", description: "Help people build families this way, with checks before and after, and keep money out of it." },
-      { value: 1.67, text: "Allow it only as a last resort, for people who cannot have a child any other way", description: "Surrogacy raises hard ethical questions, so it should be rare." },
-      { value: 3.33, text: "Do not allow it; carrying a child for someone else should not be permitted", description: "Surrogacy risks treating women and children as a means to an end." },
+      { value: -3.33, text: "Allow paid surrogacy, so the woman can get a fee, not just her expenses", description: "Carrying a child for someone else is a big undertaking, and she deserves fair pay for it." },
+      { value: -1.67, text: "Allow it with only her expenses paid, in Ireland or in approved countries abroad", description: "Help people build families this way, with no fee and every case checked before the pregnancy." },
+      { value: 1.67, text: "Allow it with only her expenses paid, and only in Ireland", description: "Irish law can check a surrogacy here, but not how women abroad are recruited and treated." },
+      { value: 3.33, text: "Do not allow surrogacy at all, paid or unpaid", description: "It treats women and children as a means to an end, whether or not money changes hands." },
     ],
   },
   {

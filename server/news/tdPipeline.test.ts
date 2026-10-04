@@ -10,6 +10,7 @@ const m = vi.hoisted(() => ({
   linkArticleTd: vi.fn(),
   saveStances: vi.fn(),
   recordTdEvidence: vi.fn(),
+  positionProbability: vi.fn(),
   /** Answers each model call by its operation name. */
   replies: {} as Record<string, unknown>,
   operations: [] as string[],
@@ -38,11 +39,18 @@ vi.mock('./repository', () => ({ linkArticleTd: m.linkArticleTd }));
 // extract → verify → map run for real; only the writes are stubbed.
 vi.mock('../stances/repository', () => ({ saveStances: m.saveStances, rebuildArticles: vi.fn() }));
 vi.mock('../ideology', () => ({ recordTdEvidence: m.recordTdEvidence }));
+vi.mock('../stances/position', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../stances/position')>()),
+  isJevConfigured: () => true,
+  positionProbability: m.positionProbability,
+}));
 
 const { runTdPipeline } = await import('./tdPipeline');
 
 const QUOTE = 'We will build fifty thousand public homes every year until the housing crisis is over.';
 const STATED = 'Mary Lou McDonald told the Dáil: "' + QUOTE + '" She was speaking on Tuesday. ';
+/** What is stored: the quote widened to its whole sentence (server/stances/verify.ts). */
+const SENTENCE = 'Mary Lou McDonald told the Dáil: "' + QUOTE + '"';
 const MENTIONED = 'The Taoiseach met officials. Mary Lou McDonald was also in the chamber for the vote. ';
 
 const article = (id: number, body = STATED): Article => ({
@@ -96,6 +104,7 @@ describe('runTdPipeline', () => {
         : null,
     );
     m.questionForArticle.mockResolvedValue(QUESTION);
+    m.positionProbability.mockResolvedValue(0.9);
     m.saveStances.mockImplementation(async (_id: number, rows: Array<{ tdId: number }>) =>
       rows.map((row) => ({ tdId: row.tdId, statedAt: new Date('2026-09-25T10:00:00Z') })),
     );
@@ -111,10 +120,11 @@ describe('runTdPipeline', () => {
     const stats = await runTdPipeline({ source });
 
     expect(m.linkArticleTd).toHaveBeenCalledWith(1, 7);
+    expect(m.positionProbability).toHaveBeenCalledWith({ td: expect.objectContaining({ id: 7 }), headline: 'Story 1', quote: SENTENCE });
     expect(m.generateQuestionForArticle).toHaveBeenCalledTimes(1);
     expect(m.generateQuestionForArticle.mock.calls[0][0]).toMatchObject({ id: 1, title: 'Story 1' });
     expect(m.saveStances).toHaveBeenCalledWith(1, [
-      { tdId: 7, questionId: 55, optionKey: 'option_a', optionText: 'Build public homes', quote: QUOTE, quoteKind: 'direct', policyDomain: 'housing' },
+      { tdId: 7, questionId: 55, optionKey: 'option_a', optionText: 'Build public homes', quote: SENTENCE, quoteKind: 'direct', policyDomain: 'housing' },
     ]);
     expect(m.recordTdEvidence).toHaveBeenCalledWith({
       td: 7,
@@ -129,9 +139,39 @@ describe('runTdPipeline', () => {
       extracted: 1,
       accepted: 1,
       mapped: 1,
-      rejected: { invalid: 0, quote_not_found: 0, td_not_near: 0, duplicate: 0 },
+      rejected: { invalid: 0, quote_not_found: 0, td_not_near: 0, duplicate: 0, not_position: 0, unchecked: 0 },
     });
     expect(outcomes.get(1)).toEqual({ importanceScore: 80, importanceReasoning: 'r', skippedReason: undefined });
+  });
+
+  it.each([
+    ['Jev says it is not a policy position', 0.3, 'not_position'],
+    ['Jev gives no answer (no key, an error, no credit)', null, 'unchecked'],
+  ])('%s: the stance is held back, with no question, no save and no evidence', async (_name, p, reason) => {
+    const { source } = fakeSource([article(1)]);
+    m.batchScoreAndRank.mockResolvedValue(oneTop(1));
+    m.extractTDMentions.mockResolvedValue([{ name: 'Mary Lou McDonald' }]);
+    m.replies.tdStances = stance(QUOTE);
+    m.positionProbability.mockResolvedValue(p);
+
+    const stats = await runTdPipeline({ source });
+
+    expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
+    expect(m.operations).toEqual(['tdStances']); // no mapping call either
+    expect(m.saveStances).not.toHaveBeenCalled();
+    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(stats.stances).toMatchObject({ extracted: 1, accepted: 0, mapped: 0, rejected: { [reason as string]: 1 } });
+  });
+
+  it('a stance exactly at the threshold is kept', async () => {
+    const { source } = fakeSource([article(1)]);
+    m.batchScoreAndRank.mockResolvedValue(oneTop(1));
+    m.extractTDMentions.mockResolvedValue([{ name: 'Mary Lou McDonald' }]);
+    m.replies.tdStances = stance(QUOTE);
+    m.replies.stanceOptions = { matches: [{ index: 0, option_key: 'option_a' }] };
+    m.positionProbability.mockResolvedValue(0.5);
+
+    expect((await runTdPipeline({ source })).stances).toMatchObject({ accepted: 1, mapped: 1 });
   });
 
   it('a TD only mentioned, with a quote the article does not contain: no stance, no evidence, no question', async () => {
