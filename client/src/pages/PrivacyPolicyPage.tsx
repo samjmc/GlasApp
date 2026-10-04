@@ -144,6 +144,10 @@ export default function PrivacyPolicyPage() {
             </table>
           </div>
 
+          <p>
+            Quiz answers of signed-in users may also be analysed in aggregate, without identifying anyone, to check and improve the quiz questions. Results are never published per person.
+          </p>
+
           <p className="font-semibold text-foreground">
             We will NEVER:
           </p>
