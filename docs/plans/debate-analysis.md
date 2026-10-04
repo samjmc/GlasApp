@@ -297,5 +297,11 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   and state the rules. The words "won" and "winner" are not used.
 - **Daily reading**: the scheduler reads up to 30 unread argued debates after the 04:45 parliament
   sync, **only when `DEBATE_ITEMS=on`**. Off by default, so the cost stays a decision.
-- **Full backfill**: all 445 argued debates on GlasCore (18 Dec 2024 to 1 Oct 2026), started
-  2026-10-04 at 4 debates at a time.
+- **Full backfill, done 2026-10-04**: all **445 of 445** argued debates on GlasCore (18 Dec 2024
+  to 1 Oct 2026) have a done v2 run. "Argued" means at least 2 members spoke; the other 111
+  debates of those kinds have 0 or 1 speakers. Stored runs: 10.9 M tokens in and 2.7 M out =
+  **$3.23 at off-peak prices, $6.46 at peak**. Items: 24,132 specific claims, 2,233 responses,
+  1,627 questions, 728 commitments, 292 concessions.
+- **Three debates failed and failed again on retry**: a window's reply stopped at the 8,192-token
+  output limit, so its JSON was cut off, the same every time at temperature 0. Fixed in #124: a
+  cut-off reply is read again as two halves of its window. The 3 debates were then read.
