@@ -16,7 +16,8 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { ATTENDANCE_BENCHMARK } from '../scoring/weights';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 import { LEADERSHIP_ATTENDANCE_BENCHMARK } from './metrics';
-import type { OireachtasClient, RosterMember } from './client';
+import type { FormerMember, OireachtasClient, RosterMember } from './client';
+import { isGovernmentSide } from './governmentSide';
 import { parseTranscript, type RawBill, type RawDivision, type RawQuestion } from './parse';
 
 const parliamentUrl = testDatabaseUrl('parliament');
@@ -142,6 +143,8 @@ interface FakeOptions {
   failBills?: boolean;
   /** Extra committee sittings listed before the PAC's on the same day. */
   extraSittings?: Array<{ uri: string; date: string; committeeUri: string; committeeName: string; xmlUri: string | null }>;
+  /** Members whose seat in this Dáil has ended. */
+  former?: FormerMember[];
 }
 
 const HEALTH_URI = 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/joint_committee_on_health';
@@ -151,6 +154,7 @@ function fakeClient(roster: RosterMember[], opts: FakeOptions = {}): OireachtasC
   const failing = new Set(opts.failQuestionMonths ?? []);
   return {
     roster: async () => roster,
+    formerMembers: async () => opts.former ?? [],
     divisions: async () => divisions(),
     debateDays: async (from: string, to: string) => days.filter((d) => d.date >= from && d.date <= to).map((d) => ({ ...d })),
     committeeSittings: async (from: string, to: string) => [
@@ -946,6 +950,26 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(his.length).toBeGreaterThan(0);
     expect(his.every((s) => s.party === 'Party A')).toBe(true);
     expect(his.some((s) => s.role === 'Minister for Finance')).toBe(true);
+  });
+
+  it('keeps the offices of a member who has left, so their debates keep their side of the House', async () => {
+    const donohoe = 'Paschal-Donohoe.S.2007-07-23';
+    const officesOf = async () =>
+      (await dbmod.pool.query('select title, start_date::text start, end_date::text "end" from politics.td_offices where member_code = $1', [donohoe])).rows;
+    const lines: string[] = [];
+    const sync = (former: FormerMember[]) => parliament.runSync({ client: fakeClient(roster, { former }), today: '2025-12-01', log: (l) => lines.push(l) });
+
+    // Out of the roster, and no former-member record: the office is gone.
+    await sync([]);
+    expect(await officesOf()).toEqual([]);
+
+    await sync([{ memberCode: donohoe, officeHistory: [{ title: 'Minister for Finance', type: 'cabinet', start: '2025-01-23', end: '2025-11-18' }] }]);
+    expect(await officesOf()).toEqual([{ title: 'Minister for Finance', start: '2025-01-23', end: '2025-11-18' }]);
+    expect(lines.some((l) => l.includes('1 former members'))).toBe(true);
+    // So the debate record and the extractor see him in government on a day he spoke as minister.
+    const offices = await parliament.repository.governmentOffices();
+    expect(isGovernmentSide(null, donohoe, '2025-06-25', offices)).toBe(true);
+    expect(isGovernmentSide(null, donohoe, '2025-11-19', offices)).toBe(false);
   });
 
   it('falls back to the latest section with the same title, dated on or before the linked one', async () => {

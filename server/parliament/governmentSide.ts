@@ -3,11 +3,13 @@
  * that a concession scores when it crosses the House (docs/plans/debate-analysis.md, Step 4).
  *
  * Government side = a member of a government party on that day, or anyone holding cabinet or
- * Minister of State office that day (td_offices), which covers the independent ministers.
+ * Minister of State office that day (td_offices), which covers the independent ministers and
+ * members who have since left the Dáil.
  *
  * Known limit, stated wherever the rule is shown: an independent who supports the government
  * without holding office counts as NOT government, because no sourced, dated list of them is kept.
- * A TD's party is today's party (tds.party): a TD who changed party mid-term is placed by it.
+ * A TD's party is today's party (tds.party): a TD who changed party mid-term is placed by it. A
+ * member who left before the roster was first read has no tds row, so only their offices place them.
  */
 import type { GovernmentOffices } from './debateItems/verify';
 

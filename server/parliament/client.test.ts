@@ -3,7 +3,7 @@
  * filtered with `member=`, which the API ignores. These tests pin the parameters.
  */
 import { describe, expect, it } from 'vitest';
-import { OireachtasClient, officeTypeOf, toRosterMember, type RawMember } from './client';
+import { OireachtasClient, officeTypeOf, toFormerMember, toRosterMember, type RawMember } from './client';
 
 function fakeFetch(responses: Array<{ status: number; body?: unknown }>) {
   const urls: string[] = [];
@@ -217,5 +217,22 @@ describe('toRosterMember', () => {
 
   it('is NULL for a member whose seat in the current Dáil has ended', () => {
     expect(toRosterMember(member({ dateRange: { start: '2024-11-29', end: '2025-10-01' } }))).toBeNull();
+  });
+
+  it('keeps a member who left as a former member, with every office they held in this Dáil only', () => {
+    const left = member({
+      dateRange: { start: '2024-11-29', end: '2025-11-21' },
+      offices: [{ office: { officeName: { showAs: 'Minister for Finance' }, dateRange: { start: '2025-01-23', end: '2025-11-18' } } }],
+    });
+    // The 33rd Dáil seat in the fixture has no offices; an office there would not count either.
+    left.memberships![0]!.membership.offices = [{ office: { officeName: { showAs: 'Minister for Health' }, dateRange: { start: '2020-06-27', end: '2024-11-08' } } }];
+    expect(toFormerMember(left)).toEqual({
+      memberCode: 'Verona-Murphy.D.2020-02-08',
+      officeHistory: [{ title: 'Minister for Finance', type: 'cabinet', start: '2025-01-23', end: '2025-11-18' }],
+    });
+    // A sitting member is on the roster, not a former member.
+    expect(toFormerMember(member())).toBeNull();
+    // Nor is anyone with no seat in this Dáil at all.
+    expect(toFormerMember({ ...left, memberships: [left.memberships![0]!] })).toBeNull();
   });
 });

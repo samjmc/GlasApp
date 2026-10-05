@@ -44,6 +44,12 @@ export interface RosterMember {
   committees: RosterCommittee[];
 }
 
+/** A member whose seat in the current Dáil has ended: kept for the offices they held in it. */
+export interface FormerMember {
+  memberCode: string;
+  officeHistory: RosterOffice[];
+}
+
 export interface RosterOffice {
   title: string;
   type: OfficeType;
@@ -123,6 +129,16 @@ export class OireachtasClient {
       limit: 500,
     });
     return (body.results ?? []).map((r) => toRosterMember(r.member)).filter((m): m is RosterMember => m !== null);
+  }
+
+  /** Every member whose seat in the current Dáil has ended, with the offices they held in it. */
+  async formerMembers(): Promise<FormerMember[]> {
+    const body = await this.get<{ results?: Array<{ member: RawMember }> }>('/members', {
+      chamber: 'dail',
+      house_no: CURRENT_DAIL,
+      limit: 500,
+    });
+    return (body.results ?? []).map((r) => toFormerMember(r.member)).filter((m): m is FormerMember => m !== null);
   }
 
   /** Every Dáil division held from `from` to `to` inclusive (YYYY-MM-DD). */
@@ -317,12 +333,7 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     .filter((o) => o.office?.officeName?.showAs && !o.office.dateRange?.end)
     .map((o) => ({ title: o.office!.officeName!.showAs!, since: isoDay(o.office!.dateRange?.start) }));
 
-  const officeHistory = (seat.offices ?? []).flatMap((o) => {
-    const title = o.office?.officeName?.showAs;
-    const start = isoDay(o.office?.dateRange?.start);
-    if (!title || !start) return [];
-    return [{ title, type: officeTypeOf(title), start, end: isoDay(o.office?.dateRange?.end) }];
-  });
+  const officeHistory = officeHistoryOf(seat);
 
   // The seat lists committees of earlier terms and of the Seanad too (measured: 12 of 696),
   // and memberships that ended before this seat began (14). Only this Dáil's committees,
@@ -356,4 +367,27 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     officeHistory,
     committees,
   };
+}
+
+type RawSeat = NonNullable<RawMember['memberships']>[number]['membership'];
+
+/** Every office held in one seat, typed, with its dates. */
+function officeHistoryOf(seat: RawSeat): RosterOffice[] {
+  return (seat.offices ?? []).flatMap((o) => {
+    const title = o.office?.officeName?.showAs;
+    const start = isoDay(o.office?.dateRange?.start);
+    if (!title || !start) return [];
+    return [{ title, type: officeTypeOf(title), start, end: isoDay(o.office?.dateRange?.end) }];
+  });
+}
+
+/**
+ * Pure: one API member → their offices in the current Dáil, when their seat in it has ended, or
+ * null. The roster leaves them out, but what they did in office stays on the record: without
+ * this, a minister who left would count as not in government in every debate they spoke in.
+ */
+export function toFormerMember(member: RawMember): FormerMember | null {
+  const seats = (member.memberships ?? []).map((m) => m.membership).filter((m) => m.house?.houseCode === 'dail' && m.house?.houseNo === String(CURRENT_DAIL));
+  if (!member.memberCode || seats.length === 0 || seats.some((s) => !s.dateRange?.end)) return null;
+  return { memberCode: member.memberCode, officeHistory: seats.flatMap(officeHistoryOf) };
 }
