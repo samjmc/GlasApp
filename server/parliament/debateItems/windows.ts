@@ -58,6 +58,25 @@ export function buildWindows(speeches: LabelledSpeech[], maxWords = WINDOW_WORDS
 }
 
 /**
+ * A window cut in two at about half its words, for a reply that ran out of output tokens (a
+ * dense window can hold more items than one reply fits). The second half gets the speeches
+ * before it as context, as buildWindows gives. NULL for one speech, which is never split.
+ */
+export function splitWindow(window: DebateWindow, contextSpeeches = CONTEXT_SPEECHES): [DebateWindow, DebateWindow] | null {
+  const { speeches } = window;
+  if (speeches.length < 2) return null;
+  const total = speeches.reduce((n, s) => n + s.wordCount, 0);
+  let mid = 1;
+  let words = speeches[0].wordCount;
+  while (mid < speeches.length - 1 && words < total / 2) words += speeches[mid++].wordCount;
+  const first = speeches.slice(0, mid);
+  return [
+    { context: window.context, speeches: first },
+    { context: [...window.context, ...first].slice(-contextSpeeches), speeches: speeches.slice(mid) },
+  ];
+}
+
+/**
  * Words that are common in Irish and rare in English. A speech is counted as Irish when they
  * make up at least IRISH_SHARE of its words. Used only to compare rejection rates by language.
  */

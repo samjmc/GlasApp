@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildWindows, isIrish, labelSpeeches, type DebateSpeech } from './windows';
+import { buildWindows, isIrish, labelSpeeches, splitWindow, type DebateSpeech } from './windows';
 
 const speech = (i: number, wordCount: number): DebateSpeech => ({
   id: `sect/spk_${i}`,
@@ -38,6 +38,37 @@ describe('buildWindows', () => {
     const labels = buildWindows(speeches, 5_000, 2).flatMap((w) => w.speeches.map((s) => s.label));
     expect(labels).toEqual(speeches.map((s) => s.label));
     expect(buildWindows([], 10_000, 3)).toEqual([]);
+  });
+});
+
+describe('splitWindow', () => {
+  const labels = (w: { context: { label: string }[]; speeches: { label: string }[] }) => [w.context.map((s) => s.label), w.speeches.map((s) => s.label)];
+  const windowOf = (words: number[], context = 2) => {
+    const all = labelSpeeches(words.map((w, i) => speech(i + 1, w)));
+    return { context: all.slice(0, context), speeches: all.slice(context) };
+  };
+
+  it('cuts at about half the words, and gives the second half the speeches before it as context', () => {
+    const halves = splitWindow(windowOf([500, 500, 1000, 1000, 1000, 1000]), 3);
+    expect(halves?.map(labels)).toEqual([
+      [['s1', 's2'], ['s3', 's4']],
+      [['s2', 's3', 's4'], ['s5', 's6']],
+    ]);
+  });
+
+  it('keeps every speech in exactly one half, even when one speech holds most of the words', () => {
+    expect(splitWindow(windowOf([100, 100, 9000, 50, 50]), 3)?.map(labels)).toEqual([
+      [['s1', 's2'], ['s3']],
+      [['s1', 's2', 's3'], ['s4', 's5']],
+    ]);
+    expect(splitWindow(windowOf([50, 50, 9000], 0), 3)?.map(labels)).toEqual([
+      [[], ['s1', 's2']],
+      [['s1', 's2'], ['s3']],
+    ]);
+  });
+
+  it('never splits a single speech', () => {
+    expect(splitWindow(windowOf([100, 100, 9000]), 3)).toBeNull();
   });
 });
 
