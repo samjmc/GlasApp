@@ -56,6 +56,7 @@ export * from './repo/disclosures';
 export * from './repo/divisions';
 export * from './repo/debates';
 export * from './repo/debateItems';
+export * from './repo/debateRecord';
 
 /** The byParty group for voters who are not in `tds`. */
 export const NOT_IN_ROSTER = 'Not in current roster';
@@ -581,6 +582,7 @@ export async function debateDetail(id: string, database: Db = db): Promise<Debat
     speechCount: section.speechCount,
     speakerCount: speakers.filter((s) => s.memberCode).length,
     speakers: speakers.map((s) => ({ ...s, speeches: Number(s.speeches), words: Number(s.words) })),
+    debateId: section.debateId ?? null,
   };
 }
 

@@ -115,6 +115,26 @@ router.get(
   }),
 );
 
+// The debate record: points by the published rules (server/parliament/debateItems/rules.ts).
+// NULL data (not 404) when nothing has been read yet for that TD or debate.
+router.get(
+  '/tds/:id/debate-record',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'TD id must be a positive integer');
+    res.json(formatSuccess(await repo.tdDebateRecord(id.data)));
+  }),
+);
+
+router.get(
+  '/debate-records/:id',
+  asyncHandler(async (req, res) => {
+    const id = recordId.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'Invalid debate id');
+    res.json(formatSuccess(await repo.debateRecord(id.data)));
+  }),
+);
+
 router.get(
   '/bills',
   asyncHandler(async (req, res) => {

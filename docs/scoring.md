@@ -146,6 +146,26 @@ Each event is processed once: ingest links same-event copies to the first report
 (`server/news/events.ts`, `news_articles.duplicate_of`), and only that canonical is claimed. A
 manual run on a duplicate's id (`npm run news:tds -- --article <id>`) processes its canonical.
 
+## Debate record
+
+The debate record is **not part of the score**. It shows what a TD said in argued debates (bill
+stages, motions, statements): a model finds and quotes items, code checks every quote word for
+word against the transcript, and code gives every point under published rules
+(`server/parliament/debateItems/rules.ts`, `docs/plans/debate-analysis.md`).
+
+| Rule (r1) | Points | Limit |
+|---|---|---|
+| A specific claim (a figure, a named source, a cost, a date) | +1 | 3 per speech |
+| A speaker conceded a point to you | +3 | only from the other side of the House |
+| Questions, promises | shown, no points | |
+| Responses to earlier speakers | not shown, no points | until their links are fixed |
+| Speaking time, who moved it, the vote | no points | |
+
+A TD's figure is points per debate, compared only with TDs in the same role (government office or
+not) against the 75th percentile; below 5 debates there is no figure. Stored in
+`politics.debate_participation`, rebuilt from stored items after every read and every sync, with
+no model calls.
+
 ## Getting a TD table
 
 `npm run sync-tds` upserts the current Dáil roster by member code (falling back to name), and

@@ -34,6 +34,7 @@ import { EmptyState } from '@/components/pulse/EmptyState';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
 import { TdPositionsOnRecord } from '@/components/TdPositionsOnRecord';
 import { TdIdeologyCard } from '@/components/TdIdeologyCard';
+import { TdDebateRecordCard } from '@/components/DebateRecord';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
@@ -792,7 +793,8 @@ export default function TDProfilePageEnhanced() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="debates" className="mt-0">
+          <TabsContent value="debates" className="mt-0 flex flex-col gap-4">
+            <TdDebateRecordCard tdId={tdId} />
             <Card className="flex flex-col gap-4 p-5 sm:p-6">
               <div className="flex flex-col gap-1">
                 <h2 className="font-display text-xl font-bold tracking-tight">Recent debates</h2>

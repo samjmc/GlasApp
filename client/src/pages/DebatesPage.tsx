@@ -19,6 +19,7 @@ import { PartyLabel, TDAvatar } from "@/components/pulse/Party";
 import { DivisionBar } from "@/components/pulse/VoteChip";
 import { Segmented } from "@/components/pulse/Segmented";
 import { EmptyState } from "@/components/pulse/EmptyState";
+import { DebateRecordPanel } from "@/components/DebateRecord";
 import type {
   ParliamentStatus,
   DivisionSummary,
@@ -510,7 +511,10 @@ function DebatesSection() {
                       {detailLoading ? (
                         <ListSkeleton rows={4} className="h-12" />
                       ) : detail && detail.speakers.length > 0 ? (
-                        <DebateSpeakers detail={detail} />
+                        <>
+                          <DebateSpeakers detail={detail} />
+                          <DebateRecordPanel debateId={detail.debateId} />
+                        </>
                       ) : detailError ? (
                         <LoadError title="Could not load this debate" onRetry={() => refetchDetail()} pending={detailFetching} />
                       ) : (

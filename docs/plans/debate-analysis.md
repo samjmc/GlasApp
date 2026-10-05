@@ -1,7 +1,7 @@
 # Debate analysis: a structured way to see who drives a debate
 
-Status: **Step 1 built and live (2026-10-04); Step 2 built and piloted (2026-10-04); Steps 3–5
-not built.** Sam chose "the most robust way forward" at every fork. See "As built" at the end.
+Status: **Step 1 built and live (2026-10-04); Step 2 built, piloted on 55 debates, Irish within the
+limit (2026-10-04); Steps 3–5 not built.** Sam chose "the most robust way forward" at every fork. See "As built" at the end.
 
 ## Why
 
@@ -234,12 +234,74 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   as an office. Extractor **v2** adds code checks (a question needs a question mark; the claim limit
   is enforced), the Irish office words, and a tighter commitment definition.
 - v2 on the 28 debates both versions finished: claims 1,217 → 1,122, responses 121 → 141, sampled
-  questions and commitments real. **The Irish rate under v2 is not measured yet**: the debate with
-  most Irish speech was one of the 22 the provider blocked (below).
-- **Blocked:** DeepSeek first returned 429 ("concurrency limit of 10 based on your remaining
-  balance"; the key is shared with other apps), then **402 Insufficient Balance**. The extractor now
-  waits and retries on 429, reads 2 debates at a time by default, and stops at the first 402
-  instead of failing every debate after it. The 22 debates left resume on the next run.
+  questions and commitments real.
+- **Blocked, then finished:** DeepSeek first returned 429 ("concurrency limit of 10 based on your
+  remaining balance"; the key is shared with other apps), then **402 Insufficient Balance**. The
+  extractor now waits and retries on 429, reads 2 debates at a time by default, and stops at the
+  first 402 instead of failing every debate after it. After Sam topped up, the 22 left were read
+  with no failure.
+- **v2 final (2026-10-04): the 50-debate pilot plus the 5 argued debates with the most Irish speech**
+  (both Údarás na Gaeltachta (Amendment) Bill 2024 stages, both Seachtain na Gaeilge: Ráitis, Tithíocht
+  Gaeltachta: Tairiscint), because the pilot held only 30 Irish speeches. 55 debates, 935,522 words,
+  294 Irish speeches; **v2 cost $0.43 off-peak / $0.86 peak in all**. Items: 2,870 specific claims,
+  315 responses, 247 questions, 88 commitments, 54 concessions.
+- **Rejected by code, by language (v2): English 8.1% (3,170 accepted, 281 rejected), Irish 9.6% (404
+  accepted, 43 rejected): a 1.5-point gap, inside the plan's 5-point limit** (v1: 6% against 19%).
+  Sampled Irish items read as well as English ones ("Fuair 320 dalta díolúine ón nGaeilge", a figure;
+  "Cá bhfuil siad?", a question to an tAire). The English rate rose from v1's 6% because v2 rejects
+  more: non-questions and claims over the limit.
 - For Step 4: 41 of 42 concessions are between different parties, but some are inside the
   government (Fine Gael to Fianna Fáil). A concession point should need the other side of the
   House, which needs a dated list of who supports the government (not built).
+
+## As built: Steps 3 to 5 (2026-10-04)
+
+- **Step 3 was a spot check, not the blind check set.** Sam answered 9 multiple-choice questions on
+  sampled v2 items (8 yes, 1 "somewhat rhetorical") and judged the AI was "calling these well". The
+  20-debate blind set with precision and recall targets was not run. Responses failed on reading
+  (about 5 of 8 linked to the right earlier point), so they are kept but **not shown and not
+  scored** until their linking is fixed.
+- **Rules r1** in `server/parliament/debateItems/rules.ts` (not `debateRules.ts`), pure and tested:
+
+  | Rule | Points | Limit |
+  |---|---|---|
+  | A specific claim | +1 | 3 per speech |
+  | A speaker conceded a point to you | +3 | only from the other side of the House |
+  | Questions, promises | shown, no points | |
+  | Responses ("took up your point") | not shown, no points | until the links are fixed |
+  | Speaking time, who moved it, the vote | no points | |
+
+  The plan's "+2 per distinct speaker who took up your point" is not in r1, because it rests on
+  responses.
+- **Sides of the House**: `server/parliament/governmentSide.ts`. Government side on a date =
+  Fianna Fáil and Fine Gael from 29 Nov 2024, the Green Party until 2025-01-22 (the outgoing 34th
+  government stayed in office until the 35th was appointed), plus anyone holding a cabinet or
+  Minister of State office that day (from the roster's office dates). **Known limits:**
+  independents who support the government without an office count as the other side, so a
+  concession from one of them to a minister scores; and a TD's party is today's party, so a TD who
+  changed party mid-term is placed by it.
+- **Role**: holds a government office on the debate's first day = `office`, else `backbench`. The
+  term figure is points per argued debate in the role the TD spoke in most (office wins a tie),
+  against the 75th percentile of TDs with at least 5 debates in the same role. The chair is left
+  out (`is_presiding`).
+- **Storage**: migration `0021_debate_participation`: `politics.debate_participation`, one row per
+  member per debate read, with `rules_version`. It is derived: `rebuildDebateRecord()` deletes and
+  re-inserts every row from stored items with **no model calls**. It runs at the end of every
+  `debates:items` run and in the sync's `debate-groups` step, so a regrouping or a re-read day is
+  reflected the same night.
+- **API**: `GET /api/parliament/tds/:id/debate-record` and `GET /api/parliament/debate-records/:id`;
+  both return `null` data when nothing has been read.
+- **UI**: a "Debate record" card on the TD profile's Debates tab (term figure, cohort line, four
+  counts, the 10 most recent debates with their quotes), and a panel under each argued debate on
+  the Dáil record page (participants by points, with quotes). Both say "Not part of the TD score"
+  and state the rules. The words "won" and "winner" are not used.
+- **Daily reading**: the scheduler reads up to 30 unread argued debates after the 04:45 parliament
+  sync, **only when `DEBATE_ITEMS=on`**. Off by default, so the cost stays a decision.
+- **Full backfill, done 2026-10-04**: all **445 of 445** argued debates on GlasCore (18 Dec 2024
+  to 1 Oct 2026) have a done v2 run. "Argued" means at least 2 members spoke; the other 111
+  debates of those kinds have 0 or 1 speakers. Stored runs: 10.9 M tokens in and 2.7 M out =
+  **$3.23 at off-peak prices, $6.46 at peak**. Items: 24,132 specific claims, 2,233 responses,
+  1,627 questions, 728 commitments, 292 concessions.
+- **Three debates failed and failed again on retry**: a window's reply stopped at the 8,192-token
+  output limit, so its JSON was cut off, the same every time at temperature 0. Fixed in #124: a
+  cut-off reply is read again as two halves of its window. The 3 debates were then read.

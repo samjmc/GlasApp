@@ -11,12 +11,13 @@ vi.mock('../news/ingest', () => ({ ingest: vi.fn() }));
 vi.mock('../parliament', () => ({
   runSync: vi.fn(async () => ({ divisions: { ingested: 0 }, debates: { days: 0, failedDays: [] }, failedFeeds: [] })),
   leaveWatch: { runLeaveWatch: vi.fn() },
+  extractDebates: vi.fn(async () => ({ done: 0, failed: 0, stopped: null })),
 }));
 vi.mock('../stances', () => ({ runDivisionStances: vi.fn(async () => ({})) }));
 
 const { initScheduler } = await import('./scheduler');
 const { runDivisionStances } = await import('../stances');
-const { runSync } = await import('../parliament');
+const { runSync, extractDebates } = await import('../parliament');
 
 const FLAG = 'DIVISION_STANCES';
 const before = process.env[FLAG];
@@ -54,5 +55,28 @@ describe('the 04:45 parliament run', () => {
     vi.mocked(runDivisionStances).mockRejectedValueOnce(new Error('already running'));
     await expect(nightly.run()).resolves.toBeUndefined(); // its own try/catch: a failure is logged, not thrown
     expect(runDivisionStances).toHaveBeenCalledTimes(2);
+  });
+
+  it('reads new debates for items only when DEBATE_ITEMS is exactly "on", after the sync, a night\'s worth at most', async () => {
+    const before = process.env.DEBATE_ITEMS;
+    try {
+      for (const value of [undefined, 'off', 'ON']) {
+        if (value === undefined) delete process.env.DEBATE_ITEMS;
+        else process.env.DEBATE_ITEMS = value;
+        await nightly.run();
+      }
+      expect(extractDebates).not.toHaveBeenCalled();
+
+      process.env.DEBATE_ITEMS = 'on';
+      await nightly.run();
+      expect(extractDebates).toHaveBeenCalledWith({ limit: 30 });
+      expect(vi.mocked(runSync).mock.invocationCallOrder.at(-1)!).toBeLessThan(vi.mocked(extractDebates).mock.invocationCallOrder[0]);
+
+      vi.mocked(extractDebates).mockRejectedValueOnce(new Error('402 Insufficient Balance'));
+      await expect(nightly.run()).resolves.toBeUndefined();
+    } finally {
+      if (before === undefined) delete process.env.DEBATE_ITEMS;
+      else process.env.DEBATE_ITEMS = before;
+    }
   });
 });

@@ -11,4 +11,5 @@ export { OireachtasClient, type RosterMember } from './client';
 export { debateScores } from './metrics';
 export * as repository from './repository';
 export * as leaveWatch from './leaveWatch';
+export { extractDebates } from './debateItems/run';
 export { oireachtasVoteUrl, type DivisionContext, type DivisionRef, type DivisionVoteRecord } from './repo/divisions';

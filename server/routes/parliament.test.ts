@@ -60,6 +60,8 @@ vi.mock('../parliament', () => ({
     tdQuestionTopics: vi.fn(async () => [{ department: 'Health', oral: 1, written: 2 }]),
     listBills: vi.fn(async (filters: object, limit: number, offset: number) => ({ rows: [{ filters, limit, offset }], total: 414 })),
     billDetail: vi.fn(async (id: string) => (id === '2026-90' ? { id } : null)),
+    tdDebateRecord: vi.fn(async (id: number) => (id === 1 ? { rulesVersion: 'r1', pointsPerDebate: 2.5 } : null)),
+    debateRecord: vi.fn(async (id: string) => (id === 'dail-2026-09-16-dbsect_20' ? { debateId: id, participants: [] } : null)),
   },
   leaveWatch: {
     LeaveAlertError,
@@ -144,6 +146,15 @@ describe('/api/parliament reads', () => {
     expect((await get('/bills/2026-91')).status).toBe(404);
     expect((await get('/bills/..%2Fetc')).status).toBe(400);
     expect((await get(`/bills?status=${'x'.repeat(41)}`)).status).toBe(400);
+  });
+
+  it('serves the debate record, null when nothing has been read, and 400s a bad id', async () => {
+    expect((await get('/tds/1/debate-record')).body).toEqual({ success: true, data: { rulesVersion: 'r1', pointsPerDebate: 2.5 } });
+    expect((await get('/tds/2/debate-record')).body).toMatchObject({ success: true, data: null });
+    expect((await get('/tds/x/debate-record')).status).toBe(400);
+    expect((await get('/debate-records/dail-2026-09-16-dbsect_20')).body.data).toEqual({ debateId: 'dail-2026-09-16-dbsect_20', participants: [] });
+    expect((await get('/debate-records/dail-2026-01-01-dbsect_1')).body).toMatchObject({ success: true, data: null });
+    expect((await get('/debate-records/..%2Fetc')).status).toBe(400);
   });
 
   it('validates the leaderboard metric', async () => {

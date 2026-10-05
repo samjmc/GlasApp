@@ -316,6 +316,9 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     const g = await repo.regroupDebates();
     debateGroups = g.debates;
     log(`Debates: ${g.debates} from ${g.sections} sections${g.unknownHeadings.length ? `; headings not in any list: ${g.unknownHeadings.join('; ')}` : ''}.`);
+    // The debate record hangs off the grouping and the roster's offices: rebuilt here too (no model calls).
+    const record = await repo.rebuildDebateRecord();
+    log(`Debate record: ${record.rows} rows over ${record.debates} debates read.`);
   });
 
   // 5b. The interests register and allowance payments, from the Oireachtas's PDFs.
