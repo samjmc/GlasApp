@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { extractionText, type CandidateTd, type RawStance } from './extract';
-import { NEAR_CHARS, SENTENCE_MAX_WORDS, insideTeaser, namesFor, normalise, sentenceSpan, verifyStances } from './verify';
+import { NEAR_CHARS, SENTENCE_MAX_WORDS, insideTeaser, namesFor, normalise, quotationAround, sentenceSpan, verifyStances } from './verify';
 
 const OBRIEN: CandidateTd = { id: 1, name: "Darragh O'Brien", party: 'Fianna Fáil', offices: ['Minister for Housing'] };
 const MURCHU: CandidateTd = { id: 2, name: 'Ruairí Ó Murchú', party: 'Sinn Féin', offices: [] };
@@ -177,6 +177,50 @@ describe('link teasers', () => {
     expect(insideTeaser(text, ...at('would help households'))).toBe(false);
     const editor = '"Prices rose [in their bills]," he said.';
     expect(insideTeaser(editor, editor.indexOf('in their'), editor.indexOf('in their') + 8)).toBe(false);
+  });
+});
+
+// From a real article (2026-10-05): a journalist quoted on the radio, talking ABOUT two TDs.
+// Both TDs were named only inside his quotation marks, and both quotes were accepted as theirs.
+describe('a TD named only inside someone else’s quotation', () => {
+  const HARRIS: CandidateTd = { id: 5, name: 'Simon Harris', party: 'Fine Gael', offices: ['Tánaiste'] };
+  const text = extractionText({
+    title: "No 'real secret' about the Government's plan to cut energy bills",
+    content:
+      'On The Claire Byrne Show, Paul Hosford of the Irish Examiner said this is something that the Government feels “can be done”. ' +
+      '“Both Micheál Martin and Simon Harris made points to say it in their press conferences that decoupling the carbon tax from home heating oil is something that would be done,” he explained.\n\n' +
+      '“Simon Harris was at the Oireachtas Budgetary Oversight Committee yesterday and he was talking about this and he said the Government can\'t fully insulate people from external energy shocks,” Mr Hosford recounted.',
+  });
+
+  it('rejects the quote as not near the TD, whether the model took all of the quotation or only part', () => {
+    const result = verifyStances(text, [MARTIN, HARRIS], [
+      stance(3, 'Both Micheál Martin and Simon Harris made points to say it in their press conferences that decoupling the carbon tax from home heating oil is something that would be done', 'direct', 'climate'),
+      stance(5, "the Government can't fully insulate people from external energy shocks", 'paraphrase', 'economy'),
+    ]);
+    expect(result.accepted).toEqual([]);
+    expect(result.rejected.td_not_near).toBe(2);
+  });
+
+  it("still accepts a TD's own quotation when the TD is named outside the marks", () => {
+    const own = extractionText({
+      title: 'Excise',
+      content: 'Speaking in the Dáil, Mr Harris said: "Certainty for the winter period on excise is something that we can do and something that we will do."',
+    });
+    const result = verifyStances(own, [HARRIS], [stance(5, 'Certainty for the winter period on excise is something that we can do', 'direct', 'taxation')]);
+    expect(result.accepted).toHaveLength(1);
+    expect(result.accepted[0]!.quoteKind).toBe('direct');
+  });
+
+  it('finds the quotation marks around a span, curly or straight, within one paragraph', () => {
+    const at = (t: string, fragment: string) => [t.indexOf(fragment), t.indexOf(fragment) + fragment.length] as const;
+    const curly = 'He said “we will build homes,” and left.';
+    expect(quotationAround(curly, ...at(curly, 'we will'))).toEqual([curly.indexOf('“'), curly.indexOf('”') + 1]);
+    expect(quotationAround(curly, ...at(curly, 'and left'))).toBeNull();
+    const straight = 'She said "first" and then "we will build homes" today.';
+    expect(quotationAround(straight, ...at(straight, 'we will'))).toEqual([straight.lastIndexOf('"we') , straight.lastIndexOf('"') + 1]);
+    expect(quotationAround(straight, ...at(straight, 'and then'))).toBeNull();
+    const twoParagraphs = '“An unclosed quote.\n\nMr Harris said homes will be built.';
+    expect(quotationAround(twoParagraphs, ...at(twoParagraphs, 'homes will'))).toBeNull();
   });
 });
 

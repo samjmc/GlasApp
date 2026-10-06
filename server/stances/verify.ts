@@ -5,7 +5,9 @@
  * 2. A `direct` quote needs an opening quote mark just before it, else it becomes `paraphrase`.
  * 3. The TD's surname, one of their offices, or "Taoiseach"/"Tánaiste" when they hold it, is
  *    within NEAR_CHARS of the quote, else `td_not_near`. Two TDs with the same surname can
- *    pass for each other; that is accepted, because the quote is always shown.
+ *    pass for each other; that is accepted, because the quote is always shown. Only a name
+ *    outside quotation marks counts: inside them, the TD is being talked about by whoever is
+ *    quoted.
  * 4. An unknown td_id or domain, or a quote that breaks the prompt's rules, is `invalid`; so
  *    is a quote inside a link teaser for another article ("[ … Opens in new window ]").
  *
@@ -95,17 +97,6 @@ export function normalise(original: string): Normalised {
 
 const isWordChar = (ch: string | undefined) => ch !== undefined && WORD_CHAR.test(ch);
 
-/** `needle` occurs in `hay[from, to)` as whole words. */
-function hasWord(hay: string, needle: string, from: number, to: number): boolean {
-  if (!needle) return false;
-  let at = hay.indexOf(needle, from);
-  while (at !== -1 && at + needle.length <= to) {
-    if (!isWordChar(hay[at - 1]) && !isWordChar(hay[at + needle.length])) return true;
-    at = hay.indexOf(needle, at + 1);
-  }
-  return false;
-}
-
 /** The normalised names a TD can be referred to by near their quote. */
 export function namesFor(td: CandidateTd): string[] {
   const tokens = normalise(td.name).text.split(' ');
@@ -127,6 +118,45 @@ function hasOpeningMark(text: string, pos: number): boolean {
     if (text[i] === "'" && !isWordChar(text[i - 1])) return true;
   }
   return false;
+}
+
+/**
+ * `needle` occurs in `n.text[from, to)` as whole words, outside quotation marks. Inside them the
+ * words are someone's speech, and a TD named there is only being talked about.
+ */
+function namedOutsideQuotes(n: Normalised, original: string, needle: string, from: number, to: number): boolean {
+  if (!needle) return false;
+  for (let at = n.text.indexOf(needle, from); at !== -1 && at + needle.length <= to; at = n.text.indexOf(needle, at + 1)) {
+    if (isWordChar(n.text[at - 1]) || isWordChar(n.text[at + needle.length])) continue;
+    if (!quotationAround(original, n.offsets[at]!, n.offsets[at + needle.length - 1]! + 1)) return true;
+  }
+  return false;
+}
+
+const OPENING_QUOTES = '“«';
+const CLOSING_QUOTES = '”»';
+
+/**
+ * The quotation marks around [start, end) in the original text, within one paragraph, as
+ * [opening mark, after the closing mark); null when the span is not inside a quotation. Curly
+ * marks say which way they face; a straight `"` opens or closes by count. Single quotes are left
+ * out: they are also apostrophes.
+ */
+export function quotationAround(text: string, start: number, end: number): [number, number] | null {
+  const paragraphStart = text.lastIndexOf('\n', start - 1) + 1;
+  let open = -1;
+  let straight = false;
+  for (let i = paragraphStart; i < start; i++) {
+    const ch = text[i]!;
+    if (OPENING_QUOTES.indexOf(ch) !== -1) [open, straight] = [i, false];
+    else if (CLOSING_QUOTES.indexOf(ch) !== -1) open = -1;
+    else if (ch === '"') [open, straight] = open === -1 ? [i, true] : [-1, false];
+  }
+  if (open === -1) return null;
+  for (let i = end; i < text.length && text[i] !== '\n'; i++) {
+    if (straight ? text[i] === '"' : CLOSING_QUOTES.indexOf(text[i]!) !== -1) return [open, i + 1];
+  }
+  return [open, text.indexOf('\n', end) === -1 ? text.length : text.indexOf('\n', end)];
 }
 
 /** The normalised range whose original offsets fall within NEAR_CHARS of [origStart, origEnd). */
@@ -281,7 +311,9 @@ export function verifyStances(text: string, candidates: CandidateTd[], stances: 
       const origStart = n.offsets[pos]!;
       const origEnd = n.offsets[pos + quote.length - 1]! + 1;
       const [from, to] = nearRange(n, origStart, origEnd);
-      if (!names.some((name) => hasWord(n.text, name, from, to))) continue;
+      // A TD named only inside quotation marks is being talked about by whoever is quoted
+      // ("Simon Harris was at the committee…," Mr Hosford recounted), not speaking.
+      if (!names.some((name) => namedOutsideQuotes(n, text, name, from, to))) continue;
       const direct = hasOpeningMark(n.text, pos);
       if (!match || (direct && !match.direct)) match = { pos, direct };
       if (direct) break;
