@@ -27,7 +27,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "d9a4ede8",
       "rationale": "The manifesto commits to broadening the tax base and raising revenue from high earners and wealth, rather than defending the 12.5% rate or relying on corporate tax competition. This aligns with raising headline rates and recycling revenue domestically.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -46,7 +46,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Increase the minimum effective income tax rate for people earning more than €400,000.",
           "quoteSha": "c073a8ca7de1d0ec"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never states a corporation tax rate position; quotes are about reducing reliance on windfalls via a broader tax base and income tax for high earners. \"Raise headline rates\" is invented. Abstain."
     },
     {
       "questionId": 3,

@@ -630,7 +630,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "396fad74",
       "rationale": "Aontú opposes the Mercosur trade deal because it exposes Irish beef farmers to cheaper South American imports, prioritising domestic producers over trade access. This matches answer 3.",
       "modelConfidence": 0.85,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -649,7 +649,8 @@ export const sheet: PartyQuizSheet = {
           "text": "This deal will crush the Irish farmer and will do untold damage to the environment.",
           "quoteSha": "1434dcfe2b4a774d"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Manifesto opposes only the Mercosur deal; option 3 generalises to all deals. Option 2 fits about equally."
     },
     {
       "questionId": 45,

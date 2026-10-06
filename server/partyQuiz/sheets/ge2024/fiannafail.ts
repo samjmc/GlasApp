@@ -65,7 +65,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "559f8cbf",
       "rationale": "State absorbs network and PSO costs to cut bills, matching answer 0's state-funded shielding of every household, rather than targeted rebates, conservation tariffs, or income-only supports.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -84,7 +84,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Switch to direct State funding of the Renewable Electricity Support Scheme, reducing Public Service Obligation (PSO) levy on households’ electricity bills by an average of €40.",
           "quoteSha": "71bc215c32a09926"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto keeps 9% VAT on energy, cuts the PSO levy, and funds the grid from the State. A universal price cap funded by borrowing is never proposed; quotes are grid and PSO costs."
     },
     {
       "questionId": 5,
@@ -117,7 +118,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "a3c40286",
       "rationale": "The manifesto commits to removing routine private care from public hospitals, moving toward a more public system, though it does not endorse full state-run structural upheaval. This best matches answer 0 over the mixed or market-based options.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -129,7 +130,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Further progress the work to remove routine private care from public hospitals.",
           "quoteSha": "f5b84daf8f5268dd"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto keeps the NTPF, public-only consultants and removing routine private care from public hospitals. It never says move rapidly to a fully public system."
     },
     {
       "questionId": 7,
@@ -147,7 +149,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "f7fb5915",
       "rationale": "The manifesto promotes Irish as a living community language and supports programmes increasing direct engagement between new arrivals and host communities in social, cultural and sporting activities, matching community-led cultural pairing.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -166,14 +168,15 @@ export const sheet: PartyQuizSheet = {
           "text": "Support programmes which increase the level of direct engagement between new arrivals and host communities in broader social, cultural and sporting activities.",
           "quoteSha": "a4a99483288d8211"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): No passage pairs Irish-language groups with migrant organisations. Irish promotion and new-arrival engagement programmes are separate pledges."
     },
     {
       "questionId": 9,
       "fingerprint": "21820e1a",
       "rationale": "The manifesto prioritises radical planning reform and faster home delivery, with no mention of heritage preservation or citizens' votes, so it best matches aggressive rezoning and densification over preservation.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -192,7 +195,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Immediately implement our landmark Planning and Development Act, including recruitment of 400 additional planning staff to deliver homes faster.",
           "quoteSha": "67da1a1972301f9c"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quotes are general planning reform. Heritage page 173 pledges to double the Historic Structures Fund and Built Heritage scheme and to protect heritage; nothing supports losing historic buildings."
     },
     {
       "questionId": 10,
@@ -344,7 +348,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "edec1d4e",
       "rationale": "The manifesto backs new Garda powers to disperse groups and protect public spaces from disruptive conduct, matching answer 0's swift restoration of normal operations over facilitation or dialogue-first approaches.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -363,14 +367,15 @@ export const sheet: PartyQuizSheet = {
           "text": "Implement Public Space Protection Orders to protect public spaces from anti-social behaviour.",
           "quoteSha": "83e36ab0c0f8c700"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quotes are anti-social behaviour dispersal and public-space orders. Only protest line is removing face masks at protests; nothing on infrastructure blockades or clearing them."
     },
     {
       "questionId": 19,
       "fingerprint": "7842be43",
       "rationale": "The manifesto cites its central pandemic response saving lives and proposes a new national agency for pandemic threats, indicating a centralised state-led public health approach rather than voluntary, local or targeted-only options.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -389,7 +394,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Establish a new Emerging Health Threats Agency to strengthen Ireland’s ability to respond to emerging health and pandemic threats.",
           "quoteSha": "0a837643a3001be8"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto praises its Covid response and plans an Emerging Health Threats Agency. No statement on mandatory restrictions or central command."
     },
     {
       "questionId": 20,
@@ -460,7 +466,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "3ec07b23",
       "rationale": "The manifesto endorses adopting AI and using it to improve public services, matching answer 0's embrace of AI tools for policy delivery. It does not require citizens' assemblies or restrict AI to advisory-only roles.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -479,7 +485,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Leveraging AI for societal and economic benefit including supporting businesses to adopt AI and harnessing AI for better public services,",
           "quoteSha": "426d8cf7dc1e3dd2"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quotes are the national AI strategy and AI for public services. No passage on AI policy simulations or experts steering policy."
     },
     {
       "questionId": 24,
@@ -626,7 +633,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "2d90c7e8",
       "rationale": "Manifesto pledges compulsory age verification for all internet users via digital ID, matching answer 0's requirement of age checks for every user; no parental-consent alternative is offered.",
       "modelConfidence": 0.7,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -645,7 +652,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Legislate for a new online Digital Passport and require internet users to verify their age using these electronic IDs.",
           "quoteSha": "46cd5b2657cd7e76"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto requires age verification for all users via a Digital Passport but never bans under-16s, and bans recommender algorithms in children feeds, implying they stay on platforms."
     },
     {
       "questionId": 36,
@@ -777,7 +785,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "f906fd37",
       "rationale": "The manifesto cites the Pay-Related Benefit Scheme as a landmark reform protecting people from a 'cliff-edge' after job loss, indicating support for earnings-linked payments rather than flat rates or shortening them.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -789,7 +797,8 @@ export const sheet: PartyQuizSheet = {
           "text": "we also introduced a landmark reform, a Pay-Related Benefit Scheme, which will protect people from a ‘cliff-edge’ for a period of time when they lose their job",
           "quoteSha": "0dfd1f92c828b641"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Only mention is the Pay-Related Benefit scheme already introduced. No pledge to make it more generous or longer; manifesto speaks of an adequate income and encouraging work."
     },
     {
       "questionId": 44,

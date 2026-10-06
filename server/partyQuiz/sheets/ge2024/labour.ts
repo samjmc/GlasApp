@@ -262,7 +262,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "a7b1e486",
       "rationale": "Documents commit to a fully resourced migration agency and nationwide integration strategy, matching answer 0's immediate expansion of integration services; no quota phasing or intake limits are stated.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -282,14 +282,15 @@ export const sheet: PartyQuizSheet = {
           "quoteSha": "fdefe26f4adc58fd",
           "pageCorrected": true
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never addresses doubling refugee intake; integration agency quotes are a different topic, and it stresses robust managed system and repatriation of failed applicants."
     },
     {
       "questionId": 14,
       "fingerprint": "e081e7eb",
       "rationale": "Labour backs supporting farmers who exit dairy/beef and catchment strategies with lower stocking rates, matching mandated herd reduction with transition support rather than tech, offsets, or relaxed timelines.",
       "modelConfidence": 0.7,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -310,7 +311,8 @@ export const sheet: PartyQuizSheet = {
           "quoteSha": "7a121a4a36139a44",
           "pageCorrected": true
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto only supports farmers who voluntarily exit dairy/beef, anaerobic digestion, Just Transition Fund; never mandates herd reduction. Mandate clause contradicts voluntary approach."
     },
     {
       "questionId": 15,
@@ -355,7 +357,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "471a3337",
       "rationale": "The manifesto opposes widespread FRT on civil-liberty grounds, matching answer 2's rejection of the proposal, though it allows carefully considered use with safeguards rather than a total ban.",
       "modelConfidence": 0.7,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -368,7 +370,8 @@ export const sheet: PartyQuizSheet = {
           "quoteSha": "9f885d6eeaddfeb8",
           "pageCorrected": true
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Opposes only \"widespread\" FRT and says any use must follow extensive consultation with safeguards; that leaves room for limited use, so outright \"reject\" overstates. Pilot-with-safeguards fits at least as well."
     },
     {
       "questionId": 18,
@@ -409,7 +412,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "1609def7",
       "rationale": "Labour backs a rent-increase and eviction freeze plus massive public home-building, matching answer 1's combination of immediate renter protection and accelerated public construction.",
       "modelConfidence": 0.8,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -428,7 +431,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Labour will build an annual average of 50,000 new homes over the next five years from 2025 to 2029",
           "quoteSha": "faca4dbc13894b3c"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Own quote promises immediate freeze on rent increases and evictions (plus State Construction Co.); HAP/rent subsidy is to be phased down, not boosted. Option 0 (extend caps) fits better."
     },
     {
       "questionId": 22,

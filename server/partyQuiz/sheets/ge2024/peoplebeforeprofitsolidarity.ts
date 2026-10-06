@@ -221,7 +221,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "dc35f0f4",
       "rationale": "The manifesto commits to capping dairy herds and reducing the national herd to cut emissions, showing support for climate-driven agricultural measures rather than opposing EU climate targets or seeking opt-outs.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -240,7 +240,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Cap dairy herds at 200 cows and introduce a Dairy Herd Reduction scheme for farmers;",
           "quoteSha": "9b3f2cf94f1ba980"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quotes are national dairy herd cap; manifesto says nothing on EU agricultural policy or harmonisation. Support for full harmonisation is invented."
     },
     {
       "questionId": 13,
@@ -386,7 +387,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "e1fb2ebb",
       "rationale": "The manifesto commits exchequer resources and national programmes (State Construction Company, Apple money, extra funding for Gaeltacht bodies) to lift services and jobs in rural regions, matching direct central redistribution rather than tax incentives or relocation nudges.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -405,14 +406,15 @@ export const sheet: PartyQuizSheet = {
           "text": "Acmhainní breise a chur ar fáil d’Údarás na Gaeltachta agus do Roinn na Gaeltachta le haghaidh infheistíochta agus tacaíochta sa Ghaeltacht.",
           "quoteSha": "125a67a847dd2cb6"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto has no rural or regional development policy; quotes are Gaeltacht housing and Udaras funding only. Block grants/central redistribution is inferred from general ideology."
     },
     {
       "questionId": 23,
       "fingerprint": "3ec07b23",
       "rationale": "The manifesto stresses mass participation and citizens' assemblies over expert-led or technocratic governance, matching answer 1's blend of expert input with participatory validation.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -431,7 +433,8 @@ export const sheet: PartyQuizSheet = {
           "text": "People should play an active role in creating their destiny in a United Ireland through a series of citizens assemblies and a constituent assembly to draw up a new constitution",
           "quoteSha": "fef3e167cf2d8153"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never mentions AI policy simulations; quotes are about working-class organising and citizens assemblies for a United Ireland. Pilot-plus-assembly validation is invented."
     },
     {
       "questionId": 24,
