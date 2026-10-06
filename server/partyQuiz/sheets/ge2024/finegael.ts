@@ -72,7 +72,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "559f8cbf",
       "rationale": "Manifesto favours targeted support for vulnerable households and energy-cost grants for businesses, not universal price caps or market-only approaches, matching answer 1.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -91,14 +91,15 @@ export const sheet: PartyQuizSheet = {
           "text": "Energy Cost Grant Scheme: We will establish a new grant scheme to help businesses lower their energy costs",
           "quoteSha": "b29adc94ba480f14"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto silent on price-spike response; quotes are carbon-tax recycling and business efficiency grant. Its actual energy relief is broad VAT cut to 11% plus flat EUR40 rebate, not targeted-only."
     },
     {
       "questionId": 5,
       "fingerprint": "bb8e1c30",
       "rationale": "The manifesto backs parental choice including faith-based schools, and elsewhere promises an inclusive education model and a Citizens' Assembly on inclusive education, matching a blend of pluralism with continuity rather than a purely rights-focused or practical-only curriculum.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -110,7 +111,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Fine Gael is committed to enhancing parental choice in education, ensuring that families can access both denominational and faith-based schools.",
           "quoteSha": "586f3c91a4000ce0"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quote is about school patronage (denominational schools), not citizenship curriculum content; manifesto never addresses citizenship education."
     },
     {
       "questionId": 6,
@@ -270,7 +272,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "a7b1e486",
       "rationale": "The manifesto commits to accommodating protection applicants on State land and phasing new facilities with lead-in time and integration, matching gradual, milestone-based capacity rather than immediate expansion or refusal.",
       "modelConfidence": 0.62,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -289,7 +291,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Give greater lead-in time to the opening of new facilities, allowing for enhanced and effective local communication, and development of integration.",
           "quoteSha": "bb62e61a5895ac28"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never addresses refugee quota size; quotes are about hotel accommodation and facility lead-in. Its stance is a firmer system; accepting a doubled intake is not stated."
     },
     {
       "questionId": 14,
@@ -341,7 +344,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "25dadce4",
       "rationale": "The manifesto prioritises delivering major public transport projects like DART+ and MetroLink before any congestion charge, matching answer 1's phase-in after commuter rail expansions. It never proposes a congestion charge.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -353,7 +356,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Build Major Public Transport Projects: Prioritise the delivery of Bus Connects, MetroLink, Luas Finglas, the DART+ Programme, and the Cork Commuter Rail Programme to improve urban connectivity and convenience.",
           "quoteSha": "e09c05d9d05388b8"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never mentions a congestion charge; quote is a list of public transport projects. Phase-in after rail is an inference."
     },
     {
       "questionId": 17,
@@ -372,7 +376,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "edec1d4e",
       "rationale": "Manifesto pledges stronger public order powers and protest restrictions, indicating a firm response to disruptive protests rather than facilitation or non-intervention.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -391,7 +395,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Strengthen Public Order Acts: Review and update Public Order Acts to give Gardaí the power they need to manage public order situations effectively.",
           "quoteSha": "6244b851377b22e0"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quotes cover mask ban, ban on protests outside homes and updating Public Order Acts; manifesto never says protests blocking infrastructure should be cleared immediately."
     },
     {
       "questionId": 19,

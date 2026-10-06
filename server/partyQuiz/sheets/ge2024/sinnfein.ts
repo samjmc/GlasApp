@@ -80,7 +80,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "559f8cbf",
       "rationale": "The manifesto rejects market-led pass-through and instead reforms the energy market, PSO levy and network charges to keep prices affordable and equitable, matching a universal shielding approach rather than targeted rebates or pure income supports.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -99,7 +99,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Reforming the PSO levy, Network Charges and other taxes to ensure costs are shared equitably",
           "quoteSha": "431425d2d69775c6"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): No universal price cap or borrowing-funded shield stated. Manifesto offers structural reform: regulator powers on hedging, PSO levy reform, public-led price-stabilising facility, windfall-profit curbs. Quotes do not support cap."
     },
     {
       "questionId": 5,
@@ -144,7 +145,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "7a9221d8",
       "rationale": "The manifesto opposes new speech restrictions and would repeal hate offence laws, prioritising free speech over expanded regulation, aligning with rejecting the bill as drafted rather than passing it.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -156,7 +157,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Sinn Féin would not introduce hate speech laws and we would repeal the government’s Criminal Justice (Hate Offences) Act because we believe that freedom of speech is a core component of democracy",
           "quoteSha": "68b646a04c9a979c"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Hypothetical bill is not addressed. Quote shows SF values free speech and opposes hate-speech laws, so rejecting a bill that expands speech is not supported; at most partial support. Abstain is correct."
     },
     {
       "questionId": 8,
@@ -174,7 +176,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "21820e1a",
       "rationale": "The manifesto prioritises protecting heritage at risk and public access over developer profit, supporting keeping historic fabric intact rather than aggressive redevelopment.",
       "modelConfidence": 0.5,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -186,7 +188,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Expanding the OPW power to initiate a compulsory purchase of lands and buildings to cover heritage at risk and the defence of public access to sites",
           "quoteSha": "d6a8b838de4930dd"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Manifesto puts heritage above developer profit (Moore Street, heritage-at-risk CPO) but never says redirect housing elsewhere; it also favours reuse of vacant/derelict buildings, so adaptive-reuse option fits about equally."
     },
     {
       "questionId": 10,
@@ -275,7 +278,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "e081e7eb",
       "rationale": "The manifesto funds nature restoration and biodiversity measures for farmers rather than mandating herd cuts or technology-only fixes, matching answer 2's offset approach; it does not choose herd reduction or relaxed timelines.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -294,7 +297,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Providing new funding for farmers outside of CAP for biodiversity and nature restoration measures, including a €300m dedicated nature restoration fund",
           "quoteSha": "a2d14cb76ead8242"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Support-first funding: EUR300m nature restoration fund, afforestation, carbon audits, LESS, tillage. No offsets or biodiversity credits stated; investment/innovation-grant option fits about equally well."
     },
     {
       "questionId": 15,
@@ -327,7 +331,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "25dadce4",
       "rationale": "The manifesto opposes charges on motorists who lack alternatives, prioritising road maintenance and offsetting tolls, which aligns with rejecting the charge and preserving car freedom rather than congestion pricing.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -339,7 +343,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Sinn Féin would also offset the increase in toll costs. Amid a cost-of-living crisis, people with no alternative means of transport are being targeted, as they must use their cars and these toll roads.",
           "quoteSha": "56c81b0c8ac8371c"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never mentions a Dublin congestion charge; quotes are about offsetting toll increases and road maintenance, a different topic. Reject-charge is an inference; abstain is correct."
     },
     {
       "questionId": 17,
@@ -402,7 +407,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "e1fb2ebb",
       "rationale": "The manifesto backs state enterprise agencies, local investment funds and regional development structures, matching answer 2's enterprise zones, tax incentives and local investment funds over central redistribution or relocation incentives.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -421,7 +426,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Establishing 'Mol Gnó', a new Irish Enterprise Agency, focused on scaling existing Irish businesses",
           "quoteSha": "127e93755305ca2a"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Manifesto answers rural lag with state infrastructure and services, expanded Enterprise Ireland/LEOs, co-ops, a small community wealth fund. Enterprise zones and tax incentives are not stated; national-programmes option fits at least as well."
     },
     {
       "questionId": 23,
@@ -497,7 +503,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "429bf7e6",
       "rationale": "The manifesto commits to a strategy supporting demand for increased diversification of patronage, including multi-denominational schools, but frames it around existing and emerging demand rather than a firm national timetable, matching answer 2.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 2,
       "abstainReason": null,
@@ -509,7 +515,8 @@ export const sheet: PartyQuizSheet = {
           "text": "develop a new strategy to support existing and emerging demand for increased diversification of patronage in schools including state, co-educational, multi-denominational and community schools",
           "quoteSha": "5259a2c2e34462cd"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Strategy to support existing and emerging demand for diversified patronage fits a demand-led approach, but \"keep existing patrons\" is not stated; the parent-vote option fits at least equally. No timetable or firm commitment."
     },
     {
       "questionId": 31,
@@ -745,7 +752,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "396fad74",
       "rationale": "The manifesto calls for EU trade deals to protect and support Irish farmers, and opposes the Mercosur Deal as putting farmers in a weaker position, matching answer 3's priority on shielding domestic producers from cheaper imports.",
       "modelConfidence": 0.7,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -757,7 +764,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Ensuring EU free trade agreements protect and support Irish farmers",
           "quoteSha": "54b56217006ef2dc"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Opposes Mercosur and wants any EU free trade agreement to protect farmers from undercutting; that is not a blanket opposition to deals or \"domestic producers first\". Keep-signing-with-protections fits about equally."
     },
     {
       "questionId": 45,

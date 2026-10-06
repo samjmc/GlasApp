@@ -151,7 +151,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "21820e1a",
       "rationale": "The manifesto supports densifying cities but conditions it on community buy-in, matching answer 3's call for a democratic mandate before proceeding. It does not endorse aggressive rezoning or preserving historic fabric outright.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -163,7 +163,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Allow planning within cities to permit developers to build up within reason, and with community buy-in.",
           "quoteSha": "0d0807e50575b7f9"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): No passage on historic quarters, heritage buildings or citizens votes on planning. Only \"community buy-in\" for building up in cities, which is not a vote."
     },
     {
       "questionId": 10,
@@ -276,7 +277,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "25dadce4",
       "rationale": "The manifesto prioritises road widening and passing bays over congestion charging, and never proposes a congestion charge, matching answer 3's road upgrades and car freedom.",
       "modelConfidence": 0.7,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -288,7 +289,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Pursue a road-widening campaign nationwide to improve road safety; increase construction of passing bays on local and regional roads;",
           "quoteSha": "5087bf6ffbe6d875"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never mentions a congestion charge. Quote is a road-widening road-safety pledge; rejecting the charge is an inference."
     },
     {
       "questionId": 17,
@@ -646,7 +648,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "396fad74",
       "rationale": "The manifesto explicitly opposes the Mercosur trade deal, a trade agreement exposing Irish farmers to cheaper imports, matching answer 3's protectionist stance over open-trade options.",
       "modelConfidence": 0.8,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 3,
       "abstainReason": null,
@@ -658,7 +660,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Oppose the Mercosur Trade deal; Introduce a specific Minister for fisheries responsible for maritime issues",
           "quoteSha": "7fcf36d66d80735b"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (weak): Only \"Oppose the Mercosur Trade deal\" is stated; generalising to all deals that expose farmers is added. Option 2 fits about equally."
     },
     {
       "questionId": 45,

@@ -229,7 +229,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "dc35f0f4",
       "rationale": "The party endorses the EU-level Strategic Dialogue and CAP reform ending area-based payments, and commits to EU climate targets, indicating support for harmonised EU agricultural policy rather than opt-outs or national control.",
       "modelConfidence": 0.6,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 0,
       "abstainReason": null,
@@ -248,7 +248,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Take immediate action to accelerate the measures outlined by Teagasc in its Marginal Abatement Cost Curve as being necessary to achieve the 25% emissions reduction target.",
           "quoteSha": "13769a693179a2f4"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Quotes are Strategic Dialogue vision and Teagasc abatement measures; nothing on EU harmonisation of agri policy. Manifesto even wants a nature fund separate from CAP. Full harmonisation is invented."
     },
     {
       "questionId": 13,
@@ -443,7 +444,7 @@ export const sheet: PartyQuizSheet = {
       "fingerprint": "3ec07b23",
       "rationale": "The manifesto favours participatory democracy and citizens' assemblies to validate major policy directions, matching answer 1's blend of expert input with citizen validation, rather than purely technocratic or advisory-only approaches.",
       "modelConfidence": 0.55,
-      "review": "approved",
+      "review": "rejected",
       "status": "answered",
       "answerIndex": 1,
       "abstainReason": null,
@@ -462,7 +463,8 @@ export const sheet: PartyQuizSheet = {
           "text": "Support an all-island Citizens’ Assembly which would both review current governance mechanisms in terms of inclusivity and fair representation and generate and refine options for new governance structures.",
           "quoteSha": "ccd8d6dd11b8640f"
         }
-      ]
+      ],
+      "reviewNote": "Rejected 2026-10-05 after an independent read of the manifesto (unsupported): Manifesto never discusses AI policy simulations; quotes are public consultation and an all-island governance assembly. It only covers AI regulation and an AI advisory forum. Pilot plus assembly validation is invented."
     },
     {
       "questionId": 24,
