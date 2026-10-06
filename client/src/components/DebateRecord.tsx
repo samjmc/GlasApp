@@ -211,9 +211,14 @@ function ParticipantRow({ p }: { p: DebateRecordParticipant }) {
     <li className="flex flex-col gap-2 rounded-xl border p-3">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <span className="flex min-w-0 flex-wrap items-baseline gap-2 text-[15px]">
-          <Link href={`/td/${encodeURIComponent(p.name)}`} className="font-bold underline-offset-4 hover:underline">
-            {p.name}
-          </Link>
+          {/* A member who has left the Dáil before the roster was first read has no TD page. */}
+          {p.tdId === null ? (
+            <span className="font-bold">{p.name}</span>
+          ) : (
+            <Link href={`/td/${encodeURIComponent(p.name)}`} className="font-bold underline-offset-4 hover:underline">
+              {p.name}
+            </Link>
+          )}
           {p.party && <PartyLabel party={p.party} short className="text-xs" />}
           {p.role === 'office' && <span className="text-xs text-muted-foreground">in government office</span>}
         </span>

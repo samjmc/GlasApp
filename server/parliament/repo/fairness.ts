@@ -9,14 +9,15 @@ import type { TdAbsence, TdOfficePeriod } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
 import type { DocumentedAbsence } from '../absences';
 import type { PartyLeader } from '../partyLeaders';
-import type { RosterMember } from '../client';
+import type { FormerMember, RosterMember } from '../client';
 import type { DayRange } from '../metrics';
 import { chunks } from './util';
 
-export async function replaceOffices(roster: RosterMember[], tdIds: Map<string, number>, database: Db = db): Promise<number> {
+/** Members who left keep the offices they held in this Dáil (tdId null when they have no tds row). */
+export async function replaceOffices(roster: RosterMember[], tdIds: Map<string, number>, former: FormerMember[] = [], database: Db = db): Promise<number> {
   // One title can be listed twice with the same start (a data repeat): keep the latest end.
   const byKey = new Map<string, typeof tdOffices.$inferInsert>();
-  for (const m of roster) {
+  for (const m of [...roster, ...former]) {
     for (const o of m.officeHistory) {
       const key = `${m.memberCode}\u0000${o.title}\u0000${o.start}`;
       const prev = byKey.get(key);

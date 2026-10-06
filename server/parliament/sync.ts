@@ -195,12 +195,14 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     roster.map((m) => ({ memberCode: m.memberCode, offices: m.offices, committees: repo.currentCommitteeNames(m) })),
   );
   const committeeMemberships = await repo.replaceCommitteeMemberships(roster, tdIds);
-  // Offices and documented leave: why a TD was not expected to vote or ask questions.
-  const offices = await repo.replaceOffices(roster, tdIds);
+  // Offices and documented leave: why a TD was not expected to vote or ask questions. Members
+  // who left keep their offices, which say which side of the House they spoke from.
+  const former = await client.formerMembers();
+  const offices = await repo.replaceOffices(roster, tdIds, former);
   await repo.replaceAbsences(validateAbsences(DOCUMENTED_ABSENCES), tdIds);
   await repo.replacePartyLeaders(validatePartyLeaders(PARTY_LEADERS), tdIds);
-  await repo.setSyncState('roster', today, `${roster.length} members, ${committeeMemberships} committee memberships, ${offices} offices`);
-  log(`Roster: ${roster.length} members (+${rosterResult.inserted} ~${rosterResult.updated} -${rosterResult.deactivated}), ${committeeMemberships} committee memberships, ${offices} offices, ${DOCUMENTED_ABSENCES.length} documented absences.`);
+  await repo.setSyncState('roster', today, `${roster.length} members, ${former.length} former, ${committeeMemberships} committee memberships, ${offices} offices`);
+  log(`Roster: ${roster.length} members (+${rosterResult.inserted} ~${rosterResult.updated} -${rosterResult.deactivated}), ${former.length} former members, ${committeeMemberships} committee memberships, ${offices} offices, ${DOCUMENTED_ABSENCES.length} documented absences.`);
 
   const dailStart = roster.map((m) => m.memberSince).sort()[0];
   const oldestRetry = addDays(today, -RETRY_WINDOW_DAYS);

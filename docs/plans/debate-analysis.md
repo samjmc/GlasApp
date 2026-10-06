@@ -280,6 +280,14 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   independents who support the government without an office count as the other side, so a
   concession from one of them to a minister scores; and a TD's party is today's party, so a TD who
   changed party mid-term is placed by it.
+- **Members who have left keep their offices (2026-10-05).** The roster lists only sitting members
+  and `td_offices` was rebuilt from it, so a minister who left lost every office on the next sync.
+  Found on GlasCore: Paschal Donohoe (Minister for Finance 2025-01-23 to 2025-11-18, left the Dáil
+  2025-11-21) counted as not in government, so 4 of his concessions to opposition TDs scored 0
+  instead of 3 (Pearse Doherty −6, Paul Murphy −3, Peadar Tóibín −3). The sync now also reads
+  members whose seat in this Dáil has ended (same API call) and keeps their offices, with `td_id`
+  NULL when they have no `tds` row. He and Catherine Connolly left before the roster was first
+  read, so they have no TD page; the debate panel names them without a link.
 - **Role**: holds a government office on the debate's first day = `office`, else `backbench`. The
   term figure is points per argued debate in the role the TD spoke in most (office wins a tie),
   against the 75th percentile of TDs with at least 5 debates in the same role. The chair is left
