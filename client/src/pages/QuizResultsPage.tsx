@@ -17,8 +17,7 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import type { QuizResult } from '@shared/quiz';
 import MultidimensionalIdeologyProfile from '@/components/MultidimensionalIdeologyProfile';
-import EnhancedProfileExplanation from '@/components/EnhancedProfileExplanation';
-import ContextAnalysis from '@/components/ContextAnalysis';
+import MatchesAndWeights from '@/components/MatchesAndWeights';
 import PoliticalOpinionChangeTracker from '@/components/PoliticalOpinionChangeTracker';
 import { PageHeader } from '@/components/PageHeader';
 import { EmptyState } from '@/components/pulse/EmptyState';
@@ -231,9 +230,7 @@ const QuizResultsPage: React.FC = () => {
           />
         </div>
 
-        <EnhancedProfileExplanation dimensions={result.vector} weights={weights} onWeightsChange={setWeights} />
-
-        <ContextAnalysis dimensions={result.vector} />
+        <MatchesAndWeights dimensions={result.vector} weights={weights} onWeightsChange={setWeights} />
 
         {/* Signed in, two or more saved results */}
         <PoliticalOpinionChangeTracker />

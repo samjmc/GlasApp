@@ -28,7 +28,7 @@ anything on a real host.
 |---|---|
 | **Host and domain.** One Docker host, one instance (`docs/deploy.md` "Rules that do not bend"). | Rate limits, the cache and the sync lock live in process memory. |
 | **Own Supabase project, or keep sharing GlasCore.** | The auth user table, the Site URL and the connection budget (60, shared) are project-wide. |
-| **The AI provider and the two public analysis endpoints** (`/api/enhanced-profile/*`). | They send each result's eight scores to the provider. Remove them, or name the provider, get a DPA, and pick an EU or UK one. |
+| **The AI provider for the background jobs** (news ranking, stances, debates). | These send public text only. The two public analysis endpoints that sent each result's eight scores to the provider are gone (removed 2026-10-10). If you add a user-facing AI feature, name the provider, get a DPA and pick an EU or UK one first. |
 | **Privacy policy rewrite, cookie banner, age gate, self-hosted fonts.** | The policy does not match the app. See the data protection impact assessment draft. |
 
 ## 2. Before the first boot
