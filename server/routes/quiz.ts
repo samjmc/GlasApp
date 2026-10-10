@@ -3,6 +3,7 @@
  * Every response is `{ success, data }` via formatSuccess.
  */
 import { requireAuth } from '../auth';
+import { hasPoliticalConsent } from '../consent';
 import { Router } from 'express';
 import type OpenAI from 'openai';
 import { z } from 'zod';
@@ -23,14 +24,18 @@ const submitSchema = z.object({
   seed: z.number().int().min(0).max(0xffffffff).optional(),
 });
 
-/** POST /api/quiz — score answers. Open to anonymous visitors; saved only when signed in. */
+/**
+ * POST /api/quiz — score answers. Open to anonymous visitors. Saved only for a signed-in user who
+ * has consented (server/consent); anyone else gets the score and `id: null`, as anonymous.
+ */
 router.post(
   '/',
   asyncHandler(async (req, res) => {
     const body = submitSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid quiz answers', body.error.flatten()));
+    const saveFor = req.user && (await hasPoliticalConsent(req.user.id)) ? req.user.id : null;
     try {
-      res.json(formatSuccess(await submitQuiz(req.user?.id ?? null, body.data.answers, body.data.seed)));
+      res.json(formatSuccess(await submitQuiz(saveFor, body.data.answers, body.data.seed)));
     } catch (error) {
       if (error instanceof QuizInputError) return res.status(400).json(formatError('VALIDATION_ERROR', error.message));
       throw error;

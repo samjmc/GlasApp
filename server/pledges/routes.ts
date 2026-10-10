@@ -19,6 +19,7 @@
 import { Router, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
 import { logAdminAction, optionalAuth, requireAdmin, requireAuth } from '../auth';
+import { requirePoliticalConsent } from '../consent';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES, type PledgeCategory } from '@shared/pledges';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import * as repo from './repository';
@@ -145,6 +146,8 @@ pledgesRouter.get(
 pledgesRouter.put(
   '/priorities',
   requireAuth,
+  // A ranking of policy areas is a political opinion (server/consent).
+  requirePoliticalConsent,
   handle(async (req) => {
     const { ranking } = rankingBody.parse(req.body);
     await repo.saveRanking(req.user!.id, ranking as PledgeCategory[]);

@@ -17,6 +17,7 @@ import scoresRoutes from "./routes/scores";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
 import { pledgesRouter } from "./pledges/routes";
 import { stancesRouter } from "./stances/routes";
+import { consentRouter } from "./consent/routes";
 import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
 
@@ -54,6 +55,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register news feed routes for homepage articles
   app.use("/api/news-feed", newsRoutes);
   
+
+  // Consent to store political opinions; every route that stores them checks it (server/consent)
+  app.use("/api/consent", consentRouter);
 
   // Voting: the daily session and the policy question on each article
   app.use("/api/daily-session", dailySessionRouter);

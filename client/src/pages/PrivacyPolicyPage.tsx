@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      lastUpdated={new Date().toLocaleDateString('en-IE', { year: 'numeric', month: 'long', day: 'numeric' })}
+      lastUpdated="10 October 2026"
       toc={TOC}
     >
       <section className="flex items-start gap-3 rounded-xl border border-border bg-elevated p-6">
@@ -117,12 +117,12 @@ export default function PrivacyPolicyPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>Provide core platform services (quiz, rankings, profiles)</td>
-                  <td>Contract Performance (Art. 6(1)(b))</td>
+                  <td>Store your political answers (quiz results, daily votes, pledge priorities) and build your political profile and your TD and party matches from them</td>
+                  <td>Explicit Consent (Art. 9(2)(a) and Art. 6(1)(a)). You can withdraw it at any time in your profile.</td>
                 </tr>
                 <tr>
-                  <td>Personalized recommendations and insights</td>
-                  <td>Legitimate Interest (Art. 6(1)(f))</td>
+                  <td>Provide your account and the rest of the platform</td>
+                  <td>Contract Performance (Art. 6(1)(b))</td>
                 </tr>
                 <tr>
                   <td>Send account notifications and updates</td>
@@ -145,7 +145,11 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <p>
-            Quiz answers of signed-in users may also be analysed in aggregate, without identifying anyone, to check and improve the quiz questions. Results are never published per person.
+            Your political answers are special category data under Art. 9 GDPR. We store them only after you agree, and only for the purposes above. You can take the quiz without agreeing; your result is then not saved.
+          </p>
+
+          <p>
+            With that consent, saved quiz answers may also be analysed in aggregate, without identifying anyone, to check and improve the quiz questions. Results are never published per person.
           </p>
 
           <p className="font-semibold text-foreground">
@@ -250,6 +254,10 @@ export default function PrivacyPolicyPage() {
           <div>
             <p className="font-semibold text-foreground">Right to Data Portability (Art. 20)</p>
             <p>Export your data in JSON format (available in profile settings).</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Right to Withdraw Consent (Art. 7(3))</p>
+            <p>Withdraw your consent to store your political answers at any time in your profile. This deletes your quiz results, daily votes, pledge priorities and political profile, and keeps your account. It does not affect what was done before you withdrew.</p>
           </div>
           <div>
             <p className="font-semibold text-foreground">Right to Object (Art. 21)</p>

@@ -33,3 +33,15 @@ export const users = politics.table(
 );
 
 export type UserRow = typeof users.$inferSelect;
+
+/**
+ * Explicit consent (GDPR Art. 9(2)(a)) to store a user's political opinions: quiz results,
+ * votes, pledge priorities and the ideology profile built from them. Nothing of that is stored
+ * without a row here for the current consent text. Withdrawing deletes the row and that data.
+ */
+export const politicalDataConsents = politics.table('political_data_consents', {
+  userId: varchar('user_id', { length: 64 }).primaryKey(),
+  /** The consent text agreed to (POLITICAL_CONSENT_VERSION in shared/consent.ts). */
+  policyVersion: varchar('policy_version', { length: 32 }).notNull(),
+  grantedAt: timestamp('granted_at', { withTimezone: true }).notNull().defaultNow(),
+});

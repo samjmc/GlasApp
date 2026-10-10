@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePoliticalConsent } from "@/contexts/ConsentContext";
 import {
   useCompleteDailySession,
   useDailySession,
@@ -100,7 +101,8 @@ export default function DailySessionPage() {
   // Which session state the screen was last matched to. See the sync effect below.
   const syncedTo = useRef<string | null>(null);
 
-  const sessionQuery = useDailySession(isAuthenticated);
+  const { state: consent, ensureConsent } = usePoliticalConsent();
+  const sessionQuery = useDailySession(isAuthenticated && consent === "granted");
   const voteMutation = useDailySessionVote();
   const completeMutation = useCompleteDailySession();
   const { toast } = useToast();
@@ -378,6 +380,23 @@ export default function DailySessionPage() {
           <p className="text-muted-foreground">Three quick stances a day keep your profile and TD matches up to date.</p>
           <Button asChild size="lg">
             <Link href="/login">Sign in</Link>
+          </Button>
+        </div>
+      </Shell>
+    );
+  }
+
+  if (consent === "missing") {
+    return (
+      <Shell>
+        <TopBar left={<CloseLink />} title="Daily vote" />
+        <div className="flex flex-1 flex-col justify-center gap-4 text-center">
+          <h1 className="font-display text-3xl font-extrabold tracking-tight">Save your answers first</h1>
+          <p className="text-muted-foreground">
+            Your daily votes are political opinions, so we store them only if you agree.
+          </p>
+          <Button size="lg" onClick={() => void ensureConsent()}>
+            Read and agree
           </Button>
         </div>
       </Shell>

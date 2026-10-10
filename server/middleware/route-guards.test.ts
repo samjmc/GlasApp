@@ -188,7 +188,9 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
   it('POST /api/quiz takes the user from the token, never from the request body', () => {
     // The quiz rebuild moved the old inline /api/quiz-results handler to server/routes/quiz.ts.
     const src = read('server/routes/quiz.ts');
-    assert.ok(src.includes('submitQuiz(req.user?.id ?? null'));
+    // Saved for the token's user, and only with their consent (server/consent).
+    assert.ok(src.includes('req.user && (await hasPoliticalConsent(req.user.id)) ? req.user.id : null'));
+    assert.ok(src.includes('submitQuiz(saveFor,'));
     assert.equal(/body\.data\.userId|req\.body\.userId/.test(src), false);
     assert.equal(src.includes('req.session'), false);
     assert.equal(read('server/routes.ts').includes('req.session'), false);

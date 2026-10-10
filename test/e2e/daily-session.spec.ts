@@ -9,6 +9,7 @@
  * by server/voting/voting.integration.test.ts against Postgres.
  */
 import { expect, test, type Page } from '@playwright/test';
+import { CONSENT_REQUIRED, POLITICAL_CONSENT_VERSION } from '@shared/consent';
 import type { DailySessionCompletion, DailySessionItem, DailySessionState } from '@shared/voting';
 
 const SESSION_ID = 7;
@@ -45,6 +46,9 @@ class FakeDaily {
   completeCalls = 0;
   readonly votes: Array<{ itemId: number; option: string }> = [];
   status: 'pending' | 'completed' = 'pending';
+  /** Consent to store political answers (server/consent); the session routes refuse without it. */
+  consented = true;
+  consentGrants = 0;
 
   constructor(
     public items: DailySessionItem[],
@@ -87,11 +91,21 @@ class FakeDaily {
 
   async install(page: Page) {
     const ok = (data: unknown) => ({ json: { success: true, data } });
-    const fail = (status: number, message: string) => ({ status, json: { success: false, error: { code: 'ERROR', message } } });
+    const fail = (status: number, message: string, code = 'ERROR') => ({ status, json: { success: false, error: { code, message } } });
+    const consent = () => ({ granted: this.consented, version: POLITICAL_CONSENT_VERSION, grantedAt: this.consented ? '2026-10-10T09:00:00Z' : null });
+
+    await page.route('**/api/consent', async (route) => {
+      if (route.request().method() === 'POST') {
+        this.consentGrants += 1;
+        this.consented = true;
+      }
+      return route.fulfill(ok(consent()));
+    });
 
     await page.route('**/api/daily-session**', async (route) => {
       const request = route.request();
       const path = new URL(request.url()).pathname;
+      if (!this.consented) return route.fulfill(fail(403, 'Agree to store your political answers first', CONSENT_REQUIRED));
       if (request.method() === 'GET' && path === '/api/daily-session') {
         this.gets += 1;
         if (this.delayGetMs > 0) await new Promise((resolve) => setTimeout(resolve, this.delayGetMs));
@@ -215,6 +229,28 @@ test('a full session: intro, three answers, results, streak', async ({ page }) =
   await expect(page.getByRole('heading', { name: 'Streak boosted' })).toBeVisible();
   await expect(page.getByText('4 days', { exact: true })).toBeVisible();
   await expect(page.getByText('+1 day locked in')).toBeVisible();
+});
+
+test('without consent the daily vote asks first, loads nothing until the user agrees, and then starts', async ({ page }) => {
+  const api = new FakeDaily([item(1), item(2), item(3)], 4);
+  api.consented = false;
+  await open(page, api);
+
+  await expect(page.getByRole('heading', { name: 'Save your answers first' })).toBeVisible();
+  // "Not now" keeps the user here, and nothing was asked of the session routes.
+  await page.getByRole('button', { name: 'Read and agree' }).click();
+  await page.getByRole('button', { name: 'Not now' }).click();
+  await expect(page.getByRole('heading', { name: 'Save your answers first' })).toBeVisible();
+  expect(api.gets).toBe(0);
+  expect(api.consentGrants).toBe(0);
+
+  await page.getByRole('button', { name: 'Read and agree' }).click();
+  await expect(page.getByRole('heading', { name: 'Save your political answers?' })).toBeVisible();
+  await page.getByRole('button', { name: 'I agree' }).click();
+
+  await expect(page.getByText('4 days running')).toBeVisible();
+  expect(api.consentGrants).toBe(1);
+  expect(api.gets).toBeGreaterThan(0);
 });
 
 test('closing the session and coming back resumes at the next question', async ({ page }) => {

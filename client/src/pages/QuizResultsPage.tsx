@@ -23,6 +23,7 @@ import PoliticalOpinionChangeTracker from '@/components/PoliticalOpinionChangeTr
 import { PageHeader } from '@/components/PageHeader';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { useAuth } from '@/contexts/AuthContext';
+import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { fetchMyQuizResults, submitQuiz, type DimensionWeights } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { clearStoredQuiz, loadStoredQuiz, loadWeights, storeQuiz } from '@/lib/quizStorage';
@@ -36,13 +37,15 @@ const heroButton =
 /**
  * Quiz results. The result comes from sessionStorage (the quiz page stores what
  * POST /api/quiz returned) or, when signed in, from the newest saved result.
- * An anonymous result is saved once the user signs in.
+ * An anonymous result is saved once the user is signed in and has agreed to store political
+ * answers (ConsentContext).
  */
 const QuizResultsPage: React.FC = () => {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const { user, isAuthenticated } = useAuth();
+  const { state: consent, ensureConsent } = usePoliticalConsent();
 
   const [stored, setStored] = useState(loadStoredQuiz);
   const [weights, setWeights] = useState<DimensionWeights>(loadWeights);
@@ -63,8 +66,9 @@ const QuizResultsPage: React.FC = () => {
   });
 
   // Save-after-sign-in: answers scored anonymously are posted once, then replaced by the saved result.
+  // Only with consent: without it the server scores again and stores nothing.
   useEffect(() => {
-    if (!isAuthenticated || !stored || stored.result.id !== null || stored.answers.length === 0) return;
+    if (consent !== "granted" || !stored || stored.result.id !== null || stored.answers.length === 0) return;
     if (saveAttemptedRef.current) return;
     saveAttemptedRef.current = true;
 
@@ -84,7 +88,8 @@ const QuizResultsPage: React.FC = () => {
       .finally(() => {
         savingAnswers = null;
       });
-  }, [isAuthenticated, stored, queryClient, toast]);
+  }, [consent, stored, queryClient, toast]);
+  const unsaved = consent === "missing" && !!stored && stored.result.id === null && stored.answers.length > 0;
 
   const result: QuizResult | null = stored?.result ?? history?.[0] ?? null;
 
@@ -240,13 +245,20 @@ const QuizResultsPage: React.FC = () => {
             {isSaving && <Loader2 className="h-4 w-4 shrink-0 animate-spin" aria-hidden="true" />}
             {result.id !== null
               ? "This result is saved to your profile."
-              : isAuthenticated
-                ? "Saving this result to your profile…"
-                : "Sign in to save this result and track how your views change over time."}
+              : unsaved
+                ? "This result is not saved. Agree to store your answers to keep it and track how your views change."
+                : isAuthenticated
+                  ? "Saving this result to your profile…"
+                  : "Sign in to save this result and track how your views change over time."}
           </p>
           {!isAuthenticated && (
             <Button asChild size="lg" className="h-[52px] w-full text-base font-extrabold">
               <Link href="/login">Sign in to save</Link>
+            </Button>
+          )}
+          {unsaved && (
+            <Button size="lg" className="h-[52px] w-full text-base font-extrabold" onClick={() => void ensureConsent()}>
+              Save to my profile
             </Button>
           )}
           {result.id !== null && (

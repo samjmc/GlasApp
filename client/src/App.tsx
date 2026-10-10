@@ -12,6 +12,7 @@ import { OfflineIndicator } from "@/components/OfflineIndicator";
 import { PWAInstallButton } from "@/components/PWAInstallButton";
 import CookieConsent from "@/components/CookieConsent";
 import { RegionProvider } from "@/contexts/RegionContext";
+import { ConsentProvider, usePoliticalConsent } from "@/contexts/ConsentContext";
 import { useRegion } from "@/hooks/useRegion";
 import { useDailySession } from "@/hooks/useDailySession";
 import { isDailyDismissedToday } from "@/lib/dailyDismissal";
@@ -139,7 +140,9 @@ const REGION_EXEMPT = [
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
   const [location, navigate] = useLocation();
-  const { data: dailySession, isLoading: dailyLoading } = useDailySession(isAuthenticated);
+  // The daily session is stored opinions, so it exists only for a user who has consented.
+  const { state: consent } = usePoliticalConsent();
+  const { data: dailySession, isLoading: dailyLoading } = useDailySession(isAuthenticated && consent === "granted");
   const { status: regionStatus, region } = useRegion();
 
   // A signed-in user with an unfinished session lands in it once a day. Closing it (X) keeps it
@@ -184,12 +187,14 @@ function App() {
           <AuthProvider>
             <RegionProvider>
               <ToastContextProvider>
-                <OfflineIndicator />
-                <OfflineAlert />
-                <Router />
-                <PWAInstallButton />
-                <CookieConsent />
-                <Toaster />
+                <ConsentProvider>
+                  <OfflineIndicator />
+                  <OfflineAlert />
+                  <Router />
+                  <PWAInstallButton />
+                  <CookieConsent />
+                  <Toaster />
+                </ConsentProvider>
               </ToastContextProvider>
             </RegionProvider>
           </AuthProvider>

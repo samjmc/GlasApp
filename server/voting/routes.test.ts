@@ -24,6 +24,14 @@ vi.mock('../auth', () => {
   return { requireAuth: asUser, optionalAuth: (_req: unknown, _res: unknown, next: () => void) => next() };
 });
 
+// The gate as server/consent sends it; a user named 'no-consent' has not agreed.
+vi.mock('../consent', () => ({
+  requirePoliticalConsent: (req: express.Request, res: express.Response, next: () => void) =>
+    req.user?.id === 'no-consent'
+      ? res.status(403).json({ success: false, error: { code: 'CONSENT_REQUIRED', message: 'Agree first' } })
+      : next(),
+}));
+
 vi.mock('../middleware/rateLimit', () => ({
   publicWriteRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
 }));
@@ -136,6 +144,22 @@ describe('voting routes', () => {
     const res = await send('/api/votes/articles/9');
     expect(res.status).toBe(200);
     expect(calls.list.at(-1)).toEqual({ fn: 'articleVoteView', args: [9, null] });
+  });
+
+  it('stores nothing for a user who has not consented: every storing route is refused with 403', async () => {
+    const vote = { method: 'POST', user: 'no-consent', body: { optionKey: 'option_a' } };
+    for (const res of [
+      await send('/api/daily-session', { user: 'no-consent' }),
+      await send('/api/daily-session/items/5/vote', vote),
+      await send('/api/daily-session/complete', { method: 'POST', user: 'no-consent' }),
+      await send('/api/votes/questions/3', vote),
+    ]) {
+      expect(res.status).toBe(403);
+      expect((await res.json()).error.code).toBe('CONSENT_REQUIRED');
+    }
+    expect(calls.list).toEqual([]);
+    // Reading an article's question stores nothing, so it needs no consent.
+    expect((await send('/api/votes/articles/9', { user: 'no-consent' })).status).toBe(200);
   });
 
   it('drops a county longer than its column instead of failing the insert', async () => {

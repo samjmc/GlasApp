@@ -15,7 +15,13 @@ process.env.ADMIN_API_SECRET = 'job-secret';
 process.env.ADMIN_EMAILS = '';
 process.env.LOG_LEVEL = 'silent';
 
-const state = vi.hoisted(() => ({ calls: [] as Array<{ fn: string; args: unknown[] }>, logged: [] as string[] }));
+const state = vi.hoisted(() => ({ calls: [] as Array<{ fn: string; args: unknown[] }>, logged: [] as string[], consented: true }));
+
+// The gate as server/consent sends it.
+vi.mock('../consent', () => ({
+  requirePoliticalConsent: (_req: unknown, res: express.Response, next: () => void) =>
+    state.consented ? next() : res.status(403).json({ success: false, error: { code: 'CONSENT_REQUIRED', message: 'Agree first' } }),
+}));
 
 // Real guards, scripted identity: a bearer token maps straight to a user.
 vi.mock('../auth/supabase', () => ({
@@ -180,5 +186,18 @@ describe('priorities', () => {
     const ok = await send('/api/pledges/priorities', { method: 'PUT', token: 'user-token', body: { ranking: ['health', 'housing'], userId: 'someone-else' } });
     expect(ok.status).toBe(200);
     expect(state.calls.at(-1)).toEqual({ fn: 'saveRanking', args: ['user-1', ['health', 'housing']] });
+  });
+
+  it('saves no ranking for a user who has not consented', async () => {
+    state.consented = false;
+    try {
+      const calls = state.calls.length;
+      const res = await send('/api/pledges/priorities', { method: 'PUT', token: 'user-token', body: { ranking: ['health'] } });
+      expect(res.status).toBe(403);
+      expect((await res.json()).error.code).toBe('CONSENT_REQUIRED');
+      expect(state.calls.length).toBe(calls);
+    } finally {
+      state.consented = true;
+    }
   });
 });

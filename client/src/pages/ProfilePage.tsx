@@ -13,6 +13,7 @@ import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { Camera, Loader2, TrendingUp } from 'lucide-react';
 
 import { PageHeader } from '@/components/PageHeader';
+import { PoliticalConsentCard } from '@/components/consent/PoliticalConsentCard';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -394,6 +395,8 @@ const ProfilePage = () => {
               </Button>
             </CardFooter>
           </Card>
+
+          <PoliticalConsentCard />
 
           <Card className="border-warn/50">
             <CardHeader>

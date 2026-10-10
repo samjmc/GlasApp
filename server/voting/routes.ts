@@ -9,10 +9,12 @@
  *                        POST /questions/:questionId     { optionKey }
  *
  * Identity is always the verified token's user id; no route reads a user id from input.
+ * Every route that stores a vote or a session needs the user's consent (server/consent).
  */
 import { Router, type NextFunction, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
 import { optionalAuth, requireAuth } from '../auth';
+import { requirePoliticalConsent } from '../consent';
 import { publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
@@ -51,6 +53,8 @@ export const dailySessionRouter = Router();
 dailySessionRouter.get(
   '/',
   requireAuth,
+  // It creates the session, which stores the user's profile before the votes.
+  requirePoliticalConsent,
   handle(async (req) => {
     const user = req.user!;
     // Location is a self-edited preference, so it lives in user_metadata.
@@ -65,6 +69,7 @@ dailySessionRouter.get(
 dailySessionRouter.post(
   '/items/:itemId/vote',
   requireAuth,
+  requirePoliticalConsent,
   publicWriteRateLimit,
   handle(async (req) => {
     const { optionKey } = voteBody.parse(req.body);
@@ -75,6 +80,7 @@ dailySessionRouter.post(
 dailySessionRouter.post(
   '/complete',
   requireAuth,
+  requirePoliticalConsent,
   handle(async (req) => service.completeSession(req.user!.id)),
 );
 
@@ -89,6 +95,7 @@ votesRouter.get(
 votesRouter.post(
   '/questions/:questionId',
   requireAuth,
+  requirePoliticalConsent,
   publicWriteRateLimit,
   handle(async (req) => {
     const { optionKey } = voteBody.parse(req.body);
